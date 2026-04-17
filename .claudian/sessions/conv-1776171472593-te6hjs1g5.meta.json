@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776171472593-te6hjs1g5",
+  "providerId": "claude",
+  "title": "Update CSGP Thesis to template",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776171472594,
+  "updatedAt": 1776172032154,
+  "lastResponseAt": 1776171925000,
+  "sessionId": "d3b4c705-2a06-4f66-acee-a3ede282b7f3",
+  "providerState": {
+    "providerSessionId": "d3b4c705-2a06-4f66-acee-a3ede282b7f3"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 6849,
+    "cacheReadInputTokens": 80588,
+    "contextWindow": 200000,
+    "contextTokens": 87438,
+    "percentage": 44,
+    "contextWindowIsAuthoritative": true
+  }
+}

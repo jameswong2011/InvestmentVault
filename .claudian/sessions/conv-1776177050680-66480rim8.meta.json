@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776177050680-66480rim8",
+  "providerId": "claude",
+  "title": "Refactor EINK thesis for template alignment",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776177050681,
+  "updatedAt": 1776178055896,
+  "lastResponseAt": 1776177917944,
+  "sessionId": "e1960ceb-5daa-4269-8f3c-33a665d75ee7",
+  "providerState": {
+    "providerSessionId": "e1960ceb-5daa-4269-8f3c-33a665d75ee7"
+  },
+  "currentNote": "Theses/EINK - E Ink Holdings.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 8547,
+    "cacheReadInputTokens": 89725,
+    "contextWindow": 200000,
+    "contextTokens": 98273,
+    "percentage": 49,
+    "contextWindowIsAuthoritative": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776252063268-yr4xe1gba",
+  "providerId": "claude",
+  "title": "Sync Investment Vault",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776252063268,
+  "updatedAt": 1776253008324,
+  "lastResponseAt": 1776252469483,
+  "sessionId": "b78bbedd-a5f9-48a4-905c-2d8a533d0291",
+  "providerState": {
+    "providerSessionId": "b78bbedd-a5f9-48a4-905c-2d8a533d0291"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1124,
+    "cacheReadInputTokens": 90602,
+    "contextWindow": 200000,
+    "contextTokens": 91727,
+    "percentage": 46,
+    "contextWindowIsAuthoritative": true
+  }
+}

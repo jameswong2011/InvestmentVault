@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776363758967-cxm4xk3pe",
+  "providerId": "claude",
+  "title": "Audit vault integrity and skill cross-references",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776363758967,
+  "updatedAt": 1776373597030,
+  "lastResponseAt": 1776372808720,
+  "sessionId": "1cdeefc8-3eb4-430d-b7a6-e8e0d594c079",
+  "providerState": {
+    "providerSessionId": "1cdeefc8-3eb4-430d-b7a6-e8e0d594c079"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 3523,
+    "cacheReadInputTokens": 120978,
+    "contextWindow": 200000,
+    "contextTokens": 124502,
+    "percentage": 62,
+    "contextWindowIsAuthoritative": true
+  }
+}

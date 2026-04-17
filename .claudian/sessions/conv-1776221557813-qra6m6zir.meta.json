@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776221557813-qra6m6zir",
+  "providerId": "claude",
+  "title": "Update LNG Thesis to template structure",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776221557814,
+  "updatedAt": 1776222324172,
+  "lastResponseAt": 1776222311633,
+  "sessionId": "2533c634-650b-4956-b7f5-367e88c57e3b",
+  "providerState": {
+    "providerSessionId": "2533c634-650b-4956-b7f5-367e88c57e3b"
+  },
+  "currentNote": "Theses/LNG - Cheniere Energy.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 207,
+    "cacheReadInputTokens": 141238,
+    "contextWindow": 200000,
+    "contextTokens": 141446,
+    "percentage": 71,
+    "contextWindowIsAuthoritative": true
+  }
+}

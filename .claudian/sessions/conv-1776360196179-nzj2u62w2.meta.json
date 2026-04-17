@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776360196179-nzj2u62w2",
+  "providerId": "claude",
+  "title": "Fix context window exhaustion in vault ops",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776360196179,
+  "updatedAt": 1776360457284,
+  "lastResponseAt": 1776360420539,
+  "sessionId": "9f4ac820-8749-4041-9868-d7d34dff9404",
+  "providerState": {
+    "providerSessionId": "9f4ac820-8749-4041-9868-d7d34dff9404"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 4478,
+    "cacheReadInputTokens": 40637,
+    "contextWindow": 200000,
+    "contextTokens": 45116,
+    "percentage": 23,
+    "contextWindowIsAuthoritative": true
+  }
+}

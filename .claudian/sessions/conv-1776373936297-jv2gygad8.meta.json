@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776373936297-jv2gygad8",
+  "providerId": "claude",
+  "title": "Implement /sync retry deduplication",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776373936298,
+  "updatedAt": 1776375018633,
+  "lastResponseAt": 1776374967308,
+  "sessionId": "8e801b05-af7a-4e6d-8d59-f855e6a029c4",
+  "providerState": {
+    "providerSessionId": "8e801b05-af7a-4e6d-8d59-f855e6a029c4"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 2555,
+    "cacheReadInputTokens": 28472,
+    "contextWindow": 200000,
+    "contextTokens": 31028,
+    "percentage": 16,
+    "contextWindowIsAuthoritative": true
+  }
+}

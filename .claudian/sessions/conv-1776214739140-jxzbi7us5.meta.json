@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776214739140-jxzbi7us5",
+  "providerId": "claude",
+  "title": "Check Claude concurrent code request limits",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776214739140,
+  "updatedAt": 1776245609904,
+  "lastResponseAt": 1776214796852,
+  "sessionId": "1a74327c-87af-4580-b67c-2080747e6e0d",
+  "providerState": {
+    "providerSessionId": "1a74327c-87af-4580-b67c-2080747e6e0d"
+  },
+  "currentNote": "Theses/AVGO - Broadcom.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 10,
+    "cacheCreationInputTokens": 583,
+    "cacheReadInputTokens": 22511,
+    "contextWindow": 200000,
+    "contextTokens": 23104,
+    "percentage": 12,
+    "contextWindowIsAuthoritative": true
+  }
+}

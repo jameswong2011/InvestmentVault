@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776381003577-a9wl1yvv1",
+  "providerId": "claude",
+  "title": "Run scenario analysis",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776381003577,
+  "updatedAt": 1776382202208,
+  "lastResponseAt": 1776381094185,
+  "sessionId": "f2a66688-a9c6-4f32-b463-3e598d0a9bea",
+  "providerState": {
+    "providerSessionId": "f2a66688-a9c6-4f32-b463-3e598d0a9bea"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1341,
+    "cacheReadInputTokens": 20116,
+    "contextWindow": 1000000,
+    "contextTokens": 21458,
+    "percentage": 2,
+    "contextWindowIsAuthoritative": true
+  }
+}

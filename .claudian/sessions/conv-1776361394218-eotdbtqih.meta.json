@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776361394218-eotdbtqih",
+  "providerId": "claude",
+  "title": "Implement rollback-sync consistency fix",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776361394219,
+  "updatedAt": 1776361582319,
+  "lastResponseAt": 1776361498003,
+  "sessionId": "2756dfd9-1119-4b54-ac90-5b6c4e03976c",
+  "providerState": {
+    "providerSessionId": "2756dfd9-1119-4b54-ac90-5b6c4e03976c"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 2107,
+    "cacheReadInputTokens": 22009,
+    "contextWindow": 200000,
+    "contextTokens": 24117,
+    "percentage": 12,
+    "contextWindowIsAuthoritative": true
+  }
+}

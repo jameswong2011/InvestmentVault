@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776246943811-rn5d1r4q3",
+  "providerId": "claude",
+  "title": "Create CRCL thesis on stablecoin upside",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776246943811,
+  "updatedAt": 1776247630768,
+  "lastResponseAt": 1776247625140,
+  "sessionId": "fa49058f-6e0f-432c-a103-e16db5b91bd5",
+  "providerState": {
+    "providerSessionId": "fa49058f-6e0f-432c-a103-e16db5b91bd5"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 746,
+    "cacheReadInputTokens": 108922,
+    "contextWindow": 200000,
+    "contextTokens": 109669,
+    "percentage": 55,
+    "contextWindowIsAuthoritative": true
+  }
+}

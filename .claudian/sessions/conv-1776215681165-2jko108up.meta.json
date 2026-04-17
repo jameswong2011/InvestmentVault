@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776215681165-2jko108up",
+  "providerId": "claude",
+  "title": "Standardize thesis sections across 12 tickers",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776215681165,
+  "updatedAt": 1776215715713,
+  "lastResponseAt": 1776215711187,
+  "sessionId": "d8cbca73-1ffa-4f47-986e-2fb373d7393f",
+  "providerState": {
+    "providerSessionId": "d8cbca73-1ffa-4f47-986e-2fb373d7393f"
+  },
+  "currentNote": "Theses/IOT - Samsara.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 8,
+    "cacheCreationInputTokens": 42445,
+    "cacheReadInputTokens": 58468,
+    "contextWindow": 200000,
+    "contextTokens": 100921,
+    "percentage": 50
+  }
+}

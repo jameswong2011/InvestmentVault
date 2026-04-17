@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776166255909-no1talttf",
+  "providerId": "claude",
+  "title": "Merge Energy sector notes",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776166255909,
+  "updatedAt": 1776168582714,
+  "lastResponseAt": 1776166315719,
+  "sessionId": "ce688239-a1f0-42d3-b965-1983be774bd1",
+  "providerState": {
+    "providerSessionId": "ce688239-a1f0-42d3-b965-1983be774bd1"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 132,
+    "cacheReadInputTokens": 17668,
+    "contextWindow": 200000,
+    "contextTokens": 17801,
+    "percentage": 9,
+    "contextWindowIsAuthoritative": true
+  }
+}

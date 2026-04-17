@@ -1,0 +1,12 @@
+# Obsidian internal config
+.obsidian/
+.trash/
+
+# Attachments and media (images, PDFs)
+attachments/
+media/
+
+# Plugin data
+.obsidian/plugins/*/data.json
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json

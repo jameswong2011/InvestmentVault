@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776233422274-wjs5tqu71",
+  "providerId": "claude",
+  "title": "Refactor SHOP thesis document to template format",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776233422274,
+  "updatedAt": 1776234262685,
+  "lastResponseAt": 1776234214993,
+  "sessionId": "4a981d8b-b6d5-4cdb-8fa3-eeea3447211d",
+  "providerState": {
+    "providerSessionId": "4a981d8b-b6d5-4cdb-8fa3-eeea3447211d"
+  },
+  "currentNote": "Theses/NET - Cloudflare.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 380,
+    "cacheReadInputTokens": 122680,
+    "contextWindow": 200000,
+    "contextTokens": 123061,
+    "percentage": 62,
+    "contextWindowIsAuthoritative": true
+  }
+}

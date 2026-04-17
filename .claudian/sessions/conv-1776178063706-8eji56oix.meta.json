@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776178063706-8eji56oix",
+  "providerId": "claude",
+  "title": "Restructure HIMS Thesis to Template",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776178063707,
+  "updatedAt": 1776178827925,
+  "lastResponseAt": 1776178598091,
+  "sessionId": "0456a2d6-b529-41c1-8c6c-f1bcafe37f13",
+  "providerState": {
+    "providerSessionId": "0456a2d6-b529-41c1-8c6c-f1bcafe37f13"
+  },
+  "currentNote": "Theses/HIMS - Hims & Hers Health.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 120,
+    "cacheReadInputTokens": 94930,
+    "contextWindow": 200000,
+    "contextTokens": 95051,
+    "percentage": 48,
+    "contextWindowIsAuthoritative": true
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776350822770-vsovuad0a",
+  "providerId": "claude",
+  "title": "Test skill invocation permutations",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776350822770,
+  "updatedAt": 1776356226790,
+  "lastResponseAt": 1776355058319,
+  "sessionId": "dff2354b-34ba-4615-b847-e4c2a0a46306",
+  "providerState": {
+    "providerSessionId": "dff2354b-34ba-4615-b847-e4c2a0a46306"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 4200,
+    "cacheReadInputTokens": 78249,
+    "contextWindow": 200000,
+    "contextTokens": 82450,
+    "percentage": 41,
+    "contextWindowIsAuthoritative": true
+  }
+}

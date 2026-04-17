@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776334759856-yjhev6a2n",
+  "providerId": "claude",
+  "title": "Clarify lint skill _graph.md coverage",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776334759856,
+  "updatedAt": 1776400736371,
+  "lastResponseAt": 1776338262929,
+  "sessionId": "6b4997e0-29db-4c1f-be68-e77f6ed852e4",
+  "providerState": {
+    "providerSessionId": "6b4997e0-29db-4c1f-be68-e77f6ed852e4"
+  },
+  "currentNote": "_graph.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 1530,
+    "cacheReadInputTokens": 59237,
+    "contextWindow": 1000000,
+    "contextTokens": 60770,
+    "percentage": 6,
+    "contextWindowIsAuthoritative": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776324068303-18x519rw7",
+  "providerId": "claude",
+  "title": "Ingest inbox content",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776324068303,
+  "updatedAt": 1776331193843,
+  "lastResponseAt": 1776327879644,
+  "sessionId": "7ff37a25-c816-499e-a5db-59ecc6f2ad29",
+  "providerState": {
+    "providerSessionId": "7ff37a25-c816-499e-a5db-59ecc6f2ad29"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1353,
+    "cacheReadInputTokens": 111362,
+    "contextWindow": 200000,
+    "contextTokens": 112716,
+    "percentage": 56,
+    "contextWindowIsAuthoritative": true
+  }
+}

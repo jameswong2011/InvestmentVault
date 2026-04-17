@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776389141464-p8z9hkyeh",
+  "providerId": "claude",
+  "title": "Audit vault workflow permutations",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776389141464,
+  "updatedAt": 1776392065161,
+  "lastResponseAt": 1776392065161,
+  "sessionId": "814e5a3b-9b43-4ade-af1d-ef05988b2d31",
+  "providerState": {
+    "providerSessionId": "814e5a3b-9b43-4ade-af1d-ef05988b2d31"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 6,
+    "cacheCreationInputTokens": 1457,
+    "cacheReadInputTokens": 322998,
+    "contextWindow": 1000000,
+    "contextTokens": 324461,
+    "percentage": 32,
+    "contextWindowIsAuthoritative": true
+  }
+}

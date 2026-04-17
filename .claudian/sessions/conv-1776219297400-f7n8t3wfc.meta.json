@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776219297400-f7n8t3wfc",
+  "providerId": "claude",
+  "title": "Restructure KIOXIA-SNDK thesis documents",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776219297400,
+  "updatedAt": 1776220435306,
+  "lastResponseAt": 1776220392435,
+  "sessionId": "2ab5731c-2d83-4930-ad55-239725a2fc01",
+  "providerState": {
+    "providerSessionId": "2ab5731c-2d83-4930-ad55-239725a2fc01"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1874,
+    "cacheReadInputTokens": 138504,
+    "contextWindow": 200000,
+    "contextTokens": 140379,
+    "percentage": 70,
+    "contextWindowIsAuthoritative": true
+  }
+}

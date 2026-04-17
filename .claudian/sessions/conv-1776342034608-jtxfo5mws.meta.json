@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776342034608-jtxfo5mws",
+  "providerId": "claude",
+  "title": "Audit skill gaps and workflow breaks",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776342034608,
+  "updatedAt": 1776345532596,
+  "lastResponseAt": 1776345486991,
+  "sessionId": "f673d15a-560f-469c-950a-3efc1ebe4578",
+  "providerState": {
+    "providerSessionId": "f673d15a-560f-469c-950a-3efc1ebe4578"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 2021,
+    "cacheReadInputTokens": 121937,
+    "contextWindow": 200000,
+    "contextTokens": 123959,
+    "percentage": 62,
+    "contextWindowIsAuthoritative": true
+  }
+}

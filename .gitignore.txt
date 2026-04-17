@@ -1,0 +1,54 @@
+# ============================================
+# Obsidian — personal UI state
+# ============================================
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspace.json.bak
+.obsidian/cache
+.obsidian/app.json.bak
+.trash/
+
+# ============================================
+# Claudian plugin — ignore entire plugin state folder
+# ============================================
+.claudian/
+
+# ============================================
+# Claude Code — keep skills/commands/CLAUDE.md tracked, ignore local settings
+# ============================================
+.claude/settings.local.json
+.claude.json.backup
+
+# ============================================
+# Secrets — NEVER commit these
+# ============================================
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+credentials.json
+secrets.json
+
+# ============================================
+# macOS system files
+# ============================================
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# ============================================
+# Windows system files
+# ============================================
+Thumbs.db
+desktop.ini
+
+# ============================================
+# Temp and backup files
+# ============================================
+*.tmp
+*.swp
+*.swo
+*~
+~$*

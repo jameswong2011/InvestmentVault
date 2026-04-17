@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776255443099-rcya1v3an",
+  "providerId": "claude",
+  "title": "Move insights map to root and fix links",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776255443099,
+  "updatedAt": 1776256969331,
+  "lastResponseAt": 1776255552819,
+  "sessionId": "04ac30d1-dcef-4903-a06d-988a9832465f",
+  "providerState": {
+    "providerSessionId": "04ac30d1-dcef-4903-a06d-988a9832465f"
+  },
+  "currentNote": "Sectors/Consumer & Digital.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1926,
+    "cacheReadInputTokens": 25917,
+    "contextWindow": 200000,
+    "contextTokens": 27844,
+    "percentage": 14,
+    "contextWindowIsAuthoritative": true
+  }
+}

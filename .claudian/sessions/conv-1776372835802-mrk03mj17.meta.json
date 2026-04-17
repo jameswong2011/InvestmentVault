@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776372835802-mrk03mj17",
+  "providerId": "claude",
+  "title": "Test vault workflow permutation scenarios",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776372835802,
+  "updatedAt": 1776372851527,
+  "lastResponseAt": 1776372844766,
+  "sessionId": "ba24905d-2f5c-4cd7-9f29-5ed638bb29db",
+  "providerState": {
+    "providerSessionId": "ba24905d-2f5c-4cd7-9f29-5ed638bb29db"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 5558,
+    "cacheReadInputTokens": 10253,
+    "contextWindow": 200000,
+    "contextTokens": 15814,
+    "percentage": 8
+  }
+}

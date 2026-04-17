@@ -1,0 +1,22 @@
+{
+  "id": "conv-1776393743238-5c6nb2mow",
+  "providerId": "claude",
+  "title": "Simulate vault workflow scenario permutations",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776393743238,
+  "updatedAt": 1776393758629,
+  "lastResponseAt": 1776393754055,
+  "sessionId": "fce2b1ff-80bd-4cb9-86da-730a36b60c6c",
+  "providerState": {
+    "providerSessionId": "fce2b1ff-80bd-4cb9-86da-730a36b60c6c"
+  },
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 507,
+    "cacheReadInputTokens": 24746,
+    "contextWindow": 1000000,
+    "contextTokens": 25254,
+    "percentage": 3
+  }
+}

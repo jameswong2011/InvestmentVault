@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776257150798-g3cil11d5",
+  "providerId": "claude",
+  "title": "Synthesize Industrials Agriculture Sector Note",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776257150798,
+  "updatedAt": 1776257171523,
+  "lastResponseAt": 1776257168421,
+  "sessionId": "0e495fed-48a0-4d80-a1c3-a5c6b19c4215",
+  "providerState": {
+    "providerSessionId": "0e495fed-48a0-4d80-a1c3-a5c6b19c4215"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 10003,
+    "cacheReadInputTokens": 13857,
+    "contextWindow": 200000,
+    "contextTokens": 23861,
+    "percentage": 12
+  }
+}

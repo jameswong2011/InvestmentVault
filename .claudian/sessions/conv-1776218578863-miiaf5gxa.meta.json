@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776218578863-miiaf5gxa",
+  "providerId": "claude",
+  "title": "Update KAMBI Thesis to Template Format",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776218578864,
+  "updatedAt": 1776219260724,
+  "lastResponseAt": 1776219217920,
+  "sessionId": "700b3ae9-acad-4535-b15e-024ecde16d7c",
+  "providerState": {
+    "providerSessionId": "700b3ae9-acad-4535-b15e-024ecde16d7c"
+  },
+  "currentNote": "Theses/KAMBI - Kambi Group.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 205,
+    "cacheReadInputTokens": 102498,
+    "contextWindow": 200000,
+    "contextTokens": 102704,
+    "percentage": 51,
+    "contextWindowIsAuthoritative": true
+  }
+}

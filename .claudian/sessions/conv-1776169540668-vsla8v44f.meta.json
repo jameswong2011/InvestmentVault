@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776169540668-vsla8v44f",
+  "providerId": "claude",
+  "title": "Refactor AVGO Thesis to Template Format",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776169540668,
+  "updatedAt": 1776170048409,
+  "lastResponseAt": 1776169915200,
+  "sessionId": "0cbd15c3-524c-45ac-8e2b-5cb3f4103418",
+  "providerState": {
+    "providerSessionId": "0cbd15c3-524c-45ac-8e2b-5cb3f4103418"
+  },
+  "currentNote": "Theses/APP - AppLovin.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 215,
+    "cacheReadInputTokens": 82681,
+    "contextWindow": 200000,
+    "contextTokens": 82897,
+    "percentage": 41,
+    "contextWindowIsAuthoritative": true
+  }
+}

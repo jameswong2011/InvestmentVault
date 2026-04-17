@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776223237689-wljmg2aya",
+  "providerId": "claude",
+  "title": "Consolidate and update MTN Thesis",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776223237689,
+  "updatedAt": 1776224369112,
+  "lastResponseAt": 1776223895835,
+  "sessionId": "173de963-4e71-4c37-8931-6871f5b5df2e",
+  "providerState": {
+    "providerSessionId": "173de963-4e71-4c37-8931-6871f5b5df2e"
+  },
+  "currentNote": "Theses/MTN - Vail Resorts.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 439,
+    "cacheReadInputTokens": 105429,
+    "contextWindow": 200000,
+    "contextTokens": 105869,
+    "percentage": 53,
+    "contextWindowIsAuthoritative": true
+  }
+}

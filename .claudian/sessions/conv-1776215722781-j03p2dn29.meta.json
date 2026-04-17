@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776215722781-j03p2dn29",
+  "providerId": "claude",
+  "title": "Consolidate thesis docs to template standards",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776215722782,
+  "updatedAt": 1776217170533,
+  "lastResponseAt": 1776217089391,
+  "sessionId": "7b754350-dc98-405e-808d-a266a4b4fbe2",
+  "providerState": {
+    "providerSessionId": "7b754350-dc98-405e-808d-a266a4b4fbe2"
+  },
+  "currentNote": "Theses/IOT - Samsara.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 3,
+    "cacheCreationInputTokens": 4345,
+    "cacheReadInputTokens": 10253,
+    "contextWindow": 200000,
+    "contextTokens": 14601,
+    "percentage": 7,
+    "contextWindowIsAuthoritative": true
+  }
+}

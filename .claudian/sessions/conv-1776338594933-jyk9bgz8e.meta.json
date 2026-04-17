@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776338594933-jyk9bgz8e",
+  "providerId": "claude",
+  "title": "Audit investment vault workflow",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776338594934,
+  "updatedAt": 1776350764617,
+  "lastResponseAt": 1776341910007,
+  "sessionId": "fff4ee32-4edf-44e4-8163-4c11c2a2ee04",
+  "providerState": {
+    "providerSessionId": "fff4ee32-4edf-44e4-8163-4c11c2a2ee04"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 301,
+    "cacheReadInputTokens": 150573,
+    "contextWindow": 200000,
+    "contextTokens": 150875,
+    "percentage": 75,
+    "contextWindowIsAuthoritative": true
+  }
+}

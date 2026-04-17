@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776362146821-9w284sovv",
+  "providerId": "claude",
+  "title": "Fix sector scoping in /surface for new sectors",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776362146821,
+  "updatedAt": 1776363715297,
+  "lastResponseAt": 1776362192549,
+  "sessionId": "474ad9a1-9eee-46df-a540-9aeb00f10d35",
+  "providerState": {
+    "providerSessionId": "474ad9a1-9eee-46df-a540-9aeb00f10d35"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 811,
+    "cacheReadInputTokens": 29340,
+    "contextWindow": 200000,
+    "contextTokens": 30152,
+    "percentage": 15,
+    "contextWindowIsAuthoritative": true
+  }
+}

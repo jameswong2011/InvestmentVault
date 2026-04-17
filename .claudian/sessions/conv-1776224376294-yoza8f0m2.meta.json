@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776224376294-yoza8f0m2",
+  "providerId": "claude",
+  "title": "Restructure NET thesis document",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776224376295,
+  "updatedAt": 1776225123047,
+  "lastResponseAt": 1776225083007,
+  "sessionId": "3aa8a7e9-24d8-4737-9588-38993af35a64",
+  "providerState": {
+    "providerSessionId": "3aa8a7e9-24d8-4737-9588-38993af35a64"
+  },
+  "currentNote": "Theses/NET - Cloudflare.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 2230,
+    "cacheReadInputTokens": 117780,
+    "contextWindow": 200000,
+    "contextTokens": 120011,
+    "percentage": 60,
+    "contextWindowIsAuthoritative": true
+  }
+}

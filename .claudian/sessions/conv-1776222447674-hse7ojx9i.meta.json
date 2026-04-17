@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776222447674-hse7ojx9i",
+  "providerId": "claude",
+  "title": "Restructure META thesis with template alignment",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776222447674,
+  "updatedAt": 1776223230114,
+  "lastResponseAt": 1776223152232,
+  "sessionId": "bbd68080-b181-4ce2-b0ff-a379114e89d6",
+  "providerState": {
+    "providerSessionId": "bbd68080-b181-4ce2-b0ff-a379114e89d6"
+  },
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 557,
+    "cacheReadInputTokens": 107087,
+    "contextWindow": 200000,
+    "contextTokens": 107645,
+    "percentage": 54,
+    "contextWindowIsAuthoritative": true
+  }
+}

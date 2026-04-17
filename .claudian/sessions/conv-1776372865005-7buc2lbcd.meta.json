@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776372865005-7buc2lbcd",
+  "providerId": "claude",
+  "title": "Debug vault integrity through skill failures",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776372865005,
+  "updatedAt": 1776381001408,
+  "lastResponseAt": 1776376891387,
+  "sessionId": "ece24eb3-20d0-4cda-84ac-e34f20aa9292",
+  "providerState": {
+    "providerSessionId": "ece24eb3-20d0-4cda-84ac-e34f20aa9292"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 2428,
+    "cacheReadInputTokens": 126695,
+    "contextWindow": 1000000,
+    "contextTokens": 129124,
+    "percentage": 13,
+    "contextWindowIsAuthoritative": false
+  }
+}

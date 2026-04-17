@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776244923898-fzkeddrtu",
+  "providerId": "claude",
+  "title": "Lint vault files",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776244923898,
+  "updatedAt": 1776249221194,
+  "lastResponseAt": 1776245266112,
+  "sessionId": "ac05673e-96e8-49c1-a8bf-c595f5650019",
+  "providerState": {
+    "providerSessionId": "ac05673e-96e8-49c1-a8bf-c595f5650019"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 2871,
+    "cacheReadInputTokens": 11968,
+    "contextWindow": 200000,
+    "contextTokens": 14840,
+    "percentage": 7,
+    "contextWindowIsAuthoritative": true
+  }
+}

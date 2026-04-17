@@ -1,0 +1,21 @@
+{
+  "id": "conv-1776334644713-09voxevhn",
+  "providerId": "claude",
+  "title": "Audit vault skills robustness",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776334644714,
+  "updatedAt": 1776341827867,
+  "lastResponseAt": 1776334747470,
+  "sessionId": null,
+  "providerState": {},
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1433,
+    "cacheReadInputTokens": 37493,
+    "contextWindow": 200000,
+    "contextTokens": 38927,
+    "percentage": 19
+  }
+}

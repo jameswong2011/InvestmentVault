@@ -1,0 +1,14 @@
+{
+  "id": "conv-1776324052340-udn1b7jd1",
+  "providerId": "claude",
+  "title": "Ingest YouTube video to inbox",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776324052340,
+  "updatedAt": 1776324060015,
+  "lastResponseAt": 1776324054482,
+  "sessionId": "8459a0c9-47e2-49e4-ac36-c2db3af9a010",
+  "providerState": {
+    "providerSessionId": "8459a0c9-47e2-49e4-ac36-c2db3af9a010"
+  },
+  "currentNote": "_inbox/2026-04-16 - Dwarkesh Patel | Will Nvidia's Moat Persist - video-transcript.md"
+}

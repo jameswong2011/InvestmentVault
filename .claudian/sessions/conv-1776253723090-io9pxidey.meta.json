@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776253723090-io9pxidey",
+  "providerId": "claude",
+  "title": "Strengthen compacting rules section",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776253723090,
+  "updatedAt": 1776253979445,
+  "lastResponseAt": 1776253809444,
+  "sessionId": "6c093aed-a28c-4026-9976-a0af2c8849d5",
+  "providerState": {
+    "providerSessionId": "6c093aed-a28c-4026-9976-a0af2c8849d5"
+  },
+  "currentNote": "CLAUDE.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 480,
+    "cacheReadInputTokens": 14201,
+    "contextWindow": 200000,
+    "contextTokens": 14682,
+    "percentage": 7,
+    "contextWindowIsAuthoritative": true
+  }
+}

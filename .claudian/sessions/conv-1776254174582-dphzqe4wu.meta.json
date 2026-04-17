@@ -1,0 +1,24 @@
+{
+  "id": "conv-1776254174582-dphzqe4wu",
+  "providerId": "claude",
+  "title": "Reorganize Sector and Macro folders",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776254174582,
+  "updatedAt": 1776255422896,
+  "lastResponseAt": 1776255324544,
+  "sessionId": "f7d9405d-1bde-4b11-92b1-e815709995eb",
+  "providerState": {
+    "providerSessionId": "f7d9405d-1bde-4b11-92b1-e815709995eb"
+  },
+  "currentNote": "Templates/Daily Template.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 717,
+    "cacheReadInputTokens": 165091,
+    "contextWindow": 200000,
+    "contextTokens": 165809,
+    "percentage": 83,
+    "contextWindowIsAuthoritative": true
+  }
+}

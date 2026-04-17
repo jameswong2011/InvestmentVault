@@ -1,0 +1,21 @@
+{
+  "id": "conv-1776165443553-sr1ua2kzz",
+  "providerId": "claude",
+  "title": "Create Salesforce investment thesis",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776165443553,
+  "updatedAt": 1776165653018,
+  "lastResponseAt": 1776165459546,
+  "sessionId": null,
+  "providerState": {},
+  "currentNote": "Theses/HIMS - Hims & Hers Health.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 1,
+    "cacheCreationInputTokens": 1189,
+    "cacheReadInputTokens": 12937,
+    "contextWindow": 200000,
+    "contextTokens": 14127,
+    "percentage": 7
+  }
+}

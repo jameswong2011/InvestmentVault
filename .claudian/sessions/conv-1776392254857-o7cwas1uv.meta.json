@@ -1,0 +1,23 @@
+{
+  "id": "conv-1776392254857-o7cwas1uv",
+  "providerId": "claude",
+  "title": "Simulate vault workflow permutation failures",
+  "titleGenerationStatus": "success",
+  "createdAt": 1776392254857,
+  "updatedAt": 1776393742515,
+  "lastResponseAt": 1776393724385,
+  "sessionId": "68cd5064-356e-4a6b-abe9-e962d1c2a305",
+  "providerState": {
+    "providerSessionId": "68cd5064-356e-4a6b-abe9-e962d1c2a305"
+  },
+  "currentNote": "User Guide.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 6,
+    "cacheCreationInputTokens": 12483,
+    "cacheReadInputTokens": 196461,
+    "contextWindow": 1000000,
+    "contextTokens": 208950,
+    "percentage": 21
+  }
+}
