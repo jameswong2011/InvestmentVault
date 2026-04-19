@@ -63,3 +63,4 @@ desktop.ini
 *.swo
 *~
 ~$*
+.obsidian/plugins/claudian/data.json
