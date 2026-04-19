@@ -19,7 +19,7 @@ Parse `$ARGUMENTS` to determine scope:
 #2 (Missing MOC entry), #4 (Missing frontmatter), #5 (Empty critical sections), #6 (Stale active thesis), #7 (Old financial data), #8 (Inactive research for this ticker), #12 (Conviction-evidence mismatch), #13 (Bull/Bear asymmetry), #14 (Template drift), #15 (Verbose Log entries), #19 (Graph entry exists), #21 (Graph edge validity for this thesis), #28 (Partial write detection for this thesis + its sector note), #30 (Sector resolution coverage for this thesis).
 
 **Vault-wide only** (skipped in scoped mode):
-#1 (Orphaned research), #3 (Broken wikilinks), #9 (Unlinked mentions), #10 (Disconnected macro), #11 (Missing thesis candidates), #16 (Stale snapshots), #17–18 (Graph existence/staleness), #20 (Ghost entries), #22–24 (Graph consistency checks), #25 (Pending sync), #26 (Edge count accuracy), #27 (Catalyst calendar staleness), #29 (Log-prefix registry alignment), #31 (Sector frontmatter standardization).
+#1 (Orphaned research), #3 (Broken wikilinks), #9 (Unlinked mentions), #10 (Disconnected macro), #11 (Missing thesis candidates), #16 (Stale snapshots), #17–18 (Graph existence/staleness), #20 (Ghost entries), #22–24 (Graph consistency checks), #25 (Pending sync), #26 (Edge count accuracy), #27 (Catalyst calendar staleness), #29 (Log-prefix registry alignment), #32 (Orphaned ticker references), #33 (Closed-thesis files in Theses/), #34 (Sector frontmatter standardization).
 
 ---
 
@@ -109,11 +109,14 @@ Perform a comprehensive vault health audit:
 These checks validate `_graph.md` — the pre-computed dependency map that `/sync` relies on for fast, targeted propagation. A stale or inaccurate graph means `/sync` silently misses updates.
 
 17. **Graph existence** — Verify `_graph.md` exists at vault root
-    - If missing: Critical — `/sync` cannot run in graph-assisted mode and must fall back to expensive all-mode every time. Fix: run `/graph`
+    - If missing: Important — `/sync` falls back to file-traversal resolution (slower, less precise). Fix: run `/graph`
 
 18. **Graph staleness** — Check `date:` in `_graph.md` frontmatter
-    - Flag as Important if date is >7 days old (graph may be out of sync with vault state). Fix: run `/graph`
-    - Flag as Critical if >30 days old (`/sync` auto-falls back to all mode at this threshold). Fix: run `/graph`
+    - **Auto-fixable by `/graph last`** — these are not errors per se; the new workflow expects `/graph last` after every `/sync`
+    - Pass: ≤24 hours old
+    - Nice to Have: >24 hours but ≤7 days. Fix: run `/graph last`
+    - Important: >7 days. Fix: run `/graph` (full rebuild) or `/graph [N]` for catch-up
+    - Critical: >30 days. Fix: run `/graph`
 
 19. **Missing thesis entries** — Find thesis notes in `Theses/` with no entry in the Thesis Adjacency Index
     - Method: List all `Theses/*.md` files, check each has a matching `### TICKER - Name` heading in `_graph.md`
@@ -181,7 +184,19 @@ These checks validate `_graph.md` — the pre-computed dependency map that `/syn
       - `match_confidence: exact` → Pass (no report line).
     - **Aggregate report** in full mode: include a stats line: `Sector resolution: [exact_count] exact, [normalized_count] normalized, [substring_count] substring, [none_count] none.`
 
-31. **Sector frontmatter standardization** — Cross-check thesis `sector:` frontmatter values against canonical sector note names to surface divergence patterns the user should standardize.
+32. **Orphaned ticker references in research** — Find research notes whose `ticker:` frontmatter or ticker-shaped tags do not match any file in `Theses/`. These notes were created before a thesis existed (or for a thesis that was archived) and have no propagation target.
+    - Method: For each `Research/*.md` with a `ticker:` frontmatter value, check `Theses/[ticker] - *.md` exists. Also check `tags:` for ticker-shaped tokens (all-uppercase, 1-5 chars) without matching `Theses/` files.
+    - Severity: Important — `/sync` cannot propagate these notes to any thesis. Their content is invisible to the propagation pipeline.
+    - Fix options: (a) `/thesis [TICKER]` to create the missing thesis, then `/sync [TICKER]` to integrate the orphaned research; (b) edit the research note's `ticker:` frontmatter to point to an existing thesis; (c) accept as orphan (no action — note remains as standalone research).
+    - This check covers what `/sync` Step 1 Fallback 1 used to self-heal silently. Surfacing here lets the user decide rather than letting orphans accumulate undetected.
+
+33. **Closed-thesis files in `Theses/`** — Find files in `Theses/` with `status: closed` frontmatter. These are failed archive moves from `/status active→closed` or `/prune` Stage 2 — the metadata flipped to closed but the `mv` to `_Archive/` didn't complete.
+    - Method: Grep `Theses/*.md` for `status: closed` in frontmatter.
+    - Severity: Important — every skill that reads thesis files must handle this state defensively. Subsequent `/sync` runs and `/graph last` skip these files with warnings.
+    - Fix options: (a) Complete the archive: `mv "Theses/[file]" "_Archive/[file]"` then `/graph last`; (b) Reopen the thesis: `/status TICKER status closed→active [rationale]` then `/sync TICKER`.
+    - This check covers what 5 separate gates in `/sync` used to handle inline. Surfacing here makes the failed-archive-move state visible rather than silently propagating warnings every sync.
+
+34. **Sector frontmatter standardization** — Cross-check thesis `sector:` frontmatter values against canonical sector note names to surface divergence patterns the user should standardize.
     - **Vault-wide only** (skipped in scoped mode).
     - For each unique `sector:` frontmatter value across `Theses/*.md`, count how many theses use it.
     - For each unique value, check whether it matches at least one `Sectors/*.md` filename (without `.md`) or `sector:` frontmatter EXACTLY (case-sensitive, whitespace-exact).

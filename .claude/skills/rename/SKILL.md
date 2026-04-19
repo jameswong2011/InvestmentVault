@@ -200,17 +200,8 @@ Append to the renamed thesis's `## Log` section:
 
 **To undo this rename**: run `/rename TICKER "[old_name]"` (symmetric inverse). The pre-rename snapshot is also available via `/rollback TICKER` → select `(pre-rename)` snapshot, but rollback alone restores file content only; the filename revert and inbound wikilink revert require running this skill in reverse.
 
-## Chain participation
-
-`/rename` is a structural operation similar to `/status active→closed` — it mutates `_graph.md` adjacency keys that subsequent skills depend on. Apply graph updates IMMEDIATELY regardless of chain state (closure-immediate-override pattern).
-
-If joining an active chain: append `YYYY-MM-DD: /rename — [TICKER] [old_name] → [new_name]` to Active Research Thread, mark step ✅. Do NOT increment `Graph deferred` (graph already updated). Append a note to the report: `ℹ️ Graph header updated immediately (rename exception) — not counted toward Graph deferred.`
-
-If no active chain, do not start a new chain — rename is a one-off structural operation, not a research workflow anchor.
-
 ## Edge cases
 
 - **Rename across ticker change** (e.g., `FB - Facebook` → `META - Meta`): out of scope — TICKER must be stable. For ticker changes, manually create a new thesis with `/thesis META`, copy content, archive the old via `/status FB active→closed`. Future enhancement could add a `/reticker` skill.
 - **Renamed thesis already in `_Archive/`** (closed): out of scope — `/rename` operates on active/monitoring/draft theses in `Theses/`. To rename an archived thesis, manually move + adjust.
 - **Old name contains regex special characters**: glob and grep must escape correctly. The rename procedure assumes literal string matching; alphanumeric and common punctuation (spaces, hyphens, ampersands) are fine, but unusual symbols (parentheses, braces, dollar signs) should prompt explicit escaping confirmation.
-- **Rename mid-session-chain finalization**: if `/rename` runs as part of a chain just before `/sync` finalizer, the finalizer's Step 7 sees the renamed entry as the "current" state — no special handling needed. The pre-rename snapshot exists for recovery.

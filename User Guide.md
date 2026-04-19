@@ -1020,21 +1020,16 @@ Persists context between sessions. Sections:
 - **Recent Conviction Changes**: conviction/status changes and drift flags
 - **Open Questions**: unresolved questions across theses
 - **Portfolio Snapshot**: high-level portfolio state
-- **Session Chain**: coordinates multi-skill workflow chains (see below)
 
 Updated by: `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`. Hard-capped at 2,000 words.
 
-### Session Chain — Workflow Coordination
-When running multi-skill workflow chains (§3a-3q), each skill updates `_graph.md` and `_hot.md`. Without coordination, this produces redundant graph read-write cycles and repeated Active Research Thread compression.
+### `_graph.md` — Vault Dependency Map
+Owned exclusively by `/graph`. Three modes:
+- **`/graph last`** (run after every `/sync`): skip rebuild if no files changed since last graph write; otherwise full rebuild.
+- **`/graph [N]`** (e.g., `/graph 7`): catch-up mode if you missed running `/graph last` for a while.
+- **`/graph`** (no args): full rebuild from scratch (use after `/sync all` or for disaster recovery).
 
-The `## Session Chain` section in `_hot.md` solves this:
-- **First skill** in a chain registers itself (Scope, Date, Steps) and performs full updates normally.
-- **Subsequent skills** detect the active chain: (1) SKIP `_graph.md` updates (deferred to finalizer), (2) append a short one-line entry to Active Research Thread instead of full compress/rotate.
-- **Finalizer** (`/sync` default/ticker or `/graph`) applies a single consolidated `_graph.md` update and clears the chain.
-
-Skills detect and join chains automatically — no manual management required.
-
-**Graph Debt**: If a chain is cleared without a proper finalizer (session ends mid-chain, or `/sync all` runs instead of `/sync`/`/graph`), deferred graph changes are preserved as **Graph Debt** — a persistent warning in `## Session Chain` that survives across sessions. Graph Debt reminds you to run `/graph` and is cleared automatically when `/sync` (default/ticker) or `/graph` next runs. This prevents silent loss of deferred changes. Full spec: CLAUDE.md § Session Chain Protocol.
+Research skills (`/sync`, `/thesis`, `/compare`, `/scenario`, `/deepen`, etc.) do NOT write to `_graph.md` — they create content and remind you to run `/graph last` afterward. This eliminates cross-skill graph contention.
 
 ### `_catalyst.md` — Catalyst Calendar
 Regenerated each time `/catalyst` runs. Timeline format: next 2 weeks (daily), weeks 3-4, months 2-3. Flags catalyst gaps and stale events.

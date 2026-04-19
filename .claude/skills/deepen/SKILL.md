@@ -113,7 +113,7 @@ Replace `Deepening [Section Name] — in progress` with `Deepened [Section Name]
    ```
    This preserves the append-only Log contract while ensuring the audit trail is always complete. `/sync` drift detection recognizes both `"Deepened"` and `"↳ CORRECTION: Deepened"` prefixes.
 
-> **Drift coupling**: `/sync` Step 3e excludes entries starting with `"Deepened"` (within 7 days of a stress test, OR chain-linked via Session Chain regardless of date) from drift detection. **Registry entry**: `.claude/skills/_shared/log-prefixes.md` §3 (Deepened) + §2 (Deepening) + §4 (↳ CORRECTION: Deepened). Do not change these prefixes without updating the registry and `/sync`; `/lint` check #29 flags drift.
+> **Drift coupling**: `/sync` Step 3e excludes entries starting with `"Deepened"` within 7 days of a stress test from drift detection. **Registry entry**: `.claude/skills/_shared/log-prefixes.md` §3 (Deepened) + §2 (Deepening) + §4 (↳ CORRECTION: Deepened). Do not change these prefixes without updating the registry and `/sync`; `/lint` check #29 flags drift.
 
 > **Failure states**: If the skill fails after 5a but before 5b → Log shows "Deepening... in progress" but section is unchanged; snapshot is unnecessary (thesis body intact). If it fails after 5b but before 5c → Log shows "Deepening... in progress" with section already rewritten; the verify-and-retry mechanism (above) will correct the Log entry. Both states are recoverable via snapshot. `/lint` #28 (partial write detection) flags the `"Deepening"` prefix as an indicator — if the corrective entry exists alongside it, lint should downgrade to Nice to Have.
 
@@ -138,8 +138,6 @@ Replace `Deepening [Section Name] — in progress` with `Deepened [Section Name]
 ## Phase 7: Update _hot.md
 
 Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
-
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain: append `YYYY-MM-DD: /deepen — [TICKER] [Section], key finding` to Active Research Thread only (skip compress/Previous), mark step ✅, then proceed to remaining sections. If starting or no chain, set Session Chain and apply full update below. **Stale-chain preservation** (before overwriting): if existing Session Chain has `Date:` ≠ today AND `Graph deferred: [N]` with N > 0, FIRST convert to Graph Debt per CLAUDE.md § Stale Chain — write `**⚠️ Graph debt**: [N] deferred from [stale-date] ([stale-skill-list]). Run /graph to capture.` below `*No active chain.*` (accumulate count and skill list with any pre-existing Graph Debt line rather than overwriting it). Only after preservation, overwrite the active-chain block with this skill as Step 1.
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: deepened [TICKER] [Section Name], key finding, and the logical next research step. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Recent Conviction Changes**: Add entry if conviction was changed or flagged for reassessment

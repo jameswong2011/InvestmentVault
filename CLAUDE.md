@@ -57,7 +57,7 @@ These changes represent investment decisions, not formatting — confirm with th
 6. **Check before creating** — before creating a new thesis or research note, search the vault for existing notes on that ticker/topic to avoid duplicates
 7. **Wikilinks are additive** — add new `[[wikilinks]]` freely; removing existing links requires explicit instruction because it breaks discoverability chains
 8. **Batch operation transparency** — skills that touch multiple files (`/sync`, `/ingest`, `/lint`) must report every file modified and what changed
-9. **`_hot.md` auto-create** — if `_hot.md` does not exist when a skill needs to update it, create it with sections: `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot`, `## Session Chain` (set to `*No active chain.*`). Use frontmatter: `date: YYYY-MM-DD`, `tags: [meta, hot-cache]`. Then proceed with the skill's normal `_hot.md` update
+9. **`_hot.md` auto-create** — if `_hot.md` does not exist when a skill needs to update it, create it with sections: `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot`. Use frontmatter: `date: YYYY-MM-DD`, `tags: [meta, hot-cache]`. Then proceed with the skill's normal `_hot.md` update
 
 ## Conventions
 
@@ -144,60 +144,14 @@ When compacting, preserve information in this priority order:
 4. Use defuddle for all web content extraction to keep notes clean
 5. After creating research notes, suggest which thesis notes should be updated
 
-## Session Chain Protocol
-
-Multi-skill workflow chains (User Guide §3) cause redundant `_graph.md` writes and `_hot.md` Active Research Thread thrashing when each skill independently reads/writes these files. The `## Session Chain` section in `_hot.md` coordinates skills within a chain.
-
-### Chain State (in `_hot.md`)
-```
-## Session Chain
-- **Scope**: [ticker | sector | vault-wide]
-- **Date**: YYYY-MM-DD
-- **Steps**: /skill1 ✅, /skill2 ✅, /skill3 (next)
-- **Graph deferred**: [count] — [summary of deferred changes]
-```
-When inactive: `*No active chain.*`
-
-When inactive with **Graph Debt** (deferred changes from a cleared chain, not yet captured):
-```
-*No active chain.*
-**⚠️ Graph debt**: [N] deferred from [YYYY-MM-DD] (/skill1, /skill2). Run `/graph` to capture.
-```
-Graph Debt persists across sessions until `/sync` (default/ticker mode) or `/graph` resolves it.
-
-### Rules for Participant Skills
-Every skill that updates `_hot.md` or `_graph.md` reads `## Session Chain` first:
-
-| Condition | Action |
-|-----------|--------|
-| Active chain, overlapping scope, same date | Join: defer graph write, append short thread line, mark step ✅ |
-| Active chain, non-overlapping scope | Convert old chain's deferred count to Graph Debt if > 0. Start new chain. |
-| No chain or stale date (≠ today) | Convert stale chain's deferred count to Graph Debt if > 0. Start new chain. If Graph Debt already present, warn in report: `⚠️ [N] graph changes uncaptured from [date]. Run /graph.` |
-
-Scope overlap: same ticker, ticker within chain's sector, both vault-wide, or either is vault-wide.
-
-**When joining a chain:**
-- **`_graph.md`**: SKIP update. Increment `Graph deferred` count. The finalizer captures changes from vault state.
-- **Active Research Thread**: Append only `YYYY-MM-DD: /[skill] — [one-line result]`. No compress/Previous rotation.
-- **Other `_hot.md` sections** (Recent Conviction Changes, Open Questions, etc.): update normally.
-
-**When starting a chain:** Set Scope, Date, this skill as Step 1, Graph deferred: 0. If Graph Debt exists, emit `⚠️ [N] graph changes uncaptured from [date]. Run /graph.` in the skill report and replace the Graph Debt line with the new chain state. Then proceed with full `_graph.md` and `_hot.md` updates as normal (first skill in a chain pays the full cost).
-
-### Chain Finalizers
-- **`/sync`** (default/ticker mode): Applies its own incremental graph update (naturally captures all deferred changes from vault state). Clears Session Chain to `*No active chain.*` **and removes any Graph Debt line**.
-- **`/sync all`**: Skips incremental graph update. If chain has `Graph deferred` > 0, **convert to Graph Debt** instead of discarding. Clears the active chain steps but the Graph Debt line persists until resolved by `/sync` (default/ticker) or `/graph`. If Graph Debt already exists from a prior chain, accumulate the counts.
-- **`/graph`**: Rebuilds from scratch (all deferred changes captured from vault state). Clears Session Chain to `*No active chain.*` **and removes any Graph Debt line**.
-
-### Stale Chain
-If Session Chain `Date` ≠ today, the chain crossed a session boundary. If `Graph deferred` > 0, **convert to Graph Debt** before clearing — write the deferred count, date, and skill names from the stale chain into the Graph Debt line. Then clear the chain steps and treat as no active chain.
-
-This prevents silent loss of deferred graph changes when a session ends mid-chain without a finalizer.
-
 ## Core Workflow Loop
-The primary vault workflow is a two-step ingest-propagate loop:
+The primary vault workflow is an ingest-propagate-graph loop:
 1. **Deposit** raw content into `_Inbox/` (web clips, Deep Research PDFs, CSVs, notes)
 2. **`/ingest`** processes `_Inbox/` into structured Research notes with wikilinks and thesis Log updates
-3. **`/sync`** propagates insights across all affected Theses, Sector Notes, Macro notes, and _hot.md
-4. **`/status`** executes conviction or status changes after research conclusions (e.g., `/status NVDA conviction medium→low`)
-5. **`/surface`** for periodic deep review (blind spots, attention allocation, decay alerts, opportunities)
-6. **`/lint`** for periodic health checks (structural, freshness, analytical)
+3. **`/sync`** propagates insights across all affected Theses, Sector Notes, Macro notes, and `_hot.md`
+4. **`/graph last`** reconciles `_graph.md` against the just-modified files (cheap when nothing changed, full rebuild when anything did)
+5. **`/status`** executes conviction or status changes after research conclusions (e.g., `/status NVDA conviction medium→low`)
+6. **`/surface`** for periodic deep review (blind spots, attention allocation, decay alerts, opportunities)
+7. **`/lint`** for periodic health checks (structural, freshness, analytical)
+
+**Metadata ownership**: `_graph.md` is owned exclusively by `/graph` (three modes: full rebuild, `/graph last`, `/graph [N]`). Research skills do not write to `_graph.md` — they create content and remind the user to run `/graph last` afterward. This eliminates cross-skill graph contention that was the source of most metadata edge cases.

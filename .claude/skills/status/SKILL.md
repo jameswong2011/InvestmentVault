@@ -70,17 +70,9 @@ If $ARGUMENTS matches the `reaffirm` pattern, skip to **Step 2R (Reaffirm Flow)*
 5. **Update _hot.md** (read first, then edit — do NOT touch Latest Sync or Sync Archive):
    - **Recent Conviction Changes**: Add entry: `- **[TICKER]**: conviction [level] reaffirmed — [rationale]`
 
-   > **Chain-aware (lightweight)**: Reaffirm is NOT a full chain participant — it does not write to the graph, so it cannot defer a graph update and is not counted in `Graph deferred`. But if a chain is active with scope overlapping this ticker, reaffirm's audit trail should still reach the Active Research Thread so the thread reflects the session's actual flow.
-   >
-   > Read `## Session Chain` in `_hot.md`:
-   > - **Active chain with overlapping scope (same ticker, ticker within chain's sector, or either is vault-wide)**: append `YYYY-MM-DD: /status — [TICKER] reaffirmed, drift window reset` to Active Research Thread only. Do NOT mark a new step in `Steps:` (reaffirm is not a graph-producing step). Do NOT change `Graph deferred:`. Do NOT apply the compress/Previous rotation — this is a short line, not a thread reset.
-   > - **Active chain with non-overlapping scope**: leave the chain untouched. Skip thread update (reaffirm is unrelated to the active work). Proceed normally with Recent Conviction Changes update above.
-   > - **No active chain, or stale chain (date ≠ today)**: skip thread update. Do NOT start a new chain for reaffirm (it is too lightweight to anchor one). If stale chain with `Graph deferred` > 0, leave the stale chain as-is — the next proper chain-participant skill will trigger conversion to Graph Debt per the CLAUDE.md protocol.
-
 6. **Report**:
    - **Reaffirmed**: [TICKER] conviction [level] maintained
    - **Drift window reset**: next /sync will anchor drift detection after this entry
-   - **Chain**: `thread-appended to active chain` | `no active chain (skipped)` | `non-overlapping scope (skipped)`
    - **No snapshot, sector, or graph changes**
 
 **Stop here — do not continue to Step 2 or beyond.**
@@ -238,8 +230,6 @@ Only runs if Step 5.1 set `edit_planned: true`. Apply the specific edit identifi
 ## Step 7: Update _hot.md
 
 Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
-
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain: append `YYYY-MM-DD: /status — [TICKER] [field] [old] → [new]` to Active Research Thread only (skip compress/Previous), mark step ✅, then proceed to remaining sections. If starting or no chain, set Session Chain and apply full update below. **Stale-chain preservation** (before overwriting): if existing Session Chain has `Date:` ≠ today AND `Graph deferred: [N]` with N > 0, FIRST convert to Graph Debt per CLAUDE.md § Stale Chain — write `**⚠️ Graph debt**: [N] deferred from [stale-date] ([stale-skill-list]). Run /graph to capture.` below `*No active chain.*` (accumulate count and skill list with any pre-existing Graph Debt line rather than overwriting it). Only after preservation, overwrite the active-chain block with this skill as Step 1.
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: [TICKER] [field] changed [old] → [new], and the logical next step. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Recent Conviction Changes**: Add entry: `- **[TICKER]**: [field] [old] → [new] — [rationale]`

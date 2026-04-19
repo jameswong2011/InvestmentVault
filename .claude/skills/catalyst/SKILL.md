@@ -87,19 +87,6 @@ tags: [meta, catalyst-calendar]
 **Cross-Thesis Events**
 [Events affecting 3+ theses, with impact assessment for each]
 
-## Phase 5: Chain Audit (chain-aware, lightweight participant)
+## Phase 5: Report
 
-`/catalyst` does not write to `_graph.md` and does not anchor future research. But when a chain is active, the catalyst regeneration belongs in the audit trail so the session flow is visible.
-
-Read `## Session Chain` in `_hot.md`:
-
-- **Active chain (any scope — catalyst is vault-wide, which overlaps every scope per CLAUDE.md)**: append `YYYY-MM-DD: /catalyst — [N] events tracked, [stale_count] stale, [no_catalyst_count] no-catalyst theses` to Active Research Thread only. Mark step ✅ in `Steps:`. Do NOT increment `Graph deferred:` (catalyst does not mutate `_graph.md`). Do NOT apply compress/Previous rotation — this is a short line, not a thread reset.
-- **No active chain, or stale chain (date ≠ today)**: skip — no thread update. Do NOT start a new chain (catalyst is a periodic reporting tool, not anchoring future work). If stale chain has `Graph deferred > 0`, leave it untouched — the next proper chain-participant skill will trigger conversion to Graph Debt per the CLAUDE.md protocol.
-
-> **Pattern source**: Mirrors `/brief` (read-heavy chain participant) and `/status reaffirm` (lightweight thread-only audit). Difference from `/brief`: `/catalyst` does not produce a research note that needs graph indexing, so `Graph deferred` is unchanged. Difference from reaffirm: `/catalyst` regenerates a vault artifact (`_catalyst.md`) that the user expects to see in the audit trail, so it marks step ✅.
-
-**Word cap**: If Active Research Thread was modified, check total `_hot.md` word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
-
-## Phase 6: Report
-
-Report to user: next 2 weeks of catalysts, any dangerous clusters, and the list of theses with no catalyst (these need attention or pruning). If the chain audit fired (Phase 5), confirm the step was marked ✅ in `_hot.md` Session Chain.
+Report to user: next 2 weeks of catalysts, any dangerous clusters, and the list of theses with no catalyst (these need attention or pruning).

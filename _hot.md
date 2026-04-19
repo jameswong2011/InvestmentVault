@@ -46,6 +46,3 @@ tags: [meta, hot-cache]
 - [ ] Run /lint to establish vault health baseline
 - [ ] Run /surface to discover cross-thesis connections
 - [ ] Process any pending Deep Research exports through /ingest
-
-## Session Chain
-*No active chain.*

@@ -178,5 +178,3 @@ Include validation results in the Step 8 report.
   - Reverse index corrections: [count]
   - Cluster changes: [list any new or dissolved clusters]
 - **No content files were modified** — graph rebuild only
-
-**Chain finalization**: Read `_hot.md` and clear `## Session Chain` to `*No active chain.*` — **removing any Graph Debt line**. The full rebuild captures all deferred changes from vault state, resolving both the active chain's deferred count and any accumulated Graph Debt.
