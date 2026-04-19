@@ -43,14 +43,14 @@ Reading all ~40 thesis notes in full will exceed context limits when catalyst ex
 If `_catalyst.md` already exists, snapshot it before overwriting:
 ```bash
 mkdir -p _Archive/Snapshots
-cp "_catalyst.md" "_Archive/Snapshots/_catalyst (pre-catalyst YYYY-MM-DD-HHMM).md"
+cp "_catalyst.md" "_Archive/Snapshots/_catalyst (pre-catalyst YYYY-MM-DD-HHMMSS).md"
 ```
 Then read the snapshot and add to its frontmatter:
 ```yaml
 snapshot_of: "[[_catalyst]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: catalyst
-snapshot_batch: catalyst-YYYY-MM-DD-HHMM
+snapshot_batch: catalyst-YYYY-MM-DD-HHMMSS
 ```
 
 Save/update the catalyst calendar at `_catalyst.md` (overwrite each run — this is a regenerated utility file like `_hot.md`, not a research note):

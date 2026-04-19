@@ -147,30 +147,30 @@ The batch has five sequential stages. Each stage completes fully before the next
 
 ### Stage 1: Snapshot ALL Affected Files
 
-Generate a single batch ID for the entire prune run:
+Generate a single batch ID for the entire prune run (6-digit second-precision prevents same-minute batch collisions across skills):
 ```bash
-HHMM=$(date +%H%M)
+HHMMSS=$(date +%H%M%S)
 mkdir -p _Archive/Snapshots
 ```
-Use `prune-YYYY-MM-DD-$HHMM` as the `snapshot_batch` value for ALL snapshots below.
+Use `prune-YYYY-MM-DD-$HHMMSS` as the `snapshot_batch` value for ALL snapshots below.
 
 **Thesis snapshots** — one per approved closure AND one per approved upgrade:
 ```bash
-cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-prune YYYY-MM-DD-HHMM).md"
+cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-prune YYYY-MM-DD-HHMMSS).md"
 ```
 Read each newly created snapshot and add to its frontmatter:
 ```yaml
 snapshot_of: "[[Theses/TICKER - Company Name]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: prune
-snapshot_batch: prune-YYYY-MM-DD-HHMM
+snapshot_batch: prune-YYYY-MM-DD-HHMMSS
 ```
 
 **Sector note snapshots** — one per affected sector note (any sector that will have a thesis removed or a conviction level updated). Resolve affected sectors using the canonical procedure **`.claude/skills/_shared/sector-resolution.md`** for each approved thesis's `sector:` frontmatter. Deduplicate the resolved set, then snapshot each unique sector note:
 ```bash
-cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-prune YYYY-MM-DD-HHMM).md"
+cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-prune YYYY-MM-DD-HHMMSS).md"
 ```
-Read each newly created snapshot and add `snapshot_of: "[[Sectors/Sector Name]]"`, `snapshot_date`, `snapshot_trigger: prune`, `snapshot_batch: prune-YYYY-MM-DD-HHMM` to its frontmatter.
+Read each newly created snapshot and add `snapshot_of: "[[Sectors/Sector Name]]"`, `snapshot_date`, `snapshot_trigger: prune`, `snapshot_batch: prune-YYYY-MM-DD-HHMMSS` to its frontmatter.
 
 > If `match_confidence` is `none` for a thesis's sector value, emit the contract's no-match warning suffixed with `Skipping sector snapshot for [TICKER].` — sector update for that thesis will also be skipped in Stage 4. If `match_confidence` is `normalized` or `substring` for any thesis, collect the contract's `log_message` for the final report.
 
@@ -181,14 +181,14 @@ Read each newly created snapshot and add `snapshot_of: "[[Sectors/Sector Name]]"
 Create a manifest note that persists if the session crashes mid-execution. This is the discovery mechanism for partial prune operations — without it, a session crash between Stages 2–5 leaves the vault in a mixed state that requires `/lint` to diagnose.
 
 ```bash
-# Reuse the HHMM from Stage 1
+# Reuse the HHMMSS from Stage 1
 ```
 
-Write `_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md`:
+Write `_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS).md`:
 ```yaml
 ---
 type: prune-manifest
-batch: prune-YYYY-MM-DD-HHMM
+batch: prune-YYYY-MM-DD-HHMMSS
 status: in-progress
 date: YYYY-MM-DD
 ---
@@ -202,7 +202,7 @@ Body — list every intended action:
 > Recovery: `/rollback [any ticker below]` → select `(pre-prune)` snapshot → cascade (a) to undo all completed actions.
 > Then delete this manifest and re-run `/prune`.
 >
-> **If this file's frontmatter says `status: completed`**, the prune finished but Stage 5 manifest cleanup did not. Safe to delete manually (e.g., `rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md"`). `/clean` also surfaces these under "Completed prune manifests — safe to delete manually".
+> **If this file's frontmatter says `status: completed`**, the prune finished but Stage 5 manifest cleanup did not. Safe to delete manually (e.g., `rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS).md"`). `/clean` also surfaces these under "Completed prune manifests — safe to delete manually".
 
 ## Intended Closures
 - TICKER1 - Company1
@@ -237,8 +237,8 @@ Do NOT update sector notes here — batched in Stage 4. Do NOT write `.graph_inv
 **If a closure fails mid-stage**: Report which closures completed and which failed. All pre-prune snapshots from Stage 1 are available for recovery. The batch manifest from Stage 1.5 persists and records all intended actions:
 ```
 ⚠️ Closure failed for [TICKER] at step [N]. Completed: [list]. Failed: [list]. Pending: [list].
-All pre-prune snapshots available (batch: prune-YYYY-MM-DD-HHMM).
-Batch manifest: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM)]]
+All pre-prune snapshots available (batch: prune-YYYY-MM-DD-HHMMSS).
+Batch manifest: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS)]]
 To recover: /rollback [any affected ticker] → select (pre-prune) snapshot → choose cascade (a) to restore all.
 Sector notes have NOT been modified — no sector inconsistency from this partial failure.
 After recovery, delete the batch manifest.
@@ -355,11 +355,11 @@ All stages completed successfully. The cleanup is a verify-before-delete sequenc
 
 2. **Verify the flip landed**: re-read the manifest frontmatter and confirm `status: completed` is present AND `status: in-progress` is absent.
    - **On verification success** → proceed to step 3.
-   - **On verification failure** (flip Edit silently missed): do NOT attempt the rm. Report `❌ Manifest status flip failed: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM)]] is still marked in-progress despite successful prune completion. DO NOT run /rollback — the prune closures/upgrades/sector updates/downstream propagation have all succeeded; rolling back would undo valid work. Manual fix: open the manifest and replace status: in-progress with status: completed, then rm the file. Alternatively, delete the manifest directly — /lint #36 flagging it as Critical is a false alarm in this specific case.` Do NOT attempt step 3; exit the skill with this explicit warning.
+   - **On verification failure** (flip Edit silently missed): do NOT attempt the rm. Report `❌ Manifest status flip failed: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS)]] is still marked in-progress despite successful prune completion. DO NOT run /rollback — the prune closures/upgrades/sector updates/downstream propagation have all succeeded; rolling back would undo valid work. Manual fix: open the manifest and replace status: in-progress with status: completed, then rm the file. Alternatively, delete the manifest directly — /lint #36 flagging it as Critical is a false alarm in this specific case.` Do NOT attempt step 3; exit the skill with this explicit warning.
 
 3. **Delete the manifest**:
    ```bash
-   rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md"
+   rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS).md"
    ```
 
 4. **Delete failure handling**: If the `rm` fails (permission, filesystem error) after a successful status flip, warn but do not abort — the manifest is now `status: completed` so `/clean` Step 2a classifies it as a safe-to-delete completed manifest and `/lint` #36 emits Nice to Have (not Critical). The user or a future `/clean`/manual `rm` can clear it.

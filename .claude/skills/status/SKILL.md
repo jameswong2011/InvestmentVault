@@ -100,12 +100,12 @@ Confirm? (y/n)
 
 ### 3.0: Generate batch ID (always)
 
-Generate `HHMM` once at the start of this step:
+Generate `HHMMSS` once at the start of this step (6-digit second-precision prevents same-minute batch collisions across skills):
 ```bash
-HHMM=$(date +%H%M)
+HHMMSS=$(date +%H%M%S)
 mkdir -p _Archive/Snapshots
 ```
-Use `status-YYYY-MM-DD-$HHMM` as the `snapshot_batch` value across **all** snapshots created in this run (thesis snapshot in Step 3.1, sector note snapshot in Step 5a). Reusing a single batch ID lets `/rollback` cascade detection restore both files atomically as a single operation.
+Use `status-YYYY-MM-DD-$HHMMSSSS` as the `snapshot_batch` value across **all** snapshots created in this run (thesis snapshot in Step 3.1, sector note snapshot in Step 5a). Reusing a single batch ID lets `/rollback` cascade detection restore both files atomically as a single operation.
 
 > **Draft→active note**: The batch ID is still generated even when Step 3.1 is skipped — Step 5a needs it for the sector note snapshot.
 
@@ -114,7 +114,7 @@ Use `status-YYYY-MM-DD-$HHMM` as the `snapshot_batch` value across **all** snaps
 Create a pre-change snapshot (conviction and most status changes are Tier A edits on the thesis body):
 
 ```bash
-cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-status YYYY-MM-DD-$HHMM).md"
+cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-status YYYY-MM-DD-$HHMMSS).md"
 ```
 
 Read the newly created snapshot, then add to its frontmatter:
@@ -122,7 +122,7 @@ Read the newly created snapshot, then add to its frontmatter:
 snapshot_of: "[[Theses/TICKER - Company Name]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: status
-snapshot_batch: status-YYYY-MM-DD-HHMM
+snapshot_batch: status-YYYY-MM-DD-HHMMSS
 ```
 
 **Exception**: Skip the thesis snapshot for `status: draft→active` (no analytical content is being changed on the thesis body — only the status frontmatter field is flipped). The sector note snapshot in Step 5a still runs, because Step 5b modifies the sector note even for this transition (adding the thesis to Active Theses).
@@ -213,14 +213,14 @@ If `edit_planned: false` after evaluating: skip both Step 5a and Step 5b. Report
 
 Only runs if Step 5.1 set `edit_planned: true`. Before modifying the sector note, snapshot it:
 ```bash
-cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-status YYYY-MM-DD-$HHMM).md"
+cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-status YYYY-MM-DD-$HHMMSS).md"
 ```
 Read the newly created snapshot, then add to its frontmatter:
 ```yaml
 snapshot_of: "[[Sectors/Sector Name]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: status
-snapshot_batch: status-YYYY-MM-DD-HHMM
+snapshot_batch: status-YYYY-MM-DD-HHMMSS
 ```
 Reuse the batch ID generated in Step 3.0. The snapshot runs for every transition where Step 5.1 determined an edit is required — including `draft→active`, where the thesis snapshot is skipped but the sector note IS being modified. Without this snapshot, a corrupted Edit to the sector note would leave no recovery path.
 
@@ -362,9 +362,9 @@ After write, verify the file exists and contains the expected entries. Include i
 
 - **Change applied**: [TICKER] [field] [old] → [new]
 - **Rationale**: [from $ARGUMENTS]
-- **Thesis snapshot**: `[[_Archive/Snapshots/TICKER - Company Name (pre-status YYYY-MM-DD-HHMM)]]` or "skipped (draft→active)"
-- **Sector note snapshot**: `[[_Archive/Snapshots/Sector Name (pre-status YYYY-MM-DD-HHMM)]]` OR "skipped (no matching sector note)" OR "skipped (no edit needed — sector note state already reflects transition)"
-- **Batch ID**: `status-YYYY-MM-DD-HHMM` (cascade-restore with /rollback if needed)
+- **Thesis snapshot**: `[[_Archive/Snapshots/TICKER - Company Name (pre-status YYYY-MM-DD-HHMMSS)]]` or "skipped (draft→active)"
+- **Sector note snapshot**: `[[_Archive/Snapshots/Sector Name (pre-status YYYY-MM-DD-HHMMSS)]]` OR "skipped (no matching sector note)" OR "skipped (no edit needed — sector note state already reflects transition)"
+- **Batch ID**: `status-YYYY-MM-DD-HHMMSS` (cascade-restore with /rollback if needed)
 - **Sector Note updated**: [sector name] — [what changed] OR "no edit needed (dry-run determined current state already matches the transition)"
 - **Graph reminder**: `→ Run /graph last` (closure only — conviction/non-closure changes have no graph impact). For closures the invalidation list from Step 7.6 is unconsumed until `/graph last` runs; a stale list accumulates across successive closures but does no harm beyond slightly wider re-extraction on the next `/graph last`.
 - **Archived** (closure only): `[[_Archive/TICKER - Company Name]]` or `⚠️ Archive move failed — see Step 7.5 output`

@@ -109,7 +109,7 @@ If multiple snapshots match, present them in a table and ask the user to choose:
 
 Check whether other snapshots were created by the same operation (indicating a multi-file mutation like `/sync` that should be rolled back atomically):
 
-1. Extract `snapshot_batch:` from the selected snapshot's frontmatter. If `snapshot_batch:` is absent (legacy snapshot created before this field was introduced), fall back to matching on `snapshot_trigger:` + date portion of `snapshot_date:` (`YYYY-MM-DD`, ignoring `-HHMM` suffix).
+1. Extract `snapshot_batch:` from the selected snapshot's frontmatter. If `snapshot_batch:` is absent (legacy snapshot created before this field was introduced), fall back to matching on `snapshot_trigger:` + date portion of `snapshot_date:` (`YYYY-MM-DD`, ignoring any time suffix). **Both `-HHMM` (pre-HHMMSS-standardization legacy snapshots) and `-HHMMSS` (current 6-digit format) are recognized** — match on the `YYYY-MM-DD` prefix only when comparing across formats.
 2. Search `_Archive/Snapshots/` for other snapshots with matching `snapshot_batch:` value (or matching trigger + date in fallback mode). Batch matching is operation-precise — same-day repeat operations (e.g., two `/sync` runs on the same day) get distinct batch IDs and will not cross-match.
 3. If matches found, present them:
 
@@ -186,21 +186,21 @@ Before overwriting, snapshot the CURRENT version so the rollback itself is rever
 **If the original file exists** (normal case):
 ```bash
 mkdir -p _Archive/Snapshots
-cp "[original file path]" "_Archive/Snapshots/[Name] (pre-rollback YYYY-MM-DD-HHMM).md"
+cp "[original file path]" "_Archive/Snapshots/[Name] (pre-rollback YYYY-MM-DD-HHMMSS).md"
 ```
 Read the newly created safety snapshot and add to its frontmatter:
 ```yaml
 snapshot_of: "[[original file path]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: rollback
-snapshot_batch: rollback-YYYY-MM-DD-HHMM
+snapshot_batch: rollback-YYYY-MM-DD-HHMMSS
 ```
-> **Batch ID**: Generate `HHMM` once (e.g., via `date +%H%M`). Reuse this `snapshot_batch` value for the Step 6 cleanup snapshot if one is created.
+> **Batch ID**: Generate `HHMMSS` once (via `date +%H%M%S`). 6-digit second-precision prevents same-minute snapshot batch collisions across skills. Reuse this `snapshot_batch` value for the Step 6 cleanup snapshot if one is created.
 
 **If the original file does not exist** (archived/closed — detected in Step 2):
 Skip the safety snapshot — the current state is "file absent", preserved by the pre-archive snapshot (e.g., pre-prune or pre-status snapshot). Log: `Safety snapshot skipped — original file does not exist at [path].`
 
-**Cascade batch mode**: When restoring multiple files (Step 2.5 option a), complete Step 4 for ALL files in the restore set before proceeding to Step 5. This guarantees that every file has a safety snapshot before any restoration begins. If a safety snapshot fails to create for any file, report the failure and **do not proceed to Step 5** — no restorations should begin until all safety nets are in place. Use the same `snapshot_batch: rollback-YYYY-MM-DD-HHMM` value across all safety snapshots in the batch.
+**Cascade batch mode**: When restoring multiple files (Step 2.5 option a), complete Step 4 for ALL files in the restore set before proceeding to Step 5. This guarantees that every file has a safety snapshot before any restoration begins. If a safety snapshot fails to create for any file, report the failure and **do not proceed to Step 5** — no restorations should begin until all safety nets are in place. Use the same `snapshot_batch: rollback-YYYY-MM-DD-HHMMSS` value across all safety snapshots in the batch.
 
 ## Step 5: Restore
 
@@ -210,7 +210,7 @@ Skip the safety snapshot — the current state is "file absent", preserved by th
 4. Append a Log entry to the restored note (preserving the audit trail going forward):
    ```
    ### YYYY-MM-DD
-   - ROLLBACK to snapshot (YYYY-MM-DD, pre-[trigger]). [N] log entries from [date range] lost. Safety snapshot: [[_Archive/Snapshots/Name (pre-rollback YYYY-MM-DD-HHMM)]]
+   - ROLLBACK to snapshot (YYYY-MM-DD, pre-[trigger]). [N] log entries from [date range] lost. Safety snapshot: [[_Archive/Snapshots/Name (pre-rollback YYYY-MM-DD-HHMMSS)]]
    ```
 
 ### Cascade failure handling
@@ -221,7 +221,7 @@ Skip the safety snapshot — the current state is "file absent", preserved by th
 Restored: [list of files successfully restored]
 Failed: [file that failed + error]
 Not attempted: [remaining files in the set]
-All pre-rollback safety snapshots exist (batch: rollback-YYYY-MM-DD-HHMM).
+All pre-rollback safety snapshots exist (batch: rollback-YYYY-MM-DD-HHMMSS).
 To undo restored files: /rollback [any restored ticker] → select (pre-rollback) snapshot → cascade (a).
 To retry failed files: /rollback [failed ticker] → select the original (pre-[trigger]) snapshot.
 ```
@@ -242,9 +242,9 @@ find _Archive/ -maxdepth 1 -name "TICKER - *.md" -type f
 ```
 If found, move it to Snapshots to prevent duplication (preserves the closure audit trail):
 ```bash
-mv "_Archive/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (archived pre-rollback YYYY-MM-DD-HHMM).md"
+mv "_Archive/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (archived pre-rollback YYYY-MM-DD-HHMMSS).md"
 ```
-Add `snapshot_of`, `snapshot_date: YYYY-MM-DD`, `snapshot_trigger: rollback-cleanup`, `snapshot_batch: rollback-YYYY-MM-DD-HHMM` (reuse the batch ID from Step 4) to its frontmatter.
+Add `snapshot_of`, `snapshot_date: YYYY-MM-DD`, `snapshot_trigger: rollback-cleanup`, `snapshot_batch: rollback-YYYY-MM-DD-HHMMSS` (reuse the batch ID from Step 4) to its frontmatter.
 
 ### Graph update deferred
 
@@ -269,7 +269,7 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by 
 ### For normal rollbacks (Steps 4–6 executed)
 
 - **Restored**: [[original file path]] from snapshot dated YYYY-MM-DD
-- **Safety snapshot**: [[_Archive/Snapshots/Name (pre-rollback YYYY-MM-DD-HHMM)]]
+- **Safety snapshot**: [[_Archive/Snapshots/Name (pre-rollback YYYY-MM-DD-HHMMSS)]]
 - **Sections reverted**: [list]
 - **Log entries lost**: [count] — preserved in safety snapshot
 - **Side effects**: [sector note updated / graph updated / conviction reverted]

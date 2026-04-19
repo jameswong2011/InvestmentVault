@@ -14,7 +14,53 @@ Create a comprehensive thesis note for $ARGUMENTS.
 Before creating anything, search the vault for existing notes on this ticker/topic. Active-thesis detection must use a **prefix glob**, not content grep — short tickers (e.g., `A` for Agilent, `T` for AT&T, `U` for Unity) match too many filenames under content grep, producing false-positive duplicate warnings that block legitimate thesis creation.
 
 1. **Active thesis check (prefix glob)**: `Glob Theses/TICKER - *.md`. If any file matches, an active thesis already exists — stop and suggest `/deepen TICKER` instead. Report the matching filename.
-2. **Archived thesis check (prefix glob)**: `Glob _Archive/TICKER - *.md` (non-recursive — snapshots live under `_Archive/Snapshots/` and must not match). If found, warn: `⚠️ Archived thesis found: [[_Archive/TICKER - Company Name]]. Review the closure rationale before recreating. Use /rollback TICKER to restore the previous thesis instead?` Wait for user confirmation before proceeding.
+2. **Archived thesis check (prefix glob)** — Tier 3 confirmation gate: `Glob _Archive/TICKER - *.md` (non-recursive — snapshots live under `_Archive/Snapshots/` and must not match). If one or more files match:
+
+   a. **Read the archived thesis(es)** — extract from each: filename, last Log entry (typically the closure rationale), `conviction:` at closure, `status:` (should be `closed`).
+
+   b. **Present a structured prompt — wait for explicit user choice. Do NOT proceed silently.**
+
+   ```
+   ⚠️ Archived thesis exists for TICKER:
+     - [[_Archive/TICKER - Old Company Name]]
+       closed: [date] · conviction at closure: [level]
+       closure rationale: [last Log entry, truncated to 1 line]
+
+   Creating a new thesis at Theses/TICKER - [proposed-name].md will produce
+   TWO distinct files for the same ticker. Downstream skills (/sync, /graph,
+   /catalyst) operate on Theses/* and ignore _Archive/* — the prior analysis,
+   Log audit trail, and conviction journey become invisible to the new thesis.
+
+   Options:
+     (a) /rollback TICKER  — RECOMMENDED. Restores the prior thesis with
+         its full Log history. Use this if the original thesis is being
+         reopened (rather than starting fresh on the same ticker).
+         The rollback flow handles status: closed → active and re-attaches
+         the thesis to its sector note.
+
+     (b) Proceed with new thesis under a DIFFERENT name suffix to make the
+         dual-file state intentional and visible (e.g., the prior thesis
+         was "TICKER - Old Brand" and you want "TICKER - New Strategy").
+         Provide an explicit alternate name. The archived file is preserved.
+
+     (c) Proceed with the proposed name, accepting that two files for the
+         same ticker will exist (one in Theses/, one in _Archive/) and that
+         the archived analysis is being deliberately abandoned. Useful only
+         if the prior thesis is irrelevant to the new investment case.
+         The archived file is preserved.
+
+     (d) Cancel.
+
+   Confirm (a/b/c/d):
+   ```
+
+   c. **Branch on user choice:**
+   - **(a)**: Stop the skill. Output: `→ Run: /rollback TICKER` and exit. Do not create any new thesis. The user runs `/rollback` separately.
+   - **(b)**: Re-prompt for the alternate company name. Compute the new filename `Theses/TICKER - [alternate-name].md`. Re-run Step 1.1 (active thesis check) against the alternate name to ensure no live-file collision. Then proceed to Step 2 with the alternate name.
+   - **(c)**: Proceed to Step 2 with the originally proposed name. Add a one-line caveat to the new thesis's initial Log entry: `Initial thesis created. Conviction: [level] — [rationale]. Note: prior archived thesis at [[_Archive/TICKER - Old Name]] retained for reference but not connected to this thesis.`
+   - **(d)**: Stop the skill silently.
+
+   d. **Multiple archived files** (rare — typically caused by re-closure with timestamp suffix per `/status` Step 7.5a option (a) or (b)): list all matches in the prompt above. The same options apply; the user's "prior archived thesis" reference in option (c)'s log entry should wikilink the most recent archive (highest `closed:` date in frontmatter, or filename timestamp if frontmatter absent).
 3. **Research context grep (content search is appropriate here)**: Grep `Research/` for the ticker string to surface relevant existing research that the new thesis should link to. This is informational only — does not block creation. Prefer frontmatter `ticker: TICKER` match and `tags:` containing the ticker as whole-word matches over body-text mentions to keep short-ticker false positives out of the context set.
 
 ## Step 2: Vault Research

@@ -21,6 +21,7 @@ Parse $ARGUMENTS to determine mode:
 
 1. **Fetch and extract** the content from the URL. Use `defuddle` for web URLs when available, otherwise use WebFetch.
 2. Proceed to **Processing Pipeline** (Step 1) with the extracted content.
+3. **Post-write verification gate** (mandatory): after Processing Pipeline writes the research note, re-read it and apply the verification checks listed under `Post-write verification` below. URL ingest is HIGH-RISK for silent content corruption (paywalls, CAPTCHAs, anti-bot pages return non-error content that looks valid until you read it) — content-quality checks block on failure for this mode.
 
 ## Mode B: Local File Ingest
 
@@ -30,6 +31,7 @@ Parse $ARGUMENTS to determine mode:
    - `.csv` files: Read and interpret the tabular data
    - Other formats: Attempt to read as text
 2. Proceed to **Processing Pipeline** (Step 1) with the extracted content.
+3. **Post-write verification gate** (mandatory): after Processing Pipeline writes the research note, re-read it and apply the verification checks listed under `Post-write verification` below. PDFs block on content-quality failure (PDF extraction can return image-only or scan-only content that has no text). Manual `.md`/`.csv`/`.txt` sources receive advisory-only content-quality logs (the user created the source, so they own the content quality).
 
 ## Mode C: Batch Inbox Processing
 
@@ -51,15 +53,53 @@ Parse $ARGUMENTS to determine mode:
 
 ### Post-write verification
 
-Re-read the just-written research note and check:
+Re-read the just-written research note and check, in order:
+
+**Structural checks (block on failure)**:
 1. YAML frontmatter parses (has opening `---` and closing `---`, valid key-value lines between).
 2. Required frontmatter fields present: `date:`, `tags:`, `source:`, `source_type:`.
 3. Body is non-empty and contains at least one `## ` section header.
 4. Last non-empty line does not end mid-sentence (doesn't terminate in a conjunction, preposition, comma, or opening bracket).
 
-If any check fails: do NOT move the source file. Report `⚠️ Partial-write detected for [[Research/filename]] — source [[_Inbox/filename]] left in place for reprocessing. Failure: [specific check that failed]. Delete the partial note and re-run /ingest, or complete the note manually.`
+**Content-quality checks** (NEW — block on failure for URL/PDF source types; advisory for manual local files):
 
-This verify-before-commit pattern keeps the source file in `_Inbox/` as the authoritative "needs processing" marker until a complete research note exists. Partial notes are surfaced rather than silently committed.
+5. **Minimum body word count**: body (excluding frontmatter, fenced code blocks, and section headers) is at least **150 words**. Below that threshold, the fetch likely captured a paywall, error page, or near-empty redirect rather than substantive content. Most legitimate articles, transcripts, and reports easily clear this floor.
+
+6. **Anti-bot / paywall sentinel detection**: scan the body for any of the following case-insensitive token sequences. Match indicates the fetch hit a wall, not the article:
+   - `subscribe to continue`, `subscribers only`, `become a member`, `paywall`
+   - `please enable javascript`, `enable javascript to view`
+   - `verify you are a human`, `verify you are human`, `complete the captcha`, `cloudflare protection`, `prove you're not a robot`
+   - `access denied`, `403 forbidden`, `404 not found`, `page not found`
+   - `sign in to read`, `log in to continue`, `register to read`, `create a free account to`
+   - `cookie consent required`, `accept cookies to continue`
+   - body contains ONLY a single line of generic site navigation (e.g., `Home  About  Contact`) — heuristic: <50 words AND no `## ` section beyond frontmatter
+
+7. **Section structural minimum**: at least 2 of the 4 expected body sections (`## Thesis Delta`, `## Evidence`, `## Contradiction Check`, `## Source Excerpts`) must contain non-empty content. A note with only stub headers is structurally complete but analytically empty — extraction failed.
+
+8. **Source-type signature mismatch** (advisory):
+   - `source_type: earnings` should contain at least one quarterly-period token (`Q1`, `Q2`, `Q3`, `Q4`, or `FY20XX`) AND a numeric currency token (e.g., `$`, `revenue of`, `million`, `billion`). If absent, log advisory: `ℹ️ Earnings note lacks period/financial tokens — content may be off-topic.`
+   - `source_type: analyst-report` should contain a price target or rating token (`PT`, `target price`, `Buy`, `Sell`, `Hold`, `Overweight`, `Underweight`). If absent, log advisory.
+
+**Failure handling**:
+- **Structural failure (1-4)**: do NOT move the source file. Report `⚠️ Partial-write detected for [[Research/filename]] — source [[_Inbox/filename]] left in place for reprocessing. Failure: [specific check that failed]. Delete the partial note and re-run /ingest, or complete the note manually.`
+
+- **Content-quality failure (5-7)** for URL ingest (Mode A) or PDF ingest (Mode B): do NOT move the source file. **DELETE the just-written research note** (it's contaminated, not partial — re-running with the same source would repeat the failure). Report:
+  ```
+  ⚠️ Content-quality gate FAILED for [URL or path] — fetch likely returned [paywall | CAPTCHA | empty page | wrong content].
+    Triggered check: [specific check, e.g., "#5 body word count = 47 (< 150)" or "#6 detected sentinel: 'subscribe to continue'"]
+  Action taken:
+    - Research note NOT created (would propagate corrupted content via /sync).
+    - Source [_Inbox/filename or URL] retained — re-run /ingest after resolving access (login, alternate URL, manual download).
+  Diagnostics:
+    - Body length captured: [N] words
+    - First 200 chars of body: [excerpt for user to verify the fetch contents]
+  ```
+
+- **Content-quality failure (5-7)** for local manual files (Mode B for `.md`/`.csv`/`.txt` sources, where the user explicitly created the source): write the research note as-is, but flag advisory: `ℹ️ Content-quality threshold not met (#[N]: [details]). Note created because source is a manually-curated local file, but body may be sparse — review before /sync propagates.` Do not block.
+
+- **Source-type signature mismatch (#8)**: never blocks; always advisory. Logged in the report.
+
+This verify-before-commit pattern keeps the source file in `_Inbox/` as the authoritative "needs processing" marker until a complete research note exists. Content-quality checks specifically protect against silent semantic corruption — the most damaging failure mode because corrupt research propagates through `/sync` into thesis Log entries before any human reviews it.
 
 ---
 
@@ -102,11 +142,14 @@ source_type: [earnings|analyst-report|news|deep-dive|data|web-clip]
 
 ### Step 4: Report
 For each processed item, report:
-- Research note created: `[[Research/filename]]`
+- Research note created: `[[Research/filename]]` OR **`❌ rejected — content-quality gate failed (see triggered check)`** for blocked URL/PDF ingests
 - Contradictions found: [any insights that challenge existing convictions]
 - **Theses requiring `/sync`**: [list tickers whose notes should be updated with this research]
 - **Sector Notes requiring `/sync`**: [list sectors that should incorporate this research]
+- **Content-quality advisories** (if any non-blocking failures from #5–#8 fired on local files): list the specific check + advisory message
 
 If batch mode, end with:
 - Total items processed: X
+- **Content-quality blocks** (URL/PDF only): Y items rejected before write — see per-item details above. Re-run `/ingest` after resolving the access issue.
+- **Source-type advisories**: Z items had signature mismatch (#8) — content may be off-topic for the declared `source_type`. Review before `/sync`.
 - **Run `/sync` to propagate these insights to affected theses, sector notes, and macro notes.** `/sync` will also update `_graph.md` with the new research notes.

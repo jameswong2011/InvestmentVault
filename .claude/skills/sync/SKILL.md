@@ -22,12 +22,18 @@ Parse `$ARGUMENTS` for mode:
 
 ## Watermark
 
-Change detection uses `.last_sync` as the timestamp watermark. Touched at the end of every sync (Step 7), so `find -newer .last_sync` captures exactly the files changed since the last run.
+Change detection uses `.last_sync` as the timestamp watermark.
+
+**Touch policy by mode** (Step 7 enforces):
+- **`/sync` (default)**: touch `.last_sync` at end of run. The watermark advances to "now" so the next default sync's `find -newer .last_sync` captures only files changed after this run.
+- **`/sync all`**: touch `.last_sync` at end of run, AND write `.sync_all_fresh` marker (per Step 7).
+- **`/sync TICKER`**: **do NOT touch `.last_sync`**. Ticker-scoped mode operates on a bounded subset (one thesis + its file-direct adjacency) and explicitly ignores the watermark for change detection. Advancing the watermark would silently mark unrelated changes (other theses, macros, sectors modified before this run) as "synced" when ticker-scoped mode never read them. The next default `/sync` would then miss those propagation paths because `find -newer .last_sync` skips them.
 
 If `.last_sync` does not exist (first run), create it with an epoch timestamp and treat all files as changed:
 ```bash
 touch -t 197001010000 .last_sync
 ```
+> **First-run exception for `/sync TICKER`**: if `.last_sync` is absent, ticker-scoped mode also creates the epoch placeholder so subsequent default `/sync` runs have a baseline. Creating an epoch file is not the same as advancing it — the watermark stays maximally permissive ("treat everything as changed since 1970") so the next default `/sync` re-evaluates the full vault.
 
 `/sync` never reads or writes `_graph.md`'s `date:` frontmatter — graph timing is `/graph`'s concern, not `/sync`'s.
 
@@ -192,16 +198,16 @@ Classify proposed edits by tier:
 If any Tier A edits are planned for a thesis:
 1. ```bash
    mkdir -p _Archive/Snapshots
-   cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-sync YYYY-MM-DD-HHMM).md"
+   cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-sync YYYY-MM-DD-HHMMSS).md"
    ```
 2. Read the newly created snapshot, then add to its frontmatter:
    ```yaml
    snapshot_of: "[[Theses/TICKER - Company Name]]"
    snapshot_date: YYYY-MM-DD
    snapshot_trigger: sync
-   snapshot_batch: sync-YYYY-MM-DD-HHMM
+   snapshot_batch: sync-YYYY-MM-DD-HHMMSS
    ```
-   > **Batch ID**: Generate `HHMM` once at the start of the snapshot phase. Reuse the same `snapshot_batch` value across ALL snapshots (thesis, sector, macro) created in this sync run for `/rollback` cascade detection.
+   > **Batch ID**: Generate `HHMMSS` once at the start of the snapshot phase via `date +%H%M%S` (6 digits — second-precision prevents same-minute snapshot batch collisions across skills). Reuse the same `snapshot_batch` value across ALL snapshots (thesis, sector, macro) created in this sync run for `/rollback` cascade detection.
 
 3. Proceed with edits to the ORIGINAL thesis note.
 
@@ -247,14 +253,14 @@ For each affected Sector Note:
 ### 4a: Pre-Edit Safety — Snapshot
 If edits will modify existing analytical text (competitive dynamics, value chain, sector observations, comparison narratives) — not just adding links:
 1. ```bash
-   cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-sync YYYY-MM-DD-HHMM).md"
+   cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-sync YYYY-MM-DD-HHMMSS).md"
    ```
 2. Read the newly created snapshot, then add to its frontmatter:
    ```yaml
    snapshot_of: "[[Sectors/Sector Name]]"
    snapshot_date: YYYY-MM-DD
    snapshot_trigger: sync
-   snapshot_batch: sync-YYYY-MM-DD-HHMM
+   snapshot_batch: sync-YYYY-MM-DD-HHMMSS
    ```
    Reuse the batch ID generated in Step 3c.
 
@@ -283,14 +289,14 @@ For each affected Macro note:
 ### 5a: Pre-Edit Safety — Snapshot
 If edits will modify existing analytical text (scenario analysis, probability weightings, trading/allocation implications) — not just adding wikilinks:
 1. ```bash
-   cp "Macro/Note Name.md" "_Archive/Snapshots/Note Name (pre-sync YYYY-MM-DD-HHMM).md"
+   cp "Macro/Note Name.md" "_Archive/Snapshots/Note Name (pre-sync YYYY-MM-DD-HHMMSS).md"
    ```
 2. Read the newly created snapshot, then add to its frontmatter:
    ```yaml
    snapshot_of: "[[Macro/Note Name]]"
    snapshot_date: YYYY-MM-DD
    snapshot_trigger: sync
-   snapshot_batch: sync-YYYY-MM-DD-HHMM
+   snapshot_batch: sync-YYYY-MM-DD-HHMMSS
    ```
    Reuse the batch ID generated in Step 3c.
 
@@ -322,11 +328,20 @@ If `_hot.md` does not exist (first run), create it with sections: `## Active Res
 
 **Mandatory. Runs after ALL writes are complete, immediately before reporting.**
 
-```bash
-touch .last_sync
-```
+### Mode-conditional watermark behavior
 
-This is the last mutation. If any prior step fails or the session is interrupted, the watermark remains unset and the next `/sync` will re-process the same changes — safe by default.
+- **`/sync` (default) and `/sync all`**: touch `.last_sync` at the end of the run.
+  ```bash
+  touch .last_sync
+  ```
+  This is the last mutation. If any prior step fails or the session is interrupted, the watermark remains unset and the next `/sync` will re-process the same changes — safe by default.
+
+- **`/sync TICKER`**: **do NOT touch `.last_sync`**. Ticker-scoped mode is timestamp-independent and only inspects one thesis's adjacency — advancing the watermark would silently exclude unrelated changes (other theses, sectors, macros) from the next default sync's `find -newer .last_sync` set. Report `Watermark: untouched (ticker-scoped mode preserves baseline for next default /sync)` in Step 8.
+  - **First-run exception**: if `.last_sync` does not exist when `/sync TICKER` runs, create the epoch placeholder so the next default `/sync` has a baseline:
+    ```bash
+    touch -t 197001010000 .last_sync
+    ```
+    Report `Watermark: epoch placeholder created (was absent — first-run state preserved)` in Step 8.
 
 ### Graph-rebuild marker (`/sync all` only)
 
@@ -362,5 +377,6 @@ touch .sync_all_fresh
 - **Conviction triggers hit**: [list any]
 - **Conviction drift flags raised**: [list any]
 - **New connections discovered**: [any surprising links worth noting]
+- **Watermark**: `touched (default/all)` | `untouched (ticker-scoped mode preserves baseline for next default /sync)` | `epoch placeholder created (was absent — first-run state preserved)`
 
 **Final reminder**: `→ Run /graph last to update the dependency map. Recommended after every /sync.`

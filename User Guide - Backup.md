@@ -41,7 +41,7 @@ _Inbox/ drop  →  /ingest  →  /sync  →  /graph last  →  work  →  /sync 
 | Work | Research, analysis, thesis building, conviction changes | Variable |
 | `/sync` → `/graph last` | Propagate session work, then refresh dependency map | ~3 min total |
 
-> **Why `/graph last` after every `/sync`**: Research skills (`/sync`, `/thesis`, `/compare`, etc.) do not write to `_graph.md` — that ownership belongs to `/graph`. `/graph last` is the cheap finalizer that keeps the dependency map current.
+> **Why `/graph last` after every `/sync`**: Research skills (`/sync`, `/thesis`, `/compare`, etc.) no longer write to `_graph.md` — that ownership is concentrated in `/graph` to eliminate cross-skill metadata contention. `/graph last` is the cheap finalizer that keeps the dependency map current.
 
 ---
 
@@ -456,7 +456,7 @@ challenges. List each contradiction with links to both notes.
 ```
 > Always follow with `/sync` then `/graph last`. `/ingest` creates the Research note; `/sync` updates theses; `/graph last` registers the new research in the dependency map.
 >
-> **Content-quality gate**: URL and PDF ingests are gated on minimum body word count (≥150 words), absence of paywall/CAPTCHA/anti-bot sentinels, and at least 2 of 4 expected body sections containing content. If the gate fails, the research note is auto-deleted (not committed) and the source is retained for re-ingestion after access is resolved. Manual local files (`.md`, `.csv`, `.txt`) receive advisory-only logs — content quality is the user's responsibility for hand-curated sources. This blocks the most damaging silent-corruption path: paywalled URLs that propagate wrong claims into thesis Log entries via `/sync`.
+> **Content-quality gate** (post-hardening): URL and PDF ingests are gated on minimum body word count (≥150 words), absence of paywall/CAPTCHA/anti-bot sentinels, and at least 2 of 4 expected body sections containing content. If the gate fails, the research note is auto-deleted (not committed) and the source is retained for re-ingestion after access is resolved. Manual local files (`.md`, `.csv`, `.txt`) receive advisory-only logs — content quality is the user's responsibility for hand-curated sources. This blocks the most damaging silent-corruption path: paywalled URLs that propagate wrong claims into thesis Log entries via `/sync`.
 
 ### YouTube video transcripts via Gemini
 
@@ -506,7 +506,7 @@ If a word or phrase is unclear in the audio, write [inaudible] rather than guess
 ```
 > Searches vault first (existing research, sector context, macro themes), then web. Creates all 13 required sections. Status defaults to `draft` — promote with `/status TICKER status draft→active` when ready. Run `/graph last` after promotion to register the new thesis in the dependency map.
 >
-> **Archive-collision check**: if a closed thesis exists at `_Archive/TICKER - *.md`, the skill pauses and presents 4 explicit options before creating: (a) `/rollback TICKER` to restore the prior thesis instead, (b) proceed with a different name suffix to make dual-file state intentional, (c) proceed with proposed name accepting two distinct files for the same ticker (with caveat in initial Log entry), (d) cancel. Prevents silent dual-thesis state where the archived analysis becomes invisible to graph-assisted skills.
+> **Archive-collision check** (post-hardening): if a closed thesis exists at `_Archive/TICKER - *.md`, the skill pauses and presents 4 explicit options before creating: (a) `/rollback TICKER` to restore the prior thesis instead, (b) proceed with a different name suffix to make dual-file state intentional, (c) proceed with proposed name accepting two distinct files for the same ticker (with caveat in initial Log entry), (d) cancel. Prevents silent dual-thesis state where the archived analysis becomes invisible to graph-assisted skills.
 
 ### Deepen a weak section
 ```
@@ -690,7 +690,7 @@ update based on the sector note and recent research.
 /lint                            # full vault — 37 checks
 /lint TICKER                     # scoped — 15 checks on one thesis
 ```
-> **Full**: structural (orphaned notes, broken links, missing frontmatter, partial-write detection), freshness (stale theses, old metrics, pending sync), connection (unlinked mentions, disconnected macro, missing thesis candidates), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift, verbose log entries), snapshot hygiene, graph health (existence, staleness, missing/ghost entries, broken edges, reverse-index consistency, edge count), utility files (catalyst calendar staleness, `_hot.md` schema integrity), cross-skill contracts (log-prefix registry alignment, sector resolution coverage), and additional integrity checks (#32 orphaned ticker references, #33 closed-thesis files in Theses/, #35 `_hot.md` schema drift, #36 prune batch-manifest state, #37 incomplete-rename marker).
+> **Full**: structural (orphaned notes, broken links, missing frontmatter, partial-write detection), freshness (stale theses, old metrics, pending sync), connection (unlinked mentions, disconnected macro, missing thesis candidates), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift, verbose log entries), snapshot hygiene, graph health (existence, staleness, missing/ghost entries, broken edges, reverse-index consistency, edge count), utility files (catalyst calendar staleness, `_hot.md` schema integrity), cross-skill contracts (log-prefix registry alignment, sector resolution coverage), and the metadata-cull surfacing checks (#32 orphaned ticker references, #33 closed-thesis files in Theses/, #35 `_hot.md` schema drift, #36 prune batch-manifest state, #37 incomplete-rename marker).
 > **Scoped**: frontmatter, sections, staleness, financial-data age, inactive research for ticker, conviction-evidence, bull/bear balance, template compliance, verbose logs, graph entry validity for this thesis, broken graph edges, partial-write detection, sector resolution, **`_hot.md` schema integrity (#35 — always runs, vault-global concern)**, and `.rename_incomplete` marker (#37) when the marker's `ticker:` matches. Faster for quick thesis checks.
 
 ### Portfolio pruning
@@ -829,7 +829,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 ## 11. Skill Quick Reference
 
-> **Metadata ownership note**: Only `/graph` and `/rename` write to `_graph.md`. Every other skill is content-only — they create or modify research/thesis/sector/macro/`_hot.md` files but never touch `_graph.md`. Run `/graph last` after any skill in the tables below to refresh the dependency map.
+> **Metadata ownership note**: After the metadata-cull architecture, only `/graph` and `/rename` write to `_graph.md`. Every other skill is content-only — they create or modify research/thesis/sector/macro/`_hot.md` files but never touch `_graph.md`. Run `/graph last` after any skill in the tables below to refresh the dependency map.
 
 ### Core Workflow Skills
 
@@ -885,7 +885,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 /sync all                                  # brute-force: reads everything; touches .last_sync; writes .sync_all_fresh marker
 /sync NVDA                                 # ticker-scoped: one thesis + all adjacencies, ignores timestamps; does NOT touch .last_sync (preserves baseline for next default /sync)
 ```
-> **Watermark behavior**: `/sync TICKER` deliberately does not advance `.last_sync`. The next default `/sync` then catches up any unrelated changes (other theses, macros, sectors) modified before the ticker-scoped run. First-run exception: if `.last_sync` is absent when `/sync TICKER` runs, an epoch placeholder is created so default sync has a baseline.
+> **Watermark behavior** (post-hardening): `/sync TICKER` deliberately does not advance `.last_sync`. The next default `/sync` then catches up any unrelated changes (other theses, macros, sectors) modified before the ticker-scoped run. First-run exception: if `.last_sync` is absent when `/sync TICKER` runs, an epoch placeholder is created so default sync has a baseline.
 
 ### `/surface`
 ```
@@ -949,7 +949,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 /lint                                      # full vault: 37 checks
 /lint NVDA                                 # scoped: 15 checks on one thesis (#35 _hot.md schema integrity now always runs)
 ```
-> **#35 in scoped mode**: `_hot.md` schema integrity check runs in BOTH full and scoped modes. Schema drift causes silent skill no-ops across 11 skills writing to `_hot.md`; running #35 weekly via scoped lint catches drift within one weekly check rather than waiting for monthly full lint.
+> **#35 in scoped mode** (post-hardening): `_hot.md` schema integrity check runs in BOTH full and scoped modes. Schema drift causes silent skill no-ops across 11 skills writing to `_hot.md`; running #35 weekly via scoped lint catches drift within one weekly check rather than waiting for monthly full lint.
 
 ### `/prune`
 ```
@@ -1076,7 +1076,7 @@ Owned exclusively by `/graph`. Three modes:
 - **`/graph [N]`** (e.g., `/graph 7`): catch-up mode if you missed running `/graph last` for a while. Same incremental logic, watermark = today − N days.
 - **`/graph`** (no args): full rebuild from scratch (use after `/sync all` or for disaster recovery).
 
-Research skills (`/sync`, `/thesis`, `/compare`, `/scenario`, `/deepen`, etc.) do NOT write to `_graph.md` — they create content and remind you to run `/graph last` afterward.
+Research skills (`/sync`, `/thesis`, `/compare`, `/scenario`, `/deepen`, etc.) do NOT write to `_graph.md` — they create content and remind you to run `/graph last` afterward. This eliminates cross-skill graph contention.
 
 ### `_catalyst.md` — Catalyst Calendar
 Regenerated each time `/catalyst` runs. Timeline format: next 2 weeks (daily), weeks 3-4, months 2-3. Flags catalyst gaps and stale events.
@@ -1099,11 +1099,23 @@ Written by `/prune` Stage 1.5 as a persistable state record of intended closures
 ### `_Archive/Snapshots/` — Version Control
 Created automatically before destructive edits by: `/sync` (Tier A section edits), `/deepen`, `/status` (except draft→active), `/compare` (sector note changes, per-sector batch IDs on cross-sector runs), `/prune` (sector note changes), `/catalyst` (overwrites previous calendar), `/rollback` (pre-rollback safety net), `/rename` (pre-rename snapshot). Cleaned by `/clean`, which now skips non-snapshot artifacts (missing `snapshot_date:` or `type:` set to something other than snapshot). Flagged for age by `/lint` #16 and for prune-manifest state by `/lint` #36.
 
-> **Batch ID format**: all snapshot-creating skills use `<trigger>-YYYY-MM-DD-HHMMSS` with 6-digit second-precision (e.g., `sync-2026-04-19-153042`, `prune-2026-04-19-091518`). `/rollback` cascade detection matches snapshots by batch ID prefix.
+> **Batch ID format** (post-standardization): all snapshot-creating skills use `<trigger>-YYYY-MM-DD-HHMMSS` with 6-digit second-precision (e.g., `sync-2026-04-19-153042`, `prune-2026-04-19-091518`). This prevents same-minute batch ID collisions across skills that previously used `HHMM` (4 digits). `/rollback` cascade detection recognizes both `-HHMM` (legacy snapshots created pre-standardization) and `-HHMMSS` (current) when matching by batch ID prefix.
 
 ---
 
 ## 15. Architecture Notes & Troubleshooting
+
+### Why `_graph.md` is owned only by `/graph`
+
+Before the metadata-cull refactor, ten skills wrote to `_graph.md` (every research skill plus `/sync`). The result was constant cross-skill contention: a `/sync` partial-write could leave the graph half-updated, a chain of skills required a Session Chain Protocol to coordinate deferred writes, and edge cases (poisoning, drift, ghost entries) accumulated faster than they could be patched.
+
+Concentrating ownership in `/graph` eliminated:
+- **Reverse-index drift**: forward `thesis → sector` and reverse `sector → thesis` indexes are always rebuilt together from current source files
+- **Session Chain Protocol**: ~80 lines of coordination logic deleted from CLAUDE.md
+- **Graph Debt**: deferred-write tracking deleted (no deferred writes exist)
+- **Closure-immediate exception, recreated-file exception, propagated_to 4-bucket verification**: all gone
+
+Trade-off: you must run `/graph last` after `/sync` (or any thesis-modifying skill). Forgetting it leaves the graph stale until the next run. `/lint` check #18 surfaces this if it persists. The cost is one extra command per session.
 
 ### `/graph last` cost & precision
 
@@ -1134,3 +1146,11 @@ Created automatically before destructive edits by: `/sync` (Tier A section edits
 | `/graph last` reports "Graph is up to date" but I just edited files | Files modified before midnight of `_graph.md` `date:` (rare timestamp ordering) | `/graph` (force full rebuild) or wait for next change to trigger |
 | Multiple syncs in a single day, each running `/graph last` | Idempotent but wasteful | Acceptable — daily watermark precision means later runs may re-process earlier files |
 
+### Architectural change vs. pre-refactor user guide
+
+If you're returning to a workflow you used before the metadata-cull refactor:
+- **No more "/graph required"** in `/sync TICKER` workflows — file-direct adjacency makes it independent
+- **No Session Chain protocol** — chains run naturally; `/graph last` at the end captures everything
+- **`/sync all` no longer rebuilds graph** — follow with `/graph` (full rebuild) explicitly per the monthly maintenance chain
+- **Closure no longer cleans graph inline** — run `/graph last` after `/status active→closed`
+- **Rollback recreating archived theses** — MUST run `/graph last` before any default `/sync` for that ticker

@@ -63,14 +63,14 @@ Before rewriting the target section, snapshot the thesis:
    ```
 2. Copy the current thesis note:
    ```bash
-   cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-deepen YYYY-MM-DD-HHMM).md"
+   cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-deepen YYYY-MM-DD-HHMMSS).md"
    ```
 3. Read the newly created snapshot, then add to its frontmatter:
    ```yaml
    snapshot_of: "[[Theses/TICKER - Company Name]]"
    snapshot_date: YYYY-MM-DD
    snapshot_trigger: deepen
-   snapshot_batch: deepen-YYYY-MM-DD-HHMM
+   snapshot_batch: deepen-YYYY-MM-DD-HHMMSS
    ```
 
 ## Phase 5: Rewrite the Target Section

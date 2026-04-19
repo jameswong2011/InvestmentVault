@@ -79,6 +79,8 @@ This is the highest-value phase — trace the cascades:
 
 ## Phase 6: Output
 
+### 6.1: Write the research note (without `propagated_to:`)
+
 Save to `Research/YYYY-MM-DD - Scenario - [Short Scenario Name].md` with:
 ```yaml
 ---
@@ -86,7 +88,7 @@ date: YYYY-MM-DD
 tags: [research, scenario, macro]
 source: vault synthesis
 source_type: scenario
-propagated_to: [TICKER1, TICKER2, ...]  # only theses that received Log entries (Major impact)
+# propagated_to: omitted intentionally — set in Phase 6.3 only after all Major-impact Log appends succeed
 ---
 ```
 
@@ -98,7 +100,9 @@ Sections:
 5. Recommended Actions (specific hedges, position adjustments, research priorities)
 6. Related Notes (wikilinks to all theses and macro notes referenced)
 
-Append a Log entry to each thesis rated **Major** impact in the Phase 3 table (max 2 lines each):
+### 6.2: Append Log entries to all Major-impact theses
+
+For each thesis rated **Major** impact in the Phase 3 table, attempt to append a Log entry (max 2 lines each):
 ```
 ### YYYY-MM-DD
 - Scenario [[Research/YYYY-MM-DD - Scenario - Short Name]]: [impact direction via transmission channel] — conviction [unchanged/strengthened/weakened + reason]
@@ -108,6 +112,19 @@ For each thesis that received a Log entry, add the scenario to its `## Related R
 ```
 - [[Research/YYYY-MM-DD - Scenario - Short Name]]
 ```
+
+**Track outcomes per ticker**: maintain two lists during this phase — `succeeded: [tickers]` and `failed: [tickers, with reason]`. A failure means the Log append Edit failed (file locked, missing `## Log` section, malformed frontmatter, etc.). Do NOT abort the loop on a single failure — continue attempting the remaining Major-impact theses so partial propagation completes.
+
+### 6.3: Atomicity rule for `propagated_to:` update
+
+**Update the research note's `propagated_to:` frontmatter only after EVERY Major-impact thesis's Log entry has landed successfully.** Mirrors the `/sync` Step 1 atomicity rule.
+
+- **All appends succeeded** (`failed:` list empty): edit the research note's frontmatter to add `propagated_to: [TICKER1, TICKER2, ...]` listing all Major-impact tickers. This signals to subsequent `/sync` runs that producer-side propagation is complete; `/sync` Check 2 will skip these tickers as "already propagated."
+- **One or more appends failed** (`failed:` list non-empty): do **NOT** write `propagated_to:` at all. Leave the frontmatter without the field. The next `/sync` (default mode) will detect each Major-impact thesis via the file-direct fallback (the research note's body wikilinks every Major-impact thesis under "Related Notes"), check for today's Log entry per the strict calendar-day rule, and re-attempt the append for the failed targets.
+
+**Why never partial**: A partial `propagated_to:` would claim some failed-target tickers as propagated when their Log entries never landed, creating a permanent audit gap that future `/sync` runs silently skip because the dedup hint says "already done." The all-or-nothing rule trades minor `/sync` re-work (it will re-evaluate succeeded targets and skip them via the per-thesis idempotency check) for guaranteed eventual consistency.
+
+**Per-failure reporting**: list every failed ticker in the Phase 6 report under a new field `Major-impact Log appends — failed: [TICKER1 (reason), TICKER2 (reason)]`. The user can inspect each failure or simply re-run `/sync` to let the universal propagation mechanism catch up.
 
 > **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the scenario research note and any new cross-thesis correlations in the dependency map.
 
@@ -119,4 +136,15 @@ Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Arc
 
 **Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
 
-Report to user: the 3 most exposed positions, the 1 biggest beneficiary, and the single most important action to take now.
+## Phase 7: Report
+
+Report to user, in this order:
+
+1. **Top 3 most exposed positions** with transmission channel
+2. **The 1 biggest beneficiary** with rationale
+3. **The single most important action** to take now
+4. **Major-impact propagation status**:
+   - `Major-impact theses propagated: [N] of [M]` (succeeded list)
+   - `propagated_to: frontmatter` — `set` (all succeeded) | `omitted (one or more appends failed — next /sync will retry)`
+   - **Failed appends** (only if any): `[TICKER1 (reason), TICKER2 (reason)]`
+5. **Follow-up**: `→ Run /sync to propagate to minor-impact theses and retry any failed Major appends. Then /graph last.`

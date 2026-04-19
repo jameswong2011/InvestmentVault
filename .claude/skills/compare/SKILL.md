@@ -135,22 +135,23 @@ If modifying existing analytical text (competitive dynamics, value chain, compan
 
 ```bash
 mkdir -p _Archive/Snapshots
-HHMM=$(date +%H%M)
+HHMMSS=$(date +%H%M%S)
 # For each sector note being updated, use its own slug:
 SECTOR_SLUG=$(echo "Sector Name" | tr '[:upper:]' '[:lower:]' | tr ' &/' '--')
-cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-compare YYYY-MM-DD-HHMM).md"
+cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-compare YYYY-MM-DD-HHMMSSSS).md"
 ```
+> **6-digit second-precision** (HHMMSS) prevents same-minute snapshot batch collisions across skills.
 Read each newly created snapshot, then add to its frontmatter:
 ```yaml
 snapshot_of: "[[Sectors/Sector Name]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: compare
-snapshot_batch: compare-[sector-slug]-YYYY-MM-DD-HHMM
+snapshot_batch: compare-[sector-slug]-YYYY-MM-DD-HHMMSS
 ```
 
 **Why the slug matters**: `/rollback` Step 2.5 groups snapshots by `snapshot_batch` for cascade detection. If two sector notes share the batch `compare-2026-04-19-1530`, a rollback of one offers to cascade-restore the other — coupling unrelated sectors. By scoping the batch to `compare-semiconductors-2026-04-19-1530` vs. `compare-cybersecurity-2026-04-19-1530`, cascade detection only couples snapshots that truly belong together (e.g., if a future skill snapshots the same semiconductors sector note in the same run, it would share the semiconductors-scoped batch).
 
-**Single-sector case**: when all compared theses share one sector, there's only one sector note and the slug is still included for consistency (`compare-semiconductors-YYYY-MM-DD-HHMM`) — this keeps the batch-ID format uniform regardless of sector count.
+**Single-sector case**: when all compared theses share one sector, there's only one sector note and the slug is still included for consistency (`compare-semiconductors-YYYY-MM-DD-HHMMSS`) — this keeps the batch-ID format uniform regardless of sector count.
 
 **Thesis log entries**: across all compared theses — regardless of sector — use a shared sessional tag in the Log entries for audit readability (e.g., referencing the same research note wikilink). Thesis Log entries do not use `snapshot_batch` (they aren't snapshots), so there's no cascade-coupling risk at the Log-entry level.
 
