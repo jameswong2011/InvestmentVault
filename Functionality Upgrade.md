@@ -241,3 +241,177 @@ The two refinements worth confirming with the user before implementation:
 2. **`/sync TICKER` always uses file-direct fallback** — eliminates the need to keep graph synchronized between `/thesis` and `/sync`
 
 Recommend a 5-phase rollout starting with additive `/graph` modes (Phase 1) before any subtraction. Phase 1 alone is reversible and provides the workflow primitive needed to validate the rest.
+
+---
+
+## Implementation Strategy — One-Go vs. Phased
+
+### Recommendation: Compressed 3-commit rollout, NOT one-go
+
+**Git protects code, not vault data.** A buggy refactored `/sync` that writes malformed Log entries to 5 theses before you notice is recoverable only via per-thesis snapshots — which the buggy code itself created (circular trust problem). The 17-skill blast radius makes one-go validation impossible: first run reveals all problems simultaneously, with no way to bisect which removed block caused which symptom.
+
+The original 5-phase plan was conservative for a team rollout. Single-user with git backup compresses safely to **3 commits**, each leaving the system in a working intermediate state — old behavior preserved, new behavior added — so each commit is independently revertable without partial mutations.
+
+### Asymmetric risk
+
+| Risk | One-go | 3-commit | 5-phase |
+|---|---|---|---|
+| Code revertability | git revert | git revert per commit | git revert per phase |
+| Vault data revertability | snapshot rollback (if snapshots intact) | per-commit test cycle catches early | over-conservative |
+| Bug bisection | impossible — 17 files changed | per-commit | per-phase |
+| Time to first validation | end of all changes | end of commit 1 (~30 min) | end of phase 1 |
+| Total time | ~1 session, optimistic | ~2 sessions | ~5 sessions |
+| Probability of orphaned references | high (17 skills coupled) | low (validated between commits) | very low |
+
+### Compressed 3-Commit Plan
+
+#### Commit 1 — Additive `/graph` modes
+
+**Goal**: Add `/graph last` and `/graph [N]` modes alongside existing full rebuild. Zero subtraction.
+
+**Files modified**: 1
+- `.claude/skills/graph/SKILL.md` — add Mode Detection section (parse `$ARGUMENTS`), add `/graph last` flow (read `_graph.md` `date:` frontmatter, find files with `mtime > date`, reconcile incrementally), add `/graph [N]` flow (find files with `mtime > today - N days`, reconcile)
+
+**Net change**: +120 lines
+
+**Validation**:
+1. `/graph last` after most recent `/sync` — output should match a fresh `/graph` rebuild for files in scope
+2. `/graph 30` — should include current month's research notes
+3. `/graph` (no args) — full rebuild still works unchanged
+
+**Rollback**: `git revert` removes the new modes; old `/graph` behavior unchanged.
+
+**Stop condition**: If `/graph last` produces different adjacency from `/graph` for in-scope files, stop and fix before proceeding.
+
+**Commit message**: `feat(graph): add /graph last and /graph [N] incremental modes`
+
+---
+
+#### Commit 2 — Strip graph writes from research skills
+
+**Goal**: Remove `_graph.md` write blocks from research skills. `/sync` stays as-is — it remains the bridge, doing both content propagation AND graph maintenance until Commit 3. Intermediate state is functional.
+
+**Files modified**: 11
+
+| Skill | Block to remove | Replace with |
+|---|---|---|
+| `/thesis` | Step 5 graph block + graph validation | One-line note: `→ Run /graph last to register the new thesis in the dependency map.` |
+| `/compare` | Phase 5 graph update + graph validation | Same one-line reminder |
+| `/scenario` | Graph update block | Same one-line reminder |
+| `/deepen` | Graph update block | Same one-line reminder |
+| `/stress-test` | Graph update block | Same one-line reminder |
+| `/surface` | Graph update block | Same one-line reminder |
+| `/brief` | Graph update block | Same one-line reminder |
+| `/status` | Graph cleanup blocks (closure path) | Same one-line reminder |
+| `/prune` | Stage 4 graph cleanup | Same one-line reminder |
+| `/rollback` | Graph restore block | Same one-line reminder |
+| `/rename` | **EXCEPTION — keep graph block** | Atomic rename across vault is too sensitive to defer. Alternative: refactor `/rename` to invoke `/graph last` directly as final step. |
+
+**Net change**: -600 lines (across 11 skills)
+
+**Validation**:
+1. `/thesis TESTTICK` — verify thesis file created correctly, **no `_graph.md` modification** (diff `_graph.md` before/after)
+2. `/graph last` — verify TESTTICK appears in adjacency index with correct `sector:`, `macro:`, `cross-thesis:`, `research:` fields
+3. `/sync TESTTICK` — verify propagation works (uses `/sync`'s existing Outcome B fallback, since graph was just rebuilt)
+4. `/lint` — verify no new errors, only the expected staleness warning if graph wasn't refreshed
+5. Delete `Theses/TESTTICK - Test.md` and any snapshot files created
+
+**Rollback**: `git revert` restores per-skill graph blocks. Vault data unaffected — this commit only removes write instructions, no content semantics changed.
+
+**Stop condition**: If any research skill produces malformed thesis/research notes, stop. The graph removal must not affect content output — if it does, investigate the deeper coupling before proceeding.
+
+**Commit message**: `refactor(skills): centralize _graph.md ownership in /graph`
+
+---
+
+#### Commit 3 — Simplify `/sync` and delete chain protocol
+
+**Goal**: Remove `/sync`'s graph maintenance logic. Delete Session Chain protocol. Remove chain-aware blocks from all skills.
+
+**Files modified**: 14
+
+**`/sync/SKILL.md` changes** (largest blast):
+- Remove Step 0 fallback triggers — graph becomes optional optimization, not validation gate
+- Remove Step 1 `propagated_to:` 4-bucket verification → simplify to: "if Log already contains this research-note wikilink for today's date, skip"
+- Remove Step 1 Outcome A (graph entry exists) → always use Outcome B (file-direct adjacency reconstruction)
+- Remove Step 7 entirely (Rules 1–10, 110 lines of incremental graph update + reconciliation)
+- Remove Step 7.5 watermark logic in graph context (keep `.last_sync` for content change detection)
+- Step 8 report — remove all graph-related lines
+- Add to final report: `→ Run /graph last to update the dependency map.`
+
+**CLAUDE.md changes**:
+- Delete entire Session Chain Protocol section (~80 lines)
+- Delete Chain Finalizers, Stale Chain, Graph Debt subsections
+- Update Core Workflow Loop to: `/ingest → /sync → /graph last`
+
+**All other skills** (`/thesis`, `/compare`, `/status`, `/prune`, `/rename`, `/rollback`, `/scenario`, `/deepen`, `/stress-test`, `/surface`, `/brief`):
+- Remove "Chain-aware" blocks (5–25 lines each)
+- Remove Stale-chain preservation logic
+- Remove all Graph Debt accumulation references
+
+**`/lint/SKILL.md` additions**:
+- New check: `Research/` notes with `ticker:` matching no `Theses/` file (was `/sync` Step 1 Fallback 1 self-healing)
+- New check: `Theses/` files with `status: closed` (was 5 different gates in `/sync`)
+- New check: `_graph.md` `date:` < today (auto-fixable: run `/graph last`)
+- Group as `### Auto-fixable by /graph` vs `### Manual triage`
+
+**Net change**: -1,000 lines
+
+**Validation**:
+1. Full cycle: `/ingest [test URL] → /sync → /graph last` — every step works, graph updated
+2. `/sync all` — large-scale propagation works, no graph reset side-effect
+3. `/sync TESTTICK` — ticker-scoped sync works using file-direct adjacency
+4. `/lint` — new checks fire for synthetic broken state, don't fire for healthy vault
+5. Run a `/thesis` → `/sync` chain in same session — no chain protocol references remain in either skill's behavior
+
+**Rollback**: `git revert` restores all chain logic and graph maintenance in `/sync`. Vault data unaffected — no content semantics change in this commit either.
+
+**Stop condition**: If `/sync` propagation misses any thesis previously updated by graph-assisted lookup, stop. Diagnose whether file-direct fallback (Outcome B) has a missing discovery path.
+
+**Commit message**: `refactor(sync): remove graph maintenance and Session Chain protocol`
+
+---
+
+### Per-commit checklist
+
+```
+[ ] Commit 1: /graph last + /graph [N] modes added
+    [ ] Test 1: /graph last == /graph for in-scope files
+    [ ] Test 2: /graph 30 includes current month research
+    [ ] Test 3: /graph (no args) full rebuild unchanged
+    [ ] Commit: "feat(graph): add /graph last and /graph [N] incremental modes"
+
+[ ] Commit 2: Remove graph writes from 10 research skills
+    [ ] Test 1: /thesis TESTTICK creates file, no graph mutation
+    [ ] Test 2: /graph last picks up TESTTICK with full adjacency
+    [ ] Test 3: /sync TESTTICK propagates via Outcome B
+    [ ] Test 4: /lint reports no new errors
+    [ ] Cleanup: delete TESTTICK + snapshots
+    [ ] Commit: "refactor(skills): centralize _graph.md ownership in /graph"
+
+[ ] Commit 3: Simplify /sync, delete chain protocol
+    [ ] Test 1: /ingest → /sync → /graph last full cycle
+    [ ] Test 2: /sync all completes successfully
+    [ ] Test 3: /sync TICKER (existing ticker) propagates correctly
+    [ ] Test 4: /lint flags synthetic broken cases
+    [ ] Test 5: No chain protocol references in any skill
+    [ ] Commit: "refactor(sync): remove graph maintenance and Session Chain protocol"
+```
+
+### When one-go IS acceptable
+
+If you accept all four:
+1. Manually rollback any vault content corruption from `/sync` snapshots (assuming snapshots are intact)
+2. Spend 1–2 hours reviewing every skill diff before running anything against the vault
+3. Run a full `/lint` immediately after the change as the very first action — before any `/sync` or `/ingest`
+4. Accept that bisecting any post-change bug requires reading 17 file diffs
+
+Then one-go is recoverable, just not recommended for a first-time refactor at this scale.
+
+### Recommended sequencing
+
+1. **Tonight or this session**: Commit 1 only. Test that `/graph last` works against current vault state.
+2. **Next session**: Commit 2 + validation cycle. Confirm all research skills behave identically minus graph writes.
+3. **Following session**: Commit 3 + full cycle validation. This is the largest blast radius — give it dedicated attention.
+
+Total: ~3 working sessions, each with a clear commit boundary and rollback path. Compares to ~1 session for one-go but with significantly higher debugging cost if anything breaks.
