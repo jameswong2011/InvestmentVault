@@ -27,7 +27,7 @@ If `$ARGUMENTS` lacks a quoted company name, has no ticker, or has extra argumen
 
 ### 0.1: Acquire vault lock
 
-Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. If another skill holds a conflicting lock, abort with the standard collision message. Release the lock on exit via `trap`.
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. If another skill holds a conflicting lock, abort with the standard collision message (Procedure 1.4). Capture the token emitted at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
 ### 0.2: Name sanitization (6.1)
 

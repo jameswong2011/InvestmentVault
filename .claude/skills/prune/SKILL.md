@@ -29,7 +29,7 @@ Pre-filtering method: Grep `Theses/` frontmatter for the relevant field before r
 ## Phase 0.0: Pre-flight (MANDATORY — runs before Phase 0)
 
 ### 0.0.1: Acquire vault lock
-Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 15 minutes (prune over a large portfolio can be slow). Release via `trap` on exit. `/prune` blocks on conflicting vault-wide or ticker-level locks.
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 15 minutes (prune over a large portfolio can be slow). Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block. `/prune` blocks on conflicting vault-wide or ticker-level locks.
 
 ### 0.0.2: Check for rename markers across the whole vault
 Glob `.rename_incomplete.*` at vault root. If ANY marker exists, hard-block:

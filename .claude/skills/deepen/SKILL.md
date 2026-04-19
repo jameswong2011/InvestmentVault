@@ -18,7 +18,7 @@ $ARGUMENTS should be: `[TICKER] [optional: section name]`
 ## Phase 0: Pre-flight (MANDATORY — runs before Phase 1)
 
 ### 0.1: Acquire vault lock
-Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (deep research may be long-running; extend with a `timeout_at` renewal if web research runs over). Release via `trap` on exit.
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (deep research may be long-running). Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
 ### 0.2: Rename-marker pre-flight
 Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists at vault root, hard-block per the contract's 2.3 collision message. Rewriting a thesis section while wikilinks are split across old and new names would compound the split — the rewrite would embed wikilinks keyed to the current (new) filename while some inbound references still point to the old name.

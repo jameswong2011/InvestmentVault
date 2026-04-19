@@ -16,7 +16,7 @@ Propagate recent research insights across all affected vault documents. **This i
 - **`/sync` (default) and `/sync all`**: acquire `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 15 minutes for `/sync all`, 5 minutes for default.
 - **`/sync TICKER`**: acquire `ticker:TICKER` scope lock. Timeout budget: 5 minutes.
 
-Release via `trap` on exit.
+Capture the token emitted at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release explicitly in the final reporting Bash block via `rm -f "$LOCK_FILE"`.
 
 ### 0.2: Rename-marker check
 - **`/sync TICKER`**: run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block.
@@ -576,9 +576,14 @@ The skeleton manifest is the first mutation of the run. If the skeleton write fa
 
 Generate `HHMMSS` once at the start of Step 2.9 via `date +%H%M%S`. This is THE canonical batch ID for the rest of the run — Step 3c reuses it for all Tier A snapshots, Step 7.5 reuses it for the manifest status flip.
 
-Skeleton manifest path:
+**Batch ID format (C4 fix)**:
+- **`/sync` (default) and `/sync all`** (vault-wide lock prevents same-second collisions): `sync-YYYY-MM-DD-HHMMSS`
+- **`/sync TICKER`** (ticker-scoped; concurrent ticker-scoped runs on different tickers possible): `sync-TICKER-YYYY-MM-DD-HHMMSS` — ticker qualifier prevents collisions between simultaneous `/sync NVDA` and `/sync AMAT`
+
+Skeleton manifest path matches the format chosen above:
 ```
-_Archive/Snapshots/_sync-manifest (sync-YYYY-MM-DD-HHMMSS).md
+_Archive/Snapshots/_sync-manifest (sync-YYYY-MM-DD-HHMMSS).md       # default / all
+_Archive/Snapshots/_sync-manifest (sync-TICKER-YYYY-MM-DD-HHMMSS).md # ticker-scoped
 ```
 
 ### 2.9b: Write skeleton

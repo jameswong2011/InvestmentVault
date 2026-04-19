@@ -25,7 +25,7 @@ If $ARGUMENTS is ambiguous or matches no snapshots, report what's available and 
 - **List mode** (no args OR arg is ticker without snapshot name → listing snapshots): acquire `read-only` scope lock. Timeout: 2 minutes.
 - **Restore mode** (specific snapshot filename → will cp + possibly cascade): acquire `vault-wide` scope lock. Timeout: 10 minutes (cascade may touch many files).
 
-Per `.claude/skills/_shared/preflight.md` Procedure 1. Release via `trap` on exit.
+Per `.claude/skills/_shared/preflight.md` Procedure 1. Capture the token emitted by the acquisition Bash block and verify ownership (Procedure 1.5) at the start of each subsequent Bash block. Release in the final reporting Bash block via `rm -f "$LOCK_FILE"`.
 
 ### 0.2: Rename-marker check
 - **List mode**: skip (read-only).

@@ -17,7 +17,7 @@ Perform deep insight discovery across the vault. This is the highest-value opera
 - **Scoped `/surface TICKER`**: acquire a `ticker:TICKER` scope lock. Timeout budget: 5 minutes.
 - **Scoped `/surface [sector]`**: acquire a `vault-wide` scope lock (the sector set spans multiple tickers; concurrent ticker-scoped writers would race on sector note edits). Timeout budget: 10 minutes.
 
-Release via `trap` on exit.
+Capture the token emitted at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block via `rm -f "$LOCK_FILE"`.
 
 ### 0.2: Rename-marker pre-flight (ticker-scoped mode only)
 For `/surface TICKER`, run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block per contract 2.3. For unscoped and sector-scoped modes, check `.rename_incomplete.*` at vault root; if any marker exists, emit a warning but DO NOT abort (surface is read-mostly for these modes — it writes a research note but does not edit thesis wikilinks). Warning text: `⚠️ In-flight rename repair(s) detected: [list markers]. Surface scan will proceed but its research note's wikilinks to the affected ticker(s) use current filenames. Complete rename repair before running downstream /sync.`

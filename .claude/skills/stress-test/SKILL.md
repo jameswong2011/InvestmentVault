@@ -16,7 +16,7 @@ $ARGUMENTS should be a ticker (e.g., "NVDA") or a thesis name. If empty, ask the
 ## Step 0: Pre-flight (MANDATORY — runs before Phase 1)
 
 ### 0.1: Acquire vault lock
-Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Release via `trap` on exit.
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
 ### 0.2: Rename-marker pre-flight
 Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists at vault root, hard-block per the contract's 2.3 collision message. Appending a stress-test Log entry and a new research note while inbound wikilinks are split between old and new names would produce audit artifacts keyed to one name while some vault references still point to the other — compounding the split.
@@ -115,14 +115,16 @@ Do NOT change the conviction level — flag it for the user to decide via `/stat
 
 ### 4.6: Write stress-test manifest sidecar (T3.1 fix)
 
-Write a manifest at `_Archive/Snapshots/_stress-test-manifest (stress-test-YYYY-MM-DD-HHMMSS).md`. Generate `HHMMSS` at the start of Phase 4.
+Write a manifest at `_Archive/Snapshots/_stress-test-manifest (stress-test-TICKER-YYYY-MM-DD-HHMMSS).md`. Generate `HHMMSS` at the start of Phase 4.
+
+> **Batch ID format (C4 fix)**: Ticker-scoped skills now include TICKER in the batch ID to prevent collisions when two concurrent `/stress-test` runs on different tickers hit the same HHMMSS. Prior format `stress-test-YYYY-MM-DD-HHMMSS` could collide between simultaneous `/stress-test NVDA` and `/stress-test AMAT`; new format `stress-test-NVDA-YYYY-MM-DD-HHMMSS` and `stress-test-AMAT-YYYY-MM-DD-HHMMSS` are distinct. `/rollback` Step 2.5d cascade detection matches by the `stress-test-` prefix AND the `ticker:` frontmatter field of the manifest.
 
 **Why this exists**: `/stress-test` writes a Log entry to the tested thesis (Tier B — no pre-edit snapshot because the Log is append-only) and a research note. If the user later decides the stress test was invalid (wrong input, stale vault state, experimental run), there's no `/rollback` cascade path to restore the pre-stress-test thesis state. Manual strikethrough of the Log entry is the only remedy. The manifest provides `/rollback` cascade-detection with the Log entry text so the user can choose per-entry annotation (same pattern as `/sync` Tier B sidecar and `/compare` manifest).
 
 ```yaml
 ---
 type: stress-test-manifest
-batch: stress-test-YYYY-MM-DD-HHMMSS
+batch: stress-test-TICKER-YYYY-MM-DD-HHMMSS
 status: completed
 ticker: TICKER
 date: YYYY-MM-DD
@@ -151,7 +153,7 @@ date: YYYY-MM-DD
 To undo this stress test's Log entry (e.g., the stress test was based on wrong
 input and the Log entry misrepresents current conviction state):
 
-  /rollback stress-test-YYYY-MM-DD-HHMMSS
+  /rollback stress-test-TICKER-YYYY-MM-DD-HHMMSS
   → Step 2.5d matches this manifest by batch ID
   → Presents the Log entry above for strikethrough annotation
   → User can choose: (1) leave as historical audit (Tier 2 append-only respected)

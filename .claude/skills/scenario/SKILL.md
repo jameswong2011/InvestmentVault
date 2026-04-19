@@ -29,7 +29,7 @@ If `$ARGUMENTS` matches the reverse mode signature, jump to **Reverse Mode Flow*
 ## Phase 0: Pre-flight (MANDATORY — runs before Phase 1 or Reverse Mode Flow)
 
 ### 0.1: Acquire vault lock
-Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (scenario propagation can touch many theses). Release via `trap` on exit.
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (scenario propagation can touch many theses). Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
 ### 0.2: Rename-marker check
 Glob `.rename_incomplete.*` at vault root. If ANY marker exists, hard-block — scenario propagation writes Major-impact Log entries to many theses; one mid-rename ticker in the affected set would have its Log entry keyed to the new name while some inbound references remain under the old name.

@@ -13,7 +13,7 @@ Build a comprehensive catalyst calendar aggregating every upcoming event across 
 ## Phase 0: Pre-flight (MANDATORY — runs before Phase 1)
 
 ### 0.1: Acquire vault lock
-Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Release via `trap` on exit.
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
 ### 0.2: Snapshot existing `_catalyst.md` (6.9-adjacent — non-snapshotted overwrite protection)
 

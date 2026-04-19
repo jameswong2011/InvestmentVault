@@ -1193,13 +1193,19 @@ Consumed by `/thesis` Step 1.2 multi-signal archive-collision check (Signal C) t
 #### `.vault-lock*` — Concurrency locks
 Acquired at Step 0 of every skill that modifies vault state, per the contract in `.claude/skills/_shared/preflight.md`. Prevents concurrent skill invocations from racing on `_hot.md`, thesis Logs, sector notes, `_graph.md`, and marker files.
 
+**Token-based ownership** (not PID-based): because Claude Code's Bash tool is stateless (each Bash block runs in a fresh subshell with different `$$`), the lock's `token:` field identifies the skill-run. The LLM captures the token at Step 0.1 acquisition and carries it in its conversation context through all subsequent tool calls. Every subsequent Bash block verifies lock ownership by matching the captured token against the current `.vault-lock*` content; mismatch aborts the skill.
+
 Lock scopes:
 - **Vault-wide** (`.vault-lock`): `/sync all`, `/graph`, `/prune`, `/lint` full, `/clean`, `/catalyst`, `/ingest` (all modes), `/scenario`, `/surface` (unscoped/sector), `/rollback` restore mode
 - **Ticker** (`.vault-lock.TICKER`): `/sync TICKER`, `/deepen`, `/stress-test`, `/status TICKER`, `/brief`, `/rename`, `/thesis`, `/surface TICKER`
-- **Multi-ticker** (`.vault-lock.A+B+C` alphabetically sorted): `/compare`
+- **Multi-ticker**: `/compare A vs B vs C` acquires N **separate per-ticker locks** (`.vault-lock.A`, `.vault-lock.B`, `.vault-lock.C`), NOT a joint `+`-delimited lock. Prior `+`-delimiter scheme failed on hyphen-containing tickers (`BRK-B`, `BF-A`). Per-ticker locks handle these cleanly and roll back on partial acquisition failure (release all previously-acquired locks before aborting).
 - **Read-only** (`.vault-lock.readonly`): `/lint TICKER`, `/rollback` list mode
 
-Each lock carries `pid:`, `skill:`, `scope:`, `started_at:`, `timeout_at:` in YAML frontmatter. Released via `trap` on skill exit (success, failure, interrupt). Stale lock detection: if `pid` is not running OR `timeout_at` < now, the lock is auto-reclaimed with a warning. `/lint #43` surfaces orphan locks whose PID no longer exists.
+Each lock carries `token:`, `skill:`, `scope:`, `started_at:`, `timeout_at:`, `session_id:` in YAML frontmatter. Multi-ticker locks additionally carry `multi_scope:` listing peer tickers.
+
+**Release** is explicit in the skill's final Bash block (`rm -f "$LOCK_FILE"`), not trap-based. `trap "... INT TERM"` handles Ctrl-C / kill signals within the acquisition block; subsequent blocks don't inherit the trap by design.
+
+**Stale detection**: a lock is stale when `timeout_at` < now. Staleness does NOT trigger auto-steal — timeout-based stealing would race legitimately long-running skills (web research, large batches). Recovery is user-initiated: manually `rm` the lockfile after confirming the prior skill is truly abandoned. `/lint #43` surfaces stale locks for review.
 
 #### `.drift-config.md` (optional) — `/sync` drift detection tuning
 Optional vault-root file for tuning `/sync` Step 3e conviction-drift heuristics. Format:
@@ -1270,8 +1276,11 @@ Grouped by symptom category. Each row: observed symptom → likely cause → fix
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| Any skill aborts with `❌ Another skill is running — vault lock held` | `.vault-lock*` file at vault root held by another skill (or a crashed process) | Wait for the holder to finish. If holder PID is not running (`kill -0 [pid]` errors), remove lock: `rm [lockfile_path]`. `/lint #43` also surfaces orphan locks. |
-| `/lint #43` flags orphan lock | Skill crashed without releasing the lock (trap did not fire) | `rm` the flagged lockfile. Safe when the listed PID is no longer running. |
+| Any skill aborts with `❌ Another skill is running — vault lock held` | `.vault-lock*` file at vault root is actively held (token-based ownership, timeout not yet expired) | Wait for the holder to finish. If you can confirm the holder has crashed (terminal closed, session killed), manually `rm [lockfile_path]` to unblock. |
+| `⚠️ Stale lock detected — timeout exceeded` | Lock's `timeout_at` < now. Prior skill may have crashed OR may still be legitimately running (long web research, large batch). Auto-steal was removed intentionally. | Choose: (a) wait longer — prior skill may complete; (b) manually `rm` the lockfile if you confirm abandonment; (c) consult any in-progress manifests in `_Archive/Snapshots/` via `/lint` before deciding. |
+| `❌ LOCK_LOST` or `❌ LOCK_STOLEN` mid-skill | Another skill or a user `rm` removed/overwrote the lockfile after Step 0.1 acquired it | Skill aborts; any in-progress transaction manifest remains `in-progress` for `/rollback` recovery. Investigate what stole the lock — likely a concurrent session. |
+| `/lint #43` flags stale lock | Lock's `timeout_at` expired | Review: prior skill crashed OR still running. Check manifests via `/lint #36/41/47/48` for in-progress work. `rm` the lockfile only after confirming abandonment. |
+| `/compare` aborts with partial lock acquisition | Some target ticker has an active lock held by another skill; `/compare` rolled back its already-acquired peer locks | Wait for the conflicting ticker lock to clear, then re-run `/compare`. The rollback guarantees we never hold a proper subset of the compare set. |
 
 #### Rename repair state
 

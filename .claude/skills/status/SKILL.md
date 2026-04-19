@@ -32,7 +32,7 @@ If $ARGUMENTS matches the `reaffirm` pattern, skip to **Step 2R (Reaffirm Flow)*
 
 ### 0.1: Acquire vault lock
 
-Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 3 minutes (closure may take longer if sector note edits cascade — extend to 5m if `status → closed`). Release the lock on exit via `trap`. If another skill holds a conflicting lock, abort with the collision message from Procedure 1.4.
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 3 minutes (closure may take longer if sector note edits cascade — extend to 5m if `status → closed`). Capture the token at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block. If another skill holds a conflicting lock, abort with the collision message from Procedure 1.4.
 
 ### 0.2: Rename-marker pre-flight
 
@@ -150,7 +150,9 @@ Generate `HHMMSS` once at the start of this step (6-digit second-precision preve
 HHMMSS=$(date +%H%M%S)
 mkdir -p _Archive/Snapshots
 ```
-Use `status-YYYY-MM-DD-$HHMMSSSS` as the `snapshot_batch` value across **all** snapshots created in this run (thesis snapshot in Step 3.1, sector note snapshot in Step 5a). Reusing a single batch ID lets `/rollback` cascade detection restore both files atomically as a single operation.
+Use `status-TICKER-YYYY-MM-DD-$HHMMSSSS` as the `snapshot_batch` value across **all** snapshots created in this run (thesis snapshot in Step 3.1, sector note snapshot in Step 5a). Reusing a single batch ID lets `/rollback` cascade detection restore both files atomically as a single operation.
+
+> **Batch ID format (C4 fix)**: ticker qualifier prevents collisions when two concurrent `/status` runs on different tickers hit the same HHMMSS. Prior `status-YYYY-MM-DD-HHMMSS` could collide between simultaneous `/status NVDA conviction...` and `/status AMAT status...`; new `status-NVDA-YYYY-MM-DD-HHMMSS` and `status-AMAT-YYYY-MM-DD-HHMMSS` are distinct.
 
 > **Draft→active note**: The batch ID is still generated even when Step 3.1 is skipped — Step 5a needs it for the sector note snapshot.
 

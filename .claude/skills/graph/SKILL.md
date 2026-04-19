@@ -13,7 +13,7 @@ Rebuild `_graph.md` entirely from vault state. This is a structural metadata ope
 ## Step 0: Pre-flight (MANDATORY — runs before Mode Detection)
 
 ### 0.1: Acquire vault lock
-Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes (incremental) or 10 minutes (full rebuild). Release via `trap` on exit.
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes (incremental) or 10 minutes (full rebuild). Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
 `/graph` is vault-wide because it reads every thesis file — any concurrent writer could produce a mid-read inconsistent adjacency extraction.
 

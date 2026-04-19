@@ -25,102 +25,130 @@ Consumers: every skill except pure-read skills (`/lint` read path, `/rollback` l
 
 ## Procedure 1 — Vault lock
 
+> **Design note**: Claude Code's Bash tool is stateless — shell state (including `trap` handlers) does NOT persist across Bash tool invocations. Each Bash block runs in a fresh subshell. The lock scheme must therefore be stateless at the shell level and durable across multiple tool calls (Bash / Read / Edit / Write) within a single skill run. The LLM running the skill carries lock identity in its conversation context between tool calls.
+
 ### 1.1 Lock file format
 
-Locks live at vault root:
+Locks live at vault root as markdown files with YAML frontmatter:
 - **Vault-wide lock**: `.vault-lock` (only one skill can hold this)
-- **Ticker lock**: `.vault-lock.TICKER` (one per ticker, concurrent tickers allowed)
+- **Ticker lock**: `.vault-lock.TICKER` (one per ticker; concurrent distinct tickers allowed)
 - **Read-only lock**: `.vault-lock.readonly` (multiple readers allowed, blocks vault-wide writers)
 
-Each lock is a markdown file with YAML frontmatter:
+**Multi-ticker scope** (`/compare A vs B [vs C]`): acquires N **separate per-ticker locks**, not one joint lock. Prevents delimiter-collision bugs with hyphen-containing tickers (`BRK-B`, `BF-A`, `PBR-A`). See §1.3c.
+
+Lock frontmatter:
 
 ```yaml
 ---
-pid: 48234                               # owning process PID (from $PPID or echo $$)
-skill: /sync                             # skill name (exactly as invoked)
-scope: vault-wide                        # vault-wide | ticker:TICKER | ticker:A+B+... | read-only
-started_at: 2026-04-19T15:30:42Z         # ISO 8601 UTC
-timeout_at: 2026-04-19T15:40:42Z         # started_at + skill timeout budget
-session_id: <uuid>                       # Claude Code session ID if available, else "unknown"
+token: a7f3b2e8-1729432842                # skill-run identity (unique per skill invocation)
+skill: /sync                              # skill name (exactly as invoked)
+scope: vault-wide                         # vault-wide | ticker:TICKER | read-only
+started_at: 2026-04-19T15:30:42Z          # ISO 8601 UTC
+timeout_at: 2026-04-19T15:40:42Z          # started_at + skill timeout budget
+session_id: <claude-session-id or "unknown">
 ---
 
 # Vault lock
 
-Held by /sync (PID 48234) since 2026-04-19T15:30:42Z. Scope: vault-wide.
+Held by /sync (token a7f3b2e8-1729432842) since 2026-04-19T15:30:42Z. Scope: vault-wide.
 ```
+
+**`token` replaces the prior `pid:` field** (rationale: shell PID at `$$` is only valid within one Bash block; subsequent blocks have different PIDs; PID-based ownership was unreliable). The token is a skill-run-unique identifier generated at acquisition (Step 0.1) and carried by the LLM through all subsequent tool calls as a literal string. The `session_id` remains as auxiliary info but ownership is keyed on `token`.
 
 ### 1.2 Scope taxonomy
 
 | Skill | Lock scope | Typical timeout |
 |---|---|---|
 | `/sync all`, `/graph` (any mode), `/prune` (full or sector), `/lint` (full), `/clean`, `/catalyst`, `/ingest` (batch), `/scenario` (forward or reverse), `/surface` (any mode), `/rollback` (cascade) | `vault-wide` | 10m (`/sync all`, `/graph`), 15m (`/prune`), 5m (others) |
-| `/sync TICKER`, `/deepen`, `/stress-test`, `/status TICKER`, `/brief`, `/rename`, `/thesis`, `/ingest [URL or file]` (single) | `ticker:TICKER` | 3m |
-| `/compare A vs B [vs C]` | `ticker:A+B+C` (sorted alphabetically, `+`-joined) | 5m |
+| `/sync TICKER`, `/deepen`, `/stress-test`, `/status TICKER`, `/brief`, `/rename`, `/thesis`, `/ingest [URL or file]` (single), `/surface TICKER` | `ticker:TICKER` | 3–10m per skill (see individual SKILL.md) |
+| `/compare A vs B [vs C]` | N × `ticker:TICKER` (one lock per ticker in the compare set) | 10m |
 | `/rollback` (list mode), `/lint TICKER` | `read-only` | 2m |
 
-### 1.3 Acquisition
+### 1.3 Acquisition (Step 0.1 — single Bash block)
 
-Pseudo-logic (implementations use `Bash` tool with `mkdir -p` / `[ -e ]` / `cat` / `echo`):
+Step 0.1 emits one Bash block that:
+1. Generates a run-token.
+2. Checks for conflicting locks per the taxonomy.
+3. On collision → aborts with the collision message (§1.4).
+4. On no collision → writes the lockfile(s).
+5. Echoes the token on stdout for the LLM to capture.
+6. Installs `trap "rm -f '$LOCK_FILE'" INT TERM` only (NOT `EXIT`) — handles Ctrl-C / kill signals; does NOT remove lock on normal block exit.
 
-```
-function acquire_lock(skill, scope, timeout_minutes):
-  lockfile = ".vault-lock"  if scope == "vault-wide"
-             ".vault-lock.TICKER"  if scope == "ticker:TICKER"
-             ".vault-lock.readonly"  if scope == "read-only"
-             ".vault-lock.A+B+C"  if scope == "ticker:A+B+C"
-  
-  # Collision checks — run in this order:
-  #   1) vault-wide lock held by another skill
-  #   2) ticker lock for any ticker in our scope (for ticker-scoped skills)
-  #   3) our-scope lock already held
-  #   4) for vault-wide acquisition: any existing ticker-lock
+The LLM MUST capture the echoed token and carry it in working memory through every subsequent tool call. Step 0 instructions in each skill remind the LLM of this explicitly.
 
-  For each candidate conflicting lock:
-    If the file exists:
-      Read its frontmatter.
-      If pid not running (kill -0 PID fails) → steal the lock (print warning)
-      If timeout_at < now → expired, steal the lock (print warning)
-      Else → HARD BLOCK with collision message (see 1.4)
-  
-  # Write our lock atomically
-  Write lockfile with YAML frontmatter populated
-  Register a shell trap (or equivalent finalizer) to remove lockfile on exit
-  Return acquired lock path
-```
-
-**Implementation hint for skills**: use a `Bash` tool block at Step 0:
+#### 1.3a — Vault-wide acquisition
 
 ```bash
-# Example for a ticker-scoped skill with ticker $TICKER and timeout 180s
-LOCK_FILE=".vault-lock.$TICKER"
-VAULT_WIDE_LOCK=".vault-lock"
+LOCK_FILE=".vault-lock"
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+TOKEN="$(printf '%08x' $RANDOM$RANDOM)-$(date -u +%s)"
+TIMEOUT_AT=$(date -u -v+10M +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
 
-# Check vault-wide lock
-if [ -e "$VAULT_WIDE_LOCK" ]; then
-  PID=$(grep '^pid:' "$VAULT_WIDE_LOCK" | sed 's/pid: //')
-  TIMEOUT=$(grep '^timeout_at:' "$VAULT_WIDE_LOCK" | sed 's/timeout_at: //')
-  SKILL=$(grep '^skill:' "$VAULT_WIDE_LOCK" | sed 's/skill: //')
-  NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-  if kill -0 "$PID" 2>/dev/null && [ "$TIMEOUT" \> "$NOW" ]; then
-    echo "LOCK_HELD|vault-wide|$SKILL|$PID|$TIMEOUT"
+# Collision check: vault-wide OR any existing ticker lock OR read-only lock
+for existing in .vault-lock .vault-lock.* ; do
+  [ -f "$existing" ] || continue
+  # Read timeout_at; if expired → stale; if future → live collision
+  EX_TIMEOUT=$(grep '^timeout_at:' "$existing" | sed 's/timeout_at: //')
+  EX_SKILL=$(grep '^skill:' "$existing" | sed 's/skill: //')
+  EX_TOKEN=$(grep '^token:' "$existing" | sed 's/token: //')
+  if [ "$EX_TIMEOUT" \> "$NOW" ]; then
+    echo "LOCK_HELD|$existing|$EX_SKILL|$EX_TOKEN|$EX_TIMEOUT"
     exit 1
   else
-    echo "STALE_LOCK|vault-wide|$SKILL|$PID"
-    rm -f "$VAULT_WIDE_LOCK"
+    echo "STALE_LOCK|$existing|$EX_SKILL|$EX_TOKEN|timeout_exceeded_at|$EX_TIMEOUT"
+    # Do NOT auto-steal (see §1.6). Surface for user confirmation.
+    exit 2
   fi
-fi
+done
 
-# Check our scope lock (same pattern)
-if [ -e "$LOCK_FILE" ]; then
-  # ... same stale/held logic ...
-fi
-
-# Write our lock
-NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-TIMEOUT_AT=$(date -u -v+3M +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d '+3 minutes' +%Y-%m-%dT%H:%M:%SZ)
+# No conflicts — write the lock
 cat > "$LOCK_FILE" <<EOF
 ---
-pid: $$
+token: $TOKEN
+skill: /sync all
+scope: vault-wide
+started_at: $NOW
+timeout_at: $TIMEOUT_AT
+session_id: ${CLAUDE_SESSION_ID:-unknown}
+---
+
+# Vault lock
+
+Held by /sync all (token $TOKEN) since $NOW.
+EOF
+
+trap "rm -f '$LOCK_FILE'" INT TERM
+echo "ACQUIRED|$LOCK_FILE|$TOKEN"
+```
+
+#### 1.3b — Ticker-scoped acquisition
+
+```bash
+TICKER="NVDA"
+LOCK_FILE=".vault-lock.$TICKER"
+VAULT_WIDE_LOCK=".vault-lock"
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+TOKEN="$(printf '%08x' $RANDOM$RANDOM)-$(date -u +%s)"
+TIMEOUT_AT=$(date -u -v+3M +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d '+3 minutes' +%Y-%m-%dT%H:%M:%SZ)
+
+# Collision checks
+for existing in "$VAULT_WIDE_LOCK" "$LOCK_FILE" ; do
+  [ -f "$existing" ] || continue
+  EX_TIMEOUT=$(grep '^timeout_at:' "$existing" | sed 's/timeout_at: //')
+  EX_SKILL=$(grep '^skill:' "$existing" | sed 's/skill: //')
+  EX_TOKEN=$(grep '^token:' "$existing" | sed 's/token: //')
+  if [ "$EX_TIMEOUT" \> "$NOW" ]; then
+    echo "LOCK_HELD|$existing|$EX_SKILL|$EX_TOKEN|$EX_TIMEOUT"
+    exit 1
+  else
+    echo "STALE_LOCK|$existing|$EX_SKILL|$EX_TOKEN|timeout_exceeded_at|$EX_TIMEOUT"
+    exit 2
+  fi
+done
+
+cat > "$LOCK_FILE" <<EOF
+---
+token: $TOKEN
 skill: /stress-test
 scope: ticker:$TICKER
 started_at: $NOW
@@ -129,47 +157,198 @@ session_id: ${CLAUDE_SESSION_ID:-unknown}
 ---
 
 # Vault lock
+
+Held by /stress-test $TICKER (token $TOKEN) since $NOW.
 EOF
+
+trap "rm -f '$LOCK_FILE'" INT TERM
+echo "ACQUIRED|$LOCK_FILE|$TOKEN"
 ```
+
+#### 1.3c — Multi-ticker acquisition (per-ticker individual locks)
+
+`/compare A vs B vs C` acquires THREE separate ticker locks, not one joint lock. Handles hyphen-containing tickers (`BRK-B`) correctly because each lock file uses only ONE ticker in its name.
+
+Acquisition is ordered + rollback-on-failure:
+
+```bash
+TICKERS="NVDA AAPL BRK-B"
+VAULT_WIDE_LOCK=".vault-lock"
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+TOKEN="$(printf '%08x' $RANDOM$RANDOM)-$(date -u +%s)"
+TIMEOUT_AT=$(date -u -v+10M +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
+
+# Pre-flight: vault-wide lock?
+if [ -f "$VAULT_WIDE_LOCK" ]; then
+  EX_TIMEOUT=$(grep '^timeout_at:' "$VAULT_WIDE_LOCK" | sed 's/timeout_at: //')
+  if [ "$EX_TIMEOUT" \> "$NOW" ]; then
+    echo "LOCK_HELD|$VAULT_WIDE_LOCK"
+    exit 1
+  fi
+  echo "STALE_LOCK|$VAULT_WIDE_LOCK"
+  exit 2
+fi
+
+# Attempt per-ticker acquisition with rollback on failure
+ACQUIRED=""
+FAILED=""
+for T in $TICKERS; do
+  LF=".vault-lock.$T"
+  if [ -f "$LF" ]; then
+    EX_TIMEOUT=$(grep '^timeout_at:' "$LF" | sed 's/timeout_at: //')
+    if [ "$EX_TIMEOUT" \> "$NOW" ]; then
+      FAILED="$LF"
+      break
+    fi
+    echo "STALE_LOCK|$LF"
+    exit 2
+  fi
+  cat > "$LF" <<EOF
+---
+token: $TOKEN
+skill: /compare
+scope: ticker:$T
+started_at: $NOW
+timeout_at: $TIMEOUT_AT
+session_id: ${CLAUDE_SESSION_ID:-unknown}
+multi_scope: $TICKERS
+---
+
+# Vault lock
+
+Held by /compare (token $TOKEN) since $NOW. Part of multi-ticker scope: $TICKERS.
+EOF
+  ACQUIRED="$ACQUIRED $LF"
+done
+
+# Rollback on partial acquisition
+if [ -n "$FAILED" ]; then
+  for LF in $ACQUIRED; do rm -f "$LF"; done
+  echo "LOCK_HELD|$FAILED"
+  exit 1
+fi
+
+trap "rm -f $ACQUIRED" INT TERM
+echo "ACQUIRED_MULTI|$TOKEN|$ACQUIRED"
+```
+
+The `multi_scope:` frontmatter field records all peer tickers in the same run — used by `/rollback` and `/lint` for audit. Rollback on partial acquisition guarantees the skill never ends up holding a proper subset of its intended ticker set.
 
 ### 1.4 Collision message (hard block)
 
+When Step 0.1 Bash echoes `LOCK_HELD|...`:
+
 ```
 ❌ Another skill is running — vault lock held.
-   Skill:       [skill]
-   PID:         [pid]
-   Scope:       [scope]
+   Skill:       [skill from existing lock]
+   Token:       [token from existing lock]
+   Scope:       [scope from existing lock]
    Started:     [started_at] ([X] minutes ago)
    Times out:   [timeout_at] (in [Y] minutes)
 
-Wait for the other skill to finish, or force-unlock if you are certain it has crashed:
+Wait for the other skill to finish. If you are certain the holder has crashed
+(terminal closed, session killed) and the timeout hasn't yet expired, you can
+manually force-unlock:
    rm [lockfile_path]
 
-(If the other PID is not actually running, this skill would have stolen the lock
- automatically — so if you see this message, the holder appears live.)
+If the holder's timeout has expired, /lint #43 surfaces stale locks; run /lint
+to confirm staleness before removing.
 ```
 
-### 1.5 Release
+When Step 0.1 Bash echoes `STALE_LOCK|...`:
 
-On skill exit (success, failure, or interrupt), remove the lockfile. Implementations register a `trap`:
+```
+⚠️ Stale lock detected — timeout exceeded.
+   Skill:       [skill from existing lock]
+   Token:       [token]
+   Scope:       [scope]
+   Started:     [started_at] ([X] minutes ago)
+   Timeout at:  [timeout_at] ([Y] minutes ago)
+
+The lock has exceeded its timeout budget. The prior run may have crashed, OR
+may still be legitimately running (long web-research runs, large PDF ingests,
+slow LLM responses).
+
+This skill does NOT auto-steal. Choose:
+  (a) Wait — the prior skill may still complete. Re-run this skill later.
+  (b) Force-unlock if you can confirm the prior run is truly abandoned:
+        rm [lockfile_path]
+      Then re-run this skill.
+  (c) Inspect the lock's manifest (if any — sync/status/prune manifests in
+      _Archive/Snapshots/ expose in-progress state): /lint surfaces them.
+
+Timeout-based auto-steal was removed intentionally (prior behavior risked
+racing a legitimately long-running skill). Staleness recovery is a user
+confirmation, not an automatic action.
+```
+
+### 1.5 Ownership verification (mandatory at start of every subsequent Bash block)
+
+After Step 0.1 succeeds with `ACQUIRED|...`, the LLM has captured `$TOKEN`. Every subsequent Bash block in the skill MUST begin with:
 
 ```bash
-trap "rm -f '$LOCK_FILE'" EXIT INT TERM
+EXPECTED_TOKEN="<paste-token-captured-from-step-0.1>"
+LOCK_FILE="<paste-lockfile-path-from-step-0.1>"
+
+if [ ! -f "$LOCK_FILE" ]; then
+  echo "❌ LOCK_LOST: $LOCK_FILE no longer exists. Another skill may have force-unlocked."
+  exit 3
+fi
+
+ACTUAL_TOKEN=$(grep '^token:' "$LOCK_FILE" | sed 's/token: //')
+if [ "$ACTUAL_TOKEN" != "$EXPECTED_TOKEN" ]; then
+  echo "❌ LOCK_STOLEN: $LOCK_FILE has token $ACTUAL_TOKEN (expected $EXPECTED_TOKEN)."
+  echo "   Another skill has overwritten the lock since Step 0.1."
+  exit 4
+fi
+
+# Lock ownership confirmed. Proceed with skill work.
 ```
 
-If a skill emits multiple Bash blocks, the trap must be set in the same block that holds the lock (it's shell-scoped). For skills that don't naturally produce a long-running Bash session, release the lock in the final reporting step via a final Bash call.
+**Multi-ticker case**: verification runs once per ticker lock held.
 
-### 1.6 Stale lock detection
+**If verification fails** (`LOCK_LOST` or `LOCK_STOLEN`): abort the skill immediately. Any in-progress transaction manifest remains in `status: in-progress` for `/rollback` recovery. Write a final report noting the lock-loss and what work landed before the loss was detected.
 
-A lock is stale if:
-- `pid` is not a running process (`kill -0 $pid` fails) — the holder died without cleanup, OR
-- `timeout_at` < current time — the skill exceeded its timeout budget (genuinely hung OR exited without trap firing)
+Between-block tool calls (Read / Edit / Write without Bash) do NOT need verification — they cannot release or overwrite the lockfile. The lock persists until either (a) an explicit release in the skill's final Bash block, (b) a user `rm`, or (c) the INT/TERM trap fires on signal.
 
-Stale locks are stolen automatically with a warning: `ℹ️ Stale lock detected: [skill] (PID [pid]) — holder [not running | timed out]. Reclaiming.`
+### 1.6 Stale detection (NO auto-steal)
 
-### 1.7 `/lint` enforcement
+A lock is **stale** if `timeout_at` < now. Staleness does NOT trigger automatic removal. Recovery is always a user decision:
 
-`/lint #43` (new — see `/lint` SKILL.md) globs `.vault-lock*` files, checks each is held by a live process, and surfaces orphans.
+1. On collision with a stale lock, Step 0.1 Bash exits with `STALE_LOCK|...` status.
+2. The skill surfaces the `⚠️ Stale lock detected` message (§1.4) with recovery options.
+3. User either waits, manually `rm`s, or inspects the prior run's manifest before acting.
+4. `/lint #43` globs `.vault-lock*` and surfaces all stale locks (timeout exceeded) as Important — this is the canonical discovery path for abandoned locks.
+
+**Why no auto-steal**: the original design stole locks when `timeout_at < now` regardless of whether the prior skill was still running. Long LLM stalls, slow web research, or large batch operations could legitimately exceed the timeout while the skill was still making progress — auto-steal raced the legitimate worker. User-confirmed recovery eliminates this race at the cost of slightly more manual intervention on true crashes.
+
+### 1.7 Release (explicit final Bash block)
+
+The skill's FINAL Bash block (typically in the reporting phase) runs:
+
+```bash
+# Ticker-scoped or vault-wide release
+rm -f "$LOCK_FILE"
+echo "RELEASED|$LOCK_FILE"
+```
+
+For multi-ticker (compare):
+```bash
+for LF in $ACQUIRED; do rm -f "$LF"; done
+echo "RELEASED_MULTI|$ACQUIRED"
+```
+
+The release Bash block is unconditional — it runs whether the skill succeeded or hit a non-fatal error. If the skill aborts before reaching the release step (crash, hard abort on section missing, etc.), the lock persists and appears stale on the next collision / `/lint` run.
+
+Trap on INT/TERM handles Ctrl-C and kill signals within the acquisition Bash block only — subsequent blocks don't inherit the trap (by design; the LLM's explicit final-release block is the primary cleanup path).
+
+### 1.8 `/lint` enforcement
+
+`/lint #43` globs `.vault-lock*` files and surfaces:
+- **Stale** (timeout_at < now): Important — `⚠️ Stale vault lock: [lockfile]. Skill [X] (token [T]) started [started_at], timeout [timeout_at]. Recovery: rm the lockfile if you can confirm the holder is truly abandoned.`
+- **Active** (timeout_at > now): Pass (lock is legitimately held).
+
+No PID check anymore — the token + timeout model is the authoritative signal.
 
 ---
 

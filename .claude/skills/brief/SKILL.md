@@ -16,7 +16,7 @@ $ARGUMENTS should be a ticker (e.g., "NVDA") or thesis name. If empty, ask the u
 ## Step 0: Pre-flight (MANDATORY)
 
 ### 0.1: Acquire vault lock
-Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 3 minutes. Release via `trap` on exit.
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 3 minutes. Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
 ### 0.2: Rename-marker pre-flight
 Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block per contract 2.3 — the brief's title line derives from the thesis's current filename, and any residual inbound references to the pre-rename name would not agree with the brief's title, producing inconsistent references.

@@ -13,7 +13,7 @@ Create a comprehensive thesis note for $ARGUMENTS.
 ## Step 0: Pre-flight (MANDATORY — runs before Step 1)
 
 ### 0.1: Acquire vault lock
-Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (vault + web research can be slow). Release via `trap` on exit.
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (vault + web research can be slow). Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
 ### 0.2: Rename-marker pre-flight
 Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists (should be rare for a `/thesis` invocation — you can't rename a non-existent thesis, but could exist if the user previously created a thesis, renamed it partially, then archived it, then is now creating a new thesis for the same ticker), hard-block per contract 2.3.

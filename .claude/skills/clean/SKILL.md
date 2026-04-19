@@ -25,7 +25,7 @@ else → default age-only mode (180 days; orphans PROTECTED)
 
 ## Step 0: Pre-flight
 
-Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Release via `trap` on exit.
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Capture the token emitted at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release explicitly in the final reporting Bash block.
 
 ## Step 1: Inventory Snapshots
 

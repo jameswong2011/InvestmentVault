@@ -16,9 +16,9 @@ $ARGUMENTS should contain 2+ tickers or company names (e.g., "BESI vs AMAT", "PA
 ## Phase 0.-1: Pre-flight (MANDATORY — runs before Phase 0)
 
 ### 0.-1.1: Acquire vault lock
-Parse tickers from `$ARGUMENTS`, sort alphabetically, join with `+`. Acquire a `ticker:A+B+C` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes. Release via `trap` on exit.
+Parse tickers from `$ARGUMENTS`. Acquire one lock per ticker (`.vault-lock.A`, `.vault-lock.B`, `.vault-lock.C`) per `.claude/skills/_shared/preflight.md` Procedure 1.3c (per-ticker individual locks — NOT a joint `+`-delimited lock, which would break on hyphen-containing tickers like `BRK-B`). Timeout budget: 10 minutes. Verify ownership at start of every subsequent Bash block via token match (Procedure 1.5). Release all N locks in the skill's final reporting Bash block.
 
-The multi-ticker lock scope means this skill blocks conflicting `ticker:A`, `ticker:B`, or `ticker:C` locks (where A/B/C overlap with our set) AND is blocked by a `vault-wide` lock.
+Rollback-on-partial-acquisition: if any per-ticker lock is held by another skill, release all previously-acquired locks in this run and abort. Prevents holding a proper subset of the compare set while a concurrent skill holds the rest.
 
 ### 0.-1.2: Rename-marker pre-flight for EACH ticker
 For each ticker in `$ARGUMENTS`, run `.claude/skills/_shared/preflight.md` Procedure 2. If ANY `.rename_incomplete.TICKER_N` exists for any ticker in the comparison set, hard-block per contract 2.3 — a comparison writes Log entries and potentially sector note updates for every compared thesis; split-name state on any one ticker would corrupt the cross-thesis comparison Research note's wikilinks.
