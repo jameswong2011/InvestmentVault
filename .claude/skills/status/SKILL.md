@@ -317,7 +317,7 @@ Distinguish "sector note distinguishes monitoring" and "sector note displays con
 
 1. User closes thesis via `/status active→closed` → Step 5b removes the wikilink from sector Active Theses, `/status` archives the thesis.
 2. User later runs `/rollback TICKER` to reopen. The rollback cascade (Step 2.5) typically restores BOTH the thesis file AND the sector-note snapshot taken before closure — so the sector note is reverted to its PRE-closure state, which already has the wikilink in Active Theses.
-3. User (per User Guide §3n) checks the restored `status:` frontmatter. If the snapshot was pre-closure: status is already `active`, no `/status` run needed. If the snapshot was post-closure: user runs `/status TICKER status closed→active`.
+3. User (per User Guide §3.F — Recover archetype, "Undo a closure") checks the restored `status:` frontmatter. If the snapshot was pre-closure: status is already `active`, no `/status` run needed. If the snapshot was post-closure: user runs `/status TICKER status closed→active`.
 
 At step 3, if the sector was already restored by the rollback cascade, the wikilink is present — Step 5b would add a duplicate and the sector note would end up double-listing the thesis. The decision-matrix row above prevents this: check wikilink presence first, only set `edit_planned: true` when ABSENT.
 
