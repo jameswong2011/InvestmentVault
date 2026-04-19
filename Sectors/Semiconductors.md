@@ -40,7 +40,7 @@ tags: [sector, moc]
 - **CRWV (CoreWeave)** — GPU cloud IPO'd Mar 2025 at $23B. Revenue $30M (2022) → $500M (2023) → ~$2B contracts (2024). NVDA-invested. Capital-intensive, debt-funded model. Deep Grok research available.
 - **VRT (Vertiv)** — Data center power/cooling with structural AI tailwind. 23 manufacturing facilities, NVDA collaboration, OCP co-development with META. Deep Grok research available across 2 notes.
 
-## Research Notes
+## Related Research
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei Ascend three-year roadmap: 950PR Q1 2026 (128GB/1.6 TB/s in-house HBM), 1.6M-die plan, ByteDance $5.6B order, Atlas SuperCluster 524 EFLOPS FP8 — quantifies China-domestic-alternative threat to NVDA, validates non-Nvidia vertically integrated AI compute at scale
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen Huang CEO interview: CUDA/install base moat, ASIC competition dismissal, $100B+ supply chain commitments, China compute sufficiency argument, Groq inference segmentation
 - [[Research/2025-11-27 - Broadcom Data Center Opportunity]] — Broadcom Data Center Opportunity
@@ -85,3 +85,7 @@ tags: [sector, moc]
 - [[Research/2026-04-15 - BESI - Hybrid Bonding Market Projections]] — HB market $1.47B→$5.6B (2030), BESI D2W positioning, Samsung/SK Hynix/Micron adoption timelines
 - [[Research/2026-04-15 - LITE COHR - Lumentum vs Coherent Analysis]] — "Great Photonic Divergence": LITE +1,098% vs COHR +328%, pure-play vs integrated comparison
 - [[Research/2026-04-15 - SNDK - Investment Evaluation]] — Post-separation pure-play NAND, HBM exclusion as structural limitation, 2026 capacity sold out
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

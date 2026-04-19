@@ -20,7 +20,7 @@ tags: [sector, moc]
 ## Watchlist
 <!-- Names being tracked but no thesis yet -->
 
-## Research Notes
+## Related Research
 - [[Research/2025-12-10 - Australian Healthcare Non-Traditional Models]] — Australian Healthcare Non-Traditional Models
 - [[Research/2026-01-18 - Healthcare and Biotech Stock Screen]] — Healthcare and Biotech Stock Screen
 - [[Research/2026-03-20 - HIMS Investment Case Deep Dive]] — HIMS Investment Case Deep Dive
@@ -30,3 +30,7 @@ tags: [sector, moc]
 - [[Research/2026-03-21 - HIMS - Gemini Investment Case Canvas]] — HIMS comprehensive investment case
 - [[Research/2026-02-12 - HIMS - Gemini Analysis Outline Canvas]] — HIMS earlier analysis outline
 - [[Research/2026-01-21 - ISRG - Gemini Investment Thesis Canvas]] — Intuitive Surgical competitive moat and da Vinci 5
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

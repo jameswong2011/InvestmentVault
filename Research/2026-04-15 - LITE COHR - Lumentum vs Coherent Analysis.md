@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors
 source: Raw/Lumentum vs.pdf
 source_type: deep-dive
+propagated_to: [LITE, IQE]
 ---
 
 # Lumentum vs Coherent: Comprehensive Business and Investment Analysis

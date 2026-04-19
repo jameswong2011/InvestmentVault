@@ -4,6 +4,7 @@ tags: [research, crypto, ethereum, stablecoins, enterprise, DeFi]
 status: active
 sector: Consumer & Digital
 source: ChatGPT conversation export (Conv 50)
+propagated_to: [BTC-CRYPTO]
 ---
 
 # Ethereum Investment Dynamics: Stablecoin Adoption and Enterprise Usage (Mid-2025)

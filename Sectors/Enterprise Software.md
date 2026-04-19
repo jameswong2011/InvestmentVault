@@ -34,7 +34,7 @@ tags: [sector, moc]
 - **FROG (JFrog)** — Universal artifact management for DevOps/software supply chain. Initial Grok overview ingested; needs deeper competitive/financial analysis.
 - **PANW (Palo Alto Networks)** — Thesis created, moved to dedicated [[Sectors/Cybersecurity]] sector. Platform consolidation play; unified telemetry ML flywheel across 5 pillars (Strata + Prisma + Cortex + CyberArk $25B + Chronosphere $3.35B). NGS ARR $6.3B (+33%), FY2026 guide $11.3B. See [[Theses/PANW - Palo Alto Networks]].
 
-## Research Notes
+## Related Research
 - [[Research/2025-12-26 - ServiceNow Acquisition Strategy]] — ServiceNow Acquisition Strategy
 - [[Research/2026-01-06 - ServiceNow Stock Decline and AI Traction]] — ServiceNow Stock Decline and AI Traction
 - [[Research/2026-03-29 - Palantir Comparison]] — Palantir Comparison
@@ -66,3 +66,7 @@ tags: [sector, moc]
 - [[Research/2026-04-15 - PLTR - Competitive Win Scenarios]] — Palantir wins in defense, complex supply chain, healthcare, manufacturing IoT — data complexity as common thread
 - [[Research/2026-04-15 - IOT - Samsara Business Deep Dive]] — Samsara $1.9B ARR (+30%), 2M+ devices, 25T data points, first GAAP-profitable quarter, data flywheel moat
 - [[Research/2026-04-15 - SHOP - Comprehensive Update April 2026 - deep-dive]] — Shopify FY2025 results, agentic commerce protocols, tariff impact, competitive dynamics, USDC integration
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

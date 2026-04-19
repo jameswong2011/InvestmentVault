@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors & Photonics
 ticker: SNDK
 source: Gemini Canvas export
+propagated_to: [SNDK, 285A]
 ---
 
 # SanDisk Corporation (NASDAQ: SNDK): The AI Storage Supercycle and the High-Bandwidth Flash Revolution

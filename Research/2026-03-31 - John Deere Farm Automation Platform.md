@@ -3,6 +3,7 @@ date: 2026-03-31
 tags: [research]
 status: active
 source: Claude conversation export
+propagated_to: [DE]
 ---
 
 # John Deere Farm Automation Platform

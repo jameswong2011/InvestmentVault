@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: NET
 source: Gemini Canvas export
+propagated_to: [NET]
 ---
 
 # Assessing Cloudflare’s Pathway to Becoming the Fourth Major Cloud Provider

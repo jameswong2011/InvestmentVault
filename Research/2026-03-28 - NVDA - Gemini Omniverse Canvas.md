@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors & Photonics
 ticker: NVDA
 source: Gemini Canvas export
+propagated_to: [NVDA]
 ---
 
 # The Architectural Foundations of Physical Artificial Intelligence: A Strategic Evaluation of Nvidia Omniverse, PhysX, and the Global Competitive Landscape of World Model-Based AI

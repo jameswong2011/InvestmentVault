@@ -4,6 +4,7 @@ tags: [research, BESI, semiconductors, HBM, advanced-packaging, valuation]
 status: active
 sector: Semiconductors & Photonics
 source: Grok AI conversation export
+propagated_to: [BESI]
 ---
 
 # BESI - Analyst Estimates and Valuation Trends

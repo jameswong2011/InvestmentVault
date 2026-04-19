@@ -4,6 +4,7 @@ tags: [research, shop, enterprise-software, ecommerce, deep-dive]
 status: active
 sector: Enterprise Software
 source: Web research April 2026 — multiple sources
+propagated_to: [SHOP]
 ---
 
 # SHOP — Comprehensive Update April 2026

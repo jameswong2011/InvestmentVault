@@ -6,6 +6,7 @@ sector: Financials
 ticker: EDEL
 source: ChatGPT conversation export
 source_type: deep-dive
+propagated_to: [EDEL]
 ---
 # Edelweiss Financial Group Market Share
 

@@ -6,6 +6,7 @@ sector: Enterprise Software
 ticker: NOW
 source: https://claude.ai/public/artifacts/c346bd58-4e90-4c25-8e3d-3ae44d243beb
 source_type: deep-dive
+propagated_to: [NOW, PLTR, NET]
 ---
 
 # Can AI Coding Tools Structurally Disrupt ServiceNow?

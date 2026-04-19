@@ -49,9 +49,15 @@ Build the candidate target set as the union. Then verify each target actually ha
 ```
 For each candidate ticker:
   Read Theses/TICKER - *.md's ## Log section.
-  Search for any "Scenario [[Research/...scenario-name...]]" entry.
-  If found, add to the affected_theses list with the Log entry's date.
-  If not found, exclude from the reverse target set (this thesis was a body wikilink but never received a Log entry — nothing to reverse).
+  Search for any "Scenario [[Research/...scenario-name...]]" entry → match_scenario_entry: true | false
+  Search for any "Scenario REVERSED [[Research/...scenario-name...]]" entry → match_reversed_entry: true | false
+
+  Classify:
+    - match_scenario_entry == false → exclude (thesis was body-wikilinked but never received producer Log entry — nothing to reverse).
+    - match_scenario_entry == true AND match_reversed_entry == true → exclude (already reversed in a prior /scenario reverse run; appending another REVERSED entry would duplicate without adding signal). Log: `ℹ️ Skipped [TICKER] — Scenario REVERSED entry already exists for this scenario.`
+    - match_scenario_entry == true AND match_reversed_entry == false → add to affected_theses list with the original Scenario entry's date.
+
+> **Why filter on existing REVERSED entries**: re-running `/scenario reverse [same scenario]` (e.g., to retry partial failures from a prior run, or because the user forgot they already reversed it) would otherwise append a SECOND REVERSED entry to already-reversed theses. The original purpose of REVERSED is corrective signal preservation; duplicates inflate Log noise without semantic meaning. The filter makes the operation idempotent — re-running on a fully-reversed scenario is a no-op for already-handled theses; only theses that failed in the prior run (no REVERSED entry yet) are retried.
 ```
 
 ### R3: Confirm reverse intent (Tier 3 — mandatory)
@@ -87,7 +93,11 @@ For each affected thesis, append (max 2 lines per CLAUDE.md):
 
 > **Drift coupling**: `/sync` Step 3e excludes entries starting with `"Scenario REVERSED"` from drift detection. **Registry entry**: `.claude/skills/_shared/log-prefixes.md` §14. Do not change this prefix without updating the registry and `/sync`; `/lint` check #29 flags drift.
 
-**Failure handling**: same per-thesis loop as forward Phase 6.2 — track succeeded/failed lists. Do NOT abort on individual append failure; continue and report failures in R6.
+**Failure handling and atomicity tracking**: same per-thesis loop as forward Phase 6.2 — track `reverse_succeeded: [tickers]` and `reverse_failed: [tickers, with reason]`. Do NOT abort on individual append failure; continue and report failures in R6.
+
+**No retry marker required**: unlike `/sync`'s producer-skill atomicity (which uses `propagated_to:` to signal "already done"), reverse mode's idempotency is encoded in the Log itself — the existence of `Scenario REVERSED [[Research/...scenario]]` entry on a thesis is the dedup signal that R2's classifier reads on subsequent runs. So a partial failure leaves the failed theses without a REVERSED entry, and the next `/scenario reverse [same scenario]` invocation will re-classify them as needing reversal (R2 step `match_scenario_entry == true AND match_reversed_entry == false`) and retry them. No sidecar marker needed.
+
+**Re-run pattern for partial failures**: if R6 reports `reverse_failed: [TICKER1 (reason), TICKER2 (reason)]`, the user runs `/scenario reverse [same scenario]` again. R2 classifies TICKER1/TICKER2 as still-needing-reversal (their Log has Scenario but not REVERSED), classifies all already-succeeded theses as already-reversed (excluded from this run), and R4 retries only the still-failing targets. Idempotent re-runs converge to fully-reversed state without duplicate REVERSED entries on already-handled theses.
 
 ### R5: Update _hot.md
 
@@ -103,8 +113,10 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by 
 
 - **Mode**: `reverse`
 - **Scenario**: `[[Research/YYYY-MM-DD - Scenario - Name]]` (preserved on disk — not deleted)
-- **Theses with reversal Log entry appended**: [count] — [list]
-- **Failed appends** (if any): [list with reasons]
+- **Theses with reversal Log entry appended (this run)**: [count] — [list of `reverse_succeeded`]
+- **Theses skipped — already reversed in prior run**: [count] — [list from R2 classifier]. (No-op for these tickers; idempotent re-run.)
+- **Theses skipped — no original Scenario Log entry**: [count] — [list]. (Body wikilinks but never received producer entry; nothing to reverse.)
+- **Failed appends (this run)**: [list of `reverse_failed` with reasons]. To retry: re-run `/scenario reverse [same scenario]` — R2's classifier will exclude the already-succeeded theses and retry only the still-failing ones.
 - **`_hot.md` updated**: Active Research Thread + Recent Conviction Changes + Open Questions (if applicable)
 - **No graph impact** — Log appends only.
 - **Follow-up**: `→ Run /graph last to register the (already-changed-mtime) thesis files in incremental adjacency. /status changes (if any conviction was reversed alongside) are separate operations the user must run explicitly.`

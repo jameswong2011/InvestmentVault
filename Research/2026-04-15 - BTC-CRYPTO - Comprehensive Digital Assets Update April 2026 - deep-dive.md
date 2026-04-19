@@ -4,6 +4,7 @@ tags: [research, crypto, bitcoin, ethereum, stablecoins, quantum-risk, regulatio
 status: active
 sector: Crypto & Digital Assets
 source: Web research compilation (multiple sources)
+propagated_to: [BTC-CRYPTO]
 ---
 
 # Comprehensive Digital Assets Update — April 2026

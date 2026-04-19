@@ -5,6 +5,7 @@ status: active
 sector: Agriculture & Industrial Equipment
 ticker: DE
 source: Gemini Canvas export
+propagated_to: [DE]
 ---
 
 # The Silicon Furrow: A Strategic Assessment of John Deere’s Technology Advantage in the Industrial and Agricultural Sectors

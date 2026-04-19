@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: APP
 source: Gemini Canvas export
+propagated_to: [APP]
 ---
 
 # The AXON Dominance: A Comprehensive Analysis of AppLovin’s Strategic Pivot, Competitive Resilience, and Future Growth Engines

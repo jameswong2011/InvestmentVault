@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 source: ChatGPT conversation export
 source_type: deep-dive
+propagated_to: [NET]
 ---
 
 # Cloudflare Workers: Adoption, Competition, Margins & Architecture

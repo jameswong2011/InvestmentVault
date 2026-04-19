@@ -4,6 +4,7 @@ tags: [research, semiconductors, photonics, CPO, silicon-photonics, gemini-canva
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+propagated_to: [LITE, IQE]
 ---
 
 # Silicon Photonics Supply Chain: The Investment Architecture for the Post-Copper Era

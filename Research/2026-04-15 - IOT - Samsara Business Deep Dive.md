@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 source: Raw/Samsara Inc.pdf
 source_type: deep-dive
+propagated_to: [IOT, PLTR, DE]
 ---
 
 # Samsara Inc. (IOT) — Connected Operations Platform Deep Dive

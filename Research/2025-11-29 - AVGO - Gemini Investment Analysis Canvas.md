@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors & Photonics
 ticker: AVGO
 source: Gemini Canvas export
+propagated_to: [AVGO, NVDA]
 ---
 
 # Broadcom Inc. (AVGO): The Sovereign Aggregator and Architect of the Open AI Era

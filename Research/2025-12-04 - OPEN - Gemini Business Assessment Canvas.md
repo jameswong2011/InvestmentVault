@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: OPEN
 source: Gemini Canvas export
+propagated_to: [OPEN]
 ---
 
 # Opendoor Technologies Inc. (OPEN): Strategic Pivot, Operational Restructuring, and Valuation Analysis in the "Founder Mode" Era

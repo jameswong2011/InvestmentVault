@@ -4,6 +4,7 @@ tags: [research, semiconductors, NAND, flash, storage, memory, YMTC, HBF, SNDK, 
 status: active
 sector: Semiconductors / Memory
 source: web research (TrendForce, Tom's Hardware, SanDisk IR, SK Hynix newsroom, Digitimes, Blocks and Files, EE Times)
+propagated_to: [285A, SNDK]
 ---
 
 # NAND Sector: Three Key Industry Questions — April 2026 Update

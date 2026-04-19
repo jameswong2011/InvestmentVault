@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors
 source: Raw/Hybrid Bonding Market Projections and Strategic Analysis.pdf
 source_type: deep-dive
+propagated_to: [BESI, LITE, IQE]
 ---
 
 # Hybrid Bonding Market Projections and Strategic Analysis

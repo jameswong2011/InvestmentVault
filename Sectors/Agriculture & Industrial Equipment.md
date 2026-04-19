@@ -478,8 +478,7 @@ The Iran/Hormuz crisis ([[Macro/Commodity Impacts from Iran Tensions]]) creates 
 | Trimble | TRMB | Residual ag exposure post-PTx JV; construction technology platform | Monitoring |
 | Samsara | IOT | Connected operations platform overlapping with Deere C&F customer base | Active thesis — see [[Theses/IOT - Samsara]] |
 
-## Research Notes
-
+## Related Research
 - [[Research/2026-04-15 - DE - Investment Evaluation]] — Comprehensive DE evaluation: $45.7B FY2025 (-17.8%), trough margins 450bps above 2016, autonomous tillage commercial 2026, ~9% base case return
 - [[Research/2026-03-31 - John Deere Farm Automation Platform]] — Farm platform thesis, probability assessment, competitive dynamics
 - [[Research/2025-12-11 - John Deere Technology Assessment]] — Technology advantage vs ag/industrial equipment peers

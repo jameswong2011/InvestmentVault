@@ -160,7 +160,7 @@ The permanent destruction of 12.5 MTPA of Qatari LNG capacity provides a multi-y
 ## Watchlist
 <!-- Names being tracked but no thesis yet -->
 
-## Research Notes
+## Related Research
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — Broad commodity market outlook 2026
 - [[Research/2026-03-21 - Betting on Inflation Trades]] — Inflation trade ideas and positioning
 - [[Research/2026-04-02 - GCC Market Shorting Options]] — GCC equity/bond shorting instruments
@@ -168,3 +168,7 @@ The permanent destruction of 12.5 MTPA of Qatari LNG capacity provides a multi-y
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Iran war macroeconomic transmission mechanisms
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Capital allocation during Iran conflict
 - [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]] — Full Reliance Industries research update: Jio IPO, retail quick commerce, new energy Samsung C&T deal, O2C bifurcation, competitive landscape, India macro
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

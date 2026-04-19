@@ -4,6 +4,7 @@ tags: [research, PLTR, valuation, government-tech, AI]
 status: active
 sector: Enterprise Software
 source: Grok AI conversation export
+propagated_to: [PLTR]
 ---
 
 # PLTR - Palantir Valuation Analysis

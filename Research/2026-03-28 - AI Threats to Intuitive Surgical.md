@@ -4,6 +4,7 @@ tags: [research, healthcare-medtech]
 status: active
 sector: Healthcare & MedTech
 source: Claude conversation export
+propagated_to: [ISRG]
 ---
 
 # AI Threats to Intuitive Surgical

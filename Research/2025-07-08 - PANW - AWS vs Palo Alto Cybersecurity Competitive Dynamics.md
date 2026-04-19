@@ -4,6 +4,7 @@ tags: [research, PANW, AMZN, cybersecurity, cloud-security, competitive-dynamics
 status: active
 sector: Cybersecurity
 source: Grok AI conversation export
+propagated_to: [PANW]
 ---
 
 # PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics

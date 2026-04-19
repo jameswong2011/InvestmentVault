@@ -142,6 +142,60 @@ Check whether other snapshots were created by the same operation (indicating a m
 
 If no matches are found, proceed silently to Step 3.
 
+### Step 2.5b: Sync manifest sidecar lookup (sync-trigger snapshots only)
+
+If the selected snapshot's `snapshot_trigger:` is `sync` (or any matched snapshot in the cascade is sync-triggered), additionally check for a corresponding sync manifest:
+```
+_Archive/Snapshots/_sync-manifest (sync-YYYY-MM-DD-HHMMSS).md
+```
+where `HHMMSS` is the same batch ID as the snapshot.
+
+If the manifest exists, parse:
+- `## Theses with snapshots taken (Tier A)` — these are already in the cascade restore set from Step 2.5a; manifest confirms.
+- `## Theses with Log-only appends (Tier B — NO snapshot, NOT recoverable)` — these are the **invisible-to-cascade** entries. Surface them to the user during the cascade prompt.
+- `## Sector notes touched` (Tier B link-only entries) and `## Macro notes touched` (Tier B link-only entries) — also invisible to cascade.
+
+Extend the cascade prompt with a new section:
+```
+⚠️ Tier B appends from this batch (cannot be auto-restored — manual review needed):
+
+[N] thesis Log entries written without snapshots (cross-thesis propagation, augmented targets, etc.):
+
+  - Theses/TICKER1 - Name.md:
+    ### YYYY-MM-DD
+    - [[Research/source]]: [what changed] — conviction [impact]
+    Reason: cross-thesis propagation from [[Research/...]] (TICKER1 wikilinked from another thesis touched in this run)
+
+  - Theses/TICKER2 - Name.md:
+    [Log entry text]
+    Reason: ...
+
+[M] sector/macro notes received link-only additions (no analytical text changed; harmless to leave in place):
+  - Sectors/Foo.md (link added to Related Research)
+  - Macro/Bar.md (link added to body)
+
+After the cascade restore completes, you'll need to manually decide per Tier B Log entry:
+  (1) Leave as historical audit trail (preferred — Tier 2 append-only convention).
+  (2) Strikethrough with a reverted-on-rollback note.
+  (3) Manually delete (violates Tier 2 — only if entry was clearly erroneous).
+
+The link-only additions are Tier B but harmless — they just point to a research note whose content was reverted on cascade. Most users leave them in place.
+
+Options:
+  (a) Cascade — restore ALL Tier A files. Tier B entries listed above will be SURFACED in Step 7 report for manual review (you decide per entry).
+  (b) Cascade + strikethrough — restore Tier A files AND auto-strikethrough every Tier B Log entry above with the format "~~[entry]~~ → Reverted YYYY-MM-DD: rolled back via /rollback batch [batch ID]". Preserves audit trail with explicit reversal signal.
+  (c) Single — restore only [[selected file]] (NOT recommended — even more inconsistencies).
+  (d) Cancel.
+```
+
+**Wait for user selection.** If (b) is chosen, perform the strikethrough Edits in batched phase after Step 5 cascade restore completes (one Edit per Tier B Log entry). If (a) is chosen, just include the Tier B list in the Step 7 report so the user can act post-rollback.
+
+If the manifest does NOT exist (sync ran before manifest support was added, OR the manifest write itself failed in Step 7.5c), fall back to the original Step 2.5a behavior with an explicit warning: `⚠️ No sync manifest found for batch [batch ID]. Cascade will only restore Tier A snapshots; any Tier B Log appends from this sync are invisible and will persist after rollback. To find them manually, grep `Theses/*.md` for entries dated [snapshot date] referencing [source research notes from the snapshot's referenced sources].`
+
+### Step 2.5c: Non-sync trigger snapshots
+
+For non-sync triggers (status, deepen, compare, prune, catalyst, rename, rollback), no manifest exists — those skills snapshot every modified file (Tier A only) per their own atomicity rules. Proceed with Step 2.5a behavior unchanged.
+
 ## Step 3: Confirm (Mandatory)
 
 Present the rollback plan and **wait for explicit user confirmation**:

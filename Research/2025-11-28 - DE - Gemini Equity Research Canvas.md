@@ -5,6 +5,7 @@ status: active
 sector: Agriculture & Industrial Equipment
 ticker: DE
 source: Gemini Canvas export
+propagated_to: [DE]
 ---
 
 # EQUITY RESEARCH: DEERE & COMPANY (NYSE: DE)

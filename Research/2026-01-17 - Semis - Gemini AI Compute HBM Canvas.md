@@ -4,6 +4,7 @@ tags: [research, semiconductors, HBM, AI, compute, memory, gemini-canvas]
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+propagated_to: [NVDA, SNDK, 285A]
 ---
 
 # The Paradox of Infinite Inference: Architectural Disruption, The Jevons Cycle, and the structurally Persistent HBM Shortage (2025–2027)

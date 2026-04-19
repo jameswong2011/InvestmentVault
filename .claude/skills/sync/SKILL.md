@@ -101,13 +101,28 @@ If `_graph.md` exists, read it to optimize dependency resolution:
 3. For each changed Macro note → use the Macro reverse index to find affected theses.
 4. For each changed Sector note → use the Sector reverse index to find member theses.
 
-**File-direct fallback** (used when `_graph.md` is missing, stale, or doesn't list the changed file):
+**File-direct fallback** (used when `_graph.md` is missing, stale, doesn't list the changed file, or the reverse index returns an empty target set):
 
 For changed research notes not found in the graph:
 1. Check the research note's `ticker:` frontmatter — if it matches a `Theses/[TICKER] - *.md` file, include that thesis.
 2. Check outbound `[[Theses/...]]` wikilinks in the research note body — include each linked thesis.
 3. Check `tags:` for ticker tokens (all-uppercase, 1-5 chars) matching `Theses/[TICKER] - *.md` filenames.
 4. If the graph exists, check outbound `[[Macro/...]]` wikilinks against the Macro reverse index.
+
+**For changed macro notes** (mirrors the research-note fallback pattern — runs even when the graph exists, to catch theses that declare `[[Macro/X]]` adjacency without the macro reciprocating `[[Theses/TICKER]]`):
+
+1. **Reverse-index resolution** (graph-assisted, primary): Use the Macro → Theses reverse index in `_graph.md` to find theses whose `cross-thesis: macro:` adjacency lists the changed macro note. This catches the bidirectional case where the macro body wikilinks the thesis.
+2. **Body-grep fallback** (always runs to catch one-direction adjacency): grep `Theses/*.md` for wikilink patterns referencing the changed macro filename:
+   - `[[Macro/[macro-basename]]]`
+   - `[[Macro/[macro-basename]|alias]]`
+   - `[[Macro/[macro-basename]#section]]`
+   - `[[Macro/[macro-basename].md]]`
+   - `[[[macro-basename]]]` (folder-less form, less common)
+   For each matching thesis file, include it in the propagation set. Dedup against reverse-index results.
+
+> **Why the body-grep fallback is necessary**: the reverse index is built from the macro note's outbound wikilinks (`[[Theses/...]]` in the macro body). If a thesis declares `[[Macro/X]]` but the macro doesn't reciprocate `[[Theses/TICKER]]`, the reverse index returns empty for that macro, and the thesis silently fails to receive propagation when the macro is edited. The body-grep fallback closes this gap. `/lint #23` (reverse-index consistency) catches the asymmetry periodically; the fallback ensures correct propagation between lint runs.
+
+**For changed sector notes**: graph-assisted reverse-index resolution is sufficient — sector notes are required by template (`Templates/Sector Template.md`) to have `## Active Theses` listing every active thesis. `/lint #2` (Missing MOC entries) catches theses with `sector:` frontmatter missing from their sector note's Active Theses listing. **Caveat**: sector structural compliance (e.g., a sector note that loses its `## Active Theses` heading entirely) is not currently enforced by any `/lint` check — relies on user discipline + Sector Template authoring conventions. If a sector note's reverse-index population becomes unreliable in practice, add a body-grep fallback for sectors mirroring the macro fallback above.
 
 **Closed-status check**: For every thesis identified above, read its frontmatter. If `status: closed` AND the file is still in `Theses/`, skip propagation and log: `⚠️ Skipped [TICKER] — status: closed but file remains in Theses/ (failed archive move). Complete: mv "Theses/[file]" "_Archive/[file]" → /graph last. Or reopen: /status TICKER status closed→active [rationale].`
 
@@ -127,9 +142,17 @@ Reading all ~40 thesis notes, ~13 sector notes, and ~6 macro notes in full will 
 
 #### Pass 2 — Triage and deep read
 5. Using the lightweight summaries + the changed file list, classify each thesis:
-   - **High delta**: Directly referenced by a changed research note, shares sector with changed content, has cross-thesis links to changed theses, or its own Log shows recent conviction/status changes → read the **full thesis note**.
-   - **Low delta**: Same macro exposure or adjacent sector to changed content, but no direct reference → read **Summary + Non-consensus Insights + Outstanding Questions + Bull/Bear Case** sections only (skip Business Model, Industry Context, Key Metrics).
-   - **No delta**: No plausible propagation path from any changed content → do NOT read further.
+   - **High delta** (any of):
+     - **Self-modified**: the thesis's OWN file mtime is newer than `.last_sync` (the file appears in the changed-file set from Step 1). Captures manual edits where the user rewrote a section without writing a Log entry — those edits would otherwise be invisible to the heuristic-based classification below. Always escalate to High delta and read the **full thesis note**.
+     - Directly referenced by a changed research note, OR
+     - Shares sector with changed content, OR
+     - Has cross-thesis links to changed theses, OR
+     - Its own Log shows recent conviction/status changes
+     → read the **full thesis note**.
+   - **Low delta**: Same macro exposure or adjacent sector to changed content, but no direct reference AND not self-modified → read **Summary + Non-consensus Insights + Outstanding Questions + Bull/Bear Case** sections only (skip Business Model, Industry Context, Key Metrics).
+   - **No delta**: No plausible propagation path from any changed content AND not self-modified → do NOT read further.
+
+   > **Why "self-modified" must be its own High-delta trigger**: the four heuristics below it (referenced-by, shares-sector, cross-thesis-link, recent-Log) all infer "this thesis was affected" from external signals. None of them fire when the user manually edited the thesis itself with no Log entry — but that edit is exactly the kind of vault change `/sync all` is supposed to propagate. Classifying a self-edited thesis as No-delta because no other file references it would silently drop the user's manual changes from propagation analysis.
 6. Read sector notes in full **only for sectors containing at least one High-delta thesis**.
 7. Proceed to Step 2 with the prioritised reading set.
 
@@ -314,6 +337,31 @@ If any check fails: `⚠️ Sector note may contain a partial edit in [section].
 
 For each affected Macro note:
 
+### 5.0: Per-source idempotency check (mirrors Step 4.0 for sectors)
+
+Before snapshotting and editing a macro note, check whether this macro note has already received propagation derived from the **same source insight** in this calendar day. Without this check, same-day double-`/sync` runs (e.g., `/sync TICKER` followed by default `/sync`) can compound analytical edits to macro probability weightings, value chain commentary, or trading-allocation paragraphs — producing duplicated text or contradictory updates layered on top of each other.
+
+Method (per source research note triggering the macro update):
+
+1. **Wikilink presence check** — scan the macro note body for the source research note's wikilink (e.g., `[[Research/2026-04-19 - X - earnings]]`).
+   - **Wikilink absent** → first-time propagation; proceed to Step 5a snapshot + 5b edit.
+   - **Wikilink present** → ambiguous; was it added today by a prior run, or earlier from independent propagation? Continue to step 2.
+
+2. **Log section check** — if the macro note has a `## Log` section (not all macros do — they aren't required by template), scan for any `### YYYY-MM-DD` entry where `entry_date == today` AND the entry references the source research note's wikilink.
+   - **Today-dated entry references this source** → macro already received propagation for this research note today (likely from a prior `/sync TICKER` in the same session). Skip both 5a snapshot and 5b edit. Log: `ℹ️ Skipped macro update [Macro Note] — Log already contains today's entry for [research-note] (likely propagated by earlier /sync in this session).`
+   - **No today-dated entry references this source** → strong signal that today's propagation hasn't happened. **Skip step 3 entirely; proceed to 5a snapshot + 5b edit.** The Log section gives a stronger signal than mtime (which can be advanced by unrelated user edits), so if the Log says "not propagated today", trust it.
+   - **Macro has no `## Log` section** (common — macros are narrative documents without strict template) → fall through to step 3 (mtime is the only available signal).
+
+3. **Mtime fallback** (runs ONLY when step 2 reported "no `## Log` section"): check the macro note's mtime against `.last_sync`. If `mtime > .last_sync` AND the wikilink is present (Step 5.0 step 1 confirmed), this suggests prior propagation in the current `/sync` window (or earlier same-day session) — skip both snapshot and edit to avoid double-edit. Log: `ℹ️ Skipped macro update [Macro Note] — wikilink present and mtime > .last_sync (no Log section to confirm precise propagation date); likely propagated within current sync window. Forced re-propagation requires manual edit or /sync all.`
+
+If all three checks pass without a skip signal (i.e., wikilink absent in step 1, OR step 2 found no today-date entry on a Log-equipped macro, OR step 3 mtime fallback didn't fire on a Log-less macro), proceed to 5a snapshot + 5b edit normally.
+
+> **Step 3 false-positive risk**: the mtime fallback can mistakenly skip when the user manually edited the macro (advancing mtime) AND the source wikilink happens to already be present (added by a prior /sync). Trade-off: mtime is a coarse signal for Log-less macros, but the alternative (no idempotency check at all) leaves macros vulnerable to compounded analytical-text edits across same-day double-syncs. To force re-propagation on a Log-less macro that was incorrectly skipped, run `/sync all` (which uses two-pass triage rather than idempotency-skip) or manually edit the macro to remove the source wikilink before re-running /sync.
+
+> **Why mtime-fallback for macros but not sectors**: sector notes are required by template to have `## Log` sections (per /lint sector template enforcement). Macro notes are narrative documents with variable structure — many have no Log section. The mtime fallback gives macros a same-day double-edit guard without requiring a Log section.
+
+> **Atomicity-with-Step-3 note**: If a thesis change in Step 3 cascades into multiple macro notes (rare — usually 1-2 macros per thesis), apply this check independently per macro. Skipping one macro does not affect propagation to others.
+
 ### 5a: Pre-Edit Safety — Snapshot
 If edits will modify existing analytical text (scenario analysis, probability weightings, trading/allocation implications) — not just adding wikilinks:
 1. ```bash
@@ -376,7 +424,7 @@ If `_hot.md` does not exist (first run), create it with sections: `## Active Res
 
 ## Step 7: Touch Watermark and (for /sync all) Write Graph-Rebuild Marker
 
-**Mandatory. Runs after ALL writes are complete, immediately before reporting.**
+**Mandatory. Runs after ALL content writes (Steps 3–6) are complete, before Step 7.5 manifest write and Step 8 reporting.**
 
 ### Mode-conditional watermark behavior
 
@@ -406,6 +454,104 @@ touch .sync_all_fresh
 `/graph` reads this marker at Watermark Resolution and forces a full rebuild (Steps 1–8) regardless of mode, then deletes the marker after a successful write. If the user does follow the recommended chain (`/graph` full), the full rebuild path also deletes the marker naturally.
 
 **Why a marker file (not poisoning `_graph.md date:`)**: `/sync` must not write `_graph.md` — the metadata-cull architecture concentrates graph ownership in `/graph`. A vault-root marker file keeps `/sync` content-only while giving `/graph` an unambiguous signal. The marker is cheap (zero-byte file), ignorable by every other skill, and self-cleaning on the next `/graph` run.
+
+## Step 7.5: Write Sync Batch Manifest
+
+**Mandatory for every `/sync` mode (default, all, TICKER) when at least one Log append, snapshot, or content edit landed in this run.** Skip only when the run was a pure no-op (Step 1 reported "Nothing changed since last sync").
+
+### Why this manifest exists
+
+`/sync` Step 3c snapshots theses for Tier A edits (rewriting Bull Case, Non-consensus Insights, etc.) but explicitly **does NOT snapshot** for Tier B edits (Log-only appends, Related Research wikilink additions, Key Metrics number updates). Cross-thesis propagation — where a research note triggers a Log entry on TICKER's thesis AND on TICKER's cross-thesis neighbors — produces Tier B appends on neighbors WITHOUT snapshots.
+
+If the user later runs `/rollback TICKER` to undo the sync, the cascade detection finds TICKER's pre-sync snapshot but **cannot find snapshots for the neighbors**. The neighbor Log entries persist after rollback as orphan audit-trail entries citing a research note whose effect on TICKER has been reverted. This is a permanent audit gap that violates Tier 2 append-only semantics if removed manually, and silently corrupts the Log audit trail if left in place.
+
+The sync manifest closes this gap by recording **every thesis touched** in the sync run — including Tier B Log appends without snapshots. `/rollback` Step 2.5 reads the manifest during cascade detection and surfaces the unrecoverable Log entries to the user with their full text, so the user can decide per-entry whether to manually strikethrough/annotate them post-rollback.
+
+### 7.5a: Generate manifest path
+
+Use the same `HHMMSS` batch ID generated in Step 3c (or generate one now if Step 3c was skipped because no Tier A edits occurred). Manifest path:
+```
+_Archive/Snapshots/_sync-manifest (sync-YYYY-MM-DD-HHMMSS).md
+```
+
+### 7.5b: Write manifest content
+
+Frontmatter:
+```yaml
+---
+type: sync-manifest
+batch: sync-YYYY-MM-DD-HHMMSS
+mode: default | all | ticker-scoped
+status: completed
+date: YYYY-MM-DD
+---
+```
+
+Body — populate from tracking accumulators maintained throughout Steps 3–5:
+
+```markdown
+# Sync Batch Manifest
+
+> Sidecar manifest listing every file touched by this `/sync` run. Used by `/rollback` Step 2.5 cascade detection to surface Tier B Log appends that weren't snapshotted (cross-thesis neighbors, Related Research additions, Key Metrics updates). Without this manifest, those edits would be invisible to `/rollback` and persist as orphan audit-trail entries after a cascade rollback.
+
+## Theses with snapshots taken (Tier A — recoverable via `/rollback` cascade)
+- `Theses/TICKER1 - Name.md` — snapshot: `[[_Archive/Snapshots/TICKER1 - Name (pre-sync YYYY-MM-DD-HHMMSS)]]`
+- ... (one per Tier A thesis snapshot)
+
+## Theses with Log-only appends (Tier B — NO snapshot, NOT recoverable via `/rollback` content restore)
+
+For each thesis that received a Log entry but no snapshot in this run, capture the **full Log entry text** so `/rollback` Step 2.5 can present it for manual review:
+
+- `Theses/TICKER2 - Name.md`
+  - Log entry appended:
+    ```
+    ### YYYY-MM-DD
+    - [[Research/2026-04-19 - source]]: [what changed] — conviction [impact]
+    ```
+  - Reason for Tier B classification: cross-thesis propagation from [[Research/...]] (TICKER2 wikilinked from another thesis touched in this run) | augmented target via wikilink/tag/ticker resolution | other
+- ... (one per Tier B thesis append)
+
+## Sector notes touched
+- `Sectors/Name.md` — snapshot: `[[_Archive/Snapshots/...]]` (Tier A) | no snapshot (link addition only — Tier B)
+
+## Macro notes touched
+- `Macro/Name.md` — snapshot: `[[_Archive/Snapshots/...]]` (Tier A) | no snapshot (link addition only — Tier B)
+
+## Source research notes processed
+- `[[Research/source-1]]`
+- `[[Research/source-2]]`
+- ... (every research note that triggered propagation in this run)
+
+## Recovery guidance
+
+- For Tier A entries: `/rollback [any ticker from the manifest]` → select `(pre-sync YYYY-MM-DD-HHMMSS)` snapshot → cascade (a) restores all Tier A files atomically. Tier B Log entries above will be surfaced for manual review.
+- For Tier B entries: no automatic restore. After cascade rollback, manually inspect each listed Log entry. Options per entry: (1) leave as historical audit trail (preferred — Tier 2 append-only), (2) strikethrough with `~~entry~~ → Reverted YYYY-MM-DD: rolled back via /rollback batch sync-YYYY-MM-DD-HHMMSS` (preserves audit while signaling reversal), (3) manually delete (violates Tier 2 — only acceptable if the entry was clearly erroneous).
+```
+
+### 7.5c: Write atomicity and lifecycle
+
+Write the manifest as the **last operation before Step 8 reporting**, after Step 7 watermark touch and (if applicable) `.sync_all_fresh` write. If the manifest write itself fails, log the failure but do NOT abort Step 8 — content edits already landed; only the recovery aid is missing. Report `⚠️ Sync manifest write failed at [path]: [reason]. Cascade rollback will fall back to snapshot-batch matching (Tier A only — Tier B Log appends will be invisible to recovery).` in Step 8.
+
+The manifest is a **non-snapshot artifact** (frontmatter `type: sync-manifest`, no `snapshot_date:`):
+- `/clean` Step 2a's non-snapshot artifact guard skips it under the existing rule.
+- `/lint #41` (added in this fix series — see `/lint` SKILL.md) ages stale manifests after 90 days as Nice to Have for cleanup.
+- The manifest persists indefinitely until manually deleted OR until `/lint #41` ages it out and the user chooses to clean.
+
+### 7.5d: Tracking accumulators (implementation note for the LLM running this skill)
+
+Throughout Steps 3–5, maintain in-memory accumulators that Step 7.5 will write to the manifest:
+
+| Accumulator | Populated when |
+|---|---|
+| `tier_a_thesis_snapshots: [(path, snapshot_path)]` | Step 3c creates a thesis snapshot |
+| `tier_b_thesis_log_appends: [(path, log_entry_text, reason)]` | Step 3f appends a Log entry without a Step 3c snapshot (cross-thesis neighbor; augmented target; etc.) |
+| `tier_a_sector_snapshots: [(path, snapshot_path)]` | Step 4a creates a sector snapshot |
+| `tier_b_sector_appends: [(path)]` | Step 4b adds a wikilink to a sector note without a Step 4a snapshot |
+| `tier_a_macro_snapshots: [(path, snapshot_path)]` | Step 5a creates a macro snapshot |
+| `tier_b_macro_appends: [(path)]` | Step 5b adds a wikilink to a macro note without a Step 5a snapshot |
+| `source_research_notes: [path]` | Step 1 identifies a changed research note that triggered propagation |
+
+If the run completes with all accumulators empty (pure no-op), skip Step 7.5 entirely.
 
 ## Step 8: Report
 

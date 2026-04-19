@@ -96,6 +96,8 @@ Go beyond static snapshots — this is where investment insight lives:
 
 ## Phase 5: Output
 
+### 5.1: Write the comparison research note (without `propagated_to:`)
+
 Save to `Research/YYYY-MM-DD - [TICKER A] vs [TICKER B] - Competitive Comparison.md` with:
 ```yaml
 ---
@@ -104,22 +106,43 @@ tags: [research, comparison, SECTOR, TICKER_A, TICKER_B]
 sector: [shared sector]
 source: vault synthesis
 source_type: comparison
-propagated_to: [only tickers with existing thesis notes]
+# propagated_to: omitted intentionally — set in Phase 5.4 only after every Log append succeeds
 ---
 ```
 
-**Vault updates** — apply ONLY to tickers with existing thesis notes. Skip for web-supplemented tickers.
+> **Why omitted at write time**: mirrors `/scenario` Phase 6.1 + 6.3 atomicity. If any per-thesis Log append in Phase 5.2 fails (file lock, missing `## Log` section, malformed thesis frontmatter), pre-writing `propagated_to: [...]` would falsely claim every listed ticker received its Log entry. Future `/sync` Case 2b would skip them all, never retrying the failed appends — permanent audit gap. The all-or-nothing rule trades a single trivial frontmatter Edit at Phase 5.4 for guaranteed eventual consistency.
 
-Update affected thesis notes with Log entries (max 2 lines each):
+### 5.2: Per-thesis Log append (track per-ticker outcomes)
+
+**Vault updates** — apply ONLY to tickers with existing thesis notes. Skip for web-supplemented tickers (Phase 0 option a).
+
+For each thesis with an existing thesis note, attempt to append a Log entry (max 2 lines each):
 ```
 ### YYYY-MM-DD
 - [[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]: [key competitive insight] — conviction [unchanged/strengthened/weakened + reason]
 ```
 
-For each compared thesis, add the comparison to its `## Related Research` section (if not already present):
+**Track per-ticker outcomes**: maintain two lists during this phase — `succeeded: [tickers]` and `failed: [tickers, with reason]`. A failure means the Log append Edit failed (file locked, missing `## Log` section, malformed frontmatter, etc.). Do NOT abort the loop on a single failure — continue attempting the remaining theses so partial propagation completes.
+
+### 5.3: Add to Related Research (independent of Log append outcome)
+
+For each compared thesis with an existing thesis note, add the comparison to its `## Related Research` section (if not already present):
 ```
 - [[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]
 ```
+
+This is wikilink registration, not a propagation claim — runs regardless of per-thesis 5.2 outcome. Related Research is a presence record; `propagated_to:` is the propagation contract.
+
+### 5.4: Atomicity rule for `propagated_to:` update
+
+**Update the research note's `propagated_to:` frontmatter only after EVERY thesis-with-existing-note Log append has landed successfully.** Mirrors `/scenario` Phase 6.3.
+
+- **All appends succeeded** (`failed:` list empty): edit the research note's frontmatter to add `propagated_to: [TICKER1, TICKER2, ...]` listing all tickers that had existing thesis notes. Insertion point: immediately before the closing `---` of frontmatter. This signals to subsequent `/sync` runs that producer-side propagation is complete; `/sync` Case 2b will skip these tickers as already-propagated.
+- **One or more appends failed** (`failed:` list non-empty): do **NOT** write `propagated_to:` at all. Leave the frontmatter without the field. The next `/sync` (default mode) will detect each thesis-with-existing-note via the file-direct fallback (research note's `tags:` and body wikilinks list each compared ticker), check today's-date idempotency per thesis, and re-attempt the append for the failed targets. Succeeded targets are skipped via the per-thesis idempotency check (today-date entry exists).
+
+> **Why never partial**: A partial `propagated_to:` would claim some failed-target tickers as propagated when their Log entries never landed, creating a permanent audit gap that future `/sync` runs silently skip. The all-or-nothing rule trades minor `/sync` re-work (succeeded targets get re-evaluated and skipped via per-thesis idempotency) for guaranteed eventual consistency.
+
+**Per-failure reporting**: list every failed ticker in the Phase 6 report (final user-facing summary) under a new field `Per-thesis Log appends — failed: [TICKER1 (reason), TICKER2 (reason)]`. The user can inspect each failure or simply re-run `/sync` to let the universal propagation mechanism catch up.
 
 Update the Sector Note if the comparison reveals competitive dynamics not already documented. Resolve the sector note via canonical procedure **`.claude/skills/_shared/sector-resolution.md`** using each compared thesis's `sector:` frontmatter.
 
@@ -169,4 +192,16 @@ Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Arc
 
 **Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
 
-Report to user: the single most important competitive insight and whether it changes conviction on either name.
+## Phase 6: Report
+
+Report to user, including:
+
+1. **Comparison research note**: `[[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]`
+2. **The single most important competitive insight** and whether it changes conviction on either name.
+3. **Per-thesis Log appends** (Phase 5.2 outcome):
+   - `Theses with existing notes propagated: [N] of [M]` (succeeded list)
+   - `propagated_to: frontmatter` — `set ([TICKER1, TICKER2, ...])` (all succeeded) | `omitted (one or more appends failed — next /sync will retry)`
+   - **Failed appends** (only if any): `[TICKER1 (reason), TICKER2 (reason)]`
+4. **Web-supplemented tickers** (only if any from Phase 0 option a): `[TICKER1, TICKER2] — used web research, no vault updates. Consider /thesis [TICKER] to formalize coverage.`
+5. **Sector notes updated**: list per sector with snapshot path or "no snapshot (link addition only)".
+6. **Follow-up**: `→ Run /sync to propagate any sector note changes and retry failed Log appends. Then /graph last.`

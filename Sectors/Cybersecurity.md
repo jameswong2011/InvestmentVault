@@ -76,7 +76,7 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 - **S (SentinelOne)** — Autonomous AI endpoint, Purple AI, Lenovo distribution deal. Deep value candidate at 3.5x forward revenue vs CRWD 18x.
 - **WIZ** — Pre-IPO CNAPP leader, 94% growth, agentless cloud security. Monitor IPO for entry.
 
-## Research Notes
+## Related Research
 - [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]] — PANW platformization, AWS native security as complementary not displacive, CrowdStrike/Zscaler competitive risks, NET SASE competitive map
 
 ## Cross-Sector Links
@@ -84,3 +84,7 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 - [[Theses/NET - Cloudflare]] — SASE competitor; Cloudflare One platform; $325-540M est. security ARR, 2-5 years behind ZS/PANW in enterprise maturity
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex drives both AI infrastructure AND AI threat escalation, benefiting cybersecurity spending. PANW now tracked as related thesis (cybersecurity as AI derivative play)
 - [[Macro/Investment Strategy for US-Iran Conflict]] — Iran-linked cyber operations as geopolitical demand driver for platform vendors
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

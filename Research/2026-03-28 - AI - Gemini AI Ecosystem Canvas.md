@@ -4,6 +4,7 @@ tags: [research, AI, semiconductors, open-source, efficiency, gemini-canvas]
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+propagated_to: [NVDA, SNDK, 285A]
 ---
 
 # Strategic Analysis of the 2026 Artificial Intelligence Ecosystem: Agentic Swarms, Algorithmic Efficiency, and Geopolitical Compute Dynamics

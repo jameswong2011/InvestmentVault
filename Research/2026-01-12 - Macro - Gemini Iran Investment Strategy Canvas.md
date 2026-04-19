@@ -4,6 +4,7 @@ tags: [research, macro, iran, geopolitics, strategy, gemini-canvas]
 status: active
 sector: Defense & Geopolitics
 source: Gemini Canvas export
+propagated_to: [STNG, CCJ, LNG]
 ---
 
 # Strategic Capital Allocation in the Theater of Conflict: A Comprehensive Analysis of Market Dynamics Following Kinetic Action Against Iran

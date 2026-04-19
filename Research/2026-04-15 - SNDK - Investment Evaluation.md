@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors
 source: Raw/SanDisk Investment Evaluation_ Strategic Analysis and Risk Assessment.pdf
 source_type: deep-dive
+propagated_to: [SNDK, 285A]
 ---
 
 # SanDisk (SNDK) — Investment Evaluation: Strategic Analysis and Risk Assessment

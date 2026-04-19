@@ -7,7 +7,9 @@ tags: [meta, hot-cache]
 
 > Persists context between Claude Code sessions. Updated automatically by `/sync` or manually.
 
-## Latest Sync (2026-04-19)
+## Latest Sync
+*Date: 2026-04-19*
+
 - **Source**: [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei three-year Ascend roadmap announcement (Tom's Hardware, in-house HBM detail)
 - **NVDA**: Propagated to Outstanding Questions (China conditional now substantively confirmed), Bear Case (Huawei roadmap quantified — 750K-unit 2026 plan, ByteDance $5.6B order, Atlas 524 EFLOPS supercluster), Risks #5 ("developing" → "shipping at scale"). Snapshot created. — conviction unchanged (medium); China $50B revenue line increasingly likely permanently lost
 - **AVGO**: Added Huawei to Industry Context as architectural-pattern validator for non-Nvidia vertically integrated AI compute at scale. Snapshot created. — conviction unchanged (high)

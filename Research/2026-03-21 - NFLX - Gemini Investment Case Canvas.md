@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: NFLX
 source: Gemini Canvas export
+propagated_to: [NFLX]
 ---
 
 # The Global Streaming Hegemon: An Investment Analysis of Netflix, Inc. in the Mature Growth Era

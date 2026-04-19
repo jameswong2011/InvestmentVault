@@ -5,6 +5,7 @@ status: active
 sector: Healthcare & MedTech
 ticker: HIMS
 source: Gemini Canvas export
+propagated_to: [HIMS]
 ---
 
 # Comprehensive Equity Research Report: Hims & Hers Health, Inc. (HIMS) – Strategic Evolution, Regulatory Reckoning, and the Global Scale Frontier

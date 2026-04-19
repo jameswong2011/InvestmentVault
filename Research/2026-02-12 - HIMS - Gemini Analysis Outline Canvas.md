@@ -5,6 +5,7 @@ status: active
 sector: Healthcare & MedTech
 ticker: HIMS
 source: Gemini Canvas export
+propagated_to: [HIMS]
 ---
 
 # Hims & Hers Health, Inc. (HIMS): Institutional Investment Analysis and Strategic Outlook – January 2026

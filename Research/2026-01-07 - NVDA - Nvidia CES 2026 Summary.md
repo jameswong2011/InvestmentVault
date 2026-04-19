@@ -6,6 +6,7 @@ sector: Semiconductors
 ticker: NVDA
 source: ChatGPT conversation export
 source_type: news
+propagated_to: [NVDA]
 ---
 # Nvidia CES 2026 Summary
 

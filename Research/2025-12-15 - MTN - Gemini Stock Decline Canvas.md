@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: MTN
 source: Gemini Canvas export
+propagated_to: [MTN]
 ---
 
 # The Erosion of the Apex Predator: A Structural Analysis of Vail Resorts’ Valuation Collapse and the Rise of the Alterra Hegemony

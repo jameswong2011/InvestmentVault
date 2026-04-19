@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 source: Raw/table-1776179571069.csv
 source_type: data
+propagated_to: [PLTR]
 ---
 
 # Palantir — Competitive Win Scenario Analysis

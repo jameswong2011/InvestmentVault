@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: NOW
 source: Gemini Canvas export
+propagated_to: [NOW]
 ---
 
 # The Cognitive Enterprise Architecture: A Strategic Analysis of ServiceNow’s M&A Transformation (2023–2025)

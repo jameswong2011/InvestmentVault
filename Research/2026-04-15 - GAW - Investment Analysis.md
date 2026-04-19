@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 source: Raw/Games Workshop Investment Analysis_ Comprehensive Evaluation (April 2026).pdf
 source_type: deep-dive
+propagated_to: [GAW]
 ---
 
 # Games Workshop (GAW) — Comprehensive Investment Analysis (April 2026)

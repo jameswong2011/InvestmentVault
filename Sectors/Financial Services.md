@@ -23,6 +23,10 @@ tags: [sector, moc]
 ## Watchlist
 <!-- Names being tracked but no thesis yet -->
 
-## Research Notes
+## Related Research
 - [[Research/2025-12-26 - EDEL - Edelweiss Financial Group Market Share]] — Edelweiss market position and competitive analysis
 - [[Research/2025-09-18 - US Insurance Broking Market]] — US insurance broking market structure and dynamics
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

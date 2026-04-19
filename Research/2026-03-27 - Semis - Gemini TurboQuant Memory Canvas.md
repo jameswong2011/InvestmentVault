@@ -4,6 +4,7 @@ tags: [research, semiconductors, DRAM, HBM, NAND, TurboQuant, memory, gemini-can
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+propagated_to: [SNDK, 285A, NVDA]
 ---
 
 # Structural Shifts in the AI Memory Market: Evaluating the Impact of Google’s TurboQuant Algorithm on Global Semiconductor Dynamics

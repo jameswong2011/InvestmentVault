@@ -4,6 +4,7 @@ tags: [research, APP, adtech, AI, mobile-gaming]
 status: active
 sector: Consumer & Digital
 source: Grok AI conversation export
+propagated_to: [APP]
 ---
 
 # APP - AppLovin AI Ad Platform Deep Dive

@@ -5,6 +5,7 @@ sector: Semiconductors & AI Infrastructure
 ticker: NVDA
 source: https://www.youtube.com/watch?v=Hrbq66XqtCo
 source_type: deep-dive
+propagated_to: [AVGO, NVDA]
 ---
 
 # NVDA — Jensen Huang on Moat Persistence (Dwarkesh Patel Interview)

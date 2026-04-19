@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 source: Raw/Economic Impact and Market Dynamics of 3D Printing on Warhammer Miniatures.pdf
 source_type: deep-dive
+propagated_to: [GAW]
 ---
 
 # 3D Printing Competitive Impact on Games Workshop / Warhammer

@@ -4,6 +4,7 @@ tags: [research, crypto, MSTR, preferred-stock, capital-structure]
 status: active
 sector: Consumer & Digital
 source: ChatGPT conversation export (Conv 99)
+propagated_to: [BTC-CRYPTO]
 ---
 
 # Strategy (MicroStrategy) Preferred Stock Capital Stack Analysis

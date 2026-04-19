@@ -4,6 +4,7 @@ tags: [research, healthcare-medtech]
 status: active
 sector: Healthcare & MedTech
 source: Claude conversation export
+propagated_to: [ISRG]
 ---
 
 # Cross-Procedure Capability in Surgical Robotics

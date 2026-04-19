@@ -4,6 +4,7 @@ tags: [research, crypto, regulation, AI, ethereum, solana, cardano, polkadot, av
 status: active
 sector: Consumer & Digital
 source: ChatGPT conversation export (Conv 21)
+propagated_to: [BTC-CRYPTO]
 ---
 
 # Impact of 2025 US AI Regulatory Frameworks on Ethereum and Non-Bitcoin Crypto Networks

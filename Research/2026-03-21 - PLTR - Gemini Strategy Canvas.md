@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: PLTR
 source: Gemini Canvas export
+propagated_to: [PLTR]
 ---
 
 # The AI Operating System: A Comprehensive Analysis of Palantir Technologies Strategic Reorientation and Valuation Dynamics (2025-2026)

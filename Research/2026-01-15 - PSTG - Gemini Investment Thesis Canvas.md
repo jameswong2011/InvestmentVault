@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: PSTG
 source: Gemini Canvas export
+propagated_to: [PSTG]
 ---
 
 # Investment Thesis: Pure Storage (PSTG) – The Platform Architect for the AI and Hyperscale Era

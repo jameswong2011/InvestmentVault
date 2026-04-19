@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors & Photonics
 ticker: LITE
 source: Gemini Canvas export
+propagated_to: [LITE, IQE]
 ---
 
 # The Photonic Pivot: Structural Architecture Shifts, Co-Packaged Optics Adoption, and Investment Outcomes in the AI Infrastructure Supercycle

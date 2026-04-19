@@ -5,6 +5,7 @@ sector: Semiconductors
 ticker: NVDA
 source: https://www.tomshardware.com/tech-industry/semiconductors/huawei-unveils-ascend-roadmap-backed-by-in-house-hbm
 source_type: news
+propagated_to: [AVGO, NVDA]
 ---
 
 # Huawei Unveils Three-Year Ascend Roadmap with In-House HBM

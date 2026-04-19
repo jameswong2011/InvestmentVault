@@ -5,6 +5,7 @@ status: active
 sector: Healthcare & MedTech
 ticker: ISRG
 source: Gemini Canvas export
+propagated_to: [ISRG]
 ---
 
 # Strategic Horizon: Intuitive Surgical (ISRG) – The Digital Fortress in the Age of Surgical Commoditization

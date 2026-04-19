@@ -71,9 +71,24 @@ If `.rename_incomplete.TICKER` exists at vault root, read its frontmatter and co
      (b) Manually resolve the failed files listed in the marker, then
          delete the marker (rm ".rename_incomplete.TICKER"), then re-run
          this rename.
-     (c) Accept loss of in-flight repair state and explicitly delete the
-         marker (rm ".rename_incomplete.TICKER") before re-running. The
-         failed wikilinks will become broken (caught later by /lint #3).
+     (c) Accept loss of in-flight repair state. BEFORE running rm:
+         (1) READ the marker's "Failed files" list — print it to the user with
+             explicit warning text:
+             "These N file(s) currently contain wikilinks to [[Theses/TICKER -
+              [TRULY_ORIGINAL_NAME]]] (the name BEFORE the prior failed rename).
+              After deleting the marker and re-running with the new name, those
+              wikilinks will remain broken — Step 5's grep/replace targets the
+              CURRENT filename ([marker.new_name]), not the truly-original name.
+              The new rename's Step 5 will NOT fix these. /lint #3 will flag them
+              eventually.
+              Resolution before option (c): manually grep-replace
+              [TRULY_ORIGINAL_NAME] → [proposed_new_name] in each listed file
+              FIRST, then proceed."
+         (2) Wait for explicit user confirmation that they have manually
+             remediated the listed files OR explicitly accept the broken-wikilink
+             outcome.
+         (3) Only then rm ".rename_incomplete.TICKER" and re-run /rename with
+             the new name.
    ```
 
    Do NOT proceed silently. Wait for user to take action externally and re-invoke `/rename`.
@@ -259,7 +274,7 @@ If the heading is missing (graph stale), warn but do not fail: `⚠️ Graph adj
 
 Also scan `## Cross-Thesis Clusters` table for cells containing the old name format. Replace with new name. (Note: most cluster references use `[[Theses/...]]` wikilinks, which Step 5 already handled. This catches any free-text occurrences.)
 
-Update `_graph.md` frontmatter `date:` to today.
+**Do NOT update `_graph.md` frontmatter `date:`.** The `date:` field is the watermark `/graph last` uses to detect changed files via `find -newermt "[date]"`. Advancing it here would silently mask any thesis modified before today but not yet captured by `/graph last` — those files would be excluded from the next `/graph last` change-detection set, leaving stale adjacency entries undetected. Watermark ownership belongs exclusively to `/graph`; `/rename` updates content of `_graph.md` (the adjacency entry header) but must not advance the watermark. The next `/graph last` will correctly re-extract this thesis (mtime advanced by the rename) plus any other pending changes.
 
 **Graph validation**: After edits, re-read `_graph.md` and verify:
 1. YAML frontmatter parses without error.

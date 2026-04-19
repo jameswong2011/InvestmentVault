@@ -4,6 +4,7 @@ tags: [research, crypto, stablecoins, geopolitics, CRCL, USDC]
 status: active
 sector: Consumer & Digital
 source: Grok conversation export (Conv 12)
+propagated_to: [CRCL, BTC-CRYPTO]
 ---
 
 # Circle/USDC vs BRICS mBridge: Geopolitical Investment Analysis

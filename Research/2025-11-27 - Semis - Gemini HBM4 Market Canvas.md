@@ -4,6 +4,7 @@ tags: [research, semiconductors, HBM4, memory, DRAM, gemini-canvas]
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+propagated_to: [NVDA, SNDK, 285A]
 ---
 
 # Global HBM4 Strategic Outlook: Technological Inflection, Manufacturing Yields, and Market Trajectories (2025–2030)

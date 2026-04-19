@@ -104,8 +104,7 @@ The Crypto & Digital Assets sector spans five investable sub-sectors, each with 
 | Bitcoin halving countdown | April 2028 | BTC | Medium — 12-18 month lead catalyst historically |
 | Post-quantum BIP adoption | 2026-2027 | BTC, ETH, SOL | Medium — removes existential risk narrative |
 
-## Research Notes
-
+## Related Research
 ### Bitcoin & Macro
 - [[Research/2026-04-15 - BTC-CRYPTO - Comprehensive Digital Assets Update April 2026 - deep-dive]] — Bitcoin ~$91K, stablecoin market $318.6B ATH, ETF AUM $150B+, GENIUS Act, quantum risk, sovereign adoption (27 countries), altcoin landscape
 - [[Research/2025-11-24 - BTC - Quantum Computing Threat to Bitcoin Security]] — Shor's algorithm ECDSA timeline (5-15yr), Grover's SHA-256 analysis (20-30yr+), BIP-360, mitigation strategies
@@ -165,3 +164,7 @@ The Crypto & Digital Assets sector spans five investable sub-sectors, each with 
 8. **Quantum timeline monitoring** — Track Google/Caltech CRQC progress vs Bitcoin BIP-360 adoption pace. 3-5 year window per Bernstein.
 9. **Strategy reflexivity risk** — Monitor BTC price relative to Strategy's $46.4K average cost basis. 40%+ drawdown could trigger preferred stock covenant pressures.
 10. **AI/DePIN revenue durability** — Can Bittensor/Render generate sustainable on-chain revenue, or do hyperscalers (AWS, NVIDIA) absorb the demand?
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

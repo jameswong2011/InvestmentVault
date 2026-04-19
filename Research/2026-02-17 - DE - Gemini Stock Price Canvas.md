@@ -5,6 +5,7 @@ status: active
 sector: Agriculture & Industrial Equipment
 ticker: DE
 source: Gemini Canvas export
+propagated_to: [DE]
 ---
 
 # Equity Research: The Strategic Decoupling of Deere & Company (DE)

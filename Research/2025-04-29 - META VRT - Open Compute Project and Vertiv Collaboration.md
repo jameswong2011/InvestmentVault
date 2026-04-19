@@ -4,6 +4,7 @@ tags: [research, META, VRT, data-centers, OCP, cooling]
 status: active
 sector: Data Centers
 source: Grok AI conversation export
+propagated_to: [META]
 ---
 
 # META VRT - Open Compute Project and Vertiv Collaboration

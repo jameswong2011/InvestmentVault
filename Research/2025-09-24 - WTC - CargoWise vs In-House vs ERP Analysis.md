@@ -6,6 +6,7 @@ sector: Enterprise Software
 ticker: WTC
 source: ChatGPT conversation export
 source_type: deep-dive
+propagated_to: [WTC]
 ---
 
 ## Related Theses

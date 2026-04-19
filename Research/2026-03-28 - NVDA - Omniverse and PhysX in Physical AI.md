@@ -4,6 +4,7 @@ tags: [research, NVDA, physical-AI, omniverse, robotics]
 status: active
 sector: Semiconductors & Photonics
 source: Grok AI conversation export
+propagated_to: [NVDA]
 ---
 
 # NVDA - Omniverse and PhysX in Physical AI

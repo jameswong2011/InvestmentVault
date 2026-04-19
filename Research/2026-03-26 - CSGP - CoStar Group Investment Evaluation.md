@@ -4,6 +4,7 @@ tags: [research, CSGP, real-estate-data, monopoly]
 status: active
 sector: Enterprise Software
 source: Grok AI conversation export
+propagated_to: [CSGP]
 ---
 
 # CSGP - CoStar Group Investment Evaluation

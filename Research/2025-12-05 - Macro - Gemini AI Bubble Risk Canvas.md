@@ -4,6 +4,7 @@ tags: [research, macro, AI, bubble, semiconductors, valuation, gemini-canvas]
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+propagated_to: [NVDA, AVGO]
 ---
 
 # The AI Solvency Gap: Structural Dislocation in the Generative AI Investment Cycle (2025–2026)

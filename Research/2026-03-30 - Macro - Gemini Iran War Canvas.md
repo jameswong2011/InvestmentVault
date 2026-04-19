@@ -4,6 +4,7 @@ tags: [research, macro, iran, geopolitics, energy, gemini-canvas]
 status: active
 sector: Defense & Geopolitics
 source: Gemini Canvas export
+propagated_to: [STNG, CCJ, LNG]
 ---
 
 # Macroeconomic Scenario Analysis: The 2026 Iran War and Global Economic Transmissions

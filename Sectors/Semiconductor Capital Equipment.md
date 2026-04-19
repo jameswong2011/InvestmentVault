@@ -191,7 +191,9 @@ Equipment and foundry services enabling the copper-to-optical transition. See al
 
 ---
 
-## Active Theses (Equipment-Specific)
+## Active Theses
+
+*Scope: Equipment-Specific*
 - [[Theses/BESI - BE Semiconductor Industries]] — Hybrid bonding monopoly / 3D integration
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level thesis (non-consensus picks)
 
@@ -202,7 +204,7 @@ Equipment and foundry services enabling the copper-to-optical transition. See al
 - [[Theses/SNDK - SanDisk]] — NAND + HBF → memory equipment demand
 - [[Theses/IQE - IQE]] — III-V substrate supply for photonics equipment
 
-## Research Notes
+## Related Research
 - [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas]] — AMAT vs LRCX strategic analysis
 - [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas]] — 5-company WFE evaluation
 - [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]] — HBM4 vendor analysis
@@ -223,3 +225,7 @@ Equipment and foundry services enabling the copper-to-optical transition. See al
 - **FormFactor (FORM)** — Optical metrology probes. Picks-and-shovels of SiPh testing.
 - **Aehr Test (AEHR)** — Wafer-level burn-in for SiPh. Order surge in 2026.
 - **EV Group (Private)** — Wafer-to-wafer bonding for SoIC/CPO. Would be a strong IPO candidate.
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

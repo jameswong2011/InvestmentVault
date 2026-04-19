@@ -4,6 +4,7 @@ tags: [research, macro, commodities, iran, energy, uranium, gemini-canvas]
 status: active
 sector: Energy & Commodities
 source: Gemini Canvas export
+propagated_to: [STNG, CCJ, LNG]
 ---
 
 # Geopolitical Fracture and Commodity Revaluation: The 2026 Hormuz Crisis and Global Supply Chain Contagion

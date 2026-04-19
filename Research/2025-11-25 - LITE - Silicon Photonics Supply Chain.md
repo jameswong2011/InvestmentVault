@@ -6,6 +6,7 @@ sector: Semiconductors
 ticker: LITE
 source: ChatGPT conversation export
 source_type: deep-dive
+propagated_to: [LITE]
 ---
 # Silicon Photonics Supply Chain
 

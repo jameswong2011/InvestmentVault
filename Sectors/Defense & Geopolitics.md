@@ -17,7 +17,7 @@ tags: [sector, moc]
 ## Watchlist
 <!-- Names being tracked but no thesis yet -->
 
-## Research Notes
+## Related Research
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Iran's supply corridors to Hezbollah: overland, maritime, technology transfer; interdiction limits; Hezbollah partial recovery post-2024 despite Assad fall
 - [[Research/2026-04-02 - Israel India Relations Analysis]] — Israel-India geopolitical relations
 - [[Research/2026-04-02 - GCC Market Shorting Options]] — GCC shorting instruments for conflict scenarios
@@ -28,3 +28,7 @@ tags: [sector, moc]
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Investment strategy during US-Iran conflict
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — June 2025 Israel-Iran 12-day conflict; 550+ missiles, fragile ceasefire, shadow war (Grok)
 - [[Research/2025-05-10 - Macro - Indian vs Pakistani Defence Stocks]] — India 14+ listed defense names vs Pakistan 0; structural asymmetry (Grok)
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

@@ -30,6 +30,7 @@ For each file in `_Archive/Snapshots/`, read only its frontmatter and extract `t
 Some files in `_Archive/Snapshots/` are NOT snapshots — they are operational artifacts that other skills store there to survive across sessions:
 
 - **`_prune-manifest`** files — written by `/prune` Stage 1.5 as a crash-recovery breadcrumb. Frontmatter has `type: prune-manifest` and carries no `snapshot_date:`. While a prune is in progress (or the prune crashed mid-run), this file is the user's only pointer to the batch that needs cascade-rollback.
+- **`_sync-manifest`** files — written by `/sync` Step 7.5 as a sidecar listing every thesis touched by a sync run (Tier A snapshots + Tier B Log appends). Frontmatter has `type: sync-manifest` and carries no `snapshot_date:` (it carries `date:` instead). Consumed by `/rollback` Step 2.5b cascade detection. Aged by `/lint #41`.
 - **Future artifact types** — any file whose `type:` frontmatter is set to anything other than a snapshot flavor.
 
 Detection rule: if the file's frontmatter has a `type:` field AND that value is not empty AND is not a snapshot-producer identifier (`snapshot`, or absent), treat the file as a non-snapshot artifact. Also treat any file missing `snapshot_date:` as non-snapshot (defensive — `/clean` cannot date-age what isn't dated).

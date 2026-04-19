@@ -6,6 +6,7 @@ sector: Crypto & Fintech
 ticker: CRCL
 source: Gemini conversation export
 source_type: deep-dive
+propagated_to: [CRCL]
 ---
 # Circle Internet Group and USDC Dynamics
 

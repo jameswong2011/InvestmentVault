@@ -5,6 +5,7 @@ status: active
 sector: Industrials
 source: Raw/John Deere Investment Evaluation_ Comprehensive Analysis.pdf
 source_type: deep-dive
+propagated_to: [DE]
 ---
 
 # John Deere (DE) — Comprehensive Investment Evaluation

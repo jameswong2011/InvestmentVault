@@ -6,6 +6,7 @@ sector: Consumer & Digital
 ticker: OPEN
 source: ChatGPT conversation export
 source_type: deep-dive
+propagated_to: [OPEN]
 ---
 # Opendoor Progress Assessment
 

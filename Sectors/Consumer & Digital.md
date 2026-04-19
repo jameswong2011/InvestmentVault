@@ -48,7 +48,7 @@ tags: [sector, moc]
 ## Related Sectors
 - [[Sectors/Crypto & Digital Assets]] — Crypto & Digital Assets sector note (Bitcoin, Ethereum, stablecoins, DeFi, tokenisation). Crypto/blockchain research notes moved there.
 
-## Research Notes
+## Related Research
 - [[Research/2026-03-19 - AppLovin AXON Engine Differentiation]] — AppLovin AXON Engine Differentiation
 - [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]] — Opendoor business progress and valuation
 - [[Research/2025-12-26 - EDEL - Edelweiss Financial Group Market Share]] — Edelweiss market share and segment analysis
@@ -74,3 +74,7 @@ tags: [sector, moc]
 - [[Research/2026-04-15 - GAW - 3D Printing Competitive Impact]] — 15% hobbyist adoption, 8K+ resin parity, 50-90% cost savings, but official quality/ecosystem advantages persist
 - [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]] — Reliance Industries full update: Jio IPO timeline, quick commerce competitive landscape, JioMart profitability, Meta JV, Starlink distribution deal
 - [[Research/2026-04-15 - BTC-CRYPTO - Comprehensive Digital Assets Update April 2026 - deep-dive]] — Bitcoin ~$91K, stablecoin market $318.6B ATH ($33T annual volume), ETF AUM $150B+, GENIUS Act signed, institutional integration (Visa/Mastercard/Stripe/Shopify USDC), quantum risk assessment, sovereign adoption (27 countries)
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 source: Raw/Spotify Investment Update_ Product Strategy & Competitive Position (2024-2026).pdf
 source_type: deep-dive
+propagated_to: [SPOT]
 ---
 
 # Spotify Product Strategy & Competitive Position (2024-2026)

@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: PLTR
 source: Gemini Canvas export
+propagated_to: [PLTR, NOW]
 ---
 
 # The Architecture of Enterprise Autonomy: A Comparative Analysis of Palantir’s Ontology and ServiceNow’s CMDB as Foundations for AI Automation

@@ -6,6 +6,7 @@ sector: Semiconductors
 ticker: BESI
 source: Gemini conversation export
 source_type: deep-dive
+propagated_to: [BESI]
 ---
 # BESI Role in HBM Manufacturing
 

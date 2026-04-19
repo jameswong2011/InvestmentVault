@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: DUOL
 source: Gemini Canvas export
+propagated_to: [DUOL]
 ---
 
 ```html

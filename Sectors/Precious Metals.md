@@ -77,7 +77,7 @@ Silver's dual industrial/monetary nature creates unique dynamics: safe-haven buy
 - **Leveraged products** (2x/3x): Trading instruments only — daily rebalancing causes decay; not buy-and-hold.
 - **Best institutional choices**: GLDM/IAU (gold, lowest cost) and SLV (silver, most liquid).
 
-## Research Notes
+## Related Research
 - [[Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics]] — COMEX 200+ tonnes delivered Feb 2025, LBMA delivery delays 4-8 weeks, gold ATH $3,319/oz by Apr 2025. Paper-physical disconnect structural, not episodic. Tariffs triggered London→New York gold relocation. South Korea halted bar sales; Swiss refineries suspended certain sizes.
 - [[Research/2026-01-26 - Silver Demand and Data Centers]] — Silver market in structural deficit (-148.9 Moz 2024); AI/data center electricity demand is a stealth silver catalyst via solar PV consumption
 
@@ -86,3 +86,11 @@ Silver's dual industrial/monetary nature creates unique dynamics: safe-haven buy
 - [[Macro/Iran War Macroeconomic Scenario]] — Gold's counterintuitive selloff during stagflation; VIX 35/50 call spreads as alternative tail hedge
 - [[Macro/Commodity Impacts from Iran Tensions]] — Precious metals within broader commodity impact hierarchy
 - [[Sectors/Energy & Commodities]] — Gold miners (GDX) as leveraged energy crisis play; mining costs rise 20-30% with oil
+
+## Active Theses
+
+_pending — add wikilinks via /thesis or /status promotion._
+
+## Log
+
+_pending — populated by /sync, /compare, etc. as the sector note evolves._

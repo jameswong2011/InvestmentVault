@@ -4,6 +4,7 @@ tags: [research, meta, claude-code, workflow, deep-dive]
 status: active
 source: Claude Code synthesis + web research
 source_type: deep-dive
+propagated_to: [NOW, PLTR, SPOT, LITE]
 ---
 
 # Claude Code Mastery Guide for Investment Research

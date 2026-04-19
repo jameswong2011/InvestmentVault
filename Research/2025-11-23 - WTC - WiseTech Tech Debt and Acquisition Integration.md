@@ -4,6 +4,7 @@ tags: [research, WTC, tech-debt, M&A, logistics-software]
 status: active
 sector: Enterprise Software
 source: Grok AI conversation export
+propagated_to: [WTC]
 ---
 
 # WTC - WiseTech Tech Debt and Acquisition Integration
