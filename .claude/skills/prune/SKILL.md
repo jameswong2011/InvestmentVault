@@ -349,15 +349,22 @@ Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Arc
 
 ### Manifest Cleanup
 
-All stages completed successfully. The cleanup is a two-step sequence: first mark the manifest `status: completed` (defensive — this transforms a failed `rm` into a benign artifact `/clean` can recognize and ignore), then attempt to delete the file.
+All stages completed successfully. The cleanup is a verify-before-delete sequence: flip status first, **verify the flip landed**, then delete. The verify step closes a failure mode where the status-flip Edit silently misses (frontmatter format quirks, unusual quoting, etc.) — without the verify, a failed flip would leave `status: in-progress` AND `/lint` #36 would later flag Critical and recommend `/rollback`, undoing a successful prune.
 
-1. **Flip manifest status**: Edit the manifest's frontmatter — change `status: in-progress` to `status: completed` and add `completed_date: YYYY-MM-DD`. This edit is the state transition; the `rm` is just a housekeeping step.
+1. **Flip manifest status**: Edit the manifest's frontmatter — change `status: in-progress` to `status: completed` and add `completed_date: YYYY-MM-DD`.
 
-2. **Delete the manifest**:
+2. **Verify the flip landed**: re-read the manifest frontmatter and confirm `status: completed` is present AND `status: in-progress` is absent.
+   - **On verification success** → proceed to step 3.
+   - **On verification failure** (flip Edit silently missed): do NOT attempt the rm. Report `❌ Manifest status flip failed: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM)]] is still marked in-progress despite successful prune completion. DO NOT run /rollback — the prune closures/upgrades/sector updates/downstream propagation have all succeeded; rolling back would undo valid work. Manual fix: open the manifest and replace status: in-progress with status: completed, then rm the file. Alternatively, delete the manifest directly — /lint #36 flagging it as Critical is a false alarm in this specific case.` Do NOT attempt step 3; exit the skill with this explicit warning.
+
+3. **Delete the manifest**:
    ```bash
    rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md"
    ```
 
-3. **Delete failure handling**: If the `rm` fails, warn but do not abort — the manifest is now `status: completed` so `/clean` Step 2a correctly classifies it as a safe-to-delete completed manifest rather than an in-progress crash artifact (which would have misled the user into running `/rollback`). The user or a future `/clean` run can `rm` it manually.
+4. **Delete failure handling**: If the `rm` fails (permission, filesystem error) after a successful status flip, warn but do not abort — the manifest is now `status: completed` so `/clean` Step 2a classifies it as a safe-to-delete completed manifest and `/lint` #36 emits Nice to Have (not Critical). The user or a future `/clean`/manual `rm` can clear it.
 
-Report final count of actions taken. Include the manifest's final state (`completed — deleted` | `completed — rm failed, manual cleanup recommended`).
+Report final count of actions taken. Include the manifest's final state:
+- `completed — deleted` (happy path)
+- `completed — rm failed, manual cleanup recommended`
+- `⚠️ flip verification failed — manifest still in-progress despite prune success; do NOT /rollback, resolve manually per the warning above`

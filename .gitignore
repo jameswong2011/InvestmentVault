@@ -20,6 +20,17 @@
 .claude.json.backup
 
 # ============================================
+# Vault runtime state markers (ephemeral, machine-local, never content)
+# ============================================
+# Written by /sync (watermark); read by subsequent /sync runs to find changed files.
+.last_sync
+# Written by /sync all; read and deleted by /graph to force a full rebuild after brute-force sync.
+.sync_all_fresh
+# Written by /status Step 7.6 and /prune Stage 4.5 on closure; read and cleared by /graph last
+# to re-extract adjacency for neighbor theses that cross-referenced the now-archived thesis.
+.graph_invalidations
+
+# ============================================
 # Secrets — NEVER commit these
 # ============================================
 .env

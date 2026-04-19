@@ -178,7 +178,7 @@ Decision matrix — set `edit_planned: true` only when at least one of the condi
 |---|---|---|
 | `draft→active` | Is the thesis wikilink already present in the Active Theses section? | Thesis wikilink ABSENT — Step 5b will add it. |
 | `monitoring→active` | Is the thesis wikilink already in the Active Theses section (not annotated as monitoring)? | Thesis wikilink absent from Active Theses, OR present but annotated as monitoring (annotation will be removed). |
-| `closed→active` (reopen) | Is the thesis wikilink already present in the Active Theses section? | Thesis wikilink ABSENT — Step 5b will add it. See "Reopen anti-collision check" below for why this row exists. |
+| `closed→active` (reopen) | (1) Is the thesis wikilink already present in the Active Theses section? (2) Is the thesis wikilink also present in a Closed/Archived section? | Thesis wikilink ABSENT from Active Theses **OR** PRESENT in a Closed/Archived section (stale entry from a prior closure that needs cleanup). The two checks compose independently — either condition alone triggers `edit_planned: true`. See "Reopen anti-collision check" below for why this row exists. |
 | `active→monitoring` | Does the sector note distinguish monitoring (e.g., separate "Monitoring" section, `(monitoring)` suffix on wikilink, conviction column, or annotation convention)? | Sector note distinguishes monitoring AND the thesis is NOT already annotated as such. |
 | `active→closed` | Is the thesis wikilink in the Active Theses section? | Thesis wikilink present — Step 5b will remove it (and optionally add to Closed/Archived). |
 | Conviction change | Does the sector note display conviction levels alongside thesis links (e.g., `[[TICKER]] (medium)`, a conviction column, or a grouped-by-conviction structure)? | Sector note displays conviction AND the displayed value differs from the new conviction. |
@@ -197,7 +197,13 @@ Distinguish "sector note distinguishes monitoring" and "sector note displays con
 
 At step 3, if the sector was already restored by the rollback cascade, the wikilink is present — Step 5b would add a duplicate and the sector note would end up double-listing the thesis. The decision-matrix row above prevents this: check wikilink presence first, only set `edit_planned: true` when ABSENT.
 
-Manual `mv` reopens (user moved the file from `_Archive/` back to `Theses/` without running `/rollback`) follow the same logic: sector note was never restored, wikilink IS absent, `edit_planned: true`, Step 5b adds it.
+Manual `mv` reopens (user moved the file from `_Archive/` back to `Theses/` without running `/rollback`) follow the same logic: sector note was never restored, wikilink IS absent from Active Theses, `edit_planned: true`, Step 5b adds it.
+
+**Closed/Archived section cleanup** is the second composition check. If a prior closure added the thesis to a Closed/Archived section and the user then rolled back to a pre-closure sector snapshot (which has the thesis only in Active Theses), the Closed/Archived section is now clean. But if the user manually reopened (`mv` from `_Archive/` + `/status closed→active`) WITHOUT restoring the sector note, the Closed/Archived section still carries the stale entry even though Active Theses may or may not have it. The composed check catches every case:
+- In Active only → no edit (from rollback, already clean)
+- In Closed/Archived only → edit (add to Active, remove from Closed/Archived)
+- In both (double-listed from a messy prior state) → edit (leave Active alone or dedupe, remove from Closed/Archived)
+- In neither → edit (add to Active)
 
 Either way, the presence check in Step 5.1 is the single source of truth — no separate "did the user just run /rollback?" detection is needed.
 

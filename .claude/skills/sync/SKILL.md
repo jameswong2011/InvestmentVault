@@ -67,11 +67,17 @@ Three checks, applied in order:
 
 This idempotency check catches the case where a producer skill wrote Log entries and a subsequent `/sync` finds the same research note via timestamp detection. The window is intentionally simple — no 4-bucket classification, no rolling-time arithmetic, no partial-repair branches. If no today-dated entry references this research note, propagate normally.
 
-**After propagation succeeds**, update the research note's `propagated_to:` frontmatter by unioning the just-propagated tickers with whatever was already there:
+**Atomicity rule for `propagated_to:` update** — update the research note's `propagated_to:` frontmatter **only after EVERY target thesis's Log entry has landed successfully** for this research note in this `/sync` run. If any thesis append failed (Edit error, file locked, missing Log section), do NOT update `propagated_to:` at all for this research note — the next `/sync` will retry the missing target and the `propagated_to:` union will catch up then. A partial `propagated_to:` update would claim theses as propagated when their Log entries never landed, creating a permanent audit gap that future `/sync` runs silently skip because the dedup hint says "already done".
+
+**If every append succeeded**, update the frontmatter by unioning the just-propagated tickers with whatever was already there:
 ```yaml
 propagated_to: [existing, ..., newly_propagated_by_sync, ...]
 ```
-This ensures subsequent `/sync` runs see the augmented targets as already-propagated on the re-run, preventing re-propagation loops.
+This ensures subsequent `/sync` runs see the augmented targets as already-propagated on the re-run, preventing re-propagation loops without introducing a new silent-skip hazard.
+
+**Scope of the all-or-nothing rule**: the atomicity unit is one research note's propagation set. If `/sync` is processing several research notes in one run and one research note has an append failure, the others that succeeded still get their `propagated_to:` updated — the atomicity is scoped per research note, not per run.
+
+**Per-research-note append-failure reporting**: list the failed target(s) in Step 8 report under a new field `propagated_to: update skipped` with the specific research note and the failed target(s).
 
 ### Graph-assisted mode (default)
 

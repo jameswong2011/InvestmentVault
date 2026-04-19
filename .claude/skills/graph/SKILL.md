@@ -128,14 +128,16 @@ Read every `Sectors/*.md` and `Macro/*.md` file unconditionally (~13 + 6 = 19 fi
 #### Macro → Theses
 For each `Macro/*.md`:
 1. Extract outbound `[[wikilinks]]` targeting `Theses/`
-2. Build mapping: `Macro/Note → sorted [tickers]`
+2. **Validate target existence**: drop wikilinks whose target `Theses/TICKER - Name.md` does not exist on disk. Log each drop at `ℹ️` severity (e.g., `ℹ️ Reverse-index drop: [[Macro/X]] → [[Theses/CLOSED - ...]] (file not in Theses/, likely archived).`). This mirrors the forward-adjacency validation in Step I.4; without it, the forward graph is clean but the reverse graph retains ghost entries pointing to archived theses, producing asymmetric state that `/lint` #23 flags.
+3. Build mapping: `Macro/Note → sorted [tickers]` (validated targets only)
 
 #### Sector → Theses
 For each `Sectors/*.md`:
 1. Extract outbound `[[wikilinks]]` targeting `Theses/`
-2. Build mapping: `Sectors/Name → sorted [tickers]`
+2. **Validate target existence** (same rule as above — drop dangling wikilinks to archived/deleted theses, log each drop).
+3. Build mapping: `Sectors/Name → sorted [tickers]` (validated targets only)
 
-This step always runs full — even if zero sector/macro files changed — so reverse indexes can never accumulate drift from the forward index.
+This step always runs full — even if zero sector/macro files changed — so reverse indexes can never accumulate drift from the forward index. The existence validation ensures symmetry: forward adjacency (Step I.4) and reverse indexes both reflect current filesystem state, never legacy wikilinks pointing to archived targets.
 
 ### Step I.6: Recompute Cross-Thesis Clusters
 
@@ -233,14 +235,16 @@ For each thesis in `Theses/`:
 ### Macro → Theses
 For each file in `Macro/`:
 1. Extract all outbound `[[wikilinks]]` that target `Theses/`
-2. Build the reverse mapping: which theses does each macro note link TO
+2. **Validate target existence**: drop wikilinks pointing to `Theses/TICKER - Name.md` files that do not exist on disk (e.g., archived theses). Log each drop at `ℹ️` severity.
+3. Build the reverse mapping: which theses does each macro note link TO (validated only)
 
 ### Sector → Theses
 For each file in `Sectors/`:
 1. Extract all outbound `[[wikilinks]]` that target `Theses/`
-2. Build the reverse mapping: which theses does each sector note link TO
+2. **Validate target existence** (same rule — drop dangling wikilinks, log each drop).
+3. Build the reverse mapping: which theses does each sector note link TO (validated only)
 
-**Consistency note:** Forward indexes (thesis → sector/macro) and reverse indexes (sector/macro → thesis) are built independently from their respective source files. They may disagree — this is expected and `/lint` check #23 catches it. The graph records both directions faithfully without attempting reconciliation.
+**Consistency note:** Forward indexes (thesis → sector/macro) and reverse indexes (sector/macro → thesis) are built independently from their respective source files. Both apply existence validation, so neither retains references to archived/deleted targets. Source-file wikilink wording may still disagree across directions (one file says `[[X]]` while the target file doesn't reciprocate) — `/lint` check #23 catches intra-direction semantic mismatches. The graph records both directions faithfully without attempting reconciliation of semantic disagreement.
 
 ## Step 4: Build Cross-Thesis Clusters
 
