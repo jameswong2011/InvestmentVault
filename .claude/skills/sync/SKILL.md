@@ -64,7 +64,25 @@ Three checks, applied in order:
 
 2. **`propagated_to:` dedup hint**: Three cases based on the field's presence and content:
 
-   **Case 2a — Field absent** (`propagated_to:` not in frontmatter): no producer-side dedup info. Treat the entire Step 1 target set as needing propagation. Proceed to Check 3 for every ticker.
+   **Case 2a — Field absent** (`propagated_to:` not in frontmatter): no producer-side dedup info. Before treating the entire Step 1 target set as needing propagation, run the **Log-history backfill scan** to catch retry cases where a producer skill (`/compare`, `/scenario`, `/stress-test`) wrote Log entries on some tickers, failed on others, and correctly omitted `propagated_to:` per its atomicity rule.
+
+   For each candidate ticker in the Step 1 target set:
+   1. Read the thesis's `## Log` section in full.
+   2. Search for any `- `-bulleted line referencing the source research note's exact wikilink. Match all five forms the producer skills emit: `[[Research/base-name]]`, `[[Research/base-name.md]]`, `[[Research/base-name|alias]]`, `[[Research/base-name#section]]`, `[[base-name]]` (folder-less form).
+   3. If ANY line matches regardless of date → producer-equivalent already-propagated. Skip this ticker for this run. Log: `ℹ️ Log-history backfill skip: [TICKER] already has Log entry referencing [research-note] (dated [found-date]). propagated_to: absent likely indicates prior producer atomicity-rule fire; retry suppressed to prevent cross-day duplicate.`
+   4. If no line matches → proceed to Check 3 per-thesis idempotency for this ticker (strict calendar-day match).
+
+   **Why the Log-history backfill is safe**: research notes are Tier 2 "immutable source record" per CLAUDE.md — edits to a research note's body should go into a new note or a thesis Log entry, not retroactively re-propagate. If a producer skill partially failed on day D, succeeded tickers carry a day-D Log entry that the scan finds; failed tickers carry no entry and get retried. The scan's once-propagated-is-terminal semantics match Case 2b exactly — treating an existing Log entry as structurally equivalent to an explicit producer dedup claim.
+
+   **What this fixes**: without the backfill scan, a partial `/compare A vs B vs C` failure (A, B succeed on day D; C fails; `propagated_to:` omitted) causes day-D+N default `/sync` to see Case 2a field-absent and, via Check 3, re-propagate to A and B because their Log entries are dated D, not today. The retry would write duplicate Log entries on already-succeeded tickers. The backfill scan finds A's and B's day-D entries, skips them, and leaves C for Check 3's normal propagation path.
+
+   **Cross-midnight producer-run edge case**: if a producer started at 23:58 on day D and wrote some entries at that timestamp while failing others at 00:02 on day D+1, the scan ignores dates entirely — both successful tickers are correctly skipped on the next `/sync` regardless of when exactly their entries landed.
+
+   **Interaction with user-edited research notes**: if the user manually edits a research note's body after the initial propagation, the scan still skips already-propagated theses. This is the intended Tier 2 behavior (research notes are immutable source records) — intentional re-propagation requires creating a new research note or appending a thesis Log entry directly.
+
+   After the scan: remaining candidates (no matching Log entry found) proceed to Check 3 per-thesis idempotency for the strict today-date check.
+
+   **`propagated_to:` backfill-update on scan-driven skips**: if the scan skipped any ticker in this run, update the research note's `propagated_to:` frontmatter to include those tickers as a union with any already-listed ones. This moves the retry from Case 2a into Case 2b on future `/sync` runs, eliminating the scan cost for this research note going forward. Apply the same all-or-nothing atomicity as Case 2b: only update after the scan + any remaining Check-3 propagation fully succeeds.
 
    **Case 2b — Field present and non-empty** (e.g., `propagated_to: [TICKER1, TICKER2]`, set by `/stress-test`, `/scenario`, `/compare`, `/deepen`): treat each listed ticker as "already propagated by the producer skill" — **skip them for this run**. These tickers received Log entries directly from the producer; re-propagating would produce near-duplicate entries. Log: `ℹ️ Skipped [TICKER] — producer skill already propagated (in propagated_to).`
      - **Exception — augmented targets**: Tickers in the Step 1 target set that are NOT in `propagated_to:` are new additions via wikilink/tag/ticker resolution. Log: `➕ Augmented propagation: [TICKER] — not in propagated_to but resolved via [wikilink | tag | ticker frontmatter].` Proceed to Check 3 for these tickers.
@@ -195,6 +213,38 @@ For each source note, read fully and analyse:
 
 The quality of the entire propagation depends on the depth of thinking in this step.
 
+## Step 2.5: Classify Change Sources
+
+Before writing to any sector or macro note, classify every changed thesis in the Step 1 target set. The classification gates Step 4 and Step 5 sector/macro propagation — a thesis-only change driven by a skill that already handled downstream sector/macro state should not trigger a redundant `/sync` re-edit.
+
+### Classification rule
+
+For each changed thesis:
+
+- **Research-driven** (default): at least one research note in the changed-file set resolves (via Step 1 target-set resolution) to this thesis, OR the thesis's recent Log entries reference changed research notes. Proceed through Step 3/4/5 normally.
+- **Skill-origin**: the thesis is self-modified (`mtime > .last_sync`) AND its most recent Log entry's prefix matches one of the following skill-origin prefixes from `.claude/skills/_shared/log-prefixes.md` AND no research note in the changed-file set resolves to this thesis:
+  - `"Status change: conviction"` (registry §6 — `/status` conviction branch; sector already updated in its Step 5)
+  - `"Status change:"` (registry §7 — `/status` non-closure status branch; sector already updated)
+  - `"Conviction reaffirmed"` (registry §5 — `/status` reaffirm flow; no sector or macro work expected)
+  - `"CLOSED"` (registry §8 — `/status` or `/prune` closure; sector already updated, file typically already archived)
+  - `"Prune upgrade"` (registry §9 — `/prune` Stage 3; sector conviction display already updated in Stage 4)
+  - `"Cross-thesis closure:"` / `"Cross-thesis closures:"` (registry §13 — notification-only Log entry on a neighbor, not a conviction delta)
+  - `"Scenario REVERSED"` (registry §14 — `/scenario reverse` R4; corrective Log append with no new research delta)
+  - `"ROLLBACK to snapshot"` (registry §12 — `/rollback` Step 5.4; sector already handled in `/rollback` Step 6.1, thesis body reverted to snapshot state with no new research delta)
+  - `"Initial thesis created"` (registry §11 — `/thesis` Step 4; sector Active Theses already updated in `/thesis` Step 5 for active theses)
+  - `"Renamed file:"` (registry §15 — `/rename` Step 10; filename + wikilink operation with no analytical delta)
+- **Mixed**: thesis has both a research-note source AND a skill-origin Log prefix in recent entries → treat as **research-driven**. Research notes drive propagatable content; the skill-origin prefix is informational only.
+
+### Classification output
+
+Maintain an in-memory accumulator `skill_origin_theses: [TICKER, ...]` throughout this step. Steps 4 and 5 consult this set before per-sector / per-macro propagation (see Step 4.-1 and Step 5.-1 below).
+
+### Registry-driven design
+
+The prefix list above is a view of `.claude/skills/_shared/log-prefixes.md`'s skill-origin entries. Each of the listed prefixes has `/sync Step 2.5 skill-origin classification` in its registry `consumers:` block. `/lint` check #29 verifies that every registry prefix with that consumer entry is also referenced in this step's list — any drift between the registry and this enumeration produces an Important lint finding.
+
+**When a new skill-origin prefix is added**: update the registry first (add prefix + consumer entry), then add it to this step's list. The two must move together per the editing protocol in `_shared/log-prefixes.md`.
+
 ## Step 3: Update Thesis Notes
 
 ### 3a: Read the Full Thesis
@@ -262,6 +312,7 @@ If any Tier A edits are planned for a thesis:
   - `"Deepening"` — `/deepen` Phase 5a provisional entry; carries no conviction sentiment and is a stuck-state marker if it lingers without a matching `"Deepened"` (registry §2). Counting it would consume a drift-window slot without adding signal, and on failed-`/deepen` states it would bias the window toward "no recent progress."
   - `"Cross-thesis closure:"` and `"Cross-thesis closures:"` — `/prune`-emitted notifications about a DIFFERENT thesis being closed (registry §13). They carry no signal about this thesis's own conviction trajectory.
   - `"Scenario REVERSED"` — `/scenario reverse`-emitted corrective entry that withdraws a prior scenario propagation (registry §14). Counting it would inflate drift on theses that just had a scenario withdrawn — the whole point of reverse mode is to preserve audit trail without producing new drift signal.
+  - `"Renamed file:"` — `/rename` Step 10 filename-change record (registry §15). Carries no conviction sentiment; consuming a drift-window slot on a cosmetic filename change would bias drift on recently renamed theses.
 
   **Conditionally exclude entries that begin with `"Deepened"` or `"↳ CORRECTION: Deepened"`** within 7 calendar days of a `"Stress test"` entry for the same ticker (registry §3–§4) — gap-filling research chained to a stress test, not independent evidence.
 
@@ -281,6 +332,18 @@ Max 2 lines. The log is an audit trail — the analysis lives in the updated sec
 ## Step 4: Update Sector Notes
 
 For each affected Sector Note:
+
+### 4.-1: Skill-origin gate (runs before Step 4.0)
+
+Before running Step 4.0's per-source idempotency check, consult `skill_origin_theses` from Step 2.5. A sector note's "affected thesis set" for this `/sync` run is every changed thesis whose `sector:` frontmatter resolves to this sector (via `_graph.md` reverse index OR `_shared/sector-resolution.md` fallback).
+
+**Gate rule**: if EVERY thesis in this sector's affected set is in `skill_origin_theses` AND no research note in the changed-file set resolves to this sector (via its `sector:` frontmatter OR body `[[Sectors/...]]` wikilinks), skip Step 4.0, 4a, 4b, 4c entirely for this sector. Log: `ℹ️ Skipped sector update [Sector Name] — all [N] affected thesis changes are skill-origin (Status change/Prune upgrade/Scenario REVERSED/ROLLBACK/etc.); originating skills already handled sector state, and no co-changed research note carries propagatable content.`
+
+**Mixed set**: if the affected thesis set contains at least one research-driven thesis, proceed to Step 4.0 per existing logic — the research-driven thesis's propagatable delta applies to the whole sector section (value chain, competitive dynamics, etc.), and the skill-origin theses coincidentally sharing the sector do not suppress the propagation.
+
+**Why this gate is safe**: Step 4b's analytical edits (competitive dynamics, value chain, sector observations, comparison tables) are derived from research-note content. Without a research note driving the edit, there is no propagatable delta — the LLM running Step 4b would either rewrite the same text with cosmetic variation (analytical churn) or no-op. The skill-origin gate makes the no-op decision explicit and cheap rather than leaving it to LLM inference.
+
+**Record in the Step 8 report**: under a new line `Sector skill-origin skips: [list of sector names]` when at least one skip fired. Omit when none.
 
 ### 4.0: Per-source idempotency check (NEW — runs before snapshot/edit)
 
@@ -336,6 +399,18 @@ If any check fails: `⚠️ Sector note may contain a partial edit in [section].
 ## Step 5: Update Macro Notes
 
 For each affected Macro note:
+
+### 5.-1: Skill-origin gate (mirrors Step 4.-1 for macros)
+
+Consult `skill_origin_theses` from Step 2.5 before Step 5.0. A macro note's "affected thesis set" is every changed thesis that wikilinks this macro note (via `_graph.md` Macro reverse index OR the body-grep fallback from Step 1 "For changed macro notes" logic — running in reverse here: for each thesis in the changed-file set, resolve outbound `[[Macro/...]]` wikilinks to identify which macro notes this thesis affects).
+
+**Gate rule**: if EVERY thesis in this macro's affected set is in `skill_origin_theses` AND no research note in the changed-file set resolves to this macro (via body `[[Macro/...]]` wikilinks or `source_type: scenario` / macro-focused frontmatter), skip Step 5.0, 5a, 5b entirely. Log: `ℹ️ Skipped macro update [Macro Note] — all [N] affected thesis changes are skill-origin; no co-changed research note drives a macro-level delta.`
+
+**Mixed set**: if at least one thesis in the affected set is research-driven OR any research note resolves to this macro, proceed to Step 5.0 per existing logic.
+
+**Rationale**: Step 5b's analytical edits (scenario analysis, probability weightings, trading/allocation implications) are derived from research-note insight. A thesis whose only recent change is a `Status change: conviction` Log entry doesn't carry a macro-level delta — `/status` already captured the conviction change in the thesis frontmatter; the macro note's narrative doesn't need a rewrite to reflect it.
+
+**Record in the Step 8 report**: under a new line `Macro skill-origin skips: [list of macro names]` when at least one skip fired. Omit when none.
 
 ### 5.0: Per-source idempotency check (mirrors Step 4.0 for sectors)
 
@@ -564,6 +639,9 @@ If the run completes with all accumulators empty (pure no-op), skip Step 7.5 ent
 - **Sector Note updates**: [list with one-line summary each]
 - **Macro note updates**: [list with one-line summary each]
 - **Deduplication skips** (thesis-level, Step 1 Check 3): [list any tickers where propagation was skipped because Log already contained today's entry for the research note. If none, omit this line.]
+- **Sector skill-origin skips** (Step 4.-1): [list sector notes where ALL affected thesis changes were skill-origin (no research-driven thesis and no research note resolves to this sector) and Step 4.-1 skipped Step 4 entirely. If none, omit this line.]
+- **Macro skill-origin skips** (Step 5.-1): [list macro notes where ALL affected thesis changes were skill-origin and Step 5.-1 skipped Step 5. If none, omit this line.]
+- **Log-history backfill skips** (Step 1 Check 2 Case 2a): [list (TICKER, research-note) pairs where the scan found a prior Log entry referencing the research note and suppressed the retry. If none, omit this line.]
 - **Sector idempotency skips** (Step 4.0): [list any sector notes where propagation was skipped because Log already contained today's entry for the source research note. If none, omit this line.]
 - **`propagated_to:` skips**: [list tickers skipped because the producer skill already marked them propagated via `propagated_to:` frontmatter (Case 2b). If none, omit this line.]
 - **Terminal-skip notes**: [list research notes where ALL targets were skipped because the note had explicit `propagated_to: []` (Case 2c — surface scans, briefs, etc.). If none, omit this line.]

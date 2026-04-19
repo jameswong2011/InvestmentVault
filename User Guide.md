@@ -233,11 +233,14 @@ Propagate, then refresh dependency map:
 ```
 > Warns if unsynced research exists — always `/sync` first. `/prune` presents a recommendation table, then asks for approval before executing. Approved closures and upgrades are applied directly by `/prune` — do not run `/status` afterward (the files have already been moved or updated).
 
-Then find opportunities to reallocate attention:
+Then refresh the graph (MANDATORY before any scoped `/surface`) and find opportunities to reallocate attention:
 ```
+/graph last
 /surface
 ```
-> **Full chain**: `/sync` → `/graph last` → `/prune` (approve changes in-line) → `/surface` (new opportunities) → `/graph last` (register the surface scan note + reflect any closures/upgrades from /prune)
+> **Full chain**: `/sync` → `/graph last` → `/prune` (approve changes in-line) → `/graph last` (consume `.graph_invalidations` from closures BEFORE any scoped read) → `/surface` (new opportunities) → `/graph last` (register the surface scan note)
+>
+> **Why the mid-chain `/graph last`**: `/prune` closures write neighbor theses to `.graph_invalidations` and archive closed theses' files, but `_graph.md`'s Sector → Theses reverse index still lists the archived theses until `/graph last` rebuilds from current filesystem state. If `/surface [sector]` runs before this `/graph last`, scope resolution includes archived theses in the scope set — `/surface`'s scope-set existence validation now aborts the run in that case to prevent silently-incomplete analysis. Unscoped `/surface` reads `Theses/*.md` directly and is not affected by this gap.
 
 ### 3j. Idea Discovery → New Position
 
@@ -289,12 +292,13 @@ Then:
 /graph                           # full rebuild (after /sync all the watermark is reset)
 /lint                            # full health audit
 /prune                           # portfolio evaluation
+/graph last                      # consume .graph_invalidations from prune closures — MANDATORY before scoped reads
 /clean                           # delete old snapshots
 /surface                         # find new opportunities
 /catalyst                        # refresh catalyst calendar
-/graph last                      # incremental refresh after /surface, /catalyst, /prune touched files
+/graph last                      # incremental refresh after /surface, /catalyst touched files
 ```
-> Run in this order. `/sync all` before `/graph` because the sync may change links. `/graph` (full rebuild, not `last`) is correct here because `/sync all` doesn't update `_graph.md` — a full rebuild establishes the fresh baseline. `/lint` after `/graph` because lint checks graph health. `/prune` after `/lint` because lint flags staleness. `/surface` near the end because the vault is now clean and complete. Final `/graph last` (incremental, cheap) captures changes from `/surface`, `/catalyst`, and `/prune`.
+> Run in this order. `/sync all` before `/graph` because the sync may change links. `/graph` (full rebuild, not `last`) is correct here because `/sync all` doesn't update `_graph.md` — a full rebuild establishes the fresh baseline. `/lint` after `/graph` because lint checks graph health. `/prune` after `/lint` because lint flags staleness. **The `/graph last` after `/prune` consumes `.graph_invalidations` and rebuilds reverse indexes to exclude archived theses from Sector → Theses entries** — without this, scoped `/surface [sector]` (if the user chooses a scoped variant at the `/surface` slot) would abort with the scope-set existence validation warning. Even for unscoped `/surface`, the intervening `/graph last` keeps lint checks #18/#20/#23 green between now and the final `/graph last`. Final `/graph last` (incremental, cheap) captures changes from `/surface` and `/catalyst`.
 
 ### 3m. Recovery — Undo a Bad Sync
 
@@ -818,8 +822,8 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | **Model a "what if"** | `/scenario [event description]` → `/sync` → `/graph last` |
 | **Withdraw a previously-propagated scenario** | `/scenario reverse [scenario-research-note]` → `/graph last` (no /sync needed — append-only Log entries) |
 | **See what's coming up** | `/catalyst` |
-| **Clean up weak positions** | `/sync` → `/graph last` → `/prune` (approve changes in-line) → `/surface` → `/graph last` |
-| **Run monthly maintenance** | `/sync all` → `/graph` (full) → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last` |
+| **Clean up weak positions** | `/sync` → `/graph last` → `/prune` (approve changes in-line) → `/graph last` → `/surface` → `/graph last` |
+| **Run monthly maintenance** | `/sync all` → `/graph` (full) → `/lint` → `/prune` → `/graph last` → `/clean` → `/surface` → `/catalyst` → `/graph last` |
 | **Check vault health** | `/lint` (full, 40 checks) or `/lint TICKER` (scoped, 15 checks) |
 | **Resolve `/lint` #39 (missing `propagated_to:`)** | For `synthesis`/`brief` notes → add `propagated_to: []` (terminal). For `scenario`/`stress-test`/`comparison` notes → check referenced theses for today-date Log entries; if absent, run `/sync` to trigger retry; if present, manually backfill `propagated_to: [TICKERS]`. Pre-spec notes (date < 2026-04-19) are Nice-to-Have only. |
 | **Update graph after recent edits** | `/graph last` (everyday refresh, cheap) |

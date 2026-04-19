@@ -20,6 +20,62 @@ Parse `$ARGUMENTS` to determine scope:
 
 If a scope is requested but `_graph.md` does not exist, warn: `⚠️ Graph missing — cannot scope. Run /graph first, or run /surface without arguments for full vault scan.` Then stop.
 
+### Scope-set existence validation (ticker-scoped and sector-scoped modes only)
+
+After resolving the scope set from `_graph.md` and before reading any thesis files, validate that every resolved thesis's file still exists on disk. `_graph.md`'s reverse indexes and adjacency entries reflect the last `/graph` run's filesystem state; closures via `/status active→closed` or `/prune` between that run and now mv files to `_Archive/` without touching `_graph.md`. Scoped `/surface` would otherwise resolve archived theses into the scope set and fail when reading them — producing silently incomplete analysis.
+
+Validation rule:
+
+1. Collect `resolved_theses: [Theses/TICKER - Name.md, ...]` from Scope Resolution output.
+2. For each path, test existence:
+   ```bash
+   for path in resolved_theses:
+       [ -f "$path" ] || record_as_missing "$path"
+   ```
+3. If `missing: [ ]` is empty → proceed to Phase 1 normally.
+
+4. If `missing: [ ]` is non-empty:
+
+   **Sector-scoped mode**: stop the skill immediately. Do NOT proceed with a partial scope — scoped portfolio-level output (research velocity ranking, attention allocation, decay alerts) depends on complete coverage; a partial scope silently under-reports these metrics without flagging the gap. Report:
+   ```
+   ⚠️ Scope resolution via _graph.md found [N] thesis(es) still listed in the Sector → Theses reverse index but no longer present in Theses/:
+     - [missing path 1]
+     - [missing path 2]
+     ...
+
+   _graph.md is stale relative to filesystem state — likely a /status active→closed or /prune closure since the last /graph run.
+
+   Resolution: run /graph last (consumes .graph_invalidations, rebuilds reverse indexes from current filesystem state, excludes archived theses). Then re-run /surface [sector].
+
+   No surface-scan research note was written for this run.
+   ```
+
+   **Ticker-scoped mode**: if the scoped ticker itself is in `missing:`, report:
+   ```
+   ⚠️ /surface [TICKER] — thesis file not found at Theses/[TICKER] - *.md. Likely archived since the last /graph run.
+
+   Options:
+     (a) Run /rollback [TICKER] to reopen the archived thesis (then /sync TICKER → /graph last → re-run /surface [TICKER]).
+     (b) Run /surface without arguments for a vault-wide scan that will correctly exclude the archived ticker.
+     (c) Run /graph last to rebuild indexes from current filesystem state, then re-run /surface [TICKER] — but expect the same error if the thesis is archived.
+
+   No surface-scan research note was written for this run.
+   ```
+   Stop the skill in either ticker-scoped sub-case.
+
+### Why stop rather than best-effort continue
+
+Scoped modes depend on complete scope coverage. A best-effort continuation would:
+- Read `Theses/TICKER - Name.md` and fail silently, skipping that thesis from Phase 1–3 analysis.
+- Produce a surface-scan research note that under-reports the sector (missing the archived thesis's historical context, even though its adjacency influenced the sector's dynamics until closure).
+- Write `propagated_to: []` on the research note, which blocks `/sync` from auto-healing by retry.
+
+The fail-fast path forces `/graph last` explicitly — cost is one extra command; benefit is correct scope coverage on retry.
+
+### Why not auto-run `/graph last`
+
+`/surface` is an analytical read-only skill that writes a synthesis research note and `_hot.md`. It does not write `_graph.md`. Auto-running `/graph last` would violate the metadata-ownership boundary (only `/graph` and `/rename` write `_graph.md`). User explicitly invokes `/graph last` — one extra command is the correct cost for ownership clarity. `/lint` #38 (`.graph_invalidations` aging) catches the chronic case where users forget to run it.
+
 ## Phase 1: Portfolio Scan
 
 **Scoped mode**: Read only files resolved in Scope Resolution. Skip vault-wide checks that require full portfolio coverage (Attention Allocation ranking, Research Velocity ranking across all theses — these need the full set to be meaningful).

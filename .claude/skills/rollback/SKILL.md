@@ -283,13 +283,88 @@ To retry failed files: /rollback [failed ticker] → select the original (pre-[t
 
 ## Step 6: Post-Rollback Cleanup
 
-### Conviction or status revert
-If the rollback changed `conviction:` or `status:` frontmatter (i.e., the snapshot has a different value than what was current):
-- Update the relevant Sector Note to reflect the reverted value
-- Warn: `⚠️ Conviction/status reverted to [old value]. Sector note updated.`
-- If `status:` was reverted to `active` from a closure (file recreated from archive), additionally warn: `ℹ️ Restored status is already active — do NOT run /status closed→active (it will fail validation). Proceed directly to /sync TICKER → /graph.`
+### 6.1: Conviction/status revert — sector note update
 
-### Archived file cleanup
+Runs only if the rollback changed `conviction:` or `status:` frontmatter (snapshot values differ from current pre-rollback values). Mirrors `/status` Step 5 protocol end-to-end to guarantee the sector note edit is sector-resolved, dry-run gated, snapshotted, and verified — no implementation-dependent ambiguity.
+
+If `status:` was reverted to `active` from a closure (file recreated from archive), surface the informational warning once at the start of 6.1: `ℹ️ Restored status is already active — do NOT run /status closed→active (it will fail validation). Proceed directly to /sync TICKER → /graph.`
+
+#### 6.1a: Resolve sector note (via contract)
+
+Resolve the sector note using the canonical procedure at **`.claude/skills/_shared/sector-resolution.md`**. Inputs: restored thesis's `sector:` frontmatter. Outputs: `sector_note_path`, `match_confidence`, `log_message`.
+
+- `match_confidence: none` → emit contract's no-match warning, skip 6.1b–6.1f entirely, proceed to 6.2.
+- `match_confidence: normalized` → emit contract's `log_message`, proceed silently to 6.1b.
+- `match_confidence: substring` → emit contract's `log_message` AND **stop for explicit user confirmation** before proceeding (per contract Caller Responsibility #4 — destructive edits on substring-matched sectors require confirmation). If declined, skip 6.1b–6.1f, proceed to 6.2.
+- `match_confidence: exact` → proceed silently to 6.1b.
+
+#### 6.1b: Dry-run — determine whether an edit is needed
+
+Mirror `/status` Step 5.1 decision matrix based on the reverted field and direction:
+
+| Revert direction | Check against sector note | Set `edit_planned: true` when... |
+|---|---|---|
+| `status: closed → active` (file recreated from archive) | (1) thesis wikilink in Active Theses? (2) thesis wikilink in Closed/Archived section? | ABSENT from Active Theses **OR** PRESENT in Closed/Archived (stale entry from prior closure). Composed check — either condition triggers. |
+| `status: active → closed` (revert of reopen) | thesis wikilink in Active Theses? | PRESENT — Step 6.1d will remove it. |
+| `status: monitoring → active` (revert) | thesis wikilink absent from Active Theses OR annotated as monitoring? | Either condition true. |
+| `status: active → monitoring` (revert) | does sector distinguish monitoring AND thesis not already annotated? | Both true. |
+| `conviction:` reverted (any direction) | does sector display conviction levels (e.g., `(medium)` suffix, Conviction column, grouped-by-conviction structure) AND displayed value differs from reverted value? | Both true. |
+
+Detection indicators (reuse `/status` Step 5.1):
+- Monitoring distinction: `## Monitoring`, `(monitoring)`, `monitoring:`, or thesis wikilink suffixed with monitoring marker.
+- Conviction display: `(high)`, `(medium)`, `(low)` adjacent to thesis wikilinks, OR `| Conviction |` column header, OR section headings grouped by conviction level.
+
+If `edit_planned: false`: log `ℹ️ Sector note update skipped — [sector_note_path] already reflects reverted state (rationale: [cascade already restored | post-closure state clean | conviction not displayed | state already matches]).` Proceed to 6.2.
+
+If `edit_planned: true`: proceed to 6.1c.
+
+#### 6.1c: Pre-edit snapshot
+
+Before modifying the sector note, snapshot it:
+
+```bash
+cp "[sector_note_path]" "_Archive/Snapshots/[Sector Name] (pre-rollback YYYY-MM-DD-HHMMSS).md"
+```
+
+Read the newly created snapshot and add to frontmatter:
+```yaml
+snapshot_of: "[[Sectors/Sector Name]]"
+snapshot_date: YYYY-MM-DD
+snapshot_trigger: rollback
+snapshot_batch: rollback-YYYY-MM-DD-HHMMSS
+```
+
+**Reuse the `HHMMSS` batch ID generated in Step 4** (same rollback run's safety snapshot). This enables `/rollback` cascade detection to couple this sector snapshot with the thesis's pre-rollback safety snapshot — a future rollback of this rollback (rare but supported) can cascade-restore both files atomically.
+
+**Cascade batch mode interaction**: if the rollback is itself a cascade restoring multiple theses whose sectors all need updates, generate a distinct `HHMMSS` for each sector's snapshot only if the sectors differ. If one sector serves multiple cascaded theses, one sector snapshot with one batch ID suffices.
+
+#### 6.1d: Apply the edit
+
+Mirror `/status` Step 5b rules. Use targeted `Edit` operations (atomic string replacement), NOT full-file `Write`. Each `Edit` either succeeds atomically or leaves the section unchanged.
+
+1. **For status reverted to `active`** (from closed, monitoring, or draft): add thesis wikilink to Active Theses section (if ABSENT). Remove monitoring annotation if present. If a "Closed/Archived" section exists and contains this thesis, remove the entry from there as well (prevents dual listing).
+2. **For status reverted to `monitoring`** (from active): apply monitoring annotation per sector convention (move to "Monitoring" section, add `(monitoring)` suffix, etc. — match the sector's existing convention).
+3. **For status reverted to `closed`** (rare — rollback of a reopen): remove thesis from Active Theses. Add to "Closed/Archived" section if one exists.
+4. **For `conviction:` reverted**: update the displayed conviction level for this thesis to the reverted value (e.g., `(medium)` → `(high)`, or move thesis between conviction-grouped sections).
+
+#### 6.1e: Post-edit verification
+
+Re-read the modified sector note. For each edited section, verify:
+1. Ends with a complete sentence (not mid-word, mid-sentence, or with unmatched `**` or `*`).
+2. No incomplete table rows (lines starting with `|` but not ending with `|`).
+3. Thesis wikilink is present/absent per 6.1d intention (re-grep the section to confirm).
+4. Dual-listing absent: thesis wikilink appears in AT MOST ONE of {Active Theses, Closed/Archived, Monitoring} sections.
+
+If any check fails: `⚠️ Sector note may contain a partial edit in [section]. Snapshot available: [[_Archive/Snapshots/[Sector Name] (pre-rollback YYYY-MM-DD-HHMMSS)]]. Review manually or run /rollback on the sector snapshot to revert this rollback's sector update independently.`
+
+#### 6.1f: Report
+
+- **Sector note resolved**: `[sector_note_path]` (confidence `[exact|normalized|substring|none]`)
+- **Sector edit**: `applied (edit_planned: true)` | `skipped (edit_planned: false — state already matches)` | `skipped (match_confidence: none)` | `skipped (user declined substring confirmation)`
+- **Sector snapshot**: `[[_Archive/Snapshots/[Sector Name] (pre-rollback YYYY-MM-DD-HHMMSS)]]` (if 6.1c ran) | `n/a (skip case)`
+- **Post-edit verification**: `passed` | `⚠️ failed: [specific check]` (if 6.1e ran)
+
+### 6.2: Archived file cleanup
 If the original file was recreated (did not exist before rollback — detected in Step 2), check for a corresponding archived copy. **Glob must include the ` - ` separator and `.md` suffix** to avoid false positives on short tickers (e.g., `A`, `T`, `U`) where `TICKER*` would match every archived file whose name starts with that letter:
 ```bash
 find _Archive/ -maxdepth 1 -name "TICKER - *.md" -type f
@@ -300,7 +375,7 @@ mv "_Archive/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name
 ```
 Add `snapshot_of`, `snapshot_date: YYYY-MM-DD`, `snapshot_trigger: rollback-cleanup`, `snapshot_batch: rollback-YYYY-MM-DD-HHMMSS` (reuse the batch ID from Step 4) to its frontmatter.
 
-### Graph update deferred
+### 6.3: Graph update deferred
 
 `_graph.md` is now owned exclusively by `/graph`. **After this rollback, run `/graph last` immediately** — it captures all graph effects from current vault state:
 
@@ -309,7 +384,7 @@ Add `snapshot_of`, `snapshot_date: YYYY-MM-DD`, `snapshot_trigger: rollback-clea
 
 > **Why running `/graph last` immediately matters for recreated-file rollbacks**: subsequent skills relying on `_graph.md` (e.g., `/sync` default mode) need the restored thesis's adjacency entry. Without `/graph last`, the thesis exists on disk but is invisible to graph-assisted propagation paths.
 
-### Update _hot.md
+### 6.4: Update _hot.md
 Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: rolled back [TICKER/note] to [snapshot date] snapshot, and what was reverted. Append `*Previous:*` line(s) — max 5, drop oldest.

@@ -8,7 +8,7 @@ last_reviewed: 2026-04-17
 
 > **This file is a load-bearing contract.** Every skill that resolves a thesis's `sector:` frontmatter to a `Sectors/*.md` note must use this canonical procedure. Inconsistent matching across skills produces silent failures (sector note never updated, propagation drift) — the same `sector: semiconductors` value silently resolves in `/status` but not in `/prune`.
 >
-> **Consumers**: `/status` Step 5.0, `/thesis` Step 5, `/compare` Phase 5, `/prune` Stage 1 (sector-affected resolution).
+> **Consumers**: `/status` Step 5.0, `/thesis` Step 5, `/compare` Phase 5, `/prune` Stage 1 (sector-affected resolution), `/rollback` Step 6.1a.
 
 ## Inputs
 
