@@ -23,7 +23,26 @@ If no files found, report "No snapshots exist — nothing to clean." and stop.
 
 ## Step 2: Parse Ages and Safety Net Check
 
-For each snapshot, read only its frontmatter and extract `snapshot_date:` and `snapshot_of:`. Calculate age in days from today's date.
+For each file in `_Archive/Snapshots/`, read only its frontmatter and extract `type:`, `snapshot_date:`, and `snapshot_of:`. Classify:
+
+### 2a: Non-snapshot artifact guard (must run first)
+
+Some files in `_Archive/Snapshots/` are NOT snapshots — they are operational artifacts that other skills store there to survive across sessions:
+
+- **`_prune-manifest`** files — written by `/prune` Stage 1.5 as a crash-recovery breadcrumb. Frontmatter has `type: prune-manifest` and carries no `snapshot_date:`. While a prune is in progress (or the prune crashed mid-run), this file is the user's only pointer to the batch that needs cascade-rollback.
+- **Future artifact types** — any file whose `type:` frontmatter is set to anything other than a snapshot flavor.
+
+Detection rule: if the file's frontmatter has a `type:` field AND that value is not empty AND is not a snapshot-producer identifier (`snapshot`, or absent), treat the file as a non-snapshot artifact. Also treat any file missing `snapshot_date:` as non-snapshot (defensive — `/clean` cannot date-age what isn't dated).
+
+Handling:
+- **Skip the file entirely.** Do not classify as retained/expired. Do not offer for deletion under any threshold.
+- **For `type: prune-manifest` with `status: in-progress`**: add a line to the Step 3 report under a new category `🛑 Prune manifest (in-progress)` — the user should resolve the in-flight prune (via `/rollback` cascade) before letting `/clean` proceed, though `/clean` itself takes no action on this file.
+- **For `type: prune-manifest` with `status: completed`**: add a line to the Step 3 report under `🧹 Completed prune manifest — safe to delete manually` — the prune finished but the manifest wasn't cleaned up at Stage 5. `/clean` still doesn't auto-delete (scope is snapshots), but the user can `rm` it.
+- **For any other non-snapshot type**: log `ℹ️ Skipped non-snapshot artifact: [path] (type: [value], no snapshot_date)`.
+
+### 2b: Classify actual snapshots
+
+For each file that passed the 2a guard (has `snapshot_date:`, no conflicting `type:`), calculate age in days from today's date.
 
 Classify each snapshot:
 - **Retained**: age <= threshold (kept)
@@ -59,7 +78,23 @@ These snapshots exceed the age threshold but their source files were modified af
 | File | Snapshot Date | Age (days) |
 |------|--------------|------------|
 
-**Total**: X to delete, Y active safety nets (protected), Z retained.
+### 🛑 Prune manifest (in-progress) — do NOT clean
+| File | Batch ID | Status |
+|------|---------|--------|
+
+These represent in-flight `/prune` operations. Resolve the batch first (`/rollback` cascade via any ticker in the batch, then delete the manifest) before running `/clean` again.
+
+### 🧹 Completed prune manifests — safe to delete manually
+| File | Batch ID | Completed Date |
+|------|---------|---------------|
+
+These are stale breadcrumbs from successful prune runs whose Stage 5 cleanup failed. `/clean` does not auto-delete them (they are not snapshots); user can `rm` manually after confirming the batch succeeded.
+
+### Non-snapshot artifacts (skipped)
+| File | Type |
+|------|------|
+
+**Total**: X to delete, Y active safety nets (protected), Z retained, W non-snapshot artifacts (skipped).
 
 ## Step 4: Confirm and Execute
 

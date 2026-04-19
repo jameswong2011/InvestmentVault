@@ -3,7 +3,7 @@ name: graph
 description: Rebuild the vault dependency graph (_graph.md). Three modes — /graph (full rebuild), /graph last (true incremental: re-extract only changed thesis adjacencies, always rebuild reverse indexes), /graph [N] (catch-up incremental from N days ago). Use /graph last after every /sync, /graph [N] for catch-up, /graph for full disaster-recovery rebuild.
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write Bash(find * wc * date * grep *)
+allowed-tools: Read Grep Glob Edit Write Bash(find * wc * date * grep * rm * cat * sort *)
 ---
 
 Rebuild `_graph.md` entirely from vault state. This is a structural metadata operation — no content files are modified, no thesis/sector/macro updates, no snapshots, no `_hot.md` changes.
@@ -41,8 +41,11 @@ find Theses/ Research/ Sectors/ Macro/ -name '*.md' -newermt "WATERMARK_DATE"
 
 Substitute `WATERMARK_DATE` with the resolved watermark in `YYYY-MM-DD` format.
 
-- **No files changed**: Report `Graph is up to date — no changes since [watermark date].` and stop. Do NOT write `_graph.md` (preserve existing date frontmatter and content).
-- **One or more files changed**: Proceed to the **Incremental Path** below. The Incremental Path re-extracts adjacency only for changed thesis files; reverse indexes always rebuild fully to prevent drift. **Do NOT proceed to Steps 1-8** — those are the full rebuild path used by `/graph` (no args) and as a fallback when `_graph.md` is missing/poisoned.
+**Invalidation pre-check**: Additionally check whether `.graph_invalidations` exists and is non-empty. Theses listed there require re-extraction regardless of their mtime (they are neighbors of a closed thesis whose `cross-thesis:` references are stale). See Step I.2.5.
+
+- **No files changed AND no invalidations**: Report `Graph is up to date — no changes since [watermark date]; no pending invalidations.` and stop. Do NOT write `_graph.md` (preserve existing date frontmatter and content).
+- **No files changed but invalidations present**: Proceed to the **Incremental Path**. The only work is re-extracting the invalidated theses + rebuilding reverse indexes + deleting `.graph_invalidations` at Step I.9. Report `No watermark changes, but [N] invalidations pending — processing.`
+- **One or more files changed**: Proceed to the **Incremental Path** below. The Incremental Path re-extracts adjacency only for changed thesis files (plus any invalidated ones); reverse indexes always rebuild fully to prevent drift. **Do NOT proceed to Steps 1-8** — those are the full rebuild path used by `/graph` (no args) and as a fallback when `_graph.md` is missing/poisoned.
 
 ## Incremental Path (for /graph last and /graph [N] when changes detected)
 
@@ -64,24 +67,41 @@ From the change-detection set, separate by directory:
 - **Changed Sector / Macro files** (`Sectors/*.md`, `Macro/*.md`): no per-file action needed — reverse indexes rebuild fully in Step I.5
 - **Changed Research files** (`Research/*.md`): no per-file action needed — orphan list recomputes in Step I.7. (Research note edits don't affect thesis adjacency; only their existence does.)
 
+### Step I.2.5: Fold `.graph_invalidations` into the Changed-Thesis Bucket
+
+Check for `.graph_invalidations` at vault root. This file is written by `/status` Step 7.6 and `/prune` Stage 4.5 when a thesis closure archives a file that other theses referenced via `cross-thesis:` wikilinks. Those neighbor theses may not have been modified since the last graph write, so the watermark check in Step I.2 misses them — but their `cross-thesis:` adjacency entries are now stale (pointing to the archived thesis).
+
+Processing:
+1. If `.graph_invalidations` does not exist → skip this step, proceed to I.3.
+2. Read the file. Each non-empty, non-comment line is a relative thesis path (e.g., `Theses/NVDA - Nvidia.md`).
+3. For each listed path:
+   - If the file exists in `Theses/` → add to the Changed Thesis bucket from I.2 (dedup against files already in the set).
+   - If the file does NOT exist (listed thesis was itself archived since the invalidation was written) → log `ℹ️ .graph_invalidations: [path] no longer in Theses/ — skipped (likely archived after invalidation).` and ignore.
+4. **Do NOT delete `.graph_invalidations` yet** — deletion happens in Step I.9 only after the graph write succeeds. If the run fails mid-path, the invalidation list must persist so the next `/graph last` still processes the neighbors.
+
+Report the count in Step I.11 under a new field: `Invalidations consumed: [N] neighbor theses (from .graph_invalidations)`.
+
 ### Step I.3: Detect Thesis Additions and Removals
 
 Compare current `Theses/*.md` files on disk against baseline adjacency entries:
 - **Added theses** (file exists on disk, no entry in baseline): mark for fresh adjacency extraction in Step I.4
 - **Removed theses** (entry in baseline, file does not exist on disk): remove entry from baseline in-memory map. These also disappear from cross-thesis cluster recomputation in Step I.6.
 
-### Step I.4: Re-extract Adjacency for Changed + Added Theses
+### Step I.4: Re-extract Adjacency for Changed + Added + Invalidated Theses
 
-For each thesis flagged in Step I.2 (changed) or Step I.3 (added):
+For each thesis flagged in Step I.2 (changed by watermark), Step I.2.5 (invalidated by `.graph_invalidations`), or Step I.3 (added):
 1. Extract outbound `[[wikilinks]]` from the thesis file
 2. Categorize each link:
    - Target in `Sectors/` → sector adjacency
    - Target in `Macro/` → macro adjacency
    - Target in `Theses/` → cross-thesis adjacency
    - Target in `Research/` → research adjacency
-3. Replace the baseline adjacency entry for this thesis with the new categorization
+3. **Validate target existence** — for each cross-thesis link in particular, verify the target file exists under `Theses/`. If it does NOT exist (dangling reference to an archived thesis), drop it from the cross-thesis set and log `ℹ️ Dropped dangling cross-thesis: [TICKER] → [[Theses/TARGET - ...]] (file not in Theses/, likely archived).` This is the step that actually removes stale post-closure references from the graph — it completes the invalidation cycle that Step I.2.5 opens.
 
-Unchanged theses retain their baseline adjacency entries — no re-read required.
+   Apply the same existence check to research, sector, and macro links: if a linked research/sector/macro file no longer exists, drop it from the respective adjacency bucket. Log each dropped link at `ℹ️` severity.
+4. Replace the baseline adjacency entry for this thesis with the new, validated categorization.
+
+Unchanged (and non-invalidated) theses retain their baseline adjacency entries — no re-read required. If a baseline entry carries a dangling reference from a prior extraction and the thesis is not invalidated this run, `/lint` #21 still flags it; next time the thesis is edited (or its ticker appears on `.graph_invalidations`), the stale reference is cleaned.
 
 ### Step I.5: Rebuild Reverse Indexes (Always Full)
 
@@ -119,7 +139,7 @@ Sum from updated in-memory state:
 - Forward adjacency: per thesis, count of `sectors + macros + cross-thesis + research`
 - Reverse indexes: per row, count of theses listed
 
-### Step I.9: Write Updated _graph.md
+### Step I.9: Write Updated _graph.md and Clear Invalidations
 
 Write the merged graph using the same format as full rebuild:
 - Frontmatter `date:` → today; counts updated
@@ -129,6 +149,12 @@ Write the merged graph using the same format as full rebuild:
 - `## Cross-Thesis Clusters` → from Step I.6
 - `## Orphan Research Notes` → from Step I.7
 
+**After the write succeeds**, delete `.graph_invalidations` if it exists:
+```bash
+rm -f .graph_invalidations
+```
+Ordering matters: delete only AFTER the write succeeds. If the write fails, `.graph_invalidations` persists so the next `/graph last` still re-extracts the same neighbors. Report delete success/failure in Step I.11.
+
 ### Step I.10: Validate (same as Step 7.5)
 
 Re-read `_graph.md` and run the validation checks listed in Step 7.5. If any structural check (1-2) fails, the file is corrupt — restore from git or run `/graph` (no args) for full rebuild. If content checks (3-6) fail, log warnings and recommend full rebuild.
@@ -136,7 +162,9 @@ Re-read `_graph.md` and run the validation checks listed in Step 7.5. If any str
 ### Step I.11: Report
 
 - **Mode**: `/graph last` from [watermark date] | `/graph [N]` from [N] days ago
-- **Changed thesis adjacencies re-extracted**: [count]
+- **Changed thesis adjacencies re-extracted**: [count] (including [M] pulled in from `.graph_invalidations`)
+- **Invalidations consumed**: `[N] neighbor theses from .graph_invalidations` or `none (file absent)`
+- **Invalidations file deletion**: `deleted` | `skipped (file never existed)` | `⚠️ rm failed — retry on next /graph last`
 - **Theses added**: [list, or "none"]
 - **Theses removed**: [list, or "none"]
 - **Reverse indexes**: rebuilt from scratch (always)
@@ -172,7 +200,8 @@ For each thesis in `Theses/`:
    - Target in `Theses/` → cross-thesis link
    - Target in `Research/` → research link
    - Other targets → ignore (templates, archives, etc.)
-3. Build the adjacency entry:
+3. **Validate target existence**: For each categorized link, verify the target file exists on disk under its respective directory. Drop dangling references (target file missing — typically a reference to an archived thesis or deleted research note). Log each drop at `ℹ️` severity in the Step 8 report.
+4. Build the adjacency entry:
    ```
    ### TICKER - Company Name
    - sector: [[Sectors/Sector Name]]
@@ -251,6 +280,12 @@ Sections:
 3. `## Reverse Index: Sector → Theses` — from Step 3
 4. `## Cross-Thesis Clusters` — from Step 4
 5. `## Orphan Research Notes` — from Step 5
+
+**After the write succeeds**, delete `.graph_invalidations` if it exists:
+```bash
+rm -f .graph_invalidations
+```
+A full rebuild re-extracts every thesis, so any pending invalidations are implicitly satisfied — the file can be cleared. If the rebuild write fails, `.graph_invalidations` is preserved so the next `/graph` run still honors it. Report the delete outcome in Step 8.
 
 ## Step 7.5: Validate Written Graph
 

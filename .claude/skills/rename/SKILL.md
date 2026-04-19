@@ -39,8 +39,8 @@ If `$ARGUMENTS` lacks a quoted company name, has no ticker, or has extra argumen
 4. **Check no-op**: if `[old_name]` == `[new_name]` (case-sensitive after trim), stop: `⚠️ Old and new names match. Nothing to rename.`
 
 5. **Survey inbound references** (read-only — for the confirmation prompt):
-   - Grep vault (excluding `.git/`, `_Archive/Snapshots/`, `_Inbox/processed/`) for the patterns in Step 5 below. Count matches per pattern.
-   - Grep `_Archive/Snapshots/` frontmatter for `snapshot_of:` referencing the old path. Count.
+   - Grep vault (excluding `.git/` and `_Inbox/processed/` only) for the patterns in Step 5 below. `_Archive/Snapshots/` IS included in the survey because Step 5 rewrites snapshot bodies. Count live-file matches and snapshot-body matches separately so the user can see both counts in the confirmation.
+   - Grep `_Archive/Snapshots/` frontmatter for `snapshot_of:` referencing the old path. Count. (This is a separate count from snapshot body matches — `snapshot_of:` is frontmatter metadata, handled by Step 8.)
    - Read `_graph.md`, locate the adjacency entry header `### TICKER - [old_name]`. Note presence.
    - Resolve sector note via canonical procedure **`.claude/skills/_shared/sector-resolution.md`**. If matched, scan its Active Theses section for the old wikilink. Note presence.
    - Read `_hot.md`, count free-text mentions of `TICKER - [old_name]` (outside wikilink syntax — wikilinks are handled in Step 5).
@@ -55,7 +55,8 @@ Proposed rename:
   New: [[Theses/TICKER - new_name]]
 
 Side effects (will be updated):
-  - Inbound wikilinks: [count] across [N] files — [list paths]
+  - Inbound wikilinks in live files: [count] across [N] files — [list paths]
+  - Inbound wikilinks in snapshot bodies: [count] across [M] snapshots (excludes the pre-rename snapshot from Step 3)
   - Graph adjacency entry header: ### TICKER - [old_name] → ### TICKER - [new_name]
   - Sector note Active Theses entry: [present/absent — sector resolved as [sector_name] via [confidence]]
   - Snapshot snapshot_of fields: [count] snapshots in _Archive/Snapshots/
@@ -103,9 +104,9 @@ ls "Theses/TICKER - [old_name].md" 2>/dev/null  # should produce no output
 
 **If `mv` fails**: stop. Snapshot exists; vault is in original state (no destructive changes yet — wikilinks not modified). Report: `❌ Rename failed at mv step — vault unchanged. Snapshot retained: [[_Archive/Snapshots/...]]. Investigate filesystem permissions.`
 
-## Step 5: Update Inbound Wikilinks Across Vault
+## Step 5: Update Inbound Wikilinks Across Vault (including snapshot bodies)
 
-Process each wikilink pattern. For each, grep the vault (excluding `.git/`, `_Archive/Snapshots/`, `_Inbox/processed/`), then `Edit` each file to replace.
+Process each wikilink pattern. For each, grep the vault (excluding `.git/` and `_Inbox/processed/`), then `Edit` each file to replace. **Crucially, `_Archive/Snapshots/` is NOT excluded** — snapshot bodies frequently contain wikilinks to other theses (e.g., `[[Theses/META - Meta]]` embedded in a pre-sync snapshot of a different thesis). Leaving these stale causes rollback-induced wikilink breakage: rolling back that snapshot re-introduces the old thesis name into a live file, producing broken wikilinks that `/lint` #3 then flags.
 
 | Pattern | Replacement |
 |---|---|
@@ -121,9 +122,13 @@ Process each wikilink pattern. For each, grep the vault (excluding `.git/`, `_Ar
 
 **Self-references in the renamed thesis itself**: the renamed thesis may contain wikilinks back to itself (e.g., template scaffolding). These also get rewritten in this step.
 
-**Track**: list of files modified, total wikilink count rewritten.
+**Snapshot body rewrite — one exception**: Skip the just-created pre-rename snapshot from Step 3 (identify it by matching both the `snapshot_trigger: rename` frontmatter AND a `snapshot_batch` or filename that contains the current rename's HHMMSS stamp). That snapshot's body IS the pre-rename thesis state and must stay untouched so `/rollback` can recover the original content. All OTHER snapshots in `_Archive/Snapshots/` — whether or not they reference the renamed thesis — are eligible for body wikilink rewrites and should be processed normally. In practice, unrelated snapshots won't contain the renamed thesis's wikilinks so the grep will skip them; snapshots that DO reference the renamed thesis are exactly the ones that need updating.
 
-**Failure handling**: If an `Edit` fails for any file, do NOT abort. Continue with remaining files. At Step 11 report, list all files that failed for manual review. The pre-rename snapshot allows full recovery via `/rollback`.
+**Trade-off acknowledged**: rewriting snapshot bodies means the snapshot no longer faithfully reproduces the vault state at snapshot time (wikilink text has drifted forward). The alternative — not rewriting — re-injects broken wikilinks on rollback. The forward-drift is the lesser evil because `/rollback` is the scenario that matters; a snapshot that can't cleanly restore is a dead snapshot.
+
+**Track**: list of files modified (split by live files vs. snapshot files for the Step 11 report), total wikilink count rewritten.
+
+**Failure handling**: If an `Edit` fails for any file (live or snapshot), do NOT abort. Continue with remaining files. At Step 11 report, list all files that failed for manual review. The pre-rename snapshot allows full recovery via `/rollback`.
 
 ## Step 6: Update Graph Adjacency Entry Header
 
@@ -189,7 +194,8 @@ Append to the renamed thesis's `## Log` section:
 ## Step 11: Report
 
 - **Renamed**: `Theses/TICKER - [old_name].md` → `Theses/TICKER - [new_name].md`
-- **Wikilinks rewritten**: [count] across [list of file paths]
+- **Wikilinks rewritten (live files)**: [count] across [list of live file paths in Theses/, Sectors/, Macro/, Research/, _hot.md]
+- **Wikilinks rewritten (snapshot bodies)**: [count] across [list of `_Archive/Snapshots/*.md` paths whose bodies were updated]. Excludes the pre-rename snapshot created in Step 3.
 - **Wikilink update failures** (if any): [list files that failed Edit operations — recommend manual review]
 - **Graph adjacency entry**: header updated OR `⚠️ stale graph — entry not found, run /graph`
 - **Sector note**: updated as `[sector_name]` (resolution `[exact|normalized|substring]`) OR `skipped (draft status)` OR `skipped (no matching sector note)`

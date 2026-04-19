@@ -121,12 +121,38 @@ For each compared thesis, add the comparison to its `## Related Research` sectio
 - [[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]
 ```
 
-Update the Sector Note if the comparison reveals competitive dynamics not already documented. Resolve the sector note via canonical procedure **`.claude/skills/_shared/sector-resolution.md`** using the shared `sector:` frontmatter (use the first compared thesis's sector if the compared theses share one; if they differ, resolve each separately and update both). If `match_confidence` is `none`, emit the contract's no-match warning and skip to the graph update below. If `match_confidence` is `normalized` or `substring`, emit the contract's `log_message` in the report; if `substring`, additionally pause for explicit user confirmation before modifying analytical text (the contract restricts substring-resolved sector notes from receiving destructive edits without confirmation). If modifying existing analytical text (competitive dynamics, value chain, company comparisons) — not just adding links — snapshot first:
+Update the Sector Note if the comparison reveals competitive dynamics not already documented. Resolve the sector note via canonical procedure **`.claude/skills/_shared/sector-resolution.md`** using each compared thesis's `sector:` frontmatter.
+
+**Resolution rules:**
+- **All compared theses share the same sector** → resolve once, update one sector note. Single-sector batch.
+- **Compared theses span different sectors** → resolve each unique sector separately. Update each corresponding sector note independently. **Cross-sector batch**: sector updates are logically independent — a future `/rollback` on one sector should NOT cascade into the other.
+
+**Confidence handling** (same rules per resolved sector note): if `match_confidence` is `none` for a given sector, emit the contract's no-match warning for that sector and skip sector update for those theses (but continue processing other sectors). If `normalized` or `substring`, emit the contract's `log_message`; if `substring`, additionally pause for explicit user confirmation before modifying analytical text.
+
+### Snapshot batch ID — per sector, not per run
+
+If modifying existing analytical text (competitive dynamics, value chain, company comparisons) — not just adding links — snapshot first. Generate a DISTINCT `snapshot_batch` value for EACH sector note being modified. The batch ID template embeds the sector slug so cascade detection scopes cleanly to one sector:
+
 ```bash
 mkdir -p _Archive/Snapshots
+HHMM=$(date +%H%M)
+# For each sector note being updated, use its own slug:
+SECTOR_SLUG=$(echo "Sector Name" | tr '[:upper:]' '[:lower:]' | tr ' &/' '--')
 cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-compare YYYY-MM-DD-HHMM).md"
 ```
-Read the newly created snapshot, then add `snapshot_of`, `snapshot_date`, `snapshot_trigger: compare`, `snapshot_batch: compare-YYYY-MM-DD-HHMM` to its frontmatter.
+Read each newly created snapshot, then add to its frontmatter:
+```yaml
+snapshot_of: "[[Sectors/Sector Name]]"
+snapshot_date: YYYY-MM-DD
+snapshot_trigger: compare
+snapshot_batch: compare-[sector-slug]-YYYY-MM-DD-HHMM
+```
+
+**Why the slug matters**: `/rollback` Step 2.5 groups snapshots by `snapshot_batch` for cascade detection. If two sector notes share the batch `compare-2026-04-19-1530`, a rollback of one offers to cascade-restore the other — coupling unrelated sectors. By scoping the batch to `compare-semiconductors-2026-04-19-1530` vs. `compare-cybersecurity-2026-04-19-1530`, cascade detection only couples snapshots that truly belong together (e.g., if a future skill snapshots the same semiconductors sector note in the same run, it would share the semiconductors-scoped batch).
+
+**Single-sector case**: when all compared theses share one sector, there's only one sector note and the slug is still included for consistency (`compare-semiconductors-YYYY-MM-DD-HHMM`) — this keeps the batch-ID format uniform regardless of sector count.
+
+**Thesis log entries**: across all compared theses — regardless of sector — use a shared sessional tag in the Log entries for audit readability (e.g., referencing the same research note wikilink). Thesis Log entries do not use `snapshot_batch` (they aren't snapshots), so there's no cascade-coupling risk at the Log-entry level.
 
 **Modify the original sector note using targeted `Edit` operations (atomic string replacement per section), NOT full-file `Write`.** Each `Edit` call either succeeds atomically or leaves the section unchanged — this limits the blast radius of a mid-edit failure to zero (partial writes cannot occur). Apply one `Edit` per modified section (e.g., one for competitive dynamics, one for value chain).
 

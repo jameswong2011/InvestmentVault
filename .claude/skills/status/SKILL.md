@@ -3,7 +3,7 @@ name: status
 description: Change conviction level or status on a single thesis. Use when user says "change conviction", "downgrade", "upgrade", "move to monitoring", "close [TICKER]", or "set [TICKER] to [level]".
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write Bash(date * cp * mkdir * mv * find *)
+allowed-tools: Read Grep Glob Edit Write Bash(date * cp * mkdir * mv * find * grep * cat * sort * printf * ls *)
 ---
 
 **Follow CLAUDE.md Writing Standards strictly.** No hedge words, lead with insights/numbers, tables over prose, every sentence must earn its place.
@@ -178,6 +178,7 @@ Decision matrix — set `edit_planned: true` only when at least one of the condi
 |---|---|---|
 | `draft→active` | Is the thesis wikilink already present in the Active Theses section? | Thesis wikilink ABSENT — Step 5b will add it. |
 | `monitoring→active` | Is the thesis wikilink already in the Active Theses section (not annotated as monitoring)? | Thesis wikilink absent from Active Theses, OR present but annotated as monitoring (annotation will be removed). |
+| `closed→active` (reopen) | Is the thesis wikilink already present in the Active Theses section? | Thesis wikilink ABSENT — Step 5b will add it. See "Reopen anti-collision check" below for why this row exists. |
 | `active→monitoring` | Does the sector note distinguish monitoring (e.g., separate "Monitoring" section, `(monitoring)` suffix on wikilink, conviction column, or annotation convention)? | Sector note distinguishes monitoring AND the thesis is NOT already annotated as such. |
 | `active→closed` | Is the thesis wikilink in the Active Theses section? | Thesis wikilink present — Step 5b will remove it (and optionally add to Closed/Archived). |
 | Conviction change | Does the sector note display conviction levels alongside thesis links (e.g., `[[TICKER]] (medium)`, a conviction column, or a grouped-by-conviction structure)? | Sector note displays conviction AND the displayed value differs from the new conviction. |
@@ -185,6 +186,20 @@ Decision matrix — set `edit_planned: true` only when at least one of the condi
 Distinguish "sector note distinguishes monitoring" and "sector note displays conviction" by grepping the sector note body:
 - Monitoring distinction indicators: `## Monitoring`, `(monitoring)`, `monitoring:`, or any thesis wikilink suffixed with a monitoring marker.
 - Conviction display indicators: `(high)`, `(medium)`, `(low)` adjacent to thesis wikilinks, OR a `| Conviction |` column header, OR section headings grouped by conviction level.
+
+### Reopen anti-collision check (closed→active only)
+
+`closed→active` has a specific double-listing hazard that doesn't apply to other transitions. The typical path to this transition is:
+
+1. User closes thesis via `/status active→closed` → Step 5b removes the wikilink from sector Active Theses, `/status` archives the thesis.
+2. User later runs `/rollback TICKER` to reopen. The rollback cascade (Step 2.5) typically restores BOTH the thesis file AND the sector-note snapshot taken before closure — so the sector note is reverted to its PRE-closure state, which already has the wikilink in Active Theses.
+3. User (per User Guide §3n) checks the restored `status:` frontmatter. If the snapshot was pre-closure: status is already `active`, no `/status` run needed. If the snapshot was post-closure: user runs `/status TICKER status closed→active`.
+
+At step 3, if the sector was already restored by the rollback cascade, the wikilink is present — Step 5b would add a duplicate and the sector note would end up double-listing the thesis. The decision-matrix row above prevents this: check wikilink presence first, only set `edit_planned: true` when ABSENT.
+
+Manual `mv` reopens (user moved the file from `_Archive/` back to `Theses/` without running `/rollback`) follow the same logic: sector note was never restored, wikilink IS absent, `edit_planned: true`, Step 5b adds it.
+
+Either way, the presence check in Step 5.1 is the single source of truth — no separate "did the user just run /rollback?" detection is needed.
 
 If `edit_planned: false` after evaluating: skip both Step 5a and Step 5b. Report in Step 8 as `Sector note: no edit needed — [TICKER] transition [old→new] already reflects current sector note state.` Proceed to Step 6.
 
@@ -211,7 +226,7 @@ Reuse the batch ID generated in Step 3.0. The snapshot runs for every transition
 
 Only runs if Step 5.1 set `edit_planned: true`. Apply the specific edit identified in Step 5.1's decision matrix:
 
-1. **For status → active** (e.g., draft→active, monitoring→active): Add the thesis to the Active Theses section. If it was present with a monitoring annotation, remove the annotation.
+1. **For status → active** (e.g., draft→active, monitoring→active, closed→active): Add the thesis to the Active Theses section. If it was present with a monitoring annotation, remove the annotation. For `closed→active` specifically, if a "Closed/Archived" section exists in the sector note and contains this thesis, remove the entry from there as well (prevents dual listing: active AND closed).
 2. **For conviction changes** (when sector note displays conviction): Update the displayed conviction level for this thesis to the new value.
 3. **For status → monitoring** (when sector note distinguishes monitoring): Move or annotate the thesis to reflect monitoring status per the sector note's convention.
 4. **For status → closed**: Remove the thesis from the Active Theses section. If a "Closed/Archived" section exists, add it there. If not, just remove.
@@ -223,9 +238,9 @@ Only runs if Step 5.1 set `edit_planned: true`. Apply the specific edit identifi
 `_graph.md` is now owned exclusively by `/graph`.
 
 - **Conviction and non-closure status changes**: no graph impact (graph tracks links, not conviction/status metadata).
-- **Status → closed**: after this skill (and after Step 7.5 archive move), run `/graph last` to remove the archived thesis from the Adjacency Index, reverse indexes, Cross-Thesis Clusters, and other theses' `cross-thesis:` fields. Research notes orphaned by the closure are moved to the Orphan list automatically by `/graph last` rebuild.
+- **Status → closed**: after this skill (and after Step 7.5 archive move and Step 7.6 invalidation write), run `/graph last` to remove the archived thesis from the Adjacency Index, reverse indexes, Cross-Thesis Clusters, and other theses' `cross-thesis:` fields. Step 7.6 writes an invalidation list that forces `/graph last` to re-extract adjacency for every neighbor thesis that referenced the closed thesis — without the list, neighbors keep stale `cross-thesis:` references until the neighbor is next edited. Research notes orphaned by the closure are moved to the Orphan list automatically by `/graph last` rebuild.
 
-> **Why deferred**: The full-rebuild path of `/graph last` captures closure cleanup atomically from current vault state — no need for skill-level cleanup logic that previously required closure-immediate exceptions and chain-protocol carve-outs.
+> **Why deferred**: The incremental path of `/graph last` — augmented by the Step 7.6 invalidation list — captures closure cleanup from current vault state without requiring a full rebuild. No skill-level graph cleanup logic; `/graph` remains the sole writer of `_graph.md`.
 
 ## Step 7: Update _hot.md
 
@@ -261,6 +276,52 @@ To complete manually: mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Co
 ```
 Do NOT attempt to undo the metadata updates. The intermediate state (`status: closed` in `Theses/`) is safe: `/sync` will skip a closed thesis in its propagation analysis, and `/lint` will flag the pending move. The next session can complete the move with the single `mv` command above.
 
+## Step 7.6: Write Graph Invalidation List (closure only)
+
+**Only runs for `status → closed` changes. Skip for conviction changes, non-closure status changes, and reaffirmations.** Skip silently if Step 7.5 reported the archive move failed — the closure is incomplete; invalidation must wait until the move completes.
+
+Closure removes the thesis from `Theses/`, but neighbor theses (those that referenced the closed thesis via `[[wikilinks]]`) still have `cross-thesis:` entries in `_graph.md` pointing to the now-archived thesis. `/graph last`'s incremental path only re-extracts adjacency for thesis files whose mtime advanced since the last graph write — so untouched neighbors keep stale `cross-thesis:` references until their next edit. This accumulates dangling graph edges that `/lint` #21 flags.
+
+Fix: write the neighbor list to `.graph_invalidations` at vault root. `/graph last` reads this file on its next run, folds the listed theses into the changed-file set for re-extraction, then deletes the file.
+
+### 7.6a: Identify neighbor theses
+
+Grep the `Theses/` directory (excluding the just-archived thesis) for wikilink patterns that reference the closed thesis:
+
+```bash
+# Patterns to search (each ticker/name occurrence matching any):
+#   [[Theses/TICKER - Company Name]]
+#   [[Theses/TICKER - Company Name|alias]]
+#   [[Theses/TICKER - Company Name#section]]
+#   [[Theses/TICKER - Company Name.md]]
+#   [[TICKER - Company Name]]
+#   [[TICKER - Company Name|alias]]
+#   [[TICKER - Company Name#section]]
+```
+
+Use `Grep` with `output_mode: files_with_matches` and multiple pattern runs (one per form). Deduplicate the resulting file list. Exclude the just-archived thesis itself (if any match surfaced from _Archive/, ignore — only `Theses/*.md` neighbors matter for graph re-extraction).
+
+### 7.6b: Append to `.graph_invalidations`
+
+Create or append to `.graph_invalidations` at vault root (relative path `.graph_invalidations`). Format: one relative thesis path per line (e.g., `Theses/NVDA - Nvidia.md`). If the file already exists (prior closure produced unconsumed entries — `/graph last` hasn't run yet), append rather than overwrite, then deduplicate.
+
+```bash
+{
+  # Existing entries (if any)
+  [ -f .graph_invalidations ] && cat .graph_invalidations
+  # New neighbors from 7.6a
+  printf '%s\n' "Theses/NEIGHBOR1 - ...md" "Theses/NEIGHBOR2 - ...md"
+} | sort -u > .graph_invalidations.tmp && mv .graph_invalidations.tmp .graph_invalidations
+```
+
+If no neighbors found (closed thesis was isolated): skip file creation. Report `Invalidation: no neighbors — isolated thesis.`
+
+### 7.6c: Validate and report
+
+After write, verify the file exists and contains the expected entries. Include in Step 8 report:
+- **Graph invalidation**: `[N] neighbors added to .graph_invalidations: [list first 5, truncate with "...+M more" if longer]`
+- **Graph reminder**: emphasize `/graph last` is now mandatory — without it, the invalidation list accumulates.
+
 ## Step 8: Report
 
 - **Change applied**: [TICKER] [field] [old] → [new]
@@ -269,7 +330,8 @@ Do NOT attempt to undo the metadata updates. The intermediate state (`status: cl
 - **Sector note snapshot**: `[[_Archive/Snapshots/Sector Name (pre-status YYYY-MM-DD-HHMM)]]` OR "skipped (no matching sector note)" OR "skipped (no edit needed — sector note state already reflects transition)"
 - **Batch ID**: `status-YYYY-MM-DD-HHMM` (cascade-restore with /rollback if needed)
 - **Sector Note updated**: [sector name] — [what changed] OR "no edit needed (dry-run determined current state already matches the transition)"
-- **Graph reminder**: `→ Run /graph last` (closure only — conviction/non-closure changes have no graph impact)
+- **Graph reminder**: `→ Run /graph last` (closure only — conviction/non-closure changes have no graph impact). For closures the invalidation list from Step 7.6 is unconsumed until `/graph last` runs; a stale list accumulates across successive closures but does no harm beyond slightly wider re-extraction on the next `/graph last`.
 - **Archived** (closure only): `[[_Archive/TICKER - Company Name]]` or `⚠️ Archive move failed — see Step 7.5 output`
+- **Graph invalidation** (closure only): `[N] neighbor theses queued for re-extraction in .graph_invalidations: [first 5 relative paths, truncate with "...+M more" if longer]` OR `no neighbors — isolated thesis` OR `skipped — archive move failed at Step 7.5`
 - **Wikilink breakages** (closure only): `⚠️ [N] notes contain wikilinks to this thesis. Run /lint to review.`
 - **Trigger conflict** (if any): `⚠️ [quote conflicting trigger]`

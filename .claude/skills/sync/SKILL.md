@@ -45,12 +45,33 @@ touch -t 197001010000 .last_sync
 
 ### Pre-propagation deduplication
 
-For each changed research note, check whether any target thesis already has a Log entry referencing this note. Two checks:
+For each changed research note, the target set is the UNION of every thesis plausibly affected by the note — resolved via graph-assisted mode and the file-direct fallback below. `propagated_to:` frontmatter is treated as a dedup hint (which theses are already marked as propagated-to by the producer skill), **not** as a target cap.
 
-1. **`propagated_to:` frontmatter check**: If the research note has `propagated_to: [TICKER1, TICKER2, ...]` (set by `/stress-test`, `/scenario`, `/compare`, `/deepen`), use this as the initial target list.
-2. **Per-thesis idempotency check**: For each target thesis, scan its `## Log` section for any `### YYYY-MM-DD` entry within the last 24 hours that references this research note's wikilink. If found, the note has already been propagated to this thesis — skip it for this thesis. Log: `ℹ️ Skipped duplicate propagation for [TICKER] — Log already contains today's entry for [research-note].`
+This matters because producer skills embed intentional filtering in `propagated_to:`: `/scenario` includes only Major-impact theses, `/stress-test` only the tested ticker, `/compare` only tickers with existing theses. If `/sync` used `propagated_to:` as the target set, minor-impact theses that wikilink-reference the research note would never receive propagation via `/sync`. Augmenting (not capping) keeps `/sync` the universal propagation mechanism while honoring dedup against producer-embedded targets.
 
-This 24-hour idempotency window catches the case where a producer skill (e.g., `/scenario`) already wrote Log entries to its target theses, and a subsequent `/sync` finds the same research note via timestamp detection. The window is intentionally simple — no 4-bucket classification, no partial-repair branches. If the Log entry is missing, propagate normally.
+Three checks, applied in order:
+
+1. **Compute full target set** (UNION — never capped by `propagated_to:`):
+   - **Graph-assisted resolution** (if `_graph.md` exists): find every thesis that lists the research note in its `research:` adjacency.
+   - **File-direct fallback** (always runs to catch targets the graph may miss): resolve via (a) research note's `ticker:` frontmatter matching `Theses/[TICKER] - *.md`, (b) outbound `[[Theses/...]]` wikilinks in the research note body, (c) `tags:` containing ticker-shaped tokens (all-uppercase, 1-5 chars) that match `Theses/[TICKER] - *.md`.
+   - Union the results. Dedup thesis filenames.
+
+2. **`propagated_to:` dedup hint**: If the research note has `propagated_to: [TICKER1, TICKER2, ...]` (set by `/stress-test`, `/scenario`, `/compare`, `/deepen`), treat each listed ticker as "already propagated by the producer skill" — **skip them for this run**. These tickers received Log entries directly from the producer; re-propagating would produce near-duplicate entries. Log: `ℹ️ Skipped [TICKER] — producer skill already propagated (in propagated_to).`
+   - **Exception — augmented targets**: Tickers in the Step 1 target set that are NOT in `propagated_to:` are new additions via wikilink/tag/ticker resolution. Log: `➕ Augmented propagation: [TICKER] — not in propagated_to but resolved via [wikilink | tag | ticker frontmatter].` Proceed to Check 3 for these tickers.
+
+3. **Per-thesis idempotency check** (applies to every remaining ticker after Check 2): For each target thesis, scan its `## Log` section for any `### YYYY-MM-DD` entry **whose date equals today's date** that references this research note's wikilink. Match rule is strict calendar-day: compare `entry_date == today` as `YYYY-MM-DD` strings. If found, skip: `ℹ️ Skipped duplicate propagation for [TICKER] — Log already contains today's entry for [research-note].`
+
+> **Strict calendar-day rule (authoritative)**: Log entries are date-only (`### YYYY-MM-DD`) — they do not carry wall-clock time. The idempotency check compares today's date against the Log entry's date with exact string equality. A "rolling 24-hour window" interpretation (e.g., entry dated `2026-04-18` at 23:58 counted as "within 24h" of `2026-04-19` at 00:02) is **explicitly rejected** because (a) it cannot be computed from date-only entries without parasitic mtime reads that couple correctness to filesystem metadata outside this skill's control, and (b) producer skills always write today's calendar date, making `entry_date == today` the dimensionally matched check.
+>
+> **Cross-midnight edge case**: if `/scenario` wrote `### 2026-04-18` at 23:58 and `/sync` runs at 00:02 on 2026-04-19, today = `2026-04-19`, the Log has only `### 2026-04-18`, so the check misses → propagate normally → a new `### 2026-04-19` entry is added. This is the correct audit outcome: the research was still relevant the next calendar day. Slight redundancy; never data loss.
+
+This idempotency check catches the case where a producer skill wrote Log entries and a subsequent `/sync` finds the same research note via timestamp detection. The window is intentionally simple — no 4-bucket classification, no rolling-time arithmetic, no partial-repair branches. If no today-dated entry references this research note, propagate normally.
+
+**After propagation succeeds**, update the research note's `propagated_to:` frontmatter by unioning the just-propagated tickers with whatever was already there:
+```yaml
+propagated_to: [existing, ..., newly_propagated_by_sync, ...]
+```
+This ensures subsequent `/sync` runs see the augmented targets as already-propagated on the re-run, preventing re-propagation loops.
 
 ### Graph-assisted mode (default)
 
@@ -193,7 +214,7 @@ If any Tier A edits are planned for a thesis:
 - **Conviction drift detection**:
   > **Log Format Contract** — drift detection depends on exact prefix matching. **Authoritative registry**: `.claude/skills/_shared/log-prefixes.md`. `/lint` check #29 verifies registry consistency.
 
-  Scan Log entries backward from most recent, **excluding entries that begin with "Stress test"** (periodic adversarial reviews, not deterioration evidence). **Also exclude entries that begin with "Deepened" or "↳ CORRECTION: Deepened"** within 7 calendar days of a "Stress test" entry for the same ticker (gap-filling research, not independent evidence). If a "Conviction reaffirmed" or "Status change: conviction" entry is found, anchor the window there — only count entries AFTER the anchor. If fewer than 3 entries exist after the anchor, drift detection has insufficient data and does not fire. If no anchor exists, use the last 5 entries as the window.
+  Scan Log entries backward from most recent, **excluding entries that begin with "Stress test"** (periodic adversarial reviews, not deterioration evidence). **Also exclude entries that begin with "Deepened" or "↳ CORRECTION: Deepened"** within 7 calendar days of a "Stress test" entry for the same ticker (gap-filling research, not independent evidence). **Also exclude entries that begin with "Cross-thesis closure:" or "Cross-thesis closures:"** — these are `/prune`-emitted notifications about a DIFFERENT thesis being closed; they carry no signal about this thesis's own conviction trajectory and must not count toward drift (registry entry §13). If a "Conviction reaffirmed" or "Status change: conviction" entry is found, anchor the window there — only count entries AFTER the anchor. If fewer than 3 entries exist after the anchor, drift detection has insufficient data and does not fire. If no anchor exists, use the last 5 entries as the window.
   - conviction: high but 3+ entries in window weakening → `⚠️ Conviction drift — [N]/[window size] recent updates flagged headwinds. Reassess. To acknowledge after review: /status TICKER reaffirm [rationale]`
   - conviction: low but 3+ entries in window strengthening → `📈 Positive drift — [N]/[window size] recent updates supportive. Reassess. To acknowledge after review: /status TICKER reaffirm [rationale]`
 
@@ -305,6 +326,9 @@ This is the last mutation. If any prior step fails or the session is interrupted
 - **Sector Note updates**: [list with one-line summary each]
 - **Macro note updates**: [list with one-line summary each]
 - **Deduplication skips**: [list any tickers where propagation was skipped because Log already contained today's entry for the research note. If none, omit this line.]
+- **`propagated_to:` skips**: [list tickers skipped because the producer skill already marked them propagated via `propagated_to:` frontmatter. If none, omit this line.]
+- **Augmented targets**: [list tickers NOT in a research note's `propagated_to:` but resolved via wikilink/tag/ticker frontmatter — these are the minor-impact or cross-referenced theses that a producer skill intentionally excluded but that `/sync` correctly picks up. If none, omit this line.]
+- **`propagated_to:` updates**: [list research notes whose `propagated_to:` frontmatter was extended with newly propagated tickers. If none, omit this line.]
 - **Closed-status skips**: [list TICKERs skipped because status: closed + file still in Theses/. If none, omit this line.]
 - **Missing-file skips**: [list any thesis filenames found in graph but not on disk. If none, omit this line.]
 - **Unresolved research notes**: [list any research notes where no propagation target was found. If none, omit this line.]

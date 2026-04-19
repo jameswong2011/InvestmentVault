@@ -5,7 +5,7 @@ model: opus
 effort: max
 context: fork
 agent: general-purpose
-allowed-tools: Read Grep Glob Edit Write Bash(date * find * wc * mv * cp * mkdir * rm *)
+allowed-tools: Read Grep Glob Edit Write Bash(date * find * wc * mv * cp * mkdir * rm * grep * cat * sort * printf *)
 ---
 
 **Follow CLAUDE.md Writing Standards strictly.** No hedge words, lead with insights/numbers, tables over prose, every sentence must earn its place.
@@ -198,9 +198,11 @@ Body — list every intended action:
 ```markdown
 # Prune Batch Manifest
 
-> **If this file exists, a `/prune` operation did not complete successfully.**
+> **If this file exists AND its frontmatter says `status: in-progress`, a `/prune` operation did not complete successfully.**
 > Recovery: `/rollback [any ticker below]` → select `(pre-prune)` snapshot → cascade (a) to undo all completed actions.
 > Then delete this manifest and re-run `/prune`.
+>
+> **If this file's frontmatter says `status: completed`**, the prune finished but Stage 5 manifest cleanup did not. Safe to delete manually (e.g., `rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md"`). `/clean` also surfaces these under "Completed prune manifests — safe to delete manually".
 
 ## Intended Closures
 - TICKER1 - Company1
@@ -211,21 +213,26 @@ Body — list every intended action:
 
 ## Affected Sector Notes
 - Sector Name (closures: TICKER1, TICKER2; upgrades: TICKER3)
+
+## Downstream Content Propagation (Stage 4.2 targets)
+- Neighbor theses receiving closure-notification Log entries: [list from Stage 2 step 3 neighbor scans]
+- Macro notes referencing closed theses (reported only, not edited): [list from 4.2a step 2 scan]
 ```
 
-This file is deleted at the end of Phase 5 after all stages succeed (see Stage 5 below).
+This file is marked `status: completed` then deleted at the end of Stage 5 after all stages succeed (see Manifest Cleanup below).
 
 ### Stage 2: Process ALL Thesis Closures
 
 For each approved closure:
 1. Add final Log entry: `### YYYY-MM-DD\n- CLOSED: [rationale]. Archived.`
 2. Change frontmatter: `status: closed`
-3. Move file to `_Archive/`:
+3. **Record neighbor list for graph invalidation** (before the move, while the thesis filename is still easy to grep against). Grep `Theses/` (excluding the thesis about to be archived) for wikilink patterns `[[Theses/TICKER - Name]]`, `[[Theses/TICKER - Name|...]]`, `[[Theses/TICKER - Name#...]]`, `[[Theses/TICKER - Name.md]]`, `[[TICKER - Name]]`, `[[TICKER - Name|...]]`, `[[TICKER - Name#...]]`. Dedup the file list, collect as this closure's neighbor set.
+4. Move file to `_Archive/`:
    ```bash
    mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Company Name.md"
    ```
 
-Do NOT update sector notes here — batched in Stage 4.
+Do NOT update sector notes here — batched in Stage 4. Do NOT write `.graph_invalidations` per-closure — batched in Stage 4.5 so the file is written once for the whole prune run.
 
 **If a closure fails mid-stage**: Report which closures completed and which failed. All pre-prune snapshots from Stage 1 are available for recovery. The batch manifest from Stage 1.5 persists and records all intended actions:
 ```
@@ -255,11 +262,81 @@ For each affected sector note (identified in Stage 1):
 2. **Closures**: Remove archived theses from the Active Theses section. If a "Closed/Archived" section exists, add them there
 3. **Upgrades**: If the sector note displays conviction levels alongside thesis links, update to reflect the new levels
 
-Do NOT rewrite wikilinks across the vault — `/lint` will detect broken links from the archive moves. Report expected breakages: `⚠️ [N] notes contain wikilinks to archived theses. Run /lint to review.`
+Do NOT rewrite wikilinks across the vault in this stage. Downstream content propagation (Log annotations on neighbor theses, macro-note surfacing) happens in Stage 4.2 and is append-only — no body-prose or existing-wikilink edits.
 
-> **Why sector notes are updated last**: Stages 2–3 modify thesis files only. If the skill fails during Stages 2–3, sector notes remain untouched and internally consistent — they still reference the original thesis paths. The snapshots from Stage 1 enable full cascade recovery. Only after all thesis modifications succeed do sector notes get updated.
+> **Why sector notes are updated last among same-type targets**: Stages 2–3 modify thesis files only. If the skill fails during Stages 2–3, sector notes remain untouched and internally consistent — they still reference the original thesis paths. The snapshots from Stage 1 enable full cascade recovery. Only after all thesis modifications succeed do sector notes get updated.
 
 > **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to update the dependency map for archived theses (Adjacency Index removal, reverse-index cleanup, ghost cross-thesis ref scrubbing, orphan reclassification of research notes that were only linked from archived theses).
+
+### Stage 4.2: Propagate Closures to Downstream Content (only if closures occurred)
+
+Skip entirely if Stage 2 processed zero closures. For closure runs, extend propagation beyond sector notes — macro notes and cross-referencing theses also need to reflect the closure. Without this stage, a macro note's "affected theses" list or another thesis's cross-thesis narrative silently references an archived thesis; users discover the staleness only via `/lint` or by accidentally pitching a closed position.
+
+Neighbor thesis sets were collected at Stage 2 step 3 (used by Stage 4.5 for graph invalidation). Stage 4.2 reuses those sets for content propagation, plus scans `Macro/*.md` for wikilink references.
+
+#### 4.2a: Identify downstream files per closure
+
+For each closed thesis, two target groups:
+
+1. **Cross-referencing theses**: already collected in Stage 2 step 3. These are `Theses/*.md` files whose body contains a wikilink to the closed thesis.
+2. **Macro notes with references**: grep `Macro/*.md` for the same wikilink patterns used in Stage 2 step 3 (`[[Theses/TICKER - Name]]`, `[[Theses/TICKER - Name|alias]]`, `[[TICKER - Name]]`, etc.). Collect the affected macro file list.
+
+Exclude `_Archive/`, `_Archive/Snapshots/`, `_Inbox/processed/`, and `.git/` from both scans — closures don't propagate into historical or already-archived content.
+
+#### 4.2b: Append closure-notification Log entry to each affected thesis
+
+For every neighbor thesis identified in 4.2a step 1, append a single dated Log entry to the thesis's `## Log` section:
+
+```
+### YYYY-MM-DD
+- Cross-thesis closure: [[_Archive/CLOSED_TICKER - Company Name]] archived — [one-line rationale from the /prune recommendation]. Cross-thesis and Related Research wikilinks retained; review body prose if thesis impact has changed.
+```
+
+Rules:
+- **One Log entry per affected thesis** regardless of how many closures affected it. If thesis NVDA cross-references three closed theses (TICKER1, TICKER2, TICKER3) in this prune run, the Log entry names all three as one bullet: `Cross-thesis closures: [[_Archive/TICKER1 - ...]], [[_Archive/TICKER2 - ...]], [[_Archive/TICKER3 - ...]] archived this run — ...`
+- **Max 2 lines per CLAUDE.md Writing Standards**. Collapse rationales if the list runs long: `... and 2 more — see /prune output`
+- **Archive path wikilinks**: use `[[_Archive/TICKER - Company Name]]` (not `[[Theses/...]]`) so the link points to where the closed thesis actually lives. Obsidian resolves `_Archive/` wikilinks natively.
+- **Do NOT modify body prose** — wikilinks to the closed thesis in the thesis's Cross-Thesis section, Related Research, or body narrative are preserved intact. The Log annotation is the notification; the user reviews the body at their pace.
+- **Do NOT snapshot for 4.2b** — Log appends are Tier B (append-only) per CLAUDE.md Change Safety Rules. Stage 1 thesis snapshots don't cover neighbor theses, and snapshotting every neighbor would explode the batch size. If an append fails, the thesis is unchanged.
+
+**Failure handling**: if an Edit to append the Log entry fails for a given neighbor thesis, do NOT abort the stage. Log the failure and continue with the next neighbor. Report all failed appends in the final summary so the user can inspect.
+
+#### 4.2c: Macro note handling — detect and report, do not auto-edit
+
+Macro notes are narrative documents with variable structure; not every macro note has a `## Log` section, and body prose often embeds thesis wikilinks in analytical sentences (e.g., "Iranian retaliation risk most directly affects [[Theses/LITE - Lumentum]]..."). Auto-editing these can destroy analytical coherence.
+
+For each macro note identified in 4.2a step 2:
+- Do NOT edit the file.
+- Collect the `(macro note path, affected-thesis list)` pairs for the final Stage 4.2 report.
+- Surface in the user-facing report as: `⚠️ Macro references to closed theses — review manually:`
+  ```
+  - [[Macro/Iran conflict — Transmission Map]] references [[CLOSED_TICKER1 - ...]] (now archived)
+  - [[Macro/AI capex cycle]] references [[CLOSED_TICKER1 - ...]], [[CLOSED_TICKER2 - ...]] (now archived)
+  ```
+
+The user can then decide per macro note whether to: (a) rewrite the prose to reflect closure, (b) leave as-is (historical macro analysis that remains informative), or (c) add a note/strikethrough. `/prune` takes no action.
+
+#### 4.2d: Stage report
+
+Include in the final Stage 5 report:
+- **Cross-thesis Log annotations**: `[N] neighbor theses received closure-notification Log entries: [list]. [M] Edit failures: [list with reason].`
+- **Macro notes referencing closures**: `[N] macro notes contain wikilinks to archived theses — manual review recommended: [list pairs].`
+
+### Stage 4.5: Write Graph Invalidation List (only if closures occurred)
+
+Skip entirely if Stage 2 processed zero closures. For prune runs with closures, merge every closure's neighbor set (collected at Stage 2 step 3) into a single deduplicated list, then append to `.graph_invalidations` at vault root:
+
+```bash
+{
+  [ -f .graph_invalidations ] && cat .graph_invalidations
+  # Deduplicated union of Stage 2 neighbor sets (all closures):
+  printf '%s\n' "Theses/NEIGHBOR1 - ...md" "Theses/NEIGHBOR2 - ...md" ...
+} | sort -u > .graph_invalidations.tmp && mv .graph_invalidations.tmp .graph_invalidations
+```
+
+Rationale: every closure made some neighbors' `cross-thesis:` references stale. `/graph last` uses this file to re-extract those neighbors on its next run. Writing once per prune (rather than per-closure) keeps the file from thrashing during a large prune batch; the file is processed and cleared by the first `/graph last` after this skill.
+
+**Failure handling**: If the file write fails, report the failure but do NOT abort the prune — closures/upgrades/sector updates already succeeded. User can manually rebuild via `/graph` (full). Report: `⚠️ .graph_invalidations write failed — run /graph (full rebuild) instead of /graph last to clean stale cross-thesis refs.`
 
 Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
 
@@ -272,10 +349,15 @@ Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Arc
 
 ### Manifest Cleanup
 
-All stages completed successfully. Delete the batch manifest:
-```bash
-rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md"
-```
-If the manifest delete fails, warn but do not abort — the manifest is a diagnostic artifact, not vault content. `/lint` or the user can clean it up.
+All stages completed successfully. The cleanup is a two-step sequence: first mark the manifest `status: completed` (defensive — this transforms a failed `rm` into a benign artifact `/clean` can recognize and ignore), then attempt to delete the file.
 
-Report final count of actions taken.
+1. **Flip manifest status**: Edit the manifest's frontmatter — change `status: in-progress` to `status: completed` and add `completed_date: YYYY-MM-DD`. This edit is the state transition; the `rm` is just a housekeeping step.
+
+2. **Delete the manifest**:
+   ```bash
+   rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md"
+   ```
+
+3. **Delete failure handling**: If the `rm` fails, warn but do not abort — the manifest is now `status: completed` so `/clean` Step 2a correctly classifies it as a safe-to-delete completed manifest rather than an in-progress crash artifact (which would have misled the user into running `/rollback`). The user or a future `/clean` run can `rm` it manually.
+
+Report final count of actions taken. Include the manifest's final state (`completed — deleted` | `completed — rm failed, manual cleanup recommended`).

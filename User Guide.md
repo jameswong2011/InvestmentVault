@@ -340,10 +340,13 @@ Then propagate:
 For adversarial prep (anticipating pushback):
 ```
 /stress-test TICKER
+/sync TICKER
 /brief TICKER
 /graph last
 ```
-> The brief distils the thesis into a 1-page memo. The stress test identifies the weakest points so you can prepare rebuttals. `/graph last` registers both the stress test and brief research notes in the dependency map.
+> The stress test identifies the weakest points so you can prepare rebuttals — but it only writes a research note + a Log entry on the single thesis. `/sync TICKER` propagates those findings to the sector note, macro notes, and any cross-thesis references the stress test surfaced, so the brief picks up a consistent post-stress-test vault state rather than a half-updated one. The brief then distils the thesis into a 1-page memo. `/graph last` registers both the stress test and brief research notes in the dependency map.
+>
+> **Skip `/sync TICKER` only if**: the stress test explicitly returned "thesis survives stress testing" with no `🔴` assumption fragilities and no cross-thesis implications. In that case the propagation has nothing to carry, and `/stress-test` → `/brief` → `/graph last` is sufficient.
 
 ### 3p. Research Session — Ad Hoc Topic
 
@@ -1030,15 +1033,15 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 - Triage any `/lint` #32 (orphaned ticker) or #33 (closed-thesis-in-Theses) findings
 
 ### When prompted by events
-| Event | Workflow |
-|-------|---------|
-| Earnings reported | `/ingest [URL]` → `/sync TICKER` → `/graph last` → `/status` if conviction changes |
-| Macro shock | `/scenario [event]` → `/status` for affected → `/sync` → `/graph last` |
-| New stock idea | `/thesis TICKER` → `/status draft→active` → `/stress-test` → `/sync` → `/graph last` |
-| Conviction flagged | `/status TICKER reaffirm [reason]` (lightweight, no graph touch needed) OR investigate → `/status` change → `/sync TICKER` → `/graph last` |
-| Competitor news | `/ingest [URL]` → `/compare` affected tickers → `/sync` → `/graph last` |
-| Sector rotation | `/surface [sector]` → `/scenario` if macro-driven → `/compare` key players → `/sync` → `/graph last` |
-| Thesis closure | `/status TICKER status active→closed [reason]` → `/graph last` (cleans archived thesis from graph adjacency, reverse indexes, clusters) |
+| Event                     | Workflow                                                                                                                                        |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Earnings reported         | `/ingest [URL]` → `/sync TICKER` → `/graph last` → `/status` if conviction changes                                                              |
+| Macro shock               | `/scenario [event]` → `/status` for affected → `/sync` → `/graph last`                                                                          |
+| New stock idea            | `/thesis TICKER` → `/status draft→active` → `/stress-test` → `/sync` → `/graph last`                                                            |
+| Conviction flagged        | `/status TICKER reaffirm [reason]` (lightweight, no graph touch needed) OR investigate → `/status` change → `/sync TICKER` → `/graph last`      |
+| Competitor news           | `/ingest [URL]` → `/compare` affected tickers → `/sync` → `/graph last`                                                                         |
+| Sector rotation           | `/surface [sector]` → `/scenario` if macro-driven → `/compare` key players → `/sync` → `/graph last`                                            |
+| Thesis closure            | `/status TICKER status active→closed [reason]` → `/graph last` (cleans archived thesis from graph adjacency, reverse indexes, clusters)         |
 | Reopening archived thesis | `/rollback TICKER` → `/sync TICKER` → `/graph last` (CRITICAL — without `/graph last`, recreated thesis is invisible to graph-assisted lookups) |
 
 ### When conventions change

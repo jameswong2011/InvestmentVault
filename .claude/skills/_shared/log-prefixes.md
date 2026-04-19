@@ -1,7 +1,7 @@
 ---
 type: shared-contract
 purpose: Single source of truth for Log-entry prefixes that carry cross-skill semantic weight.
-last_reviewed: 2026-04-17
+last_reviewed: 2026-04-19
 ---
 
 # Log Prefix Registry
@@ -280,6 +280,29 @@ example: |
   ### 2026-04-17
   - ROLLBACK to snapshot (2026-04-16, pre-sync). 2 log entries from 2026-04-16 lost. Safety snapshot: [[_Archive/Snapshots/...]]
 breakage_if_changed: "Audit trail readability only."
+```
+
+### 13. Cross-thesis closure / Cross-thesis closures
+
+```yaml
+prefix_singular: "Cross-thesis closure:"
+prefix_plural: "Cross-thesis closures:"
+case_sensitive: true
+match_anchor: line-prefix
+producer:
+  skill: /prune
+  step: Stage 4.2b
+  emits_when: a prune closure affected this thesis's cross-thesis wikilinks (appended once per neighbor thesis per prune run)
+consumers:
+  - skill: audit-only
+  - skill: /sync
+    step: Step 3e drift detection
+    role: drift-exclusion (this entry does not reflect deterioration of the thesis's own conviction — it reflects an upstream neighbor's closure — so it must not count toward drift)
+example: |
+  ### 2026-04-17
+  - Cross-thesis closure: [[_Archive/FOO - Foobar Inc]] archived — no catalyst identified, thin research base. Cross-thesis and Related Research wikilinks retained; review body prose if thesis impact has changed.
+  - Cross-thesis closures: [[_Archive/FOO - Foobar]], [[_Archive/BAR - Barbaz]] archived this run — see /prune output. Cross-thesis wikilinks retained.
+breakage_if_changed: "/sync drift detection would wrongly count /prune-triggered cross-thesis notifications as evidence against the unchanged thesis, producing false ⚠️ Conviction drift warnings on healthy theses. Plural and singular forms must both be recognized — the singular covers single-closure runs; the plural is emitted when one thesis is referenced by multiple closures in the same prune batch."
 ```
 
 ---
