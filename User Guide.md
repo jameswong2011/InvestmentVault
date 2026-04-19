@@ -1016,8 +1016,8 @@ Updated by: `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thes
 
 ### `_graph.md` — Vault Dependency Map
 Owned exclusively by `/graph`. Three modes:
-- **`/graph last`** (run after every `/sync`): skip rebuild if no files changed since last graph write; otherwise full rebuild.
-- **`/graph [N]`** (e.g., `/graph 7`): catch-up mode if you missed running `/graph last` for a while.
+- **`/graph last`** (run after every `/sync`): true incremental — re-extracts adjacency only for thesis files changed since last graph write. Reverse indexes (Sector → Theses, Macro → Theses), cross-thesis clusters, and orphan list always rebuild from scratch in-memory. This combination is cheap (skip ~30+ unchanged thesis reads) yet drift-free (reverse indexes can never accumulate stale entries because they're never incrementally updated).
+- **`/graph [N]`** (e.g., `/graph 7`): catch-up mode if you missed running `/graph last` for a while. Same incremental logic, watermark = today − N days.
 - **`/graph`** (no args): full rebuild from scratch (use after `/sync all` or for disaster recovery).
 
 Research skills (`/sync`, `/thesis`, `/compare`, `/scenario`, `/deepen`, etc.) do NOT write to `_graph.md` — they create content and remind you to run `/graph last` afterward. This eliminates cross-skill graph contention.

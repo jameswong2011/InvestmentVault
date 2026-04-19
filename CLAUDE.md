@@ -149,7 +149,7 @@ The primary vault workflow is an ingest-propagate-graph loop:
 1. **Deposit** raw content into `_Inbox/` (web clips, Deep Research PDFs, CSVs, notes)
 2. **`/ingest`** processes `_Inbox/` into structured Research notes with wikilinks and thesis Log updates
 3. **`/sync`** propagates insights across all affected Theses, Sector Notes, Macro notes, and `_hot.md`
-4. **`/graph last`** reconciles `_graph.md` against the just-modified files (cheap when nothing changed, full rebuild when anything did)
+4. **`/graph last`** reconciles `_graph.md` against the just-modified files (true incremental — re-extracts only changed thesis adjacencies, always rebuilds reverse indexes from scratch to prevent drift)
 5. **`/status`** executes conviction or status changes after research conclusions (e.g., `/status NVDA conviction medium→low`)
 6. **`/surface`** for periodic deep review (blind spots, attention allocation, decay alerts, opportunities)
 7. **`/lint`** for periodic health checks (structural, freshness, analytical)

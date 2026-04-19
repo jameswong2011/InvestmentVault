@@ -1,6 +1,6 @@
 ---
 name: graph
-description: Rebuild the vault dependency graph (_graph.md). Three modes — /graph (full rebuild), /graph last (skip if unchanged since last write, else full rebuild), /graph [N] (skip if unchanged in last N days, else full rebuild). Use /graph last after every /sync, /graph [N] for catch-up, /graph for full disaster-recovery rebuild.
+description: Rebuild the vault dependency graph (_graph.md). Three modes — /graph (full rebuild), /graph last (true incremental: re-extract only changed thesis adjacencies, always rebuild reverse indexes), /graph [N] (catch-up incremental from N days ago). Use /graph last after every /sync, /graph [N] for catch-up, /graph for full disaster-recovery rebuild.
 model: opus
 effort: max
 allowed-tools: Read Grep Glob Edit Write Bash(find * wc * date * grep *)
@@ -14,15 +14,17 @@ Rebuild `_graph.md` entirely from vault state. This is a structural metadata ope
 
 Parse `$ARGUMENTS` to determine mode:
 
-- **`/graph last`** — **Incremental.** Skip rebuild if no files have changed since `_graph.md`'s `date:` frontmatter. Otherwise, full rebuild. Use after every `/sync` to keep the dependency map current.
-- **`/graph [N]`** — **Catch-up incremental.** Skip rebuild if no files have changed in the last N days. Otherwise, full rebuild. Use to catch up after periods without `/graph last` (e.g., `/graph 7` for a week of activity).
-- **`/graph`** (no arguments) — **Full rebuild.** Always rebuilds from scratch. Use after `/sync all`, `/lint` flagging graph health issues, or for periodic disaster-recovery rebuilds.
+- **`/graph last`** — **True incremental.** Skip if no files changed since `_graph.md`'s `date:`. Otherwise re-extract adjacency for **changed thesis files only**; always rebuild reverse indexes, clusters, and orphan list from scratch. Use after every `/sync`.
+- **`/graph [N]`** — **Catch-up incremental.** Same logic as `/graph last` but watermark = today − N days. Use to catch up after periods without `/graph last` (e.g., `/graph 7` for a week).
+- **`/graph`** (no arguments) — **Full rebuild.** Re-extract adjacency for ALL theses. Use after `/sync all`, when `/lint` flags graph health issues, or for periodic disaster-recovery rebuilds.
 
-Mode resolution: if `$ARGUMENTS` matches the literal string `last`, use `/graph last` mode. If `$ARGUMENTS` matches an integer N (e.g., `7`, `30`), use `/graph [N]` mode. Otherwise (empty or unrecognized), use full rebuild.
+Mode resolution: if `$ARGUMENTS` matches the literal string `last`, use `/graph last`. If `$ARGUMENTS` matches an integer N (e.g., `7`, `30`), use `/graph [N]`. Otherwise (empty or unrecognized), use full rebuild.
+
+> **Drift-safety design**: Forward adjacency (per-thesis links) updates incrementally — only re-extracted for changed theses. Reverse indexes (Macro → Theses, Sector → Theses) ALWAYS rebuild fully from `Sectors/*.md` + `Macro/*.md` files. This combination eliminates the reverse-index drift that motivated the metadata-cull architecture: incremental updates can't accumulate drift in reverse indexes because reverse indexes are never incrementally updated. Cross-thesis clusters and orphan list also always recompute from the in-memory adjacency state.
 
 ## Watermark Check (incremental modes only — skip for full rebuild)
 
-For `/graph last` and `/graph [N]` modes, perform the watermark check before any other work. If the check passes (no changes since watermark), skip Steps 1–8 entirely.
+For `/graph last` and `/graph [N]`, check the watermark before any other work. If the check passes (no changes since watermark), skip the Incremental Path and Steps 1-8 entirely.
 
 ### Watermark Resolution
 
@@ -40,9 +42,109 @@ find Theses/ Research/ Sectors/ Macro/ -name '*.md' -newermt "WATERMARK_DATE"
 Substitute `WATERMARK_DATE` with the resolved watermark in `YYYY-MM-DD` format.
 
 - **No files changed**: Report `Graph is up to date — no changes since [watermark date].` and stop. Do NOT write `_graph.md` (preserve existing date frontmatter and content).
-- **One or more files changed**: Proceed to Step 1 to perform a full rebuild against current vault state. The rebuild captures all changes; partial-rebuild is intentionally avoided to prevent reverse-index drift and consistency bugs that plagued the prior architecture.
+- **One or more files changed**: Proceed to the **Incremental Path** below. The Incremental Path re-extracts adjacency only for changed thesis files; reverse indexes always rebuild fully to prevent drift. **Do NOT proceed to Steps 1-8** — those are the full rebuild path used by `/graph` (no args) and as a fallback when `_graph.md` is missing/poisoned.
 
-> **Why "rebuild if changed" instead of true incremental**: A true incremental update (only re-process changed files' adjacencies) requires reverse-index diff logic that is the source of most graph metadata edge cases. The "skip if unchanged, full rebuild if changed" approach preserves the cheap-when-idle property without introducing partial-update bugs. Full rebuild is ~15-20 seconds for a typical vault — negligible compared to the `/sync` it follows.
+## Incremental Path (for /graph last and /graph [N] when changes detected)
+
+Forward adjacency updates per changed thesis; reverse indexes, clusters, and orphans always rebuild fully from in-memory state. This is the cheap path when most theses are untouched.
+
+### Step I.1: Parse Existing Graph
+
+Read `_graph.md` and parse:
+- Thesis Adjacency Index → map of `TICKER - Name → {sectors, macros, cross-thesis, research}`
+- Existing orphan list (used for diff reporting)
+- Existing cluster table (used for diff reporting)
+
+This becomes the **baseline** for incremental updates. If parsing fails (corrupt file), warn `⚠️ _graph.md unparseable — falling back to full rebuild` and proceed to Step 1.
+
+### Step I.2: Bucket the Changed Files
+
+From the change-detection set, separate by directory:
+- **Changed Thesis files** (`Theses/*.md`): re-extract their adjacency entries in Step I.4
+- **Changed Sector / Macro files** (`Sectors/*.md`, `Macro/*.md`): no per-file action needed — reverse indexes rebuild fully in Step I.5
+- **Changed Research files** (`Research/*.md`): no per-file action needed — orphan list recomputes in Step I.7. (Research note edits don't affect thesis adjacency; only their existence does.)
+
+### Step I.3: Detect Thesis Additions and Removals
+
+Compare current `Theses/*.md` files on disk against baseline adjacency entries:
+- **Added theses** (file exists on disk, no entry in baseline): mark for fresh adjacency extraction in Step I.4
+- **Removed theses** (entry in baseline, file does not exist on disk): remove entry from baseline in-memory map. These also disappear from cross-thesis cluster recomputation in Step I.6.
+
+### Step I.4: Re-extract Adjacency for Changed + Added Theses
+
+For each thesis flagged in Step I.2 (changed) or Step I.3 (added):
+1. Extract outbound `[[wikilinks]]` from the thesis file
+2. Categorize each link:
+   - Target in `Sectors/` → sector adjacency
+   - Target in `Macro/` → macro adjacency
+   - Target in `Theses/` → cross-thesis adjacency
+   - Target in `Research/` → research adjacency
+3. Replace the baseline adjacency entry for this thesis with the new categorization
+
+Unchanged theses retain their baseline adjacency entries — no re-read required.
+
+### Step I.5: Rebuild Reverse Indexes (Always Full)
+
+Read every `Sectors/*.md` and `Macro/*.md` file unconditionally (~13 + 6 = 19 files, bounded and cheap):
+
+#### Macro → Theses
+For each `Macro/*.md`:
+1. Extract outbound `[[wikilinks]]` targeting `Theses/`
+2. Build mapping: `Macro/Note → sorted [tickers]`
+
+#### Sector → Theses
+For each `Sectors/*.md`:
+1. Extract outbound `[[wikilinks]]` targeting `Theses/`
+2. Build mapping: `Sectors/Name → sorted [tickers]`
+
+This step always runs full — even if zero sector/macro files changed — so reverse indexes can never accumulate drift from the forward index.
+
+### Step I.6: Recompute Cross-Thesis Clusters
+
+Cross-thesis clusters depend only on forward adjacency `cross-thesis:` fields, which are fully current in the in-memory map after Step I.4. Recompute from scratch:
+1. Build pairs (A, B) where A's `cross-thesis:` includes B AND B's `cross-thesis:` includes A
+2. Group connected pairs into clusters via union-find
+3. Format as the cluster table
+
+### Step I.7: Recompute Orphan List
+
+From the in-memory adjacency map:
+1. Collect all research note wikilinks across every thesis's `research:` field → set `linked_research`
+2. Inventory `Research/*.md` files on disk → set `all_research`
+3. Orphans = `all_research − linked_research`, sorted
+
+### Step I.8: Recount Edges
+
+Sum from updated in-memory state:
+- Forward adjacency: per thesis, count of `sectors + macros + cross-thesis + research`
+- Reverse indexes: per row, count of theses listed
+
+### Step I.9: Write Updated _graph.md
+
+Write the merged graph using the same format as full rebuild:
+- Frontmatter `date:` → today; counts updated
+- `## Thesis Adjacency Index` → all entries (changed + added + unchanged), sorted
+- `## Reverse Index: Macro → Theses` → from Step I.5
+- `## Reverse Index: Sector → Theses` → from Step I.5
+- `## Cross-Thesis Clusters` → from Step I.6
+- `## Orphan Research Notes` → from Step I.7
+
+### Step I.10: Validate (same as Step 7.5)
+
+Re-read `_graph.md` and run the validation checks listed in Step 7.5. If any structural check (1-2) fails, the file is corrupt — restore from git or run `/graph` (no args) for full rebuild. If content checks (3-6) fail, log warnings and recommend full rebuild.
+
+### Step I.11: Report
+
+- **Mode**: `/graph last` from [watermark date] | `/graph [N]` from [N] days ago
+- **Changed thesis adjacencies re-extracted**: [count]
+- **Theses added**: [list, or "none"]
+- **Theses removed**: [list, or "none"]
+- **Reverse indexes**: rebuilt from scratch (always)
+- **Cross-thesis clusters**: [list new/dissolved, or "no structural changes"]
+- **Orphan deltas**: [N newly orphaned, M no-longer-orphaned]
+- **Edges**: [old → new]
+- **Validation**: passed | [list specific failures]
+- **No content files modified** — graph update only
 
 ## Step 1: Inventory Vault
 
