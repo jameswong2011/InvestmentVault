@@ -1,6 +1,6 @@
 # User Guide — Claude Code + Obsidian for Investment Research
 
-> Your vault has **39 theses**, **129 research notes**, **13 sector notes**, and **6 macro notes**. This guide covers every skill, ery argument form, every multi-skill workflow chain, and every natural language query pattern available. Ordered by impact — start at the top.
+> Your vault has **39 theses**, **132 research notes**, **13 sector notes**, and **6 macro notes**. This guide covers every skill, every argument form, every multi-skill workflow chain, and every natural language query pattern available. Ordered by impact — start at the top.
 
 ---
 
@@ -10,13 +10,15 @@ If this is a brand new vault (no prior `/sync` runs), run this bootstrap sequenc
 
 ```
 /sync                            # creates _hot.md + .last_sync, reads all vault files
-/graph                           # creates _graph.md from vault state
+/graph last                      # creates _graph.md from vault state (falls back to full rebuild on first run)
 ```
 
 After bootstrap, all skills work. Without it:
-- `/sync TICKER` and scoped `/surface` require `_graph.md` — they block if it's missing
+- Scoped `/surface` (ticker or sector) requires `_graph.md` — it blocks if missing
 - `/prune` pre-flight unsynced-research check has no `.last_sync` baseline to compare against
 - Skills that update `_hot.md` will auto-create it (CLAUDE.md rule #9), but `/sync` produces a richer initial version with Latest Sync data and Portfolio Snapshot
+
+> `/sync TICKER` does NOT require `_graph.md` — it reconstructs adjacency directly from the thesis file. Safe to run before bootstrap.
 
 > If the vault already has thesis/research/sector notes, `/sync` reads everything on first run (equivalent to `/sync all`). This is expected — it establishes the watermark baseline.
 
@@ -24,19 +26,22 @@ After bootstrap, all skills work. Without it:
 
 ## 1. The Core Loop
 
-Every session follows the same rhythm: **deposit → ingest → sync**. Everything else extends this loop.
+Every session follows the same rhythm: **deposit → ingest → sync → graph**. Everything else extends this loop.
 
 ```
-_Inbox/ drop  →  /ingest  →  /sync  →  work  →  /sync
+_Inbox/ drop  →  /ingest  →  /sync  →  /graph last  →  work  →  /sync  →  /graph last
 ```
 
 | Step | What happens | Time |
 |------|-------------|------|
 | Drop raw content into `_Inbox/` | Web clips, PDFs, CSVs, notes — any format | Between sessions |
 | `/ingest` | Transforms `_Inbox/` into structured Research notes with wikilinks | ~2 min |
-| `/sync` | Propagates new insights to all affected theses, sector notes, macro notes, `_hot.md` | ~3 min |
+| `/sync` | Propagates new insights to theses, sector notes, macro notes, `_hot.md`. Does NOT touch `_graph.md`. | ~3 min |
+| `/graph last` | Reconciles `_graph.md` against just-modified files (true incremental — only re-extracts changed thesis adjacencies) | ~10 sec |
 | Work | Research, analysis, thesis building, conviction changes | Variable |
-| `/sync` | Propagate again after making changes | ~3 min |
+| `/sync` → `/graph last` | Propagate session work, then refresh dependency map | ~3 min total |
+
+> **Why `/graph last` after every `/sync`**: Research skills (`/sync`, `/thesis`, `/compare`, etc.) no longer write to `_graph.md` — that ownership is concentrated in `/graph` to eliminate cross-skill metadata contention. `/graph last` is the cheap finalizer that keeps the dependency map current.
 
 ---
 
@@ -51,12 +56,10 @@ what's unresolved, and suggest what to focus on today.
 ### Process inbox
 ```
 /ingest
-```
-Then:
-```
 /sync
+/graph last
 ```
-> `/ingest` creates Research notes only. `/sync` propagates the insights to theses, sectors, macro notes. Always run both.
+> `/ingest` creates Research notes only. `/sync` propagates the insights to theses, sectors, macro notes (no `_graph.md` writes). `/graph last` reconciles the dependency map. Always run all three.
 
 ### Earnings season triage
 ```
@@ -86,11 +89,12 @@ Stress-test immediately while the thesis is fresh:
 ```
 /stress-test TICKER
 ```
-Propagate stress test findings:
+Propagate stress test findings, then refresh the dependency map:
 ```
 /sync TICKER
+/graph last
 ```
-> **Full chain**: `/thesis` → `/status draft→active` → `/stress-test` → `/sync TICKER`
+> **Full chain**: `/thesis` → `/status draft→active` → `/stress-test` → `/sync TICKER` → `/graph last`
 > **Optional extension**: Add `/compare TICKER vs COMPETITOR` before `/sync` for competitive context. Add `/deepen TICKER [weakest section]` to fill gaps the stress test identified.
 
 ### 3b. New Position — From Existing Research
@@ -100,9 +104,11 @@ Propagate stress test findings:
 ```
 /ingest                          # process any inbox items first
 /sync                            # propagate to existing notes
+/graph last                      # register inbox-derived research in graph
 /thesis TICKER                   # vault research is used automatically
 /status TICKER status draft→active [rationale]
 /sync TICKER                     # propagate new thesis connections
+/graph last                      # register new thesis adjacency in graph
 ```
 
 ### 3c. Earnings Reaction
@@ -112,6 +118,7 @@ Propagate stress test findings:
 ```
 /ingest [transcript or press release URL]
 /sync TICKER
+/graph last
 ```
 If the report changes conviction:
 ```
@@ -121,7 +128,7 @@ If the report was ambiguous, stress-test first:
 ```
 /stress-test TICKER
 ```
-> **Full chain**: `/ingest URL` → `/sync TICKER` → (assess) → `/status` or `/stress-test` → `/sync`
+> **Full chain**: `/ingest URL` → `/sync TICKER` → `/graph last` → (assess) → `/status` or `/stress-test` → `/sync` → `/graph last`
 
 ### 3d. Conviction Drift Response
 
@@ -140,12 +147,14 @@ Review findings, then either reaffirm or change:
 ```
 /status TICKER conviction old→new [rationale from stress test]
 /sync TICKER
+/graph last
 ```
 
 **Path C — Investigate with targeted research**:
 ```
 /deepen TICKER [section the drift relates to]
 /sync TICKER
+/graph last
 ```
 Then decide:
 ```
@@ -167,11 +176,12 @@ If the scenario reveals competitive dynamics worth exploring:
 ```
 /compare [exposed ticker] vs [beneficiary ticker]
 ```
-Propagate all changes:
+Propagate all changes, then refresh dependency map:
 ```
 /sync
+/graph last
 ```
-> **Full chain**: `/scenario` → `/status` (most affected) → `/compare` (competitive shifts) → `/sync`
+> **Full chain**: `/scenario` → `/status` (most affected) → `/compare` (competitive shifts) → `/sync` → `/graph last`
 
 ### 3f. Thesis Improvement — Targeted
 
@@ -180,8 +190,9 @@ Propagate all changes:
 ```
 /deepen TICKER [section name]
 /sync TICKER
+/graph last
 ```
-> `/deepen` auto-detects the weakest section if you omit the section name. Always follow with `/sync TICKER` to propagate.
+> `/deepen` auto-detects the weakest section if you omit the section name. Always follow with `/sync TICKER` to propagate, then `/graph last` to register any new research note in the dependency map.
 
 ### 3g. Thesis Improvement — Adversarial
 
@@ -191,8 +202,9 @@ Propagate all changes:
 /stress-test TICKER
 /deepen TICKER [section the stress test identified as weakest]
 /sync TICKER
+/graph last
 ```
-> The stress test identifies vulnerabilities. `/deepen` fills the gaps. `/sync` propagates.
+> The stress test identifies vulnerabilities. `/deepen` fills the gaps. `/sync` propagates. `/graph last` registers the new research notes in the dependency map.
 
 ### 3h. Competitive Reassessment
 
@@ -205,9 +217,10 @@ If the comparison changes conviction on either name:
 ```
 /status TICKER conviction old→new [competitive insight]
 ```
-Propagate:
+Propagate, then refresh dependency map:
 ```
 /sync
+/graph last
 ```
 > **Variant**: `/compare A vs B vs C` works for 3+ companies. At least one ticker must have a thesis note. Tickers without theses use web research (lighter analysis, no vault updates for that ticker). For full-depth comparison, run `/thesis TICKER` first.
 
@@ -224,7 +237,7 @@ Then find opportunities to reallocate attention:
 ```
 /surface
 ```
-> **Full chain**: `/sync` → `/prune` (approve changes in-line) → `/surface` (new opportunities) → `/graph` (finalise deferred graph changes from `/surface`)
+> **Full chain**: `/sync` → `/graph last` → `/prune` (approve changes in-line) → `/surface` (new opportunities) → `/graph last` (register the surface scan note + reflect any closures/upgrades from /prune)
 
 ### 3j. Idea Discovery → New Position
 
@@ -243,6 +256,7 @@ If an opportunity emerges:
 /compare TICKER vs [existing competitor in sector]
 /status TICKER status draft→active [rationale]
 /sync
+/graph last
 ```
 
 ### 3k. Sector Deep-Dive
@@ -258,12 +272,13 @@ what consensus believes and where they could be wrong.
 ```
 Then:
 ```
-/graph                           # register new sector note in the reverse index
+/graph last                      # register new sector note in the reverse index
 /surface [sector]
 /compare [key players in sector]
 /sync
+/graph last
 ```
-> `/graph` is required before `/surface` — sector scoping uses `_graph.md`'s Sector → Theses reverse index, which won't include a newly created sector note until `/graph` runs. If building multiple theses in a new sector: create the sector note first, then `/thesis` for each company, then `/graph` to rebuild connections.
+> `/graph last` is required before `/surface [sector]` — sector scoping uses `_graph.md`'s Sector → Theses reverse index, which won't include a newly created sector note until `/graph last` reads the new sector file (Step I.5 always rebuilds reverse indexes from current `Sectors/*.md` files). If building multiple theses in a new sector: create the sector note first, then `/thesis` for each company, then `/graph last` to refresh adjacencies, then `/surface [sector]`.
 
 ### 3l. Monthly Maintenance
 
@@ -271,15 +286,15 @@ Then:
 
 ```
 /sync all                        # full brute-force propagation
-/graph                           # rebuild dependency graph from scratch
+/graph                           # full rebuild (after /sync all the watermark is reset)
 /lint                            # full health audit
 /prune                           # portfolio evaluation
 /clean                           # delete old snapshots
 /surface                         # find new opportunities
 /catalyst                        # refresh catalyst calendar
-/graph                           # finalise deferred graph changes from /surface
+/graph last                      # incremental refresh after /surface, /catalyst, /prune touched files
 ```
-> Run in this order. `/sync all` before `/graph` because the sync may change links. `/lint` after `/graph` because lint checks graph health. `/prune` after `/lint` because lint flags staleness. `/surface` near the end because the vault is now clean and complete. Final `/graph` finalises any deferred graph changes from `/surface` and `/prune` (these skills join a chain but no `/sync` follows to consolidate).
+> Run in this order. `/sync all` before `/graph` because the sync may change links. `/graph` (full rebuild, not `last`) is correct here because `/sync all` doesn't update `_graph.md` — a full rebuild establishes the fresh baseline. `/lint` after `/graph` because lint checks graph health. `/prune` after `/lint` because lint flags staleness. `/surface` near the end because the vault is now clean and complete. Final `/graph last` (incremental, cheap) captures changes from `/surface`, `/catalyst`, and `/prune`.
 
 ### 3m. Recovery — Undo a Bad Sync
 
@@ -293,7 +308,7 @@ Select the `(pre-sync)` snapshot. Rollback detects cascade operations — if `/s
 After rollback:
 ```
 /sync TICKER                     # re-propagate from the restored state
-/graph                           # rebuild if the rollback changed link structure
+/graph last                      # capture the restored adjacency
 ```
 
 ### 3n. Recovery — Undo a Closure
@@ -311,8 +326,9 @@ The archived thesis will be recreated at its original path. The archived copy mo
 Then propagate:
 ```
 /sync TICKER
-/graph
+/graph last
 ```
+> **Critical for recreated-file rollbacks**: `/graph last` MUST run before any default `/sync` or scoped `/surface` for this ticker. Without it, the recreated thesis exists on disk but is invisible to graph-assisted lookups. (`/sync TICKER` works because it uses file-direct adjacency, but a default `/sync` could miss propagation paths.)
 
 ### 3o. Pre-Meeting Prep
 
@@ -325,9 +341,9 @@ For adversarial prep (anticipating pushback):
 ```
 /stress-test TICKER
 /brief TICKER
+/graph last
 ```
-> The brief distils the thesis into a 1-page memo. The stress test identifies the weakest points so you can prepare rebuttals.
-> **Note**: `/stress-test` starts the chain and applies its graph update immediately. `/brief` joins and defers — leaving 1 deferred graph change (brief research note indexing). Captured by the next `/sync` or `/graph` run — no explicit finalizer needed for a read-heavy prep workflow.
+> The brief distils the thesis into a 1-page memo. The stress test identifies the weakest points so you can prepare rebuttals. `/graph last` registers both the stress test and brief research notes in the dependency map.
 
 ### 3p. Research Session — Ad Hoc Topic
 
@@ -338,6 +354,7 @@ For adversarial prep (anticipating pushback):
 /ingest [URL2]
 /ingest [URL3]
 /sync
+/graph last
 ```
 Or for manual research:
 ```
@@ -347,6 +364,7 @@ Research/ and update the relevant thesis log.
 Then:
 ```
 /sync
+/graph last
 ```
 
 ### 3q. Catalyst-Driven Review
@@ -364,7 +382,11 @@ For theses with no catalysts flagged:
 ```
 /prune [sector] stale
 ```
-> **Note**: If `/deepen` and `/prune` both run, deferred graph changes accumulate. These are captured by the next `/sync` or `/graph` — append one to the chain if you want the graph current immediately.
+End the chain with a graph refresh:
+```
+/graph last
+```
+> `/deepen` and `/prune` modify thesis files; `/graph last` captures these changes in the dependency map.
 
 ---
 
@@ -429,7 +451,7 @@ challenges. List each contradiction with links to both notes.
 /ingest [file path]              # local PDF, MD, CSV, TXT
 /ingest                          # batch — everything in _Inbox/
 ```
-> Always follow with `/sync` to propagate. `/ingest` creates the Research note; `/sync` updates theses.
+> Always follow with `/sync` then `/graph last`. `/ingest` creates the Research note; `/sync` updates theses; `/graph last` registers the new research in the dependency map.
 
 ### YouTube video transcripts via Gemini
 
@@ -477,7 +499,7 @@ If a word or phrase is unclear in the audio, write [inaudible] rather than guess
 ```
 /thesis TICKER
 ```
-> Searches vault first (existing research, sector context, macro themes), then web. Creates all 13 required sections. Status defaults to `draft` — promote with `/status TICKER status draft→active` when ready.
+> Searches vault first (existing research, sector context, macro themes), then web. Creates all 13 required sections. Status defaults to `draft` — promote with `/status TICKER status draft→active` when ready. Run `/graph last` after promotion to register the new thesis in the dependency map.
 
 ### Deepen a weak section
 ```
@@ -493,14 +515,14 @@ If a word or phrase is unclear in the audio, write [inaudible] rather than guess
 /deepen TICKER Conviction Triggers
 /deepen TICKER Business Model
 ```
-> Creates a snapshot before editing. May also create a supporting Research note. Always follow with `/sync TICKER`.
+> Creates a snapshot before editing. May also create a supporting Research note. Always follow with `/sync TICKER` → `/graph last`.
 
 ### Competitive comparison
 ```
 /compare BESI vs AMAT            # two companies
 /compare PANW NET CRWD           # three or more
 ```
-> At least one ticker needs a thesis note. Missing tickers use web research (lighter comparison, no vault updates for them). For full-depth comparison, run `/thesis TICKER` first. Comparison updates thesis logs and sector note for tickers with existing theses.
+> At least one ticker needs a thesis note. Missing tickers use web research (lighter comparison, no vault updates for them). For full-depth comparison, run `/thesis TICKER` first. Comparison updates thesis logs and sector note for tickers with existing theses. Run `/graph last` after to register the comparison research note.
 
 ### Generate a 1-page brief
 ```
@@ -635,7 +657,7 @@ Output as a canvas file.
 /status TICKER status monitoring→active new catalyst emerged
 /status TICKER status active→closed thesis invalidated by [reason]
 ```
-> `draft→active` skips snapshot (no analytical content changed). `active→closed` triggers archive flow — moves file to `_Archive/`, removes from sector note, cleans up graph.
+> `draft→active` skips snapshot (no analytical content changed). `active→closed` triggers archive flow — moves file to `_Archive/`, removes from sector note. Graph cleanup is deferred to `/graph last` (run it after closure to remove the archived thesis from the adjacency index, reverse indexes, and cross-thesis clusters).
 
 ### Reaffirm after drift
 ```
@@ -658,11 +680,11 @@ update based on the sector note and recent research.
 
 ### Health check
 ```
-/lint                            # full vault — 27 checks
-/lint TICKER                     # scoped — 12 checks on one thesis
+/lint                            # full vault — 34 checks
+/lint TICKER                     # scoped — 14 checks on one thesis
 ```
-> **Full**: structural (orphaned notes, broken links, missing frontmatter), freshness (stale theses, old metrics), connection (unlinked mentions, disconnected macro), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift), snapshot hygiene, graph health.
-> **Scoped**: frontmatter, sections, staleness, conviction-evidence, template compliance, graph entry validity. Faster for quick thesis checks.
+> **Full**: structural (orphaned notes, broken links, missing frontmatter, partial-write detection), freshness (stale theses, old metrics, pending sync), connection (unlinked mentions, disconnected macro, missing thesis candidates), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift, verbose log entries), snapshot hygiene, graph health (existence, staleness, missing/ghost entries, broken edges, reverse-index consistency, edge count), utility files (catalyst calendar staleness), cross-skill contracts (log-prefix registry alignment, sector resolution coverage), and the metadata-cull surfacing checks (#32 orphaned ticker references, #33 closed-thesis files in Theses/).
+> **Scoped**: frontmatter, sections, staleness, financial-data age, inactive research for ticker, conviction-evidence, bull/bear balance, template compliance, verbose logs, graph entry validity for this thesis, broken graph edges, partial-write detection, sector resolution. Faster for quick thesis checks.
 
 ### Portfolio pruning
 ```
@@ -676,11 +698,18 @@ update based on the sector note and recent research.
 ```
 > Checks for unsynced research first (warns if `/sync` needed). Evaluates each candidate on evidence trajectory, thesis integrity, opportunity cost, catalyst horizon, and vault connectivity. Recommends upgrade, keep monitoring, or close. Waits for approval before executing.
 
-### Rebuild dependency graph
+### Refresh / rebuild dependency graph
 ```
-/graph
+/graph last                      # incremental: re-extract changed thesis adjacencies, rebuild reverse indexes (default — run after every /sync)
+/graph 7                         # catch-up incremental: same logic, watermark = today − 7 days
+/graph                           # full rebuild from scratch (after /sync all or for disaster recovery)
 ```
-> Rebuilds `_graph.md` from scratch by scanning all wikilinks in Theses/, Sectors/, Macro/, Research/. No content files modified. Run after `/sync all`, when `/lint` flags graph issues, or when the graph has drifted.
+> **Three modes** — choose based on how much has changed since the last graph write:
+> - `/graph last` — the everyday command. Skips entirely if nothing changed; otherwise re-extracts adjacency only for changed thesis files and rebuilds reverse indexes from scratch. Cheap.
+> - `/graph [N]` — catch-up after periods without `/graph last`. Same incremental logic, but watermark is today minus N days.
+> - `/graph` (no args) — full rebuild. Use after `/sync all` (which intentionally doesn't update the graph), when `/lint` flags graph corruption, or when `_graph.md` is missing/poisoned. More expensive but always correct.
+>
+> No content files modified by any mode.
 
 ### Snapshot cleanup
 ```
@@ -755,76 +784,82 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 | I want to... | Do this |
 |---|---|
-| **Start a session** | Read `_hot.md` → `/ingest` → `/sync` |
-| **Clip an article** | `/ingest [URL]` → `/sync` |
-| **Process inbox** | `/ingest` → `/sync` |
-| **Start covering a new company** | `/thesis TICKER` → `/status draft→active` → `/stress-test` → `/sync` |
-| **Improve a weak thesis** | `/deepen TICKER` → `/sync TICKER` |
-| **Improve a specific section** | `/deepen TICKER [section]` → `/sync TICKER` |
-| **Challenge a thesis** | `/stress-test TICKER` → (decide) → `/status` → `/sync` |
-| **Compare competitors** | `/compare A vs B` → `/sync` |
-| **Pitch a position** | `/brief TICKER` |
-| **React to earnings** | `/ingest [URL]` → `/sync TICKER` → `/status` if needed |
-| **React to macro event** | `/scenario [event]` → `/status` (most affected) → `/sync` |
-| **Handle conviction drift** | `/status TICKER reaffirm` or `/stress-test` → `/status` |
+| **Start a session** | Read `_hot.md` → `/ingest` → `/sync` → `/graph last` |
+| **Clip an article** | `/ingest [URL]` → `/sync` → `/graph last` |
+| **Process inbox** | `/ingest` → `/sync` → `/graph last` |
+| **Start covering a new company** | `/thesis TICKER` → `/status draft→active` → `/stress-test` → `/sync` → `/graph last` |
+| **Improve a weak thesis** | `/deepen TICKER` → `/sync TICKER` → `/graph last` |
+| **Improve a specific section** | `/deepen TICKER [section]` → `/sync TICKER` → `/graph last` |
+| **Challenge a thesis** | `/stress-test TICKER` → (decide) → `/status` → `/sync` → `/graph last` |
+| **Compare competitors** | `/compare A vs B` → `/sync` → `/graph last` |
+| **Pitch a position** | `/brief TICKER` → `/graph last` |
+| **React to earnings** | `/ingest [URL]` → `/sync TICKER` → `/graph last` → `/status` if needed |
+| **React to macro event** | `/scenario [event]` → `/status` (most affected) → `/sync` → `/graph last` |
+| **Handle conviction drift** | `/status TICKER reaffirm` or `/stress-test` → `/status` → `/sync TICKER` → `/graph last` |
 | **Change conviction** | `/status TICKER conviction old→new [reason]` |
-| **Close a position** | `/status TICKER status active→closed [reason]` |
-| **Reopen an archived position** | `/rollback TICKER` → (check status — skip `/status` if already active) → `/sync` → `/graph` |
-| **Find new ideas** | `/surface` or `/surface [sector]` |
-| **Find portfolio blind spots** | `/surface` (unscoped) |
-| **Model a "what if"** | `/scenario [event description]` |
+| **Close a position** | `/status TICKER status active→closed [reason]` → `/graph last` (cleans archived thesis from graph) |
+| **Reopen an archived position** | `/rollback TICKER` → (check status — skip `/status` if already active) → `/sync TICKER` → `/graph last` (critical for recreated-file rollbacks) |
+| **Find new ideas** | `/surface` or `/surface [sector]` → `/graph last` |
+| **Find portfolio blind spots** | `/surface` (unscoped) → `/graph last` |
+| **Model a "what if"** | `/scenario [event description]` → `/sync` → `/graph last` |
 | **See what's coming up** | `/catalyst` |
-| **Clean up weak positions** | `/sync` → `/prune` (approve changes in-line) → `/surface` → `/graph` |
-| **Run monthly maintenance** | `/sync all` → `/graph` → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph` |
-| **Check vault health** | `/lint` (full) or `/lint TICKER` (scoped) |
-| **Fix graph issues** | `/graph` |
-| **Undo a bad sync** | `/rollback TICKER` (offers cascade) → `/sync TICKER` |
+| **Clean up weak positions** | `/sync` → `/graph last` → `/prune` (approve changes in-line) → `/surface` → `/graph last` |
+| **Run monthly maintenance** | `/sync all` → `/graph` (full) → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last` |
+| **Check vault health** | `/lint` (full, 34 checks) or `/lint TICKER` (scoped, 14 checks) |
+| **Update graph after recent edits** | `/graph last` (everyday refresh, cheap) |
+| **Catch up after a week without /graph last** | `/graph 7` (or however many days) |
+| **Fix graph corruption** | `/graph` (full rebuild) |
+| **Undo a bad sync** | `/rollback TICKER` (offers cascade) → `/sync TICKER` → `/graph last` |
 | **Undo a conviction change** | `/rollback TICKER` → select `(pre-status)` snapshot |
 | **Delete old snapshots** | `/clean` or `/clean [days]` |
 | **Rename a thesis (company name change)** | `/rename TICKER "New Company Name"` (atomic — handles wikilinks, graph, sector note, snapshots) |
-| **Build a sector note** | Manual creation with Sector Template → `/graph` → `/surface [sector]` → `/sync` |
-| **Deep-dive a topic** | "Teach me [TOPIC]" → saved as Research note → `/sync` |
+| **Build a sector note** | Manual creation with Sector Template → `/graph last` → `/surface [sector]` → `/sync` → `/graph last` |
+| **Deep-dive a topic** | "Teach me [TOPIC]" → saved as Research note → `/sync` → `/graph last` |
+| **Resolve `/lint` #32 (orphaned ticker)** | Either `/thesis [TICKER]` to create the missing thesis, OR edit the research note's `ticker:` frontmatter to a valid ticker, OR accept as orphan |
+| **Resolve `/lint` #33 (closed thesis still in `Theses/`)** | Either `mv "Theses/[file]" "_Archive/[file]"` → `/graph last` (complete the archive), OR `/status TICKER status closed→active [rationale]` → `/sync TICKER` → `/graph last` (reopen) |
 
 ---
 
 ## 11. Skill Quick Reference
 
+> **Metadata ownership note**: After the metadata-cull architecture, only `/graph` and `/rename` write to `_graph.md`. Every other skill is content-only — they create or modify research/thesis/sector/macro/`_hot.md` files but never touch `_graph.md`. Run `/graph last` after any skill in the tables below to refresh the dependency map.
+
 ### Core Workflow Skills
 
 | Skill | Arguments | Creates | Modifies | Follow-up |
 |-------|-----------|---------|----------|-----------|
-| `/ingest` | none \| URL \| file path | Research note(s) | — | `/sync` |
-| `/sync` | none \| `all` \| TICKER | — | Theses, Sectors, Macro, `_hot.md`, `_graph.md` | — |
-| `/status` | `TICKER field old→new reason` \| `TICKER reaffirm reason` | Snapshot (except draft→active, reaffirm) | Thesis frontmatter + log, Sector note, `_hot.md`, `_graph.md` (closure) | `/sync` (after conviction changes) |
+| `/ingest` | none \| URL \| file path | Research note(s) | — | `/sync` → `/graph last` |
+| `/sync` | none \| `all` \| TICKER | — | Theses, Sectors, Macro, `_hot.md` | `/graph last` |
+| `/status` | `TICKER field old→new reason` \| `TICKER reaffirm reason` | Snapshot (except draft→active, reaffirm) | Thesis frontmatter + log, Sector note, `_hot.md` | `/sync` then `/graph last` (closure especially needs `/graph last` to clean archived thesis from graph) |
 
 ### Analytical Skills
 
 | Skill | Arguments | Creates | Modifies | Follow-up |
 |-------|-----------|---------|----------|-----------|
-| `/surface` | none \| TICKER \| sector | Research note (surface scan) | `_hot.md`, `_graph.md` | `/deepen` or `/thesis` for opportunities found |
-| `/stress-test` | TICKER | Research note (stress test) | Thesis log, `_hot.md`, `_graph.md` | `/status` (if conviction change needed) → `/sync` |
-| `/scenario` | event description | Research note (scenario) | Thesis logs (major-impact), `_hot.md`, `_graph.md` | `/status` (affected positions) → `/sync` |
-| `/compare` | TICKER vs TICKER [vs ...] | Research note (comparison) | Thesis logs, Sector note, `_hot.md`, `_graph.md` | `/sync` (if sector note changed) |
+| `/surface` | none \| TICKER \| sector | Research note (surface scan) | `_hot.md` | `/graph last` then `/deepen` or `/thesis` for opportunities found |
+| `/stress-test` | TICKER | Research note (stress test) | Thesis log, `_hot.md` | `/status` (if conviction change needed) → `/sync` → `/graph last` |
+| `/scenario` | event description | Research note (scenario) | Thesis logs (major-impact), `_hot.md` | `/status` (affected positions) → `/sync` → `/graph last` |
+| `/compare` | TICKER vs TICKER [vs ...] | Research note (comparison) | Thesis logs, Sector note, `_hot.md` | `/sync` (if sector note changed) → `/graph last` |
 | `/catalyst` | none | `_catalyst.md` (overwrite) | — | `/deepen TICKER Catalysts` for gaps |
 
 ### Building Skills
 
 | Skill | Arguments | Creates | Modifies | Follow-up |
 |-------|-----------|---------|----------|-----------|
-| `/thesis` | TICKER | Thesis note (draft) | Sector note (if active), `_hot.md`, `_graph.md` | `/status draft→active` → `/stress-test` → `/sync` |
-| `/deepen` | TICKER [section] | Snapshot + optional Research note | Thesis (target section + log), `_hot.md`, `_graph.md` | `/sync TICKER` |
-| `/brief` | TICKER | Research note (brief) | `_graph.md` | — (read-only derivative) |
+| `/thesis` | TICKER | Thesis note (draft) | Sector note (if active), `_hot.md` | `/status draft→active` → `/stress-test` → `/sync` → `/graph last` |
+| `/deepen` | TICKER [section] | Snapshot + optional Research note | Thesis (target section + log), `_hot.md` | `/sync TICKER` → `/graph last` |
+| `/brief` | TICKER | Research note (brief) | — (read-only derivative) | `/graph last` to register the brief in the dependency map |
 
 ### Maintenance Skills
 
 | Skill | Arguments | Creates | Modifies | Follow-up |
 |-------|-----------|---------|----------|-----------|
-| `/lint` | none \| TICKER | — (report only) | — | Fix flagged issues → `/graph` if graph issues |
-| `/prune` | none \| sector \| flag \| sector+flag | — | Theses (closures/upgrades), Sector notes, `_hot.md`, `_graph.md` | `/surface` (find new opportunities) |
-| `/graph` | none | `_graph.md` (full rebuild) | — | — |
+| `/lint` | none \| TICKER | — (report only) | — | Fix flagged issues — auto-fixable graph issues → `/graph last` (or `/graph` for corruption); content issues (#32, #33) require manual triage per the lint output |
+| `/prune` | none \| sector \| flag \| sector+flag | — | Theses (closures/upgrades), Sector notes, `_hot.md` | `/graph last` then `/surface` (find new opportunities) |
+| `/graph` | none \| `last` \| `[N]` (integer days) | `_graph.md` (full rebuild for no-args; incremental for `last` and `[N]`) | — | — |
 | `/clean` | none \| days | — | Deletes old snapshots | — |
-| `/rollback` | none \| TICKER \| snapshot name | Pre-rollback safety snapshot | Restored note, Sector note, `_hot.md`, `_graph.md` | `/sync TICKER` → `/graph` |
-| `/rename` | `TICKER "New Name"` | Pre-rename snapshot | Thesis filename, inbound wikilinks across vault, `_graph.md` adjacency header, Sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, `_hot.md` mentions | — (atomic) |
+| `/rollback` | none \| TICKER \| snapshot name | Pre-rollback safety snapshot | Restored note, Sector note, `_hot.md` | `/sync TICKER` → `/graph last` (CRITICAL for recreated-file rollbacks) |
+| `/rename` | `TICKER "New Name"` | Pre-rename snapshot | Thesis filename, inbound wikilinks across vault, `_graph.md` adjacency header, Sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, `_hot.md` mentions | — (atomic — `/rename` is the one exception that writes `_graph.md` directly) |
 
 ---
 
@@ -903,8 +938,8 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 ### `/lint`
 ```
-/lint                                      # full vault: 27 checks
-/lint NVDA                                 # scoped: 12 checks on one thesis
+/lint                                      # full vault: 34 checks
+/lint NVDA                                 # scoped: 14 checks on one thesis
 ```
 
 ### `/prune`
@@ -928,8 +963,13 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 ### `/graph`
 ```
-/graph                                     # no arguments — full rebuild
+/graph                                     # full rebuild from scratch (use after /sync all or for disaster recovery)
+/graph last                                # incremental: re-extract changed thesis adjacencies, rebuild reverse indexes (default — run after every /sync)
+/graph 7                                   # catch-up incremental: same logic, watermark = today − 7 days
+/graph 30                                  # catch-up for ~monthly missed periods
+/graph 1                                   # narrow window: only files touched today
 ```
+> Mode resolution: literal `last` → `/graph last`. Integer N → `/graph [N]`. Empty/unrecognized → full rebuild. All modes write `_graph.md` only — no content files modified.
 
 ### `/rollback`
 ```
@@ -971,28 +1011,35 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 1. Read `_hot.md` for context
 2. `/ingest` to process inbox
 3. `/sync` to propagate
-4. Do your work (research, analysis, thesis building)
-5. `/sync` again to propagate session work
+4. `/graph last` to refresh dependency map
+5. Do your work (research, analysis, thesis building)
+6. `/sync` again to propagate session work
+7. `/graph last` again to capture session changes
 
 ### Weekly (or after heavy research)
 - `/surface` or `/surface [sector you're focused on]`
 - `/catalyst` to refresh the calendar
 - `/lint TICKER` for any thesis you actively edited
+- `/graph last` to refresh after the above
+- If you missed running `/graph last` for several days: `/graph 7` (or however many days)
 
 ### Monthly
-- `/sync all` → `/graph` → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst`
+- `/sync all` → `/graph` (full) → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last`
 - Review `_hot.md` conviction changes and drift flags
 - Conviction recalibration prompt for all high-conviction theses
+- Triage any `/lint` #32 (orphaned ticker) or #33 (closed-thesis-in-Theses) findings
 
 ### When prompted by events
 | Event | Workflow |
 |-------|---------|
-| Earnings reported | `/ingest [URL]` → `/sync TICKER` → `/status` if conviction changes |
-| Macro shock | `/scenario [event]` → `/status` for affected → `/sync` |
-| New stock idea | `/thesis TICKER` → `/status draft→active` → `/stress-test` → `/sync` |
-| Conviction flagged | `/status TICKER reaffirm [reason]` or investigate → `/status` change |
-| Competitor news | `/ingest [URL]` → `/compare` affected tickers → `/sync` |
-| Sector rotation | `/surface [sector]` → `/scenario` if macro-driven → `/compare` key players |
+| Earnings reported | `/ingest [URL]` → `/sync TICKER` → `/graph last` → `/status` if conviction changes |
+| Macro shock | `/scenario [event]` → `/status` for affected → `/sync` → `/graph last` |
+| New stock idea | `/thesis TICKER` → `/status draft→active` → `/stress-test` → `/sync` → `/graph last` |
+| Conviction flagged | `/status TICKER reaffirm [reason]` (lightweight, no graph touch needed) OR investigate → `/status` change → `/sync TICKER` → `/graph last` |
+| Competitor news | `/ingest [URL]` → `/compare` affected tickers → `/sync` → `/graph last` |
+| Sector rotation | `/surface [sector]` → `/scenario` if macro-driven → `/compare` key players → `/sync` → `/graph last` |
+| Thesis closure | `/status TICKER status active→closed [reason]` → `/graph last` (cleans archived thesis from graph adjacency, reverse indexes, clusters) |
+| Reopening archived thesis | `/rollback TICKER` → `/sync TICKER` → `/graph last` (CRITICAL — without `/graph last`, recreated thesis is invisible to graph-assisted lookups) |
 
 ### When conventions change
 - Update `CLAUDE.md` if you add new folders, change conventions, or shift research focus
@@ -1030,3 +1077,51 @@ Touched at the end of every `/sync`. Used by the next `/sync` to detect which fi
 
 ### `_Archive/Snapshots/` — Version Control
 Created automatically before destructive edits by: `/sync` (Tier A section edits), `/deepen`, `/status` (except draft→active), `/compare` (sector note changes), `/prune` (sector note changes), `/catalyst` (overwrites previous calendar), `/rollback` (pre-rollback safety net). Cleaned by `/clean`. Flagged for age by `/lint`.
+
+---
+
+## 15. Architecture Notes & Troubleshooting
+
+### Why `_graph.md` is owned only by `/graph`
+
+Before the metadata-cull refactor, ten skills wrote to `_graph.md` (every research skill plus `/sync`). The result was constant cross-skill contention: a `/sync` partial-write could leave the graph half-updated, a chain of skills required a Session Chain Protocol to coordinate deferred writes, and edge cases (poisoning, drift, ghost entries) accumulated faster than they could be patched.
+
+Concentrating ownership in `/graph` eliminated:
+- **Reverse-index drift**: forward `thesis → sector` and reverse `sector → thesis` indexes are always rebuilt together from current source files
+- **Session Chain Protocol**: ~80 lines of coordination logic deleted from CLAUDE.md
+- **Graph Debt**: deferred-write tracking deleted (no deferred writes exist)
+- **Closure-immediate exception, recreated-file exception, propagated_to 4-bucket verification**: all gone
+
+Trade-off: you must run `/graph last` after `/sync` (or any thesis-modifying skill). Forgetting it leaves the graph stale until the next run. `/lint` check #18 surfaces this if it persists. The cost is one extra command per session.
+
+### `/graph last` cost & precision
+
+| Vault state | `/graph last` work |
+|---|---|
+| No files changed since last graph | Skip — zero reads |
+| 1–5 thesis files changed | Re-extract those theses + read 19 sector/macro files for reverse indexes |
+| 30+ thesis files changed | Approaches the cost of a full rebuild |
+
+**Watermark precision is daily** (`_graph.md` frontmatter `date:` is YYYY-MM-DD). Running `/graph last` twice the same day re-processes files modified between runs — output is idempotent (correct, just wasted compute).
+
+### Common troubleshooting
+
+| Symptom | Likely cause | Fix |
+|---|---|---|
+| `/lint` flags "Graph staleness >7 days" | Forgot to run `/graph last` after recent `/sync` runs | `/graph 7` (or however many days behind) |
+| `/lint` flags "Graph staleness >30 days" | Significant gap | `/graph` (full rebuild) |
+| `/lint` #18 flags `_graph.md` `date: 1970-01-01` | A `/sync all` poisoned the date and `/graph` never ran | `/graph` (full rebuild) |
+| `/lint` #32 — research note has `ticker:` matching no thesis | Research deposited before thesis exists, or for an archived thesis | `/thesis [TICKER]` to create, OR edit research frontmatter, OR accept as orphan |
+| `/lint` #33 — closed-thesis file still in `Theses/` | Failed `mv` from `/status active→closed` or `/prune` | `mv "Theses/[file]" "_Archive/[file]"` → `/graph last` (complete archive), OR `/status TICKER status closed→active [rationale]` → `/sync TICKER` → `/graph last` (reopen) |
+| `/sync TICKER` works but default `/sync` misses propagation | Reopened thesis not yet in `_graph.md` | `/graph last` |
+| `/graph last` reports "Graph is up to date" but I just edited files | Files modified before midnight of `_graph.md` `date:` (rare timestamp ordering) | `/graph` (force full rebuild) or wait for next change to trigger |
+| Multiple syncs in a single day, each running `/graph last` | Idempotent but wasteful | Acceptable — daily watermark precision means later runs may re-process earlier files |
+
+### Architectural change vs. pre-refactor user guide
+
+If you're returning to a workflow you used before the metadata-cull refactor:
+- **No more "/graph required"** in `/sync TICKER` workflows — file-direct adjacency makes it independent
+- **No Session Chain protocol** — chains run naturally; `/graph last` at the end captures everything
+- **`/sync all` no longer rebuilds graph** — follow with `/graph` (full rebuild) explicitly per the monthly maintenance chain
+- **Closure no longer cleans graph inline** — run `/graph last` after `/status active→closed`
+- **Rollback recreating archived theses** — MUST run `/graph last` before any default `/sync` for that ticker
