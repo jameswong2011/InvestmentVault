@@ -13,6 +13,16 @@ Distil a thesis into a sharp, 1-page investment brief. This forces clarity — i
 ## Arguments
 $ARGUMENTS should be a ticker (e.g., "NVDA") or thesis name. If empty, ask the user.
 
+## Step 0: Pre-flight (MANDATORY)
+
+### 0.1: Acquire vault lock
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 3 minutes. Release via `trap` on exit.
+
+### 0.2: Rename-marker pre-flight
+Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block per contract 2.3 — the brief's title line derives from the thesis's current filename, and any residual inbound references to the pre-rename name would not agree with the brief's title, producing inconsistent references.
+
+Both checks must pass before proceeding to Phase 1.
+
 ## Phase 1: Load
 1. **Duplicate check**: Grep `Research/` for existing briefs for this ticker (`source_type: brief` + matching ticker). If found, warn: `⚠️ Existing brief found: [[Research/existing-brief]]. Regenerating will create a new version. The old brief will remain in the vault.` Proceed — but note the old brief in the output so the user can delete it if desired.
 2. Read the thesis note from Theses/
@@ -85,7 +95,7 @@ Do NOT modify the original thesis note (the brief is a derivative product, not a
 
 > **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the investment brief in the dependency map.
 
-Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
+Update `_hot.md` per `.claude/skills/_shared/hot-md-contract.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: generated [TICKER] investment brief, and any notable gap or weakness the Phase 3 quality check identified. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Open Questions**: If the Phase 3 quality check identified weaknesses (vague catalyst, stale metrics, softballed risk), add as open questions for the ticker

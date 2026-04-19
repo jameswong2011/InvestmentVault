@@ -28,6 +28,21 @@ If $ARGUMENTS is ambiguous or incomplete, ask the user to clarify the ticker, fi
 
 If $ARGUMENTS matches the `reaffirm` pattern, skip to **Step 2R (Reaffirm Flow)** below.
 
+## Step 0: Pre-flight (MANDATORY)
+
+### 0.1: Acquire vault lock
+
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 3 minutes (closure may take longer if sector note edits cascade — extend to 5m if `status → closed`). Release the lock on exit via `trap`. If another skill holds a conflicting lock, abort with the collision message from Procedure 1.4.
+
+### 0.2: Rename-marker pre-flight
+
+Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists at vault root, hard-block per the contract's 2.3 collision message. This skill does not proceed on a thesis mid-rename repair because:
+- Sector note edits would keep referencing the prior name if sector note wikilinks weren't in the successful Edit set
+- `/status active→closed` archive move would strand the still-wrong-named inbound wikilinks
+- `_hot.md` mentions would inherit whichever name `/status` finds, compounding split state
+
+User must complete or explicitly abandon the rename first (see Procedure 2.3 options).
+
 ## Step 1: Validate
 
 1. **Find the thesis**: Search `Theses/` for a file matching the ticker. If not found, stop: `⚠️ No thesis found for [TICKER] in Theses/. Nothing to update.`
@@ -42,12 +57,20 @@ If $ARGUMENTS matches the `reaffirm` pattern, skip to **Step 2R (Reaffirm Flow)*
 
 **Only entered when $ARGUMENTS matches `TICKER reaffirm [rationale]`.** This is a lightweight operation — no frontmatter change, no snapshot, no sector/graph update.
 
+**Reaffirm is idempotent-safe.** It can be run even if no drift flag is currently active — the operation always appends a Log entry for audit trail completeness and always resets the drift detection window (resetting an already-clean window is harmless). The operation is safe to run at any time to proactively confirm conviction.
+
 1. **Find and read the thesis** (same as Step 1.1–1.2).
-2. **Extract drift context**: Scan the last 5 Log entries. Identify entries with "weakened" or "strengthened" sentiment. Count the drift pattern.
+2. **Extract drift context and classify state**:
+   - Scan the last 5 Log entries. Identify entries with "weakened" or "strengthened" sentiment. Count the drift pattern.
+   - Scan `_hot.md`'s `## Recent Conviction Changes` section for a recent drift flag entry matching this TICKER (e.g., `⚠️ Conviction drift — [TICKER]: ...`). Record whether an active flag exists.
+   - **drift_flag_active: true | false**
 3. **Present the evidence summary and wait for confirmation**:
+
+   **If drift_flag_active = true:**
    ```
    Drift review for [[Theses/TICKER - Company Name]]:
      Current conviction: [level]
+     Active drift flag: [flag text from _hot.md, dated YYYY-MM-DD]
      Recent log sentiment:
        - YYYY-MM-DD: [summary] — [weakened/strengthened/unchanged]
        - YYYY-MM-DD: [summary] — [weakened/strengthened/unchanged]
@@ -55,23 +78,45 @@ If $ARGUMENTS matches the `reaffirm` pattern, skip to **Step 2R (Reaffirm Flow)*
      Drift signal: [N]/[window] entries flagged headwinds (or tailwinds)
 
      Reaffirming conviction at [level] with rationale: [from $ARGUMENTS]
-     This resets the drift detection window for future /sync runs.
+     This resets the drift detection window AND clears the drift flag.
+
+   Confirm? (y/n)
+   ```
+
+   **If drift_flag_active = false:**
+   ```
+   Proactive reaffirm for [[Theses/TICKER - Company Name]]:
+     Current conviction: [level]
+     Active drift flag: none
+     Recent log sentiment:
+       - YYYY-MM-DD: [summary] — [weakened/strengthened/unchanged]
+       - ...
+
+     Reaffirming conviction at [level] with rationale: [from $ARGUMENTS]
+     No active drift to clear — Log entry recorded for audit trail.
+     The drift detection window anchor advances regardless.
 
    Confirm? (y/n)
    ```
    **Do NOT proceed without explicit user confirmation.**
-4. **Append Log entry** (max 2 lines):
+4. **Append Log entry** (MANDATORY regardless of drift state — max 2 lines):
    ```
    ### YYYY-MM-DD
-   - Conviction reaffirmed at [level] after drift review — [rationale from $ARGUMENTS]
+   - Conviction reaffirmed at [level] after [drift review | proactive review] — [rationale from $ARGUMENTS]
    ```
+   Use `drift review` in the prefix when `drift_flag_active = true`, `proactive review` otherwise. The canonical `"Conviction reaffirmed"` prefix is preserved in both cases (drift coupling registry §5 relies on the prefix, not the suffix).
    > **Drift coupling**: `/sync` Step 3e uses `"Conviction reaffirmed"` as a drift window anchor. **Registry entry**: `.claude/skills/_shared/log-prefixes.md` §5. Do not change this prefix without updating the registry and `/sync`; `/lint` check #29 flags drift.
 
-5. **Update _hot.md** (read first, then edit — do NOT touch Latest Sync or Sync Archive):
+   > **Why always-log**: the prior spec suggested the reaffirm was "lightweight" which some implementations interpreted as "skip Log entry when no drift flag exists." That created an audit gap — a user's proactive conviction reaffirmation left no trace in the Log. The resulting audit story was "user never reviewed this thesis" even when they explicitly did. Always writing the Log entry closes that gap; the tiny overhead is worth the auditability.
+
+5. **Update _hot.md** (read first, then edit — do NOT touch Latest Sync or Sync Archive; follow `.claude/skills/_shared/hot-md-contract.md`):
    - **Recent Conviction Changes**: Add entry: `- **[TICKER]**: conviction [level] reaffirmed — [rationale]`
+   - **Drift flag cleanup** (only if `drift_flag_active = true`): locate the active drift flag entry for this TICKER and mark it resolved inline (`⚠️ Conviction drift — [TICKER] ... → Resolved YYYY-MM-DD: reaffirmed ([level])`). This prevents the stale drift flag from re-appearing as an Open Question on the next `/sync`.
 
 6. **Report**:
    - **Reaffirmed**: [TICKER] conviction [level] maintained
+   - **Drift state at entry**: `active flag cleared (from YYYY-MM-DD)` | `no active flag — proactive reaffirm recorded for audit trail`
+   - **Log entry appended**: 1 line (`Conviction reaffirmed`)
    - **Drift window reset**: next /sync will anchor drift detection after this entry
    - **No snapshot, sector, or graph changes**
 
@@ -250,14 +295,14 @@ Only runs if Step 5.1 set `edit_planned: true`. Apply the specific edit identifi
 
 ## Step 7: Update _hot.md
 
-Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
+Follow the contract at `.claude/skills/_shared/hot-md-contract.md` for all `_hot.md` writes — compression policy, per-section budgets, truncation-marker avoidance, and cap handling are defined there. Read `_hot.md` first, then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
 
-1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: [TICKER] [field] changed [old] → [new], and the logical next step. Append `*Previous:*` line(s) — max 5, drop oldest.
-2. **Recent Conviction Changes**: Add entry: `- **[TICKER]**: [field] [old] → [new] — [rationale]`
-3. **Open Questions**: If closing a thesis, remove any open questions specific to that ticker
-4. **Portfolio Snapshot**: Update conviction-level counts if conviction changed; update active/monitoring/closed counts if status changed
+1. **Active Research Thread**: follow the contract's same-ticker-continuation rule (§Same-ticker continuation rule).
+2. **Recent Conviction Changes**: Add entry: `- **[TICKER]**: [field] [old] → [new] — [rationale]`. Per contract, this section is NEVER compressed — if soft cap pressure, other sections must absorb first.
+3. **Open Questions**: If closing a thesis, remove any open questions specific to that ticker. Per contract, dedupe by merging duplicates (same question across multiple theses).
+4. **Portfolio Snapshot**: Update conviction-level counts if conviction changed; update active/monitoring/closed counts if status changed. Per contract, regenerated fresh each time — never compressed-accumulated.
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Cap enforcement**: after all edits, run the contract's Compression trigger order. If over soft cap (2,000), apply drops in the contract's specified order; if still over hard cap (2,500), abort the `_hot.md` update per contract §Compression trigger order step 5 — do NOT block the primary `/status` operation.
 
 ## Step 7.5: Archive Move (closure only)
 
@@ -291,12 +336,51 @@ Confirm (a/b/c):
 
 Wait for user selection. If (c), report that metadata updates (sector note, `_hot.md`, invalidation list) already completed and the thesis remains in `Theses/` with `status: closed` pending manual archive resolution.
 
-### 7.5b: Move to `_Archive/`
+### 7.5b: Move to `_Archive/` and update archive-ticker registry
 
 Move the closed thesis to `_Archive/` (using the path determined in 7.5a — either the clean target or a timestamp-suffixed path):
 ```bash
 mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Company Name.md"
 ```
+
+**Archive-ticker registry update (NEW — supports `/thesis` multi-signal archive-collision check Signal C):**
+
+After the `mv` succeeds, append a line to `.archive_ticker_registry.md` at vault root. This is a flat text registry enabling future `/thesis TICKER` invocations to discover prior archived theses via ticker lookup even if the archived filename later drifts (e.g., a subsequent manual rename).
+
+Format: pipe-delimited, one line per archive event:
+```
+TICKER|archived_filename.md|YYYY-MM-DD|conviction_at_closure|closure_rationale_line1
+```
+
+Create the file with the canonical header on first write; otherwise append.
+
+```bash
+REGISTRY=".archive_ticker_registry.md"
+if [ ! -f "$REGISTRY" ]; then
+  cat > "$REGISTRY" <<'HEADER'
+---
+type: archive-ticker-registry
+purpose: Flat append-only log of thesis archival events. Consumed by /thesis Step 1.2 Signal C (multi-signal archive-collision check). Format per line after header: TICKER|archived_filename.md|YYYY-MM-DD|conviction_at_closure|closure_rationale_first_line
+---
+
+# Archive Ticker Registry
+
+HEADER
+fi
+
+# Append the new entry
+printf '%s|%s|%s|%s|%s\n' \
+  "$TICKER" \
+  "$ARCHIVED_FILENAME" \
+  "$(date +%Y-%m-%d)" \
+  "$CONVICTION_AT_CLOSURE" \
+  "$CLOSURE_RATIONALE_LINE" \
+  >> "$REGISTRY"
+```
+
+If the registry append fails (extremely unlikely — single-line append), log `⚠️ Archive registry append failed: [reason]. Signal C in future /thesis [TICKER] may miss this entry. /lint #40 will flag on next run.` This does not abort the closure — the archival itself succeeded; only the lookup aid is missing. Signals A/B/D still cover the common cases.
+
+**Registry integrity** — the registry is append-only; never rewritten. Stale entries (where the archived file was subsequently manually moved or renamed) are tolerated: `/thesis` Signal C verifies the referenced filename still exists on disk before treating the entry as a match.
 
 **Verification**: After the `mv`, confirm the file exists at the new path and no longer exists at the old path:
 ```bash

@@ -15,6 +15,49 @@ $ARGUMENTS should be: `[TICKER] [optional: section name]`
 - Examples: `NVDA Outstanding Questions`, `BESI Industry Context`, `LITE`, `APP Bull Case`
 - If no section is specified, auto-detect the weakest section (see Phase 2)
 
+## Phase 0: Pre-flight (MANDATORY — runs before Phase 1)
+
+### 0.1: Acquire vault lock
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (deep research may be long-running; extend with a `timeout_at` renewal if web research runs over). Release via `trap` on exit.
+
+### 0.2: Rename-marker pre-flight
+Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists at vault root, hard-block per the contract's 2.3 collision message. Rewriting a thesis section while wikilinks are split across old and new names would compound the split — the rewrite would embed wikilinks keyed to the current (new) filename while some inbound references still point to the old name.
+
+Both checks must pass before proceeding to Phase 1.
+
+### 0.3: Section existence probe (only if specific section was specified)
+
+If `$ARGUMENTS` includes a section name (not auto-detect mode), run `.claude/skills/_shared/preflight.md` Procedure 4 (section existence probe) against the thesis file with the target `## [Section Name]` heading.
+
+If the section does NOT exist in the thesis:
+
+```
+❌ Section "## [requested section]" not found in Theses/TICKER - Name.md.
+
+Sections present in this thesis:
+  - ## Summary
+  - ## Key Non-consensus Insights
+  - ## [list every ## heading found in the thesis]
+
+Sections expected per Templates/Thesis Template.md but missing:
+  - ## [missing section 1]
+  - ## [missing section 2]
+  - ...
+
+Options:
+  (a) /deepen TICKER [existing-section]   — deepen a section that exists
+  (b) /deepen TICKER                      — auto-detect weakest present section (Phase 2)
+  (c) Restore missing section from Templates/Thesis Template.md manually,
+      then re-run /deepen TICKER [section]
+  (d) /lint TICKER                        — surface all template drift first (check #14)
+
+Aborted — no changes made to the thesis.
+```
+
+**Do NOT silently create the section.** Structural changes to thesis templates must be explicit user action. The thesis's current section inventory is the user's (or a prior skill's) intentional state; `/deepen` deepens existing sections, never authors new ones from nothing.
+
+If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 evaluates only sections that actually exist and scores their weakness.
+
 ## Phase 1: Load Context
 1. Read the thesis note from Theses/
 2. Read ALL research notes linked from the thesis (Related Research + Log entries)
@@ -137,7 +180,7 @@ Replace `Deepening [Section Name] — in progress` with `Deepened [Section Name]
 
 ## Phase 7: Update _hot.md
 
-Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
+Follow `.claude/skills/_shared/hot-md-contract.md` — compression policy, per-section budgets, truncation-marker avoidance, and cap handling are centralized there. Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: deepened [TICKER] [Section Name], key finding, and the logical next research step. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Recent Conviction Changes**: Add entry if conviction was changed or flagged for reassessment

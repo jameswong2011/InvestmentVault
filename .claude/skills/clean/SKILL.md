@@ -8,9 +8,24 @@ allowed-tools: Read Grep Glob Bash(find * rm * date * wc * ls *)
 
 Delete snapshots older than a given threshold from `_Archive/Snapshots/`.
 
-## Arguments
+## Arguments (6.9 — orphan handling)
 
-`$ARGUMENTS` should be a number of days (e.g., `90`). Default: **180** if no argument provided.
+`$ARGUMENTS` patterns:
+- **Number of days** (e.g., `90`, `30`): age-based cleanup. Default: **180** if no argument provided. Orphan snapshots (source file missing) are **PROTECTED by default** — reported but not deleted. See Step 2c.
+- **`orphans`** (literal word): delete only orphan snapshots, regardless of age. Skips age-based cleanup entirely.
+- **Number of days + `--include-orphans`** (e.g., `180 --include-orphans`): standard age-based cleanup PLUS delete orphans. Explicit opt-in.
+
+Parse patterns in this order:
+```
+if $ARGUMENTS == "orphans" → orphans-only mode
+elif $ARGUMENTS ends with "--include-orphans" → age + orphans mode; strip flag to get days
+elif $ARGUMENTS is integer → age-only mode (default orphans PROTECTED)
+else → default age-only mode (180 days; orphans PROTECTED)
+```
+
+## Step 0: Pre-flight
+
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Release via `trap` on exit.
 
 ## Step 1: Inventory Snapshots
 
@@ -57,7 +72,21 @@ For each snapshot classified as Expired:
 3. If source exists: check whether it was modified after `snapshot_date:` (compare file mtime against snapshot_date)
    - Modified after snapshot → reclassify as **🛡️ Active safety net** — this snapshot captures a pre-modification state that cannot be recovered otherwise. Exclude from deletion.
    - Not modified after snapshot → keep as **Expired** — snapshot is redundant (source unchanged since snapshot was taken)
-4. If source file no longer exists (archived/deleted) → keep as **Expired** (orphan record with no live file to protect)
+4. If source file no longer exists (archived/deleted) → reclassify as **👻 Orphan** (6.9 fix). Handling depends on mode:
+   - **Default age mode** (no `orphans` keyword, no `--include-orphans`): PROTECT — do NOT delete. List in Step 3 report under "Orphan snapshots (source file missing)" so the user can review. The snapshot may be the only recovery path if the source file was mistakenly deleted. **This is a deliberate fail-safe reversal from the legacy behavior where orphans were treated as "Expired" alongside stale-but-redundant snapshots.**
+   - **`orphans` mode**: mark for deletion. This is the explicit opt-in.
+   - **`--include-orphans` mode**: mark for deletion as part of age-based batch.
+
+### 2c: Orphan enumeration (6.9 — explicit pass)
+
+Orphans are identified by `snapshot_of:` pointing to a path that does NOT exist. Resolve the path:
+- Wikilink form `"[[Theses/TICKER - Name]]"` → check `Theses/TICKER - Name.md`
+- Wikilink form `"[[_Archive/TICKER - Name]]"` → check `_Archive/TICKER - Name.md`
+- Plain path form `"Theses/TICKER - Name.md"` → check as-is
+
+If the resolved path does not exist, the snapshot is an orphan.
+
+**Why default-protect orphans**: the legacy "delete orphans as part of expired batch" behavior created an unrecoverable loss path for scenarios where a thesis was deleted manually (violating CLAUDE.md "archive don't delete") — the snapshots were the user's only lingering audit trail, and `/clean` silently erased them along with genuinely-stale redundant snapshots. Default-protect surfaces orphans for review; the user can explicitly opt in via `orphans` or `--include-orphans` once they've inspected the reported list.
 
 ## Step 3: Report Before Deletion
 
@@ -91,11 +120,20 @@ These represent in-flight `/prune` operations. Resolve the batch first (`/rollba
 
 These are stale breadcrumbs from successful prune runs whose Stage 5 cleanup failed. `/clean` does not auto-delete them (they are not snapshots); user can `rm` manually after confirming the batch succeeded.
 
+### 👻 Orphan snapshots (source file missing)
+| File | Snapshot Date | Age (days) | `snapshot_of` (missing) |
+|------|--------------|------------|--------------------------|
+
+These snapshots reference source files that no longer exist in the vault. Possible causes: (a) source was manually deleted (violates CLAUDE.md archive-don't-delete rule — investigate), (b) source was archived and the archive was later renamed (snapshots track original path), (c) legacy snapshot from a pre-6.9 vault where the convention drifted.
+
+- **Default age mode**: orphans are PROTECTED and listed here only. Not deleted.
+- **To delete orphans**: run `/clean orphans` (orphans only, any age) or `/clean [days] --include-orphans` (age + orphans).
+
 ### Non-snapshot artifacts (skipped)
 | File | Type |
 |------|------|
 
-**Total**: X to delete, Y active safety nets (protected), Z retained, W non-snapshot artifacts (skipped).
+**Total**: X to delete, Y active safety nets (protected), Z retained, V orphans (protected by default | slated for deletion), W non-snapshot artifacts (skipped).
 
 ## Step 4: Confirm and Execute
 

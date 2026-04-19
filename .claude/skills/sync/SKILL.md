@@ -10,6 +10,18 @@ allowed-tools: Read Grep Glob Edit Write Bash(date * find * cp * mkdir * touch *
 
 Propagate recent research insights across all affected vault documents. **This is a deep analytical operation — for each affected note, think through the full implications of new research on every substantive section, not just append links.**
 
+## Step 0: Pre-flight (MANDATORY — runs before Step 1)
+
+### 0.1: Acquire vault lock
+- **`/sync` (default) and `/sync all`**: acquire `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 15 minutes for `/sync all`, 5 minutes for default.
+- **`/sync TICKER`**: acquire `ticker:TICKER` scope lock. Timeout budget: 5 minutes.
+
+Release via `trap` on exit.
+
+### 0.2: Rename-marker check
+- **`/sync TICKER`**: run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block.
+- **`/sync` (default) and `/sync all`**: glob `.rename_incomplete.*`. If ANY marker exists, hard-block — these modes propagate across the vault; a single mid-rename ticker would have inbound wikilinks split across names, and sync's cross-thesis Log appends would embed the current name while some references remain with the old name.
+
 **Metadata boundary**: `/sync` does not write to `_graph.md`. Graph maintenance is owned exclusively by `/graph` (run `/graph last` after this skill). `/sync`'s job is content propagation only — thesis bodies, sector notes, macro notes, `_hot.md`.
 
 ## Sync Modes
@@ -91,13 +103,17 @@ Three checks, applied in order:
      - **Why empty-list is terminal, not "nothing yet propagated"**: a producer that wanted "propagate to all wikilink-resolved targets but I haven't done any myself" would simply omit the field (Case 2a). Setting `propagated_to: []` explicitly is a deliberate "this note's body wikilinks are contextual references, not propagation targets" signal. Required for `/surface` (whose scan notes wikilink 10+ theses for context) and `/brief` (derivative summary of an already-existing thesis). Without this case, `/sync` would Log-spam every wikilink-referenced thesis on every surface/brief.
      - **Skill compliance**: producers must set `propagated_to: []` explicitly in frontmatter at note-creation time. `/surface` and `/brief` do so per their respective Phase 4 / Phase 4 specs. Future producers emitting exploratory notes must follow the same pattern.
 
-3. **Per-thesis idempotency check** (applies to every remaining ticker after Check 2): For each target thesis, scan its `## Log` section for any `### YYYY-MM-DD` entry **whose date equals today's date** that references this research note's wikilink. Match rule is strict calendar-day: compare `entry_date == today` as `YYYY-MM-DD` strings. If found, skip: `ℹ️ Skipped duplicate propagation for [TICKER] — Log already contains today's entry for [research-note].`
+3. **Per-thesis idempotency check** (6.11 fix — research-note-path keyed, not date-keyed): For each target thesis, scan its `## Log` section for any `- `-bulleted line referencing the source research note's wikilink — **regardless of the `### YYYY-MM-DD` date header that precedes it**. Match rule: the research note's wikilink appears in any of the five producer forms (`[[Research/base-name]]`, `[[Research/base-name.md]]`, `[[Research/base-name|alias]]`, `[[Research/base-name#section]]`, `[[base-name]]` folder-less).
 
-> **Strict calendar-day rule (authoritative)**: Log entries are date-only (`### YYYY-MM-DD`) — they do not carry wall-clock time. The idempotency check compares today's date against the Log entry's date with exact string equality. A "rolling 24-hour window" interpretation (e.g., entry dated `2026-04-18` at 23:58 counted as "within 24h" of `2026-04-19` at 00:02) is **explicitly rejected** because (a) it cannot be computed from date-only entries without parasitic mtime reads that couple correctness to filesystem metadata outside this skill's control, and (b) producer skills always write today's calendar date, making `entry_date == today` the dimensionally matched check.
->
-> **Cross-midnight edge case**: if `/scenario` wrote `### 2026-04-18` at 23:58 and `/sync` runs at 00:02 on 2026-04-19, today = `2026-04-19`, the Log has only `### 2026-04-18`, so the check misses → propagate normally → a new `### 2026-04-19` entry is added. This is the correct audit outcome: the research was still relevant the next calendar day. Slight redundancy; never data loss.
+   If a matching line is found, skip: `ℹ️ Skipped duplicate propagation for [TICKER] — Log already references [research-note] (dated [found-date]).`
 
-This idempotency check catches the case where a producer skill wrote Log entries and a subsequent `/sync` finds the same research note via timestamp detection. The window is intentionally simple — no 4-bucket classification, no rolling-time arithmetic, no partial-repair branches. If no today-dated entry references this research note, propagate normally.
+> **Why research-note-path keying, not today-date keying (6.11)**: the prior spec keyed idempotency on `entry_date == today`. That produced a cross-midnight duplicate: `/sync` at 23:59 on day D writes entry dated `### [D]`; a re-run at 00:01 on day D+1 sees today = D+1, finds only `### [D]` in the Log → mismatch → writes a duplicate entry `### [D+1]` referencing the same research note. Research-note-path keying (wikilink presence anywhere in the Log) eliminates this: once a research note has propagated to a thesis, it is terminal — the thesis's Log is a permanent audit of which research notes have informed it. This also matches the semantic meaning of CLAUDE.md Tier 2 append-only: research notes are immutable source records; after initial propagation, subsequent runs on the same note produce no new signal.
+
+> **Cross-midnight edge case (now correctly handled)**: `/scenario` wrote `### 2026-04-18` at 23:58 citing `[[Research/X]]`. `/sync` at 00:02 on 2026-04-19 scans the thesis's Log, finds the day-D entry wikilinking `[[Research/X]]`, and skips propagation. Correct — the research already propagated; the day boundary is irrelevant.
+
+> **User-intent edge case**: if the user edits the research note's body later and wants to re-propagate, the contract is: create a NEW research note OR append a thesis Log entry directly (CLAUDE.md Tier 2 "research notes are immutable source records"). `/sync` does not re-propagate a research note that has already reached a thesis, regardless of when or how the research note changed. This matches the prior "Log-history backfill" Case 2a skip semantics — consolidating Check 3 with the Case 2a scan.
+
+This idempotency check catches the case where a producer skill wrote Log entries and a subsequent `/sync` finds the same research note via timestamp detection. The window is intentionally simple — no 4-bucket classification, no rolling-time arithmetic, no partial-repair branches. If no Log entry references this research note, propagate normally.
 
 **Atomicity rule for `propagated_to:` update** — update the research note's `propagated_to:` frontmatter **only after EVERY target thesis's Log entry has landed successfully** for this research note in this `/sync` run. If any thesis append failed (Edit error, file locked, missing Log section), do NOT update `propagated_to:` at all for this research note — the next `/sync` will retry the missing target and the `propagated_to:` union will catch up then. A partial `propagated_to:` update would claim theses as propagated when their Log entries never landed, creating a permanent audit gap that future `/sync` runs silently skip because the dedup hint says "already done".
 
@@ -460,6 +476,8 @@ If edits will modify existing analytical text (scenario analysis, probability we
 Skip snapshot if only adding wikilinks.
 
 ## Step 6: Update _hot.md
+
+Follow the contract at `.claude/skills/_shared/hot-md-contract.md` for all `_hot.md` writes — compression policy, per-section budgets, truncation-marker avoidance, and cap handling are defined there. `/sync` is the canonical owner of Latest Sync and Sync Archive sections.
 
 If `_hot.md` does not exist (first run), create it with sections: `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot`. Use frontmatter: `date: YYYY-MM-DD`, `tags: [meta, hot-cache]`.
 

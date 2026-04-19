@@ -8,6 +8,15 @@ allowed-tools: Read Grep Glob Edit Write WebFetch Bash(date * mv * mkdir * ls * 
 
 Ingest raw content into the vault as structured research notes. **This skill creates research notes only — it does NOT propagate insights to theses, sector notes, or macro notes. Run `/sync` after ingesting to propagate.**
 
+## Step 0: Pre-flight (MANDATORY)
+
+### 0.1: Acquire vault lock
+- **URL or single-file mode**: acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. (Locks vault-wide because the research note's wikilink targeting may touch multiple tickers before `/sync` runs.)
+- **Batch inbox mode**: acquire a `vault-wide` scope lock. Timeout budget: 15 minutes (batch can be slow). Release via `trap` on exit in all modes.
+
+### 0.2: Rename-marker advisory check
+Glob `.rename_incomplete.*` at vault root. If any marker exists, emit a non-blocking advisory: `⚠️ In-flight rename repair(s) detected: [markers]. New research notes will wikilink to current thesis filenames. If an ingested note targets a still-mid-rename ticker, run /rename TICKER "[new_name]" to resolve before /sync.` Ingest proceeds — the research note creation itself is safe; the split-name risk materializes only at `/sync` time.
+
 ## Input Mode Detection
 
 Parse $ARGUMENTS to determine mode:

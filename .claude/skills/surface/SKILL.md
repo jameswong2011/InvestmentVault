@@ -10,6 +10,18 @@ allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * d
 
 Perform deep insight discovery across the vault. This is the highest-value operation — finding connections and opportunities the user hasn't seen yet.
 
+## Step 0: Pre-flight (MANDATORY — runs before Scope Resolution)
+
+### 0.1: Acquire vault lock
+- **Unscoped `/surface`** (full vault): acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes.
+- **Scoped `/surface TICKER`**: acquire a `ticker:TICKER` scope lock. Timeout budget: 5 minutes.
+- **Scoped `/surface [sector]`**: acquire a `vault-wide` scope lock (the sector set spans multiple tickers; concurrent ticker-scoped writers would race on sector note edits). Timeout budget: 10 minutes.
+
+Release via `trap` on exit.
+
+### 0.2: Rename-marker pre-flight (ticker-scoped mode only)
+For `/surface TICKER`, run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block per contract 2.3. For unscoped and sector-scoped modes, check `.rename_incomplete.*` at vault root; if any marker exists, emit a warning but DO NOT abort (surface is read-mostly for these modes — it writes a research note but does not edit thesis wikilinks). Warning text: `⚠️ In-flight rename repair(s) detected: [list markers]. Surface scan will proceed but its research note's wikilinks to the affected ticker(s) use current filenames. Complete rename repair before running downstream /sync.`
+
 ## Scope Resolution
 
 Parse `$ARGUMENTS` to determine scope:

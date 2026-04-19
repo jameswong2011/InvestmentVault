@@ -19,6 +19,18 @@ $ARGUMENTS should be one of:
 
 If $ARGUMENTS is ambiguous or matches no snapshots, report what's available and ask the user to clarify.
 
+## Step 0: Pre-flight
+
+### 0.1: Acquire vault lock (mode-dependent)
+- **List mode** (no args OR arg is ticker without snapshot name → listing snapshots): acquire `read-only` scope lock. Timeout: 2 minutes.
+- **Restore mode** (specific snapshot filename → will cp + possibly cascade): acquire `vault-wide` scope lock. Timeout: 10 minutes (cascade may touch many files).
+
+Per `.claude/skills/_shared/preflight.md` Procedure 1. Release via `trap` on exit.
+
+### 0.2: Rename-marker check
+- **List mode**: skip (read-only).
+- **Restore mode**: glob `.rename_incomplete.*`. If ANY marker exists, emit advisory: `⚠️ In-flight rename repair(s) detected: [markers]. Rollback may restore a snapshot of a file that has since been renamed. Snapshot frontmatter's snapshot_of: points to the ORIGINAL path; restoration writes to that path. Review after rollback and re-run /rename if needed.` Do NOT block — rollback may be the user's recovery path FROM a bad rename, so blocking would be counterproductive.
+
 ## Step 1: Inventory Snapshots
 
 List all snapshots in `_Archive/Snapshots/`:

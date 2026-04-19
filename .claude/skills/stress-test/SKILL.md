@@ -13,6 +13,16 @@ Perform an adversarial stress test on a thesis. Your job is to find reasons this
 ## Arguments
 $ARGUMENTS should be a ticker (e.g., "NVDA") or a thesis name. If empty, ask the user which thesis to stress test.
 
+## Step 0: Pre-flight (MANDATORY — runs before Phase 1)
+
+### 0.1: Acquire vault lock
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Release via `trap` on exit.
+
+### 0.2: Rename-marker pre-flight
+Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists at vault root, hard-block per the contract's 2.3 collision message. Appending a stress-test Log entry and a new research note while inbound wikilinks are split between old and new names would produce audit artifacts keyed to one name while some vault references still point to the other — compounding the split.
+
+Both checks must pass before proceeding to Phase 1.
+
 ## Phase 1: Load the Thesis and All Supporting Evidence
 1. Read the thesis note from Theses/
 2. Read EVERY research note linked from the thesis (Related Research + Log entries)
@@ -107,7 +117,7 @@ Do NOT change the conviction level — flag it for the user to decide via `/stat
 
 ## Phase 5: Update _hot.md
 
-Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
+Follow `.claude/skills/_shared/hot-md-contract.md` for all _hot.md writes. Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: stress tested [TICKER], top vulnerability found, and whether conviction reassessment was flagged. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Recent Conviction Changes**: Add entry if conviction reassessment was flagged (note: conviction not changed, flagged for user)

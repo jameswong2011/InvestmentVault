@@ -10,11 +10,33 @@ allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * defuddle
 
 Create a comprehensive thesis note for $ARGUMENTS.
 
+## Step 0: Pre-flight (MANDATORY — runs before Step 1)
+
+### 0.1: Acquire vault lock
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (vault + web research can be slow). Release via `trap` on exit.
+
+### 0.2: Rename-marker pre-flight
+Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists (should be rare for a `/thesis` invocation — you can't rename a non-existent thesis, but could exist if the user previously created a thesis, renamed it partially, then archived it, then is now creating a new thesis for the same ticker), hard-block per contract 2.3.
+
+Both checks must pass before proceeding to Step 1.
+
 ## Step 1: Duplicate Check
 Before creating anything, search the vault for existing notes on this ticker/topic. Active-thesis detection must use a **prefix glob**, not content grep — short tickers (e.g., `A` for Agilent, `T` for AT&T, `U` for Unity) match too many filenames under content grep, producing false-positive duplicate warnings that block legitimate thesis creation.
 
 1. **Active thesis check (prefix glob)**: `Glob Theses/TICKER - *.md`. If any file matches, an active thesis already exists — stop and suggest `/deepen TICKER` instead. Report the matching filename.
-2. **Archived thesis check (prefix glob)** — Tier 3 confirmation gate: `Glob _Archive/TICKER - *.md` (non-recursive — snapshots live under `_Archive/Snapshots/` and must not match). If one or more files match:
+2. **Archived thesis check (MULTI-SIGNAL)** — Tier 3 confirmation gate. This is expanded from the prior filename-glob-only check to catch renamed-then-archived theses whose filenames no longer match the TICKER prefix pattern. Run ALL four signals and take the UNION of matches:
+
+   **Signal A — Filename glob** (original): `Glob _Archive/TICKER - *.md` (non-recursive — snapshots under `_Archive/Snapshots/` excluded).
+
+   **Signal B — Frontmatter ticker** (NEW): Grep `_Archive/*.md` (non-recursive) for `^ticker: TICKER$` in frontmatter. Catches cases where the archived file's filename no longer encodes the ticker (e.g., file was renamed before closure, or the name portion was corrupted).
+
+   **Signal C — Archive-registry lookup** (NEW): Check `.archive_ticker_registry.md` at vault root (auto-maintained by `/status` Step 7.5b and `/prune` Stage 4 whenever a thesis is archived). Each line has format `TICKER|archived_filename|YYYY-MM-DD`. If any line begins with `TICKER|`, extract the referenced filename and verify it still exists in `_Archive/`.
+
+   **Signal D — Snapshot trail** (NEW): Grep `_Archive/Snapshots/*.md` frontmatter for `snapshot_of:` values containing `Theses/TICKER -`. Catches the historical trace when the thesis once existed in `Theses/TICKER - *.md` form, even if renamed/archived under a different filename since.
+
+   Deduplicate results across signals. For each unique archived file found, collect: filename, `conviction:` at closure, last Log entry (1-line closure rationale), `status:` (expected: `closed`), archive date (from filename or frontmatter).
+
+   If the union is non-empty:
 
    a. **Read the archived thesis(es)** — extract from each: filename, last Log entry (typically the closure rationale), `conviction:` at closure, `status:` (should be `closed`).
 
@@ -149,7 +171,7 @@ source: [primary source URL or description]
 
 ## Step 6: Update _hot.md
 
-Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
+Follow `.claude/skills/_shared/hot-md-contract.md` for all _hot.md writes. Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: new thesis created for [TICKER], conviction [level], and the logical next research step. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Recent Conviction Changes**: Add entry for the new thesis with initial conviction level

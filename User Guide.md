@@ -1140,6 +1140,70 @@ Created automatically before destructive edits by: `/sync` (Tier A section edits
 
 ## 15. Architecture Notes & Troubleshooting
 
+### Shared pre-flight layer (new in the T6 hardening release)
+
+Every skill that modifies vault state runs a Step 0 pre-flight before reading or writing anything. The shared contract lives at `.claude/skills/_shared/preflight.md`. Four procedures:
+
+1. **Vault lock** (`.vault-lock*` files at vault root). Prevents concurrent skill invocations from racing on `_hot.md`, thesis Logs, sector notes, `_graph.md`, and marker files. Lock scope depends on skill type — see `preflight.md` §1.2 for the concurrency matrix. `/lint #43` surfaces orphan locks (PID no longer running).
+2. **Rename-marker check**. Any ticker-scoped skill operating on TICKER hard-blocks if `.rename_incomplete.TICKER` exists. Vault-wide skills mostly hard-block on any marker. Exceptions: `/lint`, `/rollback` list mode, `/graph`, `/rename` itself.
+3. **Name sanitization** (for `/rename` new_name). Whitelist alphanumerics + `-_.,'&()` + spaces; reject `/`, `\`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, control chars, leading dot, reserved filesystem names, length >100.
+4. **Section existence probe** (for `/deepen [section]`). Abort if `## Section` heading is missing in the thesis — never silently create a new section.
+
+### `_hot.md` compression contract (new)
+
+Every skill that writes `_hot.md` follows `.claude/skills/_shared/hot-md-contract.md`. Key rules:
+- **Per-section budgets**: Active Research Thread 30%, Latest Sync 15%, Sync Archive 20%, Recent Conviction Changes 15% (NEVER compressed), Open Questions 15%, Portfolio Snapshot 5%.
+- **Soft cap 2,000 / hard cap 2,500 words**. Over soft cap, compression trigger order: drop oldest Sync Archive entry → drop oldest *Previous:* line → merge duplicate Open Questions → surface warning. Over hard cap, abort `_hot.md` write (primary operation still proceeds).
+- **Truncation markers forbidden**: `...`, `[compressed]`, `[truncated]`, unclosed formatting. `/lint #42` flags.
+- **Same-ticker continuation**: same thread stays live (append dated line); different ticker compresses outgoing thread to a single `*Previous:*` line.
+
+### Scenario reversal and archive protection (6.2)
+
+`/scenario reverse` now iterates `propagated_to:` and the body wikilinks, but for each ticker resolves the current location:
+- Live thesis in `Theses/` → append `Scenario REVERSED` Log entry.
+- Archived thesis in `_Archive/` → **SKIP the Log append** (Tier 3 archive protection) AND document the skip in the scenario research note body's `## Reversal Notes` section.
+- Missing file → log in the R6 report; investigate manually.
+
+`/lint #44` verifies reversal completeness — every `propagated_to:` ticker should have either a live REVERSED entry OR a documented archive skip.
+
+### Archive-ticker registry (6.3 support)
+
+`.archive_ticker_registry.md` at vault root is a flat append-only log of thesis archival events, auto-maintained by `/status active→closed` Step 7.5b and `/prune` Stage 2 step 5. Format: `TICKER|archived_filename.md|YYYY-MM-DD|conviction|rationale`.
+
+Consumed by `/thesis` Step 1.2 Signal C (multi-signal archive-collision check) to detect prior archived theses even when their filename no longer matches the `_Archive/TICKER - *.md` pattern (e.g., renamed-then-archived). `/lint #46` validates registry entries against current archive state.
+
+### Compare cross-sector atomicity (6.5)
+
+`/compare TICKER vs TICKER vs TICKER` across different sectors now uses all-or-nothing semantics for sector note writes:
+1. Snapshot every target sector note first.
+2. Apply sector edits in sequence.
+3. If ANY sector write fails, roll back all prior-succeeded sector edits using the pre-compare snapshots.
+4. Research note and thesis Logs are preserved through the rollback (they landed in earlier phases with their own atomicity).
+5. `_compare-manifest` sidecar records the transaction. `/lint #45` ages stale manifests.
+
+### `/graph last` precise ISO watermark (6.10)
+
+`_graph.md` frontmatter now carries `last_graph_write: YYYY-MM-DDThh:mm:ssZ` in addition to `date: YYYY-MM-DD`. Incremental delta detection uses the precise ISO timestamp when present; falls back to `date:` at 00:00:00 UTC for pre-6.10 graph files (advisory log emitted; next write upgrades the frontmatter).
+
+### `/sync` research-note-path idempotency (6.11)
+
+`/sync` per-thesis idempotency (Step 1 Check 3) now keys on research-note wikilink presence in the thesis Log, not today-date matching. Prevents cross-midnight duplicates: once a research note has propagated to a thesis, the skill treats that as terminal regardless of when or how many times `/sync` runs subsequently.
+
+### `/clean` orphan snapshots (6.9)
+
+`/clean` now classifies snapshots whose `snapshot_of:` source file is missing as **orphan** and PROTECTS them by default. Explicit opt-in required:
+- `/clean orphans` — deletes only orphans, any age.
+- `/clean [days] --include-orphans` — deletes age-expired snapshots AND orphans.
+- `/clean [days]` (default) — age-expired deleted; orphans reported but protected.
+
+### `/status reaffirm` always logs (6.7)
+
+Reaffirm now always appends a Log entry regardless of whether a drift flag is active. Prefix: `Conviction reaffirmed at [level] after [drift review | proactive review] — [rationale]`. The prefix stem is canonical; the suffix (`drift review` vs `proactive review`) depends on whether a flag was cleared. Every reaffirm is visible in the Log audit trail.
+
+### `/catalyst` pre-regenerate snapshot (6.9-adjacent)
+
+`/catalyst` now snapshots `_catalyst.md` before regenerating. If a web-search failure produces a partial calendar, the pre-catalyst snapshot is available via `/rollback` cascade (batch ID `catalyst-YYYY-MM-DD-HHMMSS`). Prior behavior silently overwrote.
+
 ### `/graph last` cost & precision
 
 | Vault state                       | `/graph last` work                                                       |
@@ -1184,6 +1248,18 @@ Created automatically before destructive edits by: `/sync` (Tier A section edits
 | Macro note edit didn't propagate to a thesis that wikilinks `[[Macro/X]]` | Pre-fix: `/sync` reverse index for macros only includes theses the macro wikilinks back to. **Fixed: `/sync` Step 1 now includes a body-grep file-direct fallback for changed macros — greps `Theses/*.md` for `[[Macro/[changed-macro]]]` patterns.** | If you encountered this on an old run: re-run `/sync` (default) to re-evaluate. The fallback fires automatically going forward. |
 | `/sync` macro note shows duplicate Log entries or compounded analytical edits in same calendar day | Pre-fix: macro updates lacked same-day idempotency. **Fixed: `/sync` Step 5.0 now runs idempotency checks (wikilink presence + Log section + mtime fallback) before each macro edit.** | For existing duplicates: manually consolidate via Edit (Tier 2 append-only convention applies — prefer strikethrough over delete). New duplicates won't occur. |
 | `/scenario reverse` ran twice for the same scenario, duplicate REVERSED Log entries on theses | Pre-fix: R2 didn't filter theses with existing REVERSED entries. **Fixed: R2 now classifies tickers and excludes already-reversed theses; re-runs are idempotent.** | For existing duplicates: manually consolidate. New runs will skip already-reversed theses with `ℹ️ Skipped [TICKER] — Scenario REVERSED entry already exists for this scenario.` log. |
-| `/graph last` reports "Graph is up to date" but I just edited files | Files modified before midnight of `_graph.md` `date:` (rare timestamp ordering) | `/graph` (force full rebuild) or wait for next change to trigger |
-| Multiple syncs in a single day, each running `/graph last` | Idempotent but wasteful | Acceptable — daily watermark precision means later runs may re-process earlier files |
+| `/graph last` reports "Graph is up to date" but I just edited files | Pre-6.10: files modified before midnight of `_graph.md` `date:` (daily-precision watermark). **Fixed (6.10): `last_graph_write:` carries ISO 8601 timestamp for second-precision.** | Legacy graph: run `/graph` once to upgrade frontmatter; future runs use precise watermark. |
+| Multiple syncs in a single day, each running `/graph last` | Idempotent but wasteful under daily precision. Under ISO precision (6.10), only genuinely-changed files are re-processed | Acceptable either way — correctness is preserved. |
+| Any skill aborts with `❌ Another skill is running — vault lock held` | Another skill invocation holds `.vault-lock*` (6.12 concurrency control) | Wait for it to finish, OR if the holder crashed: `kill -0 [pid]` returns error → `rm [lockfile_path]` (safe when PID is dead). `/lint #43` also surfaces orphan locks. |
+| Ticker-scoped skill aborts with `❌ Rename repair incomplete for TICKER` | `.rename_incomplete.TICKER` present (6.8 — pre-flight marker check) | Complete with `/rename TICKER "[new_name from marker]"` OR accept broken wikilinks by `rm .rename_incomplete.TICKER` then re-run. |
+| `/rename` rejects new_name with `❌ Invalid name: [reason]` | Sanitization (6.1): disallowed char, empty, leading dot, reserved name, >100 chars | Use allowed chars only: `[a-zA-Z0-9 \-_.,'&()]`. See the rejection message for specific rule. |
+| `/scenario reverse` reports "Archived theses not touched (Tier 3)" | 6.2 archive-aware reverse iteration — archived theses documented in scenario note body instead of modified | Correct behavior; check `## Reversal Notes` section of the scenario research note for full list. |
+| `/thesis TICKER` prompts about archived thesis I don't recognize | 6.3 multi-signal archive check found prior analysis via Signal B (frontmatter ticker), C (archive registry), or D (snapshot trail) — not just filename | Inspect the reported archive, then choose option (a) rollback, (b) different name suffix, (c) accept dual-file state, (d) cancel. |
+| `/deepen TICKER [section]` aborts with "Section not found" | 6.4 section existence probe — target section doesn't exist in the thesis | Pick an existing section (list shown in error), OR restore missing section from Templates/Thesis Template.md then retry, OR run `/deepen TICKER` for auto-detect. |
+| `/compare` aborts mid-run with "Sector note write failed — rolled back" | 6.5 cross-sector atomicity — one sector's Edit failed; all prior sector edits rolled back | Research note and thesis Logs preserved. Resolve the sector file issue (lock, permission), then re-run `/compare` cleanly. |
+| `_hot.md` exceeds 2,500 words after a skill runs | Hard cap reached; skill aborted `_hot.md` update (primary operation still succeeded) | Manually trim Sync Archive or `*Previous:*` lines, OR `/lint #35` + `/lint #42` to diagnose drift. |
+| `/clean` reports "Orphan snapshots: N protected" | 6.9 — snapshots whose source file is missing default to PROTECTED | Investigate (was source mistakenly deleted?). To delete: `/clean orphans` (any age) or `/clean [days] --include-orphans`. |
+| `/catalyst` produced a partial calendar (web search failed) | 6.9-adjacent pre-overwrite snapshot retained the prior calendar | `/rollback` → select `(pre-catalyst YYYY-MM-DD-HHMMSS)` snapshot to restore the prior richer calendar. Re-run `/catalyst` when web access is resolved. |
+| `/sync` writes duplicate Log entries across midnight | Pre-6.11: today-date idempotency keyed duplicates at day rollover. **Fixed (6.11): now keyed on research-note wikilink presence in Log.** | If legacy duplicates exist: manually consolidate (strikethrough the duplicate per Tier 2 convention). New runs are idempotent across midnight. |
+| `/status TICKER reaffirm` Log entry visible even when no drift flag was active | 6.7 — reaffirm always appends Log entry for audit completeness. Format: `Conviction reaffirmed at [level] after [drift review \| proactive review] — [rationale]` | Correct behavior. Every reaffirm is audit-visible. |
 

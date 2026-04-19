@@ -13,6 +13,18 @@ Build a rigorous side-by-side comparison focused on competitive dynamics and inv
 ## Arguments
 $ARGUMENTS should contain 2+ tickers or company names (e.g., "BESI vs AMAT", "PANW NET CRWD"). If only one ticker is provided, identify its closest competitors from the Sector Note and ask the user to confirm before proceeding.
 
+## Phase 0.-1: Pre-flight (MANDATORY — runs before Phase 0)
+
+### 0.-1.1: Acquire vault lock
+Parse tickers from `$ARGUMENTS`, sort alphabetically, join with `+`. Acquire a `ticker:A+B+C` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes. Release via `trap` on exit.
+
+The multi-ticker lock scope means this skill blocks conflicting `ticker:A`, `ticker:B`, or `ticker:C` locks (where A/B/C overlap with our set) AND is blocked by a `vault-wide` lock.
+
+### 0.-1.2: Rename-marker pre-flight for EACH ticker
+For each ticker in `$ARGUMENTS`, run `.claude/skills/_shared/preflight.md` Procedure 2. If ANY `.rename_incomplete.TICKER_N` exists for any ticker in the comparison set, hard-block per contract 2.3 — a comparison writes Log entries and potentially sector note updates for every compared thesis; split-name state on any one ticker would corrupt the cross-thesis comparison Research note's wikilinks.
+
+Both checks must pass before proceeding to Phase 0.
+
 ## Phase 0: Thesis Existence Check
 Verify which tickers in $ARGUMENTS have existing thesis notes in Theses/.
 
@@ -144,13 +156,99 @@ This is wikilink registration, not a propagation claim — runs regardless of pe
 
 **Per-failure reporting**: list every failed ticker in the Phase 6 report (final user-facing summary) under a new field `Per-thesis Log appends — failed: [TICKER1 (reason), TICKER2 (reason)]`. The user can inspect each failure or simply re-run `/sync` to let the universal propagation mechanism catch up.
 
-Update the Sector Note if the comparison reveals competitive dynamics not already documented. Resolve the sector note via canonical procedure **`.claude/skills/_shared/sector-resolution.md`** using each compared thesis's `sector:` frontmatter.
+### 5.5: Cross-sector atomic sector-note updates (6.5 fix)
 
-**Resolution rules:**
-- **All compared theses share the same sector** → resolve once, update one sector note. Single-sector batch.
-- **Compared theses span different sectors** → resolve each unique sector separately. Update each corresponding sector note independently. **Cross-sector batch**: sector updates are logically independent — a future `/rollback` on one sector should NOT cascade into the other.
+Update sector notes with cross-sector ALL-OR-NOTHING semantics. If any sector note's edit fails mid-transaction, roll back all preceding successful sector edits using the per-sector snapshots taken below.
 
-**Confidence handling** (same rules per resolved sector note): if `match_confidence` is `none` for a given sector, emit the contract's no-match warning for that sector and skip sector update for those theses (but continue processing other sectors). If `normalized` or `substring`, emit the contract's `log_message`; if `substring`, additionally pause for explicit user confirmation before modifying analytical text.
+**Resolve target sector set**: for each compared thesis (with an existing note), resolve its sector via `.claude/skills/_shared/sector-resolution.md`. Dedup. This yields `target_sectors: [(thesis_list, sector_note_path, match_confidence), ...]`.
+
+**Confidence handling** (per resolved sector):
+- `match_confidence == none`: emit the contract's no-match warning. Remove this sector from the atomic transaction set. The compare still completes for sectors that DO resolve; unresolved sectors are reported but don't participate in atomicity.
+- `match_confidence == substring`: emit the `log_message` AND pause for explicit user confirmation before modifying analytical text in that sector note. If user declines, remove the sector from the transaction set.
+- `match_confidence == normalized` or `exact`: proceed silently (normalized logs its message in the final report but doesn't prompt).
+
+### 5.5a: Pre-snapshot ALL target sectors FIRST
+
+Before any sector note write, snapshot every target sector note. If any snapshot fails, abort immediately — no destructive modifications have occurred:
+
+```bash
+# For each (thesis_list, sector_note_path, _) in target_sectors:
+SECTOR_SLUG=$(echo "Sector Name" | tr '[:upper:]' '[:lower:]' | tr ' &/' '--')
+cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-compare YYYY-MM-DD-HHMMSS).md"
+# ... add frontmatter as specified earlier ...
+```
+
+Store the mapping `snapshot_map: {sector_note_path → snapshot_path}` for potential rollback in 5.5c.
+
+### 5.5b: Apply sector edits in sequence; on any failure, roll back all prior successes
+
+```
+attempted_and_succeeded: []
+attempted_and_failed: []
+
+for sector_note_path, thesis_list, confidence in target_sectors:
+    try:
+        apply_sector_edit(sector_note_path, thesis_list, comparison_insight)
+        attempted_and_succeeded.append(sector_note_path)
+    except EditFailure as e:
+        # Roll back ALL prior succeeded sector edits
+        for prior_sector in attempted_and_succeeded:
+            copy_from(snapshot_map[prior_sector], prior_sector)  # restore from snapshot
+        
+        attempted_and_failed.append((sector_note_path, str(e)))
+        abort_transaction(
+            reason=f"Sector note write failed: {sector_note_path} ({e}). "
+                   f"Rolled back: {attempted_and_succeeded}. "
+                   f"Research note and thesis Logs preserved. "
+                   f"Re-run /compare after resolving the sector write issue.")
+```
+
+**What "apply_sector_edit" does**: apply targeted `Edit` operations to the existing sector note — competitive dynamics section, value chain section, company comparison tables. Each `Edit` is atomic; a single `Edit` failure within a sector triggers the outer abort + rollback.
+
+**What "abort_transaction" surfaces**: a user-visible error report with:
+- Sectors successfully edited (now rolled back to pre-compare state): list
+- Sector that failed: path + reason
+- Research note status: preserved (Phase 5.1 already wrote it)
+- Thesis Logs status: preserved (Phase 5.2 already wrote them)
+- `propagated_to:` status: depends on Phase 5.4 — if all Phase 5.2 Log appends succeeded, `propagated_to:` was already written and reflects that completeness; if any Log append had failed, `propagated_to:` was already omitted for atomicity
+
+### 5.5c: Write compare manifest sidecar
+
+After all sector writes succeed (or after a clean rollback on failure), write a manifest record to `_Archive/Snapshots/_compare-manifest (compare-YYYY-MM-DD-HHMMSS).md`:
+
+```yaml
+---
+type: compare-manifest
+batch: compare-YYYY-MM-DD-HHMMSS
+status: completed | rolled-back
+date: YYYY-MM-DD
+---
+
+# Compare Batch Manifest
+
+## Tickers compared
+- TICKER_A, TICKER_B, TICKER_C
+
+## Sector writes attempted
+- Sectors/X.md — succeeded (snapshot: [[_Archive/Snapshots/X (pre-compare ...)]])
+- Sectors/Y.md — succeeded (snapshot: [[_Archive/Snapshots/Y (pre-compare ...)]])
+
+## Sector writes rolled back (if any)
+- (none if status: completed)
+
+## Thesis Log appends
+- TICKER_A: succeeded
+- TICKER_B: succeeded
+- TICKER_C: failed (reason) — will be retried by next /sync via file-direct fallback
+
+## Research note
+- [[Research/YYYY-MM-DD - TICKER_A vs TICKER_B vs TICKER_C - Competitive Comparison]]
+- propagated_to: set | omitted (atomicity — Log append failed for at least one ticker)
+```
+
+The manifest enables crash-recovery (similar to `/sync` Step 7.5 and `/prune` Stage 1.5 manifests). `/lint #45` (new — see `/lint` SKILL.md) ages these manifests and surfaces `status: in-progress` states as Critical.
+
+**Legacy text preserved for reference** — the old Phase 5 (Output) sector-note update block is now conditional on entering Phase 5.5. If all compared theses share one sector, Phase 5.5 still runs with a single-entry `target_sectors` list; the all-or-nothing semantics are a no-op in that degenerate case (one success, no prior state to roll back).
 
 ### Snapshot batch ID — per sector, not per run
 
@@ -184,7 +282,7 @@ snapshot_batch: compare-[sector-slug]-YYYY-MM-DD-HHMMSS
 
 > **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the comparison research note and any new cross-thesis connections in the dependency map.
 
-Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
+Update `_hot.md` per `.claude/skills/_shared/hot-md-contract.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: compared [TICKER A] vs [TICKER B], key competitive insight, and the logical next research step. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Recent Conviction Changes**: Add entry for each ticker where conviction was strengthened or weakened

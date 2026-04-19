@@ -26,6 +26,33 @@ Parse `$ARGUMENTS` to determine scope. Arguments can be combined (e.g., `/prune 
 
 Pre-filtering method: Grep `Theses/` frontmatter for the relevant field before reading full notes. This avoids loading 39+ files when only a subset matches.
 
+## Phase 0.0: Pre-flight (MANDATORY — runs before Phase 0)
+
+### 0.0.1: Acquire vault lock
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 15 minutes (prune over a large portfolio can be slow). Release via `trap` on exit. `/prune` blocks on conflicting vault-wide or ticker-level locks.
+
+### 0.0.2: Check for rename markers across the whole vault
+Glob `.rename_incomplete.*` at vault root. If ANY marker exists, hard-block:
+
+```
+❌ In-flight rename repair detected — /prune would compound split state.
+
+Markers found:
+  - .rename_incomplete.TICKER1 ([new_name from marker])
+  - ...
+
+/prune closes, upgrades, and reshapes sector notes — each operation keyed to
+the CURRENT thesis filename. Any of the affected theses that is also mid-rename
+repair would leave inbound references split across old and new names.
+
+Complete or abandon all in-flight renames first:
+  /rename TICKER "[new_name]"    # per marker
+  OR
+  rm .rename_incomplete.TICKER   # accept broken wikilinks
+```
+
+Wait for user to resolve externally. Do NOT proceed. The check is all-or-nothing — a prune batch cannot safely skip individual tickers from the batch based on markers because the manifest integrity depends on a closed set of affected files decided at Stage 1.
+
 ## Phase 0: Pre-flight — Check for Unsynced Research
 
 Before evaluating any theses, check whether unsynced research exists:
@@ -231,6 +258,26 @@ For each approved closure:
    ```bash
    mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Company Name.md"
    ```
+5. **Archive-ticker registry update** (per `/status` Step 7.5b spec — supports `/thesis` Signal C): append to `.archive_ticker_registry.md` at vault root. Create with canonical header on first write, otherwise append:
+   ```bash
+   REGISTRY=".archive_ticker_registry.md"
+   if [ ! -f "$REGISTRY" ]; then
+     cat > "$REGISTRY" <<'HEADER'
+---
+type: archive-ticker-registry
+purpose: Flat append-only log of thesis archival events. Consumed by /thesis Step 1.2 Signal C (multi-signal archive-collision check).
+---
+
+# Archive Ticker Registry
+
+HEADER
+   fi
+   printf '%s|%s|%s|%s|%s\n' \
+     "$TICKER" "$ARCHIVED_FILENAME" "$(date +%Y-%m-%d)" \
+     "$CONVICTION_AT_CLOSURE" "$CLOSURE_RATIONALE_LINE" \
+     >> "$REGISTRY"
+   ```
+   Registry append failure does not abort the closure — log a warning and continue. The appends for all closures in this prune batch happen within Stage 2 iteration; there is no separate batching stage.
 
 Do NOT update sector notes here — batched in Stage 4. Do NOT write `.graph_invalidations` per-closure — batched in Stage 4.5 so the file is written once for the whole prune run.
 
@@ -338,7 +385,7 @@ Rationale: every closure made some neighbors' `cross-thesis:` references stale. 
 
 **Failure handling**: If the file write fails, report the failure but do NOT abort the prune — closures/upgrades/sector updates already succeeded. User can manually rebuild via `/graph` (full). Report: `⚠️ .graph_invalidations write failed — run /graph (full rebuild) instead of /graph last to clean stale cross-thesis refs.`
 
-Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
+Update `_hot.md` per `.claude/skills/_shared/hot-md-contract.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
 
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: pruned portfolio — [N] closed, [N] upgraded, and the logical next step. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Recent Conviction Changes**: Add entry for each ticker where conviction was upgraded; add entry for each closure

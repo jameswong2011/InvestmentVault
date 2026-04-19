@@ -26,6 +26,14 @@ Reverse mode appends a `Scenario REVERSED` Log entry (per `_shared/log-prefixes.
 
 If `$ARGUMENTS` matches the reverse mode signature, jump to **Reverse Mode Flow** below. Otherwise, proceed to Phase 1 (forward mode).
 
+## Phase 0: Pre-flight (MANDATORY — runs before Phase 1 or Reverse Mode Flow)
+
+### 0.1: Acquire vault lock
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 10 minutes (scenario propagation can touch many theses). Release via `trap` on exit.
+
+### 0.2: Rename-marker check
+Glob `.rename_incomplete.*` at vault root. If ANY marker exists, hard-block — scenario propagation writes Major-impact Log entries to many theses; one mid-rename ticker in the affected set would have its Log entry keyed to the new name while some inbound references remain under the old name.
+
 ## Reverse Mode Flow
 
 **Skip Phases 1–6 entirely. Reverse mode is a separate, bounded operation.**
@@ -37,28 +45,49 @@ If `$ARGUMENTS` matches the reverse mode signature, jump to **Reverse Mode Flow*
 3. If partial name: glob `Research/*Scenario*.md` and grep frontmatter for `source_type: scenario`. Match the filename or "Scenario - [name]" portion against the partial. If multiple match, present the list and ask user to pick. If none, stop with `❌ No scenario research note matching '[partial]' found in Research/.`
 4. Read the resolved note in full.
 
-### R2: Identify previously-affected theses
+### R2: Identify previously-affected theses (archive-aware — 6.2 fix)
 
 Two source-of-truth sets (use the union, deduplicate):
 
 - **From `propagated_to:` frontmatter**: if present, every listed ticker received a Major-impact Log entry from the original `/scenario` run.
 - **From body wikilinks**: parse the "Related Notes" section (or any `[[Theses/TICKER - Name]]` wikilinks in the body). These were referenced as Major OR Minor exposure.
 
-Build the candidate target set as the union. Then verify each target actually has a Log entry referencing this scenario:
+Build the candidate target set as the union. **For each candidate ticker, first resolve the current location of its thesis file** (may have been archived since the scenario ran):
 
 ```
 For each candidate ticker:
-  Read Theses/TICKER - *.md's ## Log section.
-  Search for any "Scenario [[Research/...scenario-name...]]" entry → match_scenario_entry: true | false
-  Search for any "Scenario REVERSED [[Research/...scenario-name...]]" entry → match_reversed_entry: true | false
+  Try: Glob Theses/TICKER - *.md → if exists, current_path = live path, location = "theses"
+  Else Glob _Archive/TICKER - *.md → if exists, current_path = archive path, location = "archive"
+  Else → location = "missing"
 
-  Classify:
-    - match_scenario_entry == false → exclude (thesis was body-wikilinked but never received producer Log entry — nothing to reverse).
-    - match_scenario_entry == true AND match_reversed_entry == true → exclude (already reversed in a prior /scenario reverse run; appending another REVERSED entry would duplicate without adding signal). Log: `ℹ️ Skipped [TICKER] — Scenario REVERSED entry already exists for this scenario.`
-    - match_scenario_entry == true AND match_reversed_entry == false → add to affected_theses list with the original Scenario entry's date.
+  If location == "missing":
+    Add to R6 report under "Candidate skipped — thesis file not found": "[TICKER] was listed in propagated_to or body wikilinks but its file is not in Theses/ or _Archive/. Was it manually deleted?"
+    Continue — do NOT add to any processing list.
+
+  If location == "archive":
+    Classify as archive-skipped:
+      Read the archived thesis's ## Log section to confirm the original Scenario entry exists (for audit completeness in the R6 report).
+      Add entry to `archive_skipped_theses` list: {ticker, archived_path, archive_date (from filename or frontmatter), had_scenario_entry: bool}.
+      Do NOT modify the archived file — Tier 3 archive protection (CLAUDE.md Change Safety Rule).
+    Continue — archived theses bypass the R4 Log append loop entirely.
+
+  If location == "theses":
+    Read the thesis's ## Log section.
+    Search for any "Scenario [[Research/...scenario-name...]]" entry → match_scenario_entry: true | false
+    Search for any "Scenario REVERSED [[Research/...scenario-name...]]" entry → match_reversed_entry: true | false
+    
+    Classify:
+      - match_scenario_entry == false → exclude from reversal (thesis was body-wikilinked but never received producer Log entry — nothing to reverse). Log: `ℹ️ Skipped [TICKER] — no original Scenario Log entry found.`
+      - match_scenario_entry == true AND match_reversed_entry == true → exclude (already reversed in a prior run). Log: `ℹ️ Skipped [TICKER] — Scenario REVERSED entry already exists for this scenario.`
+      - match_scenario_entry == true AND match_reversed_entry == false → add to `affected_theses_live: [ticker]` with original Scenario entry's date.
+```
 
 > **Why filter on existing REVERSED entries**: re-running `/scenario reverse [same scenario]` (e.g., to retry partial failures from a prior run, or because the user forgot they already reversed it) would otherwise append a SECOND REVERSED entry to already-reversed theses. The original purpose of REVERSED is corrective signal preservation; duplicates inflate Log noise without semantic meaning. The filter makes the operation idempotent — re-running on a fully-reversed scenario is a no-op for already-handled theses; only theses that failed in the prior run (no REVERSED entry yet) are retried.
-```
+
+> **Why archived theses are skipped (6.2 — Tier 3 archive protection)**: CLAUDE.md Change Safety Rule #2 (Tier 3) classifies `_Archive/` content as archival record — never modified without explicit instruction. A thesis that received a Scenario Log entry and was subsequently closed / archived has its Log preserved as historical audit trail. Appending a `Scenario REVERSED` entry to the archived thesis would violate Tier 3 by silently editing archive content. Instead, the skill:
+> 1. Records the skip in `archive_skipped_theses` with full context.
+> 2. Surfaces the skip in the R6 report AND adds a "Reversal Notes" section to the scenario research note body documenting every archive-skipped ticker with rationale: "Thesis archived on [archive_date] after scenario propagation. Scenario Log entry preserved in archive as historical record. Reversal not applied to respect Tier 3 archive protection."
+> 3. The scenario research note body thus carries the complete audit — any future review of the reversal finds both the live-ticker reversal Log entries AND the documented archive-skipped tickers. No silent gaps.
 
 ### R3: Confirm reverse intent (Tier 3 — mandatory)
 
@@ -82,9 +111,11 @@ Confirm? (y/n)
 
 Wait for user confirmation AND the rationale text. If declined, exit.
 
-### R4: Append reversal Log entries
+### R4: Append reversal Log entries (live theses only — archived ones documented in note body)
 
-For each affected thesis, append (max 2 lines per CLAUDE.md):
+**Iterate `affected_theses_live` ONLY** — never touch `archive_skipped_theses`. Archived theses were excluded in R2 for Tier 3 compliance.
+
+For each live affected thesis, append (max 2 lines per CLAUDE.md):
 
 ```
 ### YYYY-MM-DD
@@ -95,13 +126,29 @@ For each affected thesis, append (max 2 lines per CLAUDE.md):
 
 **Failure handling and atomicity tracking**: same per-thesis loop as forward Phase 6.2 — track `reverse_succeeded: [tickers]` and `reverse_failed: [tickers, with reason]`. Do NOT abort on individual append failure; continue and report failures in R6.
 
+### R4.5: Document archive-skipped theses in the scenario research note body (6.2 fix)
+
+For each entry in `archive_skipped_theses` (from R2's archive-aware classification), append a line under a `## Reversal Notes` section in the scenario research note body (create the section if absent):
+
+```
+## Reversal Notes
+
+### YYYY-MM-DD — Reversal applied
+- Live theses with REVERSED Log entry: [list of tickers from reverse_succeeded]
+- Archived theses not touched (Tier 3 archive protection):
+  - [[_Archive/TICKER - Name]] — archived YYYY-MM-DD (prior to reversal date). Original Scenario Log entry preserved in archive. [rationale: user_rationale from R3]
+  - ...
+```
+
+This keeps the scenario research note — the historical record per R5 "preserved as history" rule — as a complete audit. A future review of the reversal finds the live-ticker reversals in the theses AND the documented archive-skipped tickers in the research note body. Symmetry with forward-mode's body-wikilink-based audit trail.
+
 **No retry marker required**: unlike `/sync`'s producer-skill atomicity (which uses `propagated_to:` to signal "already done"), reverse mode's idempotency is encoded in the Log itself — the existence of `Scenario REVERSED [[Research/...scenario]]` entry on a thesis is the dedup signal that R2's classifier reads on subsequent runs. So a partial failure leaves the failed theses without a REVERSED entry, and the next `/scenario reverse [same scenario]` invocation will re-classify them as needing reversal (R2 step `match_scenario_entry == true AND match_reversed_entry == false`) and retry them. No sidecar marker needed.
 
 **Re-run pattern for partial failures**: if R6 reports `reverse_failed: [TICKER1 (reason), TICKER2 (reason)]`, the user runs `/scenario reverse [same scenario]` again. R2 classifies TICKER1/TICKER2 as still-needing-reversal (their Log has Scenario but not REVERSED), classifies all already-succeeded theses as already-reversed (excluded from this run), and R4 retries only the still-failing targets. Idempotent re-runs converge to fully-reversed state without duplicate REVERSED entries on already-handled theses.
 
 ### R5: Update _hot.md
 
-Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
+Follow `.claude/skills/_shared/hot-md-contract.md`. Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
 
 1. **Active Research Thread**: append a dated line: `YYYY-MM-DD: REVERSED scenario "[name]" across [N] theses — [user rationale]`. Do NOT compress prior thread (this is a corrective action, not a new research direction).
 2. **Recent Conviction Changes**: add an entry: `- Scenario REVERSED: [[Research/...scenario-name]] across [N] theses — [user rationale]`
@@ -116,6 +163,8 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by 
 - **Theses with reversal Log entry appended (this run)**: [count] — [list of `reverse_succeeded`]
 - **Theses skipped — already reversed in prior run**: [count] — [list from R2 classifier]. (No-op for these tickers; idempotent re-run.)
 - **Theses skipped — no original Scenario Log entry**: [count] — [list]. (Body wikilinks but never received producer entry; nothing to reverse.)
+- **Theses skipped — archived after scenario (Tier 3 protected)** (6.2): [count] — [list from `archive_skipped_theses` with archive_date]. Original Scenario Log entries preserved in archive. Documented in scenario research note body under `## Reversal Notes` section (see R4.5).
+- **Candidates skipped — file missing**: [list of tickers whose file was not found in `Theses/` OR `_Archive/`]. These were in `propagated_to:` or body wikilinks but their file is not on disk. Likely manually deleted — investigate.
 - **Failed appends (this run)**: [list of `reverse_failed` with reasons]. To retry: re-run `/scenario reverse [same scenario]` — R2's classifier will exclude the already-succeeded theses and retry only the still-failing ones.
 - **`_hot.md` updated**: Active Research Thread + Recent Conviction Changes + Open Questions (if applicable)
 - **No graph impact** — Log appends only.

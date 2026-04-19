@@ -10,6 +10,34 @@ allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * defuddle
 
 Build a comprehensive catalyst calendar aggregating every upcoming event across the portfolio.
 
+## Phase 0: Pre-flight (MANDATORY — runs before Phase 1)
+
+### 0.1: Acquire vault lock
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Release via `trap` on exit.
+
+### 0.2: Snapshot existing `_catalyst.md` (6.9-adjacent — non-snapshotted overwrite protection)
+
+Before regenerating `_catalyst.md`, snapshot the prior version if it exists:
+```bash
+HHMMSS=$(date +%H%M%S)
+mkdir -p _Archive/Snapshots
+if [ -f "_catalyst.md" ]; then
+  cp "_catalyst.md" "_Archive/Snapshots/_catalyst (pre-catalyst YYYY-MM-DD-$HHMMSS).md"
+fi
+```
+
+Then add snapshot frontmatter to the newly created file:
+```yaml
+snapshot_of: "[[_catalyst.md]]"
+snapshot_date: YYYY-MM-DD
+snapshot_trigger: catalyst
+snapshot_batch: catalyst-YYYY-MM-DD-HHMMSS
+```
+
+**Why this snapshot matters**: `_catalyst.md` is regenerated on every `/catalyst` run — overwriting the prior version. If the current run fails partway (e.g., web search timeout after partial enrichment) or produces a partial calendar (web search rate-limited and only thesis-extracted catalysts land), the pre-catalyst snapshot preserves the previous enriched calendar so users can `/rollback` via cascade detection. Without this, the only recovery path was the nightly vault backup.
+
+If no prior `_catalyst.md` exists (first run), skip the snapshot step and proceed to Phase 1.
+
 ## Phase 1: Extract Catalysts (Section-Targeted Reading)
 
 Reading all ~40 thesis notes in full will exceed context limits when catalyst extraction only needs 3 sections per note. Use targeted section reads to stay within budget.

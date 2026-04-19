@@ -19,7 +19,7 @@ Parse `$ARGUMENTS` to determine scope:
 #2 (Missing MOC entry), #4 (Missing frontmatter), #5 (Empty critical sections), #6 (Stale active thesis), #7 (Old financial data), #8 (Inactive research for this ticker), #12 (Conviction-evidence mismatch), #13 (Bull/Bear asymmetry), #14 (Template drift), #15 (Verbose Log entries), #19 (Graph entry exists), #21 (Graph edge validity for this thesis), #28 (Partial write detection for this thesis + its sector note), #30 (Sector resolution coverage for this thesis), **#35 (`_hot.md` schema integrity — always run, vault-global concern that affects every skill writing to `_hot.md` for this thesis)**.
 
 **Vault-wide only** (skipped in scoped mode):
-#1 (Orphaned research), #3 (Broken wikilinks), #9 (Unlinked mentions), #10 (Disconnected macro), #11 (Missing thesis candidates), #16 (Stale snapshots), #17–18 (Graph existence/staleness), #20 (Ghost entries), #22–24 (Graph consistency checks), #25 (Pending sync), #26 (Edge count accuracy), #27 (Catalyst calendar staleness), #29 (Log-prefix registry alignment), #32 (Orphaned ticker references), #33 (Closed-thesis files in Theses/), #34 (Sector frontmatter standardization), #36 (Prune batch-manifest state), **#37 (Incomplete-rename markers — runs scoped if `.rename_incomplete.TICKER` for the scoped ticker exists, otherwise vault-wide only — globs `.rename_incomplete.*`)**, **#38 (State marker hygiene — `.sync_all_fresh` and `.graph_invalidations` aging)**, **#39 (`propagated_to:` producer contract enforcement — scans every Research/ note for missing field per producer source_type)**, **#41 (Sync manifest aging — ages stale `_sync-manifest*` sidecars from `/sync` Step 7.5)**.
+#1 (Orphaned research), #3 (Broken wikilinks), #9 (Unlinked mentions), #10 (Disconnected macro), #11 (Missing thesis candidates), #16 (Stale snapshots), #17–18 (Graph existence/staleness), #20 (Ghost entries), #22–24 (Graph consistency checks), #25 (Pending sync), #26 (Edge count accuracy), #27 (Catalyst calendar staleness), #29 (Log-prefix registry alignment), #32 (Orphaned ticker references), #33 (Closed-thesis files in Theses/), #34 (Sector frontmatter standardization), #36 (Prune batch-manifest state), **#37 (Incomplete-rename markers — runs scoped if `.rename_incomplete.TICKER` for the scoped ticker exists, otherwise vault-wide only — globs `.rename_incomplete.*`)**, **#38 (State marker hygiene — `.sync_all_fresh` and `.graph_invalidations` aging)**, **#39 (`propagated_to:` producer contract enforcement — scans every Research/ note for missing field per producer source_type)**, **#41 (Sync manifest aging — ages stale `_sync-manifest*` sidecars from `/sync` Step 7.5)**, **#42 (`_hot.md` truncation-marker detection — runs in both full and scoped modes per hot-md-contract)**, **#43 (Vault lock orphan detection — `.vault-lock*` files whose PID is no longer running)**, **#44 (Scenario-note reversal completeness — verifies every `propagated_to:` ticker received a REVERSED Log entry or archive-skip documentation)**, **#45 (Compare manifest aging — stale `_compare-manifest*` sidecars from `/compare` Phase 5.5c)**, **#46 (Archive-ticker registry integrity — validates `.archive_ticker_registry.md` entries against current archive state)**.
 
 > **Rationale for #35 in scoped mode**: `_hot.md` schema drift causes silent skill no-ops across 11 skills. The defect surfaces only via `/lint #35`, but a user who runs scoped `/lint TICKER` weekly (per User Guide §13 cadence) and full `/lint` monthly can carry the bug for ~30 days, during which every `/status`, `/deepen`, `/stress-test`, `/scenario`, `/compare`, `/sync`, `/surface`, `/prune`, `/rollback`, `/catalyst`, or `/thesis` invocation against this ticker writes nothing to `_hot.md` while reporting success. Running #35 in scoped mode catches this within one weekly check rather than one monthly check. The check is cheap (single file read + section grep) — no scoped-mode performance penalty.
 
@@ -115,8 +115,10 @@ These checks validate `_graph.md` — the pre-computed dependency map that `/syn
 17. **Graph existence** — Verify `_graph.md` exists at vault root
     - If missing: Important — `/sync` falls back to file-traversal resolution (slower, less precise). Fix: run `/graph`
 
-18. **Graph staleness** — Check `date:` in `_graph.md` frontmatter
+18. **Graph staleness** — Check `last_graph_write:` (preferred, 6.10) or `date:` (legacy fallback) in `_graph.md` frontmatter
     - **Auto-fixable by `/graph last`** — these are not errors per se; the new workflow expects `/graph last` after every `/sync`
+    - **Preferred precision**: if `last_graph_write: YYYY-MM-DDThh:mm:ssZ` is present, compute age from that timestamp (precise to the second).
+    - **Legacy fallback**: if only `date:` is present, compute age from `date: YYYY-MM-DD` with implicit 00:00:00 UTC — may over-report age by up to 24h for recent runs. Emit advisory: `ℹ️ _graph.md lacks last_graph_write: — next /graph run will upgrade frontmatter to ISO precision.`
     - Pass: ≤24 hours old
     - Nice to Have: >24 hours but ≤7 days. Fix: run `/graph last`
     - Important: >7 days. Fix: run `/graph` (full rebuild) or `/graph [N]` for catch-up
@@ -298,6 +300,46 @@ These checks validate `_graph.md` — the pre-computed dependency map that `/syn
       - **Important**: `⚠️ [N] thesis files use sector value "[value]" which has no exact match in Sectors/. Closest match: "[closest]" (edit distance [M]). Theses: [list].` — these will silently rely on normalized or substring resolution by all consumer skills.
       - **Nice to Have**: `🔖 [N] thesis files use sector value "[value]" — exact match exists, no action needed (informational).` (Only emit if the user wants the inventory; suppress by default.)
     - **Stats line**: `Sector taxonomy: [unique_count] distinct sector values across [thesis_count] theses; [exact_value_count] match Sectors/ exactly, [divergent_value_count] require normalization or substring resolution.`
+
+42. **`_hot.md` truncation-marker detection** — Per `.claude/skills/_shared/hot-md-contract.md` §Truncation-marker detection, scan `_hot.md` for forbidden markers that indicate lossy compression or manual drift.
+    - **Vault-wide AND scoped mode** — `_hot.md` is a vault-global session cache; check runs whenever `_hot.md` is present.
+    - **Forbidden markers**:
+      - Trailing ellipsis `...` at end of a bullet line (the literal `...`, not a legitimate mid-sentence ellipsis)
+      - Bracketed sentinels: `[compressed]`, `[truncated]`, `[...]`
+      - Unclosed markdown: odd count of `**`, `*`, `_`, backtick within a section; trailing `[` or `(` without closing bracket
+    - **Severity**: Important — `⚠️ _hot.md contains truncation marker(s): [list with section name]. Skill compression policy forbids truncating individual entries; legitimate compression drops whole entries (see hot-md-contract.md §Compression trigger order). Investigate: manual user edit or buggy skill. If user edit, consolidate/remove the markers manually. If skill drift, re-check producer compliance.`
+    - **Cross-check with #35**: a `_hot.md` flagged in both #35 (missing sections) and #42 (truncation markers) suggests the file is significantly drifted — recommend deletion + letting next `/sync` recreate from canonical schema.
+
+43. **Vault lock orphan detection** — Per `.claude/skills/_shared/preflight.md` Procedure 1.7, scan `.vault-lock*` files and check each lock's `pid:` is a running process.
+    - **Vault-wide only** (skipped in scoped mode — lock state is vault-global).
+    - **Precondition**: glob `.vault-lock*` at vault root. If none → Pass (no active locks).
+    - For each lock file, read frontmatter (`pid:`, `skill:`, `scope:`, `started_at:`, `timeout_at:`).
+    - **Liveness check**: `kill -0 $PID 2>/dev/null`. If the process is not running → **Critical — orphan lock**: `❌ Orphan vault lock: [[.vault-lock...]]. PID [pid] ([skill], scope: [scope], started [started_at]) is no longer running but the lock persists. Another skill invocation will hard-block until this is cleared. Fix: rm "[lock_path]" (safe — holder is dead).`
+    - **Expired timeout**: if process IS running but `timeout_at` < now → Important — `⚠️ Vault lock exceeded timeout: [[.vault-lock...]]. Process [pid] is still alive but has exceeded [skill]'s timeout budget. Either the skill is legitimately long-running (consider extending its timeout budget) or it is hung. Safe to kill + rm if you want to unblock other skills.`
+    - **Healthy lock** (process live, timeout not exceeded): Pass silently.
+
+44. **Scenario-note reversal completeness** — For every `Research/*.md` with `source_type: scenario` that has a `reversed_at:` (or similar) frontmatter field indicating a reversal has been applied, verify every ticker in `propagated_to:` was either (a) appended with `Scenario REVERSED` in its Log (live theses) OR (b) documented in the note body's `## Reversal Notes` section (archived theses).
+    - **Vault-wide only**.
+    - For each scenario note with evidence of reversal:
+      - Parse `propagated_to:` for tickers.
+      - For each ticker: if live (`Theses/TICKER - *.md` exists) → Log must contain `Scenario REVERSED [[Research/scenario-note]]` entry. If archived (`_Archive/TICKER - *.md` exists) → `## Reversal Notes` section of scenario note must list the ticker. If missing from disk entirely → already flagged by `/scenario reverse` R6 and logged in the note body.
+    - **Severity**: Important — `⚠️ Scenario reversal incomplete: [[Research/scenario-note]] reversal applied on [date], but [N] ticker(s) from propagated_to: lack corresponding reversal record: [list]. Either re-run /scenario reverse [scenario] to retry, or manually reconcile (add REVERSED entry to live thesis Log or document archive-skip in scenario note body per /scenario R4.5 spec).`
+
+45. **Compare manifest aging** — Detect stale `_compare-manifest (compare-YYYY-MM-DD-HHMMSS).md` files in `_Archive/Snapshots/`. Written by `/compare` Phase 5.5c as an atomicity crash-recovery artifact.
+    - **Vault-wide only**.
+    - **Precondition**: glob `_Archive/Snapshots/_compare-manifest*.md`. If none → Pass.
+    - For each manifest, parse frontmatter (`type: compare-manifest`, `batch:`, `status: completed | rolled-back | in-progress`, `date:`).
+    - **Severity rules**:
+      - `status: in-progress` → Critical: `❌ In-progress /compare manifest: [[_Archive/Snapshots/_compare-manifest (...)]]. A /compare run crashed or was interrupted mid-transaction. Recovery: inspect manifest body for intended sector writes, manually verify current sector note state, then either complete the missing writes or /rollback individual sectors using the per-sector snapshots.`
+      - `status: completed` AND age > 90 days → Nice to Have: `🔖 Stale completed compare manifest ([N] days old). Safe to delete.`
+      - `status: rolled-back` (clean abort): Pass — manifest records a successful atomicity rollback; no action needed.
+
+46. **Archive-ticker registry integrity** — Validate `.archive_ticker_registry.md` entries against current archive state.
+    - **Vault-wide only**.
+    - **Precondition**: if `.archive_ticker_registry.md` does not exist → Pass (no registry yet; will be created on next closure).
+    - Parse each non-header line: `TICKER|archived_filename.md|date|conviction|rationale`.
+    - For each entry, verify the referenced `archived_filename` exists in `_Archive/`. If not → Nice to Have: `🔖 Stale archive-registry entry: TICKER|[filename] — file no longer at _Archive/[filename]. May have been manually renamed or deleted since closure. Consumed by /thesis Signal C which verifies existence before matching, so stale entries are tolerated; remove manually if desired.`
+    - **Aggregate stats**: `Archive registry: [N] entries, [M] verified, [K] stale (file missing).`
 
 ## Output Format
 

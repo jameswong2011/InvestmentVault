@@ -23,6 +23,27 @@ Examples:
 
 If `$ARGUMENTS` lacks a quoted company name, has no ticker, or has extra arguments, ask the user to clarify before proceeding.
 
+## Step 0: Pre-flight (MANDATORY — runs before any vault inspection)
+
+### 0.1: Acquire vault lock
+
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. If another skill holds a conflicting lock, abort with the standard collision message. Release the lock on exit via `trap`.
+
+### 0.2: Name sanitization (6.1)
+
+Run `.claude/skills/_shared/preflight.md` Procedure 3 (name sanitization) against the proposed `new_name` parsed from `$ARGUMENTS`. The rules:
+
+1. NFC-normalize the input.
+2. Trim leading/trailing whitespace. If empty → reject.
+3. Length ≤ 100 bytes → reject if exceeded.
+4. Character whitelist: `[a-zA-Z0-9 \-_.,'&()]`. Any other character → reject (with specific flag for `/`, `\`, `:`, `*`, `?`, `"`, `<`, `>`, `|`).
+5. No leading dot → reject.
+6. First whitespace-token must not be a reserved filesystem name (`CON`, `PRN`, `AUX`, `NUL`, `COM1`–`COM9`, `LPT1`–`LPT9`, case-insensitive) → reject.
+
+On rejection, present the contract's standard rejection message with specific rule violated and a suggested clean variant where possible. Do NOT proceed to Step 1.
+
+Only after Step 0.1 acquires the lock AND Step 0.2 accepts the new_name does the skill proceed to Step 1.
+
 ## Step 1: Validate
 
 1. **Find the current thesis file** via ticker-prefix glob: `Theses/TICKER - *.md`.

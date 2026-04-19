@@ -10,6 +10,16 @@ Rebuild `_graph.md` entirely from vault state. This is a structural metadata ope
 
 **This skill never touches `.last_sync`.** The watermark is owned exclusively by `/sync`.
 
+## Step 0: Pre-flight (MANDATORY — runs before Mode Detection)
+
+### 0.1: Acquire vault lock
+Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes (incremental) or 10 minutes (full rebuild). Release via `trap` on exit.
+
+`/graph` is vault-wide because it reads every thesis file — any concurrent writer could produce a mid-read inconsistent adjacency extraction.
+
+### 0.2: No rename-marker check (read-only for theses)
+`/graph` does not edit theses; it re-extracts adjacency from current file state. Rename markers are irrelevant to the graph rebuild itself — the graph faithfully reflects whatever filenames + wikilinks exist right now. `/lint #37` separately surfaces pending rename markers.
+
 ## Mode Detection
 
 Parse `$ARGUMENTS` to determine mode:
@@ -42,10 +52,26 @@ If present:
 
 If absent, continue with normal Watermark Resolution below.
 
-### Watermark Resolution
+### Watermark Resolution (6.10 — ISO precision with legacy fallback)
 
-- **`/graph last`**: Read `_graph.md`. If the file does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1. Otherwise, watermark = the `date:` value from frontmatter.
-- **`/graph [N]`**: Watermark = `today - N days`. If `_graph.md` does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1.
+- **`/graph last`**: Read `_graph.md`. If the file does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1. Otherwise:
+  - **Preferred** (6.10): read `last_graph_write:` frontmatter field — full ISO 8601 timestamp (`YYYY-MM-DDThh:mm:ssZ`). Use this as the watermark for precise delta detection.
+  - **Legacy fallback**: if `last_graph_write:` is absent (pre-6.10 graph files), use `date:` (YYYY-MM-DD) with implicit 00:00:00 UTC of that date. Log: `ℹ️ _graph.md lacks last_graph_write: frontmatter — using conservative watermark (date: YYYY-MM-DD, 00:00:00 UTC). Next /graph last will upgrade the frontmatter.` This may reprocess files modified earlier on the same day (safely idempotent, slightly wasteful).
+- **`/graph [N]`**: Watermark = `today - N days`, rendered as `YYYY-MM-DDT00:00:00Z`. If `_graph.md` does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1.
+
+#### Change detection with ISO-precision watermark
+
+```bash
+# Preferred: precise timestamp
+WATERMARK_ISO="2026-04-19T15:30:42Z"
+find Theses/ Research/ Sectors/ Macro/ -name '*.md' -newermt "$WATERMARK_ISO"
+
+# find's -newermt accepts both full ISO and YYYY-MM-DD strings.
+```
+
+> **Why precise ISO (6.10)**: daily-granularity watermark (`date: YYYY-MM-DD`) has edge cases around midnight — a thesis edited at 23:59:30 on day D followed by `/graph last` at 23:59:45 on day D writes `date: D`; a subsequent `/graph last` on day D+1 uses `date: D` watermark, treats anything after 00:00:00 of day D as "changed," and re-processes files it already handled. Correct but wasteful. With ISO precision, the watermark advances to 23:59:45; re-running the next day correctly excludes the day-D edits (already processed) and picks up only true day-D+1 changes.
+>
+> **Idempotency preserved**: running `/graph last` twice in the same second is still safe — the second run sees zero changes since the first run's timestamp is now the watermark.
 
 > **Legacy note**: Earlier documentation referenced a `date: 1970-01-01` poisoning convention for `/sync all`. That convention was never implemented because `/sync` is architecturally forbidden from writing `_graph.md`. The `.sync_all_fresh` marker file above is the replacement mechanism — same outcome (forced full rebuild), clean ownership boundary.
 
@@ -287,6 +313,8 @@ Write the complete `_graph.md` with this structure:
 ---
 type: vault-graph
 date: YYYY-MM-DD
+last_graph_write: YYYY-MM-DDThh:mm:ssZ   # ISO 8601 UTC — 6.10 precision watermark
+graph_mode: last | [N] | full            # mode of this write (display only)
 theses: [count]
 sectors: [count]
 macro: [count]
@@ -295,6 +323,15 @@ edges: [count]
 orphans: [count]
 ---
 ```
+
+**`last_graph_write:` population**: set to the ISO 8601 UTC timestamp at the moment the write begins (not the end — a crashed write would leave `last_graph_write:` from a prior run, which is conservative and correct). Generate with:
+```bash
+LAST_WRITE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+```
+
+**`date:` population**: keep `YYYY-MM-DD` for display consistency (e.g., `/lint #18` messages mention "graph from 2026-04-19"); same calendar day as `last_graph_write:`.
+
+**`graph_mode:` population**: literal `last`, the integer N (e.g., `7`), or `full`. Read by `/lint #38` for diagnostic messages but not load-bearing.
 
 Sections:
 1. `## Thesis Adjacency Index` — all entries from Step 2
