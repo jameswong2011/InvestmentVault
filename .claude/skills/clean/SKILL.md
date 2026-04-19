@@ -49,6 +49,7 @@ Some files in `_Archive/Snapshots/` are NOT snapshots — they are operational a
 - **`_compare-manifest`** files — written by `/compare` Phase 5.5c as a cross-sector atomicity record. Frontmatter has `type: compare-manifest`. Aged by `/lint #45`.
 - **`_stress-test-manifest`** files (T3.1) — written by `/stress-test` Phase 4.6 to enable `/rollback` cascade-detection for append-only Log entries. Frontmatter has `type: stress-test-manifest`. Aged by `/lint #47`.
 - **`_status-manifest`** files (T2.2) — written by `/status` Step 3.0.5 (skeleton) then flipped by Step 7.9. Frontmatter has `type: status-manifest`. Aged by `/lint #48`.
+- **`_thesis-manifest`** files (H1) — written by `/thesis` Step 3.5 (skeleton) then flipped by Step 7.5. Frontmatter has `type: thesis-manifest`. Aged by `/lint #49`.
 - **Future artifact types** — any file whose `type:` frontmatter is set to anything other than a snapshot flavor.
 
 Detection rule: if the file's frontmatter has a `type:` field AND that value is not empty AND is not a snapshot-producer identifier (`snapshot`, or absent), treat the file as a non-snapshot artifact. Also treat any file missing `snapshot_date:` as non-snapshot (defensive — `/clean` cannot date-age what isn't dated).

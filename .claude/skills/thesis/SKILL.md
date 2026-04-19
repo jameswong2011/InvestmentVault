@@ -96,6 +96,101 @@ Before creating anything, search the vault for existing notes on this ticker/top
 - Search for bear cases and risks — actively look for reasons NOT to invest
 - Search for sell-side consensus to identify where a non-consensus view could exist
 
+## Step 3.5: Write thesis transaction manifest skeleton (H1 fix — mandatory before Step 4)
+
+**Mandatory BEFORE Step 4 writes the thesis file.** Like `/sync` Step 2.9, `/status` Step 3.0.5, and `/prune` Stage 1.5, the manifest skeleton is the first mutation of the run. Skeleton write failure hard-aborts `/thesis` pre-mutation — no orphan thesis file, no orphan sector note edit, no orphan `_hot.md` mention.
+
+### 3.5.1: Generate batch ID (TICKER-qualified per C4)
+
+```bash
+HHMMSS=$(date +%H%M%S)
+mkdir -p _Archive/Snapshots
+```
+
+Batch ID: `thesis-TICKER-YYYY-MM-DD-HHMMSS` — TICKER qualifier prevents collisions between concurrent `/thesis NVDA` and `/thesis AMAT` runs at the same second (the per-ticker lock allows this concurrency).
+
+### 3.5.2: Write skeleton manifest
+
+Path: `_Archive/Snapshots/_thesis-manifest (thesis-TICKER-YYYY-MM-DD-HHMMSS).md`
+
+```yaml
+---
+type: thesis-manifest
+batch: thesis-TICKER-YYYY-MM-DD-HHMMSS
+status: in-progress
+ticker: TICKER
+proposed_name: [company name from Step 3 web research OR alternate from Step 1.2 option (b)]
+proposed_path: Theses/TICKER - [proposed_name].md
+sector: [sector from Step 2/3 research]
+date: YYYY-MM-DD
+---
+
+# Thesis Transaction Manifest (in-progress)
+
+Manifest written at Step 3.5 before any file modifications. Intended operations:
+
+## Thesis file creation
+- Target path: `Theses/TICKER - [proposed_name].md`
+- Status: (populated at Step 4 — `created` | `failed`)
+
+## Sector note update
+- Sector resolution: (populated at Step 5 — `exact` | `normalized` | `substring` | `none`)
+- Sector note path: (populated)
+- Edit applied: (populated — `added_to_active_theses` | `skipped (draft status)` | `skipped (no sector note)` | `new_sector_note_created` | `failed`)
+
+## `_hot.md` updates
+- Active Research Thread entry: (populated — text appended or `failed`)
+- Recent Conviction Changes entry: (populated)
+- Open Questions entries: (populated — count added)
+
+## Orphan research integration
+- Orphan research notes touched: (populated — list of paths whose mtime was advanced)
+- Wikilinks added to Related Research: (populated — count)
+
+## Archive-collision decision (if Step 1.2 found matches)
+- Archived theses found: (populated — list from Signals A/B/C/D)
+- User decision: (populated — `(a) /rollback recommended (exited)` | `(b) alternate name` | `(c) accept dual-file` | `(d) cancelled`)
+
+## Recovery guidance
+
+If this file persists with `status: in-progress`, /thesis crashed or was
+interrupted mid-run. Likely partial states:
+
+- **Skeleton written only** (this case): no thesis file exists yet; no sector
+  or _hot.md edits. Recovery: `rm` this manifest; re-run `/thesis TICKER`.
+- **Thesis file created, sector/hot.md incomplete**: the thesis exists at
+  `Theses/TICKER - [proposed_name].md` but is disconnected from sector note
+  and _hot.md. Recovery: either (a) manually complete the remaining steps
+  per the manifest body's intended operations, OR (b) `rm` the thesis file
+  and the manifest, then re-run `/thesis TICKER`.
+- **All steps landed but flip to completed failed** (Step 8): manually edit
+  frontmatter to `status: completed` + add `completed_date: YYYY-MM-DD`,
+  then leave the manifest for its 90-day aging window per `/lint #49`.
+
+Flipped to `status: completed` at Step 8 (final) after all stages succeed.
+/lint #49 (new) surfaces in-progress manifests as Important.
+```
+
+### 3.5.3: Skeleton write failure — hard abort
+
+If the Edit/Write for the skeleton fails, abort the skill:
+
+```
+❌ Thesis transaction manifest skeleton write failed: [path]
+   Reason: [error]
+
+No vault state has been modified. The thesis file has NOT been created,
+no sector note edits, no _hot.md changes. Fix the underlying filesystem
+issue (disk space, permissions, _Archive/Snapshots/ directory exists)
+and re-run /thesis TICKER.
+```
+
+Exit cleanly. Do NOT proceed to Step 4.
+
+### 3.5.4: Incremental population
+
+Each subsequent step (4, 5, 6, 7) appends its completion state to the manifest via `Edit`. This keeps the manifest current mid-run — a crash after Step 5 but before Step 6 leaves the manifest reflecting {thesis created ✓, sector updated ✓, _hot.md pending}. `/rollback` cascade detection (Step 2.5f — new) consumes this state for recovery.
+
 ## Step 4: Create the Thesis
 Save to `Theses/TICKER - Company Name.md` with:
 
@@ -213,7 +308,19 @@ Follow `.claude/skills/_shared/hot-md-contract.md` for all _hot.md writes. Read 
 
 **Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
 
-## Step 7: Suggest Next Steps
+## Step 7.5: Finalize thesis transaction manifest (H1 fix)
+
+Flip the Step 3.5 manifest's frontmatter:
+- `status: in-progress` → `status: completed`
+- Add `completed_date: YYYY-MM-DD`
+
+Verify the flip landed by re-reading the frontmatter. If the flip fails:
+- Report `⚠️ Thesis manifest status flip failed — manifest at [path] remains in-progress despite successful /thesis completion. /lint #49 will flag as Important. Manual fix: edit the manifest frontmatter to status: completed + add completed_date: today. The thesis, sector note, and _hot.md updates all succeeded.`
+- Do NOT retry; do NOT rollback — the thesis transaction already succeeded. Flip-only failure is cosmetic and caught by `/lint #49`.
+
+**No regret-recovery window** (unlike `/prune` which has 30 days): `/thesis` is constructive (creates new analysis) rather than destructive; regret here typically means "I want to edit/expand this thesis" which is `/deepen`'s job, not rollback. `/clean` Step 2a ages `_thesis-manifest` files with the standard 90/180 day tiers.
+
+## Step 8: Suggest Next Steps
 - **Activate**: This thesis was created as `status: draft`. Run `/status TICKER status draft→active` when ready to promote it — draft theses are excluded from some downstream skills (`/catalyst`, `/prune` flags, conviction drift detection).
 - What 2-3 research questions would most increase or decrease conviction?
 - Any upcoming catalysts to monitor with dates?

@@ -15,14 +15,26 @@ Build a comprehensive catalyst calendar aggregating every upcoming event across 
 ### 0.1: Acquire vault lock
 Acquire a `vault-wide` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
 
-### 0.2: Snapshot existing `_catalyst.md` (6.9-adjacent — non-snapshotted overwrite protection)
+### 0.2: Snapshot existing `_catalyst.md` (mandatory pre-regenerate snapshot — H2 fix: hard-abort on failure)
 
-Before regenerating `_catalyst.md`, snapshot the prior version if it exists:
+Before regenerating `_catalyst.md`, snapshot the prior version. **If the snapshot cp fails, HARD ABORT `/catalyst`** — do not proceed to regenerate, because a regenerate failure after a failed pre-snapshot loses the prior calendar with no recovery path.
+
 ```bash
 HHMMSS=$(date +%H%M%S)
 mkdir -p _Archive/Snapshots
+SNAPSHOT_PATH="_Archive/Snapshots/_catalyst (pre-catalyst YYYY-MM-DD-$HHMMSS).md"
+
 if [ -f "_catalyst.md" ]; then
-  cp "_catalyst.md" "_Archive/Snapshots/_catalyst (pre-catalyst YYYY-MM-DD-$HHMMSS).md"
+  if ! cp "_catalyst.md" "$SNAPSHOT_PATH"; then
+    echo "SNAPSHOT_FAILED|$SNAPSHOT_PATH"
+    exit 1
+  fi
+  # Verify the copy actually landed with non-zero size (cp can silently no-op on some filesystems)
+  if [ ! -s "$SNAPSHOT_PATH" ]; then
+    echo "SNAPSHOT_EMPTY|$SNAPSHOT_PATH"
+    rm -f "$SNAPSHOT_PATH"
+    exit 1
+  fi
 fi
 ```
 
@@ -34,9 +46,24 @@ snapshot_trigger: catalyst
 snapshot_batch: catalyst-YYYY-MM-DD-HHMMSS
 ```
 
-**Why this snapshot matters**: `_catalyst.md` is regenerated on every `/catalyst` run — overwriting the prior version. If the current run fails partway (e.g., web search timeout after partial enrichment) or produces a partial calendar (web search rate-limited and only thesis-extracted catalysts land), the pre-catalyst snapshot preserves the previous enriched calendar so users can `/rollback` via cascade detection. Without this, the only recovery path was the nightly vault backup.
+**Snapshot failure handling (H2)**: if either the cp fails or the resulting file is empty, abort with:
 
-If no prior `_catalyst.md` exists (first run), skip the snapshot step and proceed to Phase 1.
+```
+❌ /catalyst pre-regenerate snapshot failed: [path]
+   Reason: [cp error | empty file after copy]
+
+No regeneration attempted. The current _catalyst.md is unchanged. Fix the
+underlying filesystem issue (disk space, permissions, _Archive/Snapshots/
+directory writability) and re-run /catalyst. Prior calendar is intact.
+```
+
+Exit the skill cleanly — do NOT proceed to Phase 1. The prior `_catalyst.md` is preserved at its current path; the next successful `/catalyst` run will snapshot and regenerate.
+
+**Frontmatter-add failure**: if the cp succeeds but the subsequent frontmatter Edit fails, proceed with regeneration anyway — the snapshot file content is preserved (bit-exact copy of the prior `_catalyst.md`), just without the `snapshot_of:` metadata. `/rollback` can still restore it via direct cp-back; it won't appear in `/rollback` cascade detection by batch ID, but the user can locate it by filename pattern (`_catalyst (pre-catalyst *)`).
+
+**Why the hard abort matters**: prior behavior proceeded with regeneration after silent cp failure. If web search then failed mid-regenerate, the partial calendar overwrote the prior version with no snapshot to roll back to. Daily backup was the only fallback. Hard-abort guarantees the prior calendar is always recoverable from the pre-regenerate snapshot before any destructive write.
+
+If no prior `_catalyst.md` exists (first run), skip the snapshot step (the `[ -f "_catalyst.md" ]` guard handles this) and proceed to Phase 1.
 
 ## Phase 1: Extract Catalysts (Section-Targeted Reading)
 

@@ -235,6 +235,54 @@ If (b), perform the strikethrough Edit on the listed thesis. If the Edit fails, 
 
 Note: this cascade only surfaces the manifest's recorded Log entry. The research note under `Research/` is preserved as historical record (same policy as scenario and compare research notes).
 
+### Step 2.5f: Thesis manifest cascade (H1)
+
+If the selected snapshot or user-supplied batch ID matches a `/thesis` batch (`thesis-TICKER-YYYY-MM-DD-HHMMSS` prefix OR a companion `_thesis-manifest (thesis-...)` file exists), read the manifest for the full creation context.
+
+`/thesis` is a constructive operation — it creates a new thesis file rather than modifying an existing one. There is no "before state" snapshot to restore; cascade recovery for thesis batches means **undoing the creation** (deleting the new thesis file, un-adding from sector note, reverting `_hot.md` entries, un-touching orphan research notes).
+
+```
+Thesis creation cascade detected:
+  Batch:           thesis-TICKER-YYYY-MM-DD-HHMMSS
+  Ticker:          TICKER
+  Proposed name:   [proposed_name from manifest]
+  Proposed path:   Theses/TICKER - [proposed_name].md
+  Manifest:        [[_Archive/Snapshots/_thesis-manifest (...)]]
+
+Landed operations (from manifest body):
+  ✅ Thesis file created (or ⚠️ not created)
+  ✅ Sector note updated — [sector] (or ℹ️ skipped/new_sector_created)
+  ✅ _hot.md updated (Active Research Thread, Recent Conviction Changes, Open Questions)
+  ✅ [N] orphan research notes touched (wikilinks added to Related Research)
+
+Cascade options:
+  (a) Delete thesis file only — remove `Theses/TICKER - [proposed_name].md`.
+      Leaves sector note and _hot.md modifications in place (will dangle).
+      Choose if you want to save the thesis content elsewhere first.
+  (b) Full cascade — (a) + remove thesis wikilink from sector note Active Theses
+      (use pre-thesis-snapshot if available, otherwise targeted Edit) + revert
+      _hot.md entries (targeted Edit on manifest-listed entries) + revert orphan
+      research mtimes (touch -d to pre-thesis timestamps from manifest if
+      captured; otherwise skip mtime revert — unrelated Research/ mtime drift
+      is low-blast-radius).
+  (c) Cancel — take no action. Manually delete thesis + clean up if needed.
+
+Confirm (a/b/c):
+```
+
+**Option (b) execution**:
+1. `rm "Theses/TICKER - [proposed_name].md"` (if exists)
+2. Remove `- [[Theses/TICKER - [proposed_name]]]` line from sector note Active Theses (Edit with exact-match)
+3. Revert `_hot.md`:
+   - Active Research Thread: strike through or remove the thesis-creation entry
+   - Recent Conviction Changes: remove the `- **[TICKER]**: ... initial [level]` line
+   - Open Questions: remove entries added by this `/thesis` run (manifest lists them verbatim)
+4. If `new_sector_note_created` was in the manifest (user chose option (a) of §5 new-sector handling), offer to delete the newly-created sector note file too — but ONLY if the manifest confirms the sector was new (no prior content).
+
+**Edit failures during cascade**: continue remaining steps; report per-step outcome. Users can complete partially-failed cascade manually via the manifest body as reference.
+
+**Preservation note**: unlike sync/status rollbacks (which have pre-edit snapshots), thesis rollbacks are deletion-based. The thesis file's content is NOT preserved in `_Archive/Snapshots/` unless the user chose (a) and archived manually. Before accepting (b), consider whether the thesis content should be saved elsewhere.
+
 ### Step 2.5e: Status manifest cascade (T2.2)
 
 If the selected snapshot is associated with a `/status` batch (user supplied `status-YYYY-MM-DD-HHMMSS` batch ID, OR the snapshot's `snapshot_batch:` field matches a `status-*` pattern), read the manifest for the full transaction context.
@@ -455,21 +503,36 @@ Procedure:
 
 1. **Identify closure date**. From the just-restored thesis's Log, find the final `CLOSED:` or `Cross-thesis closure:` pre-closure entry if present. Alternate source: the pre-rollback snapshot's body if the current restored state doesn't carry closure markers. Capture `closure_date: YYYY-MM-DD` (the date the `CLOSED` Log entry was written, NOT the date the file was mv'd — those are typically the same but may differ by a day for delayed archive moves).
 
-2. **Identify citing theses**. Grep `Theses/*.md` (excluding the just-restored thesis itself) for wikilink patterns that reference the just-restored thesis:
+2. **Identify citing files** (H3 — extended beyond `Theses/` to cover macros and sectors). Grep THREE directories (excluding the just-restored thesis itself) for wikilink patterns that reference the just-restored thesis:
+   - **`Theses/*.md`** — neighbor thesis Logs with post-closure entries
+   - **`Macro/*.md`** (H3 addition) — macro notes may cite the closed thesis in narrative (e.g., "Iranian retaliation risk most directly affects [[_Archive/LITE - Lumentum]]..."). Macros often lack `## Log` sections, so body-prose citations matter.
+   - **`Sectors/*.md`** (H3 addition) — sector notes may reference the closed thesis in Acquisitions and new entrants, Industry history, Competitive dynamics, or Log sections. Post-closure narrative may have been written assuming the closure.
+
+   Wikilink patterns (searched across all three directories):
    - `[[Theses/TICKER - Name]]`, `[[Theses/TICKER - Name|...]]`, `[[Theses/TICKER - Name#...]]`, `[[Theses/TICKER - Name.md]]`
-   - `[[_Archive/TICKER - Name]]` (from `Cross-thesis closure:` entries written by `/prune` Stage 4.2 — these specifically reference the archive path)
+   - `[[_Archive/TICKER - Name]]` (from `Cross-thesis closure:` entries and post-closure narrative references)
    - `[[TICKER - Name]]` folder-less form
 
-   Collect unique thesis file paths.
+   Collect unique citing-file paths, tagging each with its category (`thesis` | `macro` | `sector`).
 
-3. **For each citing thesis**, scan its `## Log` section for entries matching BOTH:
-   - Entry date `>= closure_date` (post-closure)
-   - Entry body contains a wikilink to the restored thesis (any of the patterns above)
+3. **For each citing file**, scan for post-closure references:
+   - **Theses** — scan the `## Log` section for entries matching BOTH:
+     - Entry date `>= closure_date` (post-closure)
+     - Entry body contains a wikilink to the restored thesis
+   - **Macros** — scan the ENTIRE BODY (not just Log) for citations. Macros use narrative prose — a sentence like "LITE's closure removes the Lumentum lever from this transmission chain" is a premise-dependent reference but isn't in a Log entry. Capture citation location as file-path + line-number context for the user review prompt. If the macro DOES have a `## Log` section with dated entries, prioritize those per the thesis pattern.
+     - **Date attribution**: macros without dated Log entries are harder to classify as "post-closure" vs "pre-closure legacy". Use the file's mtime as a weak signal: if `file_mtime >= closure_date`, treat body citations as post-closure candidates; otherwise include with an advisory flag ("citation predates closure — may be legitimate historical context").
+   - **Sectors** — scan:
+     - `## Log` section per the thesis pattern (post-closure dated entries)
+     - Narrative sections that may carry post-closure premise: `## Acquisitions and new entrants`, `## Competitive dynamics`, `## Industry history` (if post-closure text was added). Use same mtime-based attribution as macros.
+     - `## Active Theses` — already handled by `/status`/`/prune` at closure time; not scanned here (those sections should no longer reference the closed thesis if closure was clean).
 
-4. **Classify each matched entry** by prefix heuristic:
-   - **Premise-dependent**: entry prefix is one of `Cross-thesis closure:`, `Cross-thesis closures:` (registry §13 — /prune-emitted notification, explicitly premised on closure)
-   - **Scenario/stress-test citation**: entry prefix starts with `Stress test`, `Scenario`, or `Scenario REVERSED` AND body text cites the restored thesis (premise depends on context)
-   - **Sync-propagated**: entry prefix is a research-note wikilink (`- [[Research/...]]:`) that happens to cite the closed thesis in its rationale
+4. **Classify each matched citation** by source and prefix heuristic:
+   - **Thesis Log — Premise-dependent**: entry prefix is one of `Cross-thesis closure:`, `Cross-thesis closures:` (registry §13 — `/prune`-emitted notification, explicitly premised on closure)
+   - **Thesis Log — Scenario/stress-test citation**: entry prefix starts with `Stress test`, `Scenario`, or `Scenario REVERSED` AND body text cites the restored thesis (premise depends on context)
+   - **Thesis Log — Sync-propagated**: entry prefix is a research-note wikilink (`- [[Research/...]]:`) that happens to cite the closed thesis in its rationale
+   - **Macro body citation** (H3): prose sentence in a macro note referencing the closed thesis. Categorize as "likely premise-dependent" (sentence asserts something about the closed state) or "contextual" (sentence cites the thesis as historical example). LLM judgment required — the prefix heuristic doesn't apply to narrative prose.
+   - **Sector body citation** (H3): prose in a sector narrative section. Same sub-categories as macro.
+   - **Sector Log — post-closure entry**: same pattern as thesis Log entries.
    - **Other**: any other citation
 
 5. **Present findings for user review**:
