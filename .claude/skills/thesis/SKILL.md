@@ -158,7 +158,41 @@ source: [primary source URL or description]
     ```
 
 ## Step 5: Update the Vault
-- **Sector Note update**: Resolve the sector note via canonical procedure **`.claude/skills/_shared/sector-resolution.md`** using the thesis's `sector:` frontmatter. If `match_confidence` is `none`, emit the contract's no-match warning and skip to the next bullet. If `match_confidence` is `normalized` or `substring`, emit the contract's `log_message` in the Step 7 report. **If status is `active`**: add the thesis to the resolved Sector Note "Active Theses" section. **If status is `draft`**: skip — the thesis will be added when promoted via `/status TICKER status draft→active`.
+- **Sector Note update**: Resolve the sector note via canonical procedure **`.claude/skills/_shared/sector-resolution.md`** using the thesis's `sector:` frontmatter.
+  - **`match_confidence: exact | normalized`**: proceed silently or with the contract's `log_message` in the Step 7 report.
+  - **`match_confidence: substring`**: emit the contract's `log_message` and proceed.
+  - **`match_confidence: none`** (5.4 fix — explicit branch, not silent skip): present the user with three options:
+
+    ```
+    ⚠️ Sector "[sector-value]" from Theses/TICKER - Name.md does not match any
+       existing Sectors/*.md file (via exact, normalized, or substring matching).
+
+    Options:
+      (a) Create Sectors/[sector-value].md now from Templates/Sector Template.md
+          with minimal scaffolding (frontmatter + section headings + this thesis
+          as the first Active Thesis entry). You can fill in analytical content
+          later or via /surface [sector]. Recommended when the new thesis is the
+          first in a legitimately new sector.
+
+      (b) Proceed without sector update — the thesis exists in Theses/ but no
+          sector note references it. Downstream skills that use sector resolution
+          (/status, /compare, /prune, /surface sector-scoped) will emit no-match
+          warnings for this ticker until a sector note exists. You can create
+          Sectors/[value].md manually later and run /graph last to reconcile.
+
+      (c) Cancel the /thesis run — abort before writing the thesis file. Use if
+          the sector value is a typo or needs revision; correct it and re-run
+          /thesis TICKER.
+
+    Confirm (a/b/c):
+    ```
+
+    **Branch behavior:**
+    - **(a)**: Create `Sectors/[sector-value].md` using the Sector Template from `Templates/Sector Template.md`. Minimal frontmatter: `date: today`, `tags: [sector, sector-value-slug]`. Minimal body: the 10 section headings from the template, each with a single `- _pending_` placeholder, EXCEPT `## Active Theses` which gets the new thesis as its first entry: `- [[Theses/TICKER - Name]]`. Log entry: `### YYYY-MM-DD\n- Sector note created by /thesis TICKER — first thesis in this sector. Scaffold-only; analytical content to be added via /deepen or /surface.` Then proceed with Step 5's original sector-update logic against this newly-created sector note (re-running sector resolution — now `match_confidence: exact` — to validate the create succeeded).
+    - **(b)**: Skip sector update. Log `ℹ️ Sector update skipped per user confirmation — no matching sector note. Sectors/[sector-value].md can be created manually later.` Continue to the next bullet (orphan research integration).
+    - **(c)**: Stop the skill. No files written. Output: `❌ /thesis TICKER cancelled at Step 5 — sector mismatch. Correct the sector value in the thesis frontmatter or create Sectors/[sector-value].md first, then re-run.`
+
+  - **If status is `active`**: add the thesis to the resolved Sector Note "Active Theses" section. **If status is `draft`**: skip — the thesis will be added when promoted via `/status TICKER status draft→active`.
 - **Integrate orphan research notes**: Search `Research/` for notes that predate this thesis and reference it. Resolution order (same as `/sync` Step 1 Fallbacks 1–2): (a) `ticker:` frontmatter matching this ticker, (b) `tags:` containing this ticker as a token. For each match:
   1. Add a wikilink to the new thesis's `## Related Research` section (do NOT modify the research note itself — Tier 2 append-only zone per CLAUDE.md).
   2. `touch` the research note to advance its mtime past `.last_sync`:

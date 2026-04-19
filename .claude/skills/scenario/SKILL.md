@@ -242,7 +242,11 @@ This is the highest-value phase — trace the cascades:
 
 ## Phase 6: Output
 
+> **Phase ordering (5.1 fix)**: Phase 6.1.5 (classification approval gate) runs BEFORE Phase 6.1 (research note write). If the user cancels at 6.1.5, no research note is written and no vault state changes. Execute in this order: **6.1.5 → 6.1 → 6.2 → 6.3**.
+
 ### 6.1: Write the research note (without `propagated_to:`)
+
+**Only runs after Phase 6.1.5 approval.**
 
 Save to `Research/YYYY-MM-DD - Scenario - [Short Scenario Name].md` with:
 ```yaml
@@ -263,9 +267,50 @@ Sections:
 5. Recommended Actions (specific hedges, position adjustments, research priorities)
 6. Related Notes (wikilinks to all theses and macro notes referenced)
 
+### 6.1.5: Classification approval gate (5.1 fix — mandatory before any Log append)
+
+Before appending any Log entries, present the Phase 3 classification matrix to the user for explicit review. This catches both false-negative Major classifications (silently missing propagation) and false-positive Major classifications (Log clutter reversible only via `/scenario reverse`).
+
+```
+Scenario propagation about to begin. Review classification before Log appends land:
+
+Major-impact theses — WILL receive Log entries ([N]):
+  - [TICKER1] ([Company]): [transmission channel] — [impact direction + magnitude rationale]
+  - [TICKER2] ([Company]): ...
+  - ...
+
+Minor-impact theses — will NOT receive Log entries ([M]):
+  - [TICKER_a] ([Company]): [weak transmission rationale]
+  - [TICKER_b] ([Company]): ...
+  - ...
+
+Neutral — no exposure identified ([K]):
+  - [TICKER_x], [TICKER_y], ... (collapsed listing)
+
+Options:
+  (a) Approve — proceed with Log appends to listed Major-impact theses
+  (b) Promote — move specific Minor-impact or Neutral theses to Major (provide comma-separated list)
+  (c) Demote — downgrade specific Major-impact theses to Minor (provide comma-separated list)
+  (d) Cancel — research note NOT written, no propagation
+
+Confirm (a/b/c/d):
+```
+
+**Branch behavior**:
+- **(a)**: proceed to 6.2 with the current Major-impact set.
+- **(b) Promote**: user supplies tickers to upgrade. Merge into Major set. For each promoted ticker, the user provides a one-line rationale (required) that will appear in that ticker's Log entry in place of the auto-generated Phase 3 rationale. Re-present the updated classification for final (a) approval.
+- **(c) Demote**: user supplies tickers to downgrade. Remove from Major set; add to Minor set. Re-present for final (a) approval.
+- **(d)**: exit the skill silently. Research note file is NOT written (Phase 6.1 hasn't run yet — see ordering below). No vault state changes.
+
+**Ordering note**: 6.1.5 runs BEFORE 6.1 (research note write). This is a change from prior ordering. Rationale: if the user cancels at 6.1.5, no half-written research note lingers; the scenario can be re-run cleanly with different parameters. Phase 6.1 is moved to after 6.1.5 approval.
+
+**Why this gate is safe from approval fatigue**: `/scenario` is already a Tier 3 operation by nature (propagates to many theses at once). Adding one more explicit gate matches the existing `/prune` approval pattern — users expect `/scenario` to present its plan before executing, not auto-propagate based on LLM classification alone.
+
+**Do NOT proceed silently past 6.1.5.** The gate is mandatory for forward mode; reverse mode (R3) has its own confirmation and is unaffected.
+
 ### 6.2: Append Log entries to all Major-impact theses
 
-For each thesis rated **Major** impact in the Phase 3 table, attempt to append a Log entry (max 2 lines each):
+For each thesis rated **Major** impact in the Phase 3 table **AND approved at Phase 6.1.5**, attempt to append a Log entry (max 2 lines each):
 ```
 ### YYYY-MM-DD
 - Scenario [[Research/YYYY-MM-DD - Scenario - Short Name]]: [impact direction via transmission channel] — conviction [unchanged/strengthened/weakened + reason]

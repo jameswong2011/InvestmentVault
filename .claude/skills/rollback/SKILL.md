@@ -387,6 +387,81 @@ mv "_Archive/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name
 ```
 Add `snapshot_of`, `snapshot_date: YYYY-MM-DD`, `snapshot_trigger: rollback-cleanup`, `snapshot_batch: rollback-YYYY-MM-DD-HHMMSS` (reuse the batch ID from Step 4) to its frontmatter.
 
+### 6.2.5: Intervening-neighbor Log scan (5.3 fix — recreated-file rollbacks only)
+
+**Only runs for recreated-file rollbacks** (i.e., the original file did NOT exist before rollback — Step 2 detection). Skip entirely for standard rollbacks (existing file restored in place).
+
+Problem this solves: Thesis X was closed on day C. Between day C and today (rollback day R), other skills (`/stress-test`, `/sync`, `/scenario`, `/compare`) may have written Log entries to OTHER theses citing X's closure as premise (e.g., "AMAT no longer faces NVDA competition after NVDA closure"). After restoring X on day R, those intervening Log entries are premised on a now-false state. The entries are Tier 2 append-only; they cannot be silently edited. But the user needs to know they exist, and needs tooling to annotate them.
+
+Procedure:
+
+1. **Identify closure date**. From the just-restored thesis's Log, find the final `CLOSED:` or `Cross-thesis closure:` pre-closure entry if present. Alternate source: the pre-rollback snapshot's body if the current restored state doesn't carry closure markers. Capture `closure_date: YYYY-MM-DD` (the date the `CLOSED` Log entry was written, NOT the date the file was mv'd — those are typically the same but may differ by a day for delayed archive moves).
+
+2. **Identify citing theses**. Grep `Theses/*.md` (excluding the just-restored thesis itself) for wikilink patterns that reference the just-restored thesis:
+   - `[[Theses/TICKER - Name]]`, `[[Theses/TICKER - Name|...]]`, `[[Theses/TICKER - Name#...]]`, `[[Theses/TICKER - Name.md]]`
+   - `[[_Archive/TICKER - Name]]` (from `Cross-thesis closure:` entries written by `/prune` Stage 4.2 — these specifically reference the archive path)
+   - `[[TICKER - Name]]` folder-less form
+
+   Collect unique thesis file paths.
+
+3. **For each citing thesis**, scan its `## Log` section for entries matching BOTH:
+   - Entry date `>= closure_date` (post-closure)
+   - Entry body contains a wikilink to the restored thesis (any of the patterns above)
+
+4. **Classify each matched entry** by prefix heuristic:
+   - **Premise-dependent**: entry prefix is one of `Cross-thesis closure:`, `Cross-thesis closures:` (registry §13 — /prune-emitted notification, explicitly premised on closure)
+   - **Scenario/stress-test citation**: entry prefix starts with `Stress test`, `Scenario`, or `Scenario REVERSED` AND body text cites the restored thesis (premise depends on context)
+   - **Sync-propagated**: entry prefix is a research-note wikilink (`- [[Research/...]]:`) that happens to cite the closed thesis in its rationale
+   - **Other**: any other citation
+
+5. **Present findings for user review**:
+
+   ```
+   ⚠️ Intervening Log entries detected — closure of [[restored thesis]] dated [closure_date]
+      may have been cited as premise by other skills between [closure_date] and today.
+
+   [N] entries found across [M] theses (dated post-closure, citing this thesis):
+
+   [[Theses/AMAT - Applied Materials.md]]:
+     - 2026-04-20: Cross-thesis closure: [[_Archive/NVDA - Nvidia]] archived — AI capex
+       exposure reduced. [prefix: Cross-thesis closure — PREMISE-DEPENDENT]
+     - 2026-04-25: [[Research/...]]: ASML guidance... given NVDA exit, AMAT positioning... 
+       [prefix: research-note wikilink — PARTIAL PREMISE DEPENDENCY]
+
+   [[Theses/AVGO - Broadcom.md]]:
+     - 2026-05-02: Stress test [[Research/...]]: without NVDA competition... [prefix: 
+       Stress test — PARTIAL PREMISE DEPENDENCY]
+
+   Options:
+     (a) Surface only — leave entries as historical audit trail, no edits. Recommended if
+         the user will manually review each thesis.
+     (b) Auto-strikethrough premise-dependent entries (`Cross-thesis closure:` prefix only —
+         the explicit premise category). Entries are rewritten as:
+         `~~Cross-thesis closure: ...~~ → Superseded YYYY-MM-DD: [restored thesis] reopened via /rollback.`
+         This violates Tier 2 append-only, but closure-notification entries are explicitly
+         corrective-signal-preservable (mirrors the /scenario reverse and /sync cascade
+         strikethrough pattern).
+     (c) Auto-strikethrough ALL matched entries (premise-dependent + partial) with:
+         `~~entry~~ → Review YYYY-MM-DD: [restored thesis] was reopened — premise may no
+         longer apply.` Aggressive but unambiguous; user must manually re-add accurate
+         context per affected entry.
+     (d) Skip — do not scan further; acknowledge the gap manually.
+
+   Confirm (a/b/c/d):
+   ```
+
+6. **Branch behavior**:
+   - **(a)**: Add a summary note to the rollback report (Step 7) listing affected theses and entries. No file modifications beyond what Step 6 already did. User does manual review.
+   - **(b)**: Iterate the "Cross-thesis closure" entries and strikethrough-rewrite each per the template. Include affected theses in the Step 7 report. The strikethrough preserves audit trail; the `→ Superseded` annotation creates a corrective signal for future Log readers.
+   - **(c)**: Iterate ALL matched entries; apply the more generic strikethrough template. Report in Step 7.
+   - **(d)**: Log `ℹ️ Intervening-neighbor scan skipped per user confirmation. [N] entries flagged but not annotated.` Include the full list in Step 7 report.
+
+7. **Edit failure handling**: if a strikethrough Edit fails on an affected thesis (file lock, concurrent modification), record the failure and continue with remaining edits. Report failed edits in Step 7 alongside successful ones.
+
+> **Why this scan only runs on recreated-file rollbacks**: standard rollbacks restore a file that was never closed — there's no closure date to anchor the post-closure scan, and intervening edits to the restored file's body (rather than to neighbors' Logs) are the relevant recovery concern. Cascade detection (Step 2.5) already handles neighbor edits for sync-batch rollbacks; this new step covers the specific gap of closure-reopen.
+
+> **Interaction with Step 2.5b sync manifest cascade**: if the rollback target's closure was done via `/status active→closed` (not `/prune`), no sync manifest exists for the closure itself; 6.2.5's scan is the primary tool. If closure was via `/prune`, the prune manifest (now 30-day retained per 5.2 fix) may exist and cascade detection at Step 2.5 already surfaces neighbor Log entries from the Stage 4.2 "Cross-thesis closure" batch. In that case, 6.2.5 runs redundantly but safely — its `Cross-thesis closure:` prefix filter finds the same entries Step 2.5b already presented, and the user chooses once. The skill should detect this overlap and log `ℹ️ 6.2.5 scan overlaps with Step 2.5b prune-manifest cascade; showing combined list.` rather than prompting twice.
+
 ### 6.3: Graph update deferred
 
 `_graph.md` is now owned exclusively by `/graph`. **After this rollback, run `/graph last` immediately** — it captures all graph effects from current vault state:

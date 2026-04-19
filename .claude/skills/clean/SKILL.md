@@ -51,9 +51,12 @@ Some files in `_Archive/Snapshots/` are NOT snapshots — they are operational a
 Detection rule: if the file's frontmatter has a `type:` field AND that value is not empty AND is not a snapshot-producer identifier (`snapshot`, or absent), treat the file as a non-snapshot artifact. Also treat any file missing `snapshot_date:` as non-snapshot (defensive — `/clean` cannot date-age what isn't dated).
 
 Handling:
-- **Skip the file entirely.** Do not classify as retained/expired. Do not offer for deletion under any threshold.
+- **Skip the file entirely** for prune manifests with `status: in-progress` and for any other non-snapshot type.
 - **For `type: prune-manifest` with `status: in-progress`**: add a line to the Step 3 report under a new category `🛑 Prune manifest (in-progress)` — the user should resolve the in-flight prune (via `/rollback` cascade) before letting `/clean` proceed, though `/clean` itself takes no action on this file.
-- **For `type: prune-manifest` with `status: completed`**: add a line to the Step 3 report under `🧹 Completed prune manifest — safe to delete manually` — the prune finished but the manifest wasn't cleaned up at Stage 5. `/clean` still doesn't auto-delete (scope is snapshots), but the user can `rm` it.
+- **For `type: prune-manifest` with `status: completed`** (5.2 retention fix): compute age from `completed_date:` frontmatter (not `date:`, which is the start of prune — `completed_date:` anchors retention).
+  - **Age ≤ 30 days**: add to Step 3 report under `🔒 Completed prune manifest — in 30-day regret-recovery window` — do NOT delete regardless of `/clean` threshold. The manifest supports `/rollback` cascade-detection for neighbor Tier B Log entries if the user needs recovery.
+  - **Age > 30 days**: eligible for deletion. Include in the Step 3 "Snapshots to delete" report under the regular age-based cleanup bucket. The 30-day floor is absolute — a user running `/clean 10` does NOT delete 15-day-old completed prune manifests (they are still in regret-window regardless of the user-supplied age threshold). A user running `/clean 180` DOES delete 40-day-old completed prune manifests (both windows satisfied).
+  - **Missing `completed_date:`** (legacy manifests or flip-verification-failure manifests that flipped status without adding the timestamp): treat as age > 30 days for cleanup safety — these are stuck manifests whose prune unambiguously succeeded; cleanup is correct. Log `ℹ️ Legacy completed prune manifest (no completed_date:) — eligible for deletion.`
 - **For any other non-snapshot type**: log `ℹ️ Skipped non-snapshot artifact: [path] (type: [value], no snapshot_date)`.
 
 ### 2b: Classify actual snapshots
@@ -114,11 +117,17 @@ These snapshots exceed the age threshold but their source files were modified af
 
 These represent in-flight `/prune` operations. Resolve the batch first (`/rollback` cascade via any ticker in the batch, then delete the manifest) before running `/clean` again.
 
-### 🧹 Completed prune manifests — safe to delete manually
-| File | Batch ID | Completed Date |
-|------|---------|---------------|
+### 🔒 Completed prune manifests — in 30-day regret-recovery window (PROTECTED)
+| File | Batch ID | Completed Date | Days remaining |
+|------|---------|---------------|---------------|
 
-These are stale breadcrumbs from successful prune runs whose Stage 5 cleanup failed. `/clean` does not auto-delete them (they are not snapshots); user can `rm` manually after confirming the batch succeeded.
+These manifests are within 30 days of `completed_date:` and are retained to support `/rollback` cascade-detection if the user decides to undo an approved closure. `/clean` does NOT delete these regardless of age threshold.
+
+### 🧹 Completed prune manifests — eligible for deletion (>30 days old)
+| File | Batch ID | Completed Date | Age (days) |
+|------|---------|---------------|------------|
+
+These manifests have exceeded the 30-day regret-recovery window. `/clean` deletes these alongside regular age-based cleanup (if snapshot threshold is also satisfied). Manifests with missing `completed_date:` (legacy or flip-verification failures) are also included here — those are stuck completed manifests whose prune unambiguously succeeded.
 
 ### 👻 Orphan snapshots (source file missing)
 | File | Snapshot Date | Age (days) | `snapshot_of` (missing) |
@@ -133,7 +142,7 @@ These snapshots reference source files that no longer exist in the vault. Possib
 | File | Type |
 |------|------|
 
-**Total**: X to delete, Y active safety nets (protected), Z retained, V orphans (protected by default | slated for deletion), W non-snapshot artifacts (skipped).
+**Total**: X to delete, Y active safety nets (protected), Z retained, V orphans (protected by default | slated for deletion), P prune manifests in regret-window (protected), Q prune manifests eligible for deletion, W non-snapshot artifacts (skipped).
 
 ## Step 4: Confirm and Execute
 

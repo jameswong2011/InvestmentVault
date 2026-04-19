@@ -1204,6 +1204,45 @@ Reaffirm now always appends a Log entry regardless of whether a drift flag is ac
 
 `/catalyst` now snapshots `_catalyst.md` before regenerating. If a web-search failure produces a partial calendar, the pre-catalyst snapshot is available via `/rollback` cascade (batch ID `catalyst-YYYY-MM-DD-HHMMSS`). Prior behavior silently overwrote.
 
+### Tier 5 fixes — workflow hardening
+
+#### 5.1 `/scenario` classification approval gate
+`/scenario` forward mode now pauses at Phase 6.1.5 — AFTER the Impact Matrix is computed, BEFORE the research note or any Log entries are written. User reviews the Major/Minor classification and can (a) approve, (b) promote Minor/Neutral theses to Major (with rationale), (c) demote Major to Minor, or (d) cancel. Catches LLM misclassification (both false negatives — genuinely exposed theses dropped to Minor — and false positives — Log clutter reversible only via `/scenario reverse`). Reverse mode (R3) has its own confirmation and is unaffected.
+
+#### 5.2 `/prune` manifest 30-day regret-recovery window
+`/prune` no longer deletes its manifest at Stage 5. Instead:
+- **Days 0–30**: manifest retained with `status: completed`. `/rollback` cascade-detection can surface Tier B "Cross-thesis closure" Log entries on neighbor theses if the user decides to undo an approved closure. `/lint #36` treats as Pass.
+- **Days 30+**: `/clean` removes the manifest on any run. `/lint #36` emits Nice to Have from day 30.
+- **Regret-recovery flow**: within 30 days of the prune, run `/rollback [any ticker from manifest's Intended Closures]` → select `(pre-prune)` snapshot → cascade (a) restores all files; `/rollback` Step 6.2.5 (5.3 fix) surfaces neighbor Log entries for strikethrough review; manually `rm` the manifest after recovery.
+- 30-day window floor is absolute: `/clean 10` does NOT delete a 15-day-old completed prune manifest.
+
+#### 5.3 `/rollback` intervening-neighbor Log scan
+Recreated-file rollbacks (reopening a closed thesis) now run a Step 6.2.5 scan: find every Log entry on OTHER theses dated post-closure that cites the just-restored thesis's wikilink. Classify by prefix (`Cross-thesis closure:` = premise-dependent; `Stress test`/`Scenario`/research-note = partial premise). Present four options: surface-only, auto-strikethrough premise-dependent only, auto-strikethrough all matched, or skip. Without this scan, intervening Log entries premised on false closure persist unflagged. Step 2.5b prune-cascade surfacing still works; 6.2.5 is the primary tool for `/status active→closed` reopens (no sync manifest exists for those).
+
+#### 5.4 `/thesis` new-sector handling
+If a new thesis's `sector:` frontmatter resolves to `match_confidence: none`, `/thesis` Step 5 now prompts explicitly instead of silent-skipping: (a) create `Sectors/[sector-value].md` from Templates/Sector Template.md with minimal scaffolding and the new thesis as the first Active Thesis entry, (b) proceed without sector update (sector note can be created manually later), or (c) cancel the `/thesis` run entirely (useful if the sector value was a typo). Eliminates the prior silent-failure path where downstream skills emitted no-match warnings for the ticker indefinitely.
+
+#### 5.5 `/ingest` source-URL dedup
+`/ingest` Step 0.3 (URL and single-file modes) now greps `Research/*.md` frontmatter for `source:` value matches before writing:
+- **Same-day match**: HARD BLOCK — user must delete the existing note if they genuinely want to re-ingest.
+- **Cross-day match**: WARN + three-option prompt (skip / re-ingest / cancel). Cross-day re-ingests are useful for live URLs that served materially updated content since the prior ingest.
+- **No match**: proceed normally.
+- Batch Mode C continues to use the `_Inbox/processed/` filename-based guard.
+- No canonical URL normalization (query params, fragments are provider-specific); exact string match only.
+
+#### 5.7 `/brief` accumulation management
+`/brief TICKER` creates `Research/YYYY-MM-DD - TICKER - Investment Brief.md` every run; old briefs are preserved. Over an active ticker's lifetime, this can accumulate 10–20+ briefs. Recommended management pattern:
+
+| Cadence | Action |
+|---|---|
+| **Per-brief** | Latest brief is the most recent; earlier briefs stay for audit trail of narrative evolution |
+| **Quarterly** | Review all briefs for a ticker; manually archive stale ones to `_Archive/Briefs/` (create directory if absent): `mv Research/YYYY-MM-DD - TICKER - Investment Brief.md _Archive/Briefs/` |
+| **Annually** | Or use `/clean` with a custom threshold: briefs over 180 days old are ageable by `/clean 180` if they have `snapshot_date:` — but briefs are NOT snapshots, so they are NOT auto-cleaned. Manual archival is the canonical path. |
+
+**Why no auto-archival**: briefs carry analytical content that may inform a future `/deepen` or `/stress-test` session. Auto-archiving on brief-recreate would silently hide these from the standard `Research/` search path. Manual archival preserves user agency.
+
+**Finding stale briefs**: `find Research/ -name '* - * - Investment Brief.md' -mtime +90` lists briefs older than 90 days for review.
+
 ### `/graph last` cost & precision
 
 | Vault state                       | `/graph last` work                                                       |
@@ -1262,4 +1301,11 @@ Reaffirm now always appends a Log entry regardless of whether a drift flag is ac
 | `/catalyst` produced a partial calendar (web search failed) | 6.9-adjacent pre-overwrite snapshot retained the prior calendar | `/rollback` → select `(pre-catalyst YYYY-MM-DD-HHMMSS)` snapshot to restore the prior richer calendar. Re-run `/catalyst` when web access is resolved. |
 | `/sync` writes duplicate Log entries across midnight | Pre-6.11: today-date idempotency keyed duplicates at day rollover. **Fixed (6.11): now keyed on research-note wikilink presence in Log.** | If legacy duplicates exist: manually consolidate (strikethrough the duplicate per Tier 2 convention). New runs are idempotent across midnight. |
 | `/status TICKER reaffirm` Log entry visible even when no drift flag was active | 6.7 — reaffirm always appends Log entry for audit completeness. Format: `Conviction reaffirmed at [level] after [drift review \| proactive review] — [rationale]` | Correct behavior. Every reaffirm is audit-visible. |
+| `/scenario` now pauses at "Classification approval gate" | 5.1 — Phase 6.1.5 added; shows Major/Minor/Neutral classification before any Log appends | Options: (a) approve, (b) promote specific tickers to Major with rationale, (c) demote Major to Minor, (d) cancel (no files written). Correct behavior — catches LLM misclassification. |
+| Completed prune manifest persists in `_Archive/Snapshots/` days after prune | 5.2 — 30-day regret-recovery window retention; `/clean` removes after day 30 | Correct behavior. Within 30 days, supports `/rollback` cascade-detection for neighbor Log entries if you decide to undo a closure. `/lint #36` treats as Pass until day 30. |
+| `/rollback` of a closed thesis surfaces "Intervening Log entries detected" | 5.3 — Step 6.2.5 scan found post-closure Log entries on neighbor theses citing the just-restored thesis | Options: (a) surface-only, (b) auto-strikethrough `Cross-thesis closure:` premise entries, (c) auto-strikethrough all matched, (d) skip. Choice depends on how confidently you want to invalidate old premise. |
+| `/thesis TICKER` prompts about missing sector note | 5.4 — `match_confidence: none` now has explicit 3-option branch instead of silent skip | Options: (a) create `Sectors/[value].md` scaffold with this thesis as first entry, (b) proceed without sector update, (c) cancel to fix the sector value. |
+| `/ingest URL` blocked with "Source already ingested today" | 5.5 — Step 0.3 same-day URL dedup | Delete existing note first if you genuinely want to re-process: `rm "Research/[matched-note].md"` then re-run. |
+| `/ingest URL` prompts about "previously ingested" (older than today) | 5.5 — cross-day URL match | Options: (a) skip and use existing note, (b) re-ingest as new dated note (coexist cleanly with prior due to T6 6.11 wikilink idempotency), (c) cancel. |
+| `/brief TICKER` accumulating many files under `Research/` | 5.7 — no auto-archival by design; briefs are analytical content | Quarterly: `find Research/ -name '*Investment Brief.md' -mtime +90` to list stale; manually `mv` chosen ones to `_Archive/Briefs/` (create dir if absent). |
 

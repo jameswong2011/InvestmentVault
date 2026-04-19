@@ -394,24 +394,38 @@ Update `_hot.md` per `.claude/skills/_shared/hot-md-contract.md` (read first, th
 
 **Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
 
-### Manifest Cleanup
+### Manifest Retention (5.2 fix — 30-day regret-recovery window)
 
-All stages completed successfully. The cleanup is a verify-before-delete sequence: flip status first, **verify the flip landed**, then delete. The verify step closes a failure mode where the status-flip Edit silently misses (frontmatter format quirks, unusual quoting, etc.) — without the verify, a failed flip would leave `status: in-progress` AND `/lint` #36 would later flag Critical and recommend `/rollback`, undoing a successful prune.
+All stages completed successfully. **Change from prior behavior**: `/prune` no longer deletes the manifest at Stage 5. The manifest is **retained for 30 days** as a regret-recovery breadcrumb — if the user realizes within 30 days that an approved closure was wrong, the manifest enables `/rollback` cascade detection to find every affected file (including neighbor theses' Tier B "Cross-thesis closure" Log entries from Stage 4.2, which are otherwise orphan audit entries).
+
+Cleanup is now a verify-only sequence: flip status, verify the flip landed, then leave in place. `/clean` Step 2a (extended) handles eventual deletion on age.
 
 1. **Flip manifest status**: Edit the manifest's frontmatter — change `status: in-progress` to `status: completed` and add `completed_date: YYYY-MM-DD`.
 
 2. **Verify the flip landed**: re-read the manifest frontmatter and confirm `status: completed` is present AND `status: in-progress` is absent.
-   - **On verification success** → proceed to step 3.
-   - **On verification failure** (flip Edit silently missed): do NOT attempt the rm. Report `❌ Manifest status flip failed: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS)]] is still marked in-progress despite successful prune completion. DO NOT run /rollback — the prune closures/upgrades/sector updates/downstream propagation have all succeeded; rolling back would undo valid work. Manual fix: open the manifest and replace status: in-progress with status: completed, then rm the file. Alternatively, delete the manifest directly — /lint #36 flagging it as Critical is a false alarm in this specific case.` Do NOT attempt step 3; exit the skill with this explicit warning.
+   - **On verification success** → the manifest stays in `_Archive/Snapshots/` with `status: completed`. `/clean` and `/lint #36` handle aging per the new retention policy (below).
+   - **On verification failure** (flip Edit silently missed): do NOT attempt any repair. Report `❌ Manifest status flip failed: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS)]] is still marked in-progress despite successful prune completion. DO NOT run /rollback — the prune closures/upgrades/sector updates/downstream propagation have all succeeded; rolling back would undo valid work. Manual fix: open the manifest and replace status: in-progress with status: completed. The manifest will then age out via /clean after 30 days. /lint #36 flagging it as Critical is a false alarm in this specific case.` Exit the skill with this explicit warning.
 
-3. **Delete the manifest**:
-   ```bash
-   rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS).md"
-   ```
+3. **NO deletion step.** The manifest persists until `/clean` removes it (30 days after `completed_date:`) or the user manually `rm`s it after confirming the prune is no longer a regret candidate.
 
-4. **Delete failure handling**: If the `rm` fails (permission, filesystem error) after a successful status flip, warn but do not abort — the manifest is now `status: completed` so `/clean` Step 2a classifies it as a safe-to-delete completed manifest and `/lint` #36 emits Nice to Have (not Critical). The user or a future `/clean`/manual `rm` can clear it.
+### Retention policy & downstream contract
+
+- **Days 0–30 after `completed_date:`**: manifest stays. `/rollback` cascade-detection can find the batch and surface Tier B Log entries for neighbor review during regret-recovery. `/lint #36` treats as Pass.
+- **Days 30+**: `/clean` (any mode — default 180, custom, or orphans) removes completed prune manifests via the new Step 2a extension. `/lint #36` begins emitting Nice to Have at 30+ days, advising `/clean` or manual `rm`.
+
+**Why 30 days**: matches typical investment-decision regret window — quarterly earnings cycle, position sizing review, macro shock digestion. Beyond 30 days, Tier B cascade recovery has diminishing value (the user's vault has absorbed the closure; neighbor Logs are now read as historical context, not stale premise).
+
+**User regret-recovery flow** (now supported):
+```
+User realizes an approved /prune closure was wrong.
+If `completed_date:` is within 30 days:
+  /rollback [any ticker from manifest's Intended Closures]
+  → select (pre-prune) snapshot → cascade (a) to restore all files
+  → /rollback Step 6.5 (new — see /rollback SKILL.md) surfaces neighbor
+    Tier B Log entries for strikethrough review
+  → delete the manifest manually after recovery: rm "_Archive/Snapshots/_prune-manifest..."
+```
 
 Report final count of actions taken. Include the manifest's final state:
-- `completed — deleted` (happy path)
-- `completed — rm failed, manual cleanup recommended`
+- `completed — retained for 30-day regret-recovery window` (happy path)
 - `⚠️ flip verification failed — manifest still in-progress despite prune success; do NOT /rollback, resolve manually per the warning above`

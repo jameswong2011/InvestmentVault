@@ -17,6 +17,65 @@ Ingest raw content into the vault as structured research notes. **This skill cre
 ### 0.2: Rename-marker advisory check
 Glob `.rename_incomplete.*` at vault root. If any marker exists, emit a non-blocking advisory: `⚠️ In-flight rename repair(s) detected: [markers]. New research notes will wikilink to current thesis filenames. If an ingested note targets a still-mid-rename ticker, run /rename TICKER "[new_name]" to resolve before /sync.` Ingest proceeds — the research note creation itself is safe; the split-name risk materializes only at `/sync` time.
 
+### 0.3: Source dedup check (5.5 fix — URL and single-file modes)
+
+**Applies to Mode A (URL) and Mode B (single local file). Batch Mode C uses the per-file Prior-processing guard instead** (Mode C already handles `_Inbox/processed/` dedup correctly).
+
+Purpose: prevent duplicate research notes from ingesting the same URL twice (same day or across days with materially identical content). Without this check, a forgetful user who ingests the same article twice produces two research notes with identical `source:` URLs; `/sync` then propagates BOTH to downstream theses, writing duplicate Log entries (mitigated by T6 6.11 wikilink idempotency for the second sync, but the first one still spams).
+
+Procedure:
+
+1. **Compute source key**:
+   - **Mode A (URL)**: use the raw URL as-is. Do NOT normalize (query params, fragments, path trailing slashes can be semantically meaningful — e.g., `?v=1234` on YouTube, `#section` anchors in documentation).
+   - **Mode B (local file)**: use the absolute file path.
+
+2. **Grep `Research/*.md` frontmatter** for a `source:` value matching the key. Match rule: exact string equality after frontmatter parse (tolerate wrapping whitespace). Use `Grep` with `-F` equivalent for literal match.
+
+3. **Branch on match**:
+
+   **No match** → proceed to Processing Pipeline normally.
+
+   **One or more matches — same calendar day** (match's `date:` frontmatter equals today's date): HARD BLOCK with:
+   ```
+   ⚠️ Source already ingested today: [[Research/matched-note]]
+     source: [URL or path]
+     date:   [today]
+   
+   Duplicate ingest blocked. The existing note will propagate via /sync.
+   
+   If you actually want to re-process (source content materially changed since
+   this morning's ingest), delete the existing note first:
+     rm "Research/[matched-note].md"
+   Then re-run /ingest [source].
+   ```
+   Exit without writing a new note. No vault state changes.
+
+   **One or more matches — older than today**: WARN + confirm:
+   ```
+   ⚠️ Source previously ingested: [[Research/matched-note]]
+     source: [URL or path]
+     previous date: [YYYY-MM-DD] ([N] days ago)
+   
+   Options:
+     (a) Skip — the existing note covers this source. /sync can re-propagate from it
+         if /sync hasn't yet picked it up. No new note written.
+     (b) Re-ingest — useful if the source URL serves materially updated content
+         (e.g., a live earnings page that has been revised, a tracker URL with
+         new data). Creates a NEW note at Research/YYYY-MM-DD - ... with today's
+         date. Existing note is preserved. Note: /sync's wikilink-idempotency
+         (T6 6.11 fix) means both notes can coexist cleanly — each is a
+         separate propagation event to affected theses.
+     (c) Cancel — investigate manually.
+   
+   Confirm (a/b/c):
+   ```
+   **Branch behavior**:
+   - **(a)**: exit without writing. Log `ℹ️ Ingest skipped — existing note [[Research/matched-note]] covers source.`
+   - **(b)**: proceed to Processing Pipeline. The new note's body will describe the update context in the Summary section.
+   - **(c)**: exit without writing.
+
+**Why not canonical URL normalization**: tempting to normalize (strip trailing slashes, sort query params alphabetically, downcase hostname) for stricter dedup. Rejected because: (a) URL semantics are provider-specific — YouTube's `?v=` is meaningful, a blog's `?utm_source=` often isn't, and the skill can't reliably distinguish; (b) over-normalization produces false dedup matches (two truly distinct articles collapsed as "same"); (c) strict exact match with user-facing confirmation for cross-day cases is auditable and recoverable, while silent canonical dedup is neither.
+
 ## Input Mode Detection
 
 Parse $ARGUMENTS to determine mode:
