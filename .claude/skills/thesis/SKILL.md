@@ -100,11 +100,7 @@ source: [primary source URL or description]
      ```
   > **Why the `touch`**: Research notes created before this thesis existed were skipped by any prior `/sync` (no propagation target). Their mtimes sit behind `.last_sync`, so default `/sync` cannot re-process them via `find -newer .last_sync`. Advancing mtime re-enters them into the changed-file set, so the next `/sync` (default OR ticker-scoped) runs the standard propagation and appends the canonical `- [[Research/...]]: [what changed] — conviction [impact]` Log entry to this thesis. Without the touch, the thesis's `## Log` would show only "Initial thesis created" and the research-to-thesis audit trail would be permanently broken — content integrated into sections but never acknowledged in the Log.
 
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain, SKIP graph update below and increment `Graph deferred`. If starting or no chain, proceed.
-
-- Update `_graph.md` (skip if it does not exist): add a full adjacency entry for the new thesis with all fields (sector notes, macro notes, research notes, cross-thesis references)
-
-**Graph validation**: After all graph edits, re-read the modified section and verify: (1) no unclosed `[[` brackets introduced, (2) `theses:` frontmatter count still within ±2 of actual `Theses/` file count. If either check fails: `⚠️ Graph may be corrupted — [specific failure]. Run /graph to rebuild.`
+> **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the new thesis (full adjacency entry: sector, macro, cross-thesis, research) in the dependency map. Until `/graph last` runs, ticker-scoped operations resolve adjacency directly from the thesis file via Outcome B fallback.
 
 ## Step 6: Update _hot.md
 

@@ -246,33 +246,14 @@ mv "_Archive/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name
 ```
 Add `snapshot_of`, `snapshot_date: YYYY-MM-DD`, `snapshot_trigger: rollback-cleanup`, `snapshot_batch: rollback-YYYY-MM-DD-HHMM` (reuse the batch ID from Step 4) to its frontmatter.
 
-> **Chain-aware (with file-recreation exception)**: Per CLAUDE.md Session Chain Protocol, normally: if joining an active chain, SKIP the graph update below and increment `Graph deferred`; if starting or no chain, proceed.
->
-> **EXCEPTION — recreated-file override**: If this rollback recreated a previously-absent file (detected in Step 2 — `snapshot_of:` pointed to a path that did not exist on disk), the graph update MUST run immediately regardless of chain state. The exception applies because:
-> - The restored thesis has NO adjacency entry in `_graph.md` (closure/archival removed it). Deferring means the graph will reference a ticker that does not exist anywhere in its indexes.
-> - Chain-deferred graph updates are reconciled by `/sync` Rule 8, which scans research notes — not theses. Rule 8 has no mechanism to rebuild an absent thesis adjacency entry.
-> - Subsequent chain-participant skills (e.g., `/sync` default) rely on the adjacency index to resolve propagation targets. A missing entry for the recreated thesis would cause the thesis to be silently skipped in propagation.
->
-> When the exception fires, apply the graph update below now. Do **not** increment `Graph deferred` — this rollback's graph work is complete, not deferred. The chain's prior `Graph deferred` count is unchanged. Append a note to the Step 7 report: `ℹ️ Graph update applied immediately (recreated-file exception) — not counted toward Graph deferred.`
+### Graph update deferred
 
-### Graph update (skip if `_graph.md` does not exist)
-If the rollback restored wikilinks that were removed, or removed wikilinks that were added since the snapshot:
-- **If the thesis's adjacency entry exists** in `_graph.md`: update it to reflect the restored link set
-- **If the thesis's adjacency entry does not exist** (removed during archive/closure — this is the recreated-file case): create a new full adjacency entry by extracting all outbound `[[wikilinks]]` from the restored thesis note — categorize into `sector:`, `macro:`, `cross-thesis:`, and `research:` fields. Re-add the thesis to relevant reverse indexes (Sector → Theses, Macro → Theses) and Cross-Thesis Clusters where bidirectional links exist. **This branch triggers the recreated-file exception above — apply immediately even inside an active chain.**
+`_graph.md` is now owned exclusively by `/graph`. **After this rollback, run `/graph last` immediately** — it captures all graph effects from current vault state:
 
-### Orphan list cleanup (both branches)
+- **Standard rollback** (existing thesis restored): `/graph last` re-extracts adjacency from the restored thesis file, updates reverse indexes, and removes any restored research notes from the orphan list (no longer orphaned now that the restored thesis links them).
+- **Recreated-file rollback** (closed thesis re-opened): `/graph last` rebuilds the absent adjacency entry from the restored thesis file. The full-rebuild path captures the new adjacency, reverse-index re-entry, and Cross-Thesis Cluster restoration in a single pass — no need for the prior architecture's recreated-file exception logic.
 
-For every research note listed in the restored thesis's `research:` field, scan `## Orphan Research Notes` in `_graph.md`. If the research note appears there, remove it from the orphan list — it is no longer orphaned (it is now linked from the restored thesis's adjacency entry).
-
-This prevents a stale orphan list after rollback:
-- **Closure-rollback case** (recreated-file branch): when a thesis was archived by `/status active→closed` or `/prune`, the closure cleanup (either at the time OR by `/sync` Rule 9 later) moved the thesis's research notes to the orphan list. Rollback re-links them — the orphan list must follow.
-- **Sync-rollback case** (existing adjacency branch): if the pre-snapshot adjacency included research notes that the post-snapshot state had unlinked (causing them to be reclassified as orphan by `/sync` Rule 1), rollback restores those links — the orphan list must follow.
-
-Report the cleanup count in Step 7: `Orphans cleared: [N] research notes removed from orphan list (now linked from restored thesis).`
-
-- Update `date:` in graph frontmatter
-
-**Graph validation**: After all graph edits, re-read the modified section and verify: (1) no unclosed `[[` brackets introduced, (2) `theses:` frontmatter count still within ±2 of actual `Theses/` file count. If either check fails: `⚠️ Graph may be corrupted — [specific failure]. Run /graph to rebuild.`
+> **Why running `/graph last` immediately matters for recreated-file rollbacks**: subsequent skills relying on `_graph.md` (e.g., `/sync` default mode) need the restored thesis's adjacency entry. Without `/graph last`, the thesis exists on disk but is invisible to graph-assisted propagation paths.
 
 ### Update _hot.md
 Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
@@ -294,8 +275,7 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by 
 - **Sections reverted**: [list]
 - **Log entries lost**: [count] — preserved in safety snapshot
 - **Side effects**: [sector note updated / graph updated / conviction reverted]
-- **Orphans cleared** (if any): `[N] research notes removed from orphan list (now linked from restored thesis)`. Omit line when no orphans were cleared.
-- **Graph application** (recreated-file rollbacks only): `ℹ️ Graph update applied immediately (recreated-file exception) — full adjacency rebuild could not be chain-deferred.` (Omit line when the normal chain-aware path applied.)
+- **Graph reminder**: `→ Run /graph last to update the dependency map.` (Critical for recreated-file rollbacks — restored thesis is invisible to graph-assisted propagation until /graph last runs.)
 - **Duplicate-file note** (Step 4a option (b) only): `⚠️ Content-only restore created duplicate file. Original path: [[snapshot_of]]. Current name: [[rename_target]]. Inbound wikilinks across vault still point to current name. To consolidate, decide which copy to keep, then delete the other and run /sync.`
 - **To undo this rollback**: `/rollback [ticker]` and select the `(pre-rollback)` snapshot
 

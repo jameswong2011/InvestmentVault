@@ -259,15 +259,7 @@ Do NOT rewrite wikilinks across the vault — `/lint` will detect broken links f
 
 > **Why sector notes are updated last**: Stages 2–3 modify thesis files only. If the skill fails during Stages 2–3, sector notes remain untouched and internally consistent — they still reference the original thesis paths. The snapshots from Stage 1 enable full cascade recovery. Only after all thesis modifications succeed do sector notes get updated.
 
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain, SKIP graph update below and increment `Graph deferred`. If starting or no chain, proceed.
-
-Update `_graph.md` after all actions (skip if it does not exist):
-- For each archived thesis: remove its entry from the Thesis Adjacency Index, remove it from all reverse indexes (Macro → Theses, Sector → Theses), remove it from Cross-Thesis Clusters
-- For each archived thesis: scan ALL remaining thesis entries in the Adjacency Index and remove the archived ticker from their `cross-thesis:` fields. These are ghost references — `/sync` would try to read the archived file from `Theses/` and fail.
-- For each archived thesis: move any research notes that were ONLY linked from this thesis to the Orphan list
-- Update `date:` and `edges:` in frontmatter
-
-**Graph validation**: After all graph edits, re-read the modified section and verify: (1) no unclosed `[[` brackets introduced, (2) `theses:` frontmatter count still within ±2 of actual `Theses/` file count. If either check fails: `⚠️ Graph may be corrupted — [specific failure]. Run /graph to rebuild.`
+> **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to update the dependency map for archived theses (Adjacency Index removal, reverse-index cleanup, ghost cross-thesis ref scrubbing, orphan reclassification of research notes that were only linked from archived theses).
 
 Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
 

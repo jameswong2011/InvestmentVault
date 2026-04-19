@@ -109,14 +109,7 @@ For each thesis that received a Log entry, add the scenario to its `## Related R
 - [[Research/YYYY-MM-DD - Scenario - Short Name]]
 ```
 
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain, SKIP graph update below and increment `Graph deferred`. If starting or no chain, proceed.
-
-Update `_graph.md` (skip if it does not exist):
-- Add the scenario research note to each affected thesis's `research:` list in the Thesis Adjacency Index
-- If the scenario revealed new cross-thesis correlations (positions correlated under this scenario), add to Cross-Thesis Clusters if not already present
-- Update `date:` in frontmatter
-
-**Graph validation**: After all graph edits, re-read the modified section and verify: (1) no unclosed `[[` brackets introduced, (2) `theses:` frontmatter count still within ±2 of actual `Theses/` file count. If either check fails: `⚠️ Graph may be corrupted — [specific failure]. Run /graph to rebuild.`
+> **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the scenario research note and any new cross-thesis correlations in the dependency map.
 
 Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
 

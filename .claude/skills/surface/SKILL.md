@@ -93,15 +93,7 @@ source_type: synthesis
 ---
 ```
 
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain, SKIP graph update below and increment `Graph deferred`. If starting or no chain, proceed.
-
-Update `_graph.md` (skip if it does not exist):
-- Add the surface scan research note to the graph
-- If new cross-thesis connections were discovered (blind spots, supply chain links, hidden correlations), add them to Cross-Thesis Clusters
-- If "implied but unwritten" theses were identified, add them to the Orphan list as potential thesis candidates
-- Update `date:` in frontmatter
-
-**Graph validation**: After all graph edits, re-read the modified section and verify: (1) no unclosed `[[` brackets introduced, (2) `theses:` frontmatter count still within ±2 of actual `Theses/` file count. If either check fails: `⚠️ Graph may be corrupted — [specific failure]. Run /graph to rebuild.`
+> **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the surface scan research note, new cross-thesis connections, and any implied-but-unwritten thesis candidates in the dependency map.
 
 Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
 

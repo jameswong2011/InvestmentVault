@@ -75,11 +75,8 @@ Structure as a short seller would pitch to an investment committee:
    - [[Research/YYYY-MM-DD - TICKER - Stress Test]]
    ```
 4. Do NOT change the conviction level — flag it for the user to decide
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain, SKIP graph update below and increment `Graph deferred`. If starting or no chain, proceed.
 
-5. Update `_graph.md` (skip if it does not exist): add the new stress test research note to the thesis's `research:` list in the Thesis Adjacency Index. Update `date:` in frontmatter.
-
-**Graph validation**: After all graph edits, re-read the modified section and verify: (1) no unclosed `[[` brackets introduced, (2) `theses:` frontmatter count still within ±2 of actual `Theses/` file count. If either check fails: `⚠️ Graph may be corrupted — [specific failure]. Run /graph to rebuild.`
+> **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the stress test research note in the dependency map.
 
 ## Phase 5: Update _hot.md
 

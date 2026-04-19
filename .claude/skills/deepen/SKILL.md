@@ -132,11 +132,8 @@ Replace `Deepening [Section Name] — in progress` with `Deepened [Section Name]
    ---
    ```
 2. Add any new wikilinks to the thesis Related Research section
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain, SKIP graph update below and increment `Graph deferred`. If starting or no chain, proceed.
 
-3. Update `_graph.md` (skip if it does not exist): add new research note to the thesis's `research:` list in the Thesis Adjacency Index. If a new research note was created, add it. Update `date:` in frontmatter.
-
-**Graph validation**: After all graph edits, re-read the modified section and verify: (1) no unclosed `[[` brackets introduced, (2) `theses:` frontmatter count still within ±2 of actual `Theses/` file count. If either check fails: `⚠️ Graph may be corrupted — [specific failure]. Run /graph to rebuild.`
+> **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register any new research note in the dependency map.
 
 ## Phase 7: Update _hot.md
 

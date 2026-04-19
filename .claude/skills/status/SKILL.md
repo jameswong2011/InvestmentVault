@@ -226,29 +226,14 @@ Only runs if Step 5.1 set `edit_planned: true`. Apply the specific edit identifi
 
 > **Why the dry-run matters**: Unconditional snapshotting creates orphan snapshot files for no-op transitions (e.g., `active→monitoring` on a sector note that doesn't track monitoring status). These accumulate disk usage, clutter `/rollback` snapshot lists, and dilute cascade-detection signal. The dry-run keeps snapshots aligned with actual edits without sacrificing safety.
 
-## Step 6: Update _graph.md (skip if it does not exist)
+## Step 6: Graph update deferred
 
-> **Chain-aware**: Per CLAUDE.md Session Chain Protocol — if joining an active chain, SKIP graph update below and increment `Graph deferred`. If starting or no chain, proceed.
+`_graph.md` is now owned exclusively by `/graph`.
 
-### For conviction and non-closure status changes:
-- No graph changes needed (graph tracks links, not conviction/status metadata).
+- **Conviction and non-closure status changes**: no graph impact (graph tracks links, not conviction/status metadata).
+- **Status → closed**: after this skill (and after Step 7.5 archive move), run `/graph last` to remove the archived thesis from the Adjacency Index, reverse indexes, Cross-Thesis Clusters, and other theses' `cross-thesis:` fields. Research notes orphaned by the closure are moved to the Orphan list automatically by `/graph last` rebuild.
 
-### For status → closed:
-
-> **EXCEPTION — closure-immediate override**: Closure graph cleanup MUST run immediately, regardless of chain state. Mirrors `/rollback`'s recreated-file exception (one creates the entry, the other destroys it; both are structural). Rationale:
-> - Subsequent skills reading `_graph.md` would otherwise reference a thesis whose file is in `_Archive/`. `/sync` would attempt reads via missing-file resilience (warning every time), reverse indexes would still list the closed ticker, and other theses' `cross-thesis:` fields would still reference it.
-> - Chain-deferred Rule 9 cleanup (`/sync` Step 7) runs in default mode only and is skipped in ticker-scoped mode. A chain finalized via `/sync TICKER` (different ticker) leaves the closed thesis's adjacency entry persisting until an unscoped `/sync` runs. The exception prevents the inconsistency from accumulating in the first place.
->
-> When the exception fires inside an active chain: do NOT increment `Graph deferred` (closure is its own structural operation, not a deferred update). Mark step ✅ in `Steps:` normally. Append a note to the Step 8 report: `ℹ️ Graph cleanup applied immediately (closure exception) — not counted toward Graph deferred.`
-
-- Remove the archived thesis's entry from the Thesis Adjacency Index
-- Remove it from all reverse indexes (Macro → Theses, Sector → Theses)
-- Remove it from Cross-Thesis Clusters
-- Scan ALL remaining thesis entries in the Adjacency Index and remove the archived ticker from their `cross-thesis:` fields
-- Move any research notes that were ONLY linked from this thesis to the Orphan list
-- Update `date:` and `edges:` in frontmatter
-
-**Graph validation** (closure only): After all graph edits, re-read the modified section and verify: (1) no unclosed `[[` brackets introduced, (2) `theses:` frontmatter count still within ±2 of actual `Theses/` file count. If either check fails: `⚠️ Graph may be corrupted — [specific failure]. Run /graph to rebuild.`
+> **Why deferred**: The full-rebuild path of `/graph last` captures closure cleanup atomically from current vault state — no need for skill-level cleanup logic that previously required closure-immediate exceptions and chain-protocol carve-outs.
 
 ## Step 7: Update _hot.md
 
@@ -294,7 +279,7 @@ Do NOT attempt to undo the metadata updates. The intermediate state (`status: cl
 - **Sector note snapshot**: `[[_Archive/Snapshots/Sector Name (pre-status YYYY-MM-DD-HHMM)]]` OR "skipped (no matching sector note)" OR "skipped (no edit needed — sector note state already reflects transition)"
 - **Batch ID**: `status-YYYY-MM-DD-HHMM` (cascade-restore with /rollback if needed)
 - **Sector Note updated**: [sector name] — [what changed] OR "no edit needed (dry-run determined current state already matches the transition)"
-- **Graph updated**: [edges removed, orphans created] or "no graph changes needed"
+- **Graph reminder**: `→ Run /graph last` (closure only — conviction/non-closure changes have no graph impact)
 - **Archived** (closure only): `[[_Archive/TICKER - Company Name]]` or `⚠️ Archive move failed — see Step 7.5 output`
 - **Wikilink breakages** (closure only): `⚠️ [N] notes contain wikilinks to this thesis. Run /lint to review.`
 - **Trigger conflict** (if any): `⚠️ [quote conflicting trigger]`
