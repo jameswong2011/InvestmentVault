@@ -214,7 +214,14 @@ If any Tier A edits are planned for a thesis:
 - **Conviction drift detection**:
   > **Log Format Contract** — drift detection depends on exact prefix matching. **Authoritative registry**: `.claude/skills/_shared/log-prefixes.md`. `/lint` check #29 verifies registry consistency.
 
-  Scan Log entries backward from most recent, **excluding entries that begin with "Stress test"** (periodic adversarial reviews, not deterioration evidence). **Also exclude entries that begin with "Deepened" or "↳ CORRECTION: Deepened"** within 7 calendar days of a "Stress test" entry for the same ticker (gap-filling research, not independent evidence). **Also exclude entries that begin with "Cross-thesis closure:" or "Cross-thesis closures:"** — these are `/prune`-emitted notifications about a DIFFERENT thesis being closed; they carry no signal about this thesis's own conviction trajectory and must not count toward drift (registry entry §13). If a "Conviction reaffirmed" or "Status change: conviction" entry is found, anchor the window there — only count entries AFTER the anchor. If fewer than 3 entries exist after the anchor, drift detection has insufficient data and does not fire. If no anchor exists, use the last 5 entries as the window.
+  Scan Log entries backward from most recent, **unconditionally excluding entries that begin with these prefixes**:
+  - `"Stress test"` — periodic adversarial reviews, not deterioration evidence (registry §1).
+  - `"Deepening"` — `/deepen` Phase 5a provisional entry; carries no conviction sentiment and is a stuck-state marker if it lingers without a matching `"Deepened"` (registry §2). Counting it would consume a drift-window slot without adding signal, and on failed-`/deepen` states it would bias the window toward "no recent progress."
+  - `"Cross-thesis closure:"` and `"Cross-thesis closures:"` — `/prune`-emitted notifications about a DIFFERENT thesis being closed (registry §13). They carry no signal about this thesis's own conviction trajectory.
+
+  **Conditionally exclude entries that begin with `"Deepened"` or `"↳ CORRECTION: Deepened"`** within 7 calendar days of a `"Stress test"` entry for the same ticker (registry §3–§4) — gap-filling research chained to a stress test, not independent evidence.
+
+  **Anchor handling**: If a `"Conviction reaffirmed"` (registry §5) or `"Status change: conviction"` (registry §6) entry is found, anchor the window there — only count entries AFTER the anchor. If fewer than 3 entries exist after the anchor, drift detection has insufficient data and does not fire. If no anchor exists, use the last 5 **non-excluded** entries as the window (i.e., count backward through the Log skipping exclusions until 5 eligible entries accumulate, or until Log exhaustion).
   - conviction: high but 3+ entries in window weakening → `⚠️ Conviction drift — [N]/[window size] recent updates flagged headwinds. Reassess. To acknowledge after review: /status TICKER reaffirm [rationale]`
   - conviction: low but 3+ entries in window strengthening → `📈 Positive drift — [N]/[window size] recent updates supportive. Reassess. To acknowledge after review: /status TICKER reaffirm [rationale]`
 
@@ -305,7 +312,7 @@ If `_hot.md` does not exist (first run), create it with sections: `## Active Res
 6. **Recent Conviction Changes**: If conviction triggers hit (Step 3e ⚡) or drift was flagged (Step 3e ⚠️/📈), add an entry noting the flag.
 7. **Hard cap**: After writing, check total word count. If `_hot.md` exceeds 2,000 words, prune Sync Archive entries (oldest first) until under the cap.
 
-## Step 7: Touch Watermark
+## Step 7: Touch Watermark and (for /sync all) Write Graph-Rebuild Marker
 
 **Mandatory. Runs after ALL writes are complete, immediately before reporting.**
 
@@ -314,6 +321,20 @@ touch .last_sync
 ```
 
 This is the last mutation. If any prior step fails or the session is interrupted, the watermark remains unset and the next `/sync` will re-process the same changes — safe by default.
+
+### Graph-rebuild marker (`/sync all` only)
+
+**Skip for `/sync` (default) and `/sync TICKER`** — those modes touch a bounded subset of files, and `/graph last`'s incremental path handles their changes correctly via mtime watermark.
+
+**For `/sync all` only**: `/sync all`'s two-pass triage intentionally skips "No delta" theses — their mtimes are not advanced, so their adjacency entries never enter `/graph last`'s changed-thesis bucket. If the user deviates from the documented monthly-maintenance chain (which is `/sync all` → `/graph` full) and runs `/graph last` instead, the graph keeps baseline adjacency for every skipped thesis, masking drift. Signal the deviation explicitly:
+
+```bash
+touch .sync_all_fresh
+```
+
+`/graph` reads this marker at Watermark Resolution and forces a full rebuild (Steps 1–8) regardless of mode, then deletes the marker after a successful write. If the user does follow the recommended chain (`/graph` full), the full rebuild path also deletes the marker naturally.
+
+**Why a marker file (not poisoning `_graph.md date:`)**: `/sync` must not write `_graph.md` — the metadata-cull architecture concentrates graph ownership in `/graph`. A vault-root marker file keeps `/sync` content-only while giving `/graph` an unambiguous signal. The marker is cheap (zero-byte file), ignorable by every other skill, and self-cleaning on the next `/graph` run.
 
 ## Step 8: Report
 

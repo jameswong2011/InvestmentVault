@@ -26,10 +26,28 @@ Mode resolution: if `$ARGUMENTS` matches the literal string `last`, use `/graph 
 
 For `/graph last` and `/graph [N]`, check the watermark before any other work. If the check passes (no changes since watermark), skip the Incremental Path and Steps 1-8 entirely.
 
+### Pre-watermark: `.sync_all_fresh` marker
+
+Before resolving watermark, check for `.sync_all_fresh` at vault root. This marker is written by `/sync all` Step 7 and signals that the vault just underwent a brute-force sync whose two-pass triage may have left untouched ("No delta") theses' mtimes unchanged — incremental re-extraction would miss them.
+
+```bash
+ls .sync_all_fresh 2>/dev/null
+```
+
+If present:
+- Log: `⚠️ .sync_all_fresh marker detected — prior /sync all requires full rebuild. Falling back to Steps 1-8 (full path) regardless of mode.`
+- Skip the remaining watermark resolution and change detection.
+- Proceed to Step 1 (full rebuild).
+- Step 7's delete step handles marker cleanup after a successful full rebuild.
+
+If absent, continue with normal Watermark Resolution below.
+
 ### Watermark Resolution
 
-- **`/graph last`**: Read `_graph.md`. If the file does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1. If `date:` frontmatter is `1970-01-01` (poisoned by a prior `/sync all`), warn `⚠️ _graph.md poisoned by prior /sync all — full rebuild required` and proceed to Step 1. Otherwise, watermark = the `date:` value from frontmatter.
+- **`/graph last`**: Read `_graph.md`. If the file does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1. Otherwise, watermark = the `date:` value from frontmatter.
 - **`/graph [N]`**: Watermark = `today - N days`. If `_graph.md` does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1.
+
+> **Legacy note**: Earlier documentation referenced a `date: 1970-01-01` poisoning convention for `/sync all`. That convention was never implemented because `/sync` is architecturally forbidden from writing `_graph.md`. The `.sync_all_fresh` marker file above is the replacement mechanism — same outcome (forced full rebuild), clean ownership boundary.
 
 ### Change Detection
 
@@ -281,11 +299,15 @@ Sections:
 4. `## Cross-Thesis Clusters` — from Step 4
 5. `## Orphan Research Notes` — from Step 5
 
-**After the write succeeds**, delete `.graph_invalidations` if it exists:
+**After the write succeeds**, delete the two post-write marker files if they exist:
 ```bash
 rm -f .graph_invalidations
+rm -f .sync_all_fresh
 ```
-A full rebuild re-extracts every thesis, so any pending invalidations are implicitly satisfied — the file can be cleared. If the rebuild write fails, `.graph_invalidations` is preserved so the next `/graph` run still honors it. Report the delete outcome in Step 8.
+- **`.graph_invalidations`**: a full rebuild re-extracts every thesis, so any pending invalidations are implicitly satisfied — the file can be cleared.
+- **`.sync_all_fresh`**: a full rebuild re-extracts every thesis from source, which is exactly what the marker was requesting. Clearing it prevents subsequent `/graph last` runs from redundantly forcing another full rebuild.
+
+If the rebuild write fails, both files are preserved so the next `/graph` run still honors them. Report both delete outcomes in Step 8.
 
 ## Step 7.5: Validate Written Graph
 

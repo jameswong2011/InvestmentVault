@@ -73,10 +73,13 @@ consumers:
   - skill: /lint
     check: "#28 partial-write detection"
     role: signal (indicates /deepen may have failed mid-rewrite)
+  - skill: /sync
+    step: Step 3e drift detection
+    role: drift-exclusion (unconditional) — provisional entries carry no conviction sentiment and stuck "Deepening" entries (no matching "Deepened" or "↳ CORRECTION: Deepened") must not bias the drift window
 example: |
   ### 2026-04-17
   - Deepening Outstanding Questions — in progress. Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-deepen 2026-04-17-1530)]]
-breakage_if_changed: "/lint #28 partial-write detection misses failed deepen operations → truncated sections persist undetected."
+breakage_if_changed: "/lint #28 partial-write detection misses failed deepen operations → truncated sections persist undetected. /sync drift detection regresses: stuck Deepening entries consume slots in the last-5 window, potentially suppressing true drift signals by accident or producing biased windows on failed-/deepen states."
 ```
 
 ### 3. Deepened (finalized)

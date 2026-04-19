@@ -257,7 +257,37 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by 
 
 **Only runs for `status → closed` changes. Skip for conviction changes, non-closure status changes, and reaffirmations.**
 
-Move the closed thesis to `_Archive/`:
+### 7.5a: Pre-move archive-collision check
+
+`mv` on POSIX silently overwrites the destination if it exists. If the target archive path already contains a file from a prior closure of the same ticker-and-name, silent overwrite would destroy the old archive copy. Check before moving:
+
+```bash
+ls "_Archive/TICKER - Company Name.md" 2>/dev/null
+```
+
+If a file exists at the destination: pause and present options to the user — do NOT proceed silently:
+
+```
+⚠️ Archive-path collision: _Archive/TICKER - Company Name.md already exists from a
+   prior closure of this ticker-name combination. Running mv would silently
+   overwrite the old archive copy.
+
+Options:
+  (a) Timestamp-suffix the old archive, then proceed:
+      mv "_Archive/TICKER - Company Name.md" "_Archive/TICKER - Company Name (closed YYYY-MM-DD).md"
+      then mv the new thesis to the clean path.
+  (b) Timestamp-suffix the NEW archive path instead:
+      mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Company Name (closed YYYY-MM-DD).md"
+  (c) Cancel — leave thesis in Theses/ with status: closed; user resolves manually.
+
+Confirm (a/b/c):
+```
+
+Wait for user selection. If (c), report that metadata updates (sector note, `_hot.md`, invalidation list) already completed and the thesis remains in `Theses/` with `status: closed` pending manual archive resolution.
+
+### 7.5b: Move to `_Archive/`
+
+Move the closed thesis to `_Archive/` (using the path determined in 7.5a — either the clean target or a timestamp-suffixed path):
 ```bash
 mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Company Name.md"
 ```

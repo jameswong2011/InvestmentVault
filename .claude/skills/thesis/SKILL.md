@@ -11,12 +11,11 @@ allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * defuddle
 Create a comprehensive thesis note for $ARGUMENTS.
 
 ## Step 1: Duplicate Check
-Before creating anything, search the vault for existing notes on this ticker/topic:
-- Grep Theses/ for the ticker
-- Grep Research/ for the ticker
-- Grep _Archive/ for the ticker
-- If an active thesis already exists in Theses/, stop and tell the user. Suggest `/deepen` instead.
-- If an archived thesis is found in _Archive/, warn: `⚠️ Archived thesis found: [[_Archive/TICKER - Company Name]]. Review the closure rationale before recreating. Use /rollback to restore the previous thesis instead?` Wait for user confirmation before proceeding.
+Before creating anything, search the vault for existing notes on this ticker/topic. Active-thesis detection must use a **prefix glob**, not content grep — short tickers (e.g., `A` for Agilent, `T` for AT&T, `U` for Unity) match too many filenames under content grep, producing false-positive duplicate warnings that block legitimate thesis creation.
+
+1. **Active thesis check (prefix glob)**: `Glob Theses/TICKER - *.md`. If any file matches, an active thesis already exists — stop and suggest `/deepen TICKER` instead. Report the matching filename.
+2. **Archived thesis check (prefix glob)**: `Glob _Archive/TICKER - *.md` (non-recursive — snapshots live under `_Archive/Snapshots/` and must not match). If found, warn: `⚠️ Archived thesis found: [[_Archive/TICKER - Company Name]]. Review the closure rationale before recreating. Use /rollback TICKER to restore the previous thesis instead?` Wait for user confirmation before proceeding.
+3. **Research context grep (content search is appropriate here)**: Grep `Research/` for the ticker string to surface relevant existing research that the new thesis should link to. This is informational only — does not block creation. Prefer frontmatter `ticker: TICKER` match and `tags:` containing the ticker as whole-word matches over body-text mentions to keep short-ticker false positives out of the context set.
 
 ## Step 2: Vault Research
 - Read the relevant Sector Note to understand existing coverage and competitive context

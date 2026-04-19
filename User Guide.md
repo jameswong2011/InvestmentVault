@@ -683,10 +683,10 @@ update based on the sector note and recent research.
 
 ### Health check
 ```
-/lint                            # full vault — 34 checks
+/lint                            # full vault — 36 checks
 /lint TICKER                     # scoped — 14 checks on one thesis
 ```
-> **Full**: structural (orphaned notes, broken links, missing frontmatter, partial-write detection), freshness (stale theses, old metrics, pending sync), connection (unlinked mentions, disconnected macro, missing thesis candidates), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift, verbose log entries), snapshot hygiene, graph health (existence, staleness, missing/ghost entries, broken edges, reverse-index consistency, edge count), utility files (catalyst calendar staleness), cross-skill contracts (log-prefix registry alignment, sector resolution coverage), and the metadata-cull surfacing checks (#32 orphaned ticker references, #33 closed-thesis files in Theses/).
+> **Full**: structural (orphaned notes, broken links, missing frontmatter, partial-write detection), freshness (stale theses, old metrics, pending sync), connection (unlinked mentions, disconnected macro, missing thesis candidates), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift, verbose log entries), snapshot hygiene, graph health (existence, staleness, missing/ghost entries, broken edges, reverse-index consistency, edge count), utility files (catalyst calendar staleness, `_hot.md` schema integrity), cross-skill contracts (log-prefix registry alignment, sector resolution coverage), and the metadata-cull surfacing checks (#32 orphaned ticker references, #33 closed-thesis files in Theses/, #35 `_hot.md` schema drift, #36 prune batch-manifest state).
 > **Scoped**: frontmatter, sections, staleness, financial-data age, inactive research for ticker, conviction-evidence, bull/bear balance, template compliance, verbose logs, graph entry validity for this thesis, broken graph edges, partial-write detection, sector resolution. Faster for quick thesis checks.
 
 ### Portfolio pruning
@@ -808,7 +808,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | **See what's coming up** | `/catalyst` |
 | **Clean up weak positions** | `/sync` → `/graph last` → `/prune` (approve changes in-line) → `/surface` → `/graph last` |
 | **Run monthly maintenance** | `/sync all` → `/graph` (full) → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last` |
-| **Check vault health** | `/lint` (full, 34 checks) or `/lint TICKER` (scoped, 14 checks) |
+| **Check vault health** | `/lint` (full, 36 checks) or `/lint TICKER` (scoped, 14 checks) |
 | **Update graph after recent edits** | `/graph last` (everyday refresh, cheap) |
 | **Catch up after a week without /graph last** | `/graph 7` (or however many days) |
 | **Fix graph corruption** | `/graph` (full rebuild) |
@@ -941,7 +941,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 ### `/lint`
 ```
-/lint                                      # full vault: 34 checks
+/lint                                      # full vault: 36 checks
 /lint NVDA                                 # scoped: 14 checks on one thesis
 ```
 
@@ -1113,9 +1113,12 @@ Trade-off: you must run `/graph last` after `/sync` (or any thesis-modifying ski
 |---|---|---|
 | `/lint` flags "Graph staleness >7 days" | Forgot to run `/graph last` after recent `/sync` runs | `/graph 7` (or however many days behind) |
 | `/lint` flags "Graph staleness >30 days" | Significant gap | `/graph` (full rebuild) |
-| `/lint` #18 flags `_graph.md` `date: 1970-01-01` | A `/sync all` poisoned the date and `/graph` never ran | `/graph` (full rebuild) |
+| `/graph last` announces "`.sync_all_fresh` marker detected" | Normal — `/sync all` signals `/graph` to force full rebuild; marker self-cleans after the rebuild succeeds | No action |
 | `/lint` #32 — research note has `ticker:` matching no thesis | Research deposited before thesis exists, or for an archived thesis | `/thesis [TICKER]` to create, OR edit research frontmatter, OR accept as orphan |
 | `/lint` #33 — closed-thesis file still in `Theses/` | Failed `mv` from `/status active→closed` or `/prune` | `mv "Theses/[file]" "_Archive/[file]"` → `/graph last` (complete archive), OR `/status TICKER status closed→active [rationale]` → `/sync TICKER` → `/graph last` (reopen) |
+| `/lint` #35 — `_hot.md` missing a required section | Skill-specific Edit silently no-oped, or manual edit removed the heading | Add the missing `##` heading with a `- _pending_` bullet, OR delete `_hot.md` and let next `/sync` auto-create the full schema |
+| `/lint` #36 — prune manifest `status: in-progress` | A `/prune` run crashed mid-execution | `/rollback [any ticker from the manifest body]` → select `(pre-prune)` snapshot → cascade (a) to restore all files, then `rm` the manifest |
+| `/lint` #36 — prune manifest `status: completed` | Prune succeeded but Stage 5 cleanup failed | `rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md"` (safe — prune already finished) |
 | `/sync TICKER` works but default `/sync` misses propagation | Reopened thesis not yet in `_graph.md` | `/graph last` |
 | `/graph last` reports "Graph is up to date" but I just edited files | Files modified before midnight of `_graph.md` `date:` (rare timestamp ordering) | `/graph` (force full rebuild) or wait for next change to trigger |
 | Multiple syncs in a single day, each running `/graph last` | Idempotent but wasteful | Acceptable — daily watermark precision means later runs may re-process earlier files |

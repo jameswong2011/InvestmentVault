@@ -19,7 +19,7 @@ Parse `$ARGUMENTS` to determine scope:
 #2 (Missing MOC entry), #4 (Missing frontmatter), #5 (Empty critical sections), #6 (Stale active thesis), #7 (Old financial data), #8 (Inactive research for this ticker), #12 (Conviction-evidence mismatch), #13 (Bull/Bear asymmetry), #14 (Template drift), #15 (Verbose Log entries), #19 (Graph entry exists), #21 (Graph edge validity for this thesis), #28 (Partial write detection for this thesis + its sector note), #30 (Sector resolution coverage for this thesis).
 
 **Vault-wide only** (skipped in scoped mode):
-#1 (Orphaned research), #3 (Broken wikilinks), #9 (Unlinked mentions), #10 (Disconnected macro), #11 (Missing thesis candidates), #16 (Stale snapshots), #17–18 (Graph existence/staleness), #20 (Ghost entries), #22–24 (Graph consistency checks), #25 (Pending sync), #26 (Edge count accuracy), #27 (Catalyst calendar staleness), #29 (Log-prefix registry alignment), #32 (Orphaned ticker references), #33 (Closed-thesis files in Theses/), #34 (Sector frontmatter standardization).
+#1 (Orphaned research), #3 (Broken wikilinks), #9 (Unlinked mentions), #10 (Disconnected macro), #11 (Missing thesis candidates), #16 (Stale snapshots), #17–18 (Graph existence/staleness), #20 (Ghost entries), #22–24 (Graph consistency checks), #25 (Pending sync), #26 (Edge count accuracy), #27 (Catalyst calendar staleness), #29 (Log-prefix registry alignment), #32 (Orphaned ticker references), #33 (Closed-thesis files in Theses/), #34 (Sector frontmatter standardization), #35 (`_hot.md` schema integrity), #36 (Prune batch-manifest state).
 
 ---
 
@@ -27,8 +27,10 @@ Perform a comprehensive vault health audit:
 
 ## Structural Checks
 
-1. **Orphaned research notes** — Find Research/ notes not linked from ANY Thesis or Sector Note
-   - Method: List all Research/ files, then grep Theses/ and Sectors/ for references to each
+1. **Orphaned research notes** — Find Research/ notes not linked from ANY Thesis note's adjacency (Related Research section, Log entry wikilinks, or body references).
+   - Method: List all Research/ files, then grep `Theses/` for references to each. This is thesis-centric matching the authoritative definition used by `/graph` Step 5 (which populates `_graph.md`'s Orphan Research Notes section).
+   - **Definition contract**: The orphan predicate is "not linked from any thesis" — NOT "not linked from any thesis OR sector note." Sector-only-linked research notes are still orphans under this definition. This matches `/graph`'s thesis-centric adjacency model. Sector note references are advisory context; they do not rescue a note from orphan status.
+   - Rationale: `_graph.md` is the authoritative dependency map, and its orphan list is the source of truth for cleanup decisions. Divergent definitions would produce conflicting signals between `/lint` and `/graph`, leading users to chase ghost orphans (notes rescued by sector-only references in one view but flagged in another).
 
 2. **Missing MOC entries** — Find Theses/ notes not listed in their Sector Note
    - Method: For each thesis with `status: active` or `status: monitoring`, check its `sector:` frontmatter, verify it appears in that Sector Note
@@ -161,6 +163,32 @@ These checks validate `_graph.md` — the pre-computed dependency map that `/syn
       - 7–14 days old: Nice to Have — catalyst calendar aging, consider `/catalyst` refresh
       - ≤7 days: Pass
     - Also flag any thesis `## Catalysts` section containing only dates that have passed — these theses have no forward catalyst (overlaps with #5 but catches non-empty-yet-expired sections)
+
+35. **`_hot.md` schema integrity** — Verify `_hot.md` has the canonical section layout that skills depend on. Skills like `/sync`, `/status`, `/thesis`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/prune`, `/rollback`, and `/catalyst` all Edit specific sections by heading match. A missing heading causes those Edits to silently miss, leaving session-context updates unpersisted.
+    - **Precondition**: If `_hot.md` does not exist, report: Nice to Have — `ℹ️ _hot.md absent. First `/sync` will auto-create per CLAUDE.md Rule #9.` Then stop this check.
+    - **Frontmatter checks**:
+      - `date:` field present and in `YYYY-MM-DD` format → Important if malformed or missing.
+      - `tags:` field includes `meta` and `hot-cache` tokens → Nice to Have if missing or different.
+    - **Required `##` sections** (exact heading strings, case-sensitive):
+      - `## Active Research Thread`
+      - `## Latest Sync`
+      - `## Sync Archive`
+      - `## Recent Conviction Changes`
+      - `## Open Questions`
+      - `## Portfolio Snapshot`
+    - For each missing section: Important — `⚠️ _hot.md missing required section "## [Section Name]". Skills that Edit this section will silently no-op. Fix: add the heading with an empty body (`- _pending_` under it), or delete _hot.md and let the next /sync auto-create the full schema.`
+    - **Order check** (Nice to Have): canonical order is the list above. If sections are present but out of order, report: `🔖 _hot.md sections present but out of canonical order. Skills tolerate reordering; consider restoring canonical order for readability.`
+    - **Word-cap check**: if total word count > 2,000, report: Important — `⚠️ _hot.md exceeds 2,000-word cap ([N] words). Skills should auto-prune on next update; manual `/sync` or `/status` will truncate. If persists across multiple runs, the word-cap logic may have drifted — investigate.`
+    - **Vault-wide only** (skipped in scoped mode `/lint TICKER`).
+
+36. **Prune batch-manifest state** — Scan `_Archive/Snapshots/` for `_prune-manifest*.md` files. These are crash-recovery artifacts from `/prune` Stage 1.5; their presence indicates a prune operation state.
+    - **Precondition**: list `_Archive/Snapshots/_prune-manifest*.md` via Glob. If none: Pass (no manifest, clean state).
+    - For each manifest found, read frontmatter and classify by `status:`:
+      - **`status: in-progress`** → Critical — `❌ Failed /prune detected: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM)]] is still marked in-progress. The prune batch did not complete. Recovery: /rollback [any ticker in the "Intended Closures" or "Intended Upgrades" sections of the manifest body] → select (pre-prune) snapshot → cascade (a) to undo all completed actions. Then delete this manifest and re-run /prune if desired.`
+      - **`status: completed`** → Nice to Have — `🧹 Stale completed manifest: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM)]]. /prune finished successfully but Stage 5 cleanup did not delete this breadcrumb. Safe to delete manually: rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md". /clean also surfaces these.`
+      - **Missing or malformed `status:`** → Important — `⚠️ Prune manifest [filename] has no parseable `status:` frontmatter. Legacy format or corruption. Inspect manually.`
+    - Do NOT delete manifests from `/lint` — lint is read-only. Report only.
+    - **Vault-wide only** (skipped in scoped mode).
 
 ## Cross-Skill Contract Health
 

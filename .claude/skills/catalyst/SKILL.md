@@ -87,6 +87,20 @@ tags: [meta, catalyst-calendar]
 **Cross-Thesis Events**
 [Events affecting 3+ theses, with impact assessment for each]
 
-## Phase 5: Report
+## Phase 5: Update `_hot.md`
 
-Report to user: next 2 weeks of catalysts, any dangerous clusters, and the list of theses with no catalyst (these need attention or pruning).
+Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — those are `/sync`-owned). If `_hot.md` does not exist, create it per the CLAUDE.md Rule #9 schema.
+
+1. **Active Research Thread**: **Same-topic continuation** — if the current thread already covers catalyst-calendar work, append a dated line (`YYYY-MM-DD: refreshed catalyst calendar — [key takeaway, e.g. "2 dense weeks ahead, 3 theses with no catalyst"]`). **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write the new thread focused on catalyst state: `YYYY-MM-DD: refreshed catalyst calendar — next 2 weeks = [N] catalysts across [M] theses; [K] no-catalyst theses flagged for review.` Append `*Previous:*` line(s) — max 5, drop oldest.
+
+2. **Open Questions**: For every ticker flagged under "No Catalyst Identified" in the catalyst calendar output, add a question (if not already present): `- [[TICKER]]: what catalyst in next 90 days could reignite this thesis? (flagged by /catalyst YYYY-MM-DD)`. Dedupe against existing questions by ticker — do not double-list.
+
+3. **Recent Conviction Changes**: not touched by `/catalyst`.
+
+4. **Portfolio Snapshot**: not touched by `/catalyst`.
+
+**Word cap**: After edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+
+## Phase 6: Report
+
+Report to user: next 2 weeks of catalysts, any dangerous clusters, and the list of theses with no catalyst (these need attention or pruning). Include one line summarizing the `_hot.md` update: `_hot.md: Active Research Thread refreshed; [K] no-catalyst tickers added to Open Questions.`

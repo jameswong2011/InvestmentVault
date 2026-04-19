@@ -38,13 +38,28 @@ Parse $ARGUMENTS to determine mode:
    find _Inbox/ -maxdepth 1 -type f \( -name "*.md" -o -name "*.pdf" -o -name "*.csv" -o -name "*.txt" \) | sort
    ```
 2. If no files found, report "Inbox empty — nothing to process" and stop.
-3. **Process each file** through the Processing Pipeline below.
-4. **After each file is processed**, move the original to `_Inbox/processed/`:
+3. **Prior-processing guard**: for each inbox file, check whether `_Inbox/processed/[filename]` already exists. If it does, the file is a re-drop of something already processed — do NOT reprocess. Report `ℹ️ Skipped [filename] — already in _Inbox/processed/ from a prior run. Delete from _Inbox/ manually if intended to re-ingest fresh.` Move to the next file.
+4. **Process each remaining file** through the Processing Pipeline below (Steps 1–3).
+5. **Post-write verification gate** — after the Processing Pipeline writes the research note, re-read it and verify (see `Post-write verification` section below). Only on verification success proceed to step 6.
+6. **Move the original** to `_Inbox/processed/` (verification-gated):
    ```bash
    mkdir -p _Inbox/processed
    mv "_Inbox/[filename]" "_Inbox/processed/[filename]"
    ```
-5. After all files are processed, provide a batch summary.
+   If `mv` fails: report the failure clearly (`⚠️ Processing succeeded but mv failed for [filename] — research note [[Research/...]] exists. Move source manually: mv "_Inbox/[filename]" "_Inbox/processed/[filename]". Re-running /ingest will skip this file via dedup (source URL/path match) OR the prior-processing guard.`). The research note remains — re-running `/ingest` is safe because the source-URL/path dedup check in Step 1 of the Processing Pipeline will find the existing note and skip.
+7. After all files are processed, provide a batch summary including verification failures and mv failures as separate counts.
+
+### Post-write verification
+
+Re-read the just-written research note and check:
+1. YAML frontmatter parses (has opening `---` and closing `---`, valid key-value lines between).
+2. Required frontmatter fields present: `date:`, `tags:`, `source:`, `source_type:`.
+3. Body is non-empty and contains at least one `## ` section header.
+4. Last non-empty line does not end mid-sentence (doesn't terminate in a conjunction, preposition, comma, or opening bracket).
+
+If any check fails: do NOT move the source file. Report `⚠️ Partial-write detected for [[Research/filename]] — source [[_Inbox/filename]] left in place for reprocessing. Failure: [specific check that failed]. Delete the partial note and re-run /ingest, or complete the note manually.`
+
+This verify-before-commit pattern keeps the source file in `_Inbox/` as the authoritative "needs processing" marker until a complete research note exists. Partial notes are surfaced rather than silently committed.
 
 ---
 
