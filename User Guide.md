@@ -710,7 +710,7 @@ update based on the sector note and recent research.
 > **Three modes** — choose based on how much has changed since the last graph write:
 > - `/graph last` — the everyday command. Skips entirely if nothing changed; otherwise re-extracts adjacency only for changed thesis files and rebuilds reverse indexes from scratch. Cheap.
 > - `/graph [N]` — catch-up after periods without `/graph last`. Same incremental logic, but watermark is today minus N days.
-> - `/graph` (no args) — full rebuild. Use after `/sync all` (which intentionally doesn't update the graph), when `/lint` flags graph corruption, or when `_graph.md` is missing/poisoned. More expensive but always correct.
+> - `/graph` (no args) — full rebuild. Use after `/sync all` (which writes `.sync_all_fresh` so that even `/graph last` correctly escalates to a full rebuild; the explicit `/graph` in the monthly chain is still recommended for clarity), when `/lint` flags graph corruption, or when `_graph.md` is missing. More expensive but always correct.
 >
 > No content files modified by any mode.
 
@@ -833,7 +833,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 |-------|-----------|---------|----------|-----------|
 | `/ingest` | none \| URL \| file path | Research note(s) | — | `/sync` → `/graph last` |
 | `/sync` | none \| `all` \| TICKER | — | Theses, Sectors, Macro, `_hot.md` | `/graph last` |
-| `/status` | `TICKER field old→new reason` \| `TICKER reaffirm reason` | Snapshot (except draft→active, reaffirm) | Thesis frontmatter + log, Sector note, `_hot.md` | `/sync` then `/graph last` (closure especially needs `/graph last` to clean archived thesis from graph) |
+| `/status` | `TICKER field old→new reason` \| `TICKER reaffirm reason` | Snapshot (except draft→active, reaffirm), `.graph_invalidations` on closure | Thesis frontmatter + log, Sector note (Active Theses + Closed/Archived cleanup on reopen), `_hot.md` | `/sync` then `/graph last` (closure especially needs `/graph last` to clean archived thesis from graph + consume the invalidation list) |
 
 ### Analytical Skills
 
@@ -843,7 +843,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | `/stress-test` | TICKER | Research note (stress test) | Thesis log, `_hot.md` | `/status` (if conviction change needed) → `/sync` → `/graph last` |
 | `/scenario` | event description | Research note (scenario) | Thesis logs (major-impact), `_hot.md` | `/status` (affected positions) → `/sync` → `/graph last` |
 | `/compare` | TICKER vs TICKER [vs ...] | Research note (comparison) | Thesis logs, Sector note, `_hot.md` | `/sync` (if sector note changed) → `/graph last` |
-| `/catalyst` | none | `_catalyst.md` (overwrite) | — | `/deepen TICKER Catalysts` for gaps |
+| `/catalyst` | none | `_catalyst.md` (overwrite) | `_hot.md` (Active Research Thread + Open Questions for "no-catalyst" tickers) | `/deepen TICKER Catalysts` for gaps |
 
 ### Building Skills
 
@@ -858,8 +858,8 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | Skill | Arguments | Creates | Modifies | Follow-up |
 |-------|-----------|---------|----------|-----------|
 | `/lint` | none \| TICKER | — (report only) | — | Fix flagged issues — auto-fixable graph issues → `/graph last` (or `/graph` for corruption); content issues (#32, #33) require manual triage per the lint output |
-| `/prune` | none \| sector \| flag \| sector+flag | — | Theses (closures/upgrades), Sector notes, `_hot.md` | `/graph last` then `/surface` (find new opportunities) |
-| `/graph` | none \| `last` \| `[N]` (integer days) | `_graph.md` (full rebuild for no-args; incremental for `last` and `[N]`) | — | — |
+| `/prune` | none \| sector \| flag \| sector+flag | Batch manifest in `_Archive/Snapshots/` (auto-deleted on success), `.graph_invalidations` on closures | Theses (closures/upgrades), Sector notes, neighbor theses' Log (Stage 4.2 "Cross-thesis closure" entries), `_hot.md`; macro notes referencing closed theses surfaced (read-only) | `/graph last` then `/surface` (find new opportunities) |
+| `/graph` | none \| `last` \| `[N]` (integer days) | `_graph.md` (full rebuild for no-args; incremental for `last` and `[N]`). Consumes `.graph_invalidations` + `.sync_all_fresh` markers if present | — | — |
 | `/clean` | none \| days | — | Deletes old snapshots | — |
 | `/rollback` | none \| TICKER \| snapshot name | Pre-rollback safety snapshot | Restored note, Sector note, `_hot.md` | `/sync TICKER` → `/graph last` (CRITICAL for recreated-file rollbacks) |
 | `/rename` | `TICKER "New Name"` | Pre-rename snapshot | Thesis filename, inbound wikilinks across vault, `_graph.md` adjacency header, Sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, `_hot.md` mentions | — (atomic — `/rename` is the one exception that writes `_graph.md` directly) |
@@ -1062,7 +1062,7 @@ Persists context between sessions. Sections:
 - **Open Questions**: unresolved questions across theses
 - **Portfolio Snapshot**: high-level portfolio state
 
-Updated by: `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`. Hard-capped at 2,000 words.
+Updated by: `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`, `/catalyst`. Hard-capped at 2,000 words. `/lint` #35 verifies the canonical six-section schema on full audits — missing sections cause skill-edits to silently no-op.
 
 ### `_graph.md` — Vault Dependency Map
 Owned exclusively by `/graph`. Three modes:
@@ -1078,8 +1078,17 @@ Regenerated each time `/catalyst` runs. Timeline format: next 2 weeks (daily), w
 ### `.last_sync` — Watermark
 Touched at the end of every `/sync`. Used by the next `/sync` to detect which files changed since the last run. Never touched by `/graph`.
 
+### `.sync_all_fresh` — Brute-force-sync marker
+Touched at the end of `/sync all` only. Read by `/graph` at Watermark Resolution; if present, `/graph` forces a full rebuild regardless of mode (`last`, `[N]`, or no-args) and deletes the marker after a successful write. Reason: `/sync all`'s two-pass triage leaves "No delta" thesis mtimes untouched, so incremental `/graph last` would miss them. The marker closes that gap without letting `/sync` write `_graph.md` directly. No user action — `/graph` manages lifecycle.
+
+### `.graph_invalidations` — Post-closure neighbor list
+Written or appended by `/status` Step 7.6 (on `active→closed`) and `/prune` Stage 4.5 (on closure runs). Contains relative paths of thesis files that `[[wikilink]]`-referenced the just-archived thesis; their `cross-thesis:` adjacency entries need re-extraction to clear dangling references. Read by `/graph last`, folded into the changed-thesis bucket, and deleted only after a successful graph write. If the graph write fails, the file persists for the next run. Dedup is via `sort -u`; repeated closures safely accumulate.
+
+### `_Archive/Snapshots/_prune-manifest (prune-*).md` — `/prune` crash-recovery breadcrumb
+Written by `/prune` Stage 1.5 as a persistable state record of intended closures, upgrades, and sector-note targets for the batch. Frontmatter `status: in-progress` during Stages 2-4.5; flipped to `status: completed` (and `completed_date:` added) at Stage 5 before the skill attempts `rm`. Stage 5 verifies the flip landed before deleting — if verification fails, the manifest stays as `completed` anyway so `/lint` #36 and `/clean` Step 2a surface it as "safe to delete manually". On a genuine crash, the in-progress manifest is the user's pointer to the batch ID for `/rollback` cascade recovery. `/lint` #36's Critical message distinguishes "genuinely failed prune" from "successful prune with stuck status flip" — check the manifest's Intended Closures against actual archive state before running `/rollback`.
+
 ### `_Archive/Snapshots/` — Version Control
-Created automatically before destructive edits by: `/sync` (Tier A section edits), `/deepen`, `/status` (except draft→active), `/compare` (sector note changes), `/prune` (sector note changes), `/catalyst` (overwrites previous calendar), `/rollback` (pre-rollback safety net). Cleaned by `/clean`. Flagged for age by `/lint`.
+Created automatically before destructive edits by: `/sync` (Tier A section edits), `/deepen`, `/status` (except draft→active), `/compare` (sector note changes, per-sector batch IDs on cross-sector runs), `/prune` (sector note changes), `/catalyst` (overwrites previous calendar), `/rollback` (pre-rollback safety net), `/rename` (pre-rename snapshot). Cleaned by `/clean`, which now skips non-snapshot artifacts (missing `snapshot_date:` or `type:` set to something other than snapshot). Flagged for age by `/lint` #16 and for prune-manifest state by `/lint` #36.
 
 ---
 
@@ -1117,7 +1126,7 @@ Trade-off: you must run `/graph last` after `/sync` (or any thesis-modifying ski
 | `/lint` #32 — research note has `ticker:` matching no thesis | Research deposited before thesis exists, or for an archived thesis | `/thesis [TICKER]` to create, OR edit research frontmatter, OR accept as orphan |
 | `/lint` #33 — closed-thesis file still in `Theses/` | Failed `mv` from `/status active→closed` or `/prune` | `mv "Theses/[file]" "_Archive/[file]"` → `/graph last` (complete archive), OR `/status TICKER status closed→active [rationale]` → `/sync TICKER` → `/graph last` (reopen) |
 | `/lint` #35 — `_hot.md` missing a required section | Skill-specific Edit silently no-oped, or manual edit removed the heading | Add the missing `##` heading with a `- _pending_` bullet, OR delete `_hot.md` and let next `/sync` auto-create the full schema |
-| `/lint` #36 — prune manifest `status: in-progress` | A `/prune` run crashed mid-execution | `/rollback [any ticker from the manifest body]` → select `(pre-prune)` snapshot → cascade (a) to restore all files, then `rm` the manifest |
+| `/lint` #36 — prune manifest `status: in-progress` | EITHER (1) a genuinely crashed prune, OR (2) a successful prune whose Stage 5 status-flip silently missed | FIRST disambiguate: do the theses in the manifest's "Intended Closures" list live in `_Archive/` with `status: closed`? If yes → cause (2); manually edit the manifest frontmatter to `status: completed`, then `rm` it (do NOT rollback — it would destroy valid work). If theses are still in `Theses/` with original status → cause (1); `/rollback [any ticker from the manifest body]` → select `(pre-prune)` snapshot → cascade (a) to restore all files, then `rm` the manifest. The `/prune` final report's "flip verification failed" message is the cheap tell for cause (2). |
 | `/lint` #36 — prune manifest `status: completed` | Prune succeeded but Stage 5 cleanup failed | `rm "_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMM).md"` (safe — prune already finished) |
 | `/sync TICKER` works but default `/sync` misses propagation | Reopened thesis not yet in `_graph.md` | `/graph last` |
 | `/graph last` reports "Graph is up to date" but I just edited files | Files modified before midnight of `_graph.md` `date:` (rare timestamp ordering) | `/graph` (force full rebuild) or wait for next change to trigger |
