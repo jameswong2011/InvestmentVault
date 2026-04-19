@@ -75,8 +75,11 @@ sector: [from thesis]
 ticker: TICKER
 source: vault synthesis
 source_type: brief
+propagated_to: []
 ---
 ```
+
+> **Why `propagated_to: []`**: Briefs are derivative read-only summaries — they distill an existing thesis, not contribute new analytical evidence. Even though the brief's `ticker:` frontmatter would resolve to the thesis via `/sync`'s file-direct fallback, propagating a Log entry to that thesis would be circular ("brief written summarizing the thesis" — no new insight). The empty list is a **terminal dedup signal** to `/sync` Check 2 — the producer skill (this `/brief` run) explicitly declares "no propagation needed." See `/sync` Step 1 Check 2 for the empty-list semantics.
 
 Do NOT modify the original thesis note (the brief is a derivative product, not a replacement).
 

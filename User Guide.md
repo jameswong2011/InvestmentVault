@@ -608,6 +608,13 @@ to the top-down narrative. Save as a research note.
 ```
 > Two-pass triage (lightweight scan → deep read only exposed positions). Produces an impact matrix, second-order cascades, portfolio-level assessment, and recommended actions. Appends log entries to all Major-impact theses.
 
+### Reverse a previously-propagated scenario
+```
+/scenario reverse [[Research/2026-04-19 - Scenario - Fed cut]]
+/scenario reverse Fed cut
+```
+> Use when a prior scenario propagation no longer applies (event proved transient, supply chain fears unrealized, etc.). Appends a `Scenario REVERSED` Log entry to every previously-affected thesis with a user-provided rationale. The original `Scenario` Log entries remain (Tier 2 append-only); the reverse entry is the corrective signal. The scenario research note is preserved as historical record. Use this instead of `/rollback`, which cannot undo `/scenario` (no snapshots created).
+
 ### Adversarial stress test
 ```
 /stress-test TICKER
@@ -687,11 +694,11 @@ update based on the sector note and recent research.
 
 ### Health check
 ```
-/lint                            # full vault — 37 checks
+/lint                            # full vault — 38 checks
 /lint TICKER                     # scoped — 15 checks on one thesis
 ```
-> **Full**: structural (orphaned notes, broken links, missing frontmatter, partial-write detection), freshness (stale theses, old metrics, pending sync), connection (unlinked mentions, disconnected macro, missing thesis candidates), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift, verbose log entries), snapshot hygiene, graph health (existence, staleness, missing/ghost entries, broken edges, reverse-index consistency, edge count), utility files (catalyst calendar staleness, `_hot.md` schema integrity), cross-skill contracts (log-prefix registry alignment, sector resolution coverage), and additional integrity checks (#32 orphaned ticker references, #33 closed-thesis files in Theses/, #35 `_hot.md` schema drift, #36 prune batch-manifest state, #37 incomplete-rename marker).
-> **Scoped**: frontmatter, sections, staleness, financial-data age, inactive research for ticker, conviction-evidence, bull/bear balance, template compliance, verbose logs, graph entry validity for this thesis, broken graph edges, partial-write detection, sector resolution, **`_hot.md` schema integrity (#35 — always runs, vault-global concern)**, and `.rename_incomplete` marker (#37) when the marker's `ticker:` matches. Faster for quick thesis checks.
+> **Full**: structural (orphaned notes, broken links, missing frontmatter, partial-write detection), freshness (stale theses, old metrics, pending sync), connection (unlinked mentions, disconnected macro, missing thesis candidates), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift, verbose log entries), snapshot hygiene, graph health (existence, staleness, missing/ghost entries, broken edges, reverse-index consistency, edge count), utility files (catalyst calendar staleness, `_hot.md` schema integrity), cross-skill contracts (log-prefix registry alignment, sector resolution coverage), and additional integrity checks (#32 orphaned ticker references, #33 closed-thesis files in Theses/, #35 `_hot.md` schema drift, #36 prune batch-manifest state, #37 incomplete-rename markers, #38 state marker hygiene).
+> **Scoped**: frontmatter, sections, staleness, financial-data age, inactive research for ticker, conviction-evidence, bull/bear balance, template compliance, verbose logs, graph entry validity for this thesis, broken graph edges, partial-write detection, sector resolution, **`_hot.md` schema integrity (#35 — always runs, vault-global concern)**, and `.rename_incomplete.TICKER` marker (#37) when the marker exists for the scoped ticker. Faster for quick thesis checks.
 
 ### Portfolio pruning
 ```
@@ -809,6 +816,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | **Find new ideas** | `/surface` or `/surface [sector]` → `/graph last` |
 | **Find portfolio blind spots** | `/surface` (unscoped) → `/graph last` |
 | **Model a "what if"** | `/scenario [event description]` → `/sync` → `/graph last` |
+| **Withdraw a previously-propagated scenario** | `/scenario reverse [scenario-research-note]` → `/graph last` (no /sync needed — append-only Log entries) |
 | **See what's coming up** | `/catalyst` |
 | **Clean up weak positions** | `/sync` → `/graph last` → `/prune` (approve changes in-line) → `/surface` → `/graph last` |
 | **Run monthly maintenance** | `/sync all` → `/graph` (full) → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last` |
@@ -843,11 +851,11 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 | Skill | Arguments | Creates | Modifies | Follow-up |
 |-------|-----------|---------|----------|-----------|
-| `/surface` | none \| TICKER \| sector | Research note (surface scan) | `_hot.md` | `/graph last` then `/deepen` or `/thesis` for opportunities found |
+| `/surface` | none \| TICKER \| sector | Research note (surface scan; `propagated_to: []` — terminal signal blocking `/sync` Log spam to wikilinked theses) | `_hot.md` | `/graph last` then `/deepen` or `/thesis` for opportunities found |
 | `/stress-test` | TICKER | Research note (stress test) | Thesis log, `_hot.md` | `/status` (if conviction change needed) → `/sync` → `/graph last` |
-| `/scenario` | event description | Research note (scenario; `propagated_to:` set ONLY if all Major-impact Log appends succeed — atomicity rule) | Thesis logs (major-impact), `_hot.md` | `/status` (affected positions) → `/sync` (also retries any failed Major-impact appends) → `/graph last` |
+| `/scenario` | event description \| `reverse [scenario-note]` | Research note (scenario; `propagated_to:` set ONLY if all Major-impact Log appends succeed — atomicity rule). Reverse mode creates no new note — appends `Scenario REVERSED` Log entries to previously-affected theses | Thesis logs (major-impact, or REVERSED entries in reverse mode), `_hot.md` | Forward: `/status` (affected positions) → `/sync` → `/graph last`. Reverse: `/graph last` (no /sync needed — append-only) |
 | `/compare` | TICKER vs TICKER [vs ...] | Research note (comparison) | Thesis logs, Sector note, `_hot.md` | `/sync` (if sector note changed) → `/graph last` |
-| `/catalyst` | none | `_catalyst.md` (overwrite) | `_hot.md` (Active Research Thread + Open Questions for "no-catalyst" tickers) | `/deepen TICKER Catalysts` for gaps |
+| `/catalyst` | none | `_catalyst.md` (overwrite) | `_hot.md` (Active Research Thread + Open Questions for "no-catalyst" tickers) | `/deepen TICKER Catalysts` for gaps. Subsequent `/sync` auto-resolves the no-catalyst Open Questions if catalysts now exist (per `/sync` Step 6 #5b). |
 
 ### Building Skills
 
@@ -855,7 +863,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 |-------|-----------|---------|----------|-----------|
 | `/thesis` | TICKER | Thesis note (draft) | Sector note (if active), `_hot.md` | `/status draft→active` → `/stress-test` → `/sync` → `/graph last` |
 | `/deepen` | TICKER [section] | Snapshot + optional Research note | Thesis (target section + log), `_hot.md` | `/sync TICKER` → `/graph last` |
-| `/brief` | TICKER | Research note (brief) | — (read-only derivative) | `/graph last` to register the brief in the dependency map |
+| `/brief` | TICKER | Research note (brief; `propagated_to: []` — terminal signal blocking circular self-propagation) | — (read-only derivative) | `/graph last` to register the brief in the dependency map |
 
 ### Maintenance Skills
 
@@ -866,7 +874,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | `/graph` | none \| `last` \| `[N]` (integer days) | `_graph.md` (full rebuild for no-args; incremental for `last` and `[N]`). Consumes `.graph_invalidations` + `.sync_all_fresh` markers if present | — | — |
 | `/clean` | none \| days | — | Deletes old snapshots | — |
 | `/rollback` | none \| TICKER \| snapshot name | Pre-rollback safety snapshot | Restored note, Sector note, `_hot.md` | `/sync TICKER` → `/graph last` (CRITICAL for recreated-file rollbacks) |
-| `/rename` | `TICKER "New Name"` | Pre-rename snapshot; `.rename_incomplete` marker if any wikilink Edit fails after mv | Thesis filename, inbound wikilinks across vault, `_graph.md` adjacency header, Sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, `_hot.md` mentions | Pre-flight check (Step 3.5) aborts BEFORE mv if any file is unreachable; on post-mv Edit failure, `.rename_incomplete` marker tracks repair state and `/lint` #37 surfaces it. Re-run `/rename TICKER "new_name"` to retry failed Edits — skill detects marker and skips the already-completed mv. (atomic — `/rename` is the one exception that writes `_graph.md` directly) |
+| `/rename` | `TICKER "New Name"` | Pre-rename snapshot; `.rename_incomplete.TICKER` marker if any wikilink Edit fails after mv | Thesis filename, inbound wikilinks across vault, `_graph.md` adjacency header, Sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, `_hot.md` mentions | Pre-flight check (Step 3.5) aborts BEFORE mv if any file is unreachable; on post-mv Edit failure, `.rename_incomplete.TICKER` marker (per-ticker filename — multiple in-flight repairs coexist) tracks repair state and `/lint` #37 surfaces each independently. Step 1.4.5 cross-new_name guard prevents marker corruption when re-running with a different name. Re-run `/rename TICKER "[same_new_name]"` to retry failed Edits — skill detects marker and skips the already-completed mv. (atomic — `/rename` is the one exception that writes `_graph.md` directly) |
 
 ---
 
@@ -901,12 +909,19 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 ### `/scenario`
 ```
+# Forward mode (model and propagate a scenario)
 /scenario Fed cuts 150bps by year-end
 /scenario China invades Taiwan
 /scenario oil spikes to $150
 /scenario AI capex disappoints by 40%
 /scenario [any macro event with quantitative parameters]
+
+# Reverse mode (withdraw a previously-propagated scenario)
+/scenario reverse [[Research/2026-04-19 - Scenario - Fed cut]]
+/scenario reverse Research/2026-04-19 - Scenario - Fed cut.md
+/scenario reverse Fed cut                        # partial-name disambiguator
 ```
+> **Reverse mode**: appends a `Scenario REVERSED` Log entry to every previously-affected thesis. The original `Scenario` Log entries remain (Tier 2 append-only) — reverse mode adds a corrective signal rather than deleting history. The scenario research note is preserved as historical record. `/sync` Step 3e drift detection treats `Scenario REVERSED` as drift-exclusion (registry §14) so the reversal doesn't inflate drift signal on the affected theses.
 
 ### `/compare`
 ```
@@ -946,10 +961,14 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 ### `/lint`
 ```
-/lint                                      # full vault: 37 checks
-/lint NVDA                                 # scoped: 15 checks on one thesis (#35 _hot.md schema integrity now always runs)
+/lint                                      # full vault: 38 checks
+/lint NVDA                                 # scoped: 15 checks on one thesis (#35 _hot.md schema integrity always runs)
 ```
 > **#35 in scoped mode**: `_hot.md` schema integrity check runs in BOTH full and scoped modes. Schema drift causes silent skill no-ops across 11 skills writing to `_hot.md`; running #35 weekly via scoped lint catches drift within one weekly check rather than waiting for monthly full lint.
+>
+> **#37 multi-marker**: detects `.rename_incomplete.*` (per-ticker filenames). Multiple in-flight rename repairs surface independently. Scoped mode runs only for the specific ticker's marker if present.
+>
+> **#38 state marker hygiene**: ages `.sync_all_fresh` and `.graph_invalidations` against expected lifetimes. Surfaces "/graph hasn't run since /sync all" or "/graph last hasn't run since closure" before downstream skills silently use a stale graph.
 
 ### `/prune`
 ```
@@ -1090,8 +1109,14 @@ Touched at the end of `/sync all` only. Read by `/graph` at Watermark Resolution
 ### `.graph_invalidations` — Post-closure neighbor list
 Written or appended by `/status` Step 7.6 (on `active→closed`) and `/prune` Stage 4.5 (on closure runs). Contains relative paths of thesis files that `[[wikilink]]`-referenced the just-archived thesis; their `cross-thesis:` adjacency entries need re-extraction to clear dangling references. Read by `/graph last`, folded into the changed-thesis bucket, and deleted only after a successful graph write. If the graph write fails, the file persists for the next run. Dedup is via `sort -u`; repeated closures safely accumulate.
 
-### `.rename_incomplete` — Failed-rename repair marker
-Written by `/rename` Step 5.5 when one or more wikilink Edits fail mid-run after the file move has already completed. Contains the rename context (ticker, old_name, new_name, batch ID) and the list of files whose wikilinks could not be updated. Re-run `/rename TICKER "new_name"` to retry: Step 1.3's repair-detection exception skips the already-completed mv and only re-attempts the failed Edits. The marker shrinks monotonically across repair re-runs (resolved files drop out) until empty, then auto-deletes. `/lint` #37 surfaces the marker as Important until cleared. Pre-flight check at Step 3.5 prevents most occurrences by aborting BEFORE the mv when files are unreachable.
+### `.rename_incomplete.TICKER` — Failed-rename repair markers (per-ticker)
+Written by `/rename` Step 5.5 when one or more wikilink Edits fail mid-run after the file move has already completed. **Per-ticker filename**: each in-flight repair gets its own marker file (`.rename_incomplete.NVDA`, `.rename_incomplete.META`, etc.) so multiple concurrent rename repairs coexist without corrupting each other's state.
+
+Each marker contains the rename context (ticker, old_name, new_name, batch ID) and the list of files whose wikilinks could not be updated. Re-run `/rename TICKER "new_name"` to retry: Step 1.3's repair-detection exception skips the already-completed mv and only re-attempts the failed Edits. The marker shrinks monotonically across repair re-runs (resolved files drop out) until empty, then auto-deletes.
+
+`/rename` Step 1.4.5 includes a cross-new_name guard: if the marker exists with a different `new_name:` than the proposed re-run, the skill aborts with explicit options (finish prior rename first, manually resolve, or accept loss of repair state). Without this guard, two different new_names for the same ticker could overwrite each other's repair targets.
+
+`/lint` #37 globs `.rename_incomplete.*` and surfaces each marker as Important until cleared. Pre-flight check at Step 3.5 prevents most occurrences by aborting BEFORE the mv when files are unreachable.
 
 ### `_Archive/Snapshots/_prune-manifest (prune-*).md` — `/prune` crash-recovery breadcrumb
 Written by `/prune` Stage 1.5 as a persistable state record of intended closures, upgrades, and sector-note targets for the batch. Frontmatter `status: in-progress` during Stages 2-4.5; flipped to `status: completed` (and `completed_date:` added) at Stage 5 before the skill attempts `rm`. Stage 5 verifies the flip landed before deleting — if verification fails, the manifest stays as `completed` anyway so `/lint` #36 and `/clean` Step 2a surface it as "safe to delete manually". On a genuine crash, the in-progress manifest is the user's pointer to the batch ID for `/rollback` cascade recovery. `/lint` #36's Critical message distinguishes "genuinely failed prune" from "successful prune with stuck status flip" — check the manifest's Intended Closures against actual archive state before running `/rollback`.
@@ -1121,7 +1146,11 @@ Created automatically before destructive edits by: `/sync` (Tier A section edits
 |---|---|---|
 | `/lint` flags "Graph staleness >7 days" | Forgot to run `/graph last` after recent `/sync` runs | `/graph 7` (or however many days behind) |
 | `/lint` flags "Graph staleness >30 days" | Significant gap | `/graph` (full rebuild) |
-| `/lint` #37 — `.rename_incomplete` marker present | `/rename` completed the file move but failed wikilink Edits on N files (file lock, permission, concurrent edit) | Re-run `/rename TICKER "[new_name]"` — the skill detects the marker, skips the already-completed mv (Step 1.3 exception), and retries failed Edits. Marker shrinks across re-runs and auto-deletes when empty. |
+| `/lint` #37 — `.rename_incomplete.TICKER` marker present | `/rename` completed the file move but failed wikilink Edits on N files (file lock, permission, concurrent edit) | Re-run `/rename TICKER "[new_name]"` — the skill detects the marker, skips the already-completed mv (Step 1.3 exception), and retries failed Edits. Marker shrinks across re-runs and auto-deletes when empty. |
+| `/lint` #37 — multiple markers across different tickers | Multiple in-flight rename repairs (each ticker is independent) | Each marker is independent — re-run `/rename` for each ticker to clear its own marker. Per-ticker filename (`.rename_incomplete.NVDA`, `.rename_incomplete.META`) prevents cross-ticker corruption. |
+| `/rename` aborts with "In-flight rename conflict for TICKER" | Marker exists with a DIFFERENT `new_name:` than the proposed re-run (e.g., user tried `/rename NVDA "Nvidia Corp"` after a failed `/rename NVDA "Nvidia Inc"`) | Either: (a) finish prior rename first via `/rename TICKER "[marker.new_name]"`, OR (b) manually resolve the failed files in the marker and `rm .rename_incomplete.TICKER`, OR (c) accept loss of repair state (`rm .rename_incomplete.TICKER`) before re-running with the new name. |
+| `/lint` #38 — `.sync_all_fresh` >24h old | `/sync all` ran but `/graph` hasn't run since to consume the marker | Run `/graph` (full rebuild) — marker self-cleans on success. |
+| `/lint` #38 — `.graph_invalidations` >24h old | Closures (via `/status` or `/prune`) wrote pending neighbor re-extraction list, but `/graph last` hasn't run | Run `/graph last` — file consumed and deleted on success. |
 | `/ingest URL` reports "Content-quality gate FAILED" | URL fetch returned a paywall, CAPTCHA, anti-bot page, or near-empty content rather than the article | Resolve access (login, alternate URL, archive.org cache, manual download to `_Inbox/`) and re-run `/ingest`. The skill auto-deleted the contaminated research note to prevent `/sync` from propagating wrong content. |
 | `/scenario` report shows "Major-impact Log appends — failed: [...]" | One or more thesis Log appends failed during scenario propagation | `/sync` (default) — the file-direct fallback re-detects the failed targets via the research note's body wikilinks and re-attempts the append. The scenario research note's `propagated_to:` was deliberately not written so dedup doesn't skip the retry. |
 | `/graph last` announces "`.sync_all_fresh` marker detected" | Normal — `/sync all` signals `/graph` to force full rebuild; marker self-cleans after the rebuild succeeds | No action |

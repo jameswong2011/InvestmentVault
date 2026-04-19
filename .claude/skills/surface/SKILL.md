@@ -90,8 +90,11 @@ tags: [research, meta, surface-scan]
 status: active
 source: vault synthesis
 source_type: synthesis
+propagated_to: []
 ---
 ```
+
+> **Why `propagated_to: []`**: Surface scans are exploratory portfolio-level metadata, not per-thesis evidence. Their body wikilinks reference many theses for context, NOT to claim each one needs a Log entry. The empty list is a **terminal dedup signal** to `/sync` Check 2 — the producer skill (this `/surface` run) explicitly declares "no propagation needed." Without this, the next `/sync` would treat each body wikilink as a propagation target and spam Log entries across 10+ theses with shallow scan-derived insights. See `/sync` Step 1 Check 2 for the empty-list semantics.
 
 > **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the surface scan research note, new cross-thesis connections, and any implied-but-unwritten thesis candidates in the dependency map.
 

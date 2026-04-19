@@ -285,6 +285,27 @@ example: |
 breakage_if_changed: "Audit trail readability only."
 ```
 
+### 14. Scenario REVERSED
+
+```yaml
+prefix: "Scenario REVERSED"
+case_sensitive: true
+match_anchor: line-prefix
+producer:
+  skill: /scenario
+  step: Reverse Mode Flow R4
+  emits_when: user runs `/scenario reverse [scenario-research-note]`; one entry appended per previously-affected thesis
+consumers:
+  - skill: /sync
+    step: Step 3e drift detection
+    role: drift-exclusion (this entry signals a withdrawn prior propagation, not deterioration of the thesis's own conviction — it must not count toward drift)
+  - skill: audit-only (downstream readers see this as the corrective signal pairing with the original "Scenario " entry on a prior date)
+example: |
+  ### 2026-04-19
+  - Scenario REVERSED [[Research/2026-04-17 - Scenario - China Taiwan]]: original propagation withdrawn — geopolitical signal proved transient, supply chain fears unrealized. Original "Scenario" entry on 2026-04-17 remains as historical record per Tier 2.
+breakage_if_changed: "/sync drift detection would wrongly count Scenario REVERSED entries as a fresh drift signal (since they read as 'something happened to this thesis recently'), producing false ⚠️ Conviction drift warnings on theses that just had a scenario withdrawn. The whole point of reverse mode is to preserve audit trail without inflating drift; failing to exclude breaks that contract."
+```
+
 ### 13. Cross-thesis closure / Cross-thesis closures
 
 ```yaml

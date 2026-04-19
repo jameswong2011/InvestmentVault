@@ -35,11 +35,48 @@ If `$ARGUMENTS` lacks a quoted company name, has no ticker, or has extra argumen
 3. **Validate new name**:
    - Must not contain path-illegal characters: `/`, `\`, `:`, `*`, `?`, `"`, `<`, `>`, `|`.
    - Must not match an existing file at the new path in `Theses/`. If collision exists, stop: `⚠️ Target file already exists: Theses/TICKER - [new_name].md. Choose a different name or remove the existing file first.`
-     - **Exception — incomplete-rename repair**: If `.rename_incomplete` exists at vault root AND its frontmatter `ticker:` matches AND its `new_name:` equals the proposed new name, this is a repair re-run. The filename move from a prior failed run already produced `Theses/TICKER - [new_name].md`; the collision is expected. Skip the abort, log `ℹ️ Repair re-run detected — incomplete-rename marker exists for [ticker] → [new_name]. Skipping mv (already done), proceeding to retry failed wikilink rewrites from Step 5.`, then jump from Step 1 directly to Step 5 (skipping Steps 2 confirmation, 3 snapshot, 3.5 pre-flight, 4 mv, since those already ran in the prior attempt).
+     - **Exception — incomplete-rename repair**: If `.rename_incomplete.TICKER` exists at vault root AND its frontmatter `new_name:` equals the proposed new name, this is a repair re-run for the same in-flight rename. The filename move from a prior failed run already produced `Theses/TICKER - [new_name].md`; the collision is expected. Skip the abort, log `ℹ️ Repair re-run detected — .rename_incomplete.TICKER exists for [TICKER] → [new_name]. Skipping mv (already done), proceeding to retry failed wikilink rewrites from Step 5.`, then jump from Step 1 directly to Step 5 (skipping Steps 2 confirmation, 3 snapshot, 3.5 pre-flight, 4 mv, since those already ran in the prior attempt).
    - **Archive collision check**: Glob `_Archive/TICKER - [new_name].md` (non-recursive — ignore `_Archive/Snapshots/`). If a file matches, warn and require explicit confirmation before proceeding: `⚠️ Archive collision: _Archive/TICKER - [new_name].md already exists from a prior closure of this ticker. If you later close the renamed thesis, /status Step 7.5 would mv the new thesis to the same archive path and silently overwrite the old archive copy. Options:` followed by three explicit user choices — (a) Proceed anyway (accept future overwrite risk), (b) Rename the old archive first (e.g., `mv "_Archive/TICKER - [new_name].md" "_Archive/TICKER - [new_name] (closed YYYY-MM-DD).md"` before re-running `/rename`), (c) Cancel. Wait for user selection. Do NOT proceed silently.
 
 4. **Check no-op**: if `[old_name]` == `[new_name]` (case-sensitive after trim), stop: `⚠️ Old and new names match. Nothing to rename.`
-   - **Exception — incomplete-rename repair**: same logic as Step 1.3 — if `.rename_incomplete` exists for this ticker and the prior run's repair targets are still unresolved, the no-op check is bypassed. The skill enters Step 5 to retry the wikilink rewrites for the still-stale files listed in the marker.
+   - **Exception — incomplete-rename repair**: same logic as Step 1.3 — if `.rename_incomplete.TICKER` exists with `new_name:` matching the proposed new name and the prior run's repair targets are still unresolved, the no-op check is bypassed. The skill enters Step 5 to retry the wikilink rewrites for the still-stale files listed in the marker.
+
+### Step 1.4.5: Incomplete-rename cross-name guard (NEW — runs after the no-op check)
+
+If `.rename_incomplete.TICKER` exists at vault root, read its frontmatter and compare `new_name:` to the proposed new name from `$ARGUMENTS`:
+
+- **`marker.new_name == proposed_new_name`** → repair re-run (already handled by exceptions in Steps 1.3 and 1.4 above). Proceed to Step 5 directly.
+- **`marker.new_name != proposed_new_name`** → STOP with explicit guard. The marker tracks an in-flight rename to a DIFFERENT name; proceeding would corrupt the marker's repair-target context (failed_files were collected against `marker.new_name`, but proceeding would rename to `proposed_new_name`, leaving those failed wikilinks pointing to a name that no longer matches anything).
+
+   ```
+   ❌ In-flight rename conflict for TICKER:
+     Existing marker: .rename_incomplete.TICKER
+       prior new_name:     [marker.new_name]
+       failed_files:       [N entries — these need OldName → marker.new_name rewrites]
+       batch:              [marker.batch]
+
+     Proposed rename:
+       new new_name:       [proposed_new_name]
+
+   These conflict. The marker's failed wikilink rewrites were collected for
+   "[marker.new_name]" — proceeding with "[proposed_new_name]" would orphan those
+   repair targets (their wikilinks would still reference an obsolete OldName,
+   never NewName2, with no marker to track them).
+
+   Resolve before re-running /rename. Options:
+     (a) Finish the prior rename first:
+         /rename TICKER "[marker.new_name]"
+         (re-runs Step 5 wikilink rewrites for the still-failing files;
+         when all succeed, marker auto-deletes)
+     (b) Manually resolve the failed files listed in the marker, then
+         delete the marker (rm ".rename_incomplete.TICKER"), then re-run
+         this rename.
+     (c) Accept loss of in-flight repair state and explicitly delete the
+         marker (rm ".rename_incomplete.TICKER") before re-running. The
+         failed wikilinks will become broken (caught later by /lint #3).
+   ```
+
+   Do NOT proceed silently. Wait for user to take action externally and re-invoke `/rename`.
 
 5. **Survey inbound references** (read-only — for the confirmation prompt):
    - Grep vault (excluding `.git/` and `_Inbox/processed/` only) for the patterns in Step 5 below. `_Archive/Snapshots/` IS included in the survey because Step 5 rewrites snapshot bodies. Count live-file matches and snapshot-body matches separately so the user can see both counts in the confirmation.
@@ -160,11 +197,13 @@ Process each wikilink pattern. For each, grep the vault (excluding `.git/` and `
 
 **Failure handling**: If an `Edit` fails for any file (live or snapshot), do NOT abort the loop — continue with remaining files so the rename completes as much work as possible. Append the failed file path + reason to `failed_edits`. At the end of Step 5, if `failed_edits` is non-empty, write the **incomplete-rename marker** below.
 
-### Step 5.5: Write `.rename_incomplete` Marker (only if any Edit failed)
+### Step 5.5: Write `.rename_incomplete.TICKER` Marker (only if any Edit failed)
 
 If `failed_edits` is empty, skip this sub-step.
 
-If `failed_edits` is non-empty, write `.rename_incomplete` at vault root with the rename context, so `/lint` check #37 can surface this state and the user can repair without re-deriving what failed:
+If `failed_edits` is non-empty, write `.rename_incomplete.TICKER` at vault root with the rename context, so `/lint` check #37 can surface this state and the user can repair without re-deriving what failed.
+
+> **Per-ticker filename**: the marker filename includes the TICKER suffix so multiple in-flight repairs (across different tickers) coexist as separate marker files. Each `/rename` operation only reads/writes the marker for its own ticker. This eliminates cross-ticker corruption that a single shared marker would cause.
 
 ```markdown
 ---
@@ -204,9 +243,11 @@ DO NOT delete this marker manually unless you have verified all failed
 files have been repaired — `/lint` #37 uses it to track repair state.
 ```
 
-**Append-only on re-runs**: If `.rename_incomplete` already exists from a prior failed rename, READ it first. Merge the new failed_edits into the existing list (dedupe by file path), update the `batch:` field to the latest run's batch, and rewrite the file. Don't overwrite — accumulating across multiple repair attempts surfaces persistent problem files.
+**Append-only on re-runs (same-ticker, same-new_name only)**: If `.rename_incomplete.TICKER` already exists AND its `new_name:` matches the current run's new_name, READ it first. Merge the new failed_edits into the existing list (dedupe by file path), update the `batch:` field to the latest run's batch, and rewrite the file. Don't overwrite — accumulating across multiple repair attempts surfaces persistent problem files.
 
-**Lifecycle**: deleted automatically when a subsequent `/rename` run completes with all wikilink rewrites succeeding (i.e., new `failed_edits` is empty AND prior `.rename_incomplete`'s file list now resolves cleanly via re-attempted Edits). Until deletion, `/lint` #37 surfaces the marker as an Important issue. Do NOT include the failed list in the regular Step 11 report's success counts — they are tracked separately.
+**Cross-new_name conflict prevention**: if `.rename_incomplete.TICKER` exists with a different `new_name:`, Step 1.4.5 has already aborted the run with the in-flight conflict guard. This sub-step never runs in that scenario.
+
+**Lifecycle**: deleted automatically when a subsequent `/rename` run completes with all wikilink rewrites succeeding (i.e., new `failed_edits` is empty AND prior `.rename_incomplete.TICKER`'s file list now resolves cleanly via re-attempted Edits). Until deletion, `/lint` #37 surfaces the marker as an Important issue. Do NOT include the failed list in the regular Step 11 report's success counts — they are tracked separately.
 
 ## Step 6: Update Graph Adjacency Entry Header
 
@@ -275,8 +316,8 @@ Append to the renamed thesis's `## Log` section:
 - **Pre-flight check**: `passed ([N] files reachable)` or `aborted ([M] unreachable — no changes made)`
 - **Wikilinks rewritten (live files)**: [count] across [list of live file paths in Theses/, Sectors/, Macro/, Research/, _hot.md]
 - **Wikilinks rewritten (snapshot bodies)**: [count] across [list of `_Archive/Snapshots/*.md` paths whose bodies were updated]. Excludes the pre-rename snapshot created in Step 3.
-- **Wikilink update failures** (if any): [list files that failed Edit operations]. **`.rename_incomplete` marker**: `created` | `updated (appended new failures to existing marker)` | `n/a (no failures)`
-- **Repair status** (if `.rename_incomplete` was processed in this run):
+- **Wikilink update failures** (if any): [list files that failed Edit operations]. **`.rename_incomplete.TICKER` marker**: `created` | `updated (appended new failures to existing marker for same new_name)` | `n/a (no failures)`
+- **Repair status** (if `.rename_incomplete.TICKER` was processed in this run):
   - **Resolved this run**: [list paths that were retried successfully and removed from the marker]
   - **Still failing**: [list paths still in the marker — manual fix or next re-run]
   - **Marker state**: `cleared (all repairs succeeded — file deleted)` | `retained ([N] files still need repair)`
@@ -291,11 +332,13 @@ Append to the renamed thesis's `## Log` section:
 
 ### Marker auto-cleanup contract
 
-If this run started with `.rename_incomplete` present (repair re-run), at the end of Step 5 check whether all originally-listed failed files were successfully retried this run. If `failed_edits` after this run's retries is empty (every prior failure resolved AND no new failures), delete `.rename_incomplete`:
+If this run started with `.rename_incomplete.TICKER` present (repair re-run), at the end of Step 5 check whether all originally-listed failed files were successfully retried this run. If `failed_edits` after this run's retries is empty (every prior failure resolved AND no new failures), delete the marker:
 ```bash
-rm -f .rename_incomplete
+rm -f ".rename_incomplete.TICKER"
 ```
 Otherwise, rewrite the marker with the still-failing subset (drop resolved entries, keep unresolved, plus any new failures from this run). The marker thus shrinks monotonically across repair re-runs until empty, then disappears.
+
+> **Per-ticker scope**: this skill only touches `.rename_incomplete.TICKER` for the current run's TICKER. Markers for other tickers (e.g., `.rename_incomplete.META` while running `/rename SHOP`) are untouched. `/lint` #37 globs `.rename_incomplete.*` to surface every in-flight repair independently.
 
 ## Edge cases
 

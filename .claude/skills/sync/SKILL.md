@@ -62,8 +62,16 @@ Three checks, applied in order:
    - **File-direct fallback** (always runs to catch targets the graph may miss): resolve via (a) research note's `ticker:` frontmatter matching `Theses/[TICKER] - *.md`, (b) outbound `[[Theses/...]]` wikilinks in the research note body, (c) `tags:` containing ticker-shaped tokens (all-uppercase, 1-5 chars) that match `Theses/[TICKER] - *.md`.
    - Union the results. Dedup thesis filenames.
 
-2. **`propagated_to:` dedup hint**: If the research note has `propagated_to: [TICKER1, TICKER2, ...]` (set by `/stress-test`, `/scenario`, `/compare`, `/deepen`), treat each listed ticker as "already propagated by the producer skill" — **skip them for this run**. These tickers received Log entries directly from the producer; re-propagating would produce near-duplicate entries. Log: `ℹ️ Skipped [TICKER] — producer skill already propagated (in propagated_to).`
-   - **Exception — augmented targets**: Tickers in the Step 1 target set that are NOT in `propagated_to:` are new additions via wikilink/tag/ticker resolution. Log: `➕ Augmented propagation: [TICKER] — not in propagated_to but resolved via [wikilink | tag | ticker frontmatter].` Proceed to Check 3 for these tickers.
+2. **`propagated_to:` dedup hint**: Three cases based on the field's presence and content:
+
+   **Case 2a — Field absent** (`propagated_to:` not in frontmatter): no producer-side dedup info. Treat the entire Step 1 target set as needing propagation. Proceed to Check 3 for every ticker.
+
+   **Case 2b — Field present and non-empty** (e.g., `propagated_to: [TICKER1, TICKER2]`, set by `/stress-test`, `/scenario`, `/compare`, `/deepen`): treat each listed ticker as "already propagated by the producer skill" — **skip them for this run**. These tickers received Log entries directly from the producer; re-propagating would produce near-duplicate entries. Log: `ℹ️ Skipped [TICKER] — producer skill already propagated (in propagated_to).`
+     - **Exception — augmented targets**: Tickers in the Step 1 target set that are NOT in `propagated_to:` are new additions via wikilink/tag/ticker resolution. Log: `➕ Augmented propagation: [TICKER] — not in propagated_to but resolved via [wikilink | tag | ticker frontmatter].` Proceed to Check 3 for these tickers.
+
+   **Case 2c — Field present and empty** (`propagated_to: []`, set by `/surface`, `/brief`, or any future producer that emits exploratory/derivative notes): this is a **terminal dedup signal** — the producer explicitly declares "no thesis propagation needed for this note." Skip ALL targets resolved in Step 1 regardless of how they were resolved (graph adjacency, wikilink, ticker frontmatter, tag). Do NOT proceed to Check 3 for any ticker. Log once: `ℹ️ Skipped all propagation for [research-note] — empty propagated_to: signals producer-side terminal decision (e.g., surface scan, brief). No Log entries written, no augmented targets evaluated.`
+     - **Why empty-list is terminal, not "nothing yet propagated"**: a producer that wanted "propagate to all wikilink-resolved targets but I haven't done any myself" would simply omit the field (Case 2a). Setting `propagated_to: []` explicitly is a deliberate "this note's body wikilinks are contextual references, not propagation targets" signal. Required for `/surface` (whose scan notes wikilink 10+ theses for context) and `/brief` (derivative summary of an already-existing thesis). Without this case, `/sync` would Log-spam every wikilink-referenced thesis on every surface/brief.
+     - **Skill compliance**: producers must set `propagated_to: []` explicitly in frontmatter at note-creation time. `/surface` and `/brief` do so per their respective Phase 4 / Phase 4 specs. Future producers emitting exploratory notes must follow the same pattern.
 
 3. **Per-thesis idempotency check** (applies to every remaining ticker after Check 2): For each target thesis, scan its `## Log` section for any `### YYYY-MM-DD` entry **whose date equals today's date** that references this research note's wikilink. Match rule is strict calendar-day: compare `entry_date == today` as `YYYY-MM-DD` strings. If found, skip: `ℹ️ Skipped duplicate propagation for [TICKER] — Log already contains today's entry for [research-note].`
 
@@ -230,6 +238,7 @@ If any Tier A edits are planned for a thesis:
   - `"Stress test"` — periodic adversarial reviews, not deterioration evidence (registry §1).
   - `"Deepening"` — `/deepen` Phase 5a provisional entry; carries no conviction sentiment and is a stuck-state marker if it lingers without a matching `"Deepened"` (registry §2). Counting it would consume a drift-window slot without adding signal, and on failed-`/deepen` states it would bias the window toward "no recent progress."
   - `"Cross-thesis closure:"` and `"Cross-thesis closures:"` — `/prune`-emitted notifications about a DIFFERENT thesis being closed (registry §13). They carry no signal about this thesis's own conviction trajectory.
+  - `"Scenario REVERSED"` — `/scenario reverse`-emitted corrective entry that withdraws a prior scenario propagation (registry §14). Counting it would inflate drift on theses that just had a scenario withdrawn — the whole point of reverse mode is to preserve audit trail without producing new drift signal.
 
   **Conditionally exclude entries that begin with `"Deepened"` or `"↳ CORRECTION: Deepened"`** within 7 calendar days of a `"Stress test"` entry for the same ticker (registry §3–§4) — gap-filling research chained to a stress test, not independent evidence.
 
@@ -249,6 +258,25 @@ Max 2 lines. The log is an audit trail — the analysis lives in the updated sec
 ## Step 4: Update Sector Notes
 
 For each affected Sector Note:
+
+### 4.0: Per-source idempotency check (NEW — runs before snapshot/edit)
+
+Before snapshotting and editing a sector note, check whether this sector has already received propagation derived from the **same source insight** in this calendar day. This prevents double-propagation when a thesis appears in the changed-set because a prior `/sync TICKER` advanced its mtime — the prior run already propagated to this sector for the same research note, and re-propagating would either duplicate edits or trigger the analytical "no delta" branch wastefully.
+
+Method (per source research note triggering the sector update):
+1. **Read the sector note's `## Related Research` section.** Check if the source research note's wikilink (e.g., `[[Research/2026-04-19 - X - earnings]]`) is already present.
+   - **Wikilink absent** → first-time propagation; proceed to Step 4a snapshot + 4b edit.
+   - **Wikilink present** → ambiguous: was it added today by a prior run, or earlier from independent propagation? Continue to step 2.
+
+2. **Read the sector note's `## Log` section** (if present — sector notes have Log sections per the Sector Note template). Scan for any `### YYYY-MM-DD` entry where `entry_date == today` AND the entry references the source research note's wikilink.
+   - **Today-dated entry references this source** → sector already received propagation for this research note today (likely from a prior `/sync TICKER` in the same session). Skip both 4a snapshot and 4b edit. Log: `ℹ️ Skipped sector update [Sector Name] — Log already contains today's entry for [research-note] (likely propagated by earlier /sync TICKER in this session).`
+   - **No today-dated entry references this source** → propagation may have happened on an earlier day; proceed normally to 4a snapshot + 4b edit. The deep-analysis step in 4b will determine if there's actual new delta beyond the prior wikilink addition.
+
+3. **Atomicity-with-Step-3 note**: If a thesis change in Step 3 cascades into multiple sector notes (rare — usually 1 sector per thesis), apply this check independently per sector. Skipping one sector does not affect propagation to others.
+
+> **Why strict calendar-day matching here too**: same rationale as Step 1 Check 3 per-thesis idempotency — Log entries are date-only and producer skills always write today's date. Compare `entry_date == today` as `YYYY-MM-DD` strings. Cross-midnight runs are accepted as "slight redundancy; never data loss."
+
+> **Why Related Research presence alone isn't sufficient**: a research note may be added to `Related Research` listing without a corresponding analytical-section update (e.g., the user manually wikilinked it). The Log entry is the authoritative record that `/sync` (or another producer) actually propagated insight content. Checking both gates the edit on actual prior propagation, not just incidental wikilink presence.
 
 ### 4a: Pre-Edit Safety — Snapshot
 If edits will modify existing analytical text (competitive dynamics, value chain, sector observations, comparison narratives) — not just adding links:
@@ -320,7 +348,29 @@ If `_hot.md` does not exist (first run), create it with sections: `## Active Res
    - **[TICKER]**: [what changed] — [conviction impact]
    ```
 4. **Sync Archive**: Compress the outgoing Latest Sync into a single summary line and prepend to `## Sync Archive`. Keep max 3 archived entries.
-5. **Open Questions**: If any Outstanding Questions were resolved on theses (Step 3d), mark them resolved. If conviction triggers or drift were flagged (Step 3e), add the reassessment question.
+5. **Open Questions** — two-stage update:
+
+   **5a. Mark resolved Outstanding Questions** (existing behavior): If any Outstanding Questions were resolved on theses during Step 3d, mark them resolved in `_hot.md`'s `## Open Questions`. If conviction triggers or drift were flagged in Step 3e, add the reassessment question.
+
+   **5b. Auto-resolve `/catalyst` no-catalyst questions** (NEW): scan `_hot.md`'s `## Open Questions` section for entries matching the `/catalyst`-emitted pattern:
+   ```
+   - [[TICKER]]: what catalyst in next 90 days could reignite this thesis? (flagged by /catalyst YYYY-MM-DD)
+   ```
+   For each match, resolve the question if the linked thesis now has a forward catalyst. Method:
+   1. Extract TICKER from the question's wikilink.
+   2. Read `Theses/TICKER - *.md`'s `## Catalysts` section.
+   3. Parse each catalyst entry for a date token (any of: explicit `YYYY-MM-DD`, calendar quarter like `Q3 2026`, month like `October 2026`, or "next [N] weeks/months").
+   4. Resolve any parsed date to an absolute calendar date (use the start of the period for ranges/quarters/months — e.g., `Q3 2026` → `2026-07-01`, `October 2026` → `2026-10-01`).
+   5. If ANY parsed catalyst date is `>= today`, the thesis now has a forward catalyst → remove (or mark resolved with strikethrough) the Open Question entry.
+      - Removal format: simply delete the bullet line from `## Open Questions`.
+      - Resolution format (alternative if user prefers audit trail): replace with `- ~~[[TICKER]]: what catalyst in next 90 days could reignite this thesis?~~ → Resolved YYYY-MM-DD: forward catalyst now exists ([catalyst summary]).`
+   6. Use removal format by default; resolution format only if `_hot.md` already shows a pattern of `~~strikethrough~~ → Resolved` entries (preserves user's chosen audit style).
+
+   **Skip safety**: if a thesis has only past-dated catalysts (all catalyst dates < today), the question stays — the no-catalyst flag is still valid. If `## Catalysts` section is missing or unparseable, skip auto-resolution for that ticker (log: `ℹ️ Cannot auto-resolve /catalyst question for [TICKER] — Catalysts section missing or unparseable. Manual review needed.`).
+
+   **Why scoped to `/catalyst` pattern**: Other Open Question producers (`/surface`, `/scenario`, `/stress-test`, `/thesis`) generate freeform questions whose resolution criteria aren't programmatically detectable. Only the `/catalyst`-specific pattern has a clear, parseable resolution condition (forward catalyst exists). Generic accumulation pressure on `_hot.md` Open Questions remains for those — manual cleanup is required.
+
+   **Report**: list auto-resolved tickers in Step 8 under a new field `/catalyst Open Questions auto-resolved: [TICKER1, TICKER2, ...]` or omit if none.
 6. **Recent Conviction Changes**: If conviction triggers hit (Step 3e ⚡) or drift was flagged (Step 3e ⚠️/📈), add an entry noting the flag.
 7. **Hard cap**: After writing, check total word count. If `_hot.md` exceeds 2,000 words, prune Sync Archive entries (oldest first) until under the cap.
 
@@ -367,8 +417,10 @@ touch .sync_all_fresh
   - [TICKER]: [sections modified] — [conviction impact]. Snapshot: `[[_Archive/Snapshots/...]]` or N/A
 - **Sector Note updates**: [list with one-line summary each]
 - **Macro note updates**: [list with one-line summary each]
-- **Deduplication skips**: [list any tickers where propagation was skipped because Log already contained today's entry for the research note. If none, omit this line.]
-- **`propagated_to:` skips**: [list tickers skipped because the producer skill already marked them propagated via `propagated_to:` frontmatter. If none, omit this line.]
+- **Deduplication skips** (thesis-level, Step 1 Check 3): [list any tickers where propagation was skipped because Log already contained today's entry for the research note. If none, omit this line.]
+- **Sector idempotency skips** (Step 4.0): [list any sector notes where propagation was skipped because Log already contained today's entry for the source research note. If none, omit this line.]
+- **`propagated_to:` skips**: [list tickers skipped because the producer skill already marked them propagated via `propagated_to:` frontmatter (Case 2b). If none, omit this line.]
+- **Terminal-skip notes**: [list research notes where ALL targets were skipped because the note had explicit `propagated_to: []` (Case 2c — surface scans, briefs, etc.). If none, omit this line.]
 - **Augmented targets**: [list tickers NOT in a research note's `propagated_to:` but resolved via wikilink/tag/ticker frontmatter — these are the minor-impact or cross-referenced theses that a producer skill intentionally excluded but that `/sync` correctly picks up. If none, omit this line.]
 - **`propagated_to:` updates**: [list research notes whose `propagated_to:` frontmatter was extended with newly propagated tickers. If none, omit this line.]
 - **Closed-status skips**: [list TICKERs skipped because status: closed + file still in Theses/. If none, omit this line.]
@@ -376,6 +428,7 @@ touch .sync_all_fresh
 - **Unresolved research notes**: [list any research notes where no propagation target was found. If none, omit this line.]
 - **Conviction triggers hit**: [list any]
 - **Conviction drift flags raised**: [list any]
+- **`/catalyst` Open Questions auto-resolved** (Step 6 #5b): [list TICKERs whose no-catalyst question was removed because the thesis now has a forward catalyst. If none, omit this line.]
 - **New connections discovered**: [any surprising links worth noting]
 - **Watermark**: `touched (default/all)` | `untouched (ticker-scoped mode preserves baseline for next default /sync)` | `epoch placeholder created (was absent — first-run state preserved)`
 

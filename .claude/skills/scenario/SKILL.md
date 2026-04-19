@@ -11,7 +11,109 @@ allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * defuddle
 Map the impact of a macro scenario across every thesis, sector, and position in the vault.
 
 ## Arguments
-$ARGUMENTS should describe the scenario (e.g., "Fed cuts 150bps", "China invades Taiwan", "oil spikes to $150", "AI capex disappoints by 40%", "major cybersecurity breach at a hyperscaler"). If empty, ask the user what scenario to model.
+
+Two modes:
+
+**Forward mode** (default): `$ARGUMENTS` describes the scenario (e.g., "Fed cuts 150bps", "China invades Taiwan", "oil spikes to $150", "AI capex disappoints by 40%", "major cybersecurity breach at a hyperscaler"). If empty, ask the user what scenario to model.
+
+**Reverse mode**: `$ARGUMENTS` starts with the literal word `reverse` followed by a scenario research note identifier — either the wikilink (`[[Research/2026-04-19 - Scenario - Fed cut]]`), the path (`Research/2026-04-19 - Scenario - Fed cut.md`), or a partial-name disambiguator (e.g., `reverse Fed cut`).
+
+- `/scenario reverse [[Research/2026-04-19 - Scenario - Fed cut]]`
+- `/scenario reverse Research/2026-04-19 - Scenario - Fed cut.md`
+- `/scenario reverse Fed cut` (skill resolves via grep on `Research/`)
+
+Reverse mode appends a `Scenario REVERSED` Log entry (per `_shared/log-prefixes.md` §14) to every thesis previously affected by the named scenario, signaling that the prior propagation should be treated as no longer applicable. The scenario research note is **not deleted** — it remains as historical record. This respects CLAUDE.md Tier 2 append-only Log convention while providing an audit-trail-preserving undo path.
+
+If `$ARGUMENTS` matches the reverse mode signature, jump to **Reverse Mode Flow** below. Otherwise, proceed to Phase 1 (forward mode).
+
+## Reverse Mode Flow
+
+**Skip Phases 1–6 entirely. Reverse mode is a separate, bounded operation.**
+
+### R1: Locate the scenario research note
+
+1. Parse the argument (wikilink, path, or partial name).
+2. If wikilink or path: read directly. Validate it exists under `Research/` and has `source_type: scenario`.
+3. If partial name: glob `Research/*Scenario*.md` and grep frontmatter for `source_type: scenario`. Match the filename or "Scenario - [name]" portion against the partial. If multiple match, present the list and ask user to pick. If none, stop with `❌ No scenario research note matching '[partial]' found in Research/.`
+4. Read the resolved note in full.
+
+### R2: Identify previously-affected theses
+
+Two source-of-truth sets (use the union, deduplicate):
+
+- **From `propagated_to:` frontmatter**: if present, every listed ticker received a Major-impact Log entry from the original `/scenario` run.
+- **From body wikilinks**: parse the "Related Notes" section (or any `[[Theses/TICKER - Name]]` wikilinks in the body). These were referenced as Major OR Minor exposure.
+
+Build the candidate target set as the union. Then verify each target actually has a Log entry referencing this scenario:
+
+```
+For each candidate ticker:
+  Read Theses/TICKER - *.md's ## Log section.
+  Search for any "Scenario [[Research/...scenario-name...]]" entry.
+  If found, add to the affected_theses list with the Log entry's date.
+  If not found, exclude from the reverse target set (this thesis was a body wikilink but never received a Log entry — nothing to reverse).
+```
+
+### R3: Confirm reverse intent (Tier 3 — mandatory)
+
+```
+Proposed scenario reversal:
+  Scenario: [[Research/YYYY-MM-DD - Scenario - Name]]
+  Originally propagated: [N] theses
+  Will append "Scenario REVERSED" Log entry to: [list of affected_theses with dates]
+
+  Rationale (required): [user provides one-line reason]
+
+  This does NOT delete the scenario research note (preserved as history).
+  This does NOT remove the original "Scenario" Log entries (Tier 2 append-only).
+  Each affected thesis will receive a single new Log entry signaling reversal.
+
+  /sync drift detection (Step 3e) treats "Scenario REVERSED" as drift-exclusion
+  per _shared/log-prefixes.md §14.
+
+Confirm? (y/n)
+```
+
+Wait for user confirmation AND the rationale text. If declined, exit.
+
+### R4: Append reversal Log entries
+
+For each affected thesis, append (max 2 lines per CLAUDE.md):
+
+```
+### YYYY-MM-DD
+- Scenario REVERSED [[Research/YYYY-MM-DD - Scenario - Name]]: original propagation withdrawn — [user rationale]. Original "Scenario" entry on [original-date] remains as historical record per Tier 2.
+```
+
+> **Drift coupling**: `/sync` Step 3e excludes entries starting with `"Scenario REVERSED"` from drift detection. **Registry entry**: `.claude/skills/_shared/log-prefixes.md` §14. Do not change this prefix without updating the registry and `/sync`; `/lint` check #29 flags drift.
+
+**Failure handling**: same per-thesis loop as forward Phase 6.2 — track succeeded/failed lists. Do NOT abort on individual append failure; continue and report failures in R6.
+
+### R5: Update _hot.md
+
+Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by `/sync`):
+
+1. **Active Research Thread**: append a dated line: `YYYY-MM-DD: REVERSED scenario "[name]" across [N] theses — [user rationale]`. Do NOT compress prior thread (this is a corrective action, not a new research direction).
+2. **Recent Conviction Changes**: add an entry: `- Scenario REVERSED: [[Research/...scenario-name]] across [N] theses — [user rationale]`
+3. **Open Questions**: if the original scenario added questions ("research questions the scenario exposed"), surface them with a strikethrough resolution note: `- ~~[original question]~~ → Resolved YYYY-MM-DD: scenario reversed.`
+
+**Word cap**: standard 2,000-word check; prune Sync Archive (oldest first) if over.
+
+### R6: Report
+
+- **Mode**: `reverse`
+- **Scenario**: `[[Research/YYYY-MM-DD - Scenario - Name]]` (preserved on disk — not deleted)
+- **Theses with reversal Log entry appended**: [count] — [list]
+- **Failed appends** (if any): [list with reasons]
+- **`_hot.md` updated**: Active Research Thread + Recent Conviction Changes + Open Questions (if applicable)
+- **No graph impact** — Log appends only.
+- **Follow-up**: `→ Run /graph last to register the (already-changed-mtime) thesis files in incremental adjacency. /status changes (if any conviction was reversed alongside) are separate operations the user must run explicitly.`
+
+**Stop here. Do not continue to forward mode phases.**
+
+---
+
+## Forward Mode (Phases 1–6)
 
 ## Phase 1: Define the Scenario
 - State the scenario precisely with quantitative parameters where possible
