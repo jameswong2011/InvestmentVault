@@ -98,6 +98,16 @@ Broadcom's AI revenue reached **$20B in FY2025** (up 65%), with five XPU custome
 
 However, transition from pilot to production remains the central challenge. BCG research indicates only **26% of companies** have capabilities to move beyond proof-of-concept to tangible value. Two-thirds of organizations have moved 30% or fewer GenAI experiments to production. A Bain study identifies a **$2 trillion revenue gap**—the difference between what AI companies will need to generate annually by 2030 to justify compute infrastructure and current trajectories. Critically, **60% of enterprise GenAI spending** still comes from "innovation budgets" (experimental, not permanent), raising questions about durability.
 
+### 2026-04-19 Update: TSM Taiwan Tail as Binary Geopolitical Risk on AI Capex
+
+New data from [[Research/2026-04-19 - TSM - Stress Test]] adds a binary geopolitical tail on top of the existing valuation-compression and monetization-gap risks the AI bubble thesis already catalogs:
+
+- **Taiwan single-factor exposure quantified**: 92% of global leading-edge logic (N5/N3/N2), 100% of CoWoS advanced packaging, ~95% of AI accelerator wafer supply sit within PLA strike range. NVDA Blackwell/Rubin/Feynman, AAPL A-series/M-series, AVGO XPU custom ASICs, AMD MI400 — all run on TSMC Taiwan fabs with no qualified second source.
+- **Invasion/destruction downside**: "Destroy the fabs" US contingency policy (Bloomberg Mar 2023; former NSA O'Brien on-record) + Taiwan Parliamentary "scorched earth" defense plan imply residual TSMC EV under invasion ≈ $80-120B (Arizona+Japan+Germany only) vs current ~$1.02T = **-85-92% permanent impairment**. Multi-year equipment drought (ASML EUV 60 units/yr global vs 50+ units in Taiwan fabs) gates rebuild to 5-7yr.
+- **Blockade scenario is higher probability and severe alone**: Joint Sword 2024 rehearsed effective encirclement. 60-90 day blockade = $100B+ TSMC revenue loss + permanent customer-share transfer to Samsung/Intel during 2-4yr re-qualification window.
+- **Xi 2027 PLA readiness deadline** (CIA Burns testimony, renewed Jan 2026) coincides with AI capex bubble horizon. Silicon shield theory fails the Ukraine precedent — Nord Stream 2 ($11B Gazprom/European co-investment) did not deter invasion; $165B US co-investment in TSMC Arizona is not obviously a deterrent either.
+- **Implication for AI bubble thesis**: the "durable capex cycle" assumption (AI capex continues through 2028-2030 to generate required revenue) carries a binary geopolitical override. A Taiwan event hard-stops NVDA/AVGO/AMD/AAPL silicon supply for 2-4yr, independent of AI monetization progress. Defense stocks (LMT/RTX/NOC) move as hedge proxies — Pelosi 2022 visit: LMT+RTX+NOC +4-8% in 72hr while TSM -6% (market prices the divergence correctly in event-driven moves but not in baseline multiples).
+
 ---
 
 ## Related Theses

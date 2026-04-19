@@ -160,6 +160,9 @@ VMware's vSphere/VCF platform remains the dominant on-premise virtualization lay
 
 ## Log
 
+### 2026-04-19 (TSM stress test sync)
+- [[Research/2026-04-19 - TSM - Stress Test]]: TSM Taiwan tail = -85-95% permanent impairment vs thesis-modeled -30%. AVGO AI ASIC volume (Google TPU, Meta MTIA, OpenAI/Anthropic XPU designs) runs on TSMC N3/N2 Kaohsiung — identical foundry-exit shock as NVDA. Joint Sword 2024 blockade rehearsal + "destroy the fabs" US contingency imply 2-4yr customer-transfer window to Samsung/Intel if scenario materializes — XPU revenue tail re-quantified; conviction unchanged (TSMC concentration already directionally priced).
+
 ### 2026-04-19 (sync)
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]: Added Huawei to Industry Context as architectural-pattern validator (in-house HBM at 128GB/1.6 TB/s, Atlas 524 EFLOPS supercluster, ByteDance $5.6B). Confirms vertically integrated non-Nvidia AI compute is commercially viable at scale — supports XPU thesis directionally. Snapshot: [[_Archive/Snapshots/AVGO - Broadcom (pre-sync 2026-04-19-1354)]] — conviction unchanged (high).
 

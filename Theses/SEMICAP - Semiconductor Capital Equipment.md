@@ -196,5 +196,6 @@ The recommended allocation prioritizes structural compounders trading below peer
 
 ## Log
 
+- **2026-04-19 (TSM stress test sync):** [[Research/2026-04-19 - TSM - Stress Test]]: TSM Taiwan tail = -85-95% permanent impairment vs thesis-modeled -30%. LAM/AMAT/KLAC leading-edge revenue ≈ 15-20% to TSMC Taiwan (N2/A16 ramp + CoWoS Kaohsiung); rebuild in US/JP/DE consumes 100% of ASML's EUV global output for 12-18mo — conviction unchanged, sector's single-largest-customer tail re-quantified as multi-year equipment drought scenario.
 - **2026-04-16:** [[Sectors/NAND Flash & Storage]]: NAND Q2 2026 contract prices +70-75% QoQ; supply deficit persists through 2027+ (no greenfield until Micron Fab 10B H2 2028) — conviction unchanged, reinforces NAND equipment demand durability for LRCX/TEL.
 - **2026-04-15:** [Thesis created]: Synthesized Grok/Claude/Gemini/ChatGPT exports + web research. WFE $135B CY2026, TSMC CoWoS 35K→130K wafers/month, KLA adv. packaging $950M CY25. Core conviction: KLA and AMAT highest risk-adjusted; LRCX correctly priced; TEL and photonics test names are overlooked asymmetric plays.

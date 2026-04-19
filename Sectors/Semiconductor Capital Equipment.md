@@ -228,4 +228,5 @@ Equipment and foundry services enabling the copper-to-optical transition. See al
 
 ## Log
 
-_pending — populated by /sync, /compare, etc. as the sector note evolves._
+### 2026-04-19 (TSM stress test sync)
+- [[Research/2026-04-19 - TSM - Stress Test]]: TSM Taiwan tail (-85-95% permanent impairment scenario) = loss of largest single leading-edge equipment buyer. ASML EUV global output 60 units/yr vs TSMC Taiwan installed base 50+; full replication for US/JP/DE rebuild consumes 100% of global output 12-18mo. CoWoS Kaohsiung/Chunan = 100% of BESI hybrid-bonding + AMAT packaging pipeline exposure. Sector's TSMC-concentration risk structurally higher than current thesis models — not hedged by Arizona buildout through 2030 (5-8% of capacity).

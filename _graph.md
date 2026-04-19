@@ -1,13 +1,15 @@
 ---
-date: 2026-04-19
+date: 2026-04-20
+last_graph_write: 2026-04-19T15:13:52Z
+graph_mode: last
 type: vault-graph
 auto_updated_by: /graph
-nodes: 190
-edges: 357
-theses: 39
+nodes: 192
+edges: 371
+theses: 40
 sectors: 13
 macro: 6
-research: 132
+research: 133
 orphans: 19
 ---
 
@@ -35,13 +37,13 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/Semiconductors]]
 - **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/PSTG - Pure Storage]]
-- **research:** [[Research/2025-11-27 - Broadcom Data Center Opportunity]], [[Research/2025-11-27 - Broadcom Equity Research Framework]], [[Research/2025-11-27 - Broadcom Ethernet Networking Position]], [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]
+- **research:** [[Research/2025-11-27 - Broadcom Data Center Opportunity]], [[Research/2025-11-27 - Broadcom Equity Research Framework]], [[Research/2025-11-27 - Broadcom Ethernet Networking Position]], [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]]
 
 ### BESI - BE Semiconductor Industries
 - **sectors:** [[Sectors/Semiconductors]]
 - **macro:** —
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]]
-- **research:** [[Research/2025-07-06 - BESI - Analyst Estimates and Valuation Trends]], [[Research/2025-11-01 - BESI - BESI Role in HBM Manufacturing]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas]], [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]], [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation]], [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact]], [[Research/2026-04-15 - BESI - Hybrid Bonding Market Projections]]
+- **research:** [[Research/2025-07-06 - BESI - Analyst Estimates and Valuation Trends]], [[Research/2025-11-01 - BESI - BESI Role in HBM Manufacturing]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas]], [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]], [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation]], [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact]], [[Research/2026-04-15 - BESI - Hybrid Bonding Market Projections]], [[Research/2026-04-19 - TSM - Stress Test]]
 
 ### BTC-CRYPTO - Bitcoin & Digital Assets
 - **sectors:** [[Sectors/Consumer & Digital]], [[Sectors/Energy & Commodities]], [[Sectors/Precious Metals]]
@@ -173,7 +175,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/NAND Flash & Storage]], [[Sectors/Semiconductors]]
 - **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/PLTR - Palantir]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]]
-- **research:** [[Research/2025-07-15 - Data Center Liquid Cooling]], [[Research/2025-08-09 - Performance vs Standardization]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]
+- **research:** [[Research/2025-07-15 - Data Center Liquid Cooling]], [[Research/2025-08-09 - Performance vs Standardization]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]]
 
 ### OPEN - Opendoor
 - **sectors:** —
@@ -209,7 +211,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/NAND Flash & Storage]], [[Sectors/Semiconductor Capital Equipment]], [[Sectors/Semiconductors]]
 - **macro:** —
 - **cross-thesis:** [[Theses/BESI - BE Semiconductor Industries]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]]
-- **research:** [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas]], [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]], [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas]], [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact]]
+- **research:** [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas]], [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]], [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas]], [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact]], [[Research/2026-04-19 - TSM - Stress Test]]
 
 ### SHOP - Shopify
 - **sectors:** [[Sectors/Enterprise Software]]
@@ -234,6 +236,12 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **macro:** [[Macro/Commodity Impacts from Iran Tensions]], [[Macro/Investment Strategy for US-Iran Conflict]], [[Macro/Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
 - **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-02 - GCC Market Shorting Options]]
+
+### TSM - Taiwan Semiconductor
+- **sectors:** [[Sectors/Semiconductor Capital Equipment]], [[Sectors/Semiconductors]]
+- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **cross-thesis:** [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]]
+- **research:** [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]]
 
 ### TTWO - Take-Two Interactive
 - **sectors:** [[Sectors/Consumer & Digital]]
@@ -277,10 +285,10 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 | [[Sectors/Enterprise Software]] | [[Theses/CSGP - CoStar Group]], [[Theses/IOT - Samsara]], [[Theses/NET - Cloudflare]], [[Theses/NOW - ServiceNow]], [[Theses/PANW - Palo Alto Networks]], [[Theses/PLTR - Palantir]], [[Theses/PSTG - Pure Storage]], [[Theses/SHOP - Shopify]], [[Theses/WTC - WiseTech Global]] |
 | [[Sectors/Financial Services]] | [[Theses/CRCL - Circle Internet Group]], [[Theses/EDEL - Edelweiss Financial Group]] |
 | [[Sectors/Healthcare & MedTech]] | [[Theses/HIMS - Hims & Hers Health]], [[Theses/ISRG - Intuitive Surgical]] |
-| [[Sectors/NAND Flash & Storage]] | [[Theses/285A - Kioxia]], [[Theses/PSTG - Pure Storage (Everpure)]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
+| [[Sectors/NAND Flash & Storage]] | [[Theses/285A - Kioxia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
 | [[Sectors/Precious Metals]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] |
 | [[Sectors/Semiconductor Capital Equipment]] | [[Theses/285A - Kioxia]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
-| [[Sectors/Semiconductors]] | [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/EINK - E Ink Holdings]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
+| [[Sectors/Semiconductors]] | [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/EINK - E Ink Holdings]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]], [[Theses/TSM - Taiwan Semiconductor]] |
 
 ## Cross-Thesis Clusters
 

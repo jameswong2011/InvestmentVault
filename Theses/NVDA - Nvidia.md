@@ -232,6 +232,9 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Sectors/Semiconductors]] — Sector Note with cross-thesis dynamics
 
 ## Log
+### 2026-04-19 (TSM stress test sync)
+- [[Research/2026-04-19 - TSM - Stress Test]]: Taiwan invasion/blockade scenario quantifies -85-95% TSM permanent impairment (not thesis-modeled -30%). NVDA's 100% leading-edge TSMC dependency (Blackwell N3, Rubin N2, Feynman A16) implies 2-4yr Samsung/Intel re-qualification window + permanent customer-share transfer to surviving foundries during outage. Arizona 5-8% of capacity through 2030 does not hedge the tail at AI roadmap horizon — conviction unchanged but NVDA-specific Taiwan tail magnitude re-quantified, binary hedge question (LMT/NOC pair) raised for consideration.
+
 ### 2026-04-19 (sync)
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]: Propagated to Outstanding Questions (China conditional graduates to confirmed), Bear Case (added 750K-unit 2026 volume, ByteDance $5.6B, Atlas SuperCluster 524 EFLOPS), Risks #5 ("developing" → "shipping at scale"). Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-sync 2026-04-19-1354)]] — conviction unchanged (medium); China $50B revenue line increasingly likely permanently lost.
 

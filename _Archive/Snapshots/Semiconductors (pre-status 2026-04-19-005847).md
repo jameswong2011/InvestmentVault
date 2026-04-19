@@ -1,6 +1,10 @@
 ---
 date: 2026-04-15
 tags: [sector, moc]
+snapshot_of: "[[Sectors/Semiconductors]]"
+snapshot_date: 2026-04-19
+snapshot_trigger: status
+snapshot_batch: status-TSM-2026-04-19-005847
 ---
 
 # Semiconductors
@@ -11,7 +15,6 @@ tags: [sector, moc]
 
 ## Active Theses
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level thesis: KLA + AMAT as highest risk-adjusted plays; non-consensus picks across WFE (conviction: high)
-- [[Theses/TSM - Taiwan Semiconductor]] — Taiwan Semiconductor (leading-edge foundry monopoly — 92% ≤7nm share, N2 +20% premium; Taiwan-tail risk materially higher than thesis-modeled after stress test; conviction: low)
 - [[Theses/AVGO - Broadcom]] — Broadcom
 - [[Theses/BESI - BE Semiconductor Industries]] — BESI (Hybrid bonding / advanced packaging monopoly)
 - [[Theses/EINK - E Ink Holdings]] — E Ink Holdings

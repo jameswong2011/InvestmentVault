@@ -215,6 +215,9 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ## Log
 
+### 2026-04-19 (TSM stress test sync)
+- [[Research/2026-04-19 - TSM - Stress Test]]: TSM Kaohsiung/Chunan CoWoS under invasion/destruction scenario = 100% loss of BESI's TSMC advanced-packaging equipment pipeline (HBM4 hybrid bonding + SoIC lines). Partial offset via Arizona/Japan/Germany rebuild demand but 5-7yr EUV replication lag and ASML 60-unit/yr global output constraint cap near-term substitution — indirect Taiwan exposure materially higher than sector consensus; conviction unchanged.
+
 ### 2026-04-15 (cross-thesis sync)
 - [SEMICAP thesis]: Advanced packaging equipment spend growing 40%+ regardless of hybrid bonding timing (CoWoS 35K→130K wafers/month). HB transition to HBM4E/HBM5 is additive upside — conviction strengthened, supports multi-end-market demand thesis.
 
