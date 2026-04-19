@@ -1204,6 +1204,34 @@ Reaffirm now always appends a Log entry regardless of whether a drift flag is ac
 
 `/catalyst` now snapshots `_catalyst.md` before regenerating. If a web-search failure produces a partial calendar, the pre-catalyst snapshot is available via `/rollback` cascade (batch ID `catalyst-YYYY-MM-DD-HHMMSS`). Prior behavior silently overwrote.
 
+### Tier 1–4 residual fixes
+
+**T1.1 — `/ingest` domain-specific content validators**
+The post-write verification gate now includes checks #8–13 that run AFTER the generic word-count and sentinel checks. Promoted from advisory to BLOCKING for URL and PDF ingests:
+- `source_type: earnings` must contain period tokens (Q1/Q2/Q3/Q4/FY20XX) + 2+ currency figures + ticker/company reference
+- `source_type: analyst-report` must contain rating tokens (Buy/Sell/Hold/etc.) + price-target reference + ticker
+- `source_type: news` must contain ticker + dated event reference (absolute date or temporal token)
+- `source_type: deep-dive` requires ≥500 words + ≥3 substantive sections
+- **#12 Numerical integrity probe**: detects OCR corruption (capital-O as zero, `II` as `11`, decimal-dropped currency like `$1 5B`)
+- **#13 Title-URL consistency** (URL mode only): verifies first heading matches URL path slug via 50%+ Jaccard token overlap
+Blocking failure deletes the just-written note and retains the source in `_Inbox/` for re-ingest after resolving the underlying issue.
+
+**T1.3 — `/sync` drift sensitivity tuning**
+Drift false-positive suppression now tighter:
+- Deepened-entry exclusion window extended from 7 to 14 days after a Stress test
+- Post-stress-test threshold: if a Stress test entry exists within 30 days for this ticker, drift requires 4/5 weakening entries (not 3/5)
+- Tunable via optional `.drift-config.md` at vault root (window_size, base_threshold, post_stress_threshold, post_stress_window_days, deepened_exclusion_days)
+- Drift message now reports threshold and suppression state: `⚠️ Conviction drift — 3/5 recent updates flagged headwinds (3 required, post-stress-test suppression: no)`
+
+**T2.1 — `/sync` Step 7.5 two-phase manifest write**
+Step 2.9 writes the sync manifest SKELETON (`status: in-progress`) BEFORE any Tier A snapshot or Tier B Log append lands. Skeleton write failure hard-aborts the sync pre-mutation. Steps 3–6 append accumulator entries to the manifest as work lands. Step 7.5 flips status to `completed` and verifies. If the flip fails, `/lint #41` flags it as Important (extended check). Eliminates the silent audit gap where a failed end-write used to leave Tier B Log entries invisible to `/rollback` cascade recovery.
+
+**T2.2 — `/status` transaction manifest**
+Step 3.0.5 writes a `_status-manifest (status-YYYY-MM-DD-HHMMSS).md` skeleton before any file modifications. Records intended edits: thesis frontmatter change, sector note edit, archive move (closure only), graph invalidations, `_hot.md` update. Step 7.9 flips to completed. `/rollback` Step 2.5e cascade-detects status batches and offers (a) thesis-only restore, (b) full transaction restore (thesis + sector + un-archive + clear invalidations), or (c) cancel. `/lint #48` surfaces in-progress manifests.
+
+**T3.1 — `/stress-test` manifest for rollback cascade**
+`/stress-test` Phase 4.6 now writes `_stress-test-manifest (stress-test-YYYY-MM-DD-HHMMSS).md` recording the Log entry text that was appended to the tested thesis. `/rollback` Step 2.5d uses this manifest to surface the Log entry for strikethrough review if the user decides the stress test was invalid. Research note under `Research/` is preserved (same policy as scenario / compare research notes). `/lint #47` handles aging.
+
 ### Tier 5 fixes — workflow hardening
 
 #### 5.1 `/scenario` classification approval gate
@@ -1308,4 +1336,14 @@ If a new thesis's `sector:` frontmatter resolves to `match_confidence: none`, `/
 | `/ingest URL` blocked with "Source already ingested today" | 5.5 — Step 0.3 same-day URL dedup | Delete existing note first if you genuinely want to re-process: `rm "Research/[matched-note].md"` then re-run. |
 | `/ingest URL` prompts about "previously ingested" (older than today) | 5.5 — cross-day URL match | Options: (a) skip and use existing note, (b) re-ingest as new dated note (coexist cleanly with prior due to T6 6.11 wikilink idempotency), (c) cancel. |
 | `/brief TICKER` accumulating many files under `Research/` | 5.7 — no auto-archival by design; briefs are analytical content | Quarterly: `find Research/ -name '*Investment Brief.md' -mtime +90` to list stale; manually `mv` chosen ones to `_Archive/Briefs/` (create dir if absent). |
+| `/ingest URL` reports `Content-quality gate FAILED — #8 earnings signature` (or #9/#10/#11) | T1.1 — domain validator flagged missing domain vocabulary for declared `source_type` | Either (a) the fetched content is off-topic (paywall / wrong article) — re-ingest after resolving access, or (b) `source_type` was wrong for the content — edit and re-ingest with correct source_type. Note was NOT created; source retained in `_Inbox/`. |
+| `/ingest URL` reports `#12 numerical integrity FAILED` | T1.1 — OCR-style corruption detected (capital-O as zero, decimal-dropped currency, etc.) | PDF source was likely image-based and OCR extracted garbage. Convert PDF to text via a cleaner tool (preview.app, pdftotext) or manually create `.md` from the source. |
+| `/ingest URL` reports `#13 title-URL mismatch` | T1.1 — first heading token set has <50% Jaccard overlap with URL path slug | Fetch likely redirected to a login/subscribe/error page with a different title than the intended article. Re-ingest after resolving; use `archive.org` cache if paywalled. |
+| `/sync` reports `Conviction drift — 3/5 recent updates flagged headwinds (3 required, post-stress-test suppression: yes)` | T1.3 — drift fired despite stress-test suppression | Threshold was 4/5 not 3/5 — if you see this AND 3/5, the post-stress-test suppression was correctly INACTIVE (no recent stress test). Otherwise genuine drift signal. `/status TICKER reaffirm` to acknowledge, or investigate. |
+| `/sync` drift signal never fires despite obvious deterioration | T1.3 — post-stress-test suppression raised threshold to 4/5 | Expected within 30 days of a stress test. If you want base sensitivity back, edit `.drift-config.md` at vault root: `post_stress_threshold: 3` AND `post_stress_window_days: 0`. |
+| `/lint #41` reports `In-progress sync manifest` | T2.1 — Step 7.5 flip failed OR /sync crashed mid-run OR /lint ran during active /sync | Inspect manifest body for landed Tier A snapshots and Tier B Log appends. If /sync was interrupted, use `/rollback` on listed snapshots. If /sync completed and only flip failed, manually edit manifest to `status: completed`. |
+| `/lint #48` reports `In-progress /status manifest` | T2.2 — Step 7.9 flip failed OR /status crashed mid-transaction | Inspect body for landed stages. Full transaction recovery via `/rollback [batch]` → option (b) cascade restore (thesis + sector + un-archive + invalidations). |
+| `/lint #47` reports `In-progress stress-test manifest` | T3.1 — rare; /stress-test normally writes manifest as completed in one step | Verify research note + thesis Log entry both exist. If yes, manually edit to `status: completed`. If either missing, re-run /stress-test. |
+| `/rollback` on a stress-test batch ID surfaces the Log entry | T3.1 — Step 2.5d cascade | Choose (b) cascade + strikethrough to rewrite Log entry as `~~...~~ → Reverted YYYY-MM-DD: stress-test judged invalid`. Research note is preserved. |
+| `/rollback` on a status batch ID offers "thesis-only" vs "full transaction" | T2.2 — Step 2.5e cascade | Full transaction (b) restores thesis + sector + un-archives (if closure) + clears invalidations. Thesis-only (a) restores frontmatter only. |
 

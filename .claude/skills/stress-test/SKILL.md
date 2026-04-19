@@ -113,6 +113,62 @@ This is a wikilink registration, not a propagation claim — runs regardless of 
 
 Do NOT change the conviction level — flag it for the user to decide via `/status TICKER conviction old→new [rationale]`.
 
+### 4.6: Write stress-test manifest sidecar (T3.1 fix)
+
+Write a manifest at `_Archive/Snapshots/_stress-test-manifest (stress-test-YYYY-MM-DD-HHMMSS).md`. Generate `HHMMSS` at the start of Phase 4.
+
+**Why this exists**: `/stress-test` writes a Log entry to the tested thesis (Tier B — no pre-edit snapshot because the Log is append-only) and a research note. If the user later decides the stress test was invalid (wrong input, stale vault state, experimental run), there's no `/rollback` cascade path to restore the pre-stress-test thesis state. Manual strikethrough of the Log entry is the only remedy. The manifest provides `/rollback` cascade-detection with the Log entry text so the user can choose per-entry annotation (same pattern as `/sync` Tier B sidecar and `/compare` manifest).
+
+```yaml
+---
+type: stress-test-manifest
+batch: stress-test-YYYY-MM-DD-HHMMSS
+status: completed
+ticker: TICKER
+date: YYYY-MM-DD
+---
+
+# Stress Test Manifest
+
+> Sidecar for `/stress-test TICKER` run on YYYY-MM-DD. Used by `/rollback` Step
+> 2.5d cascade detection: when the user selects this batch ID, the Log entry
+> below is surfaced for strikethrough review.
+
+## Research note created
+- [[Research/YYYY-MM-DD - TICKER - Stress Test]]
+
+## Thesis Log entry appended (Tier B — no snapshot)
+- Target: `Theses/TICKER - Name.md`
+- Entry date: YYYY-MM-DD
+- Entry text:
+  ```
+  - Stress test [[Research/YYYY-MM-DD - TICKER - Stress Test]]: [top vulnerability], X/Y assumptions rated 🔴 — conviction [unchanged/weakened: reassess + reason]
+  ```
+- Log append outcome: succeeded | failed (reason)
+
+## Recovery guidance
+
+To undo this stress test's Log entry (e.g., the stress test was based on wrong
+input and the Log entry misrepresents current conviction state):
+
+  /rollback stress-test-YYYY-MM-DD-HHMMSS
+  → Step 2.5d matches this manifest by batch ID
+  → Presents the Log entry above for strikethrough annotation
+  → User can choose: (1) leave as historical audit (Tier 2 append-only respected)
+                     (2) strikethrough with `~~entry~~ → Reverted YYYY-MM-DD:
+                        stress test was invalid because...`
+                     (3) manually delete (violates Tier 2 — only for clearly
+                        erroneous entries)
+
+The research note at `Research/YYYY-MM-DD - TICKER - Stress Test.md` is NOT
+deleted by rollback — it persists as historical record (same rule as scenario
+research notes).
+```
+
+### 4.6a: Manifest write failure handling
+
+If the manifest write fails (rare — filesystem issue), log the failure but do NOT abort the stress test result. The Log entry and research note are already in place; the missing manifest means future rollback cascade can't surface the Log entry for strikethrough, but manual strikethrough is still possible. Report `⚠️ Stress-test manifest write failed at [path]: [reason]. Rollback cascade recovery will not find this run; manual strikethrough is the fallback path.`
+
 > **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the stress test research note in the dependency map.
 
 ## Phase 5: Update _hot.md

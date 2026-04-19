@@ -154,6 +154,83 @@ Use `status-YYYY-MM-DD-$HHMMSSSS` as the `snapshot_batch` value across **all** s
 
 > **Draft→active note**: The batch ID is still generated even when Step 3.1 is skipped — Step 5a needs it for the sector note snapshot.
 
+### 3.0.5: Write status transaction manifest skeleton (T2.2 fix)
+
+**Mandatory BEFORE any file modifications** — Step 3.1 thesis snapshot, Step 4 frontmatter edit, Step 5 sector note edit, Step 7.5 archive move, Step 7.6 invalidation write are ALL gated on this skeleton landing first. Like `/sync` Step 2.9 and `/prune` Stage 1.5, the manifest skeleton is the first mutation of the run.
+
+Write `_Archive/Snapshots/_status-manifest (status-YYYY-MM-DD-HHMMSS).md`:
+
+```yaml
+---
+type: status-manifest
+batch: status-YYYY-MM-DD-HHMMSS
+status: in-progress
+ticker: TICKER
+transition_type: conviction | status | reaffirm
+field: conviction | status
+old_value: [parsed from $ARGUMENTS]
+new_value: [parsed from $ARGUMENTS]
+date: YYYY-MM-DD
+---
+
+# Status Transaction Manifest (in-progress)
+
+Manifest written at Step 3.0.5 before any file modifications. Intended edits:
+
+## Thesis frontmatter edit
+- Target: `Theses/TICKER - Name.md`
+- Field: [conviction | status]
+- Change: [old] → [new]
+- Snapshot taken: (to be populated in Step 3.1 — or "skipped (draft→active)")
+
+## Sector note edit (if applicable per Step 5.1 dry-run)
+- Resolution: (to be populated)
+- Edit planned: yes | no | skipped (no match)
+- Snapshot taken: (to be populated in Step 5a)
+
+## Archive move (closure only)
+- Source: `Theses/TICKER - Name.md`
+- Target: `_Archive/TICKER - Name.md`
+- Status: (to be populated in Step 7.5)
+
+## Graph invalidations (closure only)
+- Neighbors queued: (to be populated in Step 7.6)
+
+## Archive registry append (closure only)
+- Line added to `.archive_ticker_registry.md`: (to be populated in Step 7.5b)
+
+## _hot.md edits
+- (to be populated in Step 7)
+
+## Recovery guidance
+
+If this file persists with `status: in-progress`, /status crashed or was
+interrupted mid-run. Likely states:
+
+- (a) Skeleton written but no other edits landed → thesis still has original
+      frontmatter; no recovery needed; manually `rm` this manifest.
+- (b) Thesis frontmatter edited but subsequent steps failed → /rollback
+      [snapshot_batch] restores pre-status thesis state.
+- (c) Partial closure (thesis moved to _Archive/ but sector note not updated)
+      → /rollback handles via the thesis snapshot + sector note snapshot.
+
+Flipped to `status: completed` at Step 8 (final) after all stages succeed.
+/lint #48 (new) surfaces in-progress manifests as Important.
+```
+
+**Skeleton write failure — hard abort**: if this Edit/Write fails, do NOT proceed to Step 3.1. Report:
+
+```
+❌ Status transaction manifest skeleton write failed: [path]
+   Reason: [error]
+No vault state has been modified. The thesis, sector note, and _hot.md are
+unchanged. Fix the underlying filesystem issue and re-run /status.
+```
+
+Exit the skill. Reaffirm flow (Step 2R) does NOT need a manifest — it's a single Log append with no multi-file transaction; 2R skips Step 3.0.5 entirely.
+
+**Incremental population**: each subsequent step (3.1, 4, 5a, 7.5, 7.6) appends its completion state to the manifest via `Edit`. This keeps the manifest current — if the session crashes after Step 5a but before 7.5, the manifest reflects the thesis and sector edits but not the archive move.
+
 ### 3.1: Thesis snapshot
 
 Create a pre-change snapshot (conviction and most status changes are Tier A edits on the thesis body):
@@ -441,6 +518,20 @@ If no neighbors found (closed thesis was isolated): skip file creation. Report `
 After write, verify the file exists and contains the expected entries. Include in Step 8 report:
 - **Graph invalidation**: `[N] neighbors added to .graph_invalidations: [list first 5, truncate with "...+M more" if longer]`
 - **Graph reminder**: emphasize `/graph last` is now mandatory — without it, the invalidation list accumulates.
+
+## Step 7.9: Finalize status transaction manifest (T2.2 fix)
+
+**Only runs if Step 3.0.5 wrote a manifest** (skipped for Reaffirm flow Step 2R).
+
+Flip the manifest's frontmatter:
+- `status: in-progress` → `status: completed`
+- Add `completed_date: YYYY-MM-DD`
+
+Verify the flip landed by re-reading the frontmatter. If the verify fails:
+- Report `⚠️ Status manifest status flip failed — manifest at [path] remains in-progress despite successful /status completion. /lint #48 will flag as Important. Manual fix: edit the manifest frontmatter to status: completed.`
+- Do NOT rollback the prune — all stages already succeeded.
+
+The manifest is retained. Unlike `/prune`'s 30-day regret-recovery retention (T5 5.2), `/status` does not have a defined regret-recovery window (conviction and status changes are typically intentional and not mass-triggered). `/clean` Step 2a handles aging via a new 90-day threshold for `status-manifest` files (see `/clean` SKILL.md extension).
 
 ## Step 8: Report
 

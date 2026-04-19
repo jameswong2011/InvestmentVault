@@ -204,9 +204,67 @@ Options:
 
 If the manifest does NOT exist (sync ran before manifest support was added, OR the manifest write itself failed in Step 7.5c), fall back to the original Step 2.5a behavior with an explicit warning: `⚠️ No sync manifest found for batch [batch ID]. Cascade will only restore Tier A snapshots; any Tier B Log appends from this sync are invisible and will persist after rollback. To find them manually, grep `Theses/*.md` for entries dated [snapshot date] referencing [source research notes from the snapshot's referenced sources].`
 
-### Step 2.5c: Non-sync trigger snapshots
+### Step 2.5c: Non-sync trigger snapshots (no-manifest case)
 
-For non-sync triggers (status, deepen, compare, prune, catalyst, rename, rollback), no manifest exists — those skills snapshot every modified file (Tier A only) per their own atomicity rules. Proceed with Step 2.5a behavior unchanged.
+For triggers with no manifest (`deepen`, `catalyst`, `rename`, `rollback` pre-rollback safety net), no manifest exists — those skills snapshot every modified file (Tier A only) per their own atomicity rules. Proceed with Step 2.5a behavior unchanged.
+
+### Step 2.5d: Stress-test manifest cascade (T3.1)
+
+If the selected snapshot is associated with a `/stress-test` batch (user explicitly supplied a `stress-test-YYYY-MM-DD-HHMMSS` batch ID, OR a companion `_stress-test-manifest (stress-test-...)` file matches the snapshot's batch), read the manifest and surface the Log entry for strikethrough review.
+
+`/stress-test` writes NO thesis snapshot (its only direct effect on theses is a Log append, which is Tier 2 append-only and cannot be restored via file-copy). The manifest records the Log entry text so the rollback can offer strikethrough annotation.
+
+```
+Stress-test batch cascade detected:
+  Batch:       stress-test-YYYY-MM-DD-HHMMSS
+  Ticker:      TICKER
+  Research note: [[Research/YYYY-MM-DD - TICKER - Stress Test]]  (NOT deleted by rollback)
+  
+Log entry appended to Theses/TICKER - Name.md (Tier 2 append-only — no snapshot):
+  [full entry text from manifest]
+
+Options:
+  (a) Surface only — leave Log entry as historical audit; manually annotate later.
+  (b) Cascade + strikethrough — rewrite the Log entry as:
+      `~~[original entry]~~ → Reverted YYYY-MM-DD: stress-test run judged
+      invalid (rolled back via /rollback batch stress-test-YYYY-MM-DD-HHMMSS).`
+  (c) Cancel.
+```
+
+If (b), perform the strikethrough Edit on the listed thesis. If the Edit fails, report and continue — the audit trail degrades gracefully to option (a).
+
+Note: this cascade only surfaces the manifest's recorded Log entry. The research note under `Research/` is preserved as historical record (same policy as scenario and compare research notes).
+
+### Step 2.5e: Status manifest cascade (T2.2)
+
+If the selected snapshot is associated with a `/status` batch (user supplied `status-YYYY-MM-DD-HHMMSS` batch ID, OR the snapshot's `snapshot_batch:` field matches a `status-*` pattern), read the manifest for the full transaction context.
+
+Unlike sync/compare/prune, `/status` is a single-ticker multi-file transaction (thesis frontmatter + sector note + optional archive mv + optional `.graph_invalidations` + `_hot.md`). The manifest lists every stage that landed:
+
+```
+Status transaction cascade detected:
+  Batch:          status-YYYY-MM-DD-HHMMSS
+  Ticker:         TICKER
+  Transition:    [conviction|status] [old] → [new]
+  Manifest:      [[_Archive/Snapshots/_status-manifest (status-...)]]
+  
+Stages that landed:
+  ✅ Thesis frontmatter edited — snapshot: [[_Archive/Snapshots/...]]
+  ✅ Sector note edited — snapshot: [[_Archive/Snapshots/...]]
+  ✅ Archive move (closure only) — thesis moved to _Archive/
+  ✅ Graph invalidations written
+  ✅ _hot.md updated
+  
+Cascade options:
+  (a) Restore thesis frontmatter only (from thesis snapshot).
+  (b) Restore full transaction (thesis + sector note + un-archive + clear
+      invalidation list). All-or-nothing atomicity restore.
+  (c) Cancel.
+```
+
+Option (b) executes: restore thesis from its pre-status snapshot → restore sector note from its pre-status snapshot → if closure: `mv _Archive/TICKER - Name.md Theses/TICKER - Name.md` → clear matching entries from `.graph_invalidations` → revert `_hot.md` Recent Conviction Changes entry.
+
+On any sub-step failure during cascade, abort remaining steps and report — the user can address each partial state manually. Pre-rollback safety snapshot (Step 4) covers the worst case.
 
 ## Step 3: Confirm (Mandatory)
 

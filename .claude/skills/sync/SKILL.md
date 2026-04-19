@@ -330,11 +330,29 @@ If any Tier A edits are planned for a thesis:
   - `"Scenario REVERSED"` — `/scenario reverse`-emitted corrective entry that withdraws a prior scenario propagation (registry §14). Counting it would inflate drift on theses that just had a scenario withdrawn — the whole point of reverse mode is to preserve audit trail without producing new drift signal.
   - `"Renamed file:"` — `/rename` Step 10 filename-change record (registry §15). Carries no conviction sentiment; consuming a drift-window slot on a cosmetic filename change would bias drift on recently renamed theses.
 
-  **Conditionally exclude entries that begin with `"Deepened"` or `"↳ CORRECTION: Deepened"`** within 7 calendar days of a `"Stress test"` entry for the same ticker (registry §3–§4) — gap-filling research chained to a stress test, not independent evidence.
+  **Conditionally exclude entries that begin with `"Deepened"` or `"↳ CORRECTION: Deepened"`** within **14 calendar days** of a `"Stress test"` entry for the same ticker (registry §3–§4 — T1.3 extended window from 7 to 14 days) — gap-filling research chained to a stress test, not independent evidence. The longer window reflects that `/deepen` runs triggered by stress-test findings can span 2+ weeks as the user works through each identified gap section sequentially.
 
   **Anchor handling**: If a `"Conviction reaffirmed"` (registry §5) or `"Status change: conviction"` (registry §6) entry is found, anchor the window there — only count entries AFTER the anchor. If fewer than 3 entries exist after the anchor, drift detection has insufficient data and does not fire. If no anchor exists, use the last 5 **non-excluded** entries as the window (i.e., count backward through the Log skipping exclusions until 5 eligible entries accumulate, or until Log exhaustion).
-  - conviction: high but 3+ entries in window weakening → `⚠️ Conviction drift — [N]/[window size] recent updates flagged headwinds. Reassess. To acknowledge after review: /status TICKER reaffirm [rationale]`
-  - conviction: low but 3+ entries in window strengthening → `📈 Positive drift — [N]/[window size] recent updates supportive. Reassess. To acknowledge after review: /status TICKER reaffirm [rationale]`
+
+  **Drift threshold** (T1.3 — tunable via `.drift-config.md` at vault root):
+  - Default base threshold: **3/5** weakening entries fires drift (conviction: high) or 3/5 strengthening (conviction: low).
+  - **Post-stress-test suppression**: if a `"Stress test"` entry exists within the last **30 days** for this ticker, RAISE threshold to **4/5** (requires one more signal). Rationale: stress tests already surfaced vulnerabilities; subsequent "weakened" Log entries often reflect the stress-test-identified risks being incrementally confirmed, not new drift evidence.
+  - **Optional config override**: if `.drift-config.md` exists at vault root, read it for overrides. Format:
+    ```yaml
+    ---
+    window_size: 5              # default 5; min 3, max 10
+    base_threshold: 3           # default 3/window_size
+    post_stress_threshold: 4    # default 4/window_size
+    post_stress_window_days: 30 # default 30
+    deepened_exclusion_days: 14 # default 14 (was 7 pre-T1.3)
+    ---
+    ```
+    Missing config → use defaults. Malformed config → log `⚠️ .drift-config.md malformed — using defaults.` and proceed.
+
+  - conviction: high but threshold-reached entries in window weakening → `⚠️ Conviction drift — [N]/[window_size] recent updates flagged headwinds ([threshold] required, [post-stress-test suppression active: yes|no]). Reassess. To acknowledge after review: /status TICKER reaffirm [rationale]`
+  - conviction: low but threshold-reached entries in window strengthening → `📈 Positive drift — [N]/[window_size] recent updates supportive. Reassess. To acknowledge after review: /status TICKER reaffirm [rationale]`
+
+  > **T1.3 rationale**: prior behavior fired drift on 3/5 regardless of recent stress-test activity, producing false positives during the natural burst of `/stress-test` → `/deepen` → `/sync` cycles. The extended 14-day exclusion window for `Deepened` entries and the post-stress-test 4/5 threshold together reduce false-positive fires without materially changing true-positive detection rate.
 
 ### 3f: Log Entry (last)
 
@@ -548,9 +566,86 @@ touch .sync_all_fresh
 
 **Why a marker file (not poisoning `_graph.md date:`)**: `/sync` must not write `_graph.md` — the metadata-cull architecture concentrates graph ownership in `/graph`. A vault-root marker file keeps `/sync` content-only while giving `/graph` an unambiguous signal. The marker is cheap (zero-byte file), ignorable by every other skill, and self-cleaning on the next `/graph` run.
 
-## Step 7.5: Write Sync Batch Manifest
+## Step 2.9: Write Sync Batch Manifest — Skeleton (T2.1 fix — two-phase write)
 
-**Mandatory for every `/sync` mode (default, all, TICKER) when at least one Log append, snapshot, or content edit landed in this run.** Skip only when the run was a pure no-op (Step 1 reported "Nothing changed since last sync").
+**Mandatory BEFORE any thesis/sector/macro Tier A snapshot or Tier B Log append lands.** Runs once per non-no-op sync run after Step 1/2/2.5 complete their read-only analysis, immediately before Step 3 begins modifying files.
+
+The skeleton manifest is the first mutation of the run. If the skeleton write fails, **hard-abort the whole sync** — do NOT proceed to Tier A snapshots or Tier B appends. This ensures the manifest is always a complete record of any work that landed.
+
+### 2.9a: Generate batch ID and skeleton path
+
+Generate `HHMMSS` once at the start of Step 2.9 via `date +%H%M%S`. This is THE canonical batch ID for the rest of the run — Step 3c reuses it for all Tier A snapshots, Step 7.5 reuses it for the manifest status flip.
+
+Skeleton manifest path:
+```
+_Archive/Snapshots/_sync-manifest (sync-YYYY-MM-DD-HHMMSS).md
+```
+
+### 2.9b: Write skeleton
+
+Frontmatter:
+```yaml
+---
+type: sync-manifest
+batch: sync-YYYY-MM-DD-HHMMSS
+mode: default | all | ticker-scoped
+status: in-progress
+date: YYYY-MM-DD
+---
+
+# Sync Batch Manifest (in-progress)
+
+Manifest written at Step 2.9 before any file modifications. Will be populated
+with Tier A/B/research-note details as work progresses, then flipped to
+`status: completed` at Step 7.5.
+
+If this file persists with `status: in-progress`, the sync crashed or was
+interrupted mid-run. Recovery: inspect the manifest's partial accumulator
+sections below, then run /rollback to restore any Tier A snapshots listed.
+
+## Theses with snapshots taken (Tier A)
+_populated during Step 3c_
+
+## Theses with Log-only appends (Tier B)
+_populated during Step 3f and cross-thesis steps_
+
+## Sector notes touched
+_populated during Step 4_
+
+## Macro notes touched
+_populated during Step 5_
+
+## Source research notes processed
+_populated as Step 3 iterates_
+```
+
+### 2.9c: Skeleton write failure — hard abort
+
+If the skeleton write fails (disk full, permission, concurrent filesystem issue), abort:
+
+```
+❌ Sync manifest skeleton write failed: [path]
+   Reason: [error]
+   
+No vault state has been modified yet. This abort is pre-mutation —
+no Tier A snapshots exist, no Tier B Log entries written, no sector or
+macro edits applied.
+
+Fix the underlying filesystem issue (disk space, permissions, concurrent
+writer) and re-run /sync. Resume state is clean.
+```
+
+Exit the skill. Do NOT proceed to Step 3.
+
+### 2.9d: Append-as-you-go (during Steps 3–6)
+
+Each Step 3c snapshot, 3f Log append, 4a sector snapshot, 5a macro snapshot, etc. appends its record to the corresponding section of the manifest in real time (via `Edit` tool). This keeps the manifest current — if the session crashes after Step 3f on thesis #5 but before Step 3f on thesis #6, the manifest already reflects #1-5 for cascade recovery.
+
+Accumulators maintained in-memory per existing Step 7.5d are now written to the manifest INCREMENTALLY rather than in one batch at Step 7.5.
+
+## Step 7.5: Finalize Sync Batch Manifest — Flip to completed (T2.1 fix continuation)
+
+**Mandatory for every `/sync` mode (default, all, TICKER) when Step 2.9 skeleton was written.** Skip only when the run was a pure no-op (Step 1 reported "Nothing changed since last sync") — Step 2.9 also skips in that case.
 
 ### Why this manifest exists
 
@@ -560,16 +655,29 @@ If the user later runs `/rollback TICKER` to undo the sync, the cascade detectio
 
 The sync manifest closes this gap by recording **every thesis touched** in the sync run — including Tier B Log appends without snapshots. `/rollback` Step 2.5 reads the manifest during cascade detection and surfaces the unrecoverable Log entries to the user with their full text, so the user can decide per-entry whether to manually strikethrough/annotate them post-rollback.
 
-### 7.5a: Generate manifest path
+### T2.1 change: status flip, not create-and-write
 
-Use the same `HHMMSS` batch ID generated in Step 3c (or generate one now if Step 3c was skipped because no Tier A edits occurred). Manifest path:
+Step 2.9 already wrote the skeleton and Steps 3–6 incrementally appended accumulator entries. Step 7.5 now only:
+1. Flips `status: in-progress` → `status: completed`.
+2. Adds `completed_date: YYYY-MM-DD`.
+3. Verifies the flip landed.
+
+If the flip fails (Edit error), the manifest persists as `status: in-progress`. `/lint #41` (extended) now catches this as Important (same severity as `/prune` #36 in-progress manifests).
+
+### 7.5a: Manifest path (already written in Step 2.9b)
+
+Batch ID and path are already known from Step 2.9a. Re-reference:
 ```
 _Archive/Snapshots/_sync-manifest (sync-YYYY-MM-DD-HHMMSS).md
 ```
 
-### 7.5b: Write manifest content
+### 7.5b: Flip status frontmatter
 
-Frontmatter:
+Edit the manifest's frontmatter:
+- Change `status: in-progress` → `status: completed`
+- Add `completed_date: YYYY-MM-DD`
+
+Expected frontmatter state after flip:
 ```yaml
 ---
 type: sync-manifest
@@ -577,6 +685,7 @@ batch: sync-YYYY-MM-DD-HHMMSS
 mode: default | all | ticker-scoped
 status: completed
 date: YYYY-MM-DD
+completed_date: YYYY-MM-DD
 ---
 ```
 
@@ -621,14 +730,28 @@ For each thesis that received a Log entry but no snapshot in this run, capture t
 - For Tier B entries: no automatic restore. After cascade rollback, manually inspect each listed Log entry. Options per entry: (1) leave as historical audit trail (preferred — Tier 2 append-only), (2) strikethrough with `~~entry~~ → Reverted YYYY-MM-DD: rolled back via /rollback batch sync-YYYY-MM-DD-HHMMSS` (preserves audit while signaling reversal), (3) manually delete (violates Tier 2 — only acceptable if the entry was clearly erroneous).
 ```
 
-### 7.5c: Write atomicity and lifecycle
+### 7.5c: Verify flip landed
 
-Write the manifest as the **last operation before Step 8 reporting**, after Step 7 watermark touch and (if applicable) `.sync_all_fresh` write. If the manifest write itself fails, log the failure but do NOT abort Step 8 — content edits already landed; only the recovery aid is missing. Report `⚠️ Sync manifest write failed at [path]: [reason]. Cascade rollback will fall back to snapshot-batch matching (Tier A only — Tier B Log appends will be invisible to recovery).` in Step 8.
+Re-read the manifest frontmatter after the Edit. Confirm:
+- `status: completed` present
+- `status: in-progress` absent
+- `completed_date:` present and equals today
+
+**On verification success**: proceed to Step 8 reporting normally. Manifest is now a complete record of the run.
+
+**On verification failure** (flip Edit silently missed — frontmatter format drift, concurrent modification): do NOT retry aggressively. Report `⚠️ Sync manifest status flip failed — manifest at [path] remains status: in-progress despite successful sync completion. /lint #41 will flag this as Important until manually resolved. Manual fix: open the manifest and replace status: in-progress with status: completed (add completed_date: today).` Continue to Step 8 — the sync itself succeeded; only the completion marker failed.
+
+### 7.5d: Lifecycle (unchanged from prior spec except two-phase-write context)
 
 The manifest is a **non-snapshot artifact** (frontmatter `type: sync-manifest`, no `snapshot_date:`):
-- `/clean` Step 2a's non-snapshot artifact guard skips it under the existing rule.
-- `/lint #41` (added in this fix series — see `/lint` SKILL.md) ages stale manifests after 90 days as Nice to Have for cleanup.
+- `/clean` Step 2a's non-snapshot artifact guard skips it for snapshot-age-based cleanup.
+- `/lint #41` (extended by T2.1) distinguishes three states: `status: in-progress` → Important (crash or flip failure), `status: completed` → ages per existing 90/180 day tiers, missing altogether → no op.
 - The manifest persists indefinitely until manually deleted OR until `/lint #41` ages it out and the user chooses to clean.
+
+**T2.1 change summary**: prior behavior wrote the manifest at END of run with a "log failure but continue" clause that silently violated the cascade-recovery contract if the end-write failed. New two-phase behavior:
+- Step 2.9 writes skeleton BEFORE any mutations — skeleton write failure hard-aborts the sync pre-mutation, preventing any silent audit gap.
+- Steps 3–6 incrementally populate the manifest as work lands — crash recovery finds partial-but-consistent state.
+- Step 7.5 flips status at end; flip failure is visible via `/lint #41` rather than silent.
 
 ### 7.5d: Tracking accumulators (implementation note for the LLM running this skill)
 

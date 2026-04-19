@@ -144,28 +144,63 @@ Re-read the just-written research note and check, in order:
 
 7. **Section structural minimum**: at least 2 of the 4 expected body sections (`## Thesis Delta`, `## Evidence`, `## Contradiction Check`, `## Source Excerpts`) must contain non-empty content. A note with only stub headers is structurally complete but analytically empty — extraction failed.
 
-8. **Source-type signature mismatch** (advisory):
-   - `source_type: earnings` should contain at least one quarterly-period token (`Q1`, `Q2`, `Q3`, `Q4`, or `FY20XX`) AND a numeric currency token (e.g., `$`, `revenue of`, `million`, `billion`). If absent, log advisory: `ℹ️ Earnings note lacks period/financial tokens — content may be off-topic.`
-   - `source_type: analyst-report` should contain a price target or rating token (`PT`, `target price`, `Buy`, `Sell`, `Hold`, `Overweight`, `Underweight`). If absent, log advisory.
+**Domain-specific content validators (T1.1 — NEW — BLOCKING for URL/PDF, advisory for manual local files)**:
+
+These validators catch content that passes generic structural checks (#1-7) but is semantically wrong for the declared `source_type`. Examples: an "earnings" note that passed word-count but contains no period/currency tokens (likely a JS-rendered placeholder); an "analyst-report" note with no rating or target (likely a disclaimer page). The domain validators encode minimum domain-vocabulary signatures; absence signals that the fetch returned wrong content.
+
+8. **`source_type: earnings` signature (BLOCKING)**:
+   - MUST contain at least one quarterly-period token (case-insensitive): `Q1`, `Q2`, `Q3`, `Q4`, `1Q`, `2Q`, `3Q`, `4Q`, `H1`, `H2`, `FY2` followed by digits (e.g., `FY2026`), `fiscal year`, `full year`.
+   - MUST contain at least two numeric currency figures: any of `$[digit]`, `[digit] million`, `[digit] billion`, `[digit]M `, `[digit]B `, `revenue of`, `EPS of`, `operating income`, `net income` each followed by or preceded by a numeric value.
+   - MUST contain a ticker-shaped token (1-5 uppercase letters) OR a company-name frontmatter value matching any thesis in `Theses/`.
+
+9. **`source_type: analyst-report` signature (BLOCKING)**:
+   - MUST contain at least one rating token (case-insensitive): `Buy`, `Sell`, `Hold`, `Neutral`, `Overweight`, `Underweight`, `Outperform`, `Underperform`, `Market Perform`, `Strong Buy`, `Reduce`, `Accumulate`.
+   - MUST contain at least one price-target token: `price target`, `PT`, `target price`, `fair value`, `12-month target`, OR a `$[digit]` figure within 200 characters of the word `target`.
+   - MUST contain a ticker-shaped token or company-name reference.
+
+10. **`source_type: news` signature (BLOCKING)**:
+    - MUST contain a company/ticker reference (ticker-shaped token OR known-company token per thesis/sector notes).
+    - MUST contain a dated event reference — at least one of: an absolute date (`YYYY-MM-DD`, `Month DD, YYYY`, `DD Month YYYY`), a relative temporal token (`today`, `yesterday`, `last week`, `this morning`, `announced`, `reported`, `disclosed`, `released`, `filed`), or a weekday reference (`Monday`, `Tuesday`, etc. in capitalized form).
+    - Purpose: news articles without temporal grounding are usually boilerplate / about / contact pages disguised as content.
+
+11. **`source_type: deep-dive` signature (BLOCKING)**:
+    - Higher word-count floor: MUST have ≥500 words body content (overrides #5's 150-word threshold).
+    - MUST have ≥3 substantive sections (non-empty `##` headings with body content below).
+    - Purpose: deep-dives are substantive synthesis; structural shallowness signals extraction failure or wrong-article.
+
+12. **Numerical integrity probe (BLOCKING — all source types)**: detect OCR-style corruption that passes word-count:
+    - **Capital-O as zero**: regex `\b[A-Za-z]*[O0]{1,}[A-Za-z]*\b` where a numeric context is adjacent (e.g., `2O26`, `$1OO`, `Q2O26`). Count matches; if >3 occurrences OR any near a currency/year token, treat as OCR-corrupt and fail.
+    - **Lowercase-l / capital-I as 1**: `\b[Il]{2,}\b` where surrounding context suggests a number (e.g., `II.5%`, `IO million`). Count matches; if >3, fail.
+    - **Decimal-dropped currency**: `\$\d{2,}\s+\d{1,2}\b` patterns where the space likely replaces a decimal (e.g., `$1 5B` → `$1.5B`). Two or more occurrences flag corruption.
+    - If ANY of the above thresholds trip, report `#12 numerical integrity FAILED: [specific pattern, count]`.
+
+13. **Title-URL consistency (BLOCKING for Mode A URL ingest only)**: compare the research note's first `# Heading` (or frontmatter `title:` if present) against the URL's path/slug segments. Extract alphabetic words ≥4 chars from both; require at least 50% overlap (Jaccard similarity on token sets). If the title says "NVIDIA Q3 2026 Earnings" but the URL path is `/subscribe/signup`, the title-URL mismatch signals a redirect to a wrong page. Below 50% overlap, fail.
+    - Mode B (local file) skips #13 — local files don't have a canonical URL-to-title expectation.
+    - If the URL uses an opaque slug (UUID, short ID) with <3 alphabetic tokens ≥4 chars, skip #13 gracefully and log advisory (not enough signal to validate).
 
 **Failure handling**:
 - **Structural failure (1-4)**: do NOT move the source file. Report `⚠️ Partial-write detected for [[Research/filename]] — source [[_Inbox/filename]] left in place for reprocessing. Failure: [specific check that failed]. Delete the partial note and re-run /ingest, or complete the note manually.`
 
-- **Content-quality failure (5-7)** for URL ingest (Mode A) or PDF ingest (Mode B): do NOT move the source file. **DELETE the just-written research note** (it's contaminated, not partial — re-running with the same source would repeat the failure). Report:
+- **Content-quality failure (5-7) OR domain validator failure (8-13)** for URL ingest (Mode A) or PDF ingest (Mode B): do NOT move the source file. **DELETE the just-written research note** (it's contaminated, not partial — re-running with the same source would repeat the failure). Report:
   ```
-  ⚠️ Content-quality gate FAILED for [URL or path] — fetch likely returned [paywall | CAPTCHA | empty page | wrong content].
-    Triggered check: [specific check, e.g., "#5 body word count = 47 (< 150)" or "#6 detected sentinel: 'subscribe to continue'"]
-  Action taken:
-    - Research note NOT created (would propagate corrupted content via /sync).
-    - Source [_Inbox/filename or URL] retained — re-run /ingest after resolving access (login, alternate URL, manual download).
+  ⚠️ Content-quality gate FAILED for [URL or path]
+    Triggered check: [specific check identifier + evidence]
+    Category: [generic 5-7 | domain 8-13]
   Diagnostics:
     - Body length captured: [N] words
+    - source_type declared: [value]
+    - Domain tokens found: [list relevant tokens detected/missing per #8-11]
     - First 200 chars of body: [excerpt for user to verify the fetch contents]
+  Action taken:
+    - Research note NOT created (would propagate corrupted content via /sync).
+    - Source [_Inbox/filename or URL] retained — re-run /ingest after resolving
+      the underlying issue (login, alternate URL, manual download, or correcting
+      the source_type if the content truly is a different type).
   ```
 
-- **Content-quality failure (5-7)** for local manual files (Mode B for `.md`/`.csv`/`.txt` sources, where the user explicitly created the source): write the research note as-is, but flag advisory: `ℹ️ Content-quality threshold not met (#[N]: [details]). Note created because source is a manually-curated local file, but body may be sparse — review before /sync propagates.` Do not block.
+- **Content-quality / domain validator failure** for local manual files (Mode B for `.md`/`.csv`/`.txt` sources, where the user explicitly created the source): write the research note as-is, but flag advisory for EACH failing check: `ℹ️ Content-quality threshold not met (#[N]: [details]). Note created because source is a manually-curated local file, but body may be sparse or domain-mismatched — review before /sync propagates.` Do not block.
 
-- **Source-type signature mismatch (#8)**: never blocks; always advisory. Logged in the report.
+- **source_type: web-clip or data**: skip checks #8-11 (no domain vocabulary expected — clips and raw data can be anything). Still run #12 (numerical integrity) and #13 (for Mode A) — these catch universal corruption.
 
 This verify-before-commit pattern keeps the source file in `_Inbox/` as the authoritative "needs processing" marker until a complete research note exists. Content-quality checks specifically protect against silent semantic corruption — the most damaging failure mode because corrupt research propagates through `/sync` into thesis Log entries before any human reviews it.
 
