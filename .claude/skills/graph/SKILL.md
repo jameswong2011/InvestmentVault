@@ -1,6 +1,6 @@
 ---
 name: graph
-description: Rebuild the vault dependency graph (_graph.md) from scratch. Use after /sync all, when /lint flags graph health issues, or when the graph has drifted from vault state.
+description: Rebuild the vault dependency graph (_graph.md). Three modes — /graph (full rebuild), /graph last (skip if unchanged since last write, else full rebuild), /graph [N] (skip if unchanged in last N days, else full rebuild). Use /graph last after every /sync, /graph [N] for catch-up, /graph for full disaster-recovery rebuild.
 model: opus
 effort: max
 allowed-tools: Read Grep Glob Edit Write Bash(find * wc * date * grep *)
@@ -9,6 +9,40 @@ allowed-tools: Read Grep Glob Edit Write Bash(find * wc * date * grep *)
 Rebuild `_graph.md` entirely from vault state. This is a structural metadata operation — no content files are modified, no thesis/sector/macro updates, no snapshots, no `_hot.md` changes.
 
 **This skill never touches `.last_sync`.** The watermark is owned exclusively by `/sync`.
+
+## Mode Detection
+
+Parse `$ARGUMENTS` to determine mode:
+
+- **`/graph last`** — **Incremental.** Skip rebuild if no files have changed since `_graph.md`'s `date:` frontmatter. Otherwise, full rebuild. Use after every `/sync` to keep the dependency map current.
+- **`/graph [N]`** — **Catch-up incremental.** Skip rebuild if no files have changed in the last N days. Otherwise, full rebuild. Use to catch up after periods without `/graph last` (e.g., `/graph 7` for a week of activity).
+- **`/graph`** (no arguments) — **Full rebuild.** Always rebuilds from scratch. Use after `/sync all`, `/lint` flagging graph health issues, or for periodic disaster-recovery rebuilds.
+
+Mode resolution: if `$ARGUMENTS` matches the literal string `last`, use `/graph last` mode. If `$ARGUMENTS` matches an integer N (e.g., `7`, `30`), use `/graph [N]` mode. Otherwise (empty or unrecognized), use full rebuild.
+
+## Watermark Check (incremental modes only — skip for full rebuild)
+
+For `/graph last` and `/graph [N]` modes, perform the watermark check before any other work. If the check passes (no changes since watermark), skip Steps 1–8 entirely.
+
+### Watermark Resolution
+
+- **`/graph last`**: Read `_graph.md`. If the file does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1. If `date:` frontmatter is `1970-01-01` (poisoned by a prior `/sync all`), warn `⚠️ _graph.md poisoned by prior /sync all — full rebuild required` and proceed to Step 1. Otherwise, watermark = the `date:` value from frontmatter.
+- **`/graph [N]`**: Watermark = `today - N days`. If `_graph.md` does not exist, warn `⚠️ _graph.md missing — falling back to full rebuild` and proceed to Step 1.
+
+### Change Detection
+
+Find files modified after the watermark across all four content directories:
+
+```bash
+find Theses/ Research/ Sectors/ Macro/ -name '*.md' -newermt "WATERMARK_DATE"
+```
+
+Substitute `WATERMARK_DATE` with the resolved watermark in `YYYY-MM-DD` format.
+
+- **No files changed**: Report `Graph is up to date — no changes since [watermark date].` and stop. Do NOT write `_graph.md` (preserve existing date frontmatter and content).
+- **One or more files changed**: Proceed to Step 1 to perform a full rebuild against current vault state. The rebuild captures all changes; partial-rebuild is intentionally avoided to prevent reverse-index drift and consistency bugs that plagued the prior architecture.
+
+> **Why "rebuild if changed" instead of true incremental**: A true incremental update (only re-process changed files' adjacencies) requires reverse-index diff logic that is the source of most graph metadata edge cases. The "skip if unchanged, full rebuild if changed" approach preserves the cheap-when-idle property without introducing partial-update bugs. Full rebuild is ~15-20 seconds for a typical vault — negligible compared to the `/sync` it follows.
 
 ## Step 1: Inventory Vault
 
