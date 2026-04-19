@@ -41,6 +41,7 @@ tags: [sector, moc]
 - **VRT (Vertiv)** — Data center power/cooling with structural AI tailwind. 23 manufacturing facilities, NVDA collaboration, OCP co-development with META. Deep Grok research available across 2 notes.
 
 ## Research Notes
+- [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei Ascend three-year roadmap: 950PR Q1 2026 (128GB/1.6 TB/s in-house HBM), 1.6M-die plan, ByteDance $5.6B order, Atlas SuperCluster 524 EFLOPS FP8 — quantifies China-domestic-alternative threat to NVDA, validates non-Nvidia vertically integrated AI compute at scale
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen Huang CEO interview: CUDA/install base moat, ASIC competition dismissal, $100B+ supply chain commitments, China compute sufficiency argument, Groq inference segmentation
 - [[Research/2025-11-27 - Broadcom Data Center Opportunity]] — Broadcom Data Center Opportunity
 - [[Research/2025-11-27 - Broadcom Equity Research Framework]] — Broadcom Equity Research Framework

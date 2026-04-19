@@ -1,18 +1,19 @@
 ---
-date: 2026-04-16
+date: 2026-04-19
 type: vault-graph
-auto_updated_by: /sync graph
-nodes: 192
-edges: 597
+auto_updated_by: /graph
+nodes: 190
+edges: 357
 theses: 39
 sectors: 13
 macro: 6
-research: 131
+research: 132
+orphans: 19
 ---
 
 # Vault Dependency Graph
 
-> Pre-computed link map for /sync. Read this first to resolve "X changed → what needs updating?" without brute-force file traversal. Maintained by /sync (incremental) and /sync full (rebuild).
+> Pre-computed link map for /sync. Read this first to resolve "X changed → what needs updating?" without brute-force file traversal. Maintained exclusively by /graph (three modes: full rebuild, /graph last incremental, /graph [N] catch-up).
 
 ## Thesis Adjacency Index
 
@@ -22,7 +23,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/NAND Flash & Storage]], [[Sectors/Semiconductors]]
 - **macro:** —
 - **cross-thesis:** [[Theses/SNDK - SanDisk]]
-- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]], [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-31 - SanDisk Valuation Assessment]], [[Research/2026-04-15 - SNDK - Investment Evaluation]], [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]
+- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]], [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-31 - SanDisk Valuation Assessment]], [[Research/2026-04-15 - SNDK - Investment Evaluation]]
 
 ### APP - AppLovin
 - **sectors:** [[Sectors/Consumer & Digital]]
@@ -34,7 +35,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/Semiconductors]]
 - **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/PSTG - Pure Storage]]
-- **research:** [[Research/2025-11-27 - Broadcom Data Center Opportunity]], [[Research/2025-11-27 - Broadcom Equity Research Framework]], [[Research/2025-11-27 - Broadcom Ethernet Networking Position]], [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]]
+- **research:** [[Research/2025-11-27 - Broadcom Data Center Opportunity]], [[Research/2025-11-27 - Broadcom Equity Research Framework]], [[Research/2025-11-27 - Broadcom Ethernet Networking Position]], [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]
 
 ### BESI - BE Semiconductor Industries
 - **sectors:** [[Sectors/Semiconductors]]
@@ -172,7 +173,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/NAND Flash & Storage]], [[Sectors/Semiconductors]]
 - **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/PLTR - Palantir]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]]
-- **research:** [[Research/2025-07-15 - Data Center Liquid Cooling]], [[Research/2025-08-09 - Performance vs Standardization]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]]
+- **research:** [[Research/2025-07-15 - Data Center Liquid Cooling]], [[Research/2025-08-09 - Performance vs Standardization]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]
 
 ### OPEN - Opendoor
 - **sectors:** —
@@ -220,7 +221,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/NAND Flash & Storage]], [[Sectors/Semiconductors]]
 - **macro:** —
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]]
-- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2026-01-17 - SanDisk HBM and NAND in AI]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]], [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-31 - SanDisk Valuation Assessment]], [[Research/2026-04-15 - SNDK - Investment Evaluation]], [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]
+- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2026-01-17 - SanDisk HBM and NAND in AI]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]], [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-31 - SanDisk Valuation Assessment]], [[Research/2026-04-15 - SNDK - Investment Evaluation]]
 
 ### SPOT - Spotify
 - **sectors:** [[Sectors/Consumer & Digital]]
@@ -252,78 +253,66 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **cross-thesis:** [[Theses/IOT - Samsara]], [[Theses/NOW - ServiceNow]], [[Theses/PLTR - Palantir]]
 - **research:** [[Research/2025-09-24 - WTC - CargoWise vs In-House vs ERP Analysis]], [[Research/2025-09-24 - WTC - WiseTech 24-Month Strategic Review]], [[Research/2025-11-23 - WTC - WiseTech Tech Debt and Acquisition Integration]], [[Research/2025-11-25 - WTC - Cargowise Impact on Freight Forwarding]]
 
----
+## Reverse Index: Macro → Theses
 
-## Reverse Index: Macro → Affected Theses
-
-Lookup: "This macro note changed — which theses are exposed?"
-
-| Macro Note | Affected Theses |
+| Macro Note | Linked Theses |
 |---|---|
-| [[Macro/AI Bubble Risk and Semiconductor Valuations]] | 285A, AVGO, LITE, META, NOW, NVDA, PANW, PLTR, PSTG, SEMICAP, SNDK |
-| [[Macro/Commodity Impacts from Iran Tensions]] | CCJ, LNG, RELIANCE, STNG |
-| [[Macro/Investment Strategy for US-Iran Conflict]] | CCJ, LNG, PANW, STNG |
-| [[Macro/Iran War Macroeconomic Scenario]] | CCJ, LNG, STNG, TTWO |
-| [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]] | BTC-CRYPTO, CRCL |
+| [[Macro/AI Bubble Risk and Semiconductor Valuations]] | [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/LITE - Lumentum]], [[Theses/META - Meta]], [[Theses/NOW - ServiceNow]], [[Theses/NVDA - Nvidia]], [[Theses/PANW - Palo Alto Networks]], [[Theses/PLTR - Palantir]], [[Theses/PSTG - Pure Storage]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
+| [[Macro/Commodity Impacts from Iran Tensions]] | [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/RELIANCE - Reliance Industries]], [[Theses/STNG - Scorpio Tankers]] |
+| [[Macro/Investment Strategy for US-Iran Conflict]] | [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/PANW - Palo Alto Networks]], [[Theses/STNG - Scorpio Tankers]] |
+| [[Macro/Iran War Macroeconomic Scenario]] | [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/STNG - Scorpio Tankers]], [[Theses/TTWO - Take-Two Interactive]] |
+| [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]], [[Theses/CRCL - Circle Internet Group]] |
 | [[Macro/VIX Index and Implied Volatility]] | — |
 
-## Reverse Index: Sector MOC → Member Theses
+## Reverse Index: Sector → Theses
 
-Lookup: "This sector shifted — which theses are in it?"
-
-| Sector MOC | Member Theses |
+| Sector Note | Linked Theses |
 |---|---|
-| [[Sectors/Agriculture & Industrial Equipment]] | DE, IOT |
-| [[Sectors/Consumer & Digital]] | APP, DUOL, EDEL, GAW, KAMBI, META, MTN, NFLX, OPEN, RELIANCE, SPOT, TTWO, UBER |
-| [[Sectors/Crypto & Digital Assets]] | BTC-CRYPTO, CRCL |
-| [[Sectors/Cybersecurity]] | NET, PANW |
-| [[Sectors/Defense & Geopolitics]] | PLTR, STNG |
-| [[Sectors/Energy & Commodities]] | BTC-CRYPTO, CCJ, LNG, RELIANCE, STNG |
-| [[Sectors/Enterprise Software]] | CSGP, IOT, NET, NOW, PANW, PLTR, PSTG, SHOP, WTC |
-| [[Sectors/Financial Services]] | CRCL, EDEL |
-| [[Sectors/Healthcare & MedTech]] | HIMS, ISRG |
-| [[Sectors/NAND Flash & Storage]] | 285A, PSTG, SEMICAP, SNDK |
-| [[Sectors/Precious Metals]] | BTC-CRYPTO |
-| [[Sectors/Semiconductor Capital Equipment]] | 285A, BESI, IQE, LITE, NVDA, SEMICAP, SNDK |
-| [[Sectors/Semiconductors]] | 285A, AVGO, BESI, EINK, IQE, LITE, NVDA, SEMICAP, SNDK |
+| [[Sectors/Agriculture & Industrial Equipment]] | [[Theses/DE - John Deere]], [[Theses/IOT - Samsara]] |
+| [[Sectors/Consumer & Digital]] | [[Theses/APP - AppLovin]], [[Theses/DUOL - Duolingo]], [[Theses/EDEL - Edelweiss Financial Group]], [[Theses/GAW - Games Workshop]], [[Theses/KAMBI - Kambi Group]], [[Theses/META - Meta]], [[Theses/MTN - Vail Resorts]], [[Theses/NFLX - Netflix]], [[Theses/OPEN - Opendoor]], [[Theses/RELIANCE - Reliance Industries]], [[Theses/SPOT - Spotify]], [[Theses/TTWO - Take-Two Interactive]], [[Theses/UBER - Uber]] |
+| [[Sectors/Crypto & Digital Assets]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]], [[Theses/CRCL - Circle Internet Group]] |
+| [[Sectors/Cybersecurity]] | [[Theses/NET - Cloudflare]], [[Theses/PANW - Palo Alto Networks]] |
+| [[Sectors/Defense & Geopolitics]] | [[Theses/PLTR - Palantir]], [[Theses/STNG - Scorpio Tankers]] |
+| [[Sectors/Energy & Commodities]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]], [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/RELIANCE - Reliance Industries]], [[Theses/STNG - Scorpio Tankers]] |
+| [[Sectors/Enterprise Software]] | [[Theses/CSGP - CoStar Group]], [[Theses/IOT - Samsara]], [[Theses/NET - Cloudflare]], [[Theses/NOW - ServiceNow]], [[Theses/PANW - Palo Alto Networks]], [[Theses/PLTR - Palantir]], [[Theses/PSTG - Pure Storage]], [[Theses/SHOP - Shopify]], [[Theses/WTC - WiseTech Global]] |
+| [[Sectors/Financial Services]] | [[Theses/CRCL - Circle Internet Group]], [[Theses/EDEL - Edelweiss Financial Group]] |
+| [[Sectors/Healthcare & MedTech]] | [[Theses/HIMS - Hims & Hers Health]], [[Theses/ISRG - Intuitive Surgical]] |
+| [[Sectors/NAND Flash & Storage]] | [[Theses/285A - Kioxia]], [[Theses/PSTG - Pure Storage (Everpure)]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
+| [[Sectors/Precious Metals]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] |
+| [[Sectors/Semiconductor Capital Equipment]] | [[Theses/285A - Kioxia]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
+| [[Sectors/Semiconductors]] | [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/EINK - E Ink Holdings]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
 
 ## Cross-Thesis Clusters
 
-Bidirectional thesis-to-thesis references. These are the highest-priority propagation paths — a change in one likely affects the other.
+Bidirectional reference clusters (mutual `cross-thesis:` links). These propagate together — research affecting one member typically affects all.
 
-| Cluster | Members | Binding Theme |
+| Cluster | Members | Link Type |
 |---|---|---|
-| NAND/Memory | 285A ↔ SNDK ↔ SEMICAP ↔ NVDA ↔ PSTG | NAND supply, HBM, memory pricing |
-| Photonics/Semis | LITE ↔ SEMICAP ↔ BESI ↔ NVDA ↔ AVGO, IQE → AVGO/BESI/LITE | CPO, silicon photonics, advanced packaging |
-| Enterprise Platform | NOW ↔ PLTR, NET ↔ PANW, WTC → IOT/NOW/PLTR | Enterprise software competition, agentic AI |
-| AI Valuation | NVDA ↔ AVGO ↔ PSTG, PLTR/META via macro | AI capex, bubble risk, compute demand |
-| Iran/Energy | CCJ, LNG, STNG, RELIANCE (via macro) | Iran conflict, commodity supply, tanker rates |
-| Crypto/Stablecoin | CRCL → BTC-CRYPTO | Stablecoin regulation, digital assets |
-| Streaming/Consumer | NFLX → SPOT | Subscription competition, content monetization |
+| NAND Memory | [[Theses/285A - Kioxia]], [[Theses/SNDK - SanDisk]] | ↔ |
+| Semiconductors & AI Infrastructure | [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/PSTG - Pure Storage]], [[Theses/SEMICAP - Semiconductor Capital Equipment]] | ↔ |
+| Cybersecurity | [[Theses/NET - Cloudflare]], [[Theses/PANW - Palo Alto Networks]] | ↔ |
+| Enterprise AI Platforms | [[Theses/NOW - ServiceNow]], [[Theses/PLTR - Palantir]] | ↔ |
 
 ## Orphan Research Notes
 
-Research notes not linked FROM any thesis. Candidates for /lint to flag or /sync to connect.
+Research notes not linked from any thesis. Candidates for /thesis creation, integration into existing theses, or archival via /clean.
 
-- 2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics
-- 2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure
-- 2025-05-10 - Macro - Indian vs Pakistani Defence Stocks
-- 2025-06-09 - CRWV - CoreWeave Deep Dive
-- 2025-07-15 - CETY - CETY Company Report
-- 2025-09-01 - Bali Tourism and Rental Income Trends
-- 2025-11-27 - Misc - Gemini Essay Analysis Canvas
-- 2025-12-10 - Australian Healthcare Non-Traditional Models
-- 2026-01-15 - AI Compute and Memory Demands - HBM Shortage
-- 2026-03-14 - CXL Technology Adoption
-- 2026-03-21 - Betting on Inflation Trades
-- 2026-03-26 - Fundrise Growth Tech Fund Holdings and Strategy
-- 2026-03-27 - TurboQuant Impact on Memory Demand
-- 2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive
-- 2026-03-30 - FROG - Universal Artifact Management
-- 2026-04-02 - Israel India Relations Analysis
-- 2026-04-09 - Macro - Gemini Sydney Property Canvas
-- 2026-04-14 - Claude Code Mastery Guide for Investment Research
-
----
-
-*Graph rebuilt: 2026-04-16 by `/sync graph` | 192 nodes, 597 edges, 18 orphans | Next full rebuild: run `/sync full`*
+- [[Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics]]
+- [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure]]
+- [[Research/2025-05-10 - Macro - Indian vs Pakistani Defence Stocks]]
+- [[Research/2025-06-09 - CRWV - CoreWeave Deep Dive]]
+- [[Research/2025-07-15 - CETY - CETY Company Report]]
+- [[Research/2025-09-01 - Bali Tourism and Rental Income Trends]]
+- [[Research/2025-11-27 - Misc - Gemini Essay Analysis Canvas]]
+- [[Research/2025-12-10 - Australian Healthcare Non-Traditional Models]]
+- [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]]
+- [[Research/2026-03-14 - CXL Technology Adoption]]
+- [[Research/2026-03-21 - Betting on Inflation Trades]]
+- [[Research/2026-03-26 - Fundrise Growth Tech Fund Holdings and Strategy]]
+- [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]]
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]
+- [[Research/2026-03-30 - FROG - Universal Artifact Management]]
+- [[Research/2026-04-02 - Israel India Relations Analysis]]
+- [[Research/2026-04-09 - Macro - Gemini Sydney Property Canvas]]
+- [[Research/2026-04-14 - Claude Code Mastery Guide for Investment Research]]
+- [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]

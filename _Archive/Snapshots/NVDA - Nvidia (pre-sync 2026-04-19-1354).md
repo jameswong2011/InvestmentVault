@@ -39,7 +39,7 @@ Vertically integrated operating system for the AI era spanning training (DGX), s
 
 - **How sustainable is the $30B sovereign AI revenue stream?** Sovereign AI tripled YoY across UK, Germany, France, UAE, and others. But it depends on continued political will to fund national AI infrastructure -- shifts in government priorities, economic downturns, or diplomatic realignments could freeze procurement. Are these multi-year contractual commitments or annual appropriations subject to cancellation?
 
-- **Does the China export control framework represent a resolved risk or an evolving vulnerability?** Case-by-case H200 review with 25% tariff and 50% volume cap appears to re-open ~$50B market, but Nvidia took a $4.5B charge and China instructed customs to block H200 imports. The "if Huawei achieves domestic alternatives" conditional has graduated to substantively confirmed: Ascend 950PR shipping Q1 2026 with 750K-unit volume target, in-house HBM (128GB/1.6 TB/s) bypassing the SK Hynix/Samsung supply chokepoint, ByteDance committing $5.6B in orders, CUDA-compatible software stack lowering migration barriers. Open question is no longer whether the alternative exists but whether HBM yield ramp (undisclosed manufacturing path) supports the 1.6M-die 2026 plan and whether 950DT (4 TB/s, Q4 2026) closes the bandwidth gap to H200 (4.8 TB/s).
+- **Does the China export control framework represent a resolved risk or an evolving vulnerability?** Case-by-case H200 review with 25% tariff and 50% volume cap appears to re-open ~$50B market, but Nvidia took a $4.5B charge and China instructed customs to block H200 imports. If Huawei Ascend achieves domestic alternatives, the market may be permanently lost regardless of US policy.
 
 - **Is the share decline from ~87% to ~75% an acceleration risk or natural market maturation?** Bulls: absolute revenue grows even as share moderates (healthy TAM expansion). Bears: if share declines from 75% to 60% by 2028 as ASIC software ecosystems mature, revenue growth decelerates even with TAM expansion. The trajectory matters more than the level -- which path is likelier given ASIC software maturation pace?
 
@@ -182,7 +182,7 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - **TSMC fabrication concentration (Taiwan Strait geopolitical risk) creates existential supply vulnerability.** A military conflict or severe natural disaster in Taiwan would cripple GPU production for 12–24+ months with no viable alternative foundry at scale.
 - **Algorithmic efficiency (Muon, TurboQuant, quantization) reduces GPU demand per workload faster than workload proliferation.** Trillion-parameter models now run on Apple Silicon hardware. If local/edge compute achieves state-of-the-art inference, cloud GPU demand erodes.
 - **Physical AI ROI disappoints near-term** — "ChatGPT moment for robotics" stalls due to regulatory hurdles, "physical hallucination" problems, slow enterprise deployment timelines. The TAM expansion narrative delays by years while valuation embeds it today.
-- **China export revenue never materializes despite policy relaxation.** $4.5B charge already taken. Huawei Ascend roadmap (950PR shipping Q1 2026, 950DT Q4 2026, 960 in 2027, 970 in 2028) with in-house HBM and 750K-unit 2026 volume now provides a concrete domestic alternative — ByteDance $5.6B order proves enterprise willingness to migrate. Atlas 950DT SuperCluster (520K chips, 524 EFLOPS FP8, Q4 2026) targets hyperscaler-scale deployments. ~$50B addressable market increasingly likely permanently lost regardless of US policy.
+- **China export revenue never materializes despite policy relaxation.** $4.5B charge already taken. China may develop domestic alternatives (Huawei Ascend) and permanently reject US-origin AI chips regardless of tariff levels. ~$50B addressable market at risk.
 - **Market share erosion accelerates from 75% toward 60%** as ASIC software ecosystems mature and AMD's ROCm improves. Revenue growth decelerates even with TAM expansion.
 - **The Groq LPX deal signals that GPUs are structurally suboptimal for dedicated inference** — Nvidia cancelled Rubin CPX and licensed Groq's SRAM architecture instead. Jensen frames this as inference market segmentation (premium-priced, low-latency tokens for high-value use cases like software engineering copilots vs throughput-optimized batch inference) rather than GPU inferiority. But cancelling a planned inference silicon product in favor of third-party licensing validates that GPU architecture alone cannot serve all inference market segments.
 
@@ -201,14 +201,13 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 2. **Custom ASIC competition:** Google TPU v7, Amazon Trainium, Microsoft Maia closing inference cost gap; ASIC software ecosystems improving faster than consensus expects
 3. **Algorithmic efficiency overshoot:** Compound efficiency gains (Muon 35% + TurboQuant 6x + quantization) could eventually overwhelm Jevons Paradox, reducing aggregate GPU demand
 4. **HBM supply constraints:** SK Hynix (~60% share), Samsung yield challenges (~50% for HBM4); 16-Hi stack yields of ~44% constrain production volume
-5. **China export uncertainty:** $4.5B charge taken; H200 at 25% tariff/50% volume cap; China may reject imports; ~$50B market at risk. Domestic alternatives (Huawei Ascend) shipping at scale: 950PR Q1 2026 (750K units planned), in-house HBM, ByteDance $5.6B committed, full roadmap through 2028 (970 targeting 4 ZettaFLOPS FP4)
+5. **China export uncertainty:** $4.5B charge taken; H200 at 25% tariff/50% volume cap; China may reject imports; ~$50B market at risk. Domestic alternatives (Huawei Ascend) developing
 6. **Physical AI timeline risk:** If robotics/AV deployment is slower than the simulation layer suggests, the TAM thesis delays while valuation embeds it
 7. **Inference architecture disruption:** Groq LPX deal signals GPUs may not be optimal for dedicated inference; SRAM-based and TPU-based architectures could capture inference revenue
 8. **Valuation requires sustained execution:** ~30x forward P/E on $300B+ implied FY2027 revenue requires continued 30%+ growth; any deceleration compresses the multiple sharply in a cyclical semiconductor industry
 9. **Tariff/trade policy uncertainty:** Broader US trade policy volatility (145% China tariffs on other goods) could disrupt supply chains and customer purchasing behavior
 
 ## Related Research
-- [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei three-year Ascend roadmap (950PR Q1 2026 with in-house 128GB/1.6 TB/s HBM, 950DT Q4 2026 at 144GB/4 TB/s, 960 in 2027, 970 in 2028 targeting 4 ZettaFLOPS FP4), 1.6M dies in 2026, ByteDance $5.6B order, Atlas 950DT SuperCluster 524 EFLOPS FP8, CUDA-compatible stack — China bear case strengthens from "developing" to "shipping at scale"
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — CEO interview: ASIC margins ~65% vs NVDA ~70%, $100B+ upstream supply commitments, Triton built on CUDA, Groq as market segmentation, China 7nm sufficiency argument, $30B OpenAI + $10B Anthropic investments
 - [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]] — Comprehensive Physical AI analysis: Omniverse architecture, PhysX 5 SDK, Warp benchmarks (8x–669x), Cosmos platform, competitive landscape, hardware-software co-optimization
 - [[Research/2026-03-28 - Nvidia PhyX and Physical AI]] — Claude deep-dive: PhysX competitive dynamics, full-stack vertical integration thesis, partnership conversion strategy, Havok/MuJoCo/Drake/Brax/Genesis comparative analysis
@@ -232,9 +231,6 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Sectors/Semiconductors]] — Sector Note with cross-thesis dynamics
 
 ## Log
-### 2026-04-19 (sync)
-- [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]: Propagated to Outstanding Questions (China conditional graduates to confirmed), Bear Case (added 750K-unit 2026 volume, ByteDance $5.6B, Atlas SuperCluster 524 EFLOPS), Risks #5 ("developing" → "shipping at scale"). Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-sync 2026-04-19-1354)]] — conviction unchanged (medium); China $50B revenue line increasingly likely permanently lost.
-
 ### 2026-04-16 (sync)
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]]: Propagated to Industry Context (ASIC margins ~65%, Triton built on CUDA), Supply Chain (added $100B+ commitment depth + $30B/$10B AI lab investments), Bear Case (Groq reframed as segmentation not inferiority). Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-sync 2026-04-16)]] — conviction unchanged.
 

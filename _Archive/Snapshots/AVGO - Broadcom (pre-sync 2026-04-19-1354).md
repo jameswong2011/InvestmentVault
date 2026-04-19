@@ -80,7 +80,6 @@ VMware's vSphere/VCF platform remains the dominant on-premise virtualization lay
 ### Competitive Landscape
 - **Nvidia**: Dominant in general-purpose AI compute (70-95% GPU share) and building a proprietary full-stack (NVLink, InfiniBand, CUDA). Complementary to Broadcom in most deployments, competitive only in networking. Nvidia's Spectrum-X Ethernet revenue grew 760% YoY to $1.46B but remains far behind Broadcom's installed base.
 - **Marvell**: Closest custom ASIC competitor (~13-15% share). AWS Trainium 2 partnership is the key engagement. Networking silicon (Teralynx) trails Broadcom by 1-2 generations — 12.8 Tbps shipping vs. Broadcom's 102.4 Tbps.
-- **Huawei (China-only)**: Self-designed Ascend AI accelerator with full vertically integrated stack — in-house HBM (128GB/1.6 TB/s on 950PR shipping Q1 2026, scaling to 144GB/4 TB/s on 950DT Q4 2026), custom CANN training toolkit, Atlas SuperPoD/SuperCluster systems (up to 520K chips, 524 EFLOPS FP8). Validates the "non-Nvidia, vertically integrated AI compute" architectural pattern at hyperscaler scale, supporting Broadcom's XPU thesis directionally — though Huawei is not a Broadcom customer (China geopolitical isolation), its commercial success demonstrates that custom ASIC-class architectures can capture >$5B annual revenue (ByteDance order alone).
 - **AMD**: Acquired Pensando for DPU capability; Pollara 400 is UEC-ready. Lacks merchant switching silicon. ROCm software ecosystem remains immature vs. CUDA.
 - **Intel**: Effectively exited merchant networking silicon (Tofino discontinued). Pivoting to ASIC design services but years from competitiveness.
 - **Nutanix**: Primary VMware alternative benefiting from Broadcom's aggressive pricing strategy. 30,000 migrated customers, record pipeline growth.
@@ -147,7 +146,6 @@ VMware's vSphere/VCF platform remains the dominant on-premise virtualization lay
 
 ## Related Research
 
-- [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei Ascend roadmap validates non-Nvidia vertically integrated AI compute architecture at scale (524 EFLOPS supercluster, ByteDance $5.6B order); supports AVGO XPU thesis directionally though Huawei not an AVGO customer
 - [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]] — Foundational "Android of AI" thesis; Hock Tan aggregation strategy; comprehensive product segment analysis
 - [[Research/2025-11-27 - Broadcom Data Center Opportunity]] — Custom ASIC market sizing ($60-90B SAM by FY2027); competitive dynamics vs Nvidia, Marvell, AMD; 80-90% Ethernet switching silicon share
 - [[Research/2025-11-27 - Broadcom Ethernet Networking Position]] — Ethernet market share analysis; Arista/Cisco competitive positioning; Tomahawk product roadmap; infrastructure layer thesis
@@ -159,9 +157,6 @@ VMware's vSphere/VCF platform remains the dominant on-premise virtualization lay
 - [[Theses/PSTG - Pure Storage]] — AI data center infrastructure theme
 
 ## Log
-
-### 2026-04-19 (sync)
-- [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]: Added Huawei to Industry Context as architectural-pattern validator (in-house HBM at 128GB/1.6 TB/s, Atlas 524 EFLOPS supercluster, ByteDance $5.6B). Confirms vertically integrated non-Nvidia AI compute is commercially viable at scale — supports XPU thesis directionally. Snapshot: [[_Archive/Snapshots/AVGO - Broadcom (pre-sync 2026-04-19-1354)]] — conviction unchanged (high).
 
 ### 2026-04-16
 - New research: [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen Huang confirms ASIC margins ~65% vs Nvidia's ~70%: "what are you really saving?" Validates AVGO margin durability in custom ASIC business. Also calls Anthropic a "unique instance" for TPU/Trainium growth — directionally supports AVGO's XPU demand concentration risk. Conviction unchanged.

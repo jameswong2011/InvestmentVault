@@ -1,31 +1,30 @@
 ---
-date: 2026-04-16
+date: 2026-04-19
 tags: [meta, hot-cache]
 ---
 
-# Hot Cache — Last Updated: 2026-04-16
+# Hot Cache — Last Updated: 2026-04-19
 
 > Persists context between Claude Code sessions. Updated automatically by `/sync` or manually.
 
-## Latest Sync (2026-04-16)
-- **Source**: [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen Huang CEO interview (Dwarkesh Patel, 1h43m)
-- **NVDA**: Propagated to Industry Context (ASIC margins ~65% vs NVDA ~70%, Triton built on CUDA), Supply Chain ($100B+ upstream commitments, $30B OpenAI / $10B Anthropic investments), Bear Case (Groq reframed as inference market segmentation). China bear case strengthened by Jensen's own arguments (7nm sufficiency, energy advantage, Huawei record year). Snapshot created. — conviction unchanged (medium)
-- **AVGO**: ASIC margin ~65% validates Broadcom margin durability in XPU business. Log entry only — conviction unchanged (high)
-- **Macro/AI Bubble Risk**: Added ASIC margin ~65% as moderating factor for custom silicon erosion narrative. Snapshot created. — no conviction impact
+## Latest Sync (2026-04-19)
+- **Source**: [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei three-year Ascend roadmap announcement (Tom's Hardware, in-house HBM detail)
+- **NVDA**: Propagated to Outstanding Questions (China conditional now substantively confirmed), Bear Case (Huawei roadmap quantified — 750K-unit 2026 plan, ByteDance $5.6B order, Atlas 524 EFLOPS supercluster), Risks #5 ("developing" → "shipping at scale"). Snapshot created. — conviction unchanged (medium); China $50B revenue line increasingly likely permanently lost
+- **AVGO**: Added Huawei to Industry Context as architectural-pattern validator for non-Nvidia vertically integrated AI compute at scale. Snapshot created. — conviction unchanged (high)
 - **Sectors/Semiconductors**: Research note link added
 - **Conviction flags**: None raised
-- **Key insight**: Jensen's China arguments (7nm sufficiency + abundant energy + Huawei millions shipped) paradoxically make the strongest bear case that ~$50B China market may be permanently lost regardless of US policy. Weight China risk higher in scenario analysis.
+- **Key insight**: Huawei's in-house HBM (128GB/1.6 TB/s on 950PR, 144GB/4 TB/s on 950DT) sidesteps the SK Hynix/Samsung supply chokepoint that constrains NVDA scaling. Combined with CUDA-compatible software stack and ByteDance commitment, the China bear case for NVDA graduates from "developing alternative" to "shipping competitive alternative at scale." Open question is yield ramp on undisclosed in-house HBM manufacturing path.
 
 ## Sync Archive
+- *2026-04-16 — NVDA Jensen Huang interview sync*: Propagated to NVDA Industry Context (ASIC margins ~65%), Supply Chain ($100B+ commitments), Bear Case (Groq segmentation), AVGO Log, Sectors/Semiconductors, Macro/AI Bubble Risk. Snapshots created.
 - *2026-04-16 — NAND sector creation*: Created [[Sectors/NAND Flash & Storage]] MOC. Propagated across SNDK, 285A, PSTG, SEMICAP, NVDA. HBF higher probability than consensus, supply deficit structural through 2027.
 - *2026-04-15 — Sector note consolidation*: Consolidated 8 Sectors/ notes into 3 MOC files. PANW + SEMICAP propagation across 11 vault documents.
-- *2026-04-15 — Cross-thesis sync + thesis restructure*: Propagated 13 research notes. LITE/NVDA/SNDK/SHOP/DE/IOT log entries. SPOT/SHOP/RELIANCE/PSTG/PLTR/OPEN/NVDA restructured.
 
 *Older syncs available in git history.*
 
 ## Active Research Thread
-- **NVDA moat analysis enriched**: Jensen Huang interview added ASIC margin data (~65%), supply chain depth ($100B+ commitments, $30B/$10B AI lab investments), Groq segmentation reframe, and China compute sufficiency argument. Three NVDA thesis sections updated (Industry Context, Supply Chain, Bear Case). Next step: monitor MLPerf/InferenceMax for competing TPU/Trainium submissions; track Chinese open-source model ecosystem alignment with Huawei hardware; SNDK Q3 FY2026 earnings (April 30) for HBF sampling.
-- *Previous threads:* NAND sector note created (Apr 16); SPOT/SHOP/RELIANCE/PSTG/PLTR/OPEN/NVDA restructures (Apr 15).
+- **NVDA China bear case quantified**: Apr 16 (Jensen interview, Huawei record year asserted) → Apr 19 (Huawei official roadmap with in-house HBM, 1.6M-die plan, ByteDance $5.6B order, Atlas 524 EFLOPS supercluster). Two consecutive research notes elevate China bear case from qualitative concern to substantively confirmed structural risk. Next step: track HBM yield evidence on Huawei 950PR (undisclosed manufacturing path is the remaining question); monitor ByteDance + other Chinese hyperscaler deployment evidence; SNDK Q3 FY2026 earnings (April 30) for HBF sampling.
+- *Previous threads:* NVDA moat analysis (Apr 16 Jensen interview); NAND sector note created (Apr 16); SPOT/SHOP/RELIANCE/PSTG/PLTR/OPEN/NVDA restructures (Apr 15).
 
 ## Recent Conviction Changes
 - [None recorded yet — start tracking with /sync]
