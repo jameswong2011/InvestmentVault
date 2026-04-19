@@ -1003,15 +1003,6 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 Understanding the infrastructure helps you trust the automation and diagnose issues.
 
-### `_graph.md` — Dependency Map
-Pre-computed wikilink index that `/sync` uses for fast, targeted propagation. Contains:
-- **Thesis Adjacency Index**: each thesis's links to sectors, macro, cross-thesis, research
-- **Reverse Indexes**: Macro → Theses, Sector → Theses (for reverse propagation)
-- **Cross-Thesis Clusters**: bidirectional thesis-to-thesis connections
-- **Orphan Research Notes**: research notes not linked from any thesis
-
-Rebuilt by `/graph`. Incrementally updated by `/sync` (default mode), `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/thesis`, `/brief`, `/prune`, `/status` (closures), `/rollback`.
-
 ### `_hot.md` — Session Context Cache
 Persists context between sessions. Sections:
 - **Active Research Thread**: what you're currently working on (auto-compressed history)
