@@ -271,7 +271,7 @@ The supercycle thesis strengthens. Every data point confirms a widening supply-d
 | Samsung V10 using YMTC hybrid bonding IP | Creates competitor vulnerability Kioxia doesn't share | Unchanged |
 | Bain still ~51%, exit pace uncertain | Overhang persists | Unchanged |
 
-### For [[Theses/PSTG - Pure Storage (Everpure)]]
+### For [[Theses/PSTG - Pure Storage]]
 
 NAND pricing +70-75% QoQ and supply shortage extending through 2027 is a direct headwind for Pure Storage's COGS. Monitor for gross margin compression and any pass-through pricing to enterprise customers.
 

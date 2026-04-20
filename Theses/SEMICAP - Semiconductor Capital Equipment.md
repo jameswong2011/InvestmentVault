@@ -4,6 +4,7 @@ tags: [thesis, semiconductors, WFE, capital-equipment, KLAC, AMAT, LRCX, ASMI, B
 status: active
 conviction: high
 sector: Semiconductors & Photonics
+ticker: [KLAC, AMAT, LRCX, ASMI, BESI]
 source: Synthesis of Grok, Claude, Gemini, ChatGPT conversation exports + web research (SEMI, company filings, TrendForce, SemiEngineering, Reuters, Seeking Alpha)
 ---
 

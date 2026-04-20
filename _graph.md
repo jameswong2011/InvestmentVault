@@ -1,14 +1,14 @@
 ---
 type: vault-graph
 date: 2026-04-20
-last_graph_write: 2026-04-19T15:47:33Z
-graph_mode: full
+last_graph_write: 2026-04-20T03:02:34Z
+graph_mode: incremental
 theses: 40
 sectors: 13
 macro: 6
 research: 133
-edges: 372
-orphans: 19
+edges: 375
+orphans: 18
 ---
 
 # Vault Dependency Graph
@@ -23,7 +23,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/NAND Flash & Storage]], [[Sectors/Semiconductors]]
 - **macro:** —
 - **cross-thesis:** [[Theses/SNDK - SanDisk]]
-- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]], [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-31 - SanDisk Valuation Assessment]], [[Research/2026-04-15 - SNDK - Investment Evaluation]]
+- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]], [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-31 - SanDisk Valuation Assessment]], [[Research/2026-04-15 - SNDK - Investment Evaluation]], [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]
 
 ### APP - AppLovin
 - **sectors:** [[Sectors/Consumer & Digital]]
@@ -221,7 +221,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/NAND Flash & Storage]], [[Sectors/Semiconductors]]
 - **macro:** —
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]]
-- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2026-01-17 - SanDisk HBM and NAND in AI]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]], [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-31 - SanDisk Valuation Assessment]], [[Research/2026-04-15 - SNDK - Investment Evaluation]]
+- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2026-01-17 - SanDisk HBM and NAND in AI]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]], [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-31 - SanDisk Valuation Assessment]], [[Research/2026-04-15 - SNDK - Investment Evaluation]], [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]
 
 ### SPOT - Spotify
 - **sectors:** [[Sectors/Consumer & Digital]]
@@ -283,7 +283,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 | [[Sectors/Enterprise Software]] | [[Theses/CSGP - CoStar Group]], [[Theses/IOT - Samsara]], [[Theses/NET - Cloudflare]], [[Theses/NOW - ServiceNow]], [[Theses/PANW - Palo Alto Networks]], [[Theses/PLTR - Palantir]], [[Theses/PSTG - Pure Storage]], [[Theses/SHOP - Shopify]], [[Theses/WTC - WiseTech Global]] |
 | [[Sectors/Financial Services]] | [[Theses/CRCL - Circle Internet Group]], [[Theses/EDEL - Edelweiss Financial Group]] |
 | [[Sectors/Healthcare & MedTech]] | [[Theses/HIMS - Hims & Hers Health]], [[Theses/ISRG - Intuitive Surgical]] |
-| [[Sectors/NAND Flash & Storage]] | [[Theses/285A - Kioxia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
+| [[Sectors/NAND Flash & Storage]] | [[Theses/285A - Kioxia]], [[Theses/PSTG - Pure Storage]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
 | [[Sectors/Precious Metals]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] |
 | [[Sectors/Semiconductor Capital Equipment]] | [[Theses/285A - Kioxia]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
 | [[Sectors/Semiconductors]] | [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/EINK - E Ink Holdings]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]], [[Theses/TSM - Taiwan Semiconductor]] |
@@ -321,4 +321,3 @@ Research notes not linked from any thesis. Candidates for /thesis creation, inte
 - [[Research/2026-04-02 - Israel India Relations Analysis]]
 - [[Research/2026-04-09 - Macro - Gemini Sydney Property Canvas]]
 - [[Research/2026-04-14 - Claude Code Mastery Guide for Investment Research]]
-- [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]

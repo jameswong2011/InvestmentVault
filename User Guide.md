@@ -224,7 +224,7 @@ Then find opportunities to reallocate attention:
 ```
 /surface
 ```
-> **Full chain**: `/sync` → `/prune` (approve changes in-line) → `/surface` (new opportunities) → `/graph` (finalise deferred graph changes from `/surface`)
+> **Full chain**: `/sync` → `/prune` (approve changes in-line) → `/surface` (new opportunities) → `/graph last` (apply graph invalidations from `/prune` closures and the new `/surface` research note)
 
 ### 3j. Idea Discovery → New Position
 
@@ -277,9 +277,9 @@ Then:
 /clean                           # delete old snapshots
 /surface                         # find new opportunities
 /catalyst                        # refresh catalyst calendar
-/graph                           # finalise deferred graph changes from /surface
+/graph last                      # apply graph invalidations from /surface and /prune
 ```
-> Run in this order. `/sync all` before `/graph` because the sync may change links. `/lint` after `/graph` because lint checks graph health. `/prune` after `/lint` because lint flags staleness. `/surface` near the end because the vault is now clean and complete. Final `/graph` finalises any deferred graph changes from `/surface` and `/prune` (these skills join a chain but no `/sync` follows to consolidate).
+> Run in this order. `/sync all` before `/graph` because the sync may change links. `/lint` after `/graph` because lint checks graph health. `/prune` after `/lint` because lint flags staleness. `/surface` near the end because the vault is now clean and complete. Final `/graph last` applies the invalidations that `/prune` (closures) and `/surface` (new research notes) wrote to `.graph_invalidations`.
 
 ### 3m. Recovery — Undo a Bad Sync
 
@@ -327,7 +327,7 @@ For adversarial prep (anticipating pushback):
 /brief TICKER
 ```
 > The brief distils the thesis into a 1-page memo. The stress test identifies the weakest points so you can prepare rebuttals.
-> **Note**: `/stress-test` starts the chain and applies its graph update immediately. `/brief` joins and defers — leaving 1 deferred graph change (brief research note indexing). Captured by the next `/sync` or `/graph` run — no explicit finalizer needed for a read-heavy prep workflow.
+> **Note**: Both `/stress-test` and `/brief` create research notes and write to `.graph_invalidations` for indexing. The next `/graph last` run picks them up — no explicit follow-up needed for a read-heavy prep workflow.
 
 ### 3p. Research Session — Ad Hoc Topic
 
@@ -364,7 +364,7 @@ For theses with no catalysts flagged:
 ```
 /prune [sector] stale
 ```
-> **Note**: If `/deepen` and `/prune` both run, deferred graph changes accumulate. These are captured by the next `/sync` or `/graph` — append one to the chain if you want the graph current immediately.
+> **Note**: Both `/deepen` and `/prune` write to `.graph_invalidations`. Run `/graph last` after the chain to apply the invalidations to `_graph.md`.
 
 ---
 
@@ -658,8 +658,8 @@ update based on the sector note and recent research.
 
 ### Health check
 ```
-/lint                            # full vault — 27 checks
-/lint TICKER                     # scoped — 12 checks on one thesis
+/lint                            # full vault — 47 checks
+/lint TICKER                     # scoped — ~16 checks on one thesis (15 always + #42 always + #37 conditional if rename marker present)
 ```
 > **Full**: structural (orphaned notes, broken links, missing frontmatter), freshness (stale theses, old metrics), connection (unlinked mentions, disconnected macro), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift), snapshot hygiene, graph health.
 > **Scoped**: frontmatter, sections, staleness, conviction-evidence, template compliance, graph entry validity. Faster for quick thesis checks.
@@ -774,14 +774,14 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | **Find portfolio blind spots** | `/surface` (unscoped) |
 | **Model a "what if"** | `/scenario [event description]` |
 | **See what's coming up** | `/catalyst` |
-| **Clean up weak positions** | `/sync` → `/prune` (approve changes in-line) → `/surface` → `/graph` |
-| **Run monthly maintenance** | `/sync all` → `/graph` → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph` |
+| **Clean up weak positions** | `/sync` → `/prune` (approve changes in-line) → `/surface` → `/graph last` |
+| **Run monthly maintenance** | `/sync all` → `/graph` → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last` |
 | **Check vault health** | `/lint` (full) or `/lint TICKER` (scoped) |
 | **Fix graph issues** | `/graph` |
 | **Undo a bad sync** | `/rollback TICKER` (offers cascade) → `/sync TICKER` |
 | **Undo a conviction change** | `/rollback TICKER` → select `(pre-status)` snapshot |
 | **Delete old snapshots** | `/clean` or `/clean [days]` |
-| **Rename a thesis (company name change)** | `/rename TICKER "New Company Name"` (atomic — handles wikilinks, graph, sector note, snapshots) |
+| **Rename a thesis (company name change)** | `/rename TICKER "New Company Name"` (file rename is atomic via `mv`; wikilink rewrites are best-effort with a `.rename_incomplete.TICKER` marker on partial failure — re-run `/rename` to repair, then ticker-scoped skills unblock) |
 | **Build a sector note** | Manual creation with Sector Template → `/graph` → `/surface [sector]` → `/sync` |
 | **Deep-dive a topic** | "Teach me [TOPIC]" → saved as Research note → `/sync` |
 
@@ -903,8 +903,8 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 ### `/lint`
 ```
-/lint                                      # full vault: 27 checks
-/lint NVDA                                 # scoped: 12 checks on one thesis
+/lint                                      # full vault: 47 checks
+/lint NVDA                                 # scoped: ~16 checks on one thesis
 ```
 
 ### `/prune`
@@ -944,7 +944,9 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 /rename SQ "Block"                         # post-rebrand: Theses/SQ - Square.md → Theses/SQ - Block.md
 /rename SHOP "Shopify Inc"                 # add corporate suffix
 ```
-> Atomic operation — updates filename, all inbound wikilinks (7 patterns), `_graph.md` adjacency header, sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, and `_hot.md` mentions. TICKER does not change. To undo: run `/rename TICKER "[OldName]"` (symmetric inverse). Pre-rename snapshot also created for content-only restore via `/rollback`.
+> Updates: filename (atomic via `mv`), all inbound wikilinks (7 patterns — best-effort across N files), `_graph.md` adjacency entry header, sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, and `_hot.md` mentions. TICKER does not change. To undo: run `/rename TICKER "[OldName]"` (symmetric inverse). Pre-rename snapshot also created for content-only restore via `/rollback`.
+>
+> **Partial-failure recovery**: if any wikilink-rewrite Edit fails (file lock, malformed wikilink, etc.), `/rename` writes a `.rename_incomplete.TICKER` marker listing the failed files. **Every ticker-scoped skill on TICKER hard-blocks** until the marker clears. To repair: re-run `/rename TICKER "[same new name]"` — the no-op detection skips the already-completed mv and retries only the failed Edits. The marker is removed when all retries succeed.
 
 ### `/status`
 ```
@@ -980,7 +982,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 - `/lint TICKER` for any thesis you actively edited
 
 ### Monthly
-- `/sync all` → `/graph` → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst`
+- `/sync all` → `/graph` → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last`
 - Review `_hot.md` conviction changes and drift flags
 - Conviction recalibration prompt for all high-conviction theses
 
@@ -1010,7 +1012,9 @@ Pre-computed wikilink index that `/sync` uses for fast, targeted propagation. Co
 - **Cross-Thesis Clusters**: bidirectional thesis-to-thesis connections
 - **Orphan Research Notes**: research notes not linked from any thesis
 
-Rebuilt by `/graph`. Incrementally updated by `/sync` (default mode), `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/thesis`, `/brief`, `/prune`, `/status` (closures), `/rollback`.
+Owned by `/graph` (three modes: full rebuild, `/graph last` incremental, `/graph [N]` catch-up). Most other skills do NOT write `_graph.md` directly — they record affected theses in `.graph_invalidations` (see below). Producers of invalidations: `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/thesis`, `/brief`, `/prune`, `/status` (closures), `/rollback`, `/sync`.
+
+**Exception**: `/rename` surgically updates the adjacency entry header (`### TICKER - [old_name]` → `### TICKER - [new_name]`) directly, since the rename is the only operation that changes how an existing thesis is identified in the graph. `/rename` does NOT advance `_graph.md`'s `last_graph_write:` watermark — that field belongs exclusively to `/graph` and advancing it would mask other pending changes from the next `/graph last` run.
 
 ### `_hot.md` — Session Context Cache
 Persists context between sessions. Sections:
@@ -1020,27 +1024,29 @@ Persists context between sessions. Sections:
 - **Recent Conviction Changes**: conviction/status changes and drift flags
 - **Open Questions**: unresolved questions across theses
 - **Portfolio Snapshot**: high-level portfolio state
-- **Session Chain**: coordinates multi-skill workflow chains (see below)
 
-Updated by: `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`. Hard-capped at 2,000 words.
+Updated by: `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`, `/catalyst`. Hard-capped at 2,500 words (soft cap 2,000 — compression rules in `.claude/skills/_shared/hot-md-contract.md`).
 
-### Session Chain — Workflow Coordination
-When running multi-skill workflow chains (§3a-3q), each skill updates `_graph.md` and `_hot.md`. Without coordination, this produces redundant graph read-write cycles and repeated Active Research Thread compression.
+### `.graph_invalidations` — Deferred Graph Updates
+Skills that change wikilink adjacency (new research note, thesis closure, sector reassignment, rename) record affected theses in `.graph_invalidations` at vault root rather than rewriting `_graph.md` themselves. Each line is a thesis path: `Theses/NVDA - Nvidia.md`.
 
-The `## Session Chain` section in `_hot.md` solves this:
-- **First skill** in a chain registers itself (Scope, Date, Steps) and performs full updates normally.
-- **Subsequent skills** detect the active chain: (1) SKIP `_graph.md` updates (deferred to finalizer), (2) append a short one-line entry to Active Research Thread instead of full compress/rotate.
-- **Finalizer** (`/sync` default/ticker or `/graph`) applies a single consolidated `_graph.md` update and clears the chain.
+`/graph last` consumes the file:
+1. Reads `.graph_invalidations` plus the watermark in `_graph.md`'s `last_graph_write:` frontmatter.
+2. Re-extracts adjacency only for changed-since-watermark theses + invalidated theses.
+3. Always rebuilds reverse indexes (Sector → Theses, Macro → Theses) from scratch to prevent drift.
+4. Deletes `.graph_invalidations` on successful write.
 
-Skills detect and join chains automatically — no manual management required.
+This separation eliminates cross-skill graph contention. Multi-skill workflow chains (§3a-3q) accumulate invalidations as they run; a single `/graph last` at the end applies them in one pass — there is no automatic "finalizer" mechanism, so you must run `/graph last` (or `/graph` for a full rebuild) explicitly.
 
-**Graph Debt**: If a chain is cleared without a proper finalizer (session ends mid-chain, or `/sync all` runs instead of `/sync`/`/graph`), deferred graph changes are preserved as **Graph Debt** — a persistent warning in `## Session Chain` that survives across sessions. Graph Debt reminds you to run `/graph` and is cleared automatically when `/sync` (default/ticker) or `/graph` next runs. This prevents silent loss of deferred changes. Full spec: CLAUDE.md § Session Chain Protocol.
+If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` (full) consumes it. `/lint #38` flags stale invalidation files so they are not forgotten.
 
 ### `_catalyst.md` — Catalyst Calendar
 Regenerated each time `/catalyst` runs. Timeline format: next 2 weeks (daily), weeks 3-4, months 2-3. Flags catalyst gaps and stale events.
 
 ### `.last_sync` — Watermark
-Touched at the end of every `/sync`. Used by the next `/sync` to detect which files changed since the last run. Never touched by `/graph`.
+Touched at the end of `/sync` (default mode) and `/sync all`. **NOT touched by `/sync TICKER`** — ticker-scoped runs preserve the watermark so the next default `/sync` still picks up unrelated files modified before the ticker run (advancing the watermark would silently mark them as already synced). Used by the next default `/sync` to detect which files changed since the last run via `find -newer .last_sync`.
+
+If `.last_sync` is absent, the next `/sync` (any mode) creates an epoch placeholder (`touch -t 197001010000`) so `find -newer` matches every file — equivalent to `/sync all` in scope. Never touched by `/graph`.
 
 ### `_Archive/Snapshots/` — Version Control
 Created automatically before destructive edits by: `/sync` (Tier A section edits), `/deepen`, `/status` (except draft→active), `/compare` (sector note changes), `/prune` (sector note changes), `/catalyst` (overwrites previous calendar), `/rollback` (pre-rollback safety net). Cleaned by `/clean`. Flagged for age by `/lint`.

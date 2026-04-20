@@ -317,7 +317,7 @@ HBF's value proposition is architectural: it enables model weights (which are re
 - [[Theses/285A - Kioxia]] — NAND pioneer, BiCS/CBA architecture leader, Flash Ventures JV (conviction: medium)
 
 ## Related Theses
-- [[Theses/PSTG - Pure Storage (Everpure)]] — Enterprise storage platform dependent on NAND supply/pricing
+- [[Theses/PSTG - Pure Storage]] — Enterprise storage platform dependent on NAND supply/pricing
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Equipment demand from 3D NAND scaling (LRCX etch, AMAT deposition)
 
 ## Watchlist

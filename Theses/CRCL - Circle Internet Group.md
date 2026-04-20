@@ -4,6 +4,7 @@ tags: [thesis, CRCL, stablecoins, USDC, crypto, fintech, payments]
 status: active
 conviction: medium
 sector: Crypto & Digital Assets
+ticker: CRCL
 ---
 
 # Circle Internet Group (CRCL) — The Regulated Dollar Protocol Mispriced as a Money Market Fund
