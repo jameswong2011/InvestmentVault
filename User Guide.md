@@ -1,44 +1,43 @@
 # User Guide — Claude Code + Obsidian for Investment Research
 
-> Your vault has **40 theses**, **133 research notes**, **13 sector notes**, and **6 macro notes**. This guide covers every skill, every argument form, every multi-skill workflow chain, and every natural language query pattern available. Ordered by impact — start at the top.
+> Your vault has **40 theses**, **133 research notes**, **13 sector notes**, and **6 macro notes**. This guide covers what to do, in what order, and when to prompt freely instead of invoking a skill.
+>
+> **How to read this guide.** Start with §0–§2 to get working. Use §3 as a workflow menu. Use §4 to pick a chain from an intent. Use §5 as the skill dictionary. Use §11 (Prompt Library) to supplement skills with free-form prompting. Reach for §13–§14 only when debugging or on first use.
 
 ---
 
 ## 0. First Run
 
-If this is a brand new vault (no prior `/sync` runs), run this bootstrap sequence:
+If this is a brand new vault (no prior `/sync` runs):
 
 ```
-/sync                            # creates _hot.md + .last_sync, reads all vault files
-/graph                           # creates _graph.md from vault state
+/sync        # creates _hot.md + .last_sync, reads all vault files
+/graph       # creates _graph.md from vault state
 ```
 
-After bootstrap, all skills work. Without it:
-- `/sync TICKER` and scoped `/surface` require `_graph.md` — they block if it's missing
-- `/prune` pre-flight unsynced-research check has no `.last_sync` baseline to compare against
-- Skills that update `_hot.md` will auto-create it (CLAUDE.md rule #9), but `/sync` produces a richer initial version with Latest Sync data and Portfolio Snapshot
+After bootstrap, all skills work. Without it, `/sync TICKER` and scoped `/surface` block (they need `_graph.md`), and `/prune`'s unsynced-research check has no baseline.
 
-> If the vault already has thesis/research/sector notes, `/sync` reads everything on first run (equivalent to `/sync all`). This is expected — it establishes the watermark baseline.
+If the vault already has content, `/sync` on first run reads everything (equivalent to `/sync all`) — this is expected.
 
-> **`.last_sync` deletion = de facto first run**: if `.last_sync` is ever deleted (manually, accidentally, or via a `git restore` that wipes it), the next `/sync` (any mode) treats the vault as first-run: creates an epoch placeholder, then `find -newer` matches every file. Effect: a `/sync` invocation you expected to finish in ~30 seconds takes 5-10× longer because it re-reads the entire vault. `/prune` Phase 0 also detects this state and now prompts before running (B4 fix). To check before invoking: `ls -la .last_sync` — if missing, expect first-run behavior on next sync. To recover the watermark without a full sync, you can `touch .last_sync` to set it to "now" — but this silently marks all currently-pending files as "synced," which is usually wrong. Prefer letting the next `/sync` create the epoch placeholder and re-process correctly.
+> If `.last_sync` is ever deleted, the next `/sync` treats the vault as first-run and re-reads every file (5–10× slower). See [[#`.last_sync` deletion|§13 — `.last_sync` deletion]].
 
 ---
 
 ## 1. The Core Loop
 
-Every session follows the same rhythm: **deposit → ingest → sync**. Everything else extends this loop.
-
 ```
 _Inbox/ drop  →  /ingest  →  /sync  →  work  →  /sync
 ```
 
-| Step | What happens | Time |
-|------|-------------|------|
-| Drop raw content into `_Inbox/` | Web clips, PDFs, CSVs, notes — any format | Between sessions |
-| `/ingest` | Transforms `_Inbox/` into structured Research notes with wikilinks | ~2 min |
-| `/sync` | Propagates new insights to all affected theses, sector notes, macro notes, `_hot.md` | ~3 min |
-| Work | Research, analysis, thesis building, conviction changes | Variable |
-| `/sync` | Propagate again after making changes | ~3 min |
+| Step | What happens |
+|------|-------------|
+| Drop raw content into `_Inbox/` | Web clips, PDFs, CSVs, notes — any format, between sessions |
+| `/ingest` | Transforms `_Inbox/` into structured Research notes with wikilinks |
+| `/sync` | Propagates new insights to affected theses, sector notes, macro notes, `_hot.md` |
+| Work | Research, analysis, thesis building, conviction changes |
+| `/sync` | Propagate again after making changes |
+
+Every chain that edits theses ends with `/graph last` (or `/graph` full after `/rename` or archive-recreation) to reconcile the dependency map. Read-only chains (`/brief`, `/lint`, `/rollback` list) skip it.
 
 ---
 
@@ -46,214 +45,100 @@ _Inbox/ drop  →  /ingest  →  /sync  →  work  →  /sync
 
 ### Resume context
 ```
-Read _hot.md. Summarise what I was working on,
-what's unresolved, and suggest what to focus on today.
+Read _hot.md. Summarise what I was working on, what's unresolved,
+and suggest what to focus on today.
 ```
 
 ### Process inbox
 ```
 /ingest
-```
-Then:
-```
 /sync
 ```
-> `/ingest` creates Research notes only. `/sync` propagates the insights to theses, sectors, macro notes. Always run both.
+`/ingest` creates Research notes only. `/sync` propagates. Always run both.
 
-### Earnings season triage
+### Earnings-season triage
 ```
 Which of my thesis companies report earnings in the next 2 weeks?
-For each, list the key metrics and outstanding questions from my thesis
-note that the report should answer.
+For each, list the key metrics and outstanding questions from my
+thesis note that the report should answer.
 ```
+
+### Manual edit protocol (important)
+
+**After manually editing a thesis body section** (Bull Case, Risks, Industry Context, Bear Case, Key Non-consensus Insights, etc.), **always append a Log entry** describing the change. Without one, `/sync` may classify the edit as skill-origin and silently skip propagation.
+
+Any prefix not in the skill-origin registry (e.g., `Manual edit:`, `Reviewed:`, `Refined:`) forces `/sync` to treat the change as research-driven. Example:
+
+```markdown
+### 2026-04-20
+- Manual edit: tightened Bull Case pricing-power argument — strengthened, added customer concentration data point from Q4 transcript
+```
+
+### Referencing content in prompts
+
+Four ways to point Claude at something specific:
+
+| Mechanism | Syntax | Example |
+|---|---|---|
+| Vault wikilink in a prompt | `[[path/note]]` | "Read [[Theses/NVDA - Nvidia]] and flag stale sections." |
+| Chat reference to a file | `@path/note.md` | "Summarise @Research/2026-04-15\ -\ ...\ .md" |
+| Editor selection | Auto-attached as `<editor_selection>` | Select text in a note, then prompt — Claude sees the selection. |
+| Browser selection (Surfing/web) | Auto-attached as `<browser_selection>` | Select text in an Obsidian browser view, then prompt. |
+
+The current note you're viewing is always attached as `<current_note>`. You don't need to repeat the filename when referring to "this thesis" or "this note".
 
 ---
 
 ## 3. Workflow Chains
 
-Multi-skill sequences for common scenarios. Each chain shows the optimal order — skipping steps weakens the outcome.
+Multi-skill sequences for common scenarios. Each chain lists the minimum steps. Footnotes about failure modes live in [[#13. Caveats & Gotchas|§13 Caveats & Gotchas]].
 
-> **`/graph last` is implicit at every chain end**. Every chain below that creates a thesis, edits a thesis, creates a research note, or closes a position leaves the dependency graph in a pending state — mtime advances on changed files plus any `.graph_invalidations` appended by closure operations. Run `/graph last` once the chain completes (or `/graph` full if the chain included a `/rename` or recreated an archived thesis). Only pure read-only chains (`/brief` alone, `/lint`, `/rollback` list mode) and chains ending in `/graph` itself skip this. §3 chains that already include an explicit `/graph last` step note it inline; all others assume you know to run it at the end.
+### 3.1 Starting new work
 
-### 3a. New Position — Full Build
-
-**When**: Starting coverage on a new company from scratch.
-
+#### New position — full build
+Starting coverage on a new company from scratch.
 ```
 /thesis TICKER
-```
-Review the draft. When ready to promote:
-```
 /status TICKER status draft→active [rationale]
-```
-Stress-test immediately while the thesis is fresh:
-```
 /stress-test TICKER
-```
-Propagate stress test findings:
-```
 /sync TICKER
 ```
-> **Full chain**: `/thesis` → `/status draft→active` → `/stress-test` → `/sync TICKER`
-> **Optional extension**: Add `/compare TICKER vs COMPETITOR` before `/sync` for competitive context. Add `/deepen TICKER [weakest section]` to fill gaps the stress test identified.
+Optional: `/compare TICKER vs COMPETITOR` before `/sync` for competitive context. `/deepen TICKER [weakest section]` to fill gaps the stress test identifies.
 
-### 3b. New Position — From Existing Research
-
-**When**: You've been collecting research on a ticker and want to formalise a thesis.
-
+#### New position — from existing research
+You've been collecting research on a ticker and want to formalise a thesis.
 ```
-/ingest                          # process any inbox items first
-/sync                            # propagate to existing notes
-/thesis TICKER                   # vault research is used automatically
+/ingest                                      # any inbox items first
+/sync                                        # propagate to existing notes
+/thesis TICKER                               # vault research auto-used
 /status TICKER status draft→active [rationale]
-/sync TICKER                     # propagate new thesis connections
-```
-
-### 3c. Earnings Reaction
-
-**When**: A thesis company just reported earnings.
-
-```
-/ingest [transcript or press release URL]
-/sync TICKER
-```
-If the report changes conviction:
-```
-/status TICKER conviction old→new [what the report revealed]
-```
-If the report was ambiguous, stress-test first:
-```
-/stress-test TICKER
-```
-> **Full chain**: `/ingest URL` → `/sync TICKER` → (assess) → `/status` or `/stress-test` → `/sync`
-
-### 3d. Conviction Drift Response
-
-**When**: `/sync` flags `⚠️ Conviction drift` on a thesis.
-
-**Path A — Reaffirm** (evidence reviewed, conviction unchanged):
-```
-/status TICKER reaffirm [rationale why the drift signal is noise]
-```
-
-**Path B — Investigate first**:
-```
-/stress-test TICKER
-```
-Review findings, then either reaffirm or change:
-```
-/status TICKER conviction old→new [rationale from stress test]
 /sync TICKER
 ```
 
-**Path C — Investigate with targeted research**:
+#### Idea discovery → new position
+Find a new opportunity from existing research.
 ```
-/deepen TICKER [section the drift relates to]
-/sync TICKER
-```
-Then decide:
-```
-/status TICKER conviction old→new [rationale]
-```
-
-### 3e. Macro Shock Response
-
-**When**: A major macro event occurs (rate decision, geopolitical event, policy change).
-
-```
-/scenario [describe the event with quantitative parameters]
-```
-For the most exposed positions:
-```
-/status TICKER conviction old→new [transmission channel from scenario]
-```
-If the scenario reveals competitive dynamics worth exploring:
-```
-/compare [exposed ticker] vs [beneficiary ticker]
-```
-Propagate all changes:
-```
-/sync
-```
-> **Full chain**: `/scenario` → `/status` (most affected) → `/compare` (competitive shifts) → `/sync`
-
-### 3f. Thesis Improvement — Targeted
-
-**When**: A thesis section is weak, stale, or flagged by `/lint`.
-
-```
-/deepen TICKER [section name]
-/sync TICKER
-```
-> `/deepen` auto-detects the weakest section if you omit the section name. Always follow with `/sync TICKER` to propagate.
-
-### 3g. Thesis Improvement — Adversarial
-
-**When**: You want to pressure-test conviction before a major decision.
-
-```
-/stress-test TICKER
-/deepen TICKER [section the stress test identified as weakest]
-/sync TICKER
-```
-> The stress test identifies vulnerabilities. `/deepen` fills the gaps. `/sync` propagates.
-
-### 3h. Competitive Reassessment
-
-**When**: Competitive dynamics in a sector are shifting.
-
-```
-/compare A vs B
-```
-If the comparison changes conviction on either name:
-```
-/status TICKER conviction old→new [competitive insight]
-```
-Propagate:
-```
-/sync
-```
-> **Variant**: `/compare A vs B vs C` works for 3+ companies. At least one ticker must have a thesis note. Tickers without theses use web research (lighter analysis, no vault updates for that ticker). For full-depth comparison, run `/thesis TICKER` first.
-
-### 3i. Portfolio Pruning Cycle
-
-**When**: Portfolio feels crowded, attention is spread thin, or it's time for periodic cleanup.
-
-```
-/prune
-```
-> Warns if unsynced research exists — always `/sync` first. `/prune` presents a recommendation table, then asks for approval before executing. Approved closures and upgrades are applied directly by `/prune` — do not run `/status` afterward (the files have already been moved or updated).
-
-Then find opportunities to reallocate attention:
-```
-/surface
-```
-> **Full chain**: `/sync` → `/prune` (approve changes in-line) → `/surface` (new opportunities) → `/graph last` (apply graph invalidations from `/prune` closures and the new `/surface` research note)
-
-### 3j. Idea Discovery → New Position
-
-**When**: You want to find new opportunities from existing research.
-
-```
-/surface
-```
-or scoped:
-```
-/surface semiconductors
-```
-If an opportunity emerges:
-```
-/thesis TICKER
-/compare TICKER vs [existing competitor in sector]
+/surface                                     # or /surface [sector]
+/thesis TICKER                               # if an opportunity emerges
+/compare TICKER vs [existing competitor]
 /status TICKER status draft→active [rationale]
 /sync
 ```
 
-### 3k. Sector Deep-Dive
+#### Acting on a surface finding
+`/surface` produces a Research note with multiple opportunities. To act on one:
+```
+# Identify the opportunity from the latest /surface note, then either:
+/thesis TICKER                               # if it's a new name to cover
+# OR
+/deepen TICKER [section]                     # if it extends an existing thesis
+/sync
+```
 
-**When**: Entering or re-evaluating an entire sector.
+#### Sector deep-dive
+Entering or re-evaluating an entire sector.
 
-If sector note doesn't exist yet:
+If the sector note doesn't exist:
 ```
 Create a new Sector Note for [SECTOR] using the Sector Template. Search
 the vault for all relevant thesis notes, research notes, and macro
@@ -262,194 +147,561 @@ what consensus believes and where they could be wrong.
 ```
 Then:
 ```
-/graph                           # register new sector note in the reverse index
+/graph                                       # register the new sector note
 /surface [sector]
-/compare [key players in sector]
+/compare [key players]
 /sync
 ```
-> `/graph` is required before `/surface` — sector scoping uses `_graph.md`'s Sector → Theses reverse index, which won't include a newly created sector note until `/graph` runs. If building multiple theses in a new sector: create the sector note first, then for each company run `/thesis TICKER` **followed by `/status TICKER status draft→active [rationale]`**, then `/graph`. **Draft theses are intentionally omitted from sector notes' Active Theses sections** (CLAUDE.md Thesis Notes convention), so `/surface [sector]` — which resolves scope via the sector note's Active Theses list — will silently skip any thesis still in draft. Promoting each new thesis to active before the `/graph` rebuild ensures sector-scoped skills see the full cohort.
 
-### 3l. Monthly Maintenance
+If building multiple theses inside the new sector, promote each to `active` **before** rebuilding the graph — draft theses are intentionally omitted from sector Active Theses and will be invisible to `/surface [sector]`. See [[#Draft theses invisible to sector scope|§13 — Draft theses invisible to sector scope]].
 
-**When**: Monthly or when the vault feels out of sync.
+### 3.2 Responding to events
 
+#### Earnings reaction
+A thesis company just reported.
 ```
-/sync all                        # full brute-force propagation
-/graph                           # rebuild dependency graph from scratch
-/lint                            # full health audit
-/prune                           # portfolio evaluation
-/clean                           # delete old snapshots
-/surface                         # find new opportunities
-/catalyst                        # refresh catalyst calendar
-/graph last                      # apply graph invalidations from /surface and /prune
-```
-> Run in this order. `/sync all` before `/graph` because the sync may change links. `/lint` after `/graph` because lint checks graph health. `/prune` after `/lint` because lint flags staleness. `/surface` near the end because the vault is now clean and complete. Final `/graph last` applies the invalidations `/prune` (closures) appended to `.graph_invalidations` plus any changed-thesis adjacencies the mtime-watermark picks up. Note: `/surface` does NOT write `.graph_invalidations`; a new `/surface` research note becomes visible to the graph on the next full `/graph` (orphan list recompute) or when a thesis is next Edited to wikilink to it.
-
-### 3m. Recovery — Undo a Bad Sync
-
-**When**: `/sync` produced changes you disagree with.
-
-```
-/rollback TICKER
-```
-Select the `(pre-sync)` snapshot. Rollback detects cascade operations — if `/sync` touched multiple files, it offers to restore all of them atomically. For pre-batch-ID snapshots `/rollback` presents a legacy disambiguation prompt; for sync-manifest snapshots it asks how to handle Tier B cross-thesis Log appends (surface only, cascade + strikethrough, or single-file).
-
-After rollback, **scope the re-propagation to match what was restored**:
-```
-# If the cascade restored a single thesis:
-/sync TICKER                     # re-propagate from the restored state
-
-# If the cascade restored multiple theses (the common case for default /sync):
-/sync all                        # /sync TICKER only touches one thesis's adjacency,
-                                 # leaving the other cascaded files in restored-but-unsync'd state
-/graph                           # full rebuild, since cascade may have changed link structure
-```
-> **Propagated-research caveat**: `/rollback` restores thesis/sector/macro **files** from snapshots, but does **not** rewrite the `propagated_to:` frontmatter of research notes that were consumed during the reverted `/sync`. If the originating research note is still in `Research/` with `propagated_to: [TICKER]`, the next `/sync` will see the dedup flag and skip re-applying the research to that thesis — silently leaving it in the restored (pre-propagation) state. If you need a specific research note re-propagated post-rollback, either (a) remove the relevant ticker from that note's `propagated_to:` list manually, or (b) delete and re-`/ingest` the source.
-
-### 3n. Recovery — Undo a Closure
-
-**When**: A thesis was closed/archived but you want to reopen it.
-
-```
-/rollback TICKER
-```
-The archived thesis will be recreated at its original path. The archived copy moves to Snapshots. `/rollback` restores the pre-closure snapshot — check the restored note's `status:` frontmatter before proceeding:
-
-- **If `status: active`** (typical — snapshot was taken before closure): skip `/status`, the note is already active.
-- **If `status: closed`** (rare — snapshot was taken after closure): run `/status TICKER status closed→active [rationale]`.
-
-Then propagate:
-```
+/ingest [transcript or press release URL]
 /sync TICKER
-/graph
+```
+If conviction changes:
+```
+/status TICKER conviction old→new [what the report revealed]
+```
+If ambiguous:
+```
+/stress-test TICKER                          # before deciding
 ```
 
-### 3o. Pre-Meeting Prep
-
-**When**: You need to pitch or discuss a position.
-
+#### Macro shock
+Rate decision, geopolitical event, policy change.
 ```
-/brief TICKER
+/scenario [describe the event with quantitative parameters]
+/status TICKER conviction old→new [transmission channel]    # most affected
+/compare [exposed] vs [beneficiary]                          # if competitive shifts emerge
+/sync
 ```
-For adversarial prep (anticipating pushback):
+
+#### Conviction drift response
+`/sync` flags `⚠️ Conviction drift` on a thesis.
+
+- **Reaffirm** (evidence reviewed, conviction unchanged):
+  ```
+  /status TICKER reaffirm [why the drift signal is noise]
+  ```
+- **Investigate first**:
+  ```
+  /stress-test TICKER
+  /status TICKER conviction old→new [rationale]    # or reaffirm
+  /sync TICKER
+  ```
+- **Investigate with targeted research**:
+  ```
+  /deepen TICKER [section the drift relates to]
+  /sync TICKER
+  /status TICKER conviction old→new [rationale]
+  ```
+
+#### Catalyst-driven review
+Preparing for an upcoming catalyst window.
+```
+/catalyst
+/deepen TICKER Catalysts                     # for each imminent catalyst thesis
+/prune [sector] stale                        # for theses with no catalysts flagged
+```
+
+### 3.3 Improving theses
+
+#### Targeted improvement
+A thesis section is weak, stale, or flagged by `/lint`.
+```
+/deepen TICKER [section]                     # omit section to auto-detect weakest
+/sync TICKER
+```
+
+#### Adversarial pressure test
+Before a major decision.
+```
+/stress-test TICKER
+/deepen TICKER [section the stress test flagged]
+/sync TICKER
+```
+
+#### Competitive reassessment
+Competitive dynamics in a sector are shifting.
+```
+/compare A vs B                              # or /compare A vs B vs C
+/status TICKER conviction old→new [competitive insight]    # if warranted
+/sync
+```
+At least one ticker must have a thesis note. Tickers without theses use web research (lighter analysis, no vault updates for them).
+
+#### Pre-meeting prep
+You need to pitch or discuss a position.
+```
+/brief TICKER                                # 1-page memo
+```
+Adversarial prep (anticipate pushback):
 ```
 /stress-test TICKER
 /brief TICKER
 ```
-> The brief distils the thesis into a 1-page memo. The stress test identifies the weakest points so you can prepare rebuttals.
-> **Note**: Both `/stress-test` and `/brief` create research notes. Neither writes to `.graph_invalidations` — `/stress-test` Edits the thesis Log (mtime advance → `/graph last` picks up the adjacency via watermark), `/brief` is purely derivative (research note only, no thesis Edit). For a read-heavy prep workflow, running `/graph last` after the chain refreshes `/stress-test` adjacency; `/brief`'s new note appears in the orphan list only on the next full `/graph`.
 
-### 3p. Research Session — Ad Hoc Topic
-
-**When**: Researching a topic that may affect multiple theses.
-
+#### Ad-hoc research session
+Researching a topic that may affect multiple theses.
 ```
 /ingest [URL1]
 /ingest [URL2]
-/ingest [URL3]
 /sync
 ```
 Or for manual research:
 ```
 Research [TOPIC] for [TICKER]. Focus on [specific angle]. Save to
 Research/ and update the relevant thesis log.
-```
-Then:
-```
 /sync
 ```
 
-### 3q. Catalyst-Driven Review
+### 3.4 Maintaining the vault
 
-**When**: Preparing for an upcoming catalyst window.
+#### Portfolio pruning cycle
+Portfolio feels crowded or overdue for cleanup.
+```
+/sync                                        # first — /prune warns if unsynced research exists
+/prune                                       # presents table, asks approval, applies in-line
+/surface                                     # find reallocation opportunities
+/graph last
+```
 
+#### Monthly maintenance
+Monthly, or when the vault feels out of sync.
+```
+/sync all
+/graph
+/lint
+/prune
+/clean
+/surface
+/catalyst
+/graph last
+```
+Run in this order. `/sync all` before `/graph` because syncs can change links. `/lint` after `/graph` to check graph health. `/prune` after `/lint` because lint flags staleness. `/surface` and `/catalyst` near the end against a clean vault. Final `/graph last` picks up closure-generated `.graph_invalidations`.
+
+#### Recovery — undo a bad sync
+`/sync` produced changes you disagree with.
+```
+/rollback TICKER                             # pick the (pre-sync) snapshot
+```
+Rollback detects cascade operations — if `/sync` touched multiple files, it offers to restore all atomically. After rollback:
+```
+# Single-file cascade:
+/sync TICKER
+# Multi-file cascade (the common default-sync case):
+/sync all
+/graph
+```
+See [[#Propagated-research caveat after rollback|§13 — Propagated-research caveat after rollback]].
+
+#### Recovery — undo a closure
+A thesis was archived but you want to reopen it.
+```
+/rollback TICKER
+```
+The archived thesis returns to its original path. Check the restored `status:` frontmatter:
+- `status: active` (typical): skip `/status`.
+- `status: closed` (rare): `/status TICKER status closed→active [rationale]`.
+
+Then:
+```
+/sync TICKER
+/graph                                       # full — thesis structure changed
+```
+
+---
+
+## 4. Decision Guide — "I Want To..."
+
+> Notation: `skill field old→new [reason]`. See [[#5. Skill Reference|§5 Skill Reference]] for full argument forms.
+
+| I want to... | Do this |
+|---|---|
+| **Start a session** | Read `_hot.md` → `/ingest` → `/sync` |
+| **Clip an article** | `/ingest [URL]` → `/sync` |
+| **Process inbox** | `/ingest` → `/sync` |
+| **Start covering a new company** | [[#New position — full build|§3.1 New position — full build]] |
+| **Formalise collected research into a thesis** | [[#New position — from existing research|§3.1 New position — from existing research]] |
+| **Improve a weak thesis** | `/deepen TICKER` → `/sync TICKER` |
+| **Improve a specific section** | `/deepen TICKER [section]` → `/sync TICKER` |
+| **Challenge a thesis** | `/stress-test TICKER` → (decide) → `/status` → `/sync` |
+| **Compare competitors** | `/compare A vs B` → `/sync` |
+| **Pitch a position** | `/brief TICKER` |
+| **React to earnings** | `/ingest [URL]` → `/sync TICKER` → `/status` if needed |
+| **React to macro event** | `/scenario [event]` → `/status` (most affected) → `/sync` |
+| **Handle conviction drift** | [[#Conviction drift response|§3.2 Conviction drift response]] |
+| **Change conviction** | `/status TICKER conviction old→new [reason]` |
+| **Close a position** | `/status TICKER status active→closed [reason]` |
+| **Reopen an archived position** | [[#Recovery — undo a closure|§3.4 Recovery — undo a closure]] |
+| **Find new ideas** | `/surface` or `/surface [sector]` |
+| **Find portfolio blind spots** | `/surface` (unscoped) |
+| **Act on a surface finding** | [[#Acting on a surface finding|§3.1 Acting on a surface finding]] |
+| **Model a "what if"** | `/scenario [event]` |
+| **See what's coming up** | `/catalyst` |
+| **Clean up weak positions** | [[#Portfolio pruning cycle|§3.4 Portfolio pruning cycle]] |
+| **Run monthly maintenance** | [[#Monthly maintenance|§3.4 Monthly maintenance]] |
+| **Check vault health** | `/lint` (full) or `/lint TICKER` (scoped) |
+| **Fix graph issues** | `/graph` |
+| **Undo a bad sync** | [[#Recovery — undo a bad sync|§3.4 Recovery — undo a bad sync]] |
+| **Undo a conviction change** | `/rollback TICKER` → select `(pre-status)` snapshot |
+| **Delete old snapshots** | `/clean` (see [[#`/clean`|§5 /clean]] for all modes) |
+| **Rename a thesis (company name change)** | `/rename TICKER "New Name"` (see [[#Renaming a thesis|§10 Renaming a thesis]]) |
+| **Build a sector note** | [[#Sector deep-dive|§3.1 Sector deep-dive]] |
+| **Deep-dive a topic** | "Teach me [TOPIC]" → Research note → `/sync` (see [[#7. Research & Thesis Building|§7]]) |
+| **Explore free-form** | [[#11. Prompt Library|§11 Prompt Library]] |
+
+---
+
+## 5. Skill Reference
+
+One canonical entry per skill: arguments, what it creates, what it modifies, follow-up. Grouped by role.
+
+### Core workflow
+
+#### `/ingest`
+```
+/ingest                                    # batch: everything in _Inbox/
+/ingest https://example.com/article        # single URL
+/ingest /path/to/file.pdf                  # local file (.md, .pdf, .csv, .txt)
+```
+- **Creates**: Research note(s). Moves source to `_Inbox/processed/`.
+- **Modifies**: none (no thesis/sector edits).
+- **Follow-up**: `/sync` → `/graph last`.
+- **Same-source dedup**: hard-blocks a URL ingested today with identical `source:`. Older same-source ingests surface a three-option prompt (append / supersede / cancel). Delete the prior note from `Research/` first if it's a stub or wrong.
+
+#### `/sync`
+```
+/sync                                      # graph-assisted: changed files + adjacencies
+/sync all                                  # brute-force: reads everything (slow)
+/sync NVDA                                 # ticker-scoped: one thesis + adjacencies
+```
+- **Creates**: Tier A snapshots, `_sync-manifest`.
+- **Modifies**: Theses, Sectors, Macro, `_hot.md`, `.last_sync` (default/all only).
+- **Follow-up**: `/graph last`.
+
+Which mode?
+
+| Situation | Mode |
+|---|---|
+| Just edited one thesis or one ticker's research | `/sync TICKER` |
+| Ingested or edited research touching multiple tickers | `/sync` (default) |
+| Monthly cadence, or vault feels stale/inconsistent | `/sync all` |
+
+#### `/status`
+```
+# Conviction change
+/status NVDA conviction medium→low China risk unhedgeable
+
+# Status transition
+/status NVDA status draft→active thesis meets quality bar
+/status NVDA status active→monitoring awaiting catalyst
+/status NVDA status monitoring→active catalyst emerged
+/status NVDA status active→closed thesis invalidated by [reason]
+
+# Drift acknowledgment
+/status NVDA reaffirm earnings miss was one-time, position unchanged
+```
+- **Creates**: Snapshot (except `draft→active` and `reaffirm`), `_status-manifest`.
+- **Modifies**: Thesis frontmatter + Log, sector note, `_hot.md`; appends `.graph_invalidations` on closure; appends `.archive_ticker_registry.md` on closure.
+- **Follow-up**: `/sync` (conviction changes), `/graph last`.
+- Mandatory confirmation before applying. `draft→active` has no pre-status snapshot (see [[#Draft→active has no snapshot|§13]]).
+
+### Analytical
+
+#### `/surface`
+```
+/surface                                   # full vault scan
+/surface NVDA                              # ticker + adjacencies + sector peers
+/surface semiconductors                    # all theses in sector + sector + macro
+```
+- **Creates**: Research note.
+- **Modifies**: `_hot.md`.
+- **Follow-up**: `/deepen` or `/thesis` on opportunities; `/graph last`.
+
+#### `/stress-test`
+```
+/stress-test NVDA
+```
+- **Creates**: Research note, `_stress-test-manifest`.
+- **Modifies**: Thesis Log + Related Research, `_hot.md`.
+- Acts as a short seller. Flags for conviction reassessment but does NOT change conviction — that requires `/status`.
+- **Follow-up**: `/status` (if needed) → `/sync` → `/graph last`.
+
+#### `/scenario`
+```
+/scenario Fed cuts 150bps by year-end
+/scenario China invades Taiwan
+/scenario oil spikes to $150
+/scenario AI capex disappoints by 40%
+/scenario reverse [[Research/2026-04-19 - Scenario - Fed cut]]    # propagate an existing scenario note
+```
+- **Creates**: Research note (forward mode only), `_scenario-manifest`.
+- **Modifies**: Thesis Logs for Major-impact positions, `_hot.md`.
+- **Follow-up**: `/status` (affected) → `/sync` → `/graph last`.
+
+#### `/compare`
+```
+/compare BESI vs AMAT                      # two
+/compare PANW NET CRWD                     # 3+
+```
+- **Creates**: Research note (comparison), `_compare-manifest`, sector snapshot if sector note edited.
+- **Modifies**: Thesis Logs, sector note(s), `_hot.md`.
+- At least one ticker must have a thesis note. Missing tickers use web research (lighter; no vault updates for them).
+- **Follow-up**: `/sync` → `/graph last`.
+
+#### `/catalyst`
 ```
 /catalyst
 ```
-For each thesis with imminent catalysts:
+- **Creates**: `_catalyst.md` (overwrites), pre-catalyst snapshot.
+- **Modifies**: `_hot.md`.
+- Enriches with web-searched earnings dates. Flags catalyst clusters and gaps.
+- **Follow-up**: `/deepen TICKER Catalysts` for any gap thesis.
+
+### Building
+
+#### `/thesis`
 ```
-/deepen TICKER Catalysts
+/thesis NVDA
 ```
-For theses with no catalysts flagged:
+- **Creates**: Thesis note (draft, 13 sections), `_thesis-manifest`.
+- **Modifies**: Sector note (only if promoted to active in same flow), `_hot.md`.
+- Searches vault first (existing research, sector, macro), then web.
+- Archive-collision detection: if an archived thesis exists for TICKER, pauses with a 4-option menu. See [[#Archive-collision prompt|§13 — Archive-collision prompt]].
+- **Follow-up**: `/status draft→active` → `/stress-test` → `/sync` → `/graph last`.
+
+#### `/deepen`
 ```
-/prune [sector] stale
+/deepen NVDA                               # auto-detects weakest section
+/deepen NVDA Summary
+/deepen NVDA Key Non-consensus Insights
+/deepen NVDA Outstanding Questions
+/deepen NVDA Business Model
+/deepen NVDA Industry Context
+/deepen NVDA Key Metrics
+/deepen NVDA Bull Case
+/deepen NVDA Bear Case
+/deepen NVDA Catalysts
+/deepen NVDA Risks
+/deepen NVDA Conviction Triggers
 ```
-> **Note**: `/prune` writes to `.graph_invalidations` (closure branch); `/deepen` does not — `/deepen`'s thesis Edit advances the mtime and `/graph last`'s watermark picks it up. Run `/graph last` after the chain either way.
+- **Creates**: Pre-deepen snapshot, optional supporting Research note.
+- **Modifies**: Thesis (target section + Log), `_hot.md`.
+- Surgical — NOT a full rewrite. Enhances one section at a time.
+- **Follow-up**: `/sync TICKER` → `/graph last`.
+
+#### `/brief`
+```
+/brief NVDA
+```
+- **Creates**: Research note (1-page brief).
+- **Modifies**: `_hot.md` only (no thesis edit — fully derivative).
+- Read-only on the thesis. Warns if a previous brief exists.
+- **Follow-up**: `/graph last` (optional — brief is derivative).
+
+### Maintenance
+
+#### `/lint`
+```
+/lint                                      # full vault
+/lint NVDA                                 # scoped to one thesis
+```
+- **Creates**: none (read-only report).
+- Full: structural (orphaned notes, broken links, missing frontmatter), freshness, connection, analytical (conviction-evidence mismatch, template drift), snapshot hygiene, graph health.
+- Scoped: frontmatter, sections, staleness, conviction-evidence, template compliance, graph entry validity. Faster.
+- **Follow-up**: Fix flagged issues; `/graph` if graph health issues.
+
+#### `/prune`
+```
+/prune                                     # all theses
+/prune semiconductors                      # sector filter
+/prune stale                               # flag: last log >60 days
+/prune low                                 # flag: conviction low
+/prune draft                               # flag: status draft
+/prune monitoring                          # flag: status monitoring
+/prune semiconductors stale                # combined
+```
+- **Creates**: Per-closure / per-upgrade snapshots, `_prune-manifest`.
+- **Modifies**: Theses (closures/upgrades), sector notes, `_hot.md`; appends `.graph_invalidations`, `.archive_ticker_registry.md` on closures.
+- Checks for unsynced research first (warns if `/sync` needed). Waits for approval before executing. Approved changes applied in-line — do NOT run `/status` afterward.
+- **Follow-up**: `/graph last`; `/surface` to reallocate attention.
+
+#### `/graph`
+```
+/graph                                     # full rebuild (from scratch)
+/graph last                                # incremental: changed theses + .graph_invalidations
+/graph 3                                   # catch-up: from N days ago
+```
+- **Creates**/**Modifies**: `_graph.md`; clears `.graph_invalidations` and `.sync_all_fresh` on success.
+- No content files modified, no snapshots.
+- `/graph last` is the default post-chain reconciliation. `/graph` (full) after `/rename` or any manual thesis `mv`.
+
+#### `/clean`
+```
+/clean                                     # default age 180 days; orphans PROTECTED
+/clean 90                                  # custom age
+/clean 30                                  # aggressive
+/clean orphans                             # delete only orphans (source missing)
+/clean 180 --include-orphans               # age cleanup + orphan deletion
+```
+- Deletes old snapshots from `_Archive/Snapshots/`.
+- **Safety nets**:
+  - **Orphan protection by default**: snapshots whose source file is missing are kept unless explicitly opted in.
+  - **Closure-snapshot 30-day floor** (universal across all modes): pre-closure snapshots from `/prune` Stage 1 or `/status active→closed` are PROTECTED for 30 days from the manifest's `completed_date:`, regardless of `/clean` arguments. The only override is to wait or `rm` manually.
+  - **Modified-source net**: snapshots whose source was modified after the snapshot was taken are protected even if old.
+  - **Prune-manifest retention**: completed manifests kept 30 days for regret-recovery.
+
+#### `/rollback`
+```
+/rollback                                  # list all snapshots
+/rollback NVDA                             # list snapshots for NVDA
+/rollback NVDA - Nvidia (pre-sync 2026-04-16-2115)    # restore specific snapshot
+```
+- **Creates**: Pre-rollback safety snapshot.
+- **Modifies**: Restored note, sector note (if touched), `_hot.md`; clears matching `.graph_invalidations` entries on status-revert.
+- Cascade detection: multi-file sync operations offered for atomic restore. Shows diff before confirming.
+- **Follow-up**: `/sync TICKER` or `/sync all` (cascade); `/graph` (full) if closure recreated.
+
+#### `/rename`
+```
+/rename META "Meta Platforms"              # rename Theses/META - Meta.md
+/rename SQ "Block"                         # post-rebrand
+/rename SHOP "Shopify Inc"                 # add corporate suffix
+```
+- **Creates**: Pre-rename snapshot; `.rename_incomplete.TICKER` marker on partial failure.
+- **Modifies**: Filename (atomic `mv`), all inbound wikilinks (7 patterns), `_graph.md` adjacency header, sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, `_hot.md` mentions.
+- TICKER does NOT change — only the name segment after ` - `. To undo: `/rename TICKER "[OldName]"` (symmetric).
+- **Partial-failure repair**: if any wikilink Edit fails, a `.rename_incomplete.TICKER` marker is written; every ticker-scoped skill on TICKER hard-blocks until cleared. Re-run `/rename TICKER "[same new name]"` to retry failed Edits.
+- **Follow-up**: `/graph` (full — not `last`). See [[#`/graph last` vs `/graph` after `/rename`|§13 — `/graph last` vs `/graph` after rename]].
 
 ---
 
-## 4. Non-Consensus Insight Generation
+## 6. Anatomy of Vault Content
 
-The highest-value prompts. These force synthesis across the vault to surface ideas the market isn't pricing. None of these map to a single skill — they require Claude to reason across the full vault.
+Understanding the canonical structure helps you read, write, and prompt against vault notes without breaking conventions.
 
-### Cross-thesis pattern detection
-```
-Read all my thesis notes. Identify 3-5 non-obvious connections between
-companies in different sectors that share a common dependency, risk,
-or catalyst the market is likely pricing independently. For each,
-explain why the correlation matters and what trade it implies.
-```
+### Thesis note (13 sections)
+Stored in `/Theses`. File name: `TICKER - Company Name.md`.
 
-### Consensus stress test (manual, more control than /stress-test)
-```
-Read my thesis for [TICKER]. Now act as a skeptical short-seller.
-Using only information already in my vault (research notes, sector notes,
-macro notes), build the strongest possible bear case. Identify which of
-my bull assumptions is weakest and where my research has gaps.
-```
-> For the automated, vault-updating version, use `/stress-test TICKER` instead.
+1. Summary — one-paragraph investment case
+2. Key Non-consensus Insights — 3–5 paragraphs on what the market is missing
+3. Outstanding Questions — 3–10 questions a skeptical IC would ask
+4. Business Model & Product Description — deep business model breakdown
+5. Industry Context — competitive dynamics, market share, value chain
+6. Key Metrics — table (Market Cap, EV/Revenue, Revenue Growth, Gross Margin, FCF Yield)
+7. Bull Case
+8. Bear Case
+9. Catalysts
+10. Risks
+11. Conviction Triggers — falsifiable `→ HIGH if` / `→ LOW if` / `→ CLOSE if`
+12. Related Research — wikilinks to supporting notes
+13. Log — dated entries, max 2 lines each
 
-### "What is priced in?" audit
-```
-Read the [SECTOR] notes and all linked thesis notes. For each company,
-assess what the current conviction level implies about market
-expectations vs. my non-consensus view. Flag any thesis where my
-conviction has drifted from the evidence in my research notes.
-```
+Frontmatter: `date`, `tags`, `status` (draft|active|monitoring|closed), `conviction` (high|medium|low), `sector`, `ticker`, `source`.
 
-### Second-order effects mapping
-```
-Read my macro note on [TOPIC]. Trace the second and third-order effects
-through my sector notes and thesis notes. Which thesis is most exposed
-to a risk I haven't written down? Which company benefits from a dynamic
-I've documented in a different sector but haven't linked?
-```
+### Research note (4 sections)
+Stored in `/Research`. File name: `YYYY-MM-DD - [Topic or Ticker] - [Source Type].md`.
 
-### Invert the thesis
-```
-Read my [TICKER] thesis. Assume the bear case plays out fully.
-Which of my OTHER theses benefits most from that scenario? Map the
-hedging relationships across my portfolio using only vault content.
-```
+1. **Thesis Delta** — 1–2 sentences: what this changes for the investment case. If no thesis exists, the key question raised.
+2. **Evidence** — data points only. Tables preferred. No narrative.
+3. **Contradiction Check** — does this support or challenge existing conviction? Be specific about which assumption.
+4. **Source Excerpts** — only quotes with specific numbers or claims not captured above. Delete if empty.
 
-### Cross-vault contradiction check
-```
-Scan my vault for internal contradictions — places where one note's
-bull case depends on an assumption that another note's bear case
-challenges. List each contradiction with links to both notes.
-```
+Frontmatter: `date`, `tags`, `status`, `sector`, `ticker`, `source`, `source_type` (earnings|analyst-report|news|deep-dive|data|web-clip|stress-test|synthesis|brief|comparison|scenario|video-transcript).
+
+A well-written Research note is dense and decision-oriented. It is NOT a summary of a source — it is a thesis-centric interpretation of what the source means.
+
+### Sector note (10 sections)
+Stored in `/Sectors`. Acts as a Map of Content for a sector.
+
+1. Key industry questions
+2. Industry history
+3. Competitive dynamics
+4. Product level analysis
+5. Acquisitions and new entrants
+6. Macro shifts
+7. Investor heuristics — what's priced in vs where consensus could be wrong
+8. Active Theses — links to active thesis notes in this sector
+9. Related Research
+10. Log
+
+### Macro note
+Stored in `/Macro`. Freeform by design — covers geopolitical scenarios, commodity frameworks, rates, FX. Strategies for macro shock and trends go here; sector-specific industry dynamics belong in sector notes.
 
 ---
 
-## 5. Research & Thesis Building
+## 7. Research & Thesis Building
 
-### Ingest from any source
+### Build a thesis from scratch
 ```
-/ingest [URL]                    # single web page
-/ingest [file path]              # local PDF, MD, CSV, TXT
-/ingest                          # batch — everything in _Inbox/
+/thesis TICKER
 ```
-> Always follow with `/sync` to propagate. `/ingest` creates the Research note; `/sync` updates theses.
-> **Same-source dedup**: `/ingest` hard-blocks a URL already ingested today (identical `source:` frontmatter). Older same-source ingests surface a three-option prompt (append as update, supersede old note, cancel). If you hit a hard-block and the prior note is a stub or wrong, delete it from `Research/` first, then re-run.
+Status defaults to `draft` — promote with `/status TICKER status draft→active` when ready. See [[#Archive-collision prompt|§13 — Archive-collision prompt]] if the TICKER was previously archived.
 
-### YouTube video transcripts via Gemini
+### Deepen a weak section
+```
+/deepen TICKER [section]
+/sync TICKER
+```
+Omit the section name to auto-detect the weakest. See [[#`/deepen`|§5 /deepen]] for the full section list.
 
-YouTube URLs can't be `/ingest`ed directly. Use Gemini to generate a transcript first, then ingest the resulting markdown file.
+### Competitive comparison
+```
+/compare A vs B
+/compare A vs B vs C
+```
 
-1. Open Gemini and paste the YouTube URL
-2. Paste the prompt below (replacing the URL placeholder) after the URL
-3. Save Gemini's output as `YYYY-MM-DD - [Channel Name | Video Title] - video-transcript.md` in `_Inbox/`
-4. Run `/ingest` to process into a Research note, then `/sync` to propagate
+### Generate a 1-page brief
+```
+/brief TICKER
+```
+
+### Earnings analysis
+Automated:
+```
+/ingest [transcript URL]
+/sync TICKER
+```
+Manual (when you want more control):
+```
+Fetch [TICKER]'s latest earnings transcript from [URL]. Extract: revenue
+by segment, margin trends, management guidance changes, and anything
+that contradicts or strengthens my thesis. Save as a research note and
+append a thesis log entry with conviction impact.
+```
+
+### Research a specific angle
+```
+Research [TOPIC] for [TICKER]. Focus on [specific angle: e.g. "pricing
+power durability", "customer concentration risk", "management capital
+allocation"]. Save to Research/ and update the relevant thesis log.
+```
+
+### "Teach me" deep-dive
+```
+I want to deeply understand [TOPIC: e.g. "how hybrid bonding works at
+the physics level" or "the economics of LNG spot vs contract pricing"].
+Write a comprehensive explainer using my vault content as starting
+context, supplement with your knowledge, and save as a research note.
+Link to every relevant thesis. Write for an investment analyst — focus
+on why it matters for pricing power and competitive moats.
+```
+
+### Source-type recipes
+
+#### YouTube transcripts (via Gemini)
+YouTube URLs can't be `/ingest`ed directly. Use Gemini first.
+
+1. Open Gemini, paste the YouTube URL.
+2. Paste the prompt below (swap the URL).
+3. Save the output as `YYYY-MM-DD - [Channel Name | Video Title] - video-transcript.md` in `_Inbox/`.
+4. Run `/ingest` (batch mode — it picks up everything in `_Inbox/`), then `/sync`.
 
 **Gemini prompt** (copy verbatim, swap the URL):
 
@@ -484,127 +736,41 @@ Do not add commentary, annotations, or analysis.
 If a word or phrase is unclear in the audio, write [inaudible] rather than guessing.
 ~~~
 
-### Build a thesis from scratch
-```
-/thesis TICKER
-```
-> Searches vault first (existing research, sector context, macro themes), then web. Creates all 13 required sections. Status defaults to `draft` — promote with `/status TICKER status draft→active` when ready.
-> **Archive-collision prompt**: if a prior thesis for this TICKER exists in `_Archive/` (detected via filename match, frontmatter ticker, the archive registry, or an existing snapshot trail), `/thesis` pauses with a four-option menu: (a) exit to `/rollback` the archived thesis instead of starting fresh, (b) proceed with a new thesis noting the archived predecessor in the Log, (c) proceed without note, (d) cancel. Option (a) is the right choice if the archived research is still relevant; option (b) when the old thesis is outdated but its existence should be auditable.
-> **`draft→active` has no pre-status snapshot**. The promotion doesn't change analytical content, so `/status` skips the snapshot (this is the documented exception). If you want to reverse a mistaken promotion, there is no `(pre-status)` snapshot to `/rollback` to — you'll need to manually flip frontmatter back to `draft` and trim the `Status change: draft → active` Log entry.
+#### Deep Research PDFs
+Drop into `_Inbox/`, run `/ingest`. For >10-page PDFs, `/ingest` auto-chunks by page ranges. Figures don't auto-extract — if a figure is load-bearing, screenshot and embed manually with `![[filename.png]]` in the resulting Research note.
 
-### Deepen a weak section
-```
-/deepen TICKER                   # auto-detects weakest section
-/deepen TICKER Outstanding Questions
-/deepen TICKER Key Non-consensus Insights
-/deepen TICKER Industry Context
-/deepen TICKER Bull Case
-/deepen TICKER Bear Case
-/deepen TICKER Key Metrics
-/deepen TICKER Catalysts
-/deepen TICKER Risks
-/deepen TICKER Conviction Triggers
-/deepen TICKER Business Model
-```
-> Creates a snapshot before editing. May also create a supporting Research note. Always follow with `/sync TICKER`.
-
-### Competitive comparison
-```
-/compare BESI vs AMAT            # two companies
-/compare PANW NET CRWD           # three or more
-```
-> At least one ticker needs a thesis note. Missing tickers use web research (lighter comparison, no vault updates for them). For full-depth comparison, run `/thesis TICKER` first. Comparison updates thesis logs and sector note for tickers with existing theses.
-
-### Generate a 1-page brief
-```
-/brief TICKER
-```
-> Read-only — does not modify the thesis. Creates a derivative `Research/` note. Warns if a previous brief exists (old version preserved).
-
-### Earnings analysis (manual)
-```
-Fetch [TICKER]'s latest earnings transcript from [URL]. Extract: revenue
-by segment, margin trends, management guidance changes, and anything
-that contradicts or strengthens my thesis. Save as a research note and
-append a thesis log entry with conviction impact.
-```
-> Or use `/ingest [URL]` → `/sync TICKER` for the automated version.
-
-### Research a specific angle (manual)
-```
-Research [TOPIC] for [TICKER]. Focus on [specific angle: e.g. "pricing
-power durability", "customer concentration risk", "management capital
-allocation"]. Save to Research/ and update the relevant thesis log.
-```
-
-### "Teach me" deep-dive
-```
-I want to deeply understand [TOPIC: e.g. "how hybrid bonding works at
-the physics level" or "the economics of LNG spot vs contract pricing"].
-Write a comprehensive explainer using my vault content as starting
-context, supplement with your knowledge, and save as a research note.
-Link to every relevant thesis. Write for an investment analyst — focus
-on why it matters for pricing power and competitive moats.
-```
-
-### Historical analogy finder
-```
-Read my thesis for [TICKER]. Find the closest historical analogy —
-a company in a similar position (market structure, technology transition,
-investor sentiment) 5-15 years ago. What happened, and what does the
-analogy imply for [TICKER]'s trajectory? What breaks the analogy?
-```
-
-### Management quality assessment
-```
-Research the management team of [TICKER]. Focus on: capital allocation
-track record, insider ownership, previous roles, and compensation
-alignment. Save as a research note and update the thesis.
-```
-
-### TAM reality check
-```
-Read my [TICKER] thesis. Decompose the TAM bottom-up: who are the
-actual customers, what do they pay today, what would need to change
-for [TICKER] to capture X%, and what's the realistic timeline? Compare
-to the top-down narrative. Save as a research note.
-```
+#### Paywalled articles
+Extract with Safari Reader or defuddle, save as `.md` in `_Inbox/`, then `/ingest` (batch or path).
 
 ---
 
-## 6. Portfolio-Level Analysis
+## 8. Portfolio-Level Analysis
 
 ### Surface insights and opportunities
 ```
-/surface                         # full vault — blind spots, correlations, research gaps
-/surface NVDA                    # ticker-scoped — one thesis and graph adjacencies
-/surface semiconductors          # sector-scoped — all theses in a sector
+/surface                                   # full vault
+/surface NVDA                              # ticker-scoped
+/surface semiconductors                    # sector-scoped
 ```
-> Full scan: attention allocation, research velocity, decay alerts, contrarian signals, catalyst calendar, macro exposure. Saves a Research note. Scoped modes are faster but skip portfolio-wide rankings.
 
 ### Macro scenario propagation
 ```
-/scenario Fed cuts 150bps by year-end
-/scenario China invades Taiwan
-/scenario oil spikes to $150
-/scenario AI capex disappoints by 40%
-/scenario major cybersecurity breach at a hyperscaler
+/scenario [event description]
+/scenario reverse [[Research/...scenario note]]     # reverse mode: propagate existing scenario
 ```
-> Two-pass triage (lightweight scan → deep read only exposed positions). Produces an impact matrix, second-order cascades, portfolio-level assessment, and recommended actions. Appends log entries to all Major-impact theses.
 
 ### Adversarial stress test
 ```
 /stress-test TICKER
 ```
-> Acts as a short seller. Scans for internal contradictions, builds an assumption fragility table, identifies research gaps, and proposes a falsifiable kill trigger. Flags for conviction reassessment but does NOT change conviction — that requires `/status`.
 
 ### Catalyst calendar
 ```
 /catalyst
 ```
-> Extracts every catalyst from every thesis (including monitoring-status). Enriches with web-searched earnings dates. Analyses catalyst clusters, gaps, and cross-thesis events. Saves/updates `_catalyst.md`.
 
-### Portfolio exposure heatmap (manual)
+### Manual portfolio prompts
+Exposure heatmap:
 ```
 Read all active thesis notes. Categorise each by: primary sector,
 geographic exposure, macro sensitivity (rates, FX, commodity,
@@ -613,7 +779,7 @@ unintentional concentration risks — am I overexposed to any single
 factor across multiple "independent" theses?
 ```
 
-### "What am I missing?" (manual)
+"What am I missing?":
 ```
 Read my sector notes and thesis notes. Based on the industries I'm
 already tracking, which adjacent companies or sub-sectors am I NOT
@@ -621,7 +787,7 @@ covering that my existing research implies I should be? Prioritise by
 how directly my existing theses depend on them.
 ```
 
-### Value chain mapping (manual)
+Value chain canvas:
 ```
 Read my [SECTOR]-related thesis notes. Map the supply chain — who is
 whose customer, supplier, or competitor. Identify single points of
@@ -631,7 +797,7 @@ Output as a canvas file.
 
 ---
 
-## 7. Conviction & Status Management
+## 9. Conviction & Status Management
 
 ### Change conviction
 ```
@@ -639,25 +805,25 @@ Output as a canvas file.
 /status BESI conviction low→medium photonics design wins accelerating
 /status LITE conviction medium→high CPO attach rate above 60%
 ```
-> Mandatory confirmation before applying. Creates pre-change snapshot. Updates sector note and `_hot.md`. Checks for trigger conflicts.
+Mandatory confirmation. Creates pre-change snapshot. Updates sector note and `_hot.md`. Checks for trigger conflicts.
 
 ### Change status
 ```
-/status TICKER status draft→active thesis meets quality bar
+/status TICKER status draft→active [rationale]
 /status TICKER status active→monitoring awaiting Q3 earnings catalyst
 /status TICKER status monitoring→active new catalyst emerged
 /status TICKER status active→closed thesis invalidated by [reason]
 ```
-> `draft→active` skips snapshot (no analytical content changed). `active→closed` triggers archive flow — moves file to `_Archive/`, removes from sector note, cleans up graph.
+`draft→active` skips snapshot (no analytical content changed). `active→closed` moves the file to `_Archive/`, removes from sector note, cleans up graph.
 
 ### Reaffirm after drift
 ```
 /status NVDA reaffirm earnings miss was one-time; competitive position unchanged
 /status BESI reaffirm hybrid bonding thesis intact despite cycle weakness
 ```
-> Lightweight operation — no frontmatter change, no snapshot. Resets the drift detection window so future `/sync` runs don't keep flagging the same pattern.
+Lightweight — no frontmatter change, no snapshot. Resets the drift detection window so future `/sync` runs don't keep flagging the same pattern.
 
-### Conviction recalibration (manual, portfolio-wide)
+### Conviction recalibration (manual)
 ```
 Read all thesis notes with conviction: high. For each, check the most
 recent log entry date. If the last update was more than 60 days ago,
@@ -667,101 +833,316 @@ update based on the sector note and recent research.
 
 ---
 
-## 8. Vault Maintenance
+## 10. Vault Maintenance
 
 ### Health check
 ```
-/lint                            # full vault — 47 checks
-/lint TICKER                     # scoped — ~16 checks on one thesis (15 always + #42 always + #37 conditional if rename marker present)
+/lint                                      # full vault
+/lint TICKER                               # scoped to one thesis
 ```
-> **Full**: structural (orphaned notes, broken links, missing frontmatter), freshness (stale theses, old metrics), connection (unlinked mentions, disconnected macro), analytical (conviction-evidence mismatch, bull/bear asymmetry, template drift), snapshot hygiene, graph health.
-> **Scoped**: frontmatter, sections, staleness, conviction-evidence, template compliance, graph entry validity. Faster for quick thesis checks.
 
 ### Portfolio pruning
 ```
-/prune                           # all theses
-/prune semiconductors            # sector-scoped
-/prune stale                     # flag: last log entry >60 days
-/prune low                       # flag: conviction low
-/prune draft                     # flag: status draft
-/prune monitoring                # flag: status monitoring
-/prune semiconductors stale      # combined: sector + flag
+/prune                                     # see §5 /prune for all flag variants
 ```
-> Checks for unsynced research first (warns if `/sync` needed). Evaluates each candidate on evidence trajectory, thesis integrity, opportunity cost, catalyst horizon, and vault connectivity. Recommends upgrade, keep monitoring, or close. Waits for approval before executing.
 
 ### Rebuild dependency graph
 ```
-/graph
+/graph                                     # full rebuild
+/graph last                                # incremental (default post-chain)
+/graph 3                                   # catch-up from N days ago
 ```
-> Rebuilds `_graph.md` from scratch by scanning all wikilinks in Theses/, Sectors/, Macro/, Research/. No content files modified. Run after `/sync all`, when `/lint` flags graph issues, or when the graph has drifted.
 
 ### Snapshot cleanup
 ```
-/clean                           # delete snapshots older than 180 days (orphans PROTECTED)
-/clean 90                        # custom age threshold: 90 days (orphans PROTECTED)
-/clean 30                        # aggressive: 30 days (orphans PROTECTED)
-/clean orphans                   # delete only orphans (source file missing), any age
-/clean 180 --include-orphans     # age-based cleanup PLUS orphan deletion
+/clean                                     # see §5 /clean for all modes & safety nets
 ```
-> **Safety net check**: protects snapshots whose source file was modified after the snapshot was taken (even if old). Reports before deleting. Waits for confirmation.
-> **Orphans are protected by default**: a snapshot whose `snapshot_of:` target no longer exists is often the only recovery path for a mistakenly-deleted file. Default mode lists them but does not delete. Use `/clean orphans` or `--include-orphans` only when you've explicitly reviewed the list.
-> **Closure-snapshot 30-day floor (universal across all `/clean` modes — generalized from /prune-only)**: pre-closure thesis snapshots from EITHER `/prune` Stage 1 OR `/status active→closed` Step 3.1 are PROTECTED for 30 days from the matching manifest's `completed_date:`. `/clean` Step 2d cross-references each orphan's `snapshot_batch:` against `_status-manifest`/`_prune-manifest` files; matched closures within 30 days are protected regardless of `/clean` mode (default age, `orphans`, or `--include-orphans`). This closes the prior gap where `/clean orphans` could destroy a recent closure's only recovery path within seconds of the closure landing. The protection cannot be overridden by any `/clean` flag — the only path to delete a 30-day-floored closure snapshot is to wait for the floor to expire OR `rm` the snapshot manually with full awareness that `/rollback TICKER` becomes impossible. Snapshots whose matching manifest is `status: in-progress` are also protected (the closure transaction is unresolved; the snapshot is the rollback path).
-> **Prune-manifest retention**: completed `_prune-manifest*.md` files are also kept 30 days for regret-recovery regardless of age threshold. `/clean` reports them separately.
 
 ### Rollback to a previous version
 ```
-/rollback                        # list all available snapshots
-/rollback TICKER                 # list snapshots for that ticker
-/rollback [exact snapshot name]  # restore a specific snapshot
+/rollback                                  # list all
+/rollback TICKER                           # list for ticker
+/rollback [exact snapshot name]            # restore specific
 ```
-> Cascade detection: if the snapshot was created by a multi-file operation (e.g., `/sync`), offers to restore all related files atomically. Creates a pre-rollback safety snapshot (the rollback itself is reversible). Shows diff summary before confirming.
 
-### Find orphaned research (manual)
+### Renaming a thesis
+When a company's name changes (e.g., Square → Block, FB → META).
+
+```
+/rename TICKER "New Name"
+```
+
+TICKER stays the same — only the name portion after ` - ` changes. The skill:
+1. Renames the file atomically (`mv`).
+2. Rewrites every inbound wikilink across the vault (7 patterns).
+3. Updates `_graph.md`'s adjacency header surgically.
+4. Updates sector note Active Theses entry.
+5. Updates `_Archive/Snapshots/` `snapshot_of:` fields.
+6. Updates `_hot.md` free-text mentions.
+7. Creates a pre-rename snapshot for content-only rollback.
+
+If any wikilink rewrite fails, `/rename` drops a `.rename_incomplete.TICKER` marker and **every ticker-scoped skill on TICKER hard-blocks** until it clears. Recover by re-running `/rename TICKER "[same new name]"` — no-op detection skips the completed `mv` and retries only failed Edits.
+
+**Always run `/graph` (full) after `/rename`**, not `/graph last`. See [[#`/graph last` vs `/graph` after `/rename`|§13]] for rationale.
+
+To undo: `/rename TICKER "[OldName]"` (symmetric inverse).
+
+### Manual audit prompts
+
+Find orphaned research:
 ```
 List all research notes in Research/ that are not wikilinked from any
 thesis or sector note. For each, suggest which thesis or sector it
 should connect to, and why.
 ```
 
-### Frontmatter audit (manual)
+Frontmatter audit:
 ```
 Scan all notes in Theses/ and Research/. List any missing required
 frontmatter fields. Flag thesis notes where status is "draft" but the
 note has 3+ log entries — these are probably "active".
 ```
 
-### Tag taxonomy cleanup (manual)
+Tag taxonomy cleanup:
 ```
 List all unique tags across the vault. Flag duplicates or inconsistencies
 (e.g. #semi vs #semiconductors). Suggest a consolidated tag list.
 ```
 
-### Template compliance check (manual)
+Template compliance:
 ```
 Compare each thesis note against the Thesis Template. List missing
 sections — especially Key Non-consensus Insights and Outstanding
 Questions. For each gap, suggest which Research/ notes could fill it.
 ```
 
+Learning from closed theses:
+```
+Read my last 5 closed theses in _Archive/. For each, what evidence was
+in the vault 90 days before closure that, in hindsight, should have
+triggered closure sooner? Build a "lagging indicator I ignored" list
+I should scan for on active positions quarterly.
+```
+
 ---
 
-## 9. Canvas & Visual
+## 11. Prompt Library
 
-### Relationship map
+High-value free-form prompts that don't invoke skills. Copy, paste, adapt. Use these to supplement the skill surface — many of the best research moves are conversational, not procedural.
+
+### A. Session framing
 ```
-Create a canvas showing all active theses grouped by sector, with edges
-showing supply chain relationships, competitive dynamics, and shared
-macro exposures. Colour-code by conviction level.
+I have 2 hours. Based on _hot.md and the last 7 days of Log entries
+across my theses, rank the three highest-value things I could do right
+now. For each, estimate time cost and the specific decision it would
+unblock.
+```
+```
+What research assumption have I been leaning on across 3+ theses that
+I haven't re-validated in the last 6 months? For each, cite the theses
+it props up and the evidence decay risk.
+```
+```
+Read _hot.md. Summarise what I was working on, what's unresolved, and
+suggest what to focus on today.
 ```
 
-### Thesis evolution timeline
+### B. Thesis revision & self-audit
+```
+Review my [TICKER] thesis as if writing it from scratch today using
+only current research. Flag the sections where the original framing
+no longer matches the evidence — list the specific sentences that
+need rewriting.
+```
+```
+For [TICKER], extract every falsifiable prediction embedded in the
+thesis (explicit and implicit). For each, state: what would have to
+happen to falsify, has it happened, and how would I know.
+```
+```
+Compare my stated investment philosophy in CLAUDE.md ("qualitative,
+non-consensus") to the substance of my last 10 thesis edits. Where am
+I drifting from my own principles?
+```
+
+### C. Cross-thesis synthesis (non-consensus insight generation)
+```
+Read all my thesis notes. Identify 3-5 non-obvious connections between
+companies in different sectors that share a common dependency, risk,
+or catalyst the market is likely pricing independently. For each,
+explain why the correlation matters and what trade it implies.
+```
+```
+Find all thesis notes where I assert pricing power. For each, cite the
+specific evidence in Research/ supporting the claim and flag any
+thesis where "pricing power" appears in the Summary but has no
+evidentiary base.
+```
+```
+Which of my bull cases share an implicit macro dependency (AI capex,
+rates path, dollar trajectory, China tech decoupling)? Group by
+dependency and assess whether I'm double-counting diversification.
+```
+```
+Read my 10 oldest thesis notes. For each, challenge whether the "Key
+Non-consensus Insights" section is still non-consensus in April 2026.
+Which have been absorbed into the market narrative?
+```
+```
+Scan my vault for internal contradictions — places where one note's
+bull case depends on an assumption that another note's bear case
+challenges. List each contradiction with links to both notes.
+```
+```
+Read the [SECTOR] notes and all linked thesis notes. For each company,
+assess what the current conviction level implies about market
+expectations vs. my non-consensus view. Flag any thesis where
+conviction has drifted from the evidence.
+```
+```
+Read my macro note on [TOPIC]. Trace second and third-order effects
+through my sector notes and thesis notes. Which thesis is most
+exposed to a risk I haven't written down? Which company benefits
+from a dynamic I've documented in a different sector but haven't linked?
+```
+```
+Read my [TICKER] thesis. Assume the bear case plays out fully. Which
+of my OTHER theses benefits most from that scenario? Map the hedging
+relationships across my portfolio using only vault content.
+```
+
+### D. Memo & communication
+```
+Draft a Sunday-night email to myself: the 5 highest-signal vault events
+of the past week, the 3 open decisions for Monday, and the 1 thing
+I'm procrastinating on.
+```
+```
+Write an IC meeting agenda for my top-3 highest-conviction positions.
+For each: one-slide pitch, 3 catalysts, 1 falsification trigger.
+```
+```
+Given my [TICKER] thesis, write the "I was wrong" post-mortem I'd
+write 18 months from now if the thesis broke. Identify the evidence
+currently in my vault that this post-mortem would cite.
+```
+```
+I want to explain [TICKER]'s moat in 60 seconds. Draft three versions:
+for a PM, for a junior analyst, and for a non-specialist friend.
+```
+
+### E. Portfolio construction
+```
+Given my 20+ active theses, force a 5-bucket ranking based on
+conviction × catalyst horizon × liquidity × macro correlation. No
+optimisation — just surface the order I'd have to defend.
+```
+```
+If I could only hold 5 of my current active theses for 12 months,
+which 5 and why? Apply the "can I still sleep if this drops 30%"
+test to each survivor.
+```
+```
+Reverse-engineer the worldview my portfolio encodes. List 5 non-obvious
+macro assumptions my current positioning implicitly bets on.
+```
+
+### F. Pattern & heuristic extraction
+```
+Read my 5 most recent /stress-test Research notes. What failure modes
+recur? Turn the pattern into a pre-thesis checklist I should apply
+before promoting any new draft to active.
+```
+```
+Read all Log entries from the past 90 days across the portfolio. What
+recurring types of evidence drive conviction changes? Turn the top 3
+into a watchlist I should auto-check on every new thesis.
+```
+```
+Read my 5 most recent /surface Research notes. Which opportunities
+that I flagged have I NOT acted on? For each, assess whether the
+opportunity is still live and why I might be avoiding it.
+```
+
+### G. Source triangulation
+```
+Before I read [long article/book], summarise what the vault already
+knows about [TOPIC] so I can read actively and only note new
+information.
+```
+```
+I'm about to read [source]. Given my current [TICKER] thesis, generate
+3 questions I should try to get answers to from this source.
+```
+```
+Read the latest Research note on [TOPIC]. What's the single most
+important follow-up source I should try to find? Give me a specific
+search query or document type.
+```
+
+### H. Selection-driven (use with editor/browser selection)
+```
+<selected text from a research source>
+Read this. Which of my theses does it update? Draft a 2-line Log entry
+per affected thesis with conviction impact.
+```
+```
+Given the selected text from [TICKER]'s earnings transcript, extract
+only the pieces that contradict or strengthen a specific sentence in
+my thesis. Ignore everything else.
+```
+```
+The selection is an analyst note I disagree with. Read my [TICKER]
+thesis, then write a point-by-point rebuttal grounded only in my
+vault evidence.
+```
+
+### I. Debate & pre-decision (lighter than /stress-test)
+```
+Argue against my decision to downgrade [TICKER]. Use only vault
+content. Don't be polite — tell me which specific evidence I'm
+discounting.
+```
+```
+My gut says sell [TICKER]. Before I act, steelman holding. What in
+the vault argues for patience that my gut is dismissing?
+```
+```
+I'm considering sizing up [TICKER]. Before I do, read the thesis and
+list the 3 pieces of evidence I should re-verify within 48 hours of
+adding.
+```
+
+### J. Historical analogy & management quality
+```
+Read my thesis for [TICKER]. Find the closest historical analogy —
+a company in a similar position (market structure, technology
+transition, investor sentiment) 5-15 years ago. What happened, and
+what does the analogy imply? What breaks the analogy?
+```
+```
+Research the management team of [TICKER]. Focus on: capital allocation
+track record, insider ownership, previous roles, and compensation
+alignment. Save as a research note and update the thesis.
+```
+```
+Read my [TICKER] thesis. Decompose the TAM bottom-up: who are the
+actual customers, what do they pay today, what would need to change
+for [TICKER] to capture X%, and what's the realistic timeline?
+Compare to the top-down narrative. Save as a research note.
+```
+
+### K. Canvas & visual
+```
+Create a canvas showing all active theses grouped by sector, with
+edges showing supply chain relationships, competitive dynamics, and
+shared macro exposures. Colour-code by conviction level.
+```
 ```
 Create a canvas for [TICKER] showing the evolution of my thesis over
 time. Use the Log entries as nodes, with annotations showing how
 conviction and key arguments changed at each point.
 ```
-
-### Value chain canvas
 ```
 Read my [SECTOR]-related theses. Map the supply chain as a canvas —
 who supplies whom, who competes with whom, where the bottlenecks are.
@@ -769,325 +1150,108 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 
 ---
 
-## 10. Decision Guide — "I Want To..."
-
-| I want to... | Do this |
-|---|---|
-| **Start a session** | Read `_hot.md` → `/ingest` → `/sync` |
-| **Clip an article** | `/ingest [URL]` → `/sync` |
-| **Process inbox** | `/ingest` → `/sync` |
-| **Start covering a new company** | `/thesis TICKER` → `/status draft→active` → `/stress-test` → `/sync` |
-| **Improve a weak thesis** | `/deepen TICKER` → `/sync TICKER` |
-| **Improve a specific section** | `/deepen TICKER [section]` → `/sync TICKER` |
-| **Challenge a thesis** | `/stress-test TICKER` → (decide) → `/status` → `/sync` |
-| **Compare competitors** | `/compare A vs B` → `/sync` |
-| **Pitch a position** | `/brief TICKER` |
-| **React to earnings** | `/ingest [URL]` → `/sync TICKER` → `/status` if needed |
-| **React to macro event** | `/scenario [event]` → `/status` (most affected) → `/sync` |
-| **Handle conviction drift** | `/status TICKER reaffirm` or `/stress-test` → `/status` |
-| **Change conviction** | `/status TICKER conviction old→new [reason]` |
-| **Close a position** | `/status TICKER status active→closed [reason]` |
-| **Reopen an archived position** | `/rollback TICKER` → (check status — skip `/status` if already active) → `/sync` → `/graph` |
-| **Find new ideas** | `/surface` or `/surface [sector]` |
-| **Find portfolio blind spots** | `/surface` (unscoped) |
-| **Model a "what if"** | `/scenario [event description]` |
-| **See what's coming up** | `/catalyst` |
-| **Clean up weak positions** | `/sync` → `/prune` (approve changes in-line) → `/surface` → `/graph last` |
-| **Run monthly maintenance** | `/sync all` → `/graph` → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last` |
-| **Check vault health** | `/lint` (full) or `/lint TICKER` (scoped) |
-| **Fix graph issues** | `/graph` |
-| **Undo a bad sync** | `/rollback TICKER` (offers cascade) → `/sync TICKER` (single-file) or `/sync all` (cascade — see §3m propagated-research caveat) |
-| **Undo a conviction change** | `/rollback TICKER` → select `(pre-status)` snapshot |
-| **Delete old snapshots** | `/clean`, `/clean [days]`, `/clean orphans`, or `/clean [days] --include-orphans` (see §8 for the universal closure-snapshot 30-day floor — covers both `/prune` and `/status active→closed`) |
-| **Rename a thesis (company name change)** | `/rename TICKER "New Company Name"` (file rename is atomic via `mv`; wikilink rewrites are best-effort with a `.rename_incomplete.TICKER` marker on partial failure — re-run `/rename` to repair, then ticker-scoped skills unblock) |
-| **Build a sector note** | Manual creation with Sector Template → `/graph` → `/surface [sector]` → `/sync` |
-| **Deep-dive a topic** | "Teach me [TOPIC]" → saved as Research note → `/sync` |
-
----
-
-## 11. Skill Quick Reference
-
-> **Reading the Modifies column**: `_graph.md` is owned exclusively by `/graph` and `/rename` (the latter surgically rewrites one adjacency header). Other skills signal graph updates indirectly: they edit thesis/sector/macro files (mtime-advance picked up by `/graph last`), append to `.graph_invalidations` on closures, or create research notes that surface in `/graph`'s orphan list on the next rebuild. Those indirect effects are listed explicitly — "modifies `_graph.md`" appears only for direct writers.
-
-### Core Workflow Skills
-
-| Skill | Arguments | Creates | Modifies | Follow-up |
-|-------|-----------|---------|----------|-----------|
-| `/ingest` | none \| URL \| file path | Research note(s) | — (no thesis/sector edits) | `/sync` → `/graph last` |
-| `/sync` | none \| `all` \| TICKER | Tier A snapshots, `_sync-manifest` | Theses, Sectors, Macro, `_hot.md`, `.last_sync` (default/all only); advances thesis mtimes for `/graph last` | `/graph last` |
-| `/status` | `TICKER field old→new reason` \| `TICKER reaffirm reason` | Snapshot (except draft→active, reaffirm), `_status-manifest` | Thesis frontmatter + Log, Sector note, `_hot.md`; appends `.graph_invalidations` (closure branch only); appends `.archive_ticker_registry.md` (closure) | `/sync` (conviction changes) → `/graph last` |
-
-### Analytical Skills
-
-| Skill | Arguments | Creates | Modifies | Follow-up |
-|-------|-----------|---------|----------|-----------|
-| `/surface` | none \| TICKER \| sector | Research note (surface scan) | `_hot.md` only (new research note appears in graph orphan list on next full `/graph`) | `/deepen` or `/thesis` for opportunities found; `/graph last` |
-| `/stress-test` | TICKER | Research note (stress test), `_stress-test-manifest` | Thesis Log + Related Research, `_hot.md`; advances thesis mtime for `/graph last` | `/status` (if conviction change needed) → `/sync` → `/graph last` |
-| `/scenario` | event description \| `reverse [note]` | Research note (scenario, forward mode only) | Thesis Logs (Major-impact forward; previously-affected on reverse), `_hot.md`; advances mtimes | `/status` (affected positions) → `/sync` → `/graph last` |
-| `/compare` | TICKER vs TICKER [vs ...] | Research note (comparison), sector-level snapshots, `_compare-manifest` | Thesis Logs, Sector note(s), `_hot.md`; advances mtimes | `/sync` (sector note changes) → `/graph last` |
-| `/catalyst` | none | `_catalyst.md` (overwrite), pre-catalyst snapshot | `_hot.md` | `/deepen TICKER Catalysts` for gaps |
-
-### Building Skills
-
-| Skill | Arguments | Creates | Modifies | Follow-up |
-|-------|-----------|---------|----------|-----------|
-| `/thesis` | TICKER | Thesis note (draft), `_thesis-manifest` | Sector note (only if status flipped to active), `_hot.md`; advances orphan-research mtimes | `/status draft→active` → `/stress-test` → `/sync` → `/graph last` |
-| `/deepen` | TICKER [section] | Pre-deepen snapshot, optional Research note | Thesis (target section + Log two-phase), `_hot.md`; advances thesis mtime | `/sync TICKER` → `/graph last` |
-| `/brief` | TICKER | Research note (brief, with `propagated_to: []` terminal dedup) | `_hot.md` only (no thesis edits — fully derivative) | `/graph last` |
-
-### Maintenance Skills
-
-| Skill | Arguments | Creates | Modifies | Follow-up |
-|-------|-----------|---------|----------|-----------|
-| `/lint` | none \| TICKER | — (report only) | — (read-only) | Fix flagged issues → `/graph` if graph issues |
-| `/prune` | none \| sector \| flag \| sector+flag | Snapshots per closure/upgrade, `_prune-manifest` | Theses (closures/upgrades), Sector notes, `_hot.md`; appends `.graph_invalidations` (closure branch); appends `.archive_ticker_registry.md` | `/graph last` (consume invalidations); `/surface` (find new opportunities) |
-| `/graph` | none \| `last` \| N (days) | `_graph.md` (full rebuild or incremental merge) | `_graph.md`; clears `.graph_invalidations` and `.sync_all_fresh` on success | — |
-| `/clean` | none \| days \| `orphans` \| days `--include-orphans` | — | Deletes old snapshots (age-based by default); deletes orphans only on explicit opt-in. **Universal closure-snapshot 30-day floor** (Step 2d): pre-closure thesis snapshots from `/prune` Stage 1 OR `/status active→closed` Step 3.1 are PROTECTED for 30 days from their manifest's `completed_date:` regardless of `/clean` mode | — |
-| `/rollback` | none \| TICKER \| snapshot name | Pre-rollback safety snapshot, sector pre-edit snapshot (if sector touched), relocated-archive snapshots (closure restore) | Restored note, Sector note, `_hot.md`; advances restored-file mtime for `/graph last` | `/sync TICKER` or `/sync all` (cascade) → `/graph` (full, if recreated archived thesis) |
-| `/rename` | `TICKER "New Name"` | Pre-rename snapshot, `.rename_incomplete.TICKER` on partial failure | Thesis filename, all inbound wikilinks (live + snapshot bodies), `_graph.md` adjacency header (direct surgical write), Sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, `_hot.md` mentions | `/graph` (full, not `last`) — see §12 for rationale |
-
----
-
-## 12. All Skill Argument Forms
-
-### `/ingest`
-```
-/ingest                                    # batch: everything in _Inbox/
-/ingest https://example.com/article        # single URL
-/ingest /path/to/file.pdf                  # local file (PDF, MD, CSV, TXT)
-```
-
-### `/sync`
-```
-/sync                                      # graph-assisted: only changed files + adjacencies
-/sync all                                  # brute-force: reads everything, follow with /graph
-/sync NVDA                                 # ticker-scoped: one thesis + all adjacencies, ignores timestamps
-```
-
-### `/surface`
-```
-/surface                                   # full vault scan
-/surface NVDA                              # ticker-scoped: thesis + graph adjacencies + sector peers
-/surface semiconductors                    # sector-scoped: all theses in sector + sector note + macro
-```
-
-### `/stress-test`
-```
-/stress-test NVDA                          # single ticker
-```
-
-### `/scenario`
-```
-/scenario Fed cuts 150bps by year-end
-/scenario China invades Taiwan
-/scenario oil spikes to $150
-/scenario AI capex disappoints by 40%
-/scenario [any macro event with quantitative parameters]
-```
-
-### `/compare`
-```
-/compare BESI vs AMAT                      # two companies
-/compare PANW NET CRWD                     # three or more (at least one needs a thesis note; missing tickers use web research)
-```
-
-### `/thesis`
-```
-/thesis NVDA                               # ticker (company name resolved automatically)
-```
-
-### `/deepen`
-```
-/deepen NVDA                               # auto-detects weakest section
-/deepen NVDA Outstanding Questions         # specific section
-/deepen NVDA Key Non-consensus Insights    # specific section
-/deepen NVDA Industry Context              # specific section
-/deepen NVDA Business Model                # specific section
-/deepen NVDA Bull Case                     # specific section
-/deepen NVDA Bear Case                     # specific section
-/deepen NVDA Key Metrics                   # specific section
-/deepen NVDA Catalysts                     # specific section
-/deepen NVDA Risks                         # specific section
-/deepen NVDA Conviction Triggers           # specific section
-```
-
-### `/brief`
-```
-/brief NVDA                                # single ticker
-```
-
-### `/catalyst`
-```
-/catalyst                                  # no arguments — scans all theses
-```
-
-### `/lint`
-```
-/lint                                      # full vault: 47 checks
-/lint NVDA                                 # scoped: ~16 checks on one thesis
-```
-
-### `/prune`
-```
-/prune                                     # all theses
-/prune semiconductors                      # sector filter
-/prune stale                               # flag: last log >60 days
-/prune low                                 # flag: conviction low
-/prune draft                               # flag: status draft
-/prune monitoring                          # flag: status monitoring
-/prune semiconductors stale                # combined: sector + flag
-/prune semiconductors low                  # combined: sector + flag
-```
-
-### `/clean`
-```
-/clean                                     # default age: 180 days; orphans PROTECTED
-/clean 90                                  # custom age threshold; orphans PROTECTED
-/clean 30                                  # aggressive age; orphans PROTECTED
-/clean orphans                             # delete only orphans (source missing), any age — closure snapshots within 30 days STILL PROTECTED
-/clean 180 --include-orphans               # age-based cleanup PLUS orphan deletion — closure snapshots within 30 days STILL PROTECTED
-```
-> Orphan snapshots (snapshots whose `snapshot_of:` target no longer exists) are **protected by default** — they are often the only recovery path for a mistakenly-deleted file. Opt in to deletion explicitly. See §8 for the closure-snapshot 30-day floor (universal across all `/clean` modes — covers BOTH `/prune` AND `/status active→closed` snapshots).
-
-### `/graph`
-```
-/graph                                     # no arguments — full rebuild
-```
-
-### `/rollback`
-```
-/rollback                                  # list all snapshots
-/rollback NVDA                             # list snapshots for NVDA
-/rollback NVDA - Nvidia (pre-sync 2026-04-16-2115)   # restore specific snapshot
-```
-
-### `/rename`
-```
-/rename META "Meta Platforms"              # rename Theses/META - Meta.md → Theses/META - Meta Platforms.md
-/rename SQ "Block"                         # post-rebrand: Theses/SQ - Square.md → Theses/SQ - Block.md
-/rename SHOP "Shopify Inc"                 # add corporate suffix
-```
-> Updates: filename (atomic via `mv`), all inbound wikilinks (7 patterns — best-effort across N files), `_graph.md` adjacency entry header, sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, and `_hot.md` mentions. TICKER does not change. To undo: run `/rename TICKER "[OldName]"` (symmetric inverse). Pre-rename snapshot also created for content-only restore via `/rollback`.
->
-> **Partial-failure recovery**: if any wikilink-rewrite Edit fails (file lock, malformed wikilink, etc.), `/rename` writes a `.rename_incomplete.TICKER` marker listing the failed files. **Every ticker-scoped skill on TICKER hard-blocks** until the marker clears. To repair: re-run `/rename TICKER "[same new name]"` — the no-op detection skips the already-completed mv and retries only the failed Edits. The marker is removed when all retries succeed.
->
-> **Graph follow-up — use `/graph` (full), not `/graph last`**: `/rename` surgically rewrites the adjacency entry header in `_graph.md` for the renamed thesis itself, but does not re-validate headers for unchanged neighbor theses. If the rename was preceded by a manual `mv` of any other thesis (bypassing `/rename` for that one), `/graph last` would carry the stale baseline header forward for that neighbor. Running `/graph` (full rebuild) after `/rename` re-derives every header from current filenames on disk and eliminates this drift class. **Cost**: 30-60 seconds vs ~5 seconds for `/graph last`. **When to skip**: if you are 100% certain no thesis file has been manually renamed since the last `/graph` run, `/graph last` is sufficient.
-
-### `/status`
-```
-# Conviction changes
-/status NVDA conviction medium→low China risk unhedgeable
-/status NVDA conviction low→medium design win pipeline expanding
-/status NVDA conviction medium→high all triggers met
-
-# Status changes
-/status NVDA status draft→active thesis meets quality bar
-/status NVDA status active→monitoring awaiting catalyst
-/status NVDA status monitoring→active catalyst emerged
-/status NVDA status active→closed thesis invalidated
-
-# Drift acknowledgment
-/status NVDA reaffirm earnings miss was one-time, competitive position unchanged
-```
-
----
-
-## 13. Cadence Guide
-
-### Every session
-1. Read `_hot.md` for context
-2. `/ingest` to process inbox
-3. `/sync` to propagate
-4. Do your work (research, analysis, thesis building)
-5. `/sync` again to propagate session work
+## 12. Cadence Guide
 
 ### Weekly (or after heavy research)
-- `/surface` or `/surface [sector you're focused on]`
+- `/surface` or `/surface [sector]` on whatever you've been focused on
 - `/catalyst` to refresh the calendar
 - `/lint TICKER` for any thesis you actively edited
 
 ### Monthly
-- `/sync all` → `/graph` → `/lint` → `/prune` → `/clean` → `/surface` → `/catalyst` → `/graph last`
+Run [[#Monthly maintenance|§3.4 Monthly maintenance]]. Also:
 - Review `_hot.md` conviction changes and drift flags
-- Conviction recalibration prompt for all high-conviction theses
+- Run the "Conviction recalibration" prompt from [[#Conviction recalibration (manual)|§9]]
 
-### When prompted by events
+### Event-triggered
+
 | Event | Workflow |
 |-------|---------|
-| Earnings reported | `/ingest [URL]` → `/sync TICKER` → `/status` if conviction changes |
-| Macro shock | `/scenario [event]` → `/status` for affected → `/sync` |
-| New stock idea | `/thesis TICKER` → `/status draft→active` → `/stress-test` → `/sync` |
-| Conviction flagged | `/status TICKER reaffirm [reason]` or investigate → `/status` change |
+| Earnings reported | [[#Earnings reaction|§3.2 Earnings reaction]] |
+| Macro shock | [[#Macro shock|§3.2 Macro shock]] |
+| New stock idea | [[#New position — full build|§3.1 New position — full build]] |
+| Conviction flagged by `/sync` | [[#Conviction drift response|§3.2 Conviction drift response]] |
 | Competitor news | `/ingest [URL]` → `/compare` affected tickers → `/sync` |
 | Sector rotation | `/surface [sector]` → `/scenario` if macro-driven → `/compare` key players |
 
 ### When conventions change
-- Update `CLAUDE.md` if you add new folders, change conventions, or shift research focus
+- Update `CLAUDE.md` if you add new folders, change conventions, or shift research focus.
+
+---
+
+## 13. Caveats & Gotchas
+
+Known edge cases, organised by where they bite.
+
+### `.last_sync` deletion
+If `.last_sync` is deleted (manually, via `git restore`, or accidentally), the next `/sync` treats the vault as first-run: creates an epoch placeholder, then `find -newer` matches every file. Effect: a `/sync` expected to finish in ~30 seconds takes 5–10× longer. `/prune` Phase 0 detects this state and prompts before running.
+
+To check: `ls -la .last_sync`. To recover without re-reading the full vault, `touch .last_sync` sets it to "now" — but this silently marks all currently-pending files as "synced," which is usually wrong. Preferred: let the next `/sync` re-process correctly.
+
+### First-run `/sync` on populated vaults
+On a vault that already has thesis/research/sector notes, the first `/sync` (any mode) reads everything. This is equivalent to `/sync all` in scope — expected, not a bug. Establishes the watermark baseline.
+
+### Draft→active has no snapshot
+`/status TICKER status draft→active` does not create a pre-status snapshot (no analytical content changed). To reverse a mistaken promotion: manually flip frontmatter back to `draft` and trim the `Status change: draft → active` Log entry. There is no `(pre-status)` snapshot to `/rollback` to.
+
+### Archive-collision prompt
+When you run `/thesis TICKER` and a prior thesis for TICKER exists in `_Archive/` (detected via filename, frontmatter ticker, archive registry, or snapshot trail), `/thesis` pauses with four options:
+
+| Option | When to pick |
+|---|---|
+| **a.** Exit to `/rollback` | Archived research is still relevant; you want continuity |
+| **b.** Proceed, note predecessor in Log | Old thesis is outdated but its existence should be auditable |
+| **c.** Proceed without note | Starting fresh, no audit trail needed |
+| **d.** Cancel | Reconsidering |
+
+### Propagated-research caveat after rollback
+`/rollback` restores thesis/sector/macro **files** from snapshots, but does NOT rewrite `propagated_to:` frontmatter on Research notes that were consumed during the reverted `/sync`. If the originating Research note is still in `Research/` with `propagated_to: [TICKER]`, the next `/sync` sees the dedup flag and skips re-propagation — silently leaving the thesis in the restored (pre-propagation) state.
+
+To force re-propagation post-rollback, either:
+- (a) remove the ticker from that note's `propagated_to:` list manually, or
+- (b) delete the source Research note and re-`/ingest`.
+
+### `/graph last` vs `/graph` after `/rename`
+`/rename` surgically rewrites the adjacency entry header for the renamed thesis but doesn't re-validate headers for unchanged neighbor theses. If a manual `mv` ever happened on another thesis (bypassing `/rename`), `/graph last` carries the stale baseline forward. `/graph` (full) re-derives every header from current filenames and eliminates this drift class.
+
+Cost: 30–60 seconds vs ~5 seconds for `/graph last`. Skip only if you're 100% certain no thesis file has been manually renamed since the last `/graph` run.
+
+### Draft theses invisible to sector scope
+Draft theses are intentionally omitted from sector notes' Active Theses sections (CLAUDE.md convention). `/surface [sector]`, `/prune [sector]`, and other sector-scoped skills resolve scope via that list — they silently skip any thesis still in `draft`. When building multiple theses in a new sector, promote each to `active` before running sector-scoped skills or `/graph` (see [[#Sector deep-dive|§3.1 Sector deep-dive]]).
+
+### Concurrency (single-session rule)
+The vault lock model permits two ticker-scoped skills on different tickers to run in parallel. Both will Edit `_hot.md` without coordination — the later writer's section edit silently wins. **Treat Claudian as single-session**: do not run multiple Claude Code sessions against the same vault concurrently. Sequential invocations in one session are safe.
+
+### `/ingest` same-source hard-block
+`/ingest` hard-blocks a URL already ingested today (identical `source:` frontmatter). Older same-source ingests surface a three-option prompt (append as update / supersede old note / cancel). If you hit a hard-block and the prior note is a stub or wrong, delete it from `Research/` first, then re-run.
+
+### `/brief` and `/surface` don't fully refresh the graph
+Both create Research notes but don't advance thesis mtimes or write `.graph_invalidations`. New notes appear in `/graph`'s Orphan Research list only on the next full `/graph` rebuild — `/graph last` won't pick them up until a thesis Edit wikilinks to one. For a brief- or surface-heavy chain, run `/graph` (full) if you need the orphan list updated immediately.
+
+### Pending graph work persists across sessions
+If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` consumes it. `/lint` flags stale invalidation files so they're not forgotten.
 
 ---
 
 ## 14. How the Vault Stays Consistent
 
-Understanding the infrastructure helps you trust the automation and diagnose issues.
+Short reference. Deep mechanics live in [[INFRASTRUCTURE.md]].
 
-### `_graph.md` — Dependency Map
-Pre-computed wikilink index that `/sync` uses for fast, targeted propagation. Contains:
-- **Thesis Adjacency Index**: each thesis's links to sectors, macro, cross-thesis, research
-- **Reverse Indexes**: Macro → Theses, Sector → Theses (for reverse propagation)
-- **Cross-Thesis Clusters**: bidirectional thesis-to-thesis connections
-- **Orphan Research Notes**: research notes not linked from any thesis
+| File | Role | Owned by | Short story |
+|---|---|---|---|
+| `_graph.md` | Dependency map (thesis→sector, reverse indexes, orphans) | `/graph` | Rebuilt by `/graph` (three modes). Every other skill either advances a thesis mtime or appends to `.graph_invalidations` on closure. |
+| `_hot.md` | Session context cache (6 sections) | Shared (13 writers) | Soft cap 4,000 / hard cap 5,000 words. Compression rules in `_shared/hot-md-contract.md`. Never truncates — drops whole entries. |
+| `_catalyst.md` | Catalyst calendar | `/catalyst` | Regenerated each run. Pre-regenerate snapshot protects against mid-run failures. |
+| `.last_sync` | Sync watermark | `/sync` (default, all) | Ticker-scoped `/sync` preserves the watermark. `/graph` never touches it. |
+| `.sync_all_fresh` | Full-rebuild marker | `/sync all` → `/graph` | Forces next `/graph` (any mode) into full rebuild. Cleared on successful graph write. |
+| `.graph_invalidations` | Deferred neighbor-adjacency updates | `/status` (closure), `/prune` (closure) | Consumed and deleted by `/graph last`. Cleared matching entries on `/rollback` status-revert. |
+| `.rename_incomplete.TICKER` | Failed-rename repair marker | `/rename` | Hard-blocks ticker-scoped skills on TICKER until cleared. Re-run `/rename` to repair. |
+| `_Archive/Snapshots/` | Version control | Shared | Pre-edit snapshots from destructive skills. Cleaned by `/clean` with closure-snapshot 30-day floor protection. Houses crash-recovery manifests. |
+| `.archive_ticker_registry.md` | Archive ledger | `/status` closure, `/prune` closure | Append-only. Consumed by `/thesis` for archive-collision detection. |
 
-Owned by `/graph` (three modes: full rebuild, `/graph last` incremental, `/graph [N]` catch-up). Most other skills do NOT write `_graph.md` directly.
+**Key invariants**:
+- `_graph.md` is written only by `/graph` (and `/rename` for one surgical header update). Research skills signal via mtime or `.graph_invalidations`.
+- `.last_sync` is written only by `/sync` default and `/sync all`. `/sync TICKER` preserves it; `/graph` never touches it.
+- Every destructive skill creates a pre-edit snapshot. Recovery path: `/rollback`.
+- Every skill that modifies vault state runs a pre-flight (vault lock + rename-marker check + name sanitization + section probe). Contract: `.claude/skills/_shared/preflight.md`.
 
-**`.graph_invalidations` producers (actual, as implemented)**: only two skills append neighbor-thesis paths to `.graph_invalidations` — `/status` (closure branch, Step 7.6) and `/prune` (closure branch, Stage 4.5). Both do so to surface theses whose `cross-thesis:` wikilinks now point at a just-archived target. `/rollback` clears matching entries on a status-revert but does not append new ones.
-
-**Other skills that edit thesis files** — `/sync`, `/status` (non-closure), `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/thesis` — do not write `.graph_invalidations`. They instead rely on the file-mtime watermark: any thesis Edit advances its mtime past `_graph.md`'s `last_graph_write:`, so `/graph last`'s `find -newer` picks it up and re-extracts its adjacency on the next run.
-
-**Skills that only create research notes** — `/brief`, `/surface` (unscoped/sector) — neither touch thesis mtimes nor write `.graph_invalidations`. The new research note IS added to `/graph`'s Orphan Research Notes list on the next `/graph` (any mode), because that list recomputes from a disk scan of `Research/*.md`. Cross-thesis research adjacency from a new note only surfaces after the first thesis Edit that wikilinks to it (e.g., a `/sync` run or manual link add). Run `/graph` (full) after a `/brief`- or `/surface`-heavy chain if you need the orphan list updated immediately.
-
-**Exception**: `/rename` surgically updates the adjacency entry header (`### TICKER - [old_name]` → `### TICKER - [new_name]`) directly, since the rename is the only operation that changes how an existing thesis is identified in the graph. `/rename` does NOT advance `_graph.md`'s `last_graph_write:` watermark — that field belongs exclusively to `/graph` and advancing it would mask other pending changes from the next `/graph last` run.
-
-### `_hot.md` — Session Context Cache
-Persists context between sessions. Sections:
-- **Active Research Thread**: what you're currently working on (auto-compressed history)
-- **Latest Sync**: last sync summary
-- **Sync Archive**: compressed older syncs (max 3)
-- **Recent Conviction Changes**: conviction/status changes and drift flags
-- **Open Questions**: unresolved questions across theses
-- **Portfolio Snapshot**: high-level portfolio state
-
-Updated by: `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`, `/catalyst`, `/brief` (Active Research Thread + Open Questions only), `/rename` (free-text mentions of the old name). Hard-capped at 5,000 words (soft cap 4,000 — compression rules in `.claude/skills/_shared/hot-md-contract.md`).
-
-> **Concurrency caveat**: the vault lock model permits two ticker-scoped skills on different tickers to run in parallel (e.g., `/deepen NVDA` in one session and `/brief AAPL` in another). Both will Edit `_hot.md` without coordination — the later writer's section edit silently wins. Treat Claudian as **single-session**: do not run multiple Claude Code sessions against the same vault concurrently. Sequential invocations inside one session are safe.
-
-### `.graph_invalidations` — Deferred Graph Updates
-Thesis closures (via `/status` closure branch or `/prune` closure branch) record **neighbor theses** in `.graph_invalidations` at vault root — theses whose `cross-thesis:` wikilinks now point at a just-archived target. Each line is a thesis path: `Theses/NVDA - Nvidia.md`. The closure itself never appears in the file (it's gone); only its surviving neighbors do.
-
-All other thesis edits (from `/sync`, `/deepen`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, non-closure `/status`) advance the edited thesis's file mtime past `_graph.md`'s `last_graph_write:` watermark, which `/graph last` picks up via `find -newer` without needing an explicit invalidation entry. `.graph_invalidations` exists specifically to catch the narrow case where a neighbor's adjacency is stale but its own file hasn't been edited (so its mtime is unchanged).
-
-`/graph last` consumes the file:
-1. Reads `.graph_invalidations` plus the watermark in `_graph.md`'s `last_graph_write:` frontmatter.
-2. Re-extracts adjacency only for changed-since-watermark theses + invalidated neighbors.
-3. Always rebuilds reverse indexes (Sector → Theses, Macro → Theses) from scratch to prevent drift.
-4. Deletes `.graph_invalidations` on successful write.
-
-This separation eliminates cross-skill graph contention. Multi-skill workflow chains (§3a-3q) accumulate invalidations (closures only) + mtime advances (all thesis edits) as they run; a single `/graph last` at the end applies them in one pass — there is no automatic "finalizer" mechanism, so you must run `/graph last` (or `/graph` for a full rebuild) explicitly.
-
-If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` (full) consumes it. `/lint #38` flags stale invalidation files so they are not forgotten.
-
-### `_catalyst.md` — Catalyst Calendar
-Regenerated each time `/catalyst` runs. Timeline format: next 2 weeks (daily), weeks 3-4, months 2-3. Flags catalyst gaps and stale events.
-
-### `.last_sync` — Watermark
-Touched at the end of `/sync` (default mode) and `/sync all`. **NOT touched by `/sync TICKER`** — ticker-scoped runs preserve the watermark so the next default `/sync` still picks up unrelated files modified before the ticker run (advancing the watermark would silently mark them as already synced). Used by the next default `/sync` to detect which files changed since the last run via `find -newer .last_sync`.
-
-If `.last_sync` is absent, the next `/sync` (any mode) creates an epoch placeholder (`touch -t 197001010000`) so `find -newer` matches every file — equivalent to `/sync all` in scope. Never touched by `/graph`.
-
-### `_Archive/Snapshots/` — Version Control
-Created automatically before destructive edits by: `/sync` (Tier A section edits), `/deepen`, `/status` (except draft→active), `/compare` (sector note changes), `/prune` (sector note changes + per-closure and per-upgrade thesis snapshots), `/catalyst` (overwrites previous calendar), `/rollback` (pre-rollback safety net), `/rename` (pre-rename), `/thesis` (manifest-only). Also houses crash-recovery **manifests**: `_sync-manifest`, `_status-manifest`, `_prune-manifest`, `_thesis-manifest`, `_stress-test-manifest`, `_compare-manifest`. Cleaned by `/clean`. Flagged for age by `/lint` (checks #41, #45, #47, #48, #49; prune manifests covered by #36). Prune manifests with `status: completed` are protected for 30 days (regret-recovery window) regardless of `/clean` age threshold.
-
-### `.archive_ticker_registry.md` — Archive Ledger
-Append-only ledger at vault root recording every thesis that transitions to `status: closed` and moves to `_Archive/`. Written by `/status` closure branch and `/prune` Stage 2. Consumed by `/thesis` Step 1.2 as one of four signals in the archive-collision detection (filename match, frontmatter ticker, snapshot trail, and this registry). Read-only for all other skills. `/lint #46` validates entries against current archive state.
-
-### `.sync_all_fresh` — Full-Rebuild Marker
-Single-file flag at vault root, written by `/sync all` at its final step. Read by `/graph` (any mode): if present, `/graph` forces a full rebuild regardless of arguments — meaning `/graph last` invoked after `/sync all` will auto-promote to a full rebuild. `/graph` clears the marker after a successful write. `/lint #38` flags the marker as stale if it has aged beyond a week (signals a missed `/graph` run).
+For the operational nuance lint and skill authors depend on, read [[INFRASTRUCTURE.md]].
