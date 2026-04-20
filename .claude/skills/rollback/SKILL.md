@@ -545,6 +545,35 @@ Read `_hot.md` then edit (do NOT touch Latest Sync / Sync Archive — owned by `
 
 **Word cap**: after all edits, if over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 5,000 hard cap.
 
+### 6.5: Propagated-research caveat scan (sync-trigger rollbacks only)
+
+**Runs only when the rolled-back snapshot has `snapshot_trigger: sync` (or any cascade member does).** Skip for `deepen`, `status`, `compare`, `prune`, `rename`, `catalyst` triggers — those skills don't carry the `propagated_to:` dedup hazard.
+
+**Why this scan exists**: `/rollback` restores the thesis file from a pre-sync snapshot, which removes the `[[Research/source-note]]: …` Log entries that the reverted `/sync` had appended. But `/rollback` does NOT rewrite the `propagated_to:` frontmatter on those source research notes. The notes still carry `propagated_to: [TICKER]`, so the next `/sync` (Case 2b) skips re-propagating them — silently leaving the thesis without the Log entries the user expected to be re-applied. User Guide §3m documents this caveat; this scan surfaces it explicitly in the Step 7 report so the user doesn't have to remember to read §3m.
+
+**Procedure** (one Bash + Grep per restored-thesis ticker):
+
+1. Resolve every ticker whose thesis file was restored in this run (single-file: one ticker; cascade: every Tier A thesis snapshot in the batch). Skip sectors and macros — `propagated_to:` is research-note → thesis only.
+
+2. For each restored ticker T, identify research notes that claim propagation to T:
+   ```bash
+   # Match propagated_to: [...] frontmatter lines containing the ticker as a list element.
+   # Tolerate single-quoted, double-quoted, and unquoted forms.
+   Grep pattern='^propagated_to:.*\b'"$T"'\b' path='Research/' glob='*.md' output_mode='files_with_matches'
+   ```
+
+3. For each matched research note, cross-check: was a Log entry referencing this note ACTUALLY appended to the restored thesis BEFORE the snapshot date? Two-step:
+   - Read the snapshot's `## Log` section. If the snapshot already contained a Log entry referencing this research note (any of the 5 wikilink forms per `_shared/wikilink-forms.md`), then the propagation was older than the rollback target — the rollback didn't lose the Log entry, and re-propagation is not needed. Skip this note.
+   - Otherwise: the propagation happened AFTER the snapshot was taken (i.e., during the reverted /sync). The Log entry was lost. The note's `propagated_to:` is now stale.
+
+4. Collect the stale-claim set: `(research_note_path, ticker)` pairs that need user attention.
+
+5. **No stale claims**: skip Step 7's caveat section silently.
+
+6. **Stale claims found**: emit in Step 7 under `### Propagated-research caveat (sync-trigger rollback only)` (see Step 7 below).
+
+**Atomicity / failure**: if Grep fails or any cross-check Read fails, log warning, skip the caveat section, but do NOT abort the rollback (the rollback content already landed; the caveat is informational telemetry). Surface the failure in Step 7 with a fallback recommendation: `⚠️ Propagated-research scan failed — manually run: grep -l 'propagated_to:.*\b[TICKER]\b' Research/*.md to identify stale claims.`
+
 ## Step 7: Report
 
 ### Normal rollbacks (Steps 4-6 executed)
@@ -557,6 +586,38 @@ Read `_hot.md` then edit (do NOT touch Latest Sync / Sync Archive — owned by `
 - **Graph reminder**: `→ Run /graph last to update the dependency map.` (Critical for recreated-file rollbacks — restored thesis is invisible to graph-assisted propagation until /graph last runs.)
 - **Duplicate-file note** (Step 4a option (b) only): `⚠️ Content-only restore created duplicate file. Original path: [[snapshot_of]]. Current name: [[rename_target]]. Wikilinks retain current targets. To consolidate: decide which to keep, delete the other, run /sync.`
 - **To undo this rollback**: `/rollback [ticker]` → select `(pre-rollback)` snapshot
+
+### Propagated-research caveat (sync-trigger rollback only — populated by Step 6.5)
+
+**Emit only if Step 6.5 found stale `propagated_to:` claims.** Otherwise skip this section silently.
+
+```
+⚠️ Propagated-research caveat — [N] research note(s) still claim propagation to the restored thesis(es):
+
+  - [[Research/YYYY-MM-DD - source-note-1]] → propagated_to: includes [TICKER1]
+  - [[Research/YYYY-MM-DD - source-note-2]] → propagated_to: includes [TICKER1, TICKER2]
+  - ...
+
+The rollback restored the thesis content to its pre-sync state, removing the Log entries
+that the reverted /sync had appended. But the source research notes above were NOT modified —
+their propagated_to: frontmatter still lists the rolled-back ticker(s) as already-propagated.
+
+If you run /sync TICKER (or default /sync) expecting these research notes to re-propagate, /sync
+will SKIP them (Case 2b dedup) — leaving the restored thesis without the Log entries you may
+have expected to be re-applied.
+
+To force re-propagation, choose ONE per research note:
+  (a) Edit the research note's frontmatter and remove [TICKER] from propagated_to:
+      Then run /sync TICKER. Case 2b will not skip; Case 2a wikilink-presence will detect
+      the absence and re-propagate.
+  (b) Delete the research note and re-/ingest the source. The fresh research note has no
+      propagated_to: claim; /sync will treat it as new.
+  (c) Accept the loss — the rolled-back thesis state stays as-is. The research note's
+      propagated_to: claim is silently stale; /lint #1 may eventually surface it as orphan.
+
+This caveat is also documented in User Guide §3m (Recovery — Undo a Bad Sync). It surfaces
+here so the consequence is visible at the moment of rollback, not after the silent skip happens.
+```
 
 ### Rename-undo redirect (Step 4a option (a))
 

@@ -148,6 +148,7 @@ When compacting, preserve information in this priority order:
 3. When asked to research a topic, search the vault first before going to the web
 4. Use defuddle for all web content extraction to keep notes clean
 5. After creating research notes, suggest which thesis notes should be updated
+6. **After manually editing a thesis body section** (Bull Case, Risks, Industry Context, Bear Case, Key Non-consensus Insights, etc.), **always append a Log entry describing the change**. Without one, `/sync` may classify the run as skill-origin (because the most-recent Log entry is from a prior skill like `/status` or `/stress-test`) and silently skip propagating the edit to sector and macro notes. The Log entry doesn't need a special prefix — any prefix not in `_shared/log-prefixes.md`'s skill-origin list (e.g., `Manual edit:`, `Reviewed:`, `Refined:`) forces `/sync` to treat the change as research-driven and propagate normally.
 
 ## Core Workflow Loop
 The primary vault workflow is an ingest-propagate-graph loop:

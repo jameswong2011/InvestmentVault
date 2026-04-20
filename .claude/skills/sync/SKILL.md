@@ -761,6 +761,7 @@ Produce a compact report. **Emit only lines with non-empty data.** Do NOT includ
 | `Deduplication skips` | at least one Step 1.7 wikilink-presence skip |
 | `Sector skill-origin skips` | at least one Step 4.-1 skip |
 | `Macro skill-origin skips` | at least one Step 5.-1 skip |
+| `Skill-origin classified theses` | at least one thesis classified as skill-origin in Step 2.5 — list each as `[TICKER]: most-recent Log prefix "[prefix]" (sector/macro propagation skipped)`. Surfaced explicitly so the user can spot manual-edit misclassification (CLAUDE.md Workflow Rule #6): if the user manually edited a thesis body but the most-recent Log entry is still a prior skill's prefix, the gate misfires. Recommended user action when surprised: re-edit the thesis adding a Log entry with a non-skill-origin prefix (e.g., `Manual edit: ...`), then re-run /sync. |
 | `Log-history backfill skips` | at least one Case 2a skip (Step 1.7) |
 | `Sector idempotency skips` | at least one Step 4.0 skip |
 | `propagated_to: skips` | at least one Case 2b skip |

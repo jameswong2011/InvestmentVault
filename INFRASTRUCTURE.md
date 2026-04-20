@@ -144,14 +144,16 @@ All manifests at `_Archive/Snapshots/_<type>-manifest (<type>-*).md` with `type:
 
 | Manifest | Producer | `/rollback` cascade | `/lint` | Notes |
 |---|---|---|---|---|
-| `_prune-manifest` | `/prune` Stage 1.5 | 2.5c | #36 | Records closures, upgrades, affected sectors, Stage 4.2 neighbors. 30-day regret-recovery window floors `/clean` deletion regardless of `/clean [days]` arg |
+| `_prune-manifest` | `/prune` Stage 1.5 | 2.5c | #36 | Records closures, upgrades, affected sectors, Stage 4.2 neighbors. 30-day regret-recovery window floors `/clean` deletion of the manifest AND of every Stage 1 closure snapshot whose `snapshot_batch:` matches (universal across `/clean` modes — `/clean` Step 2d) |
 | `_sync-manifest` | `/sync` Step 2.9 (T2.1 skeleton) | 2.5b | #41 | Two-phase: skeleton pre-mutation → phase-boundary checkpoints (T7.4: end-of-Step-3/4/5 + 7.5 flip) → `completed`. Tier B Log entries surfaced for strikethrough review during cascade |
 | `_compare-manifest` | `/compare` Phase 5.5c | — | #45 | Sectors edited/rolled-back, per-target Log outcomes. `status: rolled-back` when atomicity fires |
 | `_stress-test-manifest` | `/stress-test` Phase 4.6 (T3.1) | 2.5d | #47 | Records the Log entry text appended to tested thesis (no snapshot — append-only) |
-| `_status-manifest` | `/status` Step 3.0.5 (T2.2) | 2.5e | #48 | Two-phase. Records thesis frontmatter change, sector edit, archive move, graph invalidations, `_hot.md`. Reaffirm flow skips manifest (no multi-file transaction) |
+| `_status-manifest` | `/status` Step 3.0.5 (T2.2) | 2.5e | #48 | Two-phase. Records thesis frontmatter change, sector edit, archive move, graph invalidations, `_hot.md`. Reaffirm flow skips manifest (no multi-file transaction). **Closure variant** (`field: status, new_value: closed`): 30-day regret-recovery window floors `/clean` deletion of the Step 3.1 thesis snapshot (universal across `/clean` modes — `/clean` Step 2d) |
 | `_thesis-manifest` | `/thesis` Step 3.5 (H1) | 2.5f | #49 | Two-phase. `/rollback` cascade is **deletion-based** (not snapshot restore) since `/thesis` creates new files |
 
-**Aging policy**: `in-progress` → Important (crash signal). `completed` → aged per 90/180 day tiers by the paired `/lint` check. `/clean` removes only after both the requested age AND any manifest-specific floor (e.g., prune 30-day window) are satisfied.
+**Aging policy**: `in-progress` → Important (crash signal). `completed` → aged per 90/180 day tiers by the paired `/lint` check. `/clean` removes only after both the requested age AND any manifest-specific floor (e.g., prune 30-day window, status closure 30-day window) are satisfied.
+
+**Closure-snapshot 30-day floor (universal — `/clean` Step 2d)**: distinct from manifest aging — applies to the per-thesis snapshots that closure manifests reference. Pre-closure thesis snapshots from `/prune` Stage 1 OR `/status active→closed` Step 3.1 are PROTECTED across ALL `/clean` modes (default age, `orphans`, `--include-orphans`) for 30 days from the matching manifest's `completed_date:`. Cross-reference is by `snapshot_batch:` ↔ manifest `batch:`. Closure detection: prune-manifest match always counts; status-manifest match requires `new_value:` to contain literal token `closed`. In-progress manifests' snapshots are also protected (closure transaction unresolved). The protection cannot be flag-overridden — the only deletion paths are (a) wait for the floor to expire, (b) manual `rm` with full awareness that `/rollback TICKER` becomes impossible.
 
 ---
 
@@ -413,6 +415,8 @@ Neither is read or written by any skill. Both are plugin/app-managed:
 | `.DS_Store` | Finder view metadata | Git-ignored; auto-created by macOS |
 
 `.gitignore` is the **authoritative runtime-marker registry**. Adding a new ephemeral marker requires: updating the producing skill's spec AND `.gitignore` AND §2 here AND the Appendix ownership matrix.
+
+**Currently covered runtime markers** (lines 22–38 of `.gitignore`): `.last_sync`, `.sync_all_fresh`, `.graph_invalidations`, `.vault-lock`, `.vault-lock.*`, `.rename_incomplete.*`. Any state-modifying skill that gains a new vault-root marker must extend this list — committing a live lock or repair marker would block every machine that pulls the repo until the offending file is `git rm`'d. Markers intentionally **NOT** ignored (because they are persistent content): `.archive_ticker_registry.md` (append-only ledger per §2.5), `.drift-config.md` (user-authored override per §2.7).
 
 ### 11.3 Reserved / optional markers
 

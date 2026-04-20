@@ -15,6 +15,8 @@ Delete snapshots older than a given threshold from `_Archive/Snapshots/`.
 - **`orphans`** (literal word): delete only orphan snapshots, regardless of age. Skips age-based cleanup entirely.
 - **Number of days + `--include-orphans`** (e.g., `180 --include-orphans`): standard age-based cleanup PLUS delete orphans. Explicit opt-in.
 
+**Universal closure-snapshot floor** (applies to ALL modes including `orphans` and `--include-orphans`): pre-closure thesis snapshots from `/prune` Stage 1 or `/status active→closed` Step 3.1 whose matching manifest's `completed_date:` is within 30 days are PROTECTED. No `/clean` argument override — the only path to delete is to wait for the floor to expire OR `rm` the snapshot manually with full awareness of the consequence (closure becomes unrecoverable via `/rollback`). See Step 2d for detection and Step 3 for reporting.
+
 Parse patterns in this order:
 ```
 if $ARGUMENTS == "orphans" → orphans-only mode
@@ -95,6 +97,25 @@ If the resolved path does not exist, the snapshot is an orphan.
 
 **Why default-protect orphans**: the legacy "delete orphans as part of expired batch" behavior created an unrecoverable loss path for scenarios where a thesis was deleted manually (violating CLAUDE.md "archive don't delete") — the snapshots were the user's only lingering audit trail, and `/clean` silently erased them along with genuinely-stale redundant snapshots. Default-protect surfaces orphans for review; the user can explicitly opt in via `orphans` or `--include-orphans` once they've inspected the reported list.
 
+### 2d: Closure-snapshot 30-day regret-recovery floor (universal — applies to age, orphans, and --include-orphans modes)
+
+The pre-closure thesis snapshots created by `/status active→closed` (Step 3.1) and `/prune` Stage 1 become orphans the moment the source thesis file moves to `_Archive/` (the snapshot's `snapshot_of: "[[Theses/TICKER - Name]]"` target is now missing). Without protection, `/clean orphans` and `/clean N --include-orphans` silently destroy the recovery path for any recent closure within seconds of the closure landing. `/lint` cannot retroactively recreate deleted snapshots; `git restore` only helps if the snapshot was committed before deletion. This 30-day floor universally protects closure snapshots regardless of `/clean` mode.
+
+**Detection procedure** — runs for every snapshot classified as 👻 Orphan in 2c:
+
+1. Read snapshot's `snapshot_batch:` frontmatter. Skip protection check if absent (legacy snapshot).
+2. Search `_Archive/Snapshots/` for a manifest whose `batch:` matches the snapshot's `snapshot_batch:`:
+   - **Status manifest match** (`type: status-manifest`): closure detection requires the manifest's `new_value:` to contain the literal token `closed` (covers `new_value: closed`, `new_value: "closed"`, and compound forms like `"monitoring → closed"`). Match → it's a `/status active→closed` (or `monitoring→closed`) snapshot.
+   - **Prune manifest match** (`type: prune-manifest`): every `/prune` Stage 1 snapshot for an Intended Closure target is a closure snapshot by construction. Match → confirmed closure snapshot.
+3. If matched manifest found AND manifest's `status: completed` AND `completed_date:` is within 30 days of today → **PROTECT** under closure-floor regardless of `/clean` mode (age, `orphans`, `--include-orphans`).
+4. If manifest's `status: in-progress` → also PROTECT (the closure transaction is unresolved; deleting recovery snapshots compounds the failure state). Surface separately under Step 3 reporting.
+5. If manifest matched but `completed_date:` is missing (legacy or flip-verification miss) → treat as completed-30-days-ago for cleanup (no protection). Log: `ℹ️ Closure manifest [batch] missing completed_date: — treating snapshot as past regret window. Verify manually if you need the snapshot.`
+6. If no matching manifest → snapshot's closure status cannot be confirmed. Treat as standard orphan (default-protected; deletable via `/clean orphans` per 2c).
+
+**Reporting**: protected closure snapshots appear under a dedicated Step 3 section (see below) so users see exactly which closures they cannot yet aggressively prune from. The protection cannot be overridden by `/clean` flags by design — the user's only path to delete a 30-day-floored closure snapshot is to wait for the floor to expire OR to manually `rm` the snapshot (with full awareness of the consequence).
+
+**Why universal across modes**: the prior /prune-manifest 30-day floor (2a) only protected the *manifest* file. It did NOT protect the per-thesis snapshots that the manifest references. `/clean orphans` could delete a 5-day-old prune's per-thesis snapshots while preserving the manifest — leaving the user with a manifest body listing closures they could no longer restore. This 2d floor closes that gap and extends symmetric protection to `/status` closures (which have no manifest-floor analog).
+
 ## Step 3: Report Before Deletion
 
 Present a summary table. **Do NOT delete anything yet.**
@@ -142,11 +163,27 @@ These snapshots reference source files that no longer exist in the vault. Possib
 - **Default age mode**: orphans are PROTECTED and listed here only. Not deleted.
 - **To delete orphans**: run `/clean orphans` (orphans only, any age) or `/clean [days] --include-orphans` (age + orphans).
 
+### 🛟 Closure snapshots — in 30-day regret-recovery window (PROTECTED across all modes — 2d)
+
+| File | Closure Type | Batch ID | Closure Completed | Days remaining |
+|------|-------------|----------|-------------------|---------------|
+
+Pre-closure thesis snapshots from `/prune` Stage 1 or `/status active→closed` Step 3.1, where the matching manifest's `completed_date:` is within 30 days of today. These snapshots are the only recovery path for `/rollback TICKER` if the user regrets the closure. **Protected universally** — `/clean orphans` and `/clean [days] --include-orphans` cannot delete these. Becomes eligible for deletion automatically once 30 days have elapsed since `completed_date:`.
+
+If you need to delete one of these urgently (e.g., disk pressure + already verified backup elsewhere), `rm` the snapshot manually with full awareness that the closure becomes unrecoverable.
+
+### 🛟 Closure snapshots — manifest in-progress (PROTECTED — 2d)
+
+| File | Manifest Path | Manifest Batch ID |
+|------|--------------|-------------------|
+
+Snapshots whose matching `_status-manifest` or `_prune-manifest` is still `status: in-progress`. The closure transaction did not complete cleanly — the snapshot is the sole rollback path. Resolve the in-progress manifest first (run `/rollback` cascade per the manifest's recovery guidance, OR manually flip the manifest after spot-checking that work landed) before re-running `/clean`.
+
 ### Non-snapshot artifacts (skipped)
 | File | Type |
 |------|------|
 
-**Total**: X to delete, Y active safety nets (protected), Z retained, V orphans (protected by default | slated for deletion), P prune manifests in regret-window (protected), Q prune manifests eligible for deletion, W non-snapshot artifacts (skipped).
+**Total**: X to delete, Y active safety nets (protected), Z retained, V orphans (protected by default | slated for deletion), P prune manifests in regret-window (protected), Q prune manifests eligible for deletion, R closure snapshots in regret-window (PROTECTED across all modes — 2d), S closure snapshots with in-progress manifests (PROTECTED — 2d), W non-snapshot artifacts (skipped).
 
 ## Step 4: Confirm and Execute
 

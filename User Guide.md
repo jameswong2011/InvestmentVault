@@ -705,8 +705,8 @@ update based on the sector note and recent research.
 ```
 > **Safety net check**: protects snapshots whose source file was modified after the snapshot was taken (even if old). Reports before deleting. Waits for confirmation.
 > **Orphans are protected by default**: a snapshot whose `snapshot_of:` target no longer exists is often the only recovery path for a mistakenly-deleted file. Default mode lists them but does not delete. Use `/clean orphans` or `--include-orphans` only when you've explicitly reviewed the list.
-> **Do not run `/clean orphans` within ~30 days of `/prune` closures**: the pre-prune snapshots `/prune` created for each closed thesis become orphans the moment the thesis file moves to `_Archive/`. Deleting them destroys the regret-recovery path for the prune itself. (Prune *manifests* are protected under a 30-day regret window automatically; the thesis **snapshots** aren't.) If you're doing monthly maintenance (§3l) and want to reclaim space aggressively, run `/clean orphans` **before** `/prune`, not after.
-> **Prune-manifest retention**: completed `_prune-manifest*.md` files are kept 30 days for regret-recovery regardless of age threshold. `/clean` reports them separately.
+> **Closure-snapshot 30-day floor (universal across all `/clean` modes — generalized from /prune-only)**: pre-closure thesis snapshots from EITHER `/prune` Stage 1 OR `/status active→closed` Step 3.1 are PROTECTED for 30 days from the matching manifest's `completed_date:`. `/clean` Step 2d cross-references each orphan's `snapshot_batch:` against `_status-manifest`/`_prune-manifest` files; matched closures within 30 days are protected regardless of `/clean` mode (default age, `orphans`, or `--include-orphans`). This closes the prior gap where `/clean orphans` could destroy a recent closure's only recovery path within seconds of the closure landing. The protection cannot be overridden by any `/clean` flag — the only path to delete a 30-day-floored closure snapshot is to wait for the floor to expire OR `rm` the snapshot manually with full awareness that `/rollback TICKER` becomes impossible. Snapshots whose matching manifest is `status: in-progress` are also protected (the closure transaction is unresolved; the snapshot is the rollback path).
+> **Prune-manifest retention**: completed `_prune-manifest*.md` files are also kept 30 days for regret-recovery regardless of age threshold. `/clean` reports them separately.
 
 ### Rollback to a previous version
 ```
@@ -798,7 +798,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | **Fix graph issues** | `/graph` |
 | **Undo a bad sync** | `/rollback TICKER` (offers cascade) → `/sync TICKER` (single-file) or `/sync all` (cascade — see §3m propagated-research caveat) |
 | **Undo a conviction change** | `/rollback TICKER` → select `(pre-status)` snapshot |
-| **Delete old snapshots** | `/clean`, `/clean [days]`, `/clean orphans`, or `/clean [days] --include-orphans` (see §8 for post-prune safety warning) |
+| **Delete old snapshots** | `/clean`, `/clean [days]`, `/clean orphans`, or `/clean [days] --include-orphans` (see §8 for the universal closure-snapshot 30-day floor — covers both `/prune` and `/status active→closed`) |
 | **Rename a thesis (company name change)** | `/rename TICKER "New Company Name"` (file rename is atomic via `mv`; wikilink rewrites are best-effort with a `.rename_incomplete.TICKER` marker on partial failure — re-run `/rename` to repair, then ticker-scoped skills unblock) |
 | **Build a sector note** | Manual creation with Sector Template → `/graph` → `/surface [sector]` → `/sync` |
 | **Deep-dive a topic** | "Teach me [TOPIC]" → saved as Research note → `/sync` |
@@ -842,7 +842,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 | `/lint` | none \| TICKER | — (report only) | — (read-only) | Fix flagged issues → `/graph` if graph issues |
 | `/prune` | none \| sector \| flag \| sector+flag | Snapshots per closure/upgrade, `_prune-manifest` | Theses (closures/upgrades), Sector notes, `_hot.md`; appends `.graph_invalidations` (closure branch); appends `.archive_ticker_registry.md` | `/graph last` (consume invalidations); `/surface` (find new opportunities) |
 | `/graph` | none \| `last` \| N (days) | `_graph.md` (full rebuild or incremental merge) | `_graph.md`; clears `.graph_invalidations` and `.sync_all_fresh` on success | — |
-| `/clean` | none \| days \| `orphans` \| days `--include-orphans` | — | Deletes old snapshots (age-based by default); deletes orphans only on explicit opt-in | — |
+| `/clean` | none \| days \| `orphans` \| days `--include-orphans` | — | Deletes old snapshots (age-based by default); deletes orphans only on explicit opt-in. **Universal closure-snapshot 30-day floor** (Step 2d): pre-closure thesis snapshots from `/prune` Stage 1 OR `/status active→closed` Step 3.1 are PROTECTED for 30 days from their manifest's `completed_date:` regardless of `/clean` mode | — |
 | `/rollback` | none \| TICKER \| snapshot name | Pre-rollback safety snapshot, sector pre-edit snapshot (if sector touched), relocated-archive snapshots (closure restore) | Restored note, Sector note, `_hot.md`; advances restored-file mtime for `/graph last` | `/sync TICKER` or `/sync all` (cascade) → `/graph` (full, if recreated archived thesis) |
 | `/rename` | `TICKER "New Name"` | Pre-rename snapshot, `.rename_incomplete.TICKER` on partial failure | Thesis filename, all inbound wikilinks (live + snapshot bodies), `_graph.md` adjacency header (direct surgical write), Sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, `_hot.md` mentions | `/graph` (full, not `last`) — see §12 for rationale |
 
@@ -944,10 +944,10 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 /clean                                     # default age: 180 days; orphans PROTECTED
 /clean 90                                  # custom age threshold; orphans PROTECTED
 /clean 30                                  # aggressive age; orphans PROTECTED
-/clean orphans                             # delete only orphans (source missing), any age
-/clean 180 --include-orphans               # age-based cleanup PLUS orphan deletion
+/clean orphans                             # delete only orphans (source missing), any age — closure snapshots within 30 days STILL PROTECTED
+/clean 180 --include-orphans               # age-based cleanup PLUS orphan deletion — closure snapshots within 30 days STILL PROTECTED
 ```
-> Orphan snapshots (snapshots whose `snapshot_of:` target no longer exists) are **protected by default** — they are often the only recovery path for a mistakenly-deleted file. Opt in to deletion explicitly. See §8 for the post-`/prune` safety warning.
+> Orphan snapshots (snapshots whose `snapshot_of:` target no longer exists) are **protected by default** — they are often the only recovery path for a mistakenly-deleted file. Opt in to deletion explicitly. See §8 for the closure-snapshot 30-day floor (universal across all `/clean` modes — covers BOTH `/prune` AND `/status active→closed` snapshots).
 
 ### `/graph`
 ```

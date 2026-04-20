@@ -57,11 +57,43 @@ Wait for user resolution. Do NOT proceed.
 
 ## Phase 0: Check for Unsynced Research (§7)
 
+Three states based on `.last_sync` and `find -newer` outcome:
+
+### Phase 0.A: `.last_sync` absent — first-run state (B4 fix)
+
+If `.last_sync` does not exist at vault root, the next `/sync` will treat the entire vault as first-run (epoch placeholder, every file matches `find -newer`). Proceeding with `/prune` in this state means closures/upgrades are evaluated against thesis state that may not yet reflect the most recent research notes. Hard-prompt before continuing:
+
+```
+⚠️ First-run state detected — .last_sync is absent at vault root.
+
+The vault has either never been synced, or .last_sync was deleted (manually,
+accidentally, or via `git restore` that wiped it). The next /sync (any mode)
+will treat this as a first-run and re-process every file in the vault.
+
+/prune evaluates closure candidates by reading thesis state directly, but the
+thesis state in a first-run vault may not yet reflect insights from research
+notes that haven't propagated yet. Running /prune now risks closing or
+upgrading theses based on incomplete evidence.
+
+Recommended: run /sync first to establish the watermark and propagate any
+pending research, then re-run /prune.
+
+Options:
+  (a) Cancel — exit /prune. Run /sync, then re-invoke /prune.
+  (b) Proceed anyway — accept the risk that recommendations may not reflect
+      the latest research. Use only if you have already verified that no
+      research notes are awaiting propagation.
+
+Confirm (a/b):
+```
+
+**Do NOT proceed without explicit user confirmation.** Decline → exit and suggest `/sync`. Approve → continue to Phase 0.B (which will report no changed files since the watermark is missing).
+
+### Phase 0.B: `.last_sync` present — unsynced-research scan
+
 ```bash
 find Research/ Theses/ Macro/ Sectors/ -newer .last_sync -name '*.md' 2>/dev/null
 ```
-
-If `.last_sync` absent, skip (first-run state).
 
 Changed files found → warn before proceeding:
 ```
