@@ -127,11 +127,13 @@ Forward adjacency updates per changed thesis; reverse indexes, clusters, and orp
 ### Step I.1: Parse Existing Graph
 
 Read `_graph.md` and parse:
-- Thesis Adjacency Index → map of `TICKER - Name → {sectors, macros, cross-thesis, research}`
+- Thesis Adjacency Index → map of `TICKER - Name → {sectors, macros, cross-thesis, research, status, log_tail}`
 - Existing orphan list (used for diff reporting)
 - Existing cluster table (used for diff reporting)
 
 This becomes the **baseline** for incremental updates. If parsing fails (corrupt file), warn `⚠️ _graph.md unparseable — falling back to full rebuild` and proceed to Step 1.
+
+**Pre-T7.3 graph compatibility**: if any parsed adjacency entry lacks `status:` or `log_tail:` fields, flag that entry for re-extraction in Step I.4 (treat as invalidated). This upgrades the cache on the next incremental pass without forcing a full rebuild. Log: `ℹ️ Adjacency entry [TICKER] missing T7.3 cache fields (status/log_tail) — will re-extract to upgrade schema.` For vaults with many pre-T7.3 entries, the first `/graph last` after this change effectively becomes a near-full rebuild of the changed+uncached theses; subsequent runs are cheap again.
 
 **Single-Read directive**: Issue ONE `Read` on `_graph.md` in full. Do not preview-read with `limit:` and then re-read the whole file — the file is <1000 lines, the cache cost is identical, and the extra tool call adds a full round-trip. The only legitimate split is if the file exceeds Read's default 2000-line limit (pre-6.10 `/graph` full-rebuild output for large vaults could trip this) — in that case pass `limit:` AND `offset:` to cover the whole file in ≤2 reads.
 
@@ -164,7 +166,7 @@ Compare current `Theses/*.md` files on disk against baseline adjacency entries:
 
 ### Step I.4: Re-extract Adjacency for Changed + Added + Invalidated Theses
 
-For each thesis flagged in Step I.2 (changed by watermark), Step I.2.5 (invalidated by `.graph_invalidations`), or Step I.3 (added):
+For each thesis flagged in Step I.2 (changed by watermark), Step I.2.5 (invalidated by `.graph_invalidations`), Step I.3 (added), or Step I.1 (missing T7.3 cache fields):
 1. Extract outbound `[[wikilinks]]` from the thesis file
 2. Categorize each link:
    - Target in `Sectors/` → sector adjacency
@@ -174,19 +176,41 @@ For each thesis flagged in Step I.2 (changed by watermark), Step I.2.5 (invalida
 3. **Validate target existence** — for each cross-thesis link in particular, verify the target file exists under `Theses/`. If it does NOT exist (dangling reference to an archived thesis), drop it from the cross-thesis set and log `ℹ️ Dropped dangling cross-thesis: [TICKER] → [[Theses/TARGET - ...]] (file not in Theses/, likely archived).` This is the step that actually removes stale post-closure references from the graph — it completes the invalidation cycle that Step I.2.5 opens.
 
    Apply the same existence check to research, sector, and macro links: if a linked research/sector/macro file no longer exists, drop it from the respective adjacency bucket. Log each dropped link at `ℹ️` severity.
-4. Replace the baseline adjacency entry for this thesis with the new, validated categorization.
+4. **Extract `status:` and `log_tail:`** per Step 2b (same fused Bash block below captures both alongside wikilinks).
+5. Replace the baseline adjacency entry for this thesis with the new, validated categorization plus the fresh `status:` and `log_tail:` values.
 
 Unchanged (and non-invalidated) theses retain their baseline adjacency entries — no re-read required. If a baseline entry carries a dangling reference from a prior extraction and the thesis is not invalidated this run, `/lint` #21 still flags it; next time the thesis is edited (or its ticker appears on `.graph_invalidations`), the stale reference is cleaned.
 
-**Single-Bash implementation for ALL changed theses** (N → 1 tool calls):
+**Single-Bash implementation for ALL changed theses** (N → 1 tool calls) — includes `status:` and `log_tail:` extraction per Step 2b:
 
 ```bash
 # Emit one block with clear delimiters. Parser (LLM) buckets by FILE markers.
 for f in "Theses/TICKER1 - Name1.md" "Theses/TICKER2 - Name2.md" "Theses/TICKER3 - Name3.md"; do
   echo "=== FILE: $f ==="
+  echo ">>> WIKILINKS"
   grep -oE '\[\[[^]]+\]\]' "$f" \
     | sed 's|^\[\[||; s|\]\]$||; s|\.md$||; s|\|.*$||; s|#.*$||' \
     | sort -u
+  echo ">>> STATUS"
+  grep -m1 '^status:' "$f" | sed 's/^status: *//' || echo "unknown"
+  echo ">>> LOG_TAIL"
+  awk '
+    BEGIN { in_log=0; pending_date=""; }
+    /^## Log[[:space:]]*$/ { in_log=1; next }
+    in_log && /^## / { exit }
+    in_log && /^### [0-9]{4}-[0-9]{2}-[0-9]{2}/ { pending_date=$2; next }
+    in_log && pending_date != "" && /^- / {
+      line=$0; sub(/^- /, "", line);
+      if (length(line) > 100) line = substr(line, 1, 100) "…";
+      entries[++n] = pending_date " | " line;
+      pending_date="";
+    }
+    END {
+      start = (n > 3) ? n - 2 : 1;
+      for (i = start; i <= n; i++) print entries[i];
+      if (n == 0) print "—";
+    }
+  ' "$f"
 done
 ```
 
@@ -362,12 +386,35 @@ for dir in Theses Research Sectors Macro; do
 done
 
 echo ""
-echo "=== THESIS WIKILINKS (Step 2 input) ==="
+echo "=== THESIS WIKILINKS + STATUS + LOG_TAIL (Steps 2 + 2b input) ==="
 for f in Theses/*.md; do
   echo "--- $f"
+  echo ">>> WIKILINKS"
   grep -oE '\[\[[^]]+\]\]' "$f" \
     | sed 's|^\[\[||; s|\]\]$||; s|\.md$||; s|\|.*$||; s|#.*$||' \
     | sort -u
+  echo ">>> STATUS"
+  grep -m1 '^status:' "$f" | sed 's/^status: *//' || echo "unknown"
+  echo ">>> LOG_TAIL"
+  # Extract ## Log section body; find last 3 ### YYYY-MM-DD headers with first bullet each.
+  awk '
+    BEGIN { in_log=0; pending_date=""; }
+    /^## Log[[:space:]]*$/ { in_log=1; next }
+    in_log && /^## / { exit }
+    in_log && /^### [0-9]{4}-[0-9]{2}-[0-9]{2}/ { pending_date=$2; next }
+    in_log && pending_date != "" && /^- / {
+      line=$0; sub(/^- /, "", line);
+      # Trim long bullets at 100 chars
+      if (length(line) > 100) line = substr(line, 1, 100) "…";
+      entries[++n] = pending_date " | " line;
+      pending_date="";
+    }
+    END {
+      start = (n > 3) ? n - 2 : 1;
+      for (i = start; i <= n; i++) print entries[i];
+      if (n == 0) print "—";
+    }
+  ' "$f"
 done
 
 echo ""
@@ -384,7 +431,9 @@ for dir in Macro Sectors; do
 done
 ```
 
-The LLM parses the output into three sections by the `===` markers, then performs Steps 2–3 categorization (existence validation, bucket by sector/macro/cross-thesis/research) and Step 4 clustering (bidirectional union-find) entirely in its reasoning layer. No additional Bash calls are needed for these steps.
+The LLM parses the output into three top-level sections by the `===` markers, sub-buckets per-thesis data by the `--- FILE` and `>>>` markers, then performs Steps 2–3 categorization (existence validation, bucket by sector/macro/cross-thesis/research) and Step 4 clustering (bidirectional union-find) entirely in its reasoning layer. No additional Bash calls are needed for these steps.
+
+> **AWK note on the LOG_TAIL extraction**: the script walks top-to-bottom through the `## Log` section, pairs each `### YYYY-MM-DD` header with the first `- ` bullet following it (skipping blank lines), and keeps the last 3 pairs. Bullets longer than 100 chars get truncated with a horizontal-ellipsis character to signal truncation without tripping `/lint #42` (which forbids `...` markers — `…` is a distinct Unicode character that lint does not flag).
 
 ## Step 1: Inventory Vault
 
@@ -418,11 +467,33 @@ For each thesis in `Theses/`:
 4. Build the adjacency entry:
    ```
    ### TICKER - Company Name
-   - sector: [[Sectors/Sector Name]]
-   - macro: [[Macro/Note1]], [[Macro/Note2]]
-   - cross-thesis: [[Theses/OTHER - Company]]
-   - research: [[Research/2026-01-15 - Topic - Source.md]], ...
+   - **sectors:** [[Sectors/Sector Name]]
+   - **macro:** [[Macro/Note1]], [[Macro/Note2]]
+   - **cross-thesis:** [[Theses/OTHER - Company]]
+   - **research:** [[Research/2026-01-15 - Topic - Source.md]], ...
+   - **status:** active
+   - **log_tail:**
+     - `2026-04-19 | Stress test: TSM — weakened conviction — [2 more sentences omitted]`
+     - `2026-04-18 | Deepened: Industry Context section filled from latest sector research`
+     - `2026-04-15 | Status change: conviction medium→high — user reaffirmed after earnings`
    ```
+
+### Step 2b: Extract `status:` and `log_tail:` per thesis (T7.3)
+
+These two fields let `/sync` Pass 1 triage (for `/sync all`) and Step 2.5 skill-origin classification consume graph data instead of re-reading every thesis file. The fields are a **read-through cache** — /graph re-derives them from the source thesis on every rebuild, so the cache is invalidated automatically on any subsequent `/graph last` after a thesis edit.
+
+**Extraction procedure** (integrated into the fused Steps 1–3 Bash block below — do NOT issue a separate call):
+- **`status:`** — `grep -m1 '^status:' "$f"` returns the YAML frontmatter line. Strip `status: ` prefix. Expected values: `draft | active | monitoring | closed`. Missing → emit `unknown`.
+- **`log_tail:`** — extract the `## Log` section, find the last 3 `### YYYY-MM-DD` date headers in document order, and for each, capture the first bullet line (`- ...`) that follows. Truncate each bullet to 100 characters (at a word boundary if possible) and replace internal newlines with spaces. Output format: `YYYY-MM-DD | [bullet text truncated]`.
+
+If the thesis has no `## Log` section, or fewer than 3 entries, emit what's available. Empty Log → `log_tail: —`.
+
+**Consumer contract**:
+- `/sync` Pass 1 classification reads the 3 prefixes to detect conviction/status-change recency, Stress test / Deepened markers (for drift exclusion), and skill-origin prefixes.
+- `/sync` Step 2.5 pattern-matches the **most recent** entry's prefix against the skill-origin list from `_shared/log-prefixes.md`.
+- Downstream skills (`/surface`, `/lint`) may also consume these fields — see `_graph.md` schema section below.
+
+**Schema-version signal**: when ANY adjacency entry in `_graph.md` carries a `log_tail:` field, consumers assume T7.3 coverage. When the field is absent from the first parsed entry, consumers fall back to per-thesis file reads. No explicit `schema_version:` frontmatter field is required — the field's presence IS the signal. Pre-T7.3 graphs remain readable; they just cost consumers an extra round of file reads until `/graph` (full or incremental) runs and upgrades the cache.
 
 ## Step 3: Build Reverse Indexes
 
@@ -533,7 +604,7 @@ Using the lock-acquisition timestamp (a few minutes earlier than the actual writ
 **`graph_mode:` population**: literal `last`, the integer N (e.g., `7`), or `full`. Read by `/lint #38` for diagnostic messages but not load-bearing.
 
 Sections:
-1. `## Thesis Adjacency Index` — all entries from Step 2
+1. `## Thesis Adjacency Index` — all entries from Step 2 (includes `sectors:`, `macro:`, `cross-thesis:`, `research:`, plus Step 2b's `status:` and `log_tail:`)
 2. `## Reverse Index: Macro → Theses` — from Step 3
 3. `## Reverse Index: Sector → Theses` — from Step 3
 4. `## Cross-Thesis Clusters` — from Step 4
@@ -554,10 +625,11 @@ If the rebuild write fails, both files are preserved so the next `/graph` run st
 Re-read `_graph.md` after writing and verify structural integrity:
 1. YAML frontmatter parses without error — all expected fields present (`type`, `date`, `theses`, `sectors`, `macro`, `research`, `edges`, `orphans`)
 2. All five section headings exist: `## Thesis Adjacency Index`, `## Reverse Index: Macro → Theses`, `## Reverse Index: Sector → Theses`, `## Cross-Thesis Clusters`, `## Orphan Research Notes`
-3. Every `### TICKER - Name` entry in the adjacency index has at least a `sector:` field
-4. All wikilinks have valid `[[...]]` syntax (no unclosed brackets)
-5. Frontmatter counts match actual content: `theses:` equals the number of `###` entries in Adjacency Index, `orphans:` equals the number of items in Orphan list
-6. Every file listed in an adjacency entry actually exists on disk (spot-check: verify the first and last entry, plus any entry that was newly added or changed from the previous graph)
+3. Every `### TICKER - Name` entry in the adjacency index has at least a `sectors:` field
+4. **T7.3 cache fields**: every `### TICKER - Name` entry carries `status:` and `log_tail:` fields. If any entry is missing either, log `⚠️ Adjacency entry [TICKER] missing status: or log_tail: after write — likely an extraction glitch; re-run /graph last to refresh.` and continue (non-fatal).
+5. All wikilinks have valid `[[...]]` syntax (no unclosed brackets)
+6. Frontmatter counts match actual content: `theses:` equals the number of `###` entries in Adjacency Index, `orphans:` equals the number of items in Orphan list
+7. Every file listed in an adjacency entry actually exists on disk (spot-check: verify the first and last entry, plus any entry that was newly added or changed from the previous graph)
 
 If any check fails:
 - Checks 1-2 (structural): `❌ Graph rebuild produced a corrupt file — [specific failure]. Re-run /graph.`
