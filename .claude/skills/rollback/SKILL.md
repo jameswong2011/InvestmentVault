@@ -121,9 +121,100 @@ If multiple snapshots match, present them in a table and ask the user to choose:
 
 Check whether other snapshots were created by the same operation (indicating a multi-file mutation like `/sync` that should be rolled back atomically):
 
-1. Extract `snapshot_batch:` from the selected snapshot's frontmatter. If `snapshot_batch:` is absent (legacy snapshot created before this field was introduced), fall back to matching on `snapshot_trigger:` + date portion of `snapshot_date:` (`YYYY-MM-DD`, ignoring any time suffix). **Both `-HHMM` (pre-HHMMSS-standardization legacy snapshots) and `-HHMMSS` (current 6-digit format) are recognized** — match on the `YYYY-MM-DD` prefix only when comparing across formats.
-2. Search `_Archive/Snapshots/` for other snapshots with matching `snapshot_batch:` value (or matching trigger + date in fallback mode). Batch matching is operation-precise — same-day repeat operations (e.g., two `/sync` runs on the same day) get distinct batch IDs and will not cross-match.
-3. If matches found, present them:
+### Step 2.5a — Determine matching mode
+
+Resolve the selected snapshot's identity using a frontmatter-then-filename cascade. This handles three real-world snapshot classes observed in mature vaults:
+
+| Class | Has `snapshot_batch:`? | Has `snapshot_trigger:` + `snapshot_date:`? | Source of truth |
+|---|---|---|---|
+| **A — Modern** | yes | yes | frontmatter only |
+| **B — Partial-legacy** | no | yes | frontmatter (trigger+date), filename (time suffix) |
+| **C — Bare-legacy** | no | NO snapshot frontmatter at all | **filename only** |
+
+Resolution procedure:
+
+1. Read the selected snapshot's frontmatter. Extract `snapshot_batch:`, `snapshot_trigger:`, `snapshot_date:` if present.
+
+2. If `snapshot_trigger:` OR `snapshot_date:` are missing, derive them from the filename. Filename pattern: `[Name] (pre-[trigger] YYYY-MM-DD[-HHMM[SS]]).md`. Regex (informal):
+   ```
+   ^(?<name>.*) \(pre-(?<trigger>[a-z-]+) (?<date>\d{4}-\d{2}-\d{2})(-(?<time>\d{4}|\d{6}))?\)\.md$
+   ```
+   - `name` → for display only
+   - `trigger` → fills `snapshot_trigger:` if missing
+   - `date` → fills `snapshot_date:` if missing
+   - `time` → captured as the "time suffix" used by Step 2.5a-legacy clustering (none / `HHMM` / `HHMMSS`)
+
+   If the filename does not match the expected pattern, abort with: `❌ Snapshot filename does not match expected pattern (pre-TRIGGER YYYY-MM-DD[-HHMM[SS]]). Cannot determine trigger/date for cascade detection. Manual restore via cp + git commit recommended.`
+
+3. Route based on `snapshot_batch:` presence:
+
+- **Class A — Modern** (`snapshot_batch:` present): use **batch-ID match**. Search `_Archive/Snapshots/` for other snapshots with EXACTLY matching `snapshot_batch:` value. Batch matching is operation-precise — same-day repeat operations (two `/sync` runs on the same day) get distinct batch IDs and will not cross-match. Proceed to **Step 2.5a-modern** (cascade presentation).
+
+- **Class B / C — Legacy** (`snapshot_batch:` absent): use **trigger + date fallback**, with trigger and date sourced per Step 2 above (frontmatter or filename). Search `_Archive/Snapshots/` for other snapshots whose effective trigger + date (also sourced via the same frontmatter-then-filename cascade) match the selected snapshot. Recognized legacy filename formats: `(pre-[trigger] YYYY-MM-DD)` (no time suffix), `(pre-[trigger] YYYY-MM-DD-HHMM)` (4-digit time, pre-HHMMSS standardization), and `(pre-[trigger] YYYY-MM-DD-HHMMSS)` (6-digit, may also lack the batch field if the snapshot predates field introduction). Proceed to **Step 2.5a-legacy** (CRITICAL-2 disambiguation).
+
+> **Why filename fallback exists**: your vault may contain `(pre-sync 2026-04-19-1354)` snapshots from an early `/sync` version that wrote no `snapshot_*` frontmatter at all (Class C). Without filename-derivation, Step 2.5a-legacy would receive empty trigger/date and produce zero candidates — silently allowing single-file rollback when there may have been a same-day batch. Filename-derivation gives Class C the same safety net as Class B.
+
+### Step 2.5a-legacy — Legacy fallback disambiguation (CRITICAL-2 fix)
+
+> **Why this exists**: trigger + date matching is intrinsically imprecise. Two completely independent `/sync` runs on the same day (e.g., morning sync at 09:00 and evening sync at 18:00) produce snapshots that share `snapshot_trigger: sync` and the same `snapshot_date: YYYY-MM-DD`, but were never part of the same batch. Without explicit disambiguation, `/rollback` would offer ALL same-day same-trigger snapshots as a "cascade" — accepting it would silently restore files unrelated to the batch you intended to undo. Modern snapshots (with `snapshot_batch:`) are immune; legacy snapshots are not. Your `_Archive/Snapshots/` may contain both formats — see CRITICAL-2 in the integrity report.
+
+When operating in legacy mode, the cascade prompt MUST surface the ambiguity. Do NOT auto-include any candidate without explicit user confirmation.
+
+1. Build the candidate list. For each candidate, capture:
+   - Snapshot filename (full)
+   - Source file path (from `snapshot_of:` if present, else inferred from filename)
+   - Time portion of the snapshot filename (none / `HHMM` / `HHMMSS`)
+   - File mtime of the snapshot file (independent ground-truth signal)
+
+2. Cluster candidates by their time portion when possible. Two snapshots sharing the exact same time suffix (e.g., both `(pre-sync 2026-04-19-1354)`) are MORE likely to be the same batch than two with different suffixes. Use this as advisory, not definitive.
+
+3. Present the legacy disambiguation prompt:
+
+   ```
+   ⚠️ Legacy cascade detection (no `snapshot_batch:` field).
+   
+   Selected snapshot: [[_Archive/Snapshots/[selected]]]
+     Trigger: [trigger]
+     Date:    YYYY-MM-DD
+     Time:    [HHMM | HHMMSS | none]
+     Mtime:   [filesystem mtime of the snapshot file]
+   
+   Found [N] other same-trigger snapshot(s) on the same date:
+   
+     [1] [[_Archive/Snapshots/candidate-1]] → [[source-file-1]]
+         Time: [HHMM] | Mtime: [mtime]
+         Likely same batch? [yes if time suffix matches; no if differs; unknown if either has no suffix]
+     
+     [2] [[_Archive/Snapshots/candidate-2]] → [[source-file-2]]
+         Time: [none] | Mtime: [mtime]
+         Likely same batch? unknown (no time suffix to compare)
+     
+     [3] [[_Archive/Snapshots/candidate-3]] → [[source-file-3]]
+         Time: [HHMMSS] | Mtime: [mtime]
+         Likely same batch? no (different time format suggests independent run)
+   
+   These could be the same batch as your selected snapshot OR independent
+   operations from different times on the same day. Without `snapshot_batch:`
+   the difference cannot be determined automatically.
+   
+   Options:
+     (a) Include ALL candidates in cascade — accept the legacy ambiguity, restore everything that matches trigger+date
+     (b) Include SOME — specify which by number (e.g., "1,3" includes candidates 1 and 3 only)
+     (c) Include NONE — single-file rollback of just the selected snapshot
+     (d) Cancel
+   ```
+
+4. **Wait for user selection.**
+   - **(a) Include ALL**: add all candidates to the restore set. Surface in Step 7 report: `Cascade restored [N] files via legacy fallback (trigger+date match). User accepted ambiguity.`
+   - **(b) Include SOME**: parse the comma-separated list of numbers. Validate each number maps to a candidate. Add only the selected candidates to the restore set. Surface in Step 7 report: `Cascade restored selected files [list] via legacy fallback. User excluded [excluded list] as not part of the batch.`
+   - **(c) Include NONE**: emit the same single-file warning as Step 2.5b option (b), then proceed with single-file rollback.
+   - **(d) Cancel**: Stop.
+
+5. After cascade resolution, proceed to Step 2.5b (sync manifest sidecar lookup) — manifest lookup applies to both modern and legacy flows.
+
+### Step 2.5a-modern — Modern (batch-ID match) cascade presentation
+
+Used when `snapshot_batch:` was present on the selected snapshot. If matches were found in Step 2.5a (modern path), present them:
 
    ```
    Found [N] other snapshot(s) from the same batch [batch ID]:
@@ -140,7 +231,7 @@ Check whether other snapshots were created by the same operation (indicating a m
      (c) Cancel
    ```
 
-4. **Wait for user selection.**
+**Wait for user selection.**
    - **(a) Cascade**: Add all matched snapshots to the restore set. For each additional file, read the snapshot and current file and perform the same diff summary as Step 2. Present a combined confirmation in Step 3 covering all files. Execute Steps 4 and 5 in **batched phases**: first, create ALL pre-rollback safety snapshots (Step 4) for every file in the restore set before restoring any of them. Then restore ALL files (Step 5). This ensures that if a restoration fails mid-batch, every file — including those not yet restored — has a safety snapshot from its pre-rollback state. Perform Step 6 once at the end for all restored files.
    - **(b) Single**: Emit the following warning before proceeding:
      ```
@@ -152,7 +243,7 @@ Check whether other snapshots were created by the same operation (indicating a m
      Then wait for the user to acknowledge or switch to cascade. If they confirm single-file, proceed with rollback as normal.
    - **(c) Cancel**: Stop.
 
-If no matches are found, proceed silently to Step 3.
+If no matches are found (in either modern or legacy flow), proceed silently to Step 2.5b (sync manifest sidecar lookup, only relevant for sync-trigger snapshots) and then Step 3.
 
 ### Step 2.5b: Sync manifest sidecar lookup (sync-trigger snapshots only)
 
@@ -206,7 +297,7 @@ If the manifest does NOT exist (sync ran before manifest support was added, OR t
 
 ### Step 2.5c: Non-sync trigger snapshots (no-manifest case)
 
-For triggers with no manifest (`deepen`, `catalyst`, `rename`, `rollback` pre-rollback safety net), no manifest exists — those skills snapshot every modified file (Tier A only) per their own atomicity rules. Proceed with Step 2.5a behavior unchanged.
+For triggers with no manifest (`deepen`, `catalyst`, `rename`, `rollback` pre-rollback safety net), no manifest exists — those skills snapshot every modified file (Tier A only) per their own atomicity rules. Proceed with the standard Step 2.5a dispatcher behavior unchanged: the dispatcher routes to Step 2.5a-modern (batch-ID match) if the snapshot has `snapshot_batch:`, or Step 2.5a-legacy (CRITICAL-2 disambiguation prompt) if it does not. Non-sync legacy snapshots (e.g., a `pre-deepen 2026-04-15` from before batch-ID introduction) also benefit from the legacy disambiguation — same-day repeat `/deepen` runs can otherwise be conflated.
 
 ### Step 2.5d: Stress-test manifest cascade (T3.1)
 
@@ -356,23 +447,70 @@ Confirm? (y/n)
 Before overwriting, snapshot the CURRENT version so the rollback itself is reversible.
 
 **If the original file exists** (normal case):
+
+### 4.1 — Generate timestamp and propose target path
+
 ```bash
 mkdir -p _Archive/Snapshots
-cp "[original file path]" "_Archive/Snapshots/[Name] (pre-rollback YYYY-MM-DD-HHMMSS).md"
+TS=$(date +%Y-%m-%d-%H%M%S)              # generate HHMMSS once
+TARGET_BASE="_Archive/Snapshots/[Name] (pre-rollback ${TS})"
+TARGET="${TARGET_BASE}.md"
 ```
+
+### 4.2 — Filename collision check (CRITICAL-3 fix — handles recursive rollback)
+
+> **Why this exists**: two consecutive `/rollback TICKER` invocations on the same file in the same minute (e.g., user rolls back, realizes wrong choice, immediately rolls back again to undo the undo) generate identical `(pre-rollback YYYY-MM-DD-HHMMSS).md` filenames. Without collision handling, the second `cp` silently overwrites the first safety snapshot — destroying the only path back to the intermediate state. Recursive rollbacks happen exactly when users are uncertain about which snapshot to restore, which is when the safety net matters most.
+
+Before writing the safety snapshot, check if `${TARGET}` already exists. If yes, append an incrementing numeric suffix until a free filename is found:
+
+```bash
+SUFFIX=2
+FINAL_TARGET="$TARGET"
+while [ -e "$FINAL_TARGET" ]; do
+  FINAL_TARGET="${TARGET_BASE}-${SUFFIX}.md"
+  SUFFIX=$((SUFFIX + 1))
+  # Sanity cap — abort if we somehow hit 100 collisions
+  if [ "$SUFFIX" -gt 100 ]; then
+    echo "❌ Pre-rollback safety snapshot: 100 same-second collisions on ${TARGET_BASE}. Aborting — investigate why so many rollbacks ran in the same second."
+    exit 1
+  fi
+done
+```
+
+Example progression for three same-second recursive rollbacks of `TSM - Taiwan Semiconductor.md`:
+- 1st rollback: `TSM - Taiwan Semiconductor (pre-rollback 2026-04-20-130045).md`
+- 2nd rollback: `TSM - Taiwan Semiconductor (pre-rollback 2026-04-20-130045-2).md`
+- 3rd rollback: `TSM - Taiwan Semiconductor (pre-rollback 2026-04-20-130045-3).md`
+
+Each rollback gets its own safety net; none overwrites another.
+
+### 4.3 — Write the safety snapshot
+
+```bash
+cp "[original file path]" "$FINAL_TARGET"
+```
+
+If `$FINAL_TARGET` differs from the original `$TARGET` (suffix was appended), surface in the skill report:
+```
+ℹ️ Safety snapshot used collision-suffix filename: [final basename] (incremented from [original basename] due to existing same-second snapshot — likely a prior rollback in this minute).
+```
+
+### 4.4 — Annotate frontmatter
+
 Read the newly created safety snapshot and add to its frontmatter:
 ```yaml
 snapshot_of: "[[original file path]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: rollback
-snapshot_batch: rollback-YYYY-MM-DD-HHMMSS
+snapshot_batch: rollback-YYYY-MM-DD-HHMMSS    # use the original TS, not the suffix — see note
 ```
-> **Batch ID**: Generate `HHMMSS` once (via `date +%H%M%S`). 6-digit second-precision prevents same-minute snapshot batch collisions across skills. Reuse this `snapshot_batch` value for the Step 6 cleanup snapshot if one is created.
+
+> **Batch ID note**: the `snapshot_batch:` value uses the original `HHMMSS` timestamp WITHOUT the collision suffix. This is intentional — the batch ID groups snapshots created by the SAME `/rollback` invocation (cascade mode), not snapshots that happen to share a same-second timestamp across DIFFERENT invocations. Two recursive `/rollback TSM` runs each have their own batch ID generated at their own Step 4.1 — they will not share `snapshot_batch:` even if `HHMMSS` collides at the filename level. The collision-suffix lives only in the filename to keep snapshots distinguishable on disk.
 
 **If the original file does not exist** (archived/closed — detected in Step 2):
 Skip the safety snapshot — the current state is "file absent", preserved by the pre-archive snapshot (e.g., pre-prune or pre-status snapshot). Log: `Safety snapshot skipped — original file does not exist at [path].`
 
-**Cascade batch mode**: When restoring multiple files (Step 2.5 option a), complete Step 4 for ALL files in the restore set before proceeding to Step 5. This guarantees that every file has a safety snapshot before any restoration begins. If a safety snapshot fails to create for any file, report the failure and **do not proceed to Step 5** — no restorations should begin until all safety nets are in place. Use the same `snapshot_batch: rollback-YYYY-MM-DD-HHMMSS` value across all safety snapshots in the batch.
+**Cascade batch mode**: When restoring multiple files (Step 2.5 option a), complete Step 4 (4.1 → 4.2 → 4.3 → 4.4) for ALL files in the restore set before proceeding to Step 5. This guarantees that every file has a safety snapshot before any restoration begins. If a safety snapshot fails to create for any file, report the failure and **do not proceed to Step 5** — no restorations should begin until all safety nets are in place. Use the same `snapshot_batch: rollback-YYYY-MM-DD-HHMMSS` value across all safety snapshots in the batch (per-file collision suffixes apply only to the filename portion, not the batch ID).
 
 ## Step 5: Restore
 
@@ -599,7 +737,7 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — owned by 
 2. **Recent Conviction Changes**: If conviction or status was reverted, add entry: `- **[TICKER]**: rollback [field] [current] → [reverted] — restored to [snapshot date] state`
 3. **Open Questions**: If the rollback restored previously-resolved Outstanding Questions, re-add them
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After all `_hot.md` edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order": drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → emit warning. Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; `/rollback` primary operation still succeeds).
 
 ## Step 7: Report
 
@@ -626,3 +764,25 @@ When the user chose option (a), the rollback exited without modifying any files.
 ### For cancellation (Step 4a option (c))
 
 - **Rollback canceled — no changes made.**
+
+## Step 8: Release lock
+
+After Step 7's report is complete, release the vault lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Lock scope depends on mode acquired in Step 0.1:
+- List mode → `.vault-lock.readonly`
+- Restore mode (including cascade) → `.vault-lock`
+
+Runs unconditionally — whether restore completed, was redirected to `/rename` (Step 4a option a), or was cancelled (Step 4a option c).
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+# LOCK_FILE path depends on mode:
+#   list mode   → .vault-lock.readonly
+#   restore     → .vault-lock
+LOCK_FILE="<paste-from-Step-0.1>"                # e.g., .vault-lock or .vault-lock.readonly
+EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

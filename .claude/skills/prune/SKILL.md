@@ -55,12 +55,13 @@ Wait for user to resolve externally. Do NOT proceed. The check is all-or-nothing
 
 ## Phase 0: Pre-flight — Check for Unsynced Research
 
-Before evaluating any theses, check whether unsynced research exists:
+Before evaluating any theses, check whether unsynced research exists. The handling depends on `.last_sync` presence:
+
+### Phase 0.1 — `.last_sync` exists (normal case)
+
 ```bash
 find Research/ Theses/ Macro/ Sectors/ -newer .last_sync -name '*.md' 2>/dev/null
 ```
-
-If `.last_sync` does not exist, skip this check (first-run state — no baseline to compare against).
 
 If changed files are found, warn the user before proceeding:
 ```
@@ -74,6 +75,65 @@ Proceed anyway? (y/n)
 ```
 
 **Do NOT proceed without explicit user confirmation.** If the user declines, stop and suggest `/sync`.
+
+### Phase 0.2 — `.last_sync` does NOT exist (degraded baseline)
+
+> **B4 fix**: previously this branch silently skipped the unsynced-research check, which created a blind spot — a vault with `.last_sync` deleted (or never created) could be pruned with closure recommendations made on stale thesis state. Now /prune must surface the missing baseline and require explicit confirmation.
+
+Compute an alternative baseline from `_hot.md`:
+
+```bash
+# Try to extract the Latest Sync date from _hot.md
+HOT_LATEST_SYNC_DATE=$(grep -A1 "^## Latest Sync" _hot.md 2>/dev/null | grep -oE '\*?Date: [0-9]{4}-[0-9]{2}-[0-9]{2}\*?' | head -1 | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}')
+```
+
+**If `HOT_LATEST_SYNC_DATE` was found** (`_hot.md` has a `## Latest Sync` heading with a parseable date):
+
+Use that date as a soft watermark to enumerate possibly-unsynced files:
+```bash
+find Research/ Theses/ Macro/ Sectors/ -newer-than "${HOT_LATEST_SYNC_DATE}T00:00:00Z" -name '*.md' 2>/dev/null
+# (use platform-appropriate find flag: -newermt on macOS/BSD, -newer-than via touch sentinel on others)
+```
+
+Surface to user:
+```
+⚠️ `.last_sync` watermark is missing — using `_hot.md` Latest Sync date as soft baseline.
+   Soft watermark: [HOT_LATEST_SYNC_DATE] (extracted from _hot.md)
+   [N] files modified since that date may not be propagated:
+     [list up to 10 files; "...and [M] more" if truncated]
+
+   Closure recommendations made now may not reflect recent research.
+
+   Options:
+     (a) Cancel /prune now, run /sync first, then re-invoke (recommended)
+     (b) Continue with /prune anyway — accept stale-state risk
+     (c) Cancel and inspect the listed files manually first
+
+   Choose (a/b/c):
+```
+
+**Do NOT proceed unless user explicitly chooses (b).** Options (a) and (c) trigger an immediate abort path: release the vault-wide lock acquired at Phase 0.0 (`rm -f .vault-lock`), do not write any manifest, exit the skill cleanly. No theses, sector notes, `_hot.md`, or `_graph.md` invalidations are touched.
+
+**If `HOT_LATEST_SYNC_DATE` was NOT found** (`_hot.md` missing, malformed, or no Latest Sync date — true first-run state):
+
+```
+⚠️ No sync baseline available.
+   - `.last_sync` is missing
+   - `_hot.md` does not exist OR has no parseable `## Latest Sync` date
+   
+   /prune cannot determine whether recent research has been propagated. Closure
+   recommendations will be based purely on whatever the thesis files currently
+   contain — there is no signal about pending research.
+
+   This is the genuine first-run state. Strongly recommend running /sync first
+   to establish a baseline.
+
+   Continue anyway? (y/N):
+```
+
+Default to "no" — only proceed on explicit "y" confirmation. Any other input triggers the abort path described above (release lock, exit cleanly).
+
+> **Lock note**: Phase 0.0 already acquired the vault-wide lock before this phase ran. The user prompts in Phase 0.1/0.2 execute WHILE the lock is held — this blocks concurrent `/prune` invocations during the user-confirmation window. On abort, the lock is released as part of skill cleanup. This is intentional: the lock guards against another skill writing to vault state mid-prompt, which would invalidate the recommendations.
 
 ## Phase 1: Identify Candidates (Two-Pass Triage)
 
@@ -392,7 +452,7 @@ Update `_hot.md` per `.claude/skills/_shared/hot-md-contract.md` (read first, th
 3. **Open Questions**: Remove questions related to closed theses; add any new questions raised by upgrades
 4. **Portfolio Snapshot**: Update conviction-level counts and sector coverage if materially changed
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After all `_hot.md` edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order": drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → emit warning. Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; `/prune` primary operation still succeeds).
 
 ### Manifest Retention (5.2 fix — 30-day regret-recovery window)
 
@@ -429,3 +489,18 @@ If `completed_date:` is within 30 days:
 Report final count of actions taken. Include the manifest's final state:
 - `completed — retained for 30-day regret-recovery window` (happy path)
 - `⚠️ flip verification failed — manifest still in-progress despite prune success; do NOT /rollback, resolve manually per the warning above`
+
+## Stage 6: Release lock
+
+After final reporting is complete, release the vault-wide lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether `/prune` executed closures/upgrades, was cancelled at the approval gate (Phase 5), or aborted early. If the skill aborts before reaching this step (manifest flip failure, user Ctrl-C mid-execution), the lock persists and appears stale on the next collision / `/lint #43` run.
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE=".vault-lock"
+EXPECTED_TOKEN="<paste-token-captured-from-Phase-0.0>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ==="
+else
+  echo "⚠️ Lock ownership check failed at release — skipping rm to avoid stealing another skill's lock."
+fi
+```

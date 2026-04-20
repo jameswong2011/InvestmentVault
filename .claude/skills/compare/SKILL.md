@@ -15,15 +15,53 @@ $ARGUMENTS should contain 2+ tickers or company names (e.g., "BESI vs AMAT", "PA
 
 ## Phase 0.-1: Pre-flight (MANDATORY — runs before Phase 0)
 
+### 0.-1.0: Argument parsing (B7 fix — runs FIRST, before any lock acquisition)
+
+Parse `$ARGUMENTS` into a validated ticker list using this exact procedure. **Never delegate parsing to LLM intuition** — that is the root cause of the hyphen-ticker race condition this section closes.
+
+**Step 1 — Primary split**: split `$ARGUMENTS` on the literal string ` vs ` (one space + `vs` + one space, lowercase, case-sensitive). This handles the canonical forms `BESI vs AMAT` and the chained form `A vs B vs C`. Strings like `BESI VS AMAT` (uppercase VS) or `BESI vs.AMAT` (no spaces) do NOT match the primary split — they fall through to Step 2.
+
+**Step 2 — Secondary split** (only if Step 1 produced exactly 1 token, i.e., no ` vs ` separator was found): split that token on ASCII whitespace (`split(/\s+/)`). Handles the space-separated form `PANW NET CRWD`. If Step 2 still produces only 1 token, the user supplied a single ticker — see Arguments §14 (offer to find competitors).
+
+**Step 3 — Token validation**: each resulting token MUST satisfy:
+- First character: uppercase `A-Z`
+- All other characters: `A-Z`, `0-9`, or hyphen `-` (no lowercase, no whitespace, no other punctuation)
+- Length: 1-15 characters
+- NOT equal to the literal strings `vs`, `VS`, `Vs`, `vS` (defensive — should not occur after split, but catches edge cases like a stray quote-stripped token)
+
+**Step 4 — Hyphen-handling rule (CRITICAL — this is the B7 fix)**: hyphens WITHIN a token are PRESERVED as part of the ticker. NEVER split a token on `-`. Tickers `BRK-B`, `BF-A`, `PBR-A`, `BTC-CRYPTO`, and `285A` are valid single tokens. The audit-confirmed failure mode this prevents: naive split on `-` would turn `/compare BTC-CRYPTO vs CRCL` into the wrong lock set `[BTC, CRYPTO, CRCL]` instead of `[BTC-CRYPTO, CRCL]`, racing with any concurrent `/sync BTC-CRYPTO`.
+
+**Step 5 — De-dup**: if the same ticker appears twice (case-sensitive), abort:
+```
+❌ Duplicate ticker in compare set: TICKER. /compare requires distinct tickers.
+   Parsed: [list]
+```
+
+**Step 6 — Minimum count**: if fewer than 2 distinct tickers result, abort:
+```
+❌ /compare needs at least 2 tickers. Parsed [N] from "$ARGUMENTS": [list]
+   Re-invoke as /compare A vs B [vs C ...] or /compare A B [C ...].
+```
+
+(Exception: if exactly 1 ticker is parsed AND $ARGUMENTS appears to be a single-ticker invocation like `/compare BESI`, follow the Arguments §14 path — ask the user to confirm competitors from the sector note. Only abort with the message above when the parser parsed `$ARGUMENTS` as ambiguous/malformed.)
+
+**Step 7 — Emit parse result** (mandatory transparency):
+```
+Parsed [N] tickers from "$ARGUMENTS": [TICKER1, TICKER2, ...]
+```
+
+If parsing fails any step above, ABORT before any lock acquisition — no `.vault-lock*` files are created, no vault state is touched.
+
 ### 0.-1.1: Acquire vault lock
-Parse tickers from `$ARGUMENTS`. Acquire one lock per ticker (`.vault-lock.A`, `.vault-lock.B`, `.vault-lock.C`) per `.claude/skills/_shared/preflight.md` Procedure 1.3c (per-ticker individual locks — NOT a joint `+`-delimited lock, which would break on hyphen-containing tickers like `BRK-B`). Timeout budget: 10 minutes. Verify ownership at start of every subsequent Bash block via token match (Procedure 1.5). Release all N locks in the skill's final reporting Bash block.
+
+Using the validated ticker list from Step 0.-1.0, acquire one lock per ticker (`.vault-lock.TICKER1`, `.vault-lock.TICKER2`, `.vault-lock.TICKER3`) per `.claude/skills/_shared/preflight.md` Procedure 1.3c (per-ticker individual locks — NOT a joint `+`-delimited lock, which would break on hyphen-containing tickers like `BRK-B`). Timeout budget: 10 minutes. Verify ownership at start of every subsequent Bash block via token match (Procedure 1.5). Release all N locks in the skill's final reporting Bash block.
 
 Rollback-on-partial-acquisition: if any per-ticker lock is held by another skill, release all previously-acquired locks in this run and abort. Prevents holding a proper subset of the compare set while a concurrent skill holds the rest.
 
 ### 0.-1.2: Rename-marker pre-flight for EACH ticker
-For each ticker in `$ARGUMENTS`, run `.claude/skills/_shared/preflight.md` Procedure 2. If ANY `.rename_incomplete.TICKER_N` exists for any ticker in the comparison set, hard-block per contract 2.3 — a comparison writes Log entries and potentially sector note updates for every compared thesis; split-name state on any one ticker would corrupt the cross-thesis comparison Research note's wikilinks.
+For each ticker in the validated list (NOT raw `$ARGUMENTS`), run `.claude/skills/_shared/preflight.md` Procedure 2. If ANY `.rename_incomplete.TICKER_N` exists for any ticker in the comparison set, hard-block per contract 2.3 — a comparison writes Log entries and potentially sector note updates for every compared thesis; split-name state on any one ticker would corrupt the cross-thesis comparison Research note's wikilinks.
 
-Both checks must pass before proceeding to Phase 0.
+All three checks (parsing, lock acquisition, rename-marker) must pass before proceeding to Phase 0.
 
 ## Phase 0: Thesis Existence Check
 Verify which tickers in $ARGUMENTS have existing thesis notes in Theses/.
@@ -288,7 +326,7 @@ Update `_hot.md` per `.claude/skills/_shared/hot-md-contract.md` (read first, th
 2. **Recent Conviction Changes**: Add entry for each ticker where conviction was strengthened or weakened
 3. **Open Questions**: Add any unresolved competitive questions the comparison surfaced
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After all `_hot.md` edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order": drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → emit warning. Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; `/compare` primary operation still succeeds).
 
 ## Phase 6: Report
 
@@ -303,3 +341,22 @@ Report to user, including:
 4. **Web-supplemented tickers** (only if any from Phase 0 option a): `[TICKER1, TICKER2] — used web research, no vault updates. Consider /thesis [TICKER] to formalize coverage.`
 5. **Sector notes updated**: list per sector with snapshot path or "no snapshot (link addition only)".
 6. **Follow-up**: `→ Run /sync to propagate any sector note changes and retry failed Log appends. Then /graph last.`
+
+## Phase 7: Release locks
+
+After Phase 6's report is complete, release ALL per-ticker locks acquired in Phase 0 per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Multi-ticker release pattern per §1.3c. Runs unconditionally — whether all tickers succeeded, web-supplemented mode was used, or the skill aborted mid-comparison.
+
+```bash
+# Multi-ticker lock release — verify ownership for each lock before rm (preflight §1.5)
+# TICKER set from $ARGUMENTS parsed in Phase 0; preserves hyphens per §1.3c.
+EXPECTED_TOKEN="<paste-token-captured-from-Phase-0.1>"
+for T in NVDA AAPL BRK-B; do                      # replace with actual ticker list from Phase 0
+  LF=".vault-lock.$T"
+  [ -f "$LF" ] || continue
+  if grep -q "token: $EXPECTED_TOKEN" "$LF"; then
+    rm -f "$LF" && echo "=== LOCK RELEASED ($LF) ==="
+  else
+    echo "⚠️ Lock ownership check failed at release ($LF) — skipping rm to avoid stealing another skill's lock."
+  fi
+done
+```

@@ -158,3 +158,18 @@ rm "_Archive/Snapshots/[filename]"
 ```
 
 Report: "Deleted X snapshots. Y remain."
+
+## Step 5: Release lock
+
+After Step 4's deletion and report, release the vault lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether deletions proceeded, user declined confirmation, or there was nothing to delete.
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE=".vault-lock"
+EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ==="
+else
+  echo "⚠️ Lock ownership check failed at release — skipping rm to avoid stealing another skill's lock."
+fi
+```

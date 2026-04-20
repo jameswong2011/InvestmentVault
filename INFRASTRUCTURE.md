@@ -1,294 +1,157 @@
 # Infrastructure Reference
 
-> Deep technical details for the vault's consistency machinery. The user-facing summary lives in [[User Guide#11. Infrastructure (User-Facing)]]. Read this when you need to debug an edge case, understand why a skill behaves a certain way, or extend a skill's contract.
+> Deep technical details for the vault's consistency machinery. User-facing summary: [[User Guide#14. How the Vault Stays Consistent]]. Read this file when debugging an edge case, extending a contract, or authoring a new skill.
+>
+> **Per-skill deep rationale** lives in `<skill>/RATIONALE.md` (currently only `sync/RATIONALE.md`). When a skill's design rationale exceeds ~20% of its SKILL.md, extract per §12.3. Cross-skill contracts live in `.claude/skills/_shared/*.md` (§12.2).
 
----
+## 1. Vault content files
 
-## 1. Content caches & metadata files
+User Guide §14 covers basics. This section captures the operational nuance `/lint` and skill authors depend on.
 
-### 1.1 `_hot.md` — Session Context Cache
+### 1.1 `_hot.md` — Session context cache
 
-Persists context between sessions. Canonical six-section schema:
-- **Active Research Thread**: what you're currently working on (auto-compressed history)
-- **Latest Sync**: last sync summary
-- **Sync Archive**: compressed older syncs (max 3)
-- **Recent Conviction Changes**: conviction/status changes and drift flags
-- **Open Questions**: unresolved questions across theses
-- **Portfolio Snapshot**: high-level portfolio state
+Full compression contract at `.claude/skills/_shared/hot-md-contract.md`. Key rules:
 
-Updated by **11 skills**: `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`, `/catalyst`. All writers follow the compression contract in `.claude/skills/_shared/hot-md-contract.md`:
+- **Six-section schema** (load-bearing; missing sections cause silent skill no-ops): `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot`
+- **Caps**: soft 4,000 words / hard 5,000
+- **Compression trigger order** over soft cap: drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → warn in skill report
+- **Never compressed**: Recent Conviction Changes (every entry is a high-signal audit record)
+- **Forbidden truncation markers**: `...` trailing bullets, `[compressed]`, `[truncated]`, unclosed `**`/`*`/backtick — compression drops whole entries, never truncates
+- **Same-ticker continuation**: same-ticker Active Research Thread stays live; different-ticker compresses outgoing to `*Previous YYYY-MM-DD:*` line
 
-- **Per-section budgets** (% of soft cap):
-  - Active Research Thread 30%
-  - Latest Sync 15%
-  - Sync Archive 20%
-  - Recent Conviction Changes 15% (**never compressed**)
-  - Open Questions 15%
-  - Portfolio Snapshot 5%
+Writers (11 skills): `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`, `/catalyst`. Lint enforcement: `#35` (schema), `#42` (truncation markers).
 
-- **Caps**: soft 2,000 words / hard 2,500 words.
-- **Compression trigger order** over soft cap: drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → warn in skill report.
-- **Hard cap** aborts the `_hot.md` write (primary skill operation still succeeds).
-- **Truncation markers forbidden**: `...` trailing bullets, `[compressed]`, `[truncated]`, unclosed formatting. Compression drops whole entries rather than truncating.
-- **Same-ticker continuation**: same-ticker Active Research Thread stays live (append dated line); different-ticker compresses outgoing thread to a single `*Previous:*` line.
+### 1.2 `_graph.md` — Vault dependency map
 
-Lint checks:
-- `/lint #35` verifies the six-section schema (missing sections cause silent skill no-ops)
-- `/lint #42` catches truncation-marker drift
+Owned exclusively by `/graph`. Three modes (full rebuild, `/graph last` incremental, `/graph [N]` catch-up). Watermark in frontmatter:
+- `last_graph_write: YYYY-MM-DDThh:mm:ssZ` — ISO second-precision (T6.10)
+- `date: YYYY-MM-DD` — display-only; legacy fallback when `last_graph_write:` missing
 
-### 1.2 `_graph.md` — Vault Dependency Map
+**Reverse indexes always rebuild from scratch in-memory** on every `/graph` run — prevents drift even when incremental adjacency extraction skips unchanged theses.
 
-Owned exclusively by `/graph`. Three modes:
+**T7.3 cache fields** (added per-thesis adjacency entry): `status:` and `log_tail:` (last 3 Log `date | prefix` pairs). `/sync` Pass 1 and Step 2.5 consume these instead of re-reading every thesis. Pre-T7.3 graph files upgrade on next `/graph last` — entries missing the fields are flagged as invalidated and re-extracted.
 
-| Mode | When | Cost |
-|---|---|---|
-| `/graph last` | After every `/sync` | Skip if nothing changed; else re-extract only changed thesis adjacencies + rebuild reverse indexes in-memory |
-| `/graph [N]` | Catch-up after N days without refresh | Same incremental logic; watermark = today − N days |
-| `/graph` (no args) | After `/sync all` or disaster recovery | Full rebuild from scratch |
+**Write-avoidance exceptions**: only `/rename` writes `_graph.md` outside `/graph` (surgical adjacency-header update; does NOT advance `last_graph_write:`). All other research skills accumulate changes into `.graph_invalidations` (§2.3) and leave the rewrite to `/graph last`.
 
-**Precise ISO watermark**: frontmatter carries `last_graph_write: YYYY-MM-DDThh:mm:ssZ` in addition to `date: YYYY-MM-DD`. Change detection uses ISO timestamp for second-precision — no edge cases at midnight rollovers. Legacy graph files without `last_graph_write:` fall back to `date:` at 00:00:00 UTC (conservative; next write upgrades).
-
-**Reverse indexes always rebuild from scratch in-memory**: Sector → Theses, Macro → Theses, cross-thesis clusters, orphan list. This prevents drift even when incremental adjacency extraction skips unchanged theses.
-
-**Research skills never write to `_graph.md`**: `/sync`, `/thesis`, `/compare`, `/scenario`, `/deepen`, `/surface`, `/stress-test`, `/brief`, `/status`, `/prune`, `/catalyst`, `/ingest`, `/lint`, `/clean`, `/rollback` all create content and remind you to run `/graph last`. `/rename` is the sole exception (updates adjacency entry header atomically with filename mv).
-
-### 1.3 `_catalyst.md` — Catalyst Calendar
+### 1.3 `_catalyst.md` — Catalyst calendar
 
 Regenerated each `/catalyst` run. Timeline: next 2 weeks (daily), weeks 3-4 (weekly), months 2-3 (grouped by week). Flags catalyst gaps and stale events.
 
-**Pre-regenerate snapshot** (H2 fix): if web search fails mid-run, recover via `/rollback` batch `catalyst-YYYY-MM-DD-HHMMSS`. Snapshot failure **hard-aborts** `/catalyst` — the prior `_catalyst.md` is always preserved; no partial overwrite path exists.
+**Pre-regenerate snapshot** (H2): if web search fails mid-run, recover via `/rollback` batch `catalyst-YYYY-MM-DD-HHMMSS`. Snapshot failure **hard-aborts** `/catalyst` — the prior `_catalyst.md` is always preserved; no partial overwrite path exists.
 
 ---
 
-## 2. Watermarks & state markers
+## 2. Runtime state markers at vault root
 
-### 2.1 `.last_sync` — Sync Watermark
+All markers here are ephemeral and git-ignored. Complete inventory (including static directories) in §11.
 
-Touched at the end of every default `/sync` and `/sync all`. Used by the next `/sync` to detect changed files via `find -newer .last_sync`.
+### 2.1 `.last_sync` — Sync watermark + idempotency keying
 
-- **Never touched by `/sync TICKER`** — ticker-scoped mode preserves the baseline for the next default sync. First-run exception: if `.last_sync` is absent when `/sync TICKER` runs, an epoch placeholder is created so default sync has a baseline.
-- **Never touched by `/graph`** — graph has its own watermark (`_graph.md` frontmatter).
+Touched at the end of `/sync` (default) and `/sync all`. Next run uses `find -newer .last_sync` to detect changed files.
 
-**Idempotency keying** (H4 fix): `/sync`'s per-thesis idempotency check keys on:
-1. **Primary**: research-note wikilink presence in thesis Log
-2. **Secondary** (new): source URL, date+ticker, tags — preserves idempotency across renames/moves
+| Mode | Touches `.last_sync`? |
+|---|---|
+| `/sync` (default) | Yes |
+| `/sync all` | Yes + writes `.sync_all_fresh` |
+| `/sync TICKER` | **No** — preserves baseline for next default sync. First-run exception: creates epoch placeholder `touch -t 197001010000` if absent |
+| `/graph` | Never (owns its own watermark via `_graph.md` frontmatter) |
 
-Once a research note has propagated to a thesis, that is terminal: subsequent `/sync` runs skip the propagation regardless of calendar day OR whether the research note has been renamed/moved. Eliminates:
-- Midnight-rollover duplicates (11:59pm and 12:01am runs)
-- Rename-induced re-propagation (research note filename change breaks wikilink match; secondary keys carry)
+**Idempotency keying** (H4): `/sync`'s per-thesis check keys on two tiers:
 
-### 2.2 `.sync_all_fresh` — Brute-force-sync marker
+1. **Primary key — wikilink presence** in thesis `## Log` section (the 5 canonical forms — see `_shared/wikilink-forms.md`). Once a research note has propagated, it is terminal regardless of calendar day.
+2. **Secondary keys — rename/move resilience**: `source:` URL, `date: + ticker:` tuple, `tags:` intersection + date match. Fire only when primary misses (rename/move scenarios where wikilink drifted).
 
-Touched at the end of `/sync all` only. Read by `/graph` at Watermark Resolution; if present, forces full rebuild regardless of mode and deletes marker after successful write.
+Eliminates midnight-rollover duplicates and rename-induced re-propagation. Full mechanics in `sync/RATIONALE.md §1`.
 
-Closes the gap where `/sync all`'s two-pass triage leaves "No delta" thesis mtimes untouched — incremental `/graph last` would otherwise miss them.
+### 2.2 `.sync_all_fresh` — Full-rebuild signal
 
-No user action required. `/graph` manages lifecycle. `/lint #38` ages it.
+Written by `/sync all` Step 7. Read by `/graph` pre-watermark check: present → force full rebuild regardless of mode → delete marker after successful write.
 
-### 2.3 `.graph_invalidations` — Post-closure neighbor list
+Closes the gap where `/sync all`'s two-pass triage leaves "No delta" thesis mtimes untouched; without the marker, incremental `/graph last` would miss them. `/lint #38` ages stale markers.
 
-Written or appended by:
-- `/status` Step 7.6 (on `active→closed`)
-- `/prune` Stage 4.5 (on closure runs)
+### 2.3 `.graph_invalidations` — Deferred graph update list
 
-Contains relative paths of neighbor thesis files that `[[wikilink]]`-referenced the just-archived thesis; their `cross-thesis:` adjacency entries need re-extraction to clear dangling references.
+Written (appended) on thesis closure by `/status` Step 7.6 and `/prune` Stage 4.5. Contains relative paths of neighbor theses whose `cross-thesis:` references are now stale (pointing to an archived thesis).
 
-Read by `/graph last`, folded into the changed-thesis bucket, and deleted only after successful graph write. Dedup via `sort -u`; repeated closures safely accumulate.
+Read by `/graph last` Step I.2.5, folded into the changed-thesis bucket, deleted only after successful write. Dedup via `sort -u`; repeated closures safely accumulate.
 
-### 2.4 `.rename_incomplete.TICKER` — Failed-rename repair markers
+### 2.4 `.rename_incomplete.TICKER` — Failed-rename repair marker
 
-Written by `/rename` Step 5.5 when one or more wikilink Edits fail after the file move completed.
+Written by `/rename` Step 5.5 when one or more wikilink Edits fail after the `mv` completed. Per-ticker filename so concurrent repairs coexist.
 
-**Per-ticker filename** so multiple concurrent rename repairs coexist without corrupting each other.
+Marker frontmatter: `ticker`, `old_name`, `new_name`, `batch_id`, `failed_files:`.
 
-Marker YAML:
-```yaml
-ticker: META
-old_name: Meta
-new_name: Meta Platforms
-batch_id: rename-2026-04-19-143022
-failed_files:
-  - Sectors/megacap.md
-  - Research/2026-04-15 - Meta - earnings.md
-```
+**Pre-flight check in consumers**: ticker-scoped skills hard-block on an active marker for their ticker; vault-wide skills hard-block on ANY active marker (exceptions: `/lint`, `/rollback` list mode, `/graph` read-only, `/rename` itself, `/ingest` advisory-only).
 
-Re-run `/rename TICKER "new_name"` to retry: repair-detection exception skips the already-completed mv and only re-attempts failed Edits. Marker shrinks monotonically across re-runs until empty, then auto-deletes.
+**Cross-new_name guard** (Step 1.4.5): if marker exists with different `new_name:` than proposed re-run, `/rename` aborts — prevents two target names from corrupting each other's repair state.
 
-**Cross-new_name guard** (Step 1.4.5): if the marker exists with a different `new_name:` than the proposed re-run, `/rename` aborts with explicit options — prevents corruption where two different target names would overwrite each other's repair state.
+Re-run `/rename TICKER "[same new_name]"` triggers repair mode: mv skipped, only failed Edits retried. Marker shrinks monotonically, auto-deletes when empty. `/lint #37` surfaces active markers.
 
-**Pre-flight marker check** in all ticker-scoped skills: `/status`, `/sync TICKER`, `/stress-test`, `/compare` (per-ticker), `/deepen`, `/brief`, `/surface TICKER`, `/thesis` hard-block on an active marker for their ticker. Vault-wide skills (`/sync`, `/sync all`, `/prune`, `/scenario`) hard-block on ANY active marker. Exceptions: `/lint`, `/rollback`, `/graph` (read-only), `/rename` (owns the marker), `/ingest` (advisory only).
+### 2.5 `.archive_ticker_registry.md` — Archive lookup
 
-`/lint #37` globs `.rename_incomplete.*` and surfaces each marker as Important until cleared.
-
-### 2.5 `.archive_ticker_registry.md` — Archive lookup table
-
-Flat append-only log of thesis archival events, auto-maintained by `/status` Step 7.5b (on closure) and `/prune` Stage 2 (on closure runs). One line per archive event:
+Flat append-only log of thesis archival events, maintained by `/status` Step 7.5b and `/prune` Stage 2. One line per event:
 ```
 TICKER|archived_filename.md|YYYY-MM-DD|conviction_at_closure|closure_rationale
 ```
 
-Consumed by `/thesis` Step 1.2 multi-signal archive-collision check (Signal C) to detect prior archived theses even when the archived filename no longer matches the `_Archive/TICKER - *.md` pattern (renamed-then-archived cases).
-
-`/lint #46` validates registry entries against current `_Archive/` state; stale entries (file no longer exists at listed path) tolerated — `/thesis` verifies existence before treating a registry entry as a match.
+Consumed by `/thesis` Step 1.2 archive-collision check (Signal C) — catches prior archived theses whose filename no longer matches `_Archive/TICKER - *.md` (renamed-then-archived). Stale entries tolerated — `/thesis` verifies existence before treating an entry as a match. `/lint #46` validates.
 
 ### 2.6 `.vault-lock*` — Concurrency locks
 
-Acquired at Step 0 of every skill that modifies vault state, per `.claude/skills/_shared/preflight.md`. Prevents concurrent skill invocations from racing on `_hot.md`, thesis Logs, sector notes, `_graph.md`, and marker files.
-
-**Token-based ownership** (not PID-based): because Claude Code's Bash tool is stateless (each Bash block runs in a fresh subshell with different `$$`), the lock's `token:` field identifies the skill-run. The LLM captures the token at Step 0.1 acquisition and carries it in its conversation context through all subsequent tool calls. Every subsequent Bash block verifies ownership by matching the captured token against the current `.vault-lock*` content; mismatch aborts the skill.
-
-**Lock scopes**:
+Brief summary here; deep-dive in §6.
 
 | Scope | File | Skills |
 |---|---|---|
-| Vault-wide | `.vault-lock` | `/sync all`, `/graph`, `/prune`, `/lint` full, `/clean`, `/catalyst`, `/ingest` (all modes), `/scenario`, `/surface` (unscoped/sector), `/rollback` restore mode |
+| Vault-wide | `.vault-lock` | `/sync all`, `/graph`, `/prune`, `/lint` full, `/clean`, `/catalyst`, `/ingest`, `/scenario`, `/surface` (unscoped/sector), `/rollback` restore |
 | Ticker | `.vault-lock.TICKER` | `/sync TICKER`, `/deepen`, `/stress-test`, `/status TICKER`, `/brief`, `/rename`, `/thesis`, `/surface TICKER` |
-| Multi-ticker | N separate per-ticker locks | `/compare A vs B vs C` acquires `.vault-lock.A` + `.vault-lock.B` + `.vault-lock.C` |
-| Read-only | `.vault-lock.readonly` | `/lint TICKER`, `/rollback` list mode |
+| Multi-ticker | N separate per-ticker locks | `/compare A vs B vs C` |
+| Read-only | `.vault-lock.readonly` | `/lint TICKER`, `/rollback` list |
 
-**Why per-ticker for `/compare`** (not `+`-delimited): prior `+`-delimiter scheme failed on hyphen-containing tickers (`BRK-B`, `BF-A`). Per-ticker locks handle these cleanly and roll back on partial acquisition failure (release all previously-acquired locks before aborting).
+Token-based ownership; explicit release; no auto-steal. `/lint #43` surfaces stale locks.
 
-Each lock carries `token:`, `skill:`, `scope:`, `started_at:`, `timeout_at:`, `session_id:` in YAML frontmatter. Multi-ticker locks additionally carry `multi_scope:` listing peer tickers.
+### 2.7 `.drift-config.md` (optional) — Drift tuning
 
-**Release** is explicit in the skill's final Bash block (`rm -f "$LOCK_FILE"`), not trap-based. `trap "... INT TERM"` handles Ctrl-C / kill signals within the acquisition block; subsequent blocks don't inherit the trap by design.
-
-**Stale detection**: a lock is stale when `timeout_at` < now. Staleness does NOT trigger auto-steal — timeout-based stealing would race legitimately long-running skills (web research, large batches). Recovery is user-initiated: manually `rm` the lockfile after confirming the prior skill is truly abandoned. `/lint #43` surfaces stale locks for review.
-
-### 2.7 `.drift-config.md` (optional) — `/sync` drift tuning
-
-Optional vault-root file for tuning `/sync` Step 3e conviction-drift heuristics. Format:
+User-authored override for `/sync` Step 3e conviction-drift heuristics:
 ```yaml
 ---
-window_size: 5                 # default 5; min 3, max 10
-base_threshold: 3              # default 3 weakening entries in window fires drift
-post_stress_threshold: 4       # default 4 (suppresses drift within 30 days of stress test)
-post_stress_window_days: 30    # default 30
-deepened_exclusion_days: 14    # default 14 (was 7 pre-tuning update)
+window_size: 5                 # min 3, max 10
+base_threshold: 3              # weakening entries in window fires drift
+post_stress_threshold: 4       # within 30 days of stress test
+post_stress_window_days: 30
+deepened_exclusion_days: 14
 ---
 ```
 
-Missing file → use defaults. Malformed → log warning and proceed with defaults.
-
-**Default drift rules**: base 3/5 weakening triggers drift flag; if a `"Stress test"` Log entry exists within 30 days for the ticker, threshold raises to 4/5 (post-stress-test suppression). Deepened entries within 14 days of a Stress test are excluded from the window. The drift flag text reports threshold state: `⚠️ Conviction drift — 3/5 recent updates flagged headwinds (post-stress-test suppression: no)`.
+Missing → defaults. Malformed → warning + defaults. Heuristic rationale: `sync/RATIONALE.md §8`.
 
 ---
 
 ## 3. Snapshots & transaction manifests
 
-Every multi-file skill uses the **skeleton → populate → flip** pattern to enable crash-recovery and cascade rollback. Manifests are written BEFORE any destructive mutation lands, populated incrementally, then flipped to `status: completed` at the end. An `in-progress` manifest is `/lint`'s signal that the skill crashed or the final flip silently missed.
+Multi-file skills use **skeleton → populate → flip** pattern: manifest written BEFORE any destructive mutation lands, populated incrementally (or at phase boundaries, per T7.4), then flipped to `status: completed`. An `in-progress` manifest signals skill crash or final-flip miss.
 
-### 3.1 `_Archive/Snapshots/` — Version Control
+### 3.1 `_Archive/Snapshots/` — Version control
 
-Created automatically before destructive edits by:
-- `/sync` — Tier A section edits
-- `/deepen` — every edit
-- `/status` — except draft→active
-- `/compare` — sector note changes, per-sector batch IDs on cross-sector runs
-- `/prune` — sector note changes
-- `/catalyst` — pre-regenerate
-- `/rollback` — pre-rollback safety net
-- `/rename` — pre-rename snapshot
+Created before destructive edits by: `/sync` (Tier A), `/deepen`, `/status` (except draft→active), `/compare`, `/prune`, `/catalyst`, `/rollback`, `/rename`.
 
-Cleaned by `/clean`; non-snapshot artifacts (manifests) are skipped by age-based cleanup and handled per artifact type.
+**Batch ID**: `<trigger>-YYYY-MM-DD-HHMMSS` (6-digit second-precision). `/rollback` cascade detection matches by batch-ID prefix.
 
-**Batch ID format**: `<trigger>-YYYY-MM-DD-HHMMSS` with 6-digit second-precision. `/rollback` cascade detection matches snapshots by batch ID prefix.
+**Orphan protection** (user-facing detail in User Guide §8): snapshots whose `snapshot_of:` source is missing default to PROTECTED by `/clean`. Explicit opt-in via `/clean orphans` or `/clean [days] --include-orphans`.
 
-**Orphan protection**: snapshots whose `snapshot_of:` source file is missing default to PROTECTED by `/clean`. Explicit opt-in via `/clean orphans` (orphans only, any age) or `/clean [days] --include-orphans` (age-based + orphans). Fail-safe default because a deleted source may have been removed in error, and the snapshot is the only recovery path.
+### 3.2 Manifest catalogue
 
-### 3.2 `_prune-manifest (prune-*).md`
+All manifests at `_Archive/Snapshots/_<type>-manifest (<type>-*).md` with `type: <type>-manifest`, `status: in-progress | completed | rolled-back`, `batch:`, `date:`, `completed_date:`.
 
-Written by `/prune` Stage 1.5 before any closure/upgrade lands. Records:
-- Intended closures (ticker, target `_Archive/` path)
-- Upgrades (ticker, old/new conviction)
-- Affected sector notes
-- Stage 4.2 neighbor targets (for cross-thesis closure Log entries)
+| Manifest | Producer | `/rollback` cascade | `/lint` | Notes |
+|---|---|---|---|---|
+| `_prune-manifest` | `/prune` Stage 1.5 | 2.5c | #36 | Records closures, upgrades, affected sectors, Stage 4.2 neighbors. 30-day regret-recovery window floors `/clean` deletion regardless of `/clean [days]` arg |
+| `_sync-manifest` | `/sync` Step 2.9 (T2.1 skeleton) | 2.5b | #41 | Two-phase: skeleton pre-mutation → phase-boundary checkpoints (T7.4: end-of-Step-3/4/5 + 7.5 flip) → `completed`. Tier B Log entries surfaced for strikethrough review during cascade |
+| `_compare-manifest` | `/compare` Phase 5.5c | — | #45 | Sectors edited/rolled-back, per-target Log outcomes. `status: rolled-back` when atomicity fires |
+| `_stress-test-manifest` | `/stress-test` Phase 4.6 (T3.1) | 2.5d | #47 | Records the Log entry text appended to tested thesis (no snapshot — append-only) |
+| `_status-manifest` | `/status` Step 3.0.5 (T2.2) | 2.5e | #48 | Two-phase. Records thesis frontmatter change, sector edit, archive move, graph invalidations, `_hot.md`. Reaffirm flow skips manifest (no multi-file transaction) |
+| `_thesis-manifest` | `/thesis` Step 3.5 (H1) | 2.5f | #49 | Two-phase. `/rollback` cascade is **deletion-based** (not snapshot restore) since `/thesis` creates new files |
 
-Flipped to `status: completed` + `completed_date:` at Stage 5.
-
-**30-day regret-recovery window**: the manifest is retained for 30 days after `completed_date:`. Within this window, `/rollback` cascade-detection can surface Tier B "Cross-thesis closure" Log entries on neighbor theses (which have no per-neighbor snapshots) for strikethrough review.
-
-Lifecycle:
-- `/lint #36` — Pass within 30 days, Nice to Have after
-- `/clean` — removes manifests only after BOTH the age threshold AND the 30-day floor are satisfied. A user running `/clean 10` does NOT delete a 15-day-old completed manifest. A user running `/clean 180` DOES delete a 40-day-old completed manifest.
-
-### 3.3 `_sync-manifest (sync-*).md`
-
-Two-phase write.
-
-**Skeleton** (Step 2.9, new): writes with `status: in-progress` BEFORE any Tier A snapshot or Tier B Log append lands. Skeleton write failure hard-aborts the sync pre-mutation — no silent audit gap possible.
-
-**Populate** (Steps 3–6): append accumulator entries incrementally:
-- Tier A snapshots (per-thesis section edits)
-- Tier B Log appends on neighbor theses without snapshots
-- Sector/macro edits
-- Source research notes
-
-**Flip** (Step 7.5): flips status to `completed` + verifies the flip landed.
-
-Consumed by `/rollback` Step 2.5b cascade detection: when the user selects a pre-sync snapshot, the manifest's Tier B Log entries are surfaced for review with options — (a) surface-only, (b) auto-strikethrough, (c) manual. Without the manifest, Tier B appends would persist as orphan audit entries after rollback.
-
-`/lint #41` classifies by `status:`:
-- `in-progress` → Important (crash or flip failure)
-- `completed` → age-based tiers (90+ days Nice to Have, 180+ days Important)
-
-### 3.4 `_compare-manifest (compare-*).md`
-
-Written by `/compare` Phase 5.5c after the cross-sector atomic transaction. Records:
-- Sectors successfully edited
-- Sectors rolled back (if atomicity fired)
-- Thesis Log append outcomes per target
-- Research note path
-
-`status: completed | rolled-back`. `/lint #45` handles aging.
-
-### 3.5 `_stress-test-manifest (stress-test-*).md` (T3.1)
-
-Written by `/stress-test` Phase 4.6 recording the Log entry text appended to the tested thesis. Enables `/rollback` Step 2.5d cascade for strikethrough annotation of the append-only Log entry. Research note at `Research/` is preserved (same policy as scenario and compare research notes).
-
-`/lint #47` handles aging + status.
-
-### 3.6 `_status-manifest (status-*).md` (T2.2)
-
-Two-phase write matching `/sync`.
-
-**Skeleton** (Step 3.0.5): writes before any file modification; records:
-- Intended thesis frontmatter change
-- Sector note edit
-- Archive move (closure only)
-- Graph invalidations
-- `_hot.md` update
-
-**Flip** (Step 7.9): flips status after all landings verified.
-
-`/rollback` Step 2.5e cascade offers:
-- (a) thesis-only restore
-- (b) full transaction restore (thesis + sector + un-archive + clear invalidations)
-
-Reaffirm flow does NOT write a manifest (no multi-file transaction).
-
-`/lint #48` handles aging + in-progress detection.
-
-### 3.7 `_thesis-manifest (thesis-TICKER-*).md` (H1)
-
-Two-phase write matching the other manifests.
-
-**Skeleton** (`/thesis` Step 3.5): writes before any file modification; records:
-- Intended thesis file path
-- Sector note edit plan
-- `_hot.md` edits
-- Orphan research integration targets
-- (If encountered) archive-collision decision from Step 1.2
-
-**Flip** (Step 7.5): flips status.
-
-`/rollback` Step 2.5f cascade offers:
-- (a) delete thesis file only
-- (b) full cascade (delete + revert sector + revert `_hot.md` + orphan mtime revert if captured)
-- (c) cancel
-
-**Unlike status/sync which restore FROM snapshots, thesis cascade is deletion-based** since `/thesis` creates new files with no "before" state to snapshot.
-
-`/lint #49` handles aging + in-progress detection. No regret-recovery window — `/thesis` is constructive, not destructive; post-hoc edits are `/deepen`'s job.
+**Aging policy**: `in-progress` → Important (crash signal). `completed` → aged per 90/180 day tiers by the paired `/lint` check. `/clean` removes only after both the requested age AND any manifest-specific floor (e.g., prune 30-day window) are satisfied.
 
 ---
 
@@ -298,322 +161,198 @@ URL and PDF ingests block on failure; manual local files receive advisory logs.
 
 ### 4.1 Structural checks
 - ≥150 word body
-- Absence of paywall/CAPTCHA/anti-bot sentinels
-- At least 2 of 4 expected body sections populated
+- No paywall/CAPTCHA/anti-bot sentinels
+- ≥2 of 4 expected body sections populated
 
 ### 4.2 Domain-specific checks by `source_type:`
 
 | `source_type` | Requirements |
 |---|---|
 | `earnings` | Period tokens (Q1/Q2/Q3/Q4/FY20XX) + 2+ currency figures + ticker/company reference |
-| `analyst-report` | Rating token (Buy/Sell/Hold/Overweight/Underweight/etc.) + price-target reference + ticker |
-| `news` | Ticker + dated event reference (absolute date or temporal token like "announced"/"reported") |
-| `deep-dive` | ≥500 words + ≥3 substantive sections (higher floor than generic) |
-| `web-clip`, `data` | Skip domain checks (no vocabulary expected) |
+| `analyst-report` | Rating token (Buy/Sell/Hold/Overweight/…) + price-target reference + ticker |
+| `news` | Ticker + dated event reference (absolute date or temporal token) |
+| `deep-dive` | ≥500 words + ≥3 substantive sections |
+| `web-clip`, `data` | Skip domain checks |
 
 ### 4.3 Integrity checks
-- **Numerical integrity**: detects OCR corruption patterns (capital-O-as-zero, decimal-dropped currency like `$1 5B`, `II` as `11`)
-- **Title-URL consistency** (URL mode): first heading tokens must overlap ≥50% (Jaccard) with URL path slug — catches redirects to login/subscribe pages
+- **Numerical integrity**: detects OCR corruption (capital-O-as-zero, decimal-dropped currency like `$1 5B`, `II` as `11`)
+- **Title-URL consistency** (URL mode): first heading tokens overlap ≥50% (Jaccard) with URL path slug — catches redirects to login/subscribe pages
 
 ### 4.4 Failure handling
-Failed gate → research note deleted, source retained for re-ingest after resolving access or correcting `source_type:`. Blocks the most damaging silent-corruption path: paywalled or wrong-content URLs propagating into thesis Log entries via `/sync`.
+
+Failed gate → research note deleted, source retained for re-ingest. Blocks the most damaging silent-corruption path: paywalled or wrong-content URLs propagating into thesis Log entries via `/sync`.
 
 ### 4.5 Source-URL dedup
-- **Mode A URL, Mode B single-file**: exact-match grep against existing `Research/*.md` `source:` frontmatter
-- Same-day match → hard-block
-- Cross-day match → prompts skip/re-ingest/cancel
-- **Batch Mode C** uses `_Inbox/processed/` filename-based guard instead
+- **Mode A URL / Mode B single-file**: exact-match grep against `Research/*.md` `source:` frontmatter. Same-day → hard-block. Cross-day → prompts skip/re-ingest/cancel
+- **Batch Mode C**: `_Inbox/processed/` filename-based guard
 
 ---
 
-## 5. Atomicity & producer contracts
+## 5. Producer contracts & atomicity
+
+Cross-skill contracts that gate propagation correctness. Skill-specific rationale (classification gates, archive-aware iteration, etc.) lives in per-skill RATIONALE.md files where they exist.
 
 ### 5.1 `propagated_to:` — the atomicity signal
 
-Research notes from `/scenario`, `/stress-test`, `/compare` carry a `propagated_to:` frontmatter field listing tickers whose thesis Logs received the propagation.
+Research notes from `/scenario`, `/stress-test`, `/compare`, `/deepen` carry `propagated_to:` frontmatter listing tickers whose Logs received propagation.
 
-**Atomicity rule**: the field is written ONLY after all Log appends succeed. On partial failure, the field is omitted, which is the signal for `/sync` to retry via file-direct fallback (research note's `ticker:` or `tags:`).
+**Atomicity rule**: field written ONLY after all Log appends succeed. Partial failure → field omitted → signal to `/sync` to retry via file-direct fallback.
 
 **Terminal signals**:
-- `synthesis` and `brief` notes have `propagated_to: []` — terminal; blocks `/sync` from spamming 10+ theses with circular self-propagation Log entries
+- `synthesis` and `brief` notes carry `propagated_to: []` — terminal. Blocks `/sync` from spamming 10+ theses with circular self-propagation Log entries (common in `/surface` scans and `/brief` outputs).
+
+`/sync` Case handling in `sync/SKILL.md §1.7` (Case 2a absent, 2b non-empty, 2c empty-terminal). Full mechanics in `sync/RATIONALE.md §1.5-§1.6`.
 
 ### 5.2 `/lint #39` — producer contract verification
 
-Vault-wide only. For each `Research/*.md`, verifies:
+Vault-wide. For each `Research/*.md`:
 
-| `source_type` | Requirement | Severity if missing |
+| `source_type` | `propagated_to:` requirement | Severity if missing |
 |---|---|---|
 | `synthesis`, `brief` | Must be `[]` | Important regardless of date |
 | `scenario`, `stress-test`, `comparison` | Must be present unless atomicity rule fired | Important if absent and date ≥ 2026-04-19; Nice to Have if pre-spec |
-| `deep-dive` and others | No requirement | — |
+| Other source types | No requirement | — |
 
-Cross-checks with `/lint #1` — notes flagged by both are strongest cleanup candidates.
+Cross-checks with `/lint #1`. Notes flagged by both are strongest cleanup candidates.
 
-### 5.3 Multi-signal archive-collision check (`/thesis` Step 1.2)
+### 5.3 Cross-skill classification & approval gates (condensed)
 
-Before creating a new thesis, `/thesis` checks for prior archived analysis via four signals (union):
+| Skill | Gate | Purpose |
+|---|---|---|
+| `/thesis` Step 1.2 | Multi-signal archive-collision (4 signals: filename glob, `ticker:` frontmatter, `.archive_ticker_registry.md`, `_Archive/Snapshots/` `snapshot_of:`) | Prevent duplicate theses for tickers with prior archived analysis. On match: 4 options (rollback, new-suffix, proceed-accepting-dual-files, cancel) |
+| `/thesis` Step 5 | New-sector handling | If `sector:` doesn't resolve, prompt: create scaffold, proceed without sector update, or cancel. No silent skip |
+| `/scenario` Phase 6.1.5 | Major/Minor/Neutral classification approval | Explicit user review before Log writes. Catches LLM misclassification both ways |
+| `/scenario reverse` | Archive-aware iteration | Live theses receive `Scenario REVERSED` Log entry; archived theses get a `## Reversal Notes` append to the scenario research note body (Tier 3 archive protection) |
+| `/rollback` closure cascade | H3 neighbor-citation scan | Scans Macro + Sector body prose outside Log sections for `[[TICKER]]` citations. Classifies premise-dependent vs contextual. Surfaces for manual review — no auto-edit (body prose is not Log-tier append-only) |
 
-| Signal | Source |
+---
+
+## 6. Locks (deep-dive)
+
+Consolidates the full lock contract. User-facing summary in User Guide §14.
+
+### 6.1 Canonical procedures
+
+Procedures 1–4 of `.claude/skills/_shared/preflight.md`:
+
+| Procedure | Purpose |
 |---|---|
-| A | Filename glob `_Archive/TICKER - *.md` |
-| B | Frontmatter `ticker: TICKER` in any `_Archive/*.md` (catches renamed-then-archived theses) |
-| C | Lookup in `.archive_ticker_registry.md` |
-| D | Historical `snapshot_of:` references in `_Archive/Snapshots/` |
+| 1 — Acquisition | Write lockfile at Step 0.1 with token, skill, scope, timeouts. Scope taxonomy per §2.6 |
+| 1.5 — Ownership verification | Every subsequent Bash block verifies the lock's `token:` field matches the run-token captured at 0.1. Mismatch → abort (`LOCK_LOST`) — another skill seized the lock or user `rm`'d it |
+| 2 — Rename-marker check | Hard-block on `.rename_incomplete.*` per §2.4 |
+| 3 — Name sanitization | Whitelist + NFC for user-supplied filenames (currently only `/rename` new_name). Rejects `/\:*?"<>|`, leading dot, reserved names, length >100 |
+| 4 — Section existence probe | Skills editing a specific `## Heading` abort if absent |
 
-On any match → 4 explicit options:
-- (a) `/rollback TICKER` to restore the prior thesis
-- (b) proceed with different name suffix to make dual-file state intentional
-- (c) proceed with proposed name accepting dual files (caveat in initial Log entry)
-- (d) cancel
+Release at skill's final Bash block: `rm -f "$LOCK_FILE"`.
 
-### 5.4 `/thesis` new-sector handling (Step 5)
+### 6.2 Design rationale
 
-If the thesis's `sector:` frontmatter doesn't resolve to any `Sectors/*.md` (via exact, normalized, or substring matching), Step 5 prompts:
-- (a) create a minimal `Sectors/[sector].md` scaffold with this thesis as first Active Thesis
-- (b) proceed without sector update
-- (c) cancel to fix the sector value
+- **Token-based not PID-based**: Claude Code's Bash tool is stateless; each block is a fresh subshell with different `$$`. The LLM captures the token at 0.1 and carries it as a literal string through subsequent tool calls; lock ownership keys on the token.
+- **Explicit release not trap-based**: `trap "... INT TERM"` only handles signals within the acquisition block; subsequent blocks don't inherit. Explicit `rm -f` at skill end is more reliable. Mid-run abort → lock persists stale → `/lint #43` surfaces for manual recovery.
+- **No auto-steal**: timeout-based stealing would race legitimately long-running skills (web research, `/sync all` on mature vault). Manual recovery is the safer default.
 
-No silent skip.
+### 6.3 Multi-ticker partial-acquisition rollback (`/compare`)
 
-### 5.5 `/scenario` classification approval gate (Phase 6.1.5)
+`/compare A vs B vs C` acquires `.vault-lock.A` + `.vault-lock.B` + `.vault-lock.C` sequentially. If any acquisition fails:
+1. Release all previously-acquired locks in reverse order (C, B) — not orphan them
+2. Abort with `Partial lock acquisition failed on TICKER`
+3. User waits for conflicting lock to clear, re-runs
 
-Before any Log entries or research note write, `/scenario` pauses and presents the Major/Minor/Neutral classification for explicit review. Options:
-- (a) approve and proceed
-- (b) promote specific Minor/Neutral theses to Major with user-provided rationale
-- (c) demote Major to Minor
-- (d) cancel (no files written)
-
-Catches LLM misclassification on either side — a Minor-classified thesis that's actually exposed (false negative) or a Major-classified thesis that isn't (false positive, reversible but noisy).
-
-After approval, appends Log entries to all Major-impact theses. `propagated_to:` on the research note is set only if ALL Major-impact Log appends succeed (atomicity rule).
-
-### 5.6 `/scenario reverse` archive-aware iteration
-
-Resolves each previously-affected ticker's current location:
-- Live theses in `/Theses` receive the `Scenario REVERSED` Log entry
-- Theses archived since the scenario propagated are NOT modified (Tier 3 archive protection) — the archive-skip is instead documented in a `## Reversal Notes` section appended to the scenario research note body
-
-Full audit preserved across both reopened and archived sides.
-
-### 5.7 `/sync` drift detection window (H4 integration)
-
-Conviction drift Log-entry scanning uses exclusion rules (registry §14):
-- `"Conviction reaffirmed"` — window anchor; Log entries older than this are excluded from drift scoring
-- `"Scenario REVERSED"` — drift-exclusion (so reversal doesn't inflate drift signal on affected theses)
-- `"Cross-thesis closure"` — drift-exclusion (premise entry from neighbor closure, not thesis-level signal)
-
-### 5.8 `/rollback` neighbor-citation scan (H3)
-
-Beyond Log-entry cascade detection, `/rollback` for a closed thesis now also scans:
-- **Macro notes** — body prose outside Log sections for `[[TICKER]]` citations
-- **Sector notes** — body prose outside Log sections (Acquisitions, Industry history) for `[[TICKER]]` citations
-
-Each hit is classified:
-- **Premise-dependent**: prose that assumes the thesis's operating state (e.g., "LITE's closure removes the CPO supply bottleneck")
-- **Contextual**: prose that names the ticker historically without premise dependency
-
-Surfaced in the rollback report for manual review. Not auto-edited (body prose is not Log-tier append-only; manual judgment required).
+Per-ticker scheme (C4 fix) handles hyphen-containing tickers (`BRK-B`, `BF-A`, `PBR-A`) that the prior `+`-delimited scheme corrupted.
 
 ---
 
-## 6. Idempotency keys (H4)
+## 7. Rollback cascade catalogue
 
-### 6.1 Primary key
-Research-note **wikilink presence** in thesis Log.
-
-### 6.2 Secondary keys (rename/move resilience)
-- `source:` URL
-- `date:` + `ticker:` pair
-- `tags:` set
-
-On `/sync`, if primary key misses (wikilink not present), secondary keys are consulted. If any secondary key resolves to a prior propagation, skip — the note has already been propagated, the wikilink just shifted (renamed or moved).
-
-### 6.3 Why H4 matters
-Pre-H4: renaming a research note caused the wikilink check to miss, leading to re-propagation and a duplicate Log entry on the thesis.
-
-Post-H4: secondary keys carry across renames. The primary key is still authoritative when present; secondaries are the fallback.
-
-### 6.4 Detection & cleanup of legacy duplicates
-If you rename a research note pre-H4 and `/sync` subsequently re-propagated:
-- Logs show two consecutive entries with different research-note names but same date/ticker/tags
-- Manual cleanup: strikethrough the second entry with `~~entry~~ → Duplicate; superseded by [earlier wikilink]`
-
-Going forward, new runs handle renames correctly.
-
----
-
-## 7. Lock semantics deep-dive
-
-### 7.1 Why token-based (not PID-based)
-
-Claude Code's Bash tool is stateless — each Bash block runs in a fresh subshell with a different `$$`. PID-based ownership would require carrying the parent-process context across shell invocations, which isn't possible.
-
-Token-based: the LLM captures the token emitted at Step 0.1 and includes it as a variable in every subsequent Bash block. The lock file's `token:` field is matched against the captured token at every ownership verification (Procedure 1.5).
-
-### 7.2 Why explicit release (not trap-based)
-
-`trap "... INT TERM"` would handle Ctrl-C / kill signals within the acquisition block, but subsequent blocks don't inherit the trap because each is a fresh subshell.
-
-Explicit release in the skill's final Bash block (`rm -f "$LOCK_FILE"`) is more reliable. If the skill aborts mid-run, the lock persists and shows as stale on `/lint #43` — user decides whether to manually `rm` after confirming abandonment.
-
-### 7.3 Why no auto-steal
-
-Timeout-based stealing would race legitimately long-running skills:
-- Web research may legitimately take >5 min (`/thesis`, `/stress-test`)
-- Large batches (`/sync all` on a mature vault) may exceed timeouts
-
-Auto-steal would corrupt any transaction where the "abandoned" skill is still writing. Manual recovery is the safer default.
-
-### 7.4 Multi-ticker partial acquisition rollback (`/compare`)
-
-`/compare A vs B vs C` acquires `.vault-lock.A` + `.vault-lock.B` + `.vault-lock.C` sequentially. If any acquisition fails (another skill holds that ticker's lock):
-
-1. Release all previously-acquired locks in reverse order (C, B) — NOT orphan them
-2. Abort `/compare` with message "Partial lock acquisition failed on TICKER; rolled back prior acquisitions"
-3. User waits for the conflicting lock to clear, re-runs `/compare`
-
-**Why reverse-order release**: ensures cleanup is deterministic even if individual `rm -f` fails. Partial rollback state is detectable: any surviving pre-acquired lock with matching token but skill ≠ current is a rollback orphan.
-
-### 7.5 Lock token ownership verification (Procedure 1.5)
-
-Every Bash block after Step 0.1 runs:
-```bash
-CURRENT_TOKEN=$(grep '^token:' "$LOCK_FILE" | awk '{print $2}')
-if [ "$CURRENT_TOKEN" != "$MY_TOKEN" ]; then
-  echo "❌ LOCK_LOST — token mismatch (expected $MY_TOKEN, found $CURRENT_TOKEN)"
-  exit 1
-fi
-```
-
-Mismatch means another skill (or user `rm` + re-acquire) seized the lock. Abort immediately; any in-progress transaction manifest remains `in-progress` for `/rollback` cascade recovery.
-
----
-
-## 8. Rollback cascade catalogue
-
-Each multi-file skill writes a manifest; `/rollback` reads the manifest to offer atomic restore.
+Each multi-file skill writes a manifest (§3.2); `/rollback` reads the manifest to offer atomic restore.
 
 | Cascade | Trigger | Options offered |
 |---|---|---|
-| 2.5a | `/sync` primary snapshot | (b) Auto-strikethrough Tier B Log entries on neighbor theses |
-| 2.5b | `/sync` cascade via `_sync-manifest` | Tier B Log entry review: (a) surface, (b) auto-strikethrough, (c) manual |
-| 2.5c | `/prune` batch | (a) Restore thesis from snapshot + unarchive, (b) also surface Tier B Stage 4.2 neighbor Logs for strikethrough |
-| 2.5d | `/stress-test` batch | (a) Restore snapshot, (b) cascade + strikethrough Log entry on tested thesis |
-| 2.5e | `/status` batch | (a) Thesis-only restore, (b) Full transaction restore (thesis + sector + un-archive + clear invalidations) |
-| 2.5f | `/thesis` batch | (a) Delete thesis only, (b) Full cascade (delete + revert sector + revert `_hot.md` + orphan mtime revert), (c) cancel |
+| 2.5a | `/sync` primary snapshot | Auto-strikethrough Tier B Log entries on neighbor theses |
+| 2.5b | `/sync` via `_sync-manifest` | Tier B Log entry review: surface / auto-strikethrough / manual |
+| 2.5c | `/prune` batch | Restore thesis from snapshot + unarchive; surface Tier B Stage 4.2 neighbor Logs |
+| 2.5d | `/stress-test` batch | Restore snapshot; cascade + strikethrough Log entry on tested thesis |
+| 2.5e | `/status` batch | Thesis-only restore OR full transaction restore (thesis + sector + un-archive + clear invalidations) |
+| 2.5f | `/thesis` batch | Delete thesis only OR full cascade (delete + revert sector + revert `_hot.md` + orphan mtime revert) OR cancel. **Deletion-based, not snapshot-based** |
 | Catalyst | `/catalyst` batch | Restore prior `_catalyst.md` from pre-regenerate snapshot |
 | Rename | `/rename` pre-rename snapshot | Restore thesis file + inbound wikilinks to pre-rename state |
 
-### 8.1 `/rollback` Step 6.2.5 — Intervening-entries scan (closed theses only)
+### 7.1 Intervening-entries scan (closed theses only, Step 6.2.5)
 
-When rolling back a closed thesis, scan all neighbor theses (and now H3-extended Macro + Sector notes) for Log entries or prose dated after the closure but referencing the closed thesis.
+When rolling back a closed thesis, scan all neighbor theses + (H3-extended) Macro + Sector notes for Log entries or prose dated after the closure referencing the closed thesis. Options:
+- Surface-only (manual handling)
+- Auto-strikethrough `Cross-thesis closure:`-tagged entries (premise-dependent)
+- Auto-strikethrough ALL intervening references
+- Skip
 
-Options:
-- (a) surface-only (user handles manually)
-- (b) auto-strikethrough entries tagged `Cross-thesis closure:` (premise-dependent on the closure)
-- (c) auto-strikethrough ALL intervening references
-- (d) skip
-
-Premise-dependent vs contextual classification guides default recommendation — premise-dependent entries are usually strikethrough candidates; contextual mentions can safely persist.
+Premise-dependent vs contextual classification drives default recommendation.
 
 ---
 
-## 9. Skill pre-flight contract
-
-Every skill that modifies vault state runs pre-flight checks at `.claude/skills/_shared/preflight.md` at Step 0:
-
-### 9.1 Procedure 1 — Vault lock acquisition
-Scope per skill type (see §2.6). Timeout budget varies: 5 minutes for most, longer for `/prune` / `/sync all` / `/scenario`.
-
-### 9.2 Procedure 1.5 — Ownership verification
-Run at every subsequent Bash block. Mismatch → abort with `LOCK_LOST` / `LOCK_STOLEN`.
-
-### 9.3 Procedure 2 — Rename-marker check
-Any ticker-scoped skill hard-blocks if `.rename_incomplete.TICKER` exists at vault root. Vault-wide skills glob `.rename_incomplete.*` — most hard-block, a few (`/ingest`, `/rollback` restore, read-only `/surface`) warn-only. Exceptions: `/lint`, `/rollback` list mode, `/graph` (read-only for theses), `/rename` itself.
-
-### 9.4 Procedure 3 — Name sanitization
-Any skill taking user-supplied string as filename (currently `/rename` new_name) runs whitelist + NFC validation:
-- Allowed: `[a-zA-Z0-9 \-_.,'&()]`
-- Rejected: `/\:*?"<>|`, leading dot, reserved names, length >100
-
-### 9.5 Procedure 4 — Section existence probe
-Skills editing a specific `## Heading` abort if section is absent (e.g., `/deepen` never creates sections that don't exist in the thesis).
-
-### 9.6 Release
-Final Bash block: `rm -f "$LOCK_FILE"` after all writes verified.
-
----
-
-## 10. `/graph last` cost model
+## 8. `/graph last` cost model
 
 | Vault state | Work performed |
 |---|---|
-| No files changed since last graph | Skip — zero reads |
-| 1–5 thesis files changed | Re-extract those theses + read 19 sector/macro files for reverse indexes |
-| 30+ thesis files changed | Approaches the cost of a full rebuild |
+| No files changed since last graph + no invalidations | Skip — zero reads |
+| 1-5 thesis files changed | Re-extract those + read 19 sector/macro files for reverse indexes |
+| 30+ thesis files changed | Approaches full rebuild cost |
 
-**Watermark precision is second-level** (ISO timestamp in `last_graph_write:`). Running `/graph last` twice the same minute still re-processes files modified between runs — output is idempotent (correct, just wasted compute).
-
-Legacy graph files without `last_graph_write:` fall back to `date:` at 00:00:00 UTC. Next `/graph` write upgrades the frontmatter; subsequent runs use second-precision.
+Watermark precision: ISO second-level (`last_graph_write:`). Legacy graph files without this field fall back to `date:` at 00:00:00 UTC; next write upgrades. Running twice within the same minute re-processes files modified between runs — output idempotent, just wasted compute.
 
 ---
 
-## 11. `/rename` atomicity details
+## 9. `/rename` atomicity details
 
-### 11.1 Wikilink patterns (7 variants)
+### 9.1 Wikilink patterns (7 variants)
 
-`/rename` Edit scans for and updates 7 wikilink patterns:
+`/rename` Edits scan for and update:
 1. `[[TICKER - OldName]]`
 2. `[[TICKER - OldName.md]]`
 3. `[[TICKER - OldName|alias]]`
 4. `[[Theses/TICKER - OldName]]`
 5. `[[Theses/TICKER - OldName.md]]`
-6. `[[_Archive/TICKER - OldName]]` (for archived-then-renamed cases)
+6. `[[_Archive/TICKER - OldName]]`
 7. `[[_Archive/TICKER - OldName.md]]`
 
-### 11.2 Pre-flight Read/Write probe (Step 3.5)
+Partially overlaps the 5-form wikilink contract (`_shared/wikilink-forms.md`) but includes 2 archive-specific forms for the archived-then-renamed case.
 
-Before the `mv`, `/rename` reads every file that contains an inbound wikilink (glob across `Theses/`, `Research/`, `Sectors/`, `Macro/`, `_Archive/`, `_hot.md`, `_graph.md`). If any file is unreachable (permission, lock, disk), `/rename` aborts BEFORE the mv — no partial state.
+### 9.2 Pre-flight Read/Write probe (Step 3.5)
 
-### 11.3 Step 1.4.5 cross-new_name guard
+Before the `mv`, `/rename` reads every file containing an inbound wikilink (glob across `Theses/`, `Research/`, `Sectors/`, `Macro/`, `_Archive/`, `_hot.md`, `_graph.md`). If any file unreachable → abort BEFORE the mv; no partial state.
 
-If `.rename_incomplete.TICKER` marker exists from a prior failed rename:
-- If `new_name` matches → repair mode (skip mv, retry Edits only)
-- If `new_name` differs → abort with "In-flight rename conflict" — prevents two different target names from corrupting each other's repair state
+### 9.3 Cross-`new_name` guard (Step 1.4.5)
 
-User options when conflict:
-- Finish prior rename with marker's `new_name:` first
-- OR manually resolve listed files + `rm` marker
-- OR accept loss of repair state (manually fix listed files first to avoid broken wikilinks)
+Marker exists from prior failed rename:
+- `new_name` matches → repair mode (skip mv, retry Edits only)
+- `new_name` differs → abort with "In-flight rename conflict"
 
-### 11.4 Post-mv Edit failure
+Options on conflict: finish prior with marker's `new_name:`, manually resolve + `rm` marker, or accept repair-state loss.
 
-If any wikilink Edit fails after the mv completed, `/rename` writes `.rename_incomplete.TICKER` containing:
-- Rename context (ticker, old_name, new_name, batch ID)
-- Failed-file list
+### 9.4 Post-mv Edit failure
 
-Re-run `/rename TICKER "[new_name]"` triggers repair mode: marker-detected, mv skipped, only failed Edits retried. Marker shrinks monotonically across re-runs until empty, then auto-deletes.
+Writes `.rename_incomplete.TICKER` listing failed files. Re-run triggers repair mode: mv skipped, failed Edits retried, marker shrinks monotonically until empty → auto-delete.
 
-### 11.5 `/lint #37` multi-marker detection
-
-`/lint #37` globs `.rename_incomplete.*` — multiple in-flight repairs surface independently. Scoped `/lint TICKER` runs only for the specific ticker's marker if present.
+`/lint #37` globs `.rename_incomplete.*`; each marker surfaces independently. Scoped `/lint TICKER` runs only for that ticker.
 
 ---
 
-## 12. Lint registry (by ID)
+## 10. `/lint` registry (by ID)
 
-Key checks:
+Key checks — severity column indicates escalation in the lint report.
 
 | ID | Scope | What it catches | Severity |
 |---|---|---|---|
-| #1 | Full | Research note without propagated_to AND no thesis Log reference | Important |
+| #1 | Full | Research note without `propagated_to:` AND no thesis Log reference | Important |
 | #16 | Full | Stale snapshots (>180 days) | Nice to Have |
 | #18, #20, #23 | Full | Graph health (existence, staleness, missing/ghost entries) | Important |
-| #32 | Full | Orphaned ticker references (research note `ticker:` matches no thesis) | Nice to Have |
+| #29 | Full | Log-prefix registry vs consumer-list drift (`_shared/log-prefixes.md`) | Important |
+| #30 | Scoped | Sector-resolution coverage per thesis (`_shared/sector-resolution.md`) | Important if `none`, Nice to Have if `substring`/`normalized` |
+| #31 | Full | Sector frontmatter standardization vault-wide | Nice to Have |
+| #32 | Full | Orphaned ticker refs (research `ticker:` matches no thesis) | Nice to Have |
 | #33 | Full | Closed thesis file still in `Theses/` | Important |
 | #35 | Full + scoped | `_hot.md` schema drift | Important (silent no-op source) |
 | #36 | Full | `_prune-manifest` state | Important if in-progress; Nice to Have if completed >30 days |
-| #37 | Full + scoped (if marker) | `.rename_incomplete.*` markers | Important |
+| #37 | Full + scoped | `.rename_incomplete.*` markers | Important |
 | #38 | Full | State marker hygiene (`.sync_all_fresh`, `.graph_invalidations` aging) | Nice to Have |
 | #39 | Full | `propagated_to:` producer contract | Important (post-spec) / Nice to Have (pre-spec) |
 | #41 | Full | `_sync-manifest` aging | Important if in-progress; tiered if completed |
@@ -625,24 +364,169 @@ Key checks:
 | #48 | Full | `_status-manifest` aging | Important if in-progress |
 | #49 | Full | `_thesis-manifest` aging | Important if in-progress |
 
-Scoped mode always runs #35 and (if marker exists) #37, because these are vault-global concerns whose cost is low enough to gate weekly rather than monthly.
+Scoped mode always runs #35 and (if marker exists) #37 — these are vault-global concerns whose cost is low enough to gate weekly rather than monthly.
 
 ---
 
-## 13. Commit archaeology (H1–H4 summary)
+## 11. Vault root hidden files — complete inventory
 
-Recent hardening commits and their contracts:
+Complete catalog of dotfiles and dot-directories at the vault root. Runtime markers (§2) deep-detailed above; this section covers the static infrastructure not otherwise documented.
 
-| Commit | Layer | What it changed |
+### 11.1 Static infrastructure directories
+
+| Entry | Type | Purpose | Tracked in git? |
+|---|---|---|---|
+| `.git/` | dir | Git repository metadata and object store | Self |
+| `.claude/` | dir | Claude Code harness: `agents/`, `commands/`, `settings.json`, `skills/` | Partially — skills/commands/agents tracked; local settings ignored |
+| `.claudian/` | dir | Claudian Obsidian plugin state (`claudian-settings.json`, per-conversation sessions) | No — entirely git-ignored |
+| `.obsidian/` | dir | Obsidian vault config: workspace, plugins, themes, graph view | Partially — personal UI state git-ignored |
+
+#### 11.1.1 `.claude/` layout
+
+```
+.claude/
+├── agents/           — Subagent definitions (vault-explorer.md)
+├── commands/         — Slash-command shortcuts (currently empty)
+├── settings.json     — Tool permission allowlist + hooks (git-ignored)
+└── skills/           — 17 skill definitions + _shared/
+    ├── _shared/      — Cross-skill contracts (§12.2)
+    ├── sync/         — SKILL.md + RATIONALE.md
+    ├── graph/        — SKILL.md
+    └── [15 others]/  — brief, catalyst, clean, compare, deepen, ingest,
+                        lint, prune, rename, rollback, scenario, status,
+                        stress-test, surface, thesis
+```
+
+#### 11.1.2 `.claudian/` and `.obsidian/`
+
+Neither is read or written by any skill. Both are plugin/app-managed:
+- `.claudian/`: per-conversation sessions + global settings; entirely git-ignored.
+- `.obsidian/`: mixed tracking — personal UI state (`workspace.json`, `cache/`) ignored; vault-shared config (`core-plugins.json`, `community-plugins.json`, installed plugins) tracked. Skills write `.md` files that Dataview queries read live; `obsidian-git` plugin may auto-commit depending on user config (skills never commit — commits are user-initiated).
+
+### 11.2 Version control and OS files
+
+| File | Purpose | Modifier |
 |---|---|---|
-| `569b1e6` Pre Flight Safety | T6 | Pre-flight contract (Procedure 1.5 ownership, Procedure 2 marker, Procedure 3 sanitization, Procedure 4 section probe) |
-| `eaef12d` Workflow Hardening | T5 | 5.1 scenario reverse mode; 5.2 scenario classification approval; 5.3 deepen missing-section handling; 5.4 thesis new-sector handling; 5.5 clean orphan protection; 5.7 User Guide §15 additions |
-| `4d12f96` Transaction Integrity | T1–T4 | Manifest skeletons, atomicity rules, `propagated_to:` producer contract, retry logic |
-| `d6247da` User Guide refactor | — | First restructure; redistributed tier-labeled content |
-| `dda1cc9` Concurrency Integrity | C1–C4 | `/compare` per-ticker locks, multi-ticker partial rollback, LOCK_LOST detection |
-| `597885e` Transaction Completeness | H1–H4 | H1: `_thesis-manifest` + `/lint #49` + `/rollback` cascade 2.5f; H2: `/catalyst` hard-abort on snapshot failure; H3: `/rollback` scan Macro + Sectors; H4: `/sync` idempotency secondary keys |
+| `.gitignore` | Exclusion rules: UI state, runtime markers, Claudian state, secrets, macOS metadata | Manual |
+| `.gitattributes` | Text normalization (`* text=auto`, LF line endings) | Manual |
+| `.DS_Store` | Finder view metadata | Git-ignored; auto-created by macOS |
 
-Later commits (User Guide restructure Apr 19, 2026) pushed deep technical content here; User Guide became user-facing surface.
+`.gitignore` is the **authoritative runtime-marker registry**. Adding a new ephemeral marker requires: updating the producing skill's spec AND `.gitignore` AND §2 here AND the Appendix ownership matrix.
+
+### 11.3 Reserved / optional markers
+
+| Marker | Status | Purpose |
+|---|---|---|
+| `.drift-config.md` | Optional, user-authored | `/sync` drift detection parameter overrides (§2.7) |
+| `.archive_ticker_registry.md` | Auto-maintained, append-only | Archive lookup (§2.5) |
+| `.sync-progress.jsonl` | **Reserved, not implemented** | T7.4 optional intra-phase crash-granularity scratch log. Namespace claimed in `sync/RATIONALE.md §5.3.1`; not written by any current skill |
+
+### 11.4 Causal dependency chains
+
+Five chains connect runtime markers to skill behavior:
+
+1. **Sync → Graph (full rebuild signal)**: `/sync all` writes `.sync_all_fresh` → `/graph` forces full rebuild → deletes marker.
+2. **Sync → Sync (watermark progression)**: `.last_sync` touched end-of-run (except ticker-scoped) → next `/sync` uses for `find -newer`.
+3. **Closure → Graph (neighbor re-extraction)**: `/status` / `/prune` append to `.graph_invalidations` → `/graph last` consumes → deletes.
+4. **Rename → ticker-scoped skills (repair gate)**: `/rename` partial Edit failure writes `.rename_incomplete.TICKER` → consumer skills hard-block → repair retry shrinks marker → auto-delete when empty.
+5. **Locking**: Skill 0.1 writes `.vault-lock*` → subsequent blocks verify `token:` → final block releases. Abandonment → stale lock → `/lint #43`.
+
+### 11.5 Adding a new hidden marker — checklist
+
+When a new skill needs a vault-root marker:
+1. Spec contract in producing skill's SKILL.md (writer, reader, deletion, absence-vs-presence semantics)
+2. Add to `.gitignore` "Vault runtime state markers" section with inline provenance comment
+3. Add subsection here (§2)
+4. Add row to Appendix ownership matrix
+5. Add `/lint` check if marker can accumulate stale state
+6. Add to User Guide §14 if user-visible
+
+Skipping any surface produces silent drift (committed by accident; accumulates stale state; mystery file on disk for users).
+
+---
+
+## 12. Skill-layer architecture
+
+Under `.claude/skills/`, three kinds of markdown files compose each skill. Load semantics matter: every byte in `SKILL.md` is paid for per invocation (prompt load + cache cost); `_shared/*.md` contracts are paid only when explicitly `Read`; `RATIONALE.md` is free at runtime.
+
+### 12.1 Three file kinds
+
+| Kind | Location | Auto-loaded by harness? | Read by LLM at runtime? |
+|---|---|---|---|
+| `SKILL.md` | `.claude/skills/<skill>/SKILL.md` | **Yes** — injected into system prompt on invocation | — (already in prompt) |
+| `_shared/*.md` | `.claude/skills/_shared/*.md` | No | Only when explicit `Read`; most skills inline critical procedures and treat shared contract as the fuller reference |
+| `RATIONALE.md` | `.claude/skills/<skill>/RATIONALE.md` | **No** | Rarely — maintainers editing the skill, not the LLM executing it |
+
+**T7 optimization consequence**: the split that produced `sync/RATIONALE.md` and `_shared/wikilink-forms.md` migrated non-operational text from paid-per-invocation SKILL.md to free-at-runtime RATIONALE.md or paid-on-demand `_shared/`. Savings: ~9,200 tokens per `/sync` invocation.
+
+### 12.2 Shared contracts catalog
+
+Five contracts under `.claude/skills/_shared/`. Editing any requires coordinated update across all consumers.
+
+| Contract | Lines | Purpose | Consumers | Enforcing `/lint` |
+|---|---|---|---|---|
+| `preflight.md` | 525 | Lock acquisition (Procedures 1/1.5), rename-marker check (2), name sanitization (3), section probe (4) | Every state-modifying skill (17) | #43 |
+| `log-prefixes.md` | 402 | Registry of Log-entry prefixes with producer/consumer bindings | `/sync` (§2.5 classification, §3e drift), `/lint` (#29), every producer | #29 |
+| `hot-md-contract.md` | 90 | Per-section budget, soft/hard caps, compression trigger order, same-ticker continuation rule | 11 writers of `_hot.md` | #35, #42 |
+| `sector-resolution.md` | 110 | Thesis `sector:` → sector note resolution (exact → normalized → substring → ask) | `/status`, `/thesis`, `/compare`, `/prune`, `/rollback` | #30, #31 |
+| `wikilink-forms.md` | 59 | 5 canonical wikilink forms producers emit (T7.1) | `/sync` (§1.7, §4.0, §5.0), `/rollback` cascade, `/lint` #23, `/prune` closure cascade | — (convention-enforced) |
+
+**Drift risk per contract**: if a producer diverges from its contract without updating consumers, silent failures result (concurrent-writer race, miscategorized Log entry, truncated `_hot.md` section, unresolved sector, missed wikilink match). Every contract has at least one `/lint` check except `wikilink-forms.md` which relies on the editing protocol (§12.4) alone.
+
+### 12.3 RATIONALE.md pattern
+
+Currently only `sync/RATIONALE.md` exists. Pattern: when SKILL.md accumulates rationale blocks (`> **Why this is safe**...`, `> **Edge case**...`, `> **T#.# rationale**...`) collectively exceeding ~20% of the file with no impact on LLM execution, extract.
+
+**Must stay in SKILL.md**:
+- Every operational rule the LLM applies at runtime
+- All Log messages (user-visible surface)
+- Critical-path Bash snippets that get inlined into execution
+- Error/abort messages and their triggering conditions
+
+**Should move to RATIONALE.md**:
+- Historical context ("prior spec keyed on X; caused bug Y; switched to Z")
+- Edge-case trade-off discussions
+- Cross-midnight / renamed-file / concurrent-writer scenarios
+- "Why we chose A over B" design dialectics
+- Performance expectations and benchmarks
+
+`sync/RATIONALE.md` has 9 sections (§1-§9) covering idempotency design, propagation-target resolution, Pass 1 logic, skill-origin gate, manifest contract, watermark semantics, _hot.md auto-resolve, drift detection, T7 efficiency principles. SKILL.md references via `§N.M` anchors.
+
+**Reference format in SKILL.md**: use `§N.M` for same-file (SKILL.md) or RATIONALE.md references; use `registry §N` for `_shared/log-prefixes.md` registry entries; use `_shared/<contract>.md §N` for other shared contracts. Disambiguation prevents ambiguous cross-document pointers.
+
+### 12.4 Editing protocol
+
+1. **SKILL.md only** (operational rule change): edit, run `/lint` for affected skill, commit.
+2. **`_shared/*.md` only** (contract tightening): edit contract, grep all consumers for affected references, verify every consumer behaves, run paired `/lint` checks, commit.
+3. **Both**: edit contract FIRST, then consumers. Commits in this order → intermediate state is self-consistent (stricter contract may flag pre-existing behavior, but won't silently break).
+4. **RATIONALE.md**: free-form; may commit independently of SKILL.md. Split maintained by convention, not enforced.
+5. **New `_shared/*.md` contract**: update §12.2 + all consumer SKILL.md files + add `/lint` check if drift detection warranted.
+6. **New `RATIONALE.md`**: update §12.3 listing.
+
+### 12.5 Cross-skill contract-consumption graph
+
+```
+  preflight.md ◄──── every state-modifying skill (17) at Step 0
+
+  log-prefixes.md ◄─ /sync (Step 2.5 + 3e)
+                     /lint (#29)
+                     /stress-test, /deepen, /status, /prune, /scenario,
+                     /rollback, /rename, /thesis, /compare (as producers)
+
+  hot-md-contract.md ◄── 11 writers: /sync, /status, /thesis, /surface,
+                         /stress-test, /scenario, /compare, /deepen,
+                         /prune, /rollback, /catalyst
+                         /lint (#35, #42)
+
+  sector-resolution.md ◄ /status, /thesis, /compare, /prune, /rollback
+                         /lint (#30, #31)
+
+  wikilink-forms.md ◄─── /sync (Step 1.7, 4.0, 5.0)
+                         /rollback (2.5 cascade), /prune (closure cascade)
+                         /lint (#23, orphan checks)
+```
+
+Adding a new consumer: update this graph + add paired `/lint` check in the same commit.
 
 ---
 
@@ -652,17 +536,27 @@ Later commits (User Guide restructure Apr 19, 2026) pushed deep technical conten
 |---|---|---|---|
 | `Theses/*.md` | `/thesis` | `/sync`, `/deepen`, `/status`, `/compare`, `/scenario`, `/stress-test`, `/prune`, `/rename`, `/rollback` | `/status` (archive), `/prune` (archive) |
 | `Research/*.md` | `/ingest`, `/thesis`, `/deepen`, `/compare`, `/scenario`, `/stress-test`, `/surface`, `/brief`, manual | — (Tier 2 immutable bodies) | manual `mv` to `_Archive/Briefs/` |
-| `Sectors/*.md` | manual (prompt §6.4.1), `/thesis` (scaffold) | `/sync`, `/status`, `/compare`, `/prune`, manual | — |
+| `Sectors/*.md` | manual, `/thesis` (scaffold) | `/sync`, `/status`, `/compare`, `/prune`, manual | — |
 | `Macro/*.md` | manual | `/sync`, `/scenario` | — |
-| `_hot.md` | `/sync` (auto-create) or any of 11 skills via CLAUDE.md rule #9 | 11 skills (Absorb/Synthesize/Decide + Reconcile subset) | manual when `/lint #35` or `#42` fires |
+| `_hot.md` | `/sync` (auto-create) or any of 11 writers via CLAUDE.md rule #9 | 11 skills | manual when `/lint #35` or `#42` fires |
 | `_graph.md` | `/graph` | `/graph`, `/rename` (adjacency header only) | `/graph` |
 | `_catalyst.md` | `/catalyst` | `/catalyst` | `/catalyst` (overwrite) |
+| `.claude/` | Git (tracked skills/commands/agents); Claude Code (local settings) | Users (skill spec edits); Claude Code | Manual |
+| `.claude/skills/<skill>/SKILL.md` | Skill author | Skill editor; loaded per invocation by harness | Manual |
+| `.claude/skills/<skill>/RATIONALE.md` | Manual (when SKILL.md split warranted; currently only `sync/`) | Manual alongside SKILL.md | Manual |
+| `.claude/skills/_shared/*.md` | Contract author | Manual (coordinated with consumers) | Manual |
+| `.claudian/` | Claudian plugin | Claudian plugin | Claudian plugin; manual |
+| `.obsidian/` | Obsidian + plugins | Obsidian + plugins | Manual |
+| `.git/` | Git | Git | `git gc` |
+| `.gitignore`, `.gitattributes` | Manual | Manual | Manual |
+| `.DS_Store` | macOS Finder | macOS Finder | Git-ignored |
 | `.last_sync` | `/sync`, `/sync all` | `/sync`, `/sync all` | — |
 | `.sync_all_fresh` | `/sync all` | — | `/graph` (consume & delete) |
-| `.graph_invalidations` | `/status` (closure), `/prune` | append only | `/graph last` (consume & delete) |
-| `.rename_incomplete.TICKER` | `/rename` (on post-mv Edit failure) | `/rename` (repair retries) | `/rename` (auto-delete when empty) |
-| `.archive_ticker_registry.md` | `/status`, `/prune` (closures) | append only | — (stale entries tolerated by `/thesis` verification) |
+| `.graph_invalidations` | `/status` closure, `/prune` | append-only | `/graph last` (consume & delete) |
+| `.rename_incomplete.TICKER` | `/rename` on post-mv Edit failure | `/rename` (repair retries) | `/rename` (auto-delete when empty) |
+| `.archive_ticker_registry.md` | `/status`, `/prune` closures | append-only | — (stale tolerated by `/thesis` verification) |
 | `.vault-lock*` | all state-modifying skills | own skill only | own skill (explicit release); manual on abandonment |
 | `.drift-config.md` | manual (optional) | manual | manual |
-| `_Archive/Snapshots/*.md` | destructive skills (pre-edit snapshot) | — | `/clean` |
-| `_Archive/Snapshots/_*-manifest-*.md` | multi-file skills (skeleton) | own skill (populate + flip) | `/clean` (after manifest-specific aging rules satisfied) |
+| `.sync-progress.jsonl` | **Reserved — not yet written** | — | — |
+| `_Archive/Snapshots/*.md` | destructive skills (pre-edit) | — | `/clean` |
+| `_Archive/Snapshots/_*-manifest-*.md` | multi-file skills (skeleton) | own skill (populate + flip) | `/clean` (after manifest-specific aging) |

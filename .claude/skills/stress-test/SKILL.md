@@ -181,7 +181,7 @@ Follow `.claude/skills/_shared/hot-md-contract.md` for all _hot.md writes. Read 
 2. **Recent Conviction Changes**: Add entry if conviction reassessment was flagged (note: conviction not changed, flagged for user)
 3. **Open Questions**: Add any critical research gaps or unanswered questions the stress test exposed
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After all `_hot.md` edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order": drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → emit warning. Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; `/stress-test` primary operation still succeeds).
 
 ## Phase 6: Report
 Present findings directly to the user. Lead with the scariest finding. End with a clear verdict: "This thesis survives stress testing" or "This thesis has N critical vulnerabilities that need resolution before conviction can be maintained."
@@ -192,3 +192,18 @@ Include in the report:
 - **`propagated_to:` frontmatter**: `set ([TICKER])` | `omitted (Log append failed — next /sync will retry)`
 
 **Run `/sync` to propagate stress test findings to affected sector notes and cross-thesis references.** If the Log append failed, `/sync` will additionally retry the append via file-direct fallback (research note's `ticker: TICKER` resolves to the thesis, today's-date idempotency check passes since no entry was written, and the Log entry lands on retry).
+
+## Phase 7: Release lock
+
+After Phase 6's report is complete, release the ticker lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether the stress test succeeded, the Log append failed (fallback to /sync), or the skill hit a non-fatal error.
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE=".vault-lock.TICKER"                   # TICKER from $ARGUMENTS, e.g., .vault-lock.NVDA
+EXPECTED_TOKEN="<paste-token-captured-from-Phase-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

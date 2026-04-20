@@ -306,7 +306,7 @@ Follow `.claude/skills/_shared/hot-md-contract.md` for all _hot.md writes. Read 
 2. **Recent Conviction Changes**: Add entry for the new thesis with initial conviction level
 3. **Open Questions**: Add the 2-3 most critical Outstanding Questions from the new thesis
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After all `_hot.md` edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order": drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → emit warning. Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; `/thesis` primary operation still succeeds).
 
 ## Step 7.5: Finalize thesis transaction manifest (H1 fix)
 
@@ -325,3 +325,18 @@ Verify the flip landed by re-reading the frontmatter. If the flip fails:
 - What 2-3 research questions would most increase or decrease conviction?
 - Any upcoming catalysts to monitor with dates?
 - Which existing vault theses have the strongest competitive tension with this one?
+
+## Step 9: Release lock
+
+After Step 8's report is complete, release the ticker lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether the thesis was created successfully or aborted (Step 1.1.5 archive collision, manifest flip failure, etc.).
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE=".vault-lock.TICKER"                   # TICKER from $ARGUMENTS, e.g., .vault-lock.NVDA
+EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

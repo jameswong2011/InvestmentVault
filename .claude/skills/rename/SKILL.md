@@ -335,7 +335,7 @@ Most `_hot.md` references use `[[Theses/...]]` wikilinks — already handled in 
 
 Use `Edit` with `replace_all: true` for any literal occurrence of `TICKER - [old_name]` (not in wikilink syntax). Apply word-boundary care — don't accidentally match `TICKER - old_name` substring inside a longer word.
 
-**Word cap**: After edits, check `_hot.md` total word count. If over 2,000 words (unlikely from rename alone), prune `## Sync Archive` entries (oldest first) until under cap.
+**Word cap**: After edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order". Soft cap 4,000 words, hard cap 5,000 words (hard-cap breach unlikely from rename alone). `/rename` primary operation always succeeds regardless of `_hot.md` state.
 
 ## Step 10: Append Log Entry to Renamed Thesis
 
@@ -381,3 +381,18 @@ Otherwise, rewrite the marker with the still-failing subset (drop resolved entri
 - **Rename across ticker change** (e.g., `FB - Facebook` → `META - Meta`): out of scope — TICKER must be stable. For ticker changes, manually create a new thesis with `/thesis META`, copy content, archive the old via `/status FB active→closed`. Future enhancement could add a `/reticker` skill.
 - **Renamed thesis already in `_Archive/`** (closed): out of scope — `/rename` operates on active/monitoring/draft theses in `Theses/`. To rename an archived thesis, manually move + adjust.
 - **Old name contains regex special characters**: glob and grep must escape correctly. The rename procedure assumes literal string matching; alphanumeric and common punctuation (spaces, hyphens, ampersands) are fine, but unusual symbols (parentheses, braces, dollar signs) should prompt explicit escaping confirmation.
+
+## Step 12: Release lock
+
+After Step 11's report is complete, release the ticker lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether the rename completed cleanly, left a `.rename_incomplete.TICKER` marker (partial-failure path), or aborted at Step 0.2/0.3 (marker collision, name sanitization rejection).
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE=".vault-lock.TICKER"                   # TICKER from $ARGUMENTS, e.g., .vault-lock.META
+EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

@@ -25,6 +25,33 @@ Parse `$ARGUMENTS` to determine scope:
 
 ---
 
+## Step 0: Pre-flight (MANDATORY — runs before any audit check)
+
+### 0.1 Acquire lock
+
+`/lint` is a pure-read skill, but mid-write inconsistency from a concurrent vault-wide skill (e.g., `/sync all` appending Logs, `/prune` moving theses to `_Archive/`) produces false-positive findings. Acquire the correct lock scope per `.claude/skills/_shared/preflight.md` Procedure 1:
+
+- **Full audit** (`/lint` with no arguments): `vault-wide` scope. Timeout budget: 10 minutes.
+- **Scoped audit** (`/lint TICKER`): `read-only` scope. Timeout budget: 3 minutes. `read-only` allows multiple concurrent readers but blocks vault-wide writers — appropriate for a read skill that must see a consistent snapshot.
+
+Capture the emitted token and verify ownership (Procedure 1.5) at every subsequent Bash block. Release in the final reporting Bash block via `rm -f "$LOCK_FILE"`.
+
+`/lint` is the only skill that intentionally uses `read-only` scope outside `/rollback` list mode — all other skills write and use `vault-wide` or `ticker:TICKER`.
+
+### 0.2 Rename-marker check (advisory, not blocking)
+
+Per preflight §2.1, `/lint` is explicitly exempted from the rename-marker hard-block contract — `/lint` is the canonical surfacing path for `.rename_incomplete.TICKER` markers via Check #37. Running `/lint` against a mid-rename vault is the expected use case, not a collision.
+
+For scoped mode (`/lint TICKER`): no marker check at pre-flight (Check #37 will surface it if present).
+
+For full mode: no marker check at pre-flight (Check #37 globs and reports in the normal audit flow).
+
+### 0.3 Section existence probe (N/A)
+
+`/lint` does not edit any file — the section existence probe from preflight §4 does not apply.
+
+---
+
 Perform a comprehensive vault health audit:
 
 ## Structural Checks
@@ -182,7 +209,7 @@ These checks validate `_graph.md` — the pre-computed dependency map that `/syn
       - `## Portfolio Snapshot`
     - For each missing section: Important — `⚠️ _hot.md missing required section "## [Section Name]". Skills that Edit this section will silently no-op. Fix: add the heading with an empty body (`- _pending_` under it), or delete _hot.md and let the next /sync auto-create the full schema.`
     - **Order check** (Nice to Have): canonical order is the list above. If sections are present but out of order, report: `🔖 _hot.md sections present but out of canonical order. Skills tolerate reordering; consider restoring canonical order for readability.`
-    - **Word-cap check**: if total word count > 2,000, report: Important — `⚠️ _hot.md exceeds 2,000-word cap ([N] words). Skills should auto-prune on next update; manual `/sync` or `/status` will truncate. If persists across multiple runs, the word-cap logic may have drifted — investigate.`
+    - **Word-cap check**: if total word count > 5,000 (hard cap), report: Important — `⚠️ _hot.md exceeds 5,000-word hard cap ([N] words). Compression failed to bring it under cap; the next skill to attempt a `_hot.md` write will abort the write per hot-md-contract §"Compression trigger order" step 5. Manual cleanup required — trim Sync Archive or Open Questions.` If word count > 4,000 (soft cap) but ≤ 5,000, report: Nice to Have — `ℹ️ _hot.md approaching soft cap ([N] words / 4,000). Skills should auto-compress on next update; if persists across multiple runs, compression logic may have drifted — investigate.`
     - **Runs in BOTH full and scoped modes** — `_hot.md` schema integrity is a vault-global concern that affects every skill writing to `_hot.md` for the scoped ticker. Single-file read + grep cost is negligible.
 
 36. **Prune batch-manifest state** — Scan `_Archive/Snapshots/` for `_prune-manifest*.md` files. These are crash-recovery artifacts from `/prune` Stage 1.5; their presence indicates a prune operation state.
@@ -406,3 +433,21 @@ Report as a prioritized checklist:
 - Average thesis age: X days since last Log entry
 - Orphaned notes: X
 - Broken links: X
+
+## Release lock
+
+After the Output Format section is rendered, release the lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether the audit found issues, ran clean, or hit a non-fatal read error.
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+# LOCK_FILE path depends on mode acquired in Step 0.1:
+#   full audit       → .vault-lock
+#   scoped (TICKER)  → .vault-lock.readonly
+LOCK_FILE="<paste-from-Step-0.1>"                # e.g., .vault-lock or .vault-lock.readonly
+EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

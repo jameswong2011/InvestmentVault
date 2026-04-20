@@ -113,8 +113,10 @@ Before rewriting the target section, snapshot the thesis:
    snapshot_of: "[[Theses/TICKER - Company Name]]"
    snapshot_date: YYYY-MM-DD
    snapshot_trigger: deepen
-   snapshot_batch: deepen-YYYY-MM-DD-HHMMSS
+   snapshot_batch: deepen-TICKER-YYYY-MM-DD-HHMMSS
    ```
+
+   > **Batch ID format (C4 fix)**: includes TICKER to prevent `/rollback` cascade misclassification when two concurrent `/deepen` runs on different tickers (e.g., `/deepen NVDA` and `/deepen AMAT` started in two terminals) hit the same HHMMSS. Without the TICKER qualifier, both snapshots would carry identical batch IDs and `/rollback` would offer to restore both as a single atomic cascade — which is wrong, since they were independent operations. Matches the format used by `/stress-test` (`stress-test-TICKER-...`), `/status TICKER` (`status-TICKER-...`), `/sync TICKER` (`sync-TICKER-...`), and `/thesis` (`thesis-TICKER-...`).
 
 ## Phase 5: Rewrite the Target Section
 
@@ -186,7 +188,7 @@ Follow `.claude/skills/_shared/hot-md-contract.md` — compression policy, per-s
 2. **Recent Conviction Changes**: Add entry if conviction was changed or flagged for reassessment
 3. **Open Questions**: Mark resolved any questions this research answered; add new questions raised
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After all `_hot.md` edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order": drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → emit warning. Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; `/deepen` primary operation still succeeds).
 
 ## Phase 8: Report
 Tell the user:
@@ -196,3 +198,18 @@ Tell the user:
 - Whether conviction should be reassessed based on what was found
 - Theses requiring `/sync`: [list any tickers where cross-references suggest propagation is needed]
 - **Run `/sync` to propagate these findings to affected sector notes, macro notes, and cross-thesis references.**
+
+## Phase 9: Release lock
+
+After Phase 8's report is complete, release the ticker lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether the rewrite succeeded, the retry-and-append corrective was needed, or the skill hard-aborted at Phase 0.3 (section missing).
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE=".vault-lock.TICKER"                   # TICKER from $ARGUMENTS, e.g., .vault-lock.NVDA
+EXPECTED_TOKEN="<paste-token-captured-from-Phase-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

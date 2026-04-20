@@ -255,4 +255,23 @@ If batch mode, end with:
 - Total items processed: X
 - **Content-quality blocks** (URL/PDF only): Y items rejected before write — see per-item details above. Re-run `/ingest` after resolving the access issue.
 - **Source-type advisories**: Z items had signature mismatch (#8) — content may be off-topic for the declared `source_type`. Review before `/sync`.
-- **Run `/sync` to propagate these insights to affected theses, sector notes, and macro notes.** `/sync` will also update `_graph.md` with the new research notes.
+- **Run `/sync` to propagate these insights to affected theses, sector notes, and macro notes.** Run `/graph last` afterward to register any new research notes in the dependency map — `/sync` does NOT write to `_graph.md` directly (owned exclusively by `/graph`).
+
+### Step 5: Release lock
+
+After Step 4's report is complete, release the vault lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Lock scope depends on mode acquired in Step 0.1:
+- Batch mode → `.vault-lock`
+- Single URL/file mode → `.vault-lock` (current implementation) or `.vault-lock.TICKER` if single-file resolution bound the ticker
+
+Runs unconditionally — whether all inbox items processed cleanly, some were rejected by content-quality gates, or the skill hit a non-fatal error.
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE="<paste-from-Step-0.1>"                # e.g., .vault-lock
+EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

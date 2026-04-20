@@ -381,7 +381,7 @@ Follow the contract at `.claude/skills/_shared/hot-md-contract.md` for all `_hot
 3. **Open Questions**: If closing a thesis, remove any open questions specific to that ticker. Per contract, dedupe by merging duplicates (same question across multiple theses).
 4. **Portfolio Snapshot**: Update conviction-level counts if conviction changed; update active/monitoring/closed counts if status changed. Per contract, regenerated fresh each time — never compressed-accumulated.
 
-**Cap enforcement**: after all edits, run the contract's Compression trigger order. If over soft cap (2,000), apply drops in the contract's specified order; if still over hard cap (2,500), abort the `_hot.md` update per contract §Compression trigger order step 5 — do NOT block the primary `/status` operation.
+**Cap enforcement**: after all edits, run the contract's Compression trigger order. If over soft cap (4,000), apply drops in the contract's specified order; if still over hard cap (5,000), abort the `_hot.md` update per contract §Compression trigger order step 5 — do NOT block the primary `/status` operation.
 
 ## Step 7.5: Archive Move (closure only)
 
@@ -548,3 +548,18 @@ The manifest is retained. Unlike `/prune`'s 30-day regret-recovery retention (T5
 - **Graph invalidation** (closure only): `[N] neighbor theses queued for re-extraction in .graph_invalidations: [first 5 relative paths, truncate with "...+M more" if longer]` OR `no neighbors — isolated thesis` OR `skipped — archive move failed at Step 7.5`
 - **Wikilink breakages** (closure only): `⚠️ [N] notes contain wikilinks to this thesis. Run /lint to review.`
 - **Trigger conflict** (if any): `⚠️ [quote conflicting trigger]`
+
+## Step 9: Release lock
+
+After Step 8's Report is complete, release the ticker lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether `/status` succeeded, was a no-op reaffirm, or hit a non-fatal error. If the skill aborts before reaching this step (trigger-conflict refusal, archive-move failure, Ctrl-C), the lock persists and appears stale on the next collision / `/lint #43` run.
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE=".vault-lock.TICKER"                   # TICKER from $ARGUMENTS, e.g., .vault-lock.NVDA
+EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

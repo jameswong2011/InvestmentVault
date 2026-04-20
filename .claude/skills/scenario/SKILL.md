@@ -154,7 +154,7 @@ Follow `.claude/skills/_shared/hot-md-contract.md`. Read `_hot.md` then edit (do
 2. **Recent Conviction Changes**: add an entry: `- Scenario REVERSED: [[Research/...scenario-name]] across [N] theses — [user rationale]`
 3. **Open Questions**: if the original scenario added questions ("research questions the scenario exposed"), surface them with a strikethrough resolution note: `- ~~[original question]~~ → Resolved YYYY-MM-DD: scenario reversed.`
 
-**Word cap**: standard 2,000-word check; prune Sync Archive (oldest first) if over.
+**Word cap**: follow `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order" (soft 4,000 / hard 5,000).
 
 ### R6: Report
 
@@ -342,7 +342,7 @@ Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Arc
 2. **Recent Conviction Changes**: Add entry for each ticker where conviction was strengthened or weakened by the scenario
 3. **Open Questions**: Add any research questions the scenario exposed (e.g., unquantified exposures, missing hedges)
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After all `_hot.md` edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order": drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → emit warning. Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; `/scenario` primary operation still succeeds).
 
 ## Phase 7: Report
 
@@ -356,3 +356,18 @@ Report to user, in this order:
    - `propagated_to: frontmatter` — `set` (all succeeded) | `omitted (one or more appends failed — next /sync will retry)`
    - **Failed appends** (only if any): `[TICKER1 (reason), TICKER2 (reason)]`
 5. **Follow-up**: `→ Run /sync to propagate to minor-impact theses and retry any failed Major appends. Then /graph last.`
+
+## Phase 8: Release lock
+
+After Phase 7's report (forward mode) or R6 report (reverse mode), release the vault lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether the scenario propagation succeeded, reverse mode completed, or the skill hit a non-fatal error.
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5)
+LOCK_FILE=".vault-lock"
+EXPECTED_TOKEN="<paste-token-captured-from-Phase-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ==="
+else
+  echo "⚠️ Lock ownership check failed at release — skipping rm to avoid stealing another skill's lock."
+fi
+```

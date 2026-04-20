@@ -546,7 +546,7 @@ If `_hot.md` does not exist (first run), create it with sections: `## Active Res
 
    **Report**: list auto-resolved tickers in Step 8 under a new field `/catalyst Open Questions auto-resolved: [TICKER1, TICKER2, ...]` or omit if none.
 6. **Recent Conviction Changes**: If conviction triggers hit (Step 3e ⚡) or drift was flagged (Step 3e ⚠️/📈), add an entry noting the flag.
-7. **Hard cap**: After writing, check total word count. If `_hot.md` exceeds 2,000 words, prune Sync Archive entries (oldest first) until under the cap.
+7. **Cap enforcement**: After writing, check total word count and follow `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order": drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → emit warning. Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; primary `/sync` operation still succeeds).
 
 ## Step 7: Touch Watermark and (for /sync all) Write Graph-Rebuild Marker
 
@@ -818,3 +818,22 @@ If the run completes with all accumulators empty (pure no-op), skip Step 7.5 ent
 - **Watermark**: `touched (default/all)` | `untouched (ticker-scoped mode preserves baseline for next default /sync)` | `epoch placeholder created (was absent — first-run state preserved)`
 
 **Final reminder**: `→ Run /graph last to update the dependency map. Recommended after every /sync.`
+
+## Step 9: Release lock
+
+After Step 8's Report is complete, release the vault lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether `/sync` succeeded, raised advisories, or hit a non-fatal error (e.g., sector resolution `none` for a thesis). If the skill aborts before reaching this step (hard abort on missing Log section, mid-chain crash, user Ctrl-C), the lock persists and appears stale on the next collision / `/lint #43` run; manual `rm .vault-lock*` is the recovery path.
+
+```bash
+# Lock release — verify ownership before rm (preflight §1.5) to avoid stealing
+# another skill's lock if this skill somehow lost ownership mid-run.
+# LOCK_FILE path depends on mode:
+#   default or /sync all → .vault-lock
+#   /sync TICKER         → .vault-lock.TICKER
+LOCK_FILE="<paste-from-Step-0.1>"                # e.g., .vault-lock or .vault-lock.NVDA
+EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
+if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
+else
+  echo "⚠️ Lock ownership check failed at release ($LOCK_FILE) — skipping rm to avoid stealing another skill's lock."
+fi
+```

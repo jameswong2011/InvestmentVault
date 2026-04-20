@@ -270,6 +270,8 @@ Inside Claudian, run:
 
 Rebuilds `_graph.md` from scratch so any stale runtime markers that rode along with Obsidian Sync get cleared.
 
+**Run in a fresh Claudian session.** `/graph` full rebuild reads every thesis file; session compaction mid-run forces it to restart, turning a ~10-min rebuild into 15+ min. Open a new Claudian tab before invoking.
+
 ---
 
 ## Step 7 — Install GitHub Desktop
@@ -293,7 +295,71 @@ ls .claude/skills/ | wc -l   # must be > 0
 git status                   # must not say "not a git repository"
 ```
 
+### Expected findings — do not treat as migration failures
+
+| Finding | What it actually is |
+|---|---|
+| Edge count drift 15–25% between `/lint` and `/graph` | `/lint` counts only forward adjacency; `/graph` counts forward + both reverse indexes (sector-reverse, macro-reverse). Total drift ≈ reverse edges ÷ forward edges. Not a bug. |
+| Reverse-index inconsistencies | Source-file wikilink asymmetry (thesis forward-links a Macro note, that Macro note doesn't wikilink back). Real data debt, not a graph rebuild bug. Leave unless auditing manually. |
+
+### Real debt commonly surfaced on the first post-migration run
+
+- **Triple-bracket wikilinks** (`[[[Research/X]]]`) from hand-edits — Obsidian renders them as literal `[` + valid link + `]`, but `/lint` flags as malformed. Fix to `[[Research/X]]`.
+- **Stale-rename wikilinks** — references to old filenames after a `/rename` or manual rename. Examples seen: `[[Theses/PSTG - Pure Storage (Everpure)]]` after renaming to `PSTG - Pure Storage`; `[[Macro/AI Bubble Risk]]` after renaming to `AI Bubble Risk and Semiconductor Valuations`. Fix by Edit in the source file(s).
+- **Missing ticker frontmatter** — common on newer theses. Add `ticker: TICKER` after `sector:`. Sub-sector theses covering multiple companies use an array: `ticker: [KLAC, AMAT, LRCX, ASMI, BESI]`.
+
+### After applying fixes
+
+```
+/graph last
+```
+
+`/graph last` is the incremental form — re-extracts adjacency only for theses modified since the last graph write, rebuilds reverse indexes from scratch to prevent drift. Typically 30–60s vs 10min for a full rebuild.
+
+Then commit the cleanup:
+
+```bash
+git add <specific files> _graph.md
+git commit -m "Post-migration vault cleanup"
+```
+
 If `/lint` runs clean and both sanity checks pass, the migration is complete. Expect a handful of permission prompts on the first few skill runs — click "always allow" and they stop coming.
+
+---
+
+## Step 8 — Clean up legacy vault folders
+
+Migration attempts can leave stray `InvestmentVault/` directories in `~/Documents/`. Two patterns seen:
+
+- **Scratch copy** (~100M+): a full clone from an abandoned migration attempt. Has notes, `.git/`, `.obsidian/`, `.claude/`.
+- **Obsidian stub** (~28K): an empty folder with only default `.obsidian/*.json` files. Created when Obsidian was briefly pointed at that path during setup before the real vault was moved into place.
+
+Check for them:
+
+```bash
+ls -la ~/Documents/ | grep -iE "investmentvault"
+```
+
+Before deleting, verify nothing unique lives in the scratch copy:
+
+```bash
+diff -rq --exclude='.git' --exclude='.claude' --exclude='.obsidian' \
+  ~/Documents/InvestmentVault-scratch/ ~/InvestmentVault/ | head -20
+```
+
+Safe to remove if:
+- Only files you edited today differ (and your active vault has the newer version)
+- Git remote on the scratch matches your active vault's remote (`cd ~/Documents/InvestmentVault-scratch && git remote -v`) — history lives on GitHub either way
+
+Move to Trash (recoverable via drag-out in Finder):
+
+```bash
+TS=$(date +%Y%m%d-%H%M%S)
+mv ~/Documents/InvestmentVault-scratch ~/.Trash/InvestmentVault-scratch-$TS
+mv ~/Documents/InvestmentVault ~/.Trash/InvestmentVault-stub-$TS
+```
+
+**Do not use `osascript` Finder-delete on folders >100M.** AppleEvent times out at ~60s (error −1712), leaving the folder in place. `mv ~/.Trash/` is faster and deterministic. Trade-off: no "Put Back" metadata, but the content is intact and macOS auto-empties Trash after 30 days.
 
 ---
 
@@ -304,3 +370,193 @@ If `/lint` runs clean and both sanity checks pass, the migration is complete. Ex
 | Obsidian Sync | Notes, attachments, `.obsidian/` sub-paths covered by its sub-toggles (plugins, themes, snippets, config). Hard-excludes `.git/` and all other top-level hidden folders including `.claude/`. |
 | Git | Skills (`.claude/skills/`, `.claude/commands/`, `.claude/agents/`), CLAUDE.md, all tracked notes. This is the canonical source for anything hidden. |
 | Neither | `~/.claude.json`, `~/.gitconfig`, installed CLIs (Step 1) |
+
+---
+
+# Fresh-user setup — clone from a public GitHub URL
+
+The sections above assume Mac-to-Mac migration by the original owner with Obsidian Sync carrying plugins, attachments, and `.obsidian/` config. This section is a standalone path for someone adopting the vault as-is from a public GitHub clone, with no Obsidian Sync, no inherited Anthropic account, and no inherited git identity. Every command below is self-contained — you do not need to read the Mac-migration flow first unless you want the deeper "why" behind each install.
+
+## What transfers via git alone
+
+Everything required to run the skills and the Obsidian workflow is tracked in the repo. Verified by `git ls-files .obsidian/`:
+
+| Tracked in git (you get these automatically) | Not in git (you provide these) |
+|---|---|
+| All vault content: `Theses/`, `Research/`, `Sectors/`, `Macro/`, `Templates/`, `Canvas/`, `_Archive/`, `_inbox/` | Your own Anthropic account (`/login` in Claude Code writes to `~/.claude.json`) |
+| All skills: `.claude/skills/`, `.claude/commands/`, `.claude/agents/` | Your own git identity (`user.name`, `user.email`) |
+| `CLAUDE.md` project instructions | Your own `~/.claude/settings.json` user prefs |
+| All 4 community plugins with binaries in `.obsidian/plugins/`: `claudian`, `dataview`, `obsidian-git`, `templater-obsidian` | Homebrew, Node.js, Claude Code CLI, `defuddle-cli` (installed system-wide) |
+| Obsidian config: `community-plugins.json`, `core-plugins.json`, `graph.json`, `appearance.json`, `daily-notes.json` | Obsidian workspace layout (`.obsidian/workspace.json` is git-ignored — Obsidian auto-creates a default on first open) |
+
+Because binaries for the third-party Claudian plugin are committed, you do not need the BRAT / GitHub-release install steps from the Mac-migration flow. Open the cloned folder in Obsidian and enable the plugin — done.
+
+## Fork or clone?
+
+| Intent | Path |
+|---|---|
+| Customize privately, own remote, own commits | **Fork** on GitHub first, clone your fork |
+| Try read-only, keep local edits but never push upstream | **Clone** the public URL directly (local commits stay local; `git push` will fail against the original repo unless you have write access) |
+| Keep skills + workflow, start with a blank content slate | Clone, then run Step F6 content reset |
+
+## Step F0 — System prerequisites
+
+Fresh Macs ship without git. Install Apple's Command Line Tools:
+
+```bash
+xcode-select --install
+```
+
+If the dialog errors with "not currently available from the update server," scroll up to **Step 1 — If Homebrew install fails** in the Mac-migration flow; the three fixes there (retry, manual `.dmg` from developer.apple.com, full Xcode from App Store) apply identically.
+
+Install the stack:
+
+```bash
+# Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Apple Silicon path setup (use /usr/local/bin on Intel)
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Node + git-lfs
+brew install node git-lfs
+
+# Claude Code CLI + defuddle
+npm install -g @anthropic-ai/claude-code defuddle-cli
+```
+
+Verify all five:
+```bash
+brew --version && node --version && claude --version && defuddle --version && git --version
+```
+
+## Step F1 — Set up YOUR git identity
+
+Do not copy the original owner's identity. Use your own:
+
+```bash
+git config --global user.name "<your-name>"
+git config --global user.email "<your-email>"
+git lfs install
+```
+
+## Step F2 — Clone the vault
+
+```bash
+git clone <public-url> ~/InvestmentVault
+cd ~/InvestmentVault
+```
+
+Replace `<public-url>` with the HTTPS or SSH URL of the public repo (or your fork). Path is your choice — the Mac-migration flow matches paths for Obsidian Sync compatibility, but you aren't running Obsidian Sync, so any writable location works.
+
+Verify the clone has the skills, plugins, and content:
+
+```bash
+ls .claude/skills/ | head            # should list graph, ingest, sync, lint, /status, etc.
+ls .obsidian/plugins/                # claudian, dataview, obsidian-git, templater-obsidian
+ls Theses/ | wc -l                   # > 0 (original owner's theses)
+```
+
+If any are empty, the clone didn't complete — investigate before continuing.
+
+## Step F3 — Configure YOUR Claude Code
+
+```bash
+mkdir -p ~/.claude
+cat > ~/.claude/settings.json <<'EOF'
+{
+  "model": "claude-opus-4-7",
+  "autoCompactWindow": 1000000,
+  "effortLevel": "max"
+}
+EOF
+claude
+```
+
+Inside Claude Code, authenticate with your own Anthropic account:
+
+```
+/login
+```
+
+Follow the browser prompt. Credentials are written to `~/.claude.json` (outside the repo), so your auth never collides with the original owner's.
+
+## Step F4 — Open Obsidian
+
+File → Open folder as vault → select `~/InvestmentVault`.
+
+Obsidian auto-creates a default `workspace.json` (the original's is git-ignored). Expected.
+
+Enable community plugins — all 4 are already on disk from the clone:
+
+1. Settings → Community plugins → turn off **Restricted Mode**
+2. For each of `claudian`, `dataview`, `obsidian-git`, `templater-obsidian`: click "Enable" in the installed-plugins list
+3. Open Claudian (ribbon icon, or `Cmd+P` → "Claudian"). It should connect to Claude Code using your `/login` from Step F3.
+
+## Step F5 — (Optional) Re-point the git remote
+
+If you forked the repo, swap origin to your fork:
+
+```bash
+git remote set-url origin git@github.com:<your-github-user>/<your-fork>.git
+git remote -v   # verify
+```
+
+If you cloned read-only and don't plan to push, skip this step. `git push` against someone else's repo will fail with a permission error — that's the intended safety behavior.
+
+## Step F6 — (Optional) Start with a blank content slate
+
+The clone includes the original owner's active research — 40+ theses, 130+ research notes, live sector notes. If you want the skill framework without inheriting someone else's investment views:
+
+```bash
+# inside vault root
+rm -rf Theses Research Sectors Macro Canvas _Archive _inbox
+mkdir -p Theses Research Sectors Macro Canvas _Archive _inbox
+# Empty the hot cache (retains structure; /sync rebuilds content)
+: > _hot.md
+git add -A
+git commit -m "Reset content — retain skills, templates, Obsidian config"
+```
+
+Retain: `Templates/`, `.claude/`, `CLAUDE.md`, `.obsidian/`, `_migration-guide.md`.
+
+Then rebuild the graph against the empty state:
+
+```
+/graph
+```
+
+## Step F7 — Smoke test
+
+Inside Claudian:
+
+```
+/lint
+```
+
+Expectations match the Mac-migration **Smoke test** section above: some findings are false-positive by design (edge-count drift between `/lint` and `/graph`, reverse-index asymmetry), others are real debt the original owner left in. Fresh-clone scenario is cleaner than Mac-migration because there's no Obsidian-Sync-vs-git race — any debt present is structural, not a migration artifact.
+
+Rebuild the graph for your local state:
+
+```
+/graph
+```
+
+The committed `_graph.md` reflects the original owner's last write. Running `/graph` realigns it with any edits made since clone (including Step F6 if you ran it).
+
+Command-line sanity checks:
+
+```bash
+ls .claude/skills/ | wc -l   # must be > 0
+git status                   # must not say "not a git repository"
+```
+
+First few skill runs will prompt for permission approvals — click "always allow." The prompts stop after 5–10 skill invocations.
+
+## What this setup does NOT include
+
+- **Personal attachments** in custom media folders, if the original owner used any (check `git ls-files` for image/PDF extensions to confirm)
+- **Claude Code permission whitelist** — `.claude/settings.json` and `.claude/settings.local.json` are git-ignored, so you'll re-approve skill permissions on first use
+- **Runtime watermarks** — `.last_sync`, `.sync_all_fresh`, `.graph_invalidations` are git-ignored by design; first `/sync` run does a full scan to establish baseline
+- **The original owner's GitHub Desktop / Obsidian-Git credentials** — configure your own via each tool's settings if you want push access
