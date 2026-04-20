@@ -4,6 +4,7 @@ tags: [thesis, crypto, bitcoin, ethereum, stablecoins, quantum-risk, macro, digi
 status: active
 conviction: medium
 sector: Crypto & Digital Assets
+ticker: BTC-CRYPTO
 asset_class: commodity/currency
 ---
 

@@ -113,6 +113,8 @@ claude --version
 defuddle --version
 ```
 
+`defuddle-cli` is the web-content extractor the vault skills shell out to via `Bash(defuddle *)` clauses (used by `/ingest`, `/deepen`, `/catalyst`, `/surface`, `/compare`, `/thesis`). It's an npm CLI, not a Claude Code plugin — no marketplace step needed.
+
 ### 1e — Verify everything at once
 
 ```bash
@@ -223,39 +225,7 @@ Follow the browser prompt.
 
 ---
 
-## Step 5 — Install the 5 skills from the marketplace
-
-Still inside Claude Code, run these one at a time:
-
-```
-/plugin marketplace add anthropics/claude-plugins-official
-```
-
-```
-/plugin install defuddle@claude-plugins-official
-```
-
-```
-/plugin install json-canvas@claude-plugins-official
-```
-
-```
-/plugin install obsidian-bases@claude-plugins-official
-```
-
-```
-/plugin install obsidian-cli@claude-plugins-official
-```
-
-```
-/plugin install obsidian-markdown@claude-plugins-official
-```
-
-Or run `/plugin` without arguments and tick them from the UI.
-
----
-
-## Step 6 — Enable Obsidian plugins
+## Step 5 — Enable Obsidian plugins
 
 Open Obsidian → point it at your vault folder → then:
 
@@ -290,7 +260,7 @@ Requirements either way: Claude Code CLI must be installed (done in Step 1d), an
 
 ---
 
-## Step 7 — Reconcile vault graph
+## Step 6 — Reconcile vault graph
 
 Inside Claudian, run:
 
@@ -302,9 +272,9 @@ Rebuilds `_graph.md` from scratch so any stale runtime markers that rode along w
 
 ---
 
-## Step 8 — Install GitHub Desktop
+## Step 7 — Install GitHub Desktop
 
-Download from [desktop.github.com](https://desktop.github.com), install, sign in with your GitHub account, add the vault as an existing repository.
+Download from [desktop.github.com](https://desktop.github.com), install, sign in with your GitHub account. Then **File → Add local repository** → select your vault path (the vault is already a git clone from Step 0, so this just registers it with GitHub Desktop — do not "Clone repository" again).
 
 ---
 
@@ -333,4 +303,4 @@ If `/lint` runs clean and both sanity checks pass, the migration is complete. Ex
 |---|---|
 | Obsidian Sync | Notes, attachments, `.obsidian/` sub-paths covered by its sub-toggles (plugins, themes, snippets, config). Hard-excludes `.git/` and all other top-level hidden folders including `.claude/`. |
 | Git | Skills (`.claude/skills/`, `.claude/commands/`, `.claude/agents/`), CLAUDE.md, all tracked notes. This is the canonical source for anything hidden. |
-| Neither | `~/.claude.json`, `~/.gitconfig`, installed CLIs, marketplace plugins (Step 5) |
+| Neither | `~/.claude.json`, `~/.gitconfig`, installed CLIs (Step 1) |
