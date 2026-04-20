@@ -133,7 +133,7 @@ Skills tolerate section reordering because Edit operations match by heading stri
 
 ### §5.4 Word-cap check — why Important
 
-The hot-md-contract (§1.1 of INFRASTRUCTURE.md) sets caps (soft 2,000 / hard 2,500). Exceeding the hard cap should trigger auto-prune on next write. Persistent over-cap means the prune logic drifted; investigating is warranted.
+The hot-md-contract (§1.1 of INFRASTRUCTURE.md) sets caps (soft 4,000 / hard 5,000). Exceeding the hard cap should trigger auto-prune on next write. Persistent over-cap means the prune logic drifted; investigating is warranted.
 
 ---
 

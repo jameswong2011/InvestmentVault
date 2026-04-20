@@ -381,7 +381,7 @@ Per `.claude/skills/_shared/hot-md-contract.md` (do NOT touch Latest Sync / Sync
 3. **Open Questions**: remove questions related to closed theses. Add new questions raised by upgrades.
 4. **Portfolio Snapshot**: update conviction-level counts + sector coverage if materially changed.
 
-Word cap: after edits, check total. Over 2,000 → prune `## Sync Archive` (oldest first) then `*Previous:*` lines.
+Word cap: after edits, check total. Over 4,000 (soft cap per `_shared/hot-md-contract.md`) → prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 5,000 hard cap.
 
 ### Stage 5: Manifest Retention (§3 — 30-day regret window)
 

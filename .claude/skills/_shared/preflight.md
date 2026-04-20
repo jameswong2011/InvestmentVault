@@ -59,8 +59,8 @@ Held by /sync (token a7f3b2e8-1729432842) since 2026-04-19T15:30:42Z. Scope: vau
 
 | Skill | Lock scope | Typical timeout |
 |---|---|---|
-| `/sync all`, `/graph` (any mode), `/prune` (full or sector), `/lint` (full), `/clean`, `/catalyst`, `/ingest` (batch), `/scenario` (forward or reverse), `/surface` (any mode), `/rollback` (cascade) | `vault-wide` | 10m (`/sync all`, `/graph`), 15m (`/prune`), 5m (others) |
-| `/sync TICKER`, `/deepen`, `/stress-test`, `/status TICKER`, `/brief`, `/rename`, `/thesis`, `/ingest [URL or file]` (single), `/surface TICKER` | `ticker:TICKER` | 3–10m per skill (see individual SKILL.md) |
+| `/sync all`, `/graph` (any mode), `/prune` (full or sector), `/lint` (full), `/clean`, `/catalyst`, `/ingest` (any mode — URL, single file, or batch all lock vault-wide per ingest SKILL.md 0.1), `/scenario` (forward or reverse), `/surface` (unscoped or sector-scoped), `/rollback` (cascade) | `vault-wide` | 10m (`/sync all`, `/graph`), 15m (`/prune`), 5m (others) |
+| `/sync TICKER`, `/deepen`, `/stress-test`, `/status TICKER`, `/brief`, `/rename`, `/thesis`, `/surface TICKER` | `ticker:TICKER` | 3–10m per skill (see individual SKILL.md) |
 | `/compare A vs B [vs C]` | N × `ticker:TICKER` (one lock per ticker in the compare set) | 10m |
 | `/rollback` (list mode), `/lint TICKER` | `read-only` | 2m |
 

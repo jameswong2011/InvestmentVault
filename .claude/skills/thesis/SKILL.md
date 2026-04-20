@@ -312,7 +312,7 @@ Per `.claude/skills/_shared/hot-md-contract.md` (do NOT touch Latest Sync / Sync
 2. **Recent Conviction Changes**: add entry for new thesis with initial conviction level.
 3. **Open Questions**: add 2-3 most critical Outstanding Questions from new thesis.
 
-Word cap: after edits, over 2,000 → prune `## Sync Archive` (oldest first) then `*Previous:*` lines.
+Word cap: after edits, over 4,000 (soft cap per `_shared/hot-md-contract.md`) → prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 5,000 hard cap.
 
 ## Step 7.5: Finalize thesis transaction manifest (H1)
 

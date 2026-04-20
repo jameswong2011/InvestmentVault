@@ -640,7 +640,7 @@ If `_hot.md` does not exist, create with sections: `## Active Research Thread`, 
      
      Report resolved tickers in Step 8 under `/catalyst Open Questions auto-resolved`.
 6. **Recent Conviction Changes** — if triggers hit (Step 3e ⚡) or drift flagged (Step 3e ⚠️/📈), add an entry.
-7. **Hard cap** — after writing, if total word count exceeds 2,000, prune Sync Archive entries (oldest first) until under cap.
+7. **Hard cap** — after writing, if total word count exceeds 4,000 (soft cap per `_shared/hot-md-contract.md`), apply compression trigger order: drop oldest Sync Archive entry, then oldest `*Previous:*` line, then merge duplicate Open Questions. If still over 5,000 (hard cap), abort `_hot.md` update per contract.
 
 ---
 

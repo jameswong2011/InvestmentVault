@@ -1,6 +1,6 @@
 # User Guide — Claude Code + Obsidian for Investment Research
 
-> Your vault has **39 theses**, **129 research notes**, **13 sector notes**, and **6 macro notes**. This guide covers every skill, ery argument form, every multi-skill workflow chain, and every natural language query pattern available. Ordered by impact — start at the top.
+> Your vault has **40 theses**, **133 research notes**, **13 sector notes**, and **6 macro notes**. This guide covers every skill, every argument form, every multi-skill workflow chain, and every natural language query pattern available. Ordered by impact — start at the top.
 
 ---
 
@@ -888,7 +888,7 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 ### `/compare`
 ```
 /compare BESI vs AMAT                      # two companies
-/compare PANW NET CRWD                     # three or more (all need thesis notes)
+/compare PANW NET CRWD                     # three or more (at least one needs a thesis note; missing tickers use web research)
 ```
 
 ### `/thesis`

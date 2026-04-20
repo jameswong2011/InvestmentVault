@@ -325,7 +325,7 @@ Most `_hot.md` references use `[[Theses/...]]` — handled by Step 5. This step 
 
 Use `Edit` with `replace_all: true` for literal `TICKER - [old_name]` (not in wikilink syntax). Word-boundary care — don't match substring inside longer words.
 
-**Word cap**: after edits, check `_hot.md` total. Over 2,000 (unlikely from rename) → prune `## Sync Archive` oldest first.
+**Word cap**: after edits, check `_hot.md` total. Over 4,000 (soft cap per `_shared/hot-md-contract.md`; unlikely from rename) → prune `## Sync Archive` oldest first. Abort if over 5,000 hard cap.
 
 ## Step 10: Append Log Entry to Renamed Thesis
 

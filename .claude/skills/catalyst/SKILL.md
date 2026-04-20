@@ -154,7 +154,7 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — those are
 
 4. **Portfolio Snapshot**: not touched by `/catalyst`.
 
-**Word cap**: After edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After edits, check total word count. If over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap. If over 5,000 (hard cap), abort `_hot.md` update per contract.
 
 ## Phase 6: Report
 

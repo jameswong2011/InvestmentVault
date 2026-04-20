@@ -186,7 +186,7 @@ Follow `.claude/skills/_shared/hot-md-contract.md` — compression policy, per-s
 2. **Recent Conviction Changes**: Add entry if conviction was changed or flagged for reassessment
 3. **Open Questions**: Mark resolved any questions this research answered; add new questions raised
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 2,000 words, prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap.
+**Word cap**: After all `_hot.md` edits, check total word count. If over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap. If over 5,000 (hard cap), abort `_hot.md` update per contract.
 
 ## Phase 8: Report
 Tell the user:

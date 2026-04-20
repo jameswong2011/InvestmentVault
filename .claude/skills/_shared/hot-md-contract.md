@@ -7,40 +7,40 @@ last_reviewed: 2026-04-19
 <!--
 This file is a load-bearing contract. `_hot.md` schema drift causes silent no-ops across 11 skills. `/lint #35` enforces structural compliance (section headings); this contract additionally specifies compression behavior, per-section budgets, and cap handling.
 
-Consumers: `/sync`, `/status`, `/thesis`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/prune`, `/rollback`, `/catalyst`.
+Consumers: `/sync`, `/status`, `/thesis`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/prune`, `/rollback`, `/catalyst`, `/brief` (Active Research Thread + Open Questions only), `/rename` (free-text mentions of the old name).
 -->
 
 # `_hot.md` Compression & Budget Contract
 
-> **Why this exists**: the prior 2,000-word hard cap with unspecified compression behavior produced drift. Different skills compressed different sections with different heuristics; compaction lost high-signal context (conviction rationales, drift flags) while preserving low-signal context (old sync archive entries). This contract specifies per-section compression policy and a soft/hard cap pair so compaction pressure is visible and actionable.
+> **Why this exists**: the prior single-value hard cap with unspecified compression behavior produced drift. Different skills compressed different sections with different heuristics; compaction lost high-signal context (conviction rationales, drift flags) while preserving low-signal context (old sync archive entries). This contract specifies per-section compression policy and a soft/hard cap pair so compaction pressure is visible and actionable.
 
 ## Section budget table
 
-Total soft cap: **2,000 words**. Total hard cap: **2,500 words**.
+Total soft cap: **4,000 words**. Total hard cap: **5,000 words**.
 
 | Section | Budget share | Compression policy |
 |---|---|---|
-| `## Active Research Thread` | 30% (600 words soft) | Verbatim entries from the last 48 hours. Older entries compressed to one-line summaries: `*Previous YYYY-MM-DD:* [topic] — [outcome]`. Max 5 `*Previous:*` lines; drop oldest when exceeded. |
-| `## Latest Sync` | 15% (300 words soft) | Verbatim. Replaced entirely on each `/sync`. Never compressed within; if over budget alone, shorten the per-thesis bullets (see 2.2). |
-| `## Sync Archive` | 20% (400 words soft) | Max 3 archived entries. **Never truncate an individual entry**; when over budget, DROP the oldest entry entirely (preserves audit integrity of what remains). |
-| `## Recent Conviction Changes` | 15% (300 words soft) | **NEVER compress.** Every conviction/status/reaffirm entry is a high-signal audit record. If this section alone exceeds its budget, raise the global soft cap warning in the skill's report rather than dropping entries. |
-| `## Open Questions` | 15% (300 words soft) | Merge duplicates: same question from multiple theses collapses to one entry with `[theses: A, B, C]` token. Drop oldest only after merging has saturated. `/catalyst`-pattern entries auto-resolve via `/sync` Step 6 #5b. |
-| `## Portfolio Snapshot` | 5% (100 words soft) | Regenerated fresh on each `/sync`. Never compressed-accumulated. If the computed content exceeds 100 words, truncate the generated summary to top-level counts only. |
+| `## Active Research Thread` | 30% (1,200 words soft) | Verbatim entries from the last 48 hours. Older entries compressed to one-line summaries: `*Previous YYYY-MM-DD:* [topic] — [outcome]`. Max 5 `*Previous:*` lines; drop oldest when exceeded. |
+| `## Latest Sync` | 15% (600 words soft) | Verbatim. Replaced entirely on each `/sync`. Never compressed within; if over budget alone, shorten the per-thesis bullets (see 2.2). |
+| `## Sync Archive` | 20% (800 words soft) | Max 3 archived entries. **Never truncate an individual entry**; when over budget, DROP the oldest entry entirely (preserves audit integrity of what remains). |
+| `## Recent Conviction Changes` | 15% (600 words soft) | **NEVER compress.** Every conviction/status/reaffirm entry is a high-signal audit record. If this section alone exceeds its budget, raise the global soft cap warning in the skill's report rather than dropping entries. |
+| `## Open Questions` | 15% (600 words soft) | Merge duplicates: same question from multiple theses collapses to one entry with `[theses: A, B, C]` token. Drop oldest only after merging has saturated. `/catalyst`-pattern entries auto-resolve via `/sync` Step 6 #5b. |
+| `## Portfolio Snapshot` | 5% (200 words soft) | Regenerated fresh on each `/sync`. Never compressed-accumulated. If the computed content exceeds 200 words, truncate the generated summary to top-level counts only. |
 
 Budget shares sum to 100% — treat as guidance when compression fires, not hard per-section quotas. A section below its soft share donates spare budget to any section over its share.
 
 ## Compression trigger order
 
-When total word count exceeds the soft cap (2,000):
+When total word count exceeds the soft cap (4,000):
 
 1. **Drop oldest `## Sync Archive` entry** (whole entry, not truncated). Recheck total.
 2. **Drop oldest `*Previous:*` line from `## Active Research Thread`**. Recheck total.
 3. **Merge duplicate `## Open Questions`** (same question body, different tickers → combine). Recheck total.
-4. **Raise a warning in the skill's Step 8/Phase N report** listing which sections are over share and by how much — do NOT truncate any remaining section. Example: `⚠️ _hot.md approaching soft cap ([N] words / 2,000). Recent Conviction Changes at [M]% of share. Consider review.`
+4. **Raise a warning in the skill's Step 8/Phase N report** listing which sections are over share and by how much — do NOT truncate any remaining section. Example: `⚠️ _hot.md approaching soft cap ([N] words / 4,000). Recent Conviction Changes at [M]% of share. Consider review.`
 
-If after these steps the total still exceeds 2,500 (hard cap):
+If after these steps the total still exceeds 5,000 (hard cap):
 
-5. **Abort the skill's `_hot.md` update** with: `❌ _hot.md exceeds hard cap (2,500 words) after compression. Manual cleanup required. Either remove outdated Sync Archive entries or run /lint #35 to diagnose.`
+5. **Abort the skill's `_hot.md` update** with: `❌ _hot.md exceeds hard cap (5,000 words) after compression. Manual cleanup required. Either remove outdated Sync Archive entries or run /lint #35 to diagnose.`
 
 The abort applies only to the `_hot.md` write — the skill's primary operation (thesis edit, sector note update, research note creation) still proceeds. Session-context degradation is tolerable; primary operation correctness is not.
 

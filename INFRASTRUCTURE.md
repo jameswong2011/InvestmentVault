@@ -19,7 +19,7 @@ Full compression contract at `.claude/skills/_shared/hot-md-contract.md`. Key ru
 - **Forbidden truncation markers**: `...` trailing bullets, `[compressed]`, `[truncated]`, unclosed `**`/`*`/backtick — compression drops whole entries, never truncates
 - **Same-ticker continuation**: same-ticker Active Research Thread stays live; different-ticker compresses outgoing to `*Previous YYYY-MM-DD:*` line
 
-Writers (11 skills): `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`, `/catalyst`. Lint enforcement: `#35` (schema), `#42` (truncation markers).
+Writers (13 skills): `/sync`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/thesis`, `/deepen`, `/prune`, `/status`, `/rollback`, `/catalyst`, `/brief` (Active Research Thread + Open Questions only), `/rename` (free-text mentions of the old name). Lint enforcement: `#35` (schema), `#42` (truncation markers).
 
 ### 1.2 `_graph.md` — Vault dependency map
 
@@ -266,16 +266,17 @@ Per-ticker scheme (C4 fix) handles hyphen-containing tickers (`BRK-B`, `BF-A`, `
 
 Each multi-file skill writes a manifest (§3.2); `/rollback` reads the manifest to offer atomic restore.
 
-| Cascade | Trigger | Options offered |
+| Cascade step | Trigger matched | Options offered |
 |---|---|---|
-| 2.5a | `/sync` primary snapshot | Auto-strikethrough Tier B Log entries on neighbor theses |
-| 2.5b | `/sync` via `_sync-manifest` | Tier B Log entry review: surface / auto-strikethrough / manual |
-| 2.5c | `/prune` batch | Restore thesis from snapshot + unarchive; surface Tier B Stage 4.2 neighbor Logs |
-| 2.5d | `/stress-test` batch | Restore snapshot; cascade + strikethrough Log entry on tested thesis |
-| 2.5e | `/status` batch | Thesis-only restore OR full transaction restore (thesis + sector + un-archive + clear invalidations) |
-| 2.5f | `/thesis` batch | Delete thesis only OR full cascade (delete + revert sector + revert `_hot.md` + orphan mtime revert) OR cancel. **Deletion-based, not snapshot-based** |
-| Catalyst | `/catalyst` batch | Restore prior `_catalyst.md` from pre-regenerate snapshot |
-| Rename | `/rename` pre-rename snapshot | Restore thesis file + inbound wikilinks to pre-rename state |
+| 2.5a | Generic `snapshot_batch:` prefix lookup across `_Archive/Snapshots/` — base path for every trigger | Cascade all matched files / Single / Cancel |
+| 2.5b | `/sync` — `_sync-manifest` sidecar present | Tier B Log entry review: surface-only / cascade + strikethrough / single / cancel |
+| 2.5c | Non-manifest triggers (`/deepen`, `/catalyst`, `/rename`, `/rollback` pre-safety-net snapshots) | 2.5a generic cascade — Tier A only, no Tier B Log auto-handling |
+| 2.5d | `/stress-test` — `_stress-test-manifest` sidecar present | Surface only / cascade + strikethrough Log entry on tested thesis / cancel |
+| 2.5e | `/status` — `_status-manifest` sidecar present | Thesis-only restore / full transaction restore (thesis + sector + un-archive + clear invalidations) / cancel |
+| 2.5f | `/thesis` — `_thesis-manifest` sidecar present | Delete thesis only / full cascade (delete + revert sector + revert `_hot.md` + revert orphan mtimes) / cancel. **Deletion-based, not snapshot-based** |
+| `/prune` | `/prune` — `_prune-manifest` + per-file `snapshot_trigger: prune` snapshots | 2.5a generic batch cascade; 30-day regret window enforced by `/clean` floor; Step 6.2.5 intervening-entries scan fires when restoring a reopened closed thesis |
+| `/catalyst` | `/catalyst` — `snapshot_trigger: catalyst` on selected snapshot | Restore prior `_catalyst.md` from pre-regenerate snapshot via 2.5a generic path |
+| `/rename` | `/rename` — `snapshot_trigger: rename` with `rename_target:` field on selected snapshot | Step 4a rename-undo branch: symmetric reverse-rename via `/rename` inverse (recommended) / content-only restore (creates duplicate) / cancel |
 
 ### 7.1 Intervening-entries scan (closed theses only, Step 6.2.5)
 
@@ -347,7 +348,7 @@ Key checks — severity column indicates escalation in the lint report.
 | #18, #20, #23 | Full | Graph health (existence, staleness, missing/ghost entries) | Important |
 | #29 | Full | Log-prefix registry vs consumer-list drift (`_shared/log-prefixes.md`) | Important |
 | #30 | Scoped | Sector-resolution coverage per thesis (`_shared/sector-resolution.md`) | Important if `none`, Nice to Have if `substring`/`normalized` |
-| #31 | Full | Sector frontmatter standardization vault-wide | Nice to Have |
+| #34 | Full | Sector frontmatter standardization vault-wide | Nice to Have |
 | #32 | Full | Orphaned ticker refs (research `ticker:` matches no thesis) | Nice to Have |
 | #33 | Full | Closed thesis file still in `Theses/` | Important |
 | #35 | Full + scoped | `_hot.md` schema drift | Important (silent no-op source) |
@@ -467,7 +468,7 @@ Five contracts under `.claude/skills/_shared/`. Editing any requires coordinated
 |---|---|---|---|---|
 | `preflight.md` | 525 | Lock acquisition (Procedures 1/1.5), rename-marker check (2), name sanitization (3), section probe (4) | Every state-modifying skill (17) | #43 |
 | `log-prefixes.md` | 402 | Registry of Log-entry prefixes with producer/consumer bindings | `/sync` (§2.5 classification, §3e drift), `/lint` (#29), every producer | #29 |
-| `hot-md-contract.md` | 90 | Per-section budget, soft/hard caps, compression trigger order, same-ticker continuation rule | 11 writers of `_hot.md` | #35, #42 |
+| `hot-md-contract.md` | 90 | Per-section budget, soft/hard caps, compression trigger order, same-ticker continuation rule | 13 writers of `_hot.md` | #35, #42 |
 | `sector-resolution.md` | 110 | Thesis `sector:` → sector note resolution (exact → normalized → substring → ask) | `/status`, `/thesis`, `/compare`, `/prune`, `/rollback` | #30, #31 |
 | `wikilink-forms.md` | 59 | 5 canonical wikilink forms producers emit (T7.1) | `/sync` (§1.7, §4.0, §5.0), `/rollback` cascade, `/lint` #23, `/prune` closure cascade | — (convention-enforced) |
 
@@ -513,9 +514,10 @@ Currently only `sync/RATIONALE.md` exists. Pattern: when SKILL.md accumulates ra
                      /stress-test, /deepen, /status, /prune, /scenario,
                      /rollback, /rename, /thesis, /compare (as producers)
 
-  hot-md-contract.md ◄── 11 writers: /sync, /status, /thesis, /surface,
+  hot-md-contract.md ◄── 13 writers: /sync, /status, /thesis, /surface,
                          /stress-test, /scenario, /compare, /deepen,
-                         /prune, /rollback, /catalyst
+                         /prune, /rollback, /catalyst,
+                         /brief (ART + OQ only), /rename (free-text mentions)
                          /lint (#35, #42)
 
   sector-resolution.md ◄ /status, /thesis, /compare, /prune, /rollback

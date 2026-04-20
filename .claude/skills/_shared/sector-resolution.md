@@ -88,7 +88,7 @@ Skills using this procedure must:
 The contract is enforced by two `/lint` checks (implemented in `.claude/skills/lint/SKILL.md`):
 
 - **Check #30 (Sector resolution coverage)** — scoped-eligible: For every `Theses/*.md` with `sector:` frontmatter, runs this procedure. `none` confidence flagged Important; `substring` and `normalized` flagged Nice to Have. Pass for `exact`.
-- **Check #31 (Sector frontmatter standardization)** — vault-wide only: For each unique `sector:` frontmatter value across `Theses/`, verifies it matches at least one sector note's filename or frontmatter exactly. Reports divergences with edit distance and closest match.
+- **Check #34 (Sector frontmatter standardization)** — vault-wide only: For each unique `sector:` frontmatter value across `Theses/`, verifies it matches at least one sector note's filename or frontmatter exactly. Reports divergences with edit distance and closest match.
 
 If either check is missing from `/lint`, this contract is unenforced and drift will accumulate silently.
 
@@ -96,7 +96,7 @@ If either check is missing from `/lint`, this contract is unenforced and drift w
 
 1. **Before any edit**: identify every consumer skill (`/status`, `/thesis`, `/compare`, `/prune`) and verify each references this file.
 2. **Edit this file first** — single source of truth.
-3. **Run `/lint`** — once checks #30 and #31 are added, lint validates the contract automatically.
+3. **Run `/lint`** — once checks #30 and #34 are added, lint validates the contract automatically.
 4. **Update `last_reviewed:` frontmatter** to today's date.
 
 ## Rationale
@@ -107,4 +107,4 @@ This contract:
 - Eliminates skill drift by centralizing the procedure.
 - Surfaces divergences instead of silently failing.
 - Provides a clear escalation path (exact → normalized → substring → user prompt → skip).
-- Enforced by `/lint` checks #30 (per-thesis resolution coverage) and #31 (vault-wide standardization).
+- Enforced by `/lint` checks #30 (per-thesis resolution coverage) and #34 (vault-wide standardization).

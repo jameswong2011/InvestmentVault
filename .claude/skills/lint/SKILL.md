@@ -5,12 +5,29 @@ model: opus
 effort: max
 context: fork
 agent: general-purpose
-allowed-tools: Read Grep Glob Bash(find * wc * date *)
+allowed-tools: Read Grep Glob Bash(find * wc * date * grep * sed * cat * printf * rm * mkdir * ls *)
 ---
 
 Comprehensive vault health audit. Read-only — never deletes, never edits. Report only.
 
 Design rationale in `.claude/skills/lint/RATIONALE.md` (§N.M anchors).
+
+## Step 0: Pre-flight (MANDATORY — runs before Scope Resolution)
+
+### 0.1: Acquire vault lock (mode-dependent)
+
+Per `.claude/skills/_shared/preflight.md` Procedure 1. Even though `/lint` never writes to vault content files, a lock is still acquired so that concurrent writers (e.g., a mid-flip `/sync` manifest, an in-flight `/prune` sector edit) do not cause `/lint` to see transient inconsistent state and raise false-positive Important / Critical flags.
+
+- **Full mode** (`/lint` with no arguments): acquire a `vault-wide` scope lock. Timeout budget: 5 minutes. Full mode reads every `Theses/*.md`, `Sectors/*.md`, `Macro/*.md`, `Research/*.md`, `_graph.md`, `_hot.md`, `_catalyst.md`, every `_Archive/Snapshots/_*-manifest*.md`, plus the `.vault-lock*`, `.rename_incomplete.*`, `.graph_invalidations`, `.sync_all_fresh`, `.archive_ticker_registry.md` state markers. The read window is long enough that a concurrent writer mid-flip could produce a false `in-progress` manifest flag. Vault-wide scope serializes against writers.
+- **Scoped mode** (`/lint TICKER`): acquire a `.vault-lock.readonly` lock. Timeout budget: 2 minutes. Scoped mode's read set is small (one thesis + its sector note + `_hot.md` + any active `.rename_incomplete.TICKER` marker); read-only scope lets two `/lint TICKER` invocations against different tickers run in parallel while still blocking vault-wide writers from producing mid-read state transitions.
+
+Capture the token emitted at Step 0.1. Every subsequent Bash block in the skill verifies ownership (Procedure 1.5) against the captured token before issuing any Read / Grep / Glob. Release the lock explicitly in the final reporting Bash block via `rm -f "$LOCK_FILE"`. On token mismatch (`LOCK_LOST` / `LOCK_STOLEN`), abort and report the partial check results captured so far.
+
+### 0.2: No rename-marker check
+
+`/lint` is a read-only diagnostic skill and is an explicit exception in `.claude/skills/_shared/preflight.md` §2.1. `/lint #37` surfaces active `.rename_incomplete.*` markers as its own check output — hard-blocking on the marker would defeat lint's purpose (surfacing repair-state issues is exactly what a user running lint wants to see).
+
+---
 
 ## Scope Resolution
 
@@ -162,7 +179,7 @@ Parse `$ARGUMENTS`:
       - `## Portfolio Snapshot`
     - Missing section → Important: `⚠️ _hot.md missing required section "## [Section Name]". Skills that Edit this section will silently no-op. Fix: add the heading with an empty body (- _pending_), or delete _hot.md and let the next /sync auto-create the full schema.`
     - **Order check** (Nice to Have): canonical order = list above. Reordered → `🔖 _hot.md sections present but out of canonical order. Skills tolerate reordering; consider restoring for readability.`
-    - **Word-cap check**: total word count > 2,000 → Important: `⚠️ _hot.md exceeds 2,000-word cap ([N] words). Skills should auto-prune on next update. If persists across multiple runs, word-cap logic may have drifted — investigate.`
+    - **Word-cap check**: total word count > 4,000 (soft cap per `_shared/hot-md-contract.md`) → Nice to Have: `🔖 _hot.md over soft cap ([N] words / 4,000). Skills auto-prune on next update — no action unless persistent across multiple runs.` Total word count > 5,000 (hard cap) → Important: `⚠️ _hot.md exceeds 5,000-word hard cap ([N] words). Skills abort _hot.md updates at this size. Manual cleanup required: remove outdated Sync Archive entries.`
     - **Runs in BOTH full and scoped modes** (§1.1).
 
 ### Manifest-aging shared pattern (applies to #36, #41, #45, #47, #48, #49)
