@@ -201,24 +201,7 @@ Atomicity scope: ONE research note. Partial success across multiple research not
    - **Low delta**: same macro exposure or adjacent sector, no direct reference, not self-modified. Read **Summary + Non-consensus Insights + Outstanding Questions + Bull/Bear Case** only.
    - **No delta**: no plausible propagation path, not self-modified. Do NOT read.
 
-**Pre-T7.3 fallback**: if `_graph.md` lacks `log_tail:` fields (graph pre-dates T7.3), fall back to per-thesis bash-extracted section reads:
-```bash
-# Frontmatter + Summary + last 3 Log entries per thesis
-for f in Theses/*.md; do
-  echo "=== $f ==="
-  awk 'BEGIN{in_fm=0; fm_done=0}
-       /^---$/ {if(!fm_done){in_fm=!in_fm; print; if(!in_fm) fm_done=1; next}}
-       in_fm{print; next}
-       /^## Summary/,/^## /{if($0!~/^## /||$0~/^## Summary/) print}
-      ' "$f"
-  # Last 3 Log entries
-  awk '/^## Log/{in_log=1} in_log' "$f" | awk '
-    /^### [0-9]{4}-/ {if(header_count>=3){exit} header_count++}
-    {print}' | tail -40
-done
-```
-
-One Bash call for all theses with `=== FILE ===` separators.
+**Pre-T7.3 fallback**: if `_graph.md` lacks `log_tail:` fields, extract frontmatter + Summary + last 3 Log entries per thesis in one batched Bash call as a transient in-memory substitute. Full AWK implementation in RATIONALE §10 (transitional — only fires if a pre-T7.3 `_graph.md` is restored from backup).
 
 **Pass 2 — deep read for High-delta only**:
 - For each High-delta thesis: read the full file (Step 3a may further scope per T7.5 — see Step 3).
@@ -282,17 +265,7 @@ done
 
 For each changed thesis:
 - **Research-driven** (default): at least one research note in the changed-file set resolves (via Step 1.2) to this thesis, OR recent Log entries reference changed research notes. Proceed through Step 3/4/5 normally.
-- **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND its most-recent Log entry's prefix matches one of the following `_shared/log-prefixes.md` skill-origin prefixes AND no research note in the changed-file set resolves to this thesis:
-  - `"Status change: conviction"` (registry §6)
-  - `"Status change:"` (registry §7)
-  - `"Conviction reaffirmed"` (registry §5)
-  - `"CLOSED"` (registry §8)
-  - `"Prune upgrade"` (registry §9)
-  - `"Cross-thesis closure:"` / `"Cross-thesis closures:"` (registry §13)
-  - `"Scenario REVERSED"` (registry §14)
-  - `"ROLLBACK to snapshot"` (registry §12)
-  - `"Initial thesis created"` (registry §11)
-  - `"Renamed file:"` (registry §15)
+- **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND most-recent Log entry matches a skill-origin prefix from `_shared/log-prefixes.md` (registry §5 `Conviction reaffirmed`, §6 `Status change: conviction`, §7 `Status change:`, §8 `CLOSED`, §9 `Prune upgrade`, §11 `Initial thesis created`, §12 `ROLLBACK to snapshot`, §13 `Cross-thesis closure:` / `Cross-thesis closures:`, §14 `Scenario REVERSED`, §15 `Renamed file:`) AND no research note in the changed-file set resolves to this thesis.
 - **Mixed**: research-note source AND skill-origin Log prefix → treat as **research-driven**.
 
 ### Output
@@ -301,7 +274,7 @@ Maintain in-memory accumulator `skill_origin_theses: [TICKER, ...]`. Steps 4 and
 
 ### Registry-driven design
 
-The list above is a view of `_shared/log-prefixes.md`'s `skill-origin` entries. `/lint #29` verifies registry/enumeration alignment. When a new skill-origin prefix is added: update the registry first, then this list.
+The skill-origin enumeration above is a view of `_shared/log-prefixes.md`'s `skill-origin` entries. `/lint #29` verifies registry/enumeration alignment. When a new skill-origin prefix is added: update the registry first, then this enumeration.
 
 ---
 
@@ -480,20 +453,10 @@ Batch ID reused from Step 2.9. Proceed with edits to the ORIGINAL.
   
   **Anchor handling**: if `"Conviction reaffirmed"` (registry §5) or `"Status change: conviction"` (registry §6) found, anchor the window there — only count entries after. If fewer than 3 entries after anchor, drift detection has insufficient data. If no anchor, use last 5 non-excluded entries.
   
-  **Threshold (T1.3, tunable via `.drift-config.md`)**:
+  **Threshold (tunable via `.drift-config.md` — schema in INFRASTRUCTURE.md §2.7)**:
   - Base: 3/5 weakening (if `conviction: high`) or 3/5 strengthening (if `conviction: low`).
   - **Post-stress-test suppression**: if `"Stress test"` entry within last 30 days, raise to 4/5.
-  - Config override format (optional):
-    ```yaml
-    ---
-    window_size: 5              # min 3, max 10
-    base_threshold: 3
-    post_stress_threshold: 4
-    post_stress_window_days: 30
-    deepened_exclusion_days: 14
-    ---
-    ```
-    Missing → defaults. Malformed → `⚠️ .drift-config.md malformed — using defaults.`
+  - Missing config → defaults. Malformed → `⚠️ .drift-config.md malformed — using defaults.`
   
   - `conviction: high` + threshold weakening → `⚠️ Conviction drift — [N]/[window_size] recent updates flagged headwinds ([threshold] required, post-stress-test suppression: yes|no). Reassess. To acknowledge: /status TICKER reaffirm [rationale]`
   - `conviction: low` + threshold strengthening → `📈 Positive drift — [N]/[window_size] recent updates supportive. Reassess. To acknowledge: /status TICKER reaffirm [rationale]`

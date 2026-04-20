@@ -165,6 +165,20 @@ Parse `$ARGUMENTS`:
     - **Word-cap check**: total word count > 2,000 → Important: `⚠️ _hot.md exceeds 2,000-word cap ([N] words). Skills should auto-prune on next update. If persists across multiple runs, word-cap logic may have drifted — investigate.`
     - **Runs in BOTH full and scoped modes** (§1.1).
 
+### Manifest-aging shared pattern (applies to #36, #41, #45, #47, #48, #49)
+
+Common skeleton. Each check below lists only what differs from this pattern.
+
+- **Vault-wide only.** Read-only — never delete manifests.
+- **Precondition**: no matching manifests → Pass silently.
+- **Parse frontmatter** per check-specific key list.
+- **Severity by `status:`**:
+  - `in-progress` → Important (or Critical per check); emit check-specific recovery guidance.
+  - `completed` (from `completed_date:`): ≤90d Pass; 90–180d Nice to Have (`🔖 Stale … manifest: [[…]] is [N] days old.`); >180d Important (`⚠️ Very stale … manifest: [[…]]. Safe to delete.`).
+  - Missing/malformed `status:` → Important (`⚠️ … manifest [filename] has no parseable status. Legacy format or corruption. Inspect manually.`).
+
+Per-check entries below specify only: (1) manifest filename glob, (2) frontmatter keys beyond the common set, (3) in-progress recovery text, (4) any deviation from the default age ladder.
+
 36. **Prune batch-manifest state** — Scan `_Archive/Snapshots/_prune-manifest*.md`. Crash-recovery artifacts from `/prune` Stage 1.5.
     - **Precondition**: none → Pass.
     - For each manifest, classify by `status:`:
@@ -254,46 +268,27 @@ Parse `$ARGUMENTS`:
     - **Aggregate**: `propagated_to: contract — [exact] compliant, [violation] violations (post-spec), [pre_spec] pre-spec gaps.`
     - **Cross-check with #1** (§6.5): note flagged in both → `🚨 Double-flagged orphan: [[...]] — orphan (#1) AND missing propagated_to: (#39). Strongest cleanup candidate.`
 
-41. **Sync manifest aging + status** — `_Archive/Snapshots/_sync-manifest*.md`. Written by `/sync` Step 2.9 (skeleton) → Step 7.5 (flip).
-    - **Vault-wide only**. **Precondition**: none → Pass.
-    - For each manifest, parse frontmatter (`type: sync-manifest`, `batch:`, `status:`, `date:`, optional `completed_date:`).
-    - **T2.1 status check** (§4.3):
-      - `in-progress` → Important: `⚠️ In-progress sync manifest: [[...]]. /sync Step 2.9 wrote skeleton but Step 7.5 flip didn't land. Three possible causes:`
-        - `(1) /sync crashed mid-run — inspect body for landed Tier A + Tier B; use /rollback.`
-        - `(2) /sync completed but flip silently missed — check if Tier B Log entries actually exist on listed theses. If yes, manually edit manifest to status: completed + completed_date: today.`
-        - `(3) /lint was run DURING an active /sync — ignore; /sync will flip when complete.`
-      - `completed` → age-based below.
-      - Missing/malformed `status:` → Important: `⚠️ Sync manifest [filename] has no parseable status. Legacy format (pre-T2.1) or corruption. Pre-T2.1 (before 2026-04-19) has no in-progress state; treat as completed for aging.`
-    - **Age** (completed + legacy):
-      - ≤90d → Pass.
-      - 90-180d → Nice to Have: `🔖 Stale sync manifest: [[...]] is [N] days old. Companion Tier A snapshots may be cleaned (180-day /clean default).`
-      - >180d → Important: `⚠️ Very stale sync manifest: [[...]] is [N] days old. Snapshots almost certainly cleaned. Safe to delete.`
+41. **Sync manifest aging + status** — `_Archive/Snapshots/_sync-manifest*.md`. Written by `/sync` Step 2.9 (skeleton) → Step 7.5 (flip). See shared pattern above.
+    - **Frontmatter keys**: `type: sync-manifest`, `batch`, `status`, `date`, optional `completed_date`.
+    - **`in-progress` recovery — three possible causes** (§4.3): `⚠️ In-progress sync manifest: [[...]]. /sync Step 2.9 wrote skeleton but Step 7.5 flip didn't land.`
+      - `(1) /sync crashed mid-run — inspect body for landed Tier A + Tier B; use /rollback.`
+      - `(2) /sync completed but flip silently missed — check if Tier B Log entries actually exist on listed theses. If yes, manually edit manifest to status: completed + completed_date: today.`
+      - `(3) /lint was run DURING an active /sync — ignore; /sync will flip when complete.`
+    - **Missing-`status:` addendum**: pre-T2.1 (before 2026-04-19) has no in-progress state; treat as completed for aging.
+    - **Age-message addenda** (append to shared ladder messages): 90–180d `(Companion Tier A snapshots may be cleaned per /clean 180-day default.)`; >180d `(Snapshots almost certainly cleaned.)`
     - **Orphan cross-check**: all Tier A snapshots for batch deleted → Nice to Have regardless of age: `🔖 Orphan sync manifest — all Tier A snapshots cleaned. Safe to delete.`
-    - Do NOT delete — read-only.
 
-47. **Stress-test manifest aging + status (T3.1)** — `_stress-test-manifest*.md`. Written by `/stress-test` Phase 4.6.
-    - **Vault-wide only**. **Precondition**: none → Pass.
-    - Parse (`type: stress-test-manifest`, `batch:`, `status:`, `ticker:`, `date:`).
-    - **Severity by status**:
-      - `completed` → Pass (age-based cleanup covers).
-      - `in-progress` (rare — `/stress-test` writes as completed in single step) → Nice to Have: `🔖 In-progress stress-test manifest. Unusual. Inspect: if research note + thesis Log entry exist, manually edit to completed. If either missing, partial failure; consider re-running.`
-    - **Age** (completed): ≤90d Pass; 90-180d Nice to Have; >180d Important.
+47. **Stress-test manifest aging + status (T3.1)** — `_stress-test-manifest*.md`. See shared pattern above.
+    - **Frontmatter keys**: `type: stress-test-manifest`, `batch`, `status`, `ticker`, `date`.
+    - **`in-progress` severity — Nice to Have, not Important** (rare — `/stress-test` writes as completed in a single step): `🔖 In-progress stress-test manifest. Unusual. Inspect: if research note + thesis Log entry exist, manually edit to completed. If either missing, partial failure; consider re-running.`
 
-48. **Status manifest aging + status (T2.2)** — `_status-manifest*.md`. Written by `/status` Step 3.0.5 (skeleton) → Step 7.9 (flip).
-    - **Vault-wide only**. **Precondition**: none → Pass.
-    - Parse (`type: status-manifest`, `batch:`, `status:`, `ticker:`, `transition_type:`, `date:`, optional `completed_date:`).
-    - **Severity by status**:
-      - `in-progress` → Important: `⚠️ In-progress /status manifest: [[...]]. Inspect body: (1) Thesis frontmatter change (Theses/[ticker]); (2) Sector note edit; (3) Archive move (closure). If transaction complete on inspection, manually edit to completed. If incomplete, /rollback [batch] to pre-status state.`
-      - `completed` → age-based (same thresholds as #41).
-      - Missing `status:` → Important (same pattern as #41).
+48. **Status manifest aging + status (T2.2)** — `_status-manifest*.md`. Written by `/status` Step 3.0.5 (skeleton) → Step 7.9 (flip). See shared pattern above.
+    - **Frontmatter keys**: `type: status-manifest`, `batch`, `status`, `ticker`, `transition_type`, `date`, optional `completed_date`.
+    - **`in-progress` recovery**: `⚠️ In-progress /status manifest: [[...]]. Inspect body: (1) Thesis frontmatter change (Theses/[ticker]); (2) Sector note edit; (3) Archive move (closure). If transaction complete on inspection, manually edit to completed. If incomplete, /rollback [batch] to pre-status state.`
 
-49. **Thesis manifest aging + status (H1)** — `_thesis-manifest*.md`. Written by `/thesis` Step 3.5 (skeleton) → Step 7.5 (flip).
-    - **Vault-wide only**. **Precondition**: none → Pass.
-    - Parse (`type: thesis-manifest`, `batch:`, `status:`, `ticker:`, `proposed_name:`, `proposed_path:`, `sector:`, `date:`, optional `completed_date:`).
-    - **Severity by status**:
-      - `in-progress` → Important: `⚠️ In-progress /thesis manifest: [[...]]. Inspect body: (1) Thesis file at [proposed_path]; (2) Sector note Active Theses entry; (3) _hot.md sections. If all landed, manually edit to completed. If partial, either complete remaining manually or rm thesis + manifest and re-run /thesis.`
-      - `completed` → age-based (same thresholds as #41).
-      - Missing `status:` → Important (same pattern).
+49. **Thesis manifest aging + status (H1)** — `_thesis-manifest*.md`. Written by `/thesis` Step 3.5 (skeleton) → Step 7.5 (flip). See shared pattern above.
+    - **Frontmatter keys**: `type: thesis-manifest`, `batch`, `status`, `ticker`, `proposed_name`, `proposed_path`, `sector`, `date`, optional `completed_date`.
+    - **`in-progress` recovery**: `⚠️ In-progress /thesis manifest: [[...]]. Inspect body: (1) Thesis file at [proposed_path]; (2) Sector note Active Theses entry; (3) _hot.md sections. If all landed, manually edit to completed. If partial, either complete remaining manually or rm thesis + manifest and re-run /thesis.`
     - **Pre-existing thesis check** for `in-progress`: if `Theses/[proposed_path]` exists with valid frontmatter → likely flip-failure (cause 2, §4.3). If NOT → skeleton written but Step 4 failed — simpler recovery (rm manifest, re-run).
 
 34. **Sector frontmatter standardization** — Thesis `sector:` values vs canonical sector note names.

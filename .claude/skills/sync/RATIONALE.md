@@ -238,3 +238,33 @@ These optimisations landed together in the T7 series:
 - **T7.8** — Emit-if-non-empty Step 8 report template.
 
 Combined expected saving on a typical `/sync all` run (20 High-delta theses, 5 sectors, 2 macros, 10 research notes): ~400-700K tokens per run, 50-60% reduction from pre-T7 baseline.
+
+---
+
+## §10 Pre-T7.3 graph fallback (transitional)
+
+When `_graph.md` was upgraded with T7.3 cache fields (`status:` + `log_tail:`), any graph file written by an earlier build lacks those fields. SKILL.md's Pass 1 needs log-tail data to triage theses; without the cache it falls back to extracting per-thesis section data with a single batched Bash call.
+
+**Operational rule in SKILL.md** (§1.10 Pass 1 "Pre-T7.3 fallback"): if `log_tail:` fields are absent from `_graph.md`, extract frontmatter + Summary + last 3 Log entries per thesis via a single batched Bash call; treat as a transient in-memory substitute for the cache.
+
+**Full AWK implementation** (preserved here; never loaded at runtime once every `_graph.md` has been rebuilt at least once under T7.3):
+
+```bash
+# Frontmatter + Summary + last 3 Log entries per thesis
+for f in Theses/*.md; do
+  echo "=== $f ==="
+  awk 'BEGIN{in_fm=0; fm_done=0}
+       /^---$/ {if(!fm_done){in_fm=!in_fm; print; if(!in_fm) fm_done=1; next}}
+       in_fm{print; next}
+       /^## Summary/,/^## /{if($0!~/^## /||$0~/^## Summary/) print}
+      ' "$f"
+  # Last 3 Log entries
+  awk '/^## Log/{in_log=1} in_log' "$f" | awk '
+    /^### [0-9]{4}-/ {if(header_count>=3){exit} header_count++}
+    {print}' | tail -40
+done
+```
+
+One Bash call for all theses with `=== FILE ===` separators.
+
+**When it re-fires**: only if `_graph.md` is restored from a pre-T7.3 backup, or if a future schema change removes `log_tail:` without migrating consumers. Otherwise dead code. Kept here for disaster recovery, not SKILL.md.
