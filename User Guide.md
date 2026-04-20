@@ -20,6 +20,8 @@ After bootstrap, all skills work. Without it:
 
 > If the vault already has thesis/research/sector notes, `/sync` reads everything on first run (equivalent to `/sync all`). This is expected — it establishes the watermark baseline.
 
+> **`.last_sync` deletion = de facto first run**: if `.last_sync` is ever deleted (manually, accidentally, or via a `git restore` that wipes it), the next `/sync` (any mode) treats the vault as first-run: creates an epoch placeholder, then `find -newer` matches every file. Effect: a `/sync` invocation you expected to finish in ~30 seconds takes 5-10× longer because it re-reads the entire vault. `/prune` Phase 0 also detects this state and now prompts before running (B4 fix). To check before invoking: `ls -la .last_sync` — if missing, expect first-run behavior on next sync. To recover the watermark without a full sync, you can `touch .last_sync` to set it to "now" — but this silently marks all currently-pending files as "synced," which is usually wrong. Prefer letting the next `/sync` create the epoch placeholder and re-process correctly.
+
 ---
 
 ## 1. The Core Loop
@@ -947,6 +949,8 @@ who supplies whom, who competes with whom, where the bottlenecks are.
 > Updates: filename (atomic via `mv`), all inbound wikilinks (7 patterns — best-effort across N files), `_graph.md` adjacency entry header, sector note Active Theses entry, `_Archive/Snapshots/` `snapshot_of:` fields, and `_hot.md` mentions. TICKER does not change. To undo: run `/rename TICKER "[OldName]"` (symmetric inverse). Pre-rename snapshot also created for content-only restore via `/rollback`.
 >
 > **Partial-failure recovery**: if any wikilink-rewrite Edit fails (file lock, malformed wikilink, etc.), `/rename` writes a `.rename_incomplete.TICKER` marker listing the failed files. **Every ticker-scoped skill on TICKER hard-blocks** until the marker clears. To repair: re-run `/rename TICKER "[same new name]"` — the no-op detection skips the already-completed mv and retries only the failed Edits. The marker is removed when all retries succeed.
+>
+> **Graph follow-up — use `/graph` (full), not `/graph last`**: `/rename` surgically rewrites the adjacency entry header in `_graph.md` for the renamed thesis itself, but does not re-validate headers for unchanged neighbor theses. If the rename was preceded by a manual `mv` of any other thesis (bypassing `/rename` for that one), `/graph last` would carry the stale baseline header forward for that neighbor. Running `/graph` (full rebuild) after `/rename` re-derives every header from current filenames on disk and eliminates this drift class. **Cost**: 30-60 seconds vs ~5 seconds for `/graph last`. **When to skip**: if you are 100% certain no thesis file has been manually renamed since the last `/graph` run, `/graph last` is sufficient.
 
 ### `/status`
 ```
