@@ -84,6 +84,12 @@ NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 TOKEN="$(printf '%08x' $RANDOM$RANDOM)-$(date -u +%s)"
 TIMEOUT_AT=$(date -u -v+10M +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
 
+# Enable null-glob so unmatched .vault-lock.* expands to nothing.
+# Portable across zsh (macOS default) and bash — one of these two will succeed.
+# Without this, zsh throws "no matches found: .vault-lock.*" on a clean vault
+# and the acquisition block exits non-zero on first attempt every time.
+setopt NULL_GLOB 2>/dev/null || shopt -s nullglob 2>/dev/null || true
+
 # Collision check: vault-wide OR any existing ticker lock OR read-only lock
 for existing in .vault-lock .vault-lock.* ; do
   [ -f "$existing" ] || continue

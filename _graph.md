@@ -1,15 +1,13 @@
 ---
-date: 2026-04-20
-last_graph_write: 2026-04-19T15:13:52Z
-graph_mode: last
 type: vault-graph
-auto_updated_by: /graph
-nodes: 192
-edges: 371
+date: 2026-04-20
+last_graph_write: 2026-04-19T15:47:33Z
+graph_mode: full
 theses: 40
 sectors: 13
 macro: 6
 research: 133
+edges: 372
 orphans: 19
 ---
 

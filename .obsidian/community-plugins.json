@@ -1,6 +1,6 @@
 [
-  "dataview",
   "templater-obsidian",
+  "obsidian-git",
   "claudian",
-  "obsidian-git"
+  "dataview"
 ]
