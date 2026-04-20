@@ -6,68 +6,72 @@ effort: max
 allowed-tools: Read Grep Glob Edit Write Bash(date * mv * cp * mkdir * find * grep *)
 ---
 
-**Follow CLAUDE.md Writing Standards strictly.** No hedge words, lead with insights/numbers, tables over prose, every sentence must earn its place.
+Rename a thesis file when the company name portion changes. **TICKER does NOT change** — only the segment after ` - `. Example: `Theses/META - Meta.md` → `Theses/META - Meta Platforms.md`.
 
-Rename a thesis file when the company name portion of the filename changes. The TICKER does NOT change — only the company-name segment after the ` - `. Example: `Theses/META - Meta.md` → `Theses/META - Meta Platforms.md`.
+Without `/rename`, manual file renames break: (a) every inbound wikilink across the vault, (b) `_graph.md`'s adjacency header, (c) sector note Active Theses entries, (d) `snapshot_of:` fields in `_Archive/Snapshots/` (breaking `/rollback`), (e) `_hot.md` free-text mentions. `/lint #3` catches broken wikilinks only after the fact without auto-fix.
 
-Without `/rename`, manual file renames break: (a) every inbound wikilink across the vault, (b) `_graph.md`'s adjacency entry header, (c) sector note Active Theses entries, (d) `snapshot_of:` fields in `_Archive/Snapshots/` (breaking `/rollback`), (e) `_hot.md` free-text mentions. `/lint #3` would catch broken wikilinks but only after the fact and without auto-fix.
+Design rationale in `.claude/skills/rename/RATIONALE.md` (§N.M anchors).
 
 ## Arguments
 
-`$ARGUMENTS` should be: `TICKER "New Company Name"`
-
-Examples:
+`$ARGUMENTS` = `TICKER "New Company Name"`. Examples:
 - `/rename META "Meta Platforms"`
 - `/rename SHOP "Shopify Inc"`
 - `/rename SQ "Block"` (after Square → Block rebrand)
 
-If `$ARGUMENTS` lacks a quoted company name, has no ticker, or has extra arguments, ask the user to clarify before proceeding.
+Missing quoted name, no ticker, or extra args → ask user to clarify.
 
-## Step 0: Pre-flight (MANDATORY — runs before any vault inspection)
+## Step 0: Pre-flight
 
 ### 0.1: Acquire vault lock
 
-Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 5 minutes. If another skill holds a conflicting lock, abort with the standard collision message (Procedure 1.4). Capture the token emitted at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
+`ticker:TICKER` scope per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout 5 min. Capture token, verify (Procedure 1.5) every subsequent block, release in final reporting block.
 
-### 0.2: Name sanitization (6.1)
+### 0.2: Name sanitization (C6.1 — §7)
 
-Run `.claude/skills/_shared/preflight.md` Procedure 3 (name sanitization) against the proposed `new_name` parsed from `$ARGUMENTS`. The rules:
-
-1. NFC-normalize the input.
-2. Trim leading/trailing whitespace. If empty → reject.
+Run `.claude/skills/_shared/preflight.md` Procedure 3 against proposed `new_name` from $ARGUMENTS:
+1. NFC-normalize input.
+2. Trim leading/trailing whitespace. Empty → reject.
 3. Length ≤ 100 bytes → reject if exceeded.
-4. Character whitelist: `[a-zA-Z0-9 \-_.,'&()]`. Any other character → reject (with specific flag for `/`, `\`, `:`, `*`, `?`, `"`, `<`, `>`, `|`).
+4. Character whitelist: `[a-zA-Z0-9 \-_.,'&()]`. Any other character → reject (specific flag for `/`, `\`, `:`, `*`, `?`, `"`, `<`, `>`, `|`).
 5. No leading dot → reject.
-6. First whitespace-token must not be a reserved filesystem name (`CON`, `PRN`, `AUX`, `NUL`, `COM1`–`COM9`, `LPT1`–`LPT9`, case-insensitive) → reject.
+6. First whitespace-token not reserved (`CON`, `PRN`, `AUX`, `NUL`, `COM1-9`, `LPT1-9`, case-insensitive) → reject.
 
-On rejection, present the contract's standard rejection message with specific rule violated and a suggested clean variant where possible. Do NOT proceed to Step 1.
-
-Only after Step 0.1 acquires the lock AND Step 0.2 accepts the new_name does the skill proceed to Step 1.
+On rejection, emit contract's standard rejection message + suggested clean variant. Do NOT proceed.
 
 ## Step 1: Validate
 
-1. **Find the current thesis file** via ticker-prefix glob: `Theses/TICKER - *.md`.
-   - Zero matches: stop with `⚠️ No thesis found for [TICKER] in Theses/. Run /thesis [TICKER] to create.`
-   - Multiple matches: stop with `⚠️ Multiple Theses/ files match prefix "[TICKER]" — [list]. Resolve filename collision before re-running.`
-   - One match: extract `[old_name]` from the filename pattern `Theses/TICKER - [old_name].md`.
+1. **Find current thesis** via ticker-prefix glob: `Theses/TICKER - *.md`.
+   - Zero matches: stop. `⚠️ No thesis found for [TICKER] in Theses/. Run /thesis [TICKER] to create.`
+   - Multiple: stop. `⚠️ Multiple Theses/ files match prefix "[TICKER]" — [list]. Resolve filename collision before re-running.`
+   - One match: extract `[old_name]` from `Theses/TICKER - [old_name].md`.
 
-2. **Compute the new filename**: `Theses/TICKER - [new_name].md`.
+2. **Compute new filename**: `Theses/TICKER - [new_name].md`.
 
 3. **Validate new name**:
-   - Must not contain path-illegal characters: `/`, `\`, `:`, `*`, `?`, `"`, `<`, `>`, `|`.
-   - Must not match an existing file at the new path in `Theses/`. If collision exists, stop: `⚠️ Target file already exists: Theses/TICKER - [new_name].md. Choose a different name or remove the existing file first.`
-     - **Exception — incomplete-rename repair**: If `.rename_incomplete.TICKER` exists at vault root AND its frontmatter `new_name:` equals the proposed new name, this is a repair re-run for the same in-flight rename. The filename move from a prior failed run already produced `Theses/TICKER - [new_name].md`; the collision is expected. Skip the abort, log `ℹ️ Repair re-run detected — .rename_incomplete.TICKER exists for [TICKER] → [new_name]. Skipping mv (already done), proceeding to retry failed wikilink rewrites from Step 5.`, then jump from Step 1 directly to Step 5 (skipping Steps 2 confirmation, 3 snapshot, 3.5 pre-flight, 4 mv, since those already ran in the prior attempt).
-   - **Archive collision check**: Glob `_Archive/TICKER - [new_name].md` (non-recursive — ignore `_Archive/Snapshots/`). If a file matches, warn and require explicit confirmation before proceeding: `⚠️ Archive collision: _Archive/TICKER - [new_name].md already exists from a prior closure of this ticker. If you later close the renamed thesis, /status Step 7.5 would mv the new thesis to the same archive path and silently overwrite the old archive copy. Options:` followed by three explicit user choices — (a) Proceed anyway (accept future overwrite risk), (b) Rename the old archive first (e.g., `mv "_Archive/TICKER - [new_name].md" "_Archive/TICKER - [new_name] (closed YYYY-MM-DD).md"` before re-running `/rename`), (c) Cancel. Wait for user selection. Do NOT proceed silently.
+   - No path-illegal characters (double-checked post-sanitization).
+   - Must not match existing file at new path in `Theses/`. Collision → stop: `⚠️ Target file already exists: Theses/TICKER - [new_name].md. Choose a different name or remove the existing file first.`
+     - **Exception — incomplete-rename repair** (§2.2): if `.rename_incomplete.TICKER` exists AND its `new_name:` equals proposed new name, this is a repair re-run. The collision is expected (filename move from prior failed run already produced `Theses/TICKER - [new_name].md`). Skip abort, log `ℹ️ Repair re-run detected — .rename_incomplete.TICKER exists for [TICKER] → [new_name]. Skipping mv (already done), proceeding to retry failed wikilink rewrites from Step 5.`, jump from Step 1 directly to Step 5 (skip Steps 2/3/3.5/4).
+   - **Archive collision check** (§6): glob `_Archive/TICKER - [new_name].md` (non-recursive — ignore `_Archive/Snapshots/`). Match → warn, require explicit confirmation:
+     ```
+     ⚠️ Archive collision: _Archive/TICKER - [new_name].md already exists from a prior closure of this ticker. If you later close the renamed thesis, /status Step 7.5 would mv the new thesis to the same archive path and silently overwrite the old archive copy.
+     
+     Options:
+       (a) Proceed anyway (accept future overwrite risk).
+       (b) Rename the old archive first: mv "_Archive/TICKER - [new_name].md" "_Archive/TICKER - [new_name] (closed YYYY-MM-DD).md" — then re-run /rename.
+       (c) Cancel.
+     ```
+     Wait for user selection. Do NOT proceed silently.
 
-4. **Check no-op**: if `[old_name]` == `[new_name]` (case-sensitive after trim), stop: `⚠️ Old and new names match. Nothing to rename.`
-   - **Exception — incomplete-rename repair**: same logic as Step 1.3 — if `.rename_incomplete.TICKER` exists with `new_name:` matching the proposed new name and the prior run's repair targets are still unresolved, the no-op check is bypassed. The skill enters Step 5 to retry the wikilink rewrites for the still-stale files listed in the marker.
+4. **Check no-op**: `[old_name] == [new_name]` (case-sensitive after trim) → stop. `⚠️ Old and new names match. Nothing to rename.`
+   - **Exception — incomplete-rename repair**: same bypass as Step 1.3 when `.rename_incomplete.TICKER` matches proposed new name.
 
-### Step 1.4.5: Incomplete-rename cross-name guard (NEW — runs after the no-op check)
+### Step 1.4.5: Incomplete-rename cross-name guard (§2.3)
 
-If `.rename_incomplete.TICKER` exists at vault root, read its frontmatter and compare `new_name:` to the proposed new name from `$ARGUMENTS`:
+If `.rename_incomplete.TICKER` exists, read its frontmatter and compare `new_name:` to proposed new name:
 
-- **`marker.new_name == proposed_new_name`** → repair re-run (already handled by exceptions in Steps 1.3 and 1.4 above). Proceed to Step 5 directly.
-- **`marker.new_name != proposed_new_name`** → STOP with explicit guard. The marker tracks an in-flight rename to a DIFFERENT name; proceeding would corrupt the marker's repair-target context (failed_files were collected against `marker.new_name`, but proceeding would rename to `proposed_new_name`, leaving those failed wikilinks pointing to a name that no longer matches anything).
+- **`marker.new_name == proposed_new_name`** → repair re-run (already handled by Steps 1.3/1.4 exceptions). Jump to Step 5.
+- **`marker.new_name != proposed_new_name`** → STOP with explicit guard. Proceeding would orphan repair targets.
 
    ```
    ❌ In-flight rename conflict for TICKER:
@@ -75,15 +79,15 @@ If `.rename_incomplete.TICKER` exists at vault root, read its frontmatter and co
        prior new_name:     [marker.new_name]
        failed_files:       [N entries — these need OldName → marker.new_name rewrites]
        batch:              [marker.batch]
-
+   
      Proposed rename:
        new new_name:       [proposed_new_name]
-
+   
    These conflict. The marker's failed wikilink rewrites were collected for
    "[marker.new_name]" — proceeding with "[proposed_new_name]" would orphan those
    repair targets (their wikilinks would still reference an obsolete OldName,
    never NewName2, with no marker to track them).
-
+   
    Resolve before re-running /rename. Options:
      (a) Finish the prior rename first:
          /rename TICKER "[marker.new_name]"
@@ -93,8 +97,7 @@ If `.rename_incomplete.TICKER` exists at vault root, read its frontmatter and co
          delete the marker (rm ".rename_incomplete.TICKER"), then re-run
          this rename.
      (c) Accept loss of in-flight repair state. BEFORE running rm:
-         (1) READ the marker's "Failed files" list — print it to the user with
-             explicit warning text:
+         (1) READ the marker's "Failed files" list. Print with explicit warning:
              "These N file(s) currently contain wikilinks to [[Theses/TICKER -
               [TRULY_ORIGINAL_NAME]]] (the name BEFORE the prior failed rename).
               After deleting the marker and re-running with the new name, those
@@ -105,25 +108,23 @@ If `.rename_incomplete.TICKER` exists at vault root, read its frontmatter and co
               Resolution before option (c): manually grep-replace
               [TRULY_ORIGINAL_NAME] → [proposed_new_name] in each listed file
               FIRST, then proceed."
-         (2) Wait for explicit user confirmation that they have manually
-             remediated the listed files OR explicitly accept the broken-wikilink
-             outcome.
-         (3) Only then rm ".rename_incomplete.TICKER" and re-run /rename with
-             the new name.
+         (2) Wait for explicit user confirmation of manual remediation OR explicit
+             acceptance of broken-wikilink outcome.
+         (3) Only then rm ".rename_incomplete.TICKER" and re-run /rename.
    ```
 
-   Do NOT proceed silently. Wait for user to take action externally and re-invoke `/rename`.
+   Do NOT proceed silently. Wait for user action, then re-invoke.
 
-5. **Survey inbound references** (read-only — for the confirmation prompt):
-   - Grep vault (excluding `.git/` and `_Inbox/processed/` only) for the patterns in Step 5 below. `_Archive/Snapshots/` IS included in the survey because Step 5 rewrites snapshot bodies. Count live-file matches and snapshot-body matches separately so the user can see both counts in the confirmation.
-   - Grep `_Archive/Snapshots/` frontmatter for `snapshot_of:` referencing the old path. Count. (This is a separate count from snapshot body matches — `snapshot_of:` is frontmatter metadata, handled by Step 8.)
-   - Read `_graph.md`, locate the adjacency entry header `### TICKER - [old_name]`. Note presence.
-   - Resolve sector note via canonical procedure **`.claude/skills/_shared/sector-resolution.md`**. If matched, scan its Active Theses section for the old wikilink. Note presence.
-   - Read `_hot.md`, count free-text mentions of `TICKER - [old_name]` (outside wikilink syntax — wikilinks are handled in Step 5).
+5. **Survey inbound references** (read-only — for confirmation prompt):
+   - Grep vault (excluding `.git/` and `_Inbox/processed/`) for Step 5 patterns. `_Archive/Snapshots/` IS included (Step 5 rewrites snapshot bodies). Count live-file matches vs snapshot-body matches separately.
+   - Grep `_Archive/Snapshots/` frontmatter for `snapshot_of:` referencing old path. Count. (Separate from body matches — frontmatter handled by Step 8.)
+   - Read `_graph.md`, locate `### TICKER - [old_name]` in Adjacency Index. Note presence.
+   - Resolve sector note via `.claude/skills/_shared/sector-resolution.md`. Matched → scan Active Theses for old wikilink.
+   - Read `_hot.md`, count free-text mentions of `TICKER - [old_name]` (outside wikilink syntax).
 
 ## Step 2: Confirm (Tier 3 — Mandatory)
 
-Present the proposed rename and the survey from Step 1.5. **Wait for explicit user confirmation.**
+Present proposed rename + survey. **Wait for explicit user confirmation.**
 
 ```
 Proposed rename:
@@ -147,15 +148,13 @@ Confirm? (y/n)
 
 ## Step 3: Pre-Rename Snapshot
 
-Create a snapshot of the current thesis (in case rename needs reversal):
-
 ```bash
 mkdir -p _Archive/Snapshots
 HHMMSS=$(date +%H%M%S)
 cp "Theses/TICKER - [old_name].md" "_Archive/Snapshots/TICKER - [old_name] (pre-rename YYYY-MM-DD-HHMMSS).md"
 ```
 
-Read the newly created snapshot, then add to its frontmatter:
+Read snapshot, add frontmatter:
 ```yaml
 snapshot_of: "[[Theses/TICKER - [old_name]]]"
 snapshot_date: YYYY-MM-DD
@@ -164,22 +163,19 @@ snapshot_batch: rename-YYYY-MM-DD-HHMMSS
 rename_target: "[[Theses/TICKER - [new_name]]]"
 ```
 
-> **Batch ID note**: Uses HHMMSS (6 digits) to prevent same-minute collisions. If a future `/rollback` cascade matches this batch, the `rename_target:` field tells it the cascade is reversing a rename — `/rollback` should additionally restore the old filename via `mv` (out of scope for current `/rollback`; user must manually move).
+Batch ID uses HHMMSS (6 digits) to prevent same-minute collisions. `rename_target:` field tells `/rollback` that a cascade matching this batch is reversing a rename.
 
-## Step 3.5: Pre-flight Read/Write Check (NEW — abort BEFORE mv if any file is unreachable)
+## Step 3.5: Pre-flight Read/Write Check (§1)
 
-The Step 5 wikilink rewrite touches every file in the inbound-reference set surveyed by Step 1.5. If any of those files is unreadable or unwritable, the rewrite will fail mid-stream — but by that point `mv` has already happened, so the rename is committed and partial wikilinks are unavoidable. Catch this BEFORE the mv.
+Step 5's rewrite will touch every file in the inbound-reference set. Catch unreachable files BEFORE the mv — §1.1 explains why.
 
 For each file in the inbound-reference set (live files in `Theses/`, `Sectors/`, `Macro/`, `Research/`, `_hot.md`, plus `_Archive/Snapshots/*.md` with body matches and `snapshot_of:` matches):
 
-1. **Read check**: attempt to read the file's first 10 bytes (or use the existing `Read` tool). If the read fails (file deleted between Step 1.5 survey and now, permission error, file lock), record the file path in `unreachable_files: [list]`.
-2. **Write probe**: confirm the file is writable. On macOS/Linux, the simplest probe is `[ -w "path" ]`:
-   ```bash
-   [ -w "Theses/TICKER - Name.md" ] || echo "NOT_WRITABLE: Theses/TICKER - Name.md"
-   ```
-   Capture any `NOT_WRITABLE` output into `unreachable_files`.
+1. **Read check**: attempt to read file's first 10 bytes. Fail → record in `unreachable_files: [list]`.
+2. **Write probe**: `[ -w "path" ]`. Not writable → record in `unreachable_files`.
 
-**If `unreachable_files` is non-empty**: stop. The vault is in its original state — `mv` has not run, no wikilinks modified, no graph edits. Report:
+**`unreachable_files` non-empty → STOP.** Vault in original state (no mv, no edits).
+
 ```
 ❌ Pre-flight check failed: [N] file(s) cannot be edited. Rename aborted — vault unchanged.
 
@@ -187,11 +183,8 @@ Unreachable files:
   - [path 1] (reason: [permission denied | file locked | not found])
   - [path 2] (reason: ...)
 
-Resolve the access issue (close the file in another editor, fix permissions, restore deleted file)
-and re-run /rename. Pre-rename snapshot retained: [[_Archive/Snapshots/...]].
+Resolve access issue (close file in another editor, fix permissions, restore deleted file) and re-run /rename. Pre-rename snapshot retained: [[_Archive/Snapshots/...]].
 ```
-
-**Why pre-flight matters**: Without this check, the original Step 4 mv could succeed and Step 5 could leave 47 of 50 files updated and 3 with stale wikilinks pointing to a non-existent file. Backups can restore "all-old" or "all-new" state but cannot synthesize "47 fixed + 3 fixed." Pre-flight reduces post-mv failure surface to genuinely transient issues (concurrent edit, race conditions) — those rare cases are handled by Step 5's incomplete-rename marker.
 
 ## Step 4: Move the File
 
@@ -199,47 +192,47 @@ and re-run /rename. Pre-rename snapshot retained: [[_Archive/Snapshots/...]].
 mv "Theses/TICKER - [old_name].md" "Theses/TICKER - [new_name].md"
 ```
 
-**Verification**: confirm new path exists and old doesn't:
+Verification:
 ```bash
 ls "Theses/TICKER - [new_name].md"
 ls "Theses/TICKER - [old_name].md" 2>/dev/null  # should produce no output
 ```
 
-**If `mv` fails**: stop. Snapshot exists; vault is in original state (no destructive changes yet — wikilinks not modified). Report: `❌ Rename failed at mv step — vault unchanged. Snapshot retained: [[_Archive/Snapshots/...]]. Investigate filesystem permissions.`
+`mv` fails → stop. `❌ Rename failed at mv step — vault unchanged. Snapshot retained: [[_Archive/Snapshots/...]]. Investigate filesystem permissions.` Wikilinks not modified; vault safe.
 
-## Step 5: Update Inbound Wikilinks Across Vault (including snapshot bodies)
+## Step 5: Update Inbound Wikilinks (§3, §5)
 
-Process each wikilink pattern. For each, grep the vault (excluding `.git/` and `_Inbox/processed/`), then `Edit` each file to replace. **Crucially, `_Archive/Snapshots/` is NOT excluded** — snapshot bodies frequently contain wikilinks to other theses (e.g., `[[Theses/META - Meta]]` embedded in a pre-sync snapshot of a different thesis). Leaving these stale causes rollback-induced wikilink breakage: rolling back that snapshot re-introduces the old thesis name into a live file, producing broken wikilinks that `/lint` #3 then flags.
+Grep vault (excluding `.git/` and `_Inbox/processed/`), Edit each file. **`_Archive/Snapshots/` is NOT excluded** — snapshot bodies contain wikilinks that, if stale, break on rollback (§3.1).
+
+Seven wikilink patterns (§5 — includes 2 archive-specific forms beyond the 5-form canonical contract):
 
 | Pattern | Replacement |
 |---|---|
 | `[[Theses/TICKER - old_name]]` | `[[Theses/TICKER - new_name]]` |
-| `[[Theses/TICKER - old_name\|alias]]` | `[[Theses/TICKER - new_name\|alias]]` (preserve alias text) |
-| `[[Theses/TICKER - old_name#section]]` | `[[Theses/TICKER - new_name#section]]` (preserve section anchor) |
+| `[[Theses/TICKER - old_name\|alias]]` | `[[Theses/TICKER - new_name\|alias]]` (preserve alias) |
+| `[[Theses/TICKER - old_name#section]]` | `[[Theses/TICKER - new_name#section]]` (preserve anchor) |
 | `[[Theses/TICKER - old_name.md]]` | `[[Theses/TICKER - new_name.md]]` |
-| `[[TICKER - old_name]]` | `[[TICKER - new_name]]` (folder-less form, less common) |
+| `[[TICKER - old_name]]` | `[[TICKER - new_name]]` (folder-less, less common) |
 | `[[TICKER - old_name\|alias]]` | `[[TICKER - new_name\|alias]]` |
 | `[[TICKER - old_name#section]]` | `[[TICKER - new_name#section]]` |
 
-**Edit-per-file approach**: For each file with matches, use a single `Edit` with `replace_all: true` per pattern. Keeps each edit atomic and the failure blast-radius bounded.
+**Edit-per-file approach**: per file with matches, single `Edit` with `replace_all: true` per pattern. Atomic; bounded failure blast-radius.
 
-**Self-references in the renamed thesis itself**: the renamed thesis may contain wikilinks back to itself (e.g., template scaffolding). These also get rewritten in this step.
+**Self-references in renamed thesis**: covered by same rewrite (e.g., template scaffolding wikilinks back to the thesis itself).
 
-**Snapshot body rewrite — one exception**: Skip the just-created pre-rename snapshot from Step 3 (identify it by matching both the `snapshot_trigger: rename` frontmatter AND a `snapshot_batch` or filename that contains the current rename's HHMMSS stamp). That snapshot's body IS the pre-rename thesis state and must stay untouched so `/rollback` can recover the original content. All OTHER snapshots in `_Archive/Snapshots/` — whether or not they reference the renamed thesis — are eligible for body wikilink rewrites and should be processed normally. In practice, unrelated snapshots won't contain the renamed thesis's wikilinks so the grep will skip them; snapshots that DO reference the renamed thesis are exactly the ones that need updating.
+**Snapshot body rewrite exception** (§3.3): skip the just-created pre-rename snapshot from Step 3. Identify via `snapshot_trigger: rename` frontmatter + matching HHMMSS. That snapshot IS the pre-rename state — must stay untouched so `/rollback` recovers original content. All OTHER snapshots are eligible for body wikilink rewrites.
 
-**Trade-off acknowledged**: rewriting snapshot bodies means the snapshot no longer faithfully reproduces the vault state at snapshot time (wikilink text has drifted forward). The alternative — not rewriting — re-injects broken wikilinks on rollback. The forward-drift is the lesser evil because `/rollback` is the scenario that matters; a snapshot that can't cleanly restore is a dead snapshot.
+**Forward-drift trade-off** (§3.2): rewriting snapshot bodies means snapshots no longer faithfully reproduce vault state at snapshot time. Alternative (not rewriting) re-injects broken wikilinks on rollback. Forward-drift is lesser evil — a snapshot that can't cleanly restore is a dead snapshot.
 
-**Track**: list of files modified (split by live files vs. snapshot files for the Step 11 report), total wikilink count rewritten, **and a separate `failed_edits: [list]` accumulator for any Edit that errors during this step**.
+**Track**: list of files modified (split by live vs snapshot for Step 11 report), total wikilink count, `failed_edits: [list]` for any Edit that errors.
 
-**Failure handling**: If an `Edit` fails for any file (live or snapshot), do NOT abort the loop — continue with remaining files so the rename completes as much work as possible. Append the failed file path + reason to `failed_edits`. At the end of Step 5, if `failed_edits` is non-empty, write the **incomplete-rename marker** below.
+**Failure handling**: Edit fails for a file → do NOT abort loop. Continue with remaining. Append failed path + reason to `failed_edits`. End of Step 5, if `failed_edits` non-empty → write incomplete-rename marker (Step 5.5).
 
-### Step 5.5: Write `.rename_incomplete.TICKER` Marker (only if any Edit failed)
+### Step 5.5: Write `.rename_incomplete.TICKER` Marker (if any Edit failed)
 
-If `failed_edits` is empty, skip this sub-step.
+If `failed_edits` empty → skip.
 
-If `failed_edits` is non-empty, write `.rename_incomplete.TICKER` at vault root with the rename context, so `/lint` check #37 can surface this state and the user can repair without re-deriving what failed.
-
-> **Per-ticker filename**: the marker filename includes the TICKER suffix so multiple in-flight repairs (across different tickers) coexist as separate marker files. Each `/rename` operation only reads/writes the marker for its own ticker. This eliminates cross-ticker corruption that a single shared marker would cause.
+If non-empty → write `.rename_incomplete.TICKER` at vault root. Per-ticker filename (§2.1 — multiple in-flight repairs coexist).
 
 ```markdown
 ---
@@ -264,120 +257,118 @@ pointing to the now-missing path `[[Theses/TICKER - [old_name]]]`.
 
 ## Recovery
 
-For each failed file, manually replace the wikilink patterns from Step 5
-of `/rename` (7 patterns total) — old name → new name. Or close any process
-holding the file open and re-run:
+For each failed file, manually replace wikilink patterns from Step 5 of /rename
+(7 patterns total) — old name → new name. Or close any process holding the file
+open and re-run:
 
   /rename TICKER "[new_name]"
 
-`/rename`'s no-op detection (Step 1.4) will skip the filename move (already
-done) and re-attempt the wikilink rewrites for the still-stale files.
+/rename's repair detection (Step 1.3/1.4 exceptions) will skip the filename
+move (already done) and re-attempt wikilink rewrites for still-stale files.
 Successful re-attempts remove their entries here; when the failed list is
 empty, this marker is auto-deleted.
 
-DO NOT delete this marker manually unless you have verified all failed
-files have been repaired — `/lint` #37 uses it to track repair state.
+DO NOT delete this marker manually unless you have verified all failed files
+have been repaired — /lint #37 uses it to track repair state.
 ```
 
-**Append-only on re-runs (same-ticker, same-new_name only)**: If `.rename_incomplete.TICKER` already exists AND its `new_name:` matches the current run's new_name, READ it first. Merge the new failed_edits into the existing list (dedupe by file path), update the `batch:` field to the latest run's batch, and rewrite the file. Don't overwrite — accumulating across multiple repair attempts surfaces persistent problem files.
+**Append-only on re-runs** (§2.4): if `.rename_incomplete.TICKER` already exists AND `new_name:` matches current run, READ first. Merge new failed_edits into existing list (dedupe by file path), update `batch:` to latest run's batch, rewrite. Don't overwrite — accumulating across repair attempts surfaces persistent problem files.
 
-**Cross-new_name conflict prevention**: if `.rename_incomplete.TICKER` exists with a different `new_name:`, Step 1.4.5 has already aborted the run with the in-flight conflict guard. This sub-step never runs in that scenario.
+**Cross-new_name conflict**: handled by Step 1.4.5 guard. Never runs here.
 
-**Lifecycle**: deleted automatically when a subsequent `/rename` run completes with all wikilink rewrites succeeding (i.e., new `failed_edits` is empty AND prior `.rename_incomplete.TICKER`'s file list now resolves cleanly via re-attempted Edits). Until deletion, `/lint` #37 surfaces the marker as an Important issue. Do NOT include the failed list in the regular Step 11 report's success counts — they are tracked separately.
-
-## Step 6: Update Graph Adjacency Entry Header
+## Step 6: Update Graph Adjacency Entry Header (§4)
 
 Edit `_graph.md`:
-- Find heading: `### TICKER - [old_name]` in the `## Thesis Adjacency Index` section.
+- Find: `### TICKER - [old_name]` in `## Thesis Adjacency Index` section.
 - Replace with: `### TICKER - [new_name]`.
 
-If the heading is missing (graph stale), warn but do not fail: `⚠️ Graph adjacency entry for [TICKER] not found — graph is stale. Run /graph after rename to rebuild.`
+Missing heading (graph stale) → warn, do not fail: `⚠️ Graph adjacency entry for [TICKER] not found — graph is stale. Run /graph after rename to rebuild.`
 
-Also scan `## Cross-Thesis Clusters` table for cells containing the old name format. Replace with new name. (Note: most cluster references use `[[Theses/...]]` wikilinks, which Step 5 already handled. This catches any free-text occurrences.)
+Scan `## Cross-Thesis Clusters` table for cells containing old name format. Replace. (Most cluster references use `[[Theses/...]]` wikilinks — Step 5 handled. This catches free-text.)
 
-**Do NOT update `_graph.md` frontmatter `date:`.** The `date:` field is the watermark `/graph last` uses to detect changed files via `find -newermt "[date]"`. Advancing it here would silently mask any thesis modified before today but not yet captured by `/graph last` — those files would be excluded from the next `/graph last` change-detection set, leaving stale adjacency entries undetected. Watermark ownership belongs exclusively to `/graph`; `/rename` updates content of `_graph.md` (the adjacency entry header) but must not advance the watermark. The next `/graph last` will correctly re-extract this thesis (mtime advanced by the rename) plus any other pending changes.
+**Do NOT update `_graph.md` frontmatter `date:` or `last_graph_write:`** (§4.1). Watermark ownership is `/graph`'s. Advancing would silently mask pending changes from next `/graph last`. Next `/graph last` correctly re-extracts this thesis (mtime advanced by rename).
 
-**Graph validation**: After edits, re-read `_graph.md` and verify:
-1. YAML frontmatter parses without error.
-2. The new heading `### TICKER - [new_name]` exists in the adjacency index.
-3. The old heading `### TICKER - [old_name]` does not exist anywhere.
+**Graph validation**: re-read `_graph.md`. Verify:
+1. YAML frontmatter parses.
+2. New heading `### TICKER - [new_name]` exists in adjacency index.
+3. Old heading `### TICKER - [old_name]` does not exist anywhere.
 4. Adjacency entry count matches `theses:` frontmatter (±2).
 
-If any check fails: `⚠️ Graph may be corrupted by rename — [specific failure]. Run /graph to rebuild.`
+Any fail: `⚠️ Graph may be corrupted by rename — [specific failure]. Run /graph to rebuild.`
 
 ## Step 7: Update Sector Note
 
-If the thesis is `status: active` or `status: monitoring`, the sector note (resolved in Step 1.5) likely contains the thesis in its Active Theses section.
+If thesis is `status: active` or `status: monitoring`, sector note (resolved Step 1.5) likely contains thesis in Active Theses.
 
-Read the sector note. If it contains `[[Theses/TICKER - old_name]]` or `[[TICKER - old_name]]`:
-- These were already rewritten in Step 5 if grep covered the sector note. Verify via re-read.
-- If for any reason the wikilink wasn't caught (e.g., unusual format), apply targeted Edit here.
+Read sector note. If contains `[[Theses/TICKER - old_name]]` or `[[TICKER - old_name]]`:
+- Already rewritten in Step 5 if grep covered sector note. Verify via re-read.
+- If missed (unusual format), apply targeted Edit here.
 
-Skip if `status: draft` (draft theses aren't in sector notes per `/thesis` Step 5).
+Skip if `status: draft` (drafts aren't in sector notes per `/thesis` Step 5).
 
-## Step 8: Update Snapshot `snapshot_of:` Fields
+## Step 8: Update Snapshot `snapshot_of:` Fields (§3.4)
 
-For each `_Archive/Snapshots/*.md` whose frontmatter contains `snapshot_of: "[[Theses/TICKER - [old_name]]]"`:
-1. Read the snapshot's frontmatter.
-2. Apply targeted `Edit`: replace `snapshot_of: "[[Theses/TICKER - [old_name]]]"` with `snapshot_of: "[[Theses/TICKER - [new_name]]]"`.
+For each `_Archive/Snapshots/*.md` with `snapshot_of: "[[Theses/TICKER - [old_name]]]"`:
+1. Read frontmatter.
+2. Targeted `Edit`: `snapshot_of: "[[Theses/TICKER - [old_name]]]"` → `snapshot_of: "[[Theses/TICKER - [new_name]]]"`.
 
-This preserves `/rollback` functionality. Without it, `/rollback` would read the snapshot's `snapshot_of:` field, look for the old path, and fail to find the original (or worse, recreate at the old path causing filename split).
+Preserves `/rollback` functionality. Without this, `/rollback` would read `snapshot_of:`, look for old path, fail to find original (or recreate at old path causing filename split).
 
-**Exception**: Skip snapshots whose `snapshot_trigger:` is `rename` and `rename_target:` matches the new path — these are this skill's own snapshots (Step 3) and should retain the old `snapshot_of:` reference for accurate rollback semantics (the snapshot captures the file BEFORE the rename, so `snapshot_of:` correctly references the pre-rename path).
+**Exception** (§3.3): skip snapshots whose `snapshot_trigger: rename` AND `rename_target:` matches the new path — these are this skill's own snapshots (Step 3); must retain old `snapshot_of:` reference for accurate rollback semantics.
 
 ## Step 9: Update _hot.md Free-Text Mentions
 
-Most `_hot.md` references use `[[Theses/...]]` wikilinks — already handled in Step 5. This step catches free-text mentions like:
-
+Most `_hot.md` references use `[[Theses/...]]` — handled by Step 5. This step catches free-text:
 - `Recent Conviction Changes`: bullets may say `**TICKER - old_name**: ...` → replace.
-- `Active Research Thread`: prose may mention the old name in narrative form.
-- `Latest Sync` / `Sync Archive`: descriptions may include the old name.
+- `Active Research Thread`: narrative prose mentions.
+- `Latest Sync` / `Sync Archive`: descriptions.
 
-Use `Edit` with `replace_all: true` for any literal occurrence of `TICKER - [old_name]` (not in wikilink syntax). Apply word-boundary care — don't accidentally match `TICKER - old_name` substring inside a longer word.
+Use `Edit` with `replace_all: true` for literal `TICKER - [old_name]` (not in wikilink syntax). Word-boundary care — don't match substring inside longer words.
 
-**Word cap**: After edits, check `_hot.md` total word count. If over 2,000 words (unlikely from rename alone), prune `## Sync Archive` entries (oldest first) until under cap.
+**Word cap**: after edits, check `_hot.md` total. Over 2,000 (unlikely from rename) → prune `## Sync Archive` oldest first.
 
 ## Step 10: Append Log Entry to Renamed Thesis
 
-Append to the renamed thesis's `## Log` section:
+Append to renamed thesis's `## Log`:
 
 ```
 ### YYYY-MM-DD
 - Renamed file: "TICKER - [old_name]" → "TICKER - [new_name]". [N] inbound wikilinks rewritten across [M] files. Snapshot: [[_Archive/Snapshots/TICKER - [old_name] (pre-rename YYYY-MM-DD-HHMMSS)]]
 ```
 
+Prefix `"Renamed file:"` — `/sync` Step 2.5 skill-origin classification + Step 3e drift exclusion (registry §15).
+
 ## Step 11: Report
 
-- **Renamed**: `Theses/TICKER - [old_name].md` → `Theses/TICKER - [new_name].md` (or `Repair re-run — mv skipped (already done)` if entered via incomplete-rename marker)
-- **Pre-flight check**: `passed ([N] files reachable)` or `aborted ([M] unreachable — no changes made)`
-- **Wikilinks rewritten (live files)**: [count] across [list of live file paths in Theses/, Sectors/, Macro/, Research/, _hot.md]
-- **Wikilinks rewritten (snapshot bodies)**: [count] across [list of `_Archive/Snapshots/*.md` paths whose bodies were updated]. Excludes the pre-rename snapshot created in Step 3.
-- **Wikilink update failures** (if any): [list files that failed Edit operations]. **`.rename_incomplete.TICKER` marker**: `created` | `updated (appended new failures to existing marker for same new_name)` | `n/a (no failures)`
-- **Repair status** (if `.rename_incomplete.TICKER` was processed in this run):
-  - **Resolved this run**: [list paths that were retried successfully and removed from the marker]
-  - **Still failing**: [list paths still in the marker — manual fix or next re-run]
+- **Renamed**: `Theses/TICKER - [old_name].md` → `Theses/TICKER - [new_name].md` | `Repair re-run — mv skipped (already done)`
+- **Pre-flight check**: `passed ([N] files reachable)` | `aborted ([M] unreachable — no changes made)`
+- **Wikilinks rewritten (live files)**: [count] across [live file paths in Theses/, Sectors/, Macro/, Research/, _hot.md]
+- **Wikilinks rewritten (snapshot bodies)**: [count] across [`_Archive/Snapshots/*.md` paths]. Excludes pre-rename snapshot from Step 3.
+- **Wikilink update failures** (if any): [list files]. **`.rename_incomplete.TICKER` marker**: `created` | `updated (appended new failures for same new_name)` | `n/a`
+- **Repair status** (if marker processed this run):
+  - **Resolved this run**: [paths retried successfully and removed from marker]
+  - **Still failing**: [paths still in marker]
   - **Marker state**: `cleared (all repairs succeeded — file deleted)` | `retained ([N] files still need repair)`
-- **Graph adjacency entry**: header updated OR `⚠️ stale graph — entry not found, run /graph`
-- **Sector note**: updated as `[sector_name]` (resolution `[exact|normalized|substring]`) OR `skipped (draft status)` OR `skipped (no matching sector note)`
+- **Graph adjacency entry**: header updated | `⚠️ stale graph — entry not found, run /graph`
+- **Sector note**: updated as `[sector_name]` (resolution `[exact|normalized|substring]`) | `skipped (draft status)` | `skipped (no matching sector note)`
 - **Snapshots updated**: [count] `snapshot_of:` fields adjusted
 - **_hot.md**: [count] free-text mentions replaced
 - **Pre-rename snapshot**: `[[_Archive/Snapshots/TICKER - [old_name] (pre-rename YYYY-MM-DD-HHMMSS)]]`
 - **Batch ID**: `rename-YYYY-MM-DD-HHMMSS`
 
-**To undo this rename**: run `/rename TICKER "[old_name]"` (symmetric inverse). The pre-rename snapshot is also available via `/rollback TICKER` → select `(pre-rename)` snapshot, but rollback alone restores file content only; the filename revert and inbound wikilink revert require running this skill in reverse.
+**To undo this rename**: run `/rename TICKER "[old_name]"` (symmetric inverse). Pre-rename snapshot also available via `/rollback TICKER` → select `(pre-rename)` snapshot, but rollback alone restores content only; filename revert + inbound wikilink revert require running this skill in reverse.
 
 ### Marker auto-cleanup contract
 
-If this run started with `.rename_incomplete.TICKER` present (repair re-run), at the end of Step 5 check whether all originally-listed failed files were successfully retried this run. If `failed_edits` after this run's retries is empty (every prior failure resolved AND no new failures), delete the marker:
+If this run started with `.rename_incomplete.TICKER` (repair re-run), at end of Step 5 check whether all originally-listed failed files were successfully retried. If `failed_edits` empty after retries (every prior failure resolved AND no new failures) → delete marker:
 ```bash
 rm -f ".rename_incomplete.TICKER"
 ```
-Otherwise, rewrite the marker with the still-failing subset (drop resolved entries, keep unresolved, plus any new failures from this run). The marker thus shrinks monotonically across repair re-runs until empty, then disappears.
 
-> **Per-ticker scope**: this skill only touches `.rename_incomplete.TICKER` for the current run's TICKER. Markers for other tickers (e.g., `.rename_incomplete.META` while running `/rename SHOP`) are untouched. `/lint` #37 globs `.rename_incomplete.*` to surface every in-flight repair independently.
+Otherwise rewrite marker with still-failing subset (drop resolved, keep unresolved, plus new failures). Monotonic shrink across re-runs until empty, then disappears.
 
-## Edge cases
+## Edge cases (§8 — all out-of-scope)
 
-- **Rename across ticker change** (e.g., `FB - Facebook` → `META - Meta`): out of scope — TICKER must be stable. For ticker changes, manually create a new thesis with `/thesis META`, copy content, archive the old via `/status FB active→closed`. Future enhancement could add a `/reticker` skill.
-- **Renamed thesis already in `_Archive/`** (closed): out of scope — `/rename` operates on active/monitoring/draft theses in `Theses/`. To rename an archived thesis, manually move + adjust.
-- **Old name contains regex special characters**: glob and grep must escape correctly. The rename procedure assumes literal string matching; alphanumeric and common punctuation (spaces, hyphens, ampersands) are fine, but unusual symbols (parentheses, braces, dollar signs) should prompt explicit escaping confirmation.
+- **Rename across ticker change** (`FB - Facebook` → `META - Meta`): TICKER must be stable. Manual workaround: `/thesis META` + copy content + `/status FB active→closed`.
+- **Renaming archived theses**: `/rename` operates on active/monitoring/draft in `Theses/`. Manual mv + registry edit for archived.
+- **Old name with regex special chars**: glob/grep assume literal string matching. Unusual symbols (parens, braces, `$`) prompt explicit escaping confirmation.
