@@ -29,6 +29,13 @@
 # Written by /status Step 7.6 and /prune Stage 4.5 on closure; read and cleared by /graph last
 # to re-extract adjacency for neighbor theses that cross-referenced the now-archived thesis.
 .graph_invalidations
+# Written by every state-modifying skill at Step 0.1 and released at skill end (preflight Procedure 1).
+# Token-keyed concurrency lock — committing a live lock would block every machine that pulls the repo.
+.vault-lock
+.vault-lock.*
+# Written by /rename Step 5.5 on post-mv wikilink-rewrite failure (per-ticker).
+# Hard-blocks every ticker-scoped skill on TICKER until /rename repair re-run clears it; never persistent.
+.rename_incomplete.*
 
 # ============================================
 # Secrets — NEVER commit these

@@ -1,20 +1,18 @@
 ---
 type: shared-contract
 purpose: Canonical compression, section ordering, and word-budget policy for `_hot.md`. Every skill that writes to `_hot.md` follows this contract.
-last_reviewed: 2026-04-20
+last_reviewed: 2026-04-19
 ---
 
 <!--
 This file is a load-bearing contract. `_hot.md` schema drift causes silent no-ops across 11 skills. `/lint #35` enforces structural compliance (section headings); this contract additionally specifies compression behavior, per-section budgets, and cap handling.
 
-Consumers: `/sync`, `/status`, `/thesis`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/prune`, `/rollback`, `/catalyst`.
+Consumers: `/sync`, `/status`, `/thesis`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/prune`, `/rollback`, `/catalyst`, `/brief` (Active Research Thread + Open Questions only), `/rename` (free-text mentions of the old name).
 -->
 
 # `_hot.md` Compression & Budget Contract
 
-> **Why this exists**: the prior 2,000-word hard cap with unspecified compression behavior produced drift. Different skills compressed different sections with different heuristics; compaction lost high-signal context (conviction rationales, drift flags) while preserving low-signal context (old sync archive entries). This contract specifies per-section compression policy and a soft/hard cap pair so compaction pressure is visible and actionable.
->
-> **2026-04-20 cap raise**: soft cap moved from 2,000 → **4,000** and hard cap from 2,500 → **5,000** to accommodate richer session context without triggering compression during normal work. Per-section budget shares (percent of soft cap) unchanged; absolute word counts scale accordingly.
+> **Why this exists**: the prior single-value hard cap with unspecified compression behavior produced drift. Different skills compressed different sections with different heuristics; compaction lost high-signal context (conviction rationales, drift flags) while preserving low-signal context (old sync archive entries). This contract specifies per-section compression policy and a soft/hard cap pair so compaction pressure is visible and actionable.
 
 ## Section budget table
 

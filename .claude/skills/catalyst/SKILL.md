@@ -154,23 +154,8 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — those are
 
 4. **Portfolio Snapshot**: not touched by `/catalyst`.
 
-**Word cap**: After edits, follow the compression trigger order in `.claude/skills/_shared/hot-md-contract.md` §"Compression trigger order". Soft cap 4,000 words, hard cap 5,000 words (abort `_hot.md` write on hard-cap breach; `_catalyst.md` regeneration still succeeds).
+**Word cap**: After edits, check total word count. If over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap. If over 5,000 (hard cap), abort `_hot.md` update per contract.
 
 ## Phase 6: Report
 
 Report to user: next 2 weeks of catalysts, any dangerous clusters, and the list of theses with no catalyst (these need attention or pruning). Include one line summarizing the `_hot.md` update: `_hot.md: Active Research Thread refreshed; [K] no-catalyst tickers added to Open Questions.`
-
-## Phase 7: Release lock
-
-After Phase 6's report is complete, release the vault lock per `.claude/skills/_shared/preflight.md` §1.7 as the skill's FINAL Bash block. Runs unconditionally — whether `_catalyst.md` regeneration succeeded or the skill hit a non-fatal error during web enrichment.
-
-```bash
-# Lock release — verify ownership before rm (preflight §1.5)
-LOCK_FILE=".vault-lock"
-EXPECTED_TOKEN="<paste-token-captured-from-Phase-0.1>"
-if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
-  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ==="
-else
-  echo "⚠️ Lock ownership check failed at release — skipping rm to avoid stealing another skill's lock."
-fi
-```
