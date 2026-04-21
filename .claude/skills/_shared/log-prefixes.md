@@ -1,7 +1,7 @@
 ---
 type: shared-contract
 purpose: Single source of truth for Log-entry prefixes that carry cross-skill semantic weight.
-last_reviewed: 2026-04-19
+last_reviewed: 2026-04-21
 ---
 
 <!--
@@ -379,6 +379,27 @@ example: |
   ### 2026-04-19
   - Renamed file: "SQ - Square" → "SQ - Block". 7 inbound wikilinks rewritten across 5 files. Snapshot: [[_Archive/Snapshots/SQ - Square (pre-rename 2026-04-19-143055)]]
 breakage_if_changed: "/sync Step 2.5 stops classifying post-rename theses as skill-origin → Step 4 fires on the next default sync and rewrites sector analytical text citing no actual research delta. /sync Step 3e stops excluding rename entries → drift-detection window fills with non-sentiment rename records, biasing drift signal on recently renamed theses."
+```
+
+### 16. Comparison
+
+```yaml
+prefix: "Comparison "
+case_sensitive: true
+match_anchor: line-prefix
+producer:
+  skill: /compare
+  step: Phase 5.2 (per affected thesis log append)
+  emits_when: /compare successfully appends Log entry to thesis
+consumers:
+  - skill: /sync
+    step: Step 2.5 skill-origin classification
+    role: skill-origin classifier (/compare Phase 5.5 already updated sector competitive-dynamics / value-chain sections and added the comparison research note to the sector's Related Research + Log — Step 4.-1 / 4.0 idempotency skip prevents silently overwriting /compare's analysis with /sync's generic re-synthesis)
+  - skill: audit-only (human-readable record of cross-thesis competitive work)
+example: |
+  ### 2026-04-21
+  - Comparison [[Research/2026-04-21 - BESI vs AMAT - Competitive Comparison]]: BESI's hybrid-bonding moat widening vs AMAT's bevel-etch position — conviction strengthened, design-win momentum confirmed
+breakage_if_changed: "/sync Step 2.5 stops classifying post-/compare theses as skill-origin. Combined with /compare's sector Related Research + sector Log idempotency markers (Phase 5.5), losing this prefix causes /sync Step 4 to re-propagate the comparison research note to the same sector sections /compare just edited — silently overwriting /compare's nuanced competitive analysis with /sync's generic synthesis. The trailing space is significant — it distinguishes the prefix from prose mentions of 'comparison' and mirrors the 'Scenario ' (#10) pattern."
 ```
 
 ---

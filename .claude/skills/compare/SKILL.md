@@ -198,10 +198,10 @@ source_type: comparison
 
 **Vault updates** — ONLY for tickers with existing thesis notes. Skip web-supplemented tickers (§2.3).
 
-For each thesis with existing note, attempt Log append (max 2 lines):
+For each thesis with existing note, attempt Log append (max 2 lines). Prefix `"Comparison "` (trailing space significant — registry §16 in `_shared/log-prefixes.md`) marks this as skill-origin for `/sync` Step 2.5 and pairs with the sector-side idempotency markers in Phase 5.5 to prevent `/sync` Step 4 from silently overwriting the sector analytical edits this skill just applied:
 ```
 ### YYYY-MM-DD
-- [[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]: [key competitive insight] — conviction [unchanged/strengthened/weakened + reason]
+- Comparison [[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]: [key competitive insight] — conviction [unchanged/strengthened/weakened + reason]
 ```
 
 **Track per-ticker outcomes**: `succeeded: [tickers]` and `failed: [tickers, reason]`. Failure = Log append Edit failed (file locked, missing `## Log`, malformed frontmatter). Do NOT abort loop on single failure.
@@ -278,7 +278,23 @@ for sector_note_path, thesis_list, confidence in target_sectors:
                    f"Re-run /compare after resolving the sector write issue.")
 ```
 
-**`apply_sector_edit`**: targeted `Edit` operations on sector note — competitive dynamics, value chain, comparison tables. Each Edit is atomic; single Edit failure triggers outer abort + rollback.
+**`apply_sector_edit`**: targeted `Edit` operations on sector note. Covers FOUR edit surfaces in a fixed order — each atomic, single Edit failure triggers outer abort + rollback:
+
+1. **Competitive dynamics** — revise relative-positioning prose where A vs B comparison changes the sector narrative.
+2. **Value chain / comparison tables** — update tables that list A and B side-by-side.
+3. **`## Related Research` — append research-note wikilink** (idempotency marker, §4.5 — pairs with `/sync` Step 4.0 sub-step 1):
+   ```
+   - [[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]
+   ```
+   Skip if already present (idempotent on repair re-runs).
+4. **`## Log` — append dated entry referencing the research note** (idempotency marker, §4.5 — pairs with `/sync` Step 4.0 sub-step 2):
+   ```
+   ### YYYY-MM-DD
+   - Comparison [[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]: [one-line sector-level takeaway — e.g., "competitive dynamics revised: A's moat widens vs B"]
+   ```
+   Same `Comparison ` prefix as thesis Log entries (registry §16). If sector note has no `## Log` section, graceful-skip this sub-step per `_shared/preflight.md` Procedure 4 and log `ℹ️ Sector [name] has no ## Log — Related Research wikilink alone serves as idempotency marker.`
+
+**Why sub-steps 3 and 4 are load-bearing** (§4.5 — C1 fix): without them, `/sync` Step 4.0 idempotency check fails to detect that `/compare` already propagated the research note to this sector. `/sync` Step 4a/4b then re-edits the same competitive-dynamics / value-chain sections from scratch, silently overwriting `/compare`'s nuanced analysis. Sub-step 3 satisfies Step 4.0 sub-step 1 (wikilink present in `## Related Research`); sub-step 4 satisfies Step 4.0 sub-step 2 (today-dated Log entry referencing source). Either alone triggers the idempotency skip, but both are emitted for robustness.
 
 **`abort_transaction` surfaces** (§4.4):
 - Sectors successfully edited (now rolled back to pre-compare state): list

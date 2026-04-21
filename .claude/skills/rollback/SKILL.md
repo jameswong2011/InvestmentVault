@@ -244,7 +244,7 @@ Cascade options:
   (c) Cancel.
 ```
 
-Option (b) execution: restore thesis → restore sector → if closure: **un-archive with collision check (C5)** → clear matching entries from `.graph_invalidations` → revert `_hot.md` Recent Conviction Changes. On any sub-step failure → abort remaining, report. Pre-rollback safety snapshot (Step 4) covers worst case.
+Option (b) execution: restore thesis → restore sector → if closure: **un-archive with collision check (C5)** → remove matching rows from `.archive_ticker_registry.md` (Step 6.2a — H1 fix) → clear matching entries from `.graph_invalidations` (Step 6.2b — H2 fix) → revert `_hot.md` Recent Conviction Changes. On any sub-step failure → abort remaining, report. Pre-rollback safety snapshot (Step 4) covers worst case.
 
 **Un-archive collision check (C5)**: before `mv _Archive/TICKER - Name.md Theses/TICKER - Name.md`, probe the destination:
 
@@ -534,6 +534,73 @@ mv "_Archive/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name
 ```
 
 Add `snapshot_of`, `snapshot_date`, `snapshot_trigger: rollback-cleanup`, `snapshot_batch: rollback-YYYY-MM-DD-HHMMSS` (reuse Step 4 batch ID).
+
+### 6.2a: Remove stale archive-registry entries (closure-reversal only — H1 fix)
+
+**Only runs when Step 2 detected the file was recreated (closure reversal). Skip for standard rollbacks.**
+
+`.archive_ticker_registry.md` carries `TICKER|archived_filename|YYYY-MM-DD|conviction|rationale` rows appended by `/status` Step 7.5b and `/prune` Stage 4 at closure time. A closure-reversal makes matching rows stale — the thesis is back in `Theses/`, the archived file (if any) has been moved to Snapshots/ by 6.2, and the row now points to a non-existent archive target.
+
+Leaving stale rows in place causes `/thesis TICKER` Signal C (archive-collision detection) to emit spurious verification work on every subsequent invocation. Remove matching rows:
+
+```bash
+if [ -f .archive_ticker_registry.md ]; then
+  # Remove any row whose first pipe-delimited field equals TICKER
+  # Preserve header line and rows for OTHER tickers untouched.
+  awk -F'|' -v t="$TICKER" 'NR==1 || $1!=t' .archive_ticker_registry.md > .archive_ticker_registry.md.tmp
+  mv .archive_ticker_registry.md.tmp .archive_ticker_registry.md
+  
+  # If registry now contains only the header (or is empty), remove the file
+  # so /lint #46 and /thesis Signal C skip the Grep entirely.
+  if [ $(grep -cv '^#\|^$' .archive_ticker_registry.md) -eq 0 ]; then
+    rm -f .archive_ticker_registry.md
+  fi
+fi
+```
+
+**Note (preserves audit trail via snapshot)**: the removed rows are still recoverable — they exist in the thesis's `## Log` "CLOSED" entry (preserved by snapshot → restore). If the user needs the original closure date or rationale, read the Log from the pre-rollback safety snapshot (Step 4). Registry is a lookup aid, not authoritative history.
+
+**Multiple historical closures**: if TICKER was closed, rolled back, closed again, rolled back, … the registry may contain multiple rows for TICKER (H4 scenario). The `$1!=t` filter removes ALL rows matching TICKER — consistent with the semantics that the current rollback restores the ticker to live state and obsoletes every prior archive record for it. `/thesis` Signal C verifies file existence independently; if a prior archive file is still in `_Archive/` after this rollback (unusual — would require a second closure that `/prune` missed), `/thesis` falls back to Signal A (filename glob) and Signal D (snapshot trail).
+
+### 6.2b: Clear matching `.graph_invalidations` entries (closure-reversal only — H2 fix)
+
+**Only runs when Step 2 detected the file was recreated. Skip for standard rollbacks.**
+
+`.graph_invalidations` accumulates neighbor paths appended by `/status` Step 7.6b and `/prune` Stage 4.5 at closure time. When the closure is reversed, the entries for the restored thesis's neighbors are no longer semantically needed (their adjacency back to TICKER is valid again — no re-derivation required for the closure's sake).
+
+The entries are idempotent (running `/graph last` on them produces correct output regardless), so clearing them is hygiene rather than correctness. But leaving them in place causes `/graph last` to re-extract neighbors that don't need re-extraction, inflating graph-rebuild cost on the user's mandatory post-rollback run (§6.3).
+
+Remove entries matching neighbors referenced from the restored thesis body:
+
+```bash
+if [ -f .graph_invalidations ] && [ -f "$RESTORED_PATH" ]; then
+  # Extract neighbor thesis paths from restored thesis's wikilinks.
+  # Matches [[Theses/NEIGHBOR - Name]], [[Theses/NEIGHBOR - Name|alias]],
+  # [[Theses/NEIGHBOR - Name#section]], [[Theses/NEIGHBOR - Name.md]] —
+  # covers 4 of the 5 canonical wikilink forms per _shared/wikilink-forms.md
+  # (folder-less form #5 is not used in thesis-to-thesis references).
+  NEIGHBORS=$(grep -oE '\[\[Theses/[^]|#]+' "$RESTORED_PATH" 2>/dev/null \
+    | sed 's|^\[\[||; s|\.md$||' \
+    | sort -u)
+  
+  if [ -n "$NEIGHBORS" ]; then
+    cp .graph_invalidations .graph_invalidations.tmp
+    while IFS= read -r n; do
+      # Remove any line matching "$n" or "$n.md" exactly
+      grep -vE "^${n}(\.md)?\$" .graph_invalidations.tmp > .graph_invalidations.tmp.new \
+        && mv .graph_invalidations.tmp.new .graph_invalidations.tmp
+    done <<< "$NEIGHBORS"
+    mv .graph_invalidations.tmp .graph_invalidations
+    
+    # If file now empty, remove so /graph last doesn't process empty input
+    [ -s .graph_invalidations ] || rm -f .graph_invalidations
+  fi
+fi
+```
+
+**Safety**: if a neighbor path is in `.graph_invalidations` for a DIFFERENT reason (a separate closure that happens to reference the same neighbor), we could theoretically remove it prematurely. In practice this is safe — the neighbor's re-extraction on next `/graph last` will still produce correct adjacency from the current thesis body. Worst case: a second closure's invalidation is consumed one `/graph last` later than intended, still idempotent.
+
+**Fallback — clearing skipped**: if `$RESTORED_PATH` doesn't exist at this step (shouldn't happen — Step 5 wrote it), log `ℹ️ Skipping .graph_invalidations cleanup — restored thesis path not readable. Run /graph (full) to ensure graph consistency.` and proceed.
 
 ### 6.2.5: Intervening-neighbor Log scan (recreated-file rollbacks only)
 

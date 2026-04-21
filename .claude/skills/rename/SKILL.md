@@ -228,11 +228,13 @@ Seven wikilink patterns (§5 — includes 2 archive-specific forms beyond the 5-
 
 **Failure handling**: Edit fails for a file → do NOT abort loop. Continue with remaining. Append failed path + reason to `failed_edits`. End of Step 5, if `failed_edits` non-empty → write incomplete-rename marker (Step 5.5).
 
+**Cross-step failure accumulator initialization (H3 fix)**: at the start of Step 5, also initialize an empty `all_failed_ops: []` list in working memory. Steps 6 through 10 append to this list on any Edit / validation / Bash failure. Step 10.5 consolidates into the marker. Section `## Failed operations (Steps 6-10)` of the marker captures everything beyond Step 5's wikilink failures.
+
 ### Step 5.5: Write `.rename_incomplete.TICKER` Marker (if any Edit failed)
 
-If `failed_edits` empty → skip.
+If `failed_edits` empty → skip Step 5.5 write; Step 10.5 will still write the marker later if `all_failed_ops` accumulates.
 
-If non-empty → write `.rename_incomplete.TICKER` at vault root. Per-ticker filename (§2.1 — multiple in-flight repairs coexist).
+If non-empty → write `.rename_incomplete.TICKER` at vault root. Per-ticker filename (§2.1 — multiple in-flight repairs coexist). The marker created here includes an empty `## Failed operations (Steps 6-10)` section that Step 10.5 populates on demand.
 
 ```markdown
 ---
@@ -246,33 +248,55 @@ date: YYYY-MM-DD
 
 # Incomplete Rename
 
-`/rename TICKER "[new_name]"` completed the move and most wikilink rewrites,
-but [N] file(s) failed Edit operations. These files retain stale wikilinks
-pointing to the now-missing path `[[Theses/TICKER - [old_name]]]`.
+`/rename TICKER "[new_name]"` completed the move but left [N] file(s) with
+stale wikilinks and/or [M] follow-up operation(s) in a partial state. These
+must be repaired before downstream ticker-scoped skills operate on TICKER.
 
-## Failed files
+## Failed files (Step 5 — wikilink rewrites)
+
+*(empty if all Step 5 wikilink rewrites succeeded; populated by Step 5.5)*
 
 - `Theses/SOMEOTHER - Foo.md` — reason: [Edit error: file lock | permission denied | concurrent modification]
 - `_Archive/Snapshots/X.md` — reason: ...
 
+## Failed operations (Steps 6–10)
+
+*(empty if Steps 6-10 succeeded; populated or updated by Step 10.5 — H3 fix)*
+
+- Step 6 (graph adjacency header): _graph.md — adjacency entry `### [TICKER] - [old_name]` not found (graph stale)
+  - Recovery: run `/graph` (full rebuild) after the marker is cleared — re-derives header from current filename
+- Step 7 (sector note Active Theses): Sectors/[Sector Name].md — [specific failure — e.g., sector-resolution substring confidence declined, Edit lock]
+  - Recovery: manually replace `[[Theses/[TICKER] - [old_name]]]` → `[[Theses/[TICKER] - [new_name]]]` in the sector's Active Theses section, then remove this bullet from the marker
+- Step 8 (snapshot `snapshot_of:` field): _Archive/Snapshots/[Snapshot Name].md — Edit failed
+  - Recovery: manually edit the snapshot's frontmatter `snapshot_of: "[[Theses/[TICKER] - [old_name]]]"` → `"[[Theses/[TICKER] - [new_name]]]"`
+- Step 8.5 (archive registry row rewrite): .archive_ticker_registry.md — [awk/mv error]
+  - Recovery: manually replace `[TICKER] - [old_name]` → `[TICKER] - [new_name]` in the `archived_filename` column (second pipe-delimited field) of every row whose first field is `[TICKER]`
+- Step 9 (_hot.md free-text mentions): _hot.md — Edit failed ([N] mentions unresolved)
+  - Recovery: manually replace `[TICKER] - [old_name]` → `[TICKER] - [new_name]` in free-text mentions (Active Research Thread narrative, Recent Conviction Changes bullets, etc.)
+- Step 10 (thesis Log append): Theses/[TICKER] - [new_name].md — Edit failed
+  - Recovery: manually append the `Renamed file:` Log entry per the format in `rename/SKILL.md` Step 10
+
 ## Recovery
 
-For each failed file, manually replace wikilink patterns from Step 5 of /rename
-(7 patterns total) — old name → new name. Or close any process holding the file
-open and re-run:
+Re-run:
 
   /rename TICKER "[new_name]"
 
-/rename's repair detection (Step 1.3/1.4 exceptions) will skip the filename
-move (already done) and re-attempt wikilink rewrites for still-stale files.
-Successful re-attempts remove their entries here; when the failed list is
-empty, this marker is auto-deleted.
+/rename's repair detection (Step 1.3/1.4 exceptions) skips the filename move
+(already done) and retries:
+  - All "Failed files" wikilink rewrites (Step 5)
+  - All "Failed operations" bullets above (Steps 6–10 — H3 fix)
 
-DO NOT delete this marker manually unless you have verified all failed files
-have been repaired — /lint #37 uses it to track repair state.
+Successful retries remove their entries from the respective list. When both
+lists are empty, this marker is auto-deleted.
+
+/lint #37 surfaces this marker until every listed repair succeeds.
+
+DO NOT delete this marker manually unless you have verified every failed file
+and operation has been repaired externally.
 ```
 
-**Append-only on re-runs** (§2.4): if `.rename_incomplete.TICKER` already exists AND `new_name:` matches current run, READ first. Merge new failed_edits into existing list (dedupe by file path), update `batch:` to latest run's batch, rewrite. Don't overwrite — accumulating across repair attempts surfaces persistent problem files.
+**Append-only on re-runs** (§2.4): if `.rename_incomplete.TICKER` already exists AND `new_name:` matches current run, READ first. Merge new `failed_edits` into existing "Failed files" list (dedupe by file path) and merge new `all_failed_ops` into existing "Failed operations" list (dedupe by `(step, target)` tuple), update `batch:` to latest run's batch, rewrite. Don't overwrite — accumulating across repair attempts surfaces persistent problem files and ops.
 
 **Cross-new_name conflict**: handled by Step 1.4.5 guard. Never runs here.
 
@@ -282,7 +306,13 @@ Edit `_graph.md`:
 - Find: `### TICKER - [old_name]` in `## Thesis Adjacency Index` section.
 - Replace with: `### TICKER - [new_name]`.
 
-Missing heading (graph stale) → warn, do not fail: `⚠️ Graph adjacency entry for [TICKER] not found — graph is stale. Run /graph after rename to rebuild.`
+Missing heading (graph stale) → warn + append to `all_failed_ops` (H3 fix):
+```
+- Step 6 (graph adjacency header): _graph.md — adjacency entry for [TICKER] not found (graph stale)
+  - Recovery: run /graph (full) after marker clears — rebuilds adjacency index from current filenames
+```
+
+Emit user-visible warning: `⚠️ Graph adjacency entry for [TICKER] not found — graph is stale. Run /graph after rename to rebuild.` Continue skill — do not fail.
 
 Scan `## Cross-Thesis Clusters` table for cells containing old name format. Replace. (Most cluster references use `[[Theses/...]]` wikilinks — Step 5 handled. This catches free-text.)
 
@@ -294,7 +324,11 @@ Scan `## Cross-Thesis Clusters` table for cells containing old name format. Repl
 3. Old heading `### TICKER - [old_name]` does not exist anywhere.
 4. Adjacency entry count matches `theses:` frontmatter (±2).
 
-Any fail: `⚠️ Graph may be corrupted by rename — [specific failure]. Run /graph to rebuild.`
+Any fail: emit `⚠️ Graph may be corrupted by rename — [specific failure]. Run /graph to rebuild.` AND append to `all_failed_ops`:
+```
+- Step 6 (graph validation): _graph.md — [specific failure: YAML parse | duplicate heading | old heading remains | count mismatch]
+  - Recovery: run /graph (full rebuild) to regenerate graph from current filenames
+```
 
 ## Step 7: Update Sector Note
 
@@ -306,6 +340,13 @@ Read sector note. If contains `[[Theses/TICKER - old_name]]` or `[[TICKER - old_
 
 Skip if `status: draft` (drafts aren't in sector notes per `/thesis` Step 5).
 
+**Failure handling (H3 fix)**: if sector-resolution returned `substring` confidence and user declined, OR if the targeted Edit here fails, append to `all_failed_ops`:
+```
+- Step 7 (sector note Active Theses): Sectors/[Sector Name].md — [substring-confidence declined | Edit error: specific reason]
+  - Recovery: manually replace [[Theses/[TICKER] - [old_name]]] → [[Theses/[TICKER] - [new_name]]] in the sector's Active Theses section
+```
+If sector-resolution returned `none` (no matching sector note), this is NOT a failure — log `ℹ️ Sector note skipped — no matching Sectors/*.md for frontmatter [sector]. Skipping Step 7.` and continue; the thesis's sector frontmatter is the authoritative signal and `/thesis` Signal C handles orphans.
+
 ## Step 8: Update Snapshot `snapshot_of:` Fields (§3.4)
 
 For each `_Archive/Snapshots/*.md` with `snapshot_of: "[[Theses/TICKER - [old_name]]]"`:
@@ -315,6 +356,45 @@ For each `_Archive/Snapshots/*.md` with `snapshot_of: "[[Theses/TICKER - [old_na
 Preserves `/rollback` functionality. Without this, `/rollback` would read `snapshot_of:`, look for old path, fail to find original (or recreate at old path causing filename split).
 
 **Exception** (§3.3): skip snapshots whose `snapshot_trigger: rename` AND `rename_target:` matches the new path — these are this skill's own snapshots (Step 3); must retain old `snapshot_of:` reference for accurate rollback semantics.
+
+**Failure handling (H3 fix)**: for each snapshot whose Edit fails, append to `all_failed_ops` (one entry per failed snapshot):
+```
+- Step 8 (snapshot `snapshot_of:` field): _Archive/Snapshots/[Snapshot Name].md — [Edit error: specific reason]
+  - Recovery: manually edit the snapshot's frontmatter `snapshot_of: "[[Theses/[TICKER] - [old_name]]]"` → `"[[Theses/[TICKER] - [new_name]]]"`
+```
+Do NOT abort the loop — continue with remaining snapshots.
+
+## Step 8.5: Update `.archive_ticker_registry.md` Historical Rows (H4 fix)
+
+`.archive_ticker_registry.md` carries `TICKER|archived_filename|YYYY-MM-DD|conviction|rationale` rows. If TICKER was previously closed (under `[old_name]`), then resurrected via `/rollback` (which ideally cleared the row via its Step 6.2a), then renamed live — or if resurrection happened via manual mv that bypassed `/rollback` — the registry may still carry rows referencing the pre-rename `archived_filename`.
+
+Rewrite the `archived_filename` column for every row matching this TICKER so future `/thesis TICKER` Signal C lookups resolve consistently:
+
+```bash
+if [ -f .archive_ticker_registry.md ]; then
+  # Replace the second pipe-delimited field for rows whose first field == TICKER.
+  # Preserve rows for OTHER tickers untouched. Preserve header/comment lines.
+  awk -F'|' -v OFS='|' -v t="$TICKER" -v oldn="$OLD_NAME" -v newn="$NEW_NAME" '
+    NR==1 || /^#/ || NF<2 { print; next }
+    $1==t && $2==t " - " oldn ".md" { $2 = t " - " newn ".md"; print; next }
+    $1==t && $2==t " - " oldn      { $2 = t " - " newn;      print; next }
+    { print }
+  ' .archive_ticker_registry.md > .archive_ticker_registry.md.tmp
+  mv .archive_ticker_registry.md.tmp .archive_ticker_registry.md
+fi
+```
+
+**Track**: count of rewritten rows (0 if no prior closures on record, typically 0–1 in practice). Report in Step 11.
+
+**Failure handling** (H3 — see §Step 10.5): if awk or mv fails, append to `all_failed_ops` accumulator with recovery instructions:
+```
+- Step 8.5 (archive registry row rewrite): .archive_ticker_registry.md — [awk/mv error]
+  - Recovery: manually replace "[TICKER] - [old_name]" → "[TICKER] - [new_name]" in the `archived_filename` column of every row whose first field is "[TICKER]"
+```
+
+**No-op on missing file**: if `.archive_ticker_registry.md` doesn't exist (clean vault or all prior rows already cleared), skip silently — no error.
+
+**Why this is safe against double-rewrite**: the awk match is exact (`$2==t " - " oldn` — not substring). A row already rewritten to `[new_name]` doesn't match, so re-running `/rename` with the same args is idempotent.
 
 ## Step 9: Update _hot.md Free-Text Mentions
 
@@ -327,6 +407,12 @@ Use `Edit` with `replace_all: true` for literal `TICKER - [old_name]` (not in wi
 
 **Word cap**: after edits, check `_hot.md` total. Over 4,000 (soft cap per `_shared/hot-md-contract.md`; unlikely from rename) → prune `## Sync Archive` oldest first. Abort if over 5,000 hard cap.
 
+**Failure handling (H3 fix)**: if the free-text Edit fails (rare — `_hot.md` rarely has file locks), append to `all_failed_ops`:
+```
+- Step 9 (_hot.md free-text mentions): _hot.md — [Edit error: specific reason] ([N] mentions unresolved)
+  - Recovery: manually replace `[TICKER] - [old_name]` → `[TICKER] - [new_name]` in `_hot.md` (outside wikilink syntax — Active Research Thread narrative, Recent Conviction Changes bullets)
+```
+
 ## Step 10: Append Log Entry to Renamed Thesis
 
 Append to renamed thesis's `## Log`:
@@ -338,34 +424,69 @@ Append to renamed thesis's `## Log`:
 
 Prefix `"Renamed file:"` — `/sync` Step 2.5 skill-origin classification + Step 3e drift exclusion (registry §15).
 
+**Failure handling (H3 fix)**: if the Log append Edit fails, append to `all_failed_ops`:
+```
+- Step 10 (thesis Log append): Theses/[TICKER] - [new_name].md — [Edit error: specific reason]
+  - Recovery: manually append the "Renamed file:" Log entry per the format above; required for audit trail and /sync Step 2.5 classification
+```
+
+## Step 10.5: Consolidate failure accumulator into marker (H3 fix)
+
+**Purpose**: Steps 5.5 (failed_edits) and 10.5 (all_failed_ops) jointly own the `.rename_incomplete.TICKER` marker. Step 5.5 writes the marker on Step 5 wikilink failures. This step writes or updates the marker to include any Step 6–10 operation failures accumulated in `all_failed_ops`.
+
+**Skip condition**: if `failed_edits` empty AND `all_failed_ops` empty → skip. No marker action.
+
+**Otherwise**:
+1. Determine marker state (new or existing from Step 5.5 / prior run):
+   - Marker does NOT exist → write from scratch using the template in Step 5.5, populating both `## Failed files (Step 5 — wikilink rewrites)` and `## Failed operations (Steps 6–10)` sections from the two accumulators.
+   - Marker EXISTS (Step 5.5 wrote it this run, or prior-run marker being repaired):
+     - Read marker, parse existing `## Failed files` and `## Failed operations` sections.
+     - **Failed files merge**: current `failed_edits` replaces existing list entries whose file path matches (repair retries remove resolved entries; new failures add). Dedupe by file path.
+     - **Failed operations merge**: current `all_failed_ops` replaces existing bullets whose `(step, target)` tuple matches (repair retries remove resolved entries; new failures add). Dedupe by `(step, target)`.
+     - Update `batch:` frontmatter to current run's batch ID (tracks latest repair attempt).
+     - Rewrite marker with merged sections.
+2. **Auto-cleanup after merge**: if both merged lists are EMPTY (every prior failure resolved, no new failures accumulated), delete the marker:
+   ```bash
+   rm -f ".rename_incomplete.TICKER"
+   ```
+   The auto-cleanup contract (§Marker auto-cleanup contract below) is now owned by Step 10.5, not scattered across Step 5.5. Marker persists until every file and every op succeeds.
+
+**Repair re-run semantics**: when `/rename TICKER "[same new_name]"` runs with an existing marker, Step 1.3/1.4 exceptions skip the mv. Steps 5, 6, 7, 8, 8.5, 9, 10 all re-run and re-accumulate their failures. Step 10.5 merges: resolved entries drop, persistent entries remain, new failures add. Monotonic shrink until empty, then marker disappears.
+
 ## Step 11: Report
 
 - **Renamed**: `Theses/TICKER - [old_name].md` → `Theses/TICKER - [new_name].md` | `Repair re-run — mv skipped (already done)`
 - **Pre-flight check**: `passed ([N] files reachable)` | `aborted ([M] unreachable — no changes made)`
 - **Wikilinks rewritten (live files)**: [count] across [live file paths in Theses/, Sectors/, Macro/, Research/, _hot.md]
 - **Wikilinks rewritten (snapshot bodies)**: [count] across [`_Archive/Snapshots/*.md` paths]. Excludes pre-rename snapshot from Step 3.
-- **Wikilink update failures** (if any): [list files]. **`.rename_incomplete.TICKER` marker**: `created` | `updated (appended new failures for same new_name)` | `n/a`
+- **Wikilink update failures** (Step 5, if any): [list files]
+- **Follow-up operation failures** (Steps 6–10 — H3 fix, if any): [list `(step, target, reason)`]
+- **`.rename_incomplete.TICKER` marker**: `created (with Failed files and/or Failed operations sections)` | `updated (merged new failures)` | `cleared (all prior failures resolved — file deleted)` | `n/a`
 - **Repair status** (if marker processed this run):
-  - **Resolved this run**: [paths retried successfully and removed from marker]
-  - **Still failing**: [paths still in marker]
-  - **Marker state**: `cleared (all repairs succeeded — file deleted)` | `retained ([N] files still need repair)`
-- **Graph adjacency entry**: header updated | `⚠️ stale graph — entry not found, run /graph`
-- **Sector note**: updated as `[sector_name]` (resolution `[exact|normalized|substring]`) | `skipped (draft status)` | `skipped (no matching sector note)`
-- **Snapshots updated**: [count] `snapshot_of:` fields adjusted
-- **_hot.md**: [count] free-text mentions replaced
+  - **Failed files resolved this run**: [paths retried successfully and removed from marker]
+  - **Failed files still failing**: [paths still in marker]
+  - **Failed operations resolved this run**: [`(step, target)` tuples retried successfully and removed from marker]
+  - **Failed operations still failing**: [`(step, target)` tuples still in marker]
+  - **Marker state**: `cleared (both sections empty — file deleted)` | `retained ([N] files + [M] ops still need repair)`
+- **Graph adjacency entry**: header updated | `⚠️ stale graph — entry not found, run /graph` (recorded in marker via Step 6)
+- **Sector note**: updated as `[sector_name]` (resolution `[exact|normalized|substring]`) | `skipped (draft status)` | `skipped (no matching sector note)` | `⚠️ failed — see marker Step 7 entry`
+- **Snapshots updated**: [count] `snapshot_of:` fields adjusted (of [total]); [failed_count] recorded in marker Step 8
+- **Archive registry rows rewritten** (Step 8.5 — H4 fix): [count] rows in `.archive_ticker_registry.md` updated | `0 (no prior closures on record)` | `⚠️ failed — see marker Step 8.5 entry`
+- **_hot.md**: [count] free-text mentions replaced | `⚠️ failed — see marker Step 9 entry`
 - **Pre-rename snapshot**: `[[_Archive/Snapshots/TICKER - [old_name] (pre-rename YYYY-MM-DD-HHMMSS)]]`
 - **Batch ID**: `rename-YYYY-MM-DD-HHMMSS`
 
 **To undo this rename**: run `/rename TICKER "[old_name]"` (symmetric inverse). Pre-rename snapshot also available via `/rollback TICKER` → select `(pre-rename)` snapshot, but rollback alone restores content only; filename revert + inbound wikilink revert require running this skill in reverse.
 
-### Marker auto-cleanup contract
+### Marker auto-cleanup contract (H3 refactor — now owned by Step 10.5)
 
-If this run started with `.rename_incomplete.TICKER` (repair re-run), at end of Step 5 check whether all originally-listed failed files were successfully retried. If `failed_edits` empty after retries (every prior failure resolved AND no new failures) → delete marker:
-```bash
-rm -f ".rename_incomplete.TICKER"
-```
+The `.rename_incomplete.TICKER` marker is jointly owned by two write points:
+1. **Step 5.5**: writes marker if `failed_edits` (Step 5 wikilink failures) is non-empty. Includes an empty `## Failed operations (Steps 6–10)` section that Step 10.5 may populate.
+2. **Step 10.5 (H3 fix)**: consolidates `all_failed_ops` from Steps 6–10 into the marker. Creates the marker if Step 5.5 didn't (Step 5 succeeded but a later step failed). Deletes the marker if both sections are empty after merge.
 
-Otherwise rewrite marker with still-failing subset (drop resolved, keep unresolved, plus new failures). Monotonic shrink across re-runs until empty, then disappears.
+Both write points dedupe across re-runs: Step 5.5 dedupes by file path, Step 10.5 dedupes by `(step, target)` tuple. Monotonic shrink across repair re-runs until both lists empty, then marker auto-deletes.
+
+`/lint #37` surfaces any marker with non-empty `## Failed files` OR non-empty `## Failed operations`.
 
 ## Edge cases (§8 — all out-of-scope)
 
