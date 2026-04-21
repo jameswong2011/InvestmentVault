@@ -98,6 +98,8 @@ Legitimate split only when the file exceeds Read's 2000-line default limit (pre-
 
 Step I.9's one-Edit-per-thesis pattern is deliberately kept discrete despite the tool-call count. Atomicity preservation takes priority: if the LLM fuses N thesis updates into a single Edit, a partial failure leaves `_graph.md` in an inconsistent intermediate state. Per-thesis Edits each succeed or fail atomically.
 
+This directive was extended in §10: the dominant cost of `/graph last` is output-token generation for the full `Write`, not tool-call round-trips. §10 formalizes the Path A / Path B split — surgical Edits for small diffs (preferred), full Write fallback for wide or legacy diffs.
+
 ---
 
 ## §5 Step 7.0 no-op short circuit (T6.13)
@@ -180,3 +182,72 @@ Ordering matters: delete only AFTER the write succeeds. If the write fails, `.gr
 A full rebuild re-extracts every thesis from source, which is exactly what the marker was requesting. Clearing it prevents subsequent `/graph last` runs from redundantly forcing another full rebuild.
 
 If the rebuild write fails, both markers are preserved so the next `/graph` run still honors them.
+
+---
+
+## §10 Diff-aware Incremental Path — Step I.9 (Path A / Path B)
+
+### §10.1 Why the optimization exists
+
+The dominant cost of `/graph last` is not tool-call round-trips (the fused Bash blocks already collapse these efficiently) — it is **model output-token generation during the final `Write`**. The full graph body is ~400 lines / ~15 KB regardless of how many theses changed. Prior spec (pre-§10) Wrote the full file for any non-empty diff, forcing the model to emit 40 theses' worth of adjacency blocks even to reflect a one-thesis addition.
+
+Measured end-to-end: on a 40-thesis vault with a 1-thesis change, full `Write` dominates latency at 70-80% of total runtime. Surgical Edits emit ~300 bytes each; total output for a typical 1-3 thesis change drops from ~15 KB to ~2 KB — a 5-7× reduction in the critical section.
+
+This mirrors the Step 7.0 no-op short circuit (§5) for the Full Rebuild Path: same principle, extended to the far more common non-no-op incremental case.
+
+### §10.2 Path B escalation triggers
+
+Surgical Edits are correct only when anchors are unique and the diff is small enough that per-delta Edits cost less than a single Write. Path A aborts to Path B in five cases:
+
+1. **Baseline parse failure** (Step I.1 unparseable): no baseline to diff against — can only emit a full file.
+2. **Pre-T6.10 legacy frontmatter** (no `last_graph_write:` field): Edit needs an `old_string`; missing field can't be Edited, only prepended via Write. Upgrades schema in one pass.
+3. **Wide pre-T7.3 upgrade** (≥10 entries missing `status:` / `log_tail:`): each upgrade needs an Edit (insert 4-6 lines per entry). At 10+ entries × ~250 bytes per granular Edit = 2.5+ KB output PLUS per-call overhead > full Write breakeven.
+4. **Half the theses modified** (|modified| > 0.5 × |baseline|): output-token math flips — per-thesis Edit replaces one full block of ~8 lines, so N full-block Edits ≈ N × block-size, which at N ≥ 20 approaches the full Write size anyway. The 50% threshold leaves headroom.
+5. **Mid-cascade Edit failure**: partial Path A leaves `_graph.md` in inconsistent state. Path B re-renders the full in-memory state and Writes over the partial result, restoring consistency.
+
+Triggers 3 and 4 are computed from counts available after Step I.4; no additional probing needed.
+
+### §10.3 Anchor uniqueness — why it holds by construction
+
+Path A Edits rely on `old_string` being unique in `_graph.md`. The graph's own structure guarantees this for every anchor type used:
+
+- **Thesis headers** (`### TICKER - Company Name`): by definition one per thesis, and tickers are unique in the active vault (archive-collision protocol in `/thesis` and `/rename` enforces no duplicate tickers).
+- **Reverse-index rows** (`| [[Sectors/X]] | ... |`): each sector/macro has one row in its respective table; the full row line begins with a unique wikilink.
+- **Orphan lines** (`- [[Research/YYYY-MM-DD - ...]]`): research note filenames are time-stamped and globally unique.
+- **Frontmatter fields** (`date: ...`, `edges: ...`): each field name appears exactly once in the YAML block.
+
+The pre-emission uniqueness check is a safety net, not an expected hot path. Only degenerate cases (e.g., corrupted graph with duplicate headers) trigger it, and they correctly escalate to Path B where a full re-render fixes the corruption.
+
+### §10.4 Tool-call and output-token budget
+
+Typical `/graph last` with 1 changed thesis under Path A:
+
+| Stage | Tool calls | Model output |
+|---|---|---|
+| Pre-flight (lock + watermark + change detection fused) | 1 Bash | ~80 B |
+| I.1 Read baseline | 1 Read | 0 |
+| I.4 + I.5 extraction (fused per-thesis + reverse indexes) | 1 Bash | ~60 B |
+| I.9 Path A: frontmatter (3 fields) + 1 added thesis block + 1 reverse-index row + 2 orphan removes | 7 Edit | ~2.0 KB |
+| I.10 + I.11 validation + cleanup + lock release | 1 Bash | ~100 B |
+| **Total** | **11 calls** | **~2.3 KB** |
+
+Same scenario under pre-§10 Write-everything spec:
+
+| Stage | Tool calls | Model output |
+|---|---|---|
+| Pre-flight + I.1 Read + I.4/I.5 extraction | 3 | ~140 B |
+| I.9 full `Write` | 1 Write | ~15 KB |
+| I.10 + I.11 | 1 Bash | ~100 B |
+| **Total** | **5 calls** | **~15 KB** |
+
+Path A trades 6 extra tool calls (cheap, ~1s each) for a 6.5× reduction in model output (expensive, token-streaming-bound). Observed end-to-end savings: 3-5 minutes on a 40-thesis vault.
+
+### §10.5 Why per-Edit atomicity is still honored
+
+§4.4's atomicity priority remains: each Path A Edit targets exactly one anchor and succeeds or fails independently. A failed Edit doesn't corrupt neighboring state — the in-memory new state is unchanged, and the mid-cascade escalation to Path B re-renders the complete target from that memory, overwriting any partial bytes.
+
+The difference from pre-§10 spec: §4.4 originally described per-thesis Edits as if that were the then-current behavior, but the actual Step I.9 text prescribed a full Write. §10 resolves this inconsistency — Path A is the described per-Edit behavior made concrete, Path B is the Write escape hatch.
+
+### §10.6 Why not cache rendered blocks
+
+An alternative optimization is caching rendered adjacency blocks in memory / a sidecar file, so unchanged blocks don't need to be re-emitted. Rejected for complexity: the graph is markdown-native for a reason — plain text is reviewable, diffable, Git-friendly. Adding a parallel cache layer creates schema-drift risk (cache vs. `_graph.md` out of sync) with no benefit Path A doesn't already deliver. If future vault growth (150+ theses) makes Path A insufficient, the next lever is a helper script that renders sections from structured data — but that is a larger architectural change and out of scope here.

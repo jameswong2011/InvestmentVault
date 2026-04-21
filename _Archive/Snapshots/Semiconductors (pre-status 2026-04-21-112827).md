@@ -1,6 +1,10 @@
 ---
 date: 2026-04-15
 tags: [sector, moc]
+snapshot_of: "[[Sectors/Semiconductors]]"
+snapshot_date: 2026-04-21
+snapshot_trigger: status
+snapshot_batch: status-AMD-2026-04-21-112827
 ---
 
 # Semiconductors
@@ -20,7 +24,6 @@ tags: [sector, moc]
 - [[Theses/SNDK - SanDisk]] — SanDisk Corporation (Pure-play NAND, HBF technology, AI storage supercycle)
 - [[Theses/LITE - Lumentum]] — Lumentum (Photonics/EML)
 - [[Theses/NVDA - Nvidia]] — Nvidia
-- [[Theses/AMD - Advanced Micro Devices]] — AMD (sole merchant full-stack Nvidia alternative — CPU+GPU+DPU+FPGA; OpenAI 6GW + Meta 6GW hyperscaler-imposed diversification; MI355X within single-digit % of B200 on MLPerf 6.0; ROCm framework-native step-function adoption; 38–41x fwd P/E embeds flawless execution; conviction: medium)
 
 ## Key Dynamics
 - **NVDA is the operating system for Physical AI, not merely a GPU vendor — FY2026 $215.9B revenue (+65%), ~$4.6T market cap, ~30x forward P/E.** The durable moat is the vertically integrated software simulation stack (PhysX 5/Warp/Omniverse/Cosmos) that locks customers into Nvidia hardware from training through simulation to edge deployment. Warp achieves 8x–669x performance advantage over JAX/CPU alternatives in differentiable physics — this gap *widens* with each hardware generation. Every potential competitor (Siemens, Dassault, Ansys, Google DeepMind) has chosen to build on Nvidia's infrastructure rather than compete against it. Vera Rubin platform in production H1 2026 (10x lower inference cost vs Blackwell). Sovereign AI tripled to ~$30B. AI accelerator market share ~75% (declining from 87% peak as custom ASICs scale — Google TPU v7 ~70% cost reduction, Trainium 30–40% better price-perf). Key risk: ASIC maturation for inference workloads. Open-source strategy (Newton, Alpamayo, GR00T, Cosmos) is an "Android strategy" deepening hardware lock-in through 5.9M CUDA developers. Conviction medium — promote if Physical AI demonstrates commercial ROI at scale or sovereign AI accelerates. *(Sources: [[Theses/NVDA - Nvidia]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], updated Apr 15, 2026)*

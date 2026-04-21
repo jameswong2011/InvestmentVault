@@ -89,7 +89,7 @@ rm -f /tmp/graph-watermark
 
 Forward adjacency updates per changed thesis; reverse indexes/clusters/orphans always rebuild fully from in-memory state.
 
-**Tool-call budget** (§4.1): Incremental Path bundles into ~8 Bash blocks total. Typical 5-changed-thesis run: ~13 Bash/Edit/Read calls vs. ~25 naïve. Output bit-identical. Budget table in RATIONALE §4.
+**Tool-call budget** (§4.1 + §10.4): Incremental Path Path A (surgical Edits) typical 1-3 changed theses: 1 Read + 2 Bash (extraction + validation/release) + 1 Bash (watermark/lock) + ~5-10 Edits = ~10-14 tool calls, ~2 KB total model output. Path B (full Write) fallback: ~5-6 calls, ~15 KB output. Edits stream 5-7× faster end-to-end.
 
 ### Step I.1: Parse Existing Graph
 
@@ -249,19 +249,58 @@ From updated in-memory state:
 - Forward adjacency: per thesis, count of `sectors + macros + cross-thesis + research`.
 - Reverse indexes: per row, count of theses listed.
 
-### Step I.9: Write Updated `_graph.md` and Clear Invalidations
+### Step I.9: Apply Changes to `_graph.md` (diff-aware — §10)
+
+Enumerate deltas between the in-memory new state and the Step I.1 parsed baseline. Prefer surgical `Edit`s for small diffs; escalate to full `Write` only when the diff is wide or baseline is legacy.
+
+**Rationale**: full `Write` emits ~400 lines (~15 KB) regardless of change size. Typical post-T7.3 `/graph last` touches 1-3 theses and 0-2 reverse-index rows — surgical Edits emit ~2 KB and stream 5-7× faster end-to-end (§10.4).
+
+#### Step I.9.A: Surgical Edit Path (preferred)
+
+Compute the delta set in memory (no tool calls):
+
+- `frontmatter_changes`: `{date, last_graph_write, theses, sectors, macro, research, edges, orphans, graph_mode}` fields whose values differ from baseline.
+- `added_theses` / `removed_theses`: from Step I.3.
+- `modified_theses`: TICKERs whose baseline adjacency or cache differs from newly-extracted (Step I.4 set).
+  - **log_tail-only modification**: common case — thesis body edited, wikilinks unchanged, only `log_tail:` differs. Emit a granular Edit targeting just the `- **log_tail:**` line + its ≤3 bullets.
+  - **Full-block modification**: any wikilink field changed → replace entire block.
+- `modified_reverse_rows`: sector/macro rows whose member list differs.
+- `added_orphans` / `removed_orphans`: from Step I.7.
+- `cluster_table_changed`: true iff cluster set or members differ.
+
+**Escalation triggers** (§10.2) — if ANY true, abort Path A and take Path B:
+- Baseline parse failed at Step I.1.
+- Pre-T6.10 legacy frontmatter (no `last_graph_write:` field to Edit).
+- Pre-T7.3 upgrade scope wide: ≥10 baseline entries missing `status:` or `log_tail:` (upgrading each via granular Edit costs more than one full Write).
+- `|modified_theses| > 0.5 × |baseline_theses|` (output-token math favors Write).
+- Any anchor uniqueness check fails (§10.3).
+
+**Edit emission order** (per-Edit atomicity — §10.5):
+
+1. **Frontmatter**: one `Edit` per changed field. `old_string = "field: old-value\n"`, `new_string = "field: new-value\n"`. Always advance `date:` + `last_graph_write:`; other counters only if changed.
+2. **Removed thesis blocks**: `old_string` = full block (header + field lines + trailing blank line), `new_string` = ``.
+3. **Modified thesis — full-block variant**: `old_string` = baseline block verbatim, `new_string` = new block.
+4. **Modified thesis — log_tail-only variant**: `old_string` = `  - **log_tail:**\n[baseline bullet lines]`, `new_string` = `  - **log_tail:**\n[new bullet lines]`. Anchor via preceding `### TICKER - Name` header to disambiguate if bullet lines aren't globally unique.
+5. **Added thesis blocks**: find alphabetical successor `S` in baseline; `Edit old_string = "### [S]\n"`, `new_string = "[new block]\n\n### [S]\n"`. If new entry is alphabetically last, anchor on `## Reverse Index: Macro → Theses` and prepend block + blank line.
+6. **Modified reverse-index rows**: per row, `Edit` old_string = full row line (pipe-delimited), new_string = new row.
+7. **Cluster table**: if changed, one `Edit` replaces the whole table (anchor on `## Cross-Thesis Clusters` header through the blank line before `## Orphan Research Notes`).
+8. **Orphans**: per add, Insert at sorted position (`old_string` = alphabetical successor's line, `new_string` = new line + successor's line). Per remove, `Edit old_string = "- [[Research/...]]\n"`, `new_string = ""`.
+
+**Mid-cascade failure**: if any Edit errors, `_graph.md` is partially updated. Do NOT retry that Edit — escalate immediately to Path B (re-render full file from in-memory state and `Write` over the partial result). Log: `⚠️ Path A Edit failed for [delta]: [reason] — escalating to full Write to restore consistency.`
+
+#### Step I.9.B: Full Write Path (escalation + initial upgrade runs)
 
 Write merged graph using same format as full rebuild:
-- Frontmatter `date:` → today; counts updated.
+- Frontmatter `date:` → today; `last_graph_write:` → Step 0.1 NOW; counts updated.
 - Sections: Thesis Adjacency Index (all entries sorted), Macro Reverse Index, Sector Reverse Index, Clusters (from I.6), Orphans (from I.7).
 
-**After write succeeds**, delete `.graph_invalidations` if exists:
+#### Post-edit cleanup
+
+**After Path A last Edit OR Path B Write succeeds**, delete `.graph_invalidations` if exists:
 ```bash
 rm -f .graph_invalidations
 ```
-Order matters (§9.1): delete only AFTER write succeeds. Write fails → `.graph_invalidations` persists for next run. Report outcome at I.11.
-
-**Discrete Edits directive** (§4.4): Step I.9's one-Edit-per-thesis pattern deliberately NOT fused. Atomicity priority — per-thesis Edits each succeed/fail atomically; fused Edit + partial failure leaves graph inconsistent.
+Order matters (§9.1): delete only AFTER graph update succeeds. Failure → `.graph_invalidations` persists for next run. Report outcome at I.11.
 
 ### Step I.10 + I.11: Validate + Release
 
@@ -297,12 +336,13 @@ Ordering: `.graph_invalidations` deletion only if validation succeeded; lock rel
 ### Step I.11: Report
 
 - **Mode**: `/graph last` from [watermark date] | `/graph [N]` from [N] days ago
+- **Update path**: `Path A (surgical Edits: [K] emitted)` | `Path B (full Write — reason: [escalation trigger])`
 - **Changed thesis adjacencies re-extracted**: [count] (including [M] pulled from `.graph_invalidations`)
 - **Invalidations consumed**: `[N] neighbor theses from .graph_invalidations` or `none (file absent)`
 - **Invalidations file deletion**: `deleted` | `skipped (file never existed)` | `⚠️ rm failed — retry on next /graph last`
 - **Theses added**: [list, or "none"]
 - **Theses removed**: [list, or "none"]
-- **Reverse indexes**: rebuilt from scratch (always)
+- **Reverse indexes**: rebuilt from scratch (always) — rows modified: [count]
 - **Cross-thesis clusters**: [list new/dissolved, or "no structural changes"]
 - **Orphan deltas**: [N newly orphaned, M no-longer-orphaned]
 - **Edges**: [old → new]
