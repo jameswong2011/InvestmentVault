@@ -1,7 +1,7 @@
 ---
 name: rollback
 description: Restore a thesis, sector, or macro note from a snapshot in _Archive/Snapshots/. Use when user says "rollback", "restore", "revert", "undo sync", or "go back to the previous version".
-model: opus
+model: sonnet
 effort: max
 allowed-tools: Read Grep Glob Edit Write Bash(date * cp * mkdir * mv * find * ls * wc * diff *)
 ---

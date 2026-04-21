@@ -1,7 +1,7 @@
 ---
 name: status
 description: Change conviction level or status on a single thesis. Use when user says "change conviction", "downgrade", "upgrade", "move to monitoring", "close [TICKER]", or "set [TICKER] to [level]".
-model: opus
+model: sonnet
 effort: max
 allowed-tools: Read Grep Glob Edit Write Bash(date * cp * mkdir * mv * find * grep * cat * sort * printf * ls *)
 ---

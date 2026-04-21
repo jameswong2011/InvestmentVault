@@ -1,7 +1,7 @@
 ---
 name: rename
 description: Rename a thesis file when company name changes. Atomically updates filename, all inbound wikilinks across the vault, graph adjacency entry header, sector note Active Theses entry, snapshot snapshot_of references, and _hot.md mentions. Use when company changes name (FB → META, Square → Block, etc.), or when correcting a typo in a thesis filename.
-model: opus
+model: sonnet
 effort: max
 allowed-tools: Read Grep Glob Edit Write Bash(date * mv * cp * mkdir * find * grep *)
 ---
