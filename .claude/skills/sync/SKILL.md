@@ -606,14 +606,25 @@ For each macro touched:
 
 ---
 
-## Step 6: Update _hot.md
+## Step 6: Update _hot.md (M5 — all-or-nothing atomicity)
 
 Follow `.claude/skills/_shared/hot-md-contract.md` for all writes — compression, per-section budgets, truncation-marker avoidance, cap handling defined there.
 
 If `_hot.md` does not exist, create with sections: `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot`. Frontmatter: `date: YYYY-MM-DD`, `tags: [meta, hot-cache]`.
 
-### Lifecycle rules
+### M5 atomicity rule
 
+**All-or-nothing**: either every planned section write lands, or none of them do. Prior spec wrote sections 1-6 sequentially then checked the hard cap — so a run hitting the hard cap left `_hot.md` with sections 1-3 updated and sections 4-6 at their prior (stale) state.
+
+The M5-compliant order is: **read → stage in memory → pre-check cap → compress if needed → pre-check again → commit writes OR abort before any write**.
+
+### 6.0: Read `_hot.md` into memory (non-destructive)
+
+Read current file. Parse sections. Note the current word count of each of the 6 canonical sections.
+
+### 6.1: Stage planned deltas per section (still non-destructive)
+
+For each planned write, compute the **projected section text** in memory (do not Edit yet):
 1. Update `date:` in frontmatter and heading.
 2. **Active Research Thread** — same-ticker continuation: append dated line to existing thread. New topic: compress outgoing thread into `*Previous:*` entry (date + one-phrase summary); max 5 `*Previous:*` lines; drop oldest. See hot-md-contract.md §5.
 3. **Latest Sync** — replace entirely. One bullet per thesis updated, max 1 line:
@@ -622,8 +633,8 @@ If `_hot.md` does not exist, create with sections: `## Active Research Thread`, 
    ```
 4. **Sync Archive** — compress outgoing Latest Sync into a single summary line; prepend to Sync Archive. Max 3 entries.
 5. **Open Questions** — two-stage:
-   - **5a.** Mark resolved Outstanding Questions: if any resolved on theses during Step 3d, update `_hot.md` accordingly. If conviction triggers or drift flagged in Step 3e, add the reassessment question.
-   - **5b.** Auto-resolve `/catalyst` no-catalyst questions (§7.1). Scan `## Open Questions` for the `/catalyst`-emitted pattern:
+   - **5a.** Mark resolved Outstanding Questions: if any resolved on theses during Step 3d, stage the update. If conviction triggers or drift flagged in Step 3e, stage the reassessment question.
+   - **5b.** Auto-resolve `/catalyst` no-catalyst questions (§7.1). Scan staged `## Open Questions` for the `/catalyst`-emitted pattern:
      ```
      - [[TICKER]]: what catalyst in next 90 days could reignite this thesis? (flagged by /catalyst YYYY-MM-DD)
      ```
@@ -632,15 +643,60 @@ If `_hot.md` does not exist, create with sections: `## Active Research Thread`, 
      2. Read `Theses/TICKER - *.md`'s `## Catalysts` section.
      3. Parse each catalyst entry for a date token (`YYYY-MM-DD`, `Q3 2026`, `October 2026`, `next [N] weeks/months`).
      4. Resolve to absolute date (use start of period for ranges).
-     5. If ANY parsed date `>= today`, thesis has a forward catalyst → remove (or strikethrough) the Open Question entry.
-        - Default: delete the bullet.
+     5. If ANY parsed date `>= today`, thesis has a forward catalyst → stage removal (or strikethrough) of the Open Question entry.
+        - Default: drop the bullet in staged text.
         - Alternative (if `_hot.md` already shows `~~strikethrough~~ → Resolved` pattern): `- ~~[[TICKER]]: what catalyst...~~ → Resolved YYYY-MM-DD: forward catalyst now exists ([summary]).`
      
-     Skip safety: past-dated catalysts only → question stays. Missing/unparseable `## Catalysts` → `ℹ️ Cannot auto-resolve /catalyst question for [TICKER] — Catalysts section missing or unparseable.`
+     Skip safety: past-dated catalysts only → question stays. Missing/unparseable `## Catalysts` → `ℹ️ Cannot auto-resolve /catalyst question for [TICKER] — Catalysts section missing or unparseable.` (emit to Step 8 report; do NOT stage a write that can't be computed cleanly).
      
      Report resolved tickers in Step 8 under `/catalyst Open Questions auto-resolved`.
-6. **Recent Conviction Changes** — if triggers hit (Step 3e ⚡) or drift flagged (Step 3e ⚠️/📈), add an entry.
-7. **Hard cap** — after writing, if total word count exceeds 4,000 (soft cap per `_shared/hot-md-contract.md`), apply compression trigger order: drop oldest Sync Archive entry, then oldest `*Previous:*` line, then merge duplicate Open Questions. If still over 5,000 (hard cap), abort `_hot.md` update per contract.
+6. **Recent Conviction Changes** — if triggers hit (Step 3e ⚡) or drift flagged (Step 3e ⚠️/📈), stage the entry.
+
+### 6.2: Pre-check projected word count (no writes yet)
+
+Compute `projected_total = sum(staged section word counts) + frontmatter + heading overhead`.
+
+- `projected_total ≤ soft_cap (4000)`: proceed to 6.4 direct commit.
+- `soft_cap < projected_total ≤ hard_cap (5000)`: proceed to 6.3 staged compression.
+- `projected_total > hard_cap (5000)`: attempt 6.3 staged compression. If still over hard cap after full compression trigger order, **ABORT all `_hot.md` writes for this run** (§6.5) before any Edit lands. `/hot.md` retains its pre-run state. Report the abort in Step 8.
+
+### 6.3: Staged compression (applied to staged text, not to the file)
+
+Apply compression trigger order from `_shared/hot-md-contract.md` to the staged section buffers:
+1. Drop oldest Sync Archive entry from staged Sync Archive.
+2. Drop oldest `*Previous:*` line from staged Active Research Thread.
+3. Merge duplicate Open Questions in staged Open Questions.
+
+After each step, recompute `projected_total`. Stop when under soft cap. If all three exhausted and `projected_total > hard_cap`, return to 6.2's abort path.
+
+### 6.4: Commit all section writes (all-or-nothing)
+
+Only reached when `projected_total ≤ hard_cap`. Apply the staged Edits in the following order (the order itself is not load-bearing since the pre-check already proved all sections fit — but keep consistent for diff readability):
+
+1. Frontmatter `date:` + heading
+2. Active Research Thread
+3. Latest Sync
+4. Sync Archive
+5. Open Questions (5a + 5b staged outputs)
+6. Recent Conviction Changes
+
+If any individual Edit fails mid-commit (rare — pre-checks should make this the pathological case only), report the specific section that failed. Manual cleanup is required because partial state has landed. This is a degradation from full atomicity, but pre-checks eliminate the primary cause (word-count overflow). `/lint #42` catches any truncation markers that slip through.
+
+### 6.5: Hard-cap abort report
+
+If 6.2/6.3 aborted before any write:
+
+```
+⚠️ _hot.md hard cap (5000 words) exceeded after all compression triggers — no _hot.md writes committed this /sync run.
+   Current: [X] words. Projected with planned writes: [Y] words. Over cap by: [Z] words.
+   
+   Pre-run _hot.md state preserved. Resolution options:
+     (a) Run /lint #42 to surface accumulated truncation/compression markers.
+     (b) Manually compress _hot.md (drop oldest Sync Archive entries, *Previous:* lines).
+     (c) Accept the session-context degradation for this run; primary sync propagation already succeeded.
+```
+
+Primary sync operation (Steps 3-5) remains valid; only `_hot.md` is skipped. Preserves the contract's principle: session-context degradation is tolerable; primary operation correctness is not.
 
 ---
 

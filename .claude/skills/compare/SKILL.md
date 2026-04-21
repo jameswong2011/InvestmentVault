@@ -118,6 +118,55 @@ Go beyond static snapshots:
 
 ## Phase 5: Output
 
+### 5.0: Write manifest skeleton (M2 — skeleton before destructive edits)
+
+Generate `HHMMSS` once for the entire Phase 5 run. All downstream per-file writes (research note, sector snapshots, manifest) reuse it.
+
+```bash
+HHMMSS=$(date +%H%M%S)
+mkdir -p _Archive/Snapshots
+```
+
+Before any destructive mutation (5.1 research-note write, 5.2 Log appends, 5.5b sector edits), write a manifest skeleton at `_Archive/Snapshots/_compare-manifest (compare-YYYY-MM-DD-HHMMSS).md` with `status: in-progress` (§3 invariant: skeleton → populate → flip):
+
+```yaml
+---
+type: compare-manifest
+batch: compare-YYYY-MM-DD-HHMMSS
+status: in-progress
+date: YYYY-MM-DD
+---
+
+# Compare Batch Manifest
+
+> **If `status: in-progress`**, `/compare` crashed between Phase 5.0 (skeleton)
+> and Phase 5.5c (flip). Check the vault for partial state:
+>   - Research note at `Research/YYYY-MM-DD - [tickers] - Competitive Comparison.md` may or may not exist.
+>   - Thesis Logs may have partial appends (filter by today's date + comparison wikilink).
+>   - Sector notes may have been edited (Phase 5.5b rolls back on failure, but crash mid-5.5b leaves partial edits).
+> Recovery: `/rollback compare-YYYY-MM-DD-HHMMSS` → cascade through each affected sector snapshot in Phase 5.5a.
+>
+> **If `status: completed`**, Phase 5 finished with all sector writes succeeding atomically.
+> **If `status: rolled-back`**, Phase 5.5b atomicity fired — sectors restored from 5.5a snapshots; research note and thesis Logs preserved.
+
+## Tickers compared
+- *(filled in Phase 5.5c flip)*
+
+## Sector writes attempted
+- *(filled in Phase 5.5c flip with per-sector outcomes)*
+
+## Sector writes rolled back (if any)
+- *(filled in Phase 5.5c flip — empty if status: completed)*
+
+## Thesis Log appends
+- *(filled in Phase 5.5c flip with per-ticker outcomes)*
+
+## Research note
+- *(filled in Phase 5.5c flip with path and propagated_to status)*
+```
+
+Skeleton write failure → hard abort Phase 5 before any destructive edit. Locks remain held until the final reporting block; report to user and release.
+
 ### 5.1: Write comparison research note (without `propagated_to:` — §3.1)
 
 Save to `Research/YYYY-MM-DD - [TICKER A] vs [TICKER B] - Competitive Comparison.md`:
@@ -227,22 +276,13 @@ for sector_note_path, thesis_list, confidence in target_sectors:
 - Thesis Logs status: preserved (5.2 already wrote them)
 - `propagated_to:` status: depends on 5.4 — set (if all 5.2 succeeded) or omitted (atomicity fired)
 
-### 5.5c: Write compare manifest sidecar (§6)
+### 5.5c: Populate + flip compare manifest (M2 — skeleton → populate → flip)
 
-After all sector writes succeed (or after clean rollback on failure), write manifest:
+Manifest skeleton was written at Phase 5.0 with `status: in-progress`. Phase 5.5c populates the body placeholders with actual outcomes from 5.1-5.5b and flips status.
 
-`_Archive/Snapshots/_compare-manifest (compare-YYYY-MM-DD-HHMMSS).md`:
+**Populate body** (Edit the Phase 5.0 skeleton, replacing `*(filled in Phase 5.5c flip)*` placeholders):
 
-```yaml
----
-type: compare-manifest
-batch: compare-YYYY-MM-DD-HHMMSS
-status: completed | rolled-back
-date: YYYY-MM-DD
----
-
-# Compare Batch Manifest
-
+```markdown
 ## Tickers compared
 - TICKER_A, TICKER_B, TICKER_C
 
@@ -263,7 +303,13 @@ date: YYYY-MM-DD
 - propagated_to: set | omitted (atomicity — Log append failed for at least one ticker)
 ```
 
-`status: rolled-back` indicates clean abort (Phase 5.5b rollback fired). `status: completed` indicates atomic success. `/lint #45` ages these; `status: in-progress` surfaced as Critical (§6.2).
+**Flip frontmatter**:
+- All sector writes succeeded: `status: in-progress` → `status: completed`. Add `completed_date: YYYY-MM-DD`.
+- Phase 5.5b rollback fired: `status: in-progress` → `status: rolled-back`. Add `completed_date: YYYY-MM-DD`.
+
+**Verify flip landed**: re-read manifest frontmatter. Confirm `status:` is no longer `in-progress`. On verification failure: report `⚠️ Compare manifest status flip failed — manifest remains status: in-progress despite completion. /lint #45 will flag this as Critical. Manual fix: edit manifest frontmatter to the correct terminal status.` Continue to 5.5 Sector edits.
+
+`status: rolled-back` indicates clean abort (Phase 5.5b rollback fired). `status: completed` indicates atomic success. `status: in-progress` surfaced as Critical by `/lint #45` (§6.2).
 
 ### Sector edits — targeted `Edit` operations
 
