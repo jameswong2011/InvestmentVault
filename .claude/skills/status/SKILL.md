@@ -34,15 +34,27 @@ Ambiguous/incomplete → ask user to clarify ticker, field, direction, rationale
 
 Procedure 2. If `.rename_incomplete.TICKER` exists at vault root, hard-block per contract 2.3. Sector note edits, archive moves, and `_hot.md` mentions all rely on stable naming — mid-rename repair must complete first.
 
-## Step 1: Validate
+## Step 1: Validate (parallel reads — §10)
 
-1. **Find thesis**: search `Theses/` for ticker match. Not found → `⚠️ No thesis found for [TICKER] in Theses/. Nothing to update.`
-2. **Read full thesis note** — understand current state.
-3. **Verify current value**: confirm `old` value in $ARGUMENTS matches actual frontmatter. Mismatch → `⚠️ Expected [field]: [old] but found [field]: [actual]. Confirm the intended change.`
-4. **Parse change type**:
-   - `conviction` change → Step 2
-   - `status` change to `closed` → Step 2 (triggers archive flow)
-   - `status` change to anything else (`active→monitoring`, `draft→active`, `monitoring→active`) → Step 2
+Emit the following as parallel tool calls in a single block (after lock is acquired in 0.1). All are read-only probes against stable state; no ordering dependencies:
+
+| Tool | Target | Purpose |
+|------|--------|---------|
+| `Glob` | `Theses/TICKER - *.md` | Locate thesis file; not-found → `⚠️ No thesis found for [TICKER] in Theses/. Nothing to update.` |
+| `Read` | thesis file (once located, read full — worst-case 2 round trips if glob + read can't fuse) | Frontmatter + Log + Conviction Triggers in one read |
+| `Read` | `_hot.md` | Pre-fetch for Step 7 (needed regardless of transition type) |
+| `Grep` | `sector:` frontmatter value in thesis | Feeds Step 5.0 sector resolution |
+
+Post-batch:
+1. **Verify current value**: confirm `old` value in $ARGUMENTS matches actual frontmatter. Mismatch → `⚠️ Expected [field]: [old] but found [field]: [actual]. Confirm the intended change.`
+2. **Parse change type + route**:
+   - `reaffirm` → **Step 2R** (Reaffirm flow)
+   - `status: draft→active` → **Step 2F** (Fast-path — no Tier 3 prompt per §9)
+   - `conviction` change → **Step 2** (Tier 3 confirmation)
+   - `status` change to `closed` → **Step 2** (Tier 3 confirmation — triggers archive flow)
+   - `status` change to anything else (`active→monitoring`, `monitoring→active`, `closed→active`, `active→draft`) → **Step 2** (Tier 3 confirmation)
+
+**Sector note read is deferred to Step 5.0** — sector resolution may rewrite the path (exact/normalized/substring ladder), so resolving that first before reading avoids reading the wrong file.
 
 ## Step 2R: Reaffirm Flow (drift acknowledgment)
 
@@ -107,6 +119,23 @@ Entered only when $ARGUMENTS matches `TICKER reaffirm [rationale]`. Lightweight 
 **Stop here — do not continue to Step 2 or beyond.**
 
 ---
+
+## Step 2F: Fast-path for `draft→active` (no Tier 3 — §9)
+
+**Only entered when the parsed transition is `status: draft → active`.** The Tier 3 confirmation gate is bypassed for this specific transition. Rationale in §9 — summary: additive coverage transition (not the reductions CLAUDE.md Tier 3 gates), no analytical content change (same rationale that already skips the thesis snapshot at Step 3.1), easily reversible via manual frontmatter flip per User Guide §13, and the user's explicit `/status TICKER active` invocation is itself an intent signal.
+
+Emit an FYI message showing what will happen, then proceed DIRECTLY to Step 3 without waiting for input:
+
+```
+ℹ️  Fast-path: status draft → active for [[Theses/TICKER - Company Name]]
+    Sector: [sector from frontmatter]
+    Side effects: add to Sectors/[Sector].md Active Theses; _hot.md Active Research Thread + Recent Conviction Changes entries; manifest written.
+    Proceeding without Tier 3 prompt per §9 (draft→active is additive + reversible).
+```
+
+Then continue to Step 3. Every other mechanic (snapshot skip per §2.2, sector dry-run per §5.1, manifest at §3, Log prefix "Status change:" per registry §6) is IDENTICAL to the Step 2 path — only the user-prompt step is elided.
+
+**Exemption scope is narrow** — only `draft→active`. All other status transitions (including `monitoring→active`, `closed→active`, `active→draft`) still require Step 2 Tier 3 confirmation because they involve either reductions, reopen semantics, or demotion risks.
 
 ## Step 2: Confirm (Tier 3 — Mandatory)
 
@@ -304,10 +333,14 @@ Runs for every transition where Step 5.1 set `edit_planned: true` — including 
 
 ### 5b: Apply sector edit (conditional)
 
-1. **Status → active** (from draft/monitoring/closed): add to Active Theses. If previously present with monitoring annotation, remove annotation. For `closed→active`: if `## Closed/Archived` section exists and contains this thesis, remove entry (prevents dual listing).
+1. **Status → active** (from draft/monitoring/closed): add to Active Theses. If previously present with monitoring annotation, remove annotation. For `closed→active`: if `## Closed/Archived` section exists and contains this thesis, remove entry (prevents dual listing). Optional: append a Log entry to the sector note documenting the promotion.
 2. **Conviction change** (when sector displays conviction): update displayed level to new value.
 3. **Status → monitoring** (when sector distinguishes): move or annotate per sector convention.
 4. **Status → closed**: remove from Active Theses. Add to `## Closed/Archived` if exists.
+
+**Batching guidance — §10**: when a single transition requires multiple edits to the same sector note (e.g., `draft→active` for a thesis currently on the Watchlist: add-to-Active + remove-from-Watchlist + append-Log), emit all three `Edit` tool calls as **independent invocations in a single tool-call block**. The harness serializes same-file Edits on the server side (each Edit validates unique `old_string` against the current file state), so this is one LLM round-trip instead of three. Do NOT wait for each Edit's response before firing the next.
+
+**Cross-file parallelism**: Step 5a sector snapshot `cp` (Bash) can fan out in parallel with Step 5b's first Edit on the sector note — the snapshot reads the pre-edit state, the Edit writes the post-edit state; `cp` completes first even if dispatched in the same block because Bash is synchronous on the tool-result boundary.
 
 ## Step 6: Graph update deferred
 
@@ -439,20 +472,26 @@ After write, verify file exists + contains expected entries. Include in Step 8:
 - **Graph invalidation**: `[N] neighbors added to .graph_invalidations: [first 5, truncate with "...+M more"]`
 - **Graph reminder**: `/graph last` now mandatory — without it, invalidation list accumulates.
 
-## Step 7.9: Finalize status transaction manifest
+## Step 7.9: Finalize status transaction manifest (consolidated — §10)
 
 **Only runs if Step 3.0.5 wrote a manifest** (skipped for Reaffirm flow Step 2R).
 
-Flip manifest frontmatter:
-- `status: in-progress` → `status: completed`
-- Add `completed_date: YYYY-MM-DD`
+Consolidate manifest population + frontmatter flip into a **single tool-call block** — one message, parallel independent `Edit` invocations:
 
-Verify flip landed by re-reading frontmatter. Verify fails (§3.4):
+1. `Edit` to populate the manifest body's "Thesis frontmatter edit", "Sector note edit", "Archive move", "Graph invalidations", "`_hot.md` edits" sections with their final outcomes (any sections not yet populated by Steps 3.1/4/5a/7.5/7.6 per §3.3 get filled here in one pass).
+2. `Edit` to flip the frontmatter: `status: in-progress` → `status: completed`.
+3. `Edit` to add `completed_date: YYYY-MM-DD` to frontmatter.
+
+These three Edits target different parts of the same manifest file (body sections vs frontmatter lines). The harness serializes them on the server but dispatching them together saves 2 round-trips vs firing them sequentially.
+
+**Verify flip** — re-read the manifest frontmatter once after the block returns. Flip fails (§3.4):
 ```
 ⚠️ Status manifest status flip failed — manifest at [path] remains in-progress despite successful /status completion. /lint #48 will flag as Important. Manual fix: edit the manifest frontmatter to status: completed.
 ```
 
 Do NOT rollback — all stages already succeeded.
+
+**Final batch with Step 8**: the manifest verification re-read can be dispatched in parallel with the final lock-release Bash block from Step 8 (`rm -f $LOCK_FILE`) — the verification reads a different file than the lock, no dependency. One additional round-trip saved.
 
 Manifest retained. `/clean` handles aging via 90-day threshold (§8 — no regret-recovery window like `/prune`).
 

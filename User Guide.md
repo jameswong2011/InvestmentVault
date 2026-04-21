@@ -416,7 +416,7 @@ Which mode?
 - **Creates**: Snapshot (except `draft→active` and `reaffirm`), `_status-manifest`.
 - **Modifies**: Thesis frontmatter + Log, sector note, `_hot.md`; appends `.graph_invalidations` on closure; appends `.archive_ticker_registry.md` on closure.
 - **Follow-up**: `/sync` (conviction changes), `/graph last`.
-- Mandatory confirmation before applying. `draft→active` has no pre-status snapshot (see [[#Draft→active has no snapshot|§13]]).
+- Mandatory Tier 3 confirmation before applying, **except** `draft→active` which takes a fast-path (see [[#/status draft→active fast-path|§13]]). `draft→active` has no pre-status snapshot either.
 
 ### Analytical
 
@@ -1211,7 +1211,7 @@ To check: `ls -la .last_sync`. To recover without re-reading the full vault, `to
 On a vault that already has thesis/research/sector notes, the first `/sync` (any mode) reads everything. This is equivalent to `/sync all` in scope — expected, not a bug. Establishes the watermark baseline.
 
 ### Draft→active has no snapshot
-`/status TICKER status draft→active` does not create a pre-status snapshot (no analytical content changed). To reverse a mistaken promotion: manually flip frontmatter back to `draft` and trim the `Status change: draft → active` Log entry. There is no `(pre-status)` snapshot to `/rollback` to.
+`/status TICKER status draft→active` does not create a pre-status snapshot (no analytical content changed). To reverse a mistaken promotion: manually flip frontmatter back to `draft` and trim the `Status change: draft → active` Log entry. There is no `(pre-status)` snapshot to `/rollback` to. Same run also takes the Step 2F fast-path (see [[#/status draft→active fast-path|§13 entry]] above) — the two exemptions share the same underlying insight: this transition is additive, not analytical.
 
 ### Archive-collision prompt
 When you run `/thesis TICKER` and a prior thesis for TICKER exists in `_Archive/` (detected via filename, frontmatter ticker, archive registry, or snapshot trail), `/thesis` pauses with four options:
@@ -1252,6 +1252,13 @@ Default `/surface` now reads only 4 sections per thesis (Summary, Non-consensus 
 
 ### `/thesis` parallel probe batch (2026-04-21 change)
 `/thesis` Step 0+1 duplicate-detection probes (rename-marker, active-thesis glob, 4 archive-collision signals, research-context grep) now fan out as a single parallel tool-call batch after lock acquisition instead of running sequentially. Same semantics, same 4-option archive-collision prompt, same priority-order short-circuit — just fewer round-trips. Expected ~5–8% end-to-end wall-clock improvement on `/thesis TICKER` runs with no user-visible behavior change. Full rationale: `.claude/skills/thesis/RATIONALE.md §9`.
+
+### /status draft→active fast-path (2026-04-21 change)
+`/status TICKER status draft→active` now **skips the Tier 3 `"Confirm? (y/n)"` gate** and proceeds directly after a one-line FYI message. Every other safety mechanic (manifest skeleton, sector snapshot, Log entry, manifest flip) runs identically — only the user prompt is elided. Scope is narrow: ONLY `draft→active`. All other transitions (`active→monitoring`, `active→closed`, `monitoring→active`, `closed→active`, conviction changes) still require the Tier 3 confirmation.
+
+Why the exemption is safe for this specific transition: CLAUDE.md Tier 3's examples are all reductions (`active→monitoring`, `active→closed`); `draft→active` is additive (adds coverage, doesn't remove). No analytical content changes. No cascade implications (no sector-list removal, no graph invalidations, no `_hot.md` demotion). Easily reversible via manual frontmatter flip (the draft→active path has never had a pre-status snapshot anyway — see previous entry). Full analysis: `.claude/skills/status/RATIONALE.md §9`.
+
+Combined with the Step 1/5b/7.9 parallelization refactor, a typical `/status TICKER draft→active` should now complete in ~30–50s (down from ~3min). To opt back into the prompt for a specific run, interrupt after the Step 2F FYI message prints.
 
 ### Pending graph work persists across sessions
 If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` consumes it. `/lint` flags stale invalidation files so they're not forgotten.
