@@ -294,7 +294,12 @@ for sector_note_path, thesis_list, confidence in target_sectors:
    ```
    Same `Comparison ` prefix as thesis Log entries (registry §16). If sector note has no `## Log` section, graceful-skip this sub-step per `_shared/preflight.md` Procedure 4 and log `ℹ️ Sector [name] has no ## Log — Related Research wikilink alone serves as idempotency marker.`
 
-**Why sub-steps 3 and 4 are load-bearing** (§4.5 — C1 fix): without them, `/sync` Step 4.0 idempotency check fails to detect that `/compare` already propagated the research note to this sector. `/sync` Step 4a/4b then re-edits the same competitive-dynamics / value-chain sections from scratch, silently overwriting `/compare`'s nuanced analysis. Sub-step 3 satisfies Step 4.0 sub-step 1 (wikilink present in `## Related Research`); sub-step 4 satisfies Step 4.0 sub-step 2 (today-dated Log entry referencing source). Either alone triggers the idempotency skip, but both are emitted for robustness.
+**Why sub-steps 3 and 4 are load-bearing** (§4.5 — C1 fix): without them, `/sync` Step 4.0 idempotency check fails to detect that `/compare` already propagated the research note to this sector. `/sync` Step 4a/4b then re-edits the same competitive-dynamics / value-chain sections from scratch, silently overwriting `/compare`'s nuanced analysis.
+
+**How the two sub-steps combine with `/sync` Step 4.0**:
+- **Sub-step 3** (`## Related Research` wikilink) satisfies Step 4.0 sub-step 1 — without a wikilink match there, Step 4.0 classifies as "first-time propagation" and proceeds straight to 4a/4b (full re-edit). Sub-step 3 is therefore the **minimum required** marker: it stops "first-time" misclassification.
+- **Sub-step 4** (today-dated sector `## Log` entry) additionally satisfies Step 4.0 sub-step 2 — wikilink present alone only advances Step 4.0 to its Log-entry probe; it does NOT by itself fire the skip. With both markers present, Step 4.0 returns `skip 4a + 4b` cleanly.
+- **Sector without `## Log`** (sub-step 4 graceful-skips): Step 4.0 sub-step 2 reads the absent Log, finds no today-dated entry, and falls through to its "proceed normally" branch (which then relies on Step 4b's deep-analysis to decide whether any real delta exists). This is strictly weaker than the two-marker case — Step 4b may still issue redundant edits, though its deep-analysis is designed to gate on genuine delta. Treat the sector-without-Log case as a known soft spot and ensure sub-step 3 at minimum lands.
 
 **`abort_transaction` surfaces** (§4.4):
 - Sectors successfully edited (now rolled back to pre-compare state): list

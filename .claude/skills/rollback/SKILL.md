@@ -545,13 +545,14 @@ Leaving stale rows in place causes `/thesis TICKER` Signal C (archive-collision 
 
 ```bash
 if [ -f .archive_ticker_registry.md ]; then
-  # Remove any row whose first pipe-delimited field equals TICKER
-  # Preserve header line and rows for OTHER tickers untouched.
-  awk -F'|' -v t="$TICKER" 'NR==1 || $1!=t' .archive_ticker_registry.md > .archive_ticker_registry.md.tmp
+  # Remove any data row whose first pipe-delimited field equals TICKER.
+  # Preserve comments (^#), blank lines, and malformed short lines (NF<2) —
+  # mirrors /rename Step 8.5 pattern for consistency.
+  awk -F'|' -v t="$TICKER" '/^#/ || /^$/ || NF<2 || $1!=t' .archive_ticker_registry.md > .archive_ticker_registry.md.tmp
   mv .archive_ticker_registry.md.tmp .archive_ticker_registry.md
   
-  # If registry now contains only the header (or is empty), remove the file
-  # so /lint #46 and /thesis Signal C skip the Grep entirely.
+  # If registry now contains only comments/blanks (zero data rows), remove the
+  # file so /lint #46 and /thesis Signal C skip the Grep entirely.
   if [ $(grep -cv '^#\|^$' .archive_ticker_registry.md) -eq 0 ]; then
     rm -f .archive_ticker_registry.md
   fi
@@ -586,8 +587,13 @@ if [ -f .graph_invalidations ] && [ -f "$RESTORED_PATH" ]; then
   if [ -n "$NEIGHBORS" ]; then
     cp .graph_invalidations .graph_invalidations.tmp
     while IFS= read -r n; do
-      # Remove any line matching "$n" or "$n.md" exactly
-      grep -vE "^${n}(\.md)?\$" .graph_invalidations.tmp > .graph_invalidations.tmp.new \
+      # Use grep -F (fixed-string mode) to avoid regex metachar interpretation.
+      # Thesis filenames legitimately contain `.` (e.g., "3M - 3M Co."), `(`, `)`
+      # (e.g., "Alphabet (Google)"), `&` (e.g., "H&R Block"), etc. Unescaped
+      # regex would over-match — `.` would match any char, `(` would fail as
+      # unterminated group. Fixed-string match with two separate -F invocations
+      # handles both the path-with-.md and path-without-.md forms exactly.
+      grep -Fxv -e "$n" -e "${n}.md" .graph_invalidations.tmp > .graph_invalidations.tmp.new \
         && mv .graph_invalidations.tmp.new .graph_invalidations.tmp
     done <<< "$NEIGHBORS"
     mv .graph_invalidations.tmp .graph_invalidations
@@ -597,6 +603,8 @@ if [ -f .graph_invalidations ] && [ -f "$RESTORED_PATH" ]; then
   fi
 fi
 ```
+
+**Why `grep -Fxv`**: `-F` treats patterns as fixed strings (no regex), `-x` requires whole-line match (no substring bleed), `-v` inverts the match (keep lines that do NOT equal any pattern). Multiple `-e` patterns let one `grep` invocation handle both `n` and `n.md` forms atomically. The original regex-based `grep -vE "^${n}(\.md)?\$"` over-matched when `$n` contained `.`, `(`, `)`, `&`, `'`, or other regex metacharacters that are legal in thesis filenames.
 
 **Safety**: if a neighbor path is in `.graph_invalidations` for a DIFFERENT reason (a separate closure that happens to reference the same neighbor), we could theoretically remove it prematurely. In practice this is safe — the neighbor's re-extraction on next `/graph last` will still produce correct adjacency from the current thesis body. Worst case: a second closure's invalidation is consumed one `/graph last` later than intended, still idempotent.
 
