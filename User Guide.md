@@ -1250,6 +1250,9 @@ Both create Research notes but don't advance thesis mtimes or write `.graph_inva
 ### `/surface` section-targeting vs `/surface all` (2026-04-21 change)
 Default `/surface` now reads only 4 sections per thesis (Summary, Non-consensus Insights, Risks, Catalysts) + last 5 Log entries — ~25% of the token cost of the pre-2026-04-21 behavior. Use `/surface all` if you explicitly want the legacy full-read behavior (e.g., once-off quarterly deep review). Both modes fork to a subagent, so main-context impact is the same either way. If a cross-section pattern (e.g., a Business Model similarity across 3 theses) seems systematically missed by default mode, switch to `/surface all` for that run.
 
+### `/thesis` parallel probe batch (2026-04-21 change)
+`/thesis` Step 0+1 duplicate-detection probes (rename-marker, active-thesis glob, 4 archive-collision signals, research-context grep) now fan out as a single parallel tool-call batch after lock acquisition instead of running sequentially. Same semantics, same 4-option archive-collision prompt, same priority-order short-circuit — just fewer round-trips. Expected ~5–8% end-to-end wall-clock improvement on `/thesis TICKER` runs with no user-visible behavior change. Full rationale: `.claude/skills/thesis/RATIONALE.md §9`.
+
 ### Pending graph work persists across sessions
 If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` consumes it. `/lint` flags stale invalidation files so they're not forgotten.
 

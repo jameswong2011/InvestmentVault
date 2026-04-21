@@ -95,18 +95,7 @@ Reading all ~40 thesis notes in full will exceed context limits when catalyst ex
 
 ## Phase 4: Output
 
-If `_catalyst.md` already exists, snapshot it before overwriting:
-```bash
-mkdir -p _Archive/Snapshots
-cp "_catalyst.md" "_Archive/Snapshots/_catalyst (pre-catalyst YYYY-MM-DD-HHMMSS).md"
-```
-Then read the snapshot and add to its frontmatter:
-```yaml
-snapshot_of: "[[_catalyst]]"
-snapshot_date: YYYY-MM-DD
-snapshot_trigger: catalyst
-snapshot_batch: catalyst-YYYY-MM-DD-HHMMSS
-```
+> **Snapshot already taken in Phase 0.2** with the mandatory hard-abort guard (§1.3 invariant). Do NOT re-snapshot here — a second `cp` without the hard-abort/non-empty check would silently overwrite Phase 0.2's protective snapshot under filesystem pressure, destroying the recovery path. The Phase 0.2 snapshot covers the pre-regenerate state for the entire run.
 
 Save/update the catalyst calendar at `_catalyst.md` (overwrite each run — this is a regenerated utility file like `_hot.md`, not a research note):
 ```yaml

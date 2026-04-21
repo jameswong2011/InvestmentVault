@@ -648,9 +648,25 @@ If `_hot.md` does not exist, create with sections: `## Active Research Thread`, 
 
 **Runs after ALL content writes (Steps 3-6) complete, before Step 7.5.**
 
-### Mode-conditional watermark
+### Ordering invariant (C4)
 
-- **`/sync` / `/sync all`**: touch `.last_sync`. Last mutation; if prior step failed, watermark stays unset and next run re-processes.
+`.sync_all_fresh` writes BEFORE `.last_sync` touch. If either fails, this ordering preserves correctness:
+- Marker write fails, watermark not yet advanced → next `/sync` re-reads everything (safe — wasted work but no missed rebuild).
+- Marker wrote, watermark touch fails → `/graph` still forces full rebuild from marker; next `/sync` re-reads (safe — doubly covered).
+- Reverse order would produce the failure path where watermark advances but marker absent → `/graph last` skips full rebuild → "no delta" theses unreconciled in `_graph.md` until next `/sync all`.
+
+### Graph-rebuild marker — `/sync all` only (writes FIRST per C4 ordering)
+
+Skip for `/sync` (default) and `/sync TICKER`. For `/sync all`:
+```bash
+touch .sync_all_fresh
+```
+
+`/graph` reads this marker at Watermark Resolution and forces full rebuild regardless of mode, then deletes the marker after a successful write. See §5.4.
+
+### Mode-conditional watermark (writes AFTER marker per C4 ordering)
+
+- **`/sync` / `/sync all`**: touch `.last_sync`. If prior marker write failed, watermark stays unset and next run re-processes.
   ```bash
   touch .last_sync
   ```
@@ -660,15 +676,6 @@ If `_hot.md` does not exist, create with sections: `## Active Research Thread`, 
     touch -t 197001010000 .last_sync
     ```
     Report `Watermark: epoch placeholder created`.
-
-### Graph-rebuild marker — `/sync all` only
-
-Skip for `/sync` (default) and `/sync TICKER`. For `/sync all`:
-```bash
-touch .sync_all_fresh
-```
-
-`/graph` reads this marker at Watermark Resolution and forces full rebuild regardless of mode, then deletes the marker after a successful write. See §5.4.
 
 ---
 

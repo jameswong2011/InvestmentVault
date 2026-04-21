@@ -242,7 +242,42 @@ Cascade options:
   (c) Cancel.
 ```
 
-Option (b) execution: restore thesis → restore sector → if closure: `mv _Archive/TICKER - Name.md Theses/TICKER - Name.md` → clear matching entries from `.graph_invalidations` → revert `_hot.md` Recent Conviction Changes. On any sub-step failure → abort remaining, report. Pre-rollback safety snapshot (Step 4) covers worst case.
+Option (b) execution: restore thesis → restore sector → if closure: **un-archive with collision check (C5)** → clear matching entries from `.graph_invalidations` → revert `_hot.md` Recent Conviction Changes. On any sub-step failure → abort remaining, report. Pre-rollback safety snapshot (Step 4) covers worst case.
+
+**Un-archive collision check (C5)**: before `mv _Archive/TICKER - Name.md Theses/TICKER - Name.md`, probe the destination:
+
+```bash
+if [ -e "Theses/TICKER - Name.md" ]; then
+    # Collision — a replacement thesis was created post-closure (e.g., via
+    # /thesis TICKER → "proceed accepting dual files" option in Step 1.2).
+    # Default mv would silently overwrite on BSD/Linux, destroying the replacement.
+    echo "collision"
+fi
+```
+
+On collision, pause the cascade and present:
+
+```
+⚠️ Un-archive collision — destination already exists:
+  Existing file: Theses/TICKER - Name.md (replacement thesis created post-closure)
+  Archive source: _Archive/TICKER - Name.md (what rollback wants to restore)
+
+Silently overwriting destroys the replacement. Options:
+
+  (a) Save collision to snapshot, then un-archive.
+      - cp Theses/TICKER - Name.md → _Archive/Snapshots/TICKER - Name (rollback-collision-YYYY-MM-DD-HHMMSS).md
+      - then mv _Archive/TICKER - Name.md → Theses/TICKER - Name.md
+      - replacement's snapshot available for later inspection
+  (b) Un-archive with suffix.
+      - mv _Archive/TICKER - Name.md → Theses/TICKER - Name (reopened YYYY-MM-DD).md
+      - both files coexist in Theses/; user reconciles manually
+  (c) Cancel un-archive sub-step only (keep earlier thesis + sector + invalidations
+      restorations). Archive file stays in _Archive/. User reconciles manually.
+
+Confirm (a/b/c):
+```
+
+Proceed with the selected sub-step only after explicit user confirmation. Option (a) is the default recommendation — preserves both states without creating a dual-file vault. For standard rollbacks with no post-closure replacement, destination is absent and the mv runs directly without this prompt.
 
 ### 2.5f: Thesis manifest cascade (H1)
 

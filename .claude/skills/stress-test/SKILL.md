@@ -61,6 +61,49 @@ Structure as a short seller would pitch to an investment committee:
 
 ## Phase 4: Update the Vault
 
+### 4.0: Write manifest skeleton (M1 — skeleton before destructive edits)
+
+Generate `HHMMSS` once at the start of Phase 4. Reused by all per-file writes and the manifest. Write the manifest skeleton BEFORE any destructive edits (§3 invariant: skeleton → populate → flip).
+
+```bash
+HHMMSS=$(date +%H%M%S)
+mkdir -p _Archive/Snapshots
+```
+
+Manifest path: `_Archive/Snapshots/_stress-test-manifest (stress-test-TICKER-YYYY-MM-DD-HHMMSS).md`. Write initial state:
+
+```yaml
+---
+type: stress-test-manifest
+batch: stress-test-TICKER-YYYY-MM-DD-HHMMSS
+status: in-progress
+ticker: TICKER
+date: YYYY-MM-DD
+---
+
+# Stress Test Manifest
+
+> **If `status: in-progress`**, `/stress-test` crashed between Phase 4.0 (skeleton)
+> and Phase 4.6 (flip). The Log entry on `Theses/TICKER - Name.md` may or may not
+> have landed; check the thesis `## Log` for today's date + `Stress test` prefix.
+> Recovery: manually complete or strike through the entry, then flip this
+> manifest's `status:` to `completed` or `rm` the manifest.
+>
+> **If `status: completed`**, Phase 4 finished cleanly. `/rollback` Step 2.5d
+> can surface the recorded Log entry for strikethrough review.
+
+## Research note created
+- [[Research/YYYY-MM-DD - TICKER - Stress Test]]  *(filled in Phase 4.6 flip)*
+
+## Thesis Log entry appended (Tier B — no snapshot)
+- Target: `Theses/TICKER - Name.md`
+- Entry date: YYYY-MM-DD
+- Entry text: *(filled in Phase 4.6 flip with actual text)*
+- Log append outcome: *(filled in Phase 4.6 flip: succeeded | failed reason)*
+```
+
+Skeleton write failure → hard abort Phase 4 before any destructive edits. Report the failure and the current state (none of 4.1-4.5 have run yet).
+
 ### 4.1: Write the research note (without `propagated_to:`)
 
 Save the stress test to `Research/YYYY-MM-DD - [TICKER] - Stress Test.md` with:
@@ -113,14 +156,22 @@ This is a wikilink registration, not a propagation claim — runs regardless of 
 
 Do NOT change the conviction level — flag it for the user to decide via `/status TICKER conviction old→new [rationale]`.
 
-### 4.6: Write stress-test manifest sidecar (T3.1 fix)
+### 4.6: Flip manifest to completed (M1 — skeleton → populate → flip)
 
-Write a manifest at `_Archive/Snapshots/_stress-test-manifest (stress-test-TICKER-YYYY-MM-DD-HHMMSS).md`. Generate `HHMMSS` at the start of Phase 4.
+Manifest skeleton was written at Phase 4.0 with `status: in-progress`. Phase 4.6 populates the body with the actual Log entry text and Phase 4.2 outcome, then flips status to `completed`.
 
-> **Batch ID format (C4 fix)**: Ticker-scoped skills now include TICKER in the batch ID to prevent collisions when two concurrent `/stress-test` runs on different tickers hit the same HHMMSS. Prior format `stress-test-YYYY-MM-DD-HHMMSS` could collide between simultaneous `/stress-test NVDA` and `/stress-test AMAT`; new format `stress-test-NVDA-YYYY-MM-DD-HHMMSS` and `stress-test-AMAT-YYYY-MM-DD-HHMMSS` are distinct. `/rollback` Step 2.5d cascade detection matches by the `stress-test-` prefix AND the `ticker:` frontmatter field of the manifest.
+> **Batch ID format (C4 fix)**: Ticker-scoped skills include TICKER in the batch ID to prevent collisions when two concurrent `/stress-test` runs on different tickers hit the same HHMMSS. Prior format `stress-test-YYYY-MM-DD-HHMMSS` could collide between simultaneous `/stress-test NVDA` and `/stress-test AMAT`; new format `stress-test-NVDA-YYYY-MM-DD-HHMMSS` and `stress-test-AMAT-YYYY-MM-DD-HHMMSS` are distinct. `/rollback` Step 2.5d cascade detection matches by the `stress-test-` prefix AND the `ticker:` frontmatter field of the manifest.
 
 **Why this exists**: `/stress-test` writes a Log entry to the tested thesis (Tier B — no pre-edit snapshot because the Log is append-only) and a research note. If the user later decides the stress test was invalid (wrong input, stale vault state, experimental run), there's no `/rollback` cascade path to restore the pre-stress-test thesis state. Manual strikethrough of the Log entry is the only remedy. The manifest provides `/rollback` cascade-detection with the Log entry text so the user can choose per-entry annotation (same pattern as `/sync` Tier B sidecar and `/compare` manifest).
 
+**Two-step flip** (Edit calls on the Phase 4.0 skeleton):
+
+1. Populate body placeholders with actual values:
+   - `## Thesis Log entry appended` — Entry text: the actual Log entry written in Phase 4.2 (including the filled-in vulnerability and ratings).
+   - Log append outcome: `succeeded` or `failed (reason)` per Phase 4.2's `log_append_succeeded` tracking.
+2. Flip frontmatter: `status: in-progress` → `status: completed`. Add `completed_date: YYYY-MM-DD`.
+
+Expected frontmatter post-flip:
 ```yaml
 ---
 type: stress-test-manifest
@@ -128,26 +179,19 @@ batch: stress-test-TICKER-YYYY-MM-DD-HHMMSS
 status: completed
 ticker: TICKER
 date: YYYY-MM-DD
+completed_date: YYYY-MM-DD
 ---
+```
 
-# Stress Test Manifest
+**Verify flip landed**: re-read the manifest frontmatter. Confirm `status: completed` present, `status: in-progress` absent, `completed_date:` equals today.
 
-> Sidecar for `/stress-test TICKER` run on YYYY-MM-DD. Used by `/rollback` Step
-> 2.5d cascade detection: when the user selects this batch ID, the Log entry
-> below is surfaced for strikethrough review.
+**On verification failure** (flip Edit silently missed): do NOT retry aggressively. Report `⚠️ Stress-test manifest status flip failed — manifest at [path] remains status: in-progress despite successful stress-test completion. /lint #47 will flag this as Important until manually resolved. Manual fix: edit the manifest and replace status: in-progress with status: completed (add completed_date: today).` Continue to Phase 5.
 
-## Research note created
-- [[Research/YYYY-MM-DD - TICKER - Stress Test]]
+### Recovery guidance (in manifest body)
 
-## Thesis Log entry appended (Tier B — no snapshot)
-- Target: `Theses/TICKER - Name.md`
-- Entry date: YYYY-MM-DD
-- Entry text:
-  ```
-  - Stress test [[Research/YYYY-MM-DD - TICKER - Stress Test]]: [top vulnerability], X/Y assumptions rated 🔴 — conviction [unchanged/weakened: reassess + reason]
-  ```
-- Log append outcome: succeeded | failed (reason)
+The flipped manifest's body includes:
 
+```
 ## Recovery guidance
 
 To undo this stress test's Log entry (e.g., the stress test was based on wrong
