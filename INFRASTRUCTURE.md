@@ -1,8 +1,130 @@
 # Infrastructure Reference
 
-> Deep technical details for the vault's consistency machinery. User-facing summary: [[User Guide#14. How the Vault Stays Consistent]]. Read this file when debugging an edge case, extending a contract, or authoring a new skill.
+> Deep technical details for the vault's consistency machinery. **Audience: Claude Code at skill-author / debugger scope.** User-facing summary: [[User Guide#14. How the Vault Stays Consistent]].
 >
-> **Per-skill deep rationale** lives in `<skill>/RATIONALE.md` (currently only `sync/RATIONALE.md`). When a skill's design rationale exceeds ~20% of its SKILL.md, extract per §12.3. Cross-skill contracts live in `.claude/skills/_shared/*.md` (§12.2).
+> **Per-skill deep rationale** lives in `<skill>/RATIONALE.md` (currently 10 skills: `sync`, `graph`, `lint`, `status`, `scenario`, `compare`, `thesis`, `rename`, `prune`, `rollback`). When a skill's design rationale exceeds ~20% of its SKILL.md, extract per §12.3. Cross-skill contracts live in `.claude/skills/_shared/*.md` (§12.2).
+>
+> **Stable anchors** external files may reference: §1.1 (`_hot.md`), §2.7 (`.drift-config.md`). Do not renumber these without updating consumers.
+
+---
+
+## 0. Orientation
+
+Read this section first on any non-trivial task. It replaces hunting through §1–§13 by giving you lookup tables, critical invariants you cannot violate, and a symptom index that points straight to the deep-dive section.
+
+### 0.1 Reading paths
+
+| Task | Read these sections in order |
+|---|---|
+| **Debug a symptom** (skill silently no-op'd, wrong propagation, lock stuck, etc.) | §0.3 symptom index → §13 debugging flow → specific deep-dive |
+| **Author a new skill** | §0.4 skill landscape → §0.5 glossary → §5 producer contracts → §3 manifest pattern → §6 locks → §12 skill-layer architecture |
+| **Add a new runtime marker at vault root** | §11.5 checklist → §2 nearest-sibling marker → Appendix |
+| **Extend a shared `_shared/*.md` contract** | §12.2 catalog → §12.4 editing protocol → paired `/lint` check in §10 |
+| **Change the `_hot.md` schema or compression** | §1.1 → `.claude/skills/_shared/hot-md-contract.md` → all 13 writers in §0.4 |
+| **Add a new `/lint` check** | §10 registry → §12.2 shared-contract consumers → update §12.4 editing protocol |
+| **Understand a rollback cascade** | §7 cascade catalogue → §3.2 manifest catalogue → §13.6 if stuck in-progress |
+
+### 0.2 Critical invariants
+
+Violating any of these produces silent corruption. Each links to the section that defines it.
+
+1. **Token-based lock ownership, not PID** (§6.2) — Claude Code's Bash tool is stateless; PIDs change between blocks. The LLM carries the run-token string through all tool calls.
+2. **Explicit lock release, not trap-based** (§6.2) — `trap` handlers only survive within one Bash block. Release via explicit `rm -f` at skill end.
+3. **No lock auto-steal** (§6.2) — stale locks surface via `/lint #43`; never steal based on timeout.
+4. **`propagated_to:` is atomic** (§5.1) — field written ONLY after all Log appends succeed. Partial failure omits the field → `/sync` retries.
+5. **`propagated_to: []` is terminal** (§5.1) — `synthesis` and `brief` notes carry empty list. Blocks circular self-propagation.
+6. **Thesis `## Log` is append-only** (CLAUDE.md Tier 2) — never edit, reorder, or delete existing entries. Log-prefix registry (`_shared/log-prefixes.md`) carries cross-skill semantic weight.
+7. **`_hot.md` 6-section schema is load-bearing** (§1.1) — missing sections cause silent skill no-ops. `/lint #35` enforces.
+8. **`_hot.md` compression drops whole entries, never truncates** (§1.1) — truncation markers (`...`, `[truncated]`, unclosed `**`) are forbidden. `/lint #42` catches.
+9. **`_graph.md` has one owner: `/graph`** (§1.2) — only exception is `/rename`'s surgical adjacency-header update, which does NOT advance `last_graph_write:`.
+10. **Manifest skeleton → populate → flip** (§3) — multi-file skills write the manifest BEFORE any destructive mutation, flip to `completed` only after all edits land. `in-progress` = crash signal.
+11. **Closure-snapshot 30-day floor is unbypassable** (§3.2) — pre-closure thesis snapshots from `/prune` Stage 1 OR `/status active→closed` are protected across ALL `/clean` modes for 30 days. No flag override.
+12. **Rename marker hard-blocks consumers** (§2.4) — `.rename_incomplete.TICKER` presence hard-blocks every ticker-scoped skill on TICKER and most vault-wide skills on ANY marker. Re-run `/rename TICKER "[same new_name]"` to repair.
+13. **Sector resolution is a 4-step ladder, not exact match** (§12.2, `_shared/sector-resolution.md`) — exact → normalized → substring → ask. Never silently skip or silently substring-match for destructive writes.
+14. **5 canonical wikilink forms** (`_shared/wikilink-forms.md`) — idempotency and cascade detection must match all five. Producers emit form #1 on write.
+
+### 0.3 Symptom → section index
+
+| Symptom | Likely cause | Read |
+|---|---|---|
+| Skill silently no-op'd on `_hot.md` | Missing/renamed section heading | §1.1, §13.1 |
+| `/sync` didn't propagate a manual thesis edit | Last Log prefix is in skill-origin list (`_shared/log-prefixes.md`) — treated as skill-origin, not research-driven | §5.3, CLAUDE.md Workflow Rule 6, §13.2 |
+| `/sync` propagated the same research twice across days | Wikilink drifted after rename → primary key missed | §2.1, `sync/RATIONALE.md §1` |
+| `/graph` missed a thesis that `/sync all` touched | `.sync_all_fresh` absent or consumed without force-rebuild | §2.2, §13.3 |
+| `/graph last` didn't update neighbor adjacency after closure | `.graph_invalidations` not appended by `/status`/`/prune` | §2.3 |
+| `/clean` refused to delete a closure snapshot | 30-day floor (universal across modes) | §3.2 |
+| `_graph.md` stale after `/rename` | `/rename` only updates adjacency header; run `/graph last` to reconcile | §1.2, §11.4 chain 4 |
+| Ticker-scoped skill hard-blocks with "rename incomplete" | `.rename_incomplete.TICKER` exists | §2.4, §9 |
+| Lock acquisition fails | Conflicting lock active OR stale lock (lint #43) | §6, §13.5 |
+| Manifest stuck `in-progress` | Skill crashed before flip OR final-flip missed | §3, §13.6 |
+| `/ingest` deleted the research note it just created | Quality gate fired (paywall, <150 words, OCR corruption) | §4 |
+| `/thesis` refused to create — "prior archived thesis exists" | Multi-signal archive-collision match | §5.3, `.archive_ticker_registry.md` |
+| `/compare` locked and then failed mid-way | Partial-acquisition rollback released prior ticker locks | §6.3 |
+| Wikilink to note X not matched by consumer | Consumer doesn't handle all 5 forms | `_shared/wikilink-forms.md`, §12.2 |
+| Sector note never updated by `/status` | Sector resolution returned `none` confidence | §12.2, `_shared/sector-resolution.md` |
+| `/rollback` closure cascade surfaced neighbor citations | H3 premise-dependent vs contextual classification | §5.3, §7.1 |
+| `_hot.md` size keeps growing past soft cap | Compression trigger order not firing in order | §1.1, `_shared/hot-md-contract.md` |
+
+### 0.4 Skill landscape
+
+17 skills. Lock scope, `_hot.md` writes, and manifests are the three axes that determine every skill's pre-flight and cleanup contract.
+
+| Skill | Lock scope | Writes `_hot.md`? | Writes manifest? | Writes snapshot? | Role |
+|---|---|---|---|---|---|
+| `/sync` (default) | vault-wide | Yes (all sections) | `_sync-manifest` (T2.1 skeleton) | Tier A per-thesis | Propagation engine — research → thesis → sector/macro |
+| `/sync all` | vault-wide | Yes | `_sync-manifest` + `.sync_all_fresh` | Tier A | Forced full-vault propagation |
+| `/sync TICKER` | ticker:TICKER | Yes | `_sync-manifest` | Tier A | Ticker-scoped propagation; preserves `.last_sync` |
+| `/graph` | vault-wide | No | No | No | Rebuild `_graph.md`. 3 modes (full, `last`, `[N]`) |
+| `/ingest` | vault-wide | No (but may trigger `/sync` downstream) | No | No | Process `_Inbox/` into Research notes; quality gate |
+| `/status` | ticker:TICKER | Yes | `_status-manifest` (T2.2) | Per-thesis pre-edit | Conviction/status changes |
+| `/thesis` | ticker:TICKER | Yes (ART + OQ) | `_thesis-manifest` (H1) | No (creation) — manifest enables deletion-based rollback | Create new thesis |
+| `/deepen` | ticker:TICKER | Yes | No | Per-thesis pre-edit | Targeted section deep-research |
+| `/stress-test` | ticker:TICKER | Yes | `_stress-test-manifest` (T3.1) | No (Log append only) | Adversarial thesis test |
+| `/compare` | N × ticker:TICKER | Yes | `_compare-manifest` | Per-thesis | Competitive comparison |
+| `/scenario` | vault-wide | Yes | No | Per-thesis | Macro scenario propagation across portfolio |
+| `/brief` | ticker:TICKER | Yes (ART + OQ only) | No | No | 1-page pitch generation |
+| `/surface` (unscoped/sector) | vault-wide | Yes | No | No | Cross-portfolio insight discovery |
+| `/surface TICKER` | ticker:TICKER | Yes | No | No | Ticker-scoped insight |
+| `/catalyst` | vault-wide | Yes | No | `_catalyst.md` pre-regenerate | Regenerate catalyst calendar |
+| `/prune` | vault-wide | Yes | `_prune-manifest` | Per-thesis pre-closure | Weak-thesis evaluation/closure |
+| `/rename` | ticker:TICKER | Yes (free-text mentions) | No | Per-thesis pre-rename | Atomic filename + wikilink rewrite |
+| `/rollback` (list) | read-only | No | No | No | Inventory snapshots |
+| `/rollback` (restore) | vault-wide | Yes | No | No | Restore from snapshot + cascade |
+| `/clean` | vault-wide | No | No | No | Delete old snapshots/manifests (respects floors) |
+| `/lint` (full) | vault-wide | No | No | No | 30+ health checks (§10) |
+| `/lint TICKER` | read-only | No | No | No | Scoped subset (§10) |
+
+Ticker-scoped vs vault-wide choice is the single most consequential decision when authoring a new skill — it dictates concurrency, rename-marker behavior, and `.last_sync` semantics.
+
+### 0.5 Glossary
+
+| Term | Meaning |
+|---|---|
+| **Adjacency** | Per-thesis entry in `_graph.md` listing `cross-thesis:`, `same-sector:`, and T7.3 cache fields (`status:`, `log_tail:`) |
+| **Append-only zone** | File region where historical entries are immutable (thesis `## Log`, `_hot.md` Sync Archive, `.archive_ticker_registry.md`, snapshot bodies). See CLAUDE.md Tier 2. |
+| **Batch ID** | `<trigger>-YYYY-MM-DD-HHMMSS` identifier grouping snapshots and manifests from one skill run. Second-precision to avoid collisions. |
+| **Cache fields (T7.3)** | `status:` and `log_tail:` appended to each `_graph.md` thesis entry so `/sync` Pass 1 / Step 2.5 can classify without re-reading every thesis. |
+| **Closure-snapshot 30-day floor** | Universal `/clean` protection: per-thesis pre-closure snapshots (from `/prune` Stage 1 or `/status active→closed`) cannot be deleted for 30 days after the matching manifest's `completed_date:`. |
+| **Consumer** | Any skill that reads a contract or `propagated_to:` field to decide behavior. Opposed to producer. |
+| **Drift anchor** | Log prefix (registry §3-§9) that `/sync` Step 3e weights when detecting conviction drift. |
+| **Idempotency key** | `/sync` per-thesis propagation check keyed on (1) wikilink presence in Log, then (2) `source:` URL / `date:+ticker:` tuple / `tags:`+date rename-resilience fallbacks. |
+| **Load-bearing schema** | File structure whose absence or deviation causes silent no-op, not a crash. `_hot.md` 6 sections, thesis §1–§13 structure, manifest frontmatter. |
+| **Manifest** | `_Archive/Snapshots/_<type>-manifest (<type>-*).md` sidecar tracking a multi-file transaction. Skeleton → populate → flip contract. |
+| **Primary / secondary key (sync)** | §2.1 two-tier idempotency — wikilink presence is primary, URL/date+ticker/tags+date are secondary rename-resilient fallbacks. |
+| **Producer** | Skill that writes content that downstream consumers interpret (Log entries, `propagated_to:`, wikilinks). Every producer has at least one consumer. |
+| **Pre-flight** | `_shared/preflight.md` Procedures 1–4: lock, rename-marker, name sanitization, section probe. Runs at Step 0 of every state-modifying skill. |
+| **Propagation** | `/sync` propagating a research note's signal into thesis Logs (Pass 1), then sector notes (Step 4), then macro notes (Step 5), then `_hot.md` (Step 6). |
+| **Read-only lock** | `.vault-lock.readonly` — multiple readers allowed, blocks vault-wide writers. Used by `/lint TICKER`, `/rollback` list mode. |
+| **Regret-recovery window** | 30-day protection period during which `/rollback TICKER` of a closure is still possible. Enforced via closure-snapshot floor (§3.2). |
+| **Run token** | Random identifier (`printf '%08x' $RANDOM$RANDOM-$(date +%s)`) generated at Step 0.1, written to lockfile `token:` field, carried by LLM across tool calls for ownership verification. |
+| **Same-ticker continuation** | `_hot.md` Active Research Thread rule: same TICKER → append line live; different TICKER → compress outgoing to `*Previous YYYY-MM-DD:*`. |
+| **Scope taxonomy** | `vault-wide` \| `ticker:TICKER` \| `read-only`. Determines lockfile name and conflict semantics. |
+| **Skeleton manifest** | Pre-mutation write of manifest with `status: in-progress` and placeholder fields, enabling post-crash recovery via `/rollback`. |
+| **Skill-origin Log prefix** | Prefix from `_shared/log-prefixes.md` produced by a skill that already handled cross-file propagation (e.g., `Stress test`, `Status change`). `/sync` skips re-propagation when the most-recent Log entry carries one. |
+| **Tier A / Tier B (sync)** | Tier A = destructive edits that require pre-edit snapshot. Tier B = Log-only appends, surfaced in `_sync-manifest` for strikethrough during rollback cascade. |
+| **Watermark** | Timestamp marking last successful skill run. `.last_sync` mtime for `/sync`, `last_graph_write:` frontmatter for `/graph`. |
+
+---
 
 ## 1. Vault content files
 
@@ -98,16 +220,14 @@ Consumed by `/thesis` Step 1.2 archive-collision check (Signal C) — catches pr
 
 ### 2.6 `.vault-lock*` — Concurrency locks
 
-Brief summary here; deep-dive in §6.
+Lockfile at vault root, written by Procedure 1 at Step 0.1, released explicitly at final Bash block. Scope taxonomy, conflict matrix, and per-skill assignment live in §6.1 and §0.4 — not duplicated here.
 
-| Scope | File | Skills |
-|---|---|---|
-| Vault-wide | `.vault-lock` | `/sync all`, `/graph`, `/prune`, `/lint` full, `/clean`, `/catalyst`, `/ingest`, `/scenario`, `/surface` (unscoped/sector), `/rollback` restore |
-| Ticker | `.vault-lock.TICKER` | `/sync TICKER`, `/deepen`, `/stress-test`, `/status TICKER`, `/brief`, `/rename`, `/thesis`, `/surface TICKER` |
-| Multi-ticker | N separate per-ticker locks | `/compare A vs B vs C` |
-| Read-only | `.vault-lock.readonly` | `/lint TICKER`, `/rollback` list |
+Three file-name patterns:
+- `.vault-lock` — vault-wide
+- `.vault-lock.TICKER` — per-ticker (one per TICKER; `/compare` acquires N)
+- `.vault-lock.readonly` — multiple readers allowed, blocks vault-wide writers
 
-Token-based ownership; explicit release; no auto-steal. `/lint #43` surfaces stale locks.
+Token-based ownership (§6.2); explicit release (§6.2); no auto-steal (§6.2). Stale locks surface via `/lint #43`; recovery is user-initiated.
 
 ### 2.7 `.drift-config.md` (optional) — Drift tuning
 
@@ -341,31 +461,31 @@ Writes `.rename_incomplete.TICKER` listing failed files. Re-run triggers repair 
 
 ## 10. `/lint` registry (by ID)
 
-Key checks — severity column indicates escalation in the lint report.
+Key checks — severity column indicates escalation in the lint report. "If fires, suspect" column is the fast-debug pointer.
 
-| ID | Scope | What it catches | Severity |
-|---|---|---|---|
-| #1 | Full | Research note without `propagated_to:` AND no thesis Log reference | Important |
-| #16 | Full | Stale snapshots (>180 days) | Nice to Have |
-| #18, #20, #23 | Full | Graph health (existence, staleness, missing/ghost entries) | Important |
-| #29 | Full | Log-prefix registry vs consumer-list drift (`_shared/log-prefixes.md`) | Important |
-| #30 | Scoped | Sector-resolution coverage per thesis (`_shared/sector-resolution.md`) | Important if `none`, Nice to Have if `substring`/`normalized` |
-| #34 | Full | Sector frontmatter standardization vault-wide | Nice to Have |
-| #32 | Full | Orphaned ticker refs (research `ticker:` matches no thesis) | Nice to Have |
-| #33 | Full | Closed thesis file still in `Theses/` | Important |
-| #35 | Full + scoped | `_hot.md` schema drift | Important (silent no-op source) |
-| #36 | Full | `_prune-manifest` state | Important if in-progress; Nice to Have if completed >30 days |
-| #37 | Full + scoped | `.rename_incomplete.*` markers | Important |
-| #38 | Full | State marker hygiene (`.sync_all_fresh`, `.graph_invalidations` aging) | Nice to Have |
-| #39 | Full | `propagated_to:` producer contract | Important (post-spec) / Nice to Have (pre-spec) |
-| #41 | Full | `_sync-manifest` aging | Important if in-progress; tiered if completed |
-| #42 | Full + scoped | `_hot.md` truncation markers | Important |
-| #43 | Full | Stale locks | Nice to Have (user-triggered recovery) |
-| #45 | Full | `_compare-manifest` aging | Important if in-progress; tiered if completed |
-| #46 | Full | `.archive_ticker_registry.md` validation | Nice to Have |
-| #47 | Full | `_stress-test-manifest` aging | Important if in-progress |
-| #48 | Full | `_status-manifest` aging | Important if in-progress |
-| #49 | Full | `_thesis-manifest` aging | Important if in-progress |
+| ID | Scope | What it catches | Severity | If fires, suspect |
+|---|---|---|---|---|
+| #1 | Full | Research note without `propagated_to:` AND no thesis Log reference | Important | `/sync` didn't run or crashed mid-propagation; research note created manually and never synced |
+| #16 | Full | Stale snapshots (>180 days) | Nice to Have | `/clean` never run; user may want audit trail |
+| #18, #20, #23 | Full | Graph health (existence, staleness, missing/ghost entries) | Important | `/graph last` not run after recent work; `.sync_all_fresh` swallowed without rebuild |
+| #29 | Full | Log-prefix registry vs consumer-list drift (`_shared/log-prefixes.md`) | Important | Prefix added/changed in a producer without updating registry; breaks `/sync` skill-origin classification |
+| #30 | Scoped | Sector-resolution coverage per thesis (`_shared/sector-resolution.md`) | Important if `none`, Nice to Have if `substring`/`normalized` | Thesis `sector:` drift or new sector needs scaffold note; ran `/rename` on sector without updating theses |
+| #34 | Full | Sector frontmatter standardization vault-wide | Nice to Have | Thesis authored with typo/case divergence; sector note renamed without `/sync` catch-up |
+| #32 | Full | Orphaned ticker refs (research `ticker:` matches no thesis) | Nice to Have | Thesis archived without `/status closed` (skipped ledger); `ticker:` typo |
+| #33 | Full | Closed thesis file still in `Theses/` | Important | `/status active→closed` Step 7 crashed before mv; manual edit bypassed `/status` |
+| #35 | Full + scoped | `_hot.md` schema drift | Important (silent no-op source) | Manual edit removed section heading; corruption; a skill wrote a missing section (should never happen — consumer contract violation) |
+| #36 | Full | `_prune-manifest` state | Important if in-progress; Nice to Have if completed >30 days | `/prune` crashed before Stage 4 flip; aged completed → cleanable |
+| #37 | Full + scoped | `.rename_incomplete.*` markers | Important | Prior `/rename` had post-mv Edit failure; re-run to repair |
+| #38 | Full | State marker hygiene (`.sync_all_fresh`, `.graph_invalidations` aging) | Nice to Have | `/graph` not run after `/sync all` (stale `.sync_all_fresh`); `.graph_invalidations` accumulating because `/graph last` not run |
+| #39 | Full | `propagated_to:` producer contract | Important (post-spec) / Nice to Have (pre-spec) | Producer skill crashed mid-propagation (partial append → field omitted correctly); or producer contract violation |
+| #41 | Full | `_sync-manifest` aging | Important if in-progress; tiered if completed | `/sync` crashed or final-flip missed (check `_sync-manifest` `phase:` field for last checkpoint) |
+| #42 | Full + scoped | `_hot.md` truncation markers | Important | Legacy compaction or manual edit left `...`/`[truncated]`/unclosed markdown; a producer violated hot-md-contract §3 |
+| #43 | Full | Stale locks | Nice to Have (user-triggered recovery) | Skill crashed mid-run without explicit `rm -f` release; user interrupted (Ctrl-C after the trap block) |
+| #45 | Full | `_compare-manifest` aging | Important if in-progress; tiered if completed | `/compare` crashed before Phase 5.5c atomicity flip |
+| #46 | Full | `.archive_ticker_registry.md` validation | Nice to Have | Ledger entry references filename that no longer exists (tolerated; `/thesis` verifies before treating as match) |
+| #47 | Full | `_stress-test-manifest` aging | Important if in-progress | `/stress-test` crashed before Phase 4.6 manifest flip |
+| #48 | Full | `_status-manifest` aging | Important if in-progress | `/status` crashed between Step 3.0.5 skeleton and final flip |
+| #49 | Full | `_thesis-manifest` aging | Important if in-progress | `/thesis` crashed before Step 3.5 flip; check whether thesis file was created |
 
 Scoped mode always runs #35 and (if marker exists) #37 — these are vault-global concerns whose cost is low enough to gate weekly rather than monthly.
 
@@ -480,7 +600,7 @@ Five contracts under `.claude/skills/_shared/`. Editing any requires coordinated
 
 ### 12.3 RATIONALE.md pattern
 
-Currently only `sync/RATIONALE.md` exists. Pattern: when SKILL.md accumulates rationale blocks (`> **Why this is safe**...`, `> **Edge case**...`, `> **T#.# rationale**...`) collectively exceeding ~20% of the file with no impact on LLM execution, extract.
+10 skills currently have a `RATIONALE.md`: `sync`, `graph`, `lint`, `status`, `scenario`, `compare`, `thesis`, `rename`, `prune`, `rollback`. Pattern: when SKILL.md accumulates rationale blocks (`> **Why this is safe**...`, `> **Edge case**...`, `> **T#.# rationale**...`) collectively exceeding ~20% of the file with no impact on LLM execution, extract.
 
 **Must stay in SKILL.md**:
 - Every operational rule the LLM applies at runtime
@@ -495,7 +615,22 @@ Currently only `sync/RATIONALE.md` exists. Pattern: when SKILL.md accumulates ra
 - "Why we chose A over B" design dialectics
 - Performance expectations and benchmarks
 
-`sync/RATIONALE.md` has 9 sections (§1-§9) covering idempotency design, propagation-target resolution, Pass 1 logic, skill-origin gate, manifest contract, watermark semantics, _hot.md auto-resolve, drift detection, T7 efficiency principles. SKILL.md references via `§N.M` anchors.
+**Current RATIONALE.md files and coverage**:
+
+| Skill | RATIONALE.md lines | Primary topics |
+|---|---|---|
+| `sync` | 270 | 9 sections — idempotency, propagation targets, Pass 1, skill-origin gate, manifest, watermark, `_hot.md` auto-resolve, drift detection, T7 efficiency |
+| `lint` | 209 | Check severity taxonomy, per-check rationale, cross-check interactions |
+| `compare` | 204 | Phase 5.5c atomicity manifest, multi-ticker lock rollback |
+| `prune` | 198 | Stage 4.2 neighbor scan, 30-day regret window, Stage 4.5 `.graph_invalidations` append |
+| `rollback` | 188 | Cascade step 2.5a–f design, H3 premise-dependent vs contextual, intervening-entries scan |
+| `scenario` | 183 | Phase 6.1.5 Major/Minor/Neutral classification approval, reverse archive-aware iteration |
+| `thesis` | 182 | Step 1.2 multi-signal archive collision, H1 deletion-based rollback |
+| `graph` | 182 | Three-mode cost model, T7.3 cache fields, reverse index always-rebuild rationale |
+| `status` | 180 | T2.2 two-phase manifest, Step 3.0.5 skeleton pre-edit, closure variant snapshot floor integration |
+| `rename` | 169 | Pre-flight Read/Write probe, cross-`new_name` guard, wikilink-form overlap with `_shared/wikilink-forms.md` |
+
+Skills without a RATIONALE.md (7): `brief`, `catalyst`, `clean`, `deepen`, `ingest`, `stress-test`, `surface`. Their design rationale remains inline in SKILL.md (within the 20% threshold).
 
 **Reference format in SKILL.md**: use `§N.M` for same-file (SKILL.md) or RATIONALE.md references; use `registry §N` for `_shared/log-prefixes.md` registry entries; use `_shared/<contract>.md §N` for other shared contracts. Disambiguation prevents ambiguous cross-document pointers.
 
@@ -533,6 +668,151 @@ Currently only `sync/RATIONALE.md` exists. Pattern: when SKILL.md accumulates ra
 ```
 
 Adding a new consumer: update this graph + add paired `/lint` check in the same commit.
+
+---
+
+## 13. Common debugging flows
+
+Symptom-first recipes for the failure modes surfaced most often during skill development. Each follows a diagnose → confirm → fix → verify pattern. Section pointers use §N.M; `/lint #N` maps to §10.
+
+### 13.1 Skill silently no-op'd on `_hot.md`
+
+**Diagnose**: `_hot.md` wasn't modified despite the skill running a `_hot.md` update step.
+
+**Confirm**:
+1. `Read _hot.md` — scan for the 6 canonical section headings (§1.1).
+2. If any heading missing → silent no-op cause (skills are content producers, not schema fixers per `hot-md-contract.md`).
+3. Run `/lint #35` — Important severity surfaces the missing heading.
+
+**Fix**: manual edit to re-insert the missing section heading (no body needed; skill will populate on next run). Do NOT let the skill auto-repair — contract keeps schema ownership in `/lint`.
+
+**Verify**: re-run the skill; target section should update.
+
+### 13.2 `/sync` didn't propagate a manual thesis edit
+
+**Diagnose**: user made a manual edit to a thesis body section (Bull Case, Industry Context, etc.), ran `/sync`, but sector/macro notes didn't pick up the change.
+
+**Confirm**:
+1. Read the thesis's most-recent `## Log` entry.
+2. Check its prefix against `_shared/log-prefixes.md` registry (§12.2). If in the skill-origin list (e.g., `Stress test`, `Status change`, `Deepening`, `Reaffirmed`, `Scenario`) → `/sync` Step 2.5 classified the thesis as skill-origin and skipped re-propagation.
+
+**Fix**: append a Log entry with a non-skill-origin prefix (`Manual edit:`, `Reviewed:`, `Refined:`) describing the change. Re-run `/sync` — Step 2.5 will now classify as research-driven. See CLAUDE.md Workflow Rule 6.
+
+**Verify**: sector note's `## Active Theses` description or macro note's thesis-references section updates with the manual delta.
+
+### 13.3 `/graph last` missed theses after `/sync all`
+
+**Diagnose**: `/sync all` ran, `/graph last` ran, but some thesis adjacencies weren't re-extracted.
+
+**Confirm**:
+1. Check if `.sync_all_fresh` exists at vault root. If present → `/graph` hasn't consumed it yet.
+2. If absent → `/graph` consumed it but may have skipped theses whose mtime wasn't advanced by `/sync all`'s "No delta" triage (§2.2).
+
+**Fix**: the marker should force full rebuild — if `/graph` consumed it without forcing, that's a `/graph` bug. Run `/graph` (full mode, no `last`) to recover. Verify `.sync_all_fresh` is deleted.
+
+**Verify**: `_graph.md` `last_graph_write:` is post-sync-all; spot-check a "No delta" thesis's adjacency.
+
+### 13.4 `/clean` refused to delete a snapshot
+
+**Diagnose**: user ran `/clean [days]` (even `/clean 0`), but a snapshot older than the threshold survived.
+
+**Confirm**:
+1. Read the snapshot's `snapshot_trigger:` frontmatter.
+2. If `snapshot_trigger: prune` OR `snapshot_trigger: status` with `new_value: closed` → **closure-snapshot 30-day floor** applies (§3.2). Floor runs from matching manifest's `completed_date:`.
+3. Alternative: snapshot's `snapshot_of:` target file is missing → orphan; protected by default unless `/clean orphans` or `/clean [days] --include-orphans` requested.
+
+**Fix**: wait for the floor to expire OR manual `rm` with explicit acceptance that `/rollback TICKER` becomes impossible for that closure. No flag bypass exists — the floor is unbypassable by design (§0.2 invariant 11).
+
+**Verify**: after wait, `/clean` deletes on next run.
+
+### 13.5 Lock acquisition failed
+
+**Diagnose**: Step 0.1 Bash block exited with `LOCK_COLLISION` or `LOCK_LOST`.
+
+**Confirm**:
+1. `ls .vault-lock*` — enumerate existing locks.
+2. For each: read `timeout_at:` frontmatter. If in the past → stale; if future → live collision.
+3. For live collision: read `skill:` field → identifies conflicting skill (may be legitimately running).
+
+**Fix paths**:
+- Live collision + conflicting skill truly running → wait for it to finish.
+- Stale lock (per `/lint #43`) → user-initiated `rm -f .vault-lock*`. No auto-steal (§6.2 invariant).
+- LOCK_LOST mid-run → another skill seized the lock OR user `rm`'d it. Skill must abort; re-run after.
+
+**Verify**: re-run skill; acquisition succeeds.
+
+### 13.6 Manifest stuck `in-progress`
+
+**Diagnose**: `/lint` surfaces a manifest with `status: in-progress` and no recent modification.
+
+**Confirm**:
+1. Read the manifest frontmatter — `batch:`, `date:`, `phase:` (if `_sync-manifest` T7.4 checkpointed).
+2. Check whether the corresponding skill was running (terminal output history, lock state).
+3. If skill crashed → partial transaction.
+
+**Fix paths**:
+- **Partial transaction, recoverable**: run `/rollback` — matches `batch:` prefix, offers cascade restore. The manifest-aware cascade (§7) will surface Tier B Log entries for strikethrough review.
+- **Partial transaction, not worth recovering**: manually delete the manifest after confirming no destructive edits landed in the vault proper. Re-run the skill.
+- **False positive** (skill actually completed but final flip missed): check manifest's recorded edits against file mtimes → if all landed, manually flip `status: completed`. Rare.
+
+**Verify**: `/lint` no longer surfaces the manifest.
+
+### 13.7 `/sync` re-propagated a research note on the next day
+
+**Diagnose**: same research note appears twice in a thesis Log under two dates.
+
+**Confirm**:
+1. Check the thesis Log for wikilink form drift — were the two entries' wikilinks to `[[Research/X]]` vs `[[Research/X.md]]` vs alias? All 5 forms should match as "already propagated" per `wikilink-forms.md`.
+2. Check if the research note was renamed/moved between the two sync runs — primary key (wikilink presence) misses; secondary keys (`source:` URL, `date:+ticker:`) should have caught it (§2.1).
+
+**Fix**:
+- If wikilink form mismatch → consumer regex bug in `/sync`'s idempotency check. Fix by ensuring `/sync` uses `wikilink-forms.md` canonical regex.
+- If rename caused miss → secondary keys should have fired; if they didn't, `/lint #1` + #39 cross-check surfaces the double-flag (`sync/RATIONALE.md §1` has the full design).
+
+**Verify**: future `/sync` runs don't duplicate.
+
+### 13.8 `/rename` partial failure
+
+**Diagnose**: `/rename` ran, `mv` succeeded, but some wikilinks weren't rewritten.
+
+**Confirm**:
+1. `ls .rename_incomplete.*` — marker present with ticker suffix.
+2. Read marker `failed_files:` list.
+
+**Fix**: re-run `/rename TICKER "[same new_name]"` — triggers repair mode (§9.4). Marker shrinks monotonically as Edits retry successfully. Auto-deletes on empty.
+
+**Cross-`new_name` conflict** (Step 1.4.5): if prior marker has different `new_name:`, `/rename` aborts. Options: finish prior with marker's `new_name:`, manually resolve + `rm` marker (losing repair state).
+
+**Verify**: `/lint #37` returns no markers; all inbound wikilinks point to new name.
+
+### 13.9 `propagated_to:` field missing on a producer's research note
+
+**Diagnose**: `/sync` Pass 1 treats the note as not-yet-propagated even though it was.
+
+**Confirm**:
+1. Check note's source_type — only `scenario`, `stress-test`, `comparison`, `deepen` are required to emit `propagated_to:` (§5.2). `synthesis`/`brief` must emit `[]`.
+2. If missing on a required source_type → producer crashed mid-propagation OR producer bug (atomicity violation).
+3. `/lint #39` catches.
+
+**Fix**: if Log appends actually succeeded on all listed tickers, manually add `propagated_to: [list]` to the note frontmatter — this is the post-hoc repair. If appends partially succeeded, rerun the producer (it will dedup via wikilink-presence check).
+
+**Verify**: `/sync` no longer re-processes the note; `/lint #1 + #39` cross-check returns clean.
+
+### 13.10 Sector note never updated by a skill
+
+**Diagnose**: `/status`, `/prune`, `/compare`, `/thesis`, or `/rollback` expected to update a sector note but didn't.
+
+**Confirm**:
+1. Read the thesis's `sector:` frontmatter.
+2. Run the 4-step sector resolution (`_shared/sector-resolution.md`) mentally: exact filename → exact frontmatter → normalized → substring.
+3. Check skill output for `⚠️ No sector note found matching sector:` — confidence `none`.
+
+**Fix paths**:
+- `none` + intended sector exists under different name → update thesis `sector:` frontmatter OR create canonical sector note scaffold.
+- `none` + sector truly doesn't exist → create `Sectors/[sector-name].md` from `Templates/Sector Template.md`.
+- `substring` confidence + destructive rewrite skipped → expected behavior (see §12.2 `_shared/sector-resolution.md` §4). Standardize to promote to `exact`.
+
+**Verify**: `/lint #30` / `#34` on TICKER returns pass.
 
 ---
 
