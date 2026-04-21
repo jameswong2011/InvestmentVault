@@ -16,11 +16,42 @@ Design rationale in `.claude/skills/thesis/RATIONALE.md` (§N.M anchors).
 
 `ticker:TICKER` scope per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout 10 min (vault + web research can be slow). Capture token, verify (Procedure 1.5) every subsequent block, release in final.
 
+Step 0.1 MUST complete before Step 0.2 / Step 1 fire — the lock establishes the stable state window for every read-only probe that follows.
+
 ### 0.2: Rename-marker check (§6)
 
-Run Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block per contract 2.3. Rare edge case (can't rename a non-existent thesis), but possible if user previously created → renamed partially → archived → now creating new thesis for same TICKER.
+Probe `.rename_incomplete.TICKER` per Procedure 2. If present, hard-block per contract 2.3. Rare edge case (can't rename a non-existent thesis), but possible if user previously created → renamed partially → archived → now creating new thesis for same TICKER.
+
+**Execution**: fires as part of Step 1.0 parallel probe batch, not as a standalone call. See §9 for safety analysis.
 
 ## Step 1: Duplicate Check
+
+### 1.0: Parallel probe batch (§9)
+
+Steps 0.2, 1.1, 1.2 Signals A–D, and 1.3 have **no ordering dependencies** — all are read-only probes against vault state that is stable under the ticker lock acquired in 0.1. Emit all of them as independent tool calls in a **single tool-call block** (one message, multiple parallel invocations).
+
+The seven probes:
+
+| # | Step | Tool | Target |
+|---|------|------|--------|
+| 1 | 0.2 | `Glob` | `.rename_incomplete.TICKER` |
+| 2 | 1.1 | `Glob` | `Theses/TICKER - *.md` |
+| 3 | 1.2 Signal A | `Glob` | `_Archive/TICKER - *.md` |
+| 4 | 1.2 Signal B | `Grep` | `^ticker: TICKER$` in `_Archive/*.md` (non-recursive) |
+| 5 | 1.2 Signal C | `Glob` | `.archive_ticker_registry.md` (existence probe; follow-up `Grep` for `^TICKER\|` only if file exists) |
+| 6 | 1.2 Signal D | `Grep` | `snapshot_of:.*Theses/TICKER -` in `_Archive/Snapshots/*.md` |
+| 7 | 1.3 | `Grep` | `TICKER` in `Research/` (prefer `ticker:` frontmatter + `tags:` matches over body-text) |
+
+**Process results post-batch in priority order** — earlier hits short-circuit later decisions:
+
+1. **0.2 marker match** → hard-block per Procedure 2 §2.3. Ignore all other probe results (the marker takes absolute precedence; any thesis/archive/research state we read is suspect until the rename repair completes).
+2. **1.1 match** → active thesis exists. Stop. Suggest `/deepen TICKER`. Report matching filename.
+3. **1.2 Signals A/B/C/D UNION non-empty** → archive-collision protocol (§2). Proceed to 1.2's existing 4-option prompt.
+4. **All clear** → 1.3 result set feeds Step 2 as research context.
+
+**Option (b) re-probe**: if the user picks alternate name in the archive-collision prompt, re-run **only** the 1.1 Glob against the new name. Other probes (marker, archives, research) don't change based on the name choice — don't re-fire them.
+
+**Signal C existence probe handling**: the registry is vault-local but not guaranteed to exist (fresh vaults, or vaults that have never closed a thesis). Treat absent-registry as empty set for Signal C. If Glob returns a hit, a follow-up Grep for `^TICKER\|` in the registry extracts the match. This is one sequential step after the parallel batch, but only fires conditionally.
 
 ### 1.1: Active thesis check (prefix glob — §1.1)
 

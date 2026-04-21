@@ -751,6 +751,20 @@ Audit of main-context usage on Opus 4.7 (1M context, max effort) surfaced three 
 
 **Revert procedure**: one-line edit per skill, change `model: sonnet` → `model: opus` in SKILL.md frontmatter. No data migration, no contract changes.
 
+#### R5 — Parallel probe batch in `/thesis` Step 1.0
+
+**Change**: `/thesis` Step 0.2 (rename-marker), 1.1 (active-thesis glob), 1.2 Signals A–D (archive collision, four independent file reads), and 1.3 (research context grep) now execute as a single parallel tool-call batch after Step 0.1 lock acquisition. Post-batch processing applies priority-ordered short-circuit logic (marker → active → archive → context).
+
+**Rationale**: all seven probes are read-only, operate on stable state under the ticker lock, and have no cross-dependencies. Sequential execution added ~10–15s of pure round-trip latency per skill run. See `thesis/RATIONALE.md §9` for full safety analysis.
+
+**Measured impact** (projected): wall-clock Step 0+1 cost drops from ~15s to ~3s. End-to-end `/thesis` skill-run savings ~5–8% of total time on the common path (no duplicate thesis found).
+
+**Trade-off accepted**: slightly higher token context per turn — seven parallel tool-result blocks instead of one — vs. sequential short-circuit savings on the rare "active thesis exists" path. Net positive because the rare path is cheap anyway and the common path happens every run.
+
+**Safety under the lock contract**: preflight Procedure 1 invariants fully preserved. Lock acquired first (0.1 sequential), probes fire after. Probes use `Glob`/`Grep` exclusively — no Bash ownership-verification cost (preflight §1.5 only mandates verification for Bash blocks).
+
+**Cross-skill impact**: none. Step 1.2 multi-signal archive collision retains its 4-signal semantics (§5.3 table entry unchanged). `preflight.md` line 365's reference to `/thesis` rename-marker location updated from "Step 1.1.5" (already drifted) to "Step 0.2, executed within Step 1.0 parallel batch".
+
 ---
 
 ## 13. Common debugging flows

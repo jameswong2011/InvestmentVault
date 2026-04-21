@@ -1,6 +1,10 @@
 ---
 date: 2026-04-15
 tags: [sector, moc]
+snapshot_of: "[[Sectors/Semiconductors]]"
+snapshot_date: 2026-04-21
+snapshot_trigger: status
+snapshot_batch: status-VRT-2026-04-21-125747
 ---
 
 # Semiconductors
@@ -21,7 +25,6 @@ tags: [sector, moc]
 - [[Theses/LITE - Lumentum]] — Lumentum (Photonics/EML)
 - [[Theses/NVDA - Nvidia]] — Nvidia
 - [[Theses/AMD - Advanced Micro Devices]] — AMD (sole merchant full-stack Nvidia alternative — CPU+GPU+DPU+FPGA; OpenAI 6GW + Meta 6GW hyperscaler-imposed diversification; MI355X within single-digit % of B200 on MLPerf 6.0; ROCm framework-native step-function adoption; 38–41x fwd P/E embeds flawless execution; conviction: medium)
-- [[Theses/VRT - Vertiv Holdings]] — Vertiv (AI data center critical infrastructure pure-play — $15B backlog at 2.9x book-to-bill, 27-29% organic guide 2026; non-consensus moat quality vs consensus capacity framing — physics-limited liquid cooling IP + NVIDIA/Intel co-design + OCP standards authorship with Meta; 43x fwd EPS and 336% TTM prices against near-cycle-peak sentiment; conviction: medium)
 
 ## Key Dynamics
 - **NVDA is the operating system for Physical AI, not merely a GPU vendor — FY2026 $215.9B revenue (+65%), ~$4.6T market cap, ~30x forward P/E.** The durable moat is the vertically integrated software simulation stack (PhysX 5/Warp/Omniverse/Cosmos) that locks customers into Nvidia hardware from training through simulation to edge deployment. Warp achieves 8x–669x performance advantage over JAX/CPU alternatives in differentiable physics — this gap *widens* with each hardware generation. Every potential competitor (Siemens, Dassault, Ansys, Google DeepMind) has chosen to build on Nvidia's infrastructure rather than compete against it. Vera Rubin platform in production H1 2026 (10x lower inference cost vs Blackwell). Sovereign AI tripled to ~$30B. AI accelerator market share ~75% (declining from 87% peak as custom ASICs scale — Google TPU v7 ~70% cost reduction, Trainium 30–40% better price-perf). Key risk: ASIC maturation for inference workloads. Open-source strategy (Newton, Alpamayo, GR00T, Cosmos) is an "Android strategy" deepening hardware lock-in through 5.9M CUDA developers. Conviction medium — promote if Physical AI demonstrates commercial ROI at scale or sovereign AI accelerates. *(Sources: [[Theses/NVDA - Nvidia]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], updated Apr 15, 2026)*
@@ -41,6 +44,7 @@ tags: [sector, moc]
 
 ## Watchlist
 - **CRWV (CoreWeave)** — GPU cloud IPO'd Mar 2025 at $23B. Revenue $30M (2022) → $500M (2023) → ~$2B contracts (2024). NVDA-invested. Capital-intensive, debt-funded model. Deep Grok research available.
+- **VRT (Vertiv)** — Data center power/cooling with structural AI tailwind. 23 manufacturing facilities, NVDA collaboration, OCP co-development with META. Deep Grok research available across 2 notes.
 
 ## Related Research
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei Ascend three-year roadmap: 950PR Q1 2026 (128GB/1.6 TB/s in-house HBM), 1.6M-die plan, ByteDance $5.6B order, Atlas SuperCluster 524 EFLOPS FP8 — quantifies China-domestic-alternative threat to NVDA, validates non-Nvidia vertically integrated AI compute at scale
@@ -92,6 +96,3 @@ tags: [sector, moc]
 
 ### 2026-04-19 (TSM stress test sync)
 - [[Research/2026-04-19 - TSM - Stress Test]]: Taiwan strait chokepoint quantified — 92% of global leading-edge (N5/N3/N2), 100% of CoWoS, ~95% of advanced packaging sit inside 100-mile PLA strike window. Xi 2027 PLA readiness directive (CIA Burns testimony, renewed Jan 2026) coincides with current AI capex horizon. "Destroy the fabs" is US default contingency policy (Bloomberg Mar 2023; former NSA O'Brien on-record) → sector residual EV under invasion = Arizona+Japan+Germany rebuild only, 5-7yr EUV replication lag. Silicon shield theory fails Ukraine/Nord Stream 2 precedent. Customer concentration (AAPL+NVDA=40% of TSMC) amplifies rather than diversifies the geopolitical tail.
-
-### 2026-04-21 (VRT promotion)
-- `/status VRT draft→active`: [[Theses/VRT - Vertiv Holdings]] added to Active Theses; removed from Watchlist. AI data center critical infrastructure pure-play — $15B backlog at 2.9x book-to-bill, NVDA/Intel liquid cooling co-design, OCP standards authorship with Meta. Sector now covers the full AI silicon-to-power stack: compute (NVDA/AMD/AVGO/BESI/SEMICAP/TSM), memory (SNDK/285A), photonics (LITE/IQE), and data center infrastructure (VRT).
