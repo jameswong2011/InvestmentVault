@@ -292,14 +292,20 @@ Per-check entries below specify only: (1) manifest filename glob, (2) frontmatte
     - Fix options: (a) `mv "Theses/[file]" "_Archive/[file]"` → `/graph last`; (b) `/status TICKER status closed→active [rationale]` → `/sync TICKER`.
     - Surfaces what 5 separate `/sync` gates used to handle inline (§2.5).
 
-37. **Incomplete-rename markers** — Detect `.rename_incomplete.*` at vault root. Per-ticker files written by `/rename` Step 5.5 on partial failure.
+37. **Incomplete-rename markers** — Detect `.rename_incomplete.*` at vault root. Per-ticker files written by `/rename` Step 5.5 (wikilink failures) and/or Step 10.5 (Step 6-10 operation failures per H3 contract).
     - **Precondition**: glob `.rename_incomplete.*`. None → Pass.
-    - For each marker, read frontmatter (`type: rename-incomplete`, `ticker:`, `old_name:`, `new_name:`, `batch:`, `date:`) + body's "Failed files" list.
-    - **Severity per marker**: Important — `❌ Incomplete /rename in progress: [[.rename_incomplete.TICKER]]. /rename TICKER "[new_name]" completed the mv but [N] inbound wikilink Edit(s) failed. Affected files retain stale wikilinks to [[Theses/TICKER - [old_name]]]. Recovery: re-run /rename TICKER "[new_name]" — skill detects marker (Step 1.3 exception), skips mv, retries failed Edits. Auto-deletes on success. Manual option: edit listed files replacing [old_name] with [new_name] across 7 wikilink patterns (per /rename Step 5).`
+    - For each marker, read frontmatter (`type: rename-incomplete`, `ticker:`, `old_name:`, `new_name:`, `batch:`, `date:`) + BOTH body sections:
+      - `## Failed files (Step 5 — wikilink rewrites)` → list of `failed_files: [path, reason]`. Count via bullet lines under this heading up to next `## ` heading.
+      - `## Failed operations (Steps 6–10)` → list of `failed_ops: [(step, target, reason)]`. Count via bullet lines under this heading up to next `## ` heading (H3 fix).
+      - Both sections may be empty (placeholder only) — treat count 0 for an empty section.
+    - **Severity decision**:
+      - `failed_files + failed_ops == 0` → ⚠️ Nice to Have — orphan marker with no outstanding work. `ℹ️ Empty .rename_incomplete.[TICKER] marker detected — Step 10.5 auto-delete may have been interrupted. Safe to manually rm the marker, or re-run /rename TICKER "[new_name]" (will no-op and clear).`
+      - `failed_files + failed_ops >= 1` → Important — `❌ Incomplete /rename in progress: [[.rename_incomplete.TICKER]]. /rename TICKER "[new_name]" completed the mv but [N] failed file(s) and [M] failed operation(s) remain. Affected content retains stale wikilinks to [[Theses/TICKER - [old_name]]] and/or stale sector/graph/_hot.md/snapshot references. Recovery: re-run /rename TICKER "[new_name]" — skill detects marker (Step 1.3 exception), skips mv, retries failed Edits AND failed operations. Marker auto-deletes when both sections empty. Manual option: follow per-bullet Recovery instructions in the marker body for each Failed files entry and each Failed operations entry.`
     - **Stale-marker** (`date:` >7 days old): append `⚠️ Marker is [N] days old — repair deferred. Files likely drifted further. Re-run /rename promptly.`
-    - **Per-file existence**: listed path no longer exists → `ℹ️ Listed failed file [path] no longer exists — manually fixed/removed? Marker may need manual edit.`
+    - **Per-file existence** (Failed files section only): listed path no longer exists → `ℹ️ Listed failed file [path] no longer exists — manually fixed/removed? Marker may need manual edit.`
+    - **Per-operation target existence** (Failed operations section): if the target referenced in a bullet (e.g., `Sectors/Foo.md`, `_Archive/Snapshots/X.md`) no longer exists, append `ℹ️ Failed operation target [path] no longer exists — may have been manually remediated. Marker may need manual edit.`
     - **Scope**: scoped `/lint TICKER` runs only if `.rename_incomplete.TICKER` exists. Full mode processes every marker.
-    - **Multi-marker**: `[N] in-flight rename repairs detected: [TICKER1, TICKER2, ...].`
+    - **Multi-marker**: `[N] in-flight rename repairs detected: [TICKER1 ([F1]f+[O1]o), TICKER2 ([F2]f+[O2]o), ...].` (compact `files+ops` per ticker).
 
 38. **State marker hygiene** — Aging vault-root state markers.
     - **`.sync_all_fresh`** — written by `/sync all` Step 7, consumed by next `/graph`. Expected lifetime <24h.
