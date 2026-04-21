@@ -1,6 +1,6 @@
 {
   "command_timeout": 5,
-  "templates_folder": "",
+  "templates_folder": "Templates",
   "templates_pairs": [
     [
       "",
@@ -8,7 +8,7 @@
     ]
   ],
   "trigger_on_file_creation": true,
-  "auto_jump_to_cursor": false,
+  "auto_jump_to_cursor": true,
   "enable_system_commands": false,
   "shell_path": "",
   "user_scripts_folder": "",
@@ -23,12 +23,8 @@
       "template": "Templates/Research Template.md"
     },
     {
-      "folder": "Daily",
-      "template": "Templates/Daily Template.md"
-    },
-    {
-      "folder": "Weekly",
-      "template": "Templates/Weekly Template.md"
+      "folder": "Macro",
+      "template": "Templates/Macro Template.md"
     }
   ],
   "enable_file_templates": false,
@@ -41,7 +37,10 @@
   "syntax_highlighting": true,
   "syntax_highlighting_mobile": false,
   "enabled_templates_hotkeys": [
-    ""
+    "Templates/callouts/user-question.md",
+    "Templates/callouts/user-tip.md",
+    "Templates/callouts/user-todo.md",
+    "Templates/callouts/user-warning.md"
   ],
   "startup_templates": [
     ""

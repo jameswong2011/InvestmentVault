@@ -74,6 +74,29 @@ Any prefix not in the skill-origin registry (e.g., `Manual edit:`, `Reviewed:`, 
 - Manual edit: tightened Bull Case pricing-power argument — strengthened, added customer concentration data point from Q4 transcript
 ```
 
+### User callouts — inline feedback on LLM output
+
+Drop colored callout boxes inside any section to comment on what Claude wrote. Claude addresses them on demand via chat.
+
+| Callout | Hotkey (macOS / Windows) | Use when |
+|---|---|---|
+| `> [!question]` | `⌘+Option+1` / `Ctrl+Alt+1` | Ask a question Claude should answer |
+| `> [!tip]` | `⌘+Option+2` / `Ctrl+Alt+2` | Suggest a change to the section |
+| `> [!error]` | `⌘+Option+3` / `Ctrl+Alt+3` | Flag disagreement or critical context |
+| `> [!todo]` | `⌘+Option+4` / `Ctrl+Alt+4` | Specify an action Claude should take |
+
+Workflow:
+
+```
+1. Drop callouts inline (hotkey ⌘/Ctrl+Alt+1..4)
+2. Ask Claude: "Address fresh callouts in [note | set of notes]"
+3. Claude edits sections, marks callouts addressed, writes Log entries
+4. /sync TICKER | /sync | /sync all
+5. /graph last
+```
+
+Full spec + lifecycle states (fresh / addressed / pinned) + setup instructions: [[Templates/Callout Conventions]].
+
 ### Referencing content in prompts
 
 Four ways to point Claude at something specific:

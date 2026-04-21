@@ -158,14 +158,19 @@ The traditional music value chain flows linearly: **Content Creators** (artists,
 - **Phonorecords V CRB proceedings (2028-2032) are the next battleground**: Publishers projected to lose $3.1B through 2032 if bundling persists — intense pressure to eliminate provisions
 - **Co-CEO structure untested at Spotify's scale**: Norström/Soderström model has no precedent in consumer tech; strategic disagreements could emerge at critical inflection points
 - **~37x forward P/E requires sustained execution**: Multiple compression risk if revenue growth decelerates below 15% or margin expansion stalls
-- **Emerging market ARPU dilution**: Pursuing 1B subscribers implies growing in markets where ARPU is a fraction of Western levels — could structurally compress blended ARPU despite volume growt
+- **Emerging market ARPU dilution**: Pursuing 1B subscribers implies growing in markets where ARPU is a fraction of Western levels — could structurally compress blended ARPU despite volume growth
 
+> [!question] 2026-04-21
+> Hello
 
+> [!warning] 2026-04-21
+> Hello Hello test
 
-> [!question] Testing callout 2026-04-21
-> This should render as a yellow box with a question-mark icon.
-> If you see a yellow box, callouts work.
-> If you see plain text, your syntax is off.
+> [!tip] 2026-04-21
+> Tips tips
+
+> [!todo] 2026-04-21
+> To do to do
 
 
 ## Catalysts

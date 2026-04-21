@@ -1,0 +1,38 @@
+{
+  "templater-obsidian:Templates/callouts/user-question.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "1"
+    }
+  ],
+  "templater-obsidian:Templates/callouts/user-warning.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "2"
+    }
+  ],
+  "templater-obsidian:Templates/callouts/user-tip.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "3"
+    }
+  ],
+  "templater-obsidian:Templates/callouts/user-todo.md": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "4"
+    }
+  ]
+}
