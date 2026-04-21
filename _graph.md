@@ -1,14 +1,14 @@
 ---
 type: vault-graph
 date: 2026-04-21
-last_graph_write: 2026-04-21T02:10:08Z
-graph_mode: incremental
-theses: 41
+last_graph_write: 2026-04-21T03:33:17Z
+graph_mode: last
+theses: 42
 sectors: 13
 macro: 6
 research: 133
-edges: 389
-orphans: 16
+edges: 395
+orphans: 15
 ---
 
 # Vault Dependency Graph
@@ -438,6 +438,15 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
   - `2026-04-14 | [ChatGPT review]: No new insights from Uber Investment Update conversation — conviction unchanged.`
   - `2026-04-12 | [Claude conversation export]: Initial thesis distilled — platform monopoly, AV distribution strate…`
 
+### VRT - Vertiv Holdings
+- **sectors:** [[Sectors/Semiconductors]]
+- **macro:** —
+- **cross-thesis:** [[Theses/NVDA - Nvidia]]
+- **research:** [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure]], [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]], [[Research/2025-07-15 - Data Center Liquid Cooling]]
+- **status:** active
+- **log_tail:**
+  - `2026-04-21 | Initial thesis created. Conviction: medium — strong AI infra structural position priced against ne…`
+
 ### WTC - WiseTech Global
 - **sectors:** [[Sectors/Enterprise Software]]
 - **macro:** —
@@ -473,7 +482,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 | [[Sectors/NAND Flash & Storage]] | [[Theses/285A - Kioxia]], [[Theses/PSTG - Pure Storage]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
 | [[Sectors/Precious Metals]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] |
 | [[Sectors/Semiconductor Capital Equipment]] | [[Theses/285A - Kioxia]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
-| [[Sectors/Semiconductors]] | [[Theses/285A - Kioxia]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/EINK - E Ink Holdings]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]], [[Theses/TSM - Taiwan Semiconductor]] |
+| [[Sectors/Semiconductors]] | [[Theses/285A - Kioxia]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/EINK - E Ink Holdings]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]], [[Theses/TSM - Taiwan Semiconductor]], [[Theses/VRT - Vertiv Holdings]] |
 
 ## Cross-Thesis Clusters
 
@@ -491,7 +500,6 @@ Bidirectional reference clusters (mutual `cross-thesis:` links). These propagate
 Research notes not linked from any thesis. Candidates for /thesis creation, integration into existing theses, or archival via /clean.
 
 - [[Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics]]
-- [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure]]
 - [[Research/2025-05-10 - Macro - Indian vs Pakistani Defence Stocks]]
 - [[Research/2025-06-09 - CRWV - CoreWeave Deep Dive]]
 - [[Research/2025-07-15 - CETY - CETY Company Report]]

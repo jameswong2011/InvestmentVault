@@ -171,7 +171,7 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 - [[Research/2025-07-15 - Data Center Liquid Cooling.md]] — Industry-wide liquid cooling transition, Vertiv/NVIDIA deployments showing 10-15% PUE improvement, ORC waste heat recovery
 - [[Sectors/Semiconductors.md]] — Sector note where VRT appears on Watchlist; AI data center infrastructure cross-coverage
 - [[Theses/NVDA - NVIDIA.md]] — NVIDIA thesis references Vertiv as reference-design cooling partner
-- [[Theses/META - Meta Platforms.md]] — Meta thesis references OCP collaboration with Vertiv
+- [[Theses/META - Meta.md]] — Meta thesis references OCP collaboration with Vertiv
 - [[INFRASTRUCTURE.md]] — Vault infrastructure/AI data center framework
 
 ## Log
