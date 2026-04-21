@@ -37,10 +37,10 @@
   "syntax_highlighting": true,
   "syntax_highlighting_mobile": false,
   "enabled_templates_hotkeys": [
-    "Templates/callouts/user-question.md",
-    "Templates/callouts/user-tip.md",
-    "Templates/callouts/user-todo.md",
-    "Templates/callouts/user-warning.md"
+    "Templates/_callouts/user-question.md",
+    "Templates/_callouts/user-tip.md",
+    "Templates/_callouts/user-todo.md",
+    "Templates/_callouts/user-warning.md"
   ],
   "startup_templates": [
     ""

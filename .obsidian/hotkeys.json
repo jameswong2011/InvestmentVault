@@ -1,5 +1,5 @@
 {
-  "templater-obsidian:Templates/callouts/user-question.md": [
+  "templater-obsidian:Templates/_callouts/user-question.md": [
     {
       "modifiers": [
         "Alt",
@@ -8,7 +8,7 @@
       "key": "1"
     }
   ],
-  "templater-obsidian:Templates/callouts/user-warning.md": [
+  "templater-obsidian:Templates/_callouts/user-warning.md": [
     {
       "modifiers": [
         "Alt",
@@ -17,7 +17,7 @@
       "key": "2"
     }
   ],
-  "templater-obsidian:Templates/callouts/user-tip.md": [
+  "templater-obsidian:Templates/_callouts/user-tip.md": [
     {
       "modifiers": [
         "Alt",
@@ -26,7 +26,7 @@
       "key": "3"
     }
   ],
-  "templater-obsidian:Templates/callouts/user-todo.md": [
+  "templater-obsidian:Templates/_callouts/user-todo.md": [
     {
       "modifiers": [
         "Alt",

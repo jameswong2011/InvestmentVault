@@ -76,26 +76,9 @@ Any prefix not in the skill-origin registry (e.g., `Manual edit:`, `Reviewed:`, 
 
 ### User callouts — inline feedback on LLM output
 
-Drop colored callout boxes inside any section to comment on what Claude wrote. Claude addresses them on demand via chat.
+Drop hotkey-triggered callout boxes inside any section to comment on what Claude wrote. Four types: `> [!question]` (⌘/Ctrl+Alt+1, yellow, ask), `> [!error]` (⌘/Ctrl+Alt+2, red, flag), `> [!tip]` (⌘/Ctrl+Alt+3, teal, suggest), `> [!todo]` (⌘/Ctrl+Alt+4, blue, action). Ask Claude *"address fresh callouts in [note]"* to have them resolved inline with a `**Response:**` block + Log entry.
 
-| Callout | Hotkey (macOS / Windows) | Use when |
-|---|---|---|
-| `> [!question]` | `⌘+Option+1` / `Ctrl+Alt+1` | Ask a question Claude should answer |
-| `> [!tip]` | `⌘+Option+2` / `Ctrl+Alt+2` | Suggest a change to the section |
-| `> [!error]` | `⌘+Option+3` / `Ctrl+Alt+3` | Flag disagreement or critical context |
-| `> [!todo]` | `⌘+Option+4` / `Ctrl+Alt+4` | Specify an action Claude should take |
-
-Workflow:
-
-```
-1. Drop callouts inline (hotkey ⌘/Ctrl+Alt+1..4)
-2. Ask Claude: "Address fresh callouts in [note | set of notes]"
-3. Claude edits sections, marks callouts addressed, writes Log entries
-4. /sync TICKER | /sync | /sync all
-5. /graph last
-```
-
-Full spec + lifecycle states (fresh / addressed / pinned) + setup instructions: [[Templates/Callout Conventions]].
+Full spec — lifecycle states, chat prompt template, cross-platform setup: see [[#Inline callouts — user feedback markers|§6 Inline callouts]].
 
 ### Referencing content in prompts
 
@@ -675,6 +658,89 @@ Stored in `/Sectors`. Acts as a Map of Content for a sector.
 
 ### Macro note
 Stored in `/Macro`. Freeform by design — covers geopolitical scenarios, commodity frameworks, rates, FX. Strategies for macro shock and trends go here; sector-specific industry dynamics belong in sector notes.
+
+### Inline callouts — user feedback markers
+
+Visual markers for user feedback on LLM-generated content. Drop a callout inside any section of a thesis, sector note, or macro note; Claude addresses fresh callouts on demand via chat. Zero template changes to existing notes — callouts are opt-in markers the user adds after the LLM has written.
+
+#### The 4 types
+
+| Callout | Hotkey (macOS / Windows) | Color + icon | Use when |
+|---|---|---|---|
+| `> [!question]` | `⌘+Option+1` / `Ctrl+Alt+1` | Yellow ❓ | Ask a question Claude should answer |
+| `> [!error]` | `⌘+Option+2` / `Ctrl+Alt+2` | Red ⚡ | Flag disagreement or critical context |
+| `> [!tip]` | `⌘+Option+3` / `Ctrl+Alt+3` | Teal 🔥 | Suggest a change to the section |
+| `> [!todo]` | `⌘+Option+4` / `Ctrl+Alt+4` | Blue ☑ | Specify an action (research X, add Y, fetch Z) |
+
+Mnemonic: 1 asks, 2 flags, 3 suggests, 4 demands action. Source templates live at `Templates/_callouts/user-*.md`.
+
+Filename note: `user-warning.md` inserts a `[!error]` callout. Filename is the Templater slot label (kept stable so hotkey bindings don't break); the callout type inside determines rendering.
+
+#### Lifecycle
+
+| State | Syntax | When |
+|---|---|---|
+| **Fresh** | `> [!question] 2026-04-21` | Just dropped, waiting for response |
+| **Addressed** | `> [!question] 2026-04-21 → Addressed 2026-04-22` + `**Response:**` block | Claude handled it |
+| **Pinned** | `> [!question] 2026-04-21 [[pinned]]` | Intentionally left open |
+
+**Fresh → addressed example.** Before:
+
+```markdown
+> [!question] 2026-04-21
+> Pricing-power argument is thin — need Q4 transcript evidence.
+```
+
+After Claude addresses it:
+
+```markdown
+> [!question] 2026-04-21 → Addressed 2026-04-22
+> Pricing-power argument is thin — need Q4 transcript evidence.
+> 
+> **Response:** Integrated Q4 Stagwell economics (+46% ROAS, 57% go-live
+> conversion) into Bull Case bullet #1. See Log 2026-04-22.
+```
+
+The callout persists — visual audit trail co-located with the edit. Delete addressed callouts or keep them; both patterns work.
+
+#### Workflow
+
+```
+1. Drop callouts inline (hotkey ⌘/Ctrl+Alt+1..4)
+2. Ask Claude to address fresh callouts
+3. Claude edits sections, marks callouts addressed, writes Log entries
+4. /sync TICKER  (one thesis) | /sync (multiple) | /sync all (whole vault)
+5. /graph last
+```
+
+#### Chat prompt template
+
+Copy-paste, swap the target:
+
+> Read [[Theses/TICKER - Company Name]] and address every fresh `[!question]`, `[!tip]`, `[!error]`, and `[!todo]` callout. For each: edit the surrounding section to incorporate the feedback, rewrite the callout header to `→ Addressed YYYY-MM-DD` with a one-line response inside the callout, and append a Log entry summarizing what changed.
+
+For multi-note scope, replace the wikilink with *"every thesis I've touched since [date]"* or *"every thesis in [[Sectors/X]]"*.
+
+#### Setup (one-time per vault clone)
+
+Only required on the FIRST machine — later clones inherit via git.
+
+1. Settings → Templater → **Template folder location** → `Templates`
+2. Settings → Templater → enable **Automatic jump to cursor**
+3. Settings → Templater → **Template Hotkeys** → add all 4 files in `Templates/_callouts/`
+4. Settings → Hotkeys → search `Templater: _callouts/user-<type>` → bind `⌘/Ctrl+Alt+1..4`
+
+Commit `.obsidian/hotkeys.json` and `.obsidian/plugins/templater-obsidian/data.json` — both git-tracked. On another Mac after git pull, hotkeys and templates work immediately.
+
+#### Cross-platform notes
+
+- Hotkeys store in `.obsidian/hotkeys.json` as `Mod+Alt+<N>`. Obsidian auto-maps `Mod` to `⌘` on macOS, `Ctrl` on Windows/Linux; `Alt` maps to `Option` on macOS.
+- Avoids `⌘+Shift+3/4/5` which macOS reserves for screenshots.
+- Templater template registration in `.obsidian/plugins/templater-obsidian/data.json` — identical behavior across platforms.
+
+#### Why callouts, not sections
+
+Co-located visual provenance — you see what you wrote vs what the LLM wrote at the exact decision point. Zero template changes, zero skill changes, cross-platform via git. Section-based feedback (e.g., "Outstanding Input" at top of note) would force structure on 61 notes, duplicate `## Outstanding Questions` and `## Log`, and separate comments from the edit they relate to.
 
 ---
 

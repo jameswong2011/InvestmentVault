@@ -178,6 +178,29 @@ Regenerated each `/catalyst` run. Timeline: next 2 weeks (daily), weeks 3-4 (wee
 
 **Pre-regenerate snapshot** (H2): if web search fails mid-run, recover via `/rollback` batch `catalyst-YYYY-MM-DD-HHMMSS`. Snapshot failure **hard-aborts** `/catalyst` — the prior `_catalyst.md` is always preserved; no partial overwrite path exists.
 
+### 1.4 `Templates/_callouts/` — User feedback template files (2026-04-21)
+
+Four Templater source files that insert dated Obsidian callouts at cursor position. Pure user-interaction infrastructure — **not touched by any skill**.
+
+| File | Inserts | Rendering | Hotkey |
+|---|---|---|---|
+| `user-question.md` | `[!question]` | Yellow ❓ | `Mod+Alt+1` |
+| `user-warning.md` | `[!error]` | Red ⚡ | `Mod+Alt+2` |
+| `user-tip.md` | `[!tip]` | Teal 🔥 | `Mod+Alt+3` |
+| `user-todo.md` | `[!todo]` | Blue ☑ | `Mod+Alt+4` |
+
+Filename `user-warning.md` intentionally decoupled from callout type `[!error]` — filename is the Templater hotkey slot (kept stable across color/type iterations); type inside controls rendering.
+
+Each file contains `<% tp.date.now("YYYY-MM-DD") %>` + `<% tp.file.cursor() %>` — Templater evaluates these at **insert** time, producing a dated callout with cursor positioned in the body.
+
+**Companion config** (both git-tracked, not in `.gitignore` — syncs across machines):
+- `.obsidian/hotkeys.json` — key chord bindings (`Mod+Alt+1..4`)
+- `.obsidian/plugins/templater-obsidian/data.json` — template registrations via `enabled_templates_hotkeys` array; `templates_folder: "Templates"`; `auto_jump_to_cursor: true`
+
+**Gotcha — recreation**: Templater's `trigger_on_file_creation: true` (enabled for folder templates on `Theses/`, `Research/`, `Macro/`) also fires on ANY new file with `<% %>` syntax. If a `_callouts/` template is deleted and recreated via `Write`, the `<% tp.date.now() %>` gets evaluated and **frozen** at creation time. Workaround: use `Edit` (not `Write`) to modify existing template files; `trigger_on_file_creation` only fires on creation.
+
+**User-facing docs**: [[User Guide#Inline callouts — user feedback markers]] + [[CLAUDE.md]] Workflow Rule 7.
+
 ---
 
 ## 2. Runtime state markers at vault root

@@ -160,18 +160,6 @@ The traditional music value chain flows linearly: **Content Creators** (artists,
 - **~37x forward P/E requires sustained execution**: Multiple compression risk if revenue growth decelerates below 15% or margin expansion stalls
 - **Emerging market ARPU dilution**: Pursuing 1B subscribers implies growing in markets where ARPU is a fraction of Western levels — could structurally compress blended ARPU despite volume growth
 
-> [!question] 2026-04-21
-> Hello
-
-> [!warning] 2026-04-21
-> Hello Hello test
-
-> [!tip] 2026-04-21
-> Tips tips
-
-> [!todo] 2026-04-21
-> To do to do
-
 
 ## Catalysts
 
@@ -183,6 +171,8 @@ The traditional music value chain flows linearly: **Content Creators** (artists,
 - **Additional price increases**: Management indicated "further pricing optimisation" remains; historical elasticity suggests room at $12.99 US Premium
 - **Emerging market subscriber acceleration**: Penetration inflection in India, Africa, MENA would validate the 1B subscriber pathway
 
+
+
 ## Risks
 
 1. **MLC lawsuit**: €256M+ exposure and growing; amended "price manipulation" theory targets intent rather than form; Second Circuit appeal pending; adverse ruling could close the bundling framework that underpins structural margin gains
@@ -192,6 +182,18 @@ The traditional music value chain flows linearly: **Content Creators** (artists,
 5. **Regulatory scrutiny**: Congressional scrutiny of Discovery Mode and 1,000-stream threshold; 65% of independent labels report "significant negative impact"; potential legislative constraints on royalty restructuring levers
 6. **Co-CEO structure risk**: No precedent at this scale in consumer technology; resource allocation disagreements between advertising, AI, and emerging market investment could slow execution
 7. **Valuation**: ~37x forward P/E requires sustained 15%+ revenue growth and continued margin expansion; multiple compression risk if execution falters
+
+> [!question] 2026-04-21
+> 
+
+> [!error] 2026-04-21
+> 
+
+> [!tip] 2026-04-21
+> 
+
+> [!todo] 2026-04-21
+> 
 
 ## Related Research
 
