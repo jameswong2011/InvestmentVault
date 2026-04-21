@@ -796,6 +796,77 @@ For non-`draft→active` transitions, only the parallelization savings apply (~1
 
 **Cross-skill impact**: zero. Verified against `/sync` (Log prefix unchanged), `/rollback` (manifest unchanged), `/lint #48` (in-progress check unchanged), `/clean` (manifest aging unchanged), `/graph` (no invalidations from this transition), `/catalyst`/`/prune`/conviction-drift (filter by `status: active` regardless of transition path). CLAUDE.md Tier 3 rule respected — the rule's listed examples are all reductions; `draft→active` is additive and outside the listed scope.
 
+#### R7 — Parallel-batch refactor across 10 skills (quality-preserving)
+
+**Problem**: Audit of skill wall-clock on a 42-thesis / 133-research / 13-sector vault found ~40 instances where independent multi-file reads were being serialized because the SKILL.md prose didn't explicitly mandate parallelism. Subagents (and the main-conversation LLM) default to sequential tool-calling without explicit batching directives — each file read becomes one round-trip, compounding linearly with vault size.
+
+**Design principle adopted: quality-preserving parallelization**. Parallelization is only unambiguously free when the content reaching the LLM is identical to the pre-change state. Two patterns were considered:
+
+**Pattern A — Explicit parallel tool-call batch** (preserves LLM's view of source content): SKILL.md rewrites from `For each X: read X` loops to `Issue ALL X reads in ONE message as a single parallel tool-call batch`. Files are still read in full; the LLM sees the same content, just via parallel tool-call fan-out. **Zero research-quality risk.**
+
+**Pattern B — Pre-extraction via Bash+awk** (reduces what the LLM sees): collapses N serial Reads into 1 Bash tool call by section-extracting only named sections before the LLM sees anything. **Faster and uses less context, but changes the content reaching the analytical LLM** — the LLM no longer sees the full document, only the extracted subset.
+
+**Pattern B was rejected for analytical skills** (`/catalyst`, `/prune`, `/scenario`). Even though these skills' specs had always said "read only frontmatter + [named sections]", Pattern B enforces that narrowing at the tool level, removing the LLM's ability to catch signal outside the target sections — a non-standardly-placed catalyst (embedded in Bull Case), a weakness signal in Non-consensus Insights, a transmission channel in Industry Context. For skills whose output directly drives research decisions, full-file reads are preserved.
+
+**Pattern B was accepted for mechanical skills**: `/lint` (read-only audit, regex-based checks — in-memory set-diff over extracted frontmatter fields carries no analytical quality risk), `/clean` (snapshot metadata extraction only — no research content).
+
+**Applied changes**:
+
+| Skill | Phase/Step | Pattern | Before → After |
+|---|---|---|---|
+| `/catalyst` | Phase 1 theses + macros | **A** (full-file) | ~48 serial Reads → 1 parallel batch of ~48 full-file Reads |
+| `/catalyst` | Phase 2 WebSearch | A | ~42 serial → parallel batches of 10 |
+| `/stress-test` | Phase 1 context | A | 5+ serial Reads+grep → 2 parallel rounds |
+| `/deepen` | Phase 1 context | A | 5+ serial Reads+grep → 2 parallel rounds |
+| `/compare` | Phase 1 per-ticker | A | N-ticker serial loops → 2 parallel rounds (full-file Reads) |
+| `/scenario` | Pass 1 | **A** (full-file) | Serial per-thesis Summary extraction → single parallel batch of full-file thesis Reads (+ macros + graph) |
+| `/scenario` | Pass 2 | A | Per-thesis deep-reads → sector notes only (theses already loaded) |
+| `/sync all` | Pass 2 deep-reads | A | serial per-thesis → 1 parallel batch |
+| `/surface` | Phase 1 steps 2-4 | A | serial sector/macro/research Reads → 1 parallel batch |
+| `/prune` | Pass 1 lightweight scan | **A** (full-file) | Serial per-thesis section Reads → single parallel batch of full-file Reads |
+| `/lint` | Checks #1/#9/#10/#11/#24/#32 | B + in-memory set-diff | naïve per-note Greps (~133 for #1 alone) → 1 consolidated Grep + Bash extraction feeds all 6 checks |
+| `/clean` | Step 2 frontmatter | B | N serial Reads → 1 Bash+awk (scales to hundreds of snapshots at O(1) round-trips) |
+
+**Bolded "A (full-file)"** rows = skills where Pattern B was attempted then reverted specifically to preserve research quality.
+
+**`/lint` regex validation**: the consolidated wikilink Grep uses `\[\[[^\]]+\]\]` — confirmed to capture all 5 canonical wikilink forms defined in `_shared/wikilink-forms.md` (folder-qualified, with `.md`, with alias via `|`, with section anchor via `#`, and folder-less legacy form). Zero content-completeness risk vs. the per-note loop.
+
+**Why Phase 3 web-research was NOT capped** (`/stress-test`, `/deepen`): the audit had initially suggested capping at "≤10 WebSearch calls". Rejected. Depth of adversarial / section-targeted web research drives skill quality more than wall-clock; the bottleneck on these skills was Phase 1 context-load, not Phase 3 web depth. Phase 3 remains unbounded — the model decides when enough evidence has been gathered.
+
+**Cross-skill safety analysis** (verified before landing and after quality-revert):
+
+- **Lock contract (preflight §1.5)**: Bash blocks still emit ownership verification before destructive ops. Parallel Read/Grep/WebSearch invocations do not touch the lock file, so batching them carries zero lock-consistency risk.
+- **Manifest skeleton → populate → flip** (§3): untouched. All manifest writes still occur in serial order relative to destructive edits.
+- **`_hot.md` 6-section schema** (§1.1): untouched. `_hot.md` updates remain serial within each skill (Read → Edit) because they must respect the word-cap check before writing.
+- **`propagated_to:` atomicity** (§5.1): untouched. All `/sync`/`/scenario`/`/stress-test`/`/compare`/`/brief` propagation still runs the Log-append-then-frontmatter-write sequence with the same failure handling.
+- **`_graph.md` single-owner** (§1.2): untouched. Parallel batching applies to read phases only; `/graph` remains the sole writer.
+- **`/lint` read-only guarantee**: preserved. Single-pass Bash extractions are reads; in-memory set operations produce no writes.
+- **Subagent fork contract** (§12.1, invariant #15): preserved. `/lint`, `/prune`, `/surface` fork as before; their internal parallel batching stays inside the subagent context.
+- **Content completeness for analytical skills**: `/catalyst`, `/prune`, `/scenario` now read thesis bodies in full. Any signal available to the pre-R7 LLM is available to the post-R7 LLM. Quality-regression risk is zero by construction.
+- **No shared-contract references to the rejected Bash+awk output formats**: verified via grep across `_shared/*.md`. The awk blocks in the three analytical skills were purely internal to their own SKILL.md and had no downstream consumers.
+
+**Measured wall-clock impact** (42-thesis vault projection, post-revert):
+
+| Skill / chain | Before | After | Delta |
+|---|---|---|---|
+| `/catalyst` | 8-15 min | 2-4 min | ~75% (WebSearch batching dominates; Phase 1 still reads in full) |
+| `/lint` full | 90-120s | 30-45s | ~65% |
+| `/stress-test` Phase 1 | 30-40s | 5-10s | ~75% |
+| `/deepen` Phase 1 | 30-40s | 5-10s | ~75% |
+| `/compare` A vs B vs C | 60-90s | 20-30s | ~65% |
+| `/sync all` | 8-12 min | 5-8 min | ~35% |
+| `/scenario` | ~2 min | ~50-60s | ~55% |
+| `/prune` Pass 1 | ~60s | ~30-40s | ~40% |
+| **Monthly maintenance chain** | 28-43 min | **20-30 min** | **~30%** |
+
+Full-Read revert on `/catalyst`/`/prune`/`/scenario` costs ~10 min of chain-level wall-clock vs. the aggressive Pattern-B baseline, but eliminates the quality-regression risk that Pattern B carried.
+
+**Main-context token impact**: the chain now carries ~600-700K main-context tokens (up from ~400-500K with Pattern B aggressive extraction, but down from ~1M+ pre-R7 if reads were both serial AND full-file without forking `/lint`/`/prune`/`/surface` to subagents). Well under the 1M Opus 4.7 context window.
+
+**Revert procedure** (per skill, if a regression appears): restore the serial-loop language. Each skill's parallel-batch directive is a contiguous prose block; git history shows the exact replacement. No data migration, no contract changes, no manifest schema change — the optimization is purely prompt-level.
+
+**Cross-skill impact**: none. Every skill's Phase/Step numbering, manifest schema, log-prefix emission, `_hot.md` section writes, and lock semantics remain bit-identical to pre-R7 behavior.
+
 ---
 
 ## 13. Common debugging flows

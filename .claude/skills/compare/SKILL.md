@@ -48,13 +48,24 @@ Wait for user selection.
 
 ## Phase 1: Gather Context
 
-For each company **with a thesis note**:
-1. Read thesis note from `Theses/`
-2. Read all linked research notes from the thesis
-3. Read relevant Sector Note(s) — especially competitive dynamics and value chain sections
-4. Search `Research/` and `Macro/` for additional mentions
+**Two-round parallel-batch pattern.** For N tickers the research-note wikilinks can only be enumerated after the thesis is read, so the thesis reads fire first (Round 1), then all downstream reads fire in one parallel batch (Round 2).
 
-**Web-supplemented tickers** (Phase 0 option a): skip steps 1-2. Search web for: business model overview, latest financials (revenue, margins, growth), competitive position, key products. Search vault (`Research/`, `Sectors/`, `Macro/`) for existing mentions. Flag sections without vault-depth data with `[web only]`.
+### Round 1 — parallel batch (single message)
+Issue ALL of these in ONE message:
+- **Read** each thesis note — one Read per ticker with a thesis. Do NOT loop serially; send all N Reads in one tool-call batch.
+- **Grep** once across `Research/ Macro/` for any of the tickers (use an alternation pattern `TICKER1|TICKER2|TICKER3`). One multi-ticker Grep replaces N per-ticker Greps.
+
+Wait for Round 1 to land. Enumerate, per ticker: Related Research wikilinks, sector note paths (from `sector:` frontmatter), referenced Macro notes.
+
+### Round 2 — parallel batch (single message, may be large)
+Issue ALL of these in ONE message:
+- **Read** every research note linked from every thesis (union across N tickers — deduped).
+- **Read** every distinct Sector Note (N tickers may share sectors — read each sector note once).
+- **Read** any Macro notes referenced by any of the theses.
+
+**Scaling note**: `/compare A vs B` issues ~10-20 Reads in Round 2. `/compare A vs B vs C` issues ~15-30. All land in one round-trip. Do not serialize per-ticker.
+
+**Web-supplemented tickers** (Phase 0 option a): skip Rounds 1-2 for that ticker. Issue web search for business model overview, latest financials (revenue, margins, growth), competitive position, key products **in parallel with Round 2's vault reads** (different tool surfaces — WebSearch and Read parallelize freely). Search vault (`Research/`, `Sectors/`, `Macro/`) for existing mentions. Flag sections without vault-depth data with `[web only]`.
 
 ## Phase 2: Structural Comparison
 

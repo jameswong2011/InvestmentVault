@@ -112,9 +112,13 @@ Proceed anyway? (y/n)
 
 **If scoped**: read only matching theses in full (typically small — skip two-pass triage).
 
-**If unscoped — Pass 1 lightweight scan**:
+**If unscoped — Pass 1 lightweight scan (parallel full Reads)**:
 
-For each thesis in Theses/, read **only frontmatter + Related Research + Catalysts + Log** (~200-400 words per thesis). Apply flag criteria:
+**Issue all thesis Reads as a single parallel tool-call batch** — one message with ~42 Read invocations, all in full, landing in one round-trip. Do NOT serialize, and do NOT section-target at the tool level. The LLM sees every thesis body in full so subtle weakness signals outside the triage sections (e.g., a contradiction between Bull Case and recent Log entries, a Non-consensus Insight that's been quietly invalidated by newer research) aren't filtered out before the triage LLM reasons over them.
+
+Triage focus prioritizes **frontmatter + Related Research + Catalysts + Log** (the mechanical flag inputs), but full-file context is kept intentionally — `/prune` is about spotting quietly-dead theses, which sometimes requires reading between the sections.
+
+Apply flag criteria:
 
 | Flag | Criteria | Source |
 |------|----------|--------|

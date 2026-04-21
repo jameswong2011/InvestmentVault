@@ -65,27 +65,33 @@ Exit the skill cleanly — do NOT proceed to Phase 1. The prior `_catalyst.md` i
 
 If no prior `_catalyst.md` exists (first run), skip the snapshot step (the `[ -f "_catalyst.md" ]` guard handles this) and proceed to Phase 1.
 
-## Phase 1: Extract Catalysts (Section-Targeted Reading)
+## Phase 1: Load the Portfolio (Parallel Full Reads)
 
-Reading all ~40 thesis notes in full will exceed context limits when catalyst extraction only needs 3 sections per note. Use targeted section reads to stay within budget.
+**Issue all thesis Reads AND all macro Reads in a single parallel tool-call batch** — one message with ~48 Read invocations (42 theses + 6 macros), not serial loops. This collapses the I/O into one round-trip while preserving full-file context: the LLM sees every thesis body in full so cross-section catalyst signal (e.g., a regulatory date mentioned in Bull Case, a product launch referenced in Business Model) isn't lost to over-aggressive section pre-filtering.
 
-1. For each thesis file in Theses/ (every file, not just active — monitoring theses can still have catalysts):
-   - Read **only frontmatter + Catalysts section + Risks section + last 5 Log entries**. Stop reading before other sections (Summary, Business Model, Industry Context, Non-consensus Insights, etc. are not needed for catalyst extraction).
-   - This yields ~200-500 words per thesis instead of 1,000-3,000 — reducing total input from ~60-120k words to ~8-20k words.
-2. For each thesis, extract from the **Catalysts** section:
-   - Event description
-   - Approximate date or date range (if stated)
-   - Expected impact direction (positive / negative / uncertain)
-   - Magnitude estimate (major / minor)
-3. Also scan the **Log** entries read in step 1 for any recently noted upcoming events
-4. Also scan the **Risks** section read in step 1 for risk events with timing (e.g., "regulatory decision expected Q2")
-5. Read Macro notes in full for cross-portfolio macro events (small set, ~6 files — rate decisions, geopolitical deadlines, commodity contract expirations)
+### 1.1 Parallel batch composition
+
+- **Read** every `Theses/*.md` in full (all files — draft, active, monitoring; every thesis can carry catalysts).
+- **Read** every `Macro/*.md` in full (bounded set, ~6 files — rate decisions, geopolitical deadlines, commodity contract expirations).
+
+All reads land in one round-trip. Do NOT serialize per-file.
+
+### 1.2 Extract from the pulled content
+
+Within each thesis, prioritize **Catalysts**, **Risks**, and the last 5 **Log** entries (highest-density sections for event extraction) but **maintain peripheral awareness of other sections** — a catalyst may surface in Bull/Bear Case, Summary, or Business Model when the author didn't duplicate it into the Catalysts list. Full-file context is kept intentionally; `/catalyst` favors completeness over narrow extraction.
+
+Per thesis:
+- **Catalysts** section: event description, approximate date or date range (if stated), expected impact direction (positive / negative / uncertain), magnitude estimate (major / minor).
+- **Log** entries: recently noted upcoming events (scan the last ~5 date headers; older entries typically describe past events).
+- **Risks** section: risk events with timing (e.g., "regulatory decision expected Q2").
+- **Elsewhere in the thesis**: flag any date-anchored event or upcoming catalyst mentioned in Bull Case, Bear Case, Summary, Industry Context, or Business Model that's absent from the Catalysts section — surface these as candidates the thesis may need to formalize.
+- **Macro notes**: cross-portfolio macro events (rate decisions, geopolitical deadlines, commodity contract expirations).
 
 ## Phase 2: Enrich and Deduplicate
 - Where catalyst dates are vague ("Q2 2026", "H2"), convert to approximate calendar dates
 - Identify catalysts that affect MULTIPLE theses (e.g., an earnings report from a major customer that affects several supplier theses)
 - Flag catalysts that are stale — events that appear to have already passed based on their dates vs today's date
-- Web search for upcoming earnings dates for all thesis tickers to ensure the calendar is current
+- **Web search for upcoming earnings dates for all thesis tickers, issued in parallel batches.** Send one message containing up to 10 WebSearch invocations, then the next message with the next 10, and so on. For ~42 tickers this is ~4-5 rounds of ~5s each instead of ~42 serial rounds. Never serialize WebSearches that have no data dependency on each other. Do NOT cap the total number of searches — every ticker with `status: active | monitoring` gets a search.
 
 ## Phase 3: Analyse Catalyst Clusters
 - **Concentration risk**: Are there weeks where multiple catalysts cluster? This creates portfolio-level volatility

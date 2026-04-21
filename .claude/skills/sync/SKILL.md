@@ -203,13 +203,16 @@ Atomicity scope: ONE research note. Partial success across multiple research not
 
 **Pre-T7.3 fallback**: if `_graph.md` lacks `log_tail:` fields, extract frontmatter + Summary + last 3 Log entries per thesis in one batched Bash call as a transient in-memory substitute. Full AWK implementation in RATIONALE §10 (transitional — only fires if a pre-T7.3 `_graph.md` is restored from backup).
 
-**Pass 2 — deep read for High-delta only**:
-- For each High-delta thesis: read the full file (Step 3a may further scope per T7.5 — see Step 3).
-- For each Low-delta thesis: read only the named sections via section-slice Bash.
-- For sectors containing at least one High-delta thesis: read in full.
-- Macro notes: already read in Pass 1.
+**Pass 2 — deep read for High-delta only (single parallel batch)**:
 
-This typically reduces deep reads from ~58 files to 15-25.
+**Issue ALL Pass 2 reads as a single parallel tool-call batch** — one message containing every High-delta full-thesis Read, every Low-delta section-slice Bash, and every sector Read. Do NOT serialize per-thesis. A typical 15-25-file Pass 2 lands in one round-trip instead of 15-25 sequential rounds.
+
+- For each High-delta thesis: read the full file (Step 3a may further scope per T7.5 — see Step 3).
+- For each Low-delta thesis: read only the named sections via section-slice Bash. All Low-delta section-slices can be consolidated into a single Bash block that iterates the Low-delta list — one tool call regardless of Low-delta count.
+- For sectors containing at least one High-delta thesis: read in full (parallel Read inside the same batch as the thesis Reads).
+- Macro notes: already read in Pass 1 — do NOT re-read.
+
+This typically reduces deep reads from ~58 files to 15-25 AND collapses those 15-25 into one round-trip. Combined with Pass 1 being a single batch, total Phase 1 cost is ~2 round-trips regardless of vault size.
 
 #### Ticker-scoped mode
 

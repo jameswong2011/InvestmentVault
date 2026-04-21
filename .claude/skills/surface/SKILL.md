@@ -131,9 +131,10 @@ for f in Theses/*.md; do
 done
 ```
 
-2. Read all **Sector Notes** in full (bounded set, ~13 files). Competitive dynamics, value chain analysis, and investor heuristics are needed in full.
-3. Read all **Macro Notes** in full (bounded set, ~6 files). Scenario frameworks require complete context.
-4. For heavily cited research notes (appearing in ≥3 theses' Related Research via `_graph.md` orphan+adjacency lookup): read in full. All other research notes: trust the thesis Log citations as summaries.
+2. **Issue steps 2-4 as a single parallel tool-call batch** (after Step 1's awk block lands): all Sector Note Reads (~13) + all Macro Note Reads (~6) + all heavily-cited research note Reads (~10-20) in ONE message with multiple Read invocations. Do NOT serialize. Total ~30-40 Reads lands in one round-trip.
+3. Read all **Sector Notes** in full (bounded set, ~13 files). Competitive dynamics, value chain analysis, and investor heuristics are needed in full.
+4. Read all **Macro Notes** in full (bounded set, ~6 files). Scenario frameworks require complete context.
+5. For heavily cited research notes (appearing in ≥3 theses' Related Research via `_graph.md` orphan+adjacency lookup): read in full. All other research notes: trust the thesis Log citations as summaries.
 
 **Expected read budget**: ~50-80K words total (was ~220K words pre-R2). Reclaim: ~170K words = ~225K tokens per unscoped run.
 

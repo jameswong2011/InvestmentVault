@@ -172,7 +172,6 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 - [[Sectors/Semiconductors.md]] — Sector note where VRT appears on Watchlist; AI data center infrastructure cross-coverage
 - [[Theses/NVDA - NVIDIA.md]] — NVIDIA thesis references Vertiv as reference-design cooling partner
 - [[Theses/META - Meta.md]] — Meta thesis references OCP collaboration with Vertiv
-- [[INFRASTRUCTURE.md]] — Vault infrastructure/AI data center framework
 
 ## Log
 

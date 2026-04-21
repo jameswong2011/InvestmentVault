@@ -176,22 +176,27 @@ Word cap: standard 4,000 soft-cap check per `_shared/hot-md-contract.md`; prune 
 
 ## Phase 2: Read the Portfolio (Two-Pass Triage — §6)
 
-### Pass 1 — Lightweight scan
+### Pass 1 — Lightweight scan (single parallel batch of full Reads)
 
-1. Read all Macro notes in full (small set, highest scenario relevance).
-2. Read `_graph.md` for portfolio topology and cross-thesis clusters.
-3. Per thesis in Theses/, read **frontmatter + Summary only** (~200 words per thesis).
+**Issue ALL of these in ONE parallel tool-call batch:**
+1. **Read** every Macro note in full (small set, highest scenario relevance) — one Read per macro, all in one message.
+2. **Read** `_graph.md` for portfolio topology and cross-thesis clusters.
+3. **Read** every `Theses/*.md` in full — one Read per thesis, all in the SAME parallel batch as steps 1-2. Do NOT pre-extract sections via Bash+awk: scenario exposure classification depends on full-thesis signal (a transmission channel may surface in Bull Case, Industry Context, Risks, or Non-consensus Insights — not just Summary). Full-file context preserves classification quality; the parallel-batch pattern keeps wall-clock cost at one round-trip regardless of vault size.
 
-### Pass 2 — Triage and deep read
+Typical batch: ~6 macro Reads + 1 graph Read + ~42 thesis Reads = ~49 Reads in one message, landing in one round-trip.
 
-4. Using summaries + macro context + Phase 1 transmission channels, classify each thesis (§6.2):
-   - **High exposure**: direct transmission channel → read **full thesis note + sector note**
-   - **Low exposure**: indirect or second-order only → read **Summary + Risks + Bull/Bear Case**
-   - **No exposure**: no plausible transmission → do NOT read further. Carry summary forward; mark Neutral in Phase 3.
+### Pass 2 — Triage and deep read (no additional reads needed)
 
-5. Read sector notes ONLY for sectors with at least one High-exposure thesis (§6.3).
+Because Pass 1 already loaded every thesis in full, Pass 2 is pure reasoning over the already-loaded content:
 
-Reduces deep-read set from ~58 files to 15-20.
+4. Using full-thesis content + macro context + Phase 1 transmission channels, classify each thesis (§6.2):
+   - **High exposure**: direct transmission channel — thesis body already in context, proceed directly to Phase 3 impact assessment.
+   - **Low exposure**: indirect or second-order only — thesis body already in context, proceed directly to Phase 3.
+   - **No exposure**: no plausible transmission — mark Neutral in Phase 3.
+
+5. **Sector-note reads (parallel batch)** — the only additional reads needed in Pass 2 are sector notes for sectors with ≥1 High-exposure thesis (supplies competitive-dynamics and value-chain context for second/third-order effect reasoning in Phase 4). Issue all qualifying sector note Reads as a single parallel tool-call batch — typically 3-8 sector notes landing in one round-trip.
+
+Pass 2 cost: one round-trip for sector notes (no additional thesis reads — Pass 1 loaded them all in full).
 
 ## Phase 3: First-Order Impact Assessment
 

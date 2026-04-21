@@ -59,11 +59,25 @@ Aborted — no changes made to the thesis.
 If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 evaluates only sections that actually exist and scores their weakness.
 
 ## Phase 1: Load Context
-1. Read the thesis note from Theses/
-2. Read ALL research notes linked from the thesis (Related Research + Log entries)
-3. Read the relevant Sector Note
-4. Read any Macro notes relevant to the thesis sector
-5. Grep for the ticker across the vault to find mentions in notes not yet linked
+
+**Two-round parallel-batch pattern.** The only serial dependency is that research-note and sector-note paths are resolved from the thesis's `sector:` frontmatter and Related Research wikilinks — so the thesis must be read before the downstream batch can fire. Everything else parallelizes.
+
+### Round 1 — parallel batch (single message, two tool calls)
+Issue these two tool calls in ONE message:
+1. **Read** `Theses/TICKER - [Name].md` (the thesis).
+2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro/ Research/` (catches mentions in notes not yet linked). Use a single multi-path Grep — do not grep each directory separately.
+
+Wait for both to land. Use the thesis to enumerate: sector note path (from `sector:` frontmatter), every research wikilink (from `## Related Research` + `## Log`), referenced macro notes.
+
+### Round 2 — parallel batch (single message, N tool calls)
+Issue ALL of these in ONE message as a single parallel tool-call batch:
+- **Read** the Sector Note.
+- **Read** every research note linked from the thesis (Related Research + Log-mentioned wikilinks).
+- **Read** every Macro note referenced by the thesis (from body or Log wikilinks) and any macro note tagged with the same sector.
+
+Do NOT serialize. A well-linked thesis has ~10-20 supporting files; one parallel batch lands in ~one round-trip. Do not cap the research-note count — read all of them.
+
+After Round 2 lands, proceed to Phase 2.
 
 ## Phase 2: Identify the Target
 If a section was specified in $ARGUMENTS, use that. Otherwise, auto-detect:

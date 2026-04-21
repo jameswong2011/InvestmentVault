@@ -44,10 +44,55 @@ Parse `$ARGUMENTS`:
 
 ---
 
+## Batched data-gathering pass (runs once, consumed by many checks)
+
+Before individual checks, run a **single consolidated Bash+Grep pass** that collects the data 5+ checks need. This replaces the naïve "for each Research note, grep Theses/" pattern (which scaled as ~133 serial Greps) with a constant number of tool calls regardless of vault size. Checks #1, #9, #10, #11, #24, #32 all consume this pass's output.
+
+**Step A — one Grep call, all wikilinks across Theses + Sectors + Macro** (output_mode: content):
+- Pattern: `\[\[[^\]]+\]\]`
+- Path: `Theses/ Sectors/ Macro/`
+- Purpose: every wikilink in every thesis/sector/macro, captured in a single call. Each match carries its source-file context (via `-n`).
+
+**Step B — one Bash block, enumerate inventories**:
+```bash
+# Quickly list every file in each content directory
+ls Research/*.md 2>/dev/null | sort > /tmp/lint-research.list
+ls Theses/*.md 2>/dev/null | sort > /tmp/lint-theses.list
+ls Sectors/*.md 2>/dev/null | sort > /tmp/lint-sectors.list
+ls Macro/*.md 2>/dev/null | sort > /tmp/lint-macro.list
+ls _Archive/*.md 2>/dev/null | sort > /tmp/lint-archive.list
+wc -l /tmp/lint-*.list
+```
+
+**Step C — one Bash+awk block, extract frontmatter across every Thesis + Research note**:
+```bash
+# Emits: path|ticker|sector|status|conviction|source_type|date|last_log_date for each file
+for f in Theses/*.md Research/*.md; do
+  [ -f "$f" ] || continue
+  awk -v path="$f" '
+    BEGIN { in_fm=0; t=""; s=""; st=""; c=""; sr=""; d=""; last_log="" }
+    NR==1 && /^---$/ { in_fm=1; next }
+    in_fm && /^---$/ { in_fm=0; next }
+    in_fm && /^ticker:/ { t=$2 }
+    in_fm && /^sector:/ { s=$2; for(i=3;i<=NF;i++) s=s" "$i }
+    in_fm && /^status:/ { st=$2 }
+    in_fm && /^conviction:/ { c=$2 }
+    in_fm && /^source_type:/ { sr=$2 }
+    in_fm && /^date:/ { d=$2 }
+    !in_fm && /^### 20[0-9][0-9]-/ { last_log=$2 }
+    END { print path "|" t "|" s "|" st "|" c "|" sr "|" d "|" last_log }
+  ' "$f"
+done
+```
+
+Together, Steps A + B + C land in ~3 tool calls total and cover the read-heavy checks below. Individual checks thereafter operate on these extracted structures — no per-file re-reads.
+
+**Parallel-batch directive for all remaining file Reads**: any downstream check needing to read specific files (e.g. `_graph.md`, `_hot.md`, `_catalyst.md`, manifest files) must issue those reads as a **single parallel tool-call batch**, not serially.
+
 ## Structural Checks
 
 1. **Orphaned research notes** — Research/ notes not linked from ANY Thesis adjacency (Related Research, Log wikilinks, body references).
-   - Method: list `Research/*.md`, grep `Theses/` for each.
+   - **Method (fast)**: from Step A's Grep output, extract the set of research-note basenames appearing inside `Theses/*.md` matches. Set-diff against `/tmp/lint-research.list`. Complement = orphans. One in-memory operation, zero per-note Greps.
    - **Definition contract** (§2.1): orphan = "not linked from any thesis" (NOT "not linked from any thesis OR sector"). Thesis-centric to match `/graph` Step 5.
 
 2. **Missing MOC entries** — Theses/ notes not listed in their Sector Note.
@@ -92,8 +137,11 @@ Parse `$ARGUMENTS`:
 ## Connection Checks
 
 9. **Unlinked mentions** — Notes mentioning the same ticker/topic but not linked.
+   - **Method (fast)**: consume Step A's Grep output. For each ticker in `/tmp/lint-theses.list`, check which notes mention the ticker string without containing a wikilink resolving to the thesis file. Pure in-memory set logic over the already-collected Grep output.
 10. **Disconnected macro notes** — Macro/ notes not referenced from any Thesis.
+    - **Method (fast)**: from Step A's Grep output, build the set of wikilinks targeting `Macro/` entries inside `Theses/*.md`. Set-diff against `/tmp/lint-macro.list`. No additional file reads.
 11. **Missing thesis candidates** — Tickers in 3+ Research notes without a Thesis note.
+    - **Method (fast)**: from Step C's frontmatter extract, tally `ticker:` values across Research entries. For any ticker with count ≥3, check `/tmp/lint-theses.list` for a matching `TICKER - *.md` filename via in-memory glob. No additional Reads.
 
 ## Analytical Checks
 
@@ -154,7 +202,7 @@ Parse `$ARGUMENTS`:
 24. **Orphan list accuracy** — Cross-check `## Orphan Research Notes` section.
     - **False orphans**: listed as orphan but IS now linked from a thesis → flag for removal.
     - **Missing orphans**: not linked from any thesis but absent from orphan list → flag for addition.
-    - Method: grep `Theses/` for each listed orphan; verify unlisted research notes are linked.
+    - **Method (fast)**: Read `_graph.md` once, parse its Orphan Research Notes section. Intersect with the research-notes-linked-from-theses set already computed in check #1. Pure in-memory set operations; zero per-orphan Greps.
 
 26. **Edge count accuracy** — `edges:` frontmatter vs actual count.
     - Method: count `[[...]]` wikilinks in Thesis Adjacency Index section. Compare to `edges:`.
@@ -233,7 +281,7 @@ Per-check entries below specify only: (1) manifest filename glob, (2) frontmatte
     - **Aggregate** (full mode): `Sector resolution: [exact] exact, [norm] normalized, [sub] substring, [none] none.`
 
 32. **Orphaned ticker references in research** — Research/ notes whose `ticker:` or ticker-shaped tags don't match any `Theses/`.
-    - Method: for each `Research/*.md` with `ticker:`, check `Theses/[ticker] - *.md` exists. Also check `tags:` for ticker-shaped tokens (all-uppercase, 1-5 chars) without matching files.
+    - **Method (fast)**: consume Step C's frontmatter extract for Research ticker fields. Match each against the ticker portion of `/tmp/lint-theses.list` filenames. Ticker-shaped `tags:` still require one additional per-note frontmatter parse — but that data already lives in Step C's output for Research notes. Pure in-memory operation.
     - Severity: Important — `/sync` cannot propagate to any thesis; content invisible.
     - Fix options: (a) `/thesis [TICKER]` + `/sync [TICKER]`; (b) edit `ticker:` to existing thesis; (c) accept as orphan.
     - Surfaces what `/sync` Step 1 Fallback 1 used to self-heal silently (§2.4).

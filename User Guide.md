@@ -1260,6 +1260,41 @@ Why the exemption is safe for this specific transition: CLAUDE.md Tier 3's examp
 
 Combined with the Step 1/5b/7.9 parallelization refactor, a typical `/status TICKER draft→active` should now complete in ~30–50s (down from ~3min). To opt back into the prompt for a specific run, interrupt after the Step 2F FYI message prints.
 
+### Parallel-batch refactor across 10 skills (2026-04-21 change)
+Ten skills had their multi-file read phases rewritten from "serial Read loop" to "explicit parallel tool-call batch". For the three skills whose reads drive research-analysis quality (`/catalyst`, `/prune`, `/scenario`), full-file reads are preserved — pre-extraction via Bash+awk was rejected to protect analytical quality. Same outputs, same snapshots, fewer round-trips.
+
+| Skill | Phase/Step | Before | After | Quality-preserving notes |
+|---|---|---|---|---|
+| `/catalyst` | Phase 1 thesis + macro reads | ~42 serial Reads + ~6 serial Reads | Single parallel batch, **full-file Reads** | Thesis bodies read in full so catalysts mentioned outside the Catalysts section (e.g., in Bull Case, Summary) aren't missed |
+| `/catalyst` | Phase 2 earnings-date search | ~42 serial WebSearches | Parallel batches of 10 (~4-5 rounds) | Independent searches — no quality risk |
+| `/stress-test` | Phase 1 context load | 5+ serial Reads + grep | 2 parallel rounds (thesis+grep → sector+research+macro) | All files Read in full; identical content reaches the LLM |
+| `/deepen` | Phase 1 context load | 5+ serial Reads + grep | 2 parallel rounds (thesis+grep → sector+research+macro) | Same as above |
+| `/compare` | Phase 1 per-ticker reads | N serial per-ticker loops | 2 parallel rounds (theses+grep → all downstream reads) | Full-file Reads preserved |
+| `/scenario` | Pass 1 + Pass 2 reads | Serial per-thesis Reads | Single parallel batch of full Reads in Pass 1 (theses + macros + graph); Pass 2 only reads sector notes for High-exposure sectors | Full theses loaded up front so exposure classification sees full signal (transmission channel may surface in Bull Case, Industry Context, Risks) |
+| `/sync all` | Pass 2 deep-reads | Serial per-thesis | Single parallel batch (~15-25 files in one round-trip) | Unchanged content set — existing delta-triage preserved |
+| `/surface` | Default steps 2-4 | Serial sector+macro+research Reads | Single parallel batch (~30-40 Reads) | Pre-existing Phase 1 awk extraction for thesis section-targeting retained (different skill, different context budget — this is a forked subagent) |
+| `/prune` | Pass 1 lightweight scan | Serial per-thesis section Reads | Single parallel batch of **full-file Reads** | Full thesis bodies read so weakness signals outside Related Research/Catalysts/Log aren't filtered out before triage |
+| `/lint` | Full mode check #1/#9/#10/#11/#24/#32 | Naïve "per-note grep Theses/" (~133 serial Greps for #1 alone) | One consolidated Grep + Bash extraction feeds all 6 checks from in-memory data | Regex verified against all 5 canonical wikilink forms in `_shared/wikilink-forms.md` — zero content-completeness risk |
+| `/clean` | Step 2 frontmatter extraction | N serial per-snapshot Reads | 1 Bash+awk block (scales to hundreds of snapshots at no added cost) | Metadata-only operation; no research content involved |
+
+**Design principle (quality-preserving parallelization)**: parallelization is a **free win** only when the content reaching the LLM is identical. Pre-extraction via Bash+awk trades research quality for context savings — adequate for mechanical / triage skills with downstream full-read phases (`/lint`, `/clean`), but NOT adequate for skills whose output directly drives research analysis. For `/catalyst`, `/prune`, `/scenario`, full-file Reads are preserved even though they consume more main-context tokens.
+
+**Phase 3 web-research bounding**: `/stress-test` and `/deepen` Phase 3 were intentionally **NOT** capped. Web-research depth remains up to the model — depth of adversarial/section research drives skill quality more than wall-clock.
+
+**Expected wall-clock improvements** on a 42-thesis vault:
+- `/catalyst`: 8-15 min → 2-4 min (Phase 2 WebSearch batching dominates the speedup; Phase 1 reads theses in full but in parallel)
+- `/lint` full: 90-120s → 30-45s (consolidated Grep pattern)
+- `/stress-test` / `/deepen` Phase 1: 30-40s → 5-10s
+- `/compare` A vs B vs C: 60-90s → 20-30s
+- `/sync all`: 8-12 min → 5-8 min (Pass 2 parallelization)
+- `/prune` Pass 1: ~60s → ~30-40s (parallel Reads; full bodies preserved)
+- `/scenario` Pass 1+2: ~2 min → ~50-60s (all theses loaded once; Pass 2 adds only sector reads)
+- Monthly maintenance chain: 28-43 min → 20-30 min
+
+**Context impact**: reverting `/catalyst`, `/prune`, `/scenario` from Bash+awk extraction to full-file parallel Reads adds ~200K main-context tokens across the monthly chain. Chain endpoint ~ 600-700K main-context tokens (still comfortably under the 1M Opus 4.7 context window).
+
+No user-visible behavior change — same outputs, same snapshots, same lock semantics. If you see a regression (missed sector update, incomplete catalyst calendar, lint check false positive), revert the specific skill's Phase 1 rewrite by restoring the serial-loop language.
+
 ### Pending graph work persists across sessions
 If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` consumes it. `/lint` flags stale invalidation files so they're not forgotten.
 

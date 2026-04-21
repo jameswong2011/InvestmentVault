@@ -40,7 +40,41 @@ If no files found, report "No snapshots exist — nothing to clean." and stop.
 
 ## Step 2: Parse Ages and Safety Net Check
 
-For each file in `_Archive/Snapshots/`, read only its frontmatter and extract `type:`, `snapshot_date:`, and `snapshot_of:`. Classify:
+### 2.0: Single-Bash frontmatter extraction (replaces per-file Reads)
+
+Run ONE Bash block that extracts every snapshot's frontmatter fields into a single pipe-delimited table. This collapses what was N serial Reads into 1 tool call regardless of snapshot count (hundreds of snapshots → same cost as one).
+
+```bash
+# Verify lock ownership first (preflight §1.5), then extract everything in one pass.
+for f in _Archive/Snapshots/*.md; do
+  [ -f "$f" ] || continue
+  # head -40 bounds I/O; every skill writes frontmatter in the first ~30 lines
+  head -40 "$f" | awk -v path="$f" '
+    BEGIN {
+      in_fm=0; type=""; sd=""; so=""; sb=""; status=""; cd=""
+      batch=""; new_value=""; ticker=""
+    }
+    NR==1 && /^---$/ { in_fm=1; next }
+    in_fm && /^---$/ { in_fm=0; exit }
+    in_fm && /^type:/            { type=$2 }
+    in_fm && /^snapshot_date:/   { sd=$2 }
+    in_fm && /^snapshot_of:/     { so=$2; for(i=3;i<=NF;i++) so=so" "$i }
+    in_fm && /^snapshot_batch:/  { sb=$2 }
+    in_fm && /^status:/          { status=$2 }
+    in_fm && /^completed_date:/  { cd=$2 }
+    in_fm && /^batch:/           { batch=$2 }
+    in_fm && /^new_value:/       { new_value=$2; for(i=3;i<=NF;i++) new_value=new_value" "$i }
+    in_fm && /^ticker:/          { ticker=$2 }
+    END {
+      print path "|" type "|" sd "|" so "|" sb "|" status "|" cd "|" batch "|" new_value "|" ticker
+    }
+  '
+done
+```
+
+This one block emits everything Steps 2a-2d need. Downstream classification consumes the table in-memory — no additional file reads for frontmatter. If source-file mtime comparison is needed (Safety Net Check), that uses `stat` in a second bounded Bash block, not per-file Reads.
+
+For each file in `_Archive/Snapshots/`, classify using the extracted data (`type:`, `snapshot_date:`, `snapshot_of:`, etc.):
 
 ### 2a: Non-snapshot artifact guard (must run first)
 
