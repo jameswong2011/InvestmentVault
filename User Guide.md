@@ -279,11 +279,13 @@ Monthly, or when the vault feels out of sync.
 /lint
 /prune
 /clean
-/surface
+/surface                                     # default mode — section-targeted, forks
 /catalyst
 /graph last
 ```
 Run in this order. `/sync all` before `/graph` because syncs can change links. `/lint` after `/graph` to check graph health. `/prune` after `/lint` because lint flags staleness. `/surface` and `/catalyst` near the end against a clean vault. Final `/graph last` picks up closure-generated `.graph_invalidations`.
+
+**Context note**: `/lint`, `/prune`, and `/surface` fork to a subagent — they don't pollute your main conversation context. This keeps the full chain well under the 1M context limit (~460K on a 41-thesis vault). If you want a once-per-quarter deeper pass, substitute `/surface all` for `/surface` — more comprehensive analysis at ~4× the subagent read cost, still forked so main context is unaffected.
 
 #### Recovery — undo a bad sync
 `/sync` produced changes you disagree with.
@@ -339,8 +341,8 @@ Then:
 | **Change conviction** | `/status TICKER conviction old→new [reason]` |
 | **Close a position** | `/status TICKER status active→closed [reason]` |
 | **Reopen an archived position** | [[#Recovery — undo a closure|§3.4 Recovery — undo a closure]] |
-| **Find new ideas** | `/surface` or `/surface [sector]` |
-| **Find portfolio blind spots** | `/surface` (unscoped) |
+| **Find new ideas** | `/surface` (default) or `/surface [sector]` |
+| **Find portfolio blind spots** | `/surface` (section-targeted) or `/surface all` (comprehensive deep review) |
 | **Act on a surface finding** | [[#Acting on a surface finding|§3.1 Acting on a surface finding]] |
 | **Model a "what if"** | `/scenario [event]` |
 | **See what's coming up** | `/catalyst` |
@@ -361,6 +363,10 @@ Then:
 ## 5. Skill Reference
 
 One canonical entry per skill: arguments, what it creates, what it modifies, follow-up. Grouped by role.
+
+**Model assignment** (updated 2026-04-21): skills run on **Opus 4.7 max effort** unless noted below. Mechanical skills (`/graph`, `/rename`, `/rollback`, `/status`, `/clean`) run on **Sonnet max effort** — ~40-60% faster on their core operations with no loss of correctness. If you ever see a regression (e.g., `/status` missing a trigger conflict, `/rollback` cascade mis-classified), flag it — the downgrade is revertible with a one-line edit per skill.
+
+**Subagent skills** (`context: fork`): `/lint`, `/prune`, `/surface` — the skill executes in an isolated subagent context, only a concise report returns to your main conversation. This is how heavy reads stay off your context budget.
 
 ### Core workflow
 
@@ -416,13 +422,26 @@ Which mode?
 
 #### `/surface`
 ```
-/surface                                   # full vault scan
+/surface                                   # full vault, section-targeted (default — fast)
+/surface all                               # full vault, full reads (comprehensive, deeper)
 /surface NVDA                              # ticker + adjacencies + sector peers
 /surface semiconductors                    # all theses in sector + sector + macro
 ```
-- **Creates**: Research note.
+- **Creates**: Research note (filename reflects mode — `(all)` suffix for `all`).
 - **Modifies**: `_hot.md`.
+- **Runs in subagent** (`context: fork`): main conversation context is shielded from the vault read. Only the final top-3-insights summary returns to main.
 - **Follow-up**: `/deepen` or `/thesis` on opportunities; `/graph last`.
+
+Which mode?
+
+| Situation | Mode |
+|---|---|
+| Weekly / monthly cadence, or `/surface` as part of a maintenance chain | `/surface` (default — section-targeted, ~50-80K words read) |
+| Once-off quarterly/annual deep review; exploring cross-section patterns | `/surface all` (~220K words read — legacy pre-2026-04-21 behavior) |
+| Focused on a single ticker | `/surface TICKER` |
+| Focused on a single sector | `/surface [sector]` |
+
+Default mode delivers ~95% of `all`'s insight signal at ~25% of the read cost. Reach for `/surface all` only when you suspect section-targeting is missing a cross-section pattern.
 
 #### `/stress-test`
 ```
@@ -748,7 +767,8 @@ Extract with Safari Reader or defuddle, save as `.md` in `_Inbox/`, then `/inges
 
 ### Surface insights and opportunities
 ```
-/surface                                   # full vault
+/surface                                   # full vault, section-targeted (fast default)
+/surface all                               # full vault, full reads (comprehensive)
 /surface NVDA                              # ticker-scoped
 /surface semiconductors                    # sector-scoped
 ```
@@ -1227,6 +1247,9 @@ The vault lock model permits two ticker-scoped skills on different tickers to ru
 ### `/brief` and `/surface` don't fully refresh the graph
 Both create Research notes but don't advance thesis mtimes or write `.graph_invalidations`. New notes appear in `/graph`'s Orphan Research list only on the next full `/graph` rebuild — `/graph last` won't pick them up until a thesis Edit wikilinks to one. For a brief- or surface-heavy chain, run `/graph` (full) if you need the orphan list updated immediately.
 
+### `/surface` section-targeting vs `/surface all` (2026-04-21 change)
+Default `/surface` now reads only 4 sections per thesis (Summary, Non-consensus Insights, Risks, Catalysts) + last 5 Log entries — ~25% of the token cost of the pre-2026-04-21 behavior. Use `/surface all` if you explicitly want the legacy full-read behavior (e.g., once-off quarterly deep review). Both modes fork to a subagent, so main-context impact is the same either way. If a cross-section pattern (e.g., a Business Model similarity across 3 theses) seems systematically missed by default mode, switch to `/surface all` for that run.
+
 ### Pending graph work persists across sessions
 If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` consumes it. `/lint` flags stale invalidation files so they're not forgotten.
 
@@ -1253,5 +1276,17 @@ Short reference. Deep mechanics live in [[INFRASTRUCTURE.md]].
 - `.last_sync` is written only by `/sync` default and `/sync all`. `/sync TICKER` preserves it; `/graph` never touches it.
 - Every destructive skill creates a pre-edit snapshot. Recovery path: `/rollback`.
 - Every skill that modifies vault state runs a pre-flight (vault lock + rename-marker check + name sanitization + section probe). Contract: `.claude/skills/_shared/preflight.md`.
+
+### Skill execution matrix (2026-04-21 update)
+
+| Skill | Model | Context |
+|---|---|---|
+| `/sync`, `/ingest`, `/thesis`, `/deepen`, `/stress-test`, `/compare`, `/scenario`, `/brief`, `/catalyst` | Opus 4.7 max | Main |
+| **`/surface`** (all modes) | Opus 4.7 max | **Forked subagent** |
+| `/lint`, `/prune` | Opus 4.7 max | Forked subagent |
+| **`/graph`, `/rename`, `/rollback`, `/status`** | **Sonnet max** | Main |
+| `/clean` | Sonnet max | Main |
+
+Bold rows = 2026-04-21 changes. The Sonnet-max skills are mechanical (extraction, file-renames, frontmatter nudges, snapshot cp) — no deep analytical reasoning needed, so Sonnet delivers ~40-60% faster wall time with no correctness impact observed to date. Watch for regressions on `/status` trigger-conflict detection and `/rollback` multi-file cascade classification — the first two skills to revert if Sonnet proves insufficient.
 
 For the operational nuance lint and skill authors depend on, read [[INFRASTRUCTURE.md]].

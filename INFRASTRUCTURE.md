@@ -23,6 +23,7 @@ Read this section first on any non-trivial task. It replaces hunting through §1
 | **Change the `_hot.md` schema or compression** | §1.1 → `.claude/skills/_shared/hot-md-contract.md` → all 13 writers in §0.4 |
 | **Add a new `/lint` check** | §10 registry → §12.2 shared-contract consumers → update §12.4 editing protocol |
 | **Understand a rollback cascade** | §7 cascade catalogue → §3.2 manifest catalogue → §13.6 if stuck in-progress |
+| **Tune model/context for a skill or diagnose a Sonnet regression** | §12.6 performance architecture → §0.4 skill landscape → per-skill RATIONALE.md if present |
 
 ### 0.2 Critical invariants
 
@@ -42,6 +43,8 @@ Violating any of these produces silent corruption. Each links to the section tha
 12. **Rename marker hard-blocks consumers** (§2.4) — `.rename_incomplete.TICKER` presence hard-blocks every ticker-scoped skill on TICKER and most vault-wide skills on ANY marker. Re-run `/rename TICKER "[same new_name]"` to repair.
 13. **Sector resolution is a 4-step ladder, not exact match** (§12.2, `_shared/sector-resolution.md`) — exact → normalized → substring → ask. Never silently skip or silently substring-match for destructive writes.
 14. **5 canonical wikilink forms** (`_shared/wikilink-forms.md`) — idempotency and cascade detection must match all five. Producers emit form #1 on write.
+15. **Forked context is report-only** (§12.1) — `/lint`, `/prune`, `/surface` execute in a `general-purpose` subagent; main conversation receives only the final summary. Do NOT treat the subagent's intermediate reasoning as recoverable into main — it's discarded on return. If main context needs a specific subagent finding, the subagent must emit it in the summary or write it to a vault file.
+16. **Model assignment is per-skill, not per-invocation** (§0.4, §12.6) — five skills run on Sonnet max (`/graph`, `/rename`, `/rollback`, `/status`, `/clean`). All others run Opus max. Downgrade is a one-line SKILL.md frontmatter change; revert criteria tracked in §12.6.
 
 ### 0.3 Symptom → section index
 
@@ -64,37 +67,47 @@ Violating any of these produces silent corruption. Each links to the section tha
 | Sector note never updated by `/status` | Sector resolution returned `none` confidence | §12.2, `_shared/sector-resolution.md` |
 | `/rollback` closure cascade surfaced neighbor citations | H3 premise-dependent vs contextual classification | §5.3, §7.1 |
 | `_hot.md` size keeps growing past soft cap | Compression trigger order not firing in order | §1.1, `_shared/hot-md-contract.md` |
+| `/surface` missed a cross-section pattern (Business Model / Industry Context similarity) | Default mode is section-targeted; full Business Model / Industry Context reads only happen in `/surface all` | §12.6 (R2), surface/SKILL.md Phase 1 |
+| `/status` missed a trigger-conflict that `/lint` later caught | Sonnet max on `/status` (2026-04-21) — may warrant revert to Opus | §12.6 watch list, §0.4 |
+| `/rollback` offered single-file restore when user expected cascade | Sonnet max on `/rollback` (2026-04-21) — may warrant revert to Opus | §12.6 watch list, §0.4 |
 
 ### 0.4 Skill landscape
 
-17 skills. Lock scope, `_hot.md` writes, and manifests are the three axes that determine every skill's pre-flight and cleanup contract.
+17 skills. Lock scope, `_hot.md` writes, and manifests are the three axes that determine every skill's pre-flight and cleanup contract. **Model** and **context** are the two runtime-performance axes (2026-04-21 update).
 
-| Skill | Lock scope | Writes `_hot.md`? | Writes manifest? | Writes snapshot? | Role |
-|---|---|---|---|---|---|
-| `/sync` (default) | vault-wide | Yes (all sections) | `_sync-manifest` (T2.1 skeleton) | Tier A per-thesis | Propagation engine — research → thesis → sector/macro |
-| `/sync all` | vault-wide | Yes | `_sync-manifest` + `.sync_all_fresh` | Tier A | Forced full-vault propagation |
-| `/sync TICKER` | ticker:TICKER | Yes | `_sync-manifest` | Tier A | Ticker-scoped propagation; preserves `.last_sync` |
-| `/graph` | vault-wide | No | No | No | Rebuild `_graph.md`. 3 modes (full, `last`, `[N]`) |
-| `/ingest` | vault-wide | No (but may trigger `/sync` downstream) | No | No | Process `_Inbox/` into Research notes; quality gate |
-| `/status` | ticker:TICKER | Yes | `_status-manifest` (T2.2) | Per-thesis pre-edit | Conviction/status changes |
-| `/thesis` | ticker:TICKER | Yes (ART + OQ) | `_thesis-manifest` (H1) | No (creation) — manifest enables deletion-based rollback | Create new thesis |
-| `/deepen` | ticker:TICKER | Yes | No | Per-thesis pre-edit | Targeted section deep-research |
-| `/stress-test` | ticker:TICKER | Yes | `_stress-test-manifest` (T3.1) | No (Log append only) | Adversarial thesis test |
-| `/compare` | N × ticker:TICKER | Yes | `_compare-manifest` | Per-thesis | Competitive comparison |
-| `/scenario` | vault-wide | Yes | No | Per-thesis | Macro scenario propagation across portfolio |
-| `/brief` | ticker:TICKER | Yes (ART + OQ only) | No | No | 1-page pitch generation |
-| `/surface` (unscoped/sector) | vault-wide | Yes | No | No | Cross-portfolio insight discovery |
-| `/surface TICKER` | ticker:TICKER | Yes | No | No | Ticker-scoped insight |
-| `/catalyst` | vault-wide | Yes | No | `_catalyst.md` pre-regenerate | Regenerate catalyst calendar |
-| `/prune` | vault-wide | Yes | `_prune-manifest` | Per-thesis pre-closure | Weak-thesis evaluation/closure |
-| `/rename` | ticker:TICKER | Yes (free-text mentions) | No | Per-thesis pre-rename | Atomic filename + wikilink rewrite |
-| `/rollback` (list) | read-only | No | No | No | Inventory snapshots |
-| `/rollback` (restore) | vault-wide | Yes | No | No | Restore from snapshot + cascade |
-| `/clean` | vault-wide | No | No | No | Delete old snapshots/manifests (respects floors) |
-| `/lint` (full) | vault-wide | No | No | No | 30+ health checks (§10) |
-| `/lint TICKER` | read-only | No | No | No | Scoped subset (§10) |
+| Skill | Lock scope | Writes `_hot.md`? | Writes manifest? | Writes snapshot? | Model | Context | Role |
+|---|---|---|---|---|---|---|---|
+| `/sync` (default) | vault-wide | Yes (all sections) | `_sync-manifest` (T2.1 skeleton) | Tier A per-thesis | opus max | main | Propagation engine — research → thesis → sector/macro |
+| `/sync all` | vault-wide | Yes | `_sync-manifest` + `.sync_all_fresh` | Tier A | opus max | main | Forced full-vault propagation |
+| `/sync TICKER` | ticker:TICKER | Yes | `_sync-manifest` | Tier A | opus max | main | Ticker-scoped propagation; preserves `.last_sync` |
+| `/graph` | vault-wide | No | No | No | **sonnet max** | main | Rebuild `_graph.md`. 3 modes (full, `last`, `[N]`) |
+| `/ingest` | vault-wide | No (but may trigger `/sync` downstream) | No | No | opus max | main | Process `_Inbox/` into Research notes; quality gate |
+| `/status` | ticker:TICKER | Yes | `_status-manifest` (T2.2) | Per-thesis pre-edit | **sonnet max** | main | Conviction/status changes |
+| `/thesis` | ticker:TICKER | Yes (ART + OQ) | `_thesis-manifest` (H1) | No (creation) — manifest enables deletion-based rollback | opus max | main | Create new thesis |
+| `/deepen` | ticker:TICKER | Yes | No | Per-thesis pre-edit | opus max | main | Targeted section deep-research |
+| `/stress-test` | ticker:TICKER | Yes | `_stress-test-manifest` (T3.1) | No (Log append only) | opus max | main | Adversarial thesis test |
+| `/compare` | N × ticker:TICKER | Yes | `_compare-manifest` | Per-thesis | opus max | main | Competitive comparison |
+| `/scenario` | vault-wide | Yes | No | Per-thesis | opus max | main | Macro scenario propagation across portfolio |
+| `/brief` | ticker:TICKER | Yes (ART + OQ only) | No | No | opus max | main | 1-page pitch generation |
+| `/surface` (unscoped default) | vault-wide | Yes | No | No | opus max | **fork** | Cross-portfolio insight discovery (section-targeted reads) |
+| `/surface all` | vault-wide | Yes | No | No | opus max | **fork** | Comprehensive full-read deep scan (legacy pre-2026-04-21 behavior, opt-in) |
+| `/surface [sector]` | vault-wide | Yes | No | No | opus max | **fork** | Sector-scoped insight discovery |
+| `/surface TICKER` | ticker:TICKER | Yes | No | No | opus max | **fork** | Ticker-scoped insight |
+| `/catalyst` | vault-wide | Yes | No | `_catalyst.md` pre-regenerate | opus max | main | Regenerate catalyst calendar |
+| `/prune` | vault-wide | Yes | `_prune-manifest` | Per-thesis pre-closure | opus max | **fork** | Weak-thesis evaluation/closure |
+| `/rename` | ticker:TICKER | Yes (free-text mentions) | No | Per-thesis pre-rename | **sonnet max** | main | Atomic filename + wikilink rewrite |
+| `/rollback` (list) | read-only | No | No | No | **sonnet max** | main | Inventory snapshots |
+| `/rollback` (restore) | vault-wide | Yes | No | No | **sonnet max** | main | Restore from snapshot + cascade |
+| `/clean` | vault-wide | No | No | No | sonnet max | main | Delete old snapshots/manifests (respects floors) |
+| `/lint` (full) | vault-wide | No | No | No | opus max | **fork** | 30+ health checks (§10) |
+| `/lint TICKER` | read-only | No | No | No | opus max | **fork** | Scoped subset (§10) |
 
 Ticker-scoped vs vault-wide choice is the single most consequential decision when authoring a new skill — it dictates concurrency, rename-marker behavior, and `.last_sync` semantics.
+
+**Model / context design principles** (2026-04-21):
+- **Opus max** for analytical work requiring deep reasoning (propagation, ingestion, thesis construction, stress testing, scenarios, comparison, lint/prune judgment).
+- **Sonnet max** for mechanical work (structural extraction in `/graph`, wikilink find/replace in `/rename`, snapshot restoration in `/rollback`, frontmatter nudges in `/status`, snapshot age classification in `/clean`). Each Sonnet-assigned skill was vetted for correctness risk and flagged watch-items (see §12.6).
+- **Forked context** (`context: fork` with `agent: general-purpose`) for skills whose reads or analytical span dominate main-context budget but whose output is a bounded report or a handful of file edits (`/lint`, `/prune`, `/surface`). Main conversation receives only the final summary.
 
 ### 0.5 Glossary
 
@@ -123,6 +136,10 @@ Ticker-scoped vs vault-wide choice is the single most consequential decision whe
 | **Skill-origin Log prefix** | Prefix from `_shared/log-prefixes.md` produced by a skill that already handled cross-file propagation (e.g., `Stress test`, `Status change`). `/sync` skips re-propagation when the most-recent Log entry carries one. |
 | **Tier A / Tier B (sync)** | Tier A = destructive edits that require pre-edit snapshot. Tier B = Log-only appends, surfaced in `_sync-manifest` for strikethrough during rollback cascade. |
 | **Watermark** | Timestamp marking last successful skill run. `.last_sync` mtime for `/sync`, `last_graph_write:` frontmatter for `/graph`. |
+| **Forked skill** | Skill whose SKILL.md frontmatter declares `context: fork` + `agent: general-purpose`. Executes in isolated subagent; main context receives only the final report. Currently 3 skills: `/lint`, `/prune`, `/surface` (§12.1, §12.6). |
+| **Section-targeted read** | Pattern used by `/catalyst` Phase 1 and `/surface` default-mode Phase 1: awk-extracted subset of a thesis (frontmatter + chosen `##` sections + recent Log) instead of full file. Reduces read cost ~75-85% at minor signal cost. |
+| **Mode keyword** | Reserved literal argument for a skill (`/sync all`, `/surface all`, `/graph last`, `/graph [N]`). Disambiguates from ticker/sector arguments — never collides with filesystem names. Case-insensitive for `all`; exact-match for others. |
+| **Mechanical skill** | Skill whose operations are structural (extraction, find/replace, copy, frontmatter edits) rather than analytical. Runs on Sonnet max (§0.4, §12.6). Currently: `/graph`, `/rename`, `/rollback`, `/status`, `/clean`. |
 
 ---
 
@@ -584,6 +601,8 @@ Under `.claude/skills/`, three kinds of markdown files compose each skill. Load 
 
 **T7 optimization consequence**: the split that produced `sync/RATIONALE.md` and `_shared/wikilink-forms.md` migrated non-operational text from paid-per-invocation SKILL.md to free-at-runtime RATIONALE.md or paid-on-demand `_shared/`. Savings: ~9,200 tokens per `/sync` invocation.
 
+**Execution context directive**: SKILL.md frontmatter can include `context: fork` + `agent: general-purpose` to route the skill's execution into a forked subagent. As of 2026-04-21, three skills use this: `/lint`, `/prune`, `/surface`. Forked skills' intermediate reasoning and tool calls stay in the subagent's isolated context; only the final report returns to main. See §12.6 for the rationale and full impact measurements.
+
 ### 12.2 Shared contracts catalog
 
 Five contracts under `.claude/skills/_shared/`. Editing any requires coordinated update across all consumers.
@@ -668,6 +687,69 @@ Skills without a RATIONALE.md (7): `brief`, `catalyst`, `clean`, `deepen`, `inge
 ```
 
 Adding a new consumer: update this graph + add paired `/lint` check in the same commit.
+
+### 12.6 Performance architecture — 2026-04-21 optimizations
+
+Audit of main-context usage on Opus 4.7 (1M context, max effort) surfaced three hotspots. Mitigations landed 2026-04-21:
+
+#### R1 — `context: fork` on `/surface`
+
+**Change**: `/surface` frontmatter gains `context: fork` + `agent: general-purpose`. Joins `/lint` and `/prune` in the forked-subagent set (now 3 skills).
+
+**Rationale**: `/surface`'s outputs are clean-bounded (one Research note + `_hot.md` patches + a top-3-insights summary). The whole vault-read, connection analysis, and opportunity generation happens internally — main context does not need the intermediate reasoning. Forking isolates the ~200-300K subagent read budget from the main session.
+
+**Measured impact**: unscoped `/surface` main-context cost drops from ~380K tokens to ~15K (final summary only). Monthly maintenance chain drops from ~847K to ~457K main-context tokens (85% → 46% of 1M).
+
+**Trade-off accepted**: subagent intermediate reasoning is discarded on return (invariant §0.2 #15). If the user asks a follow-up about something `/surface` found but didn't emit to the summary, rerun `/surface TICKER` scoped to the area of interest.
+
+#### R2 — Section-targeted reads in `/surface` Phase 1
+
+**Change**: `/surface` default mode (unscoped, no args) now reads only 4 thesis sections (`Summary`, `Key Non-consensus Insights`, `Risks`, `Catalysts`) + last 5 Log entries per thesis. Same pattern as `/catalyst` Phase 1. `/surface all` opt-in keyword preserves pre-2026-04-21 full-read behavior for users who want maximum signal.
+
+**Rationale**: surface analysis primarily uses cross-thesis pattern matching on high-density sections (Non-consensus Insights is the explicit "what does the market miss" signal, Risks is the explicit "what kills the thesis" signal). Business Model and Industry Context are expensive to read and rarely contribute unique signal to cross-section pattern detection.
+
+**Measured impact**: subagent thesis-read budget drops from ~175K words (41 theses × ~4.3K avg) to ~35-50K words (41 theses × ~1K avg). Subagent read cost reclaimed: ~225K tokens per run.
+
+**Mode matrix** (`/surface` SKILL.md Phase 1):
+
+| Mode | Thesis reads | Read budget | Trigger |
+|---|---|---|---|
+| `/surface` (default) | Section-targeted | ~50-80K words | Routine / monthly cadence / chain use |
+| `/surface all` | Full read | ~220K words | Quarterly deep review, suspected cross-section patterns missed |
+| `/surface TICKER` | Scope-bounded full read | ~20-40K words | Ticker-focused insight |
+| `/surface [sector]` | Full read ≤6 theses, section-targeted >6 | ~20-80K words | Sector review |
+
+**`scope:` frontmatter** (new): surface-generated Research notes carry `scope: default | all | ticker:TICKER | sector:[Name]` so downstream review can distinguish deep-scans from routine scans. Filename suffixes: `(all)` for comprehensive runs, otherwise standard.
+
+#### R4 — Sonnet max for mechanical skills
+
+**Change**: Five skills downgraded from `model: opus` to `model: sonnet` (effort: max preserved):
+
+| Skill | Operation character | Correctness risk |
+|---|---|---|
+| `/graph` | Fused Bash wikilink extraction + in-memory reasoning, `_graph.md` Write | Low — output is deterministic; `/lint #23` catches reverse-index drift |
+| `/rename` | `mv` + 7-pattern wikilink find/replace | Low — patterns enumerated in `_shared/wikilink-forms.md` + archive variants (§9.1). `/lint #37` catches incomplete reruns |
+| `/rollback` | Snapshot `cp` + cascade classification | **Medium** — cascade classification (§7, multi-file vs single-file offer) requires parsing manifests; watch for mis-classification |
+| `/status` | Frontmatter edit + sector note + `_hot.md` + trigger-conflict check | **Medium** — trigger-conflict detection requires reading `Conviction Triggers` section and reasoning about logical contradiction with the proposed change |
+| `/clean` | Snapshot age classification + deletion | Low — age math + closure-snapshot floor check (§3.2). Was already Sonnet pre-2026-04-21 |
+
+**Wall-time impact** (measured / projected on Opus-vs-Sonnet latency ratios):
+
+| Skill | Before | After | Delta |
+|---|---|---|---|
+| `/graph` full | 30-90s | 20-45s | ~45% |
+| `/graph last` | 15-45s | 8-20s | ~50% |
+| `/rename` | 60-120s | 30-60s | ~50% |
+| `/rollback` list | 20-40s | 5-15s | ~65% |
+| `/rollback` restore | 60-180s | 30-90s | ~50% |
+| `/status` conviction | 60-90s | 30-50s | ~45% |
+| `/status` draft→active or reaffirm | 30-60s | 10-25s | ~65% |
+
+**Watch list** (first two to revert if Sonnet proves insufficient):
+1. `/status` trigger-conflict detection — if `/lint #30` or a subsequent `/stress-test` flags a trigger-evidence mismatch that should have been caught pre-apply.
+2. `/rollback` cascade detection — user runs `/rollback NVDA` after a `/sync all`, expects multi-file cascade offer, gets single-file restore.
+
+**Revert procedure**: one-line edit per skill, change `model: sonnet` → `model: opus` in SKILL.md frontmatter. No data migration, no contract changes.
 
 ---
 

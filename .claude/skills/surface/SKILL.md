@@ -3,6 +3,8 @@ name: surface
 description: Surface new insights, potential trades, and research opportunities from existing vault content. Use when user says "surface", "what am I missing", "find opportunities", or "what should I research next".
 model: opus
 effort: max
+context: fork
+agent: general-purpose
 allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * defuddle *)
 ---
 
@@ -26,11 +28,14 @@ For `/surface TICKER`, run `.claude/skills/_shared/preflight.md` Procedure 2. If
 
 Parse `$ARGUMENTS` to determine scope:
 
+- **`all`** (literal keyword): Full vault, **full-read mode** (comprehensive, legacy pre-2026-04-21 behavior). Reads every thesis, sector, and macro note in full. Use when doing a once-off deep review and willing to pay the larger context cost for maximum signal.
 - **Ticker** (e.g., `NVDA`): Read `_graph.md` and resolve the ticker's adjacency set — its thesis, sector note(s), macro note(s), cross-thesis references, and all linked research. Also include theses that share a sector (one ring outward) for competitive context.
 - **Sector** (e.g., `semiconductors`): Use `_graph.md` Sector → Theses reverse index to resolve all theses in that sector, plus the sector note, related macro notes, and their linked research.
-- **No arguments / empty**: Full vault — no scoping (reads everything).
+- **No arguments / empty**: Full vault, **section-targeted mode** (default). Reads bounded per-thesis sections only — fast, lean, suitable for weekly/monthly cadence.
 
-If a scope is requested but `_graph.md` does not exist, warn: `⚠️ Graph missing — cannot scope. Run /graph first, or run /surface without arguments for full vault scan.` Then stop.
+Argument disambiguation: `all` is a reserved keyword (matches `/sync all` precedent). Never a ticker — no archived or live thesis with that filename pattern. Never a sector — no sector note named `all`. `$ARGUMENTS` is case-sensitive for ticker/sector match but `all` is accepted in any case (`all`, `ALL`, `All` all route to full-read mode).
+
+If a non-`all` scope is requested but `_graph.md` does not exist, warn: `⚠️ Graph missing — cannot scope. Run /graph first, or run /surface (default, section-targeted) or /surface all (full-read) without arguments.` Then stop.
 
 ### Scope-set existence validation (ticker-scoped and sector-scoped modes only)
 
@@ -88,11 +93,72 @@ The fail-fast path forces `/graph last` explicitly — cost is one extra command
 
 `/surface` is an analytical read-only skill that writes a synthesis research note and `_hot.md`. It does not write `_graph.md`. Auto-running `/graph last` would violate the metadata-ownership boundary (only `/graph` and `/rename` write `_graph.md`). User explicitly invokes `/graph last` — one extra command is the correct cost for ownership clarity. `/lint` #38 (`.graph_invalidations` aging) catches the chronic case where users forget to run it.
 
-## Phase 1: Portfolio Scan
+## Phase 1: Portfolio Scan (mode-dependent read strategy)
 
-**Scoped mode**: Read only files resolved in Scope Resolution. Skip vault-wide checks that require full portfolio coverage (Attention Allocation ranking, Research Velocity ranking across all theses — these need the full set to be meaningful).
+Read strategy branches by scope. The two full-vault modes trade completeness against subagent context budget:
 
-**Unscoped mode**: Read all Sector Notes and all active thesis notes (focus on Non-consensus Insights, Risks, and recent Log entries).
+| Mode | Thesis reads | Expected read budget | Use when |
+|---|---|---|---|
+| `/surface` (default) | Section-targeted (frontmatter + 4 sections + last 5 Log) | ~50-80K words | Weekly / monthly cadence; part of a maintenance chain |
+| `/surface all` | Full read (entire file per thesis) | ~220K words | Once-off deep review; willing to pay larger context for maximum signal |
+| `/surface TICKER` | Full read of scope set | ~20-40K words | Ticker-focused insight discovery |
+| `/surface [sector]` | Full read (≤6 theses) or section-targeted (>6 theses) | ~20-80K words | Sector-level review |
+
+### Unscoped default mode — section-targeted reads
+
+1. For each thesis file in `Theses/*.md` (every file — draft, active, monitoring; not just active):
+   - Read **only**: frontmatter + `## Summary` + `## Key Non-consensus Insights` + `## Risks` + `## Catalysts` + **last 5 Log entries**
+   - Skip: Business Model & Product Description, Industry Context, Key Metrics, Bull Case, Bear Case, Outstanding Questions, Related Research, older Log entries
+   - Target: ~800-1,500 words per thesis instead of ~4,000-6,000 — reduces total thesis read from ~175K words to ~35-50K words
+   - Extract (Bash targeted awk):
+
+```bash
+for f in Theses/*.md; do
+  echo "=== $f ==="
+  awk '
+    # Always emit frontmatter
+    /^---$/ && !fm_done { in_fm=!in_fm; print; if(!in_fm) fm_done=1; next }
+    in_fm { print; next }
+    # Summary / Non-consensus Insights / Risks / Catalysts sections
+    /^## Summary/,/^## /        { if($0!~/^## / || $0~/^## Summary/)                  print }
+    /^## Key Non-consensus Insights/,/^## /  { if($0!~/^## / || $0~/^## Key Non-consensus/) print }
+    /^## Risks/,/^## /          { if($0!~/^## / || $0~/^## Risks/)                    print }
+    /^## Catalysts/,/^## /      { if($0!~/^## / || $0~/^## Catalysts/)                print }
+    # Log: keep everything from ## Log forward — LLM takes last 5 entries in reasoning layer
+    /^## Log/{in_log=1}
+    in_log{print}
+  ' "$f"
+done
+```
+
+2. Read all **Sector Notes** in full (bounded set, ~13 files). Competitive dynamics, value chain analysis, and investor heuristics are needed in full.
+3. Read all **Macro Notes** in full (bounded set, ~6 files). Scenario frameworks require complete context.
+4. For heavily cited research notes (appearing in ≥3 theses' Related Research via `_graph.md` orphan+adjacency lookup): read in full. All other research notes: trust the thesis Log citations as summaries.
+
+**Expected read budget**: ~50-80K words total (was ~220K words pre-R2). Reclaim: ~170K words = ~225K tokens per unscoped run.
+
+### `/surface all` mode — full-read comprehensive scan
+
+Use when the user wants maximum analytical depth for a once-off deep review. Reads every thesis file in full — accepts the larger subagent context cost for richer cross-thesis connection detection (particularly valuable for Business Model and Industry Context cross-referencing that section-targeted mode misses).
+
+1. Read every `Theses/*.md` in full (all 13 thesis sections). No awk extraction.
+2. Read all Sector Notes in full.
+3. Read all Macro Notes in full.
+4. For heavily cited research notes (≥3 theses in `_graph.md` adjacency): read in full. For others: read on-demand when Phase 2 analysis surfaces a specific question about them.
+
+**Expected read budget**: ~220K words total (matches pre-R2 behavior). Subagent context consumption: ~290K tokens. Still comfortably under the subagent budget because `context: fork` isolates this from main session context.
+
+**Output differentiation**: `/surface all` research notes carry `source_type: synthesis` with `scope: all` in a `scope:` frontmatter field, so downstream review can distinguish deep-scan outputs from routine `/surface` scans. Filename: `Research/YYYY-MM-DD - Insight Surface Scan (all).md`.
+
+**When to prefer `/surface` over `/surface all`**: unless you're explicitly doing a quarterly/annual portfolio deep-review, default mode is strictly better — same insight signal at 25% the read cost. `/surface all` is the escape hatch for cases where section-targeting empirically misses a cross-section pattern.
+
+### Scoped mode — reads bounded by scope resolution
+
+**Ticker-scoped `/surface TICKER`**: read the resolved ticker + adjacencies (thesis, sector, macros, cross-thesis, linked research, sector peers). Set is small (1 focal thesis + 2-6 peers); section-targeting not needed — read all files in full for full competitive context.
+
+**Sector-scoped `/surface [sector]`**: read the sector note + all theses in that sector + linked macros + their research. Typical set is 3-8 theses; apply section-targeting (as in default mode above) only if the sector has >6 theses.
+
+Skip vault-wide checks that require full portfolio coverage (Attention Allocation ranking, Research Velocity ranking across all theses — these need the full set to be meaningful).
 
 ## Phase 2: Connection Analysis
 
@@ -146,7 +212,8 @@ For each opportunity:
 ## Phase 4: Output
 
 Save findings to:
-- **Unscoped**: `Research/YYYY-MM-DD - Insight Surface Scan.md`
+- **Unscoped default**: `Research/YYYY-MM-DD - Insight Surface Scan.md`
+- **Unscoped `all`**: `Research/YYYY-MM-DD - Insight Surface Scan (all).md`
 - **Ticker-scoped**: `Research/YYYY-MM-DD - [TICKER] - Surface Scan.md`
 - **Sector-scoped**: `Research/YYYY-MM-DD - [Sector] - Surface Scan.md`
 
@@ -158,9 +225,12 @@ tags: [research, meta, surface-scan]
 status: active
 source: vault synthesis
 source_type: synthesis
+scope: default | all | ticker:TICKER | sector:[Sector]
 propagated_to: []
 ---
 ```
+
+The `scope:` frontmatter field records which mode produced the note — lets downstream review (and `/lint`) distinguish a routine section-targeted scan from a deep `all` scan or a scoped run.
 
 > **Why `propagated_to: []`**: Surface scans are exploratory portfolio-level metadata, not per-thesis evidence. Their body wikilinks reference many theses for context, NOT to claim each one needs a Log entry. The empty list is a **terminal dedup signal** to `/sync` Check 2 — the producer skill (this `/surface` run) explicitly declares "no propagation needed." Without this, the next `/sync` would treat each body wikilink as a propagation target and spam Log entries across 10+ theses with shallow scan-derived insights. See `/sync` Step 1 Check 2 for the empty-list semantics.
 
