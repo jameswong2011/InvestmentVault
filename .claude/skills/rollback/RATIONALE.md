@@ -35,18 +35,21 @@ Primary match: `snapshot_batch:` frontmatter exact string. Legacy snapshots (pre
 
 Batch matching is operation-precise: same-day repeat operations (e.g., two `/sync` runs on the same day) get distinct batch IDs and never cross-match. The `YYYY-MM-DD`-only fallback is coarser but still safe because two legacy same-day operations writing multiple snapshots each is extraordinarily rare and the user confirms cascade scope explicitly.
 
-### §2.2 Per-manifest cascade types (2.5b/c/d/e/f) — design
+### §2.2 Per-manifest cascade types (2.5b/c/d/e/f/g) — design
 
-Each manifest type corresponds to a distinct multi-file transaction pattern:
+Each cascade type corresponds to a distinct multi-file transaction pattern. **2.5c is "non-manifest triggers" — a generic passthrough to 2.5a.** (D1 canonical — 2026-04-21 reconciliation; prior drafts of this table incorrectly labeled 2.5c as "prune-manifest". `/prune` uses 2.5a generic batch-lookup; its manifest serves the 30-day retention window and surfaces Tier B neighbor entries via body rather than via a dedicated cascade branch.)
 
 | Cascade | Transaction pattern | Why it exists |
 |---|---|---|
-| 2.5a | Trigger+date match (no manifest) | Baseline for pre-manifest snapshots |
+| 2.5a | Trigger+date or `snapshot_batch:` prefix match | Baseline for any cascade; used directly by `/prune`, `/catalyst`, `/rename` (snapshot restore), and pre-manifest snapshots |
 | 2.5b sync-manifest | Tier A snapshots + Tier B Log-only appends | Tier B cross-thesis propagation has no snapshot; manifest records the Log entry text for strikethrough review |
-| 2.5c prune-manifest | Closures + upgrades + Stage 4.2 neighbor notifications | Prune writes Log entries on neighbors without per-neighbor snapshots (same rationale as sync Tier B) |
-| 2.5d stress-test-manifest | Log-only (no snapshot) on tested thesis | Stress-test's only direct effect is an append-only Log entry; no snapshot possible |
-| 2.5e status-manifest | Thesis frontmatter + sector + optional archive mv + invalidations + _hot.md | Multi-file transaction with all-or-nothing atomicity |
+| 2.5c non-manifest triggers | Generic passthrough to 2.5a | `/catalyst`, `/rename`, `/rollback` pre-rollback safety net. Tier A only; no Tier B Log auto-handling |
+| 2.5d stress-test-manifest | Log-only (no snapshot) on tested thesis | Stress-test's only direct effect is an append-only Log entry; no snapshot possible. Manifest surfaces entry text for strikethrough |
+| 2.5e status-manifest | Thesis frontmatter + sector + optional archive mv + invalidations + _hot.md | Multi-file transaction with all-or-nothing atomicity; closure case includes un-archive collision check (C5) |
 | 2.5f thesis-manifest | Deletion-based, not restore-based | /thesis creates new files; undo means deleting + reverting sector/hot.md — no "before state" to restore |
+| 2.5g deepen-manifest (M3 — 2026-04-21) | Thesis snapshot + optional supporting research note | /deepen edits thesis section + appends Log + optionally creates research note. Cascade offers thesis-only restore (a) or full cascade including research-note deletion (b) |
+
+**`/prune` cascade pattern** (no dedicated 2.5-letter branch): uses 2.5a generic. Per-thesis `(pre-prune)` snapshots are homogeneous; the `_prune-manifest` provides (a) 30-day retention window enforcement for `/clean` floor, (b) the neighbor list for Step 6.2.5 intervening-entries scan (populated at Stage 4.5 per C1), (c) archive-ticker-registry crosslink. Batch restore via 2.5a prefix match.
 
 ### §2.3 Why sync 2.5b surfaces Tier B entries for manual review
 
@@ -113,9 +116,11 @@ LLM-judgment required for narrative prose (prefix heuristic doesn't apply):
 
 The three user options (surface / strikethrough premise-dependent only / strikethrough all matched / skip) trade aggressiveness vs risk. Default recommendation: (b) premise-dependent only.
 
-### §4.5 Interaction with Step 2.5b/c cascades
+### §4.5 Interaction with `/prune` (2.5a generic) and `/status` (2.5e) cascades — D1 canonical
 
-If closure was via `/prune` (vs `/status`), the prune-manifest (30-day retained per 5.2) cascades Stage 4.2 "Cross-thesis closure" neighbor Logs at Step 2.5c. 6.2.5 then runs redundantly but safely — its `Cross-thesis closure:` prefix filter finds the same entries, user chooses once. Skill detects overlap and combines the list to avoid double-prompting.
+If closure was via `/prune` (vs `/status`), the `_prune-manifest` (30-day retained per 5.2) is discoverable via 2.5a generic batch-lookup and its body carries the populated neighbor list (Stage 4.5 per C1). 6.2.5 then runs redundantly but safely — its `Cross-thesis closure:` prefix filter finds the same entries that the manifest body lists, user chooses once. Skill detects overlap and combines the list to avoid double-prompting.
+
+Prior to D1 reconciliation, this section misreferenced "Step 2.5c" as the prune cascade branch. `/prune` does not own a dedicated 2.5-letter branch; 2.5c is reserved for `/catalyst` / `/rename` / pre-safety-net snapshots (non-manifest triggers).
 
 If closure was via `/status`, no prune manifest exists and 6.2.5 is the primary tool.
 

@@ -189,9 +189,11 @@ Options:
 
 **Manifest missing** (sync pre-T2.1, or manifest write failed): fall back to 2.5a with warning: `⚠️ No sync manifest found for batch [batch ID]. Cascade will only restore Tier A snapshots; any Tier B Log appends from this sync are invisible and will persist after rollback. To find them manually, grep Theses/*.md for entries dated [snapshot date] referencing [source research notes from the snapshot's referenced sources].`
 
-### 2.5c: Non-sync trigger snapshots (no-manifest case)
+### 2.5c: Non-manifest triggers (generic passthrough to 2.5a) — D1 canonical
 
-Triggers without manifests (`deepen`, `catalyst`, `rename`, `rollback` pre-rollback safety net) snapshot every modified file (Tier A only). Proceed with 2.5a behavior unchanged.
+Triggers without manifests (`catalyst`, `rename`, `rollback` pre-rollback safety net) snapshot every modified file (Tier A only). Proceed with 2.5a behavior unchanged.
+
+> **D1 canonical meaning**: 2.5c is the "no-manifest" case — a generic passthrough to 2.5a's batch prefix lookup. `/deepen` previously sat in this bucket; as of M3 (2026-04-21) `/deepen` has its own manifest (`_deepen-manifest`) and its own cascade branch at 2.5g. `/prune` has `_prune-manifest` but its cascade uses 2.5a generic batch lookup — intentional, because per-thesis `(pre-prune)` snapshots are homogeneous and the manifest's role is retention-window metadata, not cascade routing.
 
 ### 2.5d: Stress-test manifest cascade (T3.1)
 
@@ -319,6 +321,42 @@ Confirm (a/b/c):
 **Edit failures during cascade**: continue remaining steps; report per-step outcome. Users complete partial cascade manually via manifest body.
 
 **Preservation**: thesis file content NOT preserved in `_Archive/Snapshots/` unless user chose (a) and archived manually. Before accepting (b), consider saving thesis content elsewhere.
+
+### 2.5g: Deepen manifest cascade (M3 — 2026-04-21)
+
+If snapshot or user-supplied batch matches `/deepen` batch (`deepen-TICKER-YYYY-MM-DD-HHMMSS` OR companion `_deepen-manifest (deepen-...)`): read manifest. `/deepen` is a multi-file transaction (thesis edit + optional supporting research note + `_hot.md`). Cascade uses thesis pre-deepen snapshot as anchor; supporting research note (if created) is Tier C (its own file, undone by deletion).
+
+```
+Deepen transaction cascade detected:
+  Batch:          deepen-TICKER-YYYY-MM-DD-HHMMSS
+  Ticker:         TICKER
+  Section deepened: [Section Name from manifest]
+  Manifest:       [[_Archive/Snapshots/_deepen-manifest (deepen-...)]]
+
+Landed operations:
+  ✅ Thesis section rewritten — snapshot: [[_Archive/Snapshots/TICKER - Name (pre-deepen ...)]]
+  ✅ Thesis Log entry appended (Phase 5c final — `Deepened [Section]:` or ↳ CORRECTION)
+  ✅ Supporting research note created (or ℹ️ skipped — Phase 6 judged insubstantial)
+  ✅ _hot.md updated
+
+Cascade options:
+  (a) Restore thesis only (from pre-deepen snapshot) — reverts section rewrite AND
+      removes today's `Deepened`/`Deepening`/`↳ CORRECTION` Log entries automatically
+      via snapshot restore. Research note preserved. _hot.md unchanged.
+  (b) Full cascade — (a) + delete supporting research note (if created in Phase 6).
+  (c) Cancel.
+```
+
+**Option (a) execution**: standard Tier A snapshot restore. Pre-rollback safety snapshot (Step 4) covers the current thesis state before restore.
+
+**Option (b) execution**:
+1. Restore thesis from pre-deepen snapshot (as in option a).
+2. If manifest's `## Research note created` lists a wikilink (not `none`): `rm Research/YYYY-MM-DD - TICKER - [Section Topic] Deep Dive.md`.
+3. Report per-step outcome.
+
+**Research note preservation default**: option (a) is the conservative default — research notes are historical records (same rule as scenario/stress-test). Option (b) only appropriate when the research note was generated from an invalid deepen run (wrong section targeted, hallucinated sources, etc.).
+
+**`_hot.md` note**: 2.5g does NOT auto-revert `_hot.md` entries — the safety snapshot in Step 4 includes the current `_hot.md`, so manual review post-rollback suffices. Consistent with 2.5d (stress-test) and 2.5e (status option a).
 
 ## Step 3: Confirm (Mandatory)
 
@@ -562,7 +600,7 @@ Confirm (a/b/c/d):
 
 7. **Edit failures**: record + continue. Report failed Edits in Step 7 alongside successful.
 
-**Overlap with Step 2.5c prune-manifest cascade**: `Cross-thesis closure:` prefix filter may duplicate 2.5b cascade surfacing (§4.5). Detect overlap → log `ℹ️ 6.2.5 scan overlaps with Step 2.5b prune-manifest cascade; showing combined list.`
+**Overlap with `/prune` cascade** (2.5a generic path — D1 canonical): `Cross-thesis closure:` prefix filter may duplicate entries surfaced by the `_prune-manifest`'s populated neighbor list (§4.5). Detect overlap → log `ℹ️ 6.2.5 scan overlaps with /prune cascade (_prune-manifest neighbor list at Stage 4.5); showing combined list.`
 
 ### 6.3: Graph update deferred
 

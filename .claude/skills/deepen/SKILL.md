@@ -104,17 +104,68 @@ Before rewriting the target section, snapshot the thesis:
    ```bash
    mkdir -p _Archive/Snapshots
    ```
-2. Copy the current thesis note:
+2. Generate `HHMMSS` once at Phase 4 start. Reused by the snapshot (this phase) and the manifest (Phase 4.5):
+   ```bash
+   HHMMSS=$(date +%H%M%S)
+   ```
+3. Copy the current thesis note:
    ```bash
    cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-deepen YYYY-MM-DD-HHMMSS).md"
    ```
-3. Read the newly created snapshot, then add to its frontmatter:
+4. Read the newly created snapshot, then add to its frontmatter:
    ```yaml
    snapshot_of: "[[Theses/TICKER - Company Name]]"
    snapshot_date: YYYY-MM-DD
    snapshot_trigger: deepen
-   snapshot_batch: deepen-YYYY-MM-DD-HHMMSS
+   snapshot_batch: deepen-TICKER-YYYY-MM-DD-HHMMSS
    ```
+
+   **Batch ID format**: `deepen-TICKER-YYYY-MM-DD-HHMMSS` — TICKER embedded to prevent collisions between concurrent `/deepen` runs on different tickers that hit the same HHMMSS (matches `/stress-test` pattern).
+
+## Phase 4.5: Write deepen manifest skeleton (M3 — skeleton before destructive edits)
+
+> **Why this exists (M3)**: `/deepen` is a multi-file transaction — it edits thesis (Phase 5) AND creates a research note (Phase 6) AND updates `_hot.md` (Phase 7). Prior spec had only the thesis snapshot as a recovery anchor; a crash mid-Phase-6 would leave the thesis edited with a provisional Log entry and no research note, with no manifest trail for `/rollback` cascade detection. The manifest + skeleton-before-flip pattern (§3 invariant) provides crash detection via `/lint #50` and batch-level cascade via `/rollback` Step 2.5g.
+
+Write manifest at `_Archive/Snapshots/_deepen-manifest (deepen-TICKER-YYYY-MM-DD-HHMMSS).md`:
+
+```yaml
+---
+type: deepen-manifest
+batch: deepen-TICKER-YYYY-MM-DD-HHMMSS
+status: in-progress
+ticker: TICKER
+section: [Section Name from Phase 2]
+date: YYYY-MM-DD
+---
+
+# Deepen Manifest
+
+> **If `status: in-progress`**, `/deepen` crashed between Phase 4.5 (skeleton)
+> and Phase 7.5 (flip). Check thesis `## Log` for today's date + `Deepening` prefix
+> to see whether the provisional entry has been superseded by the final `Deepened` entry.
+> Recovery: `/rollback deepen-TICKER-YYYY-MM-DD-HHMMSS` → Step 2.5g offers:
+>   (a) Restore thesis from pre-deepen snapshot (undo section rewrite + Log entry).
+>   (b) Full cascade — (a) + delete supporting research note (if Phase 6 created one).
+>   (c) Cancel.
+>
+> **If `status: completed`**, Phase 4-7 all succeeded. `/rollback` Step 2.5g is
+> still available within the cascade's per-snapshot age window.
+
+## Thesis snapshot
+- [[_Archive/Snapshots/TICKER - Company Name (pre-deepen YYYY-MM-DD-HHMMSS)]]
+
+## Thesis target
+- `Theses/TICKER - Company Name.md`
+- Section deepened: [Section Name]
+
+## Research note created (if any)
+- *(filled in Phase 7.5 flip: wikilink to Research note, or `none — Phase 6 judged new research insubstantial`)*
+
+## Phase 5 Log-append outcome
+- *(filled in Phase 7.5 flip: succeeded | provisional-entry-stuck + correction-appended)*
+```
+
+Skeleton write failure → hard abort BEFORE Phase 5 destructive edits. Thesis snapshot (Phase 4) exists but is orphan — it falls under standard `/clean` orphan protection (90-day default, opt-in deletion). Report failure to user.
 
 ## Phase 5: Rewrite the Target Section
 
@@ -187,6 +238,41 @@ Follow `.claude/skills/_shared/hot-md-contract.md` — compression policy, per-s
 3. **Open Questions**: Mark resolved any questions this research answered; add new questions raised
 
 **Word cap**: After all `_hot.md` edits, check total word count. If over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap. If over 5,000 (hard cap), abort `_hot.md` update per contract.
+
+## Phase 7.5: Flip deepen manifest to completed (M3 — skeleton → populate → flip)
+
+Manifest skeleton was written at Phase 4.5 with `status: in-progress`. Phase 7.5 populates placeholders and flips status.
+
+**Populate body** (Edit Phase 4.5 skeleton, replacing `*(filled in Phase 7.5 flip)*` placeholders):
+
+```markdown
+## Research note created (if any)
+- [[Research/YYYY-MM-DD - TICKER - [Section Topic] Deep Dive]]
+  *(OR `none — Phase 6 judged new research insubstantial`)*
+
+## Phase 5 Log-append outcome
+- succeeded: provisional `Deepening [Section Name] — in progress` replaced by final `Deepened [Section Name]: [key finding] — conviction [impact]`.
+  *(OR `provisional-entry-stuck + correction-appended: final Log entry written as corrective ↳ CORRECTION block, provisional text preserved`)*
+```
+
+**Flip frontmatter**: `status: in-progress` → `status: completed`. Add `completed_date: YYYY-MM-DD`.
+
+Expected frontmatter post-flip:
+```yaml
+---
+type: deepen-manifest
+batch: deepen-TICKER-YYYY-MM-DD-HHMMSS
+status: completed
+ticker: TICKER
+section: [Section Name]
+date: YYYY-MM-DD
+completed_date: YYYY-MM-DD
+---
+```
+
+**Verify flip landed**: re-read manifest frontmatter. Confirm `status: completed` present, `status: in-progress` absent, `completed_date:` equals today.
+
+**On verification failure** (flip Edit silently missed): report `⚠️ Deepen manifest status flip failed — manifest remains status: in-progress despite successful deepen completion. /lint #50 will flag this as Important. Manual fix: edit manifest frontmatter — replace status: in-progress with status: completed (add completed_date: today).` Continue to Phase 8.
 
 ## Phase 8: Report
 Tell the user:

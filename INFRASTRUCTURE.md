@@ -84,7 +84,7 @@ Violating any of these produces silent corruption. Each links to the section tha
 | `/ingest` | vault-wide | No (but may trigger `/sync` downstream) | No | No | opus max | main | Process `_Inbox/` into Research notes; quality gate |
 | `/status` | ticker:TICKER | Yes | `_status-manifest` (T2.2) | Per-thesis pre-edit | **sonnet max** | main | Conviction/status changes |
 | `/thesis` | ticker:TICKER | Yes (ART + OQ) | `_thesis-manifest` (H1) | No (creation) — manifest enables deletion-based rollback | opus max | main | Create new thesis |
-| `/deepen` | ticker:TICKER | Yes | No | Per-thesis pre-edit | opus max | main | Targeted section deep-research |
+| `/deepen` | ticker:TICKER | Yes | `_deepen-manifest` (M3 — 2026-04-21) | Per-thesis pre-edit | opus max | main | Targeted section deep-research |
 | `/stress-test` | ticker:TICKER | Yes | `_stress-test-manifest` (T3.1) | No (Log append only) | opus max | main | Adversarial thesis test |
 | `/compare` | N × ticker:TICKER | Yes | `_compare-manifest` | Per-thesis | opus max | main | Competitive comparison |
 | `/scenario` | vault-wide | Yes | No | Per-thesis | opus max | main | Macro scenario propagation across portfolio |
@@ -281,12 +281,13 @@ All manifests at `_Archive/Snapshots/_<type>-manifest (<type>-*).md` with `type:
 
 | Manifest | Producer | `/rollback` cascade | `/lint` | Notes |
 |---|---|---|---|---|
-| `_prune-manifest` | `/prune` Stage 1.5 | 2.5c | #36 | Records closures, upgrades, affected sectors, Stage 4.2 neighbors. 30-day regret-recovery window floors `/clean` deletion of the manifest AND of every Stage 1 closure snapshot whose `snapshot_batch:` matches (universal across `/clean` modes — `/clean` Step 2d) |
+| `_prune-manifest` | `/prune` Stage 1 (C2 — skeleton before snapshots) | 2.5a generic | #36 | Records closures, upgrades, affected sectors, Stage 4.2 neighbors. Neighbor list populated at Stage 4.5 (C1 fix — prior placeholder broke `/rollback` Step 6.2.5 surfacing). 30-day regret-recovery window floors `/clean` deletion of the manifest AND of every Stage 1.5 closure snapshot whose `snapshot_batch:` matches (universal across `/clean` modes — `/clean` Step 2d). Manifest-first ordering (C2, 2026-04-21) closes invariant #11 orphan-window bypass |
 | `_sync-manifest` | `/sync` Step 2.9 (T2.1 skeleton) | 2.5b | #41 | Two-phase: skeleton pre-mutation → phase-boundary checkpoints (T7.4: end-of-Step-3/4/5 + 7.5 flip) → `completed`. Tier B Log entries surfaced for strikethrough review during cascade |
-| `_compare-manifest` | `/compare` Phase 5.5c | — | #45 | Sectors edited/rolled-back, per-target Log outcomes. `status: rolled-back` when atomicity fires |
-| `_stress-test-manifest` | `/stress-test` Phase 4.6 (T3.1) | 2.5d | #47 | Records the Log entry text appended to tested thesis (no snapshot — append-only) |
+| `_compare-manifest` | `/compare` Phase 5.0 skeleton (M2 — 2026-04-21) → Phase 5.5c flip | — | #45 | Two-phase (M2). Sectors edited/rolled-back, per-target Log outcomes. `status: rolled-back` when 5.5b atomicity fires; `status: in-progress` surfaced by `/lint #45` as Critical |
+| `_stress-test-manifest` | `/stress-test` Phase 4.0 skeleton (M1 — 2026-04-21) → Phase 4.6 flip | 2.5d | #47 | Two-phase (M1). Records the Log entry text appended to tested thesis (no snapshot — append-only); `status: in-progress` surfaced by `/lint #47` as Important |
 | `_status-manifest` | `/status` Step 3.0.5 (T2.2) | 2.5e | #48 | Two-phase. Records thesis frontmatter change, sector edit, archive move, graph invalidations, `_hot.md`. Reaffirm flow skips manifest (no multi-file transaction). **Closure variant** (`field: status, new_value: closed`): 30-day regret-recovery window floors `/clean` deletion of the Step 3.1 thesis snapshot (universal across `/clean` modes — `/clean` Step 2d) |
 | `_thesis-manifest` | `/thesis` Step 3.5 (H1) | 2.5f | #49 | Two-phase. `/rollback` cascade is **deletion-based** (not snapshot restore) since `/thesis` creates new files |
+| `_deepen-manifest` (M3 — 2026-04-21) | `/deepen` Phase 4.5 skeleton → Phase 7.5 flip | 2.5g | #50 | Two-phase. Records section deepened, pre-deepen thesis snapshot, Phase 5c Log-append outcome, Phase 6 supporting research note (if created). `/rollback` 2.5g offers thesis-only restore or full cascade with research-note deletion. `status: in-progress` surfaced by `/lint #50` as Important |
 
 **Aging policy**: `in-progress` → Important (crash signal). `completed` → aged per 90/180 day tiers by the paired `/lint` check. `/clean` removes only after both the requested age AND any manifest-specific floor (e.g., prune 30-day window, status closure 30-day window) are satisfied.
 
@@ -409,11 +410,12 @@ Each multi-file skill writes a manifest (§3.2); `/rollback` reads the manifest 
 |---|---|---|
 | 2.5a | Generic `snapshot_batch:` prefix lookup across `_Archive/Snapshots/` — base path for every trigger | Cascade all matched files / Single / Cancel |
 | 2.5b | `/sync` — `_sync-manifest` sidecar present | Tier B Log entry review: surface-only / cascade + strikethrough / single / cancel |
-| 2.5c | Non-manifest triggers (`/deepen`, `/catalyst`, `/rename`, `/rollback` pre-safety-net snapshots) | 2.5a generic cascade — Tier A only, no Tier B Log auto-handling |
+| 2.5c (D1 canonical — 2026-04-21) | **Non-manifest triggers** (`/catalyst`, `/rename`, `/rollback` pre-safety-net snapshots) | 2.5a generic cascade — Tier A only, no Tier B Log auto-handling |
 | 2.5d | `/stress-test` — `_stress-test-manifest` sidecar present | Surface only / cascade + strikethrough Log entry on tested thesis / cancel |
-| 2.5e | `/status` — `_status-manifest` sidecar present | Thesis-only restore / full transaction restore (thesis + sector + un-archive + clear invalidations) / cancel |
+| 2.5e | `/status` — `_status-manifest` sidecar present | Thesis-only restore / full transaction restore (thesis + sector + un-archive with collision check C5 + clear invalidations) / cancel |
 | 2.5f | `/thesis` — `_thesis-manifest` sidecar present | Delete thesis only / full cascade (delete + revert sector + revert `_hot.md` + revert orphan mtimes) / cancel. **Deletion-based, not snapshot-based** |
-| `/prune` | `/prune` — `_prune-manifest` + per-file `snapshot_trigger: prune` snapshots | 2.5a generic batch cascade; 30-day regret window enforced by `/clean` floor; Step 6.2.5 intervening-entries scan fires when restoring a reopened closed thesis |
+| 2.5g (M3 — 2026-04-21) | `/deepen` — `_deepen-manifest` sidecar present | Restore thesis from pre-deepen snapshot (research note preserved) / full cascade (a + delete supporting research note) / cancel |
+| `/prune` | `/prune` — `_prune-manifest` + per-file `snapshot_trigger: prune` snapshots | 2.5a generic batch cascade; 30-day regret window enforced by `/clean` floor; Step 6.2.5 intervening-entries scan fires when restoring a reopened closed thesis; manifest neighbor list populated at Stage 4.5 (C1) |
 | `/catalyst` | `/catalyst` — `snapshot_trigger: catalyst` on selected snapshot | Restore prior `_catalyst.md` from pre-regenerate snapshot via 2.5a generic path |
 | `/rename` | `/rename` — `snapshot_trigger: rename` with `rename_target:` field on selected snapshot | Step 4a rename-undo branch: symmetric reverse-rename via `/rename` inverse (recommended) / content-only restore (creates duplicate) / cancel |
 
@@ -764,6 +766,35 @@ Audit of main-context usage on Opus 4.7 (1M context, max effort) surfaced three 
 **Safety under the lock contract**: preflight Procedure 1 invariants fully preserved. Lock acquired first (0.1 sequential), probes fire after. Probes use `Glob`/`Grep` exclusively — no Bash ownership-verification cost (preflight §1.5 only mandates verification for Bash blocks).
 
 **Cross-skill impact**: none. Step 1.2 multi-signal archive collision retains its 4-signal semantics (§5.3 table entry unchanged). `preflight.md` line 365's reference to `/thesis` rename-marker location updated from "Step 1.1.5" (already drifted) to "Step 0.2, executed within Step 1.0 parallel batch".
+
+#### R6 — `/status` draft→active fast-path + parallelization
+
+**Change**: two-part optimization to `/status`:
+
+1. **Step 2F fast-path** — `status: draft→active` bypasses Step 2's Tier 3 `"Confirm? (y/n)"` gate. Shows a one-line FYI and proceeds directly to Step 3. All safety machinery (manifest skeleton, sector snapshot, Log entry, manifest flip) runs identically to the Step 2 path.
+2. **Parallelization** — Step 1 thesis + `_hot.md` reads fire in one parallel batch; Step 5b same-file sector Edits dispatch in one parallel tool-call block (harness serializes server-side); Step 7.9 manifest populate + status-flip + completed_date batch in one message; Step 8 final Bash co-dispatches with manifest verify-read.
+
+**Rationale**:
+- **Fast-path**: `draft→active` is the only `status:` transition that is additive (not a reduction), has no analytical content change, has no cascade implications (no sector-list removal, no graph invalidations, no `_hot.md` demotion), and is trivially reversible (manual frontmatter flip per User Guide §13). CLAUDE.md Tier 3's stated examples (`active → monitoring`, `active → closed`) are all reductions. The fast-path formalizes what was already the acknowledged exception in Step 3.1's snapshot-skip and §3.1's snapshot producer table. Full analysis in `status/RATIONALE.md §9`.
+- **Parallelization**: six round-trips saved on the mechanical portion by batching reads and consolidating same-file Edits. Full breakdown in `status/RATIONALE.md §10`.
+
+**Measured impact** (projected against a representative `/status VRT draft→active` run):
+
+| Source | Before | After | Saving |
+|---|---|---|---|
+| User wait on Tier 3 prompt | 10-120s | 0s | Full elision |
+| Sequential round-trips (mechanical) | ~17 | ~10-11 | 6-7 round-trips × ~3s = ~18-21s |
+| **Total wall-clock** | **~3 min** | **~30-50s** | **~75-85%** on fast-path runs |
+
+For non-`draft→active` transitions, only the parallelization savings apply (~15-20s).
+
+**Trade-off accepted (fast-path)**: one less user-prompt gate. Mitigated by:
+- Step 2F FYI message explicitly names the change (user can interrupt before Step 3 dispatches)
+- Log entry still recorded
+- Scope strictly limited to `draft→active` — all other transitions still gate through Step 2 Tier 3
+- Revert to prior behavior is one-line: delete Step 2F + restore Step 1 routing
+
+**Cross-skill impact**: zero. Verified against `/sync` (Log prefix unchanged), `/rollback` (manifest unchanged), `/lint #48` (in-progress check unchanged), `/clean` (manifest aging unchanged), `/graph` (no invalidations from this transition), `/catalyst`/`/prune`/conviction-drift (filter by `status: active` regardless of transition path). CLAUDE.md Tier 3 rule respected — the rule's listed examples are all reductions; `draft→active` is additive and outside the listed scope.
 
 ---
 

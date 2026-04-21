@@ -193,7 +193,9 @@ Per candidate, recommend ONE:
 
 Atomic batch pattern (§1): all safety snapshots created BEFORE any destructive modifications. Five sequential stages — each completes fully before the next begins.
 
-### Stage 1: Snapshot ALL Affected Files
+### Stage 1: Write Batch Manifest Skeleton (C2 — manifest BEFORE any snapshot/destructive op; §2)
+
+**Why manifest-first** (C2, invariant #11): if `/prune` crashes between Stage 1 snapshots and Stage 1.5 manifest (prior order), per-thesis pre-closure snapshots exist on disk with `snapshot_trigger: prune` but no matching manifest. `/clean` Step 2d 30-day closure floor requires a matching manifest to detect — without it, snapshots fall through to "standard orphan" and can be deleted via `/clean orphans` the same day. Writing the manifest FIRST binds any subsequent snapshot to the batch ID; closure-floor protection is unbypassable from that moment.
 
 Generate single batch ID for entire prune run:
 ```bash
@@ -201,30 +203,11 @@ HHMMSS=$(date +%H%M%S)
 mkdir -p _Archive/Snapshots
 ```
 
-`prune-YYYY-MM-DD-$HHMMSS` = `snapshot_batch` for ALL snapshots.
+`prune-YYYY-MM-DD-$HHMMSS` = `snapshot_batch` for ALL snapshots (written in Stage 1.5) and matching `batch:` field in the manifest.
 
-**Thesis snapshots** — one per approved closure AND per approved upgrade:
-```bash
-cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-prune YYYY-MM-DD-HHMMSS).md"
-```
+**Pre-resolve affected sector notes** (read-only, destructive-safe): for each approved thesis `sector:`, resolve via `.claude/skills/_shared/sector-resolution.md`. Dedup. Collect the list of `(sector_note_path, match_confidence, log_message)` tuples. This resolution is needed for the skeleton's `## Affected Sector Notes` section and reused by Stage 1.5 snapshots + Stage 4 edits. `match_confidence: none` skipped from sector updates (Stage 4) and sector snapshots (Stage 1.5).
 
-Read each, add frontmatter:
-```yaml
-snapshot_of: "[[Theses/TICKER - Company Name]]"
-snapshot_date: YYYY-MM-DD
-snapshot_trigger: prune
-snapshot_batch: prune-YYYY-MM-DD-HHMMSS
-```
-
-**Sector note snapshots** — one per affected sector (any sector losing a thesis or with conviction display update). Resolve via `.claude/skills/_shared/sector-resolution.md` for each approved thesis `sector:`. Dedup, snapshot each unique sector note with matching frontmatter (`snapshot_trigger: prune`, same batch ID).
-
-If `match_confidence: none`, emit contract's no-match warning suffixed `Skipping sector snapshot for [TICKER].` — sector update for that thesis also skipped in Stage 4. `normalized`/`substring` → collect `log_message` for final report.
-
-**Abort gate** (§1.3): snapshot creation fails → STOP immediately. Report `❌ Snapshot failed for [file]. Prune aborted — no changes made. Fix the issue and re-run /prune.`
-
-### Stage 1.5: Write Batch Manifest (§2)
-
-Reuse HHMMSS from Stage 1. Write `_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS).md`:
+Write `_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS).md`:
 
 ```yaml
 ---
@@ -257,11 +240,36 @@ Body:
 - Sector Name (closures: TICKER1, TICKER2; upgrades: TICKER3)
 
 ## Downstream Content Propagation (Stage 4.2 targets)
-- Neighbor theses receiving closure-notification Log entries: [list from Stage 2 neighbor scans]
-- Macro notes referencing closed theses (reported only): [list from 4.2a scan]
+- Neighbor theses receiving closure-notification Log entries: *(populated at Stage 4.5 after Stage 2 neighbor scans complete — C1)*
+- Macro notes referencing closed theses (reported only): *(populated at Stage 4.5 after 4.2a scan)*
 ```
 
-Flipped to `completed` then retained at Stage 5 (§3).
+Skeleton write failure → hard abort Stage 5 before any snapshot. Report to user; no destructive edits have run yet. `/clean`'s closure-snapshot 30-day floor is trivially unbypassable when there are no snapshots yet.
+
+Flipped to `completed` then retained at Stage 5 (§3). Body's Downstream Content Propagation section populated at Stage 4.5 with the deduplicated neighbor list (C1 fix — prior spec left placeholders unfilled, breaking `/rollback` Step 6.2.5 Tier B surfacing).
+
+### Stage 1.5: Snapshot ALL Affected Files (C2 — after manifest skeleton lands)
+
+Reuse HHMMSS from Stage 1. All snapshots bound to the already-existing manifest via `snapshot_batch: prune-YYYY-MM-DD-HHMMSS` — they inherit the 30-day closure-floor protection from Stage 1's manifest even if Stage 1.5 crashes mid-snapshot (invariant #11).
+
+**Thesis snapshots** — one per approved closure AND per approved upgrade:
+```bash
+cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-prune YYYY-MM-DD-HHMMSS).md"
+```
+
+Read each, add frontmatter:
+```yaml
+snapshot_of: "[[Theses/TICKER - Company Name]]"
+snapshot_date: YYYY-MM-DD
+snapshot_trigger: prune
+snapshot_batch: prune-YYYY-MM-DD-HHMMSS
+```
+
+**Sector note snapshots** — use the `(sector_note_path, match_confidence, log_message)` tuples resolved in Stage 1. Dedup, snapshot each unique sector note with matching frontmatter (`snapshot_trigger: prune`, same batch ID).
+
+`match_confidence: none` → skipped from snapshot and from Stage 4 sector update per Stage 1 resolution. `normalized`/`substring` → `log_message` collected for final report.
+
+**Abort gate** (§1.3): snapshot creation fails → STOP immediately. Report `❌ Snapshot failed for [file]. Prune aborted — no downstream mutations. Fix the issue and re-run /prune.` Manifest skeleton persists with `status: in-progress`; `/lint #36` surfaces. User can `rm` the manifest manually after resolving the failure.
 
 ### Stage 2: Process ALL Thesis Closures
 
@@ -388,9 +396,11 @@ Include in Stage 5 report:
 - **Cross-thesis Log annotations**: `[N] neighbor theses received closure-notification entries: [list]. [M] Edit failures: [list with reason].`
 - **Macro notes referencing closures**: `[N] macro notes contain wikilinks to archived theses — manual review: [list pairs].`
 
-### Stage 4.5: Write Graph Invalidation List (closures only)
+### Stage 4.5: Write Graph Invalidation List + Populate Manifest Neighbor List (closures only; C1 + §5.1)
 
-Skip if Stage 2 processed zero closures. For closure runs, merge every closure's neighbor set into one deduplicated list, append to `.graph_invalidations`:
+Skip if Stage 2 processed zero closures. For closure runs, this stage performs two related writes:
+
+**(1) Write `.graph_invalidations`** — merge every closure's neighbor set (from Stage 2 step 3) into one deduplicated list, append to `.graph_invalidations`:
 
 ```bash
 {
@@ -400,9 +410,30 @@ Skip if Stage 2 processed zero closures. For closure runs, merge every closure's
 } | sort -u > .graph_invalidations.tmp && mv .graph_invalidations.tmp .graph_invalidations
 ```
 
-Batched once per prune run (§5.1) — not per-closure.
+Batched once per prune run — not per-closure.
 
 Write failure → report, do NOT abort (§5.2). Closures/upgrades/sector updates already succeeded. `⚠️ .graph_invalidations write failed — run /graph (full rebuild) instead of /graph last to clean stale cross-thesis refs.`
+
+**(2) Populate manifest body neighbor list (C1 — makes `/rollback` Step 6.2.5 Tier B surfacing work)**: Edit the Phase 1 manifest skeleton, replacing the `*(populated at Stage 4.5 ...)*` placeholders under `## Downstream Content Propagation` with the actual deduplicated values:
+
+```markdown
+## Downstream Content Propagation (Stage 4.2 targets)
+- Neighbor theses receiving closure-notification Log entries:
+  - [[Theses/NEIGHBOR1 - Company1]] (appended: succeeded | failed reason)
+  - [[Theses/NEIGHBOR2 - Company2]] (appended: succeeded)
+  - ...
+- Macro notes referencing closed theses (reported only, not edited):
+  - [[Macro/Example Macro Note]] — references [[_Archive/CLOSED_TICKER1 - ...]], [[_Archive/CLOSED_TICKER2 - ...]]
+  - ...
+```
+
+Sources for the populated list:
+- Neighbor theses: union of Stage 2 step 3 per-closure neighbor sets, paired with Stage 4.2b's per-neighbor append outcome (succeeded | failed reason).
+- Macro notes: output of Stage 4.2a step 2 grep + 4.2c surface-only report (no edits applied).
+
+Manifest body Edit failure → log warning, continue. The `.graph_invalidations` write already succeeded; the missing neighbor list only affects `/rollback` Step 6.2.5's ability to surface Tier B entries automatically — user can fall back to manual grep via the `Cross-thesis closure:` prefix. `/lint #36` will flag the placeholder survival as Nice to Have.
+
+**Why this matters**: prior spec left the placeholder strings in the manifest body. `/rollback` Step 6.2.5 reading the manifest would surface literal text `*(populated at Stage 4.5 ...)*` to the user instead of real ticker names — breaking the documented Tier B review flow. Populating the placeholder closes that gap.
 
 ### _hot.md update
 
