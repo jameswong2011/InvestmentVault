@@ -2,7 +2,7 @@
 type: skill-rationale
 skill: /thesis
 purpose: Design rationale for /thesis — multi-signal archive-collision detection, new-sector handling, manifest contract, orphan research integration.
-last_reviewed: 2026-04-20
+last_reviewed: 2026-04-21
 ---
 
 # /thesis Design Rationale
@@ -180,3 +180,63 @@ New theses land as `status: draft`, not `status: active`. Rationale:
 - Alternative (auto-active) would flood sector notes + `_hot.md` with incomplete theses before the user has vetted them
 
 Step 8's Next Steps prompt surfaces the promotion path.
+
+---
+
+## §9 Parallel probe batch (Step 1.0)
+
+### §9.1 Why parallelize
+
+Pre-refactor: Step 0.2 + 1.1 + 1.2 Signals A–D + 1.3 ran as seven sequential tool calls. Each call incurs round-trip latency independent of the actual work. At typical latencies, the sequential chain added ~10–15s wall-clock to the skill for zero analytical benefit — probes don't depend on each other.
+
+Post-refactor: all seven probes fire as independent tool calls in a single batch, processed post-return with priority-ordered short-circuit logic. Same semantics, one round-trip instead of seven.
+
+### §9.2 Safety under the lock contract
+
+The parallelization is safe because of three invariants established by `.claude/skills/_shared/preflight.md` Procedure 1:
+
+1. **Lock acquired in 0.1 before any probe fires** — the `ticker:TICKER` lock blocks every skill that could mutate the probed state for the same ticker (`/status`, `/sync TICKER`, `/deepen`, `/stress-test`, `/rename`). Vault-wide skills (`/sync all`, `/graph`, `/prune`, `/clean`, `/ingest`) are also blocked by the existence of our ticker lock (per preflight §1.3b collision check).
+
+2. **Probes are read-only** — none of the seven probes mutate vault state. Concurrent reads are safe even if another skill holds a different ticker lock.
+
+3. **Probes don't consume each other's output** — no probe's input depends on another probe's result. The only post-batch dependency is Signal C's conditional Grep (fires only if the registry exists), which is correctly sequenced as a single follow-up step.
+
+### §9.3 Ownership verification does NOT apply to read-only tools
+
+Preflight §1.5 mandates ownership verification at the start of every **Bash** block. The parallel probe batch uses `Glob` and `Grep` — neither can release or overwrite the lockfile, so verification is unnecessary. The lock established in 0.1 remains valid across the entire probe batch with no additional checks.
+
+This is why parallelization is a pure win for this step: the only tool that would have forced sequential execution (Bash with verification preamble) isn't used here.
+
+### §9.4 Priority ordering of probe results
+
+Post-batch processing short-circuits in this order:
+
+1. **Rename marker (0.2)** — highest priority. A live marker means the vault has in-flight wikilink repair; any other probe result is derived from potentially-stale filenames. Hard-block.
+2. **Active thesis (1.1)** — second priority. If a thesis exists for TICKER, the archive/research probes are informational only (no new thesis can be created). Stop.
+3. **Archive collision (1.2 UNION)** — third priority. Requires user confirmation via the 4-option prompt (§2). Resolvable in-flow.
+4. **Research context (1.3)** — lowest priority. Never blocks. Feeds Step 2.
+
+This ordering matches the "hardness" of each gate: marker is irreversible without repair, active-thesis duplicates are a hard stop, archive collisions need user input, research context is pure information.
+
+### §9.5 Why option (b) re-probes only 1.1
+
+The archive-collision option (b) prompts the user for an alternate company name, then proceeds as if starting fresh with `Theses/TICKER - [alternate-name].md`. Only Step 1.1 (active thesis check) is name-dependent. The rename marker, archive signals, and research grep are all **ticker-dependent** — changing the proposed company name doesn't change whether the marker exists, whether archives for this ticker exist, or what research mentions the ticker.
+
+Re-running only the 1.1 Glob against the alternate name is sufficient. Re-firing the full batch would waste tokens confirming what we already know.
+
+### §9.6 Trade-off: token context vs. wall-clock
+
+Firing seven parallel tool calls consumes slightly more context per message (seven tool-result blocks instead of one). On large vaults where Signal D Grep returns many matches, this could be a noticeable token hit in a single turn. Sequential execution would let earlier short-circuits (e.g., 1.1 active-thesis found) skip the later probes entirely.
+
+The refactor accepts this trade-off because:
+- Short-circuit saves on the rare path (active thesis exists → stop); parallel wins on the common path (no duplicate, proceed to Step 2)
+- Context cost is bounded: seven small read-only tool results, not thousands of lines
+- Wall-clock improvement is consistent across all runs, whereas short-circuit savings are probabilistic
+
+If future profiling shows Signal D Greps are consistently returning >1MB of context on large vaults, revisit: a gated short-circuit (check 1.1 first, fan out only if it returns empty) would recover context at the cost of one extra round-trip.
+
+### §9.7 Cross-skill impact
+
+This refactor touches **only** `/thesis`. The probes themselves are unchanged — same files read, same patterns, same union logic. Cross-skill consumers (`/lint #49` reading thesis manifests, `/rollback` consuming thesis-manifest state, `preflight.md` Procedure 2 defining the rename-marker contract) see identical behavior.
+
+The only external doc touched alongside this refactor is `preflight.md` line 365's reference to "/thesis at Step 1.1.5" (which had drifted from SKILL.md anyway). Updated to reflect the new Step 1.0 parallel-batch location.

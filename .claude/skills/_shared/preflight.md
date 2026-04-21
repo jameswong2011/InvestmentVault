@@ -1,7 +1,7 @@
 ---
 type: shared-contract
 purpose: Canonical pre-flight checks every skill runs before modifying vault state. Covers vault locking (concurrency), rename-marker awareness, and name normalization.
-last_reviewed: 2026-04-19
+last_reviewed: 2026-04-21
 ---
 
 <!--
@@ -362,7 +362,7 @@ No PID check anymore — the token + timeout model is the authoritative signal.
 
 ### 2.1 When this check runs
 
-At Step 0 of every **ticker-scoped** skill. Applies to: `/status`, `/sync TICKER`, `/stress-test`, `/compare` (per-ticker iteration), `/deepen`, `/brief`, `/surface TICKER`, `/thesis` (at Step 1.1.5 before archive-collision check).
+At Step 0 of every **ticker-scoped** skill. Applies to: `/status`, `/sync TICKER`, `/stress-test`, `/compare` (per-ticker iteration), `/deepen`, `/brief`, `/surface TICKER`, `/thesis` (defined at Step 0.2, executed as part of the Step 1.0 parallel probe batch — hard-block priority beats active-thesis and archive-collision results).
 
 **Exceptions** (skill proceeds regardless of marker):
 - `/lint` — read-only; marker already surfaced via `/lint #37`
