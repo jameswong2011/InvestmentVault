@@ -210,12 +210,23 @@ After the rewrite succeeds, use `Edit` to atomically replace the provisional Log
 ```
 Replace `Deepening [Section Name] — in progress` with `Deepened [Section Name]: [key finding] — conviction [impact + reason]`.
 
-**Verify and retry**: After the Edit, re-read the thesis `## Log` section and confirm the provisional text (`Deepening [Section Name] — in progress`) is gone:
+**Verify and retry**: After the Edit, run a single `grep -q` Bash probe to confirm the provisional text (`Deepening [Section Name] — in progress`) is gone. `grep -q` is faster than a Read tool call and returns a clean exit status without injecting the thesis body into context:
 
-1. **Edit succeeded** → provisional text absent → proceed to Phase 6.
-2. **Edit failed** (provisional text still present) → retry with broader context:
+```bash
+# Exit 0 = provisional text STILL present (Edit failed silently)
+# Exit 1 = provisional text absent (Edit succeeded)
+if grep -qF "Deepening [Section Name] — in progress" "Theses/TICKER - Company Name.md"; then
+  echo "EDIT_FAILED_PROVISIONAL_STUCK"
+else
+  echo "EDIT_OK"
+fi
+```
+
+1. **`EDIT_OK`** → provisional text absent → proceed to Phase 6.
+2. **`EDIT_FAILED_PROVISIONAL_STUCK`** → retry with broader context:
    - Include the full `### YYYY-MM-DD` date header AND the provisional line as `old_string` to ensure uniqueness.
-3. **Retry also failed** → append a corrective entry immediately below the stuck provisional entry:
+   - Re-run the same `grep -qF` probe after the retry to confirm.
+3. **Retry also failed** (grep still exits 0) → append a corrective entry immediately below the stuck provisional entry:
    ```
    - ↳ CORRECTION: Deepened [Section Name]: [key finding] — conviction [impact + reason]. Supersedes incomplete entry above.
    ```

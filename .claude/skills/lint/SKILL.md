@@ -263,7 +263,8 @@ Per-check entries below specify only: (1) manifest filename glob, (2) frontmatte
 
 29. **Log-prefix registry alignment** — Verify `.claude/skills/_shared/log-prefixes.md` sync with producers + consumers + vault state (§3).
     - **Precondition**: registry missing → Critical — restore from git or recreate.
-    - Per registry entry, three checks:
+    - **Issue ALL producer + consumer + vault-presence greps as a single parallel tool-call batch** — after parsing the registry, fan out: one Grep per producer SKILL.md (check a), one Grep per consumer SKILL.md (check b), one Grep per prefix across `Theses/**/*.md` (check c). For ~16 prefixes × (1 producer + ~3 consumers + 1 vault) = ~80 Greps landing in one round-trip instead of ~80 sequential rounds. The reverse-check SKILL.md scan can join the same batch (one Grep per skill file for quoted prefix strings). Do NOT iterate per-registry-entry serially.
+    - Per registry entry, three checks (all in the parallel batch above):
       - **(a) Producer alignment**: grep producer's `SKILL.md` for exact prefix (case-sensitive). Not found → Critical: `❌ Producer drift: /skill [X] no longer emits prefix "[P]" per registry.`
       - **(b) Consumer alignment**: grep each consumer's `SKILL.md`. Not found → Critical: `❌ Consumer drift: /skill [Y] no longer searches for prefix "[P]" per registry.`
       - **(c) Vault presence**: grep `Theses/**/*.md` for prefix as line-prefix match (after `- `). If absent AND producer's `emits_when` is common path ("always", "every successful rollback"): Important — `⚠️ Prefix "[P]" absent from Theses/ Logs despite producer /skill [X] claiming to emit. Producer may be silently broken, OR no triggering events yet.`

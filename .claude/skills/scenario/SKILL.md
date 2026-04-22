@@ -54,35 +54,37 @@ Union of two source-of-truth sets:
 - **`propagated_to:` frontmatter**: every listed ticker received Major-impact Log entry from original run.
 - **Body wikilinks**: `[[Theses/TICKER - Name]]` in "Related Notes" or body (Major or Minor exposure).
 
-For each candidate ticker, resolve current location:
+**Three-phase parallel batch pattern** — previously a per-ticker Glob→Read→Grep serial loop; now two parallel batches with one reasoning step between.
 
-```
-Try: Glob Theses/TICKER - *.md → if exists, current_path = live path, location = "theses"
-Else Glob _Archive/TICKER - *.md → if exists, current_path = archive path, location = "archive"
-Else → location = "missing"
+#### R2.1: Resolve current location (single parallel Glob batch)
 
-If location == "missing":
-  Add to R6 report under "Candidate skipped — thesis file not found":
-  "[TICKER] was listed in propagated_to or body wikilinks but its file is not in Theses/ or _Archive/. Was it manually deleted?"
-  Continue — do NOT add to processing list.
+**Issue ALL Globs in ONE parallel tool-call batch** — for every candidate ticker, fire BOTH `Glob Theses/TICKER - *.md` and `Glob _Archive/TICKER - *.md` in the same message. For N candidates this is 2N Globs in one round-trip instead of 2N serial rounds.
 
-If location == "archive":
-  Classify as archive-skipped (§1.1 — Tier 3 protection):
-    Read archived thesis's ## Log to confirm original Scenario entry exists (audit completeness for R6).
-    Add to `archive_skipped_theses`: {ticker, archived_path, archive_date, had_scenario_entry: bool}.
-    Do NOT modify archived file.
-  Continue — archived theses bypass R4 Log append loop entirely.
+After the batch returns, classify each ticker from the Glob results alone (no file reads yet):
+- Theses match → `location = "theses"`, capture live path.
+- Archive match only → `location = "archive"`, capture archive path.
+- Neither → `location = "missing"` → add to R6 report under "Candidate skipped — thesis file not found": `"[TICKER] was listed in propagated_to or body wikilinks but its file is not in Theses/ or _Archive/. Was it manually deleted?"`. Do NOT include in R2.2.
 
-If location == "theses":
-  Read thesis's ## Log section.
-  Search for "Scenario [[Research/...scenario-name...]]" entry → match_scenario_entry: bool
-  Search for "Scenario REVERSED [[Research/...scenario-name...]]" entry → match_reversed_entry: bool
-  
-  Classify (§2.4):
-    - match_scenario_entry == false → exclude (body-wikilinked but never received producer entry; nothing to reverse). Log: `ℹ️ Skipped [TICKER] — no original Scenario Log entry found.`
-    - match_scenario_entry == true AND match_reversed_entry == true → exclude (already reversed — §2.1). Log: `ℹ️ Skipped [TICKER] — Scenario REVERSED entry already exists for this scenario.`
-    - match_scenario_entry == true AND match_reversed_entry == false → add to `affected_theses_live: [ticker]` with original Scenario entry's date.
-```
+Partition remaining candidates into `live_candidates: [ticker, path]` and `archive_candidates: [ticker, path]`.
+
+#### R2.2: Read Log sections (single parallel Read batch)
+
+**Issue ALL Reads in ONE parallel tool-call batch** — every `live_candidates` path AND every `archive_candidates` path Read in the same message. For M remaining candidates this is M Reads in one round-trip instead of M serial rounds.
+
+#### R2.3: Classify from read content (pure reasoning, no tool calls)
+
+For each `archive_candidates` entry: inspect the archived thesis's `## Log` to confirm original Scenario entry exists (audit completeness for R6). Add to `archive_skipped_theses`: `{ticker, archived_path, archive_date, had_scenario_entry: bool}` (§1.1 — Tier 3 protection). Do NOT modify archived file.
+
+For each `live_candidates` entry: inspect the thesis's `## Log` section:
+- Search for `Scenario [[Research/...scenario-name...]]` entry → `match_scenario_entry: bool`
+- Search for `Scenario REVERSED [[Research/...scenario-name...]]` entry → `match_reversed_entry: bool`
+
+Classify (§2.4):
+- `match_scenario_entry == false` → exclude (body-wikilinked but never received producer entry; nothing to reverse). Log: `ℹ️ Skipped [TICKER] — no original Scenario Log entry found.`
+- `match_scenario_entry == true AND match_reversed_entry == true` → exclude (already reversed — §2.1). Log: `ℹ️ Skipped [TICKER] — Scenario REVERSED entry already exists for this scenario.`
+- `match_scenario_entry == true AND match_reversed_entry == false` → add to `affected_theses_live: [ticker]` with original Scenario entry's date.
+
+**Net round-trips**: ≤3 (one Glob batch + one Read batch + reasoning), down from ~3N on a large reversal set (~60+ rounds previously for 20 candidates).
 
 ### R3: Confirm reverse intent (Tier 3 — Mandatory)
 
