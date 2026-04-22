@@ -1,13 +1,13 @@
 ---
 type: vault-graph
 date: 2026-04-21
-last_graph_write: 2026-04-21T03:33:17Z
+last_graph_write: 2026-04-21T13:04:50Z
 graph_mode: last
 theses: 42
 sectors: 13
 macro: 6
-research: 133
-edges: 395
+research: 134
+edges: 397
 orphans: 15
 ---
 
@@ -318,10 +318,11 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **sectors:** [[Sectors/Cybersecurity]]
 - **macro:** —
 - **cross-thesis:** [[Theses/NET - Cloudflare]]
-- **research:** [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]]
+- **research:** [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]], [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]
 - **status:** draft
 - **log_tail:**
   - `2026-04-15 | Initial thesis created from vault research + comprehensive web research. Q2 FY2026: $2.6B rev (+15%)…`
+  - `2026-04-21 | Comparison [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]: product/tech — CRWD wi…`
 
 ### PLTR - Palantir
 - **sectors:** [[Sectors/Defense & Geopolitics]], [[Sectors/Enterprise Software]]
@@ -441,7 +442,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 ### VRT - Vertiv Holdings
 - **sectors:** [[Sectors/Semiconductors]]
 - **macro:** —
-- **cross-thesis:** [[Theses/NVDA - Nvidia]]
+- **cross-thesis:** [[Theses/META - Meta]], [[Theses/NVDA - Nvidia]]
 - **research:** [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure]], [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]], [[Research/2025-07-15 - Data Center Liquid Cooling]]
 - **status:** active
 - **log_tail:**

@@ -184,6 +184,16 @@ NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 TOKEN="$(printf '%08x' $RANDOM$RANDOM)-$(date -u +%s)"
 TIMEOUT_AT=$(date -u -v+10M +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
 
+# Enable bash-default word splitting on zsh (no-op in bash). Required so that
+# `for T in $TICKERS` and `for LF in $ACQUIRED` iterate per-token rather than
+# once over the whole string (zsh's default). Without this, the per-ticker
+# lock loop below creates a single file named literally `.vault-lock.T1 T2`
+# instead of distinct `.vault-lock.T1`, `.vault-lock.T2` — silently defeating
+# concurrency control for `/compare`. Also fixes the §1.3c rollback loop
+# (line ~232) and the `trap "rm -f $ACQUIRED"` (line ~237). Scoped to this
+# subshell only; does not leak to any other skill's Bash blocks.
+setopt SH_WORD_SPLIT 2>/dev/null || true
+
 # Pre-flight: vault-wide lock?
 if [ -f "$VAULT_WIDE_LOCK" ]; then
   EX_TIMEOUT=$(grep '^timeout_at:' "$VAULT_WIDE_LOCK" | sed 's/timeout_at: //')
@@ -340,6 +350,7 @@ echo "RELEASED|$LOCK_FILE"
 
 For multi-ticker (compare):
 ```bash
+setopt SH_WORD_SPLIT 2>/dev/null || true  # zsh: enable bash-default word splitting (see §1.3c comment); no-op in bash
 for LF in $ACQUIRED; do rm -f "$LF"; done
 echo "RELEASED_MULTI|$ACQUIRED"
 ```
