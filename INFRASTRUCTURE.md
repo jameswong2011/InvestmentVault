@@ -199,6 +199,10 @@ Each file contains `<% tp.date.now("YYYY-MM-DD") %>` + `<% tp.file.cursor() %>` 
 
 **Gotcha — recreation**: Templater's `trigger_on_file_creation: true` (enabled for folder templates on `Theses/`, `Research/`, `Macro/`) also fires on ANY new file with `<% %>` syntax. If a `_callouts/` template is deleted and recreated via `Write`, the `<% tp.date.now() %>` gets evaluated and **frozen** at creation time. Workaround: use `Edit` (not `Write`) to modify existing template files; `trigger_on_file_creation` only fires on creation.
 
+**Propagation contract**: callout-addressing writes Log entries that `/sync` Step 2.5 classifies via the skill-origin gate (`_shared/log-prefixes.md`). Non-skill-origin prefix (e.g., `Addressed user callouts:`) → research-driven classification → sector/macro propagate. Skill-origin prefix (e.g., `Deepened:`, `Status change:`, `Stress test:`) → silent sector/macro skip. Symptom: thesis mtime advances but sector note mtime does not after `/sync`. Surfaces in `/sync` Step 8 `Skill-origin classified theses:` report line. The [[User Guide]] §6 "Chat prompt template" bakes the non-skill-origin prefix into the canonical prompt to prevent this.
+
+**Conviction drift integration**: sequential `[!error]` addressing accumulates weakening-headwind Log entries. `/sync` Step 3e drift detection (threshold 3/5 for `conviction: high`, post-stress-test suppression raises to 4/5) fires the drift flag when accumulated callout-addressing crosses threshold. Acts as a bottom-up channel parallel to `/stress-test`. Full windowing rules in `sync/SKILL.md` §3e + `_shared/log-prefixes.md` drift-exclusion list.
+
 **User-facing docs**: [[User Guide#Inline callouts — user feedback markers]] + [[CLAUDE.md]] Workflow Rule 7.
 
 ---

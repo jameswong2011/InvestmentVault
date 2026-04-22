@@ -120,6 +120,35 @@ Each sector note acts as a Map of Content (MOC) and follows this structure:
 - Trading opportunities and portfolio re-allocation strategies in response to newsflow
 - Link to affected thesis notes across sectors
 
+### Inline callouts — LLM behavior
+
+Obsidian callouts (`> [!type]`) serve as user-initiated feedback markers within thesis / sector / macro bodies. Four sanctioned types: `[!question]`, `[!error]`, `[!tip]`, `[!todo]`. Full user-facing spec: [[User Guide#Inline callouts — user feedback markers|User Guide §6]].
+
+**Recognise callout state by header**:
+
+| State | Header pattern | Meaning |
+|---|---|---|
+| **Fresh** | `> [!type] YYYY-MM-DD` alone | Unresolved user objection / question / suggestion |
+| **Addressed** | `> [!type] YYYY-MM-DD → Addressed YYYY-MM-DD` + `**Response:**` block inside | Prior user-LLM exchange; resolved audit trail |
+| **Pinned** | header contains `[[pinned]]` | Intentionally left open; do NOT address |
+
+**LLM policy when callouts are present in a note being read or edited**:
+
+1. **Never author callouts.** Callouts are user-initiated markers. LLM uncertainty or alternative framings go in prose, wikilinks, or `## Outstanding Questions` — not in callouts.
+2. **Fresh callouts are open signals, not ground truth.** The user has flagged the surrounding content as contested. Treat the flagged claim as unresolved.
+3. **Addressed callouts are history.** Read the `**Response:**` block for context on prior user-LLM exchanges; do NOT re-address unless explicitly asked.
+4. **Pinned callouts opt out of addressing.** "Address all fresh callouts" explicitly skips any callout containing `[[pinned]]`.
+5. **Never edit or delete a user's callout unless addressing it.** Even when rewriting sections (via `/deepen`, `/sync`, `/compare`, `/scenario`), preserve fresh and pinned callouts in place.
+
+**Skill-specific callout handling**:
+
+- `/brief`: exclude ALL callout content (fresh, addressed, pinned). Briefs are IC-output; callouts are working state.
+- `/stress-test`: read fresh `[!error]` as already-identified user weakness; incorporate into the test rather than re-identifying.
+- `/deepen`: if the target section contains fresh callouts, acknowledge in the rewrite OR address them as part of the deepen (don't silently overwrite).
+- `/sync`: reads callout-driven Log entries via Rule #7 prefix classification; does not read callout body content directly.
+- `/surface`: unaddressed callouts signal unresolved questions worth flagging in the surface report.
+- `/compare`, `/scenario`: preserve callouts in affected theses verbatim during Log/section updates.
+
 ## Active Context
 - [[_hot.md]] — recent context and open questions, updated by `/sync` and other skills
 
@@ -149,7 +178,7 @@ When compacting, preserve information in this priority order:
 4. Use defuddle for all web content extraction to keep notes clean
 5. After creating research notes, suggest which thesis notes should be updated
 6. **After manually editing a thesis body section** (Bull Case, Risks, Industry Context, Bear Case, Key Non-consensus Insights, etc.), **always append a Log entry describing the change**. Without one, `/sync` may classify the run as skill-origin (because the most-recent Log entry is from a prior skill like `/status` or `/stress-test`) and silently skip propagating the edit to sector and macro notes. The Log entry doesn't need a special prefix — any prefix not in `_shared/log-prefixes.md`'s skill-origin list (e.g., `Manual edit:`, `Reviewed:`, `Refined:`) forces `/sync` to treat the change as research-driven and propagate normally.
-7. **Inline feedback on LLM output uses the callout convention** — drop `> [!question]`, `> [!error]`, `> [!tip]`, or `> [!todo]` callouts inside any section, then ask Claude to "address fresh callouts in [note(s)]". Claude edits sections, marks callouts addressed, and writes the Log entry. Full spec: [[User Guide#Inline callouts — user feedback markers|User Guide §6]].
+7. **Inline feedback on LLM output uses the callout convention** — drop `> [!question]`, `> [!error]`, `> [!tip]`, or `> [!todo]` callouts inside any section, then ask Claude to "address fresh callouts in [note(s)]". Claude edits sections, marks callouts addressed, and appends a Log entry with a **non-skill-origin prefix** (recommended: `Addressed user callouts:`) — skill-origin prefixes like `Deepened:`, `Status change:`, or `Stress test:` cause `/sync` to silently skip sector/macro propagation per Rule 6. Full spec: [[User Guide#Inline callouts — user feedback markers|User Guide §6]].
 
 ## Core Workflow Loop
 The primary vault workflow is an ingest-propagate-graph loop:

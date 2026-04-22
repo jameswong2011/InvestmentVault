@@ -323,6 +323,37 @@ Then:
 /graph                                       # full — thesis structure changed
 ```
 
+### 3.5 Callout-driven review
+
+Reviewing LLM output after a content-generation skill; drop callouts inline and have Claude address them.
+
+Full chain:
+```
+# Generate or refresh content
+/ingest [URL]            # or /stress-test TICKER, /compare A vs B,
+                         # /scenario [event], /surface [scope]
+/sync TICKER             # or /sync for multi-thesis
+/graph last
+
+# Review — open affected thesis/sector/macro, drop callouts
+⌘+Option+1   # [!question] — ask for clarification
+⌘+Option+2   # [!error]    — flag disagreement or error
+⌘+Option+3   # [!tip]      — suggest a change
+⌘+Option+4   # [!todo]     — specify a research action
+
+# Address via chat (prefix requirement mandatory — see §6 Propagation contract)
+Address fresh callouts in [[Theses/TICKER]]. Prefix the Log entry
+"Addressed user callouts:" — do NOT use skill-origin prefixes.
+
+# Propagate
+/sync TICKER
+/graph last
+```
+
+Multi-thesis variant (after `/sync all` or `/surface all`): drop callouts across multiple theses in one session, then *"Address fresh callouts in every thesis I've touched today"* → `/sync` (default) → `/graph last`.
+
+For large rewrites initiated by `[!todo]` callouts, consider switching to `/deepen TICKER [section]` before the rewrite (snapshot safety — see [[#When to use /deepen instead|§6 When to use /deepen instead]]).
+
 ---
 
 ## 4. Decision Guide — "I Want To..."
@@ -338,6 +369,7 @@ Then:
 | **Formalise collected research into a thesis** | [[#New position — from existing research|§3.1 New position — from existing research]] |
 | **Improve a weak thesis** | `/deepen TICKER` → `/sync TICKER` |
 | **Improve a specific section** | `/deepen TICKER [section]` → `/sync TICKER` |
+| **Review & feedback on LLM output** | Drop callouts (⌘+Option+1..4) → "address callouts in [[note]]" → `/sync TICKER` → `/graph last`. See [[#3.5 Callout-driven review\|§3.5]]. |
 | **Challenge a thesis** | `/stress-test TICKER` → (decide) → `/status` → `/sync` |
 | **Compare competitors** | `/compare A vs B` → `/sync` |
 | **Pitch a position** | `/brief TICKER` |
@@ -684,6 +716,28 @@ Filename note: `user-warning.md` inserts a `[!error]` callout. Filename is the T
 | **Addressed** | `> [!question] 2026-04-21 → Addressed 2026-04-22` + `**Response:**` block | Claude handled it |
 | **Pinned** | `> [!question] 2026-04-21 [[pinned]]` | Intentionally left open |
 
+#### Pinning and unpinning
+
+Pinning is a manual text edit — no hotkey, no skill. Add `[[pinned]]` to the callout header to block addressing; delete it to return to fresh state.
+
+**To pin**: add `[[pinned]]` after the date in the header:
+
+```markdown
+> [!question] 2026-04-21 [[pinned]]
+> Revisit only after SEC resolution.
+```
+
+**To unpin**: delete `[[pinned]]` from the header. Callout returns to fresh state; next "address fresh callouts" request will resolve it.
+
+**Don't create a `pinned.md` file.** The wikilink is intentionally unresolved — it's just a marker Claude looks for. Obsidian renders unresolved wikilinks with a lighter style, making pinned callouts visually distinct in reading view.
+
+**Use cases**:
+- Question contingent on an external event (SEC ruling, earnings, regulatory decision)
+- Research you're deliberately deferring to next quarter
+- Philosophical question without a falsifiable answer — standing reminder
+
+**Re-opening an addressed callout**: delete the `→ Addressed YYYY-MM-DD` token from the header AND the `**Response:**` block from the body. The callout returns to fresh state. Add `[[pinned]]` if you want it parked until a specific trigger before re-addressing.
+
 **Fresh → addressed example.** Before:
 
 ```markdown
@@ -717,9 +771,78 @@ The callout persists — visual audit trail co-located with the edit. Delete add
 
 Copy-paste, swap the target:
 
-> Read [[Theses/TICKER - Company Name]] and address every fresh `[!question]`, `[!tip]`, `[!error]`, and `[!todo]` callout. For each: edit the surrounding section to incorporate the feedback, rewrite the callout header to `→ Addressed YYYY-MM-DD` with a one-line response inside the callout, and append a Log entry summarizing what changed.
+> Read [[Theses/TICKER - Company Name]] and address every fresh `[!question]`, `[!error]`, `[!tip]`, and `[!todo]` callout. For each: edit the surrounding section to incorporate the feedback, rewrite the callout header to `→ Addressed YYYY-MM-DD` with a `**Response:**` block inside the callout, then append ONE Log entry prefixed exactly `Addressed user callouts:` summarizing all edits. Do NOT use skill-origin prefixes like `Deepened:`, `Status change:`, or `Stress test:`.
 
 For multi-note scope, replace the wikilink with *"every thesis I've touched since [date]"* or *"every thesis in [[Sectors/X]]"*.
+
+#### Propagation contract
+
+`/sync` classifies every Log entry by its prefix and uses the classification to decide whether to propagate changes to sector and macro notes. Callout-addressing MUST use a non-skill-origin prefix.
+
+| Prefix | Classification | Propagation |
+|---|---|---|
+| `Addressed user callouts:` (recommended) | non-skill-origin | ✅ |
+| `Manual edit:`, `Reviewed:`, `Refined:` | non-skill-origin | ✅ |
+| `Deepened [Section]:` | skill-origin (`/deepen`) | ❌ silently skipped |
+| `Status change:`, `Conviction reaffirmed` | skill-origin (`/status`) | ❌ silently skipped |
+| `Stress test:` | skill-origin (`/stress-test`) | ❌ silently skipped |
+
+**Silent failure mode**: if Claude uses a skill-origin prefix after callout addressing, the thesis is updated but sector/macro stay stale after `/sync` — no error, no warning.
+
+**Detection**: after `/sync`, scan the report for `Skill-origin classified theses:`. If your callout-addressed thesis appears there, add a Log entry with `Manual edit: reinforcing callout addressing` and re-run `/sync TICKER`.
+
+**Prevention**: the chat prompt template above bakes the prefix requirement into the prompt. Don't strip that clause.
+
+#### When to use /deepen instead
+
+**Callout-addressing has no pre-edit snapshot.** If Claude rewrites a section based on `[!todo]` callouts and you regret the result, `/rollback` won't help — only git history (`git checkout HEAD~1 -- Theses/TICKER.md`) can restore.
+
+Boundary:
+
+| Situation | Use |
+|---|---|
+| Rewrite >3 paragraphs in one section | `/deepen TICKER [section]` — creates pre-edit snapshot + manifest |
+| Single bullet fix, sentence edit, data-point add | Callout → address → `/sync TICKER` |
+| "This section is weak, Claude pick how to fix" | `/deepen` (auto-detects weakness) |
+| "Specifically add X, Y, Z" with concrete asks | `[!todo]` callout |
+
+Override: if you want snapshot safety for a large callout-driven rewrite, prefix your chat request with *"Before addressing, copy [[Theses/TICKER]] to `_Archive/Snapshots/TICKER (pre-callouts YYYY-MM-DD-HHMMSS).md`, add `snapshot_trigger: callouts` frontmatter, then address."*
+
+#### Skill combos at a glance
+
+| Skill | Combo pattern |
+|---|---|
+| `/ingest` | After ingest + sync, drop callouts to refine Claude's propagation. Callouts = post-ingest quality gate. |
+| `/stress-test` | `[!error]` where stress-test overreaches. Multiple `[!error]` accumulating → escalate to a fresh `/stress-test`. |
+| `/compare` | Callout the affected thesis (NOT the comparison note); Claude addresses → `/sync` propagates to sector. |
+| `/scenario` | `[!error]` on scenario assumptions you dispute; Claude refines per-thesis scenario impact. |
+| `/surface` | `[!todo]` on leads; Claude does targeted follow-up research. |
+| `/status` | Pattern of `[!error]` addressing + drift flag → natural trigger for conviction change. |
+| `/graph last` | Always run after callout-driven `/sync` — new wikilinks need reconciling. |
+| `/brief`, `/catalyst` | **Don't callout these** — ephemeral / regenerated. Callout the source thesis. |
+| `/rollback` | Not applicable — no snapshot. Use `/deepen` for any rewrite you might regret. |
+
+#### Conviction drift integration
+
+Callouts are a **bottom-up conviction-change channel**. `/sync` Step 3e drift detection reads Log-tail patterns; each callout-driven Log entry counts toward the drift window. Pattern:
+
+- Week 1: 2 `[!error]` on Bull Case → addressed → Log: *"Addressed user callouts: weakened moat claim, added countervailing evidence"*
+- Week 2: 2 `[!error]` on Catalysts → addressed → Log: *"Addressed user callouts: catalyst resolution delayed"*
+- Next `/sync`: ⚠️ **Conviction drift — 4/5 recent updates flagged headwinds**
+
+Natural next step: `/status TICKER conviction high→medium [callout-driven]`. Parallels the `/stress-test` → `/status` top-down path.
+
+#### Anti-patterns
+
+| Pattern | Why it breaks | Fix |
+|---|---|---|
+| Drop callouts, never address | Pile up, clutter thesis | Weekly callout clearance |
+| Address callouts, never `/sync` | Sector/macro stale; drift signal missed | Always `/sync TICKER` after addressing |
+| `[!todo]` for whole-section rewrite | No snapshot, no rollback path | `/deepen TICKER [section]` instead |
+| `[!error]` on every other bullet | Thesis fundamentally broken — callouts won't save it | `/stress-test` → `/deepen` → reconsider conviction |
+| Callout in `_catalyst.md`, `/brief` output, Research notes | Ephemeral / source-record immutable | Callout the thesis they relate to |
+| Callout in archived thesis | `/sync` skips `_Archive/` | `/rollback` first to reopen |
+| Mix callout-addressing with `/status` in same chat | Log entry ordering collisions | Address → `/sync` → then `/status` |
 
 #### Setup (one-time per vault clone)
 
@@ -746,29 +869,14 @@ Co-located visual provenance — you see what you wrote vs what the LLM wrote at
 
 ## 7. Research & Thesis Building
 
-### Build a thesis from scratch
-```
-/thesis TICKER
-```
-Status defaults to `draft` — promote with `/status TICKER status draft→active` when ready. See [[#Archive-collision prompt|§13 — Archive-collision prompt]] if the TICKER was previously archived.
+### Skill shortcuts — see §5 for canonical reference
 
-### Deepen a weak section
-```
-/deepen TICKER [section]
-/sync TICKER
-```
-Omit the section name to auto-detect the weakest. See [[#`/deepen`|§5 /deepen]] for the full section list.
-
-### Competitive comparison
-```
-/compare A vs B
-/compare A vs B vs C
-```
-
-### Generate a 1-page brief
-```
-/brief TICKER
-```
+| Action | Command | Notes |
+|---|---|---|
+| Build a thesis from scratch | `/thesis TICKER` | Status defaults to `draft`; promote with `/status draft→active`. See [[#Archive-collision prompt\|§13]] if ticker was previously archived. |
+| Deepen a weak section | `/deepen TICKER [section]` | Omit section to auto-detect weakest. Full section list: [[#`/deepen`\|§5]]. |
+| Competitive comparison | `/compare A vs B` | `/compare A vs B vs C` for 3+ tickers. |
+| Generate a 1-page brief | `/brief TICKER` | Read-only on the thesis. |
 
 ### Earnings analysis
 Automated:
@@ -854,29 +962,14 @@ Extract with Safari Reader or defuddle, save as `.md` in `_Inbox/`, then `/inges
 
 ## 8. Portfolio-Level Analysis
 
-### Surface insights and opportunities
-```
-/surface                                   # full vault, section-targeted (fast default)
-/surface all                               # full vault, full reads (comprehensive)
-/surface NVDA                              # ticker-scoped
-/surface semiconductors                    # sector-scoped
-```
+### Skill shortcuts — see §5 for canonical reference
 
-### Macro scenario propagation
-```
-/scenario [event description]
-/scenario reverse [[Research/...scenario note]]     # reverse mode: propagate existing scenario
-```
-
-### Adversarial stress test
-```
-/stress-test TICKER
-```
-
-### Catalyst calendar
-```
-/catalyst
-```
+| Action | Command | Notes |
+|---|---|---|
+| Surface insights / opportunities | `/surface` | `/surface all` (comprehensive), `/surface TICKER`, `/surface [sector]`. Forks to subagent. [[#`/surface`\|§5]]. |
+| Macro scenario propagation | `/scenario [event]` | `/scenario reverse [[Research/...]]` to reverse-propagate. [[#`/scenario`\|§5]]. |
+| Adversarial stress test | `/stress-test TICKER` | [[#`/stress-test`\|§5]]. |
+| Catalyst calendar | `/catalyst` | Regenerated each run. [[#`/catalyst`\|§5]]. |
 
 ### Manual portfolio prompts
 Exposure heatmap:
@@ -908,29 +1001,13 @@ Output as a canvas file.
 
 ## 9. Conviction & Status Management
 
-### Change conviction
-```
-/status NVDA conviction medium→low China risk unhedgeable
-/status BESI conviction low→medium photonics design wins accelerating
-/status LITE conviction medium→high CPO attach rate above 60%
-```
-Mandatory confirmation. Creates pre-change snapshot. Updates sector note and `_hot.md`. Checks for trigger conflicts.
+### Skill shortcuts — see [[#`/status`|§5 /status]] for canonical reference
 
-### Change status
-```
-/status TICKER status draft→active [rationale]
-/status TICKER status active→monitoring awaiting Q3 earnings catalyst
-/status TICKER status monitoring→active new catalyst emerged
-/status TICKER status active→closed thesis invalidated by [reason]
-```
-`draft→active` skips snapshot (no analytical content changed). `active→closed` moves the file to `_Archive/`, removes from sector note, cleans up graph.
-
-### Reaffirm after drift
-```
-/status NVDA reaffirm earnings miss was one-time; competitive position unchanged
-/status BESI reaffirm hybrid bonding thesis intact despite cycle weakness
-```
-Lightweight — no frontmatter change, no snapshot. Resets the drift detection window so future `/sync` runs don't keep flagging the same pattern.
+| Operation | Syntax | Notes |
+|---|---|---|
+| Change conviction | `/status TICKER conviction old→new [reason]` | Mandatory confirmation. Pre-change snapshot + sector note + `_hot.md` updated. Trigger conflicts checked. |
+| Change status | `/status TICKER status old→new [reason]` | Transitions: `draft→active`, `active→monitoring`, `monitoring→active`, `active→closed`. `draft→active` skips snapshot + confirmation (fast-path). `active→closed` moves file to `_Archive/`. |
+| Reaffirm after drift | `/status TICKER reaffirm [why drift was noise]` | Lightweight — no frontmatter change, no snapshot. Resets the drift detection window. |
 
 ### Conviction recalibration (manual)
 ```
@@ -944,35 +1021,15 @@ update based on the sector note and recent research.
 
 ## 10. Vault Maintenance
 
-### Health check
-```
-/lint                                      # full vault
-/lint TICKER                               # scoped to one thesis
-```
+### Skill shortcuts — see §5 for canonical reference
 
-### Portfolio pruning
-```
-/prune                                     # see §5 /prune for all flag variants
-```
-
-### Rebuild dependency graph
-```
-/graph                                     # full rebuild
-/graph last                                # incremental (default post-chain)
-/graph 3                                   # catch-up from N days ago
-```
-
-### Snapshot cleanup
-```
-/clean                                     # see §5 /clean for all modes & safety nets
-```
-
-### Rollback to a previous version
-```
-/rollback                                  # list all
-/rollback TICKER                           # list for ticker
-/rollback [exact snapshot name]            # restore specific
-```
+| Action | Command | Notes |
+|---|---|---|
+| Health check | `/lint` | `/lint TICKER` for scoped. Forks to subagent. [[#`/lint`\|§5]]. |
+| Portfolio pruning | `/prune` | Sector/status filter variants — [[#`/prune`\|§5]]. |
+| Rebuild dependency graph | `/graph last` | Default post-chain. `/graph` (full) after `/rename` or disaster recovery. `/graph [N]` for catch-up. [[#`/graph`\|§5]]. |
+| Snapshot cleanup | `/clean` | Defaults 180d with orphan protection. All modes + safety nets: [[#`/clean`\|§5]]. |
+| Rollback | `/rollback TICKER` | Lists snapshots. `/rollback [exact name]` to restore. Cascade-aware for multi-file sync/prune. [[#`/rollback`\|§5]]. |
 
 ### Renaming a thesis
 When a company's name changes (e.g., Square → Block, FB → META).
@@ -1350,39 +1407,7 @@ Why the exemption is safe for this specific transition: CLAUDE.md Tier 3's examp
 Combined with the Step 1/5b/7.9 parallelization refactor, a typical `/status TICKER draft→active` should now complete in ~30–50s (down from ~3min). To opt back into the prompt for a specific run, interrupt after the Step 2F FYI message prints.
 
 ### Parallel-batch refactor across 10 skills (2026-04-21 change)
-Ten skills had their multi-file read phases rewritten from "serial Read loop" to "explicit parallel tool-call batch". For the three skills whose reads drive research-analysis quality (`/catalyst`, `/prune`, `/scenario`), full-file reads are preserved — pre-extraction via Bash+awk was rejected to protect analytical quality. Same outputs, same snapshots, fewer round-trips.
-
-| Skill | Phase/Step | Before | After | Quality-preserving notes |
-|---|---|---|---|---|
-| `/catalyst` | Phase 1 thesis + macro reads | ~42 serial Reads + ~6 serial Reads | Single parallel batch, **full-file Reads** | Thesis bodies read in full so catalysts mentioned outside the Catalysts section (e.g., in Bull Case, Summary) aren't missed |
-| `/catalyst` | Phase 2 earnings-date search | ~42 serial WebSearches | Parallel batches of 10 (~4-5 rounds) | Independent searches — no quality risk |
-| `/stress-test` | Phase 1 context load | 5+ serial Reads + grep | 2 parallel rounds (thesis+grep → sector+research+macro) | All files Read in full; identical content reaches the LLM |
-| `/deepen` | Phase 1 context load | 5+ serial Reads + grep | 2 parallel rounds (thesis+grep → sector+research+macro) | Same as above |
-| `/compare` | Phase 1 per-ticker reads | N serial per-ticker loops | 2 parallel rounds (theses+grep → all downstream reads) | Full-file Reads preserved |
-| `/scenario` | Pass 1 + Pass 2 reads | Serial per-thesis Reads | Single parallel batch of full Reads in Pass 1 (theses + macros + graph); Pass 2 only reads sector notes for High-exposure sectors | Full theses loaded up front so exposure classification sees full signal (transmission channel may surface in Bull Case, Industry Context, Risks) |
-| `/sync all` | Pass 2 deep-reads | Serial per-thesis | Single parallel batch (~15-25 files in one round-trip) | Unchanged content set — existing delta-triage preserved |
-| `/surface` | Default steps 2-4 | Serial sector+macro+research Reads | Single parallel batch (~30-40 Reads) | Pre-existing Phase 1 awk extraction for thesis section-targeting retained (different skill, different context budget — this is a forked subagent) |
-| `/prune` | Pass 1 lightweight scan | Serial per-thesis section Reads | Single parallel batch of **full-file Reads** | Full thesis bodies read so weakness signals outside Related Research/Catalysts/Log aren't filtered out before triage |
-| `/lint` | Full mode check #1/#9/#10/#11/#24/#32 | Naïve "per-note grep Theses/" (~133 serial Greps for #1 alone) | One consolidated Grep + Bash extraction feeds all 6 checks from in-memory data | Regex verified against all 5 canonical wikilink forms in `_shared/wikilink-forms.md` — zero content-completeness risk |
-| `/clean` | Step 2 frontmatter extraction | N serial per-snapshot Reads | 1 Bash+awk block (scales to hundreds of snapshots at no added cost) | Metadata-only operation; no research content involved |
-
-**Design principle (quality-preserving parallelization)**: parallelization is a **free win** only when the content reaching the LLM is identical. Pre-extraction via Bash+awk trades research quality for context savings — adequate for mechanical / triage skills with downstream full-read phases (`/lint`, `/clean`), but NOT adequate for skills whose output directly drives research analysis. For `/catalyst`, `/prune`, `/scenario`, full-file Reads are preserved even though they consume more main-context tokens.
-
-**Phase 3 web-research bounding**: `/stress-test` and `/deepen` Phase 3 were intentionally **NOT** capped. Web-research depth remains up to the model — depth of adversarial/section research drives skill quality more than wall-clock.
-
-**Expected wall-clock improvements** on a 42-thesis vault:
-- `/catalyst`: 8-15 min → 2-4 min (Phase 2 WebSearch batching dominates the speedup; Phase 1 reads theses in full but in parallel)
-- `/lint` full: 90-120s → 30-45s (consolidated Grep pattern)
-- `/stress-test` / `/deepen` Phase 1: 30-40s → 5-10s
-- `/compare` A vs B vs C: 60-90s → 20-30s
-- `/sync all`: 8-12 min → 5-8 min (Pass 2 parallelization)
-- `/prune` Pass 1: ~60s → ~30-40s (parallel Reads; full bodies preserved)
-- `/scenario` Pass 1+2: ~2 min → ~50-60s (all theses loaded once; Pass 2 adds only sector reads)
-- Monthly maintenance chain: 28-43 min → 20-30 min
-
-**Context impact**: reverting `/catalyst`, `/prune`, `/scenario` from Bash+awk extraction to full-file parallel Reads adds ~200K main-context tokens across the monthly chain. Chain endpoint ~ 600-700K main-context tokens (still comfortably under the 1M Opus 4.7 context window).
-
-No user-visible behavior change — same outputs, same snapshots, same lock semantics. If you see a regression (missed sector update, incomplete catalyst calendar, lint check false positive), revert the specific skill's Phase 1 rewrite by restoring the serial-loop language.
+Ten skills (`/catalyst`, `/stress-test`, `/deepen`, `/compare`, `/scenario`, `/sync all`, `/surface`, `/prune`, `/lint`, `/clean`) had their multi-file read phases converted from serial loops to parallel tool-call batches. For `/catalyst`, `/prune`, `/scenario`, full-file Reads are preserved (research-quality gated). Expected ~30–60% wall-clock speedup on monthly maintenance chain; no user-visible behavior change. Per-skill breakdown, context-impact analysis, and regression recovery: [[INFRASTRUCTURE.md]] §12.6.
 
 ### Pending graph work persists across sessions
 If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` consumes it. `/lint` flags stale invalidation files so they're not forgotten.

@@ -277,14 +277,22 @@ snapshot_batch: prune-YYYY-MM-DD-HHMMSS
 
 ### Stage 2: Process ALL Thesis Closures
 
+**Neighbor-grep batch (parallel)**: before iterating closures, issue ALL neighbor greps in ONE parallel tool-call batch — one Grep per closure, all in the same message. Each Grep uses the wikilink patterns below against `Theses/` (excluding the thesis being archived). Alternatively (fewer tool calls), issue a single Grep with alternation across all closure filenames:
+
+```
+Grep pattern='\[\[(Theses/)?(TICKER1 - Name1|TICKER2 - Name2|TICKER3 - Name3)(\.md)?(#[^\]|]+)?(\|[^\]]+)?\]\]' path='Theses/' glob='*.md' output_mode='content' -n
+```
+
+For a 5-closure batch this is 1-5 Greps in one round-trip instead of 5 sequential rounds. Partition the combined results per closure (by which filename alternation branch matched each line) in the reasoning layer.
+
 For each approved closure:
 1. Append final Log entry: `### YYYY-MM-DD\n- CLOSED: [rationale]. Archived.`
 2. Change frontmatter: `status: closed`.
-3. **Record neighbor list for graph invalidation** (before the move — filename still easy to grep). Grep `Theses/` (excluding the thesis being archived) for wikilink patterns:
+3. **Record neighbor list for graph invalidation** (from the parallel batch above — no additional Grep per closure). Wikilink patterns covered by the batch:
    - `[[Theses/TICKER - Name]]`, `[[Theses/TICKER - Name|...]]`, `[[Theses/TICKER - Name#...]]`, `[[Theses/TICKER - Name.md]]`
    - `[[TICKER - Name]]`, `[[TICKER - Name|...]]`, `[[TICKER - Name#...]]`
    
-   Dedup → this closure's neighbor set.
+   Dedup per closure → that closure's neighbor set.
 4. Move file:
    ```bash
    mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Company Name.md"

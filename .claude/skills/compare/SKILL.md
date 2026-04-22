@@ -237,13 +237,22 @@ Cross-sector ALL-OR-NOTHING semantics. Any sector note's edit failure mid-transa
 
 ### 5.5a: Pre-snapshot ALL target sectors FIRST (§4.2)
 
-Before any sector note write, snapshot every target sector. Any snapshot fails → abort immediately (no destructive modifications yet):
+Before any sector note write, snapshot every target sector. Any snapshot fails → abort immediately (no destructive modifications yet).
+
+**Issue all `cp` calls in ONE Bash block using background shell jobs + `wait`** — for a 3+ sector span, this is one Bash round-trip instead of 3+ sequential Bash calls:
 
 ```bash
-# For each (thesis_list, sector_note_path, _) in target_sectors:
-SECTOR_SLUG=$(echo "Sector Name" | tr '[:upper:]' '[:lower:]' | tr ' &/' '--')
-cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-compare YYYY-MM-DD-HHMMSS).md"
+mkdir -p _Archive/Snapshots
+HHMMSS=$(date +%H%M%S)
+# For each (thesis_list, sector_note_path, _) in target_sectors, fire cp in background:
+cp "Sectors/Sector A.md" "_Archive/Snapshots/Sector A (pre-compare YYYY-MM-DD-$HHMMSS).md" &
+cp "Sectors/Sector B.md" "_Archive/Snapshots/Sector B (pre-compare YYYY-MM-DD-$HHMMSS).md" &
+cp "Sectors/Sector C.md" "_Archive/Snapshots/Sector C (pre-compare YYYY-MM-DD-$HHMMSS).md" &
+wait
+# Check exit status of all background jobs before proceeding
 ```
+
+Then issue all frontmatter-addition Edits as a single parallel tool-call batch (one Edit per snapshot, all in the same message).
 
 Add frontmatter to each snapshot with per-sector batch ID (§5.1 — distinct per sector):
 ```yaml

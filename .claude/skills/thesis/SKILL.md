@@ -351,7 +351,18 @@ Flip Step 3.5 manifest frontmatter:
 - `status: in-progress` → `status: completed`
 - Add `completed_date: YYYY-MM-DD`
 
-Verify flip by re-reading frontmatter. Flip fails:
+Verify flip via `grep -q` Bash probe — faster than a Read tool call and does not inject the manifest body into context:
+
+```bash
+# Exit 0 = completed landed AND in-progress gone → flip succeeded
+if grep -q "^status: completed$" "[manifest path]" && ! grep -q "^status: in-progress$" "[manifest path]"; then
+  echo "FLIP_OK"
+else
+  echo "FLIP_FAILED"
+fi
+```
+
+`FLIP_FAILED`:
 ```
 ⚠️ Thesis manifest status flip failed — manifest at [path] remains in-progress despite successful /thesis completion. /lint #49 will flag as Important. Manual fix: edit the manifest frontmatter to status: completed + add completed_date: today. The thesis, sector note, and _hot.md updates all succeeded.
 ```

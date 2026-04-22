@@ -132,7 +132,7 @@ Options:
 ```
 
 4. **Wait for user selection.**
-   - **(a) Cascade**: add all matched snapshots to restore set. For each, read snapshot + current + perform diff. Combined confirmation in Step 3 covers all files. Execute Step 4 + Step 5 in **batched phases**: ALL safety snapshots first, then ALL restorations (§7.1). Step 6 runs once at end.
+   - **(a) Cascade**: add all matched snapshots to restore set. **Batch the diff reads** — issue ALL snapshot Reads AND ALL current-file Reads for every file in the restore set in ONE parallel tool-call batch, then perform all diffs in the reasoning layer. For a 10-file cascade this is 20 Reads in one round-trip instead of 20 serial rounds. Combined confirmation in Step 3 covers all files. Execute Step 4 + Step 5 in **batched phases**: ALL safety snapshots first (Step 4 issues all `cp` commands in one Bash block with `&` + `wait`), then ALL restorations (§7.1). Step 6 runs once at end.
    - **(b) Single**: emit warning then wait for re-confirmation:
      ```
      ⚠️ Proceeding with single-file rollback. [N] other file(s) retain content
@@ -415,7 +415,19 @@ Generate `HHMMSS` once via `date +%H%M%S`. Reuse this `snapshot_batch:` for Step
 
 **If original file does not exist** (archived/closed): skip safety snapshot. Log: `Safety snapshot skipped — original file does not exist at [path].`
 
-**Cascade batch mode**: complete Step 4 for ALL files in restore set BEFORE Step 5 begins (§7.1). If any safety snapshot fails, abort — do NOT proceed to Step 5. Same `snapshot_batch:` across all safety snapshots in batch.
+**Cascade batch mode**: complete Step 4 for ALL files in restore set BEFORE Step 5 begins (§7.1). Issue all `cp` calls in ONE Bash block using background shell jobs + `wait`:
+
+```bash
+mkdir -p _Archive/Snapshots
+HHMMSS=$(date +%H%M%S)
+cp "Theses/TICKER1 - Name.md" "_Archive/Snapshots/TICKER1 - Name (pre-rollback YYYY-MM-DD-$HHMMSS).md" &
+cp "Theses/TICKER2 - Name.md" "_Archive/Snapshots/TICKER2 - Name (pre-rollback YYYY-MM-DD-$HHMMSS).md" &
+cp "Sectors/Foo.md" "_Archive/Snapshots/Foo (pre-rollback YYYY-MM-DD-$HHMMSS).md" &
+wait
+# Check exit status of all background jobs
+```
+
+If any safety snapshot fails, abort — do NOT proceed to Step 5. Same `snapshot_batch:` across all safety snapshots in batch. Then issue all frontmatter-addition Edits in one parallel tool-call batch (one Edit per snapshot, all in the same message).
 
 ## Step 5: Restore
 

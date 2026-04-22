@@ -216,6 +216,7 @@ PANW's platform play aims to own the full value chain — from threat intelligen
 ## Related Research
 
 - [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]] — PANW platformization, AWS native security as complementary not displacive, CrowdStrike/Zscaler competitive risks, NET SASE competitive map
+- [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] — Product/technology-level comparison: single-agent vs five-pillar architecture, agentic AI lead (CRWD) vs cross-domain data breadth (PANW), ~40% product overlap, complements-not-substitutes verdict
 - [[Theses/NET - Cloudflare]] — Competing in SASE ($325-540M est. ARR), 2-5 years behind Zscaler/PANW in enterprise maturity
 - [[Sectors/Cybersecurity]] — Sector Note with competitive landscape, structural spending drivers (AI threats, geopolitics, regulatory mandates), and cross-company dynamics
 
@@ -224,3 +225,6 @@ PANW's platform play aims to own the full value chain — from threat intelligen
 ### 2026-04-15
 - Initial thesis created from vault research + comprehensive web research. Q2 FY2026: $2.6B rev (+15%), NGS ARR $6.3B (+33%), FY2026 guide $11.28-11.31B. CyberArk ($25B) and Chronosphere ($3.35B) acquisitions digested.
 - 5 non-consensus insights: unified telemetry ML flywheel, CyberArk as underpriced keystone, CISO career insurance, observability+security convergence, platformization tax as deliberate investment — conviction medium, promote on CyberArk ML benefits, organic growth reacceleration to 20%+, Prisma Cloud stabilization.
+
+### 2026-04-21
+- Comparison [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]: product/tech — CRWD wins on single-agent architecture + agentic AI (12-24 months lead via Charlotte AI/AIDR); PANW wins on cross-domain data lake (5 pillars vs endpoint-centric), CyberArk PAM depth, Strata/SASE/observability breadth CRWD cannot replicate — conviction unchanged, complements not substitutes, ~40% product overlap.

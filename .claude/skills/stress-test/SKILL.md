@@ -178,12 +178,16 @@ Manifest skeleton was written at Phase 4.0 with `status: in-progress`. Phase 4.6
 
 **Why this exists**: `/stress-test` writes a Log entry to the tested thesis (Tier B — no pre-edit snapshot because the Log is append-only) and a research note. If the user later decides the stress test was invalid (wrong input, stale vault state, experimental run), there's no `/rollback` cascade path to restore the pre-stress-test thesis state. Manual strikethrough of the Log entry is the only remedy. The manifest provides `/rollback` cascade-detection with the Log entry text so the user can choose per-entry annotation (same pattern as `/sync` Tier B sidecar and `/compare` manifest).
 
-**Two-step flip** (Edit calls on the Phase 4.0 skeleton):
+**Consolidated flip** (one parallel tool-call block — mirrors `/status` Step 7.9 pattern):
 
-1. Populate body placeholders with actual values:
+Issue BOTH Edits in ONE message as a single parallel tool-call batch (body populate + frontmatter flip have no ordering dependency — the body section and frontmatter are disjoint regions of the same file):
+
+1. **Body Edit** — populate placeholders with actual values:
    - `## Thesis Log entry appended` — Entry text: the actual Log entry written in Phase 4.2 (including the filled-in vulnerability and ratings).
    - Log append outcome: `succeeded` or `failed (reason)` per Phase 4.2's `log_append_succeeded` tracking.
-2. Flip frontmatter: `status: in-progress` → `status: completed`. Add `completed_date: YYYY-MM-DD`.
+2. **Frontmatter Edit** — flip `status: in-progress` → `status: completed`. Add `completed_date: YYYY-MM-DD`.
+
+Both Edits land in one round-trip instead of two. If either fails, proceed to the post-flip verification below — the verify step catches partial state.
 
 Expected frontmatter post-flip:
 ```yaml

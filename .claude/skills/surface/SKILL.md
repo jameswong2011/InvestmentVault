@@ -142,10 +142,12 @@ done
 
 Use when the user wants maximum analytical depth for a once-off deep review. Reads every thesis file in full — accepts the larger subagent context cost for richer cross-thesis connection detection (particularly valuable for Business Model and Industry Context cross-referencing that section-targeted mode misses).
 
+**Issue ALL reads in steps 1-3 as a single parallel tool-call batch** — one message with every thesis Read (~42), every Sector Read (~13), and every Macro Read (~6) firing in parallel. Do NOT serialize. Typical batch: ~61 Reads landing in one round-trip instead of 61 sequential rounds. Step 4's heavily-cited research reads join the same parallel batch when `_graph.md` adjacency is already loaded; otherwise they land in a second parallel batch after the Step 1-3 batch returns.
+
 1. Read every `Theses/*.md` in full (all 13 thesis sections). No awk extraction.
 2. Read all Sector Notes in full.
 3. Read all Macro Notes in full.
-4. For heavily cited research notes (≥3 theses in `_graph.md` adjacency): read in full. For others: read on-demand when Phase 2 analysis surfaces a specific question about them.
+4. For heavily cited research notes (≥3 theses in `_graph.md` adjacency): read in full — include in the parallel batch with steps 1-3 (one round-trip). For others: read on-demand when Phase 2 analysis surfaces a specific question about them.
 
 **Expected read budget**: ~220K words total (matches pre-R2 behavior). Subagent context consumption: ~290K tokens. Still comfortably under the subagent budget because `context: fork` isolates this from main session context.
 

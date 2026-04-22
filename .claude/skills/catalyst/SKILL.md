@@ -3,6 +3,8 @@ name: catalyst
 description: Extract and maintain a cross-portfolio catalyst calendar from all thesis notes. Use when user says "catalyst", "calendar", "what's coming up", "upcoming events", or "what could move the portfolio".
 model: opus
 effort: max
+context: fork
+agent: general-purpose
 allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * defuddle * cp * mkdir *)
 ---
 
@@ -153,4 +155,6 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — those are
 
 ## Phase 6: Report
 
-Report to user: next 2 weeks of catalysts, any dangerous clusters, and the list of theses with no catalyst (these need attention or pruning). Include one line summarizing the `_hot.md` update: `_hot.md: Active Research Thread refreshed; [K] no-catalyst tickers added to Open Questions.`
+**Runs in forked subagent** (`context: fork`) — main conversation context is shielded from the ~48 full thesis + macro reads (~400K tokens at current vault scale). Only the Phase 6 report text below returns to the user's main session; `_catalyst.md` persists to disk as the authoritative calendar for later reading.
+
+Report to user: next 2 weeks of catalysts, any dangerous clusters, and the list of theses with no catalyst (these need attention or pruning). Include one line summarizing the `_hot.md` update: `_hot.md: Active Research Thread refreshed; [K] no-catalyst tickers added to Open Questions.` Point the user to `[[_catalyst.md]]` for the full calendar tables (Next 2 Weeks, Weeks 3-4, Month 2-3, No Catalyst Identified, Stale Catalysts, Cross-Thesis Events).

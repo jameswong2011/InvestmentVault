@@ -115,12 +115,17 @@ If `.rename_incomplete.TICKER` exists, read its frontmatter and compare `new_nam
 
    Do NOT proceed silently. Wait for user action, then re-invoke.
 
-5. **Survey inbound references** (read-only — for confirmation prompt):
-   - Grep vault (excluding `.git/` and `_Inbox/processed/`) for Step 5 patterns. `_Archive/Snapshots/` IS included (Step 5 rewrites snapshot bodies). Count live-file matches vs snapshot-body matches separately.
-   - Grep `_Archive/Snapshots/` frontmatter for `snapshot_of:` referencing old path. Count. (Separate from body matches — frontmatter handled by Step 8.)
-   - Read `_graph.md`, locate `### TICKER - [old_name]` in Adjacency Index. Note presence.
-   - Resolve sector note via `.claude/skills/_shared/sector-resolution.md`. Matched → scan Active Theses for old wikilink.
-   - Read `_hot.md`, count free-text mentions of `TICKER - [old_name]` (outside wikilink syntax).
+5. **Survey inbound references** (read-only — for confirmation prompt). **Issue the five probes below as a single parallel tool-call batch** — all probes are read-only against vault state that is stable under the ticker lock acquired in Step 0.1. One message, five independent tool invocations, lands in one round-trip instead of five serial rounds:
+
+   | # | Probe | Tool | Purpose |
+   |---|---|---|---|
+   | 1 | Grep vault | `Grep` (multi-path) across `Theses/ Sectors/ Macro/ Research/ _Archive/Snapshots/`, excluding `.git/` and `_Inbox/processed/` | Count Step 5 wikilink pattern matches; separate live-file matches vs snapshot-body matches during result parsing |
+   | 2 | Grep snapshot frontmatter | `Grep` for `snapshot_of:` references to old path in `_Archive/Snapshots/` | Frontmatter count (separate from body matches — handled by Step 8) |
+   | 3 | Read `_graph.md` | `Read` | Locate `### TICKER - [old_name]` in Adjacency Index; note presence |
+   | 4 | Resolve sector note | `Read` candidate sector note (inferred from thesis `sector:` frontmatter read earlier in Step 1) | Scan Active Theses for old wikilink (sector-resolution contract applied in reasoning layer after read) |
+   | 5 | Read `_hot.md` | `Read` | Count free-text mentions of `TICKER - [old_name]` (outside wikilink syntax) |
+
+   After the batch returns, parse results in the reasoning layer to build the survey summary for Step 2's confirmation prompt. Sector-resolution `match_confidence` is determined from the already-read sector candidate content; no additional tool call needed. If the sector-resolution fallback chain requires reading multiple candidate sector files, the LLM may issue a secondary parallel Read batch — still bounded.
 
 ## Step 2: Confirm (Tier 3 — Mandatory)
 

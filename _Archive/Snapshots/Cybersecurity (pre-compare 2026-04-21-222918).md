@@ -1,4 +1,11 @@
 ---
+snapshot_of: "[[Sectors/Cybersecurity]]"
+snapshot_date: 2026-04-21
+snapshot_trigger: compare
+snapshot_batch: compare-cybersecurity-2026-04-21-222918
+---
+
+---
 date: 2026-04-15
 tags: [sector, moc, cybersecurity, ai-security, geopolitics]
 status: active
@@ -33,7 +40,7 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 
 - **Geopolitical escalation is converting cybersecurity from discretionary to compliance spending**: **US-China** — Volt Typhoon and Salt Typhoon pre-positioning in US critical infrastructure (water, power, telecom); federal and critical infrastructure zero trust adoption accelerating. **US-Iran** — Iran-linked groups targeting energy, financial, and defense sector networks; cyber attacks on shipping and energy infrastructure aligned with Hormuz physical conflict. **Russia-Ukraine** — driving European enterprise demand for threat intelligence; EU NIS2 directly linked to Russian cyber lessons. **Supply chain** — post-SolarWinds, Change Healthcare, Okta breach — multi-domain attacks requiring cross-domain correlation only platforms provide. *(Source: web research Apr 2026)*
 
-- **Best-of-breed vendors remain structurally advantaged in specific domains despite platform pressure — Wiz, Zscaler, and CrowdStrike each have genuine architectural moats**: **Wiz** (CNAPP, 94% growth, agentless deployment in minutes, 20.2% mindshare) is eating Prisma Cloud's lunch in cloud security. **Zscaler** (SSE/SASE pioneer, purpose-built zero trust proxy, 550+ enterprise ZT customers, 4.7 Gartner rating) maintains first-mover advantage in network security. **CrowdStrike** (18% endpoint market share, $5.25B ARR +24% YoY, single-agent architecture, Falcon Threat Graph, post-July 2024 outage resilience proving customer lock-in despite 8.5M system crashes, **12-24 month agentic AI lead via Charlotte AI + AIDR vs PANW's primarily-assistant Precision AI**) dominates endpoint detection and is narrowing the gap to PANW in XDR/SIEM contests despite categorically narrower cross-domain telemetry. **SentinelOne** (autonomous AI endpoint, Purple AI, Lenovo OEM partnership creating unmatched distribution channel) and **Netskope** (data-centric CASB/DLP) hold niches where platform bundles haven't achieved feature parity. The platform vs. best-of-breed debate hinges on whether data breadth (PANW) or data depth + architectural purity (CRWD/ZS/Wiz) wins — a question with no universal answer; empirically most Fortune 500 CISOs run both CRWD and PANW today, suggesting complements-not-substitutes is the practical outcome for large enterprise. *(Source: [[Theses/PANW - Palo Alto Networks]], [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]], web research Apr 2026)*
+- **Best-of-breed vendors remain structurally advantaged in specific domains despite platform pressure — Wiz, Zscaler, and CrowdStrike each have genuine architectural moats**: **Wiz** (CNAPP, 94% growth, agentless deployment in minutes, 20.2% mindshare) is eating Prisma Cloud's lunch in cloud security. **Zscaler** (SSE/SASE pioneer, purpose-built zero trust proxy, 550+ enterprise ZT customers, 4.7 Gartner rating) maintains first-mover advantage in network security. **CrowdStrike** (18% endpoint market share, single-agent architecture, Falcon Threat Graph, post-July 2024 outage resilience proving customer lock-in despite 8.5M system crashes) dominates endpoint detection. **SentinelOne** (autonomous AI endpoint, Purple AI, Lenovo OEM partnership creating unmatched distribution channel) and **Netskope** (data-centric CASB/DLP) hold niches where platform bundles haven't achieved feature parity. The platform vs. best-of-breed debate hinges on whether data breadth (PANW) or data depth + architectural purity (CRWD/ZS/Wiz) wins — a question with no universal answer. *(Source: [[Theses/PANW - Palo Alto Networks]], web research Apr 2026)*
 
 - **Microsoft is the largest security vendor at $37B and the elephant every pure-play vendor fears**: Microsoft's ability to bundle Defender, Sentinel, Entra, and Purview into E3/E5 licenses at zero marginal cost creates pricing pressure that pure-play vendors cannot match. The mid-market (500-5,000 employees) is most vulnerable — "good enough" security bundled with productivity software is an asymmetric competitive advantage. CISOs at mid-market companies increasingly cannot justify standalone security vendors when Microsoft security comes "free" with their existing subscription. This constrains the TAM for pure-play cybersecurity vendors at the lower end while PANW and CrowdStrike fight for enterprise share at the upper end. *(Source: web research Apr 2026)*
 
@@ -56,7 +63,7 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 | Company | Ticker | Market Cap | Key Strength | Revenue | Growth |
 |---------|--------|-----------|-------------|---------|--------|
 | **Palo Alto Networks** | PANW | ~$116B | Broadest portfolio (5 pillars), XSIAM data lake | ~$10.5B TTM | 15% organic, 22-23% total |
-| **CrowdStrike** | CRWD | ~$95-105B | Single-agent, endpoint dominance, Threat Graph, agentic AI lead (Charlotte/AIDR) | ~$4.8B ($5.25B ARR) | ~23% rev / +24% ARR |
+| **CrowdStrike** | CRWD | ~$80B+ | Single-agent, endpoint dominance, Threat Graph | ~$4.8B | ~32% |
 | **Microsoft Security** | MSFT | (segment) | E3/E5 bundling, zero marginal cost | $37B | ~20% |
 | **Cisco Security** | CSCO | (segment) | Splunk acquisition, networking integration | ~$5.5B | ~8% |
 | **Fortinet** | FTNT | ~$60B+ | Price-performance NGFW, large installed base | ~$6B | ~12% |
@@ -78,7 +85,6 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 
 ## Related Research
 - [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]] — PANW platformization, AWS native security as complementary not displacive, CrowdStrike/Zscaler competitive risks, NET SASE competitive map
-- [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] — Product/technology-level comparison: CRWD single-agent + agentic AI lead vs PANW five-pillar cross-domain data lake; ~40% product overlap; complements-not-substitutes verdict for portfolio construction
 
 ## Cross-Sector Links
 - [[Sectors/Enterprise Software]] — PANW previously tracked in Enterprise Software watchlist; cybersecurity platformization shares dynamics with enterprise software consolidation (NOW, PLTR)
@@ -88,5 +94,4 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 
 ## Log
 
-### 2026-04-21
-- Comparison [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]: CRWD vs PANW — agentic AI lead (CRWD) vs cross-domain data breadth (PANW); refined best-of-breed bullet to flag CRWD's Charlotte AI/AIDR lead and complements-not-substitutes empirical finding; updated Platform Vendors table with CRWD $5.25B ARR +24%.
+_pending — populated by /sync, /compare, etc. as the sector note evolves._
