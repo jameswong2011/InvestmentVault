@@ -131,12 +131,19 @@ Grep `Research/` for ticker string. Surfaces relevant existing research for new 
 - Search `/Research` and `/Macro` for notes mentioning this ticker or topic
 - Read related thesis notes for competitive dynamics and cross-thesis connections
 
+**Parallelization with Step 3**: Step 2 vault reads and Step 3 web searches have no ordering dependency — the LLM can issue both Step 2's Reads/Greps and Step 3's first WebSearch batch in a **single parallel tool-call message**. Follow-up web searches that depend on first-round results (e.g., "search for [Competitor X] after sector note reveals they exist") land in subsequent batches. Do NOT serialize Step 2 and Step 3 end-to-end.
+
 ## Step 3: Web Research
 
+Research topics:
 - Recent earnings, analyst consensus, key financials
 - Competitive dynamics, market share data, industry trends
 - Bear cases and risks — actively look for reasons NOT to invest
 - Sell-side consensus — identify where a non-consensus view could exist
+
+**Parallel-batch pattern (mirrors `/catalyst` Phase 2)**: issue all independent WebSearch invocations in parallel batches — **one message containing up to 25 WebSearch / WebFetch calls**, then the next message with the next batch, and so on. For a typical new-position build this is 1-2 rounds of ~5-15s each instead of ~15-20 serial rounds. Never serialize web calls that have no data dependency on each other (e.g., "earnings search" + "analyst consensus search" + "bear case search" + "sell-side coverage search" are all independent — batch them).
+
+Follow-up searches that DO depend on first-round results (e.g., after the initial batch surfaces a specific competitor, then fetching that competitor's latest earnings) fire in a subsequent parallel batch. Cap per-batch at 25 to stay within safe tool-call limits.
 
 ## Step 3.5: Write thesis transaction manifest skeleton (H1 — §4)
 

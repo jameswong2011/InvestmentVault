@@ -1409,6 +1409,17 @@ Combined with the Step 1/5b/7.9 parallelization refactor, a typical `/status TIC
 ### Parallel-batch refactor across 10 skills (2026-04-21 change)
 Ten skills (`/catalyst`, `/stress-test`, `/deepen`, `/compare`, `/scenario`, `/sync all`, `/surface`, `/prune`, `/lint`, `/clean`) had their multi-file read phases converted from serial loops to parallel tool-call batches. For `/catalyst`, `/prune`, `/scenario`, full-file Reads are preserved (research-quality gated). Expected ~30–60% wall-clock speedup on monthly maintenance chain; no user-visible behavior change. Per-skill breakdown, context-impact analysis, and regression recovery: [[INFRASTRUCTURE.md]] §12.6.
 
+### WebSearch batching extension (2026-04-22 change)
+Two web-research speed wins, both mirror the `/catalyst` Phase 2 batched-WebSearch pattern:
+
+1. **`/catalyst` WebSearch batch cap raised 10 → 25.** Same parallel pattern, larger per-batch fan-out. For ~42 tickers, Phase 2 earnings enrichment drops from ~4-5 rounds of ~5s each to ~2 rounds. Expected ~40-60% wall-clock reduction on the Phase 2 step — previously the single biggest cost in the monthly maintenance chain.
+
+2. **`/thesis` Step 3 Web Research now explicitly batches WebSearch/WebFetch calls** (up to 25 per message, independent searches only; follow-ups with data dependency fire in subsequent batches). Step 2 vault Reads and Step 3 web searches are also now explicitly parallel — no ordering dependency. Expected ~30-50% wall-clock reduction on `/thesis TICKER` runs, which were previously dominated by serial web-research round-trips.
+
+3. **`/stress-test` Phase 2.5 (new, optional) documents the batching pattern** for any opportunistic external-evidence lookups. Does NOT mandate web research — `/stress-test` remains vault-content-driven by default — but codifies the batching rule in case the run requires current-market context (fresh analyst downgrades, short-interest, pending litigation).
+
+No behavior changes beyond parallelization — same prompts, same research quality, fewer serial round-trips. Regression recovery: revert to serial if a batch-too-large error surfaces (unlikely at cap=25; the tool-runtime ceiling is higher).
+
 ### Pending graph work persists across sessions
 If a chain ends without running `/graph`, `.graph_invalidations` persists across sessions until the next `/graph last` or `/graph` consumes it. `/lint` flags stale invalidation files so they're not forgotten.
 

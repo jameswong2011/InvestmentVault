@@ -93,7 +93,7 @@ Per thesis:
 - Where catalyst dates are vague ("Q2 2026", "H2"), convert to approximate calendar dates
 - Identify catalysts that affect MULTIPLE theses (e.g., an earnings report from a major customer that affects several supplier theses)
 - Flag catalysts that are stale — events that appear to have already passed based on their dates vs today's date
-- **Web search for upcoming earnings dates for all thesis tickers, issued in parallel batches.** Send one message containing up to 10 WebSearch invocations, then the next message with the next 10, and so on. For ~42 tickers this is ~4-5 rounds of ~5s each instead of ~42 serial rounds. Never serialize WebSearches that have no data dependency on each other. Do NOT cap the total number of searches — every ticker with `status: active | monitoring` gets a search.
+- **Web search for upcoming earnings dates for all thesis tickers, issued in parallel batches.** Send one message containing up to 25 WebSearch invocations, then the next message with the next 25, and so on. For ~42 tickers this is ~2 rounds of ~5s each instead of ~42 serial rounds. Never serialize WebSearches that have no data dependency on each other. Do NOT cap the total number of searches — every ticker with `status: active | monitoring` gets a search.
 
 ## Phase 3: Analyse Catalyst Clusters
 - **Concentration risk**: Are there weeks where multiple catalysts cluster? This creates portfolio-level volatility

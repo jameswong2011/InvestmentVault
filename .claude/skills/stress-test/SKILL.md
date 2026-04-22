@@ -54,6 +54,10 @@ Look specifically for:
 - Are Outstanding Questions still unanswered? If yes, how can conviction be high?
 - Are existing Conviction Triggers well-defined? Do they cover the actual failure modes, or are the real risks outside the trigger framework? A thesis with vague triggers ("if competition increases") has a hidden vulnerability — it can degrade without ever formally triggering a reassessment.
 
+## Phase 2.5: Optional External Evidence (parallel batch)
+
+The short-seller case often benefits from current-market context the vault doesn't have: recent analyst downgrades, short-interest data, pending litigation, fresh bear-case articles. **If any WebSearch / WebFetch calls are issued during the stress test, batch them in parallel** — one message containing up to 25 invocations, mirroring `/catalyst` Phase 2 and `/thesis` Step 3. Do NOT serialize independent external lookups. If the vault already contains sufficient adversarial evidence, skip this phase entirely; `/stress-test` is spec'd to work off vault content alone.
+
 ## Phase 3: Build the Short Case
 Structure as a short seller would pitch to an investment committee:
 
