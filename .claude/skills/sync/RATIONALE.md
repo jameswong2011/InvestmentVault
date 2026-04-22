@@ -79,6 +79,22 @@ Sector notes are required by template to have `## Log` sections (per /lint secto
 
 The macro mtime fallback can mistakenly skip when the user manually edited the macro (advancing mtime) AND the source wikilink happens to already be present (added by a prior /sync). Trade-off: mtime is a coarse signal for Log-less macros, but the alternative (no idempotency check at all) leaves macros vulnerable to compounded analytical-text edits across same-day double-syncs. To force re-propagation on a Log-less macro that was incorrectly skipped, run `/sync all` or manually edit the macro to remove the source wikilink before re-running /sync.
 
+### §1.11 Why Step 1.2.5 exists — the 2026-04-22 CRWD sector-propagation failure
+
+**Symptom**: `/sync` at batch `sync-2026-04-22-144403` ran immediately after `/thesis crwd` + `/status CRWD active`. Changed-file set included the CRWD-vs-PANW comparison research note (`sector: Cybersecurity` in frontmatter, `[[Sectors/Cybersecurity]]` in body). Run reported "no-op propagation." Sector note was NOT updated despite the CRWD thesis carrying three sector-level insights (architectural-purity-cannot-be-acquired, Falcon Flex consumption-pricing vs PANW platformization-tax, mega-deal vs tuck-in integration-risk asymmetry) absent from the sector note's Key Dynamics.
+
+**Root cause — chained failure of three factors**:
+
+1. **Skill content was truncated in the initial context.** The system-reminder delivered Steps 0 through 2.9 of SKILL.md inline and then marked `[... skill content truncated for compaction ...]`. Step 4.-1 (the sector skill-origin gate) was NOT visible during execution. The LLM filled in Step 4 behavior from memory and general reasoning rather than explicit rules. This is the proximate cause. CLAUDE.md Operational Rule #11 (added 2026-04-22) requires Reading the full SKILL.md before any write phase when truncation is detected.
+
+2. **Step 2's source-dedup clause was over-applied.** Original wording: "analyse the research notes as primary sources. The thesis's Log entries citing those research notes contain no additional propagatable information." The LLM extrapolated "no additional propagatable information" from analysis-scope (don't re-read the thesis Log) to propagation-scope (don't fire Step 4/5). The new wording scopes the rule explicitly to analysis and adds the "Common mis-application" warning citing this failure.
+
+3. **Sector targets were resolved only lazily inside Step 4.-1's gate.** Steps 1.2/1.3/1.4 have explicit thesis-target resolution, but research-note → sector targets were computed implicitly as part of gate condition (ii). Once the LLM concluded "thesis targets are all idempotent (Step 1.7)", the mental model was "nothing upstream to propagate → skip Step 4 entirely" — Step 4.-1's gate was never reached. Step 1.2.5 makes these targets first-class at Step 1 time, so the gate's inputs are pre-computed and the gate cannot be bypassed by cognitive shortcut.
+
+**Why the fix is three layers**: any one of the three factors alone could have caught the bug (full skill visible → Step 4.-1 seen; tighter source-dedup wording → no extrapolation; explicit Step 1.2.5 → target map exists regardless). Defense-in-depth reduces probability-weighted recurrence to negligible.
+
+**Verification**: a `/sync` run after these patches on a research note with `sector:` frontmatter but fully-idempotent thesis targets must produce a non-empty `sector_targets_per_research_note` entry at Step 1.2.5, fail Step 4.-1 condition (ii), and proceed to Step 4.0. The sector note should either pick up analytical deltas or emit the Step 4.0 per-source idempotency skip. Silent no-op is the failure signature.
+
 ---
 
 ## §2 Propagation-target resolution

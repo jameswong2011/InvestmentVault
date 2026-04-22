@@ -1,13 +1,13 @@
 ---
 type: vault-graph
-date: 2026-04-21
-last_graph_write: 2026-04-21T13:04:50Z
+date: 2026-04-22
+last_graph_write: 2026-04-22T05:05:11Z
 graph_mode: last
-theses: 42
+theses: 43
 sectors: 13
 macro: 6
 research: 134
-edges: 397
+edges: 404
 orphans: 15
 ---
 
@@ -99,6 +99,15 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 - **research:** [[Research/2025-07-10 - CRCL - Circle USDC vs BRICS mBridge Geopolitical Analysis]], [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]], [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]], [[Research/2025-12-26 - ETH - Ethereum Investment Dynamics Deep Dive]], [[Research/2025-12-26 - Ethereum Stablecoin Adoption]], [[Research/2026-04-15 - BTC-CRYPTO - Comprehensive Digital Assets Update April 2026 - deep-dive]]
 - **status:** active
 - **log_tail:** —
+
+### CRWD - CrowdStrike Holdings
+- **sectors:** [[Sectors/Cybersecurity]]
+- **macro:** —
+- **cross-thesis:** [[Theses/NET - Cloudflare]], [[Theses/PANW - Palo Alto Networks]]
+- **research:** [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]
+- **status:** active
+- **log_tail:**
+  - `2026-04-22 | Initial thesis created. Conviction: medium — supported by [[Research/2026-04-21 - CRWD vs PANW - C…`
 
 ### CSGP - CoStar Group
 - **sectors:** [[Sectors/Enterprise Software]]
@@ -474,7 +483,7 @@ Each thesis lists its sector notes, macro notes, research notes, and cross-thesi
 | [[Sectors/Agriculture & Industrial Equipment]] | [[Theses/DE - John Deere]], [[Theses/IOT - Samsara]] |
 | [[Sectors/Consumer & Digital]] | [[Theses/APP - AppLovin]], [[Theses/DUOL - Duolingo]], [[Theses/EDEL - Edelweiss Financial Group]], [[Theses/GAW - Games Workshop]], [[Theses/KAMBI - Kambi Group]], [[Theses/META - Meta]], [[Theses/MTN - Vail Resorts]], [[Theses/NFLX - Netflix]], [[Theses/OPEN - Opendoor]], [[Theses/RELIANCE - Reliance Industries]], [[Theses/SPOT - Spotify]], [[Theses/TTWO - Take-Two Interactive]], [[Theses/UBER - Uber]] |
 | [[Sectors/Crypto & Digital Assets]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]], [[Theses/CRCL - Circle Internet Group]] |
-| [[Sectors/Cybersecurity]] | [[Theses/NET - Cloudflare]], [[Theses/PANW - Palo Alto Networks]] |
+| [[Sectors/Cybersecurity]] | [[Theses/CRWD - CrowdStrike Holdings]], [[Theses/NET - Cloudflare]], [[Theses/PANW - Palo Alto Networks]] |
 | [[Sectors/Defense & Geopolitics]] | [[Theses/PLTR - Palantir]], [[Theses/STNG - Scorpio Tankers]] |
 | [[Sectors/Energy & Commodities]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]], [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/RELIANCE - Reliance Industries]], [[Theses/STNG - Scorpio Tankers]] |
 | [[Sectors/Enterprise Software]] | [[Theses/CSGP - CoStar Group]], [[Theses/IOT - Samsara]], [[Theses/NET - Cloudflare]], [[Theses/NOW - ServiceNow]], [[Theses/PANW - Palo Alto Networks]], [[Theses/PLTR - Palantir]], [[Theses/PSTG - Pure Storage]], [[Theses/SHOP - Shopify]], [[Theses/WTC - WiseTech Global]] |

@@ -77,6 +77,29 @@ For each changed research note, the target set is the UNION of every thesis plau
 
 When graph returned non-empty, trust the graph — see §2.2 for why. `/lint #23` catches residual reverse-index drift.
 
+### 1.2.5: Resolve SECTOR + MACRO propagation targets per changed research note
+
+Step 1.2 resolves research note → thesis targets. This step does the same for sector and macro targets — explicitly at Step 1 time, not lazily inside Step 4.-1 / Step 5.-1 gates. Symmetric with 1.2; prevents the cognitive shortcut where thesis-idempotent research notes cause Step 4 / Step 5 to be erroneously skipped via mental over-reach of the Step 2 source-dedup clause (see §1.11 for the 2026-04-22 failure case that motivated this step).
+
+For each changed research note, compute two maps:
+
+**`sector_targets_per_research_note[note]`**:
+- (a) `sector:` frontmatter → resolve via `.claude/skills/_shared/sector-resolution.md` to a `Sectors/*.md` path.
+- (b) Body wikilinks matching any of the 5 canonical forms from `_shared/wikilink-forms.md` against `[[Sectors/...]]` / `[[Sectors/name]]` / `[[Sectors/name.md]]` — resolved via sector-resolution contract.
+
+Union (a) ∪ (b); dedup on resolved path.
+
+**`macro_targets_per_research_note[note]`**:
+- (a) Body wikilinks matching `[[Macro/...]]` forms (5 canonical forms).
+- (b) `source_type: scenario` frontmatter OR `tags:` containing `macro` → body-scan for any `Macro/` references (treat as macro-focused note even without explicit body wikilink).
+- (c) Optional `macro:` frontmatter field if the note convention uses it.
+
+Union across (a)/(b)/(c); dedup on resolved path.
+
+These maps are **inputs to Step 4.-1 condition (ii) and Step 5.-1 condition (ii)** as direct lookups — not re-derived at gate time. Empty set is a valid value (research note has no sector/macro relevance); the gate still fires its skip path correctly in that case.
+
+**Authoritative-guard boundary**: Step 4.-1 / 5.-1 remain the authoritative skip gates. Step 1.2.5 only makes the gate's inputs explicit and first-class. Do not duplicate the gate logic here.
+
 ### 1.3: Resolve propagation targets per changed macro note (batched — T7.6)
 
 **Reverse-index resolution (primary)**: Use `_graph.md`'s `Reverse Index: Macro → Theses` table for each changed macro.
@@ -239,7 +262,11 @@ This typically reduces deep reads from ~58 files to 15-25 AND collapses those 15
 - **Competitive dynamics shifts**: does this change relative positioning within a sector?
 - **Macro linkages**: does micro-level data have macro implications, or vice versa?
 
-**Source deduplication**: if a thesis appears as a changed source AND research notes referencing that thesis are also in the changed set, analyse the research notes as primary sources. The thesis's Log entries citing those research notes contain no additional propagatable information.
+**Source deduplication (ANALYSIS-SCOPE ONLY)**: if a thesis appears as a changed source AND research notes referencing that thesis are also in the changed set, treat the research notes as primary sources for Step 2 reading — skip the thesis's Log entries citing those research notes during analysis (they duplicate the research note's content).
+
+**This rule does NOT suppress Step 4 sector or Step 5 macro propagation.** Sector and macro propagation are gated separately at §4.-1 and §5.-1 against the research note's own `sector_targets_per_research_note` / `macro_targets_per_research_note` sets resolved at Step 1.2.5. Source-dedup only changes HOW YOU READ sources during analysis; it does not change WHAT YOU ACT ON downstream.
+
+**Common mis-application** (from 2026-04-22 failure, §1.11): concluding "all thesis targets are idempotent per Step 1.7 → nothing to propagate" and skipping Step 4/5 entirely. This is wrong. Thesis idempotency (Step 1.7) and sector/macro propagation (Step 4/5) are independent propagation paths. A research note that has already been fully propagated to its thesis targets may still have pending sector or macro propagation — always evaluate Step 4.-1 and Step 5.-1 against the research note's own target maps from Step 1.2.5, regardless of thesis-target idempotency.
 
 Propagation quality depends on this step's depth.
 
@@ -491,9 +518,15 @@ For each thesis processed in Step 3:
 
 Consult `skill_origin_theses` from Step 2.5. A sector's "affected thesis set" is every changed thesis whose `sector:` frontmatter resolves to this sector (via `_graph.md` reverse index OR `_shared/sector-resolution.md` fallback).
 
-**Gate rule**: if EVERY thesis in the affected set is in `skill_origin_theses` AND no research note in the changed-file set resolves to this sector (via `sector:` frontmatter OR body `[[Sectors/...]]` wikilinks), skip Step 4 entirely. Log: `ℹ️ Skipped sector update [Sector Name] — all [N] affected thesis changes are skill-origin; no co-changed research note drives a sector-level delta.`
+**Gate rule**: skip Step 4 entirely for this sector ONLY IF BOTH conditions hold:
+- **(i)** EVERY thesis in the affected set is in `skill_origin_theses`, AND
+- **(ii)** this sector's path does NOT appear in any entry of `sector_targets_per_research_note` (computed at Step 1.2.5).
 
-**Mixed set**: at least one research-driven thesis → proceed per §4.2.
+If either condition fails, proceed to Step 4.0. Log (skip path): `ℹ️ Skipped sector update [Sector Name] — all [N] affected thesis changes are skill-origin AND no co-changed research note resolves to this sector per Step 1.2.5.`
+
+**Condition (ii) is NOT satisfied by thesis-target idempotency** (Step 1.7 Case 2a/2b/2c). Idempotent thesis propagation and empty sector target set are independent facts. The 2026-04-22 failure case collapsed them incorrectly — see §1.11.
+
+**Mixed set**: at least one research-driven thesis OR research note resolves to sector → proceed per §4.2.
 
 ### 4.0: Per-source idempotency check
 
@@ -556,7 +589,13 @@ For each sector touched:
 
 Consult `skill_origin_theses`. A macro's "affected thesis set" is every changed thesis that wikilinks this macro (via `_graph.md` Macro reverse index OR Step 1.3 body-grep fallback).
 
-**Gate rule**: if EVERY thesis in the affected set is in `skill_origin_theses` AND no research note in the changed-file set resolves to this macro (via body `[[Macro/...]]` wikilinks or `source_type: scenario` / macro-focused frontmatter), skip Step 5 entirely. Log: `ℹ️ Skipped macro update [Macro Note] — all [N] affected thesis changes are skill-origin; no co-changed research note drives a macro-level delta.`
+**Gate rule**: skip Step 5 entirely for this macro ONLY IF BOTH conditions hold:
+- **(i)** EVERY thesis in the affected set is in `skill_origin_theses`, AND
+- **(ii)** this macro's path does NOT appear in any entry of `macro_targets_per_research_note` (computed at Step 1.2.5).
+
+If either condition fails, proceed to Step 5.0. Log (skip path): `ℹ️ Skipped macro update [Macro Note] — all [N] affected thesis changes are skill-origin AND no co-changed research note resolves to this macro per Step 1.2.5.`
+
+**Condition (ii) is NOT satisfied by thesis-target idempotency**. See §1.11 for the 2026-04-22 failure case that motivated the explicit Step 1.2.5 / lookup-based gate separation.
 
 **Mixed set**: proceed normally.
 
