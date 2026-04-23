@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, ttwo, consumer-digital, gaming]
 status: active
 conviction: medium
-sector: Consumer & Digital
+sector: Video Game Publishing
 ticker: TTWO
 source: Multi-source synthesis (Claude conversation export, RockstarINTEL, web research, earnings transcripts)
 ---
@@ -152,7 +152,7 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 
 ## Related Research
 
-- [[Sectors/Consumer & Digital]]
+- [[Sectors/Video Game Publishing]]
 - [[Macro/Iran War Macroeconomic Scenario]] — Consumer discretionary headwinds from geopolitical conflict
 
 ## Log
@@ -165,3 +165,7 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 
 ### 2026-04-11
 - [Claude conversation export]: Initial thesis distilled — GTA VI binary outcome, UGC platform transition, online monetization risk.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Video Game Publishing (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] pointer in Related Research with [[Sectors/Video Game Publishing]] after sector note populated.

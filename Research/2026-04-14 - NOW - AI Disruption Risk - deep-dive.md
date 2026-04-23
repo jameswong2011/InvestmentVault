@@ -111,3 +111,6 @@ Also relevant to:
 Full analysis sourced from Claude deep research artifact. Key quote from CEO Bill McDermott: *"While AI thinks, workflow acts, and that's our unique competitive advantage."*
 
 ServiceNow trades at 13.9x EV/Sales vs UiPath at 4.9x — market values platform depth over point-solution automation.
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Competitive dynamics (NOW disruption-probability framework: 10–15% 3yr / 25–30% 5yr / 40–50% 10yr) and §Investor heuristics (multi-agent reliability statistics — 30–35% multi-step completion, 45% AI-code vulnerability rate — bullish for governance-tier incumbents).

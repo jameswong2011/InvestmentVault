@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Hybrid Bonding and BESI Revenue Impact
@@ -67,3 +68,7 @@ System ASPs run approximately **$3 million** for current 100nm-accuracy platform
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (advanced packaging & assembly — BESI vs ASMPT/SUSS/Hanmi/Samsung Semes), Acquisitions and new entrants (AMAT 9% BESI stake; LRCX/AMAT dual takeover interest), and Investor heuristics (hybrid bonding market model, revenue inflection, JEDEC binary).
+- [[Sectors/Semiconductor Foundries]] — Back-reference: cited in sector fill under Competitive dynamics (advanced packaging as second foundry franchise — CoWoS 35K → 130K wpm, 100% Taiwan), Product level analysis (TSMC SoIC-X hybrid bonding roadmap; AMAT/BESI Kinex co-platform), Acquisitions and new entrants (AMAT 9% BESI stake as foundry-adjacent equipment consolidation), and Related Research as packaging-economics primary source.

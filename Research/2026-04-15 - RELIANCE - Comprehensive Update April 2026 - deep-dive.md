@@ -4,6 +4,7 @@ tags: [research, reliance, jio, telecom, energy, retail, india, deep-dive]
 status: active
 sector: Energy & Commodities
 source: Multiple web sources, April 2026
+source_type: deep-dive
 ---
 
 # RELIANCE — Comprehensive Research Update (April 2026)
@@ -494,6 +495,10 @@ Sources: [Deloitte](https://www.deloitte.com/us/en/insights/topics/economy/asia-
 10. Has the Iran conflict disrupted Jamnagar refinery operations directly, or only through input cost inflation?
 
 ---
+
+## Related Sectors
+
+- [[Sectors/Indian Digital Conglomerates]] — Primary sector classification post 2026-04-22 subsector reorganization. Anchored by Jio Platforms as category-defining asset; covers quick-commerce dynamics, sovereign AI policy, DPDP/TRAI regulation, and SOTP mispricing framing referenced in this research.
 
 ## Related Notes
 

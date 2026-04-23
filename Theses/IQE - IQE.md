@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, iqe, semiconductors, photonics, compound-semiconductor, III-V, special-situation]
 status: active
 conviction: low
-sector: Semiconductors & Photonics
+sector: Optical Networking & Photonics
 ticker: IQE
 source: Multi-source synthesis (Claude, ChatGPT, Gemini, Grok conversations; web research April 2026)
 ---
@@ -185,7 +185,7 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 ## Related Research
 
-- [[Sectors/Semiconductors]] — Sector Note
+- [[Sectors/Optical Networking & Photonics]] — Sector Note (LITE + IQE as Active Theses; covers III-V epitaxy supply gap, EML oligopoly, SiPh foundry paradox, Western scarcity premium)
 - [[Theses/LITE - Lumentum]] — InP EML laser supply chain; Lumentum as IQE customer via VCSEL epiwafers
 - [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]] — III-V substrate positioning in SiPh supply chain
 - [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]] — CPO adoption and IQE as foundational acquisition target
@@ -206,3 +206,7 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 ### 2026-03-02
 - [Claude conversation export]: Initial thesis created — M&A special situation overlaid on structural InP demand story.
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors & Photonics → Optical Networking & Photonics (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale `[[Sectors/Semiconductors]]` (archived parent) with `[[Sectors/Optical Networking & Photonics]]` in Related Research following sector-note population.

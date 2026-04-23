@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, enterprise-software, IoT, IOT, Samsara, connected-operations, physical-AI, data-flywheel]
 status: active
 conviction: medium
-sector: Enterprise Software
+sector: Industrial IoT & Connected Operations
 ticker: IOT
 source: Vault research synthesis + web search (investor.samsara.com, G2, SaaStr, MIT News, IDC, Samsara Safety Report)
 ---
@@ -223,7 +223,7 @@ Safety is both the primary customer value proposition and a regulatory tailwind.
 - [[Theses/PLTR - Palantir]] — Adjacent operational intelligence thesis (strategic layer vs Samsara's operational execution layer)
 - [[Theses/NOW - ServiceNow]] — Adjacent workflow automation thesis (IT/business process layer vs Samsara's physical operations layer)
 - [[Theses/DE - John Deere]] — Samsara integration partner via Operations Center; overlapping physical operations / precision ag thesis
-- [[Sectors/Enterprise Software]] — Sector Note
+- [[Sectors/Industrial IoT & Connected Operations]] — Sector Note
 
 ---
 
@@ -234,3 +234,7 @@ Safety is both the primary customer value proposition and a regulatory tailwind.
 
 ### 2026-04-15 (cross-thesis sync)
 - [Deere cross-ref]: DE's Operations Center (500M+ acres) validates physical operations TAM; construction segment ($11.65B) overlaps Samsara's vertical. Deere's 10% recurring revenue target by 2030 validates subscription model — conviction unchanged.
+
+### 2026-04-22
+- Sector re-scoped: Enterprise Software → Industrial IoT & Connected Operations (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Related Research `[[Sectors/Enterprise Software]]` → `[[Sectors/Industrial IoT & Connected Operations]]` (sector note body-filled 2026-04-22).

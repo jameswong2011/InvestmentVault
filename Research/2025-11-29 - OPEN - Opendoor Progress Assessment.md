@@ -80,3 +80,7 @@ I'll update you once I’ve gathered the insights.
 
 ---
 *[Content truncated — full conversation in Research/raw/_staging/extracted/]*
+
+## Related Sectors
+- [[Sectors/PropTech & Real Estate Marketplaces]] — primary sector; research cited in sector note's Related Research under Opendoor's 24-month operational progress assessment and competitive context with Zillow/Redfin iBuyer exits
+- [[Sectors/Mobility & Ridesharing]] — cited by [[Theses/UBER - Uber]] as platform marketplace competitive dynamics cross-reference (iBuyer-to-aggregator pivot rhymes with Uber's asset-light AV positioning)

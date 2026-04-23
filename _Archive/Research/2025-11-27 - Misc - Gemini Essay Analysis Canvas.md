@@ -4,6 +4,7 @@ tags: [research, misc, analysis, gemini-canvas]
 status: active
 sector: Miscellaneous
 source: Gemini Canvas export
+source_type: deep-dive
 ---
 
 # The Epistemology of the Missing Artifact: A Forensic Reconstruction of the "Mikhael Arya Wong" Mini-Essay and the Ecology of Digital Discourse

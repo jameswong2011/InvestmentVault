@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Chinese Silicon Photonics Threat
@@ -72,3 +73,8 @@ The **LPO (Linear Pluggable Optics)** trend partially mitigates DSP dependency b
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts — Chinese SiPh ecosystem maturation relevant to Huawei Atlas 950DT SuperCluster networking (524 EFLOPS FP8 at 520K-chip scale) where domestic photonics supply chain must close the laser/DSP gap that currently constrains Chinese rack-scale AI systems.
+- [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Competitive dynamics (Chinese module dominance vs Western component chokepoint), Macro shifts (geopolitical supply-chain bifurcation, gallium/indium export controls), and Investor heuristics (3% Chinese InP localization at 25G+, 0% at 200G; Moolenaar-Krishnamoorthi Congressional push).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Competitive dynamics (Chinese photonics equipment entrant landscape) and Macro shifts (geopolitical bifurcation — trailing-node domestic substitution vs leading-edge Western chokepoint).

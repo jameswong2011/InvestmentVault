@@ -101,3 +101,6 @@ LITE's operating margin expansion of 1,700+ bps reflects the extreme operating l
 - [[Research/2026-03-09 - Photonics and CPO Investment Outlook]]
 - [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]]
 - [[Theses/IQE - IQE]]
+
+## Related Sectors
+- [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Investor heuristics ("Great Photonic Divergence" LITE +1,098% vs COHR +328%), Competitive dynamics (pure-play vs integrated value capture), and Product level analysis (Cloud Light 70.5% module-level gross margin as pricing-power quantification).

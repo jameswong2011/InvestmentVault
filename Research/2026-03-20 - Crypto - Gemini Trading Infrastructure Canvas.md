@@ -4,6 +4,7 @@ tags: [research, crypto, trading, infrastructure, DeFi, gemini-canvas]
 status: active
 sector: Crypto & Digital Assets
 source: Gemini Canvas export
+source_type: deep-dive
 ---
 
 # High-Performance Infrastructure Design for Decentralized Trading Strategies: A Comparative Analysis of CLOB, AMM, and Hybrid Execution Paradigms
@@ -217,3 +218,7 @@ Products:
  Gemini Apps
 Why is this here?
  This activity was saved to your Google Account because the following settings were on: Gemini Apps Activity. You can control these settings  here.Gemini Apps
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

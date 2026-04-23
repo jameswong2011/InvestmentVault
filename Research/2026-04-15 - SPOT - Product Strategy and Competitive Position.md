@@ -79,3 +79,6 @@ Three interconnected initiatives driving structural margin improvement:
 
 ## Related Research
 - [[Theses/SPOT - Spotify]]
+
+## Related Sectors
+- [[Sectors/Music Streaming]]

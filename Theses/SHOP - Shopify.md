@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, shop, enterprise-software, ecommerce, payments]
 status: active
 conviction: medium
-sector: Enterprise Software
+sector: E-commerce Infrastructure
 ticker: SHOP
 source: Claude conversation export, web research April 2026
 ---
@@ -197,7 +197,7 @@ Each expansion increases the share of merchant economics Shopify captures. The t
 - [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]] — Deep analysis of Shopify-Stripe-Coinbase USDC stablecoin integration, payment protocol architecture, USDC adoption forecasts on Shopify platform
 - [[Research/2025-09-18 - US Insurance Broking Market]] — Tangential; platform market dynamics comparison
 - [[Research/2026-04-15 - SHOP - Comprehensive Update April 2026 - deep-dive]] — Full web research update covering agentic commerce, tariff impact, financial results, competitive dynamics
-- [[Sectors/Enterprise Software]] — Sector Note with SHOP Key Dynamics entry
+- [[Sectors/E-commerce Infrastructure]] — Sector Note with SHOP Key Dynamics entry
 
 ## Log
 ### 2026-04-10
@@ -208,3 +208,7 @@ Each expansion increases the share of merchant economics Shopify captures. The t
 
 ### 2026-04-15 (cross-thesis sync)
 - [Crypto research sync]: Stablecoin market $318.6B ATH, Visa/Mastercard expanding USDC settlement — validates SHOP stablecoin integration thesis — conviction unchanged.
+
+### 2026-04-22
+- Sector re-scoped: Enterprise Software → E-commerce Infrastructure (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced `[[Sectors/Enterprise Software]]` → `[[Sectors/E-commerce Infrastructure]]` in Related Research section during sector-fill of [[Sectors/E-commerce Infrastructure]].

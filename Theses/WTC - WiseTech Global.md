@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, enterprise-software, WTC, logistics, supply-chain, cargowise]
 status: active
 conviction: medium
-sector: Enterprise Software
+sector: Logistics & Supply Chain Software
 ticker: WTC
 source: Multi-source synthesis (ChatGPT deep research, Grok analysis, WiseTech investor presentations, web research April 2026)
 ---
@@ -315,7 +315,7 @@ Last-Mile / Delivery → Consignee
 
 - [[Research/2025-11-25 - WTC - Cargowise Impact on Freight Forwarding]] — ChatGPT deep research: CargoWise transformation of freight forwarding (24/25 top forwarders, 18K+ orgs), multi-modal expansion into trucking/rail/ocean/last-mile, E2open acquisition strategic analysis, "logistics OS" vision, case studies (DHL, K+N, Fracht, Tigers Logistics)
 - [[Research/2025-11-23 - WTC - WiseTech Tech Debt and Acquisition Integration]] — Grok analysis: Technical debt assessment (moderate, well-managed, .NET/C# stack), 40+ acquisition integration track record (Depot Systems, CMS Transport, LatAm/Europe tuck-ins), E2open $2.1B risk assessment, R&D intensity (34% of revenue, $940M+ cumulative)
-- [[Sectors/Enterprise Software]] — Sector Note with peer context (NOW, PLTR, NET, PSTG, SHOP, IOT, CSGP)
+- [[Sectors/Logistics & Supply Chain Software]] — Sector Note (WTC is sole Active Thesis; covers Descartes, Manhattan, Blue Yonder, E2open heritage, CargoWise monopoly thesis)
 - [[Theses/NOW - ServiceNow]] — Comparable enterprise platform expansion strategy (ITSM → AI orchestration); analogous "workflow platform + AI" thesis
 - [[Theses/PLTR - Palantir]] — Comparable "operating system" positioning and data network moat (Ontology parallel to CargoWise logistics data graph)
 - [[Theses/IOT - Samsara]] — Comparable connected operations platform with physical-world data flywheel; analogous "data gravity" dynamics
@@ -328,3 +328,7 @@ Last-Mile / Delivery → Consignee
 - **2026-04-14**: Grok tech debt/M&A analysis ingested. Research note created: [[Research/2025-11-25 - WTC - Cargowise Impact on Freight Forwarding]].
 - **2026-04-15**: Major thesis overhaul: Template restructure, consolidated all LLM sources, added Outstanding Questions/Business Model/Industry Context. Deep web research revealed governance crisis severity (White ouster Oct 2024, forced return Feb 2025, ASIC/AFP raid Oct 2025), stock down ~60% to A$37 — conviction unchanged but elevated from draft to active. H1 FY2026: US$672M rev (+76%), 38% EBITDA, E2open synergies 18 months ahead.
 - **2026-04-15**: Vault maintenance: Created 2 missing research notes from ChatGPT conv 27, extended truncated research note, fixed misfiled Grok analysis.
+
+### 2026-04-22
+- Sector re-scoped: Enterprise Software → Logistics & Supply Chain Software (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale `[[Sectors/Enterprise Software]]` (archived parent) with `[[Sectors/Logistics & Supply Chain Software]]` in Related Research following sector-note population.

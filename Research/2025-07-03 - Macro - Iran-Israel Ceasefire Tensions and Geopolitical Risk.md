@@ -4,6 +4,7 @@ tags: [macro, geopolitics, iran, israel, defense, oil-risk]
 status: active
 sector: Defense & Geopolitics
 source: Grok AI conversation export
+source_type: deep-dive
 ---
 
 # Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk
@@ -123,3 +124,6 @@ A misstep in any of these scenarios—like a downed plane or sunk ship—could s
 
 ### The Bigger Picture
 While these triggers are plausible, they’re not guaranteed. Deterrence—through military readiness and diplomacy—still holds the line, but the margins are narrow. A single bold move, miscalculation, or act of retaliation could unravel the current standoffs and spark the larger conflagration you’re asking about.
+
+## Related Sectors
+- [[Sectors/Product Tankers & Maritime Shipping]] — cited in sector fill (2026-04-22) for June 2025 12-day conflict precedent; 550+ Iranian missiles / Iron Dome intercept rate / fragile ceasefire framework that later informed Feb 2026 Hormuz closure dynamics and dual-theater stretch risk (Taiwan).

@@ -5,6 +5,7 @@ status: active
 sector: Agriculture & Industrial Equipment
 ticker: DE
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [DE]
 ---
 

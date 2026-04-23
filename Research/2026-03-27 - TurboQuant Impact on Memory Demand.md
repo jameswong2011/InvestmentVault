@@ -4,6 +4,8 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
+propagated_to: [285A, SNDK, NVDA]
 ---
 
 # TurboQuant Impact on Memory Demand
@@ -43,3 +45,6 @@ TurboQuant occupies a distinct niche in the quantization ecosystem. **GPTQ** and
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (TurboQuant 6x KV cache compression attacks the inference memory bottleneck; quality-neutral compression with no calibration required) and Investor heuristics #6 (the non-consensus read is that GPT-4-era compute economics are not stable; if TurboQuant-class algorithmic compression becomes the new baseline faster than Jevons-expansion absorbs it, aggregate GPU demand inflects within 2027-2028).

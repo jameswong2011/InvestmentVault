@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors & Photonics
 ticker: LRCX
 source: Gemini Canvas export
+source_type: comparison
 ---
 
 # Strategic Divergence in the AI Era: A Comprehensive Comparative Investment Analysis of Applied Materials (AMAT) and Lam Research (LRCX)
@@ -248,3 +249,6 @@ Why is this here?
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis and Investor heuristics (AMAT vs LRCX strategic comparison — broadest portfolio vs etch specialist; hybrid bonding partnership exposure via BESI 9% stake; valuation gap framework).

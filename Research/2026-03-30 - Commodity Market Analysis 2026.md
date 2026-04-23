@@ -104,3 +104,10 @@ Best alternates: **long corn / short soybeans** for an ag expression, and **shor
 The biggest kill-switch for all front-line longs is a real reopening of Hormuz. On **March 29, 2026**, Pakistan-hosted talks were explicitly focused on reopening the strait, and Iran had already said “non-hostile” ships could transit if they coordinated with Tehran. That makes headline risk two-sided. On the other hand, Reuters’ analyst poll still sees oil elevated across scenarios and potentially much higher in a further escalation. I would express this view with **spreads and options** rather than max-beta outrights. citeturn912895news41turn853937news26turn327102view0
 
 navlistRecent reporting behind this setupturn912895news39,turn912895news40,turn199833news45,turn729387news39,turn398087news20,turn284006news45,turn252961news29
+
+---
+
+## Related Sectors
+- [[Sectors/Precious Metals]] — cited in sector fill (2026-04-22) for Iran/Hormuz precious metals sensitivity ranking; gold's counterintuitive $5,595 ATH → $4,400 selloff; silver volatility at 59% industrial demand share; GDX long thesis as leveraged crisis play
+- [[Sectors/Product Tankers & Maritime Shipping]] — cited in sector fill (2026-04-22) for diesel/gasoil ranked #2 in commodity stress (+57%); VLCC freight MEG-China $423,736/day; LNG tanker rates +40%; Singapore gasoil +57% / jet fuel +114% / Brent +55-60% — logistics shock is as material as supply shock; middle distillates as product tanker's "tighter barrel" trade
+- [[Sectors/Uranium & Nuclear Fuel]] — cited in sector fill (2026-04-22) for uranium classification as "medium long, slow-burn 6-12 month energy-security trade" rather than first-wave war trade; structural deficit context; LNG/coal/nuclear substitution hierarchy; IEA's Fatih Birol citation that the crisis gives nuclear an additional push — key Macro shifts energy-sovereignty taxonomy and Investor heuristics "second-wave trade" framing

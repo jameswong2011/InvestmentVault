@@ -3,7 +3,7 @@ date: 2026-04-14
 tags: [thesis, CCJ, energy-commodities, uranium, nuclear, energy-sovereignty]
 status: active
 conviction: high
-sector: Energy & Commodities
+sector: Uranium & Nuclear Fuel
 ticker: CCJ
 source: Vault research synthesis + web search (Sprott, WNA, Motley Fool, Nasdaq, Cameco IR, DOE, TrendForce, Zacks)
 ---
@@ -214,8 +214,9 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 - [[Macro/Iran War Macroeconomic Scenario]] — Stagflation vs. QE pivot scenarios; CCJ as structural position; A→C macro path uniquely bullish for nuclear
 - [[Macro/Commodity Impacts from Iran Tensions]] — Uranium at ~$92/lb; nuclear renaissance reinforced by crisis; energy sovereignty argument
 - [[Macro/Investment Strategy for US-Iran Conflict]] — CCJ surged 114% in 2025; nuclear as differentiated safe-haven; $80B government partnership
-- [[Sectors/Energy & Commodities]] — Sector Note; includes nuclear as strongest alternative energy play, coal-nuclear substitution dynamics, and $150 oil playbook context
+- [[Sectors/Uranium & Nuclear Fuel]] — Sector Note; fuel-cycle competitive dynamics, Westinghouse/Brookfield/Cameco $80B partnership, re-contracting wave, HALEU bottleneck, and investor heuristics framework
 - [[Research/2026-01-26 - Silver Demand and Data Centers]] — Data center buildout commodity demand dynamics; power infrastructure context
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Structural Iran proxy resilience (Hezbollah rebuilt ~1/3 capability in a year, >$1B transferred 2025) supports sustained energy-sovereignty policy response — the 6-12 month re-rating trade framework on which CCJ's high conviction rests
 
 ## Log
 
@@ -234,3 +235,10 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 ### 2026-03-30
 - Initial thesis created from Claude conversation — conviction high.
+
+### 2026-04-22
+- Sector re-scoped: Energy & Commodities → Uranium & Nuclear Fuel (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Related Research `[[Sectors/Energy & Commodities]]` → `[[Sectors/Uranium & Nuclear Fuel]]` after sector note fill — conviction unchanged.
+
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah's structural rearmament resilience extends the energy-sovereignty policy-response horizon beyond any single ceasefire — supports CCJ as 6-12 month second-wave Iran trade vs. first-wave LNG/tankers. Conviction unchanged (high).

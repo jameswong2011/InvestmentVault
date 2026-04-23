@@ -4,6 +4,7 @@ tags: [research, semiconductors, HBM4, memory, DRAM, gemini-canvas]
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [NVDA, SNDK, 285A]
 ---
 
@@ -191,3 +192,7 @@ Why is this here?
 - [[Theses/285A - Kioxia]] — HBM capacity diversion beneficiary
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — Later HBM shortage analysis
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (HBM4 supply pivot; memory as the binding constraint for 2026 Rubin/MI450/TPU Ironwood production volume; SK Hynix/Samsung/Micron triopoly with Samsung closing to 30%+ of Nvidia HBM4 supply).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Macro shifts and Product level analysis (HBM4 vendor bonding strategies, yield dynamics, and equipment intensity by stack configuration driving KLAC/LRCX/BESI advanced-packaging demand).

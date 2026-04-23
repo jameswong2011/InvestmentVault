@@ -14,3 +14,6 @@ mdl-cell mdl-cell--12-col mdl-shadow--2dp"> Gemini Apps Created Gemini Canvas ti
 
 ---
 *[Content truncated — full conversation in Research/raw/_staging/extracted/]*
+
+## Related Sectors
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (BESI role in HBM hybrid bonding; advanced packaging monopoly context for 3D integration demand vectors).

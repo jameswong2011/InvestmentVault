@@ -4,6 +4,7 @@ tags: [research, semiconductors, NAND, flash, storage, memory, YMTC, HBF, SNDK, 
 status: active
 sector: Semiconductors / Memory
 source: web research (TrendForce, Tom's Hardware, SanDisk IR, SK Hynix newsroom, Digitimes, Blocks and Files, EE Times)
+source_type: deep-dive
 propagated_to: [285A, SNDK]
 ---
 
@@ -309,3 +310,6 @@ YMTC's Phase III + two additional fabs using >50% domestic tooling (AMEC etch pl
 - [Kioxia Sold Out Through 2027 — Tom's Hardware](https://www.tomshardware.com/pc-components/ssds/kioxia-exec-says-the-ai-boom-means-the-era-of-the-cheap-1tb-ssd-is-over-companys-nand-supply-is-sold-out-for-this-year-and-likely-through-2027)
 - [SanDisk HBF Technology Blog — SanDisk](https://www.sandisk.com/company/newsroom/blogs/2025/scaling-beyond-the-wall-inside-sandisks-high-bandwidth-flash-for-ai-inferencing)
 - [HBF Write Limitations — Blocks and Files](https://www.blocksandfiles.com/flash/2026/02/16/sk-hynix-proposes-hbm-and-hbf-hybrid-for-llm-inference/4091326)
+
+## Related Sectors
+- [[Sectors/Enterprise Storage Infrastructure]] — cited in §Macro shifts (NAND supercycle +70–75% QoQ Q2 2026 contract, supply deficit through 2027, HBM wafer diversion) and §Storage-class memory aftermath and HBF (SanDisk + SK Hynix OCP standardization Feb 2026, HBF as inference tier); direct COGS input for every storage array vendor — most severe margin pressure on commodity-SSD OEMs (Dell, HPE, NetApp), potentially differentiated for Pure DFM raw-NAND procurement.

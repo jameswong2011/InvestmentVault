@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: PLTR
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [PLTR]
 ---
 
@@ -254,4 +255,7 @@ Why is this here?
 ## Related
 - [[Theses/PLTR - Palantir]] — 5-day bootcamp model; Sovereign AI; re-industrialization; PEG 1.54x vs Snowflake 3.3x
 - [[Research/2026-03-29 - PLTR - Gemini Automation Platforms Canvas]] — Later Palantir vs ServiceNow analysis
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Product level analysis (Foundry/Ontology/AIP/Apollo/Rubix five-layer breakdown; OSDK as self-service distribution; Maven Smart System and Warp Speed industrial OS) and §Investor heuristics (PEG 1.54x cheaper than Snowflake 3.3x; "n of 1" defense+AI+sovereign-compute positioning; 241x trailing P/E framing).

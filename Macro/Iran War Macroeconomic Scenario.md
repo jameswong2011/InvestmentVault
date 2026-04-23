@@ -114,6 +114,7 @@ The wage-price spiral risk is real but contained for now. Average hourly earning
 - [[Research/2026-04-02 - GCC Market Shorting Options]] — GCC shorting instruments (GAC future, XGLF ETF, KSA proxy)
 - [[Research/2026-04-02 - Israel India Relations Analysis]] — Geopolitical dynamics analysis
 - [[Research/2026-03-21 - Betting on Inflation Trades]] — Inflation trade positioning
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament dynamics post-Assad: Iran transferred >$1B in 2025, pivoted to maritime/cash/tech-transfer smuggling, rebuilt ~1/3 of pre-war capability; structural proxy resilience sustains Scenario A duration beyond any single ceasefire
 
 - [[Theses/TTWO - Take-Two Interactive]] — GTA VI Nov 2026 launch faces consumer discretionary headwinds (gasoline >$4/gal, consumer sentiment falling); gaming relatively recession-resistant but $70-80 pricing sensitive to spending compression
 
@@ -122,6 +123,14 @@ The wage-price spiral risk is real but contained for now. Average hourly earning
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Gemini source: early conflict capital allocation framework
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — Grok: June 2025 Israel-Iran 12-day conflict details; fragile ceasefire; nuclear setback (months not destroyed); U.S. 3 carrier groups + 40K troops; dual-theater stretch risk (Taiwan)
 ## Log
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Propagated to Related Research. Hezbollah structural rearmament resilience supports Scenario A (stagflation) duration extension; validates LNG/STNG/CCJ/RELIANCE structural-long positioning beyond any single ceasefire episode.
+
+### 2026-04-23 (/sync all — Gemini canvas log anchoring)
+- [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]]: Gemini scenario analysis of Ras Laffan damage, Brent +50% to ~$115, 50% urea price surge, 30% global exportable fertilizer offline — sources the cross-commodity transmission map embedded in Scenario A.
+- [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]]: Three-path macro framework (Hawkish Inflationary Spiral / Recessionary Compression / Stagflation-to-Recession) — sources the A/B/C scenario structure that anchors the note's monetary-policy and asset-pricing sections.
+- [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]]: Pre-kinetic strategic allocation framework (June 2025 12-Day War precedent, Soleimani 2020 pivot, defense-tech PLTR alpha vs LMT supply-chain volatility) — grounds the pre-conflict baseline that live scenario analysis has now overwritten with kinetic data.
+
 ### 2026-04-15 (Dual blockade escalation & STNG thesis rebuild)
 - **April 8 ceasefire → April 12 talk collapse → dual blockade**: Situation has ESCALATED beyond initial ceasefire. Sequence: April 8 ceasefire agreed (Iran to reopen Hormuz); Iran complicated with $1M+ transit tolls; April 11 Vance/Witkoff/Kushner arrived in Islamabad; **April 12 talks FAILED** — sticking point is Iran's enriched uranium removal/verification. Trump declared US naval blockade of Hormuz targeting Iranian ports. April 13 blockade took effect. April 14: no ships passed US blockade in first 24 hours; 6 merchant ships turned around; 3 sanctioned tankers transited despite blockade; Iran called it "piracy." Trump told NY Post talks "could be happening over next two days." **Ceasefire expires April 21.**
 - **Hormuz status**: now under DUAL blockade (Iran IRGC closure + US counter-blockade on Iranian ports). Non-Iranian traffic theoretically allowed but practically minimal. 600-800+ vessels stranded in Gulf (325+ tankers per Lloyd's Intelligence). Even full reopening → July normalisation timeline.

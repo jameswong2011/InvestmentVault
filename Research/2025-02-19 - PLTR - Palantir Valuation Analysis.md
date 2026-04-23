@@ -4,6 +4,7 @@ tags: [research, PLTR, valuation, government-tech, AI]
 status: active
 sector: Enterprise Software
 source: Grok AI conversation export
+source_type: analyst-report
 propagated_to: [PLTR]
 ---
 
@@ -407,3 +408,6 @@ What’s striking is how Svātantrika’s moderate stance turns a potential para
 
 ### Conclusion
 In Svātantrika Madhyamaka, the polarity of *dharma* and *emptiness* generates compassion and non-self through their active fusion. Dharmas provide the stage—phenomena and suffering—while emptiness reveals their lack of essence, dismantling self-clinging and igniting empathy for all beings in the same boat. This interplay, balanced by Svātantrika’s reasoned approach, shows love-like qualities: a dynamic unity of opposites yielding wisdom and care. Today, this framework offers a lens for navigating personal identity and global interconnectedness, echoing the fusion-of-polarities theme from our earlier discussion on love. Compassion and non-self, thus, are not endpoints but living expressions of this profound polarity dance.
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Investor heuristics (Feb 2025 baseline valuation analysis: P/E 655 vs software industry 46.58, 530% rise in 12 months as overbought signal — this is the early bear-case datapoint that the subsequent ~30% drawdown from the $207 ATH partially validated; analyst consensus Hold at $74.59 avg target).

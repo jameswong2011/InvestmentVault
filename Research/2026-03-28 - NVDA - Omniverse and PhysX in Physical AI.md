@@ -4,6 +4,7 @@ tags: [research, NVDA, physical-AI, omniverse, robotics]
 status: active
 sector: Semiconductors & Photonics
 source: Grok AI conversation export
+source_type: deep-dive
 propagated_to: [NVDA]
 ---
 
@@ -36,3 +37,6 @@ Are there any other alternatives to Nvidia's PhyX engine. Describe how the PhyX 
 ---
 
 No, not throttled. Responses short per your "brief/direct" style preference.
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics (PhysX evolution from gaming Ageia NovodeX 2008 acquisition to GPU-accelerated industrial multiphysics — no merchant alternative) and Product level analysis (Newton differentiable physics co-developed with DeepMind + Disney on Nvidia Warp — open-source "Android strategy" that strengthens ecosystem lock-in regardless of who builds the solver).

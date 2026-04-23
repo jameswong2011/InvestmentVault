@@ -496,3 +496,6 @@ The Iran/Hormuz crisis ([[Macro/Commodity Impacts from Iran Tensions]]) creates 
 
 ### 2026-04-14
 - Initial sector note created with key dynamics from DE thesis consolidation.
+
+### 2026-04-22
+- Restored from _Archive: user reverted the subsector split; empty [[_Archive/Sectors/Agricultural Equipment & Precision Ag]] shell moved to _Archive.

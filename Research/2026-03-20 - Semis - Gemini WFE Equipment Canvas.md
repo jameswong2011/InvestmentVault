@@ -4,6 +4,7 @@ tags: [research, semiconductors, WFE, LRCX, AMAT, equipment, gemini-canvas]
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+source_type: deep-dive
 ---
 
 # Strategic Evaluation of the Wafer Fabrication Equipment Market: A Five-Year Outlook for the Global Tier-1 Suppliers
@@ -225,3 +226,6 @@ Why is this here?
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis, Competitive dynamics, and Investor heuristics (5-company WFE evaluation — AMAT/LRCX/KLAC/ASMI/TEL relative positioning, portfolio allocation framework).

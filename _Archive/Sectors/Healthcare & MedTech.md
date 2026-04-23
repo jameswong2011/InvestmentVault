@@ -29,7 +29,7 @@ tags: [sector, moc]
 
 - [[Research/2026-03-21 - HIMS - Gemini Investment Case Canvas]] — HIMS comprehensive investment case
 - [[Research/2026-02-12 - HIMS - Gemini Analysis Outline Canvas]] — HIMS earlier analysis outline
-- [[Research/2026-01-21 - ISRG - Gemini Investment Thesis Canvas]] — Intuitive Surgical competitive moat and da Vinci 5
+- [[2026-01-21 - ISRG]] — Intuitive Surgical competitive moat and da Vinci 5
 
 ## Log
 

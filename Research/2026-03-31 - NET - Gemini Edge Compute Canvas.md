@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: NET
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [NET]
 ---
 

@@ -4,6 +4,7 @@ tags: [research, macro, iran, geopolitics, energy, gemini-canvas]
 status: active
 sector: Defense & Geopolitics
 source: Gemini Canvas export
+source_type: scenario
 propagated_to: [STNG, CCJ, LNG]
 ---
 
@@ -164,3 +165,7 @@ Why is this here?
 - [[Macro/Iran War Macroeconomic Scenario]]
 - [[Macro/Commodity Impacts from Iran Tensions]]
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Companion commodity analysis
+
+## Related Sectors
+- [[Sectors/Product Tankers & Maritime Shipping]] — cited in sector fill (2026-04-22) for "Hawkish Start / Recessionary Finish" macro framework; sanctions arbitrage creating ton-miles; private credit systemic risk (9.2% default rate → 15%); energy-vulnerable Asia as recessionary baseline; Fed policy path scenarios and the rates-driven impact on tanker equity multiples
+- [[Sectors/Uranium & Nuclear Fuel]] — cited in sector fill (2026-04-22) for Hormuz closure as accelerant (not cause) of nuclear re-rating; Scenario A→C macro path (stagflation, rationing, emergency liquidity) uniquely bullish for nuclear as physical-shortage-immune baseload; helium/semiconductor/fertilizer nexus reinforcing nuclear-electrification policy case; Qatar Ras Laffan 17% LNG capacity loss with 3-5 year repair horizon as structural LNG→nuclear substitution driver

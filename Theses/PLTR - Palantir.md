@@ -4,7 +4,7 @@ tags: [thesis, enterprise-software, AI, defense, PLTR]
 status: active
 ticker: PLTR
 conviction: medium
-sector: Enterprise Software & Defense
+sector: Enterprise Workflow AI & Automation
 source: Consolidated from Gemini Canvas (2), ChatGPT (2), Claude (4), Grok (1) research conversations + web research April 2026
 ---
 
@@ -239,8 +239,7 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 - [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]] — AI disruption framework validating orchestration layer thesis; MCP/A2A protocol dynamics
 - [[Theses/NOW - ServiceNow]] — Complementary enterprise AI positioning (Ontology vs CMDB)
 - [[Theses/NET - Cloudflare]] — Adjacent enterprise software / edge AI thesis
-- [[Sectors/Enterprise Software]]
-- [[Sectors/Defense & Geopolitics]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]]
 
 ## Log
@@ -258,3 +257,7 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 
 ### 2026-04-13
 - [Initial thesis]: Created from two Gemini canvases (Strategy, Automation Platforms); Ontology as operational control plane with write-back, complementary to ServiceNow — conviction set at medium.
+
+### 2026-04-22
+- Sector re-scoped: Enterprise Software & Defense → Enterprise Workflow AI & Automation (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced `[[Sectors/Enterprise Software]]` and `[[Sectors/Defense & Geopolitics]]` → `[[Sectors/Enterprise Workflow AI & Automation]]` in Related Research section during sector-fill of [[Sectors/Enterprise Workflow AI & Automation]].

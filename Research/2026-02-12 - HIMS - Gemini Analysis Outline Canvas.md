@@ -5,6 +5,7 @@ status: active
 sector: Healthcare & MedTech
 ticker: HIMS
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [HIMS]
 ---
 
@@ -287,3 +288,6 @@ Why is this here?
 ## Related
 - [[Theses/HIMS - Hims & Hers Health]] — Earlier analysis outline preceding full investment case
 - [[Research/2026-03-21 - HIMS - Gemini Investment Case Canvas]] — Later comprehensive analysis
+
+## Related Sectors
+- [[Sectors/Consumer Telehealth]]

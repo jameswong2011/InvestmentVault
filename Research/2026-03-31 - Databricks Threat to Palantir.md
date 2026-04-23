@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Databricks Threat to Palantir
@@ -75,4 +76,7 @@ The second problem is **validation and business logic at the write boundary**. P
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Competitive dynamics (Databricks $5.4B run-rate +65% YoY $134B priv val; Lakebase as Postgres-bolted-onto-lakehouse vs Palantir's integrated Ontology; OLAP-vs-OLTP architectural conflict for write-back; 2-3yr product gap; Microsoft Fabric IQ commoditization risk) and §Investor heuristics ("good enough" semantic layer threat overpriced near-term, underpriced 2028).

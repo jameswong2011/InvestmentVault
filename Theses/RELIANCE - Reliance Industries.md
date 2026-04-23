@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, reliance, jio, india, energy, telecom, retail, conglomerate]
 status: active
 conviction: medium
-sector: Energy & Commodities
+sector: Indian Digital Conglomerates
 ticker: RELIANCE
 source: Claude conversation export, web research April 2026
 ---
@@ -240,9 +240,10 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 ## Related Research
 
 - [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]] — Full April 2026 research update: Jio IPO, retail, new energy, O2C, competitive landscape, macro
-- [[Sectors/Energy & Commodities]] — Primary sector note; includes Reliance as Nomura's top India pick, diesel cracks $76/bbl, jet fuel $107/bbl in $150 oil playbook
-- [[Sectors/Consumer & Digital]] — Secondary sector overlap (Jio digital platform, retail, quick commerce)
+- [[Sectors/Indian Digital Conglomerates]] — Primary sector note: Jio IPO category framing, quick-commerce dynamics, sovereign AI, DPDP/TRAI regulation, SOTP mispricing
 - [[Macro/Commodity Impacts from Iran Tensions]] — Jamnagar refinery benefits from surging crack spreads; insurance mechanism and Hormuz normalization lags
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience post-Assad sustains elevated fuel-crack regime driving Jamnagar O2C EBITDA uplift (Q3 FY26 +14.6% YoY); extends India crude-import shock beyond ceasefire episodes
+- [[Research/2026-04-02 - Israel India Relations Analysis]] — India-Israel Special Strategic Partnership (February 2026) + $3.75B FY2024-25 bilateral trade + defence MoU — frames India's geopolitical positioning in Iran scenario as aligned with Israel rather than neutral, relevant to Jamnagar crude procurement diversification
 
 ## Log
 
@@ -251,3 +252,11 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 ### 2026-04-10
 - [Claude conversation export]: Initial thesis distilled — SOTP anomaly, Jio IPO catalyst, consumer business transformation.
+
+### 2026-04-22
+- Sector re-scoped: Energy & Commodities → Indian Digital Conglomerates (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale [[Sectors/Energy & Commodities]] and [[Sectors/Consumer & Digital]] in ## Related Research with [[Sectors/Indian Digital Conglomerates]] (subsector split — parent sectors archived). Thesis body and callouts untouched.
+
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah structural resilience sustains fuel-crack tailwind for Jamnagar O2C; extends Indian crude-shock exposure window (₹69→₹113/bbl basket) beyond April ceasefire. Conviction unchanged (medium).
+- [[Research/2026-04-02 - Israel India Relations Analysis]]: 2026 Special Strategic Partnership + $3.75B bilateral trade + defence MoU confirms India's Israel-aligned positioning in Iran scenarios — reinforces India-specific macro framing in Jio/Retail/O2C segmentation; bilateral stable regardless of Gulf volatility. Conviction unchanged (medium).

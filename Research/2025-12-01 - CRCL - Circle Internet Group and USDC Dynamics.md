@@ -14,3 +14,7 @@ mdl-cell mdl-cell--12-col mdl-shadow--2dp"> Gemini Apps Prompted Start research 
 
 ---
 *[Content truncated — full conversation in Research/raw/_staging/extracted/]*
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill
+- [[Sectors/E-commerce Infrastructure]] — back-reference added 2026-04-22 during sector-fill (Shopify-Stripe-Coinbase USDC integration)

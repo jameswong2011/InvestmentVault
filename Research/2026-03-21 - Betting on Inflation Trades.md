@@ -5,6 +5,7 @@ status: active
 sector: Macro
 source: ChatGPT conversation export
 source_type: deep-dive
+propagated_to: []
 ---
 # Betting on Inflation Trades
 
@@ -41,3 +42,8 @@ A practical way to frame it is this: if you think inflation over the next two ye
 For a U.S.-exchange inflation trade, the clean ranking is: **most direct to realized inflation = term TIPS ETFs like IBID/IBIE/IBIF, then STIP/LDRI; more rate-sensitive but still inflation-linked = TIP/SCHP; mostly a short-rate bet = TFLO/USFR; mostly a commodity-shock bet = PDBC/DBC; oil-led inflation with equity beta = XLE.** The cleanest single-ticker expression is usually a **horizon-matched term TIPS ETF**, or **STIP/LDRI** if you want a rolling near-term inflation sleeve rather than a fixed maturity. citeturn861372view0turn584932view0turn571626view0turn584932view1turn584932view2turn584932view3turn584932view4
 
 State your horizon and whether the inflation view is **broad CPI**, **core/services**, or **commodity/oil shock**, and I’ll narrow it to the cleanest one- or two-ticker expression.
+
+---
+
+## Related Sectors
+- [[Sectors/Precious Metals]] — cited in sector fill (2026-04-22) for TIPS/commodity ETF framework applied to CPI-hedge positioning; precious metals within DBC/PDBC broad commodity exposure; XLE as oil-led inflation equity beta

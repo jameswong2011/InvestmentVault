@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: PLTR
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [PLTR, NOW]
 ---
 
@@ -113,4 +114,7 @@ Why is this here?
 ## Related
 - [[Theses/PLTR - Palantir]] — Complementary not competitive with ServiceNow; governance as moat
 - [[Research/2026-03-21 - PLTR - Gemini Strategy Canvas]] — Earlier Palantir strategy analysis
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Investor heuristics (complementary-not-competitive mispricing of NOW vs PLTR; Ontology vs CMDB architectural divergence; AI agent reasoning use cases — IT incident impact needs CMDB, supply-chain disruption needs Ontology) and §Competitive dynamics (operational data layer vs workflow-native incumbent archetype split).

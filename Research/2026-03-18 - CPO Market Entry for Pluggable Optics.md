@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # CPO Market Entry for Pluggable Optics
@@ -59,3 +60,8 @@ The adoption timeline follows a clear pattern: production has begun at small sca
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (CPO enables >100 Tbps fabrics with <5 pJ/bit energy — essential for Spectrum-X1600 and Broadcom TH6-Davisson rack-scale scaling beyond Blackwell/Rubin density) and Product level analysis (TSMC COUPE AMD risk production Feb 2026 relevant to Helios scale-out networking architecture).
+- [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Competitive dynamics (arms-dealer component-level positioning), Product level analysis (CPO wave deployment through 2028), Acquisitions and new entrants (Broadcom/NVIDIA vertical integration advantage), and Investor heuristics (InP CW laser chokepoint analysis for CPO modules).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (Photonics & Optical Equipment Enablers — CPO vendor analysis feeds foundry/assembly/test capacity build for TSMC COUPE ramp).

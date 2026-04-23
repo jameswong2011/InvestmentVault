@@ -224,3 +224,6 @@ With ~**1.5%** reported in Sep 2025, Pabrai is a **meaningful minority investor*
 ---
 
 navlistRecent coverage relevant to Edelweiss and/or its ecosystemturn4news41,turn5news41,turn6news57
+
+## Related Sectors
+- [[Sectors/Indian Financial Services]]

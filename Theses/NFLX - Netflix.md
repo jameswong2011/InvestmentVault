@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, nflx, consumer-digital, streaming]
 status: active
 conviction: medium
-sector: Consumer & Digital
+sector: Video Streaming
 ticker: NFLX
 source: Multi-source synthesis (Claude, Gemini Canvas, web research April 2026)
 ---
@@ -234,7 +234,7 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 
 ## Related Research
 - [[Research/2026-03-21 - NFLX - Gemini Investment Case Canvas]] — Comprehensive streaming hegemon analysis; content economics, churn dynamics, production hubs, gaming strategy, valuation framework
-- [[Sectors/Consumer & Digital]] — Sector Note with NFLX positioning
+- [[Sectors/Video Streaming]] — Sector Note with NFLX positioning
 - [[Theses/SPOT - Spotify]] — Parallel "entertainment utility" thesis; audio vs video churn dynamics, ad monetization gap comparison
 
 ## Log
@@ -246,3 +246,7 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 
 ### 2026-03-20
 - [Claude conversation export]: Initial thesis distilled from 3 source segments — non-consensus views and differentiated analysis.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Video Streaming (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] reference in ## Related Research with [[Sectors/Video Streaming]] during sector-note fill operation.

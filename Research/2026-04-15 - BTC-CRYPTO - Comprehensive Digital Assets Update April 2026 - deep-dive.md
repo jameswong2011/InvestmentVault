@@ -4,6 +4,7 @@ tags: [research, crypto, bitcoin, ethereum, stablecoins, quantum-risk, regulatio
 status: active
 sector: Crypto & Digital Assets
 source: Web research compilation (multiple sources)
+source_type: deep-dive
 propagated_to: [BTC-CRYPTO]
 ---
 
@@ -178,3 +179,7 @@ Tokens with verifiable on-chain revenue are pulling away from pure speculation i
 - [[Research/2025-12-26 - Ethereum Stablecoin Adoption]]
 - [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]]
 - [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]]
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

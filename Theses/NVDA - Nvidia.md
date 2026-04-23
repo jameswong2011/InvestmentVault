@@ -4,7 +4,7 @@ tags: [thesis, semiconductors, AI, physical-AI, NVDA]
 status: active
 ticker: NVDA
 conviction: medium
-sector: Semiconductors & AI Infrastructure
+sector: GPU & AI Compute Accelerators
 source: Consolidated — Gemini Canvas (Omniverse/PhysX, AI Ecosystem, TurboQuant), ChatGPT (CES 2026, HBM4, AI Bubble, Silicon Photonics), Claude (PhysX competitive dynamics), Grok (Omniverse deep-dive, interconnects), web research (FY2026 earnings, GTC 2026, sovereign AI, ASIC competition, export controls)
 ---
 
@@ -215,6 +215,7 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]] — Grok analysis: PhysX evolution from gaming to industrial simulation, Newton differentiable physics
 - [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]] — CES 2026: Vera Rubin platform, Alpamayo AV stack, GR00T robotics, Jetson T4000, DLSS 4.5, Mercedes-Benz 2026 CLA
 - [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]] — AI ecosystem: Muon optimizer (35% training acceleration), TurboQuant, open-source model parity, agentic AI TAM ($5.4B→$236B)
+- [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] — Full TurboQuant deep-dive: ≥6× KV cache compression at zero accuracy loss; 70B/128K context: ~200GB → ~45GB (~78% reduction, 3× H100s → 1× H100); Morgan Stanley/JPM/Wells Fargo invoke Jevons Paradox; 12× serving capacity scaling validates Risk #3 compound-efficiency bear case
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM4 vendor yields; SK Hynix ~80% HBM3E yields; Samsung ~50% HBM4; stack yield mathematics
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]] — TurboQuant KV cache compression; memory triopoly pricing power; Jevons Paradox in compute demand
 - [[Research/2025-08-09 - Performance vs Standardization]] — NVLink 7x PCIe bandwidth; CXL limitations for AI; silicon photonics role
@@ -229,7 +230,7 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Theses/IQE - IQE]] — III-V epitaxy chokepoint beneath silicon photonics supply chain
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]] — Nvidia valuations; custom silicon erosion risk (TPU, Trainium, Maia); CUDA moat analysis; $650B annual revenue requirement
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis: CoWoS capacity 35K→130K wafers/month driving advanced packaging equipment TAM ($17.5B by 2028), complexity-driven supercycle (equipment revenue per wafer start structurally increasing)
-- [[Sectors/Semiconductors]] — Sector Note with cross-thesis dynamics
+- [[Sectors/GPU & AI Compute Accelerators]] — Sector Note with cross-thesis dynamics
 
 ## Log
 ### 2026-04-19 (TSM stress test sync)
@@ -245,7 +246,7 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - New research: [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen Huang interview (Dwarkesh Patel): dismisses ASIC threat as "unique instance" (Anthropic), claims no competitor matches Nvidia TCO on benchmarks, ASIC margins ~65% vs NVDA ~70%, $100B+ upstream supply commitments, $30B OpenAI / $10B Anthropic investments confirmed. China bear case strengthened by Jensen's own arguments (7nm sufficiency, energy advantage, Huawei record year). Groq reframed as inference market segmentation, not GPU inferiority. Conviction unchanged.
 
 ### 2026-04-16 (NAND sector sync)
-- [[Sectors/NAND Flash & Storage]]: SK Hynix H3 architecture (HBF+HBM hybrid with Blackwell) shows 2.69x perf/watt, 18.8x batch size improvement; reduces GPU requirements from 32→2 for equivalent inference — validates Rubin HBF integration path. SanDisk HBF pilot line accelerated 6 months — conviction unchanged, monitor Rubin HBF confirmation.
+- [[Sectors/NAND Memory & Storage]]: SK Hynix H3 architecture (HBF+HBM hybrid with Blackwell) shows 2.69x perf/watt, 18.8x batch size improvement; reduces GPU requirements from 32→2 for equivalent inference — validates Rubin HBF integration path. SanDisk HBF pilot line accelerated 6 months — conviction unchanged, monitor Rubin HBF confirmation.
 
 ### 2026-04-15 (cross-thesis sync)
 - [SEMICAP sync]: NVDA is primary demand driver for semicap supercycle — TSMC CoWoS 35K->130K wafers/month. Equipment bottleneck widening — conviction unchanged.
@@ -259,3 +260,13 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 
 ### 2026-04-13
 - [Initial thesis creation]: Synthesized from 3 Gemini canvases + Grok PhysX deep-dive. Cross-thesis links to CoreWeave, Vertiv, BESI confirmed — conviction set at medium.
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors & AI Infrastructure → GPU & AI Compute Accelerators (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Sectors/GPU & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.
+
+### 2026-04-23
+- Wikilink cleanup: 2026-04-16 NAND sync log entry: `[[Sectors/NAND Flash & Storage]]` → `[[Sectors/NAND Memory & Storage]]` (sector file renamed; rename-only fix preserving log data). Conviction unchanged.
+
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]]: Quantifies the Risk #3 / Bear Case bullet — 78% inference memory reduction on 70B/128K is genuine but analyst consensus (MS/JPM/Wells Fargo) sees Jevons absorbing it via 12× concurrency scaling + context inflation; Cloudflare's "Google DeepSeek moment" framing overstated. Conviction unchanged (medium).

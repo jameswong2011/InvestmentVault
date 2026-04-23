@@ -4,6 +4,7 @@ tags: [research, crypto, MSTR, preferred-stock, capital-structure]
 status: active
 sector: Consumer & Digital
 source: ChatGPT conversation export (Conv 99)
+source_type: deep-dive
 propagated_to: [BTC-CRYPTO]
 ---
 
@@ -97,3 +98,7 @@ This ordering is inferred from the stated senior/junior relationships in Strateg
 - ChatGPT conversation export; Q&A format comparing Strategy's full capital stack
 - Data points from Strategy's offering documents and company website (April 2026)
 - Ticker descriptions based on Nasdaq listings
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

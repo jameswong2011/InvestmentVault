@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # ServiceNow Distribution and Partner Economics
@@ -52,4 +53,7 @@ Among GSIs, ServiceNow practices are growing faster than competing platform prac
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Competitive dynamics (NOW partner ecosystem 2-3x multiplier vs Salesforce 6.19x; Accenture 18K NOW-skilled vs 56K Salesforce-skilled; GlideFast/Acorio M&A signaling healthy partner economics) and §Investor heuristics (90%+ NNACV through partner influence as durability indicator).

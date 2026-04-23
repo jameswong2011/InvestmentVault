@@ -4,6 +4,7 @@ tags: [research, crypto, ethereum, stablecoins, enterprise, DeFi]
 status: active
 sector: Consumer & Digital
 source: ChatGPT conversation export (Conv 50)
+source_type: deep-dive
 propagated_to: [BTC-CRYPTO]
 ---
 
@@ -126,3 +127,7 @@ The core investment dynamic: Ethereum's network fundamentals (stablecoin volumes
 - Data from Glassnode (NUPL, exchange balances), DeFiLlama (TVL), Artemis (stablecoin activity), Grayscale research, various analytics platforms
 - Analysis covers 6-month window ending December 2025
 - Citation markers preserved from source but URLs not available in export
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

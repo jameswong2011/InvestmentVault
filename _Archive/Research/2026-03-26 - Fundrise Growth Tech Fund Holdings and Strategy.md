@@ -4,6 +4,7 @@ tags: [research, private-markets, venture, fundrise]
 status: active
 sector: Venture / Private Markets
 source: Grok AI conversation export
+source_type: deep-dive
 ---
 
 # Fundrise Growth Tech Fund Holdings and Strategy

@@ -5,6 +5,7 @@ status: active
 sector: Enterprise Software
 ticker: NOW
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [NOW]
 ---
 
@@ -406,4 +407,7 @@ Why is this here?
 ## Related
 - [[Theses/NOW - ServiceNow]] — M&A transformation and cognitive enterprise architecture
 - [[Research/2026-03-29 - PLTR - Gemini Automation Platforms Canvas]] — ServiceNow vs Palantir comparison
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Acquisitions and new entrants (Cognitive Enterprise Architecture See-Think-Act framework; full $12B+ M&A spree breakdown — Moveworks, Armis, Veza, data.world, Logik.ai, Quality 360, Cuein, 4Industry, G2K, Atrinet) and §Industry history (Phase 5 platform-war pivot from "system of record" to "AI Operating System").

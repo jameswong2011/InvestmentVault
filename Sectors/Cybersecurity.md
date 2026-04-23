@@ -9,6 +9,7 @@ status: active
 ## Active Theses
 - [[Theses/CRWD - CrowdStrike Holdings]] — Single-agent architecture flywheel (30 modules, 1 agent, 1 console); $5.25B ARR +24%, Falcon Flex $1.69B +120% (consumption-pricing moat). Agentic AI lead 12-24mo (Charlotte AI 6x usage, AIDR first-mover in AI workload security). Post-July-2024 outage: >95% retention + RPO +36% validating switching cost depth. Conviction medium.
 - [[Theses/PANW - Palo Alto Networks]] — Platform consolidation play; unified telemetry ML flywheel across network, cloud, endpoint, identity, observability. NGS ARR $6.3B (+33%), FY2026 guide $11.3B (+22-23%). $25B CyberArk + $3.35B Chronosphere create five-pillar architecture. Conviction medium.
+- [[Theses/NET - Cloudflare]] — Cloudflare (edge network + Zero Trust / SASE convergence); 330+ cities, dev-centric platform; $325-540M est. security ARR, 2-5 years behind ZS/PANW in enterprise maturity but architectural distinct play. Re-scoped from Enterprise Software on 2026-04-22.
 
 ## Market Overview
 
@@ -87,7 +88,7 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 - [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] — Product/technology-level comparison: CRWD single-agent + agentic AI lead vs PANW five-pillar cross-domain data lake; ~40% product overlap; complements-not-substitutes verdict for portfolio construction
 
 ## Cross-Sector Links
-- [[Sectors/Enterprise Software]] — PANW previously tracked in Enterprise Software watchlist; cybersecurity platformization shares dynamics with enterprise software consolidation (NOW, PLTR)
+- [[_Archive/Sectors/Enterprise Software]] — PANW previously tracked in Enterprise Software watchlist (archived post-2026-04-22 subsector split); cybersecurity platformization shares dynamics with enterprise software consolidation (NOW, PLTR — now in [[Sectors/Enterprise Workflow AI & Automation]])
 - [[Theses/NET - Cloudflare]] — SASE competitor; Cloudflare One platform; $325-540M est. security ARR, 2-5 years behind ZS/PANW in enterprise maturity
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex drives both AI infrastructure AND AI threat escalation, benefiting cybersecurity spending. PANW now tracked as related thesis (cybersecurity as AI derivative play)
 - [[Macro/Investment Strategy for US-Iran Conflict]] — Iran-linked cyber operations as geopolitical demand driver for platform vendors
@@ -100,3 +101,7 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 ### 2026-04-22
 - [[Theses/CRWD - CrowdStrike Holdings]] promoted draft→active via /status; added to Active Theses; removed from Watchlist. Two active theses now in sector: CRWD (medium) + PANW (medium) — complements, ~40% product overlap, distinct architectural theses (single-agent depth vs five-pillar breadth).
 - [[Theses/CRWD - CrowdStrike Holdings]] + [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] follow-up sync: added 3 Key Dynamics bullets — (1) architectural-purity-cannot-be-acquired as structural cost-substrate moat compounding every quarter a new module ships; (2) commercial-model divergence CRWD Flex consumption-pricing vs PANW platformization-tax as GM-durability driver (78-80% vs 74-75%); (3) integration-risk asymmetry mega-deal vs tuck-in M&A as 2-4qtr relative-execution drag probability. Conviction unchanged on both theses. Snapshot: [[_Archive/Snapshots/Cybersecurity (pre-sync 2026-04-22-145012)]].
+- Sector scope expanded: [[Theses/NET - Cloudflare]] re-scoped from Enterprise Software to Cybersecurity per vault subsector taxonomy reorganization (SASE/Zero Trust/edge-security convergence). Cross-Sector Links entry for NET folded into Active Theses. Parent note [[_Archive/Sectors/Enterprise Software]] archived.
+
+### 2026-04-23
+- Wikilink cleanup: Cross-Sector Links: stale `[[Sectors/Enterprise Software]]` → `[[_Archive/Sectors/Enterprise Software]]` (archive-path form; NOW/PLTR now in Enterprise Workflow AI & Automation). Preserves historical reference.

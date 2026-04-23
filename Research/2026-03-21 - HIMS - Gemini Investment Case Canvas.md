@@ -5,6 +5,7 @@ status: active
 sector: Healthcare & MedTech
 ticker: HIMS
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [HIMS]
 ---
 
@@ -169,3 +170,6 @@ Why is this here?
 ## Related
 - [[Theses/HIMS - Hims & Hers Health]] — Vertical integration moat; compounding-to-distribution pivot; cross-sell velocity; peptide optionality; Eucalyptus acquisition; Labs platform; 46% short interest
 - [[Sectors/Healthcare & MedTech]]
+
+## Related Sectors
+- [[Sectors/Consumer Telehealth]]

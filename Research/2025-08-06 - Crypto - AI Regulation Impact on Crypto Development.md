@@ -4,6 +4,7 @@ tags: [research, crypto, regulation, AI, ethereum, solana, cardano, polkadot, av
 status: active
 sector: Consumer & Digital
 source: ChatGPT conversation export (Conv 21)
+source_type: deep-dive
 propagated_to: [BTC-CRYPTO]
 ---
 
@@ -136,3 +137,7 @@ Emerging hybrid applications enabled by the regulatory environment:
 - ChatGPT deep-research conversation export; structured report format with citations
 - Analysis covers federal + state regulation impact on technical development, VC investment, developer engagement, and ecosystem growth
 - Data from NCSL (state AI law tracking), R Street Institute, CV VC (venture data), Electric Capital (developer stats)
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

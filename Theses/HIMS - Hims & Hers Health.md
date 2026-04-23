@@ -3,7 +3,7 @@ date: 2026-01-22
 tags: [thesis, HIMS, healthcare-medtech, telehealth, DTC-healthcare, compounding, GLP-1, peptides]
 status: active
 conviction: medium
-sector: Healthcare & MedTech
+sector: Consumer Telehealth
 ticker: HIMS
 source: Multi-source synthesis (Claude, ChatGPT, Gemini, web research)
 ---
@@ -199,7 +199,7 @@ Hims & Hers operates as "Spotify for healthcare" — a consumer subscription pla
 - [[Research/2026-03-20 - HIMS Investment Case Deep Dive]] — Comprehensive Claude analysis covering business model, regulatory landscape, competitive positioning, financial profile
 - [[Research/2026-03-21 - HIMS - Gemini Investment Case Canvas]] — Full equity research report: strategic evolution, regulatory reckoning, global scale frontier
 - [[Research/2026-02-12 - HIMS - Gemini Analysis Outline Canvas]] — Earlier institutional analysis and strategic outlook (Jan 2026 context)
-- [[Sectors/Healthcare & MedTech]]
+- [[Sectors/Consumer Telehealth]]
 
 **Key External Sources (Apr 2026):**
 - [Novo Nordisk termination PR](https://www.prnewswire.com/news-releases/novo-nordisk-terminates-collaboration-with-hims--hers-health-inc-due-to-concerns-about-their-illegal-mass-compounding-and-deceptive-marketing-302488189.html)
@@ -224,3 +224,7 @@ Hims & Hers operates as "Spotify for healthcare" — a consumer subscription pla
 
 ### 2026-01-22
 - Initial thesis stub created. Distilled from 4 source segments across 1 conversation. Filtered for non-consensus views and differentiated analysis.
+
+### 2026-04-22
+- Sector re-scoped: Healthcare & MedTech → Consumer Telehealth (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale `[[Sectors/Healthcare & MedTech]]` in Related Research with `[[Sectors/Consumer Telehealth]]` following sector note fill — no thesis-body content changed.

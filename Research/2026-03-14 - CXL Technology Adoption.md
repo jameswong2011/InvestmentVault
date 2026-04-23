@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # CXL Technology Adoption
@@ -67,3 +68,6 @@ Analyst estimates for the CXL market vary significantly based on scope. **Yole I
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Related Research — CXL relevance to EPYC server memory architecture for AMD CPU+GPU integration in Helios rack; CXL bandwidth constraints illustrate why NVLink (7x PCIe) remains the dominant scale-up fabric for merchant GPU despite open-standard alternatives.

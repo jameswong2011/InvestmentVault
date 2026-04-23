@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Nvidia PhyX and Physical AI
@@ -65,3 +66,6 @@ Nvidia has built what is arguably the most defensible competitive position in te
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics (PhysX 5 GPU-only features requiring CUDA SM6.0+ widen performance gap with each hardware generation — Havok/MuJoCo/Drake/Brax/Genesis comparative analysis shows no merchant alternative), Acquisitions/new entrants ("partnership conversion" strategy: Siemens/Dassault/Ansys/DeepMind/Microsoft all build on Nvidia's infrastructure rather than compete), and Investor heuristics #5 (Physical AI $50T opportunity framing per Jensen).

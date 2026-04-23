@@ -3,7 +3,7 @@ date: 2026-01-06
 tags: [thesis, meta, consumer-digital, advertising, AI]
 status: active
 conviction: medium
-sector: Consumer & Digital
+sector: Social Platforms & Digital Advertising
 ticker: META
 source: Consolidated from Claude, ChatGPT, Grok, Gemini conversation exports; supplemented with April 2026 web research
 ---
@@ -194,7 +194,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]] — Vertiv's OCP committee co-development with Meta; cooling infrastructure for AI data centers
 - [[Research/2025-12-05 - Macro - Gemini AI Bubble Risk Canvas]] — The AI Solvency Gap framework; $600B revenue requirement to justify hyperscaler capex
-- [[Sectors/Consumer & Digital]] — Sector Note
+- [[Sectors/Social Platforms & Digital Advertising]] — Sector Note
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch; hyperscaler capex fatigue dynamics
 
 ## Log
@@ -209,3 +209,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 ### 2026-04-15
 - [Complete thesis restructure]: Rewrote to Thesis Template format; consolidated all LLM imports; added Summary, Business Model, Industry Context, Catalysts; updated all metrics to April 2026 — conviction unchanged (medium), status draft to active.
 - [ZIP audit]: All 4 archives spot-checked; no unique META content missed — conviction unchanged.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Social Platforms & Digital Advertising (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Consumer & Digital]] with [[Sectors/Social Platforms & Digital Advertising]] in Related Research list.

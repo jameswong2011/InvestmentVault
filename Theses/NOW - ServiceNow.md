@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, enterprise-software, NOW, AI-automation, agentic-AI, cybersecurity]
 status: active
 conviction: medium
-sector: Enterprise Software
+sector: Enterprise Workflow AI & Automation
 ticker: NOW
 source: Consolidated from ChatGPT, Gemini Canvas, Claude deep-dive, web research
 ---
@@ -189,7 +189,7 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 - [[Research/2026-01-06 - ServiceNow Stock Decline and AI Traction]] — Stock decline analysis; institutional ownership patterns; analyst consensus
 - [[Theses/PLTR - Palantir]] — Competing enterprise AI data layer approach (Ontology vs CMDB); complementary not competitive
 - [[Theses/NET - Cloudflare]] — Enterprise software platform expansion dynamics and competitive positioning
-- [[Sectors/Enterprise Software]] — Sector-level dynamics and cross-company analysis
+- [[Sectors/Enterprise Workflow AI & Automation]] — Sector-level dynamics and cross-company analysis
 
 ## Log
 
@@ -198,3 +198,7 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 
 ### 2026-04-14
 - [Thesis created]: Built from ChatGPT/Gemini/Claude research on acquisition strategy, CMDB vs Ontology, AI platform positioning. Added AI disruption risk deep-dive (10-15% 3yr, 25-30% 5yr probability) — conviction unchanged.
+
+### 2026-04-22
+- Sector re-scoped: Enterprise Software → Enterprise Workflow AI & Automation (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced `[[Sectors/Enterprise Software]]` → `[[Sectors/Enterprise Workflow AI & Automation]]` in Related Research section during sector-fill of [[Sectors/Enterprise Workflow AI & Automation]].

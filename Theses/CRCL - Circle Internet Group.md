@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, CRCL, stablecoins, USDC, crypto, fintech, payments]
 status: active
 conviction: medium
-sector: Crypto & Digital Assets
+sector: Blockchain & Stablecoins
 ticker: CRCL
 ---
 
@@ -243,9 +243,16 @@ Circle remains a leveraged bet on interest rates with a permanently value-destru
 - [[Research/2025-12-26 - ETH - Ethereum Investment Dynamics Deep Dive]] — Stablecoin settlement $52.9T, enterprise use cases
 - [[Research/2026-04-15 - BTC-CRYPTO - Comprehensive Digital Assets Update April 2026 - deep-dive]] — Stablecoin market $318.6B ATH, GENIUS Act, CLARITY Act
 - [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] — Broader digital assets thesis; stablecoin infrastructure layer analysis
-- [[Sectors/Crypto & Digital Assets]] — Sector Note with stablecoin competitive landscape
-- [[Sectors/Financial Services]] — Cross-sector connection: stablecoin regulation reshaping banking
+- [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]] — Stablecoin regulatory framework (GENIUS Act, MiCA); CRCL as primary equity expression
+- [[Sectors/Blockchain & Stablecoins]] — Sector Note with stablecoin competitive landscape
 
 ## Log
 
 - **2026-04-15**: Thesis created at ~$108 ($21B market cap). Five non-consensus catalysts: Coinbase renegotiation, GENIUS Act yield prohibition, x402/AI agents, CPN as SWIFT replacement, EURC MiCA monopoly — conviction medium, upgrade on Coinbase renegotiation success + CPN volume.
+
+### 2026-04-22
+- Sector re-scoped: Crypto & Digital Assets → Blockchain & Stablecoins (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Crypto & Digital Assets]] with [[Sectors/Blockchain & Stablecoins]] in Related Research following sector-fill prompt. Conviction unchanged.
+
+### 2026-04-23
+- Wikilink cleanup: Related Research: dropped stale `[[Sectors/Financial Services]]` (archived sector) and added `[[Macro/Stablecoin Regulation as Geopolitical Infrastructure]]` macro link — symmetric with macro's forward reference. Conviction unchanged.

@@ -4,6 +4,7 @@ tags: [research, CSGP, real-estate-data, monopoly]
 status: active
 sector: Enterprise Software
 source: Grok AI conversation export
+source_type: deep-dive
 propagated_to: [CSGP]
 ---
 
@@ -11,6 +12,9 @@ propagated_to: [CSGP]
 
 ## Related Theses
 - [[Theses/CSGP - CoStar Group]]
+
+## Related Sectors
+- [[Sectors/Real Estate Data & SaaS]]
 
 ## Source Content
 

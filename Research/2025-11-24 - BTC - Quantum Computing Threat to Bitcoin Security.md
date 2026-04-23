@@ -4,6 +4,7 @@ tags: [research, crypto, bitcoin, quantum-computing, risk]
 status: active
 sector: Crypto
 source: Grok AI conversation export
+source_type: deep-dive
 ---
 
 # Quantum Computing Threat to Bitcoin Security
@@ -81,3 +82,7 @@ Geopolitical shocks or breakthroughs (e.g., in logical qubit density) could acce
   - **Ecosystem Response**: Ethereum targets quantum-readiness by 2028 [post:1]; Bitcoin discussions favor backward-compatible shifts [post:8].
 
 In essence, Shor’s poses an existential but addressable threat to ECDSA—more urgent than to hashing, but with a 10–20 year runway for action. Quantum-resistant Bitcoin is feasible; the real challenge is consensus.
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

@@ -4,6 +4,7 @@ tags: [research, consumer-digital]
 status: active
 sector: Consumer & Digital
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # AppLovin AXON Engine Differentiation
@@ -59,5 +60,7 @@ The timeline tells a story of accelerating ambition. AppLovin quietly began test
 
 ---
 
-## Related
-- [[Sectors/Consumer & Digital]]
+## Related Sectors
+- [[Sectors/Mobile Advertising Technology]]
+- [[Sectors/Social Platforms & Digital Advertising]] — cited in §Macro shifts #6 (SEC identifier-bridging probe as relative advantage to walled gardens — Meta, Google — that own identity graph outright without cross-platform stitching)
+- [[Sectors/Video Game Publishing]] — cited in §Related Research (AXON engine mechanics relevant to Zynga's Take-Two-owned D2C mobile strategy post the April 2025 Epic v. Apple contempt ruling that banned Apple revenue share on alternative-payment links)

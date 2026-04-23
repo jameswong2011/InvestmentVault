@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, semiconductors, NAND, kioxia, memory, AI-storage]
 status: active
 conviction: medium
-sector: Semiconductors & Photonics
+sector: NAND Memory & Storage
 ticker: 285A.T
 ---
 
@@ -169,14 +169,15 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 - [[Research/2026-04-15 - SNDK - Investment Evaluation]] — Post-separation NAND assessment; Kioxia JV structure analysis
 - [[Research/2026-03-31 - SanDisk Valuation Assessment]] — NAND structural shortage thesis; wafer supply-demand model
 - [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]] — TurboQuant impact on memory; Jevons Paradox framework
+- [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] — Full deep-dive on ICLR 2026 paper: 3-bit KV cache, ≥6× compression, Jevons Paradox analyst consensus, Mar 24 memory-stock selloff (SK Hynix -6.2%, Micron -5.8%, Samsung -4.7%, SNDK -8%)
 - [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]] — Edge/local AI inference as net-new NAND demand vector
 - [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]] — SanDisk AI storage thesis (covers JV dynamics)
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM4 vendor yields; competitive dynamics affecting NAND capex diversion
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]] — Samsung/Micron/SK Hynix capex allocation and HBM-vs-NAND priority
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — HBM shortage dynamics; inference economics
 - [[Theses/SNDK - SanDisk]] — Flash Ventures JV partner; shared thesis dynamics
-- [[Sectors/NAND Flash & Storage]] — NAND sector note: competitive dynamics, YMTC disruption analysis, product-level technology comparison, HBF category outlook
-- [[Sectors/Semiconductors]]
+- [[Sectors/NAND Memory & Storage]] — NAND sector note: competitive dynamics, YMTC disruption analysis, product-level technology comparison, HBF category outlook
+- [[Sectors/Semiconductor Capital Equipment]] — WFE sector note: TEL cryogenic etch HVM 2026 for 400L NAND (Samsung first customer); JEDEC HBM4 900µm relaxation delays hybrid-bonding to HBM5; equipment-adjacent secondary sector reference
 
 ## Log
 ### 2026-04-16 (NAND sector research sync)
@@ -187,3 +188,15 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 ### 2026-04-15
 - [Thesis created]: Split from KIOXIA-SNDK archive. Consolidated ChatGPT/Gemini/Claude/web research. Stock ¥35,950 (vs ¥15,210 at original thesis). Q3 FY2025 record ¥543.6B rev, JV extended to 2034, BiCS10 expedited to 2026. Conviction medium — structural thesis offset by extreme appreciation, PE overhang, cycle risk.
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors & Photonics → NAND Memory & Storage (vault-wide subsector taxonomy reorganization).
+
+### 2026-04-22 (Semicap sector rebuild sync)
+- Wikilink cleanup: Replaced stale `[[Sectors/Semiconductors]]` parent reference with `[[Sectors/Semiconductor Capital Equipment]]` in Related Research; 285A remains listed in Semicap sector's Equipment-Adjacent scope (TEL cryogenic etch HVM 2026 for 400L NAND, Kokusai batch ALD for 3D NAND recovery). Thesis body unchanged; conviction unchanged.
+
+### 2026-04-23
+- Wikilink cleanup: Related Research: `[[Sectors/NAND Flash & Storage]]` → `[[Sectors/NAND Memory & Storage]]` (sector file renamed; pure rename fix). Conviction unchanged.
+
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]]: KV cache compression is DRAM-resident (HBM), zero architectural impact on NAND; validates Bear Case #149 / Risk #5 framing that TurboQuant-in-isolation does not threaten NAND demand — compound-risk only if paired with Muon + quantization. Conviction unchanged (medium).

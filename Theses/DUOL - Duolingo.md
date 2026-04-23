@@ -3,7 +3,7 @@ date: 2026-04-14
 tags: [thesis, DUOL, consumer-digital, edtech, AI, gamification]
 status: active
 conviction: medium
-sector: Consumer & Digital
+sector: Consumer Edtech
 ticker: DUOL
 source: Consolidated from Claude, ChatGPT, Gemini conversation exports; Quartr article; web research April 2026
 ---
@@ -149,7 +149,7 @@ DAU/MAU ratio of 37.3% — extraordinary for a consumer app, reflecting genuine 
 ## Related Research
 
 - [[Research/2025-09-22 - DUOL - Gemini Analysis Canvas]] — Interactive analysis of Duolingo stock performance, fundamental metrics, AI competitive dynamics, and user sentiment comparison (Duolingo Max vs. ChatGPT). Covers Q2 2025 data.
-- [[Sectors/Consumer & Digital]]
+- [[Sectors/Consumer Edtech]]
 
 ## Log
 
@@ -164,3 +164,9 @@ DAU/MAU ratio of 37.3% — extraordinary for a consumer app, reflecting genuine 
 
 ### 2025-12-01
 - [Initial creation]: Distilled from 1 source segment (Quartr article). Filtered for non-consensus views.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Consumer Edtech (vault-wide subsector taxonomy reorganization).
+
+### 2026-04-22 (later)
+- Wikilink cleanup: Replaced stale `[[Sectors/Consumer & Digital]]` in Related Research with `[[Sectors/Consumer Edtech]]` after Consumer Edtech sector note was fully populated.

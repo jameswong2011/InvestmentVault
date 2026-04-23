@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, eink, semiconductors, displays, ESL, monopoly]
 status: active
 conviction: high
-sector: Semiconductors & Displays
+sector: Display Technology & E-Paper
 ticker: EINK
 exchange: 8069.TW
 ---
@@ -235,7 +235,7 @@ Next-gen (Kaleido 4, Gallery 4, Carta 1400) not expected before 2027. Current fo
 
 ## Related Research
 
-- [[Sectors/Semiconductors]]
+- [[Sectors/Display Technology & E-Paper]]
 
 ## Log
 
@@ -247,3 +247,7 @@ Next-gen (Kaleido 4, Gallery 4, Carta 1400) not expected before 2027. Current fo
 
 ### 2026-04-15
 - [Full restructure + web research]: Aligned to Thesis Template format, consolidated duplicates, integrated deep web research. Key new data: Morrisons 497-store UK ESL rollout, VusionGroup EUR 1,527M (+51%), IRIS Optronics ChLCD identified as new competitive vector, Guanyin plant groundbreaking, 15% US-Taiwan tariff confirmed, stock updated to TWD ~150 — conviction unchanged, thesis strengthened by broadening ESL adoption.
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors & Displays → Display Technology & E-Paper (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] Related Research pointer with [[Sectors/Display Technology & E-Paper]] — conviction unchanged, pure wikilink hygiene.

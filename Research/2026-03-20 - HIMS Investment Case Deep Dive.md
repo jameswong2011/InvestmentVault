@@ -4,6 +4,7 @@ tags: [research, healthcare-medtech]
 status: active
 sector: Healthcare & MedTech
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # HIMS Investment Case Deep Dive
@@ -83,3 +84,6 @@ The company faces a formidable array of legal proceedings. Beyond the now-resolv
 
 ## Related
 - [[Sectors/Healthcare & MedTech]]
+
+## Related Sectors
+- [[Sectors/Consumer Telehealth]]

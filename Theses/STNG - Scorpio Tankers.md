@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, tankers, energy, geopolitics, STNG]
 status: active
 conviction: medium
-sector: Energy & Commodities
+sector: Product Tankers & Maritime Shipping
 ticker: STNG
 ---
 
@@ -220,8 +220,7 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ## Related Research
 
-- [[Sectors/Energy & Commodities]] — Sector Note; includes $150 oil playbook (tanker rates $150-200K+/day, 15-25% fleet capacity reduction), thermal coal substitution dynamics, and WTI futures data
-- [[Sectors/Defense & Geopolitics]]
+- [[Sectors/Product Tankers & Maritime Shipping]] — Sector Note; includes $150 oil playbook (tanker rates $150-200K+/day, 15-25% fleet capacity reduction), thermal coal substitution dynamics, and WTI futures data
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — Diesel/gasoil ranked #2 (up 57%); VLCC freight $423K/day; logistics shock amplifying tanker demand
 - [[Research/2026-04-02 - GCC Market Shorting Options]] — GCC shorting instruments as complementary hedge
 - [[Macro/Iran War Macroeconomic Scenario]] — STNG listed as Position #1; structural tonne-mile increase from rerouting; April 8 ceasefire dynamics
@@ -231,6 +230,7 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Market complacency vs physical disruption; net oil shortage 14.5-16.5M bbl/day; logistics and rerouting analysis
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Sanctions arbitrage creating ton-miles; Hawkish Start / Recessionary Finish macro framework; private credit systemic risk
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — June 2025 12-day conflict; 550+ Iranian missiles; fragile ceasefire; dual-theater stretch risk (Taiwan)
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience: pivoted to maritime smuggling + 750-ton Iranian shipment intercepted mid-2025 demonstrates structural shift from overland to sea routes — reinforces "kill-switch timing" Outstanding Question on diplomatic resolution durability
 
 ## Log
 
@@ -250,3 +250,13 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ### 2026-04-12
 - Initial thesis created: Iran-Hormuz disruption. Dual-closure analysis: ~15-25% ton-mile demand shock, no pipeline bypass for refined products — conviction unchanged, chokepoint asymmetry established.
+
+### 2026-04-22
+- Sector re-scoped: Energy & Commodities → Product Tankers & Maritime Shipping (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale [[Sectors/Energy & Commodities]] body link with [[Sectors/Product Tankers & Maritime Shipping]] following sector fill — conviction unchanged, no change in underlying thesis.
+
+### 2026-04-23
+- Wikilink cleanup: Dropped stale `[[Sectors/Defense & Geopolitics]]` body reference (archived sector, no direct successor — geopolitical framing captured in linked Iran macros). Conviction unchanged.
+
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Iran's maritime pivot post-Assad + 750-ton shipment intercept demonstrates rearmament flows depend on sustained shipping traffic through Hormuz-adjacent waters — indirectly supports "shadow fleet structural bifurcation" Insight and the kill-switch framework. Conviction unchanged (medium).

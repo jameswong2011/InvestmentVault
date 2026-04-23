@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Lam Research and Applied Materials Evaluation
@@ -92,3 +93,6 @@ Reo, this is a well-scoped request — I'll dive into a comprehensive research p
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (LRCX/AMAT/TEL moats, end-market mix), Acquisitions and new entrants (Tier-1 supplier M&A context), and Investor heuristics (quality vs value framework, China exposure trade-offs).

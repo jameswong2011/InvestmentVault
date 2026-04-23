@@ -85,3 +85,7 @@ propagated_to: [GAW]
 ## Related Research
 - [[Theses/GAW - Games Workshop]]
 - [[Research/2026-04-15 - GAW - 3D Printing Competitive Impact]]
+
+## Related Sectors
+- [[Sectors/Hobby & Tabletop Gaming]]
+- [[Sectors/Video Game Publishing]] — cited in §Related Research (Games Workshop's 94% licensing operating margin on Space Marine 2 (Saber/Focus, 12M+ players by April 2026) and Amazon Studios Warhammer 40K partnership demonstrates the AAA-video-game-to-IP cross-licensing economics that the Video Game Publishing sector note analyzes from the publisher side)

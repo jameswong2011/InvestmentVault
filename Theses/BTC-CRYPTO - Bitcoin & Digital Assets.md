@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, crypto, bitcoin, ethereum, stablecoins, quantum-risk, macro, digital-assets]
 status: active
 conviction: medium
-sector: Crypto & Digital Assets
+sector: Blockchain & Stablecoins
 ticker: BTC-CRYPTO
 asset_class: commodity/currency
 ---
@@ -314,12 +314,19 @@ The quantum transition creates three investable dynamics:
 - [[Research/2025-08-06 - Crypto - AI Regulation Impact on Crypto Development]] — 2025 US AI regulation impact on ETH/SOL/ADA/DOT/AVAX; TRAIGA sandbox, Right to Compute, VC flows, AI-blockchain convergence (ChatGPT)
 - [[Research/2026-04-01 - MSTR - Strategy Preferred Stock Capital Stack]] — STRF/STRC/STRK/STRD/MSTR seniority hierarchy, dividend terms, decision framework (ChatGPT)
 - [[Research/2025-12-26 - ETH - Ethereum Investment Dynamics Deep Dive]] — Stablecoin settlement $52.9T, enterprise use cases (Shenzhen Futian, Bhutan NDI, Coca-Cola Baseline), fundamentals-price divergence (ChatGPT)
-- [[Sectors/Precious Metals]] — Precious metals macro context; digital gold comparison
-- [[Sectors/Consumer & Digital]] — Sector context for payment infrastructure
-- [[Sectors/Energy & Commodities]] — Commodity market structure parallels
+- [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]] — Stablecoin regulatory framework (GENIUS Act, MiCA); USDC as US strategic asset vs BRICS mBridge
+- [[Sectors/Blockchain & Stablecoins]] — Primary sector: stablecoin regulatory infrastructure, USDC/Tether competitive dynamics, blockchain rails
+- [[Sectors/Precious Metals]] — Precious metals macro context; digital gold comparison; commodity market structure parallels
 
 ## Log
 
 ### 2026-04-15
 - [Initial thesis creation]: Synthesised 8 vault research notes + deep web research into commodity/currency-adapted thesis format. BTC ~$91K, ETF demand 2.7x daily supply, stablecoin market $318.6B ATH, GENIUS Act signed, CLARITY Act advancing — conviction set at medium.
 - [ZIP archive audit + imports]: 4 new research notes created from previously unimported conversations (Circle/BRICS geopolitics, AI regulation impact, Strategy preferred stock stack, ETH investment dynamics). All wikilinked — conviction unchanged.
+
+### 2026-04-22
+- Sector re-scoped: Crypto & Digital Assets → Blockchain & Stablecoins (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: stale `[[Sectors/Energy & Commodities]]` cross-sector link consolidated into existing `[[Sectors/Precious Metals]]` reference (commodity market structure parallels framing preserved). Triggered by Precious Metals sector fill.
+
+### 2026-04-23
+- Wikilink cleanup: Related Research: replaced stale `[[Sectors/Consumer & Digital]]` with `[[Sectors/Blockchain & Stablecoins]]` (primary sector post-reorg) and added `[[Macro/Stablecoin Regulation as Geopolitical Infrastructure]]` macro link — symmetric with macro's forward reference. Conviction unchanged.

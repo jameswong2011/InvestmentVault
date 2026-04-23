@@ -3,7 +3,7 @@ date: 2026-04-14
 tags: [thesis, semiconductors, BESI, hybrid-bonding, HBM, advanced-packaging, CPO]
 status: active
 conviction: medium
-sector: Semiconductors
+sector: Semiconductor Capital Equipment
 ticker: BESI
 source: Vault research synthesis + web search (TrendForce, Investing.com, Simply Wall St, Reuters, 36Kr, EE Times, BESI IR)
 ---
@@ -211,7 +211,7 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 - [[Theses/285A - Kioxia]] — Adjacent NAND thesis; BiCS die stacking technology
 - [[Research/2026-04-15 - BESI - Hybrid Bonding Market Projections]] — HB market $1.47B→$5.6B (2030) at 25.1% CAGR, D2W positioning, Samsung/SK Hynix/Micron adoption timelines
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis positions BESI as Tier 2 satellite (10% allocation); frames hybrid bonding debate as market distraction — equipment spend growing 40%+ regardless of hybrid bonding timeline via CoWoS expansion
-- [[Sectors/Semiconductors]] — Sector Note
+- [[Sectors/Semiconductor Capital Equipment]] — Sector Note
 
 ## Log
 
@@ -229,3 +229,9 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ### 2026-04-14 (initial)
 - [Thesis created]: Built from 3 research notes + web search. Core thesis: 3D integration monopoly mispriced as HBM timing bet. Conviction medium.
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors → Semiconductor Capital Equipment (vault-wide subsector taxonomy reorganization).
+
+### 2026-04-22 (Wikilink cleanup)
+- Wikilink cleanup: Replaced stale `[[Sectors/Semiconductors]]` parent reference with `[[Sectors/Semiconductor Capital Equipment]]` in Related Research; parent sector note retired during vault reorganisation. Thesis body unchanged; conviction unchanged.

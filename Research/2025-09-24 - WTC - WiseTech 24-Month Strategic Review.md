@@ -12,6 +12,9 @@ propagated_to: [WTC]
 ## Related Theses
 - [[Theses/WTC - WiseTech Global]]
 
+## Related Sectors
+- [[Sectors/Logistics & Supply Chain Software]]
+
 ## Source Content
 
 > [!info] ChatGPT Conversation Export

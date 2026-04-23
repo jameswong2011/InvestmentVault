@@ -4,6 +4,7 @@ tags: [research, shop, enterprise-software, ecommerce, deep-dive]
 status: active
 sector: Enterprise Software
 source: Web research April 2026 — multiple sources
+source_type: deep-dive
 propagated_to: [SHOP]
 ---
 
@@ -158,3 +159,6 @@ Deep web research to supplement and update [[Theses/SHOP - Shopify]] thesis rest
 - [Shopify AI-first Engineering — Bessemer](https://www.bvp.com/atlas/inside-shopifys-ai-first-engineering-playbook)
 - [Lemon Squeezy 2026 Update](https://www.lemonsqueezy.com/blog/2026-update)
 - [Shopify Market Share 2026 — Yaguara](https://www.yaguara.co/shopify-market-share/)
+
+## Related Sectors
+- [[Sectors/E-commerce Infrastructure]] — back-reference added 2026-04-22 during sector-fill

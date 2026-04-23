@@ -177,3 +177,7 @@ If full disintermediation from stablecoin payments takes hold:
 The greatest existential risk is not the tech itself — but the **reduction of the card network to a passive observer** in an increasingly programmable financial ecosystem.
 
 Would you like a visual scenario matrix or a financial impact model across these futures?
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill
+- [[Sectors/E-commerce Infrastructure]] — back-reference added 2026-04-22 during sector-fill ($187B US merchant card processing fee pool contested by Shopify-Stripe-Coinbase USDC rails)

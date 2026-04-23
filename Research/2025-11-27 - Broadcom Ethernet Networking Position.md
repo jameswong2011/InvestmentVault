@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Broadcom Ethernet Networking Position
@@ -49,3 +50,6 @@ The critical insight for investors and industry observers: Broadcom wins regardl
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Custom Silicon & Networking Semiconductors]] — Back-reference: cited in sector fill for Arista/Cisco/Nvidia Spectrum-X competitive positioning and Broadcom merchant-silicon-beneath-everyone-else's-systems thesis.

@@ -5,6 +5,7 @@ status: active
 sector: Crypto & Digital Assets
 ticker: ETH
 source: Gemini Canvas export
+source_type: deep-dive
 ---
 
 # The Industrialization of Trust: An In-Depth Analysis of Ethereum’s Investment Dynamics, Stablecoin Hegemony, and Ecosystem Maturation in 2025
@@ -165,3 +166,7 @@ Products:
  Gemini Apps
 Why is this here?
  This activity was saved to your Google Account because the following settings were on: Gemini Apps Activity. You can control these settings  here.Gemini Apps
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

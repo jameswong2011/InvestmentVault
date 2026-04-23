@@ -3,6 +3,7 @@ date: 2025-12-11
 tags: [research]
 status: active
 source: Claude conversation export
+source_type: deep-dive
 propagated_to: [DE]
 ---
 

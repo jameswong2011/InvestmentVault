@@ -4,6 +4,7 @@ tags: [research, macro, AI, bubble, semiconductors, valuation, gemini-canvas]
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+source_type: scenario
 propagated_to: [NVDA, AVGO]
 ---
 
@@ -255,3 +256,6 @@ Why is this here?
 - [[Theses/NVDA - Nvidia]] — AI infrastructure valuation
 - [[Theses/AVGO - Broadcom]] — Custom ASIC market dynamics
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Social Platforms & Digital Advertising]] — cited in §Related Research; the $600B AI Solvency Gap framework contextualizes Meta's $115–135B 2026 capex (the largest capital commitment in advertising industry history) and bounds the bull case for AI-retrieval-system returns across Meta, Google, and Amazon ad platforms
