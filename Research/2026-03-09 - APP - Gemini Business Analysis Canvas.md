@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: APP
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [APP]
 ---
 
@@ -196,3 +197,7 @@ Why is this here?
 
 ## Related
 - [[Theses/APP - AppLovin]] — AXON engine competitive dynamics
+
+## Related Sectors
+- [[Sectors/Mobile Advertising Technology]]
+- [[Sectors/Social Platforms & Digital Advertising]] — cited in §Competitive dynamics (Meta Advantage+ $60B run rate vs AppLovin AXON competitive framing) and §Investor heuristics non-consensus insight #1 (walled-garden AI recovery is further along than consensus implies, compressing the ad-tech premium)

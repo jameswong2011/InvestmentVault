@@ -4,6 +4,7 @@ tags: [research, semiconductors, photonics, CPO, silicon-photonics, gemini-canva
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [LITE, IQE]
 ---
 
@@ -284,3 +285,7 @@ Why is this here?
 - [[Theses/IQE - IQE]] — III-V semiconductor substrates for photonics
 - [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]] — Later CPO adoption analysis
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Competitive dynamics (silicon photonic foundry stratum), Product level analysis (GF/AMF + Tower + TSMC COUPE + STMicro + Intel Foundry 2026 foundry landscape), Macro shifts (SiPh $2.86B → $10.36B / 24% → 44% transceiver penetration), and Investor heuristics (SiPh foundry buildout as demand catalyst for InP lasers).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (Photonics & Optical Equipment Enablers — GFS/TSEM/FN/TSMC COUPE foundry stratum) and Macro shifts (copper-to-optical transition as WFE complexity driver; BESI ~75% advanced die attach share for COUPE).

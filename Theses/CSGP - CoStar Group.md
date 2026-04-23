@@ -3,7 +3,7 @@ date: 2026-04-14
 tags: [thesis, csgp, real-estate-data, monopoly]
 status: active
 conviction: medium
-sector: Enterprise Software
+sector: Real Estate Data & SaaS
 ticker: CSGP
 ---
 
@@ -159,7 +159,7 @@ The February 2026 launch of Homes AI (powered by Azure OpenAI, integrated with M
 ## Related Research
 
 - [[Research/2026-03-26 - CSGP - CoStar Group Investment Evaluation]] — Grok investment evaluation covering Homes.com, Matterport integration, CRE competitive position
-- [[Sectors/Enterprise Software]] — Sector Note with cross-portfolio context
+- [[Sectors/Real Estate Data & SaaS]] — Sector Note with cross-portfolio context
 
 ## Log
 
@@ -170,3 +170,7 @@ The February 2026 launch of Homes AI (powered by Azure OpenAI, integrated with M
 ### 2026-03-25
 - [Initial thesis]: Distilled from 6 Claude source segments — conviction set at medium.
 - [Grok ingestion]: Linked [[Research/2026-03-26 - CSGP - CoStar Group Investment Evaluation]] — conviction unchanged.
+
+### 2026-04-22
+- Sector re-scoped: Enterprise Software → Real Estate Data & SaaS (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale [[Sectors/Enterprise Software]] reference in Related Research with [[Sectors/Real Estate Data & SaaS]] after sector note fill — no body-section edits.

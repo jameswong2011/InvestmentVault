@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, uber, UBER, consumer-digital, rideshare, delivery, autonomous-vehicles]
 status: active
 conviction: high
-sector: Consumer & Digital
+sector: Mobility & Ridesharing
 ticker: UBER
 source: Multi-source synthesis (Claude, ChatGPT, Grok, web research)
 ---
@@ -226,7 +226,7 @@ This orchestration position becomes more valuable — not less — in an AV futu
 
 ## Related Research
 
-- [[Sectors/Consumer & Digital]] — Sector-level dynamics including platform economics across APP, NFLX, SPOT
+- [[Sectors/Mobility & Ridesharing]] — Sector-level dynamics including US rideshare duopoly stability, AV commercialization inflection, cross-modal subscription economics, worker classification, and advertising margin engine
 - [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]] — Platform marketplace competitive dynamics
 
 ## Log
@@ -239,3 +239,7 @@ This orchestration position becomes more valuable — not less — in an AV futu
 
 ### 2026-04-12
 - [Claude conversation export]: Initial thesis distilled — platform monopoly, AV distribution strategy, Uber One flywheel.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Mobility & Ridesharing (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[_Archive/Sectors/Consumer & Digital]] body wikilink in ## Related Research with [[Sectors/Mobility & Ridesharing]] following subsector sector-note fill — conviction unchanged.

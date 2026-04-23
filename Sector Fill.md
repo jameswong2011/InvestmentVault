@@ -1,0 +1,3 @@
+```
+Fill this sector note. Web-primary research, vault-secondary (theses in Active Theses + linked research via _graph.md). Use exhaustive deep thinking based websearch using maximum thinking budget. After writing: in each Active Thesis, replace any stale [[Sectors/OLD_PARENT]] wikilinks with this sector's wikilink and append a "Wikilink cleanup:" log entry. In each research note cited, add this sector as a back-reference under ## Related Sectors. Populate the sector's ## Related Research with vault notes. Flip status to active when ≥5 sections filled. Don't edit thesis bodies or callouts.
+```

@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # SanDisk HBM and NAND in AI

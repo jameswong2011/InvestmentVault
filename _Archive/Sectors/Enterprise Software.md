@@ -53,7 +53,7 @@ tags: [sector, moc]
 - [[Research/2026-03-31 - NET - Gemini Edge Compute Canvas]] — Cloudflare edge compute competitive analysis
 - [[Research/2026-03-29 - PLTR - Gemini Automation Platforms Canvas]] — Palantir vs ServiceNow: complementary not competitive
 - [[Research/2026-03-21 - PLTR - Gemini Strategy Canvas]] — Palantir strategy, Sovereign AI, and valuation dynamics
-- [[Research/2026-01-15 - PSTG - Gemini Investment Thesis Canvas]] — Pure Storage AI/hyperscale platform thesis
+- [[2026-01-15 - PSTG]] — Pure Storage AI/hyperscale platform thesis
 - [[Research/2026-01-06 - NOW - Gemini Acquisition Strategy Canvas]] — ServiceNow M&A transformation (2023-2025)
 - [[Research/2026-03-30 - FROG - Universal Artifact Management]] — JFrog/Artifactory product overview (Grok)
 - [[Research/2026-03-26 - CSGP - CoStar Group Investment Evaluation]] — CoStar 2025 rev $3.25B (+19%), Homes.com 108M uniques (bundled), investment peak passing. Third Point exited Apr 2026; stock at ~$37 (4.7x P/S). Q1 earnings Apr 28.

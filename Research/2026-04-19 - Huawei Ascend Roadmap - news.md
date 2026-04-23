@@ -70,3 +70,7 @@ For comparison: NVIDIA GB200 NVL72 = 72 GPUs per rack-scale system. Atlas 960 = 
 > "More than 520,000 Ascend 950DT chips, spread out in over 10,000 cabinets, will work together as one machine to deliver 524 EFLOPS in FP8."
 
 > "Huawei hasn't disclosed how its in-house HBM is manufactured, what packaging is used, or which foundry is producing the chip itself."
+
+## Related Sectors
+- [[Sectors/Custom Silicon & Networking Semiconductors]] — Back-reference: cited in sector fill under Acquisitions/new entrants (Huawei Ascend as the China-domestic vertically integrated competitor) and Macro shifts (validates non-Nvidia AI compute architecture at hyperscaler scale — directionally supportive of Broadcom XPU thesis).
+- [[Sectors/Semiconductor Foundries]] — Back-reference: cited in sector fill under Key industry questions #6 (China-domestic foundry split permanence; Ascend 950PR shipped Q1 2026 on SMIC N+2 at 15-46% yield; Atlas 950DT SuperCluster = 524 EFLOPS FP8), Acquisitions and new entrants (Huawei as vertically integrated new entrant — 1.6M dies 2026, ByteDance $5.6B order), and Macro shifts (~$40-50B China AI-compute bucket structurally removed from TSMC addressable market).

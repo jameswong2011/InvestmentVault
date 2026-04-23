@@ -84,3 +84,6 @@ The 3D printing threat is **real but currently contained**. Key variables to mon
 ## Related Research
 - [[Theses/GAW - Games Workshop]]
 - [[Research/2026-04-15 - GAW - Investment Analysis]]
+
+## Related Sectors
+- [[Sectors/Hobby & Tabletop Gaming]]

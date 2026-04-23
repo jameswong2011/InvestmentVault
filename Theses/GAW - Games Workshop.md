@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, consumer, GAW, games-workshop, warhammer, IP-monetization, pricing-power, cultural-moat]
 status: active
 conviction: medium
-sector: Consumer & Digital
+sector: Hobby & Tabletop Gaming
 ticker: GAW
 source: Vault research synthesis + web search (investor.games-workshop.com, License Global, Spikey Bits, Collider, Stockopedia, Bell of Lost Souls)
 ---
@@ -196,7 +196,7 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 
 - [[Research/2026-04-15 - GAW - Investment Analysis]] — Comprehensive financial analysis: £617.5M FY2024/25 revenue, 42.3% blended operating margin, 73.7% ROCE, Amazon Studios partnership
 - [[Research/2026-04-15 - GAW - 3D Printing Competitive Impact]] — 15% hobbyist adoption, 8K+ resin parity, 50–90% cost savings, November 2025 STL mega-leak, structural defense analysis
-- [[Sectors/Consumer & Digital]] — Sector Note
+- [[Sectors/Hobby & Tabletop Gaming]] — Sector Note
 
 ---
 
@@ -206,3 +206,7 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 - Template restructure: Renamed/repositioned Business Model & Product Description section. Added business model framing paragraph.
 - Thesis creation: Behavioral lock-in monopoly mispriced as consumer products. 8 non-consensus insights developed spanning hobby switching costs, 3D printing misframing, licensing infancy, Amazon optionality — conviction medium, moat extraordinary but licensing deceleration and Amazon timeline warrant patience.
 - H1 FY2025/26 integrated: Record £332.1M (+34%), core +15% — conviction unchanged, growth resilience confirmed in "off year."
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Hobby & Tabletop Gaming (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] pointer in Related Research with [[Sectors/Hobby & Tabletop Gaming]] after sector note populated.

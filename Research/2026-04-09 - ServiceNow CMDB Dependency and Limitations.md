@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # ServiceNow CMDB Dependency and Limitations
@@ -77,4 +78,7 @@ Compared to Salesforce custom objects, ServiceNow's key differentiator is its **
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Product level analysis (Now Platform layer-by-layer breakdown — CMDB / Knowledge Graph / RaptorDB / Workflow Data Fabric / Context Engine / AI Agent Fabric / AI Control Tower) and §Competitive dynamics (Atlassian/Salesforce/Dataverse/Palantir flexibility comparison; "data-rich platforms get richer faster" data-gravity thesis from Forrester's Charles Betz).

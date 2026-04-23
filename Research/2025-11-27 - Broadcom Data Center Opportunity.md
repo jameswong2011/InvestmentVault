@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Broadcom Data Center Opportunity
@@ -67,3 +68,7 @@ Broadcom's stock trades at approximately **$354-377** with a market capitalizati
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Custom Silicon & Networking Semiconductors]] — Back-reference: cited in sector fill for custom ASIC SAM ($60–90B by FY2027), 80–90% Ethernet switching silicon share, and Tomahawk product family framing.
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics (Broadcom as XPU design partner at ~60% ASIC share by 2027, complementary rather than competitive to merchant GPU), Acquisitions/new entrants (custom-ASIC program consolidation around Broadcom), and Investor heuristics #2 (ASIC rent captured by Broadcom not hyperscalers — pair-trade long AVGO / short NVDA as hyperscaler diversification hedge).

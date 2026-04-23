@@ -225,38 +225,37 @@ Follow the browser prompt.
 
 ---
 
-## Step 5 — Enable Obsidian plugins
+## Step 5 — Install Obsidian plugins
 
-Open Obsidian → point it at your vault folder → then:
+Do not rely on Obsidian Sync to have carried the plugin binaries across. Install all four from scratch — three from the official Community marketplace, Claudian via BRAT (it is not in the marketplace).
 
-1. Settings → Community plugins → turn off **Restricted Mode**
-2. Enable each of: `dataview`, `templater-obsidian`, `obsidian-git`, `claudian`
-3. Open Claudian (ribbon icon, or `Cmd+P` → "Claudian") to verify it connects to Claude Code
+Open Obsidian → point it at your vault folder → Settings → Community plugins → turn off **Restricted Mode**.
 
-### If Claudian is not in the plugin list
+### 5a — Install the three marketplace plugins
 
-Claudian is a third-party plugin (not in the official Obsidian marketplace), so Obsidian Sync should have carried it across from the old Mac. If it's missing from the list, install it manually from GitHub:
+Community plugins → **Browse**, then for each of the plugins below: search, install, and enable.
 
-**Option A — Direct download (fastest)**
+| Plugin | Marketplace name | Purpose |
+|---|---|---|
+| `dataview` | **Dataview** | Powers inline queries used by a few thesis/sector notes |
+| `templater-obsidian` | **Templater** | Template engine used by `Templates/` |
+| `obsidian-git` | **Obsidian Git** | In-app commit/push to the vault's git remote |
 
-1. Go to [github.com/YishenTu/claudian/releases/latest](https://github.com/YishenTu/claudian/releases/latest) in Safari
-2. Download these three files from the release assets:
-   - `main.js`
-   - `manifest.json`
-   - `styles.css`
-3. Move them into `<vault>/.obsidian/plugins/claudian/` on your new Mac (create the `claudian` folder if it doesn't exist)
-4. In Obsidian: Settings → Community plugins → click the refresh icon → enable **Claudian**
+### 5b — Install Claudian via BRAT
 
-**Option B — BRAT (auto-updates)**
+Claudian is third-party (not in the Obsidian marketplace). BRAT installs it from its GitHub release and keeps it up-to-date automatically.
 
-If you want Claudian to update itself over time:
-
-1. Obsidian → Settings → Community plugins → browse → install **"Obsidian42 - BRAT"** → enable it
-2. Settings → BRAT → **Add Beta plugin**
+1. Community plugins → **Browse** → search for **"Obsidian42 - BRAT"** → install → enable
+2. Settings → **BRAT** → **Add Beta plugin**
 3. Paste: `https://github.com/YishenTu/claudian`
-4. BRAT installs Claudian and pulls new releases automatically
+4. BRAT downloads the latest release into `<vault>/.obsidian/plugins/claudian/`
+5. Back in Community plugins → enable **Claudian**
 
-Requirements either way: Claude Code CLI must be installed (done in Step 1d), and Obsidian 1.4.5+.
+### 5c — Verify Claudian
+
+Open Claudian (ribbon icon, or `Cmd+P` → "Claudian"). It should connect to Claude Code using the `/login` from Step 4.
+
+Requirements: Claude Code CLI installed (Step 1d) and Obsidian 1.4.5+.
 
 ---
 

@@ -87,3 +87,7 @@ Three tensions with existing [[Theses/NVDA - Nvidia]] conviction:
 > "Today's models are largely trained on Hopper. Hopper, 7 nanometer chips are plenty good. The abundance of energy is their advantage." — Jensen Huang on China's compute sufficiency
 
 > "If all of the AI models run best on somebody else's tech stack... you've got to be arguing some ridiculous claim that that's a good thing for the United States." — Jensen Huang on China ecosystem risk
+
+## Related Sectors
+- [[Sectors/Custom Silicon & Networking Semiconductors]] — Back-reference: cited in sector fill under Competitive dynamics and Investor heuristics — Jensen's own ASIC-margin admission ("ASIC margin 65%, Nvidia 70%, what are you really saving?") reframes hyperscaler GPU→ASIC shift as a ~5-point margin transfer to customers that Broadcom retains rather than cannibalization of Broadcom's XPU franchise.
+- [[Sectors/Semiconductor Foundries]] — Back-reference: cited in sector fill under Macro shifts (Jensen's CEO testimony that supply-chain depth + annual cadence, not CUDA, is the primary moat — ~$100B upstream commitments, CoWoS shortage resolved via "swarming") and Investor heuristics #7 (TSMC-NVDA relationship as infrastructural rather than supplier-customer; ASIC challengers must recreate 20+ upstream supplier chains without CEO-level pre-commitment).

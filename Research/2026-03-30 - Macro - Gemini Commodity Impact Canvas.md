@@ -4,6 +4,7 @@ tags: [research, macro, commodities, iran, energy, uranium, gemini-canvas]
 status: active
 sector: Energy & Commodities
 source: Gemini Canvas export
+source_type: scenario
 propagated_to: [STNG, CCJ, LNG]
 ---
 
@@ -179,3 +180,8 @@ Why is this here?
 - [[Macro/Iran War Macroeconomic Scenario]]
 - [[Macro/Commodity Impacts from Iran Tensions]]
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Companion geopolitical/macro analysis
+
+## Related Sectors
+- [[Sectors/Precious Metals]] — cited in sector fill (2026-04-22) for Iran-driven commodity revaluation framework; precious metals sensitivity to oil-driven inflation + hawkish Fed transmission mechanism
+- [[Sectors/Product Tankers & Maritime Shipping]] — cited in sector fill (2026-04-22) for market complacency vs physical disruption framework; 8 mbpd projected March global supply plunge; net oil shortage 14.5-16.5M bbl/day; Qatar Ras Laffan 17% LNG capacity loss with 3-5 year recovery timeline; Cape rerouting +10-14 days and $4,000/container war-risk surcharge — foundational logistics-shock thesis for product tanker ton-mile demand
+- [[Sectors/Uranium & Nuclear Fuel]] — cited in sector fill (2026-04-22) for uranium ranked #1 most positively impacted commodity; uranium spot $101.50/lb late-January peak → $86.20/lb March consolidation; structural deficit amplified by energy-sovereignty repricing; Big Tech gigawatt-scale nuclear PPA inventory; U.S. equity-stake-in-miners policy consideration — foundational Macro shifts (energy sovereignty + financialization) and Investor heuristics inputs

@@ -10,6 +10,9 @@ propagated_to: [WTC]
 ---
 # Cargowise Impact on Freight Forwarding
 
+## Related Sectors
+- [[Sectors/Logistics & Supply Chain Software]]
+
 To provide a thorough analysis, could you clarify a few points:
 
 1. Are you looking for a historical and current impact assessment of CargoWise, or should the focus be primarily forward-looking?

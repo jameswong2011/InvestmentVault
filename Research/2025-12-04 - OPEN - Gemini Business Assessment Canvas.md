@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: OPEN
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [OPEN]
 ---
 
@@ -232,3 +233,6 @@ Why is this here?
 
 ## Related
 - [[Theses/OPEN - Opendoor]] — Founder mode pivot and operational restructuring
+
+## Related Sectors
+- [[Sectors/PropTech & Real Estate Marketplaces]] — primary sector; research cited in sector note's Related Research under Opendoor's Nejatian/Rabois refounding, Mainframe AI pricing engine, 200-employee target, and warrant-dividend capital engineering

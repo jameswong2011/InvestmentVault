@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # ServiceNow Stock Decline and AI Traction
@@ -36,4 +37,7 @@ ServiceNow has **significantly underperformed** the broader software sector, wit
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Investor heuristics (KeyBanc "Death of SaaS" thesis as origin of seat-compression bear narrative; Jackson Ader December 2024 downgrade — "may cede ground to Microsoft in 2026"; institutional ownership at 87% with more buyers than sellers vs retail capitulation; analyst consensus 28 Buy / 2 Hold / 1 Sell).

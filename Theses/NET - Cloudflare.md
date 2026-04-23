@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, net, enterprise-software, edge-computing, cybersecurity, agentic-ai]
 status: active
 conviction: medium
-sector: Enterprise Software
+sector: Cybersecurity
 ticker: NET
 source: Multi-source synthesis (Claude, ChatGPT, Gemini Canvas, Grok, web research)
 ---
@@ -239,3 +239,6 @@ Cloudflare occupies the most strategically valuable position in the internet val
 
 ### 2026-03-20
 - Initial thesis created from Claude conversation — conviction medium.
+
+### 2026-04-22
+- Sector re-scoped: Enterprise Software → Cybersecurity (vault-wide subsector taxonomy reorganization).

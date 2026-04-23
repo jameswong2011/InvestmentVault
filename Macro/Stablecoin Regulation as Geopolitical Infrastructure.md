@@ -83,7 +83,7 @@ ARK Invest has called stablecoins "the most important US strategic asset" — a 
 | **Circle (CRCL)** | Sole issuer of GENIUS Act + MiCA-compliant USD + EUR stablecoins; CPN provides regulated cross-border payments; USYC captures tokenized treasury demand | [[Theses/CRCL - Circle Internet Group]] |
 | **Coinbase (COIN)** | USDC revenue-sharing; Base L2 settlement; x402 protocol developer | — |
 | **Ethereum (ETH)** | 52% of stablecoin supply ($167B) hosted; settlement layer for USDC/EURC | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] |
-| **Ondo (ONDO)** | Tokenized Treasuries (USDY/OUSG) capture yield demand GENIUS Act prohibits for payment stablecoins | [[Sectors/Crypto & Digital Assets]] |
+| **Ondo (ONDO)** | Tokenized Treasuries (USDY/OUSG) capture yield demand GENIUS Act prohibits for payment stablecoins | [[Sectors/Blockchain & Stablecoins]] |
 | **Visa / Mastercard** | Integrating stablecoin settlement; becoming compliance/routing layer | [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]] |
 | **Stripe** | Bridge acquisition + OCC charter; stablecoin-agnostic payment orchestration | — |
 
@@ -147,8 +147,7 @@ The GENIUS Act Section 4(a)(11) prohibition on yield for payment stablecoins is 
 - [[Research/2025-07-10 - CRCL - Circle USDC vs BRICS mBridge Geopolitical Analysis]] — USDC vs BRICS mBridge deep dive
 - [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]] — V/MA stablecoin integration strategies
 - [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]] — Circle S-1 deconstruction
-- [[Sectors/Crypto & Digital Assets]] — Sector Note with stablecoin infrastructure analysis
-- [[Sectors/Financial Services]] — Cross-sector impact on banking and payments
+- [[Sectors/Blockchain & Stablecoins]] — Sector Note with stablecoin infrastructure analysis
 
 ## Open Questions
 

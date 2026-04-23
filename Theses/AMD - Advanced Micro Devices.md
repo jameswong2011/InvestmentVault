@@ -3,7 +3,7 @@ date: 2026-04-21
 tags: [thesis, semiconductors, AMD]
 status: active
 conviction: medium
-sector: Semiconductors
+sector: GPU & AI Compute Accelerators
 ticker: AMD
 source: AMD Q4 2025 earnings (Feb 2026), MLPerf Inference v6.0 (Apr 1 2026), OpenAI 6GW deal (Oct 2025), Meta 6GW deal (Feb/Mar 2026)
 ---
@@ -182,7 +182,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ## Related Research
 
-- [[Sectors/Semiconductors]] — sector MOC; AI accelerator competitive dynamics
+- [[Sectors/GPU & AI Compute Accelerators]] — sector MOC; AI accelerator competitive dynamics
 - [[Theses/NVDA - Nvidia]] — primary GPU competitor; AMD 5–8% vs. NVDA 75% share; vertical software stack comparison
 - [[Theses/AVGO - Broadcom]] — custom ASIC competitor; Pensando vs. Broadcom networking/switching competitive context
 - [[Theses/TSM - Taiwan Semiconductor]] — fab dependency; CoWoS allocation + Taiwan geopolitical tail
@@ -202,3 +202,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 ### 2026-04-21
 - Initial thesis created. Conviction: medium — AMD is the sole merchant full-stack Nvidia alternative (CPU+GPU+DPU+FPGA) benefiting from hyperscaler-imposed diversification (OpenAI 6GW + Meta 6GW = 12GW signed in 5 months), but valuation at 38–41x forward P/E embeds flawless execution across MI400/MI450 hardware parity, ROCm training-parity, EPYC 50% share capture, and CoWoS allocation expansion — each plausible, the combination demanding.
 - Status change: draft → active — promoted to active portfolio consideration after initial thesis review. Thesis snapshot skipped (no analytical content change); sector snapshot: [[_Archive/Snapshots/Semiconductors (pre-status 2026-04-21-112827)]]
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors → GPU & AI Compute Accelerators (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Sectors/GPU & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.

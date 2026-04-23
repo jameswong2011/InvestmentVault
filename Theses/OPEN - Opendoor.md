@@ -3,7 +3,7 @@ date: 2025-11-28
 tags: [thesis, OPEN, proptech, real-estate, ibuyer]
 status: active
 conviction: low
-sector: Consumer & Digital
+sector: PropTech & Real Estate Marketplaces
 ticker: OPEN
 source: Multi-source synthesis (ChatGPT, Gemini Canvas, Claude, web research)
 ---
@@ -176,3 +176,6 @@ Opendoor's ~67% share of the dedicated iBuyer segment sounds commanding, but the
 
 ### 2025-11-28
 - Initial thesis created. Distilled from 2 source segments across 1 conversations. Filtered for non-consensus views and differentiated analysis.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → PropTech & Real Estate Marketplaces (vault-wide subsector taxonomy reorganization).

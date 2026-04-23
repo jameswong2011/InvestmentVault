@@ -7,6 +7,8 @@ sector:
 
 # {{title}}
 
+## Active Theses
+ - <!-- Scan all theses documents and add links to all theses notes that are related to this sector that have 'active' status as their properties tags -->
 ## Key industry questions
 - <!-- Very brief summary (one sentence) of key industry questions from user prompt and related thesis notes -->
 ## Industry history
@@ -21,9 +23,6 @@ sector:
 - <!-- What macroeconomic variables both within or outside of the industry is currently, or expected to in the future, drive material change in this industry. Examples could include socioeconomic, technological, geopolitical, value chain dynamics upstream or downstream, new entrants, competitive dynamics within incumbents, regulatory or geopolitical. -->
 ## Investor heuristics
 - <!-- How do investors today perceive investment dynamics in this industry to be, based on the research from this template assess what is 'priced in' and what consensus perception to be. Based on the framework from this template, how could their perceptions be wrong. What non-consensus insights could be gleaned from this sector research -->
-
-## Active Theses
- <!-- Scan all theses documents and add links to all theses notes that are related to this sector that have 'active' status as their properties tags -->
  
 ## Related Research
 - 

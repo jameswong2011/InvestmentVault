@@ -259,3 +259,7 @@ plt.tight_layout()
 plt.show()
 
 df
+```
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (HBM4 supply pivot — SK Hynix ~62% share, Samsung ~50% yield targeting 70% before mass production, Micron 2026 sold out; 16-Hi stack yields gate Rubin/MI450 production volume) and Key industry questions (HBM4 integration for Vera Rubin is the binding constraint on 2026 Nvidia volume).

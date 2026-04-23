@@ -3,7 +3,7 @@ date: 2026-02-26
 tags: [thesis, APP, consumer-digital, adtech, AI]
 status: active
 conviction: medium
-sector: Consumer & Digital
+sector: Mobile Advertising Technology
 ticker: APP
 ---
 
@@ -160,7 +160,7 @@ The reputational overhang is multi-layered: (1) Muddy Waters' March 2025 report 
 - [[Research/2026-02-26 - APP - AppLovin AI Ad Platform Deep Dive]] — Grok deep-dive: business model, Axon 2.0, competitive dynamics, investor sentiment
 - [[Research/2026-03-09 - APP - Gemini Business Analysis Canvas]] — Comprehensive Gemini Canvas analysis: AXON dominance, strategic pivot, CloudX challenge, financial performance
 - [[Research/2026-03-19 - AppLovin AXON Engine Differentiation]] — Claude research: AXON differentiation, "Golden 9" competitive field, e-commerce incrementality evidence, investor sentiment
-- [[Sectors/Consumer & Digital]]
+- [[Sectors/Mobile Advertising Technology]]
 
 ## Log
 
@@ -178,3 +178,7 @@ The reputational overhang is multi-layered: (1) Muddy Waters' March 2025 report 
 
 ### 2026-02-26
 - [Thesis created]: From Grok + ChatGPT research. Core framing: AI ad infrastructure with SEC/incrementality risk. Conviction medium.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Mobile Advertising Technology (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] reference in Related Research with [[Sectors/Mobile Advertising Technology]] — conviction unchanged.

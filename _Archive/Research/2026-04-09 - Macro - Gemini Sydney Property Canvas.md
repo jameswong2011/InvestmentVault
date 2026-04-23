@@ -4,6 +4,7 @@ tags: [research, real-estate, sydney, property, gemini-canvas]
 status: active
 sector: Real Estate
 source: Gemini Canvas export
+source_type: scenario
 ---
 
 # Comparative Market Analysis of Prestige Coastal Real Estate: The Northern Corridor Drive from Sydney CBD (1.5 to 3.5 Hours)

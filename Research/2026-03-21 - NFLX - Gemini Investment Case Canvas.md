@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: NFLX
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [NFLX]
 ---
 
@@ -209,3 +210,6 @@ Why is this here?
 
 ## Related
 - [[Theses/NFLX - Netflix]]
+
+## Related Sectors
+- [[Sectors/Video Streaming]] — cited in §Related Research as source for Netflix scale moat, cost-plus production model, international production hub network (LA / Albuquerque / Shepperton / Seoul / Hyderabad-Eyeline / Mexico City), password-sharing upside quantification, Q3 2025 financials, and the cost-of-attention framework (Squid Game $9,700 per 1M hours viewed).

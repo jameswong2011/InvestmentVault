@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: comparison
 ---
 
 # ServiceNow CMDB vs Palantir Ontology
@@ -79,4 +80,7 @@ ServiceNow's **GlideRecord** API is a Java-backed abstraction that translates Ja
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Product level analysis (database internals: TPP/TPC vs distributed semantic indexing; ACID vs eventual consistency; OSv2 indexing tens of billions of objects per type vs single-instance 2.3M CI ceiling) and §Investor heuristics (architectural divergence as basis for complementary not-competitive mispricing of NOW vs PLTR).

@@ -3,7 +3,7 @@ date: 2026-04-21
 tags: [thesis, semiconductors, VRT]
 status: active
 conviction: medium
-sector: Semiconductors
+sector: Data Center Power & Cooling
 ticker: VRT
 source: https://investors.vertiv.com/news/news-details/2025/Vertiv-Reports-Strong-Third-Quarter-Results-including-Organic-Orders-60-Diluted-EPS-122-Adjusted-EPS-63-Raises-2025-Guidance/default.aspx
 ---
@@ -169,7 +169,7 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 - [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure.md]] — 322-line deep dive covering business history (Liebert 1946 → Emerson 1987 → Platinum/Vertiv rebrand 2016 → IPO 2020), competitive moat analysis, AI-era positioning
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration.md]] — OCP DC Power Shelf v3, immersion cooling guidelines co-authorship, committee participation
 - [[Research/2025-07-15 - Data Center Liquid Cooling.md]] — Industry-wide liquid cooling transition, Vertiv/NVIDIA deployments showing 10-15% PUE improvement, ORC waste heat recovery
-- [[Sectors/Semiconductors.md]] — Sector note where VRT appears on Watchlist; AI data center infrastructure cross-coverage
+- [[Sectors/Data Center Power & Cooling]] — Sector note where VRT is the sole Active Thesis; covers liquid cooling transition, OCP standards authorship, 800VDC architecture, hyperscaler oligopsony dynamics
 - [[Theses/NVDA - NVIDIA.md]] — NVIDIA thesis references Vertiv as reference-design cooling partner
 - [[Theses/META - Meta.md]] — Meta thesis references OCP collaboration with Vertiv
 
@@ -178,3 +178,10 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 ### 2026-04-21
 - Initial thesis created. Conviction: medium — strong AI infra structural position priced against near-cycle-peak sentiment; non-consensus angle is moat quality (physics + standards authorship) vs. consensus capacity framing.
 - Status change: status draft → active — promoted to active portfolio consideration. Thesis snapshot skipped per draft→active exception; sector snapshot: [[_Archive/Snapshots/Semiconductors (pre-status 2026-04-21-125747)]].
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors → Data Center Power & Cooling (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Semiconductors.md]] in Related Research with [[Sectors/Data Center Power & Cooling]] following sector note fill.
+
+### 2026-04-23 (/sync all — historical back-propagation)
+- [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure]] + [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]]: Grok pre-thesis ingests (original Apr 2025 conversations, imported Apr 2026) formalize the OCP standards-authorship moat framing and NVIDIA co-design history anchoring the physics-limited-moat + OCP-authorship non-consensus insights — conviction unchanged, Log anchored for audit continuity.

@@ -3,7 +3,7 @@ date: 2026-04-10
 tags: [thesis, kambi, consumer-digital, sports-betting, b2b-platform]
 status: active
 conviction: medium
-sector: Consumer & Digital
+sector: Online Gambling
 ticker: KAMBI
 source: Multi-source synthesis (ChatGPT, web research, Kambi IR)
 ---
@@ -145,7 +145,7 @@ Kambi is the "arms dealer" of the sports betting industry — a pure B2B technol
 
 ## Related Research
 
-- [[Sectors/Consumer & Digital]]
+- [[Sectors/Online Gambling]]
 
 ## Log
 
@@ -157,3 +157,7 @@ Kambi is the "arms dealer" of the sports betting industry — a pure B2B technol
 
 ### 2026-04-10
 - [Initial creation]: Distilled from 4 source segments. Filtered for non-consensus views.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Online Gambling (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Related Research `[[Sectors/Consumer & Digital]]` → `[[Sectors/Online Gambling]]` (stale parent-sector link replaced after sector split).

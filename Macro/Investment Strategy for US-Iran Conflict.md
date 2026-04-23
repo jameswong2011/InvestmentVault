@@ -71,3 +71,8 @@ A US military strike on Iran would activate multiple correlated market moves sim
 - [[Theses/PANW - Palo Alto Networks]] — Platform consolidation beneficiary; CyberArk identity security strengthens defense against credential-based attacks characteristic of Iranian APTs; five-pillar architecture addresses multi-domain attack surfaces
 
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Gemini source: comprehensive investment strategy during kinetic conflict
+
+## Log
+
+### 2026-04-23 (/sync all — Log section created + Gemini canvas anchoring)
+- [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]]: Three-phase conflict playbook (Anticipation / Kinetic Action / Resolution); June 2025 12-Day War precedent (S&P resilience, defense-tech PLTR +80% H1 2025 alpha vs LMT supply-chain volatility); Soleimani 2020 pivot comparison (velocity of information, ceasefire trade, buy-the-dip conditioning); $100/bbl Hormuz-threat ceiling vs $120-130 actual disruption — sources the allocation framework anchoring defined-risk options and sector-rotation logic already referenced in Related Theses.

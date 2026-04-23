@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: comparison
 ---
 
 # Salesforce vs ServiceNow in Agentic AI
@@ -60,4 +61,7 @@ Both data layers create genuine moats, but they protect different territories. S
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Competitive dynamics (Agentforce $800M ARR vs Now Assist $600M ACV; Microsoft Copilot horizontal-vs-vertical positioning; AI Control Tower as cross-vendor governance differentiator) and §Investor heuristics (complementary-not-competitive mispricing; 85% F500 run both platforms).

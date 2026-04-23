@@ -1,29 +1,32 @@
 ---
-date: 2026-04-22
+date: 2026-04-23
 tags: [meta, hot-cache]
 ---
 
-# Hot Cache — Last Updated: 2026-04-22
+# Hot Cache — Last Updated: 2026-04-23
 
 > Persists context between Claude Code sessions. Updated automatically by `/sync` or manually.
 
 ## Latest Sync
-*Date: 2026-04-22*
+*Date: 2026-04-23*
 
-- **Mode**: default (follow-up correction to batch `sync-2026-04-22-144403` which mis-triggered Step 4.-1 skill-origin gate); batch `sync-2026-04-22-145012`; manifest [[_Archive/Snapshots/_sync-manifest (sync-2026-04-22-145012)]]
-- **Correction rationale**: prior batch 144403 misapplied Step 2 source-dedup to suppress Step 4 sector propagation. Step 4.-1 gate requires BOTH (i) every affected thesis is skill-origin AND (ii) no research note resolves to the sector. Condition (ii) fails — [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] has `sector: Cybersecurity` frontmatter + `[[Sectors/Cybersecurity]]` body wikilink → Step 4 should have fired. It did not. This follow-up closes the gap.
-- **Sector edits** (Tier A with snapshot):
-  - [[Sectors/Cybersecurity]] — Snapshot: [[_Archive/Snapshots/Cybersecurity (pre-sync 2026-04-22-145012)]]. Added 3 Key Dynamics bullets from [[Theses/CRWD - CrowdStrike Holdings]] non-consensus insights + comparison research note:
-    1. **Architectural purity cannot be acquired into existence** — single-agent vs five-pillar federation as structural cost substrate; M&A cannot retrofit a unified agent (5yr rebuild exposure); moat compounds every new module ships on the Falcon agent.
-    2. **Commercial-model divergence as GM-durability dynamic** — CRWD Falcon Flex ($1.69B +120%, consumption pre-commit architecture preserves 78-80% GM on module expansion) vs PANW platformization (discount-to-expand → visible "platformization tax" 77%→74-75% GM). Structurally opposite answers to the same consolidation question; will not converge.
-    3. **Integration-risk asymmetry** — PANW 4 simultaneous mega-integrations ($25B CyberArk, $3.35B Chronosphere, QRadar SaaS, Koi) vs CRWD <$2B / 5yr tuck-in discipline. 60%+ historical mega-deal underperformance rate (HP-Autonomy / Broadcom-VMware reference class) → probability-weighted 2-4qtr relative-execution drag on PANW; PANW Q3 FY26 (May 2026 first full CyberArk quarter) is the earnings-reveal moment.
-  - Log entry appended to Cybersecurity sector.
-- **Thesis edits**: 0 (thesis propagation correctly resolved in parent batch — research note's targets CRWD + PANW both already have Log entries referencing the comparison note).
-- **Macro edits**: 0 (no `[[Macro/...]]` wikilinks in CRWD thesis or comparison research note).
-- **Tier A snapshots**: 1 (sector). **Tier B Log appends**: 0. **`propagated_to:` backfills**: 0 (thesis targets remain idempotent per parent batch).
-- **Key outcome**: sector note now captures the three sector-level dynamics the CRWD thesis makes explicit (architectural moat, commercial-model GM divergence, M&A integration-risk asymmetry) alongside the existing best-of-breed bullet's agentic-AI lead and post-outage retention framing. Cybersecurity sector is now analytically congruent with both active theses. Next: run `/graph last` to register CRWD adjacency + refresh sector reverse-index.
+- **Mode**: `/sync all` (full brute-force); batch `sync-2026-04-23-040500`; lock token `31ad288a`; manifest [[.claude/sync-manifests/2026-04-23T04-05-sync-all]]
+- **Scope**: 205 changed files since `.last_sync` (2026-04-22 14:53). 122 research notes (Case 2a:49 / 2b:71 / 2c:2). Change nature: today's source_type backfill (95 notes) + yesterday's sector-rename wikilink cleanup — metadata churn, not new research insights.
+- **Thesis Log appends**: 1 (VRT — historical back-propagation: 2025-04-28 VRT Vertiv Role + 2025-04-29 META VRT OCP Collaboration, both pre-thesis Grok ingests, already in Related Research but not Log-anchored).
+- **Macro Log appends**: 8 across 4 files; 3 macros had `## Log` sections created:
+  - [[Macro/AI Bubble Risk and Semiconductor Valuations]] (NEW Log): Gemini AI Bubble Canvas + Huawei Ascend Roadmap.
+  - [[Macro/Commodity Impacts from Iran Tensions]] (NEW Log): Gemini Commodity Canvas + RELIANCE Apr 2026.
+  - [[Macro/Iran War Macroeconomic Scenario]]: Gemini Commodity Canvas + Gemini Iran War Canvas + Gemini Iran Investment Strategy Canvas.
+  - [[Macro/Investment Strategy for US-Iran Conflict]] (NEW Log): Gemini Iran Investment Strategy Canvas.
+- **Sector edits**: 0 — 113 resolver-flagged gaps are permissive-resolver artifact (sector: frontmatter ≠ Log-mandate); today's delta has no sector-level content change.
+- **Atomicity**: `propagated_to:` backfilled on 2 research notes (2025-04-28 VRT → [VRT]; 2025-04-29 META VRT → [META, VRT]).
+- **Conviction**: unchanged across all touched theses.
+- **Declined propagations**: 48 NO_TARGETS notes (no thesis resolvable — Step 1.6 informational); 71 Case 2b idempotent; 2 Case 2c terminal (/surface, /brief producer contracts); 113 permissive-resolver sector flags; 3 soft thesis-gaps (UBER/PSTG/SEMICAP — Log content already covers, cosmetic-only wikilink anchor deferred).
+- **Next step**: Run `/graph last` to refresh `_graph.md` with VRT + 4 macro Log changes.
 
 ## Sync Archive
+- *2026-04-23 — Orphan remediation sync (default /sync, batch 134925)*: Earlier same day. 4 Category A orphan notes → 9 thesis Log appends + 2 macro wikilink additions (TurboQuant→285A/SNDK/NVDA; Iran Weapons→LNG/STNG/CCJ/RELIANCE/PANW/EDEL; Israel-India→RELIANCE/EDEL; Inflation Trades→propagated_to:[]). Manifest [[_Archive/Snapshots/_sync-manifest (sync-2026-04-23-134925)]]. Conviction unchanged.
+- *2026-04-22 — CRWD sector propagation correction (batch 145012)*: Step 4.-1 skill-origin gate mis-fired in prior batch 144403; follow-up propagated 3 CRWD-thesis non-consensus insights into [[Sectors/Cybersecurity]] Key Dynamics (architectural purity, GM divergence, integration-risk asymmetry). Sector snapshot: [[_Archive/Snapshots/Cybersecurity (pre-sync 2026-04-22-145012)]]. Thesis/macro edits: 0 each.
 - *2026-04-19 — TSM stress test sync*: /stress-test output propagated across NVDA/AVGO/BESI/SEMICAP (cross-thesis Log appends — Taiwan chokepoint re-quantified: 100% CoWoS Kaohsiung, 92% leading-edge, 2-4yr Samsung/Intel re-qualification, 5-7yr BESI hybrid-bonding EUV-gated rebuild), Sectors/Semiconductors + Sectors/Semiconductor Capital Equipment (first Log entries — silicon shield fails Ukraine/Nord Stream 2 precedent; Arizona 5-8% through 2030 does not hedge), Macro/AI Bubble Risk (Taiwan geopolitical tail added on top of valuation/monetization risks). TSM conviction flagged medium→low same-day (actioned via /status compound). Key insight: Taiwan tail mispriced across AI-silicon ecosystem — realistic invasion/blockade downside -85-95% permanent impairment vs consensus 20-30% position risk; "destroy the fabs" is US default contingency (Bloomberg Mar 2023); LMT/RTX/NOC = market-implied hedge per Pelosi 2022 precedent (+4-8% vs TSM -6% in 72hr).
 - *2026-04-19 — Huawei Ascend Roadmap sync (earlier same day)*: Propagated to NVDA Outstanding Questions/Bear Case/Risks #5, AVGO Industry Context, Sectors/Semiconductors. Key insight: Huawei in-house HBM (128GB/1.6 TB/s on 950PR, 144GB/4 TB/s on 950DT) sidesteps SK Hynix/Samsung chokepoint — graduates China bear case for NVDA from "developing alternative" to "shipping competitive alternative at scale." Conviction unchanged.
 - *2026-04-16 — NVDA Jensen Huang interview sync*: Propagated to NVDA Industry Context (ASIC margins ~65%), Supply Chain ($100B+ commitments), Bear Case (Groq segmentation), AVGO Log, Sectors/Semiconductors, Macro/AI Bubble Risk. Snapshots created.
@@ -33,12 +36,13 @@ tags: [meta, hot-cache]
 *Older syncs available in git history.*
 
 ## Active Research Thread
-- **CRWD draft→active (medium conviction, now active)**: Apr 22 — [[Theses/CRWD - CrowdStrike Holdings]] promoted to active; enters /catalyst /prune /drift scope. Sector note updated: Active Theses now CRWD + PANW (both medium). Watchlist entry removed. Built from [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] + Q4 FY26 metrics (ARR $5.25B +24%, Falcon Flex $1.69B +120%, 22→24%+ op margin, 26→30%+ FCF FY27 guide, ~18x fwd rev). Five non-consensus insights: (1) single-agent architecture as compounding cost moat — cannot be acquired into existence, widens every quarter CRWD ships a new module onto the Falcon agent; (2) July 2024 outage (8.5M systems) was the largest switching-cost test in enterprise SaaS history and the moat passed (>95% retention + RPO +36% YoY) — market models recovered-risk when evidence is structural-entrenchment proof; (3) Falcon Flex is consumption-based pricing disguised as subscription — $1.69B ARR at 120% growth, 27% of ending ARR, structurally eliminates PANW's platformization-tax GM compression; (4) 12-24mo agentic AI lead (Charlotte AI 6x usage, AIDR first-mover) is mindshare-capture moat (Snowflake-vs-Redshift analog); (5) integration-risk asymmetry vs PANW (4 simultaneous megadeals at 60%+ historical underperformance rate) = 2-4qtr relative-execution tailwind. Not HIGH because 18x fwd revenue prices perfection + kernel-agent reliability risk is irreducible; not LOW because structural moats are genuine and cleanly identifiable. Next step: monitor CRWD Q1 FY27 (May/Jun 2026) for post-$5B ARR durability + Flex new-logo mix; PANW Q3 FY26 (May 2026) first full CyberArk quarter for integration-friction signal; promote CRWD via `/status CRWD status draft→active` when ready to enter /catalyst /prune /drift scope.
-- *Previous 2026-04-21:* CRWD vs PANW comparison research — complements-not-substitutes, ~40% product overlap, CRWD 12-24mo agentic-AI lead, medium-conviction CRWD thesis recommended.
-- *Previous 2026-04-21:* VRT thesis initiated (medium, draft→active same day); physics-derived moat + OCP standards authorship, $15B backlog, 43x fwd EPS after 336% 12-mo move.
-- *Previous 2026-04-21:* AMD thesis initiated (medium, draft→active same day); OpenAI 6GW + Meta 6GW hyperscaler diversification, MI355X 97-111% of B200 on MLPerf 6.0, 38-41x P/E prices flawless execution.
+- **Orphan remediation (continuation of surface scan)**: Apr 23 — acting on surface scan's Category A triage (4 orphans with existing thesis/macro targets). Archived 7 orphans (Categories C+D: Bali Tourism, Gemini Essays, Sydney Property, Claude Code Mastery, FROG, Fundrise, Australian Healthcare) → `_Archive/Research/`. Ran `/sync` on Category A (4 notes) → 9 thesis Log appends + 2 macro wikilink additions; all Tier B; `propagated_to:` backfilled on all 4 notes; conviction unchanged on all 9 theses. 4 orphans remain pending thesis/archival decisions (CRWV — surface §9.1 recommends `/thesis CRWV`; CETY — evaluate; Gold LBMA — needs gold macro OR archive; Indian-Pak Defence — tied to Surface Opportunity 3 defense-prime thesis).
+- *Previous 2026-04-23:* Surface scan (unscoped, section-targeted) across 43 theses/36 sectors/6 macros. Output: [[Research/2026-04-23 - Insight Surface Scan]]. Top 3 structural gaps identified: (1) Macro/Taiwan Strait (HIGH), (2) HBM supplier thesis SK Hynix/Micron/Samsung (HIGH), (3) defense prime RTX/LMT/NOC (MED-HIGH as Taiwan+Iran hedge).
+- *Previous 2026-04-22:* CRWD draft→active (medium conviction); single-agent architecture moat + Falcon Flex consumption pricing + 12-24mo agentic-AI lead; sector note Active Theses now CRWD + PANW.
+- *Previous 2026-04-21:* VRT thesis initiated (medium); physics-derived moat + OCP standards authorship, $15B backlog, 43x fwd EPS.
+- *Previous 2026-04-21:* AMD thesis initiated (medium); OpenAI 6GW + Meta 6GW hyperscaler diversification, MI355X 97-111% of B200 on MLPerf 6.0.
 - *Previous 2026-04-19:* TSM thesis → stress test (8/9🔴) → /status compound medium→low + draft→active (Taiwan tail -85-95%).
-- *Previous threads:* NVDA China bear case quantified (Apr 16-19, Huawei official roadmap with in-house HBM, 1.6M-die plan, ByteDance $5.6B order); NVDA moat analysis (Apr 16 Jensen interview); NAND sector note created (Apr 16); SPOT/SHOP/RELIANCE/PSTG/PLTR/OPEN/NVDA restructures (Apr 15).
+- *Previous threads:* NVDA China bear case quantified (Apr 16-19, Huawei official roadmap with in-house HBM, 1.6M-die plan, ByteDance $5.6B order); NVDA moat analysis (Apr 16 Jensen interview); NAND sector note created (Apr 16).
 
 ## Recent Conviction Changes
 - **2026-04-22 — CRWD status: DRAFT → ACTIVE** via `/status CRWD active`. Snapshot: skipped (draft→active exception). Sector: [[Sectors/Cybersecurity]] Active Theses updated (CRWD added, Watchlist entry removed). Thesis enters /catalyst, /prune, and conviction-drift detection scope.
@@ -72,6 +76,11 @@ tags: [meta, hot-cache]
 18. CRWD: Does agentic AI adoption decisively favor single-agent architectural simplicity, or does PANW's cross-domain data lake eventually dominate once XSIAM ships agentic SOC playbooks at CRWD's depth? Determines whether Charlotte AI/AIDR lead is a 12-24mo window or a permanent structural advantage. Watch PANW FY27 Precision AI shipping cadence vs CRWD Charlotte feature velocity.
 19. CRWD: Can CRWD reach Fortune 500 platform parity without an NGFW equivalent, or is it structurally capped at endpoint+identity+AI? PANW's Strata (~$1.8B FY25) is the cash engine CRWD has no answer to. Critical signal: any CRWD acquisition >$2B or explicit NGFW/SASE entry over next 12-18 months would confirm structural-limit concern is driving management action and would break the tuck-in discipline that underpins integration-risk asymmetry advantage.
 20. CRWD: Is Falcon Flex's 120% YoY ARR growth sustainable or pulling forward renewals that create an FY28-FY29 air pocket? Consumption-aligned models can mask pull-forward (Snowflake 2023 analog). Watch: Flex new-logo mix — >25% of total Flex adds = low pull-forward risk; <20% = high risk. Management disclosure at FY27 earnings is the resolving signal.
+21. **Portfolio blind spot — HBM suppliers**: Vault has 9+ theses dependent on HBM4 execution but zero thesis coverage of SK Hynix (~60% share), Samsung Memory (rising toward 30% Nvidia supply), Micron (HBM4 2026 sold out). Highest-priority implied-but-unwritten thesis per [[Research/2026-04-23 - Insight Surface Scan]]. Decision: pick one clean expression and build a thesis.
+22. **Portfolio blind spot — defense primes as Taiwan+Iran hedge**: 5 Iran-direct theses, 0 defense primes despite every macro recommending them. Pelosi 2022 precedent: LMT+RTX+NOC +4-8% vs TSM -6% in 72hr. Systematic under-exposure to both tail scenarios. Decision: RTX (most direct Iran, $217B backlog, 37-42x) vs LMT (cheapest at 17x, F-35 + THAAD) vs NOC (23-25x, B-21 + Sentinel).
+23. **Portfolio blind spot — custom ASIC designers**: AVGO captured (60% share); Marvell (~25% share, Trainium + Maia DPU + Meta DPU + April 2026 Google inference chip talks) not covered. Decision: additive position vs AVGO substitute — depends on desired custom-ASIC weight.
+24. **Cross-thesis correlation**: AI bubble scenario hits 13 of 43 theses simultaneously (30% of portfolio). Macro/AI Bubble note enumerates 11 related theses in text but does not construct quantified portfolio VaR. Decision: add a VaR framework or accept qualitative correlation mapping.
+25. **Attention mismatch — UBER**: high conviction, 0 dedicated research notes (only 1 indirect via OPEN). Q1 earnings May 6. Most severe attention-allocation mismatch in the vault per surface scan.
 
 ## Portfolio Snapshot
 - **High conviction**: Check individual thesis notes

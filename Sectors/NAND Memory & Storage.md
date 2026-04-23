@@ -5,7 +5,11 @@ status: active
 sector: Semiconductors / Memory
 ---
 
-# NAND Flash & Storage
+# NAND Memory & Storage
+
+## Active Theses
+- [[Theses/SNDK - SanDisk]] — Pure-play NAND, HBF inventor, AI storage supercycle (conviction: medium)
+- [[Theses/285A - Kioxia]] — NAND pioneer, BiCS/CBA architecture leader, Flash Ventures JV (conviction: medium)
 
 > **Map of Content** — The non-volatile memory layer of the AI infrastructure stack. NAND flash underpins every storage tier from consumer SSDs to hyperscaler inference clusters, and is now emerging as a compute-adjacent memory tier via HBF.
 
@@ -312,10 +316,6 @@ HBF's value proposition is architectural: it enables model weights (which are re
 
 ---
 
-## Active Theses
-- [[Theses/SNDK - SanDisk]] — Pure-play NAND, HBF inventor, AI storage supercycle (conviction: medium)
-- [[Theses/285A - Kioxia]] — NAND pioneer, BiCS/CBA architecture leader, Flash Ventures JV (conviction: medium)
-
 ## Related Theses
 - [[Theses/PSTG - Pure Storage]] — Enterprise storage platform dependent on NAND supply/pricing
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Equipment demand from 3D NAND scaling (LRCX etch, AMAT deposition)
@@ -343,3 +343,5 @@ HBF's value proposition is architectural: it enables model weights (which are re
 ### 2026-04-16
 - Initial NAND sector document created. Synthesized vault research (SNDK, Kioxia, PSTG theses + 10 research notes) with web research on YMTC market position, HBF standardization progress, and product-level differentiation across all 6 producers. Key findings: (1) YMTC is a consumer disruptor, not enterprise — Entity List + qualification barriers create 3+ year enterprise moat; (2) HBF probability higher than consensus due to OCP standardization + Samsung entry + SanDisk pilot line acceleration; (3) CBA architecture density advantage is systematically undervalued vs headline layer counts.
 - Deep research on 3 key industry questions → [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]. Updated Key Industry Questions, 3D NAND comparison table, Chinese NAND state table, HBF risk assessment, and Non-Consensus section. New findings: (1) YMTC enterprise gap now 16x (15.36TB PCIe 4.0 vs 245TB PCIe 5.0) and widening despite PC550 PCIe 5.0 consumer launch; (2) HBF de-risking accelerates with 5 signals including SanDisk pilot line pull-forward + SK Hynix H3 32→2 GPU benchmark + Samsung patent activity; (3) Samsung V10 YMTC hybrid bonding IP dependency is a new non-consensus vulnerability for #1 producer; (4) Kioxia BiCS10 density advantage now quantified at 59%/29 Gb/mm²; (5) Micron PCIe 6.0 first-mover adds IO speed moat. SNDK/285A conviction directions: strengthened on HBF + supply/pricing, unchanged on enterprise execution risks.
+### 2026-04-22
+- Reordered sections: Active Theses moved to first position per Sector Template / CLAUDE.md §Sector Notes (MOC navigation goes first).

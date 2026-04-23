@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors & Photonics
 ticker: LITE
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [LITE, IQE]
 ---
 
@@ -172,3 +173,7 @@ Why is this here?
 - [[Theses/LITE - Lumentum]] — CPO adoption and photonics supply chain
 - [[Theses/IQE - IQE]] — Photonics supply chain
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Industry history (Phase 6 AI optical supercycle / NVIDIA $2B dual investment), Macro shifts (CPO inflection year 2026), and Investor heuristics (arms-dealer asymmetry + OCS structural expansion).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (Photonics & Optical Equipment Enablers — TSMC COUPE platform, SiPh foundry landscape) and Macro shifts (CPO yield bottleneck at optical test; FORM/AEHR picks-and-shovels positioning).

@@ -4,6 +4,7 @@ tags: [research, AI, semiconductors, open-source, efficiency, gemini-canvas]
 status: active
 sector: Semiconductors & Photonics
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [NVDA, SNDK, 285A]
 ---
 
@@ -233,3 +234,6 @@ Why is this here?
 - [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]] — Companion Nvidia analysis (same date)
 - [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]] — TurboQuant deep-dive
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (algorithmic efficiency vs Jevons Paradox — Muon 35% training acceleration, TurboQuant 6x KV cache compression, DeepSeek V4 MoE 5-10% model active), Investor heuristics #6 (the single least-priced risk — compound efficiency gains at >2x/year could inflect net accelerator demand downward in 2027-2028), and Key industry questions (at what cost-per-token deflation does algorithmic efficiency overwhelm Jevons expansion).

@@ -181,3 +181,7 @@ Equipment financing, operating leases, revolving credit, and crop insurance for 
 
 ### 2026-02-12
 - Distilled from 2 source segments across 1 conversations. Filtered for non-consensus views and differentiated analysis.
+
+### 2026-04-22
+- Sector re-scoped: Agriculture & Industrial Equipment → Agricultural Equipment & Precision Ag (vault-wide subsector taxonomy reorganization).
+- Sector revert: Agricultural Equipment & Precision Ag → Agriculture & Industrial Equipment (user reverted subsector split).

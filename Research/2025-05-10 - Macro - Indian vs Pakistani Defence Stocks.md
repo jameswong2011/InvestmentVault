@@ -4,6 +4,7 @@ tags: [research, defense, india, pakistan, emerging-markets]
 status: active
 sector: Defense & Geopolitics
 source: Grok AI conversation export
+source_type: comparison
 ---
 
 # Indian vs Pakistani Defence Stocks Comparison
@@ -240,3 +241,7 @@ The highest supervisor of Bastion in World of Warcraft: Shadowlands is **Kyresti
 - Bastion’s story explores duty versus free will, with Kyrians facing internal strife (Forsworn).  
 
 **Source**: [Wowpedia - Kyrian](https://wowpedia.fandom.com/wiki/Kyrian), [Blizzard - Shadowlands Covenant Guide](https://www.blizzard.com/en-us/games/wow/shadowlands).
+
+## Related Sectors
+
+- [[Sectors/Indian Digital Conglomerates]] — Back-reference: India macro / geopolitical context (defence self-reliance, "Aatmanirbhar Bharat", India-Pakistan risk premium) is an upstream input to the Indian Digital Conglomerates operating environment covered in that sector note.

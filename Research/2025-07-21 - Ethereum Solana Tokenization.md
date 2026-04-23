@@ -114,3 +114,6 @@ Why did Homebase choose Solana? According to the founders, they sought a **seaml
 
 ---
 *[Content truncated — full conversation in Research/raw/_staging/extracted/]*
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

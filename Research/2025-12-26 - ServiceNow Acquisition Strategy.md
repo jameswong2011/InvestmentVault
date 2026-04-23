@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # ServiceNow Acquisition Strategy
@@ -53,4 +54,7 @@ The 2020-2021 AI acquisition wave—Element AI ($230M), Passage AI, Loom Systems
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Acquisitions and new entrants ($11B+ M&A campaign reframing NOW from ITSM vendor to "AI Control Tower"; build-vs-buy discipline; tuck-in pattern at <$100M / transformational at 20x+ ARR) and §Competitive dynamics (vs Microsoft ecosystem, Salesforce CRM convergence, talent+technology balance with Element AI / Bengio).

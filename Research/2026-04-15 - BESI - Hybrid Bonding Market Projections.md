@@ -82,3 +82,6 @@ RF & Optoelectronics segment (5% current, 28% CAGR) includes co-packaged optics 
 - [[Research/2025-11-01 - BESI - BESI Role in HBM Manufacturing]]
 - [[Research/2025-07-06 - BESI - Analyst Estimates and Valuation Trends]]
 - [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]]
+
+## Related Sectors
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (hybrid bonding market $1.47B → $5.6B by 2030 at 25.1% CAGR; D2W positioning; regional demand split).

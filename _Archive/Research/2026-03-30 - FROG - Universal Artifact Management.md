@@ -4,6 +4,7 @@ tags: [research, FROG, devops, software-supply-chain]
 status: active
 sector: Enterprise Software
 source: Grok AI conversation export
+source_type: deep-dive
 ---
 
 # JFrog Artifactory - Universal Artifact Management

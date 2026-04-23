@@ -219,6 +219,7 @@ PANW's platform play aims to own the full value chain — from threat intelligen
 - [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] — Product/technology-level comparison: single-agent vs five-pillar architecture, agentic AI lead (CRWD) vs cross-domain data breadth (PANW), ~40% product overlap, complements-not-substitutes verdict
 - [[Theses/NET - Cloudflare]] — Competing in SASE ($325-540M est. ARR), 2-5 years behind Zscaler/PANW in enterprise maturity
 - [[Sectors/Cybersecurity]] — Sector Note with competitive landscape, structural spending drivers (AI threats, geopolitics, regulatory mandates), and cross-company dynamics
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Iran-proxy cyber derivative framing: sustained Hezbollah/IRGC apparatus implies continued Iranian cyber activity against Israeli/US/Gulf targets — structurally supports cybersecurity spending in geopolitics-exposed verticals (financial services, critical infrastructure)
 
 ## Log
 
@@ -228,3 +229,6 @@ PANW's platform play aims to own the full value chain — from threat intelligen
 
 ### 2026-04-21
 - Comparison [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]: product/tech — CRWD wins on single-agent architecture + agentic AI (12-24 months lead via Charlotte AI/AIDR); PANW wins on cross-domain data lake (5 pillars vs endpoint-centric), CyberArk PAM depth, Strata/SASE/observability breadth CRWD cannot replicate — conviction unchanged, complements not substitutes, ~40% product overlap.
+
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Sustained Iran proxy apparatus (Hezbollah, IRGC-Quds, Unit 4400) implies continued Iranian cyber operations against Western/Israeli/Gulf targets — supports geopolitics-driven cybersecurity spending floor; CyberArk PAM depth and XSIAM unified telemetry are the natural beneficiaries of nation-state threat escalation. Conviction unchanged (medium).

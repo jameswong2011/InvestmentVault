@@ -4,6 +4,7 @@ tags: [research, APP, adtech, AI, mobile-gaming]
 status: active
 sector: Consumer & Digital
 source: Grok AI conversation export
+source_type: deep-dive
 propagated_to: [APP]
 ---
 
@@ -11,6 +12,11 @@ propagated_to: [APP]
 
 ## Related Theses
 - [[Theses/APP - AppLovin]]
+
+## Related Sectors
+- [[Sectors/Mobile Advertising Technology]]
+- [[Sectors/Social Platforms & Digital Advertising]] — cited in §Competitive dynamics (ad-system-layer comparison vs Meta Advantage+/Andromeda, Google Performance Max, TikTok Smart+) and §Product level analysis (AppLovin AXON as the independent ad-tech foil to walled-garden AI ad systems)
+- [[Sectors/Video Game Publishing]] — cited in §Related Research (AppLovin AXON >60% mobile-gaming ad mediation share is the primary user-acquisition discovery layer for Zynga / Scopely / HoYoverse / Playrix mobile publishers)
 
 ## Source Content
 

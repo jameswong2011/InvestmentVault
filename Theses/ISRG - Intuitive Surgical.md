@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, ISRG, healthcare-medtech, robotics, surgery, surgical-AI]
 status: active
 conviction: medium
-sector: Healthcare & MedTech
+sector: Surgical Robotics
 ticker: ISRG
 source: Vault synthesis (3 research notes, 4 LLM archive exports) + web research
 ---
@@ -306,11 +306,11 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 
 ## Related Research
 
-- [[Research/2026-01-21 - ISRG - Gemini Investment Thesis Canvas]] — Comprehensive analysis: financial architecture, dV5 product ecosystem, China bifurcation, patent cliff, clinical evidence
+- [[Research/2026-01-21 - ISRG]] — Comprehensive analysis: financial architecture, dV5 product ecosystem, China bifurcation, patent cliff, clinical evidence
 - [[Research/2026-03-28 - AI Threats to Intuitive Surgical]] — AI net positive assessment; Chinese competitor deep-dive; adjacent expansion analysis
 - [[Research/2026-03-29 - Cross-Procedure Capability in Surgical Robotics]] — Cross-procedure compounding moat; Hugo/Ottava competitive positioning; regulatory pathway analysis
 - [[Research/2026-01-18 - Healthcare and Biotech Stock Screen]] — Initial screen that identified ISRG
-- [[Sectors/Healthcare & MedTech]]
+- [[Sectors/Surgical Robotics]]
 
 ## Log
 
@@ -319,3 +319,7 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 
 ### 2026-04-15
 - [Full restructure + web research]: Aligned to Thesis Template. Key corrections: NVIDIA partnership confirmed (dV5 on Blackwell/Clara/Omniverse), GLP-1 bariatric decline -46.4%, stock updated to ~$465. New risks added: cybersecurity breach, 90% Mexicali tariff exposure, hospital class action certified — conviction unchanged at medium.
+
+### 2026-04-22
+- Sector re-scoped: Healthcare & MedTech → Surgical Robotics (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Healthcare & MedTech]] → [[Sectors/Surgical Robotics]] in Related Research following sector fill-out.

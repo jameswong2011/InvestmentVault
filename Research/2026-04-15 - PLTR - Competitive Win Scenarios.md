@@ -43,3 +43,6 @@ The question is whether these high-complexity use cases represent a large enough
 - [[Research/2026-03-29 - Palantir Comparison]]
 - [[Research/2026-03-31 - Databricks Threat to Palantir]]
 - [[Research/2026-04-05 - ServiceNow CMDB vs Palantir Ontology]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Product level analysis (PLTR win-scenario archetypes — defense/intelligence, complex supply chain, healthcare/regulated, manufacturing IoT — where Ontology+governance beats horizontal SaaS) and §Investor heuristics (200x supply-chain efficiency and 5.5M units/day manufacturing scale as defensibility benchmark; question of whether high-complexity TAM justifies current valuation).

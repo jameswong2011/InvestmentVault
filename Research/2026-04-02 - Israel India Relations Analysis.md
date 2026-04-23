@@ -5,6 +5,7 @@ status: active
 sector: Macro
 source: ChatGPT conversation export
 source_type: deep-dive
+propagated_to: [RELIANCE, EDEL]
 ---
 # Israel India Relations Analysis
 

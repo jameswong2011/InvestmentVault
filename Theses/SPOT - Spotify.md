@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, spot, consumer-digital]
 status: active
 conviction: medium
-sector: Consumer & Digital
+sector: Music Streaming
 ticker: SPOT
 source: Multi-source synthesis (Claude conversation, web research, earnings data)
 ---
@@ -186,7 +186,7 @@ The traditional music value chain flows linearly: **Content Creators** (artists,
 ## Related Research
 
 - [[Research/2026-04-15 - SPOT - Product Strategy and Competitive Position]] — FY2024 financials, Discovery Mode mechanics, super-app strategy, label dynamics, risk assessment
-- [[Sectors/Consumer & Digital]]
+- [[Sectors/Music Streaming]]
 
 ## Log
 
@@ -199,11 +199,6 @@ The traditional music value chain flows linearly: **Content Creators** (artists,
 ### 2026-04-04
 - Distilled from 3 source segments across 1 conversations. Filtered for non-consensus views and differentiated analysis.
 
-
-
-
-
-
-
-
-
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Music Streaming (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Consumer & Digital]] with [[Sectors/Music Streaming]] in Related Research; sector note populated with industry history, competitive dynamics, product analysis, and 7 non-consensus insights — conviction unchanged.

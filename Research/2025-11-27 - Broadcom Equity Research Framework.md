@@ -4,6 +4,7 @@ tags: [research, semiconductors]
 status: active
 sector: Semiconductors
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Broadcom Equity Research Framework
@@ -59,3 +60,6 @@ The bull case for Broadcom requires continued AI infrastructure spending expansi
 
 ## Related
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/Custom Silicon & Networking Semiconductors]] — Back-reference: cited in sector fill for FY2025 AI revenue trajectory, Goldman FY2026 $45B / FY2027 $77B projections, and peer-valuation comparison (AVGO PEG 1.44 vs NVDA 0.68).

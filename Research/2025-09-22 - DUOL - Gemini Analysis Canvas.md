@@ -5,6 +5,7 @@ status: active
 sector: Consumer & Digital
 ticker: DUOL
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [DUOL]
 ---
 
@@ -452,3 +453,6 @@ Why is this here?
 
 ## Related
 - [[Theses/DUOL - Duolingo]]
+
+## Related Sectors
+- [[Sectors/Consumer Edtech]]

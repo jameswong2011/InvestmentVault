@@ -104,14 +104,14 @@ Each thesis note follows this structure:
 
 ### Sector Notes (/Sectors)
 Each sector note acts as a Map of Content (MOC) and follows this structure:
-1. **Key industry questions** — Brief summary of key questions driving sector analysis
-2. **Industry history** — Origin to present: founding of major incumbents, competitive consolidation, technological/regulatory/cultural transitions, and how pricing power shifted over time
-3. **Competitive dynamics** — Current dynamics between key players: incumbent durability, new entrant threats, strategic shifts, pricing power trajectory (historical, current, forward), and rationale behind market share shifts
-4. **Product level analysis** — Technical specifications, market purpose, and success rationale for each major incumbent's highest-volume products
-5. **Acquisitions and new entrants** — Historical M&A with strategic objectives and outcomes; new entrant business models, disruption strategies, and impact on incumbent pricing power
-6. **Macro shifts** — Macroeconomic variables (technological, geopolitical, regulatory, value chain, socioeconomic) currently or expected to drive material change in the sector
-7. **Investor heuristics** — Current investor consensus, what is priced in, where consensus could be wrong, and non-consensus insights from the sector research
-8. **Active Theses** — Links to all thesis notes in this sector with active status
+1. **Active Theses** — Links to all thesis notes in this sector with active status (MOC navigation — goes first so readers can jump straight to the theses)
+2. **Key industry questions** — Brief summary of key questions driving sector analysis
+3. **Industry history** — Origin to present: founding of major incumbents, competitive consolidation, technological/regulatory/cultural transitions, and how pricing power shifted over time
+4. **Competitive dynamics** — Current dynamics between key players: incumbent durability, new entrant threats, strategic shifts, pricing power trajectory (historical, current, forward), and rationale behind market share shifts
+5. **Product level analysis** — Technical specifications, market purpose, and success rationale for each major incumbent's highest-volume products
+6. **Acquisitions and new entrants** — Historical M&A with strategic objectives and outcomes; new entrant business models, disruption strategies, and impact on incumbent pricing power
+7. **Macro shifts** — Macroeconomic variables (technological, geopolitical, regulatory, value chain, socioeconomic) currently or expected to drive material change in the sector
+8. **Investor heuristics** — Current investor consensus, what is priced in, where consensus could be wrong, and non-consensus insights from the sector research
 9. **Related Research** — Links to research notes relevant to this sector
 10. **Log** — Dated entries tracking sector note evolution
 

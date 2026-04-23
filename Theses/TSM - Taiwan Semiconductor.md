@@ -3,7 +3,7 @@ date: 2026-04-19
 tags: [thesis, semiconductors, TSM, foundry, Taiwan, AI-infrastructure]
 status: active
 conviction: low
-sector: Semiconductors
+sector: Semiconductor Foundries
 ticker: TSM
 source: https://pr.tsmc.com/english/news/3264
 ---
@@ -283,7 +283,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 ## Related Research
 
 ### Sector & macro context
-- [[Sectors/Semiconductors.md]] — sector MOC; TSMC is #1 foundry dependency
+- [[Sectors/Semiconductor Foundries.md]] — sector MOC; TSMC is #1 foundry dependency
 - [[Sectors/Semiconductor Capital Equipment.md]] — WFE demand driver
 - [[Macro/AI Bubble Risk and Semiconductor Valuations.md]] — timing-mismatch thesis affecting all TSMC HPC revenue
 
@@ -307,3 +307,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - Stress test [[Research/2026-04-19 - TSM - Stress Test]]: Taiwan invasion/blockade scenario mispriced as -30% position risk when realistic downside is -85-95% permanent impairment (destroy-the-fabs protocol + Arizona is 5-8% of capacity through 2030). 8/9 assumptions rated 🔴 — conviction weakened: reassess medium→low pending Taiwan macro research + Arizona capacity re-quantification.
 - Status change: status draft → active — thesis promoted to active coverage post stress-test completion. Snapshot: [[_Archive/Snapshots/TSM - Taiwan Semiconductor (pre-status 2026-04-19-005847)]]
 - Status change: conviction medium → low — per [[Research/2026-04-19 - TSM - Stress Test]] verdict (8/9 bull assumptions 🔴 under Taiwan stress; Taiwan tail mispriced as -30% when realistic -85-95% permanent impairment; Arizona 5-8% through 2030 does not hedge at thesis horizon). Meta-gap: Conviction Triggers framework's LOW conditions (HPC growth <10%, Arizona N2 delay, Intel 18A customer wins) did not capture the geopolitical-tail invalidator that drove this downgrade — Triggers section extension pending. Snapshot: [[_Archive/Snapshots/TSM - Taiwan Semiconductor (pre-status 2026-04-19-005847)]]
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors → Semiconductor Foundries (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale `[[Sectors/Semiconductors.md]]` in Related Research with `[[Sectors/Semiconductor Foundries.md]]` per Semiconductor Foundries sector-fill back-propagation. No body-content changes.

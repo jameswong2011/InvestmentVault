@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, lng, energy-commodities]
 status: active
 conviction: high
-sector: Energy & Commodities
+sector: LNG & Natural Gas Infrastructure
 ticker: LNG
 source: Multi-source synthesis (Claude, ChatGPT, Gemini, Grok, web research)
 ---
@@ -199,7 +199,7 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 ## Related Research
 
-- [[Sectors/Energy & Commodities]] — Sector Note; includes gas-to-coal switching analysis (40-90M tonnes), thermal coal trade vehicles (Yancoal/New Hope), and $150 oil playbook (US LNG outside conflict zone)
+- [[Sectors/LNG & Natural Gas Infrastructure]] — Sector Note; includes gas-to-coal switching analysis (40-90M tonnes), thermal coal trade vehicles (Yancoal/New Hope), and $150 oil playbook (US LNG outside conflict zone)
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — JKM LNG ranked #1 most impacted commodity; up 143% since Feb 28; no Hormuz bypass for LNG; optimal trade: long JKM / short Henry Hub
 - [[Macro/Iran War Macroeconomic Scenario]] — Cheniere listed as top structural long; Ras Laffan damage creates multi-year supply gap; Dubai physical-futures disconnect signals consensus error
 - [[Macro/Commodity Impacts from Iran Tensions]] — Full commodity cascade analysis; Cheniere recommended as Trade 3 for structural LNG supply gap
@@ -208,6 +208,7 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Macro transmission mechanisms; 3-speed regional impact (US buffered, Asia vulnerable, Europe stagflationary)
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Pre-war conflict capital allocation framework; Cheniere as LNG supply hedge
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — June 2025 Israel-Iran conflict precedent; ceasefire fragility; dual-theater stretch risk
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament dynamics post-Assad: Iran transferred >$1B to Hezbollah in 2025, pivoted to maritime/cash/tech-transfer smuggling, rebuilt ~1/3 of pre-war capability within a year — structurally supports sustained Iran scenario even through ceasefire episodes
 
 ## Log
 
@@ -226,3 +227,12 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 ### 2026-03-30
 - Initial thesis created from Claude conversation. Filtered for non-consensus views — conviction high.
+
+### 2026-04-22
+- Sector re-scoped: Energy & Commodities → LNG & Natural Gas Infrastructure (vault-wide subsector taxonomy reorganization).
+
+### 2026-04-23
+- Wikilink cleanup: Related Research: replaced stale `[[Sectors/Energy & Commodities]]` body reference with `[[Sectors/LNG & Natural Gas Infrastructure]]` (completes sector re-scope — forward adjacency now symmetric with sector's reverse index). Conviction unchanged.
+
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah rebuilt ~1/3 capability within a year despite Assad fall — validates LNG thesis that Iran scenario is structurally resilient; Hezbollah escalation is a Scenario A intensification driver that keeps Ras Laffan/Hormuz tail alive beyond April 21 ceasefire. Conviction unchanged (high).

@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, semiconductors, NAND, SNDK, SanDisk, memory, AI-storage, HBF]
 status: active
 conviction: medium
-sector: Semiconductors & Photonics
+sector: NAND Memory & Storage
 ticker: SNDK
 ---
 
@@ -190,14 +190,15 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 - [[Research/2026-03-31 - SanDisk Valuation Assessment]] — NAND structural shortage thesis, wafer supply-demand model, margin analysis
 - [[Research/2026-01-17 - SanDisk HBM and NAND in AI]] — HBF technology analysis, stock attribution, WDC comparison
 - [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]] — TurboQuant impact on memory demand; Jevons Paradox framework
+- [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] — Full deep-dive: NAND architecturally immune to KV cache compression; reinforces Insight #3 on March 24 selloff as category error; concurrency scaling 16→100 users/H100, context inflation 1M-10M tokens as net-new storage demand
 - [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]] — Edge/local AI inference, Muon optimizer, open-source model parity
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM4 vendor yields; capacity diversion quantification
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]] — Samsung/Micron/SK Hynix HBM-vs-NAND capex allocation
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — HBM shortage dynamics; inference economics
 - [[Theses/285A - Kioxia]] — Flash Ventures JV partner; shared thesis dynamics
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis: TEL cryogenic etch for 400-layer NAND in 2026 volume deployment; etch intensity ~5x increase vs 2D NAND; 3D NAND recovery as equipment demand driver
-- [[Sectors/NAND Flash & Storage]] — NAND sector note: competitive dynamics, YMTC disruption analysis, HBF category assessment, product-level differentiation
-- [[Sectors/Semiconductors]]
+- [[Sectors/NAND Memory & Storage]] — NAND sector note: competitive dynamics, YMTC disruption analysis, HBF category assessment, product-level differentiation
+- [[Sectors/Semiconductor Capital Equipment]] — WFE sector note: hybrid-bonded flash (HBF) as second hybrid-bonding TAM vector; pilot line accelerated H2 2026; TEL cryogenic etch HVM 2026 for 400L NAND; equipment-adjacent secondary sector reference
 
 ## Log
 ### 2026-04-16 (NAND sector research sync)
@@ -214,3 +215,15 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 
 ### 2026-04-15 (BESI cross-thesis sync)
 - [BESI hybrid bonding research]: Samsung licensing W2W from Changjiang for V10 NAND (420-430 layers) could pressure Kioxia JV manufacturing differentiation. NAND packaging at 26% CAGR — conviction unchanged, indirect impact.
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors & Photonics → NAND Memory & Storage (vault-wide subsector taxonomy reorganization).
+
+### 2026-04-22 (Semicap sector rebuild sync)
+- Wikilink cleanup: Replaced stale `[[Sectors/Semiconductors]]` parent reference with `[[Sectors/Semiconductor Capital Equipment]]` in Related Research; SNDK remains listed in Semicap sector's Equipment-Adjacent scope (HBF as second hybrid-bonding TAM vector beyond HBM; pilot line accelerated H2 2026). Thesis body unchanged; conviction unchanged.
+
+### 2026-04-23
+- Wikilink cleanup: Related Research: `[[Sectors/NAND Flash & Storage]]` → `[[Sectors/NAND Memory & Storage]]` (sector file renamed; rename-only fix). Conviction unchanged.
+
+### 2026-04-23 (/sync — orphan linking)
+- [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]]: Validates Insight #3 — SNDK -5.7 to -10% March 24 selloff was category error since TurboQuant compresses DRAM KV cache only; zero effect on training data, checkpoint storage, model-weight storage, or enterprise SSD throughput. Conviction unchanged (medium).

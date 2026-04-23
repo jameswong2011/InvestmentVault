@@ -5,6 +5,7 @@ status: active
 sector: Semiconductors & Photonics
 ticker: NVDA
 source: Gemini Canvas export
+source_type: deep-dive
 propagated_to: [NVDA]
 ---
 
@@ -177,3 +178,6 @@ Why is this here?
 - [[Theses/NVDA - Nvidia]] — Warp 8x-669x moat; PhysX sim-to-real; Physical AI TAM; hardware-software co-optimization
 - [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]] — Companion AI ecosystem analysis (same date)
 - [[Sectors/Semiconductors]]
+
+## Related Sectors
+- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics (#4 of Nvidia's seven moats — Physical AI full stack: PhysX 5, Warp 8x-669x differentiable physics, Omniverse 82+ OpenUSD connectors, Cosmos world foundation models), Product level analysis (Jetson/Thor/DRIVE Hyperion edge inference), and Investor heuristics #5 (Physical AI as underpriced NVDA-specific TAM vector — no merchant GPU competitor has equivalent vertical stack).

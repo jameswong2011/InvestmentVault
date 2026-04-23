@@ -4,6 +4,7 @@ tags: [research, healthcare-medtech]
 status: active
 sector: Healthcare & MedTech
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Australian Healthcare Non-Traditional Models
@@ -43,3 +44,6 @@ These companies distinguish themselves through digital-first approaches, platfor
 
 ## Related
 - [[Sectors/Healthcare & MedTech]]
+
+## Related Sectors
+- [[Sectors/Consumer Telehealth]]

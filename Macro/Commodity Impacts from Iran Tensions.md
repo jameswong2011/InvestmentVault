@@ -80,6 +80,16 @@ The **fertilizer nexus** is the critical transmission mechanism from energy disr
 - [[Theses/CCJ - Cameco]] — Uranium at ~$92/lb; nuclear renaissance narrative reinforced by crisis
 - [[Theses/RELIANCE - Reliance Industries]] — Jamnagar refinery benefits from surging crack spreads
 - [[Macro/Iran War Macroeconomic Scenario]] — Parent macro scenario analysis
-- [[Sectors/Energy & Commodities]] — Trade-level expression of commodity thesis
+- [[Sectors/LNG & Natural Gas Infrastructure]] — LNG-level expression of commodity thesis (structural supply gap, Ras Laffan damage)
+- [[Sectors/Product Tankers & Maritime Shipping]] — Product tanker expression (ton-mile demand shock, insurance mechanism)
+- [[Sectors/Uranium & Nuclear Fuel]] — Uranium expression (nuclear renaissance as crisis hedge)
 
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Gemini source: detailed commodity sensitivity ranking and trade recommendations
+- [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience sustains commodity-disruption regime duration: Iran's proxy apparatus survived Assad fall via maritime smuggling + tech transfer, implying Scenario A commodity impact window persists beyond Hormuz ceasefire
+- [[Research/2026-03-21 - Betting on Inflation Trades]] — Inflation hedging menu (TIPS ETFs SCHP/STIP/UTIP/ILB, Treasury FRNs USFR/QPON, commodity ETFs DBC/BCOM/XLE/FUEL, I bonds) — instrument-level mapping of macro-inflation positioning driven by commodity cascade analysis in this note
+
+## Log
+
+### 2026-04-23 (/sync all — Log section created + Gemini canvas + RELIANCE anchoring)
+- [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]]: Gemini commodity sensitivity ranking; Brent +50% to $115, $31-47/bbl war risk premium; urea +50% to $700/MT, 30% of global exportable fertilizer offline; palm oil / sugar biofuel-nexus transmission; live cattle feed-cost pressure on 75-yr herd low — sources the cross-commodity sensitivity architecture embedded in the scenario body.
+- [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]]: Jamnagar refinery crack-spread tailwind from Hormuz disruption; Jio Platforms IPO valuation ($130-170B consensus; implies near-zero stub value for Retail/O2C/New Energy — mathematically implausible). Reliance-specific expression of commodity-impact regime validates India-domestic demand resilience as a structural hedge against Hormuz-transit-dependent economies.

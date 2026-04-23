@@ -190,3 +190,6 @@ Ethereum’s moat is not “cheapest or fastest L1.” Its advantage is:
 - Acting as the settlement layer for a competitive field of L2s that inherit its security.
 
 Solana, BSC, Tron, etc. are increasingly strong *adjacent* ecosystems, but they still tend to interoperate with Ethereum’s standards and liquidity rather than replace it as the neutral base layer.
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

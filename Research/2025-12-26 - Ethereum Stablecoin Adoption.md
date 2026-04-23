@@ -4,6 +4,7 @@ tags: [research, consumer-digital]
 status: active
 sector: Consumer & Digital
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Ethereum Stablecoin Adoption
@@ -61,3 +62,7 @@ The technical roadmap addresses current limitations. Pectra (May 2025) introduce
 
 ## Related
 - [[Sectors/Consumer & Digital]]
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

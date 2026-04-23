@@ -123,7 +123,13 @@
       "Bash(grep -A 10 '```yaml')",
       "Bash(grep -A 10 '```yaml' \"/Users/alexcohen/InvestmentVault/.claude/skills/thesis/SKILL.md\")",
       "Bash(sed -n '/^## Phase 5/,/^## /p' \"/Users/alexcohen/InvestmentVault/.claude/skills/compare/SKILL.md\" | head -80)",
-      "Bash(echo \"=== CHECK 3: Step numbering integrity within /sync ===\" && echo \"All ## Step headers in /sync:\" && grep -n \"^## Step\\\\|^### \" \"/Users/alexcohen/InvestmentVault/.claude/skills/sync/SKILL.md\" | head -40 && echo \"\" && echo \"=== CHECK 4: Macro file-direct fallback placement ===\" && sed -n '/^**For changed macro notes**/,/^**For changed sector notes**/p' \"/Users/alexcohen/InvestmentVault/.claude/skills/sync/SKILL.md\" | head -20)"
+      "Bash(echo \"=== CHECK 3: Step numbering integrity within /sync ===\" && echo \"All ## Step headers in /sync:\" && grep -n \"^## Step\\\\|^### \" \"/Users/alexcohen/InvestmentVault/.claude/skills/sync/SKILL.md\" | head -40 && echo \"\" && echo \"=== CHECK 4: Macro file-direct fallback placement ===\" && sed -n '/^**For changed macro notes**/,/^**For changed sector notes**/p' \"/Users/alexcohen/InvestmentVault/.claude/skills/sync/SKILL.md\" | head -20)",
+      "Bash(cp /Users/alexcohen/.claude/projects/-Users-alexcohen-InvestmentVault/fb4d155e-824c-4b4d-aa93-c9579d29c2aa/tool-results/toolu_01R9WFgLDENLjtPMU5qhKUHv.txt /tmp/lint-wikilinks.txt)",
+      "Read(//tmp/**)",
+      "Read(//private/tmp/**)",
+      "Bash(mkdir -p \".claude/sync-manifests\")",
+      "Bash(cat)",
+      "Edit(/Users/alexcohen/InvestmentVault/.claude/sync-manifests/2026-04-23T04-05-sync-all.md)"
     ]
   }
 }

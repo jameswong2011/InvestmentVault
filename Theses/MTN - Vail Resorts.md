@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, mtn, consumer-digital, leisure]
 status: active
 conviction: low
-sector: Consumer & Digital
+sector: Ski Resorts & Destination Leisure
 ticker: MTN
 source: Multi-source consolidation (ChatGPT, Gemini Canvas, Claude, web research)
 ---
@@ -190,7 +190,7 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 ## Related Research
 
 - [[Research/2025-12-15 - MTN - Gemini Stock Decline Canvas]] — Comprehensive structural analysis: Alterra competitive hegemony, regional battlefield analysis, financial de-rating, #Epicalypse narrative, valuation trap thesis
-- [[Sectors/Consumer & Digital]] — Sector Note with cross-company dynamics
+- [[Sectors/Ski Resorts & Destination Leisure]] — Sector MOC: industry history, Epic-Ikon duopoly dynamics, climate and demographics, destination-leisure real estate framework
 
 ## Log
 
@@ -202,3 +202,7 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 - [Gemini Canvas ingestion]: Linked Vail decline analysis — Alterra disruption and structural valuation erosion — conviction unchanged.
 ### 2025-12-11
 - Distilled from 3 source segments across 1 conversations. Filtered for non-consensus views and differentiated analysis.
+
+### 2026-04-22
+- Sector re-scoped: Consumer & Digital → Ski Resorts & Destination Leisure (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: Replaced stale [[_Archive/Sectors/Consumer & Digital]] reference with [[Sectors/Ski Resorts & Destination Leisure]] in Related Research — conviction unchanged (low).

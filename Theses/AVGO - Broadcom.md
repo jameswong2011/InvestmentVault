@@ -3,7 +3,7 @@ date: 2026-04-14
 tags: [thesis, semiconductors, AVGO, AI-infrastructure, custom-ASIC, networking]
 status: active
 conviction: high
-sector: Semiconductors & Photonics
+sector: Custom Silicon & Networking Semiconductors
 ticker: AVGO
 ---
 
@@ -154,7 +154,7 @@ VMware's vSphere/VCF platform remains the dominant on-premise virtualization lay
 - [[Research/2025-11-27 - Broadcom Equity Research Framework]] — Full equity research framework; AI revenue projections (Goldman: $45B FY2026, $77B FY2027); peer valuation comparison; PEG analysis
 - [[Theses/NVDA - Nvidia]] — Complementary/competitive dynamics in AI infrastructure; PhysX/Omniverse moat; NVLink vs Ethernet
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch framework; $650B annual revenue requirement; custom ASIC market share data
-- [[Sectors/Semiconductors]] — Sector Note with cross-thesis dynamics
+- [[Sectors/Custom Silicon & Networking Semiconductors]] — Sector Note with cross-thesis dynamics
 - [[Theses/LITE - Lumentum]] — CPO/photonics supply chain overlap; data center optical interconnect
 - [[Theses/PSTG - Pure Storage]] — AI data center infrastructure theme
 
@@ -177,3 +177,7 @@ VMware's vSphere/VCF platform remains the dominant on-premise virtualization lay
 
 ### 2026-04-14 (earlier)
 - [Gemini/ChatGPT]: Initial thesis created from Broadcom investment analysis. Hock Tan aggregation strategy, AI positioning, VMware integration — conviction medium.
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors & Photonics → Custom Silicon & Networking Semiconductors (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Sectors/Custom Silicon & Networking Semiconductors]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill).

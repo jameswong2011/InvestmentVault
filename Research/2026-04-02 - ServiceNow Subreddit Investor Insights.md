@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # ServiceNow Subreddit Investor Insights
@@ -66,4 +67,7 @@ Active M&A in the partner ecosystem (GlideFast acquired by ASGN for **$350 milli
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Investor heuristics (practitioner-to-executive sentiment gap as leading indicator that most analysts miss; pricing opacity and golden-handcuffs resentment; Now Assist skepticism at ground level vs. corporate $600M ACV headline metric; Context Engine adoption is the indicator to watch).

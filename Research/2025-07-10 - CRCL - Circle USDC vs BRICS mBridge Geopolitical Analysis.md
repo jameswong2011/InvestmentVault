@@ -4,6 +4,7 @@ tags: [research, crypto, stablecoins, geopolitics, CRCL, USDC]
 status: active
 sector: Consumer & Digital
 source: Grok conversation export (Conv 12)
+source_type: comparison
 propagated_to: [CRCL, BTC-CRYPTO]
 ---
 
@@ -81,3 +82,7 @@ Assuming USDC becomes the stable default USD alternative to mBridge:
 - Grok conversation from ~July 10, 2025 (100-paragraph report format)
 - Conversation also included unrelated topics (Salesforce Hyperforce, Cursor IDE, Anthropic MCP) — excluded from this note
 - Citation references from Grok's web search are included as contextual markers but URLs not preserved in export
+
+
+## Related Sectors
+- [[Sectors/Blockchain & Stablecoins]] — back-reference added 2026-04-22 during sector-fill

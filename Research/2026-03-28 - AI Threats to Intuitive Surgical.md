@@ -4,6 +4,7 @@ tags: [research, healthcare-medtech]
 status: active
 sector: Healthcare & MedTech
 source: Claude conversation export
+source_type: deep-dive
 propagated_to: [ISRG]
 ---
 
@@ -67,5 +68,8 @@ Financially, ISRG's expansion is funded from a position of extraordinary strengt
 ## Related
 - [[Theses/ISRG - Intuitive Surgical]] — Primary thesis; AI net positive assessment, Chinese competitor dynamics, adjacent expansion
 - [[Research/2026-03-29 - Cross-Procedure Capability in Surgical Robotics]] — Companion: cross-procedure moat analysis
-- [[Research/2026-01-21 - ISRG - Gemini Investment Thesis Canvas]] — Foundational investment thesis canvas
+- [[2026-01-21 - ISRG]] — Foundational investment thesis canvas
 - [[Sectors/Healthcare & MedTech]]
+
+## Related Sectors
+- [[Sectors/Surgical Robotics]] — cited in sector note Related Research (AI net-positive assessment, MicroPort/Edge/KangDuo deep-dive, adjacent expansion)

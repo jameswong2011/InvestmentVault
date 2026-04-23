@@ -99,3 +99,6 @@ Packaging is often considered the **Achilles’ heel** of silicon photonics scal
 
 ---
 *[Content truncated — full conversation in Research/raw/_staging/extracted/]*
+
+## Related Sectors
+- [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Competitive dynamics (silicon photonic foundry stratum with GF/AMF + Tower + TSMC COUPE), Product level analysis (SiPh foundry 2026 positioning table), Industry history (Phase 6 AI optical supercycle), and Related Research.

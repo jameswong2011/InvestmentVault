@@ -4,6 +4,7 @@ tags: [research, enterprise-software]
 status: active
 sector: Enterprise Software
 source: Claude conversation export
+source_type: comparison
 ---
 
 # Palantir Comparison
@@ -70,4 +71,7 @@ The data model, however, remains fundamentally relational and structured. CIs ar
 ---
 
 ## Related
-- [[Sectors/Enterprise Software]]
+- [[Sectors/Enterprise Workflow AI & Automation]]
+
+## Related Sectors
+- [[Sectors/Enterprise Workflow AI & Automation]] — cited in §Product level analysis (Palantir Ontology as universal semantic layer vs ServiceNow CMDB as universal action layer — different bets on enterprise data architecture) and §Competitive dynamics (Forrester finding fewer than half of organizations trust their CMDB data — undermines NOW AI ambitions; ServiceNow's expansion across IT/HR/CSM/sec/CRM as cross-departmental workflow play).

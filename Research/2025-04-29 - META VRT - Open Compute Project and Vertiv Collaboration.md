@@ -4,7 +4,8 @@ tags: [research, META, VRT, data-centers, OCP, cooling]
 status: active
 sector: Data Centers
 source: Grok AI conversation export
-propagated_to: [META]
+source_type: deep-dive
+propagated_to: [META, VRT]
 ---
 
 # META VRT - Open Compute Project and Vertiv Collaboration
@@ -170,3 +171,8 @@ For instance, imagine a sermon about creation:
 ### Conclusion
 
 Integrating the neo-Platonic and Christian concept of **logos** as the "Word" at the beginning of creation with **ethos** and **pathos** elevates their rhetorical roles. **Ethos** becomes the speaker’s embodiment of the divine order, reflecting the logos through their character. **Pathos** becomes the emotional bridge, linking the audience to the wonder and meaning of the logos as the creative force. Together, they don’t just persuade—they reveal and participate in the divine truth that "in the beginning was the Word," making communication a profound act of connection between the human and the divine.
+
+## Related Sectors
+- [[Sectors/Data Center Power & Cooling]] — cited in §Industry history (OCP standards authorship), §Competitive dynamics (hyperscaler insourcing via OCP specs), §Investor heuristics (standards authorship as non-consensus moat); Vertiv-Meta OCP DC Power Shelf v3 + OAI System Liquid Cooling Guidelines co-authorship is core evidence for the 12-18 month information asymmetry thesis
+- [[Sectors/Enterprise Storage Infrastructure]] — cited in §Industry history (Meta data center design philosophy backdrop for 2023–2026 AI era) and §Macro shifts (hyperscaler storage strategy context for the Pure-Meta design win — first visible breach of hyperscaler self-build orthodoxy for primary storage tier)
+- [[Sectors/Social Platforms & Digital Advertising]] — cited in §Related Research; Meta's OCP-enabled data center infrastructure is the capex foundation that scales Andromeda retrieval + Advantage+ creative AI, the systems driving Meta's projected 2026 digital-ad leadership takeover of Google

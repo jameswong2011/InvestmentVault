@@ -4,6 +4,7 @@ tags: [macro, gold, commodities, LBMA, COMEX, supply-squeeze]
 status: active
 sector: Energy & Commodities
 source: Grok AI conversation export
+source_type: deep-dive
 ---
 
 # Gold Market Stress - LBMA Shortages and Delivery Dynamics
@@ -989,3 +990,8 @@ However, investors should remain vigilant about:
 ## **Conclusion**
 
 The property price dynamic in Uluwatu, Bali, reflects a robust and growing market, driven by its popularity among tourists and expatriates, luxury real estate developments, and infrastructure improvements. In 2024, property prices are appreciating at an estimated rate of 6-10% annually, with luxury villas commanding premium prices and generating attractive rental yields. While the market offers strong investment potential, investors must navigate challenges such as regulatory complexities and environmental sustainability concerns. Looking ahead, Uluwatu's property market is poised for continued growth, supported by ongoing developments and emerging trends in sustainable real estate. Investors can capitalize on this dynamic by focusing on high-demand areas and properties with strong rental potential, while remaining mindful of market risks and regulatory changes.
+
+---
+
+## Related Sectors
+- [[Sectors/Precious Metals]] — cited in sector fill (2026-04-22) for paper-physical disconnect dynamics, COMEX delivery volumes, LBMA liquidity stress, and Swiss refinery bottlenecks

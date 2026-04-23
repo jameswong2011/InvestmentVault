@@ -4,6 +4,7 @@ tags: [research, BESI, semiconductors, HBM, advanced-packaging, valuation]
 status: active
 sector: Semiconductors & Photonics
 source: Grok AI conversation export
+source_type: analyst-report
 propagated_to: [BESI]
 ---
 
@@ -332,3 +333,6 @@ The CoWoS process involves fabricating an interposer, assembling chips onto it, 
 ### Summary
 
 Performing CoWoS (assuming COWAS refers to this) requires a suite of advanced semiconductor manufacturing tools. These span wafer processing (lithography, etching, deposition, plating, CMP), assembly (die bonding, thinning, molding, bump formation, dicing, flip-chip bonding), and quality assurance (inspection, testing). Each piece of equipment plays a critical role in ensuring the precision, reliability, and performance of the final package, tailored for cutting-edge applications.
+
+## Related Sectors
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Investor heuristics (BESI valuation context, competitive segment analysis) and Product level analysis (CoWoS equipment requirements — full tool suite across litho/etch/deposition/plating/CMP/assembly/inspection).

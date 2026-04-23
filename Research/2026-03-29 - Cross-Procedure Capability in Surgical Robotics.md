@@ -4,6 +4,7 @@ tags: [research, healthcare-medtech]
 status: active
 sector: Healthcare & MedTech
 source: Claude conversation export
+source_type: deep-dive
 propagated_to: [ISRG]
 ---
 
@@ -66,5 +67,8 @@ Hugo's competitive strategy centers on **modularity, cost flexibility, and portf
 ## Related
 - [[Theses/ISRG - Intuitive Surgical]] — Primary thesis; cross-procedure compounding moat, Hugo/Ottava competitive positioning
 - [[Research/2026-03-28 - AI Threats to Intuitive Surgical]] — Companion: AI and Chinese competitor analysis
-- [[Research/2026-01-21 - ISRG - Gemini Investment Thesis Canvas]] — Foundational investment thesis canvas
+- [[2026-01-21 - ISRG]] — Foundational investment thesis canvas
 - [[Sectors/Healthcare & MedTech]]
+
+## Related Sectors
+- [[Sectors/Surgical Robotics]] — cited in sector note Related Research (cross-procedure compounding moat, Hugo/Ottava regulatory positioning, architectural boundaries)

@@ -4,6 +4,7 @@ tags: [research, healthcare-medtech]
 status: active
 sector: Healthcare & MedTech
 source: Claude conversation export
+source_type: deep-dive
 ---
 
 # Healthcare and Biotech Stock Screen
@@ -39,3 +40,6 @@ $RENX in vitro diagn
 
 ## Related
 - [[Sectors/Healthcare & MedTech]]
+
+## Related Sectors
+- [[Sectors/Surgical Robotics]] — cited in sector note Related Research as the original healthcare screen that identified ISRG

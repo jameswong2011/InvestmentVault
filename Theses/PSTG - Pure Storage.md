@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, pstg, enterprise-storage, ai-infrastructure]
 status: active
 conviction: medium
-sector: Enterprise Software
+sector: Enterprise Storage Infrastructure
 ticker: PSTG
 source: Consolidated — Gemini Canvas, ChatGPT deep-dive, Claude, web research April 2026
 ---
@@ -235,8 +235,8 @@ Pure's strategic insight was recognizing that the commodity SSD layer is a **val
 
 ## Related Research
 
-- [[Research/2026-01-15 - PSTG - Gemini Investment Thesis Canvas]] — Comprehensive 10-section analysis: DirectFlash architecture, platform strategy, AI infrastructure, hyperscale opportunity, competitive landscape, financial analysis, ESG
-- [[Sectors/Enterprise Software]] — Sector Note with PSTG Key Dynamics
+- [[Research/2026-01-15 - PSTG]] — Comprehensive 10-section analysis: DirectFlash architecture, platform strategy, AI infrastructure, hyperscale opportunity, competitive landscape, financial analysis, ESG
+- [[Sectors/Enterprise Storage Infrastructure]] — Sector Note with PSTG positioning, competitive dynamics, AI storage landscape
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI infrastructure storage layer positioning
 - [[Theses/NVDA - Nvidia]] — NVIDIA SuperPOD certification, AIRI reference architecture, AI infrastructure ecosystem
 - [[Theses/META - Meta]] — Hyperscaler design win customer; AI infrastructure capex trajectory
@@ -257,3 +257,7 @@ Pure's strategic insight was recognizing that the commodity SSD layer is a **val
 
 ### 2026-01-14
 - Distilled from 1 source segments across 1 conversations. Filtered for non-consensus views and differentiated analysis.
+
+### 2026-04-22
+- Sector re-scoped: Enterprise Software → Enterprise Storage Infrastructure (vault-wide subsector taxonomy reorganization).
+- Wikilink cleanup: replaced stale `[[Sectors/Enterprise Software]]` body reference with `[[Sectors/Enterprise Storage Infrastructure]]` following sector re-scope — conviction unchanged.

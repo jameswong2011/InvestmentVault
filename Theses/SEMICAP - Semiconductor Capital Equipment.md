@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, semiconductors, WFE, capital-equipment, KLAC, AMAT, LRCX, ASMI, BESI]
 status: active
 conviction: high
-sector: Semiconductors & Photonics
+sector: Semiconductor Capital Equipment
 ticker: [KLAC, AMAT, LRCX, ASMI, BESI]
 source: Synthesis of Grok, Claude, Gemini, ChatGPT conversation exports + web research (SEMI, company filings, TrendForce, SemiEngineering, Reuters, Seeking Alpha)
 ---
@@ -181,7 +181,7 @@ The recommended allocation prioritizes structural compounders trading below peer
 ## Related Research
 
 - [[Sectors/Semiconductor Capital Equipment]] — Full sector map and breakdown
-- [[Sectors/Semiconductors]] — Broader semiconductor dynamics (NVDA, memory, photonics)
+- [[Sectors/Semiconductor Capital Equipment]] — Broader semiconductor capital equipment dynamics (MOC)
 - [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas]]
 - [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas]]
 - [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]]
@@ -189,7 +189,7 @@ The recommended allocation prioritizes structural compounders trading below peer
 - [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]]
 - [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact]]
 - [[Theses/BESI - BE Semiconductor Industries]]
-- [[Sectors/NAND Flash & Storage]] — NAND sector dynamics, supply deficit through 2027, YMTC capacity impact on equipment demand
+- [[Sectors/NAND Memory & Storage]] — NAND sector dynamics, supply deficit through 2027, YMTC capacity impact on equipment demand
 - [[Theses/LITE - Lumentum]]
 - [[Theses/NVDA - Nvidia]]
 
@@ -198,5 +198,14 @@ The recommended allocation prioritizes structural compounders trading below peer
 ## Log
 
 - **2026-04-19 (TSM stress test sync):** [[Research/2026-04-19 - TSM - Stress Test]]: TSM Taiwan tail = -85-95% permanent impairment vs thesis-modeled -30%. LAM/AMAT/KLAC leading-edge revenue ≈ 15-20% to TSMC Taiwan (N2/A16 ramp + CoWoS Kaohsiung); rebuild in US/JP/DE consumes 100% of ASML's EUV global output for 12-18mo — conviction unchanged, sector's single-largest-customer tail re-quantified as multi-year equipment drought scenario.
-- **2026-04-16:** [[Sectors/NAND Flash & Storage]]: NAND Q2 2026 contract prices +70-75% QoQ; supply deficit persists through 2027+ (no greenfield until Micron Fab 10B H2 2028) — conviction unchanged, reinforces NAND equipment demand durability for LRCX/TEL.
+- **2026-04-16:** [[Sectors/NAND Memory & Storage]]: NAND Q2 2026 contract prices +70-75% QoQ; supply deficit persists through 2027+ (no greenfield until Micron Fab 10B H2 2028) — conviction unchanged, reinforces NAND equipment demand durability for LRCX/TEL.
 - **2026-04-15:** [Thesis created]: Synthesized Grok/Claude/Gemini/ChatGPT exports + web research. WFE $135B CY2026, TSMC CoWoS 35K→130K wafers/month, KLA adv. packaging $950M CY25. Core conviction: KLA and AMAT highest risk-adjusted; LRCX correctly priced; TEL and photonics test names are overlooked asymmetric plays.
+
+### 2026-04-22
+- Sector re-scoped: Semiconductors & Photonics → Semiconductor Capital Equipment (vault-wide subsector taxonomy reorganization).
+
+### 2026-04-22 (Wikilink cleanup)
+- Wikilink cleanup: Replaced stale `[[Sectors/Semiconductors]]` parent reference with `[[Sectors/Semiconductor Capital Equipment]]` in Related Research; parent sector note retired during vault reorganisation. Thesis body unchanged; conviction unchanged.
+
+### 2026-04-23
+- Wikilink cleanup: `[[Sectors/NAND Flash & Storage]]` → `[[Sectors/NAND Memory & Storage]]` (both Related Research and 2026-04-16 log entry; sector file renamed). Conviction unchanged.
