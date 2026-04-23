@@ -154,6 +154,7 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 
 - [[Sectors/Video Game Publishing]]
 - [[Macro/Iran War Macroeconomic Scenario]] — Consumer discretionary headwinds from geopolitical conflict
+- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict timing coincides with GTA VI launch; $70 pricing elasticity tested in worst macro
 
 ## Log
 
@@ -169,3 +170,6 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 ### 2026-04-22
 - Sector re-scoped: Consumer & Digital → Video Game Publishing (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] pointer in Related Research with [[Sectors/Video Game Publishing]] after sector note populated.
+
+### 2026-04-23
+- Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via consumer discretionary destruction at GTA VI launch window (Nov 2026) — conviction weakened: $70-80 pricing sensitivity realized in worst possible macro environment; binary launch thesis directly exposed to recessionary consumer spending compression.

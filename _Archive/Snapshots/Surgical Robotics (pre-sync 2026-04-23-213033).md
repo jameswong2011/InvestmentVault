@@ -2,6 +2,10 @@
 date: 2026-04-22
 tags: [sector, moc, surgical-robotics, medtech]
 status: active
+snapshot_of: "[[Sectors/Surgical Robotics]]"
+snapshot_date: 2026-04-23
+snapshot_trigger: sync
+snapshot_batch: sync-2026-04-23-213033
 ---
 
 # Surgical Robotics
@@ -340,7 +344,7 @@ ISRG's AI strategy (per CDO Brian Miller, promoted Jan 2026) is deliberately **a
 
 ### Non-consensus insights from this sector research
 
-1. **Architectural specialization → modality monopoly is the stable equilibrium — on a 3–5 year horizon. The 15-year view carries three structural erosion paths the market does not price.** Attempts to build horizontal platforms across multi-port + single-port + flex + ortho have failed historically; within-modality dominance (ISRG soft-tissue 95% US, Stryker Mako ortho, ISRG Ion endoluminal) has held for two decades. Ion's monopolization of the diagnostic-therapeutic pathway is a case study the market has not priced. **But three 7–15 year convergence vectors visible as of GTC 2026 qualify the equilibrium**: (a) **KUKA/Midea industrial pathway** — Midea (China) owns 100% of KUKA post-2022 delisting, KUKA China revenue +59% YoY, LBR Med medical-certified since 2015 with deliberate component-supplier posture reversible under Chinese state-sponsored surgical-champion policy that could fuse Midea/KUKA with MicroPort MedBot / Edge Medical / Cornerstone into a vertically integrated Belt-and-Road platform. (b) **Platform-layer Physical AI convergence** — GTC 2026 NVIDIA coalition lumps ABB/FANUC/KUKA/Yaskawa (industrial, 2M+ installed robots) alongside ISRG/CMR/J&J/Medtronic/Moon/Rob Surgical (surgical) on the same Isaac/GR00T/Cosmos/Omniverse stack; the AI infrastructure that took ISRG 20 years to build becomes commodity for any hospital-adjacent robotics player. (c) **Stryker Mako RPS (Feb 2026 LMR) AccuStop technology explicitly positioned to "reduce soft tissue damage"** — Stryker's first soft-tissue-aware messaging from an ortho-native platform targeting the ASC channel, consistent with CEO Lobo's multi-year unannounced soft-tissue ambitions. Lowest-probability humanoid creep (Figure, Agility, AGIBOT, Skild AI in same GTC coalition) is a 10–15 year path with zero current regulatory pathway. Cumulative 7-year probability of meaningful industrial-path share displacement of ISRG soft-tissue dominance: ~15–25% vs stock-implied ~5–10% — a tail-risk mispricing that stacks on top of GLP-1 second-order (Heuristic #7), NVIDIA-Switzerland data-convergence (Heuristic #3), and China-VBP + ASC-shift headwinds already partially priced.
+1. **Architectural specialization → modality monopoly is the stable equilibrium.** Attempts to build horizontal platforms across multi-port + single-port + flex + ortho have failed historically. Investors overweight cross-platform competitive threats and underweight within-modality dominance. Ion's monopolization of the diagnostic-therapeutic pathway is a case study the market has not priced.
 
 2. **The regulatory pathway is the binding moat, not the hardware.** Hardware parity is achievable with ~$500M–$1B of capital (Hugo, Ottava, Versius all built capable systems). **Procedural breadth** is not — each indication requires separate clinical evidence + clearance, compounding on the incumbent's 25-year predicate chain. This is structurally similar to FDA-protected biologics in pharma.
 
@@ -359,7 +363,6 @@ ISRG's AI strategy (per CDO Brian Miller, promoted Jan 2026) is deliberately **a
 - [[Research/2026-01-21 - ISRG]] — Foundational ISRG thesis: financial architecture, dV5 ecosystem, China bifurcation, patent cliff, clinical evidence firewall
 - [[Research/2026-03-28 - AI Threats to Intuitive Surgical]] — AI net-positive assessment; deep dive on MicroPort/Edge/KangDuo; adjacent expansion (cardiac, SP, Ion)
 - [[Research/2026-03-29 - Cross-Procedure Capability in Surgical Robotics]] — Cross-procedure compounding moat; Hugo/Ottava regulatory positioning; architectural boundaries
-- [[Research/2026-04-23 - ISRG - Industrial Robotics Convergence Risk - deep-dive]] — Industrial-robotics + humanoid long-tail convergence (7–15yr horizon): KUKA/Midea 100% Chinese ownership + LBR Med medical-certified since 2015; Stryker Mako RPS "AccuStop reduces soft tissue damage" Feb 2026 as first soft-tissue-aware ortho messaging; GTC 2026 Physical AI coalition lumps ABB/FANUC/KUKA/Yaskawa industrial alongside ISRG/CMR/J&J/Medtronic surgical on same Isaac/GR00T/Cosmos/Omniverse stack; probability framework 7yr ~15-25% vs stock-implied ~5-10% — qualifies Investor Heuristic #1
 
 ## Log
 
@@ -367,6 +370,3 @@ ISRG's AI strategy (per CDO Brian Miller, promoted Jan 2026) is deliberately **a
 - Initial sector note created via subsector split from [[_Archive/Sectors/Healthcare & MedTech]] — pending prompt-fill of sector analysis sections.
 - Reordered sections: Active Theses moved to first position per Sector Template / CLAUDE.md §Sector Notes (MOC navigation goes first).
 - Full sector analysis populated: history (DARPA/SRI origins → Intuitive/Computer Motion 2003 merger → Xi → dV5), five-architecture taxonomy (multi-port / single-port / flex catheter / ortho haptic / handheld), US competitive landscape table (12 systems), Chinese bifurcation + international expansion table, product-level deep dives (dV5, Hugo, Ottava, Versius Plus, Ion, Toumai, Edge, Mako, MIRA, Dexter), M&A history, macro shifts (AI/NVIDIA, autonomy regulatory gap, ASC shift, VBP, GLP-1 second-order, remanufacturing/antitrust, tariffs), regulatory pathway asymmetry (510(k)/De Novo/PCCP), four-layer AI moat analysis, investor heuristics with priced-in vs mispriced matrix. Status flipped to active (7 sections filled vs ≥5 threshold).
-
-### 2026-04-23 (/sync — ISRG industrial-convergence propagation)
-- [[Research/2026-04-23 - ISRG - Industrial Robotics Convergence Risk - deep-dive]]: Qualified Investor Heuristic #1 (architectural specialization → modality monopoly) with 15-year erosion-path framing — three vectors added: (a) KUKA/Midea (Midea 100% ownership post-2022, KUKA China revenue +59% YoY, LBR Med medical-certified since 2015, latent Midea + MicroPort/Edge/Cornerstone Belt-and-Road vertical-consolidation path); (b) GTC 2026 Physical AI coalition lumps ABB/FANUC/KUKA/Yaskawa industrial + ISRG/CMR/J&J/Medtronic/Moon surgical on same Isaac/GR00T/Cosmos/Omniverse stack — commoditizes AI infrastructure moat; (c) Stryker Mako RPS (Feb 2026 LMR) AccuStop "reduces soft tissue damage" — first soft-tissue-aware messaging from ortho-native platform. Cumulative 7yr probability of meaningful industrial-path share displacement ~15–25% vs stock-implied ~5–10%. Snapshot: [[_Archive/Snapshots/Surgical Robotics (pre-sync 2026-04-23-213033)]] — ISRG conviction unchanged (medium); tail risk stacks on GLP-1, NVIDIA-Switzerland, China-VBP, ASC-shift.

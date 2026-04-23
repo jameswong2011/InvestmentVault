@@ -220,6 +220,7 @@ PANW's platform play aims to own the full value chain — from threat intelligen
 - [[Theses/NET - Cloudflare]] — Competing in SASE ($325-540M est. ARR), 2-5 years behind Zscaler/PANW in enterprise maturity
 - [[Sectors/Cybersecurity]] — Sector Note with competitive landscape, structural spending drivers (AI threats, geopolitics, regulatory mandates), and cross-company dynamics
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Iran-proxy cyber derivative framing: sustained Hezbollah/IRGC apparatus implies continued Iranian cyber activity against Israeli/US/Gulf targets — structurally supports cybersecurity spending in geopolitics-exposed verticals (financial services, critical infrastructure)
+- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict intensifies Iran cyber; CyberArk PAM depth validates platform consolidation under active-threat environment
 
 ## Log
 
@@ -232,3 +233,6 @@ PANW's platform play aims to own the full value chain — from threat intelligen
 
 ### 2026-04-23 (/sync — orphan linking)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Sustained Iran proxy apparatus (Hezbollah, IRGC-Quds, Unit 4400) implies continued Iranian cyber operations against Western/Israeli/Gulf targets — supports geopolitics-driven cybersecurity spending floor; CyberArk PAM depth and XSIAM unified telemetry are the natural beneficiaries of nation-state threat escalation. Conviction unchanged (medium).
+
+### 2026-04-23 (scenario propagation)
+- Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via Iran cyber retaliation intensification + CyberArk PAM depth critical vs credential-based state-actor attacks — conviction strengthened: active-threat environment validates platform consolidation thesis + CISO career-insurance dynamic; XSIAM autonomous SOC adoption accelerates under nation-state pressure.

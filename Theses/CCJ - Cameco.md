@@ -217,6 +217,7 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 - [[Sectors/Uranium & Nuclear Fuel]] — Sector Note; fuel-cycle competitive dynamics, Westinghouse/Brookfield/Cameco $80B partnership, re-contracting wave, HALEU bottleneck, and investor heuristics framework
 - [[Research/2026-01-26 - Silver Demand and Data Centers]] — Data center buildout commodity demand dynamics; power infrastructure context
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Structural Iran proxy resilience (Hezbollah rebuilt ~1/3 capability in a year, >$1B transferred 2025) supports sustained energy-sovereignty policy response — the 6-12 month re-rating trade framework on which CCJ's high conviction rests
+- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates energy-sovereignty policy response; reactor life extensions + new builds become national security mandate
 
 ## Log
 
@@ -242,3 +243,6 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 ### 2026-04-23 (/sync — orphan linking)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah's structural rearmament resilience extends the energy-sovereignty policy-response horizon beyond any single ceasefire — supports CCJ as 6-12 month second-wave Iran trade vs. first-wave LNG/tankers. Conviction unchanged (high).
+
+### 2026-04-23 (scenario propagation)
+- Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via energy-sovereignty policy acceleration + $80B DOE/Westinghouse partnership fast-tracked + long-term U contracts at $100+/lb — conviction strengthened: kinetic-conflict ground war transforms the 6-12 month policy-response trade into multi-year structural demand; uranium as the only non-chokepoint baseload.

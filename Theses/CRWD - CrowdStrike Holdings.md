@@ -221,9 +221,13 @@ Not listed but worth flagging: **SentinelOne** (Purple AI autonomous endpoint, L
 - [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]] — Earlier PANW competitive context
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Iran-cyber retaliation thesis: CRWD as asymmetric-threat hedge during geopolitical escalation
 - [[Theses/NET - Cloudflare]] — Adjacent network-edge play; non-overlapping with CRWD endpoint
+- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates Iran cyber retaliation → F500 emergency cyber budget reallocation
 
 ## Log
 
 ### 2026-04-22
 - Initial thesis created. Conviction: medium — supported by [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]: 24% ARR growth, single-agent moat vs PANW five-pillar federation, Falcon Flex consumption-pricing, 12-24mo agentic-AI lead, post-outage >95% retention validating switching cost. Not HIGH because 18x forward revenue prices in near-perfect execution and second-reliability-incident risk is irreducible; not LOW because structural moats (architecture, Flex, agentic AI, integration-discipline asymmetry vs PANW) are genuine and cleanly identifiable.
 - Status change: draft → active — promoted to active portfolio coverage scope. Snapshot: skipped (draft→active exception). Enters /catalyst, /prune, and conviction-drift detection scope.
+
+### 2026-04-23
+- Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via Iran cyber retaliation against Western infrastructure → F500 emergency budget reallocation to threat-intel leader — conviction strengthened: active state-actor threat environment validates CRWD's platform consolidation thesis; AIDR AI-workload security + Charlotte agentic SOC positioned for mandatory spending surge.
