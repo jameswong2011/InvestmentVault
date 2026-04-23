@@ -241,6 +241,7 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 - [[Theses/NET - Cloudflare]] — Adjacent enterprise software / edge AI thesis
 - [[Sectors/Enterprise Workflow AI & Automation]]
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates defense procurement (Maven, Warp Speed, Alpamayo, ShipOS); NATO sovereign AI expansion
 
 ## Log
 
@@ -261,3 +262,6 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 ### 2026-04-22
 - Sector re-scoped: Enterprise Software & Defense → Enterprise Workflow AI & Automation (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced `[[Sectors/Enterprise Software]]` and `[[Sectors/Defense & Geopolitics]]` → `[[Sectors/Enterprise Workflow AI & Automation]]` in Related Research section during sector-fill of [[Sectors/Enterprise Workflow AI & Automation]].
+
+### 2026-04-23
+- Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via kinetic-conflict defense procurement acceleration (Maven, Warp Speed, Alpamayo, ShipOS, TITAN); NATO sovereign AI $30B+ expansion — conviction strengthened: ground invasion is textbook demand trigger for AI-native defense platforms; DOGE budget rationalization + active-threat combine to favor Palantir's demonstrated-ROI model over legacy contractors.

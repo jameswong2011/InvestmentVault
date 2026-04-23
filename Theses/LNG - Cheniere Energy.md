@@ -209,6 +209,7 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Pre-war conflict capital allocation framework; Cheniere as LNG supply hedge
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — June 2025 Israel-Iran conflict precedent; ceasefire fragility; dual-theater stretch risk
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament dynamics post-Assad: Iran transferred >$1B to Hezbollah in 2025, pivoted to maritime/cash/tech-transfer smuggling, rebuilt ~1/3 of pre-war capability within a year — structurally supports sustained Iran scenario even through ceasefire episodes
+- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict extends Ras Laffan supply gap beyond any prior scenario; structural beneficiary with contracted revenue floor
 
 ## Log
 
@@ -236,3 +237,6 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 ### 2026-04-23 (/sync — orphan linking)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah rebuilt ~1/3 capability within a year despite Assad fall — validates LNG thesis that Iran scenario is structurally resilient; Hezbollah escalation is a Scenario A intensification driver that keeps Ras Laffan/Hormuz tail alive beyond April 21 ceasefire. Conviction unchanged (high).
+
+### 2026-04-23 (scenario propagation)
+- Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via sustained Hormuz closure + Ras Laffan repair interference + European restocking; zero Hormuz transit exposure — conviction strengthened: kinetic-conflict ground war extends structural LNG supply gap beyond any previously-modeled scenario; $120B contracted backlog provides floor while spot captures crisis upside.

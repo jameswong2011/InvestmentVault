@@ -231,6 +231,7 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Sanctions arbitrage creating ton-miles; Hawkish Start / Recessionary Finish macro framework; private credit systemic risk
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — June 2025 12-day conflict; 550+ Iranian missiles; fragile ceasefire; dual-theater stretch risk (Taiwan)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience: pivoted to maritime smuggling + 750-ton Iranian shipment intercepted mid-2025 demonstrates structural shift from overland to sea routes — reinforces "kill-switch timing" Outstanding Question on diplomatic resolution durability
+- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict extends ton-mile demand shock through 2026-2027; ceasefire kill-switch structurally removed
 
 ## Log
 
@@ -260,3 +261,6 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ### 2026-04-23 (/sync — orphan linking)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Iran's maritime pivot post-Assad + 750-ton shipment intercept demonstrates rearmament flows depend on sustained shipping traffic through Hormuz-adjacent waters — indirectly supports "shadow fleet structural bifurcation" Insight and the kill-switch framework. Conviction unchanged (medium).
+
+### 2026-04-23 (scenario propagation)
+- Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via sustained Hormuz closure + insurance normalization lag + product cracks — conviction strengthened: kinetic-conflict scenario removes ceasefire-collapse kill-switch, extends LR2 $100k+/day regime through 2026-2027; ton-mile demand shock (15-25%) persists multi-year.
