@@ -181,7 +181,7 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM3E/HBM4 yield benchmarks across vendors
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]] — SK Hynix 2025 Op profit record, 1c DRAM capacity trajectory
 - [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]] — Memory-centric architecture shift; HBM as 77% of Q2 2025 revenue
-- [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive]] — HBF architecture simulations; Solidigm 51% QLC share
+- [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]] — HBF architecture simulations; Solidigm 51% QLC share
 - [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] — March 2026 selloff mechanics; Jevons-paradox analyst pushback
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]] — $650B J.P. Morgan revenue requirement; Taiwan CoWoS concentration
 - [[Sectors/DRAM & HBM Memory]] — New sector note created with this thesis
@@ -189,9 +189,10 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Theses/285A - Kioxia]] — NAND competitive benchmark; SK Hynix ~15% convertible bond holding
 - [[Theses/BESI - BE Semiconductor Industries]] — Hybrid-bonding tool supplier; March 2026 SK Hynix Kinex order
 - [[Theses/NVDA - Nvidia]] — Primary HBM customer; Rubin allocation is central catalyst
-- [[Theses/TSM - TSMC]] — CoWoS integration bottleneck upstream of HBM end-delivery
+- [[Theses/TSM - Taiwan Semiconductor]] — CoWoS integration bottleneck upstream of HBM end-delivery
 
 ## Log
 
 ### 2026-04-23
 - Initial thesis created. Conviction: medium — HBM supercycle extension through 2028 and HBF/Solidigm asymmetric options support long bias; Samsung HBM4 Rubin qualification and Gemini Incumbent Erosion path (62%→45% by 2030) cap conviction at medium pending Q3 2026 Rubin allocation disclosure. Q1 2026 earnings (same-day): $37.9B revenue, 72% operating margin, 57% HBM share. Kill trigger: Samsung HBM4 captures >35% Rubin allocation H2 2026.
+- Wikilink cleanup: Related Research — `[[Research/2026-04-16 - NAND Sector Key Questions Deep Dive]]` → `[[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]` (actual filename includes ` - deep-dive` suffix); `[[Theses/TSM - TSMC]]` → `[[Theses/TSM - Taiwan Semiconductor]]` (actual thesis filename uses full brand).

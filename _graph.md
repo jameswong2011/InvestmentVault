@@ -1,14 +1,14 @@
 ---
 type: vault-graph
 date: 2026-04-23
-last_graph_write: 2026-04-23T04:39:40Z
-graph_mode: full
-theses: 43
-sectors: 36
+last_graph_write: 2026-04-23T12:41:12Z
+graph_mode: last
+theses: 44
+sectors: 37
 macro: 6
-research: 128
-edges: 404
-orphans: 6
+research: 133
+edges: 432
+orphans: 7
 ---
 
 ## Thesis Adjacency Index
@@ -23,6 +23,15 @@ orphans: 6
   - `2026-04-22 | Wikilink cleanup: Replaced stale [[Sectors/Semiconductors]] parent reference with [[Sectors/Semic…`
   - `2026-04-23 | Wikilink cleanup: Related Research: [[Sectors/NAND Flash & Storage]] → [[Sectors/NAND Memory & …`
   - `2026-04-23 | [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]]: KV cache compression is DRAM-resident …`
+
+### 000660 - SK Hynix
+- **sectors:** [[Sectors/DRAM & HBM Memory]]
+- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/NVDA - Nvidia]], [[Theses/SNDK - SanDisk]], [[Theses/TSM - Taiwan Semiconductor]]
+- **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]], [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]], [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]
+- **status:** draft
+- **log_tail:**
+  - `2026-04-23 | Initial thesis created. Conviction: medium — HBM supercycle extension through 2028 and HBF/Solidig…`
 
 ### AMD - Advanced Micro Devices
 - **sectors:** [[Sectors/GPU & AI Compute Accelerators]]
@@ -82,12 +91,12 @@ orphans: 6
 - **sectors:** [[Sectors/Uranium & Nuclear Fuel]]
 - **macro:** [[Macro/Commodity Impacts from Iran Tensions]], [[Macro/Investment Strategy for US-Iran Conflict]], [[Macro/Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
-- **research:** [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-01-26 - Silver Demand and Data Centers]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]]
+- **research:** [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-01-26 - Silver Demand and Data Centers]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2026-03-30 | Initial thesis created from Claude conversation — conviction high.`
   - `2026-04-22 | Sector re-scoped: Energy & Commodities → Uranium & Nuclear Fuel (vault-wide subsector taxonomy reo…`
   - `2026-04-23 | [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah's structural …`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via energy-sov…`
 
 ### CRCL - Circle Internet Group
 - **sectors:** [[Sectors/Blockchain & Stablecoins]]
@@ -103,10 +112,11 @@ orphans: 6
 - **sectors:** [[Sectors/Cybersecurity]]
 - **macro:** —
 - **cross-thesis:** [[Theses/NET - Cloudflare]], [[Theses/PANW - Palo Alto Networks]]
-- **research:** [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]
+- **research:** [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
   - `2026-04-22 | Initial thesis created. Conviction: medium — supported by [[Research/2026-04-21 - CRWD vs PANW - C…`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via Iran cyber…`
 
 ### CSGP - CoStar Group
 - **sectors:** [[Sectors/Real Estate Data & SaaS]]
@@ -145,12 +155,12 @@ orphans: 6
 - **sectors:** [[Sectors/Indian Financial Services]]
 - **macro:** —
 - **cross-thesis:** —
-- **research:** [[Research/2025-12-26 - EDEL - Edelweiss Financial Group Market Share]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-02 - Israel India Relations Analysis]]
+- **research:** [[Research/2025-12-26 - EDEL - Edelweiss Financial Group Market Share]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-02 - Israel India Relations Analysis]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2025-12-26 | [Initial creation]: Distilled from 2 source segments. Filtered for non-consensus views.`
   - `2026-04-22 | Sector re-scoped: Financial Services → Indian Financial Services (vault-wide subsector taxonomy re…`
   - `2026-04-23 | [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah resilience ex…`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via India NBFC…`
 
 ### EINK - E Ink Holdings
 - **sectors:** [[Sectors/Display Technology & E-Paper]]
@@ -210,12 +220,12 @@ orphans: 6
 - **sectors:** [[Sectors/Surgical Robotics]]
 - **macro:** —
 - **cross-thesis:** —
-- **research:** [[Research/2026-01-18 - Healthcare and Biotech Stock Screen]], [[Research/2026-01-21 - ISRG]], [[Research/2026-03-28 - AI Threats to Intuitive Surgical]], [[Research/2026-03-29 - Cross-Procedure Capability in Surgical Robotics]]
+- **research:** [[Research/2026-01-18 - Healthcare and Biotech Stock Screen]], [[Research/2026-01-21 - ISRG]], [[Research/2026-03-28 - AI Threats to Intuitive Surgical]], [[Research/2026-03-29 - Cross-Procedure Capability in Surgical Robotics]], [[Research/2026-04-23 - ISRG - Industrial Robotics Convergence Risk - deep-dive]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-14 | [Initial thesis creation]: Synthesized from 3 vault research sources + web research. Key angle: ISRG…`
   - `2026-04-15 | [Full restructure + web research]: Aligned to Thesis Template. Key corrections: NVIDIA partnership c…`
   - `2026-04-22 | Sector re-scoped: Healthcare & MedTech → Surgical Robotics (vault-wide subsector taxonomy reorgani…`
+  - `2026-04-23 | Deepened Risks: added Risk #11 industrial-robotics + humanoid long-tail convergence (7-15yr horizon)…`
 
 ### KAMBI - Kambi Group
 - **sectors:** [[Sectors/Online Gambling]]
@@ -243,12 +253,12 @@ orphans: 6
 - **sectors:** [[Sectors/LNG & Natural Gas Infrastructure]]
 - **macro:** [[Macro/Commodity Impacts from Iran Tensions]], [[Macro/Investment Strategy for US-Iran Conflict]], [[Macro/Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
-- **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]]
+- **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-22 | Sector re-scoped: Energy & Commodities → LNG & Natural Gas Infrastructure (vault-wide subsector ta…`
   - `2026-04-23 | Wikilink cleanup: Related Research: replaced stale [[Sectors/Energy & Commodities]] body reference…`
   - `2026-04-23 | [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah rebuilt ~1/3 …`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via sustained …`
 
 ### META - Meta
 - **sectors:** [[Sectors/Social Platforms & Digital Advertising]]
@@ -265,12 +275,12 @@ orphans: 6
 - **sectors:** [[Sectors/Ski Resorts & Destination Leisure]]
 - **macro:** —
 - **cross-thesis:** —
-- **research:** [[Research/2025-12-15 - MTN - Gemini Stock Decline Canvas]]
+- **research:** [[Research/2025-12-15 - MTN - Gemini Stock Decline Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-14 | [ChatGPT research integration]: Added 5 non-consensus insights (Epic Pass saturation, deferred maint…`
   - `2025-12-11 | Distilled from 3 source segments across 1 conversations. Filtered for non-consensus views and differ…`
   - `2026-04-22 | Sector re-scoped: Consumer & Digital → Ski Resorts & Destination Leisure (vault-wide subsector tax…`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via gasoline >…`
 
 ### NET - Cloudflare
 - **sectors:** [[Sectors/Cybersecurity]]
@@ -309,45 +319,45 @@ orphans: 6
 - **sectors:** [[Sectors/GPU & AI Compute Accelerators]], [[Sectors/NAND Memory & Storage]]
 - **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/PLTR - Palantir]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]]
-- **research:** [[Research/2025-07-15 - Data Center Liquid Cooling]], [[Research/2025-08-09 - Performance vs Standardization]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]]
+- **research:** [[Research/2025-07-15 - Data Center Liquid Cooling]], [[Research/2025-08-09 - Performance vs Standardization]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]], [[Research/2026-04-23 - NVDA - CUDA Moat and Omniverse Upside - deep-dive]], [[Research/2026-04-23 - NVDA - Stress Test]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-22 | Sector re-scoped: Semiconductors & AI Infrastructure → GPU & AI Compute Accelerators (vault-wide s…`
-  - `2026-04-23 | Wikilink cleanup: 2026-04-16 NAND sync log entry: [[Sectors/NAND Flash & Storage]] → [[Sectors/…`
   - `2026-04-23 | [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]]: Quantifies the Risk #3 / Bear Case bul…`
+  - `2026-04-23 | Stress test [[Research/2026-04-23 - NVDA - Stress Test]]: share erosion on Bear trajectory (87%→75…`
+  - `2026-04-23 | Deepened Key Non-consensus Insights: reframed CUDA moat around general-purpose programmability vs. a…`
 
 ### OPEN - Opendoor
 - **sectors:** [[Sectors/PropTech & Real Estate Marketplaces]]
 - **macro:** —
 - **cross-thesis:** —
-- **research:** [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]], [[Research/2025-12-04 - OPEN - Gemini Business Assessment Canvas]]
+- **research:** [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]], [[Research/2025-12-04 - OPEN - Gemini Business Assessment Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-14 | [Gemini/ChatGPT integration]: Linked business assessment canvas. Added 3 non-consensus insights: com…`
   - `2025-11-28 | Initial thesis created. Distilled from 2 source segments across 1 conversations. Filtered for non-co…`
   - `2026-04-22 | Sector re-scoped: Consumer & Digital → PropTech & Real Estate Marketplaces (vault-wide subsector t…`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via oil-driven…`
 
 ### PANW - Palo Alto Networks
 - **sectors:** [[Sectors/Cybersecurity]]
 - **macro:** —
 - **cross-thesis:** [[Theses/NET - Cloudflare]]
-- **research:** [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]
+- **research:** [[Research/2025-07-08 - PANW - AWS vs Palo Alto Cybersecurity Competitive Dynamics]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** draft
 - **log_tail:**
-  - `2026-04-15 | Initial thesis created from vault research + comprehensive web research. Q2 FY2026: $2.6B rev (+15%)…`
   - `2026-04-21 | Comparison [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]]: product/tech — CRWD wi…`
   - `2026-04-23 | [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Sustained Iran proxy ap…`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via Iran cyber…`
 
 ### PLTR - Palantir
 - **sectors:** [[Sectors/Enterprise Workflow AI & Automation]]
 - **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/NET - Cloudflare]], [[Theses/NOW - ServiceNow]]
-- **research:** [[Research/2025-02-19 - PLTR - Palantir Valuation Analysis]], [[Research/2026-03-21 - PLTR - Gemini Strategy Canvas]], [[Research/2026-03-29 - PLTR - Gemini Automation Platforms Canvas]], [[Research/2026-03-29 - Palantir Comparison]], [[Research/2026-03-31 - Databricks Threat to Palantir]], [[Research/2026-04-05 - ServiceNow CMDB vs Palantir Ontology]], [[Research/2026-04-09 - ServiceNow CMDB Dependency and Limitations]], [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]], [[Research/2026-04-15 - PLTR - Competitive Win Scenarios]]
+- **research:** [[Research/2025-02-19 - PLTR - Palantir Valuation Analysis]], [[Research/2026-03-21 - PLTR - Gemini Strategy Canvas]], [[Research/2026-03-29 - PLTR - Gemini Automation Platforms Canvas]], [[Research/2026-03-29 - Palantir Comparison]], [[Research/2026-03-31 - Databricks Threat to Palantir]], [[Research/2026-04-05 - ServiceNow CMDB vs Palantir Ontology]], [[Research/2026-04-09 - ServiceNow CMDB Dependency and Limitations]], [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]], [[Research/2026-04-15 - PLTR - Competitive Win Scenarios]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-14 | [ChatGPT research integration]: Added insights from PLTR vs NOW AI comparison, AI regulation, AI bub…`
   - `2026-04-13 | [Initial thesis]: Created from two Gemini canvases (Strategy, Automation Platforms); Ontology as ope…`
   - `2026-04-22 | Sector re-scoped: Enterprise Software & Defense → Enterprise Workflow AI & Automation (vault-wide …`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via kinetic-co…`
 
 ### PSTG - Pure Storage
 - **sectors:** [[Sectors/Enterprise Storage Infrastructure]]
@@ -364,12 +374,12 @@ orphans: 6
 - **sectors:** [[Sectors/Indian Digital Conglomerates]]
 - **macro:** [[Macro/Commodity Impacts from Iran Tensions]]
 - **cross-thesis:** —
-- **research:** [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-02 - Israel India Relations Analysis]], [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]]
+- **research:** [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-02 - Israel India Relations Analysis]], [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-10 | [Claude conversation export]: Initial thesis distilled — SOTP anomaly, Jio IPO catalyst, consumer …`
   - `2026-04-22 | Sector re-scoped: Energy & Commodities → Indian Digital Conglomerates (vault-wide subsector taxono…`
   - `2026-04-23 | [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah structural re…`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via India 85% …`
 
 ### SEMICAP - Semiconductor Capital Equipment
 - **sectors:** [[Sectors/NAND Memory & Storage]], [[Sectors/Semiconductor Capital Equipment]]
@@ -419,12 +429,12 @@ orphans: 6
 - **sectors:** [[Sectors/Product Tankers & Maritime Shipping]]
 - **macro:** [[Macro/Commodity Impacts from Iran Tensions]], [[Macro/Investment Strategy for US-Iran Conflict]], [[Macro/Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
-- **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-02 - GCC Market Shorting Options]]
+- **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-02 - GCC Market Shorting Options]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-22 | Sector re-scoped: Energy & Commodities → Product Tankers & Maritime Shipping (vault-wide subsector…`
   - `2026-04-23 | Wikilink cleanup: Dropped stale [[Sectors/Defense & Geopolitics]] body reference (archived sector,…`
   - `2026-04-23 | [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Iran's maritime pivot p…`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via sustained …`
 
 ### TSM - Taiwan Semiconductor
 - **sectors:** [[Sectors/Semiconductor Capital Equipment]], [[Sectors/Semiconductor Foundries]]
@@ -440,12 +450,12 @@ orphans: 6
 - **sectors:** [[Sectors/Video Game Publishing]]
 - **macro:** [[Macro/Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
-- **research:** —
+- **research:** [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
 - **log_tail:**
-  - `2026-04-14 | [ChatGPT review]: No new insights from TTWO Business and Culture conversation — conviction unchang…`
   - `2026-04-11 | [Claude conversation export]: Initial thesis distilled — GTA VI binary outcome, UGC platform trans…`
   - `2026-04-22 | Sector re-scoped: Consumer & Digital → Video Game Publishing (vault-wide subsector taxonomy reorga…`
+  - `2026-04-23 | Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via consumer d…`
 
 ### UBER - Uber
 - **sectors:** [[Sectors/Mobility & Ridesharing]]
@@ -501,6 +511,7 @@ orphans: 6
 | [[Sectors/Cybersecurity]] | [[Theses/CRWD - CrowdStrike Holdings]], [[Theses/NET - Cloudflare]], [[Theses/PANW - Palo Alto Networks]] |
 | [[Sectors/Data Center Power & Cooling]] | [[Theses/VRT - Vertiv Holdings]] |
 | [[Sectors/Display Technology & E-Paper]] | [[Theses/EINK - E Ink Holdings]] |
+| [[Sectors/DRAM & HBM Memory]] | [[Theses/000660 - SK Hynix]], [[Theses/BESI - BE Semiconductor Industries]] |
 | [[Sectors/E-commerce Infrastructure]] | [[Theses/SHOP - Shopify]] |
 | [[Sectors/Enterprise Storage Infrastructure]] | [[Theses/PSTG - Pure Storage]] |
 | [[Sectors/Enterprise Workflow AI & Automation]] | [[Theses/NOW - ServiceNow]], [[Theses/PLTR - Palantir]] |
@@ -547,3 +558,4 @@ orphans: 6
 - [[Research/2025-07-15 - CETY - CETY Company Report]]
 - [[Research/2026-03-21 - Betting on Inflation Trades]]
 - [[Research/2026-04-23 - Insight Surface Scan]]
+- [[Research/2026-04-23 - NVDA - Investment Brief]]
