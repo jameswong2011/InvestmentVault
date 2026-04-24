@@ -108,6 +108,58 @@ If a section was specified in $ARGUMENTS, use that. Otherwise, auto-detect:
 
 Tell the user which section you're targeting and why before proceeding.
 
+## Phase 2.5: Graph-primer peer-section cross-read (comparative sections only)
+
+**GATE**: Execute ONLY if the `target_section` resolved in Phase 2 is in the comparative-sections whitelist:
+- `Industry Context`
+- `Key Non-consensus Insights`
+- `Bull Case` (when the deepen framing is comparative — user mentioned peers or competitive dynamics)
+- `Bear Case` (same condition as Bull Case)
+
+NOT applicable (SKIP Phase 2.5 entirely if target_section is one of these):
+- `Summary`, `Business Model & Product Description`, `Key Metrics`, `Outstanding Questions`, `Catalysts`, `Risks`, `Conviction Triggers`, `Related Research`, `Log`, `Legacy Callouts`
+
+Rationale for gating: peer section content has signal for competitive/comparative framing but becomes noise for idiosyncratic sections (Risks, Catalysts, Outstanding Questions are typically thesis-specific, not cluster-wide).
+
+Per `.claude/skills/_shared/graph-primer.md` Mode A.
+
+Read `_graph.md` once (in parallel with Phase 1 Reads if possible; otherwise as a single Read before Phase 3). Extract:
+- `entry = adjacency_index[TICKER]`
+- `sector_peers = union over s ∈ entry.sectors of sector_reverse[s] - {TICKER}`
+- Rank `sector_peers` by most-recent `log_tail` entry date. Take top 3.
+
+Bash-extract `target_section` from each peer thesis in ONE batch (not per-peer serial Bash):
+
+```bash
+TARGET_SECTION="[section name from Phase 2]"
+for f in "Theses/[peer1] - Name.md" "Theses/[peer2] - Name.md" "Theses/[peer3] - Name.md"; do
+  echo "=== $f ==="
+  awk -v sec="## $TARGET_SECTION" '
+    $0 == sec { in_sec=1; next }
+    in_sec && /^## / { exit }
+    in_sec { print }
+  ' "$f"
+done
+```
+
+Inject peer section content as comparative primer for Phase 3 + Phase 5:
+
+```
+Peer-section comparative primer (graph primer):
+  === [peer TICKER] ## [section]
+    [peer content]
+  === [peer TICKER] ## [section]
+    [peer content]
+```
+
+**Phase 3 + Phase 5 explicit framing requirement**: "Use peer sections to identify what's **missing or underdeveloped** in the target thesis's section relative to how peers frame the same analytical dimension. Do NOT replicate peer content verbatim. Peer content identifies gaps; target-specific research fills them."
+
+**Anti-pattern enforced** (contract §Anti-patterns): do NOT substitute peer content for target-specific depth. The deepen's Phase 5 rewrite must be target-thesis-driven — peer content shapes the gap analysis, not the content itself.
+
+**Peer-dominance mitigation** (contract §Confirmation-bias mitigations): if the target section is sparse and peer sections are rich, Phase 5 must explicitly surface "what's in peer X that's missing from target, and why does the target's positioning differ?" rather than importing peer content. Divergence is analytically valuable.
+
+**Missing-graph fallback**: per `.claude/skills/_shared/graph-primer.md` §Missing-graph fallback. Phase 3 + Phase 5 proceed target-only. Skip peer cross-read silently.
+
 ## Phase 3: Deep Research
 1. **Vault research first**: Extract every relevant data point from existing research notes, sector notes, and macro notes. Do not duplicate what's already captured.
 2. **Web research**: Search for recent developments specific to the target section:

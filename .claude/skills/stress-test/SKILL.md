@@ -54,6 +54,39 @@ Look specifically for:
 - Are Outstanding Questions still unanswered? If yes, how can conviction be high?
 - Are existing Conviction Triggers well-defined? Do they cover the actual failure modes, or are the real risks outside the trigger framework? A thesis with vague triggers ("if competition increases") has a hidden vulnerability — it can degrade without ever formally triggering a reassessment.
 
+## Phase 2.4: Cluster-peer stress context (graph primer)
+
+Per `.claude/skills/_shared/graph-primer.md` Mode A.
+
+Read `_graph.md` once. Fire the Read in parallel with Round 2 reads in Phase 1 (same tool-call batch if Phase 2.4 is scheduled at Phase 1 time; otherwise a single standalone Read here).
+
+For target TICKER:
+- `entry = adjacency_index[TICKER]`
+- `cluster` = first cluster in clusters where TICKER ∈ cluster.members (or null)
+- `cluster_peers = cluster.members - {TICKER}` (empty if no cluster)
+- Extract `log_tail` entries from `adjacency_index` for each cluster_peer
+
+Scan `cluster_peer` log_tails for entries with prefixes (case-sensitive, exact-match at line start after `YYYY-MM-DD | `): `Stress test`, `Scenario`, `conviction medium→low`, `conviction high→medium`, `Bear case`, `Risk #`, `Deepened: Bear Case`, `Deepened: Risks`.
+
+Surface to Phase 3 as **stress context, not stress substitute**:
+
+```
+Cluster-peer stress signals (graph primer):
+  [peer TICKER] — cluster: [cluster name]
+    [relevant log_tail entry]
+    [relevant log_tail entry]
+  [peer TICKER] — cluster: [cluster name]
+    [relevant log_tail entry]
+```
+
+**Phase 3 explicit framing requirement**: "Use cluster-peer stress signals to classify the target thesis's vulnerability as **idiosyncratic** (peers unaffected) or **cluster-wide** (peers showing parallel stress). Primary stress analysis remains target-thesis-driven; peer context validates or contextualizes the target's failure modes, never substitutes for them."
+
+**Anti-pattern enforced** (contract §Anti-patterns): do NOT skip the target thesis's own Risks / Bear Case / Outstanding Questions based on cluster peer signals. The Phase 1 thesis Read + Phase 2 contradiction scan remain mandatory regardless of peer context.
+
+**Confirmation-bias mitigation** (contract §Confirmation-bias mitigations): if cluster peers are all showing parallel stress, explicitly surface the idiosyncratic failure modes FIRST in Phase 3 output, cluster-wide SECOND. This counters the primer's natural bias toward cluster framing.
+
+**Missing-graph fallback**: per `.claude/skills/_shared/graph-primer.md` §Missing-graph fallback. Phase 3 proceeds target-only.
+
 ## Phase 2.5: Optional External Evidence (parallel batch)
 
 The short-seller case often benefits from current-market context the vault doesn't have: recent analyst downgrades, short-interest data, pending litigation, fresh bear-case articles. **If any WebSearch / WebFetch calls are issued during the stress test, batch them in parallel** — one message containing up to 25 invocations, mirroring `/catalyst` Phase 2 and `/thesis` Step 3. Do NOT serialize independent external lookups. If the vault already contains sufficient adversarial evidence, skip this phase entirely; `/stress-test` is spec'd to work off vault content alone.

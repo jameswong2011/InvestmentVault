@@ -40,6 +40,34 @@ Briefs are IC-facing pitch output. The following content categories are **workin
 
 When reading the thesis in Phase 1, mentally skip these regions. When the user asks "why isn't X in the brief" and X lives in a callout or Legacy Callouts — the answer is this exclusion contract: address the callout into the body text first, then regenerate the brief.
 
+## Phase 1.5: Graph-primer cluster-peer context
+
+Per `.claude/skills/_shared/graph-primer.md` Mode A.
+
+Read `_graph.md` once. Fire the Read in parallel with Phase 1 thesis + research Reads (same tool-call batch).
+
+For target TICKER:
+- `entry = adjacency_index[TICKER]`
+- `cluster` = first cluster in clusters where TICKER ∈ cluster.members (or null)
+- `cluster_peers = cluster.members - {TICKER}` (empty if no cluster)
+- `top_sector_peers` = up to 2 theses from `sector_reverse[s]` for s ∈ entry.sectors, ranked by most-recent `log_tail` entry date (filters for actively-maintained peers)
+
+Extract `log_tail` for each of `cluster_peers ∪ top_sector_peers` (up to ~5 peers total, dedup).
+
+Compose primer output for Phase 4:
+
+```
+Related Developments (cross-ticker context — graph primer footnote):
+  [peer TICKER] (cluster: [name] | sector: [name]): [most-recent log_tail entry]
+  [peer TICKER] (sector: [name]): [most-recent log_tail entry]
+```
+
+This section appears ONLY as a footnote-style block appended to the brief body AFTER the core 6-section structure (Pitch / Why Now / Non-Consensus Edge / Key Numbers / What Kills It / Conviction & Sizing). It is optional context for the IC reader — the brief's primary synthesis in Phase 2 must stand on its own without it.
+
+**Orientation not filter** (contract §Anti-patterns + §Confirmation-bias mitigations): cluster peer developments are contextual only. Do NOT use peer context to soften or strengthen the target's Pitch, What Kills It, or Conviction — those must reflect the target's own thesis evidence independent of primer influence.
+
+**Missing-graph fallback**: per `.claude/skills/_shared/graph-primer.md` §Missing-graph fallback. Brief omits Related Developments section; rest of brief unchanged.
+
 ## Phase 2: Compress
 Distil the thesis into exactly this structure. Every word must earn its place.
 

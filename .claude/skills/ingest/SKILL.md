@@ -243,11 +243,37 @@ source_type: [earnings|analyst-report|news|deep-dive|data|web-clip]
 - **Add wikilinks** within the research note body to every related thesis and macro note
 - **Check for contradictions** — does this content challenge any existing thesis conviction?
 
+### Step 3.5: Graph-primer propagation fanout
+
+Per `.claude/skills/_shared/graph-primer.md` Mode C.
+
+Read `_graph.md` once (parallel to any remaining Reads in Step 3). Parse `adjacency_index`, `sector_reverse`, `macro_reverse`.
+
+For each just-created research note, with:
+- `T` = note's primary `ticker:` (if any)
+- `S` = note's `sector:` (if any)
+- `M` = `Macro/` references in note body (if any)
+
+Compute:
+- `direct_targets` = theses already matched in Step 3 (ticker/topic grep hits)
+- `sector_candidates` = `sector_reverse[S] - direct_targets` (if S resolved via sector-resolution contract)
+- `macro_candidates` = union over each referenced `m ∈ M` of `macro_reverse[m] - direct_targets - sector_candidates`
+
+Record `direct_targets`, `sector_candidates`, `macro_candidates` for Step 4 reporting.
+
+**Orientation not filter** (contract §Anti-patterns): the graph is a known-minimum. `sector_candidates` and `macro_candidates` are weak-match suggestions, advisory only — user decides whether to wikilink.
+
+**Batch mode** (Mode C): Read `_graph.md` ONCE across all inbox files. Cache `adjacency_index`, `sector_reverse`, `macro_reverse` in memory through the batch — do NOT re-read per file.
+
+**Missing-graph fallback**: per `.claude/skills/_shared/graph-primer.md` §Missing-graph fallback. Skip this step with `ℹ️` advisory. Step 3 strong-match set still reports in Step 4.
+
 ### Step 4: Report
 For each processed item, report:
 - Research note created: `[[Research/filename]]` OR **`❌ rejected — content-quality gate failed (see triggered check)`** for blocked URL/PDF ingests
 - Contradictions found: [any insights that challenge existing convictions]
-- **Theses requiring `/sync`**: [list tickers whose notes should be updated with this research]
+- **Strong-match theses** (explicit ticker/topic — `/sync` will propagate): [list from Step 3, or "none"]
+- **Weak-match via shared sector** (graph primer — review before `/sync`): [list from Step 3.5 `sector_candidates`, or "none"]. If any are analytically relevant, add `[[Theses/...]]` wikilinks to the research note body before `/sync`, or `/sync` will not propagate to them.
+- **Weak-match via shared macro** (graph primer — review before `/sync`): [list from Step 3.5 `macro_candidates`, or "none"]. Same action note.
 - **Sector Notes requiring `/sync`**: [list sectors that should incorporate this research]
 - **Content-quality advisories** (if any non-blocking failures from #5–#8 fired on local files): list the specific check + advisory message
 

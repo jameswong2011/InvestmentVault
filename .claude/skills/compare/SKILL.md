@@ -67,6 +67,39 @@ Issue ALL of these in ONE message:
 
 **Web-supplemented tickers** (Phase 0 option a): skip Rounds 1-2 for that ticker. Issue web search for business model overview, latest financials (revenue, margins, growth), competitive position, key products **in parallel with Round 2's vault reads** (different tool surfaces — WebSearch and Read parallelize freely). Search vault (`Research/`, `Sectors/`, `Macro/`) for existing mentions. Flag sections without vault-depth data with `[web only]`.
 
+## Phase 1.5: Graph-primer shared adjacency
+
+Per `.claude/skills/_shared/graph-primer.md` Mode B.
+
+Read `_graph.md` once. Fire the Read in parallel with Round 2 reads above (same tool-call batch — different tool surface from the thesis/sector/research Reads, parallelizes freely). Parse `adjacency_index` and `clusters`.
+
+For targets A, B (and C, D, … if 3+ tickers):
+- `entry_a = adjacency_index[A]`, `entry_b = adjacency_index[B]`, …
+- `shared_sectors = entry_a.sectors ∩ entry_b.sectors`
+- `shared_macros = entry_a.macros ∩ entry_b.macros`
+- `shared_research = entry_a.research ∩ entry_b.research`
+- `cross_thesis_link = (B ∈ entry_a.cross-thesis, A ∈ entry_b.cross-thesis)` — surface as `both`, `A→B`, `B→A`, or `none`
+- `cluster_co_member = ∃ c ∈ clusters where {A, B} ⊆ c.members`
+
+**N>2 tickers**: compute pairwise for all pairs. Surface `common_sectors = intersection across all entries` and `common_macros = intersection across all entries` for the aggregate view; individual pairs retain their shared sets.
+
+Inject as primer context for Phase 2 + Phase 3:
+
+```
+Shared adjacency baseline (graph primer):
+  Shared sectors:       [list]
+  Shared macros:        [list]
+  Shared research:      [list]
+  Cross-thesis link:    [both | A→B | B→A | none]
+  Cluster co-membership: [cluster name or "none"]
+```
+
+Phase 2 framing: "Shared adjacency establishes the comparison baseline. Differences below are sharper against this baseline — a divergence despite shared sector is structurally more interesting than a divergence between unrelated names."
+
+**Orientation not filter** (contract §Anti-patterns): cluster co-membership does NOT imply substitutability. Ticker-specific content reads from Phase 1 remain primary.
+
+**Missing-graph fallback**: per `.claude/skills/_shared/graph-primer.md` §Missing-graph fallback. Phase 2 proceeds without shared-adjacency context; comparison quality matches pre-retrofit behavior.
+
 ## Phase 2: Structural Comparison
 
 ### Business Model Comparison

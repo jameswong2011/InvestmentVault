@@ -133,6 +133,38 @@ Grep `Research/` for ticker string. Surfaces relevant existing research for new 
 
 **Parallelization with Step 3**: Step 2 vault reads and Step 3 web searches have no ordering dependency — the LLM can issue both Step 2's Reads/Greps and Step 3's first WebSearch batch in a **single parallel tool-call message**. Follow-up web searches that depend on first-round results (e.g., "search for [Competitor X] after sector note reveals they exist") land in subsequent batches. Do NOT serialize Step 2 and Step 3 end-to-end.
 
+## Step 2.5: Graph-primer peer suggestions
+
+Per `.claude/skills/_shared/graph-primer.md` Mode A (special handling: target TICKER is new, so `adjacency_index[TICKER]` is null).
+
+Read `_graph.md` once. Fire the Read in parallel with Step 2 Reads / Step 3 WebSearches (same tool-call batch).
+
+Because the target TICKER is new and not in the graph, use vault research from Step 2 to infer probable sector/macro:
+- `inferred_sectors` = union of `sector:` frontmatter from matched research notes (from Step 2 Greps)
+- `inferred_macros` = union of `[[Macro/...]]` wikilinks in those research note bodies
+
+Compute peer suggestion sets:
+- `candidate_sector_peers` = union over `s ∈ inferred_sectors` of `sector_reverse[s]`
+- `candidate_macro_peers` = union over `m ∈ inferred_macros` of `macro_reverse[m]`, minus `candidate_sector_peers`
+- `candidate_cluster_peers` = for each candidate in sector_peers, if peer belongs to a Cross-Thesis Cluster, surface cluster name as context
+
+Surface to user BEFORE Step 4 writes the thesis, for explicit accept/reject:
+
+```
+Graph-primer cross-thesis suggestions (review before Step 4 writes the thesis):
+  Strong (same sector, same cluster): [list with cluster name]
+  Medium (same sector, unclustered):  [list]
+  Weak   (shared macro only):         [list]
+
+Accept which for Related Research wikilinks? (e.g., "AVGO, NVDA" | "all" | "none")
+```
+
+User's accepted set feeds Step 4's `## Related Research` section (thesis-to-thesis wikilinks). `/thesis` does not expose an explicit `cross-thesis:` frontmatter field; cross-thesis adjacency is derived by `/graph` from Related Research + body wikilinks targeting `Theses/*.md`.
+
+**Orientation not filter**: the primer surfaces candidates — user decides. Low hit rate is expected when the target is genuinely in a new niche; Step 3 web research still fires regardless.
+
+**Missing-graph fallback**: per `.claude/skills/_shared/graph-primer.md` §Missing-graph fallback. Step 4 proceeds with Related Research populated only from Step 2 direct matches.
+
 ## Step 3: Web Research
 
 Research topics:

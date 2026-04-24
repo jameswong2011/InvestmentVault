@@ -458,6 +458,32 @@ Per-check entries below specify only: (1) manifest filename glob, (2) frontmatte
       - **(d) Section positioned incorrectly** (not between ## Related Research and ## Log): Nice to Have — `🔖 [FILE]: ## Legacy Callouts not positioned between ## Related Research and ## Log. Expected canonical order per Templates/Thesis Template.md. Reorder manually if desired.`
     - **Skip** sector notes that don't have `## Related Research` or `## Log` sections at all (not all sector notes fully conform to template).
 
+## Graph-Primer Contract Health
+
+54. **Graph-primer compliance** — Consumer skills declared in `.claude/skills/_shared/graph-primer.md` must actually Read `_graph.md`.
+    - **Vault-wide only**.
+    - **Precondition**: `.claude/skills/_shared/graph-primer.md` missing → Critical: `❌ Graph-primer contract file missing. Consumer skills may reference a non-existent contract. Restore from git or recreate.`
+    - **Method**: parse `Consumed by:` line from `graph-primer.md` to get the declared consumer list. For each consumer's `SKILL.md`, Grep for any Read of `_graph.md` (literal `_graph.md` token + preceding `Read` tool invocation OR a reference to `.claude/skills/_shared/graph-primer.md`).
+    - **Expected consumers** (post-retrofit baseline): `/ingest`, `/compare`, `/thesis`, `/stress-test`, `/brief`, `/deepen`.
+    - **Severity rules**:
+      - Consumer declared but `SKILL.md` has no `_graph.md` reference → Nice to Have: `🔖 Consumer skill /[skill] declared in graph-primer.md but SKILL.md does not reference _graph.md — primer benefit forgone. Either add Read of _graph.md per contract Mode [A/B/C] or remove from Consumed by: list.`
+      - Consumer declared AND references `graph-primer.md` AND Reads `_graph.md` → Pass.
+    - Non-blocking: absent consumer readers degrade speed/correctness but don't break skill functionality.
+
+55. **Graph-primer anti-pattern detection** — Consumer skills must use `_graph.md` as primer (orient), never as filter (skip content reads).
+    - **Vault-wide only**.
+    - **Precondition**: `graph-primer.md` missing → handled by #54.
+    - **Method**: for each consumer `SKILL.md`, Grep for anti-pattern phrases (case-insensitive):
+      - `skip.*(not in cluster|not in graph|absent from adjacency)`
+      - `only.*(cluster peers|peer theses|cluster members).*(read|analyze|propagate)`
+      - `substitute.*log_tail`
+      - `trust.*cross-thesis.*complete`
+      - `graph says.*(not connected|isn't connected|no connection)`
+    - **Severity**:
+      - Match found → Important: `⚠️ Anti-pattern detected in /[skill] SKILL.md line [N]: "[phrase match]". Violates graph-primer contract §Anti-patterns — primer is orientation, never substitution. Rewrite step to use graph output as "what else to consider," not "what to skip."`
+      - No matches → Pass.
+    - **Drift signal**: anti-patterns creeping in over time indicate primer-as-filter regression. #55 catches before production runs.
+
 ---
 
 ## Output Format
