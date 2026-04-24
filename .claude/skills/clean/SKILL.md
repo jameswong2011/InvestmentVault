@@ -14,12 +14,15 @@ Delete snapshots older than a given threshold from `_Archive/Snapshots/`.
 - **Number of days** (e.g., `90`, `30`): age-based cleanup. Default: **180** if no argument provided. Orphan snapshots (source file missing) are **PROTECTED by default** — reported but not deleted. See Step 2c.
 - **`orphans`** (literal word): delete only orphan snapshots, regardless of age. Skips age-based cleanup entirely.
 - **Number of days + `--include-orphans`** (e.g., `180 --include-orphans`): standard age-based cleanup PLUS delete orphans. Explicit opt-in.
+- **`inbox`** (literal word): delete files in `_Inbox/processed/` older than 180 days (the default). Skips snapshot cleanup entirely. The source URL/path is preserved in the corresponding `Research/*.md`'s `source:` frontmatter, so processed inbox files are recoverable in principle. Per-file safety net: skip if no corresponding Research note exists (means the original `/ingest` did not complete cleanly — the source is still authoritative). See Step 2e.
+- **`inbox [days]`** (e.g., `inbox 90`, `inbox 30`): same as `inbox` mode with custom age threshold.
 
 **Universal closure-snapshot floor** (applies to ALL modes including `orphans` and `--include-orphans`): pre-closure thesis snapshots from `/prune` Stage 1 or `/status active→closed` Step 3.1 whose matching manifest's `completed_date:` is within 30 days are PROTECTED. No `/clean` argument override — the only path to delete is to wait for the floor to expire OR `rm` the snapshot manually with full awareness of the consequence (closure becomes unrecoverable via `/rollback`). See Step 2d for detection and Step 3 for reporting.
 
 Parse patterns in this order:
 ```
-if $ARGUMENTS == "orphans" → orphans-only mode
+if $ARGUMENTS first token == "inbox" → inbox-cleanup mode; second token (optional integer) overrides 180-day default; skip Steps 1-4 entirely (snapshots untouched), execute Step 2e + Step 3.5 + Step 4.5 instead
+elif $ARGUMENTS == "orphans" → orphans-only mode
 elif $ARGUMENTS ends with "--include-orphans" → age + orphans mode; strip flag to get days
 elif $ARGUMENTS is integer → age-only mode (default orphans PROTECTED)
 else → default age-only mode (180 days; orphans PROTECTED)
@@ -150,6 +153,42 @@ The pre-closure thesis snapshots created by `/status active→closed` (Step 3.1)
 
 **Why universal across modes**: the prior /prune-manifest 30-day floor (2a) only protected the *manifest* file. It did NOT protect the per-thesis snapshots that the manifest references. `/clean orphans` could delete a 5-day-old prune's per-thesis snapshots while preserving the manifest — leaving the user with a manifest body listing closures they could no longer restore. This 2d floor closes that gap and extends symmetric protection to `/status` closures (which have no manifest-floor analog).
 
+### 2e: Inbox processed-file enumeration (inbox mode only)
+
+**Only runs when `$ARGUMENTS` first token == `inbox`.** Skips Steps 1, 2.0, 2a–2d entirely (snapshots untouched in inbox mode).
+
+`_Inbox/processed/` accumulates source files moved by `/ingest` Mode C after a successful research-note write. The source URL/path remains the canonical provenance record on the matching `Research/*.md` (`source:` frontmatter), so processed files become redundant once the corresponding research note is durable. `/clean inbox` enumerates candidates with a per-file safety net keyed to research-note existence.
+
+**Threshold**: second `$ARGUMENTS` token if integer; otherwise default 180. (Same default as snapshot age.)
+
+**Per-file enumeration** — single Bash block:
+
+```bash
+THRESHOLD_DAYS=${THRESHOLD_DAYS:-180}
+TODAY_EPOCH=$(date +%s)
+for f in _Inbox/processed/*; do
+  [ -f "$f" ] || continue
+  MTIME_EPOCH=$(stat -f %m "$f" 2>/dev/null || stat -c %Y "$f" 2>/dev/null)
+  AGE_DAYS=$(( (TODAY_EPOCH - MTIME_EPOCH) / 86400 ))
+  echo "$f|$AGE_DAYS"
+done
+```
+
+**Per-file research-note existence probe** (safety net):
+
+For each candidate, the LLM derives the most plausible research-note name from the inbox filename and confirms via `Glob`:
+1. Strip the inbox filename's extension. Strip leading date prefix if present (`YYYY-MM-DD - ...`).
+2. `Glob Research/*<keyword>*.md` against tokens from the stripped name (use 2-3 of the most distinctive tokens, dedup whitespace).
+3. If at least one candidate Research note exists AND its `source:` frontmatter resolves to (a) the absolute inbox file path, (b) the original URL the file was downloaded from (visible in the research note `source:` line), or (c) a partial-name match flagged advisory — mark as `safe_to_delete`.
+4. If no Research note matches → mark as `unsafe (no Research note found)`. The original `/ingest` may have been interrupted between writing the inbox file and creating the Research note; deleting now would lose the source. **Do NOT mark for deletion.**
+5. If multiple Research notes match ambiguously → mark as `ambiguous`; surface to user under a separate report bucket.
+
+**Classification**:
+- **Inbox to delete**: `age_days >= threshold` AND `safe_to_delete`.
+- **Inbox protected (under threshold)**: `age_days < threshold`.
+- **Inbox unsafe (no matching Research note)**: any age. PROTECTED — listed for user review.
+- **Inbox ambiguous (multiple matches)**: any age. PROTECTED — listed for user review.
+
 ## Step 3: Report Before Deletion
 
 Present a summary table. **Do NOT delete anything yet.**
@@ -219,16 +258,49 @@ Snapshots whose matching `_status-manifest` or `_prune-manifest` is still `statu
 
 **Total**: X to delete, Y active safety nets (protected), Z retained, V orphans (protected by default | slated for deletion), P prune manifests in regret-window (protected), Q prune manifests eligible for deletion, R closure snapshots in regret-window (PROTECTED across all modes — 2d), S closure snapshots with in-progress manifests (PROTECTED — 2d), W non-snapshot artifacts (skipped).
 
+### 📥 Inbox files to delete (inbox mode only — older than threshold AND matching Research note exists)
+
+| File | Age (days) | Matched Research note |
+|------|-----------|------------------------|
+
+These files are processed sources whose corresponding `Research/*.md` exists and carries the source provenance in its `source:` frontmatter. Deleting the inbox copy is safe — the research note (and the original URL within it) preserves traceability.
+
+### 📥 Inbox files protected (under threshold)
+
+| File | Age (days) |
+|------|-----------|
+
+### ⚠️ Inbox files unsafe — no matching Research note (PROTECTED, manual review)
+
+| File | Age (days) | Reason |
+|------|-----------|--------|
+
+These processed-inbox files have no obvious matching Research note. Likely cause: the original `/ingest` was interrupted between moving the source and writing the Research note. Do NOT delete — the inbox file may be the only intact copy of the source. Inspect manually: either re-run `/ingest [path]` (which will short-circuit on URL-dedup if the matching Research note exists under a different name) OR delete after manual confirmation.
+
+### 📥 Inbox files ambiguous — multiple Research-note matches (PROTECTED, manual review)
+
+| File | Age (days) | Candidate matches |
+|------|-----------|-------------------|
+
+Multiple Research notes plausibly cite this inbox file. PROTECTED until disambiguated.
+
 ## Step 4: Confirm and Execute
 
 **Wait for user confirmation before deleting.**
 
-If confirmed, delete each expired snapshot:
+**Snapshot modes (default age, `orphans`, `--include-orphans`)** — if confirmed, delete each expired snapshot:
 ```bash
 rm "_Archive/Snapshots/[filename]"
 ```
-
 Report: "Deleted X snapshots. Y remain."
+
+**Inbox mode** — if confirmed, delete each safe inbox file:
+```bash
+rm "_Inbox/processed/[filename]"
+```
+Report: "Deleted X inbox files. Y unsafe (no Research note) preserved. Z ambiguous (multi-match) preserved. W under threshold."
+
+Inbox mode never touches `_Archive/Snapshots/`. Snapshot modes never touch `_Inbox/processed/`. The two modes are mutually exclusive at parse time.
 
 ## Step 5: Release lock
 

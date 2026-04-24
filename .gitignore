@@ -73,3 +73,10 @@ desktop.ini
 .obsidian/plugins/claudian/data.json
 .obsidian/plugins/claudian/data.json
 .claude/settings.json
+
+# ============================================
+# Bulk data exports — keep out of vault root
+# ============================================
+# Ignore *.zip ONLY at the vault root. _Archive/Backups/*.zip remains tracked
+# (preserves historical data exports moved there during the 2026-04-24 cleanup).
+/*.zip

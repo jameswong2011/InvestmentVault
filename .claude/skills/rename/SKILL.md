@@ -119,7 +119,7 @@ If `.rename_incomplete.TICKER` exists, read its frontmatter and compare `new_nam
 
    | # | Probe | Tool | Purpose |
    |---|---|---|---|
-   | 1 | Grep vault | `Grep` (multi-path) across `Theses/ Sectors/ Macro/ Research/ _Archive/Snapshots/`, excluding `.git/` and `_Inbox/processed/` | Count Step 5 wikilink pattern matches; separate live-file matches vs snapshot-body matches during result parsing |
+   | 1 | Grep vault | `Grep` (multi-path) across `Theses/ Sectors/ Macro/ Research/ _Archive/ _Archive/Sectors/ _Archive/Research/ _Archive/Snapshots/`, excluding `.git/` and `_Inbox/processed/` | Count Step 5 wikilink pattern matches; partition results by category during parsing — live files (Theses/, Sectors/, Macro/, Research/), archived theses (`_Archive/*.md` root), archived sectors (`_Archive/Sectors/`), archived research (`_Archive/Research/`), snapshot bodies (`_Archive/Snapshots/`) — for the Step 2 survey breakdown |
    | 2 | Grep snapshot frontmatter | `Grep` for `snapshot_of:` references to old path in `_Archive/Snapshots/` | Frontmatter count (separate from body matches — handled by Step 8) |
    | 3 | Read `_graph.md` | `Read` | Locate `### TICKER - [old_name]` in Adjacency Index; note presence |
    | 4 | Resolve sector note | `Read` candidate sector note (inferred from thesis `sector:` frontmatter read earlier in Step 1) | Scan Active Theses for old wikilink (sector-resolution contract applied in reasoning layer after read) |
@@ -137,7 +137,10 @@ Proposed rename:
   New: [[Theses/TICKER - new_name]]
 
 Side effects (will be updated):
-  - Inbound wikilinks in live files: [count] across [N] files — [list paths]
+  - Inbound wikilinks in live files (Theses/, Sectors/, Macro/, Research/, _hot.md): [count] across [N] files — [list paths]
+  - Inbound wikilinks in archived theses (_Archive/*.md root): [count] across [P] files — [list paths]
+  - Inbound wikilinks in archived sectors (_Archive/Sectors/): [count] across [Q] files — [list paths]
+  - Inbound wikilinks in archived research (_Archive/Research/): [count] across [R] files — [list paths]
   - Inbound wikilinks in snapshot bodies: [count] across [M] snapshots (excludes the pre-rename snapshot from Step 3)
   - Graph adjacency entry header: ### TICKER - [old_name] → ### TICKER - [new_name]
   - Sector note Active Theses entry: [present/absent — sector resolved as [sector_name] via [confidence]]
@@ -207,7 +210,7 @@ ls "Theses/TICKER - [old_name].md" 2>/dev/null  # should produce no output
 
 ## Step 5: Update Inbound Wikilinks (§3, §5)
 
-Grep vault (excluding `.git/` and `_Inbox/processed/`), Edit each file. **`_Archive/Snapshots/` is NOT excluded** — snapshot bodies contain wikilinks that, if stale, break on rollback (§3.1).
+Grep vault (excluding `.git/` and `_Inbox/processed/`), Edit each file. **`_Archive/` (root archived theses), `_Archive/Sectors/`, `_Archive/Research/`, and `_Archive/Snapshots/` are NOT excluded** — every one of these locations holds notes that may carry `[[Theses/TICKER - old_name]]` wikilinks. Stale wikilinks in archived sector or research notes break Obsidian rendering on browse and break `/rollback` integrity if those archives are ever restored. Stale wikilinks in snapshot bodies break `/rollback` content fidelity (§3.1).
 
 Seven wikilink patterns (§5 — includes 2 archive-specific forms beyond the 5-form canonical contract):
 

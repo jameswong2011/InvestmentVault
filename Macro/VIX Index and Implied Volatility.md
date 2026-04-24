@@ -48,3 +48,8 @@ Is there a specific angle you're looking at — hedging, vol trading, or using i
 **Hedging correlation isn't perfect.** Even as a portfolio hedge, VIX calls don't track your actual portfolio losses linearly. A slow, grinding drawdown in equities (like a multi-month bear market) can happen with VIX staying only moderately elevated — you lose on the portfolio *and* on the hedge. VIX calls work best against sharp, sudden dislocations, not slow bleeds.
 
 Want me to walk through the mechanics of any of these alternatives, or compare the payoff profiles?
+
+## Log
+
+### 2026-04-24
+- Manual edit: added ## Log section to align with macro convention. Backfill of prior content history not attempted; Log starts here. Enables future /sync and /archive-callouts to write audit-trail entries.

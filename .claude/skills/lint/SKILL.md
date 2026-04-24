@@ -103,6 +103,7 @@ Together, Steps A + B + C land in ~3 tool calls total and cover the read-heavy c
 3. **Broken wikilinks** — `[[links]]` pointing to non-existent notes.
    - Method: extract all `[[...]]`, verify each target file exists.
    - **Intentional-unresolved allowlist**: `[[pinned]]` and `[[preserve]]` are user-authored callout opt-out markers — their unresolved rendering (lighter style in reading view) is the feature. Exclude from broken-link candidates BEFORE file-existence probe. Same allowlist consumed by `/graph` Step I.4 step 2 and Full Rebuild Step 2 step 2.
+   - **Audit-trail exclusion**: skip `[[wikilinks]]` that appear inside `## Log` sections of theses, sectors, and macros. `## Log` is Tier 2 append-only (CLAUDE.md Tier 2) and routinely quotes stale wikilinks as part of historical narrative — `Wikilink cleanup: Replaced stale [[Sectors/Old Parent]] with [[Sectors/New Subsector]]`, `Sector re-scoped: ...`, `ROLLBACK to snapshot ...`, `Cross-thesis closure: [[_Archive/...]]`. Those bracketed historical names render as "broken" in Obsidian reading view but are immutable audit records, not defects. Apply the exclusion BEFORE the file-existence probe by computing each match's containing section (walk backward from the match line to the nearest preceding `^## ` heading); drop matches whose section heading equals `Log`. Real broken wikilinks in Bull Case, Risks, Related Research, Industry Context, etc. continue to surface.
 
 4. **Missing frontmatter** — Notes without required fields:
    - All notes: `date`, `tags`
