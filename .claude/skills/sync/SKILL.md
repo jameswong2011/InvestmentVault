@@ -25,6 +25,10 @@ Design rationale, edge cases, and historical design notes live in `.claude/skill
 
 Capture the token at Step 0.1, verify ownership (Procedure 1.5) at every Bash block, release via `rm -f "$LOCK_FILE"` in the final reporting Bash block.
 
+### 0/1 Parallel Probe Directive
+
+Step 0.2 (rename-marker glob), Step 1.1 (`find -newer`), and Step 1.2 (Read `_graph.md`) are independent read-only probes that fire AFTER lock acquisition and BEFORE any mutation. **Issue them as a single parallel tool-call batch** — one message containing the `.rename_incomplete.*` glob, the `find -newer .last_sync` Bash, and the `_graph.md` Read. Ownership verification on subsequent Bash blocks (per preflight §1.5) still runs on every mutation block; this batch only collapses three sequential read round-trips into one. On rare lock-collision edge cases where another skill is mid-release, the wasted work is negligible (milliseconds of find + one Read).
+
 ### 0.2: Rename-marker check
 - **`/sync TICKER`**: preflight Procedure 2. Hard-block if `.rename_incomplete.TICKER` exists.
 - **`/sync` / `/sync all`**: glob `.rename_incomplete.*`. Hard-block if ANY marker exists — these modes propagate across the vault; a single mid-rename ticker would split inbound wikilinks across old/new names.
@@ -444,13 +448,21 @@ Classify edits by tier:
 - **Tier A — snapshot required**: editing or rewriting existing text in Summary, Non-consensus Insights, Outstanding Questions, Business Model, Industry Context, Bull Case, Bear Case, Conviction Triggers.
 - **Tier B — no snapshot**: appending new Catalysts, Risks, Conviction Triggers; appending to Log / Related Research; updating Key Metrics numbers.
 
-If any Tier A edits planned:
+If any Tier A edits planned, snapshot ALL Tier A theses in one Bash block using background shell jobs + `wait` (mirrors `/compare` 5.5a and `/rollback` Step 4 patterns — each `cp` is independent; sequential execution over N theses wastes N-1 round-trips):
+
 ```bash
 mkdir -p _Archive/Snapshots
-cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-sync YYYY-MM-DD-HHMMSS).md"
+# For each thesis T in tier_a_thesis_snapshots (from 3g accumulator), fire cp in background:
+cp "Theses/TICKER1 - Name1.md" "_Archive/Snapshots/TICKER1 - Name1 (pre-sync YYYY-MM-DD-HHMMSS).md" &
+cp "Theses/TICKER2 - Name2.md" "_Archive/Snapshots/TICKER2 - Name2 (pre-sync YYYY-MM-DD-HHMMSS).md" &
+cp "Theses/TICKER3 - Name3.md" "_Archive/Snapshots/TICKER3 - Name3 (pre-sync YYYY-MM-DD-HHMMSS).md" &
+wait
+# Check exit status of background jobs before proceeding
 ```
 
-Then Edit the snapshot to add frontmatter:
+For single-thesis Tier A (`/sync TICKER` or default sync with one affected thesis), this collapses to a single foreground `cp`. The batch form only matters for multi-thesis `/sync all` runs.
+
+Then issue all frontmatter-addition Edits as a **single parallel tool-call batch** (one Edit per snapshot, all in the same message):
 ```yaml
 snapshot_of: "[[Theses/TICKER - Company Name]]"
 snapshot_date: YYYY-MM-DD
@@ -542,12 +554,18 @@ Before snapshotting, check if this sector already received propagation for the s
 
 ### 4a: Pre-Edit Snapshot
 
-If edits modify existing analytical text (competitive dynamics, value chain, sector observations, comparison narratives):
+If edits modify existing analytical text (competitive dynamics, value chain, sector observations, comparison narratives), snapshot ALL Tier A sectors in one Bash block using background shell jobs + `wait`:
+
 ```bash
-cp "Sectors/Sector Name.md" "_Archive/Snapshots/Sector Name (pre-sync YYYY-MM-DD-HHMMSS).md"
+# For each sector in tier_a_sector_snapshots, fire cp in background:
+cp "Sectors/Sector A.md" "_Archive/Snapshots/Sector A (pre-sync YYYY-MM-DD-HHMMSS).md" &
+cp "Sectors/Sector B.md" "_Archive/Snapshots/Sector B (pre-sync YYYY-MM-DD-HHMMSS).md" &
+wait
 ```
 
-Add to the snapshot's frontmatter:
+Then issue all frontmatter-addition Edits as a **single parallel tool-call batch**.
+
+Add to each snapshot's frontmatter:
 ```yaml
 snapshot_of: "[[Sectors/Sector Name]]"
 snapshot_date: YYYY-MM-DD
@@ -565,14 +583,17 @@ Skip snapshot if only adding wikilinks.
 - Revise sector-level observations if cross-company patterns emerged.
 - Update company comparison tables with new data points.
 
-### 4c: Post-Edit Verification
+### 4c: Post-Edit Verification (Edit-return inspection — no re-read)
 
-Re-read modified note. Verify each edited section:
+Inspect each Edit tool call's return value (the post-edit content snippet it emits). The Edit tool reports success iff the replacement landed, and the return value shows the new content; a separate re-read adds a round-trip without adding information. Verify each edited section from the Edit-return content:
+
 1. Ends with complete sentence (not mid-word, unmatched `**`).
 2. No incomplete table rows (line starts `|` but doesn't end `|`).
 3. No trailing conjunction, preposition, comma, or opening bracket.
 
 On failure: `⚠️ Sector note may contain a partial edit in [section]. Snapshot available: [[_Archive/Snapshots/...]]. Review manually or /rollback.`
+
+Re-reads are only required if an Edit-return is genuinely ambiguous (e.g., the replacement context was truncated in the tool's response); in that case, issue a targeted section Read — not a full-file Read.
 
 ### 4d: Accumulate manifest entries
 
@@ -617,12 +638,18 @@ See §1.10 for mtime fallback trade-offs.
 
 ### 5a: Pre-Edit Snapshot
 
-If edits modify existing analytical text (scenario analysis, probability weightings, trading/allocation implications):
+If edits modify existing analytical text (scenario analysis, probability weightings, trading/allocation implications), snapshot ALL Tier A macro notes in one Bash block using background shell jobs + `wait`:
+
 ```bash
-cp "Macro/Note Name.md" "_Archive/Snapshots/Note Name (pre-sync YYYY-MM-DD-HHMMSS).md"
+# For each macro in tier_a_macro_snapshots, fire cp in background:
+cp "Macro/Note A.md" "_Archive/Snapshots/Note A (pre-sync YYYY-MM-DD-HHMMSS).md" &
+cp "Macro/Note B.md" "_Archive/Snapshots/Note B (pre-sync YYYY-MM-DD-HHMMSS).md" &
+wait
 ```
 
-Add frontmatter:
+Then issue all frontmatter-addition Edits as a **single parallel tool-call batch**.
+
+Add frontmatter to each snapshot:
 ```yaml
 snapshot_of: "[[Macro/Note Name]]"
 snapshot_date: YYYY-MM-DD
@@ -712,18 +739,22 @@ Apply compression trigger order from `_shared/hot-md-contract.md` to the staged 
 
 After each step, recompute `projected_total`. Stop when under soft cap. If all three exhausted and `projected_total > hard_cap`, return to 6.2's abort path.
 
-### 6.4: Commit all section writes (all-or-nothing)
+### 6.4: Commit all section writes (single composite Edit — M5 atomicity)
 
-Only reached when `projected_total ≤ hard_cap`. Apply the staged Edits in the following order (the order itself is not load-bearing since the pre-check already proved all sections fit — but keep consistent for diff readability):
+Only reached when `projected_total ≤ hard_cap`. The prior six-Edits form serialized the all-or-nothing commit into six dependent tool calls, any of which could fail mid-sequence and leave partial state. Per `.claude/skills/_shared/hot-md-contract.md` §5, section ORDER inside `_hot.md` is not load-bearing (no consumer reads sections in sequence). The commit therefore compresses to **one composite Edit** that replaces the entire post-frontmatter region with the staged content — a single tool-call round-trip instead of six, and true atomicity (the Edit either lands whole or does not land at all).
 
-1. Frontmatter `date:` + heading
-2. Active Research Thread
-3. Latest Sync
-4. Sync Archive
-5. Open Questions (5a + 5b staged outputs)
-6. Recent Conviction Changes
+**Procedure**:
+1. Construct the full post-frontmatter region in memory from the Step 6.1 staged section buffers:
+   - Updated `date:` and main heading.
+   - All six sections in canonical order: `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot` (mirrors the `_hot.md` schema from CLAUDE.md Rule #9).
+2. Anchor the single Edit on the closing frontmatter delimiter `---\n` plus the current post-frontmatter content:
+   - `old_string` = the closing `---\n` followed by the CURRENT post-frontmatter content (captured at Step 6.0's Read).
+   - `new_string` = the closing `---\n` followed by the STAGED post-frontmatter content.
+3. Inspect the Edit-return content to confirm all six sections landed and the compression-trigger-order outputs (§6.3) are reflected.
 
-If any individual Edit fails mid-commit (rare — pre-checks should make this the pathological case only), report the specific section that failed. Manual cleanup is required because partial state has landed. This is a degradation from full atomicity, but pre-checks eliminate the primary cause (word-count overflow). `/lint #42` catches any truncation markers that slip through.
+If the composite Edit fails (rare — pre-checks at 6.2 should make this the pathological case only, and anchor uniqueness is guaranteed because the closing `---\n` appears exactly once in a well-formed file), report the failure and do NOT fall back to sequential Edits. `_hot.md` retains pre-run state; primary sync propagation in Steps 3-5 is unaffected. `/lint #35` catches any post-run schema drift; `/lint #42` catches truncation markers.
+
+**Frontmatter-only update fast path**: if `date:` is the only field that changed between the read and the staged output (body sections all byte-identical after compression), skip the composite region Edit and issue a single targeted frontmatter Edit on the `date:` line. One-line Edits are cheaper than whole-region replacements when the body didn't actually change.
 
 ### 6.5: Hard-cap abort report
 
@@ -809,16 +840,16 @@ completed_date: YYYY-MM-DD
 
 Phase checkpoints A/B/C have already populated the body. No body Edit at this step.
 
-### 7.5c: Verify flip landed
+### 7.5c: Verify flip landed (Edit-return inspection — no re-read)
 
-Re-read manifest frontmatter. Confirm:
+Inspect the 7.5b Edit tool call's return value. The Edit tool reports success iff the replacement landed; the return value shows the post-edit frontmatter snippet. Confirm from the Edit-return content:
 - `status: completed` present
 - `status: in-progress` absent
 - `completed_date:` present and equals today
 
 **On success**: proceed to Step 8.
 
-**On verification failure** (flip Edit silently missed): do NOT retry aggressively. Report `⚠️ Sync manifest status flip failed — manifest at [path] remains status: in-progress despite successful sync completion. /lint #41 will flag this as Important until manually resolved. Manual fix: edit the manifest and replace status: in-progress with status: completed (add completed_date: today).` Continue to Step 8.
+**On verification failure** (Edit-return indicates the replacement did not produce the expected frontmatter, or the Edit tool returned an error): do NOT retry aggressively. Report `⚠️ Sync manifest status flip failed — manifest at [path] remains status: in-progress despite successful sync completion. /lint #41 will flag this as Important until manually resolved. Manual fix: edit the manifest and replace status: in-progress with status: completed (add completed_date: today).` Continue to Step 8.
 
 ### 7.5d: Tracking accumulators (implementation reference)
 

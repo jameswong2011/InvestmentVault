@@ -77,7 +77,7 @@ If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 e
 ### Round 1 — parallel batch (single message, two tool calls)
 Issue these two tool calls in ONE message:
 1. **Read** `Theses/TICKER - [Name].md` (the thesis).
-2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro/ Research/` (catches mentions in notes not yet linked). Use a single multi-path Grep — do not grep each directory separately.
+2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro/ Research/` with `glob='*.md'` (catches mentions in notes not yet linked, scoped to markdown). Use a single multi-path Grep — do not grep each directory separately.
 
 Wait for both to land. Use the thesis to enumerate: sector note path (from `sector:` frontmatter), every research wikilink (from `## Related Research` + `## Log`), referenced macro notes.
 
@@ -154,9 +154,7 @@ Peer-section comparative primer (graph primer):
 
 **Phase 3 + Phase 5 explicit framing requirement**: "Use peer sections to identify what's **missing or underdeveloped** in the target thesis's section relative to how peers frame the same analytical dimension. Do NOT replicate peer content verbatim. Peer content identifies gaps; target-specific research fills them."
 
-**Anti-pattern enforced** (contract §Anti-patterns): do NOT substitute peer content for target-specific depth. The deepen's Phase 5 rewrite must be target-thesis-driven — peer content shapes the gap analysis, not the content itself.
-
-**Peer-dominance mitigation** (contract §Confirmation-bias mitigations): if the target section is sparse and peer sections are rich, Phase 5 must explicitly surface "what's in peer X that's missing from target, and why does the target's positioning differ?" rather than importing peer content. Divergence is analytically valuable.
+**Anti-pattern enforced** + **Peer-dominance mitigation**: `.claude/skills/deepen/RATIONALE.md` §5. Summary — the target's divergence from peers is often the thesis itself; do not substitute peer content for target-specific depth.
 
 **Missing-graph fallback**: per `.claude/skills/_shared/graph-primer.md` §Missing-graph fallback. Phase 3 + Phase 5 proceed target-only. Skip peer cross-read silently.
 
@@ -198,11 +196,11 @@ Before rewriting the target section, snapshot the thesis:
    snapshot_batch: deepen-TICKER-YYYY-MM-DD-HHMMSS
    ```
 
-   **Batch ID format**: `deepen-TICKER-YYYY-MM-DD-HHMMSS` — TICKER embedded to prevent collisions between concurrent `/deepen` runs on different tickers that hit the same HHMMSS (matches `/stress-test` pattern).
+   **Batch ID format**: `deepen-TICKER-YYYY-MM-DD-HHMMSS`. Rationale in `.claude/skills/deepen/RATIONALE.md` §2.
 
 ## Phase 4.5: Write deepen manifest skeleton (M3 — skeleton before destructive edits)
 
-> **Why this exists (M3)**: `/deepen` is a multi-file transaction — it edits thesis (Phase 5) AND creates a research note (Phase 6) AND updates `_hot.md` (Phase 7). Prior spec had only the thesis snapshot as a recovery anchor; a crash mid-Phase-6 would leave the thesis edited with a provisional Log entry and no research note, with no manifest trail for `/rollback` cascade detection. The manifest + skeleton-before-flip pattern (§3 invariant) provides crash detection via `/lint #50` and batch-level cascade via `/rollback` Step 2.5g.
+> **Why this manifest exists (M3)**: `.claude/skills/deepen/RATIONALE.md` §1.
 
 Write manifest at `_Archive/Snapshots/_deepen-manifest (deepen-TICKER-YYYY-MM-DD-HHMMSS).md`:
 
@@ -296,7 +294,7 @@ fi
    ```
    This preserves the append-only Log contract while ensuring the audit trail is always complete. `/sync` drift detection recognizes both `"Deepened"` and `"↳ CORRECTION: Deepened"` prefixes.
 
-> **Drift coupling**: `/sync` Step 3e excludes entries starting with `"Deepened"` within 7 days of a stress test from drift detection. **Registry entry**: `.claude/skills/_shared/log-prefixes.md` §3 (Deepened) + §2 (Deepening) + §4 (↳ CORRECTION: Deepened). Do not change these prefixes without updating the registry and `/sync`; `/lint` check #29 flags drift.
+> **Drift coupling**: `.claude/skills/deepen/RATIONALE.md` §4. Registry entries: `.claude/skills/_shared/log-prefixes.md` §2, §3, §4. `/lint #29` flags drift.
 
 > **Failure states**: If the skill fails after 5a but before 5b → Log shows "Deepening... in progress" but section is unchanged; snapshot is unnecessary (thesis body intact). If it fails after 5b but before 5c → Log shows "Deepening... in progress" with section already rewritten; the verify-and-retry mechanism (above) will correct the Log entry. Both states are recoverable via snapshot. `/lint` #28 (partial write detection) flags the `"Deepening"` prefix as an indicator — if the corrective entry exists alongside it, lint should downgrade to Nice to Have.
 
@@ -359,9 +357,9 @@ completed_date: YYYY-MM-DD
 ---
 ```
 
-**Verify flip landed**: re-read manifest frontmatter. Confirm `status: completed` present, `status: in-progress` absent, `completed_date:` equals today.
+**Verify flip landed** (Edit-return inspection — no re-read): inspect the frontmatter-flip Edit's return value. The Edit tool reports success iff the replacement landed; the returned snippet shows the post-edit frontmatter. Confirm `status: completed` present, `status: in-progress` absent, `completed_date:` equals today from the Edit-return content.
 
-**On verification failure** (flip Edit silently missed): report `⚠️ Deepen manifest status flip failed — manifest remains status: in-progress despite successful deepen completion. /lint #50 will flag this as Important. Manual fix: edit manifest frontmatter — replace status: in-progress with status: completed (add completed_date: today).` Continue to Phase 8.
+**On verification failure** (Edit-return indicates replacement did not produce expected frontmatter, or Edit tool returned error): report `⚠️ Deepen manifest status flip failed — manifest remains status: in-progress despite successful deepen completion. /lint #50 will flag this as Important. Manual fix: edit manifest frontmatter — replace status: in-progress with status: completed (add completed_date: today).` Continue to Phase 8.
 
 ## Phase 8: Report
 Tell the user:

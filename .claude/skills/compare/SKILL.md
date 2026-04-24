@@ -53,7 +53,7 @@ Wait for user selection.
 ### Round 1 — parallel batch (single message)
 Issue ALL of these in ONE message:
 - **Read** each thesis note — one Read per ticker with a thesis. Do NOT loop serially; send all N Reads in one tool-call batch.
-- **Grep** once across `Research/ Macro/` for any of the tickers (use an alternation pattern `TICKER1|TICKER2|TICKER3`). One multi-ticker Grep replaces N per-ticker Greps.
+- **Grep** once across `Research/ Macro/` for any of the tickers with `glob='*.md'` (use an alternation pattern `TICKER1|TICKER2|TICKER3`, scoped to markdown). One multi-ticker Grep replaces N per-ticker Greps.
 
 Wait for Round 1 to land. Enumerate, per ticker: Related Research wikilinks, sector note paths (from `sector:` frontmatter), referenced Macro notes.
 
@@ -381,7 +381,7 @@ Manifest skeleton was written at Phase 5.0 with `status: in-progress`. Phase 5.5
 - All sector writes succeeded: `status: in-progress` → `status: completed`. Add `completed_date: YYYY-MM-DD`.
 - Phase 5.5b rollback fired: `status: in-progress` → `status: rolled-back`. Add `completed_date: YYYY-MM-DD`.
 
-**Verify flip landed**: re-read manifest frontmatter. Confirm `status:` is no longer `in-progress`. On verification failure: report `⚠️ Compare manifest status flip failed — manifest remains status: in-progress despite completion. /lint #45 will flag this as Critical. Manual fix: edit manifest frontmatter to the correct terminal status.` Continue to 5.5 Sector edits.
+**Verify flip landed** (Edit-return inspection — no re-read): inspect the frontmatter-flip Edit's return value. The Edit tool reports success iff the replacement landed; the returned snippet shows the post-edit frontmatter. Confirm `status:` is no longer `in-progress` from the Edit-return content. On verification failure: report `⚠️ Compare manifest status flip failed — manifest remains status: in-progress despite completion. /lint #45 will flag this as Critical. Manual fix: edit manifest frontmatter to the correct terminal status.` Continue to 5.5 Sector edits.
 
 `status: rolled-back` indicates clean abort (Phase 5.5b rollback fired). `status: completed` indicates atomic success. `status: in-progress` surfaced as Critical by `/lint #45` (§6.2).
 
@@ -389,7 +389,7 @@ Manifest skeleton was written at Phase 5.0 with `status: in-progress`. Phase 5.5
 
 Modify original sector notes using targeted `Edit` (atomic string replacement per section), NOT full-file `Write`. Each `Edit` call succeeds atomically or leaves the section unchanged — blast radius of mid-edit failure is zero. Apply one `Edit` per modified section (e.g., one for competitive dynamics, one for value chain).
 
-**Post-edit verification**: after all edits, re-read modified sector note. Per edited section, verify:
+**Post-edit verification** (Edit-return inspection — no re-read): inspect each sector-note Edit's return value. Per edited section, verify from the Edit-return content:
 - Ends with complete sentence (no mid-word, mid-sentence, unclosed formatting)
 - No incomplete table rows (line starts `|` but doesn't end `|`)
 

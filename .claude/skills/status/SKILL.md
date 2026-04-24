@@ -389,22 +389,17 @@ Confirm (a/b/c):
 
 Wait for selection. (c) → report metadata updates (sector, `_hot.md`, invalidations) already completed; thesis remains in `Theses/` pending manual archive resolution.
 
-### 7.5b: Move + update archive-ticker registry
+### 7.5b: Move + update archive-ticker registry (fused Bash block)
+
+Chain `mv`, registry append, and post-move verification into ONE Bash block via `&&` — each step conditional on prior success. Replaces three separate Bash tool-calls with one round-trip; `&&` preserves the "each step only if prior succeeds" semantics the prior serialized form enforced implicitly:
 
 ```bash
-mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Company Name.md"
-```
-
-Append to `.archive_ticker_registry.md` at vault root (supports `/thesis` multi-signal archive-collision check — Signal C):
-
-Format: `TICKER|archived_filename.md|YYYY-MM-DD|conviction_at_closure|closure_rationale_line1`
-
-Create file with header on first write; otherwise append:
-
-```bash
-REGISTRY=".archive_ticker_registry.md"
-if [ ! -f "$REGISTRY" ]; then
-  cat > "$REGISTRY" <<'HEADER'
+# Atomic fused block: mv → registry append → verify. Each step guarded by &&.
+mv "Theses/TICKER - Company Name.md" "_Archive/TICKER - Company Name.md" && \
+{
+  REGISTRY=".archive_ticker_registry.md"
+  if [ ! -f "$REGISTRY" ]; then
+    cat > "$REGISTRY" <<'HEADER'
 ---
 type: archive-ticker-registry
 purpose: Flat append-only log of thesis archival events. Consumed by /thesis Step 1.2 Signal C (multi-signal archive-collision check).
@@ -413,24 +408,24 @@ purpose: Flat append-only log of thesis archival events. Consumed by /thesis Ste
 # Archive Ticker Registry
 
 HEADER
-fi
-
-printf '%s|%s|%s|%s|%s\n' \
-  "$TICKER" \
-  "$ARCHIVED_FILENAME" \
-  "$(date +%Y-%m-%d)" \
-  "$CONVICTION_AT_CLOSURE" \
-  "$CLOSURE_RATIONALE_LINE" \
-  >> "$REGISTRY"
+  fi
+  printf '%s|%s|%s|%s|%s\n' \
+    "$TICKER" \
+    "$ARCHIVED_FILENAME" \
+    "$(date +%Y-%m-%d)" \
+    "$CONVICTION_AT_CLOSURE" \
+    "$CLOSURE_RATIONALE_LINE" \
+    >> "$REGISTRY"
+} && \
+ls "_Archive/TICKER - Company Name.md" && \
+! ls "Theses/TICKER - Company Name.md" 2>/dev/null
 ```
+
+The final two `ls` probes serve as the Step 7.5b verification mentioned below — if the `mv` landed, the archive file exists AND the Theses file does not. Exit code 0 = all four stages succeeded. Non-zero exit surfaces the specific failing stage via `set -e`-like semantics inside the fused block.
 
 Registry append failure (extremely unlikely — single-line append): `⚠️ Archive registry append failed: [reason]. Signal C in future /thesis [TICKER] may miss this entry. /lint #46 will flag on next run.` Does NOT abort closure — archival succeeded; only the lookup aid is missing. Signals A/B/D still cover common cases.
 
-**Verification**: confirm file at new path, absent from old:
-```bash
-ls "_Archive/TICKER - Company Name.md"
-ls "Theses/TICKER - Company Name.md" 2>/dev/null
-```
+**Verification**: confirmed inline in the fused Bash block above (`ls` checks land in the same round-trip as the `mv` and registry append).
 
 **If move fails** (§4.3): all metadata already succeeded. Do NOT attempt to undo. Report:
 ```
@@ -484,14 +479,14 @@ Consolidate manifest population + frontmatter flip into a **single tool-call blo
 
 These three Edits target different parts of the same manifest file (body sections vs frontmatter lines). The harness serializes them on the server but dispatching them together saves 2 round-trips vs firing them sequentially.
 
-**Verify flip** — re-read the manifest frontmatter once after the block returns. Flip fails (§3.4):
+**Verify flip** — inspect the frontmatter-flip Edit's return value in memory. The Edit tool reports success iff the replacement landed; the returned snippet shows the post-edit frontmatter region. Confirm `status: completed` present AND `status: in-progress` absent from the Edit-return content. Flip fails (§3.4):
 ```
 ⚠️ Status manifest status flip failed — manifest at [path] remains in-progress despite successful /status completion. /lint #48 will flag as Important. Manual fix: edit the manifest frontmatter to status: completed.
 ```
 
 Do NOT rollback — all stages already succeeded.
 
-**Final batch with Step 8**: the manifest verification re-read can be dispatched in parallel with the final lock-release Bash block from Step 8 (`rm -f $LOCK_FILE`) — the verification reads a different file than the lock, no dependency. One additional round-trip saved.
+**Final batch with Step 8**: because verification is in-memory Edit-return inspection (no Read round-trip), Step 7.9 compresses to the single tool-call block already described above; the lock-release Bash from Step 8 fires immediately after.
 
 Manifest retained. `/clean` handles aging via 90-day threshold (§8 — no regret-recovery window like `/prune`).
 

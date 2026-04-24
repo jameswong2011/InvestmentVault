@@ -14,6 +14,14 @@ propagated_to: [000660, 285A, NVDA, AMD, TSM, SEMICAP, SNDK]
 
 Iran War's Strait of Hormuz blockade has cut 40%+ of Japan's naphtha supply, collapsing the PGME/PGMEA solvent chain that feeds every photoresist, BARC, SOH, and HBM temporary-bonding adhesive Japan ships to Samsung and SK Hynix. This is the **first material-level threat to the 2026 HBM ramp** — separate from and additive to the Taiwan CoWoS tail already in the [[Theses/000660 - SK Hynix]] and [[Theses/NVDA - Nvidia]] risk frameworks. PCN (Process Change Notification) requalification for alternate solvents takes ~1 year nominal, longer for leading-edge — meaning a disruption that lands in Q2 2026 propagates into 2027 HBM4 / HBM4E output, exactly when [[Theses/NVDA - Nvidia]] Rubin volume ramps and [[Theses/AMD - Advanced Micro Devices]] Helios (MI455X/H2 2026) ships.
 
+## Summary
+
+Iran's March blockade of the Strait of Hormuz cut Japan off from ~40% of its naphtha supply, forcing 6 of 12 Japanese naphtha cracking centers (NCCs) into production cuts and spiking spot naphtha from ~$600/ton to $1,190/ton (+92%). The downstream chain — naphtha → propylene → propylene oxide (PO) → PGME and PGMEA solvents — collapses the solvent inputs to nearly every semiconductor photo-patterning material Japan produces: photoresist (PR), thinner, bottom anti-reflective coating (BARC), spin-on-hardmask (SOH), and temporary bonding adhesives for HBM. Shin-Etsu, Tokyo Ohka Kogyo (TOK), JSR, Fujifilm, and Nissan Chemical — the sole-source or near-sole-source suppliers to Samsung and SK Hynix — began formally notifying Korean customers of raw-material disruptions starting April 21–23.
+
+The asymmetric risk comes from Japan's self-sufficient production structure: Daicel integrates PO→PGMEA; Toagosei refines from Dow raw stock; when one raw-material input breaks, the entire domestic chain shakes simultaneously. Switching to Korean (Chemtronics, Jaewon Industrial) or Chinese PGME/PGMEA triggers Process Change Notification (PCN) requalification at Samsung/Hynix — ~1 year for normal nodes, longer for leading-edge EUV. An industry source characterized the acute tail: "if Japanese supply of PR or BARC is cut off, semiconductor fabs could come to a halt… some evaluation steps will inevitably have to be skipped." Korean alternatives have mass-production PGMEA but the Jaewon Industrial executive qualified that Korea's diversification (US + China sourcing) is only marginally better: "it's essentially the same situation."
+
+The analogy one source offered captures the constraint precisely: "It's like not being able to add water to instant coffee mix." The solvents are cheap commodity inputs at the bottom of the bill of materials; their absence halts the top-of-stack HBM and advanced-logic ramp that drives the 2026 AI capex cycle.
+
 ## Evidence
 
 | Data point | Value | Source |

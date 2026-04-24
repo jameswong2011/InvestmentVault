@@ -30,7 +30,7 @@ Both checks must pass before proceeding to Phase 1.
 ### Round 1 — parallel batch (single message, two tool calls)
 Issue these two tool calls in ONE message:
 1. **Read** `Theses/TICKER - [Name].md` (the thesis).
-2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro/ Research/` (catches mentions in notes not explicitly linked from the thesis). Use a single multi-path Grep — do not grep each directory separately.
+2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro/ Research/` with `glob='*.md'` (catches mentions in notes not explicitly linked from the thesis, scoped to markdown). Use a single multi-path Grep — do not grep each directory separately.
 
 Wait for both to land. Use the thesis content to enumerate: the sector note path (from `sector:` frontmatter), every research wikilink (from `## Related Research` + `## Log`), and referenced macro notes.
 
@@ -155,6 +155,10 @@ date: YYYY-MM-DD
 
 Skeleton write failure → hard abort Phase 4 before any destructive edits. Report the failure and the current state (none of 4.1-4.5 have run yet).
 
+### 4.1–4.3: Parallel-batch directive (independent-file writes)
+
+Steps 4.1 (Write research note), 4.2 (Edit thesis Log), and 4.3 (Edit Related Research) target **three different files with no data dependency** — fire them as a **single parallel tool-call batch** (one message, three independent tool invocations). Atomicity is preserved because Phase 4.4's `propagated_to:` gate consumes `log_append_succeeded` from 4.2's Edit outcome independently of 4.1/4.3 ordering. If any of the three Edits fails, the failure handler runs as specified in its own sub-section — the parallel-batch wrapping does not change any atomicity semantics, it only collapses three sequential round-trips into one.
+
 ### 4.1: Write the research note (without `propagated_to:`)
 
 Save the stress test to `Research/YYYY-MM-DD - [TICKER] - Stress Test.md` with:
@@ -201,7 +205,7 @@ This is a wikilink registration, not a propagation claim — runs regardless of 
 - **Log append succeeded** (`log_append_succeeded: true`): edit the research note's frontmatter to add `propagated_to: [TICKER]`. Insertion point: immediately before the closing `---` of frontmatter. This signals to subsequent `/sync` runs that producer-side propagation is complete; `/sync` Case 2b will skip TICKER as already-propagated.
 - **Log append failed** (`log_append_succeeded: false`): do **NOT** write `propagated_to:` at all. Leave the frontmatter without the field. The next `/sync` (default mode) will detect TICKER via the file-direct fallback (research note's `ticker: TICKER` frontmatter), apply the per-thesis idempotency check (today's date entry referencing this note? no), and retry the Log append.
 
-> **Why never partial**: matches `/scenario` Phase 6.3 rationale — a partial `propagated_to:` would create a permanent audit gap that future `/sync` runs silently skip because the dedup hint says "already done." For single-ticker `/stress-test`, the partial case is binary (either present-with-TICKER or absent), but the rule is the same: omit on failure, write only on success.
+> **Why never partial**: `.claude/skills/stress-test/RATIONALE.md` §1.
 
 ### 4.5: Conviction unchanged (manual decision)
 
@@ -211,9 +215,7 @@ Do NOT change the conviction level — flag it for the user to decide via `/stat
 
 Manifest skeleton was written at Phase 4.0 with `status: in-progress`. Phase 4.6 populates the body with the actual Log entry text and Phase 4.2 outcome, then flips status to `completed`.
 
-> **Batch ID format (C4 fix)**: Ticker-scoped skills include TICKER in the batch ID to prevent collisions when two concurrent `/stress-test` runs on different tickers hit the same HHMMSS. Prior format `stress-test-YYYY-MM-DD-HHMMSS` could collide between simultaneous `/stress-test NVDA` and `/stress-test AMAT`; new format `stress-test-NVDA-YYYY-MM-DD-HHMMSS` and `stress-test-AMAT-YYYY-MM-DD-HHMMSS` are distinct. `/rollback` Step 2.5d cascade detection matches by the `stress-test-` prefix AND the `ticker:` frontmatter field of the manifest.
-
-**Why this exists**: `/stress-test` writes a Log entry to the tested thesis (Tier B — no pre-edit snapshot because the Log is append-only) and a research note. If the user later decides the stress test was invalid (wrong input, stale vault state, experimental run), there's no `/rollback` cascade path to restore the pre-stress-test thesis state. Manual strikethrough of the Log entry is the only remedy. The manifest provides `/rollback` cascade-detection with the Log entry text so the user can choose per-entry annotation (same pattern as `/sync` Tier B sidecar and `/compare` manifest).
+> **Batch ID format (C4 fix)** and **Why this manifest exists**: `.claude/skills/stress-test/RATIONALE.md` §2–§3.
 
 **Consolidated flip** (one parallel tool-call block — mirrors `/status` Step 7.9 pattern):
 
@@ -238,9 +240,9 @@ completed_date: YYYY-MM-DD
 ---
 ```
 
-**Verify flip landed**: re-read the manifest frontmatter. Confirm `status: completed` present, `status: in-progress` absent, `completed_date:` equals today.
+**Verify flip landed** (Edit-return inspection — no re-read): inspect the frontmatter-flip Edit's return value. The Edit tool reports success iff the replacement landed; the returned snippet shows the post-edit frontmatter. Confirm `status: completed` present, `status: in-progress` absent, `completed_date:` equals today from the Edit-return content.
 
-**On verification failure** (flip Edit silently missed): do NOT retry aggressively. Report `⚠️ Stress-test manifest status flip failed — manifest at [path] remains status: in-progress despite successful stress-test completion. /lint #47 will flag this as Important until manually resolved. Manual fix: edit the manifest and replace status: in-progress with status: completed (add completed_date: today).` Continue to Phase 5.
+**On verification failure** (Edit-return indicates replacement did not produce expected frontmatter, or Edit tool returned error): do NOT retry aggressively. Report `⚠️ Stress-test manifest status flip failed — manifest at [path] remains status: in-progress despite successful stress-test completion. /lint #47 will flag this as Important until manually resolved. Manual fix: edit the manifest and replace status: in-progress with status: completed (add completed_date: today).` Continue to Phase 5.
 
 ### Recovery guidance (in manifest body)
 

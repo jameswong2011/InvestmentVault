@@ -98,8 +98,10 @@ Each thesis note follows this structure:
 
 ### Research Notes (/Research)
 - Name format: `YYYY-MM-DD - [Topic or Ticker] - [Source Type].md`
-- Source types: earnings, analyst-report, news, deep-dive, data, web-clip, stress-test, synthesis, brief, comparison, scenario
+- Source types: earnings, analyst-report, news, deep-dive, data, web-clip, video-transcript, stress-test, synthesis, brief, comparison, scenario
 - Always include `source:` in frontmatter with the URL
+- **Required body sections** (all 4, regardless of source_type): `## Thesis Delta`, `## Summary`, `## Evidence`, `## Contradiction Check`. Conditional: `## Framework / Mental Model` (when source advances a named framework/scoring scheme/typology), `## Key Segments` (when source >15,000 words), `## Source Excerpts` (may be empty). `## Summary` is prose — 1–2 paragraphs for short-form sources, 2–4 for long-form — capturing the source's actual argument, mechanism, and claim scope (NOT a business description). Full spec: `.claude/skills/ingest/SKILL.md`.
+- Body length must be proportional to source length (per `/ingest` check #5): <1,500 source words → ≥300 body words; 1,500–5,000 → ≥800; 5,000–15,000 → ≥1,800; >15,000 → ≥2,500 + `## Key Segments`.
 - Extract key data points and quote sparingly
 - Add wikilinks to related thesis notes
 

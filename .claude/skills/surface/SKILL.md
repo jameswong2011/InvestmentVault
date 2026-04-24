@@ -82,16 +82,11 @@ Validation rule:
 
 ### Why stop rather than best-effort continue
 
-Scoped modes depend on complete scope coverage. A best-effort continuation would:
-- Read `Theses/TICKER - Name.md` and fail silently, skipping that thesis from Phase 1–3 analysis.
-- Produce a surface-scan research note that under-reports the sector (missing the archived thesis's historical context, even though its adjacency influenced the sector's dynamics until closure).
-- Write `propagated_to: []` on the research note, which blocks `/sync` from auto-healing by retry.
-
-The fail-fast path forces `/graph last` explicitly — cost is one extra command; benefit is correct scope coverage on retry.
+Design rationale in `.claude/skills/surface/RATIONALE.md` §1.
 
 ### Why not auto-run `/graph last`
 
-`/surface` is an analytical read-only skill that writes a synthesis research note and `_hot.md`. It does not write `_graph.md`. Auto-running `/graph last` would violate the metadata-ownership boundary (only `/graph` and `/rename` write `_graph.md`). User explicitly invokes `/graph last` — one extra command is the correct cost for ownership clarity. `/lint` #38 (`.graph_invalidations` aging) catches the chronic case where users forget to run it.
+Design rationale in `.claude/skills/surface/RATIONALE.md` §2.
 
 ## Phase 1: Portfolio Scan (mode-dependent read strategy)
 

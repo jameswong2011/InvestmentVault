@@ -51,6 +51,7 @@ Before individual checks, run a **single consolidated Bash+Grep pass** that coll
 **Step A — one Grep call, all wikilinks across Theses + Sectors + Macro** (output_mode: content):
 - Pattern: `\[\[[^\]]+\]\]`
 - Path: `Theses/ Sectors/ Macro/`
+- Glob: `*.md` (scopes ripgrep to markdown files; short-circuits non-`.md` siblings like `.obsidian/*.json` if any leaked into the scan directories)
 - Purpose: every wikilink in every thesis/sector/macro, captured in a single call. Each match carries its source-file context (via `-n`).
 
 **Step B — one Bash block, enumerate inventories**:

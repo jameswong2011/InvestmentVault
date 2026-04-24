@@ -14,6 +14,37 @@ propagated_to: [AMD, NVDA]
 
 Agentic AI orchestration is shifting CPU:GPU ratios above 1:1 at the rack level, expanding server-CPU TAM and re-pricing the server-CPU competitive surface. On a 9-metric reasoning/action scoring framework, **AMD Venice Dense scores 5 for action workloads** (256 Zen6c cores, 512 SMT threads, 1GB L3, x86 ISA) and **NVIDIA Vera scores 5 for reasoning** (88 custom Olympus ARM cores with SMT, NVLink-C2C 1.8 TB/s coherent to Rubin, 1.5TB LPDDR5). **Intel Diamond Rapids scores 3/3 — mediocre at both ends** after Intel removed SMT (192 cores = 192 threads vs Granite Rapids' 128 cores = 256 threads), structurally regressing its own roadmap. This directly strengthens [[Theses/AMD - Advanced Micro Devices]] Bull Case pillar #3 (EPYC 50%+ share by end-2026) and [[Theses/NVDA - Nvidia]] three-computer architecture (Vera standalone now a merchant CPU, not just a GPU companion).
 
+## Summary
+
+Sekar's core argument is that **CPUs have shifted from "supporting player" to "command layer"** as agentic AI workloads replace pure LLM inference. In a pure-inference setup, the CPU's role is limited to tokenization/de-tokenization (a "head node" that shuttles input to the GPU and output back to the user); the GPU handles all the compute-intensive matrix operations. Agentic AI breaks this because sub-agents running in parallel — each doing tool calls, API requests, memory lookups, orchestration logic, and chain-of-thought reasoning — execute their non-inference portion on the CPU. A Georgia Tech/Intel paper (Nov 2025, v2) estimates tool processing on CPUs accounts for 50–90% of total latency in agentic workloads. Nvidia's Vera CPU shipping as a standalone platform (CoreWeave deployment) and Intel management being "caught off guard" on CPU demand in Q4 2025 are the market-validated signals that CPU:GPU ratios in racks are rising above 1:1 and that CPU TAM is re-pricing accordingly.
+
+The second-order argument is that **agentic workloads are not monolithic — they span a reasoning-to-action sliding scale, and optimal CPU design diverges along that axis**. Reasoning-heavy workloads (e.g., deep-research sub-agents doing extended chain-of-thought) are bottlenecked on per-core speed, CPU-xPU interconnect bandwidth, and memory bandwidth/capacity — Nvidia Vera (88 custom Olympus ARM cores with SMT, NVLink-C2C 1.8 TB/s coherent to Rubin, 1.5TB LPDDR5 across 8 SOCAMM modules) scores 5/2 (reasoning/action) because it optimizes every metric that matters for inference-heavy orchestration. Action-heavy workloads (e.g., customer-service agents doing API calls, database reads, document processing) are bottlenecked on core count, cache, ISA compatibility, PCIe lanes, and perf/watt — AMD Venice Dense (256 Zen6c cores, 512 SMT threads, 1GB L3 via 8 CCDs × 32c × 4MB) scores 3/5 because it optimizes for parallel tool-call throughput.
+
+The competitive implication is that **Intel Diamond Rapids is compromised at both ends**, scoring 3/3 after removing SMT (192 cores = 192 threads vs the older Granite Rapids' 128 cores = 256 threads — a structural regression). Intel also cancelled the 8-channel Diamond Rapids-SP, stranding its mainstream market on Granite Rapids until at least 2028 absent a Coral Rapids SMT restoration. ARM hyperscaler CPUs (Graviton5, Phoenix) and AMD's Venice-F occupy the middle ground. The author flags an x86 weighting bias in the current scoring (x86 rated 5 vs ARM 3 for ISA) that will narrow in future iterations as ARM tool-compatibility improves. The structural tail risk for AMD specifically: the Intel-AMD x86 cross-licensing agreement (Intel owns base ISA, AMD owns AMD64 extension) dating to the 1980s IBM second-source requirement is the legal foundation of Venice Dense's moat — any disruption to that cross-license is existential for AMD's server-CPU position.
+
+## Framework / Mental Model
+
+**Name**: Reasoning-vs-Action sliding-scale framework for agentic server CPUs (9-metric scoring, 1–5 scale each, weighted to reasoning and action composite scores).
+
+**Components** (the 9 metrics):
+
+1. **Per-core performance and clock speed** — CPU orchestration decisions and per-token monitoring for tail latency. Matters in both workload types; disproportionately critical for reasoning.
+2. **Core count** (incl. SMT thread density) — Parallel sub-agent execution. SMT effectively doubles available threads per core. Disproportionately critical for action workloads.
+3. **CPU-xPU interconnect bandwidth** — Speed at which the CPU feeds/reads the xPU. Reasoning-critical (NVLink-C2C 1.8 TB/s coherent memory is the defining Vera feature).
+4. **CPU memory bandwidth and capacity** — Larger context, KV-cache, and inference prefilling done at lower latency. Reasoning-critical.
+5. **Cache design and size** — More L3 reduces memory-latency exposure on bursts of random accesses. Action-critical.
+6. **Performance per watt** — Per-agent unit economics at scale (thousands of agents). Action-critical.
+7. **PCIe generation and lane count** — API calls, storage I/O, network connectivity for tool-call throughput. Action-critical.
+8. **Instruction Set Architecture (ISA)** — x86 has broader tool-call compatibility today (weighted 5 in current iteration); ARM has RISC-efficiency benefits (weighted 3); ecosystem lock-in matters (ARM+NVIDIA vs x86+TPU). Action-critical in current weighting.
+9. **NUMA (Non-Uniform Memory Access) domains** — Multi-chiplet high-core-count CPUs expose uneven memory access; agent scheduling must be NUMA-aware. Universal weakness at 192+ cores.
+
+**Composite scoring methodology**:
+- **Reasoning composite** = average of metrics 1, 3, 4 (per-core speed, CPU-xPU bandwidth, memory bandwidth/capacity)
+- **Action composite** = average of metrics 2, 5, 6, 7, 8, 9 (core count, cache, perf/watt, PCIe, ISA, NUMA)
+- **Judgment adjustments** (±1 point) applied for architectural specifics and vendor-specific choices — explicitly non-mathematical
+
+**How to apply**: For any new/prospective server CPU, score each of the 9 metrics on 1–5, compute reasoning and action composite averages, apply judgment adjustments. A 5/2 split (reasoning-optimized) and a 3/5 or 2/5 split (action-optimized) indicate the CPU's deployment target. Scores converging to 3/3 indicate a compromised middle design (Intel Diamond Rapids). The framework generalizes — users can re-apply it to future CPUs (Coral Rapids, ARM AGI, next-gen Graviton) without waiting for the author's update cycle.
+
 ## Evidence
 
 | CPU | ISA | Cores / Threads | Memory BW | Reasoning Score | Action Score | Strategic Fit |

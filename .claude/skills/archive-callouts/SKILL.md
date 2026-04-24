@@ -423,21 +423,8 @@ These invariants define what `/archive-callouts` guarantees. Consumer skills (`/
 
 ## Design notes
 
-**Why in-note archive, not external `_Archive/Callouts/*.md`**:
-- Co-located audit trail matches the original "why callouts" design goal (visual provenance at the decision point)
-- Rollback uses standard thesis snapshot — no separate archive-file restoration path
-- `/rename` already rewrites wikilinks across thesis body — no additional consumer needed
-- Zero file sprawl
-
-**Why descending sort (newest first)**:
-- Latest sweep visible immediately on scroll; most-recent context dominates
-- Aligns with `## Log` convention (newest at bottom for append-only, newest at top would invert — but Legacy Callouts is bulk-rewritten each sweep, not append-only, so top-newest is the reading-order choice)
-
-**Why 180-day default**:
-- User-chosen after weighing 90d (too aggressive — sweeps still-contextual exchanges) vs 365d (barely removes clutter)
-- Aligns with `/clean` default snapshot retention (180d) — consistent hygiene cadence
-
-**Why `warning` label for `[!error]` type**:
-- Matches hotkey template filename `user-warning.md` (Templater slot label)
-- Human-facing vocabulary is more natural than `error` (implies Claude was wrong, not just disputed)
-- Consistent with how users describe the hotkey ("hit warning on this bullet")
+Design rationale lives in `.claude/skills/archive-callouts/RATIONALE.md`:
+- §1 — Why in-note archive, not external `_Archive/Callouts/*.md`
+- §2 — Why descending sort (newest first)
+- §3 — Why 180-day default threshold
+- §4 — Why `warning` label for `[!error]` callout type

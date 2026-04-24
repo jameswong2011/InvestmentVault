@@ -26,9 +26,9 @@ Both checks must pass before proceeding to Phase 1.
 ## Phase 1: Load
 1. **Duplicate check**: Grep `Research/` for existing briefs for this ticker (`source_type: brief` + matching ticker). If found, warn: `⚠️ Existing brief found: [[Research/existing-brief]]. Regenerating will create a new version. The old brief will remain in the vault.` Proceed — but note the old brief in the output so the user can delete it if desired.
 2. Read the thesis note from Theses/
-2. Read the 2-3 most recent or most important linked research notes (prioritise by recency and by being referenced in Log entries)
-3. Read the relevant Sector Note for competitive context
-4. Check Key Metrics for data freshness
+3. Read the 2-3 most recent or most important linked research notes (prioritise by recency and by being referenced in Log entries)
+4. Read the relevant Sector Note for competitive context
+5. Check Key Metrics for data freshness
 
 ### Exclusion contract — what the brief MUST NOT surface
 

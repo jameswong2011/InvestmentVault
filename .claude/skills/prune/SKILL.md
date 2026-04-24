@@ -256,12 +256,20 @@ Flipped to `completed` then retained at Stage 5 (§3). Body's Downstream Content
 
 Reuse HHMMSS from Stage 1. All snapshots bound to the already-existing manifest via `snapshot_batch: prune-YYYY-MM-DD-HHMMSS` — they inherit the 30-day closure-floor protection from Stage 1's manifest even if Stage 1.5 crashes mid-snapshot (invariant #11).
 
-**Thesis snapshots** — one per approved closure AND per approved upgrade:
+**Thesis snapshots** — one per approved closure AND per approved upgrade. Issue ALL `cp` calls in ONE Bash block using background shell jobs + `wait` (mirrors `/compare` Phase 5.5a and `/rollback` Step 4 patterns — a 5-closure batch is 5 sequential `cp` rounds without this; one round-trip with it):
+
 ```bash
-cp "Theses/TICKER - Company Name.md" "_Archive/Snapshots/TICKER - Company Name (pre-prune YYYY-MM-DD-HHMMSS).md"
+mkdir -p _Archive/Snapshots
+# Per approved closure/upgrade, fire cp in background:
+cp "Theses/TICKER1 - Name1.md" "_Archive/Snapshots/TICKER1 - Name1 (pre-prune YYYY-MM-DD-HHMMSS).md" &
+cp "Theses/TICKER2 - Name2.md" "_Archive/Snapshots/TICKER2 - Name2 (pre-prune YYYY-MM-DD-HHMMSS).md" &
+cp "Theses/TICKER3 - Name3.md" "_Archive/Snapshots/TICKER3 - Name3 (pre-prune YYYY-MM-DD-HHMMSS).md" &
+wait
+# Check exit status of all background jobs before proceeding to frontmatter Edits
 ```
 
-Read each, add frontmatter:
+Then issue all frontmatter-addition Edits as a **single parallel tool-call batch** (one Edit per snapshot, all in the same message):
+
 ```yaml
 snapshot_of: "[[Theses/TICKER - Company Name]]"
 snapshot_date: YYYY-MM-DD
@@ -269,7 +277,7 @@ snapshot_trigger: prune
 snapshot_batch: prune-YYYY-MM-DD-HHMMSS
 ```
 
-**Sector note snapshots** — use the `(sector_note_path, match_confidence, log_message)` tuples resolved in Stage 1. Dedup, snapshot each unique sector note with matching frontmatter (`snapshot_trigger: prune`, same batch ID).
+**Sector note snapshots** — use the `(sector_note_path, match_confidence, log_message)` tuples resolved in Stage 1. Dedup, then snapshot each unique sector note in the SAME background-jobs Bash block as the thesis snapshots above (one `wait` for all snapshots across both categories). Frontmatter (`snapshot_trigger: prune`, same batch ID).
 
 `match_confidence: none` → skipped from snapshot and from Stage 4 sector update per Stage 1 resolution. `normalized`/`substring` → `log_message` collected for final report.
 
@@ -464,9 +472,9 @@ All stages complete. `/prune` **retains** the manifest (§3.2 — changed from p
 
 1. **Flip manifest status**: Edit frontmatter — `status: in-progress` → `status: completed`. Add `completed_date: YYYY-MM-DD`.
 
-2. **Verify flip landed**: re-read frontmatter. Confirm `status: completed` present, `status: in-progress` absent.
+2. **Verify flip landed** (Edit-return inspection — no re-read): inspect the frontmatter-flip Edit's return value. The Edit tool reports success iff the replacement landed; the returned snippet shows the post-edit frontmatter. Confirm `status: completed` present, `status: in-progress` absent from the Edit-return content.
    - **Success** → manifest stays in `_Archive/Snapshots/` with `status: completed`. `/clean` + `/lint #36` handle aging.
-   - **Verification failure** (§3.4 — flip Edit silently missed): do NOT attempt repair. Report:
+   - **Verification failure** (§3.4 — Edit-return indicates replacement did not produce expected frontmatter, or Edit tool returned error): do NOT attempt repair. Report:
      ```
      ❌ Manifest status flip failed: [[_Archive/Snapshots/_prune-manifest (prune-YYYY-MM-DD-HHMMSS)]] is still marked in-progress despite successful prune completion.
      

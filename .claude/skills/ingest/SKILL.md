@@ -74,7 +74,7 @@ Procedure:
    - **(b)**: proceed to Processing Pipeline. The new note's body will describe the update context in the Summary section.
    - **(c)**: exit without writing.
 
-**Why not canonical URL normalization**: tempting to normalize (strip trailing slashes, sort query params alphabetically, downcase hostname) for stricter dedup. Rejected because: (a) URL semantics are provider-specific — YouTube's `?v=` is meaningful, a blog's `?utm_source=` often isn't, and the skill can't reliably distinguish; (b) over-normalization produces false dedup matches (two truly distinct articles collapsed as "same"); (c) strict exact match with user-facing confirmation for cross-day cases is auditable and recoverable, while silent canonical dedup is neither.
+Design rationale (canonical-URL trade-off, two-check pattern): `.claude/skills/ingest/RATIONALE.md` §1–§2.
 
 ## Input Mode Detection
 
@@ -131,7 +131,18 @@ Re-read the just-written research note and check, in order:
 
 **Content-quality checks** (NEW — block on failure for URL/PDF source types; advisory for manual local files):
 
-5. **Minimum body word count**: body (excluding frontmatter, fenced code blocks, and section headers) is at least **150 words**. Below that threshold, the fetch likely captured a paywall, error page, or near-empty redirect rather than substantive content. Most legitimate articles, transcripts, and reports easily clear this floor.
+5. **Proportional body word count floor** (replaces prior flat 150-word floor — preserves the source's content load): use `source_words` computed in Step 1. Compute `body_words` = word count of research note body (exclude frontmatter, fenced code blocks, section headers). Apply the bucket-appropriate minimum:
+
+   | Source word count | Research note body minimum | Extra requirement |
+   |---|---|---|
+   | <1,500 | ≥300 words | — |
+   | 1,500–5,000 | ≥800 words | — |
+   | 5,000–15,000 | ≥1,800 words | — |
+   | >15,000 | ≥2,500 words | `## Key Segments` section present with ≥3 non-empty sub-sections |
+
+   Below the bucket minimum, extraction captured conclusions but dropped the source's analytical substrate (frameworks, mechanisms, worked examples, methodology nuance, speaker qualifiers) — the note passes structural checks but fails to preserve the source's content load, which is the failure mode the user flagged on 2026-04-24. The <1,500/300-word floor is the absolute minimum: below it the fetch likely hit a paywall / error page and the anti-bot detection (#6) typically also fires.
+
+   **Report**: when a bucket threshold fails, include in the diagnostic `source_words: [N], body_words: [M], required: [floor]` so the user sees the ratio. When >15,000 and `## Key Segments` absent, report explicitly `missing required Key Segments section for source >15,000 words`.
 
 6. **Anti-bot / paywall sentinel detection**: scan the body for any of the following case-insensitive token sequences. Match indicates the fetch hit a wall, not the article:
    - `subscribe to continue`, `subscribers only`, `become a member`, `paywall`
@@ -142,7 +153,9 @@ Re-read the just-written research note and check, in order:
    - `cookie consent required`, `accept cookies to continue`
    - body contains ONLY a single line of generic site navigation (e.g., `Home  About  Contact`) — heuristic: <50 words AND no `## ` section beyond frontmatter
 
-7. **Section structural minimum**: at least 2 of the 4 expected body sections (`## Thesis Delta`, `## Evidence`, `## Contradiction Check`, `## Source Excerpts`) must contain non-empty content. A note with only stub headers is structurally complete but analytically empty — extraction failed.
+7. **Section structural minimum**:
+   - **Always-required** (all 4 must contain non-empty content, regardless of source_type): `## Thesis Delta`, `## Summary`, `## Evidence`, `## Contradiction Check`. A note with only stub headers is structurally complete but analytically empty — extraction failed.
+   - **Not counted here** (covered elsewhere or truly conditional): `## Framework / Mental Model` (conditional on Step 1 framework detection), `## Key Segments` (conditional on source >15,000 words, enforced by #5), `## Source Excerpts` (can be empty per Step 2 spec).
 
 **Domain-specific content validators (T1.1 — NEW — BLOCKING for URL/PDF, advisory for manual local files)**:
 
@@ -152,11 +165,13 @@ These validators catch content that passes generic structural checks (#1-7) but 
    - MUST contain at least one quarterly-period token (case-insensitive): `Q1`, `Q2`, `Q3`, `Q4`, `1Q`, `2Q`, `3Q`, `4Q`, `H1`, `H2`, `FY2` followed by digits (e.g., `FY2026`), `fiscal year`, `full year`.
    - MUST contain at least two numeric currency figures: any of `$[digit]`, `[digit] million`, `[digit] billion`, `[digit]M `, `[digit]B `, `revenue of`, `EPS of`, `operating income`, `net income` each followed by or preceded by a numeric value.
    - MUST contain a ticker-shaped token (1-5 uppercase letters) OR a company-name frontmatter value matching any thesis in `Theses/`.
+   - (`## Summary` requirement covered by #7 — always-required for all source_types.)
 
 9. **`source_type: analyst-report` signature (BLOCKING)**:
    - MUST contain at least one rating token (case-insensitive): `Buy`, `Sell`, `Hold`, `Neutral`, `Overweight`, `Underweight`, `Outperform`, `Underperform`, `Market Perform`, `Strong Buy`, `Reduce`, `Accumulate`.
    - MUST contain at least one price-target token: `price target`, `PT`, `target price`, `fair value`, `12-month target`, OR a `$[digit]` figure within 200 characters of the word `target`.
    - MUST contain a ticker-shaped token or company-name reference.
+   - (`## Summary` requirement covered by #7 — always-required for all source_types.)
 
 10. **`source_type: news` signature (BLOCKING)**:
     - MUST contain a company/ticker reference (ticker-shaped token OR known-company token per thesis/sector notes).
@@ -164,8 +179,9 @@ These validators catch content that passes generic structural checks (#1-7) but 
     - Purpose: news articles without temporal grounding are usually boilerplate / about / contact pages disguised as content.
 
 11. **`source_type: deep-dive` signature (BLOCKING)**:
-    - Higher word-count floor: MUST have ≥500 words body content (overrides #5's 150-word threshold).
     - MUST have ≥3 substantive sections (non-empty `##` headings with body content below).
+    - (`## Summary` requirement covered by #7 — always-required for all source_types.)
+    - Word-count floor handled by #5 (proportional) — no separate override needed.
     - Purpose: deep-dives are substantive synthesis; structural shallowness signals extraction failure or wrong-article.
 
 12. **Numerical integrity probe (BLOCKING — all source types)**: detect OCR-style corruption that passes word-count:
@@ -177,6 +193,12 @@ These validators catch content that passes generic structural checks (#1-7) but 
 13. **Title-URL consistency (BLOCKING for Mode A URL ingest only)**: compare the research note's first `# Heading` (or frontmatter `title:` if present) against the URL's path/slug segments. Extract alphabetic words ≥4 chars from both; require at least 50% overlap (Jaccard similarity on token sets). If the title says "NVIDIA Q3 2026 Earnings" but the URL path is `/subscribe/signup`, the title-URL mismatch signals a redirect to a wrong page. Below 50% overlap, fail.
     - Mode B (local file) skips #13 — local files don't have a canonical URL-to-title expectation.
     - If the URL uses an opaque slug (UUID, short ID) with <3 alphabetic tokens ≥4 chars, skip #13 gracefully and log advisory (not enough signal to validate).
+
+14. **`source_type: video-transcript` signature (BLOCKING)**:
+    - MUST contain speaker attribution ≥3 instances — quoted speech (`"..."` blocks), speaker-labeled lines (`Speaker: ...`), `said`/`says`/`according to` patterns, or `> ...` blockquote lines representing verbatim speech.
+    - (`## Summary` requirement covered by #7 — always-required for all source_types.)
+    - Word-count floor handled by #5 (proportional); the `## Key Segments` requirement at >15,000 source words flows from #5.
+    - Purpose: transcripts represent long-form verbal content. A note without speaker attribution signals extraction that dropped the discourse structure.
 
 **Failure handling**:
 - **Structural failure (1-4)**: do NOT move the source file. Report `⚠️ Partial-write detected for [[Research/filename]] — source [[_Inbox/filename]] left in place for reprocessing. Failure: [specific check that failed]. Delete the partial note and re-run /ingest, or complete the note manually.`
@@ -200,7 +222,7 @@ These validators catch content that passes generic structural checks (#1-7) but 
 
 - **Content-quality / domain validator failure** for local manual files (Mode B for `.md`/`.csv`/`.txt` sources, where the user explicitly created the source): write the research note as-is, but flag advisory for EACH failing check: `ℹ️ Content-quality threshold not met (#[N]: [details]). Note created because source is a manually-curated local file, but body may be sparse or domain-mismatched — review before /sync propagates.` Do not block.
 
-- **source_type: web-clip or data**: skip checks #8-11 (no domain vocabulary expected — clips and raw data can be anything). Still run #12 (numerical integrity) and #13 (for Mode A) — these catch universal corruption.
+- **source_type: web-clip or data**: skip domain-signature checks #8-11 and #14 (no domain vocabulary expected — clips and raw data can be anything). Still run #5, #6, #7, #12, and #13 (for Mode A) — these apply universally. `## Summary` is required for these source_types just like every other (per #7 always-required); for very short sources, a 1–2 sentence Summary is sufficient.
 
 This verify-before-commit pattern keeps the source file in `_Inbox/` as the authoritative "needs processing" marker until a complete research note exists. Content-quality checks specifically protect against silent semantic corruption — the most damaging failure mode because corrupt research propagates through `/sync` into thesis Log entries before any human reviews it.
 
@@ -212,8 +234,10 @@ For each piece of content (regardless of input mode):
 
 ### Step 1: Analyse Content
 - Identify the primary topic, ticker(s), and sector
-- Determine the appropriate source_type: earnings | analyst-report | news | deep-dive | data | web-clip
+- Determine the appropriate source_type: earnings | analyst-report | news | deep-dive | data | web-clip | video-transcript
 - Check if a thesis already exists for this ticker — this determines the note's framing
+- **Source word count** (required for Step 2 budgeting + Post-write #5): compute `source_words` = word count of the extracted source content (post-defuddle for URLs, post-read for files; exclude frontmatter, fenced code blocks, embedded image markdown, navigation chrome). Retain this number — it determines the research note body length floor and whether `## Key Segments` is mandatory.
+- **Framework detection** (triggers the optional `## Framework / Mental Model` section in Step 2): determine whether the source introduces a named analytical framework, scoring scheme, sliding scale, classification typology, or novel mental model. Signals: explicit labeling ("the X framework", "a way to think about Y", "sliding scale", "scoring methodology"), enumeration of named components (metrics 1–N, categories A–D, tiers, axes), or a methodology applied to a class of things. If yes, Step 2 includes the `## Framework / Mental Model` section.
 - **Duplicate check**: Grep Research/ frontmatter for matching `source:` URL. If an existing note has the same source URL, skip this item and report: `⚠️ Duplicate source — already ingested as [[Research/existing-note]]`
 
 ### Step 2: Create Research Note
@@ -226,16 +250,19 @@ tags: [research, SECTOR, TICKER(s)]
 sector: [primary sector]
 ticker: [primary ticker if applicable]
 source: [URL, file path, or description]
-source_type: [earnings|analyst-report|news|deep-dive|data|web-clip]
+source_type: [earnings|analyst-report|news|deep-dive|data|web-clip|video-transcript]
 ---
 ```
 
-**Follow CLAUDE.md Writing Standards strictly.** Structure the body as:
+**Follow CLAUDE.md Writing Standards strictly.** Structure the body in this section order:
 
 - **Thesis Delta** (1-2 sentences: what this changes for the investment case. If no thesis exists, state the key question this raises. Do NOT re-describe the business — the thesis note already does that.)
+- **Summary** (prose capturing the source's actual argument, the mechanism it proposes, and the scope of its claims. NOT a business description — the thesis note owns that. **REQUIRED for all source_types.** Length proportional to source: 1–2 paragraphs for short-form sources (news, data, brief web-clip, <800 source words); 2–4 paragraphs for long-form (deep-dive, video-transcript, analyst-report, earnings). Rationale: every source has an argument/frame/context that data-point tables cannot preserve; this section gives that substrate a legitimate home before Evidence's data-point compression.)
+- **Framework / Mental Model** (**CONDITIONAL** — include ONLY when Step 1's framework detection fired. Capture three things: (1) framework name, (2) its components — axes, metrics, categories, tiers — with each component's definition, (3) methodology: how the framework is applied to instances. Distinct from Evidence — Evidence captures the *output* of applying the framework to specific cases; this section captures the framework itself so readers can re-apply it to new cases. Omit entirely when the source reports events/data without advancing a framework.)
 - **Evidence** (data points only. Tables preferred. No narrative. Lead with numbers, not context.)
+- **Key Segments** (**REQUIRED** only when `source_words` >15,000. Structure: 3–8 sub-sections mirroring the source's major H2 headings where present, or major topics for unstructured transcripts. Each sub-section 2–5 sentences capturing that segment's specific contribution — the speaker's/author's claim, mechanism, or qualifier unique to that segment. Omit entirely when source ≤15,000 words.)
 - **Contradiction Check** (does this support or challenge existing conviction? Name the specific assumption affected.)
-- **Source Excerpts** (only quotes containing specific numbers or claims not captured above. Delete section if empty.)
+- **Source Excerpts** (quotes containing specific numbers, framework components, or claims not captured above. Delete section if empty.)
 
 ### Step 3: Connect to Vault
 - **Search /Theses** for matching tickers or topics
@@ -280,7 +307,7 @@ For each processed item, report:
 If batch mode, end with:
 - Total items processed: X
 - **Content-quality blocks** (URL/PDF only): Y items rejected before write — see per-item details above. Re-run `/ingest` after resolving the access issue.
-- **Source-type advisories**: Z items had signature mismatch (#8) — content may be off-topic for the declared `source_type`. Review before `/sync`.
+- **Source-type advisories**: Z items had signature mismatch (#8/#9/#10/#11/#14 depending on source_type) — content may be off-topic for the declared `source_type`. Review before `/sync`.
 - **Run `/sync` to propagate these insights to affected theses, sector notes, and macro notes.** Run `/graph last` afterward to register any new research notes in the dependency map — `/sync` does NOT write to `_graph.md` directly (owned exclusively by `/graph`).
 
 ### Step 5: Release lock
