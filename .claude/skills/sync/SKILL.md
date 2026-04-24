@@ -295,7 +295,7 @@ done
 
 For each changed thesis:
 - **Research-driven** (default): at least one research note in the changed-file set resolves (via Step 1.2) to this thesis, OR recent Log entries reference changed research notes. Proceed through Step 3/4/5 normally.
-- **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND most-recent Log entry matches a skill-origin prefix from `_shared/log-prefixes.md` (registry §5 `Conviction reaffirmed`, §6 `Status change: conviction`, §7 `Status change:`, §8 `CLOSED`, §9 `Prune upgrade`, §11 `Initial thesis created`, §12 `ROLLBACK to snapshot`, §13 `Cross-thesis closure:` / `Cross-thesis closures:`, §14 `Scenario REVERSED`, §15 `Renamed file:`, §16 `Comparison `) AND no research note in the changed-file set resolves to this thesis.
+- **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND most-recent Log entry matches a skill-origin prefix from `_shared/log-prefixes.md` (registry §5 `Conviction reaffirmed`, §6 `Status change: conviction`, §7 `Status change:`, §8 `CLOSED`, §9 `Prune upgrade`, §11 `Initial thesis created`, §12 `ROLLBACK to snapshot`, §13 `Cross-thesis closure:` / `Cross-thesis closures:`, §14 `Scenario REVERSED`, §15 `Renamed file:`, §16 `Comparison `, §17 `Callout sweep:`) AND no research note in the changed-file set resolves to this thesis.
 - **Mixed**: research-note source AND skill-origin Log prefix → treat as **research-driven**.
 
 ### Output
@@ -478,6 +478,7 @@ Batch ID reused from Step 2.9. Proceed with edits to the ORIGINAL.
   - `"Cross-thesis closure:"` / `"Cross-thesis closures:"` (registry §13)
   - `"Scenario REVERSED"` (registry §14)
   - `"Renamed file:"` (registry §15)
+  - `"Callout sweep:"` (registry §17)
   
   **Conditionally exclude** entries beginning with `"Deepened"` or `"↳ CORRECTION: Deepened"` within 14 calendar days of a `"Stress test"` entry (registry §3-§4).
   

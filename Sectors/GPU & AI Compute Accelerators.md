@@ -10,6 +10,10 @@ status: active
 - [[Theses/NVDA - Nvidia]] — Nvidia (AI compute monopoly / CUDA + Blackwell + Vera Rubin / networking + simulation moat / sovereign AI floor; FY2026 $215.9B revenue +65%; 71.1% GM; share moderating 87%→75%; conviction: medium)
 - [[Theses/AMD - Advanced Micro Devices]] — AMD (sole merchant full-stack Nvidia alternative — CPU+GPU+DPU+FPGA / OpenAI 6GW + Meta 6GW hyperscaler-imposed diversification / MI355X 97–111% of B200 on MLPerf 6.0 / 38–41x fwd P/E embeds flawless execution; conviction: medium)
 
+## Recent Research (Apr 2026)
+- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Vera 5/5 reasoning, Venice Dense 5/5 action on 9-metric scoring; Intel Diamond Rapids 3/3 (SMT removed); agentic CPU TAM orthogonal to GPU — extends sector scope from accelerators-only to accelerator + host-CPU
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — GPU useful life 7-8yr (installed base durability); Anthropic 72% gross margin floor; CPUs "completely sold out" via RL environments + AI-generated code
+
 ## Key industry questions
 - Does Nvidia's ~75% merchant-GPU share drift durably toward 60% by 2028 as hyperscaler ASICs (TPU v7 Ironwood, Trainium 3, Maia, MTIA, OpenAI XPU) scale from incremental inference capacity into primary training workloads — or does share stabilize because the CUDA + PhysX/Warp/Omniverse + NVLink + Spectrum-X full-stack bundles expand TAM faster than ASICs capture share?
 - Is ROCm catch-up asymptotic (consensus view: perpetually 12–24 months behind CUDA) or step-function (MLPerf Inference 6.0 showed MI355X at 97–119% of B200 on Llama 2 70B and 111–115% on GPT-OSS-120B, framework-native ROCm in PyTorch/vLLM/SGLang)? A step-function interpretation implies merchant-GPU duopolization rather than Nvidia monopoly.
@@ -197,3 +201,7 @@ The merchant GPU / accelerator product stack spans four tiers — training GPUs,
 
 ### 2026-04-23 (/sync — NVDA CUDA moat + Omniverse propagation)
 - [[Research/2026-04-23 - NVDA - CUDA Moat and Omniverse Upside - deep-dive]]: Propagated to Competitive Dynamics Moat #1 (6M CUDA developers from GTC 2026 up from 1.8M in 2020, 400+ CUDA-X libraries, 3,000+ accelerated apps, general-purpose-programmability architectural dimension + Pallas/NKI per-workload-tax framing). Refined Non-consensus Insight #1 with architectural-ceiling qualification on ASIC displacement (stable frozen-architecture inference only; long tail stays on CUDA). Extended Non-consensus Insight #5 with OpenUSD + Omniverse industrial-software-TAM layer-cake framing (Core Spec 1.0 Dec 2025 Linux Foundation, GTC 2026 Cadence/Dassault/PTC/Siemens/Synopsys coalition, Siemens Digital Twin Composer launch, DSX/Mega/Physical AI Data Factory Blueprints). Snapshot: [[_Archive/Snapshots/GPU & AI Compute Accelerators (pre-sync 2026-04-23-213033)]] — sector conviction framework unchanged; NVDA bull-case architecture strengthened but 🔴 share-erosion / Taiwan-tail / Jevons assumptions unaffected.
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: Agentic AI extends sector scope — host-CPU (Vera 5/5 reasoning, Venice Dense 5/5 action) becomes co-equal bottleneck to accelerators. Intel Diamond Rapids 3/3 (SMT removed) strengthens AMD EPYC Bull Case. Added to Recent Research at top; tangential Custom Silicon sector also tagged.
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: GPU useful life extending 7-8yr challenges "GPU depreciation" Bear Case framing; Anthropic 72% gross margin floor validates inference pricing power; CPUs "completely sold out" extends sector TAM. Conviction framework unchanged.

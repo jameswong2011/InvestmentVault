@@ -27,7 +27,19 @@ Both checks must pass before proceeding to Phase 1.
 
 ### 0.3: Section existence probe (only if specific section was specified)
 
-If `$ARGUMENTS` includes a section name (not auto-detect mode), run `.claude/skills/_shared/preflight.md` Procedure 4 (section existence probe) against the thesis file with the target `## [Section Name]` heading.
+If `$ARGUMENTS` includes a section name (not auto-detect mode), run the refused-section check first, then `.claude/skills/_shared/preflight.md` Procedure 4 (section existence probe) against the thesis file with the target `## [Section Name]` heading.
+
+#### 0.3a: Refused-section check
+
+Certain sections are auto-managed archives or skill-owned artifacts — `/deepen` must never operate on them. If the user-supplied section name (case-insensitive, whitespace-normalized) matches any entry below, hard-abort with the explanation shown:
+
+| Section | Owner | Abort message |
+|---|---|---|
+| `Legacy Callouts` | `/archive-callouts` | `❌ ## Legacy Callouts is an automated archive of swept addressed callouts, owned exclusively by /archive-callouts. It contains historical audit trail, not deepen-eligible analytical content. To surface insight from legacy callouts, deepen the analytical section they originally belonged to (e.g., Bull Case, Industry Context). To change the archive itself, do NOT use /deepen — either /rollback the last /archive-callouts sweep, or manually edit the plain-bullet entries and accept that /archive-callouts may re-sweep them on the next run.` |
+
+Do NOT proceed to Procedure 4 if the refused-section check fires. Report the abort reason to the user and exit.
+
+#### 0.3b: Section existence probe (standard)
 
 If the section does NOT exist in the thesis:
 
@@ -56,7 +68,7 @@ Aborted — no changes made to the thesis.
 
 **Do NOT silently create the section.** Structural changes to thesis templates must be explicit user action. The thesis's current section inventory is the user's (or a prior skill's) intentional state; `/deepen` deepens existing sections, never authors new ones from nothing.
 
-If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 evaluates only sections that actually exist and scores their weakness.
+If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 evaluates only sections that actually exist and scores their weakness. The Phase 2 scoring loop must exclude `## Legacy Callouts` (owned by `/archive-callouts`) and `## Log` (Tier 2 append-only) from weakness candidates regardless of their contents.
 
 ## Phase 1: Load Context
 

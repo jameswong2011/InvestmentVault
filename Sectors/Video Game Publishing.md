@@ -372,6 +372,7 @@ Four non-consensus insights from this sector framework:
 - [[Research/2026-02-26 - APP - AppLovin AI Ad Platform Deep Dive]] — AppLovin FY2025 $5.5B revenue, 84% EBITDA margin, >60% mobile-gaming ad mediation share — primary discovery layer for Zynga / Scopely / HoYoverse mobile user acquisition
 - [[Research/2026-03-19 - AppLovin AXON Engine Differentiation]] — AXON engine ML architecture; mobile gaming ad-auction dynamics relevant to Zynga D2C mobile strategy
 - [[Research/2026-04-15 - GAW - Investment Analysis]] — Games Workshop £617.5M FY2024/25 revenue, 42.3% op margin, 94% licensing margin on Space Marine 2 and Amazon Warhammer 40K — cross-licensing AAA-to-IP reference
+- [[Research/2026-04-24 - GTA 6 Creator Economy and FiveM Monetization - web-clip]] — Cfx Marketplace live Jan 12, 2026 ($389.99 bundles); Tebex creators averaging €5K+/mo within 90 days; Claude-Lua removes scripting barrier; direct 2026 transaction evidence for UGC creator economy thesis
 - [[_Archive/Sectors/Consumer & Digital]] — Historical parent sector note (archived Apr 2026 via subsector split)
 
 ## Log
@@ -380,3 +381,6 @@ Four non-consensus insights from this sector framework:
 - Initial sector note populated via web-primary research: industry history (six eras 1972–2026), competitive tiers (platform holders / AAA publishers / mid-tier / mobile / UGC), product-level analysis (evergreen franchises + premium releases + mobile + engine stack), M&A waves (1-5, culminating in EA $55B take-private + Ubisoft Vantage carve-out + Savvy-PIF mobile rollup), macro shifts (private capital absorption, AI dev cost, platform fees, China regulation, Iran geopolitics, UGC cannibalisation), and investor heuristics (franchise-bifurcation, take-private template, UGC category threat, pricing power normalisation at $80).
 - Status flipped from `draft` → `active` per all eight analytical sections filled.
 - Related Research populated with TTWO thesis, three adjacent sectors (Hobby & Tabletop, Mobile Advertising Tech, Music Streaming, Social Platforms), Iran War macro, and three research notes (APP deep-dive, APP AXON engine, GAW investment analysis) that cross-reference into gaming ecosystem dynamics.
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - GTA 6 Creator Economy and FiveM Monetization - web-clip]]: Cfx Marketplace live Jan 2026 + Tebex €5K/mo creator earnings + Claude-Lua creator-TAM expansion. Validates UGC category threat / opportunity already in sector framework (§Macro shifts UGC cannibalisation) but with 2026 transaction evidence. Reinforces platform-transition lens for TTWO specifically.

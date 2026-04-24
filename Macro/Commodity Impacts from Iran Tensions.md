@@ -87,8 +87,12 @@ The **fertilizer nexus** is the critical transmission mechanism from energy disr
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Gemini source: detailed commodity sensitivity ranking and trade recommendations
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience sustains commodity-disruption regime duration: Iran's proxy apparatus survived Assad fall via maritime smuggling + tech transfer, implying Scenario A commodity impact window persists beyond Hormuz ceasefire
 - [[Research/2026-03-21 - Betting on Inflation Trades]] — Inflation hedging menu (TIPS ETFs SCHP/STIP/UTIP/ILB, Treasury FRNs USFR/QPON, commodity ETFs DBC/BCOM/XLE/FUEL, I bonds) — instrument-level mapping of macro-inflation positioning driven by commodity cascade analysis in this note
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Fifth commodity transmission channel: Japanese naphtha → propylene → PO → PGME/PGMEA solvent → PR/BARC/SOH/HBM bonding adhesive. 40% of Japan's naphtha from Middle East; 6 of 12 NCCs cut production; naphtha spot price +92% ($600 → $1,190/ton). Adds semiconductor photo-materials as a transmission vector alongside energy/fertilizer/LNG/metals; PCN requalification cycle ~1yr creates fab-level timing uncertainty.
 
 ## Log
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Adds semiconductor photo materials as a fifth commodity transmission channel (alongside energy / fertilizer / LNG / base metals). Japanese PR/BARC/HBM-bonding-adhesive chain via PGME/PGMEA solvent disruption. Links to [[Theses/000660 - SK Hynix]] Risk #9, [[Theses/285A - Kioxia]] Risk #8, [[Theses/SNDK - SanDisk]] Risk #8 — creates semiconductor-equity commodity exposure not previously captured in macro's energy/agriculture focus.
 
 ### 2026-04-23 (/sync all — Log section created + Gemini canvas + RELIANCE anchoring)
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]]: Gemini commodity sensitivity ranking; Brent +50% to $115, $31-47/bbl war risk premium; urea +50% to $700/MT, 30% of global exportable fertilizer offline; palm oil / sugar biofuel-nexus transmission; live cattle feed-cost pressure on 75-yr herd low — sources the cross-commodity sensitivity architecture embedded in the scenario body.

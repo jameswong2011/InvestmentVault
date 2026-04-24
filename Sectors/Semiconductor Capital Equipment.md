@@ -347,6 +347,8 @@ April 2026 TrendForce reported JEDEC plans to relax HBM package height from the 
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan concentration stress scenario; global EUV supply implications
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM4 vendor yields and capacity diversion
 - [[Research/2025-11-25 - LITE - Silicon Photonics Supply Chain]] — SiPh supply chain depth for LITE
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — ASML "completely sold out" + TSMC 2028 capex ~$100B implied + tail-whip prepayments; validates complexity-driven supercycle Bull Case across all SEMICAP names
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — PCN requalification cycle ~1yr creates near-term fab capex timing uncertainty as customers re-evaluate PR/BARC sources
 
 ## Watchlist
 
@@ -372,6 +374,10 @@ April 2026 TrendForce reported JEDEC plans to relax HBM package height from the 
 
 ### 2026-04-22 (full sector rebuild)
 - Rebuilt to Sector Template structure (10 sections). Web-primary refresh: WFE $135B CY26 (SEMI, +9.0%) / $156B CY27; ASML Q1 2026 €8.8B rev + €38.8B backlog, FY guide raised to €36-40B; AMAT Q2 FY26 guide $7.65B, ICAPS flat; LRCX March Q guide $5.7B, advanced packaging >40% CY26; KLAC CY26 adv. pkg mid-high teens; ASMI Q1 2026 €863M + 33.1% record OM; TEL cryogenic etch volume 2026 for 400L NAND; BESI Q1 2026 April 23, SK Hynix mass-production Kinex order March 2026; China domestic equipment 25% → 35% in 2025 (NAURA $6.74-7.49B; AMEC #13 globally); Axcelis-Veeco $4.4B merger close mid-2026; Intel foundry equipment orders +50% YoY early 2026; Section 232 25% tariff (Jan 15, 2026) on narrow advanced logic. Status unchanged (active).
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: ASML sold out + TSMC 2028 capex ~$100B + tail-whip prepayments across upstream — directly validates complexity-driven supercycle thesis for KLA/AMAT/LRCX/ASMI/TEL/BESI. Reinforces sector's core framing that equipment revenue per wafer start is structurally rising.
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: PCN cycle ~1yr for alternate PR/BARC solvents creates customer-side fab-evaluation uncertainty; WFE tool orders tied to fab ramps could slip if Samsung/Hynix delay HBM4 12-Hi ramp on material qualification. Monitor Q2 2026 BESI/AMAT/LRCX earnings for HBM-specific tool-order adjustments.
 
 ### 2026-04-22 (web-primary rebuild — JEDEC HBM4 reset + Q1 2026 earnings refresh)
 - Major delta: **JEDEC HBM4 package height relaxed to ~900µm** (TrendForce April 2026). HBM4 16-Hi stays on microbump/MR-MUF; mandatory HBM hybrid-bonding deferred to HBM5 (2028-2029). BESI's HBM-timing story narrows; logic-side (SK Hynix Kinex March 2026, 150+ installed at TSMC SoIC / Intel Foveros) is the durable demand leg and is unchanged. Added to Macro shifts and Investor heuristics.

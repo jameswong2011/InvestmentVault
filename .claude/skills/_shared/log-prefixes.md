@@ -1,7 +1,7 @@
 ---
 type: shared-contract
 purpose: Single source of truth for Log-entry prefixes that carry cross-skill semantic weight.
-last_reviewed: 2026-04-21
+last_reviewed: 2026-04-24
 ---
 
 <!--
@@ -400,6 +400,30 @@ example: |
   ### 2026-04-21
   - Comparison [[Research/2026-04-21 - BESI vs AMAT - Competitive Comparison]]: BESI's hybrid-bonding moat widening vs AMAT's bevel-etch position — conviction strengthened, design-win momentum confirmed
 breakage_if_changed: "/sync Step 2.5 stops classifying post-/compare theses as skill-origin. Combined with /compare's sector Related Research + sector Log idempotency markers (Phase 5.5), losing this prefix causes /sync Step 4 to re-propagate the comparison research note to the same sector sections /compare just edited — silently overwriting /compare's nuanced competitive analysis with /sync's generic synthesis. The trailing space is significant — it distinguishes the prefix from prose mentions of 'comparison' and mirrors the 'Scenario ' (#10) pattern."
+```
+
+### 17. Callout sweep
+
+```yaml
+prefix: "Callout sweep:"
+case_sensitive: true
+match_anchor: line-prefix
+producer:
+  skill: /archive-callouts
+  step: Phase 4 (write phase — one Log entry per thesis swept per run)
+  emits_when: /archive-callouts moves one or more addressed callouts into ## Legacy Callouts for a target note
+consumers:
+  - skill: /sync
+    step: Step 2.5 skill-origin classification
+    role: skill-origin classifier (sweep is a pure body-restructuring operation — addressed callouts relocate from their source sections into ## Legacy Callouts with no new analytical content. Step 4.-1 / 5.-1 skip sector and macro re-propagation to prevent /sync from rewriting downstream notes with formatting noise that carries no research delta.)
+  - skill: /sync
+    step: Step 3e drift detection
+    role: drift-exclusion (sweep carries no conviction sentiment — counting it in the last-5-entry drift window would pollute signal on theses whose only recent activity is hygiene sweeps, producing false ⚠️ Conviction drift warnings on healthy theses)
+  - skill: audit-only (human-readable record of callout archival batches — Log entry format captures sweep date, section breakdown, and safety snapshot path)
+example: |
+  ### 2026-04-24
+  - Callout sweep: 14 addressed callouts ≥180d swept to ## Legacy Callouts. Sections touched: Bull Case (6), Catalysts (4), Industry Context (3), Risks (1). Safety snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-callout-sweep 2026-04-24-143055)]]
+breakage_if_changed: "/sync Step 2.5 stops classifying post-sweep theses as skill-origin → the first default /sync after every /archive-callouts run rewrites sector and macro notes citing no actual research delta, duplicating text already captured in the target thesis. /sync Step 3e drift detection stops excluding sweep entries → the drift window fills with hygiene-sweep bookkeeping on actively-maintained theses, biasing drift signal toward false positives on heavy callout users."
 ```
 
 ---

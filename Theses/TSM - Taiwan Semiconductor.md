@@ -298,6 +298,8 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact.md]] — hybrid bonding yields, SoIC-X timing
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive.md]] — NVDA roadmap dependency on TSMC
 - [[Research/2026-04-19 - TSM - Stress Test]] — adversarial Taiwan invasion/blockade scenario: 8/9 bull assumptions rated 🔴
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — SemiAnalysis projects TSMC 2028 capex ~$100B (vs $57.4B 2026 baseline); "good people" single-digit pricing discipline as hidden option value; ASML sold out; validates Bull Case monopoly-rents thesis
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — leading-edge PR supply chain indirect exposure (Shin-Etsu/TOK feed TSMC); Korean/Taiwanese localization farther along than Japanese per article — TSM likely less exposed than Samsung/Hynix but not zero
 
 ## Log
 
@@ -311,3 +313,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 ### 2026-04-22
 - Sector re-scoped: Semiconductors → Semiconductor Foundries (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: replaced stale `[[Sectors/Semiconductors.md]]` in Related Research with `[[Sectors/Semiconductor Foundries.md]]` per Semiconductor Foundries sector-fill back-propagation. No body-content changes.
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: SemiAnalysis frames TSMC 2028 capex trajectory ~$100B (vs $57.4B 2026 baseline) + "good people" single-digit pricing discipline (vs memory's triple-digit) as signal of both durability AND hidden pricing-rent option — strengthens Bull Case monopoly-rents pillar #1 on pricing power. Conviction unchanged at low (Taiwan tail still dominant).
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Leading-edge PR/BARC supply chain (Shin-Etsu, TOK are primary EUV PR sources for TSMC too); article notes Taiwan/Korean localization farther along than Japanese so TSM less exposed than Samsung/Hynix — but non-zero. Adds a fifth unmodeled supply-chain vector (after TSMC concentration, AAPL+NVDA concentration, Arizona margin drag, Intel 18A threat). Conviction unchanged.

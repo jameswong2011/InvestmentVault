@@ -6,7 +6,9 @@ effort: max
 allowed-tools: Read Grep Glob Edit Write Bash(date * cp * mkdir * mv * find * ls * wc * diff *)
 ---
 
-Restore a vault note from a previous snapshot. Undo mechanism for `/sync`, `/deepen`, `/status`, `/compare`, and any other skill that creates pre-edit snapshots.
+Restore a vault note from a previous snapshot. Undo mechanism for `/sync`, `/deepen`, `/status`, `/compare`, `/archive-callouts`, and any other skill that creates pre-edit snapshots.
+
+**Recognized snapshot triggers** (frontmatter `snapshot_trigger:` field): `sync`, `deepen`, `status`, `compare`, `stress-test`, `prune`, `rename`, `catalyst`, `callout-sweep`, `thesis`, `rollback` (safety snapshot), `rollback-cleanup` (archived-file move). Unknown triggers fall through to the generic 2.5a cascade path (Tier A snapshot-based restore with no manifest).
 
 Design rationale lives in `.claude/skills/rollback/RATIONALE.md`. SKILL.md references sections via `§N.M`.
 
@@ -191,9 +193,11 @@ Options:
 
 ### 2.5c: Non-manifest triggers (generic passthrough to 2.5a) — D1 canonical
 
-Triggers without manifests (`catalyst`, `rename`, `rollback` pre-rollback safety net) snapshot every modified file (Tier A only). Proceed with 2.5a behavior unchanged.
+Triggers without manifests (`catalyst`, `rename`, `callout-sweep`, `rollback` pre-rollback safety net) snapshot every modified file (Tier A only). Proceed with 2.5a behavior unchanged.
 
-> **D1 canonical meaning**: 2.5c is the "no-manifest" case — a generic passthrough to 2.5a's batch prefix lookup. `/deepen` previously sat in this bucket; as of M3 (2026-04-21) `/deepen` has its own manifest (`_deepen-manifest`) and its own cascade branch at 2.5g. `/prune` has `_prune-manifest` but its cascade uses 2.5a generic batch lookup — intentional, because per-thesis `(pre-prune)` snapshots are homogeneous and the manifest's role is retention-window metadata, not cascade routing.
+> **D1 canonical meaning**: 2.5c is the "no-manifest" case — a generic passthrough to 2.5a's batch prefix lookup. `/deepen` previously sat in this bucket; as of M3 (2026-04-21) `/deepen` has its own manifest (`_deepen-manifest`) and its own cascade branch at 2.5g. `/prune` has `_prune-manifest` but its cascade uses 2.5a generic batch lookup — intentional, because per-thesis `(pre-prune)` snapshots are homogeneous and the manifest's role is retention-window metadata, not cascade routing. `/archive-callouts` sits in 2.5c — each swept thesis gets its own `(pre-callout-sweep)` snapshot, no manifest, and the cascade batch uses the shared `callout-sweep-YYYY-MM-DD-HHMMSS` prefix to group multi-thesis runs.
+
+**Callout-sweep rollback semantics**: restoring a `pre-callout-sweep` snapshot undoes the body restructuring — original callout blocks return to their source sections, `## Legacy Callouts` reverts to pre-sweep state, and the `Callout sweep:` Log entry is removed by the snapshot restore. Safety snapshot at Step 4 still captures the current state so re-sweep is always possible after the rollback. No side effects on sector or macro notes — sweep is thesis-local by design.
 
 ### 2.5d: Stress-test manifest cascade (T3.1)
 

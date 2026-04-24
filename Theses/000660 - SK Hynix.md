@@ -167,6 +167,8 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 
 8. **TurboQuant-style algorithmic-compression event re-rates memory demand.** March 24, 2026 TurboQuant shock caused SK Hynix -6.23% in one session. A follow-on breakthrough (e.g., 2-bit weight quantization at <1% accuracy loss) could trigger a 15-25% single-day drop even if Jevons absorbs the demand impact over 6-12 months. See [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]].
 
+9. **Japanese photo-materials supply chain disruption (new, 2026-04-22).** Iran War Hormuz blockade cut 40%+ of Japan naphtha → propylene → PGME/PGMEA solvent production at Daicel/Toagosei → PR/BARC/SOH/HBM temporary-bonding adhesive supply from Shin-Etsu/TOK/JSR/Fujifilm/Nissan Chemical into SK Hynix wafer fabs. HBM temporary-bonding adhesives are specifically named in the disruption — directly threatens HBM3E/HBM4 ramp. PCN requalification for alternative solvents: ~1 year standard, longer for leading-edge. Korean alternatives (Chemtronics, Jaewon Industrial) exist but need qualification. Not yet priced in. See [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]].
+
 ## Conviction Triggers
 
 → **HIGH if**: Nvidia Q3 2026 Rubin HBM allocation discloses SK Hynix ≥60% share AND HBM4E samples qualify sole-source AND BESI Kinex hybrid-bonding qualification passes at 16-Hi by Q4 2026. Combined signal confirms MR-MUF lead preserved through HBM4E and HBM5 insurance in place.
@@ -190,9 +192,15 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Theses/BESI - BE Semiconductor Industries]] — Hybrid-bonding tool supplier; March 2026 SK Hynix Kinex order
 - [[Theses/NVDA - Nvidia]] — Primary HBM customer; Rubin allocation is central catalyst
 - [[Theses/TSM - Taiwan Semiconductor]] — CoWoS integration bottleneck upstream of HBM end-delivery
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War naphtha disruption threatens Japanese PR/BARC/HBM bonding adhesive supply to SK Hynix; direct 2026 HBM ramp risk; PCN cycle ~1 year
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — DRAM prices projected "double or triple" from current; validates HBM supercycle extension thesis through 2027+
 
 ## Log
 
 ### 2026-04-23
 - Initial thesis created. Conviction: medium — HBM supercycle extension through 2028 and HBF/Solidigm asymmetric options support long bias; Samsung HBM4 Rubin qualification and Gemini Incumbent Erosion path (62%→45% by 2030) cap conviction at medium pending Q3 2026 Rubin allocation disclosure. Q1 2026 earnings (same-day): $37.9B revenue, 72% operating margin, 57% HBM share. Kill trigger: Samsung HBM4 captures >35% Rubin allocation H2 2026.
 - Wikilink cleanup: Related Research — `[[Research/2026-04-16 - NAND Sector Key Questions Deep Dive]]` → `[[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]` (actual filename includes ` - deep-dive` suffix); `[[Theses/TSM - TSMC]]` → `[[Theses/TSM - Taiwan Semiconductor]]` (actual thesis filename uses full brand).
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Added new Risk #8 — Japanese PR/BARC/HBM-adhesive supply chain exposure via Iran War naphtha disruption; adds unmodeled 2026 HBM supply risk distinct from Taiwan tail. Conviction directionally weaker on 2026 HBM revenue ($30B est); unchanged on 2027-2028 longer-arc thesis.
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: DRAM prices "double or triple" from current + true incremental supply not until 2028 — directly strengthens HBM supercycle extension Bull Case pillar #2. Conviction strengthened on pricing durability; unchanged on 5-year thesis.

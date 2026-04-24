@@ -37,7 +37,7 @@ Parse `$ARGUMENTS`:
 - **No arguments / empty**: Full vault audit — run all checks.
 
 **Scoped checks** (run for `/lint TICKER`):
-#2, #4, #5, #6, #7, #8, #12, #13, #14, #15, #19, #21, #28 (for this thesis + sector), #30 (for this thesis), **#35 always** (§1.1 — catches `_hot.md` schema drift within one weekly check), **#37 if `.rename_incomplete.TICKER` exists** (§1.3), **#42 always** (§1.2 — truncation markers).
+#2, #4, #5, #6, #7, #8, #12, #13, #14, #15, #19, #21, #28 (for this thesis + sector), #30 (for this thesis), **#35 always** (§1.1 — catches `_hot.md` schema drift within one weekly check), **#37 if `.rename_incomplete.TICKER` exists** (§1.3), **#42 always** (§1.2 — truncation markers), **#50, #51, #52, #53 (for this thesis)**.
 
 **Vault-wide only** (skipped in scoped mode — §1.4):
 #1, #3, #9, #10, #11, #16, #17, #18, #20, #22, #23, #24, #25, #26, #27, #29, #32, #33, #34, #36, #38, #39, #41, #43, #44, #45, #46, #47, #48, #49.
@@ -101,6 +101,7 @@ Together, Steps A + B + C land in ~3 tool calls total and cover the read-heavy c
 
 3. **Broken wikilinks** — `[[links]]` pointing to non-existent notes.
    - Method: extract all `[[...]]`, verify each target file exists.
+   - **Intentional-unresolved allowlist**: `[[pinned]]` and `[[preserve]]` are user-authored callout opt-out markers — their unresolved rendering (lighter style in reading view) is the feature. Exclude from broken-link candidates BEFORE file-existence probe. Same allowlist consumed by `/graph` Step I.4 step 2 and Full Rebuild Step 2 step 2.
 
 4. **Missing frontmatter** — Notes without required fields:
    - All notes: `date`, `tags`
@@ -157,6 +158,7 @@ Together, Steps A + B + C land in ~3 tool calls total and cover the read-heavy c
     - Priority flags: missing Key Non-consensus Insights, Outstanding Questions, Conviction Triggers.
     - Secondary: missing Business Model, Industry Context, Catalysts, Risks.
     - Method: check presence of each `##` heading from template.
+    - **Optional-section exemptions** (presence not required for Pass): `## Legacy Callouts` is owned by `/archive-callouts` and created on-demand at first sweep — absence is expected on pre-feature theses and on theses that have never had addressed callouts aged out. Skip this check for Legacy Callouts entirely; defer positional correctness to `/lint #53d`.
 
 15. **Verbose Log entries** — Thesis Log entries exceeding 2 lines (max 2 per CLAUDE.md Writing Standards).
     - Method: parse Log sections, check line count between consecutive `###` date headers.
@@ -409,6 +411,52 @@ Per-check entries below specify only: (1) manifest filename glob, (2) frontmatte
     - Parse each line: `TICKER|archived_filename.md|date|conviction|rationale`.
     - Verify `archived_filename` exists in `_Archive/`. Missing → Nice to Have: `🔖 Stale archive-registry entry: TICKER|[filename] — not at _Archive/[filename]. /thesis Signal C verifies existence before matching, so stale tolerated; remove manually if desired.`
     - **Aggregate**: `Archive registry: [N] entries, [M] verified, [K] stale.`
+
+## Callout Hygiene
+
+50. **Callout sweep freshness** — `last_callout_sweep:` frontmatter on active theses.
+    - **Both scoped and vault-wide**. Runs for each thesis with `status: active` or `status: monitoring`.
+    - Parse `last_callout_sweep:` from thesis frontmatter. Compute `today - last_callout_sweep` in days.
+    - Also scan thesis body for addressed callouts (`→ Addressed YYYY-MM-DD` token); compute oldest addressed-callout age.
+    - Severity matrix:
+      - `last_callout_sweep` field absent AND oldest addressed callout <180d old → Pass (thesis has unsweeped addressed callouts but none yet exceeded the default 180d threshold).
+      - `last_callout_sweep` field absent AND oldest addressed callout ≥180d → Nice to Have: `🔖 [TICKER]: no last_callout_sweep: frontmatter, oldest addressed callout [N] days old. Run /archive-callouts [TICKER] to establish baseline + sweep.`
+      - `last_callout_sweep` present AND age >180d AND any addressed callout ≥180d (sweep would have work to do) → Nice to Have: `🔖 [TICKER]: last_callout_sweep [N] days ago; [M] addressed callouts now ≥180d. Consider /archive-callouts [TICKER].`
+      - `last_callout_sweep` present AND age >180d AND zero sweep-eligible callouts → Pass (no-op sweep would produce nothing; stale field is harmless).
+      - `last_callout_sweep` present AND age ≤180d → Pass.
+    - **Aggregate** (full mode): `Callout hygiene: [N] theses with pending sweeps, [M] fresh, [K] no-callouts.`
+
+51. **Stale fresh callouts** — Fresh `> [!type]` callouts ≥90 days old.
+    - **Both scoped and vault-wide**. Runs for each thesis / sector note / macro note.
+    - Method: grep for `> \[!\(question\|error\|tip\|todo\)\] [0-9]{4}-[0-9]{2}-[0-9]{2}` headers WITHOUT `→ Addressed` token AND WITHOUT `[[pinned]]` marker. Compute `today - fresh_date`.
+    - **Fresh callouts are never auto-swept** — this check surfaces them so the user can address, pin, or manually delete.
+    - Severity:
+      - Fresh age <90d → Pass (active working state).
+      - Fresh age 90–180d → Nice to Have: `🔖 [FILE]: fresh [type] callout from YYYY-MM-DD ([N] days old). Address, pin ([[pinned]]), or delete.`
+      - Fresh age >180d → Important: `⚠️ [FILE]: fresh [type] callout from YYYY-MM-DD abandoned ([N] days old). Likely forgotten. Address, pin ([[pinned]]) if intentionally deferred, or delete.`
+    - **Aggregate** (full mode): `Stale fresh callouts: [N] ≥90d, [M] ≥180d across [K] files.`
+
+52. **Malformed Legacy Callouts entry** — Entries in `## Legacy Callouts` missing required fields.
+    - **Both scoped and vault-wide**.
+    - Expected format per entry: `- **YYYY-MM-DD** · <type> · <section> · raised YYYY-MM-DD → <body>` with `**Response:**` sub-bullet.
+    - Check each bullet inside `## Legacy Callouts`:
+      - Must have lead bold date in `**YYYY-MM-DD**` format
+      - Must have type label (`question` | `warning` | `tip` | `todo`)
+      - Must have section reference
+      - Must have `raised YYYY-MM-DD` token
+      - Must have `→` separator followed by body text
+      - Must have indented `**Response:**` sub-bullet (2-space indent)
+    - **Severity**: Important — `⚠️ [FILE]: ## Legacy Callouts entry malformed at line [N]. Expected format: "- **YYYY-MM-DD** · <type> · <section> · raised YYYY-MM-DD → <body>" with indented Response sub-bullet. Actual: "[line]". Fix: edit manually OR /rollback to pre-sweep snapshot and re-run /archive-callouts with corrected parser.`
+    - Skip section entirely if empty or contains only placeholder comment.
+
+53. **Orphan Legacy Callouts section** — Section exists but structurally inconsistent.
+    - **Both scoped and vault-wide**. Runs per thesis / sector note.
+    - Conditions checked:
+      - **(a) Section exists but empty** (no bullets, no placeholder comment): Nice to Have — `🔖 [FILE]: ## Legacy Callouts section exists but is empty. Harmless (created by template or post-rollback). Delete section manually if clutter, or leave — /archive-callouts will populate on next sweep.`
+      - **(b) Section exists with entries but thesis has zero `Callout sweep:` Log entries** (historical audit mismatch): Important — `⚠️ [FILE]: ## Legacy Callouts contains [N] entries but thesis Log has no "Callout sweep:" entries. Either Log entries were manually removed (audit trail broken) or Legacy Callouts was hand-authored. Review: either restore Log entries from snapshot OR clear Legacy Callouts.`
+      - **(c) Section absent on thesis, but thesis has `Callout sweep:` Log entries** (inverse mismatch — swept callouts lost to section deletion): Important — `⚠️ [FILE]: [N] "Callout sweep:" Log entries reference ## Legacy Callouts, but section is absent. Legacy Callouts section may have been deleted. Restore from pre-sweep snapshot via /rollback.`
+      - **(d) Section positioned incorrectly** (not between ## Related Research and ## Log): Nice to Have — `🔖 [FILE]: ## Legacy Callouts not positioned between ## Related Research and ## Log. Expected canonical order per Templates/Thesis Template.md. Reorder manually if desired.`
+    - **Skip** sector notes that don't have `## Related Research` or `## Log` sections at all (not all sector notes fully conform to template).
 
 ---
 

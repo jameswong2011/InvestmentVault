@@ -6,6 +6,10 @@ conviction: medium
 sector: GPU & AI Compute Accelerators
 ticker: AMD
 source: AMD Q4 2025 earnings (Feb 2026), MLPerf Inference v6.0 (Apr 1 2026), OpenAI 6GW deal (Oct 2025), Meta 6GW deal (Feb/Mar 2026)
+snapshot_of: "[[Theses/AMD - Advanced Micro Devices]]"
+snapshot_date: 2026-04-24
+snapshot_trigger: sync
+snapshot_batch: sync-2026-04-24-101646
 ---
 
 # AMD - Advanced Micro Devices
@@ -40,7 +44,7 @@ AMD is the sole merchant full-stack alternative to Nvidia at a moment when every
 
 **6. What is the steady-state gross margin impact of the OpenAI/Meta deals — cost-plus pricing, volume discount, or full margin?** Hyperscalers historically extract 10–20% gross-margin concessions on multi-year volume commitments. If AMD's 55% non-GAAP gross margin contracts to 45% on hyperscaler-weighted mix, EPS growth decelerates even with revenue scaling. Consensus models 57% gross margin expansion through 2027 — the 6GW deal structure may preclude this.
 
-**7. Is EPYC share gain durable against Intel 18A Clearwater Forest, or does Intel's process lead reclaim share in 2027?** Intel 18A (scheduled 2026 production) and Clearwater Forest E-core server (2027) represent the first credible Intel counterpunch since Zen 3. If Intel 18A delivers on performance/watt claims, AMD's 41% → 50% server share trajectory stalls or reverses. Venice (2nm TSMC) vs. Clearwater Forest (18A) is the next-18-month battle that determines whether EPYC is a structural share gainer or a cyclical one. **Partial update (2026-04-24)**: the agentic-AI workload shift reframes the question. Intel Diamond Rapids removed SMT (192c = 192t), collapsing thread density 2.7x vs AMD Venice Dense (256c = 512t) on exactly the workload that's inflecting (sub-agent orchestration + tool-call parallelism). Intel stranded on Granite Rapids until Coral Rapids (no disclosed date; 2027+ at earliest) per Vik Sekar April 2026 scoring. Intel management was "caught off guard" on CPU demand in Q4 2025 earnings, suggesting Clearwater Forest was not architected for agentic workloads either. The "2027 share trajectory stalls" scenario now requires Intel to restore SMT AND redesign for agentic memory hierarchy — pushing the credible competitive response from 2027 to 2028+. Does not fully resolve the question but shifts the clock in AMD's favor.
+**7. Is EPYC share gain durable against Intel 18A Clearwater Forest, or does Intel's process lead reclaim share in 2027?** Intel 18A (scheduled 2026 production) and Clearwater Forest E-core server (2027) represent the first credible Intel counterpunch since Zen 3. If Intel 18A delivers on performance/watt claims, AMD's 41% → 50% server share trajectory stalls or reverses. Venice (2nm TSMC) vs. Clearwater Forest (18A) is the next-18-month battle that determines whether EPYC is a structural share gainer or a cyclical one.
 
 **8. What happens to AMD's client/gaming segment if Nvidia enters PC gaming CPUs via the Arm+MediaTek stack in 2026–2027?** Nvidia + MediaTek announced a consumer PC CPU+GPU+NPU chip (Project Digits derivatives). If this ships in 2027 and captures 10% of premium gaming PCs, AMD's Ryzen monopoly on enthusiast PC gaming erodes. Client segment is ~25% of revenue and ~50% of stock beta; share loss here offsets data-center gains.
 
@@ -115,7 +119,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 1. **OpenAI 6GW deploys on schedule H2 2026 → full ramp 2028**: MI450 and Helios hit deployment milestones; OpenAI warrant vests; other hyperscalers (Google, AWS, Microsoft expanded) follow the OpenAI precedent and sign similar megadeals. Each major hyperscaler commitment is worth $20–30B over 3–5 years.
 2. **ROCm reaches de facto CUDA parity for training by end 2027**: Meta deploys Llama 5 on ROCm at scale; AWS adds ROCm support in Bedrock; enterprise adoption follows. Inference-first adoption compounds into training adoption once framework-native parity becomes production-proven.
-3. **EPYC passes 50% server CPU share by end 2026, with Venice Dense specifically taking the agentic-AI action-workload category.** Venice 2nm launch outperforms Intel Clearwater Forest / 18A; AMD becomes the incumbent rather than the challenger. The agentic-AI wave expands the server CPU TAM orthogonally — Vik Sekar's 9-metric reasoning/action scoring framework (April 2026) scored Venice Dense 5/5 on action workloads (256 Zen6c cores, 512 SMT threads, 1GB L3, x86 breadth for tool-call compatibility) vs Intel Diamond Rapids 3/3 (192 cores, 192 threads after Intel's unprecedented SMT removal — a 2.7x thread-density disadvantage vs Venice Dense and a regression from Granite Rapids' 128c/256t). Intel's Diamond Rapids-SP cancellation strands Intel on Granite Rapids through 2028 until Coral Rapids restores SMT. Server CPU revenue doubles by 2028 at mid-cycle; the agentic-AI-driven CPU demand inflection (Dylan Patel's April 2026 observation that CPUs are "completely sold out" driven by RL environments + AI-generated code deployment) provides an additional volume tailwind not in prior thesis models.
+3. **EPYC passes 50% server CPU share by end 2026**: Venice 2nm launch outperforms Intel Clearwater Forest / 18A; AMD becomes the incumbent rather than the challenger. Server CPU revenue doubles by 2028 at mid-cycle.
 4. **Pensando DPU scales to a $2–3B business by 2027**: UEC standardization drives hyperscaler adoption beyond Azure/Oracle/IBM to Google and AWS (displacing Nitro captives at the margins). Ultra Ethernet becomes the dominant AI rack fabric.
 5. **Xilinx embedded returns to 10%+ growth via sovereign AI and defense**: Current $3.2B annualized run-rate grows to $5B+ by 2028 at 60%+ gross margin as EU, UAE, Saudi, Indian sovereign programs order US-domiciled FPGAs.
 6. **Inference becomes the dominant workload (60–80% of AI compute by 2028) and AMD's memory-per-dollar advantage wins**: MI350/MI400 HBM capacity advantage positions AMD as the inference-optimized merchant choice. ROCm is sufficient for inference even if training stays CUDA-dominant.
@@ -196,9 +200,6 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]] — TSMC COUPE AMD risk production Feb 2026
 - [[Research/2025-11-27 - Broadcom Data Center Opportunity]] — DPU competitive context (Pensando vs. Nvidia BlueField vs. AWS Nitro)
 - [[Research/2026-03-14 - CXL Technology Adoption]] — CXL relevance to EPYC server memory architecture
-- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Venice Dense 5/5 action score, 2.7x thread-density advantage over Intel Diamond Rapids post-SMT-removal; reframes Outstanding Question #7
-- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — CPUs "completely sold out" via RL environments + AI-generated code deployment; volume tailwind beyond thesis model
-- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — indirect HBM4 supply chain exposure for MI450 via Japanese PR/BARC disruption
 
 ## Log
 
@@ -209,8 +210,3 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 ### 2026-04-22
 - Sector re-scoped: Semiconductors → GPU & AI Compute Accelerators (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Sectors/GPU & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.
-
-### 2026-04-24 (/sync)
-- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: Rewrote Bull Case #3 to integrate Venice Dense 2.7x thread-density vs Intel Diamond Rapids (SMT removed); updated Outstanding Question #7 with partial-resolution framing (Intel's credible agentic-AI response pushed to 2028+ on SMT+Coral Rapids). Conviction strengthened — Bull #3 durability improved on structural, not cyclical, CPU positioning. Snapshot: [[_Archive/Snapshots/AMD - Advanced Micro Devices (pre-sync 2026-04-24-101646)]]
-- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: "CPUs completely sold out" via RL environments + AI-generated code deployment — direct validation of Venice Dense demand trajectory and EPYC capture rate. Conviction unchanged (already captured in Bull #3 rewrite).
-- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Indirect MI450 HBM4 supply-chain exposure via Japanese PR/BARC; adds to Risks #8 Taiwan tail as a non-kinetic material-input tail. Conviction unchanged.

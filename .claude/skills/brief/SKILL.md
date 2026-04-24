@@ -30,6 +30,16 @@ Both checks must pass before proceeding to Phase 1.
 3. Read the relevant Sector Note for competitive context
 4. Check Key Metrics for data freshness
 
+### Exclusion contract — what the brief MUST NOT surface
+
+Briefs are IC-facing pitch output. The following content categories are **working state or audit trail** and must never appear in the brief body or inform its claims beyond passive awareness:
+
+- **All inline callouts** — `> [!question]`, `> [!error]`, `> [!tip]`, `> [!todo]` blocks in any state (fresh, addressed, pinned, preserved). Treat as invisible during Phase 2 compression.
+- **`## Legacy Callouts` section entirely** — the plain-bullet archive of swept addressed callouts. Historical audit trail; no pitch relevance.
+- **Provisional `Deepening` / `↳ CORRECTION: Deepened` Log entries** — transient skill-state, not analytical content.
+
+When reading the thesis in Phase 1, mentally skip these regions. When the user asks "why isn't X in the brief" and X lives in a callout or Legacy Callouts — the answer is this exclusion contract: address the callout into the body text first, then regenerate the brief.
+
 ## Phase 2: Compress
 Distil the thesis into exactly this structure. Every word must earn its place.
 

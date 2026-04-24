@@ -192,6 +192,8 @@ The recommended allocation prioritizes structural compounders trading below peer
 - [[Sectors/NAND Memory & Storage]] — NAND sector dynamics, supply deficit through 2027, YMTC capacity impact on equipment demand
 - [[Theses/LITE - Lumentum]]
 - [[Theses/NVDA - Nvidia]]
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — ASML sold out (Carl Zeiss capacity bottleneck); TSMC 2028 capex ~$100B implied; tail-whip prepayments across WFE supply chain; validates complexity-driven supercycle thesis across KLA/AMAT/LRCX/ASMI/BESI
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — PCN re-qualification cycle (~1 year) for alternate solvents creates near-term fab evaluation uncertainty; Japanese material supplier dependencies adjacent to SEMICAP supply chain
 
 ---
 
@@ -209,3 +211,7 @@ The recommended allocation prioritizes structural compounders trading below peer
 
 ### 2026-04-23
 - Wikilink cleanup: `[[Sectors/NAND Flash & Storage]]` → `[[Sectors/NAND Memory & Storage]]` (both Related Research and 2026-04-16 log entry; sector file renamed). Conviction unchanged.
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: "ASML completely sold out, needs Carl Zeiss to expand faster" + TSMC 2028 capex ~$100B implied + tail-whip prepayments across upstream supply chain — directly validates complexity-driven supercycle Bull Case. Conviction strengthened at high-end of existing high.
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: PCN requalification cycle (~1 year) for alternate PR/BARC solvents creates near-term fab procurement uncertainty that flows to SEMICAP via customer capex-timing friction. Impact magnitude depends on disruption duration; monitor Samsung/Hynix Q2 2026 earnings for HBM-tool order slippage signal. Conviction unchanged.

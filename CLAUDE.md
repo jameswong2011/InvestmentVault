@@ -93,7 +93,8 @@ Each thesis note follows this structure:
 10. **Risks** — What breaks the thesis
 11. **Conviction Triggers** — Pre-defined, falsifiable if/then statements: → HIGH if, → LOW if, → CLOSE if
 12. **Related Research** — Wikilinks to supporting research notes
-13. **Log** — Dated entries tracking thesis evolution (max 2 lines per entry)
+13. **Legacy Callouts** — Auto-managed archive of addressed callouts swept from their original sections (owned exclusively by `/archive-callouts` — do NOT hand-edit)
+14. **Log** — Dated entries tracking thesis evolution (max 2 lines per entry)
 
 ### Research Notes (/Research)
 - Name format: `YYYY-MM-DD - [Topic or Ticker] - [Source Type].md`
@@ -113,7 +114,8 @@ Each sector note acts as a Map of Content (MOC) and follows this structure:
 7. **Macro shifts** — Macroeconomic variables (technological, geopolitical, regulatory, value chain, socioeconomic) currently or expected to drive material change in the sector
 8. **Investor heuristics** — Current investor consensus, what is priced in, where consensus could be wrong, and non-consensus insights from the sector research
 9. **Related Research** — Links to research notes relevant to this sector
-10. **Log** — Dated entries tracking sector note evolution
+10. **Legacy Callouts** — Auto-managed archive of addressed callouts swept from their original sections (owned exclusively by `/archive-callouts` — do NOT hand-edit)
+11. **Log** — Dated entries tracking sector note evolution
 
 ### Macro Notes (/Macro)
 - Geopolitical scenarios, commodity frameworks, rates outlook
@@ -132,6 +134,8 @@ Obsidian callouts (`> [!type]`) serve as user-initiated feedback markers within 
 | **Fresh** | `> [!type] YYYY-MM-DD` alone | Unresolved user objection / question / suggestion |
 | **Addressed** | `> [!type] YYYY-MM-DD → Addressed YYYY-MM-DD` + `**Response:**` block inside | Prior user-LLM exchange; resolved audit trail |
 | **Pinned** | header contains `[[pinned]]` | Intentionally left open; do NOT address |
+| **Preserved** | addressed callout header contains `[[preserve]]` | Addressed but exempt from `/archive-callouts` sweep; stays in original section indefinitely |
+| **Legacy** | plain bullet inside `## Legacy Callouts` section | Previously addressed, swept to archive section by `/archive-callouts`; historical read-only record |
 
 **LLM policy when callouts are present in a note being read or edited**:
 
@@ -140,15 +144,21 @@ Obsidian callouts (`> [!type]`) serve as user-initiated feedback markers within 
 3. **Addressed callouts are history.** Read the `**Response:**` block for context on prior user-LLM exchanges; do NOT re-address unless explicitly asked.
 4. **Pinned callouts opt out of addressing.** "Address all fresh callouts" explicitly skips any callout containing `[[pinned]]`.
 5. **Never edit or delete a user's callout unless addressing it.** Even when rewriting sections (via `/deepen`, `/sync`, `/compare`, `/scenario`), preserve fresh and pinned callouts in place.
+6. **`## Legacy Callouts` section is read-only archive.** Never hand-edit entries — the section is owned exclusively by `/archive-callouts`. Never re-sweep entries back to their original sections. Never address legacy entries (they are addressed by definition). Read them as historical context when relevant (e.g., `/deepen` evaluating section history, `/surface` scanning for resolved questions).
+7. **`[[preserve]]` marker exempts addressed callouts from `/archive-callouts` sweep.** Treat the marker the same as `[[pinned]]` when it comes to `/graph` unresolved-wikilink handling (intentional unresolved link, not broken).
 
 **Skill-specific callout handling**:
 
-- `/brief`: exclude ALL callout content (fresh, addressed, pinned). Briefs are IC-output; callouts are working state.
-- `/stress-test`: read fresh `[!error]` as already-identified user weakness; incorporate into the test rather than re-identifying.
-- `/deepen`: if the target section contains fresh callouts, acknowledge in the rewrite OR address them as part of the deepen (don't silently overwrite).
-- `/sync`: reads callout-driven Log entries via Rule #7 prefix classification; does not read callout body content directly.
-- `/surface`: unaddressed callouts signal unresolved questions worth flagging in the surface report.
-- `/compare`, `/scenario`: preserve callouts in affected theses verbatim during Log/section updates.
+- `/brief`: exclude ALL callout content (fresh, addressed, pinned) AND the entire `## Legacy Callouts` section. Briefs are IC-output; callouts and legacy archive are working/audit state.
+- `/stress-test`: read fresh `[!error]` as already-identified user weakness; incorporate into the test rather than re-identifying. Do NOT read `## Legacy Callouts` — historical warnings may have become valid again over time; let stress-test re-identify freely.
+- `/deepen`: if the target section contains fresh callouts, acknowledge in the rewrite OR address them as part of the deepen (don't silently overwrite). Refuse to operate on `## Legacy Callouts` — it is an automated archive, not a deepen-eligible analytical section.
+- `/sync`: reads callout-driven Log entries via Rule #7 prefix classification; does not read callout body content directly. Skips `## Legacy Callouts` during callout-block scans (section contains plain bullets, not `> [!type]` blocks, but the scanner should skip the section defensively).
+- `/surface`: unaddressed callouts signal unresolved questions worth flagging in the surface report. `## Legacy Callouts` is optional pattern-analysis input (out of scope for v1).
+- `/compare`, `/scenario`: preserve callouts AND `## Legacy Callouts` entries in affected theses verbatim during Log/section updates.
+- `/archive-callouts`: owns the `## Legacy Callouts` section. Sweeps addressed callouts older than threshold (default 180 days from `→ Addressed` date) into the section as plain bullets, sorted descending. Creates the section if absent (between `## Related Research` and `## Log`). `[[preserve]]` opt-out per callout.
+- `/graph`: treats `[[preserve]]` as intentional unresolved wikilink (same handling as `[[pinned]]`) — never flag as broken.
+- `/rollback`: recognizes `pre-callout-sweep` trigger name; standard snapshot restore undoes a sweep.
+- `/lint`: enforces archive schema (checks #44–#47) — sweep freshness, stale-fresh callouts, malformed Legacy entries, orphan Legacy sections.
 
 ## Active Context
 - [[_hot.md]] — recent context and open questions, updated by `/sync` and other skills

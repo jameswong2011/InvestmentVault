@@ -122,9 +122,13 @@ The wage-price spiral risk is real but contained for now. Average hourly earning
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Gemini source: commodity revaluation analysis
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Gemini source: early conflict capital allocation framework
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — Grok: June 2025 Israel-Iran 12-day conflict details; fragile ceasefire; nuclear setback (months not destroyed); U.S. 3 carrier groups + 40K troops; dual-theater stretch risk (Taiwan)
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Sustained-crisis duration signal: Japanese naphtha-to-PGMEA-to-photoresist supply chain rebuild timeline is months-to-year regardless of ceasefire timing; validates Scenario A structural persistence beyond diplomatic resolution
 ## Log
 ### 2026-04-23 (/sync — orphan linking)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Propagated to Related Research. Hezbollah structural rearmament resilience supports Scenario A (stagflation) duration extension; validates LNG/STNG/CCJ/RELIANCE structural-long positioning beyond any single ceasefire episode.
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Material-chain rebuild timelines (naphtha cracker output, PGMEA production, PCN requalification ~1yr) extend Scenario A duration independent of ceasefire. Adds semiconductor/HBM supply tail to the existing energy/LNG/shipping transmission channels — connects Iran war to [[Theses/000660 - SK Hynix]] / [[Theses/285A - Kioxia]] / [[Theses/SNDK - SanDisk]] / [[Theses/TSM - Taiwan Semiconductor]] thesis-layer exposure previously uncovered in macro framework.
 
 ### 2026-04-23 (/sync all — Gemini canvas log anchoring)
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]]: Gemini scenario analysis of Ras Laffan damage, Brent +50% to ~$115, 50% urea price surge, 30% global exportable fertilizer offline — sources the cross-commodity transmission map embedded in Scenario A.

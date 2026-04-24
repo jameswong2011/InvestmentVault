@@ -183,6 +183,7 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 5. **Kioxia JV tension:** Competitive overlap in enterprise SSDs (Stargate vs. LC9) could create friction in shared fab operations
 6. **Customer concentration:** 89% enterprise revenue from 7 customers; loss of a major account is disproportionate
 7. **Algorithmic efficiency compounding:** Genuine bear scenario if GPU count per data center drops faster than AI adoption grows
+8. **Japanese photo-materials supply chain disruption (new, 2026-04-22):** Iran War Hormuz blockade disrupts Japanese PGME/PGMEA solvent supply → threatens PR/BARC/SOH production at Shin-Etsu/TOK/JSR/Fujifilm consumed by the Flash Ventures JV fabs (Yokkaichi + Kitakami). SNDK is 49.9% JV partner with Kioxia; any JV fab-output slippage directly hits SNDK's cost-plus wafer access. PCN requalification cycle ~1 year for standard nodes, longer for BiCS10 332L. Korean alternatives (Chemtronics, Jaewon Industrial) require qualification. See [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]].
 
 ## Related Research
 - [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]] — Comprehensive SanDisk AI storage thesis, HBF technology deep dive, financial analysis
@@ -199,6 +200,7 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis: TEL cryogenic etch for 400-layer NAND in 2026 volume deployment; etch intensity ~5x increase vs 2D NAND; 3D NAND recovery as equipment demand driver
 - [[Sectors/NAND Memory & Storage]] — NAND sector note: competitive dynamics, YMTC disruption analysis, HBF category assessment, product-level differentiation
 - [[Sectors/Semiconductor Capital Equipment]] — WFE sector note: hybrid-bonded flash (HBF) as second hybrid-bonding TAM vector; pilot line accelerated H2 2026; TEL cryogenic etch HVM 2026 for 400L NAND; equipment-adjacent secondary sector reference
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War naphtha disruption threatens Japanese PR/BARC supply to Flash Ventures JV fabs (Yokkaichi/Kitakami); direct impact on SNDK's cost-plus wafer access
 
 ## Log
 ### 2026-04-16 (NAND sector research sync)
@@ -227,3 +229,6 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 
 ### 2026-04-23 (/sync — orphan linking)
 - [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]]: Validates Insight #3 — SNDK -5.7 to -10% March 24 selloff was category error since TurboQuant compresses DRAM KV cache only; zero effect on training data, checkpoint storage, model-weight storage, or enterprise SSD throughput. Conviction unchanged (medium).
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Added Risk #8 — JV-partner-fab Japanese PR/BARC supply chain exposure via Flash Ventures (Yokkaichi + Kitakami). Directly hits cost-plus wafer access if disruption materializes. Conviction unchanged — 12-18mo manageable vulnerability per 2019 HF-dispute precedent, but previously-unmodeled risk on the bull case.

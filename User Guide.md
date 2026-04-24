@@ -76,7 +76,7 @@ Any prefix not in the skill-origin registry (e.g., `Manual edit:`, `Reviewed:`, 
 
 ### User callouts — inline feedback on LLM output
 
-Drop hotkey-triggered callout boxes inside any section to comment on what Claude wrote. Four types: `> [!question]` (⌘/Ctrl+Alt+1, yellow, ask), `> [!error]` (⌘/Ctrl+Alt+2, red, flag), `> [!tip]` (⌘/Ctrl+Alt+3, teal, suggest), `> [!todo]` (⌘/Ctrl+Alt+4, blue, action). Ask Claude *"address fresh callouts in [note]"* to have them resolved inline with a `**Response:**` block + Log entry.
+Drop hotkey-triggered callout boxes inside any section to comment on what Claude wrote. Four types: `> [!question]` (⌘/Ctrl+Alt+1, yellow, ask), `> [!error]` (⌘/Ctrl+Alt+2, red, flag), `> [!tip]` (⌘/Ctrl+Alt+3, teal, suggest), `> [!todo]` (⌘/Ctrl+Alt+4, blue, action). Ask Claude *"address fresh callouts in [note]"* to have them resolved inline with a `**Response:**` block + Log entry. Periodic `/archive-callouts` sweeps old addressed callouts into a `## Legacy Callouts` archive section (plain-text audit trail, source sections decluttered). `[[preserve]]` marker exempts individual addressed callouts from sweep.
 
 Full spec — lifecycle states, chat prompt template, cross-platform setup: see [[#Inline callouts — user feedback markers|§6 Inline callouts]].
 
@@ -354,6 +354,8 @@ Multi-thesis variant (after `/sync all` or `/surface all`): drop callouts across
 
 For large rewrites initiated by `[!todo]` callouts, consider switching to `/deepen TICKER [section]` before the rewrite (snapshot safety — see [[#When to use /deepen instead|§6 When to use /deepen instead]]).
 
+**Periodic hygiene**: addressed callouts pile up over time. Run `/archive-callouts` (dry-run preview, vault-wide) quarterly or whenever `/lint #50` flags pending sweeps. Executing `/archive-callouts 180` consolidates callouts ≥180d old into each thesis's `## Legacy Callouts` section as compact plain-text bullets — full audit trail preserved, source sections decluttered. Full spec: [[#Sweeping addressed callouts into Legacy Callouts|§6 Sweeping addressed callouts into Legacy Callouts]].
+
 ---
 
 ## 4. Decision Guide — "I Want To..."
@@ -614,6 +616,23 @@ Default mode delivers ~95% of `all`'s insight signal at ~25% of the read cost. R
   - **Modified-source net**: snapshots whose source was modified after the snapshot was taken are protected even if old.
   - **Prune-manifest retention**: completed manifests kept 30 days for regret-recovery.
 
+#### `/archive-callouts`
+```
+/archive-callouts                          # vault-wide dry-run preview, 180d default
+/archive-callouts 180                      # execute vault-wide sweep
+/archive-callouts NVDA                     # scoped dry-run preview (NVDA only)
+/archive-callouts NVDA 90                  # scoped execute, 90d threshold
+/archive-callouts 180 dry-run              # explicit dry-run with threshold
+```
+- Sweeps addressed callouts older than threshold (default 180d from `→ Addressed` date) into target's `## Legacy Callouts` section.
+- **Creates**: Per-file `(pre-callout-sweep ...)` snapshot; `## Legacy Callouts` section (if absent); shared batch ID `callout-sweep-YYYY-MM-DD-HHMMSS`.
+- **Modifies**: Target file body (callout blocks removed from source sections, plain bullets added to `## Legacy Callouts` sorted descending), frontmatter `last_callout_sweep:`, `## Log` entry prefixed `Callout sweep:`.
+- **Excludes**: Fresh callouts (never eligible), `[[pinned]]` markers, `[[preserve]]` markers. Research/ notes skipped entirely (Tier 2 immutable).
+- **No side effects**: zero sector propagation, zero macro propagation, zero `_hot.md` update, zero `_graph.md` update. Sweep is thesis-local hygiene.
+- **Undo**: `/rollback [TICKER]` → select `(pre-callout-sweep ...)` snapshot. Vault-wide run: `/rollback callout-sweep-YYYY-MM-DD-HHMMSS` → cascade (a).
+- **Dry-run default**: empty arguments or missing threshold default to preview — never silent execute.
+- **No automation**: manual-only invocation. Weekly/monthly schedules must be set up via `/schedule` externally if desired.
+
 #### `/rollback`
 ```
 /rollback                                  # list all snapshots
@@ -714,7 +733,9 @@ Filename note: `user-warning.md` inserts a `[!error]` callout. Filename is the T
 |---|---|---|
 | **Fresh** | `> [!question] 2026-04-21` | Just dropped, waiting for response |
 | **Addressed** | `> [!question] 2026-04-21 → Addressed 2026-04-22` + `**Response:**` block | Claude handled it |
-| **Pinned** | `> [!question] 2026-04-21 [[pinned]]` | Intentionally left open |
+| **Pinned** | `> [!question] 2026-04-21 [[pinned]]` | Intentionally left open (never addressed) |
+| **Preserved** | `> [!question] 2026-04-21 → Addressed 2026-04-22 [[preserve]]` | Addressed but exempt from `/archive-callouts` sweep — stays in-section indefinitely |
+| **Legacy** | plain bullet inside `## Legacy Callouts` section, format: `- **<date>** · <type> · <section> · raised <date> → <body>` + `**Response:**` sub-bullet | Previously addressed, swept to archive by `/archive-callouts` — historical read-only |
 
 #### Pinning and unpinning
 
@@ -737,6 +758,72 @@ Pinning is a manual text edit — no hotkey, no skill. Add `[[pinned]]` to the c
 - Philosophical question without a falsifiable answer — standing reminder
 
 **Re-opening an addressed callout**: delete the `→ Addressed YYYY-MM-DD` token from the header AND the `**Response:**` block from the body. The callout returns to fresh state. Add `[[pinned]]` if you want it parked until a specific trigger before re-addressing.
+
+#### Preserving (exempt from auto-sweep)
+
+`[[preserve]]` is a manual text edit parallel to `[[pinned]]`, applied to **addressed** callouts. It exempts the callout from `/archive-callouts` sweep regardless of age.
+
+**To preserve**: add `[[preserve]]` after the `→ Addressed YYYY-MM-DD` token:
+
+```markdown
+> [!error] 2025-06-14 → Addressed 2025-06-18 [[preserve]]
+> Moat claim disputed — user integrated countervailing evidence.
+>
+> **Response:** Rewrote Bull Case bullet #2 to acknowledge...
+```
+
+Use cases for `[[preserve]]`:
+- Foundational historical exchanges worth keeping visible in their source section
+- Contested-then-resolved reasoning you want readers to see without digging into Legacy Callouts
+- Key pedagogical markers — "this is why we don't use sell-side consensus here"
+
+**Don't create a `preserve.md` file.** Like `[[pinned]]`, the wikilink is intentionally unresolved — it's a marker Claude (and `/archive-callouts`) looks for. Obsidian renders it with lighter style for visual distinction. `/graph` and `/lint #3` exclude it from broken-link flags.
+
+**To un-preserve**: delete `[[preserve]]` from the header. The callout becomes eligible for sweep on the next `/archive-callouts` run if it's also past the threshold.
+
+#### Sweeping addressed callouts into Legacy Callouts
+
+Addressed callouts accumulate over time. Leaving hundreds of `→ Addressed` blocks inline clutters the thesis without value once the response text has been absorbed. `/archive-callouts` consolidates old ones into a `## Legacy Callouts` section at the bottom of the note (above `## Log`).
+
+```
+/archive-callouts                  # vault-wide dry-run preview, 180d default
+/archive-callouts 180              # execute vault-wide sweep, 180d threshold
+/archive-callouts NVDA             # scoped dry-run preview
+/archive-callouts NVDA 90          # scoped execute, 90d threshold
+/archive-callouts 180 dry-run      # explicit dry-run even with threshold
+```
+
+**What gets swept**: addressed callouts where `today - addressed_date >= threshold`, excluding `[[preserve]]`-marked and `[[pinned]]`-marked entries. Fresh callouts are never eligible.
+
+**What the section looks like**:
+
+```markdown
+## Legacy Callouts
+
+- **2026-01-15** · warning · Bull Case · raised 2025-06-14 → Moat claim disputed — need Q4 transcript evidence.
+  - **Response:** Integrated Q4 Stagwell economics (+46% ROAS) into Bull Case bullet #1. See Log 2026-01-15.
+- **2025-12-18** · todo · Catalysts · raised 2025-06-20 → Add SEMICON West 2026 timing and BESI booth presence.
+  - **Response:** Confirmed booth 4231, added Jul 14-16 2026 to Catalysts.
+- **2025-10-03** · question · Industry Context · raised 2025-04-01 → How does hybrid bonding yield compare to TCB at 3nm?
+  - **Response:** Imec data shows HB yields 4-6% better at 3nm; added to Industry Context §4.
+```
+
+Entries are sorted **descending** by addressed date — newest sweep at top. Callout formatting is stripped; the bullet format is deliberately compact. Full original body + Response are preserved verbatim.
+
+**Type label translation**: `[!error]` → `warning` (matches the `user-warning.md` hotkey template filename — human-natural). Other types unchanged.
+
+**Sweep writes a Log entry** prefixed `Callout sweep:`:
+
+```
+### 2026-04-24
+- Callout sweep: 14 addressed callouts ≥180d swept to ## Legacy Callouts. Sections touched: Bull Case (6), Catalysts (4), Industry Context (3), Risks (1). Safety snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-callout-sweep 2026-04-24-143055)]]
+```
+
+This prefix is classified by `/sync` Step 2.5 as skill-origin (no sector/macro propagation) and drift-excluded at Step 3e (no impact on conviction-drift detection). A sweep has zero analytical content — it is pure body hygiene.
+
+**Undo**: `/rollback [TICKER]` → select the `(pre-callout-sweep ...)` snapshot. To undo a whole vault-wide run in one transaction, use the batch ID from the Log entry's safety-snapshot path: `/rollback callout-sweep-YYYY-MM-DD-HHMMSS` → cascade (a) restores every swept file.
+
+**When NOT to sweep**: never sweep callouts you're actively referencing in ongoing work. If a `[!error]` was addressed 200 days ago but you're about to use the Response in a `/deepen` run, pin it first with `[[preserve]]` or run `/archive-callouts` AFTER the deepen completes. Swept entries survive in Legacy Callouts — readable but compact — so this is only a concern for heavy quoting workflows.
 
 **Fresh → addressed example.** Before:
 
@@ -818,9 +905,12 @@ Override: if you want snapshot safety for a large callout-driven rewrite, prefix
 | `/scenario` | `[!error]` on scenario assumptions you dispute; Claude refines per-thesis scenario impact. |
 | `/surface` | `[!todo]` on leads; Claude does targeted follow-up research. |
 | `/status` | Pattern of `[!error]` addressing + drift flag → natural trigger for conviction change. |
-| `/graph last` | Always run after callout-driven `/sync` — new wikilinks need reconciling. |
-| `/brief`, `/catalyst` | **Don't callout these** — ephemeral / regenerated. Callout the source thesis. |
-| `/rollback` | Not applicable — no snapshot. Use `/deepen` for any rewrite you might regret. |
+| `/graph last` | Always run after callout-driven `/sync` — new wikilinks need reconciling. `/archive-callouts` does NOT require `/graph last` (sweep creates no new wikilinks). |
+| `/brief`, `/catalyst` | **Don't callout these** — ephemeral / regenerated. Callout the source thesis. `/brief` excludes both callouts AND `## Legacy Callouts` from output. |
+| `/archive-callouts` | Periodic hygiene. Dry-run first (`/archive-callouts`) to preview, then execute with explicit threshold (`/archive-callouts 180`). Per-file snapshot enables `/rollback`. Owns `## Legacy Callouts` exclusively — never hand-edit entries. |
+| `/rollback` | Callout-addressing has no snapshot — use `/deepen` for rewrites you might regret. `/archive-callouts` DOES snapshot — full rollback available per file or per batch. |
+| `/deepen` | `/deepen [TICKER] "Legacy Callouts"` is REFUSED — section is auto-managed archive, not deepen-eligible analytical content. |
+| `/lint` | Checks #50-#53 enforce Legacy Callouts schema + flag stale fresh callouts piling up. |
 
 #### Conviction drift integration
 
@@ -836,13 +926,17 @@ Natural next step: `/status TICKER conviction high→medium [callout-driven]`. P
 
 | Pattern | Why it breaks | Fix |
 |---|---|---|
-| Drop callouts, never address | Pile up, clutter thesis | Weekly callout clearance |
+| Drop callouts, never address | Pile up, clutter thesis; `/lint #51` flags after 90d / 180d | Weekly callout clearance OR pin intentional deferrals |
 | Address callouts, never `/sync` | Sector/macro stale; drift signal missed | Always `/sync TICKER` after addressing |
 | `[!todo]` for whole-section rewrite | No snapshot, no rollback path | `/deepen TICKER [section]` instead |
 | `[!error]` on every other bullet | Thesis fundamentally broken — callouts won't save it | `/stress-test` → `/deepen` → reconsider conviction |
 | Callout in `_catalyst.md`, `/brief` output, Research notes | Ephemeral / source-record immutable | Callout the thesis they relate to |
 | Callout in archived thesis | `/sync` skips `_Archive/` | `/rollback` first to reopen |
 | Mix callout-addressing with `/status` in same chat | Log entry ordering collisions | Address → `/sync` → then `/status` |
+| Hand-edit `## Legacy Callouts` entries | Breaks `/lint #52` schema; next sweep re-sorts | `/rollback` to pre-sweep snapshot and use `[[preserve]]` to exempt specific callouts instead |
+| Delete `## Legacy Callouts` section without Log restoration | `/lint #53c` flags Callout-sweep Log entries referencing missing section | `/rollback` to pre-sweep snapshot, or accept the flag as harmless |
+| Run `/archive-callouts` during active callout-addressing session | Race condition — fresh addressings get swept if addressed_date is backdated | Address → `/sync` → let 24h pass → then `/archive-callouts` |
+| Skip dry-run, run `/archive-callouts 180` blind | Can sweep hundreds of callouts you didn't realize existed | Always preview with `/archive-callouts` (no threshold = dry-run default) before executing |
 
 #### Setup (one-time per vault clone)
 

@@ -160,6 +160,8 @@ IIM-1 Chitose (Hokkaido): cleanroom activated mid-2025; EUV installed; 2nm GAA t
 
 ### Macro linkage
 - [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex cycle is the demand driver for foundry advanced-node / advanced-packaging pricing power
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — SemiAnalysis projects TSMC 2028 capex ~$100B; "good people" single-digit pricing discipline is both durability signal and hidden option value
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Japanese PR/BARC supply chain risk to leading-edge foundry EUV lithography; TSM less exposed than Samsung/Hynix per Taiwan/Korean localization status
 
 ### Related sectors
 - [[Sectors/Semiconductor Capital Equipment]] — WFE demand is a derivative of foundry CapEx; shared customer-concentration tail risk
@@ -173,3 +175,7 @@ IIM-1 Chitose (Hokkaido): cleanroom activated mid-2025; EUV installed; 2nm GAA t
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
 - Reordered sections: Active Theses moved to first position per Sector Template / CLAUDE.md §Sector Notes (MOC navigation goes first).
 - Sector fill (web-primary + vault-secondary): populated Key industry questions, Industry history, Competitive dynamics, Product level analysis, Acquisitions and new entrants, Macro shifts, Investor heuristics, Related Research. Status flipped draft → active (8 sections filled ≥ 5 threshold). Web sources: TSMC Q1 2026 (70% share, 74% ≤7nm, 58.8% GM, N2 HVM); Samsung SF2 55-60% yield + Tesla AI6 $16.5B; Intel 18A HVM at Fab 52 + AWS/MSFT anchors; SMIC N+2 at 15-46%; Rapidus IIM-1 2nm pilot; GF Foundry 2.0; UMC/VIS/PSMC/Hua Hong/Nexchip/Tower mature tier; foundry history (Chang 1987 → UMC → Samsung 2005 → GF 2009 → IBM 2014); CHIPS Act finalized ($7.86B Intel / $6.6B TSMC / $4.75B Samsung); advanced packaging (CoWoS 35K→130K wpm, Foveros, I-Cube); High-NA EUV split. Vault-secondary: TSM Stress Test, Hybrid Bonding/BESI, Jensen moat interview, Huawei Ascend roadmap.
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: $100B 2028 capex + "good people" pricing discipline validates monopoly-rents thesis for TSM; ASML sold out adds upstream tail-risk. Sector-level implication reinforces the "leading-edge de-facto monopoly" core framing.
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Leading-edge PR/BARC supply chain (Shin-Etsu, TOK feed TSMC too); Taiwan localization farther along than Japanese per source — TSM less exposed but not zero. Adds a fifth unmodeled foundry supply-chain vector.

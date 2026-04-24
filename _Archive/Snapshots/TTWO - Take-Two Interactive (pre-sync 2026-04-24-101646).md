@@ -6,6 +6,10 @@ conviction: medium
 sector: Video Game Publishing
 ticker: TTWO
 source: Multi-source synthesis (Claude conversation export, RockstarINTEL, web research, earnings transcripts)
+snapshot_of: "[[Theses/TTWO - Take-Two Interactive]]"
+snapshot_date: 2026-04-24
+snapshot_trigger: sync
+snapshot_batch: sync-2026-04-24-101646
 ---
 
 # TTWO — Take-Two Interactive
@@ -16,7 +20,7 @@ Binary-outcome investment centered on the most anticipated entertainment launch 
 
 ## Key Non-consensus Insights
 
-- **The market prices GTA VI as a product launch; the real bet is a business model transition from publisher to platform operator — and the transition is already revenue-generating at FiveM scale.** Cfx.re (FiveM) acquisition, Project ROME, four Creator Platform job postings, and Rockstar meetings with Roblox/Fortnite Creative creators signal UGC platform repositioning. FiveM peaked at 270,000 concurrent players (nearly double unmodded GTA V's Steam playerbase) and generated millions for creators without Rockstar's permission. The Cfx Marketplace went live January 12, 2026 under Rockstar ownership with script bundles priced up to $389.99; Tebex-external-store creators report averaging €5,000+/month within 90 days of launch. Claude-generated Lua code has removed the scripting barrier that previously capped the creator pool at ~10-100K Lua-proficient developers — AI-assisted creation mirrors the Roblox Studio no-code democratization that drove Roblox creator payouts from $50M (2017) to $1B (2025). If the UGC marketplace achieves even a fraction of Roblox's $1.5B in annual creator payouts, revenue becomes perpetual and forces a re-rate from ~15-20x cyclical P/E to a platform multiple — the 2026 pre-GTA-VI Cfx evidence is proof-of-concept that the infrastructure monetizes in production, not a forward bet.
+- **The market prices GTA VI as a product launch; the real bet is a business model transition from publisher to platform operator.** Cfx.re (FiveM) acquisition, Project ROME, four Creator Platform job postings, and Rockstar meetings with Roblox/Fortnite Creative creators signal UGC platform repositioning. FiveM peaked at 270,000 concurrent players (nearly double unmodded GTA V's Steam playerbase) and generated millions for creators without Rockstar's permission. If the UGC marketplace achieves even a fraction of Roblox's $1.5B in annual creator payouts, revenue becomes perpetual and forces a re-rate from ~15-20x cyclical P/E to a platform multiple.
 
 - **Red Dead Redemption 2 is the single most important data point for underwriting this thesis, and most analysts misread the lesson.** RDR2 matched GTA V's 97 Metacritic, sold 65-70M copies, generated ~$3.5-4B lifetime -- roughly half of GTA V's ~$8.5B. The divergence is entirely online monetization: Red Dead Online never caught fire. If GTA VI Online disappoints, lifetime revenue caps at $5-6B and the stock is overvalued today. If the UGC creator economy works where RDR2's traditional MTX model failed, the ceiling rises to $15B+ as Rockstar shifts from sole content provider to platform tax collector.
 
@@ -28,7 +32,7 @@ Binary-outcome investment centered on the most anticipated entertainment launch 
 
 ## Outstanding Questions
 
-- **Will GTA VI's online mode monetize at GTA Online's historic rate, or follow the Red Dead Online trajectory?** GTA Online generated ~$4-5B of GTA V's ~$8.5B lifetime revenue; Red Dead Online, built on the same core competencies, failed. GTA VI Online must demonstrate robust spending within its first 6-12 months to validate the $7.50+ FY2027 EPS consensus. The UGC marketplace is designed to solve the content bottleneck, but whether player-created content generates equivalent monetization at AAA fidelity is unproven. **Supply-side partial resolution (2026-04-24)**: Cfx Marketplace live January 2026 + Tebex €5K+/mo creator revenue + Claude-Lua removing the scripting barrier proves creators CAN earn income on Rockstar's platform infrastructure. The demand-side (whether photorealistic-GTA-VI-audience ARPU matches Roblox's stylized-audience ARPU) remains the binding unresolved question. Outstanding Question #2 (UGC at AAA fidelity scale) is the unresolved half.
+- **Will GTA VI's online mode monetize at GTA Online's historic rate, or follow the Red Dead Online trajectory?** GTA Online generated ~$4-5B of GTA V's ~$8.5B lifetime revenue; Red Dead Online, built on the same core competencies, failed. GTA VI Online must demonstrate robust spending within its first 6-12 months to validate the $7.50+ FY2027 EPS consensus. The UGC marketplace is designed to solve the content bottleneck, but whether player-created content generates equivalent monetization at AAA fidelity is unproven.
 
 - **Can UGC function at scale within GTA VI's photorealistic world, or is the format better suited to stylized platforms like Roblox?** Roblox ($1.5B in creator payouts) and Fortnite Creative ($370M) operate in low-fidelity environments where user content is visually coherent. GTA VI's photorealistic aesthetic may limit creator participation to sophisticated developers rather than the mass-market base driving Roblox's economics. FiveM's 270K peak concurrent players prove demand exists, but formalizing an independent community is a different challenge.
 
@@ -155,7 +159,6 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 - [[Sectors/Video Game Publishing]]
 - [[Macro/Iran War Macroeconomic Scenario]] — Consumer discretionary headwinds from geopolitical conflict
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict timing coincides with GTA VI launch; $70 pricing elasticity tested in worst macro
-- [[Research/2026-04-24 - GTA 6 Creator Economy and FiveM Monetization - web-clip]] — Cfx Marketplace live Jan 12, 2026 ($389.99 bundles); Tebex creators average €5K+/mo within 90 days; Claude-Lua removes scripting barrier (AI-assisted creator TAM expansion)
 
 ## Log
 
@@ -174,6 +177,3 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 
 ### 2026-04-23
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via consumer discretionary destruction at GTA VI launch window (Nov 2026) — conviction weakened: $70-80 pricing sensitivity realized in worst possible macro environment; binary launch thesis directly exposed to recessionary consumer spending compression.
-
-### 2026-04-24 (/sync)
-- [[Research/2026-04-24 - GTA 6 Creator Economy and FiveM Monetization - web-clip]]: Rewrote Non-consensus Insight #1 to integrate Cfx Marketplace live Jan 12 2026 ($389.99 bundles, €5K+/mo creator revenue on Tebex) + Claude-Lua creator-TAM expansion; updated Outstanding Question #1 with supply-side partial resolution (creators CAN monetize on Rockstar infra — demand-side Q#2 remains binding). Conviction strengthened — platform-transition bull case now backed by 2026 transaction evidence, not forward bet. Snapshot: [[_Archive/Snapshots/TTWO - Take-Two Interactive (pre-sync 2026-04-24-101646)]]

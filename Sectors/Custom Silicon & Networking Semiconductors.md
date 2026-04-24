@@ -9,6 +9,9 @@ status: active
 ## Active Theses
 - [[Theses/AVGO - Broadcom]] — Broadcom (custom ASIC + networking silicon dual franchise, 5 XPU customers, 80–90% merchant switching share, $100B+ 2027 AI revenue target, VMware software annuity; conviction: high)
 
+## Recent Research (Apr 2026)
+- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Server-CPU scoring framework covers AWS Graviton5 (Trainium3 head-node role), Google x86+TPU, ARM Phoenix PCIe6 XPU attach, NVIDIA Vera Olympus ARM — tangential validation of custom-silicon diversification at host-CPU layer
+
 ## Key industry questions
 - Is the AI data-center fabric economically a chokepoint (Broadcom's 80–90% merchant switching share + ~60–70% custom ASIC share as a structural "picks-and-shovels" monopoly) or a contestable commodity (Marvell/Alchip/MediaTek multi-sourcing, Nvidia Spectrum-X + NVLink Fusion, UALink/SUE/ESUN scale-up fragmentation) over the 2026–2030 horizon?
 - Will custom XPUs (Google Ironwood, Meta MTIA, AWS Trainium, OpenAI XPU, Anthropic rack-scale TPU) cannibalize Nvidia GPU share above or below the ~30% ceiling implied by current hyperscaler capex mix, and how much of the resulting ASIC revenue accrues to silicon design partners (Broadcom/Marvell/Alchip) vs is internalized by the hyperscalers themselves?
@@ -135,3 +138,6 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
 - Sector fill (web-primary + vault-secondary): populated all seven analytical sections (Key industry questions, Industry history, Competitive dynamics, Product level analysis, Acquisitions and new entrants, Macro shifts, Investor heuristics); AVGO focus; 8 research notes linked in Related Research; status flipped draft → active. Key sources: Broadcom investor releases (Tomahawk 6 March 2026, Jericho 4 Q1 2026, TH6-Davisson CPO volume), OpenAI/Meta/Anthropic XPU deal announcements, Dell'Oro + 650 Group + Linley switching silicon share data, UEC 1.0 specification (Jun 2025), Counterpoint custom ASIC share forecasts, TrendForce ASIC +45% / GPU +16% 2026, SemiAnalysis Trainium 3 + Ironwood deep-dives, Dwarkesh–Jensen Huang interview (Apr 2026).
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: Tangential sector touch — host-CPU agentic scoring covers AWS Graviton5 Trainium3 head-node role, Google x86+TPU, ARM Phoenix PCIe6 XPU attach, NVIDIA Vera Olympus ARM. Validates custom-silicon diversification at host-CPU layer and reinforces "hyperscaler vertical integration" framing in Key Industry Questions.

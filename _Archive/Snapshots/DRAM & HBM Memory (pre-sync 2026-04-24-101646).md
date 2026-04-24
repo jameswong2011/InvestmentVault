@@ -3,6 +3,10 @@ date: 2026-04-23
 tags: [sector, moc, DRAM, HBM, memory]
 status: active
 sector: DRAM & HBM Memory
+snapshot_of: "[[Sectors/DRAM & HBM Memory]]"
+snapshot_date: 2026-04-24
+snapshot_trigger: sync
+snapshot_batch: sync-2026-04-24-101646
 ---
 
 # DRAM & HBM Memory
@@ -300,8 +304,6 @@ The US Department of Commerce updated its export-control framework in January 20
 
 **The Korean memory dependency on Japanese chemical inputs (fluorinated polyimide, photoresist, hydrogen fluoride) was largely diversified post-2019 trade dispute** — Korea sourced 87.9% of HF from Japan pre-dispute, dropped that to ~30% by 2022 via Belgian/US/Taiwan substitution. This historical episode informs how supply-chain dependencies get re-priced rapidly under geopolitical stress; the reverse case (US dependency on Korean HBM) does not have an equivalent fast-substitute.
 
-**April 2026 Iran War overlay — photo-materials supply chain reactivated as a tail risk.** The Strait of Hormuz blockade cut 40%+ of Japan's naphtha supply; 6 of 12 Japanese NCCs entered production cuts; propylene → Propylene Oxide → PGME/PGMEA solvent production collapsed. Japanese suppliers Shin-Etsu Chemical, Tokyo Ohka Kogyo (TOK), JSR, Fujifilm, and Nissan Chemical notified Samsung Electronics and SK Hynix through their Korean subsidiaries of PR/BARC/SOH/HBM-temporary-bonding-adhesive supply disruptions. This is distinct from the 2019 episode in two ways: (i) HBM temporary-bonding adhesives are directly named as at-risk, creating a clean causal chain to HBM3E/HBM4 fab output; (ii) Korean alternative PGMEA producers (Chemtronics, Jaewon Industrial) exist but need PCN requalification (~1 year standard, longer for leading-edge 1c DRAM / HBM4 12-Hi). Taiwan PR/BARC localization is farther along than Korean per the source, implying TSM is less exposed than Samsung/Hynix but not zero. The risk is currently unpriced in consensus HBM revenue estimates for 2026. See [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]].
-
 ### 6. The Taiwan Tail (Binary Structural Risk)
 
 SK Hynix and Samsung HBM dies → Taiwan TSMC CoWoS integration → Nvidia/AMD silicon → global AI compute. A China-Taiwan kinetic event invalidates 60-80% of HBM end-market demand for 12-24 months until non-Taiwan CoWoS-class capacity can be rebuilt. SK Hynix and Samsung have **no public disclosed hedge** to this concentration. See [[Macro/AI Bubble Risk and Semiconductor Valuations]] §2026-04-19 update — TSMC stress-test rated permanent impairment at -85-92% under invasion; HBM revenue collapses synchronously with TSMC output collapse.
@@ -416,8 +418,6 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5), with the future HBF tie
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — DeepSeek MLA architecture; HBM4 "bit crossover" 2026; 3:1 wafer penalty for HBM vs DDR5
 - [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] — March 24 2026 selloff mechanics (SK Hynix -6.23%); Jevons Paradox analyst pushback; structural HBM supply shortage through 2027
 - [[Research/2026-04-23 - NVDA - Investment Brief]] — NVDA's HBM consumption profile; Rubin/Rubin Ultra/Feynman roadmap; Taiwan tail risk
-- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War naphtha disruption → PGME/PGMEA shortage → Japanese PR/BARC/HBM-adhesive supply threat to Samsung/SK Hynix; new 2026 HBM tail risk, PCN cycle ~1 year
-- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — DRAM pricing "double or triple from here"; true incremental supply only from 2028; reinforces DRAM supercycle extension through 2027+
 
 ## Related Sectors and Macro
 
@@ -431,7 +431,3 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5), with the future HBF tie
 ### 2026-04-23
 - Sector note created by /thesis 000660 — first thesis in this sector. Scaffold-only; analytical content to be added via /deepen or /surface. DRAM/HBM sector split from prior NAND-inclusive memory coverage; now symmetric with [[Sectors/NAND Memory & Storage]].
 - **Full population from vault synthesis + deep web research.** Replaced placeholder content across all 8 sections (Active Theses, Key industry questions, Industry history, Competitive dynamics, Product level analysis, Acquisitions and new entrants, Macro shifts, Investor heuristics). Sources: SK Hynix Q1 2026 earnings (record 72% op margin, 57% HBM share), TrendForce/UBS/BofA/Goldman/Morgan Stanley/Macquarie consensus aggregation, vault research notes (5 HBM-specific deep dives), web research (CXMT IPO + HBM3 timeline slip, Samsung HBM4 Nvidia qualification + 30% Rubin allocation, Micron Rubin exclusion, BESI Kinex hybrid-bonding qualification timing, TSMC CoWoS quadrupling to 130K WSPM, Huawei HiBL/HiZQ in-house HBM). Status changed draft → active. Key non-consensus calls: (1) Incumbent Erosion (62%→45%) is structural, not cyclical; (2) MR-MUF lead inverts at HBM5; (3) CXMT is wrong-timing bear case (commodity DRAM 2028-2029, not HBM); (4) DDR5 profitability surpasses HBM3e Q1 2026; (5) HBF $5-10B option unpriced; (6) custom HBM vendor lock-in makes 2026 share allocations sticky for 3+ year roadmaps; (7) Korean equity discount = clean multiple-expansion path. Reminder to run `/graph last` after this edit per CLAUDE.md metadata-ownership rule.
-
-### 2026-04-24 (/sync)
-- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Integrated into Macro Shifts §5 Geopolitical Bifurcation as April 2026 overlay — distinct from 2019 HF precedent because HBM-temporary-bonding adhesives are directly named at risk. Adds unpriced 2026 HBM tail risk for Samsung/Hynix; TSM less exposed per Taiwan/Korean localization. Snapshot: [[_Archive/Snapshots/DRAM & HBM Memory (pre-sync 2026-04-24-101646)]]
-- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: DRAM pricing trajectory "double or triple" + true incremental supply not until 2028 reinforces Macro Shifts §1 (AI Accelerator Unit Growth Binds HBM Demand) and the 3:1 Wafer Penalty section. Added to Related Research.

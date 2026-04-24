@@ -506,7 +506,10 @@ The LLM running a skill can also perform these checks in its reasoning layer —
 
 ### 4.1 When this applies
 
-Any skill that edits a specific `## Heading` section of a target file (currently `/deepen`, `/compare` sector-section edits, `/stress-test` Log append, `/sync` cross-section edits).
+Any skill that edits a specific `## Heading` section of a target file (currently `/deepen`, `/compare` sector-section edits, `/stress-test` Log append, `/sync` cross-section edits, `/archive-callouts` `## Log` append).
+
+**Skill-specific exemptions** (section creation rather than edit):
+- `/archive-callouts` is exempt from Procedure 4 for the `## Legacy Callouts` section specifically. The skill OWNS that section and creates it on demand (first sweep on a thesis without the section). Procedure 4 DOES still apply to `/archive-callouts` for the `## Log` section — sweep needs a Log to append the `Callout sweep:` audit entry. When `## Log` is absent on a target (e.g., free-form macro note), `/archive-callouts` uses graceful-skip handling per §4.3 and continues to other targets.
 
 ### 4.2 Procedure
 

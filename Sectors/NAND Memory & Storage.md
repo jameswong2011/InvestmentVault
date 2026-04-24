@@ -338,6 +338,8 @@ HBF's value proposition is architectural: it enables model weights (which are re
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM vendor dynamics, YMTC hybrid bonding patents
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]] — Samsung/SK Hynix/Micron memory competitive analysis
 - [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]] — HBM shortage and NAND demand implications
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War naphtha disruption → Japanese PR/BARC supply risk at Yokkaichi/Kitakami (Flash Ventures JV) and Japanese Kioxia/SanDisk fabs specifically; PCN requalification cycle ~1 year
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — NAND capacity growth <DRAM (low double digits vs 20-30%); supply deficit durability through 2027+; die-supply positioning reinforced for Kioxia
 
 ## Log
 ### 2026-04-16
@@ -345,3 +347,7 @@ HBF's value proposition is architectural: it enables model weights (which are re
 - Deep research on 3 key industry questions → [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]. Updated Key Industry Questions, 3D NAND comparison table, Chinese NAND state table, HBF risk assessment, and Non-Consensus section. New findings: (1) YMTC enterprise gap now 16x (15.36TB PCIe 4.0 vs 245TB PCIe 5.0) and widening despite PC550 PCIe 5.0 consumer launch; (2) HBF de-risking accelerates with 5 signals including SanDisk pilot line pull-forward + SK Hynix H3 32→2 GPU benchmark + Samsung patent activity; (3) Samsung V10 YMTC hybrid bonding IP dependency is a new non-consensus vulnerability for #1 producer; (4) Kioxia BiCS10 density advantage now quantified at 59%/29 Gb/mm²; (5) Micron PCIe 6.0 first-mover adds IO speed moat. SNDK/285A conviction directions: strengthened on HBF + supply/pricing, unchanged on enterprise execution risks.
 ### 2026-04-22
 - Reordered sections: Active Theses moved to first position per Sector Template / CLAUDE.md §Sector Notes (MOC navigation goes first).
+
+### 2026-04-24 (/sync)
+- [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Japan-centric NAND fab exposure (Yokkaichi + Kitakami for Kioxia/SanDisk JV) to PGME/PGMEA solvent disruption. Challenges the "Japan moat" framing for NAND-pure-play producers; adds unpriced 2026 supply risk. Sector-level implication: Japan-located NAND supply (~30% of global NAND bits via Flash Ventures) has new material-input dependency.
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: NAND capacity growth lags DRAM; reinforces structural supply deficit durability through 2027+. Aligns with sector's Key Industry Question on Chinese NAND disruption bounded to consumer segment.
