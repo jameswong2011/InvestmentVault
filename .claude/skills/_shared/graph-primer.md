@@ -1,6 +1,6 @@
 # Graph Primer Contract
 
-Consumed by: `/ingest`, `/compare`, `/thesis`, `/stress-test`, `/brief`, `/deepen`
+Consumed by: `/ingest`, `/compare`, `/thesis`, `/stress-test`, `/brief`, `/deepen`, `/retro` (Mode A in aggregate — Phase 4.4 cluster-signal flagging)
 Also referenced: `/scenario` (existing consumer), `/surface` (existing consumer)
 Owned by: `/graph` (exclusive writer of `_graph.md`)
 

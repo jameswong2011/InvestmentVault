@@ -1,13 +1,13 @@
 ---
 type: shared-contract
 purpose: Canonical compression, section ordering, and word-budget policy for `_hot.md`. Every skill that writes to `_hot.md` follows this contract.
-last_reviewed: 2026-04-19
+last_reviewed: 2026-04-24
 ---
 
 <!--
 This file is a load-bearing contract. `_hot.md` schema drift causes silent no-ops across 11 skills. `/lint #35` enforces structural compliance (section headings); this contract additionally specifies compression behavior, per-section budgets, and cap handling.
 
-Consumers: `/sync`, `/status`, `/thesis`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/prune`, `/rollback`, `/catalyst`, `/brief` (Active Research Thread + Open Questions only), `/rename` (free-text mentions of the old name).
+Consumers: `/sync`, `/status`, `/thesis`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/prune`, `/rollback`, `/catalyst`, `/brief` (Active Research Thread + Open Questions only), `/rename` (free-text mentions of the old name), `/retro` (Active Research Thread + Open Questions only).
 -->
 
 # `_hot.md` Compression & Budget Contract

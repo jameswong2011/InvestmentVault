@@ -134,10 +134,36 @@ Obsidian callouts (`> [!type]`) serve as user-initiated feedback markers within 
 | State | Header pattern | Meaning |
 |---|---|---|
 | **Fresh** | `> [!type] YYYY-MM-DD` alone | Unresolved user objection / question / suggestion |
-| **Addressed** | `> [!type] YYYY-MM-DD → Addressed YYYY-MM-DD` + `**Response:**` block inside | Prior user-LLM exchange; resolved audit trail |
+| **Addressed** | `> [!type] YYYY-MM-DD → Addressed YYYY-MM-DD` + `**Prompt:** *<original text>*` line (bold label, italicised body) + `**Response:**` block inside | Prior user-LLM exchange; resolved audit trail |
 | **Pinned** | header contains `[[pinned]]` | Intentionally left open; do NOT address |
 | **Preserved** | addressed callout header contains `[[preserve]]` | Addressed but exempt from `/archive-callouts` sweep; stays in original section indefinitely |
 | **Legacy** | plain bullet inside `## Legacy Callouts` section | Previously addressed, swept to archive section by `/archive-callouts`; historical read-only record |
+
+**Addressed-callout formatting contract** (applies to every callout address — thesis / sector / macro):
+
+```markdown
+> [!type] YYYY-MM-DD → Addressed YYYY-MM-DD
+> **Prompt:** *<verbatim original user prompt — body italicised>*
+>
+> **Response:** <1-3 sentence conclusion>. <Pointer to body location: §Section → Subsection where full analysis lives>.
+```
+
+Rules:
+- `**Prompt:**` label is bold (mirrors `**Response:**`) so the two blocks line up visually as matched pair.
+- The user's original prompt body goes inside `*...*` italic markers — distinguishing user input vs. Claude's analytical reply.
+- Preserve the user's original wording verbatim — do not paraphrase, truncate, or correct typos.
+- Keep `**Response:**` body plain (not italicised).
+- One blank `>`-prefixed line separates the Prompt line from the Response block.
+- For multi-line user prompts, collapse into a single line inside the italic body (Obsidian renders italics across wrapped lines cleanly, across paragraph breaks less so).
+- This format is retroactive only when re-touching a callout; do not sweep old addressed callouts purely to reformat.
+
+**Callout-is-ledger / body-is-deliverable rule** (applies to every analytical callout address):
+
+1. **Body is the deliverable.** Full analysis (tables, scenarios, derivations, multi-paragraph reasoning) lives in an existing body section — prefer the most natural pre-existing section; create a new subsection only if the content is genuinely orthogonal to every existing one.
+2. **Callout Response is a ledger entry**, not an essay. Target: 1-3 sentences summarising the conclusion + explicit pointer to the body location (`§Section → Subsection`). Anything longer is a smell that the integration did not happen.
+3. **Editorial-only callouts** (e.g., `Put this in a table`, `Fix typo`, `Rename heading`) are an exception — the Response describes the edit in situ; no separate body integration needed because the edit IS the integration.
+4. **When no natural body home exists** and creating one would be out-of-scope, the full analysis may remain in the callout — but flag it in the Log entry (`Addressed user callouts: [TICKER] — response retained in callout, no natural body home`) so a future `/deepen` or `/sync` run can relocate it.
+5. **Rationale**: callouts get swept to `## Legacy Callouts` by `/archive-callouts` (180-day default). Content that lives only in callouts is effectively invisible to `/brief`, `/deepen`, `/graph`, `/sync`, and to the user scanning the note's spine. Evergreen insights belong in the spine. The callout serves as audit trail of the user-Claude exchange, not as appendix storage for analysis.
 
 **LLM policy when callouts are present in a note being read or edited**:
 
