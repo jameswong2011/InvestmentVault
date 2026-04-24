@@ -103,12 +103,18 @@ Parse $ARGUMENTS to determine mode:
 
 ## Mode C: Batch Inbox Processing
 
-1. **Scan `_Inbox/`** for all files (excluding `_Inbox/processed/` and hidden files):
+1. **Scan `_Inbox/` and prior-processing guard in one Bash block** (fuses Mode C Step 1 + Step 3 — N per-file `[ -f ]` probes collapse to one `comm` set-difference):
    ```bash
-   find _Inbox/ -maxdepth 1 -type f \( -name "*.md" -o -name "*.pdf" -o -name "*.csv" -o -name "*.txt" \) | sort
+   find _Inbox/ -maxdepth 1 -type f \( -name "*.md" -o -name "*.pdf" -o -name "*.csv" -o -name "*.txt" \) -exec basename {} \; | sort > /tmp/ingest-inbox.list
+   find _Inbox/processed/ -maxdepth 1 -type f \( -name "*.md" -o -name "*.pdf" -o -name "*.csv" -o -name "*.txt" \) 2>/dev/null -exec basename {} \; | sort > /tmp/ingest-processed.list
+   echo "=== TO PROCESS (in _Inbox/ but not in processed/) ==="
+   comm -23 /tmp/ingest-inbox.list /tmp/ingest-processed.list
+   echo "=== SKIP (re-drops already in processed/) ==="
+   comm -12 /tmp/ingest-inbox.list /tmp/ingest-processed.list
+   rm -f /tmp/ingest-inbox.list /tmp/ingest-processed.list
    ```
-2. If no files found, report "Inbox empty — nothing to process" and stop.
-3. **Prior-processing guard**: for each inbox file, check whether `_Inbox/processed/[filename]` already exists. If it does, the file is a re-drop of something already processed — do NOT reprocess. Report `ℹ️ Skipped [filename] — already in _Inbox/processed/ from a prior run. Delete from _Inbox/ manually if intended to re-ingest fresh.` Move to the next file.
+2. If TO PROCESS is empty AND SKIP is empty, report "Inbox empty — nothing to process" and stop.
+3. **Prior-processing guard**: for every filename in the SKIP section, report `ℹ️ Skipped [filename] — already in _Inbox/processed/ from a prior run. Delete from _Inbox/ manually if intended to re-ingest fresh.` These are re-drops of already-processed content — do NOT reprocess.
 4. **Process each remaining file** through the Processing Pipeline below (Steps 1–3).
 5. **Post-write verification gate** — after the Processing Pipeline writes the research note, re-read it and verify (see `Post-write verification` section below). Only on verification success proceed to step 6.
 6. **Move the original** to `_Inbox/processed/` (verification-gated):

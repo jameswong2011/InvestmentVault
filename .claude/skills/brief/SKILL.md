@@ -131,7 +131,7 @@ propagated_to: []
 
 Do NOT modify the original thesis note (the brief is a derivative product, not a replacement).
 
-> **Graph update deferred**: `_graph.md` is now owned exclusively by `/graph`. After this skill, run `/graph last` to register the investment brief in the dependency map.
+> **Graph update deferred (accuracy note per User Guide §13)**: `/brief` creates a Research note but does NOT advance thesis mtimes or write `.graph_invalidations`. `/graph last` will NOT pick up this brief — it only processes theses changed since the last graph watermark. The new brief appears in `/graph`'s Orphan Research list only on the next **full `/graph` rebuild**, or once a thesis Edit wikilinks to it. For a brief-heavy chain where an up-to-date orphan list matters, run `/graph` (full).
 
 Update `_hot.md` per `.claude/skills/_shared/hot-md-contract.md` (read first, then edit — do NOT touch Latest Sync or Sync Archive, owned by `/sync`):
 

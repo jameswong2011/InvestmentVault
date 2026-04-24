@@ -8,7 +8,7 @@ allowed-tools: Read Grep Glob Edit Write Bash(date * find * cp * mkdir * touch *
 
 Propagate recent research insights across all affected vault documents. **For each affected note, think through the full implications of new research on every substantive section — not just append links.**
 
-Design rationale, edge cases, and historical design notes live in `.claude/skills/sync/RATIONALE.md`. SKILL.md contains the operational rules; RATIONALE.md explains why they're shaped this way. References in this file take the form `§N.M` and map to RATIONALE.md sections.
+Design rationale in `.claude/skills/sync/RATIONALE.md` (§N.M anchors).
 
 **Shared contracts this skill consumes**:
 - `.claude/skills/_shared/preflight.md` — vault locks, rename markers, name sanitization, section probes.
