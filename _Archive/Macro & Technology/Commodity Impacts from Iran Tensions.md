@@ -79,7 +79,7 @@ The **fertilizer nexus** is the critical transmission mechanism from energy disr
 - [[Theses/STNG - Scorpio Tankers]] — Product tanker infrastructure play; Q1 2026 TCE $32-51k/day; diesel cracks $44-50/bbl confirming product > crude thesis; dual blockade post-April 12 talk collapse
 - [[Theses/CCJ - Cameco]] — Uranium at ~$92/lb; nuclear renaissance narrative reinforced by crisis
 - [[Theses/RELIANCE - Reliance Industries]] — Jamnagar refinery benefits from surging crack spreads
-- [[Macro/Iran War Macroeconomic Scenario]] — Parent macro scenario analysis
+- [[Iran War Macroeconomic Scenario]] — Parent macro scenario analysis
 - [[Sectors/LNG & Natural Gas Infrastructure]] — LNG-level expression of commodity thesis (structural supply gap, Ras Laffan damage)
 - [[Sectors/Product Tankers & Maritime Shipping]] — Product tanker expression (ton-mile demand shock, insurance mechanism)
 - [[Sectors/Uranium & Nuclear Fuel]] — Uranium expression (nuclear renaissance as crisis hedge)

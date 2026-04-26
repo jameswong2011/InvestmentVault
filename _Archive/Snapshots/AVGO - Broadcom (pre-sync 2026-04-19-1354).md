@@ -33,7 +33,7 @@ $1.8T diversified semiconductor + infrastructure software company operating thro
 - How does Apple's Proxima chip timeline extend beyond Wi-Fi/BT? The RF FBAR business (~$2.7B, 65% of Apple-related revenue) is harder to replicate, but Apple's long-term insourcing intent is clear.
 - Is the $100B+ AI revenue 2027 target achievable if hyperscaler capex growth decelerates from current rates? Sensitivity to a capex pause vs. a capex cut matters.
 - What is Marvell's competitive trajectory? Their custom ASIC share (~13-15%) and AWS Trainium relationship could narrow the gap if execution improves.
-- How does the AI capex timing mismatch ([[Macro/AI Bubble Risk and Semiconductor Valuations]]) affect Broadcom's demand curve if enterprise AI monetization lags infrastructure investment?
+- How does the AI capex timing mismatch ([[AI Bubble Risk and Semiconductor Valuations]]) affect Broadcom's demand curve if enterprise AI monetization lags infrastructure investment?
 
 ## Business Model & Product Description
 
@@ -151,7 +151,7 @@ VMware's vSphere/VCF platform remains the dominant on-premise virtualization lay
 - [[Research/2025-11-27 - Broadcom Ethernet Networking Position]] — Ethernet market share analysis; Arista/Cisco competitive positioning; Tomahawk product roadmap; infrastructure layer thesis
 - [[Research/2025-11-27 - Broadcom Equity Research Framework]] — Full equity research framework; AI revenue projections (Goldman: $45B FY2026, $77B FY2027); peer valuation comparison; PEG analysis
 - [[Theses/NVDA - Nvidia]] — Complementary/competitive dynamics in AI infrastructure; PhysX/Omniverse moat; NVLink vs Ethernet
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch framework; $650B annual revenue requirement; custom ASIC market share data
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch framework; $650B annual revenue requirement; custom ASIC market share data
 - [[Sectors/Semiconductors]] — Sector Note with cross-thesis dynamics
 - [[Theses/LITE - Lumentum]] — CPO/photonics supply chain overlap; data center optical interconnect
 - [[Theses/PSTG - Pure Storage]] — AI data center infrastructure theme

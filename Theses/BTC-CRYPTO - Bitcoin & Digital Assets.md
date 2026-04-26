@@ -60,11 +60,12 @@ Bitcoin's value proposition is architecturally simple and deliberately constrain
 
 ### Ethereum (ETH) — The Global Settlement Layer
 
-Ethereum's value model is fundamentally different from Bitcoin's — it functions as a yield-bearing infrastructure asset rather than a store of value. The proof-of-stake consensus mechanism allows holders to earn 3.6-4.8% annual staking yield by securing the network.
-
-**The analogy: Ethereum is the "cloud computing platform" of decentralised finance**, where ETH is both the fuel (gas) and the collateral (staking). Unlike AWS, Ethereum's compute is globally distributed, censorship-resistant, and programmable by anyone.
-
-**Value accrual mechanism**: EIP-1559's fee burn creates deflationary pressure when network activity is high (base fees are destroyed). The net issuance formula is: Net Supply Change = Validator Issuance – Fee Burn. In high-activity periods, ETH becomes deflationary ("ultrasound money"). In the current L2-dominated environment, it is slightly inflationary (+0.22% annualised).
+| Aspect | Description |
+|---|---|
+| **Function** | Yield-bearing infrastructure asset (not store of value); proof-of-stake consensus pays holders 3.6-4.8% annual staking yield for securing the network |
+| **Analogy** | Cloud computing platform of decentralised finance — ETH is both fuel (gas) and collateral (staking). Unlike AWS, compute is globally distributed, censorship-resistant, and programmable by anyone |
+| **Value accrual mechanism** | EIP-1559 fee burn destroys base fees during high network activity. Net Supply Change = Validator Issuance – Fee Burn |
+| **Net issuance regime** | Slightly inflationary (+0.22% annualised) in current L2-dominated environment; deflationary ("ultrasound money") when L1 activity is high |
 
 **Revenue segmentation (novel heuristic)**:
 | Revenue Stream | Current Scale | Growth Trajectory |
@@ -73,6 +74,11 @@ Ethereum's value model is fundamentally different from Bitcoin's — it function
 | **Blob Data Fees** (L2 settlement) | Nascent (~$2-5M/month) | Scaling with L2 adoption; 8x capacity via Fusaka |
 | **Staking Yield** (validator rewards) | ~$5.5B annualised at 3.6% on 36.8M staked ETH | Stable; grows with ETH price and stake rate |
 | **MEV (Maximal Extractable Value)** | ~$500M-1B annually | Growing with DeFi complexity |
+
+> [!tip] 2026-04-25 → Addressed 2026-04-25
+> **Prompt:** *Make the above into a table.*
+>
+> **Response:** Converted the function/analogy/value-accrual/net-issuance prose paragraphs into a Key Characteristics table above the existing Revenue Segmentation table. Editorial-only change — no thesis content modified. See §Protocol Architecture & Value Accrual → Ethereum (ETH) — The Global Settlement Layer.
 
 **Layer 2 ecosystem**: Ethereum's modular scaling strategy delegates execution to L2s (Arbitrum, Optimism, Base, zkSync, Starknet) while retaining settlement and data availability on L1. This creates a "hub-and-spoke" architecture where Ethereum L1 functions as the supreme court (final settlement) and L2s function as local courts (fast execution). L2s process 92% of ecosystem transactions (11.35M daily vs L1's 1.15M).
 
@@ -314,7 +320,7 @@ The quantum transition creates three investable dynamics:
 - [[Research/2025-08-06 - Crypto - AI Regulation Impact on Crypto Development]] — 2025 US AI regulation impact on ETH/SOL/ADA/DOT/AVAX; TRAIGA sandbox, Right to Compute, VC flows, AI-blockchain convergence (ChatGPT)
 - [[Research/2026-04-01 - MSTR - Strategy Preferred Stock Capital Stack]] — STRF/STRC/STRK/STRD/MSTR seniority hierarchy, dividend terms, decision framework (ChatGPT)
 - [[Research/2025-12-26 - ETH - Ethereum Investment Dynamics Deep Dive]] — Stablecoin settlement $52.9T, enterprise use cases (Shenzhen Futian, Bhutan NDI, Coca-Cola Baseline), fundamentals-price divergence (ChatGPT)
-- [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]] — Stablecoin regulatory framework (GENIUS Act, MiCA); USDC as US strategic asset vs BRICS mBridge
+- [[Stablecoin Regulation as Geopolitical Infrastructure]] — Stablecoin regulatory framework (GENIUS Act, MiCA); USDC as US strategic asset vs BRICS mBridge
 - [[Sectors/Blockchain & Stablecoins]] — Primary sector: stablecoin regulatory infrastructure, USDC/Tether competitive dynamics, blockchain rails
 - [[Sectors/Precious Metals]] — Precious metals macro context; digital gold comparison; commodity market structure parallels
 
@@ -330,3 +336,7 @@ The quantum transition creates three investable dynamics:
 
 ### 2026-04-23
 - Wikilink cleanup: Related Research: replaced stale `[[Sectors/Consumer & Digital]]` with `[[Sectors/Blockchain & Stablecoins]]` (primary sector post-reorg) and added `[[Macro/Stablecoin Regulation as Geopolitical Infrastructure]]` macro link — symmetric with macro's forward reference. Conviction unchanged.
+
+### 2026-04-25
+- Addressed user callouts: ETH section prose (function/analogy/value-accrual/net-issuance) converted into Key Characteristics table per [!tip] — editorial-only formatting change. Conviction unchanged.
+- [[Sectors/Blockchain & Stablecoins]]: sector framework deepened (mBridge sovereign multi-CBDC platform with technical architecture + 4-phase adoption, per-chain quantum-resistance migration table with trade-off enumeration, GENIUS+CLARITY 8 adoption-curbing risks) — conviction unchanged, reinforces existing Insight #2 + Quantum Risk Assessment without new signal; sector now authoritative source for mBridge detail.

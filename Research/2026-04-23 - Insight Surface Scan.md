@@ -365,10 +365,9 @@ After this scan, run `/graph last` to register:
 
 - [[_hot.md]]
 - [[_graph.md]]
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]]
-- [[Macro/Commodity Impacts from Iran Tensions]]
-- [[Macro/Iran War Macroeconomic Scenario]]
-- [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]]
+- [[AI Bubble Risk and Semiconductor Valuations]]
+- [[Macro & Technology/Iran War Trading Playbook]]
+- [[Stablecoin Regulation as Geopolitical Infrastructure]]
 - [[Sectors/GPU & AI Compute Accelerators]]
 - [[Sectors/Semiconductor Capital Equipment]]
 - [[Sectors/NAND Memory & Storage]]

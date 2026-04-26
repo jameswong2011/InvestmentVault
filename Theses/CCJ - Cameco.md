@@ -211,9 +211,7 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Iran war macro scenario analysis; nuclear as energy sovereign baseload; policy transmission mechanisms
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — ChatGPT commodity hierarchy; uranium as 6–12 month second-wave trade
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Iran conflict capital allocation framework; uranium positioning
-- [[Macro/Iran War Macroeconomic Scenario]] — Stagflation vs. QE pivot scenarios; CCJ as structural position; A→C macro path uniquely bullish for nuclear
-- [[Macro/Commodity Impacts from Iran Tensions]] — Uranium at ~$92/lb; nuclear renaissance reinforced by crisis; energy sovereignty argument
-- [[Macro/Investment Strategy for US-Iran Conflict]] — CCJ surged 114% in 2025; nuclear as differentiated safe-haven; $80B government partnership
+- [[Macro & Technology/Iran War Trading Playbook]] — CCJ listed as Position #8 structural-into-2027 long; uranium at ~$92/lb; nuclear renaissance reinforced by crisis (energy-sovereignty policy acceleration); A→C macro path uniquely bullish for nuclear as physical-shortage-immune baseload; CCJ +114% in 2025; differentiated safe-haven framing
 - [[Sectors/Uranium & Nuclear Fuel]] — Sector Note; fuel-cycle competitive dynamics, Westinghouse/Brookfield/Cameco $80B partnership, re-contracting wave, HALEU bottleneck, and investor heuristics framework
 - [[Research/2026-01-26 - Silver Demand and Data Centers]] — Data center buildout commodity demand dynamics; power infrastructure context
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Structural Iran proxy resilience (Hezbollah rebuilt ~1/3 capability in a year, >$1B transferred 2025) supports sustained energy-sovereignty policy response — the 6-12 month re-rating trade framework on which CCJ's high conviction rests

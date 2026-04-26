@@ -617,7 +617,7 @@ The most important metric for the adoption curve: **Deere's 80%+ automation atta
 
 ### 6. Geopolitical & Commodity Disruption
 
-The Iran/Hormuz crisis ([[Macro/Commodity Impacts from Iran Tensions]]) creates second-order effects for agricultural equipment:
+The Iran/Hormuz crisis ([[Macro & Technology/Iran War Trading Playbook]]) creates second-order effects for agricultural equipment:
 
 - **Fertiliser cost inflation**: Higher energy costs → higher nitrogen fertiliser prices → compressed farm margins → reduced equipment demand
 - **Commodity price volatility**: A supply shock (La Nina/El Nino, Chinese soybean buying surge) could rapidly improve crop economics and accelerate equipment purchasing
@@ -712,7 +712,7 @@ Street upside cases (~$700-800) require flawless platform execution. Base-case m
 - [[Research/2025-12-11 - DE - Gemini Tech Advantage Canvas]] — Technology moat in agriculture and industrial sectors
 - [[Research/2025-11-28 - DE - Gemini Equity Research Canvas]] — Foundational equity research on Deere & Company
 - [[Research/2026-04-15 - IOT - Samsara Business Deep Dive]] — Connected operations overlap with ag/industrial equipment
-- [[Macro/Commodity Impacts from Iran Tensions]] — Second-order effects on farm input costs and equipment demand
+- [[Macro & Technology/Iran War Trading Playbook]] — Second-order effects on farm input costs and equipment demand; Tier 3 fertilizer transmission (urea +50% to $700/MT, ammonia approaching $600/MT, 30% of global exportable fertilizer offline)
 
 ## Log
 

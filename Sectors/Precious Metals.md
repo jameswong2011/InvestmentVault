@@ -255,7 +255,7 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 
 2. **China export licensing and SGE as clearing venue** (January 2026): 65% of global refined silver ring-fenced for domestic use; SGE premiums persist rather than arbitrage away. Structurally bullish for physical pricing if sustained.
 
-3. **Iran war stagflation dynamics** (February 2026-ongoing): Oil at $112-126 Brent, Fed holding 3.5-3.75%, forced cyclical gold drawdown from $5,595. Eventual Fed pivot (projected Q3 2026 if Scenario B triggers) catalyzes the mid-cycle gold/silver rally. See [[Macro/Iran War Macroeconomic Scenario]].
+3. **Iran war stagflation dynamics** (February 2026-ongoing): Oil at $112-126 Brent, Fed holding 3.5-3.75%, forced cyclical gold drawdown from $5,595. Eventual Fed pivot (projected Q3 2026 if Scenario B triggers) catalyzes the mid-cycle gold/silver rally. See [[Macro & Technology/Iran War Trading Playbook]].
 
 4. **AI / energy-transition industrial silver demand** (multi-year): ~15-50 Moz cumulative incremental silver demand 2025-2030 from data-center buildout and associated solar PV. Layered on a 46-148 Moz/year structural deficit that already exists.
 
@@ -303,9 +303,7 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 ## Cross-Sector Links
 
 - [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] — Digital-gold comparison; BTC stock-to-flow ~120 vs gold ~60; tokenized gold (PAXG/XAUT) as RWA bridge
-- [[Macro/Iran War Macroeconomic Scenario]] — Gold's counterintuitive $5,595 → $4,400 selloff; 1970s stagflation analog; Fed pivot as gold catalyst
-- [[Macro/Commodity Impacts from Iran Tensions]] — Precious metals within broader commodity hierarchy; GDX as leveraged crisis play
-- [[Macro/Investment Strategy for US-Iran Conflict]] — Strategic allocation frameworks including gold/miner exposure
+- [[Macro & Technology/Iran War Trading Playbook]] — Gold's counterintuitive $5,595 → $4,400 selloff (deepest wartime gold decline in BullionVault's 50-year dataset); 1970s stagflation analog; Fed pivot as gold catalyst; GDX listed as Position #9 leveraged crisis play; precious metals within broader 7-tier commodity hierarchy
 - [[Sectors/Uranium & Nuclear Fuel]] — Parallel "monetary metal" narrative: sanction-resistant, scarcity-driven, geopolitical reserve asset
 - [[Sectors/LNG & Natural Gas Infrastructure]] — Energy-driven inflation transmission into gold via Fed reaction function
 - [[Sectors/Product Tankers & Maritime Shipping]] — Shared Iran-crisis / stagflation regime exposure; parallel logistics-constrained market structure

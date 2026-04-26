@@ -64,13 +64,13 @@ The Crypto & Digital Assets sector spans five investable sub-sectors, each with 
 | Connection | Link | Relevance |
 |---|---|---|
 | **Payments disruption** | [[Sectors/Consumer & Digital]] | Visa/MA stablecoin integration; Stripe/Shopify USDC; Circle (CRCL) |
-| **Stablecoin regulation** | [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]] | GENIUS Act, CLARITY Act, MiCA — regulatory architecture reshaping payments, banking, FX; CRCL thesis catalyst |
+| **Stablecoin regulation** | [[Stablecoin Regulation as Geopolitical Infrastructure]] | GENIUS Act, CLARITY Act, MiCA — regulatory architecture reshaping payments, banking, FX; CRCL thesis catalyst |
 | **Financial services disruption** | [[Sectors/Financial Services]] | CPN competing with correspondent banking; Stripe/Bridge OCC charter; stablecoin settlement replacing SWIFT |
 | **Commodity market parallels** | [[Sectors/Energy & Commodities]] | BTC supply dynamics analogous to commodity markets; mining energy economics |
 | **Semiconductor demand** | [[Sectors/Semiconductors]] | Crypto mining ASIC demand; quantum computing hardware (Google, IBM) |
-| **Geopolitics** | [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]] | USDC vs BRICS mBridge; sovereign Bitcoin reserves; sanctions evasion dynamics |
+| **Geopolitics** | [[Stablecoin Regulation as Geopolitical Infrastructure]] | USDC vs BRICS mBridge; sovereign Bitcoin reserves; sanctions evasion dynamics |
 | **Gold comparison** | [[Sectors/Precious Metals]] | Digital gold thesis; BTC stock-to-flow exceeds gold (~120 vs ~60) |
-| **Iran conflict** | [[Macro/Investment Strategy for US-Iran Conflict]] | BTC as credibly neutral, seizure-resistant reserve; risk-off correlation risk |
+| **Iran conflict** | [[Investment Strategy for US-Iran Conflict]] | BTC as credibly neutral, seizure-resistant reserve; risk-off correlation risk |
 
 ## Token Watchlist
 
@@ -158,7 +158,7 @@ The Crypto & Digital Assets sector spans five investable sub-sectors, each with 
 2. **Circle Coinbase renegotiation (August 2026)** — **THE critical near-term catalyst for CRCL thesis.** Agreement initial term expires August 2026. Monitor: (a) whether Circle leverages CPN/Arc/x402 distribution to reduce off-platform share from 50/50; (b) whether Coinbase's veto power over new partnerships is loosened; (c) any commentary on Q1 2026 earnings call (May 11). Even modest improvement to 60/40 adds ~$130M annual pre-tax income. See [[Theses/CRCL - Circle Internet Group]].
 3. **CPN volume ramp** — Track CPN Managed Payments adoption with founding banks (Santander, Deutsche Bank, SocGen, StanChart). Key metric: monthly settled volume through CPN. Material revenue (>$50M/year) requires sustained cross-border flows. Watch Q2-Q3 2026 for first production data.
 4. **x402 AI agent payment scaling** — 75M+ transactions processed; 99% settle in USDC. Monitor: Linux Foundation governance milestones, enterprise API gateway adoption (Zuplo, Cloudflare), and transaction volume growth rate. If AI agent economy reaches $100B/year in API payments, x402 becomes a material USDC demand driver.
-5. **Stablecoin yield resolution in CLARITY Act** — Banking vs crypto dispute over "rewards" loophole. Resolution directly affects Coinbase's USDC rewards program and Circle's revenue mix. See [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]].
+5. **Stablecoin yield resolution in CLARITY Act** — Banking vs crypto dispute over "rewards" loophole. Resolution directly affects Coinbase's USDC rewards program and Circle's revenue mix. See [[Stablecoin Regulation as Geopolitical Infrastructure]].
 6. **Ethereum blob fee revenue inflection** — Key metric: does blob fee revenue scale with L2 adoption post-Fusaka, or does L2 value capture permanently impair ETH?
 7. **Solana institutional legitimacy** — Can Firedancer reliability + ETF flows narrow the decentralisation gap perception? Watch validator count trajectory.
 8. **Quantum timeline monitoring** — Track Google/Caltech CRQC progress vs Bitcoin BIP-360 adoption pace. 3-5 year window per Bernstein.

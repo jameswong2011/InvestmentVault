@@ -162,8 +162,7 @@ Why is this here?
 - [[Theses/STNG - Scorpio Tankers]] — Sanctions arbitrage creating ton-miles; macro scenario timing
 - [[Theses/CCJ - Cameco]] — Nuclear revalued as strategic pillar independent of maritime routes
 - [[Theses/LNG - Cheniere Energy]] — Japan/Korea LNG vulnerability; JKM-HH spread dynamics
-- [[Macro/Iran War Macroeconomic Scenario]]
-- [[Macro/Commodity Impacts from Iran Tensions]]
+- [[Macro & Technology/Iran War Trading Playbook]]
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Companion commodity analysis
 
 ## Related Sectors

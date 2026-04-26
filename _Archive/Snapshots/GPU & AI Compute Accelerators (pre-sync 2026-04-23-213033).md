@@ -181,7 +181,7 @@ The merchant GPU / accelerator product stack spans four tiers — training GPUs,
 - [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure]] — Vertiv liquid cooling collab with Nvidia; AI data center thermal chokepoint
 - [[Research/2025-11-27 - Broadcom Data Center Opportunity]] — Broadcom custom ASIC dual-franchise positioning; XPU revenue trajectory
 - [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]] — Broadcom "Android of AI" positioning vs Nvidia comparison
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — Nvidia valuations, custom silicon erosion risk (TPU, Trainium, Maia), CUDA moat analysis, $650B annual revenue requirement
+- [[AI Bubble Risk and Semiconductor Valuations]] — Nvidia valuations, custom silicon erosion risk (TPU, Trainium, Maia), CUDA moat analysis, $650B annual revenue requirement
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — adjacent sector MOC: Broadcom custom ASIC + merchant switching + scale-up fabric dynamics (complement to GPU sector)
 - [[Sectors/NAND Memory & Storage]] — adjacent sector MOC: SK Hynix / Micron / SanDisk exposure to AI compute via HBM + HBF memory tiers
 - [[Sectors/Semiconductor Capital Equipment]] — adjacent sector MOC: KLA/AMAT/LRCX/ASMI/TEL/BESI equipment supplying the GPU + ASIC manufacturing

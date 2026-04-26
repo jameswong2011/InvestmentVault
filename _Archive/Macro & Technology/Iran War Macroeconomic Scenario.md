@@ -109,7 +109,7 @@ The wage-price spiral risk is real but contained for now. Average hourly earning
 - [[Theses/LNG - Cheniere Energy]] — primary LNG beneficiary
 - [[Theses/STNG - Scorpio Tankers]] — product tanker disruption play
 - [[Theses/CCJ - Cameco]] — uranium as energy sovereignty asset
-- [[Macro/Commodity Impacts from Iran Tensions]]
+- [[Commodity Impacts from Iran Tensions]]
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — Full commodity impact hierarchy (LNG #1, diesel #2, crude #3)
 - [[Research/2026-04-02 - GCC Market Shorting Options]] — GCC shorting instruments (GAC future, XGLF ETF, KSA proxy)
 - [[Research/2026-04-02 - Israel India Relations Analysis]] — Geopolitical dynamics analysis

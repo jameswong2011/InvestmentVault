@@ -89,8 +89,8 @@ Cybersecurity spending is entering a structural acceleration phase driven by thr
 ## Cross-Sector Links
 - [[Sectors/Enterprise Software]] — PANW previously tracked in Enterprise Software watchlist; cybersecurity platformization shares dynamics with enterprise software consolidation (NOW, PLTR)
 - [[Theses/NET - Cloudflare]] — SASE competitor; Cloudflare One platform; $325-540M est. security ARR, 2-5 years behind ZS/PANW in enterprise maturity
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex drives both AI infrastructure AND AI threat escalation, benefiting cybersecurity spending. PANW now tracked as related thesis (cybersecurity as AI derivative play)
-- [[Macro/Investment Strategy for US-Iran Conflict]] — Iran-linked cyber operations as geopolitical demand driver for platform vendors
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI capex drives both AI infrastructure AND AI threat escalation, benefiting cybersecurity spending. PANW now tracked as related thesis (cybersecurity as AI derivative play)
+- [[Investment Strategy for US-Iran Conflict]] — Iran-linked cyber operations as geopolitical demand driver for platform vendors
 
 ## Log
 

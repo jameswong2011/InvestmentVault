@@ -161,3 +161,6 @@ The GENIUS Act Section 4(a)(11) prohibition on yield for payment stablecoins is 
 
 ### 2026-04-24
 - Manual edit: added ## Log section to align with macro convention. Backfill of prior content history not attempted; Log starts here. Enables future /sync and /archive-callouts to write audit-trail entries.
+
+### 2026-04-25
+- [[Sectors/Blockchain & Stablecoins]]: sector framework deepened with new §Macro shifts subsections — GENIUS+CLARITY provisions and 8 adoption-curbing risks (yield prohibition driving USDT/offshore-wrapper retention, decentralisation-test issuer uncertainty, state-license fragmentation, travel-rule UX degradation, federal-preemption litigation, capital-intensity-driven consolidation, OFAC permissionless-transfer enforcement); plus Quantum-resistance per-chain migration table. Reinforces existing macro framework; no body changes — sector now houses the operational-risk detail this macro abstracts.

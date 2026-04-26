@@ -98,7 +98,7 @@ Patel closes with two predictions and a framing concept. The framing is **"phant
 
 **Introduces new risk for all AI-exposed theses**: Dylan's 3-month protest prediction (July 2026) is a political/regulatory tail not currently in any vault thesis Risks section. If protests materialize, hyperscaler capex sentiment could re-price — though actual capex is contractually committed 2+ years forward, so protest impact is likely multiple-compression (valuation) not earnings.
 
-**Challenges [[Macro/AI Bubble Risk and Semiconductor Valuations]]**: Dylan frames the gap between "what model labs can serve" vs "what economic value tokens can generate" as growing — implying margin expansion at model labs and infrastructure is structurally protected from the J.P. Morgan $650B revenue-requirement threshold, because token-value-to-cost ratio keeps expanding faster than token supply. Partially invalidates the bubble framing by arguing the productivity-gains half of the ledger is accelerating.
+**Challenges [[AI Bubble Risk and Semiconductor Valuations]]**: Dylan frames the gap between "what model labs can serve" vs "what economic value tokens can generate" as growing — implying margin expansion at model labs and infrastructure is structurally protected from the J.P. Morgan $650B revenue-requirement threshold, because token-value-to-cost ratio keeps expanding faster than token supply. Partially invalidates the bubble framing by arguing the productivity-gains half of the ledger is accelerating.
 
 **Alignment with [[Research/2026-04-23 - NVDA - Stress Test]]**: This interview provides bull-case counter-ammunition to the stress test's 6/10 🔴 assumptions — specifically the Jevons vs compound efficiency debate (token demand keeps growing faster than efficiency gains per Dylan's framing). Does not resolve Taiwan tail or ASIC share erosion 🔴 assumptions.
 
@@ -133,6 +133,6 @@ Patel closes with two predictions and a framing concept. The framing is **"phant
 - [[Sectors/NAND Memory & Storage]] — supply growth differential
 - [[Sectors/Semiconductor Foundries]] — TSMC capex trajectory
 - [[Sectors/Semiconductor Capital Equipment]] — equipment supply-chain tail-whip
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — partial challenge; token-value-to-cost gap growing faster than infrastructure supply
+- [[AI Bubble Risk and Semiconductor Valuations]] — partial challenge; token-value-to-cost gap growing faster than infrastructure supply
 - [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — complementary on CPU demand architecture
 - [[Research/2026-04-23 - NVDA - Stress Test]] — bull-case counter-ammunition on Jevons/efficiency debate (does not resolve Taiwan/ASIC 🔴 assumptions)

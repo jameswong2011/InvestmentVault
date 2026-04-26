@@ -151,9 +151,7 @@ Seven macro vectors are simultaneously driving the sector's re-rating — the st
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — uranium as 6–12 month second-wave energy-security trade; LNG/coal/nuclear substitution hierarchy; relative-value trade construction
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — capital allocation framework for kinetic conflict; uranium as durable structural position vs. tactical oil trades; Strait of Hormuz premium mechanics
 - [[Research/2026-01-26 - Silver Demand and Data Centers]] — data-center buildout power-generation mix; silver/nuclear/solar PV interaction in AI demand
-- [[Macro/Iran War Macroeconomic Scenario]] — A→C macro path (stagflation, rationing, emergency liquidity) uniquely bullish for nuclear as physical-shortage-immune baseload
-- [[Macro/Commodity Impacts from Iran Tensions]] — uranium at ~$92/lb mid-cycle; nuclear renaissance reinforced by crisis; energy-sovereignty policy acceleration
-- [[Macro/Investment Strategy for US-Iran Conflict]] — CCJ +114% in 2025; nuclear as differentiated safe-haven; $80B U.S. government Westinghouse/Brookfield/Cameco partnership context
+- [[Macro & Technology/Iran War Trading Playbook]] — A→C macro path (stagflation, rationing, emergency liquidity) uniquely bullish for nuclear as physical-shortage-immune baseload; uranium at ~$92/lb mid-cycle; nuclear renaissance reinforced by crisis (energy-sovereignty policy acceleration); CCJ listed as Position #8 structural-into-2027 long; CCJ +114% in 2025; differentiated safe-haven framing
 
 ## Log
 ### 2026-04-22

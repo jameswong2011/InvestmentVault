@@ -106,4 +106,4 @@ The competitive implication is that **Intel Diamond Rapids is compromised at bot
 - [[Sectors/GPU & AI Compute Accelerators]] — agentic CPU bottleneck extends sector scope beyond accelerators
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — tangential (AWS Graviton5, Google x86+TPU, ARM Phoenix PCIe6 XPU)
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — complementary context on Jensen's "many more" Vera deployments framing
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — CPU demand inflection validates continued AI capex cycle (expanding silicon TAM vs concentration in GPU alone)
+- [[AI Bubble Risk and Semiconductor Valuations]] — CPU demand inflection validates continued AI capex cycle (expanding silicon TAM vs concentration in GPU alone)

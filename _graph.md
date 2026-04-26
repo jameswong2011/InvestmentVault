@@ -26,7 +26,7 @@ orphans: 5
 
 ### 000660 - SK Hynix
 - **sectors:** [[Sectors/DRAM & HBM Memory]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/NVDA - Nvidia]], [[Theses/SNDK - SanDisk]], [[Theses/TSM - Taiwan Semiconductor]]
 - **research:** [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]], [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]], [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]], [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]], [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]
 - **status:** draft
@@ -36,7 +36,7 @@ orphans: 5
 
 ### AMD - Advanced Micro Devices
 - **sectors:** [[Sectors/GPU & AI Compute Accelerators]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SNDK - SanDisk]], [[Theses/TSM - Taiwan Semiconductor]]
 - **research:** [[Research/2025-11-27 - Broadcom Data Center Opportunity]], [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]], [[Research/2026-03-14 - CXL Technology Adoption]], [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]], [[Research/2026-04-19 - TSM - Stress Test]], [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]], [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]], [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]
 - **status:** active
@@ -58,7 +58,7 @@ orphans: 5
 
 ### AVGO - Broadcom
 - **sectors:** [[Sectors/Custom Silicon & Networking Semiconductors]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/PSTG - Pure Storage]]
 - **research:** [[Research/2025-11-27 - Broadcom Data Center Opportunity]], [[Research/2025-11-27 - Broadcom Equity Research Framework]], [[Research/2025-11-27 - Broadcom Ethernet Networking Position]], [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]]
 - **status:** active
@@ -80,7 +80,7 @@ orphans: 5
 
 ### BTC-CRYPTO - Bitcoin & Digital Assets
 - **sectors:** [[Sectors/Blockchain & Stablecoins]], [[Sectors/Precious Metals]]
-- **macro:** [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]]
+- **macro:** [[Stablecoin Regulation as Geopolitical Infrastructure]]
 - **cross-thesis:** —
 - **research:** [[Research/2025-07-10 - CRCL - Circle USDC vs BRICS mBridge Geopolitical Analysis]], [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]], [[Research/2025-07-21 - Ethereum Solana Tokenization]], [[Research/2025-08-06 - Crypto - AI Regulation Impact on Crypto Development]], [[Research/2025-11-18 - Ethereum vs Layer 1 Chains]], [[Research/2025-11-24 - BTC - Quantum Computing Threat to Bitcoin Security]], [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]], [[Research/2025-12-26 - ETH - Ethereum Investment Dynamics Deep Dive]], [[Research/2025-12-26 - ETH - Gemini Stablecoins Ecosystem Canvas]], [[Research/2025-12-26 - Ethereum Stablecoin Adoption]], [[Research/2026-03-20 - Crypto - Gemini Trading Infrastructure Canvas]], [[Research/2026-04-01 - MSTR - Strategy Preferred Stock Capital Stack]]
 - **status:** active
@@ -91,7 +91,7 @@ orphans: 5
 
 ### CCJ - Cameco
 - **sectors:** [[Sectors/Uranium & Nuclear Fuel]]
-- **macro:** [[Macro/Commodity Impacts from Iran Tensions]], [[Macro/Investment Strategy for US-Iran Conflict]], [[Macro/Iran War Macroeconomic Scenario]]
+- **macro:** [[Commodity Impacts from Iran Tensions]], [[Investment Strategy for US-Iran Conflict]], [[Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
 - **research:** [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-01-26 - Silver Demand and Data Centers]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
@@ -102,7 +102,7 @@ orphans: 5
 
 ### CRCL - Circle Internet Group
 - **sectors:** [[Sectors/Blockchain & Stablecoins]]
-- **macro:** [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]]
+- **macro:** [[Stablecoin Regulation as Geopolitical Infrastructure]]
 - **cross-thesis:** [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]]
 - **research:** [[Research/2025-07-10 - CRCL - Circle USDC vs BRICS mBridge Geopolitical Analysis]], [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]], [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]], [[Research/2025-12-26 - ETH - Ethereum Investment Dynamics Deep Dive]], [[Research/2025-12-26 - Ethereum Stablecoin Adoption]], [[Research/2026-04-15 - BTC-CRYPTO - Comprehensive Digital Assets Update April 2026 - deep-dive]]
 - **status:** active
@@ -242,7 +242,7 @@ orphans: 5
 
 ### LITE - Lumentum
 - **sectors:** [[Sectors/Optical Networking & Photonics]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/SEMICAP - Semiconductor Capital Equipment]]
 - **research:** [[Research/2025-11-25 - LITE - Silicon Photonics Supply Chain]], [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]], [[Research/2026-03-02 - Chinese Silicon Photonics Threat]], [[Research/2026-03-09 - Photonics and CPO Investment Outlook]], [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]], [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]], [[Research/2026-04-15 - LITE COHR - Lumentum vs Coherent Analysis]]
 - **status:** active
@@ -253,7 +253,7 @@ orphans: 5
 
 ### LNG - Cheniere Energy
 - **sectors:** [[Sectors/LNG & Natural Gas Infrastructure]]
-- **macro:** [[Macro/Commodity Impacts from Iran Tensions]], [[Macro/Investment Strategy for US-Iran Conflict]], [[Macro/Iran War Macroeconomic Scenario]]
+- **macro:** [[Commodity Impacts from Iran Tensions]], [[Investment Strategy for US-Iran Conflict]], [[Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
 - **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
@@ -264,7 +264,7 @@ orphans: 5
 
 ### META - Meta
 - **sectors:** [[Sectors/Social Platforms & Digital Advertising]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** —
 - **research:** [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]], [[Research/2025-12-05 - Macro - Gemini AI Bubble Risk Canvas]]
 - **status:** active
@@ -275,7 +275,7 @@ orphans: 5
 
 ### MRVL - Marvell Technology
 - **sectors:** [[Sectors/Custom Silicon & Networking Semiconductors]], [[Sectors/GPU & AI Compute Accelerators]], [[Sectors/Optical Networking & Photonics]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/AVGO - Broadcom]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]]
 - **research:** [[Research/2025-11-25 - LITE - Silicon Photonics Supply Chain]], [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]], [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]], [[Research/2026-03-02 - Chinese Silicon Photonics Threat]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-23 - Insight Surface Scan]], [[Research/2026-04-23 - NVDA - Investment Brief]]
 - **status:** draft
@@ -328,7 +328,7 @@ orphans: 5
 
 ### NVDA - Nvidia
 - **sectors:** [[Sectors/GPU & AI Compute Accelerators]], [[Sectors/NAND Memory & Storage]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/PLTR - Palantir]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]]
 - **research:** [[Research/2025-07-15 - Data Center Liquid Cooling]], [[Research/2025-08-09 - Performance vs Standardization]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]], [[Research/2026-04-23 - NVDA - CUDA Moat and Omniverse Upside - deep-dive]], [[Research/2026-04-23 - NVDA - Stress Test]], [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]], [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]], [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]
 - **status:** active
@@ -361,7 +361,7 @@ orphans: 5
 
 ### PLTR - Palantir
 - **sectors:** [[Sectors/Enterprise Workflow AI & Automation]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/NET - Cloudflare]], [[Theses/NOW - ServiceNow]]
 - **research:** [[Research/2025-02-19 - PLTR - Palantir Valuation Analysis]], [[Research/2026-03-21 - PLTR - Gemini Strategy Canvas]], [[Research/2026-03-29 - PLTR - Gemini Automation Platforms Canvas]], [[Research/2026-03-29 - Palantir Comparison]], [[Research/2026-03-31 - Databricks Threat to Palantir]], [[Research/2026-04-05 - ServiceNow CMDB vs Palantir Ontology]], [[Research/2026-04-09 - ServiceNow CMDB Dependency and Limitations]], [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]], [[Research/2026-04-15 - PLTR - Competitive Win Scenarios]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
@@ -372,7 +372,7 @@ orphans: 5
 
 ### PSTG - Pure Storage
 - **sectors:** [[Sectors/Enterprise Storage Infrastructure]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/META - Meta]], [[Theses/NVDA - Nvidia]], [[Theses/SNDK - SanDisk]]
 - **research:** [[Research/2026-01-15 - PSTG]]
 - **status:** active
@@ -383,7 +383,7 @@ orphans: 5
 
 ### RELIANCE - Reliance Industries
 - **sectors:** [[Sectors/Indian Digital Conglomerates]]
-- **macro:** [[Macro/Commodity Impacts from Iran Tensions]]
+- **macro:** [[Commodity Impacts from Iran Tensions]]
 - **cross-thesis:** —
 - **research:** [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-02 - Israel India Relations Analysis]], [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
@@ -438,7 +438,7 @@ orphans: 5
 
 ### STNG - Scorpio Tankers
 - **sectors:** [[Sectors/Product Tankers & Maritime Shipping]]
-- **macro:** [[Macro/Commodity Impacts from Iran Tensions]], [[Macro/Investment Strategy for US-Iran Conflict]], [[Macro/Iran War Macroeconomic Scenario]]
+- **macro:** [[Commodity Impacts from Iran Tensions]], [[Investment Strategy for US-Iran Conflict]], [[Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
 - **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-02 - GCC Market Shorting Options]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
 - **status:** active
@@ -449,7 +449,7 @@ orphans: 5
 
 ### TSM - Taiwan Semiconductor
 - **sectors:** [[Sectors/Semiconductor Capital Equipment]], [[Sectors/Semiconductor Foundries]]
-- **macro:** [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]]
 - **research:** [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]], [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]], [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]
 - **status:** active
@@ -460,7 +460,7 @@ orphans: 5
 
 ### TTWO - Take-Two Interactive
 - **sectors:** [[Sectors/Video Game Publishing]]
-- **macro:** [[Macro/Iran War Macroeconomic Scenario]]
+- **macro:** [[Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
 - **research:** [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]], [[Research/2026-04-24 - GTA 6 Creator Economy and FiveM Monetization - web-clip]]
 - **status:** active
@@ -504,12 +504,12 @@ orphans: 5
 
 | Macro Note | Theses |
 |---|---|
-| [[Macro/AI Bubble Risk and Semiconductor Valuations]] | [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/LITE - Lumentum]], [[Theses/META - Meta]], [[Theses/NOW - ServiceNow]], [[Theses/NVDA - Nvidia]], [[Theses/PANW - Palo Alto Networks]], [[Theses/PLTR - Palantir]], [[Theses/PSTG - Pure Storage]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
-| [[Macro/Commodity Impacts from Iran Tensions]] | [[Theses/000660 - SK Hynix]], [[Theses/285A - Kioxia]], [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/RELIANCE - Reliance Industries]], [[Theses/SNDK - SanDisk]], [[Theses/STNG - Scorpio Tankers]] |
-| [[Macro/Investment Strategy for US-Iran Conflict]] | [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/PANW - Palo Alto Networks]], [[Theses/STNG - Scorpio Tankers]] |
-| [[Macro/Iran War Macroeconomic Scenario]] | [[Theses/000660 - SK Hynix]], [[Theses/285A - Kioxia]], [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/SNDK - SanDisk]], [[Theses/STNG - Scorpio Tankers]], [[Theses/TSM - Taiwan Semiconductor]], [[Theses/TTWO - Take-Two Interactive]] |
-| [[Macro/Stablecoin Regulation as Geopolitical Infrastructure]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]], [[Theses/CRCL - Circle Internet Group]] |
-| [[Macro/VIX Index and Implied Volatility]] | — |
+| [[AI Bubble Risk and Semiconductor Valuations]] | [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/LITE - Lumentum]], [[Theses/META - Meta]], [[Theses/NOW - ServiceNow]], [[Theses/NVDA - Nvidia]], [[Theses/PANW - Palo Alto Networks]], [[Theses/PLTR - Palantir]], [[Theses/PSTG - Pure Storage]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
+| [[Commodity Impacts from Iran Tensions]] | [[Theses/000660 - SK Hynix]], [[Theses/285A - Kioxia]], [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/RELIANCE - Reliance Industries]], [[Theses/SNDK - SanDisk]], [[Theses/STNG - Scorpio Tankers]] |
+| [[Investment Strategy for US-Iran Conflict]] | [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/PANW - Palo Alto Networks]], [[Theses/STNG - Scorpio Tankers]] |
+| [[Iran War Macroeconomic Scenario]] | [[Theses/000660 - SK Hynix]], [[Theses/285A - Kioxia]], [[Theses/CCJ - Cameco]], [[Theses/LNG - Cheniere Energy]], [[Theses/SNDK - SanDisk]], [[Theses/STNG - Scorpio Tankers]], [[Theses/TSM - Taiwan Semiconductor]], [[Theses/TTWO - Take-Two Interactive]] |
+| [[Stablecoin Regulation as Geopolitical Infrastructure]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]], [[Theses/CRCL - Circle Internet Group]] |
+| [[VIX Index and Implied Volatility]] | — |
 
 ## Reverse Index: Sector → Theses
 

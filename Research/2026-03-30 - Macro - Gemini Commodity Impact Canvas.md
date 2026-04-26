@@ -177,8 +177,7 @@ Why is this here?
 - [[Theses/STNG - Scorpio Tankers]] — Market complacency vs physical disruption; net oil shortage 14.5-16.5M bbl/day
 - [[Theses/CCJ - Cameco]] — Uranium #1 positively impacted commodity; 65% post-2027 demand uncontracted
 - [[Theses/LNG - Cheniere Energy]] — Europe's LNG bridge broken; logistics surcharge; Qatar helium risk
-- [[Macro/Iran War Macroeconomic Scenario]]
-- [[Macro/Commodity Impacts from Iran Tensions]]
+- [[Macro & Technology/Iran War Trading Playbook]]
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Companion geopolitical/macro analysis
 
 ## Related Sectors

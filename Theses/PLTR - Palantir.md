@@ -240,7 +240,7 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 - [[Theses/NOW - ServiceNow]] — Complementary enterprise AI positioning (Ontology vs CMDB)
 - [[Theses/NET - Cloudflare]] — Adjacent enterprise software / edge AI thesis
 - [[Sectors/Enterprise Workflow AI & Automation]]
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- [[AI Bubble Risk and Semiconductor Valuations]]
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates defense procurement (Maven, Warp Speed, Alpamayo, ShipOS); NATO sovereign AI expansion
 
 ## Log

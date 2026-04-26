@@ -60,9 +60,9 @@ Samsung Electronics + SK Hynix fab risk
 
 **Challenges [[Theses/TSM - Taiwan Semiconductor]]**: TSMC's advanced nodes also consume Japanese PR/BARC (Shin-Etsu, TOK are primary sole-source suppliers for EUV PR). TSM thesis does not model a Japanese materials disruption. However, article notes Taiwan/Korean localization is farther along than Japanese — TSMC may be less exposed than Samsung/Hynix. Outstanding question.
 
-**Supports [[Macro/Commodity Impacts from Iran Tensions]]**: this is a direct downstream effect of the Hormuz blockade commodity framework. Fertilizer, LNG, oil disruptions are already in the macro; semiconductor photo materials are an unpriced fifth transmission channel.
+**Supports [[Macro & Technology/Iran War Trading Playbook]]**: this is a direct downstream effect of the Hormuz blockade commodity framework. Fertilizer, LNG, oil disruptions are already in the macro; semiconductor photo materials are an unpriced fifth transmission channel.
 
-**Supports [[Macro/Iran War Macroeconomic Scenario]]**: validates the "sustained-crisis" tail — insurance-mechanism damage persists even after ceasefire, and material-input supply chains (naphtha → PGMEA) have months-to-year rebuild timelines regardless of political resolution.
+**Supports [[Macro & Technology/Iran War Trading Playbook]]**: validates the "sustained-crisis" tail — insurance-mechanism damage persists even after ceasefire, and material-input supply chains (naphtha → PGMEA) have months-to-year rebuild timelines regardless of political resolution.
 
 ## Source Excerpts
 
@@ -87,6 +87,4 @@ Samsung Electronics + SK Hynix fab risk
 - [[Sectors/NAND Memory & Storage]] — Japanese NAND fab exposure
 - [[Sectors/Semiconductor Foundries]] — leading-edge PR supply chain
 - [[Sectors/Semiconductor Capital Equipment]] — PCN cycle impact
-- [[Macro/Commodity Impacts from Iran Tensions]] — adds semiconductor photo materials as a fifth transmission channel (energy, fertilizer, LNG, metals, now photo materials)
-- [[Macro/Iran War Macroeconomic Scenario]] — parent scenario; material-chain rebuild timeline extends crisis duration
-- [[Macro/Investment Strategy for US-Iran Conflict]] — sector-allocation implications
+- [[Macro & Technology/Iran War Trading Playbook]] — parent macro framework: this note adds semiconductor photo materials as a fifth commodity transmission channel (alongside energy / fertilizer / LNG / metals); material-chain rebuild timeline extends Scenario A duration; sector-allocation implications include Korean memory + Japanese NAND + Taiwan foundry indirect exposure

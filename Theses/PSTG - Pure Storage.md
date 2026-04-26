@@ -237,7 +237,7 @@ Pure's strategic insight was recognizing that the commodity SSD layer is a **val
 
 - [[Research/2026-01-15 - PSTG]] — Comprehensive 10-section analysis: DirectFlash architecture, platform strategy, AI infrastructure, hyperscale opportunity, competitive landscape, financial analysis, ESG
 - [[Sectors/Enterprise Storage Infrastructure]] — Sector Note with PSTG positioning, competitive dynamics, AI storage landscape
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI infrastructure storage layer positioning
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI infrastructure storage layer positioning
 - [[Theses/NVDA - Nvidia]] — NVIDIA SuperPOD certification, AIRI reference architecture, AI infrastructure ecosystem
 - [[Theses/META - Meta]] — Hyperscaler design win customer; AI infrastructure capex trajectory
 - [[Theses/AVGO - Broadcom]] — AI infrastructure ecosystem; hyperscaler relationships

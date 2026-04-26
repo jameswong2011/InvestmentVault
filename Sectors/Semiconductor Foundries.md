@@ -159,7 +159,7 @@ IIM-1 Chitose (Hokkaido): cleanroom activated mid-2025; EUV installed; 2nm GAA t
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei Ascend 950PR/950DT/960/970 roadmap fabbed at SMIC with in-house HBM; quantifies the ~$40-50B China-domestic bucket structurally lost to TSMC
 
 ### Macro linkage
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex cycle is the demand driver for foundry advanced-node / advanced-packaging pricing power
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI capex cycle is the demand driver for foundry advanced-node / advanced-packaging pricing power
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — SemiAnalysis projects TSMC 2028 capex ~$100B; "good people" single-digit pricing discipline is both durability signal and hidden option value
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Japanese PR/BARC supply chain risk to leading-edge foundry EUV lithography; TSM less exposed than Samsung/Hynix per Taiwan/Korean localization status
 

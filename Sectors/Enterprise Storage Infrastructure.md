@@ -205,7 +205,7 @@ Huawei's 12% ESS share concentrated in China/Asia/Africa/LatAm; Madrid Connect E
 - [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]] — NAND supercycle data (+70–75% QoQ Q2 2026 contract, supply deficit through 2027), HBF viability, YMTC enterprise gap — direct input cost implications for every storage array vendor
 - [[Research/2025-07-15 - Data Center Liquid Cooling]] — Data center thermal architecture and liquid cooling adoption; context for storage power-arbitrage thesis
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]] — Meta data center design philosophy; backdrop for the Pure-Meta hyperscaler design win
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI infrastructure valuation framework; storage peer-set implications
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI infrastructure valuation framework; storage peer-set implications
 
 ## Log
 ### 2026-04-22

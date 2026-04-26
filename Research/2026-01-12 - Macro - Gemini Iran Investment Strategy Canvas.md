@@ -285,8 +285,7 @@ Why is this here?
 ---
 
 ## Related
-- [[Macro/Iran War Macroeconomic Scenario]]
-- [[Macro/Investment Strategy for US-Iran Conflict]]
+- [[Macro & Technology/Iran War Trading Playbook]]
 - [[Theses/STNG - Scorpio Tankers]] — Tanker positioning in conflict
 - [[Theses/CCJ - Cameco]] — Uranium as energy sovereignty asset
 - [[Theses/LNG - Cheniere Energy]] — LNG supply dynamics

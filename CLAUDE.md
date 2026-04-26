@@ -119,9 +119,14 @@ Each sector note acts as a Map of Content (MOC) and follows this structure:
 10. **Legacy Callouts** — Auto-managed archive of addressed callouts swept from their original sections (owned exclusively by `/archive-callouts` — do NOT hand-edit)
 11. **Log** — Dated entries tracking sector note evolution
 
-### Macro Notes (/Macro)
+### Macro & Technology Notes (/Macro & Technology)
 - Geopolitical scenarios, commodity frameworks, rates outlook
-- Strategies for short to medium term macro shock and trends, sector specific industry dynamics should be left in sector research
+	- Strategies for short to medium term macro shock and trends, sector specific industry dynamics should be left in sector research
+- Technology trends
+	- detailed breakdown of why this is happening, and who it affects
+	- mental models as to how it links to past shifts both in this industry and across others
+	- frameworks to demonstrate how adoption could improve/falter, timelines for adoption
+	- catalysts/observations for when investor expectations could result in re-rating
 - Trading opportunities and portfolio re-allocation strategies in response to newsflow
 - Link to affected thesis notes across sectors
 

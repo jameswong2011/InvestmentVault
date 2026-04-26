@@ -230,9 +230,7 @@ Path: $4,708 → $4,200 (Warsh confirmation) → $3,800 (real yields break 2.5%)
 ## Related Research
 
 - [[Sectors/Precious Metals]] — sector-level context on gold market structure, silver dynamics, mining tiers, GSR framework
-- [[Macro/Iran War Macroeconomic Scenario]] — Scenario A (stagflation) vs B (QE pivot); gold contrarian entry at $4,400 cited
-- [[Macro/Commodity Impacts from Iran Tensions]] — gold $5,595 ATH history, $2T flash crash March 23, Trade 5 Long GDX rationale
-- [[Macro/Investment Strategy for US-Iran Conflict]] — portfolio positioning under US-Iran conflict scenarios
+- [[Macro & Technology/Iran War Trading Playbook]] — GDX listed as Position #9 structural-into-2027 long (Scenario B reflation play); gold's counterintuitive $5,595 → $4,400 selloff (deepest wartime gold decline in BullionVault's 50-year dataset); $2T flash crash March 23; central bank floor 755–850 tonnes 2026; JP Morgan $6,300 / Deutsche $6,000 year-end targets; Scenario A vs B portfolio positioning framework
 - [[Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics]] — LBMA paper-physical stress, delivery delays, tariff-induced panic
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — GLD/GDX/Newmont explicitly flagged as hedge gaps; $4,400 contrarian entry cited
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — gold ranked "mild short near term" during Iran regime

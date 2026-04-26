@@ -201,7 +201,7 @@ The bull case is the monopoly-rents thesis fully realized over 2026-2028:
 
 Bear case is a combination of customer concentration shock + Arizona margin drag + geopolitical re-rating:
 
-1. **AI capex compresses in 2027**: NVDA earnings disappoint (hyperscaler ROI shortfall; see [[Macro/AI Bubble Risk and Semiconductor Valuations.md]]). TSMC HPC revenue grows only 5-10% in 2027 vs +50% 2026. AI-leveraged platforms (AVGO, AMD, MRVL) follow.
+1. **AI capex compresses in 2027**: NVDA earnings disappoint (hyperscaler ROI shortfall; see [[AI Bubble Risk and Semiconductor Valuations]]). TSMC HPC revenue grows only 5-10% in 2027 vs +50% 2026. AI-leveraged platforms (AVGO, AMD, MRVL) follow.
 
 2. **Apple share erodes to <20%**: iPhone saturation + on-device AI workload staying on M-series only. AAPL revenue contribution falls 25% → 18% by 2028.
 
@@ -241,7 +241,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### Thesis risks (the investment case is wrong)
 
-1. **AI capex cycle peak is Q4 2026** — not 2028 or later. Most important single risk. If hyperscaler capex growth stalls at +$400B annualized and decelerates, TSMC HPC revenue misses by 20-30% in 2027-2028. Linked to [[Macro/AI Bubble Risk and Semiconductor Valuations.md]].
+1. **AI capex cycle peak is Q4 2026** — not 2028 or later. Most important single risk. If hyperscaler capex growth stalls at +$400B annualized and decelerates, TSMC HPC revenue misses by 20-30% in 2027-2028. Linked to [[AI Bubble Risk and Semiconductor Valuations]].
 
 2. **Customer concentration shock** — AAPL+NVDA at 40% of revenue is unprecedented for a $1T+ manufacturer. A single NVDA negative surprise translates to immediate TSMC downgrade cycle. This is a thesis risk because it invalidates the "diversified monopoly" framing.
 
@@ -285,7 +285,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 ### Sector & macro context
 - [[Sectors/Semiconductor Foundries.md]] — sector MOC; TSMC is #1 foundry dependency
 - [[Sectors/Semiconductor Capital Equipment.md]] — WFE demand driver
-- [[Macro/AI Bubble Risk and Semiconductor Valuations.md]] — timing-mismatch thesis affecting all TSMC HPC revenue
+- [[AI Bubble Risk and Semiconductor Valuations]] — timing-mismatch thesis affecting all TSMC HPC revenue
 
 ### Related theses (TSMC as supplier/chokepoint)
 - [[Theses/NVDA - Nvidia.md]] — TSMC is NVDA's single-foundry dependency and #1 supply-chain chokepoint

@@ -5,6 +5,7 @@ status: active
 sector: Energy & Commodities
 source: Multiple web sources, April 2026
 source_type: deep-dive
+propagated_to: [RELIANCE]
 ---
 
 # RELIANCE — Comprehensive Research Update (April 2026)
@@ -503,7 +504,7 @@ Sources: [Deloitte](https://www.deloitte.com/us/en/insights/topics/economy/asia-
 ## Related Notes
 
 - [[RELIANCE - Reliance Industries]] — Main thesis note
-- [[Macro/Commodity Impacts from Iran Tensions]] — Crude supply disruption, Hormuz insurance dynamics
+- [[Macro & Technology/Iran War Trading Playbook]] — Crude supply disruption, Hormuz insurance dynamics
 - [[Sectors/Energy & Commodities]] — Diesel/jet fuel crack spread analysis
 - [[Sectors/Energy & Commodities]] — Sector Note
 

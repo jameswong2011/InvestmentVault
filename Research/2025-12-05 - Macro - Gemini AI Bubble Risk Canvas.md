@@ -252,7 +252,7 @@ Why is this here?
 ---
 
 ## Related
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — Macro framework for AI bubble assessment
+- [[AI Bubble Risk and Semiconductor Valuations]] — Macro framework for AI bubble assessment
 - [[Theses/NVDA - Nvidia]] — AI infrastructure valuation
 - [[Theses/AVGO - Broadcom]] — Custom ASIC market dynamics
 - [[Sectors/Semiconductors]]

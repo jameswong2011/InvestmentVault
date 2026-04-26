@@ -304,7 +304,7 @@ The US Department of Commerce updated its export-control framework in January 20
 
 ### 6. The Taiwan Tail (Binary Structural Risk)
 
-SK Hynix and Samsung HBM dies → Taiwan TSMC CoWoS integration → Nvidia/AMD silicon → global AI compute. A China-Taiwan kinetic event invalidates 60-80% of HBM end-market demand for 12-24 months until non-Taiwan CoWoS-class capacity can be rebuilt. SK Hynix and Samsung have **no public disclosed hedge** to this concentration. See [[Macro/AI Bubble Risk and Semiconductor Valuations]] §2026-04-19 update — TSMC stress-test rated permanent impairment at -85-92% under invasion; HBM revenue collapses synchronously with TSMC output collapse.
+SK Hynix and Samsung HBM dies → Taiwan TSMC CoWoS integration → Nvidia/AMD silicon → global AI compute. A China-Taiwan kinetic event invalidates 60-80% of HBM end-market demand for 12-24 months until non-Taiwan CoWoS-class capacity can be rebuilt. SK Hynix and Samsung have **no public disclosed hedge** to this concentration. See [[AI Bubble Risk and Semiconductor Valuations]] §2026-04-19 update — TSMC stress-test rated permanent impairment at -85-92% under invasion; HBM revenue collapses synchronously with TSMC output collapse.
 
 ### 7. HBF (High-Bandwidth Flash) — New Memory Tier Creation (Emerging 2027-2030)
 
@@ -424,7 +424,7 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5), with the future HBF tie
 - [[Sectors/NAND Memory & Storage]] — Sister memory sub-sector; HBF tier emerging from NAND vendors; Solidigm IPO catalyst inside SK Hynix
 - [[Sectors/GPU & AI Compute Accelerators]] — HBM downstream demand source; Nvidia 60-65% CoWoS pre-booking; HBM content per GPU trajectory
 - [[Sectors/Semiconductor Capital Equipment]] — ASML EUV monopoly upstream of HBM; BESI hybrid bonding; HBM4 packaging equipment intensity
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — $650B AI revenue requirement for 2030; Taiwan kinetic tail risk; hyperscaler capex digestion-phase scenarios
+- [[AI Bubble Risk and Semiconductor Valuations]] — $650B AI revenue requirement for 2030; Taiwan kinetic tail risk; hyperscaler capex digestion-phase scenarios
 
 ## Log
 

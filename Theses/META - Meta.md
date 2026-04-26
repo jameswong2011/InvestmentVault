@@ -195,7 +195,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]] — Vertiv's OCP committee co-development with Meta; cooling infrastructure for AI data centers
 - [[Research/2025-12-05 - Macro - Gemini AI Bubble Risk Canvas]] — The AI Solvency Gap framework; $600B revenue requirement to justify hyperscaler capex
 - [[Sectors/Social Platforms & Digital Advertising]] — Sector Note
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch; hyperscaler capex fatigue dynamics
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch; hyperscaler capex fatigue dynamics
 
 ## Log
 

@@ -61,7 +61,7 @@ For comparison: NVIDIA GB200 NVL72 = 72 GPUs per rack-scale system. Atlas 960 = 
 
 **Validates AVGO ASIC-margin durability** indirectly: Huawei's Atlas supernode strategy mirrors hyperscaler ASIC clusters. Confirms a non-NVDA AI compute architecture is commercially viable at scale. See [[Theses/AVGO - Broadcom]].
 
-**Macro linkage**: feeds into [[Macro/AI Bubble Risk and Semiconductor Valuations]] — if Chinese hyperscalers self-supply via Ascend, ~$50B annual NVDA revenue line gets reallocated to domestic capex, modestly disinflating global AI capex bubble narrative on the demand side.
+**Macro linkage**: feeds into [[AI Bubble Risk and Semiconductor Valuations]] — if Chinese hyperscalers self-supply via Ascend, ~$50B annual NVDA revenue line gets reallocated to domestic capex, modestly disinflating global AI capex bubble narrative on the demand side.
 
 ## Source Excerpts
 

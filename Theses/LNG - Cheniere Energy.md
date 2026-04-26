@@ -201,9 +201,7 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 - [[Sectors/LNG & Natural Gas Infrastructure]] — Sector Note; includes gas-to-coal switching analysis (40-90M tonnes), thermal coal trade vehicles (Yancoal/New Hope), and $150 oil playbook (US LNG outside conflict zone)
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — JKM LNG ranked #1 most impacted commodity; up 143% since Feb 28; no Hormuz bypass for LNG; optimal trade: long JKM / short Henry Hub
-- [[Macro/Iran War Macroeconomic Scenario]] — Cheniere listed as top structural long; Ras Laffan damage creates multi-year supply gap; Dubai physical-futures disconnect signals consensus error
-- [[Macro/Commodity Impacts from Iran Tensions]] — Full commodity cascade analysis; Cheniere recommended as Trade 3 for structural LNG supply gap
-- [[Macro/Investment Strategy for US-Iran Conflict]] — LNG supply disruption beneficiary positioning; pre-war framework
+- [[Macro & Technology/Iran War Trading Playbook]] — Cheniere listed as Position #6 structural-into-2027 long; Ras Laffan damage creates multi-year supply gap (no pipeline bypass for LNG); Dubai physical-futures disconnect signals consensus error; LNG as Tier 2 commodity transmission
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Europe's broken LNG bridge; Japan/Korea 3-week reserve vulnerability; permanent logistics surcharge; helium second-order risk
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Macro transmission mechanisms; 3-speed regional impact (US buffered, Asia vulnerable, Europe stagflationary)
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Pre-war conflict capital allocation framework; Cheniere as LNG supply hedge

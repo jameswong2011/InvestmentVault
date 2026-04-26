@@ -190,7 +190,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Theses/285A - Kioxia]] — NAND/memory supply chain
 - [[Theses/IQE - IQE]] — III-V epitaxy for photonics; relevant to CPO transition where TSMC COUPE entered risk production with AMD Feb 2026
 - [[Theses/LITE - Lumentum]] — photonics/CPO supply; AMD CPO adoption via TSMC COUPE
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex cycle framework; AMD valuation in bubble scenarios
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI capex cycle framework; AMD valuation in bubble scenarios
 - [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]] — HBM supply context, MI350 288GB positioning
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan geopolitical tail exposure for MI400 series
 - [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]] — TSMC COUPE AMD risk production Feb 2026

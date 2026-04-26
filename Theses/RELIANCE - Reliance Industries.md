@@ -241,7 +241,7 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 - [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]] — Full April 2026 research update: Jio IPO, retail, new energy, O2C, competitive landscape, macro
 - [[Sectors/Indian Digital Conglomerates]] — Primary sector note: Jio IPO category framing, quick-commerce dynamics, sovereign AI, DPDP/TRAI regulation, SOTP mispricing
-- [[Macro/Commodity Impacts from Iran Tensions]] — Jamnagar refinery benefits from surging crack spreads; insurance mechanism and Hormuz normalization lags
+- [[Macro & Technology/Iran War Trading Playbook]] — Jamnagar refinery benefits from surging crack spreads; insurance mechanism (Lloyd's 72-hour cancellation, war-risk premium 0.125% → 1–3% of hull value) and Hormuz normalization lags; India-domestic demand resilience as structural hedge against Hormuz-transit-dependent economies
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience post-Assad sustains elevated fuel-crack regime driving Jamnagar O2C EBITDA uplift (Q3 FY26 +14.6% YoY); extends India crude-import shock beyond ceasefire episodes
 - [[Research/2026-04-02 - Israel India Relations Analysis]] — India-Israel Special Strategic Partnership (February 2026) + $3.75B FY2024-25 bilateral trade + defence MoU — frames India's geopolitical positioning in Iran scenario as aligned with Israel rather than neutral, relevant to Jamnagar crude procurement diversification
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: full ground war stresses Jio IPO window; Jamnagar crack-spread partial offset insufficient against consumer + India macro drag
@@ -264,3 +264,6 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 ### 2026-04-23 (scenario propagation)
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via India 85% crude imports + rupee shock + Jio IPO timing pushed — conviction weakened: Jio IPO primary catalyst (July 2026) directly threatened by sustained crisis; Jamnagar crack-spread offset insufficient against consumer + India macro drag across Jio/Retail (~54% of EBITDA).
+
+### 2026-04-26 (/sync all — Log-history backfill)
+- [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]]: backfill Log entry — research note already integrated into thesis body via Apr 15 restructure (Samsung C&T $3B offtake, Jio IPO DRHP imminent, JioMart 1.6M daily orders contribution-margin positive, net debt doubled to ₹2.37L cr, Indian crude $69→$113/bbl) and present in §Related Research, but Log wikilink absent. Conviction unchanged at medium.

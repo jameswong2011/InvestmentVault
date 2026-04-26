@@ -198,6 +198,7 @@ Each expansion increases the share of merchant economics Shopify captures. The t
 - [[Research/2025-09-18 - US Insurance Broking Market]] — Tangential; platform market dynamics comparison
 - [[Research/2026-04-15 - SHOP - Comprehensive Update April 2026 - deep-dive]] — Full web research update covering agentic commerce, tariff impact, financial results, competitive dynamics
 - [[Sectors/E-commerce Infrastructure]] — Sector Note with SHOP Key Dynamics entry
+- [[Agentic Internet]] — Macro framework: SHOP is the primary equity expression at layer-4 (commerce protocol) of the 8-layer agentic-internet stack; UCP+ACP dual-protocol position captures 40% more agentic traffic than single-protocol merchants per Insight #3; macro positions SHOP alongside [[Theses/NET - Cloudflare]] (interception/payments) and [[Theses/CRCL - Circle Internet Group]] (settlement) as the three core long expressions, with [[Theses/UBER - Uber]] flagged at layer-3/4 ("Get me a car" agent disintermediation risk) and BKNG/EXPE flagged as canonical aggregator-disintermediation shorts
 
 ## Log
 ### 2026-04-10
@@ -212,3 +213,6 @@ Each expansion increases the share of merchant economics Shopify captures. The t
 ### 2026-04-22
 - Sector re-scoped: Enterprise Software → E-commerce Infrastructure (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced `[[Sectors/Enterprise Software]]` → `[[Sectors/E-commerce Infrastructure]]` in Related Research section during sector-fill of [[Sectors/E-commerce Infrastructure]].
+
+### 2026-04-26
+- Macro note linked: created [[Agentic Internet]] macro and added to Related Research. SHOP positioned as primary equity expression at layer-4 (commerce protocol) of the 8-layer agentic-internet stack — UCP+ACP dual hedge captures 40% more agentic traffic than single-protocol merchants. Macro adds historical-analogy framing (mobile transition 2007-2014, TCP/IP protocol layer) and identifies aggregator-disintermediation shorts (BKNG, EXPE) as inverse expressions of SHOP's merchant-interface long. Conviction unchanged — macro reinforces extant Insight #3 without new thesis-moving evidence.

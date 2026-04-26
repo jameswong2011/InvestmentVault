@@ -65,8 +65,8 @@ A US military strike on Iran would activate multiple correlated market moves sim
 - [[Theses/CCJ - Cameco]] — Uranium/nuclear angle; CCJ surged 114% in 2025 on supply concerns
 - [[Theses/STNG - Scorpio Tankers]] — Tanker upside from Hormuz rerouting
 - [[Theses/LNG - Cheniere Energy]] — LNG supply disruption beneficiary
-- [[Macro/Iran War Macroeconomic Scenario]] — Updated scenario analysis with live conflict data
-- [[Macro/Commodity Impacts from Iran Tensions]] — Full commodity impact hierarchy
+- [[Iran War Macroeconomic Scenario]] — Updated scenario analysis with live conflict data
+- [[Commodity Impacts from Iran Tensions]] — Full commodity impact hierarchy
 - [[Sectors/Cybersecurity]] — Structural cybersecurity spending drivers; Iran-linked cyber operations targeting energy, financial, and defense networks as investment catalyst for PANW, CRWD
 - [[Theses/PANW - Palo Alto Networks]] — Platform consolidation beneficiary; CyberArk identity security strengthens defense against credential-based attacks characteristic of Iranian APTs; five-pillar architecture addresses multi-domain attack surfaces
 

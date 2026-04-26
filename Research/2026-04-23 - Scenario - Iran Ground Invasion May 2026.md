@@ -10,7 +10,7 @@ propagated_to: [OPEN, MTN, TTWO, RELIANCE, EDEL, LNG, STNG, CCJ, CRWD, PANW, PLT
 
 ## Scenario Definition
 
-**Triggering event**: April 21 ceasefire expires without resolution; Iran-US nuclear negotiations fail on enriched uranium removal; US initiates ground invasion operations in May 2026. This escalates from the current dual-blockade regime (Iran IRGC closure + US counter-blockade on Iranian ports, per [[Macro/Iran War Macroeconomic Scenario]]) to active kinetic conflict on Iranian soil.
+**Triggering event**: April 21 ceasefire expires without resolution; Iran-US nuclear negotiations fail on enriched uranium removal; US initiates ground invasion operations in May 2026. This escalates from the current dual-blockade regime (Iran IRGC closure + US counter-blockade on Iranian ports, per [[Macro & Technology/Iran War Trading Playbook]]) to active kinetic conflict on Iranian soil.
 
 **Quantitative parameters (6-month horizon, May-Oct 2026)**:
 - **Brent oil**: spikes to $120-150/bbl on invasion confirmation; sustained $100+/bbl for duration (lower bound assumes SPR release + Saudi spare capacity via pipeline bypass partially offsets; upper bound assumes full Strait of Hormuz closure + mining)
@@ -162,7 +162,7 @@ Sorted by magnitude (major negatives first, then major positives, then minors).
 - **Defense primes** (LMT, RTX, NOC, HII, KTOS): the purest kinetic conflict beneficiaries; PLTR is defense-adjacent but not direct. Even 2-3% allocation would materially reduce portfolio tail exposure
 - **Gold/precious metals** (GLD, GDX, Newmont): wartime monetary hedge; Iran macro note explicitly cites gold's contrarian entry at the $4,400 level with central bank demand floor
 - **Upstream crude producers** (OXY, XOM, CVX): vault has gas (LNG) and logistics (STNG) but not upstream crude — a gap
-- **VIX 35/50 call spreads**: tail hedge explicitly recommended in [[Macro/Iran War Macroeconomic Scenario]] at 10-15x payoff asymmetry
+- **VIX 35/50 call spreads**: tail hedge explicitly recommended in [[Macro & Technology/Iran War Trading Playbook]] at 10-15x payoff asymmetry
 - **Indian rupee short** (JEPG puts, INDA puts): hedge against EDEL + RELIANCE India concentration
 
 **Opportunities created**:
@@ -194,10 +194,7 @@ Sorted by magnitude (major negatives first, then major positives, then minors).
 ## Related Notes
 
 ### Macro
-- [[Macro/Iran War Macroeconomic Scenario]] — parent macro scenario; this scenario is the tail-risk extension
-- [[Macro/Commodity Impacts from Iran Tensions]] — commodity cascade framework (LNG #1, diesel #2, crude #3, uranium #1 policy-response)
-- [[Macro/Investment Strategy for US-Iran Conflict]] — pre-kinetic strategic allocation framework
-- [[Macro/VIX Index and Implied Volatility]] — VIX options mechanics for tail hedge
+- [[Macro & Technology/Iran War Trading Playbook]] — parent macro scenario (this note is the tail-risk extension); commodity cascade framework (LNG #1, diesel #2, crude #3, uranium #1 policy-response); pre-kinetic strategic allocation framework; VIX options mechanics for tail hedge (Position #3 — 35/50 call spreads at 10–15× payoff asymmetry)
 
 ### Major-Impact Theses (Negative)
 - [[Theses/OPEN - Opendoor]]

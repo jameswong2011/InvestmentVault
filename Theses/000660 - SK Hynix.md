@@ -72,7 +72,7 @@ Samsung's hybrid-bonding bet (enabled by BESI Kinex tool, 67% D2W hybrid-bonding
 
 **Value chain leverage analysis:** SK Hynix sits downstream of ASML (EUV scanner monopoly — $7.9B order in 2025) and upstream of TSMC CoWoS (sole-source packaging integrator). The value chain leverage is asymmetric — ASML captures ~8% of SK Hynix CapEx as pure equipment margin, and TSMC captures 30-40% gross margin on CoWoS integration that locks in SK Hynix's HBM customer delivery. SK Hynix's own leverage comes from (1) HBM scarcity vs Nvidia's GPU-unit growth curve and (2) Samsung's yield catch-up lag. Both are time-bounded advantages.
 
-**Macro demand anchor:** J.P. Morgan calculates **$650B annual AI revenue by 2030** is required to justify current AI capex through that date. HBM capex is a ~15% slice of total AI-capex flow. If AI revenue tracks below $400B by 2030 (bear case — T. Rowe 95% zero-return enterprise-adoption signal), HBM enters oversupply one year sooner than Goldman's 2026 warning, and SK Hynix's 57% share dominance converts from asset to liability (highest absolute unit exposure to a price-decline cycle). See [[Macro/AI Bubble Risk and Semiconductor Valuations]].
+**Macro demand anchor:** J.P. Morgan calculates **$650B annual AI revenue by 2030** is required to justify current AI capex through that date. HBM capex is a ~15% slice of total AI-capex flow. If AI revenue tracks below $400B by 2030 (bear case — T. Rowe 95% zero-return enterprise-adoption signal), HBM enters oversupply one year sooner than Goldman's 2026 warning, and SK Hynix's 57% share dominance converts from asset to liability (highest absolute unit exposure to a price-decline cycle). See [[AI Bubble Risk and Semiconductor Valuations]].
 
 ## Key Metrics
 
@@ -185,7 +185,7 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]] — Memory-centric architecture shift; HBM as 77% of Q2 2025 revenue
 - [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]] — HBF architecture simulations; Solidigm 51% QLC share
 - [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] — March 2026 selloff mechanics; Jevons-paradox analyst pushback
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — $650B J.P. Morgan revenue requirement; Taiwan CoWoS concentration
+- [[AI Bubble Risk and Semiconductor Valuations]] — $650B J.P. Morgan revenue requirement; Taiwan CoWoS concentration
 - [[Sectors/DRAM & HBM Memory]] — New sector note created with this thesis
 - [[Theses/SNDK - SanDisk]] — HBF co-developer; Flash Ventures JV with Kioxia
 - [[Theses/285A - Kioxia]] — NAND competitive benchmark; SK Hynix ~15% convertible bond holding

@@ -226,7 +226,7 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Theses/AVGO - Broadcom]] — Custom ASIC design partner for hyperscalers; complementary not competitive positioning
 - [[Theses/LITE - Lumentum]] — EML laser and CPO supplier; Nvidia $2B investment with capacity lock-out rights
 - [[Theses/IQE - IQE]] — III-V epitaxy chokepoint beneath silicon photonics supply chain
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — Nvidia valuations; custom silicon erosion risk (TPU, Trainium, Maia); CUDA moat analysis; $650B annual revenue requirement
+- [[AI Bubble Risk and Semiconductor Valuations]] — Nvidia valuations; custom silicon erosion risk (TPU, Trainium, Maia); CUDA moat analysis; $650B annual revenue requirement
 - [[Non-Consensus Insights Map]] — NVDA entry in #6 (Component-Level Chokepoints in AI Infrastructure)
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis: CoWoS capacity 35K→130K wafers/month driving advanced packaging equipment TAM ($17.5B by 2028), complexity-driven supercycle (equipment revenue per wafer start structurally increasing)
 - [[Sectors/Semiconductors]] — Sector Note with cross-thesis dynamics

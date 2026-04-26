@@ -39,10 +39,10 @@ restore any Tier A snapshots listed.
 - [[Sectors/Video Game Publishing]] — Tier B: 1 Related Research wikilink + Log entry
 
 ## Macro notes touched
-- [[Macro/Commodity Impacts from Iran Tensions]] — Tier B: adds semiconductor photo-materials as fifth transmission channel (Iran note); Related Research + Log
-- [[Macro/Iran War Macroeconomic Scenario]] — Tier B: material-chain rebuild duration extends Scenario A; links semiconductor theses to conflict framework; Related Research + Log
-- [[Macro/Investment Strategy for US-Iran Conflict]] — Tier B: expands sector-allocation universe to include memory/foundry indirect exposure; Related Research + Log
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — Tier B: Dylan Patel token-value-gap framing partially challenges bubble thesis; CPU TAM expansion validates capex durability; "phantom GDP" concept introduced; Related Research + Log
+- [[Commodity Impacts from Iran Tensions]] — Tier B: adds semiconductor photo-materials as fifth transmission channel (Iran note); Related Research + Log
+- [[Iran War Macroeconomic Scenario]] — Tier B: material-chain rebuild duration extends Scenario A; links semiconductor theses to conflict framework; Related Research + Log
+- [[Investment Strategy for US-Iran Conflict]] — Tier B: expands sector-allocation universe to include memory/foundry indirect exposure; Related Research + Log
+- [[AI Bubble Risk and Semiconductor Valuations]] — Tier B: Dylan Patel token-value-gap framing partially challenges bubble thesis; CPU TAM expansion validates capex durability; "phantom GDP" concept introduced; Related Research + Log
 
 ## Source research notes processed
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — propagated_to: [000660, 285A, NVDA, AMD, TSM, SEMICAP, SNDK]

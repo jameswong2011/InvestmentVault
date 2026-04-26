@@ -35,8 +35,8 @@ None — all edits were Tier B (Log append + Related Research wikilink only).
 None — sector back-references already in place from 2026-04-22 sector-fill run (GPU & AI Compute Accelerators for TurboQuant, Precious Metals for Inflation Trades). No new sector wikilinks required; /graph last will reconcile reverse-index coverage.
 
 ## Macro notes touched
-- [[Macro/Iran War Macroeconomic Scenario]] — Tier B: added [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] to Related Research; Log entry appended
-- [[Macro/Commodity Impacts from Iran Tensions]] — Tier B: added [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] + [[Research/2026-03-21 - Betting on Inflation Trades]] to Related Research
+- [[Iran War Macroeconomic Scenario]] — Tier B: added [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] to Related Research; Log entry appended
+- [[Commodity Impacts from Iran Tensions]] — Tier B: added [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] + [[Research/2026-03-21 - Betting on Inflation Trades]] to Related Research
 
 ## Source research notes processed
 - [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] — propagated to 285A, SNDK, NVDA

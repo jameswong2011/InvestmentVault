@@ -68,4 +68,4 @@ This recovery occurred despite the loss of Syria as a transit hub. Iran's strate
 
 ## Related
 - [[Sectors/Defense & Geopolitics]] — Context for defense thesis positioning
-- [[Macro/Iran War Macroeconomic Scenario]] — Parent macro scenario; Hezbollah escalation is a Scenario A intensification risk
+- [[Macro & Technology/Iran War Trading Playbook]] — Parent macro scenario; Hezbollah escalation is a Scenario A intensification risk

@@ -169,7 +169,7 @@ The company operates across two reported segments, though the internal product t
 - [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]] — LITE/COHR CPO transition: "arms dealer" role, Broadcom/NVIDIA vertical integration advantage
 - [[Research/2026-03-02 - Chinese Silicon Photonics Threat]] — Chinese supply chain competitive analysis, structural dependencies, trade policy impact
 - [[Sectors/Optical Networking & Photonics]] — Sector Note (LITE + IQE as Active Theses; covers EML oligopoly, CPO inflection, SiPh foundry paradox, Chinese module vs Western component asymmetry, Fabrinet EMS monopoly, AAOI)
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch, $650B annual revenue requirement
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch, $650B annual revenue requirement
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis: insight #6 identifies optical equipment enabler chain (FORM, AEHR, TSEM, GFS) as true picks-and-shovels of photonics supercycle; optical characterization as CPO mass production bottleneck; TSMC COUPE yield issues as gating factor
 
 ## Log

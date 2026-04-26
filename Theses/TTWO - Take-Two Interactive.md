@@ -153,7 +153,7 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 ## Related Research
 
 - [[Sectors/Video Game Publishing]]
-- [[Macro/Iran War Macroeconomic Scenario]] — Consumer discretionary headwinds from geopolitical conflict
+- [[Macro & Technology/Iran War Trading Playbook]] — Consumer discretionary headwinds from geopolitical conflict (gasoline >$4/gal, falling sentiment across ALL income tiers); GTA VI Nov 2026 launch faces consumer compression risk; gaming relatively recession-resistant but $70–80 pricing sensitive to spending cuts
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict timing coincides with GTA VI launch; $70 pricing elasticity tested in worst macro
 - [[Research/2026-04-24 - GTA 6 Creator Economy and FiveM Monetization - web-clip]] — Cfx Marketplace live Jan 12, 2026 ($389.99 bundles); Tebex creators average €5K+/mo within 90 days; Claude-Lua removes scripting barrier (AI-assisted creator TAM expansion)
 

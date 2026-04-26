@@ -285,13 +285,22 @@ Gates Step 4 / Step 5 — a thesis-only change driven by a skill that already ha
 For each changed thesis, read the most recent Log entry from `_graph.md`'s `log_tail:` field (single-line lookup, zero file reads). If `log_tail:` is missing (pre-T7.3 graph) OR the thesis isn't in the graph, fall back to one bounded Bash call:
 
 ```bash
-# Batch-extract most-recent Log bullet for up to N theses
+# Batch-extract most-recent Log bullet for up to N theses.
+# CONVENTION: Log entries are append-only with newest at the BOTTOM
+# (CLAUDE.md Tier 2 §2: "only append new dated entries at the end").
+# Track the LAST date+bullet pair seen, emit in END.
+# CRITICAL: do NOT `exit` on first bullet match — that returns the OLDEST
+# entry and silently misclassifies theses whose initial Log entry is a
+# skill-origin prefix (e.g., "Initial thesis created") but have since had
+# research-driven entries appended (the AVGO/MRVL/CRWD/PANW failure mode
+# observed 2026-04-26).
 for f in Theses/TICKER1 - Name.md Theses/TICKER2 - Name.md; do
   echo "=== $f ==="
   awk '/^## Log/{in_log=1; next}
        in_log && /^## /{exit}
-       in_log && /^### [0-9]{4}-/{last_date=$2; next}
-       in_log && last_date != "" && /^- /{print last_date" | "$0; exit}' "$f"
+       in_log && /^### [0-9]{4}-/{date=$2; next}
+       in_log && date != "" && /^- /{last_date=date; last_bullet=$0}
+       END{if(last_date) print last_date" | "last_bullet}' "$f"
 done
 ```
 

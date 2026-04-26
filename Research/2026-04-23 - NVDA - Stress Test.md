@@ -85,7 +85,7 @@ Secondary triggers (lower information value but faster-observed):
 ## Related
 - [[Theses/NVDA - Nvidia]]
 - [[Sectors/GPU & AI Compute Accelerators]]
-- [[Macro/AI Bubble Risk and Semiconductor Valuations]]
+- [[AI Bubble Risk and Semiconductor Valuations]]
 
 ## Related Research
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan tail quantification (-85-95% permanent impairment); NVDA 100% Rubin+Feynman dependency inherited from TSM thesis

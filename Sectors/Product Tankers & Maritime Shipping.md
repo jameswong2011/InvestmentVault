@@ -165,7 +165,7 @@ status: active
 
 ## Macro shifts
 
-- Hormuz disruption thesis is sector-level (secular Iran tensions + OPEC+ supply dynamics); cross-referenced macro notes: [[Macro/Iran War Macroeconomic Scenario]], [[Macro/Commodity Impacts from Iran Tensions]], [[Macro/Investment Strategy for US-Iran Conflict]].
+- Hormuz disruption thesis is sector-level (secular Iran tensions + OPEC+ supply dynamics); consolidated macro framework in [[Macro & Technology/Iran War Trading Playbook]].
 
 **Hormuz crisis — April 22, 2026 status.** Closed 53 days since Feb 28. Dual-blockade regime April 12: US naval blockade of Iranian ports + IRGC Gulf closure. Ceasefire expired April 21 without deal; ~600-700 vessels stranded (incl. ~325 tankers / ~200 compliant), ~20,000 seafarers trapped, ~13 mbpd ME crude/condensate disrupted. Brief April 17 reopening reversed April 18. **Post-reopening normalisation = July at earliest** given vessel queue, mine-clearing, insurance repricing, and crew-willingness frictions. Even full diplomatic resolution restores full capacity over 2-3 quarters.
 
@@ -253,9 +253,7 @@ UNCTAD-aligned estimate: 15-25% product-tanker ton-mile shock while closure pers
 ## Related Research
 
 - [[Theses/STNG - Scorpio Tankers]] — sole active thesis; comprehensive fleet + financial + thesis framework
-- [[Macro/Iran War Macroeconomic Scenario]] — sector-level Hormuz closure mechanics; STNG listed as Position #1
-- [[Macro/Commodity Impacts from Iran Tensions]] — product tanker dynamics in multi-commodity cascade; insurance mechanism as market controller
-- [[Macro/Investment Strategy for US-Iran Conflict]] — pre-conflict tanker trade framework; insurance premium mechanics
+- [[Macro & Technology/Iran War Trading Playbook]] — sector-level Hormuz closure mechanics; STNG listed as Position #1 near-term tactical (15% trailing stop); product tanker dynamics in multi-commodity cascade; insurance mechanism (Lloyd's 72-hour cancellation, war-risk premium 0.125% → 1–3% of hull value) as market controller; pre-conflict tanker trade framework + insurance premium mechanics
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — June 2025 12-day conflict precedent; 550+ Iranian missiles; dual-theater stretch risk
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — capital allocation framework for Iran conflict; tanker war-risk insurance dynamics
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — diesel/gasoil ranked #2 (+57%); VLCC freight $423k/day; logistics shock amplifying tanker demand

@@ -297,7 +297,7 @@ The right framing is not "Reliance is an Indian oil company" or "Jio is an India
 
 ## Related Research
 - [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]] — Jio IPO DRHP, JioMart unit economics, Samsung C&T green ammonia, O2C bifurcation, Ambani succession, Iran dual-crude shock
-- [[Macro/Commodity Impacts from Iran Tensions]] — India 85%+ crude dependency and 30-day SPR; Hormuz disruption transmits to digital via consumer inflation, Jio ARPU sensitivity and JioMart basket value
+- [[Macro & Technology/Iran War Trading Playbook]] — India 85%+ crude dependency and 30-day SPR; Hormuz disruption transmits to digital via consumer inflation, Jio ARPU sensitivity and JioMart basket value; full Asia-vulnerability framing (80% of oil imports through Hormuz)
 - [[Research/2025-05-10 - Macro - Indian vs Pakistani Defence Stocks]] — India macro and geopolitical context shaping the digital-conglomerate operating environment
 
 ## Log

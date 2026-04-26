@@ -223,9 +223,7 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 - [[Sectors/Product Tankers & Maritime Shipping]] — Sector Note; includes $150 oil playbook (tanker rates $150-200K+/day, 15-25% fleet capacity reduction), thermal coal substitution dynamics, and WTI futures data
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — Diesel/gasoil ranked #2 (up 57%); VLCC freight $423K/day; logistics shock amplifying tanker demand
 - [[Research/2026-04-02 - GCC Market Shorting Options]] — GCC shorting instruments as complementary hedge
-- [[Macro/Iran War Macroeconomic Scenario]] — STNG listed as Position #1; structural tonne-mile increase from rerouting; April 8 ceasefire dynamics
-- [[Macro/Commodity Impacts from Iran Tensions]] — Product tanker dynamics in multi-commodity cascade; insurance mechanism as market controller
-- [[Macro/Investment Strategy for US-Iran Conflict]] — Pre-conflict tanker trade framework; insurance premium mechanics
+- [[Macro & Technology/Iran War Trading Playbook]] — STNG listed as Position #1 near-term tactical (15% trailing stop); structural tonne-mile increase from rerouting (Saudi/UAE flows via Yanbu/Fujairah → Atlantic Basin adds 5,000–8,000 nautical miles); insurance-mechanism analysis (Lloyd's 72-hour cancellation, war-risk premium 0.125% → 1–3% of hull value); product tanker dynamics in commodity cascade
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Capital allocation framework for Iran conflict; tanker war risk insurance dynamics; June 2025 12-day war precedent
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Market complacency vs physical disruption; net oil shortage 14.5-16.5M bbl/day; logistics and rerouting analysis
 - [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]] — Sanctions arbitrage creating ton-miles; Hawkish Start / Recessionary Finish macro framework; private credit systemic risk

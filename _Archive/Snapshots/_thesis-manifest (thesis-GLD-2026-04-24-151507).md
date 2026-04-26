@@ -39,9 +39,9 @@ All stages landed successfully. Flipped to `status: completed` at Step 7.5.
 - Orphan research notes touched: `Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics.md` (mtime advanced 2026-04-24 15:19 — will be picked up by next `/sync` and `/graph last`)
 - Wikilinks added to Related Research section of thesis (9 total):
   - [[Sectors/Precious Metals]]
-  - [[Macro/Iran War Macroeconomic Scenario]]
-  - [[Macro/Commodity Impacts from Iran Tensions]]
-  - [[Macro/Investment Strategy for US-Iran Conflict]]
+  - [[Iran War Macroeconomic Scenario]]
+  - [[Commodity Impacts from Iran Tensions]]
+  - [[Investment Strategy for US-Iran Conflict]]
   - [[Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics]] (orphan)
   - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
   - [[Research/2026-03-30 - Commodity Market Analysis 2026]]
