@@ -226,7 +226,7 @@ Why is this here?
 ---
 
 ## Related Sectors
-- [[Sectors/Ski Resorts & Destination Leisure]] — Back-reference: cited in sector fill under Industry history (2021-2024 #Epicalypse era, A-Basin defection, Park City strike, Alterra offensive capex), Competitive dynamics (regional battlefield analysis — Colorado/Utah/Tahoe/East), Acquisitions and new entrants (Wave 3 A-Basin coup; KSL continuation vehicle), and Investor heuristics (P/E de-rating from 35x to 18x, dividend yield as distress signal).
+- [[@Ski Resorts & Destination Leisure]] — Back-reference: cited in sector fill under Industry history (2021-2024 #Epicalypse era, A-Basin defection, Park City strike, Alterra offensive capex), Competitive dynamics (regional battlefield analysis — Colorado/Utah/Tahoe/East), Acquisitions and new entrants (Wave 3 A-Basin coup; KSL continuation vehicle), and Investor heuristics (P/E de-rating from 35x to 18x, dividend yield as distress signal).
 
 ## Related
 - [[Theses/MTN - Vail Resorts]] — Valuation collapse and Alterra competitive dynamics

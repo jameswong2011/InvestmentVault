@@ -35,7 +35,7 @@ sector: Telecommunications Services
 - _pending_
 
 ## Legacy Callouts
-<!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[preserve]]` to its header in-place. -->
+<!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
 ## Log
 ### 2026-04-26

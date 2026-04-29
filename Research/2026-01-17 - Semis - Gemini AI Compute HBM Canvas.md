@@ -251,5 +251,5 @@ Why is this here?
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (HBM4 supply ramp, Jevons Paradox in compute demand, inference economics) and Investor heuristics (Jevons-inflection risk framework — compound efficiency gains vs aggregate GPU demand).
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Macro shifts (AI compute demand driving HBM capacity expansion and hyperscaler capex floor; DRAM/HBM equipment intensity through 2028).
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (HBM4 supply ramp, Jevons Paradox in compute demand, inference economics) and Investor heuristics (Jevons-inflection risk framework — compound efficiency gains vs aggregate GPU demand).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Macro forces (AI compute demand driving HBM capacity expansion and hyperscaler capex floor; DRAM/HBM equipment intensity through 2028).

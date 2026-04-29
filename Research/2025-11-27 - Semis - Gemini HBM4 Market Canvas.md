@@ -194,5 +194,5 @@ Why is this here?
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (HBM4 supply pivot; memory as the binding constraint for 2026 Rubin/MI450/TPU Ironwood production volume; SK Hynix/Samsung/Micron triopoly with Samsung closing to 30%+ of Nvidia HBM4 supply).
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Macro shifts and Product level analysis (HBM4 vendor bonding strategies, yield dynamics, and equipment intensity by stack configuration driving KLAC/LRCX/BESI advanced-packaging demand).
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (HBM4 supply pivot; memory as the binding constraint for 2026 Rubin/MI450/TPU Ironwood production volume; SK Hynix/Samsung/Micron triopoly with Samsung closing to 30%+ of Nvidia HBM4 supply).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Macro forces and Product-level vendor map (HBM4 vendor bonding strategies, yield dynamics, and equipment intensity by stack configuration driving KLAC/LRCX/BESI advanced-packaging demand).

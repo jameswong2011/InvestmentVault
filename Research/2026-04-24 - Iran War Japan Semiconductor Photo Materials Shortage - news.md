@@ -82,9 +82,8 @@ Samsung Electronics + SK Hynix fab risk
 - [[Theses/AMD - Advanced Micro Devices]] — MI355X/MI450 HBM4 content depends on same supply chain
 - [[Theses/TSM - Taiwan Semiconductor]] — leading-edge photoresist consumer; localization status uncertain
 - [[Theses/SNDK - SanDisk]] — Japan JV partner with Kioxia; same Flash Ventures exposure
-- [[Theses/SEMICAP - Semiconductor Capital Equipment]] — PCN requalification cycle creates near-term equipment demand uncertainty as fabs re-evaluate
+- [[Sectors/Semiconductor Capital Equipment]] — PCN requalification cycle creates near-term equipment demand uncertainty as fabs re-evaluate
 - [[Sectors/DRAM & HBM Memory]] — sector-wide HBM ramp risk
 - [[Sectors/NAND Memory & Storage]] — Japanese NAND fab exposure
 - [[Sectors/Semiconductor Foundries]] — leading-edge PR supply chain
-- [[Sectors/Semiconductor Capital Equipment]] — PCN cycle impact
 - [[Macro & Technology/Iran War Trading Playbook]] — parent macro framework: this note adds semiconductor photo materials as a fifth commodity transmission channel (alongside energy / fertilizer / LNG / metals); material-chain rebuild timeline extends Scenario A duration; sector-allocation implications include Korean memory + Japanese NAND + Taiwan foundry indirect exposure

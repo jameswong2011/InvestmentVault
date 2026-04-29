@@ -190,7 +190,7 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 ## Related Research
 
 - [[Research/2025-12-15 - MTN - Gemini Stock Decline Canvas]] — Comprehensive structural analysis: Alterra competitive hegemony, regional battlefield analysis, financial de-rating, #Epicalypse narrative, valuation trap thesis
-- [[Sectors/Ski Resorts & Destination Leisure]] — Sector MOC: industry history, Epic-Ikon duopoly dynamics, climate and demographics, destination-leisure real estate framework
+- [[@Ski Resorts & Destination Leisure]] — Sector MOC: industry history, Epic-Ikon duopoly dynamics, climate and demographics, destination-leisure real estate framework
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: gasoline shock + sentiment collapse cascades to destination travel; Epic Pass elasticity tested
 
 ## Log
@@ -206,7 +206,7 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 
 ### 2026-04-22
 - Sector re-scoped: Consumer & Digital → Ski Resorts & Destination Leisure (vault-wide subsector taxonomy reorganization).
-- Wikilink cleanup: Replaced stale [[_Archive/Sectors/Consumer & Digital]] reference with [[Sectors/Ski Resorts & Destination Leisure]] in Related Research — conviction unchanged (low).
+- Wikilink cleanup: Replaced stale [[_Archive/Sectors/Consumer & Digital]] reference with [[@Ski Resorts & Destination Leisure]] in Related Research — conviction unchanged (low).
 
 ### 2026-04-23
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via gasoline >$6/gal + consumer sentiment collapse → ski destination travel demand cratered — conviction weakened: second poor snow year compounds with kinetic-conflict discretionary travel hit; capex-vs-dividend governance trap intensifies.

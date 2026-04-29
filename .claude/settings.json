@@ -127,7 +127,12 @@
       "Bash(mkdir -p /Users/alexcohen/InvestmentVault/.claude/skills/archive-callouts && ls -la /Users/alexcohen/InvestmentVault/.claude/skills/archive-callouts)",
       "Edit(/.claude/skills/archive-callouts/**)",
       "Bash(mkdir -p /Users/alexcohen/InvestmentVault/.claude/skills/retro)",
-      "Edit(/.claude/skills/retro/**)"
+      "Edit(/.claude/skills/retro/**)",
+      "Bash(cp CLAUDE.md '_Archive/Snapshots/CLAUDE \\(pre-pinned-rework 2026-04-29-130000\\).md')",
+      "Bash(cp 'User Guide.md' '_Archive/Snapshots/User Guide \\(pre-pinned-rework 2026-04-29-130000\\).md')",
+      "Bash(cp .claude/skills/archive-callouts/SKILL.md '_Archive/Snapshots/archive-callouts SKILL \\(pre-pinned-rework 2026-04-29-130000\\).md')",
+      "Bash(cp .claude/skills/lint/SKILL.md '_Archive/Snapshots/lint SKILL \\(pre-pinned-rework 2026-04-29-130000\\).md')",
+      "Bash(cp .claude/skills/graph/SKILL.md '_Archive/Snapshots/graph SKILL \\(pre-pinned-rework 2026-04-29-130000\\).md')"
     ]
   }
 }

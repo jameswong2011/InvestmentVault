@@ -220,7 +220,7 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ## Related Research
 
-- [[Sectors/Product Tankers & Maritime Shipping]] — Sector Note; includes $150 oil playbook (tanker rates $150-200K+/day, 15-25% fleet capacity reduction), thermal coal substitution dynamics, and WTI futures data
+- [[@Product Tankers & Maritime Shipping]] — Sector Note; includes $150 oil playbook (tanker rates $150-200K+/day, 15-25% fleet capacity reduction), thermal coal substitution dynamics, and WTI futures data
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — Diesel/gasoil ranked #2 (up 57%); VLCC freight $423K/day; logistics shock amplifying tanker demand
 - [[Research/2026-04-02 - GCC Market Shorting Options]] — GCC shorting instruments as complementary hedge
 - [[Macro & Technology/Iran War Trading Playbook]] — STNG listed as Position #1 near-term tactical (15% trailing stop); structural tonne-mile increase from rerouting (Saudi/UAE flows via Yanbu/Fujairah → Atlantic Basin adds 5,000–8,000 nautical miles); insurance-mechanism analysis (Lloyd's 72-hour cancellation, war-risk premium 0.125% → 1–3% of hull value); product tanker dynamics in commodity cascade
@@ -252,7 +252,7 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ### 2026-04-22
 - Sector re-scoped: Energy & Commodities → Product Tankers & Maritime Shipping (vault-wide subsector taxonomy reorganization).
-- Wikilink cleanup: Replaced stale [[Sectors/Energy & Commodities]] body link with [[Sectors/Product Tankers & Maritime Shipping]] following sector fill — conviction unchanged, no change in underlying thesis.
+- Wikilink cleanup: Replaced stale [[Sectors/Energy & Commodities]] body link with [[@Product Tankers & Maritime Shipping]] following sector fill — conviction unchanged, no change in underlying thesis.
 
 ### 2026-04-23
 - Wikilink cleanup: Dropped stale `[[Sectors/Defense & Geopolitics]]` body reference (archived sector, no direct successor — geopolitical framing captured in linked Iran macros). Conviction unchanged.

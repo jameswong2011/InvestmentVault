@@ -12,7 +12,7 @@ propagated_to: [NVDA, AMD, TSM, 000660, 285A, SEMICAP]
 
 ## Thesis Delta
 
-Three specific supply-side data points in this interview re-price multiple vault theses simultaneously: **(1) GPU useful life has extended from <5 years to 7-8 years** (incumbent ASP stickiness; Hopper/A100 resigning at higher prices) — positive for [[Theses/NVDA - Nvidia]] installed-base durability. **(2) DRAM pricing will double/triple from current levels** because true incremental memory supply doesn't arrive until 2028 despite 2025 demand signal — directly validates [[Theses/000660 - SK Hynix]] 2026-2027 HBM supercycle and threatens Goldman's 25% oversupply scenario. **(3) TSMC capex trajectory implies $100B by 2028** (vs $57.4B 2026 January-baseline) — directly validates [[Theses/TSM - Taiwan Semiconductor]] Bull Case and [[Theses/SEMICAP - Semiconductor Capital Equipment]] complexity-driven supercycle framing. **(4) CPUs "completely sold out and demand skyrocketing"** — driven by RL environments and AI-generated-code deployment — strengthens [[Theses/AMD - Advanced Micro Devices]] Venice Dense positioning. Also introduces a novel framing — "phantom GDP" — for measuring AI-generated economic value orthogonal to GDP statistics.
+Three specific supply-side data points in this interview re-price multiple vault theses simultaneously: **(1) GPU useful life has extended from <5 years to 7-8 years** (incumbent ASP stickiness; Hopper/A100 resigning at higher prices) — positive for [[Theses/NVDA - Nvidia]] installed-base durability. **(2) DRAM pricing will double/triple from current levels** because true incremental memory supply doesn't arrive until 2028 despite 2025 demand signal — directly validates [[Theses/000660 - SK Hynix]] 2026-2027 HBM supercycle and threatens Goldman's 25% oversupply scenario. **(3) TSMC capex trajectory implies $100B by 2028** (vs $57.4B 2026 January-baseline) — directly validates [[Theses/TSM - Taiwan Semiconductor]] Bull Case and [[Sectors/Semiconductor Capital Equipment]] complexity-driven supercycle framing. **(4) CPUs "completely sold out and demand skyrocketing"** — driven by RL environments and AI-generated-code deployment — strengthens [[Theses/AMD - Advanced Micro Devices]] Venice Dense positioning. Also introduces a novel framing — "phantom GDP" — for measuring AI-generated economic value orthogonal to GDP statistics.
 
 ## Summary
 
@@ -88,7 +88,7 @@ Patel closes with two predictions and a framing concept. The framing is **"phant
 
 **Strongly supports [[Theses/TSM - Taiwan Semiconductor]] Bull Case**: "$100B capex in 2028" directly validates the pricing-rents-compound thesis. TSMC "good people" pricing discipline (single-digit increases vs memory's triple-digit) is a moat durability signal — they're not extracting all available rents, preserving customer relationships — but **also signals they could extract more**. This is a hidden option on gross margin expansion beyond 60-65% baseline.
 
-**Strongly supports [[Theses/SEMICAP - Semiconductor Capital Equipment]]**: "The tail whip just gets whipped harder and harder" — every component upstream of TSMC ($100B capex) is getting prepayments and capacity reservations. Directly validates SEMICAP Bull Case across LRCX, AMAT, KLAC, ASML, ASMI, BESI, TEL. ASML "completely sold out and needs Carl Zeiss to expand faster" extends timeline of constraint.
+**Strongly supports [[Sectors/Semiconductor Capital Equipment]]**: "The tail whip just gets whipped harder and harder" — every component upstream of TSMC ($100B capex) is getting prepayments and capacity reservations. Directly validates SEMICAP Bull Case across LRCX, AMAT, KLAC, ASML, ASMI, BESI, TEL. ASML "completely sold out and needs Carl Zeiss to expand faster" extends timeline of constraint.
 
 **Mixed signal on [[Theses/000660 - SK Hynix]]**: Bull — DRAM doubling/tripling = revenue upside on $30B 2026 HBM estimate that Goldman's oversupply scenario (25% oversupply, 10-15% decline) would invalidate. Bear — Dylan's "stealing capacity from somewhere else via demand destruction via higher pricing" logic implies commodity DRAM customers get rationed; SK Hynix's 40% commodity-DRAM revenue segment sees price gains but volume risk if downstream demand destruction hits (e.g., mobile, consumer). Net conviction: slightly stronger on HBM, unchanged on commodity mix.
 
@@ -124,11 +124,11 @@ Patel closes with two predictions and a framing concept. The framing is **"phant
 
 - [[Theses/NVDA - Nvidia]] — useful-life extension, Jevons paradox play-out, token-value gap growing
 - [[Theses/TSM - Taiwan Semiconductor]] — $100B 2028 capex directly validates Bull Case; "good people" pricing discipline is hidden option value
-- [[Theses/SEMICAP - Semiconductor Capital Equipment]] — ASML sold out, tail-whip prepayments, TSMC capex doubling
+- [[Sectors/Semiconductor Capital Equipment]] — ASML sold out, tail-whip prepayments, TSMC capex doubling
 - [[Theses/AMD - Advanced Micro Devices]] — CPU sold-out thesis directly validates Venice Dense positioning
 - [[Theses/000660 - SK Hynix]] — DRAM 2-3x pricing trajectory supports HBM thesis; partial bear on commodity mix
 - [[Theses/285A - Kioxia]] — NAND supply deficit durability through 2027+
-- [[Sectors/GPU & AI Compute Accelerators]] — token supply/demand imbalance driving sector
+- [[Compute & AI Compute Accelerators]] — token supply/demand imbalance driving sector
 - [[Sectors/DRAM & HBM Memory]] — memory pricing trajectory
 - [[Sectors/NAND Memory & Storage]] — supply growth differential
 - [[Sectors/Semiconductor Foundries]] — TSMC capex trajectory

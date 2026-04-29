@@ -253,7 +253,7 @@ Specific drivers:
 - [[Theses/TSM - Taiwan Semiconductor.md]] — Foundry to all AI accelerators including those Anthropic deploys; structural exposure to AI compute cycle
 - [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations.md]] — Cross-references the AIDC over-build risk that is the principal thesis risk (#3 in Risks section)
 - [[Macro & Technology/Agentic Internet.md]] — Frames Anthropic Claude positioning vs. OpenAI; relevant to SKT's AI Service "A." consumer assistant strategy
-- [[Sectors/Telecommunications Services.md]] — Sector note (created at Step 5 — first thesis in this sector)
+- [[@Telecommunications Services]] — Sector note (created at Step 5 — first thesis in this sector)
 
 ## Log
 

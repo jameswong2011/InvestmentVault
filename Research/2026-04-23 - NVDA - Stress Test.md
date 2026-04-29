@@ -84,7 +84,7 @@ Secondary triggers (lower information value but faster-observed):
 
 ## Related
 - [[Theses/NVDA - Nvidia]]
-- [[Sectors/GPU & AI Compute Accelerators]]
+- [[Compute & AI Compute Accelerators]]
 - [[AI Bubble Risk and Semiconductor Valuations]]
 
 ## Related Research

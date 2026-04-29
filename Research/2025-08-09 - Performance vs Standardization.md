@@ -31,4 +31,4 @@ Dynamics: Open (PCIe/CXL) vs. proprietary (NVLink/InfiniBand) trade performance 
 Silicon photonics displaces copper via optics for efficiency in large AI clusters, enhancing InfiniBand/Ethernet without replacing protocols.
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics (Nvidia NVLink 7x PCIe bandwidth as proprietary rack-scale lock-in moat) and Macro shifts (scale-up fabric standardization race — NVLink Fusion May 2025 opens scale-up socket while retaining royalty/toll; UEC 1.0 vs UALink vs SUE compete for the NVLink replacement socket).
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics (Nvidia NVLink 7x PCIe bandwidth as proprietary rack-scale lock-in moat) and Macro shifts (scale-up fabric standardization race — NVLink Fusion May 2025 opens scale-up socket while retaining royalty/toll; UEC 1.0 vs UALink vs SUE compete for the NVLink replacement socket).

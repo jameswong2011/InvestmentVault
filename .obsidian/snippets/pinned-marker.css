@@ -1,0 +1,100 @@
+/* ============================================================
+   Pinned-callout marker — render [[pinned]] as a pretty badge
+   ------------------------------------------------------------
+   Replaces the unresolved `[[pinned]]` wikilink with a small
+   pin pill. Targets Obsidian's `a.internal-link[data-href="pinned"]`
+   regardless of whether the `is-unresolved` class is present.
+
+   Toggle off in Settings → Appearance → CSS snippets to revert.
+   ============================================================ */
+
+
+/* ---------- Reading View + Live Preview (rendered) ---------- */
+
+a.internal-link[data-href="pinned"] {
+  /* suppress default link styling */
+  color: transparent;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  cursor: default;
+
+  /* hide original "pinned" text */
+  font-size: 0;
+  letter-spacing: 0;
+
+  /* render as inline pill */
+  display: inline-flex;
+  align-items: center;
+  vertical-align: baseline;
+  margin: 0 0.15em;
+  padding: 0.05em 0.55em 0.1em;
+  border-radius: 999px;
+  background: rgba(245, 165, 36, 0.16);   /* amber 16% */
+  border: 1px solid rgba(245, 165, 36, 0.45);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+a.internal-link[data-href="pinned"]::before {
+  content: "📌 Pinned";
+  color: var(--text-normal);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+a.internal-link[data-href="pinned"]:hover {
+  background: rgba(245, 165, 36, 0.28);
+  border-color: rgba(245, 165, 36, 0.7);
+}
+
+
+/* ---------- Inside callout headers ----------
+   Add a small left margin so the pill doesn't crowd the date.
+*/
+
+.callout-title a.internal-link[data-href="pinned"] {
+  margin-left: 0.4em;
+  vertical-align: middle;
+}
+
+
+/* ---------- Live Preview source-mode (when cursor is on the line) ----------
+   When you're actively editing a line, Obsidian shows raw markdown
+   (`[[pinned]]` as text). No styling possible there — that's expected.
+   The pill renders on every other line and in Reading View.
+*/
+
+
+/* ---------- Legacy [[preserve]] markers ----------
+   Deprecated 2026-04-29. Render with a muted greyed pill so they
+   visually flag for migration. Remove this block once /lint #56
+   shows zero remaining preserve markers.
+*/
+
+a.internal-link[data-href="preserve"] {
+  color: transparent;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  cursor: default;
+  font-size: 0;
+  letter-spacing: 0;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: baseline;
+  margin: 0 0.15em;
+  padding: 0.05em 0.55em 0.1em;
+  border-radius: 999px;
+  background: rgba(150, 150, 150, 0.16);
+  border: 1px dashed rgba(150, 150, 150, 0.55);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+a.internal-link[data-href="preserve"]::before {
+  content: "📌 Pinned (legacy)";
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-style: italic;
+}

@@ -320,7 +320,7 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 - [[Sectors/E-commerce Infrastructure]] — UCP/ACP/MCP protocol-wars context; SHOP dual-stack positioning
 - [[Sectors/Cybersecurity]] — agent attack-surface expansion; AI-powered threats
 - [[Sectors/Enterprise Workflow AI & Automation]] — per-seat SaaS pricing risk; orchestration-layer contest
-- [[Sectors/GPU & AI Compute Accelerators]] — agent compute fanout
+- [[Compute & AI Compute Accelerators]] — agent compute fanout
 - [[Sectors/NAND Memory & Storage]] — agent context window memory demand
 - [[Sectors/Mobile Advertising Technology]] — in-app vs open-web agent exposure differential
 - [[Sectors/Optical Networking & Photonics]] — east-west sub-agent fanout

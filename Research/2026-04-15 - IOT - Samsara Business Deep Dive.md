@@ -96,4 +96,4 @@ No existing thesis note in vault. Key question: **Is the data flywheel (25T data
 - [[Theses/DE - John Deere]] — Operations Center integration partner
 
 ## Related Sectors
-- [[Sectors/Industrial IoT & Connected Operations]] — Primary sector (back-reference added 2026-04-22 during sector note fill)
+- [[@Industrial IoT & Connected Operations]] — Primary sector (back-reference added 2026-04-22 during sector note fill)

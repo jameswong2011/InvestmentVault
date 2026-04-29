@@ -80,9 +80,9 @@ The **fertilizer nexus** is the critical transmission mechanism from energy disr
 - [[Theses/CCJ - Cameco]] — Uranium at ~$92/lb; nuclear renaissance narrative reinforced by crisis
 - [[Theses/RELIANCE - Reliance Industries]] — Jamnagar refinery benefits from surging crack spreads
 - [[Iran War Macroeconomic Scenario]] — Parent macro scenario analysis
-- [[Sectors/LNG & Natural Gas Infrastructure]] — LNG-level expression of commodity thesis (structural supply gap, Ras Laffan damage)
-- [[Sectors/Product Tankers & Maritime Shipping]] — Product tanker expression (ton-mile demand shock, insurance mechanism)
-- [[Sectors/Uranium & Nuclear Fuel]] — Uranium expression (nuclear renaissance as crisis hedge)
+- [[@LNG & Natural Gas Infrastructure]] — LNG-level expression of commodity thesis (structural supply gap, Ras Laffan damage)
+- [[@Product Tankers & Maritime Shipping]] — Product tanker expression (ton-mile demand shock, insurance mechanism)
+- [[@Uranium & Nuclear Fuel]] — Uranium expression (nuclear renaissance as crisis hedge)
 
 - [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Gemini source: detailed commodity sensitivity ranking and trade recommendations
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience sustains commodity-disruption regime duration: Iran's proxy apparatus survived Assad fall via maritime smuggling + tech transfer, implying Scenario A commodity impact window persists beyond Hormuz ceasefire

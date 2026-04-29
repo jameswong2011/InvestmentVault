@@ -104,7 +104,7 @@ Qualify as **in-window addressed** iff `WINDOW_START ≤ addressed_date ≤ TODA
   addressed_date: YYYY-MM-DD
   body: [joined text, `> ` prefix stripped]
   response: [joined text, `**Response:** ` prefix stripped]
-  markers: [[[pinned]], [[preserve]]] (informational only — not excluded)
+  markers: [[[pinned]]] (informational only — not excluded; legacy [[preserve]] markers during deprecation transition also recorded)
 ```
 
 **Skip policy**:

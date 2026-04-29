@@ -180,4 +180,4 @@ Why is this here?
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics (#4 of Nvidia's seven moats — Physical AI full stack: PhysX 5, Warp 8x-669x differentiable physics, Omniverse 82+ OpenUSD connectors, Cosmos world foundation models), Product level analysis (Jetson/Thor/DRIVE Hyperion edge inference), and Investor heuristics #5 (Physical AI as underpriced NVDA-specific TAM vector — no merchant GPU competitor has equivalent vertical stack).
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics (#4 of Nvidia's seven moats — Physical AI full stack: PhysX 5, Warp 8x-669x differentiable physics, Omniverse 82+ OpenUSD connectors, Cosmos world foundation models), Product level analysis (Jetson/Thor/DRIVE Hyperion edge inference), and Investor heuristics #5 (Physical AI as underpriced NVDA-specific TAM vector — no merchant GPU competitor has equivalent vertical stack).

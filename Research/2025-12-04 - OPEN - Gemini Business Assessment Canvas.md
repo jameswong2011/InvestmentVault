@@ -235,4 +235,4 @@ Why is this here?
 - [[Theses/OPEN - Opendoor]] — Founder mode pivot and operational restructuring
 
 ## Related Sectors
-- [[Sectors/PropTech & Real Estate Marketplaces]] — primary sector; research cited in sector note's Related Research under Opendoor's Nejatian/Rabois refounding, Mainframe AI pricing engine, 200-employee target, and warrant-dividend capital engineering
+- [[@PropTech & Real Estate Marketplaces]] — primary sector; research cited in sector note's Related Research under Opendoor's Nejatian/Rabois refounding, Mainframe AI pricing engine, 200-employee target, and warrant-dividend capital engineering

@@ -234,7 +234,7 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Theses/IQE - IQE]] — III-V epitaxy chokepoint beneath silicon photonics supply chain
 - [[AI Bubble Risk and Semiconductor Valuations]] — Nvidia valuations; custom silicon erosion risk (TPU, Trainium, Maia); CUDA moat analysis; $650B annual revenue requirement
 - [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis: CoWoS capacity 35K→130K wafers/month driving advanced packaging equipment TAM ($17.5B by 2028), complexity-driven supercycle (equipment revenue per wafer start structurally increasing)
-- [[Sectors/GPU & AI Compute Accelerators]] — Sector Note with cross-thesis dynamics
+- [[Compute & AI Compute Accelerators]] — Sector Note with cross-thesis dynamics
 - [[Research/2026-04-23 - NVDA - Stress Test]] — 6/10 Bull assumptions 🔴: share erosion on Bear trajectory, Taiwan tail 3x consensus, $50B China loss structural, Jevons vs compound efficiency contested, valuation prices flawless execution, no Conviction Triggers section
 
 ## Log
@@ -268,7 +268,7 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 
 ### 2026-04-22
 - Sector re-scoped: Semiconductors & AI Infrastructure → GPU & AI Compute Accelerators (vault-wide subsector taxonomy reorganization).
-- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Sectors/GPU & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.
+- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Compute & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.
 
 ### 2026-04-23
 - Wikilink cleanup: 2026-04-16 NAND sync log entry: `[[Sectors/NAND Flash & Storage]]` → `[[Sectors/NAND Memory & Storage]]` (sector file renamed; rename-only fix preserving log data). Conviction unchanged.

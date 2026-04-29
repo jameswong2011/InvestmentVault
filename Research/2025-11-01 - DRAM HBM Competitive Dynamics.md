@@ -14,5 +14,5 @@ mdl-cell mdl-cell--12-col mdl-shadow--2dp"> Gemini Apps Created Gemini Canvas ti
 *[Content truncated — full conversation in Research/raw/_staging/extracted/]*
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (DRAM/HBM triopoly pricing power — SK Hynix 62%, Micron overtakes Samsung at 21%) and Investor heuristics #6 (TurboQuant 6x KV cache compression as Jevons-inflection risk — the March 2026 "Google's DeepSeek moment" characterization).
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Macro shifts (Samsung/SK Hynix/Micron HBM competitive dynamics — capacity expansion drives DRAM/HBM equipment CAGR through 2028; vendor bonding technology choices bifurcate packaging equipment demand).
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (DRAM/HBM triopoly pricing power — SK Hynix 62%, Micron overtakes Samsung at 21%) and Investor heuristics #6 (TurboQuant 6x KV cache compression as Jevons-inflection risk — the March 2026 "Google's DeepSeek moment" characterization).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Macro forces (Samsung/SK Hynix/Micron HBM competitive dynamics — capacity expansion drives DRAM/HBM equipment CAGR through 2028; vendor bonding technology choices bifurcate packaging equipment demand).

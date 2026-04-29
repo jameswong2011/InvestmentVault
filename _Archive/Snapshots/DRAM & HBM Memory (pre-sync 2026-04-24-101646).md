@@ -422,7 +422,7 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5), with the future HBF tie
 ## Related Sectors and Macro
 
 - [[Sectors/NAND Memory & Storage]] — Sister memory sub-sector; HBF tier emerging from NAND vendors; Solidigm IPO catalyst inside SK Hynix
-- [[Sectors/GPU & AI Compute Accelerators]] — HBM downstream demand source; Nvidia 60-65% CoWoS pre-booking; HBM content per GPU trajectory
+- [[Compute & AI Compute Accelerators]] — HBM downstream demand source; Nvidia 60-65% CoWoS pre-booking; HBM content per GPU trajectory
 - [[Sectors/Semiconductor Capital Equipment]] — ASML EUV monopoly upstream of HBM; BESI hybrid bonding; HBM4 packaging equipment intensity
 - [[AI Bubble Risk and Semiconductor Valuations]] — $650B AI revenue requirement for 2030; Taiwan kinetic tail risk; hyperscaler capex digestion-phase scenarios
 

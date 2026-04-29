@@ -197,9 +197,9 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]] — Samsung/Micron/SK Hynix HBM-vs-NAND capex allocation
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — HBM shortage dynamics; inference economics
 - [[Theses/285A - Kioxia]] — Flash Ventures JV partner; shared thesis dynamics
-- [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis: TEL cryogenic etch for 400-layer NAND in 2026 volume deployment; etch intensity ~5x increase vs 2D NAND; 3D NAND recovery as equipment demand driver
+- [[Sectors/Semiconductor Capital Equipment]] — Sector-level WFE thesis: TEL cryogenic etch for 400-layer NAND in 2026 volume deployment; etch intensity ~5x increase vs 2D NAND; 3D NAND recovery as equipment demand driver
 - [[Sectors/NAND Memory & Storage]] — NAND sector note: competitive dynamics, YMTC disruption analysis, HBF category assessment, product-level differentiation
-- [[Sectors/Semiconductor Capital Equipment]] — WFE sector note: hybrid-bonded flash (HBF) as second hybrid-bonding TAM vector; pilot line accelerated H2 2026; TEL cryogenic etch HVM 2026 for 400L NAND; equipment-adjacent secondary sector reference
+- [[Sectors/Semiconductor Capital Equipment]] — WFE sector hub: hybrid-bonded flash (HBF) as second hybrid-bonding TAM vector; pilot line accelerated H2 2026; TEL cryogenic etch HVM 2026 for 400L NAND; equipment-adjacent secondary sector reference
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War naphtha disruption threatens Japanese PR/BARC supply to Flash Ventures JV fabs (Yokkaichi/Kitakami); direct impact on SNDK's cost-plus wafer access
 
 ## Log

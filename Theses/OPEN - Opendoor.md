@@ -165,7 +165,7 @@ Opendoor's ~67% share of the dedicated iBuyer segment sounds commanding, but the
 - [[Research/2025-12-04 - OPEN - Gemini Business Assessment Canvas]] — Comprehensive analysis of founder mode pivot, operational restructuring, AI deployment, capital structure engineering, and valuation (Gemini Canvas)
 - [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]] — 24-month progress assessment covering unit economics improvement, agent partnerships, financial milestones, analyst sentiment, competitive comparison with Offerpad (ChatGPT deep research)
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: ground invasion drives mortgage rates higher, housing market freezes further; turnaround thesis structurally stressed
-- [[Sectors/PropTech & Real Estate Marketplaces]] — Sector MOC: iBuying economics, housing-cycle exposure, PropTech competitive landscape
+- [[@PropTech & Real Estate Marketplaces]] — Sector MOC: iBuying economics, housing-cycle exposure, PropTech competitive landscape
 
 ## Log
 

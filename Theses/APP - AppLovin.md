@@ -6,6 +6,10 @@ conviction: medium
 sector: Mobile Advertising Technology
 ticker: APP
 ---
+> [!tip] 2026-04-28 → Addressed 2026-04-28
+> **Prompt:** *Summarise the short case as compiled from short seller reports.*
+>
+> **Response:** Four interlocking claims drive the compiled short case — incrementality is 25–35% not ~100% (Muddy Waters), AXON depends on cross-platform persistent identity graphs violating platform TOS (Muddy Waters, SEC echo), advertiser churn is 23% not minimal (Muddy Waters), and governance integrity (Culper extant, CapitalWatch retracted Feb 2026 with apology). Full claim-by-claim compilation with synthesis table in §Industry Context → Short-Seller Attacks and Reputational Dynamics.
 
 # APP — AppLovin
 
@@ -49,6 +53,9 @@ AppLovin's business model is best understood as the "Visa of mobile advertising"
 
 **Axon Ads Manager (Self-Serve)** — Self-serve advertising platform targeting e-commerce advertisers, featuring Dynamic Product Ads. Moving toward general availability in H1 2026 (currently referral-only access, 57% go-live conversion rate among qualified leads). GenAI creative tools piloted with 100+ advertisers to address onboarding friction. Represents the business model inflection from sales-driven (linear growth) to platform-driven (exponential adoption).
 
+> [!question] 2026-04-28
+> What is the transferability of AXON/Max IP from gaming vertical to eCommerce. What other business model adjustments are required for this to be succesful.
+
 **Adjust** — Mobile attribution and measurement platform providing analytics across the full marketing funnel. Forms the measurement layer of AppLovin's vertically integrated stack — from ad creation through delivery to attribution.
 
 **Wurl** — Connected TV (CTV) advertising and content distribution platform extending AppLovin's ad infrastructure into streaming/CTV, creating direct overlap with The Trade Desk. The Stagwell partnership (April 2026) tests Axon across non-gaming spend including CTV through a major agency holding company.
@@ -89,7 +96,27 @@ The Stagwell partnership (April 2026) is a meaningful execution milestone — it
 
 ### Short-Seller Attacks and Reputational Dynamics
 
-The reputational overhang is multi-layered: (1) Muddy Waters' March 2025 report alleging 52% of e-commerce conversions are retargeting, persistent identity graphs violating TOS, and 23% advertiser churn; (2) CapitalWatch January 2026 report alleging ties to Southeast Asian money laundering — retracted February 9, 2026 with a full apology; (3) Culper Research short report. AppLovin hired Quinn Emanuel to investigate the Muddy Waters claims. CEO Foroughi called short sellers "nefarious." The pattern is notable: each report triggers 15–20% drawdowns followed by partial recoveries — creating a volatility regime that favors long-term holders who can withstand the headline risk.
+The short case rests on four interlocking claims compiled across Muddy Waters (March 2025), Culper Research, CapitalWatch (January 2026, retracted February 2026), and the SEC probe — which incorporates several of the data-practice allegations directly:
+
+**1. Incrementality is a fraction of management's claim.** Muddy Waters: 25–35% of e-commerce conversions are truly incremental vs. management's near-100%; 52% represents retargeting of users who would have converted anyway. If validated, the e-commerce TAM expansion thesis collapses — advertisers paying performance prices for retargeted users overpay vs. Meta/Google CPA equivalents. Independent third-party tests partially support each side: Immi 11.3% incremental Shopify lift at 46% lower CPA; Jones Road Beauty pulled back after measured losses; Cann measured zero performance in a controlled geo holdout.
+
+**2. AXON depends on data practices that violate platform TOS.** Muddy Waters alleged AppLovin maintains "Persistent Identity Graphs" — cross-app and cross-device user profiles — breaching Apple ATT and Google privacy terms. The SEC Cyber and Emerging Technologies unit probe targets this exact question. SEC declined to release correspondence citing risk that individuals could "fabricate evidence, influence witness testimony, and/or destroy or alter certain documents" — language consistent with active enforcement track, not perfunctory inquiry. Worst case is structural modification of AXON's signal-collection methodology; the algorithm survives but operational impairment is material if cross-platform identity stitching is curtailed.
+
+**3. Advertiser churn is materially higher than disclosed.** Muddy Waters documented 23% advertiser churn vs. CEO Foroughi's claim of minimal churn. Implication: revenue growth masks a high-velocity churn profile where new-advertiser onboarding outpaces existing-advertiser exits. Most relevant to the e-commerce cohort, where AXON's incrementality variance (Immi positive, Cann/Jones Road negative) implies advertisers test, measure, and exit when results disappoint. Sustained 23% churn means unit economics in non-gaming verticals are structurally inferior to gaming.
+
+**4. Governance and reputational integrity.** Culper Research published a short thesis (active, no retraction). CapitalWatch (January 20, 2026) alleged Southeast Asian money-laundering ties to major shareholder Hao Tang — retracted February 9, 2026 with apology acknowledging "insufficient independent verification" (stock +13% on retraction). Hagens Berman filed a class action lawsuit following the Muddy Waters report; ongoing litigation creates disclosure risk and potential financial liability.
+
+**Synthesis — what the short case binds and what it does not:**
+
+| Dimension | Short-case strength | Counter-weight |
+|---|---|---|
+| Incrementality | Mixed third-party data partially validates (Cann, Jones Road) | Mixed third-party data partially refutes (Immi, Digital Position) |
+| TOS violation / SEC | SEC language suggests serious investigation; Muddy Waters' specific data-practice claims map onto SEC focus area | No charges filed; ~45% drawdown from ATH already embeds regulatory discount |
+| Advertiser churn | Specific 23% figure with documented methodology | Company contests; no third-party validation either way |
+| Governance | Culper extant; recurrent 15–20% drawdown-recovery cycle on each new report | CapitalWatch retracted; Quinn Emanuel investigating Muddy Waters |
+| Volatility regime | Recurring drawdowns create momentum-sensitive capital exit | Each report partially recovers — favors long-duration holders |
+
+The thesis-determining variable is not whether short sellers continue publishing — they will — but whether independent measurement from Northbeam, Haus, or controlled geo holdout testing at scale validates AXON's e-commerce performance beyond the curated DTC pilot cohort. AppLovin retained Quinn Emanuel to investigate Muddy Waters' claims; CEO Foroughi labeled short sellers "nefarious." The recurrent 15–20% drawdown-then-partial-recovery pattern creates a volatility regime that favors long-duration holders willing to absorb headline risk and discounts the position for momentum-sensitive capital.
 
 ## Key Metrics
 
@@ -163,6 +190,9 @@ The reputational overhang is multi-layered: (1) Muddy Waters' March 2025 report 
 - [[Sectors/Mobile Advertising Technology]]
 
 ## Log
+
+### 2026-04-28
+- Addressed user callouts: APP — compiled four-claim short case (incrementality, TOS/SEC, churn, governance) with synthesis table into expanded §Industry Context → Short-Seller Attacks subsection — conviction unchanged.
 
 ### 2026-04-15
 - [Template restructure]: Repositioned Business Model section per updated template — conviction unchanged.

@@ -223,7 +223,7 @@ Safety is both the primary customer value proposition and a regulatory tailwind.
 - [[Theses/PLTR - Palantir]] — Adjacent operational intelligence thesis (strategic layer vs Samsara's operational execution layer)
 - [[Theses/NOW - ServiceNow]] — Adjacent workflow automation thesis (IT/business process layer vs Samsara's physical operations layer)
 - [[Theses/DE - John Deere]] — Samsara integration partner via Operations Center; overlapping physical operations / precision ag thesis
-- [[Sectors/Industrial IoT & Connected Operations]] — Sector Note
+- [[@Industrial IoT & Connected Operations]] — Sector Note
 
 ---
 

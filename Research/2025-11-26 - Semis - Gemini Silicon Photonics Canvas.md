@@ -288,4 +288,4 @@ Why is this here?
 
 ## Related Sectors
 - [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Competitive dynamics (silicon photonic foundry stratum), Product level analysis (GF/AMF + Tower + TSMC COUPE + STMicro + Intel Foundry 2026 foundry landscape), Macro shifts (SiPh $2.86B → $10.36B / 24% → 44% transceiver penetration), and Investor heuristics (SiPh foundry buildout as demand catalyst for InP lasers).
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (Photonics & Optical Equipment Enablers — GFS/TSEM/FN/TSMC COUPE foundry stratum) and Macro shifts (copper-to-optical transition as WFE complexity driver; BESI ~75% advanced die attach share for COUPE).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Product-level vendor map (Photonics & Optical Equipment Enablers — GFS/TSEM/FN/TSMC COUPE foundry stratum) and Macro forces (copper-to-optical transition as WFE complexity driver; BESI ~75% advanced die attach share for COUPE).

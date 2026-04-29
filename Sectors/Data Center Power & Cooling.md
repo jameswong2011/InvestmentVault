@@ -248,6 +248,7 @@ The "AI/NVIDIA-linked vs. traditional enterprise" split for Vertiv FY26E maps to
 - [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure]] — 322-line deep dive covering Vertiv business history (Liebert 1946 → Emerson 1987 → Platinum/Vertiv rebrand 2016 → IPO 2020), competitive moat, AI-era positioning
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]] — OCP DC Power Shelf v3, OAI System Liquid Cooling Guidelines, committee participation and co-authorship with Meta
 - [[Research/2025-07-15 - Data Center Liquid Cooling]] — Industry-wide liquid cooling transition; Vertiv/NVIDIA deployments showing 10-15% PUE improvement; immersion POC at Stellium Newcastle; Microsoft Maia retrofit; ORC waste heat recovery
+- [[Sectors/Modular Power Conversion Components]] — Adjacent sector covering the chip-level layer below (Vicor VPD modules, MPS lateral multiphase, IDM PMIC ecosystem); the architectural fork at ~1,500–2,000A on-board current is the chip-level mirror of the 800VDC transition tracked in §Macro shifts #4 here
 
 ## Log
 ### 2026-04-22
@@ -256,3 +257,6 @@ The "AI/NVIDIA-linked vs. traditional enterprise" split for Vertiv FY26E maps to
 
 ### 2026-04-26
 - Addressed user callouts: 5 fresh `[!question]` callouts (Q1 Vertiv NVIDIA-vs-traditional revenue mix, Q2 pricing power by customer channel, Q3 800VDC vendor capability + stripped-out vendors, Q4 power+cooling integration moat, Q5 IP barriers in standardized hardware). Body integrations: §Competitive dynamics gained "Customer mix economics by channel" subsection (4-channel revenue/margin table + AI-vs-legacy split + SKU-level pricing-power asymmetry + 2026-2028 mix-shift risk); §Macro shifts #4 expanded with 10-vendor 800VDC capability matrix + stripped-out list + Vertiv share derivation (35% → 40-45% in >100 kW/rack RFPs); §Investor heuristics added bullets #8 (integration moat as compounding advantage) and #9 (IP density in power+cooling closer to medical-device than industrial HVAC). All 5 callouts converted to ledger format with §Section pointers. Conviction unchanged on VRT — analysis strengthens existing non-consensus framing rather than overturning it.
+
+### 2026-04-28
+- Manual edit: Added cross-reference to new [[Sectors/Modular Power Conversion Components]] sector in §Related Research — covers the chip-level power module layer (Vicor VPD, MPS lateral, IDM PMIC ecosystem) that sits below this sector's rack/facility scope. No analytical changes to body sections; purely sector-graph navigation enrichment.

@@ -176,4 +176,4 @@ Why is this here?
 
 ## Related Sectors
 - [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Industry history (Phase 6 AI optical supercycle / NVIDIA $2B dual investment), Macro shifts (CPO inflection year 2026), and Investor heuristics (arms-dealer asymmetry + OCS structural expansion).
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (Photonics & Optical Equipment Enablers — TSMC COUPE platform, SiPh foundry landscape) and Macro shifts (CPO yield bottleneck at optical test; FORM/AEHR picks-and-shovels positioning).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Product-level vendor map (Photonics & Optical Equipment Enablers — TSMC COUPE platform, SiPh foundry landscape) and Insight #6 (CPO yield bottleneck at optical test; FORM/AEHR picks-and-shovels positioning).

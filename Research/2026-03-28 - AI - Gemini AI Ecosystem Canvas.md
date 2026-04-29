@@ -236,4 +236,4 @@ Why is this here?
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (algorithmic efficiency vs Jevons Paradox — Muon 35% training acceleration, TurboQuant 6x KV cache compression, DeepSeek V4 MoE 5-10% model active), Investor heuristics #6 (the single least-priced risk — compound efficiency gains at >2x/year could inflect net accelerator demand downward in 2027-2028), and Key industry questions (at what cost-per-token deflation does algorithmic efficiency overwhelm Jevons expansion).
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (algorithmic efficiency vs Jevons Paradox — Muon 35% training acceleration, TurboQuant 6x KV cache compression, DeepSeek V4 MoE 5-10% model active), Investor heuristics #6 (the single least-priced risk — compound efficiency gains at >2x/year could inflect net accelerator demand downward in 2027-2028), and Key industry questions (at what cost-per-token deflation does algorithmic efficiency overwhelm Jevons expansion).

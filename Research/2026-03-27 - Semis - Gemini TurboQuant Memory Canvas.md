@@ -252,4 +252,4 @@ Why is this here?
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (TurboQuant characterized as "Google's DeepSeek moment" by Cloudflare CEO — March 2026 algorithmic disruption of the memory-wall economic assumption) and Investor heuristics #6 (single least-priced risk — if compound efficiency gains compound at >2x/year, net accelerator demand could inflect downward within 2027-2028 AI capex horizon; NVDA/AMD forward multiples compress sharply on semi-cycle derate).
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (TurboQuant characterized as "Google's DeepSeek moment" by Cloudflare CEO — March 2026 algorithmic disruption of the memory-wall economic assumption) and Investor heuristics #6 (single least-priced risk — if compound efficiency gains compound at >2x/year, net accelerator demand could inflect downward within 2027-2028 AI capex horizon; NVDA/AMD forward multiples compress sharply on semi-cycle derate).

@@ -145,7 +145,7 @@ Kambi is the "arms dealer" of the sports betting industry — a pure B2B technol
 
 ## Related Research
 
-- [[Sectors/Online Gambling]]
+- [[@Online Gambling]]
 
 ## Log
 

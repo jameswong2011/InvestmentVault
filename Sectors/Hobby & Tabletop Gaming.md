@@ -292,6 +292,32 @@ The 2025 tariff shock kneecapped crowdfunding: CMON halted all future campaigns;
 
 The AI-to-3D step-change is <18 months old and the quality gap to human-sculpted miniatures remains material for centerpiece models but is rapidly closing on generic troops and terrain. Direct threat to Patreon-STL middle tier; asymmetric threat to GW (brand + tournament infrastructure mostly protects the core).
 
+**Cost delta — retail Warhammer vs home 3D-printed equivalents** (April 2026):
+
+| Product | Official price | Home-print all-in | Effective delta |
+|---|---|---|---|
+| 10-model troop squad | £35 | £3–7 (resin + STL) | 80–90% |
+| Combat Patrol box (~25 models) | £80–90 | £8–15 + Patreon sub | 80–90% |
+| Leviathan starter (~75 models) | £150 | £25–40 + Patreon sub | 75–85% |
+| Centerpiece kit (Knight/Titan) | £140–160 | £15–30 + per-file purchase | 80–90% |
+
+Resin $30–50/L; a 32mm troop uses 3–8ml, a centerpiece 10–30ml. Sub-$300 entry resin printer (Anycubic Photon Mono, Elegoo Mars 5) + $100–200 wash/cure station + $50 ventilation = ~$400–500 capex; break-even ~50–100 models vs retail. Operating cost ~£0.50–1.00 of resin per model vs ~£3.50/model retail.
+
+**Supply access tiers** (file access, separate from printing capex):
+
+| Tier | Source | Cost | Legality | Tournament-legal? |
+|---|---|---|---|---|
+| Paid Patreon — proxy designs | Artisan Guild ($9–35/mo), Titan-Forge, Arch Villain Games, Mz4250 | $9–35/mo for 30–200 new models | Legal | No |
+| Per-file marketplace | Cults3D, MyMiniFactory, Thangs | $5–50 per design | Legal (proxy) | No |
+| Illicit GW STL (1:1 copies) | Cults3D GW-named listings, Thingiverse legacy, encrypted P2P, Discord drops | Free or $1–5 | Illegal (DMCA-eligible) | No |
+
+The Nov 2025 mega-leak collapsed marginal file-access cost for GW IP to effectively zero: 40,000 production-grade STLs hit Cults3D and mirrored across MyMiniFactory, Thingiverse, encrypted P2P, and Discord within hours; 180,000 downloads in the first 24 hours; GW's takedown reach estimated <30% of distributed copies. Yet H1 FY25/26 core revenue grew +17.3% — confirming the binding constraint on substitution is **GW's tournament-legal-product-only rule, not file availability or printing cost**. Casual proxy play is now near-frictionless at ~$20/month + ~$400 upfront capex; competitive/tournament play remains structurally locked to retail GW miniatures. The skill/space barrier (8–15 hour resin learning curve, ventilation requirement, wash/cure overhead) caps active adoption at ~15% of hobbyists per FY25/26 industry estimate.
+
+> [!question] 2026-04-27 → Addressed 2026-04-27
+> **Prompt:** *Whats the cost delta between a Warhammer purchased set and 3D printed set. How hard is accessing 3D printed supply.*
+>
+> **Response:** Home-printed equivalents run 75–90% cheaper than retail (£35 10-model squad → £3–7 in resin) with ~$400–500 capex break-even at 50–100 models; file access is near-frictionless post-Nov-2025 mega-leak (180K downloads in 24 hours, takedown reach <30%), but the binding constraint on substitution is GW's tournament-legal-product-only rule, not cost or supply. See §Product level analysis → The 3D printing / STL ecosystem for the full cost ladder and access-tier tables.
+
 ## Acquisitions and new entrants
 
 ### Notable M&A (last 10 years)
@@ -435,7 +461,7 @@ Current market sentiment treats hobby & tabletop gaming as a **cyclical consumer
 
 - [[Sectors/Consumer Edtech]] — Duolingo behavioral-moat framework (streak identity, engagement architecture survives AI commoditization) is the most transferable analytical analogy for GW's 3D printing thesis. Same archetype: behavior-based product with switching costs built from community + ritual + identity, not from content superiority. Same investor mispricing (wrong-comp-set: treating Duolingo like Coursera or GW like Hasbro).
 - [[Sectors/Music Streaming]] — Spotify's engagement-platform + IP licensing framing maps to GW's "physical product + franchise licensing" dual engine. The Universes Beyond blueprint for MTG is the Podcasts + Audiobooks pivot applied to a physical product company.
-- [[Sectors/Online Gambling]] — Recurring-revenue behavioral-engagement product category; both sectors depend on social infrastructure (tournaments, venues, community) that creates switching costs independent of the underlying product quality.
+- [[@Online Gambling]] — Recurring-revenue behavioral-engagement product category; both sectors depend on social infrastructure (tournaments, venues, community) that creates switching costs independent of the underlying product quality.
 - [[Sectors/Mobile Advertising Technology]] — Pokémon TCG Pocket's $600M run-rate is a top mobile games performer; mobile monetization playbook applied to tabletop IP extends the IP-licensing framework into a different distribution channel.
 
 ## Related Research
@@ -448,3 +474,6 @@ Current market sentiment treats hobby & tabletop gaming as a **cyclical consumer
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Consumer & Digital]] — pending prompt-fill of sector analysis sections.
 - Sector note fully populated via web-primary + vault-secondary research with a Games Workshop-centric lens framed within broader tabletop ecosystem. Filled all 7 analysis sections: Key industry questions (6), Industry history (founding 1953 → 2026 tariff bifurcation), Competitive dynamics (six-sub-segment map), Product level analysis (GW full catalog + Pokémon/MTG/Ravensburger/Asmodee stacks + 3D print ecosystem + AI text-to-3D), Acquisitions and new entrants (Hasbro/WotC 1999, Asmodee roll-ups, Embracer/Asmodee spin-off 2025 with €900M debt, Steamforged/Warmachine 2024, Exploding Kittens Dec 2025), Macro shifts (supply-chain geography as #1 variable post-April 2025 tariffs, IP-licensing as secular accelerant, AI asymmetric cross-segment impact, demographic tailwind, OGL regime change, TCG scalping persistence, LGS bifurcation, convention peak, cultural anti-screen shift favoring craft hobbies), Investor heuristics (GW tariff insulation mispriced, Universes Beyond re-rating thesis, Pokémon Company private benchmark, IP-rent business frame vs physical-product frame, luxury-goods vs consumer-discretionary comp set). Added Related Research (2 GW research notes), Watchlist (Pokémon Company private, Hasbro, Asmodee, Ravensburger, Embracer/Fellowship, Saber/Focus, SEGA, Privateer/Steamforged, CMON distressed), Cross-Sector Links (Consumer Edtech for behavioral-moat framework analogy, Music Streaming for engagement-platform IP-licensing framing, Online Gambling, Mobile AdTech for TCG Pocket reference). Status flipped draft → active (all 7 analysis sections filled, plus Watchlist + Cross-Sector Links).
+
+### 2026-04-27
+- Addressed user callouts: 3D-print cost delta + supply access — added cost-comparison table (75–90% home-print savings vs retail) and supply-access-tier table to §Product level analysis → The 3D printing / STL ecosystem. Conviction unchanged — confirms GW's tournament-legal-product rule (not file scarcity or printing cost) is the binding moat, consistent with H1 FY25/26 +17.3% core growth following the Nov 2025 180K-download STL mega-leak.

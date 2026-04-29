@@ -284,12 +284,12 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### Sector & macro context
 - [[Sectors/Semiconductor Foundries.md]] — sector MOC; TSMC is #1 foundry dependency
-- [[Sectors/Semiconductor Capital Equipment.md]] — WFE demand driver
+- [[Sectors/Semiconductor Capital Equipment]] — WFE demand driver; sector hub for the SEMICAP basket (KLAC/AMAT/LRCX/ASMI/TEL/BESI)
 - [[AI Bubble Risk and Semiconductor Valuations]] — timing-mismatch thesis affecting all TSMC HPC revenue
 
 ### Related theses (TSMC as supplier/chokepoint)
 - [[Theses/NVDA - Nvidia.md]] — TSMC is NVDA's single-foundry dependency and #1 supply-chain chokepoint
-- [[Theses/SEMICAP - Semiconductor Capital Equipment.md]] — TSMC is the demand driver for all WFE
+- [[Sectors/Semiconductor Capital Equipment]] — TSMC is the demand driver for all WFE; sector hub for SEMICAP basket (KLAC/AMAT/LRCX/ASMI/TEL/BESI)
 - [[Theses/BESI - BE Semiconductor Industries.md]] — TSMC SoIC uses BESI hybrid bonding; Kinex co-platform
 - [[Theses/AVGO - Broadcom.md]] — TSMC is sole supplier for AVGO ASIC (Google TPU, Meta MTIA)
 

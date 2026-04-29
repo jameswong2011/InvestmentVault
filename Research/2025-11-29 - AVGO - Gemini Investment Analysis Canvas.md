@@ -217,4 +217,4 @@ Why is this here?
 
 ## Related Sectors
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — Back-reference: cited in sector fill for "Android to Nvidia's Apple" framing, Hock Tan aggregation playbook, UEC 1.0 architectural reconstruction, and Semiconductor Solutions / Infrastructure Software segmentation.
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics and Acquisitions/new entrants — Broadcom "Android of AI" vs Nvidia comparison framework directly underpins the sector's GPU-vs-ASIC market-share framework and the 2026 observation that two best frontier models (Claude 4.5 Opus, Gemini 3) run majority inference on non-Nvidia silicon.
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Competitive dynamics and Acquisitions/new entrants — Broadcom "Android of AI" vs Nvidia comparison framework directly underpins the sector's GPU-vs-ASIC market-share framework and the 2026 observation that two best frontier models (Claude 4.5 Opus, Gemini 3) run majority inference on non-Nvidia silicon.

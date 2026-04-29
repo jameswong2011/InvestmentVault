@@ -276,7 +276,7 @@ The supercycle thesis strengthens. Every data point confirms a widening supply-d
 
 NAND pricing +70-75% QoQ and supply shortage extending through 2027 is a direct headwind for Pure Storage's COGS. Monitor for gross margin compression and any pass-through pricing to enterprise customers.
 
-### For [[Theses/SEMICAP - Semiconductor Capital Equipment]]
+### For [[Sectors/Semiconductor Capital Equipment]]
 
 YMTC's Phase III + two additional fabs using >50% domestic tooling (AMEC etch platforms) validates the China domestic semicap thesis. NAND capex at $22.2B globally in 2026 (+5% YoY) is modest vs DRAM $61.3B (+14%) — equipment demand is DRAM/HBM-driven, not NAND-driven.
 

@@ -51,5 +51,5 @@ Any Taiwan kinetic event. The TSM stress test (April 19) rated this at −85% to
 - [[Research/2026-04-23 - NVDA - Stress Test]] — 6/10 Bull assumptions 🔴; kill trigger defined
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — 950PR shipping at 750K units; in-house HBM; ByteDance $5.6B
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen's own China bear case; ASIC margin 65% vs NVDA 70%; Groq as market segmentation
-- [[Sectors/GPU & AI Compute Accelerators]] — sector dynamics and Non-consensus Insight #6 (semi-cycle derate 24x → 14x on efficiency inflection)
+- [[Compute & AI Compute Accelerators]] — sector dynamics and Non-consensus Insight #6 (semi-cycle derate 24x → 14x on efficiency inflection)
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch; Huawei Ascend as architectural-pattern validator

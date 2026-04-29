@@ -499,7 +499,7 @@ Sources: [Deloitte](https://www.deloitte.com/us/en/insights/topics/economy/asia-
 
 ## Related Sectors
 
-- [[Sectors/Indian Digital Conglomerates]] — Primary sector classification post 2026-04-22 subsector reorganization. Anchored by Jio Platforms as category-defining asset; covers quick-commerce dynamics, sovereign AI policy, DPDP/TRAI regulation, and SOTP mispricing framing referenced in this research.
+- [[@Indian Digital Conglomerates]] — Primary sector classification post 2026-04-22 subsector reorganization. Anchored by Jio Platforms as category-defining asset; covers quick-commerce dynamics, sovereign AI policy, DPDP/TRAI regulation, and SOTP mispricing framing referenced in this research.
 
 ## Related Notes
 

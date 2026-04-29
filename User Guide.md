@@ -95,7 +95,7 @@ Any prefix not in the skill-origin registry (e.g., `Manual edit:`, `Reviewed:`, 
 
 ### User callouts — inline feedback on LLM output
 
-Drop hotkey-triggered callout boxes inside any section to comment on what Claude wrote. Four types: `> [!question]` (⌘/Ctrl+Alt+1, yellow, ask), `> [!error]` (⌘/Ctrl+Alt+2, red, flag), `> [!tip]` (⌘/Ctrl+Alt+3, teal, suggest), `> [!todo]` (⌘/Ctrl+Alt+4, blue, action). Ask Claude *"address fresh callouts in [note]"* to have them resolved inline with a `**Response:**` block + Log entry. Periodic `/archive-callouts` sweeps old addressed callouts into a `## Legacy Callouts` archive section (plain-text audit trail, source sections decluttered). `[[preserve]]` marker exempts individual addressed callouts from sweep.
+Drop hotkey-triggered callout boxes inside any section to comment on what Claude wrote. Four types: `> [!question]` (⌘/Ctrl+Alt+1, yellow, ask), `> [!error]` (⌘/Ctrl+Alt+2, red, flag), `> [!tip]` (⌘/Ctrl+Alt+3, teal, suggest), `> [!todo]` (⌘/Ctrl+Alt+4, blue, action). Ask Claude *"address fresh callouts in [note]"* to have them resolved inline with a `**Response:**` block + Log entry. Periodic `/archive-callouts` sweeps old addressed callouts into a `## Legacy Callouts` archive section (plain-text audit trail, source sections decluttered). `[[pinned]]` marker exempts a callout from sweep indefinitely — useful for questions you want to revisit periodically as new data arrives.
 
 Full spec — lifecycle states, chat prompt template, cross-platform setup: see [[#Inline callouts — user feedback markers|§6 Inline callouts]].
 
@@ -687,7 +687,7 @@ Default mode delivers ~95% of `all`'s insight signal at ~25% of the read cost. R
 - Sweeps addressed callouts older than threshold (default 180d from `→ Addressed` date) into target's `## Legacy Callouts` section.
 - **Creates**: Per-file `(pre-callout-sweep ...)` snapshot; `## Legacy Callouts` section (if absent); shared batch ID `callout-sweep-YYYY-MM-DD-HHMMSS`.
 - **Modifies**: Target file body (callout blocks removed from source sections, plain bullets added to `## Legacy Callouts` sorted descending), frontmatter `last_callout_sweep:`, `## Log` entry prefixed `Callout sweep:`.
-- **Excludes**: Fresh callouts (never eligible), `[[pinned]]` markers, `[[preserve]]` markers. Research/ notes skipped entirely (Tier 2 immutable).
+- **Excludes**: Fresh callouts (never eligible), any callout with `[[pinned]]` marker (regardless of state). Research/ notes skipped entirely (Tier 2 immutable).
 - **No side effects**: zero sector propagation, zero macro propagation, zero `_hot.md` update, zero `_graph.md` update. Sweep is thesis-local hygiene.
 - **Undo**: `/rollback [TICKER]` → select `(pre-callout-sweep ...)` snapshot. Vault-wide run: `/rollback callout-sweep-YYYY-MM-DD-HHMMSS` → cascade (a).
 - **Dry-run default**: empty arguments or missing threshold default to preview — never silent execute.
@@ -791,13 +791,16 @@ Visual markers for feedback on LLM-generated content. Drop a callout inside any 
 |---|---|---|
 | **Fresh** | `> [!question] 2026-04-21` | Unresolved |
 | **Addressed** | `... → Addressed 2026-04-22` + `**Prompt:** *...*` line (bold label, italic body) + `**Response:**` block | Claude handled it |
-| **Pinned** | `... 2026-04-21 [[pinned]]` | Never address (contingent on external event) |
-| **Preserved** | `... → Addressed ... [[preserve]]` | Addressed, exempt from `/archive-callouts` sweep |
+| **Pinned** | `... 2026-04-21 [[pinned]]` (fresh) or `... → Addressed ... [[pinned]]` (addressed) | Persistent revisit slot — Claude addresses normally; the marker exempts the callout from `/archive-callouts` sweep so it stays in its original section indefinitely. Re-open later for re-address with newer data. |
 | **Legacy** | plain bullet inside `## Legacy Callouts` | Swept by `/archive-callouts`; read-only archive |
 
-**Pin / preserve / unpin** are manual text edits — no hotkey, no skill. Add or remove `[[pinned]]` (fresh callouts) or `[[preserve]]` (addressed callouts) in the header. Don't create `pinned.md` or `preserve.md` — the wikilinks are intentionally unresolved markers; Obsidian renders them with lighter style, `/graph` and `/lint` skip them.
+**Pin / unpin** are manual text edits — no hotkey, no skill. Add or remove `[[pinned]]` in the callout header. Don't create `pinned.md` — the wikilink is an intentionally unresolved marker; Obsidian renders it with lighter style, `/graph` and `/lint` skip it.
 
-**Re-opening an addressed callout**: delete the `→ Addressed YYYY-MM-DD` token, the `**Prompt:** *...*` line, and the `**Response:**` block.
+**Use case**: drop `[[pinned]]` on a callout when the question is one you want to keep visible and re-answer periodically as new data arrives — e.g. *"Will Samsung SF2P sustain >70% yield through HBM4 16-Hi ramp?"* (re-address after each Samsung earnings) or *"Is management's 65% GM guide durable through the next downturn?"* (re-address when the cycle turns). Claude addresses pinned callouts on demand; the marker only governs sweep behavior.
+
+**Re-opening an addressed callout**: delete the `→ Addressed YYYY-MM-DD` token, the `**Prompt:** *...*` line, and the `**Response:**` block. The `[[pinned]]` marker stays. On the next "address" request Claude treats it as a fresh callout and re-answers with current data.
+
+> **Migration note (2026-04-29)**: `[[preserve]]` is **deprecated** — `[[pinned]]` now does its job (and works on both fresh and addressed callouts). `/lint` flags any remaining `[[preserve]]` markers; replace with `[[pinned]]` in place.
 
 #### Addressed-callout format contract
 
@@ -902,7 +905,7 @@ Sweep writes a Log entry prefixed `Callout sweep:` — classified as skill-origi
 
 **Undo**: `/rollback TICKER` → pick `(pre-callout-sweep ...)` snapshot. For vault-wide: `/rollback callout-sweep-YYYY-MM-DD-HHMMSS` cascades all swept files.
 
-**When NOT to sweep**: if you're about to quote a >180d-old Response in a `/deepen` run, either `[[preserve]]` it first or sweep after `/deepen`. Swept entries are still readable in Legacy Callouts — this only matters for heavy quoting workflows.
+**When NOT to sweep**: if you're about to quote a >180d-old Response in a `/deepen` run, either `[[pinned]]` it first or sweep after `/deepen`. Swept entries are still readable in Legacy Callouts — this only matters for heavy quoting workflows.
 
 #### Conviction drift integration
 
@@ -930,14 +933,14 @@ Natural next step: `/status TICKER conviction high→medium [callout-driven]`. P
 
 | Pattern | Fix |
 |---|---|
-| Drop callouts, never address | Weekly clearance, or `[[pinned]]` intentional deferrals |
+| Drop callouts, never address | Weekly clearance, or `[[pinned]]` for callouts you'll revisit periodically |
 | Address, never `/sync` | Always `/sync TICKER` after addressing |
 | `[!todo]` for whole-section rewrite | `/deepen TICKER [section]` instead |
 | `[!error]` on every other bullet | Thesis broken — `/stress-test` → reconsider conviction |
 | Callout in `_catalyst.md`, `/brief`, Research notes | Callout the thesis they relate to |
 | Callout in archived thesis | `/rollback` first to reopen |
 | Callout-addressing + `/status` in same chat | Address → `/sync` → then `/status` |
-| Hand-edit `## Legacy Callouts` | `/rollback` to pre-sweep, use `[[preserve]]` instead |
+| Hand-edit `## Legacy Callouts` | `/rollback` to pre-sweep, use `[[pinned]]` instead |
 | Run `/archive-callouts` during active callout session | Let 24h pass after addressing before sweeping |
 | Skip dry-run on `/archive-callouts 180` | Always preview first (no-threshold = dry-run default) |
 

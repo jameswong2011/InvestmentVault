@@ -93,5 +93,5 @@ Engram represents a paradigm shift from "how to calculate less" (MoE) to "don't 
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (HBM triopoly pricing dynamics; inference economics framework) and Competitive dynamics (AMD MI350 288GB HBM3E per package vs B200 192GB — memory-capacity-per-GPU advantage that persists into MI450 HBM4 31TB/Helios rack).
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Macro shifts (HBM shortage driving memory-side equipment demand floor; DRAM equipment +15.1% CY2026 per SEMI).
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts (HBM triopoly pricing dynamics; inference economics framework) and Competitive dynamics (AMD MI350 288GB HBM3E per package vs B200 192GB — memory-capacity-per-GPU advantage that persists into MI450 HBM4 31TB/Helios rack).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Macro forces (HBM shortage driving memory-side equipment demand floor; DRAM equipment +15.1% CY2026 per SEMI).

@@ -34,7 +34,7 @@ restore any Tier A snapshots listed.
 - [[Sectors/NAND Memory & Storage]] — Tier B: 2 Related Research wikilinks + Log entry
 - [[Sectors/Semiconductor Foundries]] — Tier B: 2 Related Research wikilinks + Log entry
 - [[Sectors/Semiconductor Capital Equipment]] — Tier B: 2 Related Research wikilinks + Log entry
-- [[Sectors/GPU & AI Compute Accelerators]] — Tier B: Recent Research section added (2 wikilinks) + Log entry
+- [[Compute & AI Compute Accelerators]] — Tier B: Recent Research section added (2 wikilinks) + Log entry
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — Tier B: Recent Research section added (1 wikilink, tangential) + Log entry
 - [[Sectors/Video Game Publishing]] — Tier B: 1 Related Research wikilink + Log entry
 

@@ -35,7 +35,7 @@ orphans: 5
   - `2026-04-24 | [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Added new Ri…`
 
 ### AMD - Advanced Micro Devices
-- **sectors:** [[Sectors/GPU & AI Compute Accelerators]]
+- **sectors:** [[Compute & AI Compute Accelerators]]
 - **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SNDK - SanDisk]], [[Theses/TSM - Taiwan Semiconductor]]
 - **research:** [[Research/2025-11-27 - Broadcom Data Center Opportunity]], [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]], [[Research/2026-03-14 - CXL Technology Adoption]], [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]], [[Research/2026-04-19 - TSM - Stress Test]], [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]], [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]], [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]
@@ -90,7 +90,7 @@ orphans: 5
   - `2026-04-23 | Wikilink cleanup: Related Research: replaced stale [[Sectors/Consumer & Digital]] with [[Sectors/…`
 
 ### CCJ - Cameco
-- **sectors:** [[Sectors/Uranium & Nuclear Fuel]]
+- **sectors:** [[@Uranium & Nuclear Fuel]]
 - **macro:** [[Commodity Impacts from Iran Tensions]], [[Investment Strategy for US-Iran Conflict]], [[Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
 - **research:** [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-01-26 - Silver Demand and Data Centers]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
@@ -154,7 +154,7 @@ orphans: 5
   - `2026-04-22 | Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] in Related Research with [[Sector…`
 
 ### EDEL - Edelweiss Financial Group
-- **sectors:** [[Sectors/Indian Financial Services]]
+- **sectors:** [[@Indian Financial Services]]
 - **macro:** —
 - **cross-thesis:** —
 - **research:** [[Research/2025-12-26 - EDEL - Edelweiss Financial Group Market Share]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-02 - Israel India Relations Analysis]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
@@ -197,7 +197,7 @@ orphans: 5
   - `2026-04-22 | Sector re-scoped: Healthcare & MedTech → Consumer Telehealth (vault-wide subsector taxonomy reorga…`
 
 ### IOT - Samsara
-- **sectors:** [[Sectors/Industrial IoT & Connected Operations]]
+- **sectors:** [[@Industrial IoT & Connected Operations]]
 - **macro:** —
 - **cross-thesis:** [[Theses/DE - John Deere]], [[Theses/NOW - ServiceNow]], [[Theses/PLTR - Palantir]]
 - **research:** [[Research/2026-04-15 - IOT - Samsara Business Deep Dive]]
@@ -230,7 +230,7 @@ orphans: 5
   - `2026-04-23 | Deepened Risks: added Risk #11 industrial-robotics + humanoid long-tail convergence (7-15yr horizon)…`
 
 ### KAMBI - Kambi Group
-- **sectors:** [[Sectors/Online Gambling]]
+- **sectors:** [[@Online Gambling]]
 - **macro:** —
 - **cross-thesis:** —
 - **research:** —
@@ -252,7 +252,7 @@ orphans: 5
   - `2026-04-22 | Sector re-scoped: Semiconductors & Photonics → Optical Networking & Photonics (vault-wide subsecto…`
 
 ### LNG - Cheniere Energy
-- **sectors:** [[Sectors/LNG & Natural Gas Infrastructure]]
+- **sectors:** [[@LNG & Natural Gas Infrastructure]]
 - **macro:** [[Commodity Impacts from Iran Tensions]], [[Investment Strategy for US-Iran Conflict]], [[Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
 - **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
@@ -274,7 +274,7 @@ orphans: 5
   - `2026-04-22 | Sector re-scoped: Consumer & Digital → Social Platforms & Digital Advertising (vault-wide subsecto…`
 
 ### MRVL - Marvell Technology
-- **sectors:** [[Sectors/Custom Silicon & Networking Semiconductors]], [[Sectors/GPU & AI Compute Accelerators]], [[Sectors/Optical Networking & Photonics]]
+- **sectors:** [[Sectors/Custom Silicon & Networking Semiconductors]], [[Compute & AI Compute Accelerators]], [[Sectors/Optical Networking & Photonics]]
 - **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/AVGO - Broadcom]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]]
 - **research:** [[Research/2025-11-25 - LITE - Silicon Photonics Supply Chain]], [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]], [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]], [[Research/2026-03-02 - Chinese Silicon Photonics Threat]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-23 - Insight Surface Scan]], [[Research/2026-04-23 - NVDA - Investment Brief]]
@@ -283,7 +283,7 @@ orphans: 5
   - `2026-04-23 | Initial thesis created. Conviction: medium — structural hyperscaler second-source positioning real…`
 
 ### MTN - Vail Resorts
-- **sectors:** [[Sectors/Ski Resorts & Destination Leisure]]
+- **sectors:** [[@Ski Resorts & Destination Leisure]]
 - **macro:** —
 - **cross-thesis:** —
 - **research:** [[Research/2025-12-15 - MTN - Gemini Stock Decline Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
@@ -327,7 +327,7 @@ orphans: 5
   - `2026-04-22 | Sector re-scoped: Enterprise Software → Enterprise Workflow AI & Automation (vault-wide subsector …`
 
 ### NVDA - Nvidia
-- **sectors:** [[Sectors/GPU & AI Compute Accelerators]], [[Sectors/NAND Memory & Storage]]
+- **sectors:** [[Compute & AI Compute Accelerators]], [[Sectors/NAND Memory & Storage]]
 - **macro:** [[AI Bubble Risk and Semiconductor Valuations]]
 - **cross-thesis:** [[Theses/285A - Kioxia]], [[Theses/AVGO - Broadcom]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/PLTR - Palantir]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]]
 - **research:** [[Research/2025-07-15 - Data Center Liquid Cooling]], [[Research/2025-08-09 - Performance vs Standardization]], [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]], [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]], [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]], [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]], [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]], [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]], [[Research/2026-03-28 - AI - Gemini AI Ecosystem Canvas]], [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]], [[Research/2026-03-28 - NVDA - Omniverse and PhysX in Physical AI]], [[Research/2026-03-28 - Nvidia PhyX and Physical AI]], [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]], [[Research/2026-04-19 - Huawei Ascend Roadmap - news]], [[Research/2026-04-19 - TSM - Stress Test]], [[Research/2026-04-23 - NVDA - CUDA Moat and Omniverse Upside - deep-dive]], [[Research/2026-04-23 - NVDA - Stress Test]], [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]], [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]], [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]
@@ -338,7 +338,7 @@ orphans: 5
   - `2026-04-24 | [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: Vera stand…`
 
 ### OPEN - Opendoor
-- **sectors:** [[Sectors/PropTech & Real Estate Marketplaces]]
+- **sectors:** [[@PropTech & Real Estate Marketplaces]]
 - **macro:** —
 - **cross-thesis:** —
 - **research:** [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]], [[Research/2025-12-04 - OPEN - Gemini Business Assessment Canvas]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
@@ -382,7 +382,7 @@ orphans: 5
   - `2026-04-22 | Sector re-scoped: Enterprise Software → Enterprise Storage Infrastructure (vault-wide subsector ta…`
 
 ### RELIANCE - Reliance Industries
-- **sectors:** [[Sectors/Indian Digital Conglomerates]]
+- **sectors:** [[@Indian Digital Conglomerates]]
 - **macro:** [[Commodity Impacts from Iran Tensions]]
 - **cross-thesis:** —
 - **research:** [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-04-02 - Israel India Relations Analysis]], [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
@@ -437,7 +437,7 @@ orphans: 5
   - `2026-04-22 | Sector re-scoped: Consumer & Digital → Music Streaming (vault-wide subsector taxonomy reorganizati…`
 
 ### STNG - Scorpio Tankers
-- **sectors:** [[Sectors/Product Tankers & Maritime Shipping]]
+- **sectors:** [[@Product Tankers & Maritime Shipping]]
 - **macro:** [[Commodity Impacts from Iran Tensions]], [[Investment Strategy for US-Iran Conflict]], [[Iran War Macroeconomic Scenario]]
 - **cross-thesis:** —
 - **research:** [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]], [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]], [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]], [[Research/2026-03-30 - Macro - Gemini Iran War Canvas]], [[Research/2026-04-02 - GCC Market Shorting Options]], [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]
@@ -527,29 +527,29 @@ orphans: 5
 | [[Sectors/E-commerce Infrastructure]] | [[Theses/SHOP - Shopify]] |
 | [[Sectors/Enterprise Storage Infrastructure]] | [[Theses/PSTG - Pure Storage]] |
 | [[Sectors/Enterprise Workflow AI & Automation]] | [[Theses/NOW - ServiceNow]], [[Theses/PLTR - Palantir]] |
-| [[Sectors/GPU & AI Compute Accelerators]] | [[Theses/AMD - Advanced Micro Devices]], [[Theses/NVDA - Nvidia]] |
+| [[Compute & AI Compute Accelerators]] | [[Theses/AMD - Advanced Micro Devices]], [[Theses/NVDA - Nvidia]] |
 | [[Sectors/Hobby & Tabletop Gaming]] | [[Theses/GAW - Games Workshop]] |
-| [[Sectors/Indian Digital Conglomerates]] | [[Theses/RELIANCE - Reliance Industries]] |
-| [[Sectors/Indian Financial Services]] | [[Theses/EDEL - Edelweiss Financial Group]] |
-| [[Sectors/Industrial IoT & Connected Operations]] | [[Theses/DE - John Deere]], [[Theses/IOT - Samsara]], [[Theses/NOW - ServiceNow]], [[Theses/PLTR - Palantir]], [[Theses/WTC - WiseTech Global]] |
-| [[Sectors/LNG & Natural Gas Infrastructure]] | [[Theses/LNG - Cheniere Energy]] |
+| [[@Indian Digital Conglomerates]] | [[Theses/RELIANCE - Reliance Industries]] |
+| [[@Indian Financial Services]] | [[Theses/EDEL - Edelweiss Financial Group]] |
+| [[@Industrial IoT & Connected Operations]] | [[Theses/DE - John Deere]], [[Theses/IOT - Samsara]], [[Theses/NOW - ServiceNow]], [[Theses/PLTR - Palantir]], [[Theses/WTC - WiseTech Global]] |
+| [[@LNG & Natural Gas Infrastructure]] | [[Theses/LNG - Cheniere Energy]] |
 | [[Sectors/Logistics & Supply Chain Software]] | [[Theses/WTC - WiseTech Global]] |
 | [[Sectors/Mobile Advertising Technology]] | [[Theses/APP - AppLovin]] |
 | [[Sectors/Mobility & Ridesharing]] | [[Theses/UBER - Uber]] |
 | [[Sectors/Music Streaming]] | [[Theses/SPOT - Spotify]] |
 | [[Sectors/NAND Memory & Storage]] | [[Theses/285A - Kioxia]], [[Theses/PSTG - Pure Storage]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
-| [[Sectors/Online Gambling]] | [[Theses/KAMBI - Kambi Group]] |
+| [[@Online Gambling]] | [[Theses/KAMBI - Kambi Group]] |
 | [[Sectors/Optical Networking & Photonics]] | [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]] |
 | [[Sectors/Precious Metals]] | [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] |
-| [[Sectors/Product Tankers & Maritime Shipping]] | [[Theses/STNG - Scorpio Tankers]] |
-| [[Sectors/PropTech & Real Estate Marketplaces]] | [[Theses/OPEN - Opendoor]] |
+| [[@Product Tankers & Maritime Shipping]] | [[Theses/STNG - Scorpio Tankers]] |
+| [[@PropTech & Real Estate Marketplaces]] | [[Theses/OPEN - Opendoor]] |
 | [[Sectors/Real Estate Data & SaaS]] | [[Theses/CSGP - CoStar Group]] |
 | [[Sectors/Semiconductor Capital Equipment]] | [[Theses/285A - Kioxia]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/IQE - IQE]], [[Theses/LITE - Lumentum]], [[Theses/NVDA - Nvidia]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/SNDK - SanDisk]] |
 | [[Sectors/Semiconductor Foundries]] | [[Theses/TSM - Taiwan Semiconductor]] |
-| [[Sectors/Ski Resorts & Destination Leisure]] | [[Theses/MTN - Vail Resorts]] |
+| [[@Ski Resorts & Destination Leisure]] | [[Theses/MTN - Vail Resorts]] |
 | [[Sectors/Social Platforms & Digital Advertising]] | [[Theses/META - Meta]] |
 | [[Sectors/Surgical Robotics]] | [[Theses/ISRG - Intuitive Surgical]] |
-| [[Sectors/Uranium & Nuclear Fuel]] | [[Theses/CCJ - Cameco]] |
+| [[@Uranium & Nuclear Fuel]] | [[Theses/CCJ - Cameco]] |
 | [[Sectors/Video Game Publishing]] | [[Theses/TTWO - Take-Two Interactive]] |
 | [[Sectors/Video Streaming]] | [[Theses/NFLX - Netflix]] |
 

@@ -1,28 +1,32 @@
 ---
-date: 2026-04-23
+date: 2026-04-26
 tags: [sector, moc, DRAM, HBM, memory]
 status: active
 sector: DRAM & HBM Memory
 ---
+> [!question] 2026-04-26 → Addressed 2026-04-27
+> **Prompt:** *Does memory market structurally reset to a evergreen industry with minimal cyclicality underpinned by oligopolistic dynamics, rational pricing and capacity additions to harvest the demand boom from AI. The bull case argues that this happens due to sufficient consolidation to 3 players (can no longer drive out the incremental lowest share player), relative technological parity (no room for technological displacement by ramping capex and R&D), and ease of pricing coordination with only three players. This would drive a re-rating to 25x+ mid-cycle earnings on low teens growth. What is the upside to all memory names under this scenario. What might make this not play out.*
+>
+> **Response:** Bull case requires three independent structural changes to hold simultaneously (no fourth entrant breaking the triopoly, sustained Samsung capex discipline against share-defending temptation, sustained +30-40% YoY AI demand). Probability-weighted 60% base case / 25% partial reset (12-15x → +50-80%) / 15% full reset (25x → SK Hynix +210-310%, Samsung +50-110%, Micron +90-130%, Kioxia +120%); diagnostic test is two consecutive quarters of HBM ASP flat/rising while one vendor's share falls 5+pp — never observed in DRAM history, first testable window Q3-Q4 2026 on Rubin allocation data. Full analysis in §Cycle Dynamics & Game Theory → The Evergreen Reset Hypothesis — Bull Scenario and Break Conditions.
 
 # DRAM & HBM Memory
 
 ## Active Theses
-- [[Theses/000660 - SK Hynix]] — HBM triopoly leader, 57% Q1 2026 share, 72% Q1 op margin (memory-industry record), conviction medium pending Samsung Rubin allocation H2 2026 and BESI Kinex hybrid-bonding qual
-
-> **Map of Content** — DRAM is the volatile-memory layer of every compute system; HBM is the AI-specific premium variant priced at 3-5x commodity DRAM. The two sub-segments now share a single physical wafer pool, a single packaging bottleneck (TSMC CoWoS), and a single demand curve (AI accelerator units × HBM-content-per-GPU). The triopoly (SK Hynix / Samsung / Micron) controls ~94% of global DRAM revenue and 100% of merchant HBM. CXMT plus Huawei's in-house HiBL form a sanctioned, technologically-decoupled Chinese sub-market. The defining 2026-2030 question is whether HBM stays a triopoly or fragments into a quadripoly with CXMT as the marginal supplier — and whether the Korean MR-MUF lead survives the hybrid-bonding transition at HBM5.
+- [[Theses/000660 - SK Hynix]] — HBM triopoly leader, 57% Q1 2026 share, 72% Q1 op margin (memory-industry record), conviction medium pending Samsung Rubin allocation H2 2026
 
 ## Key Industry Questions
 
-- **HBM4 Vera Rubin allocation split** *(status: 70/30 SK Hynix/Samsung confirmed for initial ramp; Micron excluded)*: UBS projects SK Hynix ~70% of Nvidia Rubin HBM4, Samsung ~30%, Micron locked out of the first Rubin SKU per TrendForce/KED Global. Samsung passed Nvidia's HBM4 qualification in Q1 2026 with above-spec pin speeds (11.7 Gbps standard, pushed to 13 Gbps at Nvidia's request), securing official supply and ending the HBM3E qualification miss that defined 2024-2025. The binding question is whether Samsung's 30% allocation expands toward 35-40% in H2 2026 as 1c DRAM yield (currently ~50% pilot) crosses Samsung's internal 70% threshold, which would track Gemini's "Incumbent Erosion" path (SK Hynix 62%→45% by 2030) ahead of consensus. See [[Theses/000660 - SK Hynix]] §Key Non-consensus Insights #1 and [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]].
+- **What does it take for triopoly pricing discipline to break?** The 2002-2007 DOJ cartel pleas did not break the oligopoly — it disciplined it. Five tier-2 vendors then exited (Infineon, Elpida, Qimonda, ProMos, Nanya commodity), leaving the 3-vendor structure that prints simultaneous 60-80% op margins today. Cycle peaks of 1995, 2000, 2006, 2017 each broke for a different reason: capacity overshoot (1995, 2017), demand collapse (2000, 2008), or marginal-vendor desperation discount (2006). The unresolved question is which of these mechanisms triggers in the current cycle — and whether Samsung's $73B 2026 capex represents disciplined capacity-add or the seed of the next overshoot.
 
-- **Hybrid bonding inflection at HBM5/HBM4E** *(status: industry consensus is HBM5 = hybrid bonding; SK Hynix MR-MUF cushion expires at 20-Hi)*: Samsung committed to hybrid bonding from HBM4 generation; SK Hynix targets HBM4E-into-HBM5 transition (BESI Kinex pilot line live, qualification expected H2 2026). At 20-Hi stack height (HBM5 baseline, ~2028-2029), MR-MUF underfill physics breaks down — copper-to-copper direct bonding becomes the only path to acceptable thermals. SK Hynix's March 2026 BESI Kinex order is the market's tell that even the MR-MUF leader is buying insurance. If Samsung's hybrid bonding crosses 70% yield at 16-Hi by Q4 2026, the 2024-2026 packaging hierarchy inverts at HBM5. See [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]].
+- **Why does each cycle produce a different share leader?** Mostek (1980s) → Hitachi/NEC (1990s) → Samsung (2000-2024) → SK Hynix (2024) → contested (2026). Cycle leadership maps to which segment is the marginal-margin product: when commodity DRAM leads, the highest-volume scale player wins; when HBM leads, the highest-yield specialty player wins. The non-trivial question is whether the Q1 2026 inversion (DDR5 profitability surpassing HBM3E for the first time since 2024) signals a return to scale dominance (Samsung favored) or a one-quarter aberration before HBM4 reasserts (SK Hynix favored). The answer determines whether SK Hynix's 2024 #1 position is cyclical or structural.
 
-- **CXMT HBM3 production timing and yield** *(status: timeline slipping, mass production unlikely in 2026)*: CXMT targeting end-2026 HBM3 mass production using G4 16-nm node and MR-MUF packaging (explicitly copying SK Hynix process). Initial yields tracking ~50%; HBM3 still in testing with no mass-production orders booked per Digitimes (April 2026). Shanghai HBM packaging facility coming online late 2026 at 30K WSPM initial capacity. CXMT total wafer capacity targeted at 300K WSPM by end-2026 with 60K WSPM allocated to HBM (20% of total). $4.2B Shanghai STAR Market IPO planned Q1 2026 to fund expansion. The genuine threat is 2028-2029 commodity-DRAM commoditization (compresses SK Hynix's $40B commodity-DRAM segment from 30-35% gross margin to 15-20%); HBM remains insulated through at least 2028 by 1c-node gap and absent Chinese hybrid-bonding ecosystem. See [[Theses/000660 - SK Hynix]] §Key Non-consensus Insights #4.
+- **Is the 3:1 wafer penalty self-correcting or self-reinforcing?** Each 1pp shift of capacity from DDR5 to HBM tightens commodity DRAM by ~3pp of effective bit supply, raising commodity prices, suppressing demand destruction, and making the next 1pp HBM shift more attractive at the margin. The self-reinforcing case argues HBM share rises faster than Yole's 50%-by-2030 base. The self-correcting case argues hyperscalers absorb the price hike and shift workloads onto GPU architectures with lower HBM-per-FLOP (efficiency-driven memory dilution — TurboQuant March 2026 was the first signal). The unresolved diagnostic: does the marginal hyperscaler pay for memory or refactor to use less of it?
 
-- **Commodity DRAM pricing trajectory in 2026** *(status: TrendForce projects 55-60% QoQ Q1 2026, server allocation crowding all-DRAM-categories higher)*: Server DRAM and HBM demand crowding out client DRAM (PC, mobile, consumer) production allocation. DDR5 64GB RDIMM expected to double YoY by late 2026; tier-1 hyperscalers receiving only 40-60% of requested allocation. DDR5 profitability projected to surpass HBM3e starting Q1 2026 — first time commodity DRAM out-margins HBM in the AI era — because HBM3e enters supplier-competition phase as Samsung and Micron ramp 12-Hi capacity while DDR5 stays in single-supplier-allocation mode for 64GB/128GB modules. The HBM premium over server DDR5 narrows from 4-5x to 1-2x by end-2026. See [[Theses/000660 - SK Hynix]] §Q5 oversupply scenario.
+- **What is the kill mechanism on an HBM incumbent?** Samsung's 2024 HBM3E qualification miss was not a die-yield issue — Samsung's individual die yield was competitive. It was a thermal-and-noise issue at the stack level after MR-MUF integration. SK Hynix's potential HBM5 stumble would not be on individual die quality either; it would be on 20-Hi hybrid bonding equipment maturity. **Incumbents in HBM lose at the integration boundary, not at the die.** The diagnostic question for any vendor change is: at which integration step does the next failure happen, and which vendor's tooling and process IP is positioned for it?
 
-- **HBF (High-Bandwidth Flash) hyperscaler adoption timing** *(status: SK Hynix + SanDisk + Samsung OCP standardization in flight; first GPU integration likely late 2027/early 2028 post-Rubin)*: Nvidia Rubin (H2 2026) does not natively support HBF; first GPU-side integration is post-Rubin generation. SanDisk pilot line accelerated 6 months to H2 2026 (Japan); SK Hynix H3 architecture simulation (8x HBM3E + 8x HBF + B200 GPU) shows 2.69x perf/watt, 18.8x batch size expansion, 32→2 GPU reduction. If HBF captures 10% of HBM TAM by 2030, that creates ~$10B incremental NAND-die-priced revenue at 50%+ gross margin — split largely between SK Hynix and SanDisk per OCP standardization participation. See [[Sectors/NAND Memory & Storage]] for HBF technology stack.
+- **Does foundry-base-die vendor lock-in compound, or does it reset every two GPU generations?** Consensus reads HBM4 custom base dies (TSMC 3nm for SK Hynix, Samsung 2nm internal, Micron TSMC custom logic) as creating sticky hyperscaler relationships — once an OpenAI Titan ASIC is built around Samsung 2nm HBM4, switching to SK Hynix on TSMC means full re-validation. The skeptical case: every GPU/ASIC generation re-opens base-die selection, and if Rubin Ultra (2027) or Feynman (2028) requires base-die specs that one vendor cannot meet, the lock-in resets. The right framing is not "is lock-in real" but "what is the half-life of lock-in across architectural generations?"
+
+- **Does the Korean memory equity discount represent persistent governance risk or a clean re-rating opportunity?** SK Hynix at 5-8x P/E vs Micron at 11-14x P/E on equivalent 2026 earnings. Sell-side treats the 30-40% gap as a fixed Korean discount. Two precedents argue otherwise: the 2016-2017 KOSPI re-rating cycle (KOSPI 2x in 18 months on chaebol governance reform), and Kioxia's 2024 IPO at $5B re-rated to $17B+ by 2026 on memory normalization. The question is whether multiple expansion is the asymmetric driver vs earnings revision — if so, downside is bounded by earnings power and upside is multiplicative.
 
 ---
 
@@ -77,6 +81,134 @@ HBM was conceptualized at AMD/SK Hynix (joint development 2008-2013); first JEDE
 | 2029-2030 | HBM5 20-Hi (4096-bit IO, 4 TB/s, 80 GB/stack) | Samsung leap-frog if hybrid bonding leads | Forecast 40-45% |
 
 **The defining structural feature of DRAM history is asymmetric capital intensity rewarding the deepest pocket through downcycles.** From >12 producers in the 1980s to 3 in 2025. Each downcycle (1996, 2001, 2008, 2018, 2023) killed one or more competitors. The current cycle is the first where structural demand-side change (AI accelerator volume) plus capacity-allocation prioritization (HBM diversion crowds out commodity DRAM at 3:1 wafer penalty) extends the upcycle beyond historical 18-24 month patterns. Macquarie expects this cycle to extend through 2027 — vs the 6-12 months prior cycles ran.
+
+---
+
+## Cycle Dynamics & Game Theory
+
+Every DRAM cycle since 1995 has been won and lost on the same five themes: capital investment timing, technology roadmap race, yield, pricing volatility tolerance, and margin trajectory through the trough. Vendors converge on identical mental models of these dynamics; what differs is execution. The 2017-2019 and 2023-2024 cycles establish the modern playbook.
+
+### Game Theory of Capital Investment
+
+DRAM is a Hotelling-type oligopoly with three strategic instruments — capacity timing, technology-node timing, and packaging-process commitment — and a fourth instrument that emerged in the HBM era: customer co-engineering on packaging IP. The dominant strategy across cycles has been **commit-and-bankrupt** — invest counter-cyclically into a downturn to bankrupt the marginal vendor, then capture their share when prices recover. Samsung deployed this doctrine in 1996, 2001, 2008, 2018, and 2023; SK Hynix joined the playbook from 2018 onward. The asymmetric loss function favors the deepest balance sheet: a downcycle at -10% gross margin is survivable for the vendor with lowest unit cost, a bankruptcy event for the marginal vendor.
+
+| Strategic Move | Game-Theoretic Function | Recent Example |
+|---|---|---|
+| Counter-cyclical capacity expansion | Commit to volume to bankrupt marginal vendor | Samsung 2008/2018/2023; SK Hynix M15X 2024-2026 |
+| Process-node leap | Force competitor capex obsolescence at the next inflection | SK Hynix 1c EUV 800% expansion to 160-190K WSPM end-2026 |
+| Packaging-IP specialization | Convert process advantage into customer lock-in | SK Hynix MR-MUF + Nvidia sole-source 2023-2024 |
+| Coordinated capacity withholding | Discipline pricing in the trough — rewarded only if all three coordinate | All-three-vendor 20-30% wafer-start cuts at 2023 trough |
+| Equipment pre-booking | Lock competitor out of tool capacity at the inflection | SK Hynix $7.9B ASML 2025 order; BESI Kinex hybrid-bonding March 2026 |
+| Foundry partnership for base die | Capture downstream integration economics; create vendor lock-in | All three vendors HBM4 base die at TSMC/Samsung Foundry |
+| Customer co-engineering | Shorten yield-debug loop through preferential customer access | SK Hynix-Nvidia HBM3 2022-2024; AMD-SK Hynix HBM1 2008-2013 |
+
+The structural shift from prior cycles is that the fourth instrument (customer co-engineering) is **non-fungible across customers and generations**. SK Hynix's MR-MUF process did not emerge in isolation — it was co-developed with AMD on HBM1 and refined with Nvidia on HBM2/HBM3 across 12 years of debug data. Samsung's late HBM3E qualification window in 2024-2025 reflects the absence of this co-engineering loop, not a fundamental capability gap. This is why Samsung's 2026 HBM4 recovery is not symmetric — Samsung re-enters with a thinner debug data set than SK Hynix carries forward.
+
+### Technology Roadmap Race
+
+Each HBM generation creates a window for share rotation. The sole-source position carries 1.3-1.5x ASP premium over dual-source; once a generation transitions from sole to dual source, that 30-50% premium evaporates and the next-generation game restarts. SK Hynix held HBM3 sole-source from 2022-2024, captured 60%+ HBM share, and ceded the premium when Micron and Samsung qualified for HBM3E in 2025. The HBM4 game restarts at Rubin (Q3 2026): 70/30/0 SK Hynix/Samsung/Micron allocation = SK Hynix gets the premium one more generation, but on shrinking absolute share.
+
+The race penalty is asymmetric across the cycle. **A vendor that misses one generation can regain the next; missing two consecutive generations is structurally fatal.** Samsung missed HBM3E (2024-2025) but recovered for HBM4 (2026). Micron missed HBM2/HBM2E but caught HBM3E and HBM4. The only vendor that missed two consecutive cycles in modern memory history was Elpida (DDR3 + DDR4 transitions) — and Elpida went bankrupt. This sets the threshold for SK Hynix at HBM5: a single-generation lag is recoverable, a two-generation lag is not.
+
+### Yield Deltas — What Actually Drives the 30-Point Spread
+
+Vendor public yield disclosures (SK Hynix HBM3E ~80%, Samsung ~50% pilot, Micron 60-70% reported) are headline yield, not effective yield. Effective HBM stack yield is a multiplicative product: (DRAM die yield)^N × (TSV yield) × (microbump yield) × (logic base-die yield) × (final stack test yield). At 16-Hi, even 95% per-die yield compounds to ~44% effective stack yield. The 30-point gap between SK Hynix and Samsung HBM3E effective yields produces ~30-50% unit-cost differential — the single largest competitive variable in the industry.
+
+| Yield Driver | Mechanism | Vendor Differentiation |
+|---|---|---|
+| **Process-node maturity** | EUV layer count + multi-patterning precision; 1c uses 5+ EUV layers vs 1b's 3 | SK Hynix 1c production maturity ~6 months ahead of Samsung; Micron 1b extending into HBM4 |
+| **Packaging integration physics** | MR-MUF gap-fill vs TC-NCF film thickness control vs hybrid bonding particle defect | SK Hynix MR-MUF refined across AMD + Nvidia 2013-2024 (12-yr learning curve); Samsung TC-NCF retrofit |
+| **Stack-height compounding** | Each layer multiplies defect probability geometrically; 16-Hi ≈ (per-die yield)^16 × interconnect yield | Vendor ranking inverts at 16-Hi vs 8-Hi because compounding penalizes lower per-die yield disproportionately |
+| **Customer co-engineering loop** | Sole-source customer participates in yield debug (tester boards, system-level thermal data) | SK Hynix-Nvidia HBM3 debug 2022-2024; Samsung-AMD HBM3E debug had thinner volume = thinner data |
+| **Test capacity & KGD methodology** | Known-good-die screening before stack assembly; test escape sets stack rebuild cost | Vendor-specific; Micron historically strong on test discipline |
+| **Substrate / interposer ecosystem** | TSMC CoWoS quality, ABF substrate, interposer warpage | All three exposed equally to TSMC CoWoS; substrate suppliers (Ibiden, Unimicron, Shinko) supply all |
+| **Equipment vintage uniformity** | Cross-fab tool drift; recipe transfer fidelity | SK Hynix M16 + M15 + M15X identical-tool installation; Samsung Pyeongtaek P3/P4 split nodes hurts uniformity |
+| **Engineering team continuity** | Yield debug is implicit-knowledge-heavy; turnover destroys debug velocity | Samsung Hwaseong DRAM organizational restructuring 2024-2025 cited as yield-impact factor |
+
+The leading-indicator metric for yield catch-up is **time-to-third-generation-match**: Samsung HBM3 qualification miss (2023-2024) → HBM3E partial recovery (2025) → HBM4 full qualification (Q1 2026) = three generations to fully close. If hybrid bonding follows the same curve from 2025 entry, Samsung clears the yield gap at HBM5 (~2028) — exactly when SK Hynix's MR-MUF advantage expires.
+
+### Pricing Volatility Patterns
+
+Commodity DRAM peak-to-trough swings run 70-80% over 18-24 months historically. HBM swings have been milder (30-40%) because of triopoly discipline and customer concentration — Nvidia + AMD + 3-4 hyperscalers cannot commodity-shop the way PC OEMs can.
+
+| Cycle | Trough → Peak | DDR/DDR5 Spot ASP Move | HBM ASP Move | Trigger of Trough Reversal |
+|---|---|---|---|---|
+| 1995-1998 | 1998 trough | -85% | n/a | Asian Financial Crisis-driven Korean exit consolidation |
+| 1999-2001 | 2001 trough | -75% | n/a | Internet bust + Hynix near-bankruptcy |
+| 2007-2009 | 2009 trough | -82% | n/a | Qimonda bankruptcy + financial crisis recovery |
+| 2018-2019 | Q4 2019 trough | -65% | n/a | Wafer-start cuts (10-20%) + Samsung discipline floor |
+| 2022-2023 | Q3 2023 trough → Q1 2026 peak | -68% trough → +723% peak (1Tb DDR5 spot $1.30 → $10.70) | $4-6/GB → $10/GB (HBM3E) | ChatGPT (Nov 2022) demand wave + 20-30% wafer cuts at trough |
+
+The current cycle is the **first cycle in DRAM history where HBM extends rather than compresses the cycle**. Prior cycles saw HBM volumes too small to influence commodity pricing dynamics. The 2024-2026 3:1 wafer penalty plus AI capex magnitude converted HBM into a structural-cycle-extender — Macquarie's 2027+ extension call is the consensus expression of this regime change.
+
+### Margin Trajectory Outcomes
+
+The cyclical winner exits each cycle with 50%+ operating margin; the laggard with single-digit or negative. The 2017 cycle peak handed Samsung memory division ₩58.9T (~$53B) in 2018 operating profit; the 2023 trough produced -$2-4B quarterly losses across all three. The gap between cycle winner and cycle laggard exceeds 40 percentage points of operating margin. **The vendor that emerges strongest is the one with both lowest unit cost and highest capacity utilization — and these correlate, because the lowest-cost vendor can hold capacity online through the trough while higher-cost vendors must idle wafers.** Idle wafers compound the cost gap: under-utilized fabs absorb fixed depreciation per bit shipped, widening the unit-cost differential by 5-15% relative to the run-cycle baseline.
+
+### Case Study: 2017-2019 Cycle — The Last "Pure" Commodity DRAM Supercycle
+
+**Setup (2016-2017):** Smartphone unit growth + first-wave server-CPU memory expansion (Skylake-SP ramp) + 3D NAND-driven DRAM capacity diversion drove a 40%+ DRAM price surge in 2017. Samsung memory division operating margin peaked at ~56% in Q3 2018. Samsung 2018 operating profit hit ₩58.9T — the record stood until SK Hynix's 2025 result.
+
+**Trigger (Q4 2018-Q1 2019):** Two simultaneous shocks: (a) iPhone XR/XS demand miss + Chinese smartphone consolidation cut mobile DRAM bookings 20-25%; (b) Intel CPU shortage delayed server refresh into H2 2019. DRAM contract prices fell 20% in Q1 2019 alone, compounding to -55% by year-end.
+
+**Vendor outcomes:**
+- **Samsung:** Held capacity online (no public wafer cuts until Q3 2019). Memory operating margin compressed 56% → 25% by Q4 2019. Absorbed share from Toshiba/Western Digital NAND distress; held DRAM share at ~45%.
+- **SK Hynix:** Cut wafer starts 10-15% in Q2 2019. Operating margin compressed 50% → 8% by Q4 2019. Used the cycle to delay M16 tool installation by 6 months — capex restructuring under cover of cycle weakness.
+- **Micron:** Cut wafer starts 5% in Q3 2019; took $0.5B inventory write-down in Q4. Margin compressed 51% → -9% by Q4 2019. Used the cycle to refocus on bit-density and high-margin LPDDR5.
+
+**Key learning:** All three vendors cut, but Samsung's smaller cuts created the implicit signal that Samsung would tolerate a larger trough margin to defend share. Once Samsung ratified the floor at ~25% margin, SK Hynix and Micron stabilized cuts and prices found a bottom in Q4 2019. The "rationality test" of the cycle: each vendor cut just enough capacity to clear the inventory glut without ceding share, none cut so deeply that a competitor could capture marginal hyperscaler share. The same playbook is now running in reverse — coordinated capacity-add against the 2024-2026 demand wave.
+
+### Case Study: 2023-2024 Cycle — The HBM Inflection Cycle
+
+**Setup (2022-2023):** Post-pandemic DRAM/NAND inventory glut + crypto NAND collapse drove a -70%+ DRAM price decline from Q1 2022 to Q3 2023. All three vendors posted Q-Q operating losses. Samsung memory cut wafer starts 25% in late 2023 — largest cut since 2009. SK Hynix and Micron cut 20-30%. Second-deepest trough in DRAM history (only 2008-2009 worse on a percentage basis).
+
+**Trigger (November 2022 → 2023):** ChatGPT's release initiated AI accelerator demand. Nvidia H100 production ramped from <1K units/quarter (Q4 2022) to 100K+ units/quarter (Q4 2023), driving HBM demand 4x in 12 months. SK Hynix held the only fully-qualified HBM3 product at scale and captured >90% of the demand surge.
+
+**Vendor outcomes:**
+- **SK Hynix:** Pivoted M15 fab to HBM3 + 1b DRAM in Q1 2023. HBM share rose 50% → 62% by Q2 2024. Operating margin recovered -10% (Q3 2023) → 50%+ by Q4 2024 — fastest margin recovery in DRAM history. The MR-MUF packaging IP became the single most valuable IP in memory in 18 months.
+- **Samsung:** HBM3 qualification at Nvidia missed (thermal issues identified in field testing). HBM share dropped 50% → 20% by Q4 2024. Memory margin recovered slower (-12% → 25% Q4 2024). Lost the HBM3 generation entirely; began HBM3E qualification mid-2024.
+- **Micron:** Skipped HBM3 (had no qualified product); jumped to HBM3E with 1-beta DRAM. Achieved Nvidia qualification Q1 2024 and ramped to 12% HBM share by Q4 2024. Memory recovered fastest in absolute % terms (-15% → 35%). The HBM3-skip strategy was vindicated within 12 months.
+
+**Key learning:** The HBM3 cycle was the first cycle where one packaging-process IP (MR-MUF) outperformed scale (Samsung's larger fab footprint). Prior cycles rewarded scale; the 2023-2024 cycle rewarded specialty process. This is the structural break that justifies the 2024-2026 SK Hynix re-rate. **The risk for SK Hynix is repeating Samsung's 2023 mistake at HBM5 — being a generation late on hybrid bonding while Samsung is on time.**
+
+The two case studies establish the cycle-to-cycle template:
+1. Each cycle's defining technology shifts the share calculus (DDR4 in 2017, HBM3 in 2024, hybrid bonding HBM5 in 2028)
+2. Capacity cuts at trough are coordinated; prices recover when all three cut (2018-19 and 2022-23 both followed this pattern)
+3. A vendor that misses one generation can recover the next *only if* the missed generation does not establish customer lock-in. Samsung's HBM3 miss recovered at HBM4 because the foundry-base-die transition reset the qualification baseline. Had HBM4 stayed on memory-process buffer dies, Samsung's HBM3 miss would have compounded into HBM3E + HBM4 fatality.
+
+### The Evergreen Reset Hypothesis — Bull Scenario and Break Conditions
+
+The hypothesis: memory exits the cyclical-commodity classification and re-rates as an evergreen oligopoly. Three structural arguments anchor the case:
+1. **Three-player floor** — sufficient consolidation that the bankrupt-the-laggard playbook no longer functions. Killing the third player creates a duopoly that triggers anti-trust review at every Nvidia/hyperscaler procurement cycle. The 2002-2007 DOJ pleas establish the precedent — once an oligopoly tightens past three vendors, behavior becomes regulated.
+2. **Technological parity** — all three vendors converge on adjacent process nodes (1b/1c DRAM), all three move to hybrid bonding at HBM5, all three book base dies at TSMC/Samsung Foundry. No room for technology arbitrage means no room for the share-rotation game that defined HBM3 → HBM3E → HBM4.
+3. **Coordination tractability** — three publicly-disclosed capex plans (Samsung ₩110T, SK Hynix ₩35T, Micron $13.5B) create a Schelling-point on aggregate capacity vs aggregate AI demand. Re-rate target: 25x+ on low-teens growth.
+
+**Quantified upside per memory name**:
+
+| Vendor | Current Multiple | Earnings Power | Reset Multiple | Implied Move | Notes |
+|---|---|---|---|---|---|
+| **SK Hynix (000660)** | 6-8x peak P/E | KRW 105K / share peak-cycle EPS | 25x mid-cycle | **+210-310%** (KRW 2.1-2.5M target) | Largest absolute re-rate; Korean discount + cyclical discount both compress |
+| **Samsung Electronics (005930)** | 12x blended | ~₩9,500 / share blended (memory ~50% of EPS) | 25x on memory line | **+50-110%** | Re-rate biggest in absolute won; AVP + foundry + memory all benefit |
+| **Micron (MU)** | 11-13x P/E | ~$40 EPS peak | 25x mid-cycle | **+90-130%** ($90-100 target) | Cleanest US-listed expression of the thesis; LPDDR5X sole-source adds option |
+| **Kioxia (285A)** | 8x P/E | NAND-only earnings | 18x (NAND tier) | **+120%** (~$45 target) | Partial discount because NAND faces parallel CXMT-adjacent commoditization risk |
+
+The reset case dominates current sell-side bull targets by 50-100%. SK Hynix moves from cyclical-trade frame ("price target KRW 1.4M, implied 8x peak earnings") to compounder frame ("KRW 2-2.5M base, implied 25x mid-cycle"). Samsung re-rates the most in absolute won terms because the Korean discount compounds with cyclical discount on the memory line.
+
+**Five conditions that prevent the reset**:
+
+1. **CXMT enters as the fourth credible player by 2028-2029.** Domestic-only at scale (15-20% of global HBM bit demand by 2028 per §Macro Shifts §5) destroys the three-player coordination assumption. The triopoly model holds only within the US-aligned supply pool; if Huawei HiBL + CXMT cleave the global market, neither pool exhibits coordination — they exhibit two parallel oligopolies with different rationality functions, and the Western pool's loss of the China TAM (~20%) creates structural over-capacity that breaks pricing discipline.
+
+2. **Capex coordination breaks under asymmetric ambition.** Samsung's $73B 2026 capex is the live test case. If Samsung floods capacity to retake HBM share from 30% → 40%+, the disciplined-capacity assumption collapses. Historical precedent: Samsung's 2008 capex doubled while the cycle was peaking, deliberately seeding the 2009 trough that drove Qimonda bankrupt. Samsung has the balance sheet and incentive to repeat the playbook against SK Hynix at HBM5.
+
+3. **Demand-side regime change.** TurboQuant/MLA compression compounding (per §Investor Heuristics #8) plus the "marginal hyperscaler refactors workloads" branch of the 3:1 wafer penalty question both kill the demand-floor assumption. If AI memory demand grows +10-15% YoY instead of +30-40%, the oligopoly is sized for structural surplus and pricing discipline collapses through inventory pressure — same mechanism as 2018-2019 but with a longer correction tail.
+
+4. **Process-node dispersion persists.** The technological-parity assumption is weak today — SK Hynix's 1c production maturity is 6+ months ahead of Samsung, and the yield-delta drivers in §Yield Deltas argue parity does not happen automatically. Parity requires Samsung to close the customer co-engineering gap, which has not happened in 12 months. If the gap holds at HBM4E/HBM5, the share-rotation game restarts and the cyclical frame reasserts.
+
+5. **One vendor's capacity-allocation flexibility resets pricing.** SK Hynix's 70% Rubin lock + TSMC custom base die creates structural commitment Samsung does not face. If Samsung swings 10-15% of HBM4 wafers to commodity DRAM at moments of HBM softness, Samsung becomes the marginal supplier at HBM and resets pricing — same role Samsung played in 2018-19 commodity DRAM. Vendor lock-in on the demand side does not eliminate Samsung's flexibility on the supply side.
+
+**Diagnostic test for whether the reset is real**: two consecutive quarters of HBM ASP holding flat or rising while one vendor's HBM share falls 5+pp. That combination — disciplined pricing despite share movement — is the unique signature of a coordinated oligopoly. The 2018-19 cycle showed disciplined capacity but pricing fell with share. The combination has never been observed in DRAM history. First testable window: Q3 2026 → Q4 2026 once Rubin allocation data is public.
+
+**Net read**: The bull case requires three independent structural changes to hold simultaneously (no fourth entrant breaking triopoly, sustained Samsung capex discipline against share-defending temptation, sustained +30-40% YoY AI demand). Subjective probability weighting: **60% base case (cycle persists, multiples stay 8-12x), 25% partial reset (multiples expand to 12-15x = +50-80% upside), 15% full reset (25x+ = full upside above)**. Expected value of the partial-reset outcome alone justifies the current long bias on SK Hynix at 6-8x; the full reset is the asymmetric tail.
 
 ---
 
@@ -140,19 +272,7 @@ To produce one HBM-grade wafer, vendors sacrifice three wafers of standard DDR5 
 
 ## Product-Level Analysis
 
-### HBM Generational Roadmap (JEDEC + Vendor-Specific)
-
-| Generation | Years | Interface Width | Per-Pin Speed | Per-Stack Bandwidth | Stack Heights | Capacity per Stack | Key Architectural Change |
-|---|---|---|---|---|---|---|---|
-| HBM1 | 2015-2016 | 1024-bit | 1 Gbps | 128 GB/s | 4-Hi | 1 GB | First TSV-stacked DRAM |
-| HBM2 | 2016-2020 | 1024-bit | 2-2.4 Gbps | 256-307 GB/s | 4/8-Hi | 2-8 GB | Volume HPC adoption |
-| HBM2E | 2020-2022 | 1024-bit | 3.2-3.6 Gbps | 410-461 GB/s | 8-Hi | 8-16 GB | Nvidia A100 era |
-| HBM3 | 2022-2024 | 1024-bit | 6.4 Gbps | 819 GB/s | 8/12-Hi | 16-24 GB | Nvidia H100/H200 era; SK Hynix sole-source |
-| **HBM3E** | 2024-2026 | 1024-bit | 8-9.6 Gbps | 1.0-1.2 TB/s | 8/12-Hi | 24-36 GB | B200/Rubin compatibility; Samsung qualification miss |
-| **HBM4** | 2026-2028 | **2048-bit** (doubled) | 8-13 Gbps | **2.0-2.8 TB/s** | 12/16-Hi | 36-64 GB | Foundry-class logic base die; Samsung HBM4 11.7-13 Gbps to Nvidia |
-| HBM4E | 2027-2029 | 2048-bit | 11+ Gbps | 2.5-3.2 TB/s | 16-Hi | 48-72 GB | Hybrid-bonding inflection; custom base dies for ASIC |
-| HBM5 | 2028-2031 | 4096-bit (doubled) | 8 Gbps | **4 TB/s** | 16-20-Hi | 80 GB | Hybrid bonding mandatory; ~100W per stack; immersion cooling |
-| HBM6 | 2032+ | 4096-bit | 16 Gbps | **8 TB/s** | 20-Hi | 96-120 GB | Multi-tower interposer; on-die network switch |
+The historical generational progression (HBM1 → HBM3) is in §Industry History. Spec-level interest is concentrated on what is in production or sampling now (HBM3E, HBM4) and what defines the next inflection (HBM4E, HBM5). The current commercially-relevant data points are below.
 
 ### Vendor HBM Product Specifications (Q1 2026)
 
@@ -306,11 +426,7 @@ The US Department of Commerce updated its export-control framework in January 20
 
 SK Hynix and Samsung HBM dies → Taiwan TSMC CoWoS integration → Nvidia/AMD silicon → global AI compute. A China-Taiwan kinetic event invalidates 60-80% of HBM end-market demand for 12-24 months until non-Taiwan CoWoS-class capacity can be rebuilt. SK Hynix and Samsung have **no public disclosed hedge** to this concentration. See [[AI Bubble Risk and Semiconductor Valuations]] §2026-04-19 update — TSMC stress-test rated permanent impairment at -85-92% under invasion; HBM revenue collapses synchronously with TSMC output collapse.
 
-### 7. HBF (High-Bandwidth Flash) — New Memory Tier Creation (Emerging 2027-2030)
-
-HBF — co-developed by SanDisk + SK Hynix + Samsung — creates a third memory tier between HBM ($8-10/GB, ~2 TB/s) and SSD ($0.10-0.20/GB, GB/s scale): NAND-die-priced (~$1/GB), 1.6-3.2 TB/s bandwidth, 512GB-1.5TB capacity per stack. SK Hynix H3 architecture simulation: HBF replacing portion of HBM in inference workload delivers 2.69x perf/watt, 18.8x batch size, 32→2 GPU reduction. OCP standardization workstream in flight (target H2 2026). First Nvidia GPU integration likely late 2027/early 2028 (post-Rubin). If HBF captures 10% of HBM TAM by 2030 ≈ $10B incremental revenue at 50%+ gross margin shared across SK Hynix + SanDisk + Samsung. See [[Sectors/NAND Memory & Storage]] §HBF.
-
-### 8. Algorithmic Compression Risk (Bear-Case Optionality)
+### 7. Algorithmic Compression Risk (Bear-Case Optionality)
 
 TurboQuant (Google, March 2026): 6x KV-cache compression, zero accuracy loss. DeepSeek MLA: 93.3% KV-cache reduction. Both compress *dynamic* memory (KV cache) but not *static* (model weights). Per Jevons Paradox + 2026 supply reality:
 - Initial market reaction: SK Hynix -6.23% intraday, Samsung -4.71% (March 24-25, 2026)
@@ -346,17 +462,15 @@ See [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] and [[Research/
 
 **4. The DDR5/HBM profitability inversion.** Q1 2026: DDR5 profitability surpasses HBM3e for the first time in two years (TrendForce). Server DDR5 64GB RDIMM doubles YoY by late 2026 while HBM3e ASPs decline 5-15% on three-supplier competition. Samsung's commodity-DRAM scale becomes the cyclical winner, not the cyclical laggard. Sell-side models the inverse — assigning premium multiples to HBM-pure exposure when the cyclical leader is moving toward Samsung's commodity strength.
 
-**5. HBF as a $5-10B unpriced TAM option.** Sell-side assigns zero value to HBF in SK Hynix, SanDisk, Samsung valuations because it is pre-revenue. OCP standardization (target H2 2026) + SanDisk pilot acceleration + Samsung patent activity + SK Hynix H3 simulation data = five de-risking signals the market reads as "speculative optionality." HBF is structurally different from Optane: NAND-based scalability (most-scalable memory tech in existence), multi-vendor OCP standard (not Intel-proprietary), concrete $/inference savings (32→2 GPU reduction). If HBF captures 10% of HBM TAM by 2030 = $10B+ revenue at 50%+ gross margin — currently unmodeled.
+**5. The Solidigm carve-out re-rating is unpriced.** SK Hynix paid $9B for Solidigm in 2021. At 51% QLC market share + $3.34B Q3 2025 quarterly run-rate, Solidigm standalone valuation = $15-25B. A 2027 IPO crystallizes $6-15B of hidden value and resets parent multiple by separating 15% EBITDA-margin NAND from 80% EBITDA-margin DRAM/HBM. Sell-side blended 8x EV/EBITDA on SK Hynix; sum-of-parts (DRAM/HBM 12x + Solidigm 8x) argues 10-11x — a 20-30% re-rating independent of HBM share trajectory.
 
-**6. The Solidigm carve-out re-rating is unpriced.** SK Hynix paid $9B for Solidigm in 2021. At 51% QLC market share + $3.34B Q3 2025 quarterly run-rate, Solidigm standalone valuation = $15-25B. A 2027 IPO crystallizes $6-15B of hidden value and resets parent multiple by separating 15% EBITDA-margin NAND from 80% EBITDA-margin DRAM/HBM. Sell-side blended 8x EV/EBITDA on SK Hynix; sum-of-parts (DRAM/HBM 12x + Solidigm 8x) argues 10-11x — a 20-30% re-rating independent of HBM share trajectory.
+**6. Custom HBM (foundry-fabricated base dies) creates vendor lock-in that makes share losses sticky in either direction.** A hyperscaler's HBM4 base die fabricated at Samsung 2nm cannot port to TSMC for SK Hynix HBM4 — and vice versa. This makes 2026 HBM4 share allocation structural for 3+ year GPU/ASIC roadmaps. Counter to the consensus framing of "Nvidia/AMD will dual-source on price every cycle," the HBM4 allocations are now sticky. SK Hynix's 70% Rubin lock-in is durable through 2028; Samsung's 30% is similarly defended. **Custom HBM share grows 82% YoY in 2026, reaching ~33% of total HBM market** — the unpriced lock-in is the single largest counter to the Incumbent Erosion thesis.
 
-**7. Custom HBM (foundry-fabricated base dies) creates vendor lock-in that makes share losses sticky in either direction.** A hyperscaler's HBM4 base die fabricated at Samsung 2nm cannot port to TSMC for SK Hynix HBM4 — and vice versa. This makes 2026 HBM4 share allocation structural for 3+ year GPU/ASIC roadmaps. Counter to the consensus framing of "Nvidia/AMD will dual-source on price every cycle," the HBM4 allocations are now sticky. SK Hynix's 70% Rubin lock-in is durable through 2028; Samsung's 30% is similarly defended. **Custom HBM share grows 82% YoY in 2026, reaching ~33% of total HBM market** — the unpriced lock-in is the single largest counter to the Incumbent Erosion thesis.
+**7. The Huawei HiBL + CXMT bifurcation is more consequential than consensus models.** China's vertical-integration of in-house HBM + domestic GPU + domestic packaging removes the SK Hynix/Samsung chokepoint for the China AI compute stack. ByteDance's $5.6B Ascend 950PR commitment is the first major hyperscaler-class order outside the SK Hynix/Samsung HBM ecosystem in 10+ years. The China-domestic pool may reach 15-20% of global HBM bit demand by 2028, cleaving global HBM into two non-interchangeable markets. Implication: SK Hynix/Samsung lose the China HBM TAM permanently; Western HBM pricing power retains for the addressable ~80% of global TAM.
 
-**8. The Huawei HiBL + CXMT bifurcation is more consequential than consensus models.** China's vertical-integration of in-house HBM + domestic GPU + domestic packaging removes the SK Hynix/Samsung chokepoint for the China AI compute stack. ByteDance's $5.6B Ascend 950PR commitment is the first major hyperscaler-class order outside the SK Hynix/Samsung HBM ecosystem in 10+ years. The China-domestic pool may reach 15-20% of global HBM bit demand by 2028, cleaving global HBM into two non-interchangeable markets. Implication: SK Hynix/Samsung lose the China HBM TAM permanently; Western HBM pricing power retains for the addressable ~80% of global TAM.
+**8. The TurboQuant/algorithmic-compression risk is currently mispriced as bullish.** Consensus: Jevons Paradox absorbs efficiency gains, total HBM demand rises. Counter: if compression algorithms compound (TurboQuant 2-bit weights, MLA, KV-cache offload to CXL), 2027-2028 HBM demand growth could decelerate from +30-40% YoY to +10-15%. The market absorbed the March 24, 2026 TurboQuant shock (-6.23% SK Hynix) within a week and re-anchored on Jevons; a follow-on breakthrough has unmodeled tail risk for the supercycle thesis.
 
-**9. The TurboQuant/algorithmic-compression risk is currently mispriced as bullish.** Consensus: Jevons Paradox absorbs efficiency gains, total HBM demand rises. Counter: if compression algorithms compound (TurboQuant 2-bit weights, MLA, KV-cache offload to HBF/CXL), 2027-2028 HBM demand growth could decelerate from +30-40% YoY to +10-15%. The market absorbed the March 24, 2026 TurboQuant shock (-6.23% SK Hynix) within a week and re-anchored on Jevons; a follow-on breakthrough has unmodeled tail risk for the supercycle thesis.
-
-**10. The Korean equity multiple rerating is the cleanest path to 2x upside in SK Hynix.** Korean equity discount runs 30-40% to global peers on persistent governance + Korean political risk. SK Hynix at 5-8x P/E on 2026 realized earnings vs Micron at 11-14x P/E on equivalent earnings = the largest single-stock discount in global semiconductor markets. Multiple expansion (not earnings revision) is the asymmetric driver — consensus prices the multiple as fixed, but a Korean equity re-rating cycle (precedent: 2016-2017) could deliver 50-80% upside independent of share trajectory.
+**9. The Korean equity multiple rerating is the cleanest path to 2x upside in SK Hynix.** Korean equity discount runs 30-40% to global peers on persistent governance + Korean political risk. SK Hynix at 5-8x P/E on 2026 realized earnings vs Micron at 11-14x P/E on equivalent earnings = the largest single-stock discount in global semiconductor markets. Multiple expansion (not earnings revision) is the asymmetric driver — consensus prices the multiple as fixed, but a Korean equity re-rating cycle (precedent: 2016-2017) could deliver 50-80% upside independent of share trajectory.
 
 ---
 
@@ -366,13 +480,13 @@ See [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] and [[Research/
     ┌──────────────────────────────────────────────────────────┐
     │              AI INFERENCE / TRAINING SERVER              │
     │                                                          │
-    │  ┌────────────┐  ┌───────────────┐  ┌────────────────┐  │
-    │  │  GPU/ASIC  │──│  HBM (Hot)    │──│  HBF (2027+)   │  │
-    │  │ Compute    │  │  36-144GB     │  │  Warm / Weights │  │
-    │  │ Tensor/    │  │  $8-10/GB     │  │  512GB-1.5TB    │  │
-    │  │ Matrix     │  │  2-4 TB/s     │  │  ~$1/GB         │  │
-    │  │            │  │  HBM3E/HBM4   │  │  1.6-3.2 TB/s   │  │
-    │  └────────────┘  └───────────────┘  └────────────────┘  │
+    │  ┌────────────┐  ┌───────────────┐                       │
+    │  │  GPU/ASIC  │──│  HBM (Hot)    │                       │
+    │  │ Compute    │  │  36-144GB     │                       │
+    │  │ Tensor/    │  │  $8-10/GB     │                       │
+    │  │ Matrix     │  │  2-4 TB/s     │                       │
+    │  │            │  │  HBM3E/HBM4   │                       │
+    │  └────────────┘  └───────────────┘                       │
     │       │                                                  │
     │       └─────┐                                            │
     │             ▼                                            │
@@ -383,16 +497,16 @@ See [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] and [[Research/
     │  └──────────────────┘                                    │
     │             │                                            │
     │             ▼                                            │
-    │  ┌──────────────────────────────────────────────────────┐ │
-    │  │     Enterprise SSD (Cold Storage)                     │ │
-    │  │     61-245TB per drive                                │ │
-    │  │     $0.10-0.20/GB                                     │ │
-    │  │     14-28 GB/s sequential                             │ │
-    │  └──────────────────────────────────────────────────────┘ │
+    │  ┌──────────────────────────────────────────────────────┐│
+    │  │     Enterprise SSD (Cold Storage)                    ││
+    │  │     61-245TB per drive                               ││
+    │  │     $0.10-0.20/GB                                    ││
+    │  │     14-28 GB/s sequential                            ││
+    │  └──────────────────────────────────────────────────────┘│
     └──────────────────────────────────────────────────────────┘
 ```
 
-The DRAM/HBM sector owns the top two tiers (HBM + DDR5), with the future HBF tier emerging from NAND vendors with HBM packaging IP (SK Hynix + SanDisk + Samsung). Pricing power, gross margin, and capital intensity all decline monotonically down the stack. Within the AI server, the top-tier (HBM) consumes 25-40% of total system memory cost despite representing <5% of total bit volume — the inversion that defines AI-era memory economics.
+The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross margin, and capital intensity all decline monotonically down the stack. Within the AI server, the top tier (HBM) consumes 25-40% of total system memory cost despite representing <5% of total bit volume — the inversion that defines AI-era memory economics.
 
 ---
 
@@ -421,8 +535,8 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5), with the future HBF tie
 
 ## Related Sectors and Macro
 
-- [[Sectors/NAND Memory & Storage]] — Sister memory sub-sector; HBF tier emerging from NAND vendors; Solidigm IPO catalyst inside SK Hynix
-- [[Sectors/GPU & AI Compute Accelerators]] — HBM downstream demand source; Nvidia 60-65% CoWoS pre-booking; HBM content per GPU trajectory
+- [[Sectors/NAND Memory & Storage]] — Sister memory sub-sector; Solidigm IPO catalyst inside SK Hynix
+- [[Compute & AI Compute Accelerators]] — HBM downstream demand source; Nvidia 60-65% CoWoS pre-booking; HBM content per GPU trajectory
 - [[Sectors/Semiconductor Capital Equipment]] — ASML EUV monopoly upstream of HBM; BESI hybrid bonding; HBM4 packaging equipment intensity
 - [[AI Bubble Risk and Semiconductor Valuations]] — $650B AI revenue requirement for 2030; Taiwan kinetic tail risk; hyperscaler capex digestion-phase scenarios
 
@@ -435,3 +549,9 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5), with the future HBF tie
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Integrated into Macro Shifts §5 Geopolitical Bifurcation as April 2026 overlay — distinct from 2019 HF precedent because HBM-temporary-bonding adhesives are directly named at risk. Adds unpriced 2026 HBM tail risk for Samsung/Hynix; TSM less exposed per Taiwan/Korean localization. Snapshot: [[_Archive/Snapshots/DRAM & HBM Memory (pre-sync 2026-04-24-101646)]]
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: DRAM pricing trajectory "double or triple" + true incremental supply not until 2028 reinforces Macro Shifts §1 (AI Accelerator Unit Growth Binds HBM Demand) and the 3:1 Wafer Penalty section. Added to Related Research.
+
+### 2026-04-26
+- Refactored: Restructured Key Industry Questions from research summaries to six framework-level analytical tensions (triopoly discipline kill mechanism, cycle-leader rotation logic, 3:1 wafer penalty self-correcting vs self-reinforcing, HBM incumbent kill mechanism at integration boundary, base-die lock-in half-life, Korean equity multiple re-rate). Inserted new §Cycle Dynamics & Game Theory between Industry History and Competitive Dynamics — covers (1) game theory of capital investment with strategic-instrument table, (2) technology roadmap race with sole-source ASP premium logic, (3) yield deltas with 8-driver decomposition table explaining the 30-point HBM3E vendor spread, (4) pricing volatility patterns across 5 cycles, (5) margin trajectory outcomes with idle-wafer cost-compounding mechanism, (6) 2017-2019 cycle case study (Samsung peak → -55% trough recovery), (7) 2023-2024 cycle case study (HBM3 inflection → SK Hynix sole-source). Stripped HBM1-HBM6 verbose generational roadmap table from Product-Level Analysis (current-generation vendor specs retained). Stripped all HBF commentary: Macro Shifts §7 deleted (renumbered §8 → §7), Investor Heuristics #5 deleted (renumbered 6→5 through 10→9), Memory Tier diagram HBF column removed, Related Sectors HBF reference removed. Reminder to run `/graph last` per CLAUDE.md metadata-ownership rule.
+
+### 2026-04-27
+- Addressed user callouts: Added new subsection §Cycle Dynamics & Game Theory → The Evergreen Reset Hypothesis — Bull Scenario and Break Conditions, addressing the 2026-04-26 [!question] callout on whether memory structurally re-rates from cyclical to evergreen oligopoly. Analysis covers (a) three structural arguments anchoring the bull case (three-player floor, technological parity, capex coordination tractability), (b) quantified upside per memory name under 25x re-rate (SK Hynix +210-310%, Samsung +50-110%, Micron +90-130%, Kioxia +120%), (c) five conditions that prevent reset (CXMT 4th-entrant, Samsung capex breakout, demand-side compression, persistent process-node dispersion, Samsung's HBM-to-commodity wafer-swing flexibility), (d) diagnostic test (HBM ASP flat/rising while one vendor's share falls 5+pp — never observed in DRAM history; first testable Q3-Q4 2026 on Rubin allocation), (e) probability-weighted net read (60% base / 25% partial / 15% full reset). Callout converted to addressed ledger entry with pointer to body section. Reminder to run `/graph last` per CLAUDE.md metadata-ownership rule.

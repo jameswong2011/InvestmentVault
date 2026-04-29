@@ -102,12 +102,12 @@ Where:
 - `<type>` is one of `question | error | tip | todo` (exactly — any other value → log `ℹ️ Skipped unrecognized callout type "[X]" in [file]` and ignore)
 - `<fresh_date>` is `YYYY-MM-DD`
 - `<addressed_date>` is optional. Absent → callout is **fresh** → SKIP (never sweep fresh)
-- `<markers>` may include `[[pinned]]` or `[[preserve]]` — both are opt-outs → SKIP
+- `<markers>` may include `[[pinned]]` — opt-out marker, applies to fresh OR addressed callouts → SKIP. (Note: `[[preserve]]` is **deprecated** as of 2026-04-29 — `[[pinned]]` replaces it. The skill still treats `[[preserve]]` as a skip during a transition window for safety, but `/lint #48` flags any remaining occurrences for migration.)
 - `**Response:**` block must be present for a callout to qualify as addressed
 
 **Parent section detection**: walk backward from the callout's opening line to the nearest preceding `## <section_name>` heading. This is the callout's origin section — captured for the Legacy entry. If the callout sits above all `## ` headings (shouldn't happen in theses, unusual in sector notes), label section as `<unknown>`.
 
-**Age computation**: `age_days = today - addressed_date`. Callouts with `age_days >= threshold` AND without `[[preserve]]` / `[[pinned]]` → **sweep candidates**.
+**Age computation**: `age_days = today - addressed_date`. Callouts with `age_days >= threshold` AND without `[[pinned]]` (and without legacy `[[preserve]]` during the transition window) → **sweep candidates**.
 
 **Location safety**: callouts inside `## Legacy Callouts` itself must NEVER be parsed. Callouts inside `## Log` must also be skipped (Log entries never contain callouts by convention; defensive filter). Skip the entire section bodies for these two headings during scan.
 
@@ -159,11 +159,11 @@ Totals: 23 candidates across 3 files | 3 preserved | 1 pinned | 4 fresh (skipped
 ```
 
 Column semantics:
-- **Candidates**: addressed callouts ≥ threshold, not preserved, not pinned → would be swept.
-- **Preserved**: addressed callouts with `[[preserve]]` — skipped regardless of age.
-- **Pinned**: unaddressed callouts with `[[pinned]]` — skipped by design.
-- **Fresh**: unaddressed callouts — never eligible (not in scope for sweep).
+- **Candidates**: addressed callouts ≥ threshold without `[[pinned]]` marker → would be swept.
+- **Pinned**: any callout (fresh or addressed) with `[[pinned]]` — skipped regardless of age. Persistent revisit slot.
+- **Fresh**: unaddressed callouts without `[[pinned]]` — never eligible (not in scope for sweep).
 - **Sections touched**: breakdown of candidate origins.
+- *Legacy `[[preserve]]` markers* (deprecated 2026-04-29) are still honored as skips during the transition window; surfaced as a separate column when present, with a migration hint.
 
 **If zero candidates anywhere**: `No callouts eligible for sweeping. Threshold [days]d reached zero addressed callouts across [N] files. Nothing to do.` Stop (both dry-run and execute modes exit cleanly).
 
@@ -243,7 +243,7 @@ Insert a new `## Legacy Callouts` block above `## Log`:
 
 ```
 ## Legacy Callouts
-<!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[preserve]]` to its header in-place. -->
+<!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
 <new entries sorted descending by addressed_date>
 
@@ -373,7 +373,7 @@ Verification: all passed | [list failures]
 
 ### 5.2: Next steps
 
-- `→ Run /graph last to refresh wikilink adjacency (new [[preserve]] markers won't trigger broken-link flags — already in allowlist).`
+- `→ Run /graph last to refresh wikilink adjacency ([[pinned]] markers won't trigger broken-link flags — already in allowlist).`
 - `→ Run /lint to verify Legacy Callouts schema (checks #50-#53).`
 - `→ To undo a specific file's sweep: /rollback [ticker or note name] → select (pre-callout-sweep ...) snapshot.`
 - `→ To undo the whole run: /rollback [BATCH_ID] → cascade (a) restores every file to pre-sweep state in one transaction.`
@@ -403,8 +403,8 @@ These invariants define what `/archive-callouts` guarantees. Consumer skills (`/
 3. **Sort order is descending by addressed date.** Newest sweep at top. User-decided, locked in template + skill.
 4. **Entry format is load-bearing**: `- **YYYY-MM-DD** · <type> · <section> · raised YYYY-MM-DD → <body>` + `**Response:**` sub-bullet. `/lint #52` enforces.
 5. **Sweep never writes outside the target file** except: (a) per-target snapshot in `_Archive/Snapshots/`, (b) `last_callout_sweep:` frontmatter, (c) `Callout sweep:` Log entry in `## Log`. No sector propagation, no macro propagation, no `_hot.md` update, no `_graph.md` update.
-6. **`[[preserve]]` is an opt-out marker.** Addressed callouts with this marker NEVER sweep regardless of age. Added by user in-place, never authored by the skill.
-7. **Fresh callouts are invisible to sweep.** Only addressed callouts (with `→ Addressed YYYY-MM-DD` token) are candidates. Pinned callouts are by definition not addressed → also invisible.
+6. **`[[pinned]]` is the opt-out marker (replaces deprecated `[[preserve]]` 2026-04-29).** Any callout with `[[pinned]]` — fresh or addressed — NEVER sweeps regardless of age. Added by user in-place, never authored by the skill. During the deprecation transition window the skill also honors `[[preserve]]` as a skip; `/lint #48` flags any remaining occurrences for migration.
+7. **Fresh callouts without `[[pinned]]` are invisible to sweep.** Only addressed callouts (with `→ Addressed YYYY-MM-DD` token) are candidates. Pinned addressed callouts skip sweep by marker; pinned fresh callouts are also exempt (and not in scope anyway because they're unaddressed).
 8. **Log prefix is `Callout sweep:`.** Registered in `_shared/log-prefixes.md` §17 as skill-origin drift-exclusion. Producer drift here breaks `/sync` Step 2.5 and Step 3e silently.
 9. **Snapshot trigger name is `callout-sweep`** (hyphenated). `/rollback` recognizes this in its 2.5c non-manifest cascade path. Changing the trigger name without updating rollback breaks the cascade-by-batch-id lookup.
 10. **Dry-run is the safe default when intent is ambiguous.** Empty arguments → vault-wide dry-run, never silent execute.

@@ -470,7 +470,7 @@ Per [[Research/2025-11-24 - BTC - Quantum Computing Threat to Bitcoin Security]]
 ## Cross-Sector Links
 - [[Sectors/Precious Metals]] — Digital-gold comparison; BTC stock-to-flow ~120 vs gold ~60; sovereign reserve substitution dynamics
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — Crypto mining ASIC demand; quantum computing hardware pipeline (IBM, Google, IonQ)
-- [[Sectors/GPU & AI Compute Accelerators]] — AI agent payments (x402) as AI-economy derivative; DePIN compute demand
+- [[Compute & AI Compute Accelerators]] — AI agent payments (x402) as AI-economy derivative; DePIN compute demand
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex driving stablecoin-denominated agent payments
 - [[Macro & Technology/Iran War Trading Playbook]] — BTC as credibly-neutral seizure-resistant reserve asset; risk-off correlation; full Iran scenario framework + commodity transmission hierarchy
 

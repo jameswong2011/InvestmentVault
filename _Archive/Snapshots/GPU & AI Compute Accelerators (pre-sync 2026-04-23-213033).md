@@ -1,8 +1,10 @@
 ---
 date: 2026-04-22
-tags: [sector, moc]
+tags:
+  - sector
+  - moc
 status: active
-snapshot_of: "[[Sectors/GPU & AI Compute Accelerators]]"
+snapshot_of: "[[Compute & AI Compute Accelerators]]"
 snapshot_date: 2026-04-23
 snapshot_trigger: sync
 snapshot_batch: sync-2026-04-23-213033

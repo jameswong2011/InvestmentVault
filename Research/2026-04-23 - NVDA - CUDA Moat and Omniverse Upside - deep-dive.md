@@ -128,4 +128,4 @@ Three tensions with existing [[Theses/NVDA - Nvidia]] conviction:
 - [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]] — Omniverse three-computer architecture, PhysX 5, Warp benchmarks
 - [[Research/2026-03-28 - Nvidia PhyX and Physical AI]] — Partnership conversion strategy, Havok/MuJoCo/Drake/Brax comparative analysis
 - [[Research/2026-01-07 - NVDA - Nvidia CES 2026 Summary]] — CES 2026 Vera Rubin + Alpamayo AV + GR00T + Jetson T4000
-- [[Sectors/GPU & AI Compute Accelerators]] — sector dynamics; Non-consensus Insight #6 (semi-cycle derate 24x → 14x on efficiency inflection) remains orthogonal to this analysis
+- [[Compute & AI Compute Accelerators]] — sector dynamics; Non-consensus Insight #6 (semi-cycle derate 24x → 14x on efficiency inflection) remains orthogonal to this analysis

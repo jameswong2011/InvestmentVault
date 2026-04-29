@@ -131,7 +131,7 @@ Cheniere as largest US LNG exporter operates entirely outside conflict zone, dir
 
 **Entry**: any dip on ceasefire optimism — structural LNG supply gap persists for years regardless of conflict outcome. Single best structural long in commodity space because damage is already done and cannot be quickly reversed.
 
-Full thesis: [[Theses/LNG - Cheniere Energy]]. Sector context: [[Sectors/LNG & Natural Gas Infrastructure]].
+Full thesis: [[Theses/LNG - Cheniere Energy]]. Sector context: [[@LNG & Natural Gas Infrastructure]].
 
 ### Position 7: NOC (Northrop Grumman) — cheapest defense prime with unpriced upside
 
@@ -148,7 +148,7 @@ Among four US defense primes, NOC offers **best risk-adjusted entry**. Trades at
 
 Stock surged **114% in 2025** as mining equities front-ran supply concerns. Spot uranium at ~$92/lb (from $63–83/lb range), supported by nuclear renaissance narratives (AI data center demand, reactor life extensions) and structural supply deficit Russia's nuclear fuel export ban (Aug 2024) created. Iran crisis reinforces nuclear's strategic value as non-hydrocarbon baseload source. Global uranium production meeting only 90% of demand.
 
-Iran's nuclear program being the focal point of strikes accelerates Western nuclear energy investment narrative. Multi-year compounding regardless of conflict resolution. Full thesis: [[Theses/CCJ - Cameco]]. Sector context: [[Sectors/Uranium & Nuclear Fuel]].
+Iran's nuclear program being the focal point of strikes accelerates Western nuclear energy investment narrative. Multi-year compounding regardless of conflict resolution. Full thesis: [[Theses/CCJ - Cameco]]. Sector context: [[@Uranium & Nuclear Fuel]].
 
 ### Position 9: GDX (VanEck Gold Miners ETF) — Scenario B reflation play
 
@@ -367,9 +367,9 @@ Market pricing of this as temporary shock may prove correct on 12-month horizon 
 
 ## Related Sectors
 
-- [[Sectors/LNG & Natural Gas Infrastructure]] — Ras Laffan structural supply gap thesis
-- [[Sectors/Product Tankers & Maritime Shipping]] — ton-mile demand shock + insurance mechanism
-- [[Sectors/Uranium & Nuclear Fuel]] — nuclear renaissance hedge
+- [[@LNG & Natural Gas Infrastructure]] — Ras Laffan structural supply gap thesis
+- [[@Product Tankers & Maritime Shipping]] — ton-mile demand shock + insurance mechanism
+- [[@Uranium & Nuclear Fuel]] — nuclear renaissance hedge
 - [[Sectors/Cybersecurity]] — Iranian APT-driven structural spending
 - [[Sectors/Precious Metals]] — gold paradox + miners leverage
 - [[Sectors/Agriculture & Industrial Equipment]] — fertilizer transmission

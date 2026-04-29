@@ -261,7 +261,7 @@ No thesis has been untouched for 14+ days — every thesis received at least a w
 
 **Why now**: Xi 2027 PLA readiness deadline is inside the AI capex thesis horizon. TSM already downgraded on this risk; NVDA/AVGO/BESI/SEMICAP log entries from Apr 19 stress test sync reference Taiwan tail but have no macro anchor. Q9 in _hot.md explicitly flags this gap.
 
-**Vault connection**: Anchors [[Theses/TSM - Taiwan Semiconductor]], [[Theses/NVDA - Nvidia]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Theses/SEMICAP - Semiconductor Capital Equipment]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/LITE - Lumentum]]. Creates the Iran-parallel macro thesis structure.
+**Vault connection**: Anchors [[Theses/TSM - Taiwan Semiconductor]], [[Theses/NVDA - Nvidia]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]], [[Sectors/Semiconductor Capital Equipment]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/LITE - Lumentum]]. Creates the Iran-parallel macro thesis structure.
 
 **Expected impact**: HIGH — conviction-level changes on 2+ theses. Enables formal portfolio VaR on Taiwan. Surfaces Joint Sword 2024 metrics, "destroy the fabs" contingency, silicon shield vs Ukraine/Nord Stream 2 precedent, Taiwan sovereign CDS, Japan METI protocol.
 
@@ -368,7 +368,7 @@ After this scan, run `/graph last` to register:
 - [[AI Bubble Risk and Semiconductor Valuations]]
 - [[Macro & Technology/Iran War Trading Playbook]]
 - [[Stablecoin Regulation as Geopolitical Infrastructure]]
-- [[Sectors/GPU & AI Compute Accelerators]]
+- [[Compute & AI Compute Accelerators]]
 - [[Sectors/Semiconductor Capital Equipment]]
 - [[Sectors/NAND Memory & Storage]]
 - [[Sectors/Cybersecurity]]

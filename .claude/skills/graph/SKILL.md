@@ -141,9 +141,9 @@ For each thesis flagged in I.2 (watermark), I.2.5 (invalidations), I.3 (added), 
    - `Macro/` → macro
    - `Theses/` → cross-thesis
    - `Research/` → research
-   - **Intentional-unresolved markers** (`[[pinned]]`, `[[preserve]]`) → silently drop, do NOT log as dangling. These are user-authored opt-out markers on addressed/preserved callouts — the unresolved wikilink rendering is the feature (visual distinction in reading view), not a broken reference.
+   - **Intentional-unresolved markers** (`[[pinned]]`; legacy `[[preserve]]` during deprecation transition window) → silently drop, do NOT log as dangling. `[[pinned]]` is a user-authored opt-out marker on callouts — the unresolved wikilink rendering is the feature (visual distinction in reading view), not a broken reference.
    - Other targets → ignore.
-3. **Validate target existence** — drop dangling references, log each at `ℹ️` severity (e.g., `ℹ️ Dropped dangling cross-thesis: [TICKER] → [[Theses/TARGET - ...]] (file not in Theses/, likely archived).`). Completes the invalidation cycle opened at I.2.5 (§1.3). The intentional-unresolved allowlist at step 2 is applied BEFORE validation — never emit dangling log lines for `[[pinned]]` or `[[preserve]]`.
+3. **Validate target existence** — drop dangling references, log each at `ℹ️` severity (e.g., `ℹ️ Dropped dangling cross-thesis: [TICKER] → [[Theses/TARGET - ...]] (file not in Theses/, likely archived).`). Completes the invalidation cycle opened at I.2.5 (§1.3). The intentional-unresolved allowlist at step 2 is applied BEFORE validation — never emit dangling log lines for `[[pinned]]` (or legacy `[[preserve]]`).
 4. **Extract `status:` and `log_tail:`** per Step 2b (same fused Bash block captures both alongside wikilinks).
 5. Replace baseline entry with new validated categorization + fresh cache fields.
 
@@ -426,7 +426,7 @@ For each thesis in `Theses/`:
    - `Macro/` → macro
    - `Theses/` → cross-thesis
    - `Research/` → research
-   - **Intentional-unresolved markers** (`[[pinned]]`, `[[preserve]]`) → silently drop, do NOT log as dangling. User-authored callout opt-out markers — unresolved rendering is the feature.
+   - **Intentional-unresolved markers** (`[[pinned]]`; legacy `[[preserve]]` during deprecation transition window) → silently drop, do NOT log as dangling. User-authored callout opt-out marker — unresolved rendering is the feature.
    - Other targets → ignore
 3. **Validate target existence**: drop dangling references (target file missing — typically archived). Log each drop at `ℹ️` severity in Step 8 report. Intentional-unresolved allowlist from step 2 applied BEFORE validation.
 4. Build adjacency entry:

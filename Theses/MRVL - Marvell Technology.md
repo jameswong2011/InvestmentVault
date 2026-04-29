@@ -186,7 +186,7 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 
 ## Bear Case
 
-**Core thesis**: MRVL is pricing a bull scenario that has four contested assumptions; when two break, the stock de-rates from 36x forward to 22-24x sector trough (consistent with [[Sectors/GPU & AI Compute Accelerators.md]] Non-consensus Insight #6 semi-cycle derate framing), driving 40-50% downside from $158.
+**Core thesis**: MRVL is pricing a bull scenario that has four contested assumptions; when two break, the stock de-rates from 36x forward to 22-24x sector trough (consistent with [[Compute & AI Compute Accelerators]] Non-consensus Insight #6 semi-cycle derate framing), driving 40-50% downside from $158.
 
 **Specific drivers**:
 1. **Trainium 3 "500K unit partial" never materialises.** AWS concentrates T3 at Alchip, Marvell gets T4 consolation-prize socket at lower ASP. Custom silicon FY28 doubling guide cuts to $2.5B from implied $3B+.
@@ -256,7 +256,7 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 - [[Theses/NVDA - Nvidia.md]] — Cross-thesis: NVLink Fusion $2B investment context; scale-up fabric war framing.
 - [[Sectors/Custom Silicon & Networking Semiconductors.md]] — Primary sector for MRVL; competitive dynamics + hyperscaler design-partner fragmentation thesis.
 - [[Sectors/Optical Networking & Photonics.md]] — Secondary sector for MRVL's DSP + Celestial exposure.
-- [[Sectors/GPU & AI Compute Accelerators.md]] — Sector cycle derate framing (Non-consensus Insight #6: 24x → 14x on efficiency inflection) applies to MRVL multiple compression risk.
+- [[Compute & AI Compute Accelerators]] — Sector cycle derate framing (Non-consensus Insight #6: 24x → 14x on efficiency inflection) applies to MRVL multiple compression risk.
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing risk framing; MRVL forward P/E 36x sits above historical semi-cycle trough 22-24x.
 
 ## Log

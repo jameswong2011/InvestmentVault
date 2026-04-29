@@ -9,9 +9,8 @@ sector: Precious Metals
 
 ## Active Theses
 
+- [[Theses/GLD - SPDR Gold Shares]] — physical gold proxy: central-bank reserve rotation (750–850 t/yr structural bid), Basel III Tier 1 HQLA (Jul 2025), 1974 mid-cycle retrace analog, $5,400–6,300 sell-side targets vs $4,792 spot
 - [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] — cross-sector: digital gold comparison, stock-to-flow framework, monetary premium contest
-
-_No dedicated gold or silver thesis yet. Access is currently expressed via BTC-CRYPTO (digital-gold analog) and miner/commodity exposure in [[Sectors/Uranium & Nuclear Fuel|Uranium]] and [[Sectors/Product Tankers & Maritime Shipping|Tankers]] as Iran-regime beneficiaries. A dedicated gold/silver thesis (miner-led or physical-led) would be the natural next step._
 
 ## Sector Summary
 
@@ -304,10 +303,10 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 
 - [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] — Digital-gold comparison; BTC stock-to-flow ~120 vs gold ~60; tokenized gold (PAXG/XAUT) as RWA bridge
 - [[Macro & Technology/Iran War Trading Playbook]] — Gold's counterintuitive $5,595 → $4,400 selloff (deepest wartime gold decline in BullionVault's 50-year dataset); 1970s stagflation analog; Fed pivot as gold catalyst; GDX listed as Position #9 leveraged crisis play; precious metals within broader 7-tier commodity hierarchy
-- [[Sectors/Uranium & Nuclear Fuel]] — Parallel "monetary metal" narrative: sanction-resistant, scarcity-driven, geopolitical reserve asset
-- [[Sectors/LNG & Natural Gas Infrastructure]] — Energy-driven inflation transmission into gold via Fed reaction function
-- [[Sectors/Product Tankers & Maritime Shipping]] — Shared Iran-crisis / stagflation regime exposure; parallel logistics-constrained market structure
-- [[Sectors/GPU & AI Compute Accelerators]] — Data-center buildout driving silver industrial demand via solar PV (indirect) and electronics (direct)
+- [[@Uranium & Nuclear Fuel]] — Parallel "monetary metal" narrative: sanction-resistant, scarcity-driven, geopolitical reserve asset
+- [[@LNG & Natural Gas Infrastructure]] — Energy-driven inflation transmission into gold via Fed reaction function
+- [[@Product Tankers & Maritime Shipping]] — Shared Iran-crisis / stagflation regime exposure; parallel logistics-constrained market structure
+- [[Compute & AI Compute Accelerators]] — Data-center buildout driving silver industrial demand via solar PV (indirect) and electronics (direct)
 - [[Sectors/Data Center Power & Cooling]] — Same AI/electrification stealth silver channel; silver in contacts, connectors, solders, thermals
 
 ## Log
@@ -315,3 +314,6 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 ### 2026-04-22
 - Reordered sections: Active Theses moved to first position per Sector Template / CLAUDE.md §Sector Notes (MOC navigation goes first).
 - Full sector fill: gold + silver-focused structure with Monetary Regime History, Silver Dual-Nature, Physical-vs-Paper Market Structure, Mining Industry tiering, Royalty/Streaming section, Investment Vehicles framework, GSR and valuation frameworks, Macro Shifts, Non-consensus Insights. Web-primary research spanning Central-bank buying (Poland 102 t, 1,237 t total 2025), gold $4,792/oz Apr 2026, silver supply deficit (-46 to -67 Moz 2026), Shanghai silver premium 13-29% over COMEX, China Jan 1 2026 export licensing ring-fencing 65% of refined silver, tokenized gold $6.12B (Feb 2026), major miner AISC (NEM $1,680, Barrick $1,760-1,950, AEM $1,475). Status: active (≥5 sections filled).
+
+### 2026-04-29
+- Manual edit: Added [[Theses/GLD - SPDR Gold Shares]] to Active Theses (primary physical-gold thesis; sector-native, listed above cross-sector BTC-CRYPTO entry).

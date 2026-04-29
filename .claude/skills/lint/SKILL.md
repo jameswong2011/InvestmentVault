@@ -102,7 +102,7 @@ Together, Steps A + B + C land in ~3 tool calls total and cover the read-heavy c
 
 3. **Broken wikilinks** — `[[links]]` pointing to non-existent notes.
    - Method: extract all `[[...]]`, verify each target file exists.
-   - **Intentional-unresolved allowlist**: `[[pinned]]` and `[[preserve]]` are user-authored callout opt-out markers — their unresolved rendering (lighter style in reading view) is the feature. Exclude from broken-link candidates BEFORE file-existence probe. Same allowlist consumed by `/graph` Step I.4 step 2 and Full Rebuild Step 2 step 2.
+   - **Intentional-unresolved allowlist**: `[[pinned]]` is a user-authored callout opt-out marker — its unresolved rendering (lighter style in reading view) is the feature. Exclude from broken-link candidates BEFORE file-existence probe. Same allowlist consumed by `/graph` Step I.4 step 2 and Full Rebuild Step 2 step 2. (Legacy `[[preserve]]` markers are also allowlisted during the deprecation transition window; check #48 surfaces them for migration.)
    - **Audit-trail exclusion**: skip `[[wikilinks]]` that appear inside `## Log` sections of theses, sectors, and macros. `## Log` is Tier 2 append-only (CLAUDE.md Tier 2) and routinely quotes stale wikilinks as part of historical narrative — `Wikilink cleanup: Replaced stale [[Sectors/Old Parent]] with [[Sectors/New Subsector]]`, `Sector re-scoped: ...`, `ROLLBACK to snapshot ...`, `Cross-thesis closure: [[_Archive/...]]`. Those bracketed historical names render as "broken" in Obsidian reading view but are immutable audit records, not defects. Apply the exclusion BEFORE the file-existence probe by computing each match's containing section (walk backward from the match line to the nearest preceding `^## ` heading); drop matches whose section heading equals `Log`. Real broken wikilinks in Bull Case, Risks, Related Research, Industry Context, etc. continue to surface.
 
 4. **Missing frontmatter** — Notes without required fields:
@@ -459,6 +459,14 @@ Per-check entries below specify only: (1) manifest filename glob, (2) frontmatte
       - **(c) Section absent on thesis, but thesis has `Callout sweep:` Log entries** (inverse mismatch — swept callouts lost to section deletion): Important — `⚠️ [FILE]: [N] "Callout sweep:" Log entries reference ## Legacy Callouts, but section is absent. Legacy Callouts section may have been deleted. Restore from pre-sweep snapshot via /rollback.`
       - **(d) Section positioned incorrectly** (not between ## Related Research and ## Log): Nice to Have — `🔖 [FILE]: ## Legacy Callouts not positioned between ## Related Research and ## Log. Expected canonical order per Templates/Thesis Template.md. Reorder manually if desired.`
     - **Skip** sector notes that don't have `## Related Research` or `## Log` sections at all (not all sector notes fully conform to template).
+
+56. **Deprecated `[[preserve]]` marker** — `[[preserve]]` was deprecated 2026-04-29 in favor of `[[pinned]]` (which now covers both fresh and addressed callouts).
+    - **Both scoped and vault-wide**.
+    - Method: grep for `\[\[preserve\]\]` across all theses, sector notes, and macros (skip `_Archive/`, `## Log` sections, and HTML comments inside `## Legacy Callouts`).
+    - **Severity**: Nice to Have per occurrence — `🔖 [FILE]:[LINE]: [[preserve]] marker is deprecated (2026-04-29). Replace with [[pinned]] in place — same sweep-exempt semantics, unified marker. Edit: change "[[preserve]]" → "[[pinned]]" on the callout header.`
+    - **Aggregate** (full mode): `Deprecated [[preserve]] markers: [N] occurrences across [M] files. Run sed migration: sed -i '' 's|\[\[preserve\]\]|[[pinned]]|g' [files] (skip _Archive/ and Log sections).`
+    - **Pass condition**: zero `[[preserve]]` markers in active vault.
+    - **Note**: descriptive references to `[[preserve]]` inside `## Log` entries are intentional historical record (append-only) — exclude from this check via the same Log-section walkback used by check #3.
 
 ## Graph-Primer Contract Health
 

@@ -68,6 +68,6 @@ iST observes three recurring barriers that consistently slow mass-production rea
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts and Related Research — photonics + CPO supply is strategic for Nvidia (Ayar Labs invest, $2B Lumentum, $2B Coherent) and Broadcom TH6-Davisson; laser bottleneck and DSP chip supply chain (Marvell 80%+ 800G share) influences rack-scale scaling economics for both merchant GPU incumbents.
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Macro shifts and Related Research — photonics + CPO supply is strategic for Nvidia (Ayar Labs invest, $2B Lumentum, $2B Coherent) and Broadcom TH6-Davisson; laser bottleneck and DSP chip supply chain (Marvell 80%+ 800G share) influences rack-scale scaling economics for both merchant GPU incumbents.
 - [[Sectors/Optical Networking & Photonics]] — Back-reference: cited in sector fill under Related Research and Investor heuristics — X-sourced photonics investment perspectives on IQE takeover speculation, Lumentum EML monopoly positioning, Chinese module vs Western component asymmetry.
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Investor heuristics (photonics picks-and-shovels framing — AEHR/FORM/TSEM/GFS asymmetric opportunity vs already-bid laser/transceiver names).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Insight #6 (photonics picks-and-shovels framing — AEHR/FORM/TSEM/GFS asymmetric opportunity vs already-bid laser/transceiver names).

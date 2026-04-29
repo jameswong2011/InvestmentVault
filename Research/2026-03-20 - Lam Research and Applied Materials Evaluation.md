@@ -95,4 +95,4 @@ Reo, this is a well-scoped request — I'll dive into a comprehensive research p
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis (LRCX/AMAT/TEL moats, end-market mix), Acquisitions and new entrants (Tier-1 supplier M&A context), and Investor heuristics (quality vs value framework, China exposure trade-offs).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Product-level vendor map (LRCX/AMAT/TEL moats, end-market mix), M&A history (Tier-1 supplier M&A context), and Insights #1-2 (quality vs value framework, China exposure trade-offs).

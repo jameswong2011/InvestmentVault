@@ -178,7 +178,7 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — HBM shortage dynamics; inference economics
 - [[Theses/SNDK - SanDisk]] — Flash Ventures JV partner; shared thesis dynamics
 - [[Sectors/NAND Memory & Storage]] — NAND sector note: competitive dynamics, YMTC disruption analysis, product-level technology comparison, HBF category outlook
-- [[Sectors/Semiconductor Capital Equipment]] — WFE sector note: TEL cryogenic etch HVM 2026 for 400L NAND (Samsung first customer); JEDEC HBM4 900µm relaxation delays hybrid-bonding to HBM5; equipment-adjacent secondary sector reference
+- [[Sectors/Semiconductor Capital Equipment]] — WFE sector hub: TEL cryogenic etch HVM 2026 for 400L NAND (Samsung first customer); JEDEC HBM4 900µm relaxation delays hybrid-bonding to HBM5; equipment-adjacent secondary sector reference
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War Hormuz blockade cuts 40% of Japan naphtha; PGME/PGMEA solvent shortage threatens Japanese PR/BARC supply to Yokkaichi/Kitakami fabs
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — NAND capacity growth constrained (low double digits, lower than DRAM); supply deficit durability through 2027+; die-supply positioning reinforced
 

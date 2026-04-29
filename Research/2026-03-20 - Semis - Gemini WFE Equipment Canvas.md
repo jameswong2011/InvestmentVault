@@ -228,4 +228,4 @@ Why is this here?
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis, Competitive dynamics, and Investor heuristics (5-company WFE evaluation — AMAT/LRCX/KLAC/ASMI/TEL relative positioning, portfolio allocation framework).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Product-level vendor map, Competitive structure, and Portfolio Allocation (5-company WFE evaluation — AMAT/LRCX/KLAC/ASMI/TEL relative positioning, portfolio allocation framework).

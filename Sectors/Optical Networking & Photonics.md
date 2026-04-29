@@ -34,6 +34,110 @@ status: active
 
 **Phase 6 — AI optical supercycle and CPO inflection (2023–2026):** NVIDIA's H100/H200/Blackwell/GB200 ramp drove optical interconnect demand exponentially — a single GB200 NVL72 rack uses 288 GPUs requiring thousands of optical interconnects per rack. **800G shipments grew from ~5M (2023) to 24.5M (2025) to forecast 63M (2026, 2.6x YoY).** **1.6T commercial launch began 2025, with 22M unit forecast for 2026 (and Goldman upward revision to 33.5M).** **Innolight** overtook Finisar/Cloud Light as #1 transceiver vendor 2024 at ~40% 800G share. **Chinese merchant suppliers** (Innolight, Eoptolink, Accelink, Hisense, Hilink, Source Photonics China) captured 7 of top 10 positions and 60% of NVIDIA GB200 volume. **Lumentum became sole 200G EML supplier at volume** with 8x capacity expansion from FY23 and still demand-constrained. **Broadcom Bailly CPO** shipped 50,000+ switches (first commercial CPO product). **NVIDIA announced Spectrum-X and Quantum-X CPO switches** with TSMC COUPE optical engines for 2026 deployment. **NVIDIA invested $2B each** in Lumentum and Coherent (March 2026) — explicit dual-supplier hedge on the InP EML bottleneck. **GlobalFoundries acquired AMF** (November 2025) for world's largest dedicated SiPh foundry. **Tower Semiconductor tripling SiPh capacity** by mid-2026 on $650M investment. **TSMC COUPE entered risk production with AMD** February 2026, targeting 6.4T per package H2 2026. **HyperLight/UMC/Wavetek announced TFLN Chiplet foundry partnership** March 12, 2026. **OCS market revised from $500M to $1.5B for 2026**, $2.5B by 2029. **IQE placed under UK Takeover Code offer period** September 2025, stock rallied >1,000% from 4.7p to ~52p.
 
+**Phase 7 — 2026-2030 outlook (forward roadmap):** 1.6T volume mainstream 2027 (consensus 22M units 2026 → 65M+ 2028); 3.2T pilots emerge 2028 with EML at 200G/lane ×16 or TFLN at 400G/lane ×8 lanes; 6.4T appears 2029-2030 in CPO-only deployments. TSMC COUPE 12.8T per package targeted by 2028. Lumentum Greensboro 6-inch InP fab production mid-2028 ($5B revenue capacity); Coherent's four 6-inch InP fabs fully online ~2027; Eindhoven Smart Photonics 6-inch online 2028 (€150M EU Chips Act). CPO penetration projected 5-10% of new deployments 2026, 25-35% by 2028, 50%+ by 2030. OCS market $2.5B by 2029 per Cignal AI. TFLN volume via UMC 8-inch foundry 2027-2028 enables 3.2T modulator alternatives. Chinese 200G EML localization milestones expected 2028-2030 (Yuanjie / Everbright / Henlitz roadmaps; Source Photonics China demo timelines slip 12-24 months from Western leader). Optical AI compute (Lightmatter Passage, Lightelligence) crosses commercial threshold ~2027 for hyperscaler trials. By 2030, optical interconnect TAM ~$90-100B, SiPh foundry $10B+, EML chips $3-4B, OCS $2.5-3B.
+
+## Technology primitives — modulators, modulation formats, wavelengths, reach
+
+The optical interconnect stack stratifies along four orthogonal technology axes; understanding which axis competition operates on disambiguates most architectural debates.
+
+**Modulator architectures (the active element converting electrical signals to optical):**
+
+| Architecture                                 | Material                       | Bandwidth ceiling                                  | Power efficiency             | Cost per Gbps     | 2026 commercial state                            |
+| -------------------------------------------- | ------------------------------ | -------------------------------------------------- | ---------------------------- | ----------------- | ------------------------------------------------ |
+| **DML** (Directly Modulated Laser)           | InP DFB                        | ~50G NRZ / 100G PAM4                               | High (no external modulator) | Lowest            | Volume at 100G; declining at 200G+               |
+| **EML** (Electro-absorption Modulated Laser) | InP DFB+EA butt-joint regrowth | ~200G PAM4 commercial; 400G demoed (LITE OFC 2026) | Moderate                     | Mid (single chip) | **Sole commercial 200G/lane volume modulator**   |
+| **MZM-SiPh** (Mach-Zehnder, silicon)         | Silicon waveguide + ext. InP CW laser | 100-200G PAM4; 400G coherent                       | Lower (drivers required)     | Low at scale      | CPO dominant: TSMC COUPE, Broadcom Bailly, NVIDIA Quantum-X / Spectrum-X |
+| **MZM-InP** (Mach-Zehnder, indium phosphide) | InP MZM (monolithic with laser) | 200G PAM4; 400G coherent                                  | Moderate                     | Mid-high          | Coherent telecom: NEL/NTT, Fujitsu Optical, Ciena WaveLogic 6 |
+| **TFLN** (Thin-Film LiNbO3 — MZM topology)   | Thin-film LiNbO3 on Si + ext. laser | 145 GHz demoed; 400G/lane                            | Highest at high BW           | Higher initially  | 2026 foundry launch (HyperLight/UMC/Wavetek); pre-volume |
+| **EOP** (Electro-Optic Polymer)              | Organic polymer + ext. laser   | 100GHz+                                                  | Moderate                     | Unknown at scale  | R&D (Lightwave Logic LWLG)                       |
+| **MRM / Ring resonator**                     | Silicon resonant + ext. laser  | Wavelength-selective; ≤100G/lane                          | Highest (resonant)           | Low               | Niche CPO + DWDM intra-DC (Ayar Labs TeraPHY)    |
+
+> [!error] 2026-04-28 → Addressed 2026-04-28
+> **Prompt:** *What is the material used for **MZM** (Mach-Zehnder) lasers, silicon photonics is not the right answer. Is this the standard (and only) architecture for CPO?*
+>
+> **Response:** MZM is a topology (Mach-Zehnder interferometer), not a material — silicon photonics is the CPO-dominant implementation but MZMs are also built in InP (NEL/Fujitsu/Ciena coherent line cards), thin-film LiNbO3 (the TFLN row), and bulk LiNbO3 (legacy coherent). MZM-SiPh leads CPO today (TSMC COUPE, Broadcom Bailly, NVIDIA Quantum-X) but is not the only viable architecture — ring resonators (Ayar Labs TeraPHY) compete on density and TFLN-MZM (HyperLight 2028+) on bandwidth. Table updated to split MZM by material; full breakdown in §Technology primitives → Modulator topology vs material clarification immediately below.
+
+> [!todo] 2026-04-28 → Addressed 2026-04-28
+> **Prompt:** *Can you map this table to actual listed companies and the products that they're selling. I want to understand who are the players at each technology stack.*
+>
+> **Response:** Mapping table added immediately below — each modulator architecture mapped to listed-ticker exposure with specific products and stack position. Key clusters: LITE/COHR at DML+EML; MRVL/AVGO/CSCO/INTC/GFS/TSEM at MZM-SiPh; NTT/Fujitsu/CIEN at MZM-InP; QUBT/LWLG at TFLN/EOP frontier; Ayar Labs (private) holds the ring-resonator path. See §Technology primitives → Modulator architecture → listed-company exposure mapping.
+
+**MZM topology vs material clarification.** MZM (Mach-Zehnder) is a *modulator topology*, not a material — light splits into two arms, one arm receives an electrically-induced phase shift via the host material's electro-optic effect, and the recombined output produces intensity/phase modulation by interference. The MZM is the modulator; in most implementations it requires a *separate* CW laser source (only InP-MZM is monolithic with its own laser). Implementations differ by material with distinct physics tradeoffs:
+
+- **Silicon-photonic MZM (CPO-dominant):** silicon waveguide + thermal or p-n junction phase shifter; requires external InP CW laser (silicon's indirect bandgap cannot lase). Power-efficient at 300mm-wafer scale and CMOS-compatible. TSMC COUPE, Broadcom Bailly, NVIDIA Quantum-X / Spectrum-X all use SiPh-MZM.
+- **InP-MZM (coherent telecom standard):** monolithic InP wafer integrating laser + MZM modulator on the same die. InP's electro-optic coefficient is ~3x silicon's, enabling shorter arms and lower insertion loss — but InP wafers are 3-4-inch (vs silicon's 300mm) and ~10x more expensive per area. NEL (NTT subsidiary), Fujitsu Optical Components, and Ciena WaveLogic 6 use this for 400G/600G/800G coherent line cards.
+- **TFLN MZM (next-gen, 3.2T+):** thin-film lithium niobate bonded on silicon. LiNbO3's electro-optic coefficient is ~30x silicon's — the highest of any practical material — enabling 145 GHz demonstrated bandwidth at short arm lengths. HyperLight/UMC/Wavetek announced 6/8-inch foundry partnership March 2026; commercial volume targeted 2027-2028. The TFLN row above represents this path.
+- **Bulk LiNbO3 MZM (legacy coherent):** discrete waveguide-on-LiNbO3 chip, the ≥1990s long-haul coherent standard. Bulky form factor (~50mm chip length) ages out as TFLN scales; Sumitomo Electric, Fujitsu, and Exail are residual incumbents.
+
+**Is MZM-SiPh the only CPO architecture?** No — three viable CPO modulator paths in 2026:
+
+1. **MZM-SiPh (dominant, ~95% of 2026 CPO volume):** TSMC COUPE 6.4T-class engines (AMD risk prod Feb 2026); Broadcom Bailly (50K+ switches shipped, first commercial CPO product); NVIDIA Quantum-X / Spectrum-X with TSMC COUPE engines; Marvell-Celestial AI Photonic Fabric. Industry default for 2026-2028.
+2. **Ring resonator (MRM, niche but growing):** Ayar Labs TeraPHY chiplet (Intel co-package partnership, NVIDIA + GlobalFoundries co-investors); IBM Research demos. ~10x denser per Tb/s than MZM (resonator footprint << arm length) but temperature-sensitive — requires precise thermal stabilization to lock the resonant wavelength to the laser carrier. Better suited to dense WDM where density matters more than thermal margin.
+3. **TFLN MZM (future, 3.2T+ deployments):** HyperLight foundry roadmap targets CPO integration where SiPh-MZM hits voltage-length-product limits at 6.4T+. The 30x-stronger EO coefficient becomes essential when the modulator (not the laser) becomes the bandwidth bottleneck. Pre-volume in 2026; expected hyperscaler trials 2028-2029.
+
+**Modulator architecture → listed-company exposure mapping.** Each architecture maps to specific listed-ticker exposure for portfolio construction:
+
+| Architecture | Listed Companies (tickers) | Specific Products / Programs | Stack Position |
+|---|---|---|---|
+| **DML (100G)** | Lumentum (LITE), Coherent (COHR), Broadcom (AVGO), Mitsubishi Electric (TYO:6503), Sumitomo Electric (TYO:5802), Innolight (300308.SZ) | LITE 100G CWDM4/LR4 DFB chips; COHR 100G DFB; AVGO Breinigsville-fab DFBs; merchant 100G DFBs (Mitsubishi/Sumitomo) | Component (laser chip) |
+| **EML (200G PAM4)** | Lumentum (LITE — sole 200G volume, 50-60% share), Coherent (COHR — qualifying), Broadcom (AVGO — captive), Mitsubishi Electric (TYO:6503), Sumitomo Electric (TYO:5802) | LITE 200G EML; COHR Greensboro 6-inch InP 200G (qualifying); AVGO captive EML for Tomahawk linkages; Mitsubishi 200G mass prod April 2024; Sumitomo qualifying | Component (laser chip) |
+| **MZM-SiPh (CPO + pluggable + coherent)** | Cisco/Acacia (CSCO), Marvell (MRVL), Broadcom (AVGO), Intel Foundry (INTC), GlobalFoundries (GFS via AMF), Tower Semi (TSEM), TSMC (TSM) | TSMC COUPE 6.4T optical engine (AMD risk prod); AVGO Bailly CPO (50K+ shipped); CSCO/Acacia coherent ZR/ZR+; MRVL COLORZ + Celestial Photonic Fabric; GFS-AMF SiPh foundry; TSEM ARM/PCIe SiPh PIC | Foundry / module / system |
+| **MZM-InP (coherent telecom)** | NTT (TYO:9432, NEL subsidiary), Fujitsu (TYO:6702, Fujitsu Optical Components), Ciena (CIEN), Lumentum (LITE) legacy, Coherent (COHR) | NEL InP MZM modulators for 400G/600G/800G coherent; Fujitsu InP MZMs for telecom equipment; Ciena WaveLogic 6 with InP MZM; LITE/COHR legacy InP MZMs | Component / line card |
+| **TFLN (thin-film LiNbO3)** | Quantum Computing Inc (QUBT), United Microelectronics (UMC) for foundry, HyperLight (private — Series A 2024), Wavetek (private) | QUBT TFLN process / NJ fab; HyperLight-UMC-Wavetek foundry March 2026 (6/8-inch wafers); HyperLight 400G-per-lane PIC | Foundry / IP / PIC |
+| **EOP (electro-optic polymer)** | Lightwave Logic (LWLG) | LWLG polymer modulator IP; MPW samples; pre-revenue at <$300M mkt cap | IP / R&D |
+| **MRM / Ring resonator** | Ayar Labs (private — VC-backed by Intel Capital, NVIDIA, GlobalFoundries; reported $2.5B valuation 2024), IBM (IBM, research only) | Ayar Labs TeraPHY optical I/O chiplet (Intel co-package partnership); IBM CPO research demos | Component / chiplet |
+| **Bulk LiNbO3 (legacy coherent)** | Sumitomo Electric (TYO:5802), Fujitsu (TYO:6702), Exail (private — Eutelsat-spun-out post-2022 merger) | Legacy 100G/400G coherent modulators (declining); displaced by TFLN over 2027-2030 | Component (legacy) |
+
+Reading this mapping for portfolio expression: **DML/EML capture the laser-chip layer that every external-laser MZM/MRM/TFLN module requires** (per the SiPh paradox — silicon cannot lase) — making LITE/COHR "arms-dealer" exposure to the entire MZM-SiPh CPO buildout regardless of which module/ASIC vendor wins downstream. **MZM-SiPh listed exposure is broad** (CSCO/MRVL/AVGO/INTC/GFS/TSEM) but each is diversified — no pure-play public ticker captures the SiPh-MZM stratum the way LITE captures EML. **TFLN and EOP are pre-revenue venture-stage bets** with limited public expression (QUBT, LWLG); the Ayar Labs ring-resonator path remains private. **MZM-InP is a legacy + coherent-telecom layer** captured most directly through CIEN (US-listed) and JP-listed NTT/Fujitsu — counter-cyclical exposure to the telecom optical re-investment thesis (heuristic #11).
+
+Physics gates: DML hits chirp ceiling at >100G; EML faces butt-joint regrowth yield wall at >200G/lane (failure rate ∝ bandwidth^4); MZM-SiPh faces voltage-length product limits at 6.4T+ requiring complex drivers (silicon's small electro-optic coefficient forces long arms); TFLN's 30x-stronger EO coefficient unblocks this electrically but manufacturing maturity lags 3-5 years behind SiPh. The 200G EML chokepoint reflects this physics ladder — every commercial modulator architecture strains its respective limit at 200G/lane simultaneously, which is why the Lumentum monopoly is structurally durable through the 1.6T cycle.
+
+**Modulation formats by speed generation:**
+
+| Format | Bits/symbol | Used at | Driver complexity |
+|---|---|---|---|
+| NRZ (Non-Return-to-Zero) | 1 | ≤100G/lane | Simplest |
+| PAM4 (4-level pulse amplitude) | 2 | 200G/400G/800G/1.6T per lane | Moderate (DSP heavy) |
+| PAM6 / PAM8 | 2.58 / 3 | 3.2T+ (development) | Higher SNR demand |
+| DP-QPSK / DP-16QAM / DP-64QAM | 4 / 8 / 12 | Coherent telecom + ZR/ZR+ pluggables | Highest (coherent DSP) |
+| OOK (on-off keying) | 1 | LPO short reach | Simplest (no DSP) |
+
+**Wavelength assignments (datacenter optics):**
+
+| Band | Wavelength | Use | Trajectory |
+|---|---|---|---|
+| 850nm multi-mode | 850nm | AOC + SR <100m (VCSEL) | Phasing out at 1.6T |
+| O-band | 1310nm region | DR/FR ≤2km (zero-dispersion in SMF) | Dominant for AI clusters |
+| C-band | 1550nm region | LR/ER/ZR ≥10km (fiber loss minimum) | DCI + telecom |
+| CWDM4 | 1271/1291/1311/1331 | Legacy QSFP+ multiplex | Sunsetting |
+| LAN-WDM (LR8) | 1295-1310 dense grid | 800G/1.6T DR8/FR8 | 1.6T dominant scheme |
+
+**Reach categories** (defines transceiver SKU proliferation and laser power requirements):
+
+| Category | Reach | Typical use | Power draw 800G |
+|---|---|---|---|
+| AOC (active optical cable) | <3m | Chip-to-chip intra-rack (often LPO/DML) | ~12W |
+| SR (short reach) | <100m | Rack-to-rack intra-row | ~15W |
+| DR (data center reach) | ≤500m | Within data hall | ~17W |
+| FR (far reach) | ≤2km | Cross-campus | ~20W |
+| LR (long reach) | ≤10km | Metro DCI | ~22W |
+| ER / ZR / ZR+ | ≤40/120/400km | Long-haul DCI; coherent | ~25-30W |
+
+Form factor evolution: SFP+ (10G) → QSFP+ (40G) → QSFP28 (100G) → QSFP-DD/OSFP (400G/800G) → OSFP-XD (1.6T) → NPO/CPO integrated (3.2T+). Each form factor halves power per Gbps roughly every 2 generations; pluggable thermal headroom exhausts at OSFP-XD ~30W per 1.6T port, forcing CPO migration at 3.2T+ deployment density.
+
+**Speed-generation timeline and ASP curve:**
+
+| Speed | First commercial | Volume year | Peak ASP | Mature ASP | Notes |
+|---|---|---|---|---|---|
+| 100G | 2014 | 2018 | ~$800 | $80-150 | CWDM4 / LR4 stable platform |
+| 400G | 2018 | 2022 | ~$2,000 | $400-600 | DR4/FR4; 4×100G PAM4 |
+| 800G | 2022 | 2024 | ~$1,500-2,000 | $600-800 (2025) | 8×100G or 4×200G PAM4 |
+| 1.6T | 2025 | 2026-2027 | ~$3,000-4,000 | est. $1,200-1,500 (2028) | 8×200G PAM4 (EML-gated) |
+| 3.2T | 2028E | 2029-2030E | est. $5,000+ | TBD | EML 200G×16 or TFLN 400G×8 |
+| 6.4T | 2029-2030E | 2031+E | TBD | TBD | CPO-only; pluggable infeasible |
+
+ASP compression cycle ~30-40% per generation as Chinese module scale catches up; component-level (EML, DSP) ASP rises 1.5-2x per generation due to physics-gated supply.
+
 ## Competitive dynamics
 
 The optical networking & photonics value chain splits into six strata with distinct competitive structures, each with its own pricing power trajectory:
@@ -65,6 +169,20 @@ The optical networking & photonics value chain splits into six strata with disti
 - *Marvell vs. Broadcom at DSP.* Marvell gained 800G DSP share via earlier 5nm ramp; Broadcom's Tomahawk 6 co-designed with Bailly CPO creates a vertically integrated alternative. LPO (linear pluggable optics) threatens both by eliminating DSP for short-reach — Broadcom already achieves 35% power saving with LPO. If >33% of 800G goes LPO by 2026-2027, DSP TAM compresses before CPO replaces it.
 - *TSMC COUPE vs. GlobalFoundries/AMF vs. Tower.* SiPh foundry war is the CPO manufacturing battleground. TSMC COUPE has NVDA, AMD, Broadcom early design wins but capacity-constrained. GF/AMF acquisition (Nov 2025) gives full SiPh stack ownership. Tower's $650M capacity tripling pursues the "best-of-breed specialty foundry" niche. The winner captures the CPO advanced packaging revenue pool ($95M 2025 → $1.05B 2034).
 - *US vs. China supply chain bifurcation.* 75% of module fabrication in China, 70% of indium from Chinese zinc smelters, 98% gallium from China. China InP export controls imposed Feb 2025. US side: 145% tariffs on Chinese-origin transceivers (circumvented via Thailand/Vietnam final assembly). NVIDIA's Greensboro, NC InP fab funding (Lumentum) + dual-supplier $2B investments are explicit supply-chain resilience bets. Reciprocal vulnerability: Chinese modules can't run without Western EMLs and DSPs; Western systems can't scale without Chinese indium and module capacity.
+
+**Hyperscaler deployment matrix (April 2026):**
+
+| Hyperscaler | 2026 capex | 800G state | 1.6T state | CPO posture | Optical strategy |
+|---|---|---|---|---|---|
+| **Microsoft Azure** | ~$95-100B | Volume — primary AAOI customer (44% of AAOI 2024); Innolight + Cloud Light dual-source | Ramping H2 2026 — $200M AAOI 1.6T order; Cloud Light qualified | Evaluating Bailly + Quantum-X | Ethernet-heavy; NVDA + AMD ASIC dual-track; Maia internal silicon |
+| **AWS** | ~$110-120B | Trainium/Inferentia internal + NVDA H100/B200 mixed; Innolight + Eoptolink primary | Q3 2026 commercial deployment | Evaluating internal CPO via Annapurna | Ethernet (EFA); aggressive cost optimization → Chinese module preference |
+| **Meta** | ~$65-70B | Volume — Innolight ~50%; LPO leadership (35% power saving) | Pilot H2 2026; volume 2027 | Evaluating Bailly | LPO emphasis; MTIA internal silicon; Llama training scale |
+| **Google** | ~$75-85B | Apollo OCS internal (years deployed); 800G external pluggables ramping | TPU Ironwood + 1.6T external 2026 | Internal CPO via TPU integration; OCS+CPO hybrid | OCS-first architecture; Marvell-Lumentum R300 partner; Broadcom co-designed Ironwood |
+| **Oracle Cloud** | ~$30-35B | RDMA-heavy; NVDA H100/B200; Innolight primary | H2 2026 alongside GB300 | Following NVIDIA reference design | Stargate JV ($500B partnership with OpenAI announced Jan 2025) |
+| **CoreWeave / Crusoe / Nebius** | ~$15-20B combined | NVDA reference architecture; Cloud Light + Innolight dual-source | 2026-2027 GB300 platform | NVIDIA-led CPO adoption | Pure-NVDA stack; no internal silicon |
+| **Tencent / Alibaba / Baidu / ByteDance** | ~$50B combined | Chinese domestic merchant modules (Innolight, Eoptolink, Accelink) | 2026 ramp domestic + Western EML | Domestic CPO efforts (HiSilicon, Suzhou Lasertec) | Chinese-localization mandate; Western EML dependency at top speed |
+
+Hyperscaler optical procurement converges on three patterns: (a) **dual-source merchant modules** to avoid single-vendor concentration (Innolight + Cloud Light + Eoptolink mix); (b) **vertical integration trials** (Google Apollo OCS, Meta MTIA, AWS Annapurna CPO, Microsoft Maia ASIC); (c) **NVIDIA reference architecture adoption** by emerging AI clouds (CoreWeave / Crusoe / Nebius / Lambda) without internal silicon teams. Implications: Cloud Light's bleeding-edge volume capture depends on Microsoft + Meta adoption (both willing to dual-source); Innolight's flat 50%+ share depends on hyperscaler tolerance for Chinese vendors at top speed (constrained by tariff + InP export risk).
 
 ## Product level analysis
 
@@ -184,6 +302,34 @@ OCS market revised $500M → ~$1.5B for 2026; $2.5B by 2029 (Cignal AI).
 
 TFLN market projected at 44.4% CAGR through 2032 — early stage but threatens EML at 3.2T/6.4T.
 
+### Optical test equipment — wafer-level capacity bottleneck
+
+Photonic chips test fundamentally differently from electrical ICs: each device requires a wavelength sweep across 10-50 wavelengths, sub-micron grating-coupler alignment, simultaneous photonic + electrical measurement, and laser burn-in days per wafer for reliability qualification. Result: photonic test runs 5-10x slower per device than electrical probing. Hyperscaler-grade SiPh + CPO ramps explicitly bottleneck on test capacity, not wafer fab — TSMC, GlobalFoundries, and Tower have flagged photonic test as the throttle on COUPE and AMF expansion. Aehr Test management commentary (Q4 2025) corroborates: photonic burn-in customer adds 4x volume YoY but shipping is gated by FOX-XP delivery slots through 2027.
+
+| Vendor | Listed (mkt cap) | Photonic product line | 2026 photonic position |
+|---|---|---|---|
+| **Aehr Test Systems (AEHR)** | Yes (~$0.7-0.9B; thin sell-side) | FOX-XP wafer-level burn-in for laser/PIC reliability qualification | Sole volume photonic burn-in solution; ~$50-80M FY26E photonic revenue (40-60% of total); customer concentration on TSMC + GF + Tower; FOX-XP order book extends through 2027 |
+| **FormFactor (FORM)** | Yes (~$3-4B) | Cascade optical probe cards + photonic engineering probe systems | Photonic ~10-15% of probe-card revenue, growing 30-40% YoY; SiPh wafer-level alignment + photonic DC/RF concurrent probing |
+| **Teradyne (TER)** | Yes (~$15-20B) | UltraFlex / J750 platforms with photonic instrument modules; Optical Test Cell (OTC) integrated handler | Photonic test ~$80-120M FY26E; gaining share at hyperscaler IDMs (NVDA, AMD captive lines); production-scale handler integration play |
+| **MKS Instruments (MKSI)** | Yes (~$8-10B) | Newport-Spectra-Physics tunable lasers + Photon Control optical metrology + vacuum systems for InP MOCVD/MBE | Optical/photonic ~5-10% of revenue (high-margin, accelerating); upstream tool play for III-V epitaxy capacity adds (IQE, COHR, Win Semi, VPEC) |
+| **Keysight Technologies (KEYS)** | Yes (~$25-30B) | N4391A optical modulation analyzer; M8000 BERT family; lightwave component analyzers; high-speed sampling oscilloscopes | Photonic ~10% of test sector revenue; design-side test for every coherent ZR/ZR+ + 800G/1.6T PHY validation; recurring service revenue |
+| **Anritsu (TYO:6754)** | Yes | MP2110A BERT, MS9740B OSA, signal/spectrum analyzers | Asia-strong test footprint; 800G/1.6T BERT for component qualification; smaller than KEYS, cost-competitive |
+| **Viavi Solutions (VIAV)** | Yes (~$1.5-2B) | OSA, OTDR, network test for transceiver manufacturing + field test | Spun from JDSU 2015; 30%+ datacom exposure; transceiver production-line test complement to design-side KEYS |
+| **EXFO (private since 2022)** | No (taken private by Germain Lamonde) | Optical test for telecom + datacenter field deployment | Private — benchmark for telecom-side test market structure but not a public-market expression |
+| **Captive (LITE, COHR in-house)** | LITE, COHR | Internal proprietary photonic production test cells | Vertically integrated; adds to merchant test demand only via expansion (not 3rd-party purchases) |
+
+**Investment dynamics at the test stratum:**
+
+1. **Aehr Test (AEHR) is the most concentrated pure-play photonic test bet.** Wafer-level burn-in is the most constrained step in the photonic test sequence (days per wafer vs minutes for electrical probing). Each FOX-XP system supports ~$200-500M of laser-chip qualification volume over its lifetime, and current order book extends through 2027. Revenue ramp scenario: 30%+ photonic burn-in penetration of CPO line by 2028 implies $200-300M revenue (vs ~$50-80M FY26E photonic) — 4-5x revenue scenario at sub-$1B current cap. Risk: AEHR's customer concentration mirrors TSMC COUPE concentration risk — if CPO yields disappoint or schedules slip, AEHR's photonic ramp slips proportionally. Limited sell-side coverage (<6 active analysts) keeps the thesis structurally non-consensus.
+
+2. **FormFactor (FORM) and Teradyne (TER) are diversified photonic test exposure.** Both have advanced-node electrical test as the dominant business line, with photonic test as an attached growth vector (~10-15% of probe-card / handler revenue). FORM's optical probe-card business attaches to GF-AMF and TSMC COUPE wafer flow; TER's OTC handlers integrate at hyperscaler IDMs. Beta exposure to photonic supercycle without binary ramp risk — but lower upside per dollar invested vs AEHR.
+
+3. **Keysight (KEYS) and Anritsu are design-side test equipment.** Every PHY design house and validation lab needs high-speed BERT, optical signal analyzer, and component analyzer for 800G/1.6T validation. Lower revenue concentration to photonics (KEYS ~10% of sector revenue) but high margin and recurring service revenue. KEYS particularly benefits from coherent ZR/ZR+ design proliferation across telecom equipment vendors (heuristic #11 — telecom optical re-investment cycle).
+
+4. **MKS Instruments (MKSI) is the upstream tool play** — InP epitaxy and metrology demand scales with III-V wafer fab capex, indirectly tracking IQE / Coherent / Win Semi / VPEC capacity adds. Lower beta than AEHR but linked to total III-V fab investment cycle. Also exposed to lithography metrology for SiPh and standard semiconductor process control.
+
+5. **The test-bottleneck thesis is structurally non-consensus.** Sell-side coverage for AEHR is thin; the photonic test category is not standardly broken out in industry forecasts (LightCounting and Yole estimate photonic device TAM at $90B+ by 2030 but do not separately size test infrastructure); and most institutional photonic exposure flows to LITE / COHR / FN without recognizing the upstream test capacity bottleneck. AEHR's <$1B market cap with $200-300M revenue trajectory through 2028 (assuming 30% photonic burn-in penetration) creates asymmetric exposure to the same physics-gated supercycle as LITE — a "second-derivative" photonics trade with much lower entry valuation.
+
 ## Acquisitions and new entrants
 
 **NVIDIA's dual $2B photonics investment (March 2026)** is the defining capital event of the cycle — explicit supply-chain resilience bet on the InP laser chokepoint. $2B convertible preferred to Lumentum (tied to Greensboro 6-inch fab development) + $2B to Coherent. Structured as capacity lock-out + multi-year purchase commitments. Mirrors NVIDIA's earlier SK Hynix / Samsung / Micron HBM allocation playbook. For context: NVIDIA's own market cap ~$3.5T could comfortably fund outright acquisition of either, but dual-investment preserves merchant supply-chain optionality while de-risking.
@@ -229,6 +375,21 @@ TFLN market projected at 44.4% CAGR through 2032 — early stage but threatens E
 **4. Linear pluggable optics (LPO) as transitional architecture.** LPO eliminates the DSP, cutting power 30-50% and latency to <15 ns. Broadcom reports ~35% power savings with its LPO implementation. >33% of intra-datacenter 800G deployments forecast to adopt LPO or LPO/DSP hybrid by 2026-2027. Already shipping in NVIDIA Spectrum-X and Meta AI networks. Implication: DSP revenue (Marvell + Broadcom) faces compression before CPO matures; LPO benefits linear driver specialists (MACOM) and component-side players (Lumentum 200G EMLs work in both DSP and LPO modules).
 
 **5. Geopolitical supply-chain bifurcation accelerates.** Mutual weaponization: (a) US 145%+ tariffs on Chinese-origin transceivers (circumvented via Thailand/Vietnam final assembly); (b) Chinese export controls on gallium (Aug 2023, 98% primary Ga), indium (Feb 2025, 59% primary In), and InP (Feb 2025). Reciprocal dependency: Chinese modules depend on Western EMLs (100% at 200G) and DSPs (100% at 800G+). NVIDIA Greensboro fab mandate for Lumentum, Coherent's US/EU fab footprint, GlobalFoundries "China-free" marketing, Moolenaar/Krishnamoorthi Congressional letter all point to deliberate supply-chain resilience bets. Western InP capacity expansion: Lumentum Greensboro $5B revenue capacity (mid-2028); Coherent 6-inch InP doubling (~80% complete); Eindhoven 6-inch InP (EU Chips Act, €150M, 2028); IntelliEPI CHIPS-funded MBE expansion.
+
+**Materials concentration detail** (the deeper supply chain layer below epitaxy):
+
+| Material | Use | China share of primary supply | Key non-China sources | Spot-price trajectory 2024-2026 |
+|---|---|---|---|---|
+| **Indium (In)** | InP substrate (1g/InP wafer); ITO displays | ~59% primary; Chinese zinc smelter byproduct | Korea (~13%), Japan (~12%), Canada (Teck), Peru | $400 → $700/kg (+75%); Feb 2025 export controls compounded scarcity |
+| **Gallium (Ga)** | GaAs/GaN substrate; LEDs | 98% primary | Russia, Germany (Recovery), Hungary | $300 → $1,200/kg (+300%); Aug 2023 controls drove 4x spike |
+| **Germanium (Ge)** | Optical fiber dopant; IR optics; III-V epitaxy | ~60% primary | Russia, US (Teck Trail), Belgium | $1,500 → $4,000/kg (+167%) |
+| **Phosphorus (P, high-purity 6N+)** | InP precursor | ~70% China | Morocco, US, Russia (lower purity) | Stable but specialty grades constrained |
+| **Lithium niobate (LiNbO3 wafers)** | TFLN modulators | ~50% China + Russia | Crystal Technology (US), Yamaju Ceramics (Japan) | Shortage emerging as TFLN scales |
+| **Rare earths (Yb, Er, Nd doping)** | EDFA fiber amplifiers; doped fiber | ~70-90% China primary | Lynas (Australia), MP Materials (US), Vital Metals | Erbium $80 → $150/kg in 2024-25 |
+
+**InP wafer pricing dynamics:** 4-inch InP wafer ~$1,500-2,000; 6-inch ~$3,000-4,000 (cost scales with crystal-pulling complexity, not area). 6-inch yields 4x devices per wafer at ~50% cost reduction per device — explains why Coherent's 6-inch lead is structurally meaningful. IQE, Win Semiconductors, and LandMark Optoelectronics are the only scaled non-Chinese pure-play epi houses. China's Suzhou Lasertec and Shenzhen Han's Photonics are 2-3 years behind 6-inch InP.
+
+**Indium criticality math:** Each 1.6T module uses ~1 gram InP across 8 EMLs + ~0.5g for CW lasers + InP photodetectors. 22M 1.6T units (2026) ≈ 33 metric tons InP demand. Global primary indium production ~900 tons/year — datacom optics already consumes 3-4% and rising 30% YoY. Spot indium prices doubled 2024-2025 reflecting this sectoral shift.
 
 **6. S&P 500 inclusion / passive flow structural tailwind.** Lumentum joined S&P 500 in 2026 — with $7T+ benchmarked to the index, passive buying creates a structural valuation floor through price-insensitive institutional buying. Coherent is S&P 500 constituent. Fabrinet moved from IWM to S&P 400; AAOI remains small-cap. The S&P 500 inclusion mechanic creates a 2-3 day demand shock equivalent to ~1-2% of outstanding shares at inclusion and persistent rebalancing demand.
 
@@ -280,11 +441,86 @@ TFLN market projected at 44.4% CAGR through 2032 — early stage but threatens E
 
 8. **TFLN is a 3-5 year threat to EML at 3.2T+ that resets the competitive clock.** HyperLight + UMC + Wavetek March 2026 announcement = TFLN Chiplet foundry on 6-inch and 8-inch wafers. HyperLight 400G-per-lane demo on TFLN + 145 GHz bandwidth vs EML 200G-per-lane commercial = bandwidth leadership. Lightwave Logic's 100GHz+ electro-optic polymer modulators are a second-horizon alternative. If TFLN scales to volume at 3.2T/6.4T transition (2028-2030), Lumentum's EML monopoly resets and Coherent's 6-inch InP lead becomes less relevant. This is the longest-duration structural risk to the current laser chip pricing power — not priced in LITE's forward multiple.
 
+9. **Coherent's Anderson turnaround uses a Lattice-Semi playbook that the market discounts.** Jim Anderson grew Lattice from $5B to ~$20B market cap (~4x) over six years (2018-2024) by exiting non-core lines, refocusing R&D, and lifting gross margin from ~57% to ~70%. At Coherent he has parallel levers: (a) Rofin/Bystronic divestiture 2025; (b) SiC overcapacity wind-down (consensus headwind already in numbers); (c) 6-inch InP scale economics (~50% device cost reduction); (d) Datacom mix shift from 50% → 70%+ of revenue. Coherent's ~30% GM has 600-800 bps expansion runway by FY28 on the same Lattice trajectory. Consensus models 50-100 bps/year — Anderson's track record points to 200-300 bps/year. The valuation gap to LITE (~8x vs ~20x EV/Rev) embeds none of this. Research: [[Research/2026-04-15 - LITE COHR - Lumentum vs Coherent Analysis]]
+
+10. **The optical-test-equipment "picks and shovels" trade is the underappreciated scarcity bottleneck.** Every photonic chip requires full wavelength sweep + alignment testing — 5-10x slower than electrical probing. Current test capacity is the binding constraint on SiPh + CPO ramp — TSMC, GF, and Tower all flag test as the throttle, not wafer fab. Aehr Test FOX-XP wafer-level burn-in is sole volume solution; FormFactor optical probes; Teradyne IST optical handlers; MKS Instruments optical metrology. AEHR alone could see 5-10x revenue if SiPh test penetrates 30%+ of CPO line. Yet AEHR trades at <$1B market cap with limited sell-side coverage. Consensus treats test as commodity — physics says test capacity bottlenecks the entire $90B optical TAM through 2028.
+
+> [!todo] 2026-04-28 → Addressed 2026-04-28
+> **Prompt:** *Provide more detailed analysis on the test equipment vendors and dynamics at play here*
+>
+> **Response:** Detailed analysis added as new subsection §Product level analysis → Optical test equipment — wafer-level capacity bottleneck. 9-vendor breakdown (AEHR, FORM, TER, MKSI, KEYS, Anritsu, VIAV, EXFO, captive LITE/COHR) with mkt cap, photonic product line, and 2026 position; plus 5 investment-dynamic conclusions on test as the binding capacity constraint. AEHR is the highest-asymmetry expression — sub-$1B mkt cap with 4-5x revenue scenario at 30% CPO photonic-burn-in penetration; structurally non-consensus given thin sell-side coverage and that photonic test is not separately sized in standard industry forecasts.
+
+11. **Telecom optical re-investment cycle is an unmodeled second wave.** Hyperscaler optics dominates 2024-2027 narrative, but tier-1 telcos (AT&T, Verizon, Deutsche Telekom, NTT, BT) cut optical capex 60%+ from 2018-2023. AI inference deployment requires regional edge data centers + DCI buildout — 400G/800G ZR/ZR+ pluggables are the deployment mechanism. Cisco/Acacia, Ciena, Nokia, Adtran position for this cycle. ZR/ZR+ pluggable shipment forecast 2.4M (2025) → 8.5M (2028). LITE's nano-ITLA tunable lasers, COHR's coherent transceivers, and Marvell's coherent DSP all benefit. Telecom optical re-investment = 2027-2030 secular tailwind not in current 2026 multiples.
+
+12. **The "memory wall" is becoming the "interconnect wall" — and optical is the only solution.** HBM4/HBM5 add 2-4x bandwidth per stack but GPU-to-GPU and rack-to-rack bandwidth scales worse than memory bandwidth. NVLink 5 (1.8 TB/s/GPU bidirectional) and NVLink 6 require optical at >10m reach. CXL 3.0 fabric expansion across racks demands optical interconnect. The next bottleneck after memory is the network, and optical interconnect is the only physics-feasible path. This shifts the "AI bottleneck" trade from HBM (Hynix/Micron/Samsung) to optical interconnect (LITE/COHR/MRVL/AVGO/FN). Multi-year mind-share rotation from memory to optics could expand sector multiples by 30-50% as institutional capital re-categorizes the AI bottleneck thesis.
+
 **Non-consensus framing for portfolio construction:** Optical networking & photonics is a **stratified value chain where different layers have fundamentally different moat durability**. The disciplined portfolio expression:
 - **Structural longs**: Lumentum (component-level monopoly; SiPh paradox + OCS + Cloud Light triple expansion; NVIDIA alignment); Fabrinet (optical EMS near-monopoly at volume); IQE (M&A special situation with Western III-V scarcity premium).
 - **Avoid middle-layer consolidators without clear moats**: module-only plays (AAOI hyperscaler concentration; Innolight Western-component exposure); DSP-only plays (LPO compression risk).
 - **Monitor for inflection**: TFLN volume ramp (HyperLight/UMC/Wavetek); CPO yield improvement (TSMC COUPE, Bailly); Chinese 200G EML localization milestones.
 - **Hedging dynamics**: Coherent as partial hedge to Lumentum execution risk (6-inch lead); Broadcom as hedge on vertical integration winning at CPO; Marvell as hedge on DSP continuation + Celestial CPO optionality.
+
+**Cross-cycle valuation context.** The 2000 telecom bubble peaked at JDSU $153B + Nortel $398B = ~$550B optical equipment-and-component sector cap. The 2026 AI photonics sector cap (LITE + COHR + FN + AAOI + MRVL optical share + AVGO optical share + Innolight + Eoptolink + Accelink) ≈ $400-500B at current multiples — approaching but not yet matching the 2000 absolute peak. Critical difference: 2026 optical revenue runs ~$30B vs 2000 peak ~$40B (in nominal dollars; ~$70B inflation-adjusted), but customer concentration is healthier (8+ hyperscalers vs 1990s telco oligopoly), order visibility extends 18-24 months (vs 1990s build-on-spec), and the demand driver is physics-mandatory (vs 1990s speculative dark fiber). The 2000-2002 collapse was a 99% derate over 24 months on an industry that overbuilt 5-7x demand on dark fiber speculation. The 2026 cycle is supply-constrained, not demand-speculative — this asymmetry caps the symmetric downside risk.
+
+## Adjacent applications and TAM extension vectors
+
+Optical networking IP and component supply chain extends across multiple adjacent verticals that compound the supercycle thesis. These are second-order beneficiaries with longer-duration adoption curves but materially expand the addressable market for the same Western III-V chokepoint suppliers.
+
+**1. Optical AI compute (photonic neural networks).**
+
+| Company | Approach | Stage | Backers |
+|---|---|---|---|
+| **Lightmatter** | Passage photonic interconnect for 3D-stacked compute | $850M Series D at $4.4B valuation | Google Ventures, GV, SIP Global |
+| **Lightelligence** | Photonic computing for AI inference (Hummingbird) | Series C | Hopu, Maverick, Baidu |
+| **Luminous Computing** | Optical AI accelerator | Series A | Bill Gates, Capricorn, Schmidt Futures |
+| **Salience Labs** | Multi-chip wavelength-multiplexed photonic | Series A | Cambridge Innovation Capital |
+| **PsiQuantum** | Photonic quantum computer | $665M raised | BlackRock, Microsoft, Temasek |
+
+Photonic computing TAM est. $1B (2026) → $8-10B (2030); commercial inference deployment crosses threshold ~2027. Implication: Lumentum CW lasers + InP photodiodes + IQE epi-wafers feed photonic AI accelerator manufacturing — same chokepoint suppliers, parallel revenue stream.
+
+**2. Quantum networking and photonic quantum compute.**
+
+| Company | Application | Tech basis |
+|---|---|---|
+| **PsiQuantum** | Photonic quantum compute | SOI silicon photonics + InP single-photon sources |
+| **Xanadu** | Photonic quantum processor | TFLN modulators + InGaAs photodetectors |
+| **Q-CTRL** | Quantum control software | Hardware-agnostic |
+| **IonQ** | Trapped-ion (photonic readout) | InP / TFLN read-out optics |
+| **Quantum Computing Inc** | TFLN fabrication for photonic quantum | TFLN process |
+| **PsiQuantum (DARPA quantum)** | Defense quantum networking | InP single-photon sources |
+
+Quantum networking is 5-10 year horizon but increases InP and TFLN demand at low volume / high margin. PsiQuantum's $1B+ committed funding signals long-tail demand for InP single-photon emitters — a Lumentum / IQE adjacent revenue line. China's MICIUS satellite (quantum key distribution) drove parallel research at CAS Shanghai, NTNU.
+
+**3. LiDAR and 3D sensing.**
+
+| Application | Volume drivers | III-V dependency |
+|---|---|---|
+| **Automotive LiDAR** | L4 robotaxi (Waymo, Cruise, Pony.ai) + L2+ ADAS | 905nm and 1550nm InGaAs |
+| **Industrial LiDAR** | Robotics, warehouse automation | InGaAs |
+| **Consumer 3D sensing** | Apple Face ID + AR glasses + Meta/Apple Vision Pro | GaAs VCSELs (Lumentum/Coherent + IQE epi) |
+| **Drone / aerospace LiDAR** | Defense ISR, drone delivery (Zipline, Wing) | InGaAs + GaAs |
+
+VCSEL TAM ~$1.5B (2025) → ~$2.5B (2030). Apple's Vision Pro 2026 generation refresh and Meta's Orion glasses both expand 3D sensing optic content per device. Coherent supplies Apple VCSELs (took share from Lumentum); IQE supplies VCSEL epi for both.
+
+**4. Free-space optical (FSO) and satellite optical.**
+
+| Application | Lead players | Optical content |
+|---|---|---|
+| **Inter-satellite links (ISL)** | Mynaric, Tesat-Spacecom, BridgeComm, Cailabs | Coherent terminals; gimbal-mounted lasers; Lumentum + Coherent components |
+| **Starlink ISL** | SpaceX (laser ISL on Gen2 satellites) | Internal + commercial supply |
+| **Project Kuiper** | Amazon (laser ISL planned) | Commercial supply |
+| **Direct-to-cell (Starlink, AST Mobile)** | Various | Optical backhaul to gateway stations |
+| **Defense FSO (Space Development Agency)** | Mynaric, Tesat, General Atomics | DARPA + SDA Tranche 1/2/3 contracts |
+
+ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 + Starlink Gen3 + Kuiper deployment. Mynaric stock +1,200% from 2024 lows on Tranche 2 awards.
+
+**5. AR/VR and waveguide displays.** GaN microLED epiwafers (IQE-Porotech partnership; 8-inch GaN-on-Si foundry with unnamed consumer multinational). Apple Vision Pro / Meta Orion successor generations + AR glasses (Snap Spectacles, Google AR initiatives) create incremental microLED demand. III-V epi house customer diversification.
+
+**6. Defense / aerospace optical.** GaN RF (radar, electronic warfare, satellite comms) demands sovereign US/UK supply. UK CSconnected Defence & Security Cluster (March 2026 launch, IQE anchor); Wales Investment Zone £160M; US CHIPS Act $10.3M IntelliEPI; AFRL/DARPA programs. Higher margin than commercial (defense CAGR ~8% vs commercial 25-30% in volume cycles, but counter-cyclical and stickier). Coherent/IPG/Lumentum/IQE all have defense exposure; II-VI legacy CO2 laser optics for materials processing also defense-adjacent.
+
+**7. Optical biosensing and medical.** Photonic biosensors (Genalyte, Imec spin-outs), DNA sequencing optics (Illumina, PacBio, Ultima Genomics), surgical laser systems (Coherent legacy), retinal imaging (Lumentum). Smaller TAM (~$2B optical content) but high-margin and counter-cyclical.
+
+**Cross-vertical observation:** the same Western III-V epitaxy chokepoint (IQE + Coherent + Win Semi + LandMark + IntelliEPI + VPEC) supplies datacom optics, automotive LiDAR, AR/VR microLED, defense GaN RF, optical AI compute, quantum networking, and ISL terminals. Aggregate demand from these adjacent verticals could 2-3x the III-V epitaxy TAM through 2030 — IQE's ~£525M market cap captures a fraction of optionality across these verticals. This is the deeper structural reason behind takeover offer interest.
 
 ## Related Research
 - [[Research/2026-04-15 - LITE COHR - Lumentum vs Coherent Analysis]] — "Great Photonic Divergence" LITE +1,098% vs COHR +328%; pure-play vs integrated value capture; 70.5% Cloud Light module-level gross margin
@@ -301,3 +537,7 @@ TFLN market projected at 44.4% CAGR through 2032 — early stage but threatens E
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
 - Reordered sections: Active Theses moved to first position per Sector Template / CLAUDE.md §Sector Notes (MOC navigation goes first).
 - Sector populated: 7 analytical sections + Active Theses + Related Research filled via web-primary research (optical networking history 1960-2026 from Maiman's ruby laser / JDSU-Nortel telecom bubble / II-VI + Coherent Inc merger 2022 / Lumentum spinoff 2015; AAOI $1B FY26 revenue guidance with $200M 1.6T + $124M 800G hyperscaler orders; Fabrinet $5.39B FY26E / 28% NVDA / 2M sq ft expansion; Innolight ~40% 800G / 50-60% 1.6T share / Western EML + DSP dependency; GlobalFoundries-AMF Nov 2025 largest pure-play SiPh foundry; TSMC COUPE Feb 2026 risk prod with AMD; Lumentum Marvell R300 OCS OFC 2026 demo; LightCounting $26B 2026 Ethernet AI optics / 63M 800G / 22M 1.6T units; HyperLight-UMC-Wavetek TFLN March 2026; Goldman +58% 1.6T revision; 75.9% EML market share top-5; Coherent 6-inch InP 80% complete; NVIDIA $2B dual investments March 2026; Jim Anderson Coherent CEO turnaround) and vault-secondary references to 7 LITE/IQE research notes. Status: draft → active.
+
+### 2026-04-28
+- Manual enhancement: deepened sector note across seven dimensions. Added (a) Phase 7 — 2026-2030 forward outlook (1.6T mainstream 2027, 3.2T pilots 2028, 6.4T CPO-only 2029-2030, fab buildout completion timelines, Chinese 200G EML localization milestones); (b) Technology primitives section — 6-architecture modulator comparison table (DML / EML / MZM / TFLN / EOP / Ring resonator), modulation formats (NRZ / PAM4 / PAM6 / QAM / OOK), wavelength assignments (850nm / O-band / C-band / CWDM4 / LAN-WDM), reach categories (AOC / SR / DR / FR / LR / ZR with power draw at 800G), speed-generation timeline + ASP curve table from 100G→6.4T; (c) hyperscaler deployment matrix — Microsoft / AWS / Meta / Google / Oracle / CoreWeave-Crusoe-Nebius / Tencent-Alibaba-Baidu-ByteDance with capex, 800G + 1.6T state, CPO posture, optical strategy; (d) materials concentration detail — indium / gallium / germanium / phosphorus / lithium niobate / rare earths with China share + non-China sources + spot price trajectory + InP wafer pricing + indium criticality math (33 metric tons demand from 1.6T ramp); (e) 4 additional non-consensus framings (#9 Coherent Anderson Lattice playbook, #10 optical test bottleneck Aehr/FormFactor/Teradyne/MKS, #11 telecom optical re-investment 2027-2030 wave, #12 memory-wall to interconnect-wall thesis rotation); (f) cross-cycle valuation context (2000 telecom bubble $550B sector cap vs 2026 ~$400-500B; supply-constrained vs demand-speculative asymmetry caps downside); (g) Adjacent applications section — optical AI compute (Lightmatter/Lightelligence), quantum networking (PsiQuantum/Xanadu), LiDAR + 3D sensing (Apple Vision Pro/automotive), free-space optical/ISL (Mynaric/Tesat/Starlink/Kuiper), AR/VR microLED (IQE-Porotech), defense/aerospace, biosensing/medical — same Western III-V chokepoint suppliers across verticals. No content removed; all additions are analytical depth on existing themes.
+- Addressed user callouts: 3 fresh callouts (2 in §Technology primitives, 1 in §Investor heuristics #10) addressed in single pass. (1) MZM material correction — split MZM row into MZM-SiPh and MZM-InP, renamed TFLN row to clarify MZM-topology relationship; added 4-material breakdown (SiPh / InP / TFLN / bulk LiNbO3) with EO-coefficient physics + 3-path CPO modulator analysis (MZM-SiPh dominant ~95%, MRM/Ayar Labs niche, TFLN-MZM future at 3.2T+). (2) Listed-company → architecture mapping table added — 8 architectures × tickers/products/stack-position; key takeaway: LITE/COHR DML+EML "arms-dealer" exposure to entire MZM-SiPh CPO buildout; MZM-InP captured via CIEN/NTT/Fujitsu (telecom optical cycle hedge); TFLN/EOP pre-revenue (QUBT/LWLG); Ayar Labs (private) holds MRM. (3) Optical test equipment deep-dive added as new §Product level analysis subsection — 9-vendor table (AEHR, FORM, TER, MKSI, KEYS, Anritsu, VIAV, EXFO, captive LITE/COHR) + 5 investment dynamics; AEHR identified as highest-asymmetry pure-play (<$1B mkt cap, 4-5x rev scenario at 30% photonic burn-in penetration, structurally non-consensus given thin sell-side coverage). No conviction or status changes; analytical depth only.

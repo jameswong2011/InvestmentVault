@@ -366,7 +366,7 @@ Impact on incumbent pricing power: Wiz directly compresses Prisma Cloud growth (
 - [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] — Product/technology-level comparison: CRWD single-agent + agentic AI lead vs PANW five-pillar cross-domain data lake; ~40% product overlap; complements-not-substitutes verdict for portfolio construction
 
 ## Legacy Callouts
-<!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[preserve]]` to its header in-place. -->
+<!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
 ## Log
 

@@ -81,7 +81,7 @@ The competitive implication is that **Intel Diamond Rapids is compromised at bot
 
 **Strengthens [[Theses/NVDA - Nvidia]] three-computer architecture**: Vera as merchant standalone CPU is an un-modeled TAM expansion for NVDA beyond GPU. The market prices NVDA as a GPU + networking + AI software stack; agentic CPU TAM participation (Vera) is orthogonal revenue currently buried inside Data Center segment reporting. Directly supports the NVDA Bull Case on Physical AI vertical integration — the reasoning-optimized CPU extends CUDA + ecosystem lock-in into the CPU layer itself.
 
-**Quantifies a gap in [[Sectors/GPU & AI Compute Accelerators]]**: no current sector coverage of the server-CPU dimension of agentic AI. The sector frame has been AI accelerator (GPU/ASIC) dominated; this article argues CPUs are a co-equal bottleneck at the rack level. Worth considering whether the sector should expand scope or whether a separate "Server CPUs" sector is warranted given the divergent reasoning vs action optimization paths.
+**Quantifies a gap in [[Compute & AI Compute Accelerators]]**: no current sector coverage of the server-CPU dimension of agentic AI. The sector frame has been AI accelerator (GPU/ASIC) dominated; this article argues CPUs are a co-equal bottleneck at the rack level. Worth considering whether the sector should expand scope or whether a separate "Server CPUs" sector is warranted given the divergent reasoning vs action optimization paths.
 
 **Caveat on scoring methodology**: author discloses judgment-based adjustments (non-mathematical), used Claude Opus 4.6 Thinking to generate scoring tables, and flagged that "this is the last iteration of the table that will overweight x86 over ARM ISA" — meaning future updates will compress the x86 advantage. Venice Dense's 5/5 action score is partially an x86 weighting artifact that may narrow in 2027+ iterations.
 
@@ -103,7 +103,7 @@ The competitive implication is that **Intel Diamond Rapids is compromised at bot
 
 - [[Theses/AMD - Advanced Micro Devices]] — directly strengthens EPYC Bull Case pillar #3 and Outstanding Question #7 (Intel counter-punch timing)
 - [[Theses/NVDA - Nvidia]] — Vera standalone platform validates three-computer architecture CPU extension
-- [[Sectors/GPU & AI Compute Accelerators]] — agentic CPU bottleneck extends sector scope beyond accelerators
+- [[Compute & AI Compute Accelerators]] — agentic CPU bottleneck extends sector scope beyond accelerators
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — tangential (AWS Graviton5, Google x86+TPU, ARM Phoenix PCIe6 XPU)
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — complementary context on Jensen's "many more" Vera deployments framing
 - [[AI Bubble Risk and Semiconductor Valuations]] — CPU demand inflection validates continued AI capex cycle (expanding silicon TAM vs concentration in GPU alone)

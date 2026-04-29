@@ -56,6 +56,29 @@ The market splits into eight competing archetypes, each with distinct moats and 
 - *vs. Databricks (data-layer war):* Architectural divergence — Palantir built operational write-back first then added data infrastructure; Databricks built data platform first and is bolting on Lakebase + Agent Bricks. The Databricks-Palantir partnership (100+ joint customers in 7 months) signals "best-of-both" market structure rather than winner-take-all.
 - *vs. Defense/Federal IT (systems integrator war):* Palantir's $10B Army EA + Maven program-of-record displaces Booz Allen, Leidos, SAIC, CACI, ManTech, and L3Harris-as-integrator (note: L3Harris is now a *Warp Speed customer* using Palantir for AI-driven defense production). DOGE consolidation shifts contractor margin pool from human services to platform software — measurable in services-firm earnings calls (2H 2025 BAH guide cut, Leidos margin compression).
 
+**Named-account validation:**
+
+| Vendor | Customer / Deal | Magnitude | Source |
+|---|---|---|---|
+| **PLTR** | Walgreens AIP deployment | 4,000 stores in 8 months; ~384B decisions/day automated | [[Research/2026-04-15 - PLTR - Competitive Win Scenarios]] |
+| **PLTR** | Tampa General Hospital | CIO: "Palantir comes with a premium, but it's well worth the premium" | [[Research/2026-03-31 - Databricks Threat to Palantir]] |
+| **PLTR** | Electric Boat (ShipOS) | Submarine schedule planning compressed 160 hours → 10 minutes | DOGE proof-point |
+| **PLTR** | Warp Speed customers | Anduril, L3Harris, Panasonic Energy, Shield AI, GE Aerospace, Boeing | Industrial OS franchise |
+| **PLTR** | UK Ministry of Defence | £240.6M without competitive tender | Sole-source dependency |
+| **PLTR** | NATO Maven adoption | "One of the most expeditious" acquisitions in NATO history | Sovereign-AI footprint |
+| **PLTR** | Bootcamp anecdotes | $26M ACV in 5 weeks; $19M bank expansion in 4 months | 75% bootcamp conversion benchmark |
+| **NOW** | Defense Logistics Agency | First federal AI deployment in 60 days (Lighthouse program) | NVIDIA + Accenture co-creation |
+| **NOW** | Now Assist active customers | 1,700 live (Q3 2025); 55x consumption growth May→Q4; 5+ Now Assist product deals 10x YoY Q4 | Adoption velocity |
+| **CRM** | Klarna Agentforce | 2.3M conversations/month doing the work of 700 agents | $800M ARR aggregate |
+| **NOW** | CRM/industry workflow ramp | $20M ACV (2016) → $1.4B (early 2025) | 70x in 9 years |
+| **UiPath** | Customer-spending erosion | 65% of customers paused/reduced spending in 2024 surveys | RPA architectural obsolescence |
+
+**Switching-cost mechanics — quantified by archetype:**
+- *NOW lock-in:* CMDB stores millions of CIs accumulated over years (institutional memory AI tools cannot replicate); 12–18 month implementation cycles; IntegrationHub 400+ spokes; certified admins command $120K–$175K/yr (talent scarcity creates platform stickiness); 603 customers paying >$5M annually with average $14.5M each; cohort: a 2010 customer at $100K spends >$2.6M by 2023 (26x compound).
+- *PLTR lock-in:* AIP boot camps create 75% conversion in 5 days but operational embedding takes months of FDE configuration; classified deployments (DoD IL6 + FedRAMP High + CMMC L2 + Apollo air-gap, 3.5-min average patch time) physically cannot be replaced — only six cloud providers hold IL6 and Palantir is among them; UK MoD without-tender and NATO "expeditious" acquisition signal sole-source dependency; 139% NRR at $94M average top-20 customer.
+- *Salesforce lock-in:* 150K customer install base; multi-decade data migration cost; AppExchange ecosystem with 132K credentialed experts; 6.19x ecosystem multiplier per IDC (vs NOW's 2–3x and target 3–4x); but CRM-data lock-in is narrower than NOW's cross-departmental graph.
+- *Microsoft lock-in:* M365 Graph distributed across every email/calendar/document; lock-in is at the productivity layer not the workflow layer — depth gap relative to NOW (24% Copilot users plan large-scale rollout per Gartner).
+
 ## Product level analysis
 
 ### ServiceNow Now Platform — single-database, multi-domain workflow orchestration
@@ -95,14 +118,85 @@ Palantir's structural innovation is the Ontology — a semantic intelligence lay
 
 Palantir's revenue: U.S. Commercial $507M Q4 (+137% YoY), U.S. Government $570M (+66%), International Commercial ~$150M (stalled/declining), International Government ~$180M (moderate growth). Bootcamp model: ~75% conversion in 5 days; documented wins include $26M ACV in 5 weeks and $19M bank expansion in 4 months. Walgreens deployed AIP-powered workflows to 4,000 stores in 8 months. Top-20 customers average $94M each (~42% of FY2025 revenue).
 
-### Adjacent product layers (compressed)
+### Salesforce Agentforce 3 — CRM-anchored agent platform with Atlas Reasoning
 
-- **Microsoft Copilot Studio** + **Fabric IQ ontology** (preview, billing 1H 2026): horizontal-distribution play; ontology directly copies Palantir's concept but production maturity 2–3 years out; MCP endpoints planned for Fabric IQ ontology to make it accessible to non-Microsoft agents.
-- **Salesforce Agentforce 3** (June 2025 release added MCP+A2A): Atlas Reasoning Engine uses 8–12 specialized models per query with genuine ReAct reasoning; Einstein Trust Layer for governance; Data Cloud + Informatica MDM for "trusted context."
-- **SAP Joule**: 14 new agents added Oct 2025; Cash Management Agent (~70% reduction in finance reconciliation time); Production Planning Agent (autonomous validate/release of production orders Q1 2026).
-- **Workday Illuminate** (Case Agent, Performance Review Agent, Financial Close Agent) + Workday-Sana strategy (March 2026): "agentify" the entire Workday system.
-- **Atlassian Rovo** (Jira Service Management): Rovo Service Request Resolution + Employee Live Chat in beta; mid-market and developer-team focus where ServiceNow is overpriced.
-- **UiPath**: Pivoting from RPA to "Agentic AI platform"; Q2 FY2026 revenue $362M (+14%); first profitable Q3 in 2026.
+Salesforce's structural innovation is the Atlas Reasoning Engine — a multi-model orchestration layer that selects 8–12 specialized models per agent query (instead of monolithic LLM calls), executes genuine ReAct (Reason+Act) loops, and grounds responses in Data Cloud + Informatica MDM "trusted context." Architecturally CRM-native: Agentforce inherits Salesforce's outside-in customer interaction graph (every email, case, opportunity, conversation) as its semantic foundation.
+
+| Layer | Product | Function | 2026 Status |
+|---|---|---|---|
+| Reasoning | **Atlas Reasoning Engine** | 8–12 model orchestration per query; ReAct loop with verification | GA; 169% YoY ARR growth |
+| Data foundation | **Data Cloud** | 140T records processed annually; outside-in customer graph | Production |
+| MDM | **Informatica** ($8B, closed Nov 18 2025) | Master data, governance, catalog feeding "trusted context" | Integrating |
+| Governance | **Einstein Trust Layer** | PII masking, toxicity filter, prompt audit, GDPR/HIPAA scaffolding | GA |
+| Marketplace | **AgentExchange** | 200+ pre-built agents; partner-built catalog | GA |
+| Inter-agent | **MCP + A2A in Agentforce 3** | Cross-vendor agent communication | June 2025 |
+| Pricing | **Per-user $125–$550/mo + Flex Credits @ $0.10/action; core list +6% Aug 2025** | Four pricing pivots in 12mo signal monetization uncertainty | In flux |
+
+Pricing iteration history reveals real-time market learning: $2/conversation (Oct 2024) → Flex Credits $0.10/action (May 2025) → per-user $125–$550/mo (June 2025) → +6% blended core list (Aug 2025). $800M Agentforce ARR Q4 FY2026 across 29,000 deals — fastest-growing product in company history. Klarna deployed across 2.3M conversations/month doing the work of 700 agents. Bear case: pricing instability undermines ROI predictability for IT procurement; the structural disadvantage vs NOW's Pro Plus +60% AI uplift bundled into existing tiers is buyer-side budget defensibility.
+
+### Microsoft Copilot Studio + Fabric IQ — horizontal distribution at the M365 edge
+
+Microsoft's structural advantage is distribution: 160K organizations using Copilot Studio, 400K custom agents created in three months, and every M365 customer already paying for the platform that hosts the agent layer. Fabric IQ (announced Nov 2025, billing 1H 2026) directly copies Palantir's Ontology concept — typed business objects with named relationships over OneLake — but production-grade deployments are 2–3 years out. The structural conflict per [[Research/2026-03-31 - Databricks Threat to Palantir]]: every seam between SQL Server, Cosmos DB, Dataverse, Power Automate, and Fabric IQ is a place where consistency breaks and audit trails fragment.
+
+| Layer | Product | Function | 2026 Status |
+|---|---|---|---|
+| Distribution | **Copilot Studio** | Low-code agent builder embedded in M365 | GA; 160K orgs / 400K agents |
+| Semantic | **Fabric IQ ontology** | Typed object layer over OneLake; MCP endpoints planned | Preview; billing 1H 2026 |
+| Data | **OneLake / Fabric / Synapse** | Lakehouse, real-time intelligence, data engineering | GA |
+| Productivity | **Microsoft 365 Copilot** | Per-seat $30/mo across Word/Excel/PowerPoint/Teams | GA |
+| Inter-agent | **Agent 365** (co-developed with NOW) | Microsoft <-> ServiceNow agent collaboration | GA |
+| Reasoning | **Foundry** (formerly Azure AI Foundry) | Custom model training, fine-tuning, deployment | GA |
+| Governance | **Purview + Defender for Copilot** | DLP, audit, compliance | GA |
+
+Penetration depth gap: Gartner reports only 24% of Copilot users plan large-scale rollout, validating "horizontal but shallow." Benioff's "Clippy 2.0" attack is a deliberate framing tactic but undersells the bundling threat — Microsoft's $30/seat M365 Copilot is essentially free relative to Salesforce's $125–$550/user Agentforce tiers, creating a structural pricing-floor pressure on per-seat agent monetization across CRM and (eventually) ITSM.
+
+### Databricks Lakebase + Agent Bricks — data-first platform reaching for operations
+
+Databricks built bottom-up: data engineering (Spark) → analytics (SQL Warehouse) → governance (Unity Catalog) → ML/AI (Mosaic) → vector + agents (Agent Bricks) → transactional database (Lakebase, Postgres via Neon Aug 2025). 20K customers, $5.4B run-rate +65% YoY, $134B private valuation, IPO targeted 2H 2026. Architecturally OLAP-first: cross-table atomic transactions with foreign-key enforcement don't exist in Delta Lake — that's the application-layer middleware Palantir built first.
+
+| Layer | Product | Function | 2026 Status |
+|---|---|---|---|
+| Data | **Delta Lake / Iceberg / Unity Catalog** | Open-table format; federated governance | GA |
+| Analytics | **SQL Warehouse / Photon** | Photon-accelerated analytics queries | GA |
+| ML/AI | **Mosaic / Agent Bricks** | Model training, RAG agents, vector indexes | GA |
+| NL→SQL | **Genie** | Natural language to SQL across Databricks data | GA |
+| Transactional | **Lakebase** (Postgres via Neon) | OLTP database alongside lakehouse | GA Q2 2025 |
+| Apps | **Databricks Apps** | Streamlit/React apps over Databricks data | GA |
+| Partnership | **Palantir-Databricks integration** | 100+ joint customers in 7 months | GA Q3 2025 |
+
+Three structural gaps vs Palantir Ontology per [[Research/2026-03-31 - Databricks Threat to Palantir]]: (1) **transactional atomicity across a graph** — Delta Lake supports ACID per-table, not cross-object foreign-key enforcement; (2) **validation/business logic at write boundary** — Databricks writes are bulk ETL or raw SQL with no domain-aware middleware; (3) **decision-level audit/provenance** — Unity Catalog has table versioning and access logs, no semantic-intent capture. Lakebase solved (1) at the infrastructure layer (Postgres alongside lakehouse) but the bridge to a governed semantic action layer is the 2–3 year product development gap. Databricks's path is either build application middleware (years) or deepen the Palantir partnership (best-of-both market structure already emerging — 100+ joint customers in 7 months).
+
+### SAP Joule + Workday Illuminate — ERP-anchored agentification
+
+SAP and Workday share a structural play: embed AI agents inside the system of record (financials, HR, procurement) so customers don't evaluate a separate platform. Agent ROI is measured against the system's own KPIs (DSO, time-to-close, payroll accuracy). The structural ceiling: cross-platform orchestration — the question every Fortune 500 actually has — is locked at the system boundary. An SAP Joule agent cannot natively reason about a Workday HR record or a Salesforce Opportunity without integration plumbing.
+
+| Vendor | Agent Suite | Anchor Data | 2026 Differentiator | Structural Limit |
+|---|---|---|---|---|
+| **SAP** | Joule (14 new agents Oct 2025) | S/4HANA financials/supply chain | Cash Mgmt Agent ~70% finance reconciliation time cut; Production Planning Agent autonomous validate/release Q1 2026 | Vertically locked to SAP graph; cross-platform orchestration weakest |
+| **Workday** | Illuminate + Sana (acquired March 2026) | HCM + Financials | Case Agent / Performance Review Agent / Financial Close Agent across 60M+ workers; Sana brings learning content | Locked to HCM graph; ITSM/security agents absent |
+| **Oracle** | Fusion AI Apps | ERP/HCM/CX | Embedded agents across Fusion suite; included in baseline subscription | Slow agentic roadmap; trailing on MCP/A2A protocol adoption |
+
+### Atlassian, Pega, Appian, UiPath — middle-tier compression
+
+| Vendor | Product | Position | Risk Vector |
+|---|---|---|---|
+| **Atlassian Rovo** | JSM with Rovo Service Request Resolution + Employee Live Chat (beta) | Mid-market and developer-team focus; 5x cheaper than NOW ($20/user vs $100/user) | Developer-team beachhead competes; horizontal expansion thin |
+| **Pegasystems** | Pega GenAI Blueprint, Pega Agent Studio | BPM heritage in regulated industries (insurance, banking) | Pre-LLM architecture; ~7% growth vs NOW 21% organic |
+| **Appian** | Appian AI Agents | Low-code BPM with deep regulated-industry footprint | Forrester moved Appian out of leaders quadrant 2025 |
+| **UiPath** | Agentic Automation Platform | RPA pivoting to agentic; Q2 FY2026 $362M (+14%); first profitable Q3 2026 | NRR 121% (2022) → 108% (Q4 FY2026); −87% from highs; 65% of customers paused/reduced 2024 |
+
+The middle is structurally exposed: too small to be a hyperscaler bundle, too narrow to be a workflow incumbent, too pre-LLM to be agent-native. UiPath's collapse is the leading indicator — RPA's bot-based screen scraping is architecturally inadequate for LLM-driven reasoning, and customers re-routing greenfield automation to AI-coding tools (Cursor, Claude Code, Cognition Devin) compressed retention by 13 points in 4 years.
+
+### Agentic-AI startups — Sierra, Cognition, Adept, frontier-model direct GTM
+
+| Startup | Founder/Backing | Position | Trajectory |
+|---|---|---|---|
+| **Sierra** | Bret Taylor (ex-Salesforce CTO); Greenoaks-led $350M Sept 2025 | Customer-facing voice agents narrowly targeted vs Agentforce | $10B val; $150M ARR Jan 2026 (from $100M, 7 quarters post-launch) |
+| **Cognition AI** | Ex-Google DeepMind founders; $175M Series A extension one month after $21M seed | Devin coding agent; flagship "AI coding tools" disruption narrative | Pre-revenue dev productivity traction; cited by KeyBanc bear case for NOW |
+| **Adept AI** | General Catalyst-backed | Enterprise workflow via screen control | Multiple rounds; slower commercial traction than expected |
+| **Anthropic / OpenAI direct** | Claude for Enterprise / ChatGPT Enterprise | Bypassing platform vendors with direct enterprise GTM | Distribution friction in highly regulated environments |
+
+Forrester forecast: 75% will fail by 2027. Gartner: only ~130 of thousands of self-described agentic vendors meet the technical definition. Realized incumbent absorption pattern (Moveworks → NOW $2.85B at ~28x ARR; Tenyx/Convergence/Regrello → CRM) suggests funding is increasingly flowing into acquisition-bait positioning. Floor multiples for incumbent absorption: 23x ARR (Armis) to 28x ARR (Moveworks).
 
 ## Acquisitions and new entrants
 
@@ -163,6 +257,16 @@ Palantir's revenue: U.S. Commercial $507M Q4 (+137% YoY), U.S. Government $570M 
 
 **8. The "second-front" macro: budget compression in commercial software.** Outside of Magnificent 7-style AI hyperscalers, enterprise software budgets are flat-to-down YoY in CY2026 per multiple CIO surveys. Vendor survival now requires either (a) demonstrable AI-driven net-new revenue (NOW Now Assist, CRM Agentforce, PLTR AIP) or (b) deflationary economics that customers can defend in finance review (Atlassian's 5x cheaper-than-NOW positioning). Mid-tier players without either lever (Pega, Appian, UiPath) are structurally exposed.
 
+**9. Token-economics deflation curve (~67% per generation).** Top-tier reasoning model pricing has compressed roughly 67% per generation since GPT-3 (2020), with the curve accelerating post-DeepSeek R1 (Jan 2025). This is the underlying economics of the seat-vs-consumption pivot: at falling token cost, ROI on per-action consumption pricing improves while AI-cannibalization of per-seat revenue accelerates. Vendors structurally betting on token-cost decline (NOW with bundled AI in Foundation/Advanced/Prime, PLTR with FDE-led $1M+ contracts, CRM moving from $2/conversation to $0.10/action to bundled +6% list) capture more of the economic surplus than vendors monetizing the token pass-through (mid-tier RPA, point-solution agents). The CIO forecast of 40% IT budget reallocation from legacy SaaS subscriptions to agentic platforms + LLM tokens is the realized data signal — the question is which vendors capture the reallocation flow vs leak it to hyperscaler bundles.
+
+**10. Server-CPU bottleneck repricing the rack-level cost stack.** A November 2025 Georgia Tech/Intel paper documented that tool processing on CPUs accounts for 50–90% of total agentic workflow latency — not GPU inference. NVIDIA Vera (88-core ARM custom Olympus, NVLink-C2C 1.8 TB/s coherent to Rubin, 1.5TB LPDDR5) and AMD Venice Dense (256 Zen6c cores, 512 SMT threads, 1GB L3) are the reasoning- and action-optimized server CPUs respectively; Intel Diamond Rapids regressed (192c = 192t after SMT removal) leaving Intel stranded until Coral Rapids 2028+. Two implications for enterprise software: (a) hyperscaler bundle economics shift as CPU:GPU ratios rise above 1:1 — Azure/AWS/GCP cost-per-agent re-prices vs proprietary AI-native infrastructure; (b) Palantir's Sovereign AI OS Reference Architecture (NVIDIA Blackwell Ultra + Spectrum-X + AIP/Foundry/Apollo/Rubix, March 12 2026) was architecturally prescient — turnkey AI datacenters that own the full reasoning-CPU + inference-GPU + orchestration substrate stack now have a quantified bottleneck thesis behind them. Reference: [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]].
+
+**11. Open-source LLM commoditization (DeepSeek R1, Llama 4, Qwen).** Frontier-quality open-source LLMs have released on rough parity with proprietary models since DeepSeek R1 (Jan 2025) collapsed the model-as-moat thesis for hyperscaler AI strategies. Implication for the workflow sector: model selection is increasingly orthogonal to platform selection. ServiceNow's Apriel Nemotron 15B (NVIDIA co-developed), Palantir's multi-LLM AIP (GPT, Claude, Gemini, Llama, Nemotron), and Salesforce's Atlas Reasoning Engine (multi-model orchestration) all explicitly assume an open-model future and route the right model per query. Vendors at risk are those whose AI strategy is anchored to a specific proprietary model partnership without orchestration optionality — and those who built large model-licensing cost structures into their own pricing assumptions. The orchestration / governance / context layers retain pricing power; the model layer is being commoditized fastest.
+
+**12. Cost-of-capital regime shift compresses long-duration multiples.** Real interest rates of 1.8–2.2% (mid-2025–mid-2026) compressed long-duration software multiples more aggressively than the cyclical AI-monetization narrative alone suggests. The IGV ETF −21% YTD and EV/Sales 5.6x → 4.2x is partly explained by 50–100 bps of duration-risk repricing on top of the per-seat-cannibalization narrative. Historical analog: the 2022 software multiple crash similarly conflated rate sensitivity with end-of-growth narratives, then rapidly reversed as Fed pivoted dovish. If the rate-cut cycle resumes in 2H 2026, the duration component reverses faster than the cannibalization narrative resolves — offering pricing entry asymmetry on workflow names (NOW currently 6.5x EV/Sales fwd vs 5-yr median 12x; CRM 5–6x vs 7–8x median) before fundamentals confirm. The barbell trap is that PLTR sits at 33–49x EV/Sales fwd, where rate sensitivity is amplified — duration risk dominates if AI-monetization momentum disappoints in any single quarter.
+
+**13. AI talent and capacity bottlenecks gate competitor catch-up.** Element AI was a $230M acquisition primarily for Yoshua Bengio as advisor and the Now Intelligence backbone team. Forrester data: cumulative AI talent demand exceeds supply ~3:1 across enterprise software vendors; the constraint is sharper for specialized roles (FDE-equivalent skill, security-cleared AI engineers, ontology designers). The 2–3 year product gap PLTR's Ontology holds against Databricks Lakebase + Microsoft Fabric IQ is partially a talent-bottleneck artifact, not pure architecture difficulty. Capgemini-WNS ($3.3B, 2025) and Accenture's 18K NOW-skilled headcount (vs 56K Salesforce-skilled) reveal the services-tier scramble for delivery capacity. Vendors with mature certification programs (NOW certified admins at $120K–$175K/yr scarcity; Salesforce's 132K credentialed experts) compound this advantage; new entrants without ecosystems struggle to convert TAM into deployed ACV.
+
 ## Investor heuristics
 
 **The 2026 SaaS reset has been brutal but uneven.** iShares Expanded Tech-Software ETF (IGV) down 21%+ YTD; enterprise software EV/Sales compressed from 5.6x at end-2025 to 4.2x by mid-March 2026. ServiceNow down ~47% from July 2025 peak (now ~$89 post-split, ~$93B market cap, ~6.5x EV/forward subscription revenue, ~50x P/E vs. 80x+ historical). Salesforce CRM down 39% YTD. Palantir down ~30%+ from $207 ATH (now ~$140 area, $240–355B market cap depending on price, 33–49x EV/forward revenue). Morgan Stanley's framing: "the market has stopped paying for AI potential and is now strictly penalizing companies that cannot prove margin expansion through AI-driven automation."
@@ -200,6 +304,34 @@ Palantir's revenue: U.S. Commercial $507M Q4 (+137% YoY), U.S. Government $570M 
 
 **Non-consensus framing for portfolio construction:** This sector is a *barbell*, not a continuum. The two structural winners are the workflow-execution incumbent with the deepest cross-departmental data graph (NOW) and the operational write-back / semantic reasoning layer with classified-environment moat (PLTR). The middle (Pega, Appian, UiPath, mid-tier SaaS) is structurally exposed to both AI-driven seat compression *and* hyperscaler bundling. Hyperscaler bundles (Copilot/Vertex/Bedrock) win horizontal distribution but lose vertical depth. Pure-play agentic-AI startups (Sierra, Cognition) face the Forrester 75% failure rate. The disciplined portfolio expression is: own NOW for governance + workflow execution durability, own PLTR for operational data layer + sovereign defense optionality, avoid the middle, and treat hyperscaler AI strategies as embedded options inside larger platform theses (priced via NVDA/MSFT/GOOG core valuations).
 
+**Falsifiable conviction triggers (next 12–18 months):**
+
+| Indicator | Threshold | Implication if hit |
+|---|---|---|
+| **NOW Now Assist ACV** | >$1B by Q4 2026 (vs $600M Q4 2025) | Validates AI monetization durability; bullish NOW |
+| **NOW Context Engine adoption** | >300 customers in production by Q4 2026 | Practitioner-to-executive sentiment gap closing; bullish NOW |
+| **NOW Foundation/Advanced/Prime mix** | Foundation tier <30% of new ACV by Q4 2026 | AI-bundle gravity working; cRPO accelerates |
+| **NOW Q1 2026 print (April 22)** | Sub revenue beat at $3.67B+ AND Now Assist NNACV >+100% YoY | Bear thesis broken; multi-quarter rerating begins |
+| **PLTR US Commercial Q/Q** | >25% sequential growth Q1+Q2 2026 | Bootcamp model scaling beyond 954 customers; thesis intact |
+| **PLTR Maven funding tranche** | First $1B+ tranche obligated by FY27 NDAA | Program-of-record annuity validated; defense-prime multiple compression |
+| **PLTR international commercial** | >$200M Q4 2026 (vs ~$150M stalled) | International stall resolved; major rerating catalyst |
+| **PLTR insider 10b5-1 selling** | Decelerates below $4M/day average over 90-day window | Technical headwind dissipates; mean reversion enabled |
+| **CRM Agentforce ARR** | >$1.5B by Q4 FY2027 | Pricing-pivot stabilization confirms monetization; bull case validates |
+| **Salesforce Informatica Trusted Context launch** | Named Fortune 500 reference customers in production by Q3 FY2027 | Data-layer thesis validated; durable parity with NOW data.world |
+| **MSFT Fabric IQ commercial billing** | >$200M revenue 1H FY2027 | Microsoft commoditization risk activated; PLTR data-layer premium compresses |
+| **Sierra ARR** | >$300M by mid-2027 | Customer-facing agent disruption real; bearish for CRM Service Cloud |
+| **UiPath profitability sustainability** | NRR returns >115% any quarter FY2027 | RPA-to-agentic pivot working; middle tier survives |
+| **EU AI Act first enforcement actions** | First sanction or registered fine by Q4 2026 | Compliance moat priced in; bullish governance-tier incumbents |
+| **Maven Operating cadence** | $13B obligation profile shows >$2B/yr by FY28 | Program-of-record durability priced as defense-prime annuity |
+
+**Pair-trade construction (catalyst-driven asymmetry):**
+- **Long PLTR / short MSFT (limited size):** captures sovereign-AI/defense-program-of-record asymmetry vs Fabric IQ's 2–3yr commoditization risk; sized 1:0.5 due to MSFT's 13% revenue growth durability and Copilot+Azure floor.
+- **Long NOW / short UiPath:** captures workflow-execution durability vs RPA architectural obsolescence; the trade thesis is "agent-governance toll booth" (NOW AI Control Tower) vs "screen-scraping bot pre-LLM" (UiPath legacy core).
+- **Long PLTR + long DDOG / short ORCL:** captures cloud-AI-native operational layer vs legacy-database modernization debt; ORCL's MultiCloud Database advance lacks PLTR's semantic ontology and DDOG's observability density.
+- **Long NOW + long PLTR / short IGV ETF:** captures workflow-AI-platform alpha vs the SaaS-cohort beta drag from the 2026 multiple compression. The IGV short hedges duration-risk repricing without giving up sector-specific thesis exposure.
+- **Avoid the middle:** Pega, Appian, UiPath, Atlassian (above mid-market), mid-tier point solutions — structurally compressed regardless of cyclical mood. The pair-trade alpha lives at the barbell ends, not in the middle.
+- **Position sizing discipline:** PLTR's 33–49x EV/Sales fwd makes it more sensitive to duration repricing than NOW at 6.5x; in real-rate-rising scenarios sized weight should tilt NOW; in rate-cutting scenarios PLTR captures more multiple expansion. Pair-trade construction can hold dollar-neutral but should respect asymmetric vol of the high-multiple leg.
+
 ## Related Research
 - [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]] — disruption probability bounded (10–15% 3yr / 25–30% 5yr / 40–50% 10yr); CMDB+compliance fortress thesis; AI tools erode TAM at expansion margin not core
 - [[Research/2026-01-06 - NOW - Gemini Acquisition Strategy Canvas]] — exhaustive M&A transformation analysis (2023–2025); Cognitive Enterprise Architecture; See-Think-Act framework
@@ -216,9 +348,17 @@ Palantir's revenue: U.S. Commercial $507M Q4 (+137% YoY), U.S. Government $570M 
 - [[Research/2026-03-31 - Databricks Threat to Palantir]] — write-back gap analysis; OLTP-vs-OLAP architectural conflict; Microsoft Fabric IQ convergence; 2-3 year product gap
 - [[Research/2026-04-15 - PLTR - Competitive Win Scenarios]] — defense/intelligence, complex supply chain, healthcare/regulated, manufacturing IoT — where Palantir wins structurally
 - [[Research/2025-02-19 - PLTR - Palantir Valuation Analysis]] — early Grok valuation analysis (Feb 2025 baseline)
+- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — 50–90% of agentic workflow latency is CPU-bound; reasoning-vs-action sliding-scale framework; NVIDIA Vera 5/2 (reasoning-flagship), AMD Venice Dense 3/5 (action-flagship), Intel Diamond Rapids 3/3 (compromised middle) — referenced in §Macro shifts #10 (server-CPU bottleneck repricing rack-level cost stack) and validates PLTR Sovereign AI OS Reference Architecture turnkey-stack thesis
 
 ## Log
 ### 2026-04-22
 - Initial sector note created consolidating commercial workflow (ServiceNow) + defense AI OS (Palantir) under unified enterprise-AI-platform framing — from [[_Archive/Sectors/Enterprise Software]] and [[_Archive/Sectors/Defense & Geopolitics]] — pending prompt-fill of sector analysis sections.
 - Sector populated: 7 analytical sections + Active Theses + Related Research filled via web-primary research (industry history Remedy/Tivoli/Peregrine/BMC consolidation, Palantir/ServiceNow founding lineages, 2025–2026 ServiceNow $12B+ M&A spree, Salesforce-Informatica $8B, Maven Program of Record $13B March 2026, Sovereign AI OS Reference Architecture March 12, MCP/A2A Linux Foundation governance, EU AI Act Aug 2 2026 deadline, Foundation/Advanced/Prime tiers April 9, Armis closing April 20 six months early) and vault-secondary references to NOW + PLTR thesis research notes. Status: draft → active.
 - Reordered sections: Active Theses moved to first position per Sector Template / CLAUDE.md §Sector Notes (MOC navigation goes first).
+
+### 2026-04-27
+- Refined: §Product level analysis — replaced 6-bullet "compressed" section with full sub-sections (each with dedicated layer-by-layer table) for Salesforce Agentforce 3, Microsoft Copilot Studio + Fabric IQ, Databricks Lakebase + Agent Bricks, SAP Joule + Workday Illuminate, Atlassian/Pega/Appian/UiPath middle-tier compression, and agentic-AI startups (Sierra/Cognition/Adept/frontier-direct) — content depth now matches NOW + PLTR primary sub-sections.
+- Refined: §Competitive dynamics — added named-account validation table (Walgreens, Tampa General, Electric Boat ShipOS, UK MoD, NATO, DLA, Klarna, NOW/CRM ramp cohorts, UiPath erosion) + switching-cost mechanics quantified per archetype (CMDB+admin scarcity for NOW, FDE+IL6 for PLTR, 6.19x ecosystem multiplier for CRM, M365 Graph depth gap for MSFT).
+- Refined: §Macro shifts — added #9 token-economics 67% deflation curve, #10 server-CPU bottleneck (50–90% latency CPU-bound; cite [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]), #11 open-source LLM commoditization post-DeepSeek R1, #12 cost-of-capital duration repricing, #13 AI talent and capacity bottlenecks gating competitor catch-up.
+- Refined: §Investor heuristics — added 15-row falsifiable conviction-trigger table (NOW/PLTR/CRM/MSFT/Sierra/UiPath/EU AI Act/Maven cadence) + pair-trade construction subsection (long PLTR/short MSFT, long NOW/short UiPath, long PLTR+DDOG/short ORCL, long NOW+PLTR/short IGV) with position-sizing discipline anchored to duration sensitivity.
+- Added: [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] to §Related Research (cross-sector linkage from GPU & AI Compute Accelerators sector — agentic workload CPU:GPU ratio rising above 1:1 validates PLTR Sovereign AI OS turnkey-stack thesis and re-prices hyperscaler bundle economics).

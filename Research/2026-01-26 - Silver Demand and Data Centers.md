@@ -159,5 +159,5 @@ If you want this expressed as a simple model you can update (inputs: data-center
 ## Related Sectors
 - [[Sectors/Precious Metals]] — cited in sector fill (2026-04-22) for silver industrial demand (29% from solar PV), structural supply deficit (-148.9 Moz 2024), AI/data-center stealth channel (~15-50 Moz cumulative incremental 2025-2030)
 - [[Sectors/Data Center Power & Cooling]] — direct silver consumption channel (contacts, connectors, solders, thermals) in AI compute buildout
-- [[Sectors/GPU & AI Compute Accelerators]] — indirect silver demand via solar PV powering AI compute electricity growth
-- [[Sectors/Uranium & Nuclear Fuel]] — cited in sector fill (2026-04-22) for AI data-center electrification load sizing (IEA ~460 TWh 2024 → ~945 TWh 2030; JLL ~200 GW capacity by 2030) as the quantitative foundation for nuclear PPA demand in Macro shifts — gas/solar/nuclear generation-mix substitution is the bridge between data-center growth and incremental uranium demand
+- [[Compute & AI Compute Accelerators]] — indirect silver demand via solar PV powering AI compute electricity growth
+- [[@Uranium & Nuclear Fuel]] — cited in sector fill (2026-04-22) for AI data-center electrification load sizing (IEA ~460 TWh 2024 → ~945 TWh 2030; JLL ~200 GW capacity by 2030) as the quantitative foundation for nuclear PPA demand in Macro shifts — gas/solar/nuclear generation-mix substitution is the bridge between data-center growth and incremental uranium demand

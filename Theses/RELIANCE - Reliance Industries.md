@@ -240,7 +240,7 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 ## Related Research
 
 - [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]] — Full April 2026 research update: Jio IPO, retail, new energy, O2C, competitive landscape, macro
-- [[Sectors/Indian Digital Conglomerates]] — Primary sector note: Jio IPO category framing, quick-commerce dynamics, sovereign AI, DPDP/TRAI regulation, SOTP mispricing
+- [[@Indian Digital Conglomerates]] — Primary sector note: Jio IPO category framing, quick-commerce dynamics, sovereign AI, DPDP/TRAI regulation, SOTP mispricing
 - [[Macro & Technology/Iran War Trading Playbook]] — Jamnagar refinery benefits from surging crack spreads; insurance mechanism (Lloyd's 72-hour cancellation, war-risk premium 0.125% → 1–3% of hull value) and Hormuz normalization lags; India-domestic demand resilience as structural hedge against Hormuz-transit-dependent economies
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience post-Assad sustains elevated fuel-crack regime driving Jamnagar O2C EBITDA uplift (Q3 FY26 +14.6% YoY); extends India crude-import shock beyond ceasefire episodes
 - [[Research/2026-04-02 - Israel India Relations Analysis]] — India-Israel Special Strategic Partnership (February 2026) + $3.75B FY2024-25 bilateral trade + defence MoU — frames India's geopolitical positioning in Iran scenario as aligned with Israel rather than neutral, relevant to Jamnagar crude procurement diversification
@@ -256,7 +256,7 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 ### 2026-04-22
 - Sector re-scoped: Energy & Commodities → Indian Digital Conglomerates (vault-wide subsector taxonomy reorganization).
-- Wikilink cleanup: Replaced stale [[Sectors/Energy & Commodities]] and [[Sectors/Consumer & Digital]] in ## Related Research with [[Sectors/Indian Digital Conglomerates]] (subsector split — parent sectors archived). Thesis body and callouts untouched.
+- Wikilink cleanup: Replaced stale [[Sectors/Energy & Commodities]] and [[Sectors/Consumer & Digital]] in ## Related Research with [[@Indian Digital Conglomerates]] (subsector split — parent sectors archived). Thesis body and callouts untouched.
 
 ### 2026-04-23 (/sync — orphan linking)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah structural resilience sustains fuel-crack tailwind for Jamnagar O2C; extends Indian crude-shock exposure window (₹69→₹113/bbl basket) beyond April ceasefire. Conviction unchanged (medium).

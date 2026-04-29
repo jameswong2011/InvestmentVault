@@ -3,6 +3,8 @@ date: 2026-04-22
 tags: [sector, moc]
 status: active
 ---
+> [!question] 2026-04-29 [[pinned]]
+> What is the threat from Rapidus in breaking existing competitive dynamics, what is their volume capacity up to 2030 and what if any data exists on their product specifications, advanced packaging capabilities, and die-level yields.
 
 # Semiconductor Foundries
 
@@ -48,6 +50,9 @@ status: active
 
 **Advanced packaging has become a second foundry franchise.** TSMC CoWoS scaling 35K → 75K → 130K wpm (2024 → 2026 → 2027), >50% of 2026 CoWoS pre-booked by NVDA at +20% pricing. Intel Foveros / EMIB capacity scaling +150% / +30% in New Mexico; Intel has confirmed some customer designs have ported from CoWoS to Foveros without modification. Samsung I-Cube in volume ramp targeting NVDA as secondary partner. OSATs (ASE VIPack, Amkor, SPIL) absorb lower-end InFO and overflow. Packaging capacity is now the 2021-equivalent of leading-edge wafer capacity as the binding AI-supply constraint.
 
+> [!question] 2026-04-29 [[pinned]]
+> What is the yield / product capability delta between Intel and TSMC's advanced packaging businesses. Does TSMC have improvements to its COWOS process that is under development.
+
 **Geographic diversification is aspirational at leading edge through 2028.** TSMC Arizona Fab 21 (N4) reached yield parity with Taiwan in ~2 quarters (2025); Fab 22 (N2) first-wafer 2027-2028; A16 in Arizona 2029+. Arizona is 5-8% of total capacity at 2030 full-ramp. Samsung Taylor 2nm delayed to late 2026 (skipping originally planned N4 lines). Intel Ohio Fab 52 delayed from 2025 to 2030. Leading-edge through 2028 is >95% Taiwan-physical regardless of accounting-share redistribution.
 
 ## Product level analysis
@@ -74,6 +79,9 @@ SF2 (2nm GAA) entered mass production Q4 2025. Anchor products: Exynos 2600 (con
 ### Intel Foundry — 18A to 14A
 
 Intel 18A (1.8nm-class, RibbonFET + PowerVia backside power) in HVM at Fab 52 Arizona. Lead products: Panther Lake (client), Clearwater Forest (server). External anchors: Microsoft (committed), AWS AI Fabric (multi-billion, ramping 2026), Google ("likely to follow" per Semicone reporting). 18A-P variant in development for external-foundry customers. Intel 14A targeted 2028-2029 HVM with 2 early customer prospects (PDK distributed, zero committed volume). 14A is Intel's High-NA EUV bet vs TSMC's multi-patterning A14. Capex 2026 flat to down from $17.7B 2025 under Lip-Bu Tan's CapEx discipline.
+
+> [!question]  2026-04-29 
+> What signals if any, can be found today
 
 ### SMIC — DUV multi-patterning at sub-7nm
 
@@ -164,8 +172,8 @@ IIM-1 Chitose (Hokkaido): cleanroom activated mid-2025; EUV installed; 2nm GAA t
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Japanese PR/BARC supply chain risk to leading-edge foundry EUV lithography; TSM less exposed than Samsung/Hynix per Taiwan/Korean localization status
 
 ### Related sectors
-- [[Sectors/Semiconductor Capital Equipment]] — WFE demand is a derivative of foundry CapEx; shared customer-concentration tail risk
-- [[Sectors/GPU & AI Compute Accelerators]] — NVDA + AMD foundry dependency is the largest single leading-edge demand bucket
+- [[Sectors/Semiconductor Capital Equipment]] — WFE sector hub; demand is a derivative of foundry CapEx; shared customer-concentration tail risk
+- [[Compute & AI Compute Accelerators]] — NVDA + AMD foundry dependency is the largest single leading-edge demand bucket
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — AVGO ASIC + hyperscaler XPU demand is the second-largest leading-edge bucket
 - [[Sectors/NAND Memory & Storage]] — adjacent foundry-tech franchise; hybrid-bonding overlap with TSMC SoIC
 - [[Sectors/Optical Networking & Photonics]] — COUPE / co-packaged-optics integration with TSMC advanced packaging

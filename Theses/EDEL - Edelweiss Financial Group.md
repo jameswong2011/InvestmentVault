@@ -160,7 +160,7 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 - [[Research/2025-12-26 - EDEL - Edelweiss Financial Group Market Share]] — Detailed market share analysis across segments (MF, alternatives, ARC, lending) with competitive positioning and ICRA credit commentary
 - [[Research/2026-04-02 - Israel India Relations Analysis]] — India-Israel Special Strategic Partnership (Feb 2026) + defence MoU + $3.75B bilateral trade — context for India's diplomatic/defence alignment as EAAA institutional-LP environment; CDPQ $1.3B + Israeli sovereign capital as potential future LP expansion vector
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: ground war threatens EAAA IPO timing; India NBFC funding costs spike; platform-factory catalyst exposed
-- [[Sectors/Indian Financial Services]]
+- [[@Indian Financial Services]]
 
 ## Log
 
@@ -178,7 +178,7 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 
 ### 2026-04-22
 - Sector re-scoped: Financial Services → Indian Financial Services (vault-wide subsector taxonomy reorganization).
-- Wikilink cleanup: Replaced stale [[Sectors/Financial Services]] reference in Related Research with [[Sectors/Indian Financial Services]] following sector note fill-in.
+- Wikilink cleanup: Replaced stale [[Sectors/Financial Services]] reference in Related Research with [[@Indian Financial Services]] following sector note fill-in.
 
 ### 2026-04-23 (/sync — orphan linking)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]]: Hezbollah resilience extends Iran scenario durability; India macro overhang (85% crude import, 30-day SPR) persists beyond ceasefire, modestly negative for domestic NBFC/alternatives flows but EAAA's USD-denominated global-LP base (CDPQ, $843M raised) is structurally insulated. Conviction unchanged (medium).

@@ -186,7 +186,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ## Related Research
 
-- [[Sectors/GPU & AI Compute Accelerators]] — sector MOC; AI accelerator competitive dynamics
+- [[Compute & AI Compute Accelerators]] — sector MOC; AI accelerator competitive dynamics
 - [[Theses/NVDA - Nvidia]] — primary GPU competitor; AMD 5–8% vs. NVDA 75% share; vertical software stack comparison
 - [[Theses/AVGO - Broadcom]] — custom ASIC competitor; Pensando vs. Broadcom networking/switching competitive context
 - [[Theses/TSM - Taiwan Semiconductor]] — fab dependency; CoWoS allocation + Taiwan geopolitical tail
@@ -209,4 +209,4 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-04-22
 - Sector re-scoped: Semiconductors → GPU & AI Compute Accelerators (vault-wide subsector taxonomy reorganization).
-- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Sectors/GPU & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.
+- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Compute & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.

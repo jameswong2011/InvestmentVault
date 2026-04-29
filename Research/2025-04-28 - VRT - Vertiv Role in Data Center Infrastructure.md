@@ -324,4 +324,4 @@ In summary, **Vertiv’s specialization in data centers gives it an advantage in
 
 ## Related Sectors
 - [[Sectors/Data Center Power & Cooling]] — cited in §Industry history (Liebert 1946 → Emerson 1987 → Platinum/Vertiv 2016 → IPO 2020 lineage), §Competitive dynamics (Vertiv vs. Schneider scope comparison), §Product level analysis (Vertiv flagship products)
-- [[Sectors/GPU & AI Compute Accelerators]] — Back-reference: cited in sector fill under Related Research — Vertiv liquid cooling collaboration with Nvidia is part of the rack-level thermal enablement required for Blackwell/Rubin NVL72 and MI450 Helios at >100 kW/rack density; cooling constraint is a gating factor for 2026 GPU density roadmap.
+- [[Compute & AI Compute Accelerators]] — Back-reference: cited in sector fill under Related Research — Vertiv liquid cooling collaboration with Nvidia is part of the rack-level thermal enablement required for Blackwell/Rubin NVL72 and MI450 Helios at >100 kW/rack density; cooling constraint is a gating factor for 2026 GPU density roadmap.

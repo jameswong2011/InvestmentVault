@@ -244,4 +244,4 @@ The highest supervisor of Bastion in World of Warcraft: Shadowlands is **Kyresti
 
 ## Related Sectors
 
-- [[Sectors/Indian Digital Conglomerates]] — Back-reference: India macro / geopolitical context (defence self-reliance, "Aatmanirbhar Bharat", India-Pakistan risk premium) is an upstream input to the Indian Digital Conglomerates operating environment covered in that sector note.
+- [[@Indian Digital Conglomerates]] — Back-reference: India macro / geopolitical context (defence self-reliance, "Aatmanirbhar Bharat", India-Pakistan risk premium) is an upstream input to the Indian Digital Conglomerates operating environment covered in that sector note.

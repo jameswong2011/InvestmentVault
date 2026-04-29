@@ -251,4 +251,4 @@ Why is this here?
 - [[Sectors/Semiconductors]]
 
 ## Related Sectors
-- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector fill under Product level analysis and Investor heuristics (AMAT vs LRCX strategic comparison — broadest portfolio vs etch specialist; hybrid bonding partnership exposure via BESI 9% stake; valuation gap framework).
+- [[Sectors/Semiconductor Capital Equipment]] — Back-reference: cited in sector hub under Product-level vendor map and Insights #1-2 (AMAT vs LRCX strategic comparison — broadest portfolio vs etch specialist; hybrid bonding partnership exposure via BESI 9% stake; valuation gap framework).

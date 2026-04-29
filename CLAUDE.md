@@ -140,8 +140,7 @@ Obsidian callouts (`> [!type]`) serve as user-initiated feedback markers within 
 |---|---|---|
 | **Fresh** | `> [!type] YYYY-MM-DD` alone | Unresolved user objection / question / suggestion |
 | **Addressed** | `> [!type] YYYY-MM-DD → Addressed YYYY-MM-DD` + `**Prompt:** *<original text>*` line (bold label, italicised body) + `**Response:**` block inside | Prior user-LLM exchange; resolved audit trail |
-| **Pinned** | header contains `[[pinned]]` | Intentionally left open; do NOT address |
-| **Preserved** | addressed callout header contains `[[preserve]]` | Addressed but exempt from `/archive-callouts` sweep; stays in original section indefinitely |
+| **Pinned** | header contains `[[pinned]]` (fresh OR addressed state) | Persistent revisit slot — Claude addresses normally when asked; the marker exempts the callout from `/archive-callouts` 180-day sweep so it stays in its original section indefinitely; user can re-open later (delete `→ Addressed`/`Prompt`/`Response` blocks; marker survives) for re-address with newer data |
 | **Legacy** | plain bullet inside `## Legacy Callouts` section | Previously addressed, swept to archive section by `/archive-callouts`; historical read-only record |
 
 **Addressed-callout formatting contract** (applies to every callout address — thesis / sector / macro):
@@ -175,10 +174,10 @@ Rules:
 1. **Never author callouts.** Callouts are user-initiated markers. LLM uncertainty or alternative framings go in prose, wikilinks, or `## Outstanding Questions` — not in callouts.
 2. **Fresh callouts are open signals, not ground truth.** The user has flagged the surrounding content as contested. Treat the flagged claim as unresolved.
 3. **Addressed callouts are history.** Read the `**Response:**` block for context on prior user-LLM exchanges; do NOT re-address unless explicitly asked.
-4. **Pinned callouts opt out of addressing.** "Address all fresh callouts" explicitly skips any callout containing `[[pinned]]`.
+4. **Pinned callouts are addressed normally — the marker is a persistent-revisit signal, not a skip.** "Address all fresh callouts" addresses pinned callouts like any other. The `[[pinned]]` marker on the header survives the address and tells `/archive-callouts` to skip the callout indefinitely (no 180-day sweep), so the user can revisit and re-address later as new data arrives. To re-open: delete the `→ Addressed YYYY-MM-DD`/`Prompt`/`Response` content; the marker stays; Claude re-addresses with current data on next request.
 5. **Never edit or delete a user's callout unless addressing it.** Even when rewriting sections (via `/deepen`, `/sync`, `/compare`, `/scenario`), preserve fresh and pinned callouts in place.
 6. **`## Legacy Callouts` section is read-only archive.** Never hand-edit entries — the section is owned exclusively by `/archive-callouts`. Never re-sweep entries back to their original sections. Never address legacy entries (they are addressed by definition). Read them as historical context when relevant (e.g., `/deepen` evaluating section history, `/surface` scanning for resolved questions).
-7. **`[[preserve]]` marker exempts addressed callouts from `/archive-callouts` sweep.** Treat the marker the same as `[[pinned]]` when it comes to `/graph` unresolved-wikilink handling (intentional unresolved link, not broken).
+7. **`[[pinned]]` is an intentionally-unresolved wikilink.** Do NOT create `pinned.md`. `/graph` and `/lint` treat it as an allowlisted unresolved marker — never flag as a broken reference. The `[[preserve]]` marker is **deprecated** (replaced by `[[pinned]]` 2026-04-29); `/lint` flags any remaining occurrences for migration.
 
 **Skill-specific callout handling**:
 
@@ -188,10 +187,10 @@ Rules:
 - `/sync`: reads callout-driven Log entries via Rule #7 prefix classification; does not read callout body content directly. Skips `## Legacy Callouts` during callout-block scans (section contains plain bullets, not `> [!type]` blocks, but the scanner should skip the section defensively).
 - `/surface`: unaddressed callouts signal unresolved questions worth flagging in the surface report. `## Legacy Callouts` is optional pattern-analysis input (out of scope for v1).
 - `/compare`, `/scenario`: preserve callouts AND `## Legacy Callouts` entries in affected theses verbatim during Log/section updates.
-- `/archive-callouts`: owns the `## Legacy Callouts` section. Sweeps addressed callouts older than threshold (default 180 days from `→ Addressed` date) into the section as plain bullets, sorted descending. Creates the section if absent (between `## Related Research` and `## Log`). `[[preserve]]` opt-out per callout.
-- `/graph`: treats `[[preserve]]` as intentional unresolved wikilink (same handling as `[[pinned]]`) — never flag as broken.
+- `/archive-callouts`: owns the `## Legacy Callouts` section. Sweeps addressed callouts older than threshold (default 180 days from `→ Addressed` date) into the section as plain bullets, sorted descending. Creates the section if absent (between `## Related Research` and `## Log`). `[[pinned]]` opt-out per callout — applies regardless of fresh/addressed state.
+- `/graph`: treats `[[pinned]]` as intentional unresolved wikilink — never flag as broken.
 - `/rollback`: recognizes `pre-callout-sweep` trigger name; standard snapshot restore undoes a sweep.
-- `/lint`: enforces archive schema (checks #44–#47) — sweep freshness, stale-fresh callouts, malformed Legacy entries, orphan Legacy sections.
+- `/lint`: enforces archive schema (checks #44–#48) — sweep freshness, stale-fresh callouts, malformed Legacy entries, orphan Legacy sections, deprecated `[[preserve]]` markers (migrate to `[[pinned]]`).
 
 ## Active Context
 - [[_hot.md]] — recent context and open questions, updated by `/sync` and other skills

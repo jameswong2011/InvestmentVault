@@ -210,8 +210,8 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 - [[Theses/SNDK - SanDisk]] — HBF uses TSV/advanced packaging; adjacent NAND thesis
 - [[Theses/285A - Kioxia]] — Adjacent NAND thesis; BiCS die stacking technology
 - [[Research/2026-04-15 - BESI - Hybrid Bonding Market Projections]] — HB market $1.47B→$5.6B (2030) at 25.1% CAGR, D2W positioning, Samsung/SK Hynix/Micron adoption timelines
-- [[Theses/SEMICAP - Semiconductor Capital Equipment]] — Sector-level WFE thesis positions BESI as Tier 2 satellite (10% allocation); frames hybrid bonding debate as market distraction — equipment spend growing 40%+ regardless of hybrid bonding timeline via CoWoS expansion
-- [[Sectors/Semiconductor Capital Equipment]] — Sector Note
+- [[Sectors/Semiconductor Capital Equipment]] — Sector-level WFE thesis positions BESI as Tier 2 satellite (10% allocation); frames hybrid bonding debate as market distraction — equipment spend growing 40%+ regardless of hybrid bonding timeline via CoWoS expansion
+- [[Sectors/Semiconductor Capital Equipment]] — Sector hub (absorbed prior `Theses/SEMICAP - Semiconductor Capital Equipment` thesis 2026-04-29; sector now serves dual role as MoC and basket-level investment hub)
 
 ## Log
 

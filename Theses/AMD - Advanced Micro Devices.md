@@ -182,7 +182,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ## Related Research
 
-- [[Sectors/GPU & AI Compute Accelerators]] — sector MOC; AI accelerator competitive dynamics
+- [[Compute & AI Compute Accelerators]] — sector MOC; AI accelerator competitive dynamics
 - [[Theses/NVDA - Nvidia]] — primary GPU competitor; AMD 5–8% vs. NVDA 75% share; vertical software stack comparison
 - [[Theses/AVGO - Broadcom]] — custom ASIC competitor; Pensando vs. Broadcom networking/switching competitive context
 - [[Theses/TSM - Taiwan Semiconductor]] — fab dependency; CoWoS allocation + Taiwan geopolitical tail
@@ -208,7 +208,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-04-22
 - Sector re-scoped: Semiconductors → GPU & AI Compute Accelerators (vault-wide subsector taxonomy reorganization).
-- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Sectors/GPU & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.
+- Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Compute & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.
 
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: Rewrote Bull Case #3 to integrate Venice Dense 2.7x thread-density vs Intel Diamond Rapids (SMT removed); updated Outstanding Question #7 with partial-resolution framing (Intel's credible agentic-AI response pushed to 2028+ on SMT+Coral Rapids). Conviction strengthened — Bull #3 durability improved on structural, not cyclical, CPU positioning. Snapshot: [[_Archive/Snapshots/AMD - Advanced Micro Devices (pre-sync 2026-04-24-101646)]]
