@@ -20,6 +20,11 @@ source: Consolidated from Claude, ChatGPT, Grok, Gemini conversation exports; su
 
 - **The open-source Llama strategy is the most sophisticated competitive moat construction in big tech — "commoditize the complement" executed at a scale that mirrors Linux's disruption of proprietary UNIX.** 700M+ downloads; Llama 5 matches or exceeds GPT-5 and Gemini 2.0 on reasoning/coding/agentic benchmarks. If AI models are free, value accretes to whoever owns distribution (3.54B DAP) and first-party behavioral data. OpenAI and Anthropic need high API margins to survive; Meta needs low AI costs to improve ads — structural misalignment means Meta's interests are perfectly aligned with the deflationary AI pricing trend that threatens every model company.
 
+> [!question] 2026-04-30 → Addressed 2026-04-30 [[pinned]]
+> **Prompt:** *Analyse the game theory around Meta's open source AI efforts. Is this simply to reduce the budget of AI start-ups and incumbent platforms so they do not have money to reinvest to produce products that can eventually compete against Meta in understanding user intent and identity which allows them to leverage this capability to erode Meta's share of consumer time spent and purchasing intent monetisation.*
+>
+> **Response:** Yes — capital starvation is the mechanism, but only as a means to a deeper end (preserving Meta as the bottleneck where consumer time and purchase intent get monetized). Three asymmetries make it work: API revenue compression, reinvestment capacity erosion, and consumer-agent disintermediation prevention. Strategy ceiling is competitors with non-API funding (Google search, Tesla/X synergy, state capital). Full analysis: §Industry Context → The AI Model Layer → Game theory: capital starvation as moat construction.
+
 - **The "capex credibility gap" is a narrative problem masquerading as a financial problem — and the narrative is weakening faster than the market recognizes.** Advantage+ reached $60B annual run rate by Q3 2025 (3x faster monetization than OpenAI); AI-enhanced video ads deliver 30% higher conversion rates. Meta generated $201B revenue and $46.1B FCF on 2025's $72B capex, guided Q1 2026 at $53.5-56.5B (23-25% growth), and committed "2026 operating income will be above 2025." Any signal of capex plateau (as with 2023-2024 efficiency year) triggers substantial multiple expansion.
 
 - **Ray-Ban smart glasses are building the hardware distribution channel for AR/AI that Apple's Vision Pro failed to establish — and the unit economics are already compelling at scale.** 7M+ units sold in 2025 (up 200% H1), targeting 10M by end 2026; Ray-Ban Display ($799) facing "unprecedented demand" forcing international launch delays. Price points $224-$799 vs Vision Pro at $3,499. EssilorLuxottica partnership provides 18,000+ retail stores without building hardware distribution from scratch. At 7M+ units, the glasses business may approach contribution-margin breakeven — buried in Reality Labs' $17B+ annual losses but creating an AI-powered wearable platform with camera/microphone access to the physical world that no competitor possesses.
@@ -84,6 +89,30 @@ Meta's advertising infrastructure has undergone a fundamental transformation sin
 
 - **AI Infrastructure**: 2026 capex guidance of **$115-135B** (nearly 2x 2025's $72.2B), directed toward training/inference compute (1.5M+ GPU fleet including Nvidia Blackwell B200/GB200), data center construction, and custom silicon development. Meta is effectively becoming one of the world's largest AI infrastructure operators, with the $21B CoreWeave capacity deal signaling intent to build inference capacity well ahead of current demand.
 
+#### Capex allocation: where the $115-135B goes
+
+Meta does not segment capex by purpose. Reconciling to disclosed deals, GPU fleet sizing, and product scope yields the following approximate FY2026 allocation:
+
+| Bucket | FY2026 Estimate | Purpose | Tied to core ad business |
+|--------|----------------|---------|-------------------------|
+| Inference compute | $35-45B | Andromeda ad ranking, content recommendation, organic feed ranking, Reels/Stories serving across 3.54B DAP | Direct |
+| Training compute | $40-55B | Llama 5/6, Muse Spark, Blackwell B200/GB200 cluster expansion | Indirect — models then power ad inference + Meta AI |
+| Data center construction | $20-30B | New campuses (Louisiana, Iowa, Ohio); power, cooling, networking | Shared infrastructure |
+| CoreWeave external capacity | $21B (multi-year) | Meta AI inference scaling beyond owned infrastructure | Meta AI / new revenue surfaces |
+| Reality Labs hardware capex | $3-5B | Smart glasses tooling, Quest production, Orion R&D | No — non-ad hardware |
+| Other (network, real estate) | $3-5B | Edge networking, office | Shared |
+
+**~70-80% (~$80-100B) serves core advertising** directly or via dual-use infrastructure (training models that then power ad ranking and content recommendation). The genuinely "adjacent" portion — Reality Labs, Meta AI inference beyond ad signals, Muse Spark superintelligence research — is ~$25-40B (~20-30% of total).
+
+**Capex reads larger than peers because there is no cloud-customer dilution.** Microsoft's ~$80B serves Azure customers (~45%) plus internal needs; Google's ~$75B serves Cloud (~30%) plus search ads (~55%); Amazon's ~$100B serves AWS (~70%) plus retail. Every Meta capex dollar serves Meta's own products (ads, Meta AI, smart glasses) — making ROI more legible internally (every dollar improves a CPM, reduces an inference cost, or funds a hardware platform with disclosed unit economics) but harder for external investors to attribute by revenue segment.
+
+**Concentration risk sits in the training-compute bucket.** $40-55B/yr depends on Muse Spark and successor frontier models producing competitively differentiated capability. If Llama-class open models remain sufficient for ad inference (the dual-use rationale), the marginal training spend becomes a Reality Labs–style cost center. Bear case scenario triggers if 2027 capex guidance does not show training-compute plateau.
+
+> [!question] 2026-04-30 → Addressed 2026-04-30 [[pinned]]
+> **Prompt:** *Meta's capex seems enormous compared to other media companies and hyperscalers. How is this being utilised, what proportion is used to serve the core business (content and ad delivery) vs. other adjacent investment efforts.*
+>
+> **Response:** ~70-80% ($80-100B of $115-135B) serves core advertising directly or via dual-use infrastructure (training models that then power ad ranking). Adjacent investment (Reality Labs, Meta AI inference, Muse Spark) is ~20-30%. Looks larger than Microsoft/Google/Amazon because virtually all serves Meta's own products — no cloud-customer dilution. Full breakdown: §Business Model & Product Description → Layer 3 → Capex allocation.
+
 ## Industry Context
 
 ### Digital Advertising: A Duopoly Becoming a Monopoly
@@ -119,6 +148,22 @@ In the AI model market, Meta occupies a unique position — it is simultaneously
 - **Google DeepMind** has Gemini but faces a similar tension — Google Search is being disrupted by AI answers, while Meta's ad business is enhanced by AI. Google's AI investment is partly defensive (protecting search); Meta's is purely offensive (improving ads).
 
 - Meta's AI infrastructure ($115-135B capex) is often compared negatively to Microsoft's ($80B) or Google's ($75B). But Meta's AI investment is directed almost entirely toward improving its own products (ad targeting, content recommendation, Meta AI), whereas Microsoft and Google must also serve external cloud customers. This makes Meta's capex return more legible internally, even if it's harder for external investors to isolate.
+
+#### Game theory: capital starvation as moat construction
+
+The "commoditize the complement" frame understates Llama's hostile dimension. Three asymmetries make capital starvation effective:
+
+1. **API revenue compression.** OpenAI's ~$13B ARR and Anthropic's ~$5-7B ARR depend on per-token pricing. Each Llama release at frontier capability collapses willingness-to-pay — API prices have fallen 83-95% since 2023. Free competitive alternatives cap the revenue ceiling; comparable capability erodes pricing within whatever ceiling remains.
+
+2. **Reinvestment capacity erosion.** OpenAI's $40B+ annualized cash burn is funded by venture commitments and Microsoft's $13B+ stake, not operating cash flow. If API ARR plateaus instead of compounding into 2027-2028, the next training cycle (GPT-6, Claude 5) faces capital scarcity. Meta's $115-135B capex is internally funded — competitors' equivalent training spend requires external capital that becomes harder to raise as unit economics deteriorate, and the harder the capital raise, the longer the gap between training cycles.
+
+3. **Distribution disintermediation prevention.** The deeper threat is not OpenAI's API business — it is whether OpenAI/Anthropic build a consumer agent that owns user intent capture (the "personal AI" layer that decides what to buy, message, consume). ChatGPT (800M WAU) ≈ Meta AI (1B MAU) on reach, but ChatGPT has materially higher daily intensity per user. Capital starvation slows the consumer-agent race, buying time for Meta AI engagement (currently 4% DAU) to inflect and for Andromeda/Advantage+ to deepen advertiser ROI dependence.
+
+**The genuine prize**: Llama's job is to keep model capability fungible so that a third party cannot disintermediate Meta's ad bottleneck by owning a smarter model alone. The scarce assets — 3.54B DAP distribution, 84% gross margin first-party behavioral data, Andromeda's signal integration — sit one layer above the model. Llama prevents that layer from being captured by anyone other than Meta.
+
+**Strategy ceiling**: capital starvation only bites the API-revenue tier. Google's AI is cross-funded by search (~$200B+ revenue); xAI by Tesla/X synergy bets and Saudi capital; Chinese labs (DeepSeek, Qwen, Yi) by state capital. Llama is necessary, not sufficient — it pairs with the distribution + behavioral data moats that no model release can disintermediate.
+
+**Muse Spark hedge**: the proprietary tier from Meta Superintelligence Labs suggests Meta is also building a top-of-funnel capability layer it will *not* open-source. The hedge is against the scenario where capital starvation succeeds slowly but Meta still needs differentiated AI capability for Meta AI's consumer-agent ambitions. The trust risk noted in §Outstanding Questions (does Muse Spark break the open-source social contract?) is the price Meta pays for retaining that hedge.
 
 ### Wearables / AR / Smart Glasses
 
@@ -213,3 +258,6 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 ### 2026-04-22
 - Sector re-scoped: Consumer & Digital → Social Platforms & Digital Advertising (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: replaced stale [[Sectors/Consumer & Digital]] with [[Sectors/Social Platforms & Digital Advertising]] in Related Research list.
+
+### 2026-04-30
+- Addressed user callouts: Llama as capital-starvation game theory (§Industry Context → AI Model Layer); FY26 capex allocation breakdown showing ~70-80% to core ads (§Layer 3) — conviction unchanged (medium); strengthens Llama-as-moat narrative.

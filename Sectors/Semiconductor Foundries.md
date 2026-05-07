@@ -3,9 +3,6 @@ date: 2026-04-22
 tags: [sector, moc]
 status: active
 ---
-> [!question] 2026-04-29 [[pinned]]
-> What is the threat from Rapidus in breaking existing competitive dynamics, what is their volume capacity up to 2030 and what if any data exists on their product specifications, advanced packaging capabilities, and die-level yields.
-
 # Semiconductor Foundries
 
 ## Active Theses
@@ -50,8 +47,10 @@ status: active
 
 **Advanced packaging has become a second foundry franchise.** TSMC CoWoS scaling 35K → 75K → 130K wpm (2024 → 2026 → 2027), >50% of 2026 CoWoS pre-booked by NVDA at +20% pricing. Intel Foveros / EMIB capacity scaling +150% / +30% in New Mexico; Intel has confirmed some customer designs have ported from CoWoS to Foveros without modification. Samsung I-Cube in volume ramp targeting NVDA as secondary partner. OSATs (ASE VIPack, Amkor, SPIL) absorb lower-end InFO and overflow. Packaging capacity is now the 2021-equivalent of leading-edge wafer capacity as the binding AI-supply constraint.
 
-> [!question] 2026-04-29 [[pinned]]
-> What is the yield / product capability delta between Intel and TSMC's advanced packaging businesses. Does TSMC have improvements to its COWOS process that is under development.
+> [!question] 2026-04-29 → Addressed 2026-04-29 [[pinned]]
+> **Prompt:** *What is the yield / product capability delta between Intel and TSMC's advanced packaging businesses. Does TSMC have improvements to its COWOS process that is under development.*
+>
+> **Response:** TSMC leads on platform breadth (CoWoS-S/L + SoIC-X + COUPE), volume scale (10-15× competitor capacity) and pitch advance (SoIC-X 9µm vs Foveros Direct ~12µm); Intel matches only on backside-power + packaging combination (closing in late 2026 with TSMC A16). TSMC roadmap: CoWoS-L 12-stack HBM (2027), CoPoS panel substrate (2028+), COUPE volume with NVDA Spectrum-X (2027), SoIC-X sub-5µm pitch, glass interposer R&D. Full table + roadmap detail in §Product level analysis → Advanced packaging — capability + yield comparison.
 
 **Geographic diversification is aspirational at leading edge through 2028.** TSMC Arizona Fab 21 (N4) reached yield parity with Taiwan in ~2 quarters (2025); Fab 22 (N2) first-wafer 2027-2028; A16 in Arizona 2029+. Arizona is 5-8% of total capacity at 2030 full-ramp. Samsung Taylor 2nm delayed to late 2026 (skipping originally planned N4 lines). Intel Ohio Fab 52 delayed from 2025 to 2030. Leading-edge through 2028 is >95% Taiwan-physical regardless of accounting-share redistribution.
 
@@ -80,8 +79,10 @@ SF2 (2nm GAA) entered mass production Q4 2025. Anchor products: Exynos 2600 (con
 
 Intel 18A (1.8nm-class, RibbonFET + PowerVia backside power) in HVM at Fab 52 Arizona. Lead products: Panther Lake (client), Clearwater Forest (server). External anchors: Microsoft (committed), AWS AI Fabric (multi-billion, ramping 2026), Google ("likely to follow" per Semicone reporting). 18A-P variant in development for external-foundry customers. Intel 14A targeted 2028-2029 HVM with 2 early customer prospects (PDK distributed, zero committed volume). 14A is Intel's High-NA EUV bet vs TSMC's multi-patterning A14. Capex 2026 flat to down from $17.7B 2025 under Lip-Bu Tan's CapEx discipline.
 
-> [!question]  2026-04-29 
-> What signals if any, can be found today
+> [!question]  2026-04-29 → Addressed 2026-04-29 [[pinned]]
+> **Prompt:** *What signals of manufacturing process architecture divergence can be found today between the major fabs (INTC,Samsung,TSMC) at the leading edge.*
+>
+> **Response:** Three live divergence signals: (1) backside-power timing — Intel 18A ships PowerVia now, Samsung on SF2P refresh, TSMC delays to A16 late 2026; (2) High-NA EUV — Intel + Samsung committed (14A / SF1.4), TSMC declines through A14; (3) MTr/mm² density has converged within 5% across TSMC N2 / Samsung SF2 / Intel 18A — competition has shifted from raw density to DTCO. Architecture battleground is **2028 (TSMC A14 vs Intel 14A vs Samsung SF1.4)**. Full vendor table + analysis in §Product level analysis → Process architecture divergence.
 
 ### SMIC — DUV multi-patterning at sub-7nm
 
@@ -97,8 +98,47 @@ Most advanced process 22/28nm. Q2 2025: 22/28nm = 40% of wafer revenue (up from 
 
 ### Rapidus — IBM-licensed 2nm, pilot 2026 → HVM end-2027
 
-IIM-1 Chitose (Hokkaido): cleanroom activated mid-2025; EUV installed; 2nm GAA test wafers running; PDK release 2H 2026. Business model: small-volume, fast-cycle foundry for customers iterating chip designs — value proposition is cycle time, not capacity. Funding: ¥267.6B (~$1.7B) first round + $4B METI 2026 additional commitment. More than 150 Rapidus engineers trained at IBM Albany 2023-2024. The only credible new leading-edge entrant globally since 2010.
+**Process and facility.** IIM-1 Chitose (Hokkaido): cleanroom activated mid-2025; EUV installed (NXE:3800E, second-hand from IBM Albany on 2-year lease); 2nm GAA nanosheet test wafers running on IBM-licensed RibbonFET-equivalent architecture; PDK release 2H 2026. More than 150 Rapidus engineers trained at IBM Albany 2023-2024. Test-wafer yields are not publicly disclosed; PDK release with published process parameters in 2H 2026 is the binary credibility signal — without commercial-viable yield trajectory, no fabless customer commits silicon.
 
+**Volume capacity through 2030.** IIM-1 designed for **~25K wpm at full ramp** (end-2027 target). Compare to TSMC N2 fully-ramped at ~120-140K wpm — Rapidus is ≤20% of TSMC's leading-edge wafer capacity even at design-spec utilisation. METI's $4B 2026 follow-on commitment implies IIM-2 (Hokkaido follow-on or co-located) feasibility study running for 2028-2030 decision; if approved, **total Rapidus 2030 capacity = 50-75K wpm**. Total estimated capital need to reach end-2027 HVM is $15-20B; ~$5.7B committed to date (¥267.6B first round + $4B METI 2026), so funding gap is real and depends on Japan METI follow-through plus possible foreign equity (rumoured talks with Apple, Microsoft for sovereign-compute capacity).
+
+**Advanced packaging.** Rapidus partnered with TEL (Tokyo Electron) on hybrid-bonding equipment and has pilot 3D-packaging facility planned at Chitose alongside IIM-1. Less mature than wafer-fab work; primarily a wafer-foundry play through 2028. Backside power delivery (BSPDN) targeted for IIM-2 era (2029+) — Rapidus is not first-to-volume on backside power.
+
+**Threat assessment by vector.** *(1) Sovereign-compute / defense* — fastest credible vector; Japanese government, US DARPA-Trusted-Foundry adjacency, NATO-ally sovereign AI. Small volume but high ASP. *(2) Fast-iteration startups* — Tenstorrent, Esperanto, Rivos-style customers needing 6-month design cycles where TSMC's queue is 9-18 months. Genuine differentiation if cycle-time delivery materialises. *(3) Japanese domestic semiconductor renaissance* — Sony image sensors, Renesas auto, Rohm power, Toshiba memory adjacency. Probably the largest 2028-2030 bookings vector. *(4) Hyperscaler second-source* — speculative; AWS / MSFT have Intel 18A; Apple is Taiwan-locked. Net threat to TSMC: limited share loss (~2-5% of leading-edge wafers by 2030) but high strategic optionality if any anchor customer materialises.
+
+**Why this matters more than the volume math suggests.** Rapidus is the only credible non-Taiwan, non-Korea, non-China leading-edge entrant since Samsung's 2005 entry. Probability of materially threatening TSMC's monopoly position remains <30% but is structurally non-zero — and the optionality is essentially un-priced into TSMC's 22x multiple.
+
+### Advanced packaging — capability + yield comparison (TSMC vs Intel vs Samsung)
+
+| Vendor | Platform(s) | Volume status (2026) | Yield (estimated/disclosed) | Differentiation |
+|---|---|---|---|---|
+| **TSMC** | CoWoS-S, CoWoS-L, SoIC-X, InFO, COUPE (CPO) | CoWoS at 75K wpm (2026) → 130K wpm (2027); SoIC in NVDA Rubin Ultra + AAPL M5 + AMD 3D V-Cache; COUPE risk-prod with AMD Feb 2026 | CoWoS-S ~80-85% mature; CoWoS-L (8-stack HBM4) ~65-75% ramping; SoIC-X >70% per AAPL volume implication | Only platform with full stack across 2.5D + 3D + photonic; CoWoS-L holds the 8-stack-HBM lead; SoIC-X hybrid bonding 2-gen ahead of competitors |
+| **Intel** | Foveros, Foveros Direct, EMIB | Foveros in Meteor Lake/Lunar Lake/Panther Lake client chips; Foveros Direct (hybrid bonding) in Lake-family; New Mexico packaging capacity +150% in 2026 | Foveros yields not formally disclosed but cited "high" at OCP 2025; estimated 70-80% mature; Foveros Direct lower (~50-65%, ramping) | Only vendor offering true backside power + advanced packaging today; Foveros Direct hybrid-bond pitch <10µm comparable to SoIC-X spec |
+| **Samsung** | I-Cube (2.5D), X-Cube (3D), H-Cube | I-Cube in volume ramp targeting NVDA as secondary partner; X-Cube hybrid-bond in qualification with BESI Kinex tooling | I-Cube ~70-75%; X-Cube hybrid bonding behind TSMC SoIC-X by ~2 generations; HBM packaging integration challenged by HBM-share collapse 41%→17% | Memory-foundry vertical integration on paper; in practice hampered by Samsung HBM yield issues and NVDA qualification gap |
+| **OSATs** (ASE / Amkor / SPIL) | Fan-out InFO, lower-end CoWoS | ASE VIPack handling overflow CoWoS; Amkor + SPIL absorbing TSMC CoWoS allocation | n/a — outsourced TSMC processes | Capacity-relief layer; not differentiated technology |
+
+**TSMC CoWoS roadmap under development.** (i) **CoWoS-L expansion to 12-stack HBM** (2027 timing) — accommodates HBM4-12Hi and HBM5 transition; required for NVDA Rubin Ultra and beyond. (ii) **CoPoS (Compact Panel-on-Substrate)** — large-format panel substrate replacing 12-inch wafer interposer for accelerator-scale dies; under development at Hsinchu pilot, 2028+ HVM target. (iii) **COUPE (Compact Universal Photonic Engine)** — co-packaged optics integrating SiPh transceivers with logic at the package level; AMD risk production Feb 2026, NVDA Rubin Spectrum-X integration 2027. (iv) **SoIC-X pitch shrink** — current generation ~9µm bond pitch; next-gen targets sub-5µm enabling truly stacked logic. (v) **Glass interposer** under research — substrate alternative to silicon for cost/scale.
+
+**Capability delta summary.** TSMC leads on platform breadth (2.5D + 3D + CPO), volume scale (10-15x competitor capacity), and pitch advance (SoIC-X 9µm vs Foveros Direct ~12µm). Intel leads only on backside power + packaging combination — but TSMC closes that with A16 backside power in late 2026. Samsung trails on every metric. The CoWoS bottleneck (line 132 macro shifts) is the single largest structural advantage in semicap today and is widening, not narrowing, through 2027.
+
+### Process architecture divergence — RibbonFET / nanosheet GAA / backside power at the leading edge
+
+| Vendor | 2nm-class node | Transistor architecture | Backside power | High-NA EUV strategy | Cell density (MTr/mm² claimed) |
+|---|---|---|---|---|---|
+| **TSMC** | N2 (HVM Q4 2025) | GAA nanosheet, 3-sheet NMOS / PMOS-tunable | Deferred to **A16** (late 2026 HVM) — branded "Super Power Rail" | Multi-patterning DUV through A14; **explicitly skipping High-NA EUV for N2 / A16 / A14**; first High-NA at 1.4nm (~2028) | ~313 (vs N3 215) — +45% density |
+| **Samsung** | SF2 (HVM Q4 2025), SF2P (refresh 2026) | GAA nanosheet ("MBCFET" branding, 2nd-gen since 3GAE 2022) — institutional GAA learning lead | Backside power on **SF2P** (refresh) and **SF1.4** (1.4nm class) | First High-NA EUV unit late 2025; SF1.4 is High-NA-dependent | SF2 ~331 (claimed); SF1.4 not disclosed |
+| **Intel** | Intel 18A (HVM Fab 52, Jan 2026) | **RibbonFET** (GAA nanosheet, Intel branding) + integrated PowerVia | **PowerVia backside power on 18A from day one** — first to volume globally | Twinscan EXE:5200B High-NA delivered Dec 2024 (Fab 52 Chandler); 18A uses High-NA on select layers; **14A is full High-NA platform** (2028-2029) | Intel 18A claims density parity with TSMC N2 (~313 MTr/mm²) |
+| **SMIC** (China-domestic only) | N+2 (7nm-class via DUV multi-patterning) | FinFET — **no GAA capability** in domestic toolchain through 2027 | Not in roadmap before 2030 | No EUV (export-controlled) — DUV LELELE multi-patterning for sub-7nm; cost + yield penalty | ~80-100 MTr/mm² (estimated, no public disclosure) |
+| **Rapidus** | IIM-1 2nm GAA nanosheet (HVM end-2027 target) | IBM-licensed nanosheet (RibbonFET-equivalent) | Targeted for IIM-2 era (2029+); not on IIM-1 | NXE:3800E (second-hand from IBM); High-NA on IIM-2 if funded | Not yet disclosed |
+
+**Three architecture-divergence signals visible today.** *(1) Backside-power timing*: Intel ships PowerVia in 18A volume now; Samsung in SF2P refresh; TSMC waits until A16 (late 2026). This is the single largest near-term divergence — Intel claims +25% density, +6-15% perf, -30% power for backside-power vs traditional front-side; if real and sustained, AMD/MSFT/AWS gain meaningful per-watt advantage on Intel 18A products vs TSMC N2 client/server silicon. *(2) High-NA EUV bet*: Intel committed (14A is full-platform); Samsung committed (SF1.4); TSMC declined through A14 (~2027-2028). If High-NA achieves the projected ~40% reduction in mask layers vs multi-patterning, Intel 14A and Samsung SF1.4 could leapfrog TSMC A14 on cost and cycle time around 2028. *(3) Density convergence*: Claimed MTr/mm² is now within 5% across TSMC N2 / Samsung SF2 / Intel 18A — first generation in a decade where leading-edge density isn't a TSMC walkover. The differentiation has shifted from "who has more density" to "who has better DTCO (design-technology co-optimisation)" — backside power, RibbonFET ribbon-count flexibility, MBCFET sheet-tunability.
+
+**What it means for the foundry race.** TSMC's ROI-first posture (defer backside power, defer High-NA, milk current ecosystem) is consensus-validated through 2026 — yields are the binary gating variable and TSMC wins on yield. The genuine architecture-divergence battleground is **2028 (TSMC A14 vs Intel 14A vs Samsung SF1.4)** — Intel + Samsung on High-NA, TSMC on multi-patterning + 2nd-gen backside power. If yields converge there, Intel + Samsung have a real shot at leading-edge node-leadership for the first time since 2017. If TSMC's ROI-first thesis holds, the architecture differences are academic and TSMC's monopoly extends another decade.
+
+> [!question] 2026-04-29 → Addressed 2026-04-29 [[pinned]]
+> **Prompt:** *What is the threat from Rapidus in breaking existing competitive dynamics, what is their volume capacity up to 2030 and what if any data exists on their product specifications, advanced packaging capabilities, and die-level yields.*
+>
+> **Response:** IIM-1 designed for ~25K wpm at full ramp (~20% of TSMC N2 capacity); 2030 ceiling 50-75K wpm if IIM-2 funded. 2nm GAA on IBM-licensed RibbonFET-equivalent; advanced packaging via TEL hybrid-bonding partnership (less mature than wafer fab); test-wafer yields not disclosed — 2H 2026 PDK release is the binary credibility signal. Threat is concentrated in sovereign-compute / fast-iteration startups / Japanese domestic renaissance — net <30% probability of materially threatening TSMC, but the optionality is largely un-priced. Full subsection rewritten in §Product level analysis → Rapidus.
 ### VIS, PSMC, Hua Hong, Nexchip, Tower — specialty tier
 
 - **Vanguard (VIS)**: 8-inch mature, TSMC+Philips JV legacy; Q2 2025 share 0.9%.
@@ -187,3 +227,6 @@ IIM-1 Chitose (Hokkaido): cleanroom activated mid-2025; EUV installed; 2nm GAA t
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: $100B 2028 capex + "good people" pricing discipline validates monopoly-rents thesis for TSM; ASML sold out adds upstream tail-risk. Sector-level implication reinforces the "leading-edge de-facto monopoly" core framing.
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Leading-edge PR/BARC supply chain (Shin-Etsu, TOK feed TSMC too); Taiwan localization farther along than Japanese per source — TSM less exposed but not zero. Adds a fifth unmodeled foundry supply-chain vector.
+
+### 2026-04-29
+- Addressed user callouts: 3 pinned `[!question]` callouts on the sector. (i) Advanced packaging capability + yield delta TSMC vs Intel vs Samsung + TSMC CoWoS roadmap → new subsection "Advanced packaging — capability + yield comparison" added to §Product level analysis (4-vendor table + 5-item TSMC roadmap: CoWoS-L 12-stack, CoPoS, COUPE, SoIC-X pitch shrink, glass interposer R&D). (ii) Process architecture divergence INTC/Samsung/TSMC at leading edge → new subsection "Process architecture divergence" added to §Product level analysis (5-vendor table + 3 live divergence signals: backside-power timing, High-NA EUV bet, density convergence with DTCO shift). (iii) Rapidus threat / volume capacity / specs / packaging / yields → existing Rapidus subsection materially expanded with Volume Capacity Through 2030 (~25K wpm IIM-1 → 50-75K wpm 2030 if IIM-2 funded), Advanced Packaging (TEL hybrid-bond partnership), Threat Assessment by Vector (4 vectors), and capital-need framing ($15-20B total to HVM vs ~$5.7B committed). Callouts marked addressed in place; `[[pinned]]` markers retained per perpetual-revisit semantic — re-open by deleting the `→ Addressed`/`Prompt`/`Response` blocks when new data warrants. Conviction unchanged.

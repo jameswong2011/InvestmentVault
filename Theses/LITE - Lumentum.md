@@ -193,6 +193,7 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 - [[Sectors/Optical Networking & Photonics]] — Sector Note (LITE + IQE as Active Theses; covers EML oligopoly, CPO inflection, SiPh foundry paradox, Chinese module vs Western component asymmetry, Fabrinet EMS monopoly, AAOI)
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch, $650B annual revenue requirement
 - [[Sectors/Semiconductor Capital Equipment]] — Sector-level WFE thesis: insight #6 identifies optical equipment enabler chain (FORM, AEHR, TSEM, GFS) as true picks-and-shovels of photonics supercycle; optical characterization as CPO mass production bottleneck; TSMC COUPE yield issues as gating factor
+- [[Sectors/Photonic Metrology]] — Optical wafer-test / burn-in / metrology sub-cluster (AEHR FOX-XP + FORM optical probe + ficonTEC alignment); LITE listed there as the primary upstream demand source for photonic test equipment via Greensboro 6-inch InP buildout, Cloud Light SiPh modules, and EML reliability-burn-in volume
 - [[Research/2026-04-29 - AIXA VECO - MOCVD Revenue Exposure to InP Photonics Cycle - synthesis]] — Aixtron optoelectronics 12% (2024) → 23% (2025) → 65% Q1 2026 order share; MOCVD upstream layer missing from SEMICAP insight #6; AIXA candidate for standalone thesis
 
 ## Log
@@ -219,3 +220,4 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 
 ### 2026-04-29
 - [Research note linkage]: Sized AIXA/VECO MOCVD revenue exposure — Aixtron optoelectronics 23% of 2025 revenue (€128M), 65% Q1 2026 order share, tracking 45-55% in 2026; Veeco Compound Semi only 9% (2025) → 12% (2026E). AIXA is becoming a CPO pure play; VECO MOCVD is dilutive within laser-anneal/advanced-packaging story. Added [[Research/2026-04-29 - AIXA VECO - MOCVD Revenue Exposure to InP Photonics Cycle - synthesis]] to Related Research — conviction unchanged.
+- [Sector cross-link]: Added [[Sectors/Photonic Metrology]] to Related Research. New sub-cluster (created today) of Semiconductor Capital Equipment covers the optical wafer-test/burn-in/metrology stratum and frames LITE as primary upstream demand source for AEHR/FORM photonic test equipment via Greensboro 6-inch InP fab + Cloud Light SiPh modules. Conviction unchanged — establishes downstream-of-LITE picks-and-shovels visibility in vault graph.

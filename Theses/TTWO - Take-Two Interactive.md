@@ -30,6 +30,11 @@ Binary-outcome investment centered on the most anticipated entertainment launch 
 
 - **Will GTA VI's online mode monetize at GTA Online's historic rate, or follow the Red Dead Online trajectory?** GTA Online generated ~$4-5B of GTA V's ~$8.5B lifetime revenue; Red Dead Online, built on the same core competencies, failed. GTA VI Online must demonstrate robust spending within its first 6-12 months to validate the $7.50+ FY2027 EPS consensus. The UGC marketplace is designed to solve the content bottleneck, but whether player-created content generates equivalent monetization at AAA fidelity is unproven. **Supply-side partial resolution (2026-04-24)**: Cfx Marketplace live January 2026 + Tebex €5K+/mo creator revenue + Claude-Lua removing the scripting barrier proves creators CAN earn income on Rockstar's platform infrastructure. The demand-side (whether photorealistic-GTA-VI-audience ARPU matches Roblox's stylized-audience ARPU) remains the binding unresolved question. Outstanding Question #2 (UGC at AAA fidelity scale) is the unresolved half.
 
+> [!question] 2026-05-01 → Addressed 2026-05-01
+> **Prompt:** *What is the present forecast x P/E sensitivity for TTWO through to 2030 contingent on GTA-VI monetisation.*
+>
+> **Response:** Three-scenario EPS path (Bear $4–8, Base $8–15, Bull $22–30 by FY2030) cross-tabulated against cyclical (15–20x), growth (20–25x), and platform (30–45x) multiples implies a FY2028E stock range of ~$120–900. Current ~$206 maps to Base × Cyclical-low (~15x FY2028E $14 = $210) — market prices moderate GTA VI success without a UGC re-rate; asymmetry skews bull (Platform re-rate could deliver +190–340%). Full matrix, anchors, and re-rating-trigger window: §Key Metrics → Forecast & P/E Sensitivity (FY2027–FY2030).
+
 - **Can UGC function at scale within GTA VI's photorealistic world, or is the format better suited to stylized platforms like Roblox?** Roblox ($1.5B in creator payouts) and Fortnite Creative ($370M) operate in low-fidelity environments where user content is visually coherent. GTA VI's photorealistic aesthetic may limit creator participation to sophisticated developers rather than the mass-market base driving Roblox's economics. FiveM's 270K peak concurrent players prove demand exists, but formalizing an independent community is a different challenge.
 
 - **Does the 30fps-locked console performance create a material engagement ceiling?** RTGI baked into the rendering foundation means 60fps is architecturally impossible without degrading visual quality. The 2025-2026 AAA landscape has conditioned players to expect 60fps options (Spider-Man 2, FF7 Rebirth, Horizon all offered performance modes). Whether this trade-off limits session length or long-term online engagement will become clear within the first week of reviews.
@@ -106,6 +111,40 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 | Institutional Ownership | 96.5% | Insider ownership only 1.09% |
 | Analyst Consensus | Strong Buy | 26/28 Buy; median PT $280 (range $165-300) |
 
+### Forecast & P/E Sensitivity (FY2027–FY2030)
+
+GTA VI launches November 19, 2026 — captures only ~4 months of FY2027 (TTWO fiscal year ends March 31). FY2028 is the first full GTA VI fiscal year and the most relevant valuation anchor. Three GTA-VI monetization scenarios drive the EPS path:
+
+| Scenario | GTA VI Lifetime Rev | FY2027E EPS | FY2028E EPS | FY2029E EPS | FY2030E EPS |
+|----------|---------------------|-------------|-------------|-------------|-------------|
+| **Bear** — RDR2 Online trajectory; online monetization fails | $5–6B | $5.00–5.50 | $7–8 | $5–6 | $4–5 |
+| **Base** — GTA Online historical match; consensus path | $8–12B | $7.50–7.79 (consensus) | $13–15 | $10–12 | $8–10 |
+| **Bull** — UGC platform transition; Roblox-like creator economy | $15–20B+ | $8–10 | $18–22 | $20–25 | $22–30 |
+
+**Anchors**: GTA V generated ~$8.5B over 13 years (~$650M/yr average, heavily front-loaded); RDR2 ~$3.5–4B over 7 years (online failed); Roblox paid $1.5B to creators from ~$4B revenue in 2025. Bear holds total TTWO revenue at ~$7–8B with ~15–20% net margin post debt service. Base assumes GTA Online-equivalent recurrent spending (~$1.5–2B/yr from GTA VI by FY2030) on $9–11B total revenue at 20–25% net margin. Bull layers platform economics: 25–30% net margin from creator-economy take rate (Rockstar collects ~75% per Roblox precedent), $2–3B/yr from GTA VI by FY2030 plus Cfx/FiveM scaled monetization.
+
+**P/E sensitivity by valuation framework** applied to FY2028E EPS (first full GTA VI fiscal year):
+
+| Scenario | FY2028E EPS | Cyclical Publisher (15–20x) | Growth/Recurring (20–25x) | Platform (30–45x) |
+|----------|-------------|------------------------------|----------------------------|---------------------|
+| Bear | ~$8 | $120–160 | $160–200 | $240–360 |
+| Base | ~$14 | $210–280 | $280–350 | $420–630 |
+| Bull | ~$20 | $300–400 | $400–500 | $600–900 |
+
+**Current ~$206 maps to Base × Cyclical-low (~15x FY2028E $14 = $210) or FY2027E $7.50 × 27.5x growth multiple** — market prices moderate GTA VI success without UGC re-rate. Sell-side median PT $280 = Base × Growth-low (20x FY2028E $14).
+
+**Asymmetry**:
+- **Downside** (Bear × Cyclical): $120–160 → ~25–40% drawdown if online monetization fails (RDR2 trajectory)
+- **Upside** (Bull × Platform): $600–900 → +190–340% if UGC creator economy validates at scale
+- **Crossover** (Base × Growth re-rate): $280–350 — consensus path requires demonstrable GTA Online-equivalent monetization without UGC scale
+
+**Key sensitivity drivers**:
+- **GTA VI Online ARPU** vs. GTA Online's ~$30–40/yr historical: Bear <$15, Base $25–40, Bull >$50 (UGC + creator economy adds new spend tier)
+- **Active player base by FY2030**: Bear 30–40M MAU (RDR Online-like decay), Base 50–70M MAU, Bull 100M+ (UGC inflection)
+- **Recurrent spending mix**: currently 76–77% of bookings; Bull case requires this to hold or expand at higher absolute base; Bear sees mix decay toward 60% as online fails to compound
+
+**Re-rating trigger window**: FY2027 Q3–Q4 earnings (Aug 2027–Feb 2028) — first quarters with stable post-launch online run-rate. Pre-emptive re-rating possible on UGC marketplace creator-payout disclosures (likely Q1–Q2 FY2028, May–Aug 2027). Conviction-update gates resolve in this 6–9 month window.
+
 ## Bull Case
 
 - **GTA VI launch (Nov 2026) generates $8-15B lifetime revenue**, driven by the largest console installed base at any GTA launch (~125M), 13 years of pent-up demand, and $70-80 pricing. DFC Intelligence's $3.2B first-year estimate may prove conservative — GTA V did ~$1B in its first three days in 2013 dollars.
@@ -177,3 +216,6 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - GTA 6 Creator Economy and FiveM Monetization - web-clip]]: Rewrote Non-consensus Insight #1 to integrate Cfx Marketplace live Jan 12 2026 ($389.99 bundles, €5K+/mo creator revenue on Tebex) + Claude-Lua creator-TAM expansion; updated Outstanding Question #1 with supply-side partial resolution (creators CAN monetize on Rockstar infra — demand-side Q#2 remains binding). Conviction strengthened — platform-transition bull case now backed by 2026 transaction evidence, not forward bet. Snapshot: [[_Archive/Snapshots/TTWO - Take-Two Interactive (pre-sync 2026-04-24-101646)]]
+
+### 2026-05-01
+- Addressed user callouts: TTWO #1 (forecast × P/E sensitivity through FY2030) — added 3-scenario EPS path (Bear $4–8, Base $8–15, Bull $22–30 by FY2030) cross-tabulated against cyclical (15–20x), growth (20–25x), and platform (30–45x) multiples in §Key Metrics → Forecast & P/E Sensitivity; current ~$206 maps to Base × Cyclical-low. Conviction unchanged.

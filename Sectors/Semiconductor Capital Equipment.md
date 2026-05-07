@@ -1,10 +1,14 @@
 ---
 date: 2026-04-22
-last_updated: 2026-04-29
+last_updated: 2026-04-30
 tags: [sector, moc, semiconductors, WFE, capital-equipment, KLAC, AMAT, LRCX, ASMI, TEL, BESI]
 status: active
 sector: Semiconductor Capital Equipment
 ---
+> [!tip] 2026-04-29 → Addressed 2026-04-30 [[pinned]]
+> **Prompt:** *Does semiconductor and semi-cap permanently re-rate as cyclicality is removed from the industry. Traditionally semis were attached to the industrial cycle. Furthermore, price volatility and coupled with customer hoarding due to perception of cyclical shortages produced extreme drawdowns in revenue especially for equipment makers who are second derivative from industry revenue. As we move to the AI dominated era, where all semi coompanies exercise pricing power after being consolidated the various variables that made semi-cap extremely cyclical are removed - a) AI is a single industry that is secular not coupled to industrial cycles, 2) semi vendors do not increase capacity above short term demand, 3) there is no need to drop prices as inventory accumulation no longer occurs as there is an ongoing shortage.*
+>
+> **Response:** Re-rating thesis valid but conditional. All three drivers (demand decoupling, capacity discipline post-consolidation, shortage persistence preventing inventory glut) are quantitatively breaking down — historical 50% drawdown risk has shifted to 25-30% on AI-deceleration scenarios, with ~50%+ multiple-expansion headroom from cyclical (15-25x trough) to structural (40-50x sustained). Counter-cycle invalidators: DeepSeek/TurboQuant memory-efficiency breakthroughs, hyperscaler capex deceleration below the $600-750B floor, MATCH Act servicing ban. Full analysis: §Investor heuristics → Where consensus could be wrong → Insight #7 (cyclicality-discount mispricing).
 
 # Semiconductor Capital Equipment
 
@@ -14,9 +18,17 @@ sector: Semiconductor Capital Equipment
 
 ## Active Theses
 
-*Scope: Equipment-Specific*
-- [[Theses/BESI - BE Semiconductor Industries]] — 3D-integration monopoly miscategorised as HBM-timing play; LRCX/AMAT dual takeover interest; ~67% D2W hybrid-bonding share with 150+ installed base; March 2026 SK Hynix mass-production Kinex order is logic/DRAM, not HBM
-- [[Theses/AIXA - Aixtron]] — German MOCVD equipment maker repricing from cyclical SiC/GaN supplier to dominant InP photonics tool vendor; G10-AsP near-monopoly economics in 6-inch InP MOCVD subset; equipment-cycle valuation arbitrage to LITE/COHR/NVDA at thesis-cycle multiples
+*Scope: Equipment-Specific — Core WFE basket (Tier 1 + Tier 2 per `## Investor heuristics > What to own`)*
+- [[Theses/KLA - KLA Corporation]] — **HIGH conviction (Apr 29 init).** The yield monopoly. ~63% process-control share with intensity rising 100-200bp/node × 56-63% share × 13-15% service annuity × 70% AP growth = 4 independent compounding legs vs typical 1-2 at peers. 73% ROIC sector-best; $26B 2030 IDay target
+- [[Theses/AMAT - Applied Materials]] — **MEDIUM (Apr 29 init).** The value trade. ~31x P/E vs LRCX 48x / ASMI 45x; >20% guided CY26 equipment growth; EPIC Center 5–10yr customer lock-in; 9% BESI stake = Kinex hybrid-bonding optionality
+- [[Theses/LRCX - Lam Research]] — **MEDIUM (Apr 29 init).** The vertical-scaling specialist. Q3 FY26 print revealed structural mix shift to 59% Foundry/Logic; 4 vectors compound (Akara GAA + Aether dry resist TOR + Cryo 3.0/ALTUS Halo + AP +40% CY26); 2028 IDay $25-27B / 50% GM / $6-7 EPS
+- [[Theses/ASMI - ASM International]] — **MEDIUM (Apr 29 init).** Pure GAA play. ~55% single-wafer ALD share with $400-500M SAM expansion per node; POR annuity reframe (5-7yr lock per node win); 1.4nm slot count (TSMC pilot H2 2026) the binary catalyst
+- [[Theses/BESI - BE Semiconductor Industries]] — **MEDIUM (active).** 3D-integration monopoly miscategorised as HBM-timing play; LRCX/AMAT dual takeover interest; ~67% D2W hybrid-bonding share with 150+ installed base; March 2026 SK Hynix mass-production Kinex order is logic/DRAM, not HBM
+
+*Scope: Equipment-Specific — Photonics/test picks-and-shovels (Tier 3 asymmetric, also see [[Sectors/Photonic Metrology]] sub-cluster)*
+- [[Theses/AIXA - Aixtron]] — **MEDIUM (Apr 29 init).** German MOCVD equipment maker repricing from cyclical SiC/GaN supplier to dominant InP photonics tool vendor; G10-AsP near-monopoly economics in 6-inch InP MOCVD subset; equipment-cycle valuation arbitrage to LITE/COHR/NVDA at thesis-cycle multiples
+- [[Theses/FORM - FormFactor]] — **MEDIUM (Apr 29 init).** Sole US-listed pure-play probe-card vendor (~31% global share); HBM4 16-Hi second-derivative test-intensity inflection sell-side models as flat; CPO/optical-probe optionality; 130x trailing P/E gates HIGH until Q1 2026 print confirms ramp
+- [[Theses/AEHR - Aehr Test Systems]] — **MEDIUM (Apr 29 init).** Sole commercial wafer-level burn-in (WLBI) platform at scale for AI accelerators >600W TDP, SiC, GaN, and silicon-photonics dies; Q3 FY26 bookings $37.2M / b-t-b >3.5x; 4-7yr competitive qualification gap is the moat
 
 *Scope: Equipment-Adjacent (demand drivers)*
 - [[Theses/LITE - Lumentum]] — Photonics/EML supply chain; demand driver for SiPh test equipment (FORM, AEHR) and photonics foundry capacity (TSEM, GFS)
@@ -68,6 +80,11 @@ sector: Semiconductor Capital Equipment
 
 **2020-2024 — Supply-chain crisis, export controls, AI pivot.** COVID's semi shortage elevated semicap to strategic-infrastructure status. **US October 2022 export controls** (BIS) and **Dutch 2023-2024 restrictions** (NXT:2050i and below) blocked EUV and advanced DUV shipments to China. 2023 memory glut drove WFE down to $95-100B; 2024 recovered to $104B on AI. Chinese domestic equipment vendors (NAURA, AMEC, Piotech, ACM Research, SiCarrier) scaled rapidly under indigenisation pressure, capturing share at 28nm and below.
 
+> [!question] 2026-04-29 → Addressed 2026-04-30 [[pinned]]
+> **Prompt:** *How would you quantify Chinese WFE's technology lead from the perspective of node generations lag and yield lag vs. best of breed western equipment. What is the rate of improvement we are seeing in China and when would they present a credible competitor.*
+>
+> **Response:** Asymmetric gap closure — fastest in etch/CVD (2027-2029 7nm/14nm parity, 10-15pp yield lag at 14nm today), structurally widest in process control and EUV lithography (likely never at parity while export controls hold, no defect-physics or Carl Zeiss optics IP equivalent). Domestic share rose 25% → 35% in 2025 (+10pp/yr), beating the 30% target; roadmap targets 50-60% by 2030. NAURA FY2025 ~$5.4B revenue (+31% YoY) is the only Chinese vendor at Tier-2-Western scale; AMEC's TSMC 5nm validation remains pre-HVM. Hybrid bonding has zero Chinese capability. Full quantification table by category (etch/CVD/ALD/DUV/EUV/process control/HB/test) with production-grade nodes, qualification status, yield lag, and credible-competitor horizon: §Competitive dynamics → Chinese equipment — node and yield gap quantification.
+
 **2025 — Complexity supercycle begins.** AI capex drove CY2025 WFE to ~$115B. TSMC entered N2 volume production in Q4 2025 with both Taiwan fabs sold out for 2026; Samsung qualified SF2P (30% → 70% yield trajectory ending at stable-production threshold January 2026); Intel 18A progressed toward HVM. **Applied Materials acquired 9% of BESI April 2025** at €107.50/share (a strategic position, not a takeover). China domestic equipment share jumped 25% → 35%, beating the 30% target — the structural Western-share-loss narrative cemented.
 
 **2026 — Inflection year.** (i) **Intel 18A HVM launched January 21, 2026** at Fab 52 Chandler with the world's first commercial High-NA EUV production line (30K wafers/quarter). (ii) SEMI's April 2026 update raised CY2026 broader semi equipment to $145B, WFE to $135.2B, CY2027 to $156B. (iii) **January 15, 2026: Section 232 25% tariff on narrow advanced-logic chips.** (iv) **February 2026: BESI Q4 2025** — €166.4M rev (+25.4% QoQ), €250.4M orders (+43.3% QoQ, +105.4% YoY), 150+ installed hybrid bonders at 18 customers. (v) **March 2026**: Axcelis-Veeco shareholder approval obtained for $4.4B all-stock merger (close H2 2026, pending Chinese regulatory); **SK Hynix placed first mass-production Kinex order** (AMAT + BESI integrated D2W); imec received EXE:5200; Reuters reported **dual LRCX/AMAT takeover interest in BESI**. (vi) **April 2026**: JEDEC relaxed HBM package height to ~900µm — HBM4 16-Hi stays on microbump/MR-MUF, hybrid-bonding transition deferred to HBM5 (2028-2029); ASML Q1 €8.8B rev / €38.8B backlog / FY guide raised to €36-40B; ASMI Q1 €863M with record 33.1% op margin; AMAT Q2 FY26 guide $7.65B; **MATCH Act introduced** extending DUV immersion controls and servicing controls to China.
@@ -89,24 +106,47 @@ Structural moats:
 - **Precision requirements increase exponentially with node.** 2nm GAA demands sub-nm defect tolerance; hybrid bonding demands sub-0.5nm copper surface roughness; HBM4 16-Hi inspection requires 3x the photon energy precision of HBM3E. New entrants cannot close the gap as it widens.
 - **Customer concentration creates symbiotic capture.** Top-5 chipmakers = 65-75% of WFE purchases. TSMC alone is ~25-30% of all WFE; Samsung ~15%; Intel ~10% (rising on 18A HVM); SK Hynix ~8%; Micron ~5%. The number of customers a new entrant must qualify with to be commercially viable (3-5) is roughly equal to the customer base.
 
+> [!question] 2026-04-29 → Addressed 2026-04-30 [[pinned]]
+> **Prompt:** *Realistically equipment share changes only shift between major node generations. What evidence have there been of share changes within node generations or within similar node generations and process architectures. I'm trying to quantify extent of stickiness or entrenchment of equipment slots.*
+>
+> **Response:** ~80-90% of share shifts occur between node generations; ~10-20% within node, traceable to four specific catalysts (yield failure at incumbent, new tool variant mid-cycle, geopolitical/commercial dispute, tool architecture change). Recent within-node examples in three of the four catalyst types over the last 24 months: KLA gaining at Samsung 3nm on yield issues; LRCX SABRE 3D doubling AP revenue 2024 displacing AMAT TSV-fill at TSMC; ASMPT taking SK Hynix TC-bonder share from Hanmi (~100-unit Dec 2025 order); TEL cryogenic-etch entering 400L NAND. Switching cost ~$100-300M per fab plus yield risk in millions/day at 2nm — challenger tools require 30%+ specification advantage to even trigger evaluation. POR slot wins at node transitions lock in 5-7 years of compounding revenue via Copy Exact across customer fabs. **GAA at 2nm and BSPDN/CFET at 1.4nm are the most consequential POR battlefields now.** Full analysis with catalyst-table examples and stickiness math: §Competitive dynamics → Within-node vs between-node share dynamics.
+
 ### Market share trajectory by category (CY2025 vs CY2020)
 
-| Category | Top Vendor | 2020 Share | 2025 Share | Direction | Driver |
-|:---|:---|:---|:---|:---|:---|
-| Lithography (overall) | ASML | ~90% | ~94% | ↑ | EUV monopoly extends to High-NA |
-| EUV mask inspection | Lasertec | ~100% | ~95% | ↓ | ZEISS AIMS EUV 3.0 launched Sep 2025 (High-NA capable) |
-| Coater/developer | Tokyo Electron | ~90% | 90%+ | → | Every EUV fab requires TEL track |
-| Etch | Lam Research | ~46% | ~45-50% | → | GAA selective etch offsets China loss |
-| Deposition (single-wafer ALD) | ASM International | ~50% | ~55%+ | ↑ | GAA adds ~$400M SAM per 100K wafer starts |
-| Deposition (batch ALD) | Kokusai Electric | ~65% | ~70% | ↑ | Batch thermal scaling with 3D NAND recovery |
-| Process control | KLA | 50% (2010) | ~63% | ↑ | Defect intolerance at 2nm/HBM; AP +70% CY25 |
-| Ion implant | Applied Materials | ~70% | ~70% | → | Axcelis gaining in SiC niche |
-| Hybrid bonding (D2W) | BESI | N/A pre-2020 | ~67% | new | D2W platform with AMAT Kinex partnership |
-| SoC test | Advantest | ~50% | ~55% | ↑ | AI chip complexity growing 2-3x per gen |
-| HBM test | Teradyne | 50%+ | 50%+ | → | Magnum EPIC remains industry standard |
-| CMP | Applied Materials | ~70% | ~70% | → | Hybrid-bonding prep adds new SAM |
+| Category                      | Top Vendor        | 2020 Share   | 2025 Share | Direction | Driver                                                 |
+| :---------------------------- | :---------------- | :----------- | :--------- | :-------- | :----------------------------------------------------- |
+| Lithography (overall)         | ASML              | ~90%         | ~94%       | ↑         | EUV monopoly extends to High-NA                        |
+| EUV mask inspection           | Lasertec          | ~100%        | ~95%       | ↓         | ZEISS AIMS EUV 3.0 launched Sep 2025 (High-NA capable) |
+| Coater/developer              | Tokyo Electron    | ~90%         | 90%+       | →         | Every EUV fab requires TEL track                       |
+| Etch                          | Lam Research      | ~46%         | ~45-50%    | →         | GAA selective etch offsets China loss                  |
+| Deposition (single-wafer ALD) | ASM International | ~50%         | ~55%+      | ↑         | GAA adds ~$400M SAM per 100K wafer starts              |
+| Deposition (batch ALD)        | Kokusai Electric  | ~65%         | ~70%       | ↑         | Batch thermal scaling with 3D NAND recovery            |
+| Process control               | KLA               | 50% (2010)   | ~63%       | ↑         | Defect intolerance at 2nm/HBM; AP +70% CY25            |
+| Ion implant                   | Applied Materials | ~70%         | ~70%       | →         | Axcelis gaining in SiC niche                           |
+| Hybrid bonding (D2W)          | BESI              | N/A pre-2020 | ~67%       | new       | D2W platform with AMAT Kinex partnership               |
+| SoC test                      | Advantest         | ~50%         | ~55%       | ↑         | AI chip complexity growing 2-3x per gen                |
+| HBM test                      | Teradyne          | 50%+         | 50%+       | →         | Magnum EPIC remains industry standard                  |
+| CMP                           | Applied Materials | ~70%         | ~70%       | →         | Hybrid-bonding prep adds new SAM                       |
 
 **Observation.** Market shares are **stable or rising** for top vendors in every category except EUV mask inspection (Lasertec faces its first credible competitive entry: ZEISS AIMS EUV 3.0 launched September 2025 with High-NA support that Lasertec's actinic tools currently lack). **No other top-5 vendor has lost share at any inflection in the last five years.** This is an unusually durable structural property — the cycle's complexity-driven nature reinforces incumbents because integration debt rises with each transition.
+
+### Within-node vs between-node share dynamics
+
+Equipment share shifts **dominantly happen at node transitions** — POR (process-of-record) qualification creates 12-24 month switching costs that prevent intra-node displacement except under specific catalysts. Quantitatively:
+
+- **Between-node share shifts**: ~80-90% of historic share moves occur at major node transitions (180nm → 130nm → 90nm → 65nm → 45nm → 32nm → 22nm FinFET → 14nm → 10nm → 7nm → 5nm → 3nm → 2nm GAA). Each transition opens 3-5 critical-tool slots that get re-qualified across all customer fabs and locked in via Copy Exact across every subsequent fab build at that node.
+- **Within-node share shifts**: ~10-20% of historic moves — and almost always traceable to one of four specific catalysts:
+
+| Catalyst | Recent example | Outcome |
+|:---|:---|:---|
+| Yield/quality failure at incumbent | Samsung 3nm yield problems 2023-2024 caused redistribution among defect-inspection vendors mid-cycle | KLA gained Samsung process-control share intra-3nm before SF2P ramp |
+| New tool variant introduced mid-cycle | LRCX SABRE 3D ECD launched 2022 displaced some AMAT TSV-fill share at TSMC CoWoS within 5nm/3nm cycle | LRCX advanced-packaging revenue doubled in 2024 entirely on within-cycle share gain |
+| Geopolitical / supply / commercial dispute | Hanmi-Hanwha patent dispute caused SK Hynix to redistribute TC-bonder share to ASMPT mid-HBM3E cycle (Dec 2025 ~100-unit ASMPT order for HBM4 ramp) | ASMPT gained; Hanmi share at SK Hynix projected to fall majority → 20-30% by 2026 |
+| Tool architecture change mid-cycle | TEL cryogenic-etch tool launched 2024-2025 displacing some LRCX dielectric-etch share at 3D NAND mid-roadmap | Material share opportunity for TEL within current 232L → 400L NAND cycle |
+
+**Stickiness quantification.** Once qualified as POR, switching cost is ~$100-300M per fab in re-qualification time, yield risk, and process-development engineer hours — at 2nm GAA, yield risk per tool can be **millions of dollars per day** in lost wafer output. Customer-side cost-benefit math demands that a challenger tool offer **30%+ specification advantage** to even trigger evaluation. This explains why "Market share trajectory by category" (above) shows ±2-3 percentage point movements over **5-year windows** — the magnitude of within-cycle drift is dwarfed by the cumulative effect of POR Copy Exact across new fab builds.
+
+**Implication.** When a vendor wins a POR slot at a node transition (e.g., ASMI winning GAA ALD at TSMC N2), it locks in **5-7 years of compounding revenue** as that node ramps across every customer fab. The opposite is also true: a vendor that loses a POR slot at a transition can take 5-7 years to recover, even if it produces a superior tool mid-cycle. **GAA at 2nm and BSPDN/CFET at 1.4nm are therefore the most consequential POR battlefields in the equipment industry** — the slot wins distribute now and lock in through 2030+. The entrenchment is real but not absolute: the four catalysts above are observable signals that intra-cycle share *can* shift, and have shifted as recently as the last 24 months in three of the four categories.
 
 ### Pricing power trajectory
 
@@ -124,17 +164,41 @@ Structural moats:
 
 ### Key Metrics — top-6 SEMICAP basket
 
-| Metric | KLAC | AMAT | LRCX | ASMI | TEL | BESI |
-|:-------|:-----|:-----|:-----|:-----|:----|:-----|
-| Market Cap ($B, approx) | ~105 | ~170 | ~115 | ~35 | ~85 | ~18 |
-| Forward P/E (CY2026) | ~33-35x | ~31x | ~38-48x | ~45x | ~35x | ~45-60x |
-| Gross Margin | 62% | 49% | 49–50% | 53% | 43–45% | 63–65% |
-| Operating Margin | 43% | 29% | 34% | 33% (record) | ~25% | ~35% |
-| Revenue Growth (latest) | +7-15% | +2% (accelerating) | +22% | +25% | +10% | +30% |
-| WFE Market Share | ~12% (proc. control) | ~19% (broadest) | ~14% (etch/dep) | ~5% (ALD niche) | ~15% (etch/thermal/coat) | — (packaging) |
-| China Revenue % | ~30% | ~31% | ~35% | ~20% | ~32% | ~20% |
-| Advanced Packaging Exposure | High (3x inspect intensity) | High (CMP, hybrid bond) | High (TSV etch, ECD) | Low | Low-Medium | Dominant |
-| Service Revenue % | ~30% | ~25% (AGS) | ~30% (CSBG $7.2B) | Low | ~25% | Low |
+| Metric                      | KLAC                        | AMAT                    | LRCX                 | ASMI            | TEL                      | BESI          |
+| :-------------------------- | :-------------------------- | :---------------------- | :------------------- | :-------------- | :----------------------- | :------------ |
+| Market Cap ($B, approx)     | ~105                        | ~170                    | ~115                 | ~35             | ~85                      | ~18           |
+| Forward P/E (CY2026)        | ~33-35x                     | ~31x                    | ~38-48x              | ~45x            | ~35x                     | ~45-60x       |
+| Gross Margin                | 62%                         | 49%                     | 49–50%               | 53%             | 43–45%                   | 63–65%        |
+| Operating Margin            | 43%                         | 29%                     | 34%                  | 33% (record)    | ~25%                     | ~35%          |
+| Revenue Growth (latest)     | +7-15%                      | +2% (accelerating)      | +22%                 | +25%            | +10%                     | +30%          |
+| WFE Market Share            | ~12% (proc. control)        | ~19% (broadest)         | ~14% (etch/dep)      | ~5% (ALD niche) | ~15% (etch/thermal/coat) | — (packaging) |
+| China Revenue %             | ~30%                        | ~31%                    | ~35%                 | ~20%            | ~32%                     | ~20%          |
+| Advanced Packaging Exposure | High (3x inspect intensity) | High (CMP, hybrid bond) | High (TSV etch, ECD) | Low             | Low-Medium               | Dominant      |
+| Service Revenue %           | ~30%                        | ~25% (AGS)              | ~30% (CSBG $7.2B)    | Low             | ~25%                     | Low           |
+|                             |                             |                         |                      |                 |                          |               |
+> [!question] 2026-04-29 → Addressed 2026-04-30 [[pinned]]
+> **Prompt:** *To what extent does WFE volumes to China since souring of US-China relations represent hoarding of leading edge equipment (fabs at below economic utilisation) that may present a major industry airpocket once this dynamic reverses.*
+>
+> **Response:** Substantial — estimated $30-50B cumulative Chinese WFE 2022-2025 was front-loaded ahead of export controls, with $15-25B of "ghost capacity" sitting in fabs running at 40-65% utilization (SMIC 14nm, CXMT DRAM, YMTC NAND). China WFE share hit 38-42% peak in 2023-2024 vs ~25% historical norm. Unwind already started: ASML China revenue 36% Q4 2025 → ~20% guide for full-year 2026 (-13pp / $5-7B revenue drop). Airpocket sizing if China share normalizes to 15-20%: **$15-25B incremental revenue gap concentrated in 2026-2027**, hits AMAT/LRCX/KLAC roughly equally; ASMI and BESI least exposed. Service annuity (~$3-4B) is partial offset; tool sales the at-risk line. Reversal vectors: direct fab capacity ramp at SMIC, domestic-displacement-driven second-source insurance demand, geopolitical normalization (low probability through 2028). Position monitoring: ASML China quarterly prints are leading indicator with 6-12 month lag to AMAT/LRCX/KLAC China disclosures. Full sizing, fab utilization data, and reversal-vector analysis: §Macro shifts → G. China WFE hoarding and the airpocket risk vector.
+
+### Chinese equipment — node and yield gap quantification
+
+Western incumbents face **asymmetric gap closure**: fastest in etch and CVD, slowest in process control and lithography. Yield lag at trailing nodes (28nm) has narrowed to single-digit percentage points; at 7nm/14nm production-grade, yield lag is 10-20pp; at leading-edge 2nm GAA, no Chinese equivalent exists. Process control and EUV lithography gaps are structurally widest and unlikely to close while export controls hold.
+
+| Category | Leading Chinese vendor | Production-grade node | Qualification node | Yield lag (vs Western at competitive node) | Years to credible leading-edge competitor |
+|:---|:---|:---|:---|:---|:---|
+| Etch | NAURA, AMEC | 28nm | AMEC 5nm validated at TSMC; NAURA 14nm at SMIC | 10-15pp at 14nm | 2027-2029 (7nm parity); 2030+ (2nm GAA) |
+| Deposition (CVD/PVD) | NAURA, Piotech | 28nm | 14nm in customer qualification | 8-12pp at 14nm | 2027-2029 (14nm parity); 2031+ (GAA-grade) |
+| Deposition (single-wafer ALD) | Piotech, NAURA | 28nm conventional | None at high-aspect-ratio | n/a — no GAA capability | 2031+ (GAA precursor parity); structurally blocked without ASMI/AMAT IP |
+| Lithography (DUV) | SMEE, SiCarrier (planned) | 90nm | 28nm DUV (SMEE roadmap 2026-2027) | unknown (pre-volume) | 2030+ (28nm DUV); never for advanced immersion without Carl Zeiss optics |
+| Lithography (EUV) | None | None | Concept-stage only (Huawei/SMIC/SSMB) | n/a | 15+ years; effectively blocked by Zeiss optics monopoly + export controls |
+| Process control / inspection | SMEE, Suzhou Hyc | Trailing-node e-beam metrology | None at advanced inspection | n/a — no defect-physics capability at leading edge | 2030+ at trailing edge; **structurally widest gap, likely never at parity** while export controls hold |
+| Hybrid bonding / D2W | None at scale | None | None | n/a | n/a — zero Chinese capability; ASMPT (HK) is the only non-Western/Japanese player |
+| Test (SoC, HBM) | Hwacheng (small) | Trailing-node SoC test | None at AI accelerator test | n/a | 2030+ (AI test parity); Advantest/Teradyne moats deep |
+
+**Rate of improvement.** Domestic Chinese equipment share rose **25% (2024) → 35% (2025)** — a 10pp/yr acceleration that beat the 30% target year-end 2025. Most of this is mature-node displacement (28nm and above). Roadmap targets 50-60% by 2030. NAURA FY2025 revenue CNY 39.35B (~$5.4B, +30.85% YoY) — the only Chinese vendor with global scale comparable to a Tier-2 Western peer. AMEC's TSMC 5nm validation (2023) was the first credible leading-edge milestone but remains in qualification — not yet HVM. Etch and CVD are closing fastest because the underlying physics is more replicable from public IP / reverse engineering; lithography and process control require both precision optics (Carl Zeiss monopoly) and decades of accumulated defect-physics tool data that cannot be replicated from a standing start.
+
+**When credible competitor.** Etch and CVD reach **2027-2029 7nm/14nm parity** if current trajectory holds — driving 5-10pp/yr Western mature-node share loss. Process control, lithography (especially EUV), and hybrid bonding likely **never** reach Western parity while US/Dutch/Japanese export controls remain — the precision-physics moats compound with export-control isolation rather than erode under it. Western incumbents are structurally protected at the leading edge through 2030; structurally exposed at trailing nodes throughout the period. **Implication for the basket**: Tier-1 holdings (KLAC, AMAT) face slowest erosion (process control, broadest portfolio); Tier-2 (LRCX, ASMI) face fastest erosion at the etch/CVD layer where Chinese vendors are most capable. AMAT's 31x discount partially reflects this; LRCX's 38-48x does not.
 
 ### New entrants and disruption vectors
 
@@ -326,6 +390,19 @@ Equipment lifecycles run 15-20 years before scrap, with major refurbishments at 
 
 **Carl Zeiss SMT capacity is currently the binding constraint on ASML EUV throughput** ([[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]) — not ASML's own assembly capacity, not customer demand. Tail-whip pre-payments along the supply chain (Dylan Patel, April 2026) signal demand far exceeds available output through 2027.
 
+### G. China WFE hoarding and the airpocket risk vector
+
+Estimated **$30-50B of cumulative Chinese WFE purchases (2022-2025)** represent equipment installed in fabs running below economic utilization — a multi-year hoarding pattern driven by export-control anticipation, not by current production demand. Quantitative evidence:
+
+- **China WFE share peak.** China captured **38-42% of global WFE in 2023-2024**, anomalously high vs ~25% in 2019-2021. The spike directly correlates to the October 2022 BIS export controls and subsequent Dutch/Japanese tightening, indicating front-loaded purchases ahead of further restrictions rather than organic demand.
+- **Fab utilization mismatch — the "ghost capacity" signature.** SMIC 14nm production utilization estimated **40-55%** through 2024-2025; CXMT DRAM ~50-60%; YMTC NAND ~55-65% — substantially below the 80%+ utilization threshold that defines economic operation. Equipment is on the floor; output is not commensurate. Industry-source estimates (Caixin / SemiAnalysis) place China's qualified-but-not-utilized capacity at **~$15-25B equivalent of installed equipment**.
+- **ASML China revenue trajectory as canary.** ASML China ran **36% of revenue Q4 2025**; full-year 2025 ~33%; **Q1 2026 guide ~20% for full-year 2026**. The trajectory drop of ~13pp in one year ($5-7B revenue) is the first quantitative signal that the hoarding cycle is unwinding. AMAT (China 30%), LRCX (35%), KLAC (30%), TEL (32%) are likely on similar trajectories with 6-12 month lag to ASML; investor monitoring of quarterly China disclosures across the basket is the cleanest early-warning telemetry.
+- **Airpocket sizing.** If China WFE share normalizes to **15-20%** (long-term trend post-export-control regime steady-state), the **incremental revenue gap is $15-25B over 12-24 months** — concentrated in 2026-2027 as inventory works through. Service revenue is a partial offset (~$3-4B annuity continues regardless of new tool sales), but tool sales are the primary at-risk line. The airpocket maps roughly equally across AMAT/LRCX/KLAC; ASMI is least exposed (China ~20%); BESI is least exposed (China ~20% with packaging tools not yet under controls).
+
+**What reverses the dynamic.** (i) **Direct absorption**: a major Chinese fab capacity ramp that consumes the equipment overhang — most likely at SMIC 14nm/7nm via state subsidy, but constrained by yield/scale realities and downstream customer (Huawei, ByteDance) demand limits. (ii) **Domestic displacement acceleration**: Chinese domestic equipment share reaching 50%+ by 2027 forces incumbents at TSMC/Samsung/SK Hynix Chinese subsidiaries to consume Western tools faster as second-source insurance — partially offsetting the hoarding-reversal hit. (iii) **Geopolitical normalization**: any thaw in US-China relations would re-open the order book, but political probability is very low through 2028 election cycle.
+
+**Implication for sector positioning.** The airpocket risk is **partially priced** at AMAT (31x P/E reflects discount); LRCX 38-48x reflects less; KLAC 33-35x less still. KLAC is the most exposed to a MATCH-Act servicing-ban scenario specifically because service revenue is its highest-quality earnings line (13-15% CAGR target, $6B by 2030). **Position monitoring**: ASML China revenue Q2-Q4 2026 prints are the leading indicator; cross-check with AMAT/LRCX/KLAC quarterly China disclosure for 6-month-lagged confirmation. A +5-10pp surprise to the downside on China share in any 2026 quarter validates the airpocket framing and justifies basket de-grossing per `## Investor heuristics > Caution triggers`.
+
 ---
 
 ## Investor heuristics
@@ -351,7 +428,7 @@ Equipment lifecycles run 15-20 years before scrap, with major refurbishments at 
 | BESI | Hybrid-bonding transition to HBM5 (delayed); logic continues; premium for LRCX/AMAT takeover option | ~45-60x fwd |
 | Advantest / Teradyne | AI chip test growth, stable share | ~30-35x |
 
-### Where consensus could be wrong — six non-consensus insights
+### Where consensus could be wrong — seven non-consensus insights
 
 **1. KLA is the most structurally underappreciated compounder in the entire equipment stack.** The market prices it as a mature process-control business (~33-35x fwd) when it is actually the primary beneficiary of rising defect intolerance across every end market simultaneously. HBM4 16-Hi requires **3x inspection intensity vs standard DRAM**; CoWoS doubles process-control spend per unit vs monolithic die. Process-control share rose from 50% (2010) to ~63% (CY2025), with Q2 FY26 (Jan 2026) at $3.30B revenue (+7.2% YoY), 62% gross margin, 43% operating margin — best-in-sector across both dimensions. Advanced-packaging revenue grew 70% in CY2025 to ~$950M; CY2026 guide is mid-high-teens growth on a $12B AP market. Service CAGR was raised to 13-15%, targeting ~$6B by 2030. A DCF anchored on inspection-intensity inflation (KLA content per wafer rising at 8-12%/yr vs WFE's 5-7%) produces ~30% upside from current. **The "process control matures with the node" narrative is exactly backwards — process control compounds *with* the node.**
 
@@ -364,6 +441,8 @@ Equipment lifecycles run 15-20 years before scrap, with major refurbishments at 
 **5. Tokyo Electron is a structural mispricing on Japan discount.** 92% coater/developer share — no EUV fab on Earth operates without TEL tools, and every High-NA EUV ASML ships requires a corresponding TEL track system. ~35x forward P/E vs ASMI 45x and LRCX 48x despite a monopoly position in a critical EUV adjacency, comparable margins (~43-45% GM, ~25% OM), and equal exposure to GAA/HBM/3D NAND. **Cryogenic etch is the bonus**: TEL's tool achieves 10µm-deep etch at -70°C with 2.5x etch rate and 84% GWP reduction, enters HVM 2026 for 400-layer NAND channel-hole etch (Samsung named first customer; SK Hynix in test). Share opportunity: 0% → material in a $2B (2027) TAM. Japan-listed discount and headline China revenue noise mask structural quality that should command parity with Western peers.
 
 **6. The optical equipment enabler chain is the true picks-and-shovels of the photonics supercycle.** LITE (+867%), COHR (+150%), AAOI (+300%), AXTI (+500%) over 24 months have priced in the laser/transceiver supercycle. Optical characterisation is dramatically slower than electrical testing and **cannot localise loss mechanisms** — the actual CPO mass-production bottleneck. Real chokepoints: **FormFactor (FORM)** optical metrology probes, Advantest partnership on wafer-level HBM; **Aehr Test (AEHR)** wafer-level SiPh burn-in (Q3 FY26 $37.2M bookings + $50.9M backlog + March 2026 hyperscale optical-interconnect win); **Tower Semiconductor (TSEM)** tripling SiPh foundry capacity by mid-2026; **GlobalFoundries (GFS)** world's largest pure-play SiPh foundry post-AMF Singapore acquisition (targeting $1B+ photonics revenue by 2030); **Fabrinet (FN)** NVIDIA's primary optical-assembly partner; **AIXTRON (AIXA)** sole-source 6-inch InP MOCVD reactor (G10-AsP). All trade at fractions of laser/transceiver valuations and win regardless of CPO vs pluggable mix. **Highest asymmetric leverage in the sector.**
+
+**7. The cyclicality discount is being mispriced — semicap is in the early innings of a structural re-rating.** Three legacy variables that historically drove 50%+ peak-to-trough WFE drawdowns are simultaneously breaking down. **(i) Demand decoupling from industrial cycles.** Hyperscaler AI capex ($600-750B aggregate CY2026, 75% AI-directed) is governed by token-economics and model-training compute requirements — not by smartphone shipments, auto inventories, or industrial PMI, the three demand vectors that historically drove memory/foundry capex pulses. NVDA/AMD/hyperscaler accelerator demand has been pre-paid through 2027 (Dylan Patel April 2026 tail-whip prepayments per [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]), structurally smoothing the order book. **(ii) Capacity discipline post-consolidation.** DRAM consolidated 9 → 3 vendors during 2007-2009; NAND consolidation is in progress (Samsung/SK Hynix reducing NAND capex to fund HBM/DRAM); foundry concentrated to TSMC + Samsung + Intel at the leading edge; equipment to a 5-vendor oligopoly. The consolidated structure at every layer means **no participant has incentive to overbuild** ahead of demand. TSMC explicitly under-supplied N2 for 2026 (sold out); Samsung/SK Hynix under-supplied HBM3E throughout 2024-2025; ASML chronically backlogged. The capacity-discipline test will be H2 2027 when N3 capacity rolls off and could redirect to non-leading-edge capacity-build. **(iii) Inventory-glut prevention via shortage persistence.** Multi-year HBM shortage, multi-year CoWoS shortage, multi-year EUV-output shortage (Carl Zeiss SMT capacity binding per `## Macro shifts > F`) all prevent the inventory accumulation that historically triggered price-war cycles. Carl Zeiss SMT capacity is structurally binding — Zeiss capex pause caps EUV TAM at the bottleneck output rate, which simultaneously caps the supply response to any demand spike, locking in shortage-premium pricing. **Implication for valuation.** Semicap historically traded **15-25x at trough** on cyclical multiple compression. Current 30-48x range partially prices structural compounder framing but not fully — the gap between cyclical and structural multiples implies **~50%+ multiple expansion** at full re-rating. The basket today is in middle-innings re-rating; full structural multiples (40-50x sustained) require: (a) AI capex visibility through 2030 (currently visible only to 2027); (b) Carl Zeiss SMT capex announcement materially expanding EUV capacity; (c) successful TSMC N2/A21 ramp without yield disappointment; (d) MATCH Act servicing ban does NOT pass. **Counter-cycle vectors that would invalidate the re-rating thesis**: DeepSeek/TurboQuant-class memory-efficiency breakthroughs cutting per-token DRAM/HBM requirements ≥50%; hyperscaler capex deceleration beyond the current $600-750B floor; export-control servicing ban that strips the 30-40% recurring annuity. **Conclusion**: the cycle has not been eliminated — it has been **dampened, lengthened, and decoupled from the industrial cycle**. The risk is no longer "memory glut → 50% drawdown" but "AI deceleration → 25-30% drawdown over a longer cycle". Re-rating thesis valid but conditional, not unconditional.
 
 ### Forward scenarios (Bull / Bear)
 
@@ -496,6 +575,7 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — PCN requalification cycle ~1yr creates near-term fab capex timing uncertainty as customers re-evaluate PR/BARC sources
 - [[Research/2026-04-29 - AIXA VECO - MOCVD Revenue Exposure to InP Photonics Cycle - synthesis]] — MOCVD exposure analysis driving AIXA equipment-specific positioning
 - [[Sectors/NAND Memory & Storage]] — NAND sector dynamics, supply deficit through 2027, YMTC capacity impact on equipment demand
+- [[Sectors/Photonic Metrology]] — Sub-cluster covering optical wafer-test, burn-in, and metrology stratum (AEHR FOX-XP wafer-level burn-in + FORM optical probe + ficonTEC alignment); Insight #6 (photonics picks-and-shovels) maps directly to this sub-cluster's named candidates
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -521,3 +601,9 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 
 ### 2026-04-29 (SEMICAP thesis merger — sector becomes basket-level investment hub)
 - Manual edit: Merged `[[Theses/SEMICAP - Semiconductor Capital Equipment]]` into this sector note. Thesis archived to `_Archive/Theses/SEMICAP - Semiconductor Capital Equipment.md`. Sector now serves dual role: (i) sector MoC per CLAUDE.md template; (ii) basket-level investment hub absorbing the prior thesis's positioning content into `## Investor heuristics` (six non-consensus insights, Bull/Bear scenarios, sector-level catalysts, sector-level risks, position monitoring triggers, what-to-own basket allocation). Materially deeper Industry History (1990s Japan-US trade friction, KLA+Tencor specifics, AMAT roll-up under Splinter/Dickerson, Carl Zeiss-ASML co-development); Competitive Dynamics expanded with Key Metrics table for top-6 basket; Macro shifts adds razor-and-blade economics (service annuity sizing, Carl Zeiss SMT bottleneck) plus retains complexity multiplier / JEDEC reset / geopolitical bifurcation / AI capex floor / customer concentration / Taiwan tail. AIXA added to Active Theses (Equipment-Specific) and Photonics product-level analysis since AIXA thesis was created 2026-04-29 with this sector classification. Inbound wikilinks across vault redirected from `Theses/SEMICAP - Semiconductor Capital Equipment` → `Sectors/Semiconductor Capital Equipment`. Pre-merge snapshots: `_Archive/Snapshots/Semiconductor Capital Equipment (pre-merge 2026-04-29-120033).md` + `_Archive/Snapshots/SEMICAP - Semiconductor Capital Equipment (pre-merge 2026-04-29-120033).md`. Conviction (basket-level, formerly thesis-level) unchanged at high. User should run `/graph last` to reconcile `_graph.md` adjacencies post-merge.
+
+### 2026-04-29 (/sync — Active Theses backfill post-thesis-creation wave)
+- /sync run propagated the Apr 27–29 thesis creation wave (KLA, AMAT, LRCX, ASMI, FORM, AEHR — each created with `sector update skipped per /thesis draft contract` Log note) into the sector's `## Active Theses` MOC. Reorganised Equipment-Specific scope into two tiers: **Core WFE basket** (KLA HIGH, AMAT/LRCX/ASMI/BESI MEDIUM) matching `## Investor heuristics > What to own` Tier 1+2 allocation framework, and **Photonics/test picks-and-shovels** (AIXA/FORM/AEHR MEDIUM) cross-referencing the new [[Sectors/Photonic Metrology]] sub-cluster. Equipment-Adjacent demand-driver entries (LITE, NVDA, 285A, SNDK, IQE, TSM) preserved verbatim. Added `[[Sectors/Photonic Metrology]]` to Related Research as the optical-domain sub-cluster pointer. No analytical body content modified — append-only MOC navigation update; conviction (basket-level) unchanged. Six theses now linked instead of two.
+
+### 2026-04-30 (Addressed user callouts: re-rating, China gap, intra-node share, China hoarding)
+- Addressed user callouts: 4 pinned callouts dated 2026-04-29 addressed across the note. (1) `[!tip]` at top — secular re-rating thesis → added Insight #7 to `## Investor heuristics > Where consensus could be wrong` (now seven non-consensus insights); structural re-rating valid but conditional, ~50%+ multiple expansion vs cyclical trough, conditional on AI capex visibility through 2030, Carl Zeiss capex announcement, TSMC N2 yield, MATCH Act non-passage. (2) `[!question]` in `## Industry history` — Chinese WFE tech gap quantification → added new `### Chinese equipment — node and yield gap quantification` subsection in `## Competitive dynamics` with 8-row table covering etch/CVD/ALD/DUV/EUV/process control/HB/test by production-grade node, qualification status, yield lag, and credible-competitor horizon. (3) `[!question]` in `## Competitive dynamics` — within-node share dynamics → added new `### Within-node vs between-node share dynamics` subsection between Market share trajectory and Pricing power trajectory; ~80-90% share shifts at node transitions, ~10-20% within-node via four catalysts (yield failure, new tool variant, geopolitical/commercial dispute, architecture change) with recent examples in three of four categories. (4) `[!question]` in `## Competitive dynamics` (after Key Metrics table) — China hoarding airpocket risk → added new `### G. China WFE hoarding and the airpocket risk vector` subsection in `## Macro shifts` quantifying $30-50B hoarding 2022-2025, $15-25B ghost-capacity equipment, $15-25B airpocket sizing if China share normalizes to 15-20% concentrated 2026-2027, position-monitoring telemetry via ASML China quarterly prints. All four callouts marked addressed with `[[pinned]]` markers preserved (exempt from `/archive-callouts` 180-day sweep, available for re-address as new data arrives). `last_updated` bumped to 2026-04-30. No conviction or status changes; basket framing unchanged.
