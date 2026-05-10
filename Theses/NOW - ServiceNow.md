@@ -202,3 +202,7 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 ### 2026-04-22
 - Sector re-scoped: Enterprise Software → Enterprise Workflow AI & Automation (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced `[[Sectors/Enterprise Software]]` → `[[Sectors/Enterprise Workflow AI & Automation]]` in Related Research section during sector-fill of [[Sectors/Enterprise Workflow AI & Automation]].
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: "OpenClaw architectural moat is context engineering, not just model weights" framing directly validates CMDB-as-substrate Non-consensus Insight pillar — agent-era moat shifts from model weights to pre-built context substrates. Conviction unchanged — reinforces existing thesis without moving conviction.
+- [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Gemini Enterprise tokens +60% in 3 months + agentic chip design workflow — ServiceNow's CMDB-as-substrate competing with Google's Workspace+Gemini stack as default agent context layer. Conviction unchanged — adjacent macro reinforcement.

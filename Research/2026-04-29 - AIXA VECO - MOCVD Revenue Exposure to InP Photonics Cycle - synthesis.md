@@ -4,6 +4,7 @@ tags: [research, semiconductors, MOCVD, AIXA, VECO, photonics, CPO, equipment, s
 status: draft
 sector: Semiconductor Capital Equipment
 source: Aixtron FY2025 results + 2026 guidance update (compoundsemiconductor.net, semiconductor-today.com, Aixtron IR), Veeco Q4/FY2025 results (Veeco IR globenewswire 2026-02-25, semiconductor-today.com 2026-03-20)
+propagated_to: [AIXA, AEHR, LITE]
 ---
 
 # 2026-04-29 — AIXA / VECO MOCVD Revenue Exposure to the InP Photonics Cycle

@@ -250,3 +250,6 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 ### 2026-04-22
 - Sector re-scoped: Consumer & Digital → Video Streaming (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] reference in ## Related Research with [[Sectors/Video Streaming]] during sector-note fill operation.
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: Andreessen frames streaming as "anti-fragmentation" content moat — durable narrative IP (NFLX original slate) wins as social-media outrage cycles atomize attention. Conviction unchanged — qualitative reinforcement of streaming-hegemony Bull Case.

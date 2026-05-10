@@ -204,3 +204,6 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Added new Risk #8 — Japanese PR/BARC/HBM-adhesive supply chain exposure via Iran War naphtha disruption; adds unmodeled 2026 HBM supply risk distinct from Taiwan tail. Conviction directionally weaker on 2026 HBM revenue ($30B est); unchanged on 2027-2028 longer-arc thesis.
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: DRAM prices "double or triple" from current + true incremental supply not until 2028 — directly strengthens HBM supercycle extension Bull Case pillar #2. Conviction strengthened on pricing durability; unchanged on 5-year thesis.
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 1T-parameter dense-model "entry ticket" + research-bucket = 3x pre-train compute directly raise HBM demand floor through 2028; pre-training-not-dead empirical refutation from frontier-lab insider strengthens HBM supercycle extension Bull Case pillar #2. Conviction unchanged — reinforces but does not move 5-year thesis.

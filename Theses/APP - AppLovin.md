@@ -212,3 +212,6 @@ The thesis-determining variable is not whether short sellers continue publishing
 ### 2026-04-22
 - Sector re-scoped: Consumer & Digital → Mobile Advertising Technology (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] reference in Related Research with [[Sectors/Mobile Advertising Technology]] — conviction unchanged.
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: 2026 fragmentation/outrage cycle environment + Andreessen's framing of mobile-attention atomization supports AppLovin's mobile-first AXON ad-tech positioning as low-CAC channel for advertisers fleeing concentrated/regulated platforms. Conviction unchanged — adjacent macro reinforcement.

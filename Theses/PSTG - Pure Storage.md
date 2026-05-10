@@ -261,3 +261,6 @@ Pure's strategic insight was recognizing that the commodity SSD layer is a **val
 ### 2026-04-22
 - Sector re-scoped: Enterprise Software → Enterprise Storage Infrastructure (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: replaced stale `[[Sectors/Enterprise Software]]` body reference with `[[Sectors/Enterprise Storage Infrastructure]]` following sector re-scope — conviction unchanged.
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: TPU pod scaling (8T 9,600 chips, 8I 1,152 chips) + checkpoint/AI-storage TAM expansion supports AI-storage Bull Case pillar; Anthropic-on-Google-Cloud signals hyperscaler-customer expansion of frontier-AI workloads where Pure has design-win presence. Conviction unchanged.

@@ -289,3 +289,8 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 
 ### 2026-04-27
 - Addressed user callouts: PLTR — addressed `[!question]` on competitive moat / patent protection in §Industry Context; added new subsection "Why the Ontology Resists Replication: Structural Moats vs. Patent Protection" covering 5 structural barriers (architectural inversion, MMDP atomic write-back, ontology library flywheel, security certifications, FDE talent) — conviction unchanged: structural moats compound faster than 2010-2015 architecture patents expire (2030-2035), making patent duration non-determinative for thesis horizon.
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: Frontier-lab framing of agent moat as "meticulously orchestrated context engineering" directly validates Ontology-as-control-plane thesis — context-substrate moat compounds in agent era. Conviction unchanged.
+- [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Hyperscaler agentic-chip co-design (Wiz cybersecurity agents, Gemini Enterprise +60% in 3 months) signals enterprise-AI inflection; PLTR's defense-grade Ontology positioned ahead of commoditized agent layer. Conviction unchanged.
+- [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: Tangential AI-policy/dark-money mention; no thesis-moving evidence. Conviction unchanged.

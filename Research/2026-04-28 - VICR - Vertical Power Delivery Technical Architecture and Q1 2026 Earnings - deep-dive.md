@@ -5,6 +5,7 @@ sector: Data Center Power & Cooling
 ticker: VICR
 source: https://photoncap.net/p/p-ir-the-one-line-equation-shaping ; https://photoncap.net/p/the-last-15mm-of-ai-power-three-numbers
 source_type: deep-dive
+propagated_to: [VICR]
 ---
 
 # VICR — Vertical Power Delivery Technical Architecture and Q1 2026 Earnings

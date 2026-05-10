@@ -207,3 +207,6 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Rewrote Non-consensus Insight #4 to add Japan material-input tail-risk caveat; added Risk #8 (PGME/PGMEA / photoresist supply chain). Conviction unchanged — directionally weaker on "Japan moat" framing but 2019 HF-dispute precedent caps this as 12-18mo manageable vulnerability. Snapshot: [[_Archive/Snapshots/285A - Kioxia (pre-sync 2026-04-24-101646)]]
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: NAND supply growth <DRAM, true incremental supply not until 2028; reinforces Bull Case supply-deficit durability through 2027+. Conviction unchanged.
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 1T-parameter dense models proportionally raise NAND demand (KV-cache spillover, checkpoint storage, training-data state); pre-training-not-dead empirical refutation from frontier-lab insider supports through-2028 supply-deficit Bull Case pillar. Conviction unchanged.

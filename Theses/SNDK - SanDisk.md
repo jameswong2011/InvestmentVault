@@ -232,3 +232,6 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Added Risk #8 — JV-partner-fab Japanese PR/BARC supply chain exposure via Flash Ventures (Yokkaichi + Kitakami). Directly hits cost-plus wafer access if disruption materializes. Conviction unchanged — 12-18mo manageable vulnerability per 2019 HF-dispute precedent, but previously-unmodeled risk on the bull case.
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 1T-parameter dense models + 3:1:1 research-allocation framework = NAND demand floor (training data, checkpoint storage, enterprise SSD) extends through agent-era buildout — strengthens Insight #3 (TurboQuant doesn't displace NAND demand). Conviction unchanged.

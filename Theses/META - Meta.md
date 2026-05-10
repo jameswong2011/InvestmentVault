@@ -261,3 +261,6 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 ### 2026-04-30
 - Addressed user callouts: Llama as capital-starvation game theory (§Industry Context → AI Model Layer); FY26 capex allocation breakdown showing ~70-80% to core ads (§Layer 3) — conviction unchanged (medium); strengthens Llama-as-moat narrative.
+
+### 2026-05-01 (/sync)
+- [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: 2.5-day outrage half-life, ~100 cycles between April-November 2026, "AyA media fellowship" dark-money AI-doom influencer program — reframes Meta's attention engine as the dominant infrastructure metabolizing manufactured outrage cycles, with secondary engagement-monetization upside but heightened regulatory/brand risk from AI-policy framing. Conviction unchanged — adds qualitative texture to Risk #N (regulatory) without moving thesis.

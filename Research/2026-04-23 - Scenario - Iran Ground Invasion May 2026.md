@@ -220,5 +220,5 @@ Sorted by magnitude (major negatives first, then major positives, then minors).
 - [[@PropTech & Real Estate Marketplaces]]
 - [[@Ski Resorts & Destination Leisure]]
 - [[Sectors/Video Game Publishing]]
-- [[@Indian Digital Conglomerates]]
+- [[Indian Digital Conglomerates]]
 - [[@Indian Financial Services]]
