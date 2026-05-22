@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, CRCL, stablecoins, USDC, crypto, fintech, payments]
-status: active
+status: monitoring
 conviction: medium
 sector: Blockchain & Stablecoins
 ticker: CRCL
@@ -365,3 +365,6 @@ Circle remains a leveraged bet on interest rates with a permanently value-destru
 
 ### 2026-04-26
 - Macro note linked: created [[Agentic Internet]] macro and added to Related Research. CRCL positioned as primary equity expression at layer-5 (payments/settlement) of the 8-layer agentic-internet stack alongside [[Theses/NET - Cloudflare]] (interception/identity) and [[Theses/SHOP - Shopify]] (commerce protocol); macro frames USDC as agent-payment substrate analogous to TCP/IP for communication. Reinforces Insight #3 (x402/AI agent payments bypass Coinbase distribution) with new historical-analogy framing. Conviction unchanged — macro reinforces extant thesis without new thesis-moving evidence.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

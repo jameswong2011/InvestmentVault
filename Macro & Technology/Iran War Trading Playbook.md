@@ -148,7 +148,7 @@ Among four US defense primes, NOC offers **best risk-adjusted entry**. Trades at
 
 Stock surged **114% in 2025** as mining equities front-ran supply concerns. Spot uranium at ~$92/lb (from $63–83/lb range), supported by nuclear renaissance narratives (AI data center demand, reactor life extensions) and structural supply deficit Russia's nuclear fuel export ban (Aug 2024) created. Iran crisis reinforces nuclear's strategic value as non-hydrocarbon baseload source. Global uranium production meeting only 90% of demand.
 
-Iran's nuclear program being the focal point of strikes accelerates Western nuclear energy investment narrative. Multi-year compounding regardless of conflict resolution. Full thesis: [[Theses/CCJ - Cameco]]. Sector context: [[@Uranium & Nuclear Fuel]].
+Iran's nuclear program being the focal point of strikes accelerates Western nuclear energy investment narrative. Multi-year compounding regardless of conflict resolution. Full thesis: [[Theses/CCJ - Cameco]]. Sector context: [[Uranium & Nuclear Fuel]].
 
 ### Position 9: GDX (VanEck Gold Miners ETF) — Scenario B reflation play
 
@@ -369,7 +369,7 @@ Market pricing of this as temporary shock may prove correct on 12-month horizon 
 
 - [[@LNG & Natural Gas Infrastructure]] — Ras Laffan structural supply gap thesis
 - [[@Product Tankers & Maritime Shipping]] — ton-mile demand shock + insurance mechanism
-- [[@Uranium & Nuclear Fuel]] — nuclear renaissance hedge
+- [[Uranium & Nuclear Fuel]] — nuclear renaissance hedge
 - [[Sectors/Cybersecurity]] — Iranian APT-driven structural spending
 - [[Sectors/Precious Metals]] — gold paradox + miners leverage
 - [[Sectors/Agriculture & Industrial Equipment]] — fertilizer transmission

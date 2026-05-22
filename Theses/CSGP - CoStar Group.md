@@ -1,7 +1,7 @@
 ---
 date: 2026-04-14
 tags: [thesis, csgp, real-estate-data, monopoly]
-status: active
+status: monitoring
 conviction: medium
 sector: Real Estate Data & SaaS
 ticker: CSGP
@@ -174,3 +174,6 @@ The February 2026 launch of Homes AI (powered by Azure OpenAI, integrated with M
 ### 2026-04-22
 - Sector re-scoped: Enterprise Software → Real Estate Data & SaaS (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced stale [[Sectors/Enterprise Software]] reference in Related Research with [[Sectors/Real Estate Data & SaaS]] after sector note fill — no body-section edits.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

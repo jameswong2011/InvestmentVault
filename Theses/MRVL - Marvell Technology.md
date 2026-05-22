@@ -1,8 +1,8 @@
 ---
 date: 2026-04-23
 tags: [thesis, custom-silicon, networking, optical-dsp, MRVL]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: Custom Silicon & Networking Semiconductors
 ticker: MRVL
 source: vault synthesis — [[Research/2026-04-23 - Insight Surface Scan.md]] Opportunity 5
@@ -271,3 +271,10 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Google TPU expansion (8T 9,600-chip pods, 8I 1,152-chip inference pods) + hyperscaler custom-silicon partnerships at multi-cloud scale (Anthropic on Google Cloud) — strengthens MRVL custom-ASIC and networking IP demand wave. Conviction unchanged.
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 1T-parameter dense-model entry ticket structurally grows training-cluster scale + memory-fabric photonics demand on Celestial. Conviction unchanged — reinforces existing memory-disaggregation Non-consensus Insight #2.
+
+### 2026-05-12 (/sync)
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Intel publicly named **MRVL alongside AVGO as EMIB engagement targets** for AI-ASIC packaging on 18A/18A-P; EMIB-T H2 2026 launch (120×180mm 24-HBM-stack package, priced "low hundreds" vs $900–1,000 CoWoS Rubin-class) opens a cost-arb second-source path for hyperscaler ASIC customers facing TSMC CoWoS allocation squeeze (NVDA 60–65% of 130K WPM 2026). Constructive for MRVL custom-ASIC margin and design-services duty cycle — incremental optionality, not a re-rating event. Conviction unchanged on Bull Case driver #2 (hyperscaler custom-ASIC) — adds packaging-architecture flexibility.
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Hyperscaler 2026 capex ~$750B (+67% YoY, CreditSights) is the demand-pillar datapoint for MRVL's custom-ASIC + Celestial memory-fabric thesis; supports the structural-second-source framing without changing share trajectory. Conviction unchanged — strengthens Bull Case demand floor.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

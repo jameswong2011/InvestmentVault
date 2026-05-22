@@ -1,7 +1,7 @@
 ---
 date: 2026-02-26
 tags: [thesis, APP, consumer-digital, adtech, AI]
-status: active
+status: monitoring
 conviction: medium
 sector: Mobile Advertising Technology
 ticker: APP
@@ -215,3 +215,6 @@ The thesis-determining variable is not whether short sellers continue publishing
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: 2026 fragmentation/outrage cycle environment + Andreessen's framing of mobile-attention atomization supports AppLovin's mobile-first AXON ad-tech positioning as low-CAC channel for advertisers fleeing concentrated/regulated platforms. Conviction unchanged — adjacent macro reinforcement.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

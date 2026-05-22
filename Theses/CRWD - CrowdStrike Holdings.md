@@ -1,7 +1,7 @@
 ---
 date: 2026-04-22
 tags: [thesis, cybersecurity, CRWD]
-status: active
+status: monitoring
 conviction: medium
 sector: Cybersecurity
 ticker: CRWD
@@ -253,6 +253,7 @@ Not listed but worth flagging: **SentinelOne** (Purple AI autonomous endpoint, L
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Iran-cyber retaliation thesis: CRWD as asymmetric-threat hedge during geopolitical escalation
 - [[Theses/NET - Cloudflare]] — Adjacent network-edge play; non-overlapping with CRWD endpoint
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates Iran cyber retaliation → F500 emergency cyber budget reallocation
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: AI productivity disruption pressuring private-credit-financed software borrowers (TCPC ~33% of Q1 markdowns software-related); CRWD platform consolidator benefits structurally as cash-burning peers fail
 
 ## Log
 
@@ -268,3 +269,9 @@ Not listed but worth flagging: **SentinelOne** (Purple AI autonomous endpoint, L
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Kurian describes Wiz cybersecurity agents (continuous attacker, prioritization, fixer) as agentic security primitives operating on Gemini Enterprise — direct competitive overlap with Charlotte agentic SOC. Wiz now Google-owned with full Gemini stack integration adds capital + distribution behind a CRWD-overlapping product. Conviction unchanged but watch hyperscaler-bundling pressure on AIDR pricing — incremental input to Outstanding Question on AI-native moat durability.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]]: Tangential — TCPC ~33% of Q1 markdowns software-related; AI productivity disruption destroying private-credit-financed software borrowers, public-market platform leaders (CRWD) are the structural beneficiary. Conviction unchanged — no direct CRWD operating signal.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

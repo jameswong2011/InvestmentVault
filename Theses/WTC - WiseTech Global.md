@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, enterprise-software, WTC, logistics, supply-chain, cargowise]
-status: active
+status: monitoring
 conviction: medium
 sector: Logistics & Supply Chain Software
 ticker: WTC
@@ -394,3 +394,6 @@ Last-Mile / Delivery → Consignee
 
 ### 2026-04-27
 - Addressed user callouts: Added §Business Model → CargoWise + E2open Integration: Product & Revenue Synergies (5 product vectors, 4 revenue vectors estimated $30-50M annualized, $50M cost synergies captured + $85-120M total potential, group revenue impact, execution risks). Added §Industry Context → Top forwarder self-build risk: the DSV-Tango precedent (DSV ~30% migrated to Tango as of Feb 2026, CEO public commitment, scale-dependent self-build economics, stop-gap hypothesis evaluated, base/bear/tail margin scenarios). Added Bear Case bullet on DSV cascade risk, Catalyst on DSV migration cadence, Risk #13 on top forwarder migration. Conviction unchanged — DSV news is a real material risk but tail scenario (second top-10 forwarder following) is the actual thesis-breaker; monitoring trigger established. Web research sources: The Loadstar / Container-Mag / TI-Insight / Bernstein estimates / S&P Global.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

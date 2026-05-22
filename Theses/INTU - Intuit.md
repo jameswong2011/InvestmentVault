@@ -1,9 +1,9 @@
 ---
 date: 2026-05-01
-tags: [thesis, consumer-smb-financial-software, INTU]
-status: draft
+tags: [thesis, accounting-erp, INTU]
+status: monitoring
 conviction: medium
-sector: Consumer & SMB Financial Software
+sector: Accounting & ERP Software
 ticker: INTU
 source: Q2 FY2026 earnings (Feb 2026), Anthropic partnership announcement (Feb 2026), IRS Direct File shutdown announcement (Apr 2026), IES launch tracking
 ---
@@ -58,7 +58,7 @@ Intuit operates four reportable business groups, each a distinct vertical financ
 
 ## Industry Context
 
-The Consumer & SMB Financial Software category sits at the intersection of three structural forces: (1) workflow consolidation pressure (SMBs want one stack, not 5-10 vendors), (2) embedded-finance evolution (financial products integrated into the workflow apps that capture the data), and (3) the AI disruption gradient (vertical AI > horizontal AI for domain-specific tasks).
+The Accounting & ERP Software category — at the SMB / consumer-tax tier — sits at the intersection of three structural forces: (1) workflow consolidation pressure (SMBs want one stack, not 5-10 vendors), (2) embedded-finance evolution (financial products integrated into the workflow apps that capture the data), and (3) the AI disruption gradient (vertical AI > horizontal AI for domain-specific tasks).
 
 **Competitive landscape — SBSE/QuickBooks**: Direct competitors include Xero (international focus, ~30% NZ/AU/UK share, weak in U.S.), Sage (legacy mid-market, transitioning to cloud), FreshBooks (small business / freelancer niche), and Wave (free, owned by H&R Block, gives away basic features as a wedge). The competitive moat is data + ecosystem: QBO has deeper integrations with U.S. banks (12,000+ direct connections), payroll providers, payment processors, and a third-party app marketplace (750+ apps). Switching cost: rebuilding chart of accounts, re-mapping bank feeds, retraining staff. Net retention is ~115%+ for QBO Online. Pricing power: QBO has raised list prices ~5-7% annually for a decade with no measurable churn impact. The non-obvious threat is not Xero/Sage but vertical-specific competitors (e.g., construction-only ERPs like Buildertrend, restaurant-only POS+accounting like Toast) that win on workflow specificity. INTU's response is IES at the up-market and AI workflows at the SMB market.
 
@@ -175,7 +175,7 @@ The Consumer & SMB Financial Software category sits at the intersection of three
 - [[Theses/SHOP - Shopify]] — embedded fintech (Shopify Capital, Shopify Payments) parallel to QuickBooks Capital + Payments and Credit Karma Lightbox
 - [[Theses/CRCL - Circle]] — Agentic Internet macro adjacency; both INTU and CRCL are positioning for an embedded-AI commerce layer, though at different parts of the stack
 
-**Sector**: [[Sectors/Consumer & SMB Financial Software]]
+**Sector**: [[Accounting & ERP Software]]
 
 **Macro adjacencies**: [[Macro/Agentic Internet]] (Lightbox + Intuit Assist as native infrastructure for AI agents transacting on user behalf); open banking / CFPB 1033 rule implementation as ongoing structural force for both QBO data portability and Credit Karma Lightbox monetization.
 
@@ -183,3 +183,9 @@ The Consumer & SMB Financial Software category sits at the intersection of three
 
 ### 2026-05-01
 - Initial thesis created. Conviction: medium — strong franchise + meaningful AI/IES/Lightbox optionality the multiple doesn't credit, balanced against real horizontal-AI commoditization risk in tax + bookkeeping that bear cases correctly identify.
+
+### 2026-05-16
+- Sector fused: Consumer & SMB Financial Software (now at [[_Archive/Sectors/Consumer & SMB Financial Software]]) folded into [[Accounting & ERP Software]]. INTU now sits in Accounting & ERP Software as the SMB / consumer-tax tier of the broader financial-software stack (alongside QBO ~62% U.S. SMB accounting share and IES as direct NetSuite/Sage Intacct/Workday/Dynamics 365 BC mid-market competitor). Frontmatter `sector:` and `tags:` updated; body wikilink to old sector retargeted; no analytical content changed.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

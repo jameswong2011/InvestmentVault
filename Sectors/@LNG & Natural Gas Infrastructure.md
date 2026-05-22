@@ -10,7 +10,16 @@ status: active
 - [[Theses/LNG - Cheniere Energy]] — Cheniere Energy (largest US LNG exporter / contracted take-or-pay cash flow / stage 3+ capacity expansion)
 
 ## Key industry questions
-- Does the post-Ras Laffan supply gap (12.8 mtpa offline with 2–4 year gas-turbine replacement lead times) absorb the ~90–120 mtpa wave of new global LNG capacity scheduled for 2026–2030, or does the projected ~65 bcm 2030 surplus re-emerge as Qatari restoration, Venture Global / NextDecade / Sempra commissioning, and European demand decline (IEA: −10% gas, −25% gas-to-power by 2030) compound — and which producers' contracted books survive an oversupply transition that the SPA tolling structure was designed to hedge?
+
+1. **Hormuz / Ras Laffan shock vs. 2026–2030 supply wave.** Does the 12.8 mtpa Qatari capacity offline (2–4 year gas-turbine replacement lead times) absorb the ~90–120 mtpa wave of new global capacity scheduled for 2026–2030, or does the consensus ~65 bcm 2030 surplus reassert as Qatar restores Ras Laffan, Venture Global commissions Plaquemines reliably, and Sempra / NextDecade / Woodside ramp on schedule — and which producers' contracted books survive an oversupply transition that the SPA tolling structure was designed to hedge?
+2. **Toll-road repricing vs. commodity cyclicality.** Will US Gulf Coast liquefiers re-rate toward pipeline / infrastructure multiples (10–12x EV/EBITDA reference KMI / EPD / ET) as the take-or-pay floor gets recognized, or do equity investors anchor LNG names to JKM-cycle volatility and cap multiples at 6–8x — and does Cheniere's current 7.5–8.5x bracket widen or compress over the 2026–2028 normalization window?
+3. **Modular vs. mono-train as durable cost edge or brittleness risk.** Does Venture Global's 18-unit / 0.6-mtpa-per-unit modular technology prove a durable ~$1.0B/mtpa capex advantage at scale, or do the protracted Calcasieu Pass + Plaquemines commissioning curves plus the Shell / BP / TotalEnergies arbitrations validate Cheniere's mono-train conservatism as the binding execution moat — at what point does offtaker trust capital outweigh per-MMBtu fee discounts?
+4. **European LNG demand cliff vs. floor.** Does the IEA / IEEFA / Wood Mackenzie consensus (−10% gas, −25% gas-to-power, LNG imports −20% to ~134 bcm by 2030, TTF halving to ~€24/MWh) materialize as a demand cliff that compresses new SPA fees toward $2.25/MMBtu, or does post-Hormuz procurement-bias toward Atlantic Basin supply, slower renewables build-out, and persistent winter heating demand sustain ~150 bcm+ European imports through 2030?
+5. **Asian incremental demand pace and pipeline substitution.** Does India 25 → 40+ mtpa + SE Asia +30 mtpa regas additions + China's pipeline-vs-LNG rebalancing add +50–80 mtpa Asian demand by 2030, or do price-affordability ceilings (India ~$10/MMBtu, SE Asia even lower) cap absorption and structurally favor Power of Siberia 2 (98 bcm by 2030) over premium LNG?
+6. **Henry Hub price floor from AI data-center electrification.** Does the US data-center buildout (183 TWh 2024 → ~945 TWh global 2030 per IEA) drive Henry Hub from $2.50 (2024) toward $3.50–4.50 (2027+) and erode the JKM-HH / TTF-HH spreads that drive liquefier portfolio margin, or does Permian associated-gas growth + shale supply elasticity absorb incremental demand while preserving spread structure — and which side of this trade does Cheniere's variable-fee pass-through favor?
+7. **Insurance mechanism as permanent market structure.** Has the Iran war / Hormuz insurance repricing (war-risk premiums 0.125% → 1–3% of hull value, $1M+ per laden cargo transit) institutionalized a structural ~$1.50–3.00/MMBtu route-risk discount on Hormuz-routed supply that persists through ceasefire and restoration, or do insurer behaviors revert under sustained safety and re-collapse the Atlantic Basin geographic premium?
+8. **Methane intensity / regulation as supply bifurcation vector.** Does the EU Methane Regulation (2027 enforcement) + IMO Tier III + EU FuelEU Maritime + cargo-emissions-tagging build a durable pricing premium for low-methane-intensity supply chains (Canadian Montney, Norwegian Troll, Australian conventional) over US Permian-associated and Russian Yamal supply — and is Cheniere's Cargo Emissions Tags program credible enough to capture the European premium, or does the program join Shell's QUEST as a marketing layer without measurable pricing impact?
+9. **Venture Global as system-wide counterparty contagion risk.** Does Venture Global's 5.95x debt-to-equity + ongoing Shell / BP / TotalEnergies arbitrations + Calcasieu Pass / Plaquemines commissioning lag create a 2027–2029 stress scenario in which the second-largest US producer financially strains, and if so, what is the contagion path through EPC counterparty risk transfer, debt capital cost on US LNG financing, and offtaker confidence in the modular technology stack?
 
 ## Industry history
 
@@ -65,6 +74,37 @@ Global LNG trade was approximately **400 mtpa in 2025**, dominated by a four-cou
 | **China** | ~75 mtpa LNG + ~50 mtpa pipeline (Power of Siberia + Central Asia) | Largest incremental buyer globally; pipeline diversification reduces marginal LNG sensitivity |
 | **India** | ~25 mtpa, growing to 40+ mtpa by 2030 | Growth driven by city gas, fertilizer, power; price-sensitive — affordability ceiling at ~$10/MMBtu |
 | **SE Asia (Vietnam, Thailand, Philippines, Bangladesh, Pakistan)** | ~25 mtpa | Fastest-growing region; new regas terminals adding 30+ mtpa import capacity by 2030 |
+
+**Forward supply–demand balance (mtpa, base case post-Ras Laffan):**
+
+| Year | Operational supply | New capacity adds (cumulative from 2025) | Effective supply | Demand | Balance (surplus / deficit) |
+|---:|---:|---:|---:|---:|---:|
+| 2025 actual | ~400 | — | ~400 | ~400 | ~0 |
+| 2026E | ~405 (Qatar −12.8) | +18 (VG Plaquemines P1 + Golden Pass T1) | ~410 | ~410 | ~0 (insurance-tight) |
+| 2027E | ~395 (Qatar −12.8) | +35 (Plaquemines P2, NextDecade T1–T2, Sempra PA P1, CCL T8–9) | ~430 | ~425 | +5 |
+| 2028E | ~395 (Qatar −12.8 still offline) | +60 (NFE first volumes, NextDecade T3–T5, CCL SPL Expansion P1, Cameroon FLNG ramp) | ~455 | ~445 | +10 |
+| 2029E | ~407 (Qatar partial restoration +12.8) | +80 (Mozambique restart, Woodside Louisiana P1, Plaquemines P3, NFS) | ~487 | ~465 | +22 |
+| 2030E | ~420 (Qatar full restoration, NFE+NFS complete +49) | +105 | ~525 | ~485 | +40 |
+
+The consensus 2030 "~65 bcm glut" anchors on three optimistic assumptions stacked: Qatar restoration by 2028, every new-build commissions on schedule, and Asian price-affordability holds through $10/MMBtu deliveries. If any one slips by 2 years, the surplus compresses to ~10–15 mtpa — still oversupplied but not catastrophic for contracted books. The asymmetric scenario for liquefier equity holders is **fewer FIDs in 2027–2028 → tighter 2030–2032 market**; high-conviction contracted-floor names (Cheniere, Sempra) gain disproportionate optionality from any FID delays in the second-wave cohort (NextDecade T6–T8, CP2, Texas LNG, Commonwealth).
+
+**Delivered cost stack (merit order, brownfield/greenfield split):**
+
+| Rank | Producer / project | All-in delivered cost ($/MMBtu) | Route exposure | Notes |
+|---:|---|---:|---|---|
+| 1 | Qatar (legacy 77 mtpa) | $3.80–5.60 | Hormuz | Lowest cost globally, but route-impaired post-2026 |
+| 2 | Cheniere SPL Brownfield (operational) | $5.80–6.30 | Atlantic / Panama | Train-incremental capex below greenfield |
+| 3 | Russian Yamal LNG | $4–6 | Arctic / NSR | Sanctioned out of Western markets |
+| 4 | Cheniere CCL Stage 3 (commissioning) | $6.50–7.00 | Atlantic / Panama | First "second-wave" capacity at brownfield economics |
+| 5 | Sempra Cameron, Port Arthur P1 | $7.20–7.80 | Atlantic / Panama | Bechtel EPC; utility-grade balance sheet |
+| 6 | Australia (Gorgon / Wheatstone / Ichthys / APLNG) | $7.00–9.00 | Pacific | Carbon-tax overhang; cyclone disruption |
+| 7 | Venture Global Plaquemines | $7.50–9.00 | Atlantic | Modular capex advantage offset by commissioning premium |
+| 8 | NextDecade Rio Grande T1–T5 | $8.50–9.50 | Atlantic | First-cargo H2 2026; no track record |
+| 9 | Woodside Louisiana P1 | $9.00–10.50 | Atlantic | Distressed-asset entry (ex-Tellurian); 2029 first cargo |
+| 10 | Mozambique LNG (Coral Sul + Area 1) | $9.50–11.00 | Indian Ocean | 2026 restart; jurisdictional + security premium |
+| 11 | Greenfield US (CP2, Commonwealth, Texas LNG) | $10.00–11.50 | Atlantic | EPC inflation + Gulf Coast labor competition |
+
+The cost stack collapses to two competitive blocks once Hormuz route risk is priced: an **Atlantic Basin block** ($5.80–9.50, capacity owners pricing-flexibility on new SPAs) and a **Hormuz-routed block** ($3.80–5.60 underlying cost + $1.50–3.00/MMBtu effective insurance / route discount = $5.30–8.60 effective delivered). Qatar's underlying cost advantage compresses to ~breakeven with the lowest-cost US brownfield once route economics are loaded into the comparison.
 
 **Pricing power shifts and trajectory:**
 
@@ -145,7 +185,7 @@ LNG competes with pipeline gas, which has 30–50% lower delivered cost where in
 - **Shell acquires BG Group (April 2016, $53B).** The defining LNG M&A of the 21st century. BG brought ~70 mtpa of LNG trading volume, Australian projects (Curtis LNG / QGC, Prelude FLNG), Brazilian deepwater oil, and East African gas (Tanzania). Made Shell the largest LNG portfolio company globally and the price-setter on Asia-Pacific spot trade. Strategic rationale: scale advantages in LNG portfolio optimization compound non-linearly (more cargoes = more arbitrage opportunities + better destination flexibility + better fleet utilization). Shell's LNG trading desk in London / Singapore is now the de facto market-maker for non-contracted Asian LNG.
 - **Cheniere goes public via Sabine Pass IPO (2007), reverse-pivots from import to export (2010), first cargo (Feb 2016).** The single defining strategic reversal in LNG history. Souki saw Henry Hub at $2–3/MMBtu vs. JCC at $15+/MMBtu and concluded the imports terminal Cheniere had just sanctioned would be obsolete. Convinced FERC, DOE, and offtakers (BG, GAIL India, Korea Gas, GDF Suez/Engie) to convert the same site to export — first US LNG export from the lower 48 states. Established the SPA template (fixed liquefaction fee + 115% Henry Hub) that every subsequent US LNG project inherited.
 - **TotalEnergies + ENI Mozambique Area 1/4 FIDs (2019, $20B+).** Sanctioned Coral South FLNG (3.4 mtpa) and Mozambique LNG (12.9 mtpa Phase 1, 31.7 mtpa eventual). Force-majeured 2021 due to Cabo Delgado insurgency; **resumed construction January 2026** with security backed by Rwandan and SAMIM forces. First LNG targeted 2029. Strategic rationale: world-class deepwater gas reservoir (~75 tcf reserves), location advantages to both India and Europe, fiscal regime favorable post-renegotiation. Ongoing security risk is the binding investability constraint.
-- **Brookfield + Cameco acquire Westinghouse (Nov 2023, $7.875B).** Adjacent to LNG via the gas-vs-nuclear baseload competition; the same energy-sovereignty thesis that re-rated nuclear underpins the LNG infrastructure premium (see [[@Uranium & Nuclear Fuel]]).
+- **Brookfield + Cameco acquire Westinghouse (Nov 2023, $7.875B).** Adjacent to LNG via the gas-vs-nuclear baseload competition; the same energy-sovereignty thesis that re-rated nuclear underpins the LNG infrastructure premium (see [[Uranium & Nuclear Fuel]]).
 - **Woodside acquires Tellurian (April 2024, $900M).** Driftwood project rebranded as Woodside Louisiana LNG; Phase 1 (16.5 mtpa) FID April 2025 with first LNG targeted 2029. Saved Tellurian's ~$1B+ of pre-FID engineering investment after Charif Souki's variable-pricing model failed to attract anchor offtakers. Strategic rationale for Woodside: extends global LNG portfolio beyond Australia (Pluto, NWS, Scarborough) into the Atlantic Basin; counter-cyclical entry at distressed valuation.
 - **QatarEnergy + ExxonMobil Golden Pass (Sabine Pass, TX, 18 mtpa, FID 2019, first LNG delayed).** Originally targeted first LNG 2024; pushed to 2025–2026 by Zachry Industrial bankruptcy (May 2024). Strategic rationale for Qatar: own US production capacity to hedge against Hormuz routing and supply customers preferring Atlantic Basin sourcing — exactly the rationale validated by the 2026 Ras Laffan attack.
 - **Venture Global IPO (NYSE: VG, January 2026).** Raised ~$1.75B at ~$25/share / ~$60B fully diluted; IPO substantially undercut by Calcasieu Pass commissioning dispute revelations. Provided capital but exposed the 5.95x debt-to-equity balance sheet, the magnitude of arbitration risk (Shell, BP, TotalEnergies — won Repsol case but lost trust capital), and the operational track record gap vs. Cheniere.
@@ -158,7 +198,12 @@ LNG competes with pipeline gas, which has 30–50% lower delivered cost where in
 - **NextDecade / Rio Grande LNG.** Greenfield Brownsville project (~30 mtpa across Trains 1-5), all under construction. ADNOC + TotalEnergies + Aramco + JERA offtake — a credible commercial book. First LNG targeted year-end 2026. Disruption vector: scale entry without operational track record; analogous to where Venture Global was 2022. Watch first-cargo date (delays would echo Venture Global's commissioning issues) and offtaker satisfaction post-COD.
 - **Sempra (Cameron + Port Arthur).** Most credible US new entrant given Sempra's utility-grade balance sheet, ConocoPhillips technology partnership, Bechtel EPC track record. Cameron LNG (12 mtpa, COD 2019–2020) operating reliably for 6+ years. Port Arthur Phase 1 (~13 mtpa, COD 2027) and Phase 2 (~13 mtpa, FID Sept 2025). Disruption vector limited because Sempra's pricing is closer to Cheniere's than to Venture Global's — Sempra is the "rational competitor" rather than the "price disruptor."
 - **Woodside Louisiana LNG (formerly Driftwood / Tellurian).** 16.5 mtpa Phase 1, FID April 2025, first LNG 2029. Validates Atlantic Basin US LNG as a portfolio asset for incumbent Asia-Pacific producers; signals that the "second wave" of US LNG includes both US-only developers and global majors expanding into US Gulf Coast.
-- **Texas LNG, Commonwealth LNG, CP2 LNG, Magnolia LNG, Lake Charles LNG (Energy Transfer).** Micro-scale or pre-FID greenfield projects. Most have not advanced past permitting; collective disruption risk is low.
+- **Mexico Pacific Limited (Saguaro Energía LNG).** Sonora, Mexico west-coast LNG export project sourcing US Permian / Waha gas via the proposed Sierra Madre pipeline. 14.1 mtpa Phase 1 across three trains; FID target end-2025–2026; first cargo 2028–2029. Pacific-route advantage: ~9-day shorter Asia voyage than US Gulf Coast (no Panama Canal transit), saving ~$0.30–0.50/MMBtu shipping. Anchor offtakes: Shell, ExxonMobil, Vitol, Zhejiang Energy. Disruption vector: if Sierra Madre pipeline clears Mexican permitting, Saguaro becomes the only credible Pacific-Coast LNG export project, materially compressing Asia-delivered cost from Atlantic Basin competitors. Single largest execution risk: Mexican cross-border infrastructure permitting + López Obrador / Sheinbaum administration policy continuity on US-gas-sourced exports.
+- **Coral Sul FLNG (ENI, operational since Nov 2022).** Mozambique offshore floating liquefaction, 3.4 mtpa, Phase 1 of Area 4. First African FLNG; supplies BP under 20-year offtake. Proved offshore FLNG can ramp reliably (vs. Shell's troubled Prelude). Coral North FID under evaluation 2026; potential +3.4 mtpa.
+- **Mozambique LNG (TotalEnergies, Area 1) — resumed January 2026.** 12.9 mtpa Phase 1; force-majeured 2021 due to Cabo Delgado insurgency; security backed by Rwandan + SAMIM forces post-restart. First LNG targeted 2029. Strategic position: equidistant to India (the fastest-growing buyer) and Europe; world-class ~75 tcf reservoir; fiscal regime favorable post-renegotiation. The single highest-risk / highest-reward African LNG project of the cycle.
+- **Greater Tortue Ahmeyim (BP + Kosmos Energy, Mauritania / Senegal).** Cross-border FLNG, 2.5 mtpa Phase 1 first cargo Feb 2025; Phase 2 evaluation (+2.5–3.0 mtpa) under review. Strategic significance: first cross-border African LNG project; positions BP as Atlantic Basin FLNG operator; offers Senegal / Mauritania entry to global LNG-producer status. Disruption vector is limited — small scale, but proves the FLNG ramp playbook for marginal offshore fields.
+- **Sabine Pass Train 7 (Cheniere).** Final Sabine Pass facility train, ~6 mtpa, FID expected 2026–2027 alongside SPL Expansion Phase 1 (~10 mtpa initial scope of ~20 mtpa eventual). Train 7 is the smaller, higher-IRR "fill-in" capacity using the existing Sabine Pass footprint; SPL Expansion is the larger greenfield-on-brownfield-site expansion. Both at brownfield economics ($6.50–7.00/MMBtu vs. $8.50–10.80 greenfield), preserving Cheniere's structural cost edge against the second-wave entrants.
+- **Texas LNG, Commonwealth LNG, CP2 LNG, Magnolia LNG, Lake Charles LNG (Energy Transfer).** Micro-scale or pre-FID greenfield projects. Most have not advanced past permitting; collective disruption risk is low. **CP2 LNG (Venture Global)** is the credible exception — 28 mtpa permitted, partially financed, awaiting DOE non-FTA approval reaffirmation; if Venture Global resolves the offtaker arbitrations and clears CP2 to FID, the company moves from ~30 mtpa to 60+ mtpa by 2029 and pressures Cheniere's incremental SPA pricing on greenfield expansions.
 - **New Fortress Energy (NFE).** Distinct model: infrastructure-light, focused on small-scale LNG-to-power and fast-deploy regasification. Aggressive expansion into Puerto Rico, Brazil, Mexico, Jamaica. Collapsed to $316M market cap with negative EBITDA in 2025 — the cautionary tale that aggressive, underleveraged LNG models without Cheniere's contract visibility can implode.
 - **QatarEnergy North Field Expansion (~49 mtpa across NFE 32 mtpa + NFS 16 mtpa, in-construction pre-attack).** Was set to add ~63% to Qatar's capacity by 2027–2028. The Ras Laffan attack damaged Trains 4 and 6 of the existing fleet (12.8 mtpa offline 3–5 years) and put the expansion timeline into question. If Qatar restores damaged trains within 2 years AND completes NFE on schedule, Qatar reaches ~115 mtpa post-2028 — recreating glut conditions. If timelines slip, the supply gap persists structurally.
 
@@ -187,6 +232,32 @@ Seven macro vectors are simultaneously reshaping LNG over 2025–2030 — the ge
 7. **Carbon policy and methane regulation as the long-tail risk (2025–2035).** EU FuelEU Maritime + IMO Tier III + EU Methane Regulation (2027) impose progressively stricter methane-leak monitoring, reporting, and verification on LNG supply chains. US EPA methane rule (2024, contested under Trump) targeted upstream gas methane emissions. Direct competitive impact: producers with low-methane-intensity supply chains (Canadian Montney, Norwegian Troll, Australian conventional) gain pricing premium; producers with high-methane-intensity supply (US Permian associated gas, Russian Yamal, Algerian Hassi R'Mel) face increasing carbon-cost spreads. Cheniere has invested heavily in cargo-by-cargo emissions disclosure ("Cargo Emissions Tags") to monetize the low-methane-intensity premium with European buyers.
 
 **Cross-cutting: the insurance mechanism as new market structure.** The Iran war demonstrated that insurance pricing can disrupt commercial flows faster than navies can. War risk premiums of 1–3% of hull value reprice within 48 hours of an event; reset back down requires weeks-to-months of sustained safety. For LNG (no pipeline bypass, single-route choke points), insurance pricing is now an effective second-order supply control mechanism. Atlantic Basin producers permanently advantaged; Hormuz, Strait of Malacca, Bab el-Mandeb, Dardanelles all carry route-specific insurance discounts on cargo pricing for buyers.
+
+### Sector catalyst calendar (24-month horizon)
+
+| Date / window | Catalyst | Most affected names | Watch metric |
+|---|---|---|---|
+| Q2 2026 (May–Jul) | Cheniere Q1 2026 earnings + revised 2026 EBITDA guide post-crisis | Cheniere | Open-volume realization; SPL Expansion permit progress |
+| Q2–Q3 2026 | Ras Laffan North-site partial restart targeted | Qatar / global JKM | Cargo lifting cadence; force-majeure scope revisions |
+| Q3 2026 | Venture Global Plaquemines Phase 1 commissioning completion + first Phase 2 cargo | Venture Global, Shell / BP / TotalEnergies arbitrations | Offtaker commissioning-dispute resolution; force-majeure release |
+| Q4 2026 | NextDecade Rio Grande T1 first LNG (targeted year-end) | NextDecade | First-cargo timing slippage signals; ADNOC / TotalEnergies / Aramco / JERA satisfaction |
+| Q4 2026 | DOE non-FTA reauthorization cycle (CP2 LNG, SPL Expansion Phase 1) | Venture Global, Cheniere | Trump administration export-permit cadence |
+| Q4 2026 | Mexico Pacific Saguaro Energía FID window (Phase 1, 14.1 mtpa) | Mexico Pacific consortium | Sierra Madre pipeline permitting clearance |
+| Q4 2026 | Cheniere SPL Expansion Phase 1 FID target | Cheniere | Anchor offtakes at $3.00–3.50/MMBtu fixed fees |
+| 2027 H1 | EU Methane Regulation enforcement begins (Jan 1, 2027) | All producers, esp. Permian-sourced | First emissions tag verification cycles; pricing differential |
+| 2027 H1 | Cheniere CCL Stage 3 substantial completion (Train 7) | Cheniere | Schedule + capex performance vs. plan |
+| 2027 H2 | Sempra Port Arthur Phase 1 COD (~13 mtpa) | Sempra, Bechtel | First-cargo to ConocoPhillips / KKR / Aramco offtake |
+| 2027 H2 | Golden Pass first LNG (Sabine Pass, Qatar-Exxon JV, ~18 mtpa) | QatarEnergy, ExxonMobil | Post-Zachry-bankruptcy execution credibility |
+| 2028 H1 | Cheniere CCL T8 & 9 substantial completion | Cheniere | Execution track-record extension |
+| 2028 | Qatar Trains 4 & 6 partial restoration window (3-year case) | Qatar / JKM / TTF | Force-majeure releases; demand-rebalance |
+| 2028 | Mozambique LNG Area 1 first LNG (targeted) | TotalEnergies, ENI | Cabo Delgado security stability under Rwandan / SAMIM |
+| 2028 | Sempra Port Arthur Phase 2 COD (~13 mtpa) | Sempra, Blackstone consortium | Two-phase cluster economics validated |
+| H2 2028 | US 2028 presidential election → LNG policy continuity test | All US producers | DOE / FERC posture under next administration |
+| 2029 | Woodside Louisiana Phase 1 first LNG (16.5 mtpa) | Woodside | Tellurian-asset rehabilitation; Atlantic Basin Australian-major model |
+| 2029 | NFE + NFS commissioning (Qatar +49 mtpa expansion) | Qatar / global supply | Final test of consensus 2030 glut hypothesis |
+| 2030 | IMO methane / GHG Tier III enforcement tightens | LNG shipping economics | Methane-slip retrofits; carrier cost stack revision |
+
+The sequence of FIDs and CODs in 2026–2028 is the binding stress-test of the consensus glut hypothesis. If two of the four major 2027–2028 milestones (Plaquemines P2 reliability, NextDecade T1 on-time, Sempra PA P1 on-time, Qatar partial restoration) slip materially, the consensus 2030 surplus becomes the bear-case rather than the base-case. Cheniere's contracted floor renders these slips an asymmetric upside on incremental SPA pricing.
 
 ## Investor heuristics
 
@@ -219,6 +290,41 @@ Seven macro vectors are simultaneously reshaping LNG over 2025–2030 — the ge
 - **The thermal coal trade is the symmetric LNG beneficiary** — every mtpa of LNG offline forces ~1.5 mtpa of thermal coal substitution. Yancoal (YAL.AX), New Hope (NHC.AX), Core Natural Resources (CNR), Glencore (GLEN.L), Newcastle thermal coal futures all benefit from the same supply gap that benefits Cheniere; the relative-value pair (long Cheniere + long Newcastle coal vs. short Brent) captures the divergent route exposure across hydrocarbon complexes.
 - **The Iran war is the accelerant, not the cause, of LNG infrastructure repricing.** Strip out Iran and the European LNG pivot, AI baseload demand, Asian demand growth, methane regulation premium, and execution-credibility scarcity still drive the franchise premium. The energy-sovereignty premium should not fully compress even in a Hormuz-reopen / Ras Laffan fast-restoration scenario — it is a multi-vector re-rating, not a single-event spike.
 
+### Sector watchlist & candidate theses
+
+The sector currently anchors on one full thesis ([[Theses/LNG - Cheniere Energy]]); the following names warrant dedicated theses or stress-test work given the structural setup:
+
+| Ticker | Name | Why on watchlist | Thesis lens to test |
+|---|---|---|---|
+| **VG** | Venture Global LNG | Second-largest US producer; 5.95x debt/equity; commissioning disputes resolved 2026? | Stress test: Plaquemines reliability + CP2 FID + arbitration outcomes — short candidate if reliability gap widens; deep-value candidate if Calcasieu commissions cleanly and CP2 clears DOE |
+| **SRE** | Sempra Energy | Cameron + Port Arthur P1 / P2 (~38 mtpa eventual); utility-grade balance sheet; Bechtel EPC | "Rational competitor" — should track Cheniere multiple at ~10–15% discount; SOTP separates regulated utility from LNG infrastructure |
+| **NEXT** | NextDecade | Rio Grande T1–T5 (~30 mtpa) under construction; first cargo H2 2026 | Binary first-cargo-execution test; ADNOC / TotalEnergies / Aramco / JERA offtake validates if delivered on schedule |
+| **WDS.AX** | Woodside Energy | Australian major + Atlantic Basin (Louisiana 16.5 mtpa, first LNG 2029); Scarborough P1 + Pluto T2 ramp | Diversified portfolio LNG with distressed-asset upside (ex-Tellurian); test against pure-play Atlantic Basin US names |
+| **SHEL** | Shell | Largest LNG portfolio globally (~70 mtpa traded volumes); BG-acquired backbone | Portfolio-LNG-vs-integrated-oil split; LNG should be valued at higher multiple than the consolidated entity reflects |
+| **TTE** | TotalEnergies | Mozambique Area 1 restart + Cameron + Rio Grande offtake; Hormuz-bypass strategic positioning | Optionality on Mozambique 2029 first-cargo + Atlantic Basin offtake portfolio |
+| **NFE** | New Fortress Energy | $316M mcap, negative EBITDA, infrastructure-light LNG-to-power model | Counter-thesis cautionary tale; potential restructuring / distressed-asset play if liquidity stress accelerates |
+| **KMI / EPD / ET** | US gas pipelines & midstream | Henry Hub gas transport to Gulf Coast liquefiers; Permian basin associated-gas growth | LNG-adjacent infrastructure play; correlated to Cheniere but lower-volatility; FCF-yield comparable |
+| **MPLX / WMB** | Permian gas gathering + Transco / Northwest | Wellhead-to-Cheniere gathering economics; AI data-center power demand cross-elasticity | Indirect LNG exposure via feed-gas pricing + AI baseload demand |
+| **YAL.AX / NHC.AX / CNR / GLEN.L** | Thermal coal pair-trade (Yancoal, New Hope, Core Natural, Glencore) | Gas-to-coal substitution amplifier; symmetric Ras Laffan beneficiary | Long-cheniere / long-coal vs. short-Brent relative-value trade — see [[_Archive/Sectors/Energy & Commodities]] Thermal Coal section |
+| **EQT / AR / RRC** | Appalachian gas E&Ps | Marcellus / Utica feed-gas to Gulf Coast liquefiers; IPM-eligible counterparties for Cheniere expansion | Henry Hub price floor beneficiary; differential vs. Permian associated gas |
+| **GLNG / FLNG / DLNG** | LNG shipping (Golar, FLEX, Dynagas) | Charter rates leveraged to insurance / route disruption; FLNG technology owners (Golar) | Tonne-mile + insurance premium amplifier; pair against Atlantic Basin liquefiers |
+
+Priority candidates for dedicated theses: **VG (highest information value — binary stress test outcome reshapes sector view), SRE (cleanest US-LNG-rational-competitor comp), and a portfolio-LNG name (SHEL or TTE) to capture the demand-side trading layer**.
+
+### Sector relative-value framework
+
+Three structural relative-value trades emerge from the analysis:
+
+1. **Long Cheniere (LNG) / short Venture Global (VG).** Pair captures the execution-credibility moat in pure form. Risk-on: VG commissions cleanly and resolves arbitrations → pair underperforms. Risk-off: VG stress accelerates → Cheniere absorbs offtaker flight-to-credibility and pair outperforms. Sizing reference: 1:1 dollar-neutral; rebalance on commissioning-completion disclosure.
+2. **Long Cheniere (LNG) + long Newcastle thermal coal / short Brent.** Captures the divergent route-exposure across hydrocarbon complexes. Crude has 3.5–5.5 mb/d Hormuz bypass (Saudi East-West, UAE pipelines); LNG has zero bypass. Coal substitutes for missing LNG demand without route exposure. Pair monetizes the **crude-LNG normalization divergence** flagged as the single most actionable mispricing in [[Research/2026-03-30 - Commodity Market Analysis 2026]]. Sizing reference: long $1 LNG + long $0.50 coal vs. short $1 Brent.
+3. **Long pipeline midstream (KMI / EPD / ET) / short E&P (FANG / EOG / OXY).** Captures the toll-road repricing thesis without taking direct LNG-equity risk. Pipeline multiples already average 10–12x EV/EBITDA — the reference Cheniere should re-rate toward as the contracted-floor model is recognized. This is the "patient" version of the Cheniere multiple-expansion trade.
+
+Three pair-trades to **avoid** despite surface appeal:
+
+- **Long Cheniere / short Australian LNG (Woodside / Santos).** Australian LNG carries asset-grade durability and Pacific-route advantages that protect against the Hormuz-bias trade. The pair runs Asia-Pacific demand-allocation risk (China / India / Japan / Korea sourcing decisions) that is too noisy relative to the structural insight.
+- **Long Cheniere / short QatarEnergy proxy (limited public vehicle).** Cleanest expression of the Hormuz-bias trade, but no liquid Qatar-pure-play exists; ADNOC / Aramco proxies introduce crude-price beta that contaminates the LNG-route signal.
+- **Long Cheniere / short European utility gas-buyers (Engie / Centrica / RWE).** Surface logic: utilities suffer from the same fee spike that benefits Cheniere. Reality: utilities recover gas costs through downstream pricing; the trade decomposes into a regulatory-recovery bet rather than an LNG-fundamentals bet.
+
 ## Related Research
 
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — JKM LNG ranked #1 most positively impacted commodity (+143% since Feb 28); no Hormuz bypass for LNG; optimal cross-asset trade: long JKM / short Henry Hub; ranks middle distillates (#2), Brent (#3), TTF (#4), thermal coal (#8) — full LNG/oil/coal hierarchy
@@ -233,7 +339,7 @@ Seven macro vectors are simultaneously reshaping LNG over 2025–2030 — the ge
 
 ## Related Sectors
 
-- [[@Uranium & Nuclear Fuel]] — Energy-sovereignty thesis adjacency; nuclear is the long-cycle baseload alternative to LNG and benefits from the same Hormuz / Ras Laffan / Big Tech PPA macro vectors
+- [[Uranium & Nuclear Fuel]] — Energy-sovereignty thesis adjacency; nuclear is the long-cycle baseload alternative to LNG and benefits from the same Hormuz / Ras Laffan / Big Tech PPA macro vectors
 - [[@Product Tankers & Maritime Shipping]] — Hormuz disruption thesis adjacency; product tankers and LNGCs both benefit from rerouting + insurance repricing + tonne-mile increase
 - [[Sectors/Precious Metals]] — Energy-induced inflation transmission; gold/silver behavior under Iran shock (counterintuitive selloff on rates dominance)
 
@@ -244,3 +350,6 @@ Seven macro vectors are simultaneously reshaping LNG over 2025–2030 — the ge
 
 ### 2026-04-27
 - Sections filled from vault cross-references + LNG industry knowledge: Key industry questions, Industry history, Competitive dynamics, Product level analysis, Acquisitions and new entrants, Macro shifts, Investor heuristics, Related Research, Related Sectors (9/9 template sections). Status draft → active. Sources: [[Theses/LNG - Cheniere Energy]] (primary), [[Macro & Technology/Iran War Trading Playbook]], [[Research/2026-03-30 - Commodity Market Analysis 2026]], [[_Archive/Sectors/Energy & Commodities]] (Thermal Coal & LNG Substitution + $150 Oil Playbook), Cheniere IR, IEA, IEEFA, Wood Mackenzie, Reuters, Lloyd's. Cross-sector adjacencies established with Uranium & Nuclear Fuel, Product Tankers & Maritime Shipping, Precious Metals.
+
+### 2026-05-16
+- Manual edit: substantial expansion across six dimensions. (1) **Key industry questions** replaced single mega-paragraph with 9 sharp numbered questions matching [[Sectors/Uranium & Nuclear Fuel]] structure: Hormuz-vs-supply-wave, toll-road-repricing-vs-cyclicality, modular-vs-monotrain, European demand cliff, Asian demand pace, Henry Hub AI floor, insurance mechanism permanence, methane-regulation bifurcation, Venture Global contagion. (2) **Competitive dynamics** added forward 2025–2030 mtpa supply–demand balance table + delivered-cost merit-order table showing Atlantic Basin vs. Hormuz-routed split; quantified consensus "65 bcm 2030 glut" sensitivity. (3) **Acquisitions & new entrants** added Mexico Pacific Saguaro Energía (Pacific-route Permian-gas project), Coral Sul FLNG operational, Mozambique LNG Area 1 restart detail, Greater Tortue Ahmeyim (BP/Kosmos cross-border FLNG), Sabine Pass Train 7, CP2 LNG. (4) **Macro shifts** added 24-month catalyst calendar (~19 dated milestones spanning Ras Laffan restoration, Plaquemines commissioning, FIDs / CODs, EU Methane Regulation enforcement, 2028 US election). (5) **Investor heuristics** added sector watchlist (12 candidate names ranked for thesis priority: VG / SRE / NEXT / WDS / SHEL / TTE / NFE / KMI-EPD-ET / EQT-AR-RRC / GLNG-FLNG / Asia coal pair / Appalachian E&Ps) + relative-value framework (3 long-short pairs to size, 3 to avoid). (6) Non-skill-origin Log prefix per CLAUDE.md Workflow Rule #6 to ensure `/sync` propagates to thesis Log + macro notes.

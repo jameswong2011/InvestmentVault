@@ -1,8 +1,8 @@
 ---
 date: 2026-04-29
 tags: [thesis, semiconductor-capital-equipment, AMAT, GAA, BSPDN, HBM, advanced-packaging]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: Semiconductor Capital Equipment
 ticker: AMAT
 source: Vault research synthesis (2026-02-26 Lam vs AMAT canvas, 2026-03-20 LRCX/AMAT evaluation, 2026-03-20 WFE Equipment Canvas, 2026-04-10 Hybrid Bonding/BESI, 2026-04-24 Dylan Patel transcript) + web research (Q1 FY26 8-K, sell-side coverage, EPIC Center coverage, WFE share data)
@@ -101,7 +101,7 @@ Tool vendors maintain pricing power via (1) tool-of-record qualification cost, (
 **Structural forces reshaping the industry**:
 
 - **GAA + BSPDN at 2nm/1.4nm**: Per-wafer-step capex up 50–100% vs. 5nm. Benefits AMAT (PVD, CMP, epitaxy, implant), LRCX (etch, ALD), ASML (EUV), and KLA (metrology).
-- **HBM + advanced packaging**: Hybrid bonding required at HBM4+. Benefits BESI (bonders), AMAT (Kinex JV + wafer prep), KLA (bond inspection).
+- **HBM + advanced packaging**: ~~Hybrid bonding required at HBM4+~~ JEDEC HBM4 height-spec relaxation 720→775→900µm extends MR-MUF runway through HBM4E 16-Hi (2026-2027) and likely HBM5 first-gen 20-Hi (2028-2029); hybrid bonding becomes architecturally mandatory at HBM5+ 24-Hi (2029-2030) — pushing HBM-driven Kinex revenue inflection out ~2 years. **SK Hynix's March 2026 BESI Kinex order is logic-line/2nm primary with dual-use HBM5 path** ([[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]) — first hybrid-bonding production-revenue line for the Kinex platform at SK Hynix, but earlier-phase logic-line revenue not HBM-line revenue. Benefits AMAT/Kinex (logic-line 2nm CoWoS-S/SoIC-X near-term, HBM5+ mid-2029+), BESI (same exposure), KLA (bond inspection scales independent of HBM mandate timing).
 - **ICAPS bottoming → automotive/edge AI / power**: 28nm and below mature-node demand from EV power management, edge inference, IoT. Benefits AMAT (broad portfolio at trailing nodes), LRCX (less so — trailing-edge less etch-intensive).
 - **China bifurcation**: AMEC + NAURA capturing low-end ICAPS in China; BIS export controls limit leading-edge tools to China. Negative for all 5 majors at the China sub-segment, partially offset by global non-China demand.
 - **AI capex super-cycle (Dylan Patel framework)**: TSMC capex on trajectory to $100B by 2028, hyperscaler AI capex driving ASML "completely sold out" through 2027. Tail-whip effect at upstream WFE suppliers (silicon carbide, photoresist, EUV pellicles) signals demand strength is real, not anticipated.
@@ -138,7 +138,7 @@ The bull case rests on AMAT delivering on all four architectural inflections sim
 
 1. **GAA tool revenue per wafer step expands faster than consensus models**: PVD + CMP + implant + epitaxy combined revenue per 2nm wafer ramps to 1.8–2.0x vs. 5nm baseline (current consensus ~1.4–1.5x). Result: $5B FY25 GAA revenue → $9–10B FY27, not $7–8B.
 
-2. **HBM4 ramp lands in 2027 with hybrid bonding adoption**: HBM4 + HBM4E require hybrid bonding for sub-10μm pitch; AMAT/Kinex captures 30–40% share of new bonders + wafer prep; HBM-related revenue $1.5B FY25 → $4B FY27 (vs. $3B target).
+2. **HBM4/4E ramp via Kinex logic-line beachhead, HBM5+ 24-Hi architectural mandate by 2029-2030 (updated 2026-05-11)**: ~~HBM4 + HBM4E require hybrid bonding for sub-10μm pitch~~ JEDEC HBM4 720→775→900µm height relaxation pushed HBM-mandated hybrid bonding to HBM5+ 24-Hi (2029-2030). Near-term Kinex revenue comes from **logic-line/2nm (SK Hynix Mar 2026 order, TSMC SoIC-X 2026-2027)** rather than HBM lines; HBM5+ 24-Hi locks in volume HBM exposure 2029-2030. AMAT/Kinex captures 30–40% share of new bonders + wafer prep across logic + HBM stacks; HBM-related revenue trajectory revised: $1.5B FY25 → $2.5-3B FY27 (logic-line + HBM4E pilot, vs. prior $4B FY27 assuming HBM4-line mandate) → $5-6B FY29-30 (HBM5+ 24-Hi volume).
 
 3. **ICAPS reacceleration starts in H2 FY26**: Auto/edge AI/power demand recovers faster than expected; AMAT's broad ICAPS portfolio (28nm and below) captures 50%+ of ex-China incremental spend; ICAPS revenue $4–5B trough → $7–8B by FY28.
 
@@ -249,8 +249,18 @@ The bear case is real and is why conviction is medium, not high. Three structura
 
 **Macro context**:
 - [[Macro/AI capex supply chain]] — Tail-whip framework for upstream WFE demand.
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — JEDEC HBM4 720→775→900µm height relaxation pushed HBM-mandated hybrid bonding to HBM5+ 24-Hi (2029-2030); Kinex revenue trajectory revised — logic-line/2nm beachhead near-term, HBM-line volume mid-2029+; SK Hynix Mar 2026 Kinex order reclassified as logic-line primary (dual-use HBM5).
 
 ## Log
 
 ### 2026-04-29
 - Initial thesis created. Conviction: medium — AMAT is best-in-WFE breadth (PVD 85%, CMP 65%, implant 70%+) facing 4 simultaneous architectural inflections (GAA + BSPDN + HBM/advanced packaging + ICAPS recovery) plus EPIC Center customer-lock-in flywheel from Spring 2026, but ASML overtook #1 WFE share in 2024, ASMI structurally leads ALD into 2nm, and 32x forward P/E leaves limited valuation cushion.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: JEDEC HBM4 720→775→900µm height relaxation pushed HBM-mandated hybrid bonding out to HBM5+ 24-Hi (2029-2030); Bull Case pillar #2 revised — Kinex revenue trajectory now logic-line/2nm beachhead near-term + HBM-line volume mid-2029+. Industry Context HBM/packaging bullet updated to reflect SK Hynix Mar 2026 Kinex order as logic-line primary (dual-use HBM5). HBM-related FY27 revenue target trimmed $4B → $2.5-3B; FY29-30 trajectory upgraded to $5-6B on HBM5+ volume. Conviction directionally weakened on 2026-2027 Kinex HBM ramp velocity; unchanged on 2029-2030 architectural-mandate path; net thesis durability strengthened (logic-line bridge + mandated HBM5+ inflection).
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition + new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. AMAT listed under §Adjacent exposure in the semicap cluster: every SiC/GaN fab capacity addition (Wolfspeed Mohawk Valley + ROHM India + onsemi Czech + STMicro Catania + Innoscience Suzhou 200mm GaN-on-Si 15,000 wpm) adds AMAT tool orders for PVD/CMP/etch alongside ASMI ALD and AIXA MOCVD. The macro's adoption forecast (10-15% of new AI racks 2027 → 65-75% by 2032) anchors mid-decade wide-bandgap fab capex tied to power-electronics demand independent of logic/HBM cycles. Indirect but real — sizing impact below ICAPS or GAA-foundry cycles. Conviction unchanged at medium — adds a wide-bandgap-fab tail to the existing 4-inflection (GAA + BSPDN + HBM + ICAPS recovery) framework.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

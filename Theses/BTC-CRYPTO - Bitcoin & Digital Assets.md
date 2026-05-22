@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, crypto, bitcoin, ethereum, stablecoins, quantum-risk, macro, digital-assets]
-status: active
+status: monitoring
 conviction: medium
 sector: Blockchain & Stablecoins
 ticker: BTC-CRYPTO
@@ -340,3 +340,6 @@ The quantum transition creates three investable dynamics:
 ### 2026-04-25
 - Addressed user callouts: ETH section prose (function/analogy/value-accrual/net-issuance) converted into Key Characteristics table per [!tip] — editorial-only formatting change. Conviction unchanged.
 - [[Sectors/Blockchain & Stablecoins]]: sector framework deepened (mBridge sovereign multi-CBDC platform with technical architecture + 4-phase adoption, per-chain quantum-resistance migration table with trade-off enumeration, GENIUS+CLARITY 8 adoption-curbing risks) — conviction unchanged, reinforces existing Insight #2 + Quantum Risk Assessment without new signal; sector now authoritative source for mBridge detail.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

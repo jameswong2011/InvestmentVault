@@ -2,7 +2,7 @@
 date: 2026-04-15
 tags: [thesis, consumer, GAW, games-workshop, warhammer, IP-monetization, pricing-power, cultural-moat]
 status: active
-conviction: medium
+conviction: high
 sector: Hobby & Tabletop Gaming
 ticker: GAW
 source: Vault research synthesis + web search (investor.games-workshop.com, License Global, Spikey Bits, Collider, Stockopedia, Bell of Lost Souls)
@@ -210,3 +210,6 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 ### 2026-04-22
 - Sector re-scoped: Consumer & Digital → Hobby & Tabletop Gaming (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced stale [[Sectors/Consumer & Digital]] pointer in Related Research with [[Sectors/Hobby & Tabletop Gaming]] after sector note populated.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

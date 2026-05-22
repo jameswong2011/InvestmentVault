@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, ISRG, healthcare-medtech, robotics, surgery, surgical-AI]
-status: active
+status: monitoring
 conviction: medium
 sector: Surgical Robotics
 ticker: ISRG
@@ -414,3 +414,6 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 
 ### 2026-05-01
 - Addressed user callouts: 4 fresh [!question]s — EM/China instrument-reuse + third-party displacement, FDA-vs-mechanical barrier decomposition, manufacturing footprint + IP-leakage, and soft-tissue TAM trajectory to robotic ceiling. Body integrations: §Industry Context (3 new subsections — Instrument Remanufacturing Threat → EM and China vector; Regulatory Landscape → barrier disaggregation table; Market Overview → TAM stack and ceiling math) and §Business Model (Capital Allocation → Manufacturing footprint and IP-leakage). Conviction unchanged (medium) — analysis quantifies and structures existing risk surface without altering qualitative profile.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

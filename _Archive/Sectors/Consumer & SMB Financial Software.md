@@ -1,8 +1,10 @@
 ---
 date: 2026-05-01
-tags: [sector, consumer-smb-financial-software]
-status: draft
+tags: [sector, consumer-smb-financial-software, archived]
+status: closed
 sector: Consumer & SMB Financial Software
+archived_date: 2026-05-16
+archived_into: Accounting & ERP Software
 ---
 
 # Consumer & SMB Financial Software
@@ -40,3 +42,6 @@ sector: Consumer & SMB Financial Software
 ## Log
 ### 2026-05-01
 - Sector note created by /thesis INTU — first thesis in this sector. Scaffold-only; analytical content to be added via /deepen or /surface.
+
+### 2026-05-16
+- Sector fused into [[Accounting & ERP Software]] and moved to `_Archive/Sectors/`. Rationale: this scaffold never accumulated analytical content; the Accounting & ERP Software sector note already covers Intuit comprehensively (QuickBooks Online + TurboTax + Mailchimp + Credit Karma + Intuit Assist) and treats SMB cloud accounting as one of five archetypes alongside mega-enterprise ERP, mid-market cloud ERP, HCM-anchored cross-sell, and vertical ERP. Consumer-tax, consumer-credit, SMB-accounting, mid-market-ERP, and enterprise-ERP are best framed as a single financial-software stack differentiated by buyer tier, not as orthogonal sectors. INTU thesis `sector:` frontmatter and `tags:` updated; INTU body wikilink to this sector retargeted to [[Accounting & ERP Software]]; `_graph.md` sector reverse-index entry removed; `_hot.md` Portfolio Snapshot updated. No analytical content lost.

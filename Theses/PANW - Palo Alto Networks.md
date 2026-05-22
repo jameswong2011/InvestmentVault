@@ -1,8 +1,8 @@
 ---
 date: 2026-04-15
 tags: [thesis, cybersecurity, PANW]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: Cybersecurity
 ticker: PANW
 ---
@@ -381,6 +381,7 @@ PANW's platform play aims to own the full value chain — from threat intelligen
 - [[Sectors/Cybersecurity]] — Sector Note with competitive landscape, structural spending drivers (AI threats, geopolitics, regulatory mandates), and cross-company dynamics
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Iran-proxy cyber derivative framing: sustained Hezbollah/IRGC apparatus implies continued Iranian cyber activity against Israeli/US/Gulf targets — structurally supports cybersecurity spending in geopolitics-exposed verticals (financial services, critical infrastructure)
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict intensifies Iran cyber; CyberArk PAM depth validates platform consolidation under active-threat environment
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: AI-driven private-credit software-loan write-downs (~33% of TCPC Q1 markdowns) are credit-market echo of productivity-disruption thesis; PANW platform consolidation positioned as structural beneficiary
 
 ## Log
 
@@ -402,3 +403,9 @@ PANW's platform play aims to own the full value chain — from threat intelligen
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Wiz cybersecurity agents (continuous attacker, prioritization, fixer) on Google Cloud signal direct hyperscaler-bundled CNAPP+agentic-security competition; reinforces 2026-04-26 callout response framing of "accept CNAPP gap, lean on XSIAM correlation" strategic choice. Conviction unchanged — incremental pressure on Prisma Cloud share but XSIAM moat orthogonal.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]]: Tangential — ~33% of TCPC Q1 markdowns software-related; AI productivity disruption pressuring private-credit-financed software borrowers, public-market platform leaders (PANW) are the structural beneficiary against cash-burning peers. Conviction unchanged — no direct PANW operating signal.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

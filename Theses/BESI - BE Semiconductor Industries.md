@@ -2,7 +2,7 @@
 date: 2026-04-14
 tags: [thesis, semiconductors, BESI, hybrid-bonding, HBM, advanced-packaging, CPO]
 status: active
-conviction: medium
+conviction: high
 sector: Semiconductor Capital Equipment
 ticker: BESI
 source: Vault research synthesis + web search (TrendForce, Investing.com, Simply Wall St, Reuters, 36Kr, EE Times, BESI IR)
@@ -90,7 +90,7 @@ The critical manufacturing challenges are formidable: copper pad surface roughne
 
 **Samsung — betting survival on hybrid bonding.** Samsung's aggressive HCB pivot is inseparable from its HBM market share collapse (41% → 17%). Samsung finally passed NVIDIA's 12-layer HBM3E qualification in ~September 2025, approximately 18 months after development completion. Initial HBM4 (12-layer, shipped February 2026) still uses TC-NCF, but dedicated HCB lines at Cheonan are being equipped with March 2026 delivery. Samsung's 1c DRAM yields were ~50% as of November 2025, compounding the hybrid bonding yield challenge. Samsung claims HCB reduces thermal resistance by >20% — a direct response to the thermal issues that cost it the NVIDIA contract. Samsung is planning a 50% HBM capacity surge in 2026 to ~250K wafers/month.
 
-**SK Hynix — "Maximize MR-MUF for as long as possible."** SK Hynix has never used thermocompression bonding. Its proprietary Mass Reflow with Molded Underfill process delivers higher throughput, ~10% better thermal dissipation, and lower bump damage risk vs. TC-NCF. VP Lee Kang-seok confirmed HBM4 (up to 16-layer) will use Advanced MR-MUF, with hybrid bonding partially introduced for HBM4E 20-layer stacks and fully adopted at HBM5. SK Hynix's March 2026 Kinex order signals preparation for 2027–2028 production. The company projects ~60% of NVIDIA Vera Rubin HBM4 supply, giving it no incentive to rush a technology transition — but its first mass-production hybrid bonding order confirms the transition has begun.
+**SK Hynix — "Maximize MR-MUF for as long as possible."** SK Hynix has never used thermocompression bonding. Its proprietary Mass Reflow with Molded Underfill process delivers higher throughput, ~10% better thermal dissipation, and lower bump damage risk vs. TC-NCF. VP Lee Kang-seok confirmed HBM4 (up to 16-layer) will use Advanced MR-MUF, with hybrid bonding partially introduced for HBM4E 20-layer stacks and fully adopted at HBM5. **SK Hynix's March 2026 Kinex order is for logic-line/2nm primary use with dual-use HBM5 hybrid-bonding qualification path** (clarified via [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]) — confirms the transition has begun but at a slower architectural pace than a direct HBM-line order would have implied. The company projects ~70% of NVIDIA Vera Rubin HBM4 supply (vs ~30% Samsung, 0% Micron initial), giving it no incentive to rush a technology transition. JEDEC HBM4 height-spec relaxation 720→775→900µm extends the MR-MUF runway through HBM4E 16-Hi (2026-2027) and likely HBM5 first-gen 20-Hi (2028-2029) before hybrid bonding becomes architecturally mandatory at HBM5+ 24-Hi (2029-2030).
 
 **Micron — pragmatic silence.** Micron uses TC-NCF and has licensed hybrid bonding IP from Adeia (180+ patents) but made no public production timeline commitment. Its HBM4 uses an in-house base die emphasizing 30% lower power efficiency. Micron broke ground on a $7B HBM advanced packaging facility in Singapore in 2025 (production 2027). Likely the last major vendor to adopt hybrid bonding, at HBM5 or later.
 
@@ -100,7 +100,7 @@ The critical manufacturing challenges are formidable: copper pad surface roughne
 |---|---|---|---|
 | **ASMPT** | LITHOBOLT D2W hybrid bonder | First system to logic customer Q3 2024; planning Gen-2 for HBM | Medium — broadest portfolio rival, but 2–3 years behind in production qualification |
 | **SUSS MicroTec** | XBC300 Gen2 D2W platform | Launched May 2025 | Low-Medium — unproven at scale |
-| **Hanmi Semiconductor** | Investing 100B won in hybrid bonding factory | Targeting HBM bonder delivery by end-2027 | Low — earliest delivery 18+ months away |
+| **Hanmi Semiconductor** | Investing 100B won in hybrid bonding factory | Targeting HBM bonder delivery by end-2027; TCB share at 71% but falling — ASMPT took ~100-unit TC-bonder order from SK Hynix Dec 2025 amid Hanmi-Hanwha patent dispute | Low — earliest delivery 18+ months away; share pressured on conventional TCB before hybrid bonding entry |
 | **Samsung Semes** | In-house hybrid bonder development | Quality "lags behind BESI" per 36Kr April 2026 | Low — captive supplier, not competitive externally |
 | **EVG (EV Group)** | GEMINI FB W2W platform; entering D2W via Co-D2W | >70% W2W market share; D2W approach less suited for heterogeneous integration | Low for D2W — different architectural approach |
 | **Tokyo Electron** | Synapse platform, primarily W2W | Estimates bonder TAM at ~$670M (2025) → $2B (2030) | Low for D2W — focused on W2W |
@@ -149,8 +149,8 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ## Bull Case
 
-- JEDEC maintains tight thickness standards (~775µm), pulling hybrid bonding adoption into 2027 at HBM4 16-layer — front-loading BESI's revenue inflection by 12–18 months
-- SK Hynix and Samsung both enter volume hybrid bonding production, creating a demand wave BESI's competitors cannot serve at scale due to 2–3 year qualification gap
+- ~~JEDEC maintains tight thickness standards (~775µm)~~ **Bull-pillar updated (2026-05-11): JEDEC has formally relaxed HBM4 to 900µm** ([[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]); the front-loaded-by-thickness path is closed. Bull case now pivots to **HBM5+ 24-Hi architectural-mandate path**: hybrid bonding becomes physically required for HBM5+ 24-Hi (2029-2030), giving BESI a structural ~3-year runway of inflection demand (2027 logic-line ramp → 2028 HBM4E pilot → 2029-2030 HBM5+ volume) — the demand wave is delayed but unavoidable
+- SK Hynix and Samsung both enter volume hybrid bonding production, creating a demand wave BESI's competitors cannot serve at scale due to 2–3 year qualification gap. **SK Hynix's March 2026 Kinex order for logic-line/2nm production is the first hybrid-bonding production-revenue line** — confirms BESI is in the SK Hynix Tier-1 equipment stack independent of HBM timing
 - Lam Research or Applied Materials bids at 30–50% premium (~€220–250+), setting a hard floor; Dutch security review process ensures orderly negotiation favoring BESI shareholders
 - Gen-2 50nm platform becomes the standard for sub-5µm logic packaging at TSMC, driving secular demand entirely independent of HBM timing
 - CPO/silicon photonics TAM materializes post-2026 as TSMC COUPE enters volume production, with BESI capturing 75% of die attach equipment demand
@@ -160,7 +160,7 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ## Bear Case
 
-- JEDEC relaxes HBM4E to ~900µm, delaying mass hybrid bonding to 2028–2029 and pushing BESI's revenue inflection out by 2 years; stock re-rates to 40x+ 2027E P/E from current levels
+- **Bear-pillar #1 partially actualized (2026-05-11): JEDEC has already relaxed HBM4 to 900µm** ([[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]). Mass hybrid bonding adoption is delayed to HBM5+ 24-Hi (2029-2030), pushing BESI's HBM-driven revenue inflection out ~2 years vs prior expectations. Stock is exposed to 40x+ 2027E P/E re-rating risk if BESI cannot bridge the 2026-2028 gap with logic-line (TSMC SoIC-X, 2nm logic) + CPO/photonics revenue; if guidance for FY2026 fails to reflect logic-side substitution, multiple compression is the base case
 - Competitors gain traction: ASMPT LITHOBOLT qualifies at a major memory customer, SUSS XBC300 Gen2 wins business, Samsung Semes closes the internal quality gap
 - Extreme valuation (127x trailing P/E) leaves zero margin for timing disappointments — any guidance miss triggers severe multiple compression
 - AI capex cycle decelerates, reducing urgency for HBM capacity expansion and advanced packaging equipment orders
@@ -212,6 +212,7 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 - [[Research/2026-04-15 - BESI - Hybrid Bonding Market Projections]] — HB market $1.47B→$5.6B (2030) at 25.1% CAGR, D2W positioning, Samsung/SK Hynix/Micron adoption timelines
 - [[Sectors/Semiconductor Capital Equipment]] — Sector-level WFE thesis positions BESI as Tier 2 satellite (10% allocation); frames hybrid bonding debate as market distraction — equipment spend growing 40%+ regardless of hybrid bonding timeline via CoWoS expansion
 - [[Sectors/Semiconductor Capital Equipment]] — Sector hub (absorbed prior `Theses/SEMICAP - Semiconductor Capital Equipment` thesis 2026-04-29; sector now serves dual role as MoC and basket-level investment hub)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — JEDEC HBM4 720→775→900µm relaxation (bear-pillar #1 partially actualized); Mar 2026 SK Hynix Kinex order = logic-line/2nm primary (dual-use HBM5 path); Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial; Hanmi 71% TCB falling, ASMPT taking ~100-unit Dec 2025 SK Hynix TC-bonder share; HB inflection now driven by HBM5+ 24-Hi architectural mandate (2029-2030) rather than HBM4 thickness-mandate
 
 ## Log
 
@@ -235,3 +236,15 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ### 2026-04-22 (Wikilink cleanup)
 - Wikilink cleanup: Replaced stale `[[Sectors/Semiconductors]]` parent reference with `[[Sectors/Semiconductor Capital Equipment]]` in Related Research; parent sector note retired during vault reorganisation. Thesis body unchanged; conviction unchanged.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: JEDEC HBM4 720→775→900µm relaxation actualizes Bear pillar #1 (HBM-driven inflection delayed 2 years); demand pivot to HBM5+ 24-Hi architectural-mandate path (2029-2030) + logic-line (TSMC SoIC-X, SK Hynix Mar 2026 Kinex for 2nm logic) preserves multi-year revenue trajectory. Bull pillar #1 rewritten — front-loaded-by-thickness path closed, replaced by architecture-mandate path. Industry Context updated: SK Hynix Kinex order reclassified as logic-line primary (dual-use HBM), Vera Rubin ~70/30/0 confirmed, Hanmi-ASMPT TC-bonder share dynamic added. Conviction directionally weakened on 2026-2028 HBM revenue ramp velocity; unchanged on 2030 hybrid-bonding TAM materialization.
+
+### 2026-05-12 (/sync)
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Intel **Foveros Direct (hybrid bonding) is BESI-tooled** and Intel deployed it earlier than TSMC at Meteor Lake (first high-volume hybrid-bonded client product) — Intel is a confirmed customer in BESI's 18-customer / 150+-system hybrid-bonding installed base. Foveros + EMIB capacity scaling +150% / +30% in New Mexico through 2027 plus EMIB-T H2 2026 (120×180mm 24-HBM-stack) and 18A-PT 2028 timeline implies sustained Intel tooling pull through 2027–2028. Adds an Intel-specific logic-line demand vector independent of the SK Hynix HBM5+ 24-Hi architectural-mandate path. Conviction unchanged — confirms multi-customer logic-line breadth (TSMC SoIC-X + SK Hynix Kinex + Intel Foveros) underwriting BESI's 2026–2028 revenue trajectory across both HBM and logic.
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition + new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. BESI listed under §Adjacent exposure in the macro: hybrid-bonders for advanced packaging (CoWoS, 3D stacking) increasingly demanded at Rubin/Rubin Ultra power densities — power-delivery requirements drive new packaging tools as on-die voltage-regulation integration becomes architecturally tighter. The macro's bottleneck-cascade analysis (§Framework / Mental Model) puts wide-bandgap silicon + on-board VPD at Layers 4-5; BESI's hybrid-bonding tooling is the upstream enabler for the densest power-delivery architectures (Vicor Power-on-Package geometry requires ChiP-style fabrication that BESI's bonders enable at scale). Conviction unchanged at medium — adds a power-density tail vector to the existing multi-customer logic-line + HBM5+ architectural-mandate framework.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

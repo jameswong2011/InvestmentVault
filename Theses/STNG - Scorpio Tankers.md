@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, tankers, energy, geopolitics, STNG]
-status: active
+status: monitoring
 conviction: medium
 sector: Product Tankers & Maritime Shipping
 ticker: STNG
@@ -230,6 +230,7 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — June 2025 12-day conflict; 550+ Iranian missiles; fragile ceasefire; dual-theater stretch risk (Taiwan)
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament resilience: pivoted to maritime smuggling + 750-ton Iranian shipment intercepted mid-2025 demonstrates structural shift from overland to sea routes — reinforces "kill-switch timing" Outstanding Question on diplomatic resolution durability
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict extends ton-mile demand shock through 2026-2027; ceasefire kill-switch structurally removed
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — BDC redemption gating wave (Golub joins Blue Owl, BlackRock peers; 8.5–41% redemption requests; TCPC 19% NAV cut); confirms private-credit clockwork + 9.2% systemic-default-rate trajectory referenced in §Risks
 
 ## Log
 
@@ -262,3 +263,9 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ### 2026-04-23 (scenario propagation)
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via sustained Hormuz closure + insurance normalization lag + product cracks — conviction strengthened: kinetic-conflict scenario removes ceasefire-collapse kill-switch, extends LR2 $100k+/day regime through 2026-2027; ton-mile demand shock (15-25%) persists multi-year.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]]: Universal BDC gating (Golub 8.5%, Blue Owl OTIC 41% / OCIC 22%, BlackRock TCPC 19% NAV cut + 7.6% non-accrual) confirms 9.2% private-credit-default trajectory cited in §Risks — macro recessionary path incrementally more probable, no direct STNG operating signal. Conviction unchanged (medium).
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.

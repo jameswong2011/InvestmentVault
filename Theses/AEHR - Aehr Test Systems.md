@@ -1,8 +1,8 @@
 ---
 date: 2026-04-29
 tags: [thesis, semiconductors, semiconductor-capital-equipment, AEHR]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: Semiconductor Capital Equipment
 ticker: AEHR
 source: Q3 FY2026 earnings (April 2026) + market data + sell-side coverage
@@ -207,3 +207,6 @@ The bear case is twofold: cycle compression and competitive dilution.
 ### 2026-04-29
 - Initial thesis created. Conviction: medium — AI WLBI inflection real (Q3 FY26 bookings $37.2M, book-to-bill >3.5x, AI processors >35% mix), platform non-fungible inside 4-7yr competitive gap; offset by ~88% customer concentration, ~30-60x EV/sales, equipment lumpiness. Bull case requires second AI customer + SiPh systems revenue + GM recovery. /thesis run.
 - Manual edit: Added [[Sectors/Photonic Metrology]] wikilink and [[Theses/FORM - FormFactor]] sister-thesis cross-reference to Related Research. Photonic Metrology sector created same day as a focused sub-cluster of Semiconductor Capital Equipment covering optical wafer-test / burn-in / metrology — AEHR and FORM are the sector's two Photonic Test Pure-Plays. Conviction unchanged.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

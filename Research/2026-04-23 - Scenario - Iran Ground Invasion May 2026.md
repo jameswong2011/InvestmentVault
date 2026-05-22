@@ -214,7 +214,7 @@ Sorted by magnitude (major negatives first, then major positives, then minors).
 ### Sector Context
 - [[@LNG & Natural Gas Infrastructure]]
 - [[@Product Tankers & Maritime Shipping]]
-- [[@Uranium & Nuclear Fuel]]
+- [[Uranium & Nuclear Fuel]]
 - [[Sectors/Cybersecurity]]
 - [[Sectors/Enterprise Workflow AI & Automation]]
 - [[@PropTech & Real Estate Marketplaces]]

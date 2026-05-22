@@ -1,8 +1,8 @@
 ---
 date: 2026-04-29
 tags: [thesis, semiconductors, semicap, ASMI]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: Semiconductor Capital Equipment
 ticker: ASMI
 source: https://www.asm.com/investors
@@ -163,3 +163,9 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 
 ### 2026-04-29
 - Initial thesis created. Conviction: medium — POR annuity reframing is non-consensus and well-supported, but 1.4nm slot-count confirmation pending Q2/Q3 2026 earnings before promotion to high. Status: draft until activated via /status.
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition + new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. ASMI listed under §Adjacent exposure in the semicap cluster: SiC/GaN fab capex (Wolfspeed Mohawk Valley + ROHM India + onsemi Czech + STMicro Catania + Innoscience Suzhou) drives ALD tool orders alongside AMAT, LRCX, AIXA. Macro's adoption forecast (10-15% of new AI racks 2027 → 65-75% by 2032) anchors mid-decade wide-bandgap capex. Indirect — wide-bandgap fab buildout is a secondary driver below ASMI's primary 1.4nm GAA POR-annuity catalyst. Conviction unchanged at medium.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

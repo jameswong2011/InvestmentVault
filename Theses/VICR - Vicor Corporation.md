@@ -1,8 +1,8 @@
 ---
 date: 2026-04-28
 tags: [thesis, semiconductors, power, VICR]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: Data Center Power & Cooling
 ticker: VICR
 source: https://www.vicorpower.com/about-the-company/fact-sheet
@@ -124,7 +124,7 @@ Vicor designs and manufactures modular power conversion components — meaning p
 
 **Structural forces reshaping industry**:
 1. **NVIDIA roadmap density acceleration** — Hopper 40 kW/rack → Rubin Ultra 600 kW/rack. At 600 kW with 48V distribution, per-processor currents pass 2,000A, forcing architectural choice toward vertical PDN — Vicor's home turf.
-2. **800VDC architecture transition** (NVIDIA reference, March 2026) — bullish for Vicor at the rack-down conversion stage; the 800VDC → 48V → core-voltage chain creates more conversion content per system, not less.
+2. **800VDC architecture transition** ([[Macro & Technology/800VDC Adoption|NVIDIA reference, March 2026]]) — bullish for Vicor at the rack-down conversion stage; the 800VDC → 48V → core-voltage chain creates more conversion content per system, not less. The synthesized adoption forecast in [[Macro & Technology/800VDC Adoption]] (10-15% of new AI racks at 800VDC by 2027, 65-75% by 2032) anchors a multi-year VPD content-growth trajectory: as 800VDC rack share rises through the late 2020s, the per-watt VPD attach rate compounds with each Rubin/Feynman generation rather than flattening with capex normalization.
 3. **ITC enforcement of US patents** — Limited Exclusion Orders are now being used aggressively by US-domiciled IP holders against Asian infringers. Vicor's LEO precedent will likely be replicated by other power-IP holders, increasing the "license rather than infringe" calculus across the industry.
 4. **Onshoring / tariff regime** — Section 301 tariffs on Chinese power components + US Customs LEO enforcement biases ODM bill-of-materials toward US-manufactured modules. Vicor's Andover footprint is procurement-positive in this regime.
 5. **GaN/SiC adoption** — increases density at the IC layer (where MPS lives) but does NOT obviate the module-level architecture choice (where Vicor lives). The narrative that "GaN/SiC eliminates Vicor's advantage" is a category error.
@@ -221,3 +221,12 @@ Rubin/Rubin Ultra reference designs allow vertical alternatives from Flex, TI, o
 
 ### 2026-05-01 (/sync — Log backfill)
 - [[Research/2026-04-28 - VICR - Vertical Power Delivery Technical Architecture and Q1 2026 Earnings - deep-dive]]: Q1 2026 earnings + VPD technical-architecture deep-dive (research note created same day as thesis 2026-04-28; "Initial thesis created" Log entry referenced research synthesis but did not explicitly cite the source note). Backfilled per /sync Step 1.7 reconciliation. Conviction unchanged — research note is the primary source for thesis foundations.
+
+### 2026-05-18 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: New macro report synthesizes three Deep Research streams + web search into a unified 800VDC roadmap — NVIDIA Kyber row-rectified (±400V/800V, March 2026) vs OCP Mt. Diablo sidecar (Meta/Google co-authored), six-layer value chain (grid/MV → SST → DC distribution → wide-bandgap silicon → VPD → passives), base-case adoption forecast 10-15% of new AI racks 2027 → 65-75% by 2032. Validates §Industry Context "800VDC architecture transition" structural force #2 — the 800VDC → 48V → core-voltage conversion chain creates more VPD content per system as rack power scales 40 kW (Hopper) → 600 kW (Rubin Ultra). Added forecast anchor to §Industry Context. Conviction unchanged at medium — strengthens the rack-density acceleration insight without resolving founder-concentration or Federal Circuit appeal overhangs.
+
+### 2026-05-19 (/sync)
+- [[Macro & Technology/800VDC Adoption]] amendment: Macro note enhanced 2026-05-19 with two new financial columns (AI-DC Rev/OP exposure %, ROIC/EV-EBIT LTM) across all six Layer tables in §Value chain map and named beneficiaries. Vicor sits at Layer 5 (Last 1.5 mm / on-board Vertical Power Delivery) with ~60% / ~70% AI-DC Rev/OP exposure (highest tier alongside VRT) and ~10% / ~50x ROIC / EV-EBIT — confirming the AI-DC purity premium that anchors §Investor Heuristics #8 in [[Sectors/Modular Power Conversion Components]]. Conviction unchanged — quant framework reinforces existing AI-density-segment-peer multiple reframe (Vertiv/ASML/Synopsys band, not general-PMIC band) without resolving founder-concentration or LEO appeal overhangs.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

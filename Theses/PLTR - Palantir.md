@@ -3,7 +3,7 @@ date: 2026-04-15
 tags: [thesis, enterprise-software, AI, defense, PLTR]
 status: active
 ticker: PLTR
-conviction: medium
+conviction: high
 sector: Enterprise Workflow AI & Automation
 source: Consolidated from Gemini Canvas (2), ChatGPT (2), Claude (4), Grok (1) research conversations + web research April 2026
 ---
@@ -263,6 +263,7 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 - [[Sectors/Enterprise Workflow AI & Automation]]
 - [[AI Bubble Risk and Semiconductor Valuations]]
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates defense procurement (Maven, Warp Speed, Alpamayo, ShipOS); NATO sovereign AI expansion
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: AI-driven margin compression on private-credit-financed software borrowers (TCPC ~33% of Q1 markdowns software-related); public-market platforms with strong FCF (PLTR Ontology) are the credit-cycle echo of the productivity-disruption beneficiary thesis
 
 ## Log
 
@@ -294,3 +295,9 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: Frontier-lab framing of agent moat as "meticulously orchestrated context engineering" directly validates Ontology-as-control-plane thesis — context-substrate moat compounds in agent era. Conviction unchanged.
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Hyperscaler agentic-chip co-design (Wiz cybersecurity agents, Gemini Enterprise +60% in 3 months) signals enterprise-AI inflection; PLTR's defense-grade Ontology positioned ahead of commoditized agent layer. Conviction unchanged.
 - [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: Tangential AI-policy/dark-money mention; no thesis-moving evidence. Conviction unchanged.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]]: Tangential — AI productivity disruption destroying private-credit-financed cash-burning software borrowers (TCPC ~33% of Q1 markdowns software-related); public-market platforms with strong FCF (PLTR Ontology) are the credit-cycle echo of the productivity-disruption beneficiary thesis. Conviction unchanged — no direct PLTR operating signal.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

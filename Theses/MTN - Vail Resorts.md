@@ -1,8 +1,8 @@
 ---
 date: 2026-04-15
 tags: [thesis, mtn, consumer-digital, leisure]
-status: active
-conviction: low
+status: monitoring
+conviction: medium
 sector: Ski Resorts & Destination Leisure
 ticker: MTN
 source: Multi-source consolidation (ChatGPT, Gemini Canvas, Claude, web research)
@@ -210,3 +210,6 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 
 ### 2026-04-23
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via gasoline >$6/gal + consumer sentiment collapse → ski destination travel demand cratered — conviction weakened: second poor snow year compounds with kinetic-conflict discretionary travel hit; capex-vs-dividend governance trap intensifies.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring, conviction low→medium.

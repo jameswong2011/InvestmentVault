@@ -1,7 +1,7 @@
 ---
 date: 2026-04-30
 tags: [thesis, social-platforms, advertising, commerce, PINS]
-status: draft
+status: monitoring
 conviction: medium
 sector: Social Platforms & Digital Advertising
 ticker: PINS
@@ -270,3 +270,6 @@ The bear case rests on three structural vulnerabilities compounding into a tier-
 ### 2026-04-30
 - Initial thesis created. Conviction: medium — cheap valuation (11.8× fwd vs. 25× 3-year avg) + commerce-intent funnel-position differentiation + 5× US/international ARPU monetization runway + asset-light agentic-resilience + M&A optionality (Kalshi 54%) balanced against agentic commerce structural risk + Q4 2025 tariff-driven advertiser-concentration shock + 15.4% short interest piled into May 4–7 Q1 2026 binary catalyst. Promoted from watchlist priority #2 in [[Sectors/Social Platforms & Digital Advertising]] expanded note (also dated 2026-04-30).
 - Addressed user callouts: agentic commerce migration risk decomposed into 3-phase Agentic Internet framing with four structural defenses (image-graph moat, modality divergence, decision-cycle depth, Gen Z momentum) and ~70/30 outcome distribution; new §Industry Context → Agentic commerce migration risk decomposed subsection added — conviction unchanged, the asymmetric outcome formalization corroborates the existing medium-conviction asymmetric-payoff framing.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

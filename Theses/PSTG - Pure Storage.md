@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, pstg, enterprise-storage, ai-infrastructure]
-status: active
+status: monitoring
 conviction: medium
 sector: Enterprise Storage Infrastructure
 ticker: PSTG
@@ -264,3 +264,6 @@ Pure's strategic insight was recognizing that the commodity SSD layer is a **val
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: TPU pod scaling (8T 9,600 chips, 8I 1,152 chips) + checkpoint/AI-storage TAM expansion supports AI-storage Bull Case pillar; Anthropic-on-Google-Cloud signals hyperscaler-customer expansion of frontier-AI workloads where Pure has design-win presence. Conviction unchanged.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

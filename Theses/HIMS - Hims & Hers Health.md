@@ -1,7 +1,7 @@
 ---
 date: 2026-01-22
 tags: [thesis, HIMS, healthcare-medtech, telehealth, DTC-healthcare, compounding, GLP-1, peptides]
-status: active
+status: monitoring
 conviction: medium
 sector: Consumer Telehealth
 ticker: HIMS
@@ -228,3 +228,6 @@ Hims & Hers operates as "Spotify for healthcare" — a consumer subscription pla
 ### 2026-04-22
 - Sector re-scoped: Healthcare & MedTech → Consumer Telehealth (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced stale `[[Sectors/Healthcare & MedTech]]` in Related Research with `[[Sectors/Consumer Telehealth]]` following sector note fill — no thesis-body content changed.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

@@ -1,7 +1,7 @@
 ---
 date: 2026-01-06
 tags: [thesis, meta, consumer-digital, advertising, AI]
-status: active
+status: monitoring
 conviction: medium
 sector: Social Platforms & Digital Advertising
 ticker: META
@@ -264,3 +264,6 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: 2.5-day outrage half-life, ~100 cycles between April-November 2026, "AyA media fellowship" dark-money AI-doom influencer program — reframes Meta's attention engine as the dominant infrastructure metabolizing manufactured outrage cycles, with secondary engagement-monetization upside but heightened regulatory/brand risk from AI-policy framing. Conviction unchanged — adds qualitative texture to Risk #N (regulatory) without moving thesis.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

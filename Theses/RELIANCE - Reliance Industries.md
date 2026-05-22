@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, reliance, jio, india, energy, telecom, retail, conglomerate]
-status: active
+status: monitoring
 conviction: medium
 sector: Indian Digital Conglomerates
 ticker: RELIANCE
@@ -267,3 +267,9 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 ### 2026-04-26 (/sync all — Log-history backfill)
 - [[Research/2026-04-15 - RELIANCE - Comprehensive Update April 2026 - deep-dive]]: backfill Log entry — research note already integrated into thesis body via Apr 15 restructure (Samsung C&T $3B offtake, Jio IPO DRHP imminent, JioMart 1.6M daily orders contribution-margin positive, net debt doubled to ₹2.37L cr, Indian crude $69→$113/bbl) and present in §Related Research, but Log wikilink absent. Conviction unchanged at medium.
+
+### 2026-05-11 (/sync)
+- [[Sectors/Indian Digital Conglomerates]] (2026-05-07 sector update on §Network quality differential): Sector now formalises Jio/Airtel/Vi 8-dimension comparative table + 5 structural-driver paragraphs — Jio leads on raw 5G speed + greenfield SA + pan-India fiber; Airtel leads on metro indoor consistency via 900 MHz legacy spectrum (the physical-asset moat behind 21% ARPU premium); Vi capex-constrained. Reinforces Jio standalone moat as physical-asset-based, not just price-legacy. Conviction unchanged.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

@@ -1,8 +1,8 @@
 ---
 date: 2026-04-14
 tags: [thesis, CCJ, energy-commodities, uranium, nuclear, energy-sovereignty]
-status: active
-conviction: high
+status: monitoring
+conviction: medium
 sector: Uranium & Nuclear Fuel
 ticker: CCJ
 source: Vault research synthesis + web search (Sprott, WNA, Motley Fool, Nasdaq, Cameco IR, DOE, TrendForce, Zacks)
@@ -19,13 +19,9 @@ Backbone of the Western nuclear fuel cycle, priced as a cyclical commodity produ
 ## Key Non-consensus Insights
 
 - **Cameco is being re-rated from "commodity producer" to "integrated fuel cycle monopoly," and the re-contracting wave is the highest-conviction structural catalyst in commodity markets.** Westinghouse delivered $219M adjusted EBITDA in 2025 (+51% YoY) — recurring, high-margin services revenue the market still values primarily on uranium spot correlation. 65% of post-2027 demand uncontracted; long-term contract price at $90/lb (highest since 2008) while spot languishes in the $70s — the re-contracting wave, not speculative buying, is the dominant price driver.
-
 - **Energy sovereignty is a permanent structural shift, reinforced by the structural removal of Russian enrichment from Western supply chains.** Executive orders target 400 GW U.S. nuclear capacity by 2050; $80B Westinghouse/Brookfield/Cameco partnership; European reactor life extensions. Russia controls ~44% of global enrichment and near-monopoly on HALEU; replacement Western capacity takes 5-10+ years, making Cameco's conversion and fabrication irreplaceable bottleneck assets.
-
 - **AI data center power demand is creating a secular demand floor that decouples uranium from the energy commodity cycle.** U.S. data centers: ~183 TWh in 2024, doubling by 2030. Meta 6.6 GW commitment, Microsoft TMI restart ($16B), Google Kairos Power, Amazon X-energy — multi-billion-dollar commitments with decade-long timelines, price-inelastic and uncorrelated with traditional energy cycles.
-
 - **Supply-side constraints are compounding: Kazatomprom's voluntary cuts into a deficit meet geological scarcity that cannot be resolved by capital investment alone.** Output jumped 13% in 2025, yet Kazakhstan announced ~10% 2026 production cut into an accelerating deficit. Reactor buildout requires production equivalent to ten Cameco-sized producers; mine development takes 10-15 years with no tier-one deposits in the pipeline approaching McArthur River or Cigar Lake.
-
 - **Uranium is a second-wave Iran trade with uniquely bullish macro scenario exposure.** 6-12 month energy-security play — patient capital captures the policy response re-rating. If the A-to-C macro path (stagflation, rationing, emergency liquidity) materializes, nuclear is the only baseload source immune to physical shortage; the fertilizer-food-energy nexus (Gulf states: 34% of global urea, ~20% of ammonia/phosphate) amplifies the political case beyond electricity demand models.
 
 ---
@@ -212,7 +208,7 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — ChatGPT commodity hierarchy; uranium as 6–12 month second-wave trade
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — Iran conflict capital allocation framework; uranium positioning
 - [[Macro & Technology/Iran War Trading Playbook]] — CCJ listed as Position #8 structural-into-2027 long; uranium at ~$92/lb; nuclear renaissance reinforced by crisis (energy-sovereignty policy acceleration); A→C macro path uniquely bullish for nuclear as physical-shortage-immune baseload; CCJ +114% in 2025; differentiated safe-haven framing
-- [[@Uranium & Nuclear Fuel]] — Sector Note; fuel-cycle competitive dynamics, Westinghouse/Brookfield/Cameco $80B partnership, re-contracting wave, HALEU bottleneck, and investor heuristics framework
+- [[Uranium & Nuclear Fuel]] — Sector Note; fuel-cycle competitive dynamics, Westinghouse/Brookfield/Cameco $80B partnership, re-contracting wave, HALEU bottleneck, and investor heuristics framework
 - [[Research/2026-01-26 - Silver Demand and Data Centers]] — Data center buildout commodity demand dynamics; power infrastructure context
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Structural Iran proxy resilience (Hezbollah rebuilt ~1/3 capability in a year, >$1B transferred 2025) supports sustained energy-sovereignty policy response — the 6-12 month re-rating trade framework on which CCJ's high conviction rests
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates energy-sovereignty policy response; reactor life extensions + new builds become national security mandate
@@ -244,3 +240,6 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 ### 2026-04-23 (scenario propagation)
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via energy-sovereignty policy acceleration + $80B DOE/Westinghouse partnership fast-tracked + long-term U contracts at $100+/lb — conviction strengthened: kinetic-conflict ground war transforms the 6-12 month policy-response trade into multi-year structural demand; uranium as the only non-chokepoint baseload.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring, conviction high→medium.

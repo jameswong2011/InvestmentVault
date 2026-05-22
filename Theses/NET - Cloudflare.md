@@ -2,7 +2,7 @@
 date: 2026-04-15
 tags: [thesis, net, enterprise-software, edge-computing, cybersecurity, agentic-ai]
 status: active
-conviction: medium
+conviction: high
 sector: Cybersecurity
 ticker: NET
 source: Multi-source synthesis (Claude, ChatGPT, Gemini Canvas, Grok, web research)
@@ -351,3 +351,6 @@ Cloudflare occupies the most strategically valuable position in the internet val
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Wiz cybersecurity agents (continuous-attacker / prioritization / fixer) operating on Gemini Enterprise + token volume +60% in 3 months — AI security agent infrastructure validates NET's agentic-internet positioning at gateway/policy/identity layer. Conviction unchanged — adjacent macro reinforcement of agentic-infrastructure pillar.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

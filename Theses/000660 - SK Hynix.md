@@ -1,8 +1,8 @@
 ---
 date: 2026-04-23
 tags: [thesis, semiconductors, DRAM, HBM, memory, 000660]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: DRAM & HBM Memory
 ticker: 000660.KS
 source: vault synthesis + Q1 2026 earnings (SK Hynix filings, 2026-04-23) + sell-side consensus (Mirae, Samsung Securities, IBK, UBS, BofA, Goldman)
@@ -30,7 +30,7 @@ The monopoly narrative is ending, and the market has not re-priced the thesis. S
 
 **Q1: What percentage of Nvidia Rubin HBM4 allocation does Samsung actually ship in the first two quarters (Q3 2026–Q4 2026)?** Samsung passed qualification with "best scores," but qualification is necessary, not sufficient — yield on 1c DRAM remains at 50% pilot vs 70% target, and Nvidia's dual-source posture for Rubin-specific SKUs could range from 20% (SK Hynix preferred, Samsung backup) to 40% (genuine dual-source). The answer determines whether 2026 HBM4 market share is SK Hynix 62%/Samsung 25%/Micron 13% (favorable) or SK Hynix 52%/Samsung 35%/Micron 13% (adverse). Confirmed via Nvidia quarterly disclosures and Samsung's own Q3 2026 earnings HBM revenue line item.
 
-**Q2: Does MR-MUF scale to 20-Hi at acceptable thermals, or does SK Hynix need hybrid bonding for HBM5?** SK Hynix's March 2026 BESI Kinex order is the market's tell — if MR-MUF scaled to 20-Hi natively, there would be no need for hybrid bonding qualification. The H2 2026 Kinex qualification result (pass/fail at 16-Hi, with 20-Hi roadmap visibility) reveals whether SK Hynix's packaging lead on HBM4/HBM4E translates into HBM5 leadership or whether Samsung's hybrid-bonding lead inverts the packaging hierarchy in 2028.
+**Q2: Does MR-MUF scale to 20-Hi at acceptable thermals, or does SK Hynix need hybrid bonding for HBM5?** **Partial resolution (2026-05-11)**: JEDEC HBM4 height-spec relaxation 720→775→900µm gives MR-MUF a longer thermal-budget runway than previously assumed — MR-MUF can carry HBM4E 16-Hi (2026-2027) and likely HBM5 first-gen 20-Hi (2028-2029) before hybrid bonding becomes architecturally mandatory at HBM5+ 24-Hi. The March 2026 SK Hynix BESI Kinex order is **logic-line/2nm primary, dual-use for HBM** — not a direct HBM5 hybrid-bonding qualification signal. Still open: hybrid-bonding yield trajectory at SK Hynix for 24-Hi (2029+ HBM5+) and whether SK Hynix retains process lead at the architectural inflection point. See [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]].
 
 **Q3: Does CXMT produce a credible HBM product (HBM2e or HBM3) by 2028, and at what yield?** This is the single question that determines whether Chinese memory is a 2028-2029 commodity-DRAM threat (contained) or a 2028+ HBM threat (thesis-breaking). CXMT is three DRAM nodes behind and has no public HBM roadmap, but the PRC's $142B semiconductor-subsidy fund and the Huawei-CXMT integration path could compress the timeline. Confirmed via CXMT equipment orders (EUV would be the giveaway), Huawei Ascend roadmap specifications, and export-control enforcement effectiveness on TEL/AMAT advanced-node tools.
 
@@ -64,11 +64,15 @@ SK Hynix is the world's second-largest memory-semiconductor manufacturer by reve
 
 | Vendor | Packaging | Current Stack | 2027 Roadmap | Strategic Bet |
 |---|---|---|---|---|
-| SK Hynix | MR-MUF | HBM4 12-Hi | HBM4E 16-Hi | Process lead preserves margin through HBM4/4E cycle; BESI Kinex qual for HBM5 hybrid bonding |
-| Samsung | TC-NCF → Hybrid Bonding | HBM3E 8-Hi | HBM4 12-Hi + HBM5 hybrid 20-Hi | Leap-frog via hybrid bonding; regain leadership at HBM5 |
-| Micron | TC-NCF pragmatic | HBM3E 8-Hi | HBM4 12-Hi redesign | Re-enter with mid-tier Rubin CPX variant; steady share gain |
+| SK Hynix | MR-MUF | HBM4 12-Hi | HBM4E 16-Hi | Process + materials lead (Namics exclusive EMC) preserves margin through HBM4/4E cycle; BESI Kinex qual ordered Mar 2026 is logic-line/2nm primary, dual-use for HBM5 hybrid bonding |
+| Samsung | TC-NCF → Hybrid Bonding | HBM3E 8-Hi → HBM4 12-Hi qualified for Rubin | HBM4 12-Hi production + HBM5 hybrid 20-Hi pilot | Leap-frog via hybrid bonding; regain leadership at HBM5; aggressive HBM4 pricing (8-Hi at $200 vs HBM3E 7-Hi ASP to drive volume) |
+| Micron | TC-NCF pragmatic | HBM3E 8-Hi | HBM4 12-Hi redesign — late to first Rubin cycle | Re-enter with mid-tier Rubin CPX variant; steady share gain on Rubin Ultra and AMD MI450 |
 
-Samsung's hybrid-bonding bet (enabled by BESI Kinex tool, 67% D2W hybrid-bonding market share — see [[Theses/BESI - BE Semiconductor Industries]]) is the existential competitive threat beginning 2027-2028. If hybrid bonding yields cross 70% at 16-Hi, Samsung leap-frogs SK Hynix's MR-MUF lead at HBM5 and reverses the 2024-2026 share trajectory.
+**HBM4 Vera Rubin initial allocation (confirmed via [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]])**: ~70% SK Hynix / ~30% Samsung / 0% Micron. Samsung's allocation reflects HBM4 12-Hi passing Nvidia qualification with "best scores" rather than yield parity — first-shipment allocation favors SK Hynix's MR-MUF process maturity; mid-cycle re-balancing (Rubin Ultra, 2027) likely shifts toward dual-source parity if Samsung's 1c DRAM yield clears 70%.
+
+**JEDEC HBM4 height-spec relaxation extends the MR-MUF runway**: JEDEC raised the HBM4 package-height limit from 720µm → 775µm and again to 900µm (HBM4E 16-Hi enablement). Each 25µm of thermal-budget cushion buys ~1 generation of MR-MUF extension before hybrid bonding becomes architecturally mandatory. Under the 900µm spec, MR-MUF can carry SK Hynix through HBM4E 16-Hi (2026-2027) and potentially HBM5 first-gen 20-Hi (2028-2029) before hybrid bonding is required for HBM5+ 24-Hi and beyond — pushing the Samsung leap-frog window out by ~1-2 years versus the prior 2027-2028 baseline.
+
+Samsung's hybrid-bonding bet (enabled by BESI Kinex tool, 67% D2W hybrid-bonding market share — see [[Theses/BESI - BE Semiconductor Industries]]) is the existential competitive threat beginning **2028-2029** (revised later from prior 2027-2028). If hybrid bonding yields cross 70% at 20-Hi, Samsung leap-frogs SK Hynix's MR-MUF lead at HBM5 24-Hi (2029-2030) and reverses the 2024-2028 share trajectory.
 
 **Value chain leverage analysis:** SK Hynix sits downstream of ASML (EUV scanner monopoly — $7.9B order in 2025) and upstream of TSMC CoWoS (sole-source packaging integrator). The value chain leverage is asymmetric — ASML captures ~8% of SK Hynix CapEx as pure equipment margin, and TSMC captures 30-40% gross margin on CoWoS integration that locks in SK Hynix's HBM customer delivery. SK Hynix's own leverage comes from (1) HBM scarcity vs Nvidia's GPU-unit growth curve and (2) Samsung's yield catch-up lag. Both are time-bounded advantages.
 
@@ -106,7 +110,7 @@ The bull case rests on four pillars compounding through 2028:
 
 1. **Rate-cut-driven multiple expansion on proven earnings.** 2026 operating profit of $70-120B on a $587.6B market cap puts forward P/E in the 5-8x range on realized earnings. Korean equity multiples compress historically at 8-10x for cyclical peaks; a Fed-cycle-aligned KRW appreciation + Korean equity re-rating toward 12-15x P/E on 2026 earnings delivers 50-80% upside to KRW 2.0-2.4M by mid-2027. This is the sell-side's implicit path (Samsung Securities 1.8M, high-end forecasts 2.5M).
 
-2. **HBM supercycle extension through 2028.** If Rubin ship-through runs ahead of Nvidia's current guidance (supported by TSM CoWoS capacity expansion to 80K wafers/month by Q4 2026) and HBM4E captures the 16-Hi stack premium at 1.5-2x ASP vs HBM4 12-Hi, 2027 HBM revenue reaches $40-45B at 65%+ gross margin. Combined with HBM5 ramp beginning late 2027, SK Hynix runs a 2024-2028 HBM earnings super-cycle — not a peak in 2026.
+2. **HBM supercycle extension through 2028 — materials moat reinforced.** If Rubin ship-through runs ahead of Nvidia's current guidance (supported by TSM CoWoS capacity expansion to 80K wafers/month by Q4 2026) and HBM4E captures the 16-Hi stack premium at 1.5-2x ASP vs HBM4 12-Hi, 2027 HBM revenue reaches $40-45B at 65%+ gross margin. JEDEC's HBM4 height-spec relaxation (720→775→900µm) gives MR-MUF enough thermal-budget cushion to carry through HBM4E 16-Hi AND likely HBM5 first-gen 20-Hi (2028-2029) — extending the SK Hynix process+materials moat by ~1-2 years vs prior consensus. Critical dependency: Namics EMC contract renewal (see Risk #10). With Namics renewed, SK Hynix runs a 2024-2029 HBM earnings super-cycle — not a peak in 2026 and not a 2027-2028 step-down.
 
 3. **HBF monetization at OCP-standard deployment (2027+).** If OCP HBF spec finalization in Q3 2026 triggers Meta/Microsoft qualification in Q1 2027 and production-scale deployment in H2 2027, SK Hynix books $2-5B incremental 2028 revenue at 50%+ gross margin. The option value is un-modeled in current sell-side estimates.
 
@@ -122,7 +126,7 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 
 2. **Goldman Sachs 25% oversupply materializes.** HBM pricing declines 10-15% on a full-year 2026 basis as Samsung capacity adds come online. $30B revenue × -12% blended = -$3.6B revenue, -$2.4B operating profit (67% decremental). Q4 2026 realized Op profit misses consensus by 20%.
 
-3. **MR-MUF lead erodes at HBM5 transition.** By Q4 2027, Samsung's hybrid-bonding yield crosses 70% at 16-Hi and 60% at 20-Hi. SK Hynix HBM5 roadmap requires hybrid-bonding adoption (via BESI Kinex) that it cannot ramp as fast as Samsung's native investment. 2028 HBM share steps to 48%; 2029 to 45% — tracking Gemini's Incumbent Erosion path.
+3. **MR-MUF lead erodes at HBM5 transition — but later than previously feared.** Revised timeline: by H2 2028 (not Q4 2027), Samsung's hybrid-bonding yield crosses 70% at 20-Hi. JEDEC HBM4 900µm relaxation gives MR-MUF runway through HBM5 first-gen 20-Hi (2028-2029); Samsung leap-frog materializes at HBM5+ 24-Hi (2029-2030) where hybrid bonding becomes architecturally mandatory. SK Hynix HBM5 roadmap requires hybrid-bonding adoption (via BESI Kinex) that it cannot ramp as fast as Samsung's native investment once architecturally forced. 2029 HBM share steps to 50%; 2030 to 45% — tracking Gemini's Incumbent Erosion path delayed by ~1 year. Bear thesis softer on timing, unchanged on terminal state.
 
 4. **CXMT accelerates legacy DRAM commoditization.** CXMT reaches 200K WSPM by end-2027 (vs current 70K WSPM). Commodity DRAM prices drop 20-25% per year 2027-2029. SK Hynix's $40B commodity-DRAM segment loses $8-10B revenue on price. Blended 2028 SK Hynix operating profit drops to $35-45B (vs peak $70-120B in 2026).
 
@@ -169,9 +173,11 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 
 9. **Japanese photo-materials supply chain disruption (new, 2026-04-22).** Iran War Hormuz blockade cut 40%+ of Japan naphtha → propylene → PGME/PGMEA solvent production at Daicel/Toagosei → PR/BARC/SOH/HBM temporary-bonding adhesive supply from Shin-Etsu/TOK/JSR/Fujifilm/Nissan Chemical into SK Hynix wafer fabs. HBM temporary-bonding adhesives are specifically named in the disruption — directly threatens HBM3E/HBM4 ramp. PCN requalification for alternative solvents: ~1 year standard, longer for leading-edge. Korean alternatives (Chemtronics, Jaewon Industrial) exist but need qualification. Not yet priced in. See [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]].
 
+10. **Namics EMC contract expiration (new, 2026-05-11).** Namics (Japan) is SK Hynix's exclusive supplier of MR-MUF epoxy molding compound (EMC) — the single proprietary input that delivers MR-MUF's thermal performance and warpage advantage over Samsung's TC-NCF. The current exclusivity contract is approaching expiration (timing not publicly disclosed); non-renewal or shared-supply transition opens MR-MUF process licensing to Samsung and Micron, collapsing the differentiator that underpins HBM3E/HBM4/HBM4E margin profile. Alternative EMC suppliers (Nagase ChemteX, Resonac) exist but have not been qualified in production at HBM4E 16-Hi thermal envelope. Renewal is the highest-leverage near-term tell — confirms or invalidates the materials-moat thesis pillar. See [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]].
+
 ## Conviction Triggers
 
-→ **HIGH if**: Nvidia Q3 2026 Rubin HBM allocation discloses SK Hynix ≥60% share AND HBM4E samples qualify sole-source AND BESI Kinex hybrid-bonding qualification passes at 16-Hi by Q4 2026. Combined signal confirms MR-MUF lead preserved through HBM4E and HBM5 insurance in place.
+→ **HIGH if**: Nvidia Q3 2026 Rubin HBM allocation discloses SK Hynix ≥60% share AND HBM4E samples qualify sole-source AND BESI Kinex hybrid-bonding qualification passes at 16-Hi by Q4 2026 AND **Namics EMC exclusivity contract is renewed through ≥2028 (or equivalent qualified Korean/Japanese second source secured at production thermal envelope)**. Combined signal confirms MR-MUF lead preserved through HBM4E, HBM5 insurance in place, and materials moat intact.
 
 → **LOW if**: Samsung HBM4 captures >35% of Nvidia Rubin allocation in the first two shipping quarters (Q3-Q4 2026) AND realized HBM pricing declines >10% YoY in H1 2026. Combined signal confirms Gemini's Incumbent Erosion path is tracking ahead of schedule.
 
@@ -194,6 +200,8 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Theses/TSM - Taiwan Semiconductor]] — CoWoS integration bottleneck upstream of HBM end-delivery
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War naphtha disruption threatens Japanese PR/BARC/HBM bonding adhesive supply to SK Hynix; direct 2026 HBM ramp risk; PCN cycle ~1 year
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — DRAM prices projected "double or triple" from current; validates HBM supercycle extension thesis through 2027+
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — JEDEC 720→775→900µm height relaxation extends MR-MUF runway through HBM5 first-gen (2028-29); Namics EMC exclusivity is the materials moat (contract renewal pending); Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron split; Mar 2026 BESI Kinex order is logic-line/2nm primary, dual-use for HBM
+- [[Research/2026-05-22 - 000660 - Stress Test]] — Adversarial short case: 5/10 assumptions rated 🔴 (HBM share durability, materials moat permanence, base-die lock-in symmetry across vendors, Iran War supply-chain risk, Nvidia anchor concentration); sector note probability-weights bull case at 15%, weighted-expected multiple ≈ current trading level; kill trigger = Samsung >35% Nvidia Rubin allocation in either Q3 OR Q4 2026 earnings
 
 ## Log
 
@@ -207,3 +215,13 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 1T-parameter dense-model "entry ticket" + research-bucket = 3x pre-train compute directly raise HBM demand floor through 2028; pre-training-not-dead empirical refutation from frontier-lab insider strengthens HBM supercycle extension Bull Case pillar #2. Conviction unchanged — reinforces but does not move 5-year thesis.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: JEDEC HBM4 720→775→900µm height relaxation extends MR-MUF runway 1-2 years (carries HBM5 first-gen 20-Hi 2028-2029 before hybrid bonding architecturally mandatory at 24-Hi); Namics EMC exclusivity is the materials moat — contract renewal added as Risk #10 and HIGH-conviction trigger #4; Bull Case pillar #2 strengthened on materials-moat reinforcement; Bear Case pillar #3 timeline pushed 1 year later (Samsung leap-frog window 2029-2030 not 2027-2028); Industry Context HBM4 Rubin allocation confirmed ~70/30/0 SK Hynix/Samsung/Micron; Mar 2026 BESI Kinex order reclassified as logic-line/2nm primary (dual-use for HBM5 hybrid bonding, not direct HBM5 qual). Conviction directionally strengthened on 2026-2028 earnings durability; unchanged on 2030 terminal-share trajectory.
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: Outstanding Q2 partial resolution — JEDEC height cushion + Kinex-logic-line reclassification narrows MR-MUF vs hybrid-bonding transition uncertainty; remaining open question is SK Hynix hybrid-bonding ramp velocity for HBM5+ 24-Hi (2029+).
+
+### 2026-05-22
+- Stress test [[Research/2026-05-22 - 000660 - Stress Test]]: materials moat (Namics EMC) is in active renegotiation while Samsung passed Vera Rubin qualification "best scores" and HBM share already eroded 62%→57% in 12mo, 5/10 assumptions rated 🔴 — conviction weakened: reassess pending Q3 2026 Rubin allocation disclosure and Namics contract resolution.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

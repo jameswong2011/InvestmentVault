@@ -1,8 +1,8 @@
 ---
 date: 2025-11-28
 tags: [thesis, OPEN, proptech, real-estate, ibuyer]
-status: active
-conviction: low
+status: monitoring
+conviction: medium
 sector: PropTech & Real Estate Marketplaces
 ticker: OPEN
 source: Multi-source synthesis (ChatGPT, Gemini Canvas, Claude, web research)
@@ -185,3 +185,6 @@ Opendoor's ~67% share of the dedicated iBuyer segment sounds commanding, but the
 ### 2026-04-23
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via oil-driven CPI re-acceleration → mortgage rates +100bps → housing transactions collapse — conviction weakened: turnaround thesis depends on housing thaw that kinetic-conflict scenario structurally prevents.
 - Wikilink cleanup: Related Research — added `[[Sectors/PropTech & Real Estate Marketplaces]]` sector MOC link (frontmatter already declared the sector but body had no wikilink, so `/graph` forward adjacency missed the sector edge).
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring, conviction low→medium.

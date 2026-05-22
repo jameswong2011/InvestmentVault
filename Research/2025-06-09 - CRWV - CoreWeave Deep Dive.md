@@ -5,6 +5,7 @@ status: active
 sector: Cloud Infrastructure
 source: Grok AI conversation export
 source_type: deep-dive
+propagated_to: [CRWV]
 ---
 
 # CRWV - CoreWeave Deep Dive and Information Transmission Physics

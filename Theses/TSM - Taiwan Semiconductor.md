@@ -2,7 +2,7 @@
 date: 2026-04-19
 tags: [thesis, semiconductors, TSM, foundry, Taiwan, AI-infrastructure]
 status: active
-conviction: low
+conviction: high
 sector: Semiconductor Foundries
 ticker: TSM
 source: https://pr.tsmc.com/english/news/3264
@@ -144,6 +144,8 @@ SK Hynix/Samsung HBM (on TSMC interposer) → BESI hybrid bonding tools →
 Hyperscaler installation (GOOG/META/MSFT/AMZN) → Enterprise AI deployment
 ```
 At every step TSMC either produces (wafer, packaging) or enables (hybrid bonding, photonics). The only step TSMC doesn't dominate is HBM manufacturing — SK Hynix leads at ~55% HBM share.
+
+**HBM base-die foundry expansion**: TSMC has won HBM4 base-die manufacturing at **2 of 3 HBM IDMs** — SK Hynix (3nm custom base die for Rubin HBM4 12-Hi/16-Hi) and Micron (HBM4 12-Hi redesign on TSMC advanced node) — adding a logic-line revenue stream tied to HBM volume independent of CoWoS integration. Samsung remains in-house base-die (vertical integration). Per [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]], this represents 4-6% incremental TSMC wafer revenue at HBM4 peak volume (2027-2028), entirely additive to the GPU-logic + CoWoS-S/L stack already captured.
 
 ### Market share & pricing power shifts
 
@@ -300,6 +302,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-04-19 - TSM - Stress Test]] — adversarial Taiwan invasion/blockade scenario: 8/9 bull assumptions rated 🔴
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — SemiAnalysis projects TSMC 2028 capex ~$100B (vs $57.4B 2026 baseline); "good people" single-digit pricing discipline as hidden option value; ASML sold out; validates Bull Case monopoly-rents thesis
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — leading-edge PR supply chain indirect exposure (Shin-Etsu/TOK feed TSMC); Korean/Taiwanese localization farther along than Japanese per article — TSM likely less exposed than Samsung/Hynix but not zero
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — TSMC HBM base-die foundry win at 2 of 3 HBM IDMs (SK Hynix + Micron, Samsung in-house); incremental wafer revenue stream tied to HBM volume independent of CoWoS; Vera Rubin HBM4 supply ~70/30/0 SK Hynix/Samsung/Micron initial implicitly drives CoWoS-S/L mix
 
 ## Log
 
@@ -317,3 +320,16 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: SemiAnalysis frames TSMC 2028 capex trajectory ~$100B (vs $57.4B 2026 baseline) + "good people" single-digit pricing discipline (vs memory's triple-digit) as signal of both durability AND hidden pricing-rent option — strengthens Bull Case monopoly-rents pillar #1 on pricing power. Conviction unchanged at low (Taiwan tail still dominant).
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]]: Leading-edge PR/BARC supply chain (Shin-Etsu, TOK are primary EUV PR sources for TSMC too); article notes Taiwan/Korean localization farther along than Japanese so TSM less exposed than Samsung/Hynix — but non-zero. Adds a fifth unmodeled supply-chain vector (after TSMC concentration, AAPL+NVDA concentration, Arizona margin drag, Intel 18A threat). Conviction unchanged.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: TSMC HBM base-die foundry win at 2 of 3 HBM IDMs (SK Hynix 3nm custom base + Micron HBM4 12-Hi redesign on TSMC advanced node) adds incremental wafer revenue stream tied to HBM volume — additive to existing CoWoS-S/L share at 4-6% TSMC wafer revenue at HBM4 peak (2027-2028). Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial allocation implicitly drives CoWoS-S/L mix toward SK Hynix-led supply. JEDEC 720→775→900µm height relaxation extends MR-MUF runway (HBM5 hybrid-bonding mandate at 24-Hi 2029-2030) — neutral for TSMC since interposer + CoWoS demand tracks HBM unit volume not bonding architecture. Conviction unchanged at low (Taiwan tail still dominant); incremental base-die win is a positive non-Taiwan-tail data point.
+
+### 2026-05-12 (/sync)
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Intel 18A "**two quarters ahead of plan**" (CFO Zinsner Q1 2026) cost-target landing mid-2026 (vs industry standard 2027) tightens the IFS 2027–2028 credibility window; **EMIB cost arbitrage of "low hundreds" vs $900–1,000 CoWoS Rubin-class** introduces the first quantified packaging-cost gap that could pressure CoWoS-L pricing if the next-cycle marginal AI-ASIC customer (MSFT Maia 2, AWS AI Fabric, AVGO/MRVL custom-silicon) qualifies EMIB-T (H2 2026) in parallel. CoWoS franchise's hidden pricing-rent option (Pillar #1) becomes contingent on Intel packaging yield disclosure. Conviction unchanged at low; introduces a non-Taiwan downside vector to monitor over 2026–2027.
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: **Nova Lake (Intel Core Ultra 4) >90% on TSMC N2** (SemiWiki / Mark Webb) confirms Intel Products' structural N2 dependency through 2027 — incremental N2 wafer revenue stream tied to Intel client CPU volume (positive for AAPL+NVDA-concentrated revenue mix). Apple preliminary 14A deal (WSJ May 8, 2026) is "entry-level M-series only" scope — does NOT threaten Apple's ≥50% N2/N3 allocation through 2027, but signals long-cycle de-risking from Apple if Intel 14A yields validate by 2028. Conviction unchanged — both data points neutral-to-positive near term.
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition + new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. TSM listed under §Adjacent exposure: foundry for NVIDIA Rubin/Rubin Ultra under the Kyber 800VDC reference; power-delivery thermal envelope decisions at >2,000A per processor affect CoWoS-L substrate design (the same packaging franchise tracked in §Industry Context — CoWoS scaling 35K→130K WPM 2026-2027). The 800VDC transition does not directly change TSMC wafer or CoWoS economics, but it widens the silicon-vendor concentration to TSMC (all NVIDIA Rubin/Rubin Ultra + most XPU customers) as power-delivery integration becomes another design-in lock-in vector. Conviction unchanged at low — Taiwan tail risk dominates; 800VDC adds an incremental capex-cycle support without altering the structural-impairment binary.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction low→high.

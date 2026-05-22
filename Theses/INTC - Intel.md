@@ -1,7 +1,7 @@
 ---
 date: 2026-04-27
 tags: [thesis, semiconductors, INTC]
-status: draft
+status: monitoring
 conviction: medium
 sector: Compute & AI Accelerators
 ticker: INTC
@@ -21,7 +21,7 @@ source: Intel Q1 2026 earnings (April 23, 2026), Lip-Bu Tan turnaround strategy 
 
 ## Summary
 
-Intel under Lip-Bu Tan (CEO since March 2025) is the most consequential turnaround story in semiconductors — and the market has already rerated 100%+ to price it. Q1 2026 printed $13.6B revenue (beat $12.36B est) and $0.29 EPS (vs $0.01 est) as Data Center grew +22% YoY to $5.1B; the stock surged 24% on the print to ~$82.73 against an $85.22 ATH (April 24). The bull narrative is comprehensive: 18A entered HVM Oct 2025 with first external anchors (Microsoft Maia 2, AWS AI Fabric); Tesla committed to 14A in April 2026 as the first true external 14A customer; Nvidia took a $5B equity stake (4.4%) in December 2025 as part of an x86 co-design partnership; the US government holds 10% (433M shares at $20.47, $8.9B), eliminating insolvency tail risk; the agentic-AI CPU TAM expansion ("CPUs are completely sold out" per April 2026 industry commentary) reframes Intel's primary product line as AI infrastructure rather than a declining x86 business. The non-consensus tension is that every individual element of the bull case has a structural compromise — the government stake is a constraint disguised as a backstop (5-year warrant for 5% additional shares at $20 if Intel sells majority of foundry, plus 50.1% IFS ownership rule); Diamond Rapids removed SMT, regressing Intel's competitive position on the exact agentic workload Lip-Bu Tan cites; Nvidia tested 18A for primary GPU dies and walked away (only Feynman 2028 supporting silicon goes to 18A or 14A); IFS lost $2.4B on $5.4B revenue in Q1 2026, with most of that revenue still internal at transfer pricing. At ~$414B market cap, forward P/E ~145x, the market is pricing flawless execution on three independent multi-year trajectories (18A profitable yield by end-2026, 14A external customer scale by 2028, AI CPU competitive return via Coral Rapids 2028+) — each individually plausible, the compound probability of all three landing on schedule materially below market-implied. Conviction medium: government backstop bounds downside but recent rally has captured the easy upside; the next leg requires actual execution, and the first execution stumble (e.g., 18A yield disappointment, IFS customer slip, AMD share gain through 50% in server) compresses the multiple sharply.
+Intel under Lip-Bu Tan (CEO since March 2025) is the most consequential turnaround story in semiconductors — and the market has rerated another 30–60% on top of the earlier rally. The stock closed ~$109 May 9 inside a 52-week range of $18.97–$133.48 against a $585–628B market cap (data-provider variance post Nvidia/SoftBank/USG issuance), trading at ~117x forward P/E vs TSMC 22x and AMD 45x. Q1 2026 printed $13.58B revenue (sixth consecutive beat, +7% YoY) and $0.29 non-GAAP EPS (+123% YoY) on 41.0% non-GAAP gross margin (+180bps) and 12.3% non-GAAP operating margin (+690bps); GAAP EPS was $(0.73) after a $4.07B Mobileye goodwill impairment. Q2 2026 guidance bracketed $13.8–14.8B revenue (consensus $13.06B) with $0.20 EPS vs consensus $0.06 — magnitude of the beats is the principal sentiment-positive datapoint. CFO Zinsner disclosed at Q1 that 18A yields are tracking to hit the year-end-2026 cost target by mid-2026 (two quarters ahead of plan, ~7%/month gain per Pitzer RBC TMT Nov 2025); revised EMIB external packaging revenue guidance from "a few hundred million" to >$1B annually per customer ("close to closing some deals that are in the billions" — Morgan Stanley TMT, March 2026). Apple preliminary multi-year 14A deal reported by WSJ May 8 catalyzed a 14% single-day rally. The bull narrative is now comprehensive: 18A entered HVM Oct 2025 with Microsoft Maia 2/3 ("Griffin") on 18A/18A-P under a $15B contract + AWS AI Fabric; Tesla committed to 14A in April 2026 (Terafab, 2029 first volume); Nvidia took a $5B equity stake (4.4%) in December 2025 for Xeon-6-as-Vera-Rubin-NVL72-host-CPU; SoftBank took $2B at $23 (Aug 2025); the US government holds 10% (433.3M shares at $20.47, $8.9B basis) plus a 5-year warrant for 5% additional shares at $20; agentic-AI CPU TAM expansion + ASIC revenue >$1B run-rate (doubled YoY Q1 2026) reframe DCAI as AI infrastructure; Intel closed the $14.2B buyback of Apollo's 49% Fab 34 (Ireland) minority on April 1, 2026 funded $7.7B cash + $6.5B new debt. The non-consensus tension intensifies as the rally extends. The Jaykihn leak (April 2026) shows Diamond Rapids slipped from 2026 to mid-2027, ceding another full P-core server cycle to AMD Venice (Zen 6, TSMC N2 — on track 2026) while Intel's first competitive SMT-restored P-core Xeon (Coral Rapids) does not arrive until mid-2028; AMD took record Q4 2025 server share at 28.8% units / 41.3% revenue (Mercury) — first quarter ever above 40% with a 12.5-point unit-vs-revenue gap signalling AMD wins the highest-margin SKUs. >90% of Intel's own Nova Lake (2027 client) is on TSMC N2 per SemiWiki/Mark Webb — confirming Zinsner's prior Citi admission that Intel "will be putting products on TSMC, you know, forever, really"; External Foundry Q1 2026 was $174M (up from $31M Q1 2025) vs internal $5.2B — external is still 3.2% of segment revenue. A new shareholder lawsuit (Paisner, filed March 2025, Bloomberg Law coverage, names Lutnick + Yeary) seeks to void the USG 10% stake on fiduciary-breach grounds tied to Trump's August 7, 2025 demand for Tan's resignation — remote but discrete legal overhang. Sell-side consensus target sits at ~$66 (range $25–$118); HSBC's $95 (the most bullish target) is ~15% below the May 9 close; SOTP arithmetic yields $43–73/share — lower-bound 60%+ below current. The 117x forward multiple at ~$110–130 implies $1.20–1.50 2028 EPS, requiring DCAI 15–20% sustained growth + foundry op-margin breakeven + 35%+ gross margin — a near-perfect outcome path. Conviction medium with bearish lean strengthening: government backstop still bounds downside but the additional 30–60% rally has pushed the valuation gap to its widest of the cycle; the first execution stumble — 18A yield disappointment, an IFS customer slip, Diamond Rapids further delay — now compresses the multiple from a 117x base, with the AMD 50% server-share trigger likely arriving sooner given the 41.3% Q4 2025 print.
 
 ---
 
@@ -49,7 +49,7 @@ Intel under Lip-Bu Tan (CEO since March 2025) is the most consequential turnarou
 
 - **How exposed is Intel to AI-cycle deceleration risk?** Per [[AI Bubble Risk and Semiconductor Valuations]]: J.P. Morgan estimates AI revenue must reach $650B annually "into perpetuity" by 2030 to justify current capex; Bain identifies a $2T revenue gap; 60% of enterprise GenAI spending still comes from "innovation budgets" (experimental, not permanent); 95% of organizations report zero return on $30–40B collective enterprise GenAI investment. Intel's CPU-as-AI-infrastructure narrative depends on agentic workloads scaling fast enough to inflect server CPU TAM in 2026–2027. If AI capex moderates 20–30% in 2027 (Bain/JPM tail scenarios), Intel's primary product roadmap (Clearwater Forest, Diamond Rapids, Jaguar Shores) all face deferred demand AND foundry external customers (Microsoft Maia 2, AWS AI Fabric) reduce wafer commitments. Intel is structurally more exposed to this scenario than TSMC (which has Apple as anchor) or NVDA (which has the dominant AI workload regardless of capex scale).
 
-- **Does the agentic-AI CPU TAM expansion benefit Intel given Diamond Rapids' SMT removal regression?** Per [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: AMD Venice Dense scores 5/5 on action workloads (256c, 512 SMT threads, 1GB L3, x86 ISA), Nvidia Vera scores 5/2 (reasoning), Intel Diamond Rapids scores 3/3 (mediocre at both ends). Intel cancelled Diamond Rapids-SP and stranded mainstream Xeon on Granite Rapids until Coral Rapids restores SMT. The credible Intel competitive return on agentic CPU is 2028+. AMD EPYC server share is 39.4% Q1 2025, projecting toward 50% by end-2026; if AMD compounds past 50% before Intel's SMT-restored counter-punch ships, the share-loss is structural rather than cyclical. What's the concrete product roadmap — Coral Rapids architectural disclosure, ship date, SMT/threading restoration commitment — that Intel can communicate to halt the share trajectory in 2027?
+- **Does the agentic-AI CPU TAM expansion benefit Intel given Diamond Rapids' SMT removal regression AND the Apr 2026 Jaykihn leak slipping Diamond Rapids to mid-2027?** Per [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: AMD Venice Dense scores 5/5 on action workloads (256c, 512 SMT threads, 1GB L3, x86 ISA), Nvidia Vera scores 5/2 (reasoning), Intel Diamond Rapids scores 3/3 (mediocre at both ends). The Diamond Rapids slip (2026 → mid-2027) leaves Clearwater Forest E-cores as Intel's only new high-end socket in 2026 versus AMD Venice (Zen 6, TSMC N2) shipping on schedule; Coral Rapids SMT restoration moves to mid-2028 — a ~24-month gap with no competitive Intel P-core response. AMD already printed **41.3% Q4 2025 server revenue / 28.8% units (Mercury — first quarter ever above 40%, 12.5-pt quality-of-share gap)**; 50% by mid-2026 is now a base case, not a 2026 year-end tail. If AMD compounds past 50% before Coral Rapids ships in mid-2028, the share-loss compounds for ~20 quarters and becomes structural rather than cyclical. What's the concrete product roadmap — Coral Rapids architectural disclosure, firm ship date, SMT/threading restoration commitment — that Intel can credibly communicate to halt the share trajectory before 2028?
 
 - **What is the realistic SOTP value of Intel after IDM 2.0 stabilizes — and does the CHIPS-Act 50.1% IFS ownership rule destroy the SOTP optionality the market is implicitly pricing?** Pure-play arithmetic: IFS standalone <$30B (anchored against Samsung Foundry <$20B with similar yield trajectory and stronger anchor). Intel Products at peer multiples (AMD-style 25–30x forward) on $40B 2027 revenue at 30%+ operating margin: ~$200–250B. Mobileye stake (~80% of $15B market cap) ~$12B. Other (Altera residual 49% stake, IP, real estate): ~$10–15B. Sum: ~$250–305B. Current EV ~$414B implies $110–165B "synergy premium." The CHIPS-Act 50.1% rule prevents the optimal restructuring (IFS pure-play spin) for the next 5 years minimum. If the synergy premium does not deliver, multiple compression to SOTP equilibrium implies 25–35% downside.
 
@@ -71,7 +71,7 @@ Intel's portfolio operates in five layers post the Lip-Bu Tan rationalization:
 
 **1. Client Computing Group (CCG) — x86 PC processors.** Panther Lake (Core Ultra Series 3, the first 18A client product) shipping at scale Q1 2026 with broad availability January 2026; positions Intel for the AI PC category against Apple silicon and AMD Ryzen AI. Nova Lake 2027 follow-on. Revenue: ~$8B/quarter, declining low-single-digit on PC TAM normalization, partially offset by AI PC ASP uplift.
 
-**2. Data Center & AI (DCAI) — server CPUs and the cancelled AI accelerator program.** Granite Rapids (current generation, P-cores) shipping; Clearwater Forest (Xeon 6+ E-cores, 18A-based, 288 cores, 17% IPC uplift) launching H1 2026; Diamond Rapids (P-cores, 192 cores, SMT removed — *regression* vs Granite Rapids on thread density) launching late 2026 / early 2027. Coral Rapids (SMT restored, post-Diamond Rapids) targeted 2028+. Falcon Shores GPU/AI accelerator cancelled (became internal test chip Jan 2025); Jaguar Shores rack-scale architecture (silicon photonics interconnects, SK Hynix HBM4, Gaudi brand) replacing it for 2026 launch. Revenue: $5.1B Q1 2026 (+22% YoY), recovering from 2025 trough. AMD EPYC market share at 39.4% Q1 2025 and projecting toward 50% by end-2026.
+**2. Data Center & AI (DCAI) — server CPUs and the cancelled AI accelerator program.** Granite Rapids (current generation, P-cores) shipping; Clearwater Forest (Xeon 6+ E-cores, 18A-based, 288 cores, 17% IPC uplift) launching H1 2026; Diamond Rapids (P-cores, 192 cores, SMT removed — *regression* vs Granite Rapids on thread density) **slipped from 2026 to mid-2027 per Apr 2026 Jaykihn leak (not officially confirmed by Intel)**. Coral Rapids (SMT restored) targeted mid-2028. Falcon Shores GPU/AI accelerator cancelled (became internal test chip Jan 2025); Jaguar Shores rack-scale architecture (silicon photonics interconnects, SK Hynix HBM4, Gaudi brand) replacing it for 2026 launch. Revenue: $5.1B Q1 2026 (+22% YoY) at 30.5% op margin, with ASIC revenue crossing **$1B run-rate (doubled YoY; +30% sequential)** for the first time. AMD EPYC server share now **41.3% Q4 2025 revenue / 28.8% units (Mercury — first quarter ever above 40%)**, on track to cross 50% in 2026 with no Intel P-core counter shipping until Coral Rapids mid-2028.
 
 **3. Intel Foundry (IFS) — external + internal foundry services.** 18A on Fab 52 Arizona (HVM Oct 2025, yields below profitable thresholds, "tracking better than earlier expectations" per Q1 2026). 18A-P (performance variant) launching 2026; 18A-PT scheduled 2028. 14A targeted 2028–2029 HVM with Tesla as first true external customer (April 2026 commitment) — Lip-Bu Tan stated 14A could be slowed or cancelled if additional external customers don't commit by H1 2027. External customer roster: Microsoft (Maia 2 AI accelerator on 18A/18A-P), AWS (AI Fabric on 18A, multi-billion lifetime deal value), Google ("likely to follow"), Tesla (14A first customer), Apple (considering 14A for entry-level M-series only), Nvidia (Feynman 2028 supporting silicon only — primary GPU dies remain TSMC). Q1 2026: $5.4B revenue, $2.4B operating loss = -44% operating margin; majority of revenue is internal Intel Products at transfer pricing.
 
@@ -100,7 +100,7 @@ Intel's portfolio operates in five layers post the Lip-Bu Tan rationalization:
 
 Intel sells through three channels:
 
-**OEM channel**: Dell, HP, Lenovo, Asus, Acer for client; Dell, HPE, Supermicro, Lenovo, Inspur for server. The traditional Wintel + server-OEM stack. Margin-stable but share-eroding to AMD in server (39.4% Q1 2025 → projected 50% end-2026 per Mercury Research) and Apple in premium client.
+**OEM channel**: Dell, HP, Lenovo, Asus, Acer for client; Dell, HPE, Supermicro, Lenovo, Inspur for server. The traditional Wintel + server-OEM stack. Margin-stable but share-eroding to AMD in server (**41.3% Q4 2025 revenue / 28.8% units — Mercury — first quarter ever above 40%; 50% baseline 2026** with no Intel P-core response until Coral Rapids mid-2028) and Apple in premium client.
 
 **Hyperscaler direct**: Custom chip designs at scale — Nvidia x86 CPU partnership ($5B equity-linked supply agreement Dec 2025), AWS AI Fabric, Microsoft Maia 2 advanced packaging. The IFS-enabled channel that doesn't yet exist at material scale but could unlock $5–10B annual external foundry revenue by 2028 if 18A/14A yields and customer commitments compound.
 
@@ -116,7 +116,7 @@ The competitive structure looks different in each of Intel's product lines, and 
 
 | Battle | Intel position | Competitive structure | Trajectory |
 |---|---|---|---|
-| **Server CPU (x86)** | #2 declining | Duopoly tracking 50/50 by end-2026 | AMD EPYC 39.4% Q1 2025 → 50% end-2026; Diamond Rapids SMT removal aids AMD Venice Dense agentic-AI advantage |
+| **Server CPU (x86)** | #2 declining | Duopoly with AMD on track to cross 50% in 2026 | AMD EPYC **41.3% Q4 2025 revenue / 28.8% units** (Mercury — first quarter >40%); Diamond Rapids slipped to mid-2027 + SMT removal compounds AMD Venice Dense agentic-AI advantage; Coral Rapids mid-2028 = no competitive Intel P-core response for ~20 quarters |
 | **Client CPU (x86)** | #1 declining | Triopoly with Apple silicon + AMD Ryzen | Apple ~25% premium PC; AMD 25%+ desktop/mobile; Intel ~50% but ASP-eroding |
 | **AI accelerator merchant** | Absent | NVDA 75% + AMD 5–8% + ASICs 15–20% | Falcon Shores cancelled; Jaguar Shores 2026 launch is the only forward path |
 | **Data Center GPU (general compute)** | Absent | NVDA monopoly; AMD secondary | Ceded entirely; no roadmap |
@@ -190,36 +190,54 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$414B | Price $82.73 (April 26, 2026); ATH $85.22 (April 24); +24% on Q1 2026 print |
-| Share Price | ~$82.73 | +74% YTD pre-earnings, then +24% on Q1 print; volatile |
-| Shares Outstanding | ~5.16B | Diluted, post Nvidia $5B + SoftBank $2B + US gov't $8.9B placements |
-| EV/Revenue (TTM) | ~7.5x | TTM revenue ~$55B; EV ~$415B |
-| EV/Revenue (Forward 2026E) | ~6.5x | FY2026E ~$60–65B |
-| Forward P/E | ~145x | Normalized; TTM negative |
-| Revenue Growth | +13% YoY Q1 2026 | $13.6B vs $12.0B prior year; sixth consecutive earnings beat |
-| Q1 2026 GAAP Gross Margin | 36.7% (FY2025) | +70bps YoY |
-| Q1 2026 non-GAAP Gross Margin | 41% | +650bps above guidance |
-| Q1 2026 Adj. EPS | $0.29 | vs $0.01 estimate; vs prior-year loss |
-| Q1 2026 Free Cash Flow | -$2B | Fab 34 buyout drag; FY2026 guided positive |
-| FY2026 CapEx | ~$17.7B (flat YoY) | Tool spending +25% to accelerate wafer output |
-| Data Center & AI Revenue Q1 2026 | $5.1B (+22% YoY) | Off depressed 2025 base; AMD continuing to take share |
-| IFS Revenue Q1 2026 | $5.4B | Most internal at transfer pricing |
-| IFS Operating Loss Q1 2026 | -$2.4B | -44% operating margin; gradual improvement guided |
-| External IFS lifetime deal value | $15B+ disclosed | Cumulative multi-year, not 2026 revenue |
-| US Government Stake | 10% (433.3M shares) | $8.9B at $20.47 / share basis; ~$32B at current $82.73 |
+| Market Cap | ~$585–628B (data-provider variance) | Post NVDA/SoftBank/USG issuance; May 2026 |
+| Share Price (May 9, 2026 close) | ~$109 | 52-wk range $18.97–$133.48; +30–60% above thesis-date $82.73 |
+| Shares Outstanding | ~5.03B | Diluted; ~5.16B fully-diluted incl. warrants |
+| EV/Revenue (TTM) | ~10x | TTM revenue ~$55B; EV ~$555–600B |
+| EV/EBITDA NTM | ~25.8x | vs TSMC 13.1x |
+| Forward P/E | ~117x | vs TSMC 22x, AMD 45x |
+| Sell-side consensus target | ~$66 (range $25–$118) | ~50% below current; HSBC $95 (most bullish) still ~15% below May 9 close |
+| SOTP fair value (illustrative) | $43–73 / share | Products 4–6x 2027E ($180–270B) + Foundry 2–5x + asset value ($40–100B) + Altera 49% (~$4B) + Mobileye residual (~$1B) − net debt; 60%+ below current at lower bound |
+| Q1 2026 Revenue | $13.58B (+7% YoY) | Sixth consecutive beat |
+| Q1 2026 non-GAAP Gross Margin | 41.0% | +180bps YoY |
+| Q1 2026 non-GAAP Op Margin | 12.3% | +690bps YoY |
+| Q1 2026 non-GAAP EPS | $0.29 | +123% YoY (vs $0.13) |
+| Q1 2026 GAAP EPS | $(0.73) | Incl. $4.07B Mobileye goodwill impairment |
+| Q2 2026 Guidance | Rev $13.8–14.8B (cons $13.06B); GM 39%; EPS $0.20 (cons $0.06) | Magnitude of beat is principal sentiment-positive datapoint |
+| Data Center & AI Q1 2026 | $5.1B (+22% YoY) at 30.5% op margin | ASIC revenue >$1B run-rate (doubled YoY; +30% sequential) |
+| Intel Foundry Q1 2026 | $5.4B rev / -$2.4B op loss / -45% op margin | Narrowed $72M QoQ |
+| External Foundry Q1 2026 | $174M | Up from $31M Q1 2025; still 3.2% of segment revenue |
+| External IFS lifetime deal value | $15B+ disclosed; ">$1B per customer annually" per CFO | Cumulative multi-year; CFO Zinsner Mar 2026 "close to closing some deals that are in the billions" |
+| 18A yield trajectory | ~7%/month gain; cost-target by mid-2026 (2 qtrs early); industry-standard 2027 | CFO Zinsner Q1 2026 |
+| Capex | $20B (2024) → $18B (2025); 2026 guided lower | Ohio delayed to 2030; Germany/Poland cancelled |
+| Workforce | -~15% (~25,000 jobs); ~85,100 May 2026 | Management layers halved |
+| 2026 OpEx target | $16B (vs $17B 2025); risk of slight miss on memory inflation + variable comp | -~30% below 2024 |
+| Cash & ST investments | $37.4B YE2025; total debt $45B Q1 2026 (down from $50B mid-2025); net debt ~$7–9B | vs $13.5B trailing EBITDA |
+| EMIB cost vs CoWoS | "Low hundreds of dollars" vs $900–1,000 for Rubin-class | Bernstein cited in Tom's Hardware |
+| EMIB package roadmap | 120×120mm 12 HBM stacks → 120×180mm 24 HBM stacks by 2028; EMIB-T H2 2026 | vs industry 100×100mm 8 stacks (NVDA Blackwell) |
+| TSMC CoWoS capacity | 35K → 80K → 130K WPM (end-2024/2025/2026); CoWoS-L/S fully booked through 2027 | NVDA >50–60% of allocation |
+| Hyperscaler 2026 capex | ~$750B (CreditSights), +67% YoY | Demand pillar for IFS external + DCAI CPU |
+| Diamond Rapids (Xeon 7) | **Slipped 2026 → mid-2027** | Jaykihn leak Apr 2026; Intel hasn't officially confirmed |
+| Coral Rapids (P-core SMT return) | Mid-2028 | First competitive P-core SMT Xeon |
+| Nova Lake | >90% on TSMC N2 | SemiWiki / Mark Webb — confirms structural TSMC dependency |
+| Fab 34 (Ireland) buyback | $14.2B for 49% Apollo minority (announced Apr 1, 2026) | Funded with cash + ~$6.5B new debt |
+| US Government Stake | 10% (433.3M shares) | $8.9B at $20.47 basis (Aug 22, 2025); ~$47B at current $109 |
 | US Government Warrant | 5% additional at $20 | 5-year, exercisable if Intel sells majority of foundry |
-| Nvidia Stake | 4.4% (~214M shares) | $5B at $23.28 (closed Dec 2025) |
-| SoftBank Stake | <2% | $2B at $23 (Aug 2025) |
-| Mobileye Stake | ~80% | ~$12B Intel-attributable at $15B Mobileye market cap |
-| Altera Residual Stake | 49% | Sold 51% to Silver Lake for $4.46B (April 2025) |
-| Server CPU Market Share | ~61% revenue / 72% units | Down from 97% in 2019; AMD EPYC at 39.4% Q1 2025 |
-| Analyst Consensus | Hold | 10 buy / 22 hold / 3 sell; price targets $47–$95; HSBC Buy $95 |
-| Analyst Median Target | ~$72–77 | TipRanks $77; MarketBeat $72; consensus rating Hold |
+| Paisner shareholder lawsuit | Filed March 2025 (Bloomberg Law) | Seeks to void USG 10% stake; names Lutnick + Yeary |
+| Nvidia Stake | 4.4% (~214M shares) | $5B at $23.28 (closed Dec 26, 2025) |
+| SoftBank Stake | <2% (~$2B at $23, Aug 2025) | |
+| Apple 14A deal | "Preliminary multi-year" (WSJ May 8, 2026) | Catalyzed +14% single-day rally; products/volumes undisclosed |
+| Microsoft Maia 2/3 ("Griffin") | 18A/18A-P under $15B contract | |
+| Tesla Terafab 14A | Committed April 22, 2026 earnings call | Volume 2029; $25B+ build (Musk aspiration $5–13T) |
+| NVDA Vera-Rubin NVL72 | Xeon 6 selected as host CPU under Sept 2025 collab | Intel builds custom x86 plugging into NVLink-72 |
+| Mobileye Stake | ~80% (50M shares remain after ~63.7M sold $1.02B at $16.05 July 2025) | ~$12B Intel-attributable; Q1 2026 $4.07B goodwill impairment |
+| Altera Residual Stake | 49% | 51% sold to Silver Lake $4.46B (closed Sept 12, 2025) at $8.75B valuation; Intel paid $16.7B in 2015 |
+| Server CPU Market Share | Eroding to AMD | AMD EPYC at **41.3% Q4 2025 revenue / 28.8% units** (Mercury) — first quarter ever above 40%; 12.5-point unit-vs-revenue quality-of-share gap |
 | Insider Selling | Limited | Lip-Bu Tan stock-aligned; gov't stake locked in |
 
 ## Bull Case
 
-- **18A reaches profitable yield by end-2026** as guided ("tracking better than earlier expectations"), enabling IFS breakeven in 2027 and turning the foundry from -$2.4B/quarter operating drag into a positive contributor. Cumulative IFS losses through 2026 (~$10B+) become non-recurring; 2027 IFS revenue scales to $30B+ at 5–10% operating margin = $1.5–3B operating income reversal.
+- **18A reaches profitable yield by end-2026** as guided. CFO Zinsner Q1 2026 disclosed 18A yield is "**two quarters ahead of plan**" with the cost-target landing mid-2026 vs the industry-standard 2027 — a tangible credibility datapoint, not a generic "tracking" statement. Enables IFS breakeven in 2027 and turns the foundry from -$2.4B/quarter operating drag into a positive contributor. Cumulative IFS losses through 2026 (~$10B+) become non-recurring; 2027 IFS revenue scales to $30B+ at 5–10% operating margin = $1.5–3B operating income reversal. External Foundry revenue ($174M Q1 2026, up 5.6x from $31M Q1 2025; CFO "close to closing deals in the billions") is the trailing indicator of conversion.
 - **External foundry customer scale materializes**: Microsoft Maia 2 + AWS AI Fabric ramp through 2026; Google "follows" by H2 2026; Tesla 14A launches 2028 with anchor-customer revenue; Apple commits to 14A entry-level M-series; Nvidia expands beyond Feynman supporting silicon. Cumulative external lifetime deal value >$30B by end-2027; external IFS revenue ~$10–15B annually by 2028.
 - **Coral Rapids restores SMT and recovers Intel's agentic-AI competitive position** by 2028, with thread density returning to 256+ threads on a 192-core configuration. Stops AMD EPYC share advance at ~50% (rather than 60%+); Intel server CPU share stabilizes at parity by 2028–2029 rather than continuing to decline.
 - **Jaguar Shores AI accelerator captures 1–3% merchant share by 2028**, contributing $1–3B annual revenue at 50%+ gross margin. Validates Intel as a credible AI accelerator participant beyond x86 CPUs and reopens the strategic optionality the Falcon Shores cancellation foreclosed.
@@ -231,32 +249,39 @@ The structural conflict (IDM running merchant foundry while competing with found
 ## Bear Case
 
 - **18A yield disappoints at end-2026 review.** Yields plateau at 70–75% rather than reaching 80%+ profitable threshold; foundry losses persist at $2–3B/quarter through 2027; Lip-Bu Tan extends the breakeven timeline to 2028. Microsoft Maia 2 + AWS AI Fabric customers reduce wafer commitments; Tesla "Terafab" 14A commitment slips. IFS standalone revaluation drags blended multiple from 145x forward to 50x as growth rerates to single digits.
-- **Diamond Rapids SMT regression compounds AMD share gains**. Server CPU share continues toward 60%+ AMD by end-2027; agentic-AI CPU TAM expansion benefits AMD entirely while Intel's structural product weakness becomes consensus narrative. DCAI growth flattens or reverses; "AI CPU inflection" thesis breaks publicly.
+- **Diamond Rapids slip + SMT regression compounds AMD share gains**. The Jaykihn leak (April 2026) slipped Diamond Rapids from 2026 to mid-2027, leaving Clearwater Forest E-cores as Intel's only new high-end socket in 2026 vs AMD Venice (Zen 6, TSMC N2) shipping on schedule. AMD already printed 41.3% Q4 2025 server revenue share (Mercury — first quarter ever above 40%) with a 12.5-point unit-vs-revenue quality gap; 50% by mid-2026 is now a realistic baseline, not a 2026 year-end terminal scenario. The Coral Rapids SMT-restored Xeon does not arrive until mid-2028 — there is no competitive Intel P-core response available in 2026 or 2027. DCAI growth flattens or reverses; "AI CPU inflection" thesis breaks publicly.
 - **Nvidia partnership de-emphasizes IFS in favor of x86 supply only**. Nvidia commits no Feynman primary GPU dies to 18A or 14A; supporting silicon is the ceiling of foundry contribution. The market re-reads the $5B equity stake as a customer hedge, not foundry validation; IFS narrative fragments.
 - **Jaguar Shores AI accelerator slips or underperforms**. 2026 launch delayed into 2027; performance benchmarks underwhelm vs Nvidia Rubin and AMD MI455X; merchant AI share stays at zero. Intel's AI exposure is bounded entirely by CPU expansion (structurally weakest) and IFS subsidies (chronic loss-maker).
 - **AI capex deceleration** per the timing-mismatch scenario in [[AI Bubble Risk and Semiconductor Valuations]] (J.P. Morgan $650B annual revenue requirement, Bain $2T gap, 95% of organizations reporting zero return on enterprise GenAI). 2027 hyperscaler capex moderates 20–30%; Intel's CPU + foundry double exposure compounds.
 - **CHIPS-Act 50.1% IFS ownership rule** prevents the optimal capital structure response to extended foundry losses. Cannot pure-play spin to remove margin drag; cannot fully monetize the foundry asset; the implicit-put becomes a structural ceiling rather than a floor.
 - **Lip-Bu Tan strategic credibility erodes if 18A yield + IFS customer wins miss in 2026.** Customer flight from IFS as visible balance-sheet stress signals capital constraint; Microsoft / AWS hedge back to TSMC for Maia 3 / next-gen AI Fabric; Tesla pulls back from 14A commitment.
 - **Multiple compression scenario**: AT 30x forward earnings on $1.50 EPS (no Coral Rapids recovery, foundry loss extending), share price = $45 — ~45% downside from current. 24/7 Wall St. bear case framing of "$60–80B market cap" implies $12–16/share — 80%+ downside in extreme execution-failure scenario.
-- **Triggering event window**: Q4 2026 yield disclosure + 14A external customer commitments by H1 2027 are the binary tests. Failure on either compresses the multiple sharply.
+- **Paisner shareholder lawsuit (filed March 2025) succeeds in voiding the USG 10% stake** on fiduciary-breach grounds tied to Trump's August 7, 2025 demand for Tan's resignation. Removes the structural floor and forces the equity buyer set to re-underwrite Intel as a foundry-execution bet rather than a sovereign-backed entity. Remote but discrete legal-overhang risk; Bloomberg Law tracking ongoing.
+- **Triggering event window**: Q4 2026 yield disclosure + 14A external customer commitments by H1 2027 are the binary tests. The Apollo Fab 34 buyback ($14.2B announced April 1, 2026, funded with cash + ~$6.5B new debt) consolidates control of the most advanced EUV-capable fab under Tan's "no blank checks" doctrine but tightens the cash cushion; any combination of a yield miss + IFS customer slip + DCAI deceleration now lands with less balance-sheet runway than the August 2025 starting point.
 
 ## Catalysts
 
 | Date | Catalyst | Direction |
 |---|---|---|
-| **Late July 2026** | Q2 2026 earnings | ±10% on DC + IFS execution |
+| ~~**April 1, 2026**~~ | ~~Fab 34 Apollo 49% buyback close ($14.2B; cash + $6.5B new debt)~~ → Resolved 2026-04-01: closed; consolidates EUV-fab control but reduces cash cushion | resolved |
+| ~~**Q4 2025**~~ | ~~AMD EPYC server share — Mercury Q4 2025: crosses 40% revenue~~ → Resolved 2026-02 (Mercury data): 28.8% units / 41.3% revenue, first quarter ever above 40% with 12.5-pt unit-vs-revenue quality gap | bear validated |
+| ~~**May 8, 2026**~~ | ~~Apple preliminary multi-year 14A deal (WSJ)~~ → Resolved 2026-05-08: +14% single-day rally; products/volumes undisclosed | bull validated, scale TBD |
+| **Mid-2026** | **18A yield cost-target landing 2 quarters ahead of plan** (per CFO Zinsner Q1 2026) | + on credibility; binary test |
+| **Late July 2026** | Q2 2026 earnings — consensus $13.06B rev / $0.06 EPS vs guide $13.8–14.8B / $0.20 | ±10% on DC + IFS execution |
+| **H2 2026** | EMIB-T launches (120×180mm 24-HBM-stack packaging at $1B+ per customer revenue trajectory) | + on EMIB external $1B+ per customer materializing |
 | **Q3 2026** | Jaguar Shores launch (AI accelerator rack-scale) | + on shipping; - on delay |
-| **Q3 2026** | Clearwater Forest (Xeon 6+ E-core) commercial availability | + on competitive Vs AMD Bergamo |
-| **Late Oct 2026** | Q3 2026 earnings + 18A yield commentary | Critical proof point |
+| **Q3 2026** | Clearwater Forest (Xeon 6+ E-core) commercial availability | + on competitive vs AMD Bergamo |
+| **Late Oct 2026** | Q3 2026 earnings + 18A yield commentary (full-yield disclosure window) | Critical proof point |
 | **H2 2026** | Google IFS commitment confirmation | + on validation; quiet on absence |
 | **Late Jan 2027** | Q4 2026 earnings + 18A yield disclosure for FY2026 | Binary credibility test |
 | **H1 2027** | Lip-Bu Tan 14A external customer firm decision (per Tan) | Binary 14A continuation test |
-| **Mid-2027** | Diamond Rapids commercial launch + agentic-AI benchmarks | - if SMT-removal disadvantage validated; + if compensating architecture works |
-| **2027** | Coral Rapids architectural disclosure (SMT restoration) | + on credibility; - on slip beyond 2028 |
-| **2028** | 14A HVM + Tesla "Terafab" launch | Major IFS scale event |
+| **Mid-2027** | **Diamond Rapids commercial launch (slipped from 2026 per Jaykihn leak Apr 2026)** + agentic-AI benchmarks | - on slip already realized; further slip is bear-confirming |
+| **Mid-2028** | **Coral Rapids — first competitive SMT-restored P-core Xeon** (slipped from 2027) | + on credibility; - on further slip beyond 2028 |
+| **2028+** | 14A HVM + Tesla "Terafab" launch (volume 2029); Microsoft Maia 3 ("Griffin") on 18A-P | Major IFS scale event |
+| **TBD** | Paisner shareholder lawsuit progression (filed March 2025; seeks to void USG 10% stake) | - on adverse outcome (removes structural floor) |
 | **Ongoing** | US-China tariff regime + Taiwan tail | + on geopolitical premium for US-domiciled IDM |
-| **Ongoing** | Mobileye + Altera further divestitures | + on cash; - on capital-constraint signaling |
-| **Ongoing** | AMD EPYC server share trajectory | - if crosses 50% in 2026; - if crosses 60% in 2027 |
+| **Ongoing** | Mobileye + Altera further divestitures (~$12B Mobileye / ~$4B Altera 49% residual still monetizable) | + on cash; - on capital-constraint signaling |
+| **Ongoing** | AMD EPYC server share trajectory — **41.3% Q4 2025 confirmed** | - if crosses 50% in any quarter through 2026 (now a 2026 base case, not tail) |
 
 ## Risks
 
@@ -278,11 +303,11 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 ## Conviction Triggers
 
-- **→ HIGH if**: Q3 2026 earnings disclose 18A yield ≥75% AND Microsoft Maia 2 commercial launch on 18A confirmed AND Q1 2027 14A external customer roster expands beyond Tesla (any of Apple, Nvidia, Google formally committing) — *all three* required, not any.
+- **→ HIGH if**: **Mid-2026 (Q2 earnings) discloses 18A yield cost-target hit per CFO Zinsner guide** (yield ≥75% confirmed) AND Microsoft Maia 2 commercial launch on 18A confirmed AND Q1 2027 14A external customer roster expands beyond Tesla (any of Apple Pro/Max/Ultra, Nvidia primary GPU dies, or Google formally committing) AND external Foundry quarterly revenue exceeds $500M wafer + $500M packaging — *all four* required, not any. The Apple preliminary multi-year deal (WSJ May 8, 2026) is preliminary; HIGH conviction requires firm volume + node confirmation, not the announcement itself.
 
-- **→ LOW if**: Q4 2026 earnings disclose 18A yield <70% by end-2026 OR Microsoft / AWS reduces 18A wafer commitments OR AMD EPYC server share crosses 50% in any quarter through 2026.
+- **→ LOW if**: Q4 2026 earnings disclose 18A yield <70% by end-2026 OR Microsoft / AWS reduces 18A wafer commitments OR **AMD EPYC server share crosses 50% in any quarter through 2026 (now a 2026 base case given 41.3% Q4 2025 print, not a tail outcome)** OR external Foundry revenue stalls below $200M/qtr (vs $174M Q1 2026 trajectory).
 
-- **→ CLOSE if**: 14A development is publicly slowed or cancelled by H1 2027 (per Lip-Bu Tan's own conditional framing) OR Coral Rapids architectural disclosure slips beyond 2028 OR IFS Q4 2026 quarterly loss exceeds $3B (margin deterioration despite revenue scaling).
+- **→ CLOSE if**: 14A development is publicly slowed or cancelled by H1 2027 (per Lip-Bu Tan's own conditional framing) OR Coral Rapids architectural disclosure slips beyond 2028 OR IFS Q4 2026 quarterly loss exceeds $3B (margin deterioration despite revenue scaling) OR Paisner shareholder lawsuit succeeds in voiding the USG 10% stake (removes structural floor).
 
 ## Related Research
 
@@ -298,6 +323,7 @@ The structural conflict (IDM running merchant foundry while competing with found
 - [[Sectors/Semiconductor Capital Equipment]] — High-NA EUV + advanced packaging capex exposure
 - [[Theses/BESI - BE Semiconductor Industries]] — hybrid bonding for Intel Foveros advanced packaging
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex demand cycle is the demand pillar for both Intel DCAI CPU revenue + IFS external customer commits
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]] — institutional bull/bear synthesis post-Apple 14A rally: Q1 2026 beat detail, 18A 2 quarters ahead, EMIB cost arbitrage ($900–1,000 CoWoS Rubin vs "low hundreds" EMIB), Diamond Rapids slip to mid-2027, AMD 41.3% Q4 2025 server share, SOTP $43–73 vs $109 current, Paisner USG-stake lawsuit overhang
 - [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Vik Sekar 9-metric framework scoring Diamond Rapids 3/3 vs Venice Dense 5/5 (action) vs Vera 5/2 (reasoning); SMT-removal regression validation
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — CPUs "completely sold out" via RL environments + AI-generated code deployment; volume tailwind for x86 CPU TAM
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan tail risk quantified at -85–95% permanent impairment under invasion; Intel's geopolitical opportunity (only US-domiciled leading-edge IDM)
@@ -317,3 +343,12 @@ The structural conflict (IDM running merchant foundry while competing with found
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 3:1:1 research:pre-train:post-train allocation favors flexible/general-purpose compute (NVIDIA H200/B200/Rubin) over fixed-function inference silicon — neutral-to-negative for Intel's Gaudi inference positioning; reinforces structural-second-source framing of x86 server CPU thesis. Conviction unchanged.
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Hyperscaler custom-silicon (TPU 8T 9,600 chips, 8I 1,152 chips) outscaling Intel's Gaudi/inference roadmap; "agentic chip design" co-design tightening between Broadcom and Google further forecloses Intel-as-fab+design path. Reinforces Bear Case driver. Conviction unchanged.
+
+### 2026-05-12 (/sync)
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Q1 2026 sixth-consecutive-beat ($13.58B rev, $0.29 non-GAAP EPS +123% YoY, $(0.73) GAAP on $4.07B Mobileye impairment), 18A "**two quarters ahead of plan**" cost-target landing mid-2026 (CFO Zinsner), EMIB cost arbitrage ($900–1,000 CoWoS Rubin vs "low hundreds" EMIB), Diamond Rapids slipped 2026 → mid-2027 (Jaykihn Apr 2026), AMD EPYC **41.3% Q4 2025 / 28.8% units** (Mercury — first quarter >40%), Apple preliminary 14A deal (WSJ May 8, +14% rally), Fab 34 Apollo $14.2B buyback closed Apr 1, Paisner shareholder lawsuit seeking to void USG 10% stake. Sell-side consensus $66 vs $109 share / $585–628B market cap / 117x forward; SOTP $43–73 illustrates 35–60% downside if synergy premium fails. Conviction **unchanged at medium** — Q1 beat + 18A 2-qtrs-ahead are structural credibility positives, offset by Diamond Rapids slip + AMD 41.3% Q4 2025 compounding the x86 server share-loss into 2026 base case and EMIB cost-arbitrage as material new IFS upside lever. Updated Summary, Bear Case, Catalysts, Conviction Triggers, Key Metrics, Outstanding Questions Q6, Industry Context, Business Model DCAI/OEM-channel, Bull Case bullet 1.
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition + new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. INTC listed under §Adjacent exposure: Intel Foundry / CPUs are downstream consumers of any power architecture (Xeon 6 is the host CPU for Vera Rubin NVL72 per the Sept 2025 Nvidia/Intel collaboration); lower direct exposure than power-electronics or capital-equipment names. The macro's 800VDC adoption forecast does not materially change INTC's foundry-recovery or DCAI volume trajectory — the bottleneck cascade puts the binding constraints upstream (transformer/SST supply) and downstream (VPD modules), not at the silicon-host-CPU layer Intel competes in. Conviction unchanged at medium — neutral signal; macro is informational for understanding the rack-power context that Xeon 6 host CPUs ship into.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

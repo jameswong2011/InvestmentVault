@@ -2,7 +2,7 @@
 date: 2026-04-15
 tags: [thesis, iqe, semiconductors, photonics, compound-semiconductor, III-V, special-situation]
 status: active
-conviction: low
+conviction: high
 sector: Optical Networking & Photonics
 ticker: IQE
 source: Multi-source synthesis (Claude, ChatGPT, Gemini, Grok conversations; web research April 2026)
@@ -210,3 +210,6 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 ### 2026-04-22
 - Sector re-scoped: Semiconductors & Photonics → Optical Networking & Photonics (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Replaced stale `[[Sectors/Semiconductors]]` (archived parent) with `[[Sectors/Optical Networking & Photonics]]` in Related Research following sector-note population.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction low→high.

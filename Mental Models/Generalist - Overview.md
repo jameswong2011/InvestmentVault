@@ -1,0 +1,41 @@
+## A. Valuation, Extrapolation & Market Dynamics
+
+#1 - Duration mispricing, irrational extrapolation of near term dynamics, overreliance on DCFs and quantitative tools. The hardest meta-question in every position is whether mean reversion or trend continuation applies — misapplying mean reversion to compounders is the single most expensive equity research mistake (selling [[META - Meta]] in 2013, [[NVDA - Nvidia]] in 2017); misapplying trend continuation to cyclicals is the second (chasing [[SNDK - SanDisk]] at memory cycle peaks). The disciplined inversion is endgame / reverse DCF — rather than forecast forward, ask what the business must look like in 10 years to justify today's price, then evaluate whether that endgame is plausible. Reflexivity compounds the mispricing in high-growth equities: rising stock prices lower cost of capital, fund M&A, and attract talent via stock comp, so price feeds back into the fundamentals it is meant to discount, making traditional DCFs most wrong precisely when most needed (acutely visible in [[PLTR - Palantir]], [[APP - AppLovin]], [[CRWV - CoreWeave]]).
+
+#2 - Complexity and emergence, dynamical systems converge and dissolve on unpredictable time horizons based on many economic schelling points which are then compounded by investor heuristics driving extreme flows in valuation despite little change in fundamental economic flows at the revenue / GMV level
+
+## B. Market Cycles & Technology Adoption
+
+#3 - Carlota Perez and financial bubbles
+
+#4 - S-curves and technology diffusion. The underlying physical adoption curve that Perez bubbles (#3) oscillate around: invisible R&D, early adopters, chasm, mainstream, saturation. Investors consistently misread where on the curve they sit — extrapolating early-adopter growth as if it represented saturation behavior, or declaring saturation when an enabling technology has actually shifted the asymptote upward. The skill is dating where on the curve you are: pre-chasm (binary outcome distribution, high failure risk), mid-chasm (S-curve secured but timing uncertain — the highest-edge zone for long-term capital), and late mainstream (peak earnings, falling growth, mean-reversion regime). Direct application across AI compute ([[NVDA - Nvidia]], [[AMD - Advanced Micro Devices]]), surgical robotics ([[ISRG - Intuitive Surgical]]), consumer telehealth ([[HIMS - Hims & Hers Health]]), and consumer edtech ([[DUOL - Duolingo]]).
+
+## C. Business Quality, Moats & Corporate Analysis
+
+#5 - Underappreciation for corporate quality, culture, biocybernetic nature of corporate decision making. Myth of comparable companies valuation framework
+
+#6 - Corporate level consolidation and the path towards the cyberpunk conglomerate megacorporation
+
+#7 - 101 on corporate politics and power structure, comparison of a young vs. old firm (related to #5)
+
+#8 - Pricing power, competition and software-like monopoly businesses. Low incremental cost to serve, capex (software development + sales) determines investment, extremely high switching cost, often a new product category so there are no historical sets of incumbents that lead to a market having multiple competitors. Extremely high barriers to entry both in customer acquisition and software development (less so nowadays). Leads to often monopoly or oligopoly dynamics where there is effectively close to infinite pricing power and ROIC. Investment profile generally leads to winner take all dynamics. The defensibility itself comes from distinguishable network effect types, each with different durability: direct (each user makes the network more valuable to other users — social, comms), indirect / two-sided (marketplaces, OS — more buyers attract more sellers), data network effects (utility genuinely increases in data scale — search, ad targeting), scale economies (often mislabeled as networks), and tribal / social-capital effects. Direct networks succumb to bundling (Slack → Teams). Two-sided marketplaces succumb to disintermediation (Airbnb host loyalty). Most claimed 'data network effects' do not actually qualify — the data utility must be genuinely increasing in scale, which holds for [[META - Meta]] ad targeting and Google search but not for most enterprise SaaS. Useful for diagnosing what actually defends [[UBER - Uber]], [[META - Meta]], [[PINS - Pinterest]], [[SHOP - Shopify]], [[SPOT - Spotify]].
+
+## D. Capital Allocation & Returns on Capital
+
+#9 - ROIC is the most important important variable. How to estimate it on a going forward basis -> Return on incremental invested capital vs. incremental capital deployed. Measurement tells you what happened; capital allocation analysis tells you what will happen. 
+
+The CEO's real job — and the one most CEOs are untrained for, having been promoted from operating roles — is choosing the mix across five levers: organic reinvestment, M&A, dividends, buybacks, debt paydown. The optimal mix is price-dependent (buy back below intrinsic value, issue above). Identifying outlier capital allocators (Singleton, Malone, Leonard) is one of the few durable sources of alpha because they compound differently from the index. Candidates for capital allocation deep-dives in the portfolio: [[META - Meta]] capex vs. buybacks, [[NFLX - Netflix]] content vs. buybacks, [[RELIANCE - Reliance Industries]] segment reinvestment.
+
+#10 - The mining framework for corporations, existing mine + pipeline of new mines (capex of new mines x return profile x certainty). Unlike a mining company the pipeline of new mines are internal and company specific (vs. mining companies where its all you can bid). The key delta for long term investor is investing in companies with a good pipeline of new mines when they are not being priced, or priced at negative value.
+
+## E. Portfolio Construction & Decision Math
+
+#11 - Losses take more % gain to recover the deeper it is. Also the marginal utility of an incremental extra dollar massively underweights the marginal cost of a decremental dollar lost, especially for big losses. This is the main motivation for wanting to reduce portfolio volatility. The utility function of an extra volatility unit reduced is positive initially (as this is a requirement for earning gains above RFR) until perhaps 10-15%, then trends exponentially from 25% onwards. This tells you the optimal point of portfolio volatility. Within that volatility budget, public market returns are power-law / lognormal distributed rather than normal — over a decade, 2-3 names in a 30-stock book typically drive >70% of returns — so Markowitz-style mean-variance optimization systematically underweights the asymmetric upside cases. Kelly criterion (adjusted for uncertainty about edge magnitude) argues for larger concentration on highest-conviction names than typical institutional practice. The barbell resolves the apparent tension between vol reduction and concentration: 80-90% of book in highly resilient compounders, 10-20% in downside-bounded convex bets where the loss is capped at position size but the upside is multiples (Taleb's antifragility).
+
+## F. Market Structure & Alpha Sources
+
+#12 - Context graph and AI
+
+#13 - Perverse incentive structures for professional managers. Antimatching cyclicality for investment opportunity and capital inflows. Single CIO needing to make decisions on positions of multiple PMs / sector heads. Status games and management by 'rank' by PMs/sector heads and analysts who actually has access to front line information. *Turn into - a first principles redesign of hedge fund structure*
+
+#14 - The case for a long term investment framework is more relevant than ever. Quant and systematic trading strategies have wrung out all alpha in ultra short term (<1 months) and short to medium term (1-6 months) remains the competitive sweet spot for traditional L/S hedge funds. I do not believe it to be possible to consistently 'make money' in the traditional sense in these markets unless you're a successful multibillion dollar fund - they're where things have gotten the most competitive. Given concentration of trading volume in shorter term strategies, the markets capacity to assign value to longer term (3-5+ year) datapoints is weaker than ever.

@@ -1,7 +1,7 @@
 ---
 date: 2026-04-14
 tags: [thesis, DE, agriculture, industrials, precision-ag, autonomy, platform]
-status: active
+status: monitoring
 conviction: medium
 ticker: DE
 sector: Agriculture & Industrial Equipment
@@ -185,3 +185,6 @@ Equipment financing, operating leases, revolving credit, and crop insurance for 
 ### 2026-04-22
 - Sector re-scoped: Agriculture & Industrial Equipment → Agricultural Equipment & Precision Ag (vault-wide subsector taxonomy reorganization).
 - Sector revert: Agricultural Equipment & Precision Ag → Agriculture & Industrial Equipment (user reverted subsector split).
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

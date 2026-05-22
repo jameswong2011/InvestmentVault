@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, nflx, consumer-digital, streaming]
-status: active
+status: monitoring
 conviction: medium
 sector: Video Streaming
 ticker: NFLX
@@ -253,3 +253,6 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: Andreessen frames streaming as "anti-fragmentation" content moat — durable narrative IP (NFLX original slate) wins as social-media outrage cycles atomize attention. Conviction unchanged — qualitative reinforcement of streaming-hegemony Bull Case.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

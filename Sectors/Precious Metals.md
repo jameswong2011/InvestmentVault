@@ -303,7 +303,7 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 
 - [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] — Digital-gold comparison; BTC stock-to-flow ~120 vs gold ~60; tokenized gold (PAXG/XAUT) as RWA bridge
 - [[Macro & Technology/Iran War Trading Playbook]] — Gold's counterintuitive $5,595 → $4,400 selloff (deepest wartime gold decline in BullionVault's 50-year dataset); 1970s stagflation analog; Fed pivot as gold catalyst; GDX listed as Position #9 leveraged crisis play; precious metals within broader 7-tier commodity hierarchy
-- [[@Uranium & Nuclear Fuel]] — Parallel "monetary metal" narrative: sanction-resistant, scarcity-driven, geopolitical reserve asset
+- [[Uranium & Nuclear Fuel]] — Parallel "monetary metal" narrative: sanction-resistant, scarcity-driven, geopolitical reserve asset
 - [[@LNG & Natural Gas Infrastructure]] — Energy-driven inflation transmission into gold via Fed reaction function
 - [[@Product Tankers & Maritime Shipping]] — Shared Iran-crisis / stagflation regime exposure; parallel logistics-constrained market structure
 - [[Compute & AI Compute Accelerators]] — Data-center buildout driving silver industrial demand via solar PV (indirect) and electronics (direct)

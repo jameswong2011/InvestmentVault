@@ -1,7 +1,7 @@
 ---
 date: 2026-04-29
 tags: [thesis, semiconductors, FORM, semicap, test-equipment, probe-cards]
-status: draft
+status: monitoring
 conviction: medium
 sector: Semiconductor Capital Equipment
 ticker: FORM
@@ -179,3 +179,6 @@ Q1 2026 (today's earnings) prints in-line, not blow-out — HBM4 ramp guidance i
 ### 2026-04-29
 - Initial thesis created. Conviction: medium — HBM4 test-intensity inflection is structural but valuation (~130x trailing P/E) and Technoprobe encroachment require Q1 earnings (today 1:25pm PT) confirmation before HIGH.
 - Manual edit: Added [[Sectors/Photonic Metrology]] wikilink and [[Theses/AEHR - Aehr Test Systems]] sister-thesis cross-reference to Related Research. Photonic Metrology sector created same day as a focused sub-cluster of Semiconductor Capital Equipment covering optical wafer-test / burn-in / metrology — FORM and AEHR are the sector's two Photonic Test Pure-Plays. Conviction unchanged.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

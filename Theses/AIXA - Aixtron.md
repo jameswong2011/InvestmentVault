@@ -1,8 +1,8 @@
 ---
 date: 2026-04-29
 tags: [thesis, semiconductors, AIXA, MOCVD, photonics]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: Semiconductor Capital Equipment
 ticker: AIXA
 source: https://www.aixtron.com/en/investors
@@ -72,7 +72,7 @@ The MOCVD equipment industry is structurally a duopoly between Aixtron (Germany)
 
 1. **InP photonics 6-inch transition** (~$300-400M cumulative equipment spend 2026-2028): The InP industry is shifting from 3-4 inch wafers to 6-inch. [[Theses/LITE - Lumentum]] Greensboro is the canonical reference fab; Coherent (Sherman, Allen TX), Nokia (Espoo), SMART Photonics (Eindhoven), II-VI Saxony, and IQE epi-foundry are all building or expanding 6-inch InP capacity. This wave is concentrated 2026-2028 with capacity feeding 2028-2030 photonics revenue.
 
-2. **Data-center 800V power** (~$200-300M cumulative 2026-2028): NVIDIA's 800V transition is the dominant demand pull, but the broader migration of AI rack power architectures from 48V/54V to 400V/800V layers ~2-3x GaN-on-Si epi requirement on top of consumer/auto demand. Tier-1 power management chip makers (Vicor, Delta Electronics, Innoscience, Navitas) are the indirect customer base; their fab partners (TSMC, GlobalFoundries 200mm, Innoscience captive) are the direct equipment buyers.
+2. **Data-center 800V power** (~$200-300M cumulative 2026-2028): NVIDIA's 800V transition is the dominant demand pull, but the broader migration of AI rack power architectures from 48V/54V to 400V/800V layers ~2-3x GaN-on-Si epi requirement on top of consumer/auto demand. Tier-1 power management chip makers (Vicor, Delta Electronics, Innoscience, Navitas) are the indirect customer base; their fab partners (TSMC, GlobalFoundries 200mm, Innoscience captive) are the direct equipment buyers. The full six-layer value chain (grid/MV → SST → DC distribution → wide-bandgap silicon → VPD → passives) and adoption forecast (10-15% of new AI racks at 800VDC by 2027, 65-75% by 2032) is mapped in [[Macro & Technology/800VDC Adoption]] — AIXA's GaN-on-Si epi-tools sit at the wide-bandgap-silicon layer, which is the only layer where capacity-cycle lead times (12-18 months) exceed the 800VDC ramp window, making epi-tool order pull a leading indicator of mid-2027 rack-volume realization.
 
 3. **SiC power normalization + India/Eastern Europe buildout** (~$300-400M cumulative 2026-2028): SiC is past peak hype but normalized at meaningful baseline — Wolfspeed restructuring, ROHM's India $700M fab, ON Semi Czech expansion, plus Chinese internal SiC capacity all drive 200mm SiC MOCVD tool demand at lower growth but durable absolute levels.
 
@@ -181,7 +181,7 @@ Base bull case (12-18 month horizon, 40-60% upside):
 
 **Multiple re-rating from semis-equipment to photonics-equipment band**: Current ~32x forward P/E reflects SiC/GaN power equipment cycle mid-multiple. As InP/photonics revenue exceeds 50% of mix and demonstrates durable order book through 2027-2028, the comp set shifts from VECO (~22x) to ASMI (~32x) toward BESI (~38x). Re-rating to 40x forward P/E on revised €4.50 FY2027 EPS (vs current ~€3.20 consensus) implies ~€180/share — well above current ~€21. (Note: AIXA has had a significant rally; absolute share-price targets here are illustrative of multiple expansion logic, not point estimates.)
 
-**Second leg materializes — 800V data-center GaN orders land in 2H 2026**: NVIDIA 800V transition order signaling lands at GTC 2026 or fall 2026 supplier earnings, AIXA captures GaN-on-Si epi capacity orders for 2027-2028 NVIDIA Rubin/Rubin-Ultra rack shipments. Adds €100-200M cumulative incremental order book over 2H 2026 - 1H 2027, providing a second independent revenue S-curve through 2028.
+**Second leg materializes — 800V data-center GaN orders land in 2H 2026**: NVIDIA 800V transition order signaling lands at GTC 2026 or fall 2026 supplier earnings, AIXA captures GaN-on-Si epi capacity orders for 2027-2028 NVIDIA Rubin/Rubin-Ultra rack shipments. Adds €100-200M cumulative incremental order book over 2H 2026 - 1H 2027, providing a second independent revenue S-curve through 2028. Adoption-curve framework anchoring this second leg in [[Macro & Technology/800VDC Adoption]] (base case: 10-15% of new AI racks at 800VDC by 2027 → 65-75% by 2032) — at the early-adopter inflection point, GaN-on-Si epi capacity becomes the binding constraint because OCP Mt. Diablo sidecar adoption (Meta/Google co-authored) parallels NVIDIA's Kyber spec, doubling the demand surface across both 800VDC paths.
 
 **Stretch bull (Kerrisdale-style)**: G10-AsP 6-inch InP monopoly persists through 2028 with no credible Veeco competitive product, NVIDIA 800V layers on as 2027-2028 second leg, FY2029 revenue reaches €1.4B with EBIT margins expanding to 25-30% on operating leverage. EPS €2 in 2028, €3+ in 2029. At a 35-40x multiple on €3 EPS, share price ~€110-120. This is the Kerrisdale Capital scenario; achievement requires multiple non-trivial conditions to hold, but each individually has plausible mechanism support.
 
@@ -378,3 +378,9 @@ Sector and macro context:
 
 ### 2026-04-30
 - Addressed user callouts: 3 callouts addressed — (1) MOCVD physics + InP specialization + competitive comparison + 6-layer moat assessment added to §Industry Context (callout pinned, retained in-place); (2) Reference comparables table reformatted in §Key Metrics with Kerrisdale Nov-2025 comparable set (16 rows, grouped by Large-cap WFE / Small-cap WFE / Direct customers with median rows); (3) Kerrisdale Capital Nov-2025 long thesis sourced from kerrisdalecap.com PDF and summarised exhaustively in §Bull Case (3 pillars, full 2029 segment model, margin trajectory tables, two valuation methodologies yielding 271-322% upside / €55 avg fair value). Conviction unchanged — content scope-fill rather than thesis economics shift; Kerrisdale's view aligns with current Bull Case framework but adds substantial third-party quantitative support and surfaces specific data points (Veeco Q4-2024 €28M Epiluvac impairment, Veeco VP Tech interview quotes on planetary moat, customer enumeration across power semis/lasers/LEDs, Innoscience 70k wafers/month target by 2027, STMicro Catania €750M+ MOCVD opportunity).
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note created 2026-05-18 + enhanced 2026-05-19 with two new financial columns (AI-DC Rev/OP exposure %, ROIC/EV-EBIT LTM) across all six Layer tables in §Value chain map and named beneficiaries. AIXA is listed at Layer 6 (Passives, magnetics, substrates, tools) with ~35% / ~45% AI-DC Rev/OP and ~12% / ~20x ROIC / EV-EBIT — anchored as the MOCVD duopoly (with Veeco) gating SiC/GaN epi capacity for the 800VDC ramp. Quantitative anchor for §Industry Context "Industry → 2. Data-center 800V power" subsection where AIXA's GaN-on-Si epi-tools sit at the wide-bandgap-silicon layer, the only chain layer where capacity-cycle lead times (12-18 months) exceed the 800VDC ramp window — making epi-tool order pull a leading indicator of mid-2027 rack-volume realization. Conviction unchanged at medium — strengthens existing second-leg (NVIDIA 800V) Bull Case pillar without resolving Q1 2026 operating-deleverage execution risk or Veeco 6-inch InP competitive timeline.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

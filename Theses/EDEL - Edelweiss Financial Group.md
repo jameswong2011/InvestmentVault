@@ -1,7 +1,7 @@
 ---
 date: 2026-04-14
 tags: [thesis, EDEL, financial-services, india, alternatives, private-credit]
-status: active
+status: monitoring
 conviction: medium
 sector: Indian Financial Services
 ticker: EDEL
@@ -35,6 +35,7 @@ source: Consolidated from Claude, ChatGPT, Gemini conversation exports; ICRA Dec
 5. **360 ONE competitive convergence**: With 360 ONE scaling AIF AUM to ₹50,934 crore through acquisitions (UBS India, Batlivala & Karani) and gaining global LP relationships, how defensible is EAAA's GP position in 2-3 years?
 6. **Vulnerable portfolio resolution**: What's the expected timeline and recovery profile for the remaining ₹6,174 crore in stressed wholesale exposures? Are there downside scenarios where residual losses exceed provisions?
 7. **Insurance path to profitability**: Management targets breakeven by FY27. General insurance GWP is growing at +47% YoY but the combined ratio and investment income trajectory are unclear. When does insurance shift from drag to contributor?
+8. **US BDC redemption-gating contagion to Indian PC fundraising**: With Golub Capital joining Blue Owl, BlackRock peers gating non-traded BDCs (8.5–41% redemption requests across major sponsors; BlackRock TCPC 19% Q1 NAV cut + 7.6% non-accrual + ~33% software-loan markdown share), does LP rotation away from impaired US private credit accelerate Indian PC inflows (bullish: EAAA's CDPQ-anchored institutional LP base captures incremental allocation at 14–18% gross IRR vs gated US distributions) or compress overall PC allocation as 60/40 rebalancers raise cash from PC sleeves (bearish: EAAA's $843M YTD pace decelerates 2026–27)? EAAA Q1 FY26 LP-flow geography is the falsifying datapoint.
 
 ## Business Model & Product Description
 
@@ -154,12 +155,14 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 4. **Competitive erosion in alternatives**: 360 ONE's acquisitive scaling, banks entering alternatives distribution, and global managers (Blackstone, KKR) expanding in India could erode EAAA's niche advantages over time.
 5. **Key person risk**: Rashesh Shah's strategic vision — the "incubate-scale-monetize" model, the alternatives pivot, the deliberate complexity — is deeply personal. His departure or loss of board support would fundamentally alter the thesis.
 6. **India macro and regulatory risk**: NBFC liquidity conditions, RBI policy changes, SEBI regulatory shifts, and INR depreciation introduce country-level risks that are difficult to hedge from outside India.
+7. **Global private-credit allocation compression risk**: The May 2026 universal US BDC redemption-gating wave (Golub Capital, Blue Owl OTIC/OCIC, BlackRock TCPC 19% NAV cut + 7.6% non-accrual) signals fragile LP confidence in private credit globally. If LPs cut overall PC allocation in 60/40 rebalances rather than rotating geographically, EAAA's $843M YTD fundraising pace and 14–18% gross IRR positioning loses force regardless of relative-attractiveness arguments — bullish "rotation to India" channel and bearish "global compression" channel are not yet distinguishable from public datapoints. Q1 FY26 EAAA LP-flow geography is the immediate falsifying signal.
 
 ## Related Research
 
 - [[Research/2025-12-26 - EDEL - Edelweiss Financial Group Market Share]] — Detailed market share analysis across segments (MF, alternatives, ARC, lending) with competitive positioning and ICRA credit commentary
 - [[Research/2026-04-02 - Israel India Relations Analysis]] — India-Israel Special Strategic Partnership (Feb 2026) + defence MoU + $3.75B bilateral trade — context for India's diplomatic/defence alignment as EAAA institutional-LP environment; CDPQ $1.3B + Israeli sovereign capital as potential future LP expansion vector
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: ground war threatens EAAA IPO timing; India NBFC funding costs spike; platform-factory catalyst exposed
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Universal US BDC redemption gating (Golub 8.5%, Blue Owl 41%/22%, TCPC 19% NAV cut); challenges Investor Heuristic "Private credit AIF is the new fixed income"; bullish (LP rotation to India PC at 14–18% IRR) vs bearish (global PC allocation compression) channels both unresolved
 - [[@Indian Financial Services]]
 
 ## Log
@@ -186,3 +189,9 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 
 ### 2026-04-23 (scenario propagation)
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: negative via India NBFC funding-cost spike + FII outflows + EAAA IPO re-filing timing directly threatened — conviction weakened: primary value-crystallization catalyst (EAAA IPO) exposed to Indian IPO market closure during kinetic-conflict window; USD-denominated global-LP base provides only partial insulation.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]]: Universal US BDC redemption gating (Golub joins Blue Owl, BlackRock peers; 8.5–41% redemption requests; TCPC 19% NAV cut + 7.6% non-accrual + ~33% software-loan markdown share) raises bullish (LP rotation to India PC at 14–18% IRR) vs bearish (global PC allocation compression) channels for EAAA fundraising trajectory; new Outstanding Question #8 + Risks bullet #7 added — conviction unchanged pending Q1 FY26 EAAA LP-flow geography. Snapshot: [[_Archive/Snapshots/EDEL - Edelweiss Financial Group (pre-sync 2026-05-11-004358)]].
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.

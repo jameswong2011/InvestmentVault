@@ -238,3 +238,6 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 ### 2026-04-23 (scenario propagation)
 - Scenario [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: positive via sustained Hormuz closure + Ras Laffan repair interference + European restocking; zero Hormuz transit exposure — conviction strengthened: kinetic-conflict ground war extends structural LNG supply gap beyond any previously-modeled scenario; $120B contracted backlog provides floor while spot captures crisis upside.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; status closed→active.

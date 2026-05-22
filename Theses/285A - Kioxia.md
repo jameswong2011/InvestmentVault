@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, semiconductors, NAND, kioxia, memory, AI-storage]
-status: active
+status: monitoring
 conviction: medium
 sector: NAND Memory & Storage
 ticker: 285A.T
@@ -210,3 +210,6 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 1T-parameter dense models proportionally raise NAND demand (KV-cache spillover, checkpoint storage, training-data state); pre-training-not-dead empirical refutation from frontier-lab insider supports through-2028 supply-deficit Bull Case pillar. Conviction unchanged.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

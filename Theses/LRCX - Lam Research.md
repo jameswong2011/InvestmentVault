@@ -1,8 +1,8 @@
 ---
 date: 2026-04-29
 tags: [thesis, semiconductor-capital-equipment, LRCX]
-status: draft
-conviction: medium
+status: active
+conviction: high
 sector: Semiconductor Capital Equipment
 ticker: LRCX
 source: Synthesis of Q3 FY26 print (2026-04-22), 2025 Investor Day, multi-source vault research, primary web research
@@ -87,7 +87,7 @@ The WFE market is a five-vendor oligopoly with a non-overlapping product structu
 
 1. **GAA transition (FinFET → nanosheet)**: 15-20% etch+dep intensity uplift per wafer, accruing to Lam Akara at sub-3nm.
 2. **NAND scaling to 400-1000 layers**: requires Cryo 3.0 + Mo ALD; Lam is sole production-grade vendor.
-3. **Advanced packaging (HBM4 / 3D-IC / chiplets)**: TSV etch + copper plating + hybrid bonding — Lam captures ~30% of incremental AP WFE.
+3. **Advanced packaging (HBM4 / 3D-IC / chiplets)**: TSV etch + copper plating + hybrid bonding — Lam captures ~30% of incremental AP WFE. HBM4 ramp (Vera Rubin ~70% SK Hynix / ~30% Samsung / 0% Micron initial — see [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]) drives DRAM segment mix from ~14% to ~16% of Lam revenue through CY26-27 on TSV etch + copper plating volume; tighter bump-pitch (sub-10μm) increases etch step count per HBM stack 25-30%.
 4. **High-NA EUV (ASML)**: shrinks pitch but exacerbates resist limitations; opens dry-resist (Aether) opportunity.
 5. **China localization**: NAURA + AMEC + ACM Research take Lam's mature-node share over CY26-28; ~$1B annualized revenue at risk.
 
@@ -112,7 +112,7 @@ The WFE market is a five-vendor oligopoly with a non-overlapping product structu
 Lam achieves the 2028 IDay targets ($25-27B revenue / 50% GM / 34-35% OM / $6-7 EPS) ahead of schedule. Drivers:
 
 - **GAA Akara compounds**: TSM N2 + Samsung SF2 + Intel 18A all ramp to >50% utilization by CY27, contributing $2-3B incremental annual revenue.
-- **Aether wins second + third TOR customers (TSMC for high-NA, Micron for HBM4) by mid-2027**, driving dry-resist category to $1.5-2B annual run-rate and capturing 100-150bps of WFE category share from TEL.
+- **Aether wins second + third TOR customers (TSMC for high-NA, Micron for HBM4) by mid-2027**, driving dry-resist category to $1.5-2B annual run-rate and capturing 100-150bps of WFE category share from TEL. SK Hynix Aether TOR confirmed in HBM4 production stack per [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — first-customer revenue compound validates dry-resist category economics ahead of TSMC/Micron expansion.
 - **NAND restart hits hard in mid-2026**: 400-layer ramps at SK Hynix + Samsung + Micron with Cryo 3.0 + ALTUS Halo Mo, driving Memory revenue from ~$2B/quarter (Q3 FY26) to $3.5-4B/quarter at peak.
 - **AP +40% guide tracks ahead**: CY26 AP revenue $5-6B, CY27 $7-8B; SABRE 3D extends share to 80%+ on chiplets/3D-IC packaging at TSMC, Samsung, Intel.
 - **CSBG durability through downturn**: service revenue holds 37-41% of total even in 2026 if memory soft, validating annuity narrative; multiple compresses less.
@@ -189,6 +189,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Theses/KLA - KLA Corporation.md]] — process control counterparty in WFE oligopoly; comparable structural positioning at higher ROIC
 - [[Theses/BESI - BE Semiconductor Industries.md]] — hybrid bonding partner/competitor; AMAT-BESI Kinex affects Lam CBA NAND positioning
 - [[Theses/SEMICAP - Semiconductor Capital Equipment.md]] — sector-aggregate basket peer
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial; Aether confirmed at SK Hynix HBM4 production stack; JEDEC 720→775→900µm relaxation extends MR-MUF runway (Lam SABRE 3D + TSV etch ramp continues independent of hybrid-bonding mandate timing); DRAM mix shift 14→16% on HBM4 etch step-count increase
 - [[Theses/NVDA - Nvidia.md]] — end-customer demand driver via HBM/AI inference SSD
 - [[Theses/AVGO - Broadcom.md]] — AI infrastructure end-demand
 - [[Theses/SNDK - Sandisk.md]] — NAND end-customer; Cryo 3.0 + ALTUS Halo Mo demand source
@@ -208,3 +209,12 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 ### 2026-04-29
 - Initial thesis created. Conviction: medium — strong 4-vector structural case (Akara sub-3nm ~80% share + Aether dry resist TOR at SK Hynix + Cryo 3.0/Mo ALD NAND restart + AP +40% full-stack) balanced against +86% above 5Y avg P/E, NAND restart timing risk, and China <30% guide execution risk.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: Aether SK Hynix TOR + HBM4 production-stack confirmation validates Bull Case Aether trajectory; DRAM mix 14→16% on HBM4 etch-step-count increase added to Industry Context structural-force #3; Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron allocation locks Lam Memory exposure to SK Hynix-led HBM4 ramp. JEDEC 720→775→900µm relaxation extends MR-MUF runway — neutral-to-positive for Lam (SABRE 3D copper plating + TSV etch continue ramping independent of hybrid-bonding mandate timing, since LRCX shares are tied to per-wafer etch step count not bonding architecture). Conviction directionally strengthened on Aether commercial productization risk (Bear pillar #1 weakened); unchanged on cyclical-multiple-compression risks.
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition + new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. LRCX listed under §Adjacent exposure in the semicap cluster: SiC/GaN fab buildout (per Layer 4 wide-bandgap silicon) drives selective-etch + ALD tool orders alongside AMAT (PVD/CMP) and AIXA (MOCVD). Macro's adoption forecast (10-15% of new AI racks 2027 → 65-75% by 2032) anchors mid-decade wide-bandgap capex independent of logic/memory cycles. Adds a wide-bandgap-fab tail to the existing 4-vector framework (Akara GAA + Aether dry resist + Cryo 3.0/ALTUS Halo + AP). Conviction unchanged at medium — indirect but durable demand-floor contribution.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

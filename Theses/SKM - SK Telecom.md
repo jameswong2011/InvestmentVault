@@ -1,7 +1,7 @@
 ---
 date: 2026-04-26
 tags: [thesis, telecommunications-services, SKM]
-status: draft
+status: monitoring
 conviction: medium
 sector: Telecommunications Services
 ticker: SKM
@@ -259,3 +259,6 @@ Specific drivers:
 
 ### 2026-04-26
 - Initial thesis created. Conviction: medium — back-door Anthropic IPO play with deep-value Korean telecom downside protection; asymmetry favors patient capital but USIM tail risk + Anthropic IV uncertainty cap conviction at medium pending May 12 Q1 earnings.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.

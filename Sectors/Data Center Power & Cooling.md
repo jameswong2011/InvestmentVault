@@ -249,6 +249,7 @@ The "AI/NVIDIA-linked vs. traditional enterprise" split for Vertiv FY26E maps to
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]] — OCP DC Power Shelf v3, OAI System Liquid Cooling Guidelines, committee participation and co-authorship with Meta
 - [[Research/2025-07-15 - Data Center Liquid Cooling]] — Industry-wide liquid cooling transition; Vertiv/NVIDIA deployments showing 10-15% PUE improvement; immersion POC at Stellium Newcastle; Microsoft Maia retrofit; ORC waste heat recovery
 - [[Sectors/Modular Power Conversion Components]] — Adjacent sector covering the chip-level layer below (Vicor VPD modules, MPS lateral multiphase, IDM PMIC ecosystem); the architectural fork at ~1,500–2,000A on-board current is the chip-level mirror of the 800VDC transition tracked in §Macro shifts #4 here
+- [[Sectors/MLCC & Power Semiconductors]] — Adjacent sector covering the component layer below — the MLCC (Murata, Samsung Electro-Mechanics, TDK, Taiyo Yuden), SiC discrete (ST, Infineon, Wolfspeed, onsemi, ROHM), GaN HEMT (Infineon, Innoscience, Navitas, POWI), and film/tantalum capacitor specialists whose products are component inputs to Vertiv/Eaton/Schneider UPS and CDU designs; the 800V transition drives ~6-8× SiC MOSFET die count + ~4-5× film capacitor + ~2-3× MLCC content per rack vs Hopper 48V baseline
 
 ## Log
 ### 2026-04-22
@@ -260,3 +261,9 @@ The "AI/NVIDIA-linked vs. traditional enterprise" split for Vertiv FY26E maps to
 
 ### 2026-04-28
 - Manual edit: Added cross-reference to new [[Sectors/Modular Power Conversion Components]] sector in §Related Research — covers the chip-level power module layer (Vicor VPD, MPS lateral, IDM PMIC ecosystem) that sits below this sector's rack/facility scope. No analytical changes to body sections; purely sector-graph navigation enrichment.
+
+### 2026-05-14
+- Manual edit: Added cross-reference to new [[Sectors/MLCC & Power Semiconductors]] sector in §Related Research — covers the component layer below the module layer (MLCC, SiC/GaN discretes, film/tantalum capacitors used as inputs to UPS/CDU/PSU designs at this sector's rack/facility scope). No analytical changes to body sections; purely sector-graph navigation enrichment.
+
+### 2026-05-19 (/sync)
+- Cross-sector propagation from [[Macro & Technology/800VDC Adoption]]: Macro note (created 2026-05-18, enhanced 2026-05-19 with quant-screening framework — AI-DC Rev/OP %, ROIC/EV-EBIT LTM — across all six value-chain Layer tables) is the detailed source for §Macro shifts #4 "800VDC architecture transition." This sector is the PRIMARY MoC for the macro — Vertiv is named Tier 1 lead in two of the six value-chain layers (Layer 2 SST + Layer 3 DC distribution, only vendor appearing twice) with the highest AI-DC concentration in the chain (~65% / ~75% Rev/OP) and best-in-class ROIC/EV-EBIT pair (~25% / ~28x). Eaton + Schneider sit at Layer 1-3 with diversified-industrial mix economics; HVAC generalists (Carrier/Trane/JCI/Munters) and ABB confirmed as stripped out from 800VDC partner ecosystem in the macro's competitive matrix. No conviction or content changes to this note — macro consolidates external research that informed §Macro shifts #4 + §Competitive dynamics customer-mix sections; sector framing intact. Recommend reading the macro for the synthesized adoption forecast (10-15% of new AI racks at 800VDC by 2027 → 65-75% by 2032) when sizing VRT vs Schneider vs Eaton on AI-DC pure-play premium.

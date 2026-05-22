@@ -1,8 +1,8 @@
 ---
 date: 2026-04-15
 tags: [thesis, uber, UBER, consumer-digital, rideshare, delivery, autonomous-vehicles]
-status: active
-conviction: high
+status: monitoring
+conviction: medium
 sector: Mobility & Ridesharing
 ticker: UBER
 source: Multi-source synthesis (Claude, ChatGPT, Grok, web research)
@@ -243,3 +243,6 @@ This orchestration position becomes more valuable — not less — in an AV futu
 ### 2026-04-22
 - Sector re-scoped: Consumer & Digital → Mobility & Ridesharing (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: replaced stale [[_Archive/Sectors/Consumer & Digital]] body wikilink in ## Related Research with [[Sectors/Mobility & Ridesharing]] following subsector sector-note fill — conviction unchanged.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring, conviction high→medium.

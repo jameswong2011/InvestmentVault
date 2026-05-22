@@ -1,7 +1,7 @@
 ---
 date: 2026-04-14
 tags: [thesis, DUOL, consumer-digital, edtech, AI, gamification]
-status: active
+status: monitoring
 conviction: medium
 sector: Consumer Edtech
 ticker: DUOL
@@ -178,3 +178,6 @@ DAU/MAU ratio of 37.3% — extraordinary for a consumer app, reflecting genuine 
 
 ### 2026-04-25
 - [[Sectors/Consumer Edtech]] propagation: integrated AI-native voice tutor depth analysis (5 tutors <5M DAU vs DUOL 52.7M after 18mo frontier capital — strengthens Insight #1 and Bull Case behavioral moat) + Platform extensibility ceiling (within-engine verticals are credible, horizontal STEM/SaaS not — refines Insight #3 and Bull Case 100M DAU). Resolved Outstanding Q2 (Max stuck at 0.7% MAU is structural sandwich, not unaddressed runway). Added PingoAI specifics to Industry Context. Refined Bear Case + Risk #1 (AI substitution is use-case bounded to Max, not platform structural). Added Duolingo Score on LinkedIn Sep 2025 + NextBeat $34.5M Aug 2025 acquisition. Updated DET acceptance 6,000+ → 5,500+ (more recent data). Conviction: unchanged at medium — directionally strengthened on behavioral moat empirical validation + Max sandwich bounding the substitution risk, but no formal level change. Snapshot: [[_Archive/Snapshots/DUOL - Duolingo (pre-sync 2026-04-25-173634)]].
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

@@ -1,7 +1,7 @@
 ---
 date: 2026-04-24
 tags: [thesis, precious-metals, GLD, gold, commodity, macro-hedge]
-status: draft
+status: monitoring
 conviction: medium
 sector: Precious Metals
 ticker: GLD
@@ -241,3 +241,6 @@ Path: $4,708 → $4,200 (Warsh confirmation) → $3,800 (real yields break 2.5%)
 
 ### 2026-04-24
 - Initial thesis created. Conviction: medium — structural central-bank bid + Basel III Tier 1 HQLA + debasement trade masked by cyclical Fed hawkishness; contrarian entry at $4,400–4,800 with asymmetric Fed-pivot upside toward $6,000+ by YE 2026. Commodity-adapted structure per user discretion (sections 4-5 restructured for instrument mechanics + market structure; 13-section framework retained).
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.

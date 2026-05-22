@@ -2,7 +2,7 @@
 date: 2026-04-21
 tags: [thesis, semiconductors, AMD]
 status: active
-conviction: medium
+conviction: high
 sector: GPU & AI Compute Accelerators
 ticker: AMD
 source: AMD Q4 2025 earnings (Feb 2026), MLPerf Inference v6.0 (Apr 1 2026), OpenAI 6GW deal (Oct 2025), Meta 6GW deal (Feb/Mar 2026)
@@ -199,6 +199,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Venice Dense 5/5 action score, 2.7x thread-density advantage over Intel Diamond Rapids post-SMT-removal; reframes Outstanding Question #7
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — CPUs "completely sold out" via RL environments + AI-generated code deployment; volume tailwind beyond thesis model
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — indirect HBM4 supply chain exposure for MI450 via Japanese PR/BARC disruption
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial split implies MI400/MI450 HBM4 sourcing competes for the SK Hynix-dominated supply pool — supplier diversification path forces AMD toward Samsung (less qualified) or wait for Micron HBM4 12-Hi redesign (late entrant); HBM supply risk for MI450 ramp materially compounded by SK Hynix's primary allocation to Rubin
 
 ## Log
 
@@ -210,6 +211,9 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - Sector re-scoped: Semiconductors → GPU & AI Compute Accelerators (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: replaced stale [[Sectors/Semiconductors]] with [[Compute & AI Compute Accelerators]] in Related Research (aligned with frontmatter sector field and new sector-note sector fill). Conviction unchanged; pure wikilink hygiene.
 
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: Vera Rubin HBM4 ~70% SK Hynix / ~30% Samsung / 0% Micron initial split is adverse for MI400/MI450 — SK Hynix HBM4 supply primarily allocated to Nvidia Rubin in first-shipment quarters, forcing AMD toward Samsung (less qualified at 1c yield ~50%) or wait-and-watch on Micron HBM4 12-Hi redesign (late entrant). HBM4 supplier diversification path is structurally harder than thesis modeled. Conviction directionally weakened on MI450 ramp velocity (HBM supply gating); unchanged on full-stack hyperscaler-diversification thesis.
+
 ### 2026-04-24 (/sync)
 - [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: Rewrote Bull Case #3 to integrate Venice Dense 2.7x thread-density vs Intel Diamond Rapids (SMT removed); updated Outstanding Question #7 with partial-resolution framing (Intel's credible agentic-AI response pushed to 2028+ on SMT+Coral Rapids). Conviction strengthened — Bull #3 durability improved on structural, not cyclical, CPU positioning. Snapshot: [[_Archive/Snapshots/AMD - Advanced Micro Devices (pre-sync 2026-04-24-101646)]]
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]]: "CPUs completely sold out" via RL environments + AI-generated code deployment — direct validation of Venice Dense demand trajectory and EPYC capture rate. Conviction unchanged (already captured in Bull #3 rewrite).
@@ -218,3 +222,13 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 3:1:1 research:pre-train:post-train framework + 1T-model entry ticket structurally expand the total compute fleet — second-source AMD addressable share grows even at constant share-of-fleet. Conviction unchanged — strengthens demand-floor pillar.
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Cross-hyperscaler capacity tightness (Google Cloud "more demand than we can possibly meet" from frontier AI labs) signals industry-wide GPU under-supply spilling beyond NVDA — second-source MI400/MI500 ramp benefits. Conviction unchanged.
+
+### 2026-05-12 (/sync)
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Intel **Diamond Rapids slipped 2026 → mid-2027** (Jaykihn Apr 2026) + Coral Rapids SMT restoration mid-2028 = no competitive Intel P-core response for ~20 quarters; AMD already at **41.3% Q4 2025 server revenue / 28.8% units (Mercury — first quarter ever >40%)** with 12.5-pt quality-of-share gap pointing to ASP-richer enterprise/sovereign deals. 50% server share by mid-2026 now Intel's own Bear Case baseline. Conviction strengthened on Venice/Zen 6 share-capture window — Intel's structural absence at the P-core agentic-AI inflection now spans 2026–mid-2028.
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Intel EMIB cost-arb ($900–1,000 CoWoS Rubin-class vs "low hundreds" EMIB) is the first quantified external-packaging cost-pressure datapoint on AMD's MI400/MI450 CoWoS dependency; combined with TSMC CoWoS 35K→130K WPM at +20% pricing and NVDA pre-booking 60–65%, AMD risks marginal-AI-customer packaging-cost squeeze even before any EMIB customer migration. Watch for AMD packaging diversification commentary in next 2 quarters. Conviction unchanged on Bull Case core; weakens MI400/MI450 unit-economics tail.
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition (NVIDIA Kyber row-rectified ±400V/800V March 2026 + OCP Mt. Diablo sidecar Meta/Google co-authored) with new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. AMD listed under §Adjacent exposure in the macro: Helios MI455X H2 2026 *explicitly sidesteps* 800VDC by going double-wide OCP form factor (a hyperscaler-imposed Mt. Diablo accommodation, not Kyber-style integration); MI500 (2027) must compete at Kyber-equivalent density per processor if NVIDIA Rubin Ultra (600 kW/rack) sets the standard. The architectural-density question rises in importance through 2027-2028 — if AMD cannot match Rubin Ultra power-delivery scale, Helios stays sub-Kyber and the rack-level integration gap widens at hyperscalers running both architectures in parallel. Conviction unchanged at medium — adds a 2027-2028 power-density execution risk that consensus underweights vs the chip-level MI455X/MI500 benchmark narrative.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

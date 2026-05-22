@@ -246,6 +246,7 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — Sector Note with cross-thesis dynamics
 - [[Theses/LITE - Lumentum]] — CPO/photonics supply chain overlap; data center optical interconnect
 - [[Theses/PSTG - Pure Storage]] — AI data center infrastructure theme
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — Samsung HBM3E 8-Hi continues as the lifeline product for non-Nvidia HBM demand (Google TPU v6/v7, Apple custom silicon, OpenAI XPU programs at AVGO); Vera Rubin HBM4 ~70/30/0 split locks SK Hynix into Nvidia tier, leaving Samsung HBM3E/HBM4 as the primary remaining supply for AVGO XPU customers — supports XPU margin durability via secured upstream memory sourcing path independent of SK Hynix Nvidia-priority allocation
 
 ## Log
 
@@ -264,6 +265,13 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 ### 2026-04-14
 - Major thesis restructure: Consolidated all LLM sources (Gemini, Claude, ChatGPT). Added Industry Context and Outstanding Questions. Q1 FY2026: $19.3B rev, $8.4B AI (+106%), $13.1B EBITDA. Anthropic-Google deal locks partnership through 2031. 30K VMware-to-Nutanix migrations. Forward P/E 28x — conviction upgraded medium → high.
 
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: Samsung HBM3E 8-Hi continues as the lifeline product for non-Nvidia HBM demand — TPU v6/v7 (Google), Apple custom silicon, OpenAI XPU programs sourcing through AVGO benefit from Samsung's HBM3E capacity not being allocated to Nvidia Rubin first-cycle. Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron supports AVGO XPU supply path independent of SK Hynix Nvidia priority. Conviction unchanged at high — incremental positive on XPU margin durability via secured upstream memory sourcing.
+
+### 2026-05-12 (/sync)
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Intel **EMIB-T (H2 2026 launch)** at 120×180mm 24-HBM-stack package vs TSMC CoWoS-L (NVDA Blackwell 100×100mm 8-stack), priced "low hundreds" vs $900–1,000 CoWoS Rubin-class, becomes a credible second-source packaging path for AVGO XPU customers (Google TPU, OpenAI, Meta MTIA, Apple) facing CoWoS allocation squeeze (NVDA 60–65% of 130K WPM 2026). Intel publicly named AVGO as an EMIB engagement target alongside MRVL. Conviction unchanged at high — adds an unmodeled cost-arb optionality on XPU customer migration (positive optionality), but does NOT yet displace TSMC CoWoS as the dominant 2026–2027 architecture.
+- [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]]: Microsoft Maia 2/3 ("Griffin") on Intel 18A/18A-P under $15B contract is the highest-profile non-AVGO custom-silicon hyperscaler deal — competitive concern for AVGO's Microsoft custom-ASIC narrative if Maia roadmap displaces AVGO design-services share at Microsoft. Watch Microsoft custom-silicon roadmap commentary in MSFT FY26 calls. Conviction unchanged — Microsoft is not currently in AVGO's named hyperscaler customer set; structural overlap remains low.
+
 ### 2026-04-14 (earlier)
 - [Gemini/ChatGPT]: Initial thesis created from Broadcom investment analysis. Hock Tan aggregation strategy, AI positioning, VMware integration — conviction medium.
 
@@ -279,3 +287,6 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: TPU capacity tightness (Gemini Enterprise tokens 10B → 16B/min in 3 months, +60% sequential) + "agentic chip design" co-design loop with Broadcom — directly strengthens custom-silicon-partner Bull Case. Anthropic hosted on Google Cloud expands TPU end-customer mix beyond Google-internal. Conviction strengthened — TPU demand acceleration is direct AVGO revenue exposure.
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: 1T-parameter dense models as agent-era entry ticket + research-bucket = 3x pre-train compute support custom-silicon demand floor (TPUs + AWS Trainium tightened concurrently). Conviction unchanged.
 - [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: Tangential AI-bubble macro mention; no thesis-moving evidence. Conviction unchanged.
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition with NVIDIA Kyber (±400V/800V, March 2026) + OCP Mt. Diablo sidecar (Meta/Google co-authored) as the two parallel hyperscaler paths. The macro now includes a quant-screening framework (AI-DC Rev/OP exposure %, ROIC/EV-EBIT LTM) across ~50 value-chain beneficiaries. AVGO is the dominant custom-ASIC design partner for the Mt. Diablo path (Trainium, MTIA, Maia, TPU) — XPU programs create incremental high-current power-delivery demand parallel to NVIDIA GPUs across the same 800VDC infrastructure. Macro listed under §Adjacent exposure (theses that touch the chain) in the macro's affected-theses table. Conviction unchanged at high — adds an unmodeled exposure vector to AVGO XPU volume (positive optionality on hyperscaler 800VDC capex) without altering core custom-silicon-partner narrative.

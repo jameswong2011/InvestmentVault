@@ -9,6 +9,7 @@ status: active
 ## Active Theses
 - [[Theses/LITE - Lumentum]] — Lumentum (physics-gated 200G EML laser monopoly / 50-60% EML share / $2B NVIDIA investment / 8x capacity expansion from FY23 / $400M+ OCS backlog / Cloud Light transceiver vertical integration)
 - [[Theses/IQE - IQE]] — IQE (world's largest independent III-V epitaxy / UK Takeover Code offer period active / Taiwan sale in progress / InP supply gap 70% / 52p vs 4.7p Nov 2025 low / M&A special situation vs SiPh demand catalyst)
+- [[Theses/SIVE - Sivers Semiconductors]] — Sivers Semiconductors (only listed pure-play on ELS layer of CPO ramp / Glasgow 100mm InP fab / DFB laser arrays for Ayar Labs + Aeva + POET + Imec / ~55x EV/Rev post +1,768% 3M rally / LOW conviction / draft→active 2026-05-22)
 
 ## Key industry questions
 - Does the **1.6T/CPO inflection year** (2026) unfold as consensus expects — 22M 1.6T units, ~49M 800G+, $26B Ethernet AI optics — or does the Goldman upward revision (+58% to 33.5M 1.6T units) point to consensus being systematically late on ramps that are now physics-limited rather than demand-limited?

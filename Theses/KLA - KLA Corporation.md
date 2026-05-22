@@ -1,7 +1,7 @@
 ---
 date: 2026-04-29
 tags: [thesis, semiconductor-capital-equipment, KLA, KLAC]
-status: draft
+status: active
 conviction: high
 sector: Semiconductor Capital Equipment
 ticker: KLA
@@ -253,6 +253,7 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 - [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — Multiple-compression risk under AI capex deflation scenarios
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan-tail customer concentration framework
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Israel R&D operational disruption risk
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — HBM4 16-Hi bump-pitch tightening (sub-10μm) drives 3x bond-line inspection intensity; KLA Klarity/RAPID yield platform + 8 Series defect inspection captures the structural intensity uplift independent of MR-MUF vs hybrid-bonding outcome; HBM5+ 24-Hi (2029-2030) hybrid-bonding mandate adds further 2x inspection intensity at architectural inflection
 
 ## Log
 
@@ -261,3 +262,9 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 
 ### 2026-04-30
 - Addressed user callouts: ASML e-beam (HMI eScan multi-beam) competitive vector + standalone-process-control unbundling into equipment-maker stacks. Net read: bounded over 5-10yr horizon — ASML eScan threatens metrology sub-segments only (~$0.5-0.7B SAM at risk = 20-30% of KLA e-beam metrology) via Holistic Litho bundling at High-NA, not core defect inspection where KLA's 25-year defect-library substrate + Klarity/RAPID yield platform are non-replicable and 8 Series / Teron 600/650 architectures sit on different physics from eScan's metrology focus. Standalone-PC integration into equipment stacks (AMAT PVI, LRCX Equipment Intelligence with 100K+ chambers, AMAT-BESI Kinex bundled D2W) compresses mature-node SAM 15-25% over 7-10 years = ~$570M-1.1B revenue at risk = ~5-9% of FY25 base; leading-edge moat (2nm/HBM4/CFET) intact via defect-tolerance physics (process-tool-integrated sensors cannot match standalone vibration/thermal/alignment) + independent-verification requirements at yield-attribution milestones. Combined FY30 base-case impact ~5-8% revenue ($26B → $24-25B), absorbed by 4-vector growth algorithm (WFE × intensity × AP × service). Added Risk #4 (Thesis risks subsection); renumbered Position risks 4-8 → 5-9; added ASML (HMI eScan) row to §Industry Context → Competitive Set. Conviction unchanged (high) — risks are real but quantified and absorbed; framework-level reaffirmed (process-control monopoly economics on leading edge >> integration-trend erosion at mature edge over the modeled horizon).
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: HBM4 16-Hi bump-pitch tightening to sub-10μm drives ~3x bond-line inspection intensity per HBM stack — direct corroboration of KLA's intensity-driven growth algorithm. KLA 8 Series / Klarity / RAPID yield platform captures the structural uplift independent of MR-MUF vs hybrid-bonding outcome (defect-detection physics applies to both packaging architectures). HBM5+ 24-Hi (2029-2030) architectural mandate adds another 2x inspection-intensity step at hybrid-bonding inflection. Conviction unchanged at high — growth algorithm Insight #1 (process-control intensity rising 100-200bp/node) directly validated at HBM4/HBM4E/HBM5+ packaging tier.
+
+### 2026-05-19 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition + new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. KLA listed under §Adjacent exposure in the semicap cluster: SiC/GaN fab capex adds inspection-step demand alongside AMAT/LRCX/ASMI tool orders. The macro's adoption forecast (10-15% of new AI racks 2027 → 65-75% by 2032) anchors mid-decade wide-bandgap fab inspection intensity tied to the broader process-control intensity multiplier (+100-200bp/node) that drives Insight #1. Indirect but additive to existing growth-algorithm framework. Conviction unchanged at high — adds a wide-bandgap-fab tail to the existing intensity × share × WFE compounding math.

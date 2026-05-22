@@ -4,11 +4,11 @@ tags: [sector, moc, DRAM, HBM, memory]
 status: active
 sector: DRAM & HBM Memory
 ---
-> [!question] 2026-04-26 → Addressed 2026-04-27
+> [!question] 2026-04-26 → Addressed 2026-04-27 [[pinned]]
+>
 > **Prompt:** *Does memory market structurally reset to a evergreen industry with minimal cyclicality underpinned by oligopolistic dynamics, rational pricing and capacity additions to harvest the demand boom from AI. The bull case argues that this happens due to sufficient consolidation to 3 players (can no longer drive out the incremental lowest share player), relative technological parity (no room for technological displacement by ramping capex and R&D), and ease of pricing coordination with only three players. This would drive a re-rating to 25x+ mid-cycle earnings on low teens growth. What is the upside to all memory names under this scenario. What might make this not play out.*
 >
 > **Response:** Bull case requires three independent structural changes to hold simultaneously (no fourth entrant breaking the triopoly, sustained Samsung capex discipline against share-defending temptation, sustained +30-40% YoY AI demand). Probability-weighted 60% base case / 25% partial reset (12-15x → +50-80%) / 15% full reset (25x → SK Hynix +210-310%, Samsung +50-110%, Micron +90-130%, Kioxia +120%); diagnostic test is two consecutive quarters of HBM ASP flat/rising while one vendor's share falls 5+pp — never observed in DRAM history, first testable window Q3-Q4 2026 on Rubin allocation data. Full analysis in §Cycle Dynamics & Game Theory → The Evergreen Reset Hypothesis — Bull Scenario and Break Conditions.
-
 # DRAM & HBM Memory
 
 ## Active Theses
@@ -236,7 +236,7 @@ Three vendor philosophies define the 2026-2030 share trajectory:
 | **Micron** | TC-NCF pragmatic | TC-NCF HBM4 12-Hi | TC-NCF + selective hybrid bonding | Hybrid bonding HBM5 | Power-efficiency leadership (1-beta then 1-gamma node); custom base die TSMC 3nm for HBM4E |
 | **CXMT** | MR-MUF (copying SK Hynix) | HBM3 only (G4 16-nm DRAM); ~50% yield | Speculative | Speculative | Domestic-only; YMTC hybrid-bonding patent pool potential domestic shortcut |
 
-**Hybrid bonding is the "great filter" for HBM5.** At 20-Hi stack heights, MR-MUF underfill physics break down — gap-fill voids and warpage exceed acceptable thresholds. Samsung's hybrid-bonding gamble (BESI Kinex tool + AMAT Kinex platform, ~$10.7M per system) is timed to hit yield maturity 12-24 months ahead of SK Hynix. If Samsung clears 70% hybrid-bonding yield at 16-Hi by Q4 2026, the 2024-2026 share trajectory inverts at HBM5. SK Hynix's March 2026 BESI Kinex order = explicit acknowledgment that MR-MUF is a temporary cushion, not a permanent advantage.
+**Hybrid bonding is the "great filter" for HBM5+ 24-Hi (revised 2026-05-11 — see Macro Shift §8 for full reframe).** Under JEDEC's relaxed 900µm HBM4 height spec, MR-MUF underfill physics extend through HBM5 first-gen 20-Hi (2028-2029); hybrid bonding becomes architecturally mandatory at HBM5+ 24-Hi (2029-2030). Samsung's hybrid-bonding gamble (BESI Kinex tool + AMAT Kinex platform, ~$10.7M per system) is timed to hit yield maturity at the 24-Hi inflection. If Samsung clears 70% hybrid-bonding yield at 20-Hi by H2 2028, the 2024-2028 share trajectory inverts at HBM5+ (not HBM5 first-gen). **SK Hynix's March 2026 BESI Kinex order is logic-line/2nm primary with dual-use HBM5 hybrid-bonding qualification path** — not a direct HBM5 production order. MR-MUF is now a 2024-2029 process moat (extended by Namics EMC exclusivity per Macro Shift §8), not a 2-year cushion.
 
 ### Logic Base Die — Foundry Lock-in
 
@@ -436,6 +436,33 @@ TurboQuant (Google, March 2026): 6x KV-cache compression, zero accuracy loss. De
 
 See [[Research/2026-03-27 - TurboQuant Impact on Memory Demand]] and [[Research/2026-01-15 - AI Compute and Memory Demands - HBM Shortage]].
 
+### 8. Materials Moat — Namics EMC Exclusivity and JEDEC Height-Spec Relaxation (NEW — Structural, 2026-05-11)
+
+The MR-MUF vs TC-NCF vs hybrid-bonding debate is widely framed as a process-technology contest. The non-consensus reframe per [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: **the moat is supplier-anchored, not process-anchored**.
+
+**Namics (Japan) — SK Hynix exclusive epoxy molding compound (EMC) supplier.** MR-MUF's thermal-performance advantage over Samsung's TC-NCF is delivered by a proprietary Namics EMC formulation that no other supplier has qualified at production thermal envelope. Namics' contract with SK Hynix is approaching expiration. Three scenarios:
+
+| Scenario | Probability | Impact on SK Hynix HBM Differentiator |
+|---|---|---|
+| Namics renews exclusivity through ≥2028 | ~55% | MR-MUF moat intact through HBM4/4E/HBM5 first-gen 20-Hi; SK Hynix margin advantage persists |
+| Namics negotiates shared supply (SK Hynix + Samsung/Micron) | ~30% | MR-MUF moat collapses; SK Hynix loses ~$3-5B HBM gross profit annually as Samsung/Micron equivalence develops |
+| Non-renewal, alternate-supplier transition (Nagase ChemteX, Resonac) | ~15% | Multi-quarter MR-MUF disruption; SK Hynix forced into accelerated hybrid bonding adoption |
+
+**Renewal is the highest-leverage near-term tell** for the SK Hynix differentiator thesis.
+
+**JEDEC HBM4 height-spec relaxation 720→775→900µm extends MR-MUF runway by ~1-2 years.** Each 25µm of thermal-budget cushion buys ~1 generation of MR-MUF extension before hybrid bonding becomes architecturally mandatory. Under the 900µm spec:
+
+| HBM Gen | Stack | MR-MUF Feasibility | Hybrid Bonding Status |
+|---|---|---|---|
+| HBM4 12-Hi | 720µm | ✓ SK Hynix sole-source | Not required |
+| HBM4E 16-Hi | 775µm | ✓ Production (2026-2027) | Optional (Samsung leap-frog attempt) |
+| HBM5 first-gen 20-Hi | 900µm | ✓ Likely production (2028-2029) | Pilot/parallel |
+| HBM5+ 24-Hi | >900µm | ✗ Architecturally infeasible | **Mandatory** (2029-2030) |
+
+This pushes the Samsung leap-frog window from 2027-2028 to 2029-2030. SK Hynix's March 2026 BESI Kinex order is **logic-line/2nm primary with dual-use HBM5 hybrid-bonding qualification path** — not a direct HBM5 production order. The "MR-MUF is temporary cushion" framing is now too aggressive; MR-MUF is a 2024-2029 process moat anchored by Namics, with hybrid bonding inflection moving to HBM5+ 24-Hi at decade-end.
+
+**Dual-sourcing waterfall framework (NEW)**: HBM customer-side dual-sourcing follows a 3-stage waterfall — (1) qualification (Samsung HBM4 "best scores" Q1 2026), (2) production allocation (Vera Rubin ~70/30/0 SK Hynix/Samsung/Micron initial), (3) parity pricing (forward, conditional on Samsung 1c yield clearing 70%). The thesis-relevant insight: stages 1-2 are visible and partially complete; stage 3 (true parity) only materializes when secondary-supplier yields clear the 70% threshold, which compresses SK Hynix's blended HBM gross margin from 60%+ toward 40-45% at HBM5 inflection (2029-2030, not 2027-2028).
+
 ---
 
 ## Investor Heuristics
@@ -532,6 +559,7 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-04-23 - NVDA - Investment Brief]] — NVDA's HBM consumption profile; Rubin/Rubin Ultra/Feynman roadmap; Taiwan tail risk
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War naphtha disruption → PGME/PGMEA shortage → Japanese PR/BARC/HBM-adhesive supply threat to Samsung/SK Hynix; new 2026 HBM tail risk, PCN cycle ~1 year
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — DRAM pricing "double or triple from here"; true incremental supply only from 2028; reinforces DRAM supercycle extension through 2027+
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — JEDEC HBM4 720→775→900µm relaxation extends MR-MUF runway through HBM5 first-gen 20-Hi (2028-2029); Namics EMC exclusivity as the SK Hynix MR-MUF moat anchor (contract renewal pending); Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron confirmed; Mar 2026 SK Hynix BESI Kinex order is logic-line/2nm primary (dual-use HBM5); Hanmi 71% TCB falling, ASMPT ~100-unit Dec 2025 SK Hynix TC-bonder order; dual-sourcing waterfall framework
 
 ## Related Sectors and Macro
 
@@ -555,3 +583,6 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 
 ### 2026-04-27
 - Addressed user callouts: Added new subsection §Cycle Dynamics & Game Theory → The Evergreen Reset Hypothesis — Bull Scenario and Break Conditions, addressing the 2026-04-26 [!question] callout on whether memory structurally re-rates from cyclical to evergreen oligopoly. Analysis covers (a) three structural arguments anchoring the bull case (three-player floor, technological parity, capex coordination tractability), (b) quantified upside per memory name under 25x re-rate (SK Hynix +210-310%, Samsung +50-110%, Micron +90-130%, Kioxia +120%), (c) five conditions that prevent reset (CXMT 4th-entrant, Samsung capex breakout, demand-side compression, persistent process-node dispersion, Samsung's HBM-to-commodity wafer-swing flexibility), (d) diagnostic test (HBM ASP flat/rising while one vendor's share falls 5+pp — never observed in DRAM history; first testable Q3-Q4 2026 on Rubin allocation), (e) probability-weighted net read (60% base / 25% partial / 15% full reset). Callout converted to addressed ledger entry with pointer to body section. Reminder to run `/graph last` per CLAUDE.md metadata-ownership rule.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: Added new Macro Shift §8 (Materials Moat — Namics EMC Exclusivity and JEDEC Height-Spec Relaxation) reframing MR-MUF debate as supplier-anchored not process-anchored; introduced 3-scenario Namics renewal probability table; documented JEDEC 720→775→900µm height extension pushing MR-MUF runway through HBM5 first-gen 20-Hi (2028-2029); introduced dual-sourcing waterfall framework (qual → allocation → parity pricing). Competitive Dynamics Packaging-Technology Hierarchy: revised "MR-MUF temporary cushion" framing to "2024-2029 process moat anchored by Namics"; reclassified Mar 2026 SK Hynix BESI Kinex order as logic-line/2nm primary (dual-use HBM5). HBM5 hybrid-bonding mandate moved from HBM5 first-gen to HBM5+ 24-Hi (2029-2030).

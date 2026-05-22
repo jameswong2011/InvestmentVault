@@ -2,7 +2,7 @@
 date: 2026-04-15
 tags: [thesis, shop, enterprise-software, ecommerce, payments]
 status: active
-conviction: medium
+conviction: high
 sector: E-commerce Infrastructure
 ticker: SHOP
 source: Claude conversation export, web research April 2026
@@ -333,3 +333,6 @@ Each expansion increases the share of merchant economics Shopify captures. The t
 ### 2026-04-27
 - Addressed user callouts: 7 callouts cleared (1 editorial error, 5 analytical questions, 1 editorial tip). Stripped "A skeptical IC would ask:" framing from all 8 items in §Outstanding Questions. Extended §Business Model → Layer 2 with penetration ceiling drivers (geo eligibility, prohibited verticals, Plus negotiated rates, multi-region reconciliation), Shop Pay's saved-credentials network character + asymmetric Apple/Google risk, and Shop App's <5% traffic-share + deliberately unmonetized state. Extended Revenue Architecture table with FY2025 YoY growth rates (Platform Tax ~32%, Subscription ~21%, Financial Services & Emerging ~37%) plus uptake paragraph (Capital $258M dominates; Audiences/Managed Markets/USDC nascent). Added Salesforce Commerce Cloud feature comparison subsection to §Industry Context (CRM-ecosystem lock-in is the real moat, not commerce-feature superiority). Added Merchant traffic mix subsection to §Industry Context with Meta-dependence + Audiences hedge analysis. Added valuation multiples to §Key Metrics (EV/Revenue ~12.5x, EV/EBITDA ~85x, P/FCF ~75x, FCF Yield ~1.3%, FY26E P/E ~70x, PEG ~2.3x). Conviction unchanged (medium) — no new thesis-moving information; clarifications strengthen depth on previously-flagged questions but do not shift bull/bear balance.
 - Addressed user callouts: 1 follow-up question on Tier 2 product-level advantages. Added "Why merchants choose Shopify over Tier 2" subsection to §Industry Context covering Wix/Square/BigCommerce/Adobe Commerce/Squarespace — primary product-strategic constraint per competitor + six cross-cutting Shopify structural assets they cannot replicate at any pricing tier (Shop Pay credential network, 16K-app ecosystem, $4.2B Capital, Audiences cross-merchant data, founder-CEO velocity, vertical integration depth). Conviction unchanged (medium) — formalizes existing intuition that Tier 2 is non-threatening; supports rather than shifts bull/bear balance.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

@@ -2,7 +2,7 @@
 date: 2026-04-15
 tags: [thesis, enterprise-software, NOW, AI-automation, agentic-AI, cybersecurity]
 status: active
-conviction: medium
+conviction: high
 sector: Enterprise Workflow AI & Automation
 ticker: NOW
 source: Consolidated from ChatGPT, Gemini Canvas, Claude deep-dive, web research
@@ -190,6 +190,7 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 - [[Theses/PLTR - Palantir]] — Competing enterprise AI data layer approach (Ontology vs CMDB); complementary not competitive
 - [[Theses/NET - Cloudflare]] — Enterprise software platform expansion dynamics and competitive positioning
 - [[Sectors/Enterprise Workflow AI & Automation]] — Sector-level dynamics and cross-company analysis
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: BDC software-loan markdown share (~33% of TCPC Q1 markdowns) is credit-market echo of AI-productivity-disruption thesis; NOW orchestration platform positioned as enterprise-AI beneficiary against cash-burning private-credit-financed peers
 
 ## Log
 
@@ -206,3 +207,9 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: "OpenClaw architectural moat is context engineering, not just model weights" framing directly validates CMDB-as-substrate Non-consensus Insight pillar — agent-era moat shifts from model weights to pre-built context substrates. Conviction unchanged — reinforces existing thesis without moving conviction.
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Gemini Enterprise tokens +60% in 3 months + agentic chip design workflow — ServiceNow's CMDB-as-substrate competing with Google's Workspace+Gemini stack as default agent context layer. Conviction unchanged — adjacent macro reinforcement.
+
+### 2026-05-11 (/sync)
+- [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]]: Tangential — BDC software-loan markdown share (~33% of TCPC Q1 markdowns) is credit-market echo of AI-productivity-disruption thesis; NOW's CMDB-as-substrate orchestration platform is the structural beneficiary against cash-burning private-credit-financed peers. Conviction unchanged — no direct NOW operating signal.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.

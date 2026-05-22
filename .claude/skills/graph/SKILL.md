@@ -71,7 +71,7 @@ Fuse change detection with `.graph_invalidations` pre-read in ONE Bash block:
 WATERMARK_ISO="2026-04-19T14:19:33Z"   # example
 touch -d "$WATERMARK_ISO" /tmp/graph-watermark
 echo "=== CHANGED FILES SINCE WATERMARK ==="
-find Theses/ Research/ Sectors/ Macro/ -name '*.md' -newer /tmp/graph-watermark | sort
+find Theses/ Research/ Sectors/ "Macro & Technology/" -name '*.md' -newer /tmp/graph-watermark | sort
 echo "=== .graph_invalidations ==="
 cat .graph_invalidations 2>/dev/null || echo "(file absent)"
 rm -f /tmp/graph-watermark
@@ -108,7 +108,7 @@ Baseline for incremental updates. Parse failure → warn `⚠️ _graph.md unpar
 
 Separate by directory:
 - **Changed Thesis** (`Theses/*.md`): re-extract in Step I.4
-- **Changed Sector/Macro** (`Sectors/*.md`, `Macro/*.md`): no per-file action — reverse indexes rebuild fully in Step I.5
+- **Changed Sector/Macro** (`Sectors/*.md`, `Macro & Technology/*.md`): no per-file action — reverse indexes rebuild fully in Step I.5
 - **Changed Research** (`Research/*.md`): no per-file action — orphan list recomputes in Step I.7
 
 ### Step I.2.5: Fold `.graph_invalidations` into Changed-Thesis Bucket
@@ -138,10 +138,11 @@ For each thesis flagged in I.2 (watermark), I.2.5 (invalidations), I.3 (added), 
 1. Extract outbound `[[wikilinks]]`.
 2. Categorize:
    - `Sectors/` → sector
-   - `Macro/` → macro
+   - `Macro & Technology/` → macro
    - `Theses/` → cross-thesis
    - `Research/` → research
    - **Intentional-unresolved markers** (`[[pinned]]`; legacy `[[preserve]]` during deprecation transition window) → silently drop, do NOT log as dangling. `[[pinned]]` is a user-authored opt-out marker on callouts — the unresolved wikilink rendering is the feature (visual distinction in reading view), not a broken reference.
+   - **Legacy `Macro/` prefix** → directory was renamed to `Macro & Technology/`. Drop at step 3 with explicit migration hint: `ℹ️ Dropped legacy macro reference: [TICKER] → [[Macro/X]] (directory renamed to Macro & Technology/; migrate the wikilink).` `/lint` should auto-surface for migration.
    - Other targets → ignore.
 3. **Validate target existence** — drop dangling references, log each at `ℹ️` severity (e.g., `ℹ️ Dropped dangling cross-thesis: [TICKER] → [[Theses/TARGET - ...]] (file not in Theses/, likely archived).`). Completes the invalidation cycle opened at I.2.5 (§1.3). The intentional-unresolved allowlist at step 2 is applied BEFORE validation — never emit dangling log lines for `[[pinned]]` (or legacy `[[preserve]]`).
 4. **Extract `status:` and `log_tail:`** per Step 2b (same fused Bash block captures both alongside wikilinks).
@@ -149,7 +150,7 @@ For each thesis flagged in I.2 (watermark), I.2.5 (invalidations), I.3 (added), 
 
 Unchanged (non-invalidated) theses retain baseline entries — no re-read.
 
-**Single-Bash for ALL changed theses** (N → 1 tool calls):
+**Single-Bash for ALL changed theses** (N → 1 tool calls — typical incremental scope is 1-3 theses, well within the Bash output budget; if `|changed| > 20`, fall back to the batched implementation from the full-rebuild path):
 
 ```bash
 for f in "Theses/TICKER1 - Name1.md" "Theses/TICKER2 - Name2.md" "Theses/TICKER3 - Name3.md"; do
@@ -165,7 +166,7 @@ for f in "Theses/TICKER1 - Name1.md" "Theses/TICKER2 - Name2.md" "Theses/TICKER3
     BEGIN { in_log=0; pending_date=""; }
     /^## Log[[:space:]]*$/ { in_log=1; next }
     in_log && /^## / { exit }
-    in_log && /^### [0-9]{4}-[0-9]{2}-[0-9]{2}/ { pending_date=$2; next }
+    in_log && /^### [0-9]{4}-[0-9]{2}-[0-9]{2}/ { pending_date=$0; gsub(/^### /, "", pending_date); next }
     in_log && pending_date != "" && /^- / {
       line=$0; sub(/^- /, "", line);
       if (length(line) > 100) line = substr(line, 1, 100) "…";
@@ -183,14 +184,16 @@ done
 
 **Regex gotcha** (§3.3): `[^]]+` NOT `[^\]]+` — BSD grep silently returns empty output with the backslash form.
 
+**AWK header-capture note** (2026-05-15 fix): the date-header capture is `pending_date=$0; gsub(/^### /, "", pending_date)` rather than `pending_date=$2`. The old `$2` truncated headers like `### 2026-04-23 (scenario propagation)` to just `2026-04-23`, dropping the annotation that `/sync` Step 2.5 keys on for skill-origin classification. The full-string capture preserves whatever annotation the author wrote.
+
 ### Step I.5: Rebuild Reverse Indexes (Always Full)
 
-Read every `Sectors/*.md` and `Macro/*.md` unconditionally (~13 + 6 = 19 files, bounded):
+Read every `Sectors/*.md` and `Macro & Technology/*.md` unconditionally (current vault: ~44 + 5 = 49 files, bounded):
 
 #### Macro → Theses
 1. Extract `[[Theses/...]]` wikilinks.
-2. **Validate target existence**: drop dangling (e.g., `ℹ️ Reverse-index drop: [[Macro/X]] → [[Theses/CLOSED - ...]] (file not in Theses/, likely archived).`). Mirrors I.4 validation to prevent asymmetric state.
-3. Build mapping: `Macro/Note → sorted [tickers]` (validated only).
+2. **Validate target existence**: drop dangling (e.g., `ℹ️ Reverse-index drop: [[Macro & Technology/X]] → [[Theses/CLOSED - ...]] (file not in Theses/, likely archived).`). Mirrors I.4 validation to prevent asymmetric state.
+3. Build mapping: `Macro & Technology/Note → sorted [tickers]` (validated only).
 
 #### Sector → Theses
 Same procedure for `Sectors/*.md`.
@@ -198,7 +201,7 @@ Same procedure for `Sectors/*.md`.
 **Single-Bash** (2 → 1 tool calls):
 
 ```bash
-for dir in Macro Sectors; do
+for dir in "Macro & Technology" "Sectors"; do
   echo "=== $dir REVERSE INDEX ==="
   for f in "$dir"/*.md; do
     [ -f "$f" ] || continue
@@ -353,21 +356,50 @@ Ordering: `.graph_invalidations` deletion only if validation succeeded; lock rel
 
 ## Full Rebuild Path (`/graph` no args, or fallback)
 
-Tool-call budget (§4.2): typical full-rebuild run ~5-6 tool calls vs ~10-12 naïve. Output bit-identical.
+Tool-call budget (§4.2 — revised post-incident 2026-05-15): full-rebuild run is ~6-9 tool calls depending on vault size. The Bash tool truncates output around ~20 KB, so the inventory + reverse-index + per-thesis extraction cannot live in a single fused block once `|theses|` exceeds ~25. The implementation below splits into bounded-output blocks. Output bit-identical to the legacy fused design.
 
-### Steps 1-3: Fused Implementation (Single Bash Block)
+### Steps 1-3: Batched Implementation
+
+**Output budget math** (§4.2): per-thesis extraction emits ~25 lines × ~100 chars ≈ 2.5 KB; the Bash tool truncates around 20 KB. Safe batch size is **20 theses/block**. A 59-thesis vault (current) needs 3 thesis-extraction blocks. The legacy single fused block (pre-2026-05-15) was killed mid-stream by truncation on this scale and surfaced as Failure #2 in the 2026-05-15 incident.
+
+#### Block 1 — Inventory + Reverse Indexes (always one block, output ~5-10 KB)
 
 ```bash
 echo "=== INVENTORY ==="
-for dir in Theses Research Sectors Macro; do
+for dir in Theses Research Sectors "Macro & Technology"; do
   echo "--- $dir"
   find "$dir" -name '*.md' -type f | sort
 done
 
 echo ""
-echo "=== THESIS WIKILINKS + STATUS + LOG_TAIL (Steps 2 + 2b input) ==="
-for f in Theses/*.md; do
-  echo "--- $f"
+echo "=== REVERSE INDEXES (Step 3 input) ==="
+for dir in "Macro & Technology" "Sectors"; do
+  echo "+++ $dir"
+  for f in "$dir"/*.md; do
+    [ -f "$f" ] || continue
+    echo "--- $(basename "$f" .md)"
+    grep -oE '\[\[Theses/[^]|#]+' "$f" \
+      | sed 's|\[\[Theses/||; s|\.md$||' \
+      | sort -u
+  done
+done
+```
+
+LLM parses inventory by `===` and `---` markers, computes `N_theses = count of Theses/*.md`, picks batch count `K = ceil(N_theses / 20)`, then emits K thesis-extraction blocks (see Block 2 template). Inventory provides the thesis paths needed to construct those blocks.
+
+#### Block 2..K — Thesis Extraction (one block per batch of ≤20 theses)
+
+For each batch, emit a Bash block with the batch's thesis paths hardcoded:
+
+```bash
+THESIS_FILES=(
+  "Theses/TICKER1 - Name1.md"
+  "Theses/TICKER2 - Name2.md"
+  # ... up to 20 paths per block
+)
+
+for f in "${THESIS_FILES[@]}"; do
+  echo "=== FILE: $f ==="
   echo ">>> WIKILINKS"
   grep -oE '\[\[[^]]+\]\]' "$f" \
     | sed 's|^\[\[||; s|\]\]$||; s|\.md$||; s|\|.*$||; s|#.*$||' \
@@ -379,7 +411,7 @@ for f in Theses/*.md; do
     BEGIN { in_log=0; pending_date=""; }
     /^## Log[[:space:]]*$/ { in_log=1; next }
     in_log && /^## / { exit }
-    in_log && /^### [0-9]{4}-[0-9]{2}-[0-9]{2}/ { pending_date=$2; next }
+    in_log && /^### [0-9]{4}-[0-9]{2}-[0-9]{2}/ { pending_date=$0; gsub(/^### /, "", pending_date); next }
     in_log && pending_date != "" && /^- / {
       line=$0; sub(/^- /, "", line);
       if (length(line) > 100) line = substr(line, 1, 100) "…";
@@ -393,47 +425,42 @@ for f in Theses/*.md; do
     }
   ' "$f"
 done
-
-echo ""
-echo "=== REVERSE INDEXES (Step 3 input) ==="
-for dir in Macro Sectors; do
-  echo "+++ $dir"
-  for f in "$dir"/*.md; do
-    [ -f "$f" ] || continue
-    echo "--- $(basename "$f" .md)"
-    grep -oE '\[\[Theses/[^]|#]+' "$f" \
-      | sed 's|\[\[Theses/||; s|\.md$||' \
-      | sort -u
-  done
-done
 ```
 
-LLM parses output into three top-level sections by `===` markers, sub-buckets per-thesis data by `--- FILE` and `>>>` markers, performs Steps 2-3 categorization (existence validation, bucket by sector/macro/cross-thesis/research) and Step 4 clustering (bidirectional union-find) entirely in reasoning layer. No additional Bash calls for these steps.
+**Batching contract**:
+- Batch boundary is on file-count, not output-byte estimate — keeps emission deterministic and re-runnable.
+- Batch order = sorted thesis filenames (matches inventory order). Resumability if a block fails mid-skill.
+- LLM accumulates parsed adjacency per-thesis across all K blocks into one in-memory map before proceeding to Steps 4-7.
 
-**AWK design note** (§7.5): the extraction walks top-to-bottom through `## Log`, pairs each `### YYYY-MM-DD` header with the first `- ` bullet following it (skipping blank lines), keeps last 3 pairs. Bullets >100 chars truncated with `…` (horizontal ellipsis, not `...` — `/lint #42` safe, §7.4).
+**Small-vault parallel path** (`N_theses ≤ 20`): emit one thesis-extraction block instead of K. Block 1 + 1 thesis block = 2 total Bash calls for Steps 1-3.
+
+**Why not pipe to temp files**: tempting alternative is `find | xargs > /tmp/extract.txt` followed by `cat`-back, but (a) Bash output of `cat /tmp/extract.txt` is subject to the same truncation, (b) requires Read-tool fallback to bypass Bash output limits, which adds a fragile second path. Batch-by-count is the simpler invariant.
+
+**AWK design note** (§7.5): the extraction walks top-to-bottom through `## Log`, pairs each `### YYYY-MM-DD` header with the first `- ` bullet following it (skipping blank lines), keeps last 3 pairs. The header capture uses `pending_date=$0; gsub(/^### /, "", pending_date)` rather than `pending_date=$2` so the full date string (including any annotation like `(/sync)`) is preserved verbatim. Bullets >100 chars truncated with `…` (horizontal ellipsis, not `...` — `/lint #42` safe, §7.4).
 
 ## Step 1: Inventory Vault
 
-Use the fused block above. `=== INVENTORY ===` section is Step 1 data. Record counts for frontmatter: theses, sectors, macro, research.
+Use Block 1 from the Batched Implementation above. `=== INVENTORY ===` section is Step 1 data. Record counts for frontmatter: theses, sectors, macro, research.
 
 ## Step 2: Extract Thesis Adjacency
 
 For each thesis in `Theses/`:
 
-1. Extract `[[wikilinks]]` (fused block captures this).
+1. Extract `[[wikilinks]]` (Blocks 2..K capture this — one batch per ≤20 theses).
 2. Categorize:
    - `Sectors/` → sector
-   - `Macro/` → macro
+   - `Macro & Technology/` → macro
    - `Theses/` → cross-thesis
    - `Research/` → research
    - **Intentional-unresolved markers** (`[[pinned]]`; legacy `[[preserve]]` during deprecation transition window) → silently drop, do NOT log as dangling. User-authored callout opt-out marker — unresolved rendering is the feature.
+   - **Legacy `Macro/` prefix** → drop at step 3 with explicit migration hint (see Step I.4 step 2 for log format). Directory was renamed to `Macro & Technology/`.
    - Other targets → ignore
 3. **Validate target existence**: drop dangling references (target file missing — typically archived). Log each drop at `ℹ️` severity in Step 8 report. Intentional-unresolved allowlist from step 2 applied BEFORE validation.
 4. Build adjacency entry:
    ```
    ### TICKER - Company Name
    - **sectors:** [[Sectors/Sector Name]]
-   - **macro:** [[Macro/Note1]], [[Macro/Note2]]
+   - **macro:** [[Macro & Technology/Note1]], [[Macro & Technology/Note2]]
    - **cross-thesis:** [[Theses/OTHER - Company]]
    - **research:** [[Research/2026-01-15 - Topic - Source.md]], ...
    - **status:** active
@@ -458,7 +485,7 @@ Read-through cache for `/sync` Pass 1 triage and Step 2.5 skill-origin classific
 ## Step 3: Build Reverse Indexes
 
 ### Macro → Theses
-1. Extract `[[Theses/...]]` wikilinks per `Macro/*.md`.
+1. Extract `[[Theses/...]]` wikilinks per `Macro & Technology/*.md`.
 2. **Validate target existence** (drop dangling, log each).
 3. Build reverse mapping (validated only).
 

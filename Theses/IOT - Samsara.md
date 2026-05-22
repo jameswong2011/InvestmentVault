@@ -1,7 +1,7 @@
 ---
 date: 2026-04-15
 tags: [thesis, enterprise-software, IoT, IOT, Samsara, connected-operations, physical-AI, data-flywheel]
-status: active
+status: monitoring
 conviction: medium
 sector: Industrial IoT & Connected Operations
 ticker: IOT
@@ -238,3 +238,6 @@ Safety is both the primary customer value proposition and a regulatory tailwind.
 ### 2026-04-22
 - Sector re-scoped: Enterprise Software → Industrial IoT & Connected Operations (vault-wide subsector taxonomy reorganization).
 - Wikilink cleanup: Related Research `[[Sectors/Enterprise Software]]` → `[[Sectors/Industrial IoT & Connected Operations]]` (sector note body-filled 2026-04-22).
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.
