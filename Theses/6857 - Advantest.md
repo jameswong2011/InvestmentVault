@@ -220,9 +220,9 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 - [[Theses/BESI - BE Semiconductor Industries]] — hybrid bonding peer; HBM5 D2W ecosystem
 - [[Theses/FORM - FormFactor]] — single-sourced probe card supplier for V93000 HBM4 deployments
 - [[Theses/AEHR - Aehr Test Systems]] — WLBI burn-in adjacent — Advantest has not entered this segment
-- [[Theses/TSM - TSMC]] — CoWoS-L value chain capture risk
+- [[Theses/TSM - Taiwan Semiconductor]] — CoWoS-L value chain capture risk
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM4 market sizing through 2030
-- [[Research/2026-05-11 - HBM Packaging Equipment Stack and Materials Moats]] — equipment vs materials moat framework
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — equipment vs materials moat framework
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — DeepSeek MLA + HBM "Three-to-One" wafer penalty
 - [[Macro & Technology/AI Compute Infrastructure]] — adjacent macro context (if exists)
 - [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — Advantest vs Ajinomoto on ROIC × valuation × growth; AI-purity premium vs conglomerate-discount asymmetry, shared HBM/AI-capex driver overlap (~75%), and SEMICAP comp-anchor vs Japanese-conglomerate multiple-compression risk asymmetry

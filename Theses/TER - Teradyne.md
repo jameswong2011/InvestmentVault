@@ -210,9 +210,8 @@ The first merchant GPU win is AMD MI400 (not Nvidia), worth $100-150M and confin
 - [[Theses/AMAT - Applied Materials]] — adjacent semicap WFE; HBM TSV etch + advanced packaging tools
 - [[Theses/LRCX - Lam Research]] — adjacent semicap WFE; HBM dry etch + atomic layer deposition
 - [[Theses/FORM - FormFactor]] — probe card complementary product; FORM probe cards used inside Magnum EPIC HBM wafer test touch-downs
-- [[Macro/Semis - Gemini AI Compute HBM Canvas]] — macro framework for AI compute → HBM → ATE demand cascade
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM4 yield trajectory underpins wafer test cycle time bull case
-- [[Research/2026-05-11 - HBM Packaging Equipment Stack and Materials Moats]] — packaging stack context for HBM final test bottleneck
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — packaging stack context for HBM final test bottleneck
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — AI compute HBM demand model
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: E/O photonic test = emerging un-standardized TAM with Teradyne named "very serious" (acquired a packaged-optical-test startup) — corroborates the Quantifi CPO-test-capture Bull Case
 

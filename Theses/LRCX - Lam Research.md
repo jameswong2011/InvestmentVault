@@ -188,16 +188,16 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Theses/AMAT - Applied Materials.md]] — direct WFE peer; deposition counterparty and AP competitor (BESI 9% stake)
 - [[Theses/KLA - KLA Corporation.md]] — process control counterparty in WFE oligopoly; comparable structural positioning at higher ROIC
 - [[Theses/BESI - BE Semiconductor Industries.md]] — hybrid bonding partner/competitor; AMAT-BESI Kinex affects Lam CBA NAND positioning
-- [[Theses/SEMICAP - Semiconductor Capital Equipment.md]] — sector-aggregate basket peer
+- [[Sectors/Semiconductor Capital Equipment]] — sector-aggregate WFE peer view
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial; Aether confirmed at SK Hynix HBM4 production stack; JEDEC 720→775→900µm relaxation extends MR-MUF runway (Lam SABRE 3D + TSV etch ramp continues independent of hybrid-bonding mandate timing); DRAM mix shift 14→16% on HBM4 etch step-count increase
 - [[Theses/NVDA - Nvidia.md]] — end-customer demand driver via HBM/AI inference SSD
 - [[Theses/AVGO - Broadcom.md]] — AI infrastructure end-demand
-- [[Theses/SNDK - Sandisk.md]] — NAND end-customer; Cryo 3.0 + ALTUS Halo Mo demand source
+- [[Theses/SNDK - SanDisk]] — NAND end-customer; Cryo 3.0 + ALTUS Halo Mo demand source
 - [[Theses/000660 - SK Hynix.md]] — Aether dry resist tool-of-record customer; HBM4/HBM4E/MR-MUF leadership
 - [[Theses/285A - SK Hynix (KOSPI).md]] — alternate listing of SK Hynix; same end-customer relationship
 - [[Theses/TSM - Taiwan Semiconductor.md]] — leading-edge foundry; N2/A14 GAA Akara revenue source
 - [[Sectors/Semiconductor Capital Equipment.md]] — sector context
-- [[Macro/AI Bubble Risk.md]] — multiple-compression scenario macro context
+- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — multiple-compression scenario macro context
 - [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas.md]] — WFE TAM growth; Lam Vantex line for HBM4 TSV; Akara 2x-3x expansion 2026
 - [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation.md]] — head-to-head AMAT vs LRCX; ALTUS Halo Mo / SABRE 3D / NAND share-of-wallet expansion data
 - [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas.md]] — Dec 2025 quarter mix shift to 59% Foundry/Logic; CSBG $1.99B

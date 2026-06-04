@@ -1,622 +1,95 @@
 ---
 name: graph
-description: Rebuild the vault dependency graph (_graph.md). Three modes — /graph (full rebuild), /graph last (true incremental: re-extract only changed thesis adjacencies, always rebuild reverse indexes), /graph [N] (catch-up incremental from N days ago). Use /graph last after every /sync, /graph [N] for catch-up, /graph for full disaster-recovery rebuild.
+description: Rebuild the vault dependency graph (_graph.md) via the deterministic generator script. /graph forces a full rebuild; /graph last (run after every /sync) rebuilds only if the vault changed; /graph [N] is treated as last. The generator reads the vault and writes _graph.md directly, so the file never streams through a model response.
 model: sonnet
-effort: max
-allowed-tools: Read Grep Glob Edit Write Bash(find * wc * date * grep * rm * cat * sort *)
+effort: low
+allowed-tools: Read Grep Glob Edit Write Bash(python3 * find * wc * date * grep * rm * cat * sort * head * ls * printf *)
 ---
 
 Rebuild `_graph.md` from vault state. Structural metadata only — no content files modified, no snapshots, no `_hot.md` changes.
 
+**Engine**: `.claude/skills/graph/generate_graph.py` (deterministic). It reads every Thesis / Sector / Macro / Research file, validates wikilinks, and writes `_graph.md` directly. This replaced the legacy LLM-extraction + incremental-Edit procedure on 2026-06-04, after that approach hit a max-output-token wall: the full file is ~90 KB ≈ ~21 K output tokens, too large to emit in one model response — and both `/graph` (always full Write) and `/graph last` (escalation Write) funneled into that single oversized write. Generating the file from a script removes model output tokens from the path entirely, so the failure class (token ceiling, escalation traps, watermark edge cases, surgical-Edit anchor failures) cannot recur.
+
 **`.last_sync` is owned exclusively by `/sync`.** `/graph` never touches it.
 
-Design rationale in `.claude/skills/graph/RATIONALE.md` (§N.M anchors).
+Design rationale for the (now-superseded) incremental design: `.claude/skills/graph/RATIONALE.md`. Legacy manual procedure: git history prior to 2026-06-04 + the Fallback section below.
 
 ## Step 0: Pre-flight
 
-### 0.1: Acquire vault lock
-
-`vault-wide` scope per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout: 5 min (incremental) or 10 min (full rebuild). Capture token, verify (Procedure 1.5) at every subsequent block, release in final Bash block.
-
-`/graph` is vault-wide because it reads every thesis file — concurrent writer could produce mid-read inconsistent extraction.
-
-### 0.2: No rename-marker check
-
-`/graph` is read-only for theses. Graph faithfully reflects current filenames + wikilinks. `/lint #37` separately surfaces pending rename markers.
-
-## Mode Detection
-
-Parse `$ARGUMENTS`:
-- **`/graph last`** — True incremental. Skip if no changes since watermark. Re-extract adjacency for changed theses only; always rebuild reverse indexes.
-- **`/graph [N]`** — Catch-up incremental. Same as `last` but watermark = today − N days.
-- **`/graph`** (no arguments) — Full rebuild. Re-extract adjacency for ALL theses.
-
-Resolution: `last` literal → incremental. Integer N → catch-up. Empty/unrecognized → full.
-
-**Drift-safety design** (§1): forward adjacency incremental; reverse indexes, clusters, orphan list always rebuild fully from in-memory state.
-
-## Watermark Check (incremental modes only)
-
-For `/graph last` and `/graph [N]`, check before any other work. If no changes → skip Incremental Path AND Steps 1-8 entirely.
-
-### Pre-watermark: `.sync_all_fresh` marker
+### 0.1 Acquire vault lock
+`vault-wide` scope per `.claude/skills/_shared/preflight.md` Procedure 1 — `/graph` reads every thesis file, so a concurrent writer could produce inconsistent extraction. Capture the token; release in the final Bash block (ownership-checked).
 
 ```bash
-ls .sync_all_fresh 2>/dev/null
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ); TOKEN="graph-$$-$NOW"
+if [ -f .vault-lock ]; then echo "⚠️ lock held:"; cat .vault-lock; else
+  printf 'skill: /graph\ntoken: %s\nacquired: %s\nscope: vault-wide\n' "$TOKEN" "$NOW" > .vault-lock
+  echo "LOCK_TOKEN=$TOKEN"; fi
 ```
+Reclaim a stale lock only if its `acquired:` timestamp is older than 10 minutes.
 
-If present:
-- Log: `⚠️ .sync_all_fresh marker detected — prior /sync all requires full rebuild. Falling back to Steps 1-8 (full path) regardless of mode.`
-- Proceed to Step 1 (full rebuild). Step 7's cleanup handles marker deletion after successful full rebuild.
+### 0.2 No rename-marker check
+`/graph` is read-only for theses; the graph faithfully reflects current filenames + wikilinks. `/lint #37` surfaces pending rename markers separately.
 
-If absent, proceed to Watermark Resolution.
+## Step 1: Run the generator
 
-### Watermark Resolution (T6.10 — ISO precision + legacy fallback)
+Map the argument to a mode and invoke once:
 
-- **`/graph last`**: read `_graph.md`. File missing → warn `⚠️ _graph.md missing — falling back to full rebuild`, proceed to Step 1. Otherwise:
-  - **Preferred**: `last_graph_write:` frontmatter — ISO 8601 (`YYYY-MM-DDThh:mm:ssZ`). Use directly as watermark.
-  - **Legacy fallback**: `last_graph_write:` absent → use `date:` (YYYY-MM-DD) with implicit 00:00:00 UTC. Log: `ℹ️ _graph.md lacks last_graph_write: frontmatter — using conservative watermark (date: YYYY-MM-DD, 00:00:00 UTC). Next /graph last will upgrade.` (§2.2 — may reprocess same-day edits, safely idempotent).
-- **`/graph [N]`**: watermark = `today - N days` as `YYYY-MM-DDT00:00:00Z`. File missing → warn + full rebuild.
-
-### Change Detection (reference-file pattern — §3.1)
-
-Fuse change detection with `.graph_invalidations` pre-read in ONE Bash block:
-
-```bash
-# WATERMARK_ISO from resolved watermark.
-# /graph last: last_graph_write frontmatter (ISO with Z suffix).
-# /graph [N]: "$(date -u -v-${N}d +%Y-%m-%dT00:00:00Z)" on macOS,
-#             "$(date -u -d "$N days ago" +%Y-%m-%dT00:00:00Z)" on GNU.
-
-WATERMARK_ISO="2026-04-19T14:19:33Z"   # example
-touch -d "$WATERMARK_ISO" /tmp/graph-watermark
-echo "=== CHANGED FILES SINCE WATERMARK ==="
-find Theses/ Research/ Sectors/ "Macro & Technology/" -name '*.md' -newer /tmp/graph-watermark | sort
-echo "=== .graph_invalidations ==="
-cat .graph_invalidations 2>/dev/null || echo "(file absent)"
-rm -f /tmp/graph-watermark
-```
-
-**Critical**: use `touch -d <ISO>` + `find -newer`, NOT `find -newermt`; NOT `touch -t <stamp>` (§3.1, §3.2 — cross-platform portability).
-
-**Invalidation pre-check**: theses in `.graph_invalidations` need re-extraction regardless of mtime (neighbors of closed theses with stale `cross-thesis:` references — §1.3). See Step I.2.5.
-
-- **No files changed AND no invalidations**: report `Graph is up to date — no changes since [watermark date]; no pending invalidations.` Stop. Do NOT write `_graph.md`.
-- **No files changed but invalidations present**: proceed to Incremental Path. Only work is re-extracting invalidated theses + rebuilding reverse indexes + deleting `.graph_invalidations` at I.9. Report `No watermark changes, but [N] invalidations pending — processing.`
-- **One or more files changed**: proceed to Incremental Path. Do NOT proceed to Steps 1-8 (those are full rebuild).
-
-## Incremental Path (`/graph last` and `/graph [N]` when changes detected)
-
-Forward adjacency updates per changed thesis; reverse indexes/clusters/orphans always rebuild fully from in-memory state.
-
-**Tool-call budget** (§4.1 + §10.4): Incremental Path Path A (surgical Edits) typical 1-3 changed theses: 1 Read + 2 Bash (extraction + validation/release) + 1 Bash (watermark/lock) + ~5-10 Edits = ~10-14 tool calls, ~2 KB total model output. Path B (full Write) fallback: ~5-6 calls, ~15 KB output. Edits stream 5-7× faster end-to-end.
-
-### Step I.1: Parse Existing Graph
-
-Read `_graph.md`, parse:
-- Thesis Adjacency Index → map `TICKER - Name → {sectors, macros, cross-thesis, research, status, log_tail}`
-- Existing orphan list (diff reporting)
-- Existing cluster table (diff reporting)
-
-Baseline for incremental updates. Parse failure → warn `⚠️ _graph.md unparseable — falling back to full rebuild`, proceed to Step 1.
-
-**Pre-T7.3 compatibility**: if any entry lacks `status:` or `log_tail:`, flag for re-extraction in Step I.4 (treat as invalidated). Upgrades cache on next incremental pass. Log: `ℹ️ Adjacency entry [TICKER] missing T7.3 cache fields (status/log_tail) — will re-extract to upgrade schema.`
-
-**Single-Read directive** (§4.3): ONE `Read` on `_graph.md` in full. No preview-read + re-read. Legitimate split only when file exceeds Read's 2000-line default — pass `limit:` + `offset:` in ≤2 reads.
-
-### Step I.2: Bucket Changed Files
-
-Separate by directory:
-- **Changed Thesis** (`Theses/*.md`): re-extract in Step I.4
-- **Changed Sector/Macro** (`Sectors/*.md`, `Macro & Technology/*.md`): no per-file action — reverse indexes rebuild fully in Step I.5
-- **Changed Research** (`Research/*.md`): no per-file action — orphan list recomputes in Step I.7
-
-### Step I.2.5: Fold `.graph_invalidations` into Changed-Thesis Bucket
-
-`.graph_invalidations` is written by `/status` Step 7.6 and `/prune` Stage 4.5 on thesis closures — neighbor theses whose `cross-thesis:` references point to the now-archived thesis. These neighbors may not have been modified since last graph write; watermark check misses them but their adjacency is stale.
-
-Processing:
-1. File absent → skip, proceed to I.3.
-2. Read. Each non-empty, non-comment line is a relative thesis path.
-3. Per listed path:
-   - Exists in `Theses/` → add to Changed Thesis bucket (dedup).
-   - Does NOT exist → log `ℹ️ .graph_invalidations: [path] no longer in Theses/ — skipped (likely archived after invalidation).` Ignore.
-4. **Do NOT delete yet** — deletion happens at I.9 after graph write succeeds. Crash mid-path → list persists for next run.
-
-Report count at I.11: `Invalidations consumed: [N] neighbor theses (from .graph_invalidations)`.
-
-### Step I.3: Detect Thesis Additions and Removals
-
-Compare current `Theses/*.md` vs baseline adjacency:
-- **Added** (on disk, not in baseline): fresh extraction in Step I.4
-- **Removed** (in baseline, not on disk): remove from baseline map. Also disappear from I.6 cluster recomputation.
-
-### Step I.4: Re-extract Adjacency for Changed + Added + Invalidated Theses
-
-For each thesis flagged in I.2 (watermark), I.2.5 (invalidations), I.3 (added), or I.1 (missing T7.3 cache fields):
-
-1. Extract outbound `[[wikilinks]]`.
-2. Categorize:
-   - `Sectors/` → sector
-   - `Macro & Technology/` → macro
-   - `Theses/` → cross-thesis
-   - `Research/` → research
-   - **Intentional-unresolved markers** (`[[pinned]]`; legacy `[[preserve]]` during deprecation transition window) → silently drop, do NOT log as dangling. `[[pinned]]` is a user-authored opt-out marker on callouts — the unresolved wikilink rendering is the feature (visual distinction in reading view), not a broken reference.
-   - **Legacy `Macro/` prefix** → directory was renamed to `Macro & Technology/`. Drop at step 3 with explicit migration hint: `ℹ️ Dropped legacy macro reference: [TICKER] → [[Macro/X]] (directory renamed to Macro & Technology/; migrate the wikilink).` `/lint` should auto-surface for migration.
-   - Other targets → ignore.
-3. **Validate target existence** — drop dangling references, log each at `ℹ️` severity (e.g., `ℹ️ Dropped dangling cross-thesis: [TICKER] → [[Theses/TARGET - ...]] (file not in Theses/, likely archived).`). Completes the invalidation cycle opened at I.2.5 (§1.3). The intentional-unresolved allowlist at step 2 is applied BEFORE validation — never emit dangling log lines for `[[pinned]]` (or legacy `[[preserve]]`).
-4. **Extract `status:` and `log_tail:`** per Step 2b (same fused Bash block captures both alongside wikilinks).
-5. Replace baseline entry with new validated categorization + fresh cache fields.
-
-Unchanged (non-invalidated) theses retain baseline entries — no re-read.
-
-**Single-Bash for ALL changed theses** (N → 1 tool calls — typical incremental scope is 1-3 theses, well within the Bash output budget; if `|changed| > 20`, fall back to the batched implementation from the full-rebuild path):
-
-```bash
-for f in "Theses/TICKER1 - Name1.md" "Theses/TICKER2 - Name2.md" "Theses/TICKER3 - Name3.md"; do
-  echo "=== FILE: $f ==="
-  echo ">>> WIKILINKS"
-  grep -oE '\[\[[^]]+\]\]' "$f" \
-    | sed 's|^\[\[||; s|\]\]$||; s|\.md$||; s|\|.*$||; s|#.*$||' \
-    | sort -u
-  echo ">>> STATUS"
-  grep -m1 '^status:' "$f" | sed 's/^status: *//' || echo "unknown"
-  echo ">>> LOG_TAIL"
-  awk '
-    BEGIN { in_log=0; pending_date=""; }
-    /^## Log[[:space:]]*$/ { in_log=1; next }
-    in_log && /^## / { exit }
-    in_log && /^### [0-9]{4}-[0-9]{2}-[0-9]{2}/ { pending_date=$0; gsub(/^### /, "", pending_date); next }
-    in_log && pending_date != "" && /^- / {
-      line=$0; sub(/^- /, "", line);
-      if (length(line) > 100) line = substr(line, 1, 100) "…";
-      entries[++n] = pending_date " | " line;
-      pending_date="";
-    }
-    END {
-      start = (n > 3) ? n - 2 : 1;
-      for (i = start; i <= n; i++) print entries[i];
-      if (n == 0) print "—";
-    }
-  ' "$f"
-done
-```
-
-**Regex gotcha** (§3.3): `[^]]+` NOT `[^\]]+` — BSD grep silently returns empty output with the backslash form.
-
-**AWK header-capture note** (2026-05-15 fix): the date-header capture is `pending_date=$0; gsub(/^### /, "", pending_date)` rather than `pending_date=$2`. The old `$2` truncated headers like `### 2026-04-23 (scenario propagation)` to just `2026-04-23`, dropping the annotation that `/sync` Step 2.5 keys on for skill-origin classification. The full-string capture preserves whatever annotation the author wrote.
-
-### Step I.5: Rebuild Reverse Indexes (Always Full)
-
-Read every `Sectors/*.md` and `Macro & Technology/*.md` unconditionally (current vault: ~44 + 5 = 49 files, bounded):
-
-#### Macro → Theses
-1. Extract `[[Theses/...]]` wikilinks.
-2. **Validate target existence**: drop dangling (e.g., `ℹ️ Reverse-index drop: [[Macro & Technology/X]] → [[Theses/CLOSED - ...]] (file not in Theses/, likely archived).`). Mirrors I.4 validation to prevent asymmetric state.
-3. Build mapping: `Macro & Technology/Note → sorted [tickers]` (validated only).
-
-#### Sector → Theses
-Same procedure for `Sectors/*.md`.
-
-**Single-Bash** (2 → 1 tool calls):
-
-```bash
-for dir in "Macro & Technology" "Sectors"; do
-  echo "=== $dir REVERSE INDEX ==="
-  for f in "$dir"/*.md; do
-    [ -f "$f" ] || continue
-    name=$(basename "$f" .md)
-    echo "--- $name"
-    grep -oE '\[\[Theses/[^]|#]+' "$f" \
-      | sed 's|\[\[Theses/||; s|\.md$||' \
-      | sort -u
-  done
-done
-```
-
-Existence validation runs in LLM parse layer against `Theses/` on-disk set known from I.3 — no additional Bash.
-
-### Step I.6: Recompute Cross-Thesis Clusters
-
-Clusters depend only on forward adjacency `cross-thesis:` (fully current after I.4). Recompute from scratch:
-1. Pairs (A, B) where A's `cross-thesis:` includes B AND vice versa.
-2. Group connected pairs via union-find.
-3. Format as cluster table.
-
-### Step I.7: Recompute Orphan List
-
-From in-memory adjacency map:
-1. Collect all research wikilinks from every thesis's `research:` → `linked_research`.
-2. Inventory `Research/*.md` on disk → `all_research`.
-3. Orphans = `all_research − linked_research`, sorted.
-
-**Single-Bash** (2-3 → 1 tool calls):
-
-```bash
-ls Research/*.md | sed 's|^Research/||; s|\.md$||' | sort -u > /tmp/all_research.txt
-for t in Theses/*.md; do
-  grep -oE '\[\[Research/[^]|#]+' "$t"
-done | sed 's|\[\[Research/||; s|\.md$||' | sort -u > /tmp/disk_linked.txt
-echo "=== ALL RESEARCH (inventory) ==="
-cat /tmp/all_research.txt
-echo "=== DISK-LINKED RESEARCH (sanity check vs in-memory map) ==="
-cat /tmp/disk_linked.txt
-echo "=== ORPHANS per disk state (cross-check only) ==="
-comm -23 /tmp/all_research.txt /tmp/disk_linked.txt
-rm -f /tmp/all_research.txt /tmp/disk_linked.txt
-```
-
-**Authoritative orphan set = in-memory**. Disk-linked cross-check surfaces baseline drift: if disk-linked set references files NOT in baseline, log `ℹ️ Baseline drift: [TICKER] has wikilink to [research note] not in baseline adjacency — consider /graph full rebuild.`
-
-### Step I.8: Recount Edges
-
-From updated in-memory state:
-- Forward adjacency: per thesis, count of `sectors + macros + cross-thesis + research`.
-- Reverse indexes: per row, count of theses listed.
-
-### Step I.9: Apply Changes to `_graph.md` (diff-aware — §10)
-
-Enumerate deltas between the in-memory new state and the Step I.1 parsed baseline. Prefer surgical `Edit`s for small diffs; escalate to full `Write` only when the diff is wide or baseline is legacy.
-
-**Rationale**: full `Write` emits ~400 lines (~15 KB) regardless of change size. Typical post-T7.3 `/graph last` touches 1-3 theses and 0-2 reverse-index rows — surgical Edits emit ~2 KB and stream 5-7× faster end-to-end (§10.4).
-
-#### Step I.9.A: Surgical Edit Path (preferred)
-
-Compute the delta set in memory (no tool calls):
-
-- `frontmatter_changes`: `{date, last_graph_write, theses, sectors, macro, research, edges, orphans, graph_mode}` fields whose values differ from baseline.
-- `added_theses` / `removed_theses`: from Step I.3.
-- `modified_theses`: TICKERs whose baseline adjacency or cache differs from newly-extracted (Step I.4 set).
-  - **log_tail-only modification**: common case — thesis body edited, wikilinks unchanged, only `log_tail:` differs. Emit a granular Edit targeting just the `- **log_tail:**` line + its ≤3 bullets.
-  - **Full-block modification**: any wikilink field changed → replace entire block.
-- `modified_reverse_rows`: sector/macro rows whose member list differs.
-- `added_orphans` / `removed_orphans`: from Step I.7.
-- `cluster_table_changed`: true iff cluster set or members differ.
-
-**Escalation triggers** (§10.2) — if ANY true, abort Path A and take Path B:
-- Baseline parse failed at Step I.1.
-- Pre-T6.10 legacy frontmatter (no `last_graph_write:` field to Edit).
-- Pre-T7.3 upgrade scope wide: ≥10 baseline entries missing `status:` or `log_tail:` (upgrading each via granular Edit costs more than one full Write).
-- `|modified_theses| > 0.5 × |baseline_theses|` (output-token math favors Write).
-- `|modified_theses| + |added_theses| > 20` (absolute-scope cap — a long surgical-Edit cascade approaches the same output-token cap the chunked Write avoids; observed 2026-06-04: 33 changed theses accumulated against an 11-day-old watermark and stalled `/graph last`). Path B's chunked re-write is cheaper than 20+ full-block Edits.
-- Any anchor uniqueness check fails (§10.3).
-
-**Edit emission order** (per-Edit atomicity — §10.5):
-
-1. **Frontmatter**: one `Edit` per changed field. `old_string = "field: old-value\n"`, `new_string = "field: new-value\n"`. Always advance `date:` + `last_graph_write:`; other counters only if changed.
-2. **Removed thesis blocks**: `old_string` = full block (header + field lines + trailing blank line), `new_string` = ``.
-3. **Modified thesis — full-block variant**: `old_string` = baseline block verbatim, `new_string` = new block.
-4. **Modified thesis — log_tail-only variant**: `old_string` = `  - **log_tail:**\n[baseline bullet lines]`, `new_string` = `  - **log_tail:**\n[new bullet lines]`. Anchor via preceding `### TICKER - Name` header to disambiguate if bullet lines aren't globally unique.
-5. **Added thesis blocks**: find alphabetical successor `S` in baseline; `Edit old_string = "### [S]\n"`, `new_string = "[new block]\n\n### [S]\n"`. If new entry is alphabetically last, anchor on `## Reverse Index: Macro → Theses` and prepend block + blank line.
-6. **Modified reverse-index rows**: per row, `Edit` old_string = full row line (pipe-delimited), new_string = new row.
-7. **Cluster table**: if changed, one `Edit` replaces the whole table (anchor on `## Cross-Thesis Clusters` header through the blank line before `## Orphan Research Notes`).
-8. **Orphans**: per add, Insert at sorted position (`old_string` = alphabetical successor's line, `new_string` = new line + successor's line). Per remove, `Edit old_string = "- [[Research/...]]\n"`, `new_string = ""`.
-
-**Mid-cascade failure**: if any Edit errors, `_graph.md` is partially updated. Do NOT retry that Edit — escalate immediately to Path B (re-render full file from in-memory state and `Write` over the partial result). Log: `⚠️ Path A Edit failed for [delta]: [reason] — escalating to full Write to restore consistency.`
-
-#### Step I.9.B: Full (re)write Path (escalation + initial upgrade runs)
-
-Re-render the merged graph with the **chunked emission protocol from Step 7.1** — never a single whole-file `Write`. The same max-output-token failure applies here, and because Path B is the escalation target for a partially-written Path A, the on-disk file may already be large.
-- Frontmatter `date:` → today; `last_graph_write:` → Step 0.1 NOW; counts updated.
-- Sections: Thesis Adjacency Index (all entries sorted), Macro Reverse Index, Sector Reverse Index, Clusters (from I.6), Orphans (from I.7).
-- Chunk 1 = `Write` (overwrites the partial/old file with frontmatter + heading + first ≤20 entries); chunks 2..K = `cat >> _graph.md <<'GRAPHEOF'` appends, ≤20 entries or one section each.
-
-#### Post-edit cleanup
-
-**After Path A last Edit OR Path B Write succeeds**, delete `.graph_invalidations` if exists:
-```bash
-rm -f .graph_invalidations
-```
-Order matters (§9.1): delete only AFTER graph update succeeds. Failure → `.graph_invalidations` persists for next run. Report outcome at I.11.
-
-### Step I.10 + I.11: Validate + Release
-
-Single-Bash fuses validation + invalidation cleanup + lock release (2 → 1 tool calls):
-
-```bash
-# Validation probes
-echo "=== FRONTMATTER ==="
-head -15 _graph.md
-echo "=== SECTION HEADINGS (expect ≥5 ## and 40 ### adjacency entries) ==="
-grep -cE '^## ' _graph.md
-grep -cE '^### ' _graph.md
-echo "=== REQUIRED SECTION PRESENCE ==="
-for h in "## Thesis Adjacency Index" "## Reverse Index: Macro → Theses" "## Reverse Index: Sector → Theses" "## Cross-Thesis Clusters" "## Orphan Research Notes"; do
-  grep -qF "$h" _graph.md && echo "✓ $h" || echo "✗ MISSING: $h"
-done
-
-# Delete .graph_invalidations AFTER validation succeeds
-rm -f .graph_invalidations 2>/dev/null && echo "=== .graph_invalidations cleared ===" || echo "=== .graph_invalidations absent ==="
-
-# Lock release — verify ownership first
-LOCK_FILE=".vault-lock"
-EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
-if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
-  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ==="
-else
-  echo "⚠️ Lock ownership check failed at release — skipping rm to avoid stealing another skill's lock."
-fi
-```
-
-Ordering: `.graph_invalidations` deletion only if validation succeeded; lock release last.
-
-### Step I.11: Report
-
-- **Mode**: `/graph last` from [watermark date] | `/graph [N]` from [N] days ago
-- **Update path**: `Path A (surgical Edits: [K] emitted)` | `Path B (full Write — reason: [escalation trigger])`
-- **Changed thesis adjacencies re-extracted**: [count] (including [M] pulled from `.graph_invalidations`)
-- **Invalidations consumed**: `[N] neighbor theses from .graph_invalidations` or `none (file absent)`
-- **Invalidations file deletion**: `deleted` | `skipped (file never existed)` | `⚠️ rm failed — retry on next /graph last`
-- **Theses added**: [list, or "none"]
-- **Theses removed**: [list, or "none"]
-- **Reverse indexes**: rebuilt from scratch (always) — rows modified: [count]
-- **Cross-thesis clusters**: [list new/dissolved, or "no structural changes"]
-- **Orphan deltas**: [N newly orphaned, M no-longer-orphaned]
-- **Edges**: [old → new]
-- **Validation**: passed | [list specific failures]
-- **No content files modified** — graph update only
-
-## Full Rebuild Path (`/graph` no args, or fallback)
-
-Tool-call budget (§4.2 — revised post-incident 2026-05-15): full-rebuild run is ~6-9 tool calls depending on vault size. The Bash tool truncates output around ~20 KB, so the inventory + reverse-index + per-thesis extraction cannot live in a single fused block once `|theses|` exceeds ~25. The implementation below splits into bounded-output blocks. Output bit-identical to the legacy fused design.
-
-### Steps 1-3: Batched Implementation
-
-**Output budget math** (§4.2): per-thesis extraction emits ~25 lines × ~100 chars ≈ 2.5 KB; the Bash tool truncates around 20 KB. Safe batch size is **20 theses/block**. A 59-thesis vault (current) needs 3 thesis-extraction blocks. The legacy single fused block (pre-2026-05-15) was killed mid-stream by truncation on this scale and surfaced as Failure #2 in the 2026-05-15 incident.
-
-#### Block 1 — Inventory + Reverse Indexes (always one block, output ~5-10 KB)
-
-```bash
-echo "=== INVENTORY ==="
-for dir in Theses Research Sectors "Macro & Technology"; do
-  echo "--- $dir"
-  find "$dir" -name '*.md' -type f | sort
-done
-
-echo ""
-echo "=== REVERSE INDEXES (Step 3 input) ==="
-for dir in "Macro & Technology" "Sectors"; do
-  echo "+++ $dir"
-  for f in "$dir"/*.md; do
-    [ -f "$f" ] || continue
-    echo "--- $(basename "$f" .md)"
-    grep -oE '\[\[Theses/[^]|#]+' "$f" \
-      | sed 's|\[\[Theses/||; s|\.md$||' \
-      | sort -u
-  done
-done
-```
-
-LLM parses inventory by `===` and `---` markers, computes `N_theses = count of Theses/*.md`, picks batch count `K = ceil(N_theses / 20)`, then emits K thesis-extraction blocks (see Block 2 template). Inventory provides the thesis paths needed to construct those blocks.
-
-#### Block 2..K — Thesis Extraction (one block per batch of ≤20 theses)
-
-For each batch, emit a Bash block with the batch's thesis paths hardcoded:
-
-```bash
-THESIS_FILES=(
-  "Theses/TICKER1 - Name1.md"
-  "Theses/TICKER2 - Name2.md"
-  # ... up to 20 paths per block
-)
-
-for f in "${THESIS_FILES[@]}"; do
-  echo "=== FILE: $f ==="
-  echo ">>> WIKILINKS"
-  grep -oE '\[\[[^]]+\]\]' "$f" \
-    | sed 's|^\[\[||; s|\]\]$||; s|\.md$||; s|\|.*$||; s|#.*$||' \
-    | sort -u
-  echo ">>> STATUS"
-  grep -m1 '^status:' "$f" | sed 's/^status: *//' || echo "unknown"
-  echo ">>> LOG_TAIL"
-  awk '
-    BEGIN { in_log=0; pending_date=""; }
-    /^## Log[[:space:]]*$/ { in_log=1; next }
-    in_log && /^## / { exit }
-    in_log && /^### [0-9]{4}-[0-9]{2}-[0-9]{2}/ { pending_date=$0; gsub(/^### /, "", pending_date); next }
-    in_log && pending_date != "" && /^- / {
-      line=$0; sub(/^- /, "", line);
-      if (length(line) > 100) line = substr(line, 1, 100) "…";
-      entries[++n] = pending_date " | " line;
-      pending_date="";
-    }
-    END {
-      start = (n > 3) ? n - 2 : 1;
-      for (i = start; i <= n; i++) print entries[i];
-      if (n == 0) print "—";
-    }
-  ' "$f"
-done
-```
-
-**Batching contract**:
-- Batch boundary is on file-count, not output-byte estimate — keeps emission deterministic and re-runnable.
-- Batch order = sorted thesis filenames (matches inventory order). Resumability if a block fails mid-skill.
-- LLM accumulates parsed adjacency per-thesis across all K blocks into one in-memory map before proceeding to Steps 4-7.
-
-**Small-vault parallel path** (`N_theses ≤ 20`): emit one thesis-extraction block instead of K. Block 1 + 1 thesis block = 2 total Bash calls for Steps 1-3.
-
-**Why not pipe to temp files**: tempting alternative is `find | xargs > /tmp/extract.txt` followed by `cat`-back, but (a) Bash output of `cat /tmp/extract.txt` is subject to the same truncation, (b) requires Read-tool fallback to bypass Bash output limits, which adds a fragile second path. Batch-by-count is the simpler invariant.
-
-**AWK design note** (§7.5): the extraction walks top-to-bottom through `## Log`, pairs each `### YYYY-MM-DD` header with the first `- ` bullet following it (skipping blank lines), keeps last 3 pairs. The header capture uses `pending_date=$0; gsub(/^### /, "", pending_date)` rather than `pending_date=$2` so the full date string (including any annotation like `(/sync)`) is preserved verbatim. Bullets >100 chars truncated with `…` (horizontal ellipsis, not `...` — `/lint #42` safe, §7.4).
-
-## Step 1: Inventory Vault
-
-Use Block 1 from the Batched Implementation above. `=== INVENTORY ===` section is Step 1 data. Record counts for frontmatter: theses, sectors, macro, research.
-
-## Step 2: Extract Thesis Adjacency
-
-For each thesis in `Theses/`:
-
-1. Extract `[[wikilinks]]` (Blocks 2..K capture this — one batch per ≤20 theses).
-2. Categorize:
-   - `Sectors/` → sector
-   - `Macro & Technology/` → macro
-   - `Theses/` → cross-thesis
-   - `Research/` → research
-   - **Intentional-unresolved markers** (`[[pinned]]`; legacy `[[preserve]]` during deprecation transition window) → silently drop, do NOT log as dangling. User-authored callout opt-out marker — unresolved rendering is the feature.
-   - **Legacy `Macro/` prefix** → drop at step 3 with explicit migration hint (see Step I.4 step 2 for log format). Directory was renamed to `Macro & Technology/`.
-   - Other targets → ignore
-3. **Validate target existence**: drop dangling references (target file missing — typically archived). Log each drop at `ℹ️` severity in Step 8 report. Intentional-unresolved allowlist from step 2 applied BEFORE validation.
-4. Build adjacency entry:
-   ```
-   ### TICKER - Company Name
-   - **sectors:** [[Sectors/Sector Name]]
-   - **macro:** [[Macro & Technology/Note1]], [[Macro & Technology/Note2]]
-   - **cross-thesis:** [[Theses/OTHER - Company]]
-   - **research:** [[Research/2026-01-15 - Topic - Source.md]], ...
-   - **status:** active
-   - **log_tail:**
-     - `2026-04-19 | Stress test: TSM — weakened conviction — [2 more sentences omitted]`
-     - `2026-04-18 | Deepened: Industry Context section filled from latest sector research`
-     - `2026-04-15 | Status change: conviction medium→high — user reaffirmed after earnings`
-   ```
-
-### Step 2b: Extract `status:` and `log_tail:` per thesis (T7.3)
-
-Read-through cache for `/sync` Pass 1 triage and Step 2.5 skill-origin classification. See §7 for design.
-
-**Extraction procedure** (integrated into fused Steps 1-3 Bash block):
-- **`status:`** — `grep -m1 '^status:' "$f"` returns YAML frontmatter line. Strip `status: ` prefix. Expected: `draft | active | monitoring | closed`. Missing → `unknown`.
-- **`log_tail:`** — last 3 `### YYYY-MM-DD` date headers in document order; first bullet after each. Truncate to 100 chars (word boundary if possible), replace internal newlines with spaces. Format: `YYYY-MM-DD | [bullet text]`. No Log section / <3 entries → emit what's available. Empty Log → `—`.
-
-**Consumer contract**: `/sync` Pass 1 reads 3 prefixes (conviction/status recency, Stress test / Deepened markers, skill-origin); `/sync` Step 2.5 matches most-recent prefix against `_shared/log-prefixes.md` skill-origin list.
-
-**Schema-version signal** (§7.3): `log_tail:` field presence IS the signal. Pre-T7.3 graphs readable; cost consumers an extra round of file reads until `/graph` (full or incremental) upgrades the cache.
-
-## Step 3: Build Reverse Indexes
-
-### Macro → Theses
-1. Extract `[[Theses/...]]` wikilinks per `Macro & Technology/*.md`.
-2. **Validate target existence** (drop dangling, log each).
-3. Build reverse mapping (validated only).
-
-### Sector → Theses
-Same procedure for `Sectors/*.md`.
-
-Forward and reverse built independently from respective source files. Both apply existence validation. Source-file wikilink wording may still disagree across directions (`/lint #23` catches).
-
-## Step 4: Build Cross-Thesis Clusters
-
-Bidirectional references:
-- A lists B in `cross-thesis:` AND B lists A → bidirectional cluster (↔)
-- Only one direction → unidirectional (→), note but don't cluster.
-
-Format:
-```
-| Cluster | Members | Link Type |
+| Invocation | Arg | Behavior |
 |---|---|---|
-| AI Compute | [[NVDA]], [[AVGO]], [[MRVL]] | ↔ |
-| Memory | [[MU]], [[SNDK]] | ↔ |
-```
+| `/graph` | `full` | Always (re)writes `_graph.md` (disaster-recovery semantics). |
+| `/graph last` | `last` | Writes only if the body changed OR a force-marker is present; else leaves the file untouched and reports up-to-date. |
+| `/graph [N]` | `last` | Same as `last` (N accepted for back-compat, treated as `last`). |
 
-## Step 5: Identify Orphan Research Notes
-
-Orphan = research note NOT listed in ANY thesis's `research:` field.
-
-**Pure set difference, no additional Bash** (§8): after fused block, LLM holds Research inventory (from `=== INVENTORY ===`) and `linked_research` (from `=== THESIS WIKILINKS ===`). Orphans = `Research inventory − linked_research`, sorted. Emit directly into `## Orphan Research Notes`.
-
-## Step 6: Count Edges
-
-Total unique directional wikilinks from thesis + sector + macro files. Sum deduplicated per source file (same target linked from two different files = two edges). This is the `edges:` frontmatter value.
-
-## Step 7: Write `_graph.md`
-
-**Before overwriting**: if `_graph.md` exists, read and retain old content for Step 8 comparison. Extract: thesis count, edge count, orphan count, adjacency entries, cluster table.
-
-### Step 7.0: No-op Short Circuit (T6.13 — Edit-only when body unchanged)
-
-Compose new graph body in memory, compare to prior body. For no-op full rebuild (common case on quiet vault), body is byte-identical; only frontmatter needs updating.
-
-**Procedure**:
-1. Compose full new content (frontmatter + body) in LLM memory.
-2. From prior `_graph.md` content, extract everything after second `---` → `prior_body`.
-3. Extract same from new composed content → `new_body`.
-4. Compare byte-for-byte:
-   - **`prior_body == new_body`**: `Edit` tool updates ONLY changed frontmatter fields (`date:`, `last_graph_write:` always advances, `graph_mode:` if differs). Typically 1-3 `Edit` calls. Skip `Write`.
-   - **`prior_body != new_body`**: fall through to full `Write`.
-5. **Legacy-frontmatter exception**: prior lacks `last_graph_write:` (pre-T6.10) → skip short circuit, full `Write`. Upgrades frontmatter schema in one pass.
-
-Safety + efficiency rationale: §5.
-
-### Step 7.1: Full Write (body changed)
-
-```yaml
----
-type: vault-graph
-date: YYYY-MM-DD
-last_graph_write: YYYY-MM-DDThh:mm:ssZ   # ISO 8601 UTC — T6.10 precision watermark
-graph_mode: last | [N] | full            # mode of this write (display only)
-theses: [count]
-sectors: [count]
-macro: [count]
-research: [count]
-edges: [count]
-orphans: [count]
----
-```
-
-**`last_graph_write:` population** (§6): reuse `NOW` captured at Step 0.1 lock-acquisition (as `started_at:`). Do NOT issue separate `date -u` call.
-
-**`date:` population**: `YYYY-MM-DD` for display consistency. Same calendar day as `last_graph_write:`.
-
-**`graph_mode:` population**: literal `last`, integer N, or `full`. Read by `/lint #38` for diagnostic messages; not load-bearing.
-
-Sections:
-1. `## Thesis Adjacency Index` — all entries from Step 2 (includes T7.3 `status:` + `log_tail:`)
-2. `## Reverse Index: Macro → Theses` — from Step 3
-3. `## Reverse Index: Sector → Theses` — from Step 3
-4. `## Cross-Thesis Clusters` — from Step 4
-5. `## Orphan Research Notes` — from Step 5
-
-**Chunked emission (MANDATORY — never single-`Write` the whole file)**: at current vault scale `_graph.md` is ~85 KB ≈ ~21 K output tokens; one `Write` exceeds the per-response output-token cap and aborts (observed 2026-06-04: 57-min runs ending in max-output-token errors on both `/graph` and `/graph last`). Assemble the file in bounded pieces, none exceeding ~6 KB:
-
-1. **Chunk 1 — `Write`**: frontmatter + title + intro + `## Thesis Adjacency Index` heading + the first ≤20 adjacency entries.
-2. **Chunks 2..K — `Bash` append**: remaining adjacency entries in ≤20-entry batches, then each later section (Macro reverse index, Sector reverse index, Clusters, Orphans), one append per batch/section:
-   ```bash
-   cat >> _graph.md <<'GRAPHEOF'
-   …chunk body verbatim…
-   GRAPHEOF
-   ```
-   The quoted delimiter `'GRAPHEOF'` is mandatory so `[[`, backticks, `$`, and `|` in log_tail text are written literally (an unquoted delimiter lets the shell mangle them).
-3. **Preferred above 40 theses — deterministic generator**: a script that reads the vault and writes `_graph.md` directly bypasses model output tokens entirely. It must reproduce this exact schema (2-space `- **field:**` bullets, `macros:` label, `—` for empty fields, ≤3 `log_tail` bullets each truncated at 100 chars + `…`). This is the method used to recover the graph on 2026-06-04.
-
-A heredoc that fails to close silently truncates the file — always run Step 7.5 after the final append.
-
-**After write succeeds**, delete post-write markers (§9):
 ```bash
-rm -f .graph_invalidations
-rm -f .sync_all_fresh
+python3 .claude/skills/graph/generate_graph.py full   # or: last
 ```
 
-Failure → both preserved so next `/graph` honors them. Report both delete outcomes in Step 8.
+What the generator does (so the report is faithful):
+- Validates every wikilink against on-disk files; **drops dangling refs** (renamed sectors, legacy `Macro/` prefix, typo'd thesis names) and the intentional-unresolved `[[pinned]]` / `[[preserve]]` markers (never flagged as broken).
+- Rebuilds adjacency, both reverse indexes, bidirectional clusters (union-find), and the orphan set **from scratch every run** — no drift.
+- Emits the T7.3 read-through cache (`status:` + `log_tail:` — last 3 Log entries, truncated at 100 chars + `…`) that `/sync` Pass 1 triage depends on.
+- **Self-validates** the written file (5 sections present; `###` / `status` / `log_tail` counts all equal the thesis count). Exit **0** = written or up-to-date, **2** = validation failed, **1** = runtime error.
+- On a successful write, deletes the `.sync_all_fresh` and `.graph_invalidations` force-markers (their presence forces a write even when the body is unchanged, so closures/sync-all always reconcile).
 
-## Step 7.5: Validate Written Graph
+**If the generator exits non-zero**: do NOT leave a half-written graph. Surface its stdout/stderr verbatim and use the Fallback section. Exit 2 means the file was written but failed structural checks — re-run `full`; if it persists, the schema contract or the vault is the problem.
 
-Re-read `_graph.md`. Verify:
-1. YAML frontmatter parses; all expected fields present (`type`, `date`, `theses`, `sectors`, `macro`, `research`, `edges`, `orphans`)
-2. All five section headings exist
-3. Every `### TICKER - Name` has at least `sectors:` field
-4. **T7.3 cache fields**: every entry carries `status:` and `log_tail:`. Missing either → `⚠️ Adjacency entry [TICKER] missing status: or log_tail: after write — likely extraction glitch; re-run /graph last to refresh.` Non-fatal; continue.
-5. Wikilinks in **structural fields** (`sectors`/`macros`/`cross-thesis`/`research`) and in reverse-index / cluster / orphan rows have balanced `[[ ]]`. Unbalanced brackets inside `log_tail:` sub-bullets (4-space indent) are EXPECTED — the 100-char truncation can sever a quoted `[[…]]`; do NOT flag those. Fail only when a structural field or table row is unbalanced.
-6. Frontmatter counts match content: `theses:` = count of `###` entries; `orphans:` = count of orphan items
-7. Every file listed in adjacency exists on disk (spot-check first + last entry + any newly added/changed)
+## Step 2: Validate & report
 
-Any fail:
-- Checks 1-2 (structural): `❌ Graph rebuild produced a corrupt file — [specific failure]. Re-run /graph.`
-- Checks 3-7 (content): `⚠️ Graph rebuilt with minor issues — [specific failure]. Review and re-run /graph if needed.`
+The generator already self-validated. Confirm structure and release the lock in one Bash block:
 
-Include in Step 8 report.
+```bash
+echo "=== frontmatter ==="; head -13 _graph.md
+echo "=== sections (expect 5) ==="; grep -cE '^## ' _graph.md
+echo "=== entries vs cache (three numbers must be equal) ==="
+printf '### %s | status %s | log_tail %s\n' \
+  "$(grep -cE '^### ' _graph.md)" "$(grep -c '\*\*status:\*\*' _graph.md)" "$(grep -c '\*\*log_tail:\*\*' _graph.md)"
+# lock release — ownership-checked (substitute LOCK_TOKEN captured at Step 0.1)
+EXPECTED="<LOCK_TOKEN>"
+if [ -f .vault-lock ] && grep -q "token: $EXPECTED" .vault-lock; then rm -f .vault-lock && echo "LOCK RELEASED";
+else echo "⚠️ lock token mismatch — not removing"; fi
+```
 
-## Step 8: Report
+Report to the user:
+- **Mode** + **status** (`written` / `up-to-date`) + **reason** (from generator stdout).
+- **Nodes**: theses + sectors + macro + research. **Edges**. **Orphans** (list).
+- **Clusters**: from generator stdout (note new/dissolved vs prior if recoverable).
+- **Dangling links dropped**: count — these are source-file link debt; a `/lint` pass or manual cleanup fixes the source, the graph just reflects current truth.
+- **Markers cleared**: from generator stdout.
+- **No content files modified** — graph metadata only.
 
-- **Nodes**: [count] (theses + sectors + macro + research)
-- **Edges**: [count]
-- **Orphans**: [count]
-- **Changes from previous graph** (if captured in Step 7):
-  - Theses added/removed: [list]
-  - Edges added: [count] | Edges removed: [count]
-  - Orphans resolved: [list] | New orphans: [list]
-  - Reverse index corrections: [count]
-  - Cluster changes: [list new or dissolved clusters]
-- **No content files modified** — graph rebuild only
+## Output schema contract (what the generator must emit)
+
+Frozen interface — consumers depend on it: `/sync` Pass 1 triage (reads `status:` + `log_tail:` prefixes) and the graph-primer in `/ingest`, `/compare`, `/thesis`, `/stress-test`, `/brief`, `/deepen`. Any change to `generate_graph.py` must preserve:
+- **Frontmatter**: `type: vault-graph`, `date`, `last_graph_write` (ISO-8601 `…Z`), `graph_mode`, `theses`, `sectors`, `macro`, `research`, `edges`, `orphans`.
+- **Five sections, in order**: `## Thesis Adjacency Index`, `## Reverse Index: Macro → Theses`, `## Reverse Index: Sector → Theses`, `## Cross-Thesis Clusters`, `## Orphan Research Notes`.
+- **Adjacency entry**: `### TICKER - Name` then 2-space bullets `sectors` / `macros` / `cross-thesis` / `research` / `status` / `log_tail` (`—` for empty); `log_tail` sub-bullets 4-space indent, ≤3, each truncated at 100 chars + `…` (horizontal ellipsis — `/lint #42` safe, never `...`).
+
+`/lint #38` reads `graph_mode:`; `/lint #43` enforces the lock contract. Validation false-positive note: unbalanced `[[ ]]` inside `log_tail` sub-bullets is EXPECTED (truncation can sever a quoted link) — only structural fields and table rows must balance.
+
+## Fallback (python3 unavailable, or generator exits 1/2)
+
+Reproduce the schema above **without ever single-`Write`-ing the whole file** (that is the failure this skill exists to avoid — at vault scale one `Write` is ~21 K output tokens and aborts):
+1. **Extract** inventory + reverse indexes + per-thesis wikilinks/status/log_tail in bounded Bash blocks — batch theses ≤20 per block (the Bash tool truncates output ~20 KB).
+2. **Categorize/validate** wikilinks in memory using the same rules as the generator (prefix → sector/macro/cross-thesis/research; drop dangling, `[[pinned]]`, legacy `Macro/`).
+3. **Chunked emission**: `Write` frontmatter + `## Thesis Adjacency Index` + the first ≤20 entries; then `cat >> _graph.md <<'GRAPHEOF' … GRAPHEOF` (quoted delimiter, so `[[`, backticks, `$`, `|` are literal) for each remaining ≤20-entry batch and each later section. Keep every call ≤ ~6 KB.
+4. **Validate** (re-read: 5 sections, counts equal) and delete `.sync_all_fresh` + `.graph_invalidations` only after success.

@@ -233,18 +233,17 @@ The bear case is real and is why conviction is medium, not high. Three structura
 
 **Sector + cluster context**:
 - [[Sectors/Semiconductor Capital Equipment]] — Sector MOC for AMAT, LRCX, ASML, ASMI, KLA, BESI competitive dynamics.
-- [[Theses/SEMICAP - Semiconductor Capital Equipment Basket]] — Basket-level thesis covering WFE oligopoly tailwinds.
 - [[Theses/BESI - BE Semiconductor Industries]] — 9% AMAT stake; Kinex partner; hybrid bonding pure-play.
 
 **Cross-thesis adjacency (AI/Semis Ecosystem cluster)**:
-- [[Theses/NVDA - NVIDIA]] — End-customer demand driver via TSMC capex.
+- [[Theses/NVDA - Nvidia]] — End-customer demand driver via TSMC capex.
 - [[Theses/AVGO - Broadcom]] — ASIC custom silicon volume; AMAT exposure indirect via foundry capex.
-- [[Theses/TSM - Taiwan Semiconductor Manufacturing]] — Largest AMAT customer; GAA tool-of-record decisions material.
+- [[Theses/TSM - Taiwan Semiconductor]] — Largest AMAT customer; GAA tool-of-record decisions material.
 - [[Theses/LITE - Lumentum]] — Optical interconnect adjacency; downstream AI capex.
 
 **Memory / packaging adjacency**:
 - [[Theses/285A - Kioxia]] — NAND capex driver for AMAT NAND segment.
-- [[Theses/SNDK - Sandisk]] — NAND capex driver.
+- [[Theses/SNDK - SanDisk]] — NAND capex driver.
 - [[Theses/000660 - SK Hynix]] — HBM driver, primary Kinex customer candidate.
 
 **Macro context**:

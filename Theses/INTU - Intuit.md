@@ -173,11 +173,11 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 - [[Theses/NOW - ServiceNow]] — agentic AI workflow tension parallel; both face the "is the AI the disruptor or the disrupted in vertical workflow" question
 - [[Theses/PLTR - Palantir]] — AI monetization-as-tier vs. AI-as-feature framework comparison; PLTR's AIP pricing playbook is the closest analog to QuickBooks AI tier strategy
 - [[Theses/SHOP - Shopify]] — embedded fintech (Shopify Capital, Shopify Payments) parallel to QuickBooks Capital + Payments and Credit Karma Lightbox
-- [[Theses/CRCL - Circle]] — Agentic Internet macro adjacency; both INTU and CRCL are positioning for an embedded-AI commerce layer, though at different parts of the stack
+- [[Theses/CRCL - Circle Internet Group]] — Agentic Internet macro adjacency; both INTU and CRCL are positioning for an embedded-AI commerce layer, though at different parts of the stack
 
 **Sector**: [[Accounting & ERP Software]]
 
-**Macro adjacencies**: [[Macro/Agentic Internet]] (Lightbox + Intuit Assist as native infrastructure for AI agents transacting on user behalf); open banking / CFPB 1033 rule implementation as ongoing structural force for both QBO data portability and Credit Karma Lightbox monetization.
+**Macro adjacencies**: [[Macro & Technology/Agentic Internet]] (Lightbox + Intuit Assist as native infrastructure for AI agents transacting on user behalf); open banking / CFPB 1033 rule implementation as ongoing structural force for both QBO data portability and Credit Karma Lightbox monetization.
 
 ## Log
 

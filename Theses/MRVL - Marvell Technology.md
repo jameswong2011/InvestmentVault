@@ -82,7 +82,7 @@ Marvell has leverage over: (a) optical DSP customers (80%+ 800G share, duopoly w
 3. **Scale-up fabric war (NVLink Fusion vs. UALink 1.0)** — post-March 2026 Nvidia investment, Marvell is now functionally on the NVLink side. Winners from the hyperscaler rack standard decision accrue multi-year silicon-fabric revenue.
 4. **Optical DSP → LPO transition** — LPO removes DSP content from short-reach scale-up optics. Marvell is both threatened (losing DSP ASP) and first-mover (shipping 1.6T LPO chipset). Net margin impact negative over 24 months.
 5. **Memory wall + photonic interconnect** — Celestial AI bet is that the next rack architecture requires photonic scale-up fabric for memory-pool disaggregation. Unproven primitive; if validated, Marvell is the only merchant option.
-6. **TSMC concentration + Taiwan tail** — same as AVGO / NVDA exposure; ~100% of leading-edge tapeouts on TSMC N2/A16. [[Research/2026-04-19 - TSM - Taiwan Stress Test.md]]-equivalent impairment scenarios apply.
+6. **TSMC concentration + Taiwan tail** — same as AVGO / NVDA exposure; ~100% of leading-edge tapeouts on TSMC N2/A16. [[Research/2026-04-19 - TSM - Stress Test]]-equivalent impairment scenarios apply.
 
 **Marvell silicon photonics scope vs Broadcom — DSP + LPO + Photonic Fabric + (no) CPO**. Marvell's photonics franchise is the most asymmetric piece of the thesis: early-mover at multiple layers (Inphi 2021 for DSP, Innovium 2021 for switching IP, Celestial Feb 2026 for Photonic Fabric) but with a deliberate gap at switch-integrated CPO that Broadcom owns.
 

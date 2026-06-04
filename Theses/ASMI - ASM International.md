@@ -150,14 +150,14 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 
 - [[Sectors/Semiconductor Capital Equipment]] — sector hub with ASMI competitive context
 - [[Theses/BESI - BE Semiconductor Industries]] — adjacent SEMICAP peer; hybrid bonding tailwind
-- [[Theses/NVDA - NVIDIA Corporation]] — demand-side driver via hyperscaler training capex
-- [[Theses/TSM - Taiwan Semiconductor Manufacturing]] — primary ASMI customer; 1.4nm POR wins flow through TSMC
+- [[Theses/NVDA - Nvidia]] — demand-side driver via hyperscaler training capex
+- [[Theses/TSM - Taiwan Semiconductor]] — primary ASMI customer; 1.4nm POR wins flow through TSMC
 - [[Theses/AIXA - Aixtron]] — adjacent compound-semi deposition peer
 - [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas]] — 5-vendor WFE evaluation; ASMI €3.2B 2025 / 1.4nm pilot H2 2026
 - [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation]] — 20% recommended ASMI allocation; 44x P/E; 55% ALD share
 - [[Research/2026-04-15 - BESI - Hybrid Bonding Market Projections]] — adjacent advanced-packaging tailwind through ASMPT lens
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — TSMC $100B 2028 capex, semicap demand validation
-- [[Macro/AI Bubble Risk]] — hyperscaler capex normalization risk
+- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — hyperscaler capex normalization risk
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→4-5% (POR annuity reframe; relative-value laggard +92% 1Y; ALD + Epi two engines)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: 1b/1c DRAM node migration (combined 1b+1c capacity +~80% 4Q25→4Q27) lifts ALD-layer demand
 

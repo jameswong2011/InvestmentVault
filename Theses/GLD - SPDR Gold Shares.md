@@ -235,7 +235,7 @@ Path: $4,708 → $4,200 (Warsh confirmation) → $3,800 (real yields break 2.5%)
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — GLD/GDX/Newmont explicitly flagged as hedge gaps; $4,400 contrarian entry cited
 - [[Research/2026-03-30 - Commodity Market Analysis 2026]] — gold ranked "mild short near term" during Iran regime
 - [[Research/2026-01-12 - Macro - Gemini Iran Investment Strategy Canvas]] — "Gold: The Imperfect Hedge" — gold works best as pre-conflict hedge
-- [[Theses/BTC-CRYPTO - Bitcoin]] — digital-gold analog; cross-thesis consideration for monetary-alternative allocation
+- [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] — digital-gold analog; cross-thesis consideration for monetary-alternative allocation
 
 ## Log
 

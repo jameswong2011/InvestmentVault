@@ -176,7 +176,7 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration.md]] — OCP DC Power Shelf v3, immersion cooling guidelines co-authorship, committee participation
 - [[Research/2025-07-15 - Data Center Liquid Cooling.md]] — Industry-wide liquid cooling transition, Vertiv/NVIDIA deployments showing 10-15% PUE improvement, ORC waste heat recovery
 - [[Sectors/Data Center Power & Cooling]] — Sector note where VRT is the sole Active Thesis; covers liquid cooling transition, OCP standards authorship, 800VDC architecture, hyperscaler oligopsony dynamics
-- [[Theses/NVDA - NVIDIA.md]] — NVIDIA thesis references Vertiv as reference-design cooling partner
+- [[Theses/NVDA - Nvidia]] — NVIDIA thesis references Vertiv as reference-design cooling partner
 - [[Theses/META - Meta.md]] — Meta thesis references OCP collaboration with Vertiv
 
 ## Log
