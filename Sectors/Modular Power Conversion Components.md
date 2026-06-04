@@ -228,6 +228,7 @@ Vinciarelli on Q1 2026 call: "frankly ill-conceived" referring to 800V→6V; "Vi
 - [[Sectors/Compute & AI Compute Accelerators]] — Demand-side sector; NVIDIA Hopper / Blackwell / Rubin / Rubin Ultra roadmap drives the architectural fork at ~1,500–2,000A
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — Adjacent silicon ecosystem; Broadcom XPU / Marvell ASIC reference designs increasingly demand high-density power modules at HPC scale
 - [[Sectors/Optical Networking & Photonics]] — CPO context; Quantum-X / Spectrum-X Photonics deployments are the primary thermal-coupling forcing function for VPD adoption per §Macro shifts #2
+- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Vicor licensing corrected to ~$60M annualised with new deals paused until the 2027 ITC determination ($300M is the order backlog, not a licensing pipeline); Q1 2026 numbers confirmed; "Rubin" said 0× across 4 calls (design-wins are generic-hyperscaler/ASIC-led, NVIDIA framed as multi-sourcing)
 
 ## Log
 
@@ -239,3 +240,6 @@ Vinciarelli on Q1 2026 call: "frankly ill-conceived" referring to 800V→6V; "Vi
 
 ### 2026-05-19 (/sync)
 - Cross-sector propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers the rack-down power-architecture transition with new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT LTM) across the six-layer value chain (grid/MV → SST → DC distribution → wide-bandgap silicon → on-board VPD → passives). This sector maps to Layer 5 (Last 1.5 mm / on-board VPD): Vicor sits as Tier 1 with ~60% / ~70% AI-DC Rev/OP and ~10% / ~50x ROIC / EV-EBIT (richest multiple in Layer 5 alongside MPS ~50x); Flex (own VPD product line, ~25% / ~30% AI-DC, ~15% / ~12x) is the only credible second-source vertical vendor; Murata VPD module entry (~28% / ~33% AI-DC, ~10% / ~14x) is the Q3 2026 mass-production wildcard. MPS at Layer 4 (wide-bandgap silicon) carries ~35% / ~45% AI-DC at ~22% / ~50x — direct competitor with structurally similar AI-DC purity. The macro's 800V→48V→0.7V vs 800V→6V architectural debate (§Industry Context §Key industry questions #4 here) is the central forcing function for this sector; macro provides upstream context. No conviction changes — sector framing intact; macro adds quantitative anchor to existing architectural-fork narrative.
+
+### 2026-05-29 (/sync)
+- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: transcript-vs-thesis review registered. Vicor licensing corrected (~$60M annualised, new deals paused until 2027 ITC determination; $300M is order backlog, not a licensing pipeline); Q1 2026 numbers confirmed; "Rubin" said 0× across 4 calls (design-wins generic-hyperscaler/ASIC-led). No sector-framework change.

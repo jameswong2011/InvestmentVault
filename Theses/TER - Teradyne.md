@@ -214,6 +214,7 @@ The first merchant GPU win is AMD MI400 (not Nvidia), worth $100-150M and confin
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]] — HBM4 yield trajectory underpins wafer test cycle time bull case
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack and Materials Moats]] — packaging stack context for HBM final test bottleneck
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — AI compute HBM demand model
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: E/O photonic test = emerging un-standardized TAM with Teradyne named "very serious" (acquired a packaged-optical-test startup) — corroborates the Quantifi CPO-test-capture Bull Case
 
 ## Log
 
@@ -225,3 +226,6 @@ The first merchant GPU win is AMD MI400 (not Nvidia), worth $100-150M and confin
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis names E/O photonic test an emerging un-standardized battleground — Teradyne "very serious", acquired a packaged-optical-test startup; corroborates the Quantifi/CPO-test-capture bull driver. Net-new TAM not yet sized. Conviction unchanged (medium).

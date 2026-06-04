@@ -178,7 +178,7 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 **Specific drivers**:
 1. **Google signs formal custom silicon engagement** (MPU + inference TPU) within FY27. Even as third seat behind Broadcom's through-2031 lock, a 15-20% share of Google's custom inference spend adds $500M-$1B to FY28 run rate.
 2. **AWS Trainium 3 partial allocation (500K of 2.5M units) confirmed + Trainium 4 design-partner slot retained.** Restores AWS to base-case custom silicon anchor.
-3. **Celestial Photonic Fabric ramps on schedule** — PF chiplet sampling H2 2026, first customer announcement by Q1 FY28, $500M Q4 FY28 on track.
+3. **Celestial Photonic Fabric ramps on schedule** — PF chiplet sampling H2 2026, first customer announcement by Q1 FY28, $500M Q4 FY28 on track. Per [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]], the first *quantified* scale-up CPO ramp now has hard structure: $1B run-rate by end CY2028 into AWS Trainium 4, a $2.25B earn-out triggered on $2.0B cumulative Celestial revenue by Jan 2029, and — the strongest public tell — an Amazon warrant struck at $87.0029 vesting on Photonic Fabric purchases through Dec 31 2030, implying AWS is committing PF to the Trainium 4 program. Execution gate (new): Celestial's EAM modulator has no TSMC COUPE PDK support, so Marvell must integrate EAM into a foundry itself — the same class of advanced-packaging hand-off that cost it the Trainium 3 primary socket (Bear driver #1, Risk #1).
 4. **NVLink Fusion wins the scale-up fabric standard** — hyperscalers adopt NVLink-based racks over UALink, making Marvell the non-Nvidia silicon beneficiary.
 5. **1.6T DSP share holds through Ara generation** — Nova / Ara platform maintain 75%+ share despite LPO transition because long-reach scale-out optics still require DSP.
 
@@ -258,6 +258,10 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 - [[Sectors/Optical Networking & Photonics.md]] — Secondary sector for MRVL's DSP + Celestial exposure.
 - [[Compute & AI Compute Accelerators]] — Sector cycle derate framing (Non-consensus Insight #6: 24x → 14x on efficiency inflection) applies to MRVL multiple compression risk.
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing risk framing; MRVL forward P/E 36x sits above historical semi-cycle trough 22-24x.
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 6 EXIT recommendation (Low→0%): negative ROIC NTM; Trainium 3 socket loss to Alchip = execution credibility gap; AVGO is higher-quality custom-silicon exposure
+- [[Macro & Technology/CXL Memory Disaggregation Framework]] — SAN-for-DRAM framework; Marvell = Brocade/Cisco-MDS analog (Celestial Photonic Fabric + XConn + Structera); memory disaggregation is the single largest binary upside lever in the thesis
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: first *quantified* scale-up CPO ramp ($1B CY2028 run-rate into Trainium 4, $2.25B earn-out on $2.0B cumulative by Jan 2029, Amazon warrant strike $87.0029 = Trainium 4 tell); flags EAM-lacks-COUPE-PDK execution gate (Marvell must foundry-integrate EAM itself); scale-up CPO TAM > scale-out
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": tangential — ARM/hyperscaler-CPU SerDes/design-services TAM + memory-disaggregation (CXL3/JBOM) reinforces Celestial lever; no direct thesis delta
 
 ## Log
 
@@ -278,3 +282,13 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing recommends EXIT (negative ROIC NTM; Trainium 3 socket loss to Alchip = execution credibility gap; AVGO higher-quality custom-silicon exposure) — sizing call; conviction unchanged (high), flagged for /status review.
+- [[Macro & Technology/CXL Memory Disaggregation Framework]]: May update strengthens the memory-disaggregation upside lever — Astera Q1 KV-cache CXL design win + Marvell CXL+NIC attach guide >$2B FY29 + Structera S 30260 switch; tension with rebalancing EXIT (vehicle contested, binary Celestial upside intact). Resolution datapoint: May 27 Celestial commentary. Conviction unchanged (high).
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: First quantified scale-up CPO ramp — $1B CY2028 run-rate into Trainium 4, $2.25B earn-out on $2.0B cumulative by Jan 2029, Amazon warrant strike $87.0029 (Trainium 4 tell) integrated into Bull driver #3. New execution gate: EAM modulator lacks COUPE PDK → Marvell must foundry-integrate EAM itself (echoes Trainium 3 packaging miss). Conviction unchanged (high) — ramp quantified, but execution-credibility risk sharpened.
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: Tangential (NVIDIA-centric networking content) — ARM/hyperscaler-CPU proliferation (Graviton5/Cobalt/Axion/Phoenix/Venom) expands custom-silicon + SerDes design-services TAM (mild positive for second-source franchise); Bluefield-4 DPU/networking-CPU convergence is NVIDIA in-house (neutral-to-competitive for merchant DPU); CXL3/JBOM/LPDDR memory-tiering content broadly reinforces the Celestial memory-disaggregation lever. No thesis-level delta; conviction unchanged (high).

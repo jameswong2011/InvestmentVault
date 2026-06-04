@@ -241,3 +241,6 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; status closed→active.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Polymarket peace-by-Jun-15 at 27¢ (off ~40% high) + new Hormuz tolling sticking point (UAE 50/50 odds on tolling-only deal) joins unresolved enriched-uranium redline — pushes any "peace catalyst" exit trigger past June. Ras Laffan repair timeline orthogonal to negotiation outcome; Scenario A persistence extends $120B contracted backlog protection + spot upside window. Conviction unchanged (high).

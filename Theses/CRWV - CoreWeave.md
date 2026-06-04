@@ -221,3 +221,6 @@ The drivers that break the thesis:
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-06-03 (/sync)
+- [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]] + [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: New public peer [[Theses/NBIS - Nebius Group]] created (cleaner balance sheet; execution-vs-credit framing). 40% H100 1-yr contract-rate rebound (Oct'25 $1.70→Mar'26 $2.35) partially rebuts the rental-compression bear thread; rental-economics framework bounds neocloud pricing ($4.92 floor / $9.63-12.25 ceiling at Vera Rubin). Conviction unchanged (medium) — rebound is demand-cyclical not structural; DDTL re-rent risk intact.

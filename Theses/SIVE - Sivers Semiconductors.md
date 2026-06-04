@@ -208,9 +208,20 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 - [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]] — visual CPO market structure
 - [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]] — CPO entry barriers
 - [[Research/2026-04-29 - AIXA VECO - MOCVD Revenue Exposure to InP Photonics Cycle - synthesis]] — InP photonics cycle equipment-side exposure
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 5 convex bet; TRIM Low→0.5% (pre-chasm + binary Nasdaq listing + Economic Crime probe; +1,682% 1Y pure speculation)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: independently confirms Sivers supplies Ayar Labs' SuperNova laser (validates the overflow-ELS thesis); but frames CW DFB lasers as "standardized/commoditized" with Shijia added to the Chinese ELS-threat list — sharpens the ELS-contestability bear
 
 ## Log
 
 ### 2026-05-22
 - Initial thesis created. Conviction: low — pure-play exposure to overflow CPO External Light Source demand (LITE/COHR sold out through 2027), but post +1,768% 3M rally has priced in a transformation Sivers has not yet executed: 4-inch InP fab subscale vs Tier-1 6-inch (Greensboro mid-2028, Coherent ~2027), SEK 186.5M FY25 loss against thin SEK 43.5M YE25 cash repaired by 10.85% convertible + SEK 125M directed raise, Swedish Economic Crime Authority insider trading probe into Nasdaq listing announcement, ~55x EV/Revenue. Position is high-volatility small-cap option on partnership-driven photonics ramp (POET/O-Net/Jabil/Aeva), not a quality compounder.
 - Status change: draft → active — promoted to active coverage; now in scope for /catalyst, /prune, and conviction-drift monitoring. Snapshot: skipped (draft→active).
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-24 - Retrospective 1w - Synthesis]]: Retro 1w modest challenge — photonics-expert public skepticism + rally cooling (flat-down for week, off +800% 3M peak) suggest +1,768% 3M move exhausted pre-Q1; LOW conviction tag appropriate. May 29 Q1 (PCAOB-postponed from May 20) is first binary. Conviction unchanged (low).
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags TRIM to 0.5% (pure speculation on partnership conversion + Nasdaq catalyst; keep tiny convex bet) — sizing call; conviction unchanged (low).
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis independently confirms Sivers→Ayar SuperNova ELS relationship (third-party validation of the overflow-ELS thesis), but frames CW DFB as commoditized (Shijia added to threat list) — sharpens the ELS-contestability bear without moving the binary partnership-conversion thesis. Conviction unchanged (low).

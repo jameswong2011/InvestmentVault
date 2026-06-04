@@ -60,6 +60,8 @@ SK Hynix is the world's second-largest memory-semiconductor manufacturer by reve
 
 **HBM is a three-supplier triopoly with demand-binding structural scarcity through 2027.** SK Hynix (57% 2026 share), Samsung (30%+ recovering), and Micron (~25% climbing) exhaust the global HBM supply. HBM demand is tied directly to AI-accelerator unit shipments (Nvidia H200/B200/B300/Rubin, AMD MI300X/MI350/MI450, Broadcom TPU v6/v7, Google TPU v5p/v6p); HBM content per GPU is increasing 20-30% per generation, with Rubin Ultra targeting ~1TB HBM per GPU. TrendForce projects HBM demand growth of >130% in 2025 and 77% in 2026. HBM capacity from all three suppliers was **sold out through CY2026** as of mid-2025; current supply-demand balance is tightening again after brief fear-driven softness around TurboQuant selloff (March 24, 2026). **DRAM prices surged 171.8% YoY** in late 2025 and are projected up another 40-50% through H1 2026.
 
+**SemiAnalysis (Feb 2026) quantifies the shortage as structural and surfaces a strategic wrinkle.** Their Memory Model puts DRAM ~7% below demand in both 2026 and 2027 (vs only mid-single-digit at the 2017-18 peak), with the HBM-specific shortfall widening 5%→6%→9% (2025→2027). The mechanism is "reverse scaling" — a commodity wafer yields ~3x the bits of an HBM3E 12-Hi wafer, widening to ~4x at HBM4 — so every wafer shifted to HBM tightens the whole market. The wrinkle: commodity DRAM margins have caught or exceeded HBM margins since late 4Q25 (sharpest at Samsung, whose HBM economics lag), giving suppliers an incentive to deliberately balance HBM against high-margin commodity in 2026 — which self-reinforces the dual shortage and, for Samsung specifically, blunts the urgency to grab HBM4 share. On HBM4, SemiAnalysis sees ~60% SK Hynix / ~30% Samsung / ~0% Micron of R200-class supply in Rubin's first 12 months (modestly below the ~70/30/0 initial-allocation figure above), both Korean samples at ~10 Gbps pin speed (Micron lower) with SK Hynix retaining a signal-integrity/jitter package-execution lead, and HBM3E 12-Hi 2026 pricing now tracking flat vs the prior -15-20% consensus. See [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]].
+
 **The packaging-technology arms race is the competitive axis.** Three vendor philosophies:
 
 | Vendor | Packaging | Current Stack | 2027 Roadmap | Strategic Bet |
@@ -202,6 +204,9 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — DRAM prices projected "double or triple" from current; validates HBM supercycle extension thesis through 2027+
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — JEDEC 720→775→900µm height relaxation extends MR-MUF runway through HBM5 first-gen (2028-29); Namics EMC exclusivity is the materials moat (contract renewal pending); Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron split; Mar 2026 BESI Kinex order is logic-line/2nm primary, dual-use for HBM
 - [[Research/2026-05-22 - 000660 - Stress Test]] — Adversarial short case: 5/10 assumptions rated 🔴 (HBM share durability, materials moat permanence, base-die lock-in symmetry across vendors, Iran War supply-chain risk, Nvidia anchor concentration); sector note probability-weights bull case at 15%, weighted-expected multiple ≈ current trading level; kill trigger = Samsung >35% Nvidia Rubin allocation in either Q3 OR Q4 2026 earnings
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 3 memory cycle-trade; CUT Full 25%+→10-12% (L1 thesis intact but binary Samsung Rubin HBM4 allocation kill trigger + stress test 5🔴 argue against 25%+ binary exposure)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — SemiAnalysis "Memory Mania": structural ~7% DRAM deficit through 2027, HBM shortfall →9% by 2027, reverse-scaling 3x→4x bit penalty; commodity DRAM margins now ≥ HBM (Samsung milking commodity); HBM4 R200 first-12-mo ~60/30/0 SK Hynix/Samsung/Micron; Samsung ~30% sits at the →MEDIUM trigger
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": DRAM shortage now gates server-CPU allocation (demand-side tightness confirmation) + datacenter LPDDR demand leg (Grace/Vera/Venom LPDDR5X/SOCAMM/LPDDR6)
 
 ## Log
 
@@ -225,3 +230,21 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-24
+- Retro insight: 1w retrospective — **largest narrative-price gap in the portfolio**: stock stayed near ATH (~1,995,000 KRW) while May 22 stress test flagged 5🔴/5🟡/0🟢 ("low conviction with optionality"); inverted-bear classification (×1.5 gap weighting) — vault weakened, price has not reflected. Resolution path is OR-gated: Samsung >35% Rubin allocation Q3 OR Q4 2026 earnings is the kill trigger; SK Hynix Jul 29 own earnings + Samsung late-July Q2 are the catalyst window. Read together with the manual medium→high (Live Portfolio alignment): the position is held but the analytical case is now binary-anchored, not directionally positive. Watch Namics liquid-EMC renewal and Japanese photo-materials disruption as secondary triggers. [[Research/2026-05-24 - Retrospective 1w - Synthesis]] [[Research/2026-05-22 - 000660 - Stress Test]]
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Marginal indirect-negative — extended Scenario A keeps Japanese naphtha → PGMEA/photo-materials transmission chain in months-to-year rebuild zone; reinforces 2026-04-24 Risk #8 (Japanese PR/BARC/HBM-adhesive supply exposure). Tertiary trigger alongside Samsung Rubin allocation + Namics EMC contract binary watchlist. Conviction unchanged (high).
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags CUT to 10-12% (cycle position + binary Q3/Q4 2026 Samsung Rubin HBM4 allocation kill trigger; largest narrative-price gap in book) — sizing call; conviction unchanged (high), L1 thesis plays out without 25%+ binary exposure.
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: SemiAnalysis quantifies ~7% structural DRAM deficit through 2027 + commodity margins now ≥ HBM (Samsung milking commodity) — reinforces supply tightness; conviction unchanged (high), but Samsung ~30% R200 HBM share sits AT the →MEDIUM trigger (watch Q3/Q4 Rubin allocation).
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: SemiAnalysis "CPUs are back" — DRAM shortage now gates *server-CPU* allocation ("prioritized to those who can prove secure memory supply"), demand-side confirmation of structural tightness; datacenter LPDDR adoption (Grace LPDDR5X / Vera SOCAMM / ARM Venom LPDDR6) adds a server-LPDDR demand leg beyond HBM + commodity DDR5. Reinforces supercycle; conviction unchanged (high).
+
+### 2026-06-03 (/sync)
+- [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: SOCAMM/LPDDR tightness reinforces the DRAM supercycle (memory the "tightest constraint"; Nvidia 3-yr LTAs), but Nvidia captures the SOCAMM ~60% system markup — memory-vendor upside is volume/ASP, not the system rent. Conviction unchanged (high), nuance on who captures the value.

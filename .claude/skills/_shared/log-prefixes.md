@@ -1,11 +1,13 @@
 ---
 type: shared-contract
 purpose: Single source of truth for Log-entry prefixes that carry cross-skill semantic weight.
-last_reviewed: 2026-04-24
+last_reviewed: 2026-05-22
 ---
 
 <!--
 Editing note (2026-04-19): `/sync Step 2.5 skill-origin classification` added as a consumer to every "skill-origin" prefix (entries #5, #6, #7, #8, #9, #11, #12, #13, #14, #15). These prefixes signal that the originating skill already handled sector/macro propagation — `/sync` uses the list to skip redundant Step 4/5 re-propagation for thesis-only changes. See `/sync` Step 2.5 for consumer logic; `/lint #29` enforces alignment.
+
+Editing note (2026-05-22): `Numbers refresh:` (entry §18) added as a skill-origin prefix when `/numbers` was introduced. A numeric refresh of the Key Metrics table is hygiene, not analysis — `/sync` skips downstream propagation. Both `/sync` Step 2.5 enumeration (line ~311) and this registry updated atomically per the editing protocol below.
 -->
 
 
@@ -424,6 +426,30 @@ example: |
   ### 2026-04-24
   - Callout sweep: 14 addressed callouts ≥180d swept to ## Legacy Callouts. Sections touched: Bull Case (6), Catalysts (4), Industry Context (3), Risks (1). Safety snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-callout-sweep 2026-04-24-143055)]]
 breakage_if_changed: "/sync Step 2.5 stops classifying post-sweep theses as skill-origin → the first default /sync after every /archive-callouts run rewrites sector and macro notes citing no actual research delta, duplicating text already captured in the target thesis. /sync Step 3e drift detection stops excluding sweep entries → the drift window fills with hygiene-sweep bookkeeping on actively-maintained theses, biasing drift signal toward false positives on heavy callout users."
+```
+
+### 18. Numbers refresh
+
+```yaml
+prefix: "Numbers refresh:"
+case_sensitive: true
+match_anchor: line-prefix
+producer:
+  skill: /numbers
+  step: Step 9 (Append Log entry — runs unconditionally per refresh, including zero-material-delta runs)
+  emits_when: /numbers successfully refreshes ≥1 row of the thesis ## Key Metrics table (covers single-ticker mode AND --all / --all-active batch modes — one entry per refreshed thesis)
+consumers:
+  - skill: /sync
+    step: Step 2.5 skill-origin classification
+    role: skill-origin classifier (a Key Metrics refresh is FMP-sourced numeric hygiene — no qualitative claim, no research note, no thesis-level analytical delta. Step 4.-1 / 5.-1 skip sector and macro re-propagation to prevent /sync from emitting "TICKER market cap updated" noise into sector and macro notes. Material deltas surface to the user as advisories in /numbers Step 10 — the user runs /deepen, /stress-test, or /sync manually if a metric shift warrants downstream action.)
+  - skill: /sync
+    step: Step 3e drift detection
+    role: drift-exclusion (refresh carries no conviction sentiment — counting it in the last-5-entry drift window would pollute drift signal on actively-maintained theses where /numbers runs monthly per the recommended cadence. Without exclusion, every refresh would consume one of the five drift-window slots without adding research signal.)
+  - skill: audit-only (human-readable record of refresh batches — Log entry captures count refreshed, count material, single most-significant Δ, and safety snapshot path. Snapshot enables /rollback for the rare case where a notes-column-preservation invariant trips post-write.)
+example: |
+  ### 2026-05-22
+  - Numbers refresh: 7 metrics updated, 2 material. Revenue growth decel +65%→+42% YoY. Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-numbers 2026-05-22-143055)]]
+breakage_if_changed: "/sync Step 2.5 stops classifying post-refresh theses as skill-origin → every /numbers run (recommended monthly cadence per /numbers SKILL.md §Recommended frequency) triggers full /sync propagation citing no actual research delta. Sector and macro notes accumulate analytical noise about market cap and EV/Revenue changes that carry no investment signal. /sync Step 3e drift detection stops excluding refresh entries → the drift window fills with monthly hygiene bookkeeping, biasing drift signal toward false positives on heavily-refreshed theses."
 ```
 
 ---

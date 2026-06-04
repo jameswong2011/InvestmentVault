@@ -188,6 +188,7 @@ The thesis-determining variable is not whether short sellers continue publishing
 - [[Research/2026-03-09 - APP - Gemini Business Analysis Canvas]] — Comprehensive Gemini Canvas analysis: AXON dominance, strategic pivot, CloudX challenge, financial performance
 - [[Research/2026-03-19 - AppLovin AXON Engine Differentiation]] — Claude research: AXON differentiation, "Golden 9" competitive field, e-commerce incrementality evidence, investor sentiment
 - [[Sectors/Mobile Advertising Technology]]
+- [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]] — FTC action on deceptive ad-tech data-practice claims; adjacent to (legally distinct from) APP's open SEC data-practice probe — fabricated-capability deception vs improperly-sourced real targeting
 
 ## Log
 
@@ -218,3 +219,6 @@ The thesis-determining variable is not whether short sellers continue publishing
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-26
+- [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]]: FTC $930K deception settlement signals active ad-tech data-claim scrutiny — adjacent to APP's open SEC data-practice probe but legally inverse (Cox fabricated a capability; APP allegation is improper sourcing). Conviction unchanged (medium); no map onto AXON sourcing claims.

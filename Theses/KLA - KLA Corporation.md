@@ -254,6 +254,8 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan-tail customer concentration framework
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Israel R&D operational disruption risk
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — HBM4 16-Hi bump-pitch tightening (sub-10μm) drives 3x bond-line inspection intensity; KLA Klarity/RAPID yield platform + 8 Series defect inspection captures the structural intensity uplift independent of MR-MUF vs hybrid-bonding outcome; HBM5+ 24-Hi (2029-2030) hybrid-bonding mandate adds further 2x inspection intensity at architectural inflection
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→7-8% (highest WFE ROIC 73%, 17yr dividend, $7B buyback; #12 structurally-rising floor)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: memory WFE capex up + rising EUV layer counts and HBM yield-sensitivity raise process-control/metrology intensity
 
 ## Log
 
@@ -268,3 +270,9 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 
 ### 2026-05-19 (/sync)
 - Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition + new quant-screening framework (AI-DC Rev/OP %, ROIC/EV-EBIT) across ~50 value-chain beneficiaries. KLA listed under §Adjacent exposure in the semicap cluster: SiC/GaN fab capex adds inspection-step demand alongside AMAT/LRCX/ASMI tool orders. The macro's adoption forecast (10-15% of new AI racks 2027 → 65-75% by 2032) anchors mid-decade wide-bandgap fab inspection intensity tied to the broader process-control intensity multiplier (+100-200bp/node) that drives Insight #1. Indirect but additive to existing growth-algorithm framework. Conviction unchanged at high — adds a wide-bandgap-fab tail to the existing intensity × share × WFE compounding math.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags UPSIZE to 7-8% (highest-quality WFE compounder, underweighted vs structural quality) — conviction unchanged (high); sizing call.
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: memory WFE capex +26/34/20% + rising EUV layers and HBM4 yield-sensitivity lift process-control/metrology intensity; conviction unchanged (high).

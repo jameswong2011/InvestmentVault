@@ -48,6 +48,16 @@ Consensus models Murata as a saturated passive-components supplier with growth p
 
 - **Is current capex sufficient for AI MLCC ramp?** Murata's annual capex of ¥250-280B funds ~5-7% capacity growth per year. AI server MLCC pull alone implies 10%+ growth need. Either capex accelerates (margin headwind near-term but volume capture) or Murata gives share to Samsung/TDK. Answered by: FY27 capex guidance in May 2026 earnings, fab announcement cadence through 2026-2027.
 
+> [!question] 2026-05-28 → Addressed 2026-05-28
+> **Prompt:** *Model AI-related MLCC demand as a proportion of total Murata revenues up to 2035 on both the % sales, and % OP side. Present a forecasted EV/S and EV/EBIT view on the basis of this forecast. What are the assumptions that need to hold for this forecast to be true (AI server growth, MLCC content per server growth).*
+>
+> **Response:** Demand-led (capex assumed to fund the capacity): AI-MLCC scales from ~9% of sales / ~19% of OP (FY26) to ~43% of sales / ~62% of OP (FY35). Two pricing refinements raise it vs the first cut: (1) ASP-mix ~1.45× (not 1.25×) because the incremental 800VDC content — high-V/008004/auto-grade — prices ~3-5× the baseline rack part; (2) a 2027-29 shortage overshoot (capex lags demand 18-24mo) lifts FY28-30 corporate OPM to ~18-19.5% (+200-300bps over trend, LTA-tempered) and front-loads OP ~15-25% vs a smooth ramp, with partial give-back FY30-31. Static-EV EV/EBIT hits ~10.6x by FY28 / ~4.3x FY35; 17x on FY30 OP implies ~+126% EV upside. Swing risk: capex shortfall → supply-capped ~24%. Full model: §Key Metrics → AI MLCC revenue-mix forecast — demand-led.
+
+> [!question] 2026-05-28 → Addressed 2026-05-28
+> **Prompt:** *What is the impact of 800VDC architecture adoption on MLCC demand profile.*
+>
+> **Response:** 800VDC shifts the MLCC demand profile up every difficulty axis at once — higher voltage rating (sub-100V → 250-1000V bus/DC-link parts), smaller case size (volumetric-efficiency pressure at 300-600 kW racks), higher temperature/reliability (vertical power delivery places parts beside hot GPU/SiC dies, pulling auto-grade 150°C parts into servers), and +2-3× small-case count per rack. Each axis concentrates demand where Murata's share is 50%+ vs 33% blended, so 800VDC mechanically up-mixes both Murata's AI-MLCC share and ASP. Full analysis: §Industry Context → "800VDC architecture — MLCC demand-profile shift"; see also structural force #5 and [[Macro & Technology/800VDC Adoption]].
+
 - **What share of Murata revenue is exposed to Chinese OEM smartphones (Xiaomi, Oppo, Vivo, Honor)?** Estimated 15-25% via direct + indirect channels. Chinese smartphone strength in 2025-2026 has cushioned Apple weakness; reversal would expose Murata to a double smartphone shock. Answered by: end-market disclosures in FY26 results, China shipment data from IDC/Canalys.
 
 - **Has the 2024 inventory cycle on lithium-ion polymer (TLP) batteries and SAW filters fully cleared?** These two product lines reported ~20% volume declines in FY24-FY25 on Chinese smartphone weakness. Recovery cadence affects Functional Devices segment margins. Answered by: Q2 FY26 segment disclosure, channel inventory commentary.
@@ -138,6 +148,32 @@ The thesis implication runs against surface intuition: as Chinese EV mix premium
 4. *AEC-Q200 qualification barriers in auto* — automotive MLCCs face thermal-shock testing, humidity testing, and 15-year reliability requirements; new entrants face 3-5 year qualification cycles per platform. Murata's existing platform installed base compounds.
 5. *800VDC AI-rack architecture transition (2H 2026 - 2028 inflection)* — NVIDIA's March 2026 Kyber row-rectified ±400V/800V reference and OCP Mt. Diablo sidecar adoption materially scale per-rack passives content as AI racks migrate from 40-120 kW (Hopper/Blackwell) toward 300-600 kW (Rubin/Rubin Ultra). Component scaling per rack: 008004/01005 MLCC count rises from 5,000-10,000 to 15,000-25,000 (+2-3×); film capacitor content from $500-800 to $2,500-4,000 (+4-5×); SiC MOSFET 1200V die count from 20-40 to 150-250 (+5-8×). The MLCC scaling is the most defensible content-growth vector for Murata because 008004 yield economics (>95% vs 70-85% Chinese competitor) are already cleared — the architecture transition asymmetrically rewards suppliers with proven small-case-size production at automotive/server reliability bars. Combined with the +30-40% datacenter/AI segment growth already in the base case, 800VDC architecture mainstreaming through 2027-2032 ([[Macro & Technology/800VDC Adoption|adoption forecast: 10-15% of new AI racks 2027 → 65-75% by 2032]]) adds a generational compounding mechanism on top of the per-rack 440k-MLCC GB200 NVL72 baseline. See [[Macro & Technology/800VDC Adoption]] for full component-scaling table, value-chain map, and adoption forecast.
 
+**800VDC architecture — MLCC demand-profile shift:** Beyond the raw count scaling (structural force #5 above), the 800VDC transition reshapes *what kind* of MLCCs AI racks demand — pushing the profile up every difficulty axis at once, each of which concentrates demand toward Murata's strongest share buckets:
+
+| Demand-profile axis | Pre-800VDC (48V/12V racks) | Post-800VDC (300-600 kW racks) | Why it favors Murata |
+|---|---|---|---|
+| **Count (small-case subset)** | 5,000-10,000 per rack | 15,000-25,000 (+2-3×) | 008004 yield economics already cleared (>95% vs 70-85% Chinese) |
+| **Voltage rating** | sub-100V decoupling | 250-1000V DC-link / bus parts | High-V small-case is the thinnest Chinese capability |
+| **Case size** | mixed 0402/0201 | 008004/01005 (volumetric-efficiency pressure) | Murata 50% share at 008004 vs 33% blended |
+| **Temperature / reliability** | consumer / commercial | auto-grade 150°C (VPD places parts beside hot GPU/SiC dies) | Murata's AEC-Q200 installed base transfers directly |
+
+Net effect: 800VDC does not merely add MLCC units — it migrates demand from "many commodity parts" toward "fewer, higher-voltage, smaller-case, higher-reliability, higher-ASP parts," exactly the quadrant where Murata's share is 50%+ rather than the 33% blended figure. The transition therefore up-mixes Murata's AI-MLCC share *and* blended ASP simultaneously — the mechanism behind the margin premium assumed in the FY2035 forecast (§Key Metrics). It also reframes the Chinese-commoditization risk: 800VDC pulls the AI socket further from the commodity case sizes where Yageo/Walsin compete, widening rather than narrowing the relevant moat.
+
+**Pricing of the incremental content:** the added 800VDC parts are not priced at the rack average. High-voltage (250-1000V) DC-link/bus parts, 008004 high-cap, and auto-grade 150°C MLCCs run ~3-5× a baseline 0402/0603 (the note already cites 008004 at 3-5× a 0402), so per-rack MLCC *revenue* content grows faster than the ~2-3× unit count — the structural ASP-mix lift (~1.45×) carried in the §Key Metrics forecast.
+
+A per-rack revenue bridge shows why this is ~3.2×, not the 6-15× a naive read implies — multiplying 2-3× content by the 3-5× premium double-counts (the premium hits only the *added* units, and the 3-5× is vs commodity parts an AI rack already exceeds):
+
+| Step | Calc | Murata MLCC revenue / rack vs traditional |
+|---|---|---|
+| Naive — total units × commodity premium | (2-3×) × (3-5×) | 6-15× |
+| Fix 1 — premium applies to incremental units only | 1 + (1-2) × (3-5) | 4-11× |
+| Fix 2 — premium vs rack's already-premium 008004 content (~1.5-2.5×) | 1 + (1-2) × (1.5-2.5) | 2.5-6× |
+| **Forecast point estimate (conservative)** | **2.2× content × 1.45× ASP** | **~3.2×** |
+
+The forecast deliberately sits at the low end of the corrected 2.5-6× range: ~3.2×/rack already puts AI-MLCC at 43% of FY35 sales (MLCC TAM tripling); the ~4× midpoint would push AI toward ~50% of sales and a ~4× TAM, straining share/TAM consistency more than it adds signal.
+
+Because the capex super-cycle brings capacity online ~18-24 months after the FY28-30 demand inflection, 2027-29 is also a supply-gap window: small-case ASP runs above trend and Murata's OPM overshoots (a tempered repeat of the 2018 MLCC shortage), front-loading FY28-30 profit before partial give-back as capacity lands.
+
 ## Key Metrics
 
 | Metric | Value | Notes |
@@ -152,6 +188,41 @@ The thesis implication runs against surface intuition: as Chinese EV mix premium
 | ROE | ~10% | Capital-intensive but improving on mix shift |
 | Net Cash | ¥800B | Strong balance sheet enables capex flexibility |
 | Capex / Revenue | ~14% | Persistently high; the cost of the moat |
+
+### AI MLCC revenue-mix forecast (FY2026 → FY2035) — demand-led
+Built bottoms-up from the demand vectors (rack units × MLCC content per rack × ASP), with **capex assumed to catch up** to fund the capacity. Two pricing refinements vs the first cut: (1) the structural ASP-mix factor is raised to **~1.45× (from 1.25×)** because the incremental 800VDC content is the highest-ASP tier — high-voltage (250-1000V), 008004, and auto-grade 150°C parts price at ~3-5× the rack's baseline MLCC (see §Industry Context → "800VDC architecture — MLCC demand-profile shift"); (2) a **2027-29 shortage overshoot** (Murata FY28-30) is layered on, because the capex super-cycle brings capacity online ~18-24 months after the FY28-30 demand inflection — the supply gap is worst exactly then. "AI-MLCC" ≈ ¥170B in FY26 (~9% of revenue, ~18% of MLCC revenue). Driver assumptions: rack units ~17%/yr blended (30% FY26-28 → 8% FY32-35, 4.1× over 9yr); content/rack ~2.2×; ASP-mix ~1.45×; Murata share ~48%.
+
+| Metric (¥B) | FY26 | FY28E | FY30E | FY32E | FY35E |
+|---|---|---|---|---|---|
+| Total revenue | 1,830 | 2,310 | 3,000 | 3,790 | 4,820 |
+| AI-MLCC revenue | 170 | 410 | 840 | 1,390 | 2,080 |
+| **AI-MLCC % of sales** | **9.3%** | **17.7%** | **28.0%** | **36.7%** | **43.2%** |
+| Corporate OP | 258 | 416 | 585 | 758 | 1,012 |
+| Corporate OPM | 14.1% | 18.0% | 19.5% | 20.0% | 21.0% |
+| AI-MLCC OP | 48 | 139 | 269 | 417 | 624 |
+| **AI-MLCC % of OP** | **18.6%** | **33.4%** | **46.0%** | **55.0%** | **61.7%** |
+
+Reading the OPM path: corporate OPM humps to ~18-19.5% in FY28-30 then keeps rising in absolute terms, but the *shortage premium over trend* is giving back — FY28 carries ~+260bps over the secular mix-up trend (~15.4%), FY30 ~+210bps, and by FY32 the premium is gone (the ~20-21% level is pure secular mix). The ~21% FY35 steady-state ≈ the 2018-19 shortage peak, but structural here rather than cyclical: AI 43% of sales × ~30% OPM + non-AI 57% × ~14% ≈ 21% blended.
+
+Structural punchline: by FY35 AI-MLCC is **~43% of revenue but ~62% of operating profit** — OP share runs 1.4-2× sales share (2.0× FY26 → 1.4× FY35, compressing as AI scales large enough to pull the corporate average toward its own ~30% margin). The 2027-29 shortage front-loads the profit: **corporate OP is ~15-25% higher in FY28-30 than a smooth-ramp model**, and EV/EBIT (below) de-rates fastest in exactly those years. **TAM consistency check:** implies the AI slice of the MLCC market expands ~12× (¥350B → ¥4.3T at 48% share) and total MLCC TAM more than triples by FY35 — driven by rack content and shortage-era pricing, not unit price alone.
+
+**Forward valuation on a static current EV (¥4,400B) — what the forecast implies if the share price does not move:**
+
+| Multiple | FY26 | FY28E | FY30E | FY32E | FY35E |
+|---|---|---|---|---|---|
+| EV/Sales | 2.40x | 1.90x | 1.47x | 1.16x | 0.91x |
+| EV/EBIT | 17.1x | 10.6x | 7.5x | 5.8x | 4.3x |
+
+The shortage hump pulls forward EV/EBIT down to ~10.6x as early as FY28 (vs ~12.8x in the smooth cut) — FY27-29 is the window where the multiple visibly breaks from a smartphone-cycle rating. Mirror view: holding Murata's current ~17x EV/EBIT on FY30 OP implies EV ~¥9.9T (+126% vs ¥4.4T); on FY35 OP at a conservative 15x, ~¥15.2T (+245%). The §Bull Case re-rating (28-30x P/E, ¥10,500-11,500 target) is the near-term expression; the shortage is the catalyst that triggers it.
+
+**Assumptions that must hold for the demand-led base case:**
+1. **AI rack-unit shipments compound ~17%/yr blended** (30% FY26-28 → 8% FY32-35) — buildout sustains without a multi-year digestion (the AI-capex-cycle item in §Risks is the primary external threat).
+2. **Content per rack ~2.2-2.4×** over the 800VDC transition, back-loaded FY28-32 (adoption 10-15% of racks 2027 → 65-75% by 2032; see §Industry Context → "800VDC architecture — MLCC demand-profile shift" and [[Macro & Technology/800VDC Adoption]]).
+3. **ASP-mix ~1.45× (raised from 1.25×)** — incremental 800VDC content (high-V 250-1000V / 008004 / auto-grade 150°C) prices ~3-5× the baseline rack part; partly offset by tier-1 OEM annual price-downs on legacy SKUs.
+4. **2027-29 shortage overshoot, LTA-tempered (new).** Capex lands ~18-24mo after the FY28-30 demand inflection, so small-case ASP runs +10-20% above trend and corporate OPM +200-300bps in FY28-30, with partial give-back FY30-31 and a permanent design-in ratchet (800VDC content priced in a tight market sets the platform baseline). Murata captures less than a pure spot supplier did in 2018 (~50%+ revenue is direct-OEM on annual contracts). Reverses to a *downside* if demand digests mid-shortage — stranded capacity + price give-back (see §Risks).
+5. **Murata holds ~48% AI-MLCC share** — 008004 moat intact; Chinese closure 7-10yr out (breach = the CLOSE trigger).
+6. **Capex catches up (the swing assumption)** — ~¥550-700B/yr FY28-32 (capex/revenue ~18-20% vs ~14% today), FCF yield ~1-2% in build years. **If not, reverts to supply-capped (~¥880B AI-MLCC, ~24% of sales by FY35) and demand flows to Samsung Electro-Mechanics / TDK** (see §Outstanding Questions, capex sufficiency; §Risks, capex super-cycle).
+7. **AI-MLCC margin premium persists (~28-30% base OPM)** and **JPY stable** — model is in JPY; sharp appreciation (§Outstanding Questions, JPY sensitivity) compresses reported figures without changing unit economics.
 
 ## Bull Case
 AI server design-ins compound through 2028 as Rubin/Rubin Ultra ramp; MLCC content per accelerator scales further with higher-bandwidth memory subsystems (HBM4/5) requiring more decoupling. EV ramp executes globally with BYD, Tesla, and legacy OEMs at projected unit run-rates; Murata holds 50% share with 3-5x ICE content. Small-form-factor mix shift drives consolidated GM to 33-34% by FY2029. Smartphone units stabilize or accelerate modestly on a 2027 AI-iPhone supercycle. Revenue CAGR through FY2029 at 11-13%; EPS CAGR at 15-17% on margin expansion. Multiple re-rates to 28-30x as growth durability becomes consensus. Implied price target: ¥10,500-11,500 vs current ~¥7,640 (~40-50% upside). ¥6.5-7T market cap.
@@ -172,6 +243,7 @@ Chinese suppliers close 008004 chemistry gap faster than expected (3-5 year hori
 - **Thesis risk — Chinese 008004 capability acceleration.** If Yageo, Sunlord, or Walsin demonstrates production-scale 008004 with comparable yields and AEC-Q200 qualification within 3-5 years rather than 7-10, the chemistry moat compresses rapidly and Murata's mix-shift tailwind reverses. Most likely scenario for thesis invalidation.
 - **Position risk — JPY appreciation.** Murata reports in JPY; ~70% of revenue is non-Japan-billed. A 10-yen JPY appreciation against USD shaves ~150-200bps of reported gross margin. BOJ normalization timing is the primary FX risk.
 - **Thesis risk — AI capex cycle digestion.** If hyperscaler AI capex contracts in 2027-2028 after a 2024-2026 buildout cycle, MLCC unit pull from AI servers decelerates from +30% to single digits. The structural-volume thesis was built off projected NVIDIA/AMD accelerator shipment ramps; a digestion year compresses Murata's growth premium.
+- **Execution risk — Murata's own capex super-cycle, plus shortage cyclicality.** The demand-led FY35 forecast (§Key Metrics) requires Murata to roughly double capex to ~¥550-700B/yr through FY28-32 (capex/revenue ~18-20% vs ~14%) to fund 12-15%/yr capacity growth — a three-way capacity fight against simultaneous EV and smartphone demand. This compresses FCF yield to ~1-2% in the build years and front-loads execution risk (fab-ramp timing, yield at new 008004 lines). The same capex lag creates a 2027-29 shortage that lifts FY28-30 pricing/OP but gives back in FY30-31 as capacity lands — a 2018→2019-style margin round-trip; if AI demand digests mid-shortage, Murata is left holding stranded capacity into a price-give-back. Under-build instead cedes incremental AI demand to Samsung Electro-Mechanics/TDK and reverts the trajectory to ~24% of sales. The capex decision is the central swing between the demand-led (~43% of sales) and supply-capped (~24%) outcomes.
 - **Position risk — Japanese equity drawdowns in risk-off scenarios.** Nikkei tends to underperform global indices in USD risk-off; Murata's ~30B USD market cap and large foreign-investor base amplifies drawdowns even when fundamentals are intact.
 - **Thesis risk — smartphone unit weakness extends.** If Apple iPhone units stagnate through 2028 and Chinese smartphone share gains stall, ~32% of Murata revenue (smartphones) sees prolonged unit pressure that the AI/EV growth cannot fully offset.
 - **Geopolitical risk — Taiwan/China conflict.** Murata operates production facilities in Taiwan (Murata Electronics Taiwan); a Taiwan Strait conflict disrupts both supply and Asian distribution. Long-tail tail risk but consequential.
@@ -188,6 +260,7 @@ Chinese suppliers close 008004 chemistry gap faster than expected (3-5 year hori
 - [[Sectors/Compute & AI Compute Accelerators]] — AI server MLCC pull originates from NVIDIA accelerator design-ins
 - [[Sectors/Neoclouds & GPU-as-a-Service]] — neocloud capex demand pattern feeds MLCC unit pull through NVIDIA supply chain
 - [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — AI demand durability is the central macro variable for the AI server MLCC pillar
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger (mature); TRIM Low→1-2% (800VDC MLCC scaling + 50% EV share real, but ROIC 9% rich vs multiple)
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -203,3 +276,15 @@ Chinese suppliers close 008004 chemistry gap faster than expected (3-5 year hori
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags TRIM to 1-2% (structural-volume thesis real but ROIC 9% + negative growth makes the rich multiple uncomfortable) — sizing call; conviction unchanged (high).
+
+### 2026-05-28
+- Addressed user callouts: §Outstanding Questions (×2 fresh `[!question]` — AI-MLCC revenue-mix model to 2035; 800VDC impact on MLCC demand profile). Built base-case AI-MLCC forecast in §Key Metrics (AI-MLCC 9.3%→23.5% of sales, 18.6%→38.1% of OP by FY35; OP share ~1.6-2× sales share on 28-30% premium-part margin; static-EV forward EV/EBIT 17x→6x implies market prices ≈zero of mix shift) and added an 800VDC MLCC demand-profile-shift table to §Industry Context (count/voltage/case-size/temperature axes all concentrate demand toward Murata's 50%+ buckets). Conviction: unchanged (high) — quantifies the existing structural-volume thesis; does not resolve Chinese 008004 closure-timing or JPY overhangs.
+- Reframed the §Key Metrics AI-MLCC forecast demand-led per user finding that the initial cut implicitly assumed only ~5.6%/yr AI rack-unit growth — inconsistent with the 800VDC 2-3× content commentary. New base case multiplies the three demand vectors explicitly (rack units ~17%/yr × content/rack ~2.2× × ASP ~1.25× → ~31% AI-MLCC revenue CAGR): AI-MLCC reaches ~41% of sales / ~60% of OP by FY35 (was 24%/38%); total-rev CAGR lifts to ~11%/yr; static-EV forward EV/EBIT collapses to ~4.6x (FY35). Capex catch-up is now the explicit swing assumption (~¥550-700B/yr FY28-32 peak, FCF yield ~1-2% in build years); added §Risks capex super-cycle / FCF-compression item. Conviction: unchanged (high) — larger upside, more execution-dependent; supply-capped reversion (~24% of sales) is the downside if capex lags.
+- Refined the §Key Metrics forecast for MLCC pricing per user challenge on the 2-3× content: (1) raised the structural ASP-mix factor 1.25×→~1.45× (incremental 800VDC content — high-V/008004/auto-grade — prices ~3-5× the baseline rack part); (2) layered a 2027-29 shortage overshoot (capex lags demand 18-24mo → FY28-30 corporate OPM ~18-19.5%, +200-300bps over trend, LTA-tempered) with partial give-back FY30-31 + permanent design-in ratchet. Revised endpoints: AI-MLCC ~43% of sales / ~62% of OP by FY35 (was 41%/60%); corporate OP ~15-25% higher in FY28-30 vs the smooth ramp; static-EV EV/EBIT ~10.6x FY28 / ~4.3x FY35. Added pricing note to §Industry Context demand-profile subsection; widened §Risks capex item to cover the shortage→give-back round-trip. Conviction: unchanged (high).
+- Added a per-rack MLCC revenue bridge to §Industry Context (per user query on 2-3× content × 3-5× price): reconciles the naive 6-15×/rack down to the forecast's ~3.2× — the 3-5× premium applies only to incremental units (not the whole rack) and is measured vs commodity parts an AI rack already exceeds (incremental premium ~1.5-2.5× vs the rack's own 008004 content). Point estimate unchanged (conservative low end of the corrected 2.5-6×/rack range); no change to headline forecast (43% sales / 62% OP by FY35). Conviction: unchanged (high).
+
+### 2026-05-29
+- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: next-year guide (FYE-Mar-27) confirms margin ramp ahead of thesis schedule — rev ¥1,960B (+7%), OP ¥380B (+34.8%, ~19% OPM) on data-center demand + mix; AI-server MLCC "major expansion cycle," 800V→50V→GPU named, small-case share >50%, utilisation 90-95%. Capex ¥250B + ¥80B emergency AI capacity (still below the demand-led bull's ¥550-700B). Conviction unchanged (high).

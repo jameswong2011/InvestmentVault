@@ -195,6 +195,8 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 - [[Research/2026-03-02 - Chinese Silicon Photonics Threat]] — Chinese InP localization at ~3%; domestic EML development timeline
 - [[Theses/BESI - BE Semiconductor Industries]] — TSMC COUPE die attach for silicon photonics; 75% market share in advanced die attach
 - [[Theses/AVGO - Broadcom]] — Broadcom Bailly CPO as forcing function for III-V epiwafer demand
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 5 convex M&A special-situation; TRIM Low→1% (>1,000% rally erased the discount that justified the position; UK Takeover Code active)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: III-V/InP epitaxy named the CPO external-laser bottleneck (IQE in the Nvidia supply map); quantifies the ELS demand mechanism (18 ELS × 8 CW DFB chips per CPO switch) — corroborates the CPO/SiPh InP-epi-demand Bull Case
 
 ## Log
 
@@ -213,3 +215,9 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction low→high.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags TRIM to 1% (M&A optionality intact but post-rally discount evaporated; convex-bet size only) — sizing call; conviction unchanged (high).
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: Quantifies the CPO external-laser bottleneck (every Nvidia CPO switch = 18 ELS × 8 CW DFB chips → III-V/InP epi demand; IQE in supply map) — corroborates existing CPO/SiPh InP-epi-demand Bull Case. Conviction unchanged (high).

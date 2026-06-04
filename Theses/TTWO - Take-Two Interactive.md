@@ -225,3 +225,6 @@ GTA VI launches November 19, 2026 — captures only ~4 months of FY2027 (TTWO fi
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Marginal negative — extended Scenario A keeps gasoline >$4/gal through GTA VI Nov 2026 launch wallet-share window, sharpening $70-80 pricing-sensitivity tail. Launch-window binary intact; FY27 GTA VI revenue contribution dominates macro discretionary noise. Conviction unchanged (high).

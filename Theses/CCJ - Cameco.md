@@ -243,3 +243,6 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring, conviction high→medium.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Iran enriched-uranium handover redline reaffirmed (same as April 12 Islamabad collapse) — uranium narrative remains structurally orthogonal to deal outcome. Sustained Scenario A extends 6-12mo energy-sovereignty policy-response window into multi-year structural demand path; $80B DOE/Westinghouse fast-track + $100+/lb LT contracts unaffected. Conviction unchanged (medium, monitoring).

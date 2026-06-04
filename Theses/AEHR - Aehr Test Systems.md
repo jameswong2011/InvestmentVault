@@ -7,6 +7,10 @@ sector: Semiconductor Capital Equipment
 ticker: AEHR
 source: Q3 FY2026 earnings (April 2026) + market data + sell-side coverage
 ---
+> [!question] 2026-05-26 → Addressed 2026-05-26
+> **Prompt:** *What is the engineering / physics moat that prevents traditional semi test vendors like Advantest or Teradyne's equipment or newly R&D equipment from competing against AEHR's products. Is this simply a case of photonics test being too small of a market to care about, which presents risk to the case as photonics now becomes a relevant market.*
+>
+> **Response:** The moat is real engineering but not exotic physics — an architecture mismatch (ATE runs fast functional test, not multi-day full-wafer thermal stress), a full-wafer high-power contactor, and sub-µm optical alignment — none of it uncrossable. Your "too small to care about" read is ~half right: WLBI is a $200-400M niche against the incumbents' $5-7B test franchises, so neglect is as much the barrier as engineering. As AI + CPO scale the TAM toward $1-2B the build/buy calculus inverts (Teradyne owns Quantifi Photonics; Advantest co-develops HBM wafer test with FORM), so the moat holds only inside a closing window — exactly the thesis risk. Full analysis: §Industry Context → The engineering / physics moat — real, crossable, and economically contingent.
 
 # AEHR — Aehr Test Systems
 
@@ -81,6 +85,24 @@ AEHR sells wafer-level burn-in (WLBI) systems and consumables to semiconductor m
 | InTest | Thermal test, vacuum chambers | Sub-scale; component supplier |
 
 **Pricing power dynamics**: AEHR's pricing power is asymmetric across the customer base. With the lead AI customer (88% concentration in Q3 FY26), pricing power is constrained — that customer drives volume and could pressure ASPs in the next round. With smaller customers (GaN auto, SiPh design-in), pricing power is high because AEHR is the only validated vendor. Management's challenge is to grow customer count fast enough to dilute the lead customer's leverage before that customer extracts gross margin.
+
+**The engineering / physics moat — real, crossable, and economically contingent**
+
+The moat is genuine engineering, not exotic physics — which makes it time-limited, and the "too small to bother with" read is roughly half the reason Advantest and Teradyne aren't here.
+
+*Why incumbents can't repurpose existing machines.* The V93000 (Advantest) and UltraFLEX (Teradyne) are built for functional/parametric test — high-speed digital patterns (multi-Gbps SerDes, pattern-in/pattern-out) verifying a chip works at speed, one-to-few devices at a time, seconds to minutes, through a pick-and-place handler. WLBI is the inverse physical process: sustained DC bias + 85-150°C held for hours-to-days across every die on a full wafer at once, using Arrhenius acceleration to force out infant-mortality defects. A V93000 cannot be reconfigured into a wafer-level burn-in oven — it is a different machine. This architectural separation, not IP, is the first-order barrier.
+
+*The three things that are actually hard:*
+
+| Barrier | What it is | Why it's hard | How it's crossed |
+|---|---|---|---|
+| Full-wafer contactor (WaferPak) | Simultaneous electrical (+ optical) contact to every die across 300mm, held through hours of thermal cycling | Contact-force uniformity, CTE matching, current density at high power, contactor life over thousands of touchdowns — a thermo-mechanical / materials problem, not a patent | 2-4yr cold build; one deal if an incumbent buys AEHR or the contactor IP |
+| High-power thermal uniformity | Deliver + dissipate kilowatts (3,500W/wafer SiC; 600W+/die AI) while holding junction temp to ±few °C | Arrhenius is exponential in temperature, so uniformity sets screen quality; thermal-runaway risk on power devices | Engineering, not invention |
+| Optical co-stimulus + sub-µm alignment (photonics only) | Couple light in/out of every die during the thermal soak | Single-mode core 9µm, coupling tolerance <2µm, alignment must hold across the temperature sweep — the "5-10yr optical co-development" leg | Hardest barrier; AEHR's deepest lead |
+
+*None of it is uncrossable.* The vault's own [[Sectors/Photonic Metrology]] position (pinned callout, Apr 2026): "FOX-XP physics is not exotic and a determined Teradyne organic build is technically possible." AEHR's real edge is accumulated, customer-funded, embedded engineering — the contactor IP, the alignment know-how, and the process-of-record qualified into each customer's flow (12-24 months per customer to displace) — not a physics wall. The "4-7 year qualification gap" cited in Insight #2 is the cold-start *build* path; it carries no vault source, and an acquisition collapses it to a single deal.
+
+*Why the user's framing is the right risk.* WLBI was a $200-400M niche against the incumbents' $5-7B functional-test franchises — too small to clear their build hurdle, and burn-in had been a commoditized, shrinking business (Aehr was near-bankrupt sub-$50M through 2014 when DRAM parallel-test collapsed). The moat was as much *neglect* as engineering. As AI + CPO drag WLBI toward $1-2B by 2030, the calculus inverts, and the bridges already exist: Teradyne owns Quantifi Photonics (2023); Advantest co-develops wafer-level HBM test with FormFactor. Neither is WLBI, but both are footholds plus the partnership template. The moat therefore holds only inside a closing window — durable while the TAM stays sub-critical and AEHR's install base + embedded IP stay ahead, eroding the moment photonics makes the market worth attacking. This is the 🟡 "incumbents stay out" assumption in [[Research/2026-05-26 - AEHR - Stress Test]] and the Bear Case's re-rate-to-$30-on-announcement risk, viewed from the engineering side.
 
 **Structural forces reshaping the industry**:
 - **AI compute thermal envelope** is forcing test methodology change. Pre-2023 GPUs ran 300-400W; Hopper (H100) is 700W; Blackwell B200 is ~1000W; Rubin/Rubin Ultra targets 1200W+. Functional probe alone cannot characterize reliability at these power densities. WLBI becomes mandatory.
@@ -201,6 +223,8 @@ The bear case is twofold: cycle compression and competitive dilution.
 - [[Theses/LITE - Lumentum.md]] — CPO bottleneck, wafer-level optical test row in equipment supply chain
 - [[Theses/FORM - FormFactor.md]] — Sister photonic-test pure-play; complementary positioning (AEHR burn-in / FORM probe), shared exposure to ATE-incumbent take-out optionality and CPO yield-closure chokepoint
 - [[Theses/BESI - BE Semiconductor Industries.md]] — adjacent semicap with similar CPO/AI photonics exposure pattern
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 5 convex bet; HOLD Low→1-2% (WLBI non-substitutable >600W TDP; second AI customer disclosure is binary catalyst)
+- [[Research/2026-05-26 - AEHR - Stress Test]] — Adversarial test: `conviction: high` unsupported (3-way conviction conflict); 5/7 bull assumptions 🔴; single-customer identity + WLBI moat-durability are the binary kill triggers
 
 ## Log
 
@@ -210,3 +234,13 @@ The bear case is twofold: cycle compression and competitive dilution.
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags HOLD at 1-2% (genuine convex bet; platform validation in motion, 2nd AI customer binary) — sizing call; conviction unchanged (high).
+- Stress test [[Research/2026-05-26 - AEHR - Stress Test]]: top vulnerability — `conviction: high` unsupported (frontmatter vs Summary "medium" vs 2026-05-24 rebalancing Tier-5/1-2% convex bet); 5/7 bull assumptions 🔴 (88% single undisclosed-identity customer, SiC −44% YoY drag, WLBI moat=qual-time not patent w/ Teradyne-Quantifi + ATE M&A live 2026-28, GM reset to 36.5%, $200M FY28 = 4x ramp unproven). Conviction weakened — reassess high→medium pending Q4 FY26 (Jun-Jul) customer/GM disclosure.
+
+### 2026-05-26 (Addressed user callouts)
+- Addressed user callouts: 1 fresh `[!question]` (moat durability vs Advantest/Teradyne) → new §Industry Context subsection "The engineering / physics moat — real, crossable, and economically contingent." Conclusion: moat is genuine engineering (architecture mismatch + full-wafer high-power contactor + sub-µm optical alignment) but not exotic physics; user's "too small to care about" read is ~half right (WLBI $200-400M niche vs incumbents' $5-7B franchises), and TAM scaling to $1-2B inverts the build/buy calculus (Teradyne-Quantifi 2023, Advantest-FORM HBM partnership = existing footholds). Reinforces the stress-test high→medium reassessment flag — moat is time-limited, not physics-absolute; conviction unchanged pending Q4 FY26. Aligns with existing [[Sectors/Photonic Metrology]] pinned-callout view — no /sync propagation needed.
+
+### 2026-05-29
+- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: Q3 FY26 numbers confirmed (bookings $37.2M, b2b >3.5x, backlog $50.9M, GM 36.5%, FY26 guide $45-50M). Nuance on Insight #2 — CEO: "most ASICs are not burnt-in," only ~half of AI accelerators, "early innings": WLBI is an adoption curve, not a present mandate (also = TAM runway). SiPh ahead of thesis (real systems order, not just design-in). Conviction unchanged.

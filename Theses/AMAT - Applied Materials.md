@@ -250,6 +250,8 @@ The bear case is real and is why conviction is medium, not high. Three structura
 **Macro context**:
 - [[Macro/AI capex supply chain]] — Tail-whip framework for upstream WFE demand.
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — JEDEC HBM4 720→775→900µm height relaxation pushed HBM-mandated hybrid bonding to HBM5+ 24-Hi (2029-2030); Kinex revenue trajectory revised — logic-line/2nm beachhead near-term, HBM-line volume mid-2029+; SK Hynix Mar 2026 Kinex order reclassified as logic-line primary (dual-use HBM5).
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→6-7% (cheapest WFE prime; ROIC NTM doubled 21.6→44%; 4 architectural inflections)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: memory WFE capex +26/34/20% (Samsung/SK Hynix/Micron) 2026; node migration to 1b/1c; CMP + bond-prep for HBM
 
 ## Log
 
@@ -264,3 +266,9 @@ The bear case is real and is why conviction is medium, not high. Three structura
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags UPSIZE to 6-7% (cheapest WFE prime; ROIC NTM near-doubling validates 4-inflection thesis) — conviction unchanged (high); sizing call.
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: memory WFE capex acceleration (+26/34/20% Samsung/SK Hynix/Micron 2026) + 1b/1c node migration — broad WFE beneficiary; conviction unchanged (high).

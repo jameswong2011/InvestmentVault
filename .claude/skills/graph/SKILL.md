@@ -278,6 +278,7 @@ Compute the delta set in memory (no tool calls):
 - Pre-T6.10 legacy frontmatter (no `last_graph_write:` field to Edit).
 - Pre-T7.3 upgrade scope wide: ≥10 baseline entries missing `status:` or `log_tail:` (upgrading each via granular Edit costs more than one full Write).
 - `|modified_theses| > 0.5 × |baseline_theses|` (output-token math favors Write).
+- `|modified_theses| + |added_theses| > 20` (absolute-scope cap — a long surgical-Edit cascade approaches the same output-token cap the chunked Write avoids; observed 2026-06-04: 33 changed theses accumulated against an 11-day-old watermark and stalled `/graph last`). Path B's chunked re-write is cheaper than 20+ full-block Edits.
 - Any anchor uniqueness check fails (§10.3).
 
 **Edit emission order** (per-Edit atomicity — §10.5):
@@ -293,11 +294,12 @@ Compute the delta set in memory (no tool calls):
 
 **Mid-cascade failure**: if any Edit errors, `_graph.md` is partially updated. Do NOT retry that Edit — escalate immediately to Path B (re-render full file from in-memory state and `Write` over the partial result). Log: `⚠️ Path A Edit failed for [delta]: [reason] — escalating to full Write to restore consistency.`
 
-#### Step I.9.B: Full Write Path (escalation + initial upgrade runs)
+#### Step I.9.B: Full (re)write Path (escalation + initial upgrade runs)
 
-Write merged graph using same format as full rebuild:
+Re-render the merged graph with the **chunked emission protocol from Step 7.1** — never a single whole-file `Write`. The same max-output-token failure applies here, and because Path B is the escalation target for a partially-written Path A, the on-disk file may already be large.
 - Frontmatter `date:` → today; `last_graph_write:` → Step 0.1 NOW; counts updated.
 - Sections: Thesis Adjacency Index (all entries sorted), Macro Reverse Index, Sector Reverse Index, Clusters (from I.6), Orphans (from I.7).
+- Chunk 1 = `Write` (overwrites the partial/old file with frontmatter + heading + first ≤20 entries); chunks 2..K = `cat >> _graph.md <<'GRAPHEOF'` appends, ≤20 entries or one section each.
 
 #### Post-edit cleanup
 
@@ -567,6 +569,20 @@ Sections:
 4. `## Cross-Thesis Clusters` — from Step 4
 5. `## Orphan Research Notes` — from Step 5
 
+**Chunked emission (MANDATORY — never single-`Write` the whole file)**: at current vault scale `_graph.md` is ~85 KB ≈ ~21 K output tokens; one `Write` exceeds the per-response output-token cap and aborts (observed 2026-06-04: 57-min runs ending in max-output-token errors on both `/graph` and `/graph last`). Assemble the file in bounded pieces, none exceeding ~6 KB:
+
+1. **Chunk 1 — `Write`**: frontmatter + title + intro + `## Thesis Adjacency Index` heading + the first ≤20 adjacency entries.
+2. **Chunks 2..K — `Bash` append**: remaining adjacency entries in ≤20-entry batches, then each later section (Macro reverse index, Sector reverse index, Clusters, Orphans), one append per batch/section:
+   ```bash
+   cat >> _graph.md <<'GRAPHEOF'
+   …chunk body verbatim…
+   GRAPHEOF
+   ```
+   The quoted delimiter `'GRAPHEOF'` is mandatory so `[[`, backticks, `$`, and `|` in log_tail text are written literally (an unquoted delimiter lets the shell mangle them).
+3. **Preferred above 40 theses — deterministic generator**: a script that reads the vault and writes `_graph.md` directly bypasses model output tokens entirely. It must reproduce this exact schema (2-space `- **field:**` bullets, `macros:` label, `—` for empty fields, ≤3 `log_tail` bullets each truncated at 100 chars + `…`). This is the method used to recover the graph on 2026-06-04.
+
+A heredoc that fails to close silently truncates the file — always run Step 7.5 after the final append.
+
 **After write succeeds**, delete post-write markers (§9):
 ```bash
 rm -f .graph_invalidations
@@ -582,7 +598,7 @@ Re-read `_graph.md`. Verify:
 2. All five section headings exist
 3. Every `### TICKER - Name` has at least `sectors:` field
 4. **T7.3 cache fields**: every entry carries `status:` and `log_tail:`. Missing either → `⚠️ Adjacency entry [TICKER] missing status: or log_tail: after write — likely extraction glitch; re-run /graph last to refresh.` Non-fatal; continue.
-5. All wikilinks valid syntax (no unclosed brackets)
+5. Wikilinks in **structural fields** (`sectors`/`macros`/`cross-thesis`/`research`) and in reverse-index / cluster / orphan rows have balanced `[[ ]]`. Unbalanced brackets inside `log_tail:` sub-bullets (4-space indent) are EXPECTED — the 100-char truncation can sever a quoted `[[…]]`; do NOT flag those. Fail only when a structural field or table row is unbalanced.
 6. Frontmatter counts match content: `theses:` = count of `###` entries; `orphans:` = count of orphan items
 7. Every file listed in adjacency exists on disk (spot-check first + last entry + any newly added/changed)
 

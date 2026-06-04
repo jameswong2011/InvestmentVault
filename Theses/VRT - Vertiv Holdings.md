@@ -200,3 +200,6 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-06-03 (/sync)
+- [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]]: Neocloud buildout = direct Vertiv demand — NBIS scaling ~170MW→800MW-1GW by YE2026 + CRWV >1GW are power/cooling pull; corroborates the 8-12% of FY26E revenue at 38-42% GM neocloud exposure. Conviction unchanged (medium), demand-corroborating.

@@ -308,7 +308,7 @@ done
 
 For each changed thesis:
 - **Research-driven** (default): at least one research note in the changed-file set resolves (via Step 1.2) to this thesis, OR recent Log entries reference changed research notes. Proceed through Step 3/4/5 normally.
-- **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND most-recent Log entry matches a skill-origin prefix from `_shared/log-prefixes.md` (registry §5 `Conviction reaffirmed`, §6 `Status change: conviction`, §7 `Status change:`, §8 `CLOSED`, §9 `Prune upgrade`, §11 `Initial thesis created`, §12 `ROLLBACK to snapshot`, §13 `Cross-thesis closure:` / `Cross-thesis closures:`, §14 `Scenario REVERSED`, §15 `Renamed file:`, §16 `Comparison `, §17 `Callout sweep:`) AND no research note in the changed-file set resolves to this thesis.
+- **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND most-recent Log entry matches a skill-origin prefix from `_shared/log-prefixes.md` (registry §5 `Conviction reaffirmed`, §6 `Status change: conviction`, §7 `Status change:`, §8 `CLOSED`, §9 `Prune upgrade`, §11 `Initial thesis created`, §12 `ROLLBACK to snapshot`, §13 `Cross-thesis closure:` / `Cross-thesis closures:`, §14 `Scenario REVERSED`, §15 `Renamed file:`, §16 `Comparison `, §17 `Callout sweep:`, §18 `Numbers refresh:`) AND no research note in the changed-file set resolves to this thesis.
 - **Mixed**: research-note source AND skill-origin Log prefix → treat as **research-driven**.
 
 ### Output
@@ -745,8 +745,11 @@ Apply compression trigger order from `_shared/hot-md-contract.md` to the staged 
 1. Drop oldest Sync Archive entry from staged Sync Archive.
 2. Drop oldest `*Previous:*` line from staged Active Research Thread.
 3. Merge duplicate Open Questions in staged Open Questions.
+4. Drop staged Open Questions cohorts older than 14 days (compress each cohort to one-line pointer to thesis `## Outstanding Questions`).
+5. Roster-compress staged Recent Conviction Changes entries older than 30 days (one-liner pointing to thesis `§Log + body`).
+6. Aggressive RCC fallback (only if still over hard cap after step 5): progressively roster-compress oldest RCC entries (younger than 30 days) until under hard cap OR only the 5 most-recent entries remain verbatim.
 
-After each step, recompute `projected_total`. Stop when under soft cap. If all three exhausted and `projected_total > hard_cap`, return to 6.2's abort path.
+After each step, recompute `projected_total`. Stop when under soft cap. If all six exhausted and `projected_total > hard_cap`, return to 6.2's abort path.
 
 ### 6.4: Commit all section writes (single composite Edit — M5 atomicity)
 

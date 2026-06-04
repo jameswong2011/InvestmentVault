@@ -137,6 +137,7 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 - **BiCS10 expedited:** 332-layer production in 2026 positions Kioxia to capture density-driven pricing premium
 - **Kitakami Fab2 ramp:** Newest, most advanced NAND fab globally now in production
 - **Geopolitical stability:** Japan-based manufacturing insulated from US-China cross-fire
+- **Bluefield-4 KV-cache-to-NAND demand vector (net-new, emerging):** NVIDIA's Bluefield-4 Context Memory Storage Platform (Grace + ConnectX-9) offloads model KV-cache to high-speed NAND — a "third network" tier beyond cold storage. Small today, architecturally significant: model-context tiering to NAND is a structural high-performance-NAND demand leg that partially offsets the algorithmic-efficiency bear (Risk #5 / Bear #149). Per [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]].
 
 ## Bear Case
 - **PE overhang:** Bain Capital ~51% stake creates persistent selling pressure; ~$5.4B+ already sold
@@ -181,6 +182,8 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 - [[Sectors/Semiconductor Capital Equipment]] — WFE sector hub: TEL cryogenic etch HVM 2026 for 400L NAND (Samsung first customer); JEDEC HBM4 900µm relaxation delays hybrid-bonding to HBM5; equipment-adjacent secondary sector reference
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War Hormuz blockade cuts 40% of Japan naphtha; PGME/PGMEA solvent shortage threatens Japanese PR/BARC supply to Yokkaichi/Kitakami fabs
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — NAND capacity growth constrained (low double digits, lower than DRAM); supply deficit durability through 2027+; die-supply positioning reinforced
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — DRAM/HBM supercycle read; adjacent NAND context (supply-discipline + capex-restraint parallels), no NAND-specific delta
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": Bluefield-4 KV-cache-to-NAND ("third network") = net-new emerging high-performance-NAND demand vector (added to Bull Case)
 
 ## Log
 ### 2026-04-16 (NAND sector research sync)
@@ -213,3 +216,12 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Marginal indirect-negative — extended Scenario A keeps Japanese PR/BARC/PGMEA tail-risk window open past Jun 15; 2019 HF-dispute precedent caps as 12-18mo manageable vulnerability per Risk #8. Conviction unchanged (medium, monitoring).
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: DRAM/HBM supercycle read — adjacent NAND context (supply-discipline + capex-restraint parallels); no NAND-specific delta, conviction unchanged (monitoring).
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: NVIDIA Bluefield-4 KV-cache-to-NAND ("third network") added as net-new emerging Bull demand vector — model-context tiering to high-speed NAND partially offsets the algorithmic-efficiency bear. Small today, architecturally significant. Conviction unchanged (medium, monitoring). Snapshot: [[_Archive/Snapshots/285A - Kioxia (pre-sync 2026-06-02-121812)]]

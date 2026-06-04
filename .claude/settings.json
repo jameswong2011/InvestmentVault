@@ -132,7 +132,11 @@
       "Bash(cp 'User Guide.md' '_Archive/Snapshots/User Guide \\(pre-pinned-rework 2026-04-29-130000\\).md')",
       "Bash(cp .claude/skills/archive-callouts/SKILL.md '_Archive/Snapshots/archive-callouts SKILL \\(pre-pinned-rework 2026-04-29-130000\\).md')",
       "Bash(cp .claude/skills/lint/SKILL.md '_Archive/Snapshots/lint SKILL \\(pre-pinned-rework 2026-04-29-130000\\).md')",
-      "Bash(cp .claude/skills/graph/SKILL.md '_Archive/Snapshots/graph SKILL \\(pre-pinned-rework 2026-04-29-130000\\).md')"
+      "Bash(cp .claude/skills/graph/SKILL.md '_Archive/Snapshots/graph SKILL \\(pre-pinned-rework 2026-04-29-130000\\).md')",
+      "Bash(mkdir -p /Users/alexcohen/InvestmentVault/.claude/skills/numbers /Users/alexcohen/InvestmentVault/.claude/skills/transcript /Users/alexcohen/InvestmentVault/.data/transcripts && ls /Users/alexcohen/InvestmentVault/.claude/skills/numbers /Users/alexcohen/InvestmentVault/.claude/skills/transcript)",
+      "Edit(/.claude/skills/numbers/**)",
+      "Edit(/.claude/skills/transcript/**)",
+      "Bash(rm -f .claude/locks/vault.lock && echo \"RELEASED\")"
     ]
   }
 }

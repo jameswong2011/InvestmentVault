@@ -580,6 +580,7 @@ The base-case constructive view requires tier-1 capex ROI to demonstrate (Q2/Q3 
 - [[Research/2026-03-19 - AppLovin AXON Engine Differentiation]] — SEC identifier-bridging probe; relative advantage to walled gardens that own identity graph outright.
 - [[Research/2026-03-21 - NFLX - Gemini Investment Case Canvas]] — Netflix ad-tier subscriber growth and Microsoft ad-tech partnership; CTV-vs-social brand-budget convergence.
 - [[Research/2026-04-15 - SPOT - Product Strategy and Competitive Position]] — Spotify SPAN audio programmatic ad expansion; tier-2 social ad ARPU comparable.
+- [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]] — FTC $930K deception settlement (Cox/MindSift/1010): "active listening" mic-targeting was fabricated (resold data-broker email lists, no voice data); regulatorily debunks the surveillance-listening myth + signals FTC scrutiny of deceptive ad-tech data claims; reinforces scaled first-party-data platforms (META/PINS) over data-broker arbitrage.
 
 ### Vault gaps — research notes that should exist (TODO)
 
@@ -621,3 +622,6 @@ The following are explicit gaps in vault coverage given how heavily this sector 
 
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-22 - Marc Andreessen on Internet Media Fragmentation and Outrage Cycles - video-transcript]]: Andreessen frames 1970-2014 as historical anomaly of "suppressed volatility" caused by overcentralization (3 TV networks, single-newspaper-per-city, 2 wire services); current environment is reversion to historical baseline of fragmented partisan high-velocity media. Empirical model: ~2.5-day outrage half-life × ~100 cycles between April-November 2026 election → social-media advertising attention structurally elevated through 2026 midterms + 2028 presidential, supporting [[Theses/META - Meta]] Advantage+ targeting moat. "Barbell media" thesis (short-form video + 3-hour podcast) confirms attention is concentrated, not dissipated, by fragmentation — supports [[Theses/APP - AppLovin]] mobile-ad positioning. AyA media fellowship dark-money AI-doom influencer program reframes AI-policy multiple compression on AI infra (NVDA/AVGO/PLTR) as availability-cascade ops effect, not organic sentiment shift.
+
+### 2026-05-26 (/sync)
+- [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]]: FTC $930K deception settlement confirms "active listening" mic-targeting was fabricated (data-broker email reselling, no voice data) — sector read: regulatorily deflates the surveillance-listening myth + signals FTC scrutiny of deceptive ad-tech data-sourcing claims; marginally reinforces scaled first-party-data platforms (META/PINS) over data-broker arbitrage. No change to sector dynamics.

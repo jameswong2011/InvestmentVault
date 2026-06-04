@@ -269,3 +269,6 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Market pricing 23-day deal-completion gap incremental "broad outlines" leaks cannot close; Hormuz tolling system as third Hormuz state (open/closed/tolled) is a NEW playbook variable not currently captured in §Risks. Reinforces 15% trailing-stop discipline — no early lift on Al Arabiya-style optimism leaks; LR2 $100k+/day regime persists through Q3+. Conviction unchanged (medium, monitoring).

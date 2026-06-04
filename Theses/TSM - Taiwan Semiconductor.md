@@ -32,6 +32,8 @@ A16 (2nd-gen 2nm class with Super Power Rail backside power delivery) goes into 
 
 TSMC's COUPE (Compact Universal Photonic Engine) entered risk production with AMD in Feb 2026, 9 months ahead of roadmap. The $280M Taiwan silicon-photonics R&D center (announced Oct 2025) signals TSMC views optical interconnect as a second logic business, not an accessory. Current market: optical interconnect is ~$14B split between InPhi (acquired by MRVL), LITE EMLs, and Chinese optical module makers. TSMC's move to integrate SiPh on-wafer removes the packaging/alignment step and captures 40-60% of interconnect BOM value that today flows to optical-module vendors. If COUPE ramps with AMD MI400 (2027) and NVDA Spectrum-X upgrades (2027-2028), TSMC adds a $5-8B revenue line by 2029 that isn't in consensus models. The competitive moat for photonics foundry is the same moat as logic foundry — process know-how, customer partnerships, and yield learning curve — and nobody else has 10 years of photonics R&D at volume scale.
 
+The strongest competitive tell arrived in early 2026: Broadcom — the most CPO-experienced vendor, with 50k+ Bailly switches shipped — is abandoning its own SPIL fan-out (FOWLP) packaging (capped at ~100G/lane by through-mold-via parasitics) and moving its future CPO roadmap to COUPE, forced to "start fresh" on grating coupling + micro-ring modulators versus its incumbent edge-coupling + Mach-Zehnder design. COUPE's bumpless SoIC hybrid bond delivers >23× the bandwidth density of a bumped optical engine at iso-power, and TSMC is the only foundry running die-to-wafer hybrid bonding at volume. The deeper lock-in: TSMC will not package third-party SiPho wafers, so a COUPE win locks the customer into TSMC-fabbed PICs. The investment implication inverts consensus — CPO value concentrates *at TSMC* rather than dispersing across the SiPho foundries (GlobalFoundries/AMF, Tower) that historically led silicon photonics. Per [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]], the larger prize is later-decade scale-up CPO (already a larger TAM than scale-out), where COUPE is the integration option of choice.
+
 ### 5. Pricing power is rising, not topped — N2 @ +20% premium says monopoly rents are expanding
 
 Consensus assumes gross margin is already near ceiling at 58-59%. The N2 price premium (20% above N3, itself already a 15-18% premium to N5) says the opposite: TSMC is still harvesting pricing power as customers have nowhere else to go. N2 volume mix in 2026: ~10% of revenue. Scaling to 35-40% by 2028 alone adds 300-400bps to blended gross margin via mix shift — before any additional price hikes. 2028 gross margin of 62-64% is plausible if N2/A16/A14 mix accelerates and US fabs achieve cost parity (stretch goal: $200B+ in additional tooling + TSMC Arizona learning rate). Consensus models a declining margin path into Arizona dilution (2-3pts drag by 2030). The offset — monopoly pricing at node transitions — is not in the sell-side model.
@@ -303,6 +305,10 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — SemiAnalysis projects TSMC 2028 capex ~$100B (vs $57.4B 2026 baseline); "good people" single-digit pricing discipline as hidden option value; ASML sold out; validates Bull Case monopoly-rents thesis
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — leading-edge PR supply chain indirect exposure (Shin-Etsu/TOK feed TSMC); Korean/Taiwanese localization farther along than Japanese per article — TSM likely less exposed than Samsung/Hynix but not zero
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — TSMC HBM base-die foundry win at 2 of 3 HBM IDMs (SK Hynix + Micron, Samsung in-house); incremental wafer revenue stream tied to HBM volume independent of CoWoS; Vera Rubin HBM4 supply ~70/30/0 SK Hynix/Samsung/Micron initial implicitly drives CoWoS-S/L mix
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 1 anchor compounder; UPSIZE Medium→12-14% (cheapest structural compounder at EV/EBIT NTM 22.5x, 32% ROIC; Taiwan tail unhedged but priced)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: COUPE is the CPO integration option of choice (Broadcom abandoning own FOWLP→COUPE; SoIC bond 23× density; TSMC won't package 3rd-party SiPho = PIC lock-in); reinforces Insight #4 value-concentration-at-TSMC thesis and extends it to later-decade scale-up CPO
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: TSMC 2026 capex came in well above expectations (logic-side pricing the capex cycle); HBM4 base-die/CoWoS demand intact
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — datacenter CPU landscape: nearly every competitive 2026 CPU is TSMC N2/N3 (AMD Venice N2, Graviton5/Cobalt/Axion/Phoenix 3nm, ARM Venom N2, AMD Florence A16) — reinforces leading-edge logic monopoly across the entire CPU vendor set, not just GPUs
 
 ## Log
 
@@ -333,3 +339,21 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction low→high.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Marginal indirect — extended Scenario A leaves leading-edge EUV PR/BARC (Shin-Etsu, TOK) tail open, but Taiwan/Korean localization mitigates relative to Samsung/Hynix exposure. Fifth supply-chain vector framing (Taiwan tail + AAPL+NVDA concentration + Arizona drag + Intel 18A + Japan materials) sustained but unchanged. Conviction unchanged (high).
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags UPSIZE to 12-14% (Tier 1 structural compounder underweighted vs quality; HBM4 base-die win already in thesis) — conviction unchanged (high); sizing call, not a conviction change.
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: COUPE chokepoint strengthened (Insight #4) — Broadcom abandoning own FOWLP→COUPE "start fresh", SoIC bumpless bond 23× density, TSMC won't package 3rd-party SiPho (PIC lock-in); value concentrates at TSMC vs SiPh-foundry dispersion, scale-up CPO is the larger later-decade TAM. Conviction unchanged (high) — non-Taiwan-tail positive.
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: TSMC 2026 capex well above expectations (logic-side already pricing the capex cycle); HBM4 base-die/CoWoS demand intact — conviction unchanged (high), marginal.
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: The "CPUs are back" inflection broadens TSMC's leading-edge demand base beyond GPUs — AMD Venice (N2), Graviton5/Cobalt/Axion/Phoenix (3nm), ARM Venom (N2), Florence (A16) all run on TSMC; even Intel keeps mesh/IO on Intel 3 while moving only cores to 18A and >90% of Nova Lake on N2. Reinforces logic-monopoly pillar across the full CPU vendor set. Conviction unchanged (high), marginal/positive.
+
+### 2026-06-03 (/sync)
+- [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: SemiAnalysis reinforces TSMC pricing-restraint = hidden option value (N3 util >100% H2'26 yet pricing stable; Jensen "TSMC should charge more"; LTA/prepayment path likelier than headline hikes) — corroborates monopoly-rents Bull pillar. Conviction unchanged (high), marginal.

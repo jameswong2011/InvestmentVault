@@ -130,23 +130,28 @@ Parse $ARGUMENTS to determine mode:
 Re-read the just-written research note and check, in order:
 
 **Structural checks (block on failure)**:
-1. YAML frontmatter parses (has opening `---` and closing `---`, valid key-value lines between).
+1. **YAML frontmatter actually parses** — run a real parser on the block between the opening/closing `---` (e.g. `python3 -c "import sys,yaml;yaml.safe_load(sys.stdin)"`, or `ruby -E UTF-8 -ryaml -e 'YAML.load($stdin.read)'`), NOT just a delimiter/eyeball check. The dominant failure mode is an **unquoted value containing a colon-space** (clipped titles read `… Book: Scaling …`) or an em-dash/quote, which makes the plain scalar invalid YAML — Obsidian then refuses to render the Properties block (raw red text) and this gate fails. Fix by single-quoting the value per the frontmatter-template rule above, then re-verify. On parse failure, treat as a structural failure (block + leave the source file in `_Inbox/`).
 2. Required frontmatter fields present: `date:`, `tags:`, `source:`, `source_type:`.
 3. Body is non-empty and contains at least one `## ` section header.
 4. Last non-empty line does not end mid-sentence (doesn't terminate in a conjunction, preposition, comma, or opening bracket).
 
 **Content-quality checks** (NEW — block on failure for URL/PDF source types; advisory for manual local files):
 
-5. **Proportional body word count floor** (replaces prior flat 150-word floor — preserves the source's content load): use `source_words` computed in Step 1. Compute `body_words` = word count of research note body (exclude frontmatter, fenced code blocks, section headers). Apply the bucket-appropriate minimum:
+5. **Scaling body-length floor — retention scales with source length** (replaces the prior flat 4-bucket floor that over-cut long articles): use `source_words` computed in Step 1. Compute `body_words` = word count of research note body (exclude frontmatter, fenced code blocks, section headers). The floor is `body_floor = source_words × R`, where the retention fraction `R` steps down by source-size tier. Because `R` is applied to the **actual** `source_words`, the floor scales continuously with length — there is **no flat ceiling**. The **percentage** cut therefore rises as the source grows ("more text → more % cut") while the **absolute** retained content keeps climbing; equivalently the cut-to-kept ratio scales as a power of source length (superlinear). Short sources keep a high fraction (every sentence carries signal); long sources keep a low fraction (redundancy is compressible) but still retain substantial absolute content.
 
-   | Source word count | Research note body minimum | Extra requirement |
-   |---|---|---|
-   | <1,500 | ≥300 words | — |
-   | 1,500–5,000 | ≥800 words | — |
-   | 5,000–15,000 | ≥1,800 words | — |
-   | >15,000 | ≥2,500 words | `## Key Segments` section present with ≥3 non-empty sub-sections |
+   | `source_words` | Retention `R` | Body floor (`R × source_words`) | `## Key Segments` |
+   |---|---|---|---|
+   | < 800 | 0.65 (absolute min 300) | ≥ 300 | — |
+   | 800 – 2,000 | 0.58 | ≥ ~460–1,160 | — |
+   | 2,000 – 5,000 | 0.46 | ≥ ~920–2,300 | — |
+   | 5,000 – 15,000 | 0.36 | ≥ ~1,800–5,400 | — |
+   | 15,000 – 30,000 | 0.28 | ≥ ~4,200–8,400 | required, ≥3 sub-sections |
+   | 30,000 – 60,000 | 0.22 | ≥ ~6,600–13,200 | required, ≥4 sub-sections |
+   | > 60,000 | 0.18 | ≥ 10,800+ | required, ≥5 sub-sections |
 
-   Below the bucket minimum, extraction captured conclusions but dropped the source's analytical substrate (frameworks, mechanisms, worked examples, methodology nuance, speaker qualifiers) — the note passes structural checks but fails to preserve the source's content load, which is the failure mode the user flagged on 2026-04-24. The <1,500/300-word floor is the absolute minimum: below it the fetch likely hit a paywall / error page and the anti-bot detection (#6) typically also fires.
+   **Monotonicity guard**: the floor is non-decreasing in `source_words` — at a tier boundary use the more generous (higher) adjacent value; never target fewer words than a shorter source would. These are **floors, not caps** — dense sources may warrant more, and the body should still be synthesis (not near-verbatim transcription). Worked example: a ~30,000-word deep-dive floors at `0.22 × 30,000 ≈ 6,600` body words (vs the old flat `≥2,500` ≈ 8% retention that was over-cutting long articles); a ~3,000-word article floors at `0.46 × 3,000 ≈ 1,380`.
+
+   Below the floor, extraction captured conclusions but dropped the source's analytical substrate (frameworks, mechanisms, worked examples, methodology nuance, speaker qualifiers) — the note passes structural checks but fails to preserve the source's content load, which is the failure mode the user flagged on 2026-04-24 (and the long-article over-compression flagged 2026-05-31). The `< 800 → ≥300`-word tier is the absolute minimum: below it the fetch likely hit a paywall / error page and the anti-bot detection (#6) typically also fires.
 
    **Report**: when a bucket threshold fails, include in the diagnostic `source_words: [N], body_words: [M], required: [floor]` so the user sees the ratio. When >15,000 and `## Key Segments` absent, report explicitly `missing required Key Segments section for source >15,000 words`.
 
@@ -255,10 +260,12 @@ date: YYYY-MM-DD
 tags: [research, SECTOR, TICKER(s)]
 sector: [primary sector]
 ticker: [primary ticker if applicable]
-source: [URL, file path, or description]
+source: '[URL, file path, or description]'
 source_type: [earnings|analyst-report|news|deep-dive|data|web-clip|video-transcript]
 ---
 ```
+
+**Frontmatter YAML-safety (MANDATORY).** Always single-quote the `source:` value — and any other free-text value (e.g. a `title:`) that could contain a `: ` (colon-space), a ` #`, a wrapping `"`, or a leading `[ { & * ! @`. Clipped article titles routinely include colons (`Book: Scaling`), em-dashes, and quotes; left unquoted these produce invalid YAML that (a) makes Obsidian render raw red frontmatter instead of the Properties table and (b) fails Post-write structural check #1, stranding the source file in `_Inbox/`. Single quotes are safest — they tolerate `:`, `—`, `"`, `(`, `#`, and source values contain no single-quotes in practice. Per CLAUDE.md's `source:`-immutability rule, quoting changes formatting only — never alter the provenance content inside the quotes.
 
 **Follow CLAUDE.md Writing Standards strictly.** Structure the body in this section order:
 

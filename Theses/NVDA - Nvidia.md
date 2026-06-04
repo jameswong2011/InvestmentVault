@@ -6,6 +6,7 @@ ticker: NVDA
 conviction: high
 sector: GPU & AI Compute Accelerators
 source: Consolidated — Gemini Canvas (Omniverse/PhysX, AI Ecosystem, TurboQuant), ChatGPT (CES 2026, HBM4, AI Bubble, Silicon Photonics), Claude (PhysX competitive dynamics), Grok (Omniverse deep-dive, interconnects), web research (FY2026 earnings, GTC 2026, sovereign AI, ASIC competition, export controls)
+key_metrics_last_refreshed: 2026-05-22
 ---
 
 # NVDA — Nvidia
@@ -154,23 +155,25 @@ The Palantir joint "Sovereign AI OS Reference Architecture" adds a software gove
 
 Nvidia occupies the most strategically advantaged position in the AI value chain — the "picks and shovels" provider that benefits regardless of which downstream AI company captures end-user revenue. The more model providers that compete (OpenAI, Anthropic, Google, Meta, Mistral, open-source), the more aggregate compute they consume. Open-source model proliferation (Kimi K2.5 achieving 50.2% on HLE-Full vs GPT-5.2 at 45.5%, at 1/9th cost) commoditizes the "intelligence premium" of closed providers and accelerates enterprise AI deployment volume — a net positive for infrastructure demand. The "AI bubble" framing actually strengthens the infrastructure provider thesis: even bubble skeptics concede infrastructure providers are the "picks and shovels" winners, and data centers report demand exceeding capacity with vacancy rates at record lows (2.8% per CBRE).
 
+**Unexercised pricing power is the unmodeled margin lever.** Per [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]] (SemiAnalysis/Nishball), Nvidia and TSMC have *deliberately under-priced* through the agentic-AI value step-change — anchoring to cost-based frameworks while the AI labs captured the value (Anthropic inference gross margin 38%→>70%, ARR $9B→$44B+). The "central bank of AI" restraint (avoid antitrust scrutiny, preserve ecosystem health, slow customer diversification — the TSMC playbook of pricing below scarcity) leaves an explicit lever: Vera Rubin's value-based GPU-rental ceiling (~$9.63–12.25/hr/GPU) sits ~2x the cost-based floor (~$4.92/hr), and capex/watt barely rose GB300→VR NVL72 ($37.4→$38.1/W) despite TDP nearly doubling (1,400→2,300W) — implying ~40% theoretical Rubin server-price headroom before crossing the neocloud return hurdle. The cleanest sub-lever is **SOCAMM**: because Vera Rubin's LPDDR is socketed (not soldered like GB300), Nvidia can disaggregate and reprice memory independently at ~60% margin — and memory, unlike the GPU, is not an antitrust concern, making it the preferred price-discrimination vector. The ceiling on this lever is the same custom-silicon competition the thesis already tracks (Anthropic's Trainium/TPU diversification — Mythos was not trained on Nvidia — caps how far value-based pricing can push). Net: consensus likely under-models a forward margin step-up as pricing migrates from cost- toward value-based, a counter-weight to the ASIC-share-erosion narrative.
+
 ## Key Metrics
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$4.6T | World's most valuable company (Apr 2026) |
-| Stock Price | ~$190 | Apr 2026 |
-| EV/Revenue (TTM) | 18.3x | |
-| Forward P/E | ~30x | Down from 45x+ in 2024 |
-| Trailing P/E | ~38.5x | |
-| EV/EBITDA | ~29–31x | |
+| Market Cap | ~$5.3T | World's most valuable company (Apr 2026) |
+| Stock Price | ~$217 | Apr 2026 |
+| EV/Revenue (TTM) | 20.8x | |
+| Forward P/E | ~25x | Down from 45x+ in 2024 |
+| Trailing P/E | ~33.1x | |
+| EV/EBITDA | ~27.3x | |
 | FY2026 Revenue | $215.9B | +65% YoY |
 | Q1 FY2027 Guidance | $78.0B ± 2% | Implies ~$300B+ FY2027 run-rate |
 | Data Center Revenue | $193.7B | 89.7% of total, +68% YoY |
-| Gross Margin (GAAP) | 71.1% | |
-| Operating Margin | 60.4% | |
+| Gross Margin (GAAP) | 74.1% | |
+| Operating Margin | 64.0% | |
 | Net Income | $120.1B | |
 | Free Cash Flow | $96.7B | +59% YoY |
-| FCF Yield | ~2.1% | $96.7B / $4.6T market cap |
+| FCF Yield | ~2.3% | $96.7B / $4.6T market cap |
 | AI Accelerator Market Share | ~75% | Declining from 87% peak; absolute revenue still growing |
 | CUDA Developers | 5.9M | 20-year ecosystem |
 | Sovereign AI Revenue | ~$30B | 3x YoY; UK, Germany, France, UAE, others |
@@ -218,8 +221,10 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 7. **Inference architecture disruption:** Groq LPX deal signals GPUs may not be optimal for dedicated inference; SRAM-based and TPU-based architectures could capture inference revenue
 8. **Valuation requires sustained execution:** ~30x forward P/E on $300B+ implied FY2027 revenue requires continued 30%+ growth; any deceleration compresses the multiple sharply in a cyclical semiconductor industry
 9. **Tariff/trade policy uncertainty:** Broader US trade policy volatility (145% China tariffs on other goods) could disrupt supply chains and customer purchasing behavior
+10. **NVLink scale-up moat erosion via the SerDes plateau:** Per [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]], NVLink's 11× scale-up bandwidth gain (NVLink 1.0→5.0) came almost entirely from 10× SerDes speed (20G→200G), not lane count — and SerDes is plateauing (224G was hard; true 448G uni-directional uncertain, Rubin resorts to a bi-directional workaround). Copper scale-up hits a ~2-meter reach wall capping world size to 1-2 racks. CPO removes that constraint and gives hyperscaler / AMD scale-up fabrics four independent bandwidth-scaling vectors (fiber × baud × modulation × WDM) versus copper's single grinding lever — a structural opening to close the NVLink gap later-decade. Partially offset by Nvidia's own scale-up CPO lead (Quantum-X 200G-MRM in production disproves the NRZ-only notion) and Kyber rack density (144 GPU packages). The risk is to NVLink's *durability* as the scale-up moat, not near-term positioning.
 
 ## Related Research
+- [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]] — SemiAnalysis/Nishball: Nvidia deliberately under-prices (cost- not value-based); SOCAMM 60%-margin memory lever (socketed LPDDR, non-antitrust vector); ~40% Rubin server-price headroom (capex/watt flat $37.4→$38.1/W despite ~2x TDP); value-based GPU-rental ceiling ~$9.63-12.25/hr vs ~$4.92 cost floor; "central bank of AI" restraint; ceiling = Trainium/TPU diversification (Mythos not on Nvidia)
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei three-year Ascend roadmap (950PR Q1 2026 with in-house 128GB/1.6 TB/s HBM, 950DT Q4 2026 at 144GB/4 TB/s, 960 in 2027, 970 in 2028 targeting 4 ZettaFLOPS FP4), 1.6M dies in 2026, ByteDance $5.6B order, Atlas 950DT SuperCluster 524 EFLOPS FP8, CUDA-compatible stack — China bear case strengthens from "developing" to "shipping at scale"
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — CEO interview: ASIC margins ~65% vs NVDA ~70%, $100B+ upstream supply commitments, Triton built on CUDA, Groq as market segmentation, China 7nm sufficiency argument, $30B OpenAI + $10B Anthropic investments
 - [[Research/2026-03-28 - NVDA - Gemini Omniverse Canvas]] — Comprehensive Physical AI analysis: Omniverse architecture, PhysX 5 SDK, Warp benchmarks (8x–669x), Cosmos platform, competitive landscape, hardware-software co-optimization
@@ -249,6 +254,10 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — Hopper/A100 useful-life extending to 7-8yr (installed-base ASP durability); Anthropic 72% gross margin floor; partial rebuttal on stress test's Jevons-vs-efficiency 🔴 assumption
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — indirect Rubin 2026 volume-ramp risk via Samsung/Hynix HBM Japanese PR/BARC supply disruption
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — Vera Rubin HBM4 split ~70% SK Hynix / ~30% Samsung / 0% Micron initial; HBM supply risk corroboration (single-supplier dependency for Rubin first-shipment quarters); JEDEC 720→775→900µm height relaxation pushes hybrid bonding to HBM5+ 24-Hi (2029-2030) — HBM4/4E remains MR-MUF; Rubin Ultra HBM allocation likely shifts toward dual-source parity if Samsung 1c yield clears 70%
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 1 anchor; UPSIZE Medium→12-14% (highest-ROIC compounder 60%; cohort laggard +64% 1Y; CUDA + Omniverse $600B option)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: SerDes plateau frames a structural risk to NVLink's scale-up moat (added Risk #10); offset by Nvidia's own Quantum-X 200G-MRM CPO lead + Kyber density. Scale-up CPO is the real later-decade TAM; opening for AMD/hyperscaler scale-up fabrics
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — SemiAnalysis memory supercycle: HBM content step-ups (Blackwell→Rubin +~50%, Rubin Ultra 288GB→~1TB) validate platform memory scaling; "memoryflation" a modest AI-server BoM cost
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — Vera (2x Grace, custom SMT Olympus core) + Bluefield-4 (Grace+ConnectX-9, KV-cache→NAND "third network") expand per-rack silicon content; risk: Grace Neoverse-V2 branch-predictor bottleneck currently slows AI workloads on GB200/GB300 until Vera ships
 
 ## Log
 ### 2026-04-19 (TSM stress test sync)
@@ -320,3 +329,28 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-22 (/numbers)
+- Numbers refresh: 9 metrics updated, 2 material. OpMargin +60.4%→64.0% (+3.6pp); GM +71.1%→74.1% (+3.0pp). Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-numbers 20260522-231058)]]
+
+### 2026-05-22 (/transcript)
+- Transcript ingested: Q1 FY2027 — $82B rev (+85% YoY, +20% seq) beat prior Q1 guide $78B by $4B; Q2 guide $91B (+11% seq); GAAP GM recovered 71.1%→74.9%; sovereign +80% YoY across 40 countries / $50T GDP; Vera CPU `$200B brand-new TAM` opens platform-expansion bull driver beyond GPU; $1T Blackwell+Rubin visibility 2025–2027; $80B buyback + dividend 20x to $0.20.
+- Signal scan: hedging −30%, specificity +48%, Q&A skepticism = 0 (sell-side capitulation — watch for re-pricing risk). Bull case strengthened across sovereign / software-margins / hyperscaler-capex / valuation-compression drivers. Bear case partially weakened on algorithmic-efficiency reframing to Jevons ("lowest token cost"). Hyperscaler-ASIC + China bear-case risks NOT addressed — gaps. New segmentation (Hyperscale / ACIE / Edge Computing) makes Vera CPU + sovereign visible as discrete growth lines. [[Research/2026-05-22 - NVDA Q1-2027 - earnings]]
+
+### 2026-05-24
+- Retro insight: 1w retrospective — Q1 monster beat ($82B vs $78B guide, GM 74.9% recovery, $80B buyback) drew only +1.37% AH then went flat; unreactive-good (×2.0 gap weighting) — sell-side capitulation marker (Q&A skeptical-keyword density = 0) means consensus has fully priced the beat, leaving no immediate flow asymmetry. Next NVDA-direct catalyst is Q2 Aug 26 (post-FMP window per /catalyst 5-23); bridge signals are AVGO Jun 3 (custom-silicon TAM commentary), TSM Jul 16 (wafer allocation), 000660 SK Hynix Jul 29 (HBM4 allocation = single highest-information cross-thesis read). Position attention should rotate to read-across triangulation pre-Q2. [[Research/2026-05-24 - Retrospective 1w - Synthesis]] [[Research/2026-05-22 - NVDA Q1-2027 - earnings]]
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags UPSIZE to 12-14% (highest-ROIC compounder + cohort laggard; relative-strength entry post Q1 FY27 beat) — conviction unchanged (high); sizing call.
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: Added Risk #10 — SerDes plateau (NVLink's 11× gain was 10× SerDes speed, not lanes; 448G uncertain) opens scale-up-fabric competition for AMD/hyperscalers; copper 2m reach wall. Offset by Nvidia's own Quantum-X 200G-MRM CPO lead + Kyber. Conviction unchanged (high) — durability risk to NVLink scale-up moat, not near-term.
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: Vera (2x Grace, custom SMT Olympus core, 1.8TB/s C2C) + Bluefield-4 (Grace+ConnectX-9 co-packaged; KV-cache offload to high-speed NAND = "third network") expand per-rack silicon content — reinforces Vera $200B-TAM bull driver. New concrete risk: Grace's Neoverse-V2 branch-predictor bottleneck (BTB flush >32 regions) is *currently slowing AI workloads on GB200/GB300* until Vera ships. Conviction unchanged (high).
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: HBM content step-up (Blackwell→Rubin +~50%, Rubin Ultra 288GB→~1TB) validates platform memory scaling; memoryflation a modest AI-server BoM cost (largely passed through) — conviction unchanged (high).
+
+### 2026-06-03 (/sync)
+- [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: Propagated to §Industry Context → Value Chain Position — Nvidia's *deliberate* under-pricing (cost- not value-based) is an unmodeled margin lever (SOCAMM ~60% margin, ~40% Rubin server headroom, value-based rental ceiling ~2x cost floor); a counter-weight to the ASIC-share-erosion bear, ceilinged by Trainium/TPU diversification. Conviction unchanged (high).

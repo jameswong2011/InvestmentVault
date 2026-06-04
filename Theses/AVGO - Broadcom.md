@@ -247,6 +247,10 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Theses/LITE - Lumentum]] — CPO/photonics supply chain overlap; data center optical interconnect
 - [[Theses/PSTG - Pure Storage]] — AI data center infrastructure theme
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — Samsung HBM3E 8-Hi continues as the lifeline product for non-Nvidia HBM demand (Google TPU v6/v7, Apple custom silicon, OpenAI XPU programs at AVGO); Vera Rubin HBM4 ~70/30/0 split locks SK Hynix into Nvidia tier, leaving Samsung HBM3E/HBM4 as the primary remaining supply for AVGO XPU customers — supports XPU margin durability via secured upstream memory sourcing path independent of SK Hynix Nvidia-priority allocation
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 1 anchor; UPSIZE Medium→7-9% (5 XPU customers + Anthropic-Google through 2031; VMware decouples ~35-40% rev from semis cyclicality)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: Broadcom (50k+ Bailly shipped) abandoning own SPIL FOWLP packaging → TSMC COUPE, "start fresh" on grating + MRM; Google (largest ASIC customer) refuses CPO on reliability grounds — competitive datapoints on Broadcom's CPO packaging self-sufficiency erosion
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: custom-ASIC HBM content rising (Google TPU / Amazon Trainium 8-Hi→12-Hi) supports the custom-silicon demand leg
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — datacenter CPU landscape: ARM Phoenix/Venom + hyperscaler-CPU buildout expands Broadcom's custom-silicon design-services + SerDes TAM; DPU/networking-CPU convergence (Bluefield-4) tangential to the switching franchise
 
 ## Log
 
@@ -290,3 +294,15 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 
 ### 2026-05-19 (/sync)
 - Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: Macro note covers 800VDC rack-architecture transition with NVIDIA Kyber (±400V/800V, March 2026) + OCP Mt. Diablo sidecar (Meta/Google co-authored) as the two parallel hyperscaler paths. The macro now includes a quant-screening framework (AI-DC Rev/OP exposure %, ROIC/EV-EBIT LTM) across ~50 value-chain beneficiaries. AVGO is the dominant custom-ASIC design partner for the Mt. Diablo path (Trainium, MTIA, Maia, TPU) — XPU programs create incremental high-current power-delivery demand parallel to NVIDIA GPUs across the same 800VDC infrastructure. Macro listed under §Adjacent exposure (theses that touch the chain) in the macro's affected-theses table. Conviction unchanged at high — adds an unmodeled exposure vector to AVGO XPU volume (positive optionality on hyperscaler 800VDC capex) without altering core custom-silicon-partner narrative.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags UPSIZE to 7-9% (second-best structural compounder; VMware decouples ~35-40% of revenue from semis cyclicality) — conviction unchanged (high); sizing call.
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: Broadcom abandoning own SPIL FOWLP packaging → TSMC COUPE roadmap ("start fresh" on grating + MRM); Google refuses CPO on reliability grounds. Datapoint mainly strengthens [[Theses/TSM - Taiwan Semiconductor]] (CPO value concentrates at COUPE); no natural AVGO body home (no CPO section) — retained in Log. Conviction unchanged (high).
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: "CPUs are back" (RL + agentic) expands the merchant/custom CPU set — ARM-as-chip-vendor (Phoenix for Meta/OpenAI/Cloudflare, Venom 2027) plus hyperscaler ARM builds drive incremental Broadcom design-services + high-speed SerDes content; Bluefield-4 DPU/networking-CPU convergence is tangential read-across to the switching franchise. No thesis-level delta. Conviction unchanged (high).
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: custom-ASIC HBM content rising (Google TPU v8AX / Amazon Trainium3 8-Hi→12-Hi) supports the custom-silicon demand leg; memoryflation a modest AI-server cost — conviction unchanged (high).

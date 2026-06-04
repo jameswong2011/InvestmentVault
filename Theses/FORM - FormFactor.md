@@ -173,6 +173,7 @@ Q1 2026 (today's earnings) prints in-line, not blow-out — HBM4 ramp guidance i
 - [[Theses/285A - Kioxia]] — NAND probe-card customer; secondary segment exposure
 - [[Theses/SNDK - SanDisk]] — NAND segment customer; exposure to SSD end-market
 - [[Theses/PSTG - Pure Storage]] — AI-data-infrastructure peer; demand-side validation for HBM thesis
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: FormFactor named among E/O photonic-test positioners (un-standardized emerging TAM) — corroborates the CPO/optical-test-consolidation Bull Case driver + Risk #4
 
 ## Log
 
@@ -182,3 +183,6 @@ Q1 2026 (today's earnings) prints in-line, not blow-out — HBM4 ramp guidance i
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis names FormFactor among E/O photonic-test positioners (optical metrology probe) — corroborates §Bull Case CPO/optical-test-consolidation driver + §Risk #4. Net-new TAM not yet sized. Conviction unchanged (medium).

@@ -5,6 +5,10 @@ status: active
 sector: Custom Silicon & Networking Semiconductors
 source: vault synthesis — conversation about memory-disaggregation framework + SAN-for-DRAM mental model; builds on [[Research/2026-03-14 - CXL Technology Adoption.md]]
 ---
+> [!question] 2026-05-26 → Addressed 2026-05-26
+> **Prompt:** *What is the latest on this trend, can you answer the incremental delta since last research date.*
+>
+> **Response:** Memory-disaggregation thesis strengthened in the month since the 2026-04-26 base — no Contradiction Check item flipped. The proof point: Astera Labs Q1 (reported May 5) booked a custom CXL **KV-cache** design win + Leo controller ramp on Azure M-series, directly validating the framework's stated #1 driver (agentic-inference KV-cache); Marvell guides CXL+NIC XPU-attach >$2B by FY29 with first Celestial commentary due May 27. Full detail: §Evidence → Incremental delta — May 2026 update.
 
 # CXL Memory Disaggregation Framework
 
@@ -169,6 +173,39 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 | **Lightmatter** | Passage photonic interposer | Optical-compute-oriented; adjacent | None | No thesis |
 | **Nvidia** | NVLink + NVLink Fusion + NVL576 | Closed-ecosystem alternative | n/a (CISCO-equivalent control of own ecosystem) | [[Theses/NVDA - Nvidia]] |
 
+### Incremental delta — May 2026 update (since 2026-04-26)
+
+One month of newsflow strengthens the core claim: memory disaggregation driven by KV-cache / agentic inference is arriving on the 2027–2028 schedule, not as a 2030+ adjunct. Astera Labs is the first clean public-market proof point, and Marvell's own-brand CXL silicon plus its CXL-attach revenue guide reframe Marvell CXL from pure Celestial optionality toward a near-term attach annuity. No Contradiction Check item flipped.
+
+**Astera Labs Q1 CY2026 (reported May 5) — the QLogic/Emulex analog validates the framework**
+
+| Metric | Q1 CY2026 | Read vs note's FY25 base |
+|---|---|---|
+| Revenue | $308.4M (+93% YoY, +14% QoQ) | run-rate ~$1.3–1.5B vs note's ~$830M FY25 — pulled forward ~2 years |
+| Non-GAAP gross margin | 76.4% (+150 bp YoY) | structural, not cyclical |
+| EPS | $0.61 (large beat) | — |
+| Q2 guide | $355–365M vs ~$310M consensus | +15% above Street |
+
+- **New custom CXL design win for a KV-cache application** — direct validation of the framework's stated #1 driver (reasoning / agentic inference KV-cache as the workload that makes disaggregation a 2027–2028 primitive). The note predicted this workload pulls the cycle forward; Astera booked the design win.
+- **Leo CXL memory controller** ramping with **Microsoft Azure M-series VMs** — extends the note's "Azure = first cloud CXL deployment" thread from in-chassis expansion toward custom memory-attach silicon.
+- Scorpio P-Series to ≥2 additional major hyperscalers by end-2026, broader 2027 — the switching-layer ramp the SAN-pattern step #3 predicts.
+
+**Marvell — reports Q1 FY27 on May 27 (the monitoring milestone this note flagged)**
+- Guide $2.4B revenue (+27% YoY), EPS $0.79; custom silicon $1.5B in FY26 (doubled YoY).
+- **New disclosure: CXL + NIC XPU-attach products alone could exceed $2B revenue by FY2029** — first explicit Marvell CXL-scale datapoint; sits above the note's vendor-landscape framing and reframes CXL from binary-Celestial-only optionality toward a near-term attach annuity.
+- First Celestial integration commentary expected on the May 27 call — the note's own "Q2 FY27 (May 2026)" monitoring milestone, landing on schedule.
+
+**Marvell Structera S 30260 — own-brand CXL switch the note's vendor table missed** (announced March 17, 2026)
+- 260-lane, CXL 3.0, 4 TB/s aggregate, rack-level memory pooling; sampling Q3 2026; CXL 2.0 variant (S 20256) already in production. Marvell engineering frames it explicitly around KV-cache LLM inference — "near-local shared memory pool, sub-microsecond access, eliminates multi-hop data movement."
+- Implication: Marvell now occupies the CXL switching layer with branded silicon (Structera) **in addition to** the XConn acquisition and Celestial photonic fabric — three stacked positions at the Brocade / Cisco-MDS layer, not one. Reinforces the "Marvell = SAN-switching-franchise analog" framing.
+
+**Celestial AI roadmap refinement** (vs note's timeline)
+- First silicon tape-outs by end-2026; early-access cloud-provider samples early 2027; first semi-custom reference designs pairing Marvell 1.6T optical interconnect with Nvidia Rubin by Q3 2026 — consistent with the note's 2027–2028 inflection. Fully-loaded deal value reported up to $5.5B (vs $3.25B headline cash+stock).
+
+**Industry / standards** — CXL 3.1 in broad 2026 deployment on the PCIe 6.x physical layer; >90% of newly shipped servers CXL-capable; ecosystem ~$1.8–2.5B in 2026 (brackets the note's ~$2B). Confirmatory; no thesis change.
+
+**Vault-internal tension (cross-reference)** — [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] recommends **EXIT MRVL** on the Trainium 3 socket loss to Alchip (custom-silicon execution credibility gap). The framework's central upside vehicle is under portfolio-construction pressure for reasons unrelated to memory disaggregation — yet the disaggregation lever itself (this note's subject) is independently strengthening via Astera's KV-cache win and Marvell's own Structera + CXL-attach guidance. The binary Celestial upside is intact; the vehicle carrying it is contested. Resolution datapoint: the May 27 Celestial commentary.
+
 ## Contradiction Check
 
 What could break the SAN-for-DRAM analogy and the memory-disaggregation thesis?
@@ -203,3 +240,17 @@ Cross-references:
 - [[Theses/NVDA - Nvidia]] — NVLink Fusion + NVL576 closed-ecosystem alternative; $2B Marvell containment move
 - [[Theses/000660 - SK Hynix]] — HBM consumer beneficiary of CXL pooling expanding memory consumption per dollar of compute capex (Jevons effect)
 - [[Theses/PSTG - Pure Storage]] — SAN-era incumbent; not directly affected by CXL but framework-relevant for understanding the pattern
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO "book": corroborates Celestial Photonic Fabric as the memory-disaggregation vehicle (EAM modulator + optical interposer; $1B CY2028 run-rate into AWS Trainium 4; Amazon warrant strike $87.0029 = Trainium 4 tell; center-of-die optical-I/O memory appliance); scale-up CPO TAM > scale-out
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis "CPUs are Back": server-CPU-side memory-disaggregation evidence — CXL3 on Intel Diamond Rapids, JBOM ("Just a Bunch of HBM") + Credo Omniconnect gearboxes, Bluefield-4 KV-cache-to-NAND "third network"; datacenter LPDDR shift + possible HBM-on-CPU return. Confirmatory; no Contradiction Check item flipped.
+
+**May 2026 delta — external sources:**
+- Astera Labs Q1 CY2026 earnings, reported 2026-05-05 — [Motley Fool transcript](https://www.fool.com/earnings/call-transcripts/2026/05/05/astera-labs-alab-q1-2026-earnings-transcript/), [Futurum](https://futurumgroup.com/insights/astera-labs-q1-fy-2026-earnings-highlight-scale-up-switching-ramp/), [Investing.com](https://www.investing.com/news/transcripts/earnings-call-transcript-astera-labs-q1-2026-earnings-beat-expectations-93CH-4661270)
+- Marvell Q1 FY27 preview — custom-silicon + CXL/NIC attach guidance — [TradingKey](https://www.tradingkey.com/analysis/stocks/us-stocks/261924282-marvell-mrvl-earnings-ai-optical-datacenter-trainium-analyst-upgrades-valuation-tradingkey), [Yahoo/Zacks](https://uk.finance.yahoo.com/news/mrvl-post-q1-earnings-time-144300668.html)
+- Marvell Structera S 30260 CXL switch, announced 2026-03-17 — [Marvell newsroom](https://www.marvell.com/company/newsroom/marvell-next-gen-cxl-switch-memory-pooling-breaks-ai-memory-wall.html)
+- Celestial AI acquisition + Photonic Fabric roadmap — [Optica OPN](https://www.optica-opn.org/home/industry/2025/december/marvell_looks_to_acquire_celestial_ai/), [Tom's Hardware](https://www.tomshardware.com/tech-industry/marvells-celestial-ai-acquisition-expands-its-role-in-ai-data-center-hardware)
+
+## Log
+
+- 2026-05-26 — Addressed user callout (latest/delta request): added §Evidence → "Incremental delta — May 2026 update". Astera Q1 KV-cache CXL design win + Leo/Azure ramp; Marvell CXL+NIC attach >$2B FY29 guide + first Celestial commentary due May 27; Structera S 30260 switch; Celestial roadmap refinement. Core thesis strengthened, no Contradiction Check item flipped; flagged MRVL EXIT recommendation from [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]].
+- 2026-05-31 (/sync) — [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis CPO deep-dive corroborates the Celestial Photonic Fabric vehicle — first *quantified* scale-up ramp ($1B CY2028 into AWS Trainium 4; Amazon warrant strike $87.0029 = Trainium 4 tell), EAM-modulator + optical-interposer physical layer, center-of-die optical-I/O memory appliance. No Contradiction Check item flipped; reinforces the 2027-2028 inflection timing. Added to cross-references.
+- 2026-06-02 (/sync) — [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: SemiAnalysis "CPUs are Back" supplies direct server-CPU-side memory-disaggregation evidence — CXL3 on Intel Diamond Rapids (mainstream x86 CXL adoption), JBOM ("Just a Bunch of HBM") + Credo Omniconnect gearboxes as new disaggregation primitives, NVIDIA Bluefield-4 Context Memory Storage Platform (KV-cache offload to high-speed NAND = a "third network") extending the pattern to the NAND tier. Datacenter LPDDR shift (Grace/Vera/Venom) + possible HBM-on-CPU return are adjacent vectors. Confirmatory; no Contradiction Check item flipped. Added to cross-references.

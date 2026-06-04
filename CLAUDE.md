@@ -2,7 +2,11 @@
 
 ## Approach & Core Purpose (xxx IMPORTANT xxx)
 
-This is a personal knowledge base for institutional-quality equity research, macro analysis, and investment thesis development. The focus is generally on generating qualitative insights that are non-consensus (such as technological / product, management / culture, competitive dynamics / market concentration / pricing power, investor bias, unique business model / business model transition) rather than macro / financial / valuations based research that traditional investors focuses on. The objective of the analysis is to be balanced with a critical perspective (do not to always be positive about every opportunity).
+This is a personal knowledge base for institutional-quality equity research, macro analysis, and investment thesis development. The focus is generally on generating qualitative insights that are non-consensus (such as technological / product, management / culture, competitive dynamics / market concentration / pricing power, investor bias, unique business model / business model transition) rather than macro / financial / valuations based research that traditional investors focuses on. The objective of the analysis is to be balanced with a critical perspective (do not to always be positive about every opportunity). 
+
+Investment returns inevitably come from predicting inflection points in industry dynamics ahead of time, by finding connections between optically insignificant datapoints and how it correlates to macro level shift - As the vault-assistant LLM, you are actively encouraged to attempt to assist the user to find these correlations. 
+
+Please always refer to the Mental Models folder in the root directory to guide your analysis. This will contain a set of generalist mental models useful for all research and analysis as well as industry specific mental models when a specific industry is being researched with sufficient depth. The mental models is designed as a list of cognitive thinking tools that replicates what a top investor consistent with the strategy of this vault would employ as he goes about sifting through the fire hose of investing information. Utilising these mental models will make predicting industry and company specific inflection points easier.
 
 ## Vault Structure
 
@@ -101,7 +105,7 @@ Each thesis note follows this structure:
 - Source types: earnings, analyst-report, news, deep-dive, data, web-clip, video-transcript, stress-test, synthesis, brief, comparison, scenario
 - Always include `source:` in frontmatter with the URL
 - **Required body sections** (all 4, regardless of source_type): `## Thesis Delta`, `## Summary`, `## Evidence`, `## Contradiction Check`. Conditional: `## Framework / Mental Model` (when source advances a named framework/scoring scheme/typology), `## Key Segments` (when source >15,000 words), `## Source Excerpts` (may be empty). `## Summary` is prose — 1–2 paragraphs for short-form sources, 2–4 for long-form — capturing the source's actual argument, mechanism, and claim scope (NOT a business description). Full spec: `.claude/skills/ingest/SKILL.md`.
-- Body length must be proportional to source length (per `/ingest` check #5): <1,500 source words → ≥300 body words; 1,500–5,000 → ≥800; 5,000–15,000 → ≥1,800; >15,000 → ≥2,500 + `## Key Segments`.
+- Body length scales with source length (per `/ingest` check #5): retention is **regressive in length** — short sources keep a high fraction (~58% near 1k words), long sources a low fraction (~18% above 60k words) with **no flat ceiling**, so absolute retained content keeps growing as the % cut rises (e.g. a ~30k-word source → ≥~6,600 body words). `## Key Segments` required when source >15,000 words. Authoritative curve: `.claude/skills/ingest/SKILL.md` check #5.
 - Extract key data points and quote sparingly
 - Add wikilinks to related thesis notes
 

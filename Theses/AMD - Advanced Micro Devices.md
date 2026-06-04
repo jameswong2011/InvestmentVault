@@ -200,6 +200,10 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — CPUs "completely sold out" via RL environments + AI-generated code deployment; volume tailwind beyond thesis model
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — indirect HBM4 supply chain exposure for MI450 via Japanese PR/BARC disruption
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial split implies MI400/MI450 HBM4 sourcing competes for the SK Hynix-dominated supply pool — supplier diversification path forces AMD toward Samsung (less qualified) or wait for Micron HBM4 12-Hi redesign (late entrant); HBM supply risk for MI450 ramp materially compounded by SK Hynix's primary allocation to Rubin
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger; TRIM Medium→3-4% (sole merchant full-stack alt + aligned-up retro signal, but ROIC 8% on 62x P/E; OpenAI/Meta anchor-binary)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: NVLink SerDes plateau opens a scale-up-fabric opportunity for AMD; TSMC COUPE hybrid bonding "proven on AMD parts" — scale-up-fabric optionality vs Nvidia
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: MI350 288GB→MI400 432GB HBM content step-up supports accelerator demand; memoryflation a modest cost headwind
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — Venice 256c N2 (1.7x perf/watt vs Turin) widens per-core lead; new SP8 8-channel platform attacks Intel enterprise base as Intel cancels its own 8-channel SKU — EPYC share-gain catalyst into a "strong double digit" CPU-TAM-growth year
 
 ## Log
 
@@ -232,3 +236,18 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-24
+- Retro insight: 1w retrospective — AMD is the cleanest aligned-up confirmation of the 5-22 medium→high realignment ($417→$462, +10% week) driven by Meta $60B AI infra deal + OpenAI 6GW commitment + MI400/Helios merchant-GPU validation; gap magnitude rated **high** with vault and price both pointing same direction. Next tests: AVGO Jun 3 (custom-silicon TAM commentary as read-across), Computex 2026 (early-June Vera competitive framing), AMD Aug 4 Q-print (MI400 binary). [[Research/2026-05-24 - Retrospective 1w - Synthesis]]
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags TRIM to 3-4% (structural second-source thesis real + aligned-up signal, but ROIC 8% on 62x P/E uncomfortable) — sizing call; conviction unchanged (high).
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: NVLink SerDes plateau (copper 2m reach wall) opens a scale-up-fabric opening for AMD; COUPE hybrid bonding "proven on AMD parts". Early optionality, not yet a thesis driver — no body edit. Conviction unchanged (high).
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: MI350 288GB→MI400 432GB HBM content step-up supports accelerator demand; memoryflation a modest cost headwind (passed through) — conviction unchanged (high).
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: Venice (256c N2, 1.7x perf/watt vs Turin) widens the per-core lead while Intel cancels its 8-channel Diamond Rapids-SP — AMD's new 8-channel Venice SP8 attacks Intel's enterprise stronghold exactly as Intel exits it; "strong double digit" 2026 server-CPU TAM growth. Reinforces existing Bull #3 (Venice Dense agentic-action lead); conviction unchanged (high).

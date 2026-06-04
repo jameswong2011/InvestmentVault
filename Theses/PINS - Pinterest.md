@@ -265,6 +265,7 @@ The bear case rests on three structural vulnerabilities compounding into a tier-
 - Performance+ + NCA independent incrementality analysis (third-party MMM data if available)
 - Pinterest Lens search volume + Gen Z behavior trajectory tracker
 - OpenAI / Meta / Amazon M&A monitor specific to Pinterest
+- [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]] — FTC ad-surveillance deception settlement; confirms data-broker email-list arbitrage as the low-value tier vs scaled first-party-data ad platforms
 
 ## Log
 ### 2026-04-30
@@ -273,3 +274,6 @@ The bear case rests on three structural vulnerabilities compounding into a tier-
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-26
+- [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]]: FTC $930K settlement on fabricated "active listening" ad targeting — marginal; reinforces first-party-data advantage over data-broker arbitrage. No thesis impact, conviction unchanged (medium).

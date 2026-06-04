@@ -241,6 +241,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 - [[Research/2025-12-05 - Macro - Gemini AI Bubble Risk Canvas]] — The AI Solvency Gap framework; $600B revenue requirement to justify hyperscaler capex
 - [[Sectors/Social Platforms & Digital Advertising]] — Sector Note
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch; hyperscaler capex fatigue dynamics
+- [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]] — FTC $930K deception settlement debunks the "apps listen via microphone" ad-targeting myth (Cox lacked the capability, resold data-broker email lists); marginally deflates a recurring Instagram reputational overhang
 
 ## Log
 
@@ -267,3 +268,9 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-26
+- [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]]: FTC $930K settlement confirms "active listening" ad-surveillance was fabricated (data-broker email reselling, no mic data) — deflates the Instagram-microphone myth; immaterial to fundamentals, conviction unchanged (medium).
+
+### 2026-06-03 (/sync)
+- [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]]: Meta is an anchor neocloud customer — $27B Nebius ($12B dedicated + $15B flexible) + ~$14B CoreWeave commitments quantify Meta's AI-capex externalization; the $15B flexible tranche is MTIA in-housing option value. Conviction unchanged (medium), contextual capital-allocation datapoint.

@@ -244,3 +244,6 @@ Path: $4,708 → $4,200 (Warsh confirmation) → $3,800 (real yields break 2.5%)
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Polymarket peace-deal deterioration sustains geopolitical tail bid alongside central-bank floor; Scenario A persistence keeps debasement-hedge optionality through Fed-pivot window — Scenario B reflation hedge intact under either path. Conviction unchanged (medium, monitoring).

@@ -273,3 +273,6 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Polymarket peace deterioration extends Indian crude-basket shock window (₹69→₹113/bbl) past Jun 15 — Jio IPO Jul 2026 catalyst window remains in macro-tail crosshairs. Jamnagar fuel-crack tailwind partially offsetting but insufficient against ~54% Jio/Retail EBITDA exposure. Conviction unchanged (medium, monitoring).

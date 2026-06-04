@@ -213,6 +213,9 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 - [[Sectors/Semiconductor Capital Equipment]] — Sector-level WFE thesis positions BESI as Tier 2 satellite (10% allocation); frames hybrid bonding debate as market distraction — equipment spend growing 40%+ regardless of hybrid bonding timeline via CoWoS expansion
 - [[Sectors/Semiconductor Capital Equipment]] — Sector hub (absorbed prior `Theses/SEMICAP - Semiconductor Capital Equipment` thesis 2026-04-29; sector now serves dual role as MoC and basket-level investment hub)
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — JEDEC HBM4 720→775→900µm relaxation (bear-pillar #1 partially actualized); Mar 2026 SK Hynix Kinex order = logic-line/2nm primary (dual-use HBM5 path); Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial; Hanmi 71% TCB falling, ASMPT taking ~100-unit Dec 2025 SK Hynix TC-bonder share; HB inflection now driven by HBM5+ 24-Hi architectural mandate (2029-2030) rather than HBM4 thickness-mandate
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→4-5% (hybrid bonding monopoly; logic-line bridge + HBM5+ 24-Hi mandate; JEDEC relaxation delayed HBM ramp ~2yr)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: TSMC SoIC die-to-wafer hybrid bond is the performance-critical CPO optical-engine bond (23× density vs bumps) — reinforces the hybrid-bonding secular theme, though the article credits TSMC-internal capability (indirect BESI read-through)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: HBM wafer capacity ~5x in 4 years (123→668 kwspm) + back-end TC-bonder intensity supports HBM packaging / hybrid-bonding demand
 
 ## Log
 
@@ -248,3 +251,12 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags UPSIZE to 4-5% (hybrid bonding monopoly intact; HBM ramp velocity revised down post-JEDEC, HBM5+ mandate path locked) — conviction unchanged (high); sizing call.
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: TSMC SoIC die-to-wafer hybrid bond is the performance-critical CPO OE bond (23× density vs bumps) — reinforces the secular hybrid-bonding theme, but the article credits TSMC's *internal* capability rather than merchant tool vendors, so the CPO read-through is indirect. Conviction unchanged (high).
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: HBM wafer capacity ~5x in 4 years (123→331→668 kwspm) + rising back-end (TC-bonder) intensity supports HBM packaging/hybrid-bonding demand; conviction unchanged (high).

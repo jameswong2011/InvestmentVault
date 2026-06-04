@@ -204,6 +204,8 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact.md]] — AP competitive structure; AMAT-BESI Kinex; SK Hynix MR-MUF
 - [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas.md]] — HBM4 demand context for Vantex TSV etch
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript.md]] — AI inference SSD demand driver; NAND restart context
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→5-6% (highest WFE ROIC NTM 50.6%; Aether dry resist taking TEL share)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: memory WFE capex +34% (SK Hynix) / +26% Samsung / +20% Micron 2026; 1b/1c node migration confirmed by mgmt; rising EUV layers
 
 ## Log
 
@@ -218,3 +220,9 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags UPSIZE to 5-6% (Aether structural category-gain catalyst; logic+memory diversified mix) — conviction unchanged (high); sizing call.
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: memory WFE capex +34% SK Hynix / +26% Samsung / +20% Micron 2026 + 1b/1c node migration confirmed by ASML+LRCX mgmt + rising EUV layers — directly validates memory-WFE (etch/dep) leverage; conviction unchanged (high).

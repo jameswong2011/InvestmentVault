@@ -337,6 +337,7 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 - [[Research/2026-04-15 - SHOP - Comprehensive Update April 2026 - deep-dive]] — UCP/ACP protocol-wars detail
 - [[Research/2026-03-31 - Cloudflare Path to Competing with Hyperscalers]] — agent-stack architecture and hyperscaler-disruption framing
 - [[Research/2026-04-03 - Cloudflare Role in Telecom Edge Computing]] — agentic traffic multiplication; telecom-edge convergence
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis "CPUs are Back": RL + agentic tool-use as the explicit datacenter-CPU demand driver (layer-6 compute fanout); Fairwater ~1:6 CPU:GPU power (rising), frontier labs "running out of CPUs" for RL, Bluefield-4 "third network" data/networking-CPU class
 
 ## Open Questions
 
@@ -363,3 +364,6 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 
 ### 2026-04-26 (refocus)
 - Manual edit: reworked structure to lead with what the agentic internet means in itself rather than stock implications. Added §What the agentic internet is (definition, eight-dimension human-vs-agent web table, four-tier scope from augmented browsing → inter-agent economy). Added §User adoption (segment-by-segment status table + four-phase trajectory + per-phase unlocks). Expanded §Hurdles remaining (six structural barriers from reliability ceiling to compute economics). Added §What 10-20 years out looks like (six structural shifts + investable categories at maturity + four failure modes). Compressed eight-layer stack from per-layer prose into reference table; expanded layers 1/4/5 into dedicated NET/CRCL/SHOP impact subsections with what-to-watch and what-it-means-for-the-thesis framing for each name. Added §How NET/CRCL/SHOP interact subsection covering layered composition and uncorrelated failure modes. Compressed cross-portfolio winners/losers map to one-line table; preserved all wikilinks and Tier 1/2/3 coverage suggestions. Added Open Question #8 on Phase 4 inter-agent commerce category emergence. No analysis deleted; secondary-name detail compressed to make room for agent-itself depth.
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: Direct empirical confirmation of the compute-fanout layer (layer 6) — SemiAnalysis frames RL environments + agentic/RAG tool-use as the explicit datacenter-CPU demand driver (each agent hits the internet/APIs/DBs far more intensively than a human → general-purpose CPU buildout). Extends the existing "server-CPU re-pricing" leading indicator: Fairwater 48MW CPU : 295MW GPU (~1:6, rising), frontier labs "running out of CPUs" for RL, net-new data/networking CPU class (Bluefield-4 "third network"). Conviction unchanged — strengthens the layer-6 demand-floor read. Added to §Connections key research.

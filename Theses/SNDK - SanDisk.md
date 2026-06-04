@@ -156,6 +156,7 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 - **Jevons Paradox on efficiency gains:** TurboQuant/algorithmic improvements increase total AI adoption → more storage demand
 - **Flash Ventures JV:** Cost-plus wafer economics without full fab capex; extended to 2034
 - **Forward P/E ~10.5x on FY2027E:** Not expensive if $90 EPS estimates hold
+- **Bluefield-4 KV-cache-to-NAND independently validates the "NAND as AI memory tier" thesis:** NVIDIA's Bluefield-4 Context Memory Storage Platform (Grace + ConnectX-9) offloads model KV-cache to high-speed NAND — the same "missing middle" HBF targets, reached via NVIDIA's DPU/networking path. A net-new high-performance-NAND demand vector and third-party architectural validation that AI working-memory is migrating into NAND. Per [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]].
 
 ## Bear Case
 - **Stock up 3,271% from spin-off:** Limited margin for error at current levels
@@ -201,6 +202,9 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 - [[Sectors/NAND Memory & Storage]] — NAND sector note: competitive dynamics, YMTC disruption analysis, HBF category assessment, product-level differentiation
 - [[Sectors/Semiconductor Capital Equipment]] — WFE sector hub: hybrid-bonded flash (HBF) as second hybrid-bonding TAM vector; pilot line accelerated H2 2026; TEL cryogenic etch HVM 2026 for 400L NAND; equipment-adjacent secondary sector reference
 - [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]] — Iran War naphtha disruption threatens Japanese PR/BARC supply to Flash Ventures JV fabs (Yokkaichi/Kitakami); direct impact on SNDK's cost-plus wafer access
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 3 true cyclical; CUT High→2-3% (65-67% GM guide unprecedented in NAND history = cycle peak; keep HBF option only)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — DRAM/HBM supercycle read; adjacent NAND context (memoryflation + supply-discipline parallels), no NAND-specific delta
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": Bluefield-4 KV-cache-to-NAND independently validates the HBF "missing middle" NAND-as-AI-memory-tier thesis via NVIDIA's DPU path (added to Bull Case)
 
 ## Log
 ### 2026-04-16 (NAND sector research sync)
@@ -238,3 +242,15 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-24 (/sync all)
+- [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Marginal indirect-negative — extended Scenario A sustains Japanese photo-materials supply tail through Flash Ventures JV fabs (Yokkaichi + Kitakami); reinforces 2026-04-24 Risk #8 cost-plus wafer-access exposure. 12-18mo manageable per 2019 HF-dispute precedent. Conviction unchanged (high).
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags CUT to 2-3% (single largest mispricing per #13/#18 — true cyclical at peak margins, +3,866% 1Y; Q3 FY26 print as sell window) — sizing call; conviction unchanged (high), HBF option retained.
+
+### 2026-06-01 (/sync)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: DRAM/HBM supercycle read — adjacent NAND context (memoryflation + supply-discipline parallels); no NAND-specific delta, conviction unchanged (high).
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: NVIDIA Bluefield-4 KV-cache-to-NAND ("third network") added as Bull vector — independent validation of the HBF "missing middle" thesis via NVIDIA's DPU/networking path; net-new high-performance-NAND demand. Conviction unchanged (high). Snapshot: [[_Archive/Snapshots/SNDK - SanDisk (pre-sync 2026-06-02-121812)]]

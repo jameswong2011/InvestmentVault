@@ -328,6 +328,8 @@ The structural conflict (IDM running merchant foundry while competing with found
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — CPUs "completely sold out" via RL environments + AI-generated code deployment; volume tailwind for x86 CPU TAM
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan tail risk quantified at -85–95% permanent impairment under invasion; Intel's geopolitical opportunity (only US-domiciled leading-edge IDM)
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen's CEO testimony on supply-chain depth as primary moat; relevant to Intel Foundry's structural challenge to recreate CEO-level allocation across 20+ upstream suppliers
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: enumerates Intel's 4-stage CPO roadmap (OCI chiplet 4T bidir → glass optical bridge → 3D vertical coupling 2027) — roadmap context, no thesis-level delta
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis CPU landscape corroborates the structural-second-source frame and adds two new datapoints: 8-channel Diamond Rapids-SP cancelled (cedes highest-volume server market to AMD Venice SP8 until 2028); Clearwater Forest only +17% vs Sierra Forest on a low-yield Foveros-Direct stack ("yield-learning vehicle, not volume"); the SMT-removal causal chain (Spectre/Meltdown 2018 → Lion Cove → Diamond Rapids) made explicit
 
 ## Legacy Callouts
 
@@ -352,3 +354,9 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-05-31 (/sync)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis enumerates Intel's 4-stage CPO roadmap (OCI chiplet 4T bidir @ ~5pJ/bit 2024 → glass optical bridge 2025 → 3D vertical coupling 2027) — roadmap-context datapoint, no thesis-level delta. Conviction unchanged (medium).
+
+### 2026-06-02 (/sync)
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: SemiAnalysis CPU landscape corroborates the §Insight #2 structural-second-source frame and adds two new adverse datapoints — (1) **8-channel Diamond Rapids-SP cancelled**, stranding the highest-volume server market on Granite Rapids while AMD's *new* 8-channel **Venice SP8** (128 Zen6c) attacks the enterprise stronghold exactly as Intel exits it; (2) **Clearwater Forest only +17% vs Sierra Forest** on a low-yield Foveros-Direct stack — read as a "yield-learning vehicle, not volume" (consistent with Intel barely mentioning it on the Q4'25 call). Reinforces existing Bear Case (no competitive P-core response ~20 quarters); no body edit (thesis already deeply covers the agentic-CPU frame). Conviction unchanged (medium, bearish lean).
