@@ -466,6 +466,12 @@ E-paper economics are largely insulated from the broader display industry's Chin
 | Private | Aledia | 3D GaN nanowire MicroLED |
 | 002387.SZ | Visionox | Chinese OLED challenger (Hefei state-backed) |
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - _No display-specific Research notes exist in the vault as of 2026-04-26. Sector research currently lives inside [[Theses/EINK - E Ink Holdings]] (e-paper / ESL / signage competitive dynamics). Future e-paper, ESL integrator, signage cost-curve, or e-paper competitive (OED, IRIS Optronics, Zhejiang Laibao MED) research notes should back-reference this sector and be listed here. Broader display research (OLED, MicroLED, automotive cockpit) is optional and lower priority given the e-paper-focused sector scope._
 

@@ -234,6 +234,12 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 6. **Apple wireless headwind**: Accelerated timeline for Apple to in-source RF FBAR components beyond Wi-Fi/BT, potentially removing ~$5-7B in annual revenue over 3-5 years
 7. **China/geopolitical exposure**: FY2024 China revenue ~$10.5B (~20% of total); trade sanctions or Taiwan conflict would disrupt TSMC manufacturing dependency
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei Ascend roadmap validates non-Nvidia vertically integrated AI compute architecture at scale (524 EFLOPS supercluster, ByteDance $5.6B order); supports AVGO XPU thesis directionally though Huawei not an AVGO customer
@@ -251,6 +257,7 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: Broadcom (50k+ Bailly shipped) abandoning own SPIL FOWLP packaging → TSMC COUPE, "start fresh" on grating + MRM; Google (largest ASIC customer) refuses CPO on reliability grounds — competitive datapoints on Broadcom's CPO packaging self-sufficiency erosion
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: custom-ASIC HBM content rising (Google TPU / Amazon Trainium 8-Hi→12-Hi) supports the custom-silicon demand leg
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — datacenter CPU landscape: ARM Phoenix/Venom + hyperscaler-CPU buildout expands Broadcom's custom-silicon design-services + SerDes TAM; DPU/networking-CPU convergence (Bluefield-4) tangential to the switching franchise
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Google/Broadcom TPU v7 beat NVDA/AWS to N3 (production 2025), TPU v8 stays N3; Tomahawk 6 + Spectrum 6 + Rubin 1.6T scale-out 200G optical DSP on the binding N3 node; custom-ASIC HBM content rising 8-Hi→12-Hi into a crowded HBM market
 
 ## Log
 
@@ -306,3 +313,6 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 
 ### 2026-06-01 (/sync)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: custom-ASIC HBM content rising (Google TPU v8AX / Amazon Trainium3 8-Hi→12-Hi) supports the custom-silicon demand leg; memoryflation a modest AI-server cost — conviction unchanged (high).
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Google/Broadcom TPU v7 beat NVDA/AWS to N3 (in production 2025) and TPU v8 stays on N3; Tomahawk 6 / Spectrum 6 networking + Rubin's 1.6T scale-out kicking off 3nm 200G optical DSPs all draw on the binding N3 pool; custom-ASIC HBM content rising 8-Hi→12-Hi. Corroborates the 06-01 custom-ASIC-HBM leg — XPU volume gated by the same N3/HBM squeeze as GPUs, and procurement-as-moat favors the largest pre-committers. Conviction unchanged (high).

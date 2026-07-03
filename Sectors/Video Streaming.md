@@ -239,6 +239,12 @@ Legacy rollups created the current content-library concentration:
 
 10. **Live events and live sports are Netflix's most important 2026–2028 strategic lever, not gaming.** WWE Raw, NFL Christmas games, boxing, MLB Home Run Derby / Opening Night / Field of Dreams. Live content reduces churn, creates appointment viewing, justifies ad-tier CPMs above scripted. Netflix gaming remains at ~10% trial rate after years of investment — the "Third Act" narrative should pivot to live, not gaming. The FIFA 2026 World Cup exclusive game is the test case; if Netflix underdelivers on gaming engagement metrics post-World Cup, the gaming story should be retired in favor of concentrated live-events investment.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2026-03-21 - NFLX - Gemini Investment Case Canvas]] — Netflix scale moat, cost-plus production model, international production hubs (LA, Albuquerque, Shepperton, Seoul, Hyderabad/Eyeline, Mexico City), password-sharing upside quantification, Q3 2025 financials ($11.51B revenue +17.2%, $7.6B FCF, 28% op margin); Cost-of-attention framework (Squid Game $9,700 per 1M hours viewed vs Stranger Things 4 $147K–$668K)
 

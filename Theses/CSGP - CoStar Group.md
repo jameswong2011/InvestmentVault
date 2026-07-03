@@ -156,6 +156,12 @@ The February 2026 launch of Homes AI (powered by Azure OpenAI, integrated with M
 **Conviction:** Medium
 **Reasoning:** Franchise-quality CRE monopoly available at a multi-year valuation trough with the activist overhang now removed. The commercial business plus Apartments.com provide substantial downside protection — conservatively worth $10-11B of the ~$15B market cap. Homes.com remains the swing factor: binary between value creation (if the Apartments.com playbook repeats) and value destruction (if monetization fails to scale). Appropriate at 2-3% as a deep value position in a monopoly asset with option value on residential. **Promote to high conviction if:** Q1-Q2 2026 demonstrate Homes.com subscriber acceleration and traffic stabilization, or if Homes.com achieves segment-level profitability ahead of 2030 target. **Reduce if:** traffic moderation accelerates, cash reserves fall below $800M, or Crexi trial results in mandated open data access.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2026-03-26 - CSGP - CoStar Group Investment Evaluation]] — Grok investment evaluation covering Homes.com, Matterport integration, CRE competitive position

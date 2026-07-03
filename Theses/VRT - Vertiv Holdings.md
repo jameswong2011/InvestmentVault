@@ -170,6 +170,12 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 
 → **CLOSE if**: NVIDIA acquires a liquid cooling company OR announces DGX-integrated thermal management for post-Blackwell systems, eliminating the co-design moat. Alternative trigger: AI capex guides from top-3 hyperscalers collectively cut by >15% for FY2027 relative to FY2026 (indicating a genuine cycle peak, not a pause). Stock would likely be down 40%+ before these trigger cleanly, but the analytical case breaks regardless of price action.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2025-04-28 - VRT - Vertiv Role in Data Center Infrastructure.md]] — 322-line deep dive covering business history (Liebert 1946 → Emerson 1987 → Platinum/Vertiv rebrand 2016 → IPO 2020), competitive moat analysis, AI-era positioning

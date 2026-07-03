@@ -291,6 +291,12 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 - **Gold bull**: Fed pivot with inflation still above target (1970s analog), CLARITY Act extending to gold-backed tokens, sovereign default event, BRICS Unit launch with meaningful adoption, LBMA default-on-delivery event
 - **Silver bull**: GSR compression toward 45-50, high-efficiency PV share grows faster than thrifting, data-center buildout exceeds base case, China silver export embargo (full ban)
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics]] — COMEX 200+ tonnes delivered Feb 2025, LBMA 4-8 week delivery delays, gold ATH $3,319/oz Apr 2025. Paper-physical disconnect structural, not episodic. Tariffs triggered London→New York gold relocation. South Korea halted bar sales; Swiss refineries suspended certain sizes.

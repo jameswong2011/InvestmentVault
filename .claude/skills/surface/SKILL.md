@@ -3,8 +3,6 @@ name: surface
 description: Surface new insights, potential trades, and research opportunities from existing vault content. Use when user says "surface", "what am I missing", "find opportunities", or "what should I research next".
 model: opus
 effort: max
-context: fork
-agent: general-purpose
 allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * defuddle *)
 ---
 
@@ -90,7 +88,7 @@ Design rationale in `.claude/skills/surface/RATIONALE.md` §2.
 
 ## Phase 1: Portfolio Scan (mode-dependent read strategy)
 
-Read strategy branches by scope. The two full-vault modes trade completeness against subagent context budget:
+Read strategy branches by scope. The two full-vault modes trade completeness against main-session context budget:
 
 | Mode | Thesis reads | Expected read budget | Use when |
 |---|---|---|---|
@@ -135,7 +133,7 @@ done
 
 ### `/surface all` mode — full-read comprehensive scan
 
-Use when the user wants maximum analytical depth for a once-off deep review. Reads every thesis file in full — accepts the larger subagent context cost for richer cross-thesis connection detection (particularly valuable for Business Model and Industry Context cross-referencing that section-targeted mode misses).
+Use when the user wants maximum analytical depth for a once-off deep review. Reads every thesis file in full — accepts the larger main-session context cost for richer cross-thesis connection detection (particularly valuable for Business Model and Industry Context cross-referencing that section-targeted mode misses).
 
 **Issue ALL reads in steps 1-3 as a single parallel tool-call batch** — one message with every thesis Read (~42), every Sector Read (~13), and every Macro Read (~6) firing in parallel. Do NOT serialize. Typical batch: ~61 Reads landing in one round-trip instead of 61 sequential rounds. Step 4's heavily-cited research reads join the same parallel batch when `_graph.md` adjacency is already loaded; otherwise they land in a second parallel batch after the Step 1-3 batch returns.
 
@@ -144,7 +142,7 @@ Use when the user wants maximum analytical depth for a once-off deep review. Rea
 3. Read all Macro Notes in full.
 4. For heavily cited research notes (≥3 theses in `_graph.md` adjacency): read in full — include in the parallel batch with steps 1-3 (one round-trip). For others: read on-demand when Phase 2 analysis surfaces a specific question about them.
 
-**Expected read budget**: ~220K words total (matches pre-R2 behavior). Subagent context consumption: ~290K tokens. Still comfortably under the subagent budget because `context: fork` isolates this from main session context.
+**Expected read budget**: ~220K words total (matches pre-R2 behavior). Main-session context consumption: ~290K tokens — `/surface all` runs in-thread (no fork), so this lands in your main conversation. Reserve `all` for once-off deep reviews and run it in a fresh conversation when context budget matters; default `/surface` (~50-80K words) is the lean routine-cadence choice.
 
 **Output differentiation**: `/surface all` research notes carry `source_type: synthesis` with `scope: all` in a `scope:` frontmatter field, so downstream review can distinguish deep-scan outputs from routine `/surface` scans. Filename: `Research/YYYY-MM-DD - Insight Surface Scan (all).md`.
 

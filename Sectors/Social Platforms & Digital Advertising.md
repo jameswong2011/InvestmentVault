@@ -554,6 +554,12 @@ The base-case constructive view requires tier-1 capex ROI to demonstrate (Q2/Q3 
 
 **Historical parallel**: 2007–2015 social-graph advertising era was built on one ML breakthrough (Facebook News Feed ranking) + one distribution moat (mobile + iOS/Android duopoly). 2023–2026 AI-retrieval era is built on one ML breakthrough (transformer-based ad ranking + generative creative) + one distribution moat (AI-capex barrier). The first era produced two winners (Meta, Google) that captured >60% of the category for 15+ years. The second era looks likely to produce the same two winners plus Amazon — but the tier-2 fragmentation is happening faster and more brutally than 2007–2015 equivalents. **The 2026–2030 question is whether agent-commerce introduces a *fifth* regime change** that re-shuffles winners — and which platforms hold the consumer-agent-frontend moat (Meta AI 1B MAU; Gemini 650M MAU; ChatGPT 800M WAU) when that re-shuffling occurs.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 ### Adjacent thesis notes (referenced in Active Theses)

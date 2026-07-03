@@ -181,6 +181,12 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 9. **NVIDIA convertible dilution**: The $2B investment was structured as convertible preferred stock, creating a dilution overhang that distinguishes it from Coherent's cleaner non-dilutive deal structure.
 10. **Emerging technology disruption**: Lightwave Logic polymer modulators (100GHz+), OpenLight InP-on-silicon integration, Marvell/Celestial AI Photonic Fabric (25x bandwidth vs conventional CPO), and Ciena/Nubis CPO modules (6.4 Tbps) all represent longer-duration technology risks that could reshape the competitive landscape beyond 2028.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2026-04-15 - LITE COHR - Lumentum vs Coherent Analysis]] — "Great Photonic Divergence": LITE +1,098% vs COHR +328%, pure-play vs integrated, module-level 70.5% gross margin

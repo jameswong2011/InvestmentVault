@@ -206,6 +206,12 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 
 **Concrete portfolio implications (non-consensus).** (i) Pair-trade logic: long Broadcom + short Nvidia as ASIC-rent-capture hedge — if hyperscaler diversification accelerates Broadcom wins regardless of which hyperscaler. (ii) Physical AI as the non-consensus Nvidia moat — long NVDA specifically for Jetson + Omniverse + DRIVE Hyperion attach revenue, not data-center GPU share. (iii) AMD call options (not outright long) on Helios Q3 2026 + MLPerf Training v5.0 Fall 2026 — binary catalysts with asymmetric upside if ROCm training parity demonstrated. (iv) Memory stocks (SK Hynix, Micron, SNDK) as less-volatile exposure to the same AI capex tailwind. (v) Huawei-threat hedge: consider thesis-level exposure to Chinese equipment suppliers and non-US sovereign AI beneficiaries. (vi) Taiwan tail hedge: LMT/NOC/RTX defense pair vs TSM/NVDA/AMD GPU basket (per TSM stress test analysis).
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis "CPUs are Back": Intel-vs-AMD divergence widens (Diamond Rapids SMT-less + 8-ch Diamond Rapids-SP cancelled vs new AMD Venice SP8; Clearwater Forest +17% low-yield "learning vehicle"); ARM/hyperscaler vertical integration (Graviton5/Cobalt/Axion/Phoenix/Venom) permanently closing Intel's TAM; Fairwater 1:6 CPU:GPU power ratio (rising); Bluefield-4 KV-cache-to-NAND "third network"; CPU role taxonomy + interconnect-scaling-ladder frameworks. Integrated into §Product Level Analysis (Intel CPU entry).
@@ -244,6 +250,8 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Sectors/Semiconductor Foundries]] — adjacent sector MOC: TSMC as single foundry for all Western AI silicon
 - [[Sectors/Data Center Power & Cooling]] — adjacent sector MOC: grid interconnect + liquid cooling + OCP co-design
 - [[Sectors/Optical Networking & Photonics]] — adjacent sector MOC: CPO + EML + InP laser supply under AI scale-out demand
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "silicon shortage phase": all accelerator families (Rubin 3NP, MI350X/MI400, TPU v7 N3E, Trainium3 N3P, MTIA) converged on the binding N3 node (AI 60%→86% of N3 2026→2027); HBM content step-ups into 3x→4x crowd-out; "whoever secures most silicon captures most deployed compute" (Nvidia most prepared)
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]] — Cross-sector demand datapoint: Cloudflare frames "the next bottleneck to AI adoption is the CPU for execution" — serving 1B knowledge workers × 10 agents needs ~1B server CPUs vs ~35-45M/yr current production (~20x), and isolates run agent code ~100x more efficiently than container runtimes. Application/edge-side corroboration of the agentic-CPU-demand thesis (layer-6 compute fanout)
 
 ## Log
 
@@ -285,5 +293,11 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 ### 2026-06-02 (/sync)
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: "CPUs are back" (RL + agentic) integrated into §Product Level Analysis Intel CPU entry — two new datapoints sharpening AMD/Intel divergence: (i) 8-channel Diamond Rapids-SP cancelled (strands mainstream Xeon on Granite Rapids to ~2028) vs new AMD **Venice SP8** (128 Zen6c) attacking enterprise stronghold; (ii) Clearwater Forest only +17% vs Sierra Forest on low-yield Foveros-Direct = "yield-learning vehicle, not volume." Convergence framing: Diamond Rapids ≈ AMD 2017-era NUMA at 2026 cost (4 CBB+2 IMH, drops EMIB + SMT). Reinforces Non-consensus Insight #7 (Intel worst across every CPU surface) + AMD/NVDA-vs-Intel pair-trade. No sector conviction change. Snapshot: [[_Archive/Snapshots/Compute & AI Compute Accelerators (pre-sync 2026-06-02-121812)]]
 
+### 2026-06-10 (/sync)
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]]: Cloudflare Investor Day adds an application/edge-side datapoint to the CPU-for-agents demand thesis — "~1B CPUs needed vs 35-45M/yr produced (~20x)" to serve agent fanout; isolates ~100x more CPU-efficient than containers. Added to §Related Research; corroborates existing server-CPU demand framing (2026-06-02 Datacenter CPU note). No sector conviction change.
+
 ### 2026-06-03 (/sync)
 - [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: SemiAnalysis value-capture map — Nvidia/TSMC deliberately under-price (cost- not value-based) while the AI labs capture value (Anthropic inference GM 38%→>70%); Nvidia holds unexercised margin levers (SOCAMM ~60%, ~40% Rubin server-price headroom, value-based rental ceiling ~2x cost floor). Relevant to NVDA pricing-power pillar; ceilinged by custom-silicon (Trainium/TPU) competition. No sector conviction change.
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: SemiAnalysis "silicon shortage phase" — every accelerator family converged on the binding N3 node (AI 60%→86% of N3 output 2026→2027); HBM content step-ups (Rubin +50%, Rubin Ultra ~4x; TPU v8AX/Trainium3 8-Hi→12-Hi) into 3x→4x wafer/bit crowd-out; "whoever secures the most silicon captures the most deployed compute" reframes procurement (not spec) as the near-term differentiator (Nvidia most prepared). Demand-floor + supply-gating corroboration; no sector-conviction change.

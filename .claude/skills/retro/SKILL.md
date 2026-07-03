@@ -3,8 +3,6 @@ name: retro
 description: Generate a backward-looking retrospective of vault activity (addressed callouts + Log entries) over a time window (1w / 1m / 1q), overlay with newsflow + earnings transcripts + price action, and rank trade ideas by the gap between official narrative and market reaction. Output is an immutable Research note. Use when user says "retro", "retrospective", "what did I do this week/month/quarter", "review activity against market", or "recommend trades from recent research".
 model: opus
 effort: max
-context: fork
-agent: general-purpose
 allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * awk * defuddle *)
 ---
 
@@ -188,7 +186,7 @@ If the Earnings WebSearch surfaces a canonical transcript URL (e.g., Seeking Alp
 - The ticker already appears likely to rank in Top 5 by preliminary narrative-price gap (rough pre-screen on WebSearch snippets), AND
 - The vault thesis has an active Log entry or addressed callout from the window (i.e., we care what the earnings said relative to our thinking)
 
-For each qualifying URL, issue `defuddle [URL]` via Bash (preferred for transcript pages — strips navigation and comment noise) or `WebFetch` (fallback). Cap at **5 transcript fetches per retro run** — earnings transcripts are long (~8-15K tokens each); unbounded fetches would blow the subagent context budget. If >5 tickers qualify, fetch the top 5 by preliminary gap magnitude.
+For each qualifying URL, issue `defuddle [URL]` via Bash (preferred for transcript pages — strips navigation and comment noise) or `WebFetch` (fallback). Cap at **5 transcript fetches per retro run** — earnings transcripts are long (~8-15K tokens each); unbounded fetches would blow the context budget. If >5 tickers qualify, fetch the top 5 by preliminary gap magnitude.
 
 ### 3.4: Extraction schema per ticker
 
@@ -565,7 +563,7 @@ Next steps:
   → Review Trade Ideas and decide whether to act via /status, /stress-test, /deepen, /ingest, or /thesis
 ```
 
-**Runs in forked subagent** (`context: fork`) — main conversation context is shielded from ~60 full-file reads + up to ~126 WebSearch results + up to 5 earnings-transcript fetches (~400K tokens at current vault scale). Only the Phase 9.2 report returns to main session; the Research note persists to disk as the authoritative artifact.
+**Runs in the main conversation** (no fork) — the Phase 9.2 report renders directly in chat. The ~60 full-file reads + up to ~126 WebSearch results + up to 5 earnings-transcript fetches (~400K tokens at current vault scale) consume main-session context, so run `/retro` in a fresh conversation when context budget matters; the Research note persists to disk as the authoritative artifact.
 
 ## Invariants
 
@@ -607,8 +605,8 @@ Each run produces an independent immutable artifact. The `/graph last` reconcili
 
 - **Why vault-wide lock (not read-only)**: retro writes a Research note, appends Log entries to 3-5 theses, and updates `_hot.md`. These writes conflict with concurrent `/sync` or `/catalyst`. Read-only lock is insufficient.
 - **Why no scoped mode in v1**: single-ticker retro (`/retro 1w NVDA`) is a reasonable v2 extension. The vault-wide view is the v1 use case per the user's original framing ("recommend trades" across the portfolio). Scoped mode would add a resolution path + graph primer switch that v1 doesn't need.
-- **Why `context: fork`**: ~60 full-file reads + up to ~126 WebSearch returns (3× ticker fan-out) + up to 5 earnings-transcript fetches = ~400K tokens of upstream material. Forking isolates the main conversation from this context consumption — only the Phase 9.2 report and the final Research note surface to the user's session.
+- **Why main-thread (no fork)**: the Phase 9.2 report must render in the user's chat — a forked subagent returned its summary as unrendered stdout, leaving the panel blank (fixed 2026-06-07). Tradeoff: ~60 full-file reads + up to ~126 WebSearch returns (3× ticker fan-out) + up to 5 earnings-transcript fetches = ~400K tokens of upstream material now consume main-session context. Run in a fresh conversation when budget matters; the Research note persists to disk regardless.
 - **Why narrative-price delta is the core engine**: "what did the market say happened vs what did the stock do" is the classical trader signal for positioning opportunities. Aligned narrative + price = already priced, no alpha. Inverted narrative + price = market is pricing something the surface news isn't showing — positioning, forward risk, capitulation, or vault's non-consensus view is right. The vault's recent stance then separates alpha (vault predicted the divergence) from reflection (vault missed it). This is why the 1.5× weight on inverted deltas vs 1.0× on flow-only signals: rejected narrative is asymmetric information, confirmed narrative is consensus.
 - **Why exclude social sentiment**: per user spec — official narrative channels (press releases, SEC filings, earnings, analyst actions) are structured, date-anchored, and polarity-classifiable. Social sentiment (X/Twitter/Reddit) is noisy, hard to polarity-classify at scale, and typically echoes official narrative with a lag. Including it would expand WebSearch fan-out 2-3× without proportional signal gain.
-- **Why cap transcript fetches at 5 per run**: earnings transcripts are ~8-15K tokens each. An uncapped fetch on a heavy-earnings week (5+ tickers reporting) would blow the subagent context budget. Pre-screen selects the 5 most likely to rank in Trade Ideas Top 5 — low-ranking earnings contribute via the Earnings WebSearch snippet (surprise + guidance direction) without the full transcript read.
+- **Why cap transcript fetches at 5 per run**: earnings transcripts are ~8-15K tokens each. An uncapped fetch on a heavy-earnings week (5+ tickers reporting) would blow the context budget. Pre-screen selects the 5 most likely to rank in Trade Ideas Top 5 — low-ranking earnings contribute via the Earnings WebSearch snippet (surprise + guidance direction) without the full transcript read.
 - **Why proportional rendering** — per user spec. A 1q retro with 300 addressed callouts rendered in full would exceed the useful signal density of the note. Aggregation at long windows preserves the "what changed" signal without forcing the reader through 300 verbatim exchanges.

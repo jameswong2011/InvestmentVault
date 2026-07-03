@@ -235,6 +235,12 @@ Retail media convergence (**Amazon Ads $56B 2024, +18% YoY, ~$69B run rate**) th
 
 **Historical parallel is 2022-era cloud software** — Snowflake, Datadog, MongoDB sustained 80%+ premiums during ZIRP, then compressed 50–60% as growth decelerated AND AI-disruption narratives emerged simultaneously. AppLovin is in the early innings of that compression, not the end. TTD's -85% from high is the sector's worst-case demonstration; APP's -45% is mid-compression. The asymmetric upside requires both SEC resolution AND e-commerce execution; the asymmetric downside only requires one of CloudX adoption, Meta recovery, or SEC structural finding.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2026-02-26 - APP - AppLovin AI Ad Platform Deep Dive]] — Grok deep-dive on AppLovin business model, AXON 2.0 architecture, competitive dynamics, investor sentiment
 - [[Research/2026-03-09 - APP - Gemini Business Analysis Canvas]] — Gemini Canvas: AXON dominance, Tripledot divestiture, CloudX challenge, financial performance deep-dive

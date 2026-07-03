@@ -174,6 +174,12 @@ AAOI is best understood as a vertically integrated optical components and module
 - Broadcom OR NVIDIA discloses pluggable transceiver demand from hyperscalers stepping down in 2027-2028 capex plans (structural CPO acceleration)
 - Stock re-rates to >$280 (~50% above current $173) without commensurate margin expansion or customer diversification (sell into terminal-velocity narrative)
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Primary trigger for this thesis; rebalancing labels AAOI Tier 5 convex bet (TRIM Low ~2% → 0.5–1%), explicit "no thesis support; -22% ROIC NTM + +915% YoY = textbook #17/#18 trap"

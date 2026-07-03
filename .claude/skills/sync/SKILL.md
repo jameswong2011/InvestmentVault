@@ -16,6 +16,7 @@ Design rationale in `.claude/skills/sync/RATIONALE.md` (§N.M anchors).
 - `.claude/skills/_shared/hot-md-contract.md` — `_hot.md` compression budget and section ordering.
 - `.claude/skills/_shared/log-prefixes.md` — registry of Log-entry prefixes carrying cross-skill semantics.
 - `.claude/skills/_shared/sector-resolution.md` — thesis `sector:` → sector note resolution.
+- `.claude/skills/_shared/mental-models-section.md` — the `## Mental Models` section schema, the MANDATORY `/Mental Models` reading gate, and the merge/idempotency write procedure.
 
 ## Step 0: Pre-flight (MANDATORY — runs before Step 1)
 
@@ -448,14 +449,17 @@ Map Step 2's insights against each thesis section. Be selective.
 | Catalysts | New catalyst identified, or existing catalyst resolved — mark outcome |
 | Risks | New risk emerged, existing risk probability changed materially, or risk retired |
 | Conviction Triggers | New evidence validates/invalidates a trigger, OR threshold needs updating |
+| Mental Models | A new research-activated `/Mental Models` trigger fires, an existing trigger's read materially changes, or models newly agree (disconfirm check) — per `_shared/mental-models-section.md`. High selectivity: most syncs leave it untouched. |
 
 **Do NOT update sections where the delta is trivial.** Thesis contains synthesised conclusions, not duplicated research.
+
+**Mental Models section** — before writing it, read the relevant `/Mental Models` files and apply the READING PROTOCOL per `_shared/mental-models-section.md` (MANDATORY reading gate). Merge new triggers as hypotheses-to-test; never overwrite; idempotent on model + trigger name. An unchanged section is the correct outcome for most runs.
 
 ### 3c: Pre-Edit Safety — Snapshot
 
 Classify edits by tier:
-- **Tier A — snapshot required**: editing or rewriting existing text in Summary, Non-consensus Insights, Outstanding Questions, Business Model, Industry Context, Bull Case, Bear Case, Conviction Triggers.
-- **Tier B — no snapshot**: appending new Catalysts, Risks, Conviction Triggers; appending to Log / Related Research; updating Key Metrics numbers.
+- **Tier A — snapshot required**: editing or rewriting existing text in Summary, Non-consensus Insights, Outstanding Questions, Business Model, Industry Context, Bull Case, Bear Case, Conviction Triggers, Mental Models (rewriting or striking through existing entries).
+- **Tier B — no snapshot**: appending new Catalysts, Risks, Conviction Triggers, or Mental Models trigger lines; appending to Log / Related Research; updating Key Metrics numbers.
 
 If any Tier A edits planned, snapshot ALL Tier A theses in one Bash block using background shell jobs + `wait` (mirrors `/compare` 5.5a and `/rollback` Step 4 patterns — each `cp` is independent; sequential execution over N theses wastes N-1 round-trips):
 
@@ -591,6 +595,7 @@ Skip snapshot if only adding wikilinks.
 - Update value chain analysis if supply chain relationships shifted.
 - Revise sector-level observations if cross-company patterns emerged.
 - Update company comparison tables with new data points.
+- Update the `## Mental Models` section when new cross-company evidence activates or retires a sector-level model trigger, or changes its read — read the relevant `/Mental Models` files first and merge per `_shared/mental-models-section.md` (high selectivity; most syncs leave it untouched).
 
 ### 4c: Post-Edit Verification (Edit-return inspection — no re-read)
 

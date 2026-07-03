@@ -140,6 +140,12 @@ Four vertical-integration stories now compete for terminal value in the resident
 
 - **Compass's $1.6B tech investment is under-credited as a capability moat, not just a cost.** Most brokerages use bolt-on third-party software; Compass built an integrated agent-to-client platform (Compass One) + proprietary pre-MLS inventory routing (Private Exclusives). With 340K agents post-Anywhere, any per-agent productivity lift compounds across a base larger than Zillow's entire Premier Agent monetized network. The 1.0x EV/Rev treats Compass as commodity brokerage; the underlying economics resemble a platform.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]] — 24-month Opendoor progress assessment: unit economics, agent partnerships, Zillow partnership dynamics, Offerpad comparison, competitive context with Zillow/Redfin exits (ChatGPT deep research)
 - [[Research/2025-12-04 - OPEN - Gemini Business Assessment Canvas]] — Opendoor "refounding" era: founder-mode pivot, Mainframe AI + computer vision, 200-employee target, warrant-dividend capital engineering, analyst bull/bear divergence (Gemini Canvas)

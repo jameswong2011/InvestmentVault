@@ -114,6 +114,12 @@ Reference architecture across the sub-segment is convergent: NVIDIA H100/H200/B1
 
 **Trade construction implications.** Long-bias trades in this sector — if any — should favor the landlord-model miner-pivots (APLD, CIFR) over full-stack neoclouds (CRWV, NBIS, IREN) on durability grounds. Short-bias trades should target the full-stack operators with the highest customer concentration and most aggressive DDTL leverage (CRWV is the cleanest expression). Pair: short CRWV / long NVDA captures the NVIDIA-derivative spread and isolates idiosyncratic credit risk.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2025-06-09 - CRWV - CoreWeave Deep Dive]] — primary CRWV business model + scale data (note: contains off-topic Grok output; treat as June 2025 snapshot, refresh with post-Q1 2026 data)
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen's three-part flywheel explicitly frames CRWV/NBIS/Nscale as demand-side reinforcements
@@ -123,6 +129,7 @@ Reference architecture across the sub-segment is convergent: NVIDIA H100/H200/B1
 - [[Sectors/Compute & AI Compute Accelerators]] — upstream chip-supply context, Vera Rubin launch partner lineup
 - [[Sectors/Data Center Power & Cooling]] — grid interconnect bottleneck, Vertiv neocloud margin disclosure (38-42% gross on 8-12% of revenue)
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — hyperscaler in-housing as the dominant long-term demand risk
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis: on-demand GPU prices rising even for ~2-gen-old Hopper; every neocloud's small clusters "firmly locked up"; compute scarce while DC power available — confirms a near-term neocloud utilization/pricing floor
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -134,3 +141,6 @@ Reference architecture across the sub-segment is convergent: NVIDIA H100/H200/B1
 
 ### 2026-06-03 (/sync)
 - [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]] + [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: Second public pure-play [[Theses/NBIS - Nebius Group]] thesis created (draft, MEDIUM) + added to §Active Theses — both NBIS and CRWV now staffed; NBIS = balance-sheet-quality/execution bet vs CRWV credit bet. Rental-economics "One Chart" framework quantifies pricing-power-pinned-at-Nvidia (cost floor ~$4.92/hr vs value ceiling ~$9.63-12.25/hr at Vera Rubin; Nvidia price hikes shift the curve up-left, compressing neocloud IRR). 40% H100 1-yr contract rebound (Oct'25→Mar'26) nuances the rental-compression thread. Sector framing unchanged.
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: SemiAnalysis confirms acute near-term GPU tightness — on-demand prices rising even for ~2-gen-old Hopper, every neocloud's small clusters "firmly locked up," compute scarce while DC power is available. Supports the near-term neocloud utilization/pricing floor (demand-side); orthogonal to the counterparty-concentration / vendor-financing credit risk that dominates the sector thesis. No sector-conviction change.

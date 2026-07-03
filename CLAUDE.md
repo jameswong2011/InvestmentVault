@@ -6,20 +6,31 @@ This is a personal knowledge base for institutional-quality equity research, mac
 
 Investment returns inevitably come from predicting inflection points in industry dynamics ahead of time, by finding connections between optically insignificant datapoints and how it correlates to macro level shift - As the vault-assistant LLM, you are actively encouraged to attempt to assist the user to find these correlations. 
 
-Please always refer to the Mental Models folder in the root directory to guide your analysis. This will contain a set of generalist mental models useful for all research and analysis as well as industry specific mental models when a specific industry is being researched with sufficient depth. The mental models is designed as a list of cognitive thinking tools that replicates what a top investor consistent with the strategy of this vault would employ as he goes about sifting through the fire hose of investing information. Utilising these mental models will make predicting industry and company specific inflection points easier.
+Please always refer to the Mental Models folder in the root directory to guide your analysis. This will contain a set of generalist mental models useful for all research and analysis as well as industry specific mental models when a specific industry is being researched with sufficient depth. The mental models is designed as a list of cognitive thinking tools that replicates what a top investor consistent with the strategy of this vault would employ as he goes about sifting through the fire hose of investing information. Utilising these mental models will make predicting industry and company specific inflection points easier. When consulting any Mental Models note, apply the READING PROTOCOL at the top of [[Generalist - Overview]]: treat the models as lenses and questions, never as conclusions — claims are hypotheses to test against current evidence, the base-rate / outside view runs adversarially against the other models, and agreement across models is a trigger to disconfirm (hunt the bear case and the single falsifying datapoint), not to commit.
+
+**Read the Mental Models folder before any investment analysis (xxx MANDATORY xxx).** Before producing any investment-related analysis — a new thesis, a research note, a sync/propagation, a comparison, a stress test, a scenario, a deepen, or any conviction/status judgement — first read the relevant notes in `/Mental Models` as additional context, then apply the READING PROTOCOL summarised above (lenses and questions, never conclusions).
+
+**Load tiering — match the read to the task's analytical weight (xxx MANDATORY xxx).** The mandatory read above governs *analytical* work (the operations just enumerated). It does **not** apply to mechanical or metadata-only operations that produce no investment judgement — `/numbers`, `/rename`, `/lint`, `/clean`, `/graph`, `/catalyst`, `/archive-callouts`, `/rollback` — which skip the mental-models read entirely. Scope the conditional files to the task: load `[[Generalist - Overview]]` always, the industry / lens files only when that sector or lens is in play; do not bulk-load all four for a single-name question they do not touch. The mandatory set is the **enumerated files below**, not the whole folder — the folder also holds `reference-only` notes (tagged as such, e.g. [[Philosophy - Asset Management Structure]]) that are background priming, not analytical lenses; do not auto-read them.
+
+Read scope (mandatory tier):
+- `[[Generalist - Overview]]` — generalist themes; read on **every** investment analysis. This is the 'introductory training' you receive to think in the same way as the user so that you can better be his analytical partner.
+- `[[Industry - Semiconductors]]`— industry-specific themes; read whichever match the sector(s) in scope.
+- `[[Lens - Automation & AI Readiness]]` — specific detailed cross sector themes;  each reflects the user's core edge/insights that he relies on to generate actionable ideas; to be applied to all investment analysis that is relevant
+- `[[Lens - Value Layer Monopoly]]` — cross-sector lens on layer-monopoly / value-concentration dynamics (does a company own a critical layer of a stack that everything above must pay to traverse, and is that mispriced); a conviction modifier like the Automation lens — apply to any thesis where the edge rests on owning a layer.
 
 ## Vault Structure
 
 ```
-/_Inbox          — Drop zone for raw content (web clips, Deep Research PDFs, CSVs). Processed by /ingest.
-/_Inbox/processed — Archive of already-ingested originals (auto-managed by /ingest)
-/Theses          — Synthesized investment cases (one note per ticker or macro theme)
-/Research        — Structured research notes created by /ingest or manually
-/Sectors         — Sector-level overview notes
-/Macro           — Geopolitical analysis, commodity frameworks, rates, FX
-/Templates       — Note templates for consistent structure
-/_Archive        — Completed or abandoned theses as well as version control backups (Snapshots)
-/Canvas          — Visual maps and relationship diagrams
+/_Inbox             — Drop zone for raw content (web clips, Deep Research PDFs, CSVs). Processed by /ingest.
+/_Inbox/processed   — Archive of already-ingested originals (auto-managed by /ingest)
+/Theses             — Synthesized investment cases (one note per ticker or macro theme)
+/Research           — Structured research notes created by /ingest or manually
+/Sectors            — Sector-level overview notes
+/Macro & Technology — Geopolitical analysis, commodity frameworks, rates, FX, and technology trends
+/Mental Models      — Generalist + industry-specific cognitive frameworks; read before any investment analysis
+/Templates          — Note templates for consistent structure
+/_Archive           — Completed or abandoned theses as well as version control backups (Snapshots)
+/Canvas             — Visual maps and relationship diagrams
 ```
 
 ## Writing Standards (xxx ALL LLM OUTPUT MUST FOLLOW xxx)
@@ -96,9 +107,10 @@ Each thesis note follows this structure:
 9. **Catalysts** — Near-term events that could move the stock
 10. **Risks** — What breaks the thesis
 11. **Conviction Triggers** — Pre-defined, falsifiable if/then statements: → HIGH if, → LOW if, → CLOSE if
-12. **Related Research** — Wikilinks to supporting research notes
-13. **Legacy Callouts** — Auto-managed archive of addressed callouts swept from their original sections (owned exclusively by `/archive-callouts` — do NOT hand-edit)
-14. **Log** — Dated entries tracking thesis evolution (max 2 lines per entry)
+12. **Mental Models** — Outputs from applying the `/Mental Models` context files to this thesis: which models were consulted and which specific triggers/lenses fired, each recorded as a hypothesis to test (per the READING PROTOCOL in [[Generalist - Overview]]), not a verdict; populated incrementally as new research applies further models
+13. **Related Research** — Wikilinks to supporting research notes
+14. **Legacy Callouts** — Auto-managed archive of addressed callouts swept from their original sections (owned exclusively by `/archive-callouts` — do NOT hand-edit)
+15. **Log** — Dated entries tracking thesis evolution (max 2 lines per entry)
 
 ### Research Notes (/Research)
 - Name format: `YYYY-MM-DD - [Topic or Ticker] - [Source Type].md`
@@ -119,9 +131,10 @@ Each sector note acts as a Map of Content (MOC) and follows this structure:
 6. **Acquisitions and new entrants** — Historical M&A with strategic objectives and outcomes; new entrant business models, disruption strategies, and impact on incumbent pricing power
 7. **Macro shifts** — Macroeconomic variables (technological, geopolitical, regulatory, value chain, socioeconomic) currently or expected to drive material change in the sector
 8. **Investor heuristics** — Current investor consensus, what is priced in, where consensus could be wrong, and non-consensus insights from the sector research
-9. **Related Research** — Links to research notes relevant to this sector
-10. **Legacy Callouts** — Auto-managed archive of addressed callouts swept from their original sections (owned exclusively by `/archive-callouts` — do NOT hand-edit)
-11. **Log** — Dated entries tracking sector note evolution
+9. **Mental Models** — Outputs from applying the `/Mental Models` context files to this sector: which models were consulted and which triggers/lenses fired, each recorded as a hypothesis to test (per the READING PROTOCOL in [[Generalist - Overview]]), not a verdict; populated incrementally as research applies further models
+10. **Related Research** — Links to research notes relevant to this sector
+11. **Legacy Callouts** — Auto-managed archive of addressed callouts swept from their original sections (owned exclusively by `/archive-callouts` — do NOT hand-edit)
+12. **Log** — Dated entries tracking sector note evolution
 
 ### Macro & Technology Notes (/Macro & Technology)
 - Geopolitical scenarios, commodity frameworks, rates outlook
@@ -227,6 +240,7 @@ When compacting, preserve information in this priority order:
 6. **After manually editing a thesis body section** (Bull Case, Risks, Industry Context, Bear Case, Key Non-consensus Insights, etc.), **always append a Log entry describing the change**. Without one, `/sync` may classify the run as skill-origin (because the most-recent Log entry is from a prior skill like `/status` or `/stress-test`) and silently skip propagating the edit to sector and macro notes. The Log entry doesn't need a special prefix — any prefix not in `_shared/log-prefixes.md`'s skill-origin list (e.g., `Manual edit:`, `Reviewed:`, `Refined:`) forces `/sync` to treat the change as research-driven and propagate normally.
 7. **Inline feedback on LLM output uses the callout convention** — drop `> [!question]`, `> [!error]`, `> [!tip]`, or `> [!todo]` callouts inside any section, then ask Claude to "address fresh callouts in [note(s)]". Claude edits sections, marks callouts addressed, and appends a Log entry with a **non-skill-origin prefix** (recommended: `Addressed user callouts:`) — skill-origin prefixes like `Deepened:`, `Status change:`, or `Stress test:` cause `/sync` to silently skip sector/macro propagation per Rule 6. Full spec: [[User Guide#Inline callouts — user feedback markers|User Guide §6]].
 8. **Graph-primer pattern for cross-ticker context** — research skills (`/ingest`, `/compare`, `/thesis`, `/stress-test`, `/brief`, `/deepen`) consume `_graph.md` as a primer for cross-ticker/cross-sector context per `.claude/skills/_shared/graph-primer.md`. The graph orients analysis (cluster peers, shared adjacency, propagation fanout suggestions); it never replaces content reads of target thesis or research files. Anti-pattern to avoid: "skip reading thesis X because graph says X isn't in the cluster." Enforced by `/lint #54` (compliance) and `/lint #55` (anti-pattern detection).
+9. **Mental Models section is self-populating** — `/ingest` identifies which `/Mental Models` triggers a source activates (and surfaces them for `/sync`); `/sync` and `/deepen` merge fired triggers into the `## Mental Models` section of affected thesis/sector notes — held as hypotheses-to-test per the READING PROTOCOL, never verdicts. Contract: `.claude/skills/_shared/mental-models-section.md`. The section is updated only on genuine model-trigger activation/retirement — most runs leave it untouched (no churn).
 
 ## Core Workflow Loop
 The primary vault workflow is an ingest-propagate-graph loop:

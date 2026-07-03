@@ -426,6 +426,12 @@ Per [[Research/2025-11-24 - BTC - Quantum Computing Threat to Bitcoin Security]]
 
 **Non-consensus synthesis**: the 2024-2026 regime change is real but multi-layered. Bitcoin's institutionalisation is the surface narrative; the deeper shift is **stablecoins becoming settlement infrastructure** (payments, AI agents, tokenised-asset rails) rather than trading collateral. This is commercially larger than the BTC store-of-value thesis in dollar terms, and more directly monetisable — but concentrated in 2-3 issuers (Circle, Tether, plus bank/Stripe-orchestrator challengers) with very different regulatory, distribution, and rate-sensitivity exposures. **The highest-conviction trade in the sector is not BTC long — it is Circle post-CPN-ramp + post-Coinbase-renegotiation, conditional on GENIUS implementation holding and CLARITY passing.** Weak-conviction alternatives: long ETH via L2 blob-fee inflection (delayed), long SOL via institutional validator-count closure (unlikely), long altcoin breadth (contested).
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 ### Bitcoin & digital-asset macro
@@ -445,6 +451,7 @@ Per [[Research/2025-11-24 - BTC - Quantum Computing Threat to Bitcoin Security]]
 - [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]] — Circle S-1 deconstruction: 99% reserve-yield revenue, $908M Coinbase payout, Shopify/Stripe/Base integration, Stripe disintermediation risk
 - [[Research/2025-07-10 - CRCL - Circle USDC vs BRICS mBridge Geopolitical Analysis]] — USDC as US strategic asset vs BRICS mBridge de-dollarisation; Circle valuation, 10-year revenue model (Grok)
 - [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]] — V/MA stablecoin response strategies, disintermediation scenarios (ChatGPT)
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]] — x402 datapoint for §6 (AI-agent payments): Cloudflare serves 2B HTTP 402 responses/day and co-founded the x402 Foundation with Coinbase & Stripe; "Act IV" reframes Cloudflare's bot-paywall as the agent-micropayment toll layer (USDC settlement underneath, 99% x402 share = CRCL beneficiary)
 
 ### Trading infrastructure / DeFi
 - [[Research/2026-03-20 - Crypto - Gemini Trading Infrastructure Canvas]] — CLOB/AMM hybrid architectures, MEV strategies, atomic execution engines, institutional DeFi trading design
@@ -482,3 +489,6 @@ Per [[Research/2025-11-24 - BTC - Quantum Computing Threat to Bitcoin Security]]
 
 ### 2026-04-25
 - Addressed user callouts: 10 fresh callouts resolved with body integrations across §Competitive dynamics, §Product level analysis, and §Macro shifts. New subsections added — Competitive structure (winner-take-all vs fragmentation), Regulatory moat depth + USDT relegation, mBridge sovereign multi-CBDC settlement platform, Real-world asset tokenisation infrastructure stack, GENIUS+CLARITY provisions and adoption-curbing risks, Quantum-resistance migration paths by chain. Expanded subsections — §4 Distribution rewritten as prose with edges-by-use-case table, §6 AI-agent payments expanded with agent commerce + Cloudflare bot-paywall + 7 novel business models, USDC dual-jurisdiction advantage, Stripe Tempo as Stripe's internal banking settlement layer with Shopify partner detail. Conviction unchanged — no thesis-relevant signal change; sector framework deepened.
+
+### 2026-06-10 (/sync)
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]]: NET Investor Day datapoint added to §Related Research (for §6 AI-agent payments) — Cloudflare 2B HTTP 402/day + x402 Foundation (Coinbase/Stripe) + "Act IV" bot-paywall-as-toll framing corroborate the agent-micropayment thesis; USDC 99% x402 share is the downstream beneficiary. No sector conviction change; CRCL/BTC theses unaffected.

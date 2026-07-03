@@ -548,6 +548,12 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 
 ---
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]] — Q4 2025 DRAM revenue +29.4% sequential; conventional DRAM contract prices +45-50% QoQ; SK Hynix 2025 op profit ₩47.2T ($31.59B); Samsung 110T won 2026 capex; Samsung HBM 250K WSPM target by end-2026
@@ -563,6 +569,7 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-05-22 - 000660 - Stress Test]] — SK Hynix 5🔴/5🟡/0🟢 stress: Namics EMC sole-supplier moat dependency is single largest unhedged tail (contract expiring 2026-2027); Samsung 30% Rubin allocation reset watchlist; §Evergreen Reset Hypothesis testability tightens through H2 2026 HBM5 sampling visibility
 - [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — Ajinomoto ABF substrate (2802.T) vs Advantest HBM/SoC test (6857.T) parallel — test-equipment-tier monopoly mirrors ABF moat; reinforces backend equipment intensity captured in §Cycle Dynamics & Game Theory
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — SemiAnalysis "Memory Mania": ~7% structural DRAM deficit through 2027, HBM shortfall →9% (2027), reverse-scaling 3x→4x bit penalty, HBM <5%→20%→35% of DRAM wafers (2022→25→27); commodity margins now ≥ HBM (Samsung); R200 HBM ~60/30/0; memory WFE capex +26/34/20% (Samsung/Hynix/Micron)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "silicon shortage": memory the next constraint after N3 logic — HBM 3x→4x wafer/bit crowd-out; DDR margins now ≥ HBM-contracted (removes incentive to add HBM → 2027 repricing higher); ~11 Gb/s HBM4 pin-speed gate, Micron lagging; consumer-DRAM bit-reallocation scenarios (50% cut ≈ 14% of 2026 DRAM)
 
 ## Related Sectors and Macro
 
@@ -596,3 +603,6 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 
 ### 2026-06-01 (/sync)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: SemiAnalysis quantifies reverse-scaling (3x→4x bit penalty) + ~7% structural DRAM deficit through 2027 + commodity-margin parity (Samsung milking commodity); integrated into §Competitive Dynamics → 3:1 Wafer Penalty (answers Key Question #3: self-reinforcing). No sector-conviction change.
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: SemiAnalysis frames memory as the constraint behind N3 logic — reaffirms reverse-scaling (3x→4x bit penalty), the commodity-margin-≥-HBM reversal (removes supply-side incentive to convert → 2027 HBM repricing higher), and the ~11 Gb/s HBM4 pin-speed gate (Micron lagging). Consumer-cut bit-reallocation scenarios: base 10-15% ≈ 3% of DRAM (immaterial); 50% ≈ 14%. Consistent with existing §3:1 Wafer Penalty + Macro Shift §8 framing. No sector-conviction change.

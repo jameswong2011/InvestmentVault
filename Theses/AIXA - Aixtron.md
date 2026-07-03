@@ -370,6 +370,12 @@ Position risks (thesis is right but stock goes down anyway):
 
 → **CLOSE if**: FY2026 actual results (Feb 2027) print optoelectronics share <30% of equipment revenue AND FY2027 guide is below current €690M consensus by ≥10%, OR Veeco ships competitive 6-inch InP MOCVD with multiple confirmed customers by Q3 2027. Either signals the structural thesis (InP monopoly + accelerating mix shift) has failed to materialize, with no second-leg story strong enough to compensate.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 Direct research basis:

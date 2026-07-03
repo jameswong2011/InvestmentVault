@@ -3,8 +3,6 @@ name: lint
 description: Run health checks on the vault for inconsistencies, stale data, orphaned notes, and missing connections. Use periodically or when user says "lint", "health check", or "audit".
 model: opus
 effort: max
-context: fork
-agent: general-purpose
 allowed-tools: Read Grep Glob Bash(find * wc * date * grep * sed * cat * printf * rm * mkdir * ls *)
 ---
 

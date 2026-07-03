@@ -68,7 +68,7 @@ Aborted — no changes made to the thesis.
 
 **Do NOT silently create the section.** Structural changes to thesis templates must be explicit user action. The thesis's current section inventory is the user's (or a prior skill's) intentional state; `/deepen` deepens existing sections, never authors new ones from nothing.
 
-If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 evaluates only sections that actually exist and scores their weakness. The Phase 2 scoring loop must exclude `## Legacy Callouts` (owned by `/archive-callouts`) and `## Log` (Tier 2 append-only) from weakness candidates regardless of their contents.
+If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 evaluates only sections that actually exist and scores their weakness. The Phase 2 scoring loop must exclude `## Legacy Callouts` (owned by `/archive-callouts`), `## Log` (Tier 2 append-only), and `## Mental Models` (self-populates via `/sync` per `_shared/mental-models-section.md`; scaffold-empty by design — never auto-target it; deepen it only when explicitly named: `/deepen TICKER Mental Models`) from weakness candidates regardless of their contents.
 
 ## Phase 1: Load Context
 
@@ -115,6 +115,7 @@ Tell the user which section you're targeting and why before proceeding.
 - `Key Non-consensus Insights`
 - `Bull Case` (when the deepen framing is comparative — user mentioned peers or competitive dynamics)
 - `Bear Case` (same condition as Bull Case)
+- `Mental Models` (peer Mental Models sections show which model triggers cluster peers flagged — useful comparative primer)
 
 NOT applicable (SKIP Phase 2.5 entirely if target_section is one of these):
 - `Summary`, `Business Model & Product Description`, `Key Metrics`, `Outstanding Questions`, `Catalysts`, `Risks`, `Conviction Triggers`, `Related Research`, `Log`, `Legacy Callouts`
@@ -263,6 +264,8 @@ Append a provisional Log entry to the thesis BEFORE rewriting the section. This 
 - **Integrate, don't append** — the section should read as a coherent whole, not show seams between old and new content
 - Bold any genuinely new data points or insights not previously in the vault
 - Add wikilinks to any vault notes referenced
+
+**Mental Models side-update** (per `_shared/mental-models-section.md`): if Phase 3 research activated, retired, or materially changed a `/Mental Models` trigger read for this thesis, ALSO merge it into the `## Mental Models` section as a secondary edit (the Phase 4 whole-file snapshot already covers it; no extra snapshot needed). Skip when the target section IS `## Mental Models` (the 5b rewrite already handles it) or when no new trigger fired. Note the side-update in the 5c Log entry.
 
 ### 5c: Finalize Log entry
 After the rewrite succeeds, use `Edit` to atomically replace the provisional Log entry with the final version:

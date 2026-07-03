@@ -215,6 +215,12 @@ The market pays a premium-compounder multiple for KLA (30-36x forward) and near-
 - **The metrology/inspection distinction is the single most important and least-appreciated split.** Inspection (data-accumulation moat) is KLA-monopolistic and bundling-resistant; metrology (physics-and-modeling) is contestable and bundling/ML-exposed. Investors treating "process control" as one homogeneous high-quality bucket are mispricing the structurally weaker metrology half — which is most of what the trio actually sells.
 - **The AP collision resolves on resolution, not price.** Because a missed defect at HBM4/hybrid-bonding scraps a multi-thousand-dollar stacked package, the highest-resolution inspector wins the highest-value work regardless of price — and that is KLA. The specialists' durable territory is therefore the cost-sensitive, lower-stakes mid-range, which grows in volume but not in pricing power. This reframes the trio's AP exposure from "high-margin growth" to "high-volume, margin-capped growth."
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Theses/KLA - KLA Corporation]] — anchor thesis; process-control intensity growth algorithm, competitive set, 5 non-consensus insights

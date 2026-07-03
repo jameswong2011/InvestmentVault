@@ -249,6 +249,7 @@ For each piece of content (regardless of input mode):
 - Check if a thesis already exists for this ticker — this determines the note's framing
 - **Source word count** (required for Step 2 budgeting + Post-write #5): compute `source_words` = word count of the extracted source content (post-defuddle for URLs, post-read for files; exclude frontmatter, fenced code blocks, embedded image markdown, navigation chrome). Retain this number — it determines the research note body length floor and whether `## Key Segments` is mandatory.
 - **Framework detection** (triggers the optional `## Framework / Mental Model` section in Step 2): determine whether the source introduces a named analytical framework, scoring scheme, sliding scale, classification typology, or novel mental model. Signals: explicit labeling ("the X framework", "a way to think about Y", "sliding scale", "scoring methodology"), enumeration of named components (metrics 1–N, categories A–D, tiers, axes), or a methodology applied to a class of things. If yes, Step 2 includes the `## Framework / Mental Model` section.
+- **Mental-model trigger identification** (per `_shared/mental-models-section.md` — feeds `/sync`; ingest itself NEVER writes thesis/sector bodies): read `[[Generalist - Overview]]` plus the matching `Industry -` / `Lens -` files (apply the READING PROTOCOL; **batch mode reads them ONCE and caches across the inbox**) and determine which `/Mental Models` triggers this source activates for the affected ticker(s)/sector. Record any fired triggers compactly where natural in the research note (within `## Thesis Delta` / `## Contradiction Check`), and carry them to Step 4 reporting so the subsequent `/sync` merges them into the thesis/sector `## Mental Models` section.
 - **Duplicate check**: Grep Research/ frontmatter for matching `source:` URL. If an existing note has the same source URL, skip this item and report: `⚠️ Duplicate source — already ingested as [[Research/existing-note]]`
 
 ### Step 2: Create Research Note
@@ -314,6 +315,7 @@ For each processed item, report:
 - **Strong-match theses** (explicit ticker/topic — `/sync` will propagate): [list from Step 3, or "none"]
 - **Weak-match via shared sector** (graph primer — review before `/sync`): [list from Step 3.5 `sector_candidates`, or "none"]. If any are analytically relevant, add `[[Theses/...]]` wikilinks to the research note body before `/sync`, or `/sync` will not propagate to them.
 - **Weak-match via shared macro** (graph primer — review before `/sync`): [list from Step 3.5 `macro_candidates`, or "none"]. Same action note.
+- **Mental-model triggers fired** (per `_shared/mental-models-section.md` — `/sync` will merge these into the affected thesis/sector `## Mental Models` section): [list `<model> · <trigger> — <one-line read>`, or "none"]
 - **Sector Notes requiring `/sync`**: [list sectors that should incorporate this research]
 - **Content-quality advisories** (if any non-blocking failures from #5–#8 fired on local files): list the specific check + advisory message
 

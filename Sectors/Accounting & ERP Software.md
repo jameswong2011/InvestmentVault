@@ -228,6 +228,12 @@ The market splits into five archetypes by buyer tier, deployment model, and inte
   5. **AP automation rail revenue compression by stablecoins** — multi-year tailwind risk for Bill.com, Tipalti, AvidXchange; vendors that absorb stablecoin rails fastest preserve workflow margin while ceding payment-rail margin. Bill.com's Stripe partnership and Tipalti's USDC integration are the early adaptations.
   6. **CFO generational turnover as the slow tailwind for cloud-native vendors** — the cohort effect favoring Workday + NetSuite + Microsoft Dynamics over SAP + Oracle on-prem is real but moves slowly; investable via 5-7 year holding period rather than near-term thesis.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2025-09-24 - WTC - CargoWise vs In-House vs ERP Analysis]] — TCO analysis of CargoWise vs in-house build vs SAP/Oracle ERP for freight forwarders; the empirical case study of vertical ERP defeating horizontal ERP within a vertical
 - [[Research/2025-09-24 - WTC - WiseTech 24-Month Strategic Review]] — competitive dynamics including SAP TM, Oracle OTM as horizontal-ERP transportation modules vs CargoWise vertical positioning

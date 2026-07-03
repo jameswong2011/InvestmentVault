@@ -3,8 +3,6 @@ name: catalyst
 description: Extract and maintain a cross-portfolio catalyst calendar from all thesis notes. Use when user says "catalyst", "calendar", "what's coming up", "upcoming events", or "what could move the portfolio".
 model: opus
 effort: max
-context: fork
-agent: general-purpose
 allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * defuddle * cp * mkdir * curl * grep * sed * cat * jq * printf * awk * rm * ls *)
 ---
 
@@ -14,7 +12,7 @@ Build a comprehensive catalyst calendar aggregating every upcoming event across 
 
 ## Progress Reporting Contract (MANDATORY)
 
-`/catalyst` runs in a forked subagent (`context: fork`), which historically returns nothing to the user's main session until the final Phase 6 report — a 5–30+ minute silent window during which errors, retries, FMP timeouts, and degraded-mode downshifts are invisible. To close this gap, emit a one-line status message **as plain text between tool calls** (not buried inside Bash `echo`, not as a tool argument) at every phase boundary and every retry / error / degraded-path event.
+`/catalyst` is a long-running command (~71 thesis + macro reads, FMP fetches, retries) whose intermediate work would otherwise stay silent until the final Phase 6 report — a 5–30+ minute silent window during which errors, retries, FMP timeouts, and degraded-mode downshifts are invisible. To close this gap, emit a one-line status message **as plain text between tool calls** (not buried inside Bash `echo`, not as a tool argument) at every phase boundary and every retry / error / degraded-path event.
 
 **Why plain text, not Bash echo**: Bash `echo` is visible but rendered inside collapsed tool-output blocks. Plain text between tool calls is the primary signal the user reads to track progress mid-run. Keep the existing `echo` statements (they're the audit trail) AND add plain-text emits (they're the live progress feed) — both are required.
 
@@ -213,7 +211,7 @@ Per thesis:
 
   Query pattern: `"[Company name] next earnings date 2026"`.
 
-  **Hard cap: 20 WebSearches per run, prioritized by conviction.** Empirically (2026-05-23 incident) an uncapped 64-ticker fallback storm took >9 minutes and exceeded the subagent kill budget, leaving Phase 4 unreached and a stale `.vault-lock` orphaned at vault root. The cap bounds worst-case Phase 2b runtime at ~3 minutes (20 calls × ~10s each, internally rate-limited by the WebSearch backend) so total `/catalyst` runtime stays under the 5-minute lock budget even in full-fallback mode.
+  **Hard cap: 20 WebSearches per run, prioritized by conviction.** Empirically (2026-05-23 incident) an uncapped 64-ticker fallback storm took >9 minutes and exceeded the host kill budget, leaving Phase 4 unreached and a stale `.vault-lock` orphaned at vault root. The cap bounds worst-case Phase 2b runtime at ~3 minutes (20 calls × ~10s each, internally rate-limited by the WebSearch backend) so total `/catalyst` runtime stays under the 5-minute lock budget even in full-fallback mode.
 
   **Prioritization (when queue size > 20)**:
   1. Sort by `conviction` (high → medium → low → unset)
@@ -311,11 +309,11 @@ Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — those are
 📍 **Emit at Phase 6 start**: `📍 Phase 6: releasing lock and composing final report`
 ✅ **Emit after lock release**: `✅ Phase 6: lock released cleanly (token <token>)` — or `⚠️ Phase 6: lock token mismatch — leaving lock in place` if §6.1 found a mismatch.
 
-**Runs in forked subagent** (`context: fork`) — main conversation context is shielded from the ~71 full thesis + macro reads (~400K tokens at current vault scale). Only the Phase 6 report text below returns to the user's main session; `_catalyst.md` persists to disk as the authoritative calendar for later reading.
+**Runs in the main conversation** (no fork) — the Phase 6 report renders directly in chat. The ~71 full thesis + macro reads (~400K tokens at current vault scale) consume main-session context, so run `/catalyst` in a fresh conversation when context budget matters; `_catalyst.md` persists to disk as the authoritative calendar for later reading.
 
 ### 6.1 Lock release (MUST run before the report, even if Phases 1–5 had non-fatal errors)
 
-Issue the lock-release Bash block FIRST in Phase 6 — before composing the report. The trap-on-INT/TERM cleanup from Phase 0.1 only fires on signal-based termination; if the subagent is killed via SIGKILL (host timeout enforcement) or exits cleanly, the trap never runs. Explicit release here is the primary cleanup path; trap is the fallback.
+Issue the lock-release Bash block FIRST in Phase 6 — before composing the report. The trap-on-INT/TERM cleanup from Phase 0.1 only fires on signal-based termination; if the run is killed via SIGKILL (host timeout enforcement) or exits cleanly, the trap never runs. Explicit release here is the primary cleanup path; trap is the fallback.
 
 ```bash
 # Verify token ownership before deletion (Procedure 1.5 — never delete a lock you don't own)

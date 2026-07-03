@@ -176,6 +176,12 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 9. **Culture and talent:** Internal sentiment deterioration documented on Blind/Glassdoor may impair recruitment of top AI engineers in a hyper-competitive market.
 10. **Regulatory:** Armis deal faces potential CFIUS scrutiny given critical infrastructure customer base; EU AI Act compliance costs; potential antitrust review as NOW expands into adjacent markets.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]] — AI coding tool disruption risk analysis: 10-15% (3yr), 25-30% (5yr), 40-50% (10yr) probability; TAM erosion not replacement
@@ -191,6 +197,7 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 - [[Theses/NET - Cloudflare]] — Enterprise software platform expansion dynamics and competitive positioning
 - [[Sectors/Enterprise Workflow AI & Automation]] — Sector-level dynamics and cross-company analysis
 - [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: BDC software-loan markdown share (~33% of TCPC Q1 markdowns) is credit-market echo of AI-productivity-disruption thesis; NOW orchestration platform positioned as enterprise-AI beneficiary against cash-burning private-credit-financed peers
+- [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]] — Macro lens: SemiAnalysis "Captured AI Output" (AI work still charged the same price) is the only Dark-Output bucket that surfaces as visible GDP/margin, and it requires pricing power. NOW's per-seat→Foundation/Advanced/Prime consumption pivot is the capture test for the seat-compression question — whether AI productivity accrues as NOW margin or leaks to customers as untracked surplus
 
 ## Log
 
@@ -213,3 +220,9 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-06-05 (/sync)
+- [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]]: SemiAnalysis "Dark Output" frames NOW's seat-compression question as a "Captured AI Output" problem — pricing power converts AI cost-deflation into visible margin vs. leaking to customers as surplus; the per-seat→consumption pivot is the capture test. Conviction unchanged (high) — macro lens on existing tension, no new operating signal.
+
+### 2026-06-11 (/sync)
+- [[Research/2026-06-11 - PLTR - Karp on Frontier Lab Discontent - news]]: Tangential — PLTR CEO's "implementation > model layer" + enterprise frontier-lab discontent is a (self-serving) datapoint for the Captured-AI-Output / deployment-value theme underpinning NOW's seat-vs-consumption thesis. Conviction unchanged (high) — PLTR-centric, no NOW operating signal.

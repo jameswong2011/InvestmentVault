@@ -335,6 +335,12 @@ Circle remains a leveraged bet on interest rates with a permanently value-destru
 8. **Arc blockchain execution risk** — Building a new L1 against Ethereum, Solana, and dozens of L2s is extraordinarily competitive.
 9. **SBC dilution** — $424M in SBC in FY25 alone; ongoing dilution pressure from a recently-IPO'd company.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]] — S-1 deconstruction: 99% reserve yield revenue, $908M Coinbase payout, Shopify/Stripe/Base integration blueprint, Stripe disintermediation risk
@@ -347,6 +353,7 @@ Circle remains a leveraged bet on interest rates with a permanently value-destru
 - [[Stablecoin Regulation as Geopolitical Infrastructure]] — Stablecoin regulatory framework (GENIUS Act, MiCA); CRCL as primary equity expression
 - [[Agentic Internet]] — Macro framework: CRCL is the primary equity expression at layer-5 (programmable-money settlement) of the 8-layer stack; 99% USDC share of x402 settlement and Programmable Wallets as agent-wallet substrate position CRCL as the structural payments rail for agent-mediated commerce; macro estimates ~$70B agent-payment TAM at 5% e-commerce capture by 2030, reinforces CRCL Insight #3 (x402 bypasses Coinbase distribution at 50-60% higher gross margin)
 - [[Sectors/Blockchain & Stablecoins]] — Sector Note with stablecoin competitive landscape
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]] — Cross-reference (x402 / agentic-payment rails): Cloudflare co-founded the x402 Foundation with Coinbase & Stripe and serves 2B HTTP 402 responses/day at the network edge; validates the agentic-payment-rail adoption underpinning USDC's 99% x402 settlement share (Insight #3)
 
 ## Log
 
@@ -368,3 +375,6 @@ Circle remains a leveraged bet on interest rates with a permanently value-destru
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-06-10 (/sync)
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]]: NET Investor Day quantified x402 adoption (Cloudflare serving 2B HTTP 402/day; x402 Foundation co-founded w/ Coinbase & Stripe) — cross-validates the agentic-payment-rail thesis underpinning USDC 99% x402 settlement (Insight #3). Conviction unchanged (medium) — supportive third-party datapoint, no CRCL-specific delta.

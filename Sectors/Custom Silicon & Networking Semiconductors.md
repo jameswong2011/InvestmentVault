@@ -312,6 +312,12 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 
 **Non-consensus insight — Photonic Fabric is the asymmetric MRVL upside**. The $3.25B Celestial purchase price prices the Photonic Fabric acquisition as a lottery ticket; the $500M Q4 FY28 run-rate guide prices it as already-validated. Both framings can be wrong in opposite directions. If memory-disaggregation becomes the 2027–2028 rack primitive (the architectural primitive change required to break the per-chip HBM ceiling for trillion-parameter MoE inference and reasoning workloads), Photonic Fabric is the only merchant scale-up optical option outside Nvidia NVLink — and $500M understates by orders of magnitude. If rack architectures stabilise on copper + NVLink + HBM-on-package for three more generations, $500M is the ceiling not the floor and the $3.25B faces goodwill impairment. The asymmetry favours MRVL on a sufficiently long horizon (5+ years) regardless of the standard-vs-photonic-fabric race in 2027–2028 because photonic interconnect is on the architectural roadmap of every hyperscaler — but the 24-month execution timeline depends on the same advanced-packaging team that mis-executed Trainium 3.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2025-11-27 - Broadcom Data Center Opportunity]] — Custom ASIC SAM $60–90B by FY2027; 80–90% Ethernet switching silicon share; 9–12 month technology lead over competitors; Tomahawk 5/6/Ultra product family framing
 - [[Research/2025-11-27 - Broadcom Ethernet Networking Position]] — Arista #1 data-center switch revenue Q1 2025 (21.5%); Nvidia Spectrum-X +760% YoY; Cisco share collapse 78% (2012) → 18% (Q1 2025); Jericho4 + Thor Ultra 800G AI NIC positioning
@@ -327,6 +333,7 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 - [[Research/2026-04-23 - NVDA - Stress Test]] — Hyperscaler ASIC share gain (87%→75% Nvidia GPU share over two years); custom-silicon TAM expansion context; relevant to both AVGO and MRVL ASIC franchise growth assumptions
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI-capex timing mismatch framework; J.P. Morgan $650B annual AI revenue threshold; custom ASIC market share data; sector-cycle derate framing applies to MRVL forward P/E 36× → trough 22–24× compression risk
 - [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]] — Intel publicly named **AVGO and MRVL as EMIB engagement targets** for AI-ASIC packaging on 18A/18A-P; EMIB-T H2 2026 launch (120×180mm 24-HBM-stack vs CoWoS-L 100×100mm 8-stack) priced "low hundreds" vs $900–1,000 CoWoS Rubin-class — first quantified cost-arbitrage second-source path for hyperscaler ASIC customers facing TSMC CoWoS 35K→130K WPM allocation squeeze (NVDA 60–65% pre-booked); Microsoft Maia 2/3 ("Griffin") on Intel 18A under $15B contract is direct competitive pressure on AVGO/MRVL Microsoft custom-ASIC narrative
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Google/Broadcom TPU v7 beat NVDA/AWS to N3 (production 2025); Tomahawk 6 / Spectrum 6 + Rubin 1.6T scale-out 200G optical DSP on the binding N3 node; custom-ASIC HBM content rising 8-Hi→12-Hi; whoever secures silicon captures deployed compute
 
 ## Log
 ### 2026-04-22
@@ -350,3 +357,6 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 
 ### 2026-06-03 (/sync)
 - [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: Custom silicon (Trainium/TPU via Broadcom/Marvell/Alchip/Mediatek) is the binding ceiling on Nvidia value-based pricing — Amazon/Google pay lower ASIC design-partner margins than Nvidia charges, so the merchant-vs-ASIC cost gap caps how far Nvidia can reprice (Mythos not trained on Nvidia). Reinforces ASIC-as-pricing-discipline framing. No sector conviction change.
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Custom-silicon read — Google/Broadcom TPU v7 beat NVDA/AWS to N3 (production 2025), Tomahawk 6 / Spectrum 6 + Rubin's 1.6T scale-out 200G optical DSP on the binding N3 node; custom-ASIC HBM content rising 8-Hi→12-Hi into 3x→4x crowd-out. XPU volume gated by the same N3/HBM squeeze as merchant GPUs; procurement-as-moat favors the largest pre-committers. No sector-conviction change.

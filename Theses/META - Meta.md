@@ -235,6 +235,12 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 7. **Muse Spark strategic ambiguity**: Proprietary "superintelligence" tier may alienate the open-source developer ecosystem built on Llama trust — undermining the "commoditize the complement" strategy
 8. **Competitive dynamics**: TikTok capturing ~4-5% of global ad spend at lower CPMs; Amazon's purchase-intent data advantage in direct-response; Google's AI Overviews could eventually improve search ad ROI and slow Meta's share gains
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]] — Vertiv's OCP committee co-development with Meta; cooling infrastructure for AI data centers
@@ -242,6 +248,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 - [[Sectors/Social Platforms & Digital Advertising]] — Sector Note
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch; hyperscaler capex fatigue dynamics
 - [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]] — FTC $930K deception settlement debunks the "apps listen via microphone" ad-targeting myth (Cox lacked the capability, resold data-broker email lists); marginally deflates a recurring Instagram reputational overhang
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: MTIA on N3 at "much lower volumes"; immaterial to the ad-platform thesis but flags Meta's accelerator program is gated by the same N3/HBM constraint as TPU/Trainium
 
 ## Log
 
@@ -274,3 +281,6 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 ### 2026-06-03 (/sync)
 - [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]]: Meta is an anchor neocloud customer — $27B Nebius ($12B dedicated + $15B flexible) + ~$14B CoreWeave commitments quantify Meta's AI-capex externalization; the $15B flexible tranche is MTIA in-housing option value. Conviction unchanged (medium), contextual capital-allocation datapoint.
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: MTIA noted on N3 at "much lower volumes" — gated by the same N3/HBM silicon shortage as TPU/Trainium. Immaterial to the 97%-ad-revenue thesis; relevant only to the MTIA-in-housing capex option (the $15B flexible CoreWeave tranche). Conviction unchanged (medium).

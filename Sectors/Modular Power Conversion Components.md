@@ -218,6 +218,12 @@ Vinciarelli on Q1 2026 call: "frankly ill-conceived" referring to 800V→6V; "Vi
 - **TI / ADI / Infineon / Renesas are diversified industrials with AI-density tail exposure** — automotive cross-subsidy makes them less levered to AI capex peak risk but also caps upside on AI-density premium.
 - **Watch for 2027 LEO Federal Circuit decision + MPS R&D disclosures + Rubin Ultra reference design partner** as the three critical 2026–2028 tells.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Research/2026-04-28 - VICR - Vertical Power Delivery Technical Architecture and Q1 2026 Earnings - deep-dive]] — Engineering deep-dive on FPA + SAC + ChiP, CPO–VPD thermal coupling, 800V→6V architectural rebuttal, Q1 2026 capacity / royalty disclosures; primary technical anchor for §Industry history → AI-density inflection, §Product level analysis (2nd-gen VPD specs), §Macro shifts #1, #2, #3

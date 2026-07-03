@@ -157,6 +157,12 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 6. **India macro and regulatory risk**: NBFC liquidity conditions, RBI policy changes, SEBI regulatory shifts, and INR depreciation introduce country-level risks that are difficult to hedge from outside India.
 7. **Global private-credit allocation compression risk**: The May 2026 universal US BDC redemption-gating wave (Golub Capital, Blue Owl OTIC/OCIC, BlackRock TCPC 19% NAV cut + 7.6% non-accrual) signals fragile LP confidence in private credit globally. If LPs cut overall PC allocation in 60/40 rebalances rather than rotating geographically, EAAA's $843M YTD fundraising pace and 14–18% gross IRR positioning loses force regardless of relative-attractiveness arguments — bullish "rotation to India" channel and bearish "global compression" channel are not yet distinguishable from public datapoints. Q1 FY26 EAAA LP-flow geography is the immediate falsifying signal.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2025-12-26 - EDEL - Edelweiss Financial Group Market Share]] — Detailed market share analysis across segments (MF, alternatives, ARC, lending) with competitive positioning and ICRA credit commentary

@@ -309,6 +309,12 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 - **→ CLOSE if**: 14A development is publicly slowed or cancelled by H1 2027 (per Lip-Bu Tan's own conditional framing) OR Coral Rapids architectural disclosure slips beyond 2028 OR IFS Q4 2026 quarterly loss exceeds $3B (margin deterioration despite revenue scaling) OR Paisner shareholder lawsuit succeeds in voiding the USG 10% stake (removes structural floor).
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Compute & AI Compute Accelerators]] — sector MOC; AMD direct competitor sharing the same sector frame; Intel competes across CPU, AI accelerator dimensions
@@ -330,6 +336,7 @@ The structural conflict (IDM running merchant foundry while competing with found
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] — Jensen's CEO testimony on supply-chain depth as primary moat; relevant to Intel Foundry's structural challenge to recreate CEO-level allocation across 20+ upstream suppliers
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: enumerates Intel's 4-stage CPO roadmap (OCI chiplet 4T bidir → glass optical bridge → 3D vertical coupling 2027) — roadmap context, no thesis-level delta
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis CPU landscape corroborates the structural-second-source frame and adds two new datapoints: 8-channel Diamond Rapids-SP cancelled (cedes highest-volume server market to AMD Venice SP8 until 2028); Clearwater Forest only +17% vs Sierra Forest on a low-yield Foveros-Direct stack ("yield-learning vehicle, not volume"); the SMT-removal causal chain (Spectre/Meltdown 2018 → Lion Cove → Diamond Rapids) made explicit
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: capacity scarcity frames the foundry-diversification tailwind (Samsung Tesla AI5/AI6 dual-track, Samsung into Nvidia DC supply chain, admin backing) + EMIB as a 2.5D-easing alternative — but the article reads diversification as TSMC-capacity-driven, in tension with the thesis's "Intel wins are geopolitical/hedge not overflow" Insight #3; Intel also an N3 client customer (Lunar/Arrow/Nova Lake)
 
 ## Legacy Callouts
 
@@ -360,3 +367,6 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 ### 2026-06-02 (/sync)
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: SemiAnalysis CPU landscape corroborates the §Insight #2 structural-second-source frame and adds two new adverse datapoints — (1) **8-channel Diamond Rapids-SP cancelled**, stranding the highest-volume server market on Granite Rapids while AMD's *new* 8-channel **Venice SP8** (128 Zen6c) attacks the enterprise stronghold exactly as Intel exits it; (2) **Clearwater Forest only +17% vs Sierra Forest** on a low-yield Foveros-Direct stack — read as a "yield-learning vehicle, not volume" (consistent with Intel barely mentioning it on the Q4'25 call). Reinforces existing Bear Case (no competitive P-core response ~20 quarters); no body edit (thesis already deeply covers the agentic-CPU frame). Conviction unchanged (medium, bearish lean).
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Double-edged read on the silicon shortage. (+) Capacity scarcity at TSMC is building foundry-diversification momentum (Samsung Tesla AI5/AI6 dual-track + Samsung into Nvidia's DC supply chain, admin backing for Intel) and EMIB as a CoWoS-easing 2.5D alternative. (−) The article frames diversification as TSMC-*capacity*-driven, in direct tension with the thesis's non-consensus Insight #3 (Intel wins are geopolitical/hedge, NOT TSMC-overflow); and Intel-the-customer (Lunar/Arrow/Nova Lake on N3) is exposed to the same squeeze. Net neutral; conviction unchanged (medium, bearish lean).

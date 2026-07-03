@@ -186,6 +186,12 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 7. **Algorithmic efficiency compounding:** Genuine bear scenario if GPU count per data center drops faster than AI adoption grows
 8. **Japanese photo-materials supply chain disruption (new, 2026-04-22):** Iran War Hormuz blockade disrupts Japanese PGME/PGMEA solvent supply → threatens PR/BARC/SOH production at Shin-Etsu/TOK/JSR/Fujifilm consumed by the Flash Ventures JV fabs (Yokkaichi + Kitakami). SNDK is 49.9% JV partner with Kioxia; any JV fab-output slippage directly hits SNDK's cost-plus wafer access. PCN requalification cycle ~1 year for standard nodes, longer for BiCS10 332L. Korean alternatives (Chemtronics, Jaewon Industrial) require qualification. See [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]].
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 - [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]] — Comprehensive SanDisk AI storage thesis, HBF technology deep dive, financial analysis
 - [[Research/2026-04-15 - SNDK - Investment Evaluation]] — Post-separation assessment, competitive positioning, HBM exclusion analysis

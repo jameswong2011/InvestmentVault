@@ -404,6 +404,12 @@ Cotality (née CoreLogic) is the strategic wildcard: privately held by Stone Poi
 9. **Net revenue retention (110-115%) is the right moat metric, not gross renewal (92%)** — CoStar's headline 92%+ renewal masks 18-23 ppt of seat-and-tier expansion driving total NRR to 110-115%. Software peers at 110-130% NRR (Snowflake, Datadog, MongoDB) trade at 12-18x sales; CoStar at 4.7x P/S reflects a CRE-cyclicality discount that mechanically misprices retention math which is independent of CRE transaction volumes.
 10. **Asset-class dispersion turns CRE cyclicality into a stealth tailwind for CoStar** — downtown-CBD office collapse (22% vacancy) is treated as a macro headwind, but distressed reclassification, ownership turnover, and lease-comp re-pricing create *more* research work, not less, expanding the data moat per calendar year. Aggregate CRE cycle metrics conflate vendor exposure across nine asset classes that move on independent cycles — the right exposure framework is segment-weighted, not aggregate.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Research/2026-03-26 - CSGP - CoStar Group Investment Evaluation]] — Grok investment evaluation (Homes.com monetization, Matterport integration, CRE competitive position)

@@ -213,6 +213,12 @@ Where non-consensus insights emerge:
 
 7. **Capital return policy as competitive variable**: CSU's no-dividend / minimal-buyback posture is increasingly anomalous as deployment becomes capacity-constrained. The structural question: does CSU eventually break the no-dividend stance? Mark Leonard's historical letters indicated this would happen "only when reinvestment unavailable" — the moment this changes would signal deployment ceiling reached and regime change. Investors should watch for any shift in capital-allocation language in Mark Miller's first FY2026 shareholder letter (early 2027).
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Theses/CSU - Constellation Software]] — Primary thesis; Canadian decentralized VMS serial acquirer at MEDIUM conviction (draft).

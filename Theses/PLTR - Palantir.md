@@ -6,13 +6,14 @@ ticker: PLTR
 conviction: high
 sector: Enterprise Workflow AI & Automation
 source: Consolidated from Gemini Canvas (2), ChatGPT (2), Claude (4), Grok (1) research conversations + web research April 2026
+key_metrics_last_refreshed: 2026-06-29
 ---
 
 # PLTR — Palantir Technologies
 
 ## Summary
 
-Q4 2025: $1.41B revenue (+70% YoY), U.S. commercial +137%, Rule of 40 at 127%. FY2026 guided $7.19B (+61%) with $4.0B adjusted FCF. Palantir's Ontology architecture — a semantic intelligence layer with governed write-back to operational systems of record — is the critical differentiator. Unlike Databricks/Snowflake (analytical read-path) or ServiceNow (workflow automation), Palantir built the operational write-path first and added the data platform underneath, creating structural advantages in complex, regulated, mission-critical environments. The central tension remains valuation: even after a ~35%+ correction from the $207.52 ATH, multiples remain extreme. Forward PEG (~1.0-1.5) is cheaper than Snowflake (3.3x), and the defense revenue floor ($1.2B+ annually, anchored by $10B Army Enterprise Agreement and $1.275B Maven ceiling) provides downside protection pure-play commercial AI companies lack.
+Q4 2025: $1.41B revenue (+70% YoY), U.S. commercial +137%, Rule of 40 at 127%. Q1 2026 extended the beat-and-raise — $1.63B revenue (+85% YoY), U.S. revenue +104%, EPS $0.33 — with FY2026 guidance raised to $7.65-7.66B (+71%) and U.S. commercial to +120% (~$4.0B adjusted FCF). Palantir's Ontology architecture — a semantic intelligence layer with governed write-back to operational systems of record — is the critical differentiator. Unlike Databricks/Snowflake (analytical read-path) or ServiceNow (workflow automation), Palantir built the operational write-path first and added the data platform underneath, creating structural advantages in complex, regulated, mission-critical environments. The central tension remains valuation — but the terms shifted in June 2026: the worst month on record took the stock ~46% off the $207.52 ATH to a $106 52-week low, compressing the multiple to ~33x forward revenue (from ~52-79x trailing at authoring) even as Q1 fundamentals accelerated — a textbook multiple mean-reversion against a still-compounding business, amplified by three structural narratives now being priced (AI-agent / usage-based commoditization; European sovereignty rejections in France and the UK; a US defense CR freeze delaying federal revenue 6-9 months). The defense revenue floor ($1.2B+ annually, anchored by the $10B Army Enterprise Agreement and $1.275B Maven ceiling) still provides downside protection pure-play commercial AI companies lack. See [[Research/2026-06-29 - PLTR - June 2026 Sell-Off Through Mental Models]].
 
 ---
 
@@ -175,19 +176,19 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$240-355B | Mid-April 2026; volatile (tariff/DOGE sell-off from $207 ATH) |
-| Share Price | ~$100-148 | Closed $148.46 Apr 3; declined since; highly volatile |
-| EV/Revenue (trailing) | ~52-79x | On FY2025 $4.48B; depends on recent price |
+| Market Cap | ~$259B | Mid-April 2026; volatile (tariff/DOGE sell-off from $207 ATH) |
+| Share Price | $112.93 | Closed $148.46 Apr 3; declined since; highly volatile |
+| EV/Revenue (trailing) | ~49.2x | On FY2025 $4.48B; depends on recent price |
 | EV/Revenue (forward) | ~33-49x | On FY2026 guide $7.19B |
-| Revenue Growth | +70% YoY (Q4); +61% guided FY2026 | Accelerating from +29% FY2025 full year |
-| Gross Margin | ~81% | Q4 2025 estimate |
-| GAAP Operating Margin | 41% | Q4 2025 |
+| Revenue Growth | +56.2% YoY | FY2025 actual; Q1 2026 +85% YoY (re-accelerating) |
+| Gross Margin | 84.1% | Q4 2025 estimate |
+| GAAP Operating Margin | 38.1% | Q4 2025 |
 | Adj. Operating Margin | 57% | Q4 2025; difference is primarily SBC |
-| FCF Yield (trailing) | ~0.6-0.9% | FY2025 FCF >$2.2B / market cap |
+| FCF Yield (trailing) | ~1.0% | FY2025 FCF >$2.2B / market cap |
 | FCF Yield (forward) | ~1.1-1.7% | FY2026 FCF guide $4.025B / market cap |
 | Q4 2025 Revenue | $1.41B | +70% YoY; beat high-end guidance by 900+ bps |
-| Q1 2026 Revenue Guidance | $1.53-1.54B | ~+56% YoY implied |
-| FY2026 Revenue Guidance | $7.18-7.20B | +61% YoY; U.S. Commercial >$3.14B (>115%) |
+| Q1 2026 Revenue (actual) | $1.63B | +85% YoY; beat $1.53-1.54B guide (rpt May 4) |
+| FY2026 Revenue Guidance | $7.65-7.66B | +71% YoY (raised at Q1); U.S. Commercial >$3.224B (>120%) |
 | FY2026 Adj. FCF Guidance | $4.025B | +77% YoY |
 | Rule of 40 | 127% | Q4 2025 (revenue growth + FCF margin) |
 | Customer Count | 954 | +34% YoY |
@@ -213,7 +214,8 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 
 ## Bear Case
 
-- **Extreme valuation requires near-perfect execution**: Even after a 35%+ correction, trailing P/E of ~130-240x leaves zero room for growth deceleration, margin compression, or guidance misses; any quarter of sub-50% revenue growth likely triggers severe multiple compression
+- **Extreme valuation requires near-perfect execution**: Even after a ~46% correction to a $106 June 2026 low, trailing P/E of ~118x leaves little room for growth deceleration, margin compression, or guidance misses; any quarter of sub-50% revenue growth likely triggers severe multiple compression
+- **The June 2026 sell-off proves the valuation risk is not hypothetical**: a Q1 beat-and-raise (+85% revenue, U.S. commercial +104%) still produced the worst month on record (~−25-30%, fresh $106 low) because the multiple — not the business — was the position. Three structural bear narratives crystallized at once: European sovereignty rejections (France→ChapsVision; UK NHS Feb-2027 break-clause pressure + blocked £50M Met Police deal), the AI-agent / usage-based commoditization story (Anthropic winning first-time enterprise deals; Burry puts), and a US defense CR freeze delaying federal revenue 6-9 months. See [[Research/2026-06-29 - PLTR - June 2026 Sell-Off Through Mental Models]]
 - **Insider selling at ~$6M/day creates persistent downward pressure**: Scheduled or not, the aggregate selling pace exceeds institutional accumulation and creates a technical headwind that amplifies any fundamental weakness
 - **Customer concentration risk is acute**: Top-20 customers generate ~42% of revenue (~$94M average each); a single loss in this tier would not only impact financials but erode the "N of 1" narrative
 - **LLM commoditization narrows the Ontology moat over time**: Open-source models at 90%+ of frontier performance + "good enough" semantic layers from Databricks/Microsoft Fabric IQ could satisfy 80% of commercial use cases at a fraction of Palantir's cost, limiting TAM to the complex/regulated/defense niche
@@ -224,7 +226,7 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 
 ## Catalysts
 
-- **Q1 2026 earnings** (expected May 2026): $1.53-1.54B revenue guide; any beat-and-raise on U.S. commercial trajectory would validate continued hypergrowth
+- **Q1 2026 earnings** (reported May 4): beat-and-raise — $1.63B (+85%), U.S. commercial guide raised to +120%, FY26 to +71% — yet the stock fell ~7% on valuation. **Next test is Q2 2026** (expected early August): whether U.S. commercial sustains triple-digit growth and whether the European-sovereignty and defense-CR headwinds dent the international / federal lines
 - **NVIDIA Sovereign AI OS deployments ramping through 2026**: First production installations in NATO allies and Five Eyes nations could unlock large new government contracts
 - **ShipOS expansion beyond initial $448M**: Success at General Dynamics Electric Boat creates a playbook for the broader maritime industrial base and defense prime contractors
 - **Warp Speed adoption by additional industrial enterprises**: Manufacturing MES deployments at GE Aerospace, Boeing, Lear expanding into broader industrial categories
@@ -247,6 +249,22 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 9. **FDE model scalability**: 954 customers vs. 20,000+ peers; AI FDE and OSDK are designed to address this but remain unproven at scale
 10. **Macro/tariff risk**: Broad market sell-off driven by trade war escalation compresses all growth multiples regardless of company-specific fundamentals
 
+## Mental Models
+- **Models applied**: [[Generalist - Overview]] (always) · [[Lens - Automation & AI Readiness]] (PLTR is the archetypal context/ontology vendor) · [[Lens - Value Layer Monopoly]] (thesis rests on owning the semantic/intelligence layer). [[Industry - Semiconductors]] deliberately not applied — enterprise software/defense, no fab or hardware-process exposure.
+- **Triggers that fired** (each a hypothesis to test against this note's own evidence, not a verdict):
+	- *Value Layer Monopoly §3 · AI-era overlay — infrastructure vs application* — the crux. Is the Ontology a toll-collected **infrastructure** layer AI-enabled challengers must rent (moat widening), or a sophisticated **application** layer cheap intelligence now lets smaller teams assemble (moat dissolving)? Hypothesis: defense / air-gapped / certified deployment behaves as infrastructure (widening); the commercial ontology behaves as application (contestable) — the split maps almost 1:1 onto the bull vs bear case.
+	- *Automation & AI Readiness §7 · context-window down-weight* — the live kill-switch. If frontier context windows get large + cheap enough that curated ontologies become optional for ~80% of commercial use cases, the Lens B/C **commercial** moat compresses while the organizational / defense leg persists. Outstanding Q#5 restated as a falsification trigger — monitor model-context economics directly.
+	- *Automation & AI Readiness §2 · the moat is two moats, not one* — defense context (IL6 / FedRAMP, 20-yr ontology library, FDE patterns) passes the "what can't be bought with the same model + same money" test and is genuinely un-rentable; commercial context is more replicable (Fabric IQ "good enough"). Do not score moat durability as a single number.
+	- *Value Layer Monopoly §2 · layer-renter disqualifier* — sharpest structural test: PLTR runs on AWS / Azure / GCP / Snowflake / Databricks / NVIDIA. Does it pay rent to the compute layer below and sit hostage to its pricing? 84% gross margin says not squeezed today — but this is the disqualifier to monitor, not to assume away.
+	- *Generalist · data network effect vs scale economy* — is the "ontology-library flywheel" a genuine **data network effect** (cross-customer learning compounds) or a bespoke per-customer **scale economy** mislabeled as one? If ontologies are siloed per client, the moat is switching-cost (durable, non-compounding), not network-effect (compounding) — materially changes the terminal-value math.
+	- *Generalist · base rates / outside view (run adversarially)* — top-decile-or-rarer of software firms sustain >20% revenue CAGR for a decade off a $4.5B+ base; the FY2026 guide is +61%. The base-rate fade (toward 30–40% by FY27–28) is the thing the bull case must **beat**, not ignore; PLTR earns its multiple only as a *justified* outlier.
+	- *Generalist · mean-reversion vs trend-continuation* — the business can compound (trend) while the multiple mean-reverts — the "negative return even with strong execution" risk in Outstanding Q#1. Test which object is actually reverting: the fundamentals, or the ~36x forward-revenue multiple.
+	- *Generalist · reflexivity in high-growth equities* — SBC ≈ 35% of revenue + ~$6M/day insider selling means the talent / comp engine is partly reflexively dependent on an elevated share price; a deep, sustained drawdown could impair the FDE / JV expansion model — a feedback loop a static DCF misses.
+	- *Value Layer Monopoly §2 · political / geopolitical ceiling* — the binding constraint on the most dominant, strategically-salient layers is political, not economic; PLTR's defense / surveillance salience (IDF, NHS, ICE) is a tailwind under the current administration and a two-sided risk on a political turn.
+	- *Generalist (Expectations Investing) · isolate the single mispriced variable* — the re-rating hinges on U.S. commercial RDV conversion + NRR holding ≥~130%, not on defense (the floor, not the swing). Reverse-DCF endgame: today's ~$259B market cap needs ~$25–30B revenue / ~$10B FCF by ~2035 — plausible only if commercial hypergrowth persists well past the base-rate fade.
+	- *2026-06 real-world test (the sell-off)* — the June de-rate fired the **mean-reversion** (business +85% in Q1 vs the multiple −46% off ATH), **political-ceiling** (France→ChapsVision; UK NHS break-clause), and **crowding-already-priced** (Wolfe resumes *Neutral*: "valuation already reflects the outlook") triggers; the **application-layer / context-window** crux is now being *priced* via the Anthropic / usage-based commoditization narrative, though unproven in the numbers. The *US-commercial* falsifying datapoint did **not** fire (US commercial accelerated to +104%, guide raised +120%) — the bear is running through the political + valuation channels, not (yet) the moat-commoditization channel. Per [[Research/2026-06-29 - PLTR - June 2026 Sell-Off Through Mental Models]].
+- **Disconfirming check**: All three files converge bullish — Generalist's software-monopoly / pricing-power profile, Automation Lens B/C strong-fit, and a clean Value-Layer identification — and per the READING PROTOCOL that very agreement is the cue to hunt hardest, not to commit. (1) **Single falsifying datapoint**: one quarter of U.S. commercial NRR breaking below ~120%, *or* a marquee mid-market displacement to Microsoft Fabric IQ / Databricks "good enough" — either confirms the application-layer (moat-dissolving) read over the infrastructure read. *(2026-06 update: this datapoint has NOT fired — Q1 2026 US commercial accelerated to +104%, guide raised to +120%. The June sell-off ran through the political-ceiling + multiple-reversion channels instead; the moat-commoditization channel remains narrative, not data — keep watching NRR and any named enterprise loss to Anthropic / usage-based players.)* (2) **Base rate to beat**: sustaining >20% revenue CAGR for a decade off a $4.5B+ base is a top-decile-or-rarer outcome; ~$259B implies that *and* no net multiple compression — outlier status must be earned, not assumed. (3) **Crowding trap**: "context is the moat" is now consensus and richly priced at ~36x forward revenue; the Automation Lens's own warning is that the edge is gone where already priced — even a *correct* moat read is not alpha unless the variant perception is that the moat's **duration / width** (sovereign-AI + defense annuity) exceeds what consensus discounts. If that variant perception can't be stated, this is "quality but priced."
+
 ## Related Research
 
 - [[Research/2026-03-21 - PLTR - Gemini Strategy Canvas]] — Comprehensive strategy, product, financial, and valuation analysis (Gemini Canvas export)
@@ -264,6 +282,9 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 - [[AI Bubble Risk and Semiconductor Valuations]]
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates defense procurement (Maven, Warp Speed, Alpamayo, ShipOS); NATO sovereign AI expansion
 - [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: AI-driven margin compression on private-credit-financed software borrowers (TCPC ~33% of Q1 markdowns software-related); public-market platforms with strong FCF (PLTR Ontology) are the credit-cycle echo of the productivity-disruption beneficiary thesis
+- [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]] — Macro lens: AI output is real but largely unmeasurable; "Captured AI Output" requires pricing power. Supports PLTR as the deployment layer that makes enterprise AI output visible/capturable (Ontology governed write-back); PLTR's own value capture rests on consumption pricing + 139% NRR holding
+- [[Research/2026-06-11 - PLTR - Karp on Frontier Lab Discontent - news]] — Karp (CNBC): enterprises "unhappy" with frontier labs ("tokenmaxxing"), "implementation is where the value is" (next 7yrs), "most of Anthropic's public projects run on Palantir" — CEO-level color for the deployment-layer value-capture insight; self-serving source, Anthropic-on-PLTR claim unverified
+- [[Research/2026-06-29 - PLTR - June 2026 Sell-Off Through Mental Models]] — Why the worst month on record is multiple mean-reversion (Q1 beat-and-raise, ~−46% off ATH) amplified by three structural narratives (AI-agent commoditization, France/UK sovereignty rejections, US defense CR freeze); mental-models read of which bear channel is actually firing (political + valuation, not yet US-commercial commoditization)
 
 ## Log
 
@@ -301,3 +322,19 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-06-05 (/sync)
+- [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]]: SemiAnalysis "Dark Output" reframes the bubble's monetization gap as a capture (not output) problem — supports PLTR's deployment-layer "extract-ROI" positioning; value capture rests on Ontology pricing power + 139% NRR holding. Conviction unchanged (high) — macro framing, no direct PLTR signal.
+
+### 2026-06-11 (/sync)
+- [[Research/2026-06-11 - PLTR - Karp on Frontier Lab Discontent - news]]: Karp (CNBC) — enterprises "unhappy" with frontier-lab "tokenmaxxing," "implementation is where the value is," "most of Anthropic's public projects run on Palantir" — CEO-level corroboration of the deployment-layer value-capture insight. Conviction unchanged (high) — self-serving source, Anthropic-on-PLTR unverified, no new operating signal.
+
+### 2026-06-29
+- Mental Models populated: first-fill of §Mental Models via [[Generalist - Overview]] + [[Lens - Automation & AI Readiness]] + [[Lens - Value Layer Monopoly]] — 10 triggers logged as hypotheses-to-test (crux: AI-era infrastructure-vs-application split; kill-switch: context-window commoditization; adversarial: layer-renter + base-rate fade + crowding-already-priced). Conviction unchanged (high) — lenses, not verdicts.
+
+### 2026-06-29 (/numbers)
+- Numbers refresh: 7 metrics updated, 2 material (Revenue Growth re-based to FY2025 annual +56.2% from the Q4-+70%/+61%-guide composite; Gross Margin ~81%→84.1%, +3.1pp). Also MktCap ~$259B, Px $112.93, EV/Rev ~49.2x, GAAP op margin 38.1%, FCF yield ~1.0%. Snapshot: [[_Archive/Snapshots/PLTR - Palantir (pre-numbers 2026-06-29-203032)]]
+
+### 2026-06-29 (sell-off analysis)
+- Sell-off analysis: [[Research/2026-06-29 - PLTR - June 2026 Sell-Off Through Mental Models]] — June 2026 worst month on record (~−25-30%, $106 52-wk low, ~−46% off ATH) is multiple mean-reversion, NOT a fundamental break (Q1 was a beat-and-raise: +85% rev, US commercial +104%, FY guide raised +71%/+120%), amplified by AI-agent commoditization narrative (Anthropic), France/UK sovereignty rejections (ChapsVision; NHS Feb-2027 break-clause), and US defense CR freeze (federal revenue delay 6-9mo). Updated Summary / Bear Case / Catalysts / Key Metrics (Q1 actuals + raised guide); merged §Mental Models real-world test (political + valuation channels firing, not yet US-commercial commoditization).
+- Conviction unchanged (high) — **flagged for user `/status`**: risk/reward genuinely two-sided (fundamentals accelerated + multiple now ~33x fwd rev vs. sovereignty + commoditization risks crystallizing). Snapshot: [[_Archive/Snapshots/PLTR - Palantir (pre-selloff-update 2026-06-29-204412)]]

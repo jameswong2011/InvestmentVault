@@ -524,6 +524,12 @@ The investor consensus crystallized around five frames, each with internal tensi
 
 10. **Reels convergence on TikTok Shop is a 2027–2029 question, not a 2026 question.** Meta's economic incentives oppose convergence; structural execution gap is 18–36 months minimum even if incentives flip. In the interim, Shopify Audiences captures the cross-platform targeting cooperation upside on Meta's $60B Advantage+ Shopping ad inventory. Sector investors should treat Reels-vs-TikTok-Shop as parallel non-overlapping monetization layers through 2027, not a competition.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2026-04-15 - SHOP - Comprehensive Update April 2026 - deep-dive]] — Primary SHOP update covering FY2025 results, agentic commerce protocols (UCP/ACP), Winter '26 RenAIssance Edition, tariff impact, USDC integration, competitive dynamics
 - [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]] — Deep analysis of Shopify-Stripe-Coinbase USDC stablecoin integration architecture, authorize/capture smart contract protocol, USDC on-chain commerce adoption forecasts

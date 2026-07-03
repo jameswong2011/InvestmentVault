@@ -164,6 +164,12 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 - **→ LOW if**: Q3 2026 active-power build misses guidance by >20%, OR NBIS funds 2026 capex with a >15%-dilutive equity/convert raise in any 6-month window, OR AI-cloud adj EBITDA margin compresses below 35% on a quarterly basis.
 - **→ CLOSE if**: YE2026 active-power ramp misses by >30% (backlog conversion mechanically breaks), OR the Meta $15B flexible tranche is amended down / not drawn as MTIA ramps, OR NBIS funds the capex gap primarily via GPU-collateralized debt (the structural differentiation vs [[Theses/CRWV - CoreWeave]] collapses and it should be re-underwritten as a credit-risk position).
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 **Sector + macro context:**

@@ -169,6 +169,12 @@ North American duopoly with private-capital asymmetry and a fragmenting long tai
 
 7. **"Ski industry" is the wrong frame; destination-leisure real estate is the right one.** Modern ski-resort economics are dominated by real estate cross-subsidization (East West Partners, Replay, Extell-Mayflower). The correct comparison set is Trophy Properties + Club Med + Six Senses + Yellowstone Club — not ASC legacy operators. This re-framing elevates Alterra, Aspen, and Boyne into a higher-multiple peer set and clarifies why pure-operator public vehicles (MTN) cannot capture the terminal value in the model.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2025-12-15 - MTN - Gemini Stock Decline Canvas]] — Comprehensive structural analysis of MTN's valuation collapse: Alterra capital offensive vs Vail efficiency pivot, A-Basin strategic coup, #Epicalypse narrative, regional battlefield analysis, Deer Valley expansion, P/E de-rating from 35x to 18x
 

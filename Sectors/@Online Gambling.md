@@ -226,6 +226,12 @@ Operator response: pass-through to consumers (FanDuel/DraftKings $0.50 Illinois 
 
 **Most durable non-consensus thesis in the vault:** Kambi — B2B modular pivot positions against the dominant consensus of "B2B is dead post-DraftKings vertical integration" (see [[Theses/KAMBI - Kambi Group]]). The "boomerang" dynamic (FDJ UNITED, Hard Rock Digital, Superbet) and AI trading liquidity flywheel (Tzeract pricing 50% of network bets) directly falsify the consensus bear case without requiring heroic assumptions.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Theses/KAMBI - Kambi Group]] — B2B sportsbook platform thesis with detailed Kambi-specific analysis (FDJ "boomerang", Tzeract AI trading, Odds Feed+ modular pivot, 2026 World Cup catalyst)
 

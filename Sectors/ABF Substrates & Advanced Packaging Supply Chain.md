@@ -459,6 +459,12 @@ Assuming a thesis cluster gets built around this sector with $1M sector-budget a
 
 5. **The cumulative AI substrate capex cycle 2024-2027 ($8-10B across Ibiden + Unimicron + Nan Ya + AT&S + Shinko) is the largest substrate-industry capital cycle in history — and is barely sufficient to meet projected demand.** Industry capacity additions (~30-40% nameplate by 2027) are calibrated against AI substrate body-size growth that effectively reduces good-substrate-equivalent capacity per existing line. The result is structural tightness through at least 2027 + 2028 even in moderate-AI-demand scenarios. In a high-AI-demand scenario (Bain / JPM upside cases for AI revenue + capex), substrate capacity becomes the binding constraint in the entire AI compute supply chain — ahead of HBM, ahead of CoWoS, ahead of leading-edge wafer capacity. This is the structural pricing-power case that the market has not yet priced.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Sectors/Semiconductor Foundries]] — TSMC CoWoS roadmap + Intel Foveros / EMIB / EMIB-T + Samsung I-Cube context; the foundry-packaging franchises whose substrate consumption is documented in this sector note
@@ -475,6 +481,7 @@ Assuming a thesis cluster gets built around this sector with $1M sector-budget a
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — adjacent packaging equipment evolution context
 - [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — cross-sector competitive comparison between Ajinomoto (ABF dielectric materials) and Advantest (ATE / HBM final test) on ROIC × valuation × growth; documents the conglomerate-discount asymmetry vs Advantest's AI-purity premium (Ajinomoto group ~3.2× EV/Revenue vs Advantest 5.8×), ~75% shared HBM/AI-capex driver correlation, and the rare Electronic-Materials-segment ROIC parity with Advantest's consolidated ROIC that validates the segment-mispricing framing from a cross-sector peer-asset-quality angle
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Ajinomoto ABF confirmed (FY guided +28%, actual +31%, growth plan revised up, Gunma online Oct 2025); food-segment framing corrected (improving — seasonings up, frozen recovering — not "dragged by margin pressure")
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis: CoWoS "tight but easing" — front-end N3 wafer is now the dominant bottleneck (TSMC sizes packaging to N3 supply), 2.5D outsourceable to ASE/SPIL + Amkor, Intel EMIB gaining traction (Trainium, TPU); packaging no longer the binding AI constraint, substrate/ABF demand tracks accelerator unit volume
 
 ## Legacy Callouts
 
@@ -491,3 +498,6 @@ Assuming a thesis cluster gets built around this sector with $1M sector-budget a
 
 ### 2026-05-29 (/sync)
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: transcript-vs-thesis review registered. Ajinomoto ABF confirmed (FY guided +28%, actual +31%, growth plan revised up, Gunma online Oct 2025); thesis food-segment framing corrected (improving — seasonings up, frozen recovering — not "dragged by margin pressure"). No sector-framework change.
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: SemiAnalysis reframes the packaging layer — CoWoS is "tight but easing" now that front-end N3 wafer is the dominant bottleneck (TSMC sizes CoWoS to N3 supply; no point over-building ahead of front-end), 2.5D outsourceable to OSATs (ASE/SPIL, Amkor) and Intel EMIB gaining traction (Trainium, TPU). Binding constraint migrated packaging→silicon; substrate/ABF demand still tracks AI-accelerator unit volume. No sector-framework change (no active substrate thesis).

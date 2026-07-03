@@ -154,6 +154,12 @@ Equipment financing, operating leases, revolving credit, and crop insurance for 
 6. **Insider selling signal:** CEO May ($20.8M), CIO Kalathur ($12.3M), Fidelity (-19%) — the people with best visibility are reducing exposure. 32 insider sells vs 25 buys over trailing 12 months.
 7. **Valuation fragility:** At 30-36x trough earnings, there is no margin for error. The stock trades above Morningstar's fair value estimate. A de-rating to 15x on $16 EPS implies $240 — massive downside from current levels. The "tech premium" must be continuously earned through execution.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Sectors/Agriculture & Industrial Equipment]] — Sector Note

@@ -185,6 +185,12 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 
 → **CLOSE if**: any one of (a) Swedish Economic Crime Authority probe escalates to formal charges against named individuals OR (b) Sivers raises equity at >25% dilution within next 12 months OR (c) POET ELS partnership cancelled or materially restructured OR (d) Aeva (or whoever the LiDAR customer is) officially delays the announced ramp past 2029 OR (e) Photonics segment revenue declines YoY for two consecutive quarters during the 2026-2027 capacity-binding window when it should be growing fastest.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 **Sector / Cluster**:

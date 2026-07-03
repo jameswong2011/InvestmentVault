@@ -320,6 +320,12 @@ Huawei's 12% ESS share concentrated in China / Asia / Africa / LatAm; Madrid Con
 - [[Theses/META - Meta]] — Adjacent: confirmed top-4 hyperscaler design-win partner for Pure / Everpure
 - [[Theses/NVDA - Nvidia]] — Adjacent: DGX SuperPOD certification is the AI storage qualification gate; BlueField-4 ICMS is the new KV-cache tier
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2026-01-15 - PSTG]] — Comprehensive 10-section analysis: DirectFlash architecture, platform strategy, AI infrastructure, hyperscale opportunity, competitive landscape, financial analysis, ESG
 - [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]] — NAND supercycle data (+70–75% QoQ Q2 2026 contract, supply deficit through 2027), HBF viability, YMTC enterprise gap — direct input cost implications for every storage-array vendor

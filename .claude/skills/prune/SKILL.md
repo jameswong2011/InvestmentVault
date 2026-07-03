@@ -3,8 +3,6 @@ name: prune
 description: Systematically evaluate weak, stale, or low-conviction theses for upgrade, monitoring, or closure. Use when user says "prune", "kill list", "clean up theses", "what should I close", or "reduce portfolio".
 model: opus
 effort: max
-context: fork
-agent: general-purpose
 allowed-tools: Read Grep Glob Edit Write Bash(date * find * wc * mv * cp * mkdir * rm * grep * cat * sort * printf *)
 ---
 

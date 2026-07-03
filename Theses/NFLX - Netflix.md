@@ -232,6 +232,12 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 7. **Ad business execution**: In-house ad tech is less than one year old; CPM sustainability at scale, DSP integration depth, and fill rate expansion are all unproven at the targeted $9B by 2030 level.
 8. **Live events ROI uncertainty**: WWE Raw ($500M/yr), NFL, and boxing are expensive rights deals whose churn-reduction ROI is unmeasured and undisclosed.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 - [[Research/2026-03-21 - NFLX - Gemini Investment Case Canvas]] — Comprehensive streaming hegemon analysis; content economics, churn dynamics, production hubs, gaming strategy, valuation framework
 - [[Sectors/Video Streaming]] — Sector Note with NFLX positioning

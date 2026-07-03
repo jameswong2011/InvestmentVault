@@ -244,6 +244,12 @@ Specific drivers:
 
 → **CLOSE if**: USIM breach tail liability discloses ≥₩500B additional charges (e.g., EU GDPR fine + KR class action settlement) AND FY26 OP guidance cut materially below Yuanta's ₩1.8T — combined deterioration of recovery thesis.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Theses/000660 - SK Hynix.md]] — Sister company under SK Group (SK Square holds 20%); both benefit from Korean AI infrastructure build-out and Korea Discount narrative; SK Hynix is OpenAI Stargate HBM supplier vs. SKT's Stargate Korea AIDC role

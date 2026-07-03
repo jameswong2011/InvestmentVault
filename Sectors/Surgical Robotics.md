@@ -611,6 +611,12 @@ The strategic asymmetry: **ISRG's current ~85% global share concentrates in US/J
 
 7. **The GLP-1 second-order thesis is the single most underappreciated risk.** Direct bariatric impact (<3% of robotic) is contained and modeled. If GLP-1 broadly reduces obesity-related comorbidities → slower hernia, reflux, general surgery volumes → this is ISRG's US growth engine decelerating. The causal chain is 3–5 years; current guidance (13.5–15.5%) does not appear to model this tail.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2026-01-18 - Healthcare and Biotech Stock Screen]] — Initial healthcare screen that identified ISRG
 - [[Research/2026-01-21 - ISRG]] — Foundational ISRG thesis: financial architecture, dV5 ecosystem, China bifurcation, patent cliff, clinical evidence firewall

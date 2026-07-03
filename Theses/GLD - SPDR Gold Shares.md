@@ -227,6 +227,12 @@ Path: $4,708 → $4,200 (Warsh confirmation) → $3,800 (real yields break 2.5%)
 - OR: Fed hikes to >5.25% and core services CPI holds below 2.5% for 3 consecutive months (Volcker-analog credibility restoration invalidates debasement thesis)
 - OR: BRICS settlement unit pilot collapses publicly AND PBOC announces a pause in gold accumulation
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Sectors/Precious Metals]] — sector-level context on gold market structure, silver dynamics, mining tiers, GSR framework

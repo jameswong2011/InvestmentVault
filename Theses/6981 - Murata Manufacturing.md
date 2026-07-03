@@ -18,6 +18,11 @@ Consensus models Murata as a saturated passive-components supplier with growth p
 
 - **EV exposure is misclassified as auto-cyclical when it is share-expansion masquerading as cyclicality.** Murata holds ~50% global share of EV-grade MLCCs (high-temperature, automotive-qualified 1206/0805) versus ~33% across the broader MLCC market. EV BOM content is 3-5x ICE vehicles (~10,000 MLCCs per EV versus ~3,000 ICE). At BYD/Tesla/legacy-OEM EV unit run-rates, this segment is growing 20%+ even as global vehicle units stagnate. Sell-side models bucket this inside "Automotive" which carries a cyclical discount; the right framing is "secular content growth at majority share with pricing power tied to AEC-Q200 qualification barriers."
 
+> [!question] 2026-06-11 → Addressed 2026-06-11
+> **Prompt:** *Firm up the demand side breakdown on MLCCs by component level.*
+>
+> **Response:** Built per-platform component-level demand tables (AI rack 440k / EV 10k / iPhone 1,300 MLCCs) decomposing count by function × case size × voltage-temp class, each mapped to Murata share. Count-weighted share (~40% AI / ~34% EV / ~52% iPhone) runs below value-weighted (~48% / ~50% EV-grade / ~57%) because Murata over-indexes the high-ASP small-case + high-V slices — the bottom-up behind the 48% AI-MLCC share in the §Key Metrics forecast. Full analysis: §Business Model & Product Description → "MLCC demand breakdown by component level".
+
 > [!question] 2026-05-15 → Addressed 2026-05-15
 > **Prompt:** *Does Murata supply Chinese EV makers, or is there domestic alternatives for MLCCs that are more price competitive for the budget end of Chinese EVs.*
 >
@@ -88,6 +93,56 @@ Murata Manufacturing makes ceramic-based passive electronic components — predo
 | Industrial/Energy | ~12% | +5-8% | Power semis, solar inverters, robotics |
 | Consumer/Other | ~14% | -2% | TVs, wearables, audio; lower-margin commodity-case parts |
 
+**MLCC demand breakdown by component level** (per-platform, estimated from board teardowns + power-delivery-network norms — firms the headline counts of 440k/rack, ~10k/EV, ~1,300/iPhone): the demand-side question that moves the thesis is not how many MLCCs a platform consumes but *which kind*, because Murata's share runs ~50% in small-case low-voltage decoupling and auto-grade high-voltage parts versus ~15-20% in commodity infotainment/body sockets. Decomposing each platform by function × case size × voltage/temperature class:
+
+*AI rack (GB200 NVL72, ~440,000 MLCCs):*
+
+| Function | ~Count/rack | Typical case | Voltage class | Murata share |
+|---|---|---|---|---|
+| GPU/ASIC core decoupling (PDN) | ~190,000 (43%) | 0201/0402, 008004 near-die | ≤6.3V high-cap | ~40% |
+| HBM + CoWoS-S substrate decoupling | ~80,000 (18%) | 008004/0201 | ≤6.3V high-cap | ~47% |
+| VRM / power-stage filtering | ~60,000 (14%) | 0402/0603 | 6.3-25V | ~32% |
+| High-speed SerDes AC-coupling (NVLink/PCIe) | ~50,000 (11%) | 0201/008004 | ≤16V | ~42% |
+| DC-link / bus (48V → 250-1000V at 800VDC) | ~15,000 (3%) | 0805/1206 | 100-1000V | ~47% |
+| Clock / PLL / sensor / misc | ~45,000 (10%) | mixed | mixed | ~30% |
+
+The bleeding-edge 008004/01005 subset is ~5,000-10,000 of the 440k today — concentrated in the most space-constrained near-die and CoWoS-S substrate positions — and triples to 15,000-25,000 under 800VDC (structural force #5) as volumetric pressure forces case-size down and a growing fraction of the 0201/0402 bulk migrates to 008004.
+
+*Premium EV (~10,000 MLCCs):*
+
+| Function | ~Count/EV | Typical case | Voltage / temp | Murata share |
+|---|---|---|---|---|
+| Infotainment / cockpit / displays | ~3,500 (35%) | 0402/0603 | 85-105°C consumer | ~15-20% (contested) |
+| ADAS / radar / camera / sensor-fusion SoC | ~2,200 (22%) | 008004/0201 | 125-150°C auto | ~50% |
+| Powertrain inverter (SiC/IGBT gate-drive + DC-link) | ~1,300 (13%) | 0805/1206 hi-cap, 0402 gate | 630-1000V, 150°C | ~55% |
+| BMS / cell monitoring | ~1,000 (10%) | 0402/0603 | 125°C, safety-critical | ~50% |
+| OBC / DC-DC converter | ~800 (8%) | 0603/0805 | 250-650V | ~45% |
+| Body / lighting / 12V / misc | ~1,200 (12%) | 0603/0805 | 105°C commodity | ~15% (contested) |
+
+~47% of vehicle count (infotainment + body) is commodity where Sunlord/Walsin compete; the ~53% auto-grade balance (ADAS, inverter, BMS, OBC) is where Murata holds ~50% — matching the note's "50% of EV-grade MLCC" headline once the commodity slice is netted out. EV premiumization grows the auto-grade slices faster (§Industry Context → "Chinese EV exposure").
+
+*Smartphone (iPhone 17, ~1,300 MLCCs):*
+
+| Function | ~Count/phone | Typical case | Murata share |
+|---|---|---|---|
+| AP/SoC core decoupling | ~450 (35%) | 008004/01005 | ~57% |
+| RF front-end (filters/matching, sub-6 + mmWave) | ~300 (23%) | 008004/0201 | ~55% |
+| PMIC / power management | ~220 (17%) | 0201/0402 | ~50% |
+| Camera modules (multi-cam) | ~170 (13%) | 008004/0201 | ~50% |
+| Display / touch / misc | ~160 (12%) | 0402 | ~40% |
+
+~70% of count is 008004/0201 — the iPhone is structurally Murata's highest-share-per-unit platform.
+
+**Count share vs. value share — the reconciliation that matters:** count-weighted Murata share sits below the value-weighted figures the thesis relies on, because Murata over-indexes the high-ASP slices (008004, high-voltage DC-link, auto-grade 150°C):
+
+| Platform | MLCC count/unit | Count-weighted share | Value-weighted share | Source of the gap |
+|---|---|---|---|---|
+| AI rack | ~440,000 | ~40% | **~48%** | 008004 + high-V DC-link at 3-5× ASP, ~50% share |
+| Premium EV | ~10,000 | ~34% | ~45-50% | ~47% of count is commodity (~15-20% share); auto-grade subset ~50% |
+| iPhone 17 | ~1,300 | ~52% | ~57% | ~70% of count is 008004/0201 at ~55-60% share |
+
+The AI-rack value-weighted ~48% is exactly the AI-MLCC share assumption carried in the §Key Metrics FY35 forecast — this component-level breakdown is the bottom-up that supports it. The general mechanism: every growth platform's demand concentrates in small-case low-voltage decoupling (AI, phone) or auto-grade high-voltage parts (EV inverter/BMS) — Murata's 50%+ buckets — while the contested commodity slices are a minority of premium-hardware demand and the majority only in budget devices. The blended 33% headline understates per-platform value capture, and the demand mix is shifting toward the parts Murata dominates, not away from them (the component-level mechanism beneath §Industry Context → "specialist share profile").
+
 The flagship product is the 008004 MLCC (0.25mm × 0.125mm, ~3,000 dielectric layers, each <100nm thick). Murata achieves this at yields north of 95% through proprietary barium titanate slurry chemistry and roll-to-roll lamination control. Competitors' 008004 yields are reportedly in the 70-85% range, which makes the part economically unviable at AEC-Q200 quality bars. The 008004 ASP runs ~3-5x a comparable 0402 part on a volume basis, and Murata commands a tier-one premium.
 
 ## Industry Context
@@ -139,7 +194,7 @@ The thesis implication runs against surface intuition: as Chinese EV mix premium
 
 **Pricing power trajectory:** Strengthening in 008004/0201 (Murata gaining share in growth case sizes); weakening in 1206/0805 (Chinese commoditization advancing). Net effect on Murata: gross margin mix-up because growth-case parts carry 1.5-2x the GM of commodity-case parts. Murata FY2026 GM at ~30.5% vs ~28% three years prior — the mix shift is already showing up in P&L.
 
-**Value chain position:** Murata sits between dielectric raw material suppliers (barium titanate from Sakai Chemical, Toda Kogyo) and module/OEM customers. Murata has integrated upstream into its own dielectric slurry production, which is the principal cost and quality differentiator. Downstream, Murata sells direct to OEMs (Apple, NVIDIA, Tesla, BYD), to EMS (Foxconn, Pegatron), and through distributors (Arrow, Avnet) for long-tail customers. Direct-to-OEM channels are 50%+ of revenue and carry pricing-power advantages.
+**Value chain position:** Murata sits between dielectric raw material suppliers (barium titanate from Sakai Chemical, Toda Kogyo) and module/OEM customers. Murata has integrated upstream into its own dielectric slurry production, which is the principal cost and quality differentiator. The merchant BaTiO₃ market it sits above is a three-firm Japanese oligopoly — Sakai Chemical (~25% merchant share), Nippon Chemical Industrial, and Fuji Titanium — that serves the gap between captive supply and total demand; high-spec sub-100 nm AI-grade powder is increasingly merchant-sourced across the industry, underscored by TDK's April 2026 TDK-NCI Advanced Materials JV (TDK 51% / NCI 49%) locking in merchant powder chemistry rather than fully internalising it. Murata's own move runs the other way — it is *deepening* captive integration through the MF Material JV (Murata 35% / Fuji Titanium 55% / Ishihara 10%, BaTiO₃ capacity expansion at Nobeoka for 2027 commissioning), reinforcing rather than diluting the in-house-powder moat that anchors the cost/chemistry differentiator. Downstream, Murata sells direct to OEMs (Apple, NVIDIA, Tesla, BYD), to EMS (Foxconn, Pegatron), and through distributors (Arrow, Avnet) for long-tail customers. Direct-to-OEM channels are 50%+ of revenue and carry pricing-power advantages.
 
 **Structural forces reshaping the industry:**
 1. *Small-form-factor mix shift* — every major end-market (AI servers, smartphones, EVs) demands smaller case sizes; this concentrates demand at the top of the supply curve where Murata and Samsung Electro-Mechanics dominate.
@@ -255,12 +310,28 @@ Chinese suppliers close 008004 chemistry gap faster than expected (3-5 year hori
 - **→ LOW if**: MLCC ASPs on small-case parts (008004/0201) decline >5% YoY for 2 consecutive quarters, AND Murata lead times collapse below 10 weeks across small-case SKUs, AND consolidated gross margin compresses below 28%. Signals capacity discipline broken or competitor encroachment landing.
 - **→ CLOSE if**: Yageo, Sunlord, or Walsin publicly demonstrates 008004 case-size MLCC at scale with comparable yields (>90%) AND wins design-in at a major smartphone or AI server OEM. The chemistry moat is the central thesis pillar; verifiable breach forces exit.
 
+## Mental Models
+- **Models applied**: [[Generalist - Overview]] (always) · [[Industry - Semiconductors]] (sector) · [[Lens - Value Layer Monopoly]] (008004 small-case layer position) · [[Lens - Automation & AI Readiness]] (physical / tacit-yield sector overlay). *(First populated 2026-06-27 via stress test.)*
+- **Triggers that fired** (each a hypothesis to test, not a verdict):
+    - *Generalist · mean-reversion vs trend-continuation* — Murata may be a late-mainstream cyclical (1Y +247%; April-2026 +15-35% hike = units↑+prices↑ shortage) narrated as a structural compounder; the thesis's own FY30-31 give-back concedes embedded cyclicality. Test: does small-case ASP hold past the 2027-29 shortage, or round-trip like 2018→2019?
+    - *Generalist · ROIIC × runway* — incremental capital earns only ~9-10% ROIC while the demand-led path needs ¥550-700B/yr capex; deploying near cost-of-capital is value-neutral unless the shortage premium is durable. Test: does ROIC inflect above mid-teens as AI-mix scales, or stay pinned ~10%?
+    - *Generalist · expectations investing / reverse-DCF* — the "priced at 22.6x, prices ≈zero mix-shift" premise is contradicted by the vault's FMP refresh (~59x NTM P/E, ~37x EV/EBIT NTM); if the higher anchor holds, the re-rate upside is already priced. Test: reconcile clean FY26 OP/EPS to FMP NTM EBIT (run /numbers).
+    - *Generalist · base rates / outside view* — a ¥1.8T-rev mature passive maker sustaining ~11% rev CAGR + AI-MLCC 12× to FY35 is a positive outlier to the Mauboussin growth-persistence base rate, starker given current negative rev/EPS growth.
+    - *Industry · #1 bottleneck / #7 cycle-phase* — the 2027-29 small-case shortage is a genuine bottleneck call but reads as LATE up-cycle (units↑ prices↑): a cycle trade, not structural compounding.
+    - *Industry · #13 classification* — vault rebalancing classifies Murata "semi-cyclical compounder (mature)"; paying a premium multiple at late-mainstream is the #13 error if the structural-compounder read is wrong.
+    - *Industry · #2 qualification-gate monopoly* (partly supportive) — 008004 + AEC-Q200 are real structural gates, but protect only the premium slice while blended pricing still declines (net −¥105B); cyclical-scarcity pricing power is being conflated with durable-monopoly pricing power.
+    - *Value Layer Monopoly · layer-renter disqualifier + pricing-power evidence* — Murata owns the 008004 layer but pays rent *upward* to single-source materials (release film / BaTiO₃ / Ni powder) that may capture more shortage rent; "100% in-house powder" nuanced by merchant-sourced AI-grade powder → WEAK-to-MODERATE layer monopoly, cleanest rent possibly upstream.
+    - *Automation & AI Readiness · semiconductor split overlay* — Murata's edge is tacit yield/chemistry (durable moat, Anti-fit on operator-automation); the margin-expansion case cannot lean on AI operating leverage — it rests on mix + shortage only.
+- **Disconfirming check**: The models broadly agree Murata is a durable small-case-MLCC monopoly riding AI/EV content growth — per the READING PROTOCOL, treat that agreement as the trigger to disconfirm. Bear case / single falsifying datapoint / outside view the thesis must beat: (1) **base rate** — a mature ¥1.8T passive maker at ~10% ROIC with *negative current* growth rarely sustains the modeled S-curve; (2) **falsifying datapoint** — FY28 capex guidance staying ≤¥400B (vs ¥550-700B required) locks the supply-capped ~24%-of-sales path and collapses the demand-led 43% case the ¥10,500-11,500 target depends on; (3) **valuation outside-view** — on the vault's own FMP NTM multiples (~37x EV/EBIT, ~59x P/E) the "cheap, prices zero mix-shift" premise fails and there is no re-rating headroom. *(Stress test [[Research/2026-06-27 - 6981 - Stress Test]], 2026-06-27.)*
+
 ## Related Research
 - [[Sectors/MLCC & Power Semiconductors]] — primary sector note; Murata is the #1 incumbent and majority share holder
 - [[Sectors/Compute & AI Compute Accelerators]] — AI server MLCC pull originates from NVIDIA accelerator design-ins
 - [[Sectors/Neoclouds & GPU-as-a-Service]] — neocloud capex demand pattern feeds MLCC unit pull through NVIDIA supply chain
 - [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — AI demand durability is the central macro variable for the AI server MLCC pillar
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger (mature); TRIM Low→1-2% (800VDC MLCC scaling + 50% EV share real, but ROIC 9% rich vs multiple)
+- [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]] — Upstream-materials bottleneck map (release film / BaTiO₃ / Ni powder); positions Murata as the demand anchor while arguing single-source materials suppliers may capture more shortage rent. MF Material JV (Murata 35%) + TDK-NCI JV detail in §Industry Context → Value chain position
+- [[Research/2026-06-27 - 6981 - Stress Test]] — Adversarial short case: upside is a re-rate off a 22.6x anchor contradicted by the vault's own FMP refresh (~59x NTM P/E); demand-led 43%-of-sales path unfunded (mgmt capex ~¥330B vs ¥550-700B); 2/7 bull assumptions 🔴. Conviction flagged weakened (not changed). Mental-models lenses applied (Generalist / Industry-Semis / Value-Layer-Monopoly / AI-Readiness)
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -288,3 +359,13 @@ Chinese suppliers close 008004 chemistry gap faster than expected (3-5 year hori
 
 ### 2026-05-29
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: next-year guide (FYE-Mar-27) confirms margin ramp ahead of thesis schedule — rev ¥1,960B (+7%), OP ¥380B (+34.8%, ~19% OPM) on data-center demand + mix; AI-server MLCC "major expansion cycle," 800V→50V→GPU named, small-case share >50%, utilisation 90-95%. Capex ¥250B + ¥80B emergency AI capacity (still below the demand-led bull's ¥550-700B). Conviction unchanged (high).
+
+### 2026-06-05
+- [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]]: upstream-materials map adds merchant-BaTiO₃ oligopoly detail (Sakai ~25%, NCI) + MF Material JV (Murata 35%, Nobeoka 2027) to §Industry Context Value chain — captive-integration moat reinforced, not challenged. Conviction unchanged (high).
+
+### 2026-06-11
+- Addressed user callouts: §Key Non-consensus Insights (×1 fresh `[!question]` — firm up demand-side MLCC breakdown by component level). Built per-platform component-level demand tables in §Business Model & Product Description (AI rack 440k / EV 10k / iPhone 1,300 MLCCs, each decomposed by function × case × voltage and mapped to Murata share). Reconciled count-weighted share (~40% AI / ~34% EV / ~52% iPhone) to value-weighted (~48% AI / ~50% EV-grade / ~57% iPhone) — Murata over-indexes high-ASP small-case + high-V slices, providing the bottom-up behind the 48% AI-MLCC share forecast assumption. Conviction: unchanged (high) — firms the demand-side mechanism beneath the existing specialist-share thesis; no new directional claim.
+
+### 2026-06-27
+- Stress test [[Research/2026-06-27 - 6981 - Stress Test]]: top vulnerability — the +40-50% upside is a re-rate off a 22.6x anchor the vault's own FMP refresh contradicts (~59x NTM P/E / ~37x EV/EBIT NTM = already premium), while the demand-led 43%-of-sales path is unfunded (mgmt capex ~¥330B vs ¥550-700B required). 2/7 bull assumptions 🔴, 5/7 🟡 — conviction weakened: reassess HIGH (ROIC ~9%, negative current growth, vault rebalancing flags TRIM to 1-2%).
+- Filled §Mental Models (user request): applied [[Generalist - Overview]] / [[Industry - Semiconductors]] / [[Lens - Value Layer Monopoly]] / [[Lens - Automation & AI Readiness]] as hypotheses-to-test — mean-reversion-vs-trend, ROIIC×runway, expectations/reverse-DCF, base-rate, #13 classification, and layer-renter disqualifier fired.

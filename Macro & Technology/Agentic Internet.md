@@ -50,6 +50,8 @@ The "agentic internet" stopped being a forecast in 2025 and became a measurable 
 
 These are commercial-volume metrics across edge networks, payment rails, merchant platforms, server silicon, and enterprise software pricing books. The agentic internet is closer to where stablecoins were in mid-2024 (TAM measurable, infrastructure live, regulatory architecture forming) than where AR/VR has been since 2014 (always two years away).
 
+**June 2026 primary-source confirmation (Cloudflare Investor Day, June 9).** Cloudflare made the agentic internet its explicit corporate strategy — "Act IV" (Connect & Protect + Build = Agentic Internet) — and disclosed fresh edge-level metrics that strengthen every signal above: daily AI-agent requests **+1,700% y/y** (Jun 2025→May 2026); **2 billion HTTP 402 ("payment required") responses served per day** via the x402 standard Cloudflare co-founded with Coinbase and Stripe; open-web share of online attention down to **~25%** (from 55% in 2015-22) as AI summarization disintermediates publishers (top tech-publication search traffic −58% since 2024, individual sites −30% to −97%); 78% of the top-50 generative-AI web products already on Cloudflare; and human (non-bot) traffic down 35-40% across Retail / Software / IT / Financial Services (Jun 2025→Apr 2026). Management put financial weight behind it — a *raised* long-term operating model (operating margin 30%+, FCF 30-35%+) and ~$5B annualized revenue by YE2028, predicated on monetizing agent traffic at the network layer. The agentic internet is now a funded corporate strategy at the layer-1 toll-collector, not just an external forecast. See [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]].
+
 ## User adoption: where we are and where it goes
 
 Adoption is bifurcated by user type and task. The pattern: infrastructure adoption is ahead of consumer adoption; B2B / developer adoption is ahead of consumer adoption; high-frequency / low-stakes tasks are ahead of low-frequency / high-stakes ones.
@@ -338,6 +340,8 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 - [[Research/2026-03-31 - Cloudflare Path to Competing with Hyperscalers]] — agent-stack architecture and hyperscaler-disruption framing
 - [[Research/2026-04-03 - Cloudflare Role in Telecom Edge Computing]] — agentic traffic multiplication; telecom-edge convergence
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis "CPUs are Back": RL + agentic tool-use as the explicit datacenter-CPU demand driver (layer-6 compute fanout); Fairwater ~1:6 CPU:GPU power (rising), frontier labs "running out of CPUs" for RL, Bluefield-4 "third network" data/networking-CPU class
+- [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]] — SemiAnalysis "Dark Output": agent-driven net-new work ("New Dark Output" — literature reviews $2,000→$2 run before every task) is real economic value traced only as tokens, the measurement shadow of the agentic internet's net-new action volume; reinforces that agent fanout creates output GDP cannot see (capture, not output, is the equity constraint)
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]] — Primary-source confirmation of the agentic-internet thesis from the layer-1 toll-collector: Cloudflare formally adopts "Act IV" (agentic monetization), discloses +1,700% y/y agent requests + 2B x402/day + open-web attention ~25%, and raises its long-term operating model on the strength of it — the clearest evidence yet that the thesis is a funded corporate strategy, not just an external forecast
 
 ## Open Questions
 
@@ -367,3 +371,9 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 
 ### 2026-06-02 (/sync)
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: Direct empirical confirmation of the compute-fanout layer (layer 6) — SemiAnalysis frames RL environments + agentic/RAG tool-use as the explicit datacenter-CPU demand driver (each agent hits the internet/APIs/DBs far more intensively than a human → general-purpose CPU buildout). Extends the existing "server-CPU re-pricing" leading indicator: Fairwater 48MW CPU : 295MW GPU (~1:6, rising), frontier labs "running out of CPUs" for RL, net-new data/networking CPU class (Bluefield-4 "third network"). Conviction unchanged — strengthens the layer-6 demand-floor read. Added to §Connections key research.
+
+### 2026-06-05 (/sync)
+- [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]]: "New Dark Output" (net-new AI work that didn't exist pre-AI, traced only as tokens) is the economic-measurement counterpart to the agentic internet's net-new action volume — agent fanout generates real output invisible to GDP. Tangential to the layer map; added to §Connections key research. Conviction unchanged.
+
+### 2026-06-10 (/sync)
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]]: Cloudflare's June 9 Investor Day makes the agentic internet its explicit corporate strategy ("Act IV") and funds it (raised long-term model: op margin 30%+, FCF 30-35%+; ~$5B by YE2028). Fresh layer-1 primary-source metrics integrated into §Why now: +1,700% y/y daily agent requests, 2B HTTP 402/day (x402), open-web attention ~25%, 78% of top-50 GenAI products on Cloudflare. Strengthens infrastructure-layer conviction (NET layer-1/2/5/8); consumer-adoption-timeline conviction unchanged.

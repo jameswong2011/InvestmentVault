@@ -525,6 +525,12 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 
 **Cross-vertical observation:** the same Western III-V epitaxy chokepoint (IQE + Coherent + Win Semi + LandMark + IntelliEPI + VPEC) supplies datacom optics, automotive LiDAR, AR/VR microLED, defense GaN RF, optical AI compute, quantum networking, and ISL terminals. Aggregate demand from these adjacent verticals could 2-3x the III-V epitaxy TAM through 2030 — IQE's ~£525M market cap captures a fraction of optionality across these verticals. This is the deeper structural reason behind takeover offer interest.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2026-04-15 - LITE COHR - Lumentum vs Coherent Analysis]] — "Great Photonic Divergence" LITE +1,098% vs COHR +328%; pure-play vs integrated value capture; 70.5% Cloud Light module-level gross margin
 - [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]] — CPO adoption timeline, NVIDIA $4B dual-investment intervention, OCS market dynamics, photonics investment outcomes
@@ -535,6 +541,7 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 - [[Research/2026-03-02 - Chinese Silicon Photonics Threat]] — Chinese supply chain competitive analysis; 3% InP localization at 25G+; trade policy impact; Moolenaar-Krishnamoorthi Congressional letter
 - [[Research/2025-11-25 - LITE - Silicon Photonics Supply Chain]] — Full SiPh supply chain for 2026-2030 era
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO "book": scale-out CPO TCO dilution (2-4% cluster power / 3-7% cost) reframes scale-out as a pipe-cleaner vs scale-up as the real later-decade TAM; COUPE the integration option of choice (Broadcom FOWLP→COUPE migration, 23× SoIC density, TSMC PIC lock-in); thin reliability evidence (Meta/Broadcom 15-switch ECOC 2025, Google refuses CPO); four bandwidth-scaling vectors + modulator typology (MZM/MRM/EAM); Nvidia ELS supply map
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs (Marvell DSP franchise); networking silicon (Tomahawk 6, Spectrum 6) on the binding N3 node — optical-DSP demand pull tied to the Rubin ramp
 
 ## Log
 ### 2026-04-22
@@ -548,3 +555,6 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: Added §Macro shifts #3a (scale-out CPO = thin-economics pipe-cleaner, 2-4% cluster power / 3-7% cost; scale-up is the real later-decade TAM, ~9× bandwidth/GPU, Marvell/Celestial $1B CY2028 the first quantified ramp; reliability evidence thin per Meta/Broadcom 15-switch ECOC 2025, Google refuses CPO) and sharpened five-front war #4 (Broadcom FOWLP→COUPE "start fresh", 23× SoIC density, TSMC PIC lock-in → value concentrates at TSMC). No status change; analytical depth on the CPO inflection narrative.
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs — incremental optical-DSP/transceiver demand pull tied to the Rubin ramp; networking silicon (NVLink 6, Tomahawk 6, Spectrum 6) on the binding N3 node. Marginal sector touch (demand-tailwind datapoint); no status/framework change.

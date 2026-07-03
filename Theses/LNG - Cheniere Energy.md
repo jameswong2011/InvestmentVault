@@ -197,6 +197,12 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 6. **Ceasefire collapse re-escalation**: while bullish for near-term spot pricing, a return to full Hormuz closure could trigger a global recession severe enough to destroy LNG demand through industrial shutdown — the "too hot" scenario where the cure for high prices is demand destruction
 7. **New Fortress Energy cautionary tale**: NFE collapsed to $316M market cap with negative EBITDA — a reminder that aggressive, underleveraged LNG models without Cheniere's contract visibility can implode
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[@LNG & Natural Gas Infrastructure]] — Sector Note; includes gas-to-coal switching analysis (40-90M tonnes), thermal coal trade vehicles (Yancoal/New Hope), and $150 oil playbook (US LNG outside conflict zone)

@@ -332,6 +332,12 @@ Forrester forecast: 75% will fail by 2027. Gartner: only ~130 of thousands of se
 - **Avoid the middle:** Pega, Appian, UiPath, Atlassian (above mid-market), mid-tier point solutions — structurally compressed regardless of cyclical mood. The pair-trade alpha lives at the barbell ends, not in the middle.
 - **Position sizing discipline:** PLTR's 33–49x EV/Sales fwd makes it more sensitive to duration repricing than NOW at 6.5x; in real-rate-rising scenarios sized weight should tilt NOW; in rate-cutting scenarios PLTR captures more multiple expansion. Pair-trade construction can hold dollar-neutral but should respect asymmetric vol of the high-multiple leg.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]] — disruption probability bounded (10–15% 3yr / 25–30% 5yr / 40–50% 10yr); CMDB+compliance fortress thesis; AI tools erode TAM at expansion margin not core
 - [[Research/2026-01-06 - NOW - Gemini Acquisition Strategy Canvas]] — exhaustive M&A transformation analysis (2023–2025); Cognitive Enterprise Architecture; See-Think-Act framework
@@ -349,6 +355,7 @@ Forrester forecast: 75% will fail by 2027. Gartner: only ~130 of thousands of se
 - [[Research/2026-04-15 - PLTR - Competitive Win Scenarios]] — defense/intelligence, complex supply chain, healthcare/regulated, manufacturing IoT — where Palantir wins structurally
 - [[Research/2025-02-19 - PLTR - Palantir Valuation Analysis]] — early Grok valuation analysis (Feb 2025 baseline)
 - [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — 50–90% of agentic workflow latency is CPU-bound; reasoning-vs-action sliding-scale framework; NVIDIA Vera 5/2 (reasoning-flagship), AMD Venice Dense 3/5 (action-flagship), Intel Diamond Rapids 3/3 (compromised middle) — referenced in §Macro shifts #10 (server-CPU bottleneck repricing rack-level cost stack) and validates PLTR Sovereign AI OS Reference Architecture turnkey-stack thesis
+- [[Research/2026-06-11 - PLTR - Karp on Frontier Lab Discontent - news]] — Karp (CNBC): enterprises "unhappy" with frontier-lab "tokenmaxxing"; "implementation is where the value is"; "most of Anthropic's public projects run on Palantir." Datapoint for the barbell deployment/governance-layer-captures-value framing (§Investor heuristics); self-serving source
 
 ## Log
 ### 2026-04-22
@@ -366,3 +373,6 @@ Forrester forecast: 75% will fail by 2027. Gartner: only ~130 of thousands of se
 ### 2026-05-01 (/sync)
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]]: Google Cloud CEO confirms Gemini Enterprise tokens 10B/min Jan 2026 → 16B/min Apr 2026 (+60% in 3mo); enterprise users +40% sequentially. Wiz cybersecurity agents (continuous attacker, prioritization, fixer) on Gemini Enterprise validates agentic-orchestration platform pivot at Google Cloud. Strengthens enterprise-AI inflection thesis affecting [[Theses/NOW - ServiceNow]], [[Theses/PLTR - Palantir]] — but introduces hyperscaler-bundling pressure as Google's stack consolidates governance/orchestration/security at infrastructure layer.
 - [[Research/2026-04-24 - Luo Fuli on OpenClaw and Agent-Era Compute Reallocation - video-transcript]]: "OpenClaw architectural moat is context engineering, not just model weights" framing directly validates CMDB-as-substrate ([[Theses/NOW - ServiceNow]]) and Ontology-as-control-plane ([[Theses/PLTR - Palantir]]) as pre-built context substrates with structural advantage in agent era. Frontier-lab insider explicitly frames context orchestration as the moat that makes "OpenClaw" feel like an "epoch-making agent framework" — reinforces Investor Heuristics non-consensus insight on context-substrate as compounding moat.
+
+### 2026-06-11 (/sync)
+- [[Research/2026-06-11 - PLTR - Karp on Frontier Lab Discontent - news]]: Karp (CNBC) — enterprises privately "unhappy" with frontier-lab "tokenmaxxing"; "implementation is where the value is"; "Anthropic's public projects run on Palantir." Sector datapoint for the deployment/governance-layer-captures-value barbell (model layer commoditizes, app layer holds price). Self-serving source; conviction-neutral.

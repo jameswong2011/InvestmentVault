@@ -242,6 +242,12 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 3. Trainium 4 socket goes exclusively to Alchip (not Marvell), confirming structural design-partner credibility loss; OR
 4. UALink 1.0 wins ≥50% of announced hyperscaler scale-up rack standard commitments for CY28 deployment, stranding the NVLink Fusion bet.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2026-04-23 - Insight Surface Scan.md]] — Opportunity 5 origin: "Create Marvell thesis as Broadcom complement" flagged MEDIUM impact. Jensen's 65% ASIC margin framing applies.
@@ -262,6 +268,7 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 - [[Macro & Technology/CXL Memory Disaggregation Framework]] — SAN-for-DRAM framework; Marvell = Brocade/Cisco-MDS analog (Celestial Photonic Fabric + XConn + Structera); memory disaggregation is the single largest binary upside lever in the thesis
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: first *quantified* scale-up CPO ramp ($1B CY2028 run-rate into Trainium 4, $2.25B earn-out on $2.0B cumulative by Jan 2029, Amazon warrant strike $87.0029 = Trainium 4 tell); flags EAM-lacks-COUPE-PDK execution gate (Marvell must foundry-integrate EAM itself); scale-up CPO TAM > scale-out
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": tangential — ARM/hyperscaler-CPU SerDes/design-services TAM + memory-disaggregation (CXL3/JBOM) reinforces Celestial lever; no direct thesis delta
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs (direct demand pull for Marvell's 80%+ long-reach DSP franchise); Trainium3 (N3P) socket on the binding N3 node
 
 ## Log
 
@@ -292,3 +299,6 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 
 ### 2026-06-02 (/sync)
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: Tangential (NVIDIA-centric networking content) — ARM/hyperscaler-CPU proliferation (Graviton5/Cobalt/Axion/Phoenix/Venom) expands custom-silicon + SerDes design-services TAM (mild positive for second-source franchise); Bluefield-4 DPU/networking-CPU convergence is NVIDIA in-house (neutral-to-competitive for merchant DPU); CXL3/JBOM/LPDDR memory-tiering content broadly reinforces the Celestial memory-disaggregation lever. No thesis-level delta; conviction unchanged (high).
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs — a direct demand pull for Marvell's 80%+ long-reach DSP franchise; Trainium3 (N3P) + networking silicon sit on the binding N3 node. Demand-tailwind datapoint only; no thesis-pillar move (Celestial / second-source / NVLink-Fusion theses unchanged). Conviction unchanged (high).

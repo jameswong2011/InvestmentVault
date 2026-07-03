@@ -56,7 +56,7 @@ sector: Semiconductor Capital Equipment
 
 7. **High-NA EUV adoption — 2 customers or 6 by 2030?** Intel leads with world's first commercial High-NA line at 30K wafers/quarter for 18A (Fab 52 Chandler, HVM January 2026); Samsung received first EXE:5200B late 2025, second unit H1 2026 at Taylor Texas; SK Hynix installed first unit September 2025; imec took delivery March 2026 (~12 EXE:5200s worldwide). TSMC deferred High-NA for 1.4nm. ASML guides 5-10 High-NA deliveries in 2026. At >€350M per tool, customer absorption capacity is the gating variable. Sub-6 customer adoption doesn't threaten ASML's EUV monopoly but caps revenue-per-tool dynamics.
 
-8. **Is the CoWoS bottleneck permanent or transient?** TSMC capex $52-56B 2026 (+27-40% vs $40.9B 2025), 10-20% to advanced packaging; CoWoS outsourcing 240-270K wafers annually to Amkor (180-190K) and SPIL (60-80K). CoPoS (large-panel packaging, 2027+) and glass substrates (2027+) could render round-wafer CoWoS capacity partially obsolete — but TSMC's March 2026 roadmap revision pushed CoPoS to **Q4 2030 at earliest**, extending CoWoS lifecycle.
+8. **Is the CoWoS bottleneck permanent or transient?** TSMC capex $52-56B 2026 (+27-40% vs $40.9B 2025), 10-20% to advanced packaging; CoWoS outsourcing 240-270K wafers annually to Amkor (180-190K) and SPIL (60-80K). CoPoS (large-panel packaging) and glass substrates could render round-wafer CoWoS capacity partially obsolete — and the timing has pulled IN, not out: June-2026 reporting shows CoPoS pilot line completing ~June 2026, 2027 pilot production, and 2028–29 mass production at AP7 Chiayi (NVIDIA Rubin anchor), reversing the March-2026 "Q4 2030 at earliest" delay (see [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]]). The CoWoS-lifecycle-extension assumption weakens accordingly — round-wafer interposer capacity faces a panel-format transition on the 2028–29 horizon: a tailwind for panel-format litho (Onto JetStep, SUSS), path-agnostic inspection (KLA), bonding (BESI), and dicing (DISCO); a relative headwind for round-wafer-locked tooling.
 
 9. **Taiwan tail risk — is semicap modelling it right?** TSMC's N2 (Fab 20/22, Hsinchu/Kaohsiung) and CoWoS capacity (Chunan/Kaohsiung AP7) are geographically concentrated. [[Research/2026-04-19 - TSM - Stress Test]] estimates a -85-95% Taiwan permanent-impairment scenario would consume **100% of ASML global EUV output for 12-18 months on rebuild**. Arizona buildout represents only 5-8% of TSMC's capacity through 2030. Sector's customer-concentration risk is higher than current valuations reflect.
 
@@ -552,6 +552,12 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 
 ---
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas]] — Five-company WFE evaluation (AMAT/LRCX/KLAC/ASMI/TEL)
@@ -582,6 +588,7 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 - [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — Ajinomoto ABF substrate (2802.T) vs Advantest HBM/SoC test (6857.T) comparison; test-equipment-tier (Advantest) picks-and-shovels framing parallel to ABF substrate moat — backend complement to upstream WFE basket, validates Watchlist Advantest 3K→5K (2025-2026) test capacity print as monitorable signal
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Aixtron FY26 guide corrected €560M→€520M (mgmt "slightly down") + 800V GaN second leg slipped to '27–'29 ("not there yet"); Advantest capacity reframed 5K→10K systems/yr by ~CY2029 — refines the "3K→5K" framing above (annual capacity, not installed base)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — SemiAnalysis memory supercycle: memory WFE capex +26/34/20% (Samsung/SK Hynix/Micron) 2026; 1b/1c node migration confirmed by ASML+LRCX; rising EUV layer counts; HBM ~5x wafer-capacity build → broad WFE demand leg
+- [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]] — round-wafer→panel format transition (CoPoS 2028–29 HVM, NVIDIA Rubin anchor); equipment winners are panel-format lithography (Onto JetStep, SUSS), path-agnostic inspection (KLA, Camtek, Onto), bonding (BESI), deposition/plating (AMAT, LRCX), dicing (DISCO), and glass TGV (LPKF); round-wafer-locked tooling is the relative loser (see Q#8)
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -634,3 +641,6 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 
 ### 2026-06-01 (/sync)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: memory WFE capex +26/34/20% (Samsung/SK Hynix/Micron) 2026 + 1b/1c node migration (ASML+LRCX-confirmed) + rising EUV layer intensity + HBM ~5x wafer-capacity build (123→668 kwspm) reinforce the memory leg of the WFE supercycle. No basket-conviction change.
+
+### 2026-06-18 (/sync)
+- [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]]: corrected Q#8 — June-2026 reporting reverses the March-2026 "CoPoS → Q4 2030" delay (now 2028–29 HVM, NVIDIA Rubin anchor), weakening the CoWoS-lifecycle-extension assumption. Panel-format tools (Onto, SUSS, Camtek, KLA, BESI, DISCO, LPKF) flagged as winners vs round-wafer-locked tooling; added macro to Related Research. No basket-conviction change.

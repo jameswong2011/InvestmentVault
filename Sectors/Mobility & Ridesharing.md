@@ -205,6 +205,12 @@ The Eats-heavy mix reflects that delivery has higher per-impression ad attractiv
 
     On the volume premise: Q4 2025 trips grew +22% YoY and MAPCs grew +18% — not "very slowly." Volume is not the bottleneck; the bottleneck is human-driver supply elasticity, which AV substitution structurally removes. The non-consensus read: **rideshare is not ex-growth, but the locus of growth is shifting** from per-ride consumer pricing to (a) ad layer, (b) premium mix, (c) B2B, (d) AV unit-cost replacement. Investors anchored to base-rate-per-ride optics over the next 4-6 quarters may misread a transition window as structural deceleration. The market is also under-pricing that the four engines compound multiplicatively (ad revenue grows on a base that itself includes premium-mix-uplifted ARPU), not additively. The bear case is right that the next leg of growth requires successful execution on all four engines — none of them is automatic — but the framing of "harvestability is over" conflates one engine (consumer take rate) with the entire platform.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]] — Platform marketplace economics and iBuyer-to-aggregator pivot. Relevant to Mobility as a cross-category study of platform monopoly durability under cyclical pressure; Opendoor's pivot from principal-buyer to partnership-led aggregator rhymes with Uber's asset-light AV positioning.
 

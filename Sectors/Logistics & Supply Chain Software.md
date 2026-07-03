@@ -227,6 +227,12 @@ SAP TM 12-consecutive-year Gartner TMS Leader; Oracle OTM cited as "most compreh
 
 **Non-consensus framing for portfolio construction:** Logistics & supply chain software is **not a commodity enterprise SaaS category** — it contains one of the strongest structural monopolies in enterprise software (CargoWise forwarder-node) trading at ~half the multiple of its closest adjacency (Descartes), priced against governance overhang that resolves on a 12-18 month horizon while the underlying business compounds at accelerating rates. The disciplined portfolio expression: concentrate exposure in the monopoly asset (WTC) at cyclical-low valuation through governance resolution and E2open integration milestones; treat Descartes as the overvalued alternative held for diversification; avoid best-of-breed specialists (Manhattan, Kinaxis) unless explicit Gartner-leadership durability can be underwritten; treat the visibility and digital-forwarder categories as commoditized or collapsed.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2025-11-25 - WTC - Cargowise Impact on Freight Forwarding]] — ChatGPT deep research on CargoWise as freight forwarding standard: 17K+ orgs, 24/25 top forwarders, multi-modal integration, E2open acquisition strategic analysis, case studies (DHL, K+N, Fracht, Tigers)
 - [[Research/2025-11-23 - WTC - WiseTech Tech Debt and Acquisition Integration]] — Grok analysis: moderate well-managed technical debt, 40+ acquisition integration track record, E2open $2.1B risk assessment, 34% R&D intensity

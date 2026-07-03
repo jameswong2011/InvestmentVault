@@ -362,6 +362,12 @@ Strategic implication for the thesis: **the regulatory tail-risk is genuine but 
 6. **Co-CEO structure risk**: No precedent at this scale in consumer technology; resource allocation disagreements between advertising, AI, and emerging market investment could slow execution
 7. **Valuation**: ~37x forward P/E requires sustained 15%+ revenue growth and continued margin expansion; multiple compression risk if execution falters
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2026-04-15 - SPOT - Product Strategy and Competitive Position]] — FY2024 financials, Discovery Mode mechanics, super-app strategy, label dynamics, risk assessment

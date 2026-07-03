@@ -351,6 +351,12 @@ The market prices Duolingo as a language app with chess optionality. The natural
 - [[Sectors/Video Game Publishing]] — Gamification-of-consumer-behavior comparable (TTWO, EA) — same behavioral-retention mechanics with different monetization wrappers; TTWO UGC marketplace trajectory shares platform-transition framing with DUOL multi-subject thesis.
 - [[Sectors/Social Platforms & Digital Advertising]] — Meta and DUOL both face hyperscaler-AI-commoditization narratives; Meta Llama 5 open-source as commoditize-the-complement is adjacent framework for DUOL AI-as-content-creation-accelerant.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 - [[Research/2025-09-22 - DUOL - Gemini Analysis Canvas]] — Interactive Q2 2025 analysis: stock correction -46% from $540 ATH, 41% YoY revenue growth, 40% YoY DAU growth, 37% YoY paid subscriber growth, Duolingo Max vs ChatGPT user sentiment comparison (70% mixed/negative Lily vs 85% positive ChatGPT Voice), analyst ratings (16% Strong Buy, 47% Buy, 32% Hold, 5% Sell).
 

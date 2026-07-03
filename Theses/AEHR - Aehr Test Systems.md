@@ -12,6 +12,11 @@ source: Q3 FY2026 earnings (April 2026) + market data + sell-side coverage
 >
 > **Response:** The moat is real engineering but not exotic physics — an architecture mismatch (ATE runs fast functional test, not multi-day full-wafer thermal stress), a full-wafer high-power contactor, and sub-µm optical alignment — none of it uncrossable. Your "too small to care about" read is ~half right: WLBI is a $200-400M niche against the incumbents' $5-7B test franchises, so neglect is as much the barrier as engineering. As AI + CPO scale the TAM toward $1-2B the build/buy calculus inverts (Teradyne owns Quantifi Photonics; Advantest co-develops HBM wafer test with FORM), so the moat holds only inside a closing window — exactly the thesis risk. Full analysis: §Industry Context → The engineering / physics moat — real, crossable, and economically contingent.
 
+> [!question] 2026-06-08 → Addressed 2026-06-08
+> **Prompt:** *What are the subsegments of SiPh / optical test (wafer level testing / die level testing etc.) and what is AEHR's role in each subsegment. Of total testing value that occurs before a SiPh product reaches end market, what % of this is captured by AEHR's systems.*
+>
+> **Response:** SiPh test runs across seven sequential steps from epi substrate to system burn-in; AEHR plays in exactly one (wafer-level burn-in), capturing ~100% of that step where adopted but only ~5-10% of total SiPh test value chain on a blended-volume basis today. Probe (FORM territory, ~22-28%) and module final test (Advantest / Teradyne / Keysight, ~22-28%) dominate run-rate test spend; AEHR's capture expands to ~15-25% in the bull case where hyperscale CPO HVM forces WLBI into the qualification flow industry-wide. Full analysis: §Industry Context → SiPh test value chain — where AEHR sits and what it captures.
+
 # AEHR — Aehr Test Systems
 
 ## Summary
@@ -103,6 +108,30 @@ The moat is genuine engineering, not exotic physics — which makes it time-limi
 *None of it is uncrossable.* The vault's own [[Sectors/Photonic Metrology]] position (pinned callout, Apr 2026): "FOX-XP physics is not exotic and a determined Teradyne organic build is technically possible." AEHR's real edge is accumulated, customer-funded, embedded engineering — the contactor IP, the alignment know-how, and the process-of-record qualified into each customer's flow (12-24 months per customer to displace) — not a physics wall. The "4-7 year qualification gap" cited in Insight #2 is the cold-start *build* path; it carries no vault source, and an acquisition collapses it to a single deal.
 
 *Why the user's framing is the right risk.* WLBI was a $200-400M niche against the incumbents' $5-7B functional-test franchises — too small to clear their build hurdle, and burn-in had been a commoditized, shrinking business (Aehr was near-bankrupt sub-$50M through 2014 when DRAM parallel-test collapsed). The moat was as much *neglect* as engineering. As AI + CPO drag WLBI toward $1-2B by 2030, the calculus inverts, and the bridges already exist: Teradyne owns Quantifi Photonics (2023); Advantest co-develops wafer-level HBM test with FormFactor. Neither is WLBI, but both are footholds plus the partnership template. The moat therefore holds only inside a closing window — durable while the TAM stays sub-critical and AEHR's install base + embedded IP stay ahead, eroding the moment photonics makes the market worth attacking. This is the 🟡 "incumbents stay out" assumption in [[Research/2026-05-26 - AEHR - Stress Test]] and the Bear Case's re-rate-to-$30-on-announcement risk, viewed from the engineering side.
+
+**SiPh test value chain — where AEHR sits and what it captures**
+
+AEHR plays in exactly one of seven sequential SiPh test steps — wafer-level burn-in — capturing ~100% of that step where adopted but only ~5-10% of the total SiPh test value chain on a blended-volume basis today. The slice expands disproportionately in the CPO HVM bull case.
+
+| Step | What it does | Dominant vendors | AEHR role | ~Share of SiPh test value |
+|---|---|---|---|---|
+| 1. Epi / substrate qualification | Incoming-wafer in-spec check before PIC fab | Yokogawa, Keysight OSAs run at IQE / Sumitomo / Freiberger | None | ~2-4% |
+| 2. In-fab process control | Overlay, CD metrology, defect inspection during PIC fab | KLA, Onto, Camtek | None | ~10-15% |
+| 3. Wafer-level functional probe | Room-temp wavelength sweep, modulator response, photodetector responsivity — KGD pass/fail | **[[Theses/FORM - FormFactor]]** (electrical + optical probe cards, ~31% global probe-card share); MPI Corp; Keysight test electronics | None — FORM's territory | ~22-28% |
+| 4. **Wafer-level burn-in (WLBI)** | 85-150°C sustained bias, 24-72 hour soak, weed infant-mortality defects pre-bond | **AEHR FOX-XP / FOX-NP** — sole deployed at scale | ~100% of step where adopted | ~5-25% (variable by product class — see below) |
+| 5. Singulated die test (pre-bond) | KGD verification on diced die before package assembly | Quantifi Photonics (Teradyne 2023 acq), ficonTEC, custom in-house tooling | Adjacent via DiePak™; sub-dominant role | ~8-12% |
+| 6. Module / package final test | BER, eye-diagram, thermal cycling on packaged transceiver or CPO module | Advantest, Teradyne (via Quantifi), Keysight, EXFO, VIAVI | None today; CoWoS-package burn-in "interest building" per Q3 FY26 call — potential adjacent extension | ~22-28% |
+| 7. System / customer-side burn-in | Final reliability soak at system integrator | Custom solutions per customer | None | ~5-8% |
+
+WLBI's share of total SiPh test value swings widely by product class because adoption is a yield-management cost-benefit decision, not a universal requirement:
+
+- **Hyperscale CPO and high-power AI photonic dies** (Marvell / AVGO / Cisco CPO engines; NVIDIA-spec'd optical I/O chiplets): WLBI is increasingly mandatory — post-bond failure of a $40K+ CPO module is economically catastrophic. AEHR captures ~15-25% of test value per die.
+- **800G / 1.6T datacom pluggables** (the LITE / COHR transceiver volume — largest SiPh die volume today): WLBI variable — adopted by telecom-heritage IDMs with stringent reliability targets, skipped or done in-house elsewhere. AEHR captures ~5-10%.
+- **Sensing / non-datacom SiPh** (LiDAR PICs, biosensor SiPh, on-chip optical I/O outside CPO): WLBI rarely used. AEHR captures <2%.
+
+Weighting by 2026 SiPh die mix (datacom 70%+ of units; CPO / AI low single digits but rising; sensing low single digits), the blended capture rate is **~5-10% of total SiPh test value chain today**. The bull-case path expands this to ~15-25% as (i) CPO HVM forces WLBI into the qualification flow industry-wide and (ii) hyperscaler data-center economics on $40K+ accelerator and CPO modules make in-field failure intolerable — pulling WLBI from optional to mandatory across more of the high-end mix.
+
+The framing matters for the thesis: AEHR is not the dominant captor of SiPh test spend — probe (FORM) and module test (Advantest / Teradyne / Keysight) each dominate larger run-rate slices. AEHR captures the **highest-leverage slice** (one yield point caught at the wafer saves a multi-thousand-dollar bonded package downstream), and that slice expands disproportionately if hyperscale CPO HVM forces WLBI adoption industry-wide. The bull case is leveraged to that WLBI-adoption mix-shift, not to capturing the dominant share of any single product's test spend. See [[Sectors/Photonic Metrology]] §Competitive dynamics → Customer base composition for the complementary FORM-side framing.
 
 **Structural forces reshaping the industry**:
 - **AI compute thermal envelope** is forcing test methodology change. Pre-2023 GPUs ran 300-400W; Hopper (H100) is 700W; Blackwell B200 is ~1000W; Rubin/Rubin Ultra targets 1200W+. Functional probe alone cannot characterize reliability at these power densities. WLBI becomes mandatory.
@@ -212,6 +241,22 @@ The bear case is twofold: cycle compression and competitive dilution.
 
 → **CLOSE if**: Q1 FY27 (Sep 2026) bookings come in below $15M AND backlog shrinks below $40M — implies the FY26 booking surge was front-loading, not a sustained inflection.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: [[Mental Models/Generalist - Overview]] · [[Mental Models/Industry - Semiconductors]] · [[Mental Models/Lens - Value Layer Monopoly]] · [[Mental Models/Lens - Automation & AI Readiness]] — applied 2026-06-26 (stress test, [[Research/2026-06-26 - AEHR - Stress Test]]).
+- **Triggers that fired** (each a hypothesis to test, not a verdict):
+    - *Industry-Semis #10 · anchor-customer concentration = binary survival test* — 88% one undisclosed AI customer is existential, not "concentration to monitor"; the test is "what if this anchor doesn't renew?" → exit the AI segment. Hypothesis: concentration disperses by FY27 (no 2nd AI customer disclosed yet).
+    - *Industry-Semis #13 / #18 · compounder-vs-cyclical misclassification / cycle-confused-with-structural* — vault classifies AEHR "pre-chasm AI WLBI option" yet HIGH + +973% re-rate price it like a compounder; #18 "at maximum risk." Hypothesis: the one-quarter bookings spike is structural, not cycle/momentum.
+    - *Industry-Semis #1 / #2 · bottleneck pricing power / qualification-gate monopoly* — a bottleneck needs demand>supply AND inelastic supply; CEO "most ASICs not burnt-in / early innings" weakens condition (a); the qual-gate is real but §Industry Context concedes it is crossable engineering, not exotic physics. Hypothesis: the gate holds only inside a closing window.
+    - *Industry-Semis #6 · qual-gated margins don't mean-revert — fires in REVERSE* — GM already compressed 45-50%→36.5% under the anchor's leverage = evidence the gate is weaker than a true qual-gate monopoly (which holds price).
+    - *Industry-Semis #19 · equipment orders ≠ demand signal* — the entire re-rate rests on one non-binding bookings quarter; orders push out 6+ months; WaferPak pull-through / utilization (the cleaner signal) is not what re-rated the stock.
+    - *Generalist · endgame/reverse-DCF + base rates* — price implies ~$200M FY28 revenue (4x off a $50M, single-customer base); base rate for sustained 4x-in-2-yrs off a concentrated equipment book is a deep outlier the price treats as central case.
+    - *Generalist · mean-reversion vs trend-continuation* — +973% 1Y on management-described "early innings" demand = trend-continuation applied to a pre-chasm/cyclical name (2nd-most-expensive error per the Industry note).
+    - *Generalist · barbell / position-sizing* — AEHR is a correct convex bet ONLY at 1-2% (loss capped, upside a multiple); the HIGH tag mis-sizes a convex tail bet as a core holding.
+    - *Value Layer Monopoly · output verdict* — Layer = wafer-level burn-in; fit = **WEAK**: AEHR owns ~100% of a real but OPTIONAL, small ($200-400M) layer most of the stack skips ("most ASICs not burnt-in"), so it is not yet the mandatory toll a value-layer monopoly requires. AI overlay = MIXED (TAM growth widens the prize AND attracts ATE-incumbent build/buy — the "closing window"). Alpha = mispricing largely closed post +973%; quality-but-priced with binary downside.
+    - *Automation & AI-Readiness · §6 semis overlay + §5 AI-narrative-without-substance* — AEHR is a Lens-B pick-and-shovel on the AI buildout (indirect), not an operator/context-owner; mild caution, not tailwind — the "AI necessity" story lacks the operational substance the lens demands (analog = multi-customer orders + margin expansion, both missing).
+- **Disconfirming check**: All four model families converge bearish-on-conviction — per the READING PROTOCOL, convergence is the cue to disconfirm. Steelman/falsifiers: (a) the HIGH trigger is observable within weeks — a 2nd AI customer >$5M + GM >42% + FY27 guide ≥$80M in Q4 FY26 validates platform-not-customer and collapses the bear core; (b) the WLBI/CPO TAM is real ([[Theses/LITE - Lumentum]], [[Sectors/Photonic Metrology]]) — only timing/capture contested; (c) SiPh converted to a real systems order (ahead of thesis); (d) the moat has empirically held since 2023. **Single falsifying datapoint:** disclosed 2nd >$5M AI customer + GM recovery in Q4 FY26. **Base rate the thesis must beat:** pre-chasm equipment names crossing the chasm *on schedule* at a 4x-revenue ramp — low. Net: conviction is the vulnerability, not the TAM (HIGH→MEDIUM / 1-2% convex sizing).
+
 ## Related Research
 
 - [[Sectors/Photonic Metrology]] — Direct sub-cluster MOC (optical wafer-test / burn-in / metrology); AEHR is one of two Photonic Test Pure-Plays alongside FORM; competitive dynamics, ATE-incumbent acquisition optionality, and 6-inch InP wafer transition framing
@@ -225,6 +270,7 @@ The bear case is twofold: cycle compression and competitive dilution.
 - [[Theses/BESI - BE Semiconductor Industries.md]] — adjacent semicap with similar CPO/AI photonics exposure pattern
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 5 convex bet; HOLD Low→1-2% (WLBI non-substitutable >600W TDP; second AI customer disclosure is binary catalyst)
 - [[Research/2026-05-26 - AEHR - Stress Test]] — Adversarial test: `conviction: high` unsupported (3-way conviction conflict); 5/7 bull assumptions 🔴; single-customer identity + WLBI moat-durability are the binary kill triggers
+- [[Research/2026-06-26 - AEHR - Stress Test]] — Second adversarial test (mental-models-driven): HIGH still unsupported a month on; CEO "early innings / most ASICs not burnt-in" contradicts Insight #2; Value-Layer-Monopoly lens → WLBI is a real but *optional, non-mandatory* layer; 5/7 assumptions 🔴 (Insight #2 now management-contradicted; SiPh upgraded design-in→systems order)
 
 ## Log
 
@@ -244,3 +290,10 @@ The bear case is twofold: cycle compression and competitive dilution.
 
 ### 2026-05-29
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: Q3 FY26 numbers confirmed (bookings $37.2M, b2b >3.5x, backlog $50.9M, GM 36.5%, FY26 guide $45-50M). Nuance on Insight #2 — CEO: "most ASICs are not burnt-in," only ~half of AI accelerators, "early innings": WLBI is an adoption curve, not a present mandate (also = TAM runway). SiPh ahead of thesis (real systems order, not just design-in). Conviction unchanged.
+
+### 2026-06-08 (Addressed user callouts)
+- Addressed user callouts: 1 fresh `[!question]` (SiPh test subsegmentation + AEHR % capture) → new §Industry Context → "SiPh test value chain — where AEHR sits and what it captures" subsection. Conclusion: AEHR plays in 1 of 7 sequential SiPh test steps (wafer-level burn-in), captures ~100% of WLBI where adopted but only ~5-10% of total SiPh test value chain on blended-volume basis today; bull-case path expands to ~15-25% as hyperscale CPO HVM forces WLBI into qualification flow industry-wide. Probe (FORM, ~22-28%) and module test (Advantest / Teradyne / Keysight, ~22-28%) dominate run-rate spend — thesis is leveraged to the WLBI-adoption mix-shift, not to capturing dominant share of any one product's test spend. Reinforces "early innings" framing from 2026-05-29 CEO commentary (WLBI is an adoption curve). Conviction unchanged. Aligns with existing [[Sectors/Photonic Metrology]] customer-base composition framing (AEHR rides IDM laser-maker capex at WLBI step; FORM rides foundry capex at probe step); no /sync propagation needed — the value-chain analysis is AEHR-thesis-specific quantification, not a new sector-level insight.
+
+### 2026-06-26
+- Stress test [[Research/2026-06-26 - AEHR - Stress Test]]: HIGH conviction still unsupported a month after the 2026-05-26 flag — CEO's own "most ASICs not burnt-in / early innings" (per [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]) now contradicts Insight #2; 5/7 bull assumptions 🔴 — conviction weakened: reassess high→medium (convex-bet 1-2% sizing) before the binary Q4 FY26 print (Jun-Jul).
+- Mental Models: populated §Mental Models (was empty scaffold) — applied [[Mental Models/Generalist - Overview]] + [[Mental Models/Industry - Semiconductors]] + [[Mental Models/Lens - Automation & AI Readiness]] + [[Mental Models/Lens - Value Layer Monopoly]]; #10 anchor-concentration, #13/#18 misclassification, #19 orders≠demand, #6 margin-mean-reversion-in-reverse, and VLM "optional, non-mandatory layer" all fire as conviction-reducers.

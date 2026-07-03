@@ -370,6 +370,12 @@ Four non-consensus insights from this sector framework:
 
 - **Platform-holder dominance is peaking, not strengthening.** Sony's PC-port reversal (March 2026) and Microsoft's Game Pass price hike + CoD removal (April 2026) are defensive moves, not offensive. Both platforms face subscription saturation and premium cannibalisation simultaneously. The next decade likely sees console-share decline versus PC (steady) and mobile (continued 55%+ share) rather than extending the current hardware cycle into PS6/Xbox-next as conventional analyst assumption.
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+
 ## Related Research
 
 - [[Theses/TTWO - Take-Two Interactive]] — Primary thesis note: GTA VI binary-outcome bet, UGC platform transition, EA take-private scarcity premium

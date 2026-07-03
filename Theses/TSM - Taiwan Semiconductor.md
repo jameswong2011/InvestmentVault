@@ -284,6 +284,12 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - NVDA+AAPL combined revenue concentration exceeds 50% (systemic risk unmanageable) OR
 - Gross margin falls below 52% for 2 consecutive quarters with Arizona mix still <20% (structural cost increase, not transition)
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 ### Sector & macro context
@@ -309,6 +315,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: COUPE is the CPO integration option of choice (Broadcom abandoning own FOWLP→COUPE; SoIC bond 23× density; TSMC won't package 3rd-party SiPho = PIC lock-in); reinforces Insight #4 value-concentration-at-TSMC thesis and extends it to later-decade scale-up CPO
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: TSMC 2026 capex came in well above expectations (logic-side pricing the capex cycle); HBM4 base-die/CoWoS demand intact
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — datacenter CPU landscape: nearly every competitive 2026 CPU is TSMC N2/N3 (AMD Venice N2, Graviton5/Cobalt/Axion/Phoenix 3nm, ARM Venom N2, AMD Florence A16) — reinforces leading-edge logic monopoly across the entire CPU vendor set, not just GPUs
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "silicon shortage phase": N3 the binding AI constraint (AI ~60% of 2026 N3 output → ~86% in 2027, squeezing smartphone/CPU; effective util >100% H2'26; ~2-yr cleanroom capacity ceiling), TSMC "kingmaker" prioritizing higher-ASP AI; corroborates pricing-power Insight #5
 
 ## Log
 
@@ -357,3 +364,6 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### 2026-06-03 (/sync)
 - [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: SemiAnalysis reinforces TSMC pricing-restraint = hidden option value (N3 util >100% H2'26 yet pricing stable; Jensen "TSMC should charge more"; LTA/prepayment path likelier than headline hikes) — corroborates monopoly-rents Bull pillar. Conviction unchanged (high), marginal.
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: SemiAnalysis quantifies N3 as THE binding AI constraint — AI ~60% of 2026 N3 output → ~86% 2027, effective util >100% H2'26, ~2-yr cleanroom ceiling (cannot add capacity), TSMC "kingmaker" prioritizing higher-ASP AI over saturated mobile/client. Corroborates pricing-power Bull pillar (Insight #5) and the Apple-share Outstanding Q#5 (smartphone squeezed toward N2); "caught flat-footed" reconciles with the deliberate-restraint framing (measured expansion over max short-term rent). Conviction unchanged (high), marginal/positive.

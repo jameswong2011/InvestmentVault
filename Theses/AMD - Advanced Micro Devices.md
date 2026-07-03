@@ -180,6 +180,12 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 → **CLOSE if**: AI revenue in FY2027 prints below $20B (vs. "tens of billions" guidance implying $25–40B+), **OR** ROCm is publicly de-prioritized by any top-3 hyperscaler in favor of CUDA-only or ASIC-only workloads, **OR** Intel 18A Clearwater Forest reclaims server CPU share trajectory (AMD EPYC share falls below 35% in any quarter through 2027).
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Compute & AI Compute Accelerators]] — sector MOC; AI accelerator competitive dynamics
@@ -204,6 +210,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: NVLink SerDes plateau opens a scale-up-fabric opportunity for AMD; TSMC COUPE hybrid bonding "proven on AMD parts" — scale-up-fabric optionality vs Nvidia
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: MI350 288GB→MI400 432GB HBM content step-up supports accelerator demand; memoryflation a modest cost headwind
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — Venice 256c N2 (1.7x perf/watt vs Turin) widens per-core lead; new SP8 8-channel platform attacks Intel enterprise base as Intel cancels its own 8-channel SKU — EPYC share-gain catalyst into a "strong double digit" CPU-TAM-growth year
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: MI350X (N3) + MI400 AID/MID tiles (N3) compete inside the binding N3 pool and the SK-Hynix→Nvidia-priority HBM allocation; MI350→MI400 +50% HBM into 3x→4x wafer/bit crowd-out — sharpens the MI450 HBM/N3 supply-gating risk
 
 ## Log
 
@@ -251,3 +258,6 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-06-02 (/sync)
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: Venice (256c N2, 1.7x perf/watt vs Turin) widens the per-core lead while Intel cancels its 8-channel Diamond Rapids-SP — AMD's new 8-channel Venice SP8 attacks Intel's enterprise stronghold exactly as Intel exits it; "strong double digit" 2026 server-CPU TAM growth. Reinforces existing Bull #3 (Venice Dense agentic-action lead); conviction unchanged (high).
+
+### 2026-06-06 (/sync)
+- [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: MI350X (N3) + MI400 AID/MID tiles (N3, XCD on N2) compete inside the binding N3 pool (AI 60%→86% of N3 output 2026→2027) and the SK-Hynix→Nvidia-priority HBM allocation; +50% HBM MI350→MI400 lands into the 3x→4x wafer/bit crowd-out. Reinforces the existing MI450 HBM/N3 supply-gating risk (06-01 log) — second-source-via-Samsung path stays structurally harder. Conviction unchanged (high).

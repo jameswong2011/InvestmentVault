@@ -244,6 +244,12 @@ Not listed but worth flagging: **SentinelOne** (Purple AI autonomous endpoint, L
 - **→ LOW if**: Any new material reliability incident occurs (customer impact >1M systems OR >$50M damages) OR Falcon Flex ARR growth decelerates below 50% YoY for 2 consecutive quarters (pulling-forward thesis confirmed) OR net new ARR decelerates below +10% YoY for 2 consecutive quarters.
 - **→ CLOSE if**: Net retention drops below 115% for 2 consecutive quarters (signals platform saturation + competitive displacement) OR any material reliability incident occurs within 12 months of a prior incident (reliability risk becomes structural).
 
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+
 ## Related Research
 
 - [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] — Product/technology comparison; source of single-agent, agentic-AI lead, Falcon Flex, architectural-asymmetry insights
