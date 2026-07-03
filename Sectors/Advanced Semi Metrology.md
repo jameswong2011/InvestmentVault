@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-27
 tags: [sector, moc, semiconductors, semiconductor-capital-equipment, process-control, metrology, inspection, KLA, CAMT, NVMI, ONTO]
 status: draft

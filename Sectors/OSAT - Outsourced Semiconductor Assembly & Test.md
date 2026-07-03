@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-08
 tags: [sector, moc, semiconductors, OSAT, backend, packaging, test, ASE, AMKR, JCET, Powertech, ChipMOS, KYEC]
 status: draft

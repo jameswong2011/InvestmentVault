@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-07
 tags: [thesis, semiconductors, packaging, glass-substrate, LPKF]
 status: draft

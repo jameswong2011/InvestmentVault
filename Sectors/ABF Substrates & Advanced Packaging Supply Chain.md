@@ -1,6 +1,13 @@
 ---
+publish: true
 date: 2026-05-16
-tags: [sector, moc, semiconductors, packaging, substrates, ABF]
+tags:
+  - sector
+  - moc
+  - semiconductors
+  - packaging
+  - substrates
+  - ABF
 status: draft
 sector: Semiconductors — Advanced Packaging Substrates
 ---

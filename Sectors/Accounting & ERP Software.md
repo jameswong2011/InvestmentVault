@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-01
 tags: [sector, moc, accounting-erp]
 status: draft

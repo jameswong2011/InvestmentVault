@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-10
 tags: [thesis, kambi, consumer-digital, sports-betting, b2b-platform]
 status: monitoring

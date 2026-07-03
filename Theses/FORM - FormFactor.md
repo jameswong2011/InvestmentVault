@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-29
 tags: [thesis, semiconductors, FORM, semicap, test-equipment, probe-cards]
 status: monitoring

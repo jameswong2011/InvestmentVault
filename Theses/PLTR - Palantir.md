@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [thesis, enterprise-software, AI, defense, PLTR]
 status: active

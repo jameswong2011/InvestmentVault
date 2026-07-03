@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-01-06
 tags: [thesis, meta, consumer-digital, advertising, AI]
 status: monitoring

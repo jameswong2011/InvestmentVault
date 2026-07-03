@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [thesis, enterprise-software, IoT, IOT, Samsara, connected-operations, physical-AI, data-flywheel]
 status: monitoring

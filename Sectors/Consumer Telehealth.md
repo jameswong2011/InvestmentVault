@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-22
 tags: [sector, moc, consumer-telehealth, DTC-healthcare, GLP-1, compounding]
 status: active

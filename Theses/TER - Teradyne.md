@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-16
 tags: [thesis, semiconductors, semiconductor-test-equipment, ATE, AI-compute, robotics, TER]
 status: monitoring

@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-09
 tags: [thesis, semiconductors, compute-ai-accelerators, cpu-ip, ARM]
 status: draft

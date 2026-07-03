@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2025-11-28
 tags: [thesis, OPEN, proptech, real-estate, ibuyer]
 status: monitoring

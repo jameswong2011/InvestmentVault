@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-22
 last_updated: 2026-04-30
 tags: [sector, moc, semiconductors, WFE, capital-equipment, KLAC, AMAT, LRCX, ASMI, TEL, BESI]

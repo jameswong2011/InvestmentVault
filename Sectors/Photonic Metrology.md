@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-29
 tags: [sector, moc, semiconductors, photonics, photonic-metrology, photonic-test, AEHR, FORM, CPO]
 status: draft

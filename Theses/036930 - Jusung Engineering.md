@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-07
 tags: [thesis, semiconductors, semicap, ALD, korea, 036930]
 status: draft

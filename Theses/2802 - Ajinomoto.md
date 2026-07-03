@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-16
 tags: [thesis, semiconductors, packaging, substrates, materials, japan, 2802]
 status: monitoring

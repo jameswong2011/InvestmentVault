@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-16
 tags: [sector, moc, semiconductors, NAND, flash, storage, memory]
 status: active

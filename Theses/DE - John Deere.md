@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-14
 tags: [thesis, DE, agriculture, industrials, precision-ag, autonomy, platform]
 status: monitoring

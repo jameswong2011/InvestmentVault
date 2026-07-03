@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-27
 tags: [thesis, semiconductors, INTC]
 status: monitoring

@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-26
 tags: [macro, iran-war, trading-playbook, energy, defense, volatility, hedging, scenario-analysis]
 status: active

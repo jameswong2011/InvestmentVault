@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-07
 tags: [macro, technology, semiconductors, packaging, substrates, glass-core, ABF, LIDE, INTC, TSM, 2802, LPKF, BESI]
 status: active

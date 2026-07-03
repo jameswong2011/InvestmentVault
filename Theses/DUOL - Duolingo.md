@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-14
 tags: [thesis, DUOL, consumer-digital, edtech, AI, gamification]
 status: monitoring

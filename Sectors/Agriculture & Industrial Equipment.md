@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [sector, moc, agriculture, industrial-equipment, precision-ag, autonomy]
 status: active

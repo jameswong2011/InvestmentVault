@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [thesis, consumer, GAW, games-workshop, warhammer, IP-monetization, pricing-power, cultural-moat]
 status: active

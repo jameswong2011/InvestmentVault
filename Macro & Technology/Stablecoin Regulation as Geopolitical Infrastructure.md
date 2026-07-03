@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [macro, stablecoins, regulation, geopolitics, GENIUS-Act, CLARITY-Act, MiCA, USDC, dollar-hegemony]
 status: active

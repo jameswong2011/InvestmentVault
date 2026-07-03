@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-22
 tags: [sector, moc, hobby, tabletop, wargaming, miniatures, trading-cards, board-games, TTRPG, IP-monetization, GAW, Games-Workshop]
 status: active

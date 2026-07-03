@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-02-26
 tags: [thesis, APP, consumer-digital, adtech, AI]
 status: monitoring

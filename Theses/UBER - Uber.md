@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [thesis, uber, UBER, consumer-digital, rideshare, delivery, autonomous-vehicles]
 status: monitoring

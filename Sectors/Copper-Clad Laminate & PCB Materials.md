@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-10
 tags: [sector, moc, copper-clad-laminate]
 status: active

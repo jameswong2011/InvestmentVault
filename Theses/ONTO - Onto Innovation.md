@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-22
 tags: [thesis, semiconductor-capital-equipment, advanced-semi-metrology, advanced-packaging, ONTO]
 status: draft

@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-22
 tags: [sector, moc, enterprise-storage, AI-infrastructure, flash, NAND, hyperscaler, AFA]
 status: active

@@ -46105,12 +46105,12 @@ function installTreeAwareKill(child, spawnSpec) {
   if (!spawnSpec.killProcessTree) {
     return;
   }
-  const originalKill = child.kill;
+  const originalKill = child.kill.bind(child);
   const killableChild = {
     get pid() {
       return child.pid;
     },
-    kill: (signal) => originalKill.call(child, signal)
+    kill: (signal) => originalKill(signal)
   };
   child.kill = ((signal) => terminateSpawnedProcess(killableChild, signal, import_child_process6.spawn, spawnSpec));
 }
@@ -67846,8 +67846,12 @@ async function createClaudeRewindBackup(filesChanged, vaultPath) {
 }
 async function executeClaudeRewind(userMessageId, deps) {
   if (deps.mode === "conversation") {
-    deps.setPendingResumeAt(deps.assistantMessageId);
-    deps.closePersistentQuery("conversation rewind");
+    if (deps.assistantMessageId) {
+      deps.setPendingResumeAt(deps.assistantMessageId);
+      deps.closePersistentQuery("conversation rewind");
+    } else {
+      deps.resetSession();
+    }
     return { canRewind: true, filesChanged: [] };
   }
   const preview = await deps.rewindFiles(userMessageId, true);
@@ -67862,8 +67866,12 @@ async function executeClaudeRewind(userMessageId, deps) {
       deps.closePersistentQuery("rewind failed");
       return result;
     }
-    deps.setPendingResumeAt(deps.assistantMessageId);
-    deps.closePersistentQuery("rewind");
+    if (deps.assistantMessageId) {
+      deps.setPendingResumeAt(deps.assistantMessageId);
+      deps.closePersistentQuery("rewind");
+    } else {
+      deps.resetSession();
+    }
     return {
       ...result,
       filesChanged: preview.filesChanged,
@@ -69247,6 +69255,7 @@ var ClaudianService = class {
       setPendingResumeAt: (resumeAt) => {
         this.pendingResumeAt = resumeAt;
       },
+      resetSession: () => this.resetSession(),
       vaultPath: this.vaultPath
     });
   }
@@ -73894,27 +73903,6 @@ function processPersistedPayload(payload, timestamp, lineIndex, ctx) {
       break;
   }
 }
-function applyCompactedReplacementHistory(payload, timestamp, ctx) {
-  ctx.turns.clear();
-  ctx.turnOrder.length = 0;
-  ctx.currentTurnId = null;
-  ctx.toolCallToTurn.clear();
-  ctx.suppressedToolOutputIds.clear();
-  ctx.terminalSessionToCommandId.clear();
-  ctx.stdinCallToCommandId.clear();
-  ctx.turnCounter = 0;
-  const replacementHistory = Array.isArray(payload == null ? void 0 : payload.replacement_history) ? payload.replacement_history : [];
-  for (const [index, item] of replacementHistory.entries()) {
-    processPersistedPayload(item, timestamp + index, index, ctx);
-  }
-  if (ctx.currentTurnId) {
-    const turn = ctx.turns.get(ctx.currentTurnId);
-    if (turn) {
-      closeAssistantBubble(turn);
-    }
-    ctx.currentTurnId = null;
-  }
-}
 function extractServerTurnId(payload) {
   const turnId = payload.turn_id;
   return typeof turnId === "string" ? turnId : void 0;
@@ -74218,7 +74206,6 @@ function parseModernSessionTurns(records) {
       continue;
     }
     if (parsed.type === "compacted") {
-      applyCompactedReplacementHistory(parsed.payload, timestamp, ctx);
       continue;
     }
     if (parsed.type === "response_item") {
@@ -87592,7 +87579,7 @@ var ConversationController = class {
       return;
     }
     const rewindCtx = findRewindContext(msgs, userIdx);
-    if (!rewindCtx.hasResponse || !rewindCtx.prevAssistantUuid) {
+    if (!rewindCtx.hasResponse) {
       new import_obsidian23.Notice(t10("chat.rewind.unavailableNoUuid"));
       return;
     }
@@ -87633,7 +87620,10 @@ var ConversationController = class {
     const filesChanged = (_c2 = (_b3 = result.filesChanged) == null ? void 0 : _b3.length) != null ? _c2 : 0;
     let saveError = null;
     try {
-      await this.save(false, { resumeAtMessageId: prevAssistantUuid });
+      await this.save(false, {
+        resumeAtMessageId: prevAssistantUuid,
+        resetProviderSession: !prevAssistantUuid
+      });
     } catch (e2) {
       saveError = e2 instanceof Error ? e2.message : "Failed to save";
     }
@@ -87679,7 +87669,7 @@ var ConversationController = class {
     const mcpServerSelector = this.deps.getMcpServerSelector();
     const enabledMcpServers = mcpServerSelector ? Array.from(mcpServerSelector.getEnabledServers()) : [];
     const conversation = plugin.getConversationSync(state.currentConversationId);
-    const { updates: sessionUpdates } = agentService ? agentService.buildSessionUpdates({ conversation, sessionInvalidated }) : { updates: {} };
+    const { updates: sessionUpdates } = agentService && !(options == null ? void 0 : options.resetProviderSession) ? agentService.buildSessionUpdates({ conversation, sessionInvalidated }) : { updates: {} };
     const updates = {
       ...sessionUpdates,
       messages: state.messages,
@@ -87693,6 +87683,10 @@ var ConversationController = class {
     }
     if (options) {
       updates.resumeAtMessageId = options.resumeAtMessageId;
+      if (options.resetProviderSession) {
+        updates.sessionId = null;
+        updates.providerState = void 0;
+      }
     }
     await plugin.updateConversation(state.currentConversationId, updates);
     state.hasPendingConversationSave = false;
@@ -94743,6 +94737,15 @@ function replaceImageEmbedsWithHtml(markdown, app, options) {
   );
 }
 
+// src/features/chat/utils/conversationDirectoryTitle.ts
+var CONVERSATION_DIRECTORY_TITLE_MAX_LENGTH = 80;
+function formatConversationDirectoryTitle(text) {
+  const firstLine = text.split(/\r?\n/).map((line) => line.trim()).find(Boolean);
+  if (!firstLine) return "";
+  if (firstLine.length <= CONVERSATION_DIRECTORY_TITLE_MAX_LENGTH) return firstLine;
+  return `${firstLine.slice(0, CONVERSATION_DIRECTORY_TITLE_MAX_LENGTH - 3)}...`;
+}
+
 // src/features/chat/rendering/MessageRenderer.ts
 function runRendererAction(action) {
   void action().catch(() => {
@@ -94788,6 +94791,14 @@ var MessageRenderer = class {
     var _a5, _b3;
     return (_b3 = (_a5 = msg.displayContent) != null ? _a5 : extractUserDisplayContent(msg.content)) != null ? _b3 : msg.content;
   }
+  applyTocTitle(msgEl, text) {
+    const tocTitle = formatConversationDirectoryTitle(text);
+    if (tocTitle) {
+      msgEl.setAttribute("data-toc-title", tocTitle);
+    } else {
+      msgEl.removeAttribute("data-toc-title");
+    }
+  }
   // ============================================
   // Streaming Message Rendering
   // ============================================
@@ -94821,6 +94832,7 @@ var MessageRenderer = class {
         const textEl = contentEl.createDiv({ cls: "claudian-text-block" });
         void this.renderContent(textEl, textToShow);
         this.addUserCopyButton(msgEl, textToShow);
+        this.applyTocTitle(msgEl, textToShow);
       }
       if (this.rewindCallback || this.forkCallback) {
         this.liveMessageEls.set(msg.id, msgEl);
@@ -94847,6 +94859,9 @@ var MessageRenderer = class {
     if (textToShow) {
       const textEl = contentEl.createDiv({ cls: "claudian-text-block" });
       void this.renderContent(textEl, textToShow);
+      this.applyTocTitle(msgEl, textToShow);
+    } else {
+      msgEl.removeAttribute("data-toc-title");
     }
     const toolbar = msgEl.querySelector(".claudian-user-msg-actions");
     if (toolbar) {
@@ -94919,12 +94934,13 @@ var MessageRenderer = class {
         const textEl = contentEl.createDiv({ cls: "claudian-text-block" });
         void this.renderContent(textEl, textToShow);
         this.addUserCopyButton(msgEl, textToShow);
+        this.applyTocTitle(msgEl, textToShow);
       }
-      if (msg.userMessageId && this.isRewindEligible(allMessages, index)) {
-        if (this.rewindCallback) {
+      if (msg.userMessageId) {
+        if (this.rewindCallback && this.isRewindEligible(allMessages, index)) {
           this.addRewindButton(msgEl, msg.id);
         }
-        if (this.forkCallback) {
+        if (this.forkCallback && this.isForkEligible(allMessages, index)) {
           this.addForkButton(msgEl, msg.id);
         }
       }
@@ -94954,6 +94970,11 @@ var MessageRenderer = class {
     return false;
   }
   isRewindEligible(allMessages, index) {
+    if (!allMessages || index === void 0) return false;
+    const ctx = findRewindContext(allMessages, index);
+    return ctx.hasResponse;
+  }
+  isForkEligible(allMessages, index) {
     if (!allMessages || index === void 0) return false;
     const ctx = findRewindContext(allMessages, index);
     return !!ctx.prevAssistantUuid && ctx.hasResponse;
@@ -95321,20 +95342,22 @@ var MessageRenderer = class {
   }
   refreshActionButtons(msg, allMessages, index) {
     if (!msg.userMessageId) return;
-    if (!this.isRewindEligible(allMessages, index)) return;
+    const canRewind = this.isRewindEligible(allMessages, index);
+    const canFork = this.isForkEligible(allMessages, index);
+    if (!canRewind && !canFork) return;
     const msgEl = this.liveMessageEls.get(msg.id);
     if (!msgEl) return;
-    if (this.rewindCallback && !msgEl.querySelector(".claudian-message-rewind-btn")) {
+    if (canRewind && this.rewindCallback && !msgEl.querySelector(".claudian-message-rewind-btn")) {
       this.addRewindButton(msgEl, msg.id);
     }
-    if (this.forkCallback && !msgEl.querySelector(".claudian-message-fork-btn")) {
+    if (canFork && this.forkCallback && !msgEl.querySelector(".claudian-message-fork-btn")) {
       this.addForkButton(msgEl, msg.id);
     }
-    this.cleanupLiveMessageEl(msg.id, msgEl);
+    this.cleanupLiveMessageEl(msg.id, msgEl, { canRewind, canFork });
   }
-  cleanupLiveMessageEl(msgId, msgEl) {
-    const needsRewind = this.rewindCallback && !msgEl.querySelector(".claudian-message-rewind-btn");
-    const needsFork = this.forkCallback && !msgEl.querySelector(".claudian-message-fork-btn");
+  cleanupLiveMessageEl(msgId, msgEl, expectedActions) {
+    const needsRewind = expectedActions.canRewind && this.rewindCallback && !msgEl.querySelector(".claudian-message-rewind-btn");
+    const needsFork = expectedActions.canFork && this.forkCallback && !msgEl.querySelector(".claudian-message-fork-btn");
     if (!needsRewind && !needsFork) {
       this.liveMessageEls.delete(msgId);
     }
@@ -99518,13 +99541,17 @@ var NavigationSidebar = class {
   constructor(parentEl, messagesEl) {
     this.parentEl = parentEl;
     this.messagesEl = messagesEl;
+    this.tocPopover = null;
     this.scrollHandler = () => {
     };
+    this.outsideClickHandler = null;
+    this.mutationObserver = null;
     this.pendingVisibilityFrame = null;
     this.isVisible = null;
     this.container = this.parentEl.createDiv({ cls: "claudian-nav-sidebar" });
     this.topBtn = this.createButton("claudian-nav-btn-top", "chevrons-up", "Scroll to top");
     this.prevBtn = this.createButton("claudian-nav-btn-prev", "chevron-up", "Previous message");
+    this.tocBtn = this.createButton("claudian-nav-btn-toc", "list-tree", "Conversation directory");
     this.nextBtn = this.createButton("claudian-nav-btn-next", "chevron-down", "Next message");
     this.bottomBtn = this.createButton("claudian-nav-btn-bottom", "chevrons-down", "Scroll to bottom");
     this.setupEventListeners();
@@ -99537,6 +99564,7 @@ var NavigationSidebar = class {
     return btn;
   }
   setupEventListeners() {
+    var _a5, _b3;
     this.scrollHandler = () => this.updateVisibility();
     this.messagesEl.addEventListener("scroll", this.scrollHandler, { passive: true });
     this.topBtn.addEventListener("click", () => {
@@ -99547,6 +99575,35 @@ var NavigationSidebar = class {
     });
     this.prevBtn.addEventListener("click", () => this.scrollToMessage("prev"));
     this.nextBtn.addEventListener("click", () => this.scrollToMessage("next"));
+    this.tocBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      this.toggleDirectory();
+    });
+    this.outsideClickHandler = (event) => {
+      var _a6;
+      const target = event.target;
+      if (!target) return;
+      const containerContainsTarget = typeof this.container.contains === "function" && this.container.contains(target);
+      const popoverContainsTarget = typeof ((_a6 = this.tocPopover) == null ? void 0 : _a6.contains) === "function" && this.tocPopover.contains(target);
+      if (!containerContainsTarget && !popoverContainsTarget) {
+        this.closeDirectory();
+      }
+    };
+    (_b3 = (_a5 = this.parentEl.ownerDocument) == null ? void 0 : _a5.addEventListener) == null ? void 0 : _b3.call(_a5, "click", this.outsideClickHandler);
+    if (typeof MutationObserver !== "undefined") {
+      this.mutationObserver = new MutationObserver((mutations) => {
+        this.updateVisibility();
+        if (this.shouldRefreshDirectory(mutations)) {
+          this.refreshOpenDirectory();
+        }
+      });
+      this.mutationObserver.observe(this.messagesEl, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["data-toc-title"]
+      });
+    }
   }
   /**
    * Updates visibility of the sidebar based on scroll state.
@@ -99563,9 +99620,101 @@ var NavigationSidebar = class {
   applyVisibility() {
     const { scrollHeight, clientHeight } = this.messagesEl;
     const isScrollable = scrollHeight > clientHeight + 50;
+    this.tocBtn.classList.remove("claudian-hidden");
     if (this.isVisible === isScrollable) return;
     this.isVisible = isScrollable;
     this.container.classList.toggle("visible", isScrollable);
+  }
+  getDirectoryEntries() {
+    return Array.from(this.messagesEl.querySelectorAll('.claudian-message-user, [data-role="user"]')).map((el2) => ({
+      el: el2,
+      title: this.getDirectoryTitle(el2)
+    })).filter((entry) => entry.title.length > 0);
+  }
+  getDirectoryTitle(el2) {
+    var _a5, _b3, _c2;
+    const explicitTitle = ((_a5 = el2.getAttribute("data-toc-title")) != null ? _a5 : "").trim();
+    if (explicitTitle) return explicitTitle;
+    const contentEl = el2.querySelector(".claudian-message-content");
+    return formatConversationDirectoryTitle((_c2 = (_b3 = contentEl == null ? void 0 : contentEl.textContent) != null ? _b3 : el2.textContent) != null ? _c2 : "");
+  }
+  shouldRefreshDirectory(mutations) {
+    if (!this.tocPopover) return false;
+    return mutations.some((mutation) => {
+      if (mutation.type === "attributes") {
+        return mutation.attributeName === "data-toc-title" && this.isDirectoryMessageElement(mutation.target);
+      }
+      if (mutation.type !== "childList") return false;
+      return Array.from(mutation.addedNodes).some((node) => this.nodeContainsDirectoryMessage(node)) || Array.from(mutation.removedNodes).some((node) => this.nodeContainsDirectoryMessage(node));
+    });
+  }
+  nodeContainsDirectoryMessage(node) {
+    if (this.isDirectoryMessageElement(node)) return true;
+    const candidate = node;
+    return typeof candidate.querySelector === "function" && candidate.querySelector('.claudian-message-user, [data-role="user"]') !== null;
+  }
+  isDirectoryMessageElement(node) {
+    var _a5, _b3, _c2;
+    const candidate = node;
+    if (typeof candidate.matches === "function") {
+      return candidate.matches('.claudian-message-user, [data-role="user"]');
+    }
+    return ((_b3 = (_a5 = candidate.classList) == null ? void 0 : _a5.contains) == null ? void 0 : _b3.call(_a5, "claudian-message-user")) === true || ((_c2 = candidate.getAttribute) == null ? void 0 : _c2.call(candidate, "data-role")) === "user";
+  }
+  toggleDirectory() {
+    if (this.tocPopover) {
+      this.closeDirectory();
+      return;
+    }
+    this.openDirectory();
+  }
+  openDirectory() {
+    const entries = this.getDirectoryEntries();
+    this.closeDirectory();
+    this.tocPopover = this.parentEl.createDiv({ cls: "claudian-nav-toc-popover" });
+    this.tocPopover.createDiv({ cls: "claudian-nav-toc-title", text: "Conversation directory" });
+    const listEl = this.tocPopover.createDiv({ cls: "claudian-nav-toc-list" });
+    if (entries.length === 0) {
+      listEl.createDiv({
+        cls: "claudian-nav-toc-empty",
+        text: "No user prompts in this conversation"
+      });
+      return;
+    }
+    entries.forEach((entry, index) => {
+      const itemEl = listEl.createDiv({
+        cls: "claudian-nav-toc-item",
+        text: `${index + 1}. ${entry.title}`
+      });
+      itemEl.setAttribute("role", "button");
+      itemEl.setAttribute("tabindex", "0");
+      itemEl.setAttribute("title", entry.title);
+      const selectEntry = () => {
+        this.scrollToElement(entry.el);
+        this.closeDirectory();
+      };
+      itemEl.addEventListener("click", selectEntry);
+      itemEl.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        selectEntry();
+      });
+    });
+  }
+  refreshOpenDirectory() {
+    if (!this.tocPopover) return;
+    this.openDirectory();
+  }
+  closeDirectory() {
+    var _a5;
+    (_a5 = this.tocPopover) == null ? void 0 : _a5.remove();
+    this.tocPopover = null;
+  }
+  scrollToElement(el2) {
+    this.messagesEl.scrollTo({
+      top: Math.max(el2.offsetTop - 10, 0),
+      behavior: "smooth"
+    });
   }
   /**
    * Scrolls to previous or next user message, skipping assistant messages.
@@ -99578,7 +99727,7 @@ var NavigationSidebar = class {
     if (direction === "prev") {
       for (let i = messages.length - 1; i >= 0; i--) {
         if (messages[i].offsetTop < scrollTop - threshold) {
-          this.messagesEl.scrollTo({ top: messages[i].offsetTop - 10, behavior: "smooth" });
+          this.scrollToElement(messages[i]);
           return;
         }
       }
@@ -99586,7 +99735,7 @@ var NavigationSidebar = class {
     } else {
       for (let i = 0; i < messages.length; i++) {
         if (messages[i].offsetTop > scrollTop + threshold) {
-          this.messagesEl.scrollTo({ top: messages[i].offsetTop - 10, behavior: "smooth" });
+          this.scrollToElement(messages[i]);
           return;
         }
       }
@@ -99594,10 +99743,18 @@ var NavigationSidebar = class {
     }
   }
   destroy() {
+    var _a5, _b3, _c2;
     if (this.pendingVisibilityFrame !== null) {
       cancelScheduledAnimationFrame(this.pendingVisibilityFrame);
       this.pendingVisibilityFrame = null;
     }
+    this.closeDirectory();
+    if (this.outsideClickHandler) {
+      (_b3 = (_a5 = this.parentEl.ownerDocument) == null ? void 0 : _a5.removeEventListener) == null ? void 0 : _b3.call(_a5, "click", this.outsideClickHandler);
+      this.outsideClickHandler = null;
+    }
+    (_c2 = this.mutationObserver) == null ? void 0 : _c2.disconnect();
+    this.mutationObserver = null;
     this.messagesEl.removeEventListener("scroll", this.scrollHandler);
     this.container.remove();
   }

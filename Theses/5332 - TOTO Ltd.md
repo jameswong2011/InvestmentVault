@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-24
 tags: [thesis, semiconductor-capital-equipment, TOTO]
 status: draft

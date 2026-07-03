@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-24
 tags: [thesis, precious-metals, GLD, gold, commodity, macro-hedge]
 status: monitoring

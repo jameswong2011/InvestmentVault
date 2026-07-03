@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-10
 tags: [thesis, copper-clad-laminate, 2383]
 status: draft

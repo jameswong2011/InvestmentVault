@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-14
 tags: [thesis, semiconductors, BESI, hybrid-bonding, HBM, advanced-packaging, CPO]
 status: active

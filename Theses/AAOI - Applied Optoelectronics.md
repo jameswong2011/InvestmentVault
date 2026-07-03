@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-24
 tags: [thesis, AAOI, photonics, optical-transceivers, CATV, LPO, semiconductors]
 status: draft

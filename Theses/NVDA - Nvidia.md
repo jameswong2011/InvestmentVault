@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [thesis, semiconductors, AI, physical-AI, NVDA]
 status: active

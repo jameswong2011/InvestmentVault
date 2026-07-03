@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [sector, moc, cybersecurity, ai-security, geopolitics]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-08
 tags: [thesis, semiconductors, semiconductor-capital-equipment, engineered-substrates, photonics, RF, SOI]
 status: draft

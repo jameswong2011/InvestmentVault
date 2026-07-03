@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-01-22
 tags: [thesis, HIMS, healthcare-medtech, telehealth, DTC-healthcare, compounding, GLP-1, peptides]
 status: monitoring

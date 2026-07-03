@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [thesis, pstg, enterprise-storage, ai-infrastructure]
 status: monitoring

@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-22
 tags: [thesis, semiconductors, photonics, InP, CPO, mmWave, small-cap, SIVE]
 status: active

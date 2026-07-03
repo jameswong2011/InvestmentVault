@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-26
 tags: [sector, moc, DRAM, HBM, memory]
 status: active

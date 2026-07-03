@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-22
 tags: [thesis, vertical-market-software, capital-allocation, serial-acquirer, CSU]
 status: draft

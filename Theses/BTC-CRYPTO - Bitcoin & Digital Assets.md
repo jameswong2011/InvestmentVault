@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-15
 tags: [thesis, crypto, bitcoin, ethereum, stablecoins, quantum-risk, macro, digital-assets]
 status: monitoring

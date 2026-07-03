@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-16
 tags: [sector, moc, semiconductors, test-equipment, ATE, backend, ADVT, TER, COHU, HBM]
 status: draft

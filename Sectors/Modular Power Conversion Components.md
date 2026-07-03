@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-28
 tags: [sector, moc, power, semiconductors]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-22
 tags: [sector, moc, edtech, consumer, duolingo, language-learning, gamification, AI]
 status: active

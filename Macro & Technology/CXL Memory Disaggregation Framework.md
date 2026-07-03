@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-26
 tags: [macro, technology, CXL, memory-disaggregation, photonics, mental-model, MRVL, AVGO]
 status: active

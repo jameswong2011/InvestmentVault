@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-04-22
 tags: [sector, moc, video-game-publishing, gaming, AAA, live-service, UGC, platform-economics, mobile-gaming, TTWO]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-15
 tags: [sector, moc, neoclouds, GPU-as-a-Service, AI-infrastructure]
 status: active

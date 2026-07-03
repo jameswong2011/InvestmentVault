@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-22
 tags: [sector, moc, vertical-market-software]
 status: draft

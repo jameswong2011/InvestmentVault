@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-05-18
 tags: [macro, technology, power, 800VDC, data-center, AI-infra, NVDA, VICR, VRT]
 status: active

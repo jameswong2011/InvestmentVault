@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-06-08
 tags: [thesis, semiconductors, test-equipment, 6515]
 status: draft
