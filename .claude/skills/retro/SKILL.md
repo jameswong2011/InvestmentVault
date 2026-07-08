@@ -3,7 +3,7 @@ name: retro
 description: Generate a backward-looking retrospective of vault activity (addressed callouts + Log entries) over a time window (1w / 1m / 1q), overlay with newsflow + earnings transcripts + price action, and rank trade ideas by the gap between official narrative and market reaction. Output is an immutable Research note. Use when user says "retro", "retrospective", "what did I do this week/month/quarter", "review activity against market", or "recommend trades from recent research".
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * awk * defuddle *)
+allowed-tools: Agent Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * awk * defuddle *)
 ---
 
 **Follow CLAUDE.md Writing Standards strictly.** No hedge words, lead with insights/numbers, tables over prose, every sentence must earn its place.
@@ -15,6 +15,12 @@ Produce a retrospective that answers three questions in one artifact:
 3. **Did the market price the narrative?** Per-ticker overlay of **newsflow + earnings results/transcripts + price action**. Trade ideas rank by the **narrative-price delta** — the gap between what official sources signaled and what the stock did. Biggest gaps are positioning opportunities; alignment is already-priced.
 
 Output is an **immutable Research note** — one new note per run, never overwrite. Trade recommendations are informational (link-back + suggested follow-up skill); this skill never mutates `conviction:` or `status:` (Tier 3 Confirmation-Required per CLAUDE.md).
+
+## Execution context — subagent delegation (2026-07-08, MANDATORY)
+
+Delegate the ENTIRE run (Step 0 pre-flight through Phase 9 output) to ONE `Agent` subagent (`subagent_type: general-purpose`, `run_in_background: false`). Pass this skill's full instructions plus the resolved window in the agent prompt. The subagent performs all reads, WebSearches, transcript fetches, lock acquire/release, and writes (the immutable Research note + Log back-references + `_hot.md`), and must END its final message with the complete Phase 9.2 user-facing report. The main thread renders that returned report **verbatim** in chat — never re-summarize it, never drop the Trade Ideas table.
+
+**This supersedes the 2026-06-07 "main-thread, no fork" decision** (see Design notes) — that revert was specific to the frontmatter `context: fork` mechanism, which returned the report as unrendered stdout (blank panel). Agent-tool delegation is a different mechanism: the subagent's final message returns to the main thread as a tool result, and the main thread re-emits it in its own response, so rendering is preserved. This keeps the ~400K-token read/search budget out of main context (main receives only the final report). If a future run shows a truncated or missing report, the fallback is to remove this section and restore main-thread execution — the Research note persists to disk either way.
 
 ## Arguments
 
@@ -563,7 +569,7 @@ Next steps:
   → Review Trade Ideas and decide whether to act via /status, /stress-test, /deepen, /ingest, or /thesis
 ```
 
-**Runs in the main conversation** (no fork) — the Phase 9.2 report renders directly in chat. The ~60 full-file reads + up to ~126 WebSearch results + up to 5 earnings-transcript fetches (~400K tokens at current vault scale) consume main-session context, so run `/retro` in a fresh conversation when context budget matters; the Research note persists to disk as the authoritative artifact.
+**Runs in a delegated subagent** (see Execution context at top) — the Phase 9.2 report is produced inside the subagent and re-emitted verbatim by the main thread, so the ~60 full-file reads + up to ~126 WebSearch results + up to 5 earnings-transcript fetches (~400K tokens) stay out of main-session context. The Research note persists to disk as the authoritative artifact regardless.
 
 ## Invariants
 
@@ -605,7 +611,7 @@ Each run produces an independent immutable artifact. The `/graph last` reconcili
 
 - **Why vault-wide lock (not read-only)**: retro writes a Research note, appends Log entries to 3-5 theses, and updates `_hot.md`. These writes conflict with concurrent `/sync` or `/catalyst`. Read-only lock is insufficient.
 - **Why no scoped mode in v1**: single-ticker retro (`/retro 1w NVDA`) is a reasonable v2 extension. The vault-wide view is the v1 use case per the user's original framing ("recommend trades" across the portfolio). Scoped mode would add a resolution path + graph primer switch that v1 doesn't need.
-- **Why main-thread (no fork)**: the Phase 9.2 report must render in the user's chat — a forked subagent returned its summary as unrendered stdout, leaving the panel blank (fixed 2026-06-07). Tradeoff: ~60 full-file reads + up to ~126 WebSearch returns (3× ticker fan-out) + up to 5 earnings-transcript fetches = ~400K tokens of upstream material now consume main-session context. Run in a fresh conversation when budget matters; the Research note persists to disk regardless.
+- **Fork history — frontmatter fork reverted, Agent delegation adopted**: 2026-06-07 the frontmatter `context: fork` mechanism was reverted because the harness returned the report as unrendered stdout, leaving the chat panel blank. 2026-07-08 the skill moved to **Agent-tool delegation** (see Execution context at top): the subagent does the ~400K-token read/search work and returns the full report as a tool result; the main thread re-emits it verbatim, so rendering is preserved AND main-context cost is just the returned report. The two mechanisms are distinct — do not "restore main-thread execution" on the assumption that delegation reintroduces the 2026-06-07 blank-panel bug; it does not. Revert path if delegation ever truncates: delete the Execution-context section, and the skill runs inline again (report renders, but ~400K tokens land in main context).
 - **Why narrative-price delta is the core engine**: "what did the market say happened vs what did the stock do" is the classical trader signal for positioning opportunities. Aligned narrative + price = already priced, no alpha. Inverted narrative + price = market is pricing something the surface news isn't showing — positioning, forward risk, capitulation, or vault's non-consensus view is right. The vault's recent stance then separates alpha (vault predicted the divergence) from reflection (vault missed it). This is why the 1.5× weight on inverted deltas vs 1.0× on flow-only signals: rejected narrative is asymmetric information, confirmed narrative is consensus.
 - **Why exclude social sentiment**: per user spec — official narrative channels (press releases, SEC filings, earnings, analyst actions) are structured, date-anchored, and polarity-classifiable. Social sentiment (X/Twitter/Reddit) is noisy, hard to polarity-classify at scale, and typically echoes official narrative with a lag. Including it would expand WebSearch fan-out 2-3× without proportional signal gain.
 - **Why cap transcript fetches at 5 per run**: earnings transcripts are ~8-15K tokens each. An uncapped fetch on a heavy-earnings week (5+ tickers reporting) would blow the context budget. Pre-screen selects the 5 most likely to rank in Trade Ideas Top 5 — low-ranking earnings contribute via the Earnings WebSearch snippet (surprise + guidance direction) without the full transcript read.

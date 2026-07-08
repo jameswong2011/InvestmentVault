@@ -3,12 +3,18 @@ name: surface
 description: Surface new insights, potential trades, and research opportunities from existing vault content. Use when user says "surface", "what am I missing", "find opportunities", or "what should I research next".
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * defuddle *)
+allowed-tools: Agent Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * defuddle *)
 ---
 
 **Follow CLAUDE.md Writing Standards strictly.** No hedge words, lead with insights/numbers, tables over prose, every sentence must earn its place.
 
 Perform deep insight discovery across the vault. This is the highest-value operation — finding connections and opportunities the user hasn't seen yet.
+
+## Execution context — subagent delegation (2026-07-08, MANDATORY)
+
+Delegate the ENTIRE run (Step 0 pre-flight through Phase 4 output) to ONE `Agent` subagent (`subagent_type: general-purpose`, `run_in_background: false`). Pass this skill's full instructions plus the resolved scope in the agent prompt. The subagent performs all reads, analysis, lock acquire/release, and writes (Research note + `_hot.md`), and must END its final message with the complete user-facing report. The main thread renders that returned report **verbatim** in chat — never re-summarize it, never discard sections.
+
+Why delegation, not frontmatter fork: `context: fork` was reverted 2026-06-07 (forked output returned as unrendered stdout — blank panel). Delegation keeps the read set (~50-80K words default, ~220K words `all` mode) out of main context while the main thread does the rendering. Main-context cost: the returned report only.
 
 ## Step 0: Pre-flight (MANDATORY — runs before Scope Resolution)
 
@@ -142,7 +148,7 @@ Use when the user wants maximum analytical depth for a once-off deep review. Rea
 3. Read all Macro Notes in full.
 4. For heavily cited research notes (≥3 theses in `_graph.md` adjacency): read in full — include in the parallel batch with steps 1-3 (one round-trip). For others: read on-demand when Phase 2 analysis surfaces a specific question about them.
 
-**Expected read budget**: ~220K words total (matches pre-R2 behavior). Main-session context consumption: ~290K tokens — `/surface all` runs in-thread (no fork), so this lands in your main conversation. Reserve `all` for once-off deep reviews and run it in a fresh conversation when context budget matters; default `/surface` (~50-80K words) is the lean routine-cadence choice.
+**Expected read budget**: ~220K words total (matches pre-R2 behavior), consumed inside the delegated subagent (see Execution context above) — main-session context receives only the final report. Default `/surface` (~50-80K subagent words) remains the lean routine-cadence choice; reserve `all` for once-off deep reviews.
 
 **Output differentiation**: `/surface all` research notes carry `source_type: synthesis` with `scope: all` in a `scope:` frontmatter field, so downstream review can distinguish deep-scan outputs from routine `/surface` scans. Filename: `Research/YYYY-MM-DD - Insight Surface Scan (all).md`.
 

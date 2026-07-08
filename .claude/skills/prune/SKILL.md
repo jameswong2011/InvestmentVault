@@ -3,12 +3,32 @@ name: prune
 description: Systematically evaluate weak, stale, or low-conviction theses for upgrade, monitoring, or closure. Use when user says "prune", "kill list", "clean up theses", "what should I close", or "reduce portfolio".
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write Bash(date * find * wc * mv * cp * mkdir * rm * grep * cat * sort * printf *)
+allowed-tools: Agent Read Grep Glob Edit Write Bash(date * find * wc * mv * cp * mkdir * rm * grep * cat * sort * printf *)
 ---
 
 Systematically evaluate the thesis portfolio; recommend keep / upgrade / kill. Be ruthless — cognitive overhead of tracking weak positions has a real cost.
 
 Design rationale in `.claude/skills/prune/RATIONALE.md` (§N.M anchors).
+
+## Execution context — split delegation (2026-07-08, MANDATORY)
+
+`/prune` splits across the subagent boundary because it has a read-heavy analysis half (~42 full-thesis reads) and a mutation half gated by mandatory user approval. A subagent cannot obtain mid-run user confirmation, and destructive edits must stay in the main thread. So:
+
+**ANALYSIS HALF — delegate to ONE `Agent` subagent** (`subagent_type: general-purpose`, `run_in_background: false`). The subagent runs **Phase 0.0.2 (rename-marker check) + Phase 0 (unsynced-research scan) + Phase 1–4** under a `read-only` lock (`.vault-lock.readonly` per preflight Procedure 1; it performs no writes). It reads every candidate thesis, does the two-pass triage and per-candidate assessment, and its final message returns EXACTLY:
+
+1. A **pre-flight status**: either `PREFLIGHT-OK`, or `PREFLIGHT-BLOCKED: <rename-marker | first-run | unsynced-research>` with the details/file list the main thread needs to surface.
+2. The full **Phase 4 report** (Recommendation Table + Portfolio Stats + Attention Allocation) — rendered verbatim by the main thread.
+3. A compact **execution plan** the mutation half consumes without re-deriving analysis:
+   - `closures:` list of `(ticker, filename, conviction_at_closure, one-line rationale)`
+   - `upgrades:` list of `(ticker, filename, old→new conviction, justification, Log line)`
+   - `affected_sectors:` list of `(sector_note_path, match_confidence, log_message)` from `_shared/sector-resolution.md`
+   The subagent releases its read-only lock before returning.
+
+**MUTATION HALF — main thread only.** The main thread:
+- If the subagent returned `PREFLIGHT-BLOCKED`, surface the corresponding Phase 0.0.2 / Phase 0.A / Phase 0.B prompt, get user resolution, and only then continue (re-invoke the analysis subagent if state changed).
+- Render the Phase 4 report verbatim, then run the **Phase 5 approval gate** and the entire Phase 5 Atomic Batch (Stages 1–5) **exactly as specified below — unchanged**. Acquire the `vault-wide` write lock here (Phase 0.0.1), at the start of Phase 5, not before. Re-read only the approved-for-mutation theses + affected sector notes (bounded set — never the full portfolio) before editing them, per the read-before-write rule.
+
+**Why the lock moves**: the long read phase now runs under a read-only lock inside the subagent (narrower, non-blocking to other readers); the vault-wide write lock is held only for the short mutation window in the main thread. All Phase 5 snapshot/manifest/graph-invalidation/`_hot.md` machinery is untouched. **Why not full delegation**: the Phase 5 approval gate and destructive edits require the main thread. **Why not frontmatter `context: fork`**: that mechanism was reverted 2026-06-07 (unrendered-stdout blank panel); Agent-tool delegation returns the report as a tool result the main thread re-emits. Revert path: delete this section; the skill then runs entirely inline (report renders, ~42 reads land in main context).
 
 ## Scope Resolution
 
@@ -27,6 +47,8 @@ Pre-filtering grep on frontmatter avoids loading 39+ files when only a subset ma
 ## Phase 0.0: Pre-flight
 
 ### 0.0.1: Acquire vault lock
+
+**Under split delegation (see Execution context):** the analysis subagent holds a `read-only` lock (`.vault-lock.readonly`) for Phase 0.0.2 + Phase 0 + Phase 1–4; the **main thread** acquires the `vault-wide` write lock here at the **start of Phase 5**, immediately before the first destructive stage, and releases it in the final Phase 5 block. (Inline-fallback mode without delegation: acquire the `vault-wide` lock at the very start as the original single-lock flow.)
 
 `vault-wide` scope per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout 15 min (large portfolios are slow). Capture token, verify (Procedure 1.5) every block, release in final.
 
