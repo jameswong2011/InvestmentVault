@@ -3,6 +3,7 @@ publish: true
 date: 2026-04-22
 tags: [sector, moc, proptech, real-estate, marketplace]
 status: active
+sector: PropTech & Real Estate Marketplaces
 ---
 
 # PropTech & Real Estate Marketplaces

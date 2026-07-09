@@ -12,7 +12,7 @@ Design rationale in `.claude/skills/compare/RATIONALE.md` (§N.M anchors).
 
 ## Arguments
 
-`$ARGUMENTS` = 2+ tickers or company names (e.g., "BESI vs AMAT", "PANW NET CRWD"). Only one ticker provided → identify closest competitors from Sector Note, ask user to confirm before proceeding.
+`$ARGUMENTS` = 2+ tickers or company names (e.g., "BESI vs AMAT", "PANW NET CRWD"). Only one ticker provided → identify closest competitors from Sector Note, ask user to confirm before proceeding. **Any competitor added by this expansion that has a thesis and will receive a Phase 5 Log append MUST be locked + rename-checked (Step 0.-1.3) before Phase 5 — the initial acquisition only covered the supplied ticker.**
 
 ## Phase 0.-1: Pre-flight
 
@@ -27,6 +27,10 @@ Timeout 10 min. Verify ownership every subsequent Bash block via token match (Pr
 ### 0.-1.2: Rename-marker pre-flight for EACH ticker
 
 For each ticker in `$ARGUMENTS`, run Procedure 2. ANY `.rename_incomplete.TICKER_N` → hard-block per contract 2.3. Split-name state on any one ticker would corrupt the cross-thesis comparison research note's wikilinks.
+
+### 0.-1.3: Lock + rename-check competitors added by single-ticker expansion
+
+If `$ARGUMENTS` was a single ticker (§Arguments) and the user confirmed a competitor set from the Sector Note, the initial 0.-1.1/0.-1.2 covered ONLY the supplied ticker. Before Phase 5, for every confirmed competitor **that has a thesis** (web-only competitors get no vault writes, so no lock): acquire its `.vault-lock.TICKER` (Procedure 1.3c, appended to the run's lock set — same token) and run Procedure 2. Partial-acquisition rollback (§0.-1.1) applies to the expanded set. Skipping this lets Phase 5.2 append to a thesis Log with no lock held and no rename-marker guard.
 
 ## Phase 0: Thesis Existence Check
 
@@ -53,19 +57,22 @@ Wait for user selection.
 ### Round 1 — parallel batch (single message)
 Issue ALL of these in ONE message:
 - **Read** each thesis note — one Read per ticker with a thesis. Do NOT loop serially; send all N Reads in one tool-call batch.
-- **Grep** once across `Research/ Macro/` for any of the tickers with `glob='*.md'` (use an alternation pattern `TICKER1|TICKER2|TICKER3`, scoped to markdown). One multi-ticker Grep replaces N per-ticker Greps.
+- **Grep** once across `Research/ Macro & Technology/` for any of the tickers with `glob='*.md'` (use an alternation pattern `TICKER1|TICKER2|TICKER3`, scoped to markdown). One multi-ticker Grep replaces N per-ticker Greps.
 
 Wait for Round 1 to land. Enumerate, per ticker: Related Research wikilinks, sector note paths (from `sector:` frontmatter), referenced Macro notes.
+
+**Mental Models reading gate (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** Include in the Round 2 batch: `[[Mental Models/Generalist - Overview]]` (always) + the `[[Mental Models/Industry - X]]` for the compared tickers' sector(s) + any `[[Mental Models/Lens - X]]` in play (Value Layer Monopoly is especially load-bearing for competitive comparison — which player owns the layer everything else must traverse). Apply the READING PROTOCOL: the comparison verdict is a hypothesis; run the base-rate adversarially; where the models rank the same winner the bull consensus already sees, hunt the datapoint that would flip it. Read each ticker's own `## Mental Models` section to compare their recorded triggers head-to-head.
 
 ### Round 2 — parallel batch (single message, may be large)
 Issue ALL of these in ONE message:
 - **Read** every research note linked from every thesis (union across N tickers — deduped).
 - **Read** every distinct Sector Note (N tickers may share sectors — read each sector note once).
 - **Read** any Macro notes referenced by any of the theses.
+- **Read** `[[Mental Models/Generalist - Overview]]` + the in-scope Industry/Lens files (reading gate above).
 
 **Scaling note**: `/compare A vs B` issues ~10-20 Reads in Round 2. `/compare A vs B vs C` issues ~15-30. All land in one round-trip. Do not serialize per-ticker.
 
-**Web-supplemented tickers** (Phase 0 option a): skip Rounds 1-2 for that ticker. Issue web search for business model overview, latest financials (revenue, margins, growth), competitive position, key products **in parallel with Round 2's vault reads** (different tool surfaces — WebSearch and Read parallelize freely). Search vault (`Research/`, `Sectors/`, `Macro/`) for existing mentions. Flag sections without vault-depth data with `[web only]`.
+**Web-supplemented tickers** (Phase 0 option a): skip Rounds 1-2 for that ticker. Issue web search for business model overview, latest financials (revenue, margins, growth), competitive position, key products **in parallel with Round 2's vault reads** (different tool surfaces — WebSearch and Read parallelize freely). Search vault (`Research/`, `Sectors/`, `Macro & Technology/`) for existing mentions. Flag sections without vault-depth data with `[web only]`.
 
 ## Phase 1.5: Graph-primer shared adjacency
 
@@ -278,21 +285,26 @@ Before any sector note write, snapshot every target sector. Any snapshot fails �
 mkdir -p _Archive/Snapshots
 HHMMSS=$(date +%H%M%S)
 # For each (thesis_list, sector_note_path, _) in target_sectors, fire cp in background:
-cp "Sectors/Sector A.md" "_Archive/Snapshots/Sector A (pre-compare YYYY-MM-DD-$HHMMSS).md" &
-cp "Sectors/Sector B.md" "_Archive/Snapshots/Sector B (pre-compare YYYY-MM-DD-$HHMMSS).md" &
-cp "Sectors/Sector C.md" "_Archive/Snapshots/Sector C (pre-compare YYYY-MM-DD-$HHMMSS).md" &
-wait
-# Check exit status of all background jobs before proceeding
+pids=()
+cp "Sectors/Sector A.md" "_Archive/Snapshots/Sector A (pre-compare YYYY-MM-DD-$HHMMSS).md" & pids+=($!)
+cp "Sectors/Sector B.md" "_Archive/Snapshots/Sector B (pre-compare YYYY-MM-DD-$HHMMSS).md" & pids+=($!)
+cp "Sectors/Sector C.md" "_Archive/Snapshots/Sector C (pre-compare YYYY-MM-DD-$HHMMSS).md" & pids+=($!)
+# Wait per-PID: bare `wait` returns 0 even if a background cp failed, so the
+# "any snapshot fails → abort" rule (§4.2) could never detect the failure and
+# 5.5b destructive edits would proceed with no rollback anchor.
+snap_fail=0
+for pid in "${pids[@]}"; do wait "$pid" || snap_fail=1; done
+[ "$snap_fail" -ne 0 ] && { echo "❌ sector snapshot failed — aborting before any sector edit"; exit 1; }
 ```
 
 Then issue all frontmatter-addition Edits as a single parallel tool-call batch (one Edit per snapshot, all in the same message).
 
-Add frontmatter to each snapshot with per-sector batch ID (§5.1 — distinct per sector):
+Add frontmatter to each snapshot with per-sector batch ID (§5.1 — distinct per sector). The `-[sector-slug]` goes at the END so the manifest batch `compare-YYYY-MM-DD-HHMMSS` (§5.0) is a PREFIX of every sector snapshot batch — otherwise `/rollback compare-YYYY-MM-DD-HHMMSS` (2.5a prefix lookup) matches zero sector snapshots and the cascade silently restores nothing:
 ```yaml
 snapshot_of: "[[Sectors/Sector Name]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: compare
-snapshot_batch: compare-[sector-slug]-YYYY-MM-DD-HHMMSS
+snapshot_batch: compare-YYYY-MM-DD-HHMMSS-[sector-slug]
 ```
 
 Store `snapshot_map: {sector_note_path → snapshot_path}` for potential rollback in 5.5b.
@@ -381,7 +393,7 @@ Manifest skeleton was written at Phase 5.0 with `status: in-progress`. Phase 5.5
 - All sector writes succeeded: `status: in-progress` → `status: completed`. Add `completed_date: YYYY-MM-DD`.
 - Phase 5.5b rollback fired: `status: in-progress` → `status: rolled-back`. Add `completed_date: YYYY-MM-DD`.
 
-**Verify flip landed** (Edit-return inspection — no re-read): inspect the frontmatter-flip Edit's return value. The Edit tool reports success iff the replacement landed; the returned snippet shows the post-edit frontmatter. Confirm `status:` is no longer `in-progress` from the Edit-return content. On verification failure: report `⚠️ Compare manifest status flip failed — manifest remains status: in-progress despite completion. /lint #45 will flag this as Critical. Manual fix: edit manifest frontmatter to the correct terminal status.` Continue to 5.5 Sector edits.
+**Verify flip landed** (Edit-return inspection — no re-read): inspect the frontmatter-flip Edit's return value. The Edit tool reports success iff the replacement landed; the returned snippet shows the post-edit frontmatter. Confirm `status:` is no longer `in-progress` from the Edit-return content. On verification failure: report `⚠️ Compare manifest status flip failed — manifest remains status: in-progress despite completion. /lint #45 will flag this as Critical. Manual fix: edit manifest frontmatter to the correct terminal status.` This is the FINAL step — sector edits (5.5) already ran; proceed only to the `_hot.md` update and the Phase 6 report.
 
 `status: rolled-back` indicates clean abort (Phase 5.5b rollback fired). `status: completed` indicates atomic success. `status: in-progress` surfaced as Critical by `/lint #45` (§6.2).
 

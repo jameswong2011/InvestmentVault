@@ -127,8 +127,10 @@ Grep `Research/` for ticker string. Surfaces relevant existing research for new 
 
 ## Step 2: Vault Research
 
+**Mental Models reading gate (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** Before any analysis, read `[[Mental Models/Generalist - Overview]]` (always) + the matching `[[Mental Models/Industry - X]]` for this ticker's sector (e.g. `Industry - Semiconductors` for a semi name) + any `[[Mental Models/Lens - X]]` the thesis touches (`Lens - Automation & AI Readiness`; `Lens - Value Layer Monopoly`). Apply the READING PROTOCOL: models are lenses/questions held as **hypotheses to test, never verdicts**; run the base-rate / outside view adversarially; treat agreement across models as a trigger to **disconfirm** (hunt the bear case + the single falsifying datapoint). These reads populate the `## Mental Models` section (#12) and sharpen the Key Non-consensus Insights + Bear Case.
+
 - Read relevant Sector Note for existing coverage and competitive context
-- Search `/Research` and `/Macro` for notes mentioning this ticker or topic
+- Search `/Research` and `/Macro & Technology` for notes mentioning this ticker or topic
 - Read related thesis notes for competitive dynamics and cross-thesis connections
 
 **Parallelization with Step 3**: Step 2 vault reads and Step 3 web searches have no ordering dependency — the LLM can issue both Step 2's Reads/Greps and Step 3's first WebSearch batch in a **single parallel tool-call message**. Follow-up web searches that depend on first-round results (e.g., "search for [Competitor X] after sector note reveals they exist") land in subsequent batches. Do NOT serialize Step 2 and Step 3 end-to-end.
@@ -141,7 +143,7 @@ Read `_graph.md` once. Fire the Read in parallel with Step 2 Reads / Step 3 WebS
 
 Because the target TICKER is new and not in the graph, use vault research from Step 2 to infer probable sector/macro:
 - `inferred_sectors` = union of `sector:` frontmatter from matched research notes (from Step 2 Greps)
-- `inferred_macros` = union of `[[Macro/...]]` wikilinks in those research note bodies
+- `inferred_macros` = union of `[[Macro & Technology/...]]` wikilinks in those research note bodies
 
 Compute peer suggestion sets:
 - `candidate_sector_peers` = union over `s ∈ inferred_sectors` of `sector_reverse[s]`
@@ -261,6 +263,8 @@ Each subsequent step (4, 5, 6, 7) appends completion state to manifest via `Edit
 
 ## Step 4: Create the Thesis
 
+**Conviction discipline (set it AFTER the bear case, not before).** Draft the analytical sections — especially Bear Case (#8), Risks (#10), and the Mental Models disconfirming check (#12) — BEFORE finalizing the `conviction:` frontmatter value. The frontmatter sits at the top of the file but is decided last: assess honestly against the bear case you just wrote, not the bull case that motivated the note. The initial Log entry's one-line rationale must state **why the chosen conviction survives the bear case** (READING PROTOCOL: agreement across models → disconfirm, so the bull-heavy first draft is the one to distrust). A `high` conviction whose rationale doesn't engage the bear case is the signature failure this ordering prevents.
+
 Save to `Theses/TICKER - Company Name.md`:
 
 ```yaml
@@ -277,7 +281,9 @@ source: [primary source URL or description]
 
 Initial status `draft` (§8 — excluded from /catalyst, /prune flags, conviction drift until user explicitly promotes via `/status draft→active`).
 
-### Required Sections (all 13, in order — §7)
+### Required Sections (all 14, in order — §7)
+
+> `## Legacy Callouts` (template section 14, between Related Research and Log) is **auto-created on demand by `/archive-callouts`** on the first sweep — do NOT scaffold it at creation (`/lint #14` exempts its absence). The 14 sections below are everything `/thesis` writes.
 
 1. **Summary** — One paragraph investment case. Lead with non-consensus angle, not business description.
 
@@ -315,9 +321,11 @@ Initial status `draft` (§8 — excluded from /catalyst, /prune flags, convictio
     ```
     Concrete + testable, not vague. Good: "→ LOW if TSMC cuts capex guidance by >10% in next 2 quarters." Bad: "→ LOW if competition increases."
 
-12. **Related Research** — Wikilinks to relevant vault notes (research, sector notes, macro notes, related theses).
+12. **Mental Models** — the OUTPUT of the Step 2 reading gate applied to THIS thesis, per `_shared/mental-models-section.md` (three bullets): **Models applied** (`[[Generalist - Overview]]` always + the Industry/Lens files consulted); **Triggers that fired** (each pertinent model trigger — `<model> · <trigger> — <one-line read>`, held as a hypothesis to test, never a verdict); **Disconfirming check** (where models agree, the bear case / single falsifying datapoint / base-rate this thesis must beat). Populate at creation — do NOT leave scaffold-empty; the initial analysis already applied the models.
 
-13. **Log** — Initial entry:
+13. **Related Research** — Wikilinks to relevant vault notes (research, sector notes, macro notes, related theses).
+
+14. **Log** — Initial entry:
     ```
     ### YYYY-MM-DD
     - Initial thesis created. Conviction: [level] — [one-line rationale]

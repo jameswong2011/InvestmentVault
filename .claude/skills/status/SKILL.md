@@ -163,18 +163,18 @@ HHMMSS=$(date +%H%M%S)
 mkdir -p _Archive/Snapshots
 ```
 
-Batch ID format: `status-TICKER-YYYY-MM-DD-$HHMMSS` (§2.1 — ticker qualifier prevents concurrent-run collisions). Used across all snapshots in this run (thesis Step 3.1, sector Step 5a) for atomic cascade restore.
+Batch ID format: `status-TICKER-YYYY-MM-DD-$HHMMSS` (§2.1 — ticker qualifier prevents concurrent-run collisions). **Capture the echoed `HHMMSS` value and reuse it LITERALLY** in every later block (manifest 3.0.5, thesis snapshot 3.1, sector snapshot 5a, report Step 8) — Bash blocks are stateless subshells (preflight §Design note), so `$HHMMSS` is empty when re-referenced in a later block; paste the captured digits, exactly as the lock token is carried. Used across all snapshots in this run for atomic cascade restore.
 
 ### 3.0.5: Write status transaction manifest skeleton (T2.2 — §3)
 
 **Mandatory BEFORE any file modifications.** Step 3.1 snapshot, Step 4 frontmatter edit, Step 5 sector edit, Step 7.5 archive move, Step 7.6 invalidation write are ALL gated on this skeleton.
 
-Write `_Archive/Snapshots/_status-manifest (status-YYYY-MM-DD-HHMMSS).md`:
+Write `_Archive/Snapshots/_status-manifest (status-TICKER-YYYY-MM-DD-HHMMSS).md`:
 
 ```yaml
 ---
 type: status-manifest
-batch: status-YYYY-MM-DD-HHMMSS
+batch: status-TICKER-YYYY-MM-DD-HHMMSS
 status: in-progress
 ticker: TICKER
 transition_type: conviction | status | reaffirm
@@ -246,7 +246,7 @@ Read snapshot, add frontmatter:
 snapshot_of: "[[Theses/TICKER - Company Name]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: status
-snapshot_batch: status-YYYY-MM-DD-HHMMSS
+snapshot_batch: status-TICKER-YYYY-MM-DD-HHMMSS
 ```
 
 **Exception**: skip thesis snapshot for `status: draft→active` (no analytical content change, only frontmatter `status:` flip). Sector snapshot in Step 5a still runs because Step 5b modifies the sector note for this transition.
@@ -326,7 +326,7 @@ Read snapshot, add frontmatter (reuse Step 3.0 batch ID):
 snapshot_of: "[[Sectors/Sector Name]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: status
-snapshot_batch: status-YYYY-MM-DD-HHMMSS
+snapshot_batch: status-TICKER-YYYY-MM-DD-HHMMSS
 ```
 
 Runs for every transition where Step 5.1 set `edit_planned: true` — including `draft→active` (where thesis snapshot was skipped but sector note IS being modified). Without this snapshot, a corrupted Edit would leave no recovery path.
@@ -417,8 +417,8 @@ HEADER
     "$CLOSURE_RATIONALE_LINE" \
     >> "$REGISTRY"
 } && \
-ls "_Archive/TICKER - Company Name.md" && \
-! ls "Theses/TICKER - Company Name.md" 2>/dev/null
+[ -e "_Archive/TICKER - Company Name.md" ] && \
+[ ! -e "Theses/TICKER - Company Name.md" ]
 ```
 
 The final two `ls` probes serve as the Step 7.5b verification mentioned below — if the `mv` landed, the archive file exists AND the Theses file does not. Exit code 0 = all four stages succeeded. Non-zero exit surfaces the specific failing stage via `set -e`-like semantics inside the fused block.
@@ -496,7 +496,7 @@ Manifest retained. `/clean` handles aging via 90-day threshold (§8 — no regre
 - **Rationale**: [from $ARGUMENTS]
 - **Thesis snapshot**: `[[_Archive/Snapshots/TICKER - Company Name (pre-status YYYY-MM-DD-HHMMSS)]]` | `skipped (draft→active)`
 - **Sector note snapshot**: `[[_Archive/Snapshots/Sector Name (pre-status YYYY-MM-DD-HHMMSS)]]` | `skipped (no matching sector note)` | `skipped (no edit needed — sector state already reflects transition)`
-- **Batch ID**: `status-YYYY-MM-DD-HHMMSS` (cascade-restore via /rollback)
+- **Batch ID**: `status-TICKER-YYYY-MM-DD-HHMMSS` (cascade-restore via /rollback)
 - **Sector Note updated**: [sector] — [what changed] | `no edit needed (dry-run)`
 - **Graph reminder**: `→ Run /graph last` (closure only — conviction/non-closure have no graph impact). For closures, invalidation list is unconsumed until `/graph last` runs.
 - **Archived** (closure only): `[[_Archive/TICKER - Company Name]]` | `⚠️ Archive move failed — see Step 7.5 output`

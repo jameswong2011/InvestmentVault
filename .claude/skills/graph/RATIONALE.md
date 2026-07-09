@@ -15,7 +15,7 @@ last_reviewed: 2026-04-20
 
 ### §1.1 Why reverse indexes always rebuild
 
-Forward adjacency (per-thesis links) updates incrementally — re-extracted only for changed theses. Reverse indexes (Macro → Theses, Sector → Theses) **ALWAYS rebuild fully** from `Sectors/*.md` + `Macro/*.md` files on every run.
+Forward adjacency (per-thesis links) updates incrementally — re-extracted only for changed theses. Reverse indexes (Macro → Theses, Sector → Theses) **ALWAYS rebuild fully** from `Sectors/*.md` + `Macro & Technology/*.md` files on every run.
 
 This combination eliminates the reverse-index drift that motivated the metadata-cull architecture: incremental updates cannot accumulate drift in reverse indexes because reverse indexes are never incrementally updated. Cross-thesis clusters and orphan list also always recompute from the in-memory adjacency state.
 

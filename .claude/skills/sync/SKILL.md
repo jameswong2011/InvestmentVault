@@ -3,7 +3,7 @@ name: sync
 description: Synchronize recent research learnings across all affected theses, sector notes, and macro documents. Use after a research session or when user says "sync", "propagate", or "update everything".
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write Bash(date * find * cp * mkdir * touch * awk * sed * grep *)
+allowed-tools: Read Grep Glob Edit Write Bash(date * find * cp * mkdir * touch * awk * sed * grep * git diff *)
 ---
 
 Propagate recent research insights across all affected vault documents. **For each affected note, think through the full implications of new research on every substantive section — not just append links.**
@@ -64,7 +64,7 @@ Change detection uses `.last_sync` as the timestamp watermark. Touch policy:
 
 If `$ARGUMENTS` specifies files, use those. Otherwise:
 ```bash
-find Research/ Theses/ Macro/ Sectors/ -newer .last_sync -name '*.md'
+find Research/ Theses/ "Macro & Technology/" Sectors/ -newer .last_sync -name '*.md'
 ```
 
 If no changed files AND no files specified → report "Nothing changed since last sync" and stop (skip Step 2.9 manifest — no-op runs are pure read).
@@ -95,8 +95,8 @@ For each changed research note, compute two maps:
 Union (a) ∪ (b); dedup on resolved path.
 
 **`macro_targets_per_research_note[note]`**:
-- (a) Body wikilinks matching `[[Macro/...]]` forms (5 canonical forms).
-- (b) `source_type: scenario` frontmatter OR `tags:` containing `macro` → body-scan for any `Macro/` references (treat as macro-focused note even without explicit body wikilink).
+- (a) Body wikilinks matching `[[Macro & Technology/...]]` forms (5 canonical forms).
+- (b) `source_type: scenario` frontmatter OR `tags:` containing `macro` → body-scan for any `Macro & Technology/` references (treat as macro-focused note even without explicit body wikilink).
 - (c) Optional `macro:` frontmatter field if the note convention uses it.
 
 Union across (a)/(b)/(c); dedup on resolved path.
@@ -112,7 +112,7 @@ These maps are **inputs to Step 4.-1 condition (ii) and Step 5.-1 condition (ii)
 **Body-grep fallback (T7.6 — one batched regex)**: ALWAYS runs to catch asymmetric adjacency (thesis wikilinks macro but macro doesn't reciprocate — §2.1). For a set of changed macro basenames `{X, Y, Z}`, issue ONE Grep:
 
 ```
-Grep pattern='\[\[(Macro/)?(X|Y|Z)(\.md)?(#[^\]|]+)?(\|[^\]]+)?\]\]' path='Theses/' glob='*.md' output_mode='files_with_matches'
+Grep pattern='\[\[(Macro & Technology/)?(X|Y|Z)(\.md)?(#[^\]|]+)?(\|[^\]]+)?\]\]' path='Theses/' glob='*.md' output_mode='files_with_matches'
 ```
 
 (Basenames regex-escaped; alternation built from the changed-macro set.) Output gives `file → needs Grep match re-parse to identify which macro(s)`; a second pass on the returned file subset extracts specific basename matches. Two Grep calls total, regardless of changed-macro count. Dedup against reverse-index results.
@@ -250,7 +250,7 @@ This typically reduces deep reads from ~58 files to 15-25 AND collapses those 15
    - Multiple matches: `⚠️ Multiple Theses/ files match prefix "[TICKER]" — [list]. Resolve filename collision before re-running.`
 2. Read frontmatter. If `status: closed` but still in `Theses/`: `⚠️ [TICKER] has status: closed but file remains in Theses/ (failed archive move). ...`
 3. Reconstruct adjacency from the thesis file (do NOT read `_graph.md` — file-direct is the only path in ticker mode):
-   - Outbound `[[wikilinks]]` categorized by directory (Sectors/, Macro/, Theses/, Research/).
+   - Outbound `[[wikilinks]]` categorized by directory (Sectors/, Macro & Technology/, Theses/, Research/).
    - Scan `Research/` for files with `ticker: TICKER` in frontmatter.
 4. Read all resolved files. Ignore `.last_sync` watermark (timestamp-independent).
 5. Proceed to Step 2.
@@ -312,9 +312,31 @@ For each changed thesis:
 - **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND most-recent Log entry matches a skill-origin prefix from `_shared/log-prefixes.md` (registry §5 `Conviction reaffirmed`, §6 `Status change: conviction`, §7 `Status change:`, §8 `CLOSED`, §9 `Prune upgrade`, §11 `Initial thesis created`, §12 `ROLLBACK to snapshot`, §13 `Cross-thesis closure:` / `Cross-thesis closures:`, §14 `Scenario REVERSED`, §15 `Renamed file:`, §16 `Comparison `, §17 `Callout sweep:`, §18 `Numbers refresh:`) AND no research note in the changed-file set resolves to this thesis.
 - **Mixed**: research-note source AND skill-origin Log prefix → treat as **research-driven**.
 
+### Body-change override (2026-07-08 — closes the silent-skip failure mode)
+
+The skill-origin classification keys purely on the *most-recent Log prefix*. Its known failure (CLAUDE.md Workflow Rule #6; §1.11): the user manually edits a thesis **body** (Bull Case, Risks, Industry Context…) but forgets to append a Log entry, so the most-recent prefix is still a prior skill's — the edit is misclassified skill-origin and sector/macro propagation is **silently skipped**. Previously this surfaced only as a passive Step 8 report line; now it is an **active gate**.
+
+For each thesis about to be classified **skill-origin**, detect whether its body changed **outside `## Log`** since the last sync:
+
+- **Primary (git)**: `git diff --unified=0 HEAD -- "Theses/TICKER - Name.md"` (the vault is a git repo). Determine whether any changed hunk falls outside the `## Log` section — parse hunk line ranges against the `## Log` start line (awk: line number of `^## Log`). Changes only within `## Log` → genuinely skill-origin (skill Log-append). Any change above `## Log` (or to a non-Log section) → **body edit**.
+- **Fallback (no git / not a repo / `git` unavailable)**: diff the current body-outside-`## Log` against the most-recent prior `(pre-sync …)` snapshot for this thesis in `_Archive/Snapshots/` (awk-extract everything before `^## Log` from both, compare). No prior snapshot → cannot determine; retain skill-origin classification and rely on the Step 8 report (current behavior — no regression).
+
+**On body-edit detection**, do NOT silently reclassify and do NOT silently skip. Surface an inline prompt:
+
+```
+⚠️ [TICKER] classified skill-origin (most-recent Log prefix "[prefix]"), but its body changed
+outside ## Log since the last sync — likely a manual edit with no Log entry (Workflow Rule #6).
+Propagate this thesis's changes to sector/macro notes as research-driven? [Y/n]
+(Y = treat as research-driven and propagate — recommended; n = keep skill-origin, skip sector/macro)
+```
+
+Default **Y** (mirrors the Mixed → research-driven precedent). On Y, move TICKER out of `skill_origin_theses` and process it through Steps 3/4/5 normally; also recommend the user append a `Manual edit:` Log entry so future syncs classify it correctly without the prompt. On n, leave it skill-origin. Batch the prompt if multiple theses trip it (one consolidated question listing all affected tickers).
+
+**Cost containment**: the `git diff` runs ONLY for theses that would otherwise be classified skill-origin (typically 0–few per sync), never for research-driven theses. False-positive guard: if the user hasn't committed since a prior in-session skill edit, `git diff HEAD` may include that skill's own body edits — the prompt (not silent reclassification) is what makes this safe, since the user confirms.
+
 ### Output
 
-Maintain in-memory accumulator `skill_origin_theses: [TICKER, ...]`. Steps 4 and 5 consult this before per-sector / per-macro propagation.
+Maintain in-memory accumulator `skill_origin_theses: [TICKER, ...]`. Steps 4 and 5 consult this before per-sector / per-macro propagation. The Body-change override runs before this accumulator is finalized, so any prompted-Y thesis is already removed.
 
 ### Registry-driven design
 
@@ -504,8 +526,9 @@ Batch ID reused from Step 2.9. Proceed with edits to the ORIGINAL.
   - `"Scenario REVERSED"` (registry §14)
   - `"Renamed file:"` (registry §15)
   - `"Callout sweep:"` (registry §17)
+  - `"Numbers refresh:"` (registry §18 — a metrics refresh is hygiene, not conviction sentiment; without exclusion each refresh consumes a drift-window slot)
   
-  **Conditionally exclude** entries beginning with `"Deepened"` or `"↳ CORRECTION: Deepened"` within 14 calendar days of a `"Stress test"` entry (registry §3-§4).
+  **Conditionally exclude** entries beginning with `"Deepened"` or `"↳ CORRECTION: Deepened"` within 14 calendar days of a `"Stress test"` entry (registry §3-§4; `deepened_exclusion_days` in `.drift-config.md`, default 14).
   
   **Anchor handling**: if `"Conviction reaffirmed"` (registry §5) or `"Status change: conviction"` (registry §6) found, anchor the window there — only count entries after. If fewer than 3 entries after anchor, drift detection has insufficient data. If no anchor, use last 5 non-excluded entries.
   
@@ -595,6 +618,7 @@ Skip snapshot if only adding wikilinks.
 - Update value chain analysis if supply chain relationships shifted.
 - Revise sector-level observations if cross-company patterns emerged.
 - Update company comparison tables with new data points.
+- **Cross-thesis contradiction sweep (not just source-ticker additive).** Propagation defaults to strengthening the SOURCE ticker; force the peer question explicitly. For each OTHER Active Thesis in this sector, ask: does this research **validate or contradict** one of its named assumptions? A datapoint that is bullish for the source is often bearish for a peer (share gain = share loss elsewhere; a moat confirmed upstream = margin risk downstream). When the answer is "contradicts," note it in that peer's next `/sync` consideration and — if the sector's priced-in read shifted — update the sector's **`## Investor heuristics`** (what consensus believes / where it's wrong: the vault's stated edge). Do NOT silently leave peers stale because the research arrived under the source ticker.
 - Update the `## Mental Models` section when new cross-company evidence activates or retires a sector-level model trigger, or changes its read — read the relevant `/Mental Models` files first and merge per `_shared/mental-models-section.md` (high selectivity; most syncs leave it untouched).
 
 ### 4c: Post-Edit Verification (Edit-return inspection — no re-read)
@@ -656,8 +680,8 @@ If edits modify existing analytical text (scenario analysis, probability weighti
 
 ```bash
 # For each macro in tier_a_macro_snapshots, fire cp in background:
-cp "Macro/Note A.md" "_Archive/Snapshots/Note A (pre-sync YYYY-MM-DD-HHMMSS).md" &
-cp "Macro/Note B.md" "_Archive/Snapshots/Note B (pre-sync YYYY-MM-DD-HHMMSS).md" &
+cp "Macro & Technology/Note A.md" "_Archive/Snapshots/Note A (pre-sync YYYY-MM-DD-HHMMSS).md" &
+cp "Macro & Technology/Note B.md" "_Archive/Snapshots/Note B (pre-sync YYYY-MM-DD-HHMMSS).md" &
 wait
 ```
 
@@ -665,7 +689,7 @@ Then issue all frontmatter-addition Edits as a **single parallel tool-call batch
 
 Add frontmatter to each snapshot:
 ```yaml
-snapshot_of: "[[Macro/Note Name]]"
+snapshot_of: "[[Macro & Technology/Note Name]]"
 snapshot_date: YYYY-MM-DD
 snapshot_trigger: sync
 snapshot_batch: sync-YYYY-MM-DD-HHMMSS
@@ -915,7 +939,7 @@ Produce a compact report. **Emit only lines with non-empty data.** Do NOT includ
 | `Deduplication skips` | at least one Step 1.7 wikilink-presence skip |
 | `Sector skill-origin skips` | at least one Step 4.-1 skip |
 | `Macro skill-origin skips` | at least one Step 5.-1 skip |
-| `Skill-origin classified theses` | at least one thesis classified as skill-origin in Step 2.5 — list each as `[TICKER]: most-recent Log prefix "[prefix]" (sector/macro propagation skipped)`. Surfaced explicitly so the user can spot manual-edit misclassification (CLAUDE.md Workflow Rule #6): if the user manually edited a thesis body but the most-recent Log entry is still a prior skill's prefix, the gate misfires. Recommended user action when surprised: re-edit the thesis adding a Log entry with a non-skill-origin prefix (e.g., `Manual edit: ...`), then re-run /sync. |
+| `Skill-origin classified theses` | at least one thesis classified as skill-origin in Step 2.5 — list each as `[TICKER]: most-recent Log prefix "[prefix]" (sector/macro propagation skipped)`. The Step 2.5 **Body-change override** now actively catches the manual-edit-without-Log-entry case (CLAUDE.md Workflow Rule #6): if a skill-origin thesis's body changed outside `## Log` since last sync, the user was prompted mid-run and (on Y) it was reclassified research-driven — so a thesis remaining in this skill-origin list either had only Log-section changes (correct skip) or the user chose n at the prompt (or the no-git fallback found no prior snapshot to compare). For any surprise here, append a `Manual edit: ...` Log entry and re-run /sync. Also surface `Body-change overrides prompted: [tickers, Y/n each]` when the override fired. |
 | `Log-history backfill skips` | at least one Case 2a skip (Step 1.7) |
 | `Sector idempotency skips` | at least one Step 4.0 skip |
 | `propagated_to: skips` | at least one Case 2b skip |

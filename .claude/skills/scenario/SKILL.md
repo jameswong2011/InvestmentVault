@@ -23,7 +23,12 @@ Two modes:
 
 Reverse mode appends `Scenario REVERSED` Log entry (registry §14) to every thesis previously affected. Scenario research note **not deleted** — preserved as historical record per Tier 2 append-only convention (§8). Provides audit-trail-preserving undo path.
 
-Matches `reverse` → jump to **Reverse Mode Flow**. Otherwise → Phase 1.
+**Optional scope (forward mode; 2026-07-08):** a trailing `--sector "<name>"` or `--tickers <A,B,C>` flag narrows the analysis to a subset for a narrow hypothesis, avoiding the full-portfolio read cost. Everything before the flag is the scenario description.
+- `/scenario oil spikes to $150 --sector "@LNG & Natural Gas Infrastructure"`
+- `/scenario HBM4 yield miss --tickers 000660,MU,SNDK`
+- Parse: strip a trailing `--sector "<name>"` (resolve via `_shared/sector-resolution.md`; the `Sectors/` note's Active Theses list + reverse index give the member set) or `--tickers <csv>` (each token → `Theses/TICKER - *.md`). No flag → whole portfolio (default). Unresolvable scope → warn and ask before falling back to whole-portfolio. The scope narrows the Phase 2 read set ONLY; the lock stays `vault-wide` and Phase 4 second-order reasoning still spans the whole portfolio via `_graph.md` (a scoped scenario can still name out-of-scope beneficiaries — they just don't receive Log propagation). Rationale: RATIONALE §6.4.
+
+Matches `reverse` → jump to **Reverse Mode Flow**. Otherwise → Phase 1 (carry the resolved scope, if any, into Phase 2).
 
 ## Phase 0: Pre-flight
 
@@ -178,14 +183,18 @@ Word cap: standard 4,000 soft-cap check per `_shared/hot-md-contract.md`; prune 
 
 ## Phase 2: Read the Portfolio (Two-Pass Triage — §6)
 
-### Pass 1 — Lightweight scan (single parallel batch of full Reads)
+### Pass 1 — Full-read scan (single parallel batch)
+
+**Thesis read set**: unscoped → every `Theses/*.md`. Scoped (`--sector`/`--tickers` from Arguments) → only the resolved member theses (still full-read each — scope narrows *which* theses, never how much of each; §6.4).
+
+**Mental Models reading gate (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** A scenario is a second/third-order transmission exercise — exactly what the models are for. Add to the Pass-1 batch: `[[Mental Models/Generalist - Overview]]` (always) + the `[[Mental Models/Industry - X]]` for the sectors the scenario transmits through + any `[[Mental Models/Lens - X]]` in play. Apply the READING PROTOCOL when classifying impact: each exposure read is a hypothesis; run the base-rate adversarially (most macro scenarios are priced faster than they transmit); where the models agree a name is exposed, look for the hedge/offset that makes it survive.
 
 **Issue ALL of these in ONE parallel tool-call batch:**
-1. **Read** every Macro note in full (small set, highest scenario relevance) — one Read per macro, all in one message.
-2. **Read** `_graph.md` for portfolio topology and cross-thesis clusters.
-3. **Read** every `Theses/*.md` in full — one Read per thesis, all in the SAME parallel batch as steps 1-2. Do NOT pre-extract sections via Bash+awk: scenario exposure classification depends on full-thesis signal (a transmission channel may surface in Bull Case, Industry Context, Risks, or Non-consensus Insights — not just Summary). Full-file context preserves classification quality; the parallel-batch pattern keeps wall-clock cost at one round-trip regardless of vault size.
+1. **Read** every Macro note in full (small set, highest scenario relevance) — one Read per macro, all in one message. (Always all macros — macro notes are the primary scenario-transmission surface even for a sector-scoped run.)
+2. **Read** `_graph.md` for portfolio topology and cross-thesis clusters (needed for Phase 4 whole-portfolio second-order reasoning even when scoped), plus `[[Mental Models/Generalist - Overview]]` + the in-scope Industry/Lens files (reading gate above).
+3. **Read** each in-scope `Theses/*.md` in full — one Read per thesis, all in the SAME parallel batch as steps 1-2. Do NOT pre-extract sections via Bash+awk: scenario exposure classification depends on full-thesis signal (a transmission channel may surface in Bull Case, Industry Context, Risks, or Non-consensus Insights — not just Summary). Full-file context preserves classification quality; the parallel-batch pattern keeps wall-clock cost at one round-trip regardless of set size.
 
-Typical batch: ~6 macro Reads + 1 graph Read + ~42 thesis Reads = ~49 Reads in one message, landing in one round-trip.
+Typical unscoped batch: ~6 macro Reads + 1 graph Read + ~42 thesis Reads = ~49 Reads in one message. A `--tickers 000660,MU,SNDK` run is ~6 + 1 + 3 = ~10 Reads — same one round-trip, a fraction of the read budget.
 
 ### Pass 2 — Triage and deep read (no additional reads needed)
 

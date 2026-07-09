@@ -4,7 +4,7 @@ date: 2026-04-27
 tags: [thesis, semiconductors, INTC]
 status: monitoring
 conviction: medium
-sector: Compute & AI Accelerators
+sector: Compute & AI Compute Accelerators
 ticker: INTC
 source: Intel Q1 2026 earnings (April 23, 2026), Lip-Bu Tan turnaround strategy + Tesla 14A customer (April 2026), US government 10% equity stake (Aug 2025), Nvidia $5B investment (Sept 2025 / closed Dec 2025), SoftBank $2B investment (Aug 2025), web research April 2026
 ---
@@ -371,3 +371,6 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Double-edged read on the silicon shortage. (+) Capacity scarcity at TSMC is building foundry-diversification momentum (Samsung Tesla AI5/AI6 dual-track + Samsung into Nvidia's DC supply chain, admin backing for Intel) and EMIB as a CoWoS-easing 2.5D alternative. (−) The article frames diversification as TSMC-*capacity*-driven, in direct tension with the thesis's non-consensus Insight #3 (Intel wins are geopolitical/hedge, NOT TSMC-overflow); and Intel-the-customer (Lunar/Arrow/Nova Lake on N3) is exposed to the same squeeze. Net neutral; conviction unchanged (medium, bearish lean).
+
+### 2026-07-09
+- Sector re-scoped: frontmatter `sector:` aligned to [[Sectors/Compute & AI Compute Accelerators]] (prior value resolved to no sector note, so sector propagation was silently skipped) — conviction unchanged; metadata hygiene per [[_Archive/Docs/2026-07-09 - Skills Audit Report]].

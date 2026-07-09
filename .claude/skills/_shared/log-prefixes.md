@@ -1,7 +1,7 @@
 ---
 type: shared-contract
 purpose: Single source of truth for Log-entry prefixes that carry cross-skill semantic weight.
-last_reviewed: 2026-05-22
+last_reviewed: 2026-07-09
 ---
 
 <!--
@@ -102,7 +102,7 @@ producer:
 consumers:
   - skill: /sync
     step: Step 3e drift detection
-    role: drift-exclusion (when chain-linked to /stress-test or within 7 days of one)
+    role: drift-exclusion (when chain-linked to /stress-test or within 14 days of one — `deepened_exclusion_days` in `.drift-config.md`, default 14; matches /sync Step 3e)
   - skill: /lint
     check: "#28 partial-write detection"
     role: classifier (presence downgrades Deepening match to Nice to Have)
@@ -219,9 +219,10 @@ consumers:
   - skill: /sync
     step: Step 2.5 skill-origin classification
     role: skill-origin classifier (closure is handled by producer skill's own sector + graph invalidation writes — Step 4.-1 skips re-propagation for the closed thesis if still in Theses/ pending mv)
-  - skill: /lint
-    check: structural
-    role: signal (thesis with CLOSED log + status: closed frontmatter + file in Theses/ → partial closure pending archive move)
+  # NOTE: /lint #33 detects the same partial-closure state (status: closed AND still
+  # in Theses/) via FRONTMATTER — it does not match the "CLOSED" Log literal, so it is
+  # not a `- skill:` consumer here. (Listing it as one produced a false #29 consumer-
+  # drift CRITICAL once the literal left lint's text during the 2026-07 skills cleanup.)
 example: |
   ### 2026-04-17
   - CLOSED: thesis invalidated by margin compression. Archived.
@@ -280,9 +281,10 @@ consumers:
   - skill: /sync
     step: Step 2.5 skill-origin classification
     role: skill-origin classifier (/thesis Step 5 already added to sector Active Theses — Step 4.-1 skips redundant sector re-propagation when no co-changed research note drives the change)
-  - skill: /prune
-    check: "Draft limbo flag (frontmatter + Log entry count heuristic)"
-    role: classifier (used to identify draft theses with exactly 1 Log entry = never developed)
+  # NOTE: /prune's draft-limbo flag keys on the Log-entry COUNT (exactly 1 entry), not
+  # on the "Initial thesis created" literal — so it is not a `- skill:` consumer here.
+  # (Listing it as one produced a false #29 consumer-drift CRITICAL after the literal
+  # left prune's text during the 2026-07 skills cleanup.)
 example: |
   ### 2026-04-17
   - Initial thesis created. Conviction: medium — non-consensus view on CPO attach rate
@@ -470,4 +472,5 @@ breakage_if_changed: "/sync Step 2.5 stops classifying post-refresh theses as sk
 
 These prefixes appear in vault content but are NOT contracts:
 - `Deepened [Section Name]: [findings]` — the `[Section Name]` part is freeform and NOT load-bearing. Only the `Deepened` prefix matters.
+- `Transcript ingested:` — **produced by `/transcript`** but deliberately **NON-skill-origin**: a transcript delta IS a research finding that must reach sector/macro notes, so `/sync` treats it like manual research and propagates normally. Do NOT add it to the skill-origin classification list (that would silently suppress transcript-driven propagation). Listed here so its omission from the skill-origin set reads as intentional, not drift.
 - Any text produced by manual edits — users can write arbitrary Log entries. Consumers must tolerate unknown prefixes (treat as audit-only, not anchors/exclusions).

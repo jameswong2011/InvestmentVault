@@ -3,7 +3,7 @@ name: ingest
 description: Ingest content into the vault as structured research notes. Accepts a URL, a local file path, or no arguments (batch-processes _Inbox/). Use when user shares a URL, says "clip this", "ingest", or "process inbox".
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write WebFetch Bash(date * mv * mkdir * ls * find * defuddle *)
+allowed-tools: Read Grep Glob Edit Write WebFetch Bash(date * mv * mkdir * ls * find * defuddle * python3 *)
 ---
 
 Ingest raw content into the vault as structured research notes. **This skill creates research notes only — it does NOT propagate insights to theses, sector notes, or macro notes. Run `/sync` after ingesting to propagate.**
@@ -127,7 +127,17 @@ Parse $ARGUMENTS to determine mode:
 
 ### Post-write verification
 
-Re-read the just-written research note and check, in order:
+**Script-first (2026-07-08):** checks #1–#14 are deterministic (word counts, retention-floor arithmetic, domain-token regexes, OCR patterns, Jaccard) — run the helper instead of executing the regexes by hand:
+
+```bash
+python3 .claude/skills/ingest/verify_note.py "Research/<note>.md" \
+  --mode url|pdf|local --source-type "<source_type>" \
+  --source-words <N from Step 1> --url "<source URL, url mode only>"
+```
+
+It prints `VERDICT: PASS | ADVISORY | BLOCK` plus each failing check with evidence, and exits **0 (pass) / 1 (advisory) / 2 (block) / 3 (self-validation: note unreadable)**. Act on the verdict per the Failure-handling block below: **BLOCK** (url/pdf) → delete the note, retain the source; **ADVISORY** (local manual file) → keep the note, surface flags; **PASS** → proceed. The script already applies the mode/source_type gating (structural #1–4 block all modes; #5–14 block url/pdf, advisory local; #8–11/#14 skipped for web-clip/data; #13 url-only). Exit 3 → do NOT treat as pass; re-run the script with corrected args or fall back to the manual checks below.
+
+The numbered checks below are the reference spec the script implements (and the manual fallback if `python3` is unavailable). Re-read the just-written research note and check, in order:
 
 **Structural checks (block on failure)**:
 1. **YAML frontmatter actually parses** — run a real parser on the block between the opening/closing `---` (e.g. `python3 -c "import sys,yaml;yaml.safe_load(sys.stdin)"`, or `ruby -E UTF-8 -ryaml -e 'YAML.load($stdin.read)'`), NOT just a delimiter/eyeball check. The dominant failure mode is an **unquoted value containing a colon-space** (clipped titles read `… Book: Scaling …`) or an em-dash/quote, which makes the plain scalar invalid YAML — Obsidian then refuses to render the Properties block (raw red text) and this gate fails. Fix by single-quoting the value per the frontmatter-template rule above, then re-verify. On parse failure, treat as a structural failure (block + leave the source file in `_Inbox/`).
@@ -270,12 +280,12 @@ source_type: [earnings|analyst-report|news|deep-dive|data|web-clip|video-transcr
 
 **Follow CLAUDE.md Writing Standards strictly.** Structure the body in this section order:
 
-- **Thesis Delta** (1-2 sentences: what this changes for the investment case. If no thesis exists, state the key question this raises. Do NOT re-describe the business — the thesis note already does that.)
+- **Thesis Delta** (1-2 sentences: what this changes for the investment case. If no thesis exists, state the key question this raises. Do NOT re-describe the business — the thesis note already does that. **Non-consensus framing required** (the vault's stated edge): state it as a contrast — "consensus assumes/prices X → this source implies Y" — so the delta names *what the market has wrong*, not just what the source says. A delta that merely restates the source without a consensus contrast is a summarization, not a thesis delta.)
 - **Summary** (prose capturing the source's actual argument, the mechanism it proposes, and the scope of its claims. NOT a business description — the thesis note owns that. **REQUIRED for all source_types.** Length proportional to source: 1–2 paragraphs for short-form sources (news, data, brief web-clip, <800 source words); 2–4 paragraphs for long-form (deep-dive, video-transcript, analyst-report, earnings). Rationale: every source has an argument/frame/context that data-point tables cannot preserve; this section gives that substrate a legitimate home before Evidence's data-point compression.)
 - **Framework / Mental Model** (**CONDITIONAL** — include ONLY when Step 1's framework detection fired. Capture three things: (1) framework name, (2) its components — axes, metrics, categories, tiers — with each component's definition, (3) methodology: how the framework is applied to instances. Distinct from Evidence — Evidence captures the *output* of applying the framework to specific cases; this section captures the framework itself so readers can re-apply it to new cases. Omit entirely when the source reports events/data without advancing a framework.)
 - **Evidence** (data points only. Tables preferred. No narrative. Lead with numbers, not context.)
 - **Key Segments** (**REQUIRED** only when `source_words` >15,000. Structure: 3–8 sub-sections mirroring the source's major H2 headings where present, or major topics for unstructured transcripts. Each sub-section 2–5 sentences capturing that segment's specific contribution — the speaker's/author's claim, mechanism, or qualifier unique to that segment. Omit entirely when source ≤15,000 words.)
-- **Contradiction Check** (does this support or challenge existing conviction? Name the specific assumption affected.)
+- **Contradiction Check** (does this support or challenge existing conviction? **Name the specific thesis section or assumption affected** — cite the `[[Theses/TICKER ...]]` note and the §section / Conviction Trigger / Non-consensus Insight it bears on, not a generic "supports the thesis." "Supports existing conviction" with no named target is the failure mode — a source that only confirms priors and challenges nothing is a low-signal ingest; say so explicitly if that's the honest read.)
 - **Source Excerpts** (quotes containing specific numbers, framework components, or claims not captured above. Delete section if empty.)
 
 ### Step 3: Connect to Vault
@@ -293,7 +303,7 @@ Read `_graph.md` once (parallel to any remaining Reads in Step 3). Parse `adjace
 For each just-created research note, with:
 - `T` = note's primary `ticker:` (if any)
 - `S` = note's `sector:` (if any)
-- `M` = `Macro/` references in note body (if any)
+- `M` = `Macro & Technology/` references in note body (if any)
 
 Compute:
 - `direct_targets` = theses already matched in Step 3 (ticker/topic grep hits)

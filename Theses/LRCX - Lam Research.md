@@ -201,7 +201,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Theses/AVGO - Broadcom.md]] — AI infrastructure end-demand
 - [[Theses/SNDK - SanDisk]] — NAND end-customer; Cryo 3.0 + ALTUS Halo Mo demand source
 - [[Theses/000660 - SK Hynix.md]] — Aether dry resist tool-of-record customer; HBM4/HBM4E/MR-MUF leadership
-- [[Theses/285A - SK Hynix (KOSPI).md]] — alternate listing of SK Hynix; same end-customer relationship
+- [[Theses/285A - Kioxia]] — NAND end-customer; Kioxia capex driver for Lam NAND etch/dep share
 - [[Theses/TSM - Taiwan Semiconductor.md]] — leading-edge foundry; N2/A14 GAA Akara revenue source
 - [[Sectors/Semiconductor Capital Equipment.md]] — sector context
 - [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — multiple-compression scenario macro context
@@ -233,3 +233,6 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 ### 2026-06-01 (/sync)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: memory WFE capex +34% SK Hynix / +26% Samsung / +20% Micron 2026 + 1b/1c node migration confirmed by ASML+LRCX mgmt + rising EUV layers — directly validates memory-WFE (etch/dep) leverage; conviction unchanged (high).
+
+### 2026-07-09
+- Wikilink cleanup: Related Research bullet [[Theses/285A - SK Hynix (KOSPI).md]] repointed to [[Theses/285A - Kioxia]] — 285A is Kioxia (SK Hynix is 000660, already linked); description corrected to NAND end-customer. Conviction unchanged.

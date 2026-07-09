@@ -3,7 +3,7 @@ name: surface
 description: Surface new insights, potential trades, and research opportunities from existing vault content. Use when user says "surface", "what am I missing", "find opportunities", or "what should I research next".
 model: opus
 effort: max
-allowed-tools: Agent Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * defuddle *)
+allowed-tools: Agent Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * defuddle * python3 *)
 ---
 
 **Follow CLAUDE.md Writing Standards strictly.** No hedge words, lead with insights/numbers, tables over prose, every sentence must earn its place.
@@ -13,6 +13,8 @@ Perform deep insight discovery across the vault. This is the highest-value opera
 ## Execution context — subagent delegation (2026-07-08, MANDATORY)
 
 Delegate the ENTIRE run (Step 0 pre-flight through Phase 4 output) to ONE `Agent` subagent (`subagent_type: general-purpose`, `run_in_background: false`). Pass this skill's full instructions plus the resolved scope in the agent prompt. The subagent performs all reads, analysis, lock acquire/release, and writes (Research note + `_hot.md`), and must END its final message with the complete user-facing report. The main thread renders that returned report **verbatim** in chat — never re-summarize it, never discard sections.
+
+**Mental Models reading gate MUST cross the delegation boundary (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** The subagent does NOT inherit CLAUDE.md, so the agent prompt MUST embed this gate verbatim: *"Before ranking any opportunity, read `Mental Models/Generalist - Overview.md` (always) + the matching `Mental Models/Industry - X.md` for sectors in scope + any relevant `Mental Models/Lens - X.md`. Apply the READING PROTOCOL — models are lenses/questions held as hypotheses, never verdicts; run the base-rate/outside view adversarially; treat agreement across models as a trigger to disconfirm, not to commit."* An agent prompt omitting this is a spec violation — surface's whole job (finding non-consensus inflections) is the READING PROTOCOL applied at portfolio scale.
 
 Why delegation, not frontmatter fork: `context: fork` was reverted 2026-06-07 (forked output returned as unrendered stdout — blank panel). Delegation keeps the read set (~50-80K words default, ~220K words `all` mode) out of main context while the main thread does the rendering. Main-context cost: the returned report only.
 
@@ -109,26 +111,14 @@ Read strategy branches by scope. The two full-vault modes trade completeness aga
    - Read **only**: frontmatter + `## Summary` + `## Key Non-consensus Insights` + `## Risks` + `## Catalysts` + **last 5 Log entries**
    - Skip: Business Model & Product Description, Industry Context, Key Metrics, Bull Case, Bear Case, Outstanding Questions, Related Research, older Log entries
    - Target: ~800-1,500 words per thesis instead of ~4,000-6,000 — reduces total thesis read from ~175K words to ~35-50K words
-   - Extract (Bash targeted awk):
+   - Extract via the shared helper (2026-07-08 — replaces the prior brittle inline awk range-patterns, which silently mis-extracted on any heading drift that `/lint #14` flags; the script is heading-case/whitespace/prefix tolerant and reports missing sections):
 
 ```bash
-for f in Theses/*.md; do
-  echo "=== $f ==="
-  awk '
-    # Always emit frontmatter
-    /^---$/ && !fm_done { in_fm=!in_fm; print; if(!in_fm) fm_done=1; next }
-    in_fm { print; next }
-    # Summary / Non-consensus Insights / Risks / Catalysts sections
-    /^## Summary/,/^## /        { if($0!~/^## / || $0~/^## Summary/)                  print }
-    /^## Key Non-consensus Insights/,/^## /  { if($0!~/^## / || $0~/^## Key Non-consensus/) print }
-    /^## Risks/,/^## /          { if($0!~/^## / || $0~/^## Risks/)                    print }
-    /^## Catalysts/,/^## /      { if($0!~/^## / || $0~/^## Catalysts/)                print }
-    # Log: keep everything from ## Log forward — LLM takes last 5 entries in reasoning layer
-    /^## Log/{in_log=1}
-    in_log{print}
-  ' "$f"
-done
+python3 .claude/skills/_shared/extract_sections.py Theses/*.md \
+  --sections "Summary,Key Non-consensus Insights,Risks,Catalysts" --log-tail 5
 ```
+
+   One call handles every thesis; output is grouped per file (`===== FILE: ... =====`) with a `--- missing sections: ... ---` line whenever a thesis lacks a requested heading (surface that as a template-drift signal, don't silently drop it). Exit 3 = a file was unreadable (self-validation); investigate rather than proceeding on partial output.
 
 2. **Issue steps 2-4 as a single parallel tool-call batch** (after Step 1's awk block lands): all Sector Note Reads (~13) + all Macro Note Reads (~6) + all heavily-cited research note Reads (~10-20) in ONE message with multiple Read invocations. Do NOT serialize. Total ~30-40 Reads lands in one round-trip.
 3. Read all **Sector Notes** in full (bounded set, ~13 files). Competitive dynamics, value chain analysis, and investor heuristics are needed in full.
@@ -185,15 +175,13 @@ Skip vault-wide checks that require full portfolio coverage (Attention Allocatio
 - Are there clustered earnings dates that create portfolio risk?
 - Any regulatory, geopolitical, or technology milestones approaching?
 
-**Contrarian Signal Detection**
-- Where does the vault's thesis directly contradict current sell-side consensus?
-- Which positions have the widest gap between vault conviction and market pricing?
-- These are the highest-alpha opportunities — flag them prominently
+**Contrarian Signal Detection** — *delegated to `/retro` (2026-07-08 de-overlap).*
+- The vault-vs-market gap (where vault conviction diverges from market pricing) is `/retro`'s flagship: it computes the narrative-price delta rigorously against *actual* price moves + newsflow polarity, not an ad-hoc web guess. `/surface` no longer re-derives it (doing so duplicated ~per-ticker web queries with no shared query plan and produced a weaker, price-blind version of the same signal).
+- `/surface`'s job here is only to **flag** which positions look most worth a market-reaction check, then defer: `→ Run /retro [window]` (or `/retro [window] TICKER` for a single name) to quantify the gap and rank trade ideas. Do not issue price/consensus web searches from `/surface`.
 
-**Research Freshness Audit**
-- Which theses have the oldest research? (Longest time since last Research/ note)
-- What developments might have occurred that aren't reflected?
-- Search the web for 2-3 most material recent developments
+**Research Freshness Audit** (forward attention only — no market overlay)
+- From vault data alone: which theses have the oldest last-Research/-note date? Rank them. This is a *what-to-research-next* signal (surface's forward domain).
+- Do NOT web-search for "recent developments" here — that market-overlay work belongs to `/retro` (backward) and `/catalyst` (forward events). Surface flags the staleness; retro/catalyst supply the external delta.
 
 **Thesis Velocity & Attention Allocation**
 - **Research velocity ranking**: Which theses received the most research activity recently (new Research/ notes, Log entries, edits)? Which received zero? Rank all active theses by volume of recent activity.
@@ -207,7 +195,8 @@ Generate 3-5 specific, actionable research prompts ranked by potential convictio
 For each opportunity:
 - **Topic**: What to research
 - **Why now**: What triggered this being relevant
-- **Vault connection**: Which existing notes it builds on
+- **Vault connection**: cite **≥2 specific cross-note datapoints** (name the notes) that, connected, produce the insight — a single-note observation is a summary, not a surfaced connection. The vault's edge is correlating optically-insignificant datapoints across notes (CLAUDE.md); an opportunity that rests on one datapoint or a generic theme fails this bar.
+- **Falsifier**: the single observable that would prove this opportunity ISN'T real (READING PROTOCOL — every surfaced idea is a hypothesis; name what kills it). An opportunity with no falsifier is a narrative, not a testable idea.
 - **Expected impact**: High/Medium/Low potential to change a conviction level
 - **Suggested approach**: Specific research steps
 

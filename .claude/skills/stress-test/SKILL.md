@@ -30,7 +30,7 @@ Both checks must pass before proceeding to Phase 1.
 ### Round 1 — parallel batch (single message, two tool calls)
 Issue these two tool calls in ONE message:
 1. **Read** `Theses/TICKER - [Name].md` (the thesis).
-2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro/ Research/` with `glob='*.md'` (catches mentions in notes not explicitly linked from the thesis, scoped to markdown). Use a single multi-path Grep — do not grep each directory separately.
+2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro & Technology/ Research/` with `glob='*.md'` (catches mentions in notes not explicitly linked from the thesis, scoped to markdown). Use a single multi-path Grep — do not grep each directory separately.
 
 Wait for both to land. Use the thesis content to enumerate: the sector note path (from `sector:` frontmatter), every research wikilink (from `## Related Research` + `## Log`), and referenced macro notes.
 
@@ -40,7 +40,11 @@ Issue ALL of these in ONE message as a single parallel tool-call batch:
 - **Read** every research note linked from the thesis (Related Research + Log-mentioned wikilinks).
 - **Read** every Macro note referenced by the thesis (from body or Log wikilinks) and any macro note tagged with the same sector.
 
-Do NOT serialize. A well-linked thesis has ~10-20 supporting files; one parallel batch lands in ~one round-trip instead of ~15 sequential rounds. Do not cap the research-note count — read all of them.
+Do NOT serialize — one parallel batch lands in ~one round-trip instead of ~15 sequential rounds. Include `[[Mental Models/Generalist - Overview]]` + the matching `Industry -`/`Lens -` files in the Round 2 batch (gate below).
+
+**Mental Models reading gate (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** A stress test IS the READING PROTOCOL's core move — "agreement across models is a trigger to disconfirm." Read `[[Mental Models/Generalist - Overview]]` (always) + the ticker's `[[Mental Models/Industry - X]]` + any `[[Mental Models/Lens - X]]` the thesis touches, and run the **base-rate / outside view adversarially** against the bull case. Then **consume the thesis's own `## Mental Models` section**: each "Triggers that fired" line is a hypothesis the thesis is testing — attack it directly (does the disconfirming check still hold? has the base-rate the thesis must beat moved against it?). The short case is strongest where the thesis's recorded model-triggers are weakest.
+
+**Research-note read cap (2026-07-08):** stress-test examines the whole thesis, so cast wider than `/deepen` but still bounded: read the **15 most recent linked research notes by date**, PLUS any note cited in the thesis's last ~10 Log entries (recent evidence the bull case leans on), PLUS any note whose title flags a risk/short/bear angle (the adversarial signal is disproportionately there). A thesis with ≤15 linked notes → read all. This keeps a heavily-covered ticker from blowing the Phase 1 budget while preserving the recent + risk-relevant evidence the short case actually attacks.
 
 After Round 2 lands, proceed to Phase 2.
 
@@ -109,6 +113,13 @@ Structure as a short seller would pitch to an investment committee:
 
 4. **Research Gaps** — What does the thesis NOT know that it needs to? Which Outstanding Questions remain unanswered? What data would a serious short seller have that this vault doesn't?
 5. **Kill Trigger** — What single observable event would invalidate the thesis? Be specific and falsifiable (not "competition increases" but "[COMPANY X] launches [PRODUCT Y] at [PRICE Z] by [DATE]")
+6. **Section Weakness Map** (2026-07-08 — handoff to `/deepen`) — a compact table mapping the stress test's findings onto the thesis's 13 sections, so a follow-up `/deepen` reads a pre-computed weakness ranking instead of re-deriving it. Emit only sections the stress test actually surfaced as weak (omit the rest):
+
+   | Section | Weakness | Severity | What /deepen should fix |
+   |---|---|---|---|
+   | [Bull Case / Risks / Industry Context / …] | [one-line: the specific gap the short case exploited] | 🔴/🟡 | [the concrete addition/rework] |
+
+   Severity mirrors the Assumption Stress Table ratings. This is the ledger `/deepen` Phase 2 consumes — keep each row to one line, name real section headings (per the thesis's 13-section structure).
 
 ## Phase 4: Update the Vault
 

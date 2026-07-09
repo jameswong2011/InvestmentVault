@@ -3,7 +3,7 @@ name: transcript
 description: Pull an earnings call transcript from Financial Modeling Prep, extract qualitative signal (management commentary deltas, hedging shifts, Q&A tone), and produce a thesis-delta-first Research note. Use when user says "transcript", "pull earnings call", "transcript diff", or "ingest [TICKER] earnings".
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write Bash(date * cp * mkdir * ls * curl * grep * cat * jq * printf * awk * sed * wc *)
+allowed-tools: Read Grep Glob Edit Write Bash(date * cp * mkdir * ls * curl * grep * cat * jq * printf * awk * sed * wc * python3 *)
 ---
 
 Convert an FMP earnings transcript into a thesis-delta-first Research note. Pulls the target quarter's transcript plus the prior 2 quarters for delta analysis. Extracts qualitative signals — new/dropped management language, hedging shifts, Q&A skepticism, specificity changes — then cross-references against the thesis's Bull Case, Bear Case, and Conviction Triggers. Writes a Research note, appends a Log entry, and suggests `/sync` for propagation.
@@ -120,7 +120,7 @@ From the transcript-dates list, select the two quarters immediately preceding th
 For target + prior 2 quarters (default mode) or target + diff-target (diff mode):
 
 ```bash
-# Cache-first: if .data/transcripts/TICKER_QN-YYYY.json exists, skip the curl
+# Cache-first: if .data/transcripts/TICKER_QN-YYYY.json exists, skip the curl.
 for QY in "${TARGET_QUARTERS[@]}"; do
   CACHE=".data/transcripts/${TICKER}_${QY}.json"
   if [ -f "$CACHE" ]; then
@@ -128,11 +128,29 @@ for QY in "${TARGET_QUARTERS[@]}"; do
   else
     Q=$(echo "$QY" | cut -d'-' -f1 | sed 's/Q//')
     Y=$(echo "$QY" | cut -d'-' -f2)
+    # Fetch to a TEMP file, NOT straight to $CACHE. `curl -sf | tee "$CACHE"`
+    # truncated $CACHE to empty before curl's failure was known, and the
+    # pipeline's exit status is tee's (0) — so a failed fetch left an empty
+    # $CACHE that every later run trusted as a valid cache. Promote to $CACHE
+    # only after validation below.
     curl -sf "$BASE/earning-call-transcript?symbol=$TICKER_URL&year=$Y&quarter=$Q&apikey=$API_KEY" \
-      | tee "$CACHE" > "/tmp/transcript_${TICKER}_${QY}.json" &
+      > "/tmp/transcript_${TICKER}_${QY}.json" &
   fi
 done
 wait
+
+# Promote only non-empty, content-bearing responses to the persistent cache;
+# delete failed/empty temps so no poisoned cache is written.
+for QY in "${TARGET_QUARTERS[@]}"; do
+  CACHE=".data/transcripts/${TICKER}_${QY}.json"
+  [ -f "$CACHE" ] && continue            # already served from cache this run
+  T="/tmp/transcript_${TICKER}_${QY}.json"
+  if [ -s "$T" ] && grep -q '"content"' "$T"; then
+    cp "$T" "$CACHE"
+  else
+    rm -f "$T"                           # failed/empty fetch — leave NO cache behind
+  fi
+done
 ```
 
 **API failure handling**:
@@ -170,7 +188,18 @@ Record per-quarter:
 
 **Skipped entirely in `--diff` mode** — diff mode produces a different output shape (see Step 7B).
 
-For each signal below, compute current-Q value, prior-Q1 value, prior-Q2 value; surface deltas.
+**Script-first (2026-07-08):** signals 4.1–4.7 are deterministic word-frequency / regex math — run the helper, do NOT recompute them by hand (the generate_graph.py / lint.py precedent):
+
+```bash
+python3 .claude/skills/transcript/extract_transcript_signals.py \
+  --current .data/transcripts/${TICKER}_${TARGET_QY}.json \
+  --prior   .data/transcripts/${TICKER}_${PRIOR1_QY}.json \
+  --prior   .data/transcripts/${TICKER}_${PRIOR2_QY}.json
+```
+
+It emits one JSON object with `new_language`, `dropped_language`, `hedging`, `specificity`, `qa_skeptical`, `evasiveness`, `guidance` — each already carrying the current/prior-2-avg values, deltas, and the ±25% / ≥20% / +50% flags that Steps 6/7/10/11/12 consume. `priors_used`/`degraded_single_prior` mark the 1-prior degradation case; `qa_detected: false` marks the no-Q&A fallback (4.5/4.6 → N/A). Exit 3 (self-validation: unreadable/empty current transcript) → surface the error, do not fabricate signals.
+
+**The LLM's job is Step 6 (cross-referencing these numbers against the thesis Bull/Bear/Triggers)** — the genuinely qualitative work — NOT re-deriving the counts. The 4.1–4.7 sub-specs below are the reference spec the script implements (and the manual fallback if `python3` is unavailable — exit ≠ 0,3). Evasiveness (4.6) carries the mandatory heuristic caveat in the script output; propagate it verbatim into the Evidence note.
 
 ### 4.1: New language (current Q only)
 

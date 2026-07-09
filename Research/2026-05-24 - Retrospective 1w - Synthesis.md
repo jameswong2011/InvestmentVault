@@ -4,7 +4,7 @@ tags: [research, retro, retrospective, synthesis, portfolio, macro]
 sector: macro
 source: vault synthesis 2026-05-17 to 2026-05-24
 source_type: retrospective
-propagated_to: [NVDA, 000660, AMD, CSU, PCOR, SIVE]
+propagated_to: []
 ---
 
 # Retrospective — 1 Week Window (2026-05-17 → 2026-05-24)

@@ -25,13 +25,22 @@ Parse order:
 ```
 Split $ARGUMENTS by whitespace into tokens.
 If any token is "dry-run" → force dry-run mode, strip it.
-If any token matches /^[A-Z][A-Z0-9.-]*$/ → ticker (scoped).
-If any remaining token matches /^\d+$/ → integer threshold.
+Classify each remaining token by CHECKING THE VAULT, not a regex:
+  - If Glob "Theses/<token> - *.md" matches a file → ticker (scoped).
+    Vault-check (not a charset regex) is mandatory: the vault has numeric and
+    alphanumeric tickers (000660, 2383, 285A, 6857) and hyphenated ones
+    (BTC-CRYPTO) that a /^[A-Z].../ pattern cannot match — misparsing "2383"
+    as a 2383-day threshold silently promotes a scoped dry-run into an
+    UNCONFIRMED VAULT-WIDE EXECUTE.
+  - Else if token matches /^\d+$/ → integer threshold (days).
+  - Else → unrecognized token. Report `❌ Unrecognized argument "<token>" — not a
+    thesis ticker (no Theses/<token> - *.md) and not an integer threshold.` Abort.
+    Do NOT silently fall through to vault-wide execute.
 Default threshold = 180.
 No numeric threshold AND no explicit execute intent → dry-run mode.
 ```
 
-**When ambiguous**: if `$ARGUMENTS` is a single token that could parse as a ticker OR a threshold (e.g., `100`), treat as threshold (integers unambiguously mean days). User wanting ticker `100` must type `100 180` or similar.
+**When ambiguous**: a bare integer with no matching thesis (e.g., `100` — no `Theses/100 - *.md`) is a threshold. A token that matches a thesis glob (e.g., `2383` → `Theses/2383 - Elite Material.md`) is that ticker. The vault-glob check resolves the ambiguity deterministically against real files.
 
 ## Step 0: Pre-flight (MANDATORY)
 
@@ -64,7 +73,7 @@ Both applicable pre-flight checks must pass before proceeding to Phase 1.
 
 Resolve the list of target files.
 
-- **Vault-wide**: `Theses/*.md` + `Sectors/*.md` + `Macro/*.md`. Research/ is excluded (Tier 2 immutable per CLAUDE.md — research notes don't carry callouts by convention).
+- **Vault-wide**: `Theses/*.md` + `Sectors/*.md` + `Macro & Technology/*.md`. Research/ is excluded (Tier 2 immutable per CLAUDE.md — research notes don't carry callouts by convention).
 - **Scoped (`TICKER`)**: single file `Theses/TICKER - *.md` resolved via Glob.
   - Zero matches → `❌ No thesis matching ticker "[TICKER]". Check the ticker spelling or use /thesis TICKER to create.` Abort.
   - Multiple matches (shouldn't happen with canonical naming) → list them and ask user to pick.
@@ -102,7 +111,7 @@ Where:
 - `<type>` is one of `question | error | tip | todo` (exactly — any other value → log `ℹ️ Skipped unrecognized callout type "[X]" in [file]` and ignore)
 - `<fresh_date>` is `YYYY-MM-DD`
 - `<addressed_date>` is optional. Absent → callout is **fresh** → SKIP (never sweep fresh)
-- `<markers>` may include `[[pinned]]` — opt-out marker, applies to fresh OR addressed callouts → SKIP. (Note: `[[preserve]]` is **deprecated** as of 2026-04-29 — `[[pinned]]` replaces it. The skill still treats `[[preserve]]` as a skip during a transition window for safety, but `/lint #48` flags any remaining occurrences for migration.)
+- `<markers>` may include `[[pinned]]` — opt-out marker, applies to fresh OR addressed callouts → SKIP. (Note: `[[preserve]]` is **deprecated** as of 2026-04-29 — `[[pinned]]` replaces it. The skill still treats `[[preserve]]` as a skip during a transition window for safety, but `/lint #56` flags any remaining occurrences for migration.)
 - `**Response:**` block must be present for a callout to qualify as addressed
 
 **Parent section detection**: walk backward from the callout's opening line to the nearest preceding `## <section_name>` heading. This is the callout's origin section — captured for the Legacy entry. If the callout sits above all `## ` headings (shouldn't happen in theses, unusual in sector notes), label section as `<unknown>`.
@@ -189,10 +198,15 @@ For each file with ≥1 candidate, issue ONE Bash block with parallel `cp` + `wa
 
 ```bash
 mkdir -p _Archive/Snapshots
-cp "Theses/NVDA - Nvidia.md" "_Archive/Snapshots/NVDA - Nvidia (pre-callout-sweep $TODAY-$HHMMSS).md" &
-cp "Theses/BESI - BE Semiconductor.md" "_Archive/Snapshots/BESI - BE Semiconductor (pre-callout-sweep $TODAY-$HHMMSS).md" &
-cp "Sectors/Semiconductors.md" "_Archive/Snapshots/Semiconductors (pre-callout-sweep $TODAY-$HHMMSS).md" &
-wait
+pids=()
+cp "Theses/NVDA - Nvidia.md" "_Archive/Snapshots/NVDA - Nvidia (pre-callout-sweep $TODAY-$HHMMSS).md" & pids+=($!)
+cp "Theses/BESI - BE Semiconductor.md" "_Archive/Snapshots/BESI - BE Semiconductor (pre-callout-sweep $TODAY-$HHMMSS).md" & pids+=($!)
+cp "Sectors/Semiconductors.md" "_Archive/Snapshots/Semiconductors (pre-callout-sweep $TODAY-$HHMMSS).md" & pids+=($!)
+# Bare `wait` returns 0 even if a background cp failed — wait on each PID so a
+# failed snapshot is actually detected (§4.2 hard-abort depends on this).
+snap_fail=0
+for pid in "${pids[@]}"; do wait "$pid" || snap_fail=1; done
+[ "$snap_fail" -ne 0 ] && { echo "❌ snapshot cp failed — aborting Phase 4 (no transformations applied)"; exit 1; }
 ```
 
 Then, in one parallel Edit batch, add snapshot frontmatter to each new snapshot:
@@ -319,7 +333,7 @@ Another skill already wrote a Log entry today. Tier 2 append-only: NEVER re-orde
 - `old_string`: find the LAST bullet line under today's date header. Walk from `### <TODAY>` downward until either (a) the next `### ` date header, (b) the next `## ` section heading, or (c) end of file. The line immediately before that boundary is the last bullet.
 - `new_string`: `<old_string>\n- Callout sweep: ...`
 
-Verification: after the Edit, re-grep the Log section for the new bullet. If absent → Edit silently failed. Retry with expanded context (include the date header + all existing same-day bullets in `old_string`). Second failure → abort this file's Log append only; the 4.3a/4.3b edits have already landed. Report: `⚠️ [file] Phase 4.3c Log append failed — body changes persist, audit trail missing. /lint #53b will flag. Manual fix: append "Callout sweep: ..." bullet to ## Log section under today's date.`
+Verification: after the Edit, re-grep the Log section for the new bullet. If absent → Edit silently failed. Retry with expanded context (include the date header + all existing same-day bullets in `old_string`). Second failure → abort this file's Log append only; the 4.3a/4.3b edits have already landed. Report: `⚠️ [file] Phase 4.3c Log append failed — body changes persist, audit trail missing. /lint #53 will flag. Manual fix: append "Callout sweep: ..." bullet to ## Log section under today's date.`
 
 **If `## Log` is absent entirely** — Phase 0.3 already skipped this file. Should not reach here. If reached (state corruption mid-skill), hard-abort this file with snapshot-restore recommendation.
 
@@ -338,12 +352,17 @@ For each swept file, run ONE Bash probe:
 ```bash
 for f in [swept files]; do
   echo "=== $f ==="
-  echo "Swept callouts remaining:"
-  grep -c "^> \[!.*\] [0-9]{4}-[0-9]{2}-[0-9]{2} → Addressed [0-9]{4}-[0-9]{2}-[0-9]{2}" "$f" || echo "0"
-  echo "Legacy Callouts entries:"
+  # grep -cE (extended regex): the `{4}` interval quantifier is a LITERAL in BRE
+  # (plain grep -c), so the prior probe matched nothing and always printed 0 → the
+  # "dropped by exactly the candidate count" check passed even when 4.3a Edits
+  # silently failed. -cE fixes the quantifier; `grep -c` already prints 0 on no
+  # match, so the `|| echo 0` (which double-printed) is dropped.
+  echo -n "Swept callouts remaining: "
+  grep -cE "^> \[!.*\] [0-9]{4}-[0-9]{2}-[0-9]{2} → Addressed [0-9]{4}-[0-9]{2}-[0-9]{2}" "$f"
+  echo -n "Legacy Callouts entries: "
   awk '/^## Legacy Callouts/,/^## Log/' "$f" | grep -c "^- \*\*[0-9]"
-  echo "Today's Callout sweep entry present:"
-  grep -c "^- Callout sweep: .* \\b$(date +%Y-%m-%d)" "$f" || echo "0"
+  echo -n "Today's Callout sweep entry present: "
+  grep -cE "^- Callout sweep:.*$(date +%Y-%m-%d)" "$f"
 done
 ```
 
@@ -383,10 +402,13 @@ Verification: all passed | [list failures]
 Final Bash block verifies ownership and releases:
 
 ```bash
-LOCK_FILE=".vault-lock"
+# LOCK_FILE MUST match the scope acquired at 0.1: `.vault-lock` for vault-wide,
+# `.vault-lock.TICKER` for scoped. Hardcoding `.vault-lock` stranded every scoped
+# run's `.vault-lock.TICKER` until its timeout (blocking follow-on ticker skills).
+LOCK_FILE="<paste-lockfile-path-captured-from-Step-0.1>"   # .vault-lock OR .vault-lock.TICKER
 EXPECTED_TOKEN="<paste-token-captured-from-Step-0.1>"
 if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
-  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ==="
+  rm -f "$LOCK_FILE" && echo "=== LOCK RELEASED ($LOCK_FILE) ==="
 else
   echo "⚠️ Lock ownership check failed at release — skipping rm to avoid stealing another skill's lock."
 fi
@@ -399,11 +421,11 @@ Runs unconditionally (same pattern as `/clean`, `/deepen`) — dry-run, execute,
 These invariants define what `/archive-callouts` guarantees. Consumer skills (`/sync`, `/brief`, `/lint`, `/rollback`, `/graph`) depend on them; do not break without updating every consumer:
 
 1. **`## Legacy Callouts` is owned exclusively by `/archive-callouts`.** No other skill writes to this section. Users should not hand-edit (but the skill tolerates structural damage by re-sorting and re-validating on next sweep; `/lint #52` + `#53` catch irrecoverable damage).
-2. **Section position is above `## Log`** unambiguously. The skill creates it there. `/lint #53d` flags out-of-position sections as Nice to Have.
+2. **Section position is above `## Log`** unambiguously. The skill creates it there. `/lint #53` flags out-of-position sections as Nice to Have.
 3. **Sort order is descending by addressed date.** Newest sweep at top. User-decided, locked in template + skill.
 4. **Entry format is load-bearing**: `- **YYYY-MM-DD** · <type> · <section> · raised YYYY-MM-DD → <body>` + `**Response:**` sub-bullet. `/lint #52` enforces.
 5. **Sweep never writes outside the target file** except: (a) per-target snapshot in `_Archive/Snapshots/`, (b) `last_callout_sweep:` frontmatter, (c) `Callout sweep:` Log entry in `## Log`. No sector propagation, no macro propagation, no `_hot.md` update, no `_graph.md` update.
-6. **`[[pinned]]` is the opt-out marker (replaces deprecated `[[preserve]]` 2026-04-29).** Any callout with `[[pinned]]` — fresh or addressed — NEVER sweeps regardless of age. Added by user in-place, never authored by the skill. During the deprecation transition window the skill also honors `[[preserve]]` as a skip; `/lint #48` flags any remaining occurrences for migration.
+6. **`[[pinned]]` is the opt-out marker (replaces deprecated `[[preserve]]` 2026-04-29).** Any callout with `[[pinned]]` — fresh or addressed — NEVER sweeps regardless of age. Added by user in-place, never authored by the skill. During the deprecation transition window the skill also honors `[[preserve]]` as a skip; `/lint #56` flags any remaining occurrences for migration.
 7. **Fresh callouts without `[[pinned]]` are invisible to sweep.** Only addressed callouts (with `→ Addressed YYYY-MM-DD` token) are candidates. Pinned addressed callouts skip sweep by marker; pinned fresh callouts are also exempt (and not in scope anyway because they're unaddressed).
 8. **Log prefix is `Callout sweep:`.** Registered in `_shared/log-prefixes.md` §17 as skill-origin drift-exclusion. Producer drift here breaks `/sync` Step 2.5 and Step 3e silently.
 9. **Snapshot trigger name is `callout-sweep`** (hyphenated). `/rollback` recognizes this in its 2.5c non-manifest cascade path. Changing the trigger name without updating rollback breaks the cascade-by-batch-id lookup.
@@ -416,7 +438,7 @@ These invariants define what `/archive-callouts` guarantees. Consumer skills (`/
 | Snapshot `cp` fails in 4.2 | Phase 4 aborts before any file edits. Lock releases. No damage. Re-run after resolving disk/permission issue. |
 | Edit fails in 4.3a (callout removal) | That file's sweep aborts mid-transform. Per-file snapshot exists at `_Archive/Snapshots/[file] (pre-callout-sweep ...)`. Restore via `/rollback`. Other files in the batch are unaffected. |
 | Edit fails in 4.3b (Legacy Callouts insertion) | Same as above — per-file snapshot restores the state before 4.3a ran. |
-| Edit fails in 4.3c (Log append) | Thesis has Legacy Callouts populated but no audit trail. `/lint #53b` catches (Legacy entries without matching Log entries). Manual fix: append Log entry per Phase 4.3c format, or `/rollback` to pre-sweep snapshot. |
+| Edit fails in 4.3c (Log append) | Thesis has Legacy Callouts populated but no audit trail. `/lint #53` catches (Legacy entries without matching Log entries). Manual fix: append Log entry per Phase 4.3c format, or `/rollback` to pre-sweep snapshot. |
 | Edit fails in 4.3d (frontmatter) | Sweep is body-complete; only hygiene metadata is stale. `/lint #50` surfaces missing `last_callout_sweep:` on next run. Low severity. |
 | Verification probe mismatch in 4.4 | Reported to user. No self-heal. Snapshot restore via `/rollback`. |
 | Lock ownership lost mid-run (`LOCK_STOLEN`) | Abort immediately. Report files already swept (completed 4.3 sequences) + files abandoned. User decides: keep partial progress, or `/rollback` the batch. |

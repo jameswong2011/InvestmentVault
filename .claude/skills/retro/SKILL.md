@@ -3,7 +3,7 @@ name: retro
 description: Generate a backward-looking retrospective of vault activity (addressed callouts + Log entries) over a time window (1w / 1m / 1q), overlay with newsflow + earnings transcripts + price action, and rank trade ideas by the gap between official narrative and market reaction. Output is an immutable Research note. Use when user says "retro", "retrospective", "what did I do this week/month/quarter", "review activity against market", or "recommend trades from recent research".
 model: opus
 effort: max
-allowed-tools: Agent Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * awk * defuddle *)
+allowed-tools: Agent Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * awk * defuddle * grep * mkdir * cat * printf * test *)
 ---
 
 **Follow CLAUDE.md Writing Standards strictly.** No hedge words, lead with insights/numbers, tables over prose, every sentence must earn its place.
@@ -20,11 +20,13 @@ Output is an **immutable Research note** — one new note per run, never overwri
 
 Delegate the ENTIRE run (Step 0 pre-flight through Phase 9 output) to ONE `Agent` subagent (`subagent_type: general-purpose`, `run_in_background: false`). Pass this skill's full instructions plus the resolved window in the agent prompt. The subagent performs all reads, WebSearches, transcript fetches, lock acquire/release, and writes (the immutable Research note + Log back-references + `_hot.md`), and must END its final message with the complete Phase 9.2 user-facing report. The main thread renders that returned report **verbatim** in chat — never re-summarize it, never drop the Trade Ideas table.
 
+**Mental Models reading gate MUST cross the delegation boundary (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** The subagent does NOT inherit CLAUDE.md, so the agent prompt MUST embed this gate verbatim for the Phase 4 trade-idea synthesis: *"Before ranking trade ideas from the narrative-price gaps, read `Mental Models/Generalist - Overview.md` + the matching `Mental Models/Industry - X.md`/`Lens - X.md` for the tickers surfacing. Apply the READING PROTOCOL — the market-vs-vault gap is a hypothesis, not a verdict; run the base-rate adversarially (most gaps close because the market is right); an inverted-bear/inverted-bull signal is a disconfirm trigger on the vault's own stance, not automatic alpha."*
+
 **This supersedes the 2026-06-07 "main-thread, no fork" decision** (see Design notes) — that revert was specific to the frontmatter `context: fork` mechanism, which returned the report as unrendered stdout (blank panel). Agent-tool delegation is a different mechanism: the subagent's final message returns to the main thread as a tool result, and the main thread re-emits it in its own response, so rendering is preserved. This keeps the ~400K-token read/search budget out of main context (main receives only the final report). If a future run shows a truncated or missing report, the fallback is to remove this section and restore main-thread execution — the Research note persists to disk either way.
 
 ## Arguments
 
-`$ARGUMENTS` parses to a window keyword. Everything else ignored.
+`$ARGUMENTS` parses to a **window keyword** plus an **optional trailing ticker** (scoped mode, 2026-07-08).
 
 | Input | Canonical window | Day count |
 |---|---|---|
@@ -32,7 +34,14 @@ Delegate the ENTIRE run (Step 0 pre-flight through Phase 9 output) to ONE `Agent
 | `1m`, `m`, `month`, `monthly`, `30d` | `1m` | 30 |
 | `1q`, `q`, `quarter`, `quarterly`, `90d` | `1q` | 90 |
 
-Default: `1w`. Anything unrecognized → reject: `❌ /retro unknown window "[input]". Accepts: 1w | 1m | 1q.`
+Default window: `1w`. A token that is not a window keyword is parsed as a **ticker** for scoped mode (`/retro 1w NVDA`, `/retro NVDA` → default 1w scoped to NVDA). Resolve the ticker to `Theses/TICKER - *.md`; if no thesis matches, reject: `❌ /retro no thesis for ticker "[input]" (and not a window keyword). Windows: 1w | 1m | 1q.` A recognized window with an unrecognized SECOND token that is also not a thesis ticker → same reject.
+
+**Scoped mode (`SCOPE_TICKER` set)** changes three things vs the vault-wide default:
+1. **Phase 1** reads only the scoped thesis + its `_graph.md` cluster peers' sector/macro links (not all ~60 files) — see Phase 1 scoped path.
+2. **`TICKER_UNIVERSE` = { SCOPE_TICKER }** (∪ cluster peers if the graph primer is present and the user wants competitive context) — overrides the window-activity derivation in §2.4. The scoped ticker is analyzed even with zero window activity (the user asked for it explicitly), so the Phase 2.5 empty-window short-circuit does NOT fire in scoped mode.
+3. **Phase 3** issues the 3-channel query for the one ticker (fits a single message; the ≤5-ticker one-message path already covers it) — no ~126-query fan-out.
+
+The vault-wide lock is retained even in scoped mode (Invariant 7 — retro still writes a Research note + may Log-append).
 
 ## Step 0: Pre-flight (MANDATORY — runs before Phase 1)
 
@@ -70,16 +79,23 @@ Read `_graph.md` per `.claude/skills/_shared/graph-primer.md` Mode A (ticker-sco
 
 The graph orients Phase 4 synthesis (which ticker is in which cluster, shared peers) — it never replaces thesis reads.
 
-## Phase 1: Parallel Batch Read
+## Phase 1: Activity-Gated Batch Read
 
-**Issue every file Read as a single parallel tool-call batch** — one message with ~60 Read invocations (~42 theses + ~13 sectors + ~6 macros). Do NOT serialize.
+**Scoped mode (`SCOPE_TICKER` set)**: skip the triage — read only `Theses/SCOPE_TICKER - *.md` in full, plus (if the graph primer loaded) the sector/macro notes it wikilinks. Typically 1–4 files. Proceed to Phase 2.
 
-Files to Read in full:
-- `Theses/*.md` — every file (draft, active, monitoring, closed-but-not-yet-archived all carry callouts + Log)
-- `Sectors/*.md` — full set
-- `Macro/*.md` — full set
+**Vault-wide mode — grep-triage first, then read only active files (2026-07-08):** most theses have NO activity in a given window (especially `1w`), so a blanket ~60-file full read is wasteful. Gate the reads:
 
-Research notes are NOT read here — they don't carry callouts by convention, and their Log is implicit via the owning thesis.
+1. **One grep pass** over `Theses/*.md`, `Sectors/*.md`, `Macro & Technology/*.md` for the three activity signals:
+   - addressed callouts in window: `> \[!(question|error|tip|todo)\].*→ Addressed 20\d\d-\d\d-\d\d`
+   - any fresh (unaddressed) callout: `> \[!(question|error|tip|todo)\] 20\d\d-\d\d-\d\d` without `→ Addressed` on the line
+   - Log date headers: `^### 20\d\d-\d\d-\d\d`
+   Emit filename + matched dates. (One `grep -rnE` with alternation, output_mode content — a single round-trip.)
+2. **Filter to the active set**: a file is active if it has (a) an addressed-callout date within `[WINDOW_START, TODAY]`, OR (b) any fresh callout (surfaced regardless of window — §2.2), OR (c) a Log date within the window. Fresh-callout and in-window-date matching is done in the reasoning layer from the grep output — no per-file read yet.
+3. **Read the active set in full**, as ONE parallel tool-call batch. For a `1w` window this is typically 5–15 files vs ~60; for `1q` it grows toward the full set (correct — more activity to review). Do NOT serialize.
+
+Files considered: `Theses/*.md` (every status — draft/active/monitoring/closed-but-not-archived all carry callouts + Log), `Sectors/*.md`, `Macro & Technology/*.md`. Research notes are NOT read here (they carry no callouts by convention; their Log is implicit via the owning thesis).
+
+**Why grep-gate, not section-target**: callouts are inline anywhere in a body, so you cannot narrow *within* a file — but you CAN skip files with zero window activity entirely. The grep is the cheap discriminator; full-read is reserved for files that actually changed. `TICKER_UNIVERSE` (§2.4) is still derived from the active set's extracted callouts/Log, so gating out inactive files cannot drop a ticker that had activity.
 
 ## Phase 2: Extraction (parse in-memory from Phase 1 reads)
 
@@ -137,7 +153,7 @@ Extract per bullet:
   skill_origin: true | false  # matches any prefix in the skill-origin list
 ```
 
-Skill-origin classification (matches `_shared/log-prefixes.md` skill-origin list): `Stress test`, `Deepening`, `Deepened`, `↳ CORRECTION: Deepened`, `Conviction reaffirmed`, `Status change:`, `CLOSED`, `Prune upgrade`, `Scenario `, `Initial thesis created`, `ROLLBACK to snapshot`, `Scenario REVERSED`, `Cross-thesis closure:`, `Cross-thesis closures:`, `Renamed file:`, `Comparison `, `Callout sweep:`.
+Skill-origin classification (matches `_shared/log-prefixes.md` skill-origin list): `Stress test`, `Deepening`, `Deepened`, `↳ CORRECTION: Deepened`, `Conviction reaffirmed`, `Status change:`, `CLOSED`, `Prune upgrade`, `Scenario `, `Initial thesis created`, `ROLLBACK to snapshot`, `Scenario REVERSED`, `Cross-thesis closure:`, `Cross-thesis closures:`, `Renamed file:`, `Comparison `, `Callout sweep:`, `Numbers refresh:`. (`Transcript ingested:` is deliberately NON-skill-origin per log-prefixes.md — transcript-driven activity counts as high-signal manual research.)
 
 Non-skill-origin entries are manual or user-callout-driven activity — highest signal for retro ("what I actually thought about").
 
@@ -178,11 +194,25 @@ For each `ticker ∈ TICKER_UNIVERSE`, issue three distinct queries. Each channe
 | **News** | `[TICKER] news [WINDOW_START] to [TODAY] analyst rating earnings guidance M&A` | Major events (product launches, guidance updates, analyst actions, regulatory, M&A) — each with date + polarity (positive/negative/neutral) |
 | **Earnings** | `[TICKER] earnings [WINDOW_START] to [TODAY] results call transcript guidance` | Results vs consensus, guidance direction, call-transcript key themes (only if an earnings event landed in the window) |
 
+### 3.1.5: Overlay cache check (2026-07-08 — skip re-querying fresh tickers)
+
+Overlapping runs waste WebSearches: `/retro 1w` on Friday then `/retro 1m` the next Monday re-fetches identical recent price/news for every shared ticker. Cache the per-ticker overlay and reuse it within a freshness window.
+
+```bash
+mkdir -p .data/retro_cache      # gitignored (.data/)
+```
+
+For each ticker in `TICKER_UNIVERSE`, before issuing its 3 queries, check `.data/retro_cache/${TICKER}.json`. **Reuse** the cached overlay (skip all 3 queries for that ticker) iff BOTH:
+- `fetched_date` is within **3 days** of TODAY, AND
+- the cached `window_end` ≥ this run's TODAY − 1 (the cached data already covers this run's recent edge).
+
+Otherwise query fresh. After Phase 3 completes, write/overwrite `.data/retro_cache/${TICKER}.json` with `{fetched_date: TODAY, window_end: TODAY, price_move_pct, news_events, earnings, dominant_polarity}` (compact — the classification inputs only, not raw search text). The cache is advisory: a miss just means a normal query; staleness is bounded by the 3-day guard, so it never injects old market data into a fresh classification. Scoped mode uses the same cache for its single ticker.
+
 ### 3.2: Parallel batch issuance
 
-Issue the three queries per ticker **in the same parallel tool-call batch**. For a 42-ticker universe this is ~126 WebSearches; chunk into messages of up to 25 WebSearch invocations per message, producing ~5-6 rounds. Never serialize within a chunk — only between chunks. Mirrors `/catalyst` Phase 2's pattern at 3× the fan-out.
+Issue the three queries per **non-cached** ticker **in the same parallel tool-call batch**. For a 42-ticker universe with a cold cache this is ~126 WebSearches; chunk into messages of up to 25 WebSearch invocations per message, producing ~5-6 rounds. Never serialize within a chunk — only between chunks. Mirrors `/catalyst` Phase 2's pattern at 3× the fan-out. A warm cache (e.g. a `1m` run days after a `1w` run) drops this to only the tickers with new activity.
 
-If `TICKER_UNIVERSE` is small (≤5 tickers), all 15 queries fit in one message.
+If the non-cached set is small (≤5 tickers) — including every scoped-mode run — all queries fit in one message.
 
 ### 3.3: Targeted fetches (earnings transcripts only)
 
@@ -266,12 +296,13 @@ gap_magnitude =
   | inverted-bull  → 1.5 × |price_move_pct|   # highest-signal: bad news bought
   | flow-bull      → 1.0 × |price_move_pct|   # unsigned flow signal
   | flow-bear      → 1.0 × |price_move_pct|
-  | unreactive-*   → 2.0                       # small but directionally relevant
+  | mixed          → 0.5 × |price_move_pct| if |price_move_pct| ≥ 3% else 0   # a big move on genuinely-mixed news (e.g. beat + guidance cut) IS the market resolving the ambiguity — do NOT zero it out
+  | unreactive-*   → max(2.0, 0.5 × |price_move_pct|)   # small but directionally relevant; scales up if a "flat" call still moved a few %
   | aligned-*      → 0                         # already priced, no alpha
-  | quiet/mixed/data-gap → 0
+  | quiet/data-gap → 0
 ```
 
-The 1.5× weight on inverted deltas reflects trader intuition: price rejecting narrative is a stronger signal than price confirming it. Confirmed narrative is consensus; rejected narrative is asymmetric information.
+The 1.5× weight on inverted deltas reflects trader intuition: price rejecting narrative is a stronger signal than price confirming it. Confirmed narrative is consensus; rejected narrative is asymmetric information. The `mixed` 0.5× rung (added 2026-07-09) closes a gap where a large-move mixed-earnings name — the single most common ambiguous-catalyst case — scored 0 and silently dropped out of the Trade Ideas ranking despite being highly actionable.
 
 ### 4.2: Secondary signal — VAULT STANCE vs DELTA
 
@@ -473,7 +504,7 @@ Example:
 - Retro insight: 1w retro — inverted-bear (news +, price -7.2%) vs vault weakened. Vault was ahead of market on hyperscaler demand softening — harvest signal. See [[Research/2026-04-24 - Retrospective 1w - Synthesis]].
 ```
 
-**Prefix choice**: `Retro insight:` is NOT in `_shared/log-prefixes.md`'s skill-origin list (§47 enumeration). This is deliberate — per CLAUDE.md Workflow Rule 6, a non-skill-origin prefix forces the next `/sync` to treat the entry as research-driven and propagate normally to sector/macro notes. If the retro surfaces a divergence that materially changes sector-level thinking, `/sync` should pick it up.
+**Prefix choice**: `Retro insight:` is NOT in `_shared/log-prefixes.md`'s skill-origin list (unregistered prefixes default to non-skill-origin). This is deliberate — per CLAUDE.md Workflow Rule 6, a non-skill-origin prefix forces the next `/sync` to treat the entry as research-driven and propagate normally to sector/macro notes. If the retro surfaces a divergence that materially changes sector-level thinking, `/sync` should pick it up.
 
 ### 7.3: Edit strategy (same-day append aware)
 
@@ -610,7 +641,9 @@ Each run produces an independent immutable artifact. The `/graph last` reconcili
 ## Design notes
 
 - **Why vault-wide lock (not read-only)**: retro writes a Research note, appends Log entries to 3-5 theses, and updates `_hot.md`. These writes conflict with concurrent `/sync` or `/catalyst`. Read-only lock is insufficient.
-- **Why no scoped mode in v1**: single-ticker retro (`/retro 1w NVDA`) is a reasonable v2 extension. The vault-wide view is the v1 use case per the user's original framing ("recommend trades" across the portfolio). Scoped mode would add a resolution path + graph primer switch that v1 doesn't need.
+- **Scoped mode (added 2026-07-08)**: single-ticker retro (`/retro 1w NVDA`, `/retro NVDA`) is now supported — a trailing non-window token parses as a ticker (Arguments). It sets `TICKER_UNIVERSE = {ticker}`, reads only that thesis + its graph-linked sector/macro notes in Phase 1, issues one 3-query message in Phase 3, and does NOT empty-window-short-circuit (the user asked for this ticker explicitly). The vault-wide view remains the default for portfolio-level "recommend trades." The graph primer is orientation-only here too (Invariant 5) — scoped mode narrows reads, never analysis correctness.
+- **Activity-gated Phase 1 (added 2026-07-08)**: vault-wide runs grep-triage all theses/sectors/macros for in-window callout/Log activity first, then full-read only active files (~5-15 for `1w` vs ~60). Callouts are inline-anywhere so per-file section-narrowing is unsafe, but skipping zero-activity files entirely is safe and scales the read cost with actual activity. `TICKER_UNIVERSE` still derives from the active set, so no active ticker is dropped.
+- **Overlay cache (added 2026-07-08)**: per-ticker price/news/earnings overlay cached to `.data/retro_cache/` with a 3-day freshness guard, so an overlapping `1w`→`1m` run doesn't re-fetch identical recent data. Advisory only — a miss is a normal query; the freshness guard prevents stale market data entering a fresh classification.
 - **Fork history — frontmatter fork reverted, Agent delegation adopted**: 2026-06-07 the frontmatter `context: fork` mechanism was reverted because the harness returned the report as unrendered stdout, leaving the chat panel blank. 2026-07-08 the skill moved to **Agent-tool delegation** (see Execution context at top): the subagent does the ~400K-token read/search work and returns the full report as a tool result; the main thread re-emits it verbatim, so rendering is preserved AND main-context cost is just the returned report. The two mechanisms are distinct — do not "restore main-thread execution" on the assumption that delegation reintroduces the 2026-06-07 blank-panel bug; it does not. Revert path if delegation ever truncates: delete the Execution-context section, and the skill runs inline again (report renders, but ~400K tokens land in main context).
 - **Why narrative-price delta is the core engine**: "what did the market say happened vs what did the stock do" is the classical trader signal for positioning opportunities. Aligned narrative + price = already priced, no alpha. Inverted narrative + price = market is pricing something the surface news isn't showing — positioning, forward risk, capitulation, or vault's non-consensus view is right. The vault's recent stance then separates alpha (vault predicted the divergence) from reflection (vault missed it). This is why the 1.5× weight on inverted deltas vs 1.0× on flow-only signals: rejected narrative is asymmetric information, confirmed narrative is consensus.
 - **Why exclude social sentiment**: per user spec — official narrative channels (press releases, SEC filings, earnings, analyst actions) are structured, date-anchored, and polarity-classifiable. Social sentiment (X/Twitter/Reddit) is noisy, hard to polarity-classify at scale, and typically echoes official narrative with a lag. Including it would expand WebSearch fan-out 2-3× without proportional signal gain.

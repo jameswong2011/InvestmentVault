@@ -3,6 +3,7 @@ publish: true
 date: 2026-04-22
 tags: [sector, moc]
 status: active
+sector: Product Tankers & Maritime Shipping
 ---
 
 # Product Tankers & Maritime Shipping

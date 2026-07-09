@@ -3,7 +3,7 @@ name: numbers
 description: Refresh the Key Metrics table in a thesis with current data from Financial Modeling Prep. Use when user says "numbers", "refresh metrics", "update key metrics", or "refresh [TICKER]" with no other action implied. Surgical edit only — does NOT create research notes or propagate via /sync.
 model: sonnet
 effort: medium
-allowed-tools: Read Grep Glob Edit Bash(date * cp * mkdir * ls * curl * grep * cat * jq * printf * awk * sed *)
+allowed-tools: Read Grep Glob Edit Bash(date * cp * mkdir * ls * curl * grep * cat * jq * printf * awk * sed * python3 *)
 ---
 
 Refresh the **`## Key Metrics`** table in a thesis using live FMP data. Hygiene operation, not analysis — the skill changes only numeric cells, never the Notes column, never section text, never frontmatter analytical fields. Solves the staleness problem where every thesis's metrics are wrong 90 days after creation.
@@ -28,7 +28,7 @@ Per `.claude/skills/_shared/preflight.md` Procedure 1:
 - **Single ticker**: `ticker:TICKER` scope. Timeout 3 minutes.
 - **`--all` / `--all-active`**: `vault-wide` scope. Timeout 10 minutes (one API cycle per ticker × N tickers, even at FMP wholesale tier).
 
-Capture token at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release explicitly in the final block (Step 11).
+Capture token at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release explicitly in the final block (Step 12).
 
 ### 0.2: Rename-marker pre-flight
 
@@ -106,7 +106,17 @@ The skill's edit operations target the **Value cell only**. Notes cells are pass
 
 ## Step 3: Map metric labels to FMP fields
 
-Maintain an internal mapping table. Match is case-insensitive on the label after stripping parenthetical qualifiers like `(TTM)`, `(GAAP)`, `(Non-GAAP)`:
+**Script-first (2026-07-08):** the label→field mapping (Step 3) AND the delta/materiality math (Step 5) are deterministic — after the Step 4 fetch lands the JSON, run the helper instead of doing the arithmetic by hand:
+
+```bash
+# rows.tsv: one line per existing Key Metrics row, tab-separated  label<TAB>value_raw
+python3 .claude/skills/numbers/numbers_compute.py \
+  --json-dir /tmp/numbers_${TICKER} --rows-file /tmp/numbers_${TICKER}_rows.tsv
+```
+
+(Place the six Step 4 curl outputs in `/tmp/numbers_${TICKER}/` as `quote.json ratios.json km.json growth.json income.json est.json`.) It emits a JSON array, one object per row: `status` (mapped | skipped | fetch_gap), `new_value_numeric`, `old_value_numeric`, `delta`, `delta_type` (pct/pp/abs), `material` (bool, per the Step 5 thresholds), and a `format_hint`. Derived metrics (Forward P/E, FCF Margin, FY Revenue) and the fraction→percent conversion are handled. Custom metrics with no mapping come back `status: skipped` — leave them untouched (Step 3 skip rule).
+
+**The LLM renders the final formatted cell from `new_value_numeric` + `format_hint`** — this is deliberately NOT scripted because currency preservation (KRW/JPY/GBp/EUR, `~` prefixes, magnitude/precision conventions) carries correctness risk in thesis content. The mapping table and threshold table below are the reference spec the script implements. Maintain an internal mapping table. Match is case-insensitive on the label after stripping parenthetical qualifiers like `(TTM)`, `(GAAP)`, `(Non-GAAP)`:
 
 | Canonical label | FMP endpoint + field | Format default |
 |---|---|---|
@@ -137,14 +147,19 @@ Per ticker, issue parallel curl calls:
 ```bash
 TICKER_URL=$(printf '%s' "$RAW_TICKER" | jq -sRr @uri)
 BASE="https://financialmodelingprep.com/stable"
+# Write into the DIRECTORY the script reads (--json-dir /tmp/numbers_${TICKER}),
+# not flat /tmp/numbers_${TICKER}_*.json files — the flat form left the script's
+# json-dir empty, so every row came back fetch_gap.
+mkdir -p /tmp/numbers_${TICKER}
+D=/tmp/numbers_${TICKER}
 
-curl -sf "$BASE/quote?symbol=$TICKER_URL&apikey=$API_KEY" > /tmp/numbers_${TICKER}_quote.json &
-curl -sf "$BASE/ratios-ttm?symbol=$TICKER_URL&apikey=$API_KEY" > /tmp/numbers_${TICKER}_ratios.json &
-curl -sf "$BASE/key-metrics-ttm?symbol=$TICKER_URL&apikey=$API_KEY" > /tmp/numbers_${TICKER}_km.json &
-curl -sf "$BASE/income-statement-growth?symbol=$TICKER_URL&apikey=$API_KEY" > /tmp/numbers_${TICKER}_growth.json &
-curl -sf "$BASE/income-statement?symbol=$TICKER_URL&period=annual&limit=3&apikey=$API_KEY" > /tmp/numbers_${TICKER}_income.json &
+curl -sf "$BASE/quote?symbol=$TICKER_URL&apikey=$API_KEY" > "$D/quote.json" &
+curl -sf "$BASE/ratios-ttm?symbol=$TICKER_URL&apikey=$API_KEY" > "$D/ratios.json" &
+curl -sf "$BASE/key-metrics-ttm?symbol=$TICKER_URL&apikey=$API_KEY" > "$D/km.json" &
+curl -sf "$BASE/income-statement-growth?symbol=$TICKER_URL&apikey=$API_KEY" > "$D/growth.json" &
+curl -sf "$BASE/income-statement?symbol=$TICKER_URL&period=annual&limit=3&apikey=$API_KEY" > "$D/income.json" &
 # Forward P/E only if Forward P/E is in the parsed table — guard the call
-curl -sf "$BASE/analyst-estimates?symbol=$TICKER_URL&period=annual&apikey=$API_KEY" > /tmp/numbers_${TICKER}_est.json &
+curl -sf "$BASE/analyst-estimates?symbol=$TICKER_URL&period=annual&apikey=$API_KEY" > "$D/est.json" &
 wait
 ```
 
@@ -343,8 +358,9 @@ if [ -f "$LOCK_FILE" ] && grep -q "token: $EXPECTED_TOKEN" "$LOCK_FILE"; then
 else
   echo "⚠️ Lock ownership check failed at release — skipping rm."
 fi
-# Clean up FMP temp files
-rm -f /tmp/numbers_*.json
+# Clean up FMP temp files — the per-ticker DIRECTORY (/tmp/numbers_TICKER/) and
+# the rows file, not just flat *.json (which the dir layout no longer produces).
+rm -rf /tmp/numbers_*
 ```
 
 Runs unconditionally — whether all targets refreshed cleanly, some failed FMP fetches, or section-existence-probe excluded some theses.

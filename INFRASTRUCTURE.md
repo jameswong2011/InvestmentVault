@@ -2,7 +2,7 @@
 
 > Deep technical details for the vault's consistency machinery. **Audience: Claude Code at skill-author / debugger scope.** User-facing summary: [[User Guide#14. How the Vault Stays Consistent]].
 >
-> **Per-skill deep rationale** lives in `<skill>/RATIONALE.md` (10 skills — see §12.3). Cross-skill contracts live in `.claude/skills/_shared/*.md` (§12.2).
+> **Per-skill deep rationale** lives in `<skill>/RATIONALE.md` (15 skills — see §12.3). Cross-skill contracts live in `.claude/skills/_shared/*.md` (§12.2).
 >
 > **Stable anchors** external files reference: §1.1 (`_hot.md`), §2.7 (`.drift-config.md`), §3.1 (snapshot table). Do not renumber without updating consumers.
 
@@ -68,7 +68,7 @@ Violating any of these produces silent corruption.
 
 ### 0.4 Skill landscape
 
-19 skills. Lock scope, `_hot.md` writes, and manifests determine each skill's pre-flight and cleanup contract; **model** and **context** are the runtime-performance axes.
+21 skills. Lock scope, `_hot.md` writes, and manifests determine each skill's pre-flight and cleanup contract; **model** and **context** are the runtime-performance axes.
 
 | Skill | Lock scope | `_hot.md`? | Manifest? | Snapshot? | Model | Context | Role |
 |---|---|---|---|---|---|---|---|
@@ -91,11 +91,13 @@ Violating any of these produces silent corruption.
 | `/clean` | vault-wide | No | No | No | **sonnet** | main | Delete old snapshots/manifests |
 | `/archive-callouts` | vault-wide (unscoped) / ticker | No | No | Per-file pre-sweep | **sonnet** | main | Sweep addressed callouts to Legacy |
 | `/lint` | vault-wide (full) / read-only (scoped) | No | No | No | opus | **fork** | ~56 health checks (§10) |
+| `/numbers` | ticker / vault-wide (`--all`) | No | No | Per-thesis pre-edit | **sonnet** | main | Refresh Key Metrics from FMP |
+| `/transcript` | ticker (read-only for `--list`) | Yes (ART + OQ) | No | No (Log-append + immutable note) | opus | main | Earnings-transcript signal extraction |
 
 **† `/sync` variants**: default scans changed files + adjacencies; `all` reads everything and writes `.sync_all_fresh`; `TICKER` uses a ticker lock and preserves `.last_sync`.
 **‡ `/surface` variants**: default reads 4 sections per thesis; `all` full reads; `[sector]` sector-scoped; `TICKER` uses a ticker lock. All fork.
 
-Design principles: **Opus max** for analytical work; **Sonnet max** for mechanical work (`/graph`, `/rename`, `/rollback`, `/status`, `/clean`, `/archive-callouts`); **forked context** (5 skills: `/lint`, `/prune`, `/surface`, `/catalyst`, `/retro`) where reads dominate but output is bounded — main receives only the final summary. Ticker-scoped vs vault-wide is the most consequential authoring choice: it dictates concurrency, rename-marker behavior, and `.last_sync` semantics.
+Design principles: **Opus max** for analytical work; **Sonnet** for mechanical work (`/graph`, `/rename`, `/rollback`, `/status`, `/clean`, `/archive-callouts`, `/numbers` — the last at effort `medium`, the only non-max skill, since its arithmetic is fully delegated to `numbers_compute.py`); **forked context** (5 skills: `/lint`, `/prune`, `/surface`, `/catalyst`, `/retro`) where reads dominate but output is bounded — main receives only the final summary. Ticker-scoped vs vault-wide is the most consequential authoring choice: it dictates concurrency, rename-marker behavior, and `.last_sync` semantics.
 
 ### 0.5 Glossary
 
@@ -239,7 +241,7 @@ All at `_Archive/Snapshots/_<type>-manifest (<type>-*).md` with `type:`, `status
 | `_stress-test-manifest` | `/stress-test` Phase 4.0 → 4.6 | 2.5d | #47 | Records the Log entry appended (no snapshot — append-only) |
 | `_status-manifest` | `/status` Step 3.0.5 → flip | 2.5e | #48 | Records frontmatter change, sector edit, archive move, invalidations. Reaffirm skips the manifest. Closure variant (`new_value:` contains `closed`) binds the 30-day floor |
 | `_thesis-manifest` | `/thesis` Step 3.5 → flip | 2.5f | #49 | Cascade is **deletion-based** (new files, not snapshot restore) |
-| `_deepen-manifest` | `/deepen` Phase 4.5 → 7.5 | 2.5g | #50 | Records section, pre-deepen snapshot, Log outcome, supporting research note |
+| `_deepen-manifest` | `/deepen` Phase 4.5 → 7.5 | 2.5g | #50m | Records section, pre-deepen snapshot, Log outcome, supporting research note |
 
 **Aging**: `in-progress` → Important (crash signal); `completed` → aged per 90/180-day tiers by the paired `/lint` check; `/clean` removes only after both the requested age AND any manifest-specific floor.
 
@@ -372,7 +374,7 @@ Watermark is ISO second-precision (`last_graph_write:`); legacy files fall back 
 
 ## 10. `/lint` registry (by ID)
 
-Key checks (the full registry runs ~56 checks, #1–#55 — see `lint/SKILL.md`). Scoped mode always runs #35 and, if a marker exists, #37.
+Key checks (the full registry runs ~56 checks, #1–#56 — with `#50m` for `_deepen-manifest` distinct from `#50` callout-sweep-freshness; `#31`/`#40` are unused — see `lint/SKILL.md`). Scoped mode always runs #35 and, if a marker exists, #37.
 
 | ID | Scope | Catches | Severity | If fires, suspect |
 |---|---|---|---|---|
@@ -389,7 +391,7 @@ Key checks (the full registry runs ~56 checks, #1–#55 — see `lint/SKILL.md`)
 | #37 | Both | `.rename_incomplete.*` markers | Important | Re-run `/rename` to repair |
 | #38 | Full | State-marker hygiene (`.sync_all_fresh`, `.graph_invalidations` aging) | Nice to Have | `/graph` not run after `/sync all` |
 | #39 | Full | `propagated_to:` producer contract (§5.2) | Important post-spec | Producer crashed mid-propagation |
-| #41 | Full | `_sync-manifest` aging | Important if in-progress | Check `phase:` for last checkpoint |
+| #41 | Full | `_sync-manifest` aging | Important if in-progress | Read the Step 3/4/5 checkpoints in the manifest body (no `phase:` field exists) |
 | #42 | Both | `_hot.md` truncation markers | Important | Legacy compaction or manual edit |
 | #43 | Full | Stale locks | Nice to Have | Skill crashed without release |
 | #45 | Full | `_compare-manifest` aging | Important if in-progress | Crashed before atomicity flip |
@@ -397,8 +399,8 @@ Key checks (the full registry runs ~56 checks, #1–#55 — see `lint/SKILL.md`)
 | #47 | Full | `_stress-test-manifest` aging | Important if in-progress | Crashed before flip |
 | #48 | Full | `_status-manifest` aging | Important if in-progress | Crashed between skeleton and flip |
 | #49 | Full | `_thesis-manifest` aging | Important if in-progress | Check whether the thesis file was created |
-| #50 | Full | `_deepen-manifest` aging | Important if in-progress | Crashed before Phase 7.5 flip |
-| #50–#53 | Both | Callout hygiene (sweep freshness, stale fresh callouts, malformed/orphan Legacy entries, deprecated `[[preserve]]`) | Varies | See `lint/SKILL.md` |
+| #50m | Full | `_deepen-manifest` aging | Important if in-progress | Crashed before Phase 7.5 flip (ID is `#50m`, distinct from callout `#50`) |
+| #50–#53, #56 | Both | Callout hygiene: sweep freshness (#50), stale fresh callouts (#51), malformed/orphan Legacy entries (#52/#53), deprecated `[[preserve]]` (#56) | Varies | See `lint/SKILL.md` |
 | #54/#55 | Full | Graph-primer compliance / filter anti-pattern | Important | Skill used graph to skip content reads |
 
 ---
@@ -410,7 +412,7 @@ Key checks (the full registry runs ~56 checks, #1–#55 — see `lint/SKILL.md`)
 | Entry | Purpose | Git |
 |---|---|---|
 | `.git/` | Repository metadata | Self |
-| `.claude/` | Harness: `agents/`, `commands/`, `settings.json` (ignored), `skills/` (19 skills + `_shared/`) | Partial |
+| `.claude/` | Harness: `agents/`, `commands/`, `settings.json` (ignored), `skills/` (21 skills + `_shared/`) | Partial |
 | `.claudian/` | Claudian plugin state; not read/written by any skill | Ignored |
 | `.obsidian/` | Obsidian config; personal UI state ignored, shared config (plugins, hotkeys) tracked | Partial |
 
@@ -465,13 +467,14 @@ Load semantics: every byte of `SKILL.md` is paid per invocation; `_shared/*.md` 
 
 ### 12.2 Shared contracts catalog
 
-Six contracts under `.claude/skills/_shared/`. Editing any requires coordinated consumer updates (§12.4).
+Seven contracts under `.claude/skills/_shared/` (plus the shared helper scripts `extract_sections.py`, and the per-skill helpers `verify_note.py`/`extract_transcript_signals.py`/`numbers_compute.py`/`generate_graph.py`/`lint.py`). Editing any contract requires coordinated consumer updates (§12.4).
 
 | Contract | Purpose | Consumers | `/lint` |
 |---|---|---|---|
 | `preflight.md` | Lock acquisition/verification, rename-marker check, name sanitization, section probe | Every state-modifying skill | #43 |
 | `log-prefixes.md` | Registry of Log prefixes with producer/consumer bindings | `/sync` (classification + drift), `/retro`, `/lint`, every producer | #29 |
 | `hot-md-contract.md` | Section budgets, caps, compression order, same-ticker continuation | 14 writers (§1.1) | #35, #42 |
+| `mental-models-section.md` | `## Mental Models` section merge contract (fired triggers as hypotheses, not verdicts) | `/ingest` (identifies), `/sync`, `/deepen` (merge) | — |
 | `sector-resolution.md` | `sector:` → sector-note ladder (exact → normalized → substring → ask) | `/status`, `/thesis`, `/compare`, `/prune`, `/rollback`, `/rename` | #30, #34 |
 | `wikilink-forms.md` | 5 canonical wikilink forms | `/sync`, `/rollback`, `/prune`, `/lint` | #23 |
 | `graph-primer.md` | `_graph.md` as primer (orient reads), never filter (skip reads) | `/ingest`, `/compare`, `/thesis`, `/stress-test`, `/brief`, `/deepen`, `/scenario`, `/surface`, `/retro` | #54, #55 |
@@ -480,7 +483,7 @@ Producer divergence from a contract without consumer updates → silent failures
 
 ### 12.3 RATIONALE.md pattern
 
-10 skills have one: `sync`, `graph`, `lint`, `status`, `scenario`, `compare`, `thesis`, `rename`, `prune`, `rollback`. Extract when rationale blocks exceed ~20% of SKILL.md with no execution impact.
+15 skills have one: `sync`, `graph`, `lint`, `status`, `scenario`, `compare`, `thesis`, `rename`, `prune`, `rollback`, `archive-callouts`, `deepen`, `ingest`, `stress-test`, `surface`. Extract when rationale blocks exceed ~20% of SKILL.md with no execution impact.
 
 **Stays in SKILL.md**: operational rules, Log messages, critical-path Bash, error/abort messages. **Moves to RATIONALE.md**: historical context, edge-case trade-offs, "why A over B" dialectics, benchmarks.
 
@@ -514,7 +517,7 @@ Dated rollout narratives and measured-impact tables live in [[_Archive/Docs/Chan
 
 - **Forked context (5 skills)** — `/lint`, `/prune`, `/surface`, `/catalyst`, `/retro`: reads dominate but output is bounded, so the vault-read budget stays off main context (e.g. unscoped `/surface`: ~380K → ~15K main-context tokens). Trade-off: intermediate reasoning is discarded (invariant #11); re-run scoped if a follow-up needs it.
 - **Section-targeted reads** — `/surface` default and `/catalyst` Phase 1 read only high-signal sections (Summary, Key Non-consensus Insights, Risks, Catalysts + recent Log) at ~25% of full-read cost. `/surface all` preserves full reads for quarterly deep review. Surface notes carry `scope:` frontmatter so deep-scans are distinguishable.
-- **Sonnet max for mechanical skills** — `/graph`, `/rename`, `/rollback`, `/status`, `/clean`, `/archive-callouts` (~40-60% faster). **Watch list** (first to revert if Sonnet underperforms): `/status` trigger-conflict detection; `/rollback` cascade classification. Revert = one-line `model:` frontmatter change.
+- **Sonnet for mechanical skills** — `/graph`, `/rename`, `/rollback`, `/status`, `/clean`, `/archive-callouts` (all max), `/numbers` (effort `medium` — arithmetic delegated to `numbers_compute.py`) (~40-60% faster). **Watch list** (first to revert if Sonnet underperforms): `/status` trigger-conflict detection; `/rollback` cascade classification. Revert = one-line `model:` frontmatter change.
 - **Parallel-batch reads** — independent multi-file reads issue as one parallel tool-call batch, not serial loops. Pattern B (Bash+awk pre-extraction) is accepted only for mechanical skills (`/lint` set-diff, `/clean` metadata); it was rejected for analytical skills because tool-level narrowing blinds the LLM to out-of-section signal.
 - **`/status` draft→active fast-path** — bypasses the Tier 3 confirm (additive, no analytical change, trivially reversible); all manifest/Log/sector machinery unchanged.
 

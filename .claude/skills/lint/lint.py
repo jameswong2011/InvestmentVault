@@ -143,7 +143,10 @@ def wikilinks_with_lines(text):
         if fenced:
             continue
         for m in WIKILINK_RE.finditer(ln):
-            t = m.group(1).split("|")[0].split("#")[0].strip()
+            # un-escape Obsidian table-pipe (\|) before splitting alias, matching
+            # generate_graph.py extract_links — else "[[Theses/X\|alias]]" yields
+            # "Theses/X\" and every table-form wikilink false-fails #3/#1/#24.
+            t = m.group(1).replace("\\|", "|").split("|")[0].split("#")[0].strip()
             if t:
                 res.append((i, t, in_log))
     return res
@@ -180,6 +183,17 @@ def days_old(d):
 
 def ticker_of(thesis_path):
     return thesis_path.stem.split(" - ")[0].strip()
+
+
+def fm_tickers(fm):
+    """Normalized ticker(s) from a frontmatter ticker: field. Handles both scalar
+    (`ticker: NVDA`) and list (`ticker: [AMD, NVDA]`) forms, stripping the FMP
+    exchange suffix (000660.KS → 000660). Prior code stringified the list, so
+    `ticker: [AMD, NVDA]` became the literal "['AMD', 'NVDA']" and matched no
+    thesis — false #8/#11/#32 across every multi-ticker research note."""
+    raw = fm.get("ticker", "")
+    vals = raw if isinstance(raw, list) else [raw]
+    return [str(v).split(".")[0].strip() for v in vals if str(v).strip()]
 
 
 def norm_sector(s):
@@ -301,9 +315,10 @@ def freshness(v, scoped_theses):
     latest = {}
     for p in v["research"]:
         fm = v["fm"].get(p, {})
-        tick = str(fm.get("ticker", "")).split(".")[0]
         d = parse_date(fm.get("date")) or parse_date(p.stem)
-        if tick and d:
+        if not d:
+            continue
+        for tick in fm_tickers(fm):  # multi-ticker notes credit every ticker
             latest[tick] = max(latest.get(tick, d), d)
     for p, _ in (scoped_theses or v["theses"]).items():
         tick = ticker_of(p)
@@ -344,8 +359,7 @@ def connections(v):
     thesis_ticks = {ticker_of(p) for p in v["theses"]}
     tally = {}
     for p in v["research"]:
-        tick = str(v["fm"].get(p, {}).get("ticker", "")).split(".")[0]
-        if tick:
+        for tick in fm_tickers(v["fm"].get(p, {})):
             tally[tick] = tally.get(tick, 0) + 1
     for tick, n in sorted(tally.items()):
         if n >= 3 and tick not in thesis_ticks:
@@ -611,7 +625,13 @@ def graph_checks(v):
                 add("IMPORTANT", "#22", f"_graph.md frontmatter {key}: {claimed} vs actual {act}")
         except (ValueError, TypeError):
             pass
-    # #23 reverse index consistency
+    # #23 reverse-index accuracy. The generator builds each reverse row from a
+    # macro/sector file's OUTBOUND [[Theses/...]] links (generate_graph.py rev_for).
+    # This is NOT the transpose of thesis→macro adjacency — a thesis linking a macro
+    # and that macro linking the thesis back are independent facts, so the prior
+    # transpose check fired on every fresh graph (~250 FPs). Correct invariant: the
+    # parsed reverse rows must equal a recompute from the live macro/sector bodies,
+    # replicating rev_for exactly (Theses/-prefixed, resolving, .md/alias-normalized).
     def parse_reverse(name):
         body = section_body(text, name) or ""
         rev = {}
@@ -620,25 +640,40 @@ def graph_checks(v):
             if len(cells) >= 3 and "[[" in cells[1] and cells[1] != "---":
                 key = WIKILINK_RE.findall(cells[1])
                 if key:
-                    rev[key[0].split("/")[-1]] = {t.split("/")[-1] for t in WIKILINK_RE.findall(cells[2])}
+                    rev[key[0].replace("\\|", "|").split("|")[0].split("/")[-1]] = {
+                        t.replace("\\|", "|").split("|")[0].split("/")[-1]
+                        for t in WIKILINK_RE.findall(cells[2])}
         return rev
     rev_macro = parse_reverse("Reverse Index: Macro → Theses")
     rev_sector = parse_reverse("Reverse Index: Sector → Theses")
-    for ent, fields in entries.items():
-        for m in fields["macros"]:
-            base = m.split("/")[-1]
-            if base in rev_macro and ent not in rev_macro[base]:
-                add("IMPORTANT", "#23", f"Reverse-index drift: {ent} lists macro [[{base}]] but reverse row omits it — run /graph")
-        for s in fields["sectors"]:
-            base = s.split("/")[-1]
-            if base in rev_sector and ent not in rev_sector[base]:
-                add("IMPORTANT", "#23", f"Reverse-index drift: {ent} lists sector [[{base}]] but reverse row omits it — run /graph")
-    for base, members in list(rev_macro.items()) + list(rev_sector.items()):
-        for m in members:
-            if m in entries:
-                listed = {x.split("/")[-1] for x in entries[m]["macros"] + entries[m]["sectors"]}
-                if base not in listed:
-                    add("IMPORTANT", "#23", f"Reverse-index drift: reverse row [[{base}]] lists {m} but adjacency omits it — run /graph")
+
+    def gen_theses_links(body):  # mirror generate_graph.py extract_links + rev_for filter
+        out = set()
+        for mm in WIKILINK_RE.finditer(body):
+            raw = mm.group(1).replace("\\|", "|").split("|")[0].split("#")[0].strip()
+            if raw.endswith(".md"):
+                raw = raw[:-3]
+            if raw.startswith("Theses/") and raw[len("Theses/"):] in thesis_stems:
+                out.add(raw[len("Theses/"):])
+        return out
+
+    def check_rev(kind, files_dict, parsed):
+        for p, t in files_dict.items():
+            actual = gen_theses_links(t)
+            if not actual:
+                continue  # generator emits no reverse row for a note with zero thesis links
+            got = parsed.get(p.stem, set())
+            if p.stem not in parsed:
+                add("IMPORTANT", "#23", f"{kind} reverse-index stale: [[{p.stem}]] links "
+                    f"{len(actual)} thesis/es but has no reverse row — run /graph")
+            elif got != actual:
+                miss, extra = actual - got, got - actual
+                det = (["missing " + "+".join(sorted(miss))] if miss else []) + \
+                      (["stale " + "+".join(sorted(extra))] if extra else [])
+                add("IMPORTANT", "#23", f"{kind} reverse-index drift for [[{p.stem}]]: "
+                    f"{'; '.join(det)} — run /graph")
+    check_rev("Macro", v["macro"], rev_macro)
+    check_rev("Sector", v["sectors"], rev_sector)
     # #24 orphan list accuracy
     listed_orphans = {t.split("/")[-1] for t in WIKILINK_RE.findall(section_body(text, "Orphan Research Notes") or "")}
     computed = v.get("computed_orphans", set())
@@ -646,8 +681,13 @@ def graph_checks(v):
         add("NICE", "#24", f"False orphan in graph: [[Research/{o}]] is now linked from a thesis — run /graph")
     for o in sorted(computed - listed_orphans):
         add("NICE", "#24", f"Missing orphan in graph list: [[Research/{o}]] — run /graph")
-    # #26 edge count accuracy
-    actual_edges = len(WIKILINK_RE.findall(adj_body))
+    # #26 edge count accuracy. generate_graph.py `edges:` = every categorized adjacency
+    # link PLUS every reverse-index member (not log_tail links). Prior code counted
+    # adjacency-section wikilinks only (incl. log_tail, excl. reverse rows) → structural
+    # ~15% drift on every fresh graph. Recompute the generator's exact definition.
+    adj_edges = sum(len(links) for e in entries.values() for links in e.values())
+    rev_members = sum(len(m) for m in rev_macro.values()) + sum(len(m) for m in rev_sector.values())
+    actual_edges = adj_edges + rev_members
     try:
         claimed = int(fm.get("edges", -1))
         if claimed > 0:
@@ -701,11 +741,14 @@ def contracts(v, scoped_theses):
     thesis_ticks = {ticker_of(p) for p in v["theses"]}
     archive_ticks = {f.stem.split(" - ")[0].strip() for f in ARCHIVE.glob("*.md")}
     for p in v["research"]:
-        tick = str(v["fm"].get(p, {}).get("ticker", "")).split(".")[0]
-        if tick and tick not in thesis_ticks:
-            note = " (archived thesis exists)" if tick in archive_ticks else ""
+        ticks = fm_tickers(v["fm"].get(p, {}))
+        # flag only when NONE of the note's tickers has a live thesis — a multi-ticker
+        # note still propagates if at least one ticker resolves (prior code stringified
+        # the whole list → always "matched no thesis").
+        if ticks and not any(tk in thesis_ticks for tk in ticks):
+            note = " (archived thesis exists)" if any(tk in archive_ticks for tk in ticks) else ""
             add("NICE" if note else "IMPORTANT", "#32",
-                f"Research ticker {tick} matches no thesis{note}: [[Research/{p.stem}]] — /sync cannot propagate")
+                f"Research ticker(s) {', '.join(ticks)} match no thesis{note}: [[Research/{p.stem}]] — /sync cannot propagate")
     # #33 closed theses in Theses/
     for p, _t in v["theses"].items():
         if v["fm"].get(p, {}).get("status") == "closed":

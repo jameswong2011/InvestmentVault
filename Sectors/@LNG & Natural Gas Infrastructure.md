@@ -3,6 +3,7 @@ publish: true
 date: 2026-04-22
 tags: [sector, moc]
 status: active
+sector: LNG & Natural Gas Infrastructure
 ---
 
 # LNG & Natural Gas Infrastructure

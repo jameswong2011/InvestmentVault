@@ -13,13 +13,15 @@ Distil a thesis into a sharp, 1-page investment brief. This forces clarity — i
 ## Arguments
 $ARGUMENTS should be a ticker (e.g., "NVDA") or thesis name. If empty, ask the user.
 
+**Batch mode (2026-07-08):** multiple tickers (`/brief NVDA AMD AVGO`) or a sector (`/brief [sector]` → every active thesis in that sector, resolved via `_graph.md` Sector reverse index) generates one brief per ticker in a single run — for pre-IC prep. Batch mode reads `_graph.md` ONCE up front (shared across all briefs — Phase 1.5's cluster-peer footnote data is a single read, not re-fetched per ticker) and runs each ticker through Phases 1–4. Emit each brief as its own clearly-delimited section; do not merge them. Per-ticker failures (missing thesis, rename marker) are reported and skipped, not fatal to the batch.
+
 ## Step 0: Pre-flight (MANDATORY)
 
 ### 0.1: Acquire vault lock
-Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 3 minutes. Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block.
+Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` Procedure 1. Timeout budget: 3 minutes. Capture the token, verify ownership (Procedure 1.5) at every subsequent Bash block, release in the final reporting Bash block. **Batch mode**: acquire N `ticker:TICKER` locks (one per brief target, same partial-acquisition-rollback discipline as `/compare` §1.2 — release any acquired locks in reverse order if one fails); brief is read-only on theses so a `read-only` vault lock is an acceptable lighter alternative for a large batch.
 
 ### 0.2: Rename-marker pre-flight
-Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block per contract 2.3 — the brief's title line derives from the thesis's current filename, and any residual inbound references to the pre-rename name would not agree with the brief's title, producing inconsistent references.
+Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists, hard-block per contract 2.3 — the brief's title line derives from the thesis's current filename, and any residual inbound references to the pre-rename name would not agree with the brief's title, producing inconsistent references. **Batch mode**: check the marker per target ticker; a blocked ticker is skipped-with-report, the rest of the batch proceeds.
 
 Both checks must pass before proceeding to Phase 1.
 
@@ -83,7 +85,7 @@ Distil the thesis into exactly this structure. Every word must earn its place.
 The timing argument in 2-3 bullets. What catalyst, inflection point, or transition makes this relevant today rather than 6 months ago or 6 months from now?
 
 ### The Non-Consensus Edge
-The single strongest variant perception — one paragraph. This is the insight that, if correct, generates the alpha. State what consensus believes, why they're wrong, and what evidence supports the contrarian view. Cite specific data points.
+The single strongest variant perception — one paragraph. This is the insight that, if correct, generates the alpha. State what consensus believes, why they're wrong, and what evidence supports the contrarian view. Cite specific data points. **Name the falsifier**: end with the one observable that would prove the edge wrong — pull it from the thesis's `## Conviction Triggers` (the `→ LOW if` / `→ CLOSE if` condition that kills this edge). An edge with no stated falsifier is generic variant-perception prose; tying the pitch to its own kill criterion is what makes it an IC-grade claim rather than a story.
 
 ### Key Numbers
 | Metric | Value |

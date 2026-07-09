@@ -145,23 +145,27 @@ Separation of R4 (live theses only) from R4.5 (archived ticker body documentatio
 
 ## §6 Two-pass triage (Phase 2)
 
-### §6.1 Why lightweight scan first
+> **Reconciliation note (2026-07-08):** §6.1–§6.2 previously described a *lightweight* Pass 1 (~200 words/thesis, deep-read only High/Low exposure). That was the ORIGINAL design; it was superseded by the R7 full-read decision (INFRASTRUCTURE §12.6 R7, 2026-04-21), which rejected Pattern B section-narrowing for `/scenario` because scenario exposure classification depends on full-thesis signal — a transmission channel routinely surfaces in Bull Case, Industry Context, Risks, or Non-consensus Insights, not just Summary. SKILL.md Phase 2 Pass 1 (full-read every in-scope thesis in one parallel batch) is the CURRENT intended behavior; this section is updated to match it. The cost lever is **scope narrowing** (`--sector` / `--tickers`, §6.4), not per-thesis section-narrowing.
 
-Reading all ~40+ thesis notes in full would exceed context limits. Most transmission-channel assessments can be made from Summary + frontmatter alone — exposure to rate changes, supply chain, commodity inputs is typically signaled in the Summary section.
+### §6.1 Why full-read Pass 1 (not a lightweight scan)
 
-Pass 1 reads ~200 words per thesis (frontmatter + Summary). Pass 2 deep-reads only High/Low exposure theses.
+Pass 1 reads every in-scope thesis **in full**, issued as one parallel tool-call batch (~49 Reads for the unscoped whole-portfolio case, landing in one round-trip). Full-file context preserves classification quality: a Summary-only scan misses transmission channels that live in later sections, and a mis-classified thesis silently drops out of the impact matrix. The parallel batch keeps wall-clock at one round-trip regardless of vault size; under the delegated-subagent execution model the read budget also stays off main context.
 
-### §6.2 Three exposure tiers
+### §6.2 Three exposure tiers (classification, not read-gating)
 
-- **High exposure**: direct transmission channel → read full thesis + sector note.
-- **Low exposure**: indirect or second-order only → read Summary + Risks + Bull/Bear Case (skip Business Model, Industry Context, Key Metrics).
-- **No exposure**: no plausible transmission → do NOT read further. Carry summary forward; mark Neutral in impact matrix.
+The tiers now govern how deeply the LLM *reasons* about each already-loaded thesis and whether it earns a sector-note read — NOT whether the thesis body is read (it always is, in Pass 1):
 
-Reduces deep-read set from ~58 files to 15-20.
+- **High exposure**: direct transmission channel → full impact analysis + read its sector note.
+- **Low exposure**: indirect / second-order → note the channel in the impact matrix.
+- **No exposure**: no plausible transmission → mark Neutral.
 
 ### §6.3 Sector notes read on-demand
 
 Read sector notes ONLY for sectors with at least one High-exposure thesis. Unaffected sectors skipped entirely. This couples sector-note reads to actionable propagation targets rather than reading every sector note defensively.
+
+### §6.4 Scope narrowing is the cost lever (`--sector` / `--tickers`)
+
+For a narrow hypothesis (e.g. "SK Hynix HBM4 yield miss") the full-portfolio read is wasteful. A scoped run (`--sector "DRAM & HBM Memory"` or `--tickers 000660,MU,SNDK`) narrows the Pass-1 thesis SET to the resolved members while still full-reading each member (classification quality preserved within scope). Cross-sector second-order effects (Phase 4) are still reasoned over the whole portfolio using `_graph.md` adjacency, but only in-scope theses receive Log-entry propagation. The lock stays `vault-wide` (the rename-marker all-or-nothing rationale in §7 is unchanged); scope narrows reads, not concurrency.
 
 ---
 

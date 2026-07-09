@@ -4,7 +4,7 @@ date: 2026-04-21
 tags: [thesis, semiconductors, AMD]
 status: active
 conviction: high
-sector: GPU & AI Compute Accelerators
+sector: Compute & AI Compute Accelerators
 ticker: AMD
 source: AMD Q4 2025 earnings (Feb 2026), MLPerf Inference v6.0 (Apr 1 2026), OpenAI 6GW deal (Oct 2025), Meta 6GW deal (Feb/Mar 2026)
 ---
@@ -262,3 +262,6 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: MI350X (N3) + MI400 AID/MID tiles (N3, XCD on N2) compete inside the binding N3 pool (AI 60%→86% of N3 output 2026→2027) and the SK-Hynix→Nvidia-priority HBM allocation; +50% HBM MI350→MI400 lands into the 3x→4x wafer/bit crowd-out. Reinforces the existing MI450 HBM/N3 supply-gating risk (06-01 log) — second-source-via-Samsung path stays structurally harder. Conviction unchanged (high).
+
+### 2026-07-09
+- Sector re-scoped: frontmatter `sector:` aligned to [[Sectors/Compute & AI Compute Accelerators]] (prior value resolved to no sector note, so sector propagation was silently skipped) — conviction unchanged; metadata hygiene per [[_Archive/Docs/2026-07-09 - Skills Audit Report]].

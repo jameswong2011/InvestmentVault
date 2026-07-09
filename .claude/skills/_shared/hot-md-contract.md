@@ -5,7 +5,7 @@ last_reviewed: 2026-04-24
 ---
 
 <!--
-This file is a load-bearing contract. `_hot.md` schema drift causes silent no-ops across 11 skills. `/lint #35` enforces structural compliance (section headings); this contract additionally specifies compression behavior, per-section budgets, and cap handling.
+This file is a load-bearing contract. `_hot.md` schema drift causes silent no-ops across 14 skills. `/lint #35` enforces structural compliance (section headings); this contract additionally specifies compression behavior, per-section budgets, and cap handling.
 
 Consumers: `/sync`, `/status`, `/thesis`, `/surface`, `/stress-test`, `/scenario`, `/compare`, `/deepen`, `/prune`, `/rollback`, `/catalyst`, `/brief` (Active Research Thread + Open Questions only), `/rename` (free-text mentions of the old name), `/retro` (Active Research Thread + Open Questions only).
 -->

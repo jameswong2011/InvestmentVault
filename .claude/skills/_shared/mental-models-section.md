@@ -12,15 +12,25 @@ A per-note ledger of the OUTPUT of applying the `/Mental Models` context files t
 - **Triggers that fired** — each pertinent trigger / test / lens / disqualifier: name it, the model it came from, and the one-line read it produced — **held as a hypothesis to test, never a verdict**.
 - **Disconfirming check** — where models agree, the bear case / the single falsifying datapoint / the base-rate the thesis (or sector consensus) must beat.
 
-## MANDATORY reading gate (every writer)
+## MANDATORY reading gate (every analytical skill — writers AND judgement-renderers)
 
-Per CLAUDE.md ("Read the Mental Models folder before any investment analysis"), any skill that WRITES this section MUST first read the relevant `/Mental Models` files and apply the READING PROTOCOL at the top of `[[Generalist - Overview]]`:
+Per CLAUDE.md ("Read the Mental Models folder before any investment analysis"), the gate applies to **two** classes of skill, not just section-writers:
+
+1. **Section writers** — `/sync`, `/deepen`, `/ingest` (identifier) — must read before writing `## Mental Models`.
+2. **Judgement-renderers (fresh analysis)** — `/thesis`, `/stress-test`, `/compare`, `/scenario`, `/surface`, `/retro`, `/prune` — must read the `/Mental Models` folder before producing ANY investment judgement (a new thesis, an adversarial case, a comparison, a scenario impact, an opportunity ranking, a conviction/status read). This is the deepest analytical work in the vault and CLAUDE.md's mandate governs it directly — even when the skill does not itself write the `## Mental Models` section.
+3. **Derivative distiller** — `/brief` — does NOT re-read the folder (it distills an existing thesis, it does not analyze anew, and it changes no conviction/status; CLAUDE.md's enumerated mandate does not list it). Its gate is satisfied by **consuming the thesis's already-applied `## Mental Models` section and `## Conviction Triggers`** — specifically, the Non-Consensus Edge must name its falsifier from the thesis's `→ LOW if` / `→ CLOSE if` trigger. Re-reading the folder for a distillation would be redundant.
+
+Every gated skill MUST first read the relevant `/Mental Models` files and apply the READING PROTOCOL at the top of `[[Generalist - Overview]]`:
 
 - Models are **lenses and questions, never conclusions**. Every entry is a hypothesis to test against this note's own evidence.
 - Run the base-rate / outside view **adversarially** against the other models.
 - **Agreement across models is a trigger to disconfirm** (hunt the bear case + the single falsifying datapoint), not to commit.
 
 Read scope: `[[Generalist - Overview]]` always; the matching `[[Industry - X]]` for the note's sector(s); any `[[Lens - X]]` whose theme the source / thesis touches. Batch/multi-note runs read these files ONCE and cache across the run (mirror the graph-primer single-Read discipline).
+
+**Delegated skills (`/surface`, `/retro`, `/prune`).** A `general-purpose` subagent does NOT inherit CLAUDE.md, so the mandate reaches it only if the delegated prompt carries it. Each delegated prompt MUST embed this gate verbatim (with absolute `Mental Models/` paths) — the load tiering (Generalist always; Industry/Lens by scope) and the READING PROTOCOL. A delegated prompt that omits the gate is a spec violation: the mandate silently evaporates at the delegation boundary.
+
+**Load tiering (mechanical/metadata skills are exempt).** The gate governs *analytical* work. `/numbers`, `/rename`, `/lint`, `/clean`, `/graph`, `/catalyst`, `/archive-callouts`, `/rollback` produce no investment judgement and skip the gate entirely (matches CLAUDE.md "Load tiering"). Scope the conditional files to the task — load `Industry - Semiconductors` only for semi names, the two `Lens` files only when that lens is in play; do not bulk-load all four for a single-name question they do not touch.
 
 ## Write procedure (merge, never overwrite)
 

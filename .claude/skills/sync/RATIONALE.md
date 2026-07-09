@@ -101,7 +101,7 @@ The macro mtime fallback can mistakenly skip when the user manually edited the m
 
 ### §2.1 Why the macro body-grep fallback is necessary
 
-The reverse index is built from the macro note's outbound wikilinks (`[[Theses/...]]` in the macro body). If a thesis declares `[[Macro/X]]` but the macro doesn't reciprocate `[[Theses/TICKER]]`, the reverse index returns empty for that macro, and the thesis silently fails to receive propagation when the macro is edited.
+The reverse index is built from the macro note's outbound wikilinks (`[[Theses/...]]` in the macro body). If a thesis declares `[[Macro & Technology/X]]` but the macro doesn't reciprocate `[[Theses/TICKER]]`, the reverse index returns empty for that macro, and the thesis silently fails to receive propagation when the macro is edited.
 
 The body-grep fallback closes this gap. `/lint #23` (reverse-index consistency) catches the asymmetry periodically; the fallback ensures correct propagation between lint runs.
 

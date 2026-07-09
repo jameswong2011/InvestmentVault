@@ -1,7 +1,7 @@
 ---
 type: shared-contract
 purpose: Canonical pre-flight checks every skill runs before modifying vault state. Covers vault locking (concurrency), rename-marker awareness, and name normalization.
-last_reviewed: 2026-04-21
+last_reviewed: 2026-07-09
 ---
 
 <!--
@@ -12,7 +12,7 @@ Consumers: every skill except pure-read skills (`/lint` read path, `/rollback` l
 
 # Pre-flight Safety Contract
 
-> **Why this exists**: Without shared pre-flight logic, every skill would duplicate concurrency checks, marker-awareness checks, and input sanitization. Each duplicate is a drift point. Centralizing the contract here — with every skill calling by reference — eliminates silent divergence across 17 skills.
+> **Why this exists**: Without shared pre-flight logic, every skill would duplicate concurrency checks, marker-awareness checks, and input sanitization. Each duplicate is a drift point. Centralizing the contract here — with every skill calling by reference — eliminates silent divergence across 21 skills.
 
 ## Procedures defined in this contract
 
@@ -97,7 +97,7 @@ for existing in .vault-lock .vault-lock.* ; do
   EX_TIMEOUT=$(grep '^timeout_at:' "$existing" | sed 's/timeout_at: //')
   EX_SKILL=$(grep '^skill:' "$existing" | sed 's/skill: //')
   EX_TOKEN=$(grep '^token:' "$existing" | sed 's/token: //')
-  if [ "$EX_TIMEOUT" \> "$NOW" ]; then
+  if [[ "$EX_TIMEOUT" > "$NOW" ]]; then
     echo "LOCK_HELD|$existing|$EX_SKILL|$EX_TOKEN|$EX_TIMEOUT"
     exit 1
   else
@@ -107,8 +107,12 @@ for existing in .vault-lock .vault-lock.* ; do
   fi
 done
 
-# No conflicts — write the lock
-cat > "$LOCK_FILE" <<EOF
+# No conflicts — write the lock atomically. `set -C` (noclobber) closes the
+# check-then-write race: if a concurrent run created the lock in the window
+# between the collision loop above and this write, the `>` redirect fails
+# instead of clobbering the other run's lock.
+set -C
+if ! cat > "$LOCK_FILE" <<EOF
 ---
 token: $TOKEN
 skill: /sync all
@@ -122,6 +126,12 @@ session_id: ${CLAUDE_SESSION_ID:-unknown}
 
 Held by /sync all (token $TOKEN) since $NOW.
 EOF
+then
+  set +C
+  echo "LOCK_RACE|$LOCK_FILE|created by a concurrent run between check and write — re-run"
+  exit 1
+fi
+set +C
 
 trap "rm -f '$LOCK_FILE'" INT TERM
 echo "ACQUIRED|$LOCK_FILE|$TOKEN"
@@ -143,7 +153,7 @@ for existing in "$VAULT_WIDE_LOCK" "$LOCK_FILE" ; do
   EX_TIMEOUT=$(grep '^timeout_at:' "$existing" | sed 's/timeout_at: //')
   EX_SKILL=$(grep '^skill:' "$existing" | sed 's/skill: //')
   EX_TOKEN=$(grep '^token:' "$existing" | sed 's/token: //')
-  if [ "$EX_TIMEOUT" \> "$NOW" ]; then
+  if [[ "$EX_TIMEOUT" > "$NOW" ]]; then
     echo "LOCK_HELD|$existing|$EX_SKILL|$EX_TOKEN|$EX_TIMEOUT"
     exit 1
   else
@@ -152,7 +162,8 @@ for existing in "$VAULT_WIDE_LOCK" "$LOCK_FILE" ; do
   fi
 done
 
-cat > "$LOCK_FILE" <<EOF
+set -C  # noclobber — atomic create; fails instead of clobbering a concurrent run's lock
+if ! cat > "$LOCK_FILE" <<EOF
 ---
 token: $TOKEN
 skill: /stress-test
@@ -166,6 +177,12 @@ session_id: ${CLAUDE_SESSION_ID:-unknown}
 
 Held by /stress-test $TICKER (token $TOKEN) since $NOW.
 EOF
+then
+  set +C
+  echo "LOCK_RACE|$LOCK_FILE|created by a concurrent run between check and write — re-run"
+  exit 1
+fi
+set +C
 
 trap "rm -f '$LOCK_FILE'" INT TERM
 echo "ACQUIRED|$LOCK_FILE|$TOKEN"
@@ -197,7 +214,7 @@ setopt SH_WORD_SPLIT 2>/dev/null || true
 # Pre-flight: vault-wide lock?
 if [ -f "$VAULT_WIDE_LOCK" ]; then
   EX_TIMEOUT=$(grep '^timeout_at:' "$VAULT_WIDE_LOCK" | sed 's/timeout_at: //')
-  if [ "$EX_TIMEOUT" \> "$NOW" ]; then
+  if [[ "$EX_TIMEOUT" > "$NOW" ]]; then
     echo "LOCK_HELD|$VAULT_WIDE_LOCK"
     exit 1
   fi
@@ -212,14 +229,20 @@ for T in $TICKERS; do
   LF=".vault-lock.$T"
   if [ -f "$LF" ]; then
     EX_TIMEOUT=$(grep '^timeout_at:' "$LF" | sed 's/timeout_at: //')
-    if [ "$EX_TIMEOUT" \> "$NOW" ]; then
+    if [[ "$EX_TIMEOUT" > "$NOW" ]]; then
       FAILED="$LF"
       break
     fi
+    # Stale lock mid-loop: release the locks already acquired this run before
+    # aborting, so a mid-acquisition stale collision never leaks a partial set
+    # (the §1.3c "never holds a proper subset" guarantee must hold on the stale
+    # path too, not just the live-collision `FAILED` path handled below).
+    for ACQ in $ACQUIRED; do rm -f "$ACQ"; done
     echo "STALE_LOCK|$LF"
     exit 2
   fi
-  cat > "$LF" <<EOF
+  set -C  # noclobber — a concurrent run that created $LF in the race window trips FAILED → rollback
+  if ! cat > "$LF" <<EOF
 ---
 token: $TOKEN
 skill: /compare
@@ -234,6 +257,12 @@ multi_scope: $TICKERS
 
 Held by /compare (token $TOKEN) since $NOW. Part of multi-ticker scope: $TICKERS.
 EOF
+  then
+    set +C
+    FAILED="$LF"
+    break
+  fi
+  set +C
   ACQUIRED="$ACQUIRED $LF"
 done
 

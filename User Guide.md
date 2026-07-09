@@ -318,7 +318,7 @@ One entry per skill: arguments, creates, modifies, follow-up. Model + context as
 ```
 - **Creates**: Research note(s); moves sources to `_Inbox/processed/`. **Modifies**: nothing else.
 - **Follow-up**: `/sync` → `/graph last`.
-- Same-source dedup: same-day identical `source:` hard-blocks; older ingests prompt append/supersede/cancel. Quality gate deletes failed notes (paywall, <150 words, OCR corruption) and retains the source.
+- Same-source dedup: same-day identical `source:` hard-blocks; older ingests prompt append/supersede/cancel. Quality gate (`verify_note.py`) deletes failed notes (paywall, OCR corruption, or body below the length-scaling retention floor — min 300 words, higher for longer sources) and retains the source.
 
 #### `/sync`
 ```
@@ -488,6 +488,27 @@ One entry per skill: arguments, creates, modifies, follow-up. Model + context as
 - Renames `Theses/TICKER - Old.md` → `TICKER - New.md` and rewrites every inbound reference. TICKER itself never changes. Details: [[#Renaming a thesis|§10]].
 - **Follow-up**: `/graph` (full — not `last`; see [[#`/graph last` vs `/graph` after `/rename`|§13]]). Undo: `/rename TICKER "[OldName]"`.
 
+### Data refresh
+
+#### `/transcript`
+```
+/transcript NVDA                           # latest quarter vs prior 2 (default)
+/transcript NVDA Q1-2027                    # specific quarter
+/transcript NVDA --list                     # list available FMP transcript quarters
+```
+- Pulls the earnings-call transcript from Financial Modeling Prep, splits prepared-remarks vs Q&A, and extracts management-commentary deltas (new/dropped language, hedging density, specificity, Q&A skeptical tone, guidance shape) vs the prior 2 quarters. **Creates**: thesis-delta Research note (`source_type: earnings`). **Modifies**: thesis Log (`Transcript ingested:` — non-skill-origin, so `/sync` propagates) + `_hot.md` (ART + OQ).
+- Requires an FMP key in `.data/config.json`; aborts gracefully without it. Foreign tickers use the thesis frontmatter `ticker:` (e.g. `000660.KS`) as the FMP symbol.
+- **Follow-up**: `/sync TICKER` → `/graph last`.
+
+#### `/numbers`
+```
+/numbers NVDA                              # refresh one thesis's Key Metrics table
+/numbers --all                             # refresh every active thesis (vault-wide lock)
+```
+- Surgical refresh of the `## Key Metrics` table from FMP (market cap, multiples, margins, growth, forward P/E, FY revenue) with materiality flagging. Delegates the label→field mapping + delta math to `numbers_compute.py`; the LLM renders currency-correct cells. **Creates**: per-thesis pre-edit snapshot. **Modifies**: Key Metrics table + `key_metrics_last_refreshed:` frontmatter only — does NOT create Research notes or propagate.
+- Custom / forward-period / non-FMP-mapped rows are left untouched. Requires the FMP key.
+- **Follow-up**: none required (surgical); `/sync TICKER` only if a material delta changes the thesis.
+
 ---
 
 ## 6. Anatomy of Vault Content
@@ -655,7 +676,7 @@ Commit `.obsidian/hotkeys.json` and `.obsidian/plugins/templater-obsidian/data.j
 Skill reference: [[#5. Skill Reference|§5]].
 
 ### Earnings analysis
-Automated: `/ingest [transcript URL]` → `/sync TICKER`. Manual (more control):
+Automated: `/transcript TICKER` (pulls the FMP transcript, extracts management-commentary deltas / hedging / Q&A tone vs the prior 2 quarters, writes a thesis-delta Research note) → `/sync TICKER`. For a non-FMP transcript URL, `/ingest [URL]` → `/sync TICKER` still works. Manual (more control):
 ```
 Fetch [TICKER]'s latest earnings transcript from [URL]. Extract: revenue
 by segment, margin trends, management guidance changes, and anything
@@ -1140,11 +1161,12 @@ Short reference; deep mechanics in [[INFRASTRUCTURE.md]].
 
 | Skill | Model | Context |
 |---|---|---|
-| `/sync`, `/ingest`, `/thesis`, `/deepen`, `/stress-test`, `/compare`, `/scenario`, `/brief`, `/catalyst` | Opus max | Main |
+| `/sync`, `/ingest`, `/thesis`, `/deepen`, `/stress-test`, `/compare`, `/scenario`, `/brief`, `/catalyst`, `/transcript` | Opus max | Main |
 | `/surface`, `/retro` | Opus max | Delegated subagent (Agent tool; report re-emitted verbatim) |
 | `/prune` | Opus max | Split — analysis delegated, mutation in main thread under the approval gate |
 | `/lint` | Opus max | Main — mechanical checks run by `lint.py` (~40 of 55); judgment pass reads only flagged files |
 | `/graph`, `/rename`, `/rollback`, `/status`, `/clean`, `/archive-callouts` | Sonnet max | Main |
+| `/numbers` | Sonnet (effort medium) | Main — arithmetic delegated to `numbers_compute.py` |
 
 **Execution mechanism (2026-07-08)**: "Delegated" / "Split" skills use **Agent-tool delegation**, not frontmatter `context: fork` — the latter was reverted 2026-06-07 (it returned the report as unrendered stdout, leaving the chat panel blank). Under delegation the subagent does the heavy reads and returns the report as a tool result, which the main thread re-emits verbatim; rendering is preserved and main-context cost is just the returned report. `/catalyst` still runs inline (its mandatory live-progress contract conflicts with delegation — pending a decision). Each skill's own SKILL.md "Execution context" section is the source of truth.
 

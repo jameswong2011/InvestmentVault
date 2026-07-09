@@ -41,32 +41,29 @@ Do NOT proceed to Procedure 4 if the refused-section check fires. Report the abo
 
 #### 0.3b: Section existence probe (standard)
 
-If the section does NOT exist in the thesis:
+If the section does NOT exist in the thesis, branch on whether it is a **template-mandated** section:
+
+**Case A — requested section IS in `Templates/Thesis Template.md` and was EXPLICITLY named** (e.g. `/deepen TICKER Conviction Triggers` on one of the ~38 theses that lack it): this is the sanctioned scaffold-then-deepen path. Confirm with the user, then insert the section at its template-canonical position (between its template neighbours; `## Mental Models` and `## Legacy Callouts` excepted — those self-populate / are `/archive-callouts`-owned), seed it with the template's scaffold, and proceed to deepen it normally. This is **Tier B** (additive create), but the deepen research that follows is Tier A per the usual snapshot rule. Report: `ℹ️ ## [section] was missing (template-mandated) — scaffolded from Templates/Thesis Template.md, now deepening.` This closes the dead-end where a missing `## Conviction Triggers` could never be created (`/deepen` refused, `/stress-test` handed off to it, `/lint #14` only flagged it).
+
+**Case B — requested section is NOT in the template** (typo / genuinely non-existent section): refuse, do not create.
 
 ```
-❌ Section "## [requested section]" not found in Theses/TICKER - Name.md.
+❌ Section "## [requested section]" not found in Theses/TICKER - Name.md, and it is
+   not a section in Templates/Thesis Template.md (so it can't be scaffolded).
 
 Sections present in this thesis:
   - ## Summary
-  - ## Key Non-consensus Insights
   - ## [list every ## heading found in the thesis]
-
-Sections expected per Templates/Thesis Template.md but missing:
-  - ## [missing section 1]
-  - ## [missing section 2]
-  - ...
 
 Options:
   (a) /deepen TICKER [existing-section]   — deepen a section that exists
   (b) /deepen TICKER                      — auto-detect weakest present section (Phase 2)
-  (c) Restore missing section from Templates/Thesis Template.md manually,
-      then re-run /deepen TICKER [section]
-  (d) /lint TICKER                        — surface all template drift first (check #14)
+  (c) /lint TICKER                        — surface all template drift first (check #14)
 
 Aborted — no changes made to the thesis.
 ```
 
-**Do NOT silently create the section.** Structural changes to thesis templates must be explicit user action. The thesis's current section inventory is the user's (or a prior skill's) intentional state; `/deepen` deepens existing sections, never authors new ones from nothing.
+**Never AUTO-create a section** (Phase 2 auto-detect never scaffolds — it only scores existing sections). Case-A creation fires ONLY on an explicit user-named template-mandated section, is confirmed first, and copies the template scaffold verbatim — it is not the skill inventing structure from nothing.
 
 If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 evaluates only sections that actually exist and scores their weakness. The Phase 2 scoring loop must exclude `## Legacy Callouts` (owned by `/archive-callouts`), `## Log` (Tier 2 append-only), and `## Mental Models` (self-populates via `/sync` per `_shared/mental-models-section.md`; scaffold-empty by design — never auto-target it; deepen it only when explicitly named: `/deepen TICKER Mental Models`) from weakness candidates regardless of their contents.
 
@@ -77,7 +74,7 @@ If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 e
 ### Round 1 — parallel batch (single message, two tool calls)
 Issue these two tool calls in ONE message:
 1. **Read** `Theses/TICKER - [Name].md` (the thesis).
-2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro/ Research/` with `glob='*.md'` (catches mentions in notes not yet linked, scoped to markdown). Use a single multi-path Grep — do not grep each directory separately.
+2. **Grep** the vault for the ticker string across `Theses/ Sectors/ Macro & Technology/ Research/` with `glob='*.md'` (catches mentions in notes not yet linked, scoped to markdown). Use a single multi-path Grep — do not grep each directory separately.
 
 Wait for both to land. Use the thesis to enumerate: sector note path (from `sector:` frontmatter), every research wikilink (from `## Related Research` + `## Log`), referenced macro notes.
 
@@ -87,12 +84,16 @@ Issue ALL of these in ONE message as a single parallel tool-call batch:
 - **Read** every research note linked from the thesis (Related Research + Log-mentioned wikilinks).
 - **Read** every Macro note referenced by the thesis (from body or Log wikilinks) and any macro note tagged with the same sector.
 
-Do NOT serialize. A well-linked thesis has ~10-20 supporting files; one parallel batch lands in ~one round-trip. Do not cap the research-note count — read all of them.
+Do NOT serialize — one parallel batch lands in ~one round-trip.
+
+**Research-note read cap (2026-07-08):** `/deepen` edits ONE section, so read the research notes most relevant to it, not the entire back-catalog. Include: (a) every research note whose wikilink appears in or adjacent to the **target section** (section-relevant — always read, uncapped); PLUS (b) the **12 most recent by date** of the remaining linked notes. Skip older notes beyond that unless the target section cites them. A thesis with ≤12 linked notes → read all (the cap never removes signal from small sets). This keeps a mature ticker with 25+ linked notes from dominating the read budget for a single-section deepen while guaranteeing the section's own evidence base is fully loaded.
 
 After Round 2 lands, proceed to Phase 2.
 
 ## Phase 2: Identify the Target
 If a section was specified in $ARGUMENTS, use that. Otherwise, auto-detect:
+
+**Stress-test handoff (2026-07-08 — check first):** if a recent `Research/YYYY-MM-DD - TICKER - Stress Test.md` exists (within ~30 days), read its **§6 Section Weakness Map** and treat it as a pre-computed weakness ranking — do NOT re-derive from scratch. A 🔴 row there is a strong auto-target signal (the adversarial pass already found and characterized the gap, and named the concrete fix). Use the Weakness Map to seed the scoring below rather than duplicating the analysis; if the map names a clear 🔴 section, target it and cite the stress test as the rationale. Fall through to full weakness scoring only when no recent stress test exists or its map is empty. (This is the natural `/stress-test → /deepen [flagged section]` chain from User Guide §3.3 — the handoff removes the redundant re-scan.)
 
 **Weakness scoring** (check each, flag the worst):
 - **Empty or stub sections**: sections with just `-` or `<!-- -->` placeholder comments
@@ -362,7 +363,7 @@ completed_date: YYYY-MM-DD
 
 **Verify flip landed** (Edit-return inspection — no re-read): inspect the frontmatter-flip Edit's return value. The Edit tool reports success iff the replacement landed; the returned snippet shows the post-edit frontmatter. Confirm `status: completed` present, `status: in-progress` absent, `completed_date:` equals today from the Edit-return content.
 
-**On verification failure** (Edit-return indicates replacement did not produce expected frontmatter, or Edit tool returned error): report `⚠️ Deepen manifest status flip failed — manifest remains status: in-progress despite successful deepen completion. /lint #50 will flag this as Important. Manual fix: edit manifest frontmatter — replace status: in-progress with status: completed (add completed_date: today).` Continue to Phase 8.
+**On verification failure** (Edit-return indicates replacement did not produce expected frontmatter, or Edit tool returned error): report `⚠️ Deepen manifest status flip failed — manifest remains status: in-progress despite successful deepen completion. /lint #50m will flag this as Important. Manual fix: edit manifest frontmatter — replace status: in-progress with status: completed (add completed_date: today).` Continue to Phase 8.
 
 ## Phase 8: Report
 Tell the user:

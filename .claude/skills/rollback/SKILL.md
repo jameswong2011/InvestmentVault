@@ -37,10 +37,15 @@ Per `.claude/skills/_shared/preflight.md` Procedure 1. Capture token, verify own
 ## Step 1: Inventory Snapshots
 
 ```bash
-find _Archive/Snapshots/ -name '*.md' -type f | sort
+# Exclude manifest sidecars (_<type>-manifest (...).md) — they are transaction
+# ledgers, not restorable snapshots. Listing them (29 in the live vault) offered
+# them as rollback candidates, and restoring one is undefined.
+find _Archive/Snapshots/ -name '*.md' -type f -not -name '_*-manifest*' | sort
 ```
 
 If none exist: "No snapshots available — nothing to rollback." Stop.
+
+**Malformed snapshots**: a snapshot whose frontmatter lacks `snapshot_of:` / `snapshot_trigger:` / `snapshot_batch:` (legacy pre-6.9 files, or copied content frontmatter) cannot be cascade-matched. Surface it in the list flagged `⚠️ unparseable — content-only restore, no cascade`, and on selection offer only a plain content restore (Step 5) with an explicit warning; never guess a batch.
 
 ### Match by argument
 - **Ticker**: filename prefix match, plus grep `snapshot_of:` frontmatter for sector/macro snapshots.
@@ -177,7 +182,7 @@ augmented targets, etc.):
 
 [M] sector/macro notes received link-only additions (harmless to leave in place):
   - Sectors/Foo.md (link added to Related Research)
-  - Macro/Bar.md (link added to body)
+  - Macro & Technology/Bar.md (link added to body)
 
 Options:
   (a) Cascade — restore ALL Tier A files. Tier B entries SURFACED in Step 7 for manual review.
@@ -230,7 +235,7 @@ If snapshot associated with `/status` batch: read manifest for full transaction 
 
 ```
 Status transaction cascade detected:
-  Batch:          status-YYYY-MM-DD-HHMMSS
+  Batch:          status-TICKER-YYYY-MM-DD-HHMMSS
   Ticker:         TICKER
   Transition:    [conviction|status] [old] → [new]
   Manifest:      [[_Archive/Snapshots/_status-manifest (status-...)]]
@@ -424,11 +429,15 @@ Generate `HHMMSS` once via `date +%H%M%S`. Reuse this `snapshot_batch:` for Step
 ```bash
 mkdir -p _Archive/Snapshots
 HHMMSS=$(date +%H%M%S)
-cp "Theses/TICKER1 - Name.md" "_Archive/Snapshots/TICKER1 - Name (pre-rollback YYYY-MM-DD-$HHMMSS).md" &
-cp "Theses/TICKER2 - Name.md" "_Archive/Snapshots/TICKER2 - Name (pre-rollback YYYY-MM-DD-$HHMMSS).md" &
-cp "Sectors/Foo.md" "_Archive/Snapshots/Foo (pre-rollback YYYY-MM-DD-$HHMMSS).md" &
-wait
-# Check exit status of all background jobs
+pids=()
+cp "Theses/TICKER1 - Name.md" "_Archive/Snapshots/TICKER1 - Name (pre-rollback YYYY-MM-DD-$HHMMSS).md" & pids+=($!)
+cp "Theses/TICKER2 - Name.md" "_Archive/Snapshots/TICKER2 - Name (pre-rollback YYYY-MM-DD-$HHMMSS).md" & pids+=($!)
+cp "Sectors/Foo.md" "_Archive/Snapshots/Foo (pre-rollback YYYY-MM-DD-$HHMMSS).md" & pids+=($!)
+# Wait on each PID individually — bare `wait` returns 0 even when a background cp
+# failed, so the abort-on-failure guarantee below would never fire.
+snap_fail=0
+for pid in "${pids[@]}"; do wait "$pid" || snap_fail=1; done
+[ "$snap_fail" -ne 0 ] && { echo "❌ pre-rollback safety snapshot failed — aborting; Step 5 NOT run"; exit 1; }
 ```
 
 If any safety snapshot fails, abort — do NOT proceed to Step 5. Same `snapshot_batch:` across all safety snapshots in batch. Then issue all frontmatter-addition Edits in one parallel tool-call batch (one Edit per snapshot, all in the same message).
@@ -567,9 +576,12 @@ if [ -f .archive_ticker_registry.md ]; then
   awk -F'|' -v t="$TICKER" '/^#/ || /^$/ || NF<2 || $1!=t' .archive_ticker_registry.md > .archive_ticker_registry.md.tmp
   mv .archive_ticker_registry.md.tmp .archive_ticker_registry.md
   
-  # If registry now contains only comments/blanks (zero data rows), remove the
-  # file so /lint #46 and /thesis Signal C skip the Grep entirely.
-  if [ $(grep -cv '^#\|^$' .archive_ticker_registry.md) -eq 0 ]; then
+  # If registry now contains only comments/blanks (zero DATA rows), remove the
+  # file so /lint #46 and /thesis Signal C skip the Grep entirely. Count real
+  # data rows the same way the filter above defines them (≥2 pipe fields, not
+  # comment/blank) — `grep -cv '^#\|^$'` also counted any YAML frontmatter
+  # (`---`, `type:`, `purpose:`) as data, so the file was never removed.
+  if [ "$(awk -F'|' '!/^#/ && !/^$/ && NF>=2' .archive_ticker_registry.md | wc -l)" -eq 0 ]; then
     rm -f .archive_ticker_registry.md
   fi
 fi
@@ -609,8 +621,12 @@ if [ -f .graph_invalidations ] && [ -f "$RESTORED_PATH" ]; then
       # regex would over-match — `.` would match any char, `(` would fail as
       # unterminated group. Fixed-string match with two separate -F invocations
       # handles both the path-with-.md and path-without-.md forms exactly.
-      grep -Fxv -e "$n" -e "${n}.md" .graph_invalidations.tmp > .graph_invalidations.tmp.new \
-        && mv .graph_invalidations.tmp.new .graph_invalidations.tmp
+      # NOTE: the mv is UNCONDITIONAL. grep -Fxv exits 1 when it filters out ALL
+      # lines (the single-neighbor common case → empty result), so the prior
+      # `&& mv` skipped the update, left the neighbor in the file, and orphaned
+      # .tmp.new. Always mv; the empty-file removal below handles the emptied case.
+      grep -Fxv -e "$n" -e "${n}.md" .graph_invalidations.tmp > .graph_invalidations.tmp.new
+      mv .graph_invalidations.tmp.new .graph_invalidations.tmp
     done <<< "$NEIGHBORS"
     mv .graph_invalidations.tmp .graph_invalidations
     
@@ -634,7 +650,7 @@ Procedure:
 
 1. **Identify closure date**. From restored thesis's Log, find final `CLOSED:` or `Cross-thesis closure:` pre-closure entry. Alternate: pre-rollback snapshot body. Capture `closure_date: YYYY-MM-DD` (date Log entry written, NOT date file mv'd).
 
-2. **Identify citing files** — H3 extension: grep Theses/ + Macro/ + Sectors/ (excluding restored thesis) for wikilink patterns referencing restored thesis:
+2. **Identify citing files** — H3 extension: grep Theses/ + Macro & Technology/ + Sectors/ (excluding restored thesis) for wikilink patterns referencing restored thesis:
    - `[[Theses/TICKER - Name]]`, `[[Theses/TICKER - Name|...]]`, `[[Theses/TICKER - Name#...]]`, `[[Theses/TICKER - Name.md]]`
    - `[[_Archive/TICKER - Name]]` (from `Cross-thesis closure:` entries and post-closure narrative)
    - `[[TICKER - Name]]` folder-less form
@@ -668,7 +684,7 @@ Procedure:
   - 2026-04-25: [[Research/...]]: ASML guidance... given NVDA exit, AMAT positioning...
     [PARTIAL PREMISE]
 
-[[Macro/...]]:
+[[Macro & Technology/...]]:
   - Line 42: "Iranian retaliation risk most directly affects [[_Archive/LITE - Lumentum]]..."
     [premise-dependent — macro body prose]
 

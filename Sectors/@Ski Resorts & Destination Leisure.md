@@ -3,6 +3,7 @@ publish: true
 date: 2026-04-22
 tags: [sector, moc]
 status: active
+sector: Ski Resorts & Destination Leisure
 ---
 
 # Ski Resorts & Destination Leisure

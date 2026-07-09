@@ -84,7 +84,7 @@ Frozen interface — consumers depend on it: `/sync` Pass 1 triage (reads `statu
 - **Five sections, in order**: `## Thesis Adjacency Index`, `## Reverse Index: Macro → Theses`, `## Reverse Index: Sector → Theses`, `## Cross-Thesis Clusters`, `## Orphan Research Notes`.
 - **Adjacency entry**: `### TICKER - Name` then 2-space bullets `sectors` / `macros` / `cross-thesis` / `research` / `status` / `log_tail` (`—` for empty); `log_tail` sub-bullets 4-space indent, ≤3, each truncated at 100 chars + `…` (horizontal ellipsis — `/lint #42` safe, never `...`).
 
-`/lint #38` reads `graph_mode:`; `/lint #43` enforces the lock contract. Validation false-positive note: unbalanced `[[ ]]` inside `log_tail` sub-bullets is EXPECTED (truncation can sever a quoted link) — only structural fields and table rows must balance.
+`/lint #38` ages the graph state-markers (`.sync_all_fresh` / `.graph_invalidations`), NOT `graph_mode:`; `/lint #43` enforces the lock contract. Validation false-positive note: unbalanced `[[ ]]` inside `log_tail` sub-bullets is EXPECTED (truncation can sever a quoted link) — only structural fields and table rows must balance.
 
 ## Fallback (python3 unavailable, or generator exits 1/2)
 

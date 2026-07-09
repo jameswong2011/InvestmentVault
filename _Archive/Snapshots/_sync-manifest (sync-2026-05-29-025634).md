@@ -2,8 +2,9 @@
 type: sync-manifest
 batch: sync-2026-05-29-025634
 mode: default
-status: in-progress
+status: completed
 date: 2026-05-29
+completed_date: 2026-07-09
 ---
 
 # Sync Batch Manifest (in-progress)
@@ -41,3 +42,6 @@ Tier B (Related Research wikilink + Log entry; no snapshot — adoption forecast
 
 ## Source research notes processed
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]
+
+---
+*2026-07-09 audit note: flipped to completed per INFRASTRUCTURE §13.6 false-positive procedure — all Tier A/B edits verified landed (2026-05-29 Log entries present in all 6 theses; synthesis note referenced in all 5 sectors + 1 macro). The run crashed after edits but before the Step 7.5 flip.*

@@ -5,7 +5,7 @@ tags: [thesis, semiconductors, AI, physical-AI, NVDA]
 status: active
 ticker: NVDA
 conviction: high
-sector: GPU & AI Compute Accelerators
+sector: Compute & AI Compute Accelerators
 source: Consolidated — Gemini Canvas (Omniverse/PhysX, AI Ecosystem, TurboQuant), ChatGPT (CES 2026, HBM4, AI Bubble, Silicon Photonics), Claude (PhysX competitive dynamics), Grok (Omniverse deep-dive, interconnects), web research (FY2026 earnings, GTC 2026, sovereign AI, ASIC competition, export controls)
 key_metrics_last_refreshed: 2026-05-22
 ---
@@ -365,3 +365,6 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: "Nvidia the most prepared" is the article's punchline — pre-locked the majority of N3 logic + HBM + components; Jensen's 2025 Korea memory deal secured cheaper DRAM and offloaded customer procurement pressure. With DC power now in excess but silicon scarce, secured supply (not spec) is the binding near-term differentiator for deployed-compute share — corroborates the existing Supply-Chain-Depth-as-independent-moat insight; Rubin 3NP sits on the binding N3 node. Conviction unchanged (high), marginal.
+
+### 2026-07-09
+- Sector re-scoped: frontmatter `sector:` aligned to [[Sectors/Compute & AI Compute Accelerators]] (prior value resolved to no sector note, so sector propagation was silently skipped) — conviction unchanged; metadata hygiene per [[_Archive/Docs/2026-07-09 - Skills Audit Report]].

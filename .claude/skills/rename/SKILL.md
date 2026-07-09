@@ -119,7 +119,7 @@ If `.rename_incomplete.TICKER` exists, read its frontmatter and compare `new_nam
 
    | # | Probe | Tool | Purpose |
    |---|---|---|---|
-   | 1 | Grep vault | `Grep` (multi-path) across `Theses/ Sectors/ Macro/ Research/ _Archive/ _Archive/Sectors/ _Archive/Research/ _Archive/Snapshots/`, excluding `.git/` and `_Inbox/processed/` | Count Step 5 wikilink pattern matches; partition results by category during parsing — live files (Theses/, Sectors/, Macro/, Research/), archived theses (`_Archive/*.md` root), archived sectors (`_Archive/Sectors/`), archived research (`_Archive/Research/`), snapshot bodies (`_Archive/Snapshots/`) — for the Step 2 survey breakdown |
+   | 1 | Grep vault | `Grep` (multi-path) across `Theses/ Sectors/ Macro & Technology/ Research/ _Archive/ _Archive/Sectors/ _Archive/Research/ _Archive/Snapshots/`, excluding `.git/` and `_Inbox/processed/` | Count Step 5 wikilink pattern matches; partition results by category during parsing — live files (Theses/, Sectors/, Macro & Technology/, Research/), archived theses (`_Archive/*.md` root), archived sectors (`_Archive/Sectors/`), archived research (`_Archive/Research/`), snapshot bodies (`_Archive/Snapshots/`) — for the Step 2 survey breakdown |
    | 2 | Grep snapshot frontmatter | `Grep` for `snapshot_of:` references to old path in `_Archive/Snapshots/` | Frontmatter count (separate from body matches — handled by Step 8) |
    | 3 | Read `_graph.md` | `Read` | Locate `### TICKER - [old_name]` in Adjacency Index; note presence |
    | 4 | Resolve sector note | `Read` candidate sector note (inferred from thesis `sector:` frontmatter read earlier in Step 1) | Scan Active Theses for old wikilink (sector-resolution contract applied in reasoning layer after read) |
@@ -137,7 +137,7 @@ Proposed rename:
   New: [[Theses/TICKER - new_name]]
 
 Side effects (will be updated):
-  - Inbound wikilinks in live files (Theses/, Sectors/, Macro/, Research/, _hot.md): [count] across [N] files — [list paths]
+  - Inbound wikilinks in live files (Theses/, Sectors/, Macro & Technology/, Research/, _hot.md): [count] across [N] files — [list paths]
   - Inbound wikilinks in archived theses (_Archive/*.md root): [count] across [P] files — [list paths]
   - Inbound wikilinks in archived sectors (_Archive/Sectors/): [count] across [Q] files — [list paths]
   - Inbound wikilinks in archived research (_Archive/Research/): [count] across [R] files — [list paths]
@@ -177,7 +177,7 @@ Batch ID uses HHMMSS (6 digits) to prevent same-minute collisions. `rename_targe
 
 Step 5's rewrite will touch every file in the inbound-reference set. Catch unreachable files BEFORE the mv — §1.1 explains why.
 
-For each file in the inbound-reference set (live files in `Theses/`, `Sectors/`, `Macro/`, `Research/`, `_hot.md`, plus `_Archive/Snapshots/*.md` with body matches and `snapshot_of:` matches):
+For each file in the inbound-reference set (live files in `Theses/`, `Sectors/`, `Macro & Technology/`, `Research/`, `_hot.md`, plus `_Archive/Snapshots/*.md` with body matches and `snapshot_of:` matches):
 
 1. **Read check**: attempt to read file's first 10 bytes. Fail → record in `unreachable_files: [list]`.
 2. **Write probe**: `[ -w "path" ]`. Not writable → record in `unreachable_files`.
@@ -465,7 +465,7 @@ Prefix `"Renamed file:"` — `/sync` Step 2.5 skill-origin classification + Step
 
 - **Renamed**: `Theses/TICKER - [old_name].md` → `Theses/TICKER - [new_name].md` | `Repair re-run — mv skipped (already done)`
 - **Pre-flight check**: `passed ([N] files reachable)` | `aborted ([M] unreachable — no changes made)`
-- **Wikilinks rewritten (live files)**: [count] across [live file paths in Theses/, Sectors/, Macro/, Research/, _hot.md]
+- **Wikilinks rewritten (live files)**: [count] across [live file paths in Theses/, Sectors/, Macro & Technology/, Research/, _hot.md]
 - **Wikilinks rewritten (snapshot bodies)**: [count] across [`_Archive/Snapshots/*.md` paths]. Excludes pre-rename snapshot from Step 3.
 - **Wikilink update failures** (Step 5, if any): [list files]
 - **Follow-up operation failures** (Steps 6–10 — H3 fix, if any): [list `(step, target, reason)`]

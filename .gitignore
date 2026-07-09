@@ -49,7 +49,7 @@ credentials.json
 secrets.json
 
 # ============================================
-# Live Portfolio runtime config — holds Finnhub API key, never commit
+# Live Portfolio runtime config — holds FMP API key, never commit
 # Read by the dataviewjs refresh button in Live Portfolio.md.
 # Safe to flip the repo public; this folder stays local.
 # ============================================

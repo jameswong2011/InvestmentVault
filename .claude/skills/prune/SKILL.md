@@ -16,6 +16,8 @@ Design rationale in `.claude/skills/prune/RATIONALE.md` (§N.M anchors).
 
 **ANALYSIS HALF — delegate to ONE `Agent` subagent** (`subagent_type: general-purpose`, `run_in_background: false`). The subagent runs **Phase 0.0.2 (rename-marker check) + Phase 0 (unsynced-research scan) + Phase 1–4** under a `read-only` lock (`.vault-lock.readonly` per preflight Procedure 1; it performs no writes). It reads every candidate thesis, does the two-pass triage and per-candidate assessment, and its final message returns EXACTLY:
 
+> **Mental Models reading gate MUST cross the delegation boundary (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** The subagent does NOT inherit CLAUDE.md, so the agent prompt MUST embed this gate verbatim: *"Before judging any thesis for upgrade/monitor/close, read `Mental Models/Generalist - Overview.md` + the matching `Mental Models/Industry - X.md`/`Lens - X.md` for the candidates' sectors. Apply the READING PROTOCOL — a kill/keep call is a hypothesis; run the base-rate adversarially (stale ≠ wrong; a quiet thesis may still be right); read each candidate's own `## Mental Models` disconfirming check before recommending closure."*
+
 1. A **pre-flight status**: either `PREFLIGHT-OK`, or `PREFLIGHT-BLOCKED: <rename-marker | first-run | unsynced-research>` with the details/file list the main thread needs to surface.
 2. The full **Phase 4 report** (Recommendation Table + Portfolio Stats + Attention Allocation) — rendered verbatim by the main thread.
 3. A compact **execution plan** the mutation half consumes without re-deriving analysis:
@@ -112,7 +114,7 @@ Confirm (a/b):
 ### Phase 0.B: `.last_sync` present — unsynced-research scan
 
 ```bash
-find Research/ Theses/ Macro/ Sectors/ -newer .last_sync -name '*.md' 2>/dev/null
+find Research/ Theses/ "Macro & Technology/" Sectors/ -newer .last_sync -name '*.md' 2>/dev/null
 ```
 
 Changed files found → warn before proceeding:
@@ -392,7 +394,7 @@ Skip if Stage 2 processed zero closures. Neighbor thesis sets from Stage 2 step 
 
 For each closed thesis, two target groups:
 1. **Cross-referencing theses**: already collected in Stage 2 step 3.
-2. **Macro notes**: grep `Macro/*.md` for same wikilink patterns used in Stage 2 step 3.
+2. **Macro notes**: grep `Macro & Technology/*.md` for same wikilink patterns used in Stage 2 step 3.
 
 Exclude `_Archive/`, `_Archive/Snapshots/`, `_Inbox/processed/`, `.git/` from both scans.
 
@@ -424,8 +426,8 @@ Auto-editing narrative prose can destroy analytical coherence. For each macro no
 - Surface:
   ```
   ⚠️ Macro references to closed theses — review manually:
-    - [[Macro/Iran conflict — Transmission Map]] references [[CLOSED_TICKER1 - ...]] (now archived)
-    - [[Macro/AI capex cycle]] references [[CLOSED_TICKER1 - ...]], [[CLOSED_TICKER2 - ...]] (now archived)
+    - [[Macro & Technology/Iran conflict — Transmission Map]] references [[CLOSED_TICKER1 - ...]] (now archived)
+    - [[Macro & Technology/AI capex cycle]] references [[CLOSED_TICKER1 - ...]], [[CLOSED_TICKER2 - ...]] (now archived)
   ```
 
 User decides per macro note: (a) rewrite prose, (b) leave as historical, (c) strikethrough/annotate.
@@ -463,7 +465,7 @@ Write failure → report, do NOT abort (§5.2). Closures/upgrades/sector updates
   - [[Theses/NEIGHBOR2 - Company2]] (appended: succeeded)
   - ...
 - Macro notes referencing closed theses (reported only, not edited):
-  - [[Macro/Example Macro Note]] — references [[_Archive/CLOSED_TICKER1 - ...]], [[_Archive/CLOSED_TICKER2 - ...]]
+  - [[Macro & Technology/Example Macro Note]] — references [[_Archive/CLOSED_TICKER1 - ...]], [[_Archive/CLOSED_TICKER2 - ...]]
   - ...
 ```
 
