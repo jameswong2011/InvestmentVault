@@ -6,7 +6,9 @@ status: draft
 conviction: medium
 sector: Semiconductor Capital Equipment
 ticker: SOI
+fmp_symbol: SOI.PA
 source: FY26 full-year results (May 27, 2026) + Q3'26 release (Feb 3, 2026) + Skyworks/POI agreement (Mar 4, 2026) + NSIG/Simgui 10-year extension (Mar 13, 2026) + CEO transition announcements (Oct 2025 / Jan 2026) + sell-side coverage + sector context
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # SOI — Soitec SA
@@ -140,7 +142,7 @@ See [[Sectors/Semiconductor Capital Equipment]] for parent-sector context and [[
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~€6.7B / ~$7.3B | At €146.65/share (Jun 7, 2026); 52-week range €22.62 – €200.50; +545% off Nov 2025 trough |
+| Market Cap | ~€3.50B / ~$7.3B | At €146.65/share (Jun 7, 2026); 52-week range €22.62 – €200.50; +545% off Nov 2025 trough |
 | EV | ~€6.8B | Net debt minimal; net debt/EBITDA 0.4x |
 | EV/Revenue (FY26) | ~11.5x | On €592M trailing revenue — expensive vs photonics picks-and-shovels basket |
 | EV/EBITDA (FY26) | ~45x | On €151M FY26 EBITDA |
@@ -298,3 +300,9 @@ The bear case is cycle-extension coupled with multiple compression on the Photon
 
 ### 2026-06-08
 - Initial thesis created. Conviction: medium — Photonics-SOI near-monopoly (sole volume-qualified at TSMC COUPE / GFS Fotonix / Tower PH18) at the CPO commercialisation inflection is the underweighted structural insight; sell-side anchored to RF-SOI / Mobile (52% revenue, -41% FY26) and treats Photonics-SOI ($100M+, mgmt 20-30% CAGR) as optionality; POI is a structurally durable hidden second leg (Skyworks Sky5 multi-year Mar 2026 + Qualcomm HVM + content/phone 4mm²→11mm²); Smart Cut royalty on ~80% of global SOI volume is uncounted annuity (Simgui 10-yr extension Mar 2026 with no new tech transfer defuses China substitution); CEO transition (Barnabé out Mar 31 → Rémont in Apr 1, ex-Infineon SVP RF/sensor/auto/AI) is mispriced as continuity risk vs. positive signal of strategic acceleration. Medium not high: ~11.5x EV/Revenue / ~45x EV/EBITDA on FY26 leaves no margin for cyclical earnings miss + FY27 explicitly guided lower-fab-loading / FX / lower-CIR-funding + CEO integration 6-12mo + analyst PT dispersion €26-250 signals incoming narrative volatility. Medium not low: Photonics-SOI moat is real and durable, royalty stream is annuity, POI design wins are signed, net cash position robust, multiple catalysts within 6-12mo (Q1'27 print Jul-Aug, AGM Jul, H1 FY27 Nov). Status: draft (excluded from /catalyst, /prune, conviction drift). /thesis run. Run `/graph last`.
+
+### 2026-07-12
+- Numbers refresh: 0 metrics updated — both mapped rows (Market Cap, Net debt/EBITDA) skipped as implausible: fetched market cap of ~€498M is inconsistent with the known ~€6.7B scale (likely FMP data/currency mismatch, same failure pattern as CSU this batch), and Net debt/EBITDA fetched at ~6.0x contradicts the thesis's own "minimal net debt, 0.4x" framing and positive FCF profile. Left unedited pending manual data verification. Snapshot: [[_Archive/Snapshots/SOI - Soitec (pre-numbers 20260712-180000)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 1 metric updated (0 FMP, 1 web: Market Cap [€ leg] via stockanalysis.com, corroborated against an independent same-session direct FMP SOI.PA check), 1 material. Confirmed root cause: bare "SOI" resolves to an unrelated US micro-cap (Solaris Oilfield Infrastructure) on FMP — Step 4b's name-mismatch trigger caught this. Market Cap € leg €6.7B→€3.50B (-47.8%, material — this is NOT a data error; Soitec's FY26 revenue fell 34% YoY with a CEO transition and lower fab loading, a real decline, not a search artifact). USD leg ($7.3B) left stale — no live FX rate. EV/Revenue, EV/EBITDA: not confidently found via search (conflicting snippets), left as fetch_gap rather than force a number. Recommend adding `fmp_symbol: SOI.PA` to frontmatter as the permanent fix. Snapshot: [[_Archive/Snapshots/SOI - Soitec (pre-numbers 20260712-183640)]]

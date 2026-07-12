@@ -3,7 +3,7 @@ name: graph
 description: Rebuild the vault dependency graph (_graph.md) via the deterministic generator script. /graph forces a full rebuild; /graph last (run after every /sync) rebuilds only if the vault changed; /graph [N] is treated as last. The generator reads the vault and writes _graph.md directly, so the file never streams through a model response.
 model: sonnet
 effort: low
-allowed-tools: Read Grep Glob Edit Write Bash(python3 * find * wc * date * grep * rm * cat * sort * head * ls * printf *)
+allowed-tools: Read Grep Glob Edit Write Bash(python3 * find * wc * date * grep * sed * rm * cat * sort * head * ls * printf *)
 ---
 
 Rebuild `_graph.md` from vault state. Structural metadata only — no content files modified, no snapshots, no `_hot.md` changes.
@@ -17,15 +17,52 @@ Design rationale for the (now-superseded) incremental design: `.claude/skills/gr
 ## Step 0: Pre-flight
 
 ### 0.1 Acquire vault lock
-`vault-wide` scope per `.claude/skills/_shared/preflight.md` Procedure 1 — `/graph` reads every thesis file, so a concurrent writer could produce inconsistent extraction. Capture the token; release in the final Bash block (ownership-checked).
+`vault-wide` scope per `.claude/skills/_shared/preflight.md` Procedure 1 (§1.3a) — `/graph` reads every thesis file, so a concurrent writer could produce inconsistent extraction. Capture the token; release in the final Bash block (ownership-checked).
+
+Use the **standard §1.3a block verbatim** (with `skill: /graph`) — do NOT hand-roll a lock. The prior inline form omitted `timeout_at:`, the `.vault-lock.*` collision scan, and `set -C` noclobber, so (a) any preflight-conformant skill's collision loop read graph's lock as `timeout_at:`-empty → `[[ "" > "$NOW" ]]` false → classified a LIVE graph run STALE and invited a force-unlock, and (b) graph did not detect concurrent ticker locks at all.
 
 ```bash
-NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ); TOKEN="graph-$$-$NOW"
-if [ -f .vault-lock ]; then echo "⚠️ lock held:"; cat .vault-lock; else
-  printf 'skill: /graph\ntoken: %s\nacquired: %s\nscope: vault-wide\n' "$TOKEN" "$NOW" > .vault-lock
-  echo "LOCK_TOKEN=$TOKEN"; fi
+LOCK_FILE=".vault-lock"
+NOW=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+TOKEN="$(printf '%08x' $RANDOM$RANDOM)-$(date -u +%s)"
+TIMEOUT_AT=$(date -u -v+10M +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)
+setopt NULL_GLOB 2>/dev/null || shopt -s nullglob 2>/dev/null || true
+
+for existing in .vault-lock .vault-lock.* ; do
+  [ -f "$existing" ] || continue
+  EX_TIMEOUT=$(grep '^timeout_at:' "$existing" | sed 's/timeout_at: //')
+  EX_SKILL=$(grep '^skill:' "$existing" | sed 's/skill: //')
+  EX_TOKEN=$(grep '^token:' "$existing" | sed 's/token: //')
+  if [[ "$EX_TIMEOUT" > "$NOW" ]]; then
+    echo "LOCK_HELD|$existing|$EX_SKILL|$EX_TOKEN|$EX_TIMEOUT"; exit 1
+  else
+    echo "STALE_LOCK|$existing|$EX_SKILL|$EX_TOKEN|timeout_exceeded_at|$EX_TIMEOUT"; exit 2
+  fi
+done
+
+set -C
+if ! cat > "$LOCK_FILE" <<EOF
+---
+token: $TOKEN
+skill: /graph
+scope: vault-wide
+started_at: $NOW
+timeout_at: $TIMEOUT_AT
+session_id: ${CLAUDE_SESSION_ID:-unknown}
+---
+
+# Vault lock
+
+Held by /graph (token $TOKEN) since $NOW.
+EOF
+then
+  set +C; echo "LOCK_RACE|$LOCK_FILE|created by a concurrent run between check and write — re-run"; exit 1
+fi
+set +C
+trap "rm -f '$LOCK_FILE'" INT TERM
+echo "ACQUIRED|$LOCK_FILE|$TOKEN"
 ```
-Reclaim a stale lock only if its `acquired:` timestamp is older than 10 minutes.
+Reclaim a stale lock (`STALE_LOCK`) only per §1.6 — never auto-steal. Release in the final Bash block with the ownership-verified form (`grep '^token:' .vault-lock` == `$TOKEN` before `rm -f`).
 
 ### 0.2 No rename-marker check
 `/graph` is read-only for theses; the graph faithfully reflects current filenames + wikilinks. `/lint #37` surfaces pending rename markers separately.

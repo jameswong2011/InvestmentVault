@@ -6,7 +6,9 @@ status: active
 conviction: high
 sector: Hobby & Tabletop Gaming
 ticker: GAW
+fmp_symbol: GAW.L
 source: Vault research synthesis + web search (investor.games-workshop.com, License Global, Spikey Bits, Collider, Stockopedia, Bell of Lost Souls)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # GAW — Games Workshop
@@ -131,14 +133,14 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Share Price | ~£172–188 | Near all-time highs; 52-wk return +56.2% |
-| Market Cap | £5.3–6.3B | FTSE 100 constituent |
+| Share Price | ~£201 | Near all-time highs; 52-wk return +56.2% |
+| Market Cap | £6.6B | FTSE 100 constituent |
 | FY2024/25 Revenue | £617.5M | +17.5% YoY |
 | H1 FY2025/26 Revenue | £332.1M | +34% YoY (record half-year) |
 | Core Operating Margin | 37.5% | FY2024/25; +220bps YoY |
 | Licensing Operating Margin | 94.3% | Pure IP rent |
 | Blended Operating Margin | 42.3% | +390bps YoY |
-| Gross Margin | 72.0% | +70bps YoY |
+| Gross Margin | 72.3% | +70bps YoY |
 | ROCE | 73.7% | Among highest of any public company |
 | ROE | 67.9% | |
 | Operating Cash Flow / Net Income | ~126% | Exceptional earnings quality |
@@ -195,9 +197,13 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-8 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Core-moat legs CONFIRMED through the "off year": FY26 pre-close (May 22) core revenue ≥£625M = +10.6% (vs +3.5% consensus — a ~7pt beat); 11th Edition 40K landed June 2026 as the biggest launch box ever; ~3.5% price rise absorbed, tariffs fully offset; 3D printing again failed the revenue test despite a new AI-cloning vector (Meshy STL clones from preview images — qualitatively new piracy risk); dividend raised (90p first FY27 declaration); Korea store opened, Warhammer World USA announced (late 2027).
+	- Licensing-inflection leg WEAKENED — the pillar behind the May 22 conviction upgrade: FY26 licensing ≥£30M is -43% YoY and BELOW the thesis's own ~£35M floor; the Amazon show has NO showrunner, cast, or timeline 3.5 years post-announcement ("delivery is not in our control" — Rountree). Offsetting pipeline rebuilt but monetizing 2027-29: Total War: Warhammer 40K announced (Dec 2025, unmodeled), Space Marine 3 in development (2028-29), Darktide still at ~57K concurrents. PBT ~flat despite core +10.6% — first year of negative operating leverage on licensing mix.
+	- Automation Lens counter-position: GW BANNED generative AI in all design (Jan 13) and positions "Human Made" as luxury — a deliberate anti-fit on Lens A cost-leverage that doubles as talent-retention and scarcity-moat protection; official STL/digital catalyst REFUTED by the same move.
+	- Multiple INVERTED vs the bear math: ~31.6x P/E vs 24.1x 10-yr median (thesis anchored 27x), consensus target ≈ spot — the market pre-paid the core beat, so the thesis's own bear-case compression to 18-22x now implies ~35-45% downside from a higher base.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate split — hobby-IP behavioral monopolies (LEGO, TCGs) sustain pricing power for decades (favorable priors for the core), but licensing-inflection theses have POOR priors: most announced prestige-TV IP adaptations never air or disappoint, so "Amazon valued at zero" may be the correct price, not a mispricing. Single falsifying datapoint: the 28 July 2026 Annual Report showing licensing below £30M guidance or core margin compressing beneath the pricing — that combination breaks the "coiled spring" framing at a 31.6x multiple. The medium→high upgrade (2026-05-22) leaned on the weakened pillar — flag for review (Tier 3 — user decision). NO Conviction Triggers section; community-channel reach weaker than the moat framing assumes (28.8% use official channels vs 74.6% YouTube).
 
 ## Related Research
 
@@ -220,3 +226,12 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-07-10
+- Mental models pass: batch-8 evidence sweep populated ## Mental Models — core beat consensus by ~7pts (FY26 core +10.6%) but licensing broke the thesis's £35M floor (≥£30M, -43%) with the Amazon show still showrunner-less, and the multiple inverted to 31.6x vs the 27x anchor — conviction unchanged (high) pending review: the May 22 upgrade leaned on the weakened licensing pillar; Annual Report Jul 28.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 2 material (per computed thresholds — FMP GBp/GBP scale artifact on Share Price/Market Cap likely inflates the flagged delta magnitude). Share Price ~£172-188→~£201; Market Cap £5.3-6.3B→£6.6B; Gross Margin 72.0%→72.3% (non-material). Snapshot: [[_Archive/Snapshots/GAW - Games Workshop (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, fmp_symbol GAW.L verified): 0 rows edited. Share Price raw FMP quote (20060) correctly converted from GBp pence (÷100 = £200.60, rounds to £201) — matches current cell exactly; confirms the prior run's GBp/GBP flag was the right call and this run applied the pence-conversion correctly (no repeat of the earlier GAW GBp miss). Market Cap and Gross Margin also render identical to current text. No material change. Snapshot: [[_Archive/Snapshots/GAW - Games Workshop (pre-numbers 20260712-184025)]]

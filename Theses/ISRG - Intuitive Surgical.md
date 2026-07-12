@@ -7,6 +7,7 @@ conviction: medium
 sector: Surgical Robotics
 ticker: ISRG
 source: Vault synthesis (3 research notes, 4 LLM archive exports) + web research
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # ISRG — Intuitive Surgical
@@ -316,8 +317,8 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$465 | Mid-Apr 2026; down ~24% from ATH $610 (Jan 2025) |
-| Market Cap | ~$165B | |
+| Stock Price | ~$407 | Mid-Apr 2026; down ~24% from ATH $610 (Jan 2025) |
+| Market Cap | ~$144B | |
 | Forward P/E (2026) | ~45x | Based on consensus EPS ~$10.22; Q1 consensus $2.08 |
 | EV/Revenue (FY2025) | ~15x | |
 | FY2025 Revenue | $10.06B | +21% YoY |
@@ -326,10 +327,10 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 | Installed Base | ~11,106 | +13% YoY |
 | dV5 Placements (Q4 2025) | 303 of 532 | 57% of quarterly placements |
 | Recurring Revenue | 83-85% | Instruments + services |
-| Gross Margin (non-GAAP) | 66-67% | Down ~250bps from FY2024 (dV5 mix shift) |
-| Operating Margin (non-GAAP) | ~37% | Expense growth (11-13%) below revenue growth (21%) |
+| Gross Margin (non-GAAP) | 66% | Down ~250bps from FY2024 (dV5 mix shift) |
+| Operating Margin (non-GAAP) | ~30% | Expense growth (11-13%) below revenue growth (21%) |
 | FCF | ~$2.5B | |
-| FCF Yield | ~1.5% | On ~$165B market cap |
+| FCF Yield | ~2.0% | On ~$165B market cap |
 | Cash & Investments | $9.03B | Fortress balance sheet |
 | Instrument Revenue | $6.02B | 60% of total; ~80% gross margin |
 | Ion Procedure Growth | +52% | FY2025; system placements -28% (utilization focus) |
@@ -391,9 +392,13 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Promote conditions 2-of-3 SATISFIED: (a) Q1 (Apr 21) confirmed — revenue $2.77B +23%, EPS +38%, 232 dV5 placements, GM guide RAISED to 67.5-68.5%, procedure guide raised to 13.5-15.5%; (c) valuation at the 35-40x doorstep (~41x fwd, stock -28% YTD to ~$415, trailing ~50x vs 5-yr median 72x). Only (b) failed: Ion +39% vs the 50%+ sustain bar, decelerating, with US lung-biopsy penetration past 50% — the diagnostic-funnel TAM leg is maturing early.
+	- THE UNWRITTEN FALSIFIER FIRED: ISRG voluntarily extended instrument lives 6→15 uses (May 21) — the thesis modeled instrument-revenue erosion only as external attack (remanufacturers, antitrust, VBP), never as management pre-emptively cutting per-procedure economics to widen the moat against Hugo/Ottava's cost pitch. Market read it as razor-blade self-cannibalization (-15%+); precedent says overdone (2020 Extended Use: modeled -7%, realized -2%; Goldman ~1%/yr).
+	- Competition ON-SCHEDULE, not faster: Hugo FDA-cleared (urology, Dec 2025; first US case Feb 17), dual 510(k)s filed Jun 3 (general + gyn) — indication ladder compressing but years from parity; Ottava De Novo submitted Jan 7, uncleared; CMR US debut (chole only); MicroPort Toumai 300+ orders (+50% in 4 months).
+	- NEW unmodeled risks: SureForm 30 Gray stapler recall — 1 death, 4 serious injuries (Mar 11) + dV5 foot-pedal Class II recall — first product-safety cluster (thesis has zero recall line); CEO transition COMPLETE (Rosa since Jul 1 2025 — thesis never mentions it despite its Management/Culture lens); analyst schism (DB $440 vs Goldman $558).
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate — razor-razorblade medtech monopolies hold share 5-10 years after first credible competition but multiples compress PERMANENTLY once a competitor is priceable; the 72x→41x de-rate looks like regime change, not panic, capping any "return to 60-70x" leg. Single falsifying datapoint: the Jul 16 Q2 print's I&A revenue-per-procedure + first My Intuitive+ paid-renewal data — the direct empirical test of both the cannibalization math and the data-monetization hypothesis. Under its own framework this note is at a promote-decision point (2/3 conditions met) — but price the recall, the self-cannibalization vector, and the CEO change first (Tier 3 — user decision). Formalize the Position Sizing conditions into a Conviction Triggers section.
 
 ## Related Research
 
@@ -424,3 +429,12 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-9 evidence sweep populated ## Mental Models — promote conditions 2-of-3 met (Q1 confirmed, ~41x fwd) but the unwritten falsifier fired: ISRG self-extended instrument lives 6→15 uses (-15% on the print); Ion decelerated below the 50% bar; stapler recall (1 death) + completed CEO transition unmodeled — conviction unchanged (medium) pending user promote review; Jul 16 Q2 print adjudicates.
+
+### 2026-07-12
+- Numbers refresh: 6 metrics updated, 1 material. Operating Margin ~37%→~30% (material); Stock Price ~$465→~$407 (-12.5%), Market Cap ~$165B→~$144B (-12.7%), Gross Margin 66-67%→66%, FY2025 Revenue unchanged, FCF Yield ~1.5%→~2.0% (all not material). Snapshot: [[_Archive/Snapshots/ISRG - Intuitive Surgical (pre-numbers 20260712-173653)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Stock Price, Market Cap, FY2025 Revenue, Gross Margin, Operating Margin, and FCF Yield all round to the same displayed values as the prior pass. Snapshot: [[_Archive/Snapshots/ISRG - Intuitive Surgical (pre-numbers 20260712-183936)]]

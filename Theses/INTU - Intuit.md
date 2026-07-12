@@ -2,18 +2,19 @@
 publish: true
 date: 2026-05-01
 tags: [thesis, accounting-erp, INTU]
-status: monitoring
-conviction: medium
+status: active
+conviction: high
 sector: Accounting & ERP Software
 ticker: INTU
 source: Q2 FY2026 earnings (Feb 2026), Anthropic partnership announcement (Feb 2026), IRS Direct File shutdown announcement (Apr 2026), IES launch tracking
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # INTU - Intuit
 
 ## Summary
 
-INTU is the dominant consumer-and-SMB financial software franchise (TurboTax 60%+ DIY-prep share, QuickBooks ~62% U.S. SMB accounting share, Credit Karma 130M+ MAU) being mispriced as an *AI casualty* when the data substrate behind those franchises makes it the most defensible vertical-AI training set in finance. Sell-side has compressed the multiple from ~30x to ~16x forward earnings on the assumption that ChatGPT/Claude collapse switching costs in tax prep and bookkeeping. The non-consensus read is that two recent data points — (i) Intuit's own AI products are monetizing as paid SKUs (QuickBooks AI, Intuit Assist) rather than being given away to defend ARR, and (ii) the IRS Direct File program was shut down in April 2026, removing the regulatory overhang that bear cases were pricing — suggest the franchise has more pricing power, not less, in the AI era. Mid-market expansion via Intuit Enterprise Suite (IES, $89B TAM) and Credit Karma's Lightbox embedded-finance evolution add two distinct growth options the current multiple does not reflect.
+INTU is the dominant consumer-and-SMB financial software franchise (TurboTax 60%+ DIY-prep share, QuickBooks ~62% U.S. SMB accounting share, Credit Karma 130M+ MAU) being mispriced as an *AI casualty* when the data substrate behind those franchises makes it the most defensible vertical-AI training set in finance. Sell-side has compressed the multiple from ~30x to ~11.5x forward earnings — a deeper cut than the ~16x this thesis originally flagged — on the assumption that ChatGPT/Claude collapse switching costs in tax prep and bookkeeping. The non-consensus read is that two recent data points — (i) Intuit's own AI products are monetizing as paid SKUs (QuickBooks AI, Intuit Assist) rather than being given away to defend ARR, and (ii) the IRS Direct File program was shut down in April 2026, removing the regulatory overhang that bear cases were pricing — suggest the franchise has more pricing power, not less, in the AI era. Mid-market expansion via Intuit Enterprise Suite (IES, $89B TAM) and Credit Karma's Lightbox embedded-finance evolution add two distinct growth options the current multiple does not reflect.
 
 ## Key Non-consensus Insights
 
@@ -75,12 +76,12 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$106B | ~$361-383/share at end-Apr 2026 |
+| Market Cap | ~$75B | ~$361-383/share at end-Apr 2026 |
 | EV/Revenue | ~5.5-5.7x | FY2026 guide $20.997-21.186B |
 | Revenue Growth | +12-13% guide FY2026; +16% actual FY2025 ($18.8B) | Q2 FY2026 +17%, Credit Karma +27% |
-| Gross Margin | ~81-83% | Stable; AI compute costs not yet materially impacting |
-| FCF Yield | ~5-6% | FCF margin ~30%; capex modest, AI investment in opex |
-| Forward P/E | ~15.3-16.2x | Compressed from ~30x peak (2024); sell-side mean target $603 (Strong Buy consensus per most aggregators) |
+| Gross Margin | ~81% | Stable; AI compute costs not yet materially impacting |
+| FCF Yield | ~10% | FCF margin ~30%; capex modest, AI investment in opex |
+| Forward P/E | ~11.5x | Compressed from ~30x peak (2024); sell-side mean target $603 (Strong Buy consensus per most aggregators) |
 | Net Retention (QBO Online) | ~115%+ | Best-in-class SaaS net retention |
 | QuickBooks U.S. SMB Share | ~62% | Dominant; long tail of competitors |
 | Credit Karma MAU | ~130M+ | ~50% of U.S. adult population |
@@ -103,19 +104,28 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 
 ## Bear Case
 
-**Setup**: The compressed multiple (~16x forward) is correctly pricing structural headwinds that the bull case dismisses. AI is not a vertical-fintech moat-deepener but a horizontal commoditizer; switching costs in tax and bookkeeping collapse over 3-5 years; mid-market expansion fails against well-funded incumbents; Credit Karma is a saturated annuity.
+**Setup**: The market has already delivered the bear case. INTU fell **~62% from its July-2025 high** ($813.70) to a June-2026 trough of **~$267**, sitting at **~$275 (July 2026), ~$75B market cap, ~10x forward P/E** — the **worst S&P 500 performer YTD (-51%)**, with **~$130B+ of market value erased from the 2025 peak**. The drop broke clean through this thesis's own prior bear band ($265-335) on a **beat-and-raise** quarter. So the live question is not "will the bear case happen" but "was the de-rating founded, or did the market stamp a franchise-wide AI-casualty multiple on a company whose largest segment is accelerating?" The disciplined answer separates the drivers that have *empirically fired* from those the price is *front-running*.
 
-**Drivers**:
-1. **AI substitution at the consumer tax layer**: Claude/ChatGPT plus a $5/mo "tax helper" wrapper handles 50%+ of W-2 filers within 2-3 tax seasons. TurboTax Free Edition retention holds, but paid tier conversion drops, compressing ARPC by 5-10% annually. Consumer Group revenue declines by FY2028.
-2. **QuickBooks workflow disintermediation**: Agentic AI tools (e.g., Pilot.com's AI bookkeeper, Vic.ai for AP automation, integrated AI agents from Microsoft/Google) become the primary workflow surface, with QuickBooks reduced to a backend data store. QBO seat growth slows from low double digits to flat by FY2028; ARPU expansion via AI tier doesn't offset because customers are interacting with AI agents that read QBO data without paying for QBO AI tiers.
-3. **IES fails to penetrate mid-market**: NetSuite (Oracle), Sage Intacct, Workday Adaptive Planning, and Microsoft Dynamics defend share aggressively with AI of their own. INTU's enterprise sales motion is sub-scale; IES bookings disappoint relative to internal targets; segment is quietly de-emphasized by FY2028.
-4. **Mailchimp deteriorates further**: Marketing automation share continues to lose to HubSpot, Klaviyo, Brevo. INTU eventually writes down or divests at a multi-billion-dollar loss, raising governance/capital-allocation questions.
-5. **Credit Karma reverts**: Consumer credit cycle compresses (recession, default uptick), Lightbox doesn't scale fast enough to offset lead-gen weakness, MAU growth stays flat. Segment growth drops back to single digits.
-6. **Multiple compression sticks**: market refuses to re-rate; multiple compresses further to 12-13x as growth decelerates to 8-10% by FY2028.
+**Bear drivers, scored against the Q3 FY2026 print** (quarter ended Apr 30, reported May 20 2026; segments renamed SBSE → Global Business Solutions):
 
-**Valuation framework**: FY2027 EPS of ~$22-24 (slower growth, AI margin pressure, IES misses) × 12-14x multiple = **$265-335/share, 10-30% downside** from current $361-383.
+| Driver | Status | Evidence |
+|---|---|---|
+| Consumer-tax commoditization | **Partly firing** | TurboTax Online **total units -2%** (first modern-era decline); **pay-nothing filers 7M, down from 8M**; sub-$50K DIY filers defecting to FreeTaxUSA / H&R Block free tiers. Cheap *software* today, agentic AI tomorrow (**62% of Gen Z consult AI before filing**) |
+| QuickBooks workflow disintermediation | **Not firing — contra-evidence** | **QBO Accounting revenue +22%**, **Online Ecosystem +19%**, **GBS +15%**: the core is accelerating, not disintermediating. A FY2028+ risk, not a FY2026 reality |
+| IES mid-market failure | **No data** | Still buried inside Online Ecosystem; neither confirmed nor refuted |
+| Mailchimp deterioration | **Firing** | Revenue now declining outright; restructuring "rightsizes" it |
+| Credit Karma reversion | **Firing at the margin** | Decelerated **27% → 15%** (**$631M** Q3), on personal loans / cards / insurance — **zero Lightbox monetization commentary**, so Insight #5 stays unconfirmed |
+| Multiple compression sticks | **Firing hard** | ~30x (2024) → **~10x forward**; the de-rating overshot even the bear's own $265-335 band |
 
-**What kills the bull case**: any single one of these — TurboTax ARPC declines 2 years in a row, QBO seat growth drops below 5%, IES gets quietly buried in segment reporting, Mailchimp impairment.
+**What is genuinely founded**: the consumer-tax franchise has its first real crack. Units fell for the first time in the modern era, the free funnel shrank ~1M, and price-sensitive simple-return filers are leaving for good-enough free competitors — the exact commoditization sequence the bear predicted (cheap alternative first, agentic AI second). Layered on top is the one driver a strong FY2026 print structurally cannot refute: **agentic interface-disintermediation** — autonomous agents reading bank feeds, receipts and invoices to produce the P&L without ever opening QuickBooks, collapsing QBO into a low-switching-cost data store. The [[Mental Models/Lens - Value Layer Monopoly]] overlay classes QuickBooks as an *application-layer* position that cheap intelligence makes more contestable, and both 2026-07-09 lens syntheses flag INTU on exactly this axis. This is a FY2028+ thesis-killer, and no single FY2026 number can prove it won't arrive.
+
+**What the price is front-running (the unfounded part)**: the market repriced the *entire* franchise as an AI casualty while its largest, highest-quality segment does the opposite of disintermediate. **QuickBooks is the strongest it has looked** — **QBO Accounting +22%** on higher effective prices, customer growth *and* favorable mix; **Online Ecosystem +19%**; Online Services (money + payroll) +15%; net retention still ~115%+. TurboTax defended revenue (**+7% to $4.4B**) through **ARPU +11%** and **Live +36% to $2.8B (~53% of TurboTax revenue), Live customers +38%** even as units slipped — pricing power intact, not collapsing. Management *raised* FY2026 guidance to **+13-14% revenue / +18% EPS** on the very print that cratered the stock, and OpenAI (~$100M, Nov 2025) plus Anthropic (Feb 2026) *paid* to embed TurboTax in ChatGPT/Claude — the thesis's own moat-validation catalyst, not the disruption the multiple prices. The 17% workforce cut (**~3,100 of ~18,200 roles**, $300-340M charge) the market read as AI panic is, per CEO Goodarzi, management de-layering ("none of it had to do with AI") — stripping coordination-heavy and duplicative roles after integrating Credit Karma and TurboTax; a margin-reallocation story, not a demand-collapse signal.
+
+**Valuation — what ~10x forward requires** (per [[Mental Models/Generalist - Overview]] [G-1] endgame / [G-13] expectations): at ~$275 on FY2026 EPS of ~$23.8 (+18%) with revenue compounding +13-14%, the price embeds near-zero-to-negative terminal growth — the QuickBooks core must roll over within 2-3 years and total growth collapse toward the low single digits. Nothing in the Q3 print traces that path; the reverse-DCF is discounting the FY2028+ agentic risk as if it were already in the run-rate. Sell-side has not followed the price down — mean target **~$485 (Buy consensus), ~75% implied upside** — so the gap is a market-vs-analyst standoff, not a fundamental deterioration both sides agree on.
+
+**The honest bear (why the price could still be right — disconfirm-on-agreement)**: the vault moved INTU to HIGH conviction while OpenAI/Anthropic embedding, ARPU +11%, QBO +22% and a raised guide all point the same way — precisely the cross-model agreement the READING PROTOCOL says to distrust. The base rate is unflattering: incumbents under an AI-native-disruption narrative (Chegg -48%, Stack Overflow questions -78%) stay compressed **12-24 months past the fundamental evidence** and re-rate only on undeniable reacceleration; a 10x multiple is not self-correcting on schedule. The **August-2026 consumption / pay-per-task pricing reset** (~50M transactions/week already through Intuit AI) is unproven and could confirm ARPU *erosion* rather than the expansion the bull needs. And a 17% headcount cut, whatever the framing, is consistent with a company privately bracing for structurally lower growth.
+
+**What confirms the bear (kill signals to monitor)**: QBO Accounting decelerating below ~15% or Online Ecosystem below ~12% for two quarters (core disintermediation beginning); QBO customer/seat growth below 5% YoY; the August consumption-pricing launch failing to show net ARPU uplift, or net retention slipping below ~110%; TurboTax units declining a second consecutive season with ARPU no longer offsetting; Credit Karma below 10% with still no Lightbox traction; a Mailchimp impairment. Any two firing together move the sell-off from over-extrapolation to vindication.
 
 ## Catalysts
 
@@ -145,7 +155,7 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 
 **Position risks (thesis is right but stock goes down)**:
 
-5. **Multiple compression continues** — even with operationally good results, the market may keep INTU at 14-16x forward as growth normalizes from high-teens to low-teens. Compression risk remains until growth re-accelerates or AI optionality is empirically validated.
+5. **Multiple compression continues** — even with operationally good results, the market has pushed INTU through the 14-16x band this thesis once flagged as the risk case, to ~11.5x forward, as growth normalizes from high-teens to low-teens. Compression risk remains until growth re-accelerates or AI optionality is empirically validated.
 6. **Tax-season disappointment** — Q3 fiscal results are 40% of annual revenue concentrated in a 10-week window. Any operational hiccup (system outage, ARPC weakness, unit decline) creates outsized stock-move risk.
 7. **Sell-side mean reversion to negative** — current consensus is Strong Buy with mean target $603; the gap between price and target reflects either a multiple re-rating opportunity OR sell-side being slow to cut. If targets get cut faster than results normalize, there's downside on consensus alignment.
 8. **Macro/credit cycle** — Credit Karma is procyclical; a 2026-27 recession cuts lender marketing budgets and slows the segment regardless of Lightbox progress.
@@ -170,10 +180,14 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-6 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- HIGH leg 3 CONFIRMED: TurboTax ARPU +11% FY26 (vs ≥6% bar), Live customers +38%, Live now 53% of TurboTax revenue — post-Direct-File pricing power real (and Direct File's death is confirmed durable, though the actual shutdown announcement was Nov 2025, not the thesis's Apr 2026 — factual error to fix).
+	- CLOSE leg 1 resolved in REVERSE: OpenAI (~$100M, Nov 2025) and Anthropic (Feb 2026) PAID to embed TurboTax in ChatGPT/Claude rather than replace it — the thesis's own named moat-validation catalyst; 4-chatbot test still miscalculates refunds by >$2,000 avg. No CLOSE leg fired.
+	- Yet the market delivered the bear price on bull fundamentals ([G-13], thesis Risk #5 realized): -13% on the May 20 beat-and-raise, June trough $267 — through the thesis's own $265-335 bear band — at ~14x fwd, >$131B cap erased; amplified by the 17% workforce cut (~3,000 roles) read as AI panic and the Goldman Sell (Jun 2, PT $276).
+	- First empirical crack at the bottom: TurboTax total online units -2%, e-file share -1pt, sub-$50K DIY filers defecting on price to FreeTaxUSA/H&R Block free tiers — commoditization vector is cheap software today, AI tomorrow (62% of Gen Z consult AI before filing). LOW leg 3 live in spirit: Mailchimp revenue now declining outright, restructuring "rightsizes" it. Credit Karma decelerating 27%→15% with ZERO Lightbox monetization commentary — Insight #5 unconfirmed.
+	- Pricing-model reset unmodeled: consumption/pay-per-task AI pricing launches August 2026 — supersedes the HIGH leg 1 attach-rate framing and is the empirical test of Insight #2 (ARPU-not-compression).
+- **Disconfirming check** (evidence-updated 2026-07-10): this is the disconfirm-on-agreement case — the trigger ledger reads net-HIGH on fundamentals while the price sits ~25% below where medium conviction was set; the question is whether the market's FY2028+ agentic-disintermediation repricing is information the FY26 trigger set structurally cannot capture. Base rate: incumbents under AI-native narrative attack (CHGG analog) stay compressed 12-24 months past the fundamental evidence and re-rate only on undeniable reacceleration — a 14x multiple is not self-correcting on schedule. Falsification events: FY26 full-year print + formal FY27 guide (Aug 2026) + the August consumption-pricing launch. Fix: Direct File date error; stale Key Metrics ($106B vs ~$74B).
 ## Related Research
 
 **Cross-thesis adjacency** (graph-primer suggestions, accepted):
@@ -181,6 +195,9 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 - [[Theses/PLTR - Palantir]] — AI monetization-as-tier vs. AI-as-feature framework comparison; PLTR's AIP pricing playbook is the closest analog to QuickBooks AI tier strategy
 - [[Theses/SHOP - Shopify]] — embedded fintech (Shopify Capital, Shopify Payments) parallel to QuickBooks Capital + Payments and Credit Karma Lightbox
 - [[Theses/CRCL - Circle Internet Group]] — Agentic Internet macro adjacency; both INTU and CRCL are positioning for an embedded-AI commerce layer, though at different parts of the stack
+
+**Research notes**:
+- [[Research/2026-07-12 - INTU - Stock Decline Diagnosis and Bear Case Deep Dive]] — diagnoses the ~62% de-rating (partly founded, materially over-extrapolated); QBO core +22% / Online Ecosystem +19% against a franchise-wide AI-casualty ~10x multiple; FY2028+ agentic interface-disintermediation flagged as the real thesis risk
 
 **Sector**: [[Accounting & ERP Software]]
 
@@ -196,3 +213,22 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-6 evidence sweep populated ## Mental Models — no CLOSE fired (OpenAI/Anthropic paid to embed TurboTax; ARPC +11%) yet price broke the thesis's own bear band at ~14x fwd; first crack: TurboTax units -2% on cheap-DIY defection; corrected Direct File date error (Nov 2025) — conviction unchanged (medium); falsification events Aug 2026 (FY26 print + FY27 guide + consumption-pricing launch).
+
+### 2026-07-11
+- Status change: conviction medium → high — vault-wide multi-agent valuation scoreboard: beat-and-raise fundamentals (+13-14% rev, +18% EPS guide) delivered against a price that fell to ~14x fwd / worst S&P 500 performer YTD, embedding near-zero terminal growth; bear case fired without a matching miss. Snapshot: [[_Archive/Snapshots/INTU - Intuit (pre-status 2026-07-11-063211)]]
+- Status change: monitoring → active — genuine emerging mispricing (V=7.5/10, top-decile in scoreboard) warrants active pursuit, not passive monitoring. Snapshot: [[_Archive/Snapshots/INTU - Intuit (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Deepened Bear Case: scored each driver vs Q3 FY26 — ~62% de-rating to ~10x fwd partly founded (TurboTax units -2%, CK decel 27→15%, Mailchimp declining) but over-extrapolated (QBO Accounting +22%, Online Ecosystem +19%, guide raised +13-14% rev/+18% EPS on the print that cratered the stock); genuine risk = FY2028+ agentic interface-disintermediation + 12-24mo base-rate compression, not FY26 fundamentals — conviction unchanged (high), realization/timing now the primary risk. Snapshot: [[_Archive/Snapshots/INTU - Intuit (pre-deepen 2026-07-12-125334)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 4 metrics updated, 2 material. Market Cap ~$106B→~$75B (-29%, confirms the de-rating already documented in Bear Case). Revenue Growth left unedited (ambiguous which embedded figure the fetched value maps to). Snapshot: [[_Archive/Snapshots/INTU - Intuit (pre-numbers 20260712-174116)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed. Market Cap (~$75B), Gross Margin (~81%), FCF Yield (~10%), Forward P/E (~11.5x) all render identically after rounding — data <1hr fresh. Revenue Growth again left unedited (compound guide/actual string, ambiguous mapping). Step 10b: Summary states "Sell-side has compressed the multiple from ~30x to ~16x forward earnings" — Key Metrics Forward P/E is now ~11.5x, a real gap already tracked via the Bear Case/Mental Models sections; consider `/deepen --section "Summary"`. Snapshot: [[_Archive/Snapshots/INTU - Intuit (pre-numbers 20260712-184147)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: forward P/E ~16x→~11.5x across Summary + Risks #5 (through the 14-16x risk band the thesis flagged). Snapshot: [[_Archive/Snapshots/INTU - Intuit (pre-deepen-metrics-sync 2026-07-12-203456)]]

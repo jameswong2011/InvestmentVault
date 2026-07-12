@@ -3,10 +3,12 @@ publish: true
 date: 2026-04-15
 tags: [thesis, enterprise-software, WTC, logistics, supply-chain, cargowise]
 status: monitoring
-conviction: medium
+conviction: high
 sector: Logistics & Supply Chain Software
 ticker: WTC
+fmp_symbol: WTC.AX
 source: Multi-source synthesis (ChatGPT deep research, Grok analysis, WiseTech investor presentations, web research April 2026)
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-04-27 → Addressed 2026-04-27
 > **Prompt:** *What is the product and revenue synergies opportunity available from combining E2Open and CargoWise.*
@@ -238,22 +240,63 @@ In December 2025, the ACCC required WiseTech to divest Expedient (a logistics so
 **5. AI + data dominance creates a widening competitive flywheel.**
 With 75% of global customs transaction data flowing through CargoWise, WiseTech has a structural AI training advantage that no competitor can match. The AI already automates 90% of export compliance and import customs processing. Every filing, tariff classification, and exception resolution trains the models further. CargoWise Next Gen's generative AI targets 90% reduction in manual interventions across the platform. Competitors without equivalent data volume and diversity cannot build equivalent automation — regardless of their engineering talent or AI investment.
 
-**6. Top forwarder self-build risk: the DSV-Tango precedent.**
-DSV's February 2026 decision to begin migrating off CargoWise onto DB Schenker's Tango TMS — acquired via the €14.3B DB Schenker deal April 2025 — is the first credible large-forwarder migration off CargoWise in the platform's history. As of April 2026: ~30% of DSV operations on Tango, ~70% still on CargoWise. CEO Jens Lund publicly committed to "gravitate towards our own solution" over time. Bernstein estimates DSV's CargoWise spend at ~$78M annually pre-Schenker, potentially exceeding $125M post-integration; sell-side models put DSV's combined contribution at up to 15% of WiseTech EBITDA over 2-3 years.
+**6. Top forwarder self-build risk: the DSV precedent, re-underwritten (July 2026).**
+DSV remains the **only** top-forwarder defection from CargoWise, and the case is more idiosyncratic than the "monopoly cracking" headline. At its **12–13 May 2026 Capital Markets Day** ("Leverage to Lead"), DSV disclosed a **"count-to-one" systems strategy** and a target-architecture slide reading **"CargoWise One → Tango"** for Air & Sea ("2 TMSs → 1 TMS"), with Road consolidating **25+ systems onto DB Schenker's "Star."** **~25% of DSV volumes now run on Tango**; the broad rollout begins **2027**. The **~DKr6bn of targeted 2030 productivity is "AI + technology" — Tango/Star migration is one lever inside it, not the whole number** (a separate DKr3bn is network optimization); the vault's prior "DKr6bn tied to leaving CargoWise" overstated the attribution. CEO Jens Lund: it is "very likely that we will, over time, gravitate towards our own solution."
 
-**Self-build economics are scale-dependent.** Building and maintaining an in-house TMS at DHL / DSV / K+N scale costs $100-150M annually — roughly equivalent to current CargoWise spend, but with full control. For mid-size forwarders, build cost is "a couple of million," but compliance maintenance (160+ country customs databases, hundreds of carrier EDI integrations, AI compliance models) is unattainable. The economic crossover point sits at approximately the top 5-10 forwarders globally. Three structural factors elevate self-build risk in 2026 vs. prior years: (a) the December 2025 Value Packs pricing model raised CargoWise costs 20-50%+ for many large customers, increasing in-house IRR; (b) generative AI lowers platform engineering cost meaningfully (though not the compliance maintenance cost); (c) DSV's Tango is now a publicly available forwarder-built alternative at production scale, reducing the perception of CargoWise as the only viable option.
+**The migration is slow, contractually floored, and near-term invisible in the churn stat.** WiseTech's **9 July 2026 ASX clarification** disclosed DSV **CargoWise volumes +20% over six months** (users only **+3%** — deeper automation, not seat growth), a **"substantial financial commitment" contract to September 2028**, and renewal talks underway for post-2028 collaboration on AI tooling. Schenker integration is *adding* volume to CargoWise even as Tango migration proceeds in parallel, so DSV revenue is likely still growing in FY2026. **Sell-side puts the P&L impact no earlier than FY2028**: Jefferies frames the DSV contract at **~US$150M (~9% of revenue, ~10% of FY2027 EBITDA)** at long-run risk; **Citi cut its FY2028 CargoWise growth forecast to 7% (stripping ~US$80M) at a A$65 price target.** Bernstein's "up to 15% of EBITDA at peak" reflects Schenker volumes scaling *onto* CargoWise before migrating off — a transient peak, not a floor.
 
-**The "stop-gap" hypothesis evaluated.** The bear thesis — that CargoWise is a stop-gap until top forwarders self-build — is partially validated by DSV but does not generalize cleanly. Counter-evidence: (a) DSV's migration is to an acquired third-party system (Tango), not a true greenfield in-house build, and even DSV is taking a multi-year incremental approach; (b) DHL Global Forwarding actively chose CargoWise over modernizing in-house despite 4,000+ IT staff capacity, and remains on CargoWise; (c) Kuehne+Nagel chose CargoWise for global customs rollout despite DSV-equivalent scale; (d) FedEx Trade Networks, Maersk Logistics, Sinotrans, and Nippon Express onboarded CargoWise in the past 24 months. The realistic risk window is the top 3-5 forwarders making integration-driven platform decisions over the next 5 years (DSV-Schenker now, possibly K+N or CMA CGM if they pursue scale-defining M&A); the long tail of 18,000+ organizations remains structurally locked in.
+**DSV inherited a mature TMS — it did not build one, which is why the case does not generalize.** Tango ("Transport And Global Operations") is DB Schenker's proprietary Air & Ocean platform, **built with Capgemini on Riege's "Scope" engine, German-customs-certified, and live across ~130 countries after replacing 32+ legacy systems.** DSV acquired a working, forwarder-grade, customs-capable stack via the €14.3B Schenker deal — not a greenfield self-build. **No other top-25 forwarder has a Tango-equivalent on the shelf, and DSV has signalled no intent to commercialize Tango externally** (its entire rationale is proprietary control). The bear's "stop-gap until forwarders self-build" thesis requires a build the industry has repeatedly failed at.
 
-**Margin impact scenarios:**
+**The exposed cohort is a minority of the top 25, not "24 of 25."** WiseTech's own H1 FY2026 count is **23 of 25** (any-module — Kuehne+Nagel takes customs only); **Bernstein's operational count is ~13 of the top 25 that "run CargoWise One as core."** Several top-10 forwarders were **never** core adopters — stable non-adopter equilibria, not 2026 defection candidates:
 
-| Scenario | Path | Net Annual Revenue Impact | EBITDA Margin Impact |
-|----------|------|---------------------------|----------------------|
-| Base | DSV phased migration over 4-5 years; ~30% residual CargoWise; no other top-10 follows | ~$50-80M | <1pp |
-| Bear | DSV completes full migration by 2029; no other top-10 follows | ~$100-150M (~3-5% group revenue) | ~2-3pp |
-| Tail | DSV migration triggers K+N or CMA CGM evaluation | $200-300M+ (~7-10% group revenue) | Structural reset |
+| Top forwarder | CargoWise core? | Own / alternative core | Cascade signal (Jul 2026) |
+|---|---|---|---|
+| DSV (#1) | Yes (~70% residual) | **Migrating to Tango** (inherited via Schenker) | **The anchor — confirmed, slow, FY2028+ P&L** |
+| Kuehne+Nagel (#2) | Customs module only | In-house (KN FreightNet / RoadLOG) | None — *deepening* on CW customs; "Roadmap 2026" builds own TMS |
+| DHL GF (#3) | Yes (deep; myDHLi on CW) | Tried self-build "NFE" — **scrapped 2015, €345M write-off** | None — strongest stay; "don't have to do everything ourselves" |
+| Sinotrans (#4) / Nippon Express (#5) | Yes (recent adopters) | Nippon Express lost **>$100M** on failed in-house builds | None |
+| CEVA / CMA CGM (#6) | Yes | — (migrated acquired Bolloré *onto* CW) | None — loyalist; did the opposite of self-build |
+| Expeditors (#7) / C.H. Robinson (#8) | **No** — canonical holdouts | In-house since the 1990s (Expeditors ~750 engineers) | Existing non-adopters, not defections |
+| Maersk (#11) | Largely no | In-house Maersk Supply Chain Platform | None — carrier-integrator model |
 
-The tail scenario is the actual thesis-breaker; base and bear are absorbable. **Monitoring trigger:** any second top-10 forwarder publicly evaluating migration off CargoWise should be treated as a → LOW conviction trigger.
+**The self-build graveyard is the counter-base-rate.** DHL's abandoned "New Forwarding Environment" (**€345M write-off, 2015**), Panalpina's SAP-TMS (scrapped post-DSV acquisition, migrated to CargoWise), and Nippon Express's **>$100M** in failed builds are the reference class for "large forwarder attempts to leave or avoid CargoWise." Each capitulated *to* CargoWise. DSV succeeds only because it bought a finished system.
+
+**The [[Lens - Value Layer Monopoly]] two-layer split resolves the sign — held as a hypothesis, not a verdict.** CargoWise spans two layers with opposite AI-era trajectories. The **forwarder-execution layer** (bookings, documentation, workflow) is contestable — DSV proves a scaled forwarder with an inherited stack can leave, and generative AI lowers the engineering cost of an execution rebuild. The **customs/compliance layer** (160+ country databases, ~75% of global customs data, ~80% of manufactured trade flows) is not — even K+N, running its own core TMS, *rents* CargoWise for customs. The melting asset is the execution layer at the top 5–10 forwarders; the compliance layer widens with every CBAM, sanctions, and tariff change. The error to avoid (per the lens) is crediting the whole platform as durable infrastructure when only the compliance sub-layer is.
+
+**The live accelerant is Value Packs, concentrated on exactly the self-build-capable cohort.** ~**30% of CargoWise revenue sits with large customers on legacy commitment agreements not yet migrated to the December 2025 Value Packs** — the accounts facing the **20–50%+ price increase** are the same scaled forwarders with the capability to self-build, so the repricing raises in-house IRR precisely where the execution layer is contestable. **The moat's favorite metric is blind to this:** WiseTech's "<1% attrition / 99% recurring" excludes non-CargoWise accounts and counts a customer as churned only after ≥4 months of zero use — a slow migrator like DSV (still +20% volume on its un-migrated ~70%) never registers. The headline retention number is structurally incapable of detecting a slow enterprise bleed.
+
+**Probability-weighted scenarios (revised July 2026, subjective):**
+
+| Scenario | Path | Net annual revenue impact | EBITDA margin | Prob. |
+|---|---|---|---|---|
+| Base | DSV migrates Air & Sea over 2027–2030; ~US$150M phased out by ~FY2030; no second core forwarder follows | ~US$80–150M by FY2030 (~5–9% of CW) | ~1–2pp | ~55% |
+| Bull-within-bear | DSV renews post-2028 for AI/compliance modules; residual CargoWise customs retained; execution-only exit | ~US$60–100M | <1pp | ~25% |
+| Tail (thesis-breaker) | A **second top-10 *core* forwarder** (K+N unlikely; a shipping-line integrator — CMA CGM/CEVA or Maersk — the only credible path) publicly evaluates migration | US$200–300M+ (~7–10% group rev) | Structural reset | ~15–20% |
+
+The **tail is the only thesis-breaker; base and bull-within-bear are absorbable** and already discounted at ~6.5x forward EV/Revenue (~half Descartes). **Monitoring trigger (→ LOW conviction):** a second top-10 forwarder that *runs CargoWise One as core* publicly evaluating migration. **Status as of July 2026: UNTRIPPED** — no second core forwarder is evaluating; K+N is deepening on CargoWise customs; CEVA just consolidated onto CargoWise.
+
+**7. The revenue-offset arithmetic: new CargoWise vectors outrun DSV attrition through FY2027.**
+The churn question is incomplete without the growth side. Against DSV's ~US$150M phased out over 2027–2030, WiseTech is opening new CargoWise revenue faster than the execution layer erodes:
+
+| New revenue vector | Mechanism | 2026 status / sizing |
+|---|---|---|
+| **Value Packs** | Transaction-based pricing replaces per-seat; ~95% of customers migrated (Dec 2025) | **~+6% to CargoWise revenue FY26–27 (Jefferies)**; ~30% legacy cohort still to transition |
+| **Embedded-AI monetization** | Per-transaction pricing means AI-driven productivity *grows* revenue instead of cannibalizing seats; ACE, ComplianceWise, Classification, Doc Ingestion live | AI usage **2–5x since launch** — the structural answer to per-seat SaaS erosion |
+| **ComplianceWise / CBAM** | Agentic customs; EU CBAM certificate obligation ramps **2026 → Feb 2027** | Counter-cyclical; widens the durable compliance layer |
+| **CTO (landside) + WMS Value Pack** | Container Transport Optimization (ACFS launch partner); per-order-line WMS pricing | **FY2027+** TAM expansion; not yet a 2026 driver |
+| **CargoWise Neo (shipper portal)** | Web Tracker retired **1 Apr 2026** → Neo default; CargoWise-side beachhead into the shipper/BCO layer | Bridges toward E2open's node |
+| **Mid-market / LatAm** | Value Packs remove hosting/platform overhead for SMEs; Editrade + Opentecnología customs footholds | LatAm fastest-growing deployment region |
+
+**E2open converts the churn risk into a moat — it makes the forwarder node harder to leave and adds a second revenue engine.** Owning **both** the shipper-planning node (E2open: ~500,000 trading partners, ~250 blue-chip incl. **Dell, Nvidia, Ford, L'Oréal, Schneider Electric**) *and* the forwarder-execution node structurally raises switching costs — a shipper routing bookings through E2open into CargoWise deepens the forwarder's lock-in, the inverse of the DSV dynamic. Synergy vectors bearing on revenue durability:
+
+| Synergy | Mechanism | Status |
+|---|---|---|
+| **INTTRA + Bolero eBL + trade finance** | INTTRA = **~18.5% of global ocean bookings**; with Bolero electronic bill-of-lading drives documentary / trade-finance automation | **Shipped 2026** — the most concrete synergy live |
+| **Cross-sell CargoWise into E2open's ~5,600 shippers** | Blue-chip BCOs are natural buyers of CargoWise customs / landside / warehouse execution | Ramping; no named win disclosed yet |
+| **Combined compliance stack** | E2open Amber Road GTM (**~68B annual restricted-party screenings**, 230+ jurisdictions) + ComplianceWise as tariff / CBAM complexity peaks | Strong logic; not yet packaged |
+| **Cost + margin capture** | E2open onto WiseTech's transaction / product-led model | **US$50M cost synergy achieved Jan 2026 (~18 months early)**; E2open EBITDA 34% ex-restructuring (+6pp vs. pro forma) in 5 months |
+
+**Net competitive read:** the execution layer is contestable at the top 5–10 forwarders (DSV proves it), but WiseTech is widening adjacent layers — customs/compliance (CBAM), the shipper node (E2open), and AI monetization (Value Packs) — faster than execution erodes. Consolidated FY2026 guidance (**revenue US$1.39–1.44B, EBITDA US$550–585M, 40–41% margin, exit run-rate 43–44%**) already absorbs the DSV drag, which is an FY2028+ event. The durability question is not "will DSV leave" (it will, slowly) but "does the compliance-plus-shipper-node franchise compound faster than the execution layer bleeds" — through FY2027 the arithmetic favors growth.
 
 ### Value Chain Analysis
 
@@ -282,9 +325,9 @@ Last-Mile / Delivery → Consignee
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | A$37.16 | As of April 13, 2026 — down ~60% from 2024 highs |
+| Stock Price | A$34.00 | As of April 13, 2026 — down ~60% from 2024 highs |
 | Shares Outstanding | 336.1M | |
-| Market Cap | A$13.3B (~US$8.6B) | Governance-driven discount; was ~A$33B pre-scandal |
+| Market Cap | A$11.4B (~US$8.6B) | Governance-driven discount; was ~A$33B pre-scandal |
 | Net Debt | ~A$3.2B | E2open acquisition entirely debt-funded |
 | Enterprise Value | ~A$16.5B (~US$10.7B) | |
 | EV/Revenue (FY2026E) | ~7.5x | On guided US$1.39-1.44B; historically traded 20-30x |
@@ -294,7 +337,7 @@ Last-Mile / Delivery → Consignee
 | FY2026 EBITDA Guidance | US$550-585M | ~38-41% margin |
 | CargoWise Organic Growth (H1) | 9% | Guided 14-21% for full year; H2 acceleration expected |
 | EBITDA Margin | 38% | H1 FY2026; E2open at 34% (+6pp vs. pro forma) |
-| Gross Margin | 81.1% | World-class for enterprise software; reflects cloud-native platform |
+| Gross Margin | 74.8% | World-class for enterprise software; reflects cloud-native platform |
 | Revenue Recurring % | 97% | Transaction-based + subscription |
 | Customer Churn | <1% annually | Among lowest in enterprise software globally |
 | R&D Investment | 34% of revenue | A$264M in FY2025; $940M+ cumulative over 5 years |
@@ -403,9 +446,10 @@ Last-Mile / Delivery → Consignee
   - **Single falsifying datapoint**: a second top-10 forwarder (K+N, CMA CGM) publicly evaluating migration off CargoWise — it converts DSV from idiosyncratic to a structural cascade and confirms the execution layer is commoditising (Value-Layer §2 melting asset + AI application-layer dissolving). This is already the thesis's own → LOW conviction trigger.
   - **Base rate to beat**: enterprise-software names at ~A$2.2B revenue rarely hold high-teens organic growth for a decade; the "cheap monopoly + organic decel + scandal" reference class skews value-trap. The 14-21% H2 organic guidance is the outlier claim that must actually print.
   - **The bear the agreement hides**: all three lenses share the vault's software-monopoly house aesthetic (Generalist: "resist the house aesthetic"). The reads they paper over — (1) governance is a real quality impairment, not optical; (2) the moat is mixed-sign under AI (the bull credits the infrastructure layer while the execution layer dissolves); (3) the alpha comes from an *established*, not emerging, layer monopoly, so it lives or dies on the single governance-vs-impairment variable. Net read: a convex bet on mean-reversion, not a confirmed compounder — hold as hypothesis pending H2 FY2026 organic growth, DSV migration cadence, and the ASIC outcome.
-
+- **Evidence update (2026-07-10 batch-7 pass, evidence-tested against July-2026 web research)**: the governance variable did not resolve — it METASTASIZED: a second, personal-conduct AFP probe into White (immigration/visa allegations, reported Jun 22; -12-18% intraday, ~A$2B cap loss in a day), then the first structurally positive governance datapoint since Feb 2025 — White stepped down as chair Jul 7 (Raelene Murphy first independent chair; +10.6%), followed by a -7.3% "did anything really change?" day (White keeps board seat, CIO title, ~35%, and a Macquarie collar over 20M shares — an unmodeled forced-selling overhang, no-sale pledge expires at FY26 results). The formal → LOW trigger (second top-10 forwarder evaluating migration) is UNTRIPPED — Scope TMS itself concedes K+N/Schenker-class forwarders cannot fully replace the customs layer — but DSV hardened from drift to strategy at its June CMD: "CargoWise One → Tango" on the slide, ~25% of Air & Sea volumes migrated, DKr6bn/yr savings tied to leaving. Value Packs natural experiment leaning negative at the mid-market (invoice confusion, "interest turns to action" at rivals) with no enterprise churn spike; e2open cost synergies hit the FY27 target 18 months early; H1 CargoWise organic printed 9% vs the 14-21% FY guide — the outlier claim resolves at FY26 results (Aug 2026) alongside the collar expiry and likely new DSV disclosure. Short interest ~8.4% near peak; stock A$34.65 (Jul 8), -74% from high. Net: the mean-reversion bet survives but the bull's "resolvable, non-operational discount" framing is weakened — the discount is event-driven and repeatable while White retains control rights. Highest-value maintenance action: formalize §Conviction Triggers (organic-growth floor, second-forwarder leg, founder-collar/AFP legs) before the August print.
 ## Related Research
 
+- [[Research/2026-07-12 - WTC - DSV Churn Cascade and E2open Revenue Offsets Deep Dive]] — July 2026 web synthesis: DSV-Tango migration re-underwritten (idiosyncratic, inherited TMS, FY2028+ P&L, → LOW trigger untripped, ~13-of-25 deep-lock-in cohort per Bernstein); Value Layer Monopoly two-layer split (execution contestable / customs durable); new CargoWise revenue vectors + E2open synergies (INTTRA/Bolero eBL, cross-sell, US$50M cost synergy)
 - [[Research/2025-11-25 - WTC - Cargowise Impact on Freight Forwarding]] — ChatGPT deep research: CargoWise transformation of freight forwarding (24/25 top forwarders, 18K+ orgs), multi-modal expansion into trucking/rail/ocean/last-mile, E2open acquisition strategic analysis, "logistics OS" vision, case studies (DHL, K+N, Fracht, Tigers Logistics)
 - [[Research/2025-11-23 - WTC - WiseTech Tech Debt and Acquisition Integration]] — Grok analysis: Technical debt assessment (moderate, well-managed, .NET/C# stack), 40+ acquisition integration track record (Depot Systems, CMS Transport, LatAm/Europe tuck-ins), E2open $2.1B risk assessment, R&D intensity (34% of revenue, $940M+ cumulative)
 - [[Sectors/Logistics & Supply Chain Software]] — Sector Note (WTC is sole Active Thesis; covers Descartes, Manhattan, Blue Yonder, E2open heritage, CargoWise monopoly thesis)
@@ -435,3 +479,19 @@ Last-Mile / Delivery → Consignee
 ### 2026-06-30
 - Mental Models: Populated §Mental Models from [[Generalist - Overview]] + [[Lens - Value Layer Monopoly]] + [[Lens - Automation & AI Readiness]] — key reads held as hypotheses: AI gives the moat a *mixed sign* (infrastructure/widening at the customs-data layer, application/dissolving at the forwarder-execution layer); governance is a genuine quality impairment by the vault's own culture model, not a "non-operational" discount; thesis rests on the mean-reversion-vs-trend-continuation meta-question (resolves on H2 FY2026 organic + DSV cadence + ASIC). Conviction unchanged (medium).
 - Valuation context (Jun 30, FMP, AUD): A$33.00 (−11% from A$37.16 Apr 13), mkt cap ~A$11.1B, EV ~A$14.2B; trailing 8.7x EV/Sales, 19.3x EV/EBITDA, 44.6x P/E, 4.4% FCF yield; forward ~6.5x EV/Rev, ~16x EV/EBITDA on FY2026E guidance — governance-discount dislocation has widened, not closed; still ~½ Descartes' multiple. Key Metrics table not refreshed (run /numbers to update).
+
+### 2026-07-10
+- Mental models pass: batch-7 evidence sweep appended evidence-update to ## Mental Models — governance metastasized (AFP personal probe Jun 22) then partially remediated (White out as chair Jul 7, first independent chair); DSV migration hardened to board-level strategy; → LOW trigger (second top-10 forwarder) untripped — conviction unchanged (medium); FY26 results (Aug) resolve the 14-21% organic claim + collar expiry; formalize Conviction Triggers before then.
+
+### 2026-07-11
+- Status change: conviction medium → high — vault-wide multi-agent valuation scoreboard: ~half Descartes' EV/Revenue multiple on a stronger customs-data asset (75% of global customs flow); independent chair appointment (Jul 7) starts governance-discount compression. DSV cascade risk and the untripped LOW trigger are reflected in the score, not disregarded. Snapshot: [[_Archive/Snapshots/WTC - WiseTech Global (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Deepened Industry Context (§6 self-build risk re-underwritten + new §7 revenue offsets): July web research — DSV is the sole, idiosyncratic defection (inherited DB Schenker's Tango, didn't build; May CMD "CargoWise One → Tango", ~25% A&S volumes migrated, contract to Sept 2028, FY2028+ P&L; Jefferies ~US$150M/~9% rev at long-run risk); deep-lock-in cohort ~13 of top-25 not 24/25 (Bernstein); → LOW trigger (second *core* forwarder) UNTRIPPED. Value Packs on the ~30% legacy-contract self-build-capable cohort is the live watch item; execution layer contestable but customs/compliance + E2open two-node moat widen faster.
+- §7 isolated new CargoWise revenue (Value Packs ~+6% Jefferies, AI monetization, CTO/WMS/Neo, ComplianceWise/CBAM) + E2open synergies (INTTRA ~18.5% of ocean bookings + Bolero eBL shipped 2026; cross-sell into ~5,600 shippers incl. Dell/Nvidia/Ford; US$50M cost synergy 18mo early). Conviction unchanged (high) — churn contained and offsets outrun attrition through FY2027. Snapshot: [[_Archive/Snapshots/WTC - WiseTech Global (pre-deepen 2026-07-12-101627)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 3 metrics updated, 1 material. Gross margin 81.1%→74.8% (material, -6.28pp). Stock price A$37.16→A$34.00 (-8.5%) and market cap (native leg only) A$13.3B→A$11.4B (-14.1%; US$ parenthetical left unconverted — no live FX rate) both non-material. FY2026 revenue guidance fetch_gap. Remaining rows (net debt, EV, EV/Revenue, EV/EBITDA, H1 revenue, EBITDA guidance/margin, organic growth, recurring %, churn, R&D, penetration/concentration/geographic stats, synergies, FCF, workforce, analyst consensus, White stake) are custom metrics — left unedited. Snapshot: [[_Archive/Snapshots/WTC - WiseTech Global (pre-numbers 20260712-173930)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed — Stock Price, Market Cap, and Gross Margin all round to already-current displayed values (A$34.00, A$11.4B, 74.8%). FY2026 Revenue Guidance still fetch_gap. Snapshot: [[_Archive/Snapshots/WTC - WiseTech Global (pre-numbers 20260712-184111)]]

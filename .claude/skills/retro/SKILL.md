@@ -22,6 +22,8 @@ Delegate the ENTIRE run (Step 0 pre-flight through Phase 9 output) to ONE `Agent
 
 **Mental Models reading gate MUST cross the delegation boundary (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** The subagent does NOT inherit CLAUDE.md, so the agent prompt MUST embed this gate verbatim for the Phase 4 trade-idea synthesis: *"Before ranking trade ideas from the narrative-price gaps, read `Mental Models/Generalist - Overview.md` + the matching `Mental Models/Industry - X.md`/`Lens - X.md` for the tickers surfacing. Apply the READING PROTOCOL — the market-vs-vault gap is a hypothesis, not a verdict; run the base-rate adversarially (most gaps close because the market is right); an inverted-bear/inverted-bull signal is a disconfirm trigger on the vault's own stance, not automatic alpha."*
 
+**Recursion guard — the agent prompt MUST also embed verbatim:** *"You are the EXECUTOR of this skill run, not a coordinator: do NOT re-delegate any part of this work to further Agent calls — the 'Execution context — subagent delegation' section of the instructions you were passed applies to the main thread only and is already satisfied by your existence. Perform all reads, searches, and writes yourself, and end your final message with the complete Phase 9.2 report."* Without this line the passed instructions include the delegation mandate itself — an invitation to recurse.
+
 **This supersedes the 2026-06-07 "main-thread, no fork" decision** (see Design notes) — that revert was specific to the frontmatter `context: fork` mechanism, which returned the report as unrendered stdout (blank panel). Agent-tool delegation is a different mechanism: the subagent's final message returns to the main thread as a tool result, and the main thread re-emits it in its own response, so rendering is preserved. This keeps the ~400K-token read/search budget out of main context (main receives only the final report). If a future run shows a truncated or missing report, the fallback is to remove this section and restore main-thread execution — the Research note persists to disk either way.
 
 ## Arguments
@@ -153,9 +155,11 @@ Extract per bullet:
   skill_origin: true | false  # matches any prefix in the skill-origin list
 ```
 
-Skill-origin classification (matches `_shared/log-prefixes.md` skill-origin list): `Stress test`, `Deepening`, `Deepened`, `↳ CORRECTION: Deepened`, `Conviction reaffirmed`, `Status change:`, `CLOSED`, `Prune upgrade`, `Scenario `, `Initial thesis created`, `ROLLBACK to snapshot`, `Scenario REVERSED`, `Cross-thesis closure:`, `Cross-thesis closures:`, `Renamed file:`, `Comparison `, `Callout sweep:`, `Numbers refresh:`. (`Transcript ingested:` is deliberately NON-skill-origin per log-prefixes.md — transcript-driven activity counts as high-signal manual research.)
+Skill-origin classification (matches `_shared/log-prefixes.md` skill-origin list): `Stress test`, `Deepening`, `Deepened`, `↳ CORRECTION: Deepened`, `Conviction reaffirmed`, `Status change:`, `CLOSED`, `Prune upgrade`, `Scenario `, `Initial thesis created`, `ROLLBACK to snapshot`, `Scenario REVERSED`, `Cross-thesis closure:`, `Cross-thesis closures:`, `Renamed file:`, `Comparison `, `Callout sweep:`, `Numbers refresh:`, `Cross-thesis signal via`. (`Transcript ingested:` is deliberately NON-skill-origin per log-prefixes.md — transcript-driven activity counts as high-signal manual research.)
 
-Non-skill-origin entries are manual or user-callout-driven activity — highest signal for retro ("what I actually thought about").
+**Sync-propagated entries are a third class, not manual signal.** A bullet whose body STARTS with a `[[Research/` wikilink under a date header annotated `(/sync)` is machine propagation output (sync Step 3f format: `- [[Research/note]]: [delta] — [conviction impact]`). Classify it `sync-propagated`: it counts toward TICKER_UNIVERSE (the ticker was genuinely active) but is weighted BELOW manual entries in VAULT_DIRECTION / §4.2 alpha-reflection analysis — otherwise a `/sync all` run reads as user conviction activity across every synced ticker.
+
+Non-skill-origin, non-sync-propagated entries are manual or user-callout-driven activity — highest signal for retro ("what I actually thought about").
 
 ### 2.4: Ticker universe
 
@@ -297,12 +301,12 @@ gap_magnitude =
   | flow-bull      → 1.0 × |price_move_pct|   # unsigned flow signal
   | flow-bear      → 1.0 × |price_move_pct|
   | mixed          → 0.5 × |price_move_pct| if |price_move_pct| ≥ 3% else 0   # a big move on genuinely-mixed news (e.g. beat + guidance cut) IS the market resolving the ambiguity — do NOT zero it out
-  | unreactive-*   → max(2.0, 0.5 × |price_move_pct|)   # small but directionally relevant; scales up if a "flat" call still moved a few %
+  | unreactive-*   → 2.0 + 0.5 × |price_move_pct|   # base 2.0 + scaling: range 2.0–3.5; crosses the Phase 4.4 cluster threshold (3.0) at |move| ≥ 2%
   | aligned-*      → 0                         # already priced, no alpha
   | quiet/data-gap → 0
 ```
 
-The 1.5× weight on inverted deltas reflects trader intuition: price rejecting narrative is a stronger signal than price confirming it. Confirmed narrative is consensus; rejected narrative is asymmetric information. The `mixed` 0.5× rung (added 2026-07-09) closes a gap where a large-move mixed-earnings name — the single most common ambiguous-catalyst case — scored 0 and silently dropped out of the Trade Ideas ranking despite being highly actionable.
+The 1.5× weight on inverted deltas reflects trader intuition: price rejecting narrative is a stronger signal than price confirming it. Confirmed narrative is consensus; rejected narrative is asymmetric information. The `mixed` 0.5× rung (added 2026-07-09) closes a gap where a large-move mixed-earnings name — the single most common ambiguous-catalyst case — scored 0 and silently dropped out of the Trade Ideas ranking despite being highly actionable. The `unreactive-*` formula was changed from `max(2.0, 0.5×|move|)` to `2.0 + 0.5×|move|` (2026-07-09): with `flat` defined as |move| ≤ 3%, the old max() always evaluated to exactly 2.0 — dead code that made cluster-level unreactive signal (threshold 3.0) unreachable by construction.
 
 ### 4.2: Secondary signal — VAULT STANCE vs DELTA
 

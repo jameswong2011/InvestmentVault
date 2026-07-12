@@ -2,11 +2,12 @@
 publish: true
 date: 2026-04-15
 tags: [thesis, uber, UBER, consumer-digital, rideshare, delivery, autonomous-vehicles]
-status: monitoring
-conviction: medium
+status: active
+conviction: high
 sector: Mobility & Ridesharing
 ticker: UBER
 source: Multi-source synthesis (Claude, ChatGPT, Grok, web research)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # UBER — Uber Technologies
@@ -157,9 +158,9 @@ This orchestration position becomes more valuable — not less — in an AV futu
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$72 | Down ~30% from Oct 2025 high; -11.4% YTD |
-| Market Cap | ~$150B | 2.08B shares outstanding |
-| Forward P/E | ~21x | On FY2026E EPS ~$3.46 |
+| Stock Price | ~$75 | Down ~30% from Oct 2025 high; -11.4% YTD |
+| Market Cap | ~$152B | 2.08B shares outstanding |
+| Forward P/E | ~22x | On FY2026E EPS ~$3.46 |
 | EV/Revenue | ~3.5x | On ~$43B FY2026E revenue |
 | Adj. EBITDA Growth | +35% | FY2025 adj. EBITDA $8.7B |
 | Annual FCF | ~$9.8B | FY2025 actual; ~5% yield; Q4 record $2.8B |
@@ -227,9 +228,13 @@ This orchestration position becomes more valuable — not less — in an AV futu
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-8 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- "Mature utility" pricing REFUTED by fundamentals: Q1 (May 6) bookings $53.7B +25% (accelerating from +22%), EBITDA +33%, FCF $2.3B, Uber One crossed 50M (+50% YoY, >50% of bookings) THROUGH the March benefit cuts; Tesla robotaxi slipped a year (~20 unsupervised cars, no CA permit); insurance (CA UM/UIM cut to $60K/$300K from Jan 1) and US classification (Amsterdam appeal win, DOL employer-friendly pivot) tails both legislated smaller. The de-rate is pure AV-fear multiple compression (~21-22x fwd on 40%+ EPS growth; Melius's lone Sell rests entirely on AV).
+	- The supply-side falsifier moved AGAINST the thesis: Waymo ended the Phoenix partnership (May, public Jun 29), launched San Diego/Las Vegas/Tampa/Denver on Jul 8 ALL own-app, holds ~27% of SF rideshare in-zone, tracking to 1M weekly rides / 20+ cities by EOY — the "Android of autonomy" claim now rests almost entirely on Austin/Atlanta exclusivity, where YipitData's ~20%-of-Austin-Uber-rides-are-Waymo is the strongest confirming datapoint that aggregation adds value.
+	- Insight #4 (small targeted M&A) REFUTED by behavior: Uber is pursuing a FULL Delivery Hero takeover (€33/share ~€10-12B, stake built to 36.83%, Europe organic expansion paused) — its largest deal ever, redirecting the buyback capacity the Bull Case leans on. Also drifting from pure asset-light: Lucid/Nuro expanded to 35,000+ vehicles / $500M invested, first Uber-native robotaxi late 2026.
+	- New watch metric: Q1 revenue +14% vs bookings +25% — the take-rate mix shift (AV rides ~20% take) is beginning to decouple revenue from bookings; this ratio is the AV-dilution tell. FTC Uber One suit advancing (MTD mostly denied, June).
+- **Disconfirming check** (evidence-updated 2026-07-10): single falsifying datapoint = Waymo launching its own app in Austin or Atlanta (or non-renewal of those exclusives) — converts partnership cooling into confirmed disintermediation; formalize it as the missing Conviction Trigger. Base rate (OTA-vs-suppliers analog): aggregators win while supply is fragmented — Booking thrived 15 years against direct-booking pushes, but Southwest never listed; Waymo at 20+ cities is the Southwest scenario forming, and Uber's counter is deliberately fragmenting AV supply across 30+ partners so no supplier gains hold-up power. Thesis file is materially stale (no Q1, no Phoenix split, no Delivery Hero). NO Conviction Triggers section.
 
 ## Related Research
 
@@ -253,3 +258,16 @@ This orchestration position becomes more valuable — not less — in an AV futu
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring, conviction high→medium.
+
+### 2026-07-10
+- Mental models pass: batch-8 evidence sweep populated ## Mental Models — fundamentals refute mature-utility pricing (bookings +25%, Uber One 50M) but Waymo exited Phoenix and launched 4 cities own-app; Delivery Hero takeover pursuit refutes the small-M&A insight — conviction unchanged (medium); formalize the Waymo-Austin/Atlanta-exclusivity trigger as the missing falsifier.
+
+### 2026-07-11
+- Status change: conviction medium → high — vault-wide multi-agent valuation scoreboard: ~19x fwd P/E / 6.4% FCF yield embeds low-teens deceleration versus delivered 21% bookings / 44% EPS growth; AV-disintermediation haircut partly earned (Waymo evidence hardened) but not fully priced. Snapshot: [[_Archive/Snapshots/UBER - Uber (pre-status 2026-07-11-063211)]]
+- Status change: monitoring → active — genuine emerging mispricing (V=6.5/10) warrants active pursuit. Snapshot: [[_Archive/Snapshots/UBER - Uber (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 0 material. Stock Price ~$72→~$75 (+3.5%); Market Cap ~$150B→~$152B (+1.2%); Forward P/E ~21x→~22x (+7.0%). Snapshot: [[_Archive/Snapshots/UBER - Uber (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers, second pass)
+- Numbers refresh: 0 metrics changed, 0 material. Re-fetch confirms Stock Price ~$75, Market Cap ~$152B, Forward P/E ~22x all unchanged from the run ~1hr ago. EV/Revenue left untouched (fetch_gap). Snapshot: [[_Archive/Snapshots/UBER - Uber (pre-numbers 20260712-184014)]]

@@ -3,17 +3,18 @@ publish: true
 date: 2026-04-21
 tags: [thesis, semiconductors, AMD]
 status: active
-conviction: high
+conviction: medium
 sector: Compute & AI Compute Accelerators
 ticker: AMD
 source: AMD Q4 2025 earnings (Feb 2026), MLPerf Inference v6.0 (Apr 1 2026), OpenAI 6GW deal (Oct 2025), Meta 6GW deal (Feb/Mar 2026)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # AMD - Advanced Micro Devices
 
 ## Summary
 
-AMD is the sole merchant full-stack alternative to Nvidia at a moment when every hyperscaler has concluded it cannot afford single-source GPU dependence. The OpenAI 6GW deal and Meta 6GW deal signed inside 5 months were not won on hardware merit — they were engineered by customers who needed a duopoly to restore pricing leverage against Nvidia. AMD traded 10% of its equity (OpenAI warrant at $0.01 over 160M shares) to lock itself in as the structural second source, converting a GPU supply contract into a decade-long capital alignment. At ~$453B market cap and 38–41x forward P/E the stock prices in flawless execution on the MI400/MI450/MI500 roadmap, continued EPYC share capture (41% Q2 2025 tracking toward parity with Intel), and ROCm reaching effective CUDA parity by H2 2026 — each individually plausible, the combination tight. The non-consensus case is that the hyperscaler-initiated diversification mandate is structurally mispriced as a cyclical market-share trade when it is actually a durable rewiring of AI infrastructure procurement. The bear case is that the OpenAI warrant is dilution, the MI400 is one generation behind Rubin, the ROCm asymptote is farther than disclosed, and the valuation embeds a second-source premium that vanishes the moment Nvidia cuts prices.
+AMD is the sole merchant full-stack alternative to Nvidia at a moment when every hyperscaler has concluded it cannot afford single-source GPU dependence. The OpenAI 6GW deal and Meta 6GW deal signed inside 5 months were not won on hardware merit — they were engineered by customers who needed a duopoly to restore pricing leverage against Nvidia. AMD traded 10% of its equity (OpenAI warrant at $0.01 over 160M shares) to lock itself in as the structural second source, converting a GPU supply contract into a decade-long capital alignment. At ~$910B market cap and ~75x forward P/E the stock has already re-rated past flawless-execution pricing into its own 2028 bull-case zone two years early, continued EPYC share capture (41% Q2 2025 tracking toward parity with Intel), and ROCm reaching effective CUDA parity by H2 2026 — each individually plausible, the combination tight. The non-consensus case is that the hyperscaler-initiated diversification mandate is structurally mispriced as a cyclical market-share trade when it is actually a durable rewiring of AI infrastructure procurement. The bear case is that the OpenAI warrant is dilution, the MI400 is one generation behind Rubin, the ROCm asymptote is farther than disclosed, and the valuation embeds a second-source premium that vanishes the moment Nvidia cuts prices.
 
 ## Key Non-consensus Insights
 
@@ -96,12 +97,12 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$453B | Price $278.39 (April 17, 2026), ~1.63B shares diluted pre-warrant |
+| Market Cap | ~$910B | Implied ~$560/share ($910B ÷ ~1.63B diluted shares); the $278.39 (Apr 17, 2026) basis is stale — next /numbers price pull will confirm |
 | EV/Revenue | ~13x | TTM revenue ~$32B (Q4 2025 run-rate annualized); forward ~$40B+ implies EV/Rev dropping toward 11x |
 | Revenue Growth | +34% YoY Q4 2025; +32% YoY Q1 2026 guided | Data Center +40%+ YoY; guided >60% CAGR 3–5 years |
-| Gross Margin | ~55% non-GAAP Q4 2025 | 45–55% client/embedded, 55–60% data center, 15–25% gaming drag |
-| FCF Yield | ~1.5% | Elevated capex for TSMC/HBM prepayments; OpenAI warrant dilution adds shadow cost |
-| Forward P/E | 38–41x | Sector median ~31x; 23% premium reflects AI growth but embeds execution |
+| Gross Margin | ~50% non-GAAP Q4 2025 | 45–55% client/embedded, 55–60% data center, 15–25% gaming drag |
+| FCF Yield | ~0.9% | Elevated capex for TSMC/HBM prepayments; OpenAI warrant dilution adds shadow cost |
+| Forward P/E | 75x | Sector median ~31x; 23% premium reflects AI growth but embeds execution |
 | AI Revenue Guidance | "Tens of billions" FY2027; $100B cumulative with hyperscaler bucket | OpenAI management framing, not formal guidance |
 | Data Center share of revenue | >50% | First quarter in AMD history |
 | Server CPU market share | 41% Q2 2025 | Tracking to parity with Intel by 2026 (Mercury Research) |
@@ -167,7 +168,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 **Position risks (thesis is right but stock goes down anyway)**:
 
-6. **Semi-cycle macro downturn**. All semiconductor stocks derate in recession; AMD's 38x P/E and beta to AI narrative amplify drawdowns.
+6. **Semi-cycle macro downturn**. All semiconductor stocks derate in recession; AMD's ~75x P/E and beta to AI narrative amplify drawdowns — the multiple has already consumed the bull case, leaving no cushion for an MI450-vs-Rubin miss.
 7. **Hyperscaler capex reset**. If one or more hyperscalers publicly cut AI capex (2022 Meta precedent), all AI-exposed stocks sell off; AMD would trade down even if its share gain story is intact.
 8. **Taiwan geopolitical shock**. MI400 series is 100% TSMC Taiwan. Any blockade/invasion signal hits AMD as hard as NVDA.
 9. **Warrant vesting mechanics create volatility at each tranche**. Share count increments + announcement dilution cause headline overhangs at each milestone.
@@ -183,9 +184,14 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-3 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (expectations, base rates) · [[Industry - Semiconductors]] (#13, #14) · [[Lens - Value Layer Monopoly]] (§4)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#14 second-source reclassification* — CONFIRMED running ahead of thesis: Q1 $10.3B (+38%, beat), DC $5.8B (+57%), record **46.2% server-revenue share** (Mercury Q1), AMD passed Intel in total DC revenue for the first time; Meta added 6GW custom-MI450 (Feb 24) days after expanding its Nvidia commitment — the dual-track procurement mechanic of Insight #1, live. No renegotiation, no ROCm defection, EPYC-share LOW trigger strongly refuted.
+	- *Expectations inversion — the multiple consumed the bull case*: re-rated 38–41x → ~59–80x fwd; the stock ($584 peak) entered the thesis's own 2028 bull target zone two years early, and the re-rate was **disproportionately the CPU/agentic story** (Su's ">$120B server-CPU TAM by 2030"; Wells Fargo/Cantor/UBS all citing CPU, not GPU). The unproven leg — MI450 vs Rubin — is therefore the marginal variable at maximum embedded expectations. HIGH trigger: **0 of 3 met**, all resolve H2 2026 (MLPerf Training vs Rubin; Llama-on-ROCm confirmation; 3rd hyperscaler ≥2GW by end-Q3 — Oracle's 50K-MI450 deal is ~10x too small). Proxy evidence mildly positive: MLPerf v6.0 MI355X within 5–6% of B200 single-node, but B300 21–26% faster and AMD skipped the MoE benchmarks.
+	- *Dilution correction*: combined OpenAI+Meta warrants = up to **320M shares / ~16.7% max dilution** — 2x the thesis's single-warrant model; first price-milestone tranches near-money at the $584 touch. Rebuild the per-share math before acting on any trigger.
+	- *Memoryflation crossover* — upgraded from "modest cost headwind" to guided P&L hit: ~20% H2 gaming revenue decline + Q2 consumer decline on memory costs. Cuts against Insight #5's clean "HBM scarcity favors AMD" — DRAM inflation taxes the ~35% client/gaming book while helping DC.
+	- *ASIC denominator compression* — pressure rising on the merchant-GPU TAM: custom ASIC +45% 2026, Google 4-partner inference chain, DeepSeek in-house chip (Jul 8); the thesis's "ROCm work is free to ASIC vendors" asymmetry remains unhedged. Arm crossed ~50% of hyperscaler CPU share — an erosion asterisk under the $120B x86 TAM narrative consensus is ignoring.
+- **Disconfirming check** (evidence-updated): fundamentals ran ahead of thesis while price ran ahead of fundamentals — at ~59–80x with 0/3 HIGH legs confirmed, the position is pre-paying for benchmark results that don't exist yet. Base rate: challengers reaching training parity with the incumbent's next generation on the first "no asterisk" attempt are rare; Forrest Norrod's claim is a claim. Single falsifiers, dated: **Advancing AI keynote Jul 22–23** (Helios positioning, possible 3rd-customer news), Q2 print Aug 4, fall MLPerf. -12% in the July rout (macro, not AMD-specific). Batch flag: NVDA and AMD are now opposite expectation trades on the same H2-2026 benchmark event — NVDA at ~21x priced for share loss, AMD at ~70x priced for share gain; the MLPerf print arbitrates both.
 
 ## Related Research
 
@@ -265,3 +271,16 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-07-09
 - Sector re-scoped: frontmatter `sector:` aligned to [[Sectors/Compute & AI Compute Accelerators]] (prior value resolved to no sector note, so sector propagation was silently skipped) — conviction unchanged; metadata hygiene per [[_Archive/Docs/2026-07-09 - Skills Audit Report]].
+- Mental models pass: batch-3 evidence sweep populated ## Mental Models — fundamentals ran ahead (46.2% server share, DC crossover vs Intel, Meta 6GW) but multiple consumed the 2028 bull target 2yrs early (38-41x → 59-80x) on the CPU story while the GPU proof (MI450 vs Rubin) stays unproven; HIGH 0/3, all resolve H2-26; warrants = 16.7% max dilution (2x thesis model) — conviction unchanged; Advancing AI Jul 22-23, Q2 Aug 4.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: stock sits inside the thesis's own 2028 bull target two years early at 59-80x fwd with 0/3 HIGH triggers met; the unproven MI450-vs-Rubin leg is the marginal variable at maximum embedded expectations. Snapshot: [[_Archive/Snapshots/AMD - Advanced Micro Devices (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 4 metrics updated, 3 material. Forward P/E 38-41x→75x (multiple nearly doubled — confirms Mental Models' "multiple consumed the bull case" read). Revenue Growth left unedited (unchanged after rounding). Snapshot: [[_Archive/Snapshots/AMD - Advanced Micro Devices (pre-numbers 20260712-174116)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — all 5 mapped rows (Market Cap, Revenue Growth, Gross Margin, FCF Yield, Forward P/E) render identical to prior refresh after rounding; data confirmed stable intraday. Snapshot: [[_Archive/Snapshots/AMD - Advanced Micro Devices (pre-numbers 20260712-184120)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: market cap / fwd P/E $453B/38-41x → $910B/75x across Summary, Risks #6, Key Metrics Notes — stock has re-rated into its own 2028 bull-case zone two years early. Snapshot: [[_Archive/Snapshots/AMD - Advanced Micro Devices (pre-deepen-metrics-sync 2026-07-12-203456)]]

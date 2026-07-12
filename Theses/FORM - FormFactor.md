@@ -7,6 +7,7 @@ conviction: medium
 sector: Semiconductor Capital Equipment
 ticker: FORM
 source: https://www.formfactor.com
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # FORM - FormFactor
@@ -103,11 +104,11 @@ The probe-card market is ~$3B globally and consolidates around three pure-play v
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$3.8B | At ~$48/share (April 2026); has ranged $35-$58 LTM |
+| Market Cap | ~$9.2B | At ~$48/share (April 2026); has ranged $35-$58 LTM |
 | EV/Revenue | ~5.0x LTM / ~3.6x FY27E | Premium to historical 2-3x; reflects HBM growth premium |
-| Revenue Growth | +28% LTM, consensus +24% FY26E | HBM4 ramp + foundry recovery driving |
+| Revenue Growth | +3% LTM, consensus +24% FY26E | HBM4 ramp + foundry recovery driving |
 | Gross Margin | ~42% LTM, target 45% LT | HBM mix + scale leverage; 200bps short of historical peak |
-| FCF Yield | ~2.0% LTM | Light by historical standards; capex cycle elevated for HBM4 capacity |
+| FCF Yield | ~0.4% LTM | Light by historical standards; capex cycle elevated for HBM4 capacity |
 | Trailing P/E | ~130x | High; consensus FY27 EPS ~$3.50 implies ~14x forward |
 | Net Cash | ~$300M | No debt; capacity for $400-500M tuck-in M&A |
 | Top Customer Concentration | ~22.9% (Samsung) | Top 3 (SK Hynix + Samsung + Micron) >50% |
@@ -162,9 +163,14 @@ Q1 2026 (today's earnings) prints in-line, not blow-out — HBM4 ramp guidance i
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-2 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (expectations, base rates) · [[Industry - Semiconductors]] (#2, #13, #18) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#2 qualification-gate — downgrade from monopoly to oligopoly gate*: HBM4 is lifting the whole probe-card set, not just FORM — MJC guided +26% on HBM4/HBM4E (+17% stock pop), Korea Instrument in Korean-memory multi-stack programs, Technoprobe targeting 10–20% of revenue from HBM by 2028 (currently ~0%). FORM leads (~30% share, SK Hynix now 29.5% of revenue — overweight the HBM winner; NVIDIA >10% direct customer for the first time), but Insight #2's "moat not risk" framing should read *oligopoly gate with requalification friction*.
+	- *Consumable-intensity insight (#1) — revenue confirmed, mechanism untested*: DRAM probe cards +69.5% YoY (record $82.9M), GM re-rated to 49% non-GAAP — but management attributes GM gains to COGS/yield, explicitly NOT price ("pricing really is not a driver"). The 60–80% revenue-per-wafer *pricing* claim — the thesis's single mispriced variable — remains undecomposed (price vs volume). That decomposition is the cleanest falsifier and still unavailable.
+	- *Trigger scoreboard*: HIGH legs (a) MET (+69.5% > 45% bar; all three DRAM makers NVDA-certified for HBM4 Jun 5), (b) MET (TPRO memory ≈ 0%), (c) FAILED — no buyback; cash prioritized to the Farmers Branch capacity ramp, which reframes leg (c) as capacity investment, not signaling. LOW legs all REFUTED (GM 49%, no pricing pushback). CLOSE price leg UNUSABLE — thesis carries a ~$48 price basis that never matched reality (~$137–155 at creation); **`/numbers FORM` + trigger re-anchor required before the Jul 29 print**.
+	- *#13/#18 — the live classification fight*: fundamentals diverging UP (record Q1, Q2 guided above street, Investor Day model doubled to $1.6B/$5 EPS by 2030) while price diverged DOWN (-32% from June high to ~$105 on memory-complex contagion + highest-multiple-in-group unwind; zero company-specific news). Market is pricing semi-cyclical; the evidence argues structural consumable. This is the batch's cleanest cycle-vs-structural decomposition case.
+	- *VLM / CPO leg* — Triton co-developed with Advantest + Tokyo Electron, CPO revenue at high end of $10–20M, Keystone tuck-in — Insight #4's consolidation call directionally right at 1/20th the predicted scale.
+- **Disconfirming check** (evidence-updated): base rate on the company's own 2030 model ($5 EPS) — semis management long-range models hit <50% of the time; at ~$105 the stock is 21x that target, so the model is partially priced even after the drawdown. Capacity (Farmers Branch, ramping through 2027) is the binding constraint — growth is supply-capped near term regardless of demand evidence. Single falsifiers: TPRO HBM/CoWoS-L design win (LOW leg 2, clock running); hyperscaler capex crossing above operating cash flow ~Q3 2026 (Epoch AI) turning the funding regime; Jul 29 Q2 print (DRAM continuation + 2027 CPO sizing). Batch flag: shares the HBM-test-intensity bet with Advantest/TER — one memory-test-cycle exposure across three names.
 
 ## Related Research
 
@@ -193,3 +199,12 @@ Q1 2026 (today's earnings) prints in-line, not blow-out — HBM4 ramp guidance i
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis names FormFactor among E/O photonic-test positioners (optical metrology probe) — corroborates §Bull Case CPO/optical-test-consolidation driver + §Risk #4. Net-new TAM not yet sized. Conviction unchanged (medium).
+
+### 2026-07-09
+- Mental models pass: batch-2 evidence sweep populated ## Mental Models — HIGH legs 2/3 met (DRAM +69.5%, TPRO memory ~0%; buyback leg failed → Farmers Branch capacity), LOW legs refuted (GM 49%), #2 downgraded monopoly→oligopoly gate (MJC +26%); price-anchored triggers unusable on a ~$48 basis that never matched reality — /numbers FORM required — conviction unchanged (medium); Jul 29 print.
+
+### 2026-07-12
+- Numbers refresh: 4 metrics updated, 3 material. Market Cap ~$3.8B→~$9.2B (+141%, material); Revenue Growth +28%→+3% LTM (material); FCF Yield ~2.0%→~0.4% LTM (material); Gross Margin ~42%→~42% LTM (unchanged, not material). Trailing P/E and EV/Revenue remain fetch_gap — left unedited. Snapshot: [[_Archive/Snapshots/FORM - FormFactor (pre-numbers 20260712-173653)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap, Revenue Growth, Gross Margin, and FCF Yield all round to the same displayed values as the prior pass. Trailing P/E and EV/Revenue remain fetch_gap. Snapshot: [[_Archive/Snapshots/FORM - FormFactor (pre-numbers 20260712-183936)]]

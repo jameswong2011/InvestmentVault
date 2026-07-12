@@ -6,6 +6,7 @@ status: monitoring
 conviction: medium
 sector: Mobile Advertising Technology
 ticker: APP
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!tip] 2026-04-28 → Addressed 2026-04-28
 > **Prompt:** *Summarise the short case as compiled from short seller reports.*
@@ -16,13 +17,13 @@ ticker: APP
 
 ## Summary
 
-~$411 (down ~45% from ATH $745), FY2025 revenue $5.48B (+70%), 82% EBITDA margins, $4B+ FCF — pure-play AI advertising infrastructure after shedding mobile gaming. Three unresolved qualitative questions define the investment case: (1) whether AXON's advantage derives from superior AI or data practices regulators may curtail, (2) whether AppLovin can replicate gaming dominance in e-commerce advertising where incrementality remains contested, and (3) whether the competitive vacuum from Unity's 2022-2024 collapse is permanent or a temporary gift eroding as Unity's Vector, CloudX, and Meta's iOS recovery each mature. The stock embeds regulatory and competitive discount — genuine asymmetry if the SEC probe resolves benignly and e-commerce self-serve scales.
+~$507 (down ~32% from ATH $745), FY2025 revenue $5.48B (+70%), 82% EBITDA margins, $4B+ FCF — pure-play AI advertising infrastructure after shedding mobile gaming. Three unresolved qualitative questions define the investment case: (1) whether AXON's advantage derives from superior AI or data practices regulators may curtail, (2) whether AppLovin can replicate gaming dominance in e-commerce advertising where incrementality remains contested, and (3) whether the competitive vacuum from Unity's 2022-2024 collapse is permanent or a temporary gift eroding as Unity's Vector, CloudX, and Meta's iOS recovery each mature. The stock embeds regulatory and competitive discount — genuine asymmetry if the SEC probe resolves benignly and e-commerce self-serve scales.
 
 ## Key Non-consensus Insights
 
 - **The competitive vacuum is narrowing, but the MoPub-created information asymmetry moat is more durable than the AI narrative suggests.** Unity Vector at 53% growth (on pace for $1B+ in 2026), CloudX launched with seven bidders, Moloco certified on MAX — uncontested runway is ending. But MoPub's 2022 shutdown gave AppLovin structural visibility into billions of daily impressions *including competitor bid prices and clearing rates*. Competitors compete *within* its ecosystem. 618 employees processing $11B in annual ad spend ($8.9M revenue/employee).
 
-- **The SEC investigation is being mispriced as binary when the actual risk is operational, not existential.** Probe centers on potential "persistent identity graphs" violating platform TOS — not fraud or financial misstatement. Negative outcome likely means modified data practices and fines, not destruction of AXON's core capability. SEC language about "fabricating evidence" and "influencing witness testimony" suggests evidence-gathering, not enforcement-ready. ~45% drawdown already embeds significant regulatory discount.
+- **The SEC investigation is being mispriced as binary when the actual risk is operational, not existential.** Probe centers on potential "persistent identity graphs" violating platform TOS — not fraud or financial misstatement. Negative outcome likely means modified data practices and fines, not destruction of AXON's core capability. SEC language about "fabricating evidence" and "influencing witness testimony" suggests evidence-gathering, not enforcement-ready. ~32% drawdown still embeds a meaningful regulatory discount — though roughly a third less than at the ~45% level flagged at inception.
 
 - **E-commerce incrementality is the thesis-determining variable, and the evidence is genuinely mixed.** Muddy Waters claims 25-35% truly incremental; AppLovin claims near-100%. Independent results: Immi 11.3% incremental Shopify lift with 46% lower CPA; Digital Position found AppLovin outperformed Meta's ROI in ~half of tests; Jones Road Beauty pulled back after incrementality tests showed losses; Cann found zero measurable performance in controlled geo holdout testing. AXON performs for certain categories/spend levels while underdelivering for others.
 
@@ -112,7 +113,7 @@ The short case rests on four interlocking claims compiled across Muddy Waters (M
 | Dimension | Short-case strength | Counter-weight |
 |---|---|---|
 | Incrementality | Mixed third-party data partially validates (Cann, Jones Road) | Mixed third-party data partially refutes (Immi, Digital Position) |
-| TOS violation / SEC | SEC language suggests serious investigation; Muddy Waters' specific data-practice claims map onto SEC focus area | No charges filed; ~45% drawdown from ATH already embeds regulatory discount |
+| TOS violation / SEC | SEC language suggests serious investigation; Muddy Waters' specific data-practice claims map onto SEC focus area | No charges filed; ~32% drawdown from ATH still embeds a regulatory discount (narrowed from ~45%) |
 | Advertiser churn | Specific 23% figure with documented methodology | Company contests; no third-party validation either way |
 | Governance | Culper extant; recurrent 15–20% drawdown-recovery cycle on each new report | CapitalWatch retracted; Quinn Emanuel investigating Muddy Waters |
 | Volatility regime | Recurring drawdowns create momentum-sensitive capital exit | Each report partially recovers — favors long-duration holders |
@@ -123,9 +124,9 @@ The thesis-determining variable is not whether short sellers continue publishing
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$411 | Down ~45% from ATH $745 (Sep 2025); 52wk range $222–$746 |
-| Market Cap | ~$135B | |
-| Forward P/E | ~28–30x | On FY2026E EPS ~$14–15 |
+| Stock Price | ~$507 | Down ~32% from ATH $745 (Sep 2025); 52wk range $222–$746 |
+| Market Cap | ~$170B | |
+| Forward P/E | ~31x | On FY2026E EPS ~$14–15 |
 | PEG Ratio | ~0.51 | Undervalued relative to growth rate |
 | FY2025 Revenue | $5.48B | +70% YoY |
 | FY2025 Net Income | $3.33B | +111% YoY |
@@ -185,10 +186,13 @@ The thesis-determining variable is not whether short sellers continue publishing
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-7 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Upgrade trigger "e-commerce GA" FIRED on schedule: June 2026 global self-serve opening confirmed on the May 6 Q1 call (referral requirement + $10M-GMV floor removed); Q1 revenue $1.84B +59% (beat), record 85% EBITDA margin, March e-comm spend +25% vs January, April a record month; management frames e-comm at "10 quarters behind gaming" on the AXON curve. Deceleration risk REFUTED for now (Q2 guide 52-55%).
+	- The thesis-determining variable is CONVERGING THE WRONG WAY: Haus geo-holdout win rate decayed 63-85% (2025 quarters) → 53% (Q1 2026) → 50% (Q2 2026) — "a coin flip" as budgets scale; a mean-reversion-at-scale mechanism distinct from the binary Muddy-Waters-vs-management framing. Counter: testers raised spend >50% vs ~20% median; management claims ~100% 30-day retention (self-reported, unverified).
+	- SEC probe (upgrade trigger #1) STATIC — "active and ongoing" per Feb 20 Bloomberg, zero news since. Meta demonstrably chose NOT to contest non-IDFA iOS inventory (Edgewater, May 26; APP +10% on the note) — threat deferred, not dead. Competitive vacuum holding: CloudX GA'd, Liftoff IPO'd (June — new funded rival), Unity Vector grew, yet "none actually impacted AppLovin's business"; MAX ~60% mediation share.
+	- VLM §1B — an ad platform sustaining 85% EBITDA margins is without precedent (Meta ~50%, Google ~40%): either a genuine MAX-tollbooth + AXON layer monopoly or an extraction rate that the self-serve long tail, Haus-style measurement, and regulators will each compress. New bear inputs: June insider cluster (Foroughi ~$25M sold, zero TTM buys) and agentic-commerce zero-click threat to the DPA funnel (unmodeled; the unconfirmed OpenAI tie-up would flip it to opportunity).
+- **Disconfirming check** (evidence-updated 2026-07-10): the live falsification event is the June GA cohort's first measured quarter — the Q2 print (~early Aug 2026): if the open-access long tail confirms the Haus 50% coin-flip pattern, the "curated cohort" excuse is gone and the incrementality bear wins; if self-serve ARPU holds >$70K with retention, the layer-monopoly read wins. Base rate: black-box model businesses under short-seller attack + open SEC enforcement rarely exit fully vindicated even when headline fraud claims fail. Framework gaps: NO Conviction Triggers section (falsifiers live in a Log line); Key Metrics badly stale ($411 basis vs ~$528, and the watchlist NTM P/E ~64 conflicts with web-sourced ~33 — reconcile the denominator); one FRESH callout (2026-04-28, AXON gaming→e-comm transferability) remains open — the Haus dataset + "10 quarters behind gaming" disclosure now provide the raw material to address it.
 ## Related Research
 
 - [[Research/2026-02-26 - APP - AppLovin AI Ad Platform Deep Dive]] — Grok deep-dive: business model, Axon 2.0, competitive dynamics, investor sentiment
@@ -229,3 +233,15 @@ The thesis-determining variable is not whether short sellers continue publishing
 
 ### 2026-05-26
 - [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]]: FTC $930K deception settlement signals active ad-tech data-claim scrutiny — adjacent to APP's open SEC data-practice probe but legally inverse (Cox fabricated a capability; APP allegation is improper sourcing). Conviction unchanged (medium); no map onto AXON sourcing claims.
+
+### 2026-07-10
+- Mental models pass: batch-7 evidence sweep populated ## Mental Models — e-comm GA fired on schedule (June), Q1 record 85% EBITDA margin, Meta abstained from non-IDFA; but Haus incrementality win-rate decayed to 50% coin-flip as spend scales and Foroughi sold ~$25M in June — conviction unchanged (medium); Q2 print (~Aug) = first measured GA cohort, the live falsification event; fresh 2026-04-28 callout still open.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 1 material. Market cap ~$135B→~$170B (+26.2%, material); stock price ~$411→~$507 (+23.4%); forward P/E ~28-30x→~31x. Snapshot: [[_Archive/Snapshots/APP - AppLovin (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed, 0 material. Re-fetch confirms all mapped values (stock ~$507, mkt cap ~$170B, fwd P/E ~31x, FY2025 revenue $5.48B) unchanged from the run ~1hr ago. Snapshot: [[_Archive/Snapshots/APP - AppLovin (pre-numbers 20260712-184014)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: 'down ~45% from ATH'→'~32%' ($411→$507) across Summary, Insights, Industry Context short-seller table, Stock-Price Notes. Snapshot: [[_Archive/Snapshots/APP - AppLovin (pre-deepen-metrics-sync 2026-07-12-203456)]]

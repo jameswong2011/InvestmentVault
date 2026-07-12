@@ -28,7 +28,7 @@ Probe `.rename_incomplete.TICKER` per Procedure 2. If present, hard-block per co
 
 ### 1.0: Parallel probe batch (§9)
 
-Steps 0.2, 1.1, 1.2 Signals A–D, and 1.3 have **no ordering dependencies** — all are read-only probes against vault state that is stable under the ticker lock acquired in 0.1. Emit all of them as independent tool calls in a **single tool-call block** (one message, multiple parallel invocations).
+Steps 0.2, 1.1, 1.2 Signals A–E, and 1.3 have **no ordering dependencies** — all are read-only probes against vault state that is stable under the ticker lock acquired in 0.1. Emit all of them as independent tool calls in a **single tool-call block** (one message, multiple parallel invocations).
 
 The seven probes:
 
@@ -61,15 +61,20 @@ The seven probes:
 
 ### 1.2: Archived thesis check (MULTI-SIGNAL — §2)
 
-Tier 3 confirmation gate. Run ALL four signals; take UNION.
+Tier 3 confirmation gate. Run ALL five signals; take UNION.
 
-**Signal A — Filename glob**: `Glob _Archive/TICKER - *.md` (non-recursive — `_Archive/Snapshots/` excluded).
+**Signal A — Filename glob (RECURSIVE)**: `Glob _Archive/**/TICKER - *.md` — closures land in `_Archive/Theses/`, not `_Archive/` root, so the old non-recursive `_Archive/TICKER - *.md` matched zero archived theses. Exclude only `_Archive/Snapshots/` (pre-rename/pre-edit copies, not canonical archives) when parsing matches.
 
-**Signal B — Frontmatter ticker**: grep `_Archive/*.md` (non-recursive) for `^ticker: TICKER$` in frontmatter. Catches renamed-then-archived.
+**Signal B — Frontmatter ticker (RECURSIVE + list-form + archived status)**: grep `_Archive/` recursively (excluding `Snapshots/`) for the ticker in the `ticker:` frontmatter field, matching BOTH scalar (`ticker: KLAC`) AND YAML-list (`ticker: [KLAC, AMAT, LRCX, ...]`) forms, and accept `status: archived` as well as `status: closed`. The real archived thesis `_Archive/Theses/SEMICAP - Semiconductor Capital Equipment.md` carries `ticker: [KLAC, AMAT, LRCX, ASMI, TEL, BESI]` + `status: archived` — the old `^ticker: TICKER$` scalar-anchored grep over `_Archive/*.md` root missed it on every axis. Executable form:
+```bash
+grep -rlE "^ticker:( *\[?[^]]*\b)?TICKER\b" _Archive --include='*.md' | grep -v '/Snapshots/'
+```
 
 **Signal C — Archive-registry lookup**: check `.archive_ticker_registry.md` at vault root (auto-maintained by `/status` Step 7.5b and `/prune` Stage 4). Each line: `TICKER|archived_filename|YYYY-MM-DD`. Line starting `TICKER|` → extract referenced filename, verify still in `_Archive/`.
 
 **Signal D — Snapshot trail**: grep `_Archive/Snapshots/*.md` frontmatter for `snapshot_of:` containing `Theses/TICKER -`. Historical trace even if archived under different filename.
+
+**Signal E — Archive tags**: grep `_Archive/` recursively (excluding `Snapshots/`) for the ticker in a `tags:` list (`grep -rlE "^tags:.*\bTICKER\b" _Archive --include='*.md'`). A multi-ticker archived thesis (e.g. a sector-basket closure) carries each constituent in `tags:` even when the filename is a basket name — the SEMICAP note tags `KLAC`, so `/thesis KLAC` catches it here even if Signals A/B somehow drift.
 
 Dedup across signals. Per unique archived file, collect: filename, `conviction:` at closure, last Log entry (1-line closure rationale), `status:` (expected `closed`), archive date.
 

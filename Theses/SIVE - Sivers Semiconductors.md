@@ -2,11 +2,13 @@
 publish: true
 date: 2026-05-22
 tags: [thesis, semiconductors, photonics, InP, CPO, mmWave, small-cap, SIVE]
-status: active
+status: monitoring
 conviction: low
 sector: Optical Networking & Photonics
 ticker: SIVE
+fmp_symbol: SIVE.ST
 source: Multi-source synthesis (Sivers press releases, semiconductor-today, Morningstar, Stockanalysis, Simply Wall Street, ad-hoc-news, semiconductor-today, GlobalEquityBriefing, semianalysis, web research May 2026)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # SIVE — Sivers Semiconductors AB
@@ -117,7 +119,7 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | SEK ~17.5B (~$1.65B USD) | 59.05 SEK × 296.53M shares (May 2026 — Morningstar). Mcap ~SEK 14-17B band depending on intraday volatility. |
+| Market Cap | SEK ~13.6B (~$1.65B USD) | 59.05 SEK × 296.53M shares (May 2026 — Morningstar). Mcap ~SEK 14-17B band depending on intraday volatility. |
 | EV/Revenue (TTM) | ~55-60x | EV ≈ SEK 17.6B (mcap less SEK 43.5M YE25 cash less SEK 125M raise plus convertible debt ~SEK 200M est.) / SEK 306.6M FY25 restated revenue |
 | Revenue Growth (FY25) | +25% YoY | SEK 306.6M restated (from SEK 304.1M originally reported, PCAOB upgrade). Opportunity pipeline +64% to $453M (~SEK 4.7B). |
 | Gross Margin | ~35-45% blended (est.) | No clean disclosure; Photonics product est. 50%+ at scale, Wireless break-even to dilutive. PCAOB restatement adjusted inventory valuations downward. |
@@ -188,10 +190,14 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-5 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- All three HIGH legs failing: (a) Photonics revenue REFUTED — Q1 2026 group sales SEK 61.9M -22% YoY with Photonics -32% (needs ~SEK 50M/qtr Photonics for the SEK 200M run-rate bar); (b) hyperscaler-named CPO ELS qualification — NO DATA (nearest proxy: GlobalFoundries SCALE reference-design integration 2026-06-02, foundry-level not hyperscaler PO); (c) Nasdaq dual-listing REFUTED on trajectory — the share-authorization resolution was withdrawn from the AGM agenda 2026-06-15, no timetable given.
+	- CLOSE (e) HALF-FIRED: Q1 2026 was the first YoY Photonics decline inside the capacity-binding window; the Q2 report (~Aug 2026) mechanically completes or voids this CLOSE trigger — a pre-committed decision point.
+	- NEW unmodeled attack — Ningi Research short report 2026-06-01: alleges ≥SEK 97M (~31%) of FY25 revenue improperly recognized (pre-shipment booking + CHIPS grants as commercial revenue); partially corroborated by the auditor's independent going-concern qualification and a board exodus (vice-chair + two founders resigned pre-AGM); no company rebuttal in 5+ weeks; two US class-action investigations opened; short interest <2%→17%.
+	- Semis [#1]/VLM overflow thesis — window compressing from the top: Lumentum guided meaningful CPO revenue exiting CY2026 with multi-hundred-million-dollar POs for H1 2027 delivery, and Coherent demoed CPO with its own ELS — Tier-1 capacity is arriving faster than the thesis's 2028 window assumed. Healthiest leg: LiDAR ramp reconfirmed Q4 2026; Aeva won NVIDIA DRIVE Hyperion reference + exclusive European OEM contract.
+	- Solvency deferred: SEK 700M oversubscribed directed issue (2026-07-01, 9.7% discount) + $12M convert-to-equity swap removed the 2026 cash cliff at ~10% cumulative dilution — below the 25% CLOSE bar.
+- **Disconfirming check** (evidence-updated 2026-07-10): the single most important falsifying datapoint is the Ningi revenue-recognition allegation — it attacks the SEK 306.6M revenue base under the entire 55x-multiple structure, and the stock (-55-60% from the Jun 3 SEK 110 peak, roughly half company-specific half the Jun 25–Jul 8 semis purge) has NOT yet fully priced a Ningi-is-right scenario. Base rate hostile: pre-profitability optics micro-caps facing simultaneous short-seller accounting allegations + going-concern qualification + regulator probes + class actions rarely resolve in equity holders' favor. Dated overhang: insider lock-up expires 2026-07-16. Three of five CLOSE legs have moved adversely — the framework points toward CLOSE-watch rather than mere LOW; Q2 report in August is the decision point.
 ## Related Research
 
 **Sector / Cluster**:
@@ -232,3 +238,15 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis independently confirms Sivers→Ayar SuperNova ELS relationship (third-party validation of the overflow-ELS thesis), but frames CW DFB as commoditized (Shijia added to threat list) — sharpens the ELS-contestability bear without moving the binary partnership-conversion thesis. Conviction unchanged (low).
+
+### 2026-07-10
+- Mental models pass: batch-5 evidence sweep populated ## Mental Models — all three HIGH legs failing, CLOSE (e) half-fired (Photonics -32% YoY Q1), Ningi accounting allegations + auditor going-concern doubt unrebutted 5+ weeks — conviction unchanged (low) but framework points to CLOSE-watch; Q2 report (Aug) completes/voids CLOSE (e); insider lock-up expires 2026-07-16.
+
+### 2026-07-11
+- Status change: active → monitoring — vault-wide multi-agent valuation scoreboard: hardest-evidence bear case in the vault — auditor going-concern qualification, Ningi's unrebutted allegation that 31% of FY25 revenue was improperly recognized, and the overflow thesis's own Photonics segment declining -32% YoY inside its capacity-binding window. Insider lockup expires 2026-07-16; moving off active pursuit pending Q2 print and lockup resolution. Snapshot: [[_Archive/Snapshots/SIVE - Sivers Semiconductors (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 0 metrics updated. Market Cap left unedited — FMP-resolved value ($1.45M) implausible vs current ~SEK 17.5B base, likely ticker/currency mismatch (format uncertain). EV/Revenue, Gross Margin, FCF Yield remain fetch_gap; Revenue Growth is a custom metric. No material deltas applied. Snapshot: [[_Archive/Snapshots/SIVE - Sivers Semiconductors (pre-numbers 20260712-173653)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 1 metric updated (0 FMP, 1 web: Market Cap [SEK leg] via Yahoo Finance/TradingView search aggregate, consistent with an independent same-session direct FMP SIVE.ST check), 0 material. Confirmed root cause: bare "SIVE" resolves to an unrelated US penny stock (Silver Verde May Mining) on FMP — Step 4b's name-mismatch trigger caught this. Market Cap SEK leg 17.5B→13.6B (-22.3%, below materiality threshold but directionally consistent with the stock's post-Ningi-allegation decline already tracked in Mental Models). USD leg ($1.65B) left stale — no live FX rate. EV/Revenue: not found via search, left as fetch_gap. Recommend adding `fmp_symbol: SIVE.ST` to frontmatter as the permanent fix. Snapshot: [[_Archive/Snapshots/SIVE - Sivers Semiconductors (pre-numbers 20260712-183640)]]

@@ -7,6 +7,7 @@ conviction: medium
 sector: Telecommunications Services
 ticker: SKM
 source: https://www.anthropic.com/news/skt-partnership-announcement
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 ## Summary
@@ -141,7 +142,7 @@ Korean telecom trio collectively trades at a 50%+ EV/EBITDA discount to global c
 | Capex (FY25) | ₩2.13T (-11.1%) | AIDC-weighted; declining wireless capex |
 | Cash (year-end 2025) | ₩772B (~$580M) | Heavy capital outlay + debt repayment |
 | Net Debt | ~₩5.5T (~$3.9B) | Total liab ₩13.16T less cash; modest leverage |
-| Dividend Yield | 4.3-4.5% forward | $0.85/ADR; ₩1,660/common share 2025 |
+| Dividend Yield | 1.9% forward | $0.85/ADR; ₩1,660/common share 2025 |
 | Dividend Payout Ratio | 86.6% (2025) | Inflated by depressed denominator; normalizes ~50% on FY26 OP |
 | Shareholder Return Policy | ≥50% adj. profit (FY24-26) | Cash + buyback combined |
 | Anthropic Stake | ~0.3% diluted | Cost basis ₩~1.3T; Yuanta mark ₩3.5T ($2.4B) |
@@ -247,10 +248,14 @@ Specific drivers:
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-5 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Event logic VALIDATED, framework broken elsewhere: Anthropic up-rounded to $965B post-money (Series H, May 2026; 2.5x the Feb $380B), confidentially filed its S-1 on 2026-06-01 (listing as early as Oct 2026), NPM secondary marks $1.11T — LOW #1 (down round/delay) REFUTED. H1 FY26 OP pacing ~₩1.06T vs the ₩900B HIGH bar (Q1 ₩537.6B actual + Q2 consensus ₩527.1B). SKT participated in Series H, ADDING to the stake (2026-06-10) — now ~$2.6-2.9B ≈ 22-25% of the $11.8B market cap, exceeding the thesis's 16-22% band.
+	- CLOSE-on-monetization NEAR-MISS exposes trigger design flaw: ADR hit $47.18 on 2026-06-02 (within 6% of the $50 leg) the day after the S-1 filing, then round-tripped -34% to $31 — the compound condition (requires IPO *pricing* ≥$700B) blocked acting on a 95%-realized outcome while status was `monitoring`.
+	- Capital allocation is the falsifier that fired the WRONG way (Generalist [G-8]): 15GW AI-datacenter master plan announced 2026-07-04 (board-approved Jun 29, ~₩70T-per-GW reference vs ~₩28T EV, funding "under review"); ₩738.4B committed to SK hynix's US AI hub 2026-06-25/26 — an intra-group transfer that directly breaks Insight #2's chaebol-unwind premise; dividend quietly canceled Q3+Q4 2025 and rebased to ~1.5% yield vs the assumed 7-8%; HIGH #2 (≥₩500B buyback) pointing the opposite direction; sell-side consensus "Reduce" (Jul 5).
+	- LOW #2 PARTIALLY FIRED on an inconsistent metric basis: disclosed Q1 ARPU ₩29,261 < the ₩29,500 floor (but +0.2% YoY on that basis vs the thesis's ₩30,554 anchor) and MNO base -2.9% YoY — the trigger needs re-basing before honest grading. Breach tail live: SKT rejected the ₩100K/user mediation (Jan 30), cites ₩2.3-7T ripple exposure, is suing to revoke the ₩134.8B fine — larger and more contested than the "capped fine" framing, but not crystallized (CLOSE #2 not fired).
+	- AIDC leg MIXED: AIDC revenue +89.3% YoY (₩131.4B, accelerating) and NVIDIA gigawatt-scale AI Cloud partnership (Jun 8), but AIX AI-services revenue fell -10.3% YoY, and near-term contracted Ulsan AWS capacity (41MW by Nov 2027) is ~10% of the "1GW Ulsan" the thesis credits.
+- **Disconfirming check** (evidence-updated 2026-07-10): single most important falsifying datapoint = the 2026-06-25 ₩738.4B intra-group transfer to SK hynix's US vehicle — it simultaneously breaks the governance insight and the capital-return premise days before a capex announcement the market answered with a "Reduce" and a -34% drawdown. Base rate hostile for the new shape of the company: incumbent-telco-pivots-to-AI-infrastructure (AT&T, Verizon, CenturyLink datacenter builds; NTT/Telefónica cloud ventures) rarely earned cost of capital — a 15GW ambition off a ₩4.6T-EBITDA balance sheet should be underwritten as value-destructive until take-or-pay contracts are disclosed. Net: the NAV-asymmetry leg is stronger than at initiation, the capital-return/governance legs are weaker; the trigger set needs re-arming for the 15GW regime before any conviction move (Tier 3 — user decision).
 ## Related Research
 
 - [[Theses/000660 - SK Hynix.md]] — Sister company under SK Group (SK Square holds 20%); both benefit from Korean AI infrastructure build-out and Korea Discount narrative; SK Hynix is OpenAI Stargate HBM supplier vs. SKT's Stargate Korea AIDC role
@@ -269,3 +274,12 @@ Specific drivers:
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-5 evidence sweep populated ## Mental Models — Anthropic legs validated ($965B Series H, S-1 filed, stake now ~22-25% of cap) but capital-allocation legs broke (15GW DC plan, ₩738B to SK hynix US hub, dividend rebased ~1.5%); CLOSE-monetization near-missed at $47.18 Jun 2 — conviction unchanged (medium); trigger set needs re-arming for the 15GW regime.
+
+### 2026-07-12
+- Numbers refresh: 1 metric updated, 1 material. Dividend Yield 4.3-4.5%→1.9% forward (-2.4pp, material — confirms the 07-10 Mental Models note of a dividend rebase to ~1.5%). Snapshot: [[_Archive/Snapshots/SKM - SK Telecom (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Dividend Yield 1.87% rounds to the same displayed 1.9% forward; not material. Snapshot: [[_Archive/Snapshots/SKM - SK Telecom (pre-numbers 20260712-183936)]]

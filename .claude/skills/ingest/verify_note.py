@@ -113,12 +113,18 @@ def yaml_ok(fm):
         yaml.safe_load(fm)
         return True, None
     except ImportError:
+        # Heuristic fallback (PyYAML absent). Flag ONLY the dominant real break —
+        # an unquoted scalar containing a colon-space, which YAML reads as nested
+        # mapping. The prior `"—" in val` disjunct false-BLOCKED valid frontmatter
+        # like `sector: Semiconductors — Cross-sector (ABF Substrates + Test)` (an
+        # em-dash is not a YAML special character), and in url/pdf mode that BLOCK
+        # deletes a good note. Em-dash removed; colon-space retained.
         for ln in fm.split("\n"):
             m = re.match(r"^([A-Za-z_][\w -]*):\s+(.*)$", ln)
             if m:
                 val = m.group(2)
-                if val and val[0] not in "'\"[" and (re.search(r"\S: \S", val) or "—" in val):
-                    return False, f"unquoted value with colon-space/em-dash: {ln.strip()[:60]}"
+                if val and val[0] not in "'\"[" and re.search(r"\S: \S", val):
+                    return False, f"unquoted value with colon-space: {ln.strip()[:60]}"
         return True, None
     except Exception as e:
         return False, str(e).split("\n")[0][:80]
@@ -172,10 +178,17 @@ def main():
     tail = [l for l in body.split("\n") if l.strip()]
     if tail:
         last = tail[-1].strip().rstrip("*_`").rstrip()
-        w = re.findall(r"[A-Za-z']+|[,([]$", last)
-        if last and (last[-1] in ",([" or (w and w[-1].lower() in
-                     {"and", "but", "or", "of", "in", "for", "to", "with", "from", "by", "the", "a"})):
-            struct_fail.append(f"#4 last line ends mid-sentence: '…{last[-40:]}'")
+        # A line ending in terminal punctuation or a closer is a complete sentence
+        # regardless of its final ALPHABETIC token. The old check scanned only
+        # [A-Za-z'] tokens, so a line like '...respectively, in 2026."' resolved its
+        # "last word" to the stopword "in" (skipping the digits, period and quote)
+        # and false-BLOCKED a valid note. Only run the trailing-conjunction / open-
+        # bracket test when the line does NOT already end on a sentence terminator.
+        if last and last[-1] not in ".!?\"')]”’":
+            w = re.findall(r"[A-Za-z']+|[,([]$", last)
+            if last[-1] in ",([" or (w and w[-1].lower() in
+                     {"and", "but", "or", "of", "in", "for", "to", "with", "from", "by", "the", "a"}):
+                struct_fail.append(f"#4 last line ends mid-sentence: '…{last[-40:]}'")
 
     # --- #5 retention floor ---
     # The retention curve assumes source COMPRESSION. `earnings` notes (from
@@ -281,6 +294,33 @@ def main():
             if jac < 0.50:
                 soft_fail.append(f"#13 title-URL overlap {jac:.0%} < 50% (redirect/wrong-page risk — "
                                  f"review; not auto-blocked)")
+
+    # --- #15 consensus-contrast (ADVISORY-only, all modes; skip web-clip/data) ---
+    # SKILL.md requires Thesis Delta to state a consensus-vs-source contrast
+    # ("consensus assumes X -> source implies Y") and Contradiction Check to name a
+    # specific thesis section. This check makes the requirement visible without ever
+    # blocking (quality rides on the model; the gate only surfaces the miss).
+    if st not in ("web-clip", "data"):
+        def _sec_text(name):
+            for h, buf in secs.items():
+                if re.sub(r"\s+", " ", h.lower()).startswith(name):
+                    return "\n".join(buf)
+            return ""
+        td = _sec_text("thesis delta")
+        cc = _sec_text("contradiction check")
+        # Match the INTENT (contrast with a prevailing/prior view), not one phrasing.
+        contrast_re = (r"consensus|priced[- ]in|market (assumes|expects|misses|prices)|"
+                       r"bear (case|kill|narrative)|bull (case|narrative)|most-cited|"
+                       r"widely (held|assumed|expected)|street|thesis assum|kill[- ]switch|"
+                       r"non[- ]consensus|contrary to|conventional (view|wisdom)")
+        anchor_re = (r"§|\[\[Theses/|Outstanding Q|Risk #|Insight #|thesis assum|"
+                     r"thesis section|conviction trigger|falsif")
+        if td and not re.search(contrast_re, td, re.I):
+            soft_fail.append("#15 consensus-contrast: Thesis Delta has no consensus-vs-source "
+                             "contrast ('consensus assumes X -> source implies Y') — review; not blocked")
+        if cc and not re.search(anchor_re, cc, re.I):
+            soft_fail.append("#15 consensus-contrast: Contradiction Check anchors to no specific "
+                             "thesis element (§Section / [[Theses/...]] / named assumption) — review; not blocked")
 
     # ---- verdict ----
     verdict, rc = "PASS", 0

@@ -6,7 +6,9 @@ status: draft
 conviction: medium
 sector: Copper-Clad Laminate & PCB Materials
 ticker: 2383
+fmp_symbol: 2383.TW
 source: Web research 2026-06-10 (Digitimes, TrendForce, TSPA Semiconductor, Tom's Hardware, sell-side via stockanalysis/Simply Wall St); see Related Research
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-06-10 → Addressed 2026-06-10
 > **Prompt:** *What is the engineering / physics capabilities that differentiates EMC's high grade product from its competitors. How easily are competitors able to catch up in this area. Where does the engineering requirement for high grade CCL products come from and how is the intensity rising in high end AI chips and switch boards to date and where is this projected to go.*
@@ -151,10 +153,10 @@ The conclusion is the calibration the thesis hangs on: EMC's durability comes le
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~NT$1.81T (~US$57B) | 358.3M shares; price ~NT$5,050; **+542% in 52 weeks** |
+| Market Cap | ~NT$1.90T (~US$57B) | 358.3M shares; price ~NT$5,050; **+542% in 52 weeks** |
 | EV/Revenue | ~19x trailing / ~12–13x forward | On FY25 rev ~NT$94B; FY26E run-rate ~NT$140–150B (Q1'26 ~NT$33B, Q2'26E ~NT$39B). EV≈mkt cap (approx; net-cash balance sheet) |
 | Revenue Growth | +46% FY25 (NT$94B); +50%+ FY24 | 10M-2025 +49.9%; recent monthly +38–40% YoY |
-| Gross Margin | ~30% and rising | 30.1% Q3'25 (+3.1pp YoY); TTM ~29%; OpM ~20%, net margin ~15.8% |
+| Gross Margin | ~29% and rising | 30.1% Q3'25 (+3.1pp YoY); TTM ~29%; OpM ~20%, net margin ~15.8% |
 | FCF Yield | Minimal / negative | Peak capex cycle: NT$12.4B Guanyin plant + NT$2.8B factory + broader Taiwan/China/SE-Asia build; not an FCF story at this multiple |
 
 Earnings anchor: 9M-2025 EPS NT$31.23; Q1'26 EPS NT$14.89 (−0.85% vs consensus). Trailing P/E ~62–110x depending on source; forward P/E ~47x. Consensus target ~NT$4,750–5,224 (≈ current).
@@ -241,3 +243,9 @@ This is a +542%-in-a-year laminate stock at ~47x forward / ~90x trailing in an i
 ### 2026-07-07
 - News (Nvidia Kyber NVL144 rack delayed to 2028 — multi-layer PCB midplane manufacturing difficulty linking 144 GPUs): platform-scale confirmation of the M9/quartz yield wall flagged 06-27 — the 144-package Kyber orthogonal-backplane is the 78-layer M9-class board where EMC is *not* the clear yield winner (Doosan DS-7409 M9Q early lead; EMC GB300 stumble). [[Research/2026-06-27 - M9 Quartz vs Low-Dk Glass - deep-dive]]
 - Conviction unchanged MEDIUM — reinforces, not resolves, the 06-27 reassess-toward-LOW flag: sharpens the 2027-vintage timing bear (richest content leg slips *past* the synchronized capacity add) while confirming value concentrates in the CCL/PCB layer; contained vs a pure-Nvidia read (MTIA/Trainium/TPU midplanes ramp on own roadmaps per Insight #1). Swing = fab-side vs material-side cause + EM-896K3 Rubin qual vs Doosan exclusivity. Log-only capture (no Research note / `/sync` / `/graph`).
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 0 material. Market Cap ~NT$1.81T→~NT$1.90T (+4.8%, non-material); Gross Margin ~30%→~29% (-0.51pp, non-material). Snapshot: [[_Archive/Snapshots/2383 - Elite Material (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed — all 4 mapped rows (Market Cap, Revenue Growth, Gross Margin) round to already-current displayed values; FCF Yield left unedited (qualitative "Minimal / negative" text, format uncertain). Snapshot: [[_Archive/Snapshots/2383 - Elite Material (pre-numbers 20260712-184111)]]

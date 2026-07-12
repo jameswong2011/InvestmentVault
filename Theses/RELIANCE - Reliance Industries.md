@@ -6,14 +6,16 @@ status: monitoring
 conviction: medium
 sector: Indian Digital Conglomerates
 ticker: RELIANCE
+fmp_symbol: RELIANCE.NS
 source: Claude conversation export, web research April 2026
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # RELIANCE — Reliance Industries
 
 ## Summary
 
-SOTP anomaly: Jio Platforms alone may be worth $130-180B at IPO -- potentially exceeding Reliance's entire ~$210B market cap -- implying near-zero or negative value for Retail (₹3.3L cr revenue), O2C (world's largest single-site refinery), and New Energy (₹75,000 cr deployed, Samsung C&T $3B offtake signed). Consumer businesses (Jio + Retail) now generate 54% of consolidated EBITDA. The Jio IPO, targeted by July 2026, is the single most important catalyst in Indian equities. At ₹1,220 (~24% below 52-week highs), the stock prices maximum pessimism -- US tariff shock, export duties, IPO delays, FII outflows -- while 33/36 analysts rate it Buy with targets implying +23-41% upside, the widest gap between consensus and price action in Reliance's recent history.
+SOTP anomaly: Jio Platforms alone may be worth $130-180B at IPO -- potentially exceeding Reliance's entire ~$210B market cap -- implying near-zero or negative value for Retail (₹3.3L cr revenue), O2C (world's largest single-site refinery), and New Energy (₹75,000 cr deployed, Samsung C&T $3B offtake signed). Consumer businesses (Jio + Retail) now generate 54% of consolidated EBITDA. The Jio IPO, targeted by July 2026, is the single most important catalyst in Indian equities. At ₹1,308 (~19% below 52-week highs, +7.2% off the ₹1,220 trough), the stock has partially unwound maximum pessimism -- US tariff shock, export duties, IPO delays, FII outflows -- but the consensus gap has barely closed: 33/36 analysts still rate it Buy with targets implying +23-41% upside, still among the widest gaps between consensus and price action in Reliance's recent history.
 
 ## Key Non-consensus Insights
 
@@ -71,7 +73,7 @@ India's largest organized retailer by store count and revenue. Q3 FY2026: Revenu
 
 ### O2C (Oil-to-Chemicals) — Legacy Cash Engine Under Structural Pressure
 
-The world's largest single-site refinery complex at Jamnagar (Rajasthan), with integrated refining and petrochemicals capacity. Q3 FY2026: EBITDA ₹16,507 crore (+14.6% YoY), GRM ~$11/bbl ($4–5 premium vs Singapore benchmark).
+The world's largest single-site refinery complex at Jamnagar (Gujarat), with integrated refining and petrochemicals capacity. Q3 FY2026: EBITDA ₹16,507 crore (+14.6% YoY), GRM ~$11/bbl ($4–5 premium vs Singapore benchmark).
 
 **Refining:** Jamnagar produces transportation fuels (diesel, gasoline, ATF, LPG) with the world's highest Nelson Complexity Index, enabling it to process the cheapest and most difficult crudes at the highest margin. ~50% of capacity is SEZ-based, partially shielding from Indian export duty increases (diesel duty more than doubled to ₹55.5/litre; ATF to ₹42/litre in 2026). >90% of Indian oil products imported by the US came from Jamnagar — the US-India trade deal (Feb 2026, tariffs reduced from 50% to 18%) expanded this channel.
 
@@ -172,15 +174,15 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ₹1,220 | Down ~24% from 52w high ₹1,608; 52w low ₹1,156 |
-| Market Cap | ~₹17.8T (~$210B) | S&P credit rating: A- |
+| Stock Price | ₹1,308 | Down ~19% from 52w high ₹1,608; 52w low ₹1,156 |
+| Market Cap | ~₹17.7T (~$210B) | S&P credit rating: A- |
 | EV/EBITDA | ~13x | vs T-Mobile ~14x, Broadcom ~25x |
 | Revenue (FY25) | ₹9.65 lakh crore | +7.3% YoY |
 | EBITDA (FY25) | ₹1.83 lakh crore | +2.9% YoY |
 | Net Profit (FY25) | ₹80,787 crore | +2.7% YoY |
 | Q3 FY26 Revenue | ₹2.70 lakh crore | +10.5% YoY |
 | Net Debt (Sep 2025) | ₹2.37 lakh crore | Nearly doubled from ₹1.35 lakh crore (Mar 2025) |
-| Net Debt/EBITDA | 0.6x | Interest coverage 10.6x |
+| Net Debt/EBITDA | 1.2x | Interest coverage 10.6x |
 | Consumer EBITDA Share | 54% | Up from ~0% a decade ago |
 | Analyst Consensus | 33 Buy / 2 Sell | Avg target ₹1,500–1,721 (+23–41% upside) |
 | Jio Subscribers | 515.3M | +8.9M in Q3; 250M+ on 5G |
@@ -232,7 +234,7 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 3. **Succession execution**: Three untested Ambani heirs managing independent divisions under public market scrutiny; coordination failure risk
 4. **New energy execution**: Battery gigafactory timeline slippage (originally CY2024); sodium-ion tech trailing CATL; commercial revenue not before H2 FY2029
 5. **Conglomerate discount**: Post-IPO, market may apply 5–20% holding company discount to RIL stub containing lower-growth assets
-6. **India macro shock**: Dual crude supply shock (Russian waiver expiry + Hormuz), 26% US tariff, ₹1,220 stock already reflects FII outflows
+6. **India macro shock**: Dual crude supply shock (Russian waiver expiry + Hormuz), 26% US tariff — the ₹1,308 stock (+7.2% off the ₹1,220 trough) has re-rated some FII-outflow pessimism away even though the crude and tariff shocks remain unresolved, leaving less cushion against a reversal than the ₹1,220 print implied
 7. **Quick commerce competition**: Amazon entry + VC-funded rivals could force margin sacrifice; dark store buildout may consume cost advantage
 8. **Balance sheet leverage**: Net debt doubled to ₹2.37 lakh crore; ongoing capex commitments may prevent meaningful deleveraging
 9. **Regulatory/policy risk**: Windfall taxes, export duty escalation, TRAI satellite spectrum decisions, SEBI IPO requirements
@@ -240,9 +242,14 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-10 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Value Layer Monopoly]] (§2 conglomeration anti-signal, cross-check only)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- [G-13] expectations chain — the central catalyst FIRED and the market shrugged: Jio DRHP filed Jun 19 (first ever, after 6 years of promises), yet the stock (₹1,275.9 Jul 8) sits BELOW the Jun 22 post-filing print. Structure contradicts the thesis: 100% fresh issue (~₹37,700cr/$4.4B), NO OFS — no cash to RIL shareholders, proceeds pare Jio-level debt — and the discussed valuation ($117–137B) straddles/undershoots the thesis's $130B floor. The market is pricing that the IPO alone doesn't close the SOTP gap.
+	- [G-1] conglomerate-discount as institutional artifact: CONFIRMED structurally unresolved — 31 of 32 analysts Buy, avg TP ₹1,697 (+29.6%), the widest consensus-vs-price gap in Indian large-caps, and it did not close on the catalyst firing. VLM §2 reads the same fact the other way: RIL is the definitional diversification anti-signal — the discount may be rational, not exploitable.
+	- Two quiet unpriced negatives: Russian-crude cost edge largely gone (~150k bpd non-sanctioned vs 500k+ prior, post-Lukoil/Rosneft sanctions) while Urals discounts widen >$10/bbl for those still buying; and the 120MW Jamnagar GB300 buildout was announced 12 days before Meta Compute (Jul 1) flipped the AI-infra narrative to compute-surplus — sovereign-AI capex is now a two-sided claim.
+	- Peak-capex/deleveraging leg: REFUTED so far — FY26 capex ₹1.44L cr, AI-datacenter layer ADDED, IPO restructured partly to pare debt.
+	- Structural gap: **no ## Conviction Triggers section.**
+- **Disconfirming check** (evidence-updated 2026-07-10): single falsifying datapoint — SEBI's observation letter + final price band: a sub-$120B Jio band converts "Jio alone ≈ RIL's market cap" from anomaly to arithmetic disproof. Base rate: conglomerate SOTP discounts persist through partial listings far more often than they close (the listing usually re-rates the SUBSIDIARY, not the parent). Q1 FY27 print Jul 17 is the first read on the post-sanctions crude slate.
 
 ## Related Research
 
@@ -283,3 +290,16 @@ The advantage is cross-subsidization and integrated capital allocation: O2C cash
 
 ### 2026-05-24 (/sync all)
 - [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Polymarket peace deterioration extends Indian crude-basket shock window (₹69→₹113/bbl) past Jun 15 — Jio IPO Jul 2026 catalyst window remains in macro-tail crosshairs. Jamnagar fuel-crack tailwind partially offsetting but insufficient against ~54% Jio/Retail EBITDA exposure. Conviction unchanged (medium, monitoring).
+
+### 2026-07-10
+- Mental models pass: batch-10 evidence sweep populated ## Mental Models — Jio DRHP FIRED (Jun 19) but as 100% fresh issue at $117–137B (no OFS, below thesis floor) and stock sits below the filing-day print; Russian-crude edge lost (~150k bpd), Jamnagar GPU capex committed 12 days pre-Meta-Compute — conviction unchanged (medium); Jamnagar is in Gujarat not Rajasthan (body error), Q1 FY27 print Jul 17.
+- Corrected: fact-audit pass — Jamnagar relocated Rajasthan→Gujarat in §Business Model (O2C). Sole batch-10 flagged error in this note; the OFS/valuation items are staleness, tracked in ## Mental Models.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 1 material. Net debt/EBITDA 0.6x→1.2x (material); stock price ₹1,220→₹1,308 (+7.2%); market cap ~₹17.8T→~₹17.7T (-0.6%). Snapshot: [[_Archive/Snapshots/RELIANCE - Reliance Industries (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, post fmp_symbol exchange-suffix fix): 0 metrics changed — Stock Price, Market Cap, and Net Debt/EBITDA all render identical to prior refresh after rounding; data confirmed stable intraday. Snapshot: [[_Archive/Snapshots/RELIANCE - Reliance Industries (pre-numbers 20260712-184120)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: ₹1,220→₹1,308 and '24% below'→'19% below' 52w high across Summary, Risks #6, Stock-Price Notes. Snapshot: [[_Archive/Snapshots/RELIANCE - Reliance Industries (pre-deepen-metrics-sync 2026-07-12-203456)]]

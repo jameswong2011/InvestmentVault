@@ -7,13 +7,14 @@ conviction: medium
 sector: Ski Resorts & Destination Leisure
 ticker: MTN
 source: Multi-source consolidation (ChatGPT, Gemini Canvas, Claude, web research)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # MTN — Vail Resorts
 
 ## Summary
 
-~$130 ($4.6B market cap, ~9.5x forward EV/EBITDA, 6.9% dividend yield) — the stock prices as a low-growth utility with climate tail risk, which is approximately what it is. The investment case is a governance-architecture problem disguised as a competitive-dynamics story: Vail, as a public company, structurally cannot match Alterra's $400M+ annual guest-facing capex ($21M per owned resort vs Vail's ~$5M) while defending a ~$320M annual dividend, maintaining buybacks, and hitting quarterly EBITDA targets. FY2026 has been catastrophic — Rockies snowfall at 30-year lows, visits down 20% through early January, EBITDA guidance slashed from $842-898M to $745-775M — layered atop a second consecutive year of Epic Pass unit sales declines. Rob Katz's return as CEO signals strategic exhaustion, not renewal.
+$5.4B market cap (~9.5x forward EV/EBITDA, 5.9% dividend yield on an unchanged $8.88/share payout) — market cap up from $4.6B, yield down on price appreciation alone not improved safety. Still prices as a low-growth utility with climate tail risk, now at a richer multiple over the same payout risk. The investment case is a governance-architecture problem disguised as a competitive-dynamics story: Vail, as a public company, structurally cannot match Alterra's $400M+ annual guest-facing capex ($21M per owned resort vs Vail's ~$5M) while defending a ~$320M annual dividend, maintaining buybacks, and hitting quarterly EBITDA targets. FY2026 has been catastrophic — Rockies snowfall at 30-year lows, visits down 20% through early January, EBITDA guidance slashed from $842-898M to $745-775M — layered atop a second consecutive year of Epic Pass unit sales declines. Rob Katz's return as CEO signals strategic exhaustion, not renewal.
 
 ## Key Non-consensus Insights
 
@@ -134,8 +135,8 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$4.6B | At ~$130/share (April 2026) |
-| Enterprise Value | ~$7.2B | Net Debt ~$2.5B (3.0x EBITDA) |
+| Market Cap | ~$5.4B | At ~$130/share (April 2026) |
+| Enterprise Value | ~$7.2B | Leverage is 3.9x EBITDA (up from 3.0x) — see the dedicated Net Debt/EBITDA row (3.9x, Liquidity $1.5B); the weather-driven EBITDA cut is doing as much work here as any debt increase |
 | EV/Revenue | ~2.4x | On FY2025 $2.96B revenue |
 | EV/EBITDA (trailing) | ~8.5x | On FY2025 $844M Resort EBITDA |
 | EV/EBITDA (forward) | ~9.5x | On revised FY2026 $760M midpoint |
@@ -143,13 +144,13 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 | Resort EBITDA (FY2025) | $844M | +2.3% YoY; 28.5% margin |
 | Net Income (FY2025) | $280M | +21.2% YoY |
 | FY2026 EBITDA Guide | $745-$775M | Cut from $842-$898M (weather) |
-| Dividend Yield | 6.9% | $8.88/year; ~$320M annual payout |
+| Dividend Yield | 5.9% | $8.88/year; ~$320M annual payout |
 | P/E Ratio | ~20.9x | Trailing; forward ~28x on FY2026 guide midpoint |
 | Epic Pass Holders | ~2.3M | Units -2-3% YoY (2nd consecutive decline) |
 | N.A. Skier Visits (FY2025) | Down 3% | Through Jan 4, 2026: down 20% |
 | Core Capex (FY2026) | $215-$220M | vs Alterra $400M+ across fewer resorts |
 | 52-Week Range | $124 – $176 | Near 52-week low |
-| Net Debt / EBITDA | 3.0x | Liquidity $1.5B |
+| Net Debt / EBITDA | 3.9x | Liquidity $1.5B |
 | Resorts | 42 | 37 N. America, 3 Australia, 2 Europe |
 
 ## Bull Case
@@ -190,9 +191,13 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Fundamental falsifiers CONFIRMED across the board: FQ3 (Jun 8) EBITDA -9.5%, skier visits -15.5%, SECOND intra-year guidance cut ($735-755M); 2026/27 Epic Pass units -10% / dollars -5% — the THIRD consecutive unit decline, now shrinking in dollars (FY27 revenue visibility impaired before the weather lottery runs); leverage drifted to 3.5x (thesis: 3.0x), payout ratio >200% of NI on a still-uncut $2.22 dividend; capex flat (~$5M/resort — no ramp); 2025-26 was the WORST snow year ever recorded in CO and UT (convex-climate framing validated).
+	- BUT the thesis's central insight METASTASIZED INTO AN EVENT it never contemplated: the public-vs-private governance trap now has a forced-resolution path — Oasis Capital at 7.9% weighing a proxy fight for divestitures (Jun 18), Matthew Prince publicly offering $500M for Park City, Vail hiring takeover-defense bankers; stock +12.4% on Jun 20, rallying to ~$146 AGAINST the fundamentals. The activist path invalidates the "multiple compresses below 8x → $100-110" bear leg by putting a breakup floor under the equity.
+	- Turnaround evidence mixed: lift-ticket pricing pivot (30%+ advance discounts — reversing the pass-conversion cudgel; "meaningfully outperforming industry"), Resource Efficiency $106M ahead of plan, under-30 pass "pacing well ahead," Australia +26% units — vs the [G-5]/founder-return base rate (Schultz/Dorsey: mixed-to-poor when the problem is structural) and Katz's own moves reading as demand-management tactics for a supply-side problem.
+	- New watch items: FY26 year-end report ~late Sept (the LIVE dividend decision — analysts model ~25% cut); September pass-sales update (does under-30 bend the unit curve); any Oasis 13D/proxy filing; Park City patrol arbitration (union now ~1,000 members).
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate — subscription-ized cyclicals with three straight unit declines re-rate to cyclical multiples and rarely fully recover units even when the cycle turns; Vail has never had three straight declines before. The bull and bear both now run through the SAME event: single most important datapoint = whether Oasis escalates to a formal proxy/13D (bull floor) or walks (bear resumes at ~10.5x fwd EV/EBITDA on cut guidance, stale vs the thesis's 9.5x anchor). NO Conviction Triggers section; Key Metrics stale (~$130/3.0x/6.9% yield no longer describes the security).
 
 ## Related Research
 
@@ -220,3 +225,15 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring, conviction low→medium.
+
+### 2026-07-10
+- Mental models pass: batch-9 evidence sweep populated ## Mental Models — bear falsifiers confirmed (3rd straight pass-unit decline, 2nd guidance cut, 3.5x leverage) but the governance-trap insight metastasized into an activist event (Oasis 7.9% proxy-fight threat, Prince $500M Park City bid, defense bankers) that floors the equity — conviction unchanged (medium); Sept year-end dividend decision + any Oasis 13D are the live falsifiers.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 2 material. Net Debt/EBITDA 3.0x→3.9x (+0.9x, material); Dividend Yield 6.9%→5.9% (-0.99pp, material); Market Cap ~$4.6B→~$5.4B (+16.3%, non-material). Summary opens "~$130 ($4.6B market cap, ~9.5x forward EV/EBITDA, 6.9% dividend yield)" — live data now ~$5.4B market cap, ~5.9% dividend yield; consider /deepen --section "Summary". Snapshot: [[_Archive/Snapshots/MTN - Vail Resorts (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, fmp_symbol MTN verified): 0 rows edited — Market Cap, Dividend Yield, Net Debt/EBITDA all re-render identical to current cell text; no material change since last-hour refresh. Prior Summary staleness flag ("~$130/$4.6B/6.9% yield") still stands, unresolved — still recommend /deepen --section "Summary". Snapshot: [[_Archive/Snapshots/MTN - Vail Resorts (pre-numbers 20260712-184025)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: dividend yield 6.9%→5.9% + market cap $4.6B→$5.4B (Summary); leverage Notes reconciled 3.0x→3.9x. Snapshot: [[_Archive/Snapshots/MTN - Vail Resorts (pre-deepen-metrics-sync 2026-07-12-203456)]]

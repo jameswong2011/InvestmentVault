@@ -7,13 +7,14 @@ conviction: medium
 sector: Consumer Edtech
 ticker: DUOL
 source: Consolidated from Claude, ChatGPT, Gemini conversation exports; Quartr article; web research April 2026
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # DUOL — Duolingo
 
 ## Summary
 
-52.7M DAU, 133M MAU, FY2025 revenue $1.04B (+39% YoY), 73% gross margins, trailing P/E ~10.5x — and the stock is at ~$93, down 83% from May 2025 ATH of $540. Management deliberately guided to sharply slower 2026 growth (10-12% bookings, 15-18% revenue) to invest in teaching quality, free-tier expansion, and multi-subject scaling. The market prices this as permanent impairment. The thesis: Duolingo is a **behavioral architecture company** whose moat — habit formation, identity reinforcement, gamification infrastructure — transfers across learning domains and is structurally insulated from AI commoditization at the platform layer (use-case substitution at Max is real but bounded to a 0.7% MAU minor product). Chess became the fastest-growing subject ever upon launch (~7M DAU in <1 year); non-language DAU exceeded 3M; five frontier-funded AI-native voice tutors collectively haven't crossed 10% of DUOL's DAU after 18 months of capital deployment, empirically validating that conversation practice is a feature, not a habit. DET (5,500+ institutions, 40%+ YoY volume growth) plus Duolingo Score on LinkedIn (Sep 2025) form a hidden credentialing-SaaS layer valued at zero in the current multiple. The question is whether the market gives management enough runway to prove the platform thesis before sentiment permanently impairs the multiple.
+52.7M DAU, 133M MAU, FY2025 revenue $1.04B (+39% YoY), 73% gross margins, trailing P/E ~10.5x — and the stock is at ~$125, down 77% from May 2025 ATH of $540 after a 34% rebound off the ~$93 level. Management deliberately guided to sharply slower 2026 growth (10-12% bookings, 15-18% revenue) to invest in teaching quality, free-tier expansion, and multi-subject scaling. The market prices this as permanent impairment. The thesis: Duolingo is a **behavioral architecture company** whose moat — habit formation, identity reinforcement, gamification infrastructure — transfers across learning domains and is structurally insulated from AI commoditization at the platform layer (use-case substitution at Max is real but bounded to a 0.7% MAU minor product). Chess became the fastest-growing subject ever upon launch (~7M DAU in <1 year); non-language DAU exceeded 3M; five frontier-funded AI-native voice tutors collectively haven't crossed 10% of DUOL's DAU after 18 months of capital deployment, empirically validating that conversation practice is a feature, not a habit. DET (5,500+ institutions, 40%+ YoY volume growth) plus Duolingo Score on LinkedIn (Sep 2025) form a hidden credentialing-SaaS layer valued at zero in the current multiple. The question is whether the market gives management enough runway to prove the platform thesis before sentiment permanently impairs the multiple.
 
 ## Key Non-consensus Insights
 
@@ -21,7 +22,7 @@ source: Consolidated from Claude, ChatGPT, Gemini conversation exports; Quartr a
 
 - **"Deliberate deceleration" is being mispriced as deterioration.** 2026 guidance (10-12% bookings vs. 33% in 2025, EBITDA margin 29.5% to ~25%) is a *chosen* investment phase. Internal LTV framework forbids improving teaching efficacy, engagement, or monetization at the expense of the other two. Free tier expansion targets 100M DAU by 2028; founder-CEO von Ahn built/sold CAPTCHA and reCAPTCHA to Google and chose mission over wealth.
 
-- **Multi-subject expansion validates the platform hypothesis and changes the TAM — but only within-engine, not horizontal.** Chess became the fastest-growing subject ever at launch (2025), surpassing math and music in adoption speed; non-language DAU exceeded 3M in Q1 2025. Gamification infrastructure transfers across learning domains where progression is finite and drill-able (vocabulary tokens, music notes, chess positions, math problem types). The most plausible incremental verticals are within-engine extensions — finance literacy, coding fundamentals, history/geography, civics — NOT horizontal STEM (sciences resist drill-based gamification; Khan Academy + Brilliant occupy the space) or institutional school SaaS (Duolingo for Schools is free-since-2015 with no monetization push; von Ahn's "schools as childcare" stance opposes the Chinese-edtech-government-partnership model) or non-formal adjacencies à la Pluralsight/Brilliant/Blinkist (B2B inversion, AI-vulnerable content, head-start respectively). The 100M DAU 2028 target does NOT require horizontal expansion — chess + math + music + emerging-market language conversion is sufficient. Market prices DUOL at ~$4.3B as a language app with zero credit for any expansion vector. Bull case requires only one within-engine vertical to repeat the chess datapoint to validate. See [[Sectors/Consumer Edtech]] §Investor heuristics → Platform extensibility ceiling.
+- **Multi-subject expansion validates the platform hypothesis and changes the TAM — but only within-engine, not horizontal.** Chess became the fastest-growing subject ever at launch (2025), surpassing math and music in adoption speed; non-language DAU exceeded 3M in Q1 2025. Gamification infrastructure transfers across learning domains where progression is finite and drill-able (vocabulary tokens, music notes, chess positions, math problem types). The most plausible incremental verticals are within-engine extensions — finance literacy, coding fundamentals, history/geography, civics — NOT horizontal STEM (sciences resist drill-based gamification; Khan Academy + Brilliant occupy the space) or institutional school SaaS (Duolingo for Schools is free-since-2015 with no monetization push; von Ahn's "schools as childcare" stance opposes the Chinese-edtech-government-partnership model) or non-formal adjacencies à la Pluralsight/Brilliant/Blinkist (B2B inversion, AI-vulnerable content, head-start respectively). The 100M DAU 2028 target does NOT require horizontal expansion — chess + math + music + emerging-market language conversion is sufficient. Market prices DUOL at ~$5.8B as a language app with zero credit for any expansion vector — the +35% move since the ~$93 trough tracks the broader stock recovery, not a re-rating of chess/math/music optionality specifically. Bull case requires only one within-engine vertical to repeat the chess datapoint to validate. See [[Sectors/Consumer Edtech]] §Investor heuristics → Platform extensibility ceiling.
 
 - **Geographic monetization gap embeds upside optionality requiring no product innovation.** North America converts at 9.8% vs. Asia at 5.2% (Q2 2025), and Asia is the fastest-growing region. Conversion rate convergence alone represents embedded monetization upside. Brazil, Mexico, and the UK are already material markets behind the US.
 
@@ -90,8 +91,8 @@ DAU/MAU ratio of 37.3% — extraordinary for a consumer app, reflecting genuine 
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$93 | Down 83% from ATH of $540 (May 2025) |
-| Market Cap | ~$4.3B | |
+| Stock Price | ~$125 | Down 77% from ATH of $540 (May 2025); up 34% from the ~$93 prior level |
+| Market Cap | ~$5.8B | |
 | P/E (TTM) | 10.5x | Based on $414M net income in FY2025 |
 | P/E (Fwd NTM) | 32.1x | Reflects expected margin compression in 2026 |
 | EPS (TTM) | $8.48 | |
@@ -99,7 +100,7 @@ DAU/MAU ratio of 37.3% — extraordinary for a consumer app, reflecting genuine 
 | Q4 2025 Revenue | $282.9M | Beat consensus of $275.7M |
 | 2026 Revenue Guidance | +15-18% YoY | Deliberate deceleration from 39% |
 | 2026 Bookings Guidance | +10-12% YoY | Down from 33% bookings growth in 2025 |
-| Gross Margin | ~73% | Among highest in edtech |
+| Gross Margin | ~72% | Among highest in edtech |
 | Adj. EBITDA Margin (2025) | 29.5% | Guided to ~25% for 2026 |
 | FCF Margin | ~37% | Expanded from 6% at IPO |
 | DAU (Q4 2025) | 52.7M | +30% YoY |
@@ -154,10 +155,13 @@ DAU/MAU ratio of 37.3% — extraordinary for a consumer app, reflecting genuine 
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-7 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Core mechanism CONFIRMED: behavioral architecture survived peak AI competition — Q1 2026 (May 4) DAU +21% (56.5M), revenue $292M +27% (beat), paid subs 12.5M +21%, EBITDA margin 28.6%; no hyperscaler has shipped the streak/league/notification layer (Study Mode and Guided Learning are Socratic, not behavioral); 2026 reviewer consensus = "Duolingo for habit + ChatGPT for conversation" — the exact use-case-bounded substitution the thesis predicted. Chess ~7M DAU validates within-engine transfer; math+music stuck at ~3M combined (management-flagged stagnant).
+	- The falsifying vector is the FUNNEL, not substitution: MAU 137.8M grew only +5.8% YoY (from +14.1%) — top-of-funnel near-stall masked by DAU/MAU conversion climbing to ~41%; Q1 bookings only +9% cc, Q2 bookings guide ~6%. If MAU stays sub-10% through 2026, "deliberate deceleration" becomes indistinguishable from saturation.
+	- Insider-buying catalyst REFUTED (von Ahn net seller) but substituted by an unmodeled $400M corporate buyback (Feb 26, first ever; 514K shares by Q1-end; >$1B cash, zero debt). Securities probes (Pomerantz/Faruqi, attached to the Feb 26-27 guidance shock leg-down to $87.89) unresolved. Von Ahn walked back the AI-first memo a second time (Apr 13) — pragmatic-founder pattern holds; brand engine took real damage (~400K TikTok followers) but recovered.
+	- [G-13] valuation inversion: stock rallied ~45% off the low to ~$126-130, so trailing P/E ~14.9x but FORWARD ~47x (worse than the thesis's 32x — price up, 2026 EPS guide down); the asymmetric-entry framing partially consumed. Gross margin guided 73%→~69% by Q4 from AI COGS — quietly taxing the "AI strengthens the moat" insight; "Explain My Answer" made free kills the Max-penetration catalyst by design.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate — consumer-engagement franchises under substitution attack (Match, Snap, Peloton) typically hold engagement while acquisition and multiple decay permanently; DUOL's divergence rests on DET/credentialing (6,000-7,000+ institutions, confirmed growing) and multi-subject optionality (half-confirmed). Two-datapoint falsification sequence: a Q2 bookings miss vs the ~6% guide (print 2026-08-05) PLUS another sub-10% MAU quarter = first evidence the deceleration is saturation. Framework gap: NO Conviction Triggers section; Key Metrics stale ($93 basis vs ~$126-130); new CFO (Jan 2026 8-K) unverified — flag for follow-up.
 ## Related Research
 
 - [[Research/2025-09-22 - DUOL - Gemini Analysis Canvas]] — Interactive analysis of Duolingo stock performance, fundamental metrics, AI competitive dynamics, and user sentiment comparison (Duolingo Max vs. ChatGPT). Covers Q2 2025 data.
@@ -188,3 +192,15 @@ DAU/MAU ratio of 37.3% — extraordinary for a consumer app, reflecting genuine 
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-7 evidence sweep populated ## Mental Models — behavioral-architecture moat confirmed through peak AI competition (DAU +21%, hybrid-usage consensus) but MAU near-stalled at +5.8% (funnel, not substitution, is the falsifying vector); insider-buying catalyst refuted, $400M buyback substituted — conviction unchanged (medium); two-datapoint falsification: Q2 bookings (Aug 5) + another sub-10% MAU print.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 2 material. Stock Price ~$93→~$125 (+34%, already flagged stale in 07-10 Mental Models pass). FY2025 Revenue left unedited (unchanged after rounding). Snapshot: [[_Archive/Snapshots/DUOL - Duolingo (pre-numbers 20260712-174116)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed. Stock Price (~$125), Market Cap (~$5.8B), FY2025 Revenue ($1.04B), Gross Margin (~72%) all render identically after rounding — data <1hr fresh. Step 10b: Summary still opens "the stock is at ~$93, down 83% from May 2025 ATH of $540" — live price now ~$125 (already flagged in 07-10 Mental Models pass and prior numbers entry); consider `/deepen --section "Summary"`. Snapshot: [[_Archive/Snapshots/DUOL - Duolingo (pre-numbers 20260712-184147)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: price $93→$125 (down 83%→77% from ATH) + market cap $4.3B→$5.8B across Summary, Stock-Price Notes, Insight 3. Snapshot: [[_Archive/Snapshots/DUOL - Duolingo (pre-deepen-metrics-sync 2026-07-12-203456)]]

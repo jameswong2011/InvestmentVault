@@ -127,7 +127,7 @@ Parse $ARGUMENTS to determine mode:
 
 ### Post-write verification
 
-**Script-first (2026-07-08):** checks #1–#14 are deterministic (word counts, retention-floor arithmetic, domain-token regexes, OCR patterns, Jaccard) — run the helper instead of executing the regexes by hand:
+**Script-first (2026-07-08):** checks #1–#15 are deterministic (word counts, retention-floor arithmetic, domain-token regexes, OCR patterns, Jaccard, consensus-contrast anchors) — run the helper instead of executing the regexes by hand:
 
 ```bash
 python3 .claude/skills/ingest/verify_note.py "Research/<note>.md" \
@@ -135,7 +135,7 @@ python3 .claude/skills/ingest/verify_note.py "Research/<note>.md" \
   --source-words <N from Step 1> --url "<source URL, url mode only>"
 ```
 
-It prints `VERDICT: PASS | ADVISORY | BLOCK` plus each failing check with evidence, and exits **0 (pass) / 1 (advisory) / 2 (block) / 3 (self-validation: note unreadable)**. Act on the verdict per the Failure-handling block below: **BLOCK** (url/pdf) → delete the note, retain the source; **ADVISORY** (local manual file) → keep the note, surface flags; **PASS** → proceed. The script already applies the mode/source_type gating (structural #1–4 block all modes; #5–14 block url/pdf, advisory local; #8–11/#14 skipped for web-clip/data; #13 url-only). Exit 3 → do NOT treat as pass; re-run the script with corrected args or fall back to the manual checks below.
+It prints `VERDICT: PASS | ADVISORY | BLOCK` plus each failing check with evidence, and exits **0 (pass) / 1 (advisory) / 2 (block) / 3 (self-validation: note unreadable)**. Act on the verdict per the Failure-handling block below: **BLOCK** (url/pdf) → delete the note, retain the source; **ADVISORY** (local manual file) → keep the note, surface flags; **PASS** → proceed. The script already applies the mode/source_type gating (structural #1–4 block all modes; #5–14 block url/pdf, advisory local; #8–11/#14 skipped for web-clip/data; #13 url-only; **#15 consensus-contrast is ADVISORY in ALL modes, never blocks, skipped for web-clip/data** — it flags a Thesis Delta lacking a consensus-vs-source contrast or a Contradiction Check anchored to no specific thesis element, making the §Required-sections quality bar visible without adding a deletion path). Exit 3 → do NOT treat as pass; re-run the script with corrected args or fall back to the manual checks below.
 
 The numbered checks below are the reference spec the script implements (and the manual fallback if `python3` is unavailable). Re-read the just-written research note and check, in order:
 

@@ -3,10 +3,12 @@ publish: true
 date: 2026-04-14
 tags: [thesis, semiconductors, BESI, hybrid-bonding, HBM, advanced-packaging, CPO]
 status: active
-conviction: high
+conviction: medium
 sector: Semiconductor Capital Equipment
 ticker: BESI
+fmp_symbol: BESI.AS
 source: Vault research synthesis + web search (TrendForce, Investing.com, Simply Wall St, Reuters, 36Kr, EE Times, BESI IR)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # BESI — BE Semiconductor Industries
@@ -127,8 +129,8 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~€16.75B (~$16.7B) | Near all-time high |
-| Share Price | ~€207.10 | April 13, 2026; 52-wk range €85.68–€214.00 |
+| Market Cap | ~€20.22B (~$16.7B) | Near all-time high |
+| Share Price | ~€255.30 | April 13, 2026; 52-wk range €85.68–€214.00 |
 | FY2025 Revenue | €591.3M | Down 2.7% YoY — cyclical trough |
 | FY2025 Orders | €685M | +16.8% YoY — inflection signal |
 | Q4 2025 Orders | €250.4M | +105.4% YoY — hybrid bonding driven |
@@ -198,9 +200,15 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-1 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] (#1, #2, #8, #10) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#1 bottleneck-moves — fired AGAIN, in-period*: 2026-07-07 — Samsung AND SK Hynix reconsidering the hybrid-bonding timeline (earliest adoption now 16-hi HBM4E); JEDEC discussing a **second** relaxation, ~900µm → up to ~1,000µm for 20-hi; thermal workarounds substituting for HB's thermal rationale (Samsung HPB, SK Hynix iHBM); Hanmi's TC bonders took the HBM4 ramp (KRW 44.2B SK Hynix order, Jun 8). Stock -7.5% on the news. The memory-HB leg slipped right for the second time in 14 months — re-identify the binding segment every 2 quarters is now the thesis's operating discipline, not advice.
+	- *Financial momentum* — CONFIRMED strong through June: Q1 orders €269.7M (+104.5% YoY, ABOVE the Q4-25 surge), HB unit orders >2x QoQ, HB customer base 20 (from 18), two eval tools at a second memory customer; Q2 revenue guided +30–40% QoQ, GM raised to 64–66%; Investor Day (Jun 18) raised LT targets to **€1.7–2.2B revenue / 45–55% OM** — a standalone-confidence signal amid dormant M&A.
+	- *Logic/CPO leg (the variant perception)* — CONFIRMED executing: TSMC COUPE volume production on track, COUPE-on-substrate targeted H2 2026, Nvidia shipping COUPE-based CPO switches (Jun 4), ASMPT photonics +5x YoY corroborates the cycle. The installed-base-miscategorization insight (logic-entrenched, not HBM-timing bet) is carrying the thesis exactly as claimed — Q1's order surge coexists with the HBM delay.
+	- *#2 gate / competitive probing* — the moat is being tested from three directions: ASMPT LITHOBOLT (no second-customer qual found), Hanwha Semitech SHB2 Nano delivered to SK Hynix for evaluation (Apr), and **ASML reportedly exploring hybrid-bonding equipment entry** (Mar 23, early-stage) — the 2–3yr qualification gap holds for now, but the prize is attracting precision-technology heavyweights.
+	- *Kinex source-check flag*: primary reporting (The Elec, Mar 31) frames the SK Hynix Kinex order as ONE ~$15M system for an HBM **development line** ("next-next generation onward") — the vault's 2026-05-11 "logic-line/2nm primary" framing is not corroborated by these sources; recheck before relying on it in the bridge math.
+	- *#10 anchor* — TSMC advanced-packaging capex intact (CoWoS to 130K wpm late 2026, packaging >10% of TSMC revenue 2026).
+- **Disconfirming check** (evidence-updated): the alpha structure is now precisely two-legged — the logic/CPO leg confirmed and partially priced (stock €252, +22% since April, peak €328; fwd P/E compressed 66→~53x *via estimate upgrades* — the multiple is being earned), while the memory-HB leg, the marginal driver of Q1's order doubling narrative, slipped again on Jul 7. Falsifier unchanged and now sharper: if Q2 (Jul 23) orders hold ≥€270M with management bridging the HB delay via logic/CPO, the miscategorization insight survives; if orders crack with the memory leg, the 2026–28 bridge thins. M&A stays excluded from conviction math (dormant since March, Dutch review unopened). Batch flag: correlated WFE premise stress-testing live.
 
 ## Related Research
 
@@ -267,3 +275,16 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ### 2026-06-01 (/sync)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: HBM wafer capacity ~5x in 4 years (123→331→668 kwspm) + rising back-end (TC-bonder) intensity supports HBM packaging/hybrid-bonding demand; conviction unchanged (high).
+
+### 2026-07-09
+- Mental models pass: batch-1 sweep populated ## Mental Models — #1 bottleneck-moves caveat proven live by JEDEC relaxation; VLM alpha test contested (takeover interest = consensus-recognized monopoly); M&A floor excluded from conviction math — conviction unchanged.
+- Mental models pass (evidence rerun): 8-agent web sweep — memory-HB leg slipped AGAIN (Jul 7: Samsung/SKH defer to 16-hi HBM4E, JEDEC eyeing ~1,000µm second relaxation, Hanmi TC bonders took HBM4 ramp; stock -7.5%), while orders (Q1 +104.5%), raised LT targets (€1.7-2.2B/45-55% OM) and logic/CPO leg (COUPE volume, Nvidia CPO switches shipping) confirmed strong; Kinex order = HBM dev-line per primary sources (2026-05-11 logic-line framing needs recheck); ASML exploring HB entry — conviction unchanged; Q2 print Jul 23.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: memory HB adoption slipped twice in 14 months (to HBM4E-16hi/HBM5, 2029+) while the market still pays ~70x FY26E / ~20x EV/sales for a near-term memory ramp; logic/CPO delivery is real but already recognized (+123% YoY). Snapshot: [[_Archive/Snapshots/BESI - BE Semiconductor Industries (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 0 material. Share price +23.3% to ~€255.30 (market cap ~€20.2B) since April print. Snapshot: [[_Archive/Snapshots/BESI - BE Semiconductor Industries (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (3 mapped rows re-rendered identical post-rounding), 0 material. Snapshot: [[_Archive/Snapshots/BESI - BE Semiconductor Industries (pre-numbers 20260712-184039)]]

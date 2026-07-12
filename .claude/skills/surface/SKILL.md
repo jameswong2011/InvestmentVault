@@ -16,7 +16,11 @@ Delegate the ENTIRE run (Step 0 pre-flight through Phase 4 output) to ONE `Agent
 
 **Mental Models reading gate MUST cross the delegation boundary (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** The subagent does NOT inherit CLAUDE.md, so the agent prompt MUST embed this gate verbatim: *"Before ranking any opportunity, read `Mental Models/Generalist - Overview.md` (always) + the matching `Mental Models/Industry - X.md` for sectors in scope + any relevant `Mental Models/Lens - X.md`. Apply the READING PROTOCOL — models are lenses/questions held as hypotheses, never verdicts; run the base-rate/outside view adversarially; treat agreement across models as a trigger to disconfirm, not to commit."* An agent prompt omitting this is a spec violation — surface's whole job (finding non-consensus inflections) is the READING PROTOCOL applied at portfolio scale.
 
-Why delegation, not frontmatter fork: `context: fork` was reverted 2026-06-07 (forked output returned as unrendered stdout — blank panel). Delegation keeps the read set (~50-80K words default, ~220K words `all` mode) out of main context while the main thread does the rendering. Main-context cost: the returned report only.
+**Recursion guard — the agent prompt MUST also embed verbatim:** *"You are the EXECUTOR of this skill run, not a coordinator: do NOT re-delegate any part of this work to further Agent calls — the 'Execution context — subagent delegation' section of the instructions you were passed applies to the main thread only and is already satisfied by your existence. Perform all reads, analysis, and writes yourself, and end your final message with the complete user-facing report."* Without this line the passed instructions include the delegation mandate itself — an invitation to recurse.
+
+**Scope Resolution ownership**: the MAIN THREAD resolves scope (Scope Resolution section below) BEFORE delegating and passes the resolved scope in the prompt; the subagent starts at Step 0 pre-flight with scope already fixed (Step 0's lock scope depends on it, so resolution cannot live inside the subagent).
+
+Why delegation, not frontmatter fork: `context: fork` was reverted 2026-06-07 (forked output returned as unrendered stdout — blank panel). Delegation keeps the read set (~150-200K words default with section-targeted thesis + sector reads; ~960K words `all` mode — full-read only) out of main context while the main thread does the rendering. Main-context cost: the returned report only.
 
 ## Step 0: Pre-flight (MANDATORY — runs before Scope Resolution)
 
@@ -35,13 +39,17 @@ For `/surface TICKER`, run `.claude/skills/_shared/preflight.md` Procedure 2. If
 Parse `$ARGUMENTS` to determine scope:
 
 - **`all`** (literal keyword): Full vault, **full-read mode** (comprehensive, legacy pre-2026-04-21 behavior). Reads every thesis, sector, and macro note in full. Use when doing a once-off deep review and willing to pay the larger context cost for maximum signal.
-- **Ticker** (e.g., `NVDA`): Read `_graph.md` and resolve the ticker's adjacency set — its thesis, sector note(s), macro note(s), cross-thesis references, and all linked research. Also include theses that share a sector (one ring outward) for competitive context.
-- **Sector** (e.g., `semiconductors`): Use `_graph.md` Sector → Theses reverse index to resolve all theses in that sector, plus the sector note, related macro notes, and their linked research.
+- **Ticker** (e.g., `NVDA`): Read `_graph.md` and resolve the ticker's adjacency set — its thesis, sector note(s), macro note(s), cross-thesis references, and all linked research. Also include theses that share a sector (one ring outward) for competitive context. **Adjacency-miss branch (thesis newer than the graph):** if the ticker has no adjacency entry in `_graph.md` BUT `Theses/TICKER - *.md` exists on disk (e.g. `/surface CBRS` when CBRS was created after the last `/graph` run), do NOT treat it as unknown — warn `ℹ️ [TICKER] not yet in _graph.md (created since last /graph run) — resolving from disk; run /graph last for full adjacency.` then resolve the scope set from the thesis file directly: its `sector:` frontmatter (→ sector note via the resolution procedure below) + its `## Related Research` wikilinks + Log-mentioned macro notes. This is the mirror of the existing archived-thesis validation (graph lists a file that's gone); here disk has a file the graph lacks.
+- **Sector** (e.g., `semiconductors`): Resolve the argument to a sector note via `_shared/sector-resolution.md` (the canonical procedure — case/whitespace/punctuation tolerant), NOT a raw case-sensitive `_graph.md` key lookup. Then use the `_graph.md` Sector → Theses reverse index (keyed on the RESOLVED sector-note name) to gather all theses in that sector, plus the sector note, related macro notes, and their linked research.
 - **No arguments / empty**: Full vault, **section-targeted mode** (default). Reads bounded per-thesis sections only — fast, lean, suitable for weekly/monthly cadence.
 
-Argument disambiguation: `all` is a reserved keyword (matches `/sync all` precedent). Never a ticker — no archived or live thesis with that filename pattern. Never a sector — no sector note named `all`. `$ARGUMENTS` is case-sensitive for ticker/sector match but `all` is accepted in any case (`all`, `ALL`, `All` all route to full-read mode).
+Argument disambiguation: `all` is a reserved keyword (matches `/sync all` precedent). Never a ticker — no archived or live thesis with that filename pattern. Never a sector — no sector note named `all`. `all` is accepted in any case (`all`, `ALL`, `All`).
 
-If a non-`all` scope is requested but `_graph.md` does not exist, warn: `⚠️ Graph missing — cannot scope. Run /graph first, or run /surface (default, section-targeted) or /surface all (full-read) without arguments.` Then stop.
+**Sector matching is case-INSENSITIVE via `_shared/sector-resolution.md`.** The prior "case-sensitive for ticker/sector match" rule made the skill's OWN documented example `/surface semiconductors` (and User Guide's) resolve to zero matches, because the graph key is `Semiconductors & AI Infrastructure`, not `semiconductors`. Route every sector argument through the resolution procedure; the ticker match stays exact (tickers are canonical uppercase/numeric filenames).
+
+**No-match behavior (both scoped modes).** If the argument resolves to neither a ticker (no `Theses/ARG - *.md` on disk AND no graph adjacency) NOR a sector (`sector-resolution.md` returns `match_confidence: none`), STOP with: `⚠️ /surface [ARG] — "[ARG]" matched no thesis (Theses/[ARG] - *.md) and no sector note (via sector-resolution). Check the ticker/sector name, or run /surface (no args) for a vault-wide scan. No research note written.` Do NOT silently fall back to a vault-wide scan (that would write a note the user didn't scope for).
+
+If a non-`all` scope is requested but `_graph.md` does not exist, warn: `⚠️ Graph missing — cannot scope. Run /graph first, or run /surface (default, section-targeted) or /surface all (full-read) without arguments.` Then stop. (Exception: the adjacency-miss branch above still resolves a ticker from disk when the graph merely lacks that one new thesis — a missing graph FILE is different from a graph that is present but stale for one ticker.)
 
 ### Scope-set existence validation (ticker-scoped and sector-scoped modes only)
 
@@ -98,12 +106,12 @@ Design rationale in `.claude/skills/surface/RATIONALE.md` §2.
 
 Read strategy branches by scope. The two full-vault modes trade completeness against main-session context budget:
 
-| Mode | Thesis reads | Expected read budget | Use when |
-|---|---|---|---|
-| `/surface` (default) | Section-targeted (frontmatter + 4 sections + last 5 Log) | ~50-80K words | Weekly / monthly cadence; part of a maintenance chain |
-| `/surface all` | Full read (entire file per thesis) | ~220K words | Once-off deep review; willing to pay larger context for maximum signal |
-| `/surface TICKER` | Full read of scope set | ~20-40K words | Ticker-focused insight discovery |
-| `/surface [sector]` | Full read (≤6 theses) or section-targeted (>6 theses) | ~20-80K words | Sector-level review |
+| Mode | Thesis reads | Sector reads | Expected read budget | Use when |
+|---|---|---|---|---|
+| `/surface` (default) | Section-targeted (frontmatter + 4 sections + last 5 Log) | Section-targeted (4 sections + last 5 Log, all ~50) | ~150-200K words | Weekly / monthly cadence; part of a maintenance chain |
+| `/surface all` | Full read (entire file per thesis) | Full read (all ~50) | ~960K words — **exceeds a single subagent context; run only on explicit `all` with the user accepting the cost** | Once-off deep review; maximum signal |
+| `/surface TICKER` | Full read of scope set | Full read of the ticker's sector note(s) only | ~20-40K words | Ticker-focused insight discovery |
+| `/surface [sector]` | Full read (≤6 theses) or section-targeted (>6 theses) | Full read of the one resolved sector note | ~20-80K words | Sector-level review |
 
 ### Unscoped default mode — section-targeted reads
 
@@ -120,25 +128,33 @@ python3 .claude/skills/_shared/extract_sections.py Theses/*.md \
 
    One call handles every thesis; output is grouped per file (`===== FILE: ... =====`) with a `--- missing sections: ... ---` line whenever a thesis lacks a requested heading (surface that as a template-drift signal, don't silently drop it). Exit 3 = a file was unreadable (self-validation); investigate rather than proceeding on partial output.
 
-2. **Issue steps 2-4 as a single parallel tool-call batch** (after Step 1's awk block lands): all Sector Note Reads (~13) + all Macro Note Reads (~6) + all heavily-cited research note Reads (~10-20) in ONE message with multiple Read invocations. Do NOT serialize. Total ~30-40 Reads lands in one round-trip.
-3. Read all **Sector Notes** in full (bounded set, ~13 files). Competitive dynamics, value chain analysis, and investor heuristics are needed in full.
-4. Read all **Macro Notes** in full (bounded set, ~6 files). Scenario frameworks require complete context.
+2. **Sector Notes are section-targeted too, NOT read in full.** There are **~50 sector notes ≈ 445K words** (the old "~13 files, read in full" count was stale by ~4× and, read in full, alone exceeds the delegated subagent's entire context — the run would silently truncate on exactly the sections the edge lives in). Extract only the highest-signal sector sections via the same helper:
+
+```bash
+python3 .claude/skills/_shared/extract_sections.py Sectors/*.md \
+  --sections "Key industry questions,Competitive dynamics,Investor heuristics,Mental Models" --log-tail 5
+```
+
+This cuts ~445K → ~110-130K words while keeping the non-consensus surface (Investor heuristics = what's priced in / where consensus is wrong; Competitive dynamics = pricing-power trajectory). Full-read a sector note ONLY if a specific opportunity thread requires its Product-level or Industry-history detail — targeted, not blanket.
+
+3. **Issue steps 3-4 as a single parallel tool-call batch** (after the Step 1 + Step 2 extractor blocks land): all Macro Note Reads (~8-9, full) + all heavily-cited research note Reads (~10-20) in ONE message. Do NOT serialize.
+4. Read all **Macro Notes** in full (bounded set, ~8-9 files). Scenario frameworks require complete context.
 5. For heavily cited research notes (appearing in ≥3 theses' Related Research via `_graph.md` orphan+adjacency lookup): read in full. All other research notes: trust the thesis Log citations as summaries.
 
-**Expected read budget**: ~50-80K words total (was ~220K words pre-R2). Reclaim: ~170K words = ~225K tokens per unscoped run.
+**Expected read budget**: ~150-200K words total (thesis-targeted ~35-50K + sector-targeted ~110-130K + macro ~15K + cited research). The prior "~50-80K" line assumed the stale 13-sector count; at 50 sectors even the targeted budget is larger, but it stays within a delegated subagent's context — a full-read of all 50 sectors (~445K words + ~127K thesis + macro > 600K words) would not. The `all` mode's true cost is ~960K words and MUST run full-read only when the user explicitly accepts it.
 
 ### `/surface all` mode — full-read comprehensive scan
 
 Use when the user wants maximum analytical depth for a once-off deep review. Reads every thesis file in full — accepts the larger main-session context cost for richer cross-thesis connection detection (particularly valuable for Business Model and Industry Context cross-referencing that section-targeted mode misses).
 
-**Issue ALL reads in steps 1-3 as a single parallel tool-call batch** — one message with every thesis Read (~42), every Sector Read (~13), and every Macro Read (~6) firing in parallel. Do NOT serialize. Typical batch: ~61 Reads landing in one round-trip instead of 61 sequential rounds. Step 4's heavily-cited research reads join the same parallel batch when `_graph.md` adjacency is already loaded; otherwise they land in a second parallel batch after the Step 1-3 batch returns.
+**Issue ALL reads in steps 1-3 as a single parallel tool-call batch** — one message with every thesis Read (~76), every Sector Read (~50), and every Macro Read (~8-9) firing in parallel. Do NOT serialize. Step 4's heavily-cited research reads join the same parallel batch when `_graph.md` adjacency is already loaded; otherwise they land in a second parallel batch after the Step 1-3 batch returns.
 
-1. Read every `Theses/*.md` in full (all 13 thesis sections). No awk extraction.
-2. Read all Sector Notes in full.
-3. Read all Macro Notes in full.
+1. Read every `Theses/*.md` in full (all 15 thesis sections). No extraction.
+2. Read all Sector Notes in full (~50).
+3. Read all Macro Notes in full (~8-9).
 4. For heavily cited research notes (≥3 theses in `_graph.md` adjacency): read in full — include in the parallel batch with steps 1-3 (one round-trip). For others: read on-demand when Phase 2 analysis surfaces a specific question about them.
 
-**Expected read budget**: ~220K words total (matches pre-R2 behavior), consumed inside the delegated subagent (see Execution context above) — main-session context receives only the final report. Default `/surface` (~50-80K subagent words) remains the lean routine-cadence choice; reserve `all` for once-off deep reviews.
+**Expected read budget**: ~960K words total (76 theses ~127K + 50 sectors ~445K + macro ~15K + cited research + growth since pre-R2) — this **exceeds a single delegated subagent's context window**. Run `all` mode only when the user explicitly requests it AND accepts that the subagent may need to chunk the read across multiple passes or that coverage of the lowest-signal sections may be partial; log any section dropped. Default section-targeted `/surface` (~150-200K subagent words) remains the lean routine-cadence choice and the safe default; reserve `all` for deliberate deep reviews where the user has accepted the cost.
 
 **Output differentiation**: `/surface all` research notes carry `source_type: synthesis` with `scope: all` in a `scope:` frontmatter field, so downstream review can distinguish deep-scan outputs from routine `/surface` scans. Filename: `Research/YYYY-MM-DD - Insight Surface Scan (all).md`.
 
@@ -233,5 +249,7 @@ Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Arc
 2. **Open Questions**: Add any critical blind spots or research gaps the scan exposed
 
 **Word cap**: After all `_hot.md` edits, check total word count. If over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap. If over 5,000 (hard cap), abort `_hot.md` update per contract.
+
+**Note body carries every Phase 3 field per opportunity — the Falsifier is mandatory in the saved note, not just the chat report.** If opportunities are rendered as a table, `Falsifier` is a required column; if as prose blocks, each opportunity ends with its `Falsifier:` line. A surfaced idea whose falsifier survives only in chat is unfalsifiable by the time anyone re-reads the note.
 
 Also report a concise summary to the user highlighting the top 3 most actionable insights.

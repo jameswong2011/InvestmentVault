@@ -1,13 +1,15 @@
 ---
 type: shared-contract
 purpose: Single source of truth for Log-entry prefixes that carry cross-skill semantic weight.
-last_reviewed: 2026-07-09
+last_reviewed: 2026-07-12
 ---
 
 <!--
 Editing note (2026-04-19): `/sync Step 2.5 skill-origin classification` added as a consumer to every "skill-origin" prefix (entries #5, #6, #7, #8, #9, #11, #12, #13, #14, #15). These prefixes signal that the originating skill already handled sector/macro propagation — `/sync` uses the list to skip redundant Step 4/5 re-propagation for thesis-only changes. See `/sync` Step 2.5 for consumer logic; `/lint #29` enforces alignment.
 
 Editing note (2026-05-22): `Numbers refresh:` (entry §18) added as a skill-origin prefix when `/numbers` was introduced. A numeric refresh of the Key Metrics table is hygiene, not analysis — `/sync` skips downstream propagation. Both `/sync` Step 2.5 enumeration (line ~311) and this registry updated atomically per the editing protocol below.
+
+Editing note (2026-07-12): `Metrics synced:` (entry §20) added as a skill-origin prefix when `/deepen --sync-metrics` mode was introduced. A metric-sync pass reconciles a note's own stale prose figures (across Summary/Insights/Questions/Risks/Key-Metrics-Notes-cells) against fresh data — already-refreshed by `/numbers` where available, or fetched fresh via the same FMP-first/web-search-fallback waterfall otherwise. This is hygiene/consistency maintenance, not new analysis — same rationale as `Numbers refresh:` — so `/sync` skips downstream propagation. Both `/sync` Step 2.5 enumeration and Step 3e drift-exclusion list, and this registry, updated atomically per the editing protocol below.
 -->
 
 
@@ -452,6 +454,53 @@ example: |
   ### 2026-05-22
   - Numbers refresh: 7 metrics updated, 2 material. Revenue growth decel +65%→+42% YoY. Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-numbers 2026-05-22-143055)]]
 breakage_if_changed: "/sync Step 2.5 stops classifying post-refresh theses as skill-origin → every /numbers run (recommended monthly cadence per /numbers SKILL.md §Recommended frequency) triggers full /sync propagation citing no actual research delta. Sector and macro notes accumulate analytical noise about market cap and EV/Revenue changes that carry no investment signal. /sync Step 3e drift detection stops excluding refresh entries → the drift window fills with monthly hygiene bookkeeping, biasing drift signal toward false positives on heavily-refreshed theses."
+```
+
+### 19. Cross-thesis signal
+
+```yaml
+prefix: "Cross-thesis signal via"
+case_sensitive: true
+match_anchor: line-prefix
+producer:
+  skill: /sync
+  step: Step 4b cross-thesis contradiction sweep (2026-07-09)
+  emits_when: the sweep finds a peer Active Thesis whose named assumption is CONTRADICTED by the source research — /sync appends a Tier B Log-only entry on the peer pointing at §Risks/§Bear Case
+consumers:
+  - skill: /sync
+    step: Step 2.5 skill-origin classification
+    role: skill-origin classifier (the entry is machine-written propagation output, already fully handled in the run that wrote it — without this classification the NEXT /sync would read the peer's entry as manual research and re-propagate, creating a feedback loop between sector peers)
+  - skill: /retro
+    step: §2.3 Log classification
+    role: skill-origin (machine propagation, not user conviction activity — excluded from VAULT_DIRECTION manual-signal weighting)
+example: |
+  ### 2026-07-09
+  - Cross-thesis signal via [[Research/2026-07-09 - AMD MI400 ramp - deep-dive]]: "NVDA rack-scale monopoly through 2027" contradicted by AMD evidence — MI400 rack systems shipping to two hyperscalers in Q4. Review §Risks/§Bear Case.
+breakage_if_changed: "Peer theses receiving contradiction signals get re-propagated on every subsequent /sync (feedback loop), and /retro counts machine-written bear-side appends as manual conviction activity, corrupting the alpha/reflection split."
+```
+
+### 20. Metrics synced
+
+```yaml
+prefix: "Metrics synced:"
+case_sensitive: true
+match_anchor: line-prefix
+producer:
+  skill: /deepen
+  step: "MS-7.5 (Metric-Sync mode finalize — atomic replacement of 'Metrics syncing — in progress' entry)"
+  emits_when: "/deepen --sync-metrics successfully applies ≥1 confirmed cluster to the thesis body"
+consumers:
+  - skill: /sync
+    step: Step 2.5 skill-origin classification
+    role: skill-origin classifier (a metric-sync pass reconciles the note's own stale figures against fresh Key Metrics data — no new qualitative claim, no research note, no thesis-level analytical delta. Same rationale as §18 Numbers refresh:.)
+  - skill: /sync
+    step: Step 3e drift detection
+    role: drift-exclusion (reconciliation carries no conviction sentiment — counting it in the last-5-entry drift window would pollute drift signal exactly as an unexcluded Numbers refresh: would)
+  - skill: audit-only (human-readable record: cluster count, location count, section count, data-source mix across Key Metrics table / FMP direct / web search, single most-significant cluster, safety snapshot path)
+example: |
+  ### 2026-07-15
+  - Metrics synced: 1 cluster updated across 4 locations in 4 sections (0 via Key Metrics table, 4 via FMP direct). Forward P/E 30x→22x, reconciled across Summary/Insights/Questions/Risks. Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-deepen-metrics-sync-2026-07-15-101500)]]
+breakage_if_changed: "/sync Step 2.5 stops classifying post-sync theses as skill-origin → every /deepen --sync-metrics run triggers full /sync propagation citing no actual research delta, flooding sector/macro notes with reconciliation noise carrying no investment signal. /sync Step 3e drift detection stops excluding sync entries → the drift window fills with mechanical reconciliation bookkeeping, biasing drift signal toward false positives on frequently-synced theses."
 ```
 
 ---

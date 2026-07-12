@@ -3,10 +3,11 @@ publish: true
 date: 2026-04-15
 tags: [thesis, lng, energy-commodities]
 status: active
-conviction: high
+conviction: medium
 sector: LNG & Natural Gas Infrastructure
 ticker: LNG
 source: Multi-source synthesis (Claude, ChatGPT, Gemini, Grok, web research)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # LNG — Cheniere Energy
@@ -140,11 +141,11 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$284 | Up ~45% YTD; Jefferies/Citi PT $330 |
-| Market Cap | ~$57B | ~200M diluted shares |
+| Stock Price | ~$259 | Up ~45% YTD; Jefferies/Citi PT $330 |
+| Market Cap | ~$54B | ~200M diluted shares |
 | Enterprise Value | ~$83B | Including ~$26.5B debt |
 | Trailing EV/EBITDA | 7.5-8.5x | vs 5-year avg ~9.8x |
-| FY2025 Revenue | $20.0B | +26% YoY |
+| FY2025 Revenue | $19.6B | +26% YoY |
 | FY2025 EBITDA | $6.94B | Record; 670 cargoes, 46M+ tonnes |
 | FY2025 Net Income | ~$5.3B | Q4 EPS $10.68 (beat $3.80 est.) |
 | FY2025 DCF | ~$5.3B | ~$25/share |
@@ -200,9 +201,13 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-10 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- [G-3] mean-reversion vs trend / duration mispricing: CONFIRMED under live stress — Q1 (May 7) printed a $3.5B GAAP loss on ~$4.8B derivative MTM while cash EBITDA hit a record $2.33B and FY26 guidance was raised to $7.25–7.75B; the market sold the accounting noise (-8%), exactly the toll-road-vs-optics divergence the thesis pre-registered. The thesis's own $230–250 stress band then traded during the June Islamabad-MoU compression and held.
+	- [G-7] ROIIC × runway: CONFIRMED accelerating — CCL Train 6 substantial completion Jun 12 (ahead of end-2026 target), Bechtel lump-sum EPC $4.69B + LNTP for SPL Phase 1 signed May 28, FID early 2027. Caveat: the thesis's "cascading VG execution risk" moat-widening claim was stale when written — Shell LOST its arbitration vs Venture Global (NY court denied vacatur Mar 2, 2026); only BP won.
+	- [G-13] expectations chain: the operating variable is post-crisis SPA signings at elevated fixed fees — NO DATA: zero announced SPAs in 3+ months since the Ras Laffan attack, despite Qatar's ramp-pause (Jul 9) and EU storage at 50% vs 75% norm. This is the monitorable separating "structural premium regime" from "borrowed spot windfall."
+	- Structural gap: **no ## Conviction Triggers section exists** — a high-conviction active thesis with no falsifiable → HIGH/LOW/CLOSE scaffolding.
+- **Disconfirming check** (evidence-updated 2026-07-10): the bear that survives evidence is the supply wave, not the ceasefire — Golden Pass first LNG late 2026, Plaquemines shipped 92 cargoes in Q1 alone, JKM already -14% m/m to $16.03 (Jul 1); if the Aug 6 print again shows no premium SPA and Qatar restarts faster than the 3–5-yr repair claim, the geopolitical premium was fully borrowed. Base rate: energy-infra names re-rated on war premia give the premium back within 2–3 quarters of normalization; the contract floor is contractual, the crisis alpha is not.
 
 ## Related Research
 
@@ -251,3 +256,15 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 ### 2026-05-24 (/sync all)
 - [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Polymarket peace-by-Jun-15 at 27¢ (off ~40% high) + new Hormuz tolling sticking point (UAE 50/50 odds on tolling-only deal) joins unresolved enriched-uranium redline — pushes any "peace catalyst" exit trigger past June. Ras Laffan repair timeline orthogonal to negotiation outcome; Scenario A persistence extends $120B contracted backlog protection + spot upside window. Conviction unchanged (high).
+
+### 2026-07-10
+- Mental models pass: batch-10 evidence sweep populated ## Mental Models — toll-road insight confirmed under live stress ($3.5B GAAP loss vs record cash EBITDA + guide raise to $7.25–7.75B), stress band $230–250 traded and held, but zero post-crisis premium SPAs in 3+ months is the falsifying watch item — conviction unchanged (high); no Conviction Triggers section exists, VG-arbitration claim stale, Q2 print Aug 6 + MoU expiry ~Aug 16.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: no multiple discount on crisis-boosted guidance at ~10.3x fwd EV/EBITDA vs 9.8x 5-yr average; zero premium-fee SPAs signed 3+ months post-crisis while JKM has fallen -12% m/m, suggesting the supply wave is winning over the crisis-premium narrative. Snapshot: [[_Archive/Snapshots/LNG - Cheniere Energy (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 0 material. Stock price ~$284→~$259 (-8.9%), market cap ~$57B→~$54B (-4.9%), FY2025 revenue $20.0B→$19.6B (-1.8%) — all below materiality thresholds. All other rows (EV, EV/EBITDA, EBITDA, net income, DCF, capacity/pipeline figures, buyback, dividend, credit rating) are custom metrics — left unedited. Snapshot: [[_Archive/Snapshots/LNG - Cheniere Energy (pre-numbers 20260712-173930)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Stock Price, Market Cap, FY2025 Revenue all identical to prior refresh after rounding. Snapshot: [[_Archive/Snapshots/LNG - Cheniere Energy (pre-numbers 20260712-183935)]]

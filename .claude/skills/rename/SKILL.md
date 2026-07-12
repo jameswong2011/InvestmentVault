@@ -212,19 +212,25 @@ ls "Theses/TICKER - [old_name].md" 2>/dev/null  # should produce no output
 
 Grep vault (excluding `.git/` and `_Inbox/processed/`), Edit each file. **`_Archive/` (root archived theses), `_Archive/Sectors/`, `_Archive/Research/`, and `_Archive/Snapshots/` are NOT excluded** — every one of these locations holds notes that may carry `[[Theses/TICKER - old_name]]` wikilinks. Stale wikilinks in archived sector or research notes break Obsidian rendering on browse and break `/rollback` integrity if those archives are ever restored. Stale wikilinks in snapshot bodies break `/rollback` content fidelity (§3.1).
 
-Seven wikilink patterns (§5 — includes 2 archive-specific forms beyond the 5-form canonical contract):
+**Prefix-rewrite rule (§5 — supersedes the old 7-pattern enumeration).** Rewrite by the wikilink STEM, not by enumerating suffix combinations. Every inbound link to the thesis begins with one of two stems:
 
-| Pattern | Replacement |
-|---|---|
-| `[[Theses/TICKER - old_name]]` | `[[Theses/TICKER - new_name]]` |
-| `[[Theses/TICKER - old_name\|alias]]` | `[[Theses/TICKER - new_name\|alias]]` (preserve alias) |
-| `[[Theses/TICKER - old_name#section]]` | `[[Theses/TICKER - new_name#section]]` (preserve anchor) |
-| `[[Theses/TICKER - old_name.md]]` | `[[Theses/TICKER - new_name.md]]` |
-| `[[TICKER - old_name]]` | `[[TICKER - new_name]]` (folder-less, less common) |
-| `[[TICKER - old_name\|alias]]` | `[[TICKER - new_name\|alias]]` |
-| `[[TICKER - old_name#section]]` | `[[TICKER - new_name#section]]` |
+- `[[Theses/TICKER - old_name`  → `[[Theses/TICKER - new_name`
+- `[[TICKER - old_name`         → `[[TICKER - new_name` (folder-less form)
 
-**Edit-per-file approach**: per file with matches, single `Edit` with `replace_all: true` per pattern. Atomic; bounded failure blast-radius.
+…and the stem is followed **immediately** by exactly one character from the **boundary set `{ ] . # | }`**:
+
+| Boundary char after `old_name` | Link form | Example |
+|---|---|---|
+| `]` | bare | `[[Theses/TICKER - old_name]]` |
+| `.` | `.md` suffix (± anchor/alias) | `[[Theses/TICKER - old_name.md]]`, `[[Theses/TICKER - old_name.md#Outstanding Questions]]`, `[[Theses/TICKER - old_name.md\|alias]]` |
+| `#` | anchor | `[[Theses/TICKER - old_name#Bull Case]]` |
+| `\|` | alias | `[[Theses/TICKER - old_name\|Company]]` |
+
+Rewriting the STEM automatically preserves every suffix — `.md`, `#anchor`, `\|alias`, AND their combinations (`.md#anchor`, `.md\|alias`) — because only the `old_name` portion changes and everything after the boundary char is untouched. The old table enumerated 7 forms and **missed `.md#anchor`, `.md\|alias`, and the three folder-less `.md` variants**, silently breaking those links on rename (real vault exposure: `[[Theses/SOI - Soitec.md#Outstanding Questions]]` + 18 escaped-pipe `[[Theses/… \| alias]]` links).
+
+**Boundary-set guard (do NOT over-match):** only rewrite when the next char is in `{ ] . # | }`. This prevents a rename of `Meta` from clobbering `[[Theses/META - Meta Platforms]]` (next char after `Meta` is a space, not a boundary char). When old_name is a strict prefix of another thesis name, the boundary guard is what keeps them distinct.
+
+**Edit-per-file approach**: per file with matches, one `Edit` with `replace_all: true` for the `[[Theses/TICKER - old_name` stem and one for the `[[TICKER - old_name` stem. Since Edit does literal-substring replacement, replacing the stem string (which ends at `old_name`, before the boundary char) is inherently boundary-safe — a longer name like `old_name Plus` contains the stem but the replacement correctly rewrites only the `old_name` portion, leaving ` Plus` intact; verify post-Edit that no unintended thesis was touched (Step 5 tracking). Atomic; bounded failure blast-radius.
 
 **Self-references in renamed thesis**: covered by same rewrite (e.g., template scaffolding wikilinks back to the thesis itself).
 

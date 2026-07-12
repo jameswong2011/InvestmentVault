@@ -3,9 +3,10 @@ publish: true
 date: 2026-04-15
 tags: [thesis, semiconductors, NAND, SNDK, SanDisk, memory, AI-storage, HBF]
 status: active
-conviction: high
+conviction: medium
 sector: NAND Memory & Storage
 ticker: SNDK
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # SanDisk Corporation (SNDK) — The AI Storage Pure-Play Building the Missing Memory Tier
@@ -84,59 +85,93 @@ HBF borrows architectural principles from HBM to create what is effectively "NAN
 
 ## Industry Context
 
-**The AI Memory Hierarchy and the "Missing Middle":**
+SanDisk is a **true cyclical (contestable capacity + commodity output) priced at the sharpest margin peak in NAND history** — Q3 FY2026 gross margin hit **78.4%** vs 65–67% guided, and no NAND vendor has held >70% gross margin beyond ~3 quarters in the industry's history. Three forward questions decide whether this is a cycle top to fade or a genuine reclassification toward semi-cyclical (the [[Industry - Semiconductors]] #13 call, held here as a live tension, not a verdict): (1) is SanDisk's **production cost/yield edge structural** or a shared-JV artifact that commoditizes; (2) does **HBF create an owned layer** or a co-led open standard NVIDIA routes around; (3) does the **NAND supply/demand deficit persist to 2030** or roll in 2027–28. The evidence below arms both sides — the disconfirming datapoints are dated at the end.
 
-The AI data center architecture in 2026 has a clearly defined memory hierarchy with a conspicuous gap:
+**The AI memory hierarchy and the "missing middle":**
 
 | Tier | Technology | Speed | Capacity | Cost/GB | Purpose |
 |------|-----------|-------|----------|---------|---------|
 | L1 | GPU Registers/SRAM | Fastest | KB–MB | Extremely high | Active computation |
 | L2 | HBM (HBM3E/HBM4) | ~2 TB/s | 24–144GB | $8–10 | GPU-adjacent; model weights, hot KV cache |
-| **GAP** | **Nothing exists** | — | — | — | **"Working memory" for inference** |
-| L3 | Enterprise SSD (NVMe) | ~14 GB/s | 4–245TB | $0.10–0.20 | Cold storage, training data, checkpoints |
+| **GAP** | **HBF (2027+) contested — see below** | **1.6 TB/s** | **512GB–1.5TB** | **~$1** | **"Working memory" for inference** |
+| L3 | Enterprise SSD (NVMe) | ~14 GB/s | 4–256TB | $0.10–0.20 | Cold storage, training data, checkpoints |
 | L4 | HDD | ~0.5 GB/s | 20–30TB | $0.02 | Archive, backup, data lake |
 
-NVIDIA CEO Jensen Huang described this gap as a "completely unserved market" at CES 2026, predicting it could become "the largest storage market in the world." SanDisk's HBF technology is designed to fill this gap with 1.6 TB/s bandwidth and 512GB–1TB capacity at ~$1/GB. If HBF achieves adoption, it creates a market that literally didn't exist before — estimated at $12B by 2030 by industry analysts.
+Jensen Huang called this gap a "completely unserved market" at CES 2026. The unresolved question is *who fills it and how* — on-package HBF (SanDisk/SK Hynix), or networked flash reached via NVIDIA's own DPU path (see HBF subsection). Both validate NAND-as-AI-memory-tier; only one carries a premium for SanDisk.
 
-**The NAND Supercycle (2025–2027):**
+### NAND supply & demand to 2030 — the cycle math
 
-The current NAND cycle is structurally different from historical boom-bust patterns for three reasons:
+**The second derivative has already rolled.** NAND contract pricing decelerated from **+70–75% QoQ (Q2 2026) to +10–15% QoQ (Q3 2026, TrendForce July 2026)** — still rising, but the pace collapsed. This corrects the vault's earlier "flat-to-−5%" read: *blended* contract is not negative; **only client SSD, NAND wafer, and spot/consumer are flat-to-soft, while enterprise SSD keeps climbing.** Per [[Industry - Semiconductors]] #7, this is the classic "units-up + price-increments-fading" signature of a cycle transitioning from shortage toward peak — the phase clock now runs ahead of the "supercycle-through-2027" narrative clock.
 
-1. **Zero-sum capacity allocation between HBM and NAND:** Samsung and SK Hynix are diverting up to 40% of advanced wafer capacity to HBM production. This creates a structural NAND supply constraint enforced by competitors' capital allocation decisions — not voluntary discipline (which always breaks). NAND capex in 2026 is $22.2B (+5% YoY) versus DRAM capex of $61.3B (+14%).
+| Year | Bit demand growth | Bit supply growth | Balance | Contract pricing direction |
+|------|-------------------|-------------------|---------|----------------------------|
+| 2026 | +20–22% | +15–17% | 3–7pp deficit | Up sharply H1, decelerating H2 (Q3 +10–15%) |
+| 2027 | ~16–20% (AI/eSSD-led) | Mid-to-high teens; new fabs not yet in volume | Deficit narrows, tips mid-year | **Peak then roll H2** (bull: still tight; Yole: down-cycle begins) |
+| 2028 | ~15–16% | Rising — P5, Micron Fab 10B (both H2'28), YMTC Wuhan-3 | Surplus risk | Normalizing / down |
+| 2029 | ~14–16% | Elevated (Kioxia 2× vs FY24, YMTC ramp) | Oversupply plausible | Trough / normalization |
+| 2030 | ~14–16% (IDC ~16% bit-CAGR '24–'29) | Density-led + YMTC | Balancing; HBF net-new upside | Normalized; long-run ASP erosion reverts toward ~13%/yr |
 
-2. **AI demand is secular, not cyclical:** Hyperscaler capex exceeds $660B in 2026. Enterprise SSDs are surpassing smartphones as the single largest NAND end market for the first time. AI training data requirements (Llama 3 = 2.4 exabytes), checkpoint storage (105GB–18TB per save, every 1–4 hours), and inference data serving create sustained, growing demand.
+**Supply is the consensus blind spot, and it cuts both ways.** Near-term the deficit is real and *structural*, not voluntary discipline: Korea+US NAND wafer capacity has been **cut ~40% from the Q4-2022 peak (~1,100K → 670–700K wpm)**, Samsung is **physically removing NAND tools and converting lines to DRAM**, and 2026 NAND capex is just **$22.2B (+5%) vs DRAM $61.3B (+14%)**. The mechanism is margin arbitrage — HBM ROIC ~2× NAND, SK Hynix operating margins ~62% — so **the NAND deficit is mathematically protected only as long as the HBM-to-NAND margin spread stays wide** (per [[Sectors/NAND Memory & Storage]]: HBM gross margin is the single best leading indicator of NAND cycle exit). But the same 2025–26 panic seeded a **2028–29 supply wave** — Samsung P5 (MP H2 2028, likely net-neutral as it backfills converted NAND), **Micron Fab 10B ($24B, H2 2028)**, Kioxia doubling bits by FY2029, and **YMTC scaling Wuhan-3 toward a stated ~500K-wpm ambition** — landing exactly on the historical 18–30-month-lagged bust timing ([[Industry - Semiconductors]] #3/#17). SanDisk and Kioxia are themselves now marginal supply: **combined Flash Ventures capex +41% YoY**.
 
-3. **Institutional reluctance to build greenfield NAND capacity:** Post-2022 industry losses ($252B+ cumulative operating losses across the industry) created deep institutional reluctance to fund $10–24B greenfield fabs with 7–10 year payback periods. The only greenfield NAND fab under construction is Micron's Singapore Fab 10B (H2 2028 earliest).
+Demand mix is the durability argument. **Enterprise/AI SSD overtook smartphones as the single largest NAND end-market in 2026** (~16TB SSD per high-end AI GPU; an NVL72 rack ≈ 1.16 PB of NAND). Consumer is the offsetting drag — Gartner sees **global PC units −10.4% in 2026** as memoryflation pushes memory to ~35% of PC BOM (from 15–18%), forcing spec cuts. Net industry revenue: 2025 NAND ~$65–70B → 2026 estimates span **$94B (Gartner, stale) to $147B (TrendForce, +112%)**; a clean 2030 $-TAM is genuinely un-forecast by tier-1 houses (realistic $100–150B+ depending on where ASP normalizes). This directly feeds [[Theses/PSTG - Pure Storage]] COGS and parallels the [[Macro & Technology/DRAM Memory Cycle - Duration, Peak Timing and Second-Order Effects|DRAM cycle note]]'s "equities lead prices by ~2 quarters" framing — the NAND price peak (H2 2027 consensus) is later than the equity risk/reward inversion.
 
-**Pricing evidence:** NAND contract prices rose 55–60% QoQ in Q1 2026. Wafer prices up 246% YoY. A 30TB enterprise TLC SSD surged from $3,062 to $10,950 in 9 months. QLC NAND is backordered by two years. All 2026 production is sold out; customers negotiating 2027 allocations.
+### Production cost & yield delta vs peers
 
-**NAND Market Share and Competitive Position:**
+**The 78.4% gross margin is a price story, not a cost story — and the distinction is the whole thesis.** Gross margin moved 51.1% → 78.4% in one quarter while bit shipments were flat-to-down; cost-per-bit cannot move 27 points in a quarter. Management attributes the beat to **"mix shift and the pricing environment, not cost reductions."** The JV + technology edge explains a defensible mid-cycle *floor* (NAND mid-cycle GM historically 25–40%), never the peak.
 
-SanDisk's ~12% NAND market share makes it the fifth-largest supplier globally (behind Samsung 30–35%, SK Hynix/Solidigm 20–25%, Micron 15–20%, and Kioxia 14%). However, market share understates SanDisk's competitive position because:
+Absolute $/GB and yield-% are **modeled, not disclosed** — no vendor publishes them, so the vault's prior $0.055–0.077/GB bands are unverifiable model outputs. What *is* measurable (bit density, deck count, relative wafer cost) revises the prior cost ranking on two names:
 
-1. **Consumer brand dominance:** #1 global brand in removable flash storage. This translates to pricing power and retail channel control that pure-play enterprise suppliers lack.
-2. **Flash Ventures access:** Cost-plus wafer economics from Kioxia JV give SanDisk integrated-like margins without integrated-like capex. Combined Kioxia/SanDisk output is ~30% of global NAND bits.
-3. **HBF first-mover position:** Only NAND supplier with a commercially-oriented product designed for the HBM-SSD gap, with SK Hynix partnership for standardization.
-4. **Pure NAND focus:** Unlike Samsung, Micron, and SK Hynix (whose management attention and capex are split across HBM, DRAM, and NAND), SanDisk directs 100% of R&D and capital toward NAND and flash innovation.
+| Vendor (leading node) | TLC density | Decks for that density | Rel. wafer cost | Node-transition yield posture | Structural cost read |
+|---|---|---|---|---|---|
+| **Kioxia/SanDisk — Flash Ventures** (BiCS10 332L) | **>29 Gb/mm² (industry lead)** | fewest HAR-etch steps for density | **~$2,000 (UBS — lowest)** | BiCS10 sampling 2026 → MP 2027 | **Cost + density leader** |
+| Micron (G9 276L) | 21.5 Gb/mm² (measured) | **2 decks** | Model-dependent | "Mature yields in record time" | **Now cost-competitive — contradicts prior "laggard" tag** |
+| SK Hynix/Solidigm (V9 321L) | 21 Gb/mm² | **3 decks** (V8→V9: +30% process, +20% etch steps) | ~$6,000 (UBS) | High step-count | Structurally expensive despite first QLC |
+| Samsung (V9 286L / V10 400L+) | n/d — QLC delayed | 1 → 2 (V10 W2W) | ~$4,000 (UBS) | Cryo-etch delays; dual-node slip | Density/cost **laggard** at leading edge |
+| YMTC (Xtacking 294L) | ~20.5 Gb/mm² | 2 (W2W) | Subsidy-driven | Opaque | Edge is subsidy/price (>15%), **not density** |
 
-**Enterprise SSD Competitive Landscape:**
+Two revisions to the prior vault view: **Micron's 2-deck G9 achieves the same 21 Gb/mm² SK Hynix needs 3 decks for — making Micron cost-competitive-to-leading, not the cost laggard the thesis previously assumed**; and **SanDisk/Kioxia's edge is not primarily "CBA architecture."** UBS pegs Kioxia wafer cost at **~$2,000 vs Samsung ~$4,000 and Micron/SK Hynix ~$6,000** — ~50% of Samsung — and attributes it to **lateral (cell-shrink) scaling discipline + JV capex-sharing + Japan fab base**, not CBA per se. The "12–15% CBA cost advantage" claim is not cleanly corroborated (vendors decline to quantify it; the disclosed figure is ~10% cost/GB from *staying at 332L vs racing to 400L+*). Critically, **this architecture edge commoditizes by 2027–28** as all five vendors reach wafer-to-wafer hybrid bonding (Kioxia/YMTC 2024–25 → Samsung 2026 → SK Hynix/Micron 2027) — W2W bonding is "already mature and not particularly expensive." The durable moat is wafer-cost discipline + the JV, not the bonding technique.
 
-| Supplier | Enterprise SSD Share | Key Advantage | Key Weakness |
-|----------|---------------------|---------------|--------------|
-| Samsung | ~35% | Scale, V9/V10 NAND, bundling with DRAM | Attention split across HBM/DRAM/Foundry |
-| Solidigm (SK Hynix) | ~30% | Intel NAND heritage, SK Hynix backing | Integration complexity; HBM-focused parent |
-| Micron | ~15-20% | US-based, NVIDIA qualified, 9550 MAX performance | HBM ramp consuming management focus |
-| **SanDisk** | **~4.1%** | **CBA/BiCS8 tech, HBF optionality, JV cost structure** | **Scale disadvantage, building enterprise relationships** |
-| Kioxia | ~10% | Die-supply model, LC9 245TB, inventor heritage | PE overhang, limited enterprise brand |
+**The forward cost-curve is the bear's strongest card.** Bit-cost decline is decelerating — Micron guides to **"low-to-mid-teens %/yr" (down from the ~21% 3D-NAND-era rate)** — as HAR-etch physics, string-stacking, and rising capital intensity bite (1,000 layers by 2030 yields only ~100 Gbit/mm², i.e. 3× layers → ~3.4× density, sublinear). SanDisk is **one node behind on raw layers** (332L vs Samsung V10 400L+, SK Hynix 375L) but ahead on density-per-wafer. The genuinely thesis-critical fork: bears argue **BiCS10 *inverts* the historical cost-per-bit downtrend** (rising per-bit cost → margin compression from the 78.4% peak independent of the price cycle); management claims capex-as-%-of-revenue "continues down substantially." Unresolved until the Aug 2026 print/Investor Day.
 
-The critical observation: SanDisk's enterprise SSD share is disproportionately low relative to its technology position and NAND scale. The Stargate program represents the catalytic effort to close this gap. If 2–3 of the 5 pending hyperscaler qualifications convert in 2H 2026, enterprise SSD revenue could step-change.
+**JV structure carries an under-appreciated downcycle risk.** SanDisk (49.9%) pays cost-plus-small-markup on wafers, funds ~half of Flash Ventures capex — but **pays half of FV *fixed* costs regardless of output taken**, i.e. operating deleverage in a downturn. The $1.165B services agreement (2026–2029) and JV extension to 2034 lock the structure in both directions.
+
+### NAND competitive position & the $42B contracted book
+
+SanDisk's ~12% NAND share ranks it #5 (Q1 2026 top-5 revenue: Samsung $13.5B/31.6% · SK Hynix+Solidigm $7.5B · Kioxia $6.0B · **Micron & SanDisk ~$5.95B each**, SanDisk datacenter revenue +200% QoQ). Combined Flash Ventures output with [[Theses/285A - Kioxia]] is ~30% of global bits. The genuinely new structural datapoint is the **"New Business Model" contracted book: ~$42B minimum contractual revenue across five multi-year agreements, >$11B in third-party financial guarantees, $0.4B prepayments, covering >1/3 of expected FY27 bit shipments (targeting >50%).** This is the vault's strongest evidence for a #13 reclassification toward semi-cyclical — it manufactures qualification-like stickiness in a commodity business — but near-term pricing is fixed while longer-dated tranches stay variable, so downside protection is *partial and untested through a real downcycle*.
+
+Enterprise SSD remains the growth lever and the weakness: SanDisk holds ~4% share vs Samsung ~35%, Solidigm ~30%, Micron ~16%. The **256TB UltraQLC (Stargate controller ASIC, BiCS8 QLC; 128/256TB shipping H1 2026 → 512TB 2027 → 1PB roadmap)** is the catalytic product — 2 hyperscaler qualifications active, 3 more + a top storage OEM in the CY2026 pipeline. Within-western spec deltas are <10%; procurement is decided by qualification track record (SanDisk <3 years post-spin vs 15+ for incumbents), not datasheets.
+
+### HBF & novel flash — the 2027–2030 financial call
+
+**HBF is a margin/multiple/optionality story for 2030+, not a revenue engine by 2030 — and the market prices it correctly as a call option (no bank models a discrete HBF revenue line).** Gen1 spec: 16 stacked BiCS dies + logic via CBA, **512GB/stack, 1.6 TB/s (HBM4-stack-equivalent bandwidth), ~$1/GB (≈10× cheaper than HBM), 8–16× HBM capacity.** Sizing from the industry HBF TAM ($1B 2027 → **$12B 2030**, SK Hynix single-source) × SanDisk share:
+
+| Year | Industry HBF TAM | Bear (SNDK ~15%) | Base (SNDK ~27.5%) | Bull (SNDK ~38%) |
+|------|------------------|------------------|--------------------|-------------------|
+| 2027 | $1B | ~$0.15B | ~$0.25B | ~$0.4B |
+| 2028 | ~$2.5–3B | ~$0.4B | ~$0.8B | ~$1.1B |
+| 2029 | ~$5–7B | ~$0.9B | ~$1.7B | ~$2.5B |
+| **2030** | **$12B** | **~$1.8B (~6% of rev)** | **~$3.3B (~9–10% of rev)** | **~$4.6B (~11–12% of rev)** |
+
+Even the bull case is ~12% of revenue in 2030; the volume inflection (KAIST's "HBF surpasses HBM") is a **2038** call, not a 2030 one. HBF matters more for *profit mix* than revenue — it sells at ~HBM-stack pricing on NAND-like cost, so its margin contribution exceeds its revenue share — but the current re-rating is NAND-supercycle-driven, not HBF.
+
+**Three findings reframe HBF against the thesis's prior "TAM-creation, first-mover" framing:**
+
+1. **SanDisk co-leads, does not own.** It authored an *open* OCP/JEDEC standard (with SK Hynix) deliberately to set terms before Samsung defines a proprietary alternative. Samsung (independent HBF R&D), YMTC (Xtacking HBF), and even **JV partner Kioxia — which declined HBF for its own XL-Flash/GP-Series 100M-IOPS SSD path** — all crowd the category. Realistic 2030 share ~25–30%. Under [[Lens - Value Layer Monopoly]] this is a **weak layer-monopoly fit**: an open standard is not an owned layer, and the layer below (the GPU platform) can squeeze it.
+
+2. **NVIDIA is the swing factor and the mid-2026 signal is adverse.** NVIDIA has shown **no interest in on-package HBF** and is building the competing path — **ICMS/CMX on the BlueField-4 DPU (networked NVMe SSDs) + GPU-Initiated Direct Storage (GIDS)** — reaching flash *around* the GPU package, plus a Kioxia Gen7 SSD collaboration. SK Hynix — HBF's own co-developer — is simultaneously building NVIDIA's "AIN-P" 100M-IOPS SSD that could "eliminate the need for HBF entirely." Net: NVIDIA's roadmap **validates NAND-as-AI-memory-tier (bullish for SanDisk eSSD/bits broadly) while routing around the high-margin HBF-on-package product** SanDisk is banking on. The [[Theses/NVDA - Nvidia]] Bluefield-4 vector cited in the Bull Case is double-edged — it is both third-party validation *and* the disintermediation risk.
+
+3. **Optane-failure risk is real, ~45–55% for "disappoints into a niche."** HBF avoids Optane's fatal single-source and bespoke-fab traps (multi-source standard, reuses NAND/HBM infrastructure → soft-fail, not a $7B write-off). But it repeats the decisive one — *needs a platform owner (NVIDIA) it cannot force* — and adds an **endurance–density–cost trilemma**: ~100K-cycle endurance confines HBF to read-mostly weights (not the hot KV cache), and hitting that endurance may require SLC, which halves density and erodes the ~$1/GB advantage that is HBF's entire reason to exist. Catastrophic write-off risk is lower (~15–25%). The binary: does NVIDIA put HBF on-package on a Rubin-successor?
+
+Novel flash beyond HBF nets modestly positive but mostly *not to SanDisk*: 3D NAND layer-scaling to ~1,000 layers (post-2030) is the core cost engine; **XL-Flash/SCM accrues to Kioxia, not SanDisk**; Samsung's revived **Z-NAND** threatens the SCM tier; PLC (5-bit) and FeNAND are post-2030 non-factors where SanDisk is a follower. SanDisk's differentiated IP is the compute-co-location patent (US 12,430,274 B2 — processor bonded onto a CBA NAND tile with HBM on a shared interposer, up to 4TB), "beyond HBF."
+
+**Disconfirming datapoints, dated:** the classification tension resolves at the **~Aug 5, 2026 Q4 print + first FY27 guide** (does the guide imply GM holding >65%, or reversion?) and the **Aug 13 Investor Day** (does BiCS10 hold or invert the cost curve?); the **HBF fork resolves only when NVIDIA commits or doesn't** to on-package HBF on a post-Rubin platform; and the **2028–29 supply wave + HBM-to-NAND margin spread** are the leading indicators of cycle exit. Base rate (adversarial, per the READING PROTOCOL): every one of ~8 NAND upcycles since 1995 ended in a 40–60% peak-to-trough margin round-trip, and the 79–81% Q4 guide bets against that base rate with a contracted book as the justification — a bet worth monitoring, not assuming.
 
 ## Key Metrics
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | $944.51 | Up ~3,271% from $28 spin-off debut (Feb 2025) |
-| Market Cap | ~$200B+ (est.) | Based on $944 × ~212M diluted shares |
+| Stock Price | $1,915.92 | Up ~3,271% from $28 spin-off debut (Feb 2025) |
+| Market Cap | ~$284B (est.) | Based on $944 × ~212M diluted shares |
 | Q2 FY2026 Revenue | $3.025B | +61% YoY, +31% QoQ; beat by $350M |
 | Q3 FY2026 Revenue (guide) | $4.4–4.8B | Acceleration continuing |
 | Q2 FY2026 Gross Margin | 51.1% | Guided 65–67% for Q3 |
@@ -189,9 +224,14 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-4 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (mean-reversion vs trend, expectations) · [[Industry - Semiconductors]] (#3, #7, #13, #18, L1) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#13 — the classification call of the whole vault, now at maximum tension*: the vault's own 2026-05-24 rebalancing labeled SNDK "Tier 3 true cyclical, CUT, Q3 print as sell window" — the stock then **tripled** post-print to $2,354 before the July -30%. The evidence for reclassification toward semi-cyclical is now real: **"New Business Model" — $42B minimum contracted revenue across 5 multiyear agreements, $11B+ financial guarantees, >1/3 of FY27 bits covered targeting >50%** — the single strongest structural datapoint since creation, exactly the L1 contracted-markets pattern. The evidence for cyclical is equally real: **calendar-Q3 NAND contract pricing rolled flat-to--5%** — the first rollover after three surging quarters, while DRAM keeps rising. Insight #2 (structural margins) and the mean-reversion base rate now have a dated arbiter: the FY27 guide framing at the ~early-Aug Q4 print.
+	- *Q3 FY26 blowout* — the thesis's own make-or-break CONFIRMED at a scale beyond its bull case: revenue $5.95B (+251%, ~$1.2B above guide high), GM 78.4% vs 65–67% guided, EPS $23.41 vs $12–14; Q4 guide $7.75–8.25B / GM 79–81% / EPS $30–33; $6B buyback at cycle high (read both ways).
+	- *#7 cycle-phase decomposition* — units up + prices up (shortage) transitioning to units up + prices flat (healthy expansion?) in ONE quarter; the DRAM:NAND divergence (AI consumes DRAM/HBM 5–8:1; inference-NAND demand is 2027–28) undercuts the "NAND supercycle through 2027" plank even as the contracted book insulates near-term P&L. Supply discipline eroding at the edges: Samsung P5 NAND expansion, Kioxia +66% capex weighing a third fab — bit impact late-2027/2028.
+	- *HBF (Insight #1)* — timeline CONFIRMED (samples H2'26, devices early-'27; SK Hynix OCP standardization live) but the moat narrowed on both flanks: **NVIDIA built its own KV-cache-to-flash tier** (Rubin ICMS + GIDS on Vera Rubin H2'26) — validating the "missing middle" while routing around HBF-on-package — and Samsung + SK Hynix + YMTC all target HBF-class parts by 2027. HBF is becoming a category SNDK co-leads, not owns; the option is worth less per unit but more likely to pay.
+	- *Valuation decomposition (the +3,638% 1Y)* — overwhelmingly earnings revision, not multiple: ~29x FY26 consensus but **~9.5x FY27E** ($204 EPS) — the entire multiple debate is whether FY27 EPS is real, which is the same question as #13 above. July rout: -30% from ATH on the Meta excess-compute signal (Risk #7's first real-world datapoint) + Samsung sell-the-news.
+- **Disconfirming check** (evidence-updated): the models genuinely split — L1/contracted-book says regime change, #3/#7 says the sharpest NAND price ramp in history just ended and five suppliers are adding capacity into it. The thesis has **no Conviction Triggers section** to arbitrate (structural gap — write one; suggested LOW: FY27 guide implies GM <65% OR NAND contract prices -10%+ for 2 consecutive quarters; suggested HIGH: NBM coverage >50% of FY27 bits at fixed pricing). Single falsifiers, dated: ~early-Aug Q4 print (FY27 guide vs the flat NAND tape; first cost-plus JV wafer reset); Kioxia US listing (spring 2027) as the "cheaper NAND play" relative-value drain. Base rate: no NAND vendor has held >70% GM for more than 3 consecutive quarters in the industry's history — the Q4 guide (79–81%) is betting against that base rate with contracts as the justification.
 
 ## Related Research
 - [[Research/2026-01-18 - SNDK - Gemini AI Investment Canvas]] — Comprehensive SanDisk AI storage thesis, HBF technology deep dive, financial analysis
@@ -212,6 +252,7 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 3 true cyclical; CUT High→2-3% (65-67% GM guide unprecedented in NAND history = cycle peak; keep HBF option only)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — DRAM/HBM supercycle read; adjacent NAND context (memoryflation + supply-discipline parallels), no NAND-specific delta
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": Bluefield-4 KV-cache-to-NAND independently validates the HBF "missing middle" NAND-as-AI-memory-tier thesis via NVIDIA's DPU path (added to Bull Case)
+- [[Research/2026-07-12 - SNDK - Industry Context (Cost, HBF, Supply-Demand to 2030) Deep Dive]] — Deepen support: production cost/yield vs peers (UBS wafer cost, deck-count, CBA commoditization), HBF financial model to 2030 (~9–10% of rev base case, NVIDIA ICMS route-around), NAND supply/demand to 2030 (Q3 pricing decel to +10–15%, 2028–29 supply wave)
 
 ## Log
 ### 2026-04-16 (NAND sector research sync)
@@ -261,3 +302,18 @@ The critical observation: SanDisk's enterprise SSD share is disproportionately l
 
 ### 2026-06-02 (/sync)
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: NVIDIA Bluefield-4 KV-cache-to-NAND ("third network") added as Bull vector — independent validation of the HBF "missing middle" thesis via NVIDIA's DPU/networking path; net-new high-performance-NAND demand. Conviction unchanged (high). Snapshot: [[_Archive/Snapshots/SNDK - SanDisk (pre-sync 2026-06-02-121812)]]
+
+### 2026-07-10
+- Mental models pass: batch-4 evidence sweep populated ## Mental Models — #13 at maximum tension: $42B NBM contracted backlog (structural) vs calendar-Q3 NAND pricing rollover flat-to--5% (cyclical); Q3 blowout beat its own bull case ($5.95B/78.4% GM); HBF moat narrowed both flanks (NVIDIA GIDS route-around, Samsung/SKH/YMTC entering); no Conviction Triggers section — write one — conviction unchanged (high); ~early-Aug Q4 print + FY27 guide = the arbiter.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: no NAND vendor has held >70% GM beyond 3 quarters historically, and Q3'26 contract prices already rolled flat-to--5% while Kioxia-SanDisk capex +41% and Samsung P5 restarts — the classic peak-cyclical setup at ~10x FY27E. Snapshot: [[_Archive/Snapshots/SNDK - SanDisk (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Deepened Industry Context: added production cost/yield-vs-peers, HBF-to-2030 financials, and NAND supply/demand-to-2030 (web-refreshed to mid-2026). Key deltas — 78.4% GM is price not cost (structural floor ~25–40%); HBF base case ~9–10% of 2030 rev, co-led not owned, NVIDIA ICMS/GIDS routes around on-package (Optane-niche risk ~45–55%); Q3 pricing decelerated to +10–15% QoQ (corrects prior flat-to−5%); Micron 2-deck G9 now cost-competitive (prior "laggard" tag revised), UBS wafer cost ~$2k Kioxia vs ~$4–6k peers; CBA edge commoditizes 2027–28. Conviction unchanged (medium) — evidence arms both #13 cyclical/structural sides; arbiter = ~Aug-5 Q4 print + first FY27 guide + Investor Day cost-curve read. Snapshot: [[_Archive/Snapshots/SNDK - SanDisk (pre-deepen 2026-07-12-112007)]]. See [[Research/2026-07-12 - SNDK - Industry Context (Cost, HBF, Supply-Demand to 2030) Deep Dive]].
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 2 material. Stock price stale $944.51→$1,915.92 (+103%), market cap ~$200B→~$284B — Key Metrics table had not caught up to the +3,638% 1Y run already noted in the Log/Mental Models sections. Snapshot: [[_Archive/Snapshots/SNDK - SanDisk (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, fmp_symbol SNDK verified): 0 rows edited — Stock Price ($1,915.92) and Market Cap (~$284B) re-render identical to current cell text; no material change since last-hour refresh. Snapshot: [[_Archive/Snapshots/SNDK - SanDisk (pre-numbers 20260712-184025)]]

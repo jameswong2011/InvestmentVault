@@ -259,6 +259,8 @@ This typically reduces deep reads from ~58 files to 15-25 AND collapses those 15
 
 ## Step 2: Deep Implication Analysis
 
+**Mental Models reading gate (MANDATORY — before enumerating implications).** Complete the mental-models read per `_shared/mental-models-section.md` NOW, not at Step 3b write time: read `Mental Models/Generalist - Overview.md` (always) + the matching `Industry -` file(s) for the sectors in scope + any `Lens -` file the changed sources touch (once per run, cached). The models must inform WHAT gets propagated — implication generation is where the vault's edge (non-consensus connections, inflection-point triggers) either happens or doesn't; a write-time-only read arrives after the analytical work is done. Apply the READING PROTOCOL: implications are hypotheses to test, base-rate runs adversarially, cross-source agreement triggers a hunt for the falsifying datapoint. (Step 3b/4b then merge any fired triggers into `## Mental Models` sections per the contract — unchanged.)
+
 **Maximum reasoning effort here.** For each source note read fully and analyse:
 
 - **Factual deltas**: new data points, metrics, quotes, events.
@@ -309,7 +311,7 @@ done
 
 For each changed thesis:
 - **Research-driven** (default): at least one research note in the changed-file set resolves (via Step 1.2) to this thesis, OR recent Log entries reference changed research notes. Proceed through Step 3/4/5 normally.
-- **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND most-recent Log entry matches a skill-origin prefix from `_shared/log-prefixes.md` (registry §5 `Conviction reaffirmed`, §6 `Status change: conviction`, §7 `Status change:`, §8 `CLOSED`, §9 `Prune upgrade`, §11 `Initial thesis created`, §12 `ROLLBACK to snapshot`, §13 `Cross-thesis closure:` / `Cross-thesis closures:`, §14 `Scenario REVERSED`, §15 `Renamed file:`, §16 `Comparison `, §17 `Callout sweep:`, §18 `Numbers refresh:`) AND no research note in the changed-file set resolves to this thesis.
+- **Skill-origin**: thesis is self-modified (`mtime > .last_sync`) AND most-recent Log entry matches a skill-origin prefix from `_shared/log-prefixes.md` (registry §5 `Conviction reaffirmed`, §6 `Status change: conviction`, §7 `Status change:`, §8 `CLOSED`, §9 `Prune upgrade`, §11 `Initial thesis created`, §12 `ROLLBACK to snapshot`, §13 `Cross-thesis closure:` / `Cross-thesis closures:`, §14 `Scenario REVERSED`, §15 `Renamed file:`, §16 `Comparison `, §17 `Callout sweep:`, §18 `Numbers refresh:`, §19 `Cross-thesis signal via`, §20 `Metrics synced:`) AND no research note in the changed-file set resolves to this thesis.
 - **Mixed**: research-note source AND skill-origin Log prefix → treat as **research-driven**.
 
 ### Body-change override (2026-07-08 — closes the silent-skip failure mode)
@@ -527,6 +529,7 @@ Batch ID reused from Step 2.9. Proceed with edits to the ORIGINAL.
   - `"Renamed file:"` (registry §15)
   - `"Callout sweep:"` (registry §17)
   - `"Numbers refresh:"` (registry §18 — a metrics refresh is hygiene, not conviction sentiment; without exclusion each refresh consumes a drift-window slot)
+  - `"Metrics synced:"` (registry §20 — a `/deepen --sync-metrics` reconciliation is hygiene, same rationale as `Numbers refresh:`; without exclusion each sync consumes a drift-window slot)
   
   **Conditionally exclude** entries beginning with `"Deepened"` or `"↳ CORRECTION: Deepened"` within 14 calendar days of a `"Stress test"` entry (registry §3-§4; `deepened_exclusion_days` in `.drift-config.md`, default 14).
   
@@ -618,7 +621,7 @@ Skip snapshot if only adding wikilinks.
 - Update value chain analysis if supply chain relationships shifted.
 - Revise sector-level observations if cross-company patterns emerged.
 - Update company comparison tables with new data points.
-- **Cross-thesis contradiction sweep (not just source-ticker additive).** Propagation defaults to strengthening the SOURCE ticker; force the peer question explicitly. For each OTHER Active Thesis in this sector, ask: does this research **validate or contradict** one of its named assumptions? A datapoint that is bullish for the source is often bearish for a peer (share gain = share loss elsewhere; a moat confirmed upstream = margin risk downstream). When the answer is "contradicts," note it in that peer's next `/sync` consideration and — if the sector's priced-in read shifted — update the sector's **`## Investor heuristics`** (what consensus believes / where it's wrong: the vault's stated edge). Do NOT silently leave peers stale because the research arrived under the source ticker.
+- **Cross-thesis contradiction sweep (not just source-ticker additive).** Propagation defaults to strengthening the SOURCE ticker; force the peer question explicitly. For each OTHER Active Thesis in this sector, ask: does this research **validate or contradict** one of its named assumptions? A datapoint that is bullish for the source is often bearish for a peer (share gain = share loss elsewhere; a moat confirmed upstream = margin risk downstream). When the answer is "contradicts," the signal must SURVIVE the run — three concrete actions: (1) **accumulate** it as a tuple `(peer_ticker, named assumption, validates|contradicts, one-line mechanism)` in a running `cross_thesis_contradictions` list; (2) **append a Tier B Log entry on the peer thesis** (no snapshot — additive Log-only): `- Cross-thesis signal via [[Research/source note]]: [assumption] contradicted by [source ticker] evidence — [mechanism]. Review §Risks/§Bear Case.` (this is the only path by which propagation can ever weaken a thesis — without it /sync is structurally bull-additive); (3) **report** the full list as a `Cross-thesis contradictions:` line in the Step 8 report. If the sector's priced-in read shifted, ALSO update the sector's **`## Investor heuristics`** (what consensus believes / where it's wrong: the vault's stated edge). Do NOT silently leave peers stale because the research arrived under the source ticker.
 - Update the `## Mental Models` section when new cross-company evidence activates or retires a sector-level model trigger, or changes its read — read the relevant `/Mental Models` files first and merge per `_shared/mental-models-section.md` (high selectivity; most syncs leave it untouched).
 
 ### 4c: Post-Edit Verification (Edit-return inspection — no re-read)
@@ -935,6 +938,7 @@ Produce a compact report. **Emit only lines with non-empty data.** Do NOT includ
 | `Snapshots created` | at least one Tier A snapshot (theses/sectors/macros) — list paths |
 | `Thesis updates` | at least one thesis touched — one bullet per thesis: `[TICKER]: [sections] — [conviction impact]. Snapshot: [[...]] or N/A` |
 | `Sector note updates` | at least one sector touched — one-line summary each |
+| `Cross-thesis contradictions` | at least one Step 4b sweep tuple accumulated — list each as `[peer]: [assumption] [validates\|contradicts] via [source ticker] — [mechanism]` (Tier B peer Log entries were appended for contradicts) |
 | `Macro note updates` | at least one macro touched — one-line summary each |
 | `Deduplication skips` | at least one Step 1.7 wikilink-presence skip |
 | `Sector skill-origin skips` | at least one Step 4.-1 skip |

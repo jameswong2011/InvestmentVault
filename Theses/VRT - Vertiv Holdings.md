@@ -7,6 +7,7 @@ conviction: medium
 sector: Data Center Power & Cooling
 ticker: VRT
 source: https://investors.vertiv.com/news/news-details/2025/Vertiv-Reports-Strong-Third-Quarter-Results-including-Organic-Orders-60-Diluted-EPS-122-Adjusted-EPS-63-Raises-2025-Guidance/default.aspx
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # VRT — Vertiv Holdings
@@ -115,14 +116,14 @@ Vertiv sells capital goods that sit between the utility grid and the data center
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$117.6B | At $258.73 (Apr 2026), 52wk range $59.34-$312.46 |
+| Market Cap | ~$122.5B | At $258.73 (Apr 2026), 52wk range $59.34-$312.46 |
 | Stock Performance | +336% TTM, +59.7% YTD | Down 17% from ATH of $312.46 (Apr 14, 2026) |
 | EV/Revenue (2026E) | ~8.7x | On $13.5B midpoint 2026 guide |
 | P/E (2026E) | ~43x | On $6.02 midpoint adj EPS guide |
 | Revenue Growth (2026 guide) | 27-29% organic | Total ~22-24% (FX drag); 2025 was ~19% |
-| Gross Margin | ~36-37% | Stable; liquid cooling mix-accretive |
+| Gross Margin | ~36% | Stable; liquid cooling mix-accretive |
 | Operating Margin (2026 guide) | 22.0-23.0% | Up from ~20% in 2025, ~17% in 2024 |
-| FCF Yield | ~1.8% | ~$2.1B FCF on $117.6B cap; working capital drag from backlog |
+| FCF Yield | ~1.9% | ~$2.1B FCF on $117.6B cap; working capital drag from backlog |
 | Backlog | $15.0B | +109% YoY; book-to-bill ~2.9x Q4 |
 | Organic Order Growth (Q4 2025) | +252% YoY | Largest single quarter in company history |
 | Adjusted EPS (2026 guide) | $5.97-$6.07 | +42-45% YoY |
@@ -173,9 +174,15 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-4 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (expectations) · [[Industry - Semiconductors]] (#2, #8, #19) · [[Lens - Value Layer Monopoly]] (interface/standard control)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *The trigger instrumentation is BROKEN — the single most thesis-relevant change*: Vertiv **stopped disclosing quarterly orders/book-to-bill at Q1 2026** ("to limit volatility"); both the HIGH and LOW triggers key off metrics the company no longer reports. Per #19, disclosure withdrawal is itself a signal (accelerating metrics rarely get hidden), and the one visible datapoint cuts bearish: backlog $12.45B at Mar 31 vs $15.0B at Dec 31 — a sequential DECLINE implying Q1 book-to-bill possibly <1 (vs 2.9x Q4), though a definitional discrepancy (call language "over $15B") needs a 10-Q read before writing it in. **Re-instrument the triggers now** (proxies: 10-Q RPO, hyperscaler capex, Eaton/Schneider orders — they still disclose).
+	- *Insight #2 (OCP standards authorship) — the thesis's own diagnostic tipped AGAINST it*: Outstanding Q #3 asked "who writes the next OCP liquid-cooling standard"; the answer arrived — **Google (Project Deschutes CDU spec)**, with Boyd/CoolerMaster/Delta/Nidec/nVent AND Vertiv all shipping compliant units. Standardization-commoditizes-the-CDU (Risk #3) is the live path, not insourcing. Corroborating: third-party CDU share data puts Vertiv at ~11.3% — irreconcilable with the thesis's "35–40% high-density share" without a market-definition audit.
+	- *Insight #6 (vendor compression to ~6 Tier-1s) — PARTIALLY REFUTED*: NVIDIA's 800VDC ecosystem now lists NINE power partners (ABB — the thesis's "surprising absentee" — plus GE Vernova, Siemens, Hitachi, Mitsubishi in); the set widened. Eaton closed Boyd Thermal ($9.5B) two years ahead of the thesis's "catches up 2028"; Schneider+Motivair shipped a joint portfolio. Vertiv's counter — Strategic Thermal Labs (cold plates, into the chip) + PurgeRite (coolant services) — is a real chip-to-grid+services stack the competitors lack.
+	- *#8 Kyber slip = the 800VDC timing risk, net survivable*: Rubin Ultra/Kyber reportedly to 2028 (NVIDIA denies) — pushes the 800VDC volume inflection ~12 months, but VR200 NVL72 (2H26, fanless, 100% liquid, ~2x coolant flow) ships undelayed and fills the same power envelopes with *current* Vertiv product; VRT rose +5.8% the day the Kyber news broke. New sovereign demand leg: **South Korea $576B+ AI buildout** (VRT +9%, Jun 29) — also why VRT held up through the July rout (+5.7% 1W): it trades as a shortage-beneficiary/high-beta AI proxy.
+	- *Insight #4 (margin ceiling 23–25%) — management now guides ABOVE it*: FY26 adj OM raised to 22.8–23.8% and investor-conference long-term targets (two conflicting reported versions, 25% by 2029 or 27%+ by 2030 — pull the deck) exceed the thesis's hyperscaler-negotiation ceiling. A falsifiable divergence in the thesis's favor to resolve: either the ceiling insight is wrong, or management is over-promising at cycle peak.
+	- *Fundamentals*: Q1 beat-and-raise (sales +30%, adj EPS +83%, FY raised to $13.5–14.0B), EMEA -29% organic air pocket, price/cost positive incl. tariffs. Thesis Key Metrics stale.
+- **Disconfirming check** (evidence-updated): the thesis's physics-moat framing survives, but its two structural-differentiation insights (#2 standards, #6 compression) both took direct evidential hits while the multiple sits at 49x NTM vs Schneider ~30x / Eaton ~33x — the premium now rests mostly on pure-play scarcity + the backlog whose growth is no longer observable. Single falsifiers, dated: **Jul 29 Q2 print** — first quarter under the new disclosure regime (watch RPO in the 10-Q, EMEA "coiled spring," organic decel to 20–24% guided); hyperscaler FY27 capex guides (Oct–Dec, the CLOSE trigger's real test); Meta Compute pressure on the neocloud channel (8–12% of revenue at 38–42% GM). Base rate: infrastructure suppliers that stop disclosing orders at the top of a capex cycle underperform the next 12 months more often than not — the disconfirming datapoint the tape hasn't priced.
 
 ## Related Research
 
@@ -210,3 +217,12 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 
 ### 2026-06-03 (/sync)
 - [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]]: Neocloud buildout = direct Vertiv demand — NBIS scaling ~170MW→800MW-1GW by YE2026 + CRWV >1GW are power/cooling pull; corroborates the 8-12% of FY26E revenue at 38-42% GM neocloud exposure. Conviction unchanged (medium), demand-corroborating.
+
+### 2026-07-10
+- Mental models pass: batch-4 evidence sweep populated ## Mental Models — trigger instrumentation BROKEN (orders/book-to-bill disclosure withdrawn at Q1; backlog $12.45B Mar vs $15B Dec = possible sub-1 book-to-bill, verify 10-Q); Google wrote the next OCP CDU standard (Deschutes) — Insight #2's own diagnostic tipped against it; NVIDIA 800VDC set widened to 9 partners (Insight #6 partially refuted); Kyber slip survivable (VR200 undelayed, Korea $576B leg) — conviction unchanged (medium); re-instrument triggers before the Jul 29 print.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 0 material. Market cap +4% (~$117.6B→~$122.5B); gross margin ~36-37%→~36%; FCF yield ~1.8%→~1.9%. Snapshot: [[_Archive/Snapshots/VRT - Vertiv Holdings (pre-numbers 20260712-180000)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, fmp_symbol VRT verified): 0 rows edited — Market Cap, Gross Margin, FCF Yield all re-render identical to current cell text; no material change since last-hour refresh. Snapshot: [[_Archive/Snapshots/VRT - Vertiv Holdings (pre-numbers 20260712-184025)]]

@@ -6,7 +6,9 @@ status: monitoring
 conviction: medium
 sector: ABF Substrates & Advanced Packaging Supply Chain
 ticker: 2802
+fmp_symbol: 2802.T
 source: https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_05_07_03E.pdf (Ajinomoto Consolidated Financial Results FY2025) + [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]] vault sector primer
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-05-16 → Addressed 2026-05-16
 > **Prompt:** *What is the projected share of the ABF business as a % of total revenues and EBIT by 2030 if the volume of advanced packaging doubles as finished product from 2026 baseline - using substrate-AREA × layer-count × yield-adjusted-throughput logic to estimate total ABF demand given doubling chip level deliveries.*
@@ -229,16 +231,16 @@ This directionally insulates Ajinomoto's ABF franchise from the 2030+ glass-subs
 
 | Metric | Value | Notes |
 |---|---|---|
-| Market Cap | ~¥5.04T (~US$34B) | May 15, 2026; stock ¥5,269; ~957M shares outstanding |
+| Market Cap | ~¥5.47T (~US$34B) | May 15, 2026; stock ¥5,269; ~957M shares outstanding |
 | EV/Revenue | ~3.2× consolidated | ¥5.04T MC + ~¥150B net debt against ¥1,584B FY2025 sales |
 | Revenue Growth (FY2025) | +3% consolidated / +31% Electronic Materials | Electronic Materials segment is the growth engine; food + amino acid grew low single digits |
-| Gross Margin | ~36% consolidated | Electronic Materials segment >65% gross margin (implied from >50% operating margin); food + amino acid ~30-32% |
-| Operating Margin | ~11.4% consolidated / >50% Electronic Materials | Segment-level Electronic Materials margin is the structural driver |
+| Gross Margin | ~38% consolidated | Electronic Materials segment >65% gross margin (implied from >50% operating margin); food + amino acid ~30-32% |
+| Operating Margin | ~10.9% consolidated / >50% Electronic Materials | Segment-level Electronic Materials margin is the structural driver |
 | Business Profit (FY2025) | ¥181.1B (+13% YoY) | Of which Electronic Materials ¥54.6B (+35% YoY) ≈ 30% of total |
-| FCF Yield | ~3.5-4% | Capex elevated 2024-2030 (Gunma + Kawasaki ¥25B + Gifu plant from 2028); FCF compressed during capex cycle |
-| Forward P/E | ~38× FY2026E | EPS guided ~¥140; stock ¥5,269 |
+| FCF Yield | ~2.6% | Capex elevated 2024-2030 (Gunma + Kawasaki ¥25B + Gifu plant from 2028); FCF compressed during capex cycle |
+| Forward P/E | ~40× FY2026E | EPS guided ~¥140; stock ¥5,269 |
 | Forward EV/Adj. EBITDA | ~16-18× | Conglomerate multiple; Electronic Materials alone at standalone semi-materials multiples would imply 25-30× |
-| Dividend yield | ~1.5% | ¥80/share annual; payout ratio ~55-60% |
+| Dividend yield | ~0.8% | ¥80/share annual; payout ratio ~55-60% |
 | Net cash position | ~¥150B net debt | Modest leverage; ample capacity for ABF capex commitments |
 | Sell-side consensus 12M PT | ¥4,288-4,939 avg (Buy bias; 10 buys / 3 holds / 0 sells across 13 analysts) | Stock trades above most consensus PTs; Morningstar fair value ¥8,178 |
 | ABF segment standalone implied value (SOTP) | ¥1.5-2.5T at 25-30× run-rate EBIT | Consolidated MC ¥5.04T less ¥3-3.5T implied for food + amino + pharma at peer multiples = ¥1.5-2T residual for Electronic Materials franchise |
@@ -415,9 +417,13 @@ A 30-40% drawdown scenario over 18-36 months, driven by either competitive entry
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Framework strengthened on EVERY leg it defined: LOW refuted (FM segment margin >50% and RISING into a 30% ABF price hike effective Q3 2026 — officially notified to Taiwanese substrate makers May 13; no competitor qualification anywhere); CLOSE not tripped — TSMC's 2028 CoPoS ramp is ORGANIC/ABF-based, glass-core is 2030+ and even then specced as glass-core-between-two-ABF-layers co-developed with Ibiden — the thesis's own "ABF-on-glass persists" hypothesis is now TSMC's published architecture; Hanwha HBF still at sample/evaluation stage (~0% share), HIGH leg 3 confirmed so far.
+	- HIGH leg 1 (FM sales >¥150B) trending CONFIRM: FYE Mar-26 closed ¥100.7B +31% at >50% OP margin (¥54.6B, +35%); ABF back in SHORTAGE since H1 2026 with the gap projected >20% in 2027; NVIDIA reportedly locking substrate capacity; Ibiden (¥500B capex, 2.5x capacity) admits it has NOT secured ABF film beyond guidance — customers fighting for allocation, not defecting. ¥100.7B × ~1.2 volume × 1.3 price ≈ ¥150-160B arithmetically in reach; FY guidance (FM ~+35%) predates the full hike — upside revision potential at Q1 (Aug 2026).
+	- Risk #7's "no forcing function" bear leg is DEAD: Palliser Capital (top-25 holder) published its value-enhancement plan 2026-03-31 demanding exactly what then happened (>30% ABF price increase, standalone FM reporting, Frozen restructuring; >70% upside claim) — the activist is Palliser, NOT ValueAct. Same activist running the identical playbook on the vault's TOTO (5332).
+	- Price rotated the risk: stock DECOUPLED from the June-July semis purge — ATH ¥6,311 on Jul 1 while SOX fell 7-10%; +75% YTD, ~48x guided FY net (vs the thesis's 38x/¥5,269 anchor). The market now trades 2802 as a pricing-power monopoly; a large part of the ¥8,000-10,000 bull range is consumed.
+- **Disconfirming check** (evidence-updated 2026-07-10): monopolists who raise price 30% into a shortage historically accelerate their own substitution clock — single falsifying datapoint = evidence of a coordinated customer-funded second-source qualification (Hanwha/Sekisui/HNS) or TSMC pulling glass-core forward into 2028; Ibiden's unsecured-upside admission cuts both ways. Risk has rotated from "monopoly breaks" to "monopoly fully priced + AI-capex-reset beta returns" (Broadcom guide-down, Meta Compute are live Mechanism-2 tremors the stock has ignored). The evidence supports an upgrade path toward the thesis's own → HIGH condition, verifiable at Q1 FYE-Mar-27 (~Aug 2026) — Tier 3, user decision. Stale anchors (¥5,269/38x) need /numbers.
 
 ## Related Research
 
@@ -457,3 +463,12 @@ A 30-40% drawdown scenario over 18-36 months, driven by either competitive entry
 
 ### 2026-05-29
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: corrected Insight #1 food framing — transcripts (through Q3 FYE-Mar-26) show food improving (seasonings driving growth, frozen recovering, FY food forecast revised up), not "dragged by margin pressure." ABF confirmed strong: full-year guided +28% (actual +31%), growth plan revised up, Gunma online Oct 2025. Conviction unchanged (medium).
+
+### 2026-07-10
+- Mental models pass: batch-9 evidence sweep populated ## Mental Models — framework strengthened on every leg (margin >50% into a 30% price hike, ABF back in shortage, TSMC glass-core 2030+ with ABF layers retained, Hanwha still ~0%); Palliser campaign killed the no-forcing-function bear leg — conviction unchanged (medium); evidence supports the thesis's own → HIGH path, verifiable Q1 (~Aug); stock at ATH decoupled from the semis purge — much of the bull range consumed.
+
+### 2026-07-12
+- Numbers refresh: 6 metrics updated, 1 material. Dividend yield compressed 1.5%→0.8% (yield diluted by ~9% share-price appreciation). Snapshot: [[_Archive/Snapshots/2802 - Ajinomoto (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (6 mapped rows re-rendered identical to current cell text post-rounding — FMP data essentially unchanged in the ~1hr since prior refresh), 0 material. Snapshot: [[_Archive/Snapshots/2802 - Ajinomoto (pre-numbers 20260712-184039)]]

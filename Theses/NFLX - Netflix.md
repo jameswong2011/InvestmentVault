@@ -2,18 +2,19 @@
 publish: true
 date: 2026-04-15
 tags: [thesis, nflx, consumer-digital, streaming]
-status: monitoring
-conviction: medium
+status: active
+conviction: high
 sector: Video Streaming
 ticker: NFLX
 source: Multi-source synthesis (Claude, Gemini Canvas, web research April 2026)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # NFLX — Netflix
 
 ## Summary
 
-325M subscribers, $45.2B FY2025 revenue (+16% YoY), operating margins expanding from 21% (2023) to 29.5% (2025, 31.5% guided 2026). Netflix now monetizes attention through three engines: subscriptions (March 2026 hikes to $26.99 Premium/$19.99 Standard/$8.99 Ad-tier), advertising ($1.5B in 2025, targeting $3B in 2026 with in-house ad tech and only ~45% fill rate), and live events (WWE Raw $5B/10-year deal, NFL Christmas games, boxing). The WBD walkaway ($82.7B TEV, $2.8B breakup fee pocketed, $8B buyback resumed) signals management focused on organic growth over empire-building. At ~$106 post-split (~$447B market cap, ~32x forward P/E), the three-engine model, international content moat across 50+ countries, and 2030 targets ($80B revenue, ~38.5% operating margin) suggest the profitability trajectory -- not subscriber counts -- is underappreciated.
+325M subscribers, $45.2B FY2025 revenue (+16% YoY), operating margins expanding from 21% (2023) to 29.5% (2025, 31.5% guided 2026). Netflix now monetizes attention through three engines: subscriptions (March 2026 hikes to $26.99 Premium/$19.99 Standard/$8.99 Ad-tier), advertising ($1.5B in 2025, targeting $3B in 2026 with in-house ad tech and only ~45% fill rate), and live events (WWE Raw $5B/10-year deal, NFL Christmas games, boxing). The WBD walkaway ($82.7B TEV, $2.8B breakup fee pocketed, $8B buyback resumed) signals management focused on organic growth over empire-building. At ~$73 post-split (~$309B market cap, ~21x forward P/E), the ~31% de-rate from ~$106 has cheapened the same three-engine model, international content moat across 50+ countries, and 2030 targets ($80B revenue, ~38.5% operating margin) — strengthening, not weakening, the case that the profitability trajectory (not subscriber counts) is underappreciated.
 
 ## Key Non-consensus Insights
 
@@ -176,9 +177,9 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$106 | Post 10-for-1 split (Nov 2025) |
-| Market Cap | ~$447B | |
-| Forward P/E | ~32x | vs Media industry median 13.7x |
+| Stock Price | ~$73 | Post 10-for-1 split (Nov 2025) |
+| Market Cap | ~$309B | |
+| Forward P/E | ~21x | vs Media industry median 13.7x |
 | EV/Revenue (FY2026E) | ~8.7x | Based on $51.2B midpoint |
 | FY2025 Revenue | $45.2B | +16% YoY (+17% FX-neutral) |
 | FY2026 Revenue Guide | $50.7–51.7B | +12–14% YoY |
@@ -186,8 +187,8 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 | FY2025 Net Income | $11B | |
 | FY2025 FCF | ~$8B | FY2026 guide: ~$11B |
 | Revenue Growth (FY2026E) | 12–14% | Decelerating from 16% in FY2025 |
-| Gross Margin | ~45% content cost ratio | Content spend ~45% of revenue |
-| FCF Yield | ~2.5% | On ~$447B market cap |
+| Gross Margin | ~49% content cost ratio | Content spend ~45% of revenue |
+| FCF Yield | ~3.9% | On ~$309B market cap |
 | Subscribers | 325M+ | Milestone reporting only (no quarterly disclosure) |
 | Monthly Churn | ~1.8% | vs industry avg 5.5%; competitors 5–7% |
 | Ad Revenue | $1.5B (FY2025) | Targeting ~$3B in FY2026, $9B by 2030 |
@@ -228,16 +229,20 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 2. **YouTube and TikTok attention competition**: Video-native platforms with larger, free-tier user bases and superior recommendation/discovery loops for younger demographics.
 3. **Disney bundle threat**: Combined Disney streaming portfolio exceeding Netflix's US market share, with franchise IP and adjacent monetization (parks, merchandise) that Netflix cannot replicate.
 4. **Content cost inflation**: Korean IP pushback, new residual structures, rising talent costs, and management guidance that $20B is "not anywhere near ceiling."
-5. **Valuation compression**: ~32x forward P/E requires continued margin expansion and 11%+ revenue growth. Any execution miss triggers outsized correction from premium valuation.
+5. **Valuation compression**: the ~32x→~21x forward P/E de-rate has already delivered much of this correction; at ~21x, further downside requires a genuine miss on margin expansion or 11%+ revenue growth rather than the premium-multiple unwind the thesis feared.
 6. **Regulatory**: EU content quotas, Korean producer rights campaigns, DOJ antitrust scrutiny (post-WBD review), digital services taxes (Brazil, EU), and data privacy regulations affecting ad targeting.
 7. **Ad business execution**: In-house ad tech is less than one year old; CPM sustainability at scale, DSP integration depth, and fill rate expansion are all unproven at the targeted $9B by 2030 level.
 8. **Live events ROI uncertainty**: WWE Raw ($500M/yr), NFL, and boxing are expensive rights deals whose churn-reduction ROI is unmeasured and undisclosed.
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-8 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Three-engine fundamentals CONFIRMED: Q1 (Apr 16) beat every line (revenue +16%, OM 32.3%); ads on track to $3B (250M MAVs vs thesis's 190M, 4,000+ advertisers, 15 new markets from 2027); churn ~2% IMPROVED through the 11% March price hike; capital discipline validated ($2.8B WBD fee banked, $25B buyback authorized, UFC passed to Paramount at $7.7B).
+	- The bear fired WITHOUT a miss ([G-13]): stock -24% H1 to ~$78 (~19-23x fwd vs the thesis's 32x anchor) on unraised guidance, Hastings' full board exit (Apr 16 — unmodeled), hawkish-Fed discount rates, and the AI-disruption narrative — the thesis's "any miss triggers compression" leg executed on narrative alone.
+	- THE FALSIFYING VECTOR IS ENGAGEMENT, not subs or margin: H2'25 viewing hours +2% YoY against a growing base (per-member engagement declining); YouTube's TV-share lead widened to 13.4% vs 7.8% (thesis had 9.7 vs 7.6); by Jul 8-9 management is reportedly weighing LIVE LINEAR CHANNELS and bundling rival apps (Peacock) — a tacit concession the pure on-demand model is losing the attention war, and the biggest product-model change since the ad tier.
+	- Automation Lens — AI is two-sided here: gen-AI production cost deflation (InterPositive integration, formal gen-AI guidelines) vs Sora-class content diluting attention; Sarandos's "UGC problem, not a Netflix problem" is the claim to stress, not adopt.
+- **Disconfirming check** (evidence-updated 2026-07-10): the live falsification event is 6 days out — Q2 print + H1'26 engagement report on 2026-07-16; a second consecutive ~2% engagement print alongside the live-linear pivot confirms top-of-funnel erosion beneath intact economics. Base rate cuts both ways: premium compounders that lose the attention narrative stay de-rated until a new proof-point, but NFLX drawdowns of this size on intact fundamentals have historically paid buyers. Build the missing Conviction Triggers section around engagement-per-member — the market already executed the thesis's bear case on valuation while the fundamentals bull case stands; that split is exactly what pre-committed falsifiers are for. Key Metrics stale ($106/32x vs ~$78/~20x).
 
 ## Related Research
 - [[Research/2026-03-21 - NFLX - Gemini Investment Case Canvas]] — Comprehensive streaming hegemon analysis; content economics, churn dynamics, production hubs, gaming strategy, valuation framework
@@ -263,3 +268,19 @@ Cumulative pricing increases of 30–35% over four years with negligible permane
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-8 evidence sweep populated ## Mental Models — fundamentals confirmed on every line but the bear fired without a miss (-24% H1 to ~20x fwd); falsifying vector is engagement (H2'25 hours +2%, YouTube lead widened, live-linear pivot reportedly weighed) — conviction unchanged (medium); Jul 16 Q2 + H1 engagement report is the live catalyst.
+
+### 2026-07-11
+- Status change: conviction medium → high — vault-wide multi-agent valuation scoreboard: -24% H1 to ~19-20x fwd while delivering +16% revenue and +200bps margin expansion; bear fired on valuation/narrative without a fundamentals miss. Snapshot: [[_Archive/Snapshots/NFLX - Netflix (pre-status 2026-07-11-063211)]]
+- Status change: monitoring → active — genuine emerging mispricing (V=7.0/10) warrants active pursuit. Snapshot: [[_Archive/Snapshots/NFLX - Netflix (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 5 metrics updated, 3 material. Stock price ~$106→~$73 (-30.8%, material), market cap ~$447B→~$309B (-30.9%, material), forward P/E ~32x→~21x (-35.6%, material) — confirms the mental-models-flagged de-rate. Gross margin (content cost ratio) ~45%→~49% (+4pp) and FCF yield ~2.5%→~3.9% (+1.35pp) also material. FY2025 revenue $45.2B unchanged (new value rounds identical). FY2026 revenue guide fetch_gap. Remaining rows (EV/Revenue, op margin, net income, FCF, subscriber/ad/content metrics, buybacks, 2030 targets) are custom metrics — left unedited. Summary opens "At ~$106 post-split (~$447B market cap, ~32x forward P/E)" — live data now ~$73 (~$309B, ~21x). Consider /deepen --section "Summary". Snapshot: [[_Archive/Snapshots/NFLX - Netflix (pre-numbers 20260712-173930)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Stock Price, Market Cap, Forward P/E, FY2025 Revenue, Gross Margin, FCF Yield all identical to prior refresh after rounding. FY2026 revenue guide still fetch_gap. Summary staleness flag persists unaddressed (still opens "At ~$106 post-split (~$447B market cap, ~32x forward P/E)" vs live ~$73/~$309B/~21x) — Consider /deepen --section "Summary". Snapshot: [[_Archive/Snapshots/NFLX - Netflix (pre-numbers 20260712-183935)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: $106/$447B/32x→$73/$309B/21x across Summary, Risks #5, FCF-Yield Notes — de-rate strengthens the underappreciated-profitability case. Snapshot: [[_Archive/Snapshots/NFLX - Netflix (pre-deepen-metrics-sync 2026-07-12-203456)]]

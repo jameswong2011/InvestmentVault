@@ -6,7 +6,9 @@ status: draft
 conviction: low
 sector: Semiconductor Capital Equipment
 ticker: 036930
+fmp_symbol: 036930.KQ
 source: Jusung Engineering Q1 2026 earnings; ALG product launch announcement May-18-2026 (Korea Times, The Elec, Businesskorea); cross-referenced against [[Sectors/Semiconductor Capital Equipment]] and Korean tech market context (KOSPI +75% YTD, KOSDAQ retail bubble dynamics)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # 036930 - Jusung Engineering
@@ -123,13 +125,13 @@ Jusung competes in the deposition sub-segment of semiconductor capital equipment
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~11.1T KRW (~$8.0B) | At ~243K KRW × 45.69M shares. Was ~3.22T KRW (~$2.4B) at April 2026 (~70K KRW) — +245% in 6 weeks. |
+| Market Cap | ~8.8T KRW (~$8.0B) | At ~243K KRW × 45.69M shares. Was ~3.22T KRW (~$2.4B) at April 2026 (~70K KRW) — +245% in 6 weeks. |
 | EV/Revenue | ~22x trailing (FY25 310.6B); ~24x forward (FY26 sell-side 450B) | Industry semicap median ~5-7x; ASMI ~10.5x; KLAC ~12x — Jusung at 2-4× peer median |
 | Forward P/E | ~110-130x FY26E (on sell-side 121B OP × ~75% NI ratio = ~90B NI) | Sector median 30-45x; -2-3σ above |
 | Trailing P/E | ~241x | Per ad-hoc-news / getdir; 7× industry 34x average |
 | Revenue Growth | Q1 2026 -54.6% YoY; FY26 guide +27% requires H2 hockey-stick | Q1 was 54.9B vs Q1 2025 121.0B; remaining 9 months need ~395B KRW = 2.4× Q1 run rate |
 | Operating margin | Q1 2026 -12.7% (operating loss); FY26 guide ~27% requires H2 ramp + ALG contribution | FY24 ~30%+ at cycle peak; FY25 ~10%; Q1 2026 negative |
-| Gross Margin | ~40-45% (industry typical for Korean semicap; not disclosed at segment level) | Likely expands as ALG mix grows |
+| Gross Margin | ~54% (industry typical for Korean semicap; not disclosed at segment level) | Likely expands as ALG mix grows |
 | FCF Yield | Negative trailing on Q1 burn; FY26 dependent on H2 ramp | Net cash position with current ratio 4.73 |
 | Net cash | Positive (current ratio 4.73, D/E 0.08) | Conservative balance sheet protects against speculative volatility |
 | Dividend | 287 KRW annual (yield 0.12% at 243K) | Near-immaterial at current price; was 1% at 70K April price |
@@ -239,9 +241,14 @@ Combined: equity falls 60-80% from 243K to 50-95K KRW within 9-12 months. This i
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-1 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (S-curve, reflexivity, base rates, barbell) · [[Industry - Semiconductors]] (#2, #10, #18, #19) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#18 pre-chasm (correcting the thesis's own "mid-chasm" framing)* — CONFIRMED, with decisive backlog data: order backlog **74.7B KRW at Q1 2026, -75% from the 2022 peak** (303.6B → 74.7B); advance payments halved YoY to 24.8B (fntimes, Jun 25). No ALG follow-through since May 18: no customer name, no unit count, no new supply-contract disclosure. The 450B KRW FY26 sell-side guide needs ~131B/qtr in H2 against a 75B backlog — arithmetically unsupported by disclosed orders. Published 3D DRAM commentary now points to HVM at **2032–2035**, not the 2027–28 the bull case assumed — the ALG TAM arrives later even if the technology is real.
+	- *Reflexivity* — RESOLVED as the base rate predicted: peak 283,000 KRW (Jun 12) → 160,000 (Jul 8) → 178,400 close (Jul 9) = **-37% from peak** (-43.5% at the low), inside the KOSDAQ 40–60% retrace pattern; the rally was a semis+solar composite (the Apr 21 +27% leg was Tesla-solar hopes), not pure ALG. KOSPI regime broke concurrently (-7.9% early July, semiconductor "peak-out" selloff).
+	- *Data corrections vs thesis body*: (a) Korean short-selling resumed **March 31, 2025** — already fully live, not the pending catalyst the thesis carries; (b) **China ≈64% of sales, SK Hynix + CXMT ≈84% of revenue** (fntimes) — far above the thesis's 15–25% CXMT-channel estimate, so the MATCH Act (committee-cleared Apr, 150-day ally-alignment clock) is a bigger tail than modeled; (c) domestic sell-side PTs re-rated to 250–280K KRW (Hana/IBK, late May) — the stale-PT insight confirmed and now resolved.
+	- *#10 anchor* — backdrop supportive, relationship signal absent: SK Hynix M15X pulled forward (production Feb 2026, capacity target lifted to 55–60K wpm), DRAM to 1M wpm by 2030, **$29.4B Nasdaq ADR (trading ~Jul 10)** funding Yongin/Cheongju — the anchor's capex is exploding; no Hwang stake sales, no Shared Growth Committee news, no named Jusung order from any of it yet.
+	- *VLM layer test* — still NO-to-WEAK: no nameable decisively-owned layer beyond SK-Hynix-qualified slots; unchanged pending ALG HVM validation. *#2 gate* — the SDP 12-year precedent stands as the moat base rate if ALG validates.
+- **Disconfirming check** (evidence-updated): the models' split resolved one notch toward the bear — the price leg corrected (approaching the pre-committed 130–160K entry zone) but the validation leg is absent AND the backlog says the near-term earnings bridge isn't there. Watch-not-own holds; the pre-commitment sharpens: a named-customer 5+ tool ALG order (HIGH trigger) landing anywhere near the entry zone is the act-now signal, and its absence through the **Aug 7 Q2 print** (book-to-bill, any ALG disclosure) plus a sub-250B H2 revenue track fires the thesis's own LOW trigger. China-exposure correction (64%) means MATCH-Act passage is a CLOSE-adjacent event, not a haircut.
 
 ## Related Research
 
@@ -263,3 +270,13 @@ Combined: equity falls 60-80% from 243K to 50-95K KRW within 9-12 months. This i
 ## Log
 ### 2026-06-07
 - Initial thesis created. Conviction: low — ALG technology + Hwang-SK Hynix relationship are real but valuation already prices 2030 bull-case scenario before HVM validation; P/E 241x trailing, P/B 14.1x, Q1 2026 -54.6% revenue with operating loss, sell-side PT avg 43,833 KRW (-82% vs current 243K KRW) reflects pre-rally staleness rather than directional bearish call; KOSDAQ retail bubble dynamics compound the position risk.
+
+### 2026-07-09
+- Mental models pass: batch-1 sweep populated ## Mental Models — corrected thesis's own "mid-chasm" framing to pre-chasm (#18: one pilot tool, no HVM proof = binary distribution); VLM layer test fails at current disclosure; models split (business real / price not) — conviction unchanged (low).
+- Mental models pass (evidence rerun): 8-agent web sweep — backlog 74.7B KRW (-75% from peak) + halved prepayments refute the H2 hockey-stick arithmetic; no ALG follow-through since May 18; stock -37% from 283K peak, nearing 130-160K entry zone WITHOUT the validation leg; corrections: China ~64% of sales / SKH+CXMT 84% (thesis understated → MATCH Act is CLOSE-adjacent), short-selling already live since Mar 2025, 3D DRAM HVM commentary points 2032-35 — conviction unchanged (low); Q2 print Aug 7.
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 1 material. Gross Margin 40-45%→~54% (+13.9pp, material); Market Cap ~11.1T→~8.8T KRW (-21%, not material). Forward P/E, Revenue Growth, Operating margin, FCF Yield left unedited — narrative multi-clause cells, format uncertain. Snapshot: [[_Archive/Snapshots/036930 - Jusung Engineering (pre-numbers 20260712-173653)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, fmp_symbol 036930.KQ verified): 0 rows edited — Market Cap and Gross Margin re-render identical to current cell text (8.8T KRW, 54%); Forward P/E, Revenue Growth, Operating margin, FCF Yield again left unedited (compound narrative cells, format uncertain; FCF Yield row also carries a corrupted sentinel old_value). No material change since last-hour refresh. Snapshot: [[_Archive/Snapshots/036930 - Jusung Engineering (pre-numbers 20260712-184025)]]

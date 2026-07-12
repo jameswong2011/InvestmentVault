@@ -6,7 +6,9 @@ status: active
 conviction: high
 sector: Semiconductor Capital Equipment
 ticker: ASMI
+fmp_symbol: ASM.AS
 source: https://www.asm.com/investors
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # ASMI - ASM International
@@ -83,13 +85,13 @@ ASMI competes in deposition (~$22B WFE segment in 2024, growing to $30B+ by 2030
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | €41.6B (~$45B) | As of late April 2026 |
+| Market Cap | €44.5B (~$45B) | As of late April 2026 |
 | EV/Revenue | ~10.5x | On 2026E revenue ~€3.6B |
-| Forward P/E | ~40-45x | 2026E EPS ~€16 |
-| Revenue Growth | +12% (constant ccy 2026E) | Decel from +27% Q1 2026 print as 2H 2025 pull-forward normalizes |
-| Gross Margin | 53.3% (Q1 2026) | Up from ~45% in 2018; mgmt target 50-55% |
-| Operating Margin | 33.1% (Q1 2026) | Mgmt medium-term target 35% |
-| FCF Yield | ~2.0% | Conversion ~85% of net income; net cash ~€1B |
+| Forward P/E | ~41x | 2026E EPS ~€16 |
+| Revenue Growth | +8% (constant ccy 2026E) | Decel from +27% Q1 2026 print as 2H 2025 pull-forward normalizes |
+| Gross Margin | 51.8% (Q1 2026) | Up from ~45% in 2018; mgmt target 50-55% |
+| Operating Margin | 29.9% (Q1 2026) | Mgmt medium-term target 35% |
+| FCF Yield | ~1.1% | Conversion ~85% of net income; net cash ~€1B |
 | China Revenue Mix | ~20% | Down from peak ~30%; declining as export controls tighten |
 | ALD Market Share | ~55% (single-wafer) | TEL/Kokusai dominate batch |
 | Patents | ~3,395 | Defensive moat in process chemistry |
@@ -149,9 +151,15 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-1 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] (#2, #13, #17, L2) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#2 sub-market decomposition* — CONFIRMED by the observed contest pattern: Lam ALD cited only for NAND layer-count transitions (Q3 call); AMAT's Endura Trillium (launched 2026-04-08) targets WFM/*dipole* with no POR/customer language — the HKMG gate-stack core remains uncontested; dipole is now the named contested layer to watch. ASMI counter-claimed a net **+1 molybdenum POR layer at 1.4nm** and "higher ALD market share in the 1.4-nanometer node" (Q1 call, 2026-04-21) — company-claimed, not third-party verified.
+	- *#13 POR annuity / HIGH trigger scoring* — TSMC leg substantially MET: incremental (not defended) slots at 1.4nm with SAM +$450–500M per 100K wspm (top of range = the thesis's ≥$500M bar), pilot-line investments and first sales H2 2026, A14 "ahead of schedule" (production 2028). Samsung leg WEAKENED: SF1.4 mass production slipped to 2029 (SAFE Forum, Jun 30). Operating proof: Q1 €862.5M (+16% cc), record 33.1% OM; Q2 guide ~€980M — ~11% above consensus; "fully booked for this year," supply-chain-constrained.
+	- *Signal-loss flag*: quarterly bookings/backlog disclosure DISCONTINUED from Q1 2026 (backlog year-end only) — the POR-annuity thesis just lost its highest-frequency falsifier; earnings-call language is now the primary orders signal.
+	- *VLM emerging-layer (epi/CFET second engine)* — progressing: second HBM epi customer "good news" teased for future calls; 4F² DRAM transition adds ~$400–450M SAM from 2028; CFET no new data. ASMPT optionality ACTIVATED: ASMPT launched a strategic review of SMT Solutions (Jan 2026, Morgan Stanley advising) — the conglomerate-discount unlock is in motion, unresolved.
+	- *#17 inverted* — holding: no entrant has crossed the HKMG qualification grind; AMAT's Trillium is incumbent-extension (WFM) probing dipole, the precise LOW-trigger layer.
+	- *Data corrections from this pass*: China = **>30% of FY25 revenue** (thesis carries ~20% — stale), which RAISES MATCH-Act sensitivity; MATCH Act is a pending bill (introduced Apr 2, committee-cleared, 150-day ally-alignment clock), impact "too unclear to quantify" per management.
+- **Disconfirming check** (evidence-updated): fundamentals beat and the widest-expectations-gap flag still stands — stock ~€971 (+16% since April, 52wk high €1,092), ~44x forward on 2026E, now priced for the 1.4nm step AND multiple-hold through any 2027 hyperscaler normalization (current evidence: capex growing, ~$725B 2026 → >$1T 2027E — the LOW trigger is not close). Unexplained governance datapoint: **Martin van den Brink resigned the Supervisory Board with immediate effect (Apr 27)** citing potential "overlapping interests" — where the ex-ASML CTO lands is worth a standing question. Single falsifier unchanged: a confirmed Trillium dipole/HKMG POR at TSMC A14. Next test: Q2 print Jul 28 (1.4nm pilot orders, China H2 fade, epi "good news"). Bookkeeping flag retained: frontmatter high vs 05-26/06-01 Log "medium" — reconcile via `/status`. Batch flag: correlated WFE premise stress-testing live.
 
 ## Related Research
 
@@ -184,3 +192,13 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 
 ### 2026-06-01 (/sync)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: 1b/1c DRAM node migration (combined 1b+1c capacity +~80% 4Q25→4Q27) + memory WFE capex lift ALD-layer demand; conviction unchanged (medium).
+
+### 2026-07-09
+- Mental models pass: batch-1 sweep populated ## Mental Models — #2 gate-hidden-behind-share-data (ALD = 8+ sub-markets) + VLM emerging-layer (epi/CFET) fired; widest expectations gap in batch (45x on +12% guided growth). Flagged conviction bookkeeping inconsistency (frontmatter high vs 05-26/06-01 entries "medium") for /status reconciliation — conviction unchanged.
+- Mental models pass (evidence rerun): 8-agent web sweep — 1.4nm incremental POR confirmed (company-claimed: +1 moly layer, SAM +$450-500M; TSMC HIGH-trigger leg substantially met, Samsung SF1.4 slipped to 2029), gate-stack core uncontested (Trillium probes dipole), ASMPT SMT strategic review activated; corrections: China >30% mix (thesis ~20% stale), bookings disclosure discontinued (signal loss), van den Brink SB resignation Apr 27 — conviction unchanged; Q2 print Jul 28.
+
+### 2026-07-12
+- Numbers refresh: 6 metrics updated, 1 material. Operating Margin 33.1%→29.9% (-3.2pp, material); Market Cap €41.6B→€44.5B (+7%, not material); Forward P/E ~40-45x→~41x, Revenue Growth +12%→+8%, Gross Margin 53.3%→51.8%, FCF Yield ~2.0%→~1.1% (all not material). Snapshot: [[_Archive/Snapshots/ASMI - ASM International (pre-numbers 20260712-173653)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, fmp_symbol ASM.AS verified): 0 rows edited — all 6 mapped rows (Market Cap, Forward P/E, Revenue Growth, Gross Margin, Operating Margin, FCF Yield) re-render identical to current cell text; no material change since last-hour refresh. Snapshot: [[_Archive/Snapshots/ASMI - ASM International (pre-numbers 20260712-184025)]]

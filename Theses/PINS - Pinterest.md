@@ -2,11 +2,12 @@
 publish: true
 date: 2026-04-30
 tags: [thesis, social-platforms, advertising, commerce, PINS]
-status: monitoring
-conviction: medium
+status: active
+conviction: high
 sector: Social Platforms & Digital Advertising
 ticker: PINS
 source: Web research April 2026 (Q4 2025 earnings, sell-side consensus, competitive analysis, M&A speculation) + vault context [[Sectors/Social Platforms & Digital Advertising]] + [[Macro & Technology/Agentic Internet]]
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-04-30 → Addressed 2026-04-30 [[pinned]]
 > **Prompt:** *What is the risk to PINS from purchase intent moving from feeds/video based discovery into LLM-driven agentic commerce.*
@@ -160,7 +161,7 @@ Pinterest Lens search volume is the single most informative leading indicator �
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| **Market Cap** | ~$13.5B | At ~$20.64 (April 2026); below the $15B level cited in CNBC Bill Ready commentary |
+| **Market Cap** | ~$15.0B | At ~$20.64 (April 2026); below the $15B level cited in CNBC Bill Ready commentary |
 | **Enterprise Value** | ~$11B | After ~$2.5B net cash position |
 | **EV/Revenue (TTM)** | ~2.6× | FY25 revenue $4.22B; vs. Meta ~7×, Google ~5.5× |
 | **Forward P/E (2026E)** | ~11.8× | EPS $1.96E; vs. 3-year average ~25× — material valuation gap |
@@ -170,7 +171,7 @@ Pinterest Lens search volume is the single most informative leading indicator �
 | **Operating Margin (FY25)** | 7.6% | Compressed by restructuring; 18–22% structural achievable |
 | **Adj EBITDA Margin (Q4 25)** | 41% | Best-in-tier-2 cohort (Snap ~25%, Reddit ~30%) |
 | **FCF** | $1.3B FY25 (+33%) | 99% conversion of adj EBITDA |
-| **FCF Yield** | ~9.6% | $1.3B / $13.5B market cap; high relative to growth profile |
+| **FCF Yield** | ~8.1% | $1.3B / $13.5B market cap; high relative to growth profile |
 | **Capex / Revenue** | 0.77% | Vs. Meta ~55% in 2026; structural agentic-resilience signal |
 | **Buyback Authorization** | $3.5B | ~26% of market cap; aggressive at depressed multiple |
 | **Short Interest** | 15.4% of float (+123.5% surge ahead of Q1) | Unusually high; squeeze setup if Q1 beats |
@@ -252,9 +253,13 @@ The bear case rests on three structural vulnerabilities compounding into a tier-
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-8 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- HIGH leg 1 FIRED and was never logged: Q1 (May 4) revenue $1,008M vs the >$980M bar (+18%, beat), record 631M MAU (+11%, 10th straight double-digit quarter), diversification progress (growth ex-large-retailers accelerated), ad pricing recovering -19%→-5% YoY; short squeeze off the $13.84 low to ~$22.70. Zero LOW or organic CLOSE legs tripped; Lens volume shows no decline (600M+ monthly visual queries, +140% YoY); Bill Ready in seat, launching "Ask Pinterest" (Jun 16, own agentic shopping app).
+	- The M&A pillar is IMPAIRED: Polymarket implies ~4% probability of an OpenAI acquisition in 2026 (vs the Kalshi 54% baked into the thesis); what arrived instead was Elliott's $1B convertible at $22.72 conversion + board seat (Mar 3 — pre-dates the thesis and is absent from it) — a bet on standalone execution, not a sale. tvScientific ($300M+, CTV) also unmodeled.
+	- Trigger-set incoherence: the CLOSE leg "acquired at <$22/share" is economically odd with the stock AT $22.70 and Elliott's conversion at $22.72 — recalibrate.
+	- Agentic-commerce falsifier aging WELL: OpenAI's Instant Checkout stumbled and was revamped (Mar 24); Gen Z now ~42% of users, 47% use Pinterest as a search engine — the visual-discovery layer is holding its funnel position. Watch item: Q2 EBITDA guide ~23% margin (tvScientific + international restructuring drag) vs FY target ~29%.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate hostile on the biggest pillar — second-tier ad platforms rarely close ARPU gaps (Snap never did; tier-2 cohort guided to ~2.4% combined share) — and the real 30%+ international-ARPU test doesn't arrive until the Q4 2026 print; Europe +27% / RoW +59% revenue vs users is the early supportive read. Single falsifying datapoint: a Q2/Q3 international ARPU stall coinciding with the go-to-market "disruption" management flagged. Securities class action live (lead plaintiff set May 29), unquantified. A medium→high review is defensible on the thesis's own rules but should net the impaired M&A leg against the strengthened cash-flow floor (Tier 3 — user decision). Q2 print ~Aug 4-6.
 
 ## Related Research
 
@@ -284,3 +289,16 @@ The bear case rests on three structural vulnerabilities compounding into a tier-
 
 ### 2026-05-26
 - [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]]: FTC $930K settlement on fabricated "active listening" ad targeting — marginal; reinforces first-party-data advantage over data-broker arbitrage. No thesis impact, conviction unchanged (medium).
+
+### 2026-07-10
+- Mental models pass: batch-8 evidence sweep populated ## Mental Models — HIGH leg 1 fired May 4 and was never logged ($1,008M vs >$980M bar); M&A pillar impaired (OpenAI odds ~4%, Elliott $1B convert at $22.72 instead); CLOSE trigger "<$22" needs recalibration with stock at $22.70 — conviction unchanged (medium); Q4 2026 international-ARPU print is the decisive test.
+
+### 2026-07-11
+- Status change: conviction medium → high — vault-wide multi-agent valuation scoreboard: ~10-11x fwd EV/FCF, 10% FCF yield, shrinking share count (-18%) against delivered +18% revenue growth; HIGH trigger fired May 4 and was never logged. Snapshot: [[_Archive/Snapshots/PINS - Pinterest (pre-status 2026-07-11-063211)]]
+- Status change: monitoring → active — genuine emerging mispricing (V=6.5/10) warrants active pursuit. Snapshot: [[_Archive/Snapshots/PINS - Pinterest (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 1 material. FCF yield -1.5pp (~9.6%→~8.1%); market cap +11% (~$13.5B→~$15.0B, not material); Gross Margin unchanged at rendered precision (~80%). Snapshot: [[_Archive/Snapshots/PINS - Pinterest (pre-numbers 20260712-180000)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (3 mapped rows re-rendered identical post-rounding), 0 material. Snapshot: [[_Archive/Snapshots/PINS - Pinterest (pre-numbers 20260712-184039)]]

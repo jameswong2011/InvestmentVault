@@ -3,10 +3,11 @@ publish: true
 date: 2026-04-29
 tags: [thesis, semiconductors, semiconductor-capital-equipment, AEHR]
 status: active
-conviction: high
+conviction: medium
 sector: Semiconductor Capital Equipment
 ticker: AEHR
 source: Q3 FY2026 earnings (April 2026) + market data + sell-side coverage
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-05-26 → Addressed 2026-05-26
 > **Prompt:** *What is the engineering / physics moat that prevents traditional semi test vendors like Advantest or Teradyne's equipment or newly R&D equipment from competing against AEHR's products. Is this simply a case of photonics test being too small of a market to care about, which presents risk to the case as photonics now becomes a relevant market.*
@@ -145,7 +146,7 @@ See [[Sectors/Semiconductor Capital Equipment.md]] for full sector context — A
 
 | Metric | Value | Notes |
 |---|---|---|
-| Market Cap | ~$2.94B | At $86.91/share (April 2026), ~31.45M shares; +200% YTD |
+| Market Cap | ~$2.28B | At $86.91/share (April 2026), ~31.45M shares; +200% YTD |
 | EV | ~$2.98B | Net cash position offset by minimal debt |
 | 52-week range | $8.02–$102.48 | Massive re-rating on AI WLBI design-ins |
 | EV/Revenue (FY26E) | ~30-60x | $50M FY26 revenue guide; valuation is bull-case-discounted |
@@ -257,6 +258,7 @@ The bear case is twofold: cycle compression and competitive dilution.
     - *Value Layer Monopoly · output verdict* — Layer = wafer-level burn-in; fit = **WEAK**: AEHR owns ~100% of a real but OPTIONAL, small ($200-400M) layer most of the stack skips ("most ASICs not burnt-in"), so it is not yet the mandatory toll a value-layer monopoly requires. AI overlay = MIXED (TAM growth widens the prize AND attracts ATE-incumbent build/buy — the "closing window"). Alpha = mispricing largely closed post +973%; quality-but-priced with binary downside.
     - *Automation & AI-Readiness · §6 semis overlay + §5 AI-narrative-without-substance* — AEHR is a Lens-B pick-and-shovel on the AI buildout (indirect), not an operator/context-owner; mild caution, not tailwind — the "AI necessity" story lacks the operational substance the lens demands (analog = multi-customer orders + margin expansion, both missing).
 - **Disconfirming check**: All four model families converge bearish-on-conviction — per the READING PROTOCOL, convergence is the cue to disconfirm. Steelman/falsifiers: (a) the HIGH trigger is observable within weeks — a 2nd AI customer >$5M + GM >42% + FY27 guide ≥$80M in Q4 FY26 validates platform-not-customer and collapses the bear core; (b) the WLBI/CPO TAM is real ([[Theses/LITE - Lumentum]], [[Sectors/Photonic Metrology]]) — only timing/capture contested; (c) SiPh converted to a real systems order (ahead of thesis); (d) the moat has empirically held since 2023. **Single falsifying datapoint:** disclosed 2nd >$5M AI customer + GM recovery in Q4 FY26. **Base rate the thesis must beat:** pre-chasm equipment names crossing the chasm *on schedule* at a 4x-revenue ramp — low. Net: conviction is the vulnerability, not the TAM (HIGH→MEDIUM / 1-2% convex sizing).
+- **Evidence update (2026-07-09 batch-2 pass, web-tested)**: the stress-test convergence partially countered, partially deepened. *Countered*: SiPh diversification ran AHEAD of thesis — a SECOND SiPh customer (global networking/optical-transceiver leader, Mar 31) plus three SiPh order events in 4 months; H2 FY26 bookings **>$92M** vs $60–80M guidance (multi-order, no longer one spiky quarter — #19 caution softens); the record **$41M order (Apr 16)** predates the thesis yet is absent from it; valuation leg self-corrected -44% off the Jun 4 peak ($116.58→$65.38), dominated by mechanical Russell-reconstitution removal (Jun 27), not news. *Deepened*: the $41M and Feb orders are **Sonoma package-level burn-in from the SAME lead hyperscale customer** — concentration deepened AND the growth engine migrated to PLBI, more-competitive territory with a different margin structure than the FOX-XP/WaferPak moat (VLM layer verdict stays WEAK); customer-identity class effectively confirmed as hyperscaler-captive ASIC — the thesis's own CLOSE-trigger class; $60M ATM + ~$42.8M insider selling cluster at the top = the Risk-#8 supply overhang, realized. **Resolution is 5 days out: Q4 FY26 print Jul 14** (official PR) — HIGH legs (2nd AI customer, GM >42%, FY27 ≥$80M — consensus already at $85M) vs the concentration footnote. Pre-commit: act on the print per the existing triggers, not the tape.
 
 ## Related Research
 
@@ -298,3 +300,15 @@ The bear case is twofold: cycle compression and competitive dilution.
 ### 2026-06-26
 - Stress test [[Research/2026-06-26 - AEHR - Stress Test]]: HIGH conviction still unsupported a month after the 2026-05-26 flag — CEO's own "most ASICs not burnt-in / early innings" (per [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]) now contradicts Insight #2; 5/7 bull assumptions 🔴 — conviction weakened: reassess high→medium (convex-bet 1-2% sizing) before the binary Q4 FY26 print (Jun-Jul).
 - Mental Models: populated §Mental Models (was empty scaffold) — applied [[Mental Models/Generalist - Overview]] + [[Mental Models/Industry - Semiconductors]] + [[Mental Models/Lens - Automation & AI Readiness]] + [[Mental Models/Lens - Value Layer Monopoly]]; #10 anchor-concentration, #13/#18 misclassification, #19 orders≠demand, #6 margin-mean-reversion-in-reverse, and VLM "optional, non-mandatory layer" all fire as conviction-reducers.
+
+### 2026-07-09
+- Mental models pass: batch-2 evidence sweep appended ## Mental Models update — SiPh leg ran ahead (2nd customer + 3 orders), H2 bookings >$92M multi-order, but record $41M order (absent from thesis) is PLBI from the SAME lead hyperscaler = concentration deepened + moat migrated to competitive package-level; -44% off peak was Russell-mechanical; conviction unchanged pending the Jul 14 Q4 FY26 binary — act on the print per existing triggers, not the tape.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: the $41M order is package-level burn-in from the same sole hyperscaler (deepened concentration into more-competitive PLBI territory), GM sits at 36.5%, and insiders sold ~$43M near the peak. Snapshot: [[_Archive/Snapshots/AEHR - Aehr Test Systems (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 1 metric updated (0 material of those edited; FCF Yield flagged material but left unedited — qualitative original cell, format uncertain). Market cap -22.3% to ~$2.28B (share-price pullback since April print). Snapshot: [[_Archive/Snapshots/AEHR - Aehr Test Systems (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (Market Cap re-rendered identical post-rounding); FCF Yield again flagged material (delta -26.5pp vs "Negative on FY26" qualitative cell) but left unedited — format uncertain, same as prior pass. Snapshot: [[_Archive/Snapshots/AEHR - Aehr Test Systems (pre-numbers 20260712-184039)]]

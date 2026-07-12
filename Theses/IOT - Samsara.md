@@ -7,6 +7,7 @@ conviction: medium
 sector: Industrial IoT & Connected Operations
 ticker: IOT
 source: Vault research synthesis + web search (investor.samsara.com, G2, SaaStr, MIT News, IDC, Samsara Safety Report)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # IOT — Samsara
@@ -150,8 +151,8 @@ Safety is both the primary customer value proposition and a regulatory tailwind.
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$29–32 | Down ~40% from 52-wk highs |
-| Market Cap | ~$16.8B | |
+| Stock Price | ~$37 | Down ~40% from 52-wk highs |
+| Market Cap | ~$21.2B | |
 | FY2026 ARR | $1.89B | +30% YoY |
 | FY2026 Revenue | $1.6B | +30% YoY |
 | Q4 FY2026 Revenue | $444.3M | +28% YoY |
@@ -220,10 +221,13 @@ Safety is both the primary customer value proposition and a regulatory tailwind.
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-7 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- The thesis's central falsifier RESOLVED BULLISH: FQ1 2027 (Jun 4) revenue $478.8M +31% vs the 21-22% guide the note said "determines whether ~$29 is a buying opportunity"; FY27 guide raised to +24%; ARR $1.991B +30%; $1M+ cohort ARR ACCELERATED 56%→62% (191 customers); emerging products crossed $100M ARR at >20% of net-new ACV two straight quarters — the beyond-fleet quantification the thesis needed.
+	- Macro leg INVERTED: freight recession ending via supply-side tightening (dry-van spot at June-2022 highs, DAT contract +9.8% YoY, Class 8 orders +15%; FMCSA English-proficiency out-of-service enforcement removing driver capacity); "customers busier than ever." Motive's S-1 revealed decelerating growth + widening losses (~$252M TTM) at 1/4 Samsara's scale, IPO still unpriced; $30.3M arbitration award against Motive (Feb).
+	- Live falsifier — Automation Lens §5 anti-signal watch: non-GAAP gross margin fell ~200bps YoY exactly as the memory supercycle (DRAM +90-95% QoQ, IoT supply chains "starved") runs through 2027 — the hardware-embedded razors-and-blades model is uniquely exposed; compounding GM erosion falsifies "the profitability inflection is structural" before any growth falsifier fires. Two-sided: scale procurement is also a moat vs loss-making sub-scale rivals.
+	- [G-13]/crowding — the entry window partly consumed itself: $29→$36.36 (+15% since March, June Samsara-Beyond agentic launch popped 9-17%), and IOT now trades ~10.5x fwd revenue vs the post-Warsh sector ~6x — the widest relative premium in its history in a hostile rate regime; NRR flat at ~115% (expansion NOT accelerating with product velocity); insider 10b5-1 supply runs through 2026-12-24.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate ([G-10]) — almost no company sustains >20% growth for a decade at a $2B revenue base; read the +24% guide as graceful fade, not re-acceleration, and make the thesis beat that reference class rather than the software-sector panic. Two falsifiers to track before any conviction upgrade: (1) Q2 FY27 (Sep) gross-margin print under memory-cost pressure; (2) NRR holding ≥115% while the relative multiple demands expansion re-acceleration. Framework gap: NO Conviction Triggers section — the June evidence supports revisiting medium conviction, but formalize the GM floor + NRR floor first (Tier 3 — user decision).
 ## Related Research
 
 - [[Research/2026-04-15 - IOT - Samsara Business Deep Dive]] — $1.9B ARR, 2M+ devices, 25T data points, platform architecture, competitive positioning vs Geotab
@@ -248,3 +252,12 @@ Safety is both the primary customer value proposition and a regulatory tailwind.
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-7 evidence sweep populated ## Mental Models — central falsifier resolved bullish (FQ1 +31% vs 21-22% guide, FY27 raised to +24%, $1M+ cohort accelerating) while GM fell ~200bps into a memory supercycle and the relative multiple hit its widest-ever premium (~10.5x vs sector ~6x) — conviction unchanged (medium); track Q2 GM + NRR ≥115% before any upgrade.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 2 material. Stock price ~$29-32→~$37 (+26.6%, material); market cap ~$16.8B→~$21.2B (+26.1%, material); FY2026 revenue unchanged at $1.6B. Snapshot: [[_Archive/Snapshots/IOT - Samsara (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Stock Price, Market Cap, and FY2026 Revenue all render identical to prior refresh after rounding; data confirmed stable intraday. Snapshot: [[_Archive/Snapshots/IOT - Samsara (pre-numbers 20260712-184120)]]

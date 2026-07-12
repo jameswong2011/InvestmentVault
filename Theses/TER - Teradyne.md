@@ -7,6 +7,7 @@ conviction: medium
 sector: Semiconductor Test Equipment
 ticker: TER
 source: Teradyne Q1 2026 earnings + Northland sell-side initiation (Apr 2026) + Quantifi Photonics partnership announcement (Jan 2026) + sector primary research at [[Sectors/Semiconductor Test Equipment]]
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # TER — Teradyne
@@ -134,15 +135,15 @@ Demand drivers (2026-2028):
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$26B | TER ~$155 × ~166M shares |
+| Market Cap | ~$56B | TER ~$155 × ~166M shares |
 | EV/Revenue (TTM) | ~9.0x | $26B EV / ~$2.94B TTM revenue; vs Advantest ~15x and Cohu ~3x |
 | EV/Revenue (NTM) | ~7.5x | On $3.4-3.6B 2026E revenue (consensus + upside on Compute SoC trajectory) |
-| Revenue Growth (TTM) | +12% | $2.62B 2024 → $2.94B TTM; accelerating on Compute SoC trajectory |
+| Revenue Growth (TTM) | +13% | $2.62B 2024 → $2.94B TTM; accelerating on Compute SoC trajectory |
 | Compute SoC Mix | ~50% of SoC test | Up from 10% in 2023; +90% YoY; key bull-case operating metric |
 | UltraFLEXplus Lead Time | 12-16 weeks | Stable through March 2026; >18 weeks signals continued shortage |
-| Gross Margin | ~58% | Industry-standard ATE GM; robotics segment ~50% pulls blended down ~150bp |
-| Operating Margin | ~22% | Lower than Advantest's ~25%+ due to robotics segment dilution |
-| FCF Yield | ~3.5% | ~$900M FCF on $26B market cap; modest given premium multiple |
+| Gross Margin | ~59% | Industry-standard ATE GM; robotics segment ~50% pulls blended down ~150bp |
+| Operating Margin | ~27% | Lower than Advantest's ~25%+ due to robotics segment dilution |
+| FCF Yield | ~1.0% | ~$900M FCF on $26B market cap; modest given premium multiple |
 | Trailing P/E | ~62x | Premium vs 25x ATE-peer median; contingent on AI growth narrative |
 | HBM Wafer Test Share | >50% | Magnum EPIC platform; sell-side conflates with HBM final test (Advantest 95%) |
 | Robotics Revenue | ~$375M | ~13% of total; Flex partnership scaling, not divesting |
@@ -203,9 +204,14 @@ The first merchant GPU win is AMD MI400 (not Nvidia), worth $100-150M and confin
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-2 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (expectations, reflexivity) · [[Industry - Semiconductors]] (#13, #14, #18) · [[Lens - Value Layer Monopoly]] (§4 alpha test)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#14 reclassification* — CONFIRMED faster and larger than the thesis modeled: Q1 2026 revenue $1.282B (+87%), compute ~75% of SoC revenue, AI = 70% of total, FY26 guide $6B / EPS $9.50–11.00 — the thesis's bull-case 2028 price target was exceeded within 6 weeks of creation and its bear revenue path ($3.1B) is half of actual guidance. The quantitative frame was stale at creation ($155/$26B anchors vs ~$300/$50B reality) — `/numbers TER` before any trigger arithmetic.
+	- *VLM §4 alpha test — the variant perception got consensus-ized in ~8 weeks*: management now publicly owns the structural framing (ATE TAM $9B→$12–14B, TER to ~$6B at BofA conference), Cantor $550 "generational cycle," Nasdaq-100 inclusion Jun 22. The paired-trade premise INVERTED: TER now trades at a premium to Advantest (~49x vs ~32x NTM EV/EBITDA) — the "cheapest catch-up expression" leg of the thesis is dead; what remains is execution.
+	- *Thesis fact-base corrections*: Magnum 7H (universal HBM tester incl. post-singulated speed test) launched Aug 2025 — pre-dates the thesis, which claimed no final-test platform existed; Quantifi was a full acquisition (Mar 2025), not Jan-2026 co-development rights — the exclusivity Outstanding Question is moot, and Photon 100 productized at OFC Mar 2026. Memory test $203M/qtr (~$800M annualized) already exceeds the thesis's "non-consensus" $400–500M-by-2027 number.
+	- *HIGH trigger status*: compute mix >55% CONFIRMED two consecutive quarters; merchant-GPU-customer-is-Nvidia leg UNCONFIRMED but supported (UBS: TER ships for Rubin from Q4 2026; Morningstar: second-source qual later in 2026) — Jul 28 call is the disclosure checkpoint. LOW trigger (<35% mix) decisively refuted. Robotics turnaround confirmed (+32% YoY, 4th consecutive growth quarter, Flex expanded).
+	- *#18 / #19* — the deferred question: H1-weighted linearity (55–60% of FY in H1), Q2 guided sequentially DOWN, "limited visibility into H2"; the thesis's chosen leading indicator (UltraFLEXplus lead times) is no longer reported — replace with H2 backlog commentary and memory-capex second-derivative.
+- **Disconfirming check** (evidence-updated): the memory channel delivered the disconfirm early — SK Hynix HBM4 ramp slow-down + DDR5 pivot triggered the July rout; TER -29% in a week from the $487.91 ATH (Jun 30) to ~$343, at ~48–53x fwd vs 5-yr median ~30x. Reflexivity: the +290% 1Y run made the thesis's own CLOSE framework (62x→20x compression = -55%) the live risk scenario rather than a tail. Single falsifiers: Jul 28 print (merchant GPU customer name + H2 visibility + memory backlog); a confirmed AMD-not-Nvidia merchant win without gen-2 lock-in. Batch flag: TER and Advantest now share one AI-test-cycle bet at similar multiples — the pair trade is gone; what's left is a duopoly beta position on the same falsifier set.
 
 ## Related Research
 
@@ -235,3 +241,12 @@ The first merchant GPU win is AMD MI400 (not Nvidia), worth $100-150M and confin
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis names E/O photonic test an emerging un-standardized battleground — Teradyne "very serious", acquired a packaged-optical-test startup; corroborates the Quantifi/CPO-test-capture bull driver. Net-new TAM not yet sized. Conviction unchanged (medium).
+
+### 2026-07-09
+- Mental models pass: batch-2 evidence sweep populated ## Mental Models — reclassification confirmed bigger/faster than modeled (Q1 +87%, $6B guide; bull 2028 target exceeded in 6 weeks), but variant perception consensus-ized and the pair-trade premise inverted (TER 49x vs ADVT 32x EV/EBITDA); Magnum 7H + Quantifi facts corrected; quantitative frame stale at creation — /numbers TER required — conviction unchanged (medium); Jul 28 print = merchant-GPU disclosure checkpoint.
+
+### 2026-07-12
+- Numbers refresh: 5 metrics updated, 3 material. Market cap ~$26B→~$56B (+116.5%, material — confirms the mental-models flag that the quantitative frame was stale at creation); operating margin ~22%→~27% (material); FCF yield ~3.5%→~1.0% (material); revenue growth +12%→+13%; gross margin ~58%→~59%. Snapshot: [[_Archive/Snapshots/TER - Teradyne (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Market Cap, Revenue Growth, Gross Margin, Operating Margin, FCF Yield all identical to prior refresh after rounding. EV/Revenue (TTM) and Trailing P/E still fetch_gap. Snapshot: [[_Archive/Snapshots/TER - Teradyne (pre-numbers 20260712-183935)]]

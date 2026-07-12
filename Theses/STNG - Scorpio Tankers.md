@@ -6,6 +6,7 @@ status: monitoring
 conviction: medium
 sector: Product Tankers & Maritime Shipping
 ticker: STNG
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # STNG — Scorpio Tankers
@@ -157,8 +158,8 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$3.96B | As of April 13, 2026 |
-| Stock Price | ~$77 | 52-week range: $30.63 - $81.85 |
+| Market Cap | ~$3.95B | As of April 13, 2026 |
+| Stock Price | ~$79 | 52-week range: $30.63 - $81.85 |
 | Fleet Size | 90 vessels | 34 LR2, 42 MR, 14 Handymax |
 | Avg Fleet Age | 10.1 years | Industry avg ~12-13yr; 17% of global fleet >20yr |
 | Net Cash | ~$334M | From $3.1B net debt in 2021 |
@@ -167,7 +168,7 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 | Q1 2026 TCE (LR2) | $51,000/day | Pool/spot rate |
 | Q1 2026 TCE (MR) | $32,000/day | Pool/spot rate |
 | Q1 2026 TCE (Handy) | $34,000/day | Pool/spot rate |
-| FY2025 Revenue | ~$900M+ | Q4: $252.7M (+31.5% YoY) |
+| FY2025 Revenue | ~$938M+ | Q4: $252.7M (+31.5% YoY) |
 | FY2025 Adj. EBITDA | ~$568M | Q4: $151.6M |
 | FY2026E EPS | $3.06-$11.10 | Wide range reflects scenario dependence |
 | P/NAV | ~0.9-1.05x | Compressed from 0.7-0.85x discount |
@@ -221,9 +222,14 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-10 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- [G-3] misapplying trend continuation to a cyclical — the LATE-CYCLE SIGNATURE is now stacked: secondhand asset values at decade/record highs, orderbook 18–20% of fleet, 2026 deliveries at a historic peak (~20M dwt product; total tanker 49M dwt set to top 2009's record), scrapping deferred (record 14.3-yr fleet age), and management is an aggressive NET SELLER — fleet 90→81 with 7 more vessels under sale agreement (Jun 18). The operator selling ships into record S&P values is the classic top tell; treating "structurally elevated rates" as base case is the expensive error here.
+	- Insurance-lag insight: CONFIRMED — 3+ weeks post-Islamabad-MoU, Hormuz transits ran 34–54/day vs 88 baseline; Suez precedent (still -60% at 100 days without attacks) validates the mechanism; Jul 7 tanker strikes re-froze it entirely.
+	- Diesel-crack insight: CONFIRMED — record NYMEX 3-2-1 crack $64.58/bbl (Jul 8), record European diesel margin >$60 after Russia's export ban. Q2 TCE locked: LR2 $80k (88% booked), MR $53k.
+	- [G-13] expectations: the market is already fading the crisis — stock ~$74 vs $86.10 ATH (May 5) against a record Q2; Evercore pro-forma NAV >$105 makes the thesis's "$47 NAV floor" severely stale in the bullish direction, yet the ~30% NAV discount persists.
+	- Structural gap: **no ## Conviction Triggers section**; the functional falsifiers live scattered in Bear Case/Risks (rapid diplomatic resolution; orderbook into normalized demand).
+- **Disconfirming check** (evidence-updated 2026-07-10): the confirmed mechanisms (insurance lag, cracks) are all FLOW variables; the refuted/loaded falsifiers (orderbook, scrapping, management selling) are all STOCK variables — and stock beats flow on a 12-month horizon. Single falsifying datapoint: Q3 forward bookings at the Jul 29 print showing sub-$40k LR2 while 2026-27 deliveries land = normalization into the wave. The right question is "how fast do rates normalize into a record delivery schedule," not "how long does the crisis premium last." Aug ~16 MoU-window expiry is the binary.
 
 ## Related Research
 
@@ -279,3 +285,12 @@ During the Iran-Iraq Tanker War, 451 attacks were carried out on merchant vessel
 
 ### 2026-05-24 (/sync all)
 - [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Market pricing 23-day deal-completion gap incremental "broad outlines" leaks cannot close; Hormuz tolling system as third Hormuz state (open/closed/tolled) is a NEW playbook variable not currently captured in §Risks. Reinforces 15% trailing-stop discipline — no early lift on Al Arabiya-style optimism leaks; LR2 $100k+/day regime persists through Q3+. Conviction unchanged (medium, monitoring).
+
+### 2026-07-10
+- Mental models pass: batch-10 evidence sweep populated ## Mental Models — insurance-lag and crack-spread mechanisms confirmed (record $64.58 3-2-1 crack, LR2 $80k Q2) but late-cycle signature stacked: management net seller (fleet 90→81), record orderbook/deliveries, no scrapping; NAV floor stale ($47 vs >$105 est) — conviction unchanged (medium); Q2 print Jul 29, MoU window expiry ~Aug 16.
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 3 metrics updated, 0 material. Stock Price ~$77→~$79 (+3%, largest delta this pass). Snapshot: [[_Archive/Snapshots/STNG - Scorpio Tankers (pre-numbers 20260712-174116)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (3 mapped rows re-rendered identical post-rounding), 0 material. Snapshot: [[_Archive/Snapshots/STNG - Scorpio Tankers (pre-numbers 20260712-184039)]]

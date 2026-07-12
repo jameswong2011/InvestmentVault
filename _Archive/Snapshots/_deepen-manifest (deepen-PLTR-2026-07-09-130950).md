@@ -1,10 +1,11 @@
 ---
 type: deepen-manifest
 batch: deepen-PLTR-2026-07-09-130950
-status: in-progress
+status: completed
 ticker: PLTR
 section: Industry Context
 date: 2026-07-09
+completed_date: 2026-07-09
 ---
 
 # Deepen Manifest
@@ -28,7 +29,7 @@ date: 2026-07-09
 - Section deepened: Industry Context
 
 ## Research note created (if any)
-- *(filled in Phase 7.5 flip: wikilink to Research note, or `none — Phase 6 judged new research insubstantial`)*
+- [[Research/2026-07-09 - PLTR - Model Evolution and Agentic Workload Viability Deep Dive]]
 
 ## Phase 5 Log-append outcome
-- *(filled in Phase 7.5 flip: succeeded | provisional-entry-stuck + correction-appended)*
+- succeeded: provisional `Deepening Industry Context — in progress` replaced by final `Deepened Industry Context: [model-evolution→agentic-viability + mid-2026 Databricks refresh] — conviction unchanged (high), two-sided`. Verified via grep probe (EDIT_OK).

@@ -6,18 +6,20 @@ status: monitoring
 conviction: medium
 sector: Indian Financial Services
 ticker: EDEL
+fmp_symbol: EDELWEISS.NS
 source: Consolidated from Claude, ChatGPT, Gemini conversation exports; ICRA Dec 2025 note; Edelweiss investor presentations; SEBI filings; web research April 2026
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # EDEL — Edelweiss Financial Group
 
 ## Summary
 
-~₹106, ~₹10,000 crore market cap (~$1.2B) — a fraction of the sum-of-parts value: EAAA pre-IPO placement at ₹8,500 crore + MF at ₹3,000 crore (WestBridge deal) = ₹11,500 crore before accounting for insurance, ARC, MSME, and Nido proceeds. India's largest alternative asset manager (₹68,175 crore EAAA AUM), transforming from leveraged NBFC into asset-light, fee-led alternatives platform. The market misprices EDEL as a legacy NBFC when it is a systematic "incubate, scale, monetize" platform factory — validated by four value-crystallization events (Nuvama, MF, Nido, EAAA) in five years. EAAA IPO DRHP re-filed January 2026; Nido/Carlyle sale (₹2,100 crore) closing ~July 2026. Q3 FY26 PAT +74% YoY, ROE 9.62%. The question: whether catalysts crystallize value before investor patience with the complexity discount expires.
+~₹120, ~₹11,372 crore market cap (~$1.3B) — a fraction of the sum-of-parts value: EAAA pre-IPO placement at ₹8,500 crore + MF at ₹3,000 crore (WestBridge deal) = ₹11,500 crore before accounting for insurance, ARC, MSME, and Nido proceeds. India's largest alternative asset manager (₹68,175 crore EAAA AUM), transforming from leveraged NBFC into asset-light, fee-led alternatives platform. The market misprices EDEL as a legacy NBFC when it is a systematic "incubate, scale, monetize" platform factory — validated by four value-crystallization events (Nuvama, MF, Nido, EAAA) in five years. EAAA IPO DRHP re-filed January 2026; Nido/Carlyle sale closing ~July 2026 (₹2,100cr headline transaction — corrected 2026-07-10: EFSL receives only ~₹603cr for its 45.03% secondary stake; ₹1,500cr is primary capital into Nido). Q3 FY26 PAT +74% YoY, ROE 9.62%. The question: whether catalysts crystallize value before investor patience with the complexity discount expires.
 
 ## Key Non-consensus Insights
 
-- **The "incubate, scale, monetize" playbook is management DNA, not one-off financial engineering.** Four validations: Nuvama demerger (2023, +215% post-listing), WestBridge MF stake sale (2025, 57x FY25 PAT), Nido/Carlyle (2026, ₹2,100 crore), EAAA pre-IPO placement (March 2026, ₹8,500 crore). Gap between public pricing (legacy NBFC multiples) and private pricing (premium platform multiples) is the core opportunity.
+- **The "incubate, scale, monetize" playbook is management DNA, not one-off financial engineering.** Four validations: Nuvama demerger (2023, +215% post-listing), WestBridge MF stake sale (2025, 57x FY25 PAT), Nido/Carlyle (2026, ~₹603cr secondary to EFSL within a ₹2,100cr transaction — corrected 2026-07-10), EAAA pre-IPO placement (March 2026, ₹8,500 crore valuation). Gap between public pricing (legacy NBFC multiples) and private pricing (premium platform multiples) is the core opportunity.
 
 - **The alternatives moat is GP manufacturing capability, which compounds differently than distribution.** 360 ONE approaching EAAA's AUM (₹50,934cr vs ₹68,175cr) but through wealth-led distribution. EAAA directly manages capital for global institutional LPs — CDPQ committed $1.3B. "Top PDI Fund Raiser" 5 consecutive years, $843M raised in 9M FY26 (+67% YoY), 33% fee-paying AUM growth.
 
@@ -67,7 +69,7 @@ WestBridge acquired a 15% stake at 57x FY25 PAT valuation (₹3,000 crore implie
 
 ### Housing Finance — Nido Home Finance
 
-₹4,804 crore AUM (+21% YoY). Affordable and mid-market housing loans. Being sold to Carlyle Group + Aditya Puri (former HDFC Bank CEO) vehicle for ₹2,100 crore (99.4% shareholder approval, closing ~July 2026). Proceeds earmarked for corporate deleveraging.
+₹4,804 crore AUM (+21% YoY). Affordable and mid-market housing loans. Being sold to Carlyle Group + Aditya Puri (former HDFC Bank CEO) vehicle in a ₹2,100 crore transaction (99.4% shareholder approval, closing ~July 2026). Corrected 2026-07-10: EFSL receives ~₹603 crore for its 45.03% secondary stake; the remaining ₹1,500 crore is primary equity infused into Nido itself and never reaches Edelweiss corporate — only the ~₹603cr is available for deleveraging.
 
 ### MSME Lending
 
@@ -99,12 +101,12 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~₹106 | April 2026; 52-wk range ₹73.50 – ₹130.70 |
-| Market Cap | ~₹10,000 crore | ~$1.2B |
+| Stock Price | ~₹120 | April 2026; 52-wk range ₹73.50 – ₹130.70 |
+| Market Cap | ~₹11,372 crore | ~$1.2B |
 | Q3 FY26 Net Profit | ₹270 crore | +74% YoY, +105% QoQ; record quarter |
 | 9M FY26 Net Profit | ₹548.50 crore | +45% YoY |
 | ROE | 9.62% | Up from 5-yr avg 5.94%; peers 15%+ |
-| Operating Margin | 27.3% | Compressed from 35.5% in Q1 FY26 |
+| Operating Margin | 7.7% | Compressed from 35.5% in Q1 FY26 |
 | Customer Assets | ₹2.4 trillion | +8% YoY |
 | EAAA AUM | ₹68,175 crore | India's largest private credit manager |
 | EAAA Fee-Paying AUM | ₹41,920 crore | +33% YoY |
@@ -122,9 +124,9 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 
 ## Bull Case
 
-- **Platform factory validated by four capital events.** Nuvama (+215% post-listing), WestBridge MF (57x PAT), Nido/Carlyle (₹2,100 crore), and EAAA pre-IPO placement (₹8,500 crore) collectively demonstrate that Edelweiss creates value within its portfolio that the consolidated stock price does not reflect. Each successive event de-risks the thesis and provides external price discovery.
+- **Platform factory validated by four capital events.** Nuvama (+215% post-listing), WestBridge MF (57x PAT), Nido/Carlyle (~₹603cr to EFSL — corrected 2026-07-10), and EAAA pre-IPO placement (₹8,500 crore valuation) collectively demonstrate that Edelweiss creates value within its portfolio that the consolidated stock price does not reflect. Each successive event de-risks the thesis and provides external price discovery.
 - **Sum-of-parts discount is material and quantifiable.** EAAA (₹8,500cr) + MF (₹3,000cr) = ₹11,500 crore already exceeds the entire ₹10,000 crore market cap — before accounting for insurance, ARC, MSME lending, and pending Nido/Carlyle proceeds. The gap closes mechanically as subsidiaries list or transact.
-- **Deleveraging is accelerating.** Corporate net debt down 15% over 2 years to ₹6,520 crore, with Nido sale proceeds (₹2,100cr, closing ~July 2026) and eventual EAAA IPO OFS (₹1,500cr targeted) providing step-function reductions. Near-zero corporate debt would eliminate the most common bear case objection.
+- **Deleveraging is progressing, not step-function.** Corporate net debt down 15% over 2 years to ₹6,520 crore, with Nido sale proceeds (~₹603cr to EFSL — corrected 2026-07-10 from ₹2,100cr) and eventual EAAA IPO OFS (₹1,500cr targeted) providing incremental reductions; management guides ₹6,500cr → ₹3,000cr over 18 months. Near-zero corporate debt would eliminate the most common bear case objection.
 - **Alternatives growth is structural, not cyclical.** India's AIF industry growing at ~30% CAGR. EAAA's GP capabilities, CDPQ partnership, and institutional LP base position it to capture disproportionate share as India's credit market deepens and pension/insurance capital flows into alternatives.
 - **ROE inflection is underway.** 9.62% in Q3 FY26 vs. 5.94% 5-year average. As corporate debt declines and the business mix shifts to fee-led income (EAAA management fees, MF fees), ROE should structurally improve toward peer levels (15%+).
 - **Regulatory tailwind.** RBI proposing easier AIF investment rules for banks/NBFCs directly benefits EAAA's fundraising from domestic institutions.
@@ -141,7 +143,7 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 ## Catalysts
 
 - **SEBI approval of EAAA DRHP** (pending since January 2026): Single most important near-term catalyst. Approval would unlock the IPO process and provide definitive external valuation for the crown jewel business. Realistic timing: H2 CY2026, assuming no further complications.
-- **Nido/Carlyle deal completion** (expected by July 2026): ₹2,100 crore transaction with 99.4% shareholder approval already secured. Removes housing finance from the group, simplifies the structure, and delivers step-function deleveraging.
+- **Nido/Carlyle deal completion** (expected ~2026-07-31 per ICRA): ₹2,100 crore transaction with 99.4% shareholder approval already secured. Removes housing finance from the group and simplifies the structure; deleveraging contribution is ~₹603cr of secondary proceeds to EFSL (corrected 2026-07-10 — the ₹1,500cr balance is primary capital into Nido), incremental rather than step-function.
 - **Q4 FY26 results** (scheduled May 22, 2026): Full-year profitability will reveal whether Q3's record performance was sustainable. Key metrics to watch: full-year ROE, margin trajectory, corporate net debt level.
 - **Transfer of remaining 5% WestBridge MF stake**: Completes the external validation transaction for the AMC business.
 - **Corporate net debt inflection below ₹5,000 crore**: Would signal the deleveraging thesis is on a credible glide path to near-zero. Nido proceeds alone could achieve this.
@@ -160,9 +162,14 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-10 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- VLM verdict: **NO FIT** — no decisive layer (EAAA is ~4% of ₹16.94L cr AIF commitments, contested; Bharat Bond's passive-debt niche fails the pricing-power test at 0.01% ER), and the §2 conglomeration disqualifier fires hard: 7 unrelated financial verticals, no dominated core layer to envelop from. Correct classification: pure event-driven SOTP/holding-company-discount trade — grade it on catalyst execution and discount math; do NOT let "Brookfield of India" smuggle in compounder assumptions.
+	- Incubate-scale-monetize insight: CONFIRMED on execution — SEBI approved the EAAA IPO 2026-04-23 (the #1 catalyst FIRED; the thesis body still says "pending" — unabsorbed), final 5% WestBridge MF stake transferred Jun 29, Nido/Carlyle on track for Jul 31 close.
+	- [G-13] expectations: the edge is DECAYING as it confirms — stock ₹123–126 (+~18% vs ₹106 entry) and sell-side consensus targets (JM ₹125, ICICI ₹115, consensus ₹120) now sit AT the price: the SOTP-unlock is no longer non-consensus at current marks. Residual edge is confined to EAAA IPO pricing vs the ₹8,500cr private mark + the Nido close.
+	- Factual: Nido proceeds to EFSL are ~₹603cr, NOT the "₹2,100cr" the thesis earmarks for deleveraging (₹1,500cr is primary infused INTO Nido) — the "corporate net debt <₹5,000cr from Nido alone" leg is overstated ~3.5x; management now guides ₹6,500cr→₹3,000cr over 18 months. Also Q4 PAT ₹132cr (-17% YoY) — the record Q3 was NOT sustained; the ex-capital-events earnings engine is weaker than the narrative.
+	- Structural gap: **no ## Conviction Triggers section**; the thesis's own named falsifier (EAAA LP-flow geography) is misdated Q1 FY26 — the real read is Q1 FY27 (~early Aug 2026).
+- **Disconfirming check** (evidence-updated 2026-07-10): the sweep mostly confirms the thesis's own catalysts — per the READING PROTOCOL that is the disconfirmation trigger, and the two bear datapoints the glow washes out are the -17% Q4 and consensus-at-price. Single falsifying datapoint: EAAA IPO pricing below the ₹8,500cr pre-IPO mark (or RHP slipping past H2 CY2026) — that voids both the crown-jewel mark and the "monetization machine" premium simultaneously. Base rate: Indian holdco discounts of this depth persist; the trade needs the event, not the story.
 
 ## Related Research
 
@@ -202,3 +209,16 @@ Gross premium ₹514 crore (+15% YoY). Individual and group life insurance produ
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-10 evidence sweep populated ## Mental Models — VLM NO FIT (conglomeration disqualifier; event-driven SOTP not a layer thesis); #1 catalyst FIRED unabsorbed (SEBI approved EAAA IPO Apr 23), WestBridge complete, but Nido proceeds to EFSL are ₹603cr not ₹2,100cr (body error ~3.5x) and Q4 PAT -17% — conviction unchanged (medium); consensus now AT price, EAAA IPO pricing vs ₹8,500cr mark is the falsifier.
+- Corrected: fact-audit pass — Nido/Carlyle proceeds to EFSL fixed ₹2,100cr→~₹603cr (₹1,500cr is primary into Nido) across Summary, Insight #1, Business Model, Bull Case ×2, Catalysts; "step-function deleveraging" reframed incremental per ₹6,500→3,000cr/18mo guide.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 2 material. Operating margin 27.3%→7.7% (-19.6pp, material); market cap ~₹10,000cr→~₹11,372cr (material); stock price ~₹106→~₹120. Snapshot: [[_Archive/Snapshots/EDEL - Edelweiss Financial Group (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, post fmp_symbol exchange-suffix fix): 0 metrics changed — Market Cap ~₹11,372cr confirmed stable once correctly unit-converted (raw FMP figure is in absolute ₹, /1e7 = ~₹11,372cr, matching prior print; earlier "material" flag was a units artifact, not a real move). Stock Price and Operating Margin unchanged after rounding. Snapshot: [[_Archive/Snapshots/EDEL - Edelweiss Financial Group (pre-numbers 20260712-184120)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: Summary ₹106/₹10,000cr→₹120/₹11,372cr (sub-threshold, comprehensive sweep). Snapshot: [[_Archive/Snapshots/EDEL - Edelweiss Financial Group (pre-deepen-metrics-sync 2026-07-12-203456)]]

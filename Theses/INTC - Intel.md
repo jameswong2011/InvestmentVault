@@ -3,10 +3,11 @@ publish: true
 date: 2026-04-27
 tags: [thesis, semiconductors, INTC]
 status: monitoring
-conviction: medium
+conviction: low
 sector: Compute & AI Compute Accelerators
 ticker: INTC
 source: Intel Q1 2026 earnings (April 23, 2026), Lip-Bu Tan turnaround strategy + Tesla 14A customer (April 2026), US government 10% equity stake (Aug 2025), Nvidia $5B investment (Sept 2025 / closed Dec 2025), SoftBank $2B investment (Aug 2025), web research April 2026
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-04-27 → Addressed 2026-04-27
 > **Prompt:** *What are the likely yield achievements for 18A and 14A. Will Intel be at a structural disadvantage vs. TSMC 2nm and be a second source supplier when TSMC is unable to fulfil orders due to capacity issues.*
@@ -191,12 +192,12 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$585–628B (data-provider variance) | Post NVDA/SoftBank/USG issuance; May 2026 |
+| Market Cap | ~$552B (data-provider variance) | Post NVDA/SoftBank/USG issuance; May 2026 |
 | Share Price (May 9, 2026 close) | ~$109 | 52-wk range $18.97–$133.48; +30–60% above thesis-date $82.73 |
 | Shares Outstanding | ~5.03B | Diluted; ~5.16B fully-diluted incl. warrants |
 | EV/Revenue (TTM) | ~10x | TTM revenue ~$55B; EV ~$555–600B |
 | EV/EBITDA NTM | ~25.8x | vs TSMC 13.1x |
-| Forward P/E | ~117x | vs TSMC 22x, AMD 45x |
+| Forward P/E | ~102x | vs TSMC 22x, AMD 45x |
 | Sell-side consensus target | ~$66 (range $25–$118) | ~50% below current; HSBC $95 (most bullish) still ~15% below May 9 close |
 | SOTP fair value (illustrative) | $43–73 / share | Products 4–6x 2027E ($180–270B) + Foundry 2–5x + asset value ($40–100B) + Altera 49% (~$4B) + Mobileye residual (~$1B) − net debt; 60%+ below current at lower bound |
 | Q1 2026 Revenue | $13.58B (+7% YoY) | Sixth consecutive beat |
@@ -312,9 +313,15 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-3 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (reflexivity, expectations) · [[Industry - Semiconductors]] (#4, #13, #14) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *The thesis's central mechanism FIRED*: "first execution stumble compresses the multiple from a 117x base" — INTC **-21% in the first July week** (-25% from the $133.99 Jun 18 ATH) on exactly the two named stumble candidates: 18A-profitability-timeline doubt AND the AMD data-center crossover (AMD DC revenue $5.8B > Intel DCAI $5.1B, first time ever). Insight #5 (rally = foundry-option repricing on preliminary deals + AI-CPU narrative) validated by the re-rate anatomy: Apple/Google/Tesla headlines each worth +9–14% single days, one announced by Trump on Truth Social with neither company confirming.
+	- *LOW trigger closing fast*: AMD server-revenue share 41.3% → **46.2%** in one quarter (Mercury Q1); at that slope the 50% LOW trigger plausibly fires at Q2/Q3 Mercury data. Mercury's attribution — the AI-agent boom shifting DC spend GPU→CPU — simultaneously confirms the thesis's agentic-CPU macro call AND Insight #2 (Intel structurally weakest at the inflection it needs).
+	- *HIGH trigger: 0 of 4 legs; external foundry revenue $174M/qtr vs the $1B bar — order-of-magnitude gap.* 18A yield: contested (Zinsner "pulling in milestones" + BlueFin "solved" vs Tom's "industry-standard early 2027," Fab 52 partly idle, ~60% datapoint) — resolution Jul 23. Maia 2: formal agreement (Jan), not commercial launch. 14A roster: Tesla anchored, Apple preliminary+Trump-announced-unconfirmed, two prospects deciding H2 2026–H1 2027; caveat — **capex plan does not fund 14A external capacity**, so a whale win forces re-acceleration and delays IFS breakeven.
+	- *Insight #3 partially CUT AGAINST by new evidence*: Google booked Intel for packaging **>3M TPUs in 2028** (~half of Google's 2028 output; JPM: "storm in a teacup," wafers stay TSMC) + EMIB ~90% yields + Amkor scale partnership + SK Hynix EMIB testing — the packaging-only-at-scale path the thesis called foreclosed is materializing via EMIB. First public packaging-yield datapoint (thesis flagged none existed).
+	- *CLOSE legs all REFUTED*: 14A reaffirmed (PDK 0.9 Oct 2026, equipment orders +50%), Coral Rapids officially 2028 (SMT restored; Diamond Rapids 2027 slip now official), IFS loss narrowing ($2.4B Q1), Paisner suit alive but removed to federal court. Data error: thesis dates the suit March 2025 — actual filing **March 5, 2026**.
+	- *Timing compression*: nearly every trigger resolution has pulled forward ~1–2 quarters into **Jul 23** (Q2 print: 18A yield claim, external foundry run-rate, DCAI vs AMD) and H2 2026 (14A commitments, packaging deals, Jaguar Shores validation).
+- **Disconfirming check** (evidence-updated): the bearish-lean framing is winning on its own terms — six consecutive beats and real cost discipline (35.5K jobs, opex ~$16B) could not hold a 904x-trailing multiple against one week of timeline doubt, and INTC still trades ~8% ABOVE consensus PT (the complex's only such outlier) with HSBC at $200 street-high — maximum dispersion. The models say: #13 misclassification risk is now double-sided (market flip-flopping between "broken cyclical" and "foundry compounder" quarter by quarter); the VLM read stays layer-aspirant-not-owner until external foundry revenue crosses $500M/qtr. Single falsifier: the **Jul 23 print** — 18A yield disclosure + external foundry $ + DCAI trajectory in one event. Watch SoftBank/424B7 holder-exit signals (Risk #10 live).
 
 ## Related Research
 
@@ -374,3 +381,13 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 ### 2026-07-09
 - Sector re-scoped: frontmatter `sector:` aligned to [[Sectors/Compute & AI Compute Accelerators]] (prior value resolved to no sector note, so sector propagation was silently skipped) — conviction unchanged; metadata hygiene per [[_Archive/Docs/2026-07-09 - Skills Audit Report]].
+- Mental models pass: batch-3 evidence sweep populated ## Mental Models — the thesis's central mechanism FIRED (-21%/week from 904x trailing on 18A timeline doubt + AMD DC crossover, the two named stumble candidates); LOW trigger (AMD 50% server share) closing fast (46.2% Q1); HIGH 0/4 (external foundry $174M vs $1B bar); Google 3M-TPU packaging deal cuts against Insight #3's foreclosed-packaging claim; Paisner suit date error corrected (Mar 2026 not 2025) — conviction unchanged (medium); everything resolves Jul 23.
+
+### 2026-07-11
+- Status change: conviction medium → low — vault-wide multi-agent valuation scoreboard: 110x fwd P/E embeds compound perfection (18A yield, external foundry scale, Coral Rapids recovery) while external foundry revenue runs at $174M/qtr against the $1B/qtr bar, and AMD's Q1 server-revenue crossover (46.2%) confirms Intel is structurally weakest at the agentic-CPU inflection it claims to lead. Snapshot: [[_Archive/Snapshots/INTC - Intel (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 0 material. Market cap ~$585-628B→~$552B (-5.6%), forward P/E ~117x→~102x (-13.2%); both below the 25% materiality threshold. EV/Revenue (TTM) fetch_gap (no FMP data). All other rows (share price, shares outstanding, EV/EBITDA, SOTP, quarterly financials, foundry metrics, capex, workforce, stakes, roadmap items) are custom metrics — left unedited. Snapshot: [[_Archive/Snapshots/INTC - Intel (pre-numbers 20260712-173930)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Market Cap and Forward P/E both identical to prior refresh after rounding. EV/Revenue (TTM) still fetch_gap. Snapshot: [[_Archive/Snapshots/INTC - Intel (pre-numbers 20260712-183935)]]

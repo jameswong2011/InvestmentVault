@@ -7,6 +7,7 @@ conviction: medium
 sector: Semiconductor Test Equipment
 ticker: 6857.T
 source: Q4 FY2025 results (8 May 2026), sell-side reports, vault sector note [[Sectors/Semiconductor Test Equipment]]
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # Advantest (6857.T)
@@ -134,7 +135,7 @@ Hyperscalers who actively multi-source ASIC test (Google maintaining both V93000
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ¥4.8T (~$32B USD) | At ¥6,400/share, 749M shares outstanding |
+| Market Cap | ¥21.6T (~$32B USD) | At ¥6,400/share, 749M shares outstanding |
 | Enterprise Value | ¥4.55T (~$30B USD) | Net cash position ~¥250B |
 | EV/Revenue (FY2026e) | 5.8x | Consensus FY2026 revenue ¥785B |
 | EV/EBITDA (FY2026e) | 18x | EBITDA margin ~32% expected |
@@ -216,9 +217,14 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-2 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] (#2, #13, #18, #19) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#18 right stock, wrong mechanism* — the core HBM4 test-time pillar (14–18h/stack) remains UNCORROBORATED by any public source; the realized driver is SoC/AI-accelerator test (share 56%→66% CY2025, +10pp). FY26 guide raised ~33% within one quarter to ¥1.42T (Apr 27) — the operating thesis is winning on the pillar the thesis called secondary. Decompose before re-underwriting.
+	- *#2 qualification-gate — eroding at the periphery before the CLOSE window*: Teradyne Magnum 7H "ramping at the largest HBM manufacturers" (plural, KGSD-capable — the <5%-Teradyne framing is stale); Korean insurgents at SK Hynix (Digital Frontier wafer-inspection kit, Techwing cube-prober first order); SK Hynix built in-house HBM4 SiP/SLT test. None trips the CLOSE trigger literally (no HBM5 hybrid-bonding qual win), but the kill-trigger's Q4-2027 timing may be too late — the gate is being probed now.
+	- *Services annuity (Insight #3)* — REFUTED direction: services ~10% of sales (¥103B / ¥988B FY25), not the thesis's ~22% baseline, and falling as hardware surges; the SEMICAP-annuity re-rate pillar is failing on its own metric.
+	- *Capacity call option (Insight #2)* — CONFIRMED: 3K→5K (Mar 2027 "bare minimum")→7.5K→10K by end-2028, may accelerate. *#5 Tokyo Seimitsu* — real, announced Dec 2025. New optionality: OpenLight silicon-photonics test partnership (Jun 23).
+	- *#19* — >6-month ATE lead times are the demand signal; yen at 162 (guide assumes 150) is a tailwind that inverts the thesis's JPY-strength risk; BOJ at 1.00% hiking is the reversal tail.
+- **Disconfirming check** (evidence-updated): the CLOSE price trigger (>¥10,000) is literally breached ~3x (¥28,550) — but the thesis's price basis (¥6,400 / ¥4.8T mcap, May 2026) is irreconcilable with market data (~¥21T mcap, no split) — **all trigger arithmetic is unusable until a `/numbers 6857` rebase**; on the trigger's intent (~55–60x fwd) the stock sits at ~45x, inside the thesis's stated band. Data corrections: China 20–25% of revenue (thesis 12–15% — tail 2x modeled), services ~10% (thesis ~22%). Single falsifier watch: SK Hynix parallel-test disclosure compressing test time <9h (CLOSE leg 3, unfired); nearest test: **Q1 FY26 print Jul 29** into the post-rout tape (Jul 2: -6.7% with Nikkei chip rout). Batch flag: the test duopoly is re-converging (TER at 70% AI mix) — the monopoly-multiple premise deserves the hardest disconfirm in this batch.
 
 ## Related Research
 
@@ -254,3 +260,12 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis names Advantest among E/O photonic-test positioners (un-standardized emerging TAM) — net-new optionality adjacent to the core HBM/SoC test thesis, not yet sized. Conviction unchanged (medium).
+
+### 2026-07-09
+- Mental models pass: batch-2 evidence sweep populated ## Mental Models — HBM4 test-time pillar still uncorroborated (#18: realized driver is SoC/AI share 56→66%), services annuity refuted (~10% mix not 22%), TER Magnum 7H + Korean insurgents probing the gate; CLOSE price trigger breached 3x on a broken price basis — /numbers 6857 + trigger re-anchor required — conviction unchanged (medium); Q1 FY26 print Jul 29.
+
+### 2026-07-12
+- Numbers refresh: 1 metric updated, 1 material. Market Cap ¥4.8T→¥21.6T (confirms the ¥28,550 vs ¥6,400 price-basis break already flagged in Mental Models; USD parenthetical left unconverted, JPY/USD rate not confirmed). Snapshot: [[_Archive/Snapshots/6857 - Advantest (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap ¥21.6T essentially flat (+0.1%), rounds to the same displayed value. Snapshot: [[_Archive/Snapshots/6857 - Advantest (pre-numbers 20260712-183936)]]

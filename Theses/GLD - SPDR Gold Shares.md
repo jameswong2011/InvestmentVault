@@ -7,6 +7,7 @@ conviction: medium
 sector: Precious Metals
 ticker: GLD
 source: Vault synthesis — central-bank reserve rotation + debasement trade + Iran-era stagflation retrace
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # GLD — SPDR Gold Shares (Physical Gold Thesis)
@@ -15,7 +16,7 @@ source: Vault synthesis — central-bank reserve rotation + debasement trade + I
 
 ## Summary
 
-Physical gold is in the early innings of a structural regime change — not a late-cycle commodity rally. Three compounding forces drive it: (1) central banks replacing USD reserves with gold at 750–850 t/yr run-rate (10× the pre-2022 average), (2) Basel III Tier 1 HQLA recognition effective July 2025 adding a new commercial-bank balance-sheet bid, and (3) US fiscal trajectory toward $45T debt forcing fiscal dominance that caps real yields below structural inflation. The current $4,400–4,800 range is a 20% cyclical retrace from the $5,595 January 2026 ATH, driven by Warsh-era Fed hawkishness and Iran-induced dollar strength — the same setup as the 1974 mid-cycle retrace that preceded gold's 1975–1980 165% run. GLD at $435.26 offers asymmetric exposure with JPM, BofA, UBS, and Deutsche targets clustered at $5,400–6,300 (15–35% upside) and credible bull-case path to $7,000+ if Fed pivots and BRICS settlement architecture scales.
+Physical gold is in the early innings of a structural regime change — not a late-cycle commodity rally. Two compounding forces drive it: (1) central banks replacing USD reserves with gold at 750–850 t/yr run-rate (roughly double the pre-2022 average — corrected 2026-07-10 from "10×"; 2025 actual ~863t), and (2) US fiscal trajectory toward $45T debt forcing fiscal dominance that caps real yields below structural inflation. [Corrected 2026-07-10: the original third force — "Basel III Tier 1 HQLA recognition effective July 2025" — was struck as factually void; gold has never held HQLA status under Basel liquidity rules (LBMA published an explicit correction of this meme). See Insight #4.] The current $4,400–4,800 range is a 20% cyclical retrace from the $5,595 January 2026 ATH, driven by Warsh-era Fed hawkishness and Iran-induced dollar strength — the same setup as the 1974 mid-cycle retrace that preceded gold's 1975–1980 165% run. GLD at $435.26 offers asymmetric exposure with JPM, BofA, UBS, and Deutsche targets clustered at $5,400–6,300 (15–35% upside) and credible bull-case path to $7,000+ if Fed pivots and BRICS settlement architecture scales.
 
 ## Key Non-consensus Insights
 
@@ -25,7 +26,7 @@ Physical gold is in the early innings of a structural regime change — not a la
 
 **3. Current $4,400–4,800 selloff mirrors 1974, not 2013.** Bears frame the drawdown as post-bubble normalization (2013 analog: gold fell from $1,900 to $1,050 over three years). The 1974 analog is stronger: gold retraced ~25% mid-cycle during Fed hawkishness, then ran 165% into 1980 as real yields went negative under Volcker's pivot. Today's parallels: sticky services inflation, fiscal deficit >6% of GDP, trade-war-induced supply friction, debased political trust in monetary institutions (DOJ subpoenas to Fed, Lisa Cook firing attempt). 2013 lacked all four. Pattern-matching to 2013 ignores that the 1970s gold run was fundamentally about fiscal dominance, not just inflation.
 
-**4. Basel III allocated-gold Tier 1 HQLA status is an under-priced structural bid.** Effective July 1, 2025, allocated physical gold counts as a Tier 1 High-Quality Liquid Asset at 100% of market value for bank liquidity and leverage ratios — the same treatment as sovereign debt. This was largely absent from sell-side models when targets were set in late 2025; the incremental bank-balance-sheet bid has not been fully absorbed into the $5,400–6,300 consensus targets. Allocated gold flows from unallocated (paper) gold claims, accelerating the paper-physical dislocation that LBMA stress in early 2025 already surfaced. GLD itself holds allocated bars, so the structural bid flows through the vehicle.
+**4. [STRUCK 2026-07-10 — factually void] The Basel III Tier 1 HQLA claim was a documented misinformation meme.** The original insight claimed allocated gold became a Tier 1 HQLA at 100% of market value effective July 1, 2025. Actual: gold has carried a 0% *risk weight* under Basel *capital* rules since 1988, but has never been granted HQLA status under the LCR/NSFR *liquidity* rules; unallocated gold carries an 85% RSF factor. The LBMA published an explicit correction ("Gold and HQLA: Correcting Misleading Online Information") and continues to *advocate* for HQLA status precisely because it does not exist. No commercial-bank balance-sheet bid from this channel exists today; a future reclassification would be a new bullish catalyst, not a current structural bid. The bull path and catalyst table have been corrected accordingly.
 
 **5. The debasement trade is mainstreaming while valuations still reflect cyclical-commodity framing.** Forward US debt trajectory to $45T by 2030 with projected ~$1.8T/yr interest expense means real yields cannot sustain >1.5% without triggering fiscal crisis — the Treasury market arithmetic requires Fed accommodation regardless of inflation prints. This is fiscal dominance, not a hypothesis. Wall Street strategists (Druckenmiller, Dalio, Gundlach) now openly call gold a debasement hedge; retail flows ($19B January 2026 global gold ETF inflow, a monthly record) followed. The thesis has moved from fringe to consensus on the *narrative* axis while valuations still price gold as a cyclical commodity. That gap closes over 18–36 months.
 
@@ -39,7 +40,7 @@ Physical gold is in the early innings of a structural regime change — not a la
 
 **4. GSR mean-reversion vs parallel silver squeeze.** Gold/silver ratio currently ~60 (vault Precious Metals data); forward fair value 40–50 given silver industrial demand + COMEX inventory drain (-70% since 2020). Does silver catch up via GSR compression (silver outperforms gold), or does gold get another leg up on Fed pivot before silver bottoms? This determines whether a paired GLD + SIVR position is superior to concentrated GLD exposure. Signal: COMEX silver registered vs eligible inventory, Shanghai silver premium, gold/silver ratio trajectory through Q2.
 
-**5. Instrument selection under Basel III regime.** GLD's 0.40% expense is 4× IAU (0.25%) and 4× GLDM (0.10%); PHYS and CEF trade at premium/discount to NAV; allocated bullion is tax-inefficient but avoids counterparty risk. Under Basel III, does the market begin pricing allocated-gold vehicles at a sustained premium to unallocated (reflecting the HQLA-eligibility spread)? If yes, PHYS and allocated-bullion ETFs outperform GLD/IAU. Research gap: no vault analysis on vehicle spread dynamics post-Basel III.
+**5. Instrument selection.** GLD's 0.40% expense is 4× IAU (0.25%) and 4× GLDM (0.10%); PHYS and CEF trade at premium/discount to NAV; allocated bullion is tax-inefficient but avoids counterparty risk. [Corrected 2026-07-10: the original question rested on the struck Basel III HQLA premise — no "HQLA-eligibility spread" exists under current rules. Residual question: do allocated-physical vehicles earn a sustained premium to unallocated claims on paper-physical dislocation stress alone (LBMA delivery squeezes), independent of any regulatory bid? Research gap: no vault analysis on vehicle spread dynamics.]
 
 **6. Portfolio construction — gold vs miners vs royalty under regime-change scenario.** Current vault portfolio has gold/silver exposure explicitly flagged as a hedge gap (see [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]). If regime-change thesis is correct, miners (GDX) give 2–3× beta to gold with operational leverage, but royalty models (FNV, WPM) offer better risk-adjusted returns without mine-specific operational risk. What's the right mix: 60% GLD / 25% GDX / 15% FNV? Question is more urgent than vehicle selection because portfolio weighting has higher alpha impact.
 
@@ -89,7 +90,7 @@ Gold's price dynamics are monetary, not industrial. Annual industrial/jewelry de
 |---|---|---|---|
 | Mine production | 68M oz (2,115t) | 72.8M oz (2,264t) | +7% YoY; AISC -5% industry-wide |
 | Recycled gold | ~1,200t | ~1,250t | Price-sensitive; rose on 2025 ATH |
-| Central bank net sales | Negative (-1,237t net) | Negative (-800t est) | CBs are net buyers, not suppliers |
+| Central bank net sales | Negative (~-863t net; corrected 2026-07-10 from -1,237t per WGC-consistent data) | Negative (-800t est) | CBs are net buyers, not suppliers |
 | Total new supply | ~3,400t | ~3,500t | Before stock rotation |
 
 Mine production growth is being absorbed by CB demand alone. The 2024–2025 CB buying took ~30% of annual mine output off the market permanently — the equivalent of adding three net-new Newmont-scale miners' output to demand. Miner pipeline doesn't respond quickly: discovery-to-production cycle averages 15+ years, grade profiles are declining (globally -15% since 2010), and AISC compression came from fuel costs falling, not productivity — not sustainable.
@@ -98,7 +99,7 @@ Mine production growth is being absorbed by CB demand alone. The 2024–2025 CB 
 
 | Source | 2025 volume | 2026E | YoY change |
 |---|---|---|---|
-| Central banks | 1,237t | 755–850t | Normalizing from 2025 peak; structural floor est 700t/yr |
+| Central banks | ~863t (corrected 2026-07-10 from 1,237t; WGC-consistent) | 755–850t | Q1 2026 actual 244t (+3% y/y); structural floor est 700t/yr |
 | Investment (ETFs + bars) | ~800t | ~1,100t | ETFs had record Jan 2026 inflow $19B |
 | Jewelry | ~1,900t | ~1,850t | China/India price-sensitive |
 | Industrial/dental | ~300t | ~300t | Stable |
@@ -134,7 +135,7 @@ BRICS share of global CB gold reserves: 17.4% (2025) vs 11.2% (2019). G7 share: 
 | GLD expense ratio | 0.40% | Premium pricing vs IAU 0.25% / GLDM 0.10% |
 | Global gold ETF AUM | $701B (peak Feb 2026) | 4,171t holdings ATH |
 | Net ETF inflow Jan 2026 | $19B | Monthly record; reversed in March (-$13B Western) but offset by Asian inflows |
-| Central bank demand 2025 | 1,237t | 2026E: 755–850t |
+| Central bank demand 2025 | ~863t (corrected 2026-07-10 from 1,237t; WGC-consistent) | 2026E: 755–850t |
 | PBOC reported reserves | 2,313t | 17 consecutive months of reported buying; est actual 3,000–3,500t |
 | Mine production 2026E | 72.8M oz | +7% YoY |
 | Industry AISC 2025 | $1,400–1,900/oz | NEM $1,680, AEM $1,475 best-in-class, Barrick $1,760–1,950 |
@@ -165,9 +166,9 @@ Drivers:
 2. **CB demand resumes at 900t+ pace.** Q3-Q4 2026 reserves data shows 3 new CBs (est: Saudi, UAE, another BRICS+) joining structural buyers. BRICS settlement unit extends to 5+ active participants.
 3. **Iran resolution without dollar strength.** Ceasefire removes commodity stagflation premium (oil $60s, CPI compresses) but Trump's tariff regime + fiscal impasse keeps dollar from catching bid. Gold decouples from the oil-up / dollar-up binary.
 4. **Western investment demand returns.** Monthly ETF flows turn sustainably positive; US/EU allocation to gold rises from ~3% to 5–7% of balanced portfolios — mechanical rebalancing bid alone drives $100B+ additional ETF AUM.
-5. **Basel III bank-balance-sheet bid accelerates.** Commercial banks reallocate HQLA toward allocated gold as Treasury-auction stress episodes recur; allocated-physical spreads widen; PHYS and allocated-bullion vehicles trade at premiums.
+5. **[Corrected 2026-07-10]** ~~Basel III bank-balance-sheet bid accelerates~~ — struck; gold is not an HQLA under current Basel liquidity rules (LBMA correction). Replacement conditional driver: IF regulators ever grant HQLA status (LBMA actively lobbying), a commercial-bank bid would open — treat as optionality, not a path leg.
 
-Path: $4,708 → $5,400 (Fed first cut) → $6,000 (Iran resolution) → $6,800 (BRICS scaling) → $7,000+ (Basel III bank demand accelerates). GLD tracks: $435 → $645+ in 18 months.
+Path: $4,708 → $5,400 (Fed first cut) → $6,000 (Iran resolution) → $6,800 (BRICS scaling) → $7,000+ (requires a new bid source, e.g. a future HQLA reclassification — corrected 2026-07-10, no current Basel bank demand exists). GLD tracks: $435 → $645+ in 18 months.
 
 ## Bear Case
 
@@ -192,7 +193,7 @@ Path: $4,708 → $4,200 (Warsh confirmation) → $3,800 (real yields break 2.5%)
 | Q2 2026 | BRICS digital settlement unit Phase 2 rollout | Bullish if new participants added |
 | Q2–Q3 2026 | Iran ceasefire timing (if negotiations progress) | Mixed — oil down bearish, but if dollar stays weak net neutral |
 | Monthly | China PBOC reserves disclosure | Each month of continued buying extends 17-month streak; any halt = bearish |
-| Jul–Sep 2026 | Basel III Endgame Tier 1 HQLA implementation proceeds | Bullish via allocated-gold premium |
+| Jul–Sep 2026 | ~~Basel III Endgame Tier 1 HQLA implementation~~ — struck 2026-07-10, tracks a non-existent event (gold is not HQLA; LBMA correction) | Void — replace with monitoring of any BCBS/LBMA HQLA advocacy progress |
 | Aug–Sep 2026 | Jackson Hole Fed conference | Signal on policy framework |
 | Q3 2026 | Japan election + potential YCC exit | Yen unwinds could support gold |
 | H2 2026 | Potential China gold export licensing | Bullish — tightens physical supply |
@@ -230,9 +231,13 @@ Path: $4,708 → $4,200 (Warsh confirmation) → $3,800 (real yields break 2.5%)
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-10 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Conviction Triggers scorecard (this thesis has real triggers — rare in the vault): HIGH-1 (Fed cuts May/Jun) REFUTED — Jun 17 FOMC flipped to a hike bias (median dot 3.8%, 9/18 dots ≥1 hike); HIGH-2 (BRICS unit) trending refuted (Russia targets 2030); LOW trigger 2-of-3 barrels converging — 10Y real yield 2.30% vs 2.5% stop, Brent bottomed $71.53 — but the third barrel (DXY >108) is NUMERICALLY UNREACHABLE: DXY's 13-month HIGH was 101.8, so the trigger can never trip even though the dollar-strength scenario has fired in direction. Trigger needs recalibration, not the market.
+	- [G-3] mean-reversion vs trend: the "1974 not 2013" insight is under acute stress — Q2 was gold's worst quarter in 13 years (-14 to -16%), June worst month since Oct 2008, and the drawdown blew through the thesis's $4,400 accumulation floor to ~$4,000.
+	- [G-13] expectations / transmission mechanism: REFUTED on the live test — gold caught ZERO safe-haven bid in either the ~$1.3T semis purge (broke below $4,100 during the liquidation, Jun 23) or the resumed US–Iran shooting war (Jul 7–9: muted bounce to ~$4,143 while oil +6%). "Real yields have replaced fear" — the metal trades as a rates asset under a hiking Fed. Structural legs stay CONFIRMED (PBoC 20th straight month, +14.93t in June — largest since 2023; Q1 CB demand 244t with six first-ever buyer nations; H1 ETF flows still net +$8B).
+	- Factual: the Basel III Tier-1-HQLA insight (one of five Key Non-consensus Insights) is FACTUALLY VOID — LBMA explicitly corrected this meme; gold has never held HQLA status and the "Jul–Sep 2026 implementation" catalyst tracks a non-existent event. Also 2025 CB demand ~863t (WGC-consistent), not 1,237t.
+- **Disconfirming check** (evidence-updated 2026-07-10): the models' structural agreement (CB bid + fiscal arithmetic + de-dollarization all confirmed) is exactly what must not wash out the transmission failure — the position is -13% vs entry with the thesis's own real-yield stop 20bp away and rising. Single falsifying datapoint: a hot Jun CPI (Jul 14) pushing the first Warsh hike and 10Y real >2.5% sustained = the pre-registered LOW/stop condition, regardless of how good the de-dollarization story still sounds.
 
 ## Related Research
 
@@ -254,3 +259,13 @@ Path: $4,708 → $4,200 (Warsh confirmation) → $3,800 (real yields break 2.5%)
 
 ### 2026-05-24 (/sync all)
 - [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Polymarket peace-deal deterioration sustains geopolitical tail bid alongside central-bank floor; Scenario A persistence keeps debasement-hedge optionality through Fed-pivot window — Scenario B reflation hedge intact under either path. Conviction unchanged (medium, monitoring).
+
+### 2026-07-10
+- Mental models pass: batch-10 evidence sweep populated ## Mental Models — HIGH trigger refuted (Warsh hike bias), safe-haven transmission refuted (no bid in purge or war; worst quarter in 13 yrs, -13% vs entry), Basel III HQLA insight factually void (LBMA correction), DXY >108 LOW-barrel numerically unreachable — conviction unchanged (medium); real-yield stop 20bp away, Jun CPI Jul 14 is the binary.
+- Corrected: fact-audit pass — Basel III HQLA claim struck across Summary, Insight #4, OQ #5, Bull Case driver/path, and Catalysts table (gold has never held HQLA status; LBMA correction); 2025 CB demand 1,237t→~863t in supply/demand/Key Metrics tables; "10×" run-rate framing → ~2×.
+
+### 2026-07-12
+- Numbers refresh: 0 metrics mapped (custom commodity/macro labels), 0 material. Snapshot: [[_Archive/Snapshots/GLD - SPDR Gold Shares (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics mapped (all custom commodity/macro labels — correct per spec, not a bug). Snapshot: [[_Archive/Snapshots/GLD - SPDR Gold Shares (pre-numbers 20260712-184111)]]

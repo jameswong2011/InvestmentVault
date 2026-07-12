@@ -7,6 +7,7 @@ conviction: medium
 sector: Enterprise Storage Infrastructure
 ticker: PSTG
 source: Consolidated — Gemini Canvas, ChatGPT deep-dive, Claude, web research April 2026
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # PSTG — Pure Storage (Everpure)
@@ -177,17 +178,17 @@ Pure's strategic insight was recognizing that the commodity SSD layer is a **val
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$21.15B | 330M shares at ~$60.75 (April 2026) |
+| Market Cap | ~$28.49B | 330M shares at ~$60.75 (April 2026) |
 | EV/Revenue (TTM) | 5.41x | Forward (FY2027): 4.74x |
-| Revenue Growth | +16% YoY (FY26); +18.8% guided (FY27) | Q4 FY26 accelerated to +20% |
-| Gross Margin | 72.1% (non-GAAP) | Product: 68.4%, Subscription: 76.6% |
-| FCF Yield | ~2.9% | $616M FCF / $21.15B market cap; 16.8% FCF margin |
-| Forward P/E | 27.7x | PEG: 0.57 — attractive relative to growth |
+| Revenue Growth | +15.6% YoY (FY26); +18.8% guided (FY27) | Q4 FY26 accelerated to +20% |
+| Gross Margin | 70.2% (non-GAAP) | Product: 68.4%, Subscription: 76.6% |
+| FCF Yield | ~0.6% | $616M FCF / $21.15B market cap; 16.8% FCF margin |
+| Forward P/E | 37.6x | PEG: 0.57 — attractive relative to growth |
 | Subscription ARR | $1.924B (+16% YoY) | ~45% of total revenue |
 | RPO | $3.67B (+40% YoY) | Fastest-growing visibility metric |
 | Cash & Investments | >$1.5B | Fortress balance sheet; Debt/Equity: 0.15 |
 | Customers | 14,500+ | Fortune 500: 64%, Global 2000: 42%, NPS: 84 |
-| Operating Margin | 17.3% (FY26); Q4 peak: 21.3% | Record; +390bps YoY improvement in Q4 |
+| Operating Margin | 4.2% (FY26); Q4 peak: 21.3% | Record; +390bps YoY improvement in Q4 |
 | ESS Market Share | 6.8% (#4) | Double-digit growth; +13pts since 2013 |
 
 ## Bull Case
@@ -236,9 +237,15 @@ Pure's strategic insight was recognizing that the commodity SSD layer is a **val
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-4 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (intangibles, expectations) · [[Industry - Semiconductors]] (#1, #8) · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]] (Lens B)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#1 bottleneck inversion — the NAND/HDD shortage flipped from flagged risk to primary tailwind*: HDDs sold out through 2027–2029 (WD LTAs into 2028–29, prices +50%+) → **flash displacement is now supply-forced, not TCO-argued**; Wedbush's read confirmed — DirectFlash's consumer-grade-bit + no-overprovisioning architecture is a structural cost advantage precisely when NAND inflates. This is why PSTG ROSE through the July rout (+15.6% 1W): it trades as an AI-shortage *beneficiary*, inverse to GPU-semis. Cost of the hedge is visible: FCF margin 27.2%→10.6% on NAND inventory pre-buys.
+	- *Q1 FY27 CONFIRMED beat-and-raise*: revenue $1.053B +35% (best in 4 years), FY27 guide raised to +20–23%; ARR accelerated to $2.0B +19%, RPO +41%, Evergreen//One orders +73% — the subscription-plateau question REFUTED. Caveat the CFO quantified: **~1/3 of Q1 growth was price + pull-forward** — the H2 organic-demand air pocket is the live bear focal point (Q2 print ~late Aug).
+	- *Insight #3 (hyperscale licensing) — CONFIRMED with a quiet negative revision*: Meta ramp is H2-weighted on pre-committed orders, FY27 hyperscale revenue "a multiple of" FY26 — but management now guides hyperscale GM **75–85%, not the ~90–100% royalty framing**; second hyperscaler still unsigned (TD Cowen "more optimistic," Jul 1). Concentration on one customer's committed orders remains the single point of failure.
+	- *Lens B / KV-cache layer* — PSTG is now a listed pure-play on the vault's KV-cache-tiering theme: Pure KVA 1.0 GA (NVIDIA Dynamo integration, 10–20x KV restore, TurboQuant), Data Stream on the NVIDIA AI Data Platform, BlueField-4 co-development. The 1touch/"Enterprise Data Cloud" platform pivot ($125M tuck-in, smaller than feared) is executing on schedule — verdict years out.
+	- *New variable — **Jana Partners activist stake** (Jun 30, stock +8–10%)*: agenda unknown (capital return / platform monetization / sale exploration); a thesis vector that didn't exist at creation. Insider selling continues at scale (CEO ~$10M pre-earnings, 10b5-1) — pattern unchanged.
+	- *Trigger/structural gaps*: **no Conviction Triggers section exists** — write one (suggested HIGH: second hyperscaler signed + hyperscale revenue >10% of mix; LOW: Q2 FY27 organic growth <15% with pull-forward reversal; CLOSE: Meta program cancellation). Housekeeping: company is now **Everpure, NYSE: P** — thesis filename/ticker/watchlist mapping stale; Key Metrics 3 months old; the "priced for execution risk" summary claim is REFUTED (EV/S 6.29x, 80% above 10-yr median — the discount closed).
+- **Disconfirming check** (evidence-updated): the shortage-beneficiary framing is now consensus enough to have driven +41% in 3 months — the VLM alpha test says the easy leg is done; what's left is the second-hyperscaler binary and the H2 organic print. Base rate: enterprise-hardware vendors sustaining +20%+ growth after a pricing-and-pull-forward quarter revert more often than not — the Q2 FY27 print is the falsifier. Watch: Jana's first public letter; NAND cost pass-through vs FCF normalization; 300TB DFM by end-CY26.
 
 ## Related Research
 
@@ -274,3 +281,9 @@ Pure's strategic insight was recognizing that the commodity SSD layer is a **val
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-4 evidence sweep populated ## Mental Models — #1 bottleneck inverted: HDD sell-out through 2027-29 made flash displacement supply-forced (why PSTG rose through the rout); Q1 beat-and-raise but ~1/3 of growth was price+pull-forward (H2 organic = the test); hyperscale GM quietly revised 90%+ → 75-85%; NEW: Jana Partners activist stake (Jun 30); company now Everpure/NYSE:P — rename + /numbers needed; no Conviction Triggers section — write one — conviction unchanged (medium); Q2 print ~late Aug.
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 6 metrics updated, 4 material. Operating Margin 17.3%→4.2% is the largest delta — flag: this contradicts the unchanged Notes cell ("Record; +390bps YoY improvement"), worth verifying against the FMP source field before relying on it. Market Cap ~$21.15B→~$28.49B (+35%). Snapshot: [[_Archive/Snapshots/PSTG - Pure Storage (pre-numbers 20260712-174116)]]

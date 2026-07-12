@@ -3,10 +3,11 @@ publish: true
 date: 2026-04-23
 tags: [thesis, custom-silicon, networking, optical-dsp, MRVL]
 status: active
-conviction: high
+conviction: medium
 sector: Custom Silicon & Networking Semiconductors
 ticker: MRVL
 source: vault synthesis — [[Research/2026-04-23 - Insight Surface Scan.md]] Opportunity 5
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-04-26 → Addressed 2026-04-26
 > **Prompt:** *What is Marvell's upside from its earlier move in silicon photonics and adjacent areas. What advantage, if any, does Marvell have over Broadcom in this area. How much market share could Marvell achieve in broader photonics and especially CPO.*
@@ -15,7 +16,7 @@ source: vault synthesis — [[Research/2026-04-23 - Insight Surface Scan.md]] Op
 
 ## Summary
 
-Marvell is a second-derivative hyperscaler-ASIC play whose bull case rests on hyperscaler anti-monopoly behaviour more than on any product-level moat. Consensus treats MRVL as the Broadcom complement inside an $118B-by-2033 custom silicon TAM, anchoring on 18 cloud design wins, the $1.5B FY26 custom-silicon run rate doubling into FY28, the $3.25B Celestial AI Photonic Fabric acquisition, and Nvidia's March 2026 $2B strategic investment via NVLink Fusion. The non-consensus case is that two of those anchors are weaker than the price implies — Broadcom locked Google through-2031 three days before the April 2026 Marvell-Google talks leaked (the Google engagement is third-seat, not co-lead), and Marvell losing the Trainium 3 primary socket to Alchip over RDL interposer defects means the design-partner credibility thesis is already dented. Meanwhile, stock +168% over the prior twelve months to ~$158 with forward P/E 26-36x has priced the bull path; the scale-up optical monopoly narrative is contingent on Celestial ramping cleanly into FY28 H2 under a management team that just mis-executed an advanced-packaging handoff. Medium conviction: Celestial + NVLink Fusion optionality real, but second-source structural positioning already priced and execution credibility is the open question.
+Marvell is a second-derivative hyperscaler-ASIC play whose bull case rests on hyperscaler anti-monopoly behaviour more than on any product-level moat. Consensus treats MRVL as the Broadcom complement inside an $118B-by-2033 custom silicon TAM, anchoring on 18 cloud design wins, the $1.5B FY26 custom-silicon run rate doubling into FY28, the $3.25B Celestial AI Photonic Fabric acquisition, and Nvidia's March 2026 $2B strategic investment via NVLink Fusion. The non-consensus case is that two of those anchors are weaker than the price implies — Broadcom locked Google through-2031 three days before the April 2026 Marvell-Google talks leaked (the Google engagement is third-seat, not co-lead), and Marvell losing the Trainium 3 primary socket to Alchip over RDL interposer defects means the design-partner credibility thesis is already dented. Meanwhile, stock has re-rated further to a ~$206B market cap at 36x FY27E/58x FY28E, well past the bull path priced at thesis inception; the scale-up optical monopoly narrative is contingent on Celestial ramping cleanly into FY28 H2 under a management team that just mis-executed an advanced-packaging handoff. Medium conviction: Celestial + NVLink Fusion optionality real, but second-source structural positioning already priced and execution credibility is the open question.
 
 ## Key Non-consensus Insights
 
@@ -63,7 +64,7 @@ Marvell is a fabless semiconductor company that operates as a **hyperscaler co-d
 
 **Revenue concentration** (not formally disclosed but inferable from program names): AWS likely 20-25%+, Microsoft + Meta + Google collectively 20-30%, remaining 45-55% diversified across 15 smaller custom programs + Enterprise + Carrier + Consumer.
 
-**Analogy**: the most useful frame is **TSMC for hyperscaler-specific ASICs**, except Marvell does not own the fab — it owns the design-services + analog-IP + packaging integration between TSMC silicon and hyperscaler architecture. In the Broadcom / Marvell / Alchip triad, Broadcom is the vertical integrator (own IP, own products, sell finished chip), Marvell is the services-plus-IP platform (partial IP, hyperscaler architecture, finished chip), Alchip is the pure services shop (no IP, pure implementation). Marvell's margin structure (GAAP GM ~45%, non-GAAP ~60%) sits between Broadcom (~65%) and Alchip (~30%), confirming the positional middle.
+**Analogy**: the most useful frame is **TSMC for hyperscaler-specific ASICs**, except Marvell does not own the fab — it owns the design-services + analog-IP + packaging integration between TSMC silicon and hyperscaler architecture. In the Broadcom / Marvell / Alchip triad, Broadcom is the vertical integrator (own IP, own products, sell finished chip), Marvell is the services-plus-IP platform (partial IP, hyperscaler architecture, finished chip), Alchip is the pure services shop (no IP, pure implementation). Marvell's margin structure (GAAP GM ~45%, non-GAAP ~51%) now sits closer to Alchip's ~30% than the mid-point framing claimed — LPO/custom-silicon mix is compressing margin faster than modeled.
 
 ## Industry Context
 
@@ -156,19 +157,19 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 | Networking silicon | 12.8 Tbps (trails 2 gens) | 102.4 Tbps (leader) | n/a | n/a |
 | Optical DSP | 80%+ 800G | Secondary | n/a | n/a |
 | CPO/scale-up optical | Celestial PF (distinct) | Bailly CPO | n/a | n/a |
-| Gross margin | ~60% non-GAAP | ~65% | ~30% | ~45% |
+| Gross margin | ~51% non-GAAP | ~65% | ~30% | ~45% |
 | Key hyperscaler | AWS T2, Microsoft Maia, Meta, Google MPU talks | Google TPU (through-2031), Meta MTIA | AWS T3 primary | Google (fast-follow) |
 
 ## Key Metrics
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$122-137B | $158 price April 22 2026; +168% TTM |
-| EV/Revenue (TTM) | ~15x | $122B market cap / $8.2B FY26 revenue |
+| Market Cap | ~$206B | $158 price April 22 2026; +168% TTM |
+| EV/Revenue (TTM) | ~15x | ~$206B market cap / $8.2B FY26 revenue — ~25x TTM, not 15x, at the refreshed cap |
 | Revenue Growth | +42% YoY FY26 ($8.2B); +30%+ FY27 guide (approaching $11B) | Custom silicon $1.5B FY26 doubled; FY27 +20%, FY28 double |
-| Gross Margin | ~60% non-GAAP (GAAP ~45%) | Blended compression from custom silicon mix + LPO transition |
-| FCF Yield | ~1.5-2% | Elevated capex for Celestial integration + custom silicon tape-outs |
-| Forward P/E | 26x FY28E / 36x FY27E | PEG ~0.38 on CY27E EPS $5.43 |
+| Gross Margin | ~51% non-GAAP (GAAP ~45%) | Blended compression from custom silicon mix + LPO transition |
+| FCF Yield | ~0.8% | Elevated capex for Celestial integration + custom silicon tape-outs |
+| Forward P/E | 58x FY28E / 36x FY27E | PEG ~0.38 on CY27E EPS $5.43 |
 | Data Center Revenue | $6.1B FY26 (+46% YoY); $1.65B Q4 (+21% YoY, +9% QoQ) | ~75% of total revenue |
 | Analyst Consensus PT | Median $115-127; RBC high $170 | Recent upgrades post-Celestial + NVLink Fusion + Google news |
 
@@ -245,9 +246,15 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-3 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (reflexivity, expectations) · [[Industry - Semiconductors]] (#10, #14) · [[Lens - Value Layer Monopoly]] (layer-renter test)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *Trigger scoreboard: 0/3 HIGH, 0/4 LOW, 0/4 CLOSE — with two CLOSE legs INVERTED by raised guidance*: FY28 target raised $1.5B to **$16.5B**, custom >$4B FY28 → **>$10B custom FY29** ("yes, you heard that right"); interconnect guide raised to +70% FY27; Q1 FY27 beat ($2.418B +28%, DC 76% of revenue). The business ran ahead of the thesis bull case ($14–16B FY28) — the bull path moved, not just the price.
+	- *Insight #1/#5 (second-seat contestability) — CONFIRMED at two of four anchors*: Trainium 3 to Alchip confirmed (SemiAnalysis — Marvell lost the bakeoff; T2.5 packaging as consolation), Microsoft-Broadcom Maia talks; PLUS a third execution wobble — the new Tier 1 XPU program delay shifting FY28 revenue into FY29. Yet custom guidance doubled anyway — the attach+new-program pipeline is currently outrunning the seat losses. Hypothesis sharpened: the second-source *category* compounds even as individual seats churn.
+	- *Insight #3 (NVDA containment) — INTACT and amplified*: $2B NVLink Fusion investment closed (Mar 31) and Jensen publicly called MRVL a "trillion-dollar candidate" at Computex (+25% single day) — NVIDIA is now simultaneously MRVL's promoter and its perimeter; the XConn acquisition (UALink switching) is MRVL quietly hedging both fabrics, softening CLOSE leg 4.
+	- *Reflexivity round-trip — the thesis's Risk #9 resolved via price, not pillars*: $158 (thesis) → $329.88 peak (Jensen quote + S&P 500 inclusion Jun 22) → **-27% to ~$233**, now at consensus PT; NTM P/E ~51.6x (watchlist "~81x" is trailing — `/numbers MRVL`). CFO transition (Durn ex-AMAT) + outgoing CFO's ~$60M Form 144 near the top. SoftBank takeover exploration (failed, revivable) = standing M&A floor narrative.
+	- *Insight #4 (margin derate)* — beginning to print: Q1 GM 58.9% vs ~60% assumption; sell-side now flags custom-mix GM compression — direction confirmed, magnitude (10pp modeled) far from evidenced.
+	- *VLM layer-renter test* — MRVL still fails the decisive-layer test (rents Google/AWS/MSFT seats above, NVIDIA fabric perimeter beside) but is buying layers fast: Celestial (memory disaggregation, Amazon warrants through 2030), XConn (CXL/UALink), Polariton (3.2T modulators) — three photonics/fabric bolt-ons in three months. Hypothesis: the optics/DCI franchise (~$1B DCI FY28, 70-80% DSP share) is the actual owned layer, not the ASIC seats.
+- **Disconfirming check** (evidence-updated): the split verdict is precise — every dated falsifier REFUTED while both structural worries gained evidence; that combination (execution wobbles + raised guidance) is what a contested-but-growing second-source franchise looks like, and the market just repriced it from euphoria to consensus in five weeks. Single falsifiers, dated: Trainium 4 socket award (AWS re:Invent Nov 2026 — CLOSE leg 3), Google contract signature vs talks (HIGH leg 1), Celestial H2-2026 tapeout milestone, OFC 2027 LPO share data. Bookkeeping: Summary still says "medium conviction" vs frontmatter high (stale text from the 05-22 upgrade) — reconcile.
 
 ## Related Research
 
@@ -270,6 +277,7 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: first *quantified* scale-up CPO ramp ($1B CY2028 run-rate into Trainium 4, $2.25B earn-out on $2.0B cumulative by Jan 2029, Amazon warrant strike $87.0029 = Trainium 4 tell); flags EAM-lacks-COUPE-PDK execution gate (Marvell must foundry-integrate EAM itself); scale-up CPO TAM > scale-out
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": tangential — ARM/hyperscaler-CPU SerDes/design-services TAM + memory-disaggregation (CXL3/JBOM) reinforces Celestial lever; no direct thesis delta
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs (direct demand pull for Marvell's 80%+ long-reach DSP franchise); Trainium3 (N3P) socket on the binding N3 node
+- [[Research/2026-07-10 - MRVL vs AVGO - Competitive Comparison]] — head-to-head vs Broadcom: layer-ownership framing (MRVL owns the 800G DSP layer + rents the second-source ASIC seat; real forward edge is Celestial memory-fabric, a new layer AVGO doesn't contest); AVGO higher-quality/lower-variance, MRVL higher-convexity binary on memory disaggregation
 
 ## Log
 
@@ -303,3 +311,21 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs — a direct demand pull for Marvell's 80%+ long-reach DSP franchise; Trainium3 (N3P) + networking silicon sit on the binding N3 node. Demand-tailwind datapoint only; no thesis-pillar move (Celestial / second-source / NVLink-Fusion theses unchanged). Conviction unchanged (high).
+
+### 2026-07-09
+- Mental models pass: batch-3 evidence sweep populated ## Mental Models — scoreboard 0/3 HIGH, 0/4 LOW, 0/4 CLOSE with two CLOSE legs inverted by raised guidance (FY28 $16.5B, custom >$10B FY29), yet both structural worries gained evidence (T3→Alchip confirmed, MSFT-Broadcom Maia talks, new Tier-1 XPU delay); Jensen "trillion-dollar candidate" + $2B = promoter-and-perimeter; -27% off peak to consensus PT — conviction unchanged (high); Summary "medium" text stale vs frontmatter — reconcile; Trainium 4 award (re:Invent Nov) is the big one.
+
+### 2026-07-10
+- Comparison [[Research/2026-07-10 - MRVL vs AVGO - Competitive Comparison]]: MRVL owns one durable layer (80%+ 800G DSP) + rents the second-source ASIC seat (~60% vs AVGO ~65% ASIC GM); real forward edge is a NEW layer (Celestial memory-fabric), orthogonal to AVGO rather than catching it in custom ASIC — conviction unchanged (high), binary on 2027-28 memory-disaggregation validation.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: market caps rented ASIC seats as owned layers at 54-68x fwd despite 52% GAAP GM vs AVGO's 67% at 33x; bull-case pillars (Google contract, Trainium 4, Celestial revenue) remain unsigned. Snapshot: [[_Archive/Snapshots/MRVL - Marvell Technology (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 4 metrics updated, 3 material. Market Cap ~$122-137B→~$206B (material); Gross Margin ~60%→~51% non-GAAP (material); Forward P/E 26x→58x FY28E (material, +124%); FCF Yield ~1.5-2%→~0.8% (not material). Revenue Growth left unedited — format_hint mismatched (embedded $ figures vs % label), format uncertain. Summary's "~$158... forward P/E 26-36x" framing is now stale (live ~58x, ~$206B mcap) — flagged for /deepen. Snapshot: [[_Archive/Snapshots/MRVL - Marvell Technology (pre-numbers 20260712-173653)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap, Gross Margin, FCF Yield, and Forward P/E all round to the same displayed values as the prior pass. Revenue Growth left unedited again (format uncertain, unchanged). Summary staleness flag from the prior pass still stands. Snapshot: [[_Archive/Snapshots/MRVL - Marvell Technology (pre-numbers 20260712-183936)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: market cap $122B→$206B + non-GAAP GM ~60%→51% across Summary, Business Model, Industry Context peer table, EV/Rev Notes. Snapshot: [[_Archive/Snapshots/MRVL - Marvell Technology (pre-deepen-metrics-sync 2026-07-12-203456)]]

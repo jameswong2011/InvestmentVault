@@ -91,9 +91,13 @@ Cluster-peer stress signals (graph primer):
 
 **Missing-graph fallback**: per `.claude/skills/_shared/graph-primer.md` §Missing-graph fallback. Phase 3 proceeds target-only.
 
-## Phase 2.5: Optional External Evidence (parallel batch)
+## Phase 2.5: External Evidence (parallel batch — MANDATORY-unless-waived for high conviction)
 
-The short-seller case often benefits from current-market context the vault doesn't have: recent analyst downgrades, short-interest data, pending litigation, fresh bear-case articles. **If any WebSearch / WebFetch calls are issued during the stress test, batch them in parallel** — one message containing up to 25 invocations, mirroring `/catalyst` Phase 2 and `/thesis` Step 3. Do NOT serialize independent external lookups. If the vault already contains sufficient adversarial evidence, skip this phase entirely; `/stress-test` is spec'd to work off vault content alone.
+The short-seller case often benefits from current-market context the vault doesn't have: recent analyst downgrades, short-interest data, pending litigation, fresh bear-case articles. **If any WebSearch / WebFetch calls are issued during the stress test, batch them in parallel** — one message containing up to 25 invocations, mirroring `/catalyst` Phase 2 and `/thesis` Step 3. Do NOT serialize independent external lookups.
+
+**Conviction-gated requirement (2026-07-09):**
+- **`conviction: high`** → this phase is **mandatory-unless-waived**. Issue at least one parallel batch covering: short interest / borrow trends, recent analyst downgrades or PT cuts, litigation / regulatory actions, and fresh bear-case articles (≤90 days). Rationale: an internal-only stress test of a high-conviction thesis recycles the vault's own confirmation set — the notes that built the conviction cannot also be its strongest refutation (READING PROTOCOL: agreement is a disconfirm trigger). The user may waive with an explicit "vault-only" instruction; record the waiver in the report (`External evidence: waived by user — vault-only run`).
+- **`conviction: medium | low` or `status: draft`** → external evidence remains optional; skip freely when the vault already contains sufficient adversarial evidence — `/stress-test` is spec'd to work off vault content alone in these cases.
 
 ## Phase 3: Build the Short Case
 Structure as a short seller would pitch to an investment committee:

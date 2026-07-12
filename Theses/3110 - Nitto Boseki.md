@@ -6,7 +6,9 @@ status: draft
 conviction: medium
 sector: Copper-Clad Laminate & PCB Materials
 ticker: 3110
+fmp_symbol: 3110.T
 source: Web research 2026-06-10 (Digitimes, TrendForce, Tom's Hardware, Nikkei Asia, CompositesWorld, Goldman Sachs initiation via Investing.com, stockanalysis, MarketScreener, GlobalTechResearch); see Related Research
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # 3110 - Nitto Boseki
@@ -90,10 +92,10 @@ Japanese makers (Nittobo + Asahi Kasei + AGC) collectively control the overwhelm
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~¥668B (~US$4.2B) | 36.4M shares; price ~¥17,400; **+244% LTM** but **−47% from ¥32,900 ATH (7 May 2026)**; 52-wk range ¥4,790–32,900 |
+| Market Cap | ~¥627.1B (~US$4.2B) | 36.4M shares; price ~¥17,400; **+244% LTM** but **−47% from ¥32,900 ATH (7 May 2026)**; 52-wk range ¥4,790–32,900 |
 | EV/Revenue | ~5x trailing / ~4.5x forward | On ~¥118B trailing / ~¥137B guided sales; net cash (asset-sale proceeds) so EV ≲ mkt cap |
 | Revenue Growth | +8.4% trailing / +15.9% guided | Electronic Materials +18–20% YoY is the driver; legacy segments low-single-digit |
-| Gross Margin | ~32–35% blended (est.) | Not separately disclosed; OP margin ~18% (ROS 17.6%→~19%), EBITDA margin ~26–27%; Electronic Materials segment margin structurally higher |
+| Gross Margin | ~40% blended (est.) | Not separately disclosed; OP margin ~18% (ROS 17.6%→~19%), EBITDA margin ~26–27%; Electronic Materials segment margin structurally higher |
 | FCF Yield | Low / compressed | Peak capex: ¥15B near-term + >¥50B 2026–2027 (Japan + Taiwan); not an FCF story at this multiple |
 
 Earnings anchor: trailing net ¥41.8B (+225%) **inflated by extraordinary asset/securities-sale gains** → trailing P/E ~16x is misleading; clean **forward P/E ~35x** (current-year net ~¥17B), **~18x on Goldman FY2027E**. Coverage split: 6 buy / 0 sell on most screens (avg PT ¥19,103–27,144, wide dispersion post-run), but **Goldman initiated Neutral, PT ¥10,840** — the rigorous bear anchor.
@@ -177,3 +179,9 @@ This is a +244%-in-a-year glass stock — *still* up huge even after a −47% pe
 
 ### 2026-06-27
 - [[Research/2026-06-27 - M9 Quartz vs Low-Dk Glass - deep-dive]]: M9='Low Dk3'=quartz; the Asahi-led cohort (Shin-Etsu/Glotech/Feilihua/Taishan/Hong Ho) takes the early M9 majority — Nittobo's ~90% is T-glass/NER, **not** quartz. ⚡ Trigger substantially confirmed (→LOW: "Asahi Kasei quartz takes the majority of M9 leading-edge volume") — conviction **weakened**, but bounded (M9=smallest slice; M8/substrate base + allocation moat hold through 2027 if quartz's ~2× cost caps it at the niche). Reassess toward LOW via `/status`.
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 1 material. Gross margin ~32-35%→~40% blended (material, +8.2pp est.); market cap ~¥668B→~¥627.1B (non-material, -6.1%). Revenue growth (8.4%→8.43%) and FCF Yield left unedited (no visible change / qualitative). EV/Revenue fetch_gap (no FMP data). Snapshot: [[_Archive/Snapshots/3110 - Nitto Boseki (pre-numbers 20260712-173930)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass, fmp_symbol 3110.T confirmed correct): 0 metrics changed. All mapped rows (Market Cap, Revenue Growth, Gross Margin) render identically to current cell text after rounding — data <1hr fresh from prior pass. FCF Yield (qualitative "Low / compressed") and EV/Revenue (fetch_gap) left untouched. Snapshot: [[_Archive/Snapshots/3110 - Nitto Boseki (pre-numbers 20260712-184147)]]

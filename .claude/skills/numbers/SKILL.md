@@ -1,12 +1,12 @@
 ---
 name: numbers
-description: Refresh the Key Metrics table in a thesis with current data from Financial Modeling Prep. Use when user says "numbers", "refresh metrics", "update key metrics", or "refresh [TICKER]" with no other action implied. Surgical edit only — does NOT create research notes or propagate via /sync.
+description: Refresh the Key Metrics table in a thesis with current data from Financial Modeling Prep, with a scoped web-search fallback (Step 4b) when FMP has no data or resolved the wrong company. Use when user says "numbers", "refresh metrics", "update key metrics", or "refresh [TICKER]" with no other action implied. Surgical edit only — does NOT create research notes or propagate via /sync. Also flags (never auto-edits) stale price/valuation framing in the thesis Summary — see Step 10b.
 model: sonnet
 effort: medium
-allowed-tools: Read Grep Glob Edit Bash(date * cp * mkdir * ls * curl * grep * cat * jq * printf * awk * sed * python3 *)
+allowed-tools: Read Grep Glob Edit WebSearch WebFetch Bash(date * cp * mkdir * ls * curl * grep * cat * jq * printf * awk * sed * python3 *)
 ---
 
-Refresh the **`## Key Metrics`** table in a thesis using live FMP data. Hygiene operation, not analysis — the skill changes only numeric cells, never the Notes column, never section text, never frontmatter analytical fields. Solves the staleness problem where every thesis's metrics are wrong 90 days after creation.
+Refresh the **`## Key Metrics`** table in a thesis using live FMP data, with a narrow, provenance-tagged web-search fallback for specific FMP gaps (Step 4b). Hygiene operation, not analysis — the skill changes only numeric cells, never the Notes column, never section text, never frontmatter analytical fields. Solves the staleness problem where every thesis's metrics are wrong 90 days after creation. It also *flags* (read-only, single-ticker mode) stale price/valuation language in the thesis Summary via Step 10b — detection only, prose is never auto-edited (Design constraint #8).
 
 **This skill creates no research notes and emits a skill-origin Log prefix — `/sync` will NOT re-propagate to sector or macro notes.** If the refresh surfaces a material delta (e.g., gross margin dropped 500bps), the skill advises the user to follow up with `/deepen` or `/sync` manually.
 
@@ -17,6 +17,7 @@ Refresh the **`## Key Metrics`** table in a thesis using live FMP data. Hygiene 
 - **Single ticker**: `NVDA` — refresh one thesis
 - **All active high-conviction**: `--all` — batch refresh every thesis where `status: active` AND `conviction: high`
 - **All active**: `--all-active` — batch refresh every thesis where `status: active` (any conviction)
+- **All open (any status except closed)**: `--all-open` — batch refresh every thesis where `status` is `active`, `monitoring`, or `draft` (any conviction). Always excludes `status: closed` regardless of mode — see Design constraint #9 and Recommended frequency.
 
 Ambiguous / empty → ask user to clarify ticker or batch scope.
 
@@ -26,7 +27,7 @@ Ambiguous / empty → ask user to clarify ticker or batch scope.
 
 Per `.claude/skills/_shared/preflight.md` Procedure 1:
 - **Single ticker**: `ticker:TICKER` scope. Timeout 3 minutes.
-- **`--all` / `--all-active`**: `vault-wide` scope. Timeout 10 minutes (one API cycle per ticker × N tickers, even at FMP wholesale tier).
+- **`--all` / `--all-active` / `--all-open`**: `vault-wide` scope. Timeout 10 minutes (one API cycle per ticker × N tickers, even at FMP wholesale tier). `--all-open` covers the largest N — pad timeout expectations accordingly if the vault has grown.
 
 Capture token at Step 0.1, verify ownership (Procedure 1.5) at every subsequent Bash block, release explicitly in the final block (Step 12).
 
@@ -44,7 +45,10 @@ if [ ! -f .data/config.json ]; then
   echo "   This skill requires .data/config.json containing fmp_api_key. See Live Portfolio.md for the canonical format."
   exit 1
 fi
-API_KEY=$(grep -E '"fmp_api_key"\s*:' .data/config.json | sed -E 's/.*"fmp_api_key"\s*:\s*"([^"]+)".*/\1/')
+# jq (already in allowed-tools) — the prior `sed -E 's/...\s.../'` relied on GNU `\s`,
+# unsupported by BSD/macOS sed: it returned the whole JSON line as API_KEY, passed the
+# guard, then every curl exited rc=3 on a malformed URL.
+API_KEY=$(jq -r '.fmp_api_key // empty' .data/config.json)
 if [ -z "$API_KEY" ] || [ "$API_KEY" = "null" ]; then
   echo "❌ FMP API key missing or empty in .data/config.json"
   exit 1
@@ -52,7 +56,7 @@ fi
 echo "FMP_KEY_OK"
 ```
 
-On failure, abort the entire skill — no fallback to web scraping.
+On failure, abort the entire skill — no fallback to web scraping. (This is a total-failure guard: no FMP key means no run at all. It does not conflict with Step 4b's narrower, per-field web-search fallback, which only engages after a successful FMP connection for specific gapped/mismatched fields on individual tickers — see Step 4b.)
 
 ### 0.4: Section existence probe (per-thesis)
 
@@ -76,10 +80,16 @@ ls "Theses/$TICKER - "*.md 2>/dev/null
 ### Batch modes
 
 ```bash
-# Filter active theses by frontmatter
+# Filter theses by frontmatter
 for f in Theses/*.md; do
   status=$(awk '/^---/{c++; if(c==2) exit} c==1 && /^status:/{print $2}' "$f")
   conviction=$(awk '/^---/{c++; if(c==2) exit} c==1 && /^conviction:/{print $2}' "$f")
+  if [ "$MODE" = "--all-open" ]; then
+    # any status except closed (and except missing/malformed status) — never conviction-filtered
+    if [ -z "$status" ] || [ "$status" = "closed" ]; then continue; fi
+    echo "$f"
+    continue
+  fi
   if [ "$status" = "active" ]; then
     # --all → only high-conviction
     # --all-active → any conviction
@@ -142,6 +152,17 @@ python3 .claude/skills/numbers/numbers_compute.py \
 
 ## Step 4: Fetch FMP data (one parallel batch per ticker)
 
+**Resolve the FMP symbol per thesis (foreign-listing catch-22 fix).** FMP needs an exchange-suffixed symbol for non-US listings (`6981.T`, `2383.TW`, `GAW.L`, `AIXA.DE`, `5332.T`) but the filename ticker is the bare local code or a display ticker. Resolve from the thesis frontmatter, preferring an explicit `fmp_symbol:` field, falling back to `ticker:` (never the filename):
+
+```bash
+FMP_SYMBOL=$(grep -m1 '^fmp_symbol:' "$THESIS_PATH" | sed 's/^fmp_symbol:[[:space:]]*//')
+[ -z "$FMP_SYMBOL" ] && FMP_SYMBOL=$(grep -m1 '^ticker:' "$THESIS_PATH" | sed 's/^ticker:[[:space:]]*//' | tr -d '[]' | awk '{print $1}')
+[ -z "$FMP_SYMBOL" ] && { echo "⚠️ [TICKER] no ticker:/fmp_symbol: — skipping FMP fetch"; }  # batch: skip; single: abort
+RAW_TICKER="$FMP_SYMBOL"   # every FMP call below uses this, NOT the bare filename ticker
+```
+
+Theses whose `ticker:` already carries the FMP suffix (`6857.T`, `000660.KS`, `285A.T`) resolve through the fallback; the rest carry `fmp_symbol:` overrides (added 2026-07-09: 2383→2383.TW, 6981→6981.T, GAW→GAW.L, 5332/TOTO→5332.T, AIXA→AIXA.DE). An empty FMP array after resolution → `skipped-forward` / `fetch_gap` handling as before, but now a foreign ticker actually resolves instead of querying a bare code that returns `[]`.
+
 Per ticker, issue parallel curl calls:
 
 ```bash
@@ -172,6 +193,31 @@ wait
 - FMP returns market cap and revenue in the listing's native currency (KRW for `000660.KS`, JPY for `6981.T`, GBp for `GAW.L`, EUR for `BESI.AS`, etc. — confirmed via Live Portfolio).
 - Format magnitude with the existing thesis's convention: if `value_raw` used `$X.XT`, output `$X.XT`; if it used `¥XB` or `£X.XB` or no currency symbol, preserve that.
 
+## Step 4b: Web-search fallback for FMP data gaps (added 2026-07-12)
+
+**Trigger conditions are mechanical — never "the number looks surprising."** A large real delta (a stock re-rating 100%+, a margin swinging double digits) is signal, not an error — Step 5's materiality thresholds exist precisely to surface those, and treating "big delta" as a fallback trigger would misfire on genuine moves (confirmed live in the 2026-07-12 `--all-open` batch: 6981, TER, SNDK, and 285A all had legitimate 100%+ market-cap deltas that were correctly applied, not search-worthy anomalies). Web search fires ONLY on:
+
+1. **`status: fetch_gap`** on one of the search-friendly fields (allowlist below) — FMP returned null/empty for this ticker+field, i.e. an actual gap, not a present-but-disputed value.
+2. **Name mismatch** — `quote.json`'s `name` field does not match the thesis's company name (fuzzy-match against the filename's `- Name` portion, or a `company_name:` frontmatter field if one exists). This is a near-certain ticker-collision signal, confirmed this session: bare `CSU` / `SOI` / `SIVE` resolved to unrelated micro-caps ("Capital Senior Living Corporation," "Solaris Oilfield Infrastructure, Inc.," "Silver Verde May Mining Co., Inc.") instead of Constellation Software / Soitec / Sivers Semiconductors. On a name mismatch, treat ALL of that ticker's FMP-sourced fields this run as untrustworthy — attempt web search for the allowlisted fields below; leave the rest `fetch_gap` (do not fabricate) and note in the Log entry that `fmp_symbol:` likely needs a manual override (this is very often the real fix — check first whether an exchange-suffixed symbol resolves correctly before trusting any web-search result for a mismatched ticker).
+
+**Field allowlist — do not search for everything.** Only attempt fallback for: `Market Cap`, `Stock Price`, `Trailing P/E`, `Forward P/E`, `EV/Revenue`, `EV/EBITDA`. These are reliably surfaced by financial-data aggregator sites in a search snippet without deep extraction. Do **NOT** attempt fallback for margins, FCF Yield/Margin, Net Debt/EBITDA, Dividend Yield, or Revenue Growth — these require a specific accounting-period/GAAP-vs-non-GAAP match that a generic search snippet cannot reliably disambiguate. (This run's margin swings on PSTG/PANW/ARM/CRWD/PCOR were GAAP-vs-non-GAAP methodology mismatches, not missing data — a second unstructured source would not have resolved which convention the thesis wants, it would have added a second unreliable opinion arguing with the first.) Rows outside the allowlist that hit fetch_gap or ride along on a name-mismatched ticker stay `fetch_gap`/untouched — unchanged from current behavior.
+
+**Execution, per triggered (ticker, field):**
+1. One `WebSearch` call, field-appropriate query (`"{company name} market cap"`, `"{company name} stock price"`, `"{company name} EV/Revenue"`, etc.). Prefer reading the figure directly out of aggregator-style snippets (stockanalysis.com, companiesmarketcap.com, macrotrends.net, Google Finance) that surface the number without a full page load.
+2. If the snippet is ambiguous, conflicting across sources, or absent: ONE follow-up `WebFetch` on the most authoritative-looking result. Do not chain further searches — one search plus at most one fetch, then decide.
+3. If a confident single number still isn't obtainable (sources disagree materially, or nothing relevant surfaces): do **not** force a low-confidence number in. Fall back to the existing safe behavior — leave as `fetch_gap`, note `web search inconclusive` in the Log entry. Mirrors Step 4's own retry-then-give-up discipline.
+4. Render the value with the same format-preservation rules as Step 3/8 (currency, tilde, decimals, magnitude suffix) — a web-filled cell must look identical in style to an FMP-filled one; only its provenance tag (below) marks the difference.
+5. Feed the rendered value through Step 5's existing materiality thresholds exactly like an FMP-sourced value — no separate threshold table for web-filled rows.
+
+**Provenance tagging is mandatory — a web-filled cell must never be silently indistinguishable from an FMP-sourced one:**
+- The Log entry (Step 9) must name every web-filled row explicitly and cite the source, e.g.: `Numbers refresh: 6 metrics updated (5 FMP, 1 web: EV/Revenue via stockanalysis.com). ...` — never folded into the plain count unmarked.
+- Never write the source URL into the Notes cell — Design constraint #1 still applies unconditionally. Provenance lives in the Log entry only.
+- The Step 12 report (single and batch) carries a dedicated **Web-search-filled** section (see Step 12) — these rows are never buried inside the generic "metrics refreshed" count.
+
+**Single-ticker mode: always pause for confirmation if any row was web-filled**, regardless of whether the resulting delta clears Step 5's materiality bar — extend Step 6's confirm gate with an OR condition (material delta present) OR (any Step 4b row present). Web-sourced values carry more extraction risk than FMP's structured response and earn a first-time human glance even when the number itself looks unremarkable. Batch modes: no per-ticker prompt (same as Step 6) — web-filled rows accumulate into the Step 12 aggregate report instead.
+
+**Scope discipline**: single web-search attempt per (ticker, field) — no retry loops burning time/tokens on what is meant to be a hygiene operation. Never attempted for a ticker with no fetch_gap and no name-mismatch — most tickers hit neither trigger and this step is a no-op for them.
+
 ## Step 5: Compute deltas and classify materiality
 
 For every row that mapped successfully:
@@ -195,25 +241,29 @@ Aggregate per-thesis: `material_count`, `material_metrics: [list of labels]`. Us
 
 ## Step 6: Present deltas; confirm if material
 
-**Single ticker, no material deltas**: skip confirmation; proceed silently to Step 7.
+**Single ticker, no material deltas AND no Step 4b web-filled rows**: skip confirmation; proceed silently to Step 7.
 
-**Single ticker, ≥1 material delta**: pause and present:
+**Single ticker, ≥1 material delta OR ≥1 Step 4b web-filled row present** (whichever fires first — a web-filled row forces the pause even if its own delta is immaterial, per Step 4b): pause and present:
 
 ```
 [TICKER] Key Metrics — proposed updates:
 
-| Metric         | Old      | New      | Δ        | Material |
-|---|---|---|---|---|
-| Market Cap     | ~$4.6T   | ~$5.8T   | +26.1%   | ⚠️       |
-| EV/Revenue     | 18.3x    | 16.2x    | -2.1x    |          |
-| Revenue Growth | +65% YoY | +42% YoY | -23pp    | ⚠️       |
-| Gross Margin   | 71.1%    | 71.4%    | +0.3pp   |          |
+| Metric         | Old      | New      | Δ        | Material | Source |
+|---|---|---|---|---|---|
+| Market Cap     | ~$4.6T   | ~$5.8T   | +26.1%   | ⚠️       | FMP    |
+| EV/Revenue     | 18.3x    | 16.2x    | -2.1x    |          | FMP    |
+| Revenue Growth | +65% YoY | +42% YoY | -23pp    | ⚠️       | FMP    |
+| Gross Margin   | 71.1%    | 71.4%    | +0.3pp   |          | FMP    |
+| Trailing P/E   | 22.0x    | 24.5x    | +11.4%   |          | web (stockanalysis.com) |
 
 ⚠️ 2 material deltas — review before applying.
+⚠️ 1 row web-search-filled (Step 4b: FMP fetch_gap) — confirm gate triggered regardless of materiality.
 Notes column unchanged. Skipped: 5 custom metrics with no FMP mapping.
 
 Confirm? (y/n)
 ```
+
+The `Source` column is only shown when ≥1 row is web-filled this run — omit it entirely for a pure-FMP refresh (the common case) rather than adding noise every time.
 
 Wait for explicit y/n. (n) → abort cleanly (release lock; no edits).
 
@@ -239,7 +289,7 @@ snapshot_batch: numbers-YYYY-MM-DD-HHMMSS
 ```
 
 Batch ID format (single-ticker): `numbers-TICKER-YYYY-MM-DD-HHMMSS`.
-Batch ID format (`--all` / `--all-active`): `numbers-batch-YYYY-MM-DD-HHMMSS` (shared across all theses in the batch — atomic cascade rollback via `/rollback`).
+Batch ID format (`--all` / `--all-active` / `--all-open`): `numbers-batch-YYYY-MM-DD-HHMMSS` (shared across all theses in the batch — atomic cascade rollback via `/rollback`).
 
 Snapshot is mandatory because the edit touches multiple table rows and a partial-write failure (rare but possible) without rollback path would corrupt the thesis's Key Metrics section.
 
@@ -272,6 +322,8 @@ Append to the thesis `## Log` section (max 2 lines):
 
 When zero material deltas: still write the Log entry — its presence is the audit trail. Example: `Numbers refresh: 7 metrics updated, 0 material. Largest Δ: EV/Revenue 18.3x→16.2x (-11.5%). Snapshot: [[...]]`.
 
+**When ≥1 row was web-filled (Step 4b), the Log entry must name it and its source** — this is not optional, per Step 4b's provenance-tagging rule: `Numbers refresh: 7 metrics updated (6 FMP, 1 web: Trailing P/E via stockanalysis.com), 1 material. Largest Δ: EV/Revenue 18.3x→16.2x (-11.5%). Snapshot: [[...]]`. A web-filled row never rides silently inside the plain "N metrics updated" count.
+
 ## Step 10: Material-delta advisories (single-ticker mode only)
 
 After the Log entry lands, if `material_count ≥ 1`, surface targeted suggestions per metric. These are SUGGESTIONS, not auto-executed.
@@ -288,6 +340,23 @@ After the Log entry lands, if `material_count ≥ 1`, surface targeted suggestio
 Output these as `→ Consider: [suggestion]` lines in the final report. Never auto-run.
 
 **Skip in batch modes** — batch advisories print in Step 12 aggregate report instead.
+
+## Step 10b: Summary price-framing staleness check (flag-only — never auto-edited)
+
+**Design decision (2026-07-12): thesis body prose is never auto-edited by this skill — detection only.** Numbers embedded in prose are argument-coupled: NVDA's Summary reasons "at ~30x forward P/E... the question is whether the moat justifies the premium" — swap the multiple and the conclusion may no longer follow. The same figure often recurs in a second section (AVGO's "28x forward earnings" appears in both Summary and a separate Industry Context comparison) — an auto-edit that catches one occurrence and misses the other leaves the note self-contradictory. Cross-ticker mentions add entity-resolution risk (a company name used as metaphor — e.g. AVGO's "Android to Nvidia's Apple" — is not a ticker reference). See Design constraint #8. This check exists so staleness gets surfaced, not silently ignored — the fix is a human-reviewed `/deepen`, not a find-and-replace.
+
+**Scope: single-ticker mode only, thesis's own ticker only, `## Summary` section only.** No new FMP calls — reuses Step 4's already-fetched `quote.json`/`ratios.json`. Batch modes fold results into the Step 12 aggregate report instead of a per-ticker line.
+
+1. Probe for `## Summary` (Procedure 4). Absent → skip this check silently (Summary is template-default, not guaranteed present).
+2. Scan the section for a price/valuation framing clause — a current price, market cap, or valuation multiple stated for *this* ticker. Typical shape: `"At ~$190 (~$4.6T market cap, ~30x forward P/E)..."` or `"At 28x forward earnings..."`. **Exclude anything that isn't a valuation statement** even if numerically similar — performance/spec comparisons (`"8x-669x faster"`, `"10x lower inference cost"`, `"70% cost reduction"`) are not price or multiple references and must not be flagged. Judgment call, not blind regex: only flag a clause that states this ticker's own current price, market cap, or valuation multiple.
+3. No clause found → nothing to report. Clause found → map it to the corresponding Key Metrics field (Stock Price / Market Cap / Forward P/E / EV/Revenue / EV/EBITDA) and compare the old prose figure to the new fetched value using Step 5's existing thresholds (no new thresholds). Below-threshold → do not surface (avoid advisory noise on immaterial drift).
+4. Material → append one line to the report (Step 12), never to the thesis Log entry (Step 9 stays table-refresh-only, 2-line cap):
+   ```
+   → Consider: Summary opens "[verbatim clause]" — live data now ~$[new price] (~$[new cap], ~[new]x fwd P/E). Run `/deepen TICKER --sync-metrics` to reconcile this and any other locations referencing the same figure (prose not auto-edited by /numbers itself — see `/deepen`'s Metric-Sync Mode).
+   ```
+5. If the same figure also appears verbatim elsewhere in the body (quick grep, not a full re-scan), append: `Also referenced in [section name] — check for consistency if you /deepen.`
+
+**Never**: edit the Summary text or any other section, write anything to the Log entry, resolve or fetch data for any ticker other than the thesis's own subject.
 
 ## Step 11: Update `key_metrics_last_refreshed` (frontmatter)
 
@@ -317,18 +386,19 @@ Batch ID:          numbers-TICKER-YYYY-MM-DD-HHMMSS
 Metrics refreshed:  [N]  ([M] material — see deltas above)
 Custom metrics skipped: [K]  ([list of labels, or "none"])
 FMP fetch failures:     [F]  ([list, or "none"])
+Web-search-filled:      [W]  ([list: label = value (source), or "none"] — Step 4b)
 
 Log entry:        appended ("Numbers refresh:")
 Propagation:      /sync will SKIP this thesis (skill-origin prefix)
 Frontmatter:      key_metrics_last_refreshed: YYYY-MM-DD
 
-→ Consider: [Step 10 advisories, if any]
+→ Consider: [Step 10 + Step 10b advisories, if any]
 ```
 
 ### Batch report
 
 ```
-✓ /numbers [--all | --all-active] complete
+✓ /numbers [--all | --all-active | --all-open] complete
 
 Tickers processed:   [total]
   Refreshed cleanly: [N]
@@ -340,7 +410,15 @@ Material-delta theses ([count]):
   [TICKER2]: [...]
   ...
 
-Suggested follow-ups (single-ticker /deepen, /stress-test, /brief):
+Summary framing stale ([count], Step 10b):
+  [TICKER1]: cites ~[old]x, live ~[new]x
+  [TICKER2]: [...]
+
+Web-search-filled ([count], Step 4b — verify manually):
+  [TICKER1]: [label] = [value] (source: [domain]) — trigger: fetch_gap | name-mismatch
+  [TICKER2]: [...]
+
+Suggested follow-ups (Step 10b flags → `/deepen TICKER --sync-metrics`; material-delta theses → single-ticker /deepen, /stress-test, /brief as appropriate):
   [list, max 5; if more, suggest "Run /numbers TICKER for per-thesis advisories"]
 
 Batch ID:           numbers-batch-YYYY-MM-DD-HHMMSS
@@ -371,9 +449,10 @@ Runs unconditionally — whether all targets refreshed cleanly, some failed FMP 
 - **`conviction: medium` theses**: quarterly (post-earnings). Lower stakes; the qualitative thesis hasn't reached the conviction inflection where every quarterly number matters.
 - **`conviction: low` theses**: opportunistically (when running `/surface`, `/prune`, or `/brief`). Keep numbers fresh only when actively reviewing.
 - **`status: monitoring` theses**: monthly is fine — the watchlist exists to catch inflections, and stale Key Metrics defeat the purpose.
-- **`status: closed` theses**: never. Closed theses are archived; their Key Metrics tables are historical records.
+- **`status: draft` theses**: opportunistically — same as low conviction. Draft theses in this vault are frequently full-depth (not stubs), so a stale Key Metrics table is a real cost, but they haven't been promoted to active tracking either.
+- **`status: closed` theses**: never. Closed theses are archived; their Key Metrics tables are historical records — enforced structurally, not just recommended: `--all-open` excludes `status: closed` unconditionally (Design constraint #9), and no batch mode ever includes it.
 
-This cadence is the basis for `/sync` Step 3e's drift-window exclusion of `Numbers refresh:` entries (per `_shared/log-prefixes.md` §18) — monthly refresh on a high-conviction thesis would otherwise consume every slot of the 5-entry drift window.
+`--all-open` is the single command that respects this whole cadence table in one run (active + monitoring + draft, any conviction) except closed, which no mode ever touches. This cadence is the basis for `/sync` Step 3e's drift-window exclusion of `Numbers refresh:` entries (per `_shared/log-prefixes.md` §18) — monthly refresh on a high-conviction thesis would otherwise consume every slot of the 5-entry drift window.
 
 ## Design constraints (xxx DO NOT VIOLATE xxx)
 
@@ -390,3 +469,16 @@ This cadence is the basis for `/sync` Step 3e's drift-window exclusion of `Numbe
 6. **Wholesale tier is the assumed entitlement.** The skill issues 6 endpoint calls per ticker in parallel; lower FMP tiers may rate-limit. Add per-ticker retry logic but do not silently downshift to fewer endpoints — that produces silently-incomplete refreshes.
 
 7. **Snapshot before every per-thesis edit.** Even though the edit is small, partial-write recovery is the rollback path. Snapshot is the only guarantee that the user can `/rollback` if a Notes-column invariant trips.
+
+8. **Never auto-edit thesis body prose.** Step 10b flags Summary price/valuation staleness — it never rewrites the sentence. Numbers embedded in prose reason toward a conclusion (unlike an inert table cell) and often recur in a second section; silent find-and-replace risks an internally contradictory thesis, and for cross-ticker mentions risks false-positive entity resolution (a company name used as metaphor, not a ticker reference). Considered and explicitly scoped down from "auto-edit all referenced tickers" to flag-only on 2026-07-12 at the user's direction — if full auto-edit is reconsidered later, it belongs in a new skill with mandatory per-file human review (`/deepen`-shaped), not inside `/numbers`.
+
+9. **No batch mode ever includes `status: closed`.** `--all-open` was added 2026-07-12 to broaden batch refresh beyond `status: active` (to `active` + `monitoring` + `draft`, any conviction) — it does not broaden it to *every* thesis file. Closed theses hold their Key Metrics table as a historical record of the position at closure (Recommended frequency, above); refreshing it would silently overwrite that record with numbers from after the position was exited. If a future request asks for closed theses too, treat it as reopening this exact constraint, not a bug — confirm explicitly before implementing, since it reverses a deliberate, documented choice rather than extending one.
+
+10. **Step 4b's web-search fallback is scope-limited by design — widening it silently is a regression, not an improvement.** Added 2026-07-12 at the user's explicit direction after a root-cause check showed that same day's `--all-open` batch "data quality issues" (CSU/SOI/SIVE market caps off 10-160x, GAW's GBp scale, KAMBI's ~100% gross margin, PSTG/PANW/ARM/CRWD/PCOR margin swings) were actually ticker collisions, an already-documented currency convention, correct-but-surprising data, and GAAP-vs-non-GAAP methodology differences respectively — zero of which a web search would have fixed, and two of which (the margin mismatches) a second unstructured source could easily make *worse* by supplying a plausible-looking wrong number with no FMP-vs-web disagreement signal to catch it. The guardrails below are load-bearing, not incidental:
+    - Trigger ONLY on `status: fetch_gap` or a confirmed `quote.name` mismatch — never on "the delta looks big," since large real deltas (this vault has seen genuine 100-285% moves) are signal, not error.
+    - Field allowlist ONLY (`Market Cap`, `Stock Price`, `Trailing P/E`, `Forward P/E`, `EV/Revenue`, `EV/EBITDA`) — never margins, yields, leverage, or growth rates, which need period/convention context a search snippet can't carry.
+    - One search + at most one fetch per (ticker, field), then give up to `fetch_gap` rather than force a low-confidence number — no retry loops.
+    - Provenance tag mandatory in the Log entry and Step 12 report for every web-filled row, every time — never silently indistinguishable from FMP-sourced data.
+    - Single-ticker confirm gate fires on ANY web-filled row regardless of materiality (Step 6) — the one data source in this skill without a structured-API correctness guarantee always gets a first human look before it lands.
+    
+    If a future change proposes dropping any of these five guardrails (broader triggers, more fields, more retries, no provenance tag, no confirm gate), treat that as reopening this constraint deliberately — not a routine extension.

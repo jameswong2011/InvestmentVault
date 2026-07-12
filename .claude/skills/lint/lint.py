@@ -342,6 +342,21 @@ def freshness(v, scoped_theses):
                 add("IMPORTANT", "#25", f"{len(pend)} file(s) modified since last /sync: "
                     + ", ".join(pend[:8]) + ("…" if len(pend) > 8 else ""))
             stats["pending_sync"] = len(pend)
+            # #57 watermark-collapse alarm (2026-07-09): a pending-sync count above
+            # ~20% of vault notes is not a backlog, it's a bulk-mtime event or a stuck
+            # watermark — default /sync and /sync all become intractable, /prune
+            # dead-ends on Phase 0.B, and /clean's mtime safety-net falsely protects
+            # every aged snapshot. Escalate with explicit guidance.
+            total_notes = sum(1 for d in (RESEARCH, THESES, SECTORS, MACRO)
+                              if d.is_dir() for _ in d.glob("*.md"))
+            if total_notes and len(pend) / total_notes > 0.20:
+                add("CRITICAL", "#57",
+                    f"Watermark collapse: {len(pend)}/{total_notes} notes "
+                    f"({len(pend)*100//total_notes}%) newer than .last_sync — likely a bulk "
+                    f"mtime touch (git ops) or stuck watermark, not real research volume. "
+                    f"Cross-check `git diff --name-only` since the watermark date; then either "
+                    f"run /sync all once or advance .last_sync over mtime-only files. Until "
+                    f"resolved: /sync default+all intractable, /prune blocks, /clean over-protects.")
 
 
 def connections(v):
@@ -386,12 +401,29 @@ def analytical(v, scoped_theses):
         if bull and bear and (bull / bear > 3 or bear / bull > 3):
             add("NICE", "#13", f"[[Theses/{p.stem}]] Bull/Bear asymmetry — {bull}w vs {bear}w")
         # #14 template drift (heading presence; Legacy Callouts exempt)
+        # #59 template-drift-at-birth (2026-07-09): a thesis created <7d ago that is
+        # ALREADY missing template sections means /thesis drifted from the template on
+        # this run — escalate immediately instead of letting it sink into the
+        # undifferentiated #14 backlog (which only ever grows). Age from earliest Log date.
+        first_log = None
+        for lm in re.finditer(r"^###\s+(\d{4}-\d{2}-\d{2})", section_body(t, "Log") or "", re.M):
+            d0 = parse_date(lm.group(1))
+            if d0 and (first_log is None or d0 < first_log):
+                first_log = d0
+        newborn = first_log is not None and days_old(first_log) < 7
         have = {h for h, *_ in sections(t)}
         for h in tpl_heads:
             if h == "Legacy Callouts" or h in have:
                 continue
-            add("IMPORTANT" if h in priority else "NICE", "#14",
-                f"[[Theses/{p.stem}]] missing template section: {h}")
+            if newborn:
+                add("IMPORTANT", "#59",
+                    f"[[Theses/{p.stem}]] created {days_old(first_log)}d ago, ALREADY missing "
+                    f"template section: {h} — /thesis output drifted from the template; fix the "
+                    f"thesis now (/deepen {ticker_of(p)} {h} scaffolds it) and check /thesis's "
+                    f"required-section list against Templates/.")
+            else:
+                add("IMPORTANT" if h in priority else "NICE", "#14",
+                    f"[[Theses/{p.stem}]] missing template section: {h}")
         # #15 verbose log entries (>2 content lines per dated entry)
         body = section_body(t, "Log") or ""
         entry, hdr = [], None
@@ -436,6 +468,25 @@ def snapshots_and_manifests(v):
             add("NICE", "#16", f"Stale snapshot ({days_old(d)}d): [[_Archive/Snapshots/{p.stem}]]")
     stats["snapshots"] = len(snaps)
     stats["manifests"] = len(manifests)
+    # #58 snapshot-integrity (2026-07-09): artifacts invisible to /clean and
+    # unrestorable-by-spec for /rollback. (a) snapshot .md lacking snapshot_of:/
+    # snapshot_date: frontmatter — /clean's age logic skips it forever, /rollback
+    # Step 5 cannot derive the restore path; (b) any non-.md file in Snapshots/ —
+    # invisible even to the '*.md' inventory glob.
+    for p in snaps:
+        fm = parse_fm(read(p))
+        missing = [k for k in ("snapshot_of", "snapshot_date") if not fm.get(k)]
+        if missing:
+            add("IMPORTANT", "#58",
+                f"Snapshot missing {'/'.join(missing)}: [[_Archive/Snapshots/{p.stem}]] — "
+                f"invisible to /clean aging, /rollback degrades to content-only restore with "
+                f"undefined target path. Backfill frontmatter or archive via git and delete.")
+    for p in SNAPSHOTS.iterdir():
+        if p.is_file() and p.suffix != ".md":
+            size_mb = p.stat().st_size / 1_048_576
+            add("IMPORTANT", "#58",
+                f"Non-.md artifact in Snapshots/: {p.name} ({size_mb:.1f} MB) — outside every "
+                f"skill's inventory; move it out of _Archive/Snapshots/ or delete.")
     # #36/#41/#45/#47/#48/#49 manifest aging
     for p in manifests:
         fm = parse_fm(read(p))

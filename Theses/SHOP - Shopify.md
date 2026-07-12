@@ -7,6 +7,7 @@ conviction: high
 sector: E-commerce Infrastructure
 ticker: SHOP
 source: Claude conversation export, web research April 2026
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # SHOP — Shopify
@@ -240,8 +241,8 @@ Each expansion increases the share of merchant economics Shopify captures. The t
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$117.57 | Down 28.6% YTD (April 2026) |
-| Market Cap | ~$149.6B | |
+| Stock Price | ~$122.54 | Down 28.6% YTD (April 2026) |
+| Market Cap | ~$159.0B | |
 | FY2025 Revenue | $11.6B | +30% YoY |
 | Q4 2025 Revenue | $3.672B | +31% YoY |
 | FY2025 GMV | $378.4B | +29% YoY; Q4 first $100B+ quarter ($123.8B) |
@@ -309,10 +310,13 @@ Each expansion increases the share of merchant economics Shopify captures. The t
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-7 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- VLM §1B pricing-power flywheel — CONFIRMED: Q1 2026 (May 5) Merchant Solutions +39% vs GMV +35% (revenue growing faster than GMV, the flywheel's signature), Payments penetration 67% (+3pts YoY), Shop Pay GMV $35B +59%, Shop App 19M MAU (above the thesis's 10-15M estimate), Europe +48%, B2B +80%, enterprise logos landing (LVMH, Lands' End, Mattel).
+	- Agentic-commerce protocol war RESOLVED toward Shopify: OpenAI killed Instant Checkout 2026-03-04 (only ~30 Shopify merchants ever live — Insight #3's "1M+ merchants sell through ChatGPT Instant Checkout" is now factually wrong, needs correction); UCP (Shopify co-authored with Google) won coalition breadth (Universal Cart across Search/Gemini/YouTube, May GML); checkout moved back to merchant storefronts via Agentic Storefronts (5.6M stores discoverable, AI-driven orders +13x) — disintermediation bear neutralized for now.
+	- Generalist [G-13] expectations — the falsifier that fired is the growth boundary: Q2 guided to high-20s% (ending the 30%+ streak) plus transaction/loan-loss rates rising 3.2%→3.7% of revenue as Capital scales; the stock fell 13-16% on the beat and sits ~-30% YTD (~$123, ~63-65x NTM P/E) under the Warsh regime.
+	- [G-12] cohort economics watch — the credit-loss creep is the new unmodeled variable: deceleration + early credit strain is the exact combination a 60x+ multiple cannot absorb.
+- **Disconfirming check** (evidence-updated 2026-07-10): single falsifying datapoint = a second sequential quarter of loan-loss-rate increase alongside sub-30% growth — converts the flywheel narrative into a credit-cycle narrative. Base rate: companies decelerating through the 30%→high-20s boundary at >60x forward have historically de-rated further before stabilizing; analyst targets (cut ~$31 to ~$148-157) are following price down, not leading. Framework gaps: NO Conviction Triggers section; the 2026-05-22 medium→high upgrade was made with no Log entry processing Q1 earnings — the thesis has never absorbed Q1, the Instant Checkout collapse, or the credit-loss uptick; watchlist price-context ("+4.3% 1Y") conflicts with -30% YTD and needs a /numbers rebase.
 ## Related Research
 - [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]] — Deep analysis of Shopify-Stripe-Coinbase USDC stablecoin integration, payment protocol architecture, USDC adoption forecasts on Shopify platform
 - [[Research/2025-09-18 - US Insurance Broking Market]] — Tangential; platform market dynamics comparison
@@ -343,3 +347,12 @@ Each expansion increases the share of merchant economics Shopify captures. The t
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-07-10
+- Mental models pass: batch-7 evidence sweep populated ## Mental Models — Payments flywheel confirmed (MS +39% vs GMV +35%), agentic protocol war resolved toward Shopify (Instant Checkout dead, UCP won), but Q2 guide broke the 30% streak + loan-loss creep 3.2→3.7% and stock sits -30% YTD — conviction unchanged (high); thesis never absorbed Q1 2026 — sync overdue; Insight #3's "1M+ merchants via Instant Checkout" is factually dead, corrected here.
+
+### 2026-07-12
+- Numbers refresh: 4 metrics updated (2 changed value), 0 material. Stock Price ~$117.57→~$122.54 (confirms Mental Models' already-noted ~$123 level); Market Cap ~$149.6B→~$159.0B. FY2025 Revenue and FCF Yield unchanged (round identically). Snapshot: [[_Archive/Snapshots/SHOP - Shopify (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers, second pass)
+- Numbers refresh: 0 metrics changed, 0 material. Re-fetch confirms Stock Price ~$122.54, Market Cap ~$159.0B, FY2025 Revenue $11.6B, FCF Yield ~1.3% all unchanged from the run ~1hr ago. Snapshot: [[_Archive/Snapshots/SHOP - Shopify (pre-numbers 20260712-184014)]]

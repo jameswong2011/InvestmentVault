@@ -7,6 +7,8 @@ conviction: medium
 sector: Blockchain & Stablecoins
 ticker: BTC-CRYPTO
 asset_class: commodity/currency
+fmp_symbol: BTCUSD
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # Bitcoin & Digital Assets — Structural Supply Deficit Meets Institutional Adoption Inflection
@@ -188,8 +190,8 @@ Stablecoins represent the most commercially successful blockchain application, w
 
 | Metric | Bitcoin (BTC) | Ethereum (ETH) | Solana (SOL) | Notes |
 |---|---|---|---|---|
-| **Price** | ~$91,000 | ~$1,800 (est.) | ~$82 | April 2026 |
-| **Market Cap** | ~$1.38T | ~$240B | ~$47B | |
+| **Price** | ~$63,963 | ~$1,800 (est.) | ~$82 | April 2026 |
+| **Market Cap** | ~$1.28T | ~$240B | ~$47B | |
 | **Supply Cap** | 21M (fixed) | Uncapped (net deflationary target) | Uncapped (~570M circulating) | BTC's fixed cap is unique |
 | **Annual Inflation** | 0.85% | ~0.22% (net) | ~5-6% | Post-Merge ETH lowest inflation |
 | **Staking Yield** | N/A (PoW) | 3.6-4.8% | ~6-7% | ETH yield competitive with declining rates |
@@ -350,3 +352,9 @@ The quantum transition creates three investable dynamics:
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 1 material. BTC price -30% (~$91,000→~$63,846); market cap -8% (~$1.38T→~$1.28T, not material). Snapshot: [[_Archive/Snapshots/BTC-CRYPTO - Bitcoin & Digital Assets (pre-numbers 20260712-180000)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 1 metric updated, 0 material. BTC price ~$63,846→~$63,963 (+0.2%, non-material — second same-day pass ~1hr after prior refresh). Market cap ~$1.28T unchanged (rounds identical). Snapshot: [[_Archive/Snapshots/BTC-CRYPTO - Bitcoin & Digital Assets (pre-numbers 20260712-183935)]]

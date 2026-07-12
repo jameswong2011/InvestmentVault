@@ -7,13 +7,14 @@ conviction: high
 sector: Enterprise Workflow AI & Automation
 ticker: NOW
 source: Consolidated from ChatGPT, Gemini Canvas, Claude deep-dive, web research
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # NOW — ServiceNow
 
 ## Summary
 
-~$89 post-split (~$93B market cap), down 47% from July 2025 peak — FY2025 revenue $13.28B (+21%), $4.6B FCF (35% margin), 98% renewal rate, Now Assist at $600M ACV. ServiceNow spent $12B+ across seven 2025 acquisitions (Moveworks $2.85B, Armis $7.75B, Veza $1B, data.world, Logik.ai, Quality 360, Cuein) to build a See-Think-Act architecture across the full enterprise. The market prices the stock through "SaaS Reset" and AI seat-compression fear. The non-consensus thesis: ServiceNow's CMDB — 20+ years of accumulated enterprise relationship data across millions of CIs at 85% of the Fortune 500 — is not legacy infrastructure but the ideal substrate for enterprise AI agents. The company most threatened by AI is simultaneously best-positioned to monetize it as the governance and orchestration layer enterprises need to deploy AI agents safely at scale.
+~$106 post-split (~$111B market cap), down 37% from July 2025 peak — FY2025 revenue $13.28B (+21%), $4.6B FCF (35% margin), 98% renewal rate, Now Assist at $600M ACV. ServiceNow spent $12B+ across seven 2025 acquisitions (Moveworks $2.85B, Armis $7.75B, Veza $1B, data.world, Logik.ai, Quality 360, Cuein) to build a See-Think-Act architecture across the full enterprise. The market prices the stock through "SaaS Reset" and AI seat-compression fear. The non-consensus thesis: ServiceNow's CMDB — 20+ years of accumulated enterprise relationship data across millions of CIs at 85% of the Fortune 500 — is not legacy infrastructure but the ideal substrate for enterprise AI agents. The company most threatened by AI is simultaneously best-positioned to monetize it as the governance and orchestration layer enterprises need to deploy AI agents safely at scale.
 
 ## Key Non-consensus Insights
 
@@ -114,11 +115,11 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$93B | Post 5-for-1 split (Dec 18, 2025); stock at ~$89, down ~47% from July 2025 peak |
+| Market Cap | ~$111B | Post 5-for-1 split (Dec 18, 2025); stock at ~$106, down ~37% from July 2025 peak |
 | EV/Revenue | ~6.5x | On FY2026 guided subscription revenue of ~$15.5B |
 | Revenue (FY2025) | $13.28B (+21% YoY) | $3.466B Q4 subscription revenue (+19.5% YoY) |
 | Revenue Guide (FY2026) | $15.53-15.57B sub rev | 19.5-20% CC growth; includes ~1pt from Moveworks |
-| Gross Margin | 77.5% GAAP / ~82% sub | Down 1.6pp YoY; hyperscaler shift a headwind, expected to improve at scale |
+| Gross Margin | 76.6% GAAP / ~82% sub | Down 1.6pp YoY; hyperscaler shift a headwind, expected to improve at scale |
 | Non-GAAP Op Margin | 31% (FY2025) | Guiding 32% FY2026 (+100bps); "Rule of 55" consistently met |
 | FCF | $4.6B / 35% margin | +34% YoY; Q4 peaked at 57%; guiding 36% margin FY2026 |
 | P/E | ~49.7x | Post-split; compressed from 80x+ historical highs |
@@ -179,10 +180,13 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-6 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Automation Lens B/C (CMDB as agent substrate + governance moat) — operating data CONFIRMS: Now Assist ACV $750M (Q1), 2026 AI target raised $1B→$1.5B at the May 4 Investor Day; >$1M Now Assist customers +130% YoY; renewal rate 97% six straight quarters; the Apr 9 pricing reset (all-AI-bundled tiers, legacy SKUs EOL Jul 1) is driving 20-40% effective renewal uplifts — pricing power intact, not seat-compression erosion. Governance leg validated: AI Control Tower now governs Microsoft Agent 365/Copilot Studio agents; Okta survey: 98% of SaaS buyers factor agent-governance into renewals.
+	- Lens §7 down-weight watch — the CMDB-substrate claim now has a NAMED, funded antagonist the thesis never modeled: OpenAI Frontier (Feb 2026), explicitly "a semantic layer for the enterprise," with Fortune 500 launch customers (incl. Intuit, State Farm, Uber). Claude Cowork triggered the Jan-Feb "SaaSpocalypse" (~$2T SaaS cap loss) that set NOW's H1 price.
+	- Generalist [G-13] expectations — the market is applying the outside view (agentic cannibalization) while the fundamentals refuse it: sub rev +22%, cRPO +22.5%, guide raised $205M, yet the stock fell a further -36% H1 to >60% below ATH on narrative + Warsh-Fed rotation. McDermott's $30B-by-2030 "bear case" produced no re-rate — expectations channel is closed until numbers force it.
+	- Yellow flags inside the print: Q2 cRPO guide decel ~19.5% cc; Armis (closed early, Apr 20) dilutes -75bp op / -200bp FCF margin; tenant-level AI "assist" consumption pools + overage charges are the biggest unmanaged renewal-friction risk of the pricing reset.
+- **Disconfirming check** (evidence-updated 2026-07-10): the live capture test is the Jul 22 Q2 print — first full quarter under all-in AI licensing post-SKU-EOL; a cRPO decel below mid-teens cc or visible overage-driven renewal churn is the single falsifying datapoint. Base rate: megacap SaaS sustaining 20%+ growth straight through a platform shift is rare (Oracle-purgatory analog) — NOW is currently the exception, and the multiple already prices the base-rate outcome, not the exception. Framework gap: conviction was raised to HIGH on 2026-05-22 with NO Conviction Triggers section — reconstruct falsifiers (cRPO floor, overage-churn signal, a named Frontier displacement) before the Q2 print; Key Metrics ~3 months stale ($89/$93B vs $108.60/$112B).
 ## Related Research
 
 - [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]] — AI coding tool disruption risk analysis: 10-15% (3yr), 25-30% (5yr), 40-50% (10yr) probability; TAM erosion not replacement
@@ -199,6 +203,7 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 - [[Sectors/Enterprise Workflow AI & Automation]] — Sector-level dynamics and cross-company analysis
 - [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: BDC software-loan markdown share (~33% of TCPC Q1 markdowns) is credit-market echo of AI-productivity-disruption thesis; NOW orchestration platform positioned as enterprise-AI beneficiary against cash-burning private-credit-financed peers
 - [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]] — Macro lens: SemiAnalysis "Captured AI Output" (AI work still charged the same price) is the only Dark-Output bucket that surfaces as visible GDP/margin, and it requires pricing power. NOW's per-seat→Foundation/Advanced/Prime consumption pivot is the capture test for the seat-compression question — whether AI productivity accrues as NOW margin or leaks to customers as untracked surplus
+- [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]] — Macro synthesis (adversarial-verified Gemini critique): the binding gate on enterprise AI adoption is workforce/process redesign (organizational, decade-scale), not model capability — NOW's governance/orchestration layer is the beneficiary. Gartner $234B agentic-arbitrage (2026-07-01) reframed as "metamorphosis not apocalypse" (spend redirects to orchestration); ranks NOW a Tier-3 consumption-converted winner (~50% of new ACV non-seat, CFO Apr 2026)
 
 ## Log
 
@@ -227,3 +232,18 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 
 ### 2026-06-11 (/sync)
 - [[Research/2026-06-11 - PLTR - Karp on Frontier Lab Discontent - news]]: Tangential — PLTR CEO's "implementation > model layer" + enterprise frontier-lab discontent is a (self-serving) datapoint for the Captured-AI-Output / deployment-value theme underpinning NOW's seat-vs-consumption thesis. Conviction unchanged (high) — PLTR-centric, no NOW operating signal.
+
+### 2026-07-10
+- Mental models pass: batch-6 evidence sweep populated ## Mental Models — Now Assist $750M ACV (target raised to $1.5B), pricing reset driving 20-40% renewal uplifts, but OpenAI Frontier is a named CMDB-substrate antagonist and the stock fell -36% H1 on SaaSpocalypse/Warsh narrative — conviction unchanged (high); Jul 22 Q2 print is the all-in-AI-licensing capture test.
+
+### 2026-07-12 (/sync)
+- [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]: Gartner $234B "agentic arbitrage" (~20% of SaaS spend by 2030) framed as "metamorphosis not apocalypse" — spend redirects to orchestration layers, reinforcing the CMDB-as-governance-substrate bull vs the seat-compression bear (NOW = Tier-3 consumption-converted winner, ~50% of new ACV non-seat). Conviction unchanged (high) — reinforcing macro read, no new operating signal.
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 2 metrics updated, 0 material. Market Cap ~$93B→~$111B (+19%, largest delta this pass but below materiality threshold). Snapshot: [[_Archive/Snapshots/NOW - ServiceNow (pre-numbers 20260712-174116)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed. Market Cap (~$111B) and Gross Margin (76.6% GAAP) render identically after rounding — data <1hr fresh. Step 10b: Summary still opens "~$89 post-split (~$93B market cap), down 47% from July 2025 peak" — Key Metrics Market Cap now ~$111B (already flagged in the 07-10 Mental Models pass and prior numbers entry); consider `/deepen --section "Summary"`. Snapshot: [[_Archive/Snapshots/NOW - ServiceNow (pre-numbers 20260712-184147)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: price/cap $89/$93B→$106/$111B (down 47%→37% from peak) across Summary + Market-Cap Notes. Snapshot: [[_Archive/Snapshots/NOW - ServiceNow (pre-deepen-metrics-sync 2026-07-12-203456)]]

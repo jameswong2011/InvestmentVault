@@ -103,7 +103,7 @@ Try to load the FMP API key. Unlike `/numbers` and `/transcript`, `/catalyst` do
 ```bash
 FMP_OK=0
 if [ -f .data/config.json ]; then
-  API_KEY=$(grep -E '"fmp_api_key"\s*:' .data/config.json | sed -E 's/.*"fmp_api_key"\s*:\s*"([^"]+)".*/\1/')
+  API_KEY=$(jq -r '.fmp_api_key // empty' .data/config.json)   # jq, not sed -E '\s' (BSD sed unsupported → whole-line key → rc=3 curls)
   if [ -n "$API_KEY" ] && [ "$API_KEY" != "null" ]; then
     FMP_OK=1
     echo "FMP_OK"
@@ -135,6 +135,7 @@ Within each thesis, prioritize **Catalysts**, **Risks**, and the last 5 **Log** 
 
 Per thesis:
 - **Catalysts** section: event description, approximate date or date range (if stated), expected impact direction (positive / negative / uncertain), magnitude estimate (major / minor).
+- **Conviction Triggers** section (when present — ~half the theses): extract each `→ HIGH if` / `→ LOW if` / `→ CLOSE if` statement and pair it with any catalyst whose outcome would test it. This feeds the `Thesis test` column (Phase 4) — the calendar's falsification layer. The 000660 thesis's Catalysts table ("**Positive** if SK Hynix maintains ≥60% share") is the in-vault exemplar of the target pairing.
 - **Log** entries: recently noted upcoming events (scan the last ~5 date headers; older entries typically describe past events).
 - **Risks** section: risk events with timing (e.g., "regulatory decision expected Q2").
 - **Elsewhere in the thesis**: flag any date-anchored event or upcoming catalyst mentioned in Bull Case, Bear Case, Summary, Industry Context, or Business Model that's absent from the Catalysts section — surface these as candidates the thesis may need to formalize.
@@ -261,21 +262,23 @@ tags: [meta, catalyst-calendar]
 
 ### Structure:
 **Next 2 Weeks** (day-by-day detail)
-| Date | Ticker(s) | Event | Expected Impact | Magnitude | Notes |
-|------|-----------|-------|-----------------|-----------|-------|
+| Date | Ticker(s) | Event | Expected Impact | Magnitude | Thesis test | Notes |
+|------|-----------|-------|-----------------|-----------|-------------|-------|
 
 **Weeks 3-4**
-| Week of | Ticker(s) | Event | Expected Impact | Notes |
-|---------|-----------|-------|-----------------|-------|
+| Week of | Ticker(s) | Event | Expected Impact | Thesis test | Notes |
+|---------|-----------|-------|-----------------|-------------|-------|
+
+**`Thesis test` column (falsification layer — READING PROTOCOL).** Format: `[observable + threshold] → [confirms Insight #n | fires "→ LOW/HIGH/CLOSE if …" trigger of [[TICKER]] | untested]`. Populate from the Phase 1.2 Conviction-Triggers extraction — the thesis is already fully loaded, zero extra reads. This converts the calendar from a when-and-which-way schedule into a pre-registered hypothesis-test schedule: for each event, what outcome would CONFIRM or REFUTE which thesis. `untested` is a legitimate value (event has no matching trigger) and is itself signal — a portfolio of `untested` catalysts means the theses' triggers don't cover their own event risk.
 
 **Month 2-3** (grouped by week)
 | Approximate Date | Ticker(s) | Event | Notes |
 |-----------------|-----------|-------|-------|
 
 **No Catalyst Identified**
-| Ticker | Last Catalyst Date | Days Since | Status |
-|--------|-------------------|------------|--------|
-[Theses with no upcoming catalyst — flag for attention]
+| Ticker | Last Catalyst Date | Days Since | Falsifiable? | Status |
+|--------|-------------------|------------|--------------|--------|
+[Theses with no upcoming catalyst — flag for attention. `Falsifiable?` = does the thesis have a `## Conviction Triggers` section (yes/no)? A thesis with NO catalyst AND NO triggers is doubly dead capital — nothing scheduled can move it and nothing defined can kill it: the strongest /prune candidate signal this calendar produces.]
 
 **Stale Catalysts** (events that appear to have passed)
 | Ticker | Event | Listed Date | Action Needed |

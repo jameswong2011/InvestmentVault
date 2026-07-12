@@ -3,10 +3,11 @@ publish: true
 date: 2026-04-23
 tags: [thesis, semiconductors, DRAM, HBM, memory, 000660]
 status: active
-conviction: high
+conviction: medium
 sector: DRAM & HBM Memory
 ticker: 000660.KS
 source: vault synthesis + Q1 2026 earnings (SK Hynix filings, 2026-04-23) + sell-side consensus (Mirae, Samsung Securities, IBK, UBS, BofA, Goldman)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # SK Hynix — 000660.KS
@@ -98,7 +99,7 @@ Samsung's hybrid-bonding bet (enabled by BESI Kinex tool, 67% D2W hybrid-bonding
 | Gross Margin (HBM) | 60%+ | Contributes 54% of DRAM operating profit |
 | Gross Margin (commodity DRAM) | 30-35% | Cycle-dependent |
 | Gross Margin (NAND) | 25-30% | Cycle-peak |
-| FCF Yield | ~6% | On $35B 2025 FCF; suppressed by $20.5B 2026 capex |
+| FCF Yield | ~3% | On $35B 2025 FCF; suppressed by $20.5B 2026 capex |
 | HBM Market Share | 57% (2026) | Down from 62% (2024), 57-62% (Q2 2025) |
 | 2026 HBM Revenue | $30B est | >40% of corporate revenue |
 | 2026 CapEx | $20.5B | +17% YoY; mid-30% CapEx/revenue |
@@ -188,9 +189,14 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-4 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (reflexivity, expectations) · [[Industry - Semiconductors]] (#2, #7, #13, L1) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *L1 (DRAM no longer as cyclical — contracted markets, winner-take-most) — CONFIRMED beyond the model's own claims*: CSPs moved from annual deals to **3–5-yr LTAs**; SK Hynix **removed price caps in LTAs** (Jul 2, diverging from Micron); Q2 DRAM contracts +58–63% QoQ, Q3 forecast +40–50%; all 2026 HBM sold out. The L1 re-rate (7–10x → 15–25x mid-cycle) is happening — trailing P/E ~20.7, NTM ~6.6x on supercycle EPS; the debate is entirely whether the EPS is mid-cycle or peak.
+	- *Role reversal on the commodity-milking mechanism* — the thesis had Samsung milking commodity while SKH sprints HBM; evidence INVERTS it: **SK Hynix is throttling HBM4 to harvest ~90%-margin DDR5**, ceding full-year HBM4 shipment parity to Samsung (TrendForce 4B/4B Gb). Rubin allocation still ~60–70% SKH (HIGH leg 1 holding), but the 2027 sustainability of ≥60% is now the live question the thesis didn't have to ask.
+	- *Trigger scoreboard*: HIGH — leg 1 tracking (≥60% Rubin), leg 2 partial (HBM4E 12-Hi first-mover, not sole-source), leg 3 OBSOLETE-BY-DESIGN (hybrid bonding deferred industry-wide to 16-Hi HBM4E+; Insight #2's Samsung-leapfrog risk WEAKENED — Samsung is deferring too, pursuing HPB), leg 4 (Namics renewal) NO DATA and now MORE critical — MR-MUF dependence extends just as the exclusivity contract runs toward ~early-2027 expiry: **the most under-watched falsifier in the thesis**. LOW cannot fire in 2026 (pricing leg dead — HBM prices rising, not -10%). CLOSE legs not near, but **CXMT insulation claim is dead**: HBM3 samples at Huawei + 60K-wpm dedicated line plan — 2 years ahead of the thesis's "no HBM product, no roadmap."
+	- *#7 cycle-phase + reflexivity — the bear axis rotated from share/pricing to multiple/positioning*: no thesis falsifier fired, yet the stock fell 30% from the Jun 25 ATH (₩2,987,000 → ₩2,076,000) as memory entered a formal bear market on "record results only beating by 6%." At ~$1.05–1.1T market cap (2x the thesis's $587.6B basis), the operative risk is crowding psychology, a mode the thesis never priced. The **$29.4B ADR** (priced $149, 7x oversubscribed, trading from today) is double-edged: US-multiple re-rate channel AND fresh supply into a crowded trade.
+	- *VLM* — HBM qualified-leader position + LTA-contracted book + Namics/MR-MUF materials moat = strong layer position with a dated materials-contract dependency; capex ₩1,100T long-range (Yongin 1M wpm by 2030, Cheongju $65B NAND — the thesis's "NAND capex pullback" claim is REVERSED) is the #15-style supply response that eventually ends every memory pricing regime — 2028+, self-inflicted.
+- **Disconfirming check** (evidence-updated): the thesis is winning on every falsifier it wrote and losing on the one it didn't — position/multiple risk at a $1T cap into a Jul 29 print (consensus OP ₩63–66T, ~77% OPM) where the Samsung template says a <10% beat sells off. Base rate: memory names at all-time-high share prices AND all-time-high margins AND all-time-high capex have never sustained all three through the following 24 months. Single falsifiers, dated: Namics renewal disclosure (or absence) by early 2027; TrendForce HBM4 share splits each quarter (Samsung >35% = LOW leg 1); Q3 DRAM pricing momentum (+40–50% forecast holding). Update Key Metrics + Catalysts (ADR, Jul 29) — thesis Log silent for 34 days across the largest events since creation.
 
 ## Related Research
 
@@ -259,3 +265,15 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Silicon-shortage memory leg corroborates the supercycle — HBM 3x→4x wafer/bit crowd-out + the DDR-margin-≥-HBM reversal (removes the supply-side incentive to convert capacity → customers must pay above current contracts for incremental HBM, visible in 2027 negotiations) + ~11 Gb/s HBM4 pin-speed gate with Micron lagging. Consistent with the 05-31 "Memory Mania" framing already integrated; the 2027-repricing-higher dynamic is a forward pricing-power positive. Conviction unchanged (high).
+
+### 2026-07-10
+- Mental models pass: batch-4 evidence sweep populated ## Mental Models — L1 contracted-DRAM re-rate confirmed (LTAs 3-5yr, price caps removed), but role reversal found: SKH throttling HBM4 for 90%-margin DDR5, ceding 2026 HBM4 shipment parity to Samsung; CXMT insulation claim dead (HBM3 samples at Huawei); Namics renewal = most under-watched falsifier; bear axis rotated to multiple/positioning (-30% off ATH, $1T cap, $29.4B ADR trading today) — conviction unchanged (high); Jul 29 Q2 print.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: ~6x forward earnings embeds true-cyclical mean reversion, but Q3 DRAM contract price growth is decelerating (~60%→13-18% QoQ) while Samsung HBM4 ships at scale and record capex lands — the pricing second derivative has already turned against the bull case even as the multiple stays cheap. Snapshot: [[_Archive/Snapshots/000660 - SK Hynix (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 1 metric updated, 1 material. FCF Yield ~6%→~3% (higher 2026 capex suppressing yield). Market Cap left unedited — FMP raw figure appears denominated in KRW (unconverted), not USD; skipped rather than fabricate an FX rate. Snapshot: [[_Archive/Snapshots/000660 - SK Hynix (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — FCF Yield 2.68% rounds to the same displayed ~3%; all other mapped rows unchanged. Market Cap re-skipped: fmp_symbol resolves an obvious KRW/USD unit mismatch (~1,544T vs $587.6B), not a genuine correction. Snapshot: [[_Archive/Snapshots/000660 - SK Hynix (pre-numbers 20260712-183936)]]

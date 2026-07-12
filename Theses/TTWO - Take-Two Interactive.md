@@ -3,17 +3,18 @@ publish: true
 date: 2026-04-15
 tags: [thesis, ttwo, consumer-digital, gaming]
 status: active
-conviction: high
+conviction: medium
 sector: Video Game Publishing
 ticker: TTWO
 source: Multi-source synthesis (Claude conversation export, RockstarINTEL, web research, earnings transcripts)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # TTWO — Take-Two Interactive
 
 ## Summary
 
-Binary-outcome investment centered on the most anticipated entertainment launch in history. Three publisher labels -- Rockstar Games (GTA, Red Dead), 2K (NBA 2K, Civilization, BioShock, Borderlands), and Zynga (mobile) -- generating ~$6.7B net bookings, 76-77% from recurrent consumer spending. At ~$206/share (~$36.5B market cap), the stock embeds moderate GTA VI success but not the full platform-transition optionality: if Rockstar's UGC creator marketplace transforms GTA VI into infrastructure akin to Roblox/Fortnite Creative atop the highest-fidelity open world ever built, economics shift from cyclical publisher to perpetual platform operator. Consensus projects EPS near-quintupling from ~$1.40 (FY2026) to ~$7.50-7.79 (FY2027) on the November 19, 2026 launch. The real question is not whether GTA VI sells well -- it will -- but whether online monetization matches GTA Online's ~$4-5B or disappoints like Red Dead Online (~$3.5-4B lifetime, roughly half of GTA V's ~$8.5B, despite identical 97 Metacritic).
+Binary-outcome investment centered on the most anticipated entertainment launch in history. Three publisher labels -- Rockstar Games (GTA, Red Dead), 2K (NBA 2K, Civilization, BioShock, Borderlands), and Zynga (mobile) -- generating ~$6.7B net bookings, 76-77% from recurrent consumer spending. At ~$243/share (~$45.2B market cap), the stock embeds moderate GTA VI success but not the full platform-transition optionality: if Rockstar's UGC creator marketplace transforms GTA VI into infrastructure akin to Roblox/Fortnite Creative atop the highest-fidelity open world ever built, economics shift from cyclical publisher to perpetual platform operator. Consensus projects EPS near-quintupling from ~$1.40 (FY2026) to ~$7.50-7.79 (FY2027) on the November 19, 2026 launch. The real question is not whether GTA VI sells well -- it will -- but whether online monetization matches GTA Online's ~$4-5B or disappoints like Red Dead Online (~$3.5-4B lifetime, roughly half of GTA V's ~$8.5B, despite identical 97 Metacritic).
 
 ## Key Non-consensus Insights
 
@@ -34,7 +35,7 @@ Binary-outcome investment centered on the most anticipated entertainment launch 
 > [!question] 2026-05-01 → Addressed 2026-05-01
 > **Prompt:** *What is the present forecast x P/E sensitivity for TTWO through to 2030 contingent on GTA-VI monetisation.*
 >
-> **Response:** Three-scenario EPS path (Bear $4–8, Base $8–15, Bull $22–30 by FY2030) cross-tabulated against cyclical (15–20x), growth (20–25x), and platform (30–45x) multiples implies a FY2028E stock range of ~$120–900. Current ~$206 maps to Base × Cyclical-low (~15x FY2028E $14 = $210) — market prices moderate GTA VI success without a UGC re-rate; asymmetry skews bull (Platform re-rate could deliver +190–340%). Full matrix, anchors, and re-rating-trigger window: §Key Metrics → Forecast & P/E Sensitivity (FY2027–FY2030).
+> **Response:** Three-scenario EPS path (Bear $4–8, Base $8–15, Bull $22–30 by FY2030) cross-tabulated against cyclical (15–20x), growth (20–25x), and platform (30–45x) multiples implies a FY2028E stock range of ~$120–900. Current ~$243 has moved above Base × Cyclical-low (~15x FY2028E $14 = $210) — the market now prices moderate GTA VI success plus a little more, trimming but not erasing the bull asymmetry (Platform re-rate could still deliver ~+145–275%). Full matrix, anchors, and re-rating-trigger window: §Key Metrics → Forecast & P/E Sensitivity (FY2027–FY2030).
 
 - **Can UGC function at scale within GTA VI's photorealistic world, or is the format better suited to stylized platforms like Roblox?** Roblox ($1.5B in creator payouts) and Fortnite Creative ($370M) operate in low-fidelity environments where user content is visually coherent. GTA VI's photorealistic aesthetic may limit creator participation to sophisticated developers rather than the mass-market base driving Roblox's economics. FiveM's 270K peak concurrent players prove demand exists, but formalizing an independent community is a different challenge.
 
@@ -87,8 +88,8 @@ Take-Two Interactive operates as a holding company for three distinct publisher 
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$206 | April 15, 2026 |
-| Market Cap | ~$36.5B | |
+| Stock Price | ~$243 | April 15, 2026 |
+| Market Cap | ~$45.2B | |
 | EV/Revenue (TTM) | ~5.5x | Based on ~$6.7B FY2026 net bookings |
 | FY2026 Net Bookings | $6.65-6.7B | +18% YoY; guidance raised after Q3 beat |
 | FY2026 Q3 Net Bookings | $1.76B | +28% YoY; beat guidance |
@@ -183,7 +184,7 @@ GTA VI launches November 19, 2026 — captures only ~4 months of FY2027 (TTWO fi
 1. **GTA VI execution**: Near-impossible expectations, two delays, $3B+ at risk, key creative talent departed, organizational turmoil during final polish. Content-complete since Nov 2025 mitigates shipping risk but quality risk remains.
 2. **Online monetization failure**: RDR2 proves unit sales alone are insufficient. UGC marketplace must work — if it doesn't, the lifetime revenue ceiling halves and the stock is overvalued.
 3. **Delay risk**: Any further slip past Nov 19, 2026 eliminates FY2027 EPS inflection and destroys investor confidence after two prior delays. Low probability (content-complete, marketing ramping) but catastrophic impact.
-4. **Valuation**: At ~$206/share with consensus PT $280, moderate GTA VI success is priced in. Asymmetry only exists for the platform-transition scenario — standard game publisher economics are already in the stock.
+4. **Valuation**: At ~$243/share with consensus PT $280, moderate GTA VI success is largely priced in — the gap to the $280 PT has narrowed to ~15%. Asymmetry only exists for the platform-transition scenario — standard game publisher economics are already in the stock.
 5. **Technical decisions**: 30fps-only console, P2P networking, no crossplay collectively limit the engagement ceiling. Each individually is manageable; together they compound into a structural headwind.
 6. **Creative risk**: Dan Houser's departure, combined with Sam Houser's reduced public profile, creates unhedgeable narrative quality uncertainty.
 7. **Regulatory/labor**: UK tribunal outcome on unfair dismissal claims, potential regulatory penalties for illegal underpayment, broader industry unionization momentum.
@@ -192,9 +193,13 @@ GTA VI launches November 19, 2026 — captures only ~4 months of FY2027 (TTWO fi
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-8 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Launch leg CONFIRMED emphatically: Nov 19 2026 date reaffirmed with FY27 guidance built on it ("won't be delayed again" — Zelnick); pre-orders (Jun 25) ~$1B first hour, 6x CoD pace at one retailer; pricing landed at the top of the thesis band ($79.99/$99.99 Ultimate); November release calendar fully vacated (zero AAA competition); RCS healthy (82% of bookings, NBA 2K26 10M+, GTA Online +5%).
+	- THE CORE BET IS STILL UNTESTED and slipped right: GTA VI launches SINGLE-PLAYER ONLY — GTA Online VI is decoupled and undated (~Dec 2026 speculation, possibly sold separately). The thesis's "most important forward indicator" (early online monetization) now arrives later than modeled; the re-rating gate window (FY27 Q3-Q4 earnings) likely slips. Counter-evidence FOR the platform insight: Rockstar shipped the Mission Creator inside GTA Online + console-server job reqs — the UGC leg is advancing in production.
+	- FY27 guide $8.0-8.2B vs $9.13B consensus (vs the thesis's ~$9.23B model) — sandbag (Wedbush) or first quantitative crack; unresolved, market looked through it to an ATH $265.94 (Jul 7). At ~$246 the market has moved from "moderate success" to full Base case priced — the $206 entry asymmetry is consumed.
+	- Unpriced dated risks: UK blacklisting/union-busting trial Sept 10–Oct 15, 2026 — sworn public testimony on Rockstar culture ending ~5 weeks before launch; share count ~186M vs ~177M assumed (EPS matrix ~5% stale); console supply constraint caps launch-quarter physical units (also a demand signal).
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate — event-driven launch theses systematically suffer sell-the-news reversion; the run-up historically captures most of the move, and the stock at ATH into the launch window is the textbook setup. Single falsifying datapoint: official confirmation that GTA Online VI slips past Q1 CY2027 or ships as a separately-priced product with weak attach — that breaks the $4-5B recurrent-revenue bridge the whole platform re-rate requires. Formalize Conviction Triggers before the launch window (online-launch date, first-quarter attach rate, UGC creator-payout disclosure). Key Metrics stale ($206→$246, RCS 76-77%→82%).
 
 ## Related Research
 
@@ -235,3 +240,18 @@ GTA VI launches November 19, 2026 — captures only ~4 months of FY2027 (TTWO fi
 
 ### 2026-05-24 (/sync all)
 - [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Marginal negative — extended Scenario A keeps gasoline >$4/gal through GTA VI Nov 2026 launch wallet-share window, sharpening $70-80 pricing-sensitivity tail. Launch-window binary intact; FY27 GTA VI revenue contribution dominates macro discretionary noise. Conviction unchanged (high).
+
+### 2026-07-10
+- Mental models pass: batch-8 evidence sweep populated ## Mental Models — launch leg confirmed (~$1B first-hour pre-orders, $80/$100 pricing, date locked) but GTA Online VI decoupled/undated slips the core monetization test right, and at ~$246 ATH the Base case is fully priced — conviction unchanged (high); UK Rockstar trial Sept 10-Oct 15 is a dated unpriced headline risk; formalize triggers pre-launch.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: $244 maps to the thesis's own fully-priced Base case (~17x FY28E $14 EPS) with GTA Online VI's monetization test — the actual thesis-determining variable — undated and untestable until 2027; the $206 asymmetry is consumed. Snapshot: [[_Archive/Snapshots/TTWO - Take-Two Interactive (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 0 material. Market Cap ~$36.5B→~$45.2B (+23.7%, largest delta, not material); Stock Price ~$206→~$243 (+18.1%, not material). Snapshot: [[_Archive/Snapshots/TTWO - Take-Two Interactive (pre-numbers 20260712-173653)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Stock Price and Market Cap render identical to prior refresh after rounding; data confirmed stable intraday. Snapshot: [[_Archive/Snapshots/TTWO - Take-Two Interactive (pre-numbers 20260712-184120)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: price/cap $206/$36.5B→$243/$45.2B across Summary, OQ, Risks; bull asymmetry trimmed to ~+145-275% (sub-threshold, comprehensive sweep). Snapshot: [[_Archive/Snapshots/TTWO - Take-Two Interactive (pre-deepen-metrics-sync 2026-07-12-203456)]]

@@ -3,16 +3,17 @@ publish: true
 date: 2026-04-14
 tags: [thesis, csgp, real-estate-data, monopoly]
 status: monitoring
-conviction: medium
+conviction: high
 sector: Real Estate Data & SaaS
 ticker: CSGP
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # CSGP — CoStar Group
 
 ## Summary
 
-~$37 (62% below 52-week high, ~4.7x trailing P/S vs 5-year avg ~14x) — cheapest valuation in five years. CoStar's CRE data monopoly (92%+ renewal rates, 43-47% EBITDA margins, record $308M net new bookings in 2025) is obscured by the $3B+ Homes.com bet with a 2030 profitability target. Third Point exited entirely (April 10, 2026); management is pivoting from investment to monetization (net Homes.com spend declining $300M+ in 2026); 2026 adjusted EBITDA guided to nearly double to $740-800M. The next two quarters will determine whether this is a generational entry into a franchise-quality monopoly or warranted skepticism of capital allocation.
+~$28 (~71% below the 52-week high, ~4.7x trailing P/S vs 5-year avg ~14x) — down a further ~24% from the ~$37 the thesis flagged, deepening what was already the cheapest valuation in five years. CoStar's CRE data monopoly (92%+ renewal rates, 43-47% EBITDA margins, record $308M net new bookings in 2025) is obscured by the $3B+ Homes.com bet with a 2030 profitability target. Third Point exited entirely (April 10, 2026); management is pivoting from investment to monetization (net Homes.com spend declining $300M+ in 2026); 2026 adjusted EBITDA guided to nearly double to $740-800M. The next two quarters will determine whether this is a generational entry into a franchise-quality monopoly or warranted skepticism of capital allocation.
 
 ## Key Non-consensus Insights
 
@@ -24,7 +25,7 @@ ticker: CSGP
 
 - **CoStar's legal aggression is itself a competitive moat.** Drove Xceligent to Chapter 7 (2017), sued Crexi for copyright infringement (headed to trial after Supreme Court declined review, March 2026), and sued Zillow over 46,000 watermarked photos. The litigious posture raises the cost and risk of entry beyond what the data moat alone achieves.
 
-- **At ~$37, the stock prices in worst-case for residential while assigning near-zero value to the commercial franchise.** CRE data + Apartments.com generate ~$1.8B revenue at ~38% adjusted EBITDA margins with record $308M net new bookings. At a conservative 15x EBITDA, these franchises alone are worth $10-11B — more than half the ~$15B market cap. Homes.com, Matterport, LoopNet, and all future growth are priced at a fraction of invested capital.
+- **At ~$28, the stock prices in worse-than-worst-case for residential while assigning near-zero — arguably negative — value to the commercial franchise.** CRE data + Apartments.com generate ~$1.8B revenue at ~38% adjusted EBITDA margins with record $308M net new bookings. At a conservative 15x EBITDA, these franchises alone are worth $10-11B — now ~85-90% of the ~$12B market cap, versus roughly half when the thesis was written at ~$15B. Homes.com, Matterport, LoopNet, and all future growth are priced at a fraction of invested capital.
 
 - **Third Point's exit is bullish, not bearish.** Dan Loeb sold his entire position April 10. The governance changes Third Point demanded — three new independent directors, Capital Allocation Committee, $700M in buybacks, $300M+ Homes.com spending reduction — were already implemented before exit. Third Point's thesis was realized without a proxy fight; removal of proxy battle overhang is a positive catalyst into Q1 earnings April 28.
 
@@ -90,8 +91,8 @@ The February 2026 launch of Homes AI (powered by Azure OpenAI, integrated with M
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$37 | Down 62% from 52-week high $97; near 52-week low $34.75 |
-| Market Cap | ~$15B | |
+| Stock Price | ~$28 | Down 62% from 52-week high $97; near 52-week low $34.75 |
+| Market Cap | ~$12B | |
 | Trailing P/S | ~4.7x | vs 5-year avg ~14x |
 | Forward EV/EBITDA | ~20x | On 2026E adj. EBITDA $770M midpoint |
 | PEG Ratio | ~0.69 | |
@@ -159,9 +160,13 @@ The February 2026 launch of Homes AI (powered by Azure OpenAI, integrated with M
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Operational promote-legs GREEN, price REFUTED the floor claim: Q1 (Apr 28) beat with EBITDA +100% and FY guide raised to $780-820M; Homes.com members accelerated to 35,175 (+205% net-add pace); Matterport metrics validating (56x tour requests); $505M buyback executed; Florance BOUGHT $2.5M personally (May 1 — reversing the thesis's net-seller bear datapoint) — yet the stock fell to a SEVEN-YEAR low (~$29, -21% from the $37 "generational entry"), ejected from the Nasdaq-100 (May 18, replaced — ironically — by Lumentum).
+	- THE CAPITAL-DISCIPLINE PILLAR INVERTED: the $800M all-cash Zonda acquisition (May 29), announced five weeks after the activists were routed at the AGM (all 8 directors re-elected, Florance 99.5%), converts "management is pivoting from investment to monetization" into its opposite — and mechanically puts the thesis's own cash<$800M reduce-trigger on track to trip at close ($1.215B − $800M − $200M buyback). Serial pattern now visible: Homes.com $3B+, Domain $1.9B, Matterport $1.6B, Zonda $800M, France, Italy.
+	- "Third Point exit is bullish" aged badly in path: D.E. Shaw ESCALATED to a board-control fight (Homes.com a "fiasco") before losing — overhang gone via activist defeat, not value realization. Homes.com profitability pushed to exiting-2029 (not pulled forward) and segment reporting RESTRUCTURED to blend Homes.com into the network — the falsifier's measurement instrument degraded (the metric-retirement pattern).
+	- Floor argument weakening from both sides: core CoStar Suite grew only 8.5% against a recovering CRE cycle (CBRE +16% volume forecast); Zillow rentals +42% (76K properties, Gemini partnership) attacking Apartments.com faster than the FTC case (trial ~Aug) can cement the duopoly; Google+HouseCanary listing ads now LIVE in 50 states (Jun 11) — the hypothetical Google risk is operational. Crexi trial cleared with momentum against CoStar + new Sherman Act class action.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate — data-monopoly incumbents burning cash into adjacent consumer markets is a poor reference class, and CoStar now fits it in serial form with an unconstrained founder-CEO at 99.5% support. Single falsifying datapoint: the Jul 28 Q2 print — the thesis's own "next two quarters decide" clock expires there, and per its own Position-Sizing rules the Zonda-driven cash breach argues REDUCE, not promote, despite green operations (Tier 3 — user decision). NO formal Conviction Triggers section (Position Sizing serves the role); Key Metrics stale ($37→$29).
 
 ## Related Research
 
@@ -184,3 +189,18 @@ The February 2026 launch of Homes AI (powered by Azure OpenAI, integrated with M
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-9 evidence sweep populated ## Mental Models — operations green (Q1 EBITDA +100%, Florance buying) but the capital-discipline pillar inverted ($800M Zonda five weeks post-AGM; own cash<$800M reduce-trigger trips at close) and the stock hit a 7-year low — conviction unchanged (medium); Jul 28 Q2 is the thesis's self-imposed verdict date; per its own rules the Zonda breach argues reduce (user decision).
+
+### 2026-07-11
+- Status change: conviction medium → high — vault-wide multi-agent valuation scoreboard: ~13x 2026E EBITDA prices core-franchise value only with roughly zero for Homes.com/Matterport/Zonda; CRE data monopoly alone (43-47% margins) covers most of the ~$11B EV. Capital-allocation inversion ($800M Zonda) is a real offsetting risk, not disregarded — reflected in the score, not sufficient to keep conviction at medium given the sum-of-parts gap. Snapshot: [[_Archive/Snapshots/CSGP - CoStar Group (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 0 material. Stock -23.3% to ~$28 (market cap ~$12B) since thesis initiation. Snapshot: [[_Archive/Snapshots/CSGP - CoStar Group (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (3 mapped rows re-rendered identical post-rounding), 0 material. Flag: Summary still opens "~$37 (62% below 52-week high, ~4.7x trailing P/S...)" vs live stock ~$28.39 in Key Metrics — stale framing, unaddressed across multiple refresh passes; consider /deepen --section "Summary". Snapshot: [[_Archive/Snapshots/CSGP - CoStar Group (pre-numbers 20260712-184039)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: price/cap $37/$15B→$28/$12B across Summary + 2 Insights — sum-of-parts now ~85-90% of cap (was 'half the $15B'). Snapshot: [[_Archive/Snapshots/CSGP - CoStar Group (pre-deepen-metrics-sync 2026-07-12-203456)]]

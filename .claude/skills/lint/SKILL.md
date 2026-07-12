@@ -34,7 +34,7 @@ python3 .claude/skills/lint/lint.py              # full mode
 python3 .claude/skills/lint/lint.py --ticker $T  # scoped mode
 ```
 
-- **Covers** (authoritative in-script): #1–#6 (empty-only for #5), #8, #10, #11, #12/#13 (mechanical flags), #14 (heading presence), #15, #16, #17–#27, #28 (candidates), #29 (presence checks a/b/c), #30, #32–#39, #41–#56.
+- **Covers** (authoritative in-script): #1–#6 (empty-only for #5), #8, #10, #11, #12/#13 (mechanical flags), #14 (heading presence), #15, #16, #17–#27, #28 (candidates), #29 (presence checks a/b/c), #30, #32–#39, #41–#59. New 2026-07-09: **#57** watermark-collapse alarm (pending-sync > 20% of vault notes → CRITICAL with sync-all-vs-advance guidance — the bulk-mtime failure class that silently breaks /sync default/all, /prune Phase 0.B, and /clean's safety-net); **#58** snapshot-integrity (snapshot .md lacking `snapshot_of:`/`snapshot_date:` frontmatter + any non-.md artifact in Snapshots/ — the class invisible to /clean and unrestorable-by-spec for /rollback); **#59** template-drift-at-birth (thesis <7d old already missing template sections → IMPORTANT immediately, split out of the #14 backlog — signals /thesis drifted from the template on that run).
 - **Exit codes**: 0 = pass/nice-to-have · 1 = Important found · 2 = Critical found · 3 = self-validation failed (do NOT report partial results — fix the script invocation or escalate; the script's stderr states the cause).
 - The script's report contains three severity sections plus a **Judgment candidates** section — those candidates are *inputs to Step 2*, not confirmed findings. Never copy candidates into the final report unreviewed.
 

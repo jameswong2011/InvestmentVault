@@ -374,7 +374,7 @@ Watermark is ISO second-precision (`last_graph_write:`); legacy files fall back 
 
 ## 10. `/lint` registry (by ID)
 
-Key checks (the full registry runs ~56 checks, #1–#56 — with `#50m` for `_deepen-manifest` distinct from `#50` callout-sweep-freshness; `#31`/`#40` are unused — see `lint/SKILL.md`). Scoped mode always runs #35 and, if a marker exists, #37.
+Key checks (the full registry runs ~59 checks, #1–#59 — with `#50m` for `_deepen-manifest` distinct from `#50` callout-sweep-freshness; `#31`/`#40` are unused — see `lint/SKILL.md`). Scoped mode always runs #35 and, if a marker exists, #37.
 
 | ID | Scope | Catches | Severity | If fires, suspect |
 |---|---|---|---|---|
@@ -402,6 +402,9 @@ Key checks (the full registry runs ~56 checks, #1–#56 — with `#50m` for `_de
 | #50m | Full | `_deepen-manifest` aging | Important if in-progress | Crashed before Phase 7.5 flip (ID is `#50m`, distinct from callout `#50`) |
 | #50–#53, #56 | Both | Callout hygiene: sweep freshness (#50), stale fresh callouts (#51), malformed/orphan Legacy entries (#52/#53), deprecated `[[preserve]]` (#56) | Varies | See `lint/SKILL.md` |
 | #54/#55 | Full | Graph-primer compliance / filter anti-pattern | Important | Skill used graph to skip content reads |
+| #57 | Full | Watermark collapse (pending-sync > 20% of vault notes) | **Critical** | Bulk mtime touch (git ops) or stuck `.last_sync` — /sync default/all intractable, /prune blocks, /clean over-protects; decide sync-all vs advance |
+| #58 | Full | Snapshot integrity: missing `snapshot_of:`/`snapshot_date:` frontmatter; non-.md artifacts in Snapshots/ | Important | Legacy/hand-made snapshot or stray archive file — invisible to /clean, unrestorable-by-spec for /rollback |
+| #59 | Full | Template-drift-at-birth (thesis <7d old missing template sections) | Important | /thesis section list drifted from `Templates/` on that run — fix thesis via /deepen scaffold + check /thesis spec |
 
 ---
 

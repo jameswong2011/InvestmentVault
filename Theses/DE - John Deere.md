@@ -7,6 +7,7 @@ conviction: medium
 ticker: DE
 sector: Agriculture & Industrial Equipment
 source: Consolidated from Claude, ChatGPT, Gemini, Grok exports + web research
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # DE — John Deere
@@ -97,8 +98,8 @@ Equipment financing, operating leases, revolving credit, and crop insurance for 
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$602 (Apr 13) | Down from ATH $674.19 (Feb 19 intraday) |
-| Market Cap | ~$168B | |
+| Stock Price | ~$587 (Apr 13) | Down from ATH $674.19 (Feb 19 intraday) |
+| Market Cap | ~$158B | |
 | 52-Week Range | $433 - $674.19 | |
 | Trailing P/E | ~32x | At trough earnings |
 | Forward P/E (FY2026) | ~28-33x | On $4.5-5.0B net income guidance |
@@ -112,7 +113,7 @@ Equipment financing, operating leases, revolving credit, and crop insurance for 
 | See & Spray Acres | 5M+ (2025) | Saved 31M gallons herbicide mix |
 | Automation Attach Rate | 80%+ | On new combine "ultimate" packages |
 | R&D Spend | ~$2.3B/yr | ~5-6% of revenue; +45% from 2021 |
-| Gross Margin | 32.6% | vs CNH ~21.8%, AGCO ~23-24% |
+| Gross Margin | 35.4% | vs CNH ~21.8%, AGCO ~23-24% |
 | Consensus Price Target | ~$665 | 13 Buy, 0 Sell (Stock Analysis, Apr 2026) |
 
 ## Bull Case
@@ -157,9 +158,15 @@ Equipment financing, operating leases, revolving credit, and crop insurance for 
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-10 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Automation lens, Lens B (vendor): STRONG fit capped by a §5 anti-signal — execution-path presence is disclosed and real (440k monthly active digital users, engaged acres +10% YoY, 12.5k+ JDLink Boost kits +25% QoQ, 80%+ combine-automation attach), but FOUR YEARS into the 10%-recurring-by-2030 target there is still ZERO disclosed recurring-revenue dollar figure. Acres and attach rates without a P&L number is the exact "narrative > numbers" flag the lens exists to catch.
+	- Lens A (operator): WEAK — §6 heavy-industry overlay; physical manufacturing core, no rev/employee or named-workflow disclosure; discount bull-case margin claims from Deere's own automation.
+	- Lens C (data flywheel): WEAK and actively contested — FTC settlement (Jul 8, 2026) forces 10 years of dealer-parity repair/software access under FTC supervision (on top of the Apr $99M class settlement), Bayer FieldView holds 250M+ subscribed acres, CNH FieldOps/AGCO OutRun retrofit Deere's own 8R fleet. "Context a competitor cannot replicate" is not established; forced openness is now contractual.
+	- [G-3] cycle position: MIXED with a genuine non-consensus edge — retail demand has NOT inflected (May: US tractors -21.6%, combines -56.1%; Purdue capex index 40, lowest since Sep-2024) but the DE-STOCK is done (field inventory of high-HP kit down >50% from peak) and C&F is ripping (+29% sales, guide raised to +20% — the thesis's "flat to +5%/pulse absorbed" claim is REFUTED twice over). Market pays ~35x through the trough (+27.7% YTD vs S&P +7.9%) — the re-rating already happened without the order inflection.
+	- Factual: See & Spray herbicide reduction is ~50% per Deere's own release (thesis's "averaging 76%" overstates disclosure); engaged-acres target was 500M by 2026 (no primary source for the thesis's "600M by 2030").
+	- Structural gap: **no ## Conviction Triggers section.**
+- **Disconfirming check** (evidence-updated 2026-07-10): the multi-model agreement to distrust is "platform premium justified" — at 35x trough earnings with recurring revenue undisclosed, right-to-repair openness court-mandated, and the flywheel contested, the premium prices execution Deere has not yet evidenced. Single falsifying datapoint: MY27 early-order-program results + autonomy-kit uptake at the Q3 print (mid-Aug) — a weak EOP into a $44.3B govt-payment year (payments confirmed, demand effect absent) says even subsidized farmers won't buy the cycle bottom, and the 30x+ multiple has no earnings bridge. Base rate [G-10]: OEM→software re-ratings that stick (few) all disclosed recurring $ by year 4; Deere has not.
 
 ## Related Research
 
@@ -195,3 +202,12 @@ Equipment financing, operating leases, revolving credit, and crop insurance for 
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status active→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-10 evidence sweep populated ## Mental Models — Automation lens: Lens B STRONG capped by §5 anti-signal (zero recurring-revenue $ disclosed 4 yrs into 2030 target), Lens C contested (FTC settlement Jul 8 mandates 10-yr open access); C&F guide claim refuted (+20% actual vs "flat to +5%"), See & Spray 76% overstated (~50% actual) — conviction unchanged (medium); MY27 early-order results at Q3 print (mid-Aug) is the falsifier.
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 0 material. Gross margin 32.6%→35.4% (largest delta, +2.8pp, non-material vs 3pp threshold); stock price ~$602→~$587 (-2.5%). Trailing P/E fetch_gap (no FMP data). All remaining rows (52-wk range, forward P/E, Q1 EPS/Revenue, FY26 guide, PPA margin, tariff headwind, connected machines, engaged acres, See & Spray acres, automation attach rate, R&D spend, consensus PT) are custom metrics — left unedited. Snapshot: [[_Archive/Snapshots/DE - John Deere (pre-numbers 20260712-173930)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Stock Price, Market Cap, Gross Margin all identical to prior refresh after rounding. Trailing P/E still fetch_gap. Snapshot: [[_Archive/Snapshots/DE - John Deere (pre-numbers 20260712-183935)]]

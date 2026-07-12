@@ -7,13 +7,13 @@ ticker: NVDA
 conviction: high
 sector: Compute & AI Compute Accelerators
 source: Consolidated — Gemini Canvas (Omniverse/PhysX, AI Ecosystem, TurboQuant), ChatGPT (CES 2026, HBM4, AI Bubble, Silicon Photonics), Claude (PhysX competitive dynamics), Grok (Omniverse deep-dive, interconnects), web research (FY2026 earnings, GTC 2026, sovereign AI, ASIC competition, export controls)
-key_metrics_last_refreshed: 2026-05-22
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # NVDA — Nvidia
 
 ## Summary
-Vertically integrated operating system for the AI era spanning training (DGX), simulation (Omniverse/OVX), and edge inference (Jetson/Thor). FY2026: $215.9B revenue (+65% YoY), Data Center 89.7% ($193.7B), 71.1% gross margins, $96.7B FCF. The market prices GPU hardware sales and hyperscaler capex; the deeper moat is the software simulation stack -- PhysX 5, Warp (8x-669x faster than JAX in differentiable physics), Omniverse (82+ connectors, OpenUSD), Cosmos world foundation models -- locking customers into Nvidia silicon from training through physical-world deployment. This converts potential competitors into platform partners: Siemens, Dassault, Ansys, and Google DeepMind co-develop on Nvidia's infrastructure rather than competing. Vera Rubin entered production H1 2026 (10x lower inference cost vs Blackwell), sovereign AI tripled to $30B. Key risks: custom ASIC maturation (TPU v7 ~70% cost reduction, Trainium 30-40% better price-performance), TSMC concentration, and algorithmic efficiency potentially outrunning Jevons Paradox. At ~$190 (~$4.6T market cap, ~30x forward P/E), the question is whether the software/Physical AI moat justifies the premium as share moderates from 87% peak toward ~75%.
+Vertically integrated operating system for the AI era spanning training (DGX), simulation (Omniverse/OVX), and edge inference (Jetson/Thor). FY2026: $215.9B revenue (+65% YoY), Data Center 89.7% ($193.7B), 71.1% gross margins, $96.7B FCF. The market prices GPU hardware sales and hyperscaler capex; the deeper moat is the software simulation stack -- PhysX 5, Warp (8x-669x faster than JAX in differentiable physics), Omniverse (82+ connectors, OpenUSD), Cosmos world foundation models -- locking customers into Nvidia silicon from training through physical-world deployment. This converts potential competitors into platform partners: Siemens, Dassault, Ansys, and Google DeepMind co-develop on Nvidia's infrastructure rather than competing. Vera Rubin entered production H1 2026 (10x lower inference cost vs Blackwell), sovereign AI tripled to $30B. Key risks: custom ASIC maturation (TPU v7 ~70% cost reduction, Trainium 30-40% better price-performance), TSMC concentration, and algorithmic efficiency potentially outrunning Jevons Paradox. At ~$211 (~$5.1T market cap, ~23x forward P/E — down from ~30x), the question has flipped: earnings grew faster than the stock, so the debate is no longer whether the software/Physical AI moat justifies a premium, but whether the market has over-punished NVDA into the cheapest multiple in the AI complex as share moderates from 87% peak toward ~75%.
 
 ---
 
@@ -161,20 +161,20 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 ## Key Metrics
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$5.3T | World's most valuable company (Apr 2026) |
-| Stock Price | ~$217 | Apr 2026 |
+| Market Cap | ~$5.1T | World's most valuable company (Apr 2026) |
+| Stock Price | ~$211 | Apr 2026 |
 | EV/Revenue (TTM) | 20.8x | |
-| Forward P/E | ~25x | Down from 45x+ in 2024 |
+| Forward P/E | ~23x | Down from 45x+ in 2024 |
 | Trailing P/E | ~33.1x | |
 | EV/EBITDA | ~27.3x | |
 | FY2026 Revenue | $215.9B | +65% YoY |
 | Q1 FY2027 Guidance | $78.0B ± 2% | Implies ~$300B+ FY2027 run-rate |
 | Data Center Revenue | $193.7B | 89.7% of total, +68% YoY |
-| Gross Margin (GAAP) | 74.1% | |
+| Gross Margin (GAAP) | 74.2% | |
 | Operating Margin | 64.0% | |
 | Net Income | $120.1B | |
 | Free Cash Flow | $96.7B | +59% YoY |
-| FCF Yield | ~2.3% | $96.7B / $4.6T market cap |
+| FCF Yield | ~2.3% | $96.7B / $5.1T market cap |
 | AI Accelerator Market Share | ~75% | Declining from 87% peak; absolute revenue still growing |
 | CUDA Developers | 5.9M | 20-year ecosystem |
 | Sovereign AI Revenue | ~$30B | 3x YoY; UK, Germany, France, UAE, others |
@@ -226,9 +226,13 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-3 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (reflexivity, expectations, Perez) · [[Industry - Semiconductors]] (#2, #14, #18) · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *The defining paradox — every fundamental print confirmed the bull while every marginal signal moved bear.* Confirms: Q1 FY27 $81.6B (+85%), Q2 guide $91B, Rubin VR200 on schedule (Q3 ship/Q4 volume), CPO switches on schedule, all-three-vendor HBM4 qualified, sovereign +80%, hyperscale now only ~50% of DC mix. Bears: **China = zero share** (Jensen, GTC — Bear Case #5 realized; >2M latent H200 orders = unpriced optionality), OpenAI Jalapeño shipped (Jun 24) + DeepSeek designing its own chip (Jul 7) = two customers-turned-designers in two weeks, **B200 rental rates -31% in 3 weeks**, Meta excess-compute admission, DeepSeek V4 trained on Huawei+Cambricon (first frontier-class non-CUDA training run — dual falsifier hit on Insight #1), Kyber/Rubin-Ultra 2028-delay report (denied). Result: worst major chip stock YTD (+3.65%) at ~20–22x fwd — the *cheapest* name in the AI complex.
+	- *VLM infrastructure-toll vs #14 reverse-reclassification* — the CUDA toll layer holds for training; the inference layer is fragmenting to ASICs (custom ASIC sales +45% 2026 vs GPU +16%). Hypothesis: NVDA's countermove is buying the adjacent layers — ≥$6.5B photonics stakes (LITE/COHR/MRVL/Corning/Ayar) locking laser supply through 2027, $20B Groq absorption segmenting inference — platform envelopment as defense. Test: share path 87%→75% (thesis) vs →60% (bear) reads at each quarter's DC print.
+	- *#18 price-vs-volume decomposition* — volume signals (sold out, $91B guide) and price signals (rental deflation toward $2.50–3.00 by Q4) now point opposite ways; the marginal GPU-hour is deflating while the average is contracted. The thesis's unexercised-pricing-power insight weakens first at the margin.
+	- *Governance/process flags (from this pass, not the models)*: thesis has **no Conviction Triggers section** (stress-test flagged the gap); the 2026-04-23 stress-test "reassess medium→low" flag was overridden by the 2026-05-22 portfolio-alignment upgrade **without being resolved**; a fresh `[!question] 2026-04-27` callout on Insight #3 (Warp) remains unaddressed; Key Metrics stale ($217/$5.3T vs ~$197/$4.8T).
+- **Disconfirming check** (evidence-updated): the models split — toll-layer/VLM says the training moat is intact and now cheaply priced; reflexivity/#18 says the inference-fragmentation trend is compounding (Jalapeño → DeepSeek → Google 4-partner chain) faster than consensus models. Single falsifiers, dated: **MLPerf Training v5.0 (Fall 2026)** — the stress test's own kill trigger, with adverse leading indicators (Helios on track, OpenAI 1GW MI450 2H26); B200 rental path through Q4; Meta's late-July capex guide. The outside view: no company has held >80% of a $400B+ market through a customer-verticalization wave — the thesis must beat that base rate with CUDA's workload-generality, which is exactly what DeepSeek V4-on-Ascend just dented. Action item: write a Conviction Triggers section and resolve the stress-test flag before the next print.
 
 ## Related Research
 - [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]] — SemiAnalysis/Nishball: Nvidia deliberately under-prices (cost- not value-based); SOCAMM 60%-margin memory lever (socketed LPDDR, non-antitrust vector); ~40% Rubin server-price headroom (capex/watt flat $37.4→$38.1/W despite ~2x TDP); value-based GPU-rental ceiling ~$9.63-12.25/hr vs ~$4.92 cost floor; "central bank of AI" restraint; ceiling = Trainium/TPU diversification (Mythos not on Nvidia)
@@ -368,3 +372,13 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 
 ### 2026-07-09
 - Sector re-scoped: frontmatter `sector:` aligned to [[Sectors/Compute & AI Compute Accelerators]] (prior value resolved to no sector note, so sector propagation was silently skipped) — conviction unchanged; metadata hygiene per [[_Archive/Docs/2026-07-09 - Skills Audit Report]].
+- Mental models pass: batch-3 evidence sweep populated ## Mental Models — the paradox is the finding: every fundamental print confirms the bull (Q1 +85%, $91B guide, Rubin on time) while every marginal signal moved bear (China ZERO, Jalapeño + DeepSeek chip = 2 customers-turned-designers, B200 rentals -31%/3wks, Meta excess compute); now the CHEAPEST AI name at ~20-22x. Flags: no Conviction Triggers section, unresolved 04-23 stress M→L flag, fresh 04-27 callout unaddressed — conviction unchanged; MLPerf v5.0 (fall) is the kill trigger.
+
+### 2026-07-12
+- Numbers refresh: 4 metrics updated, 0 material. Market cap ~$5.3T→~$5.1T (-3.6%); stock price ~$217→~$211; forward P/E ~25x→~23x; gross margin 74.1%→74.2%. Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap, Stock Price, Forward P/E, FY2026 Revenue, Gross Margin, Operating Margin, and FCF Yield all render identical to prior refresh after rounding; data confirmed stable intraday. Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-numbers 20260712-184120)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: fwd P/E ~30x→~23x + market cap $4.6T→$5.1T across Summary, Risks #8, FCF-Yield Notes — de-rate below its own growth rate reframed as opportunity. Snapshot: [[_Archive/Snapshots/NVDA - Nvidia (pre-deepen-metrics-sync 2026-07-12-203456)]]

@@ -60,7 +60,8 @@ FRACTION_FIELDS = {"grossProfitMarginTTM", "operatingProfitMarginTTM",
 
 
 def norm_label(lbl):
-    s = re.sub(r"\s*\((?:ttm|gaap|non-gaap)\)\s*", "", lbl.strip(), flags=re.I).lower()
+    s = re.sub(r"^\*{1,2}|\*{1,2}$", "", lbl.strip()).strip()  # strip **bold**/*italic* markdown wrapping some theses use on the label cell
+    s = re.sub(r"\s*\((?:ttm|gaap|non-gaap)\)\s*", "", s, flags=re.I).lower()
     return re.sub(r"\s*/\s*", "/", s)  # canonicalize slash spacing ("net debt / ebitda" → "net debt/ebitda")
 
 
@@ -88,7 +89,11 @@ def get_field(obj, field):
 
 def parse_old_numeric(value_raw):
     """Extract the leading numeric magnitude from a formatted cell for delta math."""
-    m = re.search(r"(-?\d+(?:\.\d+)?)\s*(T|B|M|%|x)?", value_raw or "", re.I)
+    # Strip thousands-commas between digits FIRST — otherwise the regex stops at the
+    # first comma and reads only the leading group: "¥35,950" -> 35.0, "₹10,000 crore"
+    # -> 10.0, garbaging every delta on comma-formatted (mostly foreign) cells.
+    v = re.sub(r"(?<=\d),(?=\d)", "", value_raw or "")
+    m = re.search(r"(-?\d+(?:\.\d+)?)\s*(T|B|M|%|x)?", v, re.I)
     if not m:
         return None, None
     num = float(m.group(1))
@@ -100,15 +105,17 @@ def parse_old_numeric(value_raw):
 def _fmt_suffix(v):
     # `%` has no trailing word boundary ("74.1%" ends the token), so the prior
     # r"(…|%)\b" never matched a percent — every % cell hinted suffix: null.
-    m = re.search(r"([TBMx])\b", v, re.I)
+    # Require the magnitude letter to follow a digit (optional space) so a currency
+    # prefix like "NT$" doesn't have its leading 'T' misread as Trillion.
+    m = re.search(r"\d\s*([TBMx])\b", v, re.I)
     if m:
-        return m.group(1)
+        return m.group(1).upper() if m.group(1).lower() != "x" else "x"
     return "%" if "%" in v else None
 
 
 def format_hint(value_raw):
     v = value_raw or ""
-    cur = re.search(r"[$£¥€]|KRW|JPY|GBp|EUR", v)
+    cur = re.search(r"NT\$|[$£¥€₹]|KRW|JPY|GBp|EUR|INR|crore|lakh", v)
     return {
         "raw": v,
         "has_tilde": v.strip().startswith("~"),

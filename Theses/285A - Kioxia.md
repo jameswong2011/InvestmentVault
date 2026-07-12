@@ -6,6 +6,7 @@ status: monitoring
 conviction: medium
 sector: NAND Memory & Storage
 ticker: 285A.T
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # Kioxia Holdings (285A.T) — The Inventor's Edge in a Structurally Tight NAND Market
@@ -117,10 +118,10 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ¥35,950 | Up ~2,371% from Dec 2024 IPO at ¥1,455 |
-| Market Cap | ¥17.06T (~$107B) | As of April 10, 2026 |
+| Stock Price | ¥77,000 | Up ~2,371% from Dec 2024 IPO at ¥1,455 |
+| Market Cap | ¥42.14T (~$107B) | As of April 10, 2026 |
 | Trailing P/E | ~70x | Reflects LBO-era earnings base |
-| Forward P/E | ~7.3x | Massive earnings inflection expected |
+| Forward P/E | ~7.9x | Massive earnings inflection expected |
 | FY2025 Revenue (guided) | ¥2,180–2,270B | +28–33% YoY |
 | Q3 FY2025 OP Margin | 26.6% | Non-GAAP; record quarter |
 | NAND Market Share | ~14% | 3rd globally |
@@ -170,9 +171,15 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-4 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (reflexivity, base rates) · [[Industry - Semiconductors]] (#3, #7, #13, #17) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *Earnings inflection CONFIRMED at record scale*: FY25 beat all guided ranges (revenue ¥2,337.6B +37%, OP ¥876.2B); **Q1 FY26 guide: OP ¥1,298B at 74% OPM — one quarter ≈ 1.5x all of FY25's OP**; balance sheet transformed (S&P BBB- upgrade, equity ratio 25→38%, record FCF ¥395B) — the thesis's leverage bear is stale. Bain overhang RESOLVED clean: full exit by early July (~$15B profit), stock +10% on the news — Insight #5 (orderly exit = positive signaling) confirmed.
+	- *Reflexivity — flows are now a first-order driver, not a footnote*: the +2,736% 1Y (¥1,455 IPO → ~¥83,300, ~$250B+ cap, briefly Japan's most valuable company) has three dated flow catalysts stacked ahead: **TOPIX free-float 15%→50% October review (~¥3T/$18.5B passive bid)**, US listing targeted spring 2027, stock split — a melt-up mechanism independent of NAND fundamentals, which cuts both ways when it reverses. The Jul 7 -12% / Jul 9 +10% whipsaw shows the new volatility regime.
+	- *Valuation correction from this pass*: the watchlist's ~80x NTM is NOT corroborated — trailing ~107x but **forward ~9.3–11.5x** on supercycle consensus; like SNDK, the whole multiple debate is earnings normalization (#13), not the current-year print. `/numbers 285A`.
+	- *#3/#17 — Kioxia is now itself the marginal supply*: capex ¥470B/yr FY26–28 (+66%), third Kitakami fab under evaluation, fabs only ~50% utilized (large bit-growth runway without greenfield), first-ever M&A posture, plus the **Nanya DRAM investment** ($490M + supply agreement — softening the no-DRAM bear by securing enterprise-SSD controller DRAM). The company's own expansion is the future-supply datapoint for the cycle-end; NAND Q3 pricing already decelerating to +10–15% QoQ ("affordability limit" — TrendForce).
+	- *BiCS10 (Insight #1)* — density leadership CONFIRMED (332L, >29 Gb/mm², beats Samsung's 400-layer on density — the CBA claim validated), but mass production **slipped to 2027** (2026 = sampling only); the "expedited to 2026" framing is refuted for production. GP Series (10M IOPS GPU-direct SSD) + HBF prototype (5TB, 64 GB/s) = the AI-NAND product legs forming.
+	- *Structural gap*: the thesis has **no Conviction Triggers section at all** — the LOW/CLOSE question (cycle peak vs flows-driven melt-up) is live with no pre-committed arbiter. Write one; suggested LOW: Q1 FY26 actuals miss the ¥1,298B OP guide by >15% OR NAND contract prices negative QoQ for 2 quarters; suggested CLOSE: TOPIX-flow reversal + utilization push above 80% into falling prices.
+- **Disconfirming check** (evidence-updated): everything confirmed at once — earnings, balance sheet, technology, flows — which per the READING PROTOCOL is the disconfirm trigger. The outside view: a stock up 27x in 19 months on a commodity-memory business, with its passive-flow bid *scheduled* (October) and its US listing *announced*, is the textbook shape of a flows-topped cycle even when fundamentals lag the top by quarters. Single falsifiers, dated: **Jul 31 Q1 FY26 print** vs the ¥1,298B guide; Q3 NAND pricing (+10–15% → flat = the SNDK pattern arriving); SK Hynix's 14.4% convertible stake (the residual overhang now that Bain is out). Batch flag: SNDK + Kioxia are one Flash-Ventures bet expressed twice — the JV extension to 2034 + $1.2B services agreement deepens it; treat position sizing jointly.
 
 ## Related Research
 - [[Research/2026-04-15 - SNDK - Investment Evaluation]] — Post-separation NAND assessment; Kioxia JV structure analysis
@@ -232,3 +239,12 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 ### 2026-06-02 (/sync)
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: NVIDIA Bluefield-4 KV-cache-to-NAND ("third network") added as net-new emerging Bull demand vector — model-context tiering to high-speed NAND partially offsets the algorithmic-efficiency bear. Small today, architecturally significant. Conviction unchanged (medium, monitoring). Snapshot: [[_Archive/Snapshots/285A - Kioxia (pre-sync 2026-06-02-121812)]]
+
+### 2026-07-10
+- Mental models pass: batch-4 evidence sweep populated ## Mental Models — everything confirmed at once (FY25 beats, Q1 FY26 OP guide ¥1,298B ≈ 1.5x all FY25, BBB- upgrade, Bain exit clean +10%), which IS the disconfirm trigger; flows now first-order (TOPIX Oct ~¥3T bid, US listing spring-27); BiCS10 MP slipped to 2027; forward P/E actually ~9-11x not ~80x (/numbers 285A); no Conviction Triggers section — write one — conviction unchanged (medium); Jul 31 Q1 print.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 2 material. Stock price +114% (¥35,950→¥77,000) alongside market cap +147% (¥17.06T→¥42.14T); FY2025 Revenue (guided) row left unedited (format uncertain — guided range vs. single-point actual mismatch). Snapshot: [[_Archive/Snapshots/285A - Kioxia (pre-numbers 20260712-180000)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Stock Price, Market Cap, Forward P/E all identical after rounding. FY2025 Revenue (guided) row remains unedited (format uncertain — guided range vs. point-estimate mismatch persists). Snapshot: [[_Archive/Snapshots/285A - Kioxia (pre-numbers 20260712-183935)]]

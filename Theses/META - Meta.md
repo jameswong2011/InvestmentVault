@@ -2,11 +2,12 @@
 publish: true
 date: 2026-01-06
 tags: [thesis, meta, consumer-digital, advertising, AI]
-status: monitoring
-conviction: medium
+status: active
+conviction: high
 sector: Social Platforms & Digital Advertising
 ticker: META
 source: Consolidated from Claude, ChatGPT, Grok, Gemini conversation exports; supplemented with April 2026 web research
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # META — Meta Platforms
@@ -17,20 +18,32 @@ source: Consolidated from Claude, ChatGPT, Grok, Gemini conversation exports; su
 
 ## Key Non-consensus Insights
 
-- **Meta is about to dethrone Google as the world's largest digital advertising platform — the first leadership change in digital advertising history — and the market hasn't priced the implications.** WARC/eMarketer April 2026: Meta $243.5B net ad revenue vs Google's $239.5B, driven by 24.1% growth vs Google's 11.9%. Meta trades at 21x forward earnings vs Google at ~22x despite becoming the #1 platform. New monetization surfaces — Threads (450M MAU, $8-11B projected revenue) and WhatsApp — expand the addressable surface area beyond what consensus models capture by extrapolating historical rates.
+- **Strip out Reality Labs and the frontier-AI/superintelligence build, and the core advertising business earns ~70% ROIC — monopoly-grade — while the blended figure the market anchors on (~36% and falling) is an artifact of front-loaded dual-use capex plus a ~$16B/yr Reality Labs drag, not deteriorating economics.** Q1 2026 exposed the gap: **Family of Apps posted $26.9B operating income on $55.9B revenue — a 48% segment margin** — while Reality Labs lost **$4.03B on $402M of revenue**, pulling blended operating margin to ~40%. The market prices the multiple off the blended number and off a denominator that **doubled to $194.8B net PP&E** (from ~$97B in fifteen months). The decomposition:
 
-- **The open-source Llama strategy is the most sophisticated competitive moat construction in big tech — "commoditize the complement" executed at a scale that mirrors Linux's disruption of proprietary UNIX.** 700M+ downloads; Llama 5 matches or exceeds GPT-5 and Gemini 2.0 on reasoning/coding/agentic benchmarks. If AI models are free, value accretes to whoever owns distribution (3.54B DAP) and first-party behavioral data. OpenAI and Anthropic need high API margins to survive; Meta needs low AI costs to improve ads — structural misalignment means Meta's interests are perfectly aligned with the deflationary AI pricing trend that threatens every model company.
+| Basis | FY run-rate operating income | Invested capital | Implied after-tax ROIC |
+|---|---|---|---|
+| Blended (reported) | ~$91B | ~$221B | **~36%** |
+| Ex–Reality Labs (add back ~$16B/yr loss) | ~$108B | ~$209B | **~44%** |
+| Ex-RL **and** ex-frontier-AI / superintelligence (core ad machine) | ~$130B | ~$157B | **~71%** |
+
+  *Run-rate = Q1 2026 × 4 (full-year is higher on Q4 seasonality, but capex also lifts the denominator); after-tax at Meta's ~14% underlying rate; invested capital = equity $243.7B + debt $58.7B − cash $81.2B; the core-ad basis attributes ~75% of ex-RL capital to advertising per the §Layer 3 capex split and adds back ~$20-25B of Llama / Meta AI / Muse Spark operating drag embedded in FoA. These are reconstructions, not segment disclosures.* The bear counterweights are real and must be held simultaneously (per [[Generalist - Overview]] READING PROTOCOL — hunt the disconfirming datapoint): (1) the 75%-serves-ads split is management framing, not a reported line — the same **$107B of new infrastructure commitments signed in Q1 alone** can be badged "for ads," so the stripped-out ROIC is un-auditable; (2) the live variable is **ROIIC, not ROIC** ([G-7]) — ~$20-25B of 2026 incremental ad operating income against ~$100B+/yr of incremental invested capital is a high-teens first-year return that only clears the hurdle if the assets earn for 4-5 years, which the annual Hopper→Blackwell→Rubin cadence threatens to compress (per [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]]); (3) the sharpest bear is the free-rider — [[Theses/PINS - Pinterest]] adopts commoditized third-party retrieval and creative AI at **0.77% capex/revenue**, getting for free the "commoditize the complement" position Meta pays $125-145B/yr to engineer. The defensible claim is narrow: the *legacy* ad machine is a ~70% ROIC monopoly asset the blended multiple obscures; whether the *incremental* $125-145B earns its keep is the unresolved question the 2027 capex guide settles.
+
+- **The AI-targeting upgrade is being banked as pricing, not handed to advertisers — Q1 2026 price-per-ad rose +12% on impressions +14% — and, contra the market's framing, the gains come from the ads-org foundation models, not Meta Superintelligence Labs.** The transmission is mechanical: **GEM (Generative Ads Model, a GPT-4-scale recommendation foundation model live since Q2 2025) drove +5% conversions on Instagram and +3% on Facebook Feed, with those gains doubling the following quarter**; Andromeda retrieval adds +22% ROAS and +30% Reels video-conversion lift. Higher advertiser ROAS raises willingness-to-pay, densifies the auction, and resurfaces as **CPM — the +12% price/ad is Meta capturing the conversion gain as margin rather than passing it through** (revenue +33% ≈ impressions +14% × price +12% × mix). The correction that matters: GEM and Andromeda are architecturally separate from **Meta Superintelligence Labs (Alexandr Wang; Muse Spark; $14B Scale AI)** — MSL is a frontier/consumer-AI effort whose ad contribution is prospective (multimodal creative grounding, agentic advertiser tooling, the stated end-2026 goal of full URL-to-campaign automation), not the source of today's pricing. Crediting "superintelligence" for the ad acceleration is a category error, and it cuts *bullish*: **the monetization flywheel does not depend on Meta winning the frontier-model race it is currently losing.** Per [[Lens - Automation & AI Readiness]], Meta is a Lens-A exemplar (Advantage+ automates the media-buyer out of the loop — $60B ARR, 78% advertiser adoption) and a Lens-C moat (the conversion-event feedback loop over 3.54B DAP × 6 years is the asset a rival renting the same model cannot reconstruct); pricing power is durable because the data flywheel, not the commoditizing model architecture, is the moat.
+
+- **Agentic AI is a *relative* tailwind for Meta and an *absolute* risk it is not immune to — the mispricing is that the market files Meta with agent-exposed "research-surface" social platforms when Meta owns the two things agents cannot easily disintermediate: non-delegatable entertainment attention and the first-party targeting layer.** Three layers held in tension: (1) the "search dies, budgets flee to social" leg is empirically premature — Google Search still grew **+17%** as it lifted AI-Overview ad load from ~3% to 25.5%; shorting Google on AI cannibalization has been the most-wrong consensus call of 2025-26 (per [[Sectors/Social Platforms & Digital Advertising]]), so the benefit to Meta cannot rest on Google's collapse. (2) The real mechanism is the **intent-targeting gap closing**: search historically won performance budgets because declared intent ("running shoes") beat inferred intent — Andromeda/GEM have closed that gap, so as AI answers absorb informational queries and compress search's measurable-click surface, the marginal performance dollar migrates to whichever system delivers the best ROAS (increasingly Meta's closed loop — Advantage+ already pulls SMB budgets historically bound to Google Search/Shopping; US creator/social ad spend rose +18% in 2025). (3) The decisive question is whether Meta is *infrastructure* or *application* (per [[Lens - Value Layer Monopoly]] AI-era overlay): the bear ([[Macro & Technology/Agentic Internet]]) is that discovery-plus-transaction migrating into ChatGPT/Gemini/Claude frontends compresses the impression model funding *all* social — Meta included — with display down 50-70% in real terms long-term. The bull is that Meta is the best-insulated name in the cohort for two structural reasons: **entertainment attention is non-delegatable** (agents disintermediate *utility* discovery — Booking, Google commercial queries, Pinterest's plan-a-renovation research — but nobody dispatches an agent to scroll Reels for them), and **the targeting layer survives the frontend** (even an agent-mediated purchase needs the highest-ROAS targeting, which requires Meta's behavioral graph — Meta can serve or license targeting *into* agent surfaces, owning the layer even where it cedes the surface). Meta explicitly does **not** own the winning agent frontend (that is OpenAI/Google/Apple); Meta AI's 1B MAU is a real but unproven hedge (4% DAU). Net: a relative tailwind versus Google-search and versus tier-2 research-surfaces like [[Theses/PINS - Pinterest]], an absolute risk to the shared impression model — and the market prices Meta as if it carried the tier-2 exposure rather than the tier-1 insulation.
+
+- **Meta is dethroning Google as the world's largest digital advertising platform — the first leadership change in the industry's history — and faster than the April-2026 forecast that first flagged it.** WARC/eMarketer projected Meta at $243.5B net ad revenue vs Google's $239.5B on 24.1% vs 11.9% growth; **Q1 2026 delivered +33% (accelerating from +24%)**, and the forward multiple has since compressed to **~17-18x — cheaper than the 21x this insight originally called an anomaly** — even as Meta takes the #1 position. New monetization surfaces (Threads ~$11.3B projected; WhatsApp Business + Click-to-WhatsApp) expand the addressable surface beyond what consensus models capture by extrapolating historical rates.
+
+- **[Corrected 2026-07-10 — the open-source pillar as originally written is factually dead.] "Commoditize the complement" survives only in a mutated, closed form.** The original insight cited "Llama 5 (April 8, 2026) matching GPT-5/Gemini 2.0" — there is NO Llama 5: the Apr 8, 2026 release was **Muse Spark, a closed-weight paid API** (Behemoth shelved); the open-weight Llama line (700M+ cumulative downloads) has been paused. What survives: Meta sells API access at ~25% of OpenAI/Anthropic pricing (Jul 8–9, 2026) — commoditization by capital-starvation-through-underpricing rather than by open weights. The distribution + first-party-data value-accretion logic (3.54B DAP) still holds, but the Linux/UNIX analogy and the "models are free" mechanism no longer describe Meta's actual strategy.
 
 > [!question] 2026-04-30 → Addressed 2026-04-30 [[pinned]]
 > **Prompt:** *Analyse the game theory around Meta's open source AI efforts. Is this simply to reduce the budget of AI start-ups and incumbent platforms so they do not have money to reinvest to produce products that can eventually compete against Meta in understanding user intent and identity which allows them to leverage this capability to erode Meta's share of consumer time spent and purchasing intent monetisation.*
 >
 > **Response:** Yes — capital starvation is the mechanism, but only as a means to a deeper end (preserving Meta as the bottleneck where consumer time and purchase intent get monetized). Three asymmetries make it work: API revenue compression, reinvestment capacity erosion, and consumer-agent disintermediation prevention. Strategy ceiling is competitors with non-API funding (Google search, Tesla/X synergy, state capital). Full analysis: §Industry Context → The AI Model Layer → Game theory: capital starvation as moat construction.
 
-- **The "capex credibility gap" is a narrative problem masquerading as a financial problem — and the narrative is weakening faster than the market recognizes.** Advantage+ reached $60B annual run rate by Q3 2025 (3x faster monetization than OpenAI); AI-enhanced video ads deliver 30% higher conversion rates. Meta generated $201B revenue and $46.1B FCF on 2025's $72B capex, guided Q1 2026 at $53.5-56.5B (23-25% growth), and committed "2026 operating income will be above 2025." Any signal of capex plateau (as with 2023-2024 efficiency year) triggers substantial multiple expansion.
+- **Ray-Ban smart glasses are building the AR/AI hardware distribution channel Apple's Vision Pro failed to establish — and this is the "smart glasses" investment the ROIC decomposition above strips out of the core.** 7M+ units sold in 2025 (up 200% H1), targeting 10M by end 2026; Ray-Ban Display ($799) facing "unprecedented demand" forcing international launch delays. Price points $224-$799 vs Vision Pro at $3,499. EssilorLuxottica provides 18,000+ retail stores without Meta building hardware distribution from scratch. At 7M+ units the glasses may approach contribution-margin breakeven — buried in Reality Labs' ~$16B+ annual losses but creating an AI wearable platform with camera/microphone access to the physical world that no competitor possesses.
 
-- **Ray-Ban smart glasses are building the hardware distribution channel for AR/AI that Apple's Vision Pro failed to establish — and the unit economics are already compelling at scale.** 7M+ units sold in 2025 (up 200% H1), targeting 10M by end 2026; Ray-Ban Display ($799) facing "unprecedented demand" forcing international launch delays. Price points $224-$799 vs Vision Pro at $3,499. EssilorLuxottica partnership provides 18,000+ retail stores without building hardware distribution from scratch. At 7M+ units, the glasses business may approach contribution-margin breakeven — buried in Reality Labs' $17B+ annual losses but creating an AI-powered wearable platform with camera/microphone access to the physical world that no competitor possesses.
-
-- **Meta AI at 1B MAU represents the largest AI assistant deployment in history, yet it's valued at approximately zero by the market.** 1B MAU across Instagram (~270M), Facebook (~100M), WhatsApp, Messenger — dwarfing ChatGPT (800M WAU) and Gemini (650M MAU). Daily engagement at only 4% (40M DAU); improvement to 10-15% creates the dominant consumer AI platform at zero acquisition cost. Meta monetizes AI engagement through ad targeting (behavioral signals feeding Andromeda), not $20/month subscriptions. Muse Spark (April 8, 2026) signals "personal superintelligence" vision; $21B CoreWeave deal provisions for inference demand the current 4% engagement doesn't reflect.
+- **Meta AI at 1B MAU is the largest AI-assistant deployment in history, valued at approximately zero — and it is Meta's only owned answer to the agentic-frontend risk in the agentic-AI insight above.** 1B MAU across Instagram (~270M), Facebook (~100M), WhatsApp, Messenger — dwarfing ChatGPT (800M WAU) and Gemini (650M MAU) on reach, though behind on daily intensity. Daily engagement at only 4% (40M DAU); improvement to 10-15% would create the dominant consumer-AI platform at zero acquisition cost. Meta monetizes AI engagement through ad targeting (behavioral signals feeding Andromeda), not $20/month subscriptions. Muse Spark signals the "personal superintelligence" vision; the $21B CoreWeave deal provisions for inference demand the current 4% engagement does not yet reflect.
 
 ## Outstanding Questions
 
@@ -48,7 +61,7 @@ source: Consolidated from Claude, ChatGPT, Grok, Gemini conversation exports; su
 
 - **Is Meta's 21x forward P/E a genuine value opportunity or a rational discount for governance risk?** Zuckerberg controls 61% of voting power through dual-class shares. The $115-135B capex guidance was set without meaningful board pushback. In a world where Microsoft ($80B capex) faces scrutiny from institutional investors, Meta's capex is 40-70% higher with less governance oversight. The cheapest Mag 7 valuation may partially reflect a "Zuckerberg discount" rather than a pure mispricing of business fundamentals.
 
-- **What happens to the Llama ecosystem if a regulatory crackdown limits open-source AI model distribution?** The EU AI Act and potential US executive orders could restrict open-weight model distribution for safety reasons. If Llama 5's open weights become a regulatory liability (hypothetical misuse scenarios), Meta's entire "commoditize the complement" strategy collapses and the $115-135B in infrastructure loses its strategic rationale beyond internal ad optimization.
+- **[Corrected 2026-07-10 — premise overtaken by events]** ~~What happens to the Llama ecosystem if a regulatory crackdown limits open-source AI model distribution?~~ Meta itself closed the weights: the Apr 8, 2026 frontier release (Muse Spark) is closed-weight and paid; the open Llama line is paused. The live question is the inverse: does the closed-API pivot (priced at ~25% of OpenAI/Anthropic) generate enough external revenue to justify the $125–145B infrastructure spend, or does abandoning the open ecosystem forfeit the developer mindshare that made "commoditize the complement" work?
 
 ## Business Model & Product Description
 
@@ -80,7 +93,7 @@ Meta's advertising infrastructure has undergone a fundamental transformation sin
 
 ### Layer 3: Investment — AI Infrastructure & Hardware Platforms
 
-- **Llama Open-Source Models**: The Llama series (now at Llama 5, released April 8, 2026) has 700M+ downloads and matches or exceeds proprietary frontier models (GPT-5, Gemini 2.0) on key benchmarks. Llama is not a revenue product — it's a strategic weapon that commoditizes the AI model layer, preventing competitors from building pricing power on the "intelligence" complement to Meta's distribution and data advantages. Enterprise adoption accelerates as organizations build on Llama's open weights for private cloud deployment, avoiding vendor lock-in to OpenAI/Anthropic APIs.
+- **Frontier Models — Muse Spark (closed) + paused open Llama line** [corrected 2026-07-10: there is no "Llama 5" — the Apr 8, 2026 release was Muse Spark, a closed-weight paid API; Behemoth was shelved]: the open Llama series (700M+ cumulative downloads) remains a deployed installed base, but Meta's frontier strategy pivoted to selling closed API access at ~25% of OpenAI/Anthropic pricing. The commoditization weapon is now price, not open weights — it pressures competitor margins while, for the first time, making models a (small) revenue product. Enterprise private-cloud deployment on old open Llama weights continues but no longer receives frontier updates.
 
 - **Muse Spark / Meta Superintelligence Labs**: The first model from Meta's newly created Superintelligence Labs (led by Alexandr Wang after a $14B acquisition). Muse Spark represents a potential pivot toward proprietary, premium AI capabilities layered on the open-source foundation — "personal superintelligence" for every user. This is the clearest signal that Meta views AI not just as an ad optimization tool but as a standalone product platform.
 
@@ -97,7 +110,7 @@ Meta does not segment capex by purpose. Reconciling to disclosed deals, GPU flee
 | Bucket | FY2026 Estimate | Purpose | Tied to core ad business |
 |--------|----------------|---------|-------------------------|
 | Inference compute | $35-45B | Andromeda ad ranking, content recommendation, organic feed ranking, Reels/Stories serving across 3.54B DAP | Direct |
-| Training compute | $40-55B | Llama 5/6, Muse Spark, Blackwell B200/GB200 cluster expansion | Indirect — models then power ad inference + Meta AI |
+| Training compute | $40-55B | Muse Spark and successors (corrected 2026-07-10: no "Llama 5/6" — open line paused), Blackwell B200/GB200 cluster expansion | Indirect — models then power ad inference + Meta AI |
 | Data center construction | $20-30B | New campuses (Louisiana, Iowa, Ohio); power, cooling, networking | Shared infrastructure |
 | CoreWeave external capacity | $21B (multi-year) | Meta AI inference scaling beyond owned infrastructure | Meta AI / new revenue surfaces |
 | Reality Labs hardware capex | $3-5B | Smart glasses tooling, Quest production, Orion R&D | No — non-ad hardware |
@@ -176,16 +189,16 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$635 | Down ~20% from ATH $796 (Aug 2025) |
-| Market Cap | ~$1.59T | 9th most valuable company globally |
-| Forward P/E | ~21x | Cheapest Magnificent 7 name |
+| Stock Price | ~$669 | Down ~20% from ATH $796 (Aug 2025) |
+| Market Cap | ~$1.70T | 9th most valuable company globally |
+| Forward P/E | ~20x | Cheapest Magnificent 7 name |
 | P/E (TTM) | ~21.6x | EPS (TTM) $29.23 |
 | EV/Revenue (FY2025) | ~7.8x | EV ~$1.56T on $201B revenue |
 | FY2025 Revenue | $201.0B | +22.2% YoY; first year above $200B |
 | Q4 2025 Revenue | $59.9B | +24% YoY; EPS $8.88 (beat by 8.4%) |
 | Q1 2026 Guidance | $53.5-56.5B | ~23-25% YoY growth at midpoint |
-| Gross Margin | ~84% | Cost of revenue ~$31.5B |
-| Operating Margin | 41.4% | Down from 42.2% (FY2024) |
+| Gross Margin | ~82% | Cost of revenue ~$31.5B |
+| Operating Margin | 41.2% | Down from 42.2% (FY2024) |
 | FCF | $46.1B | FCF yield ~2.9% on market cap |
 | FY2025 Capex | $72.2B | AI infrastructure |
 | FY2026 Capex Guidance | $115-135B | ~2x FY2025; "Meta Superintelligence Labs" |
@@ -194,7 +207,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 | Meta AI MAU | ~1B | 40M DAU (4% daily engagement) |
 | Threads | 450M MAU | 137M DAU; surpassed X in daily mobile users |
 | Smart Glasses Sold | 7M+ (2025) | Targeting 10M by end 2026 |
-| Llama Downloads | 700M+ | Llama 5 matches GPT-5/Gemini 2.0 on benchmarks |
+| Llama Downloads | 700M+ (cumulative, open line paused) | Corrected 2026-07-10: no Llama 5 — Apr 2026 frontier release was Muse Spark, closed-weight paid API |
 | Analyst Consensus | Strong Buy | Avg target ~$835-862; range $685-$1,015 |
 
 ## Bull Case
@@ -238,9 +251,13 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-8 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Ad-machine pillar STRONGER than the thesis dared claim: Q1 2026 (Apr 29) revenue $56.31B +33% (accelerating from +24%), price/ad +12%, eMarketer confirms the Google dethroning ($243.5B vs $239.5B 2026); fwd P/E compressed to ~17-18x — cheaper than the 21x the thesis called anomalous. EPS quality flag: headline $10.44 included an $8.03B one-time tax benefit (~$7.31 underlying).
+	- Two pillars BROKEN on facts: (1) capex-plateau catalyst REFUTED the wrong way — 2026 capex RAISED to $125-145B, "too early" for 2027; (2) the Llama pillar is factually dead — there is NO Llama 5 (the thesis's "Llama 5, April 8 2026" was actually Muse Spark, a CLOSED-weight paid API; Behemoth shelved), and Meta now sells API access at ~25% of OpenAI/Anthropic pricing (Jul 8-9) — "commoditize the complement" survives only as capital-starvation-by-underpricing.
+	- THE JULY 1 EVENT — Meta Compute: Bloomberg-reported cloud business selling excess AI compute + Muse Spark hosting (Janardhan/Gross/Powell McCormick); META +8.8% to $612.91 while the same report cratered its own suppliers (SOX -6.27%, SK Hynix -14.6%, CRWV -13.9%, NBIS -17%). Double-sided read the thesis contemplates on neither side: a SpaceX-style hedge converting stranded-capex risk into a revenue option (Stifel: ~$8B by 2028) AND the first documented hyperscaler admission that internal AI demand did not absorb the buildout (FT-cited AI ROI estimate: -29%).
+	- Confirmed legs: Threads ads global ($11.3B proj.), glasses tripled (Ray-Ban Display supply-constrained), FTC monopolization case won (appeal pending), EU DMA de-escalated via free less-personalized option. Mixed: teen-safety bellwether verdict ($6M, 70% Meta — small dollars, large precedent); MSL talent churn (LeCun out, OpenAI reclaimed three).
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate — no company has sustained 25%+ ad growth at a $240B run-rate while doubling capex two years running; the outside view says one line breaks by 2027 (growth into the depreciation wall, or capex retreat validating the re-rate late). Single falsifying datapoint: the 2027 capex guide with no plateau AND a first quarter of sub-20% ad growth — that combination fires the bear the thesis itself designated. Fix before any conviction move: the Llama 5 factual error, the dead capex-plateau catalyst, Threads 450M→~400M MAU; Meta Compute (Jul 1) is the largest un-logged event and needs cross-propagation to CRWV/NBIS/semis notes where the demand-signal damage landed. NO Conviction Triggers section exists.
 
 ## Related Research
 
@@ -250,6 +267,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 - [[AI Bubble Risk and Semiconductor Valuations]] — AI capex timing mismatch; hyperscaler capex fatigue dynamics
 - [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]] — FTC $930K deception settlement debunks the "apps listen via microphone" ad-targeting myth (Cox lacked the capability, resold data-broker email lists); marginally deflates a recurring Instagram reputational overhang
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: MTIA on N3 at "much lower volumes"; immaterial to the ad-platform thesis but flags Meta's accelerator program is gated by the same N3/HBM constraint as TPU/Trainium
+- [[Research/2026-07-12 - META - Core ROIC, AI Targeting Pricing, and Agentic Ad Shift - deep-dive]] — supporting deep-dive for the 2026-07-12 §Key Non-consensus Insights deepen: three-view ROIC decomposition (core ad ~70% vs blended ~36%); GEM/Andromeda vs Superintelligence-Labs distinction; agentic infrastructure-vs-application classification
 
 ## Log
 
@@ -285,3 +303,21 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: MTIA noted on N3 at "much lower volumes" — gated by the same N3/HBM silicon shortage as TPU/Trainium. Immaterial to the 97%-ad-revenue thesis; relevant only to the MTIA-in-housing capex option (the $15B flexible CoreWeave tranche). Conviction unchanged (medium).
+
+### 2026-07-10
+- Mental models pass: batch-8 evidence sweep populated ## Mental Models — ad machine stronger than claimed (Q1 +33%, Google dethroning confirmed, ~17-18x fwd) but two pillars broke on facts (no Llama 5 — Muse Spark is closed/paid; capex RAISED to $125-145B) and Meta Compute (Jul 1) is the largest un-logged event — conviction unchanged (medium); fix Llama error + propagate Meta Compute to CRWV/NBIS/semis notes.
+- Corrected: fact-audit pass — "Llama 5" struck body-wide (Insight #1, OQ, Business Model, capex table, Key Metrics): Apr-8-2026 release was Muse Spark (closed-weight paid API, ~25% of OpenAI/Anthropic pricing), Behemoth shelved, open Llama line paused; "commoditize the complement" reframed to price-based commoditization.
+
+### 2026-07-11
+- Status change: conviction medium → high — vault-wide multi-agent valuation scoreboard: ~17-18x fwd P/E (cheapest Mag-7, fastest growth) embeds low-teens earnings growth versus delivered +30% op income; capex-ROIIC fear is the mispriced variable on a business accelerating, not decelerating. Snapshot: [[_Archive/Snapshots/META - Meta (pre-status 2026-07-11-063211)]]
+- Status change: monitoring → active — genuine emerging mispricing (V=7.0/10) warrants active pursuit. Snapshot: [[_Archive/Snapshots/META - Meta (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Deepened Key Non-consensus Insights (3 new/strengthened insights answering user ROIC / targeting-pricing / agentic-AI questions): core ad ROIC ~70% ex-RL & frontier-AI vs blended ~36% (a capex-denominator artifact); AI-targeting banked as +12% price/ad via ads-org GEM/Andromeda (NOT Superintelligence Labs — corrects a common conflation); agentic AI a *relative* tailwind (targeting-layer ownership + non-delegatable entertainment attention) but *absolute* impression-model risk.
+- Conviction unchanged (high) — deepen strengthens the core-economics mispricing basis; ROIIC on the incremental $125-145B capex + Meta's non-ownership of the agent frontend are the countervailing watch-items. Snapshot: [[_Archive/Snapshots/META - Meta (pre-deepen 2026-07-12-120718)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 6 metrics updated, all non-material. Stock Price ~$635→~$669; Market Cap ~$1.59T→~$1.70T; Forward P/E ~21x→~20x; Gross Margin ~84%→~82%; Operating Margin 41.4%→41.2%. FY2025 Revenue unchanged (rounds identically). Snapshot: [[_Archive/Snapshots/META - Meta (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers, second pass)
+- Numbers refresh: 0 metrics changed, 0 material. Re-fetch confirms Stock Price ~$669, Market Cap ~$1.70T, Forward P/E ~20x, Gross Margin ~82%, Operating Margin 41.2%, FY2025 Revenue $201.0B all unchanged from the run ~1hr ago. Snapshot: [[_Archive/Snapshots/META - Meta (pre-numbers 20260712-184014)]]

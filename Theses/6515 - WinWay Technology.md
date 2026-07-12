@@ -6,7 +6,9 @@ status: draft
 conviction: medium
 sector: Semiconductor Test Equipment
 ticker: 6515
+fmp_symbol: 6515.TW
 source: Web research June 2026 — WinWay investor materials (winwayglobal.com), Digitimes, Taipei Times, CommonWealth, stockanalysis.com (TPE:6515), Simply Wall St, Goldman Sachs note (via Investing.com). Disambiguated from MA-tek / 3587.
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # 6515 - WinWay Technology
@@ -79,10 +81,10 @@ The market is fragmented (50+ socket suppliers), which is the bear's anchor — 
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~NT$302B (~US$10.2B) | TWSE:6515, early-June 2026; ~36.0M shares; +680% over 12 mo; ~25% below NT$11,490 April-2026 high. Trailing P/E ~171x / forward P/E ~76x |
+| Market Cap | ~NT$279.8B (~US$10.2B) | TWSE:6515, early-June 2026; ~36.0M shares; +680% over 12 mo; ~25% below NT$11,490 April-2026 high. Trailing P/E ~171x / forward P/E ~76x |
 | EV/Revenue | ~35x TTM / ~23x 2026E | EV ~NT$298.6B; net cash ~NT$3.4B; EV/EBITDA ~126x — rich on any horizon |
 | Revenue Growth | +35.5% FY25 (NT$7.86B) → ~+66% 2026E, ~+30% 2027E | TTM ~NT$8.54B; Q1'26 ~NT$2.98B; FY24 was +57%. 2026/27E per Goldman |
-| Gross Margin | ~43.5% (TTM) | Operating margin ~24.8%; net margin ~20.6%; EBITDA margin ~30%; EPS (TTM) ~NT$48.9 |
+| Gross Margin | ~43.3% (TTM) | Operating margin ~24.8%; net margin ~20.6%; EBITDA margin ~30%; EPS (TTM) ~NT$48.9 |
 | FCF Yield | ~0.2% | FCF ~NT$596M (OCF ~NT$1.12B) vs ~NT$302B cap — suppressed by capacity-expansion capex. Quality offsets: ROIC ~49.7%, ROE ~29.8%; div NT$25 (~0.3% yield) |
 
 ## Bull Case
@@ -142,3 +144,9 @@ The valuation prices multi-year flawless execution and offers no margin of safet
 
 ### 2026-06-08
 - Initial thesis created. Conviction: medium — world's #1 AI test-socket supplier with a world-first liquid-cooling thermal moat (sub-7nm 87% of book, AI/HPC ~42-50%) compounding on per-chip test-interface content growth, but ~171x trailing / ~76x forward P/E and ~67-80% North-American AI-customer concentration cap the case. Disambiguated from MA-tek (3587). Status draft pending `/status 6515 status draft→active`.
+
+### 2026-07-12
+- Numbers refresh: 1 metric updated, 0 material. Market cap ~NT$302B→~NT$279.8B (-7.3%, immaterial). Snapshot: [[_Archive/Snapshots/6515 - WinWay Technology (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 1 metric updated, 0 material. Gross margin (TTM) ~43.5%→~43.3% (fmp_symbol confirmed 6515.TW, exchange-suffix fix re-fetch). Snapshot: [[_Archive/Snapshots/6515 - WinWay Technology (pre-numbers 20260712-184014)]]

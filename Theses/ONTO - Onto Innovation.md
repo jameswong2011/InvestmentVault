@@ -7,6 +7,7 @@ conviction: medium
 sector: Advanced Semi Metrology
 ticker: ONTO
 source: Onto Innovation Q1 2026 results (8-K + earnings call, May 5 2026) + FY2025/FY2024 results + vault synthesis ([[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]], [[Sectors/Advanced Semi Metrology]], [[Theses/KLA - KLA Corporation]]); web research 2026-06-22
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-06-22 → Addressed 2026-06-22
 > **Prompt:** *What is the current share of CoPoS that ONTO has. Is its equipment uniquely qualified to do panel level process steps. How much could this business grow.*
@@ -108,15 +109,15 @@ Even the bull case (~3x today) is ~30-40% of *current* revenue — differentiate
 
 | Metric | Value | Notes |
 |:---|:---|:---|
-| Market Cap | ~$16.6B | ~$336/share (Jun 18 2026); +174% over 12 months |
+| Market Cap | ~$16.0B | ~$336/share (Jun 18 2026); +174% over 12 months |
 | Enterprise Value | ~$15.75B | Net cash ~$850M, $0 long-term debt |
 | EV/Revenue | ~12x FY26E / ~15.7x TTM | On >$1.3B 2026E / $1.005B FY2025 |
-| Forward P/E | ~46x | On ~$7.22 2026E non-GAAP EPS |
+| Forward P/E | ~45x | On ~$7.22 2026E non-GAAP EPS |
 | Trailing P/E | ~65x | P/E ~326% above 5-yr median; +174% 1-yr move |
 | Revenue Growth | FY25 +1.8% → FY26E >+30% | $987M (FY24) → $1.005B (FY25, digestion) → >$1.3B (FY26E) |
-| Gross Margin | ~55.7% non-GAAP (50.1% GAAP) Q1'26 | Guided 56-56.5% Q2; GAAP down from 53.7% YoY |
-| Operating Margin | 26.7% Q1'26 → >30% target Q4'26 | +50bp/qtr trajectory |
-| FCF Yield | ~1.3-1.8% | FY24 FCF $214M; rising with 2026 growth; low yield = premium multiple |
+| Gross Margin | ~48.8% non-GAAP (50.1% GAAP) Q1'26 | Guided 56-56.5% Q2; GAAP down from 53.7% YoY |
+| Operating Margin | 10.5% Q1'26 → >30% target Q4'26 | +50bp/qtr trajectory |
+| FCF Yield | ~1.5% | FY24 FCF $214M; rising with 2026 growth; low yield = premium multiple |
 | AP segment growth | >50% (2026E) | Dragonfly G5, Iris, 3Di, $240M+ HBM VPA through 2027 |
 | Panel-level franchise | ~$200M (JetStep + Firefly) | Qualified at 2 AI-packaging suppliers; 2027 ramp; CoPoS upside |
 | Process-control share | ~6-8% | vs KLA 56-63%; AP-inspection ~65% combined with Camtek |
@@ -222,3 +223,9 @@ The world where ONTO loses money: you buy the vault's "uncovered panel-litho gap
 ### 2026-06-22
 - Initial thesis created. Conviction: medium — real CoPoS panel-litho optionality (JetStep qualified at 2 AI-packaging suppliers, 2027 ramp; round-wafer steppers can't pattern panels) + genuine AP >50% / advanced-nodes ~25% 2026 growth, but the +174% YoY re-rate to ~46x fwd / ~65x trailing erased the vault's "cheap at ~24x" entry (stale per [[Sectors/Advanced Semi Metrology]] 2026-05-27), KLA takes the high-resolution AP tier where margin concentrates, and US manufacturing structurally cedes China AP to Camtek. Key data: Q1'26 rev $291.9M (+9.5% YoY, record), non-GAAP GM 55.7% / GAAP 50.1%, OM 26.7%, EPS $1.42 (beat $1.37); FY25 $1.005B (+1.8%, digestion) vs FY24 $987M (+21%); 2026E >$1.3B (+30%), AP >50%, adv-nodes ~25%, OM >30% by Q4. Panel franchise (JetStep+Firefly) ~$200M w/ CoPoS upside. >$240M HBM VPA through 2027. Net cash ~$850M, $0 debt, FY24 FCF $214M. Mkt cap ~$16.6B; Street "Strong Buy" but avg PT ~$352 (~+5%). Sector resolved [[Sectors/Advanced Semi Metrology]] (Active Theses entry deferred per /thesis draft contract). Cross-thesis adjacencies (graph-primer accepted set): [[Theses/KLA - KLA Corporation]] (process-control benchmark + high-end AP competitor), [[Theses/BESI - BE Semiconductor Industries]] / [[Theses/AMAT - Applied Materials]] / [[Theses/LRCX - Lam Research]] / [[Theses/ASMI - ASM International]] (SemiCap/AP cluster), [[Theses/LPKF - LPKF Laser & Electronics]] (glass TGV), [[Theses/TSM - Taiwan Semiconductor]] / [[Theses/NVDA - Nvidia]] / [[Theses/000660 - SK Hynix]] (customers/downstream). Origin context: [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]] `/thesis ONTO` candidate. Manifest [[_Archive/Snapshots/_thesis-manifest (thesis-ONTO-2026-06-22-173244)]]. Next: run `/graph last` to register new thesis + adjacencies; promote draft→active via `/status ONTO status draft→active` when ready.
 - Addressed user callouts: ONTO — answered fresh [!question] on CoPoS share / panel-litho uniqueness / growth. No measurable CoPoS share yet (pre-HVM); ONTO's edge is a first-mover panel-litho qualification lead (JetStep, 2 AI-packaging suppliers) — unique by physics for patterning, contestable vs SUSS/Canon/Nikon, not a monopoly; ~$200M JetStep+Firefly franchise is a call-option scoped ~$350-600M by 2028-29. Analysis integrated into new §Industry Context "Panel-level packaging" subsection — conviction unchanged (medium).
+
+### 2026-07-12
+- Numbers refresh: 6 metrics updated, 3 material. Operating Margin 26.7%→10.5% (largest delta — FMP-sourced figure likely GAAP-basis vs thesis's non-GAAP framing); Gross Margin ~55.7%→~48.8% non-GAAP line also material. Market Cap ~$16.6B→~$16.0B, Forward P/E ~46x→~45x, FCF Yield range ~1.3-1.8% collapsed to point ~1.5% (non-material). Revenue Growth row left unedited — old/new figures reference different points in a multi-number cell (FY25 actual vs FY26E), format uncertain, skipped rather than guess which number to update. Snapshot: [[_Archive/Snapshots/ONTO - Onto Innovation (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers, second pass)
+- Numbers refresh: 0 metrics changed, 0 material. Re-fetch confirms Market Cap ~$16.0B, Forward P/E ~45x, Gross Margin ~48.8% non-GAAP, Operating Margin 10.5%, FCF Yield ~1.5% all unchanged from the run ~1hr ago; Revenue Growth cell's "+1.8%" component already matches re-fetched figure (1.82) despite an internally inconsistent old_value_numeric baseline in the fetch — no text edit needed. Snapshot: [[_Archive/Snapshots/ONTO - Onto Innovation (pre-numbers 20260712-184014)]]

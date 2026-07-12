@@ -7,6 +7,7 @@ conviction: medium
 sector: Uranium & Nuclear Fuel
 ticker: CCJ
 source: Vault research synthesis + web search (Sprott, WNA, Motley Fool, Nasdaq, Cameco IR, DOE, TrendForce, Zacks)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # CCJ — Cameco
@@ -19,7 +20,7 @@ Backbone of the Western nuclear fuel cycle, priced as a cyclical commodity produ
 
 ## Key Non-consensus Insights
 
-- **Cameco is being re-rated from "commodity producer" to "integrated fuel cycle monopoly," and the re-contracting wave is the highest-conviction structural catalyst in commodity markets.** Westinghouse delivered $219M adjusted EBITDA in 2025 (+51% YoY) — recurring, high-margin services revenue the market still values primarily on uranium spot correlation. 65% of post-2027 demand uncontracted; long-term contract price at $90/lb (highest since 2008) while spot languishes in the $70s — the re-contracting wave, not speculative buying, is the dominant price driver.
+- **Cameco is being re-rated from "commodity producer" to "integrated fuel cycle monopoly," and the re-contracting wave is the highest-conviction structural catalyst in commodity markets.** Westinghouse delivered US$525–580M adjusted EBITDA (Cameco's 49% share, FY2025 — corrected 2026-07-10 from the understated "$219M +51%"; includes a one-time ~$170M Dukovany item) — recurring, high-margin services revenue the market still values primarily on uranium spot correlation. 65% of post-2027 demand uncontracted; long-term contract price at $90/lb (highest since 2008) while spot languishes in the $70s — the re-contracting wave, not speculative buying, is the dominant price driver.
 - **Energy sovereignty is a permanent structural shift, reinforced by the structural removal of Russian enrichment from Western supply chains.** Executive orders target 400 GW U.S. nuclear capacity by 2050; $80B Westinghouse/Brookfield/Cameco partnership; European reactor life extensions. Russia controls ~44% of global enrichment and near-monopoly on HALEU; replacement Western capacity takes 5-10+ years, making Cameco's conversion and fabrication irreplaceable bottleneck assets.
 - **AI data center power demand is creating a secular demand floor that decouples uranium from the energy commodity cycle.** U.S. data centers: ~183 TWh in 2024, doubling by 2030. Meta 6.6 GW commitment, Microsoft TMI restart ($16B), Google Kairos Power, Amazon X-energy — multi-billion-dollar commitments with decade-long timelines, price-inelastic and uncorrelated with traditional energy cycles.
 - **Supply-side constraints are compounding: Kazatomprom's voluntary cuts into a deficit meet geological scarcity that cannot be resolved by capital investment alone.** Output jumped 13% in 2025, yet Kazakhstan announced ~10% 2026 production cut into an accelerating deficit. Reactor buildout requires production equivalent to ten Cameco-sized producers; mine development takes 10-15 years with no tier-one deposits in the pipeline approaching McArthur River or Cigar Lake.
@@ -44,7 +45,7 @@ Backbone of the Western nuclear fuel cycle, priced as a cyclical commodity produ
 
 ## Business Model & Product Description
 
-Cameco's business model has evolved from a commodity miner into what is effectively a "nuclear fuel utility" — the only Western-aligned company spanning the full fuel cycle from mine to reactor. The correct analogy is not a gold or copper miner (single-product, price-taker) but rather a vertically integrated energy infrastructure company like Schlumberger in oil services, where each step in the value chain creates switching costs and margin stacking. Revenue flows through three complementary segments — upstream mining (commodity-exposed but protected by tier-one asset quality and long-term contract structures with price escalators), midstream fuel services (conversion/processing with oligopoly pricing — one of only three Western facilities), and downstream reactor services via the 49% Westinghouse stake (recurring, high-margin, decoupled from commodity prices). The Westinghouse stake transforms the earnings profile: even if uranium spot prices decline, Westinghouse's $219M EBITDA (+51% YoY) provides a services floor that pure miners lack.
+Cameco's business model has evolved from a commodity miner into what is effectively a "nuclear fuel utility" — the only Western-aligned company spanning the full fuel cycle from mine to reactor. The correct analogy is not a gold or copper miner (single-product, price-taker) but rather a vertically integrated energy infrastructure company like Schlumberger in oil services, where each step in the value chain creates switching costs and margin stacking. Revenue flows through three complementary segments — upstream mining (commodity-exposed but protected by tier-one asset quality and long-term contract structures with price escalators), midstream fuel services (conversion/processing with oligopoly pricing — one of only three Western facilities), and downstream reactor services via the 49% Westinghouse stake (recurring, high-margin, decoupled from commodity prices). The Westinghouse stake transforms the earnings profile: even if uranium spot prices decline, Westinghouse's US$525–580M EBITDA (Cameco share, FY2025 — corrected 2026-07-10) provides a services floor that pure miners lack.
 
 Cameco operates across the full Western nuclear fuel cycle through three integrated segments:
 
@@ -75,7 +76,7 @@ Nuclear reactor technology, services, and fuel fabrication — the downstream co
 - **Reactor Services**: Maintenance, instrumentation & control, outage management, decommissioning, and life extension services for the global installed reactor fleet. High-margin recurring revenue tied to the operational reactor base rather than new construction.
 - **Government & Defense**: Part of the $80B U.S. government nuclear partnership with Brookfield/Cameco for reactor construction and national energy security infrastructure.
 
-Westinghouse delivered $219M adjusted EBITDA to Cameco in FY2025 (+51% YoY). This recurring, high-margin services revenue is qualitatively different from commodity-price-driven mining revenue and structurally insulates Cameco from uranium spot price volatility.
+Westinghouse delivered US$525–580M adjusted EBITDA to Cameco in FY2025 (corrected 2026-07-10 from the understated "$219M +51%"; guidance was raised from $355–405M on the one-time ~$170M Dukovany item — Cameco 6-K). This recurring, high-margin services revenue is qualitatively different from commodity-price-driven mining revenue and structurally insulates Cameco from uranium spot price volatility. 2026 outlook: US$370–430M (a YoY decline ex-Dukovany); company guides 6–10% 5-yr CAGR.
 
 ---
 
@@ -136,15 +137,15 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$50.6B USD | +169% in 1 year |
-| Share Price | ~$116.04 USD | April 13, 2026; 52-wk range $38.98–$135.24 |
+| Market Cap | ~$41.8B USD | +169% in 1 year |
+| Share Price | ~$95.99 USD | April 13, 2026; 52-wk range $38.98–$135.24 |
 | Uranium Spot Price | ~$78–84/lb | April 2026; peaked ~$101.50 in late Jan; LT contract at $90/lb |
 | 12-Month Price Outlook | $100–150/lb | Citi: $100–125; Sprott survey: $100–120 base, $135 upside |
-| FY2025 Revenue | ~CAD 3.1B | Uranium + Fuel Services + Westinghouse |
+| FY2025 Revenue | ~CAD 3.5B | Uranium + Fuel Services + Westinghouse |
 | FY2026E Revenue Guidance | CAD 3.13–3.37B | Midpoint ~7% decline from FY2025 |
 | FY2026E Uranium Deliveries | 29–32M lbs | vs. 33M lbs in FY2025 |
 | Avg Realized Price Guidance | CAD 85–89/lb | FY2026 |
-| Westinghouse EBITDA (Cameco share) | $219M (FY2025) | +51% YoY |
+| Westinghouse EBITDA (Cameco share) | US$525–580M (FY2025 guide; corrected 2026-07-10 from $219M) | Incl. one-time ~$170M Dukovany item; 2026 outlook US$370–430M |
 | Production Guidance (100% basis) | 31.5–38.5M lbs | McArthur River + Cigar Lake combined |
 | Supply Deficit (2026) | ~5M lbs | Structural, widening |
 | Uncontracted Post-2027 Demand | 65% | Re-contracting wave imminent |
@@ -159,7 +160,7 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 - Re-contracting wave drives long-term uranium contract prices to $100–120/lb, pulling Cameco's average realized prices materially higher through 2027–2028 as legacy contracts roll off and new floor mechanisms step up
 - Uranium spot breaks $100/lb sustainably as Kazatomprom cuts, mine restart delays, and Russian sanctions compress available supply
 - AI data center nuclear commitments (Meta 6.6 GW, Microsoft TMI restart, Amazon/Google SMR investments) create multi-decade demand visibility independent of geopolitics
-- Westinghouse EBITDA compounds at 20–30% annually as reactor services and fuel fabrication scale with the global buildout; provides Cameco with high-margin recurring revenue insulating it from commodity price volatility
+- Westinghouse EBITDA compounds at 6–10% annually (corrected 2026-07-10 from "20–30%" — company's own 5-yr CAGR guide, ex-Dukovany; 2026 outlook US$370–430M is a YoY decline) as reactor services and fuel fabrication scale with the global buildout; provides Cameco with high-margin recurring revenue insulating it from commodity price volatility — the bull case now rests on new-build AP1000 orders accelerating that guide, not on the guide itself
 - U.S. $80B nuclear partnership materializes with favorable terms for Cameco/Westinghouse, providing both capital and demand certainty for decades
 - Iran conflict persists or de-escalation fails to reverse the energy sovereignty policy momentum — reactor life extensions and new builds are multi-year commitments that don't reverse on a ceasefire
 - China's reactor buildout (38 under construction) creates incremental demand for Western uranium as domestic Chinese supply falls short
@@ -204,9 +205,14 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-10 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- [G-3] reflexivity / heuristic-driven flows: CONFIRMED against the thesis — the "AI demand floor decouples uranium from the cycle" insight failed its first market test: Meta Compute (Jul 1) + the ~$1.3T semis purge dragged CCJ -20%+ from May highs to $94.67 (Jul 8) without a single contracted pound or PPA being touched. The market prices CCJ as AI-beta, not as contract-book value — that gap is now the live variant perception in both directions.
+	- [G-13] expectations chain: term price $94/lb end-Q2 (highest since 2008) vs the thesis's $100 "escape velocity" marker — progressing, not fired; spot $85.55 rangebound 3 months. The re-contracting-wave leg has NO 2026 volume data yet (2025: ~116 Mlbs flat) — the load-bearing catalyst is still unevidenced.
+	- [G-10] outside view on supply: the thesis's Kazatomprom leg is its weakest — the "10% cut" is vs subsoil-agreement ceiling, not output; 2026 guidance (27.5–29.0kt) EXCEEDS 2025 actuals and Q1 production rose YoY on a raised plan. Absolute Kazakh supply is growing into the claimed deficit.
+	- Factual: Westinghouse FY2025 EBITDA is materially UNDERSTATED in the body ("$219M +51%" repeated 4×; actual Cameco-share guide US$525–580M) — the strongest structural leg is >2x better than the thesis's own numbers; but the bull-case "20–30% CAGR" is REFUTED (company guides 6–10%, and 2026 outlook US$370–430M is a YoY decline ex-Dukovany).
+	- Structural gap: **no ## Conviction Triggers section exists.**
+- **Disconfirming check** (evidence-updated 2026-07-10): single falsifying datapoint — utility contracting volumes staying flat through the Q2 print (Jul 30–31) while Kazakh supply grows would gut the "highest-conviction structural catalyst in commodities" claim; the term-price grind is consistent with the wave but so is a slow, adequately-supplied market. Base rate: commodity "supercycle re-rating" narratives resolve into ordinary cycles far more often than into regime change, and CCJ at ~2x NAV needs the regime, not the cycle.
 
 ## Related Research
 
@@ -253,3 +259,13 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 ### 2026-05-24 (/sync all)
 - [[Research/2026-05-23 - Iran-US Peace Deal Polymarket Signal Deterioration - web-clip]]: Iran enriched-uranium handover redline reaffirmed (same as April 12 Islamabad collapse) — uranium narrative remains structurally orthogonal to deal outcome. Sustained Scenario A extends 6-12mo energy-sovereignty policy-response window into multi-year structural demand path; $80B DOE/Westinghouse fast-track + $100+/lb LT contracts unaffected. Conviction unchanged (medium, monitoring).
+
+### 2026-07-10
+- Mental models pass: batch-10 evidence sweep populated ## Mental Models — AI-demand-floor insight failed first market test (CCJ -20%+ on Meta Compute/semis purge with zero PPAs touched), Kazakh supply rising not falling, Westinghouse EBITDA understated >2x in body ($219M vs actual $525–580M share) — conviction unchanged (medium); term $94 vs $100 trigger, Q2 print Jul 30–31.
+- Corrected: fact-audit pass — Westinghouse FY2025 EBITDA $219M→US$525–580M (Cameco share, incl. ~$170M Dukovany one-off) in Summary, Business Model, Industry Context, Key Metrics; Bull Case CAGR 20–30%→6–10% per company guide (2026 outlook US$370–430M).
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 1 material. FY2025 revenue ~CAD 3.1B→~CAD 3.5B (+12.2%, material); market cap ~$50.6B→~$41.8B (-17.4%); share price ~$116.04→~$95.99 (-17.3%). Snapshot: [[_Archive/Snapshots/CCJ - Cameco (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed, 0 material. Re-fetch confirms market cap ~$41.8B, share price ~$95.99, FY2025 revenue ~CAD 3.5B all unchanged from the run ~1hr ago. Snapshot: [[_Archive/Snapshots/CCJ - Cameco (pre-numbers 20260712-184014)]]

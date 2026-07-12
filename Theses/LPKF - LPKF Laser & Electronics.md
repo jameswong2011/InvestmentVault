@@ -6,7 +6,9 @@ status: draft
 conviction: medium
 sector: ABF Substrates & Advanced Packaging Supply Chain
 ticker: LPKF
+fmp_symbol: LPK.DE
 source: LPKF Q1 2026 earnings call + AGM 4-Jun-2026 disclosures; cross-referenced against [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]], Intel/Samsung/TSMC glass-substrate roadmaps (Intel NEPCON Jan-2026, TSMC CoPoS C.C. Wei 2026 roadmap, Samsung-Absolics Sejong pilot)
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-06-07 → Addressed 2026-06-07
 > **Prompt:** *Provide a more detailed engineering view into LIDE technology including any competing approaches that can achieve the same objective / why LIDE is the only solution feasible.*
@@ -160,10 +162,10 @@ Per [[Sectors/Optical Networking & Photonics|Optical Networking sector]] and the
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~€590M (~$680M) | At €24.80/share × ~22.55M shares (Morningstar 16-May-2026). Stock has risen >100% YTD on glass-substrate narrative; sat at €10 in late 2025 |
+| Market Cap | ~€426M (~$680M) | At €24.80/share × ~22.55M shares (Morningstar 16-May-2026). Stock has risen >100% YTD on glass-substrate narrative; sat at €10 in late 2025 |
 | EV/Revenue | ~5x FY2026E | EV ~€590M (~€5M net cash) / €110M revenue midpoint of guide. Compares to industrial-laser peers (Han's 1.4x, IPG 2.1x) and semicap peers (Onto 6.8x, Camtek 8.4x, Disco 7.2x, Lasertec 14.5x); LPKF priced between industrial laser and semicap |
-| Revenue Growth | -32% Q1 2026 YoY (€17.1M vs €25.3M); FY2026 guide -3% to -9% (€105–120M vs €115–125M FY2025) | Decline driven by Solar wind-down; LIDE production orders NOT included in guide — upside optionality |
-| Gross Margin | ~35–40% (estimated; LPKF does not disclose at segment level explicitly) | Industrial laser equipment typical range; should expand as LIDE mix grows (higher margin) and Solar mix shrinks (lower margin) |
+| Revenue Growth | -6.2% Q1 2026 YoY (€17.1M vs €25.3M); FY2026 guide -3% to -9% (€105–120M vs €115–125M FY2025) | Decline driven by Solar wind-down; LIDE production orders NOT included in guide — upside optionality |
+| Gross Margin | ~19% (estimated; LPKF does not disclose at segment level explicitly) | Industrial laser equipment typical range; should expand as LIDE mix grows (higher margin) and Solar mix shrinks (lower margin) |
 | FCF Yield | Negative (-€4 to -€8M FCF estimated FY2026) | Cash burning; €1.2M/quarter Q1 burn rate; €5.8M cash at end Q1 = 4–5 quarter runway absent bridge financing |
 | Order intake (Q1 2026) | €24.1M (+17% YoY) | Book-to-bill 1.4 — leading indicator that revenue inflection is approaching |
 | Cash | €5.8M end Q1 2026 (down from €7.0M end 2025) | Thin buffer; CEO refusing capital raise; Welding + PCB cash flow must offset Development + Solar losses |
@@ -374,9 +376,15 @@ Combined: equity falls 60–75% from €25 to €6–10 within 18 months. The �
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-2 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (S-curve, reflexivity, barbell) · [[Industry - Semiconductors]] (#2, #8, #19) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#19 orders signal — the binary went against, softly*: the CEO's "production orders by end Q2 2026" deadline passed Jun 30 with no series order (test installations only); goalposts moved ~6 months to "before end of 2026"; stock -28% from the €30.20 ATH into the miss, -46% at the Jul 8 low. A first LIDE capacity-expansion order WAS booked in Q1 with talks ongoing — the thesis's equipment-S-curve is alive but its timing model just slipped one notch. LOW-trigger clock runs to Sep 30; H1 report **Jul 23**.
+	- *#8 bottleneck relocation — AGAINST the layer thesis, from the CEO's own mouth*: LIDE/TGV is "no longer the bottleneck" — glass-substrate yield now gates on *metallization* (Cu-adhesion/CTE, Atotech-MKS territory). VLM implication: the scarce layer may be migrating off LPKF's layer just as the wave arrives. Pair with the CEO's concession of TGV share 80%→70% and his naming TRUMPF+SCHMID full-line as the top threat — the thesis's moat-layer-4 ("TRUMPF waits") is contradicted by the primary source.
+	- *S-curve geography re-drawn*: Korea-first confirmed — Absolics mass production targeted end-2026 with equipment POs expected by year-end (the nearest concrete volume trigger), Samsung glass to business-unit status (2027 ramp), JNTC 16 paying sample customers; but TSMC glass-CORE slipped past 2030 (CoPoS panel 2H28 is a different product) — the biggest single customer leg of the 2028–29 bull case moved out ~2 years.
+	- *Cash-runway math REFUTED*: Q1 burn €4.3M (thesis: €1.2M/qtr), FCF -€7.6M, cash €5.8M ≈ ~1 quarter at Q1 pace — but a committed €12.5M undrawn line (facility to Dec-2028) exists, making the LOW cash-leg structurally hard to trip while the CFO "left the door open" to a raise (CLOSE trigger watch: sub-€15 strike). Update Key Metrics: end-2025 cash was ~€10.1M, not €7.0M.
+	- *CPO parallel S-curve (Insight #3)* — CONFIRMED and ahead: production-ready 3D optical-waveguide-in-glass equipment already delivered and installed (The Elec, Apr 28); NEXAR panel-level tool line launching 2026 — publicly corroborating the multi-tool architecture behind Insight #1.
+	- *Reflexivity* — the +329% spike was SDAX-inclusion flows + substack virality, not sell-side (consensus PT still €12–15.50, zero upgrades); short book rotated (Voleon down, Qube/SIH in, MW Group flipped to 3.14% long). Pre-chasm + funding-fragile → barbell says convex-bet sizing only, if at all, while status stays draft.
+- **Disconfirming check** (evidence-updated): the thesis's two-S-curves insight is half-right — equipment orders DO lead substrates, but the equipment orders themselves slipped, and the CEO relocated the scarcity narrative downstream. Base rate: pre-revenue-inflection equipment names that miss their own first order deadline deliver the re-cut deadline <50% of the time — the "before end of 2026" promise is now the thesis. Single falsifiers: Absolics equipment POs by year-end (bull); a TRUMPF+SCHMID or Philoptics Tier-1 LIDE-equivalent win (bear, LOW leg 3); a sub-€15 raise (CLOSE). Watch-not-add until the Jul 23 H1 report shows order-pipeline specifics; the batch's only distress-adjacent name.
 
 ## Related Research
 
@@ -401,3 +409,12 @@ Combined: equity falls 60–75% from €25 to €6–10 within 18 months. The �
 - Initial thesis created. Conviction: medium — LIDE qualification-gate duopoly with Intel/Samsung/TSMC substrate customer triangulation and CPO optionality, offset by binary Q2 2026 order setup, €5.8M cash buffer, and €15.81 sell-side consensus PT (-36% vs ~€25 current).
 - Addressed user callouts: LIDE engineering deep-dive + competing-approach failure modes integrated into §Business Model → LIDE process physics + Competing approaches subsections; small-cap engineering-budget paradox + four-layer moat structure + Plan Optik vs TRUMPF threat decomposition integrated into §Industry Context — conviction unchanged (deeper substantiation of the qualification-gate moat thesis, not a delta to the investment case).
 - Addressed user callouts: 3-scenario forecast (low/base/upside) added as new §Scenario Forecast section between Key Metrics and Bull Case — FY2030 implied share prices €4.80 / €27.30 / €77 with probability-weighted EV €34 (+36% vs current ~€25); CPO optionality quantified separately as the largest discretionary swing (€0/€5M/€30M 2030 revenue across cases); triangulated against sell-side consensus €15.81 PT and Shawarma Capital €110–220/share aggressive case. Conviction unchanged (quantification of existing thesis structure, not a new investment claim).
+
+### 2026-07-09
+- Mental models pass: batch-2 evidence sweep populated ## Mental Models — Q2 order deadline missed (goalposts → end-2026), CEO conceded share 80→70% + named TRUMPF/SCHMID top threat + relocated bottleneck to metallization (against the layer thesis); burn math refuted (€4.3M/qtr not €1.2M, €12.5M committed line is the real bridge); CPO leg confirmed ahead; Korea-first (Absolics POs by year-end = nearest trigger), TSMC glass-core slipped past 2030 — conviction unchanged (medium, draft); H1 report Jul 23, LOW clock to Sep 30.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 3 material. Gross Margin ~35-40%→~19% (estimated margin roughly halved). FCF Yield left unedited — old_value_numeric in fetch data anomalous (4e12), format/data uncertain. Snapshot: [[_Archive/Snapshots/LPKF - LPKF Laser & Electronics (pre-numbers 20260712-174116)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass, fmp_symbol LPK.DE confirmed correct exchange-suffix mapping): 0 metrics changed. Market Cap (~€426M) and Gross Margin (~19%) render identically after rounding. Revenue Growth (compound Q1/FY26-guide string) left unedited — format uncertain. FCF Yield again left unedited — same data anomaly as prior pass (fetch value pairs a qualitative "Negative (-€4 to -€8M...)" cell with a corrupted numeric old-value ~€4T; do not apply). Snapshot: [[_Archive/Snapshots/LPKF - LPKF Laser & Electronics (pre-numbers 20260712-184147)]]

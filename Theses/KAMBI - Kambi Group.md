@@ -6,7 +6,9 @@ status: monitoring
 conviction: medium
 sector: Online Gambling
 ticker: KAMBI
+fmp_symbol: KAMBI.ST
 source: Multi-source synthesis (ChatGPT, web research, Kambi IR)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # KAMBI — Kambi Group plc
@@ -93,14 +95,14 @@ Kambi is the "arms dealer" of the sports betting industry — a pure B2B technol
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~SEK 3.6B (~€320M / ~$352M) | Nasdaq First North Stockholm, 27M shares |
+| Market Cap | ~SEK 4.3B (~€320M / ~$352M) | Nasdaq First North Stockholm, 27M shares |
 | Revenue (FY2025) | €162.0M | Down 8.2% YoY; down 1.2% ex-transition fees |
 | Revenue (FY2024) | €176.4M | Includes one-off transition fees |
 | Adj. EBITA (FY2025) | €17.6M (ex-FX); €15.5M reported | Down from €25.3M in FY2024 |
 | Operating Profit (FY2025) | €8.1M | Down from €18.8M in FY2024 |
 | Adj. EBITDA (FY2024) | ~€59.7M | Includes depreciation/amortization |
-| Gross Margin | ~82-90% | Software-like cost structure |
-| Operating Margin | ~5-11% | Heavily burdened by R&D + amortization |
+| Gross Margin | ~100% | Software-like cost structure |
+| Operating Margin | ~8% | Heavily burdened by R&D + amortization |
 | Cash Position | €32.9M (YE2025); >€40M post-Q1 receipts | Debt-free balance sheet |
 | Operator Turnover (FY2025) | Down 2.5% YoY | Key volume metric |
 | Operator Trading Margin | 10.8% (FY2025) | Up from 10.0% (FY2024); AI/Bet Builder driven |
@@ -146,10 +148,14 @@ Kambi is the "arms dealer" of the sports betting industry — a pure B2B technol
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-7 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Reacceleration leg CONFIRMED: Q1 2026 (Apr 29) revenue €43.5M +4.9%, Adj. EBITA €5.7M +64% (13.0% margin vs 8.4%), operating profit +422%, opex DOWN 2.1% — the AI operating-leverage claim directly evidenced; AI-traded share 49% (FY25) → 60%+ (Q1), 100% AI-traded World Cup committed (~€5M uplift expectation); €20-25M FY EBITA guidance intact.
+	- Retention legs REFUTED-NEGATIVE (good): no top-3 loss — LeoVegas turnkey EXTENDED through 2027 + Odds Feed+ beyond (managed glide-path, not cliff); Virgin Bet migrated ONTO Kambi; Svenska Spel/Bally's intact. Signing velocity went UP-market and into a segment the thesis never priced: government/lottery incumbents — PMU France turnkey (Mar 31), ALC+BCLC multi-province (Apr 29) → Kambi powers 9 of 10 Canadian provinces — long contracts, no in-house-migration risk.
+	- The open wound stays open: FDJ UNITED/Kindred turnkey completes end-2026 with the €55M 2024-26 minimum — the FY2027 net of lost turnkey vs Odds Feed+ replacement is still unquantified anywhere public; Q2 (Jul 22) + H2 commentary is where the cliff gets sized or stays a shadow.
+	- NEW unmodeled falsifying vector — prediction markets: Kalshi+Polymarket ~$24B/month combined (vs ~$14B at legal US sportsbooks); CFTC event contracts structurally bypass the state-licensed operators who pay Kambi's revenue share; Becher's "zero impact so far" reads as anchor-tenant complacency. Also: OpenBet's $450M MBO (Mar) re-arms a full-stack competitor; Brazil growth stunted (sharp-bettor mix, weak channelization).
+	- [G-13] — the entry-valuation leg partially consumed: stock ~+60% off lows (buyback VWAP ~158.66 SEK vs 99 SEK low; second SEK 100M buyback running to Nov); the "8-10x forward EBITA" math is stale.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate — B2B platform vendors losing anchor tenants usually never refill the hole (SBTech, Playtech sports), but Kambi is the rare case where the anchor loss was announced four years ahead, contractually cushioned, and partially boomeranged; the government-lottery segment it is consolidating is immune to the in-house base rate. Single densest falsification event: the Jul 22 Q2 print (World Cup monetization + first Kindred-cliff sizing). Framework gap: NO Conviction Triggers section — formalize (Kindred-net-revenue floor, prediction-market handle-share threshold, Tier-1 modular signing) before Jul 22.
 ## Related Research
 
 - [[@Online Gambling]]
@@ -171,3 +177,12 @@ Kambi is the "arms dealer" of the sports betting industry — a pure B2B technol
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring.
+
+### 2026-07-10
+- Mental models pass: batch-7 evidence sweep populated ## Mental Models — reacceleration confirmed (EBITA +64%, AI-traded 60%+, LeoVegas extended, 9/10 Canadian provinces) but the Kindred FY27 cliff remains unquantified and prediction markets (~$24B/mo) are an unmodeled bypass vector — conviction unchanged (medium); Jul 22 Q2 print is the densest falsification event (World Cup + cliff sizing).
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 2 material. Gross Margin ~82-90%→~100% (+17.5pp, material — flag as probable FMP field-mapping anomaly, worth manual verification); Operating Margin ~5-11%→~8% (+3.4pp, material); Market Cap ~SEK 3.6B→~SEK 4.3B (+20.1%, non-material). Snapshot: [[_Archive/Snapshots/KAMBI - Kambi Group (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, fmp_symbol KAMBI.ST verified): 0 rows edited — Market Cap, Gross Margin (~100%), Operating Margin (~8%) all re-render identical to current cell text; no material change since last-hour refresh. Prior Gross Margin field-mapping-anomaly flag still stands, unresolved. Snapshot: [[_Archive/Snapshots/KAMBI - Kambi Group (pre-numbers 20260712-184025)]]

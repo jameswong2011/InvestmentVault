@@ -7,6 +7,7 @@ conviction: high
 ticker: LITE
 sector: Optical Networking & Photonics
 source: Multi-source synthesis (Claude, ChatGPT, Gemini, Grok, web research)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # LITE — Lumentum Holdings
@@ -119,9 +120,9 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$55-62B | At ~$815 per share |
-| Stock Price | ~$815 | Up ~960%+ over trailing 52 weeks |
-| Forward P/E | ~48-60x | Premium for physics-gated monopoly |
+| Market Cap | ~$62B | At ~$815 per share |
+| Stock Price | ~$802 | Up ~960%+ over trailing 52 weeks |
+| Forward P/E | ~43x | Premium for physics-gated monopoly |
 | PEG Ratio | ~0.45 | Growth premium not fully captured |
 | FY2025 Revenue | $1.65B | FY2026E $2.94B, FY2027E $4.62B |
 | Q2 FY2026 Revenue | $665.5M | +65.5% YoY, +24.7% QoQ (record) |
@@ -184,10 +185,14 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-5 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Semis [#2] qualification-gate monopoly (butt-joint regrowth EML) — CONFIRMED operationally: Q3 FY26 $808.4M +90% YoY, EPS $2.37 beat, 32.2% OM; EMLs "effectively sold out," undersupply widened to >30% (vs thesis's 25-30%); FQ4 guided to first ~$1B quarter. MIXED on lead durability: Coherent demoed its own 400G differential EML + 6.4T CPO with own ELS at OFC 2026, and is qualifying 200G EML on 6-inch InP — the one-generation-lead claim is now contested.
+	- Semis [#8] architecture transition remaps the bottleneck — CONFIRMED directionally: CPO migrates value from the EML monopoly to the contestable CW DFB/ELS layer exactly as the 2026-05-31 deep-dive predicted; Coherent pairing its CPO demos with its OWN ELS. NVIDIA broke ground WITH Coherent on a $2B CHIPS-backed Texas laser fab (2026-06-18) while Greensboro is self-funded — the dual-source hedge is armed.
+	- Semis [#10] anchor concentration — now quantified: Q3 FY26 10-Q discloses a single customer at 26% of quarterly revenue (thesis had "undisclosed"). New unmodeled variant: LITE's own upstream component supply (pump lasers) is the binding constraint — allocation triage across customers per the May 6 call.
+	- VLM §1/§3 — 200G EML layer = STRONG FIT infrastructure layer, moat widening; §4 alpha test retesting at better odds: ~25% drawdown from $1,053 ATH to ~$786 (below the ~$815 thesis basis) on zero company-specific bad news, fwd P/E ~50.
+	- Generalist [G-13] expectations — REFUTED on timing: the multiple-compression leg the thesis dated to "2027-28 growth normalization" arrived June-July 2026 via narrative (SemiAnalysis CPO-delay Jun 9, Meta Compute Jul 1, hawkish Fed).
+- **Disconfirming check** (evidence-updated 2026-07-10): single falsifying datapoint = a second hyperscaler capacity-resale announcement after Meta Compute (Jul 1) — if excess AI capacity is real, the "every capex dollar flows to optics" chain gets a ceiling and the sold-out backlog becomes a lagging indicator (the memory-complex analog: -20% in two weeks). Second falsifier: Coherent 200G EML volume qualification at a US hyperscaler kills the arms-dealer asymmetry. Base rate: a stock up ~10x in 12 months at ~50x forward that has taken its first -25% narrative drawdown historically does not stop at -25% if the demand-regime question gets a second confirming datapoint (thesis's own NVDA-2018 analog). Framework gap: NO Conviction Triggers section — falsifiers live scattered in Catalysts/Risks and need formalizing; Q3 GM actual 47.9% vs the 49.5-51.5% guide in Key Metrics needs reconciling.
 ## Related Research
 
 - [[Research/2026-04-15 - LITE COHR - Lumentum vs Coherent Analysis]] — "Great Photonic Divergence": LITE +1,098% vs COHR +328%, pure-play vs integrated, module-level 70.5% gross margin
@@ -236,3 +241,12 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: Sharpened Bear Case — confirms LITE sole ELS supplier for Nvidia first CPO batches (near-term positive) but frames CW DFB ELS as commoditized/contestable (Yuanjie/Shijia) vs the EML monopoly; CPO migrates value to LITE's weakest layer. Conviction unchanged (high) — adds a structural CPO-layer-contestability nuance, not a near-term threat.
+
+### 2026-07-10
+- Mental models pass: batch-5 evidence sweep populated ## Mental Models — catalysts nearly all fired positive (Q3 +90%, FQ4 guided ~$1B, undersupply >30%) but multiple compression arrived 12-18 months early (-25% to below thesis basis on zero company news); Meta Compute + Coherent 6-inch/ELS progress are the live falsifiers — conviction unchanged (high); no Conviction Triggers section exists — needs formalizing before FQ4 report (Aug).
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated, 0 material. Market cap ~$55-62B→~$62B; stock price -2% (~$815→~$802); forward P/E -10% (~48-60x→~43x). Snapshot: [[_Archive/Snapshots/LITE - Lumentum (pre-numbers 20260712-180000)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (4 mapped rows re-rendered identical post-rounding), 0 material. Snapshot: [[_Archive/Snapshots/LITE - Lumentum (pre-numbers 20260712-184039)]]

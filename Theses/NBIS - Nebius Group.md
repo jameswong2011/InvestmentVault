@@ -7,6 +7,7 @@ conviction: medium
 sector: Neoclouds & GPU-as-a-Service
 ticker: NBIS
 source: Nebius Q1 2026 earnings (May 13 2026 — $399M revenue +684% YoY, $1.92B AI-cloud ARR +54% QoQ, 45% AI-cloud adj EBITDA margin, $621M net income incl $780.6M ClickHouse revaluation gain, $9.3B cash); Meta $27B + Microsoft ~$17.4–19.4B contracts; Deep Research report "Neoclouds, NBIS vs CRWV" (June 2026, in _Inbox pending /ingest)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # NBIS - Nebius Group
@@ -91,11 +92,11 @@ NBIS sits in the **non-hyperscaler GPU infrastructure layer** — between NVIDIA
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$58B (~$242/share, ~240M shares) | Mid-2026; volatile and near 52-wk highs after a ~7x run off a ~$35 low; P/E ~68 |
+| Market Cap | ~$53B (~$242/share, ~240M shares) | Mid-2026; volatile and near 52-wk highs after a ~7x run off a ~$35 low; P/E ~68 |
 | EV/Revenue | ~16–17x FY26E ($53B EV / $3.0–3.4B); ~110x trailing FY25 ($530M) | The multiple you pick *is* the bull/bear crux — ~6–7x EV/exit-ARR ($7–9B) vs ~110x trailing sales |
 | EV/Revenue (ex-stakes) | ~14x FY26E ($45–46B core EV / $3.2B) | Strip ~$7.5B non-core stakes + net cash → the "AI cloud is cheaper than it looks" bull framing |
 | Revenue Growth | FY25 $530M (+479%) → FY26E $3.0–3.4B (+466–542%); Q1 2026 +684% YoY | Exit ARR guided $7–9B; AI-cloud ARR $1.92B at Q1 (+54% QoQ) |
-| Gross Margin | Not cleanly disclosed; 45% AI-cloud adj EBITDA margin (proxy) | Up from 24% Q4 2025; durability as base scales 4x is Outstanding Q#4 |
+| Gross Margin | Not cleanly disclosed; 48% AI-cloud adj EBITDA margin (proxy) | Up from 24% Q4 2025; durability as base scales 4x is Outstanding Q#4 |
 | FCF Yield | Deeply negative | $20–25B FY26 capex vs $3.0–3.4B revenue → FCF heavily negative through 2027, like CRWV |
 | Net income (Q1 2026) | $621M | Incl. $780.6M non-cash ClickHouse gain; adjusted net loss ~$100M |
 | Cash / debt | $9.3B cash; $4.3B converts + $2B prefunded warrants; minimal traditional debt | Net cash ~$5B; vs CRWV $21.6B debt / 14x liabilities-to-equity |
@@ -167,9 +168,14 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-4 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (reflexivity, barbell) · [[Industry - Semiconductors]] (#10) · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]] (Lens B)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *Insight #1 (execution-vs-credit decorrelation) — VALIDATED by the July event, ironically*: NBIS fell -17% on Meta Compute (a demand/competition shock) in lockstep with CRWV — the market still prices them as twins, which is exactly the mispricing the thesis claims. But the shock itself is a **fifth risk vector the Bear Case doesn't contain**: the anchor customer became a supply-side competitor. Partial hedge discovered: per 6-K summaries, **Meta is obligated to purchase unsold capacity** in certain clusters (5 yrs from deployment) — the $15B "flexible tranche" reads as a backstop/floor, materially better than the thesis's "lapse-able option" framing (secondhand language; verify the exhibit). This tension deserves its own thesis section.
+	- *Insight #2/#5 (funding without GPU-collateralized debt) — the differentiation is eroding in letter, holding in spirit*: $4.3B converts placed (Mar), NVIDIA $2B, Q1 OCF +$2.3B on customer prepayments (~60% of $20–25B capex covered) — but management has explicitly committed to **contract-secured asset-backed loans** + a 25M-share ATM. Contract-collateralized (hyperscaler receivables) ≠ GPU-collateralized (resale value) — the CLOSE trigger's language will fire ambiguously unless sharpened before Q3. Do it now.
+	- *Q1 CONFIRMED the numbers*: revenue $399M (+684%), AI-cloud ARR $1.92B (+54% QoQ), AI-cloud adj EBITDA margin 45%, first-ever positive group adj EBITDA; FY26 guide intact (rev $3.0–3.4B, exit ARR $7–9B, capex raised to $20–25B). The load-bearing number (active MW toward 800MW–1GW) has NO interim disclosure — the Q2 print (**pulled forward to ~Jul 28–29**) is the first read, a quarter earlier than the Catalysts table assumes.
+	- *Reflexivity round-trip*: Nasdaq-100 inclusion (Jun 22) → $299.86 ATH same day → -28–30% to ~$216 (Meta Compute + BNP sector note); now trades near/below consensus PT ($231) for the first time since creation; forward P/E is now **positive** (~267x) — the watchlist's negative-NTM premise is stale. MS fair value $144 vs Northland $248 = maximum dispersion.
+	- *Factual corrections for the thesis body*: PA 1.2GW site location undisclosed, first power **end-2027** (not a 2026 lever); second US GW site is Missouri; "connected" vs "active" MW definitions differ across company language — pin the trigger metric; Vineland gas-fired + protests = small permitting/ESG tail; ClickHouse IPO now eyed **2027** (HIGH leg 3 pushed right); Eigen AI tuck-in closed (software stack, Insight #4 supportive).
+- **Disconfirming check** (evidence-updated): trigger scoreboard 0/3 HIGH, 0/3 LOW, 0/3 CLOSE — but both CLOSE legs have active early-warning signals (Meta Compute; stated asset-backed strategy). The execution binary is unchanged and now dated: ~Jul 28–29 Q2 print must show the build tracking toward ≥600MW-by-Q3 or the >4x-in-12-months physics becomes the story. Base rate: datacenter builders quadrupling energized capacity in one calendar year, at scale, with novel power sources — near-zero precedent; the thesis correctly prices this as the risk, and the July drawdown paid nothing for it (it paid for Meta). Barbell: draft status + medium conviction remains right — the convex-bet framing survives; insider sales (~$23M cluster at the peak, mostly mechanical RSU) noted, not signal.
 
 ## Related Research
 
@@ -200,3 +206,12 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 
 ### 2026-06-03 (/sync)
 - [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]] (thesis source record) + [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: Source deep-dive ingested as Research note (completes audit trail); rental-economics framework quantifies the ~$4.92 cost floor / ~$9.63-12.25 value ceiling NBIS fights Nvidia for at Vera Rubin H2 2026. Conviction unchanged (medium); no thesis pillar moved (content already integrated at creation).
+
+### 2026-07-10
+- Mental models pass: batch-4 evidence sweep populated ## Mental Models — Insight #1 (twins-decorrelation mispricing) ironically validated by the -17% Meta Compute selloff; Meta tranche re-read as backstop-not-option (verify exhibit); funding differentiation eroding in letter (contract-secured ABL + ATM announced) — sharpen CLOSE trigger language before Q3; Q2 print pulled forward to ~Jul 28-29 = first active-MW read; PA-site + Missouri factual corrections listed — conviction unchanged (medium, draft).
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated (0 material of those edited; Revenue Growth flagged material but left unedited along with FCF Yield — qualitative/composite cells, format uncertain). Market cap -9.1% to ~$53B since creation. Snapshot: [[_Archive/Snapshots/NBIS - Nebius Group (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed — Market Cap and Gross Margin round to already-current displayed values. Revenue Growth again left unedited (compound multi-number string with an apparent unit mismatch between old_value_numeric and the $B-scale text — format uncertain) and FCF Yield left unedited (qualitative "Deeply negative" text). Snapshot: [[_Archive/Snapshots/NBIS - Nebius Group (pre-numbers 20260712-184111)]]

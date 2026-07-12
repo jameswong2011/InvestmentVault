@@ -43,7 +43,23 @@ ls "Theses/$TICKER - "*.md 2>/dev/null
 - 1 match → proceed. Capture path as `THESIS_PATH`.
 - 2+ matches → `❌ Ambiguous ticker [TICKER] — multiple thesis files match. Disambiguate manually.`
 
+(The bare glob leaks `no matches found` under zsh before `ls` runs; `find Theses -maxdepth 1 -name "$TICKER - *.md"` is the zsh-safe form and its empty output is the 0-match branch.)
+
 `/transcript` deliberately requires a thesis. Earnings transcripts without a thesis to anchor the analysis are noise — use `/ingest` for orphan-earnings content if needed.
+
+### 0.35: Resolve FMP symbol (foreign-listing catch-22 fix)
+
+FMP needs an exchange-suffixed symbol for non-US listings (`6981.T`, `2383.TW`, `GAW.L`, `AIXA.DE`) but the filename ticker and the invocation `$TICKER` carry the bare local code (`6981`, `2383`) or a display ticker (`TOTO` for `5332`). Resolve the FMP symbol from the thesis frontmatter, **preferring an explicit `fmp_symbol:` field, falling back to `ticker:`** (never the filename):
+
+```bash
+FMP_SYMBOL=$(grep -m1 '^fmp_symbol:' "$THESIS_PATH" | sed 's/^fmp_symbol:[[:space:]]*//')
+[ -z "$FMP_SYMBOL" ] && FMP_SYMBOL=$(grep -m1 '^ticker:' "$THESIS_PATH" | sed 's/^ticker:[[:space:]]*//' | tr -d '[]' | awk '{print $1}')
+[ -z "$FMP_SYMBOL" ] && { echo "❌ No ticker:/fmp_symbol: in $THESIS_PATH — cannot resolve FMP symbol"; exit 1; }
+RAW_TICKER="$FMP_SYMBOL"   # every downstream FMP call uses this, NOT the bare $TICKER
+echo "FMP_SYMBOL=$FMP_SYMBOL"
+```
+
+`$TICKER` (bare) still names cache files, the thesis path, and the Log entry — only the FMP URL uses `$RAW_TICKER`. Theses needing an explicit override carry `fmp_symbol:` in frontmatter (added 2026-07-09: 2383→2383.TW, 6981→6981.T, GAW→GAW.L, 5332/TOTO→5332.T, AIXA→AIXA.DE). Theses whose `ticker:` already carries the FMP suffix (`6857.T`, `000660.KS`, `285A.T`) resolve correctly through the fallback with no override needed.
 
 ### 0.4: FMP API key probe
 
@@ -52,7 +68,11 @@ if [ ! -f .data/config.json ]; then
   echo "❌ FMP API key config missing: .data/config.json"
   exit 1
 fi
-API_KEY=$(grep -E '"fmp_api_key"\s*:' .data/config.json | sed -E 's/.*"fmp_api_key"\s*:\s*"([^"]+)".*/\1/')
+# Use jq (already in allowed-tools) — the prior `sed -E 's/...\s.../'` form relied on
+# GNU `\s`, unsupported by BSD/macOS sed: it silently returned the WHOLE JSON line as
+# API_KEY, passed the `-z` guard, printed FMP_KEY_OK, then every curl exited rc=3 on a
+# malformed URL. jq parses the field correctly on every platform.
+API_KEY=$(jq -r '.fmp_api_key // empty' .data/config.json)
 [ -z "$API_KEY" ] && { echo "❌ FMP API key missing or empty in .data/config.json"; exit 1; }
 echo "FMP_KEY_OK"
 ```
@@ -77,7 +97,7 @@ BASE="https://financialmodelingprep.com/stable"
 curl -sf "$BASE/earning-call-transcript-dates?symbol=$TICKER_URL&apikey=$API_KEY" > /tmp/transcript_dates_${TICKER}.json
 ```
 
-Parse the response (array of `{quarter, year, date}` records sorted descending by `date`). Pick `[0]` as the target quarter (most recent reported).
+Parse the response (array of `{quarter, fiscalYear, date}` records sorted descending by `date` — the field is `fiscalYear`, NOT `year`; a `jq .year` parse returns null → malformed fetch URL). Map `fiscalYear` → the `year` parameter of the transcript endpoint. Pick `[0]` as the target quarter (most recent reported).
 
 **Edge cases**:
 - Empty array → `⚠️ No transcripts available for [TICKER] via FMP. Possible causes: (1) non-US listing without earnings call coverage, (2) FMP coverage gap, (3) company doesn't host public earnings calls. Skill cannot proceed.`

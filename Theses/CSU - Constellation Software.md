@@ -3,10 +3,12 @@ publish: true
 date: 2026-05-22
 tags: [thesis, vertical-market-software, capital-allocation, serial-acquirer, CSU]
 status: draft
-conviction: medium
+conviction: high
 sector: Vertical Market Software
 ticker: CSU
+fmp_symbol: CSU.TO
 source: Q1 2026 earnings release (csisoftware.com), Q3 2025 MD&A, FY2025 shareholder report, multiple sell-side and independent research substacks (Speedwell, Expanse Stocks, MBI Deep Dives, Pinegrove, Eagle Point), Mark Leonard letters archive
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # CSU — Constellation Software
@@ -136,10 +138,10 @@ The key competitive dynamic: CSU's IRR discipline (25–30% on small deals) mean
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$37.3B USD (~C$50–52B) | As of May 2026; 21.19M shares outstanding |
-| Stock Price (CSU.TO) | ~C$2,590 | -51% peak-to-trough from May 2024 peak; -33% from peak as of May 2026 |
+| Market Cap | ~$37.3B USD (~C$59.4B) | As of May 2026; 21.19M shares outstanding |
+| Stock Price (CSU.TO) | ~C$2,802 | -51% peak-to-trough from May 2024 peak; -33% from peak as of May 2026 |
 | EV/Revenue | ~3.6x | On TTM revenue $11.62B |
-| EV/EBITDA (forward) | ~16x | vs 10-year median 22.5x (26% below historical); -34% multiple compression vs decade-median |
+| EV/EBITDA (forward) | ~15x | vs 10-year median 22.5x (26% below historical); -34% multiple compression vs decade-median |
 | Revenue (TTM) | $11.62B USD | FY2025 ~$11.5B (+15% YoY); Q1 2026 $3.18B (+20% YoY) |
 | Organic Revenue Growth | 4% FY2025 (3% FXN) | Maintenance recurring 4% FXN Q1 2026 (decelerated from 6% Q4 2025) |
 | Gross Margin | ~95% (software services) | High-recurring-mix; minimal cost of license/cloud delivery |
@@ -261,10 +263,14 @@ The bear case is structural, not transient:
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-6 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Framework in its designed waiting state, tilting HIGH: all three CLOSE legs REFUTED (maintenance organic +4% FXN positive; deployment fastest since 2021; Asseco marked UP, Sabre resolved into board representation via the Mar 2026 Strategic Governance Agreement, stake ~12.7%); LOW leg 3 REFUTED (hurdle rates confirmed unchanged on the Q4 call, Q1 call, and AGM — CFO reviewed ~900 businesses, organic issues "had nothing to do with AI"); HIGH leg (b) tracking ahead ($1.6B deployed/committed in 4.5 months = all of FY2025, run-rate >$3B).
+	- The mechanical decision point ([G-8]/[G-10]): Q2 2026 maintenance recurring FXN print (~early Aug) — Q1 printed exactly 4%, ON the LOW-trigger boundary; a second ≤4% print arms LOW. Under-weighted by the thesis: total FX-neutral organic was just +2% (licenses/services/hardware negative; Altera -13% dragging).
+	- "Challengers can't raise capital" insight PARTIALLY BROKEN: $4.0B raised across 72 vertical-AI companies Sept 2025–Mar 2026 (Decagon $4.5B val, Basis $1.15B, Wonderful $2B) — but attacking labor spend (13% of GDP), not software line items; a different vector than the thesis models. Offense evidence at the AGM: Click Dimensions AI resolving 82% of tier-1 tickets; product rebuilds accelerating growth 12%→23%.
+	- Spin-out divergence breaks a proof point: Lumine Q1 FCFA2S -56% / organic -2% FXN during Synchronoss digestion (thesis cites "FCF up 2.5x") while Topicus printed +5% organic — the spin-out arbitrage insight now rests on one of two legs. Factual error: CSU holds 61.4% of Lumine per the Q1 MD&A, not the ~46% the thesis carries twice.
+	- Post-founder transition ([G-5]): Leonard board exit completed on schedule (effective post-AGM May 15, stays as PEMS advisor); Miller a CA$6.0M net buyer; managers still contractually buying stock. Counter-signal: Symons sold C$35.2M (Mar 27). Stock C$2,788 (Jul 9), +27% off the C$2,196 January low but still -44% 1Y — the de-rate remains ~100% multiple compression (Q1 revenue +20%, FCFA2S +44% record, NI +170%).
+- **Disconfirming check** (evidence-updated 2026-07-10): single falsifying datapoint = the Q2 maintenance FXN print in August — ≤4% arms LOW, ≥5% fires HIGH leg (a); no conviction move is justified before it. Base rate favorable on the founder-transition leg (Danaher/Roper/TransDigm post-founder mostly sustained when the system was the engine) but hostile on the multiple leg (SS&C/Open Text analog: terminal-value fear can cap recovery at 16-18x even if fundamentals hold — the 22.5x decade median may be gone permanently). The entry margin has partially closed (+27% off the low with confirming data still pending).
 ## Related Research
 
 - [[@Vertical Market Software]] — primary sector MOC (to be created by /thesis as new sector scaffold)
@@ -287,3 +293,15 @@ The bear case is structural, not transient:
 
 ### 2026-05-24 (/sync all)
 - [[Research/2026-05-24 - Retrospective 1w - Synthesis]]: Sub-quarter holding period — no 1w price-vs-narrative test of MEDIUM conviction yet; initiation thesis pending Q2/Q3 maintenance recurring growth re-acceleration + capital-deployment pace + PEMS deal cadence. Conviction unchanged (medium).
+
+### 2026-07-10
+- Mental models pass: batch-6 evidence sweep populated ## Mental Models — all CLOSE legs refuted, hurdles unchanged, deployment at record pace, but Q1 maintenance printed exactly on the 4% LOW boundary and Lumine's -56% FCFA2S inverts a proof point (also: stake is 61.4% not ~46%) — conviction unchanged (medium); Q2 maintenance FXN print (~Aug) is the mechanical decision point.
+
+### 2026-07-11
+- Status change: conviction medium → high — vault-wide multi-agent valuation scoreboard: 16.9x EV/EBITDA vs 22.5x decade median on delivered +44% FCFA2S growth and record capital deployment; expectations gap is real even with the Q1 maintenance-growth boundary print unresolved. Snapshot: [[_Archive/Snapshots/CSU - Constellation Software (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 0 metrics updated — all 3 mapped rows (Market Cap, Gross Margin, FCF Yield) skipped as implausible: fetched market cap of ~$224M is inconsistent with the known ~$37B+ scale (likely FMP ticker/currency mismatch), and Gross Margin / FCF Yield inherit the same distortion (negative values that contradict known FCFA2S profile). Left unedited pending manual data verification. Snapshot: [[_Archive/Snapshots/CSU - Constellation Software (pre-numbers 20260712-180000)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 3 metrics updated (0 FMP, 3 web: Stock Price, Market Cap [C$ leg], EV/EBITDA via Yahoo Finance/Morningstar/CNBC aggregate search), 0 material. Confirmed root cause of the earlier same-day skip: bare "CSU" resolves to an unrelated US micro-cap (Capital Senior Living Corp) on FMP — Step 4b's name-mismatch trigger caught this and used web search instead. Stock Price C$2,590→C$2,802 (+8.2%); Market Cap C$ leg only C$50–52B→C$59.4B (USD leg left stale, no live FX rate); EV/EBITDA (forward) 16x→15x (source figure may be TTM not forward — convention caveat). Recommend adding `fmp_symbol: CSU.TO` to frontmatter as the permanent fix. Snapshot: [[_Archive/Snapshots/CSU - Constellation Software (pre-numbers 20260712-183640)]]

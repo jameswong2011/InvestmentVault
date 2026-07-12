@@ -6,7 +6,9 @@ status: active
 conviction: high
 sector: Semiconductor Capital Equipment
 ticker: KLA
+fmp_symbol: KLAC
 source: Investor Day Mar 2026 + KLAC FY2025 10-K + Q1 FY26 print + sector vault research base
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-04-30 → Addressed 2026-04-30
 > **Prompt:** *What is the risk of ASML's e-Beam efforts. What are the risks of process control no longer being a standalone process and the step being integrated into other equipment vendors multi-equipment stacks.*
@@ -123,7 +125,7 @@ KLA sits in a category — process control — that is structurally distinct fro
 
 | Metric | Value | Notes |
 |:---|:---|:---|
-| Market Cap | ~$253.6B | Apr 2026; ~$1,884/share |
+| Market Cap | ~$302.4B | Apr 2026; ~$1,884/share |
 | Enterprise Value | ~$253B | Net cash ~$1B (modest) |
 | EV/Revenue (FY25) | ~19.9x | $12.745B revenue |
 | EV/Revenue (FY26E) | ~17.0x | $14.9B consensus |
@@ -131,12 +133,12 @@ KLA sits in a category — process control — that is structurally distinct fro
 | Revenue Growth (FY25) | +17% | $12.745B; AP +70%; service +14% |
 | Revenue Growth (FY26E) | +16-18% | Consensus to $14.9B |
 | Revenue CAGR FY25→FY30 (target) | 15.4% | $12.7B → $26B Investor Day target |
-| Gross Margin | 62.32% | Highest in WFE; expanding |
-| Operating Margin | 43.11% | Highest in WFE; expanding |
-| FCF Yield | ~3.4% | ~$8.6B FCF / $253B market cap |
+| Gross Margin | 61.45% | Highest in WFE; expanding |
+| Operating Margin | 41.68% | Highest in WFE; expanding |
+| FCF Yield | ~1.3% | ~$8.6B FCF / $253B market cap |
 | ROIC | ~73% | Highest in WFE |
-| Net Debt / EBITDA | -0.1x | Net cash position |
-| Dividend Yield | ~0.85% | 17 consecutive years of increases; +21% in Mar 2026 |
+| Net Debt / EBITDA | 0.7x | Net cash position |
+| Dividend Yield | ~0.35% | 17 consecutive years of increases; +21% in Mar 2026 |
 | Buyback Authorization | $7B | Mar 2026 announcement; ~2.7% of cap |
 | Service Revenue Mix | 30-35% | ~$4B; targeting $6B by 2030 |
 | AP Revenue (FY25) | ~$950M | +70% YoY; 25%+ CAGR guide |
@@ -232,9 +234,15 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-1 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] (#2, #6, #13, L2) · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]] (both directions)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#2 qualification-gate (ii)* — CONFIRMED harder: process-control share **58%** (+360bps vs 2021, Q3 FY26 slides); SPC systems revenue guided +20%+ CY26; management: "2027 growth rate higher than 2026"; 2030 model ($26B ±$2.5B, $84 pre-split EPS, $215B WFE, 9% PC intensity) reaffirmed at the Mar-12 Investor Day.
+	- *Virtual-metrology falsifier (thesis #1 risk)* — did NOT fire, and one evidence artifact collapsed: the circulating "TSMC cut inline measurement 60% via VM" claim traces to an April-2025 source that contains no such statement — treat as unsourced. Live direction-of-travel markers only (Intel/ASU graph-attention VM research, Jun 2026). Physics defense unrefuted but still a hypothesis.
+	- *AP intensity (Insight #4)* — MIXED, the pass's biggest negative: KLA's own calendar track is $635M CY25 → ~$1B CY26 (+57%) — below the thesis's ≥$1.4B bar; HBM4 stayed on microbumps (hybrid bonding postponed to 16-hi HBM4E at earliest, Jul 7), pushing the bond-line inflection right; and rivals took the marquee HBM inspection orders — **Camtek >$105M (Jun 2), Onto >$240M VPA** — contesting the "KLA captures 60%+ of new AP categories" hypothesis. Counter: KLA claims +14pt advanced-WLP share gain to #1.
+	- *Service annuity (Insight #2)* — growth ✓ (+16% YoY, LT CAGR model raised to 13–15%), mix ✗: services = **23% of revenue**, not the 30–35% the thesis carries — the $80–100B service-valuation insight needs rebasing on the correct mix.
+	- *VLM alpha test* — the consensus-recognition end-state arrived: 10-for-1 split (Jun 12), fwd P/E re-rated 30–36x → **~46x**, Morgan Stanley cut to Equal-weight citing the ~30% premium to AMAT/LRCX. The multiple, not estimates, drove the move — VLM §4's "quality but priced" verdict is now the market's own position.
+	- *Automation Lens B* — Klarity/RAPID execution-path position unchallenged; ASML eScan encroachment: no 2026 customer wins found. Buyback: measured (~$626M/qtr), front-load hypothesis refuted. China 24% and stable; Skyverse shipping Redwood-900 (claimed 10nm-scale defect detection) — the 5–7yr substitution clock is running, not jumping.
+- **Disconfirming check** (evidence-updated): every model still lands STRONG on the business and the market has now priced it — the intensity-algorithm mispricing claim (Insight #1) required consensus to lag, and at 46x with a sell-side downgrade citing the premium, the lag has closed. What remains unpriced: the AP share contest (Camtek/Onto orders) and the microbump postponement are *negative* surprises consensus hasn't fully carried either. Grinding-bear path ($22B, three years sideways) probability rises with the multiple. Single falsifiers to watch: Jul 28 Q4 print; any real (sourced) fab VM-displacement disclosure; Skyverse at SMIC in patterned-wafer inspection. Batch flag: correlated WFE premise stress-testing live (Jun 25–Jul 8 ~$1.5T complex purge).
 
 ## Related Research
 
@@ -283,3 +291,13 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 
 ### 2026-06-01 (/sync)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: memory WFE capex +26/34/20% + rising EUV layers and HBM4 yield-sensitivity lift process-control/metrology intensity; conviction unchanged (high).
+
+### 2026-07-09
+- Mental models pass: batch-1 sweep populated ## Mental Models — every model lands STRONG (gate #2, VLM infrastructure-layer, Automation Lens B) which per READING PROTOCOL is the disconfirm trigger; "quality but priced" is the outside-view verdict to test each print — conviction unchanged.
+- Mental models pass (evidence rerun): 8-agent web sweep — VM falsifier didn't fire (circulating "TSMC 60% cut" claim debunked at source), PC share 58% (+360bps), but AP tracking ~$1B CY26 not $1.4B, Camtek/Onto took marquee HBM inspection orders, service mix is 23% not 30-35% (thesis figure stale); 10:1 split, ~46x fwd, MS cut to Equal-weight — conviction unchanged; "quality but priced" now the market's own position.
+
+### 2026-07-12
+- Numbers refresh: 6 metrics updated, 2 material. Net Debt/EBITDA flipped -0.1x (net cash) → 0.7x (net debt); FCF Yield compressed 3.4%→1.3%. Snapshot: [[_Archive/Snapshots/KLA - KLA Corporation (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed — all 6 mapped rows (Market Cap, Gross Margin, Operating Margin, FCF Yield, Net Debt/EBITDA, Dividend Yield) round to already-current displayed values. Snapshot: [[_Archive/Snapshots/KLA - KLA Corporation (pre-numbers 20260712-184111)]]

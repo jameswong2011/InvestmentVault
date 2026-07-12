@@ -1,9 +1,9 @@
 ---
 name: deepen
-description: Targeted deep research to fill a specific gap in an existing thesis. Use when user says "deepen", "flesh out", "expand on", "fill in", or specifies a thesis section to improve.
+description: Targeted deep research to fill a specific gap in an existing thesis. Use when user says "deepen", "flesh out", "expand on", "fill in", or specifies a thesis section to improve. Also supports --sync-metrics mode — detects stale financial metrics across every in-scope analytical section of a thesis (not just Key Metrics or Summary) and coherently updates every sentence that depends on them, using a Key-Metrics-table / FMP / web-search waterfall. Use when user says "sync metrics", "update the numbers throughout the note", or "fix stale figures across the whole thesis". The batch form `--sync-metrics --all-flagged` syncs every thesis flagged by the latest `/numbers --all-open` in one operation — detection fanned out to capped READ-ONLY agents, one consolidated confirmation gate, direct sequential writes (agents never write).
 model: opus
 effort: max
-allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * cp * mkdir * defuddle *)
+allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Task Bash(date * cp * mkdir * defuddle * curl * jq *)
 ---
 
 **Follow CLAUDE.md Writing Standards strictly.** No hedge words, lead with insights/numbers, tables over prose, every sentence must earn its place.
@@ -11,9 +11,11 @@ allowed-tools: Read Grep Glob Edit Write WebSearch WebFetch Bash(date * cp * mkd
 Surgically improve one section of an existing thesis with deep research. This is NOT a full thesis rewrite — it's targeted enhancement of the weakest or most requested part.
 
 ## Arguments
-$ARGUMENTS should be: `[TICKER] [optional: section name]`
-- Examples: `NVDA Outstanding Questions`, `BESI Industry Context`, `LITE`, `APP Bull Case`
+$ARGUMENTS should be: `[TICKER] [optional: section name]` OR `[TICKER] --sync-metrics` OR `--sync-metrics --all-flagged`
+- Examples: `NVDA Outstanding Questions`, `BESI Industry Context`, `LITE`, `APP Bull Case`, `PANW --sync-metrics`, `--sync-metrics --all-flagged`
 - If no section is specified, auto-detect the weakest section (see Phase 2)
+- **`--sync-metrics`** is a distinct mode — see `## Metric-Sync Mode` below, inserted after Phase 0. It replaces Phases 1-3 and 5 entirely with its own MS-1 through MS-9 sequence; Phases 0, 4, 4.5, 7, 7.5, 8 are reused (with noted adaptations). Do not fall through to Phase 1 when this flag is present.
+- **`--sync-metrics --all-flagged`** is the **batch** form — see `## Metric-Sync Batch Mode` below. It syncs the whole set of theses flagged by the most recent `/numbers --all-open` Step 10b run in one operation. It does NOT weaken MS-D4: the mandatory confirmation is preserved as exactly ONE consolidated review across the batch, writes are snapshotted under a single rollback batch, and agents are used for detection ONLY — never writes.
 
 ## Phase 0: Pre-flight (MANDATORY — runs before Phase 1)
 
@@ -23,7 +25,7 @@ Acquire a `ticker:TICKER` scope lock per `.claude/skills/_shared/preflight.md` P
 ### 0.2: Rename-marker pre-flight
 Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TICKER` exists at vault root, hard-block per the contract's 2.3 collision message. Rewriting a thesis section while wikilinks are split across old and new names would compound the split — the rewrite would embed wikilinks keyed to the current (new) filename while some inbound references still point to the old name.
 
-Both checks must pass before proceeding to Phase 1.
+Both checks must pass before proceeding to Phase 1 (or, in `--sync-metrics` mode, to Phase 0.3 then 0.4 then the Metric-Sync Mode sequence).
 
 ### 0.3: Section existence probe (only if specific section was specified)
 
@@ -67,6 +69,232 @@ Aborted — no changes made to the thesis.
 
 If auto-detect mode (`$ARGUMENTS` is just TICKER), skip this probe — Phase 2 evaluates only sections that actually exist and scores their weakness. The Phase 2 scoring loop must exclude `## Legacy Callouts` (owned by `/archive-callouts`), `## Log` (Tier 2 append-only), and `## Mental Models` (self-populates via `/sync` per `_shared/mental-models-section.md`; scaffold-empty by design — never auto-target it; deepen it only when explicitly named: `/deepen TICKER Mental Models`) from weakness candidates regardless of their contents.
 
+### 0.4: FMP API key probe (`--sync-metrics` mode only)
+
+Only runs when `--sync-metrics` is the invocation mode — default `/deepen` never touches FMP. Identical probe to `/numbers` Step 0.3 (shared rationale: both skills need FMP access, both fail closed on a missing key rather than silently downshifting):
+
+```bash
+if [ ! -f .data/config.json ]; then
+  echo "❌ FMP API key config missing: .data/config.json"
+  echo "   --sync-metrics requires .data/config.json containing fmp_api_key. See Live Portfolio.md for the canonical format."
+  exit 1
+fi
+API_KEY=$(jq -r '.fmp_api_key // empty' .data/config.json)
+if [ -z "$API_KEY" ] || [ "$API_KEY" = "null" ]; then
+  echo "❌ FMP API key missing or empty in .data/config.json"
+  exit 1
+fi
+echo "FMP_KEY_OK"
+```
+
+On failure, abort `--sync-metrics` mode only.
+
+## Metric-Sync Mode (`--sync-metrics`)
+
+**What this is, and how it differs from default `/deepen`.** Default `/deepen` fills an analytical gap via fresh research (Phase 2 weakness-scoring → Phase 3 research → Phase 5 rewrite of ONE section). `--sync-metrics` is a different operation: it does not judge analytical weakness or add new research — it finds financial metrics stated as *current fact* that have gone stale relative to live data, and coherently updates every sentence in the note that depends on them, so the note never ends up self-contradictory. Confirmed in-vault before this mode existed: PANW carried three different "current price" claims across Summary, a manually-flagged note, and Mental Models — none reconciled; NVDA and NFLX each carried a stale multiple repeated verbatim across 3-4 sections while Mental Models already had the corrected figure. This mode runs Phases 0 (pre-flight, including 0.4 above), 4 (snapshot), 4.5 (manifest, adapted), 7 (`_hot.md`), 7.5 (manifest flip), and 8 (report) from the base flow below; it replaces Phases 1-3 and 5 entirely with MS-1 through MS-9. It skips Phase 2.5 (graph-primer — not a comparative operation) and Phase 6 (no supporting research note — see MS-D3).
+
+### MS-1: Resolve target thesis + fixed section scope
+
+Read `Theses/TICKER - Name.md`. Section scope is fixed, not user-configurable per run — the exclusions are evidence-based, not caution for its own sake (MS-D1).
+
+**In scope** (scanned for stale current-state financial-metric claims): `## Summary`, `## Key Non-consensus Insights`, `## Outstanding Questions`, `## Business Model & Product Description`, `## Industry Context`, `## Risks`, and the **Notes column** of the `## Key Metrics` table (never its Value column — that stays `/numbers`-owned exclusively).
+
+**Never touched, regardless of content:**
+- `## Bull Case`, `## Bear Case` — these reason FROM a fixed anchor TO a scenario target (confirmed in-vault: MRVL's Bear Case computes "the stock de-rates from 36x forward to 22-24x sector trough... driving 40-50% downside from $158" — the `$158` is the deliberate entry-price anchor the scenario is measured from, not stale current data; overwriting it to today's price would invalidate the scenario's math, not fix a staleness bug). If the user wants these re-derived given a new current price, that's `/deepen TICKER "Bull Case"` in default mode (full re-research), not this mode.
+- `## Conviction Triggers` — fixed, falsifiable if/then thresholds the user deliberately set as time-invariant decision criteria. Never auto-touched by any skill; this mode is no exception.
+- `## Mental Models` — self-populating via `/sync`/`/deepen` per `_shared/mental-models-section.md`; evidence shows it's often already the FRESHEST section (NVDA and NFLX both had Mental Models already reflecting a corrected multiple while Summary/Insights lagged) — use it as a corroboration source for what "current" should read (MS-3), never as an edit target.
+- `## Catalysts` — dates/events, not metrics in practice; excluded to keep the scope statement precise.
+- `## Related Research` (no metrics), `## Legacy Callouts` (owned by `/archive-callouts` — reuse the existing Phase 0.3a refused-section table defensively before scanning), `## Log` (Tier 2 append-only, vault-wide rule).
+
+### MS-2: Establish current values — three-tier waterfall (Key Metrics table first, then FMP, web search only as last resort)
+
+For each metric type that might appear in prose (Market Cap, Stock Price, Trailing/Forward P/E, EV/Revenue, EV/EBITDA, Revenue Growth, Gross/Operating/Net Margin, FCF Yield, Net Debt/EBITDA, Dividend Yield — the same taxonomy `/numbers` tracks), resolve the current value in this order, stopping at the first tier that succeeds:
+
+1. **Tier 1 — the thesis's own Key Metrics table**, if `key_metrics_last_refreshed:` frontmatter is within 30 days. Almost always sufficient and costs zero new API calls — `/numbers` already did the FMP fetch; re-fetching would be redundant. Read the table's Value cells directly as ground truth.
+2. **Tier 2 — direct FMP fetch**, if Tier 1 is stale/absent. Same six endpoints, same `fmp_symbol:`/`ticker:` resolution logic, same currency handling as `/numbers` Step 4 (reuse by cross-reference, don't reimplement — if `/numbers`' fetch logic changes, this mode inherits the fix automatically).
+3. **Tier 3 — web search**, only if Tier 2 returns `fetch_gap` or a `quote.name` mismatch against the thesis's company name. Reuse `/numbers` Step 4b's guardrails by cross-reference, not by duplication: field allowlist (Market Cap, Stock Price, Trailing/Forward P/E, EV/Revenue, EV/EBITDA only — never margins/yields/leverage/growth, which need period/GAAP-convention context a search snippet can't carry), one search + at most one follow-up fetch then give up rather than force a low-confidence number, mandatory provenance tag on any web-filled value used downstream.
+
+Record, per metric type: `current_value`, `source_tier` (1/2/3), and if tier 3, the citation.
+
+### MS-3: Scan in-scope sections for current-state financial-metric claims
+
+Judgment task, not a regex sweep — read every in-scope section in full and identify clauses stating **this ticker's own current** value for a tracked metric type. Same exclusion discipline `/numbers` Step 10b already validated:
+
+- **Exclude performance/spec comparisons** even when numerically similar to a tracked metric: "8x-669x faster," "10x lower inference cost," "70% cost reduction" are not price/multiple/margin references.
+- **Exclude historical point-in-time facts**: "FY2026 Revenue: $215.9B (+65% YoY)" is a reported result, not a live figure — it does not go stale. Test: does the clause describe an *ongoing present state* ("trades at," "currently," "the stock is at," a bare "At ~$X (...)" opening framing) or a *completed, dated event* ("reported," "delivered," "FY2025 revenue was")? Only the former is in scope.
+- **Exclude scenario-derived figures** even inside otherwise-in-scope sections — a stray "if X, price could reach $Y" sentence inside Key Non-Consensus Insights is a forward scenario, not a current-state claim; leave it.
+- **Exclude other tickers' figures** mentioned for comparison ("vs AVGO's 28x") — single-ticker scoped; a peer's multiple is not this thesis's metric to correct, and touching it risks the same entity-resolution failure mode already documented for cross-ticker prose edits (`/numbers` Design constraint #8).
+
+For every matched clause, capture: `section`, `verbatim clause`, `metric_type`, `old_value_stated`.
+
+### MS-4: Build dependency clusters and compute staleness
+
+Group matched clauses by `metric_type` where the stated old value is the same or closely matching (fuzzy tolerance — "~30x" / "30x" / "30.2x" cluster together). This is what makes "update dependencies" meaningful: a multiple appearing in Summary, Key Non-Consensus Insights, and twice in Risks is ONE cluster with four locations, not four independent findings.
+
+Compute the delta between `old_value_stated` and MS-2's `current_value` per cluster, classified using `/numbers` Step 5's exact threshold table (no new thresholds invented). Below-threshold clusters are dropped silently — but if a cluster's own locations already disagree with each other (e.g., Summary states one multiple, Mental Models already states a different, corrected one), flag it regardless of computed delta, since internal inconsistency is the failure mode this mode exists to fix, independent of whether the note's number happens to still be within tolerance of the true current figure.
+
+### MS-5: Present unified findings — mandatory confirmation, always
+
+No silent-apply path exists for this mode, regardless of materiality (stricter than default `/deepen`, matching `/numbers` Step 4b's "any web-filled row forces confirmation" precedent — the multi-location blast radius earns the same treatment even when every value came from Tier 1/2 data). Present, per cluster:
+
+```
+[TICKER] Metric-Sync — proposed updates:
+
+Cluster 1: Forward P/E  |  stated ~30x (source: Tier N)  →  current ~22x  |  Δ -26.7% (material)
+  Locations (4):
+    §Summary:                    "...At ~$190 (~$4.6T market cap, ~30x forward P/E), the question is whether
+                                   the moat justifies the premium..."
+      → proposed:                "...At ~$142 (~$3.5T market cap, ~22x forward P/E), the question is whether
+                                   [re-derived: does 'justifies the premium' still follow at 22x, or does the
+                                   compression itself now need characterizing?]..."
+    §Key Non-Consensus Insights:  "Valuation has compressed from 45x+ to ~30x forward P/E — pricing sustained
+                                   dominance but no longer pricing perfection."
+      → proposed:                [re-derived clause, not a blind digit swap]
+    §Outstanding Questions:       [...]
+    §Risks:                       [...]
+
+Cluster 2: [...]
+
+⚠️ N clusters, M total locations across P sections.
+Key Metrics table Notes-column mentions: [count] stale (or "none").
+Bull Case / Bear Case / Conviction Triggers: not scanned (see MS-D1) — [count] scenario-anchored mentions of
+  these same figures exist there and are UNCHANGED; if the scenario math itself needs re-deriving given the
+  new figure, that's a separate `/deepen TICKER "Bull Case"` call.
+
+Confirm all? (y / n / pick clusters to apply)
+```
+
+Wait for explicit response. `n` → abort cleanly, no edits, release lock. Partial-accept (a subset of clusters) is allowed — apply only confirmed clusters, note the deferred ones in the Phase 8 report.
+
+### MS-6: Snapshot
+
+Reuse base Phase 4 mechanics with distinct naming, so `/rollback` and `/lint` can tell a metric-sync snapshot apart from a section-deepen snapshot without ambiguity:
+- Batch ID: `deepen-metrics-sync-TICKER-YYYY-MM-DD-HHMMSS`
+- `snapshot_trigger: metrics-sync` — deliberately NOT `deepen`. This mode creates no supporting research note and its manifest has a different shape than `_deepen-manifest`; reusing `deepen`'s trigger value would make `/rollback`'s deepen-specific manifest cascade (2.5g) try to parse a schema it doesn't expect. `metrics-sync` is not in `/rollback`'s hardcoded recognized-trigger list (`sync, deepen, status, compare, stress-test, prune, rename, catalyst, callout-sweep, thesis, rollback, rollback-cleanup`), so it correctly falls through to the generic Tier A snapshot-restore path — the same pattern `/numbers`' own `snapshot_trigger: numbers` already relies on successfully (also absent from that list).
+
+### MS-6.5: Write metric-sync manifest skeleton (same M3 crash-recovery rationale as base Phase 4.5, adapted schema)
+
+Write `_Archive/Snapshots/_metrics-sync-manifest (deepen-metrics-sync-TICKER-YYYY-MM-DD-HHMMSS).md` — a deliberately distinct filename from `_deepen-manifest` so `/rollback`'s deepen-manifest parser never encounters this shape:
+
+```yaml
+---
+type: metrics-sync-manifest
+batch: deepen-metrics-sync-TICKER-YYYY-MM-DD-HHMMSS
+status: in-progress
+ticker: TICKER
+clusters_confirmed: [list of metric_type values the user confirmed]
+sections_affected: [list of section headings with ≥1 applied edit]
+date: YYYY-MM-DD
+---
+
+# Metric-Sync Manifest
+
+> If `status: in-progress`, the run crashed mid-edit. Check thesis `## Log` for a "Metrics syncing — in
+> progress" provisional entry vs. a finalized "Metrics synced:" entry. Recovery: restore from the snapshot
+> below via `/rollback` (generic Tier A path — `metrics-sync` is not a /rollback-recognized trigger, so this
+> is a plain content restore, which is sufficient since no companion research note exists to also undo).
+
+## Thesis snapshot
+- [[_Archive/Snapshots/TICKER - Company Name (pre-deepen-metrics-sync-YYYY-MM-DD-HHMMSS)]]
+
+## Clusters applied
+*(filled in after MS-7: metric_type, location count, old→new, source tier, per cluster)*
+```
+
+Skeleton write failure → hard abort before MS-7's destructive edits (mirrors base Phase 4.5 contract).
+
+### MS-6.8: Pre-announce Log entry (audit trail before destructive multi-location edit)
+
+```
+### YYYY-MM-DD
+- Metrics syncing — in progress ([N] clusters, [M] locations). Snapshot: [[_Archive/Snapshots/...]]
+```
+
+### MS-7: Apply the coherent multi-location rewrite
+
+For every confirmed cluster, for every location in it: rewrite the clause so its **stated number** matches `current_value` AND its **surrounding conclusion/characterization is re-derived**, not mechanically preserved. This is the core difference from `/numbers`' table-cell edits and the entire reason this mode exists — a table cell has no opinion; a sentence does. Read the clause's function in its sentence (what is it arguing, concluding, or characterizing?), then rewrite the whole clause so that argument is re-evaluated against the new number, using the same judgment a human analyst would apply re-reading their own note. Do not find-and-replace the digit and leave an adjacent qualifier ("no longer pricing perfection," "demands flawless execution," "still elevated") unexamined — that qualifier is exactly the dependency the user asked to have updated.
+
+Batch all Edits for a given thesis file in one tool-call block (same rationale as `/numbers` Step 8: the harness serializes same-file Edits server-side).
+
+**Notes-column preservation invariant carries over from `/numbers`**: if a cluster's location is inside the Key Metrics table's Notes cell, the surrounding row's Value cell (owned by `/numbers`) must remain byte-identical — this mode edits Notes-cell prose only, never the Value column (MS-D6).
+
+**Provenance for Tier-3 (web-sourced) values**: any cluster whose `current_value` came from Tier 3 gets an explicit source citation folded into the Log entry (MS-7.5), matching `/numbers` Step 4b's mandatory tagging rule — never silently indistinguishable from Tier 1/2 data.
+
+### MS-7.5: Finalize Log entry
+
+Replace the provisional entry atomically:
+```
+### YYYY-MM-DD
+- Metrics synced: [N] clusters updated across [M] locations in [P] sections ([X] via Key Metrics table, [Y]
+  via FMP direct, [Z] via web: [source]). [Single most significant cluster in plain prose, e.g. "Forward P/E
+  30x→22x, reconciled across Summary/Insights/Questions/Risks"]. Snapshot: [[_Archive/Snapshots/...]]
+```
+Verify-and-retry mechanics identical to base Phase 5c (grep-probe the provisional string is gone; on stuck-provisional, append `↳ CORRECTION: Metrics synced:` rather than re-editing).
+
+**Prefix `Metrics synced:` is canonical — skill-origin, registered in `_shared/log-prefixes.md` §20.** Reconciling a note's own stale numbers against fresh data is the same class of operation as `Numbers refresh:` — hygiene, not a new analytical finding — so `/sync` skips downstream sector/macro propagation for it exactly as it does for `Numbers refresh:`. `/sync` Step 2.5's enumeration and Step 3e drift-exclusion list were updated atomically with this change.
+
+### MS-8: Frontmatter (conditional)
+
+If MS-2 pulled fresh data via Tier 2 or Tier 3 this run (the thesis's own Key Metrics table was stale and this mode fetched independently), also update `key_metrics_last_refreshed: YYYY-MM-DD`. If MS-2 used Tier 1 exclusively, leave frontmatter untouched (already current).
+
+### MS-9: `_hot.md`, manifest flip, report
+
+Reuse base Phases 7, 7.5, 8 verbatim, with these substitutions in Phase 8's report:
+- "Which section was deepened and why" → "N clusters synced across M locations in P sections; Q locations left unedited (why)"
+- Add: "Bull Case / Bear Case scenario-anchored mentions of the same figures: unchanged — [list, or 'none found']. Consider `/deepen TICKER \"Bull Case\"` if the scenario itself needs re-deriving."
+- Add: "Data source mix: [T1 count] from Key Metrics table, [T2 count] FMP direct, [T3 count] web search (cited)."
+
+## Design constraints — Metric-Sync mode (MS-D, xxx DO NOT VIOLATE xxx)
+
+**MS-D1. Section scope is fixed and evidence-based, not a caution default.** In scope: Summary, Key Non-Consensus Insights, Outstanding Questions, Business Model & Product Description, Industry Context, Risks, Key Metrics Notes cells. Excluded, each for a distinct confirmed reason: Bull/Bear Case (scenario-anchored math — MRVL's `$158` entry-price anchor), Conviction Triggers (fixed decision thresholds), Mental Models (self-populating elsewhere, often already the freshest section), Catalysts (no metrics in practice), Legacy Callouts (auto-archive), Log (append-only), Related Research (no metrics). Widening this scope is a deliberate re-opening of this constraint, not a routine extension — confirm explicitly before implementing.
+
+**MS-D2. Every edit re-derives the surrounding argument — never a blind digit swap.** The entire premise of this mode (versus simply extending `/numbers` to touch prose, which was explicitly considered and rejected earlier — see `/numbers` constraint #8) is that a stale number's adjacent conclusion/qualifier must be re-examined, not preserved by default.
+
+**MS-D3. No supporting research note is ever created.** Matches `/numbers` constraint #3 — this is hygiene/consistency maintenance, not new research. `Metrics synced:` carries no qualitative claim beyond "these figures are now internally consistent," so there is nothing to preserve in `/Research/`.
+
+**MS-D4. Mandatory confirmation, no exceptions.** Every run — regardless of materiality, regardless of cluster count — pauses for explicit user confirmation before any edit. The bare `--sync-metrics` is single-ticker, one invocation at a time, given the larger blast radius per file than either default `/deepen` or `/numbers`. A batch form (`--sync-metrics --all-flagged`, see `## Metric-Sync Batch Mode`) exists for the `/numbers --all-open` → sync-the-flagged workflow, but it does NOT relax this constraint: it preserves the gate as exactly ONE consolidated review across the whole batch and never delegates writes to agents (BM-D1/BM-D4). Batch scale *consolidates* the confirmation; it never removes it.
+
+**MS-D5. Tier waterfall is Key-Metrics-table-first, then FMP, web search last — and web search stays inside `/numbers` Step 4b's field allowlist.** Never widen the web-search field allowlist for this mode independently of `/numbers` constraint #10 — if that constraint changes, this mode inherits the change by cross-reference, not independent drift.
+
+**MS-D6. The Notes-column preservation invariant (inherited from `/numbers` constraint #1) applies to the Key Metrics sub-target.** This mode may edit a Notes CELL's prose (that IS in scope — it's exactly the kind of hidden staleness this mode exists to catch, e.g. a Notes cell referencing a stale market cap after `/numbers` already refreshed that row's own Value cell elsewhere), but must never touch the Value column of any Key Metrics row.
+
+## Metric-Sync Batch Mode (`--sync-metrics --all-flagged`)
+
+Runs `--sync-metrics` across a whole flagged set in one operation. It exists because the canonical workflow is `/numbers --all-open` (batch metric refresh) → sync every thesis its **Step 10b** flags as carrying stale Summary/prose price-framing — a need the single-ticker mode could not serve, which forced fragile ad-hoc orchestration until this was codified (post-mortem 2026-07-12: the improvised fan-out ran two agents to the 64k-token ceiling, truncated a notification, and wedged the session stop-hook via mid-run kills — none of which the single-ticker path can hit). This mode is a *hardened* version of that orchestration, not a loosening of MS-D4.
+
+**Input — the flagged set.** The ticker list is the "Summary framing stale (Step 10b)" section of the most recent `/numbers --all-open` batch report (already in context), or the tickers the user names explicitly. Never re-scan the whole vault to reconstruct it.
+
+### BM-1: Pre-flight
+`vault-wide` lock (batch touches many files — not per-ticker). Rename-marker glob (`.rename_incomplete.*`) — hard-block on any. FMP key probe **only if** any target's `key_metrics_last_refreshed` is >30 days old; a set just refreshed by `/numbers --all-open` is Tier-1 throughout (zero fetches).
+
+### BM-2: Snapshot the ENTIRE set first, before any edit
+One Bash loop: `cp` each target thesis to `_Archive/Snapshots/<base> (pre-deepen-metrics-sync YYYY-MM-DD-HHMMSS).md`, insert snapshot frontmatter (`snapshot_trigger: metrics-sync`, shared `snapshot_batch: deepen-metrics-sync-batch-YYYY-MM-DD-HHMMSS`). Write ONE batch manifest `_Archive/Snapshots/_metrics-sync-manifest (deepen-metrics-sync-batch-…).md` (`status: in-progress`) listing every snapshot. The whole batch is now reversible with a single `/rollback <batch>` (generic Tier-A restore — `metrics-sync` is not a /rollback-recognized trigger, so it falls through to plain content restore, sufficient since no companion research notes exist).
+
+### BM-3: Detection fan-out — READ-ONLY, hard-capped (every guardrail below = a live failure this prevents)
+Dispatch agents (via `Task`) to run **MS-1 → MS-4 only** (resolve, Tier-1 current values from the refreshed Key Metrics table, scan in-scope sections, cluster + materiality) and return a COMPACT report. Non-negotiable guardrails:
+- **≤2 theses per agent, and detection-ONLY — NO drafted rewrites in-agent.** Three big theses + verbatim clauses + full rewrites overflowed the 64,000-token output ceiling (twice) and truncated the notification channel (once). The verbose deliverable (verbatim anchor clause + re-derived rewrite per location) is the caller's job in BM-5, not the agent's.
+- **Hard output cap (<500 words/agent).** Instruct explicitly: quote only the single stale sentence per location; if nearing the cap, drop detail — never exceed it.
+- **Use a read-only agent type** (no Edit/Write tools) so an agent physically cannot mutate the vault mid-detection.
+- **Retrieve results via the completion NOTIFICATION only. NEVER `TaskOutput` on a `local_agent`** — its `.output` is the raw JSONL transcript (base64-encoded), not the clean result; reading it corrupts caller context and returns no usable data.
+- **Size agents right the first time; do NOT kill agents mid-run.** Killing `local_agent`s leaves the harness's "running subagent" counter stuck, which wedges the stop-hook for the remainder of the session. If a group must be re-run, let it finish first, then re-dispatch only the affected 1-2 tickers (capped, detection-only).
+
+### BM-4: Consolidate
+Merge all agents' clusters into ONE review: per ticker — stale figures old→current, delta/materiality, in-scope location count; group by magnitude. **Flag data-quality anomalies:** a refreshed value that will not reconcile with its own share-count / USD parenthetical / EV is either a bad `/numbers` fetch OR a genuine large move — **verify via one web search before trusting or discarding it; never assume either.** (2026-07-12: 6981's ¥17.95T market cap looked like bad data but was real — this check caught it and turned "hold" into "fix".)
+
+### BM-5: ONE consolidated confirmation gate (MS-D4 preserved at batch scale)
+Present the full review. The **caller** (not an agent) drafts the re-derived rewrites (MS-D2) for the flagged tickers. Wait for explicit `all` / a named subset / `none`. Partial-accept is allowed; note deferred tickers in the report. No silent-apply path exists — batch scale consolidates the gate into one pass, it does not remove it.
+
+### BM-6: Apply — DIRECT and sequential (agents never write)
+For each confirmed thesis, the **caller** applies edits itself: verbatim `old_string` → re-derived `new_string`, verifying each anchor against the live file; batch same-file edits in one message; respect MS-D1 exclusions (Bull/Bear/Conviction Triggers/Mental Models/Catalysts/Log/Related Research untouched) and confirm the section of any ambiguous line-number anchor before editing (a short section-header grep prevents editing an excluded section). Append a `Metrics synced:` Log entry per thesis (registry §20 — `/sync` skips propagation). Then flip the batch manifest to `completed`, update `_hot.md` Active Research Thread (ONE consolidated entry; respect the hot-md cap), release the lock, and report with the `/rollback <batch>` handle plus any per-thesis follow-up flags (e.g. a corrected figure that pushes a thesis past its own Bull/Bear anchor → recommend `/status` or a full `/deepen`, which sync itself never does).
+
+**Batch design constraints (BM-D, xxx DO NOT VIOLATE xxx):**
+- **BM-D1. Agents do DETECTION only — never WRITES.** A runaway or misfiring agent must never mutate a thesis. This is the single most important guardrail; every write is the caller's, applied directly.
+- **BM-D2. Retrieval is notification-only; `TaskOutput` on `local_agent`s is prohibited** (returns transcript, not results, and corrupts context).
+- **BM-D3. Agents are never killed mid-run;** correct sizing (≤2 theses, capped, detection-only) removes the need — and mid-run kills wedge the session stop-hook.
+- **BM-D4. The mandatory-confirmation gate is preserved as exactly ONE consolidated review.** Batch scale consolidates the gate; it never removes it (MS-D4 intent intact).
+- **BM-D5. MS-D1 exclusions apply batch-wide** — scenario-anchored / self-populating sections stay untouched for every thesis in the batch.
+- **BM-D6. Snapshot the whole set before the first edit, under one `snapshot_batch`** — so the entire operation reverts with a single `/rollback`.
+
 ## Phase 1: Load Context
 
 **Two-round parallel-batch pattern.** The only serial dependency is that research-note and sector-note paths are resolved from the thesis's `sector:` frontmatter and Related Research wikilinks — so the thesis must be read before the downstream batch can fire. Everything else parallelizes.
@@ -83,6 +311,7 @@ Issue ALL of these in ONE message as a single parallel tool-call batch:
 - **Read** the Sector Note.
 - **Read** every research note linked from the thesis (Related Research + Log-mentioned wikilinks).
 - **Read** every Macro note referenced by the thesis (from body or Log wikilinks) and any macro note tagged with the same sector.
+- **Mental Models reading gate (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** Include in this batch: `Mental Models/Generalist - Overview.md` + the ticker's matching `Industry -` file + any `Lens -` file the thesis touches, AND re-read the thesis's own `## Mental Models` section (already loaded in Round 1). Every deepen renders judgement, not just Mental-Models-targeting ones. Apply the READING PROTOCOL: the Phase 3 research must test the section's recorded trigger-hypotheses against the new evidence (which fired, retired, or materially changed?) — that delta feeds the Phase 5b side-update; where new findings AGREE with the existing thesis read, hunt the single falsifying datapoint before rewriting the section. Output one "trigger delta" line in the Phase 8 report: `Mental-model trigger delta: fired/retired/changed: […] | none`.
 
 Do NOT serialize — one parallel batch lands in ~one round-trip.
 
@@ -370,6 +599,7 @@ Tell the user:
 - Which section was deepened and why it was the priority
 - Snapshot saved to: `[[_Archive/Snapshots/...]]`
 - The 2-3 most important new findings
+- `Mental-model trigger delta: fired/retired/changed: […] | none` (from the Phase 1 gate — one line, always present)
 - Whether conviction should be reassessed based on what was found
 - Theses requiring `/sync`: [list any tickers where cross-references suggest propagation is needed]
 - **Run `/sync` to propagate these findings to affected sector notes, macro notes, and cross-thesis references.**

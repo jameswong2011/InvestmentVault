@@ -9,7 +9,7 @@ sector: Vertical Market Software
 # Vertical Market Software
 
 ## Active Theses
-- [[Theses/CSU - Constellation Software]] — Canadian decentralized serial acquirer of vertical-market software businesses (~700+ acquisitions across six operating groups: Harris, Volaris, Topicus, Vela, Jonas, Perseus). Q1 2026 deployed $1.59B in 135 days matching full-year 2025; PEMS minority strategy (Sabre, Asseco) opens engineered second deployment channel preserving small-deal IRR discipline. Spinoff sum-of-parts arbitrage widening (Topicus +38% YTD, Lumine FCFA2S +2.5x since 2023 spin). Post-Leonard transition to Mark Miller (30-yr Volaris veteran) institutionalized via decentralized federated model. AI-disruption sell-off (-33% from peak) misreads moat — 65-75% of portfolio in regulated/operationally-locked workflows; AI-native challengers cannot raise capital for $5-50M-TAM verticals. Conviction medium. Status: draft (promote via `/status CSU status draft→active` when ready).
+- [[Theses/CSU - Constellation Software]] — Canadian decentralized serial acquirer of vertical-market software businesses (~700+ acquisitions across six operating groups: Harris, Volaris, Topicus, Vela, Jonas, Perseus). Q1 2026 deployed $1.59B in 135 days matching full-year 2025; PEMS minority strategy (Sabre, Asseco) opens engineered second deployment channel preserving small-deal IRR discipline. Spinoff sum-of-parts arbitrage widening (Topicus +38% YTD, Lumine FCFA2S +2.5x since 2023 spin). Post-Leonard transition to Mark Miller (30-yr Volaris veteran) institutionalized via decentralized federated model. AI-disruption sell-off (-33% from peak) misreads moat — 65-75% of portfolio in regulated/operationally-locked workflows; AI-native challengers cannot raise capital for $5-50M-TAM verticals. Conviction high (updated 2026-07-11 per vault-wide scoreboard). Status: draft (promote via `/status CSU status draft→active` when ready).
 
 ## Key industry questions
 
@@ -222,7 +222,7 @@ Where non-consensus insights emerge:
 
 ## Related Research
 
-- [[Theses/CSU - Constellation Software]] — Primary thesis; Canadian decentralized VMS serial acquirer at MEDIUM conviction (draft).
+- [[Theses/CSU - Constellation Software]] — Primary thesis; Canadian decentralized VMS serial acquirer at HIGH conviction (draft; updated 2026-07-11).
 - [[Theses/PCOR - Procore Technologies]] — Construction vertical SaaS; AI agent monetization arc as forward indicator for CSU portfolio's exposed 25-35%.
 - [[Theses/INTU - Intuit]] — SMB accounting + tax vertical SaaS; AI-disruption multiple compression and defensibility-via-data-network parallel.
 - [[Building & Construction Software]] — Construction-specific vertical SaaS sector; CSU Jonas operating group adjacency.

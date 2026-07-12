@@ -1,7 +1,7 @@
 ---
 type: shared-contract
 purpose: Canonical list of wikilink forms every skill must match when searching for a reference to a vault note. Prevents 5-fold repetition across SKILL.md files.
-last_reviewed: 2026-04-20
+last_reviewed: 2026-07-09
 ---
 
 # Wikilink Form Matching Contract
@@ -26,7 +26,7 @@ Forms 3 and 4 can combine: `[[Folder/BASE#section|alias]]`.
 
 ## Canonical regex (Grep pattern)
 
-For a wikilink-presence check where `BASE` is the note basename and `FOLDER` is one of `Research`, `Theses`, `Sectors`, `Macro`:
+For a wikilink-presence check where `BASE` is the note basename and `FOLDER` is one of `Research`, `Theses`, `Sectors`, `Macro & Technology`:
 
 ```regex
 \[\[(FOLDER/)?BASE(\.md)?(#[^\]|]+)?(\|[^\]]+)?\]\]

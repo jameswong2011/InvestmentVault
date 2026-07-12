@@ -147,10 +147,19 @@ Proposed change:
   Field: [conviction | status]
   Change: [old] → [new]
   Rationale: [from $ARGUMENTS]
+  Trigger alignment: [see below]
   Side effects: [list what will be updated — sector note, archive move, graph cleanup]
 
 Confirm? (y/n)
 ```
+
+**Trigger alignment (falsifiability discipline — READING PROTOCOL).** Before presenting the prompt, read the thesis's `## Conviction Triggers` section (the Step 1 read already loaded it) and fill the `Trigger alignment:` line with exactly one of:
+- `confirms [→ HIGH/LOW/CLOSE if …]` — **quote the matching trigger verbatim**; the change is a pre-defined hypothesis firing.
+- `overrides [→ … if …]` — quote the conflicting trigger; the change contradicts an active trigger (same condition Step 4 #3 warns on).
+- `outside triggers` — the section exists but no trigger covers this change; the rationale stands alone.
+- `none defined — unfalsifiable change` — the thesis has **no** `## Conviction Triggers` section (~38 theses); state it plainly and suggest `/deepen TICKER Conviction Triggers` (Case A scaffold) after the change.
+
+This converts every Tier-3 decision into a hypothesis test against the thesis's own pre-registered falsifiers at zero extra reads. It never blocks — the user may confirm any alignment value — but a bare assertion is now visibly bare.
 
 **Do NOT proceed without explicit user confirmation.** Investment decisions per CLAUDE.md Tier 3.
 
@@ -181,6 +190,7 @@ transition_type: conviction | status | reaffirm
 field: conviction | status
 old_value: [parsed]
 new_value: [parsed]
+trigger_alignment: confirms [quoted trigger] | overrides [quoted trigger] | outside triggers | none defined
 date: YYYY-MM-DD
 ---
 
@@ -262,7 +272,7 @@ snapshot_batch: status-TICKER-YYYY-MM-DD-HHMMSS
    - Status change: conviction [old] → [new] — [rationale]. Snapshot: [[_Archive/Snapshots/...]]
    ```
    Prefix `"Status change: conviction"` — `/sync` Step 3e drift anchor (registry §6). Do not change; `/lint #29` flags drift.
-3. **Conviction trigger check** (§7): read Conviction Triggers section. New level contradicts active trigger (e.g., → `high` but a `→ LOW if X` trigger is active) → `⚠️ Active trigger conflicts with new conviction: [quote trigger]. Confirm this is intentional.`
+3. **Conviction trigger check** (§7): read Conviction Triggers section. New level contradicts active trigger (e.g., → `high` but a `→ LOW if X` trigger is active) → `⚠️ Active trigger conflicts with new conviction: [quote trigger]. Confirm this is intentional.` **Section absent** (~38 theses): skip the conflict check gracefully — do NOT abort — and emit `⚠️ No ## Conviction Triggers section — this change is unfalsifiable as recorded; consider /deepen TICKER Conviction Triggers (Case A scaffold).` The Step 2 `Trigger alignment:` line already carries `none defined` in this case.
 
 ### Status changes (non-closure)
 

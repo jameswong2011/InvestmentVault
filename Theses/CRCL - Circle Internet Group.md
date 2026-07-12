@@ -6,6 +6,7 @@ status: monitoring
 conviction: medium
 sector: Blockchain & Stablecoins
 ticker: CRCL
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # Circle Internet Group (CRCL) — The Regulated Dollar Protocol Mispriced as a Money Market Fund
@@ -259,8 +260,8 @@ Cross-border correspondent banking: 3-5 day settlement, $25-50 per retail transf
 
 | Metric | Value | Notes |
 |---|---|---|
-| **Stock Price** | ~$107.57 | April 14, 2026; IPO at $31 (June 5, 2025) |
-| **Market Cap** | ~$21B | |
+| **Stock Price** | ~$66.14 | April 14, 2026; IPO at $31 (June 5, 2025) |
+| **Market Cap** | ~$18B | |
 | **EV/Revenue (FY25)** | ~7.8x | On $2.7B revenue |
 | **P/S (TTM)** | ~11.2x | vs peer average 10.3x |
 | **FY2025 Revenue** | $2.7B | +64% YoY |
@@ -338,9 +339,14 @@ Circle remains a leveraged bet on interest rates with a permanently value-destru
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-10 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- VLM verdict: **NO FIT** — two §2 disqualifiers fired simultaneously. (1) Layer-renter masquerading as layer-owner: ~59% of revenue flows to Coinbase for distribution, and the distribution layer squeezed the issuer twice in one quarter (Hyperliquid AQAv2 keeps up to 90% of reserve income on its ~$5.7B USDC pool; Coinbase joined the rival consortium). (2) Falling switching costs / commoditizing layer: fiat stablecoins are near-perfect substitutes, and the VLM's own kill-signal — "an open-standard substitute reaching parity" — fired Jun 30: Open USD (OUSD), 140+ partners incl. Stripe, Visa, Mastercard, BlackRock, Coinbase, zero fees, near-full yield pass-through.
+	- [G-6] network-effects check: USDC's liquidity network is real (record 67–70% of stablecoin volume; $1.79T June) but the moat test fails — circulation CONTRACTED ~$4B in Q2 to ~$73B while volume records printed: usage without economics.
+	- [G-13] expectations: the thesis's central asymmetry (Coinbase renegotiation leverage, Aug 2026) is INVERTED — Coinbase now negotiates holding the OUSD alternative; Circle's cirBTC launch (Jun 9) signals an adversarial, not cooperative, endgame. Stock $63.77 (Jul 9) = -41% vs entry, -79% from peak; the bear case repriced in one week (-17% day one, ~-45% on the week). x402 dollar volume (~$40.7M cumulative) runs ~2 orders of magnitude below the thesis's own low band; EURC "2–3 yr non-replicable monopoly" was replicated in months (5→8 MiCA euro stablecoins in H1).
+	- Rate overlay: Warsh hike bias is a reserve-income tailwind (+~$441M/100bp) but the crypto-risk-appetite channel dominates the equity — Q2 contraction proves the second-order effect wins.
+	- Structural gap: **no ## Conviction Triggers section** — only an upgrade condition exists ("high on Coinbase renegotiation + CPN volume"); no → LOW / → CLOSE was ever defined, so there is no pre-agreed arbiter for the downgrade the evidence now argues for (conviction medium→low review flagged — user decision per Tier 3).
+- **Disconfirming check** (evidence-updated 2026-07-10): the residual bull is the fee-pivot option — but CPN at $8.3B ANNUALIZED TPV is 0.004% of the claimed $208T TAM (<$1.2M revenue run-rate), three orders of magnitude from thesis math. Single falsifying datapoint for what remains: the August Coinbase renewal terms — a worse revenue split or a Coinbase OUSD-promotion commitment ends the "Visa transition" story. Base rate: issuers of commodity products with rented distribution do not become toll-collectors; they become utilities priced at the yield curve.
 
 ## Related Research
 
@@ -379,3 +385,12 @@ Circle remains a leveraged bet on interest rates with a permanently value-destru
 
 ### 2026-06-10 (/sync)
 - [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]]: NET Investor Day quantified x402 adoption (Cloudflare serving 2B HTTP 402/day; x402 Foundation co-founded w/ Coinbase & Stripe) — cross-validates the agentic-payment-rail thesis underpinning USDC 99% x402 settlement (Insight #3). Conviction unchanged (medium) — supportive third-party datapoint, no CRCL-specific delta.
+
+### 2026-07-10
+- Mental models pass: batch-10 evidence sweep populated ## Mental Models — VLM NO FIT (layer-renter + commoditizing-layer disqualifiers fired); Open USD consortium (Jun 30, 140+ partners incl. Coinbase/Visa/Stripe) is the bear case in amplified form, Coinbase renegotiation leverage inverted, stock -41% vs entry — conviction unchanged (medium) but medium→low review flagged for user decision; Aug Coinbase renewal is the binary.
+
+### 2026-07-12
+- Numbers refresh: 3 metrics updated (2 changed value), 1 material. Stock Price ~$107.57→~$66.14 (-38.5%, corroborates the Mental Models section's already-noted -41% vs entry). Market Cap ~$21B→~$18B (non-material). FY2025 Revenue unchanged at $2.7B (new figure rounds identically). Snapshot: [[_Archive/Snapshots/CRCL - Circle Internet Group (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Stock Price, Market Cap, and FY2025 Revenue all round to the same displayed values as the prior pass (data refreshed <1hr ago this session). Snapshot: [[_Archive/Snapshots/CRCL - Circle Internet Group (pre-numbers 20260712-183936)]]

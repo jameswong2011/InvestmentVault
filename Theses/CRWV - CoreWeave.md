@@ -7,6 +7,7 @@ conviction: medium
 sector: Neoclouds & GPU-as-a-Service
 ticker: CRWV
 source: CoreWeave Q1 2026 earnings (May 7 2026, $2.08B revenue, $99.4B backlog), DDTL 4.0 facility disclosure (March 2026, $8.5B IG-rated GPU-collateralized debt), NVIDIA $2B follow-on equity investment (January 2026), [[Research/2025-06-09 - CRWV - CoreWeave Deep Dive]]
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # CRWV - CoreWeave
@@ -101,7 +102,7 @@ CoreWeave sits in the **non-hyperscaler GPU infrastructure layer** — between N
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$59B (~$120/share, ~490M shares) | Mid-Q2 2026; range $43-200 12-month analyst targets |
+| Market Cap | ~$48B (~$120/share, ~490M shares) | Mid-Q2 2026; range $43-200 12-month analyst targets |
 | EV/Revenue (FY26E) | ~6.5x ($59B equity + $21.6B debt - $1.6B cash = $79B EV / $12-13B FY26 revenue) | Premium to AWS/Azure-comp (3-5x) but discount to early Snowflake-comparable hypergrowth (12-15x) |
 | Revenue Growth (FY25→FY26E) | $5.13B → $12-13B = +134-153% | Q1 2026 +112% YoY; backlog 17x current revenue suggests multi-year continuation |
 | Gross Margin (FY25) | 71.7% | Pre-D&A and pre-interest; the 56% adj EBITDA margin is post-SG&A but pre-D&A/interest |
@@ -190,9 +191,15 @@ The drivers that break the thesis:
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-4 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (Perez frenzy, reflexivity) · [[Industry - Semiconductors]] (#3, #10) · [[Lens - Value Layer Monopoly]] (layer-renter test)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *The Summary's core premise is now CONTESTED by a new competitor class the trigger set never anticipated*: "hyperscaler capex cannot keep pace with demand" met **Meta Compute** (Jul 1 — first hyperscaler selling excess capacity, GPU-hours "the same way neoclouds do") and **xAI/SpaceX renting all of Colossus 1 to Anthropic** ($1.25B/mo, 90-day termination either side). A secondary-supply class exists that didn't at thesis creation; CRWV -13.9% on the Meta news. Meta's dual role (marquee $35.2B customer AND named competitor) is a backlog-*quality* question, not just concentration. **The trigger set has no condition covering this — add one.**
+	- *Contract-vs-spot bifurcation is the correct frame and currently protects the P&L*: 98% of Q1 revenue take-or-pay; SemiAnalysis reports H100s renewing at ~100% of original rates (HIGH-trigger re-rent leg trending MET at 100% vs the >70% bar) — while B200 spot fell -31% in 3 weeks and the 90-day-out xAI-Anthropic template undermines the assumption that FUTURE deals carry 5–7yr take-or-pay terms. The DDTL amortization-cliff mechanic (Insight #2) now has named supply sources setting the 2027–28 re-contracting price.
+	- *Trigger scoreboard*: LOW/CLOSE — 0 fired (Moody's A3 stable, dilution ~8% <15%, adj EBITDA 56% >40%, GM 68% vs 65% line with 3pts runway). HIGH — 2 of 3 trending (Anthropic + Google + Jane Street = real diversification; re-rent at par); MSFT renewal leg resolves Q3–Q4 with Maia 200 deployed at scale as the bear counter-weight. Yet the stock is -40% YTD to ~$86/$47B — the market repriced the *premise* while the triggers stayed silent.
+	- *Credit market leads equity (Insight #2 extended)*: A3 secured DDTL at 5.9% vs **9.75% unsecured notes** — the structural-subordination wedge priced the residual risk in April that equity only priced in July; converts now ~40% out-of-the-money; ~$120B of sector AI debt moved off-books via SPVs (systemic leverage larger than reported). Interest expense annualizing $2.1B+ on the thesis's modeled path; FCF -$4.7B in Q1.
+	- *#10 anchor + execution*: Core Scientific deal TERMINATED (shareholder vote) — single-builder dependence persists on the same counterparty whose delays drove the securities class action; >1GW active, $99.4B backlog (+284%), Vera Rubin first bring-up (a weeks-long lead, not quarters); CEO sold $37.7M the day before the Meta news.
+	- *VLM layer-renter verdict unchanged and sharpening*: CRWV rents the layer below (NVIDIA allocation + silicon) and sells into a consolidating layer above (labs multi-sourcing with short-notice exits); the durable layers in this stack are NVIDIA's and the grid's. Perez frenzy-phase read: CRWV is the infrastructure over-builder whose capacity becomes the *next* cycle's cheap substrate — the thesis's Lucent analog is the right reference class.
+- **Disconfirming check** (evidence-updated): the thesis said to size the position around credit risk and counterparty cadence — that discipline is validated: the July damage came through the demand-premise channel, not a credit event, and no LOW/CLOSE trigger fired. The steelman for the bull: $18B exit-ARR floor raised, four largest labs all customers, re-rents at par. Single falsifiers, dated: Q2 print (~Aug — GM vs 65% line, Meta Compute commentary); MSFT renewal disclosure Q3–Q4; any DDTL outlook change. Base rate: levered infrastructure builders at 2.2x interest coverage into a supply-normalizing market rarely re-rate up before a full credit cycle passes — the convexity here is in the debt pricing, not the equity multiple. Fresh callout (2026-05-16, Chanos arguments) remains unaddressed — flag.
 
 ## Related Research
 
@@ -231,3 +238,12 @@ The drivers that break the thesis:
 
 ### 2026-06-03 (/sync)
 - [[Research/2026-06-03 - Neoclouds NBIS vs CRWV - deep-dive]] + [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]: New public peer [[Theses/NBIS - Nebius Group]] created (cleaner balance sheet; execution-vs-credit framing). 40% H100 1-yr contract-rate rebound (Oct'25 $1.70→Mar'26 $2.35) partially rebuts the rental-compression bear thread; rental-economics framework bounds neocloud pricing ($4.92 floor / $9.63-12.25 ceiling at Vera Rubin). Conviction unchanged (medium) — rebound is demand-cyclical not structural; DDTL re-rent risk intact.
+
+### 2026-07-10
+- Mental models pass: batch-4 evidence sweep populated ## Mental Models — core premise contested by a competitor class the triggers never anticipated (Meta Compute + xAI→Anthropic 90-day-out template); 0 LOW/CLOSE triggers fired yet stock -40% YTD — the market repriced the premise; contract book (98% take-or-pay, H100 re-rents at par) protects near-term P&L while credit market already priced the wedge (9.75% unsecured vs 5.9% secured); add a hyperscaler-excess-capacity trigger; 05-16 Chanos callout still unaddressed — conviction unchanged (medium); Q2 ~Aug, MSFT renewal Q3-Q4.
+
+### 2026-07-12
+- Numbers refresh: 1 metric updated, 0 material. Market Cap ~$59B→~$48B (-17.8%, non-material). Snapshot: [[_Archive/Snapshots/CRWV - CoreWeave (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed — Market Cap rounds to already-current ~$48B. Snapshot: [[_Archive/Snapshots/CRWV - CoreWeave (pre-numbers 20260712-184111)]]

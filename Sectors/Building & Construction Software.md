@@ -9,7 +9,7 @@ sector: Building & Construction Software
 # Building & Construction Software
 
 ## Active Theses
-- [[Theses/PCOR - Procore Technologies]] — Construction-execution PMIS dominant in ENR Top 200. Thesis hooks: Datagrid AI-agent monetization wedge (per-seat → consumption); 15-year proprietary execution data moat vs Autodesk ACC; Davis CEO operator-succession pattern (Ansys/Tyler analog); labor-shortage-forced adoption past the late-majority inflection; data-center mega-project ARPU mix shift. HIGH triggers: Q3 2026 AI agent ARPU >$2K/pilot + NRR >112% + Datagrid ≥8 live workflows. CLOSE triggers: AIA Billings sub-50 6+ more months AND rev growth <10%, OR Davis replaced within 18mo. Conviction medium.
+- [[Theses/PCOR - Procore Technologies]] — Construction-execution PMIS dominant in ENR Top 200. Thesis hooks: Datagrid AI-agent monetization wedge (per-seat → consumption); 15-year proprietary execution data moat vs Autodesk ACC; Davis CEO operator-succession pattern (Ansys/Tyler analog); labor-shortage-forced adoption past the late-majority inflection; data-center mega-project ARPU mix shift. HIGH triggers: Q3 2026 AI agent ARPU >$2K/pilot + NRR >112% + Datagrid ≥8 live workflows. CLOSE triggers: AIA Billings sub-50 6+ more months AND rev growth <10%, OR Davis replaced within 18mo. Conviction high (updated 2026-07-11 per vault-wide scoreboard).
 
 ## Key industry questions
 - Does the per-seat-to-consumption pricing transition ([[Theses/PCOR - Procore Technologies|Procore]] Datagrid, Autodesk Construction Copilot, Trimble AI Assistant) re-rate vertical-SaaS multiples back to 8-10x EV/Rev, or do horizontal AI agents (OpenAI, Anthropic) disintermediate workflow software in construction execution by 2028-2030?

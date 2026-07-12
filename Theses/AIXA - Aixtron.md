@@ -3,10 +3,12 @@ publish: true
 date: 2026-04-29
 tags: [thesis, semiconductors, AIXA, MOCVD, photonics]
 status: active
-conviction: high
+conviction: medium
 sector: Semiconductor Capital Equipment
 ticker: AIXA
+fmp_symbol: AIXA.DE
 source: https://www.aixtron.com/en/investors
+key_metrics_last_refreshed: 2026-07-12
 ---
 > [!question] 2026-04-30 [[pinned]] → Addressed 2026-04-30
 > **Prompt:** *Describe the physics of MOCVD equipment, how its applied to photonics and InP in a specialised way compared to other deposition equipment types. Compare and contrast existing solutions in the market. Summarise with a assessment of AIXA's moat against new entrants that already have deposition know-how.*
@@ -156,7 +158,7 @@ This is disruption-immunity through small-TAM specialization — the inverse of 
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~€2.4B | XETRA: AIXA, ~€21/share, +138% YTD 2026 |
+| Market Cap | ~€4.9B | XETRA: AIXA, ~€21/share, +138% YTD 2026 |
 | EV/Revenue (FY2026E) | ~4.0x | EV ~€2.1B (€2.4B mcap - €0.33B net cash); FY2026 €520M ±€30M guide (Feb 2026 FY25 call) |
 | EV/Revenue (FY2027E consensus) | ~3.0x | Consensus FY2027 ~€690M (Bloomberg), reflects mix-shift acceleration |
 | Revenue Growth FY2026E | -6.6% | €557M actual → €520M ±€30M guide midpoint; a second down year after -12% FY2025 (opto doubling offset by SiC/LED decline) |
@@ -166,7 +168,7 @@ This is disruption-immunity through small-TAM specialization — the inverse of 
 | EBIT Margin Q1 2026 | -38% | Light-revenue quarter, ~€100M revenue / €135M fixed cost = operating deleverage |
 | FCF Yield FY2025 | ~3.5% | Modest at trough revenue; expands to 5-7% on FY2027 ramp under base case |
 | Net Cash | ~€330M | No debt; 4-6 quarters runway through any trough |
-| Forward P/E | ~32x (FY2027E) | Cycling between SiC-equipment (~25-30x) and photonics (~40-55x) bands |
+| Forward P/E | ~60x (FY2027E) | Cycling between SiC-equipment (~25-30x) and photonics (~40-55x) bands |
 
 Reference comparables (multiples on FY2026E consensus; Kerrisdale Nov-2025 comparable set updated to current consensus where available):
 
@@ -373,9 +375,13 @@ Position risks (thesis is right but stock goes down anyway):
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-1 pass, evidence-tested against July-2026 web research; supersedes and corrects the same-day earlier entry, which wrongly carried FY26 guidance as €520M "guided-down" — the guide was RAISED 2026-04-14): [[Generalist - Overview]] (S-curve, reflexivity, expectations) · [[Industry - Semiconductors]] (#2, #8, #13, #14, #19) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#14 reclassification* — CONFIRMED accelerating: FY2026 guide **raised** to €560M ±30M with EBIT margin 17–20% (Apr 14); Q1 orders €171.4M (+30% YoY) at **>65% optoelectronics**; equipment backlog €359.1M (+17%) with advance payments doubled to €79M (~22% of backlog — prepayment-backed, not speculative); equipment revenue already 52% opto. **HIGH trigger: 2 of 3 legs met** (≥60% opto order share ✓, guide reaffirmed-or-raised ✓); leg 3 = Q3 opto ≥40% of equipment revenue + EBIT ≥20% — pending.
+	- *#2 qualification-gate window* — probed but LOW trigger NOT tripped: Veeco booked $250M+ InP-related orders (May 4–6) from unnamed 800G/1.6T transceiver makers, but a substantial portion is Spector IBD facet coating (Veeco's own incumbency), not 6-inch InP MOCVD; Lumina+ qualification at Ennostar (Jun 11) is LED-class As/P. AIXA's MOCVD incumbency intact — and counter-confirmed by a **named-customer order: Lumentum placed multiple G10-AsP orders (May 19)**. Demand underwriting deepened: Coherent's $650M Sherman groundbreaking (Jun 16, quadrupling InP output, first volume 6-inch line), NVIDIA ~$6B into the photonics supply chain in one quarter ($2B each LITE/COHR/MRVL). Keep the 2–3yr window clock running — Veeco order flow into InP is real.
+	- *S-curve split* — holding as read: InP leg mid-chasm and compounding; 800V GaN leg still pre-chasm — 800V ships 3Q26 as *optional* on Vera Rubin, broad adoption at Rubin Ultra (2H27); GaN "just under 10%" of order intake, "stable but soft" per Q1 call. First concrete AI-DC GaN win: **ROHM selected G10-GaN for 8-inch epi insourcing (Jun 8–10)**. Size the two legs asymmetrically, as before.
+	- *#19 / reflexivity* — the fragility fired on schedule: **-7.9% on Jul 7** on the "revenue conversion gap" (Q1 revenue €59.4M, -47%, EBIT -38% vs the raised FY guide's implied H2 hockey-stick) plus a new non-demand tail risk — **China's gallium export-control suspension expires ~Nov 2026** (Herzogenrath input supply). Stock €44.65 (Jul 9), roughly +110% since April; fwd P/E ~40x; Jefferies €73 / consensus ~€52 — sell-side revisions are doing what the multiple no longer can; the Kerrisdale gap is consumed.
+- **Disconfirming check** (evidence-updated): the reclassification is confirming while the operating proof lags a full quarter behind the repricing — the single test is the **Jul 30 H1 report**: Q2 guided €110M ±10M (near-doubling from Q1); delivery validates the conversion machinery, a miss fires the LOW trigger (backlog conversion <80% seasonal pace) into a tape that just showed (Jul 2–8, complex-wide) it sells conversion doubt violently. Base rate unchanged: consensus 2027 (~€690M) already assumes +25%; the Kerrisdale path needs two consecutive +40% years — rare outside shortage regimes, and the InP wave is precisely a shortage-regime claim whose leading indicator is AIXA's own backlog. Batch flag: still the batch's diversifier (photonics-cycle correlated, not WFE-structural), now with a gallium-supply idiosyncratic tail.
 
 ## Related Research
 
@@ -423,3 +429,16 @@ Sector and macro context:
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: CPO external-laser ramp (each Nvidia CPO switch = 18 ELS × 8 CW DFB chips) reinforces InP MOCVD demand — corroborates the central optoelectronics mix-shift thesis (G10-AsP). Conviction unchanged (high).
+
+### 2026-07-09
+- Mental models pass: batch-1 sweep populated ## Mental Models — #14 reclassification (SiC-cyclical → photonics semi-cyclical compounder, LITE-pattern) + time-boxed #2 gate fired; S-curve split identified (InP mid-chasm vs 800V pre-chasm single-customer) — conviction unchanged.
+- Mental models pass (evidence rerun): 8-agent web sweep — CORRECTS same-day entry: FY26 guide was RAISED to €560M±30M (Apr 14), not held; HIGH trigger 2/3 legs met (opto >65% orders, guide raised), Lumentum G10-AsP orders named (May 19), Coherent $650M Sherman quadrupling InP, Veeco LOW trigger not tripped ($250M orders mostly Spector IBD); -7.9% Jul 7 on conversion gap + gallium-suspension expiry (Nov 2026) — conviction unchanged; Jul 30 H1 report is the single live test.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: Q1 revenue €59.4M (-47%) against €171M orders leaves a large backlog-to-revenue conversion gap at ~50x NTM / ~8.4x FY26E sales; monopoly window is explicitly time-boxed 2-3yr and Veeco is sharing the wave at the edges. Snapshot: [[_Archive/Snapshots/AIXA - Aixtron (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 2 material. Market cap +105% (~€2.4B→~€4.9B); forward P/E +86% (~32x→~60x). Snapshot: [[_Archive/Snapshots/AIXA - Aixtron (pre-numbers 20260712-180000)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Market Cap and Forward P/E both identical to prior refresh after rounding. Snapshot: [[_Archive/Snapshots/AIXA - Aixtron (pre-numbers 20260712-183935)]]

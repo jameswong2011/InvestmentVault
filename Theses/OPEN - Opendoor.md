@@ -7,6 +7,7 @@ conviction: medium
 sector: PropTech & Real Estate Marketplaces
 ticker: OPEN
 source: Multi-source synthesis (ChatGPT, Gemini Canvas, Claude, web research)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # OPEN — Opendoor Technologies
@@ -102,11 +103,11 @@ Opendoor's ~67% share of the dedicated iBuyer segment sounds commanding, but the
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~$4.93 | 52-week range: $0.51 - $10.87 |
-| Market Cap | ~$4.2B | 958M shares outstanding |
+| Stock Price | ~$4.77 | 52-week range: $0.51 - $10.87 |
+| Market Cap | ~$3.7B | 958M shares outstanding |
 | EV/Revenue (TTM) | ~1.0x | FY2025 revenue $4,371M |
 | Revenue Growth | -15.2% YoY | FY2025 $4,371M vs FY2024 $5,153M |
-| Gross Margin | ~7.5% | Q4 2025: 7.7% (up 50bps QoQ) |
+| Gross Margin | ~7.9% | Q4 2025: 7.7% (up 50bps QoQ) |
 | Contribution Margin | 1-4.8% | Q4 2025: 1% (legacy inventory clearing); target: 5-7% |
 | Adj. EBITDA (Q4 2025) | -$43M | Q2 2025 was +$23M (first positive since 2022) |
 | FCF (Q4 2025) | +$67M | Swung positive from -$83M YoY |
@@ -163,9 +164,13 @@ Opendoor's ~67% share of the dedicated iBuyer segment sounds commanding, but the
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Execution legs CONFIRMING: Q1 (May 7) contribution margin 4.4%, aged inventory 51%→10%, GM 10.0%, $999M cash ("highest in years"), Q2 guided to adjusted-EBITDA breakeven, India ops fully cut (250 roles, Jun 10 — the 200-employee target being executed), Doma escrow acquired + Opendoor Mortgage launched (new capital-light layers); analyst median lifted $1.60→$5.00 — the thesis's central anomaly (price 3x consensus) resolved in the bulls' favor and NO LONGER EXISTS (price ~$5.28 ≈ median).
+	- Macro legs REFUTED: Warsh dot plot (Jun 17) raised the median to 3.8% end-2026 with NINE hike dots — the "rate cuts unlock the lock-in cohort" leg is structurally dead for the breakeven window; mortgages stuck at 6.49%, June existing sales falling at record prices. The option bet now rests entirely on self-help in a frozen market.
+	- Unresolved wedge: GAAP net loss DOUBLED to -$173M while adjusted loss narrowed to -$49M — if the adjusted-vs-GAAP gap is recurring, "adjusted breakeven" can be achieved and still fail to re-rate. Volume ramp short of plan (2,474 homes bought vs the 6,000/qtr target); revenue -37.5% YoY (the smaller-book pivot makes EV/Revenue framing stale).
+	- Meme-base decay tracking the outside view: -21% H1 (slow deflation, not collapse); chief evangelist Jackson distracted (crypto/Nextdoor); warrant cliff 2026-11-20 — the $9/$13/$17 cash-exercise warrants likely expire worthless, removing both the anti-short mechanism and the ~$1B contingent raise. New governance variable: ISS/Glass Lewis opposed Nejatian items; retail "Open Army" carried the vote (Jun 11). Offerpad near-terminal (1-for-10 reverse split) — category monopoly total, but also base-rate evidence on iBuyer economics.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate hostile — no iBuyer has ever earned through a cycle, and the improving quarter occurred in flat-to-rising prices; declining-price resilience untested. Single falsifying datapoint: the Jul 30 Q2 print vs the guided adjusted-EBITDA breakeven — a miss with the warrant cliff 4 months out and the Fed hawkish removes every 2026 catalyst simultaneously. Formalize Conviction Triggers before Jul 30. NO Conviction Triggers section; Key Metrics materially stale.
 
 ## Related Research
 
@@ -195,3 +200,12 @@ Opendoor's ~67% share of the dedicated iBuyer segment sounds commanding, but the
 
 ### 2026-05-22 (manual)
 - Status change: portfolio-wide realignment — not in current Live Portfolio holdings; status closed→monitoring, conviction low→medium.
+
+### 2026-07-10
+- Mental models pass: batch-9 evidence sweep populated ## Mental Models — execution confirming (CM 4.4%, aged inventory 10%, breakeven guided) but the macro leg is dead (Warsh nine hike dots) and the price-vs-consensus anomaly closed from both sides; warrant cliff Nov 20 — conviction unchanged (medium); Jul 30 Q2 print vs guided adjusted-EBITDA breakeven is the falsification event.
+
+### 2026-07-12
+- Numbers refresh: 4 metrics updated, 0 material. Market Cap ~$4.2B→~$3.7B (-13%, largest delta, not material); Stock Price ~$4.93→~$4.77, Gross Margin ~7.5%→~7.9%, Revenue Growth unchanged at -15.2%. Snapshot: [[_Archive/Snapshots/OPEN - Opendoor (pre-numbers 20260712-173653)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Stock Price, Market Cap, Revenue Growth, and Gross Margin all round to the same displayed values as the prior pass. Snapshot: [[_Archive/Snapshots/OPEN - Opendoor (pre-numbers 20260712-183936)]]

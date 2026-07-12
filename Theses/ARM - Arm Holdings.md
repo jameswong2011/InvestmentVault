@@ -7,6 +7,7 @@ conviction: low
 sector: Compute & AI Compute Accelerators
 ticker: ARM
 source: FY2026 full-year + Q4 FYE26 results (May 2026) + AGI CPU "Phoenix" launch (Mar 24, 2026) + FTC antitrust investigation opened (May 15, 2026) + Qualcomm/Nuvia litigation final judgment (2025) + sell-side coverage + vault sector/research context
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # ARM — Arm Holdings plc
@@ -99,14 +100,14 @@ See [[Sectors/Compute & AI Compute Accelerators]] for the full CPU-layer competi
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$410–435B | At ~$412/share (early Jun 2026); 52-wk high $427.99 (Jun 2); +277% YTD. companiesmarketcap cited ~$373.5B at an earlier-June price |
+| Market Cap | ~$344B | At ~$412/share (early Jun 2026); 52-wk high $427.99 (Jun 2); +277% YTD. companiesmarketcap cited ~$373.5B at an earlier-June price |
 | EV/Revenue | ~80x (range ~76–88x) | On FY26 $4.92B; minimal net debt (~$3B net cash) — extreme vs any semi peer |
 | Revenue Growth | +22.8% (FY26); ~20% (Q1 FY27 guide) | Third straight year >20%; Q1 FY27 guide $1.26B ±$50M |
-| Gross Margin | 98.3% (non-GAAP) | Pure-IP economics; AGI CPU silicon will dilute blended GM toward 40–50% on that revenue |
-| FCF Yield | ~0.2% | $882M non-GAAP FCF on ~$410B+ cap |
-| Fwd P/E | ~200x (cited ~190x at lower price) | Trailing P/E ~480x; priced for perfection + a successful pivot |
+| Gross Margin | 94.6% (non-GAAP) | Pure-IP economics; AGI CPU silicon will dilute blended GM toward 40–50% on that revenue |
+| FCF Yield | ~0.3% | $882M non-GAAP FCF on ~$410B+ cap |
+| Fwd P/E | ~149x (cited ~190x at lower price) | Trailing P/E ~480x; priced for perfection + a successful pivot |
 | Royalty / Licensing | $2.61B (+21%) / $2.31B (+25%) | Datacenter royalty >2x YoY |
-| Operating Margin | 43.0% non-GAAP (from 46.7%) | Declining — 33% opex growth (R&D hiring for AGI CPU) |
+| Operating Margin | 18.3% non-GAAP (from 46.7%) | Declining — 33% opex growth (R&D hiring for AGI CPU) |
 | Mean Analyst PT | ~$245 (range $120–$500) | ~38% **below** the ~$412 price; 28 buy / 10 hold / 2 sell (~40 analysts); Mizuho high $360→$500 |
 | Armv9 mix | ~31% of royalties | Passed v7; v8 still 44% — rate-mix runway remains |
 | CSS | ~19 licenses / ~11 companies; 5 shipping | >10% royalty rate; >1B Neoverse cores deployed |
@@ -193,3 +194,9 @@ At ~$412 (~200x forward, ~80x EV/sales, +277% YTD, ~38% above the mean target) A
 
 ### 2026-06-09
 - Initial thesis created. Conviction: low — the non-consensus core is that the market conflates ARM's ~50% hyperscaler CPU **ISA share** with **royalty-dollar capture**: the frontier (NVIDIA custom Olympus, Qualcomm Oryon/Nuvia, Apple, hyperscaler in-house) is migrating to lowest-royalty ALAs, so $/socket compresses even as share climbs. The AGI CPU "Phoenix" (Mar 24, 2026; 136 Neoverse V3 cores, Meta co-dev, >$2B FY27–28 booked) is a defensive vertical-integration land-grab — ARM spending 35 years of ecosystem neutrality to capture downstream dollars — not pure optionality (bull) or simple margin dilution (Morgan Stanley bear). Compounding ecosystem-trust erosion: Qualcomm/Nuvia litigation loss (2025 final judgment), FTC antitrust probe opened May 15 2026, and RISC-V at ~25% penetration with ARM's own top customers adopting (Meta/Rivos, Qualcomm/Ventana, NVDA 40+ RISC-V MCUs) — the real RISC-V accelerant. Royalty is a durable rate×content tax (Armv9 ~5% vs v8 2.5–3%, only 31% of royalties so runway remains; CSS >10%) but increasingly concentrated in a contested datacenter cohort. Low not medium: ~200x fwd / ~80x EV/sales / +277% YTD / ~38% ABOVE the $245 mean target, operating margin already declining 46.7%→43.0%, $882M FCF (~0.2% yield) — price embeds flawless execution of a strategy that is antagonizing the ecosystem; negative skew at entry. Low not avoid-entirely: elite franchise (98.3% GM, 22M devs, 350B+ chips, 3rd straight 20%+ revenue year), real datacenter inflection (royalty >2x YoY), x86 self-harm tailwind. FY26 rev $4.92B (+22.8%); royalty $2.61B (+21%); licensing $2.31B (+25%); Q1 FY27 guide $1.26B. Sector: Compute & AI Compute Accelerators. Status: draft (excluded from /catalyst, /prune, conviction drift). /thesis run. Run `/graph last`.
+
+### 2026-07-12
+- Numbers refresh: 5 metrics updated, 3 material. Operating margin 43.0%→18.3% (largest delta — FMP-sourced figure likely reflects GAAP incl. SBC drag vs the thesis's non-GAAP framing; directionally consistent with the "margin already declining" pillar). Market Cap range ~$410–435B collapsed to point estimate ~$344B; Fwd P/E ~200x→~149x; Gross Margin 98.3%→94.6%; FCF Yield ~0.2%→~0.3%. Revenue Growth left unedited (new figure rounds to same displayed text). Snapshot: [[_Archive/Snapshots/ARM - Arm Holdings (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap, Revenue Growth, Gross Margin, FCF Yield, Fwd P/E, and Operating Margin all round to the same displayed values as the prior pass (all deltas <0.5%). Snapshot: [[_Archive/Snapshots/ARM - Arm Holdings (pre-numbers 20260712-183936)]]

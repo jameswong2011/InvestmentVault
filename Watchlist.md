@@ -6,7 +6,7 @@ status: active
 
 # Watchlist — All Theses
 
-**Last refreshed:** 2026-06-29 20:06 — 69/69 tickers (FMP) · 27 live holdings
+**Last refreshed:** 2026-07-09 16:06 — 70/70 tickers (FMP) · 27 live holdings
 
 > [!tip] How this works
 > Tracks every thesis ticker (active / monitoring / draft — `closed` excluded) against trailing returns and NTM P/E. Pulls live from FMP using the same `.data/config.json` key as [[Live Portfolio]]. Click **Refresh** to pull the latest data. In the chart below: **green** = currently held in [[Live Portfolio]], **red** = watchlist only (researched, not held). Live-Portfolio membership is re-read from its rendered Holdings table on every refresh — add/remove a row there and Watchlist's green/red flips on next refresh.
@@ -67,6 +67,7 @@ const TICKERS = [
   { n: 'TOTO',                    t: '5332.T',       s: 'draft'      },
   { n: 'AppLovin',                t: 'APP',          s: 'monitoring' },
   { n: 'Cameco',                  t: 'CCJ',          s: 'monitoring' },
+  { n: 'Cerebras',                t: 'CBRS',         s: 'draft'      },
   { n: 'Circle Internet',         t: 'CRCL',         s: 'monitoring' },
   { n: 'CrowdStrike',             t: 'CRWD',         s: 'monitoring' },
   { n: 'CoreWeave',               t: 'CRWV',         s: 'monitoring' },
@@ -321,75 +322,76 @@ btn.onclick = async () => {
 
 | #   | Name                    | Ticker       | Status     | Live | 1W %   | 1M %   | 3M %    | 1Y %     | NTM P/E |
 | --- | ----------------------- | ------------ | ---------- | ---- | ------ | ------ | ------- | -------- | ------- |
-| 1   | Aehr Test Systems       | AEHR         | active     | Y    | -10.3% | -1.9%  | +131.8% | +610.1%  | -685.1  |
-| 2   | Aixtron                 | AIXA.DE      | active     | Y    | -6.9%  | -7.2%  | +53.6%  | +231.0%  | 71.1    |
-| 3   | AMD                     | AMD          | active     | Y    | +0.3%  | +2.2%  | +148.1% | +267.6%  | 69.8    |
-| 4   | Applied Materials       | AMAT         | active     | Y    | +7.0%  | +36.8% | +77.2%  | +242.4%  | 51.2    |
-| 5   | ASM International       | ASM.AS       | active     | Y    | -3.9%  | +10.1% | +41.8%  | +75.8%   | 43.1    |
-| 6   | BE Semiconductor        | BESI.AS      | active     | Y    | -6.2%  | +0.1%  | +48.4%  | +119.1%  | 68.0    |
-| 7   | Broadcom                | AVGO         | active     | Y    | -4.0%  | -20.6% | +16.4%  | +32.4%   | 31.5    |
-| 8   | Cheniere Energy         | LNG          | active     | N    | +3.2%  | +6.0%  | -12.4%  | -0.8%    | -242.6  |
-| 9   | Cloudflare              | NET          | active     | Y    | +5.4%  | -12.5% | +15.4%  | +21.1%   | 197.9   |
-| 10  | Games Workshop          | GAW.L        | active     | Y    | +8.7%  | +12.4% | +25.6%  | +36.3%   | 3691    |
-| 11  | IQE                     | IQE.L        | active     | N    | -2.3%  | -11.7% | +93.8%  | +372.3%  | -3498   |
-| 12  | KLA Corp                | KLAC         | active     | Y    | +1.7%  | +28.2% | +63.6%  | +177.6%  | 67.1    |
-| 13  | Lam Research            | LRCX         | active     | Y    | +2.1%  | +19.5% | +70.8%  | +289.4%  | 66.7    |
-| 14  | Lumentum                | LITE         | active     | Y    | -1.3%  | -9.7%  | +6.8%   | +759.4%  | 99.6    |
-| 15  | Marvell                 | MRVL         | active     | Y    | -4.4%  | +21.6% | +150.0% | +244.7%  | 93.8    |
-| 16  | Murata Manufacturing    | 6981.T       | active     | Y    | -2.4%  | +2.4%  | +192.6% | +398.6%  | 89.7    |
-| 17  | Nvidia                  | NVDA         | active     | Y    | -3.8%  | -14.2% | +9.5%   | +21.9%   | 41.0    |
-| 18  | Palantir                | PLTR         | active     | Y    | -3.2%  | -29.7% | -22.9%  | -17.2%   | 77.7    |
-| 19  | Palo Alto Networks      | PANW         | active     | Y    | +4.6%  | +1.2%  | +89.3%  | +48.7%   | 80.6    |
-| 20  | Procore Technologies    | PCOR         | active     | N    | +7.7%  | -24.1% | -26.9%  | -38.7%   | 24.9    |
-| 21  | Sandisk                 | SNDK         | active     | Y    | +6.5%  | +18.7% | +201.8% | +4510.2% | 31.9    |
-| 22  | ServiceNow              | NOW          | active     | Y    | +2.5%  | -27.6% | -5.5%   | -52.2%   | 23.7    |
-| 23  | Shopify                 | SHOP         | active     | Y    | +8.5%  | -5.8%  | -1.4%   | +1.3%    | 65.7    |
-| 24  | Sivers Semiconductors   | SIVE.ST      | active     | N    | -22.6% | +11.4% | +508.1% | +1642.9% | -171.6  |
-| 25  | SK Hynix                | 000660.KS    | active     | Y    | +2.9%  | +11.2% | +194.3% | +800.0%  | 8.4     |
-| 26  | Spotify                 | SPOT         | active     | Y    | +1.0%  | -9.4%  | -2.1%   | -40.1%   | 36.3    |
-| 27  | Take-Two Interactive    | TTWO         | active     | Y    | -1.7%  | +5.1%  | +20.3%  | -1.8%    | 61.0    |
-| 28  | TSMC                    | TSM          | active     | Y    | -0.9%  | -0.8%  | +26.6%  | +90.9%   | 0.9     |
-| 29  | Vicor                   | VICR         | active     | Y    | -2.7%  | -0.6%  | +106.7% | +620.7%  | 107.4   |
-| 30  | Advantest               | 6857.T       | monitoring | Y    | +1.7%  | +24.4% | +42.0%  | +199.9%  | 68.9    |
-| 31  | Ajinomoto               | 2802.T       | monitoring | Y    | +2.9%  | +8.1%  | +25.8%  | +48.8%   | 43.6    |
-| 32  | AppLovin                | APP          | monitoring | N    | +2.2%  | -22.3% | +23.0%  | +36.3%   | 29.6    |
-| 33  | Cameco                  | CCJ          | monitoring | N    | -4.0%  | -7.2%  | -6.0%   | +40.8%   | 65.9    |
-| 34  | Circle Internet         | CRCL         | monitoring | N    | -2.8%  | -29.9% | -18.9%  | -59.4%   | 72.1    |
-| 35  | CoreWeave               | CRWV         | monitoring | N    | -8.6%  | -22.6% | +23.1%  | -40.8%   | -28.5   |
-| 36  | CoStar Group            | CSGP         | monitoring | N    | -0.0%  | -10.7% | -23.7%  | -62.4%   | 22.3    |
-| 37  | CrowdStrike             | CRWD         | monitoring | N    | +3.0%  | -10.4% | +78.3%  | +37.7%   | 188.8   |
-| 38  | Duolingo                | DUOL         | monitoring | N    | -8.1%  | +3.0%  | +26.3%  | -70.4%   | 42.9    |
+| 1   | Aehr Test Systems       | AEHR         | active     | Y    | -3.0%  | -28.0% | -3.6%   | +410.8%  | -506.6  |
+| 2   | Aixtron                 | AIXA.DE      | active     | Y    | -8.1%  | -22.4% | +12.0%  | +167.4%  | 58.5    |
+| 3   | AMD                     | AMD          | active     | Y    | -0.1%  | +8.8%  | +111.2% | +273.8%  | 69.4    |
+| 4   | Applied Materials       | AMAT         | active     | Y    | -5.4%  | +14.3% | +42.8%  | +192.0%  | 46.6    |
+| 5   | ASM International       | ASM.AS       | active     | Y    | -5.1%  | -0.6%  | +17.4%  | +72.7%   | 40.1    |
+| 6   | BE Semiconductor        | BESI.AS      | active     | Y    | -7.9%  | -16.0% | +14.1%  | +97.9%   | 58.9    |
+| 7   | Broadcom                | AVGO         | active     | Y    | +7.8%  | -0.9%  | +4.6%   | +39.9%   | 33.6    |
+| 8   | Cheniere Energy         | LNG          | active     | N    | +6.1%  | +9.0%  | -1.7%   | +10.6%   | -102.6  |
+| 9   | Cloudflare              | NET          | active     | Y    | +12.8% | +15.8% | +63.8%  | +41.3%   | 228.3   |
+| 10  | Games Workshop          | GAW.L        | active     | Y    | -6.7%  | +7.7%  | +5.4%   | +24.6%   | 3342    |
+| 11  | IQE                     | IQE.L        | active     | N    | -9.2%  | -7.5%  | +3.1%   | +285.4%  | -2743   |
+| 12  | KLA Corp                | KLAC         | active     | Y    | -6.1%  | +3.4%  | +27.3%  | +139.6%  | 59.7    |
+| 13  | Lam Research            | LRCX         | active     | Y    | -5.2%  | +1.8%  | +26.4%  | +233.8%  | 58.6    |
+| 14  | Lumentum                | LITE         | active     | Y    | -2.9%  | -14.0% | -21.2%  | +681.8%  | 86.2    |
+| 15  | Marvell                 | MRVL         | active     | Y    | -5.5%  | -13.2% | +80.3%  | +220.7%  | 81.5    |
+| 16  | Murata Manufacturing    | 6981.T       | active     | Y    | -13.3% | -2.8%  | +127.3% | +337.7%  | 78.7    |
+| 17  | Nvidia                  | NVDA         | active     | Y    | +4.8%  | -2.0%  | +8.2%   | +25.3%   | 43.5    |
+| 18  | Palantir                | PLTR         | active     | Y    | +2.3%  | +0.1%  | +3.2%   | -7.6%    | 90.7    |
+| 19  | Palo Alto Networks      | PANW         | active     | Y    | -7.9%  | +23.1% | +105.9% | +55.6%   | 85.0    |
+| 20  | Procore Technologies    | PCOR         | active     | N    | -0.3%  | -4.1%  | -7.1%   | -40.1%   | 26.1    |
+| 21  | Sandisk                 | SNDK         | active     | Y    | -1.0%  | +4.9%  | +102.8% | +3638.5% | 26.0    |
+| 22  | ServiceNow              | NOW          | active     | Y    | +1.4%  | +0.8%  | +29.9%  | -46.8%   | 25.9    |
+| 23  | Shopify                 | SHOP         | active     | Y    | -0.2%  | +8.0%  | +7.6%   | +4.3%    | 66.7    |
+| 24  | Sivers Semiconductors   | SIVE.ST      | active     | N    | -19.7% | -48.5% | +193.7% | +871.9%  | -99.6   |
+| 25  | SK Hynix                | 000660.KS    | active     | Y    | -2.3%  | -3.6%  | +108.0% | +660.1%  | 6.6     |
+| 26  | Spotify                 | SPOT         | active     | Y    | -0.2%  | -2.2%  | +1.9%   | -32.8%   | 38.3    |
+| 27  | Take-Two Interactive    | TTWO         | active     | Y    | -1.4%  | +18.5% | +27.6%  | +3.8%    | 64.3    |
+| 28  | TSMC                    | TSM          | active     | Y    | +0.6%  | +2.1%  | +17.9%  | +88.5%   | 0.9     |
+| 29  | Vicor                   | VICR         | active     | Y    | -7.0%  | -7.2%  | +41.8%  | +463.3%  | 86.5    |
+| 30  | Advantest               | 6857.T       | monitoring | Y    | +1.8%  | +11.4% | +17.3%  | +167.1%  | 63.3    |
+| 31  | Ajinomoto               | 2802.T       | monitoring | Y    | -4.9%  | +20.7% | +23.5%  | +45.2%   | 43.1    |
+| 32  | AppLovin                | APP          | monitoring | N    | -0.9%  | +0.3%  | +33.4%  | +48.0%   | 32.4    |
+| 33  | Cameco                  | CCJ          | monitoring | N    | -1.9%  | -7.4%  | -18.4%  | +32.4%   | 59.7    |
+| 34  | Circle Internet         | CRCL         | monitoring | N    | -0.9%  | -21.0% | -27.2%  | -68.1%   | 62.8    |
+| 35  | CoreWeave               | CRWV         | monitoring | N    | +10.1% | -8.6%  | -11.8%  | -41.2%   | -25.3   |
+| 36  | CoStar Group            | CSGP         | monitoring | N    | -2.2%  | -13.5% | -19.6%  | -65.3%   | 21.6    |
+| 37  | CrowdStrike             | CRWD         | monitoring | N    | -1.5%  | +18.5% | +101.7% | +48.9%   | 205.9   |
+| 38  | Duolingo                | DUOL         | monitoring | N    | +1.4%  | +8.2%  | +41.7%  | -67.4%   | 45.0    |
 | 39  | E Ink Holdings          | 8069.TW      | monitoring | N    | —      | —      | —       | —        | —       |
-| 40  | Edelweiss Financial     | EDELWEISS.NS | monitoring | N    | -5.1%  | +8.8%  | +13.8%  | +4.3%    | —       |
-| 41  | FormFactor              | FORM         | monitoring | N    | -8.4%  | +13.6% | +29.6%  | +279.9%  | 53.3    |
-| 42  | Hims & Hers Health      | HIMS         | monitoring | N    | +3.0%  | +22.3% | +71.1%  | -31.9%   | -282.6  |
-| 43  | Intel                   | INTC         | monitoring | N    | -3.0%  | +17.4% | +167.2% | +472.9%  | 119.3   |
-| 44  | Intuit                  | INTU         | monitoring | N    | +3.7%  | -24.3% | -37.1%  | -66.0%   | 11.2    |
-| 45  | Intuitive Surgical      | ISRG         | monitoring | N    | +0.3%  | -1.9%  | -13.0%  | -25.6%   | 38.7    |
-| 46  | John Deere              | DE           | monitoring | N    | +3.6%  | +13.1% | +7.5%   | +20.6%   | 33.9    |
-| 47  | Kambi Group             | KAMBI.ST     | monitoring | N    | -2.5%  | -10.0% | +35.8%  | +16.3%   | 274.6   |
-| 48  | Kioxia                  | 285A.T       | monitoring | N    | -4.2%  | +22.0% | +305.7% | +3433.8% | 92.8    |
-| 49  | Meta                    | META         | monitoring | N    | -2.1%  | -8.4%  | -5.0%   | -25.4%   | 16.7    |
-| 50  | Netflix                 | NFLX         | monitoring | N    | +1.4%  | -14.0% | -22.8%  | -44.9%   | 20.7    |
-| 51  | Opendoor                | OPEN         | monitoring | N    | +4.0%  | -17.7% | -4.4%   | +719.9%  | -12.7   |
-| 52  | Pinterest               | PINS         | monitoring | N    | +6.4%  | -2.6%  | +13.6%  | -42.0%   | 11.0    |
-| 53  | Pure Storage            | PSTG         | monitoring | N    | +15.6% | +2.1%  | +41.2%  | +49.7%   | 44.3    |
-| 54  | Reliance Industries     | RELIANCE.NS  | monitoring | N    | -0.6%  | -1.4%  | -5.0%   | -13.3%   | 21.6    |
-| 55  | Samsara                 | IOT          | monitoring | N    | -0.5%  | -19.2% | -2.2%   | -21.7%   | 61.4    |
-| 56  | Scorpio Tankers         | STNG         | monitoring | N    | -11.2% | -5.0%  | -2.1%   | +85.5%   | 5.8     |
-| 57  | SK Telecom              | SKM          | monitoring | N    | -4.1%  | -27.8% | +9.1%   | +37.3%   | 0.0     |
-| 58  | SPDR Gold Shares        | GLD          | monitoring | N    | -1.0%  | -9.1%  | -14.7%  | +22.6%   | —       |
-| 59  | Teradyne                | TER          | monitoring | N    | +4.0%  | +18.2% | +39.9%  | +385.8%  | 58.6    |
-| 60  | Uber                    | UBER         | monitoring | N    | +9.4%  | +3.3%  | +6.3%   | -18.3%   | 23.1    |
-| 61  | Vail Resorts            | MTN          | monitoring | N    | -3.1%  | +3.3%  | +7.6%   | -12.2%   | 31.9    |
-| 62  | Vertiv Holdings         | VRT          | monitoring | N    | -4.5%  | -6.0%  | +17.2%  | +136.7%  | 46.9    |
-| 63  | WiseTech Global         | WTC.AX       | monitoring | N    | +17.6% | -13.6% | -14.6%  | -69.0%   | 31.2    |
-| 64  | Applied Optoelectronics | AAOI         | draft      | N    | -8.0%  | -26.9% | +57.1%  | +428.2%  | 131.3   |
-| 65  | Constellation Software  | CSU.TO       | draft      | N    | +1.0%  | -3.9%  | +15.3%  | -43.6%   | 23.8    |
-| 66  | Jusung Engineering      | 036930.KS    | draft      | N    | —      | —      | —       | —        | —       |
-| 67  | LPKF Laser              | LPK.DE       | draft      | N    | -22.0% | +0.5%  | +214.3% | +147.9%  | -82.0   |
-| 68  | Nebius Group            | NBIS         | draft      | N    | -12.7% | -9.2%  | +135.7% | +334.3%  | -113.8  |
-| 69  | TOTO                    | 5332.T       | draft      | N    | -4.1%  | +12.0% | +60.6%  | +133.5%  | 43.1    |
+| 40  | Edelweiss Financial     | EDELWEISS.NS | monitoring | N    | -4.5%  | +7.8%  | +1.4%   | +2.9%    | —       |
+| 41  | FormFactor              | FORM         | monitoring | N    | -9.7%  | -7.5%  | -9.9%   | +212.7%  | 45.5    |
+| 42  | Hims & Hers Health      | HIMS         | monitoring | N    | -2.0%  | +24.5% | +85.6%  | -29.6%   | -300.4  |
+| 43  | Intel                   | INTC         | monitoring | N    | -8.4%  | +2.1%  | +76.7%  | +370.3%  | 102.2   |
+| 44  | Intuit                  | INTU         | monitoring | N    | -1.2%  | -7.4%  | -22.5%  | -64.6%   | 11.4    |
+| 45  | Intuitive Surgical      | ISRG         | monitoring | N    | -2.6%  | -2.7%  | -7.9%   | -21.4%   | 39.7    |
+| 46  | John Deere              | DE           | monitoring | N    | -3.9%  | +3.4%  | -1.4%   | +17.2%   | 33.0    |
+| 47  | Kambi Group             | KAMBI.ST     | monitoring | N    | -2.1%  | -5.3%  | +16.8%  | +12.9%   | 270.6   |
+| 48  | Kioxia                  | 285A.T       | monitoring | N    | +1.7%  | +1.5%  | +157.4% | +2764.5% | 81.4    |
+| 49  | Meta                    | META         | monitoring | N    | +3.5%  | +3.2%  | -4.2%   | -17.7%   | 18.3    |
+| 50  | Netflix                 | NFLX         | monitoring | N    | -2.7%  | -7.1%  | -26.6%  | -41.3%   | 21.2    |
+| 51  | Opendoor                | OPEN         | monitoring | N    | -2.2%  | +10.4% | +10.9%  | +549.7%  | -14.0   |
+| 52  | Pinterest               | PINS         | monitoring | N    | +2.1%  | +2.8%  | +27.9%  | -37.2%   | 11.9    |
+| 53  | Pure Storage            | PSTG         | monitoring | N    | +15.6% | +23.2% | +41.5%  | +48.1%   | 44.3    |
+| 54  | Reliance Industries     | RELIANCE.NS  | monitoring | N    | -1.3%  | +1.4%  | -4.7%   | -15.3%   | 21.4    |
+| 55  | Samsara                 | IOT          | monitoring | N    | +1.4%  | +8.4%  | +41.0%  | -7.2%    | 71.8    |
+| 56  | Scorpio Tankers         | STNG         | monitoring | N    | +5.9%  | +1.5%  | +3.8%   | +85.4%   | 5.9     |
+| 57  | SK Telecom              | SKM          | monitoring | N    | +1.6%  | -21.6% | -11.2%  | +46.3%   | 0.0     |
+| 58  | SPDR Gold Shares        | GLD          | monitoring | N    | -1.0%  | -4.2%  | -14.3%  | +22.6%   | —       |
+| 59  | Teradyne                | TER          | monitoring | N    | -4.7%  | -4.8%  | -4.5%   | +278.9%  | 47.1    |
+| 60  | Uber                    | UBER         | monitoring | N    | -1.1%  | +4.6%  | +4.4%   | -23.8%   | 22.2    |
+| 61  | Vail Resorts            | MTN          | monitoring | N    | +2.1%  | +9.4%  | +12.3%  | -13.6%   | 33.2    |
+| 62  | Vertiv Holdings         | VRT          | monitoring | N    | +5.7%  | +9.8%  | +7.7%   | +147.6%  | 49.0    |
+| 63  | WiseTech Global         | WTC.AX       | monitoring | N    | +6.8%  | -9.1%  | -8.2%   | -69.3%   | 31.9    |
+| 64  | Applied Optoelectronics | AAOI         | draft      | N    | -5.4%  | -29.7% | -24.0%  | +309.9%  | 110.7   |
+| 65  | Cerebras                | CBRS         | draft      | N    | -11.3% | -19.9% | -41.6%  | -41.6%   | -204.2  |
+| 66  | Constellation Software  | CSU.TO       | draft      | N    | +0.3%  | -6.3%  | +21.5%  | -43.7%   | 23.6    |
+| 67  | Jusung Engineering      | 036930.KS    | draft      | N    | —      | —      | —       | —        | —       |
+| 68  | LPKF Laser              | LPK.DE       | draft      | N    | -13.5% | -13.8% | +118.4% | +78.9%   | -65.1   |
+| 69  | Nebius Group            | NBIS         | draft      | N    | +0.4%  | -1.7%  | +49.3%  | +370.1%  | -88.3   |
+| 70  | TOTO                    | 5332.T       | draft      | N    | -4.4%  | +7.1%  | +41.2%  | +111.9%  | 41.1    |
 
 <!--TABLE-END-->
 
@@ -666,7 +668,7 @@ render();
 ## Notes
 
 - **Universe**: every thesis in `/Theses` except those with `status: closed` (currently zero). BTC-CRYPTO excluded — no NTM P/E concept for a non-equity asset.
-- **Refresh budget**: ~69 tickers × 3 FMP endpoints (`quote`, `analyst-estimates`, `historical-price-eod/light`) = ~207 parallel calls per refresh. Lighter than [[Live Portfolio]]'s 7-endpoint Holdings cycle.
+- **Refresh budget**: ~70 tickers × 3 FMP endpoints (`quote`, `analyst-estimates`, `historical-price-eod/light`) = ~210 parallel calls per refresh. Lighter than [[Live Portfolio]]'s 7-endpoint Holdings cycle.
 - **Live column**: Y/N flag re-read from [[Live Portfolio]]'s rendered Holdings table on every refresh — its column-3 Ticker values are the source of truth. Delete a row from Live Portfolio and its name flips from green to red here on next Watchlist refresh. Add a row there and it flips back to green.
 - **Currency-neutrality**: returns are %, P/E is unitless — no currency-mixing problem (unlike Live Portfolio's Price column). Cross-row comparison is always valid.
 - **Active set = rendered Universe table** (not the `TICKERS` array): same contract as Live Portfolio. Delete a row → stays gone on next refresh. Type a new ticker into column 3 of any non-header row → next refresh fills it via TICKERS metadata lookup. Clear the table body (header + separator only) → next refresh repopulates from full TICKERS.
@@ -678,6 +680,27 @@ render();
 - **Sort & filter**: chart-only — does not modify the table. Sort metric defaults to 3M return (the user's chosen workhorse timeframe — long enough to filter noise, short enough to surface recent moves). Status filter ("All" / active / monitoring / draft) and "Live holdings only" checkbox compose freely.
 - **Auto-rerender**: the Chart block re-runs whenever the file changes (Dataview's default behavior), so clicking Refresh in the fetcher block updates the visualization automatically.
 
+## Mental Model Batch Plan
+
+Segmentation of all 70 watchlist names into 10 sector-coherent batches for sequential mental-models passes (per CLAUDE.md mandatory read + READING PROTOCOL). Run with "run batch N" — each run reads [[Generalist - Overview]] + the batch's listed conditional files, applies triggers/lenses as hypotheses-to-test, and updates each thesis note's `## Mental Models` section + Log. Status: ⬜ pending / ✅ done.
+
+| Batch | Theme | Names | Mental-model load (beyond Generalist) | Status |
+| --- | --- | --- | --- | --- |
+| 1 | WFE / deposition & packaging equipment | [[Theses/AMAT - Applied Materials\|AMAT]] · [[Theses/LRCX - Lam Research\|LRCX]] · [[Theses/KLA - KLA Corporation\|KLA]] · [[Theses/ASMI - ASM International\|ASMI]] · [[Theses/BESI - BE Semiconductor Industries\|BESI]] · [[Theses/AIXA - Aixtron\|AIXA]] · [[Theses/036930 - Jusung Engineering\|Jusung]] | Industry - Semiconductors, both lenses | ✅ 2026-07-09 (evidence-tested, 8-agent web sweep) |
+| 2 | Test / probe / power & niche equipment | [[Theses/6857 - Advantest\|Advantest]] · [[Theses/TER - Teradyne\|TER]] · [[Theses/FORM - FormFactor\|FORM]] · [[Theses/AEHR - Aehr Test Systems\|AEHR]] · [[Theses/LPKF - LPKF Laser & Electronics\|LPKF]] · [[Theses/VICR - Vicor Corporation\|VICR]] · [[Theses/6981 - Murata Manufacturing\|Murata]] | Industry - Semiconductors, both lenses | ✅ 2026-07-09 (evidence-tested, 7-agent web sweep) |
+| 3 | Compute / logic | [[Theses/NVDA - Nvidia\|NVDA]] · [[Theses/AMD - Advanced Micro Devices\|AMD]] · [[Theses/AVGO - Broadcom\|AVGO]] · [[Theses/TSM - Taiwan Semiconductor\|TSM]] · [[Theses/MRVL - Marvell Technology\|MRVL]] · [[Theses/INTC - Intel\|INTC]] · [[Theses/CBRS - Cerebras Systems\|CBRS]] | Industry - Semiconductors, both lenses | ✅ 2026-07-09 (evidence-tested, 7-agent web sweep) |
+| 4 | Memory / storage & AI datacenter | [[Theses/000660 - SK Hynix\|SK Hynix]] · [[Theses/SNDK - SanDisk\|SNDK]] · [[Theses/285A - Kioxia\|Kioxia]] · [[Theses/PSTG - Pure Storage\|PSTG]] · [[Theses/CRWV - CoreWeave\|CRWV]] · [[Theses/NBIS - Nebius Group\|NBIS]] · [[Theses/VRT - Vertiv Holdings\|VRT]] | Industry - Semiconductors, Value Layer Monopoly | ✅ 2026-07-10 (evidence-tested, 7-agent web sweep) |
+| 5 | Photonics / compound semis / connectivity | [[Theses/LITE - Lumentum\|LITE]] · [[Theses/AAOI - Applied Optoelectronics\|AAOI]] · [[Theses/SIVE - Sivers Semiconductors\|SIVE]] · [[Theses/IQE - IQE\|IQE]] · [[Theses/EINK - E Ink Holdings\|EINK]] · [[Theses/SKM - SK Telecom\|SKM]] | Industry - Semiconductors, Value Layer Monopoly | ✅ 2026-07-10 (evidence-tested, 6-agent web sweep) |
+| 6 | Enterprise software & security | [[Theses/PLTR - Palantir\|PLTR]] · [[Theses/NOW - ServiceNow\|NOW]] · [[Theses/PANW - Palo Alto Networks\|PANW]] · [[Theses/CRWD - CrowdStrike Holdings\|CRWD]] · [[Theses/NET - Cloudflare\|NET]] · [[Theses/INTU - Intuit\|INTU]] · [[Theses/CSU - Constellation Software\|CSU]] | Automation & AI Readiness, Value Layer Monopoly | ✅ 2026-07-10 (evidence-tested, 7-agent web sweep) |
+| 7 | Vertical SaaS & platform toll-takers | [[Theses/SHOP - Shopify\|SHOP]] · [[Theses/PCOR - Procore Technologies\|PCOR]] · [[Theses/IOT - Samsara\|IOT]] · [[Theses/WTC - WiseTech Global\|WTC]] · [[Theses/APP - AppLovin\|APP]] · [[Theses/DUOL - Duolingo\|DUOL]] · [[Theses/KAMBI - Kambi Group\|KAMBI]] | Automation & AI Readiness, Value Layer Monopoly | ✅ 2026-07-10 (evidence-tested, 7-agent web sweep) |
+| 8 | Consumer internet / media / IP | [[Theses/META - Meta\|META]] · [[Theses/NFLX - Netflix\|NFLX]] · [[Theses/SPOT - Spotify\|SPOT]] · [[Theses/PINS - Pinterest\|PINS]] · [[Theses/UBER - Uber\|UBER]] · [[Theses/TTWO - Take-Two Interactive\|TTWO]] · [[Theses/GAW - Games Workshop\|GAW]] | Automation & AI Readiness | ✅ 2026-07-10 (evidence-tested, 7-agent web sweep) |
+| 9 | Consumer / health / real assets | [[Theses/HIMS - Hims & Hers Health\|HIMS]] · [[Theses/ISRG - Intuitive Surgical\|ISRG]] · [[Theses/MTN - Vail Resorts\|MTN]] · [[Theses/5332 - TOTO Ltd\|TOTO]] · [[Theses/2802 - Ajinomoto\|Ajinomoto]] · [[Theses/OPEN - Opendoor\|OPEN]] · [[Theses/CSGP - CoStar Group\|CSGP]] | Automation & AI Readiness | ✅ 2026-07-10 (evidence-tested, 7-agent web sweep) |
+| 10 | Energy / commodities / financial infra | [[Theses/LNG - Cheniere Energy\|LNG]] · [[Theses/CCJ - Cameco\|CCJ]] · [[Theses/GLD - SPDR Gold Shares\|GLD]] · [[Theses/STNG - Scorpio Tankers\|STNG]] · [[Theses/RELIANCE - Reliance Industries\|RELIANCE]] · [[Theses/EDEL - Edelweiss Financial Group\|EDEL]] · [[Theses/CRCL - Circle Internet Group\|CRCL]] · [[Theses/DE - John Deere\|DE]] | Value Layer Monopoly (CRCL, EDEL); Automation (DE) | ✅ 2026-07-10 (evidence-tested, 8-agent web sweep) |
+
+Batch-run contract: (a) read Generalist - Overview + listed conditional files once per batch; (b) per name, read the thesis note, apply fired triggers as hypotheses-to-test (never verdicts), merge into `## Mental Models` per `.claude/skills/_shared/mental-models-section.md` — no churn if nothing fires; (c) append a thesis Log entry per modified note (non-skill-origin prefix, e.g. `Mental models pass:`); (d) flip this table's Status to ✅ with date; (e) do not touch conviction/status frontmatter — flag candidates for `/status` instead.
+
 ## Log
+- 2026-07-09: Added Cerebras (CBRS, NASDAQ — FMP symbol verified) to TICKERS + Universe stub row as draft/watchlist-only; universe 69→70. Added CBRS to Batch 3 (Compute / logic) in the Mental Model Batch Plan.
+- 2026-07-09: Added Mental Model Batch Plan — 69 watchlist names segmented into 10 sector-coherent batches (sizes 6–8) for sequential mental-models passes; batches 1–5 semis-loaded, 6–7 value-layer/automation-loaded, 8–10 generalist+selective lenses. All pending; run via "run batch N".
 - 2026-06-08: Dropped the 1Y return bar from the chart so the NTM P/E ruler fits inside a standard Obsidian editor viewport (was being clipped on the right edge). 1Y data is still fetched and stored in the Universe table — restoration is 3 lines: re-add `'1Y %'` to `RET_KEYS`, re-add `'1Y %': { idx: 8, unit: '%' }` to `METRICS`, bump both `grid-template-columns` from 5 fixed cols (170/110/110/110/140) back to 6 (170/110/110/110/110/140). Inline restoration comment placed next to `RET_KEYS`. Sort dropdown auto-drops 1Y because it's populated from `Object.keys(METRICS)`.
 - 2026-06-08: Initialised Watchlist tracker — 69 tickers covering every active / monitoring / draft thesis (BTC-CRYPTO excluded). Reuses [[Live Portfolio]]'s FMP fetch pattern, marker-delimited table contract, and read-only chart-parses-table pattern. New cross-file read: parses Live Portfolio's rendered Holdings table on every refresh to derive the Live Y/N flag, so green (held) / red (watchlist-only) coloring in the chart auto-syncs with portfolio edits. Chart layout: one row per ticker, four diverging return bars (1W/1M/3M/1Y, green up / red down, zero-centered, per-metric 90th-pct scale) + a NTM P/E peer-relative ruler with a dot (loss-makers flagged red at the left edge, off-scale names ringed at the right edge). Sort default 3M return desc; metric and direction both toggleable. Status dropdown and Live-only checkbox layer on top of sort. FMP budget ~207 calls per refresh (3 endpoints × 69 tickers in parallel). Note: the literal table-marker string is intentionally never written into JS comments or markdown prose in this file — every reference uses string concatenation or rephrasing so the matching regex can't match its own source (the same defense Live Portfolio uses).

@@ -6,13 +6,14 @@ status: active
 conviction: high
 sector: Custom Silicon & Networking Semiconductors
 ticker: AVGO
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # AVGO — Broadcom
 
 ## Summary
 
-$1.8T diversified semiconductor + infrastructure software company operating through two AI vectors: custom XPUs co-designed with Google, Meta, ByteDance, OpenAI, and Anthropic, and Ethernet networking silicon (Tomahawk/Jericho at 80-90% merchant switching share) as the open-standards backbone of AI data center fabrics. VMware ($69B acquisition) provides ~35% of revenue as recurring software annuity, creating 68% adjusted EBITDA margins. Q1 FY2026: AI revenue $8.4B (+106% YoY), five XPU customers in volume production, Hock Tan guiding to ">$100B" in 2027 AI chip revenue with supply chain secured. The April 2026 Anthropic-Google deal locks Broadcom as Google's primary silicon partner through 2031 (3.5GW TPU capacity by 2027) — transforming forward visibility from aspirational to contractual. At 28x forward earnings with 100%+ AI growth, the valuation embeds optimism but is supported by the most visible demand pipeline in semiconductor history.
+$1.8T diversified semiconductor + infrastructure software company operating through two AI vectors: custom XPUs co-designed with Google, Meta, ByteDance, OpenAI, and Anthropic, and Ethernet networking silicon (Tomahawk/Jericho at 80-90% merchant switching share) as the open-standards backbone of AI data center fabrics. VMware ($69B acquisition) provides ~35% of revenue as recurring software annuity, creating 68% adjusted EBITDA margins. Q1 FY2026: AI revenue $8.4B (+106% YoY), five XPU customers in volume production, Hock Tan guiding to ">$100B" in 2027 AI chip revenue with supply chain secured. The April 2026 Anthropic-Google deal locks Broadcom as Google's primary silicon partner through 2031 (3.5GW TPU capacity by 2027) — transforming forward visibility from aspirational to contractual. At ~34.6x forward earnings with 100%+ AI growth, the valuation embeds more optimism than at thesis inception (28x) but is still supported by the most visible demand pipeline in semiconductor history.
 
 ## Key Non-consensus Insights
 
@@ -147,7 +148,7 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 
 **Is the deal working out for Broadcom? Yes — by the metrics that matter to equity holders**:
 1. **Financial: emphatically yes**. $27B FY25 software revenue at 78% op margin = ~$21B annualised software operating income alone. At even a conservative 12× multiple, the software segment is worth ~$250B — 3.6× the $69B purchase price in 24 months.
-2. **Strategic: yes**. VMware decouples ~35–40% of Broadcom revenue from semiconductor cyclicality, providing the recurring annuity that justifies AVGO's premium multiple to NVDA. Without VMware, AVGO would trade closer to a pure-cyclical semis multiple (15–20× vs current 28×).
+2. **Strategic: yes**. VMware decouples ~35–40% of Broadcom revenue from semiconductor cyclicality, providing the recurring annuity that justifies AVGO's premium multiple to NVDA. Without VMware, AVGO would trade closer to a pure-cyclical semis multiple (15–20× vs current ~34.6×).
 3. **Customer relationship: deliberately bad**. The playbook tolerates negative customer sentiment because the remaining Global 2000 base has switching costs measured in years (mission-critical workloads with decades of accumulated configuration) and the discarded SMBs were structurally unprofitable at the per-customer support cost. The 30,000 Nutanix migrations represent <15% of the addressable base; the remaining 85% are the high-value accounts the playbook targets.
 
 **What could break the thesis from here**:
@@ -171,13 +172,13 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$1.80T | As of April 2026 |
-| Stock Price | ~$371 | As of April 10, 2026 |
-| Forward P/E | 28.1x | FY2026E consensus earnings |
+| Market Cap | ~$1.90T | As of April 2026 |
+| Stock Price | ~$400 | As of April 10, 2026 |
+| Forward P/E | 34.6x | FY2026E consensus earnings |
 | Trailing P/E | ~73x | Inflated by VMware acquisition accounting |
 | Q1 FY2026 Revenue | $19.3B | +29% YoY (record quarter) |
 | Q1 AI Revenue | $8.4B | +106% YoY; ~44% of total revenue |
-| FY2025 Revenue | ~$69B est. | Based on quarterly run rate |
+| FY2025 Revenue | ~$64B est. | Based on quarterly run rate |
 | FY2024 Revenue | $51.6B | +44% YoY (VMware included full year) |
 | Adj. EBITDA Margin | 68% | Q1 FY2026; record $13.1B |
 | FCF Conversion | ~44% | Of revenue |
@@ -237,9 +238,15 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-3 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (expectations) · [[Industry - Semiconductors]] (#2, #10) · [[Lens - Value Layer Monopoly]] (envelopment, §4)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *The Jun 3 print — the thesis's catalyst logic inverted*: record Q2 ($22.2B +48%, AI $10.8B +143%) but the FQ3 AI guide ($16B vs $17.2B consensus) and an unraised >$100B 2027 target triggered -12.6% and a ~$1.3T sector wipeout. Evidence says **timing/mix/optics, not demand**: AI bookings >$30B vs $10.8B shipped (~3x b2b), visibility extended to 2028, "insatiable"; the **"chips-only" pivot** (abandoning full-rack sales) mechanically shrank revenue-per-GW vs consensus system-ASP models — margin-accretive, optics-negative, unmodeled in the thesis. The Log is missing this entire event — the biggest single datapoint since creation.
+	- *Insight #5 flywheel* — CONFIRMED and extended: six named XPU customers + two anonymous with $6B booked; Anthropic upgraded to **5GW from 2027** (thesis: 3.5GW); Meta extended through 2029 (3GW through 2028); **Jalapeño shipped on schedule** (Jun 24, 9-month tape-out, end-2026 deployment).
+	- *Insight #3 (in-sourcing overstated) — WEAKENING at the named anchor*: Google TPU v8 split training (Broadcom) / inference (**MediaTek**), Marvell networking-ASIC entry, Intel Foundry second-source 2028, external TPU sales planned — Macquarie models Broadcom's Google share 95%→65% by 2028. The debate has moved from aggregate demand to Google-share; the thesis needs that share path quantified. Counter: JPM — TPU v9 with Broadcom intact; AVGO still ~70% of custom-ASIC design services.
+	- *Bear leg REVERSED — Apple*: multiyear **>$30B** custom wireless + FBAR agreement (Jul 6–8, Fort Collins, to 2031) — the "slow bleed" leg materially defused.
+	- *VMware annuity (Insight #2)* — MIXED: Q2 software +9% missed after Q1's +1% (deceleration real), ARR +17%; FQ3 guided +31% reacceleration; CISPE and Siemens both unresolved (no data). VLM envelopment note: chips-only + software annuity + Ethernet standard control is the platform-envelopment profile — with the political-visibility flag that comes with it.
+	- *#2/#8 networking chokepoint* — CONFIRMED: Tomahawk 6 Davisson (102.4T CPO) shipping, 200T taping out FQ3; networking falling to ~30% of AI mix is XPU-denominator math, not share loss.
+- **Disconfirming check** (evidence-updated): post-derate AVGO is the *cheapest* AI-complex name (~33.5x NTM, watchlist-consistent) with the hardest 2027 revenue visibility ($73B backlog, 3x b2b) — the quality-but-priced verdict inverted into quality-repriced within five weeks. The surviving bear is single-threaded: Google share migration compounding into the >$100B 2027 target. Single falsifiers, dated: FQ3 print (~early Sep — first chips-only-basis AI number + any 2027 reaffirmation), TPU v9 partner confirmation, MediaTek DC revenue trajectory (~$3.2B 2027E). Maintenance: **no Conviction Triggers section exists** — write one (suggested LOW: Google-attributable AI revenue share disclosed/estimated <70% for 2027; CLOSE: 2027 target cut below $80B); Log the Jun 3 print; refresh Key Metrics (Apr vintage).
 
 ## Related Research
 
@@ -259,6 +266,7 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: custom-ASIC HBM content rising (Google TPU / Amazon Trainium 8-Hi→12-Hi) supports the custom-silicon demand leg
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — datacenter CPU landscape: ARM Phoenix/Venom + hyperscaler-CPU buildout expands Broadcom's custom-silicon design-services + SerDes TAM; DPU/networking-CPU convergence (Bluefield-4) tangential to the switching franchise
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Google/Broadcom TPU v7 beat NVDA/AWS to N3 (production 2025), TPU v8 stays N3; Tomahawk 6 + Spectrum 6 + Rubin 1.6T scale-out 200G optical DSP on the binding N3 node; custom-ASIC HBM content rising 8-Hi→12-Hi into a crowded HBM market
+- [[Research/2026-07-10 - MRVL vs AVGO - Competitive Comparison]] — head-to-head vs Marvell: AVGO owns the switching + ASIC-IP + software layers MRVL must traverse (~75% vs ~60% GM, ~23x vs ~54x fwd P/E); MRVL competes on a different (memory-fabric) layer, not catching AVGO in custom ASIC
 
 ## Log
 
@@ -317,3 +325,18 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Google/Broadcom TPU v7 beat NVDA/AWS to N3 (in production 2025) and TPU v8 stays on N3; Tomahawk 6 / Spectrum 6 networking + Rubin's 1.6T scale-out kicking off 3nm 200G optical DSPs all draw on the binding N3 pool; custom-ASIC HBM content rising 8-Hi→12-Hi. Corroborates the 06-01 custom-ASIC-HBM leg — XPU volume gated by the same N3/HBM squeeze as GPUs, and procurement-as-moat favors the largest pre-committers. Conviction unchanged (high).
+
+### 2026-07-09
+- Mental models pass: batch-3 evidence sweep populated ## Mental Models — retro-logs the missing Jun 3 print (record Q2 but FQ3 AI guide $16B vs $17.2B + chips-only pivot → -12.6%, $1.3T sector wipeout; bookings >$30B / 3x b2b say timing-not-demand); Jalapeño shipped, Anthropic → 5GW, Apple $30B deal reversed the insourcing bear; Google TPU ecosystem fragmenting (MediaTek/Marvell/Intel) is the live share question — conviction unchanged (high); no Conviction Triggers section exists — write one; FQ3 print ~early Sep.
+
+### 2026-07-10
+- Comparison [[Research/2026-07-10 - MRVL vs AVGO - Competitive Comparison]]: AVGO owns the layers MRVL must traverse (80-90% switching + 224G-SerDes/CoWoS ASIC-IP + VMware annuity) → ~75% vs ~60% GM, ~23x vs ~54x fwd P/E; MRVL competes on a different layer (memory-fabric), not catching AVGO — conviction unchanged (high); Google custom-ASIC share <70% for 2027 is the one crack to watch.
+
+### 2026-07-12
+- Numbers refresh: 4 metrics updated, 1 material. FY2025 Revenue ~$69B est.→~$64B est. (-7.4%, material); Market Cap ~$1.80T→~$1.90T (+5.7%); Stock Price ~$371→~$400 (+7.8%); Forward P/E 28.1x→34.6x (+23%, just under materiality threshold). Snapshot: [[_Archive/Snapshots/AVGO - Broadcom (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed — all 6 mapped rows (Market Cap, Stock Price, Forward P/E, FY2025/FY2024 Revenue) round to already-current displayed values. Flag: Summary still opens "At 28x forward earnings..." — live Forward P/E now 34.6x (from the prior refresh); the same 28x figure also recurs in §Industry Context → VMware acquisition analysis ("AVGO would trade closer to... 15-20× vs current 28×"). Consider `/deepen --section "Summary"` (and the Industry Context VMware subsection). Snapshot: [[_Archive/Snapshots/AVGO - Broadcom (pre-numbers 20260712-184111)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: forward P/E 28x→~34.6x across Summary + Industry Context (sub-threshold, comprehensive sweep). Snapshot: [[_Archive/Snapshots/AVGO - Broadcom (pre-deepen-metrics-sync 2026-07-12-203456)]]

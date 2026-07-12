@@ -7,13 +7,14 @@ conviction: low
 sector: Optical Networking & Photonics
 ticker: AAOI
 source: Vault synthesis 2026-05-24 (Semiconductor Portfolio Rebalancing) + AAOI Q1 2026 earnings (2026-05-07) + Culper Research short thesis + sector note positioning
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # AAOI — Applied Optoelectronics
 
 ## Summary
 
-Applied Optoelectronics is the only US-listed merchant pluggable optical transceiver vendor that operates its own indium phosphide fab — a vertically integrated profile that superficially resembles [[Theses/LITE - Lumentum|Lumentum]] but with one decisive difference: AAOI's InP fab makes 1310nm DFB lasers for CATV and lower-speed datacom, not the 200G EMLs that gate the 1.6T transition. The company is therefore a hybrid — half cable-broadband infrastructure incumbent (CATV segment, $320M FY26 run-rate, Charter + Mediacom 1.8GHz amplifier certifications), half 800G/1.6T transceiver assembler dependent on merchant EMLs from Lumentum / Broadcom / Mitsubishi. The 2026 narrative — FY26 revenue guide raised to >$1.1B (+140% YoY) on $200M+ 1.6T order from a hyperscaler, $124M+ 800G orders, Microsoft + Amazon ($4B/10yr) + Oracle as primary datacenter customers, plus 700K-unit/month combined 800G+1.6T capacity by end-2027 — has driven a ~915% 1-year rally to a ~$14-18B market cap at 175x forward P/E with -22% NTM ROIC. The non-consensus angle is that AAOI is a structurally lower-moat path into the optics supercycle than its multiple implies: it does not own the 200G EML chokepoint that determines who wins 1.6T (Lumentum does), it does not own the silicon photonic integration stack (Broadcom / TSMC do), it does not own the DSP layer (Marvell / Broadcom do), and the LPO win with Microsoft is a customer-specific architecture choice subject to Microsoft's commercial leverage — Culper Research's 2017+ short thesis (refreshed periodically) alleges Microsoft retains IP and exclusivity rights, using AAOI as a bargaining chip against Coherent / Innolight pricing. Position is sized as a small convex bet (0.5–1% of semi NAV per the 2026-05-24 portfolio rebalance), not a structural position; conviction low pending evidence that gross margin scales past 30% on the 1.6T mix shift and that customer concentration de-risks via the Amazon $4B agreement landing as committed volume rather than ceiling-allocation.
+Applied Optoelectronics is the only US-listed merchant pluggable optical transceiver vendor that operates its own indium phosphide fab — a vertically integrated profile that superficially resembles [[Theses/LITE - Lumentum|Lumentum]] but with one decisive difference: AAOI's InP fab makes 1310nm DFB lasers for CATV and lower-speed datacom, not the 200G EMLs that gate the 1.6T transition. The company is therefore a hybrid — half cable-broadband infrastructure incumbent (CATV segment, $320M FY26 run-rate, Charter + Mediacom 1.8GHz amplifier certifications), half 800G/1.6T transceiver assembler dependent on merchant EMLs from Lumentum / Broadcom / Mitsubishi. The 2026 narrative — FY26 revenue guide raised to >$1.1B (+128% YoY) on $200M+ 1.6T order from a hyperscaler, $124M+ 800G orders, Microsoft + Amazon ($4B/10yr) + Oracle as primary datacenter customers, plus 700K-unit/month combined 800G+1.6T capacity by end-2027 — has driven a ~915% 1-year rally that has since retraced to a ~$10B market cap (~$120/share, off the $173 peak) — still an extreme multiple on a -22% NTM ROIC and negative FCF, but no longer the $14-18B/175x-forward top-tick the thesis was written against. The non-consensus angle is that AAOI is a structurally lower-moat path into the optics supercycle than its multiple implies: it does not own the 200G EML chokepoint that determines who wins 1.6T (Lumentum does), it does not own the silicon photonic integration stack (Broadcom / TSMC do), it does not own the DSP layer (Marvell / Broadcom do), and the LPO win with Microsoft is a customer-specific architecture choice subject to Microsoft's commercial leverage — Culper Research's 2017+ short thesis (refreshed periodically) alleges Microsoft retains IP and exclusivity rights, using AAOI as a bargaining chip against Coherent / Innolight pricing. Position is sized as a small convex bet (0.5–1% of semi NAV per the 2026-05-24 portfolio rebalance), not a structural position; conviction low pending evidence that gross margin scales past 30% on the 1.6T mix shift and that customer concentration de-risks via the Amazon $4B agreement landing as committed volume rather than ceiling-allocation.
 
 ## Key Non-consensus Insights
 
@@ -41,7 +42,7 @@ Applied Optoelectronics is the only US-listed merchant pluggable optical transce
 
 - **Is Culper Research's allegation that Microsoft retains IP rights and exclusivity over AAOI's LPO designs material — and is there an SEC-filing audit trail that would confirm or refute it?** Culper's August 2017 original short report alleged this; subsequent refreshes (2018, 2024 after Microsoft IP language appeared in proxy materials) reinforced it. If true, AAOI cannot replicate its LPO win at AWS / Meta / Oracle without re-engineering modules around different IP — eliminating much of the LPO competitive advantage. If false, AAOI should be able to translate Microsoft's LPO program into AWS / Oracle wins inside 18 months of qualification. The data point: 10-K disclosure language on customer-funded R&D and IP assignment in proxy materials, plus the actual mix of AWS / Oracle volume in 2027 reporting.
 
-- **What is the realistic exit valuation if growth normalizes to 15-20% by 2028?** AAOI's current ~$14-18B market cap at $173 implies ~7-9x FY26E revenue ($1.1B), ~6-7x FY27E ($1.8-2.0B). At a normalized 15-20% growth profile with 30-32% GM and 12-15% OM, peer-comp multiples (Coherent at ~8x, Innolight at ~3-4x as a Chinese-listed comp) imply ~$60-100 fair value range vs current $173 — a 40-65% drawdown range even before considering execution variance. The single highest-information question for sizing.
+- **What is the realistic exit valuation if growth normalizes to 15-20% by 2028?** AAOI's current ~$10B market cap at ~$120 implies ~7-9x FY26E revenue ($1.1B), ~6-7x FY27E ($1.8-2.0B). At a normalized 15-20% growth profile with 30-32% GM and 12-15% OM, peer-comp multiples (Coherent at ~8x, Innolight at ~3-4x as a Chinese-listed comp) imply ~$60-100 fair value range vs current $173 — a 40-65% drawdown range even before considering execution variance. The single highest-information question for sizing.
 
 ## Business Model & Product Description
 
@@ -83,10 +84,10 @@ AAOI is best understood as a vertically integrated optical components and module
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$14-18B | Volatile; ATH $233.67 May 13 2026, $173 May 18; 1Y +915% |
-| Stock Price | ~$173 | At ~85x trailing P/S (loss-making); ~175x forward P/E |
-| EV/Revenue | ~5-7x FY26E | $14-18B EV / $1.1B FY26 guide; 6-7x FY27E ($1.8-2.0B) |
-| Revenue Growth (CFY) | +128.3% | FY25 $455.7M → FY26E $1.1B; +140% YoY |
+| Market Cap | ~$10B | Volatile; ATH $233.67 May 13 2026, $173 May 18; 1Y +915% |
+| Stock Price | ~$120 | At ~85x trailing P/S (loss-making); ~175x forward P/E |
+| EV/Revenue | ~5-7x FY26E | ~$10B EV / $1.1B FY26 guide; ~5x FY27E ($1.8-2.0B) |
+| Revenue Growth (CFY) | +128.3% | FY25 $455.7M → FY26E $1.1B; +128% YoY |
 | Gross Margin (Q1 2026) | 29.2% non-GAAP | Flat YoY despite 51% revenue growth — margin not scaling |
 | Q2 2026 GM Guide | 29-30% non-GAAP | Persistent flat margin signal |
 | FCF Yield | Negative | -$25-30M annualized FCF; cumulative -$301M FCF over 10 years |
@@ -152,7 +153,7 @@ AAOI is best understood as a vertically integrated optical components and module
 9. **Position risk — narrative AR / "real" backlog vs accounting backlog.** The $324M+ backlog headline is real but unclear what portion is take-or-pay vs allocation. Past Culper reports specifically alleged AAOI "had never shipped 800G products despite claiming to have done so in Q3 2023" — suggesting historical AR vs revenue recognition concerns.
 10. **Position risk — indium / InP raw material supply.** China controls ~70% of indium feedstock; February 2025 InP export controls. AAOI relies on InP for both internal lasers and 200G EML merchant supply. Supply curtailment hits AAOI doubly.
 11. **Position risk — CATV business erosion.** CommScope, Vecima, or new entrants take share in MSO 1.8GHz amplifiers; CATV revenue plateaus and the margin floor that funds datacenter capex disappears.
-12. **Position risk — valuation multiple compression.** At ~175x forward P/E on unprofitable trailing base, any growth deceleration triggers severe multiple compression even with continued earnings growth.
+12. **Position risk — valuation multiple compression.** At a still-triple-digit forward P/E on an unprofitable trailing base, any growth deceleration triggers severe multiple compression even with continued earnings growth.
 
 ## Conviction Triggers
 
@@ -177,10 +178,14 @@ AAOI is best understood as a vertically integrated optical components and module
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-5 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- VLM §2 layer-renter disqualifier — CONFIRMED by capital flows: NVIDIA's $4B optics investment (2026-03-02) went to Lumentum/Coherent/Ayar — the chokepoint layers — while AAOI's middle-assembly layer got nothing. The Amazon warrant disclosure (7.95M shares at $23.70 vesting against $4B cumulative purchases) resolves Outstanding Question #2 toward ceiling-allocation incentive, NOT take-or-pay — ~10% contingent dilution on top of the ATM machine.
+	- LOW trigger FIRED (>$300M equity issuance): $250M→$500M ATM upsize 2026-03-12 (~$250M already sold) + fresh $600M ATM 2026-05-14 (announced ten days BEFORE thesis authorship — arguably tripped at inception) + $94.1M FAB4/OMD3 cleanroom commitment 2026-06-25.
+	- Semis [#13] classification — the market misclassifies AAOI as generic AI-optics beta: the Jun 9 SemiAnalysis CPO-delay report (mechanically BULLISH for a pluggables assembler) produced AAOI's worst single-day reaction in the complex (-17%). Three ~16-17% single-day drops (Jun 9, Jul 2, Jul 9) took it -50% from the May 13 ATH ($233.67→~$118) with zero AAOI-specific fundamental deterioration — beta-7.18 narrative fragility validated.
+	- CPO disintermediation LOW leg — REFUTED (trending opposite): SemiAnalysis dates CPO mass production 2028-29; 1.6T ASPs holding $1,300-1,500 (not <$1,000); pluggable runway extending. CATV floor CONFIRMED: FY26 CATV guide raised to >$325M, Mediacom DOCSIS 4.0 ~1M homes by end-2026.
+	- Generalist [G-9] barbell — the 0.5-1% convex-bet sizing at conviction low is doing exactly its job; no CLOSE trigger fired (Microsoft LPO intact, 1.6T volume shipments began Mar 2026, FY26 guide >$1.1B unchanged).
+- **Disconfirming check** (evidence-updated 2026-07-10): pre-committed decision point = Q2 print 2026-07-30 — GM <28% fires a second LOW trigger (structural margin compression confirmed); ≥33% on ≥$250M would be the first genuine HIGH-side evidence; guide sits at 29-30%, exactly where the customer-leverage interpretation predicts. Base rate: middle-assembly vendors funding capacity via serial equity issuance into a generation where Innolight holds 50-60% share rarely earn the 32-35% GMs the bull case requires — nothing since May 24 rebuts that outside view. Framework gap: no falsifier leg for the demand-side regime change (Meta Compute compute-resale + Warsh Fed unprofitable-tech rotation) now driving the price; Key Metrics stale by ~35% ($173 basis vs ~$118).
 ## Related Research
 
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Primary trigger for this thesis; rebalancing labels AAOI Tier 5 convex bet (TRIM Low ~2% → 0.5–1%), explicit "no thesis support; -22% ROIC NTM + +915% YoY = textbook #17/#18 trap"
@@ -203,3 +208,15 @@ AAOI is best understood as a vertically integrated optical components and module
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: Sharpened Bull driver #5 with the scale-out-CPO-dilution mechanism (2-4% cluster power / 3-7% cost; CPO can cost more than pluggables; Google refuses CPO) — longer pluggable runway than CPO bulls assume. Bounding caveat: real CPO prize is scale-up, where AAOI is absent. Conviction unchanged (low).
+
+### 2026-07-10
+- Mental models pass: batch-5 evidence sweep populated ## Mental Models — LOW trigger fired (>$300M issuance: $500M+$600M ATMs), Amazon warrant resolved to ceiling-allocation, stock -50% from ATH as generic AI-optics beta — conviction unchanged (low); pre-committed decision point Jul 30 Q2 GM print (<28% = second LOW, ≥33% = first HIGH evidence).
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 2 material. Market Cap ~$14-18B→~$10B (-~30-45%, material); Stock Price ~$173→~$120 (-30.7%, material). Snapshot: [[_Archive/Snapshots/AAOI - Applied Optoelectronics (pre-numbers 20260712-174510)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed — Market Cap and Stock Price round to already-current values (~$10B, ~$120); FCF Yield left unedited (qualitative "Negative" text, format uncertain). Flag: Summary still opens with stale "~$14-18B market cap ... 175x forward P/E" from before the prior refresh — Key Metrics table already shows ~$10B/~120x-range; consider `/deepen --section "Summary"`. Snapshot: [[_Archive/Snapshots/AAOI - Applied Optoelectronics (pre-numbers 20260712-184111)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: market cap $14-18B→$10B / price $173→$120 + rev growth +140%→+128% across Summary, OQ, Risks, EV-Rev & Rev-Growth Notes. Snapshot: [[_Archive/Snapshots/AAOI - Applied Optoelectronics (pre-deepen-metrics-sync 2026-07-12-203456)]]

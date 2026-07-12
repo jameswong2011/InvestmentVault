@@ -6,7 +6,9 @@ status: draft
 conviction: medium
 sector: Semiconductor Capital Equipment
 ticker: TOTO
+fmp_symbol: 5332.T
 source: TOTO Ltd. FY3/2025 Integrated Report + IR briefings (https://jp.toto.com/en/ir/); Nikkei Asia coverage on Ceramics segment; Trendforce ESC supplier coverage 2024–2025
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 ## Summary
@@ -15,7 +17,7 @@ TOTO trades as a Japanese sanitary-ware conglomerate on a housing-cycle multiple
 
 ## Key Non-consensus Insights
 
-**The earnings mix has inverted but the multiple has not.** Sanitary ware contributes ~60% of revenue but Ceramics contributes ~55% of operating profit — a flip the sell-side narrative has not internalized because TOTO still reports under a housing-products parent and pays a ¥110 dividend that signals "Japan consumer". A pure Ceramics carve-out at sector-mean multiples implies the housing business is being valued at a negative stub relative to current group EV. The market re-rating that began in 2024 priced the "ceramics is growing" story; it has not priced the "ceramics is the company" mix shift. Comparable in framing to [[Theses/2802 - Ajinomoto]], where the ABF substrate dye-binder monopoly was buried inside MSG/seasoning revenue until 2021–2023 ABF-shortage coverage forced re-rating.
+**The earnings mix has inverted but the multiple has not.** Sanitary ware contributes ~60% of revenue but Ceramics contributes ~55% of operating profit — a flip the sell-side narrative has not internalized because TOTO still reports under a housing-products parent and pays a ¥120 dividend (corrected 2026-07-10 from ¥110) that signals "Japan consumer". A pure Ceramics carve-out at sector-mean multiples implies the housing business is being valued at a negative stub relative to current group EV. The market re-rating that began in 2024 priced the "ceramics is growing" story; it has not priced the "ceramics is the company" mix shift. Comparable in framing to [[Theses/2802 - Ajinomoto]], where the ABF substrate dye-binder monopoly was buried inside MSG/seasoning revenue until 2021–2023 ABF-shortage coverage forced re-rating.
 
 **3D NAND etch step intensity is a content-per-wafer multiplier independent of unit volumes.** Each additional NAND layer is a high-aspect-ratio etch step; Lam Research's Cryo 3.0 and ALTUS Halo molybdenum platforms target 400-layer parts in 2025–2026 with a roadmap to 1000 layers. ESC consumption per wafer-out scales with etch-step count, not wafer count. This decouples TOTO Ceramics from the standard memory-cycle "ASP × bits" framing — even a flat NAND bit ship year compounds ESC pull if step count rises. Sell-side memory models do not currently translate layer-count into chuck-replacement frequency. The same step-intensity logic backs HBM logic-side etch growth as advanced packaging adoption ramps.
 
@@ -49,7 +51,7 @@ The analogy: ESCs are to etch tools what brake pads are to a Formula-1 car. Chea
 
 TOTO's manufacturing footprint is concentrated at Kitakyushu in Fukuoka Prefecture, where the company sinters its own alumina and AlN blanks and machines them into chucks in the same complex. Competitors typically buy sintered ceramic blanks from a separate vendor (CoorsTek, Tosoh) and machine separately — TOTO's vertical integration is the differentiating manufacturing posture.
 
-Revenue and operating-profit mix (FY3/2025 results):
+Revenue and operating-profit mix (FY3/2026 results — label corrected 2026-07-10; the table below was originally mislabeled "FY3/2025"):
 
 | Segment | Revenue (¥B) | Revenue % | OP (¥B) | OP % | Segment OP margin |
 |---|---|---|---|---|---|
@@ -99,13 +101,13 @@ Structural forces reshaping the industry:
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ¥1.12T (~$7.0B) | At ¥6,820 spot, 160 JPY/USD |
+| Market Cap | ¥1.33T (~$7.0B) | At ¥6,820 spot, 160 JPY/USD |
 | EV/Revenue | ~1.5x | Trailing FY3/2025 revenue ¥740B; modest net cash |
-| Revenue Growth | +5.1% YoY (FY25) | Group; Ceramics segment +18% YoY |
-| Gross Margin | ~42% group; ~70% Ceramics | Ceramics carries the group |
-| FCF Yield | ~3.0% | After ¥30B+ annual capex bias to Ceramics expansion |
+| Revenue Growth | +1.8% YoY (FY25) | Group; Ceramics segment +18% YoY |
+| Gross Margin | ~36% group; ~70% Ceramics | Ceramics carries the group |
+| FCF Yield | ~0.0% | After ¥30B+ annual capex bias to Ceramics expansion |
 | P/E (trailing) | 26.4 | Sector mean ~17.8 — implies re-rating begun but incomplete |
-| Dividend Yield | ~1.6% | ¥110/share annual; stable payer |
+| Dividend Yield | ~1.4% | ¥120/share annual (corrected 2026-07-10 from ¥110); stable payer |
 | Net Debt / Equity | 0.13 | Underlevered relative to industrial-products peers |
 | Ceramics Segment OP | ¥28.9B (FY25) | ~55% of group OP |
 | Ceramics Segment OP Margin | ~43% | Vs ~3% group ex-Ceramics |
@@ -179,9 +181,13 @@ This is the genuine downside, not a polite "what if growth slows". The bear case
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Automation & AI Readiness]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- Framework performing as designed: ZERO of five LOW/CLOSE falsifiers fired — Ceramics margin ~43% for FY3/26 (vs the <35% LOW line; TrendForce: ">40%" vs <9% five years ago), no AMAT/LRCX in-housing disclosure, no Shinko ¥100B commitment, no competitor AlN qualification. Neither HIGH trigger fired either (no TSMC N2/Samsung V10 qualification announced; no customer transcript citation) — but the demand chain is materializing on schedule: Samsung V10 cryo-etch supplier selection "final stage" with Lam/TEL, Lam's WFE outlook raised to $140B, Kioxia BiCS10 accelerating.
+	- ⚠️ THE MISPRICING LEG WAS ALREADY PARTIALLY CONSENSUS AT CREATION: Palliser Capital published the identical argument 2026-02-17 ("The Most Undervalued and Overlooked AI Memory Beneficiary," ¥554B value gap) — three months before this thesis — and TOTO ADOPTED the agenda at FY results (Apr 30: Ceramics disclosure, more ceramics investment, sanitary restructuring, capital-efficiency); Fortune/Japan Times/Tom's Hardware mainstreamed the "toilet maker is an AI stock" frame. The fundamental leg is stronger; the anonymity premium is spent. Stock ATH ¥9,500 (Jun 23) → ¥8,119, +19% vs the ¥6,820 entry.
+	- Semis [#2] qualification-gate read intact: FY3/26 record results (Ceramics ¥67.4B +34%, OP ¥28.9B +41.7% = ~55% of group OP on ~9% of revenue), ¥80B/5yr semiconductor-materials capex targeting the 1nm era, Buzen kiln +20% ESC capacity (Jan 2027). New slow-burn erosion vector unmodeled: Lam's ESC refurbishment/re-coating programs (consumable-life extension). New entrant: HNS Hi-Tech (Korea, 2028 target).
+	- Data fixes needed: the segment table labels FY3/2026 figures as "FY3/2025"; dividend now ¥120 (not ¥110); Catalysts section still lists the Apr-30 results as forward-looking. Yen at ¥162 inverts the thesis's JPY-strengthening risk into a live translation tailwind (and a BOJ-reversal risk).
+- **Disconfirming check** (evidence-updated 2026-07-10): single falsifying datapoint = Q1 FY3/27 Ceramics OP margin on 2026-08-05 — first print under the new expanded-disclosure regime and the first that could mechanically trip the <35% LOW line. Base rate (the vault's own Ajinomoto/ABF comp): re-rating happens in one violent leg once activist/sell-side coverage forces the frame shift, then stalls until segment disclosure lets the market model the business separately — TOTO is mid-leg, where entry-timing risk peaks. What remains proprietary is the per-trigger AlN-qualification and Shinko-oversupply monitoring, which the market is not pricing.
 
 ## Related Research
 
@@ -196,3 +202,13 @@ This is the genuine downside, not a polite "what if growth slows". The bear case
 
 ### 2026-05-24
 - Initial thesis created. Conviction: medium — Ceramics segment (~55% of OP) structurally compounds on 3D NAND layer ramp and AlN node transition, but Shinko/in-housing risks and PE 26.4 (vs sector 17.8, RSI 70.7) cap initial conviction. Sector classified as Semiconductor Capital Equipment with cross-link to ABF Substrates for chiplet-fixture optionality.
+
+### 2026-07-10
+- Mental models pass: batch-9 evidence sweep populated ## Mental Models — zero of five LOW/CLOSE falsifiers fired (Ceramics margin ~43%), demand chain on schedule, but the mispricing leg was already partially consensus at creation (Palliser published the identical case Feb 17, TOTO adopted it Apr 30) — conviction unchanged (medium); Q1 FY3/27 Ceramics margin (Aug 5) is the next mechanical test; fix FY-label error + ¥120 dividend.
+- Corrected: fact-audit pass — segment-mix table label FY3/2025→FY3/2026; dividend ¥110→¥120 in Insight #1 and Key Metrics.
+
+### 2026-07-12
+- Numbers refresh: 5 metrics updated, 2 material. Gross Margin ~42%→~36% group (Ceramics-vs-group mix compression signal). Snapshot: [[_Archive/Snapshots/5332 - TOTO Ltd (pre-numbers 20260712-174116)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass, post fmp_symbol exchange-suffix fix): 0 metrics changed materially — all 5 mapped rows render identical after rounding to prior refresh (data confirmed stable). Snapshot: [[_Archive/Snapshots/5332 - TOTO Ltd (pre-numbers 20260712-184120)]]

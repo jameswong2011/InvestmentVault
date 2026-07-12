@@ -6,6 +6,7 @@ conviction: low
 sector: Compute & AI Compute Accelerators
 ticker: CBRS
 source: Cerebras Systems S-1 / IPO prospectus (Apr–May 2026); Q1 2026 results (23 Jun 2026); web research 2026-07-09
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # CBRS - Cerebras Systems
@@ -72,11 +73,11 @@ Cerebras sits at the **merchant AI-accelerator layer**, one rung above TSMC (fab
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~$49.6B (7 Jul 2026; ~$176/sh) | Down ~54% from 14 May 2026 ATH $386 / ~$95B first-day peak; IPO raised ~$6B (largest semiconductor IPO on record) |
+| Market Cap | ~$48.7B (7 Jul 2026; ~$176/sh) | Down ~54% from 14 May 2026 ATH $386 / ~$95B first-day peak; IPO raised ~$6B (largest semiconductor IPO on record) |
 | EV/Revenue | ~95–100x trailing (FY25 rev $510M); ~63x on Q1-26 annualized (~$770M run-rate) | Net cash ~$700M less $1B OpenAI loan ≈ EV ≈ mkt cap; bulls anchor to backlog-conversion forwards (~10–20x on 2027–28e) |
 | Revenue Growth | +76% FY2025 ($290M→$510M); +92% YoY Q1-26 (core $191M) | Q4-25 $171M → ~$686M annualized; real, but off a tiny base |
-| Gross Margin | 39% FY2025 (42% FY2024) | HW 43% / Cloud 30%; cloud GM volatile (68%→16%→21% across 2025 qtrs) on DC buildout ahead of demand; pass-through costs dilutive |
-| FCF Yield | negative (~−0.8%; FCF −$393M FY2025) | R&D $243M = 48% of revenue (+54% YoY); non-GAAP net loss $76M; GAAP "net income" $238M is a non-cash forward-contract gain |
+| Gross Margin | 40% FY2025 (42% FY2024) | HW 43% / Cloud 30%; cloud GM volatile (68%→16%→21% across 2025 qtrs) on DC buildout ahead of demand; pass-through costs dilutive |
+| FCF Yield | negative (~−0.3%; FCF −$393M FY2025) | R&D $243M = 48% of revenue (+54% YoY); non-GAAP net loss $76M; GAAP "net income" $238M is a non-cash forward-contract gain |
 
 Supplemental: RPO $24.6B (≈48x FY25 revenue; 15% ≤24mo / 43% mo25–48 / 42% post-2029). Cash $701.7M (YE25). Analyst avg 12-mo PT ~$291 (range $209–$340), 10 buy / 0 sell.
 
@@ -150,6 +151,7 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - **[[Lens - Value Layer Monopoly]]:** Layer = ultra-fast large-model inference (decode sub-layer). Fit = **WEAK**. No near-zero-marginal-cost (each wafer carries real cost), no interface/standard control, no proprietary data loop. It is a **layer-renter** (pays rent to TSMC below; contests Nvidia above). AI overlay = infrastructure (moat-widening for the *winner*), but Cerebras is a *challenger*, not the toll-collector — TSMC and Nvidia are. Kill-criteria to monitor: Nvidia closes the speed gap; TSMC allocation squeeze; an open substitute reaches parity.
 - **[[Lens - Automation & AI Readiness]] (Lens B — vendor/compute):** Cerebras sells the compute that runs others' automation, and fast decode is genuinely more valuable in the agentic/reasoning era — a real tailwind. But it owns no context/ontology/execution-path layer, so per the wrapper-risk logic the edge is raw speed, replicable by the better-capitalized. Weak-to-moderate fit; a conviction *modifier*, not a thesis.
 - **[[Generalist - Overview]] — Perez surge / base rates / barbell:** Cerebras is a frenzy-phase infrastructure builder — the archetype that either becomes foundational substrate or "goes bust funding it." Base rates on sustained >20% growth and on challenger survival argue for humility. Position-sizing frame: a barbell *convex* bet (downside bounded to position size, multiple-bagger optionality), NOT a core compounder — sizing must reflect that.
+- **Evidence update (2026-07-09 batch-3 pass, same-day web sweep):** two corrections and a scoreboard. (1) *Insight #1 ("field just cleared / last independent") is REFUTED at the margin* — SambaNova first-closed a $1B Series F at $11B valuation on **Jul 8** (5 months after its Series E; Intel acquisition talks died) — a second funded independent inference pure-play exists. (2) *The binding constraint moved off the thesis map*: management — "demand is not the constraint, supply is not the constraint, **the constraint is data centers**" — Q2 GM guided down to 36–38% (from 46.5%) on 10–15pp of third-party-DC rental drag; a failure mode (buildout execution Q3'26–Q4'27) the thesis doesn't enumerate, while partially defusing the TSMC-allocation risk (#6). Also: OpenAI's Jalapeño (Jun 24, Broadcom-built, end-2026 deployment) converts the in-house-silicon risk from speculation to shipping hardware. Scoreboard: HIGH 0/3 (UAE mix 86%→74% improving; cloud GM 53% = one of two quarters; OpenAI rev $16.9M of $300M bar), LOW 0/3 (Rubin+Groq 35x/MW claim is the closest, resolves 2H26), CLOSE 0/3 (RPO grew to $25.0B). Cash-fragility bear leg weakened (~$8B+ post-IPO liquidity vs thesis's $701.7M figure — update Key Metrics); reflexivity line: July low $160.81 sits ~7% above the thesis's <$150 lockup-inversion marker, with 60M+ shares unlocking around the ~Sep Q2 print — earlier than the mid-Nov framing.
 
 ## Related Research
 
@@ -162,3 +164,10 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 
 ### 2026-07-09
 - Initial thesis created. Conviction: low — fastest-inference architecture + last independent pure-play after the Nvidia–Groq deal, but 86% UAE concentration, a $24.6B backlog ~85% one customer (OpenAI), no ecosystem moat, ~100x trailing sales, and a Nov-2026 lockup cliff make this a binary, barbell-convex bet, not a compounder.
+- Mental models pass: batch-3 evidence sweep appended ## Mental Models update — SambaNova $1B Series F (Jul 8) refutes the "last independent" leg of Insight #1; binding constraint moved to data centers (Q2 GM guide 36-38%, a failure mode the thesis doesn't enumerate); Jalapeño shipped = in-house-silicon risk now hardware; scoreboard 0/3/0/3/0/3; cash-fragility leg weakened (~$8B+ post-IPO) — conviction unchanged (low); reflexivity line $150 vs Jul low $160.81, first unlock ~Sep.
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 0 material applied (FCF Yield flagged material but left unedited — format uncertain, old_value_numeric anomalous). Gross Margin 39%→40% FY2025 (minor). Snapshot: [[_Archive/Snapshots/CBRS - Cerebras Systems (pre-numbers 20260712-174116)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 1 metric updated, 1 material. FCF Yield ~-0.8%→~-0.3% (improved, still negative; FCF -$393M figure held constant — no live update available for that sub-figure). Revenue Growth and Gross Margin unchanged after rounding. Snapshot: [[_Archive/Snapshots/CBRS - Cerebras Systems (pre-numbers 20260712-184120)]]

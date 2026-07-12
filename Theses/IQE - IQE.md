@@ -3,17 +3,19 @@ publish: true
 date: 2026-04-15
 tags: [thesis, iqe, semiconductors, photonics, compound-semiconductor, III-V, special-situation]
 status: active
-conviction: high
+conviction: medium
 sector: Optical Networking & Photonics
 ticker: IQE
+fmp_symbol: IQE.L
 source: Multi-source synthesis (Claude, ChatGPT, Gemini, Grok conversations; web research April 2026)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # IQE — IQE plc
 
 ## Summary
 
-World's largest independent compound semiconductor epitaxial wafer manufacturer -- the only scaled provider spanning all major III-V material systems (GaAs, InP, GaN, GaSb) across three deposition platforms (MBE, MOCVD, CBE). SiPh foundries cannot generate their own light, creating structural demand for III-V laser sources that IQE supplies from its Western (UK/US) base. Evaluate primarily as an **M&A special situation overlaid on a structural InP demand story**: formal UK Takeover Code offer period active since September 2025, board negotiating non-binding bids while separately marketing Taiwan operations for sale. Stock surged from 4.7p (November 2025) to ~52.5p (April 2026) -- >1,000% rally -- now exceeding analyst consensus (~40p) at roughly peer EV/Revenue (~6x). Standalone financials remain fragile: five years of revenue decline, quarterly covenant waivers, margins a fraction of competitors'. Risk/reward finely balanced between strategic acquisition value and severe downside if the review fails.
+World's largest independent compound semiconductor epitaxial wafer manufacturer -- the only scaled provider spanning all major III-V material systems (GaAs, InP, GaN, GaSb) across three deposition platforms (MBE, MOCVD, CBE). SiPh foundries cannot generate their own light, creating structural demand for III-V laser sources that IQE supplies from its Western (UK/US) base. Evaluate primarily as an **M&A special situation overlaid on a structural InP demand story**: formal UK Takeover Code offer period active since September 2025, board negotiating non-binding bids while separately marketing Taiwan operations for sale. Stock surged from 4.7p (November 2025) to a ~52.5p April-2026 peak -- >1,000% at the high -- and has since eased to ~38.8p, roughly back at analyst consensus (~40p) at peer EV/Revenue (~6x). Standalone financials remain fragile: five years of revenue decline, quarterly covenant waivers, margins a fraction of competitors'. Risk/reward finely balanced between strategic acquisition value and severe downside if the review fails.
 
 ## Key Non-consensus Insights
 
@@ -25,11 +27,11 @@ World's largest independent compound semiconductor epitaxial wafer manufacturer 
 
 - **The Taiwan sale and defense demand acceleration could transform IQE into a pure-play Western defense/photonics company at the exact moment sovereign supply chain demand is accelerating.** Taiwan sale proceeds fully repay the HSBC facility and convertible loan notes; the remaining UK/US operations (defense GaN, InP photonics, microLED) become a cleaner acquisition target. H2 2025's beat was partly driven by faster-than-expected US defense funding releases. Trade-off: Taiwan contributed meaningfully to H2 revenue recovery, so the remaining entity would be smaller.
 
-- **At ~52p, the stock has outrun its fundamentals — the M&A premium that justified the position at 19p is now largely priced in.** EV/Revenue expanded from ~2.3x to ~6.1x, reaching parity with Win Semiconductors (6.7x) and Coherent (6.9x). Analyst consensus was 40p; the stock trades above it.
+- **At ~38.8p, the stock has given back roughly a quarter from the ~52p level — the M&A premium that justified the position at 19p has partly deflated, but at ~2x the 19p entry it is still not obviously cheap.** EV/Revenue expanded from ~2.3x to ~6.1x, reaching parity with Win Semiconductors (6.7x) and Coherent (6.9x). Analyst consensus was 40p; the stock trades above it.
 
 ## Outstanding Questions
 
-1. Will the strategic review produce a firm offer, and at what price? At ~52p, a bid must clear ~60-80p to deliver meaningful upside — who has the strategic rationale AND balance sheet to pay that?
+1. Will the strategic review produce a firm offer, and at what price? At ~38.8p, a bid clearing ~60-80p now implies +55-105% upside (wider than at 52p) — who has the strategic rationale AND balance sheet to pay that?
 2. Taiwan sale valuation: what multiple do the Taiwan operations command? Does the transaction close the balance sheet gap entirely, or does a residual debt position remain?
 3. Post-Taiwan-sale, can the remaining UK/US business achieve standalone profitability? H1 2025 UK/US operations alone were unprofitable.
 4. How much InP epiwafer demand will IQE actually capture from the CPO/SiPh buildout? Coherent's new 6-inch InP platform, IntelliEPI's CHIPS-funded expansion, and the Eindhoven 6-inch InP fab (EUR 150M, operational 2028) are all adding III-V capacity.
@@ -133,8 +135,8 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~52.5p | Up >1,000% from Nov 2025 low of 4.7p; exceeds analyst consensus (40p) |
-| Market Cap | ~£525M | Shares in issue: ~978.7M |
+| Stock Price | ~38.8p | Up >1,000% from Nov 2025 low of 4.7p; exceeds analyst consensus (40p) |
+| Market Cap | ~£516M | Shares in issue: ~1,330M (post the ~34% dilutive MACOM raise) |
 | EV/Revenue | ~6.1x | Now near peer parity (Win Semi 6.7x, Coherent 6.9x); was 2.3x at 19p |
 | FY2025 Revenue | ~£97M | Upper end of £90-100M guidance; five consecutive years of decline from FY2020 peak |
 | Adj. EBITDA | ~£2.0M | Returned to positive after H1 2025 was -£0.4M; vs Win Semi ~33% margin |
@@ -180,16 +182,19 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 3. **Customer concentration**: Apple/Lumentum VCSEL chain is the revenue anchor; Coherent's growing VCSEL capability and Apple's direct engagement with Coherent represent a secular competitive threat
 4. **Scale disadvantage**: Win Semi at 50%+ share with 33% margins vs IQE's 2% — the competitive gap is structural, not cyclical, and persists regardless of end-market growth
 5. **New III-V capacity**: Coherent's 6-inch InP platform, IntelliEPI's CHIPS-funded expansion, and the EUR 150M Eindhoven fab could erode IQE's scarcity premium over 2-3 years
-6. **Valuation at ~52p**: Stock has exceeded analyst consensus; at ~6.1x EV/Revenue, the M&A discount that justified the position has largely evaporated
+6. **Valuation at ~38.8p**: Stock has slipped back to around analyst consensus (~40p); at ~6.1x EV/Revenue (inflated by the MACOM dilution), the M&A discount that justified the position has narrowed but not fully reopened
 7. **Gallium/indium supply risk**: China's export controls on primary feedstock (98% Ga, 59% In) create upstream cost and availability risk
 8. **Post-Taiwan-sale revenue gap**: Remaining UK/US operations may be subscale and unprofitable as a standalone entity
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
-
+- **Models applied** (2026-07-10 batch-5 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- CENTRAL PREMISE REFUTED — the M&A special-situation leg is dead and unrecorded in this vault: strategic review CONCLUDED 2026-04-27 with all buyer discussions terminated and no Taiwan sale; offer period lapsed. Replaced by an £81M fundraise at 19.8p (58.4% discount to spot): MACOM £45M (~11.5% stake, 2 board seats, £15M zero-coupon CLNs, warrants) + noteholder equity conversion + placing; ~332M new shares ≈ ~34% dilution (~1.31B shares) makes the thesis's "bid must clear 60-80p" per-share math non-comparable. Stock fell 19% to ~40p on the raise.
+	- Structural InP demand leg STRENGTHENED: Tower Semiconductor multi-year InP epiwafer agreement 2026-06-15 with minimum purchase commitments + full IP-dispute settlement (stock +17% that day); MACOM LTSAs across InP + GaN; FY2025 Photonics +15% (Wireless -40%); FY2026 guided >20% revenue growth; HSBC RCF repaid, going-concern language gone from FY2025 accounts (28 May).
+	- VLM / Semis [#2] — the epi layer is upstream and contestable, and the market's own mark refutes scarcity pricing: MACOM, the strategic buyer with the best information, chose an 11.5% stake + supply agreements at 19.8p over acquiring the company. Geopolitical scarcity premium two-sided: gallium ~$2,100/kg (+123% since start-2025), but China released 2026 InP substrate batch end-May easing that bottleneck.
+	- Generalist [G-13] expectations — the stock now trades as a high-beta AI-photonics sentiment proxy, not a Takeover Code event stock: 40p → 72.9p (post-Tower June run) → 40.8p by Jul 9, a ~44% two-week drawdown on zero company news amid the semis purge.
+- **Disconfirming check** (evidence-updated 2026-07-10): the single most important falsifying datapoint already fired — the 19.8p institutional clearing price (2026-04-27) is sophisticated money's mark on standalone value, ~58% below the then-market price. Conviction HIGH (set 2026-05-22 portfolio alignment) rests on a thesis whose primary leg had already publicly failed on 27 April — the vault never recorded the review conclusion, the raise, the dilution, FY2025 results, or the Tower deal; flagged for /status review (Tier 3 — user decision). Base rate: loss-making UK smallcap turnarounds that exit a formal sale process without a bid rarely re-rate on fundamentals alone; IQE partially beat it only because AI-photonics narrative flow substituted for the bid. The honest reframe: a levered-to-AI-photonics growth turnaround at ~5-6x EV/Revenue with a strategic anchor shareholder — a different, weaker-conviction thesis than the M&A convexity bet this note argues.
 ## Related Research
 
 - [[Sectors/Optical Networking & Photonics]] — Sector Note (LITE + IQE as Active Theses; covers III-V epitaxy supply gap, EML oligopoly, SiPh foundry paradox, Western scarcity premium)
@@ -228,3 +233,18 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 ### 2026-05-31 (/sync)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: Quantifies the CPO external-laser bottleneck (every Nvidia CPO switch = 18 ELS × 8 CW DFB chips → III-V/InP epi demand; IQE in supply map) — corroborates existing CPO/SiPh InP-epi-demand Bull Case. Conviction unchanged (high).
+
+### 2026-07-10
+- Mental models pass: batch-5 evidence sweep populated ## Mental Models — central M&A leg DEAD since 2026-04-27 (review concluded no bid, £81M raise at 19.8p, ~34% dilution) and never recorded in this vault; InP demand leg stronger (Tower + MACOM LTSAs, >20% FY26 guide, going-concern gone) — conviction unchanged (high) pending user /status review: the note argues a special situation that no longer exists.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard, resolving the pending review flagged 2026-07-10: the central M&A special-situation leg is confirmed dead (review concluded, no bid, dilutive raise); MACOM — the best-informed strategic buyer — priced IQE at 19.8p and chose a stake + supply deal over acquiring, directly refuting scarcity pricing at ~4.7x EV/sales. Snapshot: [[_Archive/Snapshots/IQE - IQE (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 1 material. Stock Price ~52.5p→~38.8p (-26.2%, confirms the Mental Models section's already-noted ~40.8p Jul 9 level); Market Cap ~£525M→~£516M (non-material). FY2025 Revenue unchanged (rounds identically to ~£97M). EV/Revenue left untouched (fetch_gap). Snapshot: [[_Archive/Snapshots/IQE - IQE (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh: 0 metrics changed, 0 material (fmp_symbol confirmed IQE.L exchange-suffix fix re-fetch). Stock Price ~38.8p, Market Cap ~£516M, FY2025 Revenue ~£97M all round identically to the prior refresh. EV/Revenue left untouched (fetch_gap). Snapshot: [[_Archive/Snapshots/IQE - IQE (pre-numbers 20260712-184014)]]
+
+### 2026-07-12 (/deepen --sync-metrics)
+- Metrics synced: 52p→38.8p across Insights, OQ #1, Risks #6 + shares 979M→~1,330M in Notes (post ~34% MACOM dilution). Snapshot: [[_Archive/Snapshots/IQE - IQE (pre-deepen-metrics-sync 2026-07-12-203456)]]

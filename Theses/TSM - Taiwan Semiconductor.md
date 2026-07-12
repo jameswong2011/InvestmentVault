@@ -7,6 +7,7 @@ conviction: high
 sector: Semiconductor Foundries
 ticker: TSM
 source: https://pr.tsmc.com/english/news/3264
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 # TSM — Taiwan Semiconductor Manufacturing Company
@@ -175,7 +176,7 @@ At every step TSMC either produces (wafer, packaging) or enables (hybrid bonding
 | AI Revenue (2026E) | ~$50B | ~40% of total |
 | FCF Yield (NTM) | ~3% | Capex-heavy phase |
 | Net Cash | ~$70B | Deep balance sheet cushion |
-| Dividend Yield | ~1.3% | Rising payout ratio |
+| Dividend Yield | ~0.9% | Rising payout ratio |
 | Revenue Concentration Top 2 | ~40% | AAPL ~23%, NVDA ~17% |
 
 ## Bull Case
@@ -287,9 +288,15 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-3 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (expectations) · [[Industry - Semiconductors]] (#2, #6, #15, #16) · [[Lens - Value Layer Monopoly]]
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *HIGH trigger FIRED on all three legs — and is now a dead letter*: FY26 GM >60% (Q1 actual **66.2%**, Q2 guide 65.5–67.5%); capex $45B+ (guided **$52–56B**, landing at high end); NVDA Feynman confirmed sole A16 customer (2028 volume commit undisclosed; A16 itself slipped to 2027). Conviction was raised to high on 2026-05-22 portfolio alignment, not on the trigger — **re-arm the framework with new thresholds**, the old ones are all exhausted.
+	- *VLM/#2 monopoly rents* — CONFIRMED expanding: price hikes 3–10% across nodes covering ~74% of wafer revenue, four consecutive annual increases signaled; N2 $30K/wafer (+10–20%), sold out; N3 the binding AI constraint (~86% AI share of output 2027E). The market has paid for it: spot ($452) **exceeds the thesis bull target ($380–420)**; NTM ~26–27x vs the thesis's 22x anchor — the predicted monopoly re-rate substantially happened, compressing forward asymmetry. (Watchlist NTM "0.9" = data artifact — NTD/USD mismatch; `/numbers TSM`.)
+	- *Bear legs REFUTED*: Arizona margin drag — Arizona's Q1 profit exceeded its full FY25 profit, Kumamoto first profit; HPC deceleration — +40.6% Q1, May sales +30%; Intel 18A threat — 1 tentative customer (MSFT Maia 2), and Intel deepening its own TSMC dependence (Nova Lake >90% N2).
+	- *#15/#16 silicon shield* — UPGRADED: Jan 15 US-Taiwan framework ($250B Taiwan-into-US, 2.5x tariff-free import ratio, Section 232 relief) converts Insight #2 into treaty-adjacent policy. Geopolitics: grinding escalation (blockade-rehearsal drills, July supply-chain exercises) — elevated, not acute; CLOSE trigger unfired.
+	- *New watch items the thesis lacks*: **CoWoS supply-demand gap 20%→10% by end-2026** — the first dated milestone toward the overbuild/utilization-cliff bear (2027 is the test year); CoPoS glass panel (volume 2H28, -30% cost) positioned to *replace* CoWoS at the largest packages — a pricing-curve lever under the CoWoS-annuity insight; NVDA is now customer #1 (~22%, Apple ~18%) — concentration rotated from consumer-cyclical to AI-capex-cyclical, exactly as Outstanding Q5 anticipated.
+	- *Data-integrity flag — a full regime stale*: Key Metrics carry Q1 = $26.5B/58.8% GM vs actual $35.9B/66.2%; FY26E $116B vs run-rate ~$165–170B; mcap $1.10T vs ~$2.3T. Every quantitative anchor needs `/numbers TSM` before any decision references it.
+- **Disconfirming check** (evidence-updated): everything the thesis predicted happened — which per VLM §4 is precisely when edge dies: a consensus-recognized monopoly at a re-rated multiple with spot above the bull target is "quality, fully priced" unless the **Jul 16 print** raises the ceiling again (Citi expects an FY26 guide raise; first 2027 capex signal; 2H26 GM-dilution quantification is the live test). Single falsifiers: CoWoS gap closing through zero in 2027; a hyperscaler-capex second-derivative shock (Meta late-July guide); N2 utilization softening. The remaining non-consensus content is durability-beyond-2028 — everything nearer is in the price.
 
 ## Related Research
 
@@ -368,3 +375,12 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: SemiAnalysis quantifies N3 as THE binding AI constraint — AI ~60% of 2026 N3 output → ~86% 2027, effective util >100% H2'26, ~2-yr cleanroom ceiling (cannot add capacity), TSMC "kingmaker" prioritizing higher-ASP AI over saturated mobile/client. Corroborates pricing-power Bull pillar (Insight #5) and the Apple-share Outstanding Q#5 (smartphone squeezed toward N2); "caught flat-footed" reconciles with the deliberate-restraint framing (measured expansion over max short-term rent). Conviction unchanged (high), marginal/positive.
+
+### 2026-07-09
+- Mental models pass: batch-3 evidence sweep populated ## Mental Models — HIGH trigger fired on all 3 legs (GM 66.2%, capex $52-56B, Feynman/A16 exclusive) and is now a dead letter needing re-arming; spot $452 exceeds the bull target; Key Metrics a full regime stale (/numbers TSM urgent; watchlist NTM 0.9 = artifact); new watch: CoWoS gap 20→10% by end-26, CoPoS glass 2H28, NVDA now customer #1 — conviction unchanged (high); Jul 16 print = FY guide raise test.
+
+### 2026-07-12
+- Numbers refresh: 1 metric updated, 0 material. Dividend Yield ~1.3%→~0.9%. All other rows (Market Cap, EV/Revenue, P/E, Revenue, margins, capex, Net Cash) are custom/derived metrics with no FMP mapping — left untouched; this table remains materially stale per the 2026-07-09 Mental Models flag (spot ~$452 vs thesis's ~$1.10T/April-2026 basis) and still needs a full `/numbers TSM` rebase beyond what this batch's field-mapped rows can fix. Snapshot: [[_Archive/Snapshots/TSM - Taiwan Semiconductor (pre-numbers 20260712-173508)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed. Dividend Yield (~0.9%) renders identically after rounding. All other rows remain custom/derived-metric with no FMP mapping — table is still materially stale (per repeated Mental Models flags) and needs a full `/numbers TSM` rebase beyond this batch's field-mapped scope. Snapshot: [[_Archive/Snapshots/TSM - Taiwan Semiconductor (pre-numbers 20260712-184147)]]

@@ -7,6 +7,7 @@ conviction: high
 sector: Semiconductor Capital Equipment
 ticker: AMAT
 source: Vault research synthesis (2026-02-26 Lam vs AMAT canvas, 2026-03-20 LRCX/AMAT evaluation, 2026-03-20 WFE Equipment Canvas, 2026-04-10 Hybrid Bonding/BESI, 2026-04-24 Dylan Patel transcript) + web research (Q1 FY26 8-K, sell-side coverage, EPIC Center coverage, WFE share data)
+key_metrics_last_refreshed: 2026-07-12
 ---
 
 ## Summary
@@ -111,7 +112,7 @@ Tool vendors maintain pricing power via (1) tool-of-record qualification cost, (
 
 | Metric | Value | Notes |
 |---|---|---|
-| Market Cap | $317–320B | Stock $396.94 (late April 2026); 800M shares outstanding |
+| Market Cap | $478B | Stock $396.94 (late April 2026); 800M shares outstanding |
 | EV/Revenue (FY25) | 11.0x | Net cash position; EV ~$313B / FY25 revenue $28.37B |
 | Revenue Growth (FY25) | +4.4% | $28.37B vs. $27.18B FY24; muted by ICAPS soft + China hit |
 | Forward Revenue (FY26E) | ~$30.5B | Q1 FY26 Semi Systems $5.14B run-rate; FY26 China headwind $600–710M |
@@ -122,7 +123,7 @@ Tool vendors maintain pricing power via (1) tool-of-record qualification cost, (
 | PEG | 1.73 | Forward P/E / forward EPS growth — not cheap, not stretched |
 | Gross Margin (Q1 FY26 Non-GAAP) | 49.1% | Targeting 50%+ at Semi Systems segment; AGS lifts blended |
 | Operating Margin (FY25 Non-GAAP) | ~30% | Lower than ASML (33%) but higher than LRCX (28%) |
-| FCF Yield | ~4.0% | $12.7B FCF FY25 / $317B mcap; supports buyback + dividend |
+| FCF Yield | ~1.3% | $12.7B FCF FY25 / $317B mcap; supports buyback + dividend |
 | Capital Return Yield | ~3.7% | Buyback + dividend combined; consistent program |
 | Net Cash | ~$5B | Net of debt; supports BESI stake, EPIC capex |
 | WFE Market Share | ~19% | Down from ~20% (peak); ASML #1 at ~22% as of 2024 |
@@ -223,9 +224,15 @@ The bear case is real and is why conviction is medium, not high. Three structura
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+- **Models applied** (2026-07-09 batch-1 pass, evidence-tested against July-2026 web research — 8-agent sweep, dated sources): [[Generalist - Overview]] · [[Industry - Semiconductors]] (#2, #6, #13, #15, #19, L2) · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]] (marginal)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *#2 qualification-gate (flavor ii)* — INTACT, contest unresolved: no ToR losses disclosed; Sym3 etch "fastest ramping product in AMAT history" (>250 chambers, Q2 FY26 call); Endura Trillium ALD launched 2026-04-08 "adopted at 2nm and below" (unnamed customers) targeting WFM/dipole — the ALD counter-offensive is live but unverified against ASMI's >55% share; ASMI counter-claims incremental moly POR at 1.4nm (Q1 call). Neither the HIGH-trigger ALD-gain leg nor the LOW-trigger ASMI-displacement leg has fired.
+	- *L2 WFE floor + #6* — SUPPORTED by fundamentals, untested by a downcycle: Q2 FY26 record $7.91B (+11%), GM 50.0%, Q3 guide $8.95B (+23%); CY26 equipment-growth outlook raised >20% → **>30%** (2026-05-14). The Nov-2025 "China digestion year" framing was overrun by leading-edge/HBM inside six months.
+	- *AGS annuity decay (this pass's key disconfirm)* — REFUTED favorably: AGS +17% YoY ($1.67B qtr, record), sustainable-growth guide raised low-double-digits → mid-teens. The 2008/2018 ~1%-growth downcycle base rate remains the untested tail.
+	- *EPIC flywheel* — CONFIRMED beyond thesis expectations: **TSMC founding partner 2026-05-11**; Samsung (Feb), Micron + SK Hynix (Mar), Advantest (May); Intel absent. HIGH-trigger leg (d) met.
+	- *#13 four-inflection scoreboard*: GAA ✓ (record foundry revenue); HBM/AP ~ ($2B run-rate plausible-unconfirmed, AP guided +>50% CY26, but Kinex = one ~$15M SK Hynix development-line system with HBM adoption "next-next generation"; Hanmi's TC bonders took the HBM4 ramp); ICAPS ✗ (management: "digestion," flat-to-slightly-higher CY26 — supports the thesis's 2027-not-2026 timing but no reacceleration commitment); BSPDN ✓ implied in GAA tooling. Score 2✓/1~/1✗ — matches the base-rate expectation that 2 of 4 land.
+	- *#15/#19* — structural as hypothesized: China 27% of Q2 revenue; NAURA >60% of SMIC 28nm furnace deployments, AMEC thin-film +224% YoY, domestic adoption 35% (2025) targeting 50–70% by 2027. NEXX acquisition ($120M, panel-level ECD, May) extends the packaging envelopment.
+- **Disconfirming check** (evidence-updated): the fundamental falsifiers did not fire — **the market fired first**: stock $397 → $570 (+44% since thesis creation), fwd P/E ~38–48x, while the complex purged ~$1.5T of market cap Jun 25–Jul 8 (AVGO guide miss, Meta excess-compute admission Jul 1, Fed dots showing possible 2026 hikes). Expectations rose faster than confirmations: 1 of 4 HIGH-trigger legs confirmed at a multiple 20–50% higher than at thesis creation. Nearest falsifier: ASMI displacement at A14 pilot lines (H2 2026); nearest test: Q3 FY26 print (Aug) delivering +23% into a repricing tape. Batch flag: the shared WFE-structural premise is now stress-testing live — fundamentals revising up ($140B+ CY26 WFE, hyperscaler capex ~$725B → >$1T 2027E) while prices break on second-derivative fear; that divergence is the #18 cycle-vs-structural decomposition happening in real time.
 
 ## Related Research
 
@@ -278,3 +285,13 @@ The bear case is real and is why conviction is medium, not high. Three structura
 
 ### 2026-06-01 (/sync)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: memory WFE capex acceleration (+26/34/20% Samsung/SK Hynix/Micron 2026) + 1b/1c node migration — broad WFE beneficiary; conviction unchanged (high).
+
+### 2026-07-09
+- Mental models pass: batch-1 sweep populated ## Mental Models — qualification-gate (#2) + L2 WFE-floor + VLM fired as hypotheses; key disconfirm is AGS downcycle base rate (2008/2018 ~1% growth) vs 32x forward — conviction unchanged.
+- Mental models pass (evidence rerun): 8-agent web sweep — EPIC TSMC founding partnership confirmed (HIGH leg 1/4 met), AGS +17% refutes annuity-decay concern, ICAPS digestion extends, ALD contest unresolved (Trillium launched, ASMI claims 1.4nm gains); stock $397→$570 at 38-48x fwd amid Jun 25–Jul 8 complex purge — conviction unchanged; valuation-vs-trigger gap flagged for review.
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 2 material. Market cap $317-320B→$478B (material, reflecting the $397→$570 stock re-rate already noted in Mental Models); FCF yield ~4.0%→~1.3% (material, denominator effect of higher market cap). All other rows (EV/Revenue, Revenue Growth, Forward EPS/PE, PEG, margins, WFE share, GAA/HBM revenue, AGS run-rate, FCF CAGR) are custom metrics with no FMP mapping — left unedited. Snapshot: [[_Archive/Snapshots/AMAT - Applied Materials (pre-numbers 20260712-173930)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (second same-day pass): 0 metrics changed. Market Cap ($478B) and FCF Yield (~1.3%) render identically after rounding — data <1hr fresh. All remaining rows are custom/no-FMP-mapping, left untouched. Snapshot: [[_Archive/Snapshots/AMAT - Applied Materials (pre-numbers 20260712-184147)]]
