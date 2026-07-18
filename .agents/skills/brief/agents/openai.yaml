@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investment Brief"
+  short_description: "Create concise one-page investment briefs"
+  default_prompt: "Use $brief to create a one-page investment brief for NVDA."

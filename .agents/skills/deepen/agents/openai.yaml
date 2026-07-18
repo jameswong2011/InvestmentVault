@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deepen Thesis"
+  short_description: "Deepen thesis sections and synchronize metrics"
+  default_prompt: "Use $deepen to strengthen NVDA's Industry Context section."

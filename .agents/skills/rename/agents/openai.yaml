@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rename Thesis"
+  short_description: "Rename thesis files and repair references"
+  default_prompt: "Use $rename to rename a thesis while preserving every inbound reference."

@@ -2,30 +2,30 @@
   "tabManagerState": {
     "openTabs": [
       {
-        "draftModel": "haiku",
         "tabId": "tab-1775971984831-eet52ar",
-        "conversationId": null
+        "conversationId": "conv-1784020046747-bc0ibz1zl"
       },
       {
-        "draftModel": "haiku",
         "tabId": "tab-1776129201132-giemcl5",
-        "conversationId": null
+        "conversationId": "conv-1784017481007-ps6vlim83"
       },
       {
-        "draftModel": "haiku",
+        "draftModel": "gpt-5.6-sol",
         "tabId": "tab-1776154746591-w3ie45g",
         "conversationId": null
       },
       {
-        "tabId": "tab-1776609326063-w0o2wwn",
-        "conversationId": "conv-1783863254665-1heut6be7"
+        "tabId": "tab-1776640134699-9w6pyvp",
+        "conversationId": "conv-1784267134755-6lzns2ux5"
       },
       {
-        "draftModel": "haiku",
-        "tabId": "tab-1776640134699-9w6pyvp",
-        "conversationId": null
+        "tabId": "tab-1784097454528-h22inh8",
+        "conversationId": "conv-1784268623353-n0b3uqpbj"
       }
     ],
-    "activeTabId": "tab-1776640134699-9w6pyvp"
+    "activeTabId": "tab-1784097454528-h22inh8",
+    "expandedTitleTabIds": [
+      "tab-1776154746591-w3ie45g"
+    ]
   }
 }

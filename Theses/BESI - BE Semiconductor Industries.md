@@ -231,6 +231,7 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→4-5% (hybrid bonding monopoly; logic-line bridge + HBM5+ 24-Hi mandate; JEDEC relaxation delayed HBM ramp ~2yr)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: TSMC SoIC die-to-wafer hybrid bond is the performance-critical CPO optical-engine bond (23× density vs bumps) — reinforces the hybrid-bonding secular theme, though the article credits TSMC-internal capability (indirect BESI read-through)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: HBM wafer capacity ~5x in 4 years (123→668 kwspm) + back-end TC-bonder intensity supports HBM packaging / hybrid-bonding demand
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]] — Intel Foveros/EMIB packaging read: Intel's 15-20 bonders sufficient for Clearwater Forest (Intel not the near-term incremental-order driver; TSMC/AMD is); logic hybrid-bonder base ~100→163 units 2026→27; line integration (CMP/clean/metrology) the practical bottleneck
 
 ## Log
 
@@ -288,3 +289,6 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (3 mapped rows re-rendered identical post-rounding), 0 material. Snapshot: [[_Archive/Snapshots/BESI - BE Semiconductor Industries (pre-numbers 20260712-184039)]]
+
+### 2026-07-14 (/sync)
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Sharpens the Intel-demand vector — Intel's 15-20 hybrid bonders (2022-23) are **sufficient for Clearwater Forest**, so incremental Intel bonder orders are unlikely near-term; BESI's near-term hybrid-bonding demand is **TSMC/AMD-driven, not Intel** (logic hybrid-bonder installed base ~100→163 units 2026→2027, ~70 incremental logic). Reinforces the thesis's logic-entrenched (not-an-Intel-play) framing; also relocates the practical bottleneck to line integration (CMP/clean/metrology), diversifying demand beyond bonders. Conviction unchanged (medium).

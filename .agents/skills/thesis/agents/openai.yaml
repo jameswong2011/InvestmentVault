@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Thesis"
+  short_description: "Build a full investment thesis note"
+  default_prompt: "Use $thesis to build a new investment thesis for NVDA."

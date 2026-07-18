@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vault Graph"
+  short_description: "Rebuild the vault dependency graph"
+  default_prompt: "Use $graph to rebuild the vault dependency graph."

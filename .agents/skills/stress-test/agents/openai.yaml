@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stress Test Thesis"
+  short_description: "Challenge an investment thesis adversarially"
+  default_prompt: "Use $stress-test to challenge the NVDA investment thesis."

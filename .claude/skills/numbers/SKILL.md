@@ -239,6 +239,23 @@ For every row that mapped successfully:
 
 Aggregate per-thesis: `material_count`, `material_metrics: [list of labels]`. Used in Step 6 (user confirmation), Step 9 (Log entry text), and Step 10 (advisories).
 
+## Step 5b: Conviction-trigger touch check (per `_shared/trigger-touch.md`)
+
+The deltas from Step 5 are the exact data a thesis's pre-registered numeric triggers test. `/numbers` is the primary/concrete consumer of the trigger-touch contract — it holds `old_value_numeric` + `new_value_numeric` for every row and can mechanically check whether a refresh moved a metric across a `→ HIGH/LOW/CLOSE if` threshold. Without this, a trigger that has quietly fired sits unnoticed until the next human review.
+
+**Read the triggers.** Probe for `## Conviction Triggers` (Procedure 4). Absent or scaffold-empty → skip this step silently and note `no triggers to test` in the Step 12 report (a `/lint #60` gap, not a `/numbers` error). Present → read the section (a targeted section read; do not full-read the thesis).
+
+**Parse + diff (numeric handles only).** Per the trigger-touch contract, extract each trigger's numeric threshold (number + comparator: `GM < 42%`, `net debt/EBITDA > 2.0x`, `revenue growth below 20%`, `share ≥ 60%`). Map each threshold to a refreshed Key-Metrics row where the metric matches. For each mapped trigger, classify using Step 5's numbers:
+- **CROSSED** — the refreshed value is now on the trigger side of the threshold (e.g. trigger `→ LOW if GM < 44%`, GM refreshed 47.1%→43.6%).
+- **approaching** — the value moved ≥ halfway toward the threshold from its old value this run but has not crossed.
+- **no-touch** — otherwise.
+
+Named-observable triggers (no number — `loses the Apple N2 anchor`, `Maia 2 launch`) are out of scope for `/numbers` (no metric tests them); leave them to `/transcript`/`/sync`/`/deepen` per the contract.
+
+**Flag-only — never edit `conviction:`.** A trigger crossing is a Tier-3 conviction signal (CLAUDE.md); `/numbers` surfaces it, the user decides via `/status`. Same discipline as Design constraint #8 (never auto-edit argument-coupled state).
+
+Store `trigger_crossings: [{ticker, trigger_verbatim, metric, old, new, class}]` for Step 6 (presentation), Step 9b (register write), and Step 12 (report). A `CROSSED` result is the strongest single output this skill produces — never let it ride silently inside the plain metric count.
+
 ## Step 6: Present deltas; confirm if material
 
 **Single ticker, no material deltas AND no Step 4b web-filled rows**: skip confirmation; proceed silently to Step 7.
@@ -258,10 +275,13 @@ Aggregate per-thesis: `material_count`, `material_metrics: [list of labels]`. Us
 
 ⚠️ 2 material deltas — review before applying.
 ⚠️ 1 row web-search-filled (Step 4b: FMP fetch_gap) — confirm gate triggered regardless of materiality.
+🎯 CONVICTION TRIGGER CROSSED — "→ LOW if gross margin < 44%": GM refreshed 47.1%→43.6%. Flag-only; consider /status after applying.
 Notes column unchanged. Skipped: 5 custom metrics with no FMP mapping.
 
 Confirm? (y/n)
 ```
+
+Surface the `🎯 CONVICTION TRIGGER CROSSED` line (from Step 5b `trigger_crossings`) above the `Confirm?` prompt whenever any trigger CROSSED this run — it is the highest-signal output and must never be buried. `approaching` touches are reported in Step 12 only, not escalated to the confirm gate.
 
 The `Source` column is only shown when ≥1 row is web-filled this run — omit it entirely for a pure-FMP refresh (the common case) rather than adding noise every time.
 
@@ -324,6 +344,21 @@ When zero material deltas: still write the Log entry — its presence is the aud
 
 **When ≥1 row was web-filled (Step 4b), the Log entry must name it and its source** — this is not optional, per Step 4b's provenance-tagging rule: `Numbers refresh: 7 metrics updated (6 FMP, 1 web: Trailing P/E via stockanalysis.com), 1 material. Largest Δ: EV/Revenue 18.3x→16.2x (-11.5%). Snapshot: [[...]]`. A web-filled row never rides silently inside the plain "N metrics updated" count.
 
+## Step 9b: Write CROSSED triggers to the open-findings register (per `_shared/followups-contract.md`)
+
+Runs only when Step 5b produced a `CROSSED` result (never for `approaching` or `no-touch`). A crossed conviction trigger is a durable actionable finding — it must outlive this run's chat report, which is exactly what `_hot.md` cannot guarantee (its Open-Questions cohorts evict after 14 days). `_followups.md` is the persistence layer.
+
+For each `CROSSED` entry in `trigger_crossings`:
+1. Read `_followups.md`. It is a durable vault file and normally exists; if absent, create it via Bash `printf` (the followups-contract schema — `/numbers` has no `Write` tool, so use `printf '%s\n' ... > _followups.md`), then Edit.
+2. **Dedup** — grep `## Open` for an existing entry on this thesis with a `→ [HIGH|LOW|CLOSE] trigger` finding of the same direction. If present, update its date; do not stack a duplicate.
+3. Append (prepend under `## Open`, newest first):
+   ```
+   - [ ] YYYY-MM-DD · numbers · [[Theses/TICKER - Name]] · [metric] crossed "[verbatim trigger]" → user runs /status or dismisses · src chat
+   ```
+4. `/status` is the resolver — when the user later executes the matching conviction change, it moves this entry to `## Resolved` (followups-contract resolver rules).
+
+Only runs after the refresh is applied (post-Step 8/9). An aborted refresh (`n` at Step 6) writes nothing to the register. Batch modes write one entry per ticker with a crossing; obey the 50-entry soft cap warning. This is the ONLY file outside `Theses/` + `_Archive/Snapshots/` that `/numbers` writes, and it is append-only — Design constraint #3 (no Research notes) is unaffected.
+
 ## Step 10: Material-delta advisories (single-ticker mode only)
 
 After the Log entry lands, if `material_count ≥ 1`, surface targeted suggestions per metric. These are SUGGESTIONS, not auto-executed.
@@ -368,7 +403,7 @@ key_metrics_last_refreshed: YYYY-MM-DD
 
 If absent, add as the last frontmatter field before the closing `---`. If present, update in place.
 
-This field is consumed by `/lint` (future check) to flag theses with stale Key Metrics — recommended threshold: 90 days. Until that lint check exists, the field is still useful as a visible thesis-level signal in dataview queries.
+This field is consumed by `/lint #61` (staleness check, added 2026-07-14) to flag theses with stale Key Metrics — threshold 90 days: missing or >90d on a `conviction: high` active thesis → Important; >90d elsewhere → Nice to Have. It also remains a visible thesis-level signal in dataview queries.
 
 ## Step 12: Release lock and report
 
@@ -387,6 +422,7 @@ Metrics refreshed:  [N]  ([M] material — see deltas above)
 Custom metrics skipped: [K]  ([list of labels, or "none"])
 FMP fetch failures:     [F]  ([list, or "none"])
 Web-search-filled:      [W]  ([list: label = value (source), or "none"] — Step 4b)
+Trigger touches:    [🎯 CROSSED: [trigger] | ⚠️ approaching: [trigger] | none | no triggers to test]  (Step 5b)
 
 Log entry:        appended ("Numbers refresh:")
 Propagation:      /sync will SKIP this thesis (skill-origin prefix)
@@ -410,12 +446,20 @@ Material-delta theses ([count]):
   [TICKER2]: [...]
   ...
 
+Sector aggregation ([count] signals, Step 5 — material deltas grouped by thesis sector: frontmatter, no new fetches):
+  ⚡ Sector signal: [X] of [Y] [Sector] peers [compressed/expanded] [metric] [>Zpp/>Z%] this run ([TICKER1] [Δ1], [TICKER2] [Δ2], [TICKER3] [Δ3]) — possible sector-wide [pricing/margin/valuation] inflection; consider /scenario or /compare
+  [emit ONLY when ≥3 peers in one sector moved the SAME metric the SAME direction past its Step 5 threshold; omit the whole section when no sector clears the bar — no noise on idiosyncratic single-ticker moves]
+
 Summary framing stale ([count], Step 10b):
   [TICKER1]: cites ~[old]x, live ~[new]x
   [TICKER2]: [...]
 
 Web-search-filled ([count], Step 4b — verify manually):
   [TICKER1]: [label] = [value] (source: [domain]) — trigger: fetch_gap | name-mismatch
+  [TICKER2]: [...]
+
+Conviction-trigger crossings ([count], Step 5b — written to _followups.md):
+  [TICKER1]: [metric] crossed "[verbatim trigger]" — consider /status
   [TICKER2]: [...]
 
 Suggested follow-ups (Step 10b flags → `/deepen TICKER --sync-metrics`; material-delta theses → single-ticker /deepen, /stress-test, /brief as appropriate):

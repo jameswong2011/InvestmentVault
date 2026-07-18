@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Research"
+  short_description: "Propagate research across portfolio notes"
+  default_prompt: "Use $sync to propagate recent research across affected vault notes."

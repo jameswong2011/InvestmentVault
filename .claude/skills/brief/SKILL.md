@@ -26,7 +26,7 @@ Run `.claude/skills/_shared/preflight.md` Procedure 2. If `.rename_incomplete.TI
 Both checks must pass before proceeding to Phase 1.
 
 ## Phase 1: Load
-1. **Duplicate check**: Grep `Research/` for existing briefs for this ticker (`source_type: brief` + matching ticker). If found, warn: `⚠️ Existing brief found: [[Research/existing-brief]]. Regenerating will create a new version. The old brief will remain in the vault.` Proceed — but note the old brief in the output so the user can delete it if desired.
+1. **Duplicate check**: Grep `Research/` for existing briefs for this ticker (`source_type: brief` + matching ticker). If found, warn: `⚠️ Existing brief found: [[Research/existing-brief]]. Regenerating will create a new version. The old brief will remain in the vault.` Proceed — but note the old brief in the output so the user can delete it if desired. Additionally, surface source-thesis staleness on the same warning surface: if the thesis's last `## Log` entry date is >45 days old, warn `⚠️ source thesis last updated [N]d ago — brief may reflect stale analysis`.
 2. Read the thesis note from Theses/
 3. Read the 2-3 most recent or most important linked research notes (prioritise by recency and by being referenced in Log entries)
 4. Read the relevant Sector Note for competitive context
@@ -85,7 +85,7 @@ Distil the thesis into exactly this structure. Every word must earn its place.
 The timing argument in 2-3 bullets. What catalyst, inflection point, or transition makes this relevant today rather than 6 months ago or 6 months from now?
 
 ### The Non-Consensus Edge
-The single strongest variant perception — one paragraph. This is the insight that, if correct, generates the alpha. State what consensus believes, why they're wrong, and what evidence supports the contrarian view. Cite specific data points. **Name the falsifier**: end with the one observable that would prove the edge wrong — pull it from the thesis's `## Conviction Triggers` (the `→ LOW if` / `→ CLOSE if` condition that kills this edge). An edge with no stated falsifier is generic variant-perception prose; tying the pitch to its own kill criterion is what makes it an IC-grade claim rather than a story.
+The single strongest variant perception — one paragraph. This is the insight that, if correct, generates the alpha. State what consensus believes, why they're wrong, and what evidence supports the contrarian view. Cite specific data points. **Name the consensus**: state in one clause the contrasting consensus / sell-side framing the edge opposes (e.g. "Street models flat take-rate; this thesis backs +300bps on the ticketing monopoly") — this mirrors the thesis `## Key Non-consensus Insights` Consensus field. **Name the falsifier**: end with the one observable that would prove the edge wrong — pull it from the thesis's `## Conviction Triggers` (the `→ LOW if` / `→ CLOSE if` condition that kills this edge). An edge with no stated falsifier is generic variant-perception prose; tying the pitch to its own kill criterion is what makes it an IC-grade claim rather than a story.
 
 ### Key Numbers
 | Metric | Value |
@@ -95,6 +95,8 @@ The single strongest variant perception — one paragraph. This is the insight t
 | Revenue Growth | |
 | Gross Margin | |
 | FCF Yield | |
+
+Attach below the table a data-as-of line — `Numbers as of YYYY-MM-DD` sourced from the source thesis's `key_metrics_last_refreshed` frontmatter. If the field is absent, render `as-of unknown — run /numbers`. Never present undated figures as current.
 
 ### What Kills It
 The single biggest risk in 2-3 sentences. Not a laundry list — the ONE thing that, if it happens, invalidates the thesis. Be honest about probability.
@@ -106,7 +108,7 @@ One line: conviction level, the quality of evidence supporting it, and what woul
 
 ## Phase 3: Quality Check
 Before saving, verify:
-- Is the pitch genuinely non-consensus, or is it a restatement of sell-side narrative?
+- Does the Non-Consensus Edge name the specific consensus / sell-side framing it departs from, not merely assert it is non-consensus? A pitch that can't name the consensus it opposes is a restatement — flag it.
 - Does "Why Now" contain a specific catalyst with a date, or is it vague?
 - Is "What Kills It" a real risk or a softballed disclaimer?
 - Are the Key Numbers current (check data age from thesis)?

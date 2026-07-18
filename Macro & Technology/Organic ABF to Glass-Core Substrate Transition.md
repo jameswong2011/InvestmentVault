@@ -250,3 +250,6 @@ The widely-discussed glass-substrate names (Intel as customer, NVIDIA via reticl
 
 ### 2026-06-18
 - [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]] created as companion note (panel-level *format* transition vs this note's glass-core *material* transition); cross-link added to Related theses + sectors. This note's CoPoS timing (VisEra pilot 2026, 2028–29 mass production) is consistent with June-2026 reporting — no body reconciliation needed here. The stale "Q4 2030" CoPoS-delay claim lived in the OSAT + Semicap sector notes (which mis-cited this note) and was corrected in the same /sync.
+
+### 2026-07-14 (/sync)
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Corroborates the Intel-first-mover framing on advanced packaging but adds a skeptical read on external monetization — Foveros Direct is a "credible-but-evidence-light" second-source option gated by yield economics (D0<0.1 parity vs early ~0.2-0.25, 18-24mo learning window) and named-customer production, not by tooling readiness. TSMC owns the current packaging profit pool. No change to the glass-core transition timeline/framework.

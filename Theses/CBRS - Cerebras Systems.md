@@ -45,27 +45,118 @@ Cerebras is a leveraged, binary bet on one proposition: that the reasoning/agent
 
 ## Business Model & Product Description
 
-Cerebras designs and monetizes wafer-scale AI compute through two lines:
+Cerebras monetizes wafer-scale AI compute through two lines:
 
 | Segment | 2025 revenue | % of total | YoY growth | 2025 gross margin |
-|---|---|---|---|---|
+|---|---:|---:|---:|---:|
 | **Hardware** (CS-3 systems + CSoft software) | ~$358M | 70% | +69% | 43% |
 | **Cloud & Services** (Cerebras Inference / Cloud, support) | ~$152M | 30% | +94% | 30% (volatile) |
 | **Total** | **$510M** | 100% | **+76%** | **39%** |
 
-**The core analogy.** Cerebras is to Nvidia what a single monolithic Formula-1 engine is to a fleet of wired-together cars: instead of stitching thousands of discrete GPUs into a cluster, it fabricates an *entire 300mm wafer as one chip*, eliminating the off-chip data movement that bottlenecks GPU inference. That makes it the fastest at one thing (memory-bandwidth-bound decode on large models) and capital-inefficient at everything that doesn't saturate the wafer.
+**The product is a low-batch decode appliance, not a universal GPU replacement.** Cerebras is to Nvidia what a monolithic Formula-1 engine is to a fleet of wired-together cars: it turns an entire 300mm wafer into one processor, removing chip-to-chip data movement and putting extreme-bandwidth SRAM beside compute. That configuration maximizes responsiveness when one user is waiting for sequential output tokens; it sacrifices memory density, workload flexibility and high-batch fleet economics.
 
-**WSE-3 (the product).** TSMC 5nm; 46,225 mm² (a full wafer, ~57x an H100 die); 4 trillion transistors; 900,000 AI cores; 125 PetaFLOPS FP16; **44 GB on-chip SRAM at 21 PB/s** (~7,000x an H100's 3 TB/s HBM); 214 Pb/s on-wafer fabric with single-cycle core-to-core latency. Packaged into the **CS-3** (15U, ~23 kW, proprietary water cooling). External **MemoryX** extends to ~1.5 PB to hold frontier-scale weights.
+**WSE-3 / CS-3 configuration.** TSMC 5nm; 46,225 mm²; 4 trillion transistors; 900,000 AI cores; 125 PFLOPS FP16; 44GB on-chip SRAM at 21 PB/s; 214 Pb/s on-wafer fabric; 15U CS-3 system drawing ~23kW with proprietary water cooling. External MemoryX holds up to ~1.5PB of weights and streams layers across the wafer, allowing models larger than the 44GB SRAM pool to run without turning every inter-chip hop into the bottleneck.
 
-**The architectural crux.** SRAM-only, no HBM tier. Weights live in on-wafer SRAM → extreme bandwidth → fastest tokens/sec (the decode bottleneck is bandwidth). But SRAM is low-density → a large model's weights must be federated across many CS-3 systems → high fixed hardware commitment, poor economics unless heavily utilized. SambaNova's critique lands here: SRAM-only forces committing large hardware volume to serve even a single small model. WSE-4's rumored 3D-stacked SRAM is the attempt to fix this.
+### Where WSE has the best price-performance
 
-**Revenue recognition nuance.** The OpenAI deal recognizes 15% in the first 24 months, 43% in months 25–48, and the balance after — so reported revenue will lag the headline backlog materially, and near-term prints understate (or overstate, if the ramp slips) the deal's economics.
+**The winning workload signature is low batch, long autoregressive output, high value per second, stable model weights and sustained utilization.** “Cheapest token” and “cheapest completed task” produce opposite answers. Independent same-model measurements make the distinction explicit:
+
+| gpt-oss-120b (high), 10k-token prompt / 500-token answer | Blended price / 1M tokens | Output speed | End-to-end response |
+|---|---:|---:|---:|
+| **Cerebras** | **$0.39** | **1,861 tok/s** | **1.94s** |
+| CoreWeave | $0.05 | 67 tok/s | 38.89s |
+| Google Vertex | $0.12 | 422 tok/s | 6.32s |
+| Groq | $0.14 | 479 tok/s | 5.92s |
+| SambaNova | $0.26 | 692 tok/s | 4.64s |
+
+**Cerebras charges 7.8× CoreWeave’s blended token price but generates output 27.8× faster and finishes this standardized response 20.0× faster.** At posted input/output rates, the 10k-input/500-output request costs ~$0.003875 on Cerebras versus ~$0.000470 on CoreWeave; the **$0.003405 premium buys 36.95 seconds, equivalent to only ~$0.33 per hour of user waiting time saved**. That is compelling for a developer, analyst or customer waiting on an answer and uneconomic for an unattended batch job whose completion time has no value. Evidence and derivation: [[Research/2026-07-13 - CBRS - WSE Workload Price-Performance Deep Dive]].
+
+| AI use case | WSE price-performance | Why the mapping works | Binding caveat |
+|---|---|---|---|
+| **Interactive coding, editing, debugging and codebase search** | **Highest** | Long sequential code output plus tight human feedback loops monetize every second saved. OpenAI’s Codex-Spark and Cognition’s SWE-1.6 validate >~1,000 tok/s as a product feature, not a lab benchmark. | Smaller/faster models must retain frontier coding quality; autonomous hours-long jobs value cheap tokens more than interactivity. |
+| **Model-bound research, reasoning and serial agent loops** | **High** | Plan→generate→inspect→revise chains cannot batch across dependent steps; faster decode compounds across calls. AlphaSense uses the latency budget to search more documents and run more tool-enabled work while the analyst remains in flow. | Browser, database, CPU and tool latency can dominate. WSE does not accelerate those stages. |
+| **Interactive multimodal document, screenshot, chart and computer-use agents** | **High, emerging** | Gemma 4 31B on Cerebras delivered ~1,974 tok/s and a 1.73s standardized response versus CoreWeave’s 39 tok/s and 57.78s; rapid visual observe→reason→act loops fit low-batch decode. | Cerebras costs $1.04/M blended versus CoreWeave’s $0.12/M and exposes 131k context versus 262k on several GPU services. Bulk document extraction remains a GPU job. |
+| **Real-time voice, contact-centre and digital-human dialogue** | **High for the LLM stage** | Turn-taking penalizes dead air; low-batch token generation fits a sub-second conversational budget and high-value calls monetize latency. | The public service has no audio model: speech recognition, synthesis and network latency remain external bottlenecks. |
+| **Dedicated latency tier for 100B–1T-parameter reasoning models** | **High** | On-wafer communication and MemoryX reduce scale-out latency; Kimi K2.6 approached 1,000 tok/s at 1T parameters. This supports premium “instant” tiers beside cheaper GPU capacity. | The independent xPU study puts CS-3, H100 and MI300 on the batch-1 Pareto frontier for Llama-405B depending on sequence/model configuration—Cerebras is not universally cheapest. |
+| **Best-of-N, self-critique and test-time-compute within a fixed deadline** | **Conditional high** | More serial samples or reasoning tokens fit inside the same wall-clock budget, raising result quality where errors are expensive. | The token-price premium rises with every sample; the use case needs high value per correct answer. |
+| **Sparse foundation-model pre-training / specialist fine-tuning** | **Conditional** | Weight Streaming decouples model memory from compute; WSE natively skips unstructured zeros, a pattern GPUs struggle to monetize. This can reduce time-to-model for very large or deliberately sparse networks. | Cerebras’ up-to-8× sparse-training result is vendor evidence; no current standardized $/trained-quality comparison offsets compiler, migration and utilization costs. |
+| **Scientific-AI kernels with local communication or irregular sparsity** | **Niche** | Genomics, PDE/stencil, graph and physics workloads can exploit the wafer mesh, SRAM and fine-grained sparsity when data reuse stays on-wafer. | Requires CSL/compiler work and specialist kernels; programmability cost can erase raw hardware gains. |
+| **High-batch offline generation, embeddings, classification, ranking and ETL** | **Poor** | These workloads monetize throughput/$, batching and ecosystem breadth—not single-user latency. | The independent xPU study finds Cerebras leaves the energy-latency Pareto frontier as batch size rises; H100, MI300, TPU and SambaNova become preferable. |
+| **Long-input / short-output RAG, summarization and prompt ingestion** | **Poor to mixed** | Prefill is compute-bound and parallel; little sequential output exists to amortize the WSE premium. | AWS itself assigns Trainium3 to prefill and CS-3 to decode, exposing the economically optimal split. |
+| **Sporadic on-prem workloads, edge AI and frequently changing model portfolios** | **Poor** | A 15U/23kW wafer appliance needs constant demand and a narrow set of compiled models. | CS-3 idles at ~80% of TDP and reaches energy/token parity with a 32-H100 cluster only around a 34% duty cycle; the public API currently exposes just three models, all capped at 131,072 context. |
+
+**End-to-end latency is the falsifier.** If decode is a share \(s\) of workflow latency and WSE accelerates decode by \(k\), total speedup is \(1/[(1-s)+s/k]\). Using the measured 27.8× Cerebras/CoreWeave output-speed ratio, a 90%-decode workflow accelerates **7.6×**; a 50%-decode workflow only **1.9×**; a 10%-decode workflow **1.1×**. The same hardware can therefore be dominant for an IDE completion and irrelevant for an agent waiting on web searches.
+
+> [!question] 2026-07-13 → Addressed 2026-07-13
+> **Prompt:** *Does WSE work with GPUs or other ASIC based accelerators alongside it. Does the economics change if the WSE needs to spend compute bandwith across ethernet or PCIe or NVLink to communicate across different types of processors to split a single AI workload across multiple compute engines.*
+>
+> **Response:** WSE can coexist with GPUs or ASICs at request or prefill/decode boundaries; AWS’s announced design transfers one KV cache from Trainium3 to CS-3 over EFA, while no disclosed PCIe/NVLink peer path supports fine-grained tensor splitting. A one-time handoff can pay on long decode, but repeated off-wafer traffic or long-context/short-output workloads erase the wafer-speed advantage. §Business Model & Product Description → Heterogeneous accelerator compatibility and interconnect economics.
+
+### Heterogeneous accelerator compatibility and interconnect economics
+
+**WSE works alongside GPUs and ASICs when the workload boundary is coarse—not as a conventional peer accelerator.** CS-3 is a rack-scale system with standards-based Ethernet I/O, not a PCIe card. AWS has announced Trainium3 prefill → one-time KV-cache transfer over Elastic Fabric Adapter (EFA) → CS-3 decode; no public deployment exposes WSE as a GPU-direct PCIe or Nvidia NVLink peer.
+
+| Topology | What crosses the boundary | Price-performance read |
+|---|---|---|
+| **Request-level routing** | Prompt and final response only; each request stays on one engine | **Best.** Route latency-sensitive work to WSE and bulk work to GPUs/ASICs without moving model state mid-request. |
+| **Disaggregated prefill/decode** | One KV cache per request, plus control metadata | **Viable when decode is long.** The cheaper ASIC performs parallel prefill; WSE monetizes serial decode. |
+| **Fine-grained layer/tensor/token split** | Activations and synchronization repeatedly cross engines | **Structurally poor; no disclosed production support.** Network latency and serialization recur inside the critical path. |
+| **Native WSE scale-out** | Cerebras-optimized weight/gradient traffic over SwarmX; local work remains on-wafer | **Preferred for models spanning wafers, but homogeneous.** SwarmX is not a general GPU/WSE coherence fabric. |
+
+**The bandwidth asymmetry makes granularity decisive.** WSE-3 exposes 21 PB/s of on-chip SRAM bandwidth while a CS-3 exposes up to 1.2 Tb/s of system I/O—about **140,000× less bandwidth after converting bits to bytes**. This does not prevent networking; it means the handoff must be infrequent enough that the wafer computes for far longer than it waits.
+
+An illustrative BF16 Llama-3.1-70B KV cache is 320 KiB per prompt token (`2 × 80 layers × 8 KV heads × 128 dimensions × 2 bytes`):
+
+| Prompt length | KV payload | 100 Gb/s lower bound | 400 Gb/s lower bound | 1.2 Tb/s port-limit lower bound |
+|---:|---:|---:|---:|---:|
+| 10k tokens | ~3.05 GiB | ~0.26s | ~0.066s | ~0.022s |
+| 128k tokens | ~39.1 GiB | ~3.36s | ~0.84s | ~0.28s |
+
+These are serialization floors before protocol, copies, queueing and congestion; quantization, GQA/MLA and KV compression can shrink them. Against the measured **36.95s** Cerebras decode-time saving on the prior 10k-input/500-output benchmark, a 0.07–0.26s handoff is immaterial. For a 128k prompt with a short answer, 0.84–3.36s can dominate time-to-first-token and reverse the result.
+
+The hybrid design wins only when:
+
+`T_prefill,other + T_KV-transfer + T_decode,WSE + T_queue < min(T_full,WSE, T_full,other)`
+
+The cost test adds duplicated model-weight residency, network/EFA capacity, orchestration, two fragmented utilization pools and integration amortization. **Long-output reasoning/coding is the positive case; long-context/short-output RAG is the negative case.** Request-level routing is the lowest-risk architecture until AWS publishes production latency, utilization and unit economics. AWS’s control of EFA, routing and Bedrock also makes the interface owner—not Cerebras—the party best placed to swap decode vendors. Evidence and derivation: [[Research/2026-07-13 - CBRS - WSE Interconnect and Software Migration Economics - deep-dive]].
+
+**Utilization is the second falsifier.** An ISPASS 2026 comparison across eight accelerator families found Cerebras Pareto-optimal at low batch for prefill and decode, with the advantage persisting to larger batches in decode than prefill; it falls off as throughput-oriented batch size rises. CS-3 consumes 100% of TDP during both prefill and decode and ~80% at idle, so hosted aggregation or a single high-volume model is structurally better than a lightly used enterprise appliance. The current public catalog—gpt-oss-120b, Gemma 4 31B and preview GLM-4.7—also means model availability can dominate chip speed.
+
+**Revenue recognition nuance.** The OpenAI deal recognizes 15% in the first 24 months, 43% in months 25–48, and the balance after. Reported revenue will lag the headline backlog; near-term prints can understate a successful ramp or overstate economics if capacity is built before utilization.
 
 ## Industry Context
 
 Cerebras sits at the **merchant AI-accelerator layer**, one rung above TSMC (fabrication — it rents wafer-scale 5nm with no LTA and no fallback foundry) and against Nvidia (~75% share), AMD (5–8%), hyperscaler ASICs (Google TPU v7, AWS Trainium 3, Meta MTIA, Microsoft Maia), and inference specialists (Groq — now Nvidia — SambaNova, d-Matrix, Etched). Per the vault sector note, Cerebras + all sub-scale specialists together are **<1% of merchant accelerator revenue**, "structurally capped by CUDA ecosystem + hyperscaler ASIC preference."
 
 **The chosen battleground is fast inference / decode** — precisely the sector's open question #4: *does SRAM-first inference silicon fragment the inference market faster than Nvidia's segmentation framing assumes?* The pivotal 2026 datapoint is Nvidia's ~$20B Groq licensing/acquihire (Dec 2025), which both validated wafer-scale-style SRAM-first decode *and* installed a Nvidia-owned occupant in the niche.
+
+> [!question] 2026-07-13 → Addressed 2026-07-13
+> **Prompt:** *How does actual orchestration of the WSE work in practice given it is such a unique hardware design. How much upfront cost is needed to adapt an AI model and existing software stack to get the hardware to be useful. How does this change the economics of deployment.*
+>
+> **Response:** The application sees an API or PyTorch job while Cerebras’ compiler maps the graph to WSE; migration burden ranges from low for a hosted supported model to high for a novel architecture or custom operator, and Cerebras discloses no typical dollar or elapsed-time figure. Fixed port and qualification cost disappears only at large stable volume; on-prem deployment adds utilization and operations risk. §Industry Context → Orchestration and software migration economics.
+
+### Orchestration and software migration economics
+
+**Developers do not manually schedule 900,000 WSE cores.** CSoft extracts the PyTorch graph, the Cerebras compiler places and routes operations across the wafer, and the runtime coordinates WSE execution with MemoryX weight storage and SwarmX scale-out. The application-facing surface is conventional—an OpenAI-compatible hosted API, a dedicated endpoint/management API, or a PyTorch training job—but the compiler and supported-model boundary remain proprietary.
+
+| Deployment path | Upfront work | Economic consequence |
+|---|---|---|
+| **Public hosted API, supported model** | Replace endpoint/model ID; revalidate prompts, tool calling, outputs and quality | **Low hardware-specific cost.** Cerebras absorbs compilation and fleet operations, but the customer accepts a narrow catalog and provider pricing. |
+| **Dedicated endpoint, supported architecture/custom weights** | Upload weights from S3, select a supported architecture, qualify accuracy/quantization and provision reserved capacity | **Low–medium.** Weight portability is easier than architecture portability; commitment and validation replace chip-level engineering. |
+| **On-prem or Model Zoo training/fine-tuning** | Adapt/validate PyTorch model, data loader and YAML configuration; convert checkpoints; compile against supported operations; integrate scheduler, storage and monitoring | **Medium–high.** The customer owns porting, release qualification, cluster operations and utilization. |
+| **Novel architecture, unsupported operator or scientific kernel** | Implement/replace operators, reshape the model or write specialist Cerebras code; recompile and benchmark every material configuration | **Highest.** Raw speed must amortize scarce compiler engineering and model-churn risk. |
+
+Cerebras’ own documentation calls a Model Zoo derivative “straightforward” and a new model plus custom preprocessing “moderately complex,” but publishes **no representative engineer-month, dollar cost or time-to-production**. Dedicated endpoints accept custom weights only within supported model architectures; they are not a drop-in destination for arbitrary CUDA kernels. An independent eight-accelerator study found compilation on novel stacks can be up to 5,000× GPU compilation time in tested cases—an upper-bound warning, not a Cerebras median.
+
+The fixed-cost penalty is (F/N) per request. Using the earlier **$0.003405** WSE-vs-CoreWeave token premium as the recurring benchmark, an **illustrative—not observed—$250,000** port and qualification program adds:
+
+| Lifetime requests | Fixed cost per request | Relative to $0.003405 token premium |
+|---:|---:|---:|
+| 1 million | $0.2500 | 73× |
+| 100 million | $0.0025 | 0.73× |
+| 1 billion | $0.00025 | 0.07× |
+
+**The product is economically easiest to adopt as a hosted latency tier serving a stable, high-volume model.** It is hardest to justify as a lightly used on-prem box or a fast-changing custom-model fleet: porting recurs, the 80%-of-TDP idle draw persists, and unsupported operations can turn a silicon advantage into an engineering queue. Hosted delivery removes most customer integration burden but strengthens the layer-renter bear case because Cerebras, AWS or another orchestrator owns model qualification and routing while the application can switch providers. Evidence: [[Research/2026-07-13 - CBRS - WSE Interconnect and Software Migration Economics - deep-dive]].
 
 **Value-chain leverage** sits with TSMC (sole wafer-scale foundry; Cerebras has no alternative) and Nvidia (ecosystem + $18B R&D + capital-channel alignment). Cerebras has leverage only over the narrow "fastest large-model inference" niche, and only until a better-capitalized player replicates it. The uncomfortable tell: frontier inference *is* already fragmenting away from merchant GPUs — the two best 2026 models (Claude 4.5 Opus, Gemini 3) run majority inference on TPU/Trainium — but the beneficiaries so far are **captive hyperscaler ASICs, not merchant startups**. The fragmentation thesis is being validated; the winners named so far are not Cerebras.
 
@@ -151,6 +242,8 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - **[[Lens - Value Layer Monopoly]]:** Layer = ultra-fast large-model inference (decode sub-layer). Fit = **WEAK**. No near-zero-marginal-cost (each wafer carries real cost), no interface/standard control, no proprietary data loop. It is a **layer-renter** (pays rent to TSMC below; contests Nvidia above). AI overlay = infrastructure (moat-widening for the *winner*), but Cerebras is a *challenger*, not the toll-collector — TSMC and Nvidia are. Kill-criteria to monitor: Nvidia closes the speed gap; TSMC allocation squeeze; an open substitute reaches parity.
 - **[[Lens - Automation & AI Readiness]] (Lens B — vendor/compute):** Cerebras sells the compute that runs others' automation, and fast decode is genuinely more valuable in the agentic/reasoning era — a real tailwind. But it owns no context/ontology/execution-path layer, so per the wrapper-risk logic the edge is raw speed, replicable by the better-capitalized. Weak-to-moderate fit; a conviction *modifier*, not a thesis.
 - **[[Generalist - Overview]] — Perez surge / base rates / barbell:** Cerebras is a frenzy-phase infrastructure builder — the archetype that either becomes foundational substrate or "goes bust funding it." Base rates on sustained >20% growth and on challenger survival argue for humility. Position-sizing frame: a barbell *convex* bet (downside bounded to position size, multiple-bagger optionality), NOT a core compounder — sizing must reflect that.
+- **[[Industry - Semiconductors]] #8 — Architecture transition remaps the bottleneck:** FIRES at the decode boundary. Hypothesis to test: WSE earns its cost as a low-batch, high-utilization decode tier while cheaper parallel silicon handles prefill and batch; AWS’s Trainium3/CS-3 split is the commercial proof. Falsifier: GPU batching, KV compression or another SRAM accelerator closes the latency gap without the 7.8× token premium.
+- **[[Generalist - Overview]] [G-14] — Jevons / latent demand:** FIRES conditionally on *latency* elasticity, not token elasticity. Sub-$0.01 requests can justify a premium when they remove human waiting and enable more reasoning loops; unattended workloads do not. Track whether faster inference raises useful completed tasks per user rather than merely token volume.
 - **Evidence update (2026-07-09 batch-3 pass, same-day web sweep):** two corrections and a scoreboard. (1) *Insight #1 ("field just cleared / last independent") is REFUTED at the margin* — SambaNova first-closed a $1B Series F at $11B valuation on **Jul 8** (5 months after its Series E; Intel acquisition talks died) — a second funded independent inference pure-play exists. (2) *The binding constraint moved off the thesis map*: management — "demand is not the constraint, supply is not the constraint, **the constraint is data centers**" — Q2 GM guided down to 36–38% (from 46.5%) on 10–15pp of third-party-DC rental drag; a failure mode (buildout execution Q3'26–Q4'27) the thesis doesn't enumerate, while partially defusing the TSMC-allocation risk (#6). Also: OpenAI's Jalapeño (Jun 24, Broadcom-built, end-2026 deployment) converts the in-house-silicon risk from speculation to shipping hardware. Scoreboard: HIGH 0/3 (UAE mix 86%→74% improving; cloud GM 53% = one of two quarters; OpenAI rev $16.9M of $300M bar), LOW 0/3 (Rubin+Groq 35x/MW claim is the closest, resolves 2H26), CLOSE 0/3 (RPO grew to $25.0B). Cash-fragility bear leg weakened (~$8B+ post-IPO liquidity vs thesis's $701.7M figure — update Key Metrics); reflexivity line: July low $160.81 sits ~7% above the thesis's <$150 lockup-inversion marker, with 60M+ shares unlocking around the ~Sep Q2 print — earlier than the mid-Nov framing.
 
 ## Related Research
@@ -158,6 +251,8 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - Sector: [[Sectors/Compute & AI Compute Accelerators]]
 - Competitive-tension theses (graph-primer peers): [[Theses/NVDA - Nvidia]] (the incumbent it challenges), [[Theses/AMD - Advanced Micro Devices]], [[Theses/TSM - Taiwan Semiconductor]] (sole foundry dependency), [[Theses/AVGO - Broadcom]] (custom-ASIC inference), [[Theses/CRWV - CoreWeave]], [[Theses/NBIS - Nebius Group]], [[Theses/ARM - Arm Holdings]]
 - Research: [[Research/2026-04-23 - NVDA - Stress Test]], [[Research/2025-06-09 - CRWV - CoreWeave Deep Dive]], [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]], [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]
+- WSE workload economics: [[Research/2026-07-13 - CBRS - WSE Workload Price-Performance Deep Dive]]
+- WSE deployment economics: [[Research/2026-07-13 - CBRS - WSE Interconnect and Software Migration Economics - deep-dive]]
 - Macro: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]
 
 ## Log
@@ -171,3 +266,8 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass): 1 metric updated, 1 material. FCF Yield ~-0.8%→~-0.3% (improved, still negative; FCF -$393M figure held constant — no live update available for that sub-figure). Revenue Growth and Gross Margin unchanged after rounding. Snapshot: [[_Archive/Snapshots/CBRS - Cerebras Systems (pre-numbers 20260712-184120)]]
+
+### 2026-07-13
+- Deepened Business Model & Product Description: WSE is optimal as a low-batch, ≥34%-utilized decode tier—interactive coding and model-bound agents beat cheap-token batch workloads; added Industry #8 and [G-14] hypotheses — conviction unchanged (low): product-market fit strengthened, moat and hardware TCO remain unproven. Snapshot: [[_Archive/Snapshots/CBRS - Cerebras Systems (pre-deepen 2026-07-13-190303)]]
+
+- Addressed user callouts: mapped WSE heterogeneous-interconnect and software-port economics — coarse EFA/KV handoffs and hosted API integration can preserve decode value; fine-grained cross-engine traffic or low-volume custom ports erase it — conviction unchanged (low): AWS validates product fit while retaining interface control. Snapshot: [[_Archive/Snapshots/CBRS - Cerebras Systems (pre-callout-address 2026-07-13-194032)]]

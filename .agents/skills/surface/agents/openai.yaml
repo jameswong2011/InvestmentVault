@@ -1,0 +1,4 @@
+interface:
+  display_name: "Surface Insights"
+  short_description: "Find portfolio insights and research gaps"
+  default_prompt: "Use $surface to find overlooked portfolio insights and research gaps."

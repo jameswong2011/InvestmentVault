@@ -4,6 +4,7 @@ tags: [research, synthesis, mental-models, cross-sector, automation-readiness]
 status: active
 sector: Cross-Sector
 source: Internal synthesis — [[Lens - Automation & AI Readiness]] scored across listed equities, adversarially checked against [[Generalist - Overview]] and [[Lens - Value Layer Monopoly]]
+propagated_to: [APP, CSGP, CSU, DUOL, INTU, IOT, ISRG, KAMBI, META, NET, NOW, OPEN, PLTR, SHOP, WTC]
 ---
 
 # Automation & AI Readiness Lens — Highest-Fit Listed Beneficiaries

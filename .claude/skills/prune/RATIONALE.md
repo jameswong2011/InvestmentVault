@@ -152,6 +152,8 @@ Stage 4.5 skips entirely for upgrade-only prune runs.
 
 ### §6.1 Why lightweight scan first
 
+> **Reconciliation note (2026-07-14):** §6.1 below described a *lightweight* Pass 1 (~200-400 words/thesis — frontmatter + Related Research + Catalysts + Log only). That was the ORIGINAL design; it was superseded by a **full-read Pass 1**, matching the identical `/scenario` redesign (scenario RATIONALE §6, 2026-07-08 reconciliation note). SKILL.md Phase 1 now issues ~42 parallel Reads of every candidate thesis **in full** in one batch, because quietly-dead-thesis signals — a Bull Case contradicted by a recent Log entry, a Non-consensus Insight invalidated by newer research — surface outside the triage sections and are exactly what section-narrowing would filter out. The **two-pass structure survives** (Pass 1 = full-read all + apply mechanical flags; Pass 2 = deep per-candidate assessment + sector cross-ref), but Pass 1 is no longer a partial read. The cost lever is the **flag-filter + scoped mode** (SKILL.md Phase 1), not per-thesis section-narrowing. The paragraphs below are retained for historical design context and no longer describe current behavior.
+
 Reading all ~40 thesis notes in full would exceed context limits. Most flag criteria (conviction level, last Log date, research note count, catalyst presence) are assessable from frontmatter + a few sections, not the full body.
 
 Pass 1 reads ~200-400 words per thesis (frontmatter + Related Research + Catalysts + Log). Pass 2 deep-reads only flagged candidates. Reduces full reads from ~40 files to 10-20.

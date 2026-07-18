@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rollback Note"
+  short_description: "Restore vault notes from safe snapshots"
+  default_prompt: "Use $rollback to list the snapshots available for NVDA."

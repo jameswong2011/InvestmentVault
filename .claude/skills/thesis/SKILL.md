@@ -292,7 +292,7 @@ Initial status `draft` (§8 — excluded from /catalyst, /prune flags, convictio
 
 1. **Summary** — One paragraph investment case. Lead with non-consensus angle, not business description.
 
-2. **Key Non-consensus Insights** — 3-5 one-paragraph summaries of perspectives foreign to mainstream narrative. **THIS IS THE MOST IMPORTANT SECTION** (§7.2). Think deeply about what market is missing — technological shifts, management/culture edges, competitive dynamics, investor biases, business model transitions.
+2. **Key Non-consensus Insights** — 3-5 one-paragraph summaries of perspectives foreign to mainstream narrative. **THIS IS THE MOST IMPORTANT SECTION** (§7.2). Think deeply about what market is missing — technological shifts, management/culture edges, competitive dynamics, investor biases, business model transitions. **Draft each insight in the 4-field microformat from `Templates/Thesis Template.md`** — `**Consensus:**` / `**Variant:**` / `**First confirming observable [YYYY-MM]:**` / `**Falsifier:**`, one bulleted sub-field each under the insight title. `**Consensus:**` is mandatory and must name what the market actually believes / prices — an insight that cannot state the consensus it opposes is positioning, not analysis ([[Generalist - Overview]] [G-13] expectations-investing: read the price-embedded consensus, then isolate the single variable it misprices). Tie each `**Falsifier:**` to a `→ LOW/CLOSE` Conviction Trigger (#11) where possible.
 
 3. **Outstanding Questions** — 3-10 one-paragraph summaries of what a skeptical investment committee would ask before approving. Genuinely hard, not softballs. Each should identify what data or event would answer it.
 

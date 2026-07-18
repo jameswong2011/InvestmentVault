@@ -1,0 +1,4 @@
+interface:
+  display_name: "Catalyst Calendar"
+  short_description: "Build the portfolio catalyst calendar"
+  default_prompt: "Use $catalyst to refresh the portfolio catalyst calendar."

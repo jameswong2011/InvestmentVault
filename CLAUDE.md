@@ -211,6 +211,7 @@ Rules:
 
 ## Active Context
 - [[_hot.md]] — recent context and open questions, updated by `/sync` and other skills
+- [[_followups.md]] — durable register of actionable findings surfaced by analytical skills (written by `/stress-test`, `/retro`, `/surface`, `/numbers`; resolved by `/status`, `/sync`). Unlike `_hot.md` it never auto-evicts. Contract: `.claude/skills/_shared/followups-contract.md`
 
 ## Compaction Rules
 When compacting, preserve information in this priority order:
@@ -252,4 +253,4 @@ The primary vault workflow is an ingest-propagate-graph loop:
 6. **`/surface`** for periodic deep review (blind spots, attention allocation, decay alerts, opportunities)
 7. **`/lint`** for periodic health checks (structural, freshness, analytical)
 
-**Metadata ownership**: `_graph.md` is owned exclusively by `/graph` (three modes: full rebuild, `/graph last`, `/graph [N]`). Research skills do not write to `_graph.md` — they create content and remind the user to run `/graph last` afterward. This eliminates cross-skill graph contention that was the source of most metadata edge cases.
+**Metadata ownership**: `_graph.md` is owned exclusively by `/graph` (three modes: full rebuild, `/graph last`, `/graph [N]`). Research skills do not write to `_graph.md` — they create content and remind the user to run `/graph last` afterward. This eliminates cross-skill graph contention that was the source of most metadata edge cases. `_followups.md` (open-findings register) is shared-append: writers (`/stress-test`, `/retro`, `/surface`, `/numbers`) append actionable findings, resolvers (`/status`, `/sync`) move them Open→Resolved; no skill owns it exclusively. Contract: `.claude/skills/_shared/followups-contract.md`.

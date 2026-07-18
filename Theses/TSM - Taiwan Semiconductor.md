@@ -324,6 +324,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: TSMC 2026 capex came in well above expectations (logic-side pricing the capex cycle); HBM4 base-die/CoWoS demand intact
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — datacenter CPU landscape: nearly every competitive 2026 CPU is TSMC N2/N3 (AMD Venice N2, Graviton5/Cobalt/Axion/Phoenix 3nm, ARM Venom N2, AMD Florence A16) — reinforces leading-edge logic monopoly across the entire CPU vendor set, not just GPUs
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "silicon shortage phase": N3 the binding AI constraint (AI ~60% of 2026 N3 output → ~86% in 2027, squeezing smartphone/CPU; effective util >100% H2'26; ~2-yr cleanroom capacity ceiling), TSMC "kingmaker" prioritizing higher-ASP AI; corroborates pricing-power Insight #5
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]] — advanced-packaging competition read: independently sizes the CoWoS annuity (adv pkg ~8%→low-teens % of TSMC revenue) and confirms the "Intel 18A/packaging threat refuted" leg (no named external Foveros Direct production; TSMC owns the profit pool)
 
 ## Log
 
@@ -384,3 +385,6 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (second same-day pass): 0 metrics changed. Dividend Yield (~0.9%) renders identically after rounding. All other rows remain custom/derived-metric with no FMP mapping — table is still materially stale (per repeated Mental Models flags) and needs a full `/numbers TSM` rebase beyond this batch's field-mapped scope. Snapshot: [[_Archive/Snapshots/TSM - Taiwan Semiconductor (pre-numbers 20260712-184147)]]
+
+### 2026-07-14 (/sync)
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Independently sizes Insight #1 (advanced packaging = separable annuity: ~8%→>10%→low-teens % of TSMC revenue 2024-26) and confirms the Mental Models "Intel 18A/packaging threat — refuted" read (no named external Foveros Direct production; TSMC owns the profit pool; adoption starts low-risk/low-volume). Does NOT fire the LOW trigger ("Intel lands 2+ major external customers"). Conviction unchanged (high) — non-Taiwan-tail corroboration.
