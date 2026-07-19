@@ -2,17 +2,19 @@
 
 > What to do, in what order, and when to prompt freely instead of invoking a skill.
 >
-> **How to read.** §0–§2 to get working. §3 = workflow menu. §4 = intent → chain. §5 = skill dictionary. §11 = free-form prompt library. §13–§14 only when debugging or on first use.
+> **How to read.** Fresh machine or clone? [[Setup Guide]] first. Then: §0–§2 to get working. §3 = workflow menu. §4 = intent → chain. §5 = skill dictionary. §11 = free-form prompt library. §13–§14 only when debugging or on first use.
 
 ---
 
 ## 0. First Run
 
-Brand new vault (no prior `/sync` runs):
+Machine and vault setup — installs, clone, plugins, Claudian config, API keys — lives in [[Setup Guide]]. This guide assumes a configured environment.
+
+One-time metadata bootstrap on any fresh vault or clone ([[Setup Guide#7. Bootstrap the vault|Setup Guide §7]]):
 
 ```
-/sync        # creates _hot.md + .last_sync, reads all vault files
-/graph       # creates _graph.md from vault state
+/sync        # establishes the .last_sync watermark; first run reads all vault files
+/graph       # rebuilds _graph.md from vault state
 ```
 
 Without this bootstrap, `/sync TICKER` and scoped `/surface` block (they need `_graph.md`). On a vault that already has content, the first `/sync` reads everything — expected, not a bug.
@@ -661,13 +663,7 @@ Sequential `[!error]` addressing accumulates weakening Log entries that count to
 
 #### Setup (one-time per vault clone)
 
-Only on the FIRST machine — later clones inherit via git.
-
-1. Templater → **Template folder location** → `Templates`; enable **Automatic jump to cursor**
-2. Templater → **Template Hotkeys** → add all 4 files in `Templates/_callouts/`
-3. Hotkeys → search `Templater: _callouts/user-<type>` → bind `Mod+Alt+1..4`
-
-Commit `.obsidian/hotkeys.json` and `.obsidian/plugins/templater-obsidian/data.json` (both git-tracked).
+Hotkey and Templater configuration ships via git — new clones inherit it with zero setup. Verification table and from-scratch rebind steps: [[Setup Guide#5. First Obsidian launch|Setup Guide §5]].
 
 ---
 
@@ -1138,7 +1134,7 @@ Time-boxed rollouts live in [[_Archive/Docs/Changelog.md]] — this section hold
 
 ## 14. How the Vault Stays Consistent
 
-Short reference; deep mechanics in [[INFRASTRUCTURE.md]].
+Short reference; deep mechanics in [[INFRASTRUCTURE]].
 
 | File | Role | Owned by | Short story |
 |---|---|---|---|

@@ -49,7 +49,7 @@ Four mechanisms essentially unseen elsewhere:
 | Dimension | Score | Evidence |
 |---|---|---|
 | Architecture | 9 | `_shared/` contracts with producer/consumer/breakage registries; single-owner metadata files; no circular dependencies found |
-| Documentation | 9.5 | [[CLAUDE.md]] (LLM) / [[User Guide.md]] (human) / [[INFRASTRUCTURE.md]] (ops) triad verified mutually consistent; AGENTS.md deterministically generated |
+| Documentation | 9.5 | [[CLAUDE.md]] (LLM) / [[User Guide]] (human) / [[INFRASTRUCTURE]] (ops) triad verified mutually consistent; AGENTS.md deterministically generated |
 | Determinism | 7 | Bimodal: graph/lint/ingest/numbers/transcript script-backed; `/sync` is 968 lines of pure LLM prose on the highest-blast-radius op, with 3 documented silent failures |
 | **Enforcement** | **3** | settings.json contains only a permissions allowlist (136 entries, ~40+ single-use forensic one-offs). Zero hooks. Locks/snapshots/Tier-3 gates depend on model compliance; Claudian runs `permissionMode: yolo` |
 | Spec consistency | 6.5 | Canonical lock table (preflight §1.2) missing `/numbers`, `/transcript`, default `/sync`; 10m-vs-15m `/sync all` timeout contradiction; phantom `.drift-config.md`; stale scale counts (catalyst "65", surface "~76" vs actual 81) |

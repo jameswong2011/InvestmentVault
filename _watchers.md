@@ -149,6 +149,15 @@ no table needed. Curated terms below cover foreign listings + themes; Claude mai
 | x-cpo | "co-packaged optics" | 30 | [[LITE - Lumentum]] | permanent | active |
 | x-semicap | "wafer fab equipment" OR Advantest OR "hybrid bonding" | 20 | [[AMAT - Applied Materials]] | permanent | active |
 | x-capex | "hyperscaler capex" | 30 | [[AI Bubble Risk and Semiconductor Valuations]] | permanent | active |
+| x-kioxia | Kioxia | 20 | [[285A - Kioxia]] | permanent | active |
+| x-abf | Ajinomoto OR "ABF substrate" | 20 | [[2802 - Ajinomoto]] | permanent | active |
+| x-murata | "Murata Manufacturing" OR "silicon capacitor" | 20 | [[6981 - Murata Manufacturing]] | permanent | active |
+| x-elite | "Elite Material" | 20 | [[2383 - Elite Material]] | permanent | active |
+| x-jusung | "Jusung Engineering" | 20 | [[036930 - Jusung Engineering]] | permanent | active |
+| x-winway | "WinWay" | 20 | [[6515 - WinWay Technology]] | permanent | active |
+| x-nittobo | "Nitto Boseki" OR Nittobo | 20 | [[3110 - Nitto Boseki]] | permanent | active |
+| x-reliance | "Reliance Industries" | 50 | [[RELIANCE - Reliance Industries]] | permanent | active |
+| x-btc | $BTC | 1000 | [[BTC-CRYPTO - Bitcoin & Digital Assets]] | permanent | active |
 
 ### Tuning
 
@@ -157,27 +166,40 @@ Ratios are percentages (1.5 = 1.5%). A missing/non-numeric row falls back to the
 (identical values to below). Record the *why* of each change in notes — this file's git history
 is the tuning log.
 
-| param | value | notes |
-|---|---|---|
-| floor_mega | 100 | pull floor (likes), mega-tier cashtag clusters |
-| floor_std | 30 | pull floor (likes), standard-tier clusters |
-| mega_tickers | NVDA,AMD,TSM,META,PLTR,AVGO,INTC,NET,NOW,CRWD,UBER,SHOP,NFLX,MU | comma list, no $ — which cashtags get floor_mega |
-| since_days | 4 | search window; keep ≥ cadence + 1 |
-| track_min_views | 3000 | hard gate — ratios below this are noise |
-| min_followers | 200 | hard gate — kills throwaway accounts |
-| track_lv_pct | 1.5 | entry lane: like/view % (≈p50 after calibration) |
-| track_rv_pct | 0.5 | entry lane: RT/view % |
-| track_min_likes | 300 | entry lane: absolute likes |
-| gem_lv_pct | 3 | gem flag: like/view % (≈p75 after calibration) |
-| gem_rv_pct | 0.7 | gem flag: RT/view % |
-| trend_min_delta | 150 | trending: Δlikes between pulls |
-| trend_min_pct | 60 | trending: % like-growth between pulls |
-| trend_min_base | 50 | %-lane only counts above this like base |
-| plateau_flat_likes | 10 | Δlikes below this = flat pull |
-| plateau_pulls | 2 | consecutive flat pulls → prune |
-| prune_age_days | 14 | max observation age |
-| cap_tracked | 800 | working-set cap (§2.4) |
-| llm_top_n | 10 | posts per theme fed to the sentiment LLM |
+| param              | value                                                           | notes                                                                       |
+| ------------------ | --------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| floor_mega         | 100                                                             | pull floor (likes), mega-tier cashtag clusters                              |
+| floor_std          | 30                                                              | pull floor (likes), standard-tier clusters                                  |
+| mega_tickers       | NVDA,AMD,TSM,META,PLTR,AVGO,INTC,NET,NOW,CRWD,UBER,SHOP,NFLX,MU | comma list, no $ — which cashtags get floor_mega                            |
+| since_days         | 2                                                               | search window; keep ≥ cadence + 1 — trimmed 4→2 with daily cadence (2026-07-18) |
+| track_min_views    | 3000                                                            | hard gate — ratios below this are noise                                     |
+| min_followers      | 200                                                             | hard gate — kills throwaway accounts                                        |
+| track_lv_pct       | 1.5                                                             | entry lane: like/view % (≈p50 after calibration)                            |
+| track_rv_pct       | 0.5                                                             | entry lane: RT/view %                                                       |
+| track_min_likes    | 300                                                             | entry lane: absolute likes                                                  |
+| gem_lv_pct         | 3                                                               | gem flag: like/view % (≈p75 after calibration)                              |
+| gem_rv_pct         | 0.7                                                             | gem flag: RT/view %                                                         |
+| trend_min_delta    | 150                                                             | trending: Δlikes between pulls                                              |
+| trend_min_pct      | 60                                                              | trending: % like-growth between pulls                                       |
+| trend_min_base     | 50                                                              | %-lane only counts above this like base                                     |
+| plateau_flat_likes | 10                                                              | Δlikes below this = flat pull                                               |
+| plateau_pulls      | 2                                                               | consecutive flat pulls → prune                                              |
+| prune_age_days     | 28                                                              | max observation age — 14→28 (2026-07-18, user): longer trending window, ~2× re-measure reads |
+| cap_tracked        | 800                                                             | working-set cap (§2.4)                                                      |
+| llm_top_n          | 15                                                              | posts per theme fed to the sentiment LLM                                    |
+| llm_model          | claude-opus-4-8                                                 | sentiment/divergence model; current-gen only (body sends adaptive thinking) |
+| archive_days       | 90                                                              | pruned posts retained in state archive — analysis corpus, never re-measured |
+
+### LLM prompt
+
+Analytical instructions for the sentiment/divergence call — the fenced block below is read on every
+pull (fallback: identical default inside Code X). Output field names/types (`summary`, `sentiment`,
+`score`, `perspectives`, `divergence`) are pinned by the workflow schema — edit the analytical
+guidance freely, never the field list.
+
+```
+For each theme below you get MY THESIS (six analytical sections), PRIOR READS (dated sentiment reads produced by this engine over the past 90 days), HISTORICAL ANCHOR POSTS (highest-engagement posts from the 90-day archive, dated, labeled [A1], [A2], …), and CURRENT CROWD POSTS with engagement stats (labeled [P1], [P2], …) — current posts are drawn from every post tracked live for that theme, not just newly pulled ones. Weight CURRENT posts most: they are the consumption signal; use PRIOR READS and ANCHOR POSTS as longitudinal context, not as current evidence. Return per theme: summary — 2-4 sentences synthesising the current crowd narrative: what the crowd believes, where the argument concentrates, what evidence they cite; weight higher-engagement, higher-follower posts more. sentiment (bullish/bearish/mixed/quiet). score (-2..2). shift — 1-2 sentences on how crowd sentiment and the dominant argument have moved versus the PRIOR READS: new arguments appearing, old ones dying, conviction hardening or fading; null if there is no meaningful history or no real change. perspectives — 2-6 distinct crowd arguments; each has text (1-2 sentences carrying the specific numbers, names, and claims from the posts, never generic labels) and refs (the labels of the 1-3 specific posts that argument draws from, e.g. ["P2","A1"] — use only labels that appear above). divergence — ONE synthesis judged across all the posts together, never per post: a specific, substantive crowd argument that contradicts, challenges, or is unaddressed by my thesis. If the crowd merely echoes a risk or bear point my thesis already carries, that is NOT divergence — return null. Judge on substance of claims, not tone; ignore hype and spam; return null unless the tension is genuine. Positioning gauge, not advice.
+```
 
 ## Retired / Paused (audit trail)
 

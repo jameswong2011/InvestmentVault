@@ -470,7 +470,7 @@ Load semantics: every byte of `SKILL.md` is paid per invocation; `_shared/*.md` 
 
 ### 12.2 Shared contracts catalog
 
-Seven contracts under `.claude/skills/_shared/` (plus the shared helper scripts `extract_sections.py`, and the per-skill helpers `verify_note.py`/`extract_transcript_signals.py`/`numbers_compute.py`/`generate_graph.py`/`lint.py`). Editing any contract requires coordinated consumer updates (§12.4).
+Ten contracts under `.claude/skills/_shared/` (plus the shared helper scripts `extract_sections.py`, and the per-skill helpers `verify_note.py`/`extract_transcript_signals.py`/`numbers_compute.py`/`generate_graph.py`/`lint.py`). Editing any contract requires coordinated consumer updates (§12.4).
 
 | Contract | Purpose | Consumers | `/lint` |
 |---|---|---|---|
@@ -481,6 +481,9 @@ Seven contracts under `.claude/skills/_shared/` (plus the shared helper scripts 
 | `sector-resolution.md` | `sector:` → sector-note ladder (exact → normalized → substring → ask) | `/status`, `/thesis`, `/compare`, `/prune`, `/rollback`, `/rename` | #30, #34 |
 | `wikilink-forms.md` | 5 canonical wikilink forms | `/sync`, `/rollback`, `/prune`, `/lint` | #23 |
 | `graph-primer.md` | `_graph.md` as primer (orient reads), never filter (skip reads) | `/ingest`, `/compare`, `/thesis`, `/stress-test`, `/brief`, `/deepen`, `/scenario`, `/surface`, `/retro` | #54, #55 |
+| `followups-contract.md` | `_followups.md` open-findings register — durable ledger of actionable findings (writers append, resolvers move Open→Resolved) | Writers: `/stress-test`, `/retro`, `/surface`, `/numbers`; resolvers: `/status`, `/sync` | — |
+| `provenance-tags.md` | Inline source tags on quantitative claims (`[1×: …]`, `[FMP]`, `[N sources]`) so sourcing travels with the number through propagation | `/ingest`, `/deepen`, `/transcript` (writers), `/sync` (preserver), `verify_note.py` check #16 | — |
+| `trigger-touch.md` | Diff NEW datapoints against `## Conviction Triggers`; mandatory `Trigger touch:` report line on any touch/cross | `/numbers` (5b), `/transcript` (6.3), `/sync` (3e), `/deepen` (Phase 3), `/ingest` (Step 1) | — |
 
 Producer divergence from a contract without consumer updates → silent failures (races, misclassified Log entries, truncated sections, missed wikilink matches).
 
@@ -510,6 +513,9 @@ Reference format: `§N.M` for same-file/RATIONALE refs; `registry §N` for log-p
   graph-primer.md ◄──── 9 consumers (§12.2), /lint (#54, #55)
   sector-resolution.md ◄ /status, /thesis, /compare, /prune, /rollback, /rename, /lint (#30, #34)
   wikilink-forms.md ◄─── /sync, /rollback, /prune, /lint (#23)
+  followups-contract.md ◄ writers /stress-test /retro /surface /numbers · resolvers /status /sync
+  provenance-tags.md ◄── /ingest, /deepen, /transcript, /sync, verify_note.py (#16)
+  trigger-touch.md ◄──── /numbers, /transcript, /sync, /deepen, /ingest
 ```
 
 Adding a consumer: update this graph + add the paired `/lint` check in the same commit.

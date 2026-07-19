@@ -17,10 +17,10 @@ n8n (self-hosted, free) is the vault's **sensory layer**: always-on acquisition,
 
 **Four hard rules** (extend CLAUDE.md change-safety into the automation layer):
 
-1. **n8n writes only NEW files into `_Inbox/`** — never Theses/, Research/, metadata files, `_Inbox/processed/`, or any existing file. Everything n8n deposits flows through `/ingest`'s quality gate, dedup, and provenance stamping, exactly like a manual web clip.
-2. **Triage yes, analysis no.** n8n AI nodes may relevance-score feed items before deposit. They never summarise, conclude, or write analytical prose — context-free analysis entering the vault laundered as source material is the failure mode. *Sole user-approved exception:* Workflow 5's sentiment layer — **read-vault yes, write-vault no**: it reads thesis sections to compare against crowd posts, and its output lands only in the regenerated `_x_dashboard.md`, never in Theses/Research or propagation (Twitter API Build §2.7).
+1. **n8n writes only NEW files, only into designated output locations** — `Daily Intel/` (dashboard snapshots + daily digests: scanning surfaces, not ingest candidates), `.data/` (machine state), `_Inbox/` (true ingest candidates only). Never Theses/, Research/, metadata files, `_Inbox/processed/`, or any existing file. Anything meant for the research pipeline still flows through `/ingest` exactly like a manual web clip — you paste the links worth ingesting.
+2. **Triage yes, analysis no.** n8n AI nodes may relevance-score feed items before deposit. They never summarise, conclude, or write analytical prose — context-free analysis entering the vault laundered as source material is the failure mode. *Sole user-approved exception:* Workflow 5's sentiment layer — **read-vault yes, write-vault no**: it reads thesis sections to compare against crowd posts, and its output lands only in the dated dashboard snapshot in `Daily Intel/`, never in Theses/Research or propagation (Twitter API Build §2.7).
 3. **No Tier 3 operations, ever.** `/status`, `/prune`, conviction changes stay human.
-4. **Lock-aware.** Any future headless `claude -p` invocation checks `.vault-lock*` absence first — composing with the preflight contract in [[INFRASTRUCTURE.md]] §6 instead of racing it.
+4. **Lock-aware.** Any future headless `claude -p` invocation checks `.vault-lock*` absence first — composing with the preflight contract in [[INFRASTRUCTURE]] §6 instead of racing it.
 
 ---
 
@@ -58,10 +58,12 @@ Open `http://localhost:5678` → create the owner account (local credential, pic
 
 ```bash
 npm install -g pm2
-GENERIC_TIMEZONE="Australia/Sydney" TZ="Australia/Sydney" pm2 start n8n
+GENERIC_TIMEZONE="Australia/Sydney" TZ="Australia/Sydney" NODES_EXCLUDE='["n8n-nodes-base.localFileTrigger"]' pm2 start n8n
 pm2 save
 pm2 startup   # prints one sudo command — run it to autostart at login
 ```
+
+`NODES_EXCLUDE` (added 2026-07-18): n8n 2.x excludes **Execute Command** and Local File Trigger by default — a v2 breaking change. Workflow 5 needs Execute Command (ticker + thesis-section extraction), so the override re-enables it while keeping the unused Local File Trigger excluded. Localhost-only listener + the file fence are unaffected.
 
 ### 1.4 The Mac-sleep caveat (read this)
 
@@ -251,7 +253,7 @@ return out.length ? [{ json: { text: out.join('\n') } }] : [];
 1. **Schedule Trigger** — two rules, 7am and 5pm (the Schedule node rejects multi-time cron like `0 7,17 * * *`) → **Read/Write Files** (`_watchers.md`) → **Extract from File** → **Code** (the §2.35 parser) emitting one RSS URL per active, unexpired row of the News section. Queries live in [[_watchers.md]], never in this node — that is what makes "add TSMC / drop TSMC" a table edit instead of a workflow edit. The seed rows already encode live MRVL observables (fabric war → OCP Oct window, Trainium → re:Invent window) alongside standing themes (HBM4, TSMC capex).
 2. **RSS Read** (URL from expression) → **Remove Duplicates** (cross-execution, key: link).
 3. Optional triage: **Basic LLM Chain** + Anthropic credential (Haiku): *"Score 0–10 relevance to: custom silicon (MRVL/AVGO), HBM/memory, semicap, photonics/CPO, scale-up fabrics (UALink/NVLink/ESUN), CXL/memory disaggregation, AI datacenter power. Return JSON {score, tickers, reason}."* → **Filter** score ≥ 7. Scoring only — no summarisation (Rule 2).
-4. **Code** — one digest: title, source, link, feed description (verbatim, not LLM), triage score → deposit `YYYY-MM-DD - News digest - n8n.md` → **Telegram** one-line count.
+4. **Code** — one digest: title, source, link, feed description (verbatim, not LLM), triage score → deposit `YYYY-MM-DD - News digest - n8n.md` into `Daily Intel/` (moved from `_Inbox` 2026-07-18 — digests are scanning surfaces, not ingest candidates) → **Telegram** one-line count.
 
 **Workflow intent:** the digest is a *scanning surface*. You pick the 1–3 links worth full `/ingest` (paste URL as usual). Auto-ingesting news bodies wholesale would create junk Research notes and pollute propagation — deliberately not built.
 
@@ -261,7 +263,7 @@ return out.length ? [{ json: { text: out.join('\n') } }] : [];
 
 ### Workflows 4–5 — X Canary + X Harvester (Twitter intelligence)
 
-X/Twitter intelligence system: all-thesis cashtag harvesting (auto-derived) + AI-curated terms via `_watchers.md § X Watchers`, 3-day pull cadence, engagement-delta trending detection (→ `_Inbox` + Telegram), and an Obsidian-native dashboard (`_x_dashboard.md`) with Opus-graded sentiment, per-theme crowd perspectives, **thesis-divergence detection**, and `_catalyst.md` matching. [[Twitter API Build]] is the complete guide — architecture review, then click-level build cards for **Workflow 4 — X Canary** (daily provider-health probe; built first) and **Workflow 5 — X Harvester** (the engine; every 3 days, 08:30). **In build 2026-07-18**: credentials, state file, and registry seeded; ~$5–10/mo when live (twitterapi.io ~$1–2 + Anthropic Opus ~$4–8). Official X API ruled out (cost + no server-side engagement operators).
+X/Twitter intelligence system: all-thesis cashtag harvesting (auto-derived) + AI-curated terms via `_watchers.md § X Watchers`, daily pull cadence, engagement-delta trending detection (→ `Daily Intel/` + Telegram), and dated Obsidian-native dashboards in `Daily Intel/` (newest file = current dashboard) with Opus-graded sentiment, per-theme crowd perspectives, **thesis-divergence detection**, and `_catalyst.md` matching. [[Twitter API Build]] is the complete guide — architecture review, then click-level build cards for **Workflow 4 — X Canary** (daily provider-health probe; built first) and **Workflow 5 — X Harvester** (the engine; daily, 08:30). **Live since 2026-07-18**: ~$17–40/mo all-in (twitterapi.io ~$2–5 + Anthropic Opus ~$15–35; `llm_model` row is the cost lever). Official X API ruled out (cost + no server-side engagement operators).
 
 ---
 
@@ -269,7 +271,7 @@ X/Twitter intelligence system: all-thesis cashtag harvesting (auto-derived) + AI
 
 | Never | Why |
 |---|---|
-| Direct writes to Theses/Research/Sectors/Macro | Bypasses quality gate, idempotency keys, wikilink-form contract, `propagated_to:` atomicity — the exact failure classes [[INFRASTRUCTURE.md]] exists to prevent |
+| Direct writes to Theses/Research/Sectors/Macro | Bypasses quality gate, idempotency keys, wikilink-form contract, `propagated_to:` atomicity — the exact failure classes [[INFRASTRUCTURE]] exists to prevent |
 | LLM analysis inside n8n | Context asymmetry: no mental models, no READING PROTOCOL, no thesis state. Triage-scoring only — sole exception: Workflow 5's read-only sentiment/divergence layer, dashboard-output only (hard rule 2) |
 | Tier 3 operations (`/status`, `/prune`, conviction, archive) | Investment decisions with confirmation gates by design |
 | Trading actions of any kind | Tripwires are read-the-thesis signals, not execution signals |
@@ -316,8 +318,8 @@ Procedure (~30–45 min):
 | 1 | Price Tripwires | daily 07:35 | 0 | **Live** |
 | 2 | Catalyst Reminders | daily 07:30 | 0 | **Live** |
 | 3 | News Sweep | 07:00 + 17:00 | 0–8 (optional triage) | **Live** |
-| 4 | X Canary | daily 08:00 | ~0 | **In build** — [[Twitter API Build]] §3.4 |
-| 5 | X Harvester | every 3 days, 08:30 | ~5–10 | **In build** — [[Twitter API Build]] §3.5 |
+| 4 | X Canary | daily 08:00 | ~0 | **Live** — [[Twitter API Build]] §3.4 |
+| 5 | X Harvester | daily 08:30 | ~17–40 | **Live** — [[Twitter API Build]]; dated history in `Daily Intel/` |
 | — | Error Watchdog | fires by reference | 0 | **Live** — set as Error Workflow in every workflow |
 
-**Totals:** software $0 (n8n Community, fair-code, internal use) · hard running cost ≤ ~$18/mo all-in, typically ~$6–12 · ongoing maintenance ~30 min/mo (§5 monthly review).
+**Totals:** software $0 (n8n Community, fair-code, internal use) · hard running cost typically ~$20–35/mo (Opus daily is the dominant line; `llm_model` registry row is the lever) · ongoing maintenance ~30 min/mo (§5 monthly review).

@@ -10,20 +10,19 @@
         "conversationId": "conv-1784017481007-ps6vlim83"
       },
       {
-        "draftModel": "gpt-5.6-sol",
         "tabId": "tab-1776154746591-w3ie45g",
-        "conversationId": null
+        "conversationId": "conv-1784439246479-6dtuehn5f"
       },
       {
         "tabId": "tab-1776640134699-9w6pyvp",
-        "conversationId": "conv-1784267134755-6lzns2ux5"
+        "conversationId": "conv-1784439885388-q1kzj0skj"
       },
       {
         "tabId": "tab-1784097454528-h22inh8",
         "conversationId": "conv-1784268623353-n0b3uqpbj"
       }
     ],
-    "activeTabId": "tab-1784097454528-h22inh8",
+    "activeTabId": "tab-1776154746591-w3ie45g",
     "expandedTitleTabIds": [
       "tab-1776154746591-w3ie45g"
     ]

@@ -1,177 +1,78 @@
 #!/bin/bash
-# Setup script for Investment Research Obsidian Vault
-# Usage: cd /path/to/your/vault && bash setup-vault.sh
+# Post-clone bootstrap for the Investment Research vault.
+# Companion to "Build documents/Setup Guide.md" §7.1 — run once after git clone.
+#
+# Idempotent and non-destructive: creates only what is missing, never overwrites,
+# and NEVER touches skill runtime markers (.last_sync etc. — those are owned by
+# the skills; creating .last_sync by hand silently marks pending files as synced).
+#
+# Usage: cd /path/to/InvestmentVault && bash setup-vault.sh
 
-echo "Setting up Investment Research vault structure..."
+set -u
+cd "$(dirname "$0")"
 
-# Create folder structure
-mkdir -p Theses
-mkdir -p Research
-mkdir -p Sectors
-mkdir -p Macro
-mkdir -p Daily
-mkdir -p Weekly
-mkdir -p Templates
-mkdir -p Archive
-mkdir -p Canvas
+echo "Investment Vault — post-clone bootstrap"
+echo "======================================="
 
-echo "✓ Folders created"
+# ---- 1. Sanity: are we in the right place? -------------------------------
+fail=0
+for probe in CLAUDE.md Theses .claude/skills; do
+  if [ ! -e "$probe" ]; then
+    echo "✗ Missing $probe — run this from the cloned vault root."
+    fail=1
+  fi
+done
+[ "$fail" -eq 1 ] && exit 1
+echo "✓ Vault root confirmed"
 
-# Create thesis template
-cat > Templates/Thesis\ Template.md << 'TEMPLATE'
----
-date: {{date}}
-tags: [thesis]
-status: draft
-conviction: 
-sector: 
-ticker: 
----
+# ---- 2. Tooling checks (warn, don't block) -------------------------------
+if command -v claude >/dev/null 2>&1; then
+  echo "✓ Claude Code found: $(command -v claude) ($(claude --version 2>/dev/null | head -1))"
+else
+  echo "⚠ Claude Code not found — install: npm install -g @anthropic-ai/claude-code (Setup Guide §2.2)"
+fi
+if command -v python3 >/dev/null 2>&1; then
+  echo "✓ python3 found (skill helper scripts need it)"
+else
+  echo "⚠ python3 not found — several skills (/lint, /graph, /numbers) depend on it"
+fi
+if command -v git >/dev/null 2>&1; then
+  echo "✓ git found"
+else
+  echo "⚠ git not found — install via: brew install git"
+fi
 
-# {{title}}
-
-## Summary
-<!-- One-paragraph investment case -->
-
-## Key Metrics
-| Metric | Value | Notes |
-|--------|-------|-------|
-| Market Cap | | |
-| EV/Revenue | | |
-| Revenue Growth | | |
-| Gross Margin | | |
-| FCF Yield | | |
-
-## Bull Case
-- 
-
-## Bear Case
-- 
-
-## Catalysts
-- 
-
-## Risks
-- 
-
-## Position Sizing
-**Conviction:** 
-**Reasoning:** 
-
-## Related Research
-- 
-
-## Log
-### {{date}}
-- Initial thesis created
-TEMPLATE
-
-# Create research template
-cat > Templates/Research\ Template.md << 'TEMPLATE'
----
-date: {{date}}
-tags: [research]
-sector: 
-ticker: 
-source: 
-source_type: 
----
-
-# {{title}}
-
-## Key Takeaways
-- 
-
-## Details
-
-## Implications for Thesis
-<!-- Link to relevant thesis notes -->
-
-## Raw Notes
-TEMPLATE
-
-# Create daily note template
-cat > Templates/Daily\ Template.md << 'TEMPLATE'
----
-date: {{date}}
-tags: [daily]
----
-
-# {{date}}
-
-## Market Context
-- 
-
-## Research Done
-- 
-
-## Thesis Updates
-- 
-
-## Tasks
-- [ ] 
-
-## Notes
-TEMPLATE
-
-# Create weekly review template
-cat > Templates/Weekly\ Template.md << 'TEMPLATE'
----
-date: {{date}}
-tags: [weekly]
-week: 
----
-
-# Week of {{date}}
-
-## Thesis Activity
-<!-- Which theses were updated, created, or closed -->
-
-## Key Research
-<!-- Most important research notes created this week -->
-
-## Market Observations
-<!-- Macro and sector-level observations -->
-
-## Patterns
-<!-- Recurring themes across research this week -->
-
-## Next Week Priorities
-- [ ] 
-TEMPLATE
-
-# Create initial sector MOC notes
-for sector in "Semiconductors" "Enterprise Software" "Energy & Commodities" "Defense & Geopolitics" "Healthcare & MedTech" "Consumer & Digital"; do
-cat > "Sectors/${sector}.md" << SECTOR
----
-date: $(date +%Y-%m-%d)
-tags: [sector, moc]
----
-
-# ${sector}
-
-## Active Theses
-<!-- Links to thesis notes in this sector -->
-
-## Key Dynamics
-<!-- Sector-level observations -->
-
-## Watchlist
-<!-- Names being tracked but no thesis yet -->
-
-## Research Notes
-<!-- Links to research notes in this sector -->
-SECTOR
+# ---- 3. Untracked working directories ------------------------------------
+# These hold machine-generated or ignored content, so a fresh clone lacks them.
+for d in "Daily Intel" "_Inbox/processed" ".data"; do
+  if [ -d "$d" ]; then
+    echo "✓ $d/ exists"
+  else
+    mkdir -p "$d" && echo "✓ Created $d/"
+  fi
 done
 
-echo "✓ Templates created"
-echo "✓ Sector MOC notes created"
-echo ""
-echo "Setup complete! Next steps:"
-echo "  1. Copy CLAUDE.md to your vault root"
-echo "  2. Copy .clignore to your vault root"
-echo "  3. Install Obsidian Agent Skills: npx skills add git@github.com:kepano/obsidian-skills.git"
-echo "  4. Open the vault in Obsidian"
-echo "  5. Install Dataview plugin: Settings → Community Plugins → Browse → search 'Dataview'"
-echo "  6. Install Templater plugin: Settings → Community Plugins → Browse → search 'Templater'"
-echo "  7. Run 'claude' from the vault directory to start working"
+# ---- 4. FMP key placeholder (gitignored) ----------------------------------
+CONFIG=".data/config.json"
+if [ -f "$CONFIG" ]; then
+  echo "✓ $CONFIG exists — left untouched"
+else
+  printf '{"fmp_api_key": "YOUR_FMP_KEY_HERE"}\n' > "$CONFIG"
+  echo "✓ Created $CONFIG (placeholder)"
+  echo "  → Edit it now and paste your real key: open -e $CONFIG"
+  echo "    Without it, /numbers, /transcript, Live Portfolio refresh, and n8n Workflow 1 abort gracefully."
+fi
+
+# ---- 5. Next steps --------------------------------------------------------
+cat <<'NEXT'
+
+Bootstrap complete. Remaining setup (Setup Guide, "Build documents/Setup Guide.md"):
+  1. Obsidian: Open folder as vault → turn off restricted mode → enable the 5
+     community plugins (Claudian, Templater, Dataview, Git, BRAT).        [§5]
+  2. Claudian settings: set the Claude CLI path if not auto-detected.     [§6]
+  3. Put your real FMP key in .data/config.json (if not done above).      [§7.1]
+  4. First-run metadata bootstrap — in Claudian or `claude`:
+         /sync      (slow first run is expected — it baselines the vault)
+         /graph                                                            [§7.2]
+  5. Optional automation layer (n8n, Telegram, X harvesting):             [§8]
+NEXT
