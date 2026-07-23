@@ -1,6 +1,6 @@
 ---
 name: ingest
-description: Ingest content into the vault as structured research notes. Accepts a URL, a local file path, or no arguments (batch-processes _Inbox/). Use when user shares a URL, says "clip this", "ingest", or "process inbox".
+description: Ingest content into the vault as structured research notes. Accepts a URL, a local file path, `--from-brief [date]` (pick stories from an n8n Daily Intel news brief), or no arguments (batch-processes _Inbox/). Use when user shares a URL, says "clip this", "ingest", "ingest from the brief", or "process inbox".
 model: opus
 effort: max
 allowed-tools: Read Grep Glob Edit Write WebFetch Bash(date * mv * mkdir * ls * find * defuddle * python3 *)
@@ -80,6 +80,7 @@ Design rationale (canonical-URL trade-off, two-check pattern): `.claude/skills/i
 
 Parse $ARGUMENTS to determine mode:
 - **URL** (starts with `http`): Fetch and process a single web page
+- **`--from-brief [YYYY-MM-DD]`**: Brief-driven ingest — pick stories from a Daily Intel news brief (Mode D; date optional, defaults to the latest brief)
 - **File path** (ends with `.md`, `.pdf`, `.csv`, `.txt`, or contains `/`): Read and process a single local file
 - **No arguments / empty**: Batch-process all files in `_Inbox/`
 
@@ -248,6 +249,19 @@ These validators catch content that passes generic structural checks (#1-7) but 
 This verify-before-commit pattern keeps the source file in `_Inbox/` as the authoritative "needs processing" marker until a complete research note exists. Content-quality checks specifically protect against silent semantic corruption — the most damaging failure mode because corrupt research propagates through `/sync` into thesis Log entries before any human reviews it.
 
 ---
+
+## Mode D: Brief-Driven Ingest (`--from-brief [date]`) — 2026-07-20
+
+Closes the hand-off gap between the n8n Workflow 3 daily brief (a scanning surface) and the research pipeline: instead of copy-pasting URLs, pick stories and ingest them in one motion. Curation stays human — this mode never auto-selects.
+
+1. **Locate the brief**: with a date, glob `Daily Intel/<date>* - Daily intel - n8n.md`; without, take the newest matching file. Two briefs same day (rare) → newest. None found → report and stop (suggest checking the sweep ran).
+2. **Parse story entries** (structured by the Workflow 3 Assemble contract): each is `- [score] **title**` optionally followed by wikilinks/markers, a summary line, and a `Sources:` line of `[source](url)` links. Skip the `## ♻ Follow-up coverage` section by default (already-briefed echo; include only if the user asks).
+3. **Present a numbered pick list**: `N. [score] title — sources: reuters, fmp (+1) — → [[Theses/…]]` and ask which to ingest (numbers, ranges, `all ≥8`). This is the curation moment.
+4. **Per picked story**: ingest the FIRST source URL via the **Mode A pipeline** (defuddle → Processing Pipeline → post-write verification, URL-mode blocking checks). If extraction fails or returns paywall junk, fall back to the story's next source URL before reporting failure — multi-source stories are retry-redundant by construction. Remaining source URLs go into the research note's `## Source Excerpts` section as `Also reported by:` links. Thesis wikilinks already on the story line seed Step 3's vault connection.
+5. **Dedup**: run the standard Step 0.3 source-dedup check per URL (brief stories can repeat across days via the ♻ mechanism's bounds).
+6. **Report** per the batch pattern: one line per story — created note, linked theses, skipped/failed with reason.
+
+Lock scope: vault-wide, same as every `/ingest` mode. The brief file itself is NEVER modified — it is n8n output, not vault state.
 
 ## Processing Pipeline
 

@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/CSGP - CoStar Group]]"
 snapshot_date: 2026-07-11
 snapshot_trigger: status
 snapshot_batch: status-2026-07-11-063211
-publish: true
+publish: false
 date: 2026-04-14
 tags: [thesis, csgp, real-estate-data, monopoly]
 status: monitoring

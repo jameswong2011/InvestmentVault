@@ -1,7 +1,8 @@
 ---
 date: 2026-07-17
 tags: [meta, infrastructure, automation]
-status: active
+status: superseded
+superseded_by: n8n Automations.md (merged 2026-07-19)
 ---
 
 # n8n Automation Layer — Setup Tutorial & Cost/Benefit

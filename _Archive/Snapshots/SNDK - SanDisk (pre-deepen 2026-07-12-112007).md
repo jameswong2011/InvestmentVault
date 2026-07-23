@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, semiconductors, NAND, SNDK, SanDisk, memory, AI-storage, HBF]
 status: active

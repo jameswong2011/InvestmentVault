@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/6515 - WinWay Technology]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-06-08
 tags: [thesis, semiconductors, test-equipment, 6515]
 status: draft

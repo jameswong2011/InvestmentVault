@@ -204,6 +204,19 @@ Skip vault-wide checks that require full portfolio coverage (Attention Allocatio
 - **Attention vs conviction alignment**: Compare where research time was spent against conviction levels. Flag any mismatch — disproportionate time on low-conviction ideas while high-conviction theses go unattended is a resource allocation error.
 - **Decay alert**: List any active thesis that hasn't been touched (no Log entry, no new linked research) in 30+ days. These are candidates for `/deepen` or `/prune`.
 
+## Phase 2.5: Story-log drift mining (unscoped and `all` modes only — 2026-07-20)
+
+The n8n Workflow 3 news sweep writes one machine-readable story log per run to `.data/news_stories/*.json` (schema: `{date, stats, stories: [{title, cluster, score, sum, members}]}`). This corpus records *what actually scored high against current coverage* — the empirical check on whether the watcher registry is drifting behind reality.
+
+1. **Read** (skip silently if the folder is absent or empty — the sweep may not be live): `ls .data/news_stories/*.json` → parse the last `track_window_d` days of files (registry Tuning row, default 30). Budget guard: read at most 60 files.
+2. **Aggregate** stories with `score ≥ track_min_score` (registry Tuning row, default 8). Group by recurring subject (same company/technology/theme appearing across ≥3 distinct days). **Sentiment trajectory**: for any ticker/theme with ≥3 days of coverage, also read each story's `sig`/markers (the 𝕏 bullish/bearish/quiet and catalyst-proximity tags Assemble stamped) across the window — a directional shift (e.g. 𝕏 flips bearish→bullish, or scores trend up) is a tracked sentiment change worth surfacing alongside the drift signals. The logs are the substrate; this read is the 30-day sentiment view the user asked for.
+3. **Compare against the registry**: read `_watchers.md § News & Thematic`. Two drift signals:
+   - **Missing watcher**: a recurring high-score subject with NO matching registry row → the sweep is catching it only incidentally (via outlet feeds or ticker queries); a dedicated thematic row with a proper `thesis` anchor would track it deliberately. Propose the row (id, query, thesis link, expires) in the report.
+   - **Dead watcher**: an `active` registry row whose query subject produced ZERO stories (any score) across the window → the theme has gone quiet or the query is mistuned. Propose `paused` or a query rewrite.
+4. **Output**: add a `### Registry drift` section to the Phase 4 report listing proposed row additions/retirements — proposals only, the user edits `_watchers.md` (or asks Claude to). Registry drift findings do NOT go to `_followups.md` (they are config hygiene, not research opportunities) — EXCEPT when a missing-watcher subject also generates a Phase 3 opportunity, in which case the opportunity entry carries it.
+
+This phase feeds Phase 3: a recurring high-score subject with no thesis anchor anywhere in the vault is itself a candidate opportunity (new-thesis or macro-note gap).
+
 ## Phase 3: Opportunity Generation
 
 Generate 3-5 specific, actionable research prompts ranked by potential conviction impact:

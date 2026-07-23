@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/CSU - Constellation Software]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-05-22
 tags: [thesis, vertical-market-software, capital-allocation, serial-acquirer, CSU]
 status: draft

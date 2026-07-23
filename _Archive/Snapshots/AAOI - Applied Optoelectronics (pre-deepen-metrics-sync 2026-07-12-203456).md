@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/AAOI - Applied Optoelectronics]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: metrics-sync
 snapshot_batch: deepen-metrics-sync-batch-2026-07-12-203456
-publish: true
+publish: false
 date: 2026-05-24
 tags: [thesis, AAOI, photonics, optical-transceivers, CATV, LPO, semiconductors]
 status: draft

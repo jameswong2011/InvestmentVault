@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/NET - Cloudflare]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: metrics-sync
 snapshot_batch: deepen-metrics-sync-batch-2026-07-12-203456
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, net, enterprise-software, edge-computing, cybersecurity, agentic-ai]
 status: active

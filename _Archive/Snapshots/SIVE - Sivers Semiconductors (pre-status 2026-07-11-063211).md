@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/SIVE - Sivers Semiconductors]]"
 snapshot_date: 2026-07-11
 snapshot_trigger: status
 snapshot_batch: status-2026-07-11-063211
-publish: true
+publish: false
 date: 2026-05-22
 tags: [thesis, semiconductors, photonics, InP, CPO, mmWave, small-cap, SIVE]
 status: active

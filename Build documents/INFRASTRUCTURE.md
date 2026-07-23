@@ -24,6 +24,7 @@ Read this section first on any non-trivial task: lookup tables, critical invaria
 | **Add a `/lint` check** | §10 → §12.2 consumers → §12.4 |
 | **Understand a rollback cascade** | §7 → §3.2 → §13.6 if stuck in-progress |
 | **Tune model/context for a skill** | §12.6 → §0.4 → per-skill RATIONALE.md |
+| **Hooks / scheduled runs / workflows** | §14 (harness automation layer) |
 
 ### 0.2 Critical invariants
 
@@ -68,7 +69,7 @@ Violating any of these produces silent corruption.
 
 ### 0.4 Skill landscape
 
-21 skills. Lock scope, `_hot.md` writes, and manifests determine each skill's pre-flight and cleanup contract; **model** and **context** are the runtime-performance axes.
+26 skills — 21 state/analysis skills plus **5 read-only analytical skills** (`dependency-map`, `macro-exposure`, `value-chain`, `assumptions`, `conviction-audit`) added 2026-07-22. The extractors report analysis, take no lock / manifest / snapshot, and each pairs with a portfolio workflow that fans its `## Method` out (§14.3). Lock scope, `_hot.md` writes, and manifests determine each skill's pre-flight and cleanup contract; **model** and **context** are the runtime-performance axes.
 
 | Skill | Lock scope | `_hot.md`? | Manifest? | Snapshot? | Model | Context | Role |
 |---|---|---|---|---|---|---|---|
@@ -90,9 +91,14 @@ Violating any of these produces silent corruption.
 | `/rollback` | vault-wide (restore) / read-only (list) | Yes (restore) | No | Pre-rollback safety | **sonnet** | main | Snapshot restore + cascade |
 | `/clean` | vault-wide | No | No | No | **sonnet** | main | Delete old snapshots/manifests |
 | `/archive-callouts` | vault-wide (unscoped) / ticker | No | No | Per-file pre-sweep | **sonnet** | main | Sweep addressed callouts to Legacy |
-| `/lint` | vault-wide (full) / read-only (scoped) | No | No | No | opus | **fork** | ~56 health checks (§10) |
+| `/lint` | vault-wide (full) / read-only (scoped) | No | No | No | opus | **fork** | ~64 health checks (§10) |
 | `/numbers` | ticker / vault-wide (`--all`) | No | No | Per-thesis pre-edit | **sonnet** | main | Refresh Key Metrics from FMP |
 | `/transcript` | ticker (read-only for `--list`) | Yes (ART + OQ) | No | No (Log-append + immutable note) | opus | main | Earnings-transcript signal extraction |
+| `/dependency-map` | none (read-only) | No | No | No | opus | main | Extract a thesis's dependency fingerprint (pairs → `portfolio-correlation`) |
+| `/macro-exposure` | none (read-only) | No | No | No | opus | main | Tag a thesis's implicit macro bets (pairs → `portfolio-macro-exposure`) |
+| `/value-chain` | none (read-only) | No | No | No | opus | main | Map a thesis's value-chain position (pairs → `portfolio-supply-chain`) |
+| `/assumptions` | none (read-only) | No | No | No | opus | main | Load-bearing assumptions + internal-contradiction scan (pairs → `vault-contradictions`) |
+| `/conviction-audit` | none (read-only) | No | No | No | opus | main | Conviction-evidence mismatch + silently-fired-trigger scan (pairs → `portfolio-conviction-audit`) |
 
 **† `/sync` variants**: default scans changed files + adjacencies; `all` reads everything and writes `.sync_all_fresh`; `TICKER` uses a ticker lock and preserves `.last_sync`.
 **‡ `/surface` variants**: default reads 4 sections per thesis; `all` full reads; `[sector]` sector-scoped; `TICKER` uses a ticker lock. All fork.
@@ -147,6 +153,7 @@ Owned exclusively by `/graph` (full rebuild, `last` incremental, `[N]` catch-up)
 - **Reverse indexes always rebuild from scratch** on every run — prevents drift even when incremental extraction skips unchanged theses.
 - **T7.3 cache fields** (`status:`, `log_tail:` per adjacency entry) let `/sync` classify without re-reading theses. Entries missing them are re-extracted on next `/graph last`.
 - **Write-avoidance**: only `/rename` writes `_graph.md` outside `/graph` (adjacency header only; does not advance the watermark). All other skills accumulate into `.graph_invalidations` (§2.3).
+- **Auto-refresh hook**: the `Stop` hook `refresh-graph.py` (§14.1) runs `generate_graph.py last` when `.claude/.graph_dirty` is set by a thesis/sector/macro edit — automating core-loop step 4. Runs the generator directly (no skill lock); still `/graph`-owned output.
 
 ### 1.3 `_catalyst.md` — Catalyst calendar
 
@@ -165,9 +172,21 @@ Four Templater files inserting dated callouts at cursor; pure user-interaction i
 
 `user-warning.md` filename is intentionally decoupled from `[!error]` — the filename is the stable Templater hotkey slot. Companion config (both git-tracked): `.obsidian/hotkeys.json`, `.obsidian/plugins/templater-obsidian/data.json`.
 
-**Gotcha — recreation**: Templater's `trigger_on_file_creation: true` fires on ANY new file with `<% %>` syntax; recreating a template via `Write` freezes `<% tp.date.now() %>` at creation time. Use `Edit` on existing template files.
+**Gotcha — recreation**: Templater's `trigger_on_file_creation: true` fires on ANY new file with `2026-07-19` syntax; recreating a template via `Write` freezes `undefined` at creation time. Use `Edit` on existing template files.
 
 **Propagation + drift**: callout-addressing must use a non-skill-origin Log prefix (recommended: `Addressed user callouts:`) or `/sync` silently skips sector/macro propagation — full spec in CLAUDE.md Workflow Rule 7 and [[User Guide#Inline callouts — user feedback markers]]. Accumulated `[!error]`-addressing entries count toward `/sync` Step 3e conviction-drift detection (windowing in `sync/SKILL.md §3e` + `_shared/log-prefixes.md`).
+
+### 1.5 `_followups.md` — Open-findings register
+
+Durable ledger of actionable findings that analytical skills cannot execute themselves. Contract: `_shared/followups-contract.md` (§12.2). Writers append one-line entries (`/stress-test`, `/retro`, `/surface`, `/numbers`); resolvers move Open → Resolved (`/status`, `/sync`); auto-created by the first writer; Resolved entries retained 90 days, then `/clean`-eligible. Unlike `_hot.md` it never auto-evicts — closes the finding-dies-in-the-report failure class (the unactioned INTU stress-test).
+
+### 1.6 `_watchers.md` + `Daily Intel/` — automation-layer surfaces
+
+Owned by the n8n layer ([[n8n Automations]]); no vault skill reads or writes either file.
+
+- **`_watchers.md`** — the single registry every n8n workflow re-parses per run: News & Thematic (Workflow 3), Price Tripwires (Workflow 1), X Watchers incl. `### Tuning` thresholds + `### LLM prompt` (Workflow 5), Alt-Data backlog. User/Claude-edited in natural language; a table edit changes what's pulled with no redeploy. Constraint: no aliased wikilinks in cells — the `|` breaks both the table render and the parser.
+- **`Daily Intel/`** — write-once dated outputs (X Dashboards, trending digests) from Workflows 3/5; newest file = current dashboard; never hand-edited; scanning surfaces, not ingest candidates.
+- **Boundary** (n8n hard rules 1–4): n8n writes only NEW files into `Daily Intel/`, `.data/`, `_Inbox/`; never Theses/Research/Sectors/Macro or metadata files; no Tier 3 operations; lock-aware for any future headless invocation (composes with §6).
 
 ---
 
@@ -374,7 +393,7 @@ Watermark is ISO second-precision (`last_graph_write:`); legacy files fall back 
 
 ## 10. `/lint` registry (by ID)
 
-Key checks (the full registry runs ~59 checks, #1–#59 — with `#50m` for `_deepen-manifest` distinct from `#50` callout-sweep-freshness; `#31`/`#40` are unused — see `lint/SKILL.md`). Scoped mode always runs #35 and, if a marker exists, #37.
+Key checks (the full registry runs #1–#66, ~64 active — `#31`/`#40` unused; `#50m` for `_deepen-manifest` distinct from `#50` callout-sweep-freshness — see `lint/SKILL.md`). Scoped mode always runs #35 and, if a marker exists, #37.
 
 | ID | Scope | Catches | Severity | If fires, suspect |
 |---|---|---|---|---|
@@ -405,6 +424,9 @@ Key checks (the full registry runs ~59 checks, #1–#59 — with `#50m` for `_de
 | #57 | Full | Watermark collapse (pending-sync > 20% of vault notes) | **Critical** | Bulk mtime touch (git ops) or stuck `.last_sync` — /sync default/all intractable, /prune blocks, /clean over-protects; decide sync-all vs advance |
 | #58 | Full | Snapshot integrity: missing `snapshot_of:`/`snapshot_date:` frontmatter; non-.md artifacts in Snapshots/ | Important | Legacy/hand-made snapshot or stray archive file — invisible to /clean, unrestorable-by-spec for /rollback |
 | #59 | Full | Template-drift-at-birth (thesis <7d old missing template sections) | Important | /thesis section list drifted from `Templates/` on that run — fix thesis via /deepen scaffold + check /thesis spec |
+| #60 | Full | `## Conviction Triggers` present-but-unfilled scaffold, or filled with no falsifiable numeric/dated/named threshold | Important / Nice | `/thesis` scaffold never filled — the precondition `_shared/trigger-touch.md` depends on |
+| #61 | Full | `key_metrics_last_refreshed:` missing or >90d | Important (high-conviction active) | `/numbers` not run recently — Step 11 writes the field |
+| #62–#66 | Full | Analytical tier: non-consensus insight names no consensus (#62), Mental-Models stable-ID citations (#63), hedge words in spines (#64), Summary-vs-frontmatter conviction mismatch (#65), weakly-sourced spine figures (#66 — pairs with `provenance-tags.md`) | Nice / candidate | See `lint/SKILL.md` |
 
 ---
 
@@ -415,15 +437,16 @@ Key checks (the full registry runs ~59 checks, #1–#59 — with `#50m` for `_de
 | Entry | Purpose | Git |
 |---|---|---|
 | `.git/` | Repository metadata | Self |
-| `.claude/` | Harness: `agents/`, `commands/`, `settings.json` (ignored), `skills/` (21 skills + `_shared/`) | Partial |
+| `.claude/` | Harness: `agents/`, `commands/`, `settings.json` (ignored), `skills/` (21 skills + `_shared/`), `hooks/` (§14.1), `schedule/` (§14.2), `workflows/` (§14.3) | Partial |
 | `.claudian/` | Claudian plugin state; not read/written by any skill | Ignored |
 | `.obsidian/` | Obsidian config; personal UI state ignored, shared config (plugins, hotkeys) tracked | Partial |
+| `.data/` | FMP key (`config.json`) + X-harvester state/archive (machine-local, disposable — [[n8n Automations]] §8.4) | Ignored |
 
 Skills never commit — commits are user-initiated (obsidian-git may auto-commit per user config).
 
 ### 11.2 Version control and OS files
 
-`.gitignore` is the **authoritative runtime-marker registry** — adding a new ephemeral marker requires updating the producing skill's spec AND `.gitignore` AND §2 AND the Appendix. Currently ignored markers: `.last_sync`, `.sync_all_fresh`, `.graph_invalidations`, `.vault-lock*`, `.rename_incomplete.*`. Intentionally NOT ignored (persistent content): `.archive_ticker_registry.md`, `.drift-config.md`. `.gitattributes` normalizes line endings; `.DS_Store` is ignored macOS noise.
+`.gitignore` is the **authoritative runtime-marker registry** — adding a new ephemeral marker requires updating the producing skill's spec AND `.gitignore` AND §2 AND the Appendix. Currently ignored markers: `.last_sync`, `.sync_all_fresh`, `.graph_invalidations`, `.vault-lock*`, `.rename_incomplete.*`, `.claude/.graph_dirty` (§14.1), `.claude/.allow-protected` (§14.1 guard escape hatch), `.claude/schedule/logs/` (§14.2). Intentionally NOT ignored (persistent content): `.archive_ticker_registry.md`, `.drift-config.md`. `.gitattributes` normalizes line endings; `.DS_Store` is ignored macOS noise.
 
 ### 11.3 Reserved / optional markers
 
@@ -573,6 +596,78 @@ WebSearch rate-limited during Phase 3 (3 queries/ticker ≈ ~126 for a full univ
 
 ---
 
+## 14. Harness automation layer (hooks · schedule · workflows)
+
+Three automation surfaces under `.claude/` (added 2026-07-22). Unlike the skill layer (model-driven, one invocation per request), these are **harness- or OS-driven** — they fire on lifecycle events or a clock with no prompt. Scripts are git-tracked and portable; `settings.json` hooks and the installed launchd plists are per-machine.
+
+### 14.1 Hooks — `.claude/hooks/` + `settings.json` `hooks`
+
+Deterministic shell commands the harness runs on lifecycle events (not model-judged). Three registered:
+
+| Hook | Event · matcher | Script | Effect |
+|---|---|---|---|
+| Tier-1 guard | `PreToolUse` · `Write\|Edit\|MultiEdit` | `guard-protected.py` | Denies writes to `CLAUDE.md`, `Templates/`, `.obsidian/`, `.claude/skills/` (mirrors Change-Safety Tier 1). Emits `hookSpecificOutput.permissionDecision: deny`. |
+| Graph dirty-flag | `PostToolUse` · `Write\|Edit\|MultiEdit` | `mark-graph-dirty.py` | Touches `.claude/.graph_dirty` when a `Theses/`, `Sectors/`, or `Macro & Technology/` `.md` is written. Fast, no scan. |
+| Graph refresh | `Stop` | `refresh-graph.py` | If `.graph_dirty` exists, runs `generate_graph.py last`, clears the flag. Debounced — one rebuild per turn regardless of edit count. |
+
+**Design invariants**:
+- **Fail-open** — guard parse errors → allow. A guard that misfires must never block legitimate work.
+- **Escape hatches** (protected set mirrors CLAUDE.md Tier 1) — two, checked at fire-time before the deny path:
+  - `CLAUDE_VAULT_ALLOW_PROTECTED=1` (shell env or `settings.json` `env`) — session-wide, set at launch. Use to disable the guard entirely for a working session.
+  - `.claude/.allow-protected` sentinel file — mid-session, per-request. Claude drops it (`touch`) on an *explicit* user request to edit a guarded file, makes the edit, removes it. The `Stop` hook (`refresh-graph.py`) deletes it at turn end regardless, so the guard re-arms every turn. This is what makes "edit CLAUDE.md to add X" work without a restart while still blocking accidental/unrequested edits (git-ignored, §11.2).
+- **Debounce, not eager** — PostToolUse only marks; the ~80-note scan runs once at `Stop`, never per-edit.
+- **No stop-loop** — `refresh-graph.py` emits only `systemMessage` (never `decision:block` / `continue:false`), so it cannot re-trigger itself.
+- **Single-owner nuance** (invariant #5) — the refresh hook runs the `/graph` engine (`generate_graph.py`) directly, WITHOUT the skill's vault lock. Sanctioned because the generator is deterministic (same vault state → identical bytes); a rare race with a manual `/graph` self-heals. `_graph.md`'s logical owner is still `/graph`.
+
+**Watcher caveat**: a newly-edited `hooks` block loads only when the settings watcher re-reads `.claude/` — open `/hooks` once or restart. `settings.json` is git-ignored (§11.1), so hooks are per-machine; the scripts are tracked.
+
+**`.graph_dirty`** — ephemeral marker at `.claude/.graph_dirty` (git-ignored, §11.2). Presence = a graph-relevant note was edited this turn. Created by `mark-graph-dirty.py`, consumed + deleted by `refresh-graph.py`. Complements `.graph_invalidations` (§2.3): closures still route through that path; `.graph_dirty` closes the routine edit→graph-drift gap that previously needed a manual `/graph last` (core-loop step 4).
+
+### 14.2 Local scheduler — `.claude/schedule/` + launchd
+
+Weekly unattended skill runs via macOS launchd. Chosen over cloud `/schedule` routines because the vault is local-first: launchd runs against the LIVE local files with the skills' own lock/snapshot machinery intact, needing no GitHub sync, cloud environment, or GitHub App.
+
+| Component | Path | Role |
+|---|---|---|
+| Runner | `.claude/schedule/run-vault-skill.sh <skill> [model]` | `cd`s vault, sets PATH, runs `claude -p "/<skill>" --model <m> --dangerously-skip-permissions`, appends `logs/<skill>.log`. Branches on skill (below) |
+| Lint publisher | `.claude/schedule/publish-lint-note.py` | `/lint` runs with `--output-format json`; this extracts the final report and writes `Daily Intel/<date> - Vault Health - lint.md` so the headless run is visible in Obsidian. Defensive: writes a fallback note pointing at the log if extraction fails |
+| Job — catalyst | `~/Library/LaunchAgents/com.investmentvault.catalyst.plist` | Sunday 18:00 local → `/catalyst` (opus) |
+| Job — lint | `~/Library/LaunchAgents/com.investmentvault.lint.plist` | Sunday 20:00 local → `/lint` (sonnet), 2 h after catalyst so they never overlap |
+| Canonical plists | `.claude/schedule/com.investmentvault.*.plist` | Git-tracked reference copies; installed copies live in `~/Library/LaunchAgents/` |
+
+- **Output visibility** — `/catalyst` writes its own durable artifact (`_catalyst.md`), so its run narration just goes to the log. `/lint` is a read-only report with no artifact, so the runner captures its clean output and publishes `Daily Intel/<date> - Vault Health - lint.md` (via `publish-lint-note.py`) — the report surfaces in Obsidian's morning-scan folder instead of dying in a log. Pruned by `/clean daily-intel`.
+- **Permission bypass** — unattended runs use `--dangerously-skip-permissions` (personal machine, own skills, no human to answer prompts). Tighten by swapping to `--permission-mode acceptEdits` + a Bash allowlist.
+- **Lock coordination** — scheduled runs execute each skill's pre-flight (§6), so they serialize safely against a live interactive session rather than racing it.
+- **Sleep behavior** — `StartCalendarInterval` coalesces missed runs: Mac asleep at the scheduled time → the job fires once on next wake.
+- **Manage** — `launchctl list | grep investmentvault` (status); `launchctl bootout gui/$(id -u) <plist>` (disable); edit the plist `Hour`/`Weekday`, then `launchctl bootstrap gui/$(id -u) <plist>` (reschedule).
+- **Test before trusting** — run `.claude/schedule/run-vault-skill.sh catalyst` manually once and inspect `.claude/schedule/logs/catalyst.log`.
+
+### 14.3 Workflows — `.claude/workflows/`
+
+Deterministic multi-agent orchestration scripts (the `Workflow` tool) for expensive parallelizable sweeps the single-thread skills don't cover.
+
+| Workflow | File | Shape |
+|---|---|---|
+| `portfolio-stress-test` | `portfolio-stress-test.js` | Enumerate → per-thesis run of `stress-test/SKILL.md` **Phases 1-3, read-only** (pipelined) → 3 skeptics refute each flagged weakness → rank into one report → **sequential** skill-faithful persist when `persist:true` |
+| `portfolio-correlation` | `portfolio-correlation.js` | Fan out `dependency-map` → cluster shared load-bearing dependencies into correlated-bet groups → synthesis note (`persist`) |
+| `portfolio-macro-exposure` | `portfolio-macro-exposure.js` | Fan out `macro-exposure` → conviction-weighted concentration by macro variable → note |
+| `portfolio-supply-chain` | `portfolio-supply-chain.js` | Fan out `value-chain` → stitch shared suppliers/customers + cross-thesis SPOFs → note + optional Canvas |
+| `vault-contradictions` | `vault-contradictions.js` | Fan out `assumptions` → pair opposing industry-level assumptions → adversarially verify each → note |
+| `portfolio-scenario` | `portfolio-scenario.js` | Fan out `scenario` impact method per thesis (needs `args.event`) → winners/losers + Major/Minor/Neutral → Major Logs + scenario note (`persist`) |
+| `portfolio-retro` | `portfolio-retro.js` | Fan out `retro` per-ticker overlay, throttled (fixes the ~126-query rate-limit) → ranked trade ideas → immutable note (`persist`) |
+| `portfolio-conviction-audit` | `portfolio-conviction-audit.js` | Fan out `conviction-audit` → rank over-conviction + fired triggers → `_followups` (`persist`; never touches `conviction:`) |
+
+- **Invoke** — `Workflow({name:"portfolio-stress-test"})` or `Workflow({scriptPath:".claude/workflows/portfolio-stress-test.js"})`. Requires explicit opt-in — it spawns ~1 agent/thesis plus up to 3 verifiers per at-risk name.
+- **Args** (all optional) — `tickers[]` (explicit set, overrides status), `status[]` (default `['active','monitoring']`), `limit`, `model` (default `sonnet`), `severityToVerify` (default 3), `persist` (default false = read-only report).
+- **find→verify pattern** — the stress pass is the finder; the 3-skeptic majority-refute pass is the adversarial verifier (majority CANNOT refute → weakness confirmed → full severity kept; else severity −2). Mirrors single-name `/stress-test` but adds a verification gate at portfolio scale.
+- **Skill reuse (analysis) + write split** — each Stress agent reads `stress-test/SKILL.md` and runs its **Phases 1-3 only** (analysis), so the sweep uses the real skill method and tracks its future edits. It explicitly does NOT run the skill's Step 0 lock or Phase 4 writes: ~1 agent/thesis each writing a manifest / Research note / thesis Log / `_followups.md` / `_hot.md` in parallel would race the shared files (`_followups.md`, `_hot.md` especially). All writes defer to the **Persist phase — a single writer, one thesis at a time** (`await` in a `for` loop over the at-risk names), replaying the skill's Phase 4 from each agent's pre-computed `shortCaseMarkdown`. **Analysis fans out; writes serialize** — the general rule for any write-capable fan-out (§14.3 is the reference implementation).
+- **Relation to `/stress-test`** — same analytical method now (shared SKILL.md). `/stress-test TICKER` is the interactive single-name tool; the workflow is the batch sweep — read-only unless `persist:true`, which writes skill-faithful notes for the at-risk names only (not all N).
+- **Skill/workflow pairing (Tier-1, 2026-07-22)** — the four cross-portfolio workflows each fan out a **read-only extraction skill's `## Method`**: `portfolio-correlation`←`dependency-map`, `portfolio-macro-exposure`←`macro-exposure`, `portfolio-supply-chain`←`value-chain`, `vault-contradictions`←`assumptions`. The skill is the single-name tool AND the single source of truth; the workflow is the portfolio sweep. Same invariant as stress-test: **analysis fans out (read-only), writes serialize** (a single-writer Persist phase when `persist:true`; `vault-contradictions` adds a find→verify pass since a claimed contradiction can be a framing difference).
+- **Tier-2 pairing (parallelize existing skills)** — `portfolio-scenario`←`scenario` and `portfolio-retro`←`retro` fan out skills you already had: each agent runs the skill's per-thesis **analysis** phases and explicitly skips its Step-0 lock, approval gate, and write phases (which the workflow's sequential Persist owns). `portfolio-conviction-audit`←the new `conviction-audit` skill. Two specifics: `portfolio-scenario` requires `args.event`; `portfolio-retro` exists precisely to fix retro's ~126-query WebSearch rate-limit — the per-ticker fan-out is throttled by the workflow concurrency cap (~10-16), so no burst.
+- **Registry / discoverability** — `_workflows.md` (vault root) is the generated catalog of every workflow, built from each script's `meta` block by `.claude/workflows/_generate_registry.mjs` (mirrors how `/graph` generates `_graph.md`). **Re-run the generator after adding or editing a workflow.** Skills self-list in the `/` menu; workflows do not, so this file is how the user sees what's at hand.
+
+---
+
 ## Appendix: File ownership matrix
 
 | File / directory | Creators | Modifiers | Cleaners |
@@ -585,6 +680,13 @@ WebSearch rate-limited during Phase 3 (3 queries/ticker ≈ ~126 for a full univ
 | `_graph.md` | `/graph` | `/graph`; `/rename` (adjacency header only) | `/graph` |
 | `_catalyst.md` | `/catalyst` | `/catalyst` (overwrite) | `/catalyst` |
 | `.claude/skills/**` | Skill authors | Manual (SKILL.md per §12.4) | Manual |
+| `.claude/hooks/*.py` | Manual (§14.1) | Manual | Manual |
+| `.claude/schedule/**` (runner + canonical plists) | Manual (§14.2) | Manual | Manual (`logs/` disposable) |
+| `.claude/workflows/*.js` | Manual (§14.3) | Manual | Manual |
+| `.claude/workflows/_generate_registry.mjs` | Manual (§14.3) | Manual | Manual |
+| `_workflows.md` | `_generate_registry.mjs` (from workflow `meta` blocks) | regenerate after adding/editing a workflow | regenerate |
+| `~/Library/LaunchAgents/com.investmentvault.*.plist` | Manual install (§14.2) | Manual | `launchctl bootout` + `rm` |
+| `.claude/.graph_dirty` | `mark-graph-dirty.py` hook | — | `refresh-graph.py` hook (consume + delete) |
 | `.claudian/`, `.obsidian/`, `.git/` | Their apps | Their apps | Manual / `git gc` |
 | `.last_sync` | `/sync` (default, all) | same | — |
 | `.sync_all_fresh` | `/sync all` | — | `/graph` (consume + delete) |
@@ -593,6 +695,10 @@ WebSearch rate-limited during Phase 3 (3 queries/ticker ≈ ~126 for a full univ
 | `.archive_ticker_registry.md` | `/status`, `/prune` closures | append-only | — (stale tolerated) |
 | `.vault-lock*` | all state-modifying skills | own skill only | own skill; manual on abandonment |
 | `.drift-config.md` | manual (optional) | manual | manual |
+| `_followups.md` | first writer (auto-create) | writers append; `/status`, `/sync` resolve | `/clean` (Resolved >90d) |
+| `_watchers.md` | manual | manual / Claude NL edits; n8n read-only | manual (monthly review) |
+| `Daily Intel/*.md` | n8n Workflows 3, 5 | — (write-once snapshots) | manual |
+| `.data/config.json`, `.data/x_engagement_state.json` | manual / n8n Workflow 5 | n8n Workflow 5 (state, single-writer) | manual (state disposable) |
 | `.sync-progress.jsonl` | **Reserved — not written** | — | — |
 | `_Archive/Snapshots/*.md` | destructive skills (pre-edit) | — | `/clean` |
 | `_Archive/Snapshots/_*-manifest*.md` | multi-file skills (skeleton) | own skill (populate + flip) | `/clean` (after aging + floors) |

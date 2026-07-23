@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/LRCX - Lam Research]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-04-29
 tags: [thesis, semiconductor-capital-equipment, LRCX]
 status: active

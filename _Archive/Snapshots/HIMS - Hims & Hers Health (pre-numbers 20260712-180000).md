@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/HIMS - Hims & Hers Health]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-01-22
 tags: [thesis, HIMS, healthcare-medtech, telehealth, DTC-healthcare, compounding, GLP-1, peptides]
 status: monitoring

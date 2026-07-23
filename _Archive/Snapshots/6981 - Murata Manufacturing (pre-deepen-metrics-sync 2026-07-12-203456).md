@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/6981 - Murata Manufacturing]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: metrics-sync
 snapshot_batch: deepen-metrics-sync-batch-2026-07-12-203456
-publish: true
+publish: false
 date: 2026-05-15
 tags: [thesis, mlcc, semiconductors, passives, 6981]
 status: active

@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/ARM - Arm Holdings]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-06-09
 tags: [thesis, semiconductors, compute-ai-accelerators, cpu-ip, ARM]
 status: draft

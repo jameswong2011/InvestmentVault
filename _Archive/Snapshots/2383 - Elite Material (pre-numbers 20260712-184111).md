@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/2383 - Elite Material]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-06-10
 tags: [thesis, copper-clad-laminate, 2383]
 status: draft

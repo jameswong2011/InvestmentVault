@@ -1,7 +1,8 @@
 ---
 date: 2026-07-18
 tags: [meta, infrastructure, automation, how-to]
-status: active
+status: superseded
+superseded_by: n8n Automations.md (merged 2026-07-19)
 ---
 
 # Twitter API Build — X Harvester + Dashboard (Workflows 4–5)

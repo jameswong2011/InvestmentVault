@@ -8,7 +8,7 @@ status: active
 
 > End-to-end replication guide: from a blank machine to the full working system — vault, Claude Code, Claudian, skills, data layer, and the n8n automation stack. Written to be followed top-to-bottom with no prior knowledge. Every step says what you did it for and how to verify it worked.
 >
-> **Scope boundaries.** Daily operation: [[User Guide]]. Consistency-machinery internals: [[INFRASTRUCTURE]]. Automation layer deep-dives: [[n8n]] + [[Twitter API Build]]. This document owns *installation and configuration only*.
+> **Scope boundaries.** Daily operation: [[User Guide]]. Consistency-machinery internals: [[INFRASTRUCTURE]]. Automation layer deep-dive: [[n8n Automations]]. This document owns *installation and configuration only*.
 
 ---
 
@@ -21,7 +21,7 @@ Four layers, installed in this order:
 | **1 — Vault content + config** | The Obsidian vault: theses, research, mental models, skills, templates, plugins | `git clone` — almost everything ships in the repo | §2–§4 |
 | **2 — Claude Code + Claudian** | The agent runtime (CLI) + the Obsidian plugin that hosts it in a chat panel | Installed per machine; plugin ships in the repo | §2, §6 |
 | **3 — Data layer** | FMP API key powering `/numbers`, `/transcript`, Live Portfolio | One JSON file, recreated by hand (gitignored) | §7 |
-| **4 — Automation (optional)** | n8n + Telegram + X harvesting: the always-on "sensory layer" upstream of `/ingest` | Built per machine following [[n8n]] and [[Twitter API Build]] | §8 |
+| **4 — Automation (optional)** | n8n + Telegram + X harvesting: the always-on "sensory layer" upstream of `/ingest` | Built per machine following [[n8n Automations]] | §8 |
 
 Layers 1–3 take ~30–45 minutes. Layer 4 is optional and takes ~3–5 hours the first time; the vault is fully functional without it.
 
@@ -38,7 +38,7 @@ Open these accounts before starting. Required = the core vault won't work withou
 | **Obsidian** (obsidian.md) | The app is free; an account is only needed for Obsidian Sync | Free; Sync optional add-on | App ✅ / account ⚪ |
 | **Financial Modeling Prep** (financialmodelingprep.com) | `/numbers`, `/transcript`, Live Portfolio refresh, n8n Workflow 1 | Paid plan with API access | ⚪ strongly recommended |
 | **Anthropic — Console API** (console.anthropic.com) | n8n Workflow 5 LLM layer (+ optional Workflow 3 triage). **Prepaid credits, billed separately from the Claude subscription** | ~$15–35/mo at daily cadence | ⚪ only for Layer 4 |
-| **twitterapi.io** | X/Twitter data for Workflows 4–5 (official X API ruled out — see Twitter API Build §3.1) | ~$2–5/mo, $5 top-ups | ⚪ only for Layer 4 |
+| **twitterapi.io** | X/Twitter data for Workflows 4–5 (official X API ruled out — see [[n8n Automations]] §9.1) | ~$2–5/mo, $5 top-ups | ⚪ only for Layer 4 |
 | **Telegram** | Alert channel for every n8n workflow | Free | ⚪ only for Layer 4 |
 
 Keep every key you generate in a password manager. §4 says exactly where each one lives on disk; none are committed to git.
@@ -59,7 +59,7 @@ brew install git node
 git --version && node --version   # verify: any recent versions are fine
 ```
 
-Node here is for Claude Code only. The n8n layer needs Node **22 LTS via nvm** specifically — installed separately in §8, don't worry about it now.
+Node here is for Claude Code only. The n8n layer needs Node **22 LTS via nvm** specifically — installed separately in §8, don't worry about it now. `python3` (needed by the skill helper scripts) ships with macOS; if `python3 --version` fails, `brew install python3`.
 
 ### 2.2 Claude Code
 
@@ -107,7 +107,7 @@ The single most important section. The repo carries everything shareable; three 
 
 | What | Where | Notes |
 |---|---|---|
-| All content | `Theses/`, `Research/`, `Sectors/`, `Macro & Technology/`, `Mental Models/`, `Templates/` (incl. `_callouts/`), `Canvas/`, `_Archive/`, `_Inbox/` | The knowledge base itself |
+| All content | `Theses/`, `Research/`, `Sectors/`, `Macro & Technology/`, `Mental Models/`, `Templates/` (incl. `_callouts/`), `Canvas/`, `Thesis Breakdowns/`, `_Archive/`, `_Inbox/` | The knowledge base itself |
 | Agent instructions | `CLAUDE.md` (canonical), `AGENTS.md` (generated Codex mirror) | Tier 1 protected — edit only deliberately |
 | All 21 skills + shared contracts + helper scripts | `.claude/skills/**` (`SKILL.md`, `RATIONALE.md`, `_shared/*.md`, `*.py`) | The entire behavioral layer |
 | Claude Code project config | `.claude/settings.json` (136-entry permissions allowlist), `.claude/agents/vault-explorer.md` | Fewer permission prompts out of the box |
@@ -122,13 +122,13 @@ The single most important section. The repo carries everything shareable; three 
 | File / dir | Contains | How to recreate | Consumed by |
 |---|---|---|---|
 | `.data/config.json` | FMP API key: `{"fmp_api_key": "YOUR_KEY"}` | §7.1 (or `bash setup-vault.sh` scaffolds the placeholder) | `/numbers`, `/transcript`, Live Portfolio refresh button, n8n Workflow 1 |
-| `.data/x_engagement_state.json` | X harvester tweet DB (machine-local, disposable) | Seeded by Twitter API Build §3.3 — only when building Layer 4 | n8n Workflow 5 |
+| `.data/x_engagement_state.json` | X harvester tweet DB (machine-local, disposable) | Seeded by [[n8n Automations]] §9.3 — only when building Layer 4 | n8n Workflow 5 |
 | `.claudian/` | Claudian plugin settings + chat session history | Reconfigure in the settings UI (§6) — 5 minutes | Claudian plugin |
 | `.claude/settings.local.json` | Machine-local Claude Code overrides | Auto-created on demand; nothing to do | Claude Code |
 | `.obsidian/workspace.json` (+ mobile/cache) | Open tabs, pane layout | Auto-created when Obsidian opens the vault | Obsidian |
 | `.env`, `*.key`, `credentials.json`, etc. | Secret patterns, defensively ignored | Nothing currently uses them at the vault root | — |
 
-**Secrets that live entirely outside the repo folder** (recreated per machine, never in git): Claude Code login (`~/.claude`), n8n's credential store + SQLite DB (`~/.n8n` — the ONE unrecoverable-if-lost artifact; back it up per [[n8n]] §5, transport by AirDrop/USB only per §5.1), Telegram bot token, twitterapi.io + Anthropic API keys (live only inside n8n credentials).
+**Secrets that live entirely outside the repo folder** (recreated per machine, never in git): Claude Code login (`~/.claude`), n8n's credential store + SQLite DB (`~/.n8n` — the ONE unrecoverable-if-lost artifact; back it up per [[n8n Automations]] §5, transport by AirDrop/USB only per §5.1), Telegram bot token, twitterapi.io + Anthropic API keys (live only inside n8n credentials).
 
 ### 4.3 Runtime state — let the system create it (NEVER create by hand)
 
@@ -221,21 +221,21 @@ Key missing/invalid → the skill aborts gracefully and tells you; fix `.data/co
 
 The always-on acquisition tier: price tripwires, catalyst reminders, news sweeps, X/Twitter harvesting — all feeding `_Inbox/`, `Daily Intel/`, and Telegram, all controlled from one vault file (`_watchers.md`, which ships in the repo already populated). **Exactly one machine runs this stack** — never two clones concurrently.
 
-Follow the two companion docs *in this order* (they are click-level; this guide only sequences them):
+Work through [[n8n Automations]] *in this order* (it is click-level; this guide only sequences the sections):
 
 | Step | Doc + section | What you build | Time |
 |---|---|---|---|
-| 1 | [[n8n]] §1 | Node 22 LTS via nvm, n8n Community Edition (npm, not Docker), pm2 keep-alive + autostart, Mac-sleep `pmset` handling, timezone env | ~45 min |
-| 2 | [[n8n]] §2 | Telegram bot (BotFather), credential store, **Error Watchdog first**, `_Inbox/` deposit contract, ticker-universe extraction | ~1 h |
-| 3 | [[n8n]] §3 | Workflows 1–3: Price Tripwires, Catalyst Reminders, News Sweep | ~1–2 h |
-| 4 | [[Twitter API Build]] §3.1–3.2 | twitterapi.io + Anthropic Console accounts, n8n credentials, verification calls (don't skip — §3.2 is the gate that catches provider field-drift) | ~45 min |
-| 5 | [[Twitter API Build]] §3.3–3.7 | Seed `.data/x_engagement_state.json`, Workflow 4 (X Canary), Workflow 5 (X Harvester, 23 nodes) | ~1.5–2 h |
-| 6 | [[Twitter API Build]] §3.8 | Two-week calibration of the trending-engine thresholds | passive |
+| 1 | [[n8n Automations]] §1 | Node 22 LTS via nvm, n8n Community Edition (npm, not Docker), pm2 keep-alive + autostart, Mac-sleep `pmset` handling, timezone env | ~45 min |
+| 2 | [[n8n Automations]] §2 | Telegram bot (BotFather), credential store, **Error Watchdog first**, `_Inbox/` deposit contract, ticker-universe extraction | ~1 h |
+| 3 | [[n8n Automations]] §3 | Workflows 1–3: Price Tripwires, Catalyst Reminders, News Sweep | ~1–2 h |
+| 4 | [[n8n Automations]] §9.1–9.2 | twitterapi.io + Anthropic Console accounts, n8n credentials, verification calls (don't skip — §9.2 is the gate that catches provider field-drift) | ~45 min |
+| 5 | [[n8n Automations]] §9.3–9.7 | Seed `.data/x_engagement_state.json`, Workflow 4 (X Canary), Workflow 5 (X Harvester, 23 nodes) | ~1.5–2 h |
+| 6 | [[n8n Automations]] §9.8 | Two-week calibration of the trending-engine thresholds | passive |
 
 Notes for a fresh replica:
 - The n8n workflows exist only in the source machine's `~/.n8n` database — **they are not in the git repo**. Either rebuild them from the build cards (the docs are written for exactly this), or have the source machine export each workflow as JSON (n8n UI → workflow → Export) and import; store exports in `_Archive/n8n-workflows/` if you want them versioned.
 - All tuning thresholds live in `_watchers.md § X Watchers → ### Tuning` (vault data, ships via git) — a rebuilt workflow picks up the source vault's calibrated values automatically. Code-node fallback defaults only fire if the table is damaged.
-- Migrating the stack later (new laptop): [[n8n]] §5.1 is the complete four-layer runbook.
+- Migrating the stack later (new laptop): [[n8n Automations]] §5.1 is the complete four-layer runbook.
 
 ---
 

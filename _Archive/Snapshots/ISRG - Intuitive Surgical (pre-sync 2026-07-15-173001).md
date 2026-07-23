@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, ISRG, healthcare-medtech, robotics, surgery, surgical-AI]
 status: monitoring

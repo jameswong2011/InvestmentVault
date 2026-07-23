@@ -188,6 +188,14 @@ Release lock per Step 0.1 and exit cleanly.
 
 **Core engine**: per ticker, collect three signals — **newsflow**, **earnings** (if any landed in window), **price action** — then compute the narrative-price delta in Phase 4. Social sentiment is NOT collected (retail chatter, Twitter, Reddit all excluded per prior spec). The narrative channels here are OFFICIAL: press releases, SEC filings, earnings results and call transcripts, analyst upgrades/downgrades, major business news.
 
+### 3.0: Local newsflow corpus (2026-07-20 — read before any WebSearch)
+
+The n8n Workflow 3 sweep persists one story log per run at `.data/news_stories/*.json` (`{date, stats, stories: [{title, cluster, score, sum, members}]}` — `sum` is a factual per-story summary, `members` carry source URLs, ticker stories tag `tk-<ticker>` in member `feedId`s). If the folder exists, read the files whose `date` falls inside the retro window BEFORE issuing Phase 3 WebSearches:
+
+1. **Seed the News channel**: per ticker, collect its window stories (match `tk-<ticker>` in members, or ticker/company name in title) with date + score + `sum`. These are dated, pre-scored, summary-carrying events — often richer than a WebSearch snippet. A ticker whose window newsflow is fully covered by corpus stories still gets its **Price** query (the corpus has no price data) but may skip or narrow its **News** query — note `news_source: corpus` in the extraction schema.
+2. **High-score / no-reaction signal**: any corpus story with `score ≥ 8` on a ticker whose `window_price_move_pct` lands within ±2% becomes a first-class Phase 4 input — material newsflow the market shrugged at is exactly the narrative-price delta this skill ranks. Tag these `corpus-flagged` so classification can cite the specific story (`title`, date, `sum`).
+3. **Absent or empty folder**: skip silently — Phase 3 proceeds fully on WebSearch as before. The corpus is an accelerant, never a dependency.
+
 ### 3.1: Three-channel query plan per ticker
 
 For each `ticker ∈ TICKER_UNIVERSE`, issue three distinct queries. Each channel surfaces a separate input to classification.

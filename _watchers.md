@@ -1,5 +1,5 @@
 ---
-date: 2026-07-17
+date: 2026-07-20
 tags: [meta, automation, watcher-registry]
 status: active
 ---
@@ -20,9 +20,9 @@ Single source of truth for everything n8n pulls into `_Inbox/`. **Edit this file
 
 ---
 
-## News & Thematic (Workflow 3 — News Sweep)
+## News & Thematic (Workflow 3 unified — news queries; GN + GDELT + Brave all read these rows)
 
-n8n builds one Google News RSS query per active, unexpired row. Rows grouped by cluster for readability — the parser reads every table in this section identically. Populated 2026-07-17 from thesis-extraction pass across all semiconductor-complex theses (active + monitoring) + PLTR/META/NET; every row anchors to a dated observable, falsifier, or catalyst in the linked thesis. Rows marked ⚠ watch the *bear* side of their thesis (disconfirmation coverage per the READING PROTOCOL).
+The unified Workflow 3 runs each active, unexpired row through Google News RSS, GDELT, and Brave on every sweep (thesis tickers are covered automatically via filename-derived company-name queries — no per-ticker rows needed here). Rows grouped by cluster for readability — the parser reads every table in this section identically. Populated 2026-07-17 from thesis-extraction pass across all semiconductor-complex theses (active + monitoring) + PLTR/META/NET; every row anchors to a dated observable, falsifier, or catalyst in the linked thesis. Rows marked ⚠ watch the *bear* side of their thesis (disconfirmation coverage per the READING PROTOCOL).
 
 ### Custom silicon & compute
 
@@ -93,6 +93,193 @@ n8n builds one Google News RSS query per active, unexpired row. Rows grouped by 
 
 **Deliberately excluded** (no silent caps): draft-status theses (14 — no settled questions yet); SIVE and EINK dedicated rows (monitoring/low-conviction with slow-moving observables — the weekly per-ticker sweep covers them); a generic "AI capex" row (tsmc-capex + meta-capex + the Taiwan ODM poller below triangulate the same regime variable with less noise).
 
+## Outlet Feeds (Workflow 3 unified — IN BUILD 2026-07-20)
+
+Whole-outlet RSS pulls — the firehose complement to the query-scoped News & Thematic watches above. **No consuming n8n workflow exists yet**: every row is inert until the unified Workflow 3 is built (spec: n8n Automations §5 — outlet feeds + FMP ticker news + GN/GDELT/Brave over every ticker and theme → dedupe → headline triage → defuddle body fetch for survivors → body re-score (Lane A) → story clustering → Opus-summarised daily intel brief (one entry per story, all source links) in `Daily Intel/`; **no `_Inbox/` deposits** — Lane C reverted 2026-07-20). Prune freely before the build; select/add/delete rows manually — a row is one line.
+
+Schema notes:
+- `cluster` — scope tag (outlets span names, so no per-thesis anchor). Orphan discipline still applies at cluster level: a cluster with no live vault question is noise.
+- `vol` — estimated items/day band: `hi` ≥20 · `med` 5–20 · `lo` <5.
+- `triage: yes` — Haiku relevance-scores items before digest inclusion (mandatory for `hi` feeds). `no` — every item passes through (low-volume quality sources; a new post is worth seeing regardless of score).
+- All feed URLs verified live 2026-07-20 (fetched, XML confirmed, freshness checked). Source: bookmarks audit, `_Inbox/bookmarks_20_07_2026.html`.
+- Body-exempt feeds (paywalled bodies or aggregator-permalink links): listed in `### Tuning → body_exempt` below — headline-only in the digest, never body-fetched. Access handled at `/ingest` time.
+- CN-language feeds: 36kr, leiphone — triage model reads Chinese.
+- `hn` row is third-party hnrss.org (points-filtered proxy; official `news.ycombinator.com/rss` is unfiltered). `fs` row is the legacy farnamstreetblog.com domain — works, redirect-stable.
+
+### Semis / hardware / datacenter
+
+| id | feed_url | cluster | vol | triage | expires | status |
+|---|---|---|---|---|---|---|
+| semiengineering | https://semiengineering.com/feed/ | semis | med | no | permanent | active |
+| semiwiki | https://semiwiki.com/feed/ | semis | lo | no | permanent | active |
+| servethehome | https://www.servethehome.com/feed/ | semis | lo | no | permanent | active |
+| nextplatform | https://nextplatform.com/feed | semis | lo | no | permanent | active |
+| semiaccurate | https://www.semiaccurate.com/feed/ | semis | lo | no | permanent | active |
+| tomshardware | https://www.tomshardware.com/feeds.xml | semis | hi | yes | permanent | active |
+| wccftech | https://wccftech.com/feed | semis | hi | yes | permanent | active |
+| digitimes | https://www.digitimes.com/rss/daily.xml | semis | hi | yes | permanent | active |
+| eetasia | https://eetasia.com/feed | semis | med | no | permanent | active |
+| dcd | https://www.datacenterdynamics.com/rss/ | datacenter | med | yes | permanent | active |
+| dck | https://datacenterknowledge.com/rss.xml | datacenter | med | no | permanent | active |
+| nvidia-dev | https://news.developer.nvidia.com/feed | semis | lo | no | permanent | active |
+| gfxspeak | https://gfxspeak.com/blog/feed | semis | lo | no | permanent | active |
+
+### Strategy essays & newsletters
+
+| id | feed_url | cluster | vol | triage | expires | status |
+|---|---|---|---|---|---|---|
+| stratechery | https://stratechery.com/feed | essays | lo | no | permanent | active |
+| ben-evans | https://www.ben-evans.com/benedictevans?format=rss | essays | lo | no | permanent | active |
+| thediff | https://www.thediff.co/feed | essays | lo | no | permanent | active |
+| netinterest | https://netinterest.substack.com/feed | essays | lo | no | permanent | active |
+| thegeneralist | https://thegeneralist.substack.com/feed | essays | lo | no | permanent | active |
+| thenonconsensus | https://thenonconsensus.substack.com/feed | essays | lo | no | permanent | active |
+| turner | https://turner.substack.com/feed | essays | lo | no | permanent | active |
+| venturedesktop | https://venturedesktop.substack.com/feed | essays | lo | no | permanent | active |
+| mule | https://mule.substack.com/feed | essays | lo | no | permanent | active |
+| hhhypergrowth | https://hhhypergrowth.com/rss/ | essays | lo | no | permanent | active |
+| platformonomics | https://platformonomics.com/feed/ | essays | lo | no | permanent | active |
+| kwokchain | https://kwokchain.com/feed/ | essays | lo | no | permanent | active |
+| reactionwheel | https://reactionwheel.net/feed | essays | lo | no | permanent | active |
+| danwang | https://danwang.co/feed/ | essays | lo | no | permanent | active |
+| andrewbatson | https://andrewbatson.com/feed/ | china-econ | lo | no | permanent | active |
+| collabfund | https://collaborativefund.com/feed | essays | lo | no | permanent | active |
+| fs | https://www.farnamstreetblog.com/feed/ | essays | lo | no | permanent | active |
+| caseyhandmer | https://caseyhandmer.wordpress.com/feed/ | energy | lo | no | permanent | active |
+| thegradient | https://thegradient.pub/rss/ | ai | lo | no | permanent | active |
+
+### Value / finance / macro blogs
+
+| id | feed_url | cluster | vol | triage | expires | status |
+|---|---|---|---|---|---|---|
+| damodaran | https://aswathdamodaran.blogspot.com/feeds/posts/default | value | lo | no | permanent | active |
+| lt3000 | https://lt3000.blogspot.com/feeds/posts/default | value | lo | no | permanent | active |
+| footnotesanalyst | https://www.footnotesanalyst.com/feed/ | value | lo | no | permanent | active |
+| calculatedrisk | https://www.calculatedriskblog.com/feeds/posts/default | macro | med | no | permanent | active |
+| marginalrevolution | https://marginalrevolution.com/feed | macro | med | no | permanent | active |
+| glineq | https://glineq.blogspot.com/feeds/posts/default | macro | lo | no | permanent | active |
+| awocs | https://awealthofcommonsense.com/feed/ | value | lo | no | permanent | active |
+| stockgumshoe | https://stockgumshoe.com/feed | value | lo | no | permanent | active |
+| acquirersmultiple | https://acquirersmultiple.com/feed/ | value | lo | no | permanent | active |
+| hellerhs | https://www.hellerhs.com/blog-feed.xml | value | lo | no | permanent | active |
+| rvcapital | https://www.rvcapital.ch/blog-feed.xml | value | lo | no | permanent | active |
+| oakmark | https://oakmark.com/feed | value | lo | no | permanent | active |
+| philecon | https://www.philosophicaleconomics.com/feed/ | macro | lo | no | permanent | active |
+
+### Major outlets (headline scanning surfaces)
+
+| id | feed_url | cluster | vol | triage | expires | status |
+|---|---|---|---|---|---|---|
+| zerohedge | https://cms.zerohedge.com/fullrss2.xml | macro | hi | yes | permanent | active |
+| ft-home | https://www.ft.com/rss/home | macro | hi | yes | permanent | active |
+| bbg-tech | https://feeds.bloomberg.com/technology/news.rss | tech-news | hi | yes | permanent | active |
+| bbg-econ | https://feeds.bloomberg.com/economics/news.rss | macro | med | yes | permanent | active |
+| bbg-markets | https://feeds.bloomberg.com/markets/news.rss | macro | hi | yes | permanent | active |
+| wsj-markets | https://feeds.content.dowjones.io/public/rss/RSSMarketsMain | macro | med | yes | permanent | active |
+| wsj-tech | https://feeds.content.dowjones.io/public/rss/RSSWSJD | tech-news | med | yes | permanent | active |
+| wsj-business | https://feeds.content.dowjones.io/public/rss/WSJcomUSBusiness | macro | med | yes | permanent | active |
+| econ-finance | https://www.economist.com/finance-and-economics/rss.xml | macro | lo | yes | permanent | active |
+| econ-business | https://www.economist.com/business/rss.xml | macro | lo | yes | permanent | active |
+| nyt-business | https://rss.nytimes.com/services/xml/rss/nyt/Business.xml | macro | med | yes | permanent | active |
+| nyt-tech | https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml | tech-news | med | yes | permanent | active |
+
+### China / Asia
+
+| id | feed_url | cluster | vol | triage | expires | status |
+|---|---|---|---|---|---|---|
+| scmp-tech | https://www.scmp.com/rss/318208/feed | china-tech | med | yes | permanent | active |
+| technode | https://technode.com/feed/ | china-tech | lo | no | permanent | active |
+| pandaily | https://pandaily.com/feed | china-tech | med | no | permanent | active |
+| 36kr | https://36kr.com/feed | china-tech | hi | yes | permanent | active |
+| leiphone | https://leiphone.com/feed | china-tech | med | yes | permanent | active |
+| walkthechat | https://walkthechat.com/feed/ | china-tech | lo | no | permanent | active |
+
+### Industry publications (non-vault sectors — cross-industry sensing)
+
+| id | feed_url | cluster | vol | triage | expires | status |
+|---|---|---|---|---|---|---|
+| freightwaves | https://freightwaves.com/feed | logistics | hi | yes | permanent | active |
+| theloadstar | https://theloadstar.com/feed/ | logistics | med | no | permanent | active |
+| supplychaindive | https://www.supplychaindive.com/feeds/news/ | logistics | lo | no | permanent | active |
+| ttnews | https://www.ttnews.com/rss.xml/ | logistics | med | yes | permanent | active |
+| gamesindustry | https://www.gamesindustry.biz/feed | media | med | yes | permanent | active |
+| musically | https://musically.com/feed/ | media | lo | no | permanent | active |
+| midia | https://www.midiaresearch.com/rss/blog.xml | media | lo | no | permanent | active |
+| musicindustryblog | https://musicindustryblog.wordpress.com/feed/ | media | lo | no | permanent | active |
+| mediagazer | https://mediagazer.com/feed.xml | media | hi | yes | permanent | active |
+| grocerydive | https://www.grocerydive.com/feeds/news/ | food-retail | lo | no | permanent | active |
+| fooddive | https://www.fooddive.com/feeds/news/ | food-retail | lo | no | permanent | active |
+| hngry | https://www.hngry.tv/articles/rss/ | food-retail | lo | no | permanent | active |
+| skift-table | https://table.skift.com/feed | food-retail | lo | no | permanent | active |
+| adamas | https://adamasintel.com/feed | ev-battery | lo | no | permanent | active |
+| socialmediatoday | https://www.socialmediatoday.com/feeds/news/ | ad-social | med | no | permanent | active |
+| sparktoro | https://sparktoro.com/blog/feed | ad-social | lo | no | permanent | active |
+
+### General tech news
+
+| id | feed_url | cluster | vol | triage | expires | status |
+|---|---|---|---|---|---|---|
+| techmeme | https://www.techmeme.com/feed.xml | tech-news | hi | yes | permanent | active |
+| techcrunch | https://techcrunch.com/feed/ | tech-news | hi | yes | permanent | active |
+| theverge | https://theverge.com/rss/index.xml | tech-news | hi | yes | permanent | active |
+| venturebeat | https://venturebeat.com/feed | tech-news | hi | yes | permanent | active |
+| wired | https://www.wired.com/feed/rss | tech-news | med | yes | permanent | active |
+| zdnet | https://zdnet.com/rss.xml | tech-news | hi | yes | permanent | active |
+| techrepublic | https://www.techrepublic.com/feed/ | tech-news | med | yes | permanent | active |
+| siliconangle | https://siliconangle.com/feed/ | tech-news | med | yes | permanent | active |
+| networkworld | https://www.networkworld.com/feed/ | tech-news | lo | no | permanent | active |
+| diginomica | https://diginomica.com/feed | tech-news | med | no | permanent | active |
+| datamation | https://www.datamation.com/feed/ | tech-news | lo | no | permanent | active |
+| theinformation | https://theinformation.com/feed | tech-news | med | yes | permanent | active |
+| hn | https://hnrss.org/frontpage?points=200 | tech-news | med | yes | permanent | active |
+| daringfireball | https://daringfireball.net/feeds/main | tech-news | med | no | permanent | active |
+| allthingsdistributed | https://allthingsdistributed.com/atom.xml | tech-news | lo | no | permanent | active |
+
+### Tuning (body pipeline — Workflow 3 unified)
+
+Parsed every run like the X Watchers Tuning table: edit a value, the next run complies — no redeploy. Code keeps identical fallback defaults for missing/malformed rows. (`clip_min`/`max_clips_day` removed 2026-07-20 — Lane C reverted, no `_Inbox/` deposits.)
+
+| param | value | notes |
+|---|---|---|
+| triage_min | 7 | headline-triage gate — items below are dropped; `triage: no` rows bypass scoring entirely |
+| triage_model | claude-sonnet-5 | headline triage (0–10 scoring vs injected coverage list) — capability at the gate; de-escalate to claude-haiku-4-5 (~$15–25/mo saving) if the calibration triage-band audit (§5.5f) shows the 5–6 band is clean noise |
+| cluster_model | claude-opus-4-8 | story clustering + cross-run repeat detection — reads per-item excerpts to judge same-story on CONTENT (different headlines, same event); Opus for the semantic lift (~6–8k tok/run, ~$8–12/mo). Step down to claude-sonnet-5 if cost matters more than dedup accuracy |
+| rescore_model | claude-opus-4-8 | body-informed re-score (Lane A) — reads full article text and sets final ranking (~$10–15/mo); claude-sonnet-5 is the step-down |
+| digest_model | claude-opus-4-8 | analytical brief layer — reads merged excerpts, writes decision-useful analysis with coverage implications (rule-2 rewrite 2026-07-21, trail n8n Automations §11; ~$25–50/mo); claude-sonnet-5 is the step-down; prompt: `#### digest_prompt` in ### Prompts below (registry-editable) |
+| body_exempt | digitimes, ft-home, bbg-tech, bbg-econ, bbg-markets, wsj-markets, wsj-tech, wsj-business, econ-finance, econ-business, nyt-business, nyt-tech, theinformation, techmeme, mediagazer | paywalled bodies or aggregator permalinks — headline-only, never body-fetched |
+| catalyst_window_d | 10 | catalyst proximity markers — stories on tickers with a `_catalyst.md` event within ±N days get a 📅 T-N tag in the brief |
+| max_age_d | 3 | hard age cap — items with a parseable publish date older than N days are dropped at Normalize (counted as `stale` in the funnel); GN search queries also carry `when:Nd` so old relevance-ranked hits never arrive |
+| triage_min_pw | 9 | stricter admit bar for paywalled items (flagged `pw` at Normalize) — headline must be material on its own; normal items use triage_min |
+| tg_max_msgs | 10 | Telegram fan-out — top-N stories by score, ONE message each (full summary + link; last message carries the brief footer + failure count). Telegram same-chat flood limit is ~1 msg/s — if the Notify node starts collecting 429s, lower this |
+| tg_per_subject | 2 | Telegram diversity cap — at most N messages per ticker/theme, so one busy subject (a microcap in the news) can't fill the glance. Raise to allow more per subject, set 1 for maximum spread |
+| dedup_ttl_d | 3 | card-12 dedup memory window (static-data store) — a URL OR headline seen within N days is dropped as a repeat. "Non-repeats past N days." **Keep small** (static data reloads every run; do NOT set 30 — see track_window_d for long-horizon tracking). Should be ≥ max_age_d so an article can't re-brief within its own eligible life |
+| merge_jaccard | 0.42 | SumPrep within-run near-dup merge threshold (token overlap) — LOWER = more aggressive merging of same-event headlines into one story. 0.42 default; drop toward 0.35 if twins persist, raise toward 0.55 if unrelated stories get merged |
+| track_min_score | 8 | sentiment-tracking relevance floor — `/surface`'s 30-day story-log read counts only stories at/above this final score (the daily brief still shows everything ≥ triage_min; this is a stricter bar for the long-horizon trend view) |
+| track_window_d | 30 | how many days of `.data/news_stories/` logs `/surface` reads for sentiment/coverage tracking. Disk files, not DB — 30 days ≈ 12 MB of plain JSON, trivial. Distinct from story_memory_days (repeat-detection window, stays 3–7) |
+| paywall_domains | bloomberg.com, wsj.com, ft.com, economist.com, nytimes.com, theinformation.com, barrons.com | URL-level paywall detection for Brave/GDELT/FMP arrivals — combines with the body_exempt feed ids; pw items skip body-fetch and carry 🔒 in the brief |
+| story_memory_days | 7 | cross-run story memory window — briefed stories from the last N days ride into the cluster call; follow-up coverage adding no new facts lands in the brief's ♻ links-only section instead of being re-summarised |
+| gdelt_spacing_s | 8 | Wait between GDELT queries — limiter is 1 req/5s hard with sticky IP cooldown (verified 2026-07-20) |
+| brave_budget_mo | 3500 | monthly query guard — paid metered tier (2026-07-20); full ticker+theme coverage at 1×/day ≈ 3,000/mo |
+
+### Prompts (Workflow 3 unified)
+
+Each `####` block below is the live prompt for one LLM stage — edit freely in Obsidian; the workflow re-reads them every run, no n8n touch required. Rules: **keep the required tokens** — they substitute at runtime (`{items}` = batch payload · `{prior}` = prior-story list · `{tickers}` = coverage tickers · `{themes}` = live research questions · `{context}` = the optional `#### brief_context` block below, digest only); a missing *required* token reverts that stage to the code fallback in §5.3 card 5 (required: triage/rescore/digest `{items}` · cluster `{items}` + `{prior}`). Don't start a line with `#` inside a prompt (terminates the block) and keep the trailing "Return ONLY…" clause — the parsers depend on that output shape. `#### brief_context` is freeform standing priorities for the summariser — your analytical steering wheel; edit or blank it freely, no tokens required.
+
+#### triage_prompt
+You score news items for one investor. Coverage tickers: {tickers}. Live research questions: {themes}. Clusters also covered: semis, datacenter, china-tech, macro, AI, futurism, tech philosophy, consumer tech. Score each item 0-10 on NEW information value to this coverage: 9-10 directly material new fact (guidance, capacity, pricing, regulatory, primary technical disclosure); 7-8 clearly relevant development; 4-6 adjacent context; 0-3 noise — listicles, price-target roundups, "stocks to buy", rehash, sponsored. Judge information content, not sentiment. Items flagged pw:1 are paywalled — only the headline is readable; hold them to a stricter bar: 8-10 only if the headline alone discloses a material new fact for this coverage, otherwise 0-3. Items: {items} — Return ONLY a JSON array [{"i":0,"s":7},...] covering every item.
+
+#### rescore_prompt
+Re-score these news items 0-10 for NEW information value to an investor covering: {tickers}. Live research questions: {themes}. Each item carries its headline score (hs, may be null for auto-admitted sources) and an article excerpt (x). Confirm the article delivers substance — new numbers, primary quotes, disclosed specifics. Downgrade rehash/opinion; upgrade if the body reveals material specifics the headline undersold. Items flagged pw:1 are paywalled (excerpt is headline-grade only) — keep them high only if that alone is materially new. Items: {items} — Return ONLY a JSON array [{"i":0,"s":7},...] covering every item.
+
+#### cluster_prompt
+NEW ITEMS are news items from today, from multiple sources; each carries its headline (t) AND a content excerpt (x). PRIOR STORIES were already briefed to the reader on previous days (label, title, summary). Judge same-story on the EXCERPT's substance — the actors, action, and event it describes — NOT on headline wording; two articles with completely different headlines by different authors are the same story if their excerpts describe the same event. Two tasks. (1) Group NEW items that cover the SAME underlying story or event into clusters. Two items are the same story when they report the same actor + action + timeframe (the same announcement, filing, decision, result, or incident), even if headlines emphasize different aspects, figures, or reactions — multiple outlets covering one event is ONE cluster. Keep items separate only when the underlying events genuinely differ (different actors, different actions, or clearly distinct developments). (2) A NEW item that is follow-up coverage of a PRIOR story AND adds no material new facts beyond that story's summary is a repeat — list it under repeats with the prior label. If it ADVANCES the story (new numbers, official responses, next-step events, a material escalation), it is NOT a repeat — cluster it as new. Bias toward repeat: same event with no NEW specific (a number, a named actor, an official action) beyond the prior summary is a repeat even if the wording, outlet, or angle differs — when torn between repeat and new, choose repeat. NEW ITEMS: {items} PRIOR STORIES: {prior} — Return ONLY JSON: {"clusters":[[indices]],"repeats":[[itemIndex,"P<n>"],...]} with every NEW item index appearing exactly once across clusters and repeats.
+
+#### digest_prompt
+You write a daily intelligence brief for one investor. Coverage tickers: {tickers}. Live research questions: {themes}. Each item is one story, possibly reported by several sources (srcs) with merged excerpts. For each item write "sum": 2-5 sentences of decision-useful analysis. Lead with the concrete NEW facts — numbers with the comparison that gives them meaning (vs prior guidance, consensus, rivals), named actors, the mechanism of what changed, and stated timelines or next dates. Then state what it means for the coverage: which ticker or research question it touches and the transmission path (pricing power, capacity, share shift, cost curve, regulation, demand signal), and what would confirm or refute that read. Ground every claim in the provided text; label inference explicitly ("implies", "suggests", "if X then Y"). Where sources disagree on a figure, say so. Some items carry sig — the investor's live signals for the tickers involved (catalyst proximity, crowd sentiment); weave these into the implication when they sharpen it. Standing investor context: {context}. If the text is thin or navigation junk, one sentence restating the headline claim. Items: {items} — Return ONLY a JSON array [{"i":0,"sum":"..."},...] covering every item.
+
+#### brief_context
+Priorities: AI datacenter supply-chain inflections ahead of consensus; custom-silicon share shifts vs Nvidia (MRVL, AVGO); HBM/memory pricing power (000660, SNDK, 285A); semicap + export-control second-order effects; photonics/CPO adoption timing. Prefer specific implications for covered names over generic sector commentary. Flag anything that looks like an inflection-point datapoint rather than incremental news.
+
 ## Price Tripwires (Workflow 1)
 
 n8n batch-quotes these tickers daily and pings when a level is breached. A breach means *read the thesis trigger block* — never an execution signal.
@@ -137,7 +324,7 @@ The row is an on/off + expiry switch; the fetch logic would be bespoke per sourc
 
 ## X Watchers
 
-Drives Workflow 5 — X Harvester (Twitter API Build). Cashtag clusters are auto-derived from Theses/ frontmatter —
+Drives Workflow 5 — X Harvester (n8n Automations §7). Cashtag clusters are auto-derived from Theses/ frontmatter —
 no table needed. Curated terms below cover foreign listings + themes; Claude maintains this table.
 
 ### Curated terms
@@ -185,10 +372,11 @@ is the tuning log.
 | plateau_flat_likes | 10                                                              | Δlikes below this = flat pull                                               |
 | plateau_pulls      | 2                                                               | consecutive flat pulls → prune                                              |
 | prune_age_days     | 28                                                              | max observation age — 14→28 (2026-07-18, user): longer trending window, ~2× re-measure reads |
-| cap_tracked        | 800                                                             | working-set cap (§2.4)                                                      |
+| cap_tracked        | 800                                                             | working-set cap (n8n Automations §7.1)                                      |
 | llm_top_n          | 15                                                              | posts per theme fed to the sentiment LLM                                    |
 | llm_model          | claude-opus-4-8                                                 | sentiment/divergence model; current-gen only (body sends adaptive thinking) |
 | archive_days       | 90                                                              | pruned posts retained in state archive — analysis corpus, never re-measured |
+| x_tg_max_msgs      | 8                                                               | Telegram fan-out cap — top-N (divergences first, then flagged posts) sent as ONE message each instead of a single wall of text; clamped 1–15. Telegram ~1 msg/s flood limit — lower if 429s appear |
 
 ### LLM prompt
 

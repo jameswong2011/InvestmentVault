@@ -3,7 +3,7 @@ snapshot_of: "[[Sectors/MLCC & Power Semiconductors]]"
 snapshot_date: 2026-07-11
 snapshot_trigger: compare
 snapshot_batch: compare-MLCC-Power-Semiconductors-2026-07-11-123958
-publish: true
+publish: false
 date: 2026-05-14
 tags: [sector, moc, passives, semiconductors, power]
 status: active

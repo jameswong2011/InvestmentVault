@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2025-12-04
 tags: [macro, ai-bubble]
 status: active

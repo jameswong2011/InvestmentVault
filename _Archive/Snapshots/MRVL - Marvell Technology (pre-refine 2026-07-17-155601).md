@@ -2,7 +2,7 @@
 snapshot_of: "[[Theses/MRVL - Marvell Technology]]"
 snapshot_date: 2026-07-17
 snapshot_trigger: manual-refine
-publish: true
+publish: false
 date: 2026-04-23
 tags: [thesis, custom-silicon, networking, optical-dsp, MRVL]
 status: active

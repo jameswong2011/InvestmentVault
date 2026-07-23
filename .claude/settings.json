@@ -138,5 +138,44 @@
       "Edit(/.claude/skills/transcript/**)",
       "Bash(rm -f .claude/locks/vault.lock && echo \"RELEASED\")"
     ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard-protected.py\"",
+            "timeout": 10,
+            "statusMessage": "Tier-1 protection check"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/mark-graph-dirty.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/refresh-graph.py\"",
+            "timeout": 200,
+            "statusMessage": "Refreshing _graph.md"
+          }
+        ]
+      }
+    ]
   }
 }
