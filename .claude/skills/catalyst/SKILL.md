@@ -269,7 +269,15 @@ tags: [meta, catalyst-calendar]
 | Week of | Ticker(s) | Event | Expected Impact | Thesis test | Notes |
 |---------|-----------|-------|-----------------|-------------|-------|
 
-**`Thesis test` column (falsification layer — READING PROTOCOL).** Format: `[observable + threshold] → [confirms Insight #n | fires "→ LOW/HIGH/CLOSE if …" trigger of [[TICKER]] | untested]`. Populate from the Phase 1.2 Conviction-Triggers extraction — the thesis is already fully loaded, zero extra reads. This converts the calendar from a when-and-which-way schedule into a pre-registered hypothesis-test schedule: for each event, what outcome would CONFIRM or REFUTE which thesis. `untested` is a legitimate value (event has no matching trigger) and is itself signal — a portfolio of `untested` catalysts means the theses' triggers don't cover their own event risk.
+**`Thesis test` column (falsification layer — READING PROTOCOL).** Format: `[observable + threshold] → [confirms Insight #n | fires "→ LOW/HIGH/CLOSE if …" trigger of [[TICKER]] | untested-unmatched | untested-no-trigger]`. Populate from the Phase 1.2 Conviction-Triggers extraction — the thesis is already fully loaded, zero extra reads. This converts the calendar from a when-and-which-way schedule into a pre-registered hypothesis-test schedule: for each event, what outcome would CONFIRM or REFUTE which thesis.
+
+**Split the null case — the two "untested" values mean different things and imply different fixes:**
+- `untested-unmatched` — the thesis HAS `## Conviction Triggers` but none matches this event. Signal: the trigger set doesn't cover this event's risk → suggest a `/deepen TICKER "Conviction Triggers"` to add one. Actionable gap.
+- `untested-no-trigger` — the thesis has NO `## Conviction Triggers` section at all. Signal: nothing defined can falsify the thesis → the event is unmoored from any pre-registered test. This is the stronger `/prune` + `/lint #60` signal; suggest creating triggers first.
+
+A portfolio heavy in `untested-no-trigger` means the theses lack falsification machinery entirely; a portfolio heavy in `untested-unmatched` means the machinery exists but has coverage holes. Do not collapse them into one bucket — the distinction is the whole point.
+
+**Earnings-within-14-days → `/transcript` prompt.** For any earnings event in the Next 2 Weeks table (Phase 2 enrichment supplied the date), tag its Notes cell `→ run /transcript TICKER once reported`. `/transcript` extracts management-language deltas + Q&A tone + trigger touches — the vault's highest-signal, most-underused earnings input (it has run once, ever). The catalyst calendar is the natural place to surface that a transcript will be pullable within days, so the earnings event actually gets ingested instead of passing unremarked. Collect these into the Phase 6.2 report as a `Transcript-ready this fortnight:` line.
 
 **Month 2-3** (grouped by week)
 | Approximate Date | Ticker(s) | Event | Notes |
@@ -340,5 +348,7 @@ fi
 ### 6.2 Report
 
 Report to user: next 2 weeks of catalysts, any dangerous clusters, and the list of theses with no catalyst (these need attention or pruning). Include one line summarizing the `_hot.md` update: `_hot.md: Active Research Thread refreshed; [K] no-catalyst tickers added to Open Questions.` Point the user to `[[_catalyst.md]]` for the full calendar tables (Next 2 Weeks, Weeks 3-4, Month 2-3, No Catalyst Identified, Stale Catalysts, Cross-Thesis Events).
+
+Add a `Transcript-ready this fortnight: [TICKER (date), …] — run /transcript after each reports` line whenever any earnings event lands in the next 14 days (from the Phase 4 tagging). Omit the line entirely when none do — no noise on quiet fortnights.
 
 If Phase 2b's WebSearch cap activated, surface the degraded-mode warning in the report header: `⚠️ FMP unavailable this run — calendar reflects top-20-by-conviction WebSearch results; [N] tickers carry pre-existing thesis Catalysts data only. Re-run /catalyst when FMP is healthy for full refresh.`

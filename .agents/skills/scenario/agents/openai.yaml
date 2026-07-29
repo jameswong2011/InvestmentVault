@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Scenario"
+  short_description: "Model macro scenarios across the portfolio"
+  default_prompt: "Use $scenario to model an oil-price spike across the portfolio."

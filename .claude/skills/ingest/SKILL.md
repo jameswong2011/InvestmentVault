@@ -1,6 +1,6 @@
 ---
 name: ingest
-description: Ingest content into the vault as structured research notes. Accepts a URL, a local file path, or no arguments (batch-processes _Inbox/). Use when user shares a URL, says "clip this", "ingest", or "process inbox".
+description: Ingest content into the vault as structured research notes. Accepts a URL, a local file path, `--from-brief [date]` (pick stories from an n8n Daily Intel news brief), or no arguments (batch-processes _Inbox/). Use when user shares a URL, says "clip this", "ingest", "ingest from the brief", or "process inbox".
 model: opus
 effort: max
 allowed-tools: Read Grep Glob Edit Write WebFetch Bash(date * mv * mkdir * ls * find * defuddle * python3 *)
@@ -80,6 +80,7 @@ Design rationale (canonical-URL trade-off, two-check pattern): `.claude/skills/i
 
 Parse $ARGUMENTS to determine mode:
 - **URL** (starts with `http`): Fetch and process a single web page
+- **`--from-brief [YYYY-MM-DD]`**: Brief-driven ingest — pick stories from a Daily Intel news brief (Mode D; date optional, defaults to the latest brief)
 - **File path** (ends with `.md`, `.pdf`, `.csv`, `.txt`, or contains `/`): Read and process a single local file
 - **No arguments / empty**: Batch-process all files in `_Inbox/`
 
@@ -249,6 +250,19 @@ This verify-before-commit pattern keeps the source file in `_Inbox/` as the auth
 
 ---
 
+## Mode D: Brief-Driven Ingest (`--from-brief [date]`) — 2026-07-20
+
+Closes the hand-off gap between the n8n Workflow 3 daily brief (a scanning surface) and the research pipeline: instead of copy-pasting URLs, pick stories and ingest them in one motion. Curation stays human — this mode never auto-selects.
+
+1. **Locate the brief**: with a date, glob `Daily Intel/<date>* - Daily intel - n8n.md`; without, take the newest matching file. Two briefs same day (rare) → newest. None found → report and stop (suggest checking the sweep ran).
+2. **Parse story entries** (structured by the Workflow 3 Assemble contract): each is `- [score] **title**` optionally followed by wikilinks/markers, a summary line, and a `Sources:` line of `[source](url)` links. Skip the `## ♻ Follow-up coverage` section by default (already-briefed echo; include only if the user asks).
+3. **Present a numbered pick list**: `N. [score] title — sources: reuters, fmp (+1) — → [[Theses/…]]` and ask which to ingest (numbers, ranges, `all ≥8`). This is the curation moment.
+4. **Per picked story**: ingest the FIRST source URL via the **Mode A pipeline** (defuddle → Processing Pipeline → post-write verification, URL-mode blocking checks). If extraction fails or returns paywall junk, fall back to the story's next source URL before reporting failure — multi-source stories are retry-redundant by construction. Remaining source URLs go into the research note's `## Source Excerpts` section as `Also reported by:` links. Thesis wikilinks already on the story line seed Step 3's vault connection.
+5. **Dedup**: run the standard Step 0.3 source-dedup check per URL (brief stories can repeat across days via the ♻ mechanism's bounds).
+6. **Report** per the batch pattern: one line per story — created note, linked theses, skipped/failed with reason.
+
+Lock scope: vault-wide, same as every `/ingest` mode. The brief file itself is NEVER modified — it is n8n output, not vault state.
+
 ## Processing Pipeline
 
 For each piece of content (regardless of input mode):
@@ -260,6 +274,7 @@ For each piece of content (regardless of input mode):
 - **Source word count** (required for Step 2 budgeting + Post-write #5): compute `source_words` = word count of the extracted source content (post-defuddle for URLs, post-read for files; exclude frontmatter, fenced code blocks, embedded image markdown, navigation chrome). Retain this number — it determines the research note body length floor and whether `## Key Segments` is mandatory.
 - **Framework detection** (triggers the optional `## Framework / Mental Model` section in Step 2): determine whether the source introduces a named analytical framework, scoring scheme, sliding scale, classification typology, or novel mental model. Signals: explicit labeling ("the X framework", "a way to think about Y", "sliding scale", "scoring methodology"), enumeration of named components (metrics 1–N, categories A–D, tiers, axes), or a methodology applied to a class of things. If yes, Step 2 includes the `## Framework / Mental Model` section.
 - **Mental-model trigger identification** (per `_shared/mental-models-section.md` — feeds `/sync`; ingest itself NEVER writes thesis/sector bodies): read `[[Generalist - Overview]]` plus the matching `Industry -` / `Lens -` files (apply the READING PROTOCOL; **batch mode reads them ONCE and caches across the inbox**) and determine which `/Mental Models` triggers this source activates for the affected ticker(s)/sector. Record any fired triggers compactly where natural in the research note (within `## Thesis Delta` / `## Contradiction Check`), and carry them to Step 4 reporting so the subsequent `/sync` merges them into the thesis/sector `## Mental Models` section.
+- **Conviction-trigger touch identification** (per `_shared/trigger-touch.md` — named-observable path; ingest itself NEVER writes thesis/sector bodies): determine whether the source's evidence bears on any affected thesis's pre-registered `## Conviction Triggers` (a `→ HIGH/LOW/CLOSE if` variable). Record any touch in the research note's `## Thesis Delta`, and surface it in Step 4 reporting ("Conviction-trigger touches: …") for the subsequent `/sync` to action — ingest identifies, `/sync` writes; flag-only, never implies an auto `/status`.
 - **Duplicate check**: Grep Research/ frontmatter for matching `source:` URL. If an existing note has the same source URL, skip this item and report: `⚠️ Duplicate source — already ingested as [[Research/existing-note]]`
 
 ### Step 2: Create Research Note
@@ -280,10 +295,10 @@ source_type: [earnings|analyst-report|news|deep-dive|data|web-clip|video-transcr
 
 **Follow CLAUDE.md Writing Standards strictly.** Structure the body in this section order:
 
-- **Thesis Delta** (1-2 sentences: what this changes for the investment case. If no thesis exists, state the key question this raises. Do NOT re-describe the business — the thesis note already does that. **Non-consensus framing required** (the vault's stated edge): state it as a contrast — "consensus assumes/prices X → this source implies Y" — so the delta names *what the market has wrong*, not just what the source says. A delta that merely restates the source without a consensus contrast is a summarization, not a thesis delta.)
+- **Thesis Delta** (1-2 sentences: what this changes for the investment case. If no thesis exists, state the key question this raises. Do NOT re-describe the business — the thesis note already does that. **Non-consensus framing required** (the vault's stated edge): state it as a contrast — "consensus assumes/prices X → this source implies Y" — so the delta names *what the market has wrong*, not just what the source says. A delta that merely restates the source without a consensus contrast is a summarization, not a thesis delta. Naming the consensus is **mandatory**: absent the market assumption the source moves against, the delta is unfalsifiable — there is nothing to later confirm or break. This mirrors the thesis `## Key Non-consensus Insights` Consensus field (CHG-11) and is what `verify_note.py #15` advises on.)
 - **Summary** (prose capturing the source's actual argument, the mechanism it proposes, and the scope of its claims. NOT a business description — the thesis note owns that. **REQUIRED for all source_types.** Length proportional to source: 1–2 paragraphs for short-form sources (news, data, brief web-clip, <800 source words); 2–4 paragraphs for long-form (deep-dive, video-transcript, analyst-report, earnings). Rationale: every source has an argument/frame/context that data-point tables cannot preserve; this section gives that substrate a legitimate home before Evidence's data-point compression.)
 - **Framework / Mental Model** (**CONDITIONAL** — include ONLY when Step 1's framework detection fired. Capture three things: (1) framework name, (2) its components — axes, metrics, categories, tiers — with each component's definition, (3) methodology: how the framework is applied to instances. Distinct from Evidence — Evidence captures the *output* of applying the framework to specific cases; this section captures the framework itself so readers can re-apply it to new cases. Omit entirely when the source reports events/data without advancing a framework.)
-- **Evidence** (data points only. Tables preferred. No narrative. Lead with numbers, not context.)
+- **Evidence** (data points only. Tables preferred. No narrative. Lead with numbers, not context. **Provenance-tag every quantitative claim** — price, margin, yield, share, growth, count — with a terse inline tag per `.claude/skills/_shared/provenance-tags.md` (`[FMP]`, `[10-K]`, `[web: domain]`, `[N sources]`, `[1×: source]`, `[est.]`), placed after the figure or at the row's end. **Match precision to sourcing**: a figure whose only source is a single post or lone web snippet is tagged `[1×: source]` — or rounded to the precision that source actually supports — never presented as a bare high-precision fact (precision reads as authority and must be earned). `verify_note.py #16` advises (never blocks) when the Evidence section carries high-precision figures with no tag.)
 - **Key Segments** (**REQUIRED** only when `source_words` >15,000. Structure: 3–8 sub-sections mirroring the source's major H2 headings where present, or major topics for unstructured transcripts. Each sub-section 2–5 sentences capturing that segment's specific contribution — the speaker's/author's claim, mechanism, or qualifier unique to that segment. Omit entirely when source ≤15,000 words.)
 - **Contradiction Check** (does this support or challenge existing conviction? **Name the specific thesis section or assumption affected** — cite the `[[Theses/TICKER ...]]` note and the §section / Conviction Trigger / Non-consensus Insight it bears on, not a generic "supports the thesis." "Supports existing conviction" with no named target is the failure mode — a source that only confirms priors and challenges nothing is a low-signal ingest; say so explicitly if that's the honest read.)
 - **Source Excerpts** (quotes containing specific numbers, framework components, or claims not captured above. Delete section if empty.)

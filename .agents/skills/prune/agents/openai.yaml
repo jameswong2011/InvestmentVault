@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prune Theses"
+  short_description: "Evaluate weak theses and portfolio clutter"
+  default_prompt: "Use $prune to identify theses that should be upgraded, monitored, or closed."

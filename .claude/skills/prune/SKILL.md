@@ -3,7 +3,8 @@ name: prune
 description: Systematically evaluate weak, stale, or low-conviction theses for upgrade, monitoring, or closure. Use when user says "prune", "kill list", "clean up theses", "what should I close", or "reduce portfolio".
 model: opus
 effort: max
-allowed-tools: Agent Read Grep Glob Edit Write Bash(date * find * wc * mv * cp * mkdir * rm * grep * cat * sort * printf *)
+allowed-tools: Agent Read Grep Glob Edit Write WebSearch WebFetch Bash(date * find * wc * mv * cp * mkdir * rm * grep * cat * sort * printf *)
+# WebSearch/WebFetch: Phase 3 CLOSE-rationale verification only (≤1 search per CLOSE candidate) — not open-ended research; the read-only analysis subagent inherits these.
 ---
 
 Systematically evaluate the thesis portfolio; recommend keep / upgrade / kill. Be ruthless — cognitive overhead of tracking weak positions has a real cost.
@@ -192,14 +193,19 @@ Per candidate, recommend ONE:
 ### ⬇️ CLOSE
 - Evidence weakened, insight absorbed by consensus, no catalyst, or never properly developed.
 - Specify: one-line rationale. Offer to move to _Archive/ with final Log entry.
+- **"Absorbed by consensus" closures require an external check** — the analysis subagent runs ≤1 WebSearch per CLOSE candidate for 1–2 recent datapoints (analyst note / news item) showing the market now holds the once-non-consensus view. None found → tag the recommendation `[unverified: absorbed-by-consensus claim not externally checked]`; the tag MUST carry into the Phase 4 Rationale cell and the Phase 5 approval prompt so the user archives with eyes open. Staleness ≠ wrong: a quiet thesis is not a disproven one — do not close on absorption grounds without the datapoint or the tag.
 
 ## Phase 4: Portfolio Health Summary
 
 ### Recommendation Table
 
-| Ticker | Company | Status | Conviction | Flag(s) | Recommendation | Rationale |
-|---|---|---|---|---|---|---|
-| | | | | | ⬆️/➡️/⬇️ | [one line] |
+**⚡ Most urgent:** [single highest-priority action — e.g. `CLOSE TICKER — reason`, or `none this run`]
+
+| Ticker | Company | Status | Conviction | Flag(s) | Recommendation | Model trigger | Rationale |
+|---|---|---|---|---|---|---|---|
+| | | | | | ⬆️/➡️/⬇️ | [G-#] / Industry # / Lens § / none | [one line] |
+
+*Model trigger* — the mental-model trigger behind the keep/upgrade/close call, cited by stable ID (`[G-10]`, `Semis #2`, `VLM §2`) or `none`; one short ID per recommendation, binding the mandatory Mental-Models read to the deliverable. CLOSE-on-consensus → usually base-rate/outside-view `[G-10]` or a Value-Layer-Monopoly kill-criterion; KEEP MONITORING → the trigger keeping the thesis alive.
 
 ### Portfolio Stats
 - Total theses: X

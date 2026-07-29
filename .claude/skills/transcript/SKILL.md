@@ -284,6 +284,9 @@ Single tool-call block:
 | `Read` | `$THESIS_PATH` (already located in Step 0.3) | Bull Case, Bear Case, Conviction Triggers, recent Log entries (last 5) |
 | `Read` | `_hot.md` | Recent Conviction Changes, Open Questions for this ticker |
 | `Read` | `_graph.md` | Adjacency primer (Step 6 Mode A + Step 9 Mode C fanout — read once, parse in memory) |
+| `Read` | `Mental Models/Generalist - Overview` + the matching `Industry -`/`Lens -` note(s) for the thesis `sector:` | **MANDATORY reading gate** (per `_shared/mental-models-section.md`) before Step 6's judgement work — load-tiered (Generalist always; Industry/Lens by sector only), cached across the run |
+
+Apply the READING PROTOCOL from `[[Generalist - Overview]]` to the Step 6 cross-reference: a management-language shift that appears to confirm a thesis driver is a hypothesis to test, not a verdict; run the base-rate adversarially; agreement across models is a disconfirm trigger, not confirmation.
 
 Extract from the thesis:
 - `bull_case_drivers`: parse Bull Case section; identify 3-5 named drivers (each driver typically has a sentence-opening phrase, e.g., "Rack-scale deployment economics drive NVL72 attach rate inflection")
@@ -315,11 +318,15 @@ For each `bear_case_risks[i]`:
 
 ### 6.3: Conviction trigger touching
 
+This step is the **origin pattern** for `_shared/trigger-touch.md` (the shared contract that generalises it to `/numbers`, `/sync`, `/deepen`, `/ingest`). `/transcript` owns the named-observable path: evidence bears on a trigger's variable without a number.
+
 For each falsifiable trigger:
 - Parse the trigger's named variable (e.g., `Hyperscaler capex guides flat for 2 consecutive Qs`)
 - Check whether current Q transcript provides evidence on that variable
 - If yes → flag the trigger as "touched" with direction (firing toward HIGH / firing toward LOW / firing toward CLOSE)
 - Touched triggers are MANDATORY content in the Research note's Thesis Delta section
+
+Flag-only — a touched trigger surfaces in the Step 11 advisories (which already suggest `/status`), never an auto-conviction-change (Tier-3, per the contract's anti-patterns).
 
 ### 6.4: Guidance vs. consensus framing
 

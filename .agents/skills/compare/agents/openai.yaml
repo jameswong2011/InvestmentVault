@@ -1,0 +1,4 @@
+interface:
+  display_name: "Compare Companies"
+  short_description: "Compare companies and competitive dynamics"
+  default_prompt: "Use $compare to compare NVDA and AMD side by side."

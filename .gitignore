@@ -80,6 +80,11 @@ desktop.ini
 .obsidian/plugins/claudian/data.json
 .obsidian/plugins/claudian/data.json
 .claude/settings.json
+# Harness automation layer (INFRASTRUCTURE §14) — ephemeral runtime only.
+# Tracked: .claude/hooks/*.py, .claude/schedule/*.sh + *.plist, .claude/workflows/*.js
+.claude/.graph_dirty
+.claude/.allow-protected
+.claude/schedule/logs/
 
 # ============================================
 # Bulk data exports — keep out of vault root

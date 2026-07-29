@@ -12,7 +12,7 @@ Perform deep insight discovery across the vault. This is the highest-value opera
 
 ## Execution context — subagent delegation (2026-07-08, MANDATORY)
 
-Delegate the ENTIRE run (Step 0 pre-flight through Phase 4 output) to ONE `Agent` subagent (`subagent_type: general-purpose`, `run_in_background: false`). Pass this skill's full instructions plus the resolved scope in the agent prompt. The subagent performs all reads, analysis, lock acquire/release, and writes (Research note + `_hot.md`), and must END its final message with the complete user-facing report. The main thread renders that returned report **verbatim** in chat — never re-summarize it, never discard sections.
+Delegate the ENTIRE run (Step 0 pre-flight through Phase 4 output) to ONE `Agent` subagent (`subagent_type: general-purpose`, `run_in_background: false`). Pass this skill's full instructions plus the resolved scope in the agent prompt. The subagent performs all reads, analysis, lock acquire/release, and writes (Research note + `_hot.md` + `_followups.md`), and must END its final message with the complete user-facing report. The main thread renders that returned report **verbatim** in chat — never re-summarize it, never discard sections.
 
 **Mental Models reading gate MUST cross the delegation boundary (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** The subagent does NOT inherit CLAUDE.md, so the agent prompt MUST embed this gate verbatim: *"Before ranking any opportunity, read `Mental Models/Generalist - Overview.md` (always) + the matching `Mental Models/Industry - X.md` for sectors in scope + any relevant `Mental Models/Lens - X.md`. Apply the READING PROTOCOL — models are lenses/questions held as hypotheses, never verdicts; run the base-rate/outside view adversarially; treat agreement across models as a trigger to disconfirm, not to commit."* An agent prompt omitting this is a spec violation — surface's whole job (finding non-consensus inflections) is the READING PROTOCOL applied at portfolio scale.
 
@@ -204,6 +204,19 @@ Skip vault-wide checks that require full portfolio coverage (Attention Allocatio
 - **Attention vs conviction alignment**: Compare where research time was spent against conviction levels. Flag any mismatch — disproportionate time on low-conviction ideas while high-conviction theses go unattended is a resource allocation error.
 - **Decay alert**: List any active thesis that hasn't been touched (no Log entry, no new linked research) in 30+ days. These are candidates for `/deepen` or `/prune`.
 
+## Phase 2.5: Story-log drift mining (unscoped and `all` modes only — 2026-07-20)
+
+The n8n Workflow 3 news sweep writes one machine-readable story log per run to `.data/news_stories/*.json` (schema: `{date, stats, stories: [{title, cluster, score, sum, members}]}`). This corpus records *what actually scored high against current coverage* — the empirical check on whether the watcher registry is drifting behind reality.
+
+1. **Read** (skip silently if the folder is absent or empty — the sweep may not be live): `ls .data/news_stories/*.json` → parse the last `track_window_d` days of files (registry Tuning row, default 30). Budget guard: read at most 60 files.
+2. **Aggregate** stories with `score ≥ track_min_score` (registry Tuning row, default 8). Group by recurring subject (same company/technology/theme appearing across ≥3 distinct days). **Sentiment trajectory**: for any ticker/theme with ≥3 days of coverage, also read each story's `sig`/markers (the 𝕏 bullish/bearish/quiet and catalyst-proximity tags Assemble stamped) across the window — a directional shift (e.g. 𝕏 flips bearish→bullish, or scores trend up) is a tracked sentiment change worth surfacing alongside the drift signals. The logs are the substrate; this read is the 30-day sentiment view the user asked for.
+3. **Compare against the registry**: read `_watchers.md § News & Thematic`. Two drift signals:
+   - **Missing watcher**: a recurring high-score subject with NO matching registry row → the sweep is catching it only incidentally (via outlet feeds or ticker queries); a dedicated thematic row with a proper `thesis` anchor would track it deliberately. Propose the row (id, query, thesis link, expires) in the report.
+   - **Dead watcher**: an `active` registry row whose query subject produced ZERO stories (any score) across the window → the theme has gone quiet or the query is mistuned. Propose `paused` or a query rewrite.
+4. **Output**: add a `### Registry drift` section to the Phase 4 report listing proposed row additions/retirements — proposals only, the user edits `_watchers.md` (or asks Claude to). Registry drift findings do NOT go to `_followups.md` (they are config hygiene, not research opportunities) — EXCEPT when a missing-watcher subject also generates a Phase 3 opportunity, in which case the opportunity entry carries it.
+
+This phase feeds Phase 3: a recurring high-score subject with no thesis anchor anywhere in the vault is itself a candidate opportunity (new-thesis or macro-note gap).
+
 ## Phase 3: Opportunity Generation
 
 Generate 3-5 specific, actionable research prompts ranked by potential conviction impact:
@@ -212,9 +225,13 @@ For each opportunity:
 - **Topic**: What to research
 - **Why now**: What triggered this being relevant
 - **Vault connection**: cite **≥2 specific cross-note datapoints** (name the notes) that, connected, produce the insight — a single-note observation is a summary, not a surfaced connection. The vault's edge is correlating optically-insignificant datapoints across notes (CLAUDE.md); an opportunity that rests on one datapoint or a generic theme fails this bar.
+- **Model trigger**: the mental-model trigger the opportunity rests on, cited by stable ID (`[G-#]` / `Industry #` / `Lens §`) or `none`. Binds the mandated Mental-Models read to each idea (per-opportunity, not one global gate check); when ≥2 sources point the same way, treat the agreement as a trigger to disconfirm (READING PROTOCOL), not to commit.
 - **Falsifier**: the single observable that would prove this opportunity ISN'T real (READING PROTOCOL — every surfaced idea is a hypothesis; name what kills it). An opportunity with no falsifier is a narrative, not a testable idea.
+- **Priced-in check**: whether the market already prices this — `already consensus / partially priced / genuinely non-consensus — [what the market currently assumes]`. Source it from the relevant sector note's `Investor heuristics` section (already in the Phase 1 read set). An opportunity the market already prices has no edge even if true; this field makes that explicit per idea.
 - **Expected impact**: High/Medium/Low potential to change a conviction level
 - **Suggested approach**: Specific research steps
+
+**Targeted deep read before saving (default section-targeted mode).** Default mode skips each thesis's Business Model & Product Description and Industry Context (Phase 1) — the likeliest home of the cross-company linkage an opportunity rests on. Once an opportunity is generated, do a TARGETED read of those two sections for ONLY the tickers it implicates (not the whole portfolio) to pressure-test the connection before saving. Keep it targeted — implicated tickers only; a portfolio-wide back-fill would defeat the mode's read budget.
 
 ## Phase 4: Output
 
@@ -251,5 +268,18 @@ Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Arc
 **Word cap**: After all `_hot.md` edits, check total word count. If over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap. If over 5,000 (hard cap), abort `_hot.md` update per contract.
 
 **Note body carries every Phase 3 field per opportunity — the Falsifier is mandatory in the saved note, not just the chat report.** If opportunities are rendered as a table, `Falsifier` is a required column; if as prose blocks, each opportunity ends with its `Falsifier:` line. A surfaced idea whose falsifier survives only in chat is unfalsifiable by the time anyone re-reads the note.
+
+**Trigger-utilization rollup (report section).** Add a short section to the report summarizing which mental-model lenses fired across this run's opportunities (from the Phase 3 `Model trigger` fields). A lens that NEVER fires across any opportunity is a **blind spot** — the vault isn't looking through it; a lens that fires on EVERYTHING is **decoration** — it isn't discriminating between ideas. This is a meta-signal on the reading gate itself: the utilization pattern audits whether the Mental-Models read is doing analytical work or just being ritually cited.
+
+**Write actionable opportunities to the open-findings register** (`_followups.md` at vault root — durable ledger, `_shared/followups-contract.md`). Read the file first (auto-created by the first writer if absent). For each Phase 3 opportunity ranked worth a concrete next skill (`/thesis`, `/deepen`, `/ingest`, `/stress-test`), append ONE entry to `## Open` (prepend under the heading — newest first):
+
+`- [ ] YYYY-MM-DD · surface · [[Theses/TICKER - Name]] · <opportunity one-liner>, <suggested skill> → user acts or dismisses · src [[Research/YYYY-MM-DD - Insight Surface Scan …]]`
+
+Use `portfolio` in place of the thesis wikilink for cross-ticker opportunities (blind spots, supply-chain correlations). Only genuinely actionable opportunities — never routine scan output.
+
+- **Dedup (mandatory)**: grep `## Open` for a `surface ·` entry on the same thesis/opportunity; if present, update its date instead of stacking a duplicate.
+- **Soft cap**: if `## Open` exceeds 50 entries, surface `⚠️ _followups.md over 50 open entries — review/resolve backlog` in the report; never auto-drop open entries.
+- Resolvers `/status` and `/sync` close entries later; surface only appends.
+- **Non-fatal**: on register write failure, report and continue — the Research note and `_hot.md` update are unaffected.
 
 Also report a concise summary to the user highlighting the top 3 most actionable insights.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vault Lint"
+  short_description: "Audit vault structure, freshness, and links"
+  default_prompt: "Use $lint to run a full vault health audit."

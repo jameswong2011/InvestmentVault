@@ -1,0 +1,4 @@
+interface:
+  display_name: "Thesis Status"
+  short_description: "Change thesis conviction or lifecycle status"
+  default_prompt: "Use $status to propose changing NVDA's conviction to medium."

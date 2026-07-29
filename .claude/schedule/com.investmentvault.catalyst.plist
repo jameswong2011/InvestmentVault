@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Weekly /catalyst refresh. Canonical copy; install to ~/Library/LaunchAgents/. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.investmentvault.catalyst</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/alexcohen/InvestmentVault/.claude/schedule/run-vault-skill.sh</string>
+    <string>catalyst</string>
+  </array>
+
+  <!-- Sunday 18:00 local time (Weekday 0 = Sunday). If the Mac is asleep at the
+       scheduled time, launchd runs the job once on the next wake. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>0</integer>
+    <key>Hour</key><integer>18</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/alexcohen/InvestmentVault/.claude/schedule/logs/catalyst.launchd.out</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/alexcohen/InvestmentVault/.claude/schedule/logs/catalyst.launchd.err</string>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+</dict>
+</plist>

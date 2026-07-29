@@ -493,9 +493,12 @@ Append a provisional Log entry to the thesis BEFORE rewriting the section. This 
   - Conviction Triggers: concrete, falsifiable if/then statements with specific thresholds
 - **Integrate, don't append** — the section should read as a coherent whole, not show seams between old and new content
 - Bold any genuinely new data points or insights not previously in the vault
+- **Tag new quantitative claims** — any fresh number introduced into the section (price, margin, yield, share, growth rate, count) carries a provenance tag per `.claude/skills/_shared/provenance-tags.md`; match precision to sourcing (a single-source figure is `[1×: source]` or rounded, never a bare high-precision fact). This mirrors `--sync-metrics` mode's existing provenance discipline for web-filled values (MS-2 Tier 3), now applied to newly-introduced numbers in default-mode deepens.
 - Add wikilinks to any vault notes referenced
 
 **Mental Models side-update** (per `_shared/mental-models-section.md`): if Phase 3 research activated, retired, or materially changed a `/Mental Models` trigger read for this thesis, ALSO merge it into the `## Mental Models` section as a secondary edit (the Phase 4 whole-file snapshot already covers it; no extra snapshot needed). Skip when the target section IS `## Mental Models` (the 5b rewrite already handles it) or when no new trigger fired. Note the side-update in the 5c Log entry.
+
+**Disconfirm before finalizing (every target section, not only Mental-Models-writing runs).** Before locking the rewrite, state in one paragraph the strongest case this rewrite is WRONG — the datapoint or reading that would falsify what you just wrote. Per the READING PROTOCOL ([[Generalist - Overview]]), agreement/confidence is a trigger to disconfirm, not to commit; a deepen that only strengthens the prior is doing half the job. Where the disconfirm surfaces a live falsifying datapoint, fold it into the rewrite (a caveat, a Risk, an Outstanding Question) rather than dropping it; where it does not, the rewrite stands.
 
 ### 5c: Finalize Log entry
 After the rewrite succeeds, use `Edit` to atomically replace the provisional Log entry with the final version:
@@ -599,7 +602,9 @@ Tell the user:
 - Which section was deepened and why it was the priority
 - Snapshot saved to: `[[_Archive/Snapshots/...]]`
 - The 2-3 most important new findings
+- Section-growth check: compare the target section's pre-deepen word count (from the Phase 4 snapshot) against its post-deepen count. If it grew >1.5×, emit `⚠️ [Section] grew [N]→[M] words (>1.5×) — verify the additions are signal, not accretion; consider trimming`. Repeated deepens accrete; this surfaces bloat before it compounds (no flag when ≤1.5×).
 - `Mental-model trigger delta: fired/retired/changed: […] | none` (from the Phase 1 gate — one line, always present)
+- `Trigger touch: [TICKER] → "[verbatim trigger]" — [datapoint] ([CROSSED | approaching | evidence-touched, dir=…])` — emit per `.claude/skills/_shared/trigger-touch.md` when Phase 3 research surfaces a datapoint bearing on a `## Conviction Triggers` entry; a `--sync-metrics` run that moves a numeric value across a registered threshold follows the contract's numeric path. Flag-only — never auto-execute `/status` (Tier-3).
 - Whether conviction should be reassessed based on what was found
 - Theses requiring `/sync`: [list any tickers where cross-references suggest propagation is needed]
 - **Run `/sync` to propagate these findings to affected sector notes, macro notes, and cross-thesis references.**

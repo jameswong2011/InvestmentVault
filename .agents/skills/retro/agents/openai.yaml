@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investment Retro"
+  short_description: "Review vault activity against market action"
+  default_prompt: "Use $retro to review the last month of vault activity against the market."

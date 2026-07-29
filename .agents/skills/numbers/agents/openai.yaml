@@ -1,0 +1,4 @@
+interface:
+  display_name: "Refresh Numbers"
+  short_description: "Refresh thesis metrics with current data"
+  default_prompt: "Use $numbers to refresh NVDA's Key Metrics table."

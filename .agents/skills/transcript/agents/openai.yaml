@@ -1,0 +1,4 @@
+interface:
+  display_name: "Earnings Transcript"
+  short_description: "Analyze earnings calls for thesis deltas"
+  default_prompt: "Use $transcript to analyze NVDA's latest earnings call."

@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
 verify_note.py — deterministic post-write verification gate for /ingest
-(Fix #4, 2026-07-08). Implements SKILL.md checks #1–#14 as a script so every
+(Fix #4, 2026-07-08). Implements SKILL.md checks #1–#16 as a script so every
 ingest pays a reproducible ~50ms validation instead of LLM-executed regex.
+(#15 consensus-contrast and #16 provenance-tag coverage are advisory-only,
+in the soft_fail tier alongside #13 — they surface gaps, never delete.)
 
 The LLM keeps only the judgment residue: interpreting a BLOCK verdict, choosing
 whether a manually-curated local file's advisory flags are acceptable, and the
@@ -321,6 +323,34 @@ def main():
         if cc and not re.search(anchor_re, cc, re.I):
             soft_fail.append("#15 consensus-contrast: Contradiction Check anchors to no specific "
                              "thesis element (§Section / [[Theses/...]] / named assumption) — review; not blocked")
+
+    # --- #16 provenance-tag coverage (ADVISORY-only, all modes; skip web-clip/data) ---
+    # Per _shared/provenance-tags.md: Evidence figures should carry a terse source tag
+    # ([FMP] / [10-K] / [N sources] / [1×: @handle] / [est.]) so a single-source, high-
+    # precision number can't acquire false authority as it propagates into thesis/sector
+    # spines. High-precision figures (≥2 decimal places) with NO provenance tag anywhere
+    # in ## Evidence are the exact failure the audit found (a 0.089 yield sourced to one
+    # X thread, untagged). Advisory only — never deletes; surfaces the gap pre-/sync.
+    if st not in ("web-clip", "data"):
+        ev = ""
+        for h, buf in secs.items():
+            if re.sub(r"\s+", " ", h.lower()).startswith("evidence"):
+                ev = "\n".join(buf)
+                break
+        if ev:
+            high_prec = re.findall(r"\d+\.\d{2,}", ev)
+            # A provenance tag is a SINGLE-bracket token [FMP]/[10-K]/[est.]/[2 sources]/
+            # [1×: @h] — NOT a [[wikilink]]. Exclude `[[`/`]]` and require the keyword as a
+            # whole word, else "[[Theses/6857 - Advant`est`]]" false-matches on "est" and
+            # "[[Sectors/…]]" on "SEC", masking a genuinely untagged Evidence section.
+            prov_tag = re.search(
+                r"(?<!\[)\[(?!\[)[^\]]*?\b(FMP|10-[KQ]|8-K|filing|SEC|IR|transcript|web|est|"
+                r"\d+\s*sources?|\d+\s*×|source)\b[^\]]*?\](?!\])", ev, re.I)
+            if high_prec and not prov_tag:
+                soft_fail.append(
+                    f"#16 provenance: ## Evidence has {len(high_prec)} high-precision figure(s) "
+                    f"(e.g. {high_prec[0]}) but no source tag ([FMP]/[10-K]/[N sources]/[1×: …]) — "
+                    "precision may exceed sourcing; tag per _shared/provenance-tags.md (review; not blocked)")
 
     # ---- verdict ----
     verdict, rc = "PASS", 0

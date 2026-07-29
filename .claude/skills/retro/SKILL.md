@@ -18,7 +18,7 @@ Output is an **immutable Research note** — one new note per run, never overwri
 
 ## Execution context — subagent delegation (2026-07-08, MANDATORY)
 
-Delegate the ENTIRE run (Step 0 pre-flight through Phase 9 output) to ONE `Agent` subagent (`subagent_type: general-purpose`, `run_in_background: false`). Pass this skill's full instructions plus the resolved window in the agent prompt. The subagent performs all reads, WebSearches, transcript fetches, lock acquire/release, and writes (the immutable Research note + Log back-references + `_hot.md`), and must END its final message with the complete Phase 9.2 user-facing report. The main thread renders that returned report **verbatim** in chat — never re-summarize it, never drop the Trade Ideas table.
+Delegate the ENTIRE run (Step 0 pre-flight through Phase 9 output) to ONE `Agent` subagent (`subagent_type: general-purpose`, `run_in_background: false`). Pass this skill's full instructions plus the resolved window in the agent prompt. The subagent performs all reads, WebSearches, transcript fetches, lock acquire/release, and writes (the immutable Research note + Log back-references + `_hot.md` + `_followups.md` open-findings entries (Phase 7.4) + the calibration JSONL append/score (Phase 4.5)), and must END its final message with the complete Phase 9.2 user-facing report. The main thread renders that returned report **verbatim** in chat — never re-summarize it, never drop the Trade Ideas table.
 
 **Mental Models reading gate MUST cross the delegation boundary (MANDATORY — CLAUDE.md; `_shared/mental-models-section.md`).** The subagent does NOT inherit CLAUDE.md, so the agent prompt MUST embed this gate verbatim for the Phase 4 trade-idea synthesis: *"Before ranking trade ideas from the narrative-price gaps, read `Mental Models/Generalist - Overview.md` + the matching `Mental Models/Industry - X.md`/`Lens - X.md` for the tickers surfacing. Apply the READING PROTOCOL — the market-vs-vault gap is a hypothesis, not a verdict; run the base-rate adversarially (most gaps close because the market is right); an inverted-bear/inverted-bull signal is a disconfirm trigger on the vault's own stance, not automatic alpha."*
 
@@ -188,6 +188,14 @@ Release lock per Step 0.1 and exit cleanly.
 
 **Core engine**: per ticker, collect three signals — **newsflow**, **earnings** (if any landed in window), **price action** — then compute the narrative-price delta in Phase 4. Social sentiment is NOT collected (retail chatter, Twitter, Reddit all excluded per prior spec). The narrative channels here are OFFICIAL: press releases, SEC filings, earnings results and call transcripts, analyst upgrades/downgrades, major business news.
 
+### 3.0: Local newsflow corpus (2026-07-20 — read before any WebSearch)
+
+The n8n Workflow 3 sweep persists one story log per run at `.data/news_stories/*.json` (`{date, stats, stories: [{title, cluster, score, sum, members}]}` — `sum` is a factual per-story summary, `members` carry source URLs, ticker stories tag `tk-<ticker>` in member `feedId`s). If the folder exists, read the files whose `date` falls inside the retro window BEFORE issuing Phase 3 WebSearches:
+
+1. **Seed the News channel**: per ticker, collect its window stories (match `tk-<ticker>` in members, or ticker/company name in title) with date + score + `sum`. These are dated, pre-scored, summary-carrying events — often richer than a WebSearch snippet. A ticker whose window newsflow is fully covered by corpus stories still gets its **Price** query (the corpus has no price data) but may skip or narrow its **News** query — note `news_source: corpus` in the extraction schema.
+2. **High-score / no-reaction signal**: any corpus story with `score ≥ 8` on a ticker whose `window_price_move_pct` lands within ±2% becomes a first-class Phase 4 input — material newsflow the market shrugged at is exactly the narrative-price delta this skill ranks. Tag these `corpus-flagged` so classification can cite the specific story (`title`, date, `sum`).
+3. **Absent or empty folder**: skip silently — Phase 3 proceeds fully on WebSearch as before. The corpus is an accelerant, never a dependency.
+
 ### 3.1: Three-channel query plan per ticker
 
 For each `ticker ∈ TICKER_UNIVERSE`, issue three distinct queries. Each channel surfaces a separate input to classification.
@@ -342,6 +350,57 @@ transcript_themes: [list or null]
 
 For each ticker with material classification (gap_magnitude > threshold of 3.0), consult the graph primer (if loaded in Step 0.4) for cluster peers. If ≥2 cluster peers share the same delta label → flag as **cluster-level signal** in the trade idea; otherwise idiosyncratic. Cluster-level inverted-bear across 3+ peers = sector rotation signal, not ticker-specific.
 
+## Phase 4.5: Calibration — persist this run's calls, score matured prior calls
+
+**Why (closes the self-agreement loop).** Retro's core engine grades the market against the vault's own recent stance, and the vault's stance is derived by trusting prior Log/callout entries at face value (§4.2 VAULT_DIRECTION). Nothing checks whether the vault was actually *right*. Calibration is the independent check: it scores the retro's OWN past directional calls against realized price outcomes, building an empirical hit-rate over time — the vault's personal base-rate book ([[Generalist - Overview]] [G-10]: anchor to the reference class before the inside-view narrative). A retro that never scores itself is an inside-view engine with no feedback.
+
+### 4.5a: Derive this run's directional calls
+
+For each ticker in the Trade Ideas set (gap_magnitude > 0), derive an `implied_forward` sign from the §4.2 read + suggested action:
+
+| Suggested action (from §4.2) | implied_forward |
+|---|---|
+| Reinforce / add (inverted-bull + vault strengthened) | **bullish** |
+| Harvest / trim (inverted-bear + vault weakened) | **bearish** |
+| Deepen / New thesis / Monitor / Stress test | **neutral** (no directional bet — logged, but excluded from hit-rate; "stress test" = vault-fighting-market, the resolution is tracked separately in 4.5c) |
+
+`flow-bull`/`flow-bear` with an aligned vault direction → bullish/bearish respectively; unaligned → neutral.
+
+### 4.5b: Persist (append-only JSONL)
+
+```bash
+mkdir -p .data          # gitignored
+```
+
+Append one line per Trade-Idea ticker to `.data/retro-calls.jsonl` (via `printf >>` — retro has no `Write`-to-arbitrary-path constraint here, printf is in allowed-tools):
+
+```
+{"call_date":"YYYY-MM-DD","window":"1w|1m|1q","ticker":"NVDA","delta_label":"inverted-bear","vault_direction":"weakened","implied_forward":"bearish","gap_magnitude":10.8,"scored":false}
+```
+
+Never rewrite existing lines here — this is the immutable call record. Scoring (4.5c) writes outcomes to a separate `.data/retro-outcomes.jsonl` keyed by `call_date+ticker`, so the call log stays append-only and a re-run cannot corrupt prior calls.
+
+### 4.5c: Score matured prior calls
+
+`cat .data/retro-calls.jsonl` (skip silently if absent — first ever run has nothing to score) and `cat .data/retro-outcomes.jsonl` (may be absent). In the reasoning layer, select calls that are:
+- **Mature**: `call_date` is at least `max(window_days, 21)` days before TODAY (a directional call needs time to resolve), AND at most ~400 days old (bound lookback cost).
+- **Unscored**: no matching `call_date+ticker` in `retro-outcomes.jsonl`.
+- **Directional**: `implied_forward ∈ {bullish, bearish}` (neutral calls are not hit-rate-scored; "stress test" vault-fighting calls ARE resolved in 4.5c's separate tally).
+
+**Cap at 10 calibration price queries per run** (bound WebSearch cost — same discipline as the Phase 3.3 transcript cap). Prioritise the oldest-unscored and highest-gap_magnitude calls. Reuse `.data/retro_cache/` where fresh. For each selected call, one WebSearch: `[TICKER] stock price [call_date] to [TODAY] percentage change`. Classify realized direction (±3% threshold, same as Phase 4). Outcome:
+- `hit` — realized direction matches implied_forward.
+- `miss` — realized direction opposes implied_forward.
+- `push` — realized |move| ≤ 3% (flat) or price data unavailable (`data-gap`, excluded from hit-rate denominator).
+
+For "stress test" (vault-fighting-market) calls, resolve separately: did the price ultimately move the vault's way (vault vindicated) or the market's way (vault wrong)? Tally as `vault_vindicated` / `market_right` — this is the highest-signal calibration output, since vault-fighting-market is where the vault claims non-consensus edge.
+
+Append outcomes to `.data/retro-outcomes.jsonl`:
+```
+{"call_date":"YYYY-MM-DD","ticker":"NVDA","implied_forward":"bearish","realized_move_pct":-9.4,"outcome":"hit","scored_on":"TODAY"}
+```
+
+Compute for the Phase 6 scorecard: overall hit-rate (hits / (hits+misses)), hit-rate by `delta_label`, and the vault-fighting-market vindication tally. If fewer than ~8 scored calls exist total, render the scorecard but caveat `n too small — directional only`.
+
 ## Phase 5: Trade Ideas Ranking
 
 Rank all tickers by `gap_magnitude` descending (from Phase 4.1). Top 3–5 populate the **Trade Ideas** section. Tickers with `gap_magnitude = 0` (aligned, quiet, mixed, data-gap) drop out — they carry no trade signal.
@@ -412,6 +471,20 @@ propagated_to: []
 
 ## Trade Ideas (Top 5 by Narrative-Price Gap)
 [ranked table — see Phase 5]
+
+## Calibration Scorecard
+[Phase 4.5c output — the vault's own track record on prior retro calls. Renders only if ≥1 prior call was scored this run; else "No matured prior calls to score yet."]
+
+| Delta label | Scored | Hits | Misses | Hit-rate |
+|---|---|---|---|---|
+| inverted-bear | 6 | 4 | 2 | 67% |
+| inverted-bull | 4 | 3 | 1 | 75% |
+| flow-bull/bear | 5 | 2 | 3 | 40% |
+| **Overall** | **15** | **9** | **6** | **60%** |
+
+**Vault-fighting-market resolution** (the non-consensus-edge test): [N] "stress test" calls resolved — [X] vault vindicated / [Y] market right. [One-line read: is the vault's fighting-market instinct paying off, or is it fighting the tape?]
+
+[Caveat if <8 total scored calls: "n too small — directional only."]
 
 ## Narrative vs Price vs Vault
 [per-ticker table, sorted by gap_magnitude descending]
@@ -521,6 +594,16 @@ After each Edit, re-grep for the new bullet to verify it landed. Silent-failure 
 
 **If Log append fails after retry**: do NOT abort the retro. Body Research note is the primary artifact; Log back-references are a convenience. Report `⚠️ Log back-reference to [[TICKER]] failed — retro note persisted, manual append recommended.`
 
+### 7.4: Open-findings register (per `_shared/followups-contract.md`)
+
+The `Retro insight:` Log entries (7.1–7.3) live inside each thesis; `_followups.md` is the cross-run index that survives so an unactioned trade idea does not evaporate. For each Top-3 Trade Idea whose delta signals a vault-market mismatch requiring action (`inverted-bear`, `inverted-bull`, `flow-bull`/`flow-bear` with a vault view, `unreactive-*` with strong vault direction — i.e. every non-`aligned` top idea), append one entry to `_followups.md` `## Open`:
+
+```
+- [ ] YYYY-MM-DD · retro · [[Theses/TICKER - Name]] · [delta_label] divergence, [suggested action] → user acts or dismisses · src [[Research/YYYY-MM-DD - Retrospective [window] - Synthesis]]
+```
+
+**Dedup** (followups-contract): grep `## Open` for an existing `retro ·` entry on the same thesis; if present, update its date rather than stacking (a weekly `/retro` must not pile the same idea). Read `_followups.md` first (create per schema if absent — retro has `Write`). Obey the 50-entry soft-cap warning. Resolvers `/status` (action taken) and `/sync` (absorbed into thesis body) close these entries later. Register-write failure is non-fatal, same as 7.3 — report and continue.
+
 ## Phase 8: `_hot.md` Update
 
 Read `_hot.md` then edit per `_shared/hot-md-contract.md`. If `_hot.md` does not exist, create it per CLAUDE.md Rule #9 schema.
@@ -587,6 +670,8 @@ Addressed:        [N] callouts resolved
 Still open:       [N] fresh callouts (oldest: [date], ticker: [X])
 Log activity:     [N] non-skill-origin entries across [N] tickers
 Market data:      [N] tickers with price; [N] news events; [N] earnings events; [N] transcripts fetched
+Calibration:      [N] prior calls scored — overall hit-rate [X]% ([hits]/[hits+misses]); vault-fighting-market [X vindicated / Y market-right]  (or "no matured calls yet")
+Open findings:    [N] entries added to _followups.md (Top-3 divergences)
 
 Top narrative-price gaps (see full Research note for details):
   1. [TICKER] — [delta_label] ([news polarity] vs [price move]) — [one-phrase read]
@@ -615,6 +700,7 @@ Next steps:
 5. **Graph-primer is an orientation aid, never a filter** — per `_shared/graph-primer.md` anti-patterns. Retro reads every thesis in full regardless of cluster membership.
 6. **Empty window exits cleanly** — Phase 2.5 short-circuit releases the lock and exits without writing.
 7. **Lock is vault-wide** — prevents concurrent `/sync`, `/catalyst`, `/surface`, `/prune`, `/graph` from racing on shared reads.
+8. **Calibration call log is append-only** — `.data/retro-calls.jsonl` records each run's directional calls immutably; outcomes are written to a separate `.data/retro-outcomes.jsonl` keyed by `call_date+ticker`. Scoring never rewrites the call log, so a re-run cannot corrupt or double-count prior calls. Both are gitignored (`.data/`).
 
 ## Failure modes and recovery
 

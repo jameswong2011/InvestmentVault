@@ -1,6 +1,6 @@
 ---
 name: clean
-description: Delete old snapshots from _Archive/Snapshots/. Accepts a day threshold (default 180). Use when user says "clean", "clean snapshots", "delete old snapshots", or when /lint flags stale snapshots.
+description: Delete old snapshots from _Archive/Snapshots/. Accepts a day threshold (default 180). Also `daily-intel [days]` mode — prune auto-generated n8n scanning surfaces (news briefs, X dashboards) from Daily Intel/ older than 90 days. Use when user says "clean", "clean snapshots", "delete old snapshots", "clean daily intel", or when /lint flags stale snapshots.
 model: sonnet
 effort: max
 allowed-tools: Read Grep Glob Bash(find * rm * date * wc * ls *)
@@ -16,12 +16,14 @@ Delete snapshots older than a given threshold from `_Archive/Snapshots/`.
 - **Number of days + `--include-orphans`** (e.g., `180 --include-orphans`): standard age-based cleanup PLUS delete orphans. Explicit opt-in.
 - **`inbox`** (literal word): delete files in `_Inbox/processed/` older than 180 days (the default). Skips snapshot cleanup entirely. The source URL/path is preserved in the corresponding `Research/*.md`'s `source:` frontmatter, so processed inbox files are recoverable in principle. Per-file safety net: skip if no corresponding Research note exists (means the original `/ingest` did not complete cleanly — the source is still authoritative). See Step 2e.
 - **`inbox [days]`** (e.g., `inbox 90`, `inbox 30`): same as `inbox` mode with custom age threshold.
+- **`daily-intel [days]`** (e.g., `daily-intel`, `daily-intel 60`) — 2026-07-20: delete auto-generated scanning surfaces in `Daily Intel/` (n8n news briefs + X dashboards) older than the threshold (default **90**). Skips snapshot cleanup entirely. These files are regenerable machine output (n8n Workflows 3 + 5), never hand-edited, and never referenced by `propagated_to:` chains — deletion is safe by construction. Safety nets: (a) filename must match the n8n output patterns (`* - Daily intel - n8n.md`, `* - News digest - n8n.md`, `* - X Dashboard.md`) — anything else in the folder is user-created and PROTECTED (report, never delete); (b) `.data/news_stories/*.json` is NEVER touched by this mode — it is the `/retro` backtest corpus, not a scanning surface. Execution: enumerate matching files with date-prefix older than threshold → report the list + count + protected non-matching files → delete on the standard report-before-delete flow (Step 3's pattern) → release lock.
 
 **Universal closure-snapshot floor** (applies to ALL modes including `orphans` and `--include-orphans`): pre-closure thesis snapshots from `/prune` Stage 1 or `/status active→closed` Step 3.1 whose matching manifest's `completed_date:` is within 30 days are PROTECTED. No `/clean` argument override — the only path to delete is to wait for the floor to expire OR `rm` the snapshot manually with full awareness of the consequence (closure becomes unrecoverable via `/rollback`). See Step 2d for detection and Step 3 for reporting.
 
 Parse patterns in this order:
 ```
 if $ARGUMENTS first token == "inbox" → inbox-cleanup mode; second token (optional integer) overrides 180-day default; skip Steps 1-4 entirely (snapshots untouched), execute Step 2e + Step 3.5 + Step 4.5 instead
+elif $ARGUMENTS first token == "daily-intel" → daily-intel mode; second token (optional integer) overrides 90-day default; skip Steps 1-4 entirely (snapshots untouched), execute per the daily-intel argument spec above
 elif $ARGUMENTS == "orphans" → orphans-only mode
 elif $ARGUMENTS ends with "--include-orphans" → age + orphans mode; strip flag to get days
 elif $ARGUMENTS is integer → age-only mode (default orphans PROTECTED)

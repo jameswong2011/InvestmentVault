@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean Snapshots"
+  short_description: "Remove stale vault snapshots safely"
+  default_prompt: "Use $clean to review snapshots older than 180 days."

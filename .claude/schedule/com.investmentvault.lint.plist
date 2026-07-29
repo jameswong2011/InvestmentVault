@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Weekly /lint health check. Canonical copy; install to ~/Library/LaunchAgents/. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.investmentvault.lint</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/alexcohen/InvestmentVault/.claude/schedule/run-vault-skill.sh</string>
+    <string>lint</string>
+  </array>
+
+  <!-- Sunday 20:00 local time — 2h after /catalyst so the two never overlap. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>0</integer>
+    <key>Hour</key><integer>20</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/alexcohen/InvestmentVault/.claude/schedule/logs/lint.launchd.out</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/alexcohen/InvestmentVault/.claude/schedule/logs/lint.launchd.err</string>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+</dict>
+</plist>

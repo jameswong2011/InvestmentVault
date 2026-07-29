@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ingest Research"
+  short_description: "Turn source material into research notes"
+  default_prompt: "Use $ingest to process the files currently in _Inbox."

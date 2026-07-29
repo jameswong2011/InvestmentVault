@@ -149,6 +149,12 @@ Phase 2 framing: "Shared adjacency establishes the comparison baseline. Differen
 
 Use data from vault Key Metrics tables, supplement with web where gaps exist.
 
+**Metrics-freshness check.** Read each compared thesis's `key_metrics_last_refreshed` frontmatter. Annotate each ticker column with its as-of date (`[TICKER A] (as of YYYY-MM-DD)`). Flag when the tickers' metrics are not comparably fresh — any two differ by >45 days OR any is >90d old:
+```
+⚠️ comparing metrics of different vintages — [TICKER_A] as of [date] vs [TICKER_B] as of [date]; run /numbers to align before trusting the financial comparison
+```
+A side-by-side of stale-vs-fresh numbers silently misleads the verdict.
+
 ## Phase 3: Dynamic Analysis (§8 — where insight lives)
 
 Go beyond static snapshots:
@@ -160,9 +166,18 @@ Go beyond static snapshots:
 5. **Scenario divergence** — under what macro or industry scenario does the current underdog win? How likely per vault macro notes?
 6. **Customer and supplier overlap** — do they share customers? Who has more pricing power in that relationship? Shared suppliers (correlated supply risk)?
 
+## Phase 3.5: External-evidence check (parallel batch — MANDATORY-unless-waived when any compared ticker is high conviction)
+
+The verdict turns on the decisive axis surfaced in Phase 3 (market-share trajectory, pricing-power divergence, the platform-shift call). An internal-only verdict draws that axis from the same vault notes that built both theses — recent analyst actions, PT changes, and third-party market-share reads are the external check the vault does not carry. **If any WebSearch / WebFetch calls are issued, batch them in parallel** — one message, up to 25 invocations, mirroring `/stress-test` Phase 2.5 and `/thesis` Step 3. Do NOT serialize independent external lookups.
+
+**Conviction-gated requirement (2026-07-14):**
+- **Any compared ticker is `conviction: high`** → this phase is **mandatory**. Issue at least one parallel batch on the comparison's decisive axis: recent analyst downgrades / PT changes on each name, competitive / market-share datapoints, and a fresh third-party take (≤90 days) on which name is winning. The Phase 4 verdict MUST cite ≥1 datapoint the vault did not author. Rationale: both theses were likely written by the same analyst applying the same mental models, so the verdict inherits that shared prior — the winner the vault already favours — unless an outside datapoint breaks the tie (READING PROTOCOL: agreement across models is a disconfirm trigger, not a confirmation). The user may waive ONLY with an explicit "vault-only" instruction.
+- **All compared theses `conviction: medium | low` or `status: draft`** → external evidence is optional; skip freely when the vault already carries sufficient competitive evidence. Its absence must then be stated in the Phase 4 verdict (`external evidence: none — vault-only comparison`).
+
 ## Phase 4: Investment Verdict
 
 - **Risk-adjusted asymmetry**: not "which is cheaper" but which offers better upside/downside skew given the evidence
+- **Consensus tag**: tag the stated preference `[consensus]` or `[non-consensus]` — is the preferred name already the Street's pick (little edge; the market prices it) or a genuine variant view? When `[non-consensus]`, name the contrasting consensus in one clause (e.g., "Street prefers AMAT on scale; this backs BESI on hybrid-bonding share gain"). A `[consensus]` verdict adds no edge even when correct.
 - **Portfolio role**: substitutes or complements? Can you own both, or one-or-the-other? Does owning both create hidden concentration?
 - **Preference trigger**: specific, observable event that would flip preference. Make it falsifiable.
 - **Conviction gap**: if one has a thesis and the other doesn't, should it? If both have theses, is the conviction spread justified by the evidence?
@@ -423,8 +438,8 @@ Word cap: after edits, over 4,000 (soft cap per `_shared/hot-md-contract.md`) �
 
 ## Phase 6: Report
 
-1. **Comparison research note**: `[[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]`
-2. **Single most important competitive insight** and whether it changes conviction on either name.
+1. **Single most important competitive insight** and whether it changes conviction on either name — lead with the decisive-axis divergence and the Phase 4 verdict (`[consensus]`/`[non-consensus]`), not the research-note link.
+2. **Comparison research note**: `[[Research/YYYY-MM-DD - A vs B - Competitive Comparison]]`
 3. **Per-thesis Log appends** (5.2 outcome):
    - `Theses with existing notes propagated: [N] of [M]` (succeeded list)
    - `propagated_to: frontmatter` — `set ([TICKER1, TICKER2, ...])` (all succeeded) | `omitted (one or more appends failed — next /sync will retry)`

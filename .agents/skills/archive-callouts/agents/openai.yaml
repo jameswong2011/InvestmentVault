@@ -1,0 +1,4 @@
+interface:
+  display_name: "Archive Callouts"
+  short_description: "Archive old addressed Obsidian callouts"
+  default_prompt: "Use $archive-callouts to sweep addressed callouts older than 180 days."
