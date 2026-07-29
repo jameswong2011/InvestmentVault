@@ -177,7 +177,7 @@ The transition-year value concentrates in qualification-gated equipment layers 1
 - TSMC panel-yield miss pushes HVM past 2029 (re-validates the OSAT-overflow extension).
 - NVIDIA keeps Rubin on CoWoS-L + reticle-stitching, defers CoPoS to Feynman only.
 - Intel EMIB-T / panel-on-organic takes the large-package share CoPoS targets.
-- AI-accelerator demand inflection (per [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]) removes the package-size growth that makes panels necessary.
+- AI-accelerator demand inflection (per [[AI Bubble Risk and Semiconductor Valuations]]) removes the package-size growth that makes panels necessary.
 
 ## Trading and portfolio implications
 
@@ -211,9 +211,12 @@ The transition-year value concentrates in qualification-gated equipment layers 1
 - [[Theses/EINK - E Ink Holdings]] — AUO JV adjacency to display-panel capability migration
 - [[Theses/INTC - Intel]] — competing panel/EMIB-T approach
 - [[Mental Models/Industry - Semiconductors]] — #1 (emerging bottleneck = pricing power), #2 (qualification-gate monopolies — inspection/litho), #8 (architecture transitions remap the bottleneck), #13/#14 (format-locked vendors reclassify down; panel-native up), #17/#19 (inelastic supply; equipment orders lead, don't over-read)
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — demand overlay gating package-size growth
+- [[AI Bubble Risk and Semiconductor Valuations]] — demand overlay gating package-size growth
 
 ## Log
 
 ### 2026-06-18
 - Initial macro note created. Documents the CoWoS→CoPoS panel-level packaging format transition (round 300mm wafer → 310/515/750mm rectangular panels), distinct from but converging with the companion glass-core *material* transition note at the 515mm generation (2028–29). Captured the **timing reversal**: vault record (OSAT sector + glass-core note) encodes March-2026 "CoPoS to Q4 2030 minimum"; June-2026 reporting shows acceleration — Feb-2026 tool deliveries, ~June-2026 VisEra pilot line, 2027 pilot production, 2H 2028–29 mass production at AP7 Chiayi, NVIDIA Rubin/Feynman anchor. Mapped beneficiaries across 8 value-chain layers + downstream winners/losers. Flagged 3 uncovered surface candidates: Onto Innovation (ONTO, panel litho — highest-leverage gap), Camtek (CAMT, path-agnostic inspection), DISCO (6146.T, dicing). Key non-consensus framing: inspection/metrology is the "golden coordinate" (wins on CoWoS/CoPoS/CoWoP, ships first); display-industry capability migration (AUO/Innolux/glass) is the under-modeled vector. Action items surfaced for user: reconcile stale OSAT timing via `/sync`; consider `/thesis ONTO` and `/thesis CAMT`. Run `/graph last` to register new wikilinks.
+
+### 2026-07-14 (/sync)
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Corroborates the "Intel EMIB-T / panel-on-organic as competing large-package path" negative-catalyst and the inspection/metrology-is-path-agnostic framing. Adds the EMIB-vs-CoWoS structural trade-off (EMIB lower-cost but edge-shoreline routing only; CoWoS any-point + embedded interposer capacitance) and the Foveros-Direct-3D yield-parity gate (D0<0.1 vs early ~0.2-0.25). No timing/framework change to the CoPoS transition.

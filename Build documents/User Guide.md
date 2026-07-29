@@ -2,17 +2,19 @@
 
 > What to do, in what order, and when to prompt freely instead of invoking a skill.
 >
-> **How to read.** §0–§2 to get working. §3 = workflow menu. §4 = intent → chain. §5 = skill dictionary. §11 = free-form prompt library. §13–§14 only when debugging or on first use.
+> **How to read.** Fresh machine or clone? [[Setup Guide]] first. Then: §0–§2 to get working. §3 = workflow menu. §4 = intent → chain. §5 = skill dictionary. §11 = free-form prompt library. §13–§14 only when debugging or on first use.
 
 ---
 
 ## 0. First Run
 
-Brand new vault (no prior `/sync` runs):
+Machine and vault setup — installs, clone, plugins, Claudian config, API keys — lives in [[Setup Guide]]. This guide assumes a configured environment.
+
+One-time metadata bootstrap on any fresh vault or clone ([[Setup Guide#7. Bootstrap the vault|Setup Guide §7]]):
 
 ```
-/sync        # creates _hot.md + .last_sync, reads all vault files
-/graph       # creates _graph.md from vault state
+/sync        # establishes the .last_sync watermark; first run reads all vault files
+/graph       # rebuilds _graph.md from vault state
 ```
 
 Without this bootstrap, `/sync TICKER` and scoped `/surface` block (they need `_graph.md`). On a vault that already has content, the first `/sync` reads everything — expected, not a bug.
@@ -41,6 +43,8 @@ _Inbox/ drop  →  /ingest  →  /sync  →  work  →  /sync  →  /graph last
 | `/retro` | Aggregates the window's activity; overlays newsflow + earnings + price; ranks trade ideas by narrative-price gap |
 | `/graph last` | Reconciles the dependency map after every write chain |
 
+**Upstream sensory layer** ([[n8n Automations]]): n8n watches between sessions — price tripwires, catalyst reminders, news sweeps, X harvesting. Alerts land in Telegram; X dashboards + digests land in `Daily Intel/` (News digests currently still in `_Inbox/` — pending redeploy, [[n8n Automations]] §3 Workflow 3) as scanning surfaces. Nothing auto-enters research — you still pick the links worth `/ingest`. Control surface: [[_watchers.md]], edited in natural language ("track TSMC on X", "stop watching UALink").
+
 **Periodic maintenance**: `/surface` (forward — ideas, blind spots), `/catalyst` (forward — event calendar), `/retro` (backward — market vs thinking), `/lint` (now — health check), `/archive-callouts` (now — sweep resolved callouts). Read-only chains (`/brief`, `/lint`, `/rollback` list) skip `/graph last`.
 
 ---
@@ -52,6 +56,9 @@ _Inbox/ drop  →  /ingest  →  /sync  →  work  →  /sync  →  /graph last
 Read _hot.md. Summarise what I was working on, what's unresolved,
 and suggest what to focus on today.
 ```
+
+### Morning scan (when n8n is live)
+Overnight Telegram alerts → newest `Daily Intel/` X Dashboard (crowd sentiment, ⚠ divergence, trending) → the daily News digest. Pick the 1–3 links worth `/ingest`. A ⚠ divergence flag is a prompt for `/stress-test` or an attended session — never a verdict.
 
 ### Process inbox
 ```
@@ -291,6 +298,9 @@ Vault stance determines the read: **alpha harvest** (vault predicted the gap), *
 | **See where market disagrees with me** | `/retro [window]` — inverted deltas are the signal |
 | **Model a "what if"** | `/scenario [event]` |
 | **See what's coming up** | `/catalyst` |
+| **See what the X crowd thinks** | Newest `Daily Intel/` X Dashboard; ⚠ divergence → `/stress-test` or attended session |
+| **Change what n8n watches** | Edit [[_watchers.md]] (or ask Claude in natural language) — next run complies |
+| **Review open findings** | Read [[_followups.md]] — resolved by `/status` / `/sync` |
 | **Clean up weak positions** | [[#Portfolio pruning cycle|§3.4]] |
 | **Run monthly maintenance** | [[#Monthly maintenance|§3.4]] |
 | **Check vault health** | `/lint` (full) or `/lint TICKER` (scoped) |
@@ -351,7 +361,7 @@ One entry per skill: arguments, creates, modifies, follow-up. Model + context as
 /surface NVDA                              # ticker + adjacencies + sector peers
 /surface semiconductors                    # sector-scoped
 ```
-- **Creates**: Research note (`(all)` suffix for deep runs). **Modifies**: `_hot.md`.
+- **Creates**: Research note (`(all)` suffix for deep runs). **Modifies**: `_hot.md`, `_followups.md` (open findings).
 - **Forked**: only the top-3-insights summary returns to your conversation.
 - **Follow-up**: `/deepen` or `/thesis` on opportunities; `/graph last`.
 - Default delivers ~95% of `all`'s signal at ~25% of the read cost; reach for `all` only when section-targeting may miss a cross-section pattern.
@@ -360,7 +370,7 @@ One entry per skill: arguments, creates, modifies, follow-up. Model + context as
 ```
 /stress-test NVDA
 ```
-- **Creates**: Research note, `_stress-test-manifest`. **Modifies**: thesis Log + Related Research, `_hot.md`.
+- **Creates**: Research note, `_stress-test-manifest`. **Modifies**: thesis Log + Related Research, `_hot.md`, `_followups.md` (open finding).
 - Acts as a short seller. Flags for reassessment but never changes conviction — that requires `/status`.
 - **Follow-up**: `/status` if needed → `/sync` → `/graph last`.
 
@@ -395,7 +405,7 @@ One entry per skill: arguments, creates, modifies, follow-up. Model + context as
 ```
 /retro [1w|1m|1q]                          # default 1w
 ```
-- **Creates**: immutable Research note (new file per run). **Modifies**: thesis Logs (Top-3 ideas only, `Retro insight:`), `_hot.md`. Forked (~60 reads + up to ~126 WebSearches stay off main context).
+- **Creates**: immutable Research note (new file per run). **Modifies**: thesis Logs (Top-3 ideas only, `Retro insight:`), `_hot.md`, `_followups.md` (open findings). Forked (~60 reads + up to ~126 WebSearches stay off main context).
 - Never auto-mutates conviction/status. Full mechanics + follow-up chains: [[#3.6 Retrospective review|§3.6]].
 
 ### Building
@@ -412,9 +422,12 @@ One entry per skill: arguments, creates, modifies, follow-up. Model + context as
 ```
 /deepen NVDA                               # auto-detects weakest section
 /deepen NVDA [section]                     # any thesis section by name (Bull Case, Risks, ...)
+/deepen NVDA --sync-metrics                # metric-sync mode: fix stale figures across the whole note
+/deepen --sync-metrics --all-flagged       # batch: every thesis flagged by the last /numbers --all-open
 ```
 - **Creates**: pre-deepen snapshot, `_deepen-manifest`, optional supporting Research note. **Modifies**: thesis (target section + Log), `_hot.md`.
 - Surgical — one section at a time, never a full rewrite. Aborts if the named section is absent; refuses `Legacy Callouts` and `Log`.
+- **`--sync-metrics`**: detects stale financial metrics across every in-scope analytical section (not just Key Metrics) and coherently updates every dependent sentence via a Key-Metrics-table → FMP → web-search waterfall, behind one confirmation gate. The batch form syncs every `/numbers --all-open`-flagged thesis in one operation — detection fans out to read-only agents, writes stay sequential in the main thread under a single rollback batch.
 - **Follow-up**: `/sync TICKER` → `/graph last`.
 
 #### `/brief`
@@ -428,7 +441,7 @@ One entry per skill: arguments, creates, modifies, follow-up. Model + context as
 
 #### `/lint`
 ```
-/lint                                      # full vault (~56 checks)
+/lint                                      # full vault (~64 checks, #1–#66)
 /lint NVDA                                 # scoped, faster
 ```
 - Read-only report (forked): structural, freshness, connection, analytical, snapshot/manifest hygiene, graph health, callout hygiene.
@@ -503,11 +516,33 @@ One entry per skill: arguments, creates, modifies, follow-up. Model + context as
 #### `/numbers`
 ```
 /numbers NVDA                              # refresh one thesis's Key Metrics table
-/numbers --all                             # refresh every active thesis (vault-wide lock)
+/numbers --all                             # every active high-conviction thesis (vault-wide lock)
+/numbers --all-active                      # every active thesis, any conviction
+/numbers --all-open                        # active + monitoring + draft (never closed)
 ```
 - Surgical refresh of the `## Key Metrics` table from FMP (market cap, multiples, margins, growth, forward P/E, FY revenue) with materiality flagging. Delegates the label→field mapping + delta math to `numbers_compute.py`; the LLM renders currency-correct cells. **Creates**: per-thesis pre-edit snapshot. **Modifies**: Key Metrics table + `key_metrics_last_refreshed:` frontmatter only — does NOT create Research notes or propagate.
 - Custom / forward-period / non-FMP-mapped rows are left untouched. Requires the FMP key.
+- Flags (never auto-edits) stale price/valuation framing in the Summary (Step 10b) and reports `Trigger touch:` lines when a refreshed value crosses a `## Conviction Triggers` threshold. `--all-open` output feeds `/deepen --sync-metrics --all-flagged`; `key_metrics_last_refreshed:` staleness is `/lint #61`.
 - **Follow-up**: none required (surgical); `/sync TICKER` only if a material delta changes the thesis.
+
+### Structural extraction (read-only; each pairs with a portfolio workflow)
+
+Analytical skills that report on ONE thesis and take no lock/snapshot — usable solo, and each is the single source of truth for a portfolio workflow that fans its `## Method` out (§15).
+
+#### `/dependency-map TICKER`
+Extracts the thesis's **dependency fingerprint** — the customers, inputs, tech transitions, and macro drivers the bull case actually rests on, with the 2–3 load-bearing ones named. Read-only. Portfolio sweep: `portfolio-correlation`.
+
+#### `/macro-exposure TICKER`
+Tags the thesis's **implicit macro bets** (AI capex, rates, FX, China, memory cycle…) with direction + magnitude, flagging the biggest *unstated* one. Read-only. Portfolio sweep: `portfolio-macro-exposure`.
+
+#### `/value-chain TICKER`
+Maps the thesis's **value-chain position** — suppliers, its own layer, customers, competitors — and where pricing power sits. Read-only. Portfolio sweep: `portfolio-supply-chain`.
+
+#### `/assumptions TICKER`
+Extracts the **load-bearing, falsifiable assumptions** the bull case needs and flags where the thesis contradicts itself. Read-only. Portfolio sweep: `vault-contradictions`.
+
+#### `/conviction-audit TICKER`
+Checks whether the thesis's **stated conviction matches its evidence**, and whether any `## Conviction Trigger` has **silently fired** without action. Read-only (feeds `/status`). Portfolio sweep: `portfolio-conviction-audit`.
 
 ---
 
@@ -661,13 +696,7 @@ Sequential `[!error]` addressing accumulates weakening Log entries that count to
 
 #### Setup (one-time per vault clone)
 
-Only on the FIRST machine — later clones inherit via git.
-
-1. Templater → **Template folder location** → `Templates`; enable **Automatic jump to cursor**
-2. Templater → **Template Hotkeys** → add all 4 files in `Templates/_callouts/`
-3. Hotkeys → search `Templater: _callouts/user-<type>` → bind `Mod+Alt+1..4`
-
-Commit `.obsidian/hotkeys.json` and `.obsidian/plugins/templater-obsidian/data.json` (both git-tracked).
+Hotkey and Templater configuration ships via git — new clones inherit it with zero setup. Verification table and from-scratch rebind steps: [[Setup Guide#5. First Obsidian launch|Setup Guide §5]].
 
 ---
 
@@ -700,6 +729,9 @@ as a research note. Link to every relevant thesis. Write for an
 investment analyst — focus on why it matters for pricing power and
 competitive moats.
 ```
+
+### Video-script breakdowns (`Thesis Breakdowns/`)
+`Templates/Breakdowns Template.md` is a self-contained prompt, not a Templater insert: fill its YAML inputs (ticker/theme, `mode: full-series | next-episode | refresh-episodes | replan-series`, episode count, runtime) and paste it into Claude. Output: a Series Map + 10–20 beginner-level 1.5–2.5-minute spoken scripts per series under `Thesis Breakdowns/<name>/`, built vault-first (thesis + mental models) with an incremental web check scoped to `freshness_window_days`. Read-only toward theses/sectors/research — script generation never edits the underlying notes.
 
 ### Source-type recipes
 
@@ -1075,6 +1107,7 @@ conviction and key arguments changed at each point.
 - [[#Monthly maintenance|§3.4 Monthly maintenance]]
 - Review `_hot.md` conviction changes and drift flags
 - "Conviction recalibration" prompt from [[#Conviction recalibration (manual)|§9]]
+- n8n monthly review (~20 min): prune [[_watchers.md]] rows, tripwire levels vs Conviction Triggers, pm2 status ([[n8n Automations]] §5)
 
 ### Quarterly (first trading day)
 - `/retro 1q` · `/surface all` (deep cross-section review) · `/prune` · `/archive-callouts 180`
@@ -1138,7 +1171,7 @@ Time-boxed rollouts live in [[_Archive/Docs/Changelog.md]] — this section hold
 
 ## 14. How the Vault Stays Consistent
 
-Short reference; deep mechanics in [[INFRASTRUCTURE.md]].
+Short reference; deep mechanics in [[INFRASTRUCTURE]].
 
 | File | Role | Owned by | Short story |
 |---|---|---|---|
@@ -1151,9 +1184,12 @@ Short reference; deep mechanics in [[INFRASTRUCTURE.md]].
 | `.rename_incomplete.TICKER` | Failed-rename repair marker | `/rename` | Hard-blocks ticker-scoped skills until cleared; re-run `/rename` to repair. |
 | `_Archive/Snapshots/` | Version control | Shared | Pre-edit snapshots + crash-recovery manifests. Cleaned by `/clean` (30-day closure floor). |
 | `.archive_ticker_registry.md` | Archive ledger | `/status`, `/prune` closures | Append-only; consumed by `/thesis` collision detection. |
+| `_followups.md` | Open-findings register | Shared append/resolve | Writers (`/stress-test`, `/retro`, `/surface`, `/numbers`) append; `/status`/`/sync` resolve; never auto-evicts (`_shared/followups-contract.md`). |
+| `_watchers.md` | n8n watch registry | You + Claude (NL edits) | Every n8n workflow re-parses it each run — a table edit changes what's pulled, no redeploy ([[n8n Automations]] §2.35). |
+| `Daily Intel/` | n8n output surfaces | n8n Workflows 3 & 5 | Dated X dashboards + digests, write-once; newest = current; never hand-edit ([[n8n Automations]] §8.6). |
 
 **Key invariants**:
-- `_graph.md` is written only by `/graph` (plus one surgical `/rename` header update).
+- `_graph.md` is written only by `/graph` (plus one surgical `/rename` header update, and a `Stop` hook that auto-runs the `/graph` engine after thesis/sector/macro edits — [[#15. Automation Layer|§15]]).
 - Every destructive skill snapshots first; recovery is `/rollback`.
 - Every state-modifying skill runs pre-flight (lock + rename-marker + sanitization + section probe): `.claude/skills/_shared/preflight.md`.
 
@@ -1164,10 +1200,68 @@ Short reference; deep mechanics in [[INFRASTRUCTURE.md]].
 | `/sync`, `/ingest`, `/thesis`, `/deepen`, `/stress-test`, `/compare`, `/scenario`, `/brief`, `/catalyst`, `/transcript` | Opus max | Main |
 | `/surface`, `/retro` | Opus max | Delegated subagent (Agent tool; report re-emitted verbatim) |
 | `/prune` | Opus max | Split — analysis delegated, mutation in main thread under the approval gate |
-| `/lint` | Opus max | Main — mechanical checks run by `lint.py` (~40 of 55); judgment pass reads only flagged files |
+| `/lint` | Opus max | Main — mechanical sweep by `lint.py` (most of the ~64 checks); judgment pass reads only flagged files |
 | `/graph`, `/rename`, `/rollback`, `/status`, `/clean`, `/archive-callouts` | Sonnet max | Main |
 | `/numbers` | Sonnet (effort medium) | Main — arithmetic delegated to `numbers_compute.py` |
+| `/dependency-map`, `/macro-exposure`, `/value-chain`, `/assumptions`, `/conviction-audit` | Opus (high) | Main — read-only analytical extractors; each pairs with a portfolio workflow (§15) |
 
 **Execution mechanism (2026-07-08)**: "Delegated" / "Split" skills use **Agent-tool delegation**, not frontmatter `context: fork` — the latter was reverted 2026-06-07 (it returned the report as unrendered stdout, leaving the chat panel blank). Under delegation the subagent does the heavy reads and returns the report as a tool result, which the main thread re-emits verbatim; rendering is preserved and main-context cost is just the returned report. `/catalyst` still runs inline (its mandatory live-progress contract conflicts with delegation — pending a decision). Each skill's own SKILL.md "Execution context" section is the source of truth.
 
 Sonnet-max skills are mechanical (extraction, renames, frontmatter, age math) — faster with no observed correctness impact; watch `/status` trigger-conflict detection and `/rollback` cascade classification for regressions. Rollout history: [[_Archive/Docs/Changelog.md]].
+
+---
+
+## 15. Automation Layer
+
+Behaviors the harness and OS run for you without a prompt (added 2026-07-22). Deep mechanics: [[INFRASTRUCTURE#14. Harness automation layer (hooks · schedule · workflows)|INFRASTRUCTURE §14]].
+
+### Protected-file guard (automatic)
+
+Writes to `CLAUDE.md`, `Templates/`, `.obsidian/`, and `.claude/skills/` are now blocked at the tool level — the Change-Safety Tier 1 rule is enforced by the harness, not just Claude's memory. The hook sees only the tool call, not intent, so it blocks *every* edit to these paths by default. Two ways through:
+
+- **Just ask.** On an explicit request ("edit CLAUDE.md to add X"), Claude drops a `.claude/.allow-protected` sentinel, makes the edit, and removes it — the guard allows the edit for that request only, then re-arms at turn end. No restart needed.
+- **Session-wide**: launch with `CLAUDE_VAULT_ALLOW_PROTECTED=1` (or add it to `.claude/settings.json` `env`) to disable the guard for a whole session. Or edit the file outside Claude.
+
+The point of the default-block is to stop *accidental / unrequested* edits — the sentinel step is a deliberate, logged unlock, matching CLAUDE.md's "not without explicit instruction."
+
+### Auto graph-refresh (automatic)
+
+After any turn that edits a thesis, sector, or macro note, `_graph.md` rebuilds itself once at turn end — core-loop step 4 (`/graph last`) is now automatic. You'll see a `🔗 _graph.md refreshed` note. Manual `/graph` still works and is **still required after `/rename`** (full rebuild). A `⚠️ _graph.md auto-refresh` warning → run `/graph` by hand.
+
+> **Per-machine setup**: hooks are configured in `.claude/settings.json` (git-ignored). After editing the `hooks` block, open `/hooks` once or restart so the harness reloads them. The hook scripts (`.claude/hooks/`) are git-tracked, so a clone only needs the `settings.json` `hooks` entries re-added.
+
+### Weekly scheduled runs (macOS launchd)
+
+Two jobs run unattended against your **live local vault** (not cloud, nothing pushed to GitHub):
+
+| Job | When (local) | Runs |
+|---|---|---|
+| `com.investmentvault.catalyst` | Sunday 18:00 | `/catalyst` — refresh the event calendar |
+| `com.investmentvault.lint` | Sunday 20:00 | `/lint` — health check |
+
+- **Where output lands**: `/catalyst` rewrites `_catalyst.md` (open it in Obsidian). `/lint` publishes a dated report to `Daily Intel/<date> - Vault Health - lint.md` — it appears in your morning scan, not just a log file. Both are prunable via `/clean daily-intel`.
+- **Logs**: `.claude/schedule/logs/` (raw run output + the captured `lint.last.json`).
+- **Test first**: run `.claude/schedule/run-vault-skill.sh catalyst` (or `lint`) manually, then check `_catalyst.md` / the new `Daily Intel/` health note.
+- **Status / disable / reschedule**: `launchctl list | grep investmentvault` · `launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.investmentvault.catalyst.plist` · edit `Hour`/`Weekday` in the plist then `launchctl bootstrap gui/$(id -u) <plist>`.
+- Runs only when the Mac is awake — a missed run fires on next wake.
+
+### Workflows — multi-agent sweeps (on demand)
+
+Workflows fan an analysis across the **whole portfolio at once** — heavier than skills (dozens of subagents), so you run them deliberately, not routinely. Your catalog is **[[_workflows.md]]** (auto-generated) — that's the answer to *"what workflows do I have at hand."* Skills self-list in the `/` menu; workflows don't, so `_workflows.md` is their menu.
+
+**Invoke** by asking Claude *"run the `NAME` workflow"* (add args in plain English). First run prompts a usage warning (they can spawn ~80 agents); watch progress with `/workflows`.
+
+| Workflow | Pairs with | Does |
+|---|---|---|
+| `portfolio-stress-test` | `/stress-test` | Short-seller sweep + skeptic verification → ranked downside risk |
+| `portfolio-correlation` | `/dependency-map` | Correlated bets — names that secretly ride the same variable |
+| `portfolio-macro-exposure` | `/macro-exposure` | Macro concentration — the variable the book is really betting on |
+| `portfolio-supply-chain` | `/value-chain` | Shared suppliers/customers + cross-thesis single points of failure |
+| `vault-contradictions` | `/assumptions` | Where two theses bet opposite ways on the same industry claim |
+| `portfolio-scenario` | `/scenario` | Model a macro event across the book (needs the event) → winners/losers + Major/Minor/Neutral |
+| `portfolio-retro` | `/retro` | Portfolio retro without the rate-limit → trade ideas ranked by narrative-price gap |
+| `portfolio-conviction-audit` | `/conviction-audit` | Over-convicted names + Conviction Triggers that fired without action |
+
+**The pattern behind all of them**: each fans out its paired skill's `## Method` **read-only** — so edits you make to the skill flow straight into the sweep, and single-name `/skill` stays identical to the batch — then one synthesis produces a consolidated report. **Read-only by default**; `persist: true` writes results via a **single sequential writer**, so parallel agents never race the shared `_followups.md`/`_hot.md` (analysis fans out; writing serializes). Common knobs: `status` (default active+monitoring), `limit`, `model` (default sonnet), `persist`.
+
+**Adding a workflow**: drop `<name>.js` in `.claude/workflows/`, then regenerate the catalog — `node .claude/workflows/_generate_registry.mjs` (or just ask me — I run it after building one). Internals + the safe-write architecture: [[INFRASTRUCTURE#14.3 Workflows — .claude/workflows/|INFRASTRUCTURE §14.3]].

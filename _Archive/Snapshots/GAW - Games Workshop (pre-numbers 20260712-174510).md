@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/GAW - Games Workshop]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, consumer, GAW, games-workshop, warhammer, IP-monetization, pricing-power, cultural-moat]
 status: active

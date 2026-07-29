@@ -18,7 +18,7 @@ key_metrics_last_refreshed: 2026-07-12
 
 ## Key Non-consensus Insights
 
-- **[Business Model Transition] ISRG has completed the rarest transition in medtech: from hardware monopolist to surgical intelligence platform, and the market still categorizes it wrong.** 83-85% recurring revenue, over-the-air software updates via Network CCM, usage-based instrument pricing (~$1,400/procedure), and the emerging Case Insights analytics platform make the business structurally closer to enterprise SaaS than a device company. The planned "Surgical Quality" subscription model would formalize this into a net-new, high-margin recurring revenue stream from the installed base.
+- **[Business Model Transition] ISRG has completed the rarest transition in medtech: from hardware monopolist to surgical intelligence platform, and the market still categorizes it wrong.** 83-85% recurring revenue, over-the-air software updates via Network CCM, usage-based instrument pricing (~$1,860/procedure, company-disclosed 2024; ~$1,911 implied by FY2025's $6.02B I&A over 3.15M procedures), and the emerging Case Insights analytics platform make the business structurally closer to enterprise SaaS than a device company. The planned "Surgical Quality" subscription model would formalize this into a net-new, high-margin recurring revenue stream from the installed base.
 
 > [!question] 2026-05-01 → Addressed 2026-05-01
 > **Prompt:** *What are the risks of instrument re-use especially in markets like China and EM countries and third party instrument displacement reducing instrument based pricing on a procedure level.*
@@ -68,16 +68,16 @@ ISRG's business model is frequently described as "razor-and-blade," but this und
 
 The economic flywheel operates in three stages:
 1. **Land** — Sell or lease a da Vinci system ($1.5-2.5M depending on model and configuration), establishing the platform in the operating room
-2. **Expand** — Generate recurring revenue from instruments and accessories (~$1,400+ per procedure, with limited-use enforcement locking instruments after 10 uses) and service contracts ($100K-$225K annually)
+2. **Expand** — Generate recurring revenue from instruments and accessories (~$1,860 per procedure, company-disclosed 2024, with chip-enforced limited-use locking — 6→15 uses on 5 of 6 dV5 instruments since May 2025, Mega SutureCut at 10) and service contracts ($100K-$225K annually)
 3. **Deepen** — Integrate the hospital into the data ecosystem through Case Insights, training programs, and increasingly, analytics subscriptions
 
-This model generates **83-85% recurring revenue** — a ratio more typical of enterprise SaaS than medical devices. The installed base of ~11,100 systems performing ~3.15M procedures annually at ~$1,400 in consumables per case creates a ~$4.4B annuity stream from instruments alone before accounting for services.
+This model generates **83-85% recurring revenue** — a ratio more typical of enterprise SaaS than medical devices. The installed base of ~11,100 systems performing ~3.15M procedures annually at ~$1,860 in consumables per case (company-disclosed 2024; ~$1,911 implied by FY2025's $6.02B I&A) creates a **~$6.0B annuity stream** from instruments alone before services — 37% above the ~$4.4B previously carried here, which contradicted this note's own $6.02B I&A line in §Key Metrics by $1.6B. Per system: ~271 procedures/year at >$500K of variable consumables against a ~$1.62M one-time da Vinci ASP amortised over 7-10 years. The correction cuts both ways — the annuity is larger than modelled, and so is the absolute high-margin base exposed to the May-2025 6→15 instrument-life extension, China VBP (Risk #2), and remanufacturing (Risk #3).
 
 ### Revenue Segmentation
 
 | Segment | FY2025 Revenue | % of Total | Growth Driver | Margin Profile |
 |---------|---------------|------------|---------------|----------------|
-| **Instruments & Accessories** | $6.02B | ~60% | Procedure volume × consumables per case | ~80% gross margin; highest-quality revenue |
+| **Instruments & Accessories** | $6.02B | ~60% | Procedure volume × consumables per case | ~80% gross margin; highest-quality revenue. ~$1,860/procedure disclosed 2024 → ~$1,911 implied FY2025 ($6.02B ÷ 3.15M); the direct empirical test of 6→15 life-extension cannibalization |
 | **Systems** | ~$1.7B | ~17% | New placements + trade-in upgrades (dV5 cycle) | Lower margin; dV5 initially dilutive vs mature Xi |
 | **Services** | ~$2.3B | ~23% | Installed base × annual service contracts | Stable, predictable; scales with base |
 
@@ -174,7 +174,7 @@ US annual procedure stack:
 | ISRG's six FDA-cleared categories | ~80-90% of eligible pool | Cardiac added Jan 2026 |
 | Currently performed robotically | ~1.5-2M (~25-30% of eligible) | 20-45% by major specialty; urology saturation ~83% vs general surgery still <30% |
 
-100% closure is not the realistic ceiling. Open and laparoscopic remain economically optimal for (a) simple high-volume cases where the $1,400 vs $200 consumables differential outweighs throughput/outcomes benefit, (b) small community hospitals lacking system economics, (c) procedures with minimal mechanical-advantage uplift (basic cholecystectomy with experienced laparoscopist). Realistic asymptote: 60-70% of robotic-eligible procedures over 10-15 years → ~4-5M US robotic procedures at peak, a 2-3x runway from today's 1.5-2M.
+100% closure is not the realistic ceiling. Open and laparoscopic remain economically optimal for (a) simple high-volume cases where the $1,860 vs $200 consumables differential outweighs throughput/outcomes benefit, (b) small community hospitals lacking system economics, (c) procedures with minimal mechanical-advantage uplift (basic cholecystectomy with experienced laparoscopist). Realistic asymptote: 60-70% of robotic-eligible procedures over 10-15 years → ~4-5M US robotic procedures at peak, a 2-3x runway from today's 1.5-2M.
 
 Global pool is steeper: ~200-300M total surgeries, ~5M robotic today. Europe (~2% penetration) and Asia ex-China (low single digits) anchor the international runway. FY2025 international procedure growth (23%) outpaced global (19%); dV5 international rollout (CE Mark July 2025, Korea late 2025, Japan 2026) accelerates the curve. Timeline to ceiling: ~10-15 years US, +5-10 years international, gated by per-indication FDA clearances, 7-10 year hospital capex cycles, and ~13K residents/year surgeon-training pipeline.
 
@@ -185,7 +185,7 @@ Global pool is steeper: ~200-300M total surgeries, ~5M robotic today. Europe (~2
 ```
 Platform OEMs (ISRG, Medtronic, J&J, CMR)
     ↓
-Instruments & Consumables (~$1,400/procedure; 60% of ISRG revenue; highest-margin layer)
+Instruments & Consumables (~$1,860/procedure; 60% of ISRG revenue; highest-margin layer)
     ↓
 Service & Maintenance ($100K-$225K/year per system)
     ↓
@@ -392,12 +392,14 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
+- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research; [[Lens - Value Layer Monopoly]] first-applied 2026-07-15): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Value Layer Monopoly]]
 - **Triggers + evidence status** — hypotheses tested, not verdicts:
 	- Promote conditions 2-of-3 SATISFIED: (a) Q1 (Apr 21) confirmed — revenue $2.77B +23%, EPS +38%, 232 dV5 placements, GM guide RAISED to 67.5-68.5%, procedure guide raised to 13.5-15.5%; (c) valuation at the 35-40x doorstep (~41x fwd, stock -28% YTD to ~$415, trailing ~50x vs 5-yr median 72x). Only (b) failed: Ion +39% vs the 50%+ sustain bar, decelerating, with US lung-biopsy penetration past 50% — the diagnostic-funnel TAM leg is maturing early.
 	- THE UNWRITTEN FALSIFIER FIRED: ISRG voluntarily extended instrument lives 6→15 uses (May 21) — the thesis modeled instrument-revenue erosion only as external attack (remanufacturers, antitrust, VBP), never as management pre-emptively cutting per-procedure economics to widen the moat against Hugo/Ottava's cost pitch. Market read it as razor-blade self-cannibalization (-15%+); precedent says overdone (2020 Extended Use: modeled -7%, realized -2%; Goldman ~1%/yr).
 	- Competition ON-SCHEDULE, not faster: Hugo FDA-cleared (urology, Dec 2025; first US case Feb 17), dual 510(k)s filed Jun 3 (general + gyn) — indication ladder compressing but years from parity; Ottava De Novo submitted Jan 7, uncleared; CMR US debut (chole only); MicroPort Toumai 300+ orders (+50% in 4 months).
 	- NEW unmodeled risks: SureForm 30 Gray stapler recall — 1 death, 4 serious injuries (Mar 11) + dV5 foot-pedal Class II recall — first product-safety cluster (thesis has zero recall line); CEO transition COMPLETE (Rosa since Jul 1 2025 — thesis never mentions it despite its Management/Culture lens); analyst schism (DB $440 vs Goldman $558).
+	- [[Lens - Value Layer Monopoly]] §1 locate-the-layer + §1B pricing-power test (first application, 2026-07-15, per [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]]) — the layer is not the robot but the chip-metered instrument socket beneath a 90,000-surgeon training standard and a 43,000-article evidence base (~$1,860/procedure × ~271 procedures/system/yr = >$500K/system/yr variable vs a ~$1.62M one-time ASP); §1A/§1B fire STRONG-FIT. **Hypothesis to test, against the lens's own §1B rule that "a layer monopoly that cannot price is either not a monopoly or is restrained by a disqualifier":** ISRG voluntarily cut its own take-rate (6→15 uses, May 2025) on a base 37% larger than this note previously modelled, in the same window Hugo cleared and Ottava filed — is that the §2 "commoditizing layer" tell rather than the moat-widening move it was narrated as? Counter-evidence to weigh: 2020 Extended Use modelled -7%, realized -2%. Open question the framing forces: is the durable layer the *instrument socket* (contestable by Restore, VBP, Chinese cartridge suppliers) or the *surgeon-training standard* (contestable by none)? §4 alpha test fails either way — ~95% US share is the most-cited fact about this company, so "owns the layer" carries no variant perception.
+	- [[Generalist - Overview]] [G-10] base rates / outside view (2026-07-15) — the 2013 ACOG warning + FDA warning letter + adverse-event spike + placement stall is the only reference-class observation of a safety shock in this category: it resolved as multiple compression without annuity damage, reset by Xi (2014). Applied to the 2026 SureForm/foot-pedal cluster the base rate says dent, not break. **Adversarial read (the actual hypothesis to test): 2013 was drawn from a regime with zero FDA-cleared soft-tissue competitors — a hospital that paused had nowhere to go. Hugo is cleared, Ottava is filed. A base rate observed under monopoly does not transfer to a contested market by assumption.**
 - **Disconfirming check** (evidence-updated 2026-07-10): base rate — razor-razorblade medtech monopolies hold share 5-10 years after first credible competition but multiples compress PERMANENTLY once a competitor is priceable; the 72x→41x de-rate looks like regime change, not panic, capping any "return to 60-70x" leg. Single falsifying datapoint: the Jul 16 Q2 print's I&A revenue-per-procedure + first My Intuitive+ paid-renewal data — the direct empirical test of both the cannibalization math and the data-monetization hypothesis. Under its own framework this note is at a promote-decision point (2/3 conditions met) — but price the recall, the self-cannibalization vector, and the CEO change first (Tier 3 — user decision). Formalize the Position Sizing conditions into a Conviction Triggers section.
 
 ## Related Research
@@ -407,6 +409,7 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 - [[Research/2026-03-29 - Cross-Procedure Capability in Surgical Robotics]] — Cross-procedure compounding moat; Hugo/Ottava competitive positioning; regulatory pathway analysis
 - [[Research/2026-01-18 - Healthcare and Biotech Stock Screen]] — Initial screen that identified ISRG
 - [[Research/2026-04-23 - ISRG - Industrial Robotics Convergence Risk - deep-dive]] — Industrial-robotics + humanoid convergence pathways (KUKA/Midea 100% Chinese ownership + LBR Med medical-certified since 2015; Stryker Mako RPS "AccuStop reduces soft tissue damage" messaging Feb 2026; GTC 2026 Physical AI coalition lumps ABB/FANUC/KUKA/Yaskawa industrial + ISRG/CMR/J&J/Medtronic surgical on same Isaac/GR00T/Cosmos/Omniverse stack); probability framework 7yr ~15-25% vs stock-implied ~5-10%; supports Risk #11
+- [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]] — Quartr business-model profile (May 2025). Supplies the primary unit economics that corrected this note's per-procedure figure ($1,860 I&A/procedure, ~271 procedures/system/yr, >$500K/system/yr consumables, >50% of the da Vinci base on operating lease) and is the only vault record of the 2013 ACOG/FDA backlash — the base rate for the 2026 safety cluster. Pre-dates Hugo clearance and Ottava filing (stale on competition); silent on China VBP and remanufacturing
 - [[Sectors/Surgical Robotics]]
 
 ## Log
@@ -438,3 +441,7 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass): 0 metrics changed — Stock Price, Market Cap, FY2025 Revenue, Gross Margin, Operating Margin, and FCF Yield all round to the same displayed values as the prior pass. Snapshot: [[_Archive/Snapshots/ISRG - Intuitive Surgical (pre-numbers 20260712-183936)]]
+
+### 2026-07-15
+- [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]]: Corrected instrument unit economics — $1,860/procedure (company-disclosed 2024) replaced ~$1,400 in 5 places; annuity restated ~$4.4B→~$6.0B, resolving a $1.6B self-contradiction against this note's own $6.02B I&A line. Superseded the "10 uses" lock claim with the 6→15 extension already recorded in §Mental Models.
+- Added [G-10] 2013-backlash base rate (with the caveat it was observed under zero cleared competitors) + first application of [[Lens - Value Layer Monopoly]] to §Mental Models — conviction unchanged (medium): a 37% larger annuity is offset by a proportionally larger base exposed to the 6→15 extension, China VBP, and remanufacturing. Snapshot: [[_Archive/Snapshots/ISRG - Intuitive Surgical (pre-sync 2026-07-15-173001)]]

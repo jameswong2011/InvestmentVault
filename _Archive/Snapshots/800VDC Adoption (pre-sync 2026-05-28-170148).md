@@ -364,7 +364,7 @@ The reports converge on a similar structural picture but diverge on emphasis. Sy
 - Source C: [[_Inbox/processed/compass_artifact_wf-f16530a3-3670-4658-b53b-01b9a07ffdba_text_markdown]] — Solid-state transformer bottleneck map with MV SiC module concentration analysis, M&A target identification, China SST landscape
 - Related: [[Research/2026-04-28 - VICR - Vertical Power Delivery Technical Architecture and Q1 2026 Earnings - deep-dive]] — chip-level on-board layer (the "last 1.5 mm" of the 800VDC chain)
 - Related: [[Macro & Technology/CXL Memory Disaggregation Framework]] — parallel architectural-primitive macro for AI infrastructure
-- Related: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — risk context for the whole AI capex cycle that 800VDC monetizes
+- Related: [[AI Bubble Risk and Semiconductor Valuations]] — risk context for the whole AI capex cycle that 800VDC monetizes
 - [[Research/2026-05-24 - Retrospective 1w - Synthesis]] — Mid-cycle rotation: structural-long capex floor reaffirmed (NVDA $1T Blackwell+Rubin visibility 2025-2027 + CreditSights $750B 2026 hyperscaler capex) keeps 800VDC adoption trajectory on the base-case 10-15% 2027 → 65-75% 2032 curve; no contradiction with existing adoption gates (liquid cooling, SST/nanocrystalline supply, DC standards)
 
 ## Log

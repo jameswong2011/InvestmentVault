@@ -211,7 +211,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Theses/285A - Kioxia]] — NAND end-customer; Kioxia capex driver for Lam NAND etch/dep share
 - [[Theses/TSM - Taiwan Semiconductor.md]] — leading-edge foundry; N2/A14 GAA Akara revenue source
 - [[Sectors/Semiconductor Capital Equipment.md]] — sector context
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — multiple-compression scenario macro context
+- [[AI Bubble Risk and Semiconductor Valuations]] — multiple-compression scenario macro context
 - [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas.md]] — WFE TAM growth; Lam Vantex line for HBM4 TSV; Akara 2x-3x expansion 2026
 - [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation.md]] — head-to-head AMAT vs LRCX; ALTUS Halo Mo / SABRE 3D / NAND share-of-wallet expansion data
 - [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas.md]] — Dec 2025 quarter mix shift to 59% Foundry/Logic; CSBG $1.99B
@@ -254,3 +254,6 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: fwd P/E 35x→43x (+126% vs ~19x 5Y avg) across Summary, OQ #5, Risks #5, Fwd-PE Notes; Mkt-Cap Notes 'spot ~$140-145'→~$322. Snapshot: [[_Archive/Snapshots/LRCX - Lam Research (pre-deepen-metrics-sync 2026-07-12-203456)]]
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC capex raised to $60-64B, "next three years even more significantly higher"; N2 ramp (3% of Q2 revenue, sold out) + AP at 10-20% of capex lift etch/deposition intensity per wafer — conviction unchanged (high); multi-year WFE floor rising from the #1 customer.

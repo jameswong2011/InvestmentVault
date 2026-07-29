@@ -26,7 +26,7 @@ Only the DRAM note required propagation; the CPO note was already fully propagat
 - (pre-emptive, NOT edited) [[Sectors/Optical Networking & Photonics]] — snapshot taken before confirming CPO note already propagated; no edit applied. Snapshot: [[_Archive/Snapshots/Optical Networking & Photonics (pre-sync 2026-06-01-004132)]]
 
 ## Macro notes touched
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] (Tier B — RR + Log; memoryflation as cost-side input to the $650B threshold)
+- [[AI Bubble Risk and Semiconductor Valuations]] (Tier B — RR + Log; memoryflation as cost-side input to the $650B threshold)
 
 ## Source research notes processed
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — PROPAGATED to 12 theses + 2 sectors + 1 macro; `propagated_to:` backfilled (Step 1.9).

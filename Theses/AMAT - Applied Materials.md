@@ -295,3 +295,6 @@ The bear case is real and is why conviction is medium, not high. Three structura
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (second same-day pass): 0 metrics changed. Market Cap ($478B) and FCF Yield (~1.3%) render identically after rounding — data <1hr fresh. All remaining rows are custom/no-FMP-mapping, left untouched. Snapshot: [[_Archive/Snapshots/AMAT - Applied Materials (pre-numbers 20260712-184147)]]
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC capex raised $52-56B→$60-64B with "next three years even more significantly higher than the past three" + 13 new Taiwan leading-edge/AP fabs + 4+ more Arizona fabs — conviction unchanged (high); direct multi-year WFE demand upgrade from the #1 customer, strengthens the L2 rising-floor read.

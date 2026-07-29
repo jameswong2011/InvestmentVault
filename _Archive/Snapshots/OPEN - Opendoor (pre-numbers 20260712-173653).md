@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/OPEN - Opendoor]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2025-11-28
 tags: [thesis, OPEN, proptech, real-estate, ibuyer]
 status: monitoring

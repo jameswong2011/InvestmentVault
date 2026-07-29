@@ -263,7 +263,7 @@ Chinese suppliers close 008004 chemistry gap faster than expected (3-5 year hori
 - [[Sectors/MLCC & Power Semiconductors]] — primary sector note; Murata is the #1 incumbent and majority share holder
 - [[Sectors/Compute & AI Compute Accelerators]] — AI server MLCC pull originates from NVIDIA accelerator design-ins
 - [[Sectors/Neoclouds & GPU-as-a-Service]] — neocloud capex demand pattern feeds MLCC unit pull through NVIDIA supply chain
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — AI demand durability is the central macro variable for the AI server MLCC pillar
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI demand durability is the central macro variable for the AI server MLCC pillar
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger (mature); TRIM Low→1-2% (800VDC MLCC scaling + 50% EV share real, but ROIC 9% rich vs multiple)
 
 ## Legacy Callouts

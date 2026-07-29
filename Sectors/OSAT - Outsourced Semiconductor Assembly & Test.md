@@ -360,7 +360,7 @@ For an investor expressing the "OSAT advanced + test franchise is structurally m
 ### Macro linkage
 - [[Macro & Technology/Organic ABF to Glass-Core Substrate Transition]] — substrate architecture transition; FOPLP / CoPoS / glass-interposer roadmap; Powertech + ASE + Samsung FOPLP pilot timeline.
 - [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]] — round-wafer→panel format transition; the CoPoS acceleration (2028–29 HVM, NVIDIA Rubin anchor) that reverses the prior OSAT overflow-extension thesis (see Q3, Macro shift #4, Insight #2).
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — AI capex cycle is the primary OSAT advanced + test demand driver.
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI capex cycle is the primary OSAT advanced + test demand driver.
 - [[Macro & Technology/800VDC Adoption]] — datacenter power architecture transition; indirectly affects OSAT thermal-handler capex via AI rack thermal density.
 
 ## Legacy Callouts

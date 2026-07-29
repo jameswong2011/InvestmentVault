@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-07-09
 tags: [macro, semiconductors, memory, catalyst, sector/semiconductors]
 status: active

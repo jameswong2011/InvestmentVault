@@ -104,7 +104,7 @@ Specific, falsifiable events that invalidate the thesis:
 ## Idiosyncratic vs cluster-wide (graph primer)
 
 - **Idiosyncratic to NET** (peers unaffected — surfaced first per confirmation-bias mitigation): SASE niche-player status (CRWD/PANW are Leaders/platform-strong); Workers gross-margin drag; pay-per-crawl pivot/failure; unshipped NET Dollar; multi-outage single-point-of-failure risk; Prince selling.
-- **Cluster-wide** (Agentic Internet + Cybersecurity clusters): "will agent-commerce volume convert to revenue?" also gates [[Theses/CRCL - Circle Internet Group]] (x402 take-rate) and [[Theses/SHOP - Shopify]] (agent GMV); AWS/hyperscaler x402 commoditization pressures CRCL's issuer economics too; high-multiple/rate-regime compression hits the whole [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] cohort. NET's *distinctive* damage is idiosyncratic; its monetization-timing risk is shared.
+- **Cluster-wide** (Agentic Internet + Cybersecurity clusters): "will agent-commerce volume convert to revenue?" also gates [[Theses/CRCL - Circle Internet Group]] (x402 take-rate) and [[Theses/SHOP - Shopify]] (agent GMV); AWS/hyperscaler x402 commoditization pressures CRCL's issuer economics too; high-multiple/rate-regime compression hits the whole [[AI Bubble Risk and Semiconductor Valuations]] cohort. NET's *distinctive* damage is idiosyncratic; its monetization-timing risk is shared.
 
 ## Source Excerpts
 

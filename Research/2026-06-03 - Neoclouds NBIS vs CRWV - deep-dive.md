@@ -104,4 +104,4 @@ The source advances four reusable analytical lenses:
 - [[Theses/NVDA - Nvidia]] (kingmaker / equity flywheel / upstream pricing) · [[Theses/META - Meta]] ($27B NBIS customer) · [[Theses/VRT - Vertiv Holdings]] (power/cooling layer)
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] (GPU useful-life extension, rental-rate offset)
 - [[Research/2026-04-16 - NVDA - Jensen Huang Moat Persistence Interview - deep-dive]] (Jensen flywheel frames neoclouds as demand-side reinforcements)
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]
+- [[AI Bubble Risk and Semiconductor Valuations]]

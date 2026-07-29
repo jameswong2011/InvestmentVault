@@ -172,7 +172,7 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 - [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation]] — 20% recommended ASMI allocation; 44x P/E; 55% ALD share
 - [[Research/2026-04-15 - BESI - Hybrid Bonding Market Projections]] — adjacent advanced-packaging tailwind through ASMPT lens
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — TSMC $100B 2028 capex, semicap demand validation
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — hyperscaler capex normalization risk
+- [[AI Bubble Risk and Semiconductor Valuations]] — hyperscaler capex normalization risk
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→4-5% (POR annuity reframe; relative-value laggard +92% 1Y; ALD + Epi two engines)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: 1b/1c DRAM node migration (combined 1b+1c capacity +~80% 4Q25→4Q27) lifts ALD-layer demand
 
@@ -202,3 +202,6 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass, fmp_symbol ASM.AS verified): 0 rows edited — all 6 mapped rows (Market Cap, Forward P/E, Revenue Growth, Gross Margin, Operating Margin, FCF Yield) re-render identical to current cell text; no material change since last-hour refresh. Snapshot: [[_Archive/Snapshots/ASMI - ASM International (pre-numbers 20260712-184025)]]
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC capex $60-64B + multi-year "significantly higher" signal; GAA node cadence intact (N2 sold out, A14 pre-prod 2027/HVM 2028) — conviction unchanged (high); ALD-intensity growth per node confirmed by the roadmap, not just the cycle.

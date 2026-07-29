@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/AMAT - Applied Materials]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-04-29
 tags: [thesis, semiconductor-capital-equipment, AMAT, GAA, BSPDN, HBM, advanced-packaging]
 status: active

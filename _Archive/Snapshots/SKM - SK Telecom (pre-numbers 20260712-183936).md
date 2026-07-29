@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/SKM - SK Telecom]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-04-26
 tags: [thesis, telecommunications-services, SKM]
 status: monitoring
@@ -52,7 +52,7 @@ Compare SKM's setup to SoftBank Group's Arm stake: SoftBank's 90% Arm holding is
 
 5. **What is the run-rate operating margin trajectory if (a) Korean wireless wholesale rate cuts (52% reduction for MVNOs) trigger further price compression and (b) sovereign AI competition with KT/LG U+ erodes SKT's enterprise AI premium?** MNO segment (~73% of consolidated revenue) is the cash engine — a 200bps margin erosion offsets several years of AI growth. The Stage X 4th-carrier failure removed near-term existential risk but the de facto MVNO-driven price warfare persists.
 
-6. **Is the 1GW Ulsan AIDC actually contracted with disclosed take-or-pay agreements, or is the capacity announcement aspirational?** Press releases describe capacity targets without disclosed off-take. Stranded-capacity risk if compute demand normalizes — and this risk is highlighted in the [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations.md|AI Bubble Risk]] vault macro note as a system-wide concern. SKT's capex (₩2.13T FY25, -11% YoY but still elevated) is heavily AIDC-weighted; over-build scenario adds 200-300bps margin drag through 2027.
+6. **Is the 1GW Ulsan AIDC actually contracted with disclosed take-or-pay agreements, or is the capacity announcement aspirational?** Press releases describe capacity targets without disclosed off-take. Stranded-capacity risk if compute demand normalizes — and this risk is highlighted in the [[AI Bubble Risk and Semiconductor Valuations|AI Bubble Risk]] vault macro note as a system-wide concern. SKT's capex (₩2.13T FY25, -11% YoY but still elevated) is heavily AIDC-weighted; over-build scenario adds 200-300bps margin drag through 2027.
 
 7. **What is the residual liability from the USIM data breach beyond the ₩134.8B PIPC fine?** Class actions, foreign regulatory exposure (some affected users were US/EU residents using Korean SIMs), and potential consent-decree compliance costs are not visible in disclosed FY25 numbers. Korean class-action regime is weaker than US but has expanded in recent years. Tail risk could be ₩200-500B over 2026-2028.
 
@@ -220,7 +220,7 @@ Specific drivers:
 
 2. **Korean telecom margin compression accelerates beyond expectations**. Risk: MVNO wholesale rate cuts trigger broader price war. SKT's 5G ARPU (₩30,554) is already the highest in Asia-Pacific — further premium-tier growth is exhausted. ARPU could decline 3-5% over 2026-2027, eliminating the wireless cash flow growth that supports the ≥50% capital return policy.
 
-3. **AIDC over-build / AI capex bubble**. The vault macro note [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations.md|AI Bubble Risk]] flags global AI compute over-investment as a structural concern. SKT's 1GW Ulsan capacity is being built ahead of clearly contracted demand. If the AI compute cycle peaks 2026-2027, SKT carries stranded depreciation through 2030.
+3. **AIDC over-build / AI capex bubble**. The vault macro note [[AI Bubble Risk and Semiconductor Valuations|AI Bubble Risk]] flags global AI compute over-investment as a structural concern. SKT's 1GW Ulsan capacity is being built ahead of clearly contracted demand. If the AI compute cycle peaks 2026-2027, SKT carries stranded depreciation through 2030.
 
 **Position risks (thesis is right but stock falls anyway)**:
 
@@ -267,7 +267,7 @@ Specific drivers:
 - [[Theses/NVDA - Nvidia.md]] — Primary GPU supplier to Anthropic; SKT's GPUaaS uses 1,000+ Nvidia B200 GPUs; Nvidia capex demand drives SKT AIDC utilization
 - [[Theses/AMD - Advanced Micro Devices.md]] — Secondary AI compute supplier; Anthropic ecosystem exposure
 - [[Theses/TSM - Taiwan Semiconductor.md]] — Foundry to all AI accelerators including those Anthropic deploys; structural exposure to AI compute cycle
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations.md]] — Cross-references the AIDC over-build risk that is the principal thesis risk (#3 in Risks section)
+- [[AI Bubble Risk and Semiconductor Valuations]] — Cross-references the AIDC over-build risk that is the principal thesis risk (#3 in Risks section)
 - [[Macro & Technology/Agentic Internet.md]] — Frames Anthropic Claude positioning vs. OpenAI; relevant to SKT's AI Service "A." consumer assistant strategy
 - [[@Telecommunications Services]] — Sector note (created at Step 5 — first thesis in this sector)
 

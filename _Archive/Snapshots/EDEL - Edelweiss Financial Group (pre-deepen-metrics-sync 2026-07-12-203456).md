@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/EDEL - Edelweiss Financial Group]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: metrics-sync
 snapshot_batch: deepen-metrics-sync-batch-2026-07-12-203456
-publish: true
+publish: false
 date: 2026-04-14
 tags: [thesis, EDEL, financial-services, india, alternatives, private-credit]
 status: monitoring

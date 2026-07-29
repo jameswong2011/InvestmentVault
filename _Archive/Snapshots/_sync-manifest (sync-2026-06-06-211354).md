@@ -46,7 +46,7 @@ None — all thesis propagation was Tier B (Log + Related Research wikilink). So
 - [[Sectors/Neoclouds & GPU-as-a-Service]] — acute GPU tightness / clusters locked up
 
 ## Macro notes touched
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — Tier B (Log + Related Research): supply-constrained demand-floor (bull) + power-in-excess overbuild signal (bear); base case unchanged ("digestion phase")
+- [[AI Bubble Risk and Semiconductor Valuations]] — Tier B (Log + Related Research): supply-constrained demand-floor (bull) + power-in-excess overbuild signal (bear); base case unchanged ("digestion phase")
 - [[Macro & Technology/800VDC Adoption]] — Tier B (Log): orthogonality note — aggregate-power-in-excess ≠ density-driven 800VDC transition; adoption forecast unchanged
 
 ## Source research notes processed

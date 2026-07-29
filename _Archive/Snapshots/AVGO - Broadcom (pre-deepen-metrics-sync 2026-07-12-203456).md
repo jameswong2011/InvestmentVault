@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/AVGO - Broadcom]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: metrics-sync
 snapshot_batch: deepen-metrics-sync-batch-2026-07-12-203456
-publish: true
+publish: false
 date: 2026-04-14
 tags: [thesis, semiconductors, AVGO, AI-infrastructure, custom-ASIC, networking]
 status: active

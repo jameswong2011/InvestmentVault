@@ -161,7 +161,7 @@ This is a +244%-in-a-year glass stock — *still* up huge even after a −47% pe
 - Adjacent value-chain sector: [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]]
 - Displacement-vector macro: [[Macro & Technology/Organic ABF to Glass-Core Substrate Transition]]
 - Demand-driver theses: [[Theses/NVDA - Nvidia]], [[Theses/AVGO - Broadcom]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/TSM - Taiwan Semiconductor]]
-- Demand overlay: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]
+- Demand overlay: [[AI Bubble Risk and Semiconductor Valuations]]
 - Stress test (adversarial, 2026-06-26): [[Research/2026-06-26 - 3110 - Stress Test]]
 - M9 node contest (2026-06-27): [[Research/2026-06-27 - M9 Quartz vs Low-Dk Glass - deep-dive]] — quartz cohort taking the early M9 majority; substantially confirms the →LOW trigger (bounded by M9-slice-size + quartz cost/yield)
 
@@ -185,3 +185,6 @@ This is a +244%-in-a-year glass stock — *still* up huge even after a −47% pe
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (second same-day pass, fmp_symbol 3110.T confirmed correct): 0 metrics changed. All mapped rows (Market Cap, Revenue Growth, Gross Margin) render identically to current cell text after rounding — data <1hr fresh from prior pass. FCF Yield (qualitative "Low / compressed") and EV/Revenue (fetch_gap) left untouched. Snapshot: [[_Archive/Snapshots/3110 - Nitto Boseki (pre-numbers 20260712-184147)]]
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: CommonWealth reports first-gen CoPoS may be glass-free — glass-core adoption timing pushes right at the margin ([[Macro & Technology/Organic ABF to Glass-Core Substrate Transition]] signposts apply); TSMC packaging volume growth still lifts special-glass-cloth demand — conviction unchanged (medium); timing caution, not thesis change.

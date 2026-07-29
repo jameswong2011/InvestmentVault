@@ -22,7 +22,7 @@ _none — all thesis edits are Tier B (Log + Related Research appends)_
 _none — research note has no sector target (sector: Macro & Technology does not resolve to an equity sector note)_
 
 ## Macro notes touched
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — new ### 2026-06-05 body update subsection + research bullet + Log entry
+- [[AI Bubble Risk and Semiconductor Valuations]] — new ### 2026-06-05 body update subsection + research bullet + Log entry
 - [[Macro & Technology/Agentic Internet]] — Connections key-research entry + Log entry
 
 ## Skill-origin no-op (self-modified since watermark, not propagated)

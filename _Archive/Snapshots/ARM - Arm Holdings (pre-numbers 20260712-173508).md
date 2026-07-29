@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/ARM - Arm Holdings]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-06-09
 tags: [thesis, semiconductors, compute-ai-accelerators, cpu-ip, ARM]
 status: draft
@@ -187,7 +187,7 @@ At ~$412 (~200x forward, ~80x EV/sales, +277% YTD, ~38% above the mean target) A
 - [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Sekar 9-metric framework; Vera (custom Olympus ARM) 5/2 reasoning; agentic CPU TAM expansion
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]] — Google Axion (ARM) built for agentic classical-compute coexistence alongside TPUs
 - [[Research/2026-03-14 - CXL Technology Adoption]] — datacenter memory-architecture context for ARM head-node CPUs
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — ARM's ~200x forward multiple is a focal point of the AI-valuation question
+- [[AI Bubble Risk and Semiconductor Valuations]] — ARM's ~200x forward multiple is a focal point of the AI-valuation question
 
 ## Legacy Callouts
 

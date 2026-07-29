@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/APP - AppLovin]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: metrics-sync
 snapshot_batch: deepen-metrics-sync-batch-2026-07-12-203456
-publish: true
+publish: false
 date: 2026-02-26
 tags: [thesis, APP, consumer-digital, adtech, AI]
 status: monitoring

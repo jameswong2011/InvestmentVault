@@ -284,3 +284,6 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: market cap / fwd P/E $453B/38-41x → $910B/75x across Summary, Risks #6, Key Metrics Notes — stock has re-rated into its own 2028 bull-case zone two years early. Snapshot: [[_Archive/Snapshots/AMD - Advanced Micro Devices (pre-deepen-metrics-sync 2026-07-12-203456)]]
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: AI demand "multi-year" (2029-30), N2 sold out (Venice is N2), CoWoS/SoIC still allocation-constrained; A14 pre-prod 2027/HVM 2028 keeps the MI400/COUPE runway intact (A16 unmentioned on the call) — conviction unchanged (medium); MI400 volume hinges on packaging allocation as much as demand.

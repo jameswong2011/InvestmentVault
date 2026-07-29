@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/SOI - Soitec]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-06-08
 tags: [thesis, semiconductors, semiconductor-capital-equipment, engineered-substrates, photonics, RF, SOI]
 status: draft

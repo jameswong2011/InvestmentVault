@@ -1,137 +1,150 @@
 ---
-date: 2026-05-23
+date: 2026-07-26
 tags: [meta, catalyst-calendar]
 ---
 
 # Catalyst Calendar
 
-Earnings-driven catalyst window 2026-05-23 → 2026-08-21. 63 FMP-confirmed events across 13 weeks, 65 active/monitoring/draft theses. Cluster density peaks week of 2026-07-27 (18 events, 9 high-conviction active) and 2026-08-03 (14 events, 5 high-conviction active). Source: FMP `/stable/earnings-calendar` universe call (intersected with thesis frontmatter tickers) + per-symbol confirmation for non-US listings. Run: 2026-05-23 21:41 UTC.
+**Peak Q2 earnings season: 34 thesis earnings land in the next 14 days, 20 of them across the four-day Jul 28–31 window — which also carries the 29 Jul FOMC decision.** Semicap (KLA/LRCX/ASMI), the memory/HBM complex (SK Hynix/Kioxia/Advantest/FormFactor), datacenter power (Vertiv) and mega-cap AI (Meta) all print together, so single-name attribution collapses that week — treat Jul 28–31 as one correlated portfolio event, not eight independent reads.
 
-## Next 2 Weeks (2026-05-23 → 2026-06-06)
+**Coverage note:** FMP's universe endpoint returned its 4,000-row ceiling covering only **11 Sep – 23 Oct** — the entire Next-2-Weeks and Weeks-3-4 windows have zero FMP coverage. Near-term dates are sourced from the (July-updated) thesis notes and confirmed by 14 targeted web searches; FMP confirmed 8 Month-2/3 names (CBRS, MTN, AEHR, TSM, ISRG, NFLX, VICR, INTC). Source is tagged per row.
 
-| Date | Ticker | Event | Expected Impact | Magnitude | Notes |
-|------|--------|-------|-----------------|-----------|-------|
-| 2026-05-27 | [[MRVL]] | Q earnings | positive | major | Custom silicon ramp into AVGO/Trainium decision; H100→H200 mix. EPS $0.80 / Rev $2.40B est. |
-| 2026-05-27 | [[PSTG]] | Q earnings | uncertain | minor | CXL Memory thesis ([[CXL Memory Disaggregation Framework]]); read for FlashBlade//EXA traction. EPS $0.40 / Rev $1.00B est. |
-| 2026-05-28 | [[IQE]] | Q earnings | positive | minor | Photonics/InP commentary feeds [[LITE - Lumentum]] read; UK listing. Rev $51.7M est. |
-| 2026-05-29 | [[SIVE]] | Q earnings | uncertain | minor | Stockholm listing — low conviction, photonics tape-read. Rev $66.6M est. |
-| 2026-06-02 | [[PANW]] | Q earnings | positive | major | Platformization narrative — feeds [[NET - Cloudflare]] read-across. EPS $0.81 / Rev $2.94B est. |
-| 2026-06-03 | [[AVGO]] | Q earnings | positive | major | Custom silicon TAM + VMware. Anchor for [[NVDA - Nvidia]] cluster trajectory + custom-vs-merchant rotation thesis. EPS $2.40 / Rev $22.04B est. See Cross-Thesis section. |
-| 2026-06-03 | [[CRWD]] | Q earnings | uncertain | major | Post-CrowdStrike outage rerate; SIEM/Falcon Flex motion. EPS $1.07 / Rev $1.36B est. |
-| 2026-06-04 | [[IOT]] | Q earnings | positive | minor | Net new ACV and AI-product attach. EPS $0.13 / Rev $0.46B est. |
+**Falsification layer:** the `Thesis test` column pairs each event with the thesis's own `## Conviction Triggers`. `untested-no-trigger` = the thesis has NO triggers section (nothing defined can falsify it); `untested-unmatched` = triggers exist but none covers this event. **30 of 82 theses have no `## Conviction Triggers` section** — the book's single largest falsification-machinery gap (see No-Trigger roster below).
 
-## Weeks 3-4 (2026-06-07 → 2026-06-20)
+## Next 2 Weeks (2026-07-26 → 2026-08-09)
 
-| Week of | Ticker | Event | Expected Impact | Notes |
-|---------|--------|-------|-----------------|-------|
-| Jun 08 | [[MTN]] | Q earnings (2026-06-08) | uncertain | Off-cycle ski resort cadence — winter season carry-forward read. EPS $9.06 / Rev $1.21B est. |
-| Jun 17-18 | FOMC | Rate decision + dot plot | major | Long-duration SW + rates-sensitive + precious metals + BTC. See Macro section. |
+| Date | Ticker(s) | Event | Expected Impact | Magnitude | Thesis test | Notes |
+|------|-----------|-------|-----------------|-----------|-------------|-------|
+| Jul 28 (Tue) | [[GAW - Games Workshop]] | FY2025/26 Annual Report | uncertain | major | licensing floor £30-35M held + Amazon showrunner status → confirms/refutes high-conviction Insight | per thesis. untested-no-trigger |
+| Jul 28 | [[KLA - KLA Corporation]] | Q4 FY26 earnings + FY27 guide | uncertain | major | AP run-rate ≥$1.4B + service ≥$1.05B → tests HIGH; FY27 guide ≤8% → fires LOW of [[KLA - KLA Corporation]] | per thesis (high). → run /transcript KLA |
+| Jul 28 | [[ASMI - ASM International]] | Q2 2026 earnings — 1.4nm bookings | uncertain | major | ALD bookings beat ≥10% → HIGH; 2027 hyperscaler capex guide <-10% → LOW of [[ASMI - ASM International]] | per thesis (high). → run /transcript ASMI |
+| Jul 28 | [[CSGP - CoStar Group]] | Q2 2026 — thesis's self-imposed verdict date | uncertain | major | Homes.com profitability inflection vs cash <$800M (Zonda) → Position-Sizing reduce | per thesis. untested-no-trigger. → run /transcript CSGP |
+| Jul 28 | [[TER - Teradyne]] | Q2 2026 — merchant GPU customer disclosure | uncertain | major | Compute SoC mix <35% → fires LOW (refuted); GPU customer = Nvidia → HIGH-leg of [[TER - Teradyne]] | per thesis. → run /transcript TER |
+| Jul 28–29 | [[NBIS - Nebius Group]] | Q2 2026 — first active-MW/build read | uncertain | major | active power ramp vs ≥600MW trajectory → HIGH/LOW of [[NBIS - Nebius Group]] | per thesis (pulled fwd). → run /transcript NBIS |
+| **Jul 29 (Wed)** | **PORTFOLIO** | **FOMC rate decision** | uncertain | major | rate path → AI-capex financing, memory valuations, GLD/BTC, OPEN mortgage rates | cross-thesis (see below). Fed on hike-bias per [[GLD - SPDR Gold Shares]] Jun dots |
+| Jul 29 | [[000660 - SK Hynix]] | Q2 2026 earnings (~₩63-66T OP) | uncertain | major | Q3 Rubin allocation / Samsung >35% share → LOW of [[000660 - SK Hynix]] (resolves Q3-Q4) | per thesis. Beat-sells-off risk. → run /transcript 000660 |
+| Jul 29 | [[LRCX - Lam Research]] | Q4 FY26 vs $6.6B guide — Aether 2nd-customer | uncertain | major | AP >$1.4B + CY26 WFE ≥$140B → HIGH; China rev >32% → LOW of [[LRCX - Lam Research]] | per thesis (high). → run /transcript LRCX |
+| Jul 29 | [[META - Meta]] | Q2 2026 earnings (AMC) | uncertain | major | 2027 capex guide + first sub-20% ad quarter = bear falsifier combo | web-confirmed Jul 29. untested-no-trigger. → run /transcript META |
+| Jul 29 | [[6857 - Advantest]] | Q1 FY26 — first full HBM4 quarter | uncertain | major | HBM4 test-time >14h/stack read; services mix <22% → LOW of [[6857 - Advantest]] | per thesis (Jul 29–31). → run /transcript 6857 |
+| Jul 29 | [[2383 - Elite Material]] | Q2 2026 (rev guide ~NT$39B) | uncertain | major | GM sustains ≥32% + M8/M9 win → HIGH of [[2383 - Elite Material]] | per thesis. → run /transcript 2383 |
+| Jul 29 | [[FORM - FormFactor]] | Q2 2026 — DRAM/HBM continuation | uncertain | major | HBM growth >45% → HIGH; <25% or GM <40% → LOW of [[FORM - FormFactor]] | per thesis (Mental Models). → run /transcript FORM |
+| Jul 29 | [[VRT - Vertiv Holdings]] | Q2 2026 — first quarter under non-disclosure regime | uncertain | major | organic orders negative YoY → LOW of [[VRT - Vertiv Holdings]] (instrumentation now broken) | per thesis. → run /transcript VRT |
+| Jul 29 | [[AIXA - Aixtron]] | Q2/H1 2026 — conversion-machinery test | uncertain | major | Q2 backlog conversion <80% seasonal → LOW of [[AIXA - Aixtron]] | per thesis (Jul 30 in table). → run /transcript AIXA |
+| Jul 29 | [[STNG - Scorpio Tankers]] | Q2 2026 — forward-bookings test | uncertain | major | normalization-into-deliveries; no formal triggers | per thesis. untested-no-trigger. → run /transcript STNG |
+| Jul 30 (Thu) | [[CCJ - Cameco]] | Q2 2026 — term price ($94) vs $100 marker | uncertain | major | term price breaching $100/lb "escape velocity" | per thesis. untested-no-trigger. → run /transcript CCJ |
+| Jul 30 | [[OPEN - Opendoor]] | Q2 2026 vs guided adj-EBITDA breakeven | uncertain | major | single falsifying datapoint; no formal triggers | per thesis. untested-no-trigger. → run /transcript OPEN |
+| Jul 30 | [[AAOI - Applied Optoelectronics]] | Q2 2026 GM print — pre-committed decision point | uncertain | major | GM ≥33% → HIGH evidence; GM <28% → fires 2nd LOW of [[AAOI - Applied Optoelectronics]] | per thesis. → run /transcript AAOI |
+| Jul 30 | [[ONON - On Holding]] | LightSpray Cloudboom Strike 2 launch | uncertain | minor | mass-market model ships w/ cost benefit → HIGH-leg of [[ONON - On Holding]] | per thesis. product event (not earnings) |
+| Jul 31 (Fri) | [[285A - Kioxia]] | Q1 FY26 vs ¥1,298B OP guide (74% OPM) | uncertain | major | OP miss >15% (proposed LOW); no formal triggers section | per thesis. untested-no-trigger. → run /transcript 285A |
+| Jul 31 | [[EDEL - Edelweiss Financial Group]] | Nido/Carlyle deal completion (~₹603cr) | positive | minor | deleveraging; no formal triggers | per thesis. untested-no-trigger |
+| Aug 3 (Mon) | [[PLTR - Palantir]] | Q2 2026 earnings (AMC) | uncertain | major | US-commercial triple-digit growth persistence; no formal triggers | web-confirmed Aug 3. untested-no-trigger. → run /transcript PLTR |
+| Aug 4 (Tue) | [[AMD - Advanced Micro Devices]] | Q2 2026 + updated AI forecast | uncertain | major | 0/3 HIGH legs met (MLPerf/3rd-hyperscaler resolve H2) → untested-unmatched for [[AMD - Advanced Micro Devices]] | per thesis. → run /transcript AMD |
+| Aug 4 | [[SPOT - Spotify]] | Q2 2026 — ad-inflection retest | uncertain | major | ad revenue 3rd decline → /status checkpoint; no formal triggers | per thesis. untested-no-trigger. → run /transcript SPOT |
+| Aug 4 | [[LYV - Live Nation Entertainment]] | Q2 2026 — 15% fee-cap ticketing-margin | uncertain | major | Ticketing AOI margin compresses >500bps → LOW of [[LYV - Live Nation Entertainment]] | per thesis. → run /transcript LYV |
+| Aug 4 | [[TSEM - Tower Semiconductor]] | Q2 2026 + Q3 guide vs $455M | uncertain | major | 2027 SiPho deliveries conversion → HIGH/CLOSE of [[TSEM - Tower Semiconductor]] | per thesis. → run /transcript TSEM |
+| Aug 4–6 | [[PINS - Pinterest]] | Q2 2026 earnings | uncertain | major | rev growth <10% + ad-pricing -15% → LOW of [[PINS - Pinterest]] | per thesis (date conflict mid-Jul vs Aug). → run /transcript PINS |
+| Aug 5 (Wed) | [[SHOP - Shopify]] | Q2 2026 (BMO) | uncertain | major | Payments >70% penetration; no formal triggers | web-confirmed Aug 5. untested-no-trigger. → run /transcript SHOP |
+| Aug 5 | [[UBER - Uber]] | Q2 2026 (BMO) | uncertain | major | Waymo own-app launch = missing trigger; no formal triggers | web-confirmed Aug 5. untested-no-trigger. → run /transcript UBER |
+| Aug 5 | [[SNDK - SanDisk]] | Q4 FY26 + first FY27 guide — cyclical-vs-structural arbiter | uncertain | major | FY27 guide GM <65% (proposed LOW); no formal triggers | web-confirmed Aug 5. untested-no-trigger. → run /transcript SNDK |
+| Aug 5 | [[DUOL - Duolingo]] | Q2 2026 — two-datapoint falsification test | uncertain | major | bookings miss + sub-10% MAU = saturation; no formal triggers | web-confirmed Aug 5. untested-no-trigger. → run /transcript DUOL |
+| Aug 5 | [[5332 - TOTO Ltd]] | Q1 FY3/27 — Ceramics OP margin print | uncertain | major | Ceramics OP margin <35% → fires LOW of [[5332 - TOTO Ltd]] | per thesis (mechanical LOW test). → run /transcript 5332 |
+| Aug 6 (Thu) | [[LNG - Cheniere Energy]] | Q2 2026 earnings | uncertain | major | post-crisis SPA signings at elevated fees; no formal triggers | per thesis. untested-no-trigger. → run /transcript LNG |
+| Aug 6 | [[TTWO - Take-Two Interactive]] | FQ1 2027 earnings | uncertain | minor | GTA VI (Nov 19) is the real event; no formal triggers | per thesis (est.). untested-no-trigger |
+| Aug 7 (Fri) | [[CSU - Constellation Software]] | Q2 2026 — maintenance recurring organic growth | uncertain | major | organic ≥5% FXN → HIGH; ≤4% both Q2+Q3 → LOW of [[CSU - Constellation Software]] (Q1 printed on the 4% line) | web-confirmed Aug 7. → run /transcript CSU |
+| Aug 7 | [[036930 - Jusung Engineering]] | Q2 2026 — first full post-ALG quarter | uncertain | major | book-to-bill <1.0 or H2 rev <250B KRW → LOW of [[036930 - Jusung Engineering]] | per thesis. → run /transcript 036930 |
 
-## Month 2-3 (2026-06-21 → 2026-08-21, grouped by week)
+## Weeks 3-4 (2026-08-10 → 2026-08-23)
 
-| Week of | Tickers | Cluster Theme | Notes |
-|---------|---------|---------------|-------|
-| Jun 29 | [[WTC]] (8/26 actual but reports off-cycle Q4 FY26) | Standalone | Aus listing — logistics tape-read; date drift expected, flag for /sync verification |
-| Jul 13 | [[AEHR]] (7/14), [[TSM]] (7/16), [[NFLX]] (7/16), [[RELIANCE]] (7/17) | Foundry/Streaming opener | TSM sets semis tone; NFLX sets streaming tone; RELIANCE = India digital. AEHR Q4 FY26 (SiPh customer ramp commentary). |
-| Jul 20 | [[NOW]] (7/22), [[KAMBI]] (7/22), [[BESI]] (7/23), [[INTC]] (7/23), [[2802]] (7/24) | Enterprise SW + Foundry deepens | NOW (workflow AI), INTC (foundry/CPU read + 18A yield), BESI (TCB ramp), 2802 (ABF substrates) |
-| Jul 27 | [[ASMI]], [[SPOT]], [[VICR]], [[ISRG]], [[CSGP]] (all 7/28), [[000660]], [[LRCX]], [[VRT]], [[6857]], [[FORM]], [[STNG]], [[META]] (all 7/29), [[KLA]], [[NET]], [[AIXA]], [[EDEL]], [[PCOR]] (all 7/30), [[6981]], [[CCJ]] (both 7/31) | Mega-cluster: Semicap + AI compute + memory + datacenter power + cybersec | **18 events / 9 high-conviction active**. ASMI/LRCX/KLA/AIXA = semicap. 000660 (SK Hynix) = HBM4. VRT/VICR = 800VDC ([[800VDC Adoption]]). NET = cybersec platform. SPOT = music streaming. META = ad tech recovery. 6857 (Advantest) = first full HBM4 system-shipment quarter. PCOR = construction SaaS. 6981 (Murata) = MLCC content per AI server. CCJ = uranium. |
-| Aug 03 | [[PLTR]] (8/3), [[AMD]], [[GAW]], [[OPEN]], [[TER]] (all 8/4), [[SHOP]], [[APP]], [[DUOL]], [[UBER]], [[SKM]] (all 8/5), [[LNG]], [[PINS]] (both 8/6), [[285A]], [[CSU]] (both 8/7) | AI compute + commerce + LNG energy | **14 events / 5 high-conviction active**. AMD MI400 ramp; TER (first merchant GPU customer disclosure window); PLTR (gov AIP); SHOP (commerce); LNG (winter Henry Hub spread); APP (mobile ad); UBER (ride-share); 285A (Kioxia NAND); CSU (vertical SaaS); OPEN (real estate liquidity post-Q1 turnaround); GAW (hobby gaming). |
-| Aug 10 | [[TTWO]], [[HIMS]] (both 8/10), [[LITE]], [[CRCL]], [[CRWV]] (all 8/11), [[SNDK]], [[AMAT]] (both 8/13) | Memory + photonics + GPU-cloud | AMAT + SNDK + LITE high-conviction. SNDK HBF sampling commentary H2 2026 watch. CRWV (GPU-as-a-Service economics). TTWO (GTA VI proximate). HIMS (consumer telehealth post-GLP). CRCL = stablecoin ([[Stablecoin Regulation as Geopolitical Infrastructure]]). |
-| Aug 17 | [[EINK]] (8/19), [[DE]], [[INTU]] (both 8/20) | Display + Agriculture + accounting close | EINK (E-paper Q2 2026), DE (precision ag), INTU (SMB pricing power). |
+| Week of | Ticker(s) | Event | Expected Impact | Thesis test | Notes |
+|---------|-----------|-------|-----------------|-------------|-------|
+| Aug 10 | [[NET - Cloudflare]] | Q2 2026 earnings | uncertain | pay-per-crawl first revenue; no formal triggers | est. ~Aug 6-10. untested-no-trigger |
+| Aug 10 | [[ARM - Arm Holdings]] | Q1 FY27 — datacenter royalty-per-chip | uncertain | blended DC royalty/chip rises 2 qtrs → HIGH of [[ARM - Arm Holdings]] | est. late Jul/early Aug |
+| Aug 11 | [[CRCL - Circle Internet Group]] | Q2 2026 + Coinbase renegotiation (Aug) | uncertain | binary margin catalyst; no formal triggers | est. untested-no-trigger |
+| Aug 11 | [[HIMS - Hims & Hers Health]] | Q2 2026 earnings | uncertain | US rev/ARPU trajectory; no formal triggers | est. untested-no-trigger |
+| Aug 11 | [[2802 - Ajinomoto]] | Q1 FY2026 — Electronic Materials trajectory | uncertain | EM sales >¥150B + OP margin >50% → HIGH of [[2802 - Ajinomoto]] | est. |
+| Aug 11 | [[6981 - Murata Manufacturing]] | Q1 FY2027 — book-to-bill, MLCC growth | uncertain | AI-server MLCC ≥5,000 units/accel → HIGH of [[6981 - Murata Manufacturing]] | est. |
+| Aug 11 | [[ONTO - Onto Innovation]] | Q2 2026 vs $320-330M guide | uncertain | AP >50% YoY + GM ≥56% → HIGH of [[ONTO - Onto Innovation]] | est. early Aug |
+| Aug 11 | [[CAMT - Camtek]] | Q2 2026 — H2 order-conversion, China mix | uncertain | AP+HBM >25% YoY + GM ≥51% → HIGH of [[CAMT - Camtek]] | est. |
+| Aug 11 | [[6515 - WinWay Technology]] | Q2 2026 — SLT volume, AI-socket mix | uncertain | >30% YoY rev + GM stable → HIGH of [[6515 - WinWay Technology]] | est. |
+| Aug 13 | [[AMAT - Applied Materials]] | Q3 FY26 — ICAPS bottom, HBM bookings | uncertain | HBM run-rate >$2B + ICAPS reaccel → HIGH; ASMI >55% ALD share → LOW of [[AMAT - Applied Materials]] | est. mid-Aug (high). Key WFE read |
+| Aug 13 | [[DE - John Deere]] | Q3 FY26 — MY27 early-order + autonomy uptake | uncertain | autonomy-kit take-rate falsifier; no formal triggers | est. mid-Aug. untested-no-trigger |
+| Aug 13 | [[SNDK - SanDisk]] | Investor Day — BiCS10 cost-curve test | uncertain | BiCS10 holds/inverts cost curve; no formal triggers | web-confirmed Aug 13 |
+| Aug 18 | [[CRWV - CoreWeave]] | Q2 2026 — revenue, interest run-rate, GM | uncertain | GM <65% or MSFT renewal -15% → LOW of [[CRWV - CoreWeave]] | web ~Aug 13-18 (unconfirmed). → run /transcript CRWV |
+| Aug 18 | [[SE - Sea Limited]] | Q2 2026 — Shopee GMV, Monee NPL | uncertain | adj EBITDA/GMV <0.4% 2 qtrs → LOW of [[SE - Sea Limited]] | web-confirmed Aug 18 |
+| Aug 20 | [[MRVL - Marvell Technology]] | Q2 FY27 vs $2.7B guide — custom mix, Celestial | uncertain | Google custom contract + Trainium 3 ≥400K → HIGH of [[MRVL - Marvell Technology]] | web-confirmed Aug 20. → run /transcript MRVL |
+| Aug 21 | [[INTU - Intuit]] | FY2026 results + FY2027 guide — "the critical print" | uncertain | FY28 guide <8% → CLOSE; QB AI attach >20% → HIGH of [[INTU - Intuit]] | est. ~Aug 21 (high) |
+| Aug 21–23 | **PORTFOLIO** | Jackson Hole Economic Symposium | uncertain | Fed policy signal into hike-bias tape | macro (general-knowledge est.) |
+
+## Month 2-3 (2026-08-24 → 2026-10-24)
+
+| Approximate Date | Ticker(s) | Event | Notes |
+|-----------------|-----------|-------|-------|
+| Aug 24 | [[PANW - Palo Alto Networks]] | Q4 FY26 + FY2027 organic-growth guide (single falsifier) | web-confirmed. Zscaler-scenario risk at ~90x fwd |
+| Aug 26 | [[NVDA - Nvidia]] | Q2 FY2027 earnings ($91B guide) | web-confirmed. Rubin ramp read |
+| Aug 26 | [[WTC - WiseTech Global]] | FY2026 results + Macquarie collar expiry + DSV update | web-confirmed. Forced-selling overhang converges |
+| ~Aug 27 | [[CRWD - CrowdStrike Holdings]] | Q2 FY27 — net-retention 115% (CLOSE threshold) test | est. via pattern (no confirmed date found) |
+| Sep 3 | [[AVGO - Broadcom]] | FQ3 2026 — first chips-only AI number, 2027 reaffirm | web-confirmed. ~$29.4B rev guide |
+| ~Sep 15–16 | **PORTFOLIO** | FOMC (September) | macro (general-knowledge est.) |
+| Sep 15 | [[NET - Cloudflare]] | Crawler ultimatum deadline (Googlebot/Bingbot) | per thesis. antitrust/retaliation tail |
+| Sep 22 | [[CBRS - Cerebras Systems]] | Q2 CY2026 earnings | confirmed via FMP. Lockup cliff mid-Nov looms |
+| ~Sep | [[IOT - Samsara]] | Q2 FY27 — gross-margin under DRAM pressure (falsifier) | est. |
+| Sep 28 | [[MTN - Vail Resorts]] | Q3 FY2026 earnings + FY26 dividend decision (~25% cut modeled) | confirmed via FMP |
+| Oct 5 | [[AEHR - Aehr Test Systems]] | Q1 FY27 — first explicit FY27 guide (needs $80M+) | confirmed via FMP |
+| Oct (mid) | [[NOW - ServiceNow]] | Q3 2026 earnings | est. (Q2 printed Jul 22) |
+| Oct 15 | [[TSM - Taiwan Semiconductor]] | Q3 2026 — GM ≥66% margin-peak test | confirmed via FMP + thesis |
+| ~Oct 20 | [[RELIANCE - Reliance Industries]] | Q2 FY27 earnings + Jio IPO listing status | est. |
+| Oct 20 | [[ISRG - Intuitive Surgical]] | Q3 2026 — I&A revenue/procedure growth | confirmed via FMP |
+| Oct 20 | [[NFLX - Netflix]] | Q3 2026 earnings | confirmed via FMP |
+| Oct 20 | [[VICR - Vicor Corporation]] | Q3 2026 — Andover 2nd 3Di line status | confirmed via FMP |
+| Oct 22 | [[INTC - Intel]] | Q3 2026 + 18A yield disclosure | confirmed via FMP |
+| Oct (late) | [[LPKF - LPKF Laser & Electronics]] | Q3 2026 + Absolics equipment POs (nearest concrete trigger) | est. |
+| Oct | Semicap/power | OCP Global Summit — 800VDC GA, liquid-cooling standards | affects [[VRT - Vertiv Holdings]], [[VICR - Vicor Corporation]], [[NVDA - Nvidia]] |
+| Oct | [[NVDA - Nvidia]], [[TSM - Taiwan Semiconductor]] | GTC 2026 — Feynman reveal, A16 exclusivity | per theses |
 
 ## No Catalyst Identified
 
-Theses with `status: active | monitoring | draft` that have no FMP-confirmed earnings event in the next 90 days. Flagged for attention — non-earnings catalyst exists in thesis body, or ticker is non-equity.
+The book is catalyst-live: **Q2 earnings season places a dated earnings or macro event inside the 90-day window for 81 of 82 theses.** Dead-capital risk this cycle is near-zero; the meaningful attention flag is the falsification-machinery gap (No-Trigger roster below), not catalyst absence.
 
-| Ticker | Conviction | Status | Sector | Likely Reason |
-|--------|------------|--------|--------|---------------|
-| [[NVDA]] | high | active | GPU & AI Compute Accelerators | Q1 FY2027 reported 2026-05-22; Q2 reports 2026-08-26 (post Aug-21 window). FMP confirms event date but outside calendar window. |
-| [[BTC-CRYPTO]] | medium | monitoring | Blockchain & Stablecoins | Not an equity — no earnings catalyst applies; track FOMC, GENIUS Act dates separately |
-| [[GLD]] | medium | monitoring | Precious Metals | ETF — track underlying gold price + macro (rates, dollar) instead |
+| Ticker | Last Catalyst Date | Days Since | Falsifiable? | Status |
+|--------|-------------------|------------|--------------|--------|
+| [[KAMBI - Kambi Group]] | Q2 print 22 Jul 2026 (passed) | 4 | No (no triggers) | Next earnings ~Nov (outside 90d); only undated deal catalysts (Odds Feed+, Nevada) + Nov buyback + Dec FDJ cliff. Monitoring + no triggers = doubly dead capital — strongest /prune signal |
+| [[GLD - SPDR Gold Shares]] | FOMC 29 Jul 2026 (upcoming) | — | Yes | Catalyst-live via macro only (FOMC, Jackson Hole, PBOC monthly) — no single-name driver; noted for completeness, not flagged |
 
 ## Stale Catalysts
 
-Earnings already reported but thesis Catalysts section still lists the prior quarter — dedup on next `/sync` pass.
+Recently-passed events still framed as pending in their thesis Catalysts sections — theses need a Log update to absorb the outcome. (High-signal subset; each extraction flagged more.)
 
-| Ticker | Stale Entry | Reported | Next Live Catalyst |
-|--------|-------------|----------|---------------------|
-| [[NVDA]] | Q1 FY2027 earnings | 2026-05-22 | Vera Rubin cloud availability H2 2026; Q2 2026-08-26 (post-window) |
-| [[INTC]] | Apollo Altera close | 2026-04-01 | 18A foundry yield landing mid-2026; Q2 2026-07-23 (Jul 20 cluster) |
-| [[INTC]] | Apple 14A foundry WSJ leak | 2026-05-08 | EMIB-T launch H2 2026; Jaguar Shores |
-| [[SNDK]] | Q3 FY2026 earnings | 2026-04-30 | Q4 2026-08-13 (Aug 10 cluster); HBF sampling H2 2026 |
-| [[OPEN]] | Q1 2026 earnings | reported pre-window | Q2 2026-08-04 (Aug 3 cluster) |
-| [[SPOT]] | Q1 2026 earnings | 2026-04-29 | Q2 2026-07-28 (Jul 27 cluster) |
-| [[EINK]] | Q1 2026 earnings | 2026-05-12 | Q2 2026-08-19 (Aug 17 cluster) |
+| Ticker | Event | Listed Date | Action Needed |
+|--------|-------|-------------|---------------|
+| [[INTC - Intel]] | Q2 2026 earnings (18A yield, DCAI) | 23 Jul 2026 | Passed; Log's last entry covers TSM read-through, not INTC's own print. Log the result + verify unconfirmed "18A yield ~85%" claim |
+| [[NOW - ServiceNow]] | Q2 2026 — all-in-AI-licensing capture test | 22 Jul 2026 | Passed (cRPO floor / overage-churn). Absorb outcome; Armis "H2 2026" language stale (closed Apr 20) |
+| [[NFLX - Netflix]] | Q2 2026 + H1 engagement report (the live falsifier) | 16 Jul 2026 | Passed, outcome not in thesis. Also Apr 16 Hastings board exit unmodeled |
+| [[ISRG - Intuitive Surgical]] | Q2 2026 — I&A / My Intuitive+ data | 16 Jul 2026 | Passed (Mental Models' "single falsifying datapoint"). Absorb; formalize Position-Sizing into triggers |
+| [[VICR - Vicor Corporation]] | Q2 2026 — LOW-trigger 2nd sub-10% observation | 21 Jul 2026 | Passed; result not in note. Next print Oct 20 (FMP). Update "late July" → Jul 21 |
+| [[BESI - BE Semiconductor Industries]] | Q2 2026 orders test (≥€270M) | 23 Jul 2026 | Passed. Absorb orders read; no triggers section to anchor |
+| [[KAMBI - Kambi Group]] | Q2 2026 — World Cup monetization | 22 Jul 2026 | Passed. Absorb Kindred-cliff sizing |
+| [[LPKF - LPKF Laser & Electronics]] | H1 report (Jul 23) + LIDE order deadline (Jun 30 missed) | 23 Jul / 30 Jun 2026 | Passed/missed; goalposts re-cut to "before end-2026." Reconcile Catalysts + Conviction Triggers text |
+| [[RELIANCE - Reliance Industries]] | Q1 FY27 earnings + Jio DRHP ($117-137B, below floor) | 17 Jun–17 Jul 2026 | Printed, not logged. Jio priced below thesis's $130B floor — material |
+| [[SKM - SK Telecom]] | Sovereign AI Phase 2 evaluation outcome | late Jun 2026 | Due, not confirmed/logged. Anthropic S-1 filed Jun 1 ahead of Q3 target |
+| [[GLD - SPDR Gold Shares]] | June CPI print (pre-registered binary) + Jun 17 FOMC hike-bias | 14 Jul / 17 Jun 2026 | Outcome unrecorded; Jun FOMC flipped to hike bias, refutes HIGH-1 trigger |
+| [[SIVE - Sivers Semiconductors]] | Insider lock-up expiry | 16 Jul 2026 | Passed, not logged. Ningi short report (Jun 1) still unrebutted |
+| [[AEHR - Aehr Test Systems]] | Q4 FY26 earnings (concentration/GM) | 14 Jul 2026 | Passed. Next Q1 FY27 Oct 5 (FMP) |
+| [[IQE - IQE]] | Strategic review concluded — no bid | 27 Apr 2026 | Body/Bull Case still frame M&A as pending — /status review flagged since Jul 10 |
 
 ## Cross-Thesis Events
 
-Events that touch 3+ theses simultaneously.
+Events that simultaneously move 3+ positions — the portfolio's correlated-risk surface.
 
-### 2026-06-03 — AVGO Q earnings (Next 2 Weeks)
+**1. FOMC decision — 29 Jul 2026 (whole book).** Rate path transmits to: AI-capex financing ([[NVDA - Nvidia]], [[AVGO - Broadcom]], [[CRWV - CoreWeave]], [[NBIS - Nebius Group]], hyperscaler demand); memory-equity valuations ([[000660 - SK Hynix]], [[285A - Kioxia]], [[SNDK - SanDisk]]); rate-sensitive safe havens ([[GLD - SPDR Gold Shares]], [[BTC-CRYPTO - Bitcoin & Digital Assets]]); mortgage-rate-levered ([[OPEN - Opendoor]]); and every high-multiple software name ([[NOW - ServiceNow]], [[PLTR - Palantir]], [[CRWD - CrowdStrike Holdings]], [[NET - Cloudflare]]) via discount-rate compression. [[GLD - SPDR Gold Shares]] flags the Fed on a hike-bias per June dots — a hawkish hold/hike is the asymmetric downside for the book's growth cohort.
 
-Custom silicon volume + VMware integration sets next-leg trajectory for the merchant-vs-custom rotation thesis. Downstream impact:
-- [[NVDA - Nvidia]] — share-shift confirmation if AVGO custom TAM beats
-- [[AMD - Advanced Micro Devices]] — MI400 positioning ahead of Aug print
-- [[MRVL]] — co-supplier read; MRVL Q1 already reported 5/27, so AVGO commentary calibrates
-- [[TSM - TSMC]] — N3/N2 mix + CoWoS-L volume disclosure
+**2. Memory/HBM + hyperscaler-capex super-cluster — 29 Jul 2026.** SK Hynix Q2 + Meta Q2 (plus MSFT/GOOGL/AMZN Jul 28–31) print the same day, resolving the two variables the largest slice of the book depends on: HBM allocation/pricing and hyperscaler capex trajectory. Directly reads through to memory ([[000660 - SK Hynix]], [[285A - Kioxia]], [[SNDK - SanDisk]]), HBM capex ([[AMAT - Applied Materials]], [[KLA - KLA Corporation]], [[LRCX - Lam Research]], [[ASMI - ASM International]], [[6857 - Advantest]], [[BESI - BE Semiconductor Industries]], [[FORM - FormFactor]], [[CAMT - Camtek]], [[ONTO - Onto Innovation]]), and AI compute/networking/power ([[NVDA - Nvidia]], [[AVGO - Broadcom]], [[TSM - Taiwan Semiconductor]], [[AMD - Advanced Micro Devices]], [[MRVL - Marvell Technology]], [[VRT - Vertiv Holdings]]). **This is the single highest-information day of the fortnight** — the CoWoS-to-CoPoS, DRAM-cycle, and AI-bubble macro notes all key off it.
 
-### 2026-06 FOMC — Rate decision + dot plot
+**3. Semicap WFE read-across — 28 Jul (KLA, LRCX, ASMI) → 13 Aug (AMAT).** CY26/CY27 WFE guidance is the shared variable; a soft guide from any of the four repriced the whole equipment cohort in Jul (SOX -6.7% on Jul 2, ASML/TSMC reset Jul 15-16). Read-through: [[TER - Teradyne]], [[ONTO - Onto Innovation]], [[CAMT - Camtek]], [[FORM - FormFactor]], [[AEHR - Aehr Test Systems]], [[AIXA - Aixtron]], [[6857 - Advantest]], [[BESI - BE Semiconductor Industries]].
 
-Long-duration SW + rates-sensitive earnings names + precious metals + crypto. The [[Iran War Trading Playbook]] Scenario A (stagflation hold) vs B (dovish pivot) bifurcation sets directional bias for the entire Jul 27 / Aug 3 earnings mega-clusters.
+**4. US-Iran ceasefire MoU expiry — ~16 Aug 2026 (binary).** De-escalation vs re-escalation moves: tanker rates ([[STNG - Scorpio Tankers]]), LNG/Hormuz flow ([[LNG - Cheniere Energy]]), safe-haven bid ([[GLD - SPDR Gold Shares]]), and indirectly uranium/energy ([[CCJ - Cameco]]). The [[Iran War Trading Playbook]] Scenario A→B pivot triggers here.
 
-### 2026-07-16 — TSM Q2 earnings
+**5. Hyperscaler FY2027 capex guides — Oct-Dec 2026 (the AI kill-switch).** The demand-side falsifier for the entire AI-levered book: [[NVDA - Nvidia]], [[AVGO - Broadcom]], [[AMD - Advanced Micro Devices]], [[MRVL - Marvell Technology]], [[VRT - Vertiv Holdings]], [[CRWV - CoreWeave]], [[NBIS - Nebius Group]], [[TSM - Taiwan Semiconductor]], semicap, and memory. [[AI Bubble Risk and Semiconductor Valuations]] dates the "patience runs out" marker to Q3 2026 (capex > operating cash flow); [[DRAM Memory Cycle - Duration, Peak Timing and Second-Order Effects]] calls the memory-equity peak Q4 2026-Q1 2027.
 
-TSM is the foundry anchor for the entire AI compute stack. Print sets tone for AVGO custom silicon (Jun 3 was prior quarter), NVDA Blackwell/Rubin wafer-allocation read, AMD MI400 cycle confirmation, AAPL N3/N2 yield commentary, AIXA/ASMI/BESI advanced packaging order book (CoWoS-L expansion). Downstream impact:
-- [[AMD - Advanced Micro Devices]] — wafer allocation as MI400 ramps
-- [[AVGO - Broadcom]] — custom silicon volume share
-- [[AMAT - Applied Materials]] / [[LRCX - Lam Research]] / [[ASMI - ASM International]] — CapEx revision direction
-- [[BESI - BE Semiconductor]] — TCB / hybrid bonding ramp signal
-- [[AIXA - Aixtron]] — SiC/GaN tool demand commentary
-- [[6857 - Advantest]] / [[TER - Teradyne]] — HBM test capacity expansion
-- [[NVDA - Nvidia]] — N2 transition cost / margin pressure read
+## No-Trigger Roster (falsification-machinery gap)
 
-### 2026-07-29 — Semicap super-day (LRCX + 000660 + FORM + 6857 + ASMI/KLA bracket)
-
-Semicap order book + DRAM/HBM pricing converge into a single 48-hour window (Jul 28 ASMI/KLA on edge, Jul 29 center, Jul 30 KLA). Adjacent reads on [[AVGO - Broadcom]] custom-silicon TAM, [[NVDA - Nvidia]] memory bottleneck thesis, [[INTC - Intel]] foundry CapEx coverage, [[6981 - Murata]] MLCC content per AI server, [[SNDK - SanDisk]] NAND read-across. Macro overlay: [[AI Bubble Risk and Semiconductor Valuations]] — if order book softens here, the bubble-skeptic case strengthens; if it accelerates, NVDA/AMD cycle extends. **000660 (SK Hynix) HBM allocation commentary is the highest-information event — directly determines NVDA Blackwell ramp pace and AMD MI400 supply.**
-
-### 2026-08-04 — AI compute + datacenter power converge
-
-[[AMD - Advanced Micro Devices]] MI400 ramp print intersects with [[VRT - Vertiv]]/[[VICR - Vicor]] order-book commentary (week prior Jul 28-29). [[800VDC Adoption]] adoption-curve dependence on AMD/NVDA reference-platform timelines. AMD print also reads through to [[AVGO - Broadcom]] custom-silicon share-shift and [[TSM - TSMC]] N3/N2 mix. [[TER - Teradyne]] in same window — first merchant GPU customer disclosure (per thesis Catalysts).
-
-### 2026-08-13 — Semicap close + NAND
-
-[[AMAT - Applied Materials]] (last big-3 semicap reporter) + [[SNDK - SanDisk]] NAND. Together they triangulate WFE recovery direction (AMAT order book = leading) and NAND ASP trajectory (SNDK = anchor). Feeds [[KLA - KLA Corp]] read-across (KLA already reported Jul 30) and [[285A - Kioxia]] (Aug 7 already past in week) confirmation. Macro: [[Iran War Trading Playbook]] Scenario A (stagflation) vs B (dovish) — NAND/DRAM ASPs are the cleanest read on whether enterprise IT capex is holding up.
-
-## Macro / Non-Earnings Catalysts
-
-Beyond earnings — known macro & policy dates that move the portfolio. Live tracking, not exhaustive.
-
-| Date / Window | Event | Theses Affected | Source |
-|---------------|-------|-----------------|--------|
-| 2026-06-17/18 FOMC | Powell rate decision + dot plot | All long-duration SW ([[NOW]], [[SHOP]], [[META]], [[SPOT]]); rates-sensitive ([[OPEN]]); precious metals ([[GLD]]); BTC ([[BTC-CRYPTO]]) | [[Iran War Trading Playbook]] Scenario A vs B fork |
-| Ongoing | Iran conflict trajectory + oil/Strait of Hormuz Q3 reopen | Energy: [[LNG]], [[STNG]]; defense; cyclicals broadly | [[Iran War Trading Playbook]] |
-| Q2 2026 | Headline PCE peak window | Rate path; long-duration SW basket | [[Iran War Trading Playbook]] |
-| ~2026-07 | Dylan Patel projected industry-protest event re AI-capex disclosure | [[NVDA]], [[AVGO]], hyperscaler-aligned semis | [[AI Bubble Risk and Semiconductor Valuations]] |
-| 2026-07-18 (est.) | Stablecoin GENIUS Act final rulemaking | [[CRCL]], [[BTC-CRYPTO]] | [[Stablecoin Regulation as Geopolitical Infrastructure]] |
-| 2026-07-15 | US Aug iPhone NPI risk | [[TSM]] (foundry), [[AVGO]] (RF + wireless), Apple supply chain semis | Sectoral inference |
-| 2026-07-29 FOMC | Powell rate decision (no dot plot) | Long-duration SW basket; lands mid Jul 27 cluster | [[Iran War Trading Playbook]] |
-| H2 2026 | NVIDIA Vera Rubin NVL144 800VDC voltage architecture decision | [[VICR]], [[VRT]], [[NVDA]] | [[800VDC Adoption]] |
-| H2 2026 | 800VDC GA: Vertiv / Schneider / Delta / Eaton | [[VRT]], [[VICR]] | [[800VDC Adoption]] |
-| Mid-2026 | INTC 18A foundry yield + cost-target landing | [[INTC]], [[TSM]], [[KLA]] | [[INTC - Intel]] Catalysts |
-| H2 2026 | NVIDIA Spectrum-X / Quantum-X CPO ramp | [[NVDA]], [[LITE]] | [[NVDA - Nvidia]] Catalysts |
-| Q3 2026 | NVDA Blackwell Ultra + Rubin tape-out cadence | [[NVDA]], [[TSM]], [[ASMI]], [[LRCX]], [[AMAT]], [[BESI]], [[6857]], [[AVGO]], [[6981]] | [[AI Bubble Risk and Semiconductor Valuations]] |
-| Q3 2026 | 800VDC reference-design publication (Open Compute) | [[VICR]], [[VRT]], hyperscaler capex implications | [[800VDC Adoption]] |
-| 2026-09-16 FOMC | Powell rate decision + dot plot (post Aug-21 window) | All long-duration SW + rates-sensitive | [[Iran War Trading Playbook]] |
-| Pre-2026-11 | CLARITY Act passage window before US midterms | [[CRCL]], [[BTC-CRYPTO]] | [[Stablecoin Regulation as Geopolitical Infrastructure]] |
-| 2026-08-26 | NVDA Q2 earnings (post window) | All semicap + memory + datacenter | [[AI Bubble Risk and Semiconductor Valuations]] |
-
-## Notes
-
-- 63/65 vault theses have an FMP-confirmed earnings event. 100% coverage on equity theses. Only NVDA (post-Aug-21 window), BTC-CRYPTO (not equity), GLD (ETF) sit outside.
-- Highest-conviction earnings dates (next 30 days): MRVL (May 27), PANW (Jun 2), AVGO (Jun 3).
-- Highest concentration weeks: **Jul 27 (18 events, 9 high-conviction active)** and Aug 3 (14 events, 5 high-conviction active). Mandatory portfolio attention windows.
-- **Jul 28-30 = semicap concentration:** ASMI/LRCX/KLA/AIXA/FORM all report within a 48-hour window. Order-book divergence here = highest-signal moment of the calendar (resolves WFE-recovery direction).
-- **000660 SK Hynix on Jul 29** is the single highest-information event in the window — HBM allocation commentary directly determines NVDA Blackwell ramp pace and AMD MI400 supply for H2 2026.
-- 7 stale catalyst entries listed in the Stale Catalysts table — recommend `/sync` next pass to dedup from individual thesis Catalysts sections.
-- Calendar limited to FMP-confirmed earnings; non-earnings catalysts (product launches, regulatory dates, M&A) live in the Macro section above and individual thesis Catalysts sections.
-- **Coverage improvement vs prior run**: KLA, PCOR, CSU, EDEL all now FMP-confirmed Jul 30 / Aug 7 (vs flagged as no-catalyst in prior FMP-unavailable rerun this morning). Only NVDA / BTC-CRYPTO / GLD remain in No Catalyst Identified — all by design (post-window or non-equity).
+**30 of 82 theses have no `## Conviction Triggers` section** — nothing pre-registered can falsify them. Highest-stakes cases (high conviction OR imminent event, `untested-no-trigger` this fortnight): [[META - Meta]], [[SHOP - Shopify]], [[UBER - Uber]], [[PLTR - Palantir]], [[NVDA - Nvidia]], [[AVGO - Broadcom]], [[NFLX - Netflix]], [[NOW - ServiceNow]], [[CSGP - CoStar Group]], [[SNDK - SanDisk]], [[CCJ - Cameco]], [[OPEN - Opendoor]], [[285A - Kioxia]], [[LNG - Cheniere Energy]], [[SPOT - Spotify]], [[DUOL - Duolingo]], [[STNG - Scorpio Tankers]]. Suggested fix: `/deepen TICKER "Conviction Triggers"` before the next print so the event actually tests something. Full set also includes APP, BESI, BTC-CRYPTO, DE, EDEL, EINK, HIMS, IOT, IQE, ISRG, MTN, PANW, PSTG, RELIANCE, TTWO, WTC.

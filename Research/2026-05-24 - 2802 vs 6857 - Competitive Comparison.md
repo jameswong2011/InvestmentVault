@@ -93,7 +93,7 @@ The investable conclusion: at consolidated level, Advantest's ROIC dominates Aji
 `_graph.md` predates both theses (graph timestamp 2026-05-16T00:56:20Z; both theses created 2026-05-16 after). Missing-graph fallback applies. Manual reconstruction from sector + thesis content:
 
 - **Shared sectors**: none direct. Ajinomoto sector: [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]]. Advantest sector: [[Sectors/Semiconductor Test Equipment]]. Both reference [[Sectors/Semiconductor Capital Equipment]] and [[Sectors/DRAM & HBM Memory]] as adjacent.
-- **Shared macro**: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — Ajinomoto Bear Mechanism 2 references it explicitly; Advantest doesn't reference but is conditioned on the same AI capex monetization gap.
+- **Shared macro**: [[AI Bubble Risk and Semiconductor Valuations]] — Ajinomoto Bear Mechanism 2 references it explicitly; Advantest doesn't reference but is conditioned on the same AI capex monetization gap.
 - **Shared cross-thesis adjacency** (inferred from both Related Research sections): [[Theses/000660 - SK Hynix]], [[Theses/TSM - Taiwan Semiconductor]], [[Theses/NVDA - Nvidia]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/AVGO - Broadcom]], [[Theses/BESI - BE Semiconductor Industries]]. All AI/HBM end-customer or peer-cluster names.
 - **Shared research**: [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] referenced by Ajinomoto explicitly and by Advantest Related Research adjacency.
 - **Cross-thesis link between 2802 and 6857**: NONE in either thesis. They do not reference each other in Related Research.
@@ -183,7 +183,7 @@ The scenarios where the names diverge meaningfully are: (a) Teradyne HBM5 win (f
 - [[Theses/6981 - Murata Manufacturing]] — Japanese-listed AI-cycle specialty-monopoly precedent; the "hidden Japanese semi-monopoly trade" framing per Ajinomoto §Risks #10
 - [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]] — Ajinomoto sector context
 - [[Sectors/Semiconductor Test Equipment]] — Advantest sector context
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — shared bear-case mechanism (AI capex monetization gap → demand reset)
+- [[AI Bubble Risk and Semiconductor Valuations]] — shared bear-case mechanism (AI capex monetization gap → demand reset)
 - [[Theses/TER - Teradyne]] — Advantest's named competitive threat; paired ATE long inside same sector
 - [[Theses/000660 - SK Hynix]] — primary demand driver for both names (HBM final test for Advantest; HBM-base-die substrate for Ajinomoto-via-Simmtech)
 - [[Theses/TSM - Taiwan Semiconductor]] — shared customer; shared TSMC vertical-integration risk

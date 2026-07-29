@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/KLA - KLA Corporation]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-04-29
 tags: [thesis, semiconductor-capital-equipment, KLA, KLAC]
 status: active
@@ -269,7 +269,7 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 - [[Theses/285A - Kioxia]] — NAND customer; 400L cryogenic etch transition drives 3D inspection
 
 **Macro context**:
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — Multiple-compression risk under AI capex deflation scenarios
+- [[AI Bubble Risk and Semiconductor Valuations]] — Multiple-compression risk under AI capex deflation scenarios
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan-tail customer concentration framework
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Israel R&D operational disruption risk
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — HBM4 16-Hi bump-pitch tightening (sub-10μm) drives 3x bond-line inspection intensity; KLA Klarity/RAPID yield platform + 8 Series defect inspection captures the structural intensity uplift independent of MR-MUF vs hybrid-bonding outcome; HBM5+ 24-Hi (2029-2030) hybrid-bonding mandate adds further 2x inspection intensity at architectural inflection

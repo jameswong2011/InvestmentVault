@@ -221,7 +221,7 @@ The cleanest structural play is the *least-owned upstream monopoly* (Nittobo); t
 - Adjacent layer (above): [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]], materials-monopoly analog [[Theses/2802 - Ajinomoto]]
 - Adjacent demand sectors: [[Sectors/Custom Silicon & Networking Semiconductors]], [[Sectors/Optical Networking & Photonics]], [[Sectors/Compute & AI Compute Accelerators]]
 - Equipment layer: [[Sectors/Semiconductor Capital Equipment]] (vacuum presses + treater lines)
-- Macro: [[Macro & Technology/Organic ABF to Glass-Core Substrate Transition]] (substitution vector), [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] (demand overlay)
+- Macro: [[Macro & Technology/Organic ABF to Glass-Core Substrate Transition]] (substitution vector), [[AI Bubble Risk and Semiconductor Valuations]] (demand overlay)
 - Demand-driver theses: [[Theses/NVDA - Nvidia]], [[Theses/AVGO - Broadcom]], [[Theses/MRVL - Marvell Technology]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/TSM - Taiwan Semiconductor]]
 - Mental models: [[Mental Models/Industry - Semiconductors]] (#1 bottlenecks/pricing power, #2 qualification-gate monopolies, #3/#6/#17 capital cycle, #8 architecture transitions, #10 anchor customers, #13 classification, #16 geopolitical bifurcation, #18 cycle-vs-structural), [[Mental Models/Generalist - Overview]] (#4 S-curves, #9 ROIC)
 

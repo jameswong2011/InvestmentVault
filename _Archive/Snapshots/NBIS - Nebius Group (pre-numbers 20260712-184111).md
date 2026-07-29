@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/NBIS - Nebius Group]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-06-02
 tags: [thesis, neoclouds, GPU-as-a-Service, AI-infrastructure, NBIS]
 status: draft
@@ -160,7 +160,7 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 6. **Optionality non-realization.** Stakes are marked, not cash; ClickHouse/Avride may not monetize before the capex gap bites.
 
 **Position risks (thesis right, stock wrong):**
-7. **Valuation de-rate.** ~110x trailing sales / trading past avg sell-side target / 25%+ overvaluation per quant models — any broad AI-infra risk-off ([[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]) hits NBIS's premium first; elevated short interest amplifies both directions.
+7. **Valuation de-rate.** ~110x trailing sales / trading past avg sell-side target / 25%+ overvaluation per quant models — any broad AI-infra risk-off ([[AI Bubble Risk and Semiconductor Valuations]]) hits NBIS's premium first; elevated short interest amplifies both directions.
 8. **Yandex-provenance governance tail.** Residual Russian-separation optics can resurface as a discount on any governance or regulatory headline, independent of fundamentals.
 9. **Secondary supply / SBC dilution.** High stock-based compensation and ongoing equity issuance to fund capex create a persistent dilution overhang.
 
@@ -188,7 +188,7 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 - [[Sectors/Compute & AI Compute Accelerators]] — upstream chip supply; Vera Rubin launch partner lineup
 - [[Sectors/Data Center Power & Cooling]] — grid-interconnect bottleneck (the binding constraint on NBIS's build); Vertiv unit economics
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — hyperscaler in-housing as the dominant long-term demand risk
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — credit-cycle / capex-normalization framing
+- [[AI Bubble Risk and Semiconductor Valuations]] — credit-cycle / capex-normalization framing
 
 **Cross-thesis (strong factor exposure):**
 - [[Theses/CRWV - CoreWeave]] — the direct comparator; NBIS = execution-and-quality, CRWV = credit-and-scale; the pair is the cleanest expression of the sector

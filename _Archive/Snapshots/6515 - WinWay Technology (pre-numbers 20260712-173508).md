@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/6515 - WinWay Technology]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-06-08
 tags: [thesis, semiconductors, test-equipment, 6515]
 status: draft
@@ -47,7 +47,7 @@ WinWay has become the world's #1 supplier of AI test sockets by owning the one p
 
 **7. Can the probe-card leg take share from FormFactor/Technoprobe, or is it sub-scale?** *What answers it:* probe-card revenue ramp and design wins at advanced-packaging/HBM customers versus the FORM (~31%) / Technoprobe (~15%) incumbents.
 
-**8. What happens to the consumable layer in an AI-capex digestion?** If accelerator unit growth pauses but power keeps rising, does socket+thermal content growth offset volume softness? *What answers it:* revenue resilience in any 2027 hyperscaler capex slowdown — the [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] scenario.
+**8. What happens to the consumable layer in an AI-capex digestion?** If accelerator unit growth pauses but power keeps rising, does socket+thermal content growth offset volume softness? *What answers it:* revenue resilience in any 2027 hyperscaler capex slowdown — the [[AI Bubble Risk and Semiconductor Valuations]] scenario.
 
 ## Business Model & Product Description
 
@@ -95,7 +95,7 @@ AI test-interface leadership compounds into a multi-year, ~30%+ revenue grower a
 
 ## Bear Case
 
-The valuation prices multi-year flawless execution and offers no margin of safety. ~171x trailing / ~76x forward P/E, ~126x EV/EBITDA, and a ~0.2% FCF yield after a +680% twelve-month run is a momentum structure as much as a fundamental one. The product is, at bottom, a mechanical consumable in a fragmented 50+-supplier market where Yamaichi (28%) and Cohu (22%) have scale and every incentive to close a thermal lead that may be 1-2 years, not structural. The kill mechanism is concentration: ~67-80% of revenue rides on a handful of US AI-accelerator customers, so a single adverse event — an AI-capex digestion (an inference-efficiency breakthrough of the TurboQuant/DeepSeek type per [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]), a customer in-sourcing the test interface, or one lost design-in at Nvidia or AMD — hits revenue and the multiple simultaneously. The losing world: AI capex plateaus in 2027, competitors reach thermal parity, socket ASPs normalize, growth decelerates to ~15%, and a 76x→25x forward de-rate halves the equity even as earnings rise. A Taiwan-tail manufacturing disruption or export-control entanglement (US customers, Kaohsiung fabs) is the tail on top.
+The valuation prices multi-year flawless execution and offers no margin of safety. ~171x trailing / ~76x forward P/E, ~126x EV/EBITDA, and a ~0.2% FCF yield after a +680% twelve-month run is a momentum structure as much as a fundamental one. The product is, at bottom, a mechanical consumable in a fragmented 50+-supplier market where Yamaichi (28%) and Cohu (22%) have scale and every incentive to close a thermal lead that may be 1-2 years, not structural. The kill mechanism is concentration: ~67-80% of revenue rides on a handful of US AI-accelerator customers, so a single adverse event — an AI-capex digestion (an inference-efficiency breakthrough of the TurboQuant/DeepSeek type per [[AI Bubble Risk and Semiconductor Valuations]]), a customer in-sourcing the test interface, or one lost design-in at Nvidia or AMD — hits revenue and the multiple simultaneously. The losing world: AI capex plateaus in 2027, competitors reach thermal parity, socket ASPs normalize, growth decelerates to ~15%, and a 76x→25x forward de-rate halves the equity even as earnings rise. A Taiwan-tail manufacturing disruption or export-control entanglement (US customers, Kaohsiung fabs) is the tail on top.
 
 ## Catalysts
 
@@ -135,7 +135,7 @@ The valuation prices multi-year flawless execution and offers no margin of safet
 - [[Theses/TER - Teradyne]] — ATE peer; UltraFLEX platform; custom AI ASIC test ramp
 - [[Theses/FORM - FormFactor]] — probe-card #1 (~31%); direct competitor in WinWay's probe-card leg
 - [[Theses/AEHR - Aehr Test Systems]] — wafer-level burn-in; adjacent test-interface consumable
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — the de-rate / AI-capex-digestion scenario that frames the position risk
+- [[AI Bubble Risk and Semiconductor Valuations]] — the de-rate / AI-capex-digestion scenario that frames the position risk
 - [[Research/2026-06-06 - semiconductors - Surface Scan]] — flagged the consumable/qualification-gate test-interface gap this thesis fills
 - [[Mental Models/Industry - Semiconductors]] — #1 (emerging bottleneck), #2 (qualification-gate monopoly), #14 (reclassification), L2 (rising floors)
 

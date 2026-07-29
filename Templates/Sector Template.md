@@ -1,4 +1,5 @@
 ---
+publish: true
 date: {{date}}
 tags: [sector, moc]
 status: draft

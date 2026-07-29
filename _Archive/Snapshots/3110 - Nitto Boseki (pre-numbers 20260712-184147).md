@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/3110 - Nitto Boseki]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-06-10
 tags: [thesis, copper-clad-laminate, glass-cloth, japan, 3110]
 status: draft
@@ -165,7 +165,7 @@ This is a +244%-in-a-year glass stock — *still* up huge even after a −47% pe
 - Adjacent value-chain sector: [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]]
 - Displacement-vector macro: [[Macro & Technology/Organic ABF to Glass-Core Substrate Transition]]
 - Demand-driver theses: [[Theses/NVDA - Nvidia]], [[Theses/AVGO - Broadcom]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/TSM - Taiwan Semiconductor]]
-- Demand overlay: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]
+- Demand overlay: [[AI Bubble Risk and Semiconductor Valuations]]
 - Stress test (adversarial, 2026-06-26): [[Research/2026-06-26 - 3110 - Stress Test]]
 - M9 node contest (2026-06-27): [[Research/2026-06-27 - M9 Quartz vs Low-Dk Glass - deep-dive]] — quartz cohort taking the early M9 majority; substantially confirms the →LOW trigger (bounded by M9-slice-size + quartz cost/yield)
 

@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/SIVE - Sivers Semiconductors]]"
 snapshot_date: 2026-07-11
 snapshot_trigger: status
 snapshot_batch: status-2026-07-11-063211
-publish: true
+publish: false
 date: 2026-05-22
 tags: [thesis, semiconductors, photonics, InP, CPO, mmWave, small-cap, SIVE]
 status: active
@@ -172,7 +172,7 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 
 4. **Legal / governance risk** (catalyst-disrupting): Swedish Economic Crime Authority preliminary investigation into Nasdaq listing announcement leak. PCAOB restated accounts revealed materially deeper losses. CEO 90-day lock-up signals defensive governance posture. Probe escalation delays or kills the listing — the primary multiple re-rating catalyst.
 
-5. **Multiple compression risk** (position-threatening even if thesis right): ~55x EV/Revenue with continued losses is fragile against any AI infrastructure capex normalization. Even good operational execution may not deliver positive returns if photonics multiples compress alongside broader AI semiconductor multiple normalization (see [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] for cross-portfolio framework).
+5. **Multiple compression risk** (position-threatening even if thesis right): ~55x EV/Revenue with continued losses is fragile against any AI infrastructure capex normalization. Even good operational execution may not deliver positive returns if photonics multiples compress alongside broader AI semiconductor multiple normalization (see [[AI Bubble Risk and Semiconductor Valuations]] for cross-portfolio framework).
 
 6. **Position risk — micro-cap volatility** (not thesis-breaking but position-sizing-relevant): with ~SEK 17.5B market cap and 6.43% short interest, a single capital raise announcement or earnings miss can dislocate 30-50% intraday. Daily ADV constrains exit liquidity at scale.
 
@@ -204,7 +204,7 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 
 **Sector / Cluster**:
 - [[Sectors/Optical Networking & Photonics]] — sector MOC; key industry questions on CPO inflection, EML oligopoly, OCS market, and Chinese localization frame Sivers' competitive context
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — multiple compression framework relevant to ~55x EV/Revenue positioning
+- [[AI Bubble Risk and Semiconductor Valuations]] — multiple compression framework relevant to ~55x EV/Revenue positioning
 
 **Direct competitors / supply chain peers**:
 - [[Theses/LITE - Lumentum]] — direct InP laser competitor at Tier 1; "arms dealer" thesis framework that Sivers attempts to replicate at Tier 2

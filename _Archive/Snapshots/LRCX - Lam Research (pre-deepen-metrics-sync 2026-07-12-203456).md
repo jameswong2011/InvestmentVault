@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/LRCX - Lam Research]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: metrics-sync
 snapshot_batch: deepen-metrics-sync-batch-2026-07-12-203456
-publish: true
+publish: false
 date: 2026-04-29
 tags: [thesis, semiconductor-capital-equipment, LRCX]
 status: active
@@ -215,7 +215,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Theses/285A - Kioxia]] — NAND end-customer; Kioxia capex driver for Lam NAND etch/dep share
 - [[Theses/TSM - Taiwan Semiconductor.md]] — leading-edge foundry; N2/A14 GAA Akara revenue source
 - [[Sectors/Semiconductor Capital Equipment.md]] — sector context
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — multiple-compression scenario macro context
+- [[AI Bubble Risk and Semiconductor Valuations]] — multiple-compression scenario macro context
 - [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas.md]] — WFE TAM growth; Lam Vantex line for HBM4 TSV; Akara 2x-3x expansion 2026
 - [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation.md]] — head-to-head AMAT vs LRCX; ALTUS Halo Mo / SABRE 3D / NAND share-of-wallet expansion data
 - [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas.md]] — Dec 2025 quarter mix shift to 59% Foundry/Logic; CSBG $1.99B

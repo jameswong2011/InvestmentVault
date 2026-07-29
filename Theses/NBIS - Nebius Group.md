@@ -123,7 +123,7 @@ NBIS is the highest-quality balance-sheet way to own the one part of the AI-cape
 NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has not yet executed, funded by a balance sheet that looks pristine today and could be levered or heavily diluted by this time next year. The drivers that break it:
 
 1. **The power build slips.** A >4x energization in twelve months, back-end-weighted to Q3, against 24–48-month interconnect queues, with the largest sites (Philadelphia 1.2GW, second PA gigawatt campus) early in construction. A two-quarter slip means the contracted backlog converts slower than the stock's ~$9B-ARR-priced expectation, and a stock priced for the top of the range de-rates hard on the first miss.
-2. **The funding gap forces the very leverage the thesis says NBIS avoids.** $20–25B capex vs $9.3B cash. If ClickHouse monetization is delayed and customer prepayments don't stretch, NBIS funds the gap with GPU-collateralized/asset-backed debt — at which point it *is* CRWV (insight #5 collapses) — or with dilutive equity into a richly-valued stock.
+2. **The funding gap forces the very leverage the thesis says NBIS avoids.** $20–25B capex vs $9.3B cash. If ClickHouse monetization is delayed and customer prepayments don't stretch, NBIS funds the gap with GPU-collateralized/asset-backed debt — at which point it *is* CRWV (insight #5 collapses) — or with dilutive equity into a richly-valued stock. The macro-capex frame ([[Macro & Technology/Sustainability of AI Capex]]) tightens this: its leverage ledger counts customer prepayments *among* the debt-like claims that put the neocloud tranche at ~90-100% of drawable leverage capacity — so NBIS's funding edge is covenant- and trigger-remoteness (prepayments carry no DSCR), not exemption from the tranche's aggregate fragility, nor from the 2028-29 capex digestion (or the deferred, sharper air-pocket if the complex races its financing ceiling first) that concentrates in exactly this lab-serving/merchant slice.
 3. **The 45% margin compresses as the base scales.** New capacity ramps below full utilization; the sold-out, peak-pricing margin normalizes toward the Oracle ~16% precedent as the mix dilutes. Margin compression cascades just as capex peaks.
 4. **Hyperscaler in-housing caps the back half of the backlog.** Microsoft (MAIA) and Meta (MTIA) are the two anchor customers *and* the two builders of competing silicon. The $15B Meta "flexible" tranche is optional; if MTIA ramps, it lapses, and ~$15B of headline backlog never converts.
 5. **The optionality is marked, not realized.** The $780.6M ClickHouse gain is non-cash; absent an actual liquidity event the stakes fund nothing, and the Q1 "$621M net income" reverses to an adjusted ~$100M loss. The conglomerate discount the market applies may be correct if the stakes never monetize on a useful timeline.
@@ -156,7 +156,7 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 6. **Optionality non-realization.** Stakes are marked, not cash; ClickHouse/Avride may not monetize before the capex gap bites.
 
 **Position risks (thesis right, stock wrong):**
-7. **Valuation de-rate.** ~110x trailing sales / trading past avg sell-side target / 25%+ overvaluation per quant models — any broad AI-infra risk-off ([[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]) hits NBIS's premium first; elevated short interest amplifies both directions.
+7. **Valuation de-rate.** ~110x trailing sales / trading past avg sell-side target / 25%+ overvaluation per quant models — any broad AI-infra risk-off ([[AI Bubble Risk and Semiconductor Valuations]]) hits NBIS's premium first; elevated short interest amplifies both directions.
 8. **Yandex-provenance governance tail.** Residual Russian-separation optics can resurface as a discount on any governance or regulatory headline, independent of fundamentals.
 9. **Secondary supply / SBC dilution.** High stock-based compensation and ongoing equity issuance to fund capex create a persistent dilution overhang.
 
@@ -184,7 +184,8 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 - [[Sectors/Compute & AI Compute Accelerators]] — upstream chip supply; Vera Rubin launch partner lineup
 - [[Sectors/Data Center Power & Cooling]] — grid-interconnect bottleneck (the binding constraint on NBIS's build); Vertiv unit economics
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — hyperscaler in-housing as the dominant long-term demand risk
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — credit-cycle / capex-normalization framing
+- [[AI Bubble Risk and Semiconductor Valuations]] — credit-cycle / capex-normalization framing
+- [[Macro & Technology/Sustainability of AI Capex]] — tranche taxonomy + leverage ledger (prepayments counted as debt-like claims); NBIS's funding edge reframed as covenant-remoteness rather than tranche exemption; 2028-29 digestion-vs-race timing
 
 **Cross-thesis (strong factor exposure):**
 - [[Theses/CRWV - CoreWeave]] — the direct comparator; NBIS = execution-and-quality, CRWV = credit-and-scale; the pair is the cleanest expression of the sector
@@ -215,3 +216,6 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (second same-day pass): 0 metrics changed — Market Cap and Gross Margin round to already-current displayed values. Revenue Growth again left unedited (compound multi-number string with an apparent unit mismatch between old_value_numeric and the $B-scale text — format uncertain) and FCF Yield left unedited (qualitative "Deeply negative" text). Snapshot: [[_Archive/Snapshots/NBIS - Nebius Group (pre-numbers 20260712-184111)]]
+
+### 2026-07-29 (/sync)
+- [[Macro & Technology/Sustainability of AI Capex]]: leverage ledger counts customer prepayments as debt-like claims → reframes NBIS's "clean funding" (insight #5) as covenant-remoteness, not exemption from the fragile neocloud tranche or the 2028-29 digestion/race timing — conviction unchanged (medium, draft): sharpens Bear Case #2, the execution binary is untouched. Snapshot: [[_Archive/Snapshots/NBIS - Nebius Group (pre-sync 2026-07-29-155247)]]

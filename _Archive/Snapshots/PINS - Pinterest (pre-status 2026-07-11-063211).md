@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/PINS - Pinterest]]"
 snapshot_date: 2026-07-11
 snapshot_trigger: status
 snapshot_batch: status-2026-07-11-063211
-publish: true
+publish: false
 date: 2026-04-30
 tags: [thesis, social-platforms, advertising, commerce, PINS]
 status: monitoring

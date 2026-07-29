@@ -200,7 +200,7 @@ The widely-discussed glass-substrate names (Intel as customer, NVIDIA via reticl
 - Plan Optik wins a Tier-1 customer evaluation that LPKF was triangulated to (would split the duopoly into a contested market)
 - TRUMPF (largest industrial laser company at ~€5B revenue) develops and qualifies a LIDE-equivalent process (would change duopoly to oligopoly by 2028)
 - Ajinomoto announces glass-core-compatible ABF variant qualified at multiple substrate customers (would extend organic-ABF franchise through 2032-2035)
-- AI accelerator demand cycle inflection (per [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]) compresses substrate body-size growth and removes the physics-mandate for glass
+- AI accelerator demand cycle inflection (per [[AI Bubble Risk and Semiconductor Valuations]]) compresses substrate body-size growth and removes the physics-mandate for glass
 
 ## Trading and portfolio implications
 
@@ -241,7 +241,7 @@ The widely-discussed glass-substrate names (Intel as customer, NVIDIA via reticl
 - [[Theses/AMAT - Applied Materials]] — semicap equipment adjacent (CMP, deposition); 9% BESI stake
 - [[Theses/LRCX - Lam Research]] — semicap equipment adjacent (etch, deposition)
 - [[Mental Models/Industry - Semiconductors]] — #1 (emerging bottlenecks), #2 (qualification-gate monopolies hidden behind share data), #8 (architecture transitions remap bottleneck), #13/14 (compounder vs cyclical classification; reclassification triggers), #18 (cycle vs structural shifts)
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — AI accelerator demand cycle overlay; substrate-body-size growth gated by AI demand
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI accelerator demand cycle overlay; substrate-body-size growth gated by AI demand
 
 ## Log
 
@@ -250,3 +250,9 @@ The widely-discussed glass-substrate names (Intel as customer, NVIDIA via reticl
 
 ### 2026-06-18
 - [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]] created as companion note (panel-level *format* transition vs this note's glass-core *material* transition); cross-link added to Related theses + sectors. This note's CoPoS timing (VisEra pilot 2026, 2028–29 mass production) is consistent with June-2026 reporting — no body reconciliation needed here. The stale "Q4 2030" CoPoS-delay claim lived in the OSAT + Semicap sector notes (which mis-cited this note) and was corrected in the same /sync.
+
+### 2026-07-14 (/sync)
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Corroborates the Intel-first-mover framing on advanced packaging but adds a skeptical read on external monetization — Foveros Direct is a "credible-but-evidence-light" second-source option gated by yield economics (D0<0.1 parity vs early ~0.2-0.25, 18-24mo learning window) and named-customer production, not by tooling readiness. TSMC owns the current packaging profit pool. No change to the glass-core transition timeline/framework.
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: CommonWealth Magazine (Jul-06, surfaced in post-print digest flow) reports TSMC's first-generation CoPoS may be glass-free — consistent with this note's "TSMC structurally behind on glass" S-curve, but a datapoint AGAINST early glass-core pull-in at TSMC: if CoPoS gen-1 ships on a non-glass core, TSMC's glass adoption leg shifts toward 2029-31 and the equipment-lead window rests on the Intel/Samsung legs alone. TSMC Q2'26 also raised packaging to 10-20% of a $60-64B capex — substrate volume demand-pull intact regardless of core material. Signpost updated; framework unchanged.

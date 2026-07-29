@@ -345,6 +345,7 @@ The structural conflict (IDM running merchant foundry while competing with found
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: enumerates Intel's 4-stage CPO roadmap (OCI chiplet 4T bidir → glass optical bridge → 3D vertical coupling 2027) — roadmap context, no thesis-level delta
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis CPU landscape corroborates the structural-second-source frame and adds two new datapoints: 8-channel Diamond Rapids-SP cancelled (cedes highest-volume server market to AMD Venice SP8 until 2028); Clearwater Forest only +17% vs Sierra Forest on a low-yield Foveros-Direct stack ("yield-learning vehicle, not volume"); the SMT-removal causal chain (Spectre/Meltdown 2018 → Lion Cove → Diamond Rapids) made explicit
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: capacity scarcity frames the foundry-diversification tailwind (Samsung Tesla AI5/AI6 dual-track, Samsung into Nvidia DC supply chain, admin backing) + EMIB as a 2.5D-easing alternative — but the article reads diversification as TSMC-capacity-driven, in tension with the thesis's "Intel wins are geopolitical/hedge not overflow" Insight #3; Intel also an N3 client customer (Lunar/Arrow/Nova Lake)
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]] — TheValueist synthesis: Foveros-Direct yield-economics parity framework (D0/stack-yield vs CoWoS-L) + the EMIB-2.5D-external vs Foveros-Direct-3D-internal-only split; corroborates the structural-second-source / layer-aspirant frame, tempers EMIB-cost-arbitrage optimism
 
 ## Legacy Callouts
 
@@ -391,3 +392,9 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Market Cap and Forward P/E both identical to prior refresh after rounding. EV/Revenue (TTM) still fetch_gap. Snapshot: [[_Archive/Snapshots/INTC - Intel (pre-numbers 20260712-183935)]]
+
+### 2026-07-14 (/sync)
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Corroborates §Industry Context → Advanced packaging (Foveros = Intel-fabbed-silicon moat, not standalone external revenue) and adds a Foveros-Direct **yield-economics parity framework** the thesis lacked — CoWoS-L parity needs D0 <0.1/cm² (early Foveros ~0.2-0.25, mid 0.15, 18-24mo window), bond yield >98%, stack yield >75%; distinct from EMIB-2.5D's ~90% yields, sharpening the EMIB-external-path (Google-TPU deal) vs Foveros-Direct-3D-internal-only (Clearwater Forest) split. Tempers the ">$1B/customer" EMIB-cost read ("edge real but not sufficient"). Conviction unchanged (low).
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC "welcomes" EMIB-T amid CoWoS overflow (Google TPU v9 reportedly evaluating EMIB); TrendForce: up to 90% of Nova Lake compute tiles may move to 18A (reversing the >90%-on-N2 read); reported 18A yield ~85% + NVDA/OpenAI orders (weak sourcing) — conviction unchanged (low); first external-validation cluster in years, all unconfirmed — verify before any re-rate.

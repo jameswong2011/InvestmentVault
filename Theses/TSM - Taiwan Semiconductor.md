@@ -7,14 +7,14 @@ conviction: high
 sector: Semiconductor Foundries
 ticker: TSM
 source: https://pr.tsmc.com/english/news/3264
-key_metrics_last_refreshed: 2026-07-12
+key_metrics_last_refreshed: 2026-07-24
 ---
 
 # TSM — Taiwan Semiconductor Manufacturing Company
 
 ## Summary
 
-TSMC is a functional monopoly on leading-edge compute priced as a cyclical foundry. 92% share of advanced nodes (≤7nm), ~58.8% gross margin in Q1 2026, and 20% N2 price premium over N3 confirm the pricing-power regime has arrived — yet consensus still models TSMC on capex cyclicality rather than monopoly rents. The non-consensus angle is CoWoS and COUPE as separable revenue lines (advanced-packaging + photonics TAM expansion) plus A16 backside-power-rail exclusivity to NVDA Feynman (2027) that deepens customer lock-in beyond the wafer contract. Medium conviction, not high: Taiwan tail risk is real, AAPL+NVDA ≈ 40% revenue concentration is unprecedented for a $1T+ company, and the Arizona $165B expansion dilutes margins 2-3pts by 2030. The investment case is durability-of-monopoly over 5 years, not a 2026 earnings beat.
+TSMC is a functional monopoly on leading-edge compute — and the market has now largely paid for it, which moves the question from recognition to durability. 92% share of advanced nodes (≤7nm), a record 67.7% gross margin in Q2 2026 (+910bps YoY), and a sold-out N2 at a 10–20% premium confirm monopoly rents are being harvested, not merely arriving. The non-consensus angle remains CoWoS and COUPE as separable revenue lines (advanced-packaging + photonics TAM expansion) plus A16 backside-power-rail exclusivity to NVDA Feynman (2027) that deepens customer lock-in beyond the wafer contract. High conviction (since 2026-05-22) with a fully-priced caveat: the 2028 bull-case earnings (~$16–17 EPS) are landing in 2026 (~$17.5/ADR FY26E derived), and the July 2026 beat-and-raise (FY26 growth >40%, capex $60–64B, US commitment $265B) raised the fundamental ceiling yet the stock *fell* ~5% to ~$421 (~24x FY26E) — so the remaining edge is durability-beyond-2028 (packaging annuity, photonics, A14 cadence) plus the market's new margin-peak fear being dilution arithmetic rather than pricing erosion. Taiwan tail risk is real, NVDA (~22%) + AAPL (~18%) ≈ 40% concentration is now AI-capex-cyclical, and the $265B US buildout dilutes margins 2–3pts early-stage widening to 3–4pts by guidance. The investment case is durability-of-monopoly over 5 years, not the next print.
 
 ## Key Non-consensus Insights
 
@@ -24,7 +24,7 @@ Consensus models CoWoS capacity inside TSMC's foundry revenue bucket. It should 
 
 ### 2. Silicon shield is quantified, not theoretical — $165B US co-investment is the new tail-risk discount
 
-The "silicon shield" argument (Taiwan's strategic value deters Chinese action) was theoretical through 2024. It is now backed by concrete US co-investment: TSMC's $165B Arizona commitment (6 fabs + 2 advanced-packaging + 1 R&D center, up from $65B pre-2025) and the March 2025 Trump $100B additional pledge are not just political theater — they make Taiwan loss a direct US Treasury balance-sheet hit, not just a diplomatic issue. The US has effectively bought co-insurance on Taiwan's survival by bonding TSMC to American soil. This is why TSM trades at 22x forward earnings despite >$1T market cap and 40% Asian-fab-concentration risk that would deserve a 15x multiple in a vacuum.
+The "silicon shield" argument (Taiwan's strategic value deters Chinese action) was theoretical through 2024. It is now backed by concrete US co-investment: TSMC's US commitment reached **$265B** with the July 2026 +$100B expansion (several more 2nm-and-below fabs + advanced-packaging plants, on top of the original 6 fabs + 2 advanced-packaging + 1 R&D center; the ladder ran $65B pre-2025 → $165B March 2025 → $265B July 2026) — not just political theater: it makes Taiwan loss a direct US Treasury balance-sheet hit, not just a diplomatic issue. The US has effectively bought co-insurance on Taiwan's survival by bonding TSMC to American soil. This is why TSM trades at ~24x FY26E earnings despite ~$1.9T market cap and Asian-fab-concentration risk that would deserve a 15x multiple in a vacuum.
 
 ### 3. A16 exclusivity to NVDA Feynman creates infrastructural co-dependence, not a supplier-customer relationship
 
@@ -38,7 +38,7 @@ The strongest competitive tell arrived in early 2026: Broadcom — the most CPO-
 
 ### 5. Pricing power is rising, not topped — N2 @ +20% premium says monopoly rents are expanding
 
-Consensus assumes gross margin is already near ceiling at 58-59%. The N2 price premium (20% above N3, itself already a 15-18% premium to N5) says the opposite: TSMC is still harvesting pricing power as customers have nowhere else to go. N2 volume mix in 2026: ~10% of revenue. Scaling to 35-40% by 2028 alone adds 300-400bps to blended gross margin via mix shift — before any additional price hikes. 2028 gross margin of 62-64% is plausible if N2/A16/A14 mix accelerates and US fabs achieve cost parity (stretch goal: $200B+ in additional tooling + TSMC Arizona learning rate). Consensus models a declining margin path into Arizona dilution (2-3pts drag by 2030). The offset — monopoly pricing at node transitions — is not in the sell-side model.
+This insight over-delivered: consensus feared a 58-59% ceiling; Q2 2026 printed **67.7%** (+910bps YoY) and the thesis's own 2028 "stretch" case (62-64%) was exceeded two years early. The N2 price premium (10-20% above N3, sold out at launch) and a fourth consecutive annual hike cycle say pricing power is still expanding as customers have nowhere else to go. N2 mix: 3% of wafer revenue in Q2 2026, scaling through 2027-28. Consensus fear has rotated from ceiling to *peak*: the Q3'26 guide (65-67%) is the first sequential GM decline of the cycle, with N2-ramp dilution (~3-4pts, 2H26) and overseas-fab dilution (2-3% early stages widening to 3-4% later) stacking into 2027. The re-based non-consensus claim: the decline is capacity-buildout arithmetic, not pricing erosion — monopoly pricing at node transitions still isn't in the sell-side model. Test: GM holding ≥63-64% through peak dilution in 2027.
 
 ## Outstanding Questions
 
@@ -82,22 +82,21 @@ TSM trades at 22x NTM earnings. AAPL+NVDA = ~40% of revenue, possibly 45% by 202
 
 ### Revenue segmentation
 
-Q1 2026 revenue mix, approximate. Three orthogonal cuts (node × platform × end-customer geography) unified in a single schema.
+Q2 2026 revenue mix (reported 2026-07-16), approximate. Three orthogonal cuts (node × platform × end-customer geography) unified in a single schema. Geography rows carry the prior disclosure pending next quarterly review.
 
 | Dimension | Segment | Revenue share | Notes |
 |---|---|---|---|
-| Node | 3nm (N3/N3E/N3P) | 22% | GM >65% |
-| Node | 5nm (N5/N4/N4P) | 36% | GM ~60% |
-| Node | 7nm (N7/N7P/N6) | 15% | GM ~55% |
-| Node | 16/12nm | 7% | GM ~45% |
-| Node | 28nm+ (mature) | 10% | GM ~35-40% |
-| Node | 2nm (N2) | ~1% (ramping) | GM target >70% |
-| Node | Advanced packaging | ~9% | GM ~55%; CoWoS + SoIC + InFO |
-| Platform | HPC (AI, datacenter) | 59% | NVDA, AMD, AVGO, MRVL, TSLA, GOOG |
-| Platform | Smartphone | 28% | AAPL, MediaTek, Qualcomm |
-| Platform | IoT | 5% | diverse |
-| Platform | Automotive | 5% | NXP, Infineon, on-semi |
-| Platform | DCE / Other | 3% | — |
+| Node | 5nm (N5/N4/N4P) | 33% | workhorse; Blackwell/Rubin-class AI logic |
+| Node | 3nm (N3/N3E/N3P) | 30% | the binding AI constraint (~86% AI share of N3 output 2027E) |
+| Node | 7nm (N7/N7P/N6) | 11% | — |
+| Node | 2nm (N2) | 3% | first material quarter; sold out; ~3-4pts GM dilution 2H26 |
+| Node | 16/20nm + mature (28nm+) | ~23% | balance; advanced ≤7nm = 77% of wafer revenue |
+| Node | Advanced packaging | low-teens % of total | CoWoS + SoIC + InFO; capacity "limiting customers' growth"; 10-20% of capex |
+| Platform | HPC (AI, datacenter) | 66% | +20% QoQ; NVDA, AMD, AVGO, MRVL, custom CPUs (agentic-AI resurgence) |
+| Platform | Smartphone | 22% | −4% QoQ; AAPL, MediaTek, Qualcomm |
+| Platform | IoT | 5% | +4% QoQ |
+| Platform | Automotive | 4% | +15% QoQ |
+| Platform | DCE / Other | ~3% | — |
 | Geography (end-customer HQ) | North America | 77% | AAPL + NVDA alone ~40pts |
 | Geography (end-customer HQ) | Asia Pacific ex-China/Japan | 10% | MediaTek, Qualcomm-designed |
 | Geography (end-customer HQ) | China | 6% | capped by export controls |
@@ -162,22 +161,21 @@ At every step TSMC either produces (wafer, packaging) or enables (hybrid bonding
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap (ADR TSM) | ~$1.10T | As of April 2026 |
-| Enterprise Value | ~$1.02T | Net cash balance sheet |
-| EV/NTM Revenue | ~8.5x | vs. 5-6x historical avg |
-| EV/NTM EBITDA | ~13.5x | |
-| P/E NTM | ~22x | Bottom of $275-310 PT range implies 22x NTM EPS |
-| Q1 2026 Revenue | NT$839.25B (~$26.5B USD) | +42% YoY, +1.7% QoQ |
-| Q1 2026 Gross Margin | 58.8% | vs 53.1% Q1 2025 |
-| Q1 2026 Operating Margin | 49.6% | vs 42.0% Q1 2025 |
-| Q1 2026 Net Income | NT$361.56B | +35% YoY |
-| 2026E Revenue | ~$116B USD | ~30% growth |
-| 2026E Capex | $42B | High end of $38-42B guided |
-| AI Revenue (2026E) | ~$50B | ~40% of total |
-| FCF Yield (NTM) | ~3% | Capex-heavy phase |
-| Net Cash | ~$70B | Deep balance sheet cushion |
-| Dividend Yield | ~0.9% | Rising payout ratio |
-| Revenue Concentration Top 2 | ~40% | AAPL ~23%, NVDA ~17% |
+| Market Cap (ADR TSM) | ~$1.92T | ~$421 close 2026-07-22; −11% from $474.71 high, +52% YTD |
+| P/E FY2026E | ~24x | FY26E EPS ~$17.5/ADR derived (H1 actual $7.76 + Q3 guide build); `/numbers TSM` for FMP-exact |
+| Q2 2026 Revenue | NT$1,270.38B ($40.2B) | +36.0% YoY, +12.0% QoQ — record |
+| Q2 2026 Gross Margin | 67.7% | above 65.5-67.5% guide; +910bps YoY |
+| Q2 2026 Operating Margin | 60.3% | net margin 55.6% — both records |
+| Q2 2026 Net Income | NT$706.56B | +77.4% YoY; diluted EPS NT$27.25 / $4.31 ADR |
+| Q3 2026 Guide | $44.6-45.8B rev; GM 65-67% | +12% QoQ mid; first sequential GM decline (N2 ramp ~3-4pts dilution) |
+| FY2026E Revenue | ~$170B implied | growth guide "slightly above 40%", raised from >30% (Jul 16) |
+| 2026E Capex | $60-64B | raised from $52-56B; "next 3 years even more significantly higher" |
+| Advanced node mix (≤7nm) | 77% of wafer revenue | N5 33 / N3 30 / N7 11 / N2 3 |
+| Platform mix | HPC 66% / smartphone 22% | HPC +20% QoQ; AI-capex-cyclical rotation complete |
+| Revenue Concentration Top 2 | ~40% | NVDA ~22% (#1), AAPL ~18% (per 07-09 pass) |
+| US investment commitment | $265B | +$100B Jul 2026; open to bond issuance — new capital-structure signal |
+| Net Cash | ~$70B+ | pre-Q2 estimate; refresh via `/numbers TSM` |
+| Dividend Yield | ~0.9% | per 07-12 /numbers |
 
 ## Bull Case
 
@@ -225,9 +223,11 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### Near-term (next 6 months)
 
-- **Q2 2026 earnings (mid-July 2026)** — capex revision, 2H26 demand signals, N2 volume ramp commentary, CoWoS allocation update. *Directional: positive if capex raised to $44B+, negative if softer HPC demand language.*
-- **Apple September 2026 iPhone launch** — confirms N2/N2P volume commitment; AAPL revenue contribution trajectory clarity.
-- **NVDA Feynman architecture reveal** — GTC 2026 (expected October 2026) — confirms A16 exclusivity and 2027 volume commit.
+- ~~**Q2 2026 earnings (mid-July 2026)**~~ **RESOLVED 2026-07-16** — the positive test fired at 1.4x its threshold (capex $60-64B vs the $44B+ bar), FY26 guide >40%, GM 67.7% record — and the stock fell ~5%. See [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]].
+- **Hyperscaler Q2 prints (Jul 28-31, Meta first)** — the AI-capex second-derivative test; discriminates "fully priced" vs "capex fatigue" readings of the post-print de-rate.
+- **Q3 2026 earnings (~mid-Oct)** — margin-peak narrative first test: GM ≥66% = dilution absorbed by pricing; N2 mix trajectory; any 2027 capex quantification.
+- **Apple September 2026 iPhone launch** — confirms N2/N2P volume commitment; AAPL revenue contribution trajectory (~18%, now #2 behind NVDA).
+- **NVDA Feynman architecture reveal** — GTC 2026 (expected October 2026) — confirms A16 exclusivity and 2027 volume commit; A16 went unmentioned on the Q2 call.
 - **Huawei Ascend 950DT Q4 2026 ship** — negative read-across; confirms Chinese domestic alternatives are real but TSMC not directly affected (SMIC-made).
 
 ### Medium-term (6-18 months)
@@ -269,34 +269,46 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ## Conviction Triggers
 
-→ **HIGH if**:
+### Original framework (2026-04-19) — HIGH block EXHAUSTED by the Q2'26 print; retained for audit
+
+→ **HIGH if**: *(all three legs fired — GM 67.7% Q2'26 ✓ · capex $60-64B ✓ · Feynman sole A16 customer ✓)*
 - 2026 full-year gross margin reports >60% AND
 - Q2 or Q3 2026 capex guide is raised to $45B+ AND
 - NVDA Feynman confirmed exclusively on A16 with volume commit through 2028
 - Rationale: confirms pricing power expanding (Insight #5), scale commitment locked (Insight #3), monopoly durability through 2028
 
-→ **LOW if**:
-- Q1 or Q2 2027 HPC revenue growth <10% YoY (AI capex cycle topping) OR
-- Arizona N2 ramp delayed past Q3 2028 OR
-- Intel 18A lands 2+ major external customers (MSFT + MediaTek or AMD)
-- Rationale: invalidates monopoly rent extension OR breaks the "no second" thesis
+### Re-armed 2026-07-24 (post-Q2'26 print — [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]])
 
-→ **CLOSE if**:
+→ **HIGH-reaffirm if**:
+- FY2026 closes at >40% USD revenue growth AND
+- Q3 2026 GM lands ≥66% (upper guide half — N2 dilution absorbed by pricing) AND
+- First 2027 capex guide (Jan 2027) ≥$70B
+- Rationale: monopoly rents absorbing dilution + demand outrunning the buildout — the durability-beyond-2028 leg strengthening
+
+→ **LOW if**:
+- Any 2027 quarter HPC revenue growth <10% YoY (AI capex cycle topping) OR
+- GM <63% for 2 consecutive quarters while announced price hikes continue (dilution structurally worse than guided; pricing failing to absorb) OR
+- Arizona N2 ramp delayed past Q3 2028 OR Intel 18A lands 2+ major external customers (carried over, unfired) OR
+- A named production-scale CoWoS-alternative win (e.g., Google TPU v9 volume on Intel EMIB-T) OR confirmed Nova Lake-scale N2 order pull-back to Intel 18A
+- Rationale: invalidates monopoly rent extension OR breaks the "no second" thesis at the wafer *or* packaging layer
+
+→ **CLOSE if** (unchanged from original):
 - Taiwan blockade/invasion or equivalent catastrophic geopolitical event OR
 - NVDA+AAPL combined revenue concentration exceeds 50% (systemic risk unmanageable) OR
 - Gross margin falls below 52% for 2 consecutive quarters with Arizona mix still <20% (structural cost increase, not transition)
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied** (2026-07-09 batch-3 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (expectations) · [[Industry - Semiconductors]] (#2, #6, #15, #16) · [[Lens - Value Layer Monopoly]]
+- **Models applied** (2026-07-09 batch-3 pass, evidence-tested against July-2026 web research; updated 2026-07-24 Q2'26-print pass): [[Generalist - Overview]] (expectations, [G-13]) · [[Industry - Semiconductors]] (#1, #2, #6, #15, #16, #18) · [[Lens - Value Layer Monopoly]]
 - **Triggers + evidence status** — hypotheses tested, not verdicts:
 	- *HIGH trigger FIRED on all three legs — and is now a dead letter*: FY26 GM >60% (Q1 actual **66.2%**, Q2 guide 65.5–67.5%); capex $45B+ (guided **$52–56B**, landing at high end); NVDA Feynman confirmed sole A16 customer (2028 volume commit undisclosed; A16 itself slipped to 2027). Conviction was raised to high on 2026-05-22 portfolio alignment, not on the trigger — **re-arm the framework with new thresholds**, the old ones are all exhausted.
 	- *VLM/#2 monopoly rents* — CONFIRMED expanding: price hikes 3–10% across nodes covering ~74% of wafer revenue, four consecutive annual increases signaled; N2 $30K/wafer (+10–20%), sold out; N3 the binding AI constraint (~86% AI share of output 2027E). The market has paid for it: spot ($452) **exceeds the thesis bull target ($380–420)**; NTM ~26–27x vs the thesis's 22x anchor — the predicted monopoly re-rate substantially happened, compressing forward asymmetry. (Watchlist NTM "0.9" = data artifact — NTD/USD mismatch; `/numbers TSM`.)
-	- *Bear legs REFUTED*: Arizona margin drag — Arizona's Q1 profit exceeded its full FY25 profit, Kumamoto first profit; HPC deceleration — +40.6% Q1, May sales +30%; Intel 18A threat — 1 tentative customer (MSFT Maia 2), and Intel deepening its own TSMC dependence (Nova Lake >90% N2).
+	- *Bear legs REFUTED*: Arizona margin drag — Arizona's Q1 profit exceeded its full FY25 profit, Kumamoto first profit; HPC deceleration — +40.6% Q1, May sales +30%; Intel 18A threat — 1 tentative customer (MSFT Maia 2), and Intel deepening its own TSMC dependence (Nova Lake >90% N2). *2026-07-24: Intel leg downgraded refuted→CONTESTED — TrendForce reports up to 90% of Nova Lake compute tiles may move to 18A (direct reversal of the >90%-N2 read); reported 18A yield ~85% + NVDA/OpenAI orders (weak sourcing, unconfirmed); EMIB-T absorbing CoWoS overflow. Reversal-watch, not verdict.*
 	- *#15/#16 silicon shield* — UPGRADED: Jan 15 US-Taiwan framework ($250B Taiwan-into-US, 2.5x tariff-free import ratio, Section 232 relief) converts Insight #2 into treaty-adjacent policy. Geopolitics: grinding escalation (blockade-rehearsal drills, July supply-chain exercises) — elevated, not acute; CLOSE trigger unfired.
 	- *New watch items the thesis lacks*: **CoWoS supply-demand gap 20%→10% by end-2026** — the first dated milestone toward the overbuild/utilization-cliff bear (2027 is the test year); CoPoS glass panel (volume 2H28, -30% cost) positioned to *replace* CoWoS at the largest packages — a pricing-curve lever under the CoWoS-annuity insight; NVDA is now customer #1 (~22%, Apple ~18%) — concentration rotated from consumer-cyclical to AI-capex-cyclical, exactly as Outstanding Q5 anticipated.
-	- *Data-integrity flag — a full regime stale*: Key Metrics carry Q1 = $26.5B/58.8% GM vs actual $35.9B/66.2%; FY26E $116B vs run-rate ~$165–170B; mcap $1.10T vs ~$2.3T. Every quantitative anchor needs `/numbers TSM` before any decision references it.
-- **Disconfirming check** (evidence-updated): everything the thesis predicted happened — which per VLM §4 is precisely when edge dies: a consensus-recognized monopoly at a re-rated multiple with spot above the bull target is "quality, fully priced" unless the **Jul 16 print** raises the ceiling again (Citi expects an FY26 guide raise; first 2027 capex signal; 2H26 GM-dilution quantification is the live test). Single falsifiers: CoWoS gap closing through zero in 2027; a hyperscaler-capex second-derivative shock (Meta late-July guide); N2 utilization softening. The remaining non-consensus content is durability-beyond-2028 — everything nearer is in the price.
+	- *Semis #1 · bottleneck relocated to packaging — CONFIRMED binding, openly managed*: Wei Q2'26 — packaging capacity "so tight that now it's limiting my customers' growth"; AP 10-20% of a $60-64B capex; overflow deliberately routed to EMIB-T/OSATs (Google TPU v9 reportedly evaluating EMIB). Hypothesis: restraint-not-erosion — falsifier: a named at-scale CoWoS-alternative production win. (per [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]])
+	- ~~*Data-integrity flag — a full regime stale*: Key Metrics carry Q1 = $26.5B/58.8% GM vs actual $35.9B/66.2%; FY26E $116B vs run-rate ~$165–170B; mcap $1.10T vs ~$2.3T. Every quantitative anchor needs `/numbers TSM` before any decision references it.~~ → Retired 2026-07-24: Summary/segmentation/Key Metrics rebased to Q2'26 actuals ([[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]); market-data rows approximate pending `/numbers TSM`.
+- **Disconfirming check** (evidence-updated 2026-07-24): the **Jul 16 print RESOLVED the live test positive on all three legs** (FY26 >40%; capex $60-64B + "next 3 years even more significantly higher"; dilution quantified at unchanged framing) — **and the market declined to pay** (−5% print day, −11% from the $474.71 high, ~$421 / ~24x FY26E). [G-13] the price-implied-expectations question inverted: the 2028 bull earnings are no longer free at spot, but an 11% de-rate against rising estimates partially restores asymmetry with zero thesis deterioration — hold the two readings (fully-priced confirmation vs entry restoration) open until the discriminating data lands. Single falsifiers, one added: CoWoS gap closing through zero in 2027; hyperscaler-capex second-derivative shock (Meta late-July guide — imminent); N2 utilization softening; NEW — a named production-scale CoWoS-alternative win (EMIB-T). Durability-beyond-2028 remains the non-consensus content; the market just re-opened the nearer-dated debate it had closed.
 
 ## Related Research
 
@@ -324,6 +336,8 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: TSMC 2026 capex came in well above expectations (logic-side pricing the capex cycle); HBM4 base-die/CoWoS demand intact
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — datacenter CPU landscape: nearly every competitive 2026 CPU is TSMC N2/N3 (AMD Venice N2, Graviton5/Cobalt/Axion/Phoenix 3nm, ARM Venom N2, AMD Florence A16) — reinforces leading-edge logic monopoly across the entire CPU vendor set, not just GPUs
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "silicon shortage phase": N3 the binding AI constraint (AI ~60% of 2026 N3 output → ~86% in 2027, squeezing smartphone/CPU; effective util >100% H2'26; ~2-yr cleanroom capacity ceiling), TSMC "kingmaker" prioritizing higher-ASP AI; corroborates pricing-power Insight #5
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]] — advanced-packaging competition read: independently sizes the CoWoS annuity (adv pkg ~8%→low-teens % of TSMC revenue) and confirms the "Intel 18A/packaging threat refuted" leg (no named external Foveros Direct production; TSMC owns the profit pool)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]] — Q2'26 beat-and-raise (rev $40.2B +36%, GM 67.7% record, FY26 >40%, capex $60-64B, US $265B) that the market sold −5%; all three 07-09 live-test legs resolved positive; packaging bottleneck "limiting customers' growth"; Intel 18A/EMIB reversal-watch opened
 
 ## Log
 
@@ -384,3 +398,10 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (second same-day pass): 0 metrics changed. Dividend Yield (~0.9%) renders identically after rounding. All other rows remain custom/derived-metric with no FMP mapping — table is still materially stale (per repeated Mental Models flags) and needs a full `/numbers TSM` rebase beyond this batch's field-mapped scope. Snapshot: [[_Archive/Snapshots/TSM - Taiwan Semiconductor (pre-numbers 20260712-184147)]]
+
+### 2026-07-14 (/sync)
+- [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Independently sizes Insight #1 (advanced packaging = separable annuity: ~8%→>10%→low-teens % of TSMC revenue 2024-26) and confirms the Mental Models "Intel 18A/packaging threat — refuted" read (no named external Foveros Direct production; TSMC owns the profit pool; adoption starts low-risk/low-volume). Does NOT fire the LOW trigger ("Intel lands 2+ major external customers"). Conviction unchanged (high) — non-Taiwan-tail corroboration.
+
+### 2026-07-24
+- Q2 2026 earnings [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: beat-and-raise on every axis (rev $40.2B +36% YoY, GM 67.7% record, FY26 guide >40%, capex $60-64B, US commitment $265B) yet stock −5% to ~$421 (−11% from high) — conviction unchanged (high): ceiling raised, market didn't pay; forward asymmetry partially restored.
+- Rebased Summary/segmentation/Key Metrics to Q2'26 actuals, re-armed the exhausted Conviction Triggers, opened Intel-18A/EMIB reversal-watch in Mental Models. Snapshot: [[_Archive/Snapshots/TSM - Taiwan Semiconductor (pre-earnings-update 2026-07-24-233324)]]

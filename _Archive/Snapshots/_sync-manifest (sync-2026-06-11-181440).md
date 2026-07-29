@@ -32,7 +32,7 @@ _none — all-Tier-B run_
 - [[Sectors/Enterprise Workflow AI & Automation]] — Tier B (Related Research + Log)
 
 ## Macro notes touched
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — Tier B (Log)
+- [[AI Bubble Risk and Semiconductor Valuations]] — Tier B (Log)
 
 ## Source research notes processed
 - [[Research/2026-06-11 - PLTR - Karp on Frontier Lab Discontent - news]] (propagated_to: [PLTR, NOW])

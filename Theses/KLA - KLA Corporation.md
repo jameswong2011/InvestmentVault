@@ -265,7 +265,7 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 - [[Theses/285A - Kioxia]] — NAND customer; 400L cryogenic etch transition drives 3D inspection
 
 **Macro context**:
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — Multiple-compression risk under AI capex deflation scenarios
+- [[AI Bubble Risk and Semiconductor Valuations]] — Multiple-compression risk under AI capex deflation scenarios
 - [[Research/2026-04-19 - TSM - Stress Test]] — Taiwan-tail customer concentration framework
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Israel R&D operational disruption risk
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — HBM4 16-Hi bump-pitch tightening (sub-10μm) drives 3x bond-line inspection intensity; KLA Klarity/RAPID yield platform + 8 Series defect inspection captures the structural intensity uplift independent of MR-MUF vs hybrid-bonding outcome; HBM5+ 24-Hi (2029-2030) hybrid-bonding mandate adds further 2x inspection intensity at architectural inflection
@@ -301,3 +301,6 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (second same-day pass): 0 metrics changed — all 6 mapped rows (Market Cap, Gross Margin, Operating Margin, FCF Yield, Net Debt/EBITDA, Dividend Yield) round to already-current displayed values. Snapshot: [[_Archive/Snapshots/KLA - KLA Corporation (pre-numbers 20260712-184111)]]
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC capex $60-64B (raised from $52-56B) + "next three years even more significantly higher" + N2 yield-learning ramp and 4+ new Arizona fabs — conviction unchanged (high); process-control intensity compounds with node cadence (A14 pre-prod 2027) and fab-count expansion.

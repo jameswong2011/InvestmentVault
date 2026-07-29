@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/KAMBI - Kambi Group]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-04-10
 tags: [thesis, kambi, consumer-digital, sports-betting, b2b-platform]
 status: monitoring

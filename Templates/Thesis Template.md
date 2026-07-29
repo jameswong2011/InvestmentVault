@@ -1,4 +1,5 @@
 ---
+publish: true
 date: {{date}}
 tags: [thesis]
 status: draft
@@ -13,7 +14,12 @@ source:
 ## Summary
 <!-- One-paragraph investment case -->
 ## Key Non-consensus Insights
-- <!-- 3-5 one paragraph summaries of critical perspectives the market is missing, incorporating insight from the Research, Macro, and Sector folders. Use maximum thinking budget on this portion despite it being very short-->
+<!-- 3-5 insights, max thinking budget. Each insight MUST make its non-consensus claim auditable via the 4-field microformat below (per [[Generalist - Overview]] [G-13] expectations-investing: read the price-embedded consensus, then isolate the single variable it misprices). An "insight" that cannot state the consensus it opposes is positioning, not analysis. Draw from the Research, Macro, and Sector folders. -->
+- **[Insight title]**
+  - **Consensus:** <what the market currently believes / prices in>
+  - **Variant:** <the non-consensus view, and the mechanism that makes it right>
+  - **First confirming observable [YYYY-MM]:** <the earliest datapoint that would confirm the variant, and roughly when>
+  - **Falsifier:** <what would prove the variant wrong — ideally the same condition as a → LOW/CLOSE Conviction Trigger>
 ## Outstanding Questions
 - <!-- 3-10 one paragraph summaries of what an skeptical investment committee would ask before approving the investment, incorporating insight from the Research, Macro, and Sector folders -->
 ## Business Model & Product Description

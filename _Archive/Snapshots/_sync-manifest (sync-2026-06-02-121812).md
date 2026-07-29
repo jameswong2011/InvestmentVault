@@ -28,7 +28,7 @@ Default /sync — CPU Landscape 2026 deep-dive (corroborating; INTC thesis + Com
 - [[Sectors/Compute & AI Compute Accelerators]] — Tier A: §Product Level Analysis Intel-CPU body edit (Diamond Rapids-SP cancel + Venice SP8 + Clearwater Forest yield; pre-resume crashed batch) + Related Research wikilink + Log entry (resume). Snapshot: [[_Archive/Snapshots/Compute & AI Compute Accelerators (pre-sync 2026-06-02-121812)]]
 
 ## Macro notes touched
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — Tier B (Log + research-link): "CPUs are back" new AI-capex leg; two-sided $650B read (demand-floor↑, cost-base↑)
+- [[AI Bubble Risk and Semiconductor Valuations]] — Tier B (Log + research-link): "CPUs are back" new AI-capex leg; two-sided $650B read (demand-floor↑, cost-base↑)
 - [[Macro & Technology/CXL Memory Disaggregation Framework]] — Tier B (Log + cross-ref): CXL3-on-Diamond-Rapids + JBOM + Omniconnect + Bluefield-4 server-CPU disaggregation evidence
 - [[Macro & Technology/Agentic Internet]] — Tier B (Log + research-link): RL + agentic tool-use as explicit CPU-demand driver (layer-6 compute-fanout confirmation)
 

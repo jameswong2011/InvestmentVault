@@ -340,3 +340,6 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: forward P/E 28x→~34.6x across Summary + Industry Context (sub-threshold, comprehensive sweep). Snapshot: [[_Archive/Snapshots/AVGO - Broadcom (pre-deepen-metrics-sync 2026-07-12-203456)]]
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: CoWoS scarcity persists (Wei: "limiting my customers' growth") — allocation risk + packaging-ASP inflation for XPU programs; TSMC openly welcomes EMIB-T overflow (Google TPU v9 reportedly evaluating EMIB) — conviction unchanged (high); a validated second packaging source would ease AVGO's constraint at the cost of TSMC lock-in depth.

@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/CRWV - CoreWeave]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-05-15
 tags: [thesis, neoclouds, GPU-as-a-Service, AI-infrastructure, CRWV]
 status: monitoring
@@ -218,7 +218,7 @@ The drivers that break the thesis:
 - [[Sectors/Compute & AI Compute Accelerators]] — upstream chip supply; Vera Rubin launch partner lineup
 - [[Sectors/Data Center Power & Cooling]] — grid interconnect bottleneck; Vertiv unit economics
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — hyperscaler in-housing as dominant long-term demand risk
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — macro framing for credit cycle / capex normalization scenarios
+- [[AI Bubble Risk and Semiconductor Valuations]] — macro framing for credit cycle / capex normalization scenarios
 
 **Cross-thesis (strong factor exposure):**
 - [[Theses/NVDA - Nvidia]] — sole GPU supplier, 13% equity owner, structural pricing-power upstream

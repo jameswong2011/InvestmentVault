@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/6981 - Murata Manufacturing]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-05-15
 tags: [thesis, mlcc, semiconductors, passives, 6981]
 status: active
@@ -340,7 +340,7 @@ Chinese suppliers close 008004 chemistry gap faster than expected (3-5 year hori
 - [[Sectors/MLCC & Power Semiconductors]] — primary sector note; Murata is the #1 incumbent and majority share holder
 - [[Sectors/Compute & AI Compute Accelerators]] — AI server MLCC pull originates from NVIDIA accelerator design-ins
 - [[Sectors/Neoclouds & GPU-as-a-Service]] — neocloud capex demand pattern feeds MLCC unit pull through NVIDIA supply chain
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — AI demand durability is the central macro variable for the AI server MLCC pillar
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI demand durability is the central macro variable for the AI server MLCC pillar
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger (mature); TRIM Low→1-2% (800VDC MLCC scaling + 50% EV share real, but ROIC 9% rich vs multiple)
 - [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]] — Upstream-materials bottleneck map (release film / BaTiO₃ / Ni powder); positions Murata as the demand anchor while arguing single-source materials suppliers may capture more shortage rent. MF Material JV (Murata 35%) + TDK-NCI JV detail in §Industry Context → Value chain position
 - [[Research/2026-06-27 - 6981 - Stress Test]] — Adversarial short case: upside is a re-rate off a 22.6x anchor contradicted by the vault's own FMP refresh (~59x NTM P/E); demand-led 43%-of-sales path unfunded (mgmt capex ~¥330B vs ¥550-700B); 2/7 bull assumptions 🔴. Conviction flagged weakened (not changed). Mental-models lenses applied (Generalist / Industry-Semis / Value-Layer-Monopoly / AI-Readiness)

@@ -262,7 +262,7 @@ Combined: equity falls 60-80% from 243K to 50-95K KRW within 9-12 months. This i
 - [[Theses/000660 - SK Hynix]] — primary anchor customer; capex + 3D DRAM roadmap driver
 - [[Theses/AIXA - Aixtron]] — German MOCVD specialty equipment comparable for non-US-listed semicap
 - [[Mental Models/Industry - Semiconductors]] — #1 (emerging bottlenecks), #2 (qualification-gate monopolies hidden behind share data), #10 (anchor customer concentration is binary survival test), #18 (cycle vs structural shifts; mid-chasm S-curve), #19 (reading equipment orders as direct demand signal)
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — KOSPI/KOSDAQ bubble risk overlay; +75% YTD context
+- [[AI Bubble Risk and Semiconductor Valuations]] — KOSPI/KOSDAQ bubble risk overlay; +75% YTD context
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Do NOT hand-edit. -->

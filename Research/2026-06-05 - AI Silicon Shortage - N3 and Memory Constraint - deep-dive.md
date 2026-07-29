@@ -124,5 +124,5 @@ Blackwell still ships higher volume than Rubin in 2026 (platform + supply-chain 
 - [[Theses/META - Meta]] — MTIA on N3 (low volume)
 - [[Theses/INTC - Intel]] — foundry-diversification beneficiary + EMIB; N3 client-CPU customer
 - [[Sectors/Semiconductor Foundries]] · [[Sectors/DRAM & HBM Memory]] · [[Sectors/Compute & AI Compute Accelerators]] · [[Sectors/Custom Silicon & Networking Semiconductors]] · [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]] · [[Sectors/Optical Networking & Photonics]] · [[Sectors/Data Center Power & Cooling]] · [[Sectors/Neoclouds & GPU-as-a-Service]]
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — capex step-up + demand-vs-supply framing
+- [[AI Bubble Risk and Semiconductor Valuations]] — capex step-up + demand-vs-supply framing
 - [[Macro & Technology/800VDC Adoption]] — power-density transition (distinct from aggregate power now in excess)

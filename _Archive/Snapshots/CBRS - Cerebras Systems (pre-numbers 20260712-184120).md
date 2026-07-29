@@ -162,7 +162,7 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - Sector: [[Sectors/Compute & AI Compute Accelerators]]
 - Competitive-tension theses (graph-primer peers): [[Theses/NVDA - Nvidia]] (the incumbent it challenges), [[Theses/AMD - Advanced Micro Devices]], [[Theses/TSM - Taiwan Semiconductor]] (sole foundry dependency), [[Theses/AVGO - Broadcom]] (custom-ASIC inference), [[Theses/CRWV - CoreWeave]], [[Theses/NBIS - Nebius Group]], [[Theses/ARM - Arm Holdings]]
 - Research: [[Research/2026-04-23 - NVDA - Stress Test]], [[Research/2025-06-09 - CRWV - CoreWeave Deep Dive]], [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]], [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]
-- Macro: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]
+- Macro: [[AI Bubble Risk and Semiconductor Valuations]]
 
 ## Log
 

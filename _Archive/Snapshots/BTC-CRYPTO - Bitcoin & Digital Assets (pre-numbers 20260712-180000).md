@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, crypto, bitcoin, ethereum, stablecoins, quantum-risk, macro, digital-assets]
 status: monitoring

@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/036930 - Jusung Engineering]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-183107
-publish: true
+publish: false
 date: 2026-06-07
 tags: [thesis, semiconductors, semicap, ALD, korea, 036930]
 status: draft
@@ -266,7 +266,7 @@ Combined: equity falls 60-80% from 243K to 50-95K KRW within 9-12 months. This i
 - [[Theses/000660 - SK Hynix]] — primary anchor customer; capex + 3D DRAM roadmap driver
 - [[Theses/AIXA - Aixtron]] — German MOCVD specialty equipment comparable for non-US-listed semicap
 - [[Mental Models/Industry - Semiconductors]] — #1 (emerging bottlenecks), #2 (qualification-gate monopolies hidden behind share data), #10 (anchor customer concentration is binary survival test), #18 (cycle vs structural shifts; mid-chasm S-curve), #19 (reading equipment orders as direct demand signal)
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — KOSPI/KOSDAQ bubble risk overlay; +75% YTD context
+- [[AI Bubble Risk and Semiconductor Valuations]] — KOSPI/KOSDAQ bubble risk overlay; +75% YTD context
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Do NOT hand-edit. -->

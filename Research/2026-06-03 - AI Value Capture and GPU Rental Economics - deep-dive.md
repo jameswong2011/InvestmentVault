@@ -100,5 +100,5 @@ The most specific lever identified is **memory, via SOCAMM**. Because Vera Rubin
 - [[Theses/AVGO - Broadcom]] · [[Theses/AMD - Advanced Micro Devices]] · [[Theses/MRVL - Marvell Technology]] (custom-silicon / ASIC competition that caps value-based pricing)
 - [[Theses/000660 - SK Hynix]] · [[Theses/SNDK - SanDisk]] · [[Theses/285A - Kioxia]] (memory tightness / SOCAMM / LPDDR)
 - [[Sectors/Neoclouds & GPU-as-a-Service]] · [[Sectors/Compute & AI Compute Accelerators]] · [[Sectors/Custom Silicon & Networking Semiconductors]]
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]
+- [[AI Bubble Risk and Semiconductor Valuations]]
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] (companion SemiAnalysis token-economics framing)

@@ -1,4 +1,5 @@
 ---
+publish: true
 date: 2026-07-11
 tags: [thesis, semiconductor-capital-equipment, advanced-semi-metrology, advanced-packaging, HBM, CAMT]
 status: draft
@@ -200,7 +201,7 @@ The world where CAMT loses money: you buy a "de-rated" ~37x specialist, the HBM 
 - [[Theses/TSM - Taiwan Semiconductor]] — CoWoS/CoPoS developer; AP capex + panel roadmap that sets Golden Eagle's addressable market
 - [[Theses/NVDA - Nvidia]] — downstream AI-accelerator demand anchor; Rubin/HBM4 pull drives Camtek's AP/HBM TAM
 - [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]] — the panel transition where Camtek plays via Golden Eagle inspection (no litho, unlike ONTO)
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — the AI-capex-deflation scenario that is Camtek's dominant position risk (multiple compression on a high-beta specialist)
+- [[AI Bubble Risk and Semiconductor Valuations]] — the AI-capex-deflation scenario that is Camtek's dominant position risk (multiple compression on a high-beta specialist)
 - [[Mental Models/Industry - Semiconductors]] — #2 (qualification-gate — Camtek partial, HBM-metrology near-gate), #10 (anchor-customer survival test), #13/#14 (classify: semi-cyclical specialist), #16 (China bifurcation barbell)
 - [[Mental Models/Lens - Value Layer Monopoly]] — layer = HBM/AP 3D metrology; STRONG in-niche, disqualified on falling-switching-costs (China) + political ceiling (export controls)
 

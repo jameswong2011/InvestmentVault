@@ -223,7 +223,7 @@ This is a +542%-in-a-year laminate stock at ~47x forward / ~90x trailing in an i
 - Adjacent layers: [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]] (the substrate above CCL), [[Sectors/Custom Silicon & Networking Semiconductors]], [[Sectors/Optical Networking & Photonics]]
 - Demand-driver theses: [[Theses/NVDA - Nvidia]], [[Theses/AVGO - Broadcom]], [[Theses/MRVL - Marvell Technology]], [[Theses/TSM - Taiwan Semiconductor]]
 - Materials-monopoly analog: [[Theses/2802 - Ajinomoto]]
-- Macro: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]
+- Macro: [[AI Bubble Risk and Semiconductor Valuations]]
 - Stress test (adversarial, 2026-06-27): [[Research/2026-06-27 - 2383 - Stress Test]]
 - M9 node contest (2026-06-27): [[Research/2026-06-27 - M9 Quartz vs Low-Dk Glass - deep-dive]] — quartz at M9 erodes EMC's scarce-glass allocation moat; EMC's own M9 CCL lead contested (Doosan early leader)
 
@@ -249,3 +249,6 @@ This is a +542%-in-a-year laminate stock at ~47x forward / ~90x trailing in an i
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (second same-day pass): 0 metrics changed — all 4 mapped rows (Market Cap, Revenue Growth, Gross Margin) round to already-current displayed values; FCF Yield left unedited (qualitative "Minimal / negative" text, format uncertain). Snapshot: [[_Archive/Snapshots/2383 - Elite Material (pre-numbers 20260712-184111)]]
+
+### 2026-07-24 (/sync)
+- [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: AI substrate/CCL volume follows a raised TSMC packaging buildout (AP 10-20% of $60-64B capex); CommonWealth reports first-gen CoPoS may be glass-free — organic/quartz-cloth runway extends at the margin — conviction unchanged (medium); volume tailwind, the M8/M9 mix question stays the crux, not TSMC allocation.

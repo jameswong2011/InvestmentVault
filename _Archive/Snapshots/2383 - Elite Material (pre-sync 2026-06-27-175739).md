@@ -224,7 +224,7 @@ This is a +542%-in-a-year laminate stock at ~47x forward / ~90x trailing in an i
 - Adjacent layers: [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]] (the substrate above CCL), [[Sectors/Custom Silicon & Networking Semiconductors]], [[Sectors/Optical Networking & Photonics]]
 - Demand-driver theses: [[Theses/NVDA - Nvidia]], [[Theses/AVGO - Broadcom]], [[Theses/MRVL - Marvell Technology]], [[Theses/TSM - Taiwan Semiconductor]]
 - Materials-monopoly analog: [[Theses/2802 - Ajinomoto]]
-- Macro: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]
+- Macro: [[AI Bubble Risk and Semiconductor Valuations]]
 - Stress test (adversarial, 2026-06-27): [[Research/2026-06-27 - 2383 - Stress Test]]
 
 ## Log

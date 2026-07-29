@@ -1,10 +1,12 @@
 ---
-publish: true
+publish: false
 date: 2025-12-04
-tags: [macro, ai-bubble]
+tags:
+  - macro
+  - ai-bubble
 status: active
 source: Claude conversation export
-snapshot_of: "[[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]"
+snapshot_of: "[[AI Bubble Risk and Semiconductor Valuations]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: sync
 snapshot_batch: sync-2026-07-12-094844

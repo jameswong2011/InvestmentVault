@@ -35,7 +35,7 @@ The vault holds 53 active theses spanning AI compute (NVDA / AVGO / MRVL / TSM /
 
 The pattern: the vault's existing SEMICAP cluster is biased toward US/European front-end wafer-fab equipment (5 of 8 names) and US/EU advanced-packaging equipment (BESI, KLA's bond-line franchise, AMAT's HBM bond-tools, FORM probe cards, AEHR WLBI). It under-covers (a) **Japanese back-end specialty equipment** (TOWA compression molding, Disco wafer thinning, Lasertec mask inspection), (b) **upstream materials** (Ajinomoto ABF film, MGC BT resin, TOK/JSR photoresist, Shin-Etsu polysilicon/photo-materials, Murata-internal BaTiO3 already covered via 6981), and (c) **ABF substrate manufacturers** (Ibiden, Unimicron, AT&S, Nan Ya PCB).
 
-This asymmetry matters because the vault's macro frame ([[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]) already identifies "picks-and-shovels at the materials/component layer" as structurally insulated from AI-multiple compression — but the implementation is incomplete. The 2026-05-15 sync explicitly added 6981 Murata as the "component-layer with structurally lower bubble-correction exposure than NVDA/hyperscaler-direct names" — Ajinomoto, Ibiden, TOWA, and Disco are the same pattern, one layer up in the supply chain, with no vault coverage.
+This asymmetry matters because the vault's macro frame ([[AI Bubble Risk and Semiconductor Valuations]]) already identifies "picks-and-shovels at the materials/component layer" as structurally insulated from AI-multiple compression — but the implementation is incomplete. The 2026-05-15 sync explicitly added 6981 Murata as the "component-layer with structurally lower bubble-correction exposure than NVDA/hyperscaler-direct names" — Ajinomoto, Ibiden, TOWA, and Disco are the same pattern, one layer up in the supply chain, with no vault coverage.
 
 Secondary surface: the [[ABF Substrates & Advanced Packaging Supply Chain]] primer created today encodes ~5 non-consensus insights that imply ≥3 immediately initiable theses; this scan formalizes the priority queue. Tertiary surface: Risk #8 added to SNDK on 2026-04-24 (Iran War Japanese photo materials supply chain) creates upstream-vendor optionality at TOK/JSR that is not captured anywhere in the vault.
 
@@ -46,7 +46,7 @@ Secondary surface: the [[ABF Substrates & Advanced Packaging Supply Chain]] prim
 - **SEMICAP cluster**: KLA HIGH; AMAT/LRCX/ASMI/BESI/AIXA/FORM/AEHR MEDIUM (8 theses, all initiated Apr 29 2026)
 - **Most recent thesis**: [[Theses/CRWV - CoreWeave]] (Active Research Thread, 2026-05-15 MEDIUM draft); [[Theses/6981 - Murata Manufacturing]] (2026-05-15 MEDIUM draft)
 - **Most recent sector primer**: [[ABF Substrates & Advanced Packaging Supply Chain]] (2026-05-16, today)
-- **Most recent macro**: [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] (updated 2026-05-15 sync)
+- **Most recent macro**: [[AI Bubble Risk and Semiconductor Valuations]] (updated 2026-05-15 sync)
 
 ### Insight 1: Ajinomoto monopoly mispricing
 - [[ABF Substrates & Advanced Packaging Supply Chain]] §Key Non-consensus Insights #1: ~95% ABF dielectric film share, single Kawasaki facility, embedded in ¥3T food conglomerate
@@ -182,7 +182,7 @@ Optional / lower priority:
 - [[Sectors/Photonic Metrology]] — AEHR + FORM photonic test cluster (adjacency to ZEISS)
 - [[Sectors/Data Center Power & Cooling]] — VRT thesis adjacent to power-semi blind spots
 - [[Sectors/Modular Power Conversion Components]] — VICR thesis adjacent to power-semi blind spots
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — picks-and-shovels insulation framing
+- [[AI Bubble Risk and Semiconductor Valuations]] — picks-and-shovels insulation framing
 - [[Theses/KLA - KLA Corporation]] HIGH — anchor compounder, EUV throughput-dependent
 - [[Theses/AMAT - Applied Materials]] MEDIUM — bond-line franchise, EMIB-T downstream beneficiary
 - [[Theses/LRCX - Lam Research]] MEDIUM — dry-resist optionality, HBM ALTUS Halo Mo

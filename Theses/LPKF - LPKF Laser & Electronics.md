@@ -358,7 +358,7 @@ Combined: equity falls 60–75% from €25 to €6–10 within 18 months. The �
 
 4. **Cash runway insufficient to bridge to 2027 ramp.** Even if the equipment-S-curve materialises on schedule, LPKF could be forced into a dilutive capital raise in 2026–27 at sub-€20 strike. The dilution destroys 20–40% of equity value even if the operational thesis plays out.
 
-5. **Multiple compression on macro / sector de-rating.** Even if LPKF executes on guidance, semicap multiples could compress in a broader AI-bubble correction (per [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]]). Multiple compression from current ~5x P/S to 3x P/S on €130M 2027 revenue = €390M MC = €17/share, a -30% drawdown despite operational success.
+5. **Multiple compression on macro / sector de-rating.** Even if LPKF executes on guidance, semicap multiples could compress in a broader AI-bubble correction (per [[AI Bubble Risk and Semiconductor Valuations]]). Multiple compression from current ~5x P/S to 3x P/S on €130M 2027 revenue = €390M MC = €17/share, a -30% drawdown despite operational success.
 
 6. **German micro-cap liquidity and float dynamics.** Thin XETRA trading + US OTC limited volume means a 5% holder exit can pressure the stock 10–15%. The substantial substack-driven retail interest creates positioning fragility — if retail rolls out before the institutional accumulation materialises, the stock could trade at a discount to fundamental value for an extended period.
 
@@ -399,7 +399,7 @@ Combined: equity falls 60–75% from €25 to €6–10 within 18 months. The �
 - [[Theses/AMAT - Applied Materials]] — semicap WFE peer; multiple framework comparison
 - [[Theses/LITE - Lumentum]] — photonics adjacent for CPO context
 - [[Mental Models/Industry - Semiconductors]] — #1 (emerging bottlenecks), #2 (qualification-gate monopolies hidden behind share data), #8 (architecture transitions remap bottleneck), #10 (anchor customer concentration is binary survival test), #13 (compounder vs cyclical misclassification), #18 (cycle vs structural shifts)
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — multiple compression risk overlay
+- [[AI Bubble Risk and Semiconductor Valuations]] — multiple compression risk overlay
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Do NOT hand-edit. -->

@@ -335,7 +335,7 @@ Huawei's 12% ESS share concentrated in China / Asia / Africa / LatAm; Madrid Con
 - [[Research/2026-03-14 - CXL Technology Adoption]] — CXL memory tiering above SSD layer — context for the new HBM → HBF → SSD hierarchy
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — Inference token demand growth + NAND supply lag — drives storage demand in the AI workload column
 - [[Research/2026-04-23 - NVDA - CUDA Moat and Omniverse Upside - deep-dive]] — Context on NVIDIA validated-design ecosystem that gates AI storage qualification
-- [[Macro & Technology/AI Bubble Risk and Semiconductor Valuations]] — AI infrastructure valuation framework; storage peer-set implications
+- [[AI Bubble Risk and Semiconductor Valuations]] — AI infrastructure valuation framework; storage peer-set implications
 - [[Macro & Technology/CXL Memory Disaggregation Framework]] — Memory-tier disaggregation, including the SSD layer the storage array connects to
 
 ## Legacy Callouts

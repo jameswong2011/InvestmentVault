@@ -4,6 +4,7 @@ tags: [research, synthesis, mental-models, cross-sector, value-layer-monopoly]
 status: active
 sector: Cross-Sector
 source: Internal synthesis — [[Lens - Value Layer Monopoly]] scored across listed equities, adversarially checked against [[Generalist - Overview]] and cross-referenced with [[Research/2026-07-09 - Automation AI Readiness Lens - Highest Fit Listed Beneficiaries - synthesis]]
+propagated_to: [2383, 3110, APP, ARM, AVGO, BESI, CBRS, CRCL, CRWV, CSU, GAW, ISRG, KLA, NBIS, NET, NOW, NVDA, SPOT, TSM, WTC]
 ---
 
 # Value Layer Monopoly Lens — Highest-Fit Listed Beneficiaries

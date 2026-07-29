@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/FORM - FormFactor]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers
 snapshot_batch: numbers-batch-20260712-173508
-publish: true
+publish: false
 date: 2026-04-29
 tags: [thesis, semiconductors, FORM, semicap, test-equipment, probe-cards]
 status: monitoring

@@ -198,6 +198,7 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 
 **Research notes**:
 - [[Research/2026-07-12 - INTU - Stock Decline Diagnosis and Bear Case Deep Dive]] — diagnoses the ~62% de-rating (partly founded, materially over-extrapolated); QBO core +22% / Online Ecosystem +19% against a franchise-wide AI-casualty ~10x multiple; FY2028+ agentic interface-disintermediation flagged as the real thesis risk
+- [[Research/2026-07-13 - INTU - Stress Test]] — adversarial short case: HIGH conviction set into disconfirm-on-agreement with an unfalsifiable decisive risk; 3 of 4 growth legs (IES/Lightbox/AI-ARPU) empirically unconfirmed; sell-side now cutting (Goldman Sell, Stifel Hold); trigger framework blind to the realized multiple-compression failure mode; 5/6 bull assumptions 🔴 — flags HIGH→medium reassessment
 
 **Sector**: [[Accounting & ERP Software]]
 
@@ -232,3 +233,6 @@ The Accounting & ERP Software category — at the SMB / consumer-tax tier — si
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: forward P/E ~16x→~11.5x across Summary + Risks #5 (through the 14-16x risk band the thesis flagged). Snapshot: [[_Archive/Snapshots/INTU - Intuit (pre-deepen-metrics-sync 2026-07-12-203456)]]
+
+### 2026-07-13
+- Stress test [[Research/2026-07-13 - INTU - Stress Test]]: HIGH conviction rests on an unfalsifiable FY2028+ interface-disintermediation risk + 3 of 4 growth legs (IES/Lightbox/AI-ARPU) empirically unconfirmed; sell-side now cutting (Goldman Sell $276, Stifel Hold $275), Live-mix margin-dilutive, trigger framework blind to the multiple-compression failure that already fired. 5/6 bull assumptions 🔴 — conviction weakened: reassess HIGH→medium via /status.
