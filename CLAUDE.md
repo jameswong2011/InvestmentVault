@@ -84,6 +84,7 @@ These changes represent investment decisions, not formatting — confirm with th
 
 ### Note Format
 - All notes use YAML frontmatter with these properties:
+  - `publish`: true — website-sync flag: an external GitHub→website pipeline pulls notes marked `publish: true`. Carried by ALL Theses / Sectors / Macro & Technology notes (default `true` per Templates); Research notes and `Website/` (the blog — separate pipeline) do NOT use it. Any skill creating a thesis/sector/macro note must include it. `/lint #67` enforces coverage.
   - `date`: YYYY-MM-DD
   - `tags`: array format, e.g. [thesis, semiconductors, LRCX]
   - `status`: draft | active | monitoring | closed
@@ -137,6 +138,7 @@ Each sector note acts as a Map of Content (MOC) and follows this structure:
 12. **Log** — Dated entries tracking sector note evolution
 
 ### Macro & Technology Notes (/Macro & Technology)
+- Frontmatter must include `publish: true` (website-sync flag). No Macro template exists and no skill scaffolds these notes — they are created ad-hoc in sessions, so this is the only spec guarding the field; do not drop it. `/lint #67` enforces.
 - Geopolitical scenarios, commodity frameworks, rates outlook
 	- Strategies for short to medium term macro shock and trends, sector specific industry dynamics should be left in sector research
 - Technology trends

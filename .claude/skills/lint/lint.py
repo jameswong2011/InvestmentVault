@@ -15,6 +15,7 @@ COVERED (deterministic):  #1 #2 #3 #4 #5(empty-only) #6 #8 #10 #11 #12 #13
   #29(a/b/c presence) #30 #32 #33 #34 #35 #36 #37 #38 #39 #41 #42 #43 #44
   #45 #46 #47 #48 #49 #50 #51 #52 #53 #54 #55(candidates) #56 #57 #58 #59
   #60 #61 #62(candidates) #63(stable-ID aggregate) #64 #65(candidates) #66
+  #67
 NOT COVERED (LLM judgment — run by the /lint skill after this script):
   #5 thin-but-nonempty sections, #7 old financial data, #9 unlinked mentions,
   #12/#13 interpretation (script emits mechanical flags only), #14 nuance,
@@ -292,6 +293,18 @@ def structural(v, scoped_theses):
             missing = [f for f in fields if f not in v["fm"].get(p, {})]
             if missing:
                 add("IMPORTANT", "#4", f"{p.relative_to(VAULT)} missing frontmatter: {', '.join(missing)}")
+
+    # ---- #67 publish-flag coverage — website-sync: an external GitHub→website
+    # pipeline pulls notes marked `publish: true`; a thesis/sector/macro note
+    # missing the key is silently invisible to the site. Presence check only:
+    # `publish: false` is an intentional unpublish and passes. Research/ and
+    # Website/ (the blog — separate pipeline) are out of scope by design.
+    for d in ("theses", "sectors", "macro"):
+        pool = scoped_theses if (scoped_theses and d == "theses") else ({} if scoped_theses else v[d])
+        for p, _t in pool.items():
+            if "publish" not in v["fm"].get(p, {}):
+                add("IMPORTANT", "#67", f"{p.relative_to(VAULT)} missing `publish:` frontmatter — "
+                    f"invisible to website sync (add `publish: true`)")
 
     # ---- #5 empty critical sections (deterministic empties only; thin → LLM)
     for p, t in (scoped_theses or theses).items():

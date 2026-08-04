@@ -274,6 +274,7 @@ Save to `Theses/TICKER - Company Name.md`:
 
 ```yaml
 ---
+publish: true
 date: [today's date]
 tags: [thesis, SECTOR-TAG, TICKER]
 status: draft
@@ -285,6 +286,8 @@ source: [primary source URL or description]
 ```
 
 Initial status `draft` (§8 — excluded from /catalyst, /prune flags, conviction drift until user explicitly promotes via `/status draft→active`).
+
+`publish: true` is mandatory — the website-sync flag (an external GitHub→website pipeline pulls notes marked `publish: true`; see CLAUDE.md § Conventions → Note Format). Omitting it makes the thesis invisible to the site: this exact spec-vs-template drift produced a 1-of-83 outlier, fixed 2026-07-29.
 
 ### Required Sections (all 14, in order — §7)
 
@@ -361,7 +364,7 @@ Resolve via canonical `.claude/skills/_shared/sector-resolution.md` using thesis
   ```
 
   **Branch behavior** (§3.2):
-  - **(a)**: create `Sectors/[sector-value].md` from `Templates/Sector Template.md`. Minimal frontmatter: `date: today`, `tags: [sector, sector-value-slug]`. Minimal body: 10 section headings from template, each with `- _pending_` placeholder, EXCEPT `## Active Theses` gets new thesis as first entry: `- [[Theses/TICKER - Name]]`. Log entry: `### YYYY-MM-DD\n- Sector note created by /thesis TICKER — first thesis in this sector. Scaffold-only; analytical content to be added via /deepen or /surface.` Re-run sector resolution (now `match_confidence: exact`) to validate creation succeeded, then proceed with normal sector-update logic.
+  - **(a)**: create `Sectors/[sector-value].md` from `Templates/Sector Template.md`. Minimal frontmatter: `publish: true` (website-sync flag per Sector Template), `date: today`, `tags: [sector, sector-value-slug]`. Minimal body: 10 section headings from template, each with `- _pending_` placeholder, EXCEPT `## Active Theses` gets new thesis as first entry: `- [[Theses/TICKER - Name]]`. Log entry: `### YYYY-MM-DD\n- Sector note created by /thesis TICKER — first thesis in this sector. Scaffold-only; analytical content to be added via /deepen or /surface.` Re-run sector resolution (now `match_confidence: exact`) to validate creation succeeded, then proceed with normal sector-update logic.
   - **(b)**: skip sector update. Log `ℹ️ Sector update skipped per user confirmation — no matching sector note. Sectors/[sector-value].md can be created manually later.` Continue to orphan research integration.
   - **(c)**: stop skill. No files written. `❌ /thesis TICKER cancelled at Step 5 — sector mismatch. Correct the sector value in the thesis frontmatter or create Sectors/[sector-value].md first, then re-run.`
 
