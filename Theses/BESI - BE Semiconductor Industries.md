@@ -160,6 +160,7 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 - Revenue trajectory to €1.2B+ by 2027 compresses forward P/E to ~25–30x on 2027E — reasonable for a monopoly with 40–55% target operating margins
 - 3D NAND beyond 300 layers creates additional hybrid bonding demand independent of HBM, broadening the TAM beyond current consensus estimates
 - Micron's $7B Singapore facility (production 2027) represents a major greenfield equipment demand event
+- **HBM4→hybrid bonding + CoWoS cadence**: HBM advanced flows moving to hybrid bonding; TSMC CoWoS tech cadence annual with SoIC pitch roadmap ([[Research/2026-08-12 - 6857 000660 BESI - HBM 3D Assembly Test Yield - news]], [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]) — extends Kinex/hybrid-bonding demand beyond a single HBM timing print.
 
 ## Bear Case
 
@@ -232,7 +233,9 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: TSMC SoIC die-to-wafer hybrid bond is the performance-critical CPO optical-engine bond (23× density vs bumps) — reinforces the hybrid-bonding secular theme, though the article credits TSMC-internal capability (indirect BESI read-through)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: HBM wafer capacity ~5x in 4 years (123→668 kwspm) + back-end TC-bonder intensity supports HBM packaging / hybrid-bonding demand
 - [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]] — Intel Foveros/EMIB packaging read: Intel's 15-20 bonders sufficient for Clearwater Forest (Intel not the near-term incremental-order driver; TSMC/AMD is); logic hybrid-bonder base ~100→163 units 2026→27; line integration (CMP/clean/metrology) the practical bottleneck
-
+- [[Research/2026-08-12 - 6857 000660 BESI - HBM 3D Assembly Test Yield - news]] — HBM 3D assembly/test yield; hybrid bonding transition
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/cadence; SoIC pitch roadmap
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board packaging/tech capex appropriations
 ## Log
 
 ### 2026-04-19 (TSM stress test sync)
@@ -295,3 +298,6 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC advanced packaging now 10-20% of a raised $60-64B capex; Wei: packaging "limiting my customers' growth" — conviction unchanged (medium); SoIC/hybrid-bonding expansion inside the binding AI bottleneck is the demand line that matters for Kinex.
+
+### 2026-08-12
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] / HBM hybrid-bonding test note: packaging cadence + bonding transition support Kinex demand — conviction unchanged (medium).

@@ -7,12 +7,14 @@ ticker: PLTR
 conviction: high
 sector: Enterprise Workflow AI & Automation
 source: Consolidated from Gemini Canvas (2), ChatGPT (2), Claude (4), Grok (1) research conversations + web research April 2026
-key_metrics_last_refreshed: 2026-07-12
+key_metrics_last_refreshed: 2026-08-12
 ---
 
 # PLTR — Palantir Technologies
 
 ## Summary
+
+**Q2 2026 (IR Ex. 99.1, reported 2026-08-03):** Revenue $1.935B (+93% YoY / +19% QoQ); U.S. revenue $1.573B (+115%); U.S. commercial $764M (+149% YoY / +28% QoQ); U.S. government $809M (+90%); Rule of 40 155%; adj. FCF $1.220B (63% margin); U.S. commercial RDV $6.238B (+124% YoY); U.S. commercial TCV record $2.132B (+153% YoY). FY2026 guide raised to $8.150–$8.158B (+82%) and U.S. commercial to >$3.424B (≥134%). Hard NRR falsifier still needs NRR disclosure (not in Ex. 99.1 highlights) but growth/RDV legs moved further from the bear. See [[Research/2026-08-12 - PLTR - Q2 2026 Earnings IR Verification]].
 
 Q4 2025: $1.41B revenue (+70% YoY), U.S. commercial +137%, Rule of 40 at 127%. Q1 2026 extended the beat-and-raise — $1.63B revenue (+85% YoY), U.S. revenue +104%, EPS $0.33 — with FY2026 guidance raised to $7.65-7.66B (+71%) and U.S. commercial to +120% (~$4.0B adjusted FCF). Palantir's Ontology architecture — a semantic intelligence layer with governed write-back to operational systems of record — is the critical differentiator. Unlike Databricks/Snowflake (analytical read-path) or ServiceNow (workflow automation), Palantir built the operational write-path first and added the data platform underneath, creating structural advantages in complex, regulated, mission-critical environments. The central tension remains valuation — but the terms shifted in June 2026: the worst month on record took the stock ~46% off the $207.52 ATH to a $106 52-week low, compressing the multiple to ~33x forward revenue (from ~52-79x trailing at authoring) even as Q1 fundamentals accelerated — a textbook multiple mean-reversion against a still-compounding business, amplified by three structural narratives now being priced (AI-agent / usage-based commoditization; European sovereignty rejections in France and the UK; a US defense CR freeze delaying federal revenue 6-9 months). The defense revenue floor ($1.2B+ annually, anchored by the $10B Army Enterprise Agreement and $1.275B Maven ceiling) still provides downside protection pure-play commercial AI companies lack. See [[Research/2026-06-29 - PLTR - June 2026 Sell-Off Through Mental Models - news]].
 
@@ -208,19 +210,20 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 | Share Price | $126.79 | Closed $148.46 Apr 3; declined since; highly volatile |
 | EV/Revenue (trailing) | ~49.2x | On FY2025 $4.48B; depends on recent price |
 | EV/Revenue (forward) | ~33-49x | On FY2026 guide $7.19B |
-| Revenue Growth | +56.2% YoY | FY2025 actual; Q1 2026 +85% YoY (re-accelerating) |
-| Gross Margin | 84.1% | Q4 2025 estimate |
-| GAAP Operating Margin | 38.1% | Q4 2025 |
-| Adj. Operating Margin | 57% | Q4 2025; difference is primarily SBC |
+| Revenue Growth | +93% YoY (Q2) / +71% prior FY guide → +82% FY26 guide | Q2 2026 actual +93% YoY to $1.935B; FY26 guide raised to $8.150–$8.158B (+82%) |
+| Gross Margin | ~84.7% | Q2 2026 (gross profit $1.639B / rev $1.935B) |
+| GAAP Operating Margin | 47% | Q2 2026 ($912M income from ops) |
+| Adj. Operating Margin | 62% | Q2 2026 ($1.194B adj income from ops) |
 | FCF Yield (trailing) | ~1.0% | FY2025 FCF >$2.2B / market cap |
 | FCF Yield (forward) | ~1.1-1.7% | FY2026 FCF guide $4.025B / market cap |
 | Q4 2025 Revenue | $1.41B | +70% YoY; beat high-end guidance by 900+ bps |
-| Q1 2026 Revenue (actual) | $1.63B | +85% YoY; beat $1.53-1.54B guide (rpt May 4) |
-| FY2026 Revenue Guidance | $7.65-7.66B | +71% YoY (raised at Q1); U.S. Commercial >$3.224B (>120%) |
-| FY2026 Adj. FCF Guidance | $4.025B | +77% YoY |
-| Rule of 40 | 127% | Q4 2025 (revenue growth + FCF margin) |
+| Q2 2026 Revenue (actual) | $1.935B | +93% YoY / +19% QoQ (IR Ex. 99.1, 2026-08-03); prior Q1 was $1.63B (+85%) |
+| FY2026 Revenue Guidance | $8.150–$8.158B | +82% YoY (raised at Q2 from ~$7.65–7.66B / +71%) |
+| FY2026 U.S. Commercial Guide | >$3.424B (≥134% YoY) | Raised at Q2 (prior >$3.224B / +120%) |
+| FY2026 Adj. FCF Guidance | $4.5–$4.7B | Raised at Q2 (prior $4.025B) |
+| Rule of 40 | 155% | Q2 2026 (rev growth + adj op margin); 12th consecutive expanding print |
 | Customer Count | 954 | +34% YoY |
-| U.S. Commercial RDV | $4.38B | +145% YoY; multi-year pipeline visibility |
+| U.S. Commercial RDV | $6.238B | +124% YoY / +27% QoQ (Q2); prior $4.38B (+145% at earlier pass) |
 | Net Revenue Retention | 139% | Strong expansion within existing customers |
 | Bootcamp Conversion | ~75% | 5-day cycle; $1M+ average deal size |
 | Top 20 Customer Avg Rev | $94M | Concentration risk (~42% of revenue) |
@@ -254,7 +257,7 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 
 ## Catalysts
 
-- **Q1 2026 earnings** (reported May 4): beat-and-raise — $1.63B (+85%), U.S. commercial guide raised to +120%, FY26 to +71% — yet the stock fell ~7% on valuation. **Next test is Q2 2026** (expected early August): whether U.S. commercial sustains triple-digit growth and whether the European-sovereignty and defense-CR headwinds dent the international / federal lines
+- **Q2 2026 earnings** (reported 2026-08-03): confirmed beat-and-raise — $1.935B (+93%), U.S. commercial +149%, FY26 guide to $8.150–$8.158B (+82%), U.S. commercial guide ≥134%. **Next test is Q3 2026** guide $2.160–$2.164B and whether the multiple holds a second consecutive hypergrowth print (June pattern watch). Q1 context: $1.63B (+85%), then June multiple stress-test
 - **NVIDIA Sovereign AI OS deployments ramping through 2026**: First production installations in NATO allies and Five Eyes nations could unlock large new government contracts
 - **ShipOS expansion beyond initial $448M**: Success at General Dynamics Electric Boat creates a playbook for the broader maritime industrial base and defense prime contractors
 - **Warp Speed adoption by additional industrial enterprises**: Manufacturing MES deployments at GE Aerospace, Boeing, Lear expanding into broader industrial categories
@@ -276,6 +279,22 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 8. **DOGE/federal budget risk**: Despite structural benefits, near-term Pentagon program cuts could create revenue gaps before defense budget growth materializes in 2027-2028
 9. **FDE model scalability**: 954 customers vs. 20,000+ peers; AI FDE and OSDK are designed to address this but remain unproven at scale
 10. **Macro/tariff risk**: Broad market sell-off driven by trade war escalation compresses all growth multiples regardless of company-specific fundamentals
+
+## Conviction Triggers
+
+> Formalized 2026-08-12 from the bull vs bear debate ([[Research/2026-08-12 - PLTR - Bull vs Bear Debate Synthesis]]) + Q2 2026 IR verification ([[Research/2026-08-12 - PLTR - Q2 2026 Earnings IR Verification]]). These are decision rules, not automatic status flips — user runs `/status`.
+
+- **→ HOLD HIGH (or reaffirm) if**: Next reported quarter shows U.S. commercial revenue growth still ≥100% YoY **and** U.S. commercial RDV still growing QoQ **and** no named marquee mid-market displacement to Databricks Genie Ontology / Microsoft Fabric IQ / frontier-lab DeployCo (Anthropic JV / OpenAI DeployCo). Q2 2026 already clears the growth leg (US commercial +149% YoY to $764M; US commercial RDV $6.238B, +124% YoY / +27% QoQ per IR Ex. 99.1).
+
+- **→ HIGH sizing ok (Live Portfolio sleeve not cut) if**: Conviction Triggers section stays current **and** FY2026 revenue guide holds ≥$8.0B after any subsequent print **and** Rule of 40 stays ≥130%. (Q2: Rule of 40 = 155%; FY26 rev guide $8.150–$8.158B.)
+
+- **→ MEDIUM if**: (a) One quarter of U.S. commercial NRR/NDR breaking below ~120–130%, **or** (b) a *named* mid-market / marquee commercial loss to Genie Ontology / Fabric IQ / lab-direct DeployCo, **or** (c) FY revenue growth guide cut to ≤50% YoY while forward EV/Revenue stays >25x, **or** (d) NHS Feb-2027 break-clause executes *and* a second allied-government sovereignty rejection lands in the same two quarters (contagion, not one-off).
+
+- **→ MEDIUM (process/sizing path — even if ops hold) if**: User elects to treat the name as quality-but-priced after a beat-and-raise still fails to hold the tape for a second consecutive earnings print (June 2026 pattern repeating on Q2 or Q3), absent a stated variant perception on moat *duration/width* beyond “falsifiers haven’t fired.”
+
+- **→ LOW if**: Competitor ships **governed cross-object transactional write-back to source ERPs** with decision-level audit that closes the Bain-noted gap, **and** U.S. commercial growth decelerates below 60% YoY in the same half — hard-end moat and commercial engine both cracking together.
+
+- **→ CLOSE / exit review if**: Army Enterprise Agreement or Maven program-of-record ceilings are materially cut without offsetting awards, **or** a top-20 logo loss (~42% revenue concentration) is disclosed, **or** sustained sub-40% revenue growth for two consecutive quarters (base-rate fade wins Outstanding Q#1).
 
 ## Mental Models
 - **Models applied**: [[Generalist - Overview]] (always) · [[Lens - Automation & AI Readiness]] (PLTR is the archetypal context/ontology vendor) · [[Lens - Value Layer Monopoly]] (thesis rests on owning the semantic/intelligence layer). [[Industry - Semiconductors]] deliberately not applied — enterprise software/defense, no fab or hardware-process exposure.
@@ -316,7 +335,16 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 - [[Research/2026-07-09 - PLTR - Model Evolution and Agentic Workload Viability Deep Dive]] — Backs §Industry Context deepen: mid-2026 model evolution made agentic workloads production-viable (95%+ function-calling) but the reliability gap (60%→25% single-run→8-run consistency) and long-context "trap" (~1,250x costlier than structured retrieval) mean the context-window kill-switch has NOT fired; Databricks closed the semantic-layer gap in months (Genie Ontology / "agentic control plane," $6.9B ARR +80%) yet governed write-back + defense gaps persist — moat compressed at the analytical end, held at the operational end
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]] — Macro synthesis: the durable gate on enterprise AI adoption is organizational (workforce/process redesign, decade-scale — Celonis "60% can't adapt operations fast enough"), not model capability; PLTR's FDE-led process redesign sells the gate's resolution. Ranks PLTR a Tier-3 consumption-converted winner; the #120 agentic-moat falsification watch remains unfired (Q1 NDR 150%, US commercial +133%)
 
+- [[Research/2026-08-12 - PLTR - Bull vs Bear Debate Synthesis]] — Adversarial Bull vs Bear R1–R2 synthesis: hard-end write-back/IL6 + unfired NRR falsifiers still stand; semantic monopoly / international-as-deferred / June-as-value broken; conviction pressure is sizing/process (reassess) not a forced business short — conviction unchanged (high), flagged for user `/status`
 ## Log
+
+### 2026-08-12 (/status-prep — Q2 IR + Conviction Triggers)
+- [IR verification]: [[Research/2026-08-12 - PLTR - Q2 2026 Earnings IR Verification]] — Daily Intel 08-12 headlines checked against Palantir IR / SEC Ex. 99.1 (2026-08-03). **Confirmed:** Q2 rev +93% to $1.935B; US commercial +149% to $764M; FY26 guide $8.150–$8.158B (+82%); US commercial guide >$3.424B (≥134%); Rule of 40 155%; US commercial RDV $6.238B (+124% YoY). **Partial/not IR:** DoD ~$244M Feinberg memo = The Register exclusive on draft planning memo (not a finalized award); Japan Palantir+Anduril = Nikkei/policy consideration, not a signed contract. ICE/LexisNexis = third-party data feed narrative (no PLTR revenue in IR).
+- [Conviction Triggers]: §Conviction Triggers formalized (gap since 2026-07-10 log). Key Metrics + Summary + Catalysts refreshed for Q2. **Conviction unchanged (high)** — ops falsifiers moved further away; sizing/process two-sided flag from [[Research/2026-08-12 - PLTR - Bull vs Bear Debate Synthesis]] still stands for user `/status` (multiple-hostage / Triggers now written).
+
+
+### 2026-08-12
+- [Bull vs bear debate]: [[Research/2026-08-12 - PLTR - Bull vs Bear Debate Synthesis]] — multi-agent Round 1–2 (InvestmentVault Bull / Bear). Converged: hard-end moat + unfired NRR falsifiers intact; June multiple-hostage + semantic months-not-years catch-up + structural sovereignty conceded. Conviction unchanged (high) — **flagged for user `/status`** on sizing/process (Conviction Triggers still missing; Live Portfolio sleeve). No metrics edited; Daily Intel 08-12 PLTR headlines unused as ops.
 
 ### 2026-04-15
 - [Major thesis restructure]: Complete rewrite to Thesis Template; consolidated 9 research sources (Gemini/ChatGPT/Claude/Grok); added all template-required sections; updated metrics to April 2026 — conviction unchanged (medium), status draft to active.

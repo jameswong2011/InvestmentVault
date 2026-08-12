@@ -291,7 +291,8 @@ Per-share base case (net cash growing with FCF to ~$2B by 2035; ~46M → ~50M di
 - [[Research/2026-04-23 - NVDA - CUDA Moat and Omniverse Upside - deep-dive]] — Rubin generation context
 - [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Server architecture context for VPD adoption
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger; TRIM Low→1% (Rubin >2,000A architectural necessity + ITC LEO royalties, but +543% 1Y + 96x P/E + founder succession overhang)
-
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]] — VPD/LPD + MLCC local capacitance; Vicor ~17× sales framing
+- [[Research/2026-08-12 - 6981 VICR - MLCC AI Demand Price Hikes Premiums - news]] — AI rack MLCC counts corroborate power-delivery intensity
 ## Log
 
 ### 2026-04-28
@@ -330,3 +331,6 @@ Per-share base case (net cash growing with FCF to ~$2B by 2035; ~46M → ~50M di
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap and FCF Yield both round to the same displayed values as the prior pass. Snapshot: [[_Archive/Snapshots/VICR - Vicor Corporation (pre-numbers 20260712-183936)]]
+
+### 2026-08-12
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]: power-delivery bottleneck intensifies with Rubin/Feynman current — conviction unchanged (medium).

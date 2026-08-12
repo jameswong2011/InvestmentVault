@@ -185,7 +185,7 @@ At ~$412 (~200x forward, ~80x EV/sales, +277% YTD, ~38% above the mean target) A
 - [[Research/2026-04-24 - Thomas Kurian on TPU Capacity Anthropic Hosting and Agentic Chip Design - video-transcript]] — Google Axion (ARM) built for agentic classical-compute coexistence alongside TPUs
 - [[Research/2026-03-14 - CXL Technology Adoption]] — datacenter memory-architecture context for ARM head-node CPUs
 - [[AI Bubble Risk and Semiconductor Valuations]] — ARM's ~200x forward multiple is a focal point of the AI-valuation question
-
+- [[Research/2026-08-06 - AIP Arteris Chiplet NoC Interconnect Thesis - deep-dive]]
 ## Legacy Callouts
 
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -200,3 +200,6 @@ At ~$412 (~200x forward, ~80x EV/sales, +277% YTD, ~38% above the mean target) A
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap, Revenue Growth, Gross Margin, FCF Yield, Fwd P/E, and Operating Margin all round to the same displayed values as the prior pass (all deltas <0.5%). Snapshot: [[_Archive/Snapshots/ARM - Arm Holdings (pre-numbers 20260712-183936)]]
+
+### 2026-08-12
+- [[Research/2026-08-06 - AIP Arteris Chiplet NoC Interconnect Thesis - deep-dive]]: Arteris/chiplet NoC interconnect thesis — adjacent to ARM chiplet royalty attach; conviction unchanged (low).

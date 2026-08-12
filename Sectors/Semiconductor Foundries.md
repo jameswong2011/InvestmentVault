@@ -229,7 +229,8 @@ Per [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - dee
 - [[Sectors/Custom Silicon & Networking Semiconductors]] — AVGO ASIC + hyperscaler XPU demand is the second-largest leading-edge bucket
 - [[Sectors/NAND Memory & Storage]] — adjacent foundry-tech franchise; hybrid-bonding overlap with TSMC SoIC
 - [[Sectors/Optical Networking & Photonics]] — COUPE / co-packaged-optics integration with TSMC advanced packaging
-
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -254,3 +255,7 @@ Per [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - dee
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: Q2'26 rebase — node table to Q2 actuals (N5 33 / N3 30 / N2 3 / mature ~23; HPC 66% of revenue), GM anchor 58.8%→67.7%, FY26 guide >40% (~$170B) + capex $60-64B with "next 3 years significantly higher", US commitment $165B→$265B. Key Question #3 answered directionally: Wei — packaging "so tight it's limiting my customers' growth", AP 10-20% of capex, overflow welcomed to EMIB-T/OSATs (first at-scale qualification path for a CoWoS alternative). §Investor heuristics updated with the sell-the-beat tell (market refused to re-rate a maximal print — capex-cyclical framing reasserting; 2027 demand confirmation now the gate). Snapshot: [[_Archive/Snapshots/Semiconductor Foundries (pre-sync 2026-07-24-234253)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]: TSMC US$29.4B board appropriations + Sony JV
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS near-balance signal

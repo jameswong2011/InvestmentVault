@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" width="720" height="430" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+<rect x="0" y="0" width="720" height="430" rx="10" fill="#ffffff" stroke="#e2e2e7"/>
+<text x="16" y="22" font-size="14" font-weight="600" fill="#1f2430">Holdings — Return 1M</text>
+<text x="166" y="46" font-size="11.5" text-anchor="end" fill="#1f2430">Palantir</text>
+<rect x="176" y="34" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="34" width="224.00" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="34" x2="400.00" y2="50" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="46" font-size="11.5" fill="#5b6270">+27.0%</text>
+<text x="166" y="66" font-size="11.5" text-anchor="end" fill="#1f2430">Nebius</text>
+<rect x="176" y="54" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="54" width="191.86" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="54" x2="400.00" y2="70" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="66" font-size="11.5" fill="#5b6270">+19.1%</text>
+<text x="166" y="86" font-size="11.5" text-anchor="end" fill="#1f2430">Advantest</text>
+<rect x="176" y="74" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="74" width="160.72" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="74" x2="400.00" y2="90" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="86" font-size="11.5" fill="#5b6270">+16.0%</text>
+<text x="166" y="106" font-size="11.5" text-anchor="end" fill="#1f2430">Cloudflare</text>
+<rect x="176" y="94" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="94" width="123.55" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="94" x2="400.00" y2="110" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="106" font-size="11.5" fill="#5b6270">+12.3%</text>
+<text x="166" y="126" font-size="11.5" text-anchor="end" fill="#1f2430">Broadcom</text>
+<rect x="176" y="114" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="114" width="84.38" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="114" x2="400.00" y2="130" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="126" font-size="11.5" fill="#5b6270">+8.4%</text>
+<text x="166" y="146" font-size="11.5" text-anchor="end" fill="#1f2430">Nvidia</text>
+<rect x="176" y="134" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="134" width="54.24" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="134" x2="400.00" y2="150" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="146" font-size="11.5" fill="#5b6270">+5.4%</text>
+<text x="166" y="166" font-size="11.5" text-anchor="end" fill="#1f2430">TSMC</text>
+<rect x="176" y="154" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="154" width="24.11" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="154" x2="400.00" y2="170" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="166" font-size="11.5" fill="#5b6270">+2.4%</text>
+<text x="166" y="186" font-size="11.5" text-anchor="end" fill="#1f2430">SpaceX</text>
+<rect x="176" y="174" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="174" width="17.08" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="174" x2="400.00" y2="190" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="186" font-size="11.5" fill="#5b6270">+1.7%</text>
+<text x="166" y="206" font-size="11.5" text-anchor="end" fill="#1f2430">Marvell</text>
+<rect x="176" y="194" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="400.00" y="194" width="2.01" height="16" fill="#3aa675"/>
+<line x1="400.00" y1="194" x2="400.00" y2="210" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="206" font-size="11.5" fill="#5b6270">+0.2%</text>
+<text x="166" y="226" font-size="11.5" text-anchor="end" fill="#1f2430">ASM International</text>
+<rect x="176" y="214" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="378.91" y="214" width="21.09" height="16" fill="#c0504d"/>
+<line x1="400.00" y1="214" x2="400.00" y2="230" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="226" font-size="11.5" fill="#5b6270">-2.1%</text>
+<text x="166" y="246" font-size="11.5" text-anchor="end" fill="#1f2430">Lam Research</text>
+<rect x="176" y="234" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="345.76" y="234" width="54.24" height="16" fill="#c0504d"/>
+<line x1="400.00" y1="234" x2="400.00" y2="250" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="246" font-size="11.5" fill="#5b6270">-5.4%</text>
+<text x="166" y="266" font-size="11.5" text-anchor="end" fill="#1f2430">BE Semiconductor</text>
+<rect x="176" y="254" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="329.69" y="254" width="70.31" height="16" fill="#c0504d"/>
+<line x1="400.00" y1="254" x2="400.00" y2="270" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="266" font-size="11.5" fill="#5b6270">-7.0%</text>
+<text x="166" y="286" font-size="11.5" text-anchor="end" fill="#1f2430">Applied Materials</text>
+<rect x="176" y="274" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="325.67" y="274" width="74.33" height="16" fill="#c0504d"/>
+<line x1="400.00" y1="274" x2="400.00" y2="290" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="286" font-size="11.5" fill="#5b6270">-7.4%</text>
+<text x="166" y="306" font-size="11.5" text-anchor="end" fill="#1f2430">KLA Corp</text>
+<rect x="176" y="294" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="303.57" y="294" width="96.43" height="16" fill="#c0504d"/>
+<line x1="400.00" y1="294" x2="400.00" y2="310" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="306" font-size="11.5" fill="#5b6270">-9.6%</text>
+<text x="166" y="326" font-size="11.5" text-anchor="end" fill="#1f2430">SK Hynix</text>
+<rect x="176" y="314" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="185.04" y="314" width="214.96" height="16" fill="#c0504d"/>
+<line x1="400.00" y1="314" x2="400.00" y2="330" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="326" font-size="11.5" fill="#5b6270">-21.4%</text>
+<text x="166" y="346" font-size="11.5" text-anchor="end" fill="#1f2430">Sandisk</text>
+<rect x="176" y="334" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="176.00" y="334" width="224.00" height="16" fill="#c0504d"/>
+<line x1="400.00" y1="334" x2="400.00" y2="350" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="346" font-size="11.5" fill="#5b6270">-22.3%</text>
+<text x="166" y="366" font-size="11.5" text-anchor="end" fill="#1f2430">Kioxia</text>
+<rect x="176" y="354" width="448" height="16" rx="3" fill="#eceef2"/>
+<rect x="176.00" y="354" width="224.00" height="16" fill="#c0504d"/>
+<line x1="400.00" y1="354" x2="400.00" y2="370" stroke="#b8bcc4" stroke-width="1"/>
+<text x="634" y="366" font-size="11.5" fill="#5b6270">-27.8%</text>
+<text x="16" y="394" font-size="10.5" fill="#8a8f98">Return 1M · 17 holdings · bars scaled to +22.3%; outliers max out, labels show true values · diverging from a zero center line</text>
+</svg>

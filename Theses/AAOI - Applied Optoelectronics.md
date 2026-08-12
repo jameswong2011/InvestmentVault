@@ -200,7 +200,10 @@ AAOI is best understood as a vertically integrated optical components and module
 - [[Theses/NVDA - Nvidia]] — Downstream demand source via hyperscaler optics buildout; NVIDIA Spectrum-X / Quantum-X CPO is parallel disintermediation track to Broadcom Bailly
 - [[Sectors/Optical Networking & Photonics]] — Sector hub; AAOI flagged as "module-only play with hyperscaler concentration" in Investor heuristics; "Avoid middle-layer consolidators without clear moats" framing
 - [[Mental Models/Industry - Semiconductors]] — Mental Model #13 (semi-cyclical compounder vs true cyclical vs pre-chasm classification — AAOI sits between cyclical challenger and pre-chasm); #17 (new entrants don't materialize at tight prices — but AAOI is the incumbent at a lower scale than the Chinese entrants); #18 (conflating cycle and structural shifts — AAOI's 915% rally reads as structural-extrapolation peak)
-
+- [[Research/2026-08-05 - AXTI LITE IA Chinese Transceiver Ban Memo - deep-dive]] — Ban draft beneficiaries; active-alignment capacity binds
+- [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]] — Optics geopolitics phase two; earnings checklist
+- [[Research/2026-08-08 - LITE COHR Laser Market Repriced by Scale-Up CPO - deep-dive]] — CPO/pluggable coexistence; laser TAM reframing
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]] — AAOI call notes in weekly mashup
 ## Log
 
 ### 2026-05-24
@@ -220,3 +223,6 @@ AAOI is best understood as a vertically integrated optical components and module
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: market cap $14-18B→$10B / price $173→$120 + rev growth +140%→+128% across Summary, OQ, Risks, EV-Rev & Rev-Growth Notes. Snapshot: [[_Archive/Snapshots/AAOI - Applied Optoelectronics (pre-deepen-metrics-sync 2026-07-12-203456)]]
+
+### 2026-08-12
+- [[Research/2026-08-05 - AXTI LITE IA Chinese Transceiver Ban Memo - deep-dive]]: potential module-share redirect vs still-not-200G-EML gap — conviction unchanged (low); geopolitics is optionality, not a moat upgrade.

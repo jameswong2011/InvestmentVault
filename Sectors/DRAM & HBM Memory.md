@@ -550,11 +550,14 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 ---
 
 ## Mental Models
-<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
 
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers that fired**:
+  - Industry Semiconductors #1 · emerging bottleneck — hypothesis: with CoWoS approaching near-balance, HBM/LPDDR content (Kyber: LPDDR bill can exceed HBM per rack) is the residual governor on AI rack shipments (per [[Research/2026-08-12 - NVDA 000660 - Kyber HBM4E Rack Economics - news]], [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]).
+  - Industry Semiconductors #14 · reclassification / dual-source — hypothesis: Samsung HBM4 ~80% “golden” yield opens a second-source path that caps SK hynix ASP premium even if bits remain tight ([[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]]).
+  - Generalist [G-3] mean-reversion vs trend — hypothesis: memory-supercycle rent persists only while dual-source quals lag demand; dual-source success is the mean-reversion trigger on HBM margins.
+- **Disconfirming check**: Models agree memory is the residual scarce layer — hunt the bear: Samsung quals fail at volume, or LPDDR/HBM content mix shifts down on architecture change. Single falsifier: NVDA dual-sources HBM4 at scale with visible ASP compression into 2H26 while CoWoS stays balanced.
 ## Related Research
 
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]] — Q4 2025 DRAM revenue +29.4% sequential; conventional DRAM contract prices +45-50% QoQ; SK Hynix 2025 op profit ₩47.2T ($31.59B); Samsung 110T won 2026 capex; Samsung HBM 250K WSPM target by end-2026
@@ -571,7 +574,14 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — Ajinomoto ABF substrate (2802.T) vs Advantest HBM/SoC test (6857.T) parallel — test-equipment-tier monopoly mirrors ABF moat; reinforces backend equipment intensity captured in §Cycle Dynamics & Game Theory
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — SemiAnalysis "Memory Mania": ~7% structural DRAM deficit through 2027, HBM shortfall →9% (2027), reverse-scaling 3x→4x bit penalty, HBM <5%→20%→35% of DRAM wafers (2022→25→27); commodity margins now ≥ HBM (Samsung); R200 HBM ~60/30/0; memory WFE capex +26/34/20% (Samsung/Hynix/Micron)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "silicon shortage": memory the next constraint after N3 logic — HBM 3x→4x wafer/bit crowd-out; DDR margins now ≥ HBM-contracted (removes incentive to add HBM → 2027 repricing higher); ~11 Gb/s HBM4 pin-speed gate, Micron lagging; consumer-DRAM bit-reallocation scenarios (50% cut ≈ 14% of 2026 DRAM)
-
+- [[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]]
+- [[Research/2026-08-12 - NVDA 000660 - Kyber HBM4E Rack Economics - news]]
+- [[Research/2026-08-12 - 000660 SNDK - SK hynix Solidigm Dalian NAND Expansion - news]]
+- [[Research/2026-08-12 - 000660 SNDK 285A - Nintendo Memory Cost Inflation - news]]
+- [[Research/2026-08-11 - MU CXMT Apple DRAM Repricing Fourth Supplier - deep-dive]]
+- [[Research/2026-08-11 - MU NVDA Rubin Ultra 8-Hi HBM Despec - deep-dive]]
+- [[Research/2026-08-01 - MU SKHY PhotonCap Compute Short Memory Long - deep-dive]]
+- [[Research/2026-07-23 - MU Shanaka Memory Queue Scarcity vs Rent - deep-dive]]
 ## Related Sectors and Macro
 
 - [[Sectors/NAND Memory & Storage]] — Sister memory sub-sector; Solidigm IPO catalyst inside SK Hynix
@@ -607,3 +617,13 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: SemiAnalysis frames memory as the constraint behind N3 logic — reaffirms reverse-scaling (3x→4x bit penalty), the commodity-margin-≥-HBM reversal (removes supply-side incentive to convert → 2027 HBM repricing higher), and the ~11 Gb/s HBM4 pin-speed gate (Micron lagging). Consumer-cut bit-reallocation scenarios: base 10-15% ≈ 3% of DRAM (immaterial); 50% ≈ 14%. Consistent with existing §3:1 Wafer Penalty + Macro Shift §8 framing. No sector-conviction change.
+
+### 2026-08-12
+- [[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]]: Samsung HBM4 ~80% yield — second-source ASP pressure
+- [[Research/2026-08-12 - NVDA 000660 - Kyber HBM4E Rack Economics - news]]: Kyber: LPDDR bill can exceed HBM per rack
+- [[Research/2026-08-12 - 000660 SNDK - SK hynix Solidigm Dalian NAND Expansion - news]]: Solidigm Dalian NAND expansion
+- [[Research/2026-08-12 - 000660 SNDK 285A - Nintendo Memory Cost Inflation - news]]: Nintendo memory cost inflation
+- [[Research/2026-08-11 - MU CXMT Apple DRAM Repricing Fourth Supplier - deep-dive]]: CXMT/Apple fourth-supplier DRAM repricing
+- [[Research/2026-08-11 - MU NVDA Rubin Ultra 8-Hi HBM Despec - deep-dive]]: Rubin Ultra 8-Hi HBM despec
+- [[Research/2026-08-01 - MU SKHY PhotonCap Compute Short Memory Long - deep-dive]]: Compute-short / memory-long
+- [[Research/2026-07-23 - MU Shanaka Memory Queue Scarcity vs Rent - deep-dive]]: Memory queue scarcity vs rent

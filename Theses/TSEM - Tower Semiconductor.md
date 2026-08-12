@@ -272,7 +272,8 @@ The bear case does not require SiPho to fail. It requires the business to remain
 - [IQE multi-year InP agreement](https://towersemi.com/2026/06/15/06152026/)
 - [Tower and Marvell five-million coherent-PIC milestone](https://towersemi.com/2026/06/18/06182026/)
 - [USITC investigation 337-TA-1500](https://www.usitc.gov/press_room/news_release/2026/er0428_68493.htm)
-
+- [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]] — SiPh foundry capacity; TSEM Japan expansion self-fund+grants
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]] — Weekly mashup SiPh/foundry notes
 ## Log
 
 ### 2026-07-14
@@ -281,3 +282,6 @@ The bear case does not require SiPho to fail. It requires the business to remain
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC packaging scarcity validates the CPO/SiPho inflection TSEM's contracts ride, but COUPE priority + TSMC's refusal to package third-party SiPho deepens the giant's shadow over merchant PIC sockets — conviction unchanged (low); Outstanding Q134 (merchant socket retention) remains the crux.
+
+### 2026-08-12
+- [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]]: SiPh capacity race shifts scarcity to InP — constructive for specialty foundry lane; conviction unchanged.

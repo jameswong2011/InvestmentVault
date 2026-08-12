@@ -253,7 +253,8 @@ Novel flash beyond HBF nets modestly positive but mostly *not to SanDisk*: 3D NA
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — DRAM/HBM supercycle read; adjacent NAND context (memoryflation + supply-discipline parallels), no NAND-specific delta
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": Bluefield-4 KV-cache-to-NAND independently validates the HBF "missing middle" NAND-as-AI-memory-tier thesis via NVIDIA's DPU path (added to Bull Case)
 - [[Research/2026-07-12 - SNDK - Industry Context (Cost, HBF, Supply-Demand to 2030) Deep Dive]] — Deepen support: production cost/yield vs peers (UBS wafer cost, deck-count, CBA commoditization), HBF financial model to 2030 (~9–10% of rev base case, NVIDIA ICMS route-around), NAND supply/demand to 2030 (Q3 pricing decel to +10–15%, 2028–29 supply wave)
-
+- [[Research/2026-08-12 - 000660 SNDK - SK hynix Solidigm Dalian NAND Expansion - news]] — Solidigm Dalian NAND +50k WSPM; listing optionality
+- [[Research/2026-08-12 - 000660 SNDK 285A - Nintendo Memory Cost Inflation - news]] — Nintendo ¥100B memory-cost hit — consumer NAND/DRAM tightness spillover
 ## Log
 ### 2026-04-16 (NAND sector research sync)
 - [NAND sector creation + web research]: Three conviction-relevant findings: (1) SanDisk HBF pilot line accelerated 6 months to H2 2026 (TrendForce Apr 13) — Japan production site, materials/components/equipment ecosystem engagement underway — strengthened, timeline de-risks execution concern. (2) Samsung now developing own HBF — validates category as real market rather than science project, reduces "next Optane" probability; however introduces competitive threat from player with 10x R&D budget — net neutral for conviction, positive for category validation. (3) YMTC at 13% shipment share targeting 15% by end-2026, but Entity List + enterprise qual barriers keep western enterprise/AI market protected — YMTC impact is consumer ASP pressure, which is actually bullish for SanDisk's enterprise mix shift. Additional: NAND Q2 2026 contract prices +70-75% QoQ (TrendForce); "Father of HBM" (KAIST Prof. Joungho Kim) predicts HBF could surpass HBM by 2038; SK Hynix H3 architecture simulation shows 2.69x perf/watt improvement with HBF+HBM hybrid — conviction unchanged (medium), HBF optionality strengthening.
@@ -317,3 +318,6 @@ Novel flash beyond HBF nets modestly positive but mostly *not to SanDisk*: 3D NA
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass, fmp_symbol SNDK verified): 0 rows edited — Stock Price ($1,915.92) and Market Cap (~$284B) re-render identical to current cell text; no material change since last-hour refresh. Snapshot: [[_Archive/Snapshots/SNDK - SanDisk (pre-numbers 20260712-184025)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - 000660 SNDK - SK hynix Solidigm Dalian NAND Expansion - news]]: SKH/Solidigm NAND capacity adds competitive supply into 1H27 — conviction unchanged (medium); watch HBF vs commodity NAND mix.

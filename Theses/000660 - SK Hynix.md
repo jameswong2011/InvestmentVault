@@ -178,6 +178,7 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 9. **Japanese photo-materials supply chain disruption (new, 2026-04-22).** Iran War Hormuz blockade cut 40%+ of Japan naphtha → propylene → PGME/PGMEA solvent production at Daicel/Toagosei → PR/BARC/SOH/HBM temporary-bonding adhesive supply from Shin-Etsu/TOK/JSR/Fujifilm/Nissan Chemical into SK Hynix wafer fabs. HBM temporary-bonding adhesives are specifically named in the disruption — directly threatens HBM3E/HBM4 ramp. PCN requalification for alternative solvents: ~1 year standard, longer for leading-edge. Korean alternatives (Chemtronics, Jaewon Industrial) exist but need qualification. Not yet priced in. See [[Research/2026-04-24 - Iran War Japan Semiconductor Photo Materials Shortage - news]].
 
 10. **Namics EMC contract expiration (new, 2026-05-11).** Namics (Japan) is SK Hynix's exclusive supplier of MR-MUF epoxy molding compound (EMC) — the single proprietary input that delivers MR-MUF's thermal performance and warpage advantage over Samsung's TC-NCF. The current exclusivity contract is approaching expiration (timing not publicly disclosed); non-renewal or shared-supply transition opens MR-MUF process licensing to Samsung and Micron, collapsing the differentiator that underpins HBM3E/HBM4/HBM4E margin profile. Alternative EMC suppliers (Nagase ChemteX, Resonac) exist but have not been qualified in production at HBM4E 16-Hi thermal envelope. Renewal is the highest-leverage near-term tell — confirms or invalidates the materials-moat thesis pillar. See [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]].
+11. **Samsung HBM4 "golden yield" (~80%) + share catch-up path**: Seoul Economic Daily (Aug 10) + UBS path to Samsung 41% vs SKH 39% HBM bit share in 2027 ([[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]]). Directly pressures the thesis's Samsung-allocation kill trigger and monopoly-ending narrative already in Summary — treat as live competitive evidence, not rumor.
 
 ## Conviction Triggers
 
@@ -221,7 +222,19 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — SemiAnalysis "Memory Mania": structural ~7% DRAM deficit through 2027, HBM shortfall →9% by 2027, reverse-scaling 3x→4x bit penalty; commodity DRAM margins now ≥ HBM (Samsung milking commodity); HBM4 R200 first-12-mo ~60/30/0 SK Hynix/Samsung/Micron; Samsung ~30% sits at the →MEDIUM trigger
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": DRAM shortage now gates server-CPU allocation (demand-side tightness confirmation) + datacenter LPDDR demand leg (Grace/Vera/Venom LPDDR5X/SOCAMM/LPDDR6)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "memory the next constraint": HBM ~3x→4x wafer/bit crowds out commodity DRAM; DDR margins now ≥ HBM-contracted (removes supply-side incentive to add HBM → 2027 HBM repricing higher); ~11 Gb/s HBM4 pin-speed gate (Micron lagging SK Hynix/Samsung); corroborates supercycle
-
+- [[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]] — Samsung HBM4 ~80% yield; UBS 2027 share path Samsung 41% vs SKH 39%
+- [[Research/2026-08-12 - NVDA 000660 - Kyber HBM4E Rack Economics - news]] — Kyber rack HBM4E \$/GB economics
+- [[Research/2026-08-12 - 000660 SNDK - SK hynix Solidigm Dalian NAND Expansion - news]] — Solidigm Dalian +50k WSPM NAND expansion; possible minority listing
+- [[Research/2026-08-11 - MU NVDA Rubin Ultra 8-Hi HBM Despec - deep-dive]] — Rubin Ultra 8-Hi despec / pin-speed vs capacity coordination
+- [[Research/2026-08-11 - MU CXMT Apple DRAM Repricing Fourth Supplier - deep-dive]] — Apple testing CXMT — fourth-supplier procurement leverage
+- [[Research/2026-07-23 - MU Shanaka Memory Queue Scarcity vs Rent - deep-dive]] — Queue framework: scarcity vs rent; price before physical response
+- [[Research/2026-08-01 - MU SKHY PhotonCap Compute Short Memory Long - deep-dive]] — Compute-short/memory-long; SKH CEO 2027 worst supply year framing
+- [[Research/2026-08-12 - 6857 000660 BESI - HBM 3D Assembly Test Yield - news]] — HBM4/5 hybrid bonding + test/DFT ownership blur
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
+- [[Research/2026-08-12 - 000660 SNDK 285A - Nintendo Memory Cost Inflation - news]]
+- [[Research/2026-08-12 - AMAT LRCX KLAC - SpaceX Terafab Off-Grid Power - news]]
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
+- [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]
 ## Log
 
 ### 2026-04-23
@@ -283,3 +296,14 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC HPC 66% of revenue (+20% QoQ) + packaging at 10-20% of a $60-64B capex tracks HBM unit volume; NVDA confirmed first HBM4 customer with Hynix reportedly ~70% of orders (Samsung still awaiting a volume order) — conviction unchanged (medium); HBM4 leadership corroborated from the demand side.
+
+### 2026-08-12
+- [[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]]: Samsung HBM4 ~80% golden yield + UBS 2027 share flip path — conviction unchanged (medium) but **weakened on share-durability leg**; kill-trigger watch window live.
+- [[Research/2026-07-23 - MU Shanaka Memory Queue Scarcity vs Rent - deep-dive]] / PhotonCap memory-long: queue/scarcity framing supports L1 contracted markets while Samsung catch-up contests winner-take-most — conviction unchanged (medium).
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]: Alphabet 2026 capex $195–205B + sell-the-guide regime — order-book constructive for HBM but multiple risk elevated; conviction unchanged (high).
+- [[Research/2026-08-12 - 000660 SNDK 285A - Nintendo Memory Cost Inflation - news]]: Nintendo memory cost inflation corroborates broader tightness beyond HBM — constructive for DRAM pricing power; conviction unchanged.
+- [[Research/2026-08-12 - AMAT LRCX KLAC - SpaceX Terafab Off-Grid Power - news]]: Terafab off-grid aspirational capacity is optional future foundry/customer ecosystem noise — not near-term HBM thesis change; conviction unchanged.
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS near-balance may shift binding constraint toward HBM/assembly yield — supports memory as residual governor; conviction unchanged.
+- [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]: Polysilicon Section 232 — upstream policy risk for memory supply chain; conviction unchanged.
+- [[Research/2026-08-12 - NVDA 000660 - Kyber HBM4E Rack Economics - news]]: Kyber HBM4E rack $/GB + LPDDR share — memory residual governor as CoWoS balances; conviction unchanged (medium).
+- [[Research/2026-08-11 - MU CXMT Apple DRAM Repricing Fourth Supplier - deep-dive]]: Apple testing CXMT as fourth supplier — procurement leverage vs contracted DRAM rents; conviction unchanged (medium).

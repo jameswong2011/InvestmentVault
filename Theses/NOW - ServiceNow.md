@@ -204,7 +204,7 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 - [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: BDC software-loan markdown share (~33% of TCPC Q1 markdowns) is credit-market echo of AI-productivity-disruption thesis; NOW orchestration platform positioned as enterprise-AI beneficiary against cash-burning private-credit-financed peers
 - [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]] — Macro lens: SemiAnalysis "Captured AI Output" (AI work still charged the same price) is the only Dark-Output bucket that surfaces as visible GDP/margin, and it requires pricing power. NOW's per-seat→Foundation/Advanced/Prime consumption pivot is the capture test for the seat-compression question — whether AI productivity accrues as NOW margin or leaks to customers as untracked surplus
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]] — Macro synthesis (adversarial-verified Gemini critique): the binding gate on enterprise AI adoption is workforce/process redesign (organizational, decade-scale), not model capability — NOW's governance/orchestration layer is the beneficiary. Gartner $234B agentic-arbitrage (2026-07-01) reframed as "metamorphosis not apocalypse" (spend redirects to orchestration); ranks NOW a Tier-3 consumption-converted winner (~50% of new ACV non-seat, CFO Apr 2026)
-
+- [[Research/2026-08-12 - NVDA AVGO MRVL NOW - Damodaran Situational Awareness Blow-up - news]] — Conviction/leverage blow-up framework — positioning hygiene
 ## Log
 
 ### 2026-04-15
@@ -247,3 +247,6 @@ The dominant industry narrative in 2026 is whether AI productivity gains for cus
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: price/cap $89/$93B→$106/$111B (down 47%→37% from peak) across Summary + Market-Cap Notes. Snapshot: [[_Archive/Snapshots/NOW - ServiceNow (pre-deepen-metrics-sync 2026-07-12-203456)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - NVDA AVGO MRVL NOW - Damodaran Situational Awareness Blow-up - news]]: leverage/conviction lesson from SA blow-up — no thesis delta; conviction unchanged.

@@ -212,11 +212,14 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 **Concrete portfolio implications (non-consensus).** (i) Pair-trade logic: long Broadcom + short Nvidia as ASIC-rent-capture hedge — if hyperscaler diversification accelerates Broadcom wins regardless of which hyperscaler. (ii) Physical AI as the non-consensus Nvidia moat — long NVDA specifically for Jetson + Omniverse + DRIVE Hyperion attach revenue, not data-center GPU share. (iii) AMD call options (not outright long) on Helios Q3 2026 + MLPerf Training v5.0 Fall 2026 — binary catalysts with asymmetric upside if ROCm training parity demonstrated. (iv) Memory stocks (SK Hynix, Micron, SNDK) as less-volatile exposure to the same AI capex tailwind. (v) Huawei-threat hedge: consider thesis-level exposure to Chinese equipment suppliers and non-US sovereign AI beneficiaries. (vi) Taiwan tail hedge: LMT/NOC/RTX defense pair vs TSM/NVDA/AMD GPU basket (per TSM stress test analysis).
 
 ## Mental Models
-<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
 
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers that fired**:
+  - Generalist [G-4] Perez surge / financing frenzy — hypothesis: Nvidia’s >$500B third-party platforms + residual-value puts are the credit-funded frenzy layer that can extend unit demand past hyperscaler IG capacity while socializing refinancing risk (per [[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]], [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]).
+  - Industry Semiconductors #8 · architecture remaps bottlenecks — hypothesis: capital allocation (who can finance racks) is becoming a co-equal bottleneck with CUDA/software for GPU vs TPU/Trainium share.
+  - Value Layer Monopoly §1 · interface/standard control — hypothesis: NVDA’s system+CUDA layer remains the scarce interface only while financing does not force customers onto cheaper non-CUDA inference stacks; falsify if residual-value concessions become the real allocator.
+- **Disconfirming check**: Models agree financing extends the surge — hunt the bear: first closed platform tickets stay tiny, residual-value marks hit NVDA/partners, or hyperscaler dollar CapEx guides cut (not just MW slips). Single falsifier: a disclosed large closed ticket *without* residual put utilization alongside stable interest cover.
 ## Related Research
 
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis "CPUs are Back": Intel-vs-AMD divergence widens (Diamond Rapids SMT-less + 8-ch Diamond Rapids-SP cancelled vs new AMD Venice SP8; Clearwater Forest +17% low-yield "learning vehicle"); ARM/hyperscaler vertical integration (Graviton5/Cobalt/Axion/Phoenix/Venom) permanently closing Intel's TAM; Fairwater 1:6 CPU:GPU power ratio (rising); Bluefield-4 KV-cache-to-NAND "third network"; CPU role taxonomy + interconnect-scaling-ladder frameworks. Integrated into §Product Level Analysis (Intel CPU entry).
@@ -257,7 +260,13 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Sectors/Optical Networking & Photonics]] — adjacent sector MOC: CPO + EML + InP laser supply under AI scale-out demand
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "silicon shortage phase": all accelerator families (Rubin 3NP, MI350X/MI400, TPU v7 N3E, Trainium3 N3P, MTIA) converged on the binding N3 node (AI 60%→86% of N3 2026→2027); HBM content step-ups into 3x→4x crowd-out; "whoever secures most silicon captures most deployed compute" (Nvidia most prepared)
 - [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]] — Cross-sector demand datapoint: Cloudflare frames "the next bottleneck to AI adoption is the CPU for execution" — serving 1B knowledge workers × 10 agents needs ~1B server CPUs vs ~35-45M/yr current production (~20x), and isolates run agent code ~100x more efficiently than container runtimes. Application/edge-side corroboration of the agentic-CPU-demand thesis (layer-6 compute fanout)
-
+- [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]] — downstream channel reference: contrasts neocloud operating proof, funding quality, and valuation while separating accelerator demand growth from value capture at the GPU-lessee layer
+- [[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]
+- [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]
+- [[Research/2026-08-10 - NVDA TileRT Ultra-High Interactivity InferenceX - deep-dive]]
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
 ## Log
 
 ### 2026-04-22
@@ -309,3 +318,14 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 
 ### 2026-07-12
 - Manual edit: added Non-consensus Insight #8 (inference unit economics — batch size / KV-cache growth / utilization) to Investor Heuristics. Synthesizes and cross-links three previously-unlinked vault notes that independently converge on the same memory-bandwidth-bound-decode mechanic: [[Theses/CBRS - Cerebras Systems]] Insight #3 (SRAM bandwidth vs HBM), [[Theses/MRVL - Marvell Technology]] Industry Context (KV-cache-driven memory disaggregation TAM), and [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]] (rental cost-floor/value-ceiling + Anthropic margin expansion). Framed via [[Mental Models/Lens - Value Layer Monopoly]] as an open toll-collector question (Nvidia unexercised pricing headroom vs. highest-utilization frontier lab vs. decode-specialist silicon), held as hypothesis with an explicit disconfirming check (KV-cache compression rate vs. context-length growth rate). Manually authored at user request (not a `/sync` propagation from a new Research note) — flagging for the user: [[Theses/CBRS - Cerebras Systems]] carries `sector: Compute & AI Compute Accelerators` in its frontmatter but is `status: draft` and not yet listed in this note's Active Theses; leaving as-is since it doesn't meet the active-status bar, but worth a `/sync` pass once CBRS graduates from draft. No sector conviction change.
+
+### 2026-08-06 (/sync)
+- [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]]: linked as downstream neocloud demand-channel context — no accelerator-sector analytical or conviction change.
+
+### 2026-08-12
+- [[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]: NVDA $500B financing platforms
+- [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]: Stratechery financing risk map
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]: Alphabet capex to $205B
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]: AI factory underwriting
+- [[Research/2026-08-10 - NVDA TileRT Ultra-High Interactivity InferenceX - deep-dive]]: TileRT inference interactivity
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]: GPU repricing L3/L4

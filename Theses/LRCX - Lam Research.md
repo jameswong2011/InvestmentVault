@@ -220,7 +220,9 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript.md]] — AI inference SSD demand driver; NAND restart context
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→5-6% (highest WFE ROIC NTM 50.6%; Aether dry resist taking TEL share)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: memory WFE capex +34% (SK Hynix) / +26% Samsung / +20% Micron 2026; 1b/1c node migration confirmed by mgmt; rising EUV layers
-
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board ~US$29.4B advanced/packaging/fab appropriations
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/near-balance — packaging tool pull persists
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — SpaceX Terafab off-grid power architecture (WFE demand optionality)
 ## Log
 
 ### 2026-04-29
@@ -257,3 +259,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC capex raised to $60-64B, "next three years even more significantly higher"; N2 ramp (3% of Q2 revenue, sold out) + AP at 10-20% of capex lift etch/deposition intensity per wafer — conviction unchanged (high); multi-year WFE floor rising from the #1 customer.
+
+### 2026-08-12
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] / CoWoS near-balance / Terafab: foundry capex + packaging cadence support WFE floor — conviction unchanged; CoWoS near-balance is a mix shift risk not a demand cliff.
+- Cross-thesis signal via [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS near-balance may reweight tool mix away from pure packaging scarcity narrative — review §Industry Context.

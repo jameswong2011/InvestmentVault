@@ -123,6 +123,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 6. **Inference becomes the dominant workload (60–80% of AI compute by 2028) and AMD's memory-per-dollar advantage wins**: MI350/MI400 HBM capacity advantage positions AMD as the inference-optimized merchant choice. ROCm is sufficient for inference even if training stays CUDA-dominant.
 
 **Valuation anchor**: 25x 2028E EPS of $22–25 implies $550–625 share price, approximately 2x upside on a 2-year horizon. Plus-case of ROCm full parity + ASIC containment + EPYC 60% share implies $700+.
+- **Samsung HBM4 path for MI400**: industry sources say Instinct MI400 already leveraging Samsung HBM4 at ~80% yield ([[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]]) — diversifies memory supply vs SKH-centric NVDA Rubin books.
 
 ## Bear Case
 
@@ -139,6 +140,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 7. **Valuation compression**: At 38x forward P/E and sector median 31x, AMD is pricing in 25%+ structural growth persistence. If AI revenue flattens in 2028 at $40B (not $80B), the multiple compresses to 22x on $15 EPS = $330 share price, ~18% downside from current.
 
 **Bear-case price target**: $180–220 on 2-year horizon if 2–3 of the above materialize.
+- **Software composability still gates Helios displacement**: SemiAnalysis Advancing AI + BEP reads — ConnectX-7/llm-d parity missed, Helios MI455X ramp "hellish," +15% spec lead vs Vera Rubin decays under NVIDIA's adaptive-compression marketing and unverified software drop ([[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]], [[Research/2026-07-27 - AMD NVDA BEP Helios 15pct Spec Lead Decay - deep-dive]]). Financing warrants (OpenAI/Meta) validate second-source demand; they do not close the CUDA production-cost gap.
 
 ## Catalysts
 
@@ -218,7 +220,11 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory supercycle: MI350 288GB→MI400 432GB HBM content step-up supports accelerator demand; memoryflation a modest cost headwind
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — Venice 256c N2 (1.7x perf/watt vs Turin) widens per-core lead; new SP8 8-channel platform attacks Intel enterprise base as Intel cancels its own 8-channel SKU — EPYC share-gain catalyst into a "strong double digit" CPU-TAM-growth year
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: MI350X (N3) + MI400 AID/MID tiles (N3) compete inside the binding N3 pool and the SK-Hynix→Nvidia-priority HBM allocation; MI350→MI400 +50% HBM into 3x→4x wafer/bit crowd-out — sharpens the MI450 HBM/N3 supply-gating risk
-
+- [[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]] — Advancing AI: ROCm progress vs CUDA; Helios software/parity gaps
+- [[Research/2026-07-27 - AMD NVDA BEP Helios 15pct Spec Lead Decay - deep-dive]] — Helios +15% spec lead decay math; volume 2H'27 base case
+- [[Research/2026-07-28 - NVDA AMD PhotonCap Rack Split Optics Paypoints - deep-dive]] — Rack split optics paypoints; copper scale-up vs optical scale-out
+- [[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]] — Samsung HBM4 yield; MI400 attach
+- [[Research/2026-08-05 - NVDA BEP Inference Specialists vs System Moat - deep-dive]]
 ## Log
 
 ### 2026-04-21
@@ -287,3 +293,8 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: AI demand "multi-year" (2029-30), N2 sold out (Venice is N2), CoWoS/SoIC still allocation-constrained; A14 pre-prod 2027/HVM 2028 keeps the MI400/COUPE runway intact (A16 unmentioned on the call) — conviction unchanged (medium); MI400 volume hinges on packaging allocation as much as demand.
+
+### 2026-08-12
+- [[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]] / BEP Helios lead-decay: software/composability still the displacement gate; warrants ≠ CUDA parity — conviction unchanged (medium), GPU-share upside **weakened** until Helios volume+ROCm evidence.
+- [[Research/2026-07-27 - AMD NVDA BEP Helios 15pct Spec Lead Decay - deep-dive]]: Helios lead-decay clock sharpens the window for MI software catch-up — still gated; conviction unchanged.
+- [[Research/2026-08-05 - NVDA BEP Inference Specialists vs System Moat - deep-dive]]: Inference-specialist vs system-moat panel — AMD still needs software to convert silicon parity; conviction unchanged.

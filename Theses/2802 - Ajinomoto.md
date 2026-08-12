@@ -380,6 +380,7 @@ A 30-40% drawdown scenario over 18-36 months, driven by either competitive entry
 | 2028-2029 | Glass substrate first volume orders (TSMC / Samsung) | Bearish if accelerates | Long-term ABF displacement timeline visibility |
 | 2030 | Gunma + Kawasaki +50% capacity expansion fully operational | Bullish if delivered | Capacity-tight industry overhang lifts |
 | 2032 | Kani-Mitake third plant operational | Bullish (resilience + capacity) | Concentration risk discount unwinds |
+- **FY guidance raise on electronic materials (Aug 6, 2026)**: sales ¥1,723B→¥1,732B; business profit ¥197B→¥202B — entire uplift in Healthcare & Others on strong AI/server/network ABF demand ([[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]); Fine-Techno absorption merger planned Apr 1, 2027.
 
 ## Risks
 
@@ -446,7 +447,8 @@ A 30-40% drawdown scenario over 18-36 months, driven by either competitive entry
 - [[Research/2026-05-16 - Insight Surface Scan]] — surface scan that flagged Ajinomoto as top-priority initiation candidate (Insight #1)
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — adjacent packaging equipment / materials context; cites Ajinomoto ABF 98% IP licensing on substrate dielectric
 - [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — Ajinomoto vs Advantest on ROIC × valuation × growth; documents the conglomerate-discount asymmetry vs the AI-purity premium, the ~75% shared AI-capex driver correlation, and the segment-vs-group ROIC parity that defines the preference trigger between the two names
-
+- [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]] — Guidance raise; ABF AI demand; Fine-Techno merger plan
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
 ## Log
 
 ### 2026-05-16
@@ -472,3 +474,7 @@ A 30-40% drawdown scenario over 18-36 months, driven by either competitive entry
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (6 mapped rows re-rendered identical to current cell text post-rounding — FMP data essentially unchanged in the ~1hr since prior refresh), 0 material. Snapshot: [[_Archive/Snapshots/2802 - Ajinomoto (pre-numbers 20260712-184039)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]: EM/ABF demand drives guidance raise — conviction unchanged (medium); supports Electronic Materials compounding path toward →HIGH sales trigger (still below ¥150B bar).
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS near-balance + high yield eases packaging governor — ABF intensity still rides AI reticle growth; conviction unchanged.

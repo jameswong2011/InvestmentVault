@@ -240,7 +240,8 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 - [[Macro & Technology/AI Compute Infrastructure]] — adjacent macro context (if exists)
 - [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — Advantest vs Ajinomoto on ROIC × valuation × growth; AI-purity premium vs conglomerate-discount asymmetry, shared HBM/AI-capex driver overlap (~75%), and SEMICAP comp-anchor vs Japanese-conglomerate multiple-compression risk asymmetry
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: Advantest named among E/O photonic-test positioners (emerging un-standardized TAM) — adjacent optionality to the core HBM/SoC ATE thesis
-
+- [[Research/2026-08-12 - 6857 000660 BESI - HBM 3D Assembly Test Yield - news]] — HBM3D/hybrid bonding test & DFT ownership blur
+- [[Research/2026-07-27 - FORM Advantest CPO HVM Testing Bottleneck - deep-dive]] — CPO HVM test stages; Advantest positioning
 ## Log
 
 ### 2026-05-16
@@ -269,3 +270,6 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap ¥21.6T essentially flat (+0.1%), rounds to the same displayed value. Snapshot: [[_Archive/Snapshots/6857 - Advantest (pre-numbers 20260712-183936)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - 6857 000660 BESI - HBM 3D Assembly Test Yield - news]]: HBM4/5 test complexity + hybrid bonding raises ATE content — conviction unchanged (medium).

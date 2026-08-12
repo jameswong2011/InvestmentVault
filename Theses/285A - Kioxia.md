@@ -198,7 +198,8 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — NAND capacity growth constrained (low double digits, lower than DRAM); supply deficit durability through 2027+; die-supply positioning reinforced
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — DRAM/HBM supercycle read; adjacent NAND context (supply-discipline + capex-restraint parallels), no NAND-specific delta
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — "CPUs are back": Bluefield-4 KV-cache-to-NAND ("third network") = net-new emerging high-performance-NAND demand vector (added to Bull Case)
-
+- [[Research/2026-08-12 - 000660 SNDK 285A - Nintendo Memory Cost Inflation - news]] — Consumer memory cost inflation signal
+- [[Research/2026-08-12 - 000660 SNDK - SK hynix Solidigm Dalian NAND Expansion - news]]
 ## Log
 ### 2026-04-16 (NAND sector research sync)
 - [NAND sector creation + web research]: Three conviction-relevant findings: (1) Kioxia posted 33.1% QoQ revenue growth in Q3 2025 — highest among all NAND producers — validates capacity utilization and enterprise demand thesis — strengthened. (2) YMTC at 13% share targeting 15% by end-2026 but primarily consumer/PC — Entity List blocks western enterprise procurement; Kioxia's enterprise/die-supply focus is structurally insulated from YMTC pricing pressure — conviction unchanged. (3) CBA architecture advantage confirmed: BiCS10 332L at 4.8 GT/s Toggle DDR 6.0 vs Samsung V10 at 5.6 Gbps; Samsung wins on raw IO speed but CBA's 15-20% density/layer advantage means Kioxia's 332L is density-competitive with Samsung's 400+L V10 — conviction unchanged. Additional: Solidigm QLC enterprise share at 51% with 321L QLC is the primary competitive threat to LC9; Micron 6600 ION 245TB in hyperscaler qualification creates direct product competition. NAND Q2 2026 contract prices +70-75% QoQ (TrendForce) — supports pricing through Q4 FY2025 earnings (May 14).
@@ -248,3 +249,7 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Stock Price, Market Cap, Forward P/E all identical after rounding. FY2025 Revenue (guided) row remains unedited (format uncertain — guided range vs. point-estimate mismatch persists). Snapshot: [[_Archive/Snapshots/285A - Kioxia (pre-numbers 20260712-183935)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - 000660 SNDK 285A - Nintendo Memory Cost Inflation - news]]: consumer memory cost inflation corroborates tightness — conviction unchanged (monitoring).
+- [[Research/2026-08-12 - 000660 SNDK - SK hynix Solidigm Dalian NAND Expansion - news]]: SKH/Solidigm Dalian NAND expansion adds 1H27 supply competitive pressure — watch ASP path; conviction unchanged.

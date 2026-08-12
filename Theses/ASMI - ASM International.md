@@ -175,7 +175,7 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 - [[AI Bubble Risk and Semiconductor Valuations]] — hyperscaler capex normalization risk
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→4-5% (POR annuity reframe; relative-value laggard +92% 1Y; ALD + Epi two engines)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: 1b/1c DRAM node migration (combined 1b+1c capacity +~80% 4Q25→4Q27) lifts ALD-layer demand
-
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board advanced-tech capacity appropriations
 ## Log
 
 ### 2026-04-29
@@ -205,3 +205,6 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC capex $60-64B + multi-year "significantly higher" signal; GAA node cadence intact (N2 sold out, A14 pre-prod 2027/HVM 2028) — conviction unchanged (high); ALD-intensity growth per node confirmed by the roadmap, not just the cycle.
+
+### 2026-08-12
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]: TSMC advanced capacity spend supports ALD/epi tool chain — conviction unchanged.

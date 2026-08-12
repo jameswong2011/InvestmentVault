@@ -99,6 +99,7 @@ The probe-card market is ~$3B globally and consolidates around three pure-play v
 **Structural force #2: TSMC's foundry-customer test outsourcing strategy.** TSMC traditionally controlled probe-card vendor selection at the foundry level. Recently, TSMC's IDM customers (NVIDIA, AVGO, AMD, Qualcomm) have been negotiating direct probe-card contracts to lock in supply. This shifts negotiating leverage from TSMC to the chip-design customer, and FORM has stronger relationships with the design-house side than Technoprobe does.
 
 **Structural force #3: CPO/silicon photonics adds a new test workflow.** Co-packaged optics requires both electrical and optical-domain test on the same wafer or interposer. No probe-card vendor has scale capability today. Whoever wins this will own the test-flow for the optical-AI rack architecture. FORM is the only credible candidate with both MEMS expertise and existing CPO customer relationships.
+- **CPO HVM testing is an emerging bottleneck adjacent to FORM's systems lane**: wafer PIC → EIC-PIC → optical engine → CPO final/SLT; no true optical-probe standard yet; commercialization pace = f(yield, test time, test cost) ([[Research/2026-07-27 - FORM Advantest CPO HVM Testing Bottleneck - deep-dive]]).
 
 ## Key Metrics
 
@@ -116,6 +117,7 @@ The probe-card market is ~$3B globally and consolidates around three pure-play v
 ## Bull Case
 
 HBM4 ramps on schedule across all three suppliers in 2H 2026. FORM captures >75% of HBM4 probe-card design wins (vs. ~70% for HBM3). Probe-card revenue per HBM wafer rises 60-80% (Insight #1). FORM defends advanced-node logic share above 25% (Technoprobe stops at TSMC 2nm). CPO/optical test consolidation begins in 2027 with FORM either organic or via $300-500M acquisition. FY27 revenue reaches $1.0-1.1B (vs. ~$700M LTM), gross margin expands to 45%, EPS reaches $4.50 (above $3.50 consensus). At 18-22x FY27 P/E, target price $80-100 (vs. ~$48 today). Bull-case 2-year IRR: 35-50% annualized.
+- **HBM + CPO dual driver confirmed in print**: FY Q2 (ended Jun 27) record $258.2M (+32% YoY), Q3 guide above street; release named HBM probe cards + CPO systems as sequential drivers; CPO annual guide clearing $20M ([[Research/2026-07-30 - FORM PhotonCap July 29 HBM CPO Probe Cards - deep-dive]]).
 
 ## Bear Case
 
@@ -187,7 +189,8 @@ Q1 2026 (today's earnings) prints in-line, not blow-out — HBM4 ramp guidance i
 - [[Theses/SNDK - SanDisk]] — NAND segment customer; exposure to SSD end-market
 - [[Theses/PSTG - Pure Storage]] — AI-data-infrastructure peer; demand-side validation for HBM thesis
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: FormFactor named among E/O photonic-test positioners (un-standardized emerging TAM) — corroborates the CPO/optical-test-consolidation Bull Case driver + Risk #4
-
+- [[Research/2026-07-30 - FORM PhotonCap July 29 HBM CPO Probe Cards - deep-dive]] — Record Q2; HBM+CPO drivers; CPO >$20M guide path
+- [[Research/2026-07-27 - FORM Advantest CPO HVM Testing Bottleneck - deep-dive]] — CPO HVM test bottleneck map; Advantest stages
 ## Log
 
 ### 2026-04-29
@@ -208,3 +211,7 @@ Q1 2026 (today's earnings) prints in-line, not blow-out — HBM4 ramp guidance i
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap, Revenue Growth, Gross Margin, and FCF Yield all round to the same displayed values as the prior pass. Trailing P/E and EV/Revenue remain fetch_gap. Snapshot: [[_Archive/Snapshots/FORM - FormFactor (pre-numbers 20260712-183936)]]
+
+### 2026-08-12
+- [[Research/2026-07-30 - FORM PhotonCap July 29 HBM CPO Probe Cards - deep-dive]]: HBM+CPO beat/guide confirms dual-driver print — conviction unchanged (medium); CPO test standardization remains the longer gate.
+- [[Research/2026-07-27 - FORM Advantest CPO HVM Testing Bottleneck - deep-dive]]: CPO HVM testing bottleneck — probe/test intensity rises with optics+HBM complexity; conviction unchanged.

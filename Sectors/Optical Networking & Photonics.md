@@ -527,10 +527,14 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 **Cross-vertical observation:** the same Western III-V epitaxy chokepoint (IQE + Coherent + Win Semi + LandMark + IntelliEPI + VPEC) supplies datacom optics, automotive LiDAR, AR/VR microLED, defense GaN RF, optical AI compute, quantum networking, and ISL terminals. Aggregate demand from these adjacent verticals could 2-3x the III-V epitaxy TAM through 2030 — IQE's ~£525M market cap captures a fraction of optionality across these verticals. This is the deeper structural reason behind takeover offer interest.
 
 ## Mental Models
+
 <!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+- **Models applied**: [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers that fired**:
+  - Industry Semiconductors #1 · emerging bottleneck — hypothesis: InP laser / EML capacity (not SiPh wafers) is the binding optics constraint into CPO/NPO scale-up (per PhotonCap SiPh→InP paradox + LITE FQ4 ~$1B print).
+  - Industry Semiconductors #14 · reclassification trigger — hypothesis: LITE’s NVLink/CPO qualification path is a cyclical→semi-compounder re-rate only while dual-source + China-export geopolitics do not re-commoditize the laser layer.
+  - Value Layer Monopoly §1 · interface/standard control — hypothesis: owning the qualified laser/EML interface into hyperscaler CPO is closer to a layer gate than transceiver assembly share (AAOI); falsify if merchant DSP/SiPh verticals internalize lasers.
+- **Disconfirming check**: Models agree LITE sits on a scarce qualified-laser layer — hunt the bear: Innolight-ban share gains prove temporary if COHR/Chinese substitutes clear same quals, or if NVDA rack-split optics paypoints shift content away from LITE’s mix. Single falsifier: hyperscaler dual-source laser quals with ASP compression > volume growth into 2H26/2027.
 
 ## Related Research
 - [[Research/2026-04-15 - LITE COHR - Lumentum vs Coherent Analysis]] — "Great Photonic Divergence" LITE +1,098% vs COHR +328%; pure-play vs integrated value capture; 70.5% Cloud Light module-level gross margin
@@ -543,7 +547,15 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 - [[Research/2025-11-25 - LITE - Silicon Photonics Supply Chain]] — Full SiPh supply chain for 2026-2030 era
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO "book": scale-out CPO TCO dilution (2-4% cluster power / 3-7% cost) reframes scale-out as a pipe-cleaner vs scale-up as the real later-decade TAM; COUPE the integration option of choice (Broadcom FOWLP→COUPE migration, 23× SoIC density, TSMC PIC lock-in); thin reliability evidence (Meta/Broadcom 15-switch ECOC 2025, Google refuses CPO); four bandwidth-scaling vectors + modulator typology (MZM/MRM/EAM); Nvidia ELS supply map
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs (Marvell DSP franchise); networking silicon (Tomahawk 6, Spectrum 6) on the binding N3 node — optical-DSP demand pull tied to the Rubin ramp
-
+- [[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]]
+- [[Research/2026-08-12 - LITE Irrational Analysis Q4 FY26 Call Alpha - deep-dive]]
+- [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]
+- [[Research/2026-08-08 - LITE COHR Laser Market Repriced by Scale-Up CPO - deep-dive]]
+- [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]]
+- [[Research/2026-08-02 - AXTI LITE InP Substrate LTA Prepay Chain - deep-dive]]
+- [[Research/2026-07-29 - LITE Aurelion PhotonCap Management Meeting - deep-dive]]
+- [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]
+- [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]]
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -559,3 +571,14 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs — incremental optical-DSP/transceiver demand pull tied to the Rubin ramp; networking silicon (NVLink 6, Tomahawk 6, Spectrum 6) on the binding N3 node. Marginal sector touch (demand-tailwind datapoint); no status/framework change.
+
+### 2026-08-12
+- [[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]]: LITE FQ4 ~$1B quarter — optics upcycle print
+- [[Research/2026-08-12 - LITE Irrational Analysis Q4 FY26 Call Alpha - deep-dive]]: FQ4 call alpha on laser/CPO demand
+- [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]: Innolight FCC ban reshapes optics chain share
+- [[Research/2026-08-08 - LITE COHR Laser Market Repriced by Scale-Up CPO - deep-dive]]: Scale-up CPO reprices laser market
+- [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]]: Optical trade geopolitics phase two
+- [[Research/2026-08-02 - AXTI LITE InP Substrate LTA Prepay Chain - deep-dive]]: InP substrate LTA/prepay chain
+- [[Research/2026-07-29 - LITE Aurelion PhotonCap Management Meeting - deep-dive]]: Aurelion management meeting color
+- [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]: Practical SOA for CPO/NPO
+- [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]]: SiPh capacity → InP paradox

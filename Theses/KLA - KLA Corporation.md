@@ -271,7 +271,9 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — HBM4 16-Hi bump-pitch tightening (sub-10μm) drives 3x bond-line inspection intensity; KLA Klarity/RAPID yield platform + 8 Series defect inspection captures the structural intensity uplift independent of MR-MUF vs hybrid-bonding outcome; HBM5+ 24-Hi (2029-2030) hybrid-bonding mandate adds further 2x inspection intensity at architectural inflection
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→7-8% (highest WFE ROIC 73%, 17yr dividend, $7B buyback; #12 structurally-rising floor)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: memory WFE capex up + rising EUV layer counts and HBM yield-sensitivity raise process-control/metrology intensity
-
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board ~US$29.4B advanced/packaging/fab appropriations
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/near-balance — packaging tool pull persists
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — SpaceX Terafab off-grid power architecture (WFE demand optionality)
 ## Log
 
 ### 2026-04-29
@@ -304,3 +306,6 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC capex $60-64B (raised from $52-56B) + "next three years even more significantly higher" + N2 yield-learning ramp and 4+ new Arizona fabs — conviction unchanged (high); process-control intensity compounds with node cadence (A14 pre-prod 2027) and fab-count expansion.
+
+### 2026-08-12
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] / CoWoS near-balance / Terafab: foundry capex + packaging cadence support WFE floor — conviction unchanged; CoWoS near-balance is a mix shift risk not a demand cliff.

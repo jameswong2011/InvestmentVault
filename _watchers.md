@@ -33,6 +33,7 @@ Add one address per bullet below, written normally (the placeholder `alice[at]ex
 - 22425955@qq.com
 - 170610374@qq.com
 - 280568490@qq.com
+- james_juwana77@hotmail.com
 
 ---
 

@@ -338,7 +338,9 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 - [[Research/2026-05-11 - INTC - Institutional Equity Research - deep-dive]] — Intel publicly named **AVGO and MRVL as EMIB engagement targets** for AI-ASIC packaging on 18A/18A-P; EMIB-T H2 2026 launch (120×180mm 24-HBM-stack vs CoWoS-L 100×100mm 8-stack) priced "low hundreds" vs $900–1,000 CoWoS Rubin-class — first quantified cost-arbitrage second-source path for hyperscaler ASIC customers facing TSMC CoWoS 35K→130K WPM allocation squeeze (NVDA 60–65% pre-booked); Microsoft Maia 2/3 ("Griffin") on Intel 18A under $15B contract is direct competitive pressure on AVGO/MRVL Microsoft custom-ASIC narrative
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Google/Broadcom TPU v7 beat NVDA/AWS to N3 (production 2025); Tomahawk 6 / Spectrum 6 + Rubin 1.6T scale-out 200G optical DSP on the binding N3 node; custom-ASIC HBM content rising 8-Hi→12-Hi; whoever secures silicon captures deployed compute
 - [[Research/2026-07-10 - MRVL vs AVGO - Competitive Comparison]] — head-to-head: Value-Layer-Monopoly framing (AVGO owns switching + ASIC-IP + software layers; MRVL owns 800G DSP + rents the ASIC seat, binary on Celestial memory-fabric); July 2026 multiple inversion (MRVL ~54× vs AVGO ~23× fwd); AVGO-vs-MRVL gap is quality/margin not growth
-
+- [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]] — customer-layer reference: Microsoft and Meta are both neocloud counterparties and in-house-silicon competitors, exposing the operators as layer-renters when ASIC economics improve
+- [[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]]
+- [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]]
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -367,3 +369,10 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 
 ### 2026-07-10
 - Comparison [[Research/2026-07-10 - MRVL vs AVGO - Competitive Comparison]]: competitive dynamics revised — Value-Layer-Monopoly read (AVGO owns switching + ASIC-IP + software layers; MRVL owns one layer, 800G DSP, + rents the ASIC seat) + July multiple inversion (MRVL ~54× vs AVGO ~23× fwd, reversing the April paired-trade cheaper-MRVL leg); the AVGO-vs-MRVL gap is quality/margin not growth. Investor Heuristics paired-trade subsection updated. Conviction unchanged (AVGO high, MRVL high).
+
+### 2026-08-06 (/sync)
+- [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]]: linked as customer-layer evidence for hyperscaler in-housing and neocloud layer-renter risk — no sector analytical or conviction change.
+
+### 2026-08-12
+- [[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]]: Arista Q2 $3B supply-chain signal
+- [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]]: SerDes before CPO

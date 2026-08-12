@@ -274,7 +274,7 @@ The bear case is twofold: cycle compression and competitive dilution.
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 5 convex bet; HOLD Low→1-2% (WLBI non-substitutable >600W TDP; second AI customer disclosure is binary catalyst)
 - [[Research/2026-05-26 - AEHR - Stress Test]] — Adversarial test: `conviction: high` unsupported (3-way conviction conflict); 5/7 bull assumptions 🔴; single-customer identity + WLBI moat-durability are the binary kill triggers
 - [[Research/2026-06-26 - AEHR - Stress Test]] — Second adversarial test (mental-models-driven): HIGH still unsupported a month on; CEO "early innings / most ASICs not burnt-in" contradicts Insight #2; Value-Layer-Monopoly lens → WLBI is a real but *optional, non-mandatory* layer; 5/7 assumptions 🔴 (Insight #2 now management-contradicted; SiPh upgraded design-in→systems order)
-
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — Terafab off-grid — long-dated WFE/test demand optionality
 ## Log
 
 ### 2026-04-29
@@ -312,3 +312,6 @@ The bear case is twofold: cycle compression and competitive dilution.
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (Market Cap re-rendered identical post-rounding); FCF Yield again flagged material (delta -26.5pp vs "Negative on FY26" qualitative cell) but left unedited — format uncertain, same as prior pass. Snapshot: [[_Archive/Snapshots/AEHR - Aehr Test Systems (pre-numbers 20260712-184039)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]: Terafab is optionality not near-term AEHR catalyst — conviction unchanged.

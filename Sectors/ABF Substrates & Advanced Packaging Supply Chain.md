@@ -490,7 +490,8 @@ Assuming a thesis cluster gets built around this sector with $1M sector-budget a
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Ajinomoto ABF confirmed (FY guided +28%, actual +31%, growth plan revised up, Gunma online Oct 2025); food-segment framing corrected (improving — seasonings up, frozen recovering — not "dragged by margin pressure")
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis: CoWoS "tight but easing" — front-end N3 wafer is now the dominant bottleneck (TSMC sizes packaging to N3 supply), 2.5D outsourceable to ASE/SPIL + Amkor, Intel EMIB gaining traction (Trainium, TPU); packaging no longer the binding AI constraint, substrate/ABF demand tracks accelerator unit volume
 - [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]] — advanced-packaging competition synthesis: EMIB-vs-CoWoS structural trade-off, Foveros-Direct yield-parity framework, TSMC-profit-pool benchmark (adv pkg ~8%→low-teens % of revenue) + margin hierarchy; skeptical counterweight to §Investor heuristics Insight #4 (EMIB-T cost arbitrage)
-
+- [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
 ## Legacy Callouts
 
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -512,3 +513,7 @@ Assuming a thesis cluster gets built around this sector with $1M sector-budget a
 
 ### 2026-07-14 (/sync)
 - [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Skeptical counterweight to §Investor heuristics Insight #4 (EMIB-T cost arbitrage) — source calls EMIB's cost edge "real but not sufficient by itself" (die-migration + power-integrity/embedded-capacitance + HBM-ecosystem offsets) and warns against pricing "customer interest" as backlog; adds the Foveros-Direct yield-parity framework (D0<0.1, stack yield >75%) + the "TSMC owns the profit pool, suppliers are the diversified play" barbell. Substrate positioning (Ajinomoto/Ibiden/Unimicron) unchanged; no active substrate thesis. (§Mental Models remains an empty template — candidate for a dedicated populate pass.)
+
+### 2026-08-12
+- [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]: Ajinomoto AI materials guidance raise
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS near-balance / yield

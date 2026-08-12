@@ -198,6 +198,7 @@ The bull case is the monopoly-rents thesis fully realized over 2026-2028:
 7. **Taiwan risk discount narrows**: US $165B co-investment + Trump administration explicit tariff exemption + Pentagon AI silicon sourcing from TSMC Arizona creates a de facto security guarantee. Discount narrows from ~15% to 5-8%.
 
 **2028 EPS estimate in bull case: $16-17 per ADR share (vs $12 consensus).** At 25x, that's $400+.
+- **CoWoS yield/capacity near-balance (Aug 2026)**: 5.5×-reticle CoWoS in HVM with stably >98–99% yields; capacity "not fully satisfying but very close" to demand — first explicit near-balance signal from the packaging supplier ([[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]). Board also appropriated ~US$29.4B for advanced/packaging/fab build ([[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]).
 
 ## Bear Case
 
@@ -338,7 +339,13 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis "silicon shortage phase": N3 the binding AI constraint (AI ~60% of 2026 N3 output → ~86% in 2027, squeezing smartphone/CPU; effective util >100% H2'26; ~2-yr cleanroom capacity ceiling), TSMC "kingmaker" prioritizing higher-ASP AI; corroborates pricing-power Insight #5
 - [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]] — advanced-packaging competition read: independently sizes the CoWoS annuity (adv pkg ~8%→low-teens % of TSMC revenue) and confirms the "Intel 18A/packaging threat refuted" leg (no named external Foveros Direct production; TSMC owns the profit pool)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]] — Q2'26 beat-and-raise (rev $40.2B +36%, GM 67.7% record, FY26 >40%, capex $60-64B, US $265B) that the market sold −5%; all three 07-09 live-test legs resolved positive; packaging bottleneck "limiting customers' growth"; Intel 18A/EMIB reversal-watch opened
-
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — 5.5× CoWoS HVM ~99% yield; capacity very close to demand; 14× by 2029 roadmap
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — Board ~US\$29.4B capex appropriations + Sony image-sensor JV
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]] — Alphabet 2026 capex \$195–205B demand pull
+- [[Research/2026-07-21 - TSM NVDA PhotonCap Kimi K3 MoE Memory Load - deep-dive]] — Kimi K3 MoE memory load → HBM/GPU count implications
+- [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]
+- [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]
 ## Log
 
 ### 2026-04-19
@@ -405,3 +412,10 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 ### 2026-07-24
 - Q2 2026 earnings [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: beat-and-raise on every axis (rev $40.2B +36% YoY, GM 67.7% record, FY26 guide >40%, capex $60-64B, US commitment $265B) yet stock −5% to ~$421 (−11% from high) — conviction unchanged (high): ceiling raised, market didn't pay; forward asymmetry partially restored.
 - Rebased Summary/segmentation/Key Metrics to Q2'26 actuals, re-armed the exhausted Conviction Triggers, opened Intel-18A/EMIB reversal-watch in Mental Models. Snapshot: [[_Archive/Snapshots/TSM - Taiwan Semiconductor (pre-earnings-update 2026-07-24-233324)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] + board US\$29.4B appropriations: CoWoS near-balance + continued packaging/tech capex — conviction unchanged (high); scarcity premium may moderate even as advanced-node rents hold.
+- [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]: Anthropic long-term DC leases via Theseus = incremental advanced-packaging/foundry demand signal without MW disclosure; conviction unchanged.
+- [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]: Ajinomoto AI electronic-materials guidance raise validates ABF/substrate intensity on advanced packaging; conviction unchanged.
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]: SpaceX Terafab abatement plan = potential long-dated leading-edge entrant narrative; treat as aspiration until tool POs; conviction unchanged.
+- [[Research/2026-07-21 - TSM NVDA PhotonCap Kimi K3 MoE Memory Load - deep-dive]]: MoE memory load + PhotonCap packaging narrative keeps advanced packaging/foundry intensity elevated; conviction unchanged.

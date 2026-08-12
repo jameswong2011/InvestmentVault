@@ -81,7 +81,7 @@ Bloom is a **"power-plant-in-a-box" manufacturer** — it sells modular, natural
 | **SMRs** | Available now vs 2030+ | Long-run cost/baseload once deployed |
 | **SOFC peers (FCEL carbonate, PLUG PEM)** | Commercialization + manufacturing scale (SOFC leader) | — |
 
-**New entrants / threats:** Chevron+Microsoft and ExxonMobil behind-the-meter gas; DOE-financed next-gen nuclear; hyperscaler self-generation (Crusoe). The forward question: can Bloom convert the timing rent into a **service-annuity + installed-base moat** before the supply bottleneck clears? If yes, it is an annuity machine; if no, it is a cyclical manufacturer that captured a 2026–2030 window.
+**New entrants / threats:** Chevron+Microsoft and ExxonMobil behind-the-meter gas; DOE-financed next-gen nuclear (Oklo's Groves reactor hit criticality Aug 5 2026 — the 5th advanced-reactor type validated since June; pending NRC Part 57 lets a licensed prototype mass-produce, hardening the 2028–2030 SMR-supply-normalization leg of §Insight 1 / §Risk 2 — though Oklo's own datacenter power is early-2030s, so it confirms the window bears assume rather than accelerating it); hyperscaler self-generation (Crusoe). The forward question: can Bloom convert the timing rent into a **service-annuity + installed-base moat** before the supply bottleneck clears? If yes, it is an annuity machine; if no, it is a cyclical manufacturer that captured a 2026–2030 window.
 
 ## Key Metrics
 
@@ -152,8 +152,16 @@ Bloom is a **Perez frenzy-phase hardware manufacturer whose equity has decoupled
 - [[Research/2026-06-06 - 800VDC Revolution Part 1 - Datacenter Layout and Equipment Impact - deep-dive]] — supercap-pairing datapoint; datacenter power architecture
 - [[Theses/VRT - Vertiv Holdings]] — datacenter power peer (white/grey-space stack; complementary, not competing)
 - [[Theses/CRWV - CoreWeave]] — neocloud, power-constrained customer archetype; datacenter power demand
+- [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]] — power-markets framework independently corroborates turbine backlogs (GE Vernova / Siemens / Mitsubishi sold out) and BTM-as-interconnection-bypass, but separates bypass from bankability (fuel/permits/redundancy/EPC/multi-year anchor cash flow) and flags the near-term-WTP (6–12mo) vs multi-year plant-underwriting duration mismatch — external support for §Insight 1 + backlog-quality skepticism
+- [[Research/2026-08-08 - Oklo SMR Mass Production - news]] — confirm-the-bear: 5 SMR types to criticality since June + NRC Part 57 mass-production licensing hardens the 2028–2030 SMR-supply-normalization leg of §Insight 1 (time-to-power arbitrage decays) and §Risk 2; on Oklo's own timeline (Aurora 2028, Meta datacenter early-2030s) it confirms the window bears assume, not sooner
 
 ## Log
 
 ### 2026-07-29
 - Initial thesis created. Conviction: low — real power bottleneck + 166% Q2 growth, but priced ~55x book / ~12x fwd sales as a durable toll while backlog is 40x audited RPO ($20B vs $492.6M), the deployment-speed edge decays as turbine supply normalizes into the 2028–29 AI-capex digestion, and the Value-Layer-Monopoly lens scores WEAK FIT (scarcity rent, not monopoly).
+
+### 2026-08-06
+- [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]: independently corroborates turbine backlogs + BTM-bypass-≠-bankability and adds the near-term-WTP-vs-multi-year-underwriting duration mismatch — external support for §Insight 1 (time-to-power arbitrage) and the backlog-quality skepticism. Conviction unchanged (low, draft).
+
+### 2026-08-08
+- [[Research/2026-08-08 - Oklo SMR Mass Production - news]]: 5 SMR types to criticality since June + Part 57 mass-production licensing confirm the SMR-supply-normalization leg of the wasting-asset bear (§Insight 1 / §Risk 2) — but on Oklo's 2028–early-2030s timeline, confirming not accelerating — conviction unchanged (low, draft).

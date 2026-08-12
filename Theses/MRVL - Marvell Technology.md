@@ -317,7 +317,12 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Rubin's 1.6T scale-out per GPU kicks off 3nm 200G optical DSPs (direct demand pull for Marvell's 80%+ long-reach DSP franchise); Trainium3 (N3P) socket on the binding N3 node
 - [[Research/2026-07-10 - MRVL vs AVGO - Competitive Comparison]] — head-to-head vs Broadcom: layer-ownership framing (MRVL owns the 800G DSP layer + rents the second-source ASIC seat; real forward edge is Celestial memory-fabric, a new layer AVGO doesn't contest); AVGO higher-quality/lower-variance, MRVL higher-convexity binary on memory disaggregation
 - [[Research/2026-07-14 - EDA Market Primer Part 2 (Big-3 Dynamics) - deep-dive]] — Full-COT migration ladder: Google Axion named as customer-held-EDA-licence migrant — the in-sourcing leading indicator for Marvell's Google seat that fires quarters before revenue
-
+- [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]] — SerDes PAM4/LPO/CPO power map; talent/M&A restock
+- [[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]] — Arista fabric demand; non-NVDA scale-up attach
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]] — Hyperscaler capex repricing; memory ~30% of DC investment
+- [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]] — Permitting/political DC friction signal
+- [[Research/2026-08-12 - NVDA AVGO MRVL NOW - Damodaran Situational Awareness Blow-up - news]] — Leverage blow-up positioning lesson
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -377,3 +382,7 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: CoWoS scarcity + packaging-cost inflation squeeze marginal custom-ASIC programs hardest (TSMC "kingmaker" prioritizes higher-ASP anchors); EMIB-T emerging as second source — conviction unchanged (medium); watch whether MRVL's customers secure 2027 packaging allocation or slip right.
+
+### 2026-08-12
+- [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]] + Arista Q2: SerDes/CPO power path + Ethernet fabric demand — conviction impact unchanged; custom/connect franchise still tied to AI port growth.
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]: Alphabet capex raise supports AI networking/custom silicon pull; market sold the stock — separate order-book from multiple; conviction unchanged.

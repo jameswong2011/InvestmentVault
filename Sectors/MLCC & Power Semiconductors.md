@@ -615,7 +615,8 @@ The 800V transition is structurally bullish for SiC (ST + Infineon + Wolfspeed p
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Murata FYE-Mar-27 guide confirms margin ramp ahead of thesis schedule (OP ¥380B / +34.8%, ~19% OPM on data-center demand + mix); mgmt named the 800V→50V→GPU architecture explicitly; small-case share >50%, utilisation 90-95% confirmed
 - [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]] — Upstream-materials bottleneck map ranking the merchant inputs beneath the cap makers by pricing-power acuteness (release film 87% top-5 / sub-100 nm BaTiO₃ 3-firm / ultra-fine Ni powder 4-firm); names the cleanest listed vehicles (Sakai 4078, Toray 3402, Disco 6146) and the investability paradox. Feeds §End-to-end supply chain map pinch points, §Acquisitions disruption-vector #7, and §Investor heuristics angle #10
 - [[Research/2026-07-11 - Murata vs MLCC Peers - Process and Yield Moat Comparison]] — Head-to-head process/cost/yield moat: Murata vs SEMCO / TDK / Taiyo Yuden / Yageo / Chinese cohort. Edge is a gradient that inverts by tier (huge/capped-open vs China at 008004; only 5-10pp vs SEMCO; narrowest ~45/40 in AI-server MLCC); attribution to the sole 100%-in-house sub-100nm BaTiO₃ + tacit sinter chemistry monetised via the yield/DPM/AEC-Q200 stack. Feeds §Product level analysis → "Murata vs Samsung Electro-Mechanics" and §Competitive dynamics
-
+- [[Research/2026-08-12 - 6981 VICR - MLCC AI Demand Price Hikes Premiums - news]]
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -645,3 +646,7 @@ The 800V transition is structurally bullish for SiC (ST + Infineon + Wolfspeed p
 
 ### 2026-07-11
 - Comparison [[Research/2026-07-11 - Murata vs MLCC Peers - Process and Yield Moat Comparison]]: competitive dynamics refined — added the AI-server-specific Murata/SEMCO split (~45/40, the narrowest of any segment) plus the Sinocera-into-SEMCO/Yageo powder datapoint and Samsung's silicon-cap/substrate bundle to §Product level analysis → "Murata vs Samsung Electro-Mechanics." Moat-magnitude read: near-monopoly vs China at 008004 (capped-open 7-10yr), but a *lead not a monopoly* vs SEMCO in the growth segment; edge ascribed to the sole 100%-in-house sub-100nm BaTiO₃ + tacit sinter/co-fire chemistry. No sector-framework change; disconfirming datapoint to watch = SEMCO 008004 yield crossing ~92-93%.
+
+### 2026-08-12
+- [[Research/2026-08-12 - 6981 VICR - MLCC AI Demand Price Hikes Premiums - news]]: AI MLCC price hikes / LTAs
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]: Power delivery bottleneck

@@ -595,7 +595,7 @@ The conservative ecosystem anchor is **$850–900B** after netting customer prep
 
 1. **Funding:** Big Four operating cash flow is roughly $600B in 2026 and can reach about $780B by 2028 at 12–15% growth. With distributions reduced, internally fundable capex is approximately **$600–650B annually**. Adding a realistic $200–300B of annual debt, SPV, private-credit, and lab-equity capacity gives the core US financing chain a **$900B–1.0T 2028 ceiling without credit stress**; Chinese and sovereign balance sheets sit outside it. The §XI maximum-drawdown case relaxes exactly this no-stress assumption. A $1.4T global consensus outcome still assumes the credit channel expands for three more years after the crossover.
 2. **Revenue coverage:** The broader monetization bridge rises from $150–180B in 2026 to roughly $450B in 2028 and $850B in 2030. Market tolerance requires capex/end demand to compress from 5–6x toward 2–2.5x. That supports about **$1.0–1.1T in 2027, $1.1–1.2T in 2028, and $1.3–1.5T by 2029–2031** only if demand compounds near the bridge.
-3. **Physical delivery:** US datacenter power can expand from roughly 76GW in 2026 to 134GW in 2030, but turbine slots, transformers, and interconnections are constrained; global additions run roughly twice the US pace. At $45–55B per delivered GW, the global physical ceiling is around **$1.5–2.0T annually by 2028–2029**. Power binds the bull case, not the base. CoreWeave had energized only about 29% of 3.5GW contracted power and Nebius roughly 5–6% in the underlying evidence: capital is queuing rather than earning revenue.
+3. **Physical delivery:** US datacenter power can expand from roughly 76GW in 2026 to 134GW in 2030, but turbine slots, transformers, and interconnections are constrained; global additions run roughly twice the US pace. At $45–55B per delivered GW, the global physical ceiling is around **$1.5–2.0T annually by 2028–2029**. Power binds the bull case, not the base. CoreWeave had energized only about 29% of 3.5GW contracted power and Nebius roughly 5–6% in the underlying evidence: capital is queuing rather than earning revenue. Power scarcity is also **locational and temporal, not a single national number** ([[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]): delivered cost turns on the node, the binding transmission constraint, the marginal generator by hour, and market design, so "gigawatts secured" masks wide dispersion in what a megawatt actually earns. The deeper point sharpens the maturity mismatch this note already carries — a nine-figure power project needs years of contracted cash flow, yet some labs' highest willingness-to-pay is concentrated in the next 6–12 months (a 90-day-cancellation deal at ~$5,000/MWh vs a 20-year take-or-pay at ~$271/MWh), so near-term compute scarcity can produce extraordinary prices without financing a durable long-duration asset. Contract *duration and firmness*, not headline dollar backlog, decide whether the queued capital becomes financeable.
 
 The [US Department of Energy/LBNL](https://www.energy.gov/articles/doe-releases-new-report-evaluating-increase-electricity-demand-data-centers) estimated datacenters at 4.4% of US electricity in 2023 and 6.7–12% by 2028. The [IEA’s 2026 update](https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions) projects global datacenter electricity use to double by 2030 and AI-focused use to triple.
 
@@ -712,6 +712,7 @@ The outside-view bear case is the repeated history of credit-funded capacity ove
 | 2027–2028 | Functions per enterprise adopter and agents scaled per function | Whether organizational depth arrives before capex digestion |
 | Through 2028 | Big Four D&A versus disclosed AI revenue and savings | The $260–300B D&A / $300–360B revenue race |
 | Quarterly | Token growth, provider gross profit, and effective price per task | Whether Jevons volume elasticity produces revenue capture |
+| Quarterly | Weighted-average term and cancellation rights of AI power/colo contracts, not just dollar backlog ([[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]) | Whether "gigawatts secured" is financeable long-duration cash flow or short-duration willingness-to-pay; a sustained rise in 10–20-year take-or-pay from creditworthy buyers weakens the maturity-mismatch thesis, while 90-day-cancellation deals confirm it |
 
 ### Operating thresholds
 
@@ -794,10 +795,38 @@ Extending the clock to 2035 dates the maximum-leverage point and the shape beyon
 
 Base-path comparison: digestion's organic re-acceleration compounds from the §VII base 2031 exit ($1.30–1.50T) at ~8–12% to roughly **$1.8–2.2T by 2035**, so the two scenarios converge in the low-$2T range mid-decade. The race pulls ~$3T of spending forward into 2027–2031 (cumulative 2027–2035 ≈ $15–17T vs ≈ $12.5–14T base) and pays for it with a harder 2031–33; the base defers it and pays with the 2028–29 pause. Date and depth differ; the destination does not — by construction, since both paths share the same terminal demand.
 
+## Addendum — 2026-08-12: Financing platforms, siting friction, and announced-MW conversion
+
+Dated overlay on §§VII / X / XI — Log already cites the source notes; this section merges them into the framework (Tier A; snapshot `[[_Archive/Snapshots/Sustainability of AI Capex (pre-sync sync-2026-08-12-213539)]]`).
+
+### What changed in the evidence set (Aug 10–12)
+
+1. **Third-party compute financing institutionalized.** Nvidia’s MOUs with Apollo / BlackRock / Blackstone / Brookfield / Goldman / KKR target **>$500B** of third-party capital for AI infrastructure, with Nvidia optionally backstopping up to **25% (~$125B)** residual-value financing ([[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]; Stratechery residual-value / 1873 framing in [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]). This is the §XI “fragile tranche / off-balance-sheet wave” mechanism named at platform scale — socializing refinancing/residual risk into pension/insurance AUM rather than hyperscaler IG alone.
+2. **Sovereign / infra-GP ownership of purpose-built DCs.** Theseus Infrastructure (Anthropic × Macquarie Asset Management × GIC): Macquarie funds + GIC own the platform and fund majority equity; Anthropic anchors under long-term leases (US-first; Anthropic covers consumer electricity-price increases). No MW/capex disclosed ([[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]).
+3. **Announced-MW conversion risk ≠ demand destruction.** AWS withdrew a ≤**500MW** / 2.5M sq ft Calvert County (MD) campus adjacent to Calvert Cliffs after a local political flip and an Aug 18 moratorium hearing; QTS’s ~$30B Digital Gateway was abandoned in July; Data Center Watch cites **75 projects / >$130B** delayed/canceled in 1Q26 partly from opposition ([1×: Data Center Watch via [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]]). Primary source attributes AWS’s move to development timelines / deliverability — **siting and politics, not CapEx cooling**. Dollars can still rise while announced-MW pipelines slip toward permissive / behind-the-meter / self-supply sites.
+4. **Hyperscaler dollar demand still rising into a sell-the-guide regime.** Alphabet lifted 2026 capex to **$195–205B** (from $180–190B) with Q2 capex $44.9B (+100% YoY) and Cloud +82%; the stock sold ~7% on the print ([[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]). Order-book bullish for the silicon/memory/networking complex; multiple risk is now the default market response to the same headlines.
+5. **1873 analogy sharpens financing-as-margin-defense.** Stratechery maps hyperscaler debt acceleration ($194B YTD by Jul 7 vs $108B all of 2025; interest cover <2x from ~5x) and Nvidia’s residual-value puts onto a Jay Cooke / Northern Pacific financing-overbuild template — financing innovation can be **margin defense and risk socialization**, not independent demand proof.
+
+### Framework implications (no scenario rewrite)
+
+| Framework hook | Read after this evidence | What would falsify the read |
+|---|---|---|
+| §VII physical-delivery / power | Siting/politics joins interconnect + turbine lead times as a **binding conversion filter** on announced MW. Track *delivered* MW and weighted-avg contract term/cancellation rights, not press-release MW. | Hyperscalers convert nuclear-adjacent / contested sites on schedule despite moratoria; announced→energized lag compresses. |
+| §VII / §XI funding stack | Vendor platforms + sovereign/infra-GP SPVs are live **non-IG** capacity in the ~$5.6–7.0T fundable stack — and they pull residual-value / lease risk back onto the silicon vendor and into safety-seeking AUM. | First closed platform tickets remain tiny vs $500B headline, or residual-value puts are never drawn / marked. |
+| §X observables | Add: (a) first disclosed closed ticket size under Nvidia’s platforms; (b) county/state moratorium count and MW stranded in hearing queues; (c) share of new MW behind-the-meter / self-supply vs grid-interconnect; (d) sell-the-guide persistence on further hyperscaler raises. | Capex guides cut *and* financing platforms stall *and* MW conversion accelerates — classic digestion, not delayed-MW. |
+| Positioning without collapsing the stack | Separate **order-book** (still up — Alphabet, Theseus, Nvidia platforms) from **multiple / credit** (sell-the-guide + cover compression + residual-value socialization). Delayed MW is bearish for near-term GPU/networking units only if CapEx dollars also roll over; so far the evidence is rotation, not cancellation of intent. | CapEx guides roll over in dollars (not just MW slips) into 2H26/2027. |
+
+### Executive-judgment touch (unchanged direction)
+
+The note’s core split — structural demand vs cyclical spend; functional vs financial overbuild — is **reinforced, not rewritten**. New information thickens the §XI race-to-the-financing-ceiling path (named $500B platforms + Theseus) while adding a physical/political conversion haircut to announced MW (Calvert / QTS / DC Watch). Probability-weighted 2031 / cumulative paths in §VII are left intact pending a closed-platform ticket or a dollar CapEx guide cut.
+
+
 ## Related research
 
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]
 - [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]
+- [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]] — nodal/LMP power-market framework; the "demand is now (6–12mo WTP) vs multi-year plant underwriting" maturity mismatch sharpens the funding-duration logic (§VII physical delivery, §I funding crossover); track contract term / cancellation rights, not just dollar backlog
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
 
 ## Primary-source register
 
@@ -852,3 +881,19 @@ Base-path comparison: digestion's organic re-acceleration compounds from the §V
 - Manual edit: consistency pass across note + website essay — race-path funding reconciled (retained OCF $3.0–3.4T full-suspension, stack $5.5–6.7T → $5.5–7.0T so the path no longer outruns its stack); complex-level SPV/vendor/prepay claims (~$200–350B) itemized in the leverage ledger; no-stress ceiling vs race-case bridge added in §VII; D&A neutralization arithmetic anchored to the ~$110–120B pre-wave 2025 base.
 - Manual edit: extended §XI race scenario to 2035 in note + essay — maximum-leverage point dated to 2031 (2.0–2.5x fully drawn), 2032–33 plateau-to-cut at $1.4–1.9T as leverage deflates ~0.2–0.3x/yr, 2034–35 headroom reopens ($1.9–2.6T); base and race converge in the low-$2T range by 2035 (~$15–17T vs ~$12.5–14T cumulative 2027–35).
 - Addressed audit findings: applied Tier-1 fixes from [[_Archive/Docs/2026-07-29 - Sustainability of AI Capex - Audit Report]] to essay + note — profit-proxy relabel, invested-through-2026 wording, Meta paused (not suspended), crossover as projection, WTP→WTA, platform leverage on net basis (~5–15% drawn), stack total $5.6–7.0T with prepay/maintenance qualifiers, global power scope, world+US GDP framing, METR update, tranche C+D reconciliation, composition/convergence caveats, essay Sources footer; note subs-row drivers annotated. Rejected: range-pairing and Alphabet-staleness findings (methodology inconsistent/misread); bear scenario stays removed per user direction.
+
+### 2026-08-06 (/sync)
+- [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]: power-markets deep-dive supports and sharpens the funding-duration logic — added nodal+temporal scarcity + the 6–12mo-WTP-vs-multi-year-underwriting maturity mismatch to §VII physical-delivery, and a §X observable (weighted-avg AI power/colo contract term + cancellation rights, not dollar backlog; a rise in creditworthy 10–20yr take-or-pay weakens the mismatch). Tier A (snapshot). Executive judgment unchanged. Snapshot: [[_Archive/Snapshots/Sustainability of AI Capex (pre-sync 2026-08-06-184125)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]: AWS Calvert 500MW withdrawal = siting/politics friction (moratorium risk), not demand destruction — raises announced-MW conversion risk while CapEx dollars rotate to permissive/self-supply sites.
+- [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]: Theseus (Anthropic×Macquarie×GIC) shows sovereign/infra-GP capital owning purpose-built DCs under long-term leases — extends off-balance-sheet financing wave alongside NVDA $500B platforms.
+- [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]: Stratechery maps vendor/infra financing + residual-value backstops onto 1873-style overbuild risk — financing innovation is margin defense as much as demand proof.
+- [[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]: Nvidia >$500B third-party financing platforms institutionalize GPU/infra funding outside hyperscaler IG debt alone.
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]: Alphabet 2026 capex $195–205B + sell-the-guide — order-book up, multiple risk default.
+## Related Research
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
+- [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]
+- [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]
+- [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]
+- [[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]

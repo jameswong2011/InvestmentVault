@@ -30,7 +30,7 @@ Lumentum occupies arguably the single most strategically important chokepoint in
 
 ## Outstanding Questions
 
-- **Can Lumentum execute a revenue quadrupling without a manufacturing stumble?** $2B quarterly run-rate by late 2027 (from $1.65B full-year FY2025) implies ~120% CAGR -- no precedent in InP manufacturing. Requires flawless expansion across five InP fabs plus the Greensboro 6-inch transition (not productive until mid-2028). Every historical InP ramp (Broadcom Breinigsville, Coherent 6-inch) encountered multi-quarter yield setbacks. A single fab contamination event cascades given 50-60% market share.
+- ~~**Can Lumentum execute a revenue quadrupling without a manufacturing stumble?**~~ → Resolved 2026-08-12 (partial): FQ4'26 printed the first $1B quarter ($1,006.3M, +24.5% QoQ / +109% YoY) and FQ1'27 guides $1.225–1.275B at 39.5–40.5% non-GAAP OM — OFC target model arrived early ([[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]]). The *path* to $2B/qtr remains open (five InP fabs + Greensboro mid-2028); the stumble-risk question is now about sustaining the ramp, not whether the first $1B print was achievable.
 
 - **If Coherent's 6-inch InP yields exceed legacy 3-inch, why does Coherent still buy EMLs from Lumentum?** Coherent's wafer starts quadrupled and production spans three fabs, yet non-GAAP gross margin improved only 77bps YoY and it continues purchasing the same component from its primary competitor. Is the gap yield at parametric tails (top 5-10% of EMLs by extinction ratio), reliability qualification for hyperscaler deployment, or a temporary capacity shortfall that closes within 12-18 months?
 
@@ -144,7 +144,8 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 - **SiPh paradox**: Every silicon photonic transceiver and CPO module shipped increases demand for InP laser sources. The foundry buildout that appears threatening is actually the demand catalyst.
 - **NVIDIA strategic alignment**: $2B investment with capacity lock-out rights, named CPO supplier for Spectrum-X/Quantum-X. Mirrors NVIDIA's playbook of monopolizing supply chain chokepoints.
 - **OCS structural expansion**: $400M+ backlog, market revised to $1.5B (2026), $2.5B (2029). MEMS switching speed advantage creates a deployment moat that liquid crystal approaches cannot match. Data-rate agnosticism provides generational durability.
-- **Margin inflection**: Non-GAAP operating margins expanding from ~3% to 30-31% in five quarters. Revenue target of $2B/quarter at 40% margins implies $30+ EPS power by 2028, potentially making the current 48-60x P/E look cheap in hindsight.
+- **Margin inflection**: Non-GAAP operating margins expanding from ~3% to 30-31% in five quarters, then to **36.6% in FQ4'26** with FQ1'27 guided **39.5–40.5%** — OFC-model margins arriving early ([[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]]). Revenue target of $2B/quarter at 40% margins implies $30+ EPS power by 2028; first $1B quarter is now a print, not a guide. Stock still >20% below 52w high on muted reaction — asymmetry if the ramp holds.
+- **InP substrate prepay chain**: AXT LTA through YE2031 with $43.5M deposit (+$43.5M in 2028) locks scarce InP wafers against a >30% industry shortage gap ([[Research/2026-08-02 - AXTI LITE InP Substrate LTA Prepay Chain - deep-dive]]); UHP CPO / first ELS module PO / NPO engagements broadening are the 2H27–2028 volume bridges.
 - **400G differential EML**: Demonstrated at OFC 2026, extending technology lead toward 3.2T modules — one full generation beyond current commercial frontier.
 - **S&P 500 inclusion**: With $7T+ benchmarked to the index, passive flow creates a structural valuation floor through price-insensitive buying.
 
@@ -177,7 +178,7 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 3. **SiPh/CPO transition**: CW lasers are lower-ASP products than EMLs. If CPO accelerates and pluggable transceivers decline faster, the per-unit value Lumentum captures may compress before volume compensates.
 4. **6-inch InP gap**: Coherent's 2+ year production lead on 6-inch could translate to a structural cost advantage by mid-2027, enabling competitive pricing at 200G.
 5. **Customer concentration**: NVIDIA and Innolight represent outsized exposure. NVIDIA's dual-supplier strategy provides no exclusivity guarantee. Loss of either relationship would be material.
-6. **Geopolitical reciprocal risk**: China controls ~70% of indium supply and 75% of module fabrication capacity. InP export controls and rare earth restrictions create a supply chain weapon that could be deployed against Western laser makers.
+6. **Geopolitical reciprocal risk**: China controls ~70% of indium supply and 75% of module fabrication capacity. InP export controls and rare earth restrictions create a supply chain weapon that could be deployed against Western laser makers. Aug 2026 Reuters FCC/import-ban draft on Chinese DC devices is a two-sided blade: near-term **module share can redirect to LITE/AAOI/COHR** ([[Research/2026-08-05 - AXTI LITE IA Chinese Transceiver Ban Memo - deep-dive]], [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]), but Innolight already routes US volume via Thailand/TeraHop and any China retaliation hits InP substrates (AXT Beijing Tongmei) — watch definition of "Chinese" (nationality vs manufacture).
 7. **Valuation compression**: At 48-60x forward P/E, a growth deceleration from 60-85% to 15-20% (base case for 2027-28) could trigger 40-50% multiple compression even with continued earnings growth.
 8. **CPO deployment failure**: Heterogeneous integration yields below 70%. A high-profile CPO field failure at a hyperscaler could set the entire sector back years, delaying the laser source TAM expansion.
 9. **NVIDIA convertible dilution**: The $2B investment was structured as convertible preferred stock, creating a dilution overhang that distinguishes it from Coherent's cleaner non-dilutive deal structure.
@@ -192,6 +193,7 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 	- Semis [#10] anchor concentration — now quantified: Q3 FY26 10-Q discloses a single customer at 26% of quarterly revenue (thesis had "undisclosed"). New unmodeled variant: LITE's own upstream component supply (pump lasers) is the binding constraint — allocation triage across customers per the May 6 call.
 	- VLM §1/§3 — 200G EML layer = STRONG FIT infrastructure layer, moat widening; §4 alpha test retesting at better odds: ~25% drawdown from $1,053 ATH to ~$786 (below the ~$815 thesis basis) on zero company-specific bad news, fwd P/E ~50.
 	- Generalist [G-13] expectations — REFUTED on timing: the multiple-compression leg the thesis dated to "2027-28 growth normalization" arrived June-July 2026 via narrative (SemiAnalysis CPO-delay Jun 9, Meta Compute Jul 1, hawkish Fed).
+	- Semis [#1]/[#14] bottleneck + reclassification — FQ4'26 first $1B quarter + FQ1'27 OM guide into 39–40% band + AXT InP LTA through 2031 strengthen the EML/InP chokepoint read; IA call alpha on mode-hop-free cavity stats is a *hypothesis* that sell-side under-models yield, not proof of durable monopoly vs Coherent 6-inch (per [[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]], [[Research/2026-08-12 - LITE Irrational Analysis Q4 FY26 Call Alpha - deep-dive]]).
 - **Disconfirming check** (evidence-updated 2026-07-10): single falsifying datapoint = a second hyperscaler capacity-resale announcement after Meta Compute (Jul 1) — if excess AI capacity is real, the "every capex dollar flows to optics" chain gets a ceiling and the sold-out backlog becomes a lagging indicator (the memory-complex analog: -20% in two weeks). Second falsifier: Coherent 200G EML volume qualification at a US hyperscaler kills the arms-dealer asymmetry. Base rate: a stock up ~10x in 12 months at ~50x forward that has taken its first -25% narrative drawdown historically does not stop at -25% if the demand-regime question gets a second confirming datapoint (thesis's own NVDA-2018 analog). Framework gap: NO Conviction Triggers section — falsifiers live scattered in Catalysts/Risks and need formalizing; Q3 GM actual 47.9% vs the 49.5-51.5% guide in Key Metrics needs reconciling.
 ## Related Research
 
@@ -209,7 +211,25 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 - [[Research/2026-04-29 - AIXA VECO - MOCVD Revenue Exposure to InP Photonics Cycle - synthesis]] — Aixtron optoelectronics 12% (2024) → 23% (2025) → 65% Q1 2026 order share; MOCVD upstream layer missing from SEMICAP insight #6; AIXA candidate for standalone thesis
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger; TRIM Medium→2-3% (physics-gated 200G EML monopoly genuine, but +1,149% 1Y + 115x P/E + negative ROIC NTM = pricing perfection)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: confirms LITE sole ELS supplier for Nvidia's first CPO batches (Coherent 2nd late 2026), but flags CW DFB ELS as "standardized/commoditized" (Yuanjie, Shijia threat) — more contestable than the EML monopoly; scale-up (not scale-out) is the real CPO TAM
-
+- [[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]] — FQ4'26 first $1B quarter; FQ1'27 guide $1.225–1.275B / 39.5–40.5% OM; UHP CPO + ELS PO + OCS $100M+ qtr signals
+- [[Research/2026-08-12 - LITE Irrational Analysis Q4 FY26 Call Alpha - deep-dive]] — Call alpha: mode-hop-free cavity / UHP laser GM 80–90% BOM model — sell-side miss hypothesis
+- [[Research/2026-08-02 - AXTI LITE InP Substrate LTA Prepay Chain - deep-dive]] — AXT InP LTA through 2031 + $43.5M×2 prepay; >30% InP shortage gap
+- [[Research/2026-07-29 - LITE Aurelion PhotonCap Management Meeting - deep-dive]] — Mgmt IR: Japan EML fabs ~8× in 2.5y; CPO opportunistic today; architecture-agnostic InP-first bet
+- [[Research/2026-08-08 - LITE COHR Laser Market Repriced by Scale-Up CPO - deep-dive]] — CPO coexistence; scale-up laser die CAGR up to 61%; corrects TAM-shrink misconception
+- [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]] — Innolight US-revenue vs China-manufacture split; ban draft absorption question
+- [[Research/2026-08-05 - AXTI LITE IA Chinese Transceiver Ban Memo - deep-dive]] — Ban as industrial policy; active-alignment capacity binds; LITE/COHR/AAOI beneficiaries with InP retaliation risk
+- [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]] — SOA/DFB physics for CPO/NPO; LITE/AVGO shorter-cavity linewidth edge
+- [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]] — SiPh capacity races shift scarcity to InP light sources — paradox bull for LITE
+- [[Research/2026-07-28 - NVDA AMD PhotonCap Rack Split Optics Paypoints - deep-dive]]
+- [[Research/2026-07-25 - AEVA AXTI Stranded InP SOA ELSFP Math - deep-dive]]
+- [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]]
+- [[Research/2026-08-01 - META MU SKHY IA SALP Unwind Market Memo - deep-dive]]
+- [[Research/2026-08-01 - MU SKHY PhotonCap Compute Short Memory Long - deep-dive]]
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]]
+- [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]
+- [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]
+- [[Research/2026-08-11 - MU NVDA Rubin Ultra 8-Hi HBM Despec - deep-dive]]
 ## Log
 
 ### 2026-04-15 (cross-thesis sync)
@@ -250,3 +270,23 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (4 mapped rows re-rendered identical post-rounding), 0 material. Snapshot: [[_Archive/Snapshots/LITE - Lumentum (pre-numbers 20260712-184039)]]
+
+### 2026-08-12
+- [[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]] + [[Research/2026-08-12 - LITE Irrational Analysis Q4 FY26 Call Alpha - deep-dive]]: first $1B quarter printed; FQ1'27 OM into 39–40% band; UHP/ELS/NPO backlog building — conviction unchanged (high); multiple still >20% below 52w high vs OFC-model print.
+- [[Research/2026-08-02 - AXTI LITE InP Substrate LTA Prepay Chain - deep-dive]] / Innolight-ban chain: substrate prepay locks InP; geopolitics is two-sided (module share gain vs China InP retaliation) — conviction unchanged (high).
+- [[Research/2026-07-28 - NVDA AMD PhotonCap Rack Split Optics Paypoints - deep-dive]]: Optics paypoints on rack-split architectures enlarge LITE attach surface; conviction unchanged (high).
+- [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]]: SiPh capacity race shifts scarcity to InP lasers — LITE InP franchise supported; conviction unchanged.
+- [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]: Practical SOA for CPO/NPO — LITE laser roadmap relevance reinforced; conviction unchanged.
+- [[Research/2026-07-25 - AEVA AXTI Stranded InP SOA ELSFP Math - deep-dive]]: Stranded InP/SOA math — capacity discipline and LTA prepay thesis still bind; conviction unchanged.
+- [[Research/2026-07-29 - LITE Aurelion PhotonCap Management Meeting - deep-dive]]: Aurelion/management meeting color on PhotonCap demand — operational corroboration; conviction unchanged.
+- [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]]: Optical trade phase-two geopolitics — two-sided (ban helps share / export controls hurt China); conviction unchanged.
+- [[Research/2026-08-01 - META MU SKHY IA SALP Unwind Market Memo - deep-dive]]: SALP unwind memo — memory/optics relative preference in risk-off; LITE still demand-tied; conviction unchanged.
+- [[Research/2026-08-01 - MU SKHY PhotonCap Compute Short Memory Long - deep-dive]]: Compute-short/memory-long framing — optics still rides memory+cluster build; conviction unchanged.
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]: Hyperscaler GPU repricing into L3/L4 — optics content may lag GPU ASP compression; watch mix; conviction unchanged.
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]]: Weekly mashup optics/SiPho color — incremental competitive context vs AAOI/TSEM; conviction unchanged.
+- [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]: 10GW hardware chain implies optics attach if builds convert; conviction unchanged.
+- [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]: Section 232 upstream security — peripheral to LITE laser thesis; conviction unchanged.
+- [[Research/2026-08-11 - MU NVDA Rubin Ultra 8-Hi HBM Despec - deep-dive]]: Rubin Ultra 8-Hi HBM despec — cluster optics intensity still scales with GPU count; conviction unchanged.
+- [[Research/2026-08-08 - LITE COHR Laser Market Repriced by Scale-Up CPO - deep-dive]]: Scale-up CPO reprices laser TAM (die CAGR up to ~61%); CPO/pluggable coexistence; conviction unchanged (high).
+- [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]: Innolight FCC-ban draft reshapes optics chain share; absorption/qualification still bind; conviction unchanged (high).
+- [[Research/2026-08-05 - AXTI LITE IA Chinese Transceiver Ban Memo - deep-dive]]: Ban as industrial policy; active-alignment capacity binds; LITE/COHR/AAOI beneficiaries; conviction unchanged (high).

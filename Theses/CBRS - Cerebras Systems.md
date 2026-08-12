@@ -255,7 +255,8 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - WSE workload economics: [[Research/2026-07-13 - CBRS - WSE Workload Price-Performance Deep Dive]]
 - WSE deployment economics: [[Research/2026-07-13 - CBRS - WSE Interconnect and Software Migration Economics - deep-dive]]
 - Macro: [[AI Bubble Risk and Semiconductor Valuations]], [[Macro & Technology/Sustainability of AI Capex]] — dates and mechanizes the "AI-capex frenzy unwind" position risk (2028-29 digestion vs. race-to-financing-ceiling); its enterprise-adoption gating (agentic AI <10% of functions, org-readiness on a decade clock) is a demand-side check on the pace of the reasoning-era value shift the CBRS thesis bets on
-
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]] — WSE4 power/clocks; disagg rumors interrogation guide
+- [[Research/2026-07-26 - QCOM NVDA MU PhotonCap Three Memory Wall Routes - deep-dive]] — Memory-wall routes; wafer-scale as bypass path
 ## Log
 
 ### 2026-07-09
@@ -275,3 +276,6 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 
 ### 2026-07-29 (/sync)
 - [[Macro & Technology/Sustainability of AI Capex]]: additive macro context linking CBRS's "AI-capex frenzy unwind" position risk to a dated mechanism (2028-29 digestion vs race-to-ceiling) + a demand-side enterprise-adoption check on the reasoning-era value shift — conviction unchanged (low, draft): discoverability wikilink only, no section rewrite (delta trivial per /sync selectivity). Tier B, no snapshot.
+
+### 2026-08-12
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]]: WSE4 as power/clock yield story — conviction unchanged (draft).

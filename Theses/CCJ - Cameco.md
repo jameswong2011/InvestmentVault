@@ -225,6 +225,7 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 - [[Research/2026-01-26 - Silver Demand and Data Centers]] — Data center buildout commodity demand dynamics; power infrastructure context
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Structural Iran proxy resilience (Hezbollah rebuilt ~1/3 capability in a year, >$1B transferred 2025) supports sustained energy-sovereignty policy response — the 6-12 month re-rating trade framework on which CCJ's high conviction rests
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates energy-sovereignty policy response; reactor life extensions + new builds become national security mandate
+- [[Research/2026-08-08 - Oklo SMR Mass Production - news]] — SMR deployment accelerating (5 advanced-reactor types to criticality since June; NRC Part 57 mass-production licensing pending) is counter-evidence to the Bear-Case SMR-slippage risk / OQ#4 — but Oklo runs on recycled EBR-II fuel + HALEU, so faster deployment of this design sharpens the Western-enrichment/HALEU bottleneck (OQ#6) more than it pulls Cameco natural-U/conversion
 
 ## Log
 
@@ -269,3 +270,6 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed, 0 material. Re-fetch confirms market cap ~$41.8B, share price ~$95.99, FY2025 revenue ~CAD 3.5B all unchanged from the run ~1hr ago. Snapshot: [[_Archive/Snapshots/CCJ - Cameco (pre-numbers 20260712-184014)]]
+
+### 2026-08-08
+- [[Research/2026-08-08 - Oklo SMR Mass Production - news]]: 5 SMR types to criticality since June + NRC Part 57 mass-production licensing = SMR deployment accelerating (counters Bear-Case SMR-slippage / OQ#4) — but Oklo's HALEU/recycled-fuel path sharpens the HALEU bottleneck (OQ#6) rather than pulling yellowcake — conviction unchanged (medium, monitoring).

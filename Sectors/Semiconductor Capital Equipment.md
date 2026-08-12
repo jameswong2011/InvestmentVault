@@ -554,11 +554,13 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 ---
 
 ## Mental Models
-<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
 
+<!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied**: [[Generalist - Overview]] · [[Industry - Semiconductors]]
+- **Triggers that fired**:
+  - Industry Semiconductors #1 · emerging bottleneck — hypothesis: TSMC US$29.4B board appropriations + CoWoS 5.5× reticle / ~99% yield near-balance shifts the binding constraint from packaging capacity toward memory/power/siting rather than WFE wafer starts alone ([[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]], [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]).
+  - Generalist [G-4] surge optionality — hypothesis: SpaceX Terafab / off-grid power narratives are real call-option demand for WFE but not yet a base-case order book ([[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]).
+- **Disconfirming check**: Models agree foundry self-help is relieving packaging scarcity — hunt the bear: CoWoS “near-balance” is temporary as Kyber/Rubin content re-opens the gap, or board appropriations slip into 2027. Single falsifier: TSMC cuts packaging/capex language next print while HBM remains the only scarce node.
 ## Related Research
 
 - [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas]] — Five-company WFE evaluation (AMAT/LRCX/KLAC/ASMI/TEL)
@@ -590,7 +592,9 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Aixtron FY26 guide corrected €560M→€520M (mgmt "slightly down") + 800V GaN second leg slipped to '27–'29 ("not there yet"); Advantest capacity reframed 5K→10K systems/yr by ~CY2029 — refines the "3K→5K" framing above (annual capacity, not installed base)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — SemiAnalysis memory supercycle: memory WFE capex +26/34/20% (Samsung/SK Hynix/Micron) 2026; 1b/1c node migration confirmed by ASML+LRCX; rising EUV layer counts; HBM ~5x wafer-capacity build → broad WFE demand leg
 - [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]] — round-wafer→panel format transition (CoPoS 2028–29 HVM, NVIDIA Rubin anchor); equipment winners are panel-format lithography (Onto JetStep, SUSS), path-agnostic inspection (KLA, Camtek, Onto), bonding (BESI), deposition/plating (AMAT, LRCX), dicing (DISCO), and glass TGV (LPKF); round-wafer-locked tooling is the relative loser (see Q#8)
-
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -645,3 +649,8 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 
 ### 2026-06-18 (/sync)
 - [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]]: corrected Q#8 — June-2026 reporting reverses the March-2026 "CoPoS → Q4 2030" delay (now 2028–29 HVM, NVIDIA Rubin anchor), weakening the CoWoS-lifecycle-extension assumption. Panel-format tools (Onto, SUSS, Camtek, KLA, BESI, DISCO, LPKF) flagged as winners vs round-wafer-locked tooling; added macro to Related Research. No basket-conviction change.
+
+### 2026-08-12
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]: TSMC board US$29.4B appropriations
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]: Terafab off-grid WFE optionality
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS 5.5x reticle 99% yield

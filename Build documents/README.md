@@ -10,11 +10,16 @@ Meta-documentation for the vault system itself. These are not vault research con
 
 | Doc | Role | Read when |
 |---|---|---|
+| [[Vault Explainer]] | **The system explained** (v6, 2026-08-07): LLM-wiki concept, four engines, Mental Models layer, state files, 27-skill catalogue, workflows, n8n sensory layer, safety machinery, publishing stack, FAQ, glossary | Introducing the vault to anyone (including yourself after a break) |
+| [[Demo Walkthrough]] | **Scripted 3–4h live demo runbook**: pre-flight checklist, 7 acts (orientation → core loop → callouts → live Tier-3 decision → portfolio workflow → safety → publishing), contingency table | Preparing or running a demo session |
+| [[Vault History - Jul-Aug 2026]] | **One month of evolution** (5 Jul → 7 Aug 2026): week-by-week infra + research timeline, conviction ledger, skill-run stats, patterns | Showing how the vault compounds; monthly review reference |
 | [[Setup Guide]] | **Zero-to-working replication**: installs (Obsidian, Claude Code), clone, gitignored-file recreation (lift-vs-recreate tables), plugin + Claudian config, first-run bootstrap, automation-layer sequencing, verification checklist | Fresh machine, new clone, or migrating |
-| [[User Guide]] | **Daily operation**: core loop, workflow chains, skill dictionary (all 21), callout system, prompt library, cadence guide, gotchas | Every day; the operating manual |
+| [[User Guide]] | **Daily operation**: core loop, workflow chains, skill dictionary, callout system, prompt library, cadence guide, gotchas | Every day; the operating manual |
 | [[INFRASTRUCTURE]] | **Consistency-machinery internals**: locks, manifests, snapshots, runtime markers, shared contracts, `/lint` registry, debugging flows. Audience: Claude Code at skill-author/debugger scope | Authoring or debugging a skill |
-| [[n8n Automations]] | **Automation layer** (live): §1–§6 platform — n8n install, Telegram, credentials, watcher registry, Workflows 1–3, operations + machine migration; §7–§11 X intelligence — Workflows 4–5 architecture, click-level build cards, Code-node source, calibration runbook, decision log | Building, tuning, or operating Layer 4 |
-| [[Web UI Build Brief]] | **Spec for future work**: briefing pack for an external LLM to build a single-page vault-explainer UI. Dated 2026-05-24 — vault statistics and skill counts inside are as-of-then; predates the automation layer entirely | Commissioning the explainer UI |
+| [[n8n Automations]] | **Automation layer** (live): platform build (install, Telegram, credentials, watcher registry, Workflows 1–3), X intelligence (Workflows 4–5, build cards, Code-node source, calibration), operations, decision log, troubleshooting | Building, tuning, or operating Layer 4 |
+| [[_Archive/Web UI Build Brief\|Web UI Build Brief]] (archived) | **Spec for past/future work**: briefing pack for an external LLM to build a single-page vault-explainer UI. Dated 2026-05-24, moved to `_Archive/` — statistics inside predate the automation layer entirely | Commissioning the explainer UI |
+
+Known drift in the older docs (as of 2026-08-07): Setup Guide and INFRASTRUCTURE/User Guide cite 21/26 skills respectively (actual: 27 — `/portfolio-snapshot` added 2026-08-04 is undocumented in all of them); Setup Guide has no coverage of the hooks/scheduler/workflows layer; n8n Automations still labels Workflow 3 "In build" though News Briefs have shipped daily since 2026-07-28.
 
 ## Reading order by intent
 

@@ -206,6 +206,7 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - **VMware creates a software annuity that decouples Broadcom from semiconductor cyclicality**: Even in a hypothetical AI spending slowdown, the software segment (~35% of revenue) generates high-margin recurring revenue from enterprise customers with decades-long switching costs. This is the insurance policy that makes AVGO a "growth at a reasonable price" story for large-cap mandates.
 - **Hock Tan's M&A track record is unmatched — every major acquisition has been margin-accretive within 24 months**: CA Technologies, Symantec, and now VMware all followed the same playbook: acquire sticky franchise assets, eliminate bloat, raise prices, convert to subscription. The pattern is repeatable because Tan targets mission-critical software that customers cannot rip out.
 - **Valuation compression creates entry opportunity**: Forward P/E of 28x for a company growing AI revenue >100% YoY with 68% EBITDA margins is more attractive than Nvidia's setup when risk-adjusted for business diversification and revenue visibility.
+- **Ethernet AI fabric demand confirmed via Arista**: Arista Q2 $3.036B (+38% YoY), FY guide ~$12.6B; multi-year supplier quals + memory secured into 2027; scale-across push and non-NVDA accelerator attach ([[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]]) — constructive for Tomahawk/Jericho merchant share.
 
 ## Bear Case
 
@@ -267,7 +268,13 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — datacenter CPU landscape: ARM Phoenix/Venom + hyperscaler-CPU buildout expands Broadcom's custom-silicon design-services + SerDes TAM; DPU/networking-CPU convergence (Bluefield-4) tangential to the switching franchise
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: Google/Broadcom TPU v7 beat NVDA/AWS to N3 (production 2025), TPU v8 stays N3; Tomahawk 6 + Spectrum 6 + Rubin 1.6T scale-out 200G optical DSP on the binding N3 node; custom-ASIC HBM content rising 8-Hi→12-Hi into a crowded HBM market
 - [[Research/2026-07-10 - MRVL vs AVGO - Competitive Comparison]] — head-to-head vs Marvell: AVGO owns the switching + ASIC-IP + software layers MRVL must traverse (~75% vs ~60% GM, ~23x vs ~54x fwd P/E); MRVL competes on a different (memory-fabric) layer, not catching AVGO in custom ASIC
-
+- [[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]] — Arista $3B qtr; supply-chain quals; scale-across
+- [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]] — Alphabet capex raise demand
+- [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]] — Anthropic Theseus infra JV — custom XPU/DC pull
+- [[Research/2026-08-12 - NVDA AVGO MRVL NOW - Damodaran Situational Awareness Blow-up - news]] — Leverage/conviction blow-up framework (sector positioning)
+- [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]
+- [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]
 ## Log
 
 ### 2026-04-19 (TSM stress test sync)
@@ -343,3 +350,9 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: CoWoS scarcity persists (Wei: "limiting my customers' growth") — allocation risk + packaging-ASP inflation for XPU programs; TSMC openly welcomes EMIB-T overflow (Google TPU v9 reportedly evaluating EMIB) — conviction unchanged (high); a validated second packaging source would ease AVGO's constraint at the cost of TSMC lock-in depth.
+
+### 2026-08-12
+- [[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]] + Alphabet/Theseus demand: Ethernet/AI fabric + custom-infra pull — conviction unchanged (high).
+- [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]: Calvert siting friction lengthens announced-MW pipelines; dollars rotate to permissive/self-supply sites — conviction unchanged.
+- [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]: ABF demand raise supports custom-ASIC packaging intensity; conviction unchanged.
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]: AI factory underwriting — custom silicon/networking share of factory BOM remains contested; conviction unchanged.

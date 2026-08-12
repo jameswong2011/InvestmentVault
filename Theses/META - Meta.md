@@ -62,6 +62,7 @@ key_metrics_last_refreshed: 2026-07-12
 - **Is Meta's 21x forward P/E a genuine value opportunity or a rational discount for governance risk?** Zuckerberg controls 61% of voting power through dual-class shares. The $115-135B capex guidance was set without meaningful board pushback. In a world where Microsoft ($80B capex) faces scrutiny from institutional investors, Meta's capex is 40-70% higher with less governance oversight. The cheapest Mag 7 valuation may partially reflect a "Zuckerberg discount" rather than a pure mispricing of business fundamentals.
 
 - **[Corrected 2026-07-10 — premise overtaken by events]** ~~What happens to the Llama ecosystem if a regulatory crackdown limits open-source AI model distribution?~~ Meta itself closed the weights: the Apr 8, 2026 frontier release (Muse Spark) is closed-weight and paid; the open Llama line is paused. The live question is the inverse: does the closed-API pivot (priced at ~25% of OpenAI/Anthropic) generate enough external revenue to justify the $125–145B infrastructure spend, or does abandoning the open ecosystem forfeit the developer mindshare that made "commoditize the complement" work?
+- **Do El Paso / Louisiana-style DC financing structures transfer residual-value risk back onto Meta** when non-renewal clocks hit, or are guarantees creditor-complete and equity-silent ([[Research/2026-08-08 - META Shanaka Clocks on One Building DC Finance - deep-dive]])?
 
 ## Business Model & Product Description
 
@@ -248,6 +249,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 6. **Advertising cyclicality**: ~97% ad revenue concentration; macro recession, tariff escalation, or advertiser budget cuts create direct earnings risk without diversified revenue buffers
 7. **Muse Spark strategic ambiguity**: Proprietary "superintelligence" tier may alienate the open-source developer ecosystem built on Llama trust — undermining the "commoditize the complement" strategy
 8. **Competitive dynamics**: TikTok capturing ~4-5% of global ad spend at lower CPMs; Amazon's purchase-intent data advantage in direct-response; Google's AI Overviews could eventually improve search ad ROI and slow Meta's share gains
+9. **Infrastructure culture / effective-compute tax**: SemiAnalysis autopsy — incentives reward internal platforms over GW delivered / tokens trained; Meta can write large capex checks and still lose on *effective* compute ([[Research/2026-07-22 - META Infrastructure Culture Reset - deep-dive]]). Complements power/behind-the-meter bottleneck notes ([[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]).
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
@@ -268,7 +270,11 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 - [[Research/2026-05-26 - FTC Cox Media Active-Listening Ad Fraud Settlement - news]] — FTC $930K deception settlement debunks the "apps listen via microphone" ad-targeting myth (Cox lacked the capability, resold data-broker email lists); marginally deflates a recurring Instagram reputational overhang
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: MTIA on N3 at "much lower volumes"; immaterial to the ad-platform thesis but flags Meta's accelerator program is gated by the same N3/HBM constraint as TPU/Trainium
 - [[Research/2026-07-12 - META - Core ROIC, AI Targeting Pricing, and Agentic Ad Shift - deep-dive]] — supporting deep-dive for the 2026-07-12 §Key Non-consensus Insights deepen: three-view ROIC decomposition (core ad ~70% vs blended ~36%); GEM/Andromeda vs Superintelligence-Labs distinction; agentic infrastructure-vs-application classification
-
+- [[Research/2026-07-22 - META Infrastructure Culture Reset - deep-dive]] — Infra org culture tax on effective compute
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]] — Power/turbine behind-the-meter as AI campus speed trade
+- [[Research/2026-08-08 - META Shanaka Clocks on One Building DC Finance - deep-dive]] — DC finance clocks / guarantee vs residual value
+- [[Research/2026-07-31 - Macro Shanaka Last Enclosure Model Service Clocks - deep-dive]] — Model/service clocks; open-weight spend vs tokens divergence
+- [[Research/2026-08-01 - META MU SKHY IA SALP Unwind Market Memo - deep-dive]] — SALP unwind market memo context
 ## Log
 
 ### 2026-01-06
@@ -321,3 +327,9 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 
 ### 2026-07-12 (/numbers, second pass)
 - Numbers refresh: 0 metrics changed, 0 material. Re-fetch confirms Stock Price ~$669, Market Cap ~$1.70T, Forward P/E ~20x, Gross Margin ~82%, Operating Margin 41.2%, FY2025 Revenue $201.0B all unchanged from the run ~1hr ago. Snapshot: [[_Archive/Snapshots/META - Meta (pre-numbers 20260712-184014)]]
+
+### 2026-08-12
+- [[Research/2026-07-22 - META Infrastructure Culture Reset - deep-dive]] + DC-finance clocks: effective-compute/culture + residual-value questions rise beside ad-compounder case — conviction unchanged (high); infra execution is the AI-capex swing variable.
+- [[Research/2026-08-08 - META Shanaka Clocks on One Building DC Finance - deep-dive]]: One-building DC finance clocks — Meta capex delivery/financing path under scrutiny; conviction unchanged (high).
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]: Power 10x bottleneck framing — Meta AI infra constrained by power/siting more than GPUs; conviction unchanged.
+- [[Research/2026-07-31 - Macro Shanaka Last Enclosure Model Service Clocks - deep-dive]]: Last-enclosure/service-clocks model — Meta opex vs own-build tradeoffs sharpened; conviction unchanged.

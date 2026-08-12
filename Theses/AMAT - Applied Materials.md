@@ -265,7 +265,9 @@ The bear case is real and is why conviction is medium, not high. Three structura
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — JEDEC HBM4 720→775→900µm height relaxation pushed HBM-mandated hybrid bonding to HBM5+ 24-Hi (2029-2030); Kinex revenue trajectory revised — logic-line/2nm beachhead near-term, HBM-line volume mid-2029+; SK Hynix Mar 2026 Kinex order reclassified as logic-line primary (dual-use HBM5).
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→6-7% (cheapest WFE prime; ROIC NTM doubled 21.6→44%; 4 architectural inflections)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: memory WFE capex +26/34/20% (Samsung/SK Hynix/Micron) 2026; node migration to 1b/1c; CMP + bond-prep for HBM
-
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board ~US$29.4B advanced/packaging/fab appropriations
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/near-balance — packaging tool pull persists
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — SpaceX Terafab off-grid power architecture (WFE demand optionality)
 ## Log
 
 ### 2026-04-29
@@ -298,3 +300,7 @@ The bear case is real and is why conviction is medium, not high. Three structura
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC capex raised $52-56B→$60-64B with "next three years even more significantly higher than the past three" + 13 new Taiwan leading-edge/AP fabs + 4+ more Arizona fabs — conviction unchanged (high); direct multi-year WFE demand upgrade from the #1 customer, strengthens the L2 rising-floor read.
+
+### 2026-08-12
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] / CoWoS near-balance / Terafab: foundry capex + packaging cadence support WFE floor — conviction unchanged; CoWoS near-balance is a mix shift risk not a demand cliff.
+- Cross-thesis signal via [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: TSMC CoWoS near-balance **complicates** pure packaging-scarcity WFE upside (assumption: CoWoS remains binding for years) — demand mix may shift to leading-edge/GAA deposition even as absolute packaging spend stays large. Review §Bull Case/§Risks.
