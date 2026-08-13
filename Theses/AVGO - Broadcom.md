@@ -275,6 +275,8 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]
 - [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]
 - [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
 ## Log
 
 ### 2026-04-19 (TSM stress test sync)
@@ -356,3 +358,7 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]: Calvert siting friction lengthens announced-MW pipelines; dollars rotate to permissive/self-supply sites — conviction unchanged.
 - [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]: ABF demand raise supports custom-ASIC packaging intensity; conviction unchanged.
 - [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]: AI factory underwriting — custom silicon/networking share of factory BOM remains contested; conviction unchanged.
+
+### 2026-08-13
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: Helios rack-scale around MI455X (Ethernet/UALink fabric) — merchant switching attach option — conviction unchanged.
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon 2026 capex ~$220B + custom-silicon >$25B ARR — XPU/Ethernet demand; Trainium mix is the ASIC seat risk — conviction unchanged.

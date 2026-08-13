@@ -210,6 +210,7 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 5 convex M&A special-situation; TRIM Low→1% (>1,000% rally erased the discount that justified the position; UK Takeover Code active)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: III-V/InP epitaxy named the CPO external-laser bottleneck (IQE in the Nvidia supply map); quantifies the ELS demand mechanism (18 ELS × 8 CW DFB chips per CPO switch) — corroborates the CPO/SiPh InP-epi-demand Bull Case
 
+- [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]
 ## Log
 
 ### 2026-04-15
@@ -248,3 +249,6 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: 52p→38.8p across Insights, OQ #1, Risks #6 + shares 979M→~1,330M in Notes (post ~34% MACOM dilution). Snapshot: [[_Archive/Snapshots/IQE - IQE (pre-deepen-metrics-sync 2026-07-12-203456)]]
+
+### 2026-08-13
+- [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]: LITE pull-forward to $1.25B qtr / 40% OM — InP epi demand option; not a direct IQE print — conviction unchanged.

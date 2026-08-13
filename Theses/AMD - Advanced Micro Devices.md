@@ -225,6 +225,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Research/2026-07-28 - NVDA AMD PhotonCap Rack Split Optics Paypoints - deep-dive]] — Rack split optics paypoints; copper scale-up vs optical scale-out
 - [[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]] — Samsung HBM4 yield; MI400 attach
 - [[Research/2026-08-05 - NVDA BEP Inference Specialists vs System Moat - deep-dive]]
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
 ## Log
 
 ### 2026-04-21
@@ -298,3 +299,6 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]] / BEP Helios lead-decay: software/composability still the displacement gate; warrants ≠ CUDA parity — conviction unchanged (medium), GPU-share upside **weakened** until Helios volume+ROCm evidence.
 - [[Research/2026-07-27 - AMD NVDA BEP Helios 15pct Spec Lead Decay - deep-dive]]: Helios lead-decay clock sharpens the window for MI software catch-up — still gated; conviction unchanged.
 - [[Research/2026-08-05 - NVDA BEP Inference Specialists vs System Moat - deep-dive]]: Inference-specialist vs system-moat panel — AMD still needs software to convert silicon parity; conviction unchanged.
+
+### 2026-08-13
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: MI455X CDNA 5 on TSMC N2, 12×HBM4, 23.3 TB/s, Helios rack — hardware parity-attempt vs Rubin; CUDA gap unchanged — conviction unchanged (medium).

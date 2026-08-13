@@ -204,6 +204,8 @@ AAOI is best understood as a vertically integrated optical components and module
 - [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]] — Optics geopolitics phase two; earnings checklist
 - [[Research/2026-08-08 - LITE COHR Laser Market Repriced by Scale-Up CPO - deep-dive]] — CPO/pluggable coexistence; laser TAM reframing
 - [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]] — AAOI call notes in weekly mashup
+- [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
 ## Log
 
 ### 2026-05-24
@@ -226,3 +228,7 @@ AAOI is best understood as a vertically integrated optical components and module
 
 ### 2026-08-12
 - [[Research/2026-08-05 - AXTI LITE IA Chinese Transceiver Ban Memo - deep-dive]]: potential module-share redirect vs still-not-200G-EML gap — conviction unchanged (low); geopolitics is optionality, not a moat upgrade.
+
+### 2026-08-13
+- [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]: LITE 1.6T cloud-module + $1.25B mid guide — demand for 1.6T modules; EML still merchant from LITE/AVGO — conviction unchanged (low).
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: CPO shipping at NVDA but multi-vendor gap preserves pluggable assembler window one switch gen — conviction unchanged (low).

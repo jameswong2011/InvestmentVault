@@ -323,6 +323,7 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 - [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]] — Permitting/political DC friction signal
 - [[Research/2026-08-12 - NVDA AVGO MRVL NOW - Damodaran Situational Awareness Blow-up - news]] — Leverage blow-up positioning lesson
 - [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -386,3 +387,6 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 ### 2026-08-12
 - [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]] + Arista Q2: SerDes/CPO power path + Ethernet fabric demand — conviction impact unchanged; custom/connect franchise still tied to AI port growth.
 - [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]: Alphabet capex raise supports AI networking/custom silicon pull; market sold the stock — separate order-book from multiple; conviction unchanged.
+
+### 2026-08-13
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon 2026 capex ~$220B; AWS custom silicon >$25B ARR — electro-optics/custom demand vs Trainium seat-churn risk — conviction unchanged.

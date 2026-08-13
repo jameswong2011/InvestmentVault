@@ -300,6 +300,10 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]
 - [[Research/2026-08-07 - GOOGL Gemini Decline GCP Financialization - deep-dive]]
 - [[Research/2026-08-10 - BRKR TMO BEP AI Science Lab Measurement Moat - deep-dive]]
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-13 - NBIS NVDA - Nebius Q2 5GW Power Target - news]]
 ## Log
 ### 2026-04-19 (TSM stress test sync)
 - [[Research/2026-04-19 - TSM - Stress Test]]: Taiwan invasion/blockade scenario quantifies -85-95% TSM permanent impairment (not thesis-modeled -30%). NVDA's 100% leading-edge TSMC dependency (Blackwell N3, Rubin N2, Feynman A16) implies 2-4yr Samsung/Intel re-qualification window + permanent customer-share transfer to surviving foundries during outage. Arizona 5-8% of capacity through 2030 does not hedge the tail at AI roadmap horizon — conviction unchanged but NVDA-specific Taiwan tail magnitude re-quantified, binary hedge question (LMT/NOC pair) raised for consideration.
@@ -443,3 +447,9 @@ Nvidia occupies the most strategically advantaged position in the AI value chain
 - [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]: Stratechery 1873/financing map — residual-value puts as margin defense; conviction unchanged (high).
 - [[Research/2026-08-12 - NVDA 000660 - Kyber HBM4E Rack Economics - news]]: Kyber rack economics — LPDDR bill can exceed HBM; memory mix governor; conviction unchanged (high).
 - [[Research/2026-08-11 - NVDA Superposition Open Weights Execution Share - deep-dive]]: Open-weights expand deployers; CUDA as accumulated production cost; conviction unchanged (high).
+
+### 2026-08-13
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: Spectrum-6 CPO in production/shipping (COUPE); proprietary not multi-vendor — interconnect lock-in — conviction unchanged (high).
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]: CoreWeave Q2 $2.58B, $104B backlog, FY raise, $35B debt — neocloud GPU sell-through confirmed; credit/execution residual — conviction unchanged (high).
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon 2026 capex ~$220B (memory-cost driven), AWS constrained through 2027 — demand corroboration; sell-the-guide overlay — conviction unchanged (high).
+- [[Research/2026-08-13 - NBIS NVDA - Nebius Q2 5GW Power Target - news]]: NBIS 5 GW contracted / ARR $3.0B — incremental neocloud GPU demand — conviction unchanged (high).

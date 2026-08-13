@@ -582,6 +582,9 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-08-11 - MU NVDA Rubin Ultra 8-Hi HBM Despec - deep-dive]]
 - [[Research/2026-08-01 - MU SKHY PhotonCap Compute Short Memory Long - deep-dive]]
 - [[Research/2026-07-23 - MU Shanaka Memory Queue Scarcity vs Rent - deep-dive]]
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
 ## Related Sectors and Macro
 
 - [[Sectors/NAND Memory & Storage]] — Sister memory sub-sector; Solidigm IPO catalyst inside SK Hynix
@@ -627,3 +630,8 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-08-11 - MU NVDA Rubin Ultra 8-Hi HBM Despec - deep-dive]]: Rubin Ultra 8-Hi HBM despec
 - [[Research/2026-08-01 - MU SKHY PhotonCap Compute Short Memory Long - deep-dive]]: Compute-short / memory-long
 - [[Research/2026-07-23 - MU Shanaka Memory Queue Scarcity vs Rent - deep-dive]]: Memory queue scarcity vs rent
+
+### 2026-08-13
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SK hynix KRW 54T Y2+M17 with 2028–29 cleanrooms — supply response lagged (Industry #17); near-term scarcity can coexist with 2029 bit-risk.
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon names higher memory costs as the $20B capex delta to ~$220B — HBM/DRAM as residual governor.
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: MI455X 12-stack HBM4 — incremental HBM4 stack demand on N2 GPUs.

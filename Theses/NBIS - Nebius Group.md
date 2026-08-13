@@ -209,6 +209,8 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 
 - [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]]
 
+- [[Research/2026-08-13 - NBIS NVDA - Nebius Q2 5GW Power Target - news]]
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]
 ## Log
 ### 2026-06-02
 - Initial thesis created. Conviction: medium — NBIS is the higher-quality, differently-shaped expression of the vault's bearish neocloud frame: an *execution bet* (>4x power build, ~170MW→800MW–1GW by YE2026, off a fully-contracted ~$50B Microsoft+Meta backlog) vs CRWV's *credit bet*, with a structurally cleaner funding model (customer prepayment + ~$17B cash/stakes vs DDTL leverage) and genuine Yandex-inherited software differentiation. Medium-not-high: ~110x trailing sales, trading past avg sell-side target (~$220–230 vs ~$245–270), binary execution risk, ~$11–16B 2026 funding gap. Medium-not-low: customer-prepayment financing and ClickHouse (~$4.2B)/Avride (~$2.2B) optionality genuinely de-risk the dilution path vs CRWV. Sized as a quality-and-optionality position with a hard Q3-2026 execution catalyst, distinct from CRWV's credit framing. Primary sources: Nebius Q1 2026 earnings (May 13 — $399M revenue +684% YoY, $1.92B AI-cloud ARR, 45% margin, $9.3B cash), Meta $27B + Microsoft ~$17.4–19.4B contracts, capex guide $20–25B, Deep Research "Neoclouds NBIS vs CRWV" (June 2026), [[Sectors/Neoclouds & GPU-as-a-Service]], [[Theses/CRWV - CoreWeave]]. Status: draft (excluded from /catalyst, /prune, conviction-drift until promoted via /status draft→active). Run /graph last to register adjacencies.
@@ -258,3 +260,7 @@ NBIS is a ~110x-trailing-sales stock priced for a flawless 4x power build it has
 
 ### 2026-08-06
 - [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]: production-cost framework sharpens the load-bearing energization question (Outstanding Q#1) — track active/firm/commissioned MW AND delivered nodal cost per MW, not announced/connected pipeline. Conviction unchanged (medium, draft): reinforces Bear Case #1 execution warning, no pillar moved.
+
+### 2026-08-13
+- [[Research/2026-08-13 - NBIS NVDA - Nebius Q2 5GW Power Target - news]]: YE26 contracted power 5 GW (from >4), ARR $3.0B, 4×>$1B TCV at $20–25M/MW; deploy >1 GW/yr from 2027 — demand de-risked, energization still the binary — conviction unchanged (medium).
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]: CRWV Q2 $2.58B / $104B backlog / $35B debt / capex $35–39B — peer demand print; orthogonal to NBIS energize-the-base bet — conviction unchanged (medium).

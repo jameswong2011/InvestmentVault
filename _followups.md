@@ -9,6 +9,10 @@ Durable ledger of actionable findings surfaced by analytical skills. Writers (`/
 ## Open
 <!-- newest first; one line each: - [ ] YYYY-MM-DD · skill · [[Theses/TICKER - Name]] · finding → resolve-when · src [[Research/…]] | chat -->
 
+- [ ] 2026-08-13 · surface · [[Theses/SNDK - SanDisk]] · Investor Day HBF vs CBA-QLC vs 54T greenfield clock, /deepen SNDK Insights+Catalysts → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]
+- [ ] 2026-08-13 · surface · [[Theses/TER - Teradyne]] · CPO shipping vs missing test ecosystem; ingest Jul 28 Q2 + Quantifi exclusivity, /deepen TER → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]
+- [ ] 2026-08-13 · surface · [[Theses/MU]] · six Jul–Aug notes and no thesis; catch-up leg of 000660 kill trigger, /thesis MU → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]
+- [ ] 2026-08-13 · surface · portfolio · YAL.AX live holding, no thesis, Aug 19 print, /thesis YAL or tracking note → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]
 - [ ] 2026-08-08 · stress-test · [[Theses/CATL - Contemporary Amperex Technology]] · reassess conviction medium→low (both core mispricing pillars under live attack — ESS margin-premium engine inverting in H1'26 data + unmodeled VAT export-rebate abolition →0% Jan'27 vs the 29.97% overseas margin; multiple de-rating now — JPM H-share→Neutral, record HK shorts — not re-rating up) → user runs /status or dismisses · src [[Research/2026-08-08 - CATL - Stress Test]]
 
 <!-- 2026-07-15 `/sync all` backlog reconciliation. The run ANALYSED all 20 un-propagated residue notes at full depth but WROTE only 7 notes' worth of edits before hitting its working limit. Everything below is verified-but-unwritten. It is registered here — not left to mtime — because mtime can no longer surface it: a git re-materialisation on 2026-07-13 11:30 reset mtime+birth on 191 tracked files, so `find -newer .last_sync` is permanently broken as a change signal. This register is now the authoritative worklist; `.last_sync` was advanced only because these are recorded here. -->

@@ -341,6 +341,7 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 - [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]] — customer-layer reference: Microsoft and Meta are both neocloud counterparties and in-house-silicon competitors, exposing the operators as layer-renters when ASIC economics improve
 - [[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]]
 - [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -376,3 +377,6 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 ### 2026-08-12
 - [[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]]: Arista Q2 $3B supply-chain signal
 - [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]]: SerDes before CPO
+
+### 2026-08-13
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: AWS custom silicon >$25B ARR inside ~$220B Amazon capex — XPU/Trainium vs merchant GPU mix; AVGO/MRVL seat dynamics.

@@ -556,6 +556,8 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 - [[Research/2026-07-29 - LITE Aurelion PhotonCap Management Meeting - deep-dive]]
 - [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]
 - [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]]
+- [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -582,3 +584,7 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 - [[Research/2026-07-29 - LITE Aurelion PhotonCap Management Meeting - deep-dive]]: Aurelion management meeting color
 - [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]: Practical SOA for CPO/NPO
 - [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]]: SiPh capacity → InP paradox
+
+### 2026-08-13
+- [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]: LITE Q4 $1.01B / Q1 FY27 mid $1.25B ~40% OM a quarter early; CPO lasers/ELS/NPO named.
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: NVDA Spectrum-6 CPO shipping on TSMC COUPE; ASE says multi-vendor test ecosystem missing — pluggable window ~1 switch gen.

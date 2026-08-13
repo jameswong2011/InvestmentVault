@@ -1,13 +1,15 @@
 ---
-date: 2026-08-12
+date: 2026-08-13
 tags: [meta, hot-cache]
 ---
-# Hot Cache — Last Updated: 2026-08-12 (/sync completion — stalled batch sync-2026-08-12-213539; no conviction changes)
+# Hot Cache — Last Updated: 2026-08-13 (/surface unscoped; Latest Sync untouched)
 
 ## Active Research Thread
 
-- **2026-08-12 /sync completion** — stalled batch `sync-2026-08-12-213539` finished: thesis/sector Log+RR (prior), macro body addendum on [[Macro & Technology/Sustainability of AI Capex]], MM first-pop Compute/DRAM/WFE, `propagated_to:` backfill, missing Log wikilinks on NVDA/000660/LITE. No conviction/status changes. Next: `/graph last`.
-*Previous 2026-08-08:* /thesis+/stress-test CATL — medium draft; ESS GM kill-test open — see RCC + OQ 163-166.
+- **2026-08-13 /transcript SPCX Q2-2026** — ingested at [[Research/2026-08-13 - SPCX Q2-2026 - earnings]]. Connectivity profit pool reprinted; AI capex run-rate ~$18.4B next two quarters; CSA duration still unsaid. First public call (no prior-quarter delta).
+- *Previous 2026-08-13:* /thesis MU — draft, conviction low; qualified third on the HBM bench.
+- *Previous 2026-08-13:* /surface unscoped — SNDK Investor Day HBF tell; TER 32d cold; `/thesis MU` landed.
+- *Previous 2026-08-13:* SPCX thesis created and activated — Connectivity residual, AI campus unproven.
 
 ## Latest Sync
 *Date: 2026-08-12 (`/sync` default — completion of stalled batch `sync-2026-08-12-213539`; ~71 Research newer than `.last_sync`)*
@@ -23,10 +25,13 @@ tags: [meta, hot-cache]
 - **Next**: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-12-213539)]].
 
 ## Sync Archive
-- **2026-08-08**: `/sync` Oklo SMR → BE confirm-the-bear + CCJ SMR datapoint (no conviction changes). Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-08-124349)]].
 
 ## Recent Conviction Changes
 
+- **2026-08-13 — MU (Micron Technology) initial LOW** (draft [[Theses/MU - Micron Technology]]). FQ3 $41.46B / 84.6% GM / $1.04T is a peak-cycle print, not an allocation. First-wave ~70/30/0 until Q3 board meter; SKH removed LTA caps, MU did not; L1 = hypothesis, falsifier = 2018 destock; VLM none 2027+. Process hygiene, not a 000660 hedge. Excluded from /catalyst, /prune, conviction-drift (draft). Run `/graph last`.
+
+- **SPCX**: status draft → active — panel residual is Connectivity/Falcon; AI unproven so High Live Portfolio sleeve is ahead of the file (noted, weight cell unchanged).
+- **2026-08-13 — SPCX (SpaceX) initial MEDIUM** (draft [[Theses/SPCX - SpaceX]]). Connectivity cash engine real ($4.3B, ~60% adj. EBITDA); AI ROIC unproven so not high; not low because Starlink/Falcon shipping. Live Portfolio High sleeve is ahead of the file.
 - **2026-08-08 — CATL (Contemporary Amperex Technology) MEDIUM → reassess (not actioned)** (stress test; pending `/status CATL conviction medium→low`). 3/6 bull assumptions 🔴 — both core mispricing pillars under live attack: ESS margin premium (insight #1) inverting in H1'26 (blended GM −1.09pp→23.93%; fixed-price ESS contracts compressing on lithium reflation) + unmodeled VAT export-rebate abolition (→0% Jan'27) vs the 29.97% overseas margin engine; multiple de-rating now (JPM H-share→Neutral, record HK shorts) against the re-rate-up premise. Execution intact (39.9% share rising, +42% profit, +88% ESS rev) — a margin-and-multiple case, not a demand case. Rationale: [[Theses/CATL - Contemporary Amperex Technology]] §Log + [[Research/2026-08-08 - CATL - Stress Test]].
 - **2026-08-08 — CATL (Contemporary Amperex Technology) initial MEDIUM** (draft [[Theses/CATL - Contemporary Amperex Technology]]). World's #1 battery maker — 39.9% global EV share (242.7 GWh H1'26), ~30% ESS, 9 straight years #1; FY25 rev RMB 423.7bn (+17%) / NP RMB 72.2bn (+42%) / op margin 18%; H1'26 rev +55% with ESS +88% but Q2 a slight miss on soft China EV (China NEV −13% H1). ~RMB 1.8tn (~US$250bn), ~20.7x P/E vs peers 45.7x, net cash + new buyback. MEDIUM not higher: the VLM non-rivalry test **fails** (real marginal cost → a fading cost-leadership moat, not a software monopoly) + hardening geopolitical ceiling (1260H direct DoD ban 6/30/26, FEOC, tariffs→~54%, ~$32B US ESS cancellations) + 2025's +42% profit partly a lithium-cost-cycle artifact [G-3]. Floor: ~20x already discounts China/geo risk [G-1] + under-priced ESS + LRS-royalty (Ford/GM) asset-light transition [G-7/G-11/G-13]. Excluded from /catalyst, /prune, conviction-drift (draft). Run `/graph last`.
 - **2026-08-06 — UBER HIGH → reassess (not actioned)**: Waymo plans direct Austin/Atlanta apps in January 2028, firing the existing falsifier; AV is <0.5% of trips, but non-Waymo scale and >$10B AV/Delivery Hero ROIIC remain unproven. Rationale: [[Theses/UBER - Uber]] §Key Non-consensus Insights + [[Research/2026-08-06 - UBER - Sentiment Valuation and Autonomous Vehicle Risk - deep-dive]].
@@ -38,13 +43,13 @@ tags: [meta, hot-cache]
 - **2026-07-29 — ORCL (Oracle Corporation) initial MEDIUM** (draft [[Theses/ORCL - Oracle Corporation]]). Skeptical/short-biased coverage fill of the [[_Archive/Docs/Semiconductor bear market hedges 2]] "holdable carry-leg" gap. Stock ~$120 (~50% below the ~$345 late-2025 peak); FY26 $67.4B rev / $638B RPO but FCF -$23.7B, ~$130B debt, S&P cut to BBB- on OpenAI ~half of RPO. Two-Oracles frame: ~16%-GM OpenAI-concentrated OCI GPU-rental (layer-renter — VLM/Perez/semis#10 all bearish) vs a mispriced 70%-GM multicloud-database layer-monopoly (+531%). MEDIUM not clean-short because interest/rev ~7% vs CRWV's 25.8% break-line — the DB annuity funds the build. Excluded from /catalyst, /prune, conviction-drift (draft). Run `/graph last`.
 - **2026-07-29 — BE (Bloom Energy) initial LOW** (draft [[Theses/BE - Bloom Energy]]). Q2 third-party demand and 33.4% GAAP gross margin validate the operating inflection, but ~$53.9B market cap (~17.3x LTM revenue) prices multi-GW conversion before backlog/RPO quality, scandium supply, warranty economics, and post-shortage pricing are proven. Run `/graph last`.
 - **2026-07-15 — ONON (On Holding) initial MEDIUM** (draft [[Theses/ONON - On Holding]]). Re-priced ~$54→~$37 (near 52-wk low; ~3x EV/rev, ~16x EBITDA, fwd P/E ~21-25x) on a guide-vs-consensus + FX-optics selloff, not a demand miss — Q1'26 +26.4% cc, GM 64.2% (+430bps), APAC +61% cc, absorbing a 20% Vietnam tariff. MEDIUM: de-rate removed peak-multiple risk on a debt-free, founder-bought (Allemann/Coppetti/Bernhard at $36.64) share-taker, but undisclosed cohort/LTV ([G-12]) + adverse footwear base rate ([G-10]) + low switching costs (VLM NO-FIT) keep HIGH unearned. First name in new sector [[Sectors/Athletic Footwear & Apparel]]. Run `/graph last`.
-- **2026-07-14 — LYV (Live Nation Entertainment) initial MEDIUM** (draft [[Theses/LYV - Live Nation Entertainment]]). Value-layer-monopoly ticketing/sponsorship flywheel (37%/64%-margin layers behind the 3%-margin Concerts optics) + durable recorded→live income trend support a real position; capped below HIGH by ATH valuation (~$183, ~18x EV/AOI — easy money made) and a live bimodal regulatory tail (Apr 15 2026 jury monopoly verdict on all counts + remedy phase, structural separation on the table, years of appeals). Event-driven special situation, not clean compounder mispricing. Run `/graph last`.
-- **2026-07-14 — TSEM (Tower Semiconductor) initial LOW** (draft [[Theses/TSEM - Tower Semiconductor]]). Contracted SiPho validates the inflection, but ~$25.5B already equals ~34x management's 2028 earnings target; ramp, concentration, CPO competition and USITC risk cap conviction. Run `/graph last`.
+- 2026-07-14 — LYV (Live Nation Entertainment) initial MEDIUM. Rationale: [[Theses/LYV - Live Nation Entertainment]] §Log + body.
+- 2026-07-14 — TSEM (Tower Semiconductor) initial LOW. Rationale: [[Theses/TSEM - Tower Semiconductor]] §Log + body.
 <!-- 2026-08-08 (/stress-test CATL): step-6 RCC aggressive fallback — roster-compressed the two oldest verbose <30d entries (07-13 INTU + SE) to restore hard-cap headroom after CATL stress-test adds. Full detail in thesis Logs + research notes. -->
 - 2026-07-13 — INTU (Intuit) HIGH → reassess (stress test; NOT actioned — pending `/status INTU conviction high→medium`; 5/6 bull assumptions 🔴, multiple-compression failure already fired). Rationale: [[Theses/INTU - Intuit]] §Log + [[Research/2026-07-13 - INTU - Stress Test]].
 - 2026-07-13 — SE (Sea Limited) initial MEDIUM (draft). Rationale: [[Theses/SE - Sea Limited]] §Log + body.
 <!-- 2026-07-09 (manual repair per [[_Archive/Docs/2026-07-09 - Skills Audit Report]]): this heading restored — it had been concatenated onto the 2026-06-18 Sync Archive entry line, silently no-op'ing every RCC write since (lint #35). ARM/SOI/6515 entries (>30d) roster-compressed per contract step 5 and three >14d OQ cohorts pointer-compressed per step 4 to return under the 4,000-word soft cap. -->
-- **2026-07-11 — Vault-wide /status batch, 27 theses re-rated (78-name multi-agent valuation scoreboard)**: **medium→HIGH**: INTU, META, NFLX, PINS, UBER (+monitoring→active), CSGP, CSU, PCOR, WTC. **HIGH→medium**: AMD, NET, PANW, 6981, MRVL, VICR, AEHR, AIXA, IQE, SNDK, BESI, TTWO, 000660, LNG, SPOT. **medium→LOW**: INTC, HIMS. **Status only**: SIVE active→monitoring. Held at HIGH without change (elite F+MM, avoid Semis#13 mean-reversion trap): TSM, NVDA, ASMI, KLA, PLTR, AMAT, GAW, LRCX, SHOP, LITE. Rationale per-ticker in each thesis's 2026-07-11 Log entry; methodology + full scoreboard table in chat session. Sector notes propagated (Social Platforms & Digital Advertising, @Vertical Market Software, Building & Construction Software, MLCC & Power Semiconductors, Accounting & ERP Software). Snapshots: `_Archive/Snapshots/* (pre-status 2026-07-11-063211).md`.
+- 2026-07-11 — Vault-wide /status batch, 27 theses re-rated. Rationale: each thesis 2026-07-11 §Log; snapshots `_Archive/Snapshots/* (pre-status 2026-07-11-063211).md`.
 <!-- 2026-05-24 (/thesis AAOI): AAOI initial LOW entry prepended; per hot-md-contract step 6 aggressive RCC fallback to fit under 5K hard cap, the following 2026-05-22 entries were roster-compressed (oldest-first): 000660 stress test, SIVE initial LOW, SIVE status change, PCOR sector migration. Three older Sync Archive drop-trail entries also removed per step 1 (max-3 enforcement). Full forensic detail in respective thesis Logs + linked research notes. -->
 - **2026-07-11 — CAMT (Camtek) initial MEDIUM** (draft). Rationale: [[Theses/CAMT - Camtek]] §Log + body.
 - **2026-07-10 — NET (Cloudflare) HIGH → reassess — ACTIONED 2026-07-11** (stress test flagged zero disclosed Act IV revenue + AWS x402 commoditization; executed via vault-wide /status batch, conviction high→medium). Rationale: [[Theses/NET - Cloudflare]] §Log + [[Research/2026-07-10 - NET - Stress Test]].
@@ -90,6 +95,16 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 
 
 ## Open Questions
+
+- **SPCX Q2 transcript:** next two quarters CapEx “similar” to $18.4B vs management <1-year AI payback — does Q3/Q4 print matched-cohort recovery, or just another $15.8B AI bill? See [[Research/2026-08-13 - SPCX Q2-2026 - earnings]].
+172. **MU Q3 Rubin board meter** — does a Q3 2026 board meter print MU cubes at >0% of first-wave HBM4 bits, or does ~70/30/0 hold? Same condition as → HIGH / → LOW. See [[Theses/MU - Micron Technology]] §Outstanding Questions.
+173. **MU queue vs rent / LTA caps** — does MU remove LTA caps on the SKH (2 Jul) pattern, or does the 13–18% protected band cap incremental rent while the physical queue stays tight? See [[Theses/MU - Micron Technology]] §Outstanding Questions.
+174. **MU 2018 destock analog** — do the next two TrendForce DRAM contract prints stay ≥+13% with OEM inventory days flat, or does 2017–18 TTID → 2019 destock complete? Same condition as → CLOSE. See [[Theses/MU - Micron Technology]] §Outstanding Questions.
+170. **SNDK HBF vs CBA-QLC** — does today's Investor Day date H2 2026 HBF samples with a named GPU/hyperscaler attach, or is BiCS10/2Tb QLC the product? See [[Research/2026-08-13 - Insight Surface Scan]].
+171. **TER CPO test / Quantifi exclusivity** — Spectrum-6 is shipping; ASE says no multi-vendor test flow; TER Jul 28 Q2 still unlogged. See [[Theses/TER - Teradyne]] + surface scan.
+167. **SPCX CSA duration / capital-recovery clock** — does matched-cohort payback or long-duration non-cancellable paper print, or do 90-day post-ramp exits sit inside GPU/turbine D&A lives? Shanaka paid half not ingested. Same condition as → HIGH / → CLOSE. See [[Theses/SPCX - SpaceX]] §Outstanding Questions.
+168. **SPCX YE26 nameplate definition** — does YE26 print ≥2 GW on the same definition as the 1.4 GW Q2 nameplate (the only company YE26 compute target)? Same condition as → HIGH / → LOW. See [[Theses/SPCX - SpaceX]] §Outstanding Questions.
+169. **SPCX Q3 ARPU after June hike** — does Connectivity ARPU lift without evidenced churn, and does adj. EBITDA stay in the ~60% band? See [[Theses/SPCX - SpaceX]] §Outstanding Questions.
 163. **CATL margin durability — cost leadership vs lithium pass-through** — how much of the 2025–26 gross-margin expansion is durable cost advantage vs a transient lithium-cost-cycle pass-through that reverses as raw materials re-inflate through 2026? Same condition as the → LOW power-battery-GM-below-18% trigger. See [[Theses/CATL - Contemporary Amperex Technology]] §Outstanding Questions.
 164. **CATL LRS scalability vs the US wall** — can licensing (Ford Michigan LFP live 2026 + GM in talks + ~a dozen OEMs) become a material high-margin royalty line before the 1260H direct-procurement ban (6/30/26) and FEOC optics make Western OEMs walk? See [[Theses/CATL - Contemporary Amperex Technology]] §Outstanding Questions.
 165. **CATL geopolitical TAM cap** — does the ESS + non-China + LRS mix outrun the hardening US ceiling (FEOC, tariffs→~54%, ~$32B storage cancellations, 50+ BESS bans), or is the Western portion of the battery layer a melting asset? See [[Theses/CATL - Contemporary Amperex Technology]] §Outstanding Questions.
@@ -108,12 +123,8 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 149. **2454 MediaTek — data-center ASIC gross margin** — is the Google-TPU (Zebrafish/Triggerfish) book IP-rich (~45%, group-neutral) or turnkey HBM/CoWoS pass-through (~30% Alchip floor, dragging group GM to low-40s)? The single most thesis-determinative unknown. See [[Theses/2454 - MediaTek]] §Outstanding Questions.
 150. **2454 MediaTek — Google single-anchor + realized ASIC scale** — is a second hyperscaler ASIC anchor credible, and does 2027 DC revenue land near mgmt's $7-12B or sell-side's ~$3.2B? See [[Theses/2454 - MediaTek]] §Outstanding Questions.
 151. **2454 MediaTek — mobile funding-base durability** — how fast do OEM in-sourcing (Xiaomi XRing) + Chinese domestic substitution (30%→60%) + memory-cost squeeze erode the cash cow funding the ASIC bet? See [[Theses/2454 - MediaTek]] §Outstanding Questions.
-146. **ORCL OpenAI counterparty solvency** — can OpenAI fund its $300B ramp (~half of $638B RPO), and what is the re-lease/recovery value of purpose-built OCI capacity on a default? See [[Theses/ORCL - Oracle Corporation]] §Outstanding Questions.
-147. **ORCL OCI unlevered ROIC vs WACC** — does $55-70B/yr capex at ~16% GPU-rental GM clear ~8-10% WACC, or is OCI growth value-destructive? See [[Theses/ORCL - Oracle Corporation]] §Outstanding Questions.
-148. **ORCL multicloud-database durability** — is Database@Azure/AWS/GCP (+531%) a compounding cross-cloud tax or a one-time migration pulse? See [[Theses/ORCL - Oracle Corporation]] §Outstanding Questions.
-143. **BE backlog quality** — reconcile ~$20B marketed backlog with product/install RPO, cancellation rights, deposits, and contracted MW. See [[Theses/BE - Bloom Energy]] §Outstanding Questions.
-144. **BE manufacturing economics** — quantify scandium coverage, warranty cost per MW, stack life, and margin durability through the 2GW ramp. See [[Theses/BE - Bloom Energy]] §Outstanding Questions.
-145. **BE Oracle conversion** — establish binding schedules, permits, gas interconnects, and warrant economics for the initial 1.2GW. See [[Theses/BE - Bloom Energy]] §Outstanding Questions.
+146-148. **ORCL questions** (Jul 29 cohort, 15d) — see [[Theses/ORCL - Oracle Corporation]] §Outstanding Questions.
+143-145. **BE questions** (Jul 29 cohort, 15d) — see [[Theses/BE - Bloom Energy]] §Outstanding Questions.
 1-24. **Pre-May-10 thesis cohorts** (Apr 29 + Apr 30 + May 1 init, 23-25d old) — INTU, PINS, AMAT, KLA, LRCX, ASMI, FORM, AEHR. Full questions: [[Theses/INTU - Intuit]], [[Theses/PINS - Pinterest]], [[Theses/AMAT - Applied Materials]], [[Theses/KLA - KLA Corporation]], [[Theses/LRCX - Lam Research]], [[Theses/ASMI - ASM International]], [[Theses/FORM - FormFactor]], [[Theses/AEHR - Aehr Test Systems]] §Outstanding Questions.
 25-27. **6981 Murata questions** (May 15 init, 18d) — see [[Theses/6981 - Murata Manufacturing]] §Outstanding Questions.
 28-30. **CRWV questions** (May 15 init, 18d) — see [[Theses/CRWV - CoreWeave]] §Outstanding Questions.
@@ -159,5 +170,5 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 
 ## Portfolio Snapshot
 <!-- Regenerated 2026-08-12 from current vault frontmatter; top-level counts only per the 200-word section budget. -->
-- **Coverage**: 89 theses (33 active, 31 monitoring, 25 draft) across 52 sector notes, 9 macro notes, and 282 research notes.
-- **Conviction**: 21 HIGH · 58 MEDIUM · 10 LOW. No conviction or status changes in this sync.
+- **Coverage**: 90 theses (34 active, 31 monitoring, 25 draft) across 52 sector notes, 9 macro notes, and 282 research notes.
+- **Conviction**: 21 HIGH · 58 MEDIUM · 10 LOW. Status: SPCX draft→active (2026-08-13).

@@ -595,6 +595,8 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
+- [[Research/2026-08-13 - AEHR - 22M AI WLBI Follow-on Order - news]]
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -654,3 +656,7 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]: TSMC board US$29.4B appropriations
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]: Terafab off-grid WFE optionality
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS 5.5x reticle 99% yield
+
+### 2026-08-13
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: KRW 54T Y2+M17 — WFE pull 2028–29 (AMAT/LRCX/KLA/ASMI/BESI).
+- [[Research/2026-08-13 - AEHR - 22M AI WLBI Follow-on Order - news]]: $22M FOX-XP follow-on AI WLBI — production-ramp in a still-small TAM.

@@ -235,6 +235,9 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Research/2026-08-12 - AMAT LRCX KLAC - SpaceX Terafab Off-Grid Power - news]]
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
 - [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
 ## Log
 
 ### 2026-04-23
@@ -307,3 +310,8 @@ The bear case is Samsung execution combined with a 2026 oversupply:
 - [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]: Polysilicon Section 232 — upstream policy risk for memory supply chain; conviction unchanged.
 - [[Research/2026-08-12 - NVDA 000660 - Kyber HBM4E Rack Economics - news]]: Kyber HBM4E rack $/GB + LPDDR share — memory residual governor as CoWoS balances; conviction unchanged (medium).
 - [[Research/2026-08-11 - MU CXMT Apple DRAM Repricing Fourth Supplier - deep-dive]]: Apple testing CXMT as fourth supplier — procurement leverage vs contracted DRAM rents; conviction unchanged (medium).
+
+### 2026-08-13
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: Board KRW 54T Y2 (Jun 2029 CR) + M17 (Dec 2028 CR) — demand-visibility bull, 2028–29 bit-supply risk; WFE pull — conviction unchanged (medium).
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon 2026 capex ~$220B, named driver higher memory costs; AWS constrained into 2028 — HBM/DRAM demand corroboration — conviction unchanged (medium).
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: MI455X 12-stack HBM4 on TSMC N2 — incremental HBM4 stack demand — conviction unchanged (medium).

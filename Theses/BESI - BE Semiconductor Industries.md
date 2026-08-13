@@ -236,6 +236,7 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 - [[Research/2026-08-12 - 6857 000660 BESI - HBM 3D Assembly Test Yield - news]] — HBM 3D assembly/test yield; hybrid bonding transition
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/cadence; SoIC pitch roadmap
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board packaging/tech capex appropriations
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
 ## Log
 
 ### 2026-04-19 (TSM stress test sync)
@@ -301,3 +302,6 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ### 2026-08-12
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] / HBM hybrid-bonding test note: packaging cadence + bonding transition support Kinex demand — conviction unchanged (medium).
+
+### 2026-08-13
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SK hynix Y2 HBM-capable DRAM fab — hybrid-bond/HBM assembly installed-base option; 2029 CR — conviction unchanged.

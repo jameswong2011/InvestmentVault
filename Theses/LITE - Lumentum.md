@@ -230,6 +230,8 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 - [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]
 - [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]
 - [[Research/2026-08-11 - MU NVDA Rubin Ultra 8-Hi HBM Despec - deep-dive]]
+- [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
 ## Log
 
 ### 2026-04-15 (cross-thesis sync)
@@ -290,3 +292,7 @@ For CPO assembly, the equipment chain compresses to four chokepoints, all alread
 - [[Research/2026-08-08 - LITE COHR Laser Market Repriced by Scale-Up CPO - deep-dive]]: Scale-up CPO reprices laser TAM (die CAGR up to ~61%); CPO/pluggable coexistence; conviction unchanged (high).
 - [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]: Innolight FCC-ban draft reshapes optics chain share; absorption/qualification still bind; conviction unchanged (high).
 - [[Research/2026-08-05 - AXTI LITE IA Chinese Transceiver Ban Memo - deep-dive]]: Ban as industrial policy; active-alignment capacity binds; LITE/COHR/AAOI beneficiaries; conviction unchanged (high).
+
+### 2026-08-13
+- [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]: Q4 FY26 $1.01B, non-GAAP GM 50.4%; Q1 FY27 $1.225–$1.275B / OM ~40% — target model >1 quarter early; CPO lasers/ELS/NPO named — conviction unchanged (high).
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: NVDA Spectrum-6 CPO shipping but ASE test-ecosystem gap + Bechtolsheim one more pluggable gen — near-term EML/pluggable window intact — conviction unchanged (high).

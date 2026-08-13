@@ -11,6 +11,7 @@ sector: AI Infrastructure
 ## Active Theses
 - [[Theses/CRWV - CoreWeave]] — MEDIUM conviction, draft (init 2026-05-15). Cleanest equity proxy for "hyperscaler AI capex cannot keep pace with foundation-lab training demand through 2027." Best-in-class operating execution (Q1 2026 $2.08B revenue +112% YoY, 56% adj EBITDA margin, $99.4B backlog, first IG-rated GPU-collateralized debt) layered on structural credit risk (67% Microsoft concentration, $46B liabilities vs $3.3B equity, NVIDIA 13% vendor-financing-flywheel stake, OpenAI $22.4B contract serviceability, second-cycle DDTL re-rent compression). Sized as credit-risk position, not pure AI demand exposure.
 - [[Theses/NBIS - Nebius Group]] — MEDIUM conviction, draft (init 2026-06-02). Cleaner-balance-sheet / execution-bet counterpart to CRWV's credit bet: ~$9.3B cash + ~$7-8B non-core stakes (ClickHouse ~$4.2B, Avride ~$2.2B) + customer-prepayment funding (Microsoft ~$7B upfront) vs CRWV's DDTL leverage. The binary is the >4x power build (~170MW→800MW-1GW by YE2026) converting a fully-contracted ~$50B Microsoft+Meta backlog; Q1 2026 $399M rev +684% YoY, $1.92B AI-cloud ARR, 45% core-AI-cloud margin. Sized as a quality-and-optionality position with a hard Q3-2026 execution catalyst.
+- [[Theses/SPCX - SpaceX]] — MEDIUM conviction, active (promoted 2026-08-13; thesis rebuilt canonical same day). Residual is Starlink/Connectivity cash + Falcon shipping; AI campus is an unproven option. Live Portfolio High (10–25%) is ahead of the file — sleeve pressure High→Medium noted.
 - *Coverage candidates without theses yet (ranked by liquidity and disclosure quality): APLD (Applied Digital), CIFR (Cipher Mining). ([[Theses/IREN - IREN Limited|IREN]] now has a draft thesis — init 2026-08-04, MEDIUM conviction; inverts the sector's "poor short" read into a convex long on the owned 5.8 GW power layer. Not yet in Active Theses above — promote via `/status IREN status draft→active`.)*
 - Adjacency theses informed by this sector: [[Theses/NVDA - Nvidia]] (sole GPU supplier, equity investor in CRWV/NBIS/Nscale), [[Theses/VRT - Vertiv Holdings]] (neoclouds = 8-12% of FY26E revenue at 38-42% gross margin), [[Theses/META - Meta]] ($27B Nebius + $14B+ CoreWeave commitments), [[Theses/NET - Cloudflare]] (centralized GPU cluster architecture is the implicit competition to edge AI), [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] (miner-pivot pathway: IREN/APLD/CIFR origin story), [[Theses/6981 - Murata Manufacturing]] (component-layer beneficiary; neocloud GPU rack count is the primary demand driver behind GB200 NVL72 / Rubin / Rubin Ultra MLCC volume scaling).
 
@@ -151,6 +152,8 @@ Reference architecture across the sub-segment is convergent: NVIDIA H100/H200/B1
 - [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]
 - [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]
 - [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
+- [[Research/2026-08-13 - NBIS NVDA - Nebius Q2 5GW Power Target - news]]
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -180,3 +183,8 @@ Reference architecture across the sub-segment is convergent: NVIDIA H100/H200/B1
 - [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]: Theseus infra financing
 - [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]: SPCX 10GW hardware chain
 - [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]: GPU repricing cycle
+
+### 2026-08-13
+- /status SPCX draft→active: added [[@SPCX - @SpaceX]] to Active Theses (MEDIUM). Live Portfolio High sleeve noted as ahead of the file (weight cell unchanged).
+- [[Research/2026-08-13 - NBIS NVDA - Nebius Q2 5GW Power Target - news]]: NBIS YE26 contracted power 5 GW / ARR $3.0B / $20–25M/MW; deploy >1 GW/yr from 2027 — contracted ≠ energized.
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]: CRWV Q2 $2.58B, $104B backlog, FY raise, capex $35–39B, debt $35B — demand/credit print.

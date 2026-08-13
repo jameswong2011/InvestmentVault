@@ -274,6 +274,7 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board ~US$29.4B advanced/packaging/fab appropriations
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/near-balance — packaging tool pull persists
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — SpaceX Terafab off-grid power architecture (WFE demand optionality)
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
 ## Log
 
 ### 2026-04-29
@@ -309,3 +310,6 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 
 ### 2026-08-12
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] / CoWoS near-balance / Terafab: foundry capex + packaging cadence support WFE floor — conviction unchanged; CoWoS near-balance is a mix shift risk not a demand cliff.
+
+### 2026-08-13
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SK hynix Y2/M17 fabs — process-control content on new HBM/NAND capacity; not a print — conviction unchanged.

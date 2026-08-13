@@ -176,6 +176,7 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→4-5% (POR annuity reframe; relative-value laggard +92% 1Y; ALD + Epi two engines)
 - [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: 1b/1c DRAM node migration (combined 1b+1c capacity +~80% 4Q25→4Q27) lifts ALD-layer demand
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board advanced-tech capacity appropriations
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
 ## Log
 
 ### 2026-04-29
@@ -208,3 +209,6 @@ Lam Research's ALTUS Halo Mo ALD tool wins POR at TSMC 1.4nm or Samsung SF1.4 fo
 
 ### 2026-08-12
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]: TSMC advanced capacity spend supports ALD/epi tool chain — conviction unchanged.
+
+### 2026-08-13
+- [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SK hynix Y2/M17 — ALD/epi content option on new DRAM/NAND nodes; timing 2028–29 — conviction unchanged.

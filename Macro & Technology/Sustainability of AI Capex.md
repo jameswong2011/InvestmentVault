@@ -891,9 +891,13 @@ The note’s core split — structural demand vs cyclical spend; functional vs f
 - [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]: Stratechery maps vendor/infra financing + residual-value backstops onto 1873-style overbuild risk — financing innovation is margin defense as much as demand proof.
 - [[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]: Nvidia >$500B third-party financing platforms institutionalize GPU/infra funding outside hyperscaler IG debt alone.
 - [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]: Alphabet 2026 capex $195–205B + sell-the-guide — order-book up, multiple risk default.
+
+### 2026-08-13
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon lifts 2026 capex to ~$220B (from ~$200B), citing memory costs; AWS backlog $496B, constrained through 2027 into 2028 — complements Alphabet $195–205B; sell-the-guide overlay.
 ## Related Research
 - [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
 - [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]
 - [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]
 - [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]
 - [[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]

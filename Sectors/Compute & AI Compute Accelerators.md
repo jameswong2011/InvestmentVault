@@ -267,6 +267,9 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]
 - [[Research/2026-08-10 - NVDA TileRT Ultra-High Interactivity InferenceX - deep-dive]]
 - [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
 ## Log
 
 ### 2026-04-22
@@ -329,3 +332,8 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]: AI factory underwriting
 - [[Research/2026-08-10 - NVDA TileRT Ultra-High Interactivity InferenceX - deep-dive]]: TileRT inference interactivity
 - [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]: GPU repricing L3/L4
+
+### 2026-08-13
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: MI455X CDNA 5 / TSMC N2 / 12×HBM4 — AMD hardware cadence vs Rubin; CUDA still the displacement gate.
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: Spectrum-6 CPO shipping — interconnect lock-in via COUPE, not open CPO.
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon ~$220B 2026 capex, capacity short through 2027.

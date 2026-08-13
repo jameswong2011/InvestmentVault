@@ -346,6 +346,9 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]
 - [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
 ## Log
 
 ### 2026-04-19
@@ -419,3 +422,8 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]: Ajinomoto AI electronic-materials guidance raise validates ABF/substrate intensity on advanced packaging; conviction unchanged.
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]: SpaceX Terafab abatement plan = potential long-dated leading-edge entrant narrative; treat as aspiration until tool POs; conviction unchanged.
 - [[Research/2026-07-21 - TSM NVDA PhotonCap Kimi K3 MoE Memory Load - deep-dive]]: MoE memory load + PhotonCap packaging narrative keeps advanced packaging/foundry intensity elevated; conviction unchanged.
+
+### 2026-08-13
+- [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: AMD MI455X first N2 GAAFET GPU + CoWoS-class attach — incremental N2/CoWoS demand — conviction unchanged (high).
+- [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: Spectrum-6 CPO shipping on TSMC COUPE; multi-vendor ecosystem still missing — COUPE productization, not open CPO — conviction unchanged (high).
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon 2026 capex ~$220B, capacity short through 2027 — CoWoS/N2 demand corroboration; sell-the-guide regime — conviction unchanged (high).

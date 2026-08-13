@@ -373,6 +373,7 @@ Impact on incumbent pricing power: Wiz directly compresses Prisma Cloud growth (
 - [[Research/2026-04-21 - CRWD vs PANW - Competitive Comparison]] — Product/technology-level comparison: CRWD single-agent + agentic AI lead vs PANW five-pillar cross-domain data lake; ~40% product overlap; complements-not-substitutes verdict for portfolio construction
 - [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]] — NET Investor Day: "connect, protect, and build AI" positioning (Cloudflare One + Application Security + Workers AI / Agents SDK as the only single-vendor AI-security + AI-infrastructure stack on one network); attack-landscape datapoint (vuln-disclosure→exploitation collapsing toward ~24h by 2027); CIO IT-spend backdrop (budgets +2.8% but AI 72% / cyber 69% of investment priorities). Does not change NET's structural #4 SASE position (DLP/CASB gaps unaddressed by the deck)
 
+- [[Research/2026-08-13 - NET PANW - Cloudflare FedRAMP High - news]]
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -398,3 +399,6 @@ Impact on incumbent pricing power: Wiz directly compresses Prisma Cloud growth (
 
 ### 2026-06-10 (/sync)
 - [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]]: NET Investor Day added to Related Research — "connect/protect/build AI" single-vendor positioning + attack-surface datapoint (vuln→exploit collapsing to ~24h by 2027) + CIO AI/cyber spend mix. No change to NET's SASE competitive standing (still structural #4; DLP/CASB depth gaps unaddressed by the deck). Conviction unchanged on all three active theses.
+
+### 2026-08-13
+- [[Research/2026-08-13 - NET PANW - Cloudflare FedRAMP High - news]]: Cloudflare FedRAMP High — public-sector compliance gate, not SASE feature parity.
