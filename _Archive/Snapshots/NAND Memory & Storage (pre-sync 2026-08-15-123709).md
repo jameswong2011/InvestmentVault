@@ -3,7 +3,7 @@ snapshot_of: "[[Sectors/NAND Memory & Storage]]"
 snapshot_date: 2026-08-15
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-15-123709
-publish: true
+publish: false
 date: 2026-04-16
 tags: [sector, moc, semiconductors, NAND, flash, storage, memory]
 status: active

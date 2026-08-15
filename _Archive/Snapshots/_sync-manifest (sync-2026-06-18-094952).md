@@ -1,4 +1,5 @@
 ---
+publish: false
 type: sync-manifest
 batch: sync-2026-06-18-094952
 mode: default

@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-CATL-2026-08-08-133008
 status: completed

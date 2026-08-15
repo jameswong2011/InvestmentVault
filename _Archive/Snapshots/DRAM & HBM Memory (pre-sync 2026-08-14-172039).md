@@ -3,7 +3,7 @@ snapshot_of: "[[Sectors/DRAM & HBM Memory]]"
 snapshot_date: 2026-08-14
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-14-172039
-publish: true
+publish: false
 date: 2026-04-26
 tags: [sector, moc, DRAM, HBM, memory]
 status: active

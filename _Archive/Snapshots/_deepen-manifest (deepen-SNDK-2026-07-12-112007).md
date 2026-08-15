@@ -1,4 +1,5 @@
 ---
+publish: false
 type: deepen-manifest
 batch: deepen-SNDK-2026-07-12-112007
 status: completed

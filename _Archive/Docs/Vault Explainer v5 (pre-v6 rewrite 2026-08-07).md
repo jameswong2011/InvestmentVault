@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 # Claudian Investment Vault — An LLM Wiki for equity research (v5)
 
 *Converted from `claudian-explainer-v5.html`. The original is an interactive single-page explainer; its diagrams, tabbed viewers and terminal simulator are rendered here as static text, with their full content preserved.*

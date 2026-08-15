@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Macro & Technology/800VDC Adoption]]"
 snapshot_date: 2026-05-28
 snapshot_trigger: sync

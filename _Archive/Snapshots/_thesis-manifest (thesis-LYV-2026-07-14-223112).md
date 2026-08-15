@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-LYV-2026-07-14-223112
 status: completed

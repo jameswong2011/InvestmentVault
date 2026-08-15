@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-06-02
 tags: [thesis, neoclouds, GPU-as-a-Service, AI-infrastructure, NBIS]
 status: draft

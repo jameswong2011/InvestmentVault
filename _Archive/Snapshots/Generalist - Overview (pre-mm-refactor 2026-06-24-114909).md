@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 
 **xxx READING PROTOCOL — how to use this file without being captured by it (AI: read this before the models below) xxx**
 

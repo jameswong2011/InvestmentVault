@@ -1,4 +1,5 @@
 ---
+publish: false
 type: status-manifest
 batch: status-SPCX-2026-08-13-120952
 status: completed

@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-23
 tags: [thesis, custom-silicon, networking, optical-dsp, MRVL]
 status: active

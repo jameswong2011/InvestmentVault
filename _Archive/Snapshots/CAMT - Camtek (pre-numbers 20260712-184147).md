@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Theses/CAMT - Camtek]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers

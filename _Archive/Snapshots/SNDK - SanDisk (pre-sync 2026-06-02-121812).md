@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Theses/SNDK - SanDisk]]"
 snapshot_date: 2026-06-02
 snapshot_trigger: sync

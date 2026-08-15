@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-05-14
 tags: [sector, moc, passives, semiconductors, power]
 status: active

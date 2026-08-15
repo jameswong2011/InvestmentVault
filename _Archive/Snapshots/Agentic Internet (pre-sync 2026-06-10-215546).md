@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-26
 tags: [macro, technology, agentic-ai, AI-agents, internet-infrastructure, payments, commerce, identity, search-disruption, x402, MCP, UCP, ACP]
 status: active

@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-08-08
 tags: [thesis, batteries, energy-storage, CATL]
 status: draft

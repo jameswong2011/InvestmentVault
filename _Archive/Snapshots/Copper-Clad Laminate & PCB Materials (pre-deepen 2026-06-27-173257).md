@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Sectors/Copper-Clad Laminate & PCB Materials]]"
 snapshot_date: 2026-06-27
 snapshot_trigger: deepen

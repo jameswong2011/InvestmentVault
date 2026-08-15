@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-GRND-2026-08-04-165051
 status: completed

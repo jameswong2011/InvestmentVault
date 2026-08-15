@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-LPKF-2026-06-07-152048
 status: completed

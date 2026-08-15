@@ -3,7 +3,7 @@ snapshot_of: "[[Sectors/@LNG & Natural Gas Infrastructure]]"
 snapshot_date: 2026-08-06
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-06-184125
-publish: true
+publish: false
 date: 2026-04-22
 tags: [sector, moc]
 status: active

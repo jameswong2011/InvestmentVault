@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-21
 tags: [thesis, semiconductors, VRT]
 status: active

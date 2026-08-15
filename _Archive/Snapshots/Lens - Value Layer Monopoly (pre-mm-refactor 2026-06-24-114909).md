@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 # MENTAL MODEL: The Value Layer Monopoly Filter
 
 > A context file for investment idea generation and single-stock analysis.

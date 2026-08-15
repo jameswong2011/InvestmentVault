@@ -1,4 +1,5 @@
 ---
+publish: false
 type: deepen-manifest
 batch: deepen-UBER-2026-08-06-235944
 status: completed

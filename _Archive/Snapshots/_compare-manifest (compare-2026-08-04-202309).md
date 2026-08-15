@@ -1,4 +1,5 @@
 ---
+publish: false
 type: compare-manifest
 batch: compare-2026-08-04-202309
 status: completed

@@ -1,4 +1,5 @@
 ---
+publish: false
 type: deepen-manifest
 batch: deepen-META-2026-07-12-120718
 status: completed

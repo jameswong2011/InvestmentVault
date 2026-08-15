@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-IREN-2026-08-04-202954
 status: completed

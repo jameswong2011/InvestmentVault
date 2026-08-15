@@ -1,4 +1,5 @@
 ---
+publish: false
 type: deepen-manifest
 batch: deepen-NBIS-2026-08-04-203231
 status: completed

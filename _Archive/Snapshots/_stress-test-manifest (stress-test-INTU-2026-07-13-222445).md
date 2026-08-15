@@ -1,4 +1,5 @@
 ---
+publish: false
 type: stress-test-manifest
 batch: stress-test-INTU-2026-07-13-222445
 status: completed

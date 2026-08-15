@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-TSEM-2026-07-14-155308
 status: completed

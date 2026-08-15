@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-ONTO-2026-06-22-173244
 status: completed

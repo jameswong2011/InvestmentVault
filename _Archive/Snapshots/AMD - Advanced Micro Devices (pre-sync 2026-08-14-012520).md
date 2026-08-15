@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/AMD - Advanced Micro Devices]]"
 snapshot_date: 2026-08-14
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-14-012520
-publish: true
+publish: false
 date: 2026-04-21
 tags: [thesis, semiconductors, AMD]
 status: active

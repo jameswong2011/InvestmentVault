@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 # Re-ingest rewrite protocol (2026-08-14)
 
 Authorized rewrite of existing Research notes. Originals snapshotted under `_Archive/Backups/Research/* (pre-rewrite 2026-08-14).md`. Do not create a second research note.

@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-SPCX-2026-08-13-120215
 status: completed

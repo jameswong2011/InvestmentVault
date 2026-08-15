@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/MU - Micron Technology]]"
 snapshot_date: 2026-08-14
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-14-012520
-publish: true
+publish: false
 date: 2026-08-13
 tags: [thesis, DRAM, HBM, memory, MU]
 status: draft

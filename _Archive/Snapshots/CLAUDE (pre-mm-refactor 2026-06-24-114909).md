@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 # Investment Research Vault
 
 ## Approach & Core Purpose (xxx IMPORTANT xxx)

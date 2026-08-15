@@ -1,4 +1,5 @@
 ---
+publish: false
 type: stress-test-manifest
 batch: stress-test-2383-2026-06-27-170359
 status: completed

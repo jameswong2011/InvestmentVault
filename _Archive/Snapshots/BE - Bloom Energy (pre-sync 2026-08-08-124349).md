@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/BE - Bloom Energy]]"
 snapshot_date: 2026-08-08
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-08-124349
-publish: true
+publish: false
 date: 2026-07-29
 tags: [thesis, data-center-power, BE]
 status: draft

@@ -3,7 +3,7 @@ snapshot_of: "[[Sectors/Neoclouds & GPU-as-a-Service]]"
 snapshot_date: 2026-08-06
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-06-184125
-publish: true
+publish: false
 date: 2026-05-15
 tags: [sector, moc, neoclouds, GPU-as-a-Service, AI-infrastructure]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: false
 type: stress-test-manifest
 batch: stress-test-CATL-2026-08-08-143414
 status: completed

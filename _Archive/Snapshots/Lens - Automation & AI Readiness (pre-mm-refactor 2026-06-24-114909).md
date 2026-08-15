@@ -1,3 +1,7 @@
+---
+publish: false
+---
+
 # CONTEXT GRAPH / AI-READINESS — INVESTMENT MENTAL MODEL
 
 *A thinking filter for assessing whether a company is structurally positioned to win (or lose) as operational automation scales. Consult during idea generation and during the qualitative leg of single-name analysis. This is a **conviction modifier**, not a standalone screen.*

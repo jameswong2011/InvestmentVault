@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-05-15
 tags: [thesis, mlcc, semiconductors, passives, 6981]
 status: active

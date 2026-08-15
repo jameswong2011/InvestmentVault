@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/CRWV - CoreWeave]]"
 snapshot_date: 2026-08-13
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-13-233632
-publish: true
+publish: false
 date: 2026-05-15
 tags: [thesis, neoclouds, GPU-as-a-Service, AI-infrastructure, CRWV]
 status: monitoring

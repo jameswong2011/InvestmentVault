@@ -1,4 +1,5 @@
 ---
+publish: false
 type: sync-manifest
 batch: sync-2026-06-27-175739
 mode: default (scoped — M9-quartz research cluster; spurious mass-mtime ignored)

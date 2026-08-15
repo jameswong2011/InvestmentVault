@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Theses/2383 - Elite Material]]"
 snapshot_date: 2026-06-27
 snapshot_trigger: sync

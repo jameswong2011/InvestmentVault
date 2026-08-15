@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-ARM-2026-06-09-214922
 status: completed

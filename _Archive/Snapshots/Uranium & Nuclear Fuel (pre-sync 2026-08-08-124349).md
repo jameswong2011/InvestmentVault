@@ -3,7 +3,7 @@ snapshot_of: "[[Sectors/Uranium & Nuclear Fuel]]"
 snapshot_date: 2026-08-08
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-08-124349
-publish: true
+publish: false
 date: 2026-04-22
 tags: [sector, moc]
 status: active

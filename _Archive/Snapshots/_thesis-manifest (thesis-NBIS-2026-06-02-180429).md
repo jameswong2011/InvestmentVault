@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-NBIS-2026-06-02-180429
 status: completed

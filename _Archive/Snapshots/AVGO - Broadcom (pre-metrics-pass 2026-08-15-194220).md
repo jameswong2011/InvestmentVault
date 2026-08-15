@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-14
 tags: [thesis, semiconductors, AVGO, AI-infrastructure, custom-ASIC, networking]
 status: active

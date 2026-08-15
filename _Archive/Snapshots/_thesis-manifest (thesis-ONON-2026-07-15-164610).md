@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-ONON-2026-07-15-164610
 status: completed

@@ -1,4 +1,5 @@
 ---
+publish: false
 type: deepen-manifest
 batch: deepen-CBRS-2026-07-13-190303
 status: completed

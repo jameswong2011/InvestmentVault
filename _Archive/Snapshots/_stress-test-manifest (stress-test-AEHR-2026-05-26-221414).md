@@ -1,4 +1,5 @@
 ---
+publish: false
 type: stress-test-manifest
 batch: stress-test-AEHR-2026-05-26-221414
 status: completed

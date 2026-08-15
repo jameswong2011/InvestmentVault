@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Theses/AAOI - Applied Optoelectronics]]"
 snapshot_date: 2026-05-31
 snapshot_trigger: sync

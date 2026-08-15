@@ -1,4 +1,5 @@
 ---
+publish: false
 type: metrics-sync-manifest
 batch: deepen-metrics-sync-000660-2026-07-17-002434
 status: completed

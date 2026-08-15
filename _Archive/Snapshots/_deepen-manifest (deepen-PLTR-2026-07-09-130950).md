@@ -1,4 +1,5 @@
 ---
+publish: false
 type: deepen-manifest
 batch: deepen-PLTR-2026-07-09-130950
 status: completed

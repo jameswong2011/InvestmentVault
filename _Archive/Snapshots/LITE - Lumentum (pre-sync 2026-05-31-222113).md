@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Theses/LITE - Lumentum]]"
 snapshot_date: 2026-05-31
 snapshot_trigger: sync

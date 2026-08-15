@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-05-14
 snapshot_of: "[[Sectors/MLCC & Power Semiconductors]]"
 snapshot_date: 2026-06-05

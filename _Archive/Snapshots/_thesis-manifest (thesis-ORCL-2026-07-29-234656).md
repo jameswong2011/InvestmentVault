@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-ORCL-2026-07-29-234656
 status: completed

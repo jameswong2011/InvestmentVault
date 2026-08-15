@@ -1,4 +1,5 @@
 ---
+publish: false
 type: deepen-manifest
 batch: deepen-INTU-2026-07-12-125334
 status: completed

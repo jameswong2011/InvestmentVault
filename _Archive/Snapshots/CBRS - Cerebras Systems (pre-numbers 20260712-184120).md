@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Theses/CBRS - Cerebras Systems]]"
 snapshot_date: 2026-07-12
 snapshot_trigger: numbers

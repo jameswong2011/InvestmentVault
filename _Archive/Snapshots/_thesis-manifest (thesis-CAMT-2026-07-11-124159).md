@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-CAMT-2026-07-11-124159
 status: completed

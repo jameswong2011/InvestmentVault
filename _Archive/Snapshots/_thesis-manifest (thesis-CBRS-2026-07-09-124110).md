@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-CBRS-2026-07-09-124110
 status: completed

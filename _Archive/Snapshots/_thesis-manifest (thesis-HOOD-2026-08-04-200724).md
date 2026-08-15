@@ -1,4 +1,5 @@
 ---
+publish: false
 type: thesis-manifest
 batch: thesis-HOOD-2026-08-04-200724
 status: completed

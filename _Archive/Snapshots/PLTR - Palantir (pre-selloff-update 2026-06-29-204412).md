@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Theses/PLTR - Palantir]]"
 snapshot_date: 2026-06-29
 snapshot_trigger: selloff-memo-update

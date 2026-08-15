@@ -1,4 +1,5 @@
 ---
+publish: false
 type: deepen-manifest
 batch: deepen-WTC-2026-07-12-101627
 status: completed

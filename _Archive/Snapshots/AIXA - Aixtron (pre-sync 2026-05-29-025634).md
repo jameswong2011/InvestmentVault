@@ -1,4 +1,5 @@
 ---
+publish: false
 snapshot_of: "[[Theses/AIXA - Aixtron]]"
 snapshot_date: 2026-05-29
 snapshot_trigger: sync

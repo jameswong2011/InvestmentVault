@@ -3,7 +3,7 @@ snapshot_of: "[[Macro & Technology/Sustainability of AI Capex]]"
 snapshot_date: 2026-08-06
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-06-184125
-publish: true
+publish: false
 date: 2026-07-28
 tags: [macro, technology, artificial-intelligence, datacenters, capex, semiconductors]
 status: active

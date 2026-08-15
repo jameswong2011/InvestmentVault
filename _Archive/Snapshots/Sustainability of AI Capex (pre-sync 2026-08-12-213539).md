@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-07-28
 tags: [macro, technology, artificial-intelligence, datacenters, capex, semiconductors]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-15
 tags: [thesis, cybersecurity, PANW]
 status: active

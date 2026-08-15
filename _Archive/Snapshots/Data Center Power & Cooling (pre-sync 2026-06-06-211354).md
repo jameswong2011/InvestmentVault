@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-22
 tags: [sector, moc]
 status: active

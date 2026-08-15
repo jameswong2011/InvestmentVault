@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/SNDK - SanDisk]]"
 snapshot_date: 2026-08-15
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-15-123709
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, semiconductors, NAND, SNDK, SanDisk, memory, AI-storage, HBF]
 status: active

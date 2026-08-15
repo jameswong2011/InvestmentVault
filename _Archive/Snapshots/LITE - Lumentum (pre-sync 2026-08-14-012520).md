@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/LITE - Lumentum]]"
 snapshot_date: 2026-08-14
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-14-012520
-publish: true
+publish: false
 date: 2026-04-03
 tags: [thesis, lite, semiconductors, photonics, EML, CPO]
 status: active
