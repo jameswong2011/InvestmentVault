@@ -7,14 +7,14 @@ conviction: high
 sector: Semiconductor Capital Equipment
 ticker: LRCX
 source: Synthesis of Q3 FY26 print (2026-04-22), 2025 Investor Day, multi-source vault research, primary web research
-key_metrics_last_refreshed: 2026-07-12
+key_metrics_last_refreshed: 2026-08-15
 ---
 
 # Lam Research (LRCX)
 
 ## Summary
 
-Lam is being priced as a memory-cycle WFE vendor levered to NAND/DRAM capex restart, but its Q3 FY26 print revealed a 59% Foundry/Logic revenue mix — a structural shift from "memory cyclical" to "logic+memory diversified" that the market has partially repriced through the multiple, not the beta: forward P/E has run from 35x to 43x while beta sits unchanged at 1.78. Beneath that mix shift, Lam holds four independent content-per-wafer expansion vectors that compound rather than substitute: ~80% etch share at sub-3nm GAA via the Akara platform, dry resist Aether as production tool of record at SK Hynix (first commercial productization of a 5+yr R&D bet), Cryo 3.0 + ALTUS Halo Mo ALD for 400-1000 layer NAND, and a +40% advanced packaging guide for CY26 making Lam a full-stack AP vendor (TSV etch via Vantex, copper plating via SABRE 3D, hybrid bonding via CBA NAND). Management's 2028 IDay target of $25-27B revenue / 50% GM / 34-35% OM / $6-7 EPS implies structural margin expansion, not cyclical mean reversion. The non-consensus call: Lam is becoming the etch+deposition counterparty to ASML's lithography monopoly, but the market is still grading it on memory beta.
+Lam is being priced as a memory-cycle WFE vendor levered to NAND/DRAM capex restart, but its Q3 FY26 print revealed a 59% Foundry/Logic revenue mix — a structural shift from "memory cyclical" to "logic+memory diversified" that the market has repriced through the multiple, not the beta: NTM P/E compressed 43x → ~35x (FY27 $9.38) after FY26 printed $5.79 / $23.2B (filed Aug 7) even as the stock held ~$332; LTM is 57x; beta still 1.78. Beneath that mix shift, Lam holds four independent content-per-wafer expansion vectors that compound rather than substitute: ~80% etch share at sub-3nm GAA via the Akara platform, dry resist Aether as production tool of record at SK Hynix (first commercial productization of a 5+yr R&D bet), Cryo 3.0 + ALTUS Halo Mo ALD for 400-1000 layer NAND, and a +40% advanced packaging guide for CY26 making Lam a full-stack AP vendor (TSV etch via Vantex, copper plating via SABRE 3D, hybrid bonding via CBA NAND). Management's 2028 IDay target of $25-27B revenue / 50% GM / 34-35% OM / $6-7 EPS implies structural margin expansion, not cyclical mean reversion. The non-consensus call: Lam is becoming the etch+deposition counterparty to ASML's lithography monopoly, but the market is still grading it on memory beta.
 
 ## Key Non-consensus Insights
 
@@ -38,7 +38,7 @@ Lam is being priced as a memory-cycle WFE vendor levered to NAND/DRAM capex rest
 
 **4. Does Lam's CSBG (Customer Support Business Group) services revenue prove durable through a memory downturn the way KLA's service annuity has?** CSBG is 37-41% of total revenue and management has positioned it as Lam's "service annuity." Stress test: in the 2022-2023 memory downturn, did CSBG hold flat or compress with utilization? Lam's installed base is heavily tilted to memory fabs which see deeper utilization cuts than logic fabs. If CSBG compressed materially in the prior downturn, the durability narrative weakens; if it held within 5-10% of trend, the multiple-de-cycling case strengthens.
 
-**5. Why is Lam trading at 43x forward P/E (+126% above the ~19x 5Y average, up from +86% three months ago) when AMAT is at ~32x and KLA is at ~30x?** Lam's premium reflects momentum (+184% past year, +127% in 2025) and Akara/Aether enthusiasm. The structural case justifies a premium to AMAT (more concentrated etch dominance, dry resist optionality), but does it justify a premium to KLA, which has 73% ROIC, 75-80% reticle share, and proven service annuity through-cycle? The IC question: at current valuation, where does Lam need to deliver on the 2028 IDay targets ($25-27B / 50% GM / 34-35% OM) to hold the multiple? Conservative model: $24B / 49% GM / 33% OM gets Lam ~$5.50 EPS at 28x = ~$155 stock — implying ~10-15% downside from spot if the market re-rates toward sector mean.
+**5. Why is Lam trading at ~35x NTM P/E (+86% above the ~19x 5Y average; LTM 57x on FY26 $5.79) when AMAT is at ~32x and KLA is at ~30x?** Lam's premium reflects momentum (+184% past year, +127% in 2025) and Akara/Aether enthusiasm; the 43x print was FY26-incomplete, not a further re-rate. The structural case justifies a premium to AMAT (more concentrated etch dominance, dry resist optionality), but does it justify a premium to KLA, which has 73% ROIC, 75-80% reticle share, and proven service annuity through-cycle? The IC question: at current valuation, where does Lam need to deliver on the 2028 IDay targets ($25-27B / 50% GM / 34-35% OM) to hold the multiple — FY26 already printed $23.2B / 50.5% GM / $5.79, inside the 2028 band two years early? Re-rate to 28x on FY27 $9.38 = ~$263 (~21% downside from $332); 28x on LTM $5.79 = ~$162 (~51% downside).
 
 **6. Is the 59/34 mix shift sustainable, or does it reverse when memory cycle restarts?** The Dec 2025 mix is partly a consequence of memory weakness, not just structural Foundry/Logic strength. When NAND restarts in 2026-2027, Memory revenue absolute dollars rise, potentially returning the mix toward 50/50 or 45/55. The non-consensus thesis (Insight #3) requires the ratio to settle at ~50/50 not flip back to memory-heavy. What is the equilibrium mix post-NAND restart at full capacity utilization?
 
@@ -46,7 +46,7 @@ Lam is being priced as a memory-cycle WFE vendor levered to NAND/DRAM capex rest
 
 ## Business Model & Product Description
 
-Lam Research is the #1 etch and #2 deposition vendor in the global wafer fab equipment (WFE) market, with FY25 revenue of ~$18.4B (calendar-year 2025 trailing) and Q3 FY26 (March quarter) revenue of $5.84B (+28% YoY, +$1.47 EPS, beating consensus). Lam is the dominant supplier of equipment that physically removes (etches) and adds (deposits) ultra-thin material layers on silicon wafers — the two operations that define every patterning step in chip manufacturing.
+Lam Research is the #1 etch and #2 deposition vendor in the global wafer fab equipment (WFE) market, with FY26 revenue of $23.2B (+26% YoY, $5.79 EPS, 50.5% GM; filed 2026-08-07). Lam is the dominant supplier of equipment that physically removes (etches) and adds (deposits) ultra-thin material layers on silicon wafers — the two operations that define every patterning step in chip manufacturing.
 
 **Revenue segmentation (Q3 FY26 / Dec 2025 quarter):**
 
@@ -99,14 +99,14 @@ The WFE market is a five-vendor oligopoly with a non-overlapping product structu
 
 | Metric | Value | Notes |
 |---|---|---|
-| Market Cap | ~$438B | Spot ~$322/share, ~1.36B shares post-split |
-| EV/Revenue | ~9.0x | Forward 12mo revenue $21-22B; cash position ~$5B; minimal debt |
-| Revenue Growth | +24% YoY (Q3 FY26) | Above 5-yr average; raised CY26 WFE forecast to $140B |
+| Market Cap | ~$416B | Spot ~$332/share, ~1.25B shares post-split |
+| EV/Revenue | ~17.8x | FY26 TTM $23.2B; FY27 cons. ~$35B; net cash |
+| Revenue Growth | +26% YoY | Above 5-yr average; raised CY26 WFE forecast to $140B |
 | Gross Margin | ~50% | Q3 FY26 above guide; 2028 IDay target 50% |
-| FCF Yield | ~1.5% | FCF ~$6.5B trailing; capex light |
-| Forward P/E | ~43x | +126% above 5Y average ~19x |
+| FCF Yield | ~1.2% | FCF ~$4.9B trailing; capex light |
+| Forward P/E | ~35x | +86% above 5Y average ~19x (NTM FY27 $9.38; LTM 57x) |
 | Beta | 1.78 | Reflects historical memory-cycle exposure; thesis argues for compression to 1.4-1.5 with 50/50 mix |
-| Dividend Yield | ~0.30% | $1.15B FY25; 12% CAGR over 5 years |
+| Dividend Yield | ~0.31% | $1.15B FY25; 12% CAGR over 5 years |
 | Buyback | $3.31B FY25 | Active capital return; ~3-4% annual share count reduction |
 
 ## Bull Case
@@ -164,7 +164,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 **Position risks (thesis right, stock falls):**
 
-5. **Multiple compression independent of execution**: Lam delivers on Akara/Aether/NAND and earnings hit IDay glide, but multiple compresses from 43x to 25-28x as the broader semis cycle de-rates or AI-spending narrative softens. -35-42% even with thesis intact — a wider air pocket than the 35x base implied at last refresh, because the multiple has run further from the same downside floor.
+5. **Multiple compression independent of execution**: Lam delivers on Akara/Aether/NAND and earnings hit IDay glide, but multiple compresses from ~35x NTM to 25-28x as the broader semis cycle de-rates or AI-spending narrative softens. -20-29% even with thesis intact — a narrower air pocket than the 43x base at last refresh, because FY27 consensus ($9.38) reset the forward multiple while the stock held ~$332. Optical LTM 57x is the Aug 7 FY26 print ($5.79), not the earnings the tape discounts.
 
 6. **Cyclical memory drawdown lasts longer than expected**: NAND restart slips by 2-4 quarters; Memory revenue stays at 30-35% mix; 50/50 equilibrium not reached in CY26-27. Beta de-rating thesis pushed out 1-2 years.
 
@@ -280,3 +280,4 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 ### 2026-08-15
 - [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]]: IR >$3B / 5yr / +>50% experiment capacity; qualification-cycle compression, not 2026 AP/WFE/Aether TOR — DeBoer touches Micron HIGH-leg candidate only — conviction unchanged (high).
 - [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: roundup restates $3B labs; AMAT AP +>70% is peer color not an LRCX AP dollar — HIGH AP>$1.4B / WFE≥$140B unfired — conviction unchanged (high).
+- Metrics synced: 16 figures across 5 sections. NTM 43x→35x after FY26 $5.79/$23.2B print (LP 58x is FY26-est, not NTM); EV/S 9.0x→17.8x; $322→$332 / $438B→$416B. Snapshot: [[_Archive/Snapshots/LRCX - Lam Research (pre-metrics-pass 2026-08-15-194220)]]

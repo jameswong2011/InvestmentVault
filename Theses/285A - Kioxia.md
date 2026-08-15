@@ -6,36 +6,36 @@ status: monitoring
 conviction: medium
 sector: NAND Memory & Storage
 ticker: 285A.T
-key_metrics_last_refreshed: 2026-07-12
+key_metrics_last_refreshed: 2026-08-15
 ---
 
 # Kioxia Holdings (285A.T) — The Inventor's Edge in a Structurally Tight NAND Market
 
 ## Summary
 
-¥35,950 (up ~2,371% from ¥1,455 December 2024 IPO), ~¥17T ($107B) market cap. Kioxia invented NAND flash at Toshiba in 1987 and is the third-largest supplier globally (~14% share), operating through a JV with SanDisk that shares fab costs while enabling independent competition. BiCS8 (218-layer) in production; BiCS10 (332-layer) expedited to 2026. The LC9 enterprise SSD (245.76TB, 32-die stack) won "Best of Show" at Flash Memory Summit 2025. The investment case: whether Kioxia's technology leadership, capital-efficient JV structure, and position as the only major NAND supplier without conflicting HBM priorities can sustain earnings through a cycle that has already delivered extraordinary returns.
+¥53,740 (2026-08-14 close), ~¥29.4T (~$185B) market cap — up ~3,594% from the ¥1,455 December 2024 IPO but −52% from the June 22 all-time high of ¥112,700, where Kioxia briefly ranked as Japan's most valuable listed company. Kioxia invented NAND flash at Toshiba in 1987 and is the third-largest supplier globally by revenue (~14% share; YMTC matched that number in Q2 2026 unit shipments), operating through a JV with SanDisk that shares fab costs while enabling independent competition. BiCS8 (218-layer) in production; BiCS10 (332-layer) sampling in 2026, mass production 2027. The LC9 enterprise SSD (245.76TB, 32-die stack) won "Best of Show" at Flash Memory Summit 2025. Earnings have inflected to record scale — Q1 FY2026 non-GAAP operating income of ¥1.33T (75% margin) exceeded all of FY2025 in one quarter, with Q2 guided to ¥1.9T — while the stock halved on SanDisk's weak outlook and an AI-deleverage unwind. The investment case: whether Kioxia's technology leadership, capital-efficient JV structure, and position as the only major NAND supplier without conflicting HBM priorities can sustain earnings past 2027, and whether a ~6–7x forward multiple on guidance-basis earnings survives the cycle's normalization math.
 
 ## Key Non-consensus Insights
 
-- **The inventor's advantage is structural, not merely historical — the market systematically undervalues it by fixating on layer counts.** CBA achieves 15-20% higher gigabyte density than competitors at similar layer counts; headline layers (Samsung 286, Micron 276, SK Hynix 321 vs. Kioxia 218) are misleading. BiCS10 (332-layer) expedited from H2 2027 to 2026 because CBA permits aggressive stacking without yield penalties competitors face. 35+ years of accumulated process knowledge embedded in engineering culture.
+- **The inventor's advantage is structural, not merely historical — the market systematically undervalues it by fixating on layer counts.** CBA achieves 15-20% higher gigabyte density than competitors at similar layer counts; headline layers (Samsung 286, Micron 276, SK Hynix 321 vs. Kioxia 218) are misleading. BiCS10 (332-layer, >29 Gb/mm²) samples in 2026 with mass production in 2027 (the expedited-to-2026 production target slipped); CBA permits aggressive stacking without yield penalties competitors face. 35+ years of accumulated process knowledge embedded in engineering culture.
 
 - **Kioxia's die-supply model exploits the hyperscaler shift to custom storage controllers.** Google, Amazon, and Microsoft designing own controllers (same impulse as Google TPU, Amazon Trainium). Kioxia sells bare die directly as a "NAND foundry" — no enterprise SSD sales teams, shorter qualification cycles, no controller R&D competition. Samsung and Micron resist die-supply because it cannibalizes their SSD businesses. LC9 245.76TB with 32-die stacking demonstrates technology ceiling while die-only flexibility gives optionality competitors lack.
 
-- **The Flash Ventures JV is the most underappreciated structural asset in memory.** Eight fabs split with SanDisk (49.9%), $4.5B 2026 capex (+41% YoY) — most aggressive NAND investment among majors. JV extended to 2034. No competitor shares fab costs: Samsung, Micron, SK Hynix absorb 100% of capex. Greenfield fabs cost $10-24B; this halves the burden. SanDisk pays cost-plus, giving Kioxia a guaranteed revenue floor.
+- **The Flash Ventures JV is the most underappreciated structural asset in memory.** Eight fabs split with SanDisk (49.9%), $4.5B combined 2026 capex (+41% YoY) plus Kioxia-side capex guided at a ¥470B/yr average for FY2026–28 — most aggressive NAND investment among majors. JV extended to 2034. No competitor shares fab costs: Samsung, Micron, SK Hynix absorb 100% of capex. Greenfield fabs cost $10-24B; this halves the burden. SanDisk pays cost-plus, giving Kioxia a guaranteed revenue floor.
 
 - **Japan-centric manufacturing is a geopolitical moat but carries a newly-visible material-input tail risk that the "insulated" framing understated.** Government semiconductor subsidies, zero US export control risk, and no China counter-sanction exposure still contrast favorably with Samsung (South Korea's complex position), Micron (China's 2023 ban), and YMTC (US export-controlled). Kitakami Fab2 (operational September 2025) produces BiCS10 332-layer in a facility insulated from US-China fault lines. The concession introduced in April 2026: Iran War's Strait of Hormuz blockade cut 40%+ of Japan's naphtha supply (6 of 12 NCCs in production cuts), collapsing PGME/PGMEA solvent production and threatening Japanese PR/BARC/SOH supply to Kioxia's Yokkaichi + Kitakami fabs — the same Japan-centric chemical ecosystem that is a geopolitical strength is also a concentrated material-input chain. PCN re-qualification of alternate solvents takes ~1 year at standard nodes, longer for leading-edge BiCS10. Korean alternative suppliers (Chemtronics, Jaewon Industrial) exist but are not drop-in substitutes without requalification. Historical precedent (2019 Japan-Korea trade dispute, Korea reduced HF dependence from 87.9% to ~30% within 18 months) suggests this is a manageable 12-18 month vulnerability rather than a thesis-breaking risk — but the "insulated moat" framing requires this carve-out.
 
-- **Bain Capital's orderly exit is positive institutional signaling, not a structural risk.** $2.1B (November 2025, 9% discount) and $2.3-3.5B (March 2026) absorbed without sustained price damage. Below 50% triggers governance normalization: board independence, index inclusion eligibility, transition from "PE exit trade" to institutional holding. Exiting near highs, not distressed levels.
+- **Bain Capital's orderly exit was positive institutional signaling, not a structural risk — confirmed.** Full exit completed early July 2026 at ~$15B profit on the 2018 $18B buyout: ~44% still held in December 2025, ~14% by mid-June, zero by July 8, each block absorbed without sustained price damage. Governance normalization is live: board independence, index-inclusion eligibility (TOPIX free-float review October 2026), transition from "PE exit trade" to institutional holding. Residual holder overhang is SK Hynix's ~14% stake, held via a Bain-created vehicle. The caveat the exit leaves behind: Bain sold out weeks before the June 22 ¥112,700 peak and the −52% drawdown that followed.
 
 ## Outstanding Questions
 
 - **How durable is the NAND supercycle, and what are the leading indicators of its end?** The structural argument — HBM capacity diversion, AI demand, depleted inventories — is compelling, but memory supercycles have never sustained beyond 2–3 years historically. Kioxia's 2026 production is sold out with firm POs extending to 2027–2028, but Yole Group has flagged 2027 as a potential inflection point. The IC should monitor: (1) YMTC Phase III ramp pace, (2) Micron Fab 10B timeline (H2 2028 earliest), (3) Samsung's NAND capex decisions, and (4) enterprise SSD contract structure shifts from spot to LTA. If Samsung breaks ranks on capex discipline — as it has done in every prior cycle — the supply-demand equation could shift faster than consensus expects. *(Sources: [[Research/2026-03-31 - SanDisk Valuation Assessment]], web research)*
 
-- **What is the realistic path to resolving the Bain Capital and SK Hynix shareholder overhang?** Bain retains ~51% post-secondary sales. SK Hynix holds a ~15% convertible bond stake that blocked a Kioxia–Western Digital merger in 2023. Both shareholders have strategic interests that may not align with minority shareholders. The IC should assess: (1) Bain's exit timeline — at current pace, full exit could take 2–3 more years; (2) SK Hynix's long-term intentions — is the convertible a financial position or a strategic blocking stake?; (3) whether Bain's exit below 50% triggers governance improvements or activist opportunities. The $18B original acquisition price versus the current ~¥17T ($107B) market cap represents a 6x return for Bain, creating strong exit incentives.
+- **With Bain gone, what does SK Hynix do with its ~14% stake?** Bain's overhang resolved itself: full exit completed early July 2026 at ~$15B profit on the $18B 2018 acquisition — far faster than the 2–3 years this question originally assumed. SK Hynix's ~14% position (now held via a Bain-created vehicle; it blocked a Kioxia–Western Digital merger in 2023) is the remaining strategic-shareholder question. The IC should assess: (1) is it a financial position or a strategic blocking stake against NAND consolidation; (2) whether SK Hynix sells into strength — a ~¥4T block at the current ~¥29.4T market cap — or holds it as an option on Flash Ventures; (3) whether post-Bain governance normalization (October TOPIX free-float review, targeted spring 2027 US listing) opens activist or index-flow dynamics that change its calculus.
 
-- **Can Kioxia's balance sheet withstand a cycle downturn, given its leveraged buyout origins?** Net debt/equity has improved from 277% to 126% over seven consecutive quarters of positive free cash flow. However, the original LBO debt structure means Kioxia entered the upcycle with materially higher leverage than Samsung, Micron, or SK Hynix. If NAND pricing reverts to 2023 levels (when Kioxia posted a ¥252.7B operating loss), the balance sheet could re-stress rapidly. The IC should assess the company's liquidity runway under a severe pricing scenario and compare capital structure resilience to competitors.
+- **Can Kioxia's balance sheet withstand a cycle downturn, given its leveraged buyout origins?** Largely answered at current pricing: net debt/equity swung from 277% post-IPO to net cash (−8%) as of June 2026, equity ratio 51%, after a ¥407.5B senior-loan repayment; Q1 FY2026 core free cash flow was ¥827.2B. The residual question is capital-allocation discipline at the peak, not solvency: the ¥800B buyback (running through October 30) and ¥470B/yr FY2026–28 capex commit cash generated at 75–80% operating margins that no memory downcycle has ever preserved. If NAND pricing reverts toward 2023 levels (when Kioxia posted a ¥252.7B operating loss), the IC should assess how quickly net cash re-levers against those commitments versus competitors' capital structures.
 
-- **Is the BiCS10 (332-layer) expedited timeline achievable without yield degradation?** Moving BiCS10 from H2 2027 to 2026 is aggressive. The Kitakami Fab2 will be the production base, but executing a generational node transition on a new fab introduces compounding risk. If yields disappoint, the expected bit cost reduction from density improvement fails to materialize. The IC should monitor Flash Memory Summit 2026 announcements and any changes to the technology roadmap timeline.
+- **Is the BiCS10 (332-layer) timeline achievable without yield degradation?** The expedited-to-2026 production target already slipped: 2026 is sampling, mass production is 2027. Kitakami Fab2 will be the production base, but executing a generational node transition on a new fab introduces compounding risk. If yields disappoint, the expected bit cost reduction from density improvement fails to materialize. The IC should monitor the 2027 mass-production ramp at Kitakami and the ~¥200B/yr R&D program now spanning BiCS10/11 and AI-inference SSDs for further timeline moves.
 
 - **What happens to Kioxia's competitive position if the Flash Ventures JV faces internal tension or structural change?** The JV extension to 2034 provides visibility, but Kioxia and SanDisk are increasingly competing in the enterprise SSD market. SanDisk's Stargate program directly competes with Kioxia's LC9. If one partner gains significant share at the other's expense, the incentive to cooperate on shared fab capacity could erode. Additionally, any M&A involving either party (e.g., Samsung acquiring Kioxia, or a Kioxia re-merger with SanDisk) would fundamentally alter the structure.
 
@@ -63,7 +63,7 @@ BiCS FLASH is Kioxia's proprietary 3D NAND architecture. The key innovation is C
 
 - **BiCS8 (8th generation, 218-layer):** Currently in volume production. Uses CBA to achieve 15–20% higher density per layer than competitors at comparable layer counts.
 - **BiCS9:** Intermediate node at Yokkaichi fabs.
-- **BiCS10 (332-layer):** Expedited from H2 2027 to 2026. Will be produced at Kitakami Fab2. Represents Kioxia's leap to match/exceed competitors' layer counts while maintaining the CBA density advantage.
+- **BiCS10 (332-layer):** Sampling 2026; mass production 2027 at Kitakami Fab2. Represents Kioxia's leap to match/exceed competitors' layer counts while maintaining the CBA density advantage.
 
 **Manufacturing Footprint:**
 
@@ -72,19 +72,20 @@ BiCS FLASH is Kioxia's proprietary 3D NAND architecture. The key innovation is C
 - **Combined output:** Approximately 30% of global NAND bit production (joint with SanDisk).
 - **Capacity plan:** Kioxia aims to double bit output by FY2029 versus FY2024 through Yokkaichi/Kitakami expansion and BiCS10 density gains.
 
-**Financial Trajectory (FY2025, ending March 2026):**
+**Financial Trajectory (through Q1 FY2026, quarter ended June 2026):**
 
 | Period | Revenue | Operating Income | Net Income | Notes |
 |--------|---------|-----------------|------------|-------|
 | FY2024 | ¥1,706B | ¥451.7B | — | +58.5% YoY; swing from ¥252.7B operating loss |
-| Q3 FY2025 | ¥543.6B | ¥144.7B (non-GAAP) | ¥89.5B | Record quarter; 26.6% OP margin |
-| FY2025 guidance | ¥2,180-2,270B | ¥717-807B | — | +28-33% YoY revenue |
+| FY2025 (actual) | ¥2,337.6B | ¥876.2B (non-GAAP) | ¥554.5B | +37% YoY; beat the guided ¥2,180–2,270B range |
+| Q1 FY2026 (actual) | ¥1,770B | ¥1,330B (non-GAAP) | ¥869B | 75% OP margin; one quarter exceeded all FY2025 OP |
+| Q2 FY2026 (guided) | ¥2,390B | ¥1,900B (non-GAAP) | ¥1,280B (non-GAAP) | 79.5% OP margin guided; ¥162/$ FX assumption |
 
 ## Industry Context
 
 **The NAND Flash Oligopoly (2026 Market Structure):**
 
-The global NAND flash market is a tight oligopoly of five suppliers that collectively control virtually all production:
+The global NAND flash market is a tight oligopoly — five incumbents plus YMTC, which took the #3 unit-shipment slot at 14% in Q2 2026 (Counterpoint) while still trailing Kioxia and Micron on revenue:
 
 | Supplier | Market Share | NAND Focus | HBM/DRAM | Key Differentiator |
 |----------|-------------|------------|----------|-------------------|
@@ -93,18 +94,19 @@ The global NAND flash market is a tight oligopoly of five suppliers that collect
 | Micron | 15–20% | Diversified | Yes (HBM challenger) | US-based; HBM3E/HBM4 ramp; Idaho fab 2028 |
 | **Kioxia** | **~14%** | **100% NAND** | **No** | **Inventor; BiCS/CBA tech; die-supply model** |
 | SanDisk | ~12% | 100% NAND | No | Consumer brand; HBF optionality; JV partner |
+| YMTC | ~14% (Q2 2026 units; lower on revenue) | 100% NAND | No | Entity List-constrained; consumer mix; mainland IPO prep |
 
 **The HBM Capacity Diversion Dynamic:**
 
-The single most important structural factor in the NAND market is that Samsung and SK Hynix — controlling ~50–55% of NAND supply — are actively reallocating up to 40% of advanced wafer capacity from NAND to HBM production. HBM margins far exceed NAND margins ($98B HBM TAM projected by 2030 vs. ~$94B NAND in 2026), creating a rational economic incentive for integrated players to *starve* NAND supply. Total 2026 NAND capex is just $22.2B (+5% YoY) versus DRAM capex of $61.3B (+14%). This capex asymmetry means NAND supply discipline is being enforced by competitors' capital allocation decisions, not by voluntary restraint — making it more durable than typical cyclical discipline.
+The single most important structural factor in the NAND market is that Samsung and SK Hynix — controlling ~50–55% of NAND supply — are actively reallocating up to 40% of advanced wafer capacity from NAND to HBM production. HBM margins far exceed NAND margins ($98B HBM TAM projected by 2030; NAND already ran at $46B in Q1 2026 alone per Counterpoint — ~$190B annualized as the shortage repriced the market, versus ~$94B expected entering the year), creating a rational economic incentive for integrated players to *starve* NAND supply. Total 2026 NAND capex is just $22.2B (+5% YoY) versus DRAM capex of $61.3B (+14%). This capex asymmetry means NAND supply discipline is being enforced by competitors' capital allocation decisions, not by voluntary restraint — making it more durable than typical cyclical discipline.
 
 **Supply-Demand Fundamentals:**
 
 - **Demand growth (2026):** 20–22% YoY, pulled by AI data center buildout (~$660B+ hyperscaler capex), enterprise SSD displacement of HDDs, and edge/AI PC storage requirements.
 - **Supply growth (2026):** 15–17% YoY, constrained by flat wafer capacity and density-only bit growth.
 - **Structural gap:** 3–7 percentage points, widening.
-- **Pricing:** NAND contract prices rose 55–60% QoQ in Q1 2026. NAND wafer prices up 246% YoY. A 30TB enterprise TLC SSD surged from $3,062 to $10,950 (258% increase in 9 months). QLC NAND backordered by two years for some products.
-- **Inventories:** Channel at 2–4 weeks versus 8–10 normal. All 2026 production sold out; customers negotiating 2027 allocations.
+- **Pricing:** NAND contract prices rose 55–60% QoQ in Q1 2026; Q3 2026 forecast +10–15% QoQ (TrendForce, July) as consumer buyers hit affordability limits — still rising, decelerating pace, with supplier announcements running higher (35–40% per ADATA). NAND wafer prices up 246% YoY. A 30TB enterprise TLC SSD surged from $3,062 to $10,950 (258% increase in 9 months). QLC NAND backordered by two years for some products. Kioxia blended ASP +~70% YoY in Q1 FY2026 on low-single-digit bit growth.
+- **Inventories:** Channel at 2–4 weeks versus 8–10 normal. All 2026 production sold out; customers negotiating 2027 allocations; Kioxia targets ~50% of 2028 shipments under LTAs.
 
 **New Supply Timeline:**
 
@@ -118,54 +120,54 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ¥77,000 | Up ~2,371% from Dec 2024 IPO at ¥1,455 |
-| Market Cap | ¥42.14T (~$107B) | As of April 10, 2026 |
-| Trailing P/E | ~70x | Reflects LBO-era earnings base |
-| Forward P/E | ~7.9x | Massive earnings inflection expected |
-| FY2025 Revenue (guided) | ¥2,180–2,270B | +28–33% YoY |
+| Stock Price | ¥53,740 | Up ~2,371% from Dec 2024 IPO at ¥1,455 |
+| Market Cap | ¥29.41T (~$185B) | As of April 10, 2026 |
+| Trailing P/E | ~21x | Reflects LBO-era earnings base |
+| Forward P/E | ~6–7x | Massive earnings inflection expected |
+| FY2025 Revenue (guided) | ¥2,337.6B (actual) | +28–33% YoY |
 | Q3 FY2025 OP Margin | 26.6% | Non-GAAP; record quarter |
 | NAND Market Share | ~14% | 3rd globally |
 | JV Capacity Share | ~30% | Combined with SanDisk via Flash Ventures |
 | 2026 Combined Capex | $4.5B | +41% YoY; most aggressive in NAND |
-| Bain Capital Stake | ~51% | Exiting via secondary sales |
-| Net Debt/Equity | ~126% | Down from 277%; 7 consecutive FCF+ quarters |
+| Bain Capital Stake | 0% (exit completed July 2026) | Exiting via secondary sales |
+| Net Debt/Equity | −8% (net cash) | Down from 277%; 7 consecutive FCF+ quarters |
 
 ## Bull Case
 - **Technology leadership:** Inventor of NAND; BiCS/CBA architecture delivers best density-per-layer; LC9 245TB sets new enterprise SSD standard
 - **Structural supply deficit:** HBM capacity diversion by Samsung/SK Hynix constrains NAND through 2027+; 2026 fully sold out
 - **Capital efficiency:** Flash Ventures JV splits fab capex with SanDisk; neither bears full capital burden of leading-edge NAND
-- **Forward P/E ~7.3x:** If earnings estimates hold, the stock is cheap on forward multiples despite the 2,371% run
+- **Forward P/E ~6–7x on H1 FY2026 guidance run-rate:** the −52% de-rating plus the earnings explosion compressed the multiple to single digits, with net cash, an ¥800B buyback running through October 30, and a 3-for-1 split effective October 1 — cheap if, and only if, FY2027 earnings hold near the H1 FY2026 run-rate
 - **Die-supply model:** Uniquely positioned for hyperscaler shift toward custom storage controllers
-- **BiCS10 expedited:** 332-layer production in 2026 positions Kioxia to capture density-driven pricing premium
+- **BiCS10:** 332-layer sampling in 2026, mass production 2027 at Kitakami — positions Kioxia to capture density-driven pricing premium
 - **Kitakami Fab2 ramp:** Newest, most advanced NAND fab globally now in production
 - **Geopolitical stability:** Japan-based manufacturing insulated from US-China cross-fire
 - **Bluefield-4 KV-cache-to-NAND demand vector (net-new, emerging):** NVIDIA's Bluefield-4 Context Memory Storage Platform (Grace + ConnectX-9) offloads model KV-cache to high-speed NAND — a "third network" tier beyond cold storage. Small today, architecturally significant: model-context tiering to NAND is a structural high-performance-NAND demand leg that partially offsets the algorithmic-efficiency bear (Risk #5 / Bear #149). Per [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]].
 
 ## Bear Case
-- **PE overhang:** Bain Capital ~51% stake creates persistent selling pressure; ~$5.4B+ already sold
-- **Balance sheet risk:** LBO-origin debt structure; 126% net D/E still elevated versus zero-debt peers
-- **Cycle timing:** Memory supercycles have never sustained beyond 2–3 years; 2027 could mark the peak
+- **Flows reversal:** the melt-up mechanism now runs in reverse — −52% from the June 22 ¥112,700 high in seven weeks (SanDisk guidance shock −10% on Aug 6, a −16% AI-deleverage day) with leveraged ETFs and retail amplifying; the Bain overhang resolved, but the flow regime it leaves is two-sided
+- **Balance sheet risk retired at the peak:** net cash (−8% net D/E) as of June 2026 — but ¥470B/yr capex plus the ¥800B buyback commit peak-cycle cash, and no memory downcycle has preserved 75–80% operating margins
+- **Cycle timing:** Memory supercycles have never sustained beyond 2–3 years; 2027 could mark the peak — contract-price growth is already decelerating (+10–15% QoQ forecast for Q3 2026 vs +55–60% in Q1)
 - **No HBM diversification:** 100% NAND exposure means no participation in the highest-margin memory segment
-- **Trailing P/E ~70x:** On trailing earnings, the stock appears extremely expensive
-- **SK Hynix blocking stake:** ~15% convertible bond position limits strategic flexibility
-- **YMTC risk:** If YMTC Phase III ramps successfully, commodity NAND pricing could break
+- **Trailing P/E ~21x on peak-cycle earnings:** the optical cheapness is the classic cyclical trap — normalize margins to any prior mid-cycle and the multiple multiplies
+- **SK Hynix blocking stake:** ~14% position (held via a Bain-created vehicle post-exit) limits strategic flexibility
+- **YMTC risk:** #3 in Q2 2026 unit shipments at 14% (Counterpoint), ahead of Kioxia on units though behind on revenue; if Phase III keeps ramping, commodity NAND pricing could break
 - **Algorithmic efficiency compounding:** TurboQuant + Muon optimizer + quantization could reduce GPU count per data center → fewer enterprise SSDs per rack
 
 ## Catalysts
-- **Q4 FY2025 earnings (May 14, 2026):** Revenue guided ¥845–935B with ¥440–530B operating profit; significant sequential acceleration
-- **BiCS10 production start:** First 332-layer NAND production in 2026 at Kitakami Fab2
-- **Bain Capital exit below 50%:** Governance normalization; potential index inclusion eligibility
+- **Q4 FY2025 earnings (May 14, 2026 — delivered):** FY2025 closed at ¥2,337.6B revenue (+37%) and ¥876.2B non-GAAP OP, beating guidance; superseded by the Jul 31 Q1 FY2026 print — ¥1.77T revenue, ¥1.33T non-GAAP OP (75% margin), Q2 guided to ¥1.9T OP — which still missed sell-side consensus and preceded the halving
+- **BiCS10 production start:** 332-layer sampling in 2026; mass production 2027 at Kitakami Fab2
+- **Bain Capital exit below 50% — completed:** full exit early July 2026 (~$15B profit); remaining flow catalysts are the ¥800B buyback (through October 30), the October TOPIX free-float review, the 3-for-1 split (effective October 1), and the targeted spring 2027 US listing
 - **LC9 enterprise SSD revenue recognition:** Currently sampling; production shipments in 2026
-- **2027 NAND contract negotiations:** Kioxia's ability to secure LTAs at elevated prices provides visibility
+- **2027 NAND contract negotiations:** Kioxia targets ~50% of 2028 shipments under LTAs; locking elevated prices provides visibility
 - **Flash Memory Summit 2026:** Technology roadmap updates; BiCS10 yield data
 
 ## Risks
 1. **Cycle timing:** Supercycle extension through 2027 is required to justify current valuations; historical precedent warns against extrapolation
-2. **Bain Capital exit mechanics:** Further $2B+ secondaries could pressure the stock if market absorption capacity weakens
-3. **Balance sheet under stress:** If NAND pricing reverts to 2023 levels, the LBO debt structure re-stresses rapidly
-4. **BiCS10 execution:** Expedited 332-layer timeline introduces yield risk on a new fab
+2. **Flow mechanics post-Bain:** the exit completed July 2026, but the −52% drawdown showed the leveraged-ETF/retail flow regime amplifies both directions; buyback support ends October 30 and SK Hynix's ~14% block is the residual supply risk
+3. **Balance sheet under stress:** net cash as of June 2026 removes near-term solvency risk; a 2023-style pricing reversion would still compress FCF against ¥470B/yr capex and buyback commitments made at the peak
+4. **BiCS10 execution:** 2027 mass production (2026 sampling) after the expedited-to-2026 target slipped; a generational transition on a new fab still carries yield risk
 5. **Algorithmic efficiency compounding:** If TurboQuant + Muon + quantization compound, fewer GPUs per data center → fewer enterprise SSDs per rack
-6. **SK Hynix strategic risk:** Convertible bond holder with potential misaligned interests
+6. **SK Hynix strategic risk:** ~14% holder (via a Bain-created vehicle) with potential misaligned interests
 7. **JV tension:** SanDisk's enterprise SSD competitive push (Stargate) creates potential friction with Kioxia's LC9
 8. **Japanese photo-materials supply chain (new, 2026-04-22):** Iran War naphtha disruption → PGME/PGMEA solvent shortage at Shin-Etsu/TOK/JSR/Fujifilm/Nissan Chemical → risk to PR/BARC/SOH/HBM bonding adhesive supply into Yokkaichi + Kitakami. PCN requalification cycle ~1 year nominal, longer for leading-edge BiCS10. Korean alternatives (Chemtronics, Jaewon Industrial) exist but need requalification. Tail risk overlay on "Japan moat" Insight #4.
 
@@ -180,6 +182,7 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 	- *BiCS10 (Insight #1)* — density leadership CONFIRMED (332L, >29 Gb/mm², beats Samsung's 400-layer on density — the CBA claim validated), but mass production **slipped to 2027** (2026 = sampling only); the "expedited to 2026" framing is refuted for production. GP Series (10M IOPS GPU-direct SSD) + HBF prototype (5TB, 64 GB/s) = the AI-NAND product legs forming.
 	- *Structural gap*: the thesis has **no Conviction Triggers section at all** — the LOW/CLOSE question (cycle peak vs flows-driven melt-up) is live with no pre-committed arbiter. Write one; suggested LOW: Q1 FY26 actuals miss the ¥1,298B OP guide by >15% OR NAND contract prices negative QoQ for 2 quarters; suggested CLOSE: TOPIX-flow reversal + utilization push above 80% into falling prices.
 - **Disconfirming check** (evidence-updated): everything confirmed at once — earnings, balance sheet, technology, flows — which per the READING PROTOCOL is the disconfirm trigger. The outside view: a stock up 27x in 19 months on a commodity-memory business, with its passive-flow bid *scheduled* (October) and its US listing *announced*, is the textbook shape of a flows-topped cycle even when fundamentals lag the top by quarters. Single falsifiers, dated: **Jul 31 Q1 FY26 print** vs the ¥1,298B guide; Q3 NAND pricing (+10–15% → flat = the SNDK pattern arriving); SK Hynix's 14.4% convertible stake (the residual overhang now that Bain is out). Batch flag: SNDK + Kioxia are one Flash-Ventures bet expressed twice — the JV extension to 2034 + $1.2B services agreement deepens it; treat position sizing jointly.
+- **2026-08-15 metrics pass — July's dated falsifiers resolved**: the Jul 31 Q1 FY26 print beat its own ¥1,298B OP guide (¥1,330B non-GAAP, 75% OPM; Q2 guided ¥1,900B) but missed sell-side consensus — and the flows read fired first: −52% from the June 22 ¥112,700 ATH to ¥53,740 (SNDK guidance shock, AI-deleverage, leveraged-ETF unwind) while fundamentals still accelerate (Q3 contract prices +10–15% QoQ, decelerating; net cash reached; Bain exit closed at ~$15B profit, SKH ~14% residual via Bain vehicle; 3-for-1 split Oct 1 + ¥800B buyback). Hypothesis standing, not verdict: price topped on flows before the earnings top — [G-3] reflexivity running in reverse. The Conviction Triggers section is still unwritten, so the LOW/CLOSE call has no pre-committed arbiter.
 
 ## Related Research
 - [[Research/2026-04-15 - SNDK - Investment Evaluation]] — Post-separation NAND assessment; Kioxia JV structure analysis
@@ -264,3 +267,6 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 ### 2026-08-14
 - [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]: YMTC #3 NAND shipments at 14% Q2 ties Kioxia’s historic share number; revenue rank still behind (mix) — conviction unchanged (medium).
+
+### 2026-08-15
+- Metrics synced: 61 figures updated across 11 sections (FMP + web: company IR, Bloomberg, Nikkei, Counterpoint/CNBC, TrendForce). Stock −52% off the June 22 ¥112,700 ATH to ¥53,740 while Q1 FY26 printed ¥1.33T non-GAAP OP (75% OPM), Q2 guided ¥1.9T, balance sheet went net cash and Bain completed its exit — the de-rating is flows-led, not fundamentals-led. Snapshot: [[_Archive/Snapshots/285A - Kioxia (pre-metrics-pass 2026-08-15-194220)]]

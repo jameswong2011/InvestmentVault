@@ -7,14 +7,14 @@ conviction: medium
 sector: Semiconductor Test Equipment
 ticker: 6857.T
 source: Q4 FY2025 results (8 May 2026), sell-side reports, vault sector note [[Sectors/Semiconductor Test Equipment]]
-key_metrics_last_refreshed: 2026-07-12
+key_metrics_last_refreshed: 2026-08-15
 ---
 
 # Advantest (6857.T)
 
 ## Summary
 
-Advantest is the pure-play winner of an under-modelled capacity step-function in HBM final test. HBM3 final test consumes ~6 hours per stack; HBM3e runs 8-10 hours; HBM4 will run 14-18 hours per credible vendor field-data — yet sell-side ATE capacity models still assume ~10 hours flat through HBM5. If 14-18 hours holds, the installed base of V93000 EXA Scale systems required to test 2027 HBM unit volumes is ~60-80% above current capacity. Advantest holds a dominant position in HBM final test (management discloses ~66% overall tester share, up ~10pp YoY, and a "majority" in AI accelerators — the ~95% HBM-final-test / ~80% high-end-logic figures are sell-side sub-segment estimates, not management-stated), has guided to scale V93000 SoC-tester production capacity from ~5,000 to ~10,000 systems per year (annual capacity, NOT installed base; the 10,000/yr level targeted end-CY2028 but "more likely into CY2029" per the Apr 2026 FY25 call), and is repositioning services revenue toward SEMICAP-style annuity (currently ~22% of revenue, targeted >30% by FY2027). The non-consensus angle is not "AI = test demand"; it is that the HBM test-time scaling curve is steeper than capacity adds, creating a multi-year tester shortage that pricing already reflects partially but volumes have not yet caught. The bear setup is real — shares trade at 40-57x forward P/E (depending on FY consensus), the highest multiple ever for a SEMICAP equipment OEM, and a single Teradyne win in HBM5 hybrid-bonding test qualification (plausible by Q4 2027) re-rates the position immediately. Medium conviction reflects the multiple, not the operating thesis.
+Advantest is the pure-play winner of an under-modelled capacity step-function in HBM final test. HBM3 final test consumes ~6 hours per stack; HBM3e runs 8-10 hours; HBM4 will run 14-18 hours per credible vendor field-data — yet sell-side ATE capacity models still assume ~10 hours flat through HBM5. If 14-18 hours holds, the installed base of V93000 EXA Scale systems required to test 2027 HBM unit volumes is ~60-80% above current capacity. Advantest holds a dominant position in HBM final test (management discloses ~66% overall tester share, up ~10pp YoY, and a "majority" in AI accelerators — the ~95% HBM-final-test / ~80% high-end-logic figures are sell-side sub-segment estimates, not management-stated), has guided to scale V93000 SoC-tester production capacity from ~5,000 to ~10,000 systems per year (annual capacity, NOT installed base; the 10,000/yr level targeted end-CY2028 but "more likely into CY2029" per the Apr 2026 FY25 call), and is repositioning services revenue toward SEMICAP-style annuity (currently ~22% of revenue, targeted >30% by FY2027). The non-consensus angle is not "AI = test demand"; it is that the HBM test-time scaling curve is steeper than capacity adds, creating a multi-year tester shortage that pricing already reflects partially but volumes have not yet caught. The bear setup is real — at ¥36,870 (¥26.7T, 45.5x FY2026e / 58x LTM) FY25 EPS ¥515 already cleared the May ¥420-480 book and the SEMICAP-premium multiple did not compress, so residual risk is de-rating, not a missed print; a single Teradyne win in HBM5 hybrid-bonding test qualification (plausible by Q4 2027) re-rates the position immediately. Medium conviction reflects the multiple, not the operating thesis.
 
 ## Key Non-consensus Insights
 
@@ -22,7 +22,7 @@ Advantest is the pure-play winner of an under-modelled capacity step-function in
 
 **The 5,000 → 10,000 systems/year production-capacity call option.** Advantest's own multi-year capacity guidance — confirmed on the Apr 2026 FY25 call — steps annual V93000 build capacity 5,000 → 7,500 → 10,000 systems/year. This is annual production capacity, not installed base; the 10,000/yr level is targeted for end-CY2028 but "more likely into CY2029" per management. Buy-side has discounted this as "aspirational" given the 2024-2025 down-cycle. The downturn was driven by mature-node ATE inventory absorption (smartphone modems, automotive MCU) — entirely separate from leading-edge HBM/AI-ASIC capacity. The 3K→10K number is not aspirational; it backsolves the 2027-2028 HBM unit volume × test-time-per-stack math. If the math holds, capacity utilization stays >85% through 2029 and pricing on tester upgrades (V93000 EXA Scale Gen 3 expected 2027) embeds 15-20% ASP step-ups. Buy-side modelling 2026-2028 unit growth at GDP+ rates is mispricing the unit volume tail.
 
-**Services revenue is converging to a SEMICAP annuity model.** Advantest historically traded at ~25x forward earnings — equipment OEM multiple. Services and parts revenue ran 18-22% of total. CMD March 2026 disclosed targeted services mix >30% by FY2027, paralleling the ASML/AMAT/LRCX SEMICAP playbook (ASML services ~35%, LRCX CSBG ~37%). If executed, the multiple re-rates structurally — SEMICAP comp group trades 28-35x forward; Advantest at 30x is reasonable, at 40-50x is pricing in the re-rating fully. The non-consensus claim: services mix expansion is real and underwritten by installed-base growth (tester service contracts are sticky; HBM final test customers cannot multi-source without re-certifying V93000 BIST IP across thousands of test programs), but the multiple already prices the full transition. The earnings line and the multiple line meet between FY2027 and FY2028; either revenue exceeds CMD targets or the multiple compresses.
+**Services revenue is converging to a SEMICAP annuity model.** Advantest historically traded at ~25x forward earnings — equipment OEM multiple. Services and parts revenue ran 18-22% of total. CMD March 2026 disclosed targeted services mix >30% by FY2027, paralleling the ASML/AMAT/LRCX SEMICAP playbook (ASML services ~35%, LRCX CSBG ~37%). If executed, the multiple re-rates structurally — SEMICAP comp group trades 28-35x forward; Advantest at 30x is reasonable, at 45.5x FY2026e the re-rating is fully in the price. The non-consensus claim: services mix expansion is real and underwritten by installed-base growth (tester service contracts are sticky; HBM final test customers cannot multi-source without re-certifying V93000 BIST IP across thousands of test programs), but the multiple already prices the full transition — spot is the old 40-50x "fully priced" bucket, not the 30x destination. The earnings line and the multiple line meet between FY2027 and FY2028; either revenue exceeds CMD targets or the multiple compresses.
 
 **Custom AI ASIC test program proliferation is the second-derivative driver.** Beyond HBM, Advantest holds incumbent positions in test programs for AWS Trainium 2/3, Microsoft Maia, Meta MTIA, Google TPU v5/v6 and v7 prototypes. Each program is a 2-4 year tester deployment with custom load boards, probe cards (FormFactor single-source for high-end), and test methodology IP that is not portable to Teradyne without 12-18 months of re-qualification. Custom AI ASIC TAM was ~$25-35B in 2025, growing to ~$80-120B by 2028 per Marvell/Broadcom commentary. Even at conservative ATE-intensity of 1.5-2.0% of die value, this adds $1.2-2.4B to ATE TAM. Advantest's share of high-end logic ATE is ~80%; they capture the bulk. This is not a one-time AI bubble — every hyperscaler that builds custom silicon needs a 5-7 year test infrastructure commitment, and the qualification moat means today's wins are forward bookings through 2030.
 
@@ -52,7 +52,7 @@ Advantest is the pure-play winner of an under-modelled capacity step-function in
 
 **Does TSMC begin internalising HBM final test as part of CoWoS-L value-chain capture?** TSMC's CoWoS-L architecture for HBM4/5 pulls more of the integration value chain into the foundry (logic die, HBM stack, interposer all tested as integrated assembly). Historically HBM final test is done by memory vendors (SK Hynix, Samsung) before shipment to TSMC. There is a credible bear case where TSMC pushes for "ship-and-integrate" model where final test happens post-CoWoS-L — and TSMC procures its own ATE fleet directly, bypassing memory vendor relationships. This would not eliminate Advantest demand (they would supply TSMC instead) but would reset pricing power, since TSMC has scale-buyer leverage that SK Hynix lacks. Watch TSMC technology symposium April 2026 and JEDEC HBM4 spec updates for value-chain disclosures.
 
-**Are V93000 EXA Scale multiples sustainable at 40-57x forward P/E given the SEMICAP comp group trades 28-35x?** Advantest currently trades at 40-57x forward earnings (range depending on FY2026 consensus, ¥420-480 EPS). ASML at 28x, AMAT at 22x, LRCX at 24x, KLAC at 28x. The valuation premium prices in: (1) services mix re-rating, (2) HBM capacity step-function, (3) custom AI ASIC TAM expansion. If any one of those underperforms, the multiple compresses ~25-30%. The position is asymmetric — the operating thesis can be right and the stock can still underperform.
+**Are V93000 EXA Scale multiples sustainable at 45.5x forward P/E given the SEMICAP comp group trades 28-35x?** Advantest trades at 45.5x FY2026e (FMP EPS ¥810, 18 analysts) / 58x LTM — the May ¥420-480 EPS book is obsolete after FY25 printed ¥515. ASML at 28x, AMAT at 22x, LRCX at 24x, KLAC at 28x. The premium now sits on a raised earnings base, so compression is a multiple event, not a missed May-consensus print. If any one of services mix, HBM step-function, or custom-ASIC TAM underperforms, the multiple compresses ~25-30%. The position is asymmetric — the operating thesis can be right and the stock can still underperform.
 
 ## Business Model & Product Description
 
@@ -135,16 +135,16 @@ Hyperscalers who actively multi-source ASIC test (Google maintaining both V93000
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ¥21.6T (~$32B USD) | At ¥6,400/share, 749M shares outstanding |
-| Enterprise Value | ¥4.55T (~$30B USD) | Net cash position ~¥250B |
-| EV/Revenue (FY2026e) | 5.8x | Consensus FY2026 revenue ¥785B |
-| EV/EBITDA (FY2026e) | 18x | EBITDA margin ~32% expected |
-| Forward P/E (FY2026e) | 40-57x | Range reflects ¥420-480 EPS consensus dispersion |
-| Revenue Growth (FY2026e YoY) | +26% | Recovery from FY2024 down-cycle |
-| Gross Margin (FY2024) | 56% | FY26 (FYE-Mar-27) guided ~63% — above the 58-60% earlier modeled; services mix + AI pricing |
-| Operating Margin (FY2024) | 26% | Targeting 32% by FY2027 |
-| FCF Yield (FY2026e) | 2.1% | Low — reflects valuation, not cash generation |
-| Net Cash | ¥250B (~$1.65B USD) | Funds buybacks + capacity expansion |
+| Market Cap | ¥26.7T (~$172B USD) | At ¥36,870/share, 724M shares outstanding |
+| Enterprise Value | ¥26.4T (~$170B USD) | Net cash position ~¥305B |
+| EV/Revenue (FY2026e) | 16.3x | Consensus FY2026e revenue ¥1.62T (FMP, 18 analysts); TTM EV/Sales 21.4x |
+| EV/EBITDA (FY2026e) | 34x | FY2026e on ¥1.62T × FY25 48% EBITDA margin; TTM 43x |
+| Forward P/E (FY2026e) | 45.5x | FMP FY2026e EPS ¥810 (18 analysts); LTM P/E 58.2x |
+| Revenue Growth (FY2026e YoY) | +43% | FMP FY2026e ¥1.62T vs FY25 ¥1.13T; LFY was +44.7% |
+| Gross Margin (FY2024) | 56% | FY25 printed 64%; TTM 65.7% — already through the ~63% FY26 guide |
+| Operating Margin (FY2024) | 26% | FY25 printed 44%; TTM 45.8% — already through the 32% FY2027 target |
+| FCF Yield (FY2026e) | 1.5% | Low — reflects valuation, not cash generation |
+| Net Cash | ¥305B (~$2.0B USD) | Funds buybacks + capacity expansion |
 | HBM final-test share | ~95% (sell-side est.) | NOT management-stated; mgmt discloses ~66% overall tester share (FY25, +10pp YoY) and "majority" in AI accelerators |
 | High-end logic test share | ~80% (sell-side est.) | NVIDIA, custom AI ASICs; mgmt frames AI-accelerator share as "majority" globally |
 | V93000 production capacity | ~5,000 → 10,000 systems/yr | Annual build capacity (NOT installed base); 10,000/yr targeted end-CY2028, "more likely into CY2029" (Apr 2026 FY25 call) |
@@ -190,7 +190,7 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 
 **Position risks** (the thesis is right but the stock underperforms):
 
-5. **Multiple compression from peak valuation** — shares trade at 40-57x forward P/E vs SEMICAP equipment peers at 22-28x. Even with full thesis execution, multiple convergence to 32-35x (SEMICAP median+) reduces returns by 20-30% from current levels. The bull case math requires 32x sustained — the median is below that.
+5. **Multiple compression from peak valuation** — shares trade at 45.5x forward P/E (58x LTM) vs SEMICAP equipment peers at 22-28x. Convergence to 32-35x (SEMICAP median+) is a 24-30% multiple haircut from here; earnings already caught the May book, so residual risk is de-rating, not a print miss. The bull case math requires 32x sustained — the median is below that.
 
 6. **Currency risk on JPY/USD** — Advantest reports in JPY; ~85% of revenue is non-Japan. USD weakness vs JPY reduces translated revenue. JPY at ¥155/USD currently; a move to ¥130 reduces revenue ~16%. Limited hedging.
 
@@ -273,3 +273,6 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 
 ### 2026-08-12
 - [[Research/2026-08-12 - 6857 000660 BESI - HBM 3D Assembly Test Yield - news]]: HBM4/5 test complexity + hybrid bonding raises ATE content — conviction unchanged (medium).
+
+### 2026-08-15
+- Metrics synced: 24 figures across 5 sections. Price basis ¥6,400 / ¥21.6T / 5.8x EV-Rev → ¥36,870 / ¥26.7T / 16.3x; fwd P/E 40-57x→45.5x on ¥810 EPS. Snapshot: [[_Archive/Snapshots/6857 - Advantest (pre-metrics-pass 2026-08-15-194220)]]

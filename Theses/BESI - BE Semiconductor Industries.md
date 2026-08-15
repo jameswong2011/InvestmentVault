@@ -8,7 +8,7 @@ sector: Semiconductor Capital Equipment
 ticker: BESI
 fmp_symbol: BESI.AS
 source: Vault research synthesis + web search (TrendForce, Investing.com, Simply Wall St, Reuters, 36Kr, EE Times, BESI IR)
-key_metrics_last_refreshed: 2026-07-12
+key_metrics_last_refreshed: 2026-08-15
 ---
 
 # BESI — BE Semiconductor Industries
@@ -129,16 +129,16 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Market Cap | ~€20.22B (~$16.7B) | Near all-time high |
-| Share Price | ~€255.30 | April 13, 2026; 52-wk range €85.68–€214.00 |
-| FY2025 Revenue | €591.3M | Down 2.7% YoY — cyclical trough |
+| Market Cap | ~€18.49B (~$21.4B) | ~29% below €328.4 52-wk high |
+| Share Price | ~€233.50 | 2026-08-15; 52-wk €105.40–€328.40 |
+| FY2025 Revenue | €591.3M | Down 2.7% YoY — printed trough; 2026E consensus +67.8% |
 | FY2025 Orders | €685M | +16.8% YoY — inflection signal |
 | Q4 2025 Orders | €250.4M | +105.4% YoY — hybrid bonding driven |
 | Q1 2026 Guidance | €175–191M rev | +5–15% QoQ; GM 63–65% |
 | FY2025 Gross Margin | 63.3% | |
-| Trailing P/E | ~127x | |
-| Forward P/E (2026E) | ~66x | Based on ~€3.2 consensus EPS |
-| Price/Sales (ttm) | ~28.5x | |
+| Trailing P/E | ~89.1x | |
+| Forward P/E (2026E) | ~53.2x | Based on ~€4.39 consensus EPS |
+| Price/Sales (ttm) | ~25.2x | |
 | D2W Market Share | ~67% | Dominant position |
 | Hybrid Bonding Revenue | €36M (2023) → ~€476M (2026E) | FT estimate; not separately disclosed |
 | Installed Hybrid Bonding Systems | 150+ | Across 18 customers |
@@ -188,14 +188,14 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ## Risks
 
-1. **Timing risk (primary):** The entire acceleration case depends on when hybrid bonding transitions from pilot to volume production; JEDEC decisions could shift this by 1–2 years. The secular case is intact, but the valuation demands the revenue inflect soon
-2. **Valuation risk:** 127x trailing P/E and 28.5x P/S are priced for near-perfect execution. Any timeline slippage triggers disproportionate multiple compression given the optionality premium embedded in the stock
+1. **Timing risk (primary):** The entire acceleration case depends on when hybrid bonding transitions from pilot to volume production; JEDEC decisions could shift this by 1–2 years. The secular case is intact, but 89.1x LTM / 53.2x NTM still prices 2026E +67.8% before the annual print has left the −2.7% trough
+2. **Valuation risk:** 89.1x trailing P/E, 53.2x 2026E and 25.2x P/S still price the rebound as delivered. Multiple compressed from 127x/66x on estimate upgrades plus the fade from €255, not a printed recovery — a 2026 miss still derates hard
 3. **Competitive risk:** ASMPT, SUSS MicroTec, Hanmi, and Samsung Semes are all investing heavily; BESI's 67% D2W share could erode as the market scales and customers seek second-source options
 4. **Customer concentration:** TSMC is likely the dominant revenue contributor; any slowdown in TSMC's advanced packaging capex disproportionately impacts BESI
 5. **Yield risk:** Hybrid bonding at ~10% yield is pre-production quality; if fundamental yield barriers prove harder to solve, the entire transition timeline shifts
 6. **Geopolitical/export control risk:** Dutch government may extend ASML-style restrictions to advanced packaging equipment, constraining China sales
 7. **M&A uncertainty:** Takeover speculation inflates the stock; if no deal materializes, the premium unwinds and creates a valuation air pocket
-8. **Cyclicality:** Semiconductor equipment is inherently cyclical; FY2025 revenue was already down 2.7% YoY despite the AI narrative
+8. **Cyclicality:** Semiconductor equipment is inherently cyclical; FY2025 revenue printed −2.7% YoY (trough). 2026E +67.8% is consensus, not a reported run-rate
 
 ---
 
@@ -312,3 +312,6 @@ Reuters reported in March 2026 that BESI is fielding takeover interest from Lam 
 
 ### 2026-08-14
 - [[Research/2026-08-14 - 000660 - SK hynix Indiana 3.9B Packaging Groundbreaking - news]]: SK hynix Indiana 2028 HBM packaging site — future pack-out option, not a 2026 Kinex PO — conviction unchanged (medium).
+
+### 2026-08-15
+- Metrics synced: 12 figures across 2 sections. €255/127x/66x → €233.50/89.1x/53.2x; LFY −2.7% still the printed trough vs 2026E +67.8%. Snapshot: [[_Archive/Snapshots/BESI - BE Semiconductor Industries (pre-metrics-pass 2026-08-15-194220)]]

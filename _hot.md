@@ -3,33 +3,28 @@ publish: false
 date: 2026-08-15
 tags: [meta, hot-cache]
 ---
-# Hot Cache — Last Updated: 2026-08-15 (/sync — Saturday Daily Intel 10 news)
+# Hot Cache — Last Updated: 2026-08-15 (/sync — live-portfolio metrics skill-origin skip)
 
 ## Active Research Thread
 
-- **2026-08-15 /sync** — new macro note [[Macro & Technology/AI Datacenter Financing Mechanism Design]] reciprocally propagated to NVDA/AVGO/META/CRWV/NBIS/ORCL + sibling [[Macro & Technology/Sustainability of AI Capex]]; deal-mechanics framework (templates T1-T7, waterfall grammar, permutation grid). Tier B links + Logs only; web-verified deltas (Sopaipilla 7.534%, CRWV ~$35.6B, BofA $370B XPV) flagged for `/ingest`. Conviction unchanged. Next: `/graph last`.
+- **2026-08-15 live-portfolio metrics pass** — 17 holdings. 11 already synced earlier today (000660/PLTR/TSM/SPCX/NVDA/NET/AVGO/NBIS/MRVL/SNDK/285A). Retry after network drop finished the remaining 6: [[Theses/6857 - Advantest]] ¥6,400→¥36,870 / 16.3x EV-Rev; [[Theses/LRCX - Lam Research]] EV/S 9.0x→17.8x, NTM 43x→35x FY27; [[Theses/AMAT - Applied Materials]] $478B→$403B, NTM ~32x→~41x; [[Theses/KLA - KLA Corporation]] 10:1 split $204 / $266B at 55x LTM; [[Theses/ASMI - ASM International]] 38.6x NTM on €23.1 2026E EPS; [[Theses/BESI - BE Semiconductor Industries]] 127x→89x LTM, LFY still −2.7%. Conviction/status unchanged. Snapshot batch: `pre-metrics-pass 2026-08-15-194220`. Next: `$deepen` Bull Case on AMAT/KLA/LRCX (scenario anchors stale).
+- 2026-08-15: `$sync` default — 17 theses classified skill-origin (`Metrics synced:`); no thesis/sector/macro writes. 336 Research mtimes were a 19:46 bulk touch (git-clean). Macro log-only pointer to [[Website/2026-08-15 - Circular Financing - The Wrong Diagram]] (body unchanged).
+- *Previous 2026-08-15:* /sync — AI Datacenter Financing Mechanism Design → NVDA/AVGO/META/CRWV/NBIS/ORCL.
 - *Previous 2026-08-15:* /sync — Saturday Daily Intel 10 news first-propagated (neocloud Q2, CPO rumors crushed, Samsung 2nm HBM base-die, Chip Week AP +>70%).
 - *Previous 2026-08-15:* /sync — six 08-14 Substack deep-dives (Temple 8 / TSPA / COHR yield / SNDK NBM / MELI).
-- *Previous 2026-08-14:* /sync all — 000660 SK-Group governance → DRAM&HBM heuristic #9 + SKM/TER/CATL/NVDA adjacency.
 
 ## Latest Sync
 
-*Date: 2026-08-15 (`/sync` — new macro note "AI Datacenter Financing Mechanism Design", reciprocal propagation)*
+*Date: 2026-08-15 (`/sync` default — live-portfolio metrics skill-origin skip)*
 
-- **NVDA**: T5 vendor-finance template maps 5 concurrent financing seats + escalating ladder; enriches Risk #11, no funded-WACC delta — conviction unchanged (high). Flag: no Conviction Triggers section.
-- **AVGO**: XPV = vendor-financed offtake; $29B backstop retains customer-credit + rack-recovery risk; BofA $370B/$42B 20GW RVG-scaling flagged for ingest — conviction unchanged (high).
-- **META**: T2 site-SPV+RVG mechanics answer the residual-value OQ; El Paso Sopaipilla priced ~40bp wide of Beignet = first AI-SPV-debt repricing print — conviction unchanged (high).
-- **CRWV**: T3 GPU-DDTL = its capital structure; 325bp contract-vs-marginal spread; total principal debt ~$35.6B (Jun-30) flagged for ingest — conviction unchanged (medium).
-- **NBIS**: T4 prepay validates the prepay-vs-GPU-collateral funding-quality thesis (Insight #5 / → CLOSE); >70%-upfront / >$9B-2026 prepay = live health metric — conviction unchanged (medium).
-- **ORCL**: RPO-quality = template mix ($75B in-RPO prepay); Stargate Abilene interposes Oracle credit between SPV and OpenAI; Mar-26 ~600MW fracture flagged — conviction unchanged (medium).
-- **Macro**: sibling [[Macro & Technology/Sustainability of AI Capex]] §XI leverage ledger cross-linked to the deal-mechanics note. SPCX PhotonCap research note found fully idempotent — skipped.
-- **Next**: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-15-185003)]].
+- No thesis/sector/macro writes. 17 live-portfolio theses classified skill-origin (`Metrics synced:`). 336 Research files mtime-touched at 19:46 with no content delta (git-clean). Macro added a Log pointer to the website essay; body unchanged.
+- **Next**: `$graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-15-222251)]].
 
 ## Sync Archive
 
+- **2026-08-15** (`/sync` default — metrics skill-origin skip): 17 theses `Metrics synced:`; no sector/macro writes. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-15-222251)]].
 - **2026-08-15** (`/sync` — new macro note AI DC Financing Mechanism Design): reciprocal Tier-B propagation to NVDA/AVGO/META/CRWV/NBIS/ORCL + Sustainability of AI Capex; six deal templates + web-verified deltas flagged for ingest. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-15-185003)]].
 - **2026-08-15** (`/sync` — Saturday Daily Intel 10 news): neocloud Q2 (CRWV/NBIS/CBRS); CPO delay rumors crushed; Samsung 2nm HBM base-die; PLTR Horizon; LRCX >$3B labs; NET $2.50B converts; Maia 300; Chip Week AP +>70%. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-15-131917)]].
-- **2026-08-14** (`/sync all`): 000660 SK-Group governance → DRAM&HBM heuristic #9 + SKM; Humanoid Robotics → TER/CATL/NVDA. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-14-172039)]].
 
 ## Recent Conviction Changes
 
@@ -185,5 +180,5 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 
 ## Portfolio Snapshot
 <!-- Regenerated 2026-08-15 from current vault frontmatter; top-level counts only per the 200-word section budget. -->
-- **Coverage**: 92 theses (34 active, 31 monitoring, 27 draft) across 52 sector notes, 10 macro notes, and 337 research notes.
+- **Coverage**: 92 theses (34 active, 31 monitoring, 27 draft) across 52 sector notes, 11 macro notes, and 337 research notes.
 - **Conviction**: 21 HIGH · 59 MEDIUM · 12 LOW. No conviction/status frontmatter edits this sync.
