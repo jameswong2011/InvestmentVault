@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-13
 tags: [research, stress-test, INTU]
 sector: Accounting & ERP Software

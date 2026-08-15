@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Memory Mania: How a Once-in-Four-Decades Shortage Is Fueling a Memory Boom"
 source: "https://substack.com/home/post/p-186096534"
 author:

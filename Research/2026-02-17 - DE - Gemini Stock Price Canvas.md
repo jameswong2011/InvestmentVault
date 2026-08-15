@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-02-17
 tags: [research, DE, agriculture, industrials, gemini-canvas]
 status: active

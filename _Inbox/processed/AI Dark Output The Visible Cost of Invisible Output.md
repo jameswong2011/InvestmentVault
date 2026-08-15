@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "AI Dark Output: The Visible Cost of Invisible Output"
 source: "https://newsletter.semianalysis.com/p/ai-dark-output-the-visible-cost-of"
 author:

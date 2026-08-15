@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-10
 tags: [research, LITE, photonics, CPO, semiconductors, gemini-canvas]
 status: active

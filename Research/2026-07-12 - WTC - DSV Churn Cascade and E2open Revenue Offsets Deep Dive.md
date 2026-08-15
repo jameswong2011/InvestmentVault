@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-12
 tags: [research, deep-dive, WTC, cargowise, dsv, e2open, churn]
 sector: Logistics & Supply Chain Software

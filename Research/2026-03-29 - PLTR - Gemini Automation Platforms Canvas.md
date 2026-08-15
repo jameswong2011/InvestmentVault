@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-29
 tags: [research, PLTR, NOW, enterprise-software, automation, gemini-canvas]
 status: active

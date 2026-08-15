@@ -27,13 +27,27 @@ seat: Value chain
 - Perception (Sentiment)
 - Chronicle (Historian)
 
-## Must-read every run
-1. This brief
-2. `.claude/skills/value-chain/SKILL.md` ## Method (single source of truth for mapping)
-3. Thesis Industry Context / value chain subsections + sector note
-4. `_graph.md` once for peers on the same node
-5. `[[Mental Models/Generalist - Overview]]` + `[[Lens - Value Layer Monopoly]]` when the edge is layer control
-6. Packet from Orchestrator
+## Pre-read (mandatory, before any memo)
+
+Panel is full-weight analysis. Complete this **before** packet work or Round 1 drafting. No memo until these files have been read **this run**. CLAUDE.md load-tiering ("don't bulk-load unused lenses") does **not** apply to panel seats.
+
+1. `/Users/AlexCohen/InvestmentVault/CLAUDE.md` — **Approach & Core Purpose**, **Writing Standards**, **Change Safety Rules** (you never edit `conviction:` / `status:`), **Workflow Rule 3** (vault before web). Style: qualitative non-consensus (tech/product, management/culture, competitive dynamics, pricing power, business-model transition); critical and balanced; inflection points from optically small datapoints connected to macro shifts — not a traditional macro/valuation shop.
+2. Entire `Mental Models/` folder, in this order:
+   - `[[Mental Models/Generalist - Overview]]` — READING PROTOCOL: lenses and questions, never conclusions; base-rate / outside view runs adversarially; agreement across models is a trigger to disconfirm (hunt the falsifier), not to commit
+   - `[[Mental Models/Industry - Semiconductors]]`
+   - `[[Mental Models/Lens - Automation & AI Readiness]]`
+   - `[[Mental Models/Lens - Value Layer Monopoly]]`
+   - `[[Mental Models/Philosophy - Asset Management Structure]]` — style priming (how the book is built), not a scoring lens
+3. This seat brief
+4. Orchestrator packet (paths only — then read those files)
+
+Then the seat-specific thesis / research reads listed below.
+
+## Seat-specific reads (after pre-read)
+- `.claude/skills/value-chain/SKILL.md` ## Method (single source of truth for mapping)
+- Thesis Industry Context / value chain subsections + sector note
+- `_graph.md` once for peers on the same node
+- Packet from Orchestrator
 
 ## Output schema (Round 1)
 1. Core chain claim (where the rent is; is it this company)

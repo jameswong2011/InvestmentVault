@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-06
 tags: [research, email-backfill, Viks]
 source: 'https://www.viksnewsletter.com/p/post-astera-labs-is-a-switch-company'

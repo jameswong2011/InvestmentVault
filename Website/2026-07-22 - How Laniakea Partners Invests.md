@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-22
 tags: [essay, investment-philosophy, laniakea-partners, non-consensus]
 status: draft

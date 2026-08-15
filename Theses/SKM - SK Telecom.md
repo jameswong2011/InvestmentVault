@@ -266,6 +266,7 @@ Specific drivers:
 - [[AI Bubble Risk and Semiconductor Valuations]] — Cross-references the AIDC over-build risk that is the principal thesis risk (#3 in Risks section)
 - [[Macro & Technology/Agentic Internet.md]] — Frames Anthropic Claude positioning vs. OpenAI; relevant to SKT's AI Service "A." consumer assistant strategy
 - [[@Telecommunications Services]] — Sector note (created at Step 5 — first thesis in this sector)
+- [[Research/2026-08-14 - 000660 - SK Group Governance and Minority Cashflow Risk - deep-dive]] — SK Group control-pyramid (Chey→SK Inc→SK Square→Hynix) deep-dive; the ₩738.4B SKT→SK hynix transfer already flagged in Risk #8 / Mental Models is one instance of the shared minority-cashflow-diversion vector both SK-Group theses now carry
 
 ## Log
 
@@ -283,3 +284,6 @@ Specific drivers:
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass): 0 metrics changed — Dividend Yield 1.87% rounds to the same displayed 1.9% forward; not material. Snapshot: [[_Archive/Snapshots/SKM - SK Telecom (pre-numbers 20260712-183936)]]
+
+### 2026-08-14 (/sync)
+- [[Research/2026-08-14 - 000660 - SK Group Governance and Minority Cashflow Risk - deep-dive]]: 000660 governance deep-dive maps the Chey→SK Inc→SK Square→Hynix control pyramid — the same structure behind SKM's ₩738.4B intra-group transfer flag (Risk #8 / Mental Models); the two SK-Group theses now share one governance / minority-cashflow-diversion vector — conviction unchanged (medium).

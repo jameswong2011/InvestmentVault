@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-02-26
 tags: [research, APP, adtech, AI, mobile-gaming]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-06-06
 tags: [research, meta, surface-scan]
 status: active

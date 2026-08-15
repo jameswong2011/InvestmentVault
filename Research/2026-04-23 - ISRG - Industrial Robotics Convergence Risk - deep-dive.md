@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-23
 tags: [research, deep-dive, ISRG, industrial-robotics, KUKA, Midea, Stryker, convergence-risk]
 sector: Surgical Robotics

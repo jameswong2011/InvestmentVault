@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-11-28
 tags: [research, DE, agriculture, industrials, equity-research, gemini-canvas]
 status: active

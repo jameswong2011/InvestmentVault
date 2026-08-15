@@ -154,6 +154,10 @@ Bloom is a **Perez frenzy-phase hardware manufacturer whose equity has decoupled
 - [[Theses/CRWV - CoreWeave]] — neocloud, power-constrained customer archetype; datacenter power demand
 - [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]] — power-markets framework independently corroborates turbine backlogs (GE Vernova / Siemens / Mitsubishi sold out) and BTM-as-interconnection-bypass, but separates bypass from bankability (fuel/permits/redundancy/EPC/multi-year anchor cash flow) and flags the near-term-WTP (6–12mo) vs multi-year plant-underwriting duration mismatch — external support for §Insight 1 + backlog-quality skepticism
 - [[Research/2026-08-08 - Oklo SMR Mass Production - news]] — confirm-the-bear: 5 SMR types to criticality since June + NRC Part 57 mass-production licensing hardens the 2028–2030 SMR-supply-normalization leg of §Insight 1 (time-to-power arbitrage decays) and §Risk 2; on Oklo's own timeline (Aurora 2028, Meta datacenter early-2030s) it confirms the window bears assume, not sooner
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
 
 ## Log
 
@@ -165,3 +169,10 @@ Bloom is a **Perez frenzy-phase hardware manufacturer whose equity has decoupled
 
 ### 2026-08-08
 - [[Research/2026-08-08 - Oklo SMR Mass Production - news]]: 5 SMR types to criticality since June + Part 57 mass-production licensing confirm the SMR-supply-normalization leg of the wasting-asset bear (§Insight 1 / §Risk 2) — but on Oklo's 2028–early-2030s timeline, confirming not accelerating — conviction unchanged (low, draft).
+
+### 2026-08-13
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]: BTM forced for >half of new US DCs from 2028 — demand-leg tailwind; equipment TAM crowded — conviction unchanged (low).
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]: 2026 cancellation headlines are announcement-layer noise — does not cut the BTM demand path — conviction unchanged (low).
+### 2026-08-14
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]: turbine scarcity vs Bloom BTM option — promotional sleeve, not a design-win print — conviction unchanged.
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]: NBIS NJ BTM pairing named — adjacency, not a GW attach print — conviction unchanged.

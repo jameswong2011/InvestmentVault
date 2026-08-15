@@ -74,6 +74,10 @@ TSMC claimed COUPE in risk production Feb 2026 with AMD. Risk production ≠ HVM
 
 TSM trades at 22x NTM earnings. AAPL+NVDA = ~40% of revenue, possibly 45% by 2027. If NVDA sees earnings compression (competitor erosion, AI capex slowdown, any of the NVDA bear case scenarios), TSMC feels it directly. This has never been tested at these concentration levels for a $1T+ foundry. Comparable: Broadcom at AVGO+AAPL concentration, but AVGO is diversified. Answer: pressure-test in the next NVDA conviction-change event.
 
+### 9. Can an already-allocated CoWoS / GPU wafer fail to become a shipped rack because the ODM cannot finance the box?
+
+TSPA ([[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]]) argues the fifth bottleneck is Foxconn–Quanta–Wistron–Wiwynn working capital + Taiwan bank *group concentration*, not CoWoS or HBM. Consignment vs ODM-owned GPU is the swing: if ODMs buy the GPU, bank caps can gate shipment velocity of an already-allocated wafer. This is a *delivery* question, not a foundry-capacity question — TSMC can be sold out and still see customer-recognized revenue slip a quarter. Answer: ODM 10-Q WC / AR days + any Taiwan-bank AI-server exposure ceiling; NVDA/TSMC commentary that distinguishes "allocated" from "shipped."
+
 ## Business Model & Product Description
 
 **Pure-play contract foundry — makes chips designed by others.** Opposite of Intel's historical IDM model. TSMC revenue = wafer volume × ASP × yield, where ASP is a function of node vintage (N2 > N3 > N5 > N7 > N16/28/mature). Margins compound via learning-rate: each successive wafer at a given node costs less to produce than the previous one, but ASP stays sticky because customers can't re-qualify designs on competing nodes without 18-24 months of engineering.
@@ -268,6 +272,8 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 9. **HBM supply constraint bottleneck** — SK Hynix/Samsung HBM shortage caps CoWoS utilization below TSMC's own packaging capacity. Linked to [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact.md]].
 
+10. **ODM working-capital / Taiwan bank-group concentration** — even with CoWoS reserved and HBM allocated, Foxconn–Quanta–Wistron–Wiwynn may be unable to finance the box if they own the GPU inventory. TSPA: a fifth financing tranche sits below the factory SPV; group-level bank caps (not a single-name limit) are the choke [1×: TSPA]. Challenges treating an order booked / CoWoS reserved as a delivered rack. Linked to [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]].
+
 ## Conviction Triggers
 
 ### Original framework (2026-04-19) — HIGH block EXHAUSTED by the Q2'26 print; retained for audit
@@ -349,6 +355,31 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
 - [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-13 - INTC SMIC TSM - SMIC N+3 vs Intel 18A Metal Pitch Teardown - deep-dive]]
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]
+- [[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]]
+- [[Research/2026-08-03 - Kimi K3 Architecture Inference Performance - deep-dive]]
+- [[Research/2026-08-06 - AIP Arteris Chiplet NoC Interconnect Thesis - deep-dive]]
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
+- [[Research/2026-08-07 - GOOGL Gemini Decline GCP Financialization - deep-dive]]
+- [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]
+- [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]
+- [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]
+- [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]
+
+- [[Research/2026-08-13 - TSM SONY TSMC Sony vs China CIS Ecosystem - deep-dive]] — SemiVision: Sony–TSMC Koshi JV as CIS-as-compute / physical-AI eyes; 2026 EPS unchanged; qualification > headline
+- [[Research/2026-08-13 - Superposition Seeing Stack Map US JP KR EU - deep-dive]] — EU SPIRIT names advanced CMOS-ROIC as a planned gap, not current capability (weak foundry adjacency)
+- [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]
+- [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]] — ODM WC / Taiwan bank concentration as delivery choke below CoWoS
+- [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]] — $500B MOU as GPU-as-financeable-asset inversion (adjacency)
+- [[Research/2026-08-15 - 000660 TSM NVDA - Samsung 2nm HBM Base Die - news]] — Samsung 2nm HBM5/custom base-die send-fab (2H28) challenges §Industry Context node-layer framing, not the 2-of-3 HBM4 base-die win; [1×] ZDNet-via-Wccftech
+- [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]] — Feynman pull-forward onto A16; AP7/AP8 + SoIC ~50k wpm YE27; [1×] Digitimes-via-Benzinga, exclusivity unconfirmed
+
+- [[Research/2026-08-15 - TSM NVDA - Microsoft Maia 300 TSMC - news]] — The Information via GIGAZINE: Maia 300 fall unveil; TSMC talks >300k units by 2027; >1M ambition; Maia 200 tens of thousands / 2 US DCs
+
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — SPIL Douliu ~$3.1B CoWoS/test 2028 (OSAT-complement, not CoWoS-alternative); Maia capacity-hurdle restated
+
 ## Log
 
 ### 2026-04-19
@@ -427,3 +458,26 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: AMD MI455X first N2 GAAFET GPU + CoWoS-class attach — incremental N2/CoWoS demand — conviction unchanged (high).
 - [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: Spectrum-6 CPO shipping on TSMC COUPE; multi-vendor ecosystem still missing — COUPE productization, not open CPO — conviction unchanged (high).
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon 2026 capex ~$220B, capacity short through 2027 — CoWoS/N2 demand corroboration; sell-the-guide regime — conviction unchanged (high).
+- [[Research/2026-08-13 - INTC SMIC TSM - SMIC N+3 vs Intel 18A Metal Pitch Teardown - deep-dive]]: SMIC N+3 density matches TSMC N6-era, not N2 — China-catch-up headline is a pitch cherry-pick — conviction unchanged (high).
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]: packaging constraint splits (size / HBM I/O / cooling); TSMC extends into microfluidics/COUPE while EMIB-T contests the largest packages — CoWoS-monopoly duration, not death — conviction unchanged (high).
+### 2026-08-14
+- [[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]]: Helios/MI455X N2 attach is CoWoS/N2 demand only if software ships — conviction unchanged (high).
+- [[Research/2026-08-03 - Kimi K3 Architecture Inference Performance - deep-dive]]: efficiency software harvests the frenzy substrate — foundry intensity not cut — conviction unchanged (high).
+- [[Research/2026-08-06 - AIP Arteris Chiplet NoC Interconnect Thesis - deep-dive]]: chiplet remap is packaging/foundry adjacency — conviction unchanged (high).
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]: contracted-rate catch-up — CoWoS/N2 demand corroboration — conviction unchanged (high).
+- [[Research/2026-08-07 - GOOGL Gemini Decline GCP Financialization - deep-dive]]: TPU volume still TSMC wafers — Gemini-vs-GCP split is not a CoWoS miss — conviction unchanged (high).
+- [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]: GW energize → CoWoS/HPC pull-through if real — 10GW still aspiration — conviction unchanged (high).
+- [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]: implied CoWoS/wafer; source never names TSMC — conviction unchanged (high).
+- [[Research/2026-08-10 - Semis Polysilicon Section 232 Upstream Security - deep-dive]]: origin/sourcing rules, not N2 density — conviction unchanged (high).
+- [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]: COUPE/CPO tilt incentive; TSMC still the only COUPE gate — conviction unchanged (high).
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]: deployment-delay → CoWoS/HPC timing only — conviction unchanged (high).
+- [[Research/2026-08-13 - TSM SONY TSMC Sony vs China CIS Ecosystem - deep-dive]]: Koshi CIS JV is platform-export / physical-AI durability color, not a 2026 earnings event — 8/12 news note already had the $29.4B + ¥282B; no HIGH/LOW fire — conviction unchanged (high).
+- [[Research/2026-08-13 - Superposition Seeing Stack Map US JP KR EU - deep-dive]]: Europe's SPIRIT project treats advanced CMOS-ROIC access as a planned gap — weak second-order foundry adjacency, no IR revenue line — conviction unchanged (high).
+- [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]: Wccftech/EDN N2 20k→100k wpm YE26; N2 3% of Q3; 4× tape-outs; 50% rumor grade — not IR; HIGH-reaffirm (GM/capex) unfired — conviction unchanged (high).
+### 2026-08-15
+- [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]]: ODM WC / Taiwan bank-group concentration can gate rack shipments below already-allocated CoWoS — new OQ #9 / Risk #10; foundry-capacity thesis unchanged — conviction unchanged (high).
+- [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]]: $500B MOU is a financing-layer inversion, not a CoWoS-demand print — conviction unchanged (high).
+- [[Research/2026-08-15 - 000660 TSM NVDA - Samsung 2nm HBM Base Die - news]]: Samsung 2nm base-die send-fab extends its in-house die 4nm→2nm for HBM5/custom (2H28) — node-layer challenge to §Industry Context, does not unwind the SKH/MU TSMC base-die wins; HBM5 base-die duration is the open question — conviction unchanged (high).
+- [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]]: Feynman pulled forward onto A16 while Rubin ramps; AP7/AP8 + SoIC ~50k wpm YE27 supports Insight #1/#3; [1×] rumor, exclusivity/2028-volume-commit unconfirmed — conviction unchanged (high).
+- [[Research/2026-08-15 - TSM NVDA - Microsoft Maia 300 TSMC - news]]: >300k Maia 300 / 2027 TSMC talks touch OQ #1 (CoWoS remainder after NVDA); opposite of Intel-18A LOW; HIGH-reaffirm unfired — [1×] rumor — conviction unchanged (high).
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: SPIL $3.1B Douliu CoWoS 2028 supports Insight #1 OSAT-complement; not a named CoWoS-alternative LOW — conviction unchanged (high).

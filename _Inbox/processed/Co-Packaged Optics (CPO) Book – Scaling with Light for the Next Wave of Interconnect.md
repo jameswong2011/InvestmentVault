@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Co-Packaged Optics (CPO) Book – Scaling with Light for the Next Wave of Interconnect"
 source: "https://substack.com/home/post/p-178153689"
 author:

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, daily-intel-triage, semiconductors, materials, 2802, TSM, AVGO, NVDA]
 sector: semiconductors

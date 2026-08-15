@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Master of Tickets: Breaking Down Live Nation Entertainment"
 source: "https://quartr.com/insights/edge/master-of-tickets-breaking-down-live-nation-entertainment"
 author:

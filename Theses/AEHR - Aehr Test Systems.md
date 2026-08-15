@@ -276,6 +276,8 @@ The bear case is twofold: cycle compression and competitive dilution.
 - [[Research/2026-06-26 - AEHR - Stress Test]] — Second adversarial test (mental-models-driven): HIGH still unsupported a month on; CEO "early innings / most ASICs not burnt-in" contradicts Insight #2; Value-Layer-Monopoly lens → WLBI is a real but *optional, non-mandatory* layer; 5/7 assumptions 🔴 (Insight #2 now management-contradicted; SiPh upgraded design-in→systems order)
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — Terafab off-grid — long-dated WFE/test demand optionality
 - [[Research/2026-08-13 - AEHR - 22M AI WLBI Follow-on Order - news]]
+
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]] — Damnang L7 pick: FY27 $130–150M / $100.6M backlog; SiPh unmanned line + follow-on; holders' territory
 ## Log
 
 ### 2026-04-29
@@ -319,3 +321,6 @@ The bear case is twofold: cycle compression and competitive dilution.
 
 ### 2026-08-13
 - [[Research/2026-08-13 - AEHR - 22M AI WLBI Follow-on Order - news]]: $22M follow-on FOX-XP WLBI from lead AI-processor customer (9×300mm, Taiwan OSAT, 6-mo ship) — production-ramp confirmation, still single-lead-customer concentration — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]]: FY27 guide $130–150M with $100.6M backlog crosses the $80M+ HIGH conjunct; SiPh follow-on + 4-system new customer touches $10M+ observable (size unstated) — flag-only, not a /status — conviction unchanged (medium).
+

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-11
 tags: [research, email-backfill, PhotonCap]
 source: 'https://photoncap.net/p/five-days-after-innolights-68b-the'

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-06
 tags: [research, email-backfill, Temple8]
 source: 'https://temple8capital.substack.com/p/arteris-aip-chiplet-interconnect-thesis'

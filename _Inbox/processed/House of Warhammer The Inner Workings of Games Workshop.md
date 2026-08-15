@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "House of Warhammer: The Inner Workings of Games Workshop"
 source: "https://quartr.com/insights/edge/house-of-warhammer-the-inner-workings-of-games-workshop"
 author:

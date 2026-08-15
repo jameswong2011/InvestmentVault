@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 'CoreWeave coasts to a solid earnings beat, sending its stock higher after-hours'
 source: 'https://siliconangle.com/2026/08/11/coreweave-coasts-solid-earnings-beat-sending-stock-higher-hours/'
 date: 2026-08-13

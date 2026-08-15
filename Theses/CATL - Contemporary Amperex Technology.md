@@ -73,6 +73,7 @@ CATL is the world's #1 battery maker — 39.9% of global EV batteries, ~30% of e
 - **Is 40% global EV share defensible** as BYD internalizes via FinDreams, LGES/Samsung/Panasonic hold the Western OEM relationships, and local-content rules push share to regional players (Hungary/Spain are the counter-move)?
 - **Does anti-involution help or cap CATL?** Price floors + weak-player exit could lift the leader's profit — or forced price discipline plus antitrust attention on a 40–47%-share national champion could cap it.
 - **What is the equity's exposure to a single China political event** (Taiwan, export controls on battery/process tech, forced tech transfer, founder/CPPCC risk)? The ownership vehicle, not the business, may be the binding risk.
+- **Is CATL ceding a robot-battery / solid-state beachhead?** The humanoid supply chain ([[Macro & Technology/Humanoid Robotics Supply Chain]]) shows Samsung SDI (first pouch all-solid-state cell built explicitly for humanoids, MP target 2H 2027 + a Hyundai/Kia robot-battery MoU) and EVE (Longquan solid-state line targeting humanoids) moving robot-*first*, while CATL/BYD are publicly *less* optimistic on solid-state economics and this thesis carries zero robot content. Robots tolerate high $/kWh, so humanoids are the niche beachhead where solid-state gets marketed first — immaterial to 2026-27 numbers, but a competitive-positioning gap to watch as the ESS/EV cores mature.
 
 ## Business Model & Product Description
 CATL is best understood as **the TSMC of batteries** — a merchant cell-and-system "foundry" that sells to almost every automaker, versus BYD's captive model or the Korean/Japanese incumbents' narrower OEM sets. The analogy holds for *market structure* (scale leader, diversified customer base, process-technology edge) but breaks on *economics*: a battery cell is a physical, bill-of-materials-heavy, commoditizing good, so CATL lacks TSMC's near-zero-marginal-cost logic-layer non-rivalry. Its edge is being the lowest-cost producer at the largest scale, not owning an uncopyable information layer.
@@ -212,6 +213,7 @@ CATL is a commoditizing hardware maker levered to a maturing home market behind 
 - [[Theses/VRT - Vertiv Holdings.md]] — data-center power/thermal infrastructure; grid-and-datacenter power adjacency to the ESS thesis.
 - [[Sectors/Batteries & Energy Storage.md]] — sector MOC (created 2026-08-08; CATL is its first Active Thesis).
 - [[Research/2026-08-08 - CATL - Stress Test]] — adversarial short case; flags ESS margin-premium inversion + unmodeled VAT export-rebate hit as the two critical vulnerabilities.
+- [[Macro & Technology/Humanoid Robotics Supply Chain]] — humanoid component-stack tracker; flags CATL's zero robot-battery content vs Samsung SDI/EVE solid-state robot-first moves (see Outstanding Questions)
 
 ## Log
 ### 2026-08-08
@@ -223,3 +225,6 @@ CATL is a commoditizing hardware maker levered to a maturing home market behind 
 
 ### 2026-08-12
 - Sync propagation of [[Research/2026-08-08 - CATL - Stress Test]] into Bear Case — conviction weakened flag retained; no status/conviction frontmatter change (Tier 3).
+
+### 2026-08-14 (/sync)
+- [[Macro & Technology/Humanoid Robotics Supply Chain]]: humanoid robot-battery layer (~2.5 kWh/robot, solid-state marketed robot-first by Samsung SDI/EVE) — added Outstanding Question flagging the zero-robot-content gap; immaterial to 2026-27, positioning watch only — conviction unchanged (medium).

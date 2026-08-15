@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "EDA Market Primer - Market Dynamics, Cadence, Synopsys, Siemens, China EDA Rise"
 source: "https://substack.com/home/post/p-190630215"
 author:

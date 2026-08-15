@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-05-24
 tags: [research, retro, retrospective, synthesis, portfolio, macro]
 sector: macro

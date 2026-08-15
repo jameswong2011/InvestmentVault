@@ -1,9 +1,10 @@
 ---
+publish: false
 date: 2026-08-01
 tags: [research, Semiconductors, MU, SKHY, Memory, Optics]
 sector: DRAM & HBM Memory
 ticker: MU
-propagated_to: [LITE]
+propagated_to: [LITE, MU]
 source: 'https://photoncap.net/p/compute-short-memory-long-aschenbrenners'
 source_type: deep-dive
 ---

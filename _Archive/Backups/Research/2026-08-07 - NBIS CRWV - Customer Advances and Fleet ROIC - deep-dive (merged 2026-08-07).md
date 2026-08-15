@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-07
 tags: [research, deep-dive, NBIS, CRWV, neoclouds, customer-advances, ROIC]
 status: active

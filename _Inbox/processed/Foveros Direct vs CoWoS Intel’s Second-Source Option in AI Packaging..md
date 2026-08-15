@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Foveros Direct vs CoWoS: Intel’s Second-Source Option in AI Packaging."
 source: "https://x.com/TheValueist/status/2067909599542268080"
 author:

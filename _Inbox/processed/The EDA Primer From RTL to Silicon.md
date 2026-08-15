@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "The EDA Primer: From RTL to Silicon"
 source: "https://substack.com/home/post/p-190867437"
 author:

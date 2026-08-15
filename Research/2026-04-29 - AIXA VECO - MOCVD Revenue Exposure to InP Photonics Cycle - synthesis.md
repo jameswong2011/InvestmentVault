@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-29
 tags: [research, semiconductors, MOCVD, AIXA, VECO, photonics, CPO, equipment, synthesis]
 status: draft

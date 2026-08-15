@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-08
 tags: [research, nuclear, uranium, data-center-power, OKLO, CCJ, BE]
 sector: Uranium & Nuclear Fuel

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-06-11
 tags: [research, enterprise-software, AI, PLTR]
 sector: Enterprise Workflow AI & Automation

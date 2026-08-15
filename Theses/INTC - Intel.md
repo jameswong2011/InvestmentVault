@@ -346,6 +346,9 @@ The structural conflict (IDM running merchant foundry while competing with found
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis CPU landscape corroborates the structural-second-source frame and adds two new datapoints: 8-channel Diamond Rapids-SP cancelled (cedes highest-volume server market to AMD Venice SP8 until 2028); Clearwater Forest only +17% vs Sierra Forest on a low-yield Foveros-Direct stack ("yield-learning vehicle, not volume"); the SMT-removal causal chain (Spectre/Meltdown 2018 → Lion Cove → Diamond Rapids) made explicit
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]] — SemiAnalysis silicon shortage: capacity scarcity frames the foundry-diversification tailwind (Samsung Tesla AI5/AI6 dual-track, Samsung into Nvidia DC supply chain, admin backing) + EMIB as a 2.5D-easing alternative — but the article reads diversification as TSMC-capacity-driven, in tension with the thesis's "Intel wins are geopolitical/hedge not overflow" Insight #3; Intel also an N3 client customer (Lunar/Arrow/Nova Lake)
 - [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]] — TheValueist synthesis: Foveros-Direct yield-economics parity framework (D0/stack-yield vs CoWoS-L) + the EMIB-2.5D-external vs Foveros-Direct-3D-internal-only split; corroborates the structural-second-source / layer-aspirant frame, tempers EMIB-cost-arbitrage optimism
+- [[Research/2026-08-13 - INTC - Intel Should Raise Capital - deep-dive]]
+- [[Research/2026-08-13 - INTC SMIC TSM - SMIC N+3 vs Intel 18A Metal Pitch Teardown - deep-dive]]
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]
 
 ## Legacy Callouts
 
@@ -398,3 +401,8 @@ The structural conflict (IDM running merchant foundry while competing with found
 
 ### 2026-07-24 (/sync)
 - [[Research/2026-07-24 - TSM Q2 2026 Results - earnings]]: TSMC "welcomes" EMIB-T amid CoWoS overflow (Google TPU v9 reportedly evaluating EMIB); TrendForce: up to 90% of Nova Lake compute tiles may move to 18A (reversing the >90%-on-N2 read); reported 18A yield ~85% + NVDA/OpenAI orders (weak sourcing) — conviction unchanged (low); first external-validation cluster in years, all unconfirmed — verify before any re-rate.
+
+### 2026-08-13
+- [[Research/2026-08-13 - INTC - Intel Should Raise Capital - deep-dive]]: SemiAnalysis $40B equity-issue hypo inverts Insight #5 (multiple as compression vs currency); not a disclosed action — conviction unchanged (low).
+- [[Research/2026-08-13 - INTC SMIC TSM - SMIC N+3 vs Intel 18A Metal Pitch Teardown - deep-dive]]: SMIC 32.5 nm pitch ≠ leading-edge catch-up; 18A 36 nm M0 is PowerVia DTCO — conviction unchanged (low).
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]: EMIB-T now a credible CoWoS substitute at 2× reticle — supports the overflow/foundry option, not an 18A yield print — conviction unchanged (low).

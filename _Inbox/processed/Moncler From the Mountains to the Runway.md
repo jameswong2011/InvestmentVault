@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Moncler: From the Mountains to the Runway"
 source: "https://quartr.com/insights/edge/moncler-from-the-mountains-to-the-runway"
 author:

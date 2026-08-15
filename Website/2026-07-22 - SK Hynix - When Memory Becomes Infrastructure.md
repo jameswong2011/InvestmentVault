@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-22
 tags: [essay, investment-case, laniakea-partners, semiconductors, HBM, 000660]
 status: draft

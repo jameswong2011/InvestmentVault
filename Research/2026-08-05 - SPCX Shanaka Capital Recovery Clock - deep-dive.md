@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-05
 tags: [research, SpaceX, SPCX, AI Infra]
 sector: Datacenter Infrastructure

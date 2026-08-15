@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-07-08
 tags: [research, PANW, AMZN, cybersecurity, cloud-security, competitive-dynamics]
 status: active

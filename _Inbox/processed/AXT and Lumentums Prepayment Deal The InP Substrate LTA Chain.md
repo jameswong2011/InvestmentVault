@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-02
 tags: [research, email-backfill, PhotonCap]
 source: 'https://photoncap.net/p/axt-and-lumentums-prepayment-deal'

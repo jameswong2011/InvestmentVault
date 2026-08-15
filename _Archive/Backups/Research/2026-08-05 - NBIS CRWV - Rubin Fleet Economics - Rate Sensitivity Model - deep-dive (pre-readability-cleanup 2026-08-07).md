@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-05
 updated: 2026-08-07
 tags: [research, deep-dive, NBIS, CRWV, neoclouds, vera-rubin, ROIC, customer-advances, cash-flow]

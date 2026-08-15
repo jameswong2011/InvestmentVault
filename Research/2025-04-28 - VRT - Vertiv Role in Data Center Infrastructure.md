@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-04-28
 tags: [research, VRT, data-centers, power, cooling, infrastructure]
 status: active

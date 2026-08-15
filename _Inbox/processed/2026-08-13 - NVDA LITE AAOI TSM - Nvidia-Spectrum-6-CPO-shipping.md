@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 'Nvidia Ships Co-Packaged Optics Switch as Ecosystem Testing Gap Widens'
 source: 'https://www.techtimes.com/articles/324160/20260812/nvidia-ships-co-packaged-optics-switch-ecosystem-testing-gap-widens.htm'
 date: 2026-08-13

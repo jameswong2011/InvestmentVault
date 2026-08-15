@@ -293,6 +293,8 @@ Per-share base case (net cash growing with FCF to ~$2B by 2035; ~46M → ~50M di
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger; TRIM Low→1% (Rubin >2,000A architectural necessity + ITC LEO royalties, but +543% 1Y + 96x P/E + founder succession overhang)
 - [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]] — VPD/LPD + MLCC local capacitance; Vicor ~17× sales framing
 - [[Research/2026-08-12 - 6981 VICR - MLCC AI Demand Price Hikes Premiums - news]] — AI rack MLCC counts corroborate power-delivery intensity
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
+
 ## Log
 
 ### 2026-04-28
@@ -334,3 +336,5 @@ Per-share base case (net cash growing with FCF to ~$2B by 2035; ~46M → ~50M di
 
 ### 2026-08-12
 - [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]: power-delivery bottleneck intensifies with Rubin/Feynman current — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]: 800VDC untemplated in the LEGO map — no socket print — conviction unchanged.

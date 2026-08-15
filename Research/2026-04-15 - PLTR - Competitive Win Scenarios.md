@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-15
 tags: [research, enterprise-software, PLTR, Palantir, competitive-dynamics]
 status: active

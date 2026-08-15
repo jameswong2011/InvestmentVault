@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-19
 tags: [meta, infrastructure, how-to, setup]
 status: active

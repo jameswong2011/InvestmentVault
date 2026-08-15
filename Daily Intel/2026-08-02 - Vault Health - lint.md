@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-02
 tags: [meta, health, lint]
 source: scheduled /lint (launchd com.investmentvault.lint)

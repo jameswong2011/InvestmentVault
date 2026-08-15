@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, daily-intel-triage, news]
 source: 'https://www.datacenterknowledge.com/data-center-site-selection/aws-data-center-withdrawal-signals-growing-political-community-challenges'

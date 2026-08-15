@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-15
 tags: [research, industrials, DE, john-deere, precision-agriculture, autonomous-farming, cyclical]
 status: active

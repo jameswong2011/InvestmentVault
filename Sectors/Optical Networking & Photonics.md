@@ -17,6 +17,7 @@ status: active
 - Will **Chinese module dominance** (Innolight 50-60% 1.6T share, 7 of top 10 merchants, 60% of NVDA GB200 volume) extend up the stack into laser chips and DSPs — or does the 3% Chinese InP localization rate at 25G+ and 0% at 200G represent a permanent Western chokepoint that compounds with each speed generation because failure rates scale with the 4th power of bandwidth?
 - Does **co-packaged optics (CPO)** redistribute value away from transceiver makers (Lumentum Cloud Light, Coherent, Innolight) toward silicon photonics foundries (TSMC COUPE, GlobalFoundries/AMF, Tower) and vertically integrated ASIC houses (Broadcom, NVIDIA, Marvell/Celestial) — or does the "SiPh paradox" (every SiPh chip needs an external InP laser) mean component-level chokepoint players are net winners regardless of where module value shifts?
 - Is the **EML five-player oligopoly** (Lumentum + Coherent + Broadcom + Mitsubishi Electric + Sumitomo ≈ 75.9% of EML revenue) structurally durable given butt-joint regrowth barriers, or does Coherent's 6-inch InP platform lead (2+ years ahead of Lumentum's Greensboro 2028 target, 4x device density, 50% cost reduction) collapse Lumentum's pricing power by 2027-2028 even if it doesn't close yield parity?
+  - *2026-08-15 /sync — same-week COHR recaps **contradict** on the mechanism; do not merge.* PhotonCap: 6-inch already yields *higher* than 3-inch on EML/CW/PD; InP production (not demand) is the named bind; FY27 booked / 2028 POs; CPO/NPO as content-parity not a TAM cliff [1×: PhotonCap / COHR call]. IA: "the only way the numbers make sense is if yield is bad"; wafer-diameter ≠ parametric yield (RIN / PCE / λ-grid); hide-the-four-plots; 80% CPO-laser GM vs 30–40% isolator-FAU [1×: IA]. Arbiter: COHR publishes the 50°C four-plots near LITE's RIN < −155 dBc/Hz, *or* a hyperscaler qualifies COHR 200G EML at volume, *or* FQ1 misses $2.2B. (per [[Research/2026-08-14 - COHR LITE AAOI - PhotonCap Coherent FQ4 InP CPO - deep-dive]], [[Research/2026-08-14 - COHR LITE - Irrational Analysis Coherent Q4 FY26 - deep-dive]])
 - How does the **optical circuit switch (OCS)** market — revised from $500M to $1.5B for 2026 and projected at $2.5B by 2029 — reshape hyperscaler capex allocation? Is this a permanent category (Google Apollo, Marvell-Lumentum R300 demo at OFC 2026, Ironwood TPU) that compresses traditional electrical spine-switch TAM, or a niche for workloads where topology reconfiguration dominates vs. pure bandwidth?
 - Are **transitional architectures** (Linear Pluggable Optics removing the DSP, DSP-lite coherent-lite, NPO near-packaged optics) a multi-year deployment category or a 12-18 month bridge — and does LPO adoption at ~33% of 800G intra-datacenter by 2026-2027 structurally damage the Marvell/Broadcom DSP duopoly before CPO matures?
 - Can **AAOI** execute $1B FY26 revenue (+120% YoY) on $200M+ 1.6T orders and $124M+ 800G orders from hyperscalers, or does its customer concentration (Microsoft 44% in 2024, top-10 = 95%), prior hyperscaler churn allegations (Amazon/Microsoft "walked away" per Culper/BMF short reports), and dependence on merchant Western EML chips make it a structurally lower-moat path into the supercycle?
@@ -558,6 +559,17 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 - [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]]
 - [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]
 - [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
+- [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]]
+- [[Research/2026-08-05 - AXTI LITE IA Chinese Transceiver Ban Memo - deep-dive]]
+- [[Research/2026-07-25 - AEVA AXTI Stranded InP SOA ELSFP Math - deep-dive]]
+
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]] — Damnang round-two layer screen; L2 lasers + L6B form-factor-agnostic; LITE/COHR core
+- [[Research/2026-08-14 - COHR LITE AAOI - PhotonCap Coherent FQ4 InP CPO - deep-dive]] — InP-as-bind; 6-inch already > 3-inch; CPO/NPO content-parity
+- [[Research/2026-08-14 - COHR LITE - Irrational Analysis Coherent Q4 FY26 - deep-dive]] — contradictory yield-is-bad / four-plot CPO-laser moat
+- [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]] — LITE beat-and-raise confirmatory; cycle-timing is the payload
+
+- [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]] — Wccftech: LITE/COHR deny CPO delay; scale-out 2H26 / scale-up 2027 / deploy 2028; NVL576 copper-break
+
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -588,3 +600,12 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 ### 2026-08-13
 - [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]: LITE Q4 $1.01B / Q1 FY27 mid $1.25B ~40% OM a quarter early; CPO lasers/ELS/NPO named.
 - [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: NVDA Spectrum-6 CPO shipping on TSMC COUPE; ASE says multi-vendor test ecosystem missing — pluggable window ~1 switch gen.
+
+### 2026-08-14
+- Re-ingest expansion: Innolight FCC draft + scale-up CPO laser TAM + UHP-CW/cavity gate + AXT LTA — LITE remains the EML/CW layer; AAOI stays assembly-renter; qualification still binds share transfer.
+- [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]]: SerDes IP is a layer-renter; 224G co-design is the gate before CPO mix.
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]]: August LITE/COHR/AEHR prints used to falsify SemiAnalysis scale-up-CPO-past-2029; two-axis screen still ranks lasers then fiber; AAOI remains assembler until 400mW HP laser volumes.
+### 2026-08-15
+- [[Research/2026-08-14 - COHR LITE AAOI - PhotonCap Coherent FQ4 InP CPO - deep-dive]] / [[Research/2026-08-14 - COHR LITE - Irrational Analysis Coherent Q4 FY26 - deep-dive]]: same-week COHR recaps contradict on 6-inch yield (operating vs parametric) — surfaced in Key Q, not merged.
+- [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]]: LITE print confirmatory; Temple 8 cycle-peak / valuation-duration is the non-consensus payload.
+- [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]]: supplier calendar on-track vs SemiAnalysis “massive delay”; NVL576 copper-break is the architecture remap — AAOI → LOW ≥20% switch-share unfired.

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-29
 tags: [macro, technology, ai-capex, hyperscalers, datacenter, semiconductors, automation]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-07-03
 tags: [macro, geopolitics, iran, israel, defense, oil-risk]
 status: active

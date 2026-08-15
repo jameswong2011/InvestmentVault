@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-05-26
 tags: [research, stress-test, AEHR]
 sector: Semiconductor Capital Equipment

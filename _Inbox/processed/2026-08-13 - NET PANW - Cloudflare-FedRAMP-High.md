@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 'Cloudflare Achieves FedRAMP High Authorization'
 source: 'https://www.cloudflare.com/press/press-releases/2026/cloudflare-achieves-fedramp-high-authorization-to-secure-and-accelerate-the-u-s-governments-critical-missions/'
 date: 2026-08-13

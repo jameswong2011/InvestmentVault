@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-01-15
 tags: [research, semiconductors]
 status: active

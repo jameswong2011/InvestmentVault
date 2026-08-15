@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-05-29
 tags: [research, earnings, synthesis, VICR, AEHR, 2802, 6857, AIXA, 6981]
 status: active

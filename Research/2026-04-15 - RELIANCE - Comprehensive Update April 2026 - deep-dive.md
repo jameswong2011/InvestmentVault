@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-15
 tags: [research, reliance, jio, telecom, energy, retail, india, deep-dive]
 status: active

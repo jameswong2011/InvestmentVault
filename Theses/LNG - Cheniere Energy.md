@@ -220,6 +220,7 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 - [[Research/2025-07-03 - Macro - Iran-Israel Ceasefire Tensions and Geopolitical Risk]] — June 2025 Israel-Iran conflict precedent; ceasefire fragility; dual-theater stretch risk
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Hezbollah rearmament dynamics post-Assad: Iran transferred >$1B to Hezbollah in 2025, pivoted to maritime/cash/tech-transfer smuggling, rebuilt ~1/3 of pre-war capability within a year — structurally supports sustained Iran scenario even through ceasefire episodes
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict extends Ras Laffan supply gap beyond any prior scenario; structural beneficiary with contracted revenue floor
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]
 
 ## Log
 
@@ -268,3 +269,6 @@ Asian demand provides the structural growth driver. Japan and South Korea (combi
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Stock Price, Market Cap, FY2025 Revenue all identical to prior refresh after rounding. Snapshot: [[_Archive/Snapshots/LNG - Cheniere Energy (pre-numbers 20260712-183935)]]
+
+### 2026-08-13
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]: BTM gas for US DCs is a second-order LNG/feedgas ask, not a Cheniere contract print — conviction unchanged (medium).

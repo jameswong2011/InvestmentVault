@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "The Great AI Silicon Shortage"
 source: "https://newsletter.semianalysis.com/p/the-great-ai-silicon-shortage"
 author:

@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: {{date}}
 tags: [thesis]
 status: draft

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-14
 tags: [research, enterprise-software, NOW, AI-disruption, AI-coding, agentic-AI]
 status: active

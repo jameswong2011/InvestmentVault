@@ -265,6 +265,7 @@ Three reads: (1) the bull's "double penetration toward Tinder's ~19%" is arithme
 - [[Lens - Value Layer Monopoly]] — the framework driving the crux insight (liquidity monopoly vs. melting asset).
 - [[Lens - Automation & AI Readiness]] — wrapper-risk lens on "gAI"/EDGE.
 - [[_Inbox WSB DD]] source: "The best setup in the market right now is a gay dating app" (r/wallstreetbets, 2026-08-03) — the bull framing this thesis stress-tests.
+- [[Research/2026-08-13 - GRND - Grindr Short Squeeze Retail Setup WSB - web-clip]]
 
 ## Log
 
@@ -273,3 +274,6 @@ Three reads: (1) the bull's "double penetration toward Tinder's ~19%" is arithme
 - Addressed user callouts: [!question] on breaking the liquidity moat — added §Industry Context challenger playbook + scorecard (Archer clone failure = cold-start hypothesis confirmed; Sniffies modality/web-layer wedge; Match = buy-not-build) and VLM layer-renter trigger to Mental Models — conviction unchanged: moat holds vs. clones, contested vs. modality multi-homing.
 - Addressed user callouts: [!question] on EDGE/Woodwork product detail — added §Business Model product-detail subsection (EDGE = whale-tier attention triage, $80/wk–$499.99/mo pilot, Tinder Select precedent; Woodwork = ED/GLP-1/peptides with sub-bundling) — conviction unchanged; new flag: Woodwork sub-bundling adds pharma-funded component to APU growth (appended to OQ #2).
 - Addressed user callouts: [!question] on ecosystem health/bots/paywalls — added §Industry Context health-check subsection (Trustpilot 1.1/5; AU disclosure 94.6k enforcement actions/3mo >80% spam; paywall + payer-penetration tables vs Tinder/Hinge/Scruff/Sniffies) — conviction unchanged: quantifies the enshittification bear leg; watch complaints × funded alternatives, not complaint volume.
+
+### 2026-08-13
+- [[Research/2026-08-13 - GRND - Grindr Short Squeeze Retail Setup WSB - web-clip]]: WSB long recap of the same post the thesis was written from; comment section reproduces the enshittification bear — no new datapoint — conviction unchanged (low).

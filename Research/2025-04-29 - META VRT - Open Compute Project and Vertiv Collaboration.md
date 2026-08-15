@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-04-29
 tags: [research, META, VRT, data-centers, OCP, cooling]
 status: active

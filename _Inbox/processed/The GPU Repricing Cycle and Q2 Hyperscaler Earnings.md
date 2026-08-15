@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-06
 tags: [research, email-backfill, PhotonCap]
 source: 'https://photoncap.net/p/the-gpu-repricing-cycle-and-q2-hyperscaler'

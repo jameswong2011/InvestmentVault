@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-07
 tags: [research, email-backfill, SemiAnalysis]
 source: 'https://newsletter.semianalysis.com/p/gemini-is-cooked-but-gcp-is-cooking'

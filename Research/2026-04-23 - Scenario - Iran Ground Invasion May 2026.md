@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-23
 tags: [research, scenario, macro, iran-war, geopolitics]
 source: vault synthesis

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-12-15
 tags: [research, MTN, leisure, consumer, gemini-canvas]
 status: active

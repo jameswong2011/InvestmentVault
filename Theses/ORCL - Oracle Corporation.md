@@ -155,6 +155,7 @@ OpenAI misses, and the concentration detonates. If OpenAI defers, renegotiates, 
 - **Disconfirming check** (mandatory — the models agree Oracle's AI-cloud is the fragile/mispriced piece, so hunt the bull case): the strongest disconfirming datapoints are (a) **interest/revenue ~7%, not 25.8%** — Oracle is *not* a neocloud on the metric that condemns them, because a 70%-margin database annuity funds the build; (b) the **multicloud database layer-monopoly** (VLM STRONG FIT) is a genuine mispriced *long* hiding in the panic; (c) the equity already fell ~50%, pricing much of the bear. **Single falsifying datapoint:** OpenAI services its 2027 ramp on schedule AND OCI delivered gross margin scales to ≥30% → retire the short and re-underwrite Oracle as a genuine database-moat hyperscaler.
 
 ## Related Research
+- [[Macro & Technology/AI Datacenter Financing Mechanism Design]] — T4 in-kind prepay ($75B of $638B RPO customer-prepaid/supplied GPUs); Stargate Abilene chain (Blue Owl/Crusoe/Primary Digital shell → Oracle 15y lease owns GPUs → OpenAI consumes) fractured Mar-26 (~600MW expansion scrapped) [web]
 - [[Theses/NVDA - Nvidia]] — GPU supplier and apex of the NVDA→OpenAI→Oracle→NVDA circular-financing loop; Oracle's cloud economics are pinned to NVIDIA pricing
 - [[Theses/CRWV - CoreWeave]] — neocloud comparable (Platinum tier); the credit-fragility yardstick Oracle is measured against (25.8% vs Oracle's ~7% interest/rev)
 - [[Theses/NBIS - Nebius Group]] — neocloud comparable; the "cushioned balance sheet within the fragile tranche" contrast
@@ -167,7 +168,13 @@ OpenAI misses, and the concentration detonates. If OpenAI defers, renegotiates, 
 - [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]] — rental-economics floor/ceiling framework
 - [[Research/2025-12-05 - Macro - Gemini AI Bubble Risk Canvas]] — base-rate framing for AI-infrastructure bubble risk
 - [[_Archive/Docs/Semiconductor bear market hedges 2]] — the coverage-gap flag + "Oracle as holdable carry-leg short" construction that motivated this thesis
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]
 
 ## Log
 ### 2026-07-29
 - Initial thesis created. Conviction: medium — skeptical/short-biased coverage fill of a gap flagged in [[_Archive/Docs/Semiconductor bear market hedges 2]]. Medium not high because the bear case (OpenAI ≈ half of RPO, ~16% OCI margins, −$42B FY27E FCF, BBB-) is strong but the disconfirming case survives it: interest/revenue ~7% (not CoreWeave's 25.8%) means the database annuity funds the build, and the multicloud-database layer-monopoly (+531%) is a genuine mispriced long hiding inside the AI-capex panic. Sector: Cloud Infrastructure (no sector note — user-confirmed proceed-without). Cross-thesis links accepted: NVDA, CRWV, NBIS, META.
+### 2026-08-14
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]: NM turbines on secondary market — power constraint, not OCI share — conviction unchanged.
+
+### 2026-08-15
+- [[Macro & Technology/AI Datacenter Financing Mechanism Design]]: RPO-quality = template mix ($75B in-RPO prepay); Stargate Abilene interposes Oracle credit between SPV and OpenAI — the locus of RPO-concentration risk; Mar-26 ~600MW expansion fracture flagged — conviction unchanged (medium).

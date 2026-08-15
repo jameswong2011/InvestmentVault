@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-23
 tags: [research, email-backfill, SemiAnalysis]
 source: 'https://newsletter.semianalysis.com/p/vera-rubin-nvl72-vs-gb200-nvl72-inference'

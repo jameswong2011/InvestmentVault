@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, news, PLTR, earnings, IR-verification]
 status: active

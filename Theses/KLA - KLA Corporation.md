@@ -275,6 +275,7 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/near-balance — packaging tool pull persists
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — SpaceX Terafab off-grid power architecture (WFE demand optionality)
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
+- [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]
 ## Log
 
 ### 2026-04-29
@@ -313,3 +314,6 @@ KLA derates to LRCX-like multiples (~25-28x) on three concurrent stresses:
 
 ### 2026-08-13
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SK hynix Y2/M17 fabs — process-control content on new HBM/NAND capacity; not a print — conviction unchanged.
+
+### 2026-08-14
+- [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]: AMAT Q3 AP metrology/defect tools + DRAM mix — inspection-intensity option, not a KLA AP≥$1.4B print — conviction unchanged (high).

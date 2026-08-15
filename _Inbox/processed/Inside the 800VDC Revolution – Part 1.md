@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Inside the 800VDC Revolution – Part 1"
 source: "https://substack.com/home/post/p-198743508"
 author:

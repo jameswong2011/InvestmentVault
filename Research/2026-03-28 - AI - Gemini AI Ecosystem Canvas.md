@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-28
 tags: [research, AI, semiconductors, open-source, efficiency, gemini-canvas]
 status: active

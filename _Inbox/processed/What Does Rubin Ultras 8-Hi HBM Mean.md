@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-11
 tags: [research, email-backfill, Damnang]
 source: 'https://damnang2.substack.com/p/what-does-rubin-ultras-8-hi-hbm-mean'

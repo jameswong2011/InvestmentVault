@@ -368,6 +368,9 @@ The reports converge on a similar structural picture but diverge on emphasis. Sy
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Aixtron (the GaN-epi gate) says the 800V GaN ramp is "not there yet… still some time out into the future," a '27–'29 cycle — the epi-tool order pull (leading indicator of rack-volume realization) has not yet fired, putting GaN-on-Si 800VDC capacity at the later end of the base-case 2027 inflection; Murata confirmed the 800V→50V→GPU architecture explicitly
 - [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]] — supply-side counterpart to the MLCC demand up-mix: maps the merchant-materials oligopoly beneath the cap makers (release film 87% top-5 / sub-100 nm BaTiO₃ 3-firm / Ni powder 4-firm) as a sub-layer of §Value chain map Layer 6; extends the "under-priced oligopolies / bottleneck cascade" framing one layer upstream
 
+- [[Research/2026-08-14 - NVDA - 800 VDC AI Factories OCP - news]]
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — SE restates OCP 800V DC with GOOGL/MSFT/NVDA; no new MW/row figures vs 08-14 note
+
 ## Log
 
 ### 2026-05-18
@@ -388,3 +391,9 @@ The reports converge on a similar structural picture but diverge on emphasis. Sy
 
 ### 2026-06-06 (/sync)
 - [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - deep-dive]]: Orthogonality check — SemiAnalysis models aggregate datacenter power now in *excess* of AI compute (fab output lagged DC/power buildout). This does NOT slow the 800VDC transition: 800VDC is a per-rack *density* requirement (Rubin Ultra ~600 kW/rack, current-density physics), not an aggregate-power-scarcity play, so aggregate-power slack is orthogonal to the adoption curve. Indirect linkage only: if silicon (N3 + HBM) caps rack deployments, the *number* of 800VDC racks shipping is gated upstream — a volume risk already implicit in the Rubin-Ultra-ramp dependency, not an architecture risk. Adoption forecast unchanged; conviction unchanged at macro-link level.
+
+### 2026-08-14
+- [[Research/2026-08-14 - NVDA - 800 VDC AI Factories OCP - news]]: NVDA+MSFT+GOOGL OCP 800 VDC; 80-firm ecosystem; Rubin MGX in production for 2H26; 2027 2 MW/row busway — ship-date confirmation of the existing framework.
+
+### 2026-08-15
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: OCP 800V DC + SiPh-ready rack standard restated; adoption curve unchanged vs 08-14 NVDA OCP note.

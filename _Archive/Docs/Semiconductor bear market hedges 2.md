@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-07-29
 tags: [macro, technology, hedging, neoclouds, AI-capex, semiconductors, short-ideas, CRWV, IREN, NBIS]
 status: active

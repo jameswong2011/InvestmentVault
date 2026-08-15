@@ -802,6 +802,8 @@ Dated overlay on §§VII / X / XI — Log already cites the source notes; this s
 ### What changed in the evidence set (Aug 10–12)
 
 1. **Third-party compute financing institutionalized.** Nvidia’s MOUs with Apollo / BlackRock / Blackstone / Brookfield / Goldman / KKR target **>$500B** of third-party capital for AI infrastructure, with Nvidia optionally backstopping up to **25% (~$125B)** residual-value financing ([[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]; Stratechery residual-value / 1873 framing in [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]). This is the §XI “fragile tranche / off-balance-sheet wave” mechanism named at platform scale — socializing refinancing/residual risk into pension/insurance AUM rather than hyperscaler IG alone.
+    - *2026-08-15 Temple 8 inversion* ([[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]]): GPUs fail the toll-road / energy / CRE underwriting triad — useful life debated, residual value untested in a downcycle, cash-flow counterparties mostly unprofitable. The $500B is a design target, not a committed fund and not NVDA revenue; even full execution covers less than one year of ~$570B 2026 AI debt / ~$850B DC capex [1×: Temple 8]. Self-interest qualifier: the vendor promoting residual-value durability is the vendor whose ASP depends on lenders believing it.
+    - *2026-08-15 TSPA fifth tranche* ([[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]]): Foxconn–Quanta–Wistron–Wiwynn working capital + Taiwan bank *group concentration* sits below the factory SPV. Consignment vs ODM-owned GPU is the swing: an already-allocated GPU can miss a shipped-rack quarter if bank caps bind. Challenges treating announced-MW / reserved-CoWoS as delivered capacity.
 2. **Sovereign / infra-GP ownership of purpose-built DCs.** Theseus Infrastructure (Anthropic × Macquarie Asset Management × GIC): Macquarie funds + GIC own the platform and fund majority equity; Anthropic anchors under long-term leases (US-first; Anthropic covers consumer electricity-price increases). No MW/capex disclosed ([[Research/2026-08-12 - Macro - Theseus Infrastructure Anthropic GIC Macquarie - news]]).
 3. **Announced-MW conversion risk ≠ demand destruction.** AWS withdrew a ≤**500MW** / 2.5M sq ft Calvert County (MD) campus adjacent to Calvert Cliffs after a local political flip and an Aug 18 moratorium hearing; QTS’s ~$30B Digital Gateway was abandoned in July; Data Center Watch cites **75 projects / >$130B** delayed/canceled in 1Q26 partly from opposition ([1×: Data Center Watch via [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]]). Primary source attributes AWS’s move to development timelines / deliverability — **siting and politics, not CapEx cooling**. Dollars can still rise while announced-MW pipelines slip toward permissive / behind-the-meter / self-supply sites.
 4. **Hyperscaler dollar demand still rising into a sell-the-guide regime.** Alphabet lifted 2026 capex to **$195–205B** (from $180–190B) with Q2 capex $44.9B (+100% YoY) and Cloud +82%; the stock sold ~7% on the print ([[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]). Order-book bullish for the silicon/memory/networking complex; multiple risk is now the default market response to the same headlines.
@@ -822,6 +824,7 @@ The note’s core split — structural demand vs cyclical spend; functional vs f
 
 
 ## Related research
+- [[Macro & Technology/AI Datacenter Financing Mechanism Design]] — deal-level mechanism-design companion: six financing templates (corporate / site-SPV+RVG / GPU-DDTL / prepay / vendor-support / infra-wrap) + shell-ABS (T7) + 8-axis permutation grid; the §XI leverage ledger here is its macro companion
 
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]
 - [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]
@@ -867,6 +870,13 @@ The note’s core split — structural demand vs cyclical spend; functional vs f
 - [IEA — Energy and AI](https://www.iea.org/reports/energy-and-ai/)
 - [IEA — 2026 datacenter electricity and bottleneck update](https://www.iea.org/news/data-centre-electricity-use-surged-in-2025-even-with-tightening-bottlenecks-driving-a-scramble-for-solutions)
 
+- [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]] — $500B MOU as GPU-as-financeable-asset inversion
+- [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]] — ODM WC / Taiwan bank concentration as delivery choke
+
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — $500B third-party capital mixed reviews (cycle extension vs depreciating-GPU residual)
+
+- [[Research/2026-08-15 - NBIS CRWV - Neocloud Q2 CoreWeave Nebius Cerebras - news]] — CRWV $9.4B Q2 / $35–39B FY capex vs $626M net loss; A100-into-2029 residual print
+
 ## Log
 
 ### 2026-07-28
@@ -894,6 +904,16 @@ The note’s core split — structural demand vs cyclical spend; functional vs f
 
 ### 2026-08-13
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon lifts 2026 capex to ~$220B (from ~$200B), citing memory costs; AWS backlog $496B, constrained through 2027 into 2028 — complements Alphabet $195–205B; sell-the-guide overlay.
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]: SemiAnalysis YE26 NA hyperscaler self-build moved ~1% vs media "half canceled" — announcement-layer overcount, not demand destruction; supports the structural-demand vs cyclical-spend split.
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]: accredited grid headroom turns negative 2027; BTM forced for >half of new US DCs from 2028 — physical conversion constraint, not a capex-dollar cut.
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]: $11.6/hr neocloud payback is a shortage-vintage retail outlier; Rubin 2× capex keeps the renter below the layer owner.
+
+### 2026-08-14
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]: $500B platforms are uncommitted MOUs; residual-value / first-loss is the credit variable — financing innovation ≠ funded WACC cut.
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]: tape prices FCF burn; source prices contracted-rate catch-up — race-to-ceiling intact, L3/L4 rent hypothesized.
+- [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]: 90-day CSA underwrites less power-project debt than 20-yr take-or-pay — duration mismatch live.
+
+- [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]: Musk $30–50/W → $300–500B at 10GW by end-2027 — revenue claim, not a CSA/duration print; does not close the capex-to-profit bridge.
 ## Related Research
 - [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
 - [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]
@@ -901,3 +921,17 @@ The note’s core split — structural demand vs cyclical spend; functional vs f
 - [[Research/2026-08-12 - NVDA - Risky Business Stratechery AI Financing - news]]
 - [[Research/2026-08-12 - NVDA - Nvidia 500B AI Infrastructure Financing Platforms - news]]
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
+- [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
+- [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]
+### 2026-08-15
+- [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]]: $500B MOU inverted as residual-value experiment that fails the toll-road triad; design target, not committed fund.
+- [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]]: ODM WC / bank-group concentration is a fifth financing tranche below the factory SPV.
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: $500B residual-value debate restated — financing innovation ≠ funded WACC cut; race-to-ceiling intact.
+- [[Research/2026-08-15 - NBIS CRWV - Neocloud Q2 CoreWeave Nebius Cerebras - news]]: CRWV capex/loss tape + A100-2029 residual is the credit/residual-value variable already in Superposition / Temple 8 — no new tranche.
+- Companion note created: [[Macro & Technology/AI Datacenter Financing Mechanism Design]] — deal-mechanics layer (templates T1-T7, waterfall grammar, 8-axis permutation grid) to this note's §XI macro leverage ledger; web-verified deltas (El Paso Sopaipilla 7.534%, CRWV ~$35.6B, BofA $370B XPV RVG).

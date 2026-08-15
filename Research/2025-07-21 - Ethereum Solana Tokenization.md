@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-07-21
 tags: [research, crypto, ethereum, solana, tokenization]
 status: active

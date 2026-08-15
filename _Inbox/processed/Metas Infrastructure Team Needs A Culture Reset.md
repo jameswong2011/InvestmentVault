@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-22
 tags: [research, email-backfill, SemiAnalysis]
 source: 'https://newsletter.semianalysis.com/p/metas-infrastructure-team-needs-a'

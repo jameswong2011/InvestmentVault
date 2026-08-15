@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-08-09
 tags: [research, semiconductors, interconnects, CPO, co-packaged-optics]
 status: active

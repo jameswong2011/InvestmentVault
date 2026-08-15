@@ -185,6 +185,8 @@ The first merchant GPU win is AMD MI400 (not Nvidia), worth $100-150M and confin
 
 **5. Multiple compression risk** — 62x trailing P/E vs 25x ATE-peer median is a 2.5x premium contingent on AI growth narrative continuation. Any catalyst that calls the AI compute narrative into question (DeepSeek-style efficiency shock, hyperscaler capex guide-down, US export-control expansion to ~all China hyperscalers including India / Middle East routing) compresses the multiple before earnings respond, driving 30-40% drawdown even with intact operating fundamentals. Held position should be sized for this.
 
+**6. Humanoid encroachment on the UR / cobot optionality (new, 2026-08-14).** Insight #5 frames Universal Robots as Teradyne's option on AI-physical convergence in electronics/automotive assembly. The humanoid supply chain now lands on that exact turf: UBTech's Walker S2 is in mass production at Foxconn / BYD / Geely / Airbus electronics-assembly lines ([[Macro & Technology/Humanoid Robotics Supply Chain]]) — the first humanoid deployment on UR's core customer base. Near-term immaterial (~13k humanoids shipped globally in 2025 vs UR's installed base; humanoid deployment is pre-chasm per [G-10], no OEM publishes fleet MTBF), and the humanoid frenzy also re-rates robotics-adjacent multiples (two-sided). But from 2027 the cobot-vs-humanoid win-rate at shared customers is the read on whether the UR re-rating optionality survives or gets disintermediated. Watch: a Foxconn-class UR customer piloting humanoids for tasks a cobot runs today.
+
 ## Conviction Triggers
 
 ```
@@ -227,6 +229,7 @@ The first merchant GPU win is AMD MI400 (not Nvidia), worth $100-150M and confin
 - [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — packaging stack context for HBM final test bottleneck
 - [[Research/2026-01-17 - Semis - Gemini AI Compute HBM Canvas]] — AI compute HBM demand model
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: E/O photonic test = emerging un-standardized TAM with Teradyne named "very serious" (acquired a packaged-optical-test startup) — corroborates the Quantifi CPO-test-capture Bull Case
+- [[Macro & Technology/Humanoid Robotics Supply Chain]] — humanoid component-stack tracker; UBTech Walker S2 on Foxconn/BYD electronics-assembly lines is the first humanoid landing on UR's cobot turf (see Risk #6)
 
 ## Log
 
@@ -250,3 +253,6 @@ The first merchant GPU win is AMD MI400 (not Nvidia), worth $100-150M and confin
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Market Cap, Revenue Growth, Gross Margin, Operating Margin, FCF Yield all identical to prior refresh after rounding. EV/Revenue (TTM) and Trailing P/E still fetch_gap. Snapshot: [[_Archive/Snapshots/TER - Teradyne (pre-numbers 20260712-183935)]]
+
+### 2026-08-14 (/sync)
+- [[Macro & Technology/Humanoid Robotics Supply Chain]]: humanoid supply chain lands on UR's electronics-assembly turf (UBTech Walker S2 at Foxconn) — added Risk #6 (cobot-vs-humanoid win-rate watch from 2027); near-term immaterial — conviction unchanged (medium).

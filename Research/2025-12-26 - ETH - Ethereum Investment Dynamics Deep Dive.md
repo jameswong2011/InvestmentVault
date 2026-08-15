@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-12-26
 tags: [research, crypto, ethereum, stablecoins, enterprise, DeFi]
 status: active

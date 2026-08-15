@@ -24,7 +24,7 @@ sector: Semiconductors / Memory
 ## Key Industry Questions
 
 - **Chinese NAND disruption** *(status: base case confirmed, enterprise gap widening)*: YMTC launched PC550 (first PCIe 5.0 SSD, Xtacking 4.0, Mar 2026) targeting AI PCs and commercial clients — not enterprise. Phase III fast-tracked to H2 2026 (1 year ahead), two additional fabs planned (total ~400K WSPM at full scale). Pentagon briefly removed YMTC from 1260H list (Feb 2026, then withdrawn) — Entity List remains the binding constraint. Enterprise product gap now **16x**: western producers ship 245TB PCIe 5.0 SSDs vs YMTC's 15.36TB PCIe 4.0. YMTC is a confirmed consumer price disruptor; enterprise barrier is widening, not narrowing. See [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]].
-- **HBF as a new memory tier** *(status: probability increasing, five de-risking signals)*: SanDisk pilot line accelerated 6 months (H2 2026, Japan); SK Hynix H3 simulation (8x HBM3E + 8x HBF + B200 GPU): 2.69x perf/watt, 18.8x batch, 32→2 GPU reduction; Samsung confirmed researching since early 2020s + actively securing patents; Kioxia GP Series (10M+ IOPS flash module) announced at GTC 2026; OCP standardization workstream launched. Key risk: NVIDIA Rubin (H2 2026) does not natively support HBF — first GPU integration likely late 2027/early 2028. Write endurance (~100K cycles) limits Gen1 to read-intensive workloads. Not the next Optane: NAND-based scalability, multi-vendor OCP standard, and concrete $/inference ROI differentiate from Optane's proprietary, unscalable, vague-value-prop failure. See [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]].
+- **HBF as a new memory tier** *(status: probability increasing, sample window slipped)*: first SanDisk HBF memory die taped out; **customer samples moved to 2027** (H2 2026 sample window has slipped) [1×: Asymmetrical Bets / IR]. META joined the consortium (with SKHY / GOOG / Tencent). SK Hynix H3 simulation (8x HBM3E + 8x HBF + B200 GPU): 2.69x perf/watt, 18.8x batch, 32→2 GPU reduction; Samsung confirmed researching since early 2020s + actively securing patents; Kioxia GP Series (10M+ IOPS flash module) announced at GTC 2026; OCP standardization workstream launched. SNDK FY30 model still has **$0 HBF revenue** — free upside, not a loaded estimate. Key risk: NVIDIA Rubin (H2 2026) does not natively support HBF — ICMS/GIDS is the route-around; first GPU integration likely late 2027/early 2028. Write endurance (~100K cycles) limits Gen1 to read-intensive workloads. Not the next Optane: NAND-based scalability, multi-vendor OCP standard, and concrete $/inference ROI differentiate from Optane's proprietary, unscalable, vague-value-prop failure. See [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]].
 - **Product differentiation at scale** *(status: five durable moats identified)*: Samsung V10 (420-430L, Oct 2026) with YMTC hybrid bonding IP — first external technology dependency. SK Hynix/Solidigm 321L QLC in mass production, 51% QLC market, 244TB SSD on track. Kioxia BiCS10 (332L) expedited to 2026 — **59% density increase to 29 Gb/mm²**, 4μs latency improvement, 29% power reduction; CBA now quantifiably superior. Micron: PCIe 6.0 SSD first-mover (28 GB/s), 245TB 6600 ION in H1 2026 qual. Real moats: Samsung vertical integration (eroding via YMTC IP dependency), SK Hynix QLC+HBM diversification, Kioxia CBA density+die-supply, Micron IO speed, SanDisk HBF invention. See [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]].
 
 ---
@@ -455,6 +455,8 @@ Hyperscalers increasingly prefer multi-year LTAs to lock in supply. The shift to
 | 24 months | Rare | Increasing | Standard for hyperscalers |
 | 36 months | Never | Pilot | Multiple confirmed deals |
 
+SNDK Investor Day (13 Aug 2026) stepped the **New Business Model** from the prior ~$42B / 5-agreement book to **$93.9B minimum at floor prices across 10 agreements / 8 customers (3 hyperscalers), ~50% of FY27 bits and ~two-thirds of FY28 bits, average ~4-year tenor, bank-backed guarantees** [1×: Asymmetrical Bets / IR]. Visoso: even the lowest floor is an ~80% GM company *every year* through FY28–30 — the explicit bet against the "no NAND vendor has held >70% GM for more than 3 consecutive quarters" base rate. Floors have **not faced a test**; historical LTA walk-aways and SK Hynix / peer capacity from 2027 remain live. (per [[Research/2026-08-14 - SNDK - Asymmetrical Bets Investor Day Recap - deep-dive]])
+
 Three-year LTAs at 2026 pricing levels lock in $50–100B+ of revenue visibility for the supplier producers and forward-deploy supercycle pricing into 2027–2028. The 2027 LTA cycle (negotiated Q3–Q4 2026) is the highest-conviction non-consensus catalyst across the sector.
 
 ### Custom Controller Channel Shift
@@ -732,6 +734,11 @@ HBF's value proposition is architectural: it enables model weights (which are re
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — NAND capacity growth <DRAM (low double digits vs 20-30%); supply deficit durability through 2027+; die-supply positioning reinforced for Kioxia
 
 - [[Research/2026-08-13 - SNDK 285A - Kioxia SanDisk 2Tb QLC BiCS9 - news]]
+- [[Research/2026-08-14 - SNDK - Investor Day 2026 FY28-30 Model - news]]
+- [[Research/2026-08-14 - SNDK 000660 - HBF Die Tape-out 2027 Samples - news]]
+- [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]
+- [[Research/2026-08-14 - SNDK - Asymmetrical Bets Investor Day Recap - deep-dive]] — NBM $93.9B / 10 agreements / 80% floor-GM; HBF tape-out, samples 2027, $0 in FY30 model
+
 ## Log
 ### 2026-04-16
 - Initial NAND sector document created. Synthesized vault research (SNDK, Kioxia, PSTG theses + 10 research notes) with web research on YMTC market position, HBF standardization progress, and product-level differentiation across all 6 producers. Key findings: (1) YMTC is a consumer disruptor, not enterprise — Entity List + qualification barriers create 3+ year enterprise moat; (2) HBF probability higher than consensus due to OCP standardization + Samsung entry + SanDisk pilot line acceleration; (3) CBA architecture density advantage is systematically undervalued vs headline layer counts.
@@ -749,3 +756,10 @@ HBF's value proposition is architectural: it enables model weights (which are re
 
 ### 2026-08-13
 - [[Research/2026-08-13 - SNDK 285A - Kioxia SanDisk 2Tb QLC BiCS9 - news]]: Kioxia/SanDisk 9th-gen 2Tb QLC CBA 4.8 Gb/s — capital-efficient AI-eSSD scaling, not HBF.
+
+### 2026-08-14
+- [[Research/2026-08-14 - SNDK - Investor Day 2026 FY28-30 Model - news]]: SNDK FY28–30 model ~80/75/50 + 8 NBM customers ~2/3 FY28 bits — structural-margin claim; still a slide.
+- [[Research/2026-08-14 - SNDK 000660 - HBF Die Tape-out 2027 Samples - news]]: First HBF die taped out; 512GB / 1.6 TB/s gen-1; 2027 samples.
+- [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]: YMTC #3 NAND shipments 14% Q2, still behind on revenue (consumer mix); 15% Hwang capex-floor; Dalian restart recap.
+### 2026-08-15
+- [[Research/2026-08-14 - SNDK - Asymmetrical Bets Investor Day Recap - deep-dive]]: NBM $93.9B / 10 agreements / ~50% FY27 bits; Visoso 80% GM even at the floor; HBF samples slipped to 2027 (FY30 HBF still $0).

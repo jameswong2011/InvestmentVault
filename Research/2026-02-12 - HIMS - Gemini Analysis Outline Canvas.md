@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-02-12
 tags: [research, HIMS, healthcare, telehealth, gemini-canvas]
 status: active

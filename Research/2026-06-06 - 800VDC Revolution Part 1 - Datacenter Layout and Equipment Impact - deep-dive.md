@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-06-06
 tags: [research, data-center-power, 800VDC, VRT, NVDA, META, deep-dive]
 sector: Data Center Power & Cooling

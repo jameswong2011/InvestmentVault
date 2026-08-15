@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-01
 tags: [research, crypto, MSTR, preferred-stock, capital-structure]
 status: active

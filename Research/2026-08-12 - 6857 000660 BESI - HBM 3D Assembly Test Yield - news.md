@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, semiconductors, test, 6857, 000660, BESI]
 sector: semiconductors

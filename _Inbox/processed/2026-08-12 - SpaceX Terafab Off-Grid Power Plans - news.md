@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, daily-intel-triage, news]
 source: 'https://www.datacenterknowledge.com/infrastructure/spacex-plans-to-power-16-8b-terafab-without-the-grid'

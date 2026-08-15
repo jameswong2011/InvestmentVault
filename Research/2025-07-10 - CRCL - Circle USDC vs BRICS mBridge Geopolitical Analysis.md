@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-07-10
 tags: [research, crypto, stablecoins, geopolitics, CRCL, USDC]
 status: active

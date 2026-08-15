@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-15
 tags: [research, semiconductors, SNDK, SanDisk, NAND, flash-memory, AI-storage, Kioxia]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-09
 tags: [research, deep-dive, PLTR, enterprise-software, AI, agentic]
 sector: Enterprise Workflow AI & Automation

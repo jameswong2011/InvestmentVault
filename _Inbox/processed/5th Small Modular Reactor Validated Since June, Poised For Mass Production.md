@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "5th Small Modular Reactor Validated Since June, Poised For Mass Production"
 source: "https://www.zerohedge.com/energy/5th-small-modular-reactor-validated-june-poised-mass-production"
 author:

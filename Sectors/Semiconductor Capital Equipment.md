@@ -597,8 +597,14 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
 - [[Research/2026-08-13 - AEHR - 22M AI WLBI Follow-on Order - news]]
+- [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]
+- [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
+
+- [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]] — Lam IR >$3B / 5yr lab network; +>50% experiment capacity
+
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — AMAT AP +>70% 2026; LRCX $3B labs; SPIL $3.1B Douliu CoWoS 2028
 
 ## Log
 
@@ -660,3 +666,11 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 ### 2026-08-13
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: KRW 54T Y2+M17 — WFE pull 2028–29 (AMAT/LRCX/KLA/ASMI/BESI).
 - [[Research/2026-08-13 - AEHR - 22M AI WLBI Follow-on Order - news]]: $22M FOX-XP follow-on AI WLBI — production-ramp in a still-small TAM.
+
+### 2026-08-14
+- [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]: AMAT Q3 record $9.12B; DRAM mix 26%; China 28%; Q4 $10.25B±$0.5B; six DRAM/AP tools — WFE 2H DRAM/AP tape, not an ICAPS print.
+- [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]: SKH $720B / Yongin tour — construction + custom-HBM, WFE dollars still demand-gated (Industry #19).
+
+### 2026-08-15
+- [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]]: R&D-velocity infra (Industry #2 flavor ii), not a WFE-order demand signal (Industry #19).
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: AMAT AP +>70% on HBM/3D chiplets is the holding-specific WFE intensity print; SPIL CoWoS is OSAT-complement.

@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "The Last 1.5mm of AI Power: Three Numbers from Vicor’s Q1 2026 Earnings Call"
 source: "https://photoncap.net/p/the-last-15mm-of-ai-power-three-numbers"
 author:

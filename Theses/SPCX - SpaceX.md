@@ -184,10 +184,22 @@ The High-multiple pool is the unproven one. AI capex at $15.8B/quarter builds a 
 - [[Research/2026-08-13 - Portfolio - Reddit Product and Workplace Signal - synthesis]]
 - [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]
 - [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]
 
+- [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]
 ## Log
 
 ### 2026-08-13
 - Initial thesis created. Conviction: medium — survives the bear case because the downside stub is a real business (Connectivity 60.5% adj. EBITDA + $60.6B net cash), while AI ROIC stays unproven on 90-day paper so high is unearned.
 - Rebuilt from scratch superseding [[_Archive/Theses/@SPCX - @SpaceX]] (malformed filename; panel file archived). Carried forward status active + conviction medium per same-day /status SPCX draft→active run. New since panel file: Cursor confirmed all-stock, Anthropic full Colossus-1 buyout, MSFT 3 GW unverified, Leo commercial timing, Memphis turbine-removal deadline, sell-side dispersion $62–$800.
 - Transcript ingested: Q2-2026 — Connectivity profit pool reprinted ($2.6B adj. EBITDA, ARPU $66 flat); AI capex run-rate stays ~$18.4B for the next two quarters and CSA duration still unsaid; YE26 >2 GW restated, 10–20 GW / $100B ARR / $1T-2030 not a duration print. See [[Research/2026-08-13 - SPCX Q2-2026 - earnings]].
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]: Colossus 2 $11.6/hr is the retail outlier the source itself discounts; does not convert the unproven AI-campus option into a cash annuity — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]: turbine/siting binds before GPUs — 10GW path is power, not silicon — conviction unchanged (medium).
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]: ~$50M/IT-MW disclosed pay vs $12–15M CSP rule of thumb — campus cost, not CSA duration — conviction unchanged (medium).
+- [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]: 10GW/MSFT still unverified; 90-day CSA; priced variable is vapor-vs-real not duration — conviction unchanged (medium).
+- [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]: 86% capex to AI; $1.1B AI adj. EBITDA is D&A add-back; 90-day as two-faced instrument — conviction unchanged (medium).
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]: peer levered-builder print — does not convert 90-day paper into a cash annuity — conviction unchanged (medium).
+- [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]: Musk restates 10GW / $300–500B by end-2027 from 1.4GW nameplate; no CSA duration or YE26 ≥2GW print — conviction unchanged (medium).

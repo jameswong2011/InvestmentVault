@@ -104,7 +104,7 @@ Vertiv sells capital goods that sit between the utility grid and the data center
 1. **Grid interconnect constraints** (PJM queue 200+GW, 3-5yr timelines) pushing density up per site
 2. **Liquid cooling transition** from optional to mandatory above 50kW/rack
 3. **Hyperscaler capex oligopsony** (MSFT, GOOG, AMZN, META) setting terms
-4. **Modular/prefab deployment** replacing stick-built for speed
+4. **Modular/prefab deployment** replacing stick-built for speed. SemiAnalysis's LEGO-datacenter map ([[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]) relocates the scarce slot from electricians to factory throughput + heavy-haul + L5 IST: OneCore content/MW cited $3.5M→$7M, sold-out factory slots, DSX/BMarko/Air twins as the attach stack. Consensus underwriting $15B backlog still misses whether Vertiv captures the factory-slot rent or just rides operator prefab.
 5. **AI silicon roadmap acceleration** (NVIDIA generational cadence compressed to 12 months) forcing faster co-design cycles
 6. **Geopolitical bifurcation** (Huawei/Sugon in China + Global South, Vertiv/Schneider/Eaton in Five Eyes)
 
@@ -193,6 +193,13 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 - [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]] — nodal/LMP power-market framework; corroborates grid/turbine scarcity directionally but cautions against equating equipment scarcity with vendor pricing power (§Non-consensus #5 caution)
 - [[Theses/NVDA - Nvidia]] — NVIDIA thesis references Vertiv as reference-design cooling partner
 - [[Theses/META - Meta.md]] — Meta thesis references OCP collaboration with Vertiv
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]
+- [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]
+- [[Research/2026-08-08 - META Shanaka Clocks on One Building DC Finance - deep-dive]]
+- [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]
 
 ## Log
 
@@ -230,3 +237,14 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 
 ### 2026-08-06
 - [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]: power-markets framework corroborates the grid-interconnect bottleneck but cautions the "benefits regardless of AI-capex direction" leap (§Non-consensus #5) — demand flexibility / fixed-cost sharing / nodal price effects can redistribute the constraint without guaranteeing vendor return; no evidence on VRT share or backlog conversion. Conviction unchanged (medium, monitoring).
+
+### 2026-08-13
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]: grid headroom negative 2027; BTM/on-site generation is the chokepoint — corroborates interconnect bottleneck — conviction unchanged (medium).
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]: YE26 NA self-build moved ~1%; equipment-ordered pipeline progressing — weakens a 2026 order-cliff bear — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]: power/siting > GPUs — demand corroboration, not a pricing-power print — conviction unchanged (medium).
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]: OneCore $3.5M→$7M/MW + sold-out factory slots — backlog vs factory-throughput ask — conviction unchanged (medium).
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]: last-mm VPD is board-level, not CDU/thermal — adjacency only — conviction unchanged (medium).
+- [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]: speed playbook vs 15–20yr quality plants — GW print ≠ Vertiv attach — conviction unchanged (medium).
+- [[Research/2026-08-08 - META Shanaka Clocks on One Building DC Finance - deep-dive]]: interconnection/succession can bind before equipment — conviction unchanged (medium).
+- [[Research/2026-08-10 - SPCX PhotonCap First Earnings 10GW Hardware Chain - deep-dive]]: power/permitting binds before GPUs — demand direction, not vendor share — conviction unchanged (medium).

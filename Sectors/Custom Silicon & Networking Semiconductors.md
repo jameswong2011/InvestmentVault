@@ -342,6 +342,12 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 - [[Research/2026-08-12 - AVGO MRVL - Arista Q2 3B Supply Chain - news]]
 - [[Research/2026-08-05 - SerDes Part 1 Technology Before CPO - deep-dive]]
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]
+- [[Research/2026-08-06 - ALAB Astera Labs Switch Company Scorpio X - deep-dive]]
+- [[Research/2026-08-06 - AIP Arteris Chiplet NoC Interconnect Thesis - deep-dive]]
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
+
+- [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -380,3 +386,9 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 
 ### 2026-08-13
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: AWS custom silicon >$25B ARR inside ~$220B Amazon capex — XPU/Trainium vs merchant GPU mix; AVGO/MRVL seat dynamics.
+
+### 2026-08-14
+- [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]: XPV $29B is AVGO lease backstop; factory financeability ≠ offtake transfer.
+- [[Research/2026-08-06 - ALAB Astera Labs Switch Company Scorpio X - deep-dive]]: Scorpio-X intra-rack PCIe switch — open-standard WEAK FIT until quals print revenue.
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]: L3/L4 (memory/optics) hypothesized as non-insourceable rent vs L1/L2 ASIC/GPU.
+- [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]: AVGO named as N2 demand in EDN/Wccftech rumor — weak tape-out color, not an XPU award.

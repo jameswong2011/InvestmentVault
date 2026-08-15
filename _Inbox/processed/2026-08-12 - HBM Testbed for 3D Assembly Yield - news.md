@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, daily-intel-triage, news]
 source: 'https://semiengineering.com/hbm-becomes-testbed-for-3d-assembly-yield/'

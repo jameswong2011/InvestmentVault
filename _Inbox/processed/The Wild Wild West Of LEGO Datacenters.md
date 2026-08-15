@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-29
 tags: [research, email-backfill, SemiAnalysis]
 source: 'https://newsletter.semianalysis.com/p/the-wild-wild-west-of-lego-datacenters'

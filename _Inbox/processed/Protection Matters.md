@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-07
 tags: [research, email-backfill, Citrini]
 source: 'https://www.citriniresearch.com/p/protection-matters'

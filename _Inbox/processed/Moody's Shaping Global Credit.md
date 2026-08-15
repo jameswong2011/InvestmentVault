@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Moody's: Shaping Global Credit"
 source: "https://quartr.com/insights/company-research/moodys-shaping-global-credit"
 author:

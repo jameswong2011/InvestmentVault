@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-08-06
 tags: [research, crypto, regulation, AI, ethereum, solana, cardano, polkadot, avalanche]
 status: active

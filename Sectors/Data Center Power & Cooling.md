@@ -269,6 +269,12 @@ The "AI/NVIDIA-linked vs. traditional enterprise" split for Vertiv FY26E maps to
 - [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]] — neocloud demand-side reference: active-versus-connected MW separates installed supplier demand from execution-dependent future power, while liability structure identifies which operator can keep funding the build
 - [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]] — nodal/LMP power-market primer (system-balance-to-price chain, merit order, production-cost/LMP model, market-design taxonomy, site-and-finance decision tree, hedge decomposition); the framework behind §Key industry questions (nodal/market-design), §Investor heuristics #10, and §Mental Models
 - [[Research/2026-08-08 - Oklo SMR Mass Production - news]] — SMR / behind-the-meter nuclear as a datacenter power *source*: Oklo Groves criticality (5th SMR type since June) + NRC Part 57 mass-production licensing; anchors the Meta 200-acre Ohio datacenter (early-2030s) and competes with on-site generation ([[Theses/BE - Bloom Energy]]). Relevant to §Macro shifts #1 (BTM co-location) and the §Mental Models "deliverability toll layer" — SMR supply normalization is the 2028–2030 leg the BE time-to-power-arbitrage bear rests on
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]
+- [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]
 
 ## Log
 ### 2026-04-22
@@ -296,3 +302,11 @@ The "AI/NVIDIA-linked vs. traditional enterprise" split for Vertiv FY26E maps to
 
 ### 2026-08-08 (/sync)
 - [[Research/2026-08-08 - Oklo SMR Mass Production - news]]: linked as a BTM-nuclear power-source reference (Oklo Groves criticality, Part 57 mass-production; Meta datacenter anchor) — relevant to §Macro shifts #1 (BTM co-location) and the SMR-supply-normalization leg of the [[Theses/BE - Bloom Energy]] bear. Link-only (Tier B); no VRT conviction or sector-framing change.
+
+### 2026-08-13
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]: accredited grid headroom negative 2027; BTM >half of new US DCs from 2028.
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]: 2026 cancellation headlines are announcement-layer noise; YE26 NA self-build ~-1%.
+
+### 2026-08-14
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]: scarce slot moves electrician → factory throughput + heavy-haul + L5 IST; OneCore $3.5M→$7M/MW.
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]: turbine/siting binds before GPUs — equipment demand direction, not vendor pricing power.

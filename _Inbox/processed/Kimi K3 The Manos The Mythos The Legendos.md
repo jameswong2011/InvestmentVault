@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-03
 tags: [research, email-backfill, SemiAnalysis]
 source: 'https://newsletter.semianalysis.com/p/kimi-k3-the-manos-the-mythos-the'

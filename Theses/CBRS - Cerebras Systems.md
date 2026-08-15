@@ -257,6 +257,10 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - Macro: [[AI Bubble Risk and Semiconductor Valuations]], [[Macro & Technology/Sustainability of AI Capex]] — dates and mechanizes the "AI-capex frenzy unwind" position risk (2028-29 digestion vs. race-to-financing-ceiling); its enterprise-adoption gating (agentic AI <10% of functions, org-readiness on a decade clock) is a demand-side check on the pace of the reasoning-era value shift the CBRS thesis bets on
 - [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]] — WSE4 power/clocks; disagg rumors interrogation guide
 - [[Research/2026-07-26 - QCOM NVDA MU PhotonCap Three Memory Wall Routes - deep-dive]] — Memory-wall routes; wafer-scale as bypass path
+- [[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]]
+- [[Research/2026-07-27 - AMD NVDA BEP Helios 15pct Spec Lead Decay - deep-dive]]
+- [[Research/2026-08-15 - NBIS CRWV - Neocloud Q2 CoreWeave Nebius Cerebras - news]] — first vault Q2 tape: GAAP rev $180.1M (+74%), cloud $126.0M (+281%); blended GM ~14.2% [est.] vs 35% HIGH leg — adverse touch; >600 MW live+contracted by YE27; Cognition/Lovable
+
 ## Log
 
 ### 2026-07-09
@@ -279,3 +283,9 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 
 ### 2026-08-12
 - [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]]: WSE4 as power/clock yield story — conviction unchanged (draft).
+### 2026-08-14
+- [[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]]: CUDA/CI bar Helios missed — wafer-scale still a specialist, not the second source — conviction unchanged.
+- [[Research/2026-07-27 - AMD NVDA BEP Helios 15pct Spec Lead Decay - deep-dive]]: partnership vs Groq license-and-hire — no CBRS volume print — conviction unchanged.
+
+### 2026-08-15
+- [[Research/2026-08-15 - NBIS CRWV - Neocloud Q2 CoreWeave Nebius Cerebras - news]]: first Q2 tape — cloud +281% ($126.0M), but blended GM ~14.2% [est.] touches (adverse) the → HIGH cloud-GM-≥35% leg; core-vs-GAAP split unreconciled, cloud-only GM not broken out — conviction unchanged (draft/low).

@@ -20,6 +20,7 @@ sector: Compute & AI Compute Accelerators
 
 ## Key industry questions
 - Does Nvidia's ~75% merchant-GPU share drift durably toward 60% by 2028 as hyperscaler ASICs (TPU v7 Ironwood, Trainium 3, Maia, MTIA, OpenAI XPU) scale from incremental inference capacity into primary training workloads — or does share stabilize because the CUDA + PhysX/Warp/Omniverse + NVLink + Spectrum-X full-stack bundles expand TAM faster than ASICs capture share?
+  - *2026-08-15 financing-layer overlay (not a CUDA challenge):* Temple 8 inverts the $500B MOU as an attempt to recast GPUs as a financeable asset class that fails the toll-road triad; even full execution covers <1 year of ~$570B 2026 AI debt / ~$850B DC capex [1×: Temple 8]. TSPA adds ODM WC / Taiwan bank *group* concentration as a delivery choke below CoWoS/GPU allocation — an already-allocated wafer can miss a shipped-rack quarter. (per [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]], [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]])
 - Is ROCm catch-up asymptotic (consensus view: perpetually 12–24 months behind CUDA) or step-function (MLPerf Inference 6.0 showed MI355X at 97–119% of B200 on Llama 2 70B and 111–115% on GPT-OSS-120B, framework-native ROCm in PyTorch/vLLM/SGLang)? A step-function interpretation implies merchant-GPU duopolization rather than Nvidia monopoly.
 - How much 2026–2030 incremental accelerator TAM is Physical AI (robotics, AV, industrial digital twins) rather than LLM training/inference, and is the end-to-end training→simulation→edge deployment pipeline (Nvidia's DGX + Omniverse/OVX + Jetson/Thor) a structural moat no merchant competitor or hyperscaler ASIC can match?
 - Does the $20B Nvidia–Groq non-exclusive licensing deal (Groq 3 LPU: 315 PFLOPS FP8, 40 PB/s SRAM bandwidth, 35x Blackwell efficiency on trillion-parameter decode) signal GPU architectural insufficiency for dedicated inference — and if so, does SRAM-first inference silicon (Groq derivatives, Cerebras WSE, specialist LPUs) fragment the inference market faster than NVDA's market-segmentation framing assumes?
@@ -270,6 +271,17 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
 - [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]
+- [[Research/2026-08-14 - NVDA - 800 VDC AI Factories OCP - news]]
+- [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]] — $500B MOU GPU-as-financeable-asset inversion
+- [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]] — ODM WC / Taiwan bank concentration as delivery choke
+- [[Research/2026-08-14 - SNDK - Asymmetrical Bets Investor Day Recap - deep-dive]] — HBF tape-out / 4-vs-8 GPU benchmark; ICMS/GIDS still the route-around
+- [[Research/2026-08-14 - COHR LITE AAOI - PhotonCap Coherent FQ4 InP CPO - deep-dive]] — NVDA–COHR partnership restated as capacity lock-in
+
+- [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]] — Digitimes-via-Benzinga: Feynman pull-forward onto A16; SoIC ~50k wpm YE27; AP7/AP8 race [1×]
+
+- [[Research/2026-08-15 - TSM NVDA - Microsoft Maia 300 TSMC - news]] — Maia 300 >300k/2027 TSMC talks; internal 30–40% cheaper-to-operate vs cutting-edge NVDA
+
 ## Log
 
 ### 2026-04-22
@@ -337,3 +349,12 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: MI455X CDNA 5 / TSMC N2 / 12×HBM4 — AMD hardware cadence vs Rubin; CUDA still the displacement gate.
 - [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: Spectrum-6 CPO shipping — interconnect lock-in via COUPE, not open CPO.
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon ~$220B 2026 capex, capacity short through 2027.
+
+### 2026-08-14
+- [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]: Musk 10GW / $300–500B end-2027 on Rubin from 1.4GW — GW headline, not offtake duration.
+- [[Research/2026-08-14 - NVDA - 800 VDC AI Factories OCP - news]]: 800 VDC OCP + Rubin MGX production 2H26; 2027 row-power / Kyber path.
+### 2026-08-15
+- [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]]: $500B MOU is a financing-layer inversion, not a CUDA/share print.
+- [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]]: ODM WC / bank-group concentration can gate rack shipments below CoWoS allocation.
+- [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]]: Feynman R&D/supply-chain pull-forward while Rubin in MP; SoIC 50k wpm YE27 corroborates KLA bull (c) — [1×] rumor.
+- [[Research/2026-08-15 - TSM NVDA - Microsoft Maia 300 TSMC - news]]: custom-XPU loading claim on the same tight AP pool; complementary fallback keeps NVDA for paying Azure.

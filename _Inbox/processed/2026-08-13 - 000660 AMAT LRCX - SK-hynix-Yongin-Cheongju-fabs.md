@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 'SK hynix Invests 54 Trillion Won in Yongin Y2 and Cheongju M17'
 source: 'https://news.skhynix.com/en/fab-facility-investment-2026/'
 date: 2026-08-13

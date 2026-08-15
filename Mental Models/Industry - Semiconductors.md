@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-05-21
 tags: [mental-model, semiconductors]
 status: active

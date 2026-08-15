@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-05-26
 tags: [research, digital-advertising, regulatory, privacy, META, APP, PINS]
 sector: Social Platforms & Digital Advertising

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-14
 tags: [research, market-structure, quant-finance]
 sector: Market Structure & Quant Finance

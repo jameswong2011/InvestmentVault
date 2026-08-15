@@ -213,6 +213,10 @@ The transition-year value concentrates in qualification-gated equipment layers 1
 - [[Mental Models/Industry - Semiconductors]] — #1 (emerging bottleneck = pricing power), #2 (qualification-gate monopolies — inspection/litho), #8 (architecture transitions remap the bottleneck), #13/#14 (format-locked vendors reclassify down; panel-native up), #17/#19 (inelastic supply; equipment orders lead, don't over-read)
 - [[AI Bubble Risk and Semiconductor Valuations]] — demand overlay gating package-size growth
 
+- [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]] — AP7/AP8 accelerated; SoIC / CoWoS-L / next-gen CoPoS prepared; SoIC ~50k wpm YE27 [1×]
+
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — SPIL Douliu CoWoS 2028 (OSAT complement, not a CoPoS timing reset)
+
 ## Log
 
 ### 2026-06-18
@@ -220,3 +224,7 @@ The transition-year value concentrates in qualification-gated equipment layers 1
 
 ### 2026-07-14 (/sync)
 - [[Research/2026-07-14 - Intel Foveros Direct vs CoWoS Advanced Packaging - deep-dive]]: Corroborates the "Intel EMIB-T / panel-on-organic as competing large-package path" negative-catalyst and the inspection/metrology-is-path-agnostic framing. Adds the EMIB-vs-CoWoS structural trade-off (EMIB lower-cost but edge-shoreline routing only; CoWoS any-point + embedded interposer capacitance) and the Foveros-Direct-3D yield-parity gate (D0<0.1 vs early ~0.2-0.25). No timing/framework change to the CoPoS transition.
+
+### 2026-08-15
+- [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]]: TSMC preparing next-gen CoPoS alongside SoIC/CoWoS-L; SoIC 50k wpm YE27 — framework timing unchanged (2H28–29 HVM still the vault clock).
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: SPIL $3.1B Douliu is wafer-level CoWoS OSAT add (2028), not a panel-format acceleration.

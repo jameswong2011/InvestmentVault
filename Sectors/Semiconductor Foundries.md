@@ -231,6 +231,17 @@ Per [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - dee
 - [[Sectors/Optical Networking & Photonics]] — COUPE / co-packaged-optics integration with TSMC advanced packaging
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
+- [[Research/2026-08-13 - INTC SMIC TSM - SMIC N+3 vs Intel 18A Metal Pitch Teardown - deep-dive]]
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]
+- [[Research/2026-08-13 - INTC - Intel Should Raise Capital - deep-dive]]
+
+- [[Research/2026-08-13 - TSM SONY TSMC Sony vs China CIS Ecosystem - deep-dive]] — Sony–TSMC Koshi CIS JV as stacked-sensor / physical-AI platform export
+- [[Research/2026-08-13 - Superposition Seeing Stack Map US JP KR EU - deep-dive]] — EU SPIRIT CMOS-ROIC gap (weak foundry adjacency)
+- [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]
+- [[Research/2026-08-15 - TSM NVDA - Microsoft Maia 300 TSMC - news]] — Maia 300 TSMC talks >300k by 2027; opposite of an Intel-18A foundry win
+
+- [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]] — Feynman onto A16; AP7/AP8 + SoIC ~50k wpm YE27 [1×]
+
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -259,3 +270,17 @@ Per [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - dee
 ### 2026-08-12
 - [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]: TSMC US$29.4B board appropriations + Sony JV
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS near-balance signal
+
+### 2026-08-13
+- [[Research/2026-08-13 - INTC SMIC TSM - SMIC N+3 vs Intel 18A Metal Pitch Teardown - deep-dive]]: SMIC N+3 pitch cherry-pick ≠ leading-edge catch-up; 18A 36 nm M0 is PowerVia DTCO.
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]: packaging constraint splits; EMIB-T contests largest packages, TSMC extends into cooling/photonics.
+- [[Research/2026-08-13 - INTC - Intel Should Raise Capital - deep-dive]]: $40B raise is a hypo, not a disclosed action.
+### 2026-08-14
+- [[Research/2026-08-13 - TSM SONY TSMC Sony vs China CIS Ecosystem - deep-dive]]: Koshi CIS JV is 2029 volume / METI-anchored cluster, not a 2026 foundry P&L print; qualification of bonding/stacking steps is the WFE tell.
+- [[Research/2026-08-13 - Superposition Seeing Stack Map US JP KR EU - deep-dive]]: SPIRIT treats advanced CMOS-ROIC as a planned EU gap — second-order foundry adjacency only.
+
+- [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]: EDN/Wccftech N2 20k→100k wpm YE26; N3 180k early; N2 3% Q3; 50% rumor grade — not TSMC IR.
+
+### 2026-08-15
+- [[Research/2026-08-15 - TSM NVDA - Microsoft Maia 300 TSMC - news]]: custom-ASIC loading on tight CoWoS remainder; Maia-on-TSMC weakens the 18A-external-customer LOW leg — [1×].
+- [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]]: A16/Feynman pull-forward + SoIC 50k wpm YE27 supports packaging-annuity; exclusivity/2028 commit unconfirmed.

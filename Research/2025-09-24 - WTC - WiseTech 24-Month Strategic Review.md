@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-09-24
 tags: [research, WTC, cargowise, strategic-review, financials, competitive-dynamics]
 status: active

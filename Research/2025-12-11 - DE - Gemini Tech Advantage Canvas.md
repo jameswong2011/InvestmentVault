@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-12-11
 tags: [research, DE, agriculture, technology, precision-ag, gemini-canvas]
 status: active

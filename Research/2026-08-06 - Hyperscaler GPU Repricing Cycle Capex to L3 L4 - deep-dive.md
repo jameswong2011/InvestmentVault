@@ -1,33 +1,137 @@
 ---
+publish: false
 date: 2026-08-06
 tags: [research, AI Infrastructure, MU, LITE, MRVL]
 sector: Compute & AI Compute Accelerators
 ticker: MU
-propagated_to: [CRWV, LITE]
+propagated_to: [CRWV, LITE, MU]
 source: 'https://photoncap.net/p/the-gpu-repricing-cycle-and-q2-hyperscaler'
 source_type: deep-dive
+updated: 2026-08-14
 ---
 
+# The GPU Repricing Cycle and Q2 Hyperscaler Earnings
+
 ## Thesis Delta
-Consensus frets hyperscaler FCF burn from AI capex → PhotonCap (Baker underearning frame) argues hyperscalers are landlords on below-market GPU leases; early repricing + usage-above-commit accelerates OCF. Hardware benefit sticks longest in non-insourcable L3 memory and L4 optics/DCI (MU, SK hynix, MRVL, CIEN, COHR, LITE). Supports [[Theses/MU]], [[Theses/LITE - Lumentum]], [[Theses/MRVL - Marvell Technology]], [[Theses/CRWV - CoreWeave]].
+
+Consensus prices late-July hyperscaler prints as FCF-destructive capex (Alphabet and Meta sold off on raised guides; credit spreads treated as the financing constraint) → PhotonCap, testing Gavin Baker's underearning frame against Q2 primary data, reads the same prints as the start of a rent-stabilized-lease renewal: GPU spot rent ≥2× contracted rates, usage already ~50% above GCP commitments, and $75B of Oracle RPO as customer-prepaid or customer-supplied GPUs, so installed-base repricing can re-accelerate cloud growth and internally fund the next capex step while residual scarcity rent sticks in the two layers hyperscalers cannot insource — PhotonCap L3 memory and L4 DCI optics, not L1 GPUs or L2 ASICs. [G-13] [G-3] [G-14] Semis #1 #8 VLM infrastructure-layer.
 
 ## Summary
-July stack: GOOGL Cloud +82% / $514B backlog; MSFT Azure +43% / FY27 capex ~$255–260B; AMZN AWS +37% / 2026 capex ~$220B; META floor raised to $130–145B. Repricing evidence: GCP customers ~50% above commitments; Oracle $75B customer-prepaid/supplied GPUs in RPO. Memory ~30% of DC investment (36% next year). Gates: Nebius 8/12, MU late-Sep, hyperscaler Q3 late-Oct.
 
-## Evidence
-| Item | Figure | Tag |
-|---|---|---|
-| GCP rev / YoY | $24.77B / +82% | [1×: Alphabet / PhotonCap] |
-| GCP backlog | $514B | [1×: PhotonCap] |
-| MSFT FY27 capex | $255–260B | [1×: PhotonCap] |
-| AMZN 2026 capex | ~$220B | [1×: PhotonCap] |
-| META FY capex | $130–145B | [1×: PhotonCap] |
-| GCP usage vs commit | ~+50% | [1×: secondary via PhotonCap] |
-| Oracle prepaid GPUs | $75B of RPO | [1×: Oracle / PhotonCap] |
-| Spot vs contract GPU | ≥2× | [1×: Gavin Baker] |
+PhotonCap (early August 2026) treats the last week of July as one earnings season with two questions. First: does Baker's claim that hyperscalers are selling installed GPU compute below today's market rent survive contact with Q2 books, or is it still a tweet-and-interview prior? Second: if cash flow and capex are both accelerating, which hardware layer keeps the money longest? The author started from Google Cloud $24.77B / +82% YoY and a $514B backlog that rose more than $50B in one quarter, then watched the stock fall on another capex raise and a quarter of negative free cash flow. The piece's load-bearing claim is directional, not a closed proof: this print is the early stage where supply shortage starts printing in prices, and the layers that cannot be brought in-house (PhotonCap L3 memory, L4 networking/optical) are where the rent should persist.
 
-## Contradiction Check
-Challenges "capex unsustainable" narrative. Aligns with memory+optics bottleneck theses. Falsifiers: usage-above-commit rolls over; backlog stalls; cloud GM fails to rise on renewals.
+Baker's mechanism is a landlord-lease, not a TAM story. Spot GPU rental is "at least 2×" long-term contracted rates; most hyperscaler cloud revenue still sits on 2024–2025 paper; therefore the installed base is underearning relative to the current value of the same silicon, and any customer who locked 2024–2025 GPU hours is overearning. When those contracts roll, the entire installed base reprices upward and growth accelerates rather than merely holding. Baker modeled combined hyperscaler operating-cash-flow growth accelerating from 31% in Q1 to 50% in Q2 — PhotonCap flags that figure as Baker's mix of estimates and reported results, not a recalculated model the author could reproduce. The verification method is weaker and more honest: look for traces of repricing *inside this quarter's primary data*, not a reconstructed OCF path. The rent-controlled-apartment analogy is the whole frame: market rent can double during the lease and the landlord collects nothing extra until renewal; the investment question is whether renewal volume has started to cycle.
+
+The four prints line up with that premise and do not contradict it. Alphabet 22 July: revenue $119.8B (+24%), Google Cloud $24.77B (+82%, >$2B above consensus), cloud operating income $8.8B (~3× a year ago), backlog $514B with just over half expected to convert inside 24 months. Microsoft 29 July: FY26 Q4 revenue $90B (+18%), Azure +43%, Azure annual revenue crossing $100B on a fiscal-year basis (+41%), commercial RPO $678B, quarterly capex including finance leases $41B (+69%), FY2027 capex guided $255–260B. Amazon 30 July: revenue $200.6B (+20%), AWS $42.2B (+37%, fastest in 18 quarters) at 39.4% operating margin, AI business and in-house chip business each above $25B annualized, 2026 capex raised from ~$200B to ~$220B. Meta 29 July: revenue $60.8B (+28%, beat) with an EPS miss, FY capex narrowed to $130–145B by raising the floor from $125B, ~$31B of AI-infrastructure spend in the quarter, FCF pressure the call theme. Three clouds accelerating growth while all four raise capex is, in the author's read, a surplus-supply market's opposite: sellers' growth and buyers' spend do not rise together when the good is plentiful. Every premise number on the May 11 PhotonCap $580B four-layer hardware map was revised upward one quarter later. The May 11 Alternative Case — "further raises as the compute shortage deepens" — became the print: Amazon +$20B, Microsoft a first FY27 number at $255–260B, Meta floor up, Alphabet up.
+
+Public releases stop at "demand is large and capex is larger." Two Q2 artifacts are offered as primary evidence that *repricing has started*, not that it is still a 2027 story. Artifact one: a secondary report that Google Cloud customers are spending ~50% above contracted commitments. A commitment is a floor; 1.5× that floor is the tenant using extra rooms, and that usage tape becomes the renewal-price base. Artifact two is backlog *composition*, not backlog size. Google's $514B has a stated conversion clock (just over half inside 24 months) and, per CFO Anat Ashkenazi, is still a supply-constrained book whose vast majority is GCP agreements but that also reflects TPU system sales — hardware mixing into a cloud-service backlog. Microsoft's $678B is total commercial RPO, Azure plus the rest of commercial, so it is not a pure GPU-rent number. Oracle's $638B grew +363% on a handful of recent large AI contracts; $75B of it is customers prepaying for GPUs or buying and supplying the hardware themselves. Compute is scarce enough that buyers will bring the GPUs if the landlord will sell space and power. PhotonCap treats that shift of procurement burden onto the customer as stronger evidence of seller pricing power than the headline backlog dollars, and treats usage-above-commit plus hardware-prepay arriving in the same quarter as "already in progress" rather than a preview. The limitations are written at the same weight: the 2× spot/contract starting figure is Baker's observation and can be wrong; renewal volume must cycle before the P&L prints the reprice; this quarter is early-stage evidence, not cycle confirmation.
+
+Meta Compute is the second half of the demand read. Bloomberg 1 July: Meta preparing a cloud business to sell surplus AI compute, either as access to its own models or as raw GPU capacity. Meta stock jumped; [[Theses/CRWV - CoreWeave]] and [[Theses/NBIS - Nebius Group]] each fell ~12%. The consensus decode is incremental supply that pressures GPU-hour prices. PhotonCap inverts it: a company guiding $130–145B of annual capex that is even considering external sales is making an internal judgment that compute rental margins look comparable to reinvesting in the ads machine — the same pattern the author covered in late June on SpaceX renting compute. That reading is held as observation, not conviction. Background that cuts the other way: hyperscalers are themselves large neocloud customers. Microsoft commitments ~$60B combined across CoreWeave, Nebius, and Nscale; one tally puts Meta at ~$35B with CoreWeave and up to $27B with Nebius. Buying that much on one side while preparing to sell on the other is capacity desperation, not a cleaned-up surplus. CoreWeave: Q1 revenue in the $2B range, backlog ~$100B, total debt in the $50B range, quarterly interest climbing toward $500M, stock ~40% off its high. Nebius: $40B contracted GPU revenue, earnings dated 12 August — the author's first scheduled look at neocloud-side contract pricing.
+
+Where the money goes is a four-layer map, not a GPU-ticker map. PhotonCap L1 is merchant compute (GPU); L2 is custom ASIC; L3 is memory; L4 is networking and optical. Google partially insources L1 with TPU, Amazon with Trainium; all three still buy L3 and L4 outside. One quarter later the tilt is in the price data. AI-server DRAM costs roughly doubled in Q1 2026 alone, with a fourfold full-year forecast; 1GB of HBM consumes 3–4× the wafer capacity of commodity DRAM, so HBM conversion dries the rest of memory; memory's share of hyperscaler datacenter investment is ~30% this year and forecast 36% next year; new supply does not arrive until 2029 or later. That is the L3 allocation call. The author separates it from the *stock-price* cycle: memory names sold off hard in SK hynix's late-July earnings week as the peak-price debate opened. Volume-based demand (memory's share of DC capex) and the tape are not the same object. US-listed L3 exposure named: [[Theses/MU - Micron Technology]]; Korea-listed [[Theses/000660 - SK Hynix]]. L4 is the author's home turf. Single-campus power limits force training across campuses; DCI becomes part of compute performance, not a WAN accessory. ZR+ module interest ~10× in a year; IPoDWDM systems +~40% last year, ~$4B by 2030. L4's dollar share of hyperscaler capex is smaller than L3's; its growth is a function of distance and bandwidth between clusters, not cluster count. Named L4 book: [[Theses/MRVL - Marvell Technology]] (coherent DSP), Ciena (systems), Coherent and [[Theses/LITE - Lumentum]] (components). No valuation table — July whipsaw prices go stale inside a week; the author deferred comps to mid-August after the rest of earnings.
+
+The efficiency objection — lighter models kill compute demand — is answered with this cycle's own data and with [G-14]. Per-token inference prices fell ~1,000× over three years while enterprise AI spending more than tripled last year. OpenRouter tokens went from ~5 trillion/week to the 30-trillion range in just over a year; one agentic request consumes 15× the tokens of a regular request. Cheaper unit price makes more workloads worth doing; total spend grows. The GCP 50%-above-commit figure is treated as physical evidence of that loop, not a one-off miss. A second floor sits under the AI cycle: pre-tapeout EDA verification and device TCAD already bought large cloud clusters for days at a time before transformers existed. Cloud HPC is under $9B/year, small next to AWS, but the demand character is the point — it keeps arriving as long as chips are designed, drugs are made, and airframes are analyzed.
+
+Falsifiers are dated. If next quarter's usage-above-commit rate rolls over or backlog growth stalls, Q2 was order pull-forward, not repricing. If cloud gross margins do not rise once renewal volume cycles, the spot premium is not transferring into contracted prices and the core of Baker's thesis breaks. If the GPU-depreciation-schedule debate becomes an accounting change, today's cloud operating margins have to be rebuilt from scratch. Watch list: Nebius 12 August (neocloud contract-price direction); Micron late September (L3 allocation gate); the four hyperscalers' Q3 in late October (recheck usage-above-commit and backlog increments). The May 11 L4 re-rate condition — ANET supply-chain constraint resolution — was not verified in this piece.
 
 ## Framework / Mental Model
-Baker underearning / rent-stabilized compute: spot ≫ contract ⇒ installed base earns below market until renewals; residual scarcity rents accrue to L3/L4.
+
+**Baker underearning / rent-stabilized compute.** Named by Gavin Baker (Atreides) on X and on Invest Like the Best (May). Components: (1) spot GPU rental rate vs long-term contracted rate — Baker's observation is spot ≥2× contract; (2) share of revenue still sitting on old paper vs paper coming up for renewal; (3) OCF acceleration as the installed base reprices, which then funds AI capex internally and can compress credit spreads that the market is treating as a solvency signal; (4) the real constraint after financing is power and data-center execution, not access to credit. Methodology: treat the hyperscaler as a landlord on a below-market lease. Do not mark the installed base to today's spot and call that earnings; mark it to contracted rent and ask when the lease rolls. PhotonCap's addition is not a new model — it is a check of that model against one quarter of primary filings (usage-above-commit, backlog composition including customer-supplied hardware, four simultaneous capex raises). Baker's 31%→50% combined-OCF path is explicitly *not* independently recalculated.
+
+**PhotonCap four-layer hardware map (May 11, redrawn one quarter later).** Capex is split into L1 merchant compute (GPU), L2 custom ASIC, L3 memory, L4 networking/optical. The allocation rule is insourceability: Google TPU and Amazon Trainium pull a slice of L1/L2 inside the walls; L3 and L4 are purchased from a short outside list. Residual scarcity rent is hypothesized to accrue where the buyer cannot substitute an internal design. This map is *not* the vault's dated Industry-Semiconductors live layer (that file's L1 is "DRAM less cyclical," a personal theory to test). Do not merge the two L-numberings.
+
+**Backlog-quality typology.** Three headline RPOs are the same unit only on a slide. Google $514B = conversion speed disclosed (just over half inside 24 months) plus TPU hardware mixed into a GCP-majority book. Microsoft $678B = total commercial RPO, Azure plus non-Azure. Oracle $638B = a handful of recent large AI contracts, +363%, of which $75B is customer-prepaid or customer-supplied GPUs. Methodology: prefer composition and conversion clock over dollar rank when judging whether pricing power has moved to the seller.
+
+## Evidence
+
+| Print (late July 2026) | Figure | Provenance |
+|---|---|---|
+| Alphabet total revenue / YoY | $119.8B / +24% | [1×: Alphabet Q2 FY2026 / PhotonCap] |
+| Google Cloud revenue / YoY / vs consensus | $24.77B / +82% / >$2B beat | [1×: Alphabet / PhotonCap] |
+| Prior-quarter GCP growth (for acceleration) | +63% | [1×: PhotonCap] |
+| GCP operating income | $8.8B, ~3× YoY | [1×: Alphabet / PhotonCap] |
+| Alphabet Cloud backlog / q/q add | $514B / >$50B | [1×: Alphabet / PhotonCap] |
+| Backlog conversion clock | just over half of $514B inside 24 months | [1×: Alphabet / PhotonCap] |
+| Alphabet reaction | stock down; capex raised; quarterly FCF negative | [1×: PhotonCap] |
+| Microsoft FY26 Q4 revenue / YoY | $90B / +18% | [1×: Microsoft FY26 Q4 PR / PhotonCap] |
+| Azure growth / Azure annual revenue | +43% / crossed $100B FY (+41%) | [1×: Microsoft / PhotonCap] |
+| Microsoft commercial RPO | $678B | [1×: Microsoft / PhotonCap] |
+| Microsoft qtr capex incl. finance leases | $41B / +69% | [1×: secondary via PhotonCap] |
+| Microsoft FY2027 capex guide | $255–260B | [1×: secondary via PhotonCap] |
+| Amazon total revenue / YoY | $200.6B / +20% | [1×: Amazon Q2 2026 / PhotonCap] |
+| AWS revenue / YoY / op. margin | $42.2B / +37% (fastest in 18 qtrs) / 39.4% | [1×: Amazon / PhotonCap] |
+| AWS AI run-rate / in-house chip run-rate | each >$25B annualized | [1×: Amazon / PhotonCap] |
+| Amazon 2026 capex outlook | raised ~$200B → ~$220B | [1×: AWS Q2 2026 coverage / PhotonCap] |
+| Meta revenue / YoY | $60.8B / +28% (beat); EPS miss | [1×: Meta Q2 2026 / PhotonCap] |
+| Meta FY capex guide | $130–145B (floor raised from $125B) | [1×: Meta / PhotonCap] |
+| Meta AI-infrastructure spend, this quarter | ~$31B | [1×: secondary via PhotonCap] |
+
+| Repricing / backlog-quality signal | Figure | Provenance |
+|---|---|---|
+| GPU spot rent vs contracted rate | ≥2× | [1×: Gavin Baker X / Invest Like the Best; not independently recalculated] |
+| Private-company renewal intention | >2× per GPU after expiry (reported) | [1×: Baker via PhotonCap] |
+| Baker combined HS OCF growth path | 31% Q1 → 50% Q2 (model, not a measurement) | [1×: Baker via PhotonCap] |
+| GCP usage vs commitments | ~+50% | [1×: secondary via PhotonCap; "reportedly"] |
+| Oracle RPO / YoY | $638B / +363% | [1×: Oracle FY26 Q4 / PhotonCap] |
+| Oracle customer-prepaid or customer-supplied GPUs | $75B of RPO | [1×: Oracle FY26 Q4 / PhotonCap] |
+| Ashkenazi on $514B mix | still supply-constrained; vast majority GCP; TPU system sales also in the book | [1×: Alphabet call transcript via PhotonCap] |
+| May 11 combined-capex map (prior) | $580B, all premise numbers revised up one quarter later | [1×: PhotonCap 11 May] |
+
+| L3 / L4 allocation | Figure | Provenance |
+|---|---|---|
+| AI-server DRAM cost, Q1 2026 | roughly doubled | [1×: memory-crunch coverage via PhotonCap] |
+| AI-server DRAM cost, FY forecast | ~4× | [1×: same] |
+| HBM vs commodity DRAM wafer intensity | 1GB HBM uses 3–4× wafer capacity | [1×: same] |
+| Memory share of HS datacenter investment | ~30% this year; 36% forecast next year | [1×: same] |
+| Next memory-supply addition | 2029 or later | [1×: same] |
+| ZR+ module interest | ~10× in a year | [1×: DCI/coherent-optics coverage via PhotonCap] |
+| IPoDWDM systems | +~40% last year; ~$4B by 2030 | [1×: same] |
+
+| Demand / Jevons / Meta-neocloud | Figure | Provenance |
+|---|---|---|
+| Per-token inference price, 3 years | ~1,000× lower | [1×: inference-cost coverage via PhotonCap] |
+| Enterprise AI spend | more than tripled last year | [1×: same] |
+| OpenRouter tokens | ~5T/week → ~30T/week in just over a year | [1×: Jevons/OpenRouter coverage via PhotonCap] |
+| Agentic vs regular request tokens | 15× | [1×: same] |
+| Cloud HPC market | <$9B/year | [1×: cloud-HPC market list via PhotonCap] |
+| Meta Compute report | 1 Jul 2026 Bloomberg; META up; CRWV and NBIS each ~−12% | [web: Bloomberg via PhotonCap] |
+| Microsoft neocloud commitments | ~$60B combined CRWV + NBIS + Nscale | [1×: neocloud tally via PhotonCap] |
+| Meta neocloud contracts | ~$35B CRWV; up to $27B NBIS | [1×: same] |
+| CoreWeave snapshot (this piece) | Q1 rev ~$2B range; backlog ~$100B; debt ~$50B; qtr interest ~$500M; stock ~−40% from high | [1×: CRWV coverage via PhotonCap] |
+| Nebius snapshot (this piece) | $40B contracted GPU revenue; earnings 12 Aug | [1×: NBIS coverage via PhotonCap] |
+
+## Contradiction Check
+
+**Challenges the FCF-burn / "capex unsustainable" tape that sold Alphabet and Meta, and names the operating variable [G-13] as contracted-rate catch-up plus usage-above-commit, not the cash burned this quarter.** No Alphabet thesis exists in the vault — do not invent `[[Theses/GOOGL]]`. The live home for the same argument is [[Theses/META - Meta]] §Summary (market discounts the capex step-up as value-destructive) and Outstanding Questions ("Can Meta demonstrate measurable, isolatable ROI from the incremental $43–63B in capex?" and "At what capex level does depreciation structurally compress operating margins?"). PhotonCap does not answer the ROIIC question ([G-7]); it claims the *price* of installed compute is below market, so OCF can inflect when paper rolls even if this quarter's FCF is negative. That is a timing claim, not a cleared hurdle-rate claim. Hold it as a hypothesis. If cloud GM fails to rise as renewal volume cycles, Baker's core breaks and Meta's depreciation Outstanding Question stays the binding risk.
+
+**Challenges [[Theses/CRWV - CoreWeave]] Insight 2 (spot already 50–70% below peaks; DDTL covenants mark contracted rates, not market-clearing) and the vault's neocloud credit frame, and collides with CRWV's own Mental Models note that SemiAnalysis has H100s *renewing at ~100% of original rates* while B200 spot fell.** Baker's "spot ≥2× contract, 2024–25 signers are overearning" and CRWV Insight 2 cannot both be true of the *same* GPU-hour market. The reconciliation to test: Baker is talking hyperscaler *cloud-commit* paper vs a still-tight on-demand tape; CRWV Insight 2 is talking neocloud *collateral marks* vs a Blackwell spot that has already cracked. Those are different contracts. PhotonCap's Meta Compute read (margin-on-compute high enough that a $130–145B spender considers selling) also cuts against the CRWV Mental Models item that "hyperscaler capex cannot keep pace" is now contested by Meta-as-supplier — PhotonCap treats the same 1 July print as evidence prices *hold*, not that a secondary-supply class has arrived. CRWV → HIGH still wants Microsoft renewal at flat-to-positive *and* first Hopper re-rent >70% of original; Baker's frame, if it applies to neocloud paper, would put re-rent *above* original, which would *meet* the HIGH re-rent leg and *worsen* Insight 2 (covenants marked to old contract would then be *below* market, not above). Do not collapse those. CRWV → LOW (Microsoft cut >15%; GM <65%; DDTL outlook cut) is untouched by this source's numbers; the $50B debt / ~$500M quarterly interest snapshot is color, not a trigger fire.
+
+**Supports the execution-vs-credit split in [[Theses/NBIS - Nebius Group]] §Summary and puts a date on Outstanding Question 4 (is the 45% AI-cloud margin a sold-out-pricing artifact?).** PhotonCap's 12 August Nebius print is the first scheduled look at *neocloud-side contract pricing* — the same object as NBIS's cash-rate / coverage / vintage problem, not the 800MW–1GW power ramp that decides → HIGH. A print that shows contracted GPU revenue still stacking at premium rates would support PhotonCap's "prices holding" Meta-Compute inversion; a print that shows rate compression would support CRWV Insight 2 over Baker and would lean toward NBIS → LOW (AI-cloud adj. EBITDA <35%).
+
+**Supports the *allocation* half of PhotonCap L3 and challenges any reader who would promote [[Theses/MU - Micron Technology]] off this piece.** Memory at ~30% of DC investment (36% next year), AI-server DRAM doubled in Q1 with a 4× FY path, HBM's 3–4× wafer tax, and "no new supply until 2029+" are the volume argument the May 11 L3 call needed. They do **not** clear MU → HIGH (Q3 Rubin board meter ≥10% first-wave HBM4 bits **and** LTA-cap removal on the SK Hynix 2 July pattern **and** two TrendForce DRAM prints ≥+13% QoQ with OEM days flat-to-down). PhotonCap itself separates volume-based demand from the late-July SK hynix-week tape. That separation *agrees* with MU's live posture (LOW / don't own; L1 is a hypothesis; falsifier is 2018 destock) and with [G-10] / Semis #13 / Industry live-L1 treated as dated theory, not law. Peak GM + peak capex + peak price have not held 24 months in the memory reference class; this source's 2029-supply clause is a *claim to test*, not a retired destock cycle. MU late-September earnings is PhotonCap's own L3 gate — same calendar window as the board-meter / TrendForce pair.
+
+**Same L3 data is friendlier to [[Theses/000660 - SK Hynix]] §Summary's HBM-cycle earnings engine than to a "peak-cycle, sell the tape" close, but it does not fire 000660 → HIGH (Rubin share ≥60% **and** HBM4E sole-source **and** BESI Kinex 16-Hi **and** Namics EMC renewal) and it does not retire → LOW (Samsung >35% of first-two-quarter Rubin **and** HBM pricing −10% YoY).** PhotonCap's "new supply 2029+" line, if true, extends the shortage window the thesis is already long; the late-July SK hynix selloff is the #7 / [G-3] cycle-phase tape the thesis already flagged as crowding, not a fundamentals kill. Do not use this source to reclassify 000660 from semi-cyclical HBM leader to compounder.
+
+**Supports [[Theses/NVDA - Nvidia]] Outstanding Question on Jevons ("at what point does algorithmic efficiency overwhelm aggregate GPU demand?") with this cycle's 1,000× token-price drop, 3×+ enterprise spend, 5T→30T OpenRouter tokens, and 15× agentic token load — and does *not* resolve the ASIC-share question.** PhotonCap's residual-rent claim is that L1 is the layer hyperscalers *can* insource (TPU, Trainium). That is a VLM disqualifier for treating merchant GPU as the durable toll: [[Theses/NVDA - Nvidia]] §Summary already prices custom-ASIC maturation (TPU v7, Trainium) as a key risk. PhotonCap and the NVDA thesis agree that Jevons is the demand floor to keep measuring; they disagree on *which layer keeps the surplus* if Jevons holds. Semis #8 (architecture remaps the bottleneck) is the joining hypothesis: scale-across makes L4 DCI part of compute, so even a TPU/Trainium win does not insource the optical tax.
+
+**Supports [[Theses/TSM - Taiwan Semiconductor]] demand durability (four simultaneous capex raises; May Alternative Case printed) and does not touch the re-armed → HIGH-reaffirm (FY26 >40% USD growth, Q3 GM ≥66%, first 2027 capex ≥$70B) or → LOW (any 2027 HPC quarter <10% YoY).** PhotonCap never gets to wafers or CoWoS. The only TSM-relevant object is "hyperscaler capex still going up," which is necessary and not sufficient for the monopoly-rent durability the thesis is now about.
+
+**Directly contradicts [[Theses/ORCL - Oracle Corporation]] Insight 2 on how to read the $638B RPO, while supporting Insight 1's two-layer split.** PhotonCap treats $75B of customer-prepaid / customer-supplied GPUs as the cleanest Q2 tell that pricing power has moved to the *seller* of space-and-power. ORCL Insight 2 treats the same RPO as one counterparty's option (OpenAI ≈ half) against which Oracle has front-loaded purpose-built capex — quantity ≠ quality, Semis #10. Both can be descriptively true: buyers bringing their own GPUs is a scarce-power contract form *and* a concentrated-counterparty book. PhotonCap does not name OpenAI. Do not let the $75B composition change retire ORCL → HIGH (OpenAI deferral / OCI IaaS GM <20% / junk notch) or the 16% GPU-rental GM the thesis assigns to the layer-renter half. The VLM read the two notes share: the durable owned layer is not the GPU hour.
+
+**Supports the L4 chokepoint half of [[Theses/LITE - Lumentum]] §Summary (EML / 1.6T / CPO laser tax) and [[Theses/MRVL - Marvell Technology]] §Summary's "owned electro-optics layer (80%+ 800G DSP)" more than MRVL's rented custom-ASIC second seat.** PhotonCap's L4 mechanism is scale-across / coherent DCI (ZR+, IPoDWDM), which is MRVL's coherent-DSP / CIEN-systems adjacency, not Celestial Photonic Fabric and not a Google MPU contract. It does not fire MRVL → HIGH (signed Google custom deal **and** Trainium 3 ≥400K **and** Celestial Gen-1 PO). LITE has no Conviction Triggers section; the support is to the arms-dealer EML claim and to "sold out through 2027," not to a numbered trigger. ANET constraint-clear as L4 re-rate condition was *not* checked.
+
+**Does not create a Google Cloud equity case.** The +82% / $514B / 50%-above-commit tape is used as a *repricing thermometer* and as a hardware-mix tell (TPU sales inside cloud backlog). There is no GOOGL thesis to attach a Conviction Trigger to.
+
+## Source Excerpts
+
+> "TL;DR Spot pricing for renting GPU compute materially above contracted rates implies hyperscalers are underearning while operating cash flow acceleration is an underestimated source of funds for AI capex. … As contracts roll-off, hyperscale growth rates are going to continue to accelerate as their installed bases of compute reprice higher. … Hyperscalers are underearning and anyone who signed a contract for GPU compute in 2024 and 2025 is overearning." — Gavin Baker, as quoted by PhotonCap [2][3][4]
+
+> "If next quarter's results show the usage-above-commitment rate rolling over or backlog growth stalling, then what we saw was order pull-forward, not repricing. If cloud gross margins do not rise even as renewal volume starts cycling through, it means the spot premium is not transferring into contracted prices, and the core of the thesis breaks. And if the GPU depreciation schedule debate turns into an accounting change, the cloud operating margins we see now have to be recalculated from scratch." — PhotonCap, §9
+
+> "A company this large accelerating its revenue growth struck me as worth paying attention to. The backlog, contracted but not yet recognized as revenue, stands at $514B, up more than $50B in one quarter. And yet the stock reacted to the earnings release by falling." — PhotonCap, §1 (Alphabet 22 July)
+
+> "This $75B is the hint I flagged earlier. Compute is so scarce that buyers have gone as far as 'I will bring the GPUs, just give me the space and power.'" — PhotonCap, §5 (Oracle RPO composition)
+
+> "CFO Anat Ashkenazi said on this call that they are still in a supply-constrained environment, and disclosed that while the vast majority of the $514B backlog is GCP agreements, TPU system sales are also reflected in it." — PhotonCap, §5
+
+> "I separate volume-based demand, that is, the memory share of hyperscaler capex, from the stock price cycle." — PhotonCap, §7 (after the late-July SK hynix-week memory selloff)

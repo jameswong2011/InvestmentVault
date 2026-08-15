@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-11-26
 tags: [research, semiconductors, photonics, CPO, silicon-photonics, gemini-canvas]
 status: active

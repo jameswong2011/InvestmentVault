@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-14
 tags: [research, luxury, MONC]
 sector: Luxury Apparel

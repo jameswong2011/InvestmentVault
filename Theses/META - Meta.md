@@ -262,6 +262,7 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 - **Disconfirming check** (evidence-updated 2026-07-10): base rate — no company has sustained 25%+ ad growth at a $240B run-rate while doubling capex two years running; the outside view says one line breaks by 2027 (growth into the depreciation wall, or capex retreat validating the re-rate late). Single falsifying datapoint: the 2027 capex guide with no plateau AND a first quarter of sub-20% ad growth — that combination fires the bear the thesis itself designated. Fix before any conviction move: the Llama 5 factual error, the dead capex-plateau catalyst, Threads 450M→~400M MAU; Meta Compute (Jul 1) is the largest un-logged event and needs cross-propagation to CRWV/NBIS/semis notes where the demand-signal damage landed. NO Conviction Triggers section exists.
 
 ## Related Research
+- [[Macro & Technology/AI Datacenter Financing Mechanism Design]] — T2 site-SPV+RVG template (Hyperion/El Paso): 4y-lease / 16y-RVG / ~23y-debt duration stack; VIE deconsolidation via remarketing-control sacrifice; El Paso debt priced — Sopaipilla $12.547B at 7.534% (T+287.5bp), ~40bp wide of Beignet [web, single-source]
 
 - [[Research/2025-04-29 - META VRT - Open Compute Project and Vertiv Collaboration]] — Vertiv's OCP committee co-development with Meta; cooling infrastructure for AI data centers
 - [[Research/2025-12-05 - Macro - Gemini AI Bubble Risk Canvas]] — The AI Solvency Gap framework; $600B revenue requirement to justify hyperscaler capex
@@ -275,6 +276,13 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 - [[Research/2026-08-08 - META Shanaka Clocks on One Building DC Finance - deep-dive]] — DC finance clocks / guarantee vs residual value
 - [[Research/2026-07-31 - Macro Shanaka Last Enclosure Model Service Clocks - deep-dive]] — Model/service clocks; open-weight spend vs tokens divergence
 - [[Research/2026-08-01 - META MU SKHY IA SALP Unwind Market Memo - deep-dive]] — SALP unwind market memo context
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]
+- [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
+- [[Research/2026-08-07 - GOOGL Gemini Decline GCP Financialization - deep-dive]]
+- [[Research/2026-08-13 - NBIS NVDA - Nebius Q2 5GW Power Target - news]]
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]
+
 ## Log
 
 ### 2026-01-06
@@ -333,3 +341,16 @@ The value chain dynamics are important: Meta owns the software/AI layer, Essilor
 - [[Research/2026-08-08 - META Shanaka Clocks on One Building DC Finance - deep-dive]]: One-building DC finance clocks — Meta capex delivery/financing path under scrutiny; conviction unchanged (high).
 - [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]: Power 10x bottleneck framing — Meta AI infra constrained by power/siting more than GPUs; conviction unchanged.
 - [[Research/2026-07-31 - Macro Shanaka Last Enclosure Model Service Clocks - deep-dive]]: Last-enclosure/service-clocks model — Meta opex vs own-build tradeoffs sharpened; conviction unchanged.
+
+### 2026-08-13
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]: Meta selling excess compute is the same competitor-class already in the book — conviction unchanged (high).
+### 2026-08-14
+- [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]: nodal deliverability under the capex step-up — tokens/$ still the infra ask — conviction unchanged (high).
+- [[Research/2026-08-01 - META MU SKHY IA SALP Unwind Market Memo - deep-dive]]: SALP unwind is plumbing, not ad-ROI — conviction unchanged (high).
+- [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]: contracted-rate catch-up vs FCF-burn tape — Advantage+ still the ads-org operator — conviction unchanged (high).
+- [[Research/2026-08-07 - GOOGL Gemini Decline GCP Financialization - deep-dive]]: Gemini decline vs Meta ads-AI flywheel — not a capex-ROI print — conviction unchanged (high).
+- [[Research/2026-08-13 - NBIS NVDA - Nebius Q2 5GW Power Target - news]]: Meta early-2027 NBIS tranche — competitor-class already in the book — conviction unchanged (high).
+- [[Research/2026-08-13 - NVDA NBIS - CoreWeave Q2 104B Backlog - news]]: Meta as CRWV offtake — same competitor-class — conviction unchanged (high).
+
+### 2026-08-15
+- [[Macro & Technology/AI Datacenter Financing Mechanism Design]]: T2 mechanics answer the residual-value Outstanding Q (creditor-complete, equity-silent); Sopaipilla priced ~40bp wide of Beignet = first AI-SPV-debt repricing print, flagged for ingest — conviction unchanged (high).

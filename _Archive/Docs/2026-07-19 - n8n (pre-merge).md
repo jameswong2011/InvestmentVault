@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-17
 tags: [meta, infrastructure, automation]
 status: superseded

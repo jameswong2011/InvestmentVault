@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 'Amazon Lifts 2026 AI Capex to $220B, Still Capacity-Constrained'
 source: 'https://www.datacenterknowledge.com/infrastructure/amazon-lifts-ai-infrastructure-spending-to-220b-as-demand-outpaces-capacity'
 date: 2026-08-13

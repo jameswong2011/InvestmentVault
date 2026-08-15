@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-12-04
 tags: [research, OPEN, real-estate, proptech, gemini-canvas]
 status: active

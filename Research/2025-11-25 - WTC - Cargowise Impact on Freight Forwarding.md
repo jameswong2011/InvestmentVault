@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-11-25
 tags: [research, WTC, logistics, cargowise]
 status: active

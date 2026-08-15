@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-15
 tags: [research, semiconductors, LITE, COHR, photonics, EML, CPO, AI-infrastructure]
 status: active

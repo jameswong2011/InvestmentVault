@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-05
 tags: [research, deep-dive, NBIS, CRWV, neoclouds, vera-rubin, ROIC]
 sector: Neoclouds & GPU-as-a-Service

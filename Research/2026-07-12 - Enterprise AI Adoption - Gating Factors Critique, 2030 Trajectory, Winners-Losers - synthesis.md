@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-12
 tags: [research, synthesis, agentic-AI, enterprise-software, macro, semiconductors, sector/enterprise-workflow-ai]
 status: active

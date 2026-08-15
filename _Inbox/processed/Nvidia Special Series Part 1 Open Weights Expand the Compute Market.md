@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-11
 tags: [research, email-backfill, SuperpositionV]
 source: 'https://superpositionv.substack.com/p/nvidia-special-series-part-1-open'

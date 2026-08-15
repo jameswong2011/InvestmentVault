@@ -417,6 +417,8 @@ PANW closed **$281.69 on 2026-05-29 (+9.3% on the day, 15.0M shares)** — a 52-
 - [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: AI-driven private-credit software-loan write-downs (~33% of TCPC Q1 markdowns) are credit-market echo of productivity-disruption thesis; PANW platform consolidation positioned as structural beneficiary
 
 - [[Research/2026-08-13 - NET PANW - Cloudflare FedRAMP High - news]]
+- [[Research/2026-08-07 - Citrini Protection Matters Cybersecurity Winners - deep-dive]]
+
 ## Log
 
 ### 2026-04-15
@@ -467,3 +469,5 @@ PANW closed **$281.69 on 2026-05-29 (+9.3% on the day, 15.0M shares)** — a 52-
 
 ### 2026-08-13
 - [[Research/2026-08-13 - NET PANW - Cloudflare FedRAMP High - news]]: Cloudflare FedRAMP High — competitive public-sector edge option; not a Prisma displacement proof — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-08-07 - Citrini Protection Matters Cybersecurity Winners - deep-dive]]: platform/distribution as non-reproducible — paid basket not in clip — conviction unchanged.

@@ -324,6 +324,9 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 - [[Research/2026-08-12 - NVDA AVGO MRVL NOW - Damodaran Situational Awareness Blow-up - news]] — Leverage blow-up positioning lesson
 - [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]
+- [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]]
+
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -390,3 +393,6 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 
 ### 2026-08-13
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon 2026 capex ~$220B; AWS custom silicon >$25B ARR — electro-optics/custom demand vs Trainium seat-churn risk — conviction unchanged.
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]: custom-HBM / in-bridge power at ECTC — incremental custom-silicon attach, not a new monopoly — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]]: DSP share/content, not unit-count inflation — LPO LOW trigger unfired — conviction unchanged.

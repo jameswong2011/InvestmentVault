@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, daily-intel-triage, news]
 source: 'https://wccftech.com/nvidias-kyber-racks-to-sport-340-4tb-of-dram-with-hbm4e-priced-at-19-76-gb-and-each-rack-reportedly-priced-at-41-6-million/'

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-13
 tags: [research, synthesis, reddit, product, workplace, portfolio, qualitative]
 status: active

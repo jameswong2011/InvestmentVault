@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-07-15
 tags: [research, NET, cloudflare, edge-computing, serverless]
 status: active

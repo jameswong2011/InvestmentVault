@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-10
 tags: [research, email-backfill, PhotonCap]
 source: 'https://photoncap.net/p/spacexs-first-earnings-report-revisiting'

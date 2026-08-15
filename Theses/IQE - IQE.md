@@ -211,6 +211,10 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: III-V/InP epitaxy named the CPO external-laser bottleneck (IQE in the Nvidia supply map); quantifies the ELS demand mechanism (18 ELS × 8 CW DFB chips per CPO switch) — corroborates the CPO/SiPh InP-epi-demand Bull Case
 
 - [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]
+- [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]
+
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]] — Damnang L1 pick is AXT (substrate + LITE/COHR reservations), not IQE epi
+- [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]] — CPO calendar on-track (not delayed) → supports InP-epi pull-through timing; UHP CPO laser demand "gaining momentum"; IQE not named
 ## Log
 
 ### 2026-04-15
@@ -252,3 +256,9 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 ### 2026-08-13
 - [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]: LITE pull-forward to $1.25B qtr / 40% OM — InP epi demand option; not a direct IQE print — conviction unchanged.
+### 2026-08-14
+- [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]: UHP DFB / cavity is the gate, not generic InP epi — conviction unchanged.
+- Cross-thesis signal via [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]]: L1 bottleneck priced as AXT substrate with disclosed LITE/COHR reservations, not InP epi — IQE adjacency not the author's bottleneck seat. Review §Industry Context / epi-scarcity claim.
+
+### 2026-08-15
+- [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]]: supplier CPO calendar reaffirmed on-track (scale-up 2H27 / deploy 2028) — supports InP-epi demand-timing option; secondary recap, IQE not named — conviction unchanged.

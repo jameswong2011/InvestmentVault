@@ -1,4 +1,5 @@
 ---
+publish: false
 title: Sustainability of AI Capex — Audit Report
 date: 2026-07-29
 tags: [audit, ai-capex, archive]

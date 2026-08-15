@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, synthesis, PLTR, enterprise-software, AI, adversarial, bull-vs-bear]
 status: active

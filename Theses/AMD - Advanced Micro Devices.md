@@ -90,7 +90,7 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 1. **Hyperscaler-enforced diversification**: OpenAI, Meta, Oracle, and Azure have publicly committed to dual-sourcing AI compute. This is a mandate-driven revenue stream for AMD that would not exist on hardware merit alone.
 2. **ASIC threat to merchant GPU**: Google TPU v7 (~70% cost reduction), Trainium 30–40% better price-performance, Meta MTIA (delayed but coming), Groq LPU. ASICs chip away at inference-optimized merchant GPU share. AMD is structurally exposed to this — ROCm being open-source means any ASIC vendor can use AMD's ecosystem work without compensating AMD.
 3. **CoWoS-centric supply curve**: Packaging capacity, not wafer fabrication, is the binding constraint. Whoever has CoWoS allocation ships; whoever doesn't defers. NVDA locked in 60–65%; AMD has 11%. Share expansion at AMD requires TSMC to build more CoWoS capacity than NVDA reserves.
-4. **ROCm step-function adoption**: Framework-native support (PyTorch, vLLM, SGLang, Triton) converts ecosystem parity from multi-year to multi-quarter timelines.
+4. **ROCm step-function adoption**: Framework-native support (PyTorch, vLLM, SGLang, Triton) converts ecosystem parity from multi-year to multi-quarter timelines. Counter-read from SemiAnalysis Advancing AI 2026 ([[Research/2026-07-25 - AMD Advancing AI CUDA Moat Helios - deep-dive]]): the planned ETA for ConnectX-7 / llm-d Kubernetes inference nightly parity was missed (0% Pollara NIC testing cited); CI under-investment and Helios/MI455X "ramp hell" sit in front of any framework-native win. BEP's +15% Helios spec lead ([[Research/2026-07-27 - AMD NVDA BEP Helios 15pct Spec Lead Decay - deep-dive]]) is not the LOW trigger (>25% MLPerf gap) and is not 2-of-3 HIGH. Financing rebates (~105% equity structures) are demand catalysts, not CUDA-break proof.
 5. **Taiwan geopolitical tail**: MI400 series manufactured at TSMC N3/N2. Any Taiwan disruption hits AMD's AI revenue as severely as it hits NVDA's — and AMD has less Arizona/Japan optionality.
 
 ## Key Metrics
@@ -226,6 +226,15 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 - [[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]] — Samsung HBM4 yield; MI400 attach
 - [[Research/2026-08-05 - NVDA BEP Inference Specialists vs System Moat - deep-dive]]
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
+- [[Research/2026-07-22 - META Infrastructure Culture Reset - deep-dive]]
+- [[Research/2026-07-23 - Vera Rubin NVL72 vs GB200 Inference TCO - deep-dive]]
+- [[Research/2026-08-03 - Kimi K3 Architecture Inference Performance - deep-dive]]
+- [[Research/2026-08-06 - AIP Arteris Chiplet NoC Interconnect Thesis - deep-dive]]
+- [[Research/2026-08-10 - NVDA TileRT Ultra-High Interactivity InferenceX - deep-dive]]
+- [[Research/2026-08-11 - NVDA Superposition Open Weights Execution Share - deep-dive]]
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]]
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+
 ## Log
 
 ### 2026-04-21
@@ -302,3 +311,12 @@ AMD designs and licenses x86 CPUs, discrete GPUs, AI accelerators, DPUs, and FPG
 
 ### 2026-08-13
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: MI455X CDNA 5 on TSMC N2, 12×HBM4, 23.3 TB/s, Helios rack — hardware parity-attempt vs Rubin; CUDA gap unchanged — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-07-22 - META Infrastructure Culture Reset - deep-dive]]: Meta tribal SKUs + custom MI450X can nuke AMD volume — anchor-binary sharper — conviction unchanged (medium).
+- [[Research/2026-07-23 - Vera Rubin NVL72 vs GB200 Inference TCO - deep-dive]]: Rubin TCO still CUDA-gated; Helios not in the operator-ownership math — conviction unchanged (medium).
+- [[Research/2026-08-03 - Kimi K3 Architecture Inference Performance - deep-dive]]: Day-0 vLLM recipes are adjacency, not ROCm training parity — conviction unchanged (medium).
+- [[Research/2026-08-06 - AIP Arteris Chiplet NoC Interconnect Thesis - deep-dive]]: chiplet NoC ≠ Helios composability — conviction unchanged (medium).
+- [[Research/2026-08-10 - NVDA TileRT Ultra-High Interactivity InferenceX - deep-dive]]: interactivity software raises the CUDA bar Helios must clear — conviction unchanged (medium).
+- [[Research/2026-08-11 - NVDA Superposition Open Weights Execution Share - deep-dive]]: HIP/ROCm economic substitutability is the kill test, not model-count — conviction unchanged (medium).
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]]: HBF/CPO blotter — no MI455X training print — conviction unchanged (medium).
+- [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon $220B capex + Trainium lock — second-source TAM, not a 3rd ≥2GW AMD commit — conviction unchanged (medium).

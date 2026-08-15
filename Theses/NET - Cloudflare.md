@@ -258,7 +258,7 @@ Cloudflare occupies the most strategically valuable position in the internet val
 | $100K+ Customers | 4,298 | +23% YoY; 73% of Q4 revenue |
 | $1M+ Customers | 269 | +55% YoY — enterprise traction proof point |
 | Active Developers | 4.5M | ~50% YoY growth from ~3M |
-| Cash | $4.1B | Fortress balance sheet |
+| Cash | $4.1B (pre-offer) + ~$2.20B net-of-calls [est.] | 8-K 2026-08-13: $2.50B 0% 2031 converts; $2,462.3m net; $259.5m capped calls; $2.0B leverage cash-cap |
 | Network CapEx | 12-15% of rev | FY2026 guidance |
 | Analyst Consensus | Buy | 25 analysts; avg target ~$234 (Mizuho $235, KeyBanc bull $300) |
 
@@ -336,6 +336,10 @@ Cloudflare occupies the most strategically valuable position in the internet val
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]] — Macro synthesis: enterprise agent adoption still ≤10% scaling per function (McKinsey) / "single digits across nearly all business functions" (Stanford HAI 2026) — the adoption reality behind NET's zero-disclosed Act IV revenue; ranks NET a Tier-4 "slow converter" whose HIGH conviction was priced for a nearer-term agentic-traffic inflection than the measured curve supports
 
 - [[Research/2026-08-13 - NET PANW - Cloudflare FedRAMP High - news]]
+- [[Research/2026-08-07 - Citrini Protection Matters Cybersecurity Winners - deep-dive]]
+
+- [[Research/2026-08-15 - NET - 2.5B Convertible Notes 2031 - news]] — 8-K: $2.50B 0% converts due 2031; ~$496.94 / 60% premium to $310.59; $2,462.3m net; $259.5m capped calls to $854.12; $2.0B leverage cash-cap
+
 ## Log
 
 ### 2026-04-15 (cross-thesis sync)
@@ -400,3 +404,8 @@ Cloudflare occupies the most strategically valuable position in the internet val
 
 ### 2026-08-13
 - [[Research/2026-08-13 - NET PANW - Cloudflare FedRAMP High - news]]: FedRAMP High (+GovRAMP Moderate, IL4 intent) — public-sector TAM option; does not close SASE DLP/CASB gaps — conviction unchanged.
+### 2026-08-14
+- [[Research/2026-08-07 - Citrini Protection Matters Cybersecurity Winners - deep-dive]]: inline/enforcement layer as the durable cyber asset — free extract only — conviction unchanged.
+
+### 2026-08-15
+- [[Research/2026-08-15 - NET - 2.5B Convertible Notes 2031 - news]]: $2.50B 0%/non-accreting 2031 + $259.5m capped calls; stack now $5.625B; $2.0B net-leverage cash cap; dry powder / 2026-refi option, not Act IV/SASE — no Conviction Triggers section — conviction unchanged (medium).

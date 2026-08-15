@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-04
 tags: [research, email-backfill, Damnang]
 source: 'https://damnang2.substack.com/p/the-trigger-for-phase-two-of-the'

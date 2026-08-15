@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-11-29
 tags: [research, OPEN, proptech]
 status: active

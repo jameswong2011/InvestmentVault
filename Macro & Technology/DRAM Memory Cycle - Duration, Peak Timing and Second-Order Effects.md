@@ -103,5 +103,14 @@ Already-played (do not chase): module/inventory holders (Kingston-type, Phison, 
 
 Coverage gap: no Micron thesis exists despite MU being load-bearing across every memory note — if the partial-reset scenario confirms, MU (0% Rubin allocation, pure commodity torque + US listing premium) is the highest-beta expression and needs its own note before it can be traded.
 
+- [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]
+- [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]
+- [[Research/2026-08-14 - SNDK - Asymmetrical Bets Investor Day Recap - deep-dive]] — NAND-side contracted book $93.9B / 80% floor-GM; does **not** retire the DRAM cycle-top call (NAND floors untested; DRAM still the tighter 2026–27 constraint)
 ## Log
 - 2026-07-09: Note created. Call: commodity price peak Q2–Q3 2027, equity peak Q4 2026–Q1 2027 at ~$1.3–1.5T caps (55%), with 20% weight that mid-June 2026 was the top. Reconciles sector-note bull framing with unactioned 2026-05-24 rebalancing rec: both right — equities lead prices by ~2 quarters.
+
+### 2026-08-14
+- [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]: Chey $720B + ten LTAs + custom-HBM — scarcity can persist through 2027 *and* 2029 glut can be seeded by the same buildout.
+- [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]: YMTC 14% NAND units / CXMT 7% DRAM — China as complementary bits this cycle, substitute at destock.
+### 2026-08-15
+- [[Research/2026-08-14 - SNDK - Asymmetrical Bets Investor Day Recap - deep-dive]]: NAND NBM $93.9B / 80% floor-GM is a contracted-book claim on the *other* memory cycle — does not move the DRAM equity-peak call; floors untested and DRAM remains the tighter 2026–27 constraint.

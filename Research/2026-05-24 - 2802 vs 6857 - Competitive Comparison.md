@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-05-24
 tags: [research, comparison, semiconductors, ABF, ATE, japan, 2802, 6857]
 sector: Semiconductors — Cross-sector (ABF Substrates + Test Equipment)

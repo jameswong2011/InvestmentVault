@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Inside Take-Two: The Grand Anticipation"
 source: "https://quartr.com/insights/edge/inside-take-two-the-grand-anticipation?utm_source=newsletter&utm_medium=email&utm_campaign=edge_83"
 author:

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-12-05
 tags: [research, macro, AI, bubble, semiconductors, valuation, gemini-canvas]
 status: active

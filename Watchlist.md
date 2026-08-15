@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-06-08
 tags: [watchlist, tracker, theses]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-05-10
 tags: [research, defense, india, pakistan, emerging-markets]
 status: active

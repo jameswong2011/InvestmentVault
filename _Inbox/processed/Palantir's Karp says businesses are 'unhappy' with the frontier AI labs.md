@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Palantir's Karp says businesses are 'unhappy' with the frontier AI labs"
 source: "https://www.cnbc.com/2026/06/10/palantir-karp-enterprise-ai.html"
 author:

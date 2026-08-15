@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, daily-intel-triage, news]
 source: 'https://www.datacenterdynamics.com/en/news/arista-smashes-revenue-records-with-3bn-ceo-bullish-on-supply-chain-overhaul/'

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-06-27
 tags: [research, deep-dive, 2383, 3110, copper-clad-laminate, glass-cloth]
 sector: Copper-Clad Laminate & PCB Materials

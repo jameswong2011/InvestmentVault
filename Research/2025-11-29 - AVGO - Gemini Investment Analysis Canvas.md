@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-11-29
 tags: [research, AVGO, NVDA, semiconductors, AI, custom-ASIC, gemini-canvas]
 status: active

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-15
 tags: [research, consumer, GAW, games-workshop, 3D-printing, competitive-threat, IP]
 status: active

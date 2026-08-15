@@ -53,6 +53,8 @@ Shopee and Monee share users, checkout, repayment data, merchant distribution, a
 
 7. **Will buybacks offset dilution and credit-funded balance-sheet expansion?** Sea repurchased 1.8M shares for $168M in Q1 under a $1B authorization, yet shares outstanding were still up about 3% year on year. Net share-count reduction, stock-based compensation, deposit growth, and capital allocated to the loan book should be monitored together; buybacks do not create value if they merely mask issuance while credit consumes liquidity.
 
+8. **Does Mercado Libre's 2026 capex step-up change the Brazil math, or is it still a scale-not-economics market for Shopee?** Capex ([[Research/2026-08-14 - MELI - Capex Mercado Libre Dominance - deep-dive]]) frames MELI's 2026 capex as ~3× 2024, funded from FCF (not vendor-finance), with logistics + fintech + ads as a closed loop and Brazil as the profit engine. That is a *spend-to-defend-density* read, not a new Shopee share-loss print. Existing OQ #4 (Brazil economics vs strategic scale) is the right handle; this note raises the bar on how much SPX / VIP spend is required to stay in the game, not whether Shopee should be there. Answer: next Shopee Brazil contribution / VIP-cohort disclosure vs MELI 2026 capex actuals.
+
 ## Business Model & Product Description
 
 Sea operates three reported segments that use different economic engines: Shopee monetizes transaction flow and seller demand generation; Monee monetizes payments and credit risk; Garena monetizes digital engagement through prepaid bookings. Group revenue grew 36.4% to $22.94B in 2025 and another 46.6% in Q1 2026. Adjusted EBITDA reached about $3.4B in 2025 and $1.03B in Q1 2026.
@@ -292,8 +294,12 @@ Under a bear framework, Shopee reaches only $165–180B of 2028 GMV with 0.3–0
 - [Sea AI Centre of Excellence](https://www.sea.com/news/394), [Google partnership](https://www.sea.com/news/384), and [OpenAI partnership](https://www.sea.com/news/406)
 - [StockAnalysis valuation](https://stockanalysis.com/stocks/se/statistics/) and [analyst forecast](https://stockanalysis.com/stocks/se/forecast/), checked 2026-07-13
 
+- [[Research/2026-08-14 - MELI - Capex Mercado Libre Dominance - deep-dive]] — MELI 2026 capex ~3× 2024, FCF-funded closed loop; raises Brazil spend-to-defend bar, not a Shopee share-loss print
+
 ## Log
 
 ### 2026-07-13
 - Initial thesis created. Conviction: medium — Shopee's layered moat, Monee's distribution, and Garena's durability survive the base bear case, but TikTok's faster share gain and unseasoned 71% loan growth block high conviction.
 - Deepened Industry Context: Shopee-TikTok is a split-layer contest—TikTok discovery versus Shopee execution/retention; Value Layer §1 changed to a medium-fit split-layer trigger — conviction unchanged (medium) because TikTok's repeat/direct-search mix and Shopee's post-subsidy cohort contribution remain undisclosed. Snapshot: [[_Archive/Snapshots/SE - Sea Limited (pre-deepen 2026-07-13-180450)]]
+### 2026-08-15
+- [[Research/2026-08-14 - MELI - Capex Mercado Libre Dominance - deep-dive]]: MELI 2026 capex ~3× 2024, FCF-funded; logistics+fintech+ads closed loop raises the Brazil spend-to-defend bar (new OQ #8) without a Shopee share-loss print — conviction unchanged.

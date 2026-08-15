@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "AI Value Capture - The Shift To Model Labs"
 source: "https://substack.com/home/post/p-195347754"
 author:

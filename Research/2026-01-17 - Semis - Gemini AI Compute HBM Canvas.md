@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-01-17
 tags: [research, semiconductors, HBM, AI, compute, memory, gemini-canvas]
 status: active

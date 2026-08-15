@@ -201,6 +201,9 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 - [[Research/2026-08-12 - 000660 SNDK 285A - Nintendo Memory Cost Inflation - news]] — Consumer memory cost inflation signal
 - [[Research/2026-08-12 - 000660 SNDK - SK hynix Solidigm Dalian NAND Expansion - news]]
 - [[Research/2026-08-13 - SNDK 285A - Kioxia SanDisk 2Tb QLC BiCS9 - news]]
+- [[Research/2026-08-13 - CXMT 000660 MU - China DRAM Challenge to Incumbents - deep-dive]]
+
+- [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]
 ## Log
 ### 2026-04-16 (NAND sector research sync)
 - [NAND sector creation + web research]: Three conviction-relevant findings: (1) Kioxia posted 33.1% QoQ revenue growth in Q3 2025 — highest among all NAND producers — validates capacity utilization and enterprise demand thesis — strengthened. (2) YMTC at 13% share targeting 15% by end-2026 but primarily consumer/PC — Entity List blocks western enterprise procurement; Kioxia's enterprise/die-supply focus is structurally insulated from YMTC pricing pressure — conviction unchanged. (3) CBA architecture advantage confirmed: BiCS10 332L at 4.8 GT/s Toggle DDR 6.0 vs Samsung V10 at 5.6 Gbps; Samsung wins on raw IO speed but CBA's 15-20% density/layer advantage means Kioxia's 332L is density-competitive with Samsung's 400+L V10 — conviction unchanged. Additional: Solidigm QLC enterprise share at 51% with 321L QLC is the primary competitive threat to LC9; Micron 6600 ION 245TB in hyperscaler qualification creates direct product competition. NAND Q2 2026 contract prices +70-75% QoQ (TrendForce) — supports pricing through Q4 FY2025 earnings (May 14).
@@ -257,3 +260,7 @@ Kioxia occupies a unique competitive niche as the only major NAND supplier that:
 
 ### 2026-08-13
 - [[Research/2026-08-13 - SNDK 285A - Kioxia SanDisk 2Tb QLC BiCS9 - news]]: Joint 9th-gen 2Tb QLC on CBA + proven array — supports inventor/CBA density vs layer-count bear — conviction unchanged (medium).
+- [[Research/2026-08-13 - CXMT 000660 MU - China DRAM Challenge to Incumbents - deep-dive]]: same China-wall / cycle-turn frame as SNDK — conviction unchanged (medium).
+
+### 2026-08-14
+- [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]: YMTC #3 NAND shipments at 14% Q2 ties Kioxia’s historic share number; revenue rank still behind (mix) — conviction unchanged (medium).

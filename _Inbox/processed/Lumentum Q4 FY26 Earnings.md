@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, email-backfill, IrrationalAnalysis]
 source: 'https://irrationalanalysis.substack.com/p/lumentum-q4-fy26-earnings'

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-11-24
 tags: [research, crypto, bitcoin, quantum-computing, risk]
 status: active

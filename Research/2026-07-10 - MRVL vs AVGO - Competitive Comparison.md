@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-10
 tags: [research, comparison, custom-silicon, semiconductors, MRVL, AVGO]
 sector: Custom Silicon & Networking Semiconductors

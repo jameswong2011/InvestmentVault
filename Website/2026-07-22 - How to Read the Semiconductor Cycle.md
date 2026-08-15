@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-22
 tags: [thesis-breakdown, semiconductors, capital-cycle, demand-architecture]
 status: draft

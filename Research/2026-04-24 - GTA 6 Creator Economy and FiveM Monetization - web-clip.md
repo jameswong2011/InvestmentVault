@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-24
 tags: [research, TTWO, gaming, UGC, creator-economy, GTA6]
 sector: Video Game Publishing

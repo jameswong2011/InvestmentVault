@@ -37,6 +37,7 @@ Applied Optoelectronics is the only US-listed merchant pluggable optical transce
 - **At what 1.6T ASP does the LPO architecture stop being economic for AAOI?** 1.6T retimed DSP-based pluggable modules trade at $1,300-1,500 today, expected to decline to ~$1,100 within 24 months. LPO modules trade at a 15-25% discount to retimed (no DSP cost). AAOI's BOM at 1.6T is dominated by 200G EML chips ($150-200 per module), DSP / linear drivers ($100-200), and the optical sub-assembly process ($300-500). At a $700-900 ASP (where 1.6T pricing likely settles 2027-2028 once Innolight ramps to volume), AAOI's 30% target GM requires BOM of ~$490-630 — feasible only if EML pricing drops faster than expected or if Microsoft accepts a $1,000+ premium for US-manufactured LPO. Neither is the base case.
 
 - **Does the CPO transition arrive before AAOI's 1.6T capex pays back?** AAOI is investing in 500K-700K units/month of 1.6T pluggable capacity (Sugar Land + Taiwan + Houston) operational late 2026 / 2027. NVIDIA Spectrum-X / Quantum-X CPO ramps in 2026-2027, Broadcom Tomahawk 6 + Bailly CPO at 102.4 Tbps shipping March 2026, TSMC COUPE in risk production at AMD Feb 2026. If hyperscale 1.6T-and-above traffic migrates to CPO inside 2027-2028, AAOI's pluggable capacity gets stranded mid-cycle. Pluggable transceivers will not go to zero (short-reach and lower-speed segments persist 5+ years), but the 1.6T-and-above bleeding-edge segment that drives AAOI's margin uplift could compress faster than capex depreciates. The relevant signal: hyperscale CPO production orders in 2026-2027 disclosed by Broadcom / NVIDIA. Each 10% of incremental 1.6T+ TAM going to CPO reduces AAOI's 2028+ ceiling by 8-12%.
+  - *2026-08-15 /sync:* PhotonCap ([[Research/2026-08-14 - COHR LITE AAOI - PhotonCap Coherent FQ4 InP CPO - deep-dive]]) restates CPO/NPO as *content-parity* with pluggables (not a TAM cliff) and names InP production — not demand — as the bind; COHR FY27 booked / 2028 POs. That is confirmatory for the "pluggables persist" half of this question and *tightens* the InP-allocation risk (AAOI is merchant-EML dependent). IA ([[Research/2026-08-14 - COHR LITE - Irrational Analysis Coherent Q4 FY26 - deep-dive]]) is the contradictory 6-inch-yield read — same COHR print, opposite mechanism. Neither note is an AAOI order-book print.
 
 - **What dilutive financing is required to fund the 500-700K unit/month capacity buildout?** AAOI raised ~$250M via ATM offering in 2025 and used $20M Texas grant for Sugar Land facility. New US manufacturing buildout (Houston + Sugar Land expansion) likely requires $400-700M of additional capex over 2026-2028 against an annualized -$25-30M free cash flow run-rate. The path is (a) dilutive equity, (b) convertible debt, (c) customer-funded capex (Microsoft / Amazon / Oracle prepay). At ~$200 share price the dilution math is more forgiving, but a 30% drawdown reverses the calculus. Past behavior — ATM-funded growth, four secondary issuances 2017-2024 — argues for (a) as the path of least resistance.
 
@@ -206,6 +207,16 @@ AAOI is best understood as a vertically integrated optical components and module
 - [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]] — AAOI call notes in weekly mashup
 - [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]
 - [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]
+- [[Research/2026-08-01 - META MU SKHY IA SALP Unwind Market Memo - deep-dive]]
+- [[Research/2026-08-02 - AXTI LITE InP Substrate LTA Prepay Chain - deep-dive]]
+- [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]
+- [[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]]
+
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]] — Damnang L2/L6A watch: 400mW HP laser is CPO gate; GM <30% / GAAP loss restated
+- [[Research/2026-08-14 - COHR LITE AAOI - PhotonCap Coherent FQ4 InP CPO - deep-dive]] — CPO/NPO content-parity; InP production is the bind; AAOI as merchant-EML dependent
+- [[Research/2026-08-14 - COHR LITE - Irrational Analysis Coherent Q4 FY26 - deep-dive]] — contradictory 6-inch-yield read on the same COHR print
+- [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]] — CPO on-schedule calendar (scale-out 2H26 / scale-up 2H27) challenges Bull #5 (CPO slips to 2028+); pulls pluggable-disintermediation clock forward
+
 ## Log
 
 ### 2026-05-24
@@ -232,3 +243,16 @@ AAOI is best understood as a vertically integrated optical components and module
 ### 2026-08-13
 - [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]: LITE 1.6T cloud-module + $1.25B mid guide — demand for 1.6T modules; EML still merchant from LITE/AVGO — conviction unchanged (low).
 - [[Research/2026-08-13 - NVDA LITE AAOI TSM - Nvidia Spectrum-6 CPO Shipping - news]]: CPO shipping at NVDA but multi-vendor gap preserves pluggable assembler window one switch gen — conviction unchanged (low).
+### 2026-08-14
+- [[Research/2026-08-01 - META MU SKHY IA SALP Unwind Market Memo - deep-dive]]: SALP plumbing, not a 1.6T GM print — conviction unchanged (low).
+- [[Research/2026-08-02 - AXTI LITE InP Substrate LTA Prepay Chain - deep-dive]]: LITE/AXT substrate LTA — AAOI remains assembly-layer renter — conviction unchanged (low).
+- [[Research/2026-08-04 - LITE COHR Optical Trade Phase Two Geopolitics - deep-dive]]: US-mfg optionality vs laser monopoly — geopolitics ≠ HIGH trigger — conviction unchanged (low).
+- [[Research/2026-08-08 - LITE COHR Laser Market Repriced by Scale-Up CPO - deep-dive]]: scale-up CPO reprices CW/ELS not middle-assembly — conviction unchanged (low).
+- [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]]: transceiver ramp ≠ CPO-laser compounder — conviction unchanged (low).
+- [[Research/2026-08-11 - LITE PhotonCap Innolight FCC Ban Optics Chain - deep-dive]]: $81M datacom vessel cannot absorb Innolight's seat; qualification still binds — conviction unchanged (low).
+- [[Research/2026-08-12 - LITE PhotonCap FQ4 2026 First 1B Quarter - deep-dive]]: LITE $1B / 50.4% GM — demand for 1.6T; EML still merchant — conviction unchanged (low).
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]]: 400mW sample-to-volume is the CPO-entry tell, not 200G EML internalization — HIGH EML trigger unfired; GM <30% reaffirms assembler-renter — conviction unchanged (low).
+### 2026-08-15
+- [[Research/2026-08-14 - COHR LITE AAOI - PhotonCap Coherent FQ4 InP CPO - deep-dive]]: CPO/NPO content-parity + InP-as-bind is confirmatory for pluggable persistence and tightens merchant-EML allocation risk — not an AAOI order-book print — conviction unchanged (low).
+- [[Research/2026-08-14 - COHR LITE - Irrational Analysis Coherent Q4 FY26 - deep-dive]]: same-week COHR recap contradicts PhotonCap on 6-inch yield — adjacency only — conviction unchanged (low).
+- [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]]: LITE/COHR CPO calendar (scale-out 2H26 / scale-up 2H27) challenges Bull #5 (CPO slips to 2028+) by pulling the pluggable-disintermediation clock forward; → LOW (≥20% switch-shipment) not fired — conviction unchanged (low).

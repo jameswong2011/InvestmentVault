@@ -274,6 +274,8 @@ The bear case does not require SiPho to fail. It requires the business to remain
 - [USITC investigation 337-TA-1500](https://www.usitc.gov/press_room/news_release/2026/er0428_68493.htm)
 - [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]] — SiPh foundry capacity; TSEM Japan expansion self-fund+grants
 - [[Research/2026-08-09 - CBRS WOLF HBF AAOI TSEM IA Weekly Mashup - deep-dive]] — Weekly mashup SiPh/foundry notes
+
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]] — Damnang L5 pick: SiPh >$680M ARR / $1B Q4 target; $1.3B 2027 + $290M prepay restated; already-in-price
 ## Log
 
 ### 2026-07-14
@@ -285,3 +287,6 @@ The bear case does not require SiPho to fail. It requires the business to remain
 
 ### 2026-08-12
 - [[Research/2026-07-16 - UMC TSEM LITE PhotonCap SiPh Capacity InP Paradox - deep-dive]]: SiPh capacity race shifts scarcity to InP — constructive for specialty foundry lane; conviction unchanged.
+### 2026-08-14
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]]: Aug SiPh +270% YoY to >$680M ARR / $1B Q4 target consistent with $1.3B 2027 book; author says catalysts already priced — watch conversion, not a 2028 NI lift — conviction unchanged (low).
+

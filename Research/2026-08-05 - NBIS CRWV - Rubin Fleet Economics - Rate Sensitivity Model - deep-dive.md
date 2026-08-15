@@ -1,11 +1,13 @@
 ---
+publish: false
 date: 2026-08-05
-updated: 2026-08-07
+updated: 2026-08-13
 tags: [research, deep-dive, NBIS, CRWV, neoclouds, vera-rubin, ROIC, customer-advances, cash-flow]
 sector: Neoclouds & GPU-as-a-Service
 ticker: NBIS
 source: vault synthesis — supersedes the held-rate framing in the 2026-08-04 Rubin ROIC note; corrected model per its Addendum 5 error audit
 source_type: deep-dive
+revision: '2026-08-13 v3 — primer + asset-life sensitivity as a first-class axis'
 additional_sources:
   - https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm
   - https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231xex4d4.htm
@@ -14,260 +16,246 @@ additional_sources:
   - https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
   - https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/crwv-20260331.htm
 merged_from:
+  - "[[_Archive/Backups/Research/2026-08-05 - NBIS CRWV - Rubin Fleet Economics - Rate Sensitivity Model - deep-dive (pre-rewrite 2026-08-13)]]"
   - "[[_Archive/Backups/Research/2026-08-05 - NBIS CRWV - Rubin Fleet Economics - Rate Sensitivity Model - deep-dive (pre-merge 2026-08-07)]]"
   - "[[_Archive/Backups/Research/2026-08-07 - NBIS CRWV - Customer Advances and Fleet ROIC - deep-dive (merged 2026-08-07)]]"
 propagated_to: [NBIS, CRWV]
-pending_propagation: [NBIS, CRWV]
 ---
 
-# NBIS + CRWV — Rubin Fleet Economics: Rate-Multiple Sensitivity Model
+# NBIS + CRWV — Rubin Fleet Economics
+
+## Primer — what this business is
+
+A **neocloud** buys NVIDIA AI chips, plugs them into a building with power and cooling, and rents the chips by the hour to Microsoft, Meta, and AI labs. It is a landlord. NVIDIA owns the scarce chip. The grid owns the scarce watt. The neocloud owns the lease.
+
+**Vera Rubin** is the next NVIDIA generation. One GPU, including the rack and its share of the building, costs **$183K** — about double the current Blackwell generation, mostly because memory got more expensive. The chip is roughly 3× faster on the main inference math (FP8), ~1.6× on older training math (BF16).
+
+The customer usually signs a **five-year take-or-pay**: they pay whether they use the chip or not. After year 5 the chip is re-rented on the open market at a discount, then scrapped when it no longer earns its keep. That scrap date is **useful life** — 5, 7, 9, or 11 years in this model. Default in the company grids is 7.
+
+Cash in a year ≈ hourly rent × 8,410 hours (96% of the year — the contract pays for the chip being available) × 70% (the other 30% is power, staff, parts). Subtract depreciation, get EBIT. The investment question is whether that stream, over the chip's life, beats a 15% cost of capital on the $183K.
+
+[[Theses/NBIS - Nebius Group|NBIS]] (Nebius) and [[Theses/CRWV - CoreWeave|CRWV]] (CoreWeave) are the two public pure-plays. Same landlord model. NBIS is earlier in the build and funds more with customer prepayments. CRWV is larger, already live, and carries a big debt stack.
 
 ## Thesis Delta
 
-1. **Rubin operating economics still reduce primarily to the cash-equivalent rate achieved over current Blackwell contracts (~$6/GPU-hour), given Rubin's ~3× performance.** Lifetime EBIT per GPU on $183K invested at a seven-year life remains **1.5× → $175K · 2.0× → $282K · 2.5× → $389K · 3.0× → $496K**; the 15%-hurdle equivalent is $192K.
-2. **The rational operating-price corridor remains 1.8×–3.0×, but customer advances create a separate funding overlay.** The five-year take-or-pay wrapper protects the initial rate and is worth ~$160K/GPU versus merchant pricing at 2.0×; collecting part of that wrapper early lowers external capital and raises project NPV without changing gross fleet ROIC at a given cash-equivalent price.
-3. **NBIS's original Microsoft agreement provides for ~$6.96B of upfront payments, or 40% of $17.39B TCV, versus CRWV's disclosed 15–25% weighted-average prepayment across active contracts.** The advantage is contract-specific: two January 2026 Microsoft add-on tranches carry no upfront payment, while Meta and Rubin order-level terms remain undisclosed.
-4. **A 40% advance is worth ~8.3% of TCV in present-value terms at an 8% discount rate over five years—not 40%.** It can turn a marginal $9/hour contract into roughly $9.75/hour on a monthly-billed equivalent basis, but it cannot make $6/hour equivalent to the ~$9.50 absolute operating hurdle.
-5. **Rubin year-one EBIT remains positive across the sampled 1.5×–3.0× axis, but the company cash-flow path now separates sharply from fleet EBIT.** Q1 2026 NBIS received $3.20B through deferred revenue against $2.47B cash capex; reported FCF of −$0.22B becomes approximately −$3.41B before that cohort-financing inflow.
-6. **The prior “NBIS interest ~nil” and “prepayments scale with Meta/MSFT” assumptions are retired as reported-earnings base cases.** The model now uses a cash-economic fleet convention—nominal cash service price with customer-financing revenue accretion and matching interest excluded symmetrically—and treats prepayment rate, milestone timing and implicit borrowing cost as separate sensitivities.
+1. **Three numbers set the return: the cash rent, how much of the fleet is locked in a five-year contract at that rent, and how many years the chip stays in service.** Not a multiple of $6. $6 is a label used to name rows. NBIS's own Microsoft math is closer to **$3.35/hour**.
+2. **Useful life is not a rounding error at the $9 rent.** At $9, a 5-year life earns **13.7% IRR / −$5K NPV @ 15%** (fails). A 7-year life earns **18.4% / +$17K** (clears). The rent that exactly earns 15% IRR is **$9.27 (5yr) · $8.22 (7yr) · $7.65 (9yr) · $7.32 (11yr)**. At $12 the extra years are gravy (IRR 27% → 33%). The prior "life is the shallow axis" line was an accounting-ROIC artifact.
+3. **$9.50 is a bookkeeping screen, not the value-destruction line.** It is "average EBIT over N years ÷ $183K = 15%." That double-charges capital (depreciation already took the principal back). Use IRR/NPV to decide if the GPU creates value.
+4. **A customer prepayment is a loan against future rent, not free capex.** Microsoft's 40% on the original deal is **~$51K per GPU** (~28% of Rubin cost), not 110% of a hypothetical $12 contract. 40% upfront lifts the present value of a five-year contract by **~8%** at an 8% discount rate. It cannot turn a $6 cash rent into a $9 rent.
+5. **2027–29 reported fleet EBIT barely moves with life** — those Rubin chips are 1–3 years old, still inside the contract. Life shows up from 2029 on CRWV, when old Hopper chips would be scrapped (5-year life) or still earning (7–11).
 
 ## Summary
 
-This note integrates the corrected Rubin operating model with the customer-financing and cash-flow layer. Rubin's physical economics remain governed by rate, coverage, capex, utilization, cash cost and useful life. The 1.8×–3.0× rational corridor and the contract-versus-merchant gap are unchanged. Customer advances change who funds the asset and when cash arrives: the customer pays part of future service fees before delivery, the operator records deferred revenue, and future monthly cash billing falls as the advance is consumed.
+Buy a $183K box. Collect a contracted hourly rent for five years. Then collect a smaller re-rent until you throw the box away. If the contracted rent is **$12**, the box clears 15% at every life from 5 to 11 years. If it is **$9**, you need the box to last past five years. If it is **$6**, no plausible life saves it (IRR 9% even at 11 years).
 
-That distinction prevents two opposite errors. Subtracting the advance from physical capex makes net-capital ROIC appear exceptional or undefined even though the operator still owes service, SLA and potential refund performance. Ignoring it understates the project-financing advantage and equity IRR. At an 8% discount rate, 15%/25%/40% upfront payments add approximately 3.1%/5.2%/8.3% to contract present value versus fully monthly billing. NBIS therefore has a material funding advantage on the original Microsoft cohort, but not proof of superior pricing or a durable 40% funding rate for Rubin. CRWV's advances remain material while its larger DDTL, OEM, lease and debt stack leaves more fleet economics exposed to cash interest and refinancing.
-
-### Key outputs at a glance
-
-| Question | Model answer |
-|---|---|
-| Rational Rubin operating-price corridor | **1.8×–3.0× = ~$10.60–18.00/GPU-hour** |
-| 15% ROIC hurdle | **~1.6× = ~$9.50/GPU-hour** |
-| Rubin lifetime EBIT at 2.0× / N=7 | **$282K per GPU on $183K invested = 1.54× capex** |
-| Five-year contract wrapper at 2.0× | **~$160–194K/GPU** versus merchant graduation |
-| PV uplift from 15% / 25% / 40% upfront | **3.1% / 5.2% / 8.3%** at an 8% discount rate |
-| Q1 2026 FCF before deferred-revenue contribution | **NBIS −$3.413B · CRWV −$5.286B** |
-| Base cumulative Rubin fleet / capex | **NBIS 200K / $36.6B · CRWV 120K / $22.0B** |
-| 2028 EV/EBITDA at 2.0× | **NBIS 2.3× · CRWV 4.7×** at static 2026-08-04 EV |
-
-## Reading Map
-
-- [[#Model construction|Model construction]] — assumptions, asset-age pricing and calibration.
-- [[#Unit economics|Unit economics]] — lifetime EBIT per GPU and cost completeness.
-- [[#Customer financing|Customer financing]] — advances, project NPV, GAAP treatment and cash flow.
-- [[#Fleet earnings|Fleet earnings]] — existing fleets, Rubin rates, useful-life and scale sensitivity.
-- [[#Valuation|Valuation]] — EV/EBITDA and EV/EBIT by rate.
-- [[#Deployment feasibility|Deployment feasibility]] — capex, funding and power.
-- [[#Contradiction Check|Contradiction check]] — falsifiers and leading disclosures.
+The contract is doing most of the work. The same $12 GPU rented on the open market from day one (prices falling the way every prior generation fell) earns about half as much EBIT and fails the 15% test at every life. So the live questions are: what cash rent is on the paper, what share of GPUs have paper, and whether that paper was signed before Rubin got twice as expensive.
 
 ## Framework / Mental Model
 
-**The pricing corridor.** Three lines locate Rubin's rational price:
+Three levers, in order of how much they move the answer:
 
-| Line | Multiple | $/GPU-hr | Meaning |
-|---|---:|---:|---|
-| ROIC hurdle (15%) | ~1.6× | ~$9.50 | Below this, Rubin destroys value vs the hurdle |
-| **Deployment floor** (slot test) | **~1.8×** | **~$10.60** | Revenue per watt matches current Blackwell — below this, sweating old fleets beats installing Rubin |
-| **Performance-parity ceiling** | **~3.0×** | **~$18.00** | Customer's cost per unit of compute is flat vs Blackwell — above this, customers get no hardware gain |
+| Lever | What it is | Why it matters |
+|---|---|---|
+| **Cash rent** | $/GPU-hour the customer actually pays | Steep axis. Each extra $3/hour at a 7-year life adds ~$107K of lifetime EBIT |
+| **Coverage** | Share of GPUs on a 5-year take-or-pay vs open-market | At $12, coverage below ~44% fails the bookkeeping screen |
+| **Useful life (N)** | Years until scrap after the 5-year contract | Decides $9. Irrelevant once rent is $12+. Hits the *company* P&L only when old chips would otherwise be scrapped |
 
-Corridor = 1.8× to 3.0× → ROIC 19–39%. The hurdle sits *below* the deployment floor: rational deployment implies hurdle-clearing returns. The sampled axis (1.5×/2.0×/2.5×/3.0×) brackets the corridor: **2.0×, 2.5× and 3.0× sit inside it** (3.0× at the parity ceiling); 1.5× is the below-floor bear bound. Market anchors for calibration: 2× ($12/hr, ~$26/W-yr) ≈ IREN–Microsoft GB300 per-GPU rate; 3× (~$39/W-yr) ≈ IREN per-watt tier; 4× (~$52/W-yr) sits above the xAI–Google retail deal (~$46/W-yr) and means customers pay more per unit of performance than on Blackwell — sustained only in extreme scarcity.
+Two ways people quote "15%":
 
-**Customer-financing overlay.** An advance is future service consideration collected early, not incremental TCV or a permanent capex grant. For a five-year monthly-billed contract, 40% upfront lifts present value by ~8.3% at an 8% discount rate. The operator may keep that benefit through lower external funding, or surrender it through lower $/GPU-hour, fixed-rate duration, priority rights, service credits or refund protection. Gross fleet ROIC uses full physical capex and cash-equivalent service revenue; project IRR separately includes advance timing and reduced future collections.
+| Test | What it asks | $9 / 7-year result |
+|---|---|---|
+| **IRR / NPV @ 15%** | Does the cash come back at 15%? | **Clears** (18.4%, +$17K) |
+| **Gross-book screen** | Average EBIT ÷ original $183K = 15%? | **Fails** (13.7%). Needs $9.50 |
 
-Mental-model checks:
+This note uses IRR to decide value. The screen is a conservative filter, not a destruction line.
 
-- **[[Mental Models/Generalist - Overview|G-7]]:** deferred-revenue inflows sit in CFO while functioning as customer project financing; significant-financing accretion can raise reported revenue and interest together.
-- **[[Mental Models/Generalist - Overview|G-8]]:** access to customer funding can determine which cohort gets built before software differentiation matters.
-- **[[Mental Models/Generalist - Overview|G-10]]:** netting the advance against invested capital can mechanically inflate ROIC without changing GPU productivity.
-- **[[Mental Models/Generalist - Overview|G-12]]:** advances reduce conventional leverage but replace it with execution-contingent service and refund obligations.
-- **[[Mental Models/Lens - Value Layer Monopoly|Value Layer Monopoly lens]]:** a large advance may signal scarce-capacity control or hyperscaler bargaining power. The discriminator is cash-equivalent price after payment-timing adjustment.
-
-Agreement across these lenses triggers disconfirmation rather than commitment: an order-level Rubin disclosure containing both $/GPU-hour and prepayment timing is the single clean test.
+Mental-model checks (hypotheses): **[G-7]** incremental dollar on Rubin is the variable; **[G-11] inverted** EBITDA hides depreciation, and the book screen then charges 15% on capital already depreciated; **[G-10]** holding launch prices for five years is outside the merchant history — only the contract puts it in the model; extra life past 5 years is a free option on a sunk rack, except at the $9 edge where the option is in-the-money vs 15%.
 
 ## Evidence
 
-### How to use the model
+### One GPU — what "life" means in cash
 
-| Question | Use |
-|---|---|
-| What rate clears the operating hurdle? | Pricing corridor and **Grid 1** |
-| What do Hopper and Blackwell earn without Rubin? | **Grid 2** |
-| What do the combined fleets earn after Rubin arrives? | **Grid 3** |
-| How much do useful life and deployment scale matter? | Grid 3 life adjustment and scale sensitivity |
-| What valuation follows from each rate? | **Grid 4** |
-| Can each company fund and power the modeled fleet? | **Grid 5** |
-| How do advances affect price, cash flow and ROIC? | [[#Customer financing]] |
+| Years | What the GPU is doing | Rent as % of the contracted rate |
+|---|---|---|
+| 1–5 | Locked take-or-pay | 100% |
+| 6 | First re-rent | 55% |
+| 7 | Re-rent, decaying | 51% |
+| 8 | | 48% |
+| 9 | | 44% |
+| 10 | | 41% |
+| 11 | Last year if N=11 | 38% |
+| After N | Scrapped | 0 |
 
-### Conventions and notation
+A 5-year life never sees the re-rent tail. A 7-year life gets two cheaper years. An 11-year life gets six. The tail is real cash (the chip is already paid for) but smaller than the contract years.
 
-| Label | Meaning |
-|---|---|
-| Rate multiple | Rubin rental price divided by the **$6/GPU-hour Blackwell contract anchor** |
-| N | Modeled useful life: 5 / 7 / 9 / 11 years |
-| Base / +25% / +50% | Cumulative Rubin-generation fleet size, not a rate change |
-| Calendar basis | Deployment follows the Blackwell-matched 2027/2028 tranche cadence |
-| Fleet earnings | Cash-economic convention: customer-financing accretion and matching interest are excluded symmetrically |
-| Company pretax | Fleet EBIT less the relevant conventional and customer-financing interest stack |
+### Rate × life — the table that matters
 
-### Model construction
+All figures: one Rubin GPU, $183K in, 100% five-year contract, 30% cash cost, no tax. **Bold** = clears 15% IRR.
 
-#### Assumptions (corrected model)
+**Unlevered IRR**
 
-| Input | Value |
-|---|---|
-| Blackwell contract base rate | **$6.00/GPU-hr — a blended contract-vintage assumption, not spot.** The market is bifurcated: full-stack dedicated ~$11–12 (IREN–MSFT ~$95K/GPU-yr; xAI $11.6) > merchant list avg ~$6.17 > **NBIS/CRWV implied wholesale ~$3.35–5.70** (NBIS-MSFT deal math; CRWV blended realized) > reserved low $3.35. $6 was calibrated to reproduce reported 2026 revenue — mildly generous vs NBIS's own wholesale. **Anchor caveat:** the grids' rows are absolute ($9–18/hr), but the corridor bounds scale with the true anchor while the hurdle (~$9.50 absolute) does not — below a ~$5.40 anchor the slot floor drops under the hurdle and "rational deployment ⇒ hurdle-clearing" breaks (a $8.00–9.50 deploy-but-under-earn zone opens). NBIS's implied wholesale straddles that threshold → its true realized Blackwell rate is the decisive disclosure |
-| Rubin capex | $183K/GPU all-in = $126K racks + $57K shell/power |
-| Depreciation | **Non-linear descending-then-flat, everywhere** (no metric uses straight-line): racks yr1 30% · yr2 22% · yr3 14% · flat 34%/(N−3) yrs 4–N · shell 20-yr SL |
-| Lives (N) | 5 / 7 / 9 / 11 yrs — sets the flat-tail rate, the re-rent window, and the scrap date. **Carried fully in Grids 1 & 2; Grids 3–4 shown at N=7 with the exact life-adjustment table under Grid 3** (Rubin's 2027–29 contribution is life-invariant: ages 1–3 share identical 30/22/14 weights at every N) |
-| Billed hours | 8,410/yr (96% — take-or-pay pays on availability) |
-| Revenue curve | Contract rate yrs 1–5 → re-rent at 55%, −7%/yr, yrs 6–N |
-| Cash costs | Rubin 30% of revenue · CRWV current fleet 42% · NBIS current fleet 52% |
-| Current fleets | CRWV: 130K Hopper ($4/hr) + 120K Blackwell ($6/hr) · NBIS: 40K Hopper + 200K Blackwell (140K lands 2027) |
-| Rubin cohorts (from 2027) | CRWV 120K (=BW base) / 150K / 180K · NBIS 200K / 250K / 300K |
-| **Cohort definition** | Unit counts are the **cumulative Rubin-generation fleet**, deployed on **Blackwell-matched cadence**: NBIS 70K (2027) + 130K (2028), CRWV 40K (2027) + 80K (2028) at base; tranches scale proportionally at +25%/+50%. **All grids are calendar-year** |
-| Customer-advance overlay | NBIS 0% / 20% / 40% of TCV · CRWV 15% / 20% / 25%; separate 6% / 8% / 10% discount-rate and receipt-timing sensitivities. These are funding variables, not reductions to $183K physical capex |
-| Earnings convention | Fleet grids use nominal cash service price and exclude both customer-financing GAAP revenue accretion and its matching interest expense. Company-reported bridges must add both, or neither |
-| **Two sensitivity axes — do not conflate** | **Rate multiple** (1.5× / 2.0× / 2.5× / 3.0× of $6/hr; Grids 1, 3, 4) vs **unit scale** (fleet size base / +25% / +50% of BW units; scale line, Grid 5). Capex depends only on units; per-GPU ROIC only on rate; EBIT/EV on both |
+| Cash rent | 5 years | 7 years | 9 years | 11 years |
+|---:|---:|---:|---:|---:|
+| $6 | −1.2% | 4.5% | 7.6% | 9.4% |
+| $9 | 13.7% | **18.4%** | **20.6%** | **21.7%** |
+| $12 | **26.8%** | **30.7%** | **32.3%** | **33.1%** |
+| $15 | **38.9%** | **42.2%** | **43.4%** | **43.9%** |
+| $18 | **50.4%** | **53.1%** | **54.0%** | **54.4%** |
 
-#### Pricing by asset age — the graduation-profile check
+**NPV @ 15% ($K per GPU)**
 
-The model's age profile (shown at 2.0× = $12 contract): **years 1–5 flat at contract rate** (take-or-pay), then **graduation onto the empirical aging curve at roll** — 55% of contract at year 6, −7%/yr after ($6.60 → $4.59 by year 11). The step and slope are calibrated to the observed record: H100 re-signing at ~50–65% of contract-vintage rates (2026), A100 plateau decay ~−7%/yr (2023–26).
+| Cash rent | 5 years | 7 years | 9 years | 11 years |
+|---:|---:|---:|---:|---:|
+| $6 | −65 | −49 | −40 | −33 |
+| $9 | **−5** | **+17** | +32 | +42 |
+| $12 | +54 | +84 | +104 | +117 |
+| $15 | +113 | +151 | +176 | +192 |
+| $18 | +172 | +218 | +248 | +267 |
 
-**Why not full Ampere/Hopper graduation from year 1:** the observed generational decay is the *spot/merchant* curve; take-or-pay transfers that decay to the customer for the term (IREN–MSFT flat ~$95K/GPU-yr × 5yrs; Google–SpaceX flat $920M/mo; the NBIS/CRWV backlogs). The counterfactual quantifies what the contract wrapper is worth — a merchant fleet priced on the empirical graduation composite (100/65/50/45/42/40/37/34/32/30/28% of launch rate) at 2.0×:
+**Lifetime EBIT ($K)** — cash profit after depreciation, before tax. The $192K row at 7 years is the bookkeeping screen (0.15 × 7 × $183K).
 
-| Lifetime EBIT per GPU at 2.0×, $K | N=7 | N=11 |
-|---|---:|---:|
-| Contracted (Grid 1 below) | 282 | 392 |
-| **Merchant (graduation from yr 1)** | **122** | **198** |
-| 15%-hurdle equivalent | 192 | 302 |
+| Cash rent | 5 years | 7 years | 9 years | 11 years |
+|---:|---:|---:|---:|---:|
+| $9 | 125 | 175 | 218 | 255 |
+| $12 | 213 | 282 | 341 | 392 |
+| $15 | 301 | 389 | 465 | 529 |
+| $18 | 390 | 496 | 588 | 666 |
+| *Screen (15% × N × $183K)* | *137* | *192* | *247* | *302* |
 
-**The merchant fleet fails the hurdle at every life; the contracted fleet clears it from 2.0× up. The contract wrapper is worth ~$160–194K/GPU at 2.0×** — the entire difference between a hurdle-clearing and value-destroying Rubin deployment, which is why backlog term/coverage is the most valuable disclosure in this sector. Sensitivities: a stricter 45% re-rent step (graduation-consistent low end) trims lifetime EBIT ~5% (N=7: 282→269; N=11: 392→356) — conclusions unchanged; any **uncontracted** capacity rides the merchant curve from day 1 — the model assumes 100% coverage, so disclosed contract-coverage % is the swing variable.
+**Rent that exactly earns 15% IRR**
 
-**Observed falloff — spot today vs original contract vintage (Aug 2026), vs the model:**
-
-| Gen (age) | Launch contract vintage | Spot today | Retention | Model at same age |
-|---|---:|---|---|---|
-| Ampere (~6y) | ~$3.00–3.50 | $1.09–1.35 open · $2.00–3.50 hyperscaler channel | **35–40% open · 60–100% channel** | 55% (re-rent step) ≈ **the blend** |
-| Hopper (~3.5y) | ~$4.50–5.50 | $2.35–3.46 (+40% contract rebound Oct-25→Mar-26) | **50–65%** | 100% (in contract; spot marks the customer) |
-| Blackwell (~1–1.5y) | ~$6.00 | $3.35–6.17 | **55–100%** | 100% (in contract) |
-
-Validation: Hopper spot at age 3.5 (~55–60% of contract vintage) forward-implies a roll at age 5–6 near ~50–55% — independently reproducing the model's 55% step. Plateau decay: observed A100 −5%/yr (2023–26) vs modeled −7%/yr (slightly conservative). Anchoring on launch *spot peaks* instead (H100 $8, A100 $4) shows −64–70% falloffs — but no contracted operator booked those peaks. **Cycle caveat: the entire observed record is shortage-vintage** — in a normalized market (2028–29 digestion) the age-6 step could land at the open-market 35–40% rather than the 55% blend, and that is exactly when the CRWV (then NBIS) rolls occur; the re-rent step is the model's most cycle-dependent input.
-
-### Unit economics
-
-#### Grid 1 — Rubin standalone lifetime EBIT per GPU ($K, on $183K invested; rate multiple × life)
-
-| Multiple ($/hr) | N=5 | N=7 | N=9 | N=11 |
+| Useful life | 5 years | 7 years | 9 years | 11 years |
 |---|---:|---:|---:|---:|
-| 1.5× ($9.00) | 125 | 175 | 218 | 255 |
-| 2.0× ($12.00) | 213 | 282 | 341 | 392 |
-| 2.5× ($15.00) | 301 | 389 | 465 | 529 |
-| 3.0× ($18.00, parity) | 390 | 496 | 588 | 666 |
-| *15%-hurdle equivalent (0.15 × N × $183K)* | *137* | *192* | *247* | *302* |
+| Cash rent | **$9.27** | **$8.22** | **$7.65** | **$7.32** |
+| If leftover building value is credited at scrap | $8.20 | $7.59 | $7.28 | $7.10 |
 
-**Read:** Total lifetime EBIT per GPU rises with both rate and life. The rate multiple is the steep axis (each 0.5× step adds ~$90–110K at N=7); life is the shallow one (re-rent tail years at 55% of contract, −7%/yr). Against the hurdle row: **1.5× fails at every life; 2.0×+ clears at every life** — at 2.0×/N=7 a GPU earns **$282K on $183K invested (1.54× capex as EBIT)**, scaling to 2.14× at N=11. Figures are pre-tax (post-tax ≈ ×0.79; hurdle-clearing multiple then ~1.9×, coincident with the ~1.8× deployment floor).
+Read:
 
-#### Cost-completeness audit (what the ROIC does and does not charge)
+- **$6 never works.** Even an 11-year life is a 9% IRR. This is "charge the same dollars per hour as today's Blackwell," which is the pessimistic held-rate case.
+- **$9 is a life bet.** Fail at 5 years, clear at 7+. NVIDIA's annual product cadence (Blackwell → Rubin → Feynman) is the argument for a short life. Hopper chips still renting at year 7–8 is the argument for a long one. The model does not pick; it prices both.
+- **$12 works at every life.** Extra years add cash (NPV +54 → +117) and barely lift IRR (27% → 33%) because most of the money is in years 1–5.
+- **Accounting ROIC falls as life extends** (at $12: 23.3% → 19.5%) because it keeps charging 15% on the original $183K in years when the rack is mostly written off. That is why an earlier version of this note called life "shallow." IRR, the value test, rises.
 
-| Layer | Treatment | Check |
-|---|---|---|
-| Capex — GPUs, racks, HBM/storage, networking, power infra, liquid cooling, civil | In the $183K/GPU (Foxconn $47B/GW is facility-all-in) | Non-rack slice $57K/GPU ≈ $14.6/W ✓ matches industry DC benchmark $10–15M/MW |
-| Electricity | Inside the 30%-of-revenue cash charge | Bottom-up: 30.7 MWh/GPU-yr → $3.1–5.4K vs charge headroom — covered 2–4× over |
-| Non-power DC opex (staff, maintenance, water, security, transit) | Inside the 30% | ~$0.7/W ≈ $2.7K/GPU-yr ✓ |
-| Component replacement (optics/transceivers, fans, HBM failures, spares) | Inside the 30% — **not a named line** | ~1.5% capex/yr ≈ $2.7K ✓ fits; erosion risk concentrates in the N=9–11 columns |
-| Marginal SG&A | Residual of the 30% (~$12–37K/GPU-yr rising with rate) | Conservative: true DC costs scale with watts, the charge scales with revenue → model *overstates* costs at high multiples (~$35K/GPU-yr at 3.0× vs ~$10K bottom-up) |
-| Financing | Fleet EBIT excludes conventional interest and customer-advance accretion; company pretax bridges add the relevant financing stack separately | Customer advances may carry implicit interest even without a cash coupon; conventional debt remains the +25/+50% swing |
-| Construction WIP | Excluded → company ROIC prints below fleet ROIC | Flagged, Grid 5 |
-| Terminal shell value | Excluded (conservative) | Shell outlives GPUs; re-rackable |
-| Taxes | Excluded from headline grid | Post-tax line above |
+### The contract vs the street
 
-### Customer financing
+Same $12 GPU, no five-year lock — price follows the observed open-market fade (100% of launch in year 1, then 65 / 50 / 45 / 42 …):
 
-#### Customer advances — pricing, funding and ROIC overlay
+| | 5 years | 7 years | 9 years | 11 years |
+|---|---:|---:|---:|---:|
+| Contracted lifetime EBIT | $213K | $282K | $341K | $392K |
+| Open-market lifetime EBIT | $73K | $122K | $163K | $198K |
+| Extra EBIT from the 5-year lock | $140K | $160K | $178K | $194K |
 
-##### Mechanics and disclosed structures
+Open-market fails the bookkeeping screen at every life. The lock *is* the investment. Mix at $12 / 7 years: you need **~44% of GPUs contracted** to still print 15% average EBIT / $183K. Below that, merchant GPUs drag the fleet under.
 
-| Stage | Accounting treatment | Economic treatment |
-|---|---|---|
-| Contract signed | No revenue until service performance | Customer reserves capacity, normally under take-or-pay terms |
-| Advance invoiced/received | Cash and deferred revenue increase | Customer supplies working/project capital |
-| Build and acceptance | PP&E/WIP and capex increase; service revenue waits for availability | Operator bears procurement, construction and delivery risk |
-| Service delivered | Deferred revenue is released into revenue | Prepaid fees reduce later monthly cash collections |
-| Delay/SLA failure/termination | Credits, liability reclassification or refund may apply | Advance becomes an operationally senior claim on liquidity |
+The model assumes 100% contracted at the sampled rent. That is the bull case. Microsoft/Meta paper signed *before* Rubin doubled in cost may already cover some of these MW at $3–6. That is a vintage mix, not a "$12 row."
+
+After year 5 the model re-rents at 55% of contract, then −7%/year. That 55% is a blend of today's 6-year-old chips (cheap on the open market, still expensive if a hyperscaler wants them). The whole history is a shortage period. If 2028–29 is a digestion, the step could be 35–40% — exactly when CRWV's old Hopper chips roll.
+
+### What customers will pay
+
+People quote rents as "2× Blackwell." Blackwell itself trades in a stack:
+
+| Who is paying | $/hour | Notes |
+|---|---:|---|
+| Dedicated full-stack (IREN–Microsoft, xAI) | ~$11–12 | Retail / they own the power |
+| Mid-market list | ~$6 | The model's *label* |
+| NBIS / CRWV wholesale (deal math) | **~$3.35–5.70** | Microsoft-implied at the low end |
+
+A customer will not pay more per unit of work than their alternative. If their alternative is a $6 Blackwell and Rubin is 3× faster, the ceiling is $18. If Rubin is only 1.6× faster (training), the ceiling is $9.60. If their alternative is a $3.35 wholesale Blackwell, the ceiling is $10 (inference) or $5.36 (training) — the band inverts.
+
+Installing a new Rubin instead of *keeping* a working $6 Blackwell that is already paid for needs ~$13.75/hour, not $10.60. $10.60 only matches revenue per watt; it ignores that Rubin still has to pay for a new $183K box.
+
+### Customer advances (who funds the box)
+
+The customer sometimes pays part of the five-year rent on day one. The operator records cash and a promise to deliver service later. That is a loan against the lease, not a gift.
 
 | | NBIS | CRWV |
 |---|---|---|
-| Disclosed prepayment | Original Microsoft: ~$6.958B of ~$17.393B TCV = **40%** | Weighted average across active contracts: **15–25% of TCV** |
-| Breadth | Microsoft base contract only; two Jan-2026 add-on tranches have **no upfront**; Meta/Rubin terms undisclosed | Portfolio-wide historical range; future Rubin terms can differ |
-| 2026-03-31 balance | Deferred revenue **$4.778B** | Deferred revenue **$7.5B**; $1.3B reclassified to customer liabilities during Q1 |
-| Funding stack | Advances + converts/equity + emerging asset-backed debt | Advances + DDTL/OEM/lease/debt; some customer deposits enter restricted waterfalls |
-| Principal risk | Milestone timing, acceptance, refund and concentrated customer obligation | Debt service/refinancing plus committed delivery and customer concentration |
+| Disclosed prepay | Original Microsoft 40% of that deal (~$7.0B / $17.4B) | 15–25% across the book |
+| Per GPU on the Microsoft deal | **~$51K** = 28% of Rubin capex | — |
+| Later Microsoft add-ons | **0%** upfront | — |
 
-Primary filings: [NBIS 2025 20-F](https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm) · [Microsoft SOW](https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231xex4d4.htm) · [Microsoft Jan-2026 addendum](https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231xex4d5.htm) · [NBIS Q1 statements](https://www.sec.gov/Archives/edgar/data/1513845/000110465926064092/nbis-20260331xex99d2.htm) · [CRWV 2025 10-K](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm) · [CRWV Q1 10-Q](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/crwv-20260331.htm).
+Present-value lift vs paying monthly, 8% discount, five years: 15% upfront → +3%; 40% upfront → +8%. A $9 rent with 40% upfront is like $9.75 paid monthly. A $6 rent becomes $6.50 — still a bad GPU.
 
-##### Pricing value of early cash
+Do not take 40% of a made-up $12 contract ($202K) and call the GPU self-funded. That is a different deal than the one in the filing.
 
-For a five-year contract with monthly billing, $q$ paid at inception and annual discount rate $r$:
+Q1 2026: NBIS reported FCF −$0.2B. Strip the $3.2B of new deferred-revenue cash and it is −$3.4B. CRWV −$4.7B reported / −$5.3B ex-advance. New customer checks can make operating cash look structural while the fleet is still being built. When bookings stop, the inflow stops and the service obligation remains.
 
-$$
-PV_{prepay}=q\cdot TCV+(1-q)\cdot TCV\cdot A(r,60)
-$$
+### Company fleets (default: 7-year life)
 
-At 8%, the 60-month annuity factor as a share of nominal TCV is approximately 0.827:
+Existing chips, no Rubin: CRWV 130K Hopper @ $4 + 120K Blackwell @ $6. NBIS 40K Hopper + 200K Blackwell (140K arrives 2027). Rubin arrives on the same calendar as Blackwell did: CRWV 40K in 2027 + 80K in 2028; NBIS 70K + 130K. 100% contracted at the sampled rent. CRWV pretax = EBIT − $3.9B interest.
 
-| Upfront share of TCV | PV uplift vs fully monthly billing | Economically neutral headline-price discount |
-|---:|---:|---:|
-| 15% | 3.1% | 3.0% |
-| 25% | 5.2% | 5.0% |
-| 40% | 8.3% | 7.7% |
+**EBIT $B at a 7-year life**
 
-A $9/hour contract with 40% upfront is equivalent to approximately $9.75/hour paid monthly; $6/hour becomes ~$6.50, still far below the ~$9.50 absolute operating hurdle. The advance can move a marginal deal across a capital hurdle but cannot rescue deeply sub-economic pricing. Milestone rather than day-one receipt lowers the benefit; expensive or unavailable alternative funding raises it.
+| | 2027 | 2028 | 2029 |
+|---|---:|---:|---:|
+| CRWV @ $9 / $12 / $15 / $18 | 4.6 / 5.3 / 6.0 / 6.8 | 6.5 / 8.7 / 10.8 / 12.9 | 6.9 / 9.1 / 11.2 / 13.3 |
+| NBIS @ $9 / $12 / $15 / $18 | 3.1 / 4.3 / 5.6 / 6.8 | 6.3 / 9.8 / 13.4 / 16.9 | 9.1 / 12.6 / 16.1 / 19.7 |
 
-##### Rubin 2.0× bridge
+**What life does to those years.** Rubin chips in 2027–29 are 1–3 years old — still inside the five-year contract — so *their* EBIT does not change with N. Only the *old* fleet does:
 
-At $12/hour, each Rubin GPU earns $100.9K annual revenue and $504.6K five-year nominal TCV against $183K all-in capex. Cash costs remain 30%; seven-year average pre-tax gross fleet ROIC remains approximately $282K ÷ 7 ÷ $183K = **22%**.
+| vs 7-year EBIT, $B | 2027 | 2028 | 2029 |
+|---|---:|---:|---:|
+| CRWV if chips last only 5 years | −0.35 | −0.35 | **−1.51** (Hopper thrown away, not re-rented) |
+| CRWV if 9 / 11 years | +0.12 / +0.18 | +0.11 / +0.17 | +0.29 / +0.44 |
+| NBIS if 5 years | 0 | −0.11 | −0.37 |
+| NBIS if 9 / 11 years | 0 | +0.03 / +0.05 | +0.13 / +0.19 |
 
-| Illustrative funding structure | Advance/GPU | Face-value capex coverage | Operator funding at inception | Incremental five-year project NPV at 8% |
-|---|---:|---:|---:|---:|
-| No advance | $0 | 0% | $183.0K | $0 |
-| CRWV-like 15% | $75.7K | 41% | $107.3K | +$13.1K |
-| CRWV-like 25% | $126.2K | 69% | $56.9K | +$21.8K |
-| NBIS Microsoft-like 40% | $201.8K | 110% | **$18.8K initial surplus** | +$34.8K |
+CRWV 2029 at $12 is $7.6B (5yr) / $9.1B (7yr) / $9.5B (11yr). NBIS is almost life-blind through 2029 because its fleet is young. Life for NBIS lives in 2030–31 and in the per-GPU tail above. Year-by-year current-fleet EBIT in [[#Appendix B — Fleet path detail]].
 
-The table transplants historical prepayment percentages into an illustrative Rubin cohort, assumes advance and capex at inception, and excludes tax, financing fees and terminal/re-rent value. It is not evidence of either company's Rubin payment terms. Face-value coverage measures funding; the NPV column measures incremental value. Subtracting the full advance from capex makes equity ROIC meaningless once the advance exceeds capex, even though full service obligations remain.
+### What the stock is pricing
 
-##### Measurement and GAAP bridge
+Today's enterprise value (2026-08-04) ÷ 2028 modeled earnings, 7-year life, 100% coverage, $12 rent: NBIS **2.3× EBITDA / 4.7× EBIT** on $46B EV. CRWV **4.7× / 7.8×** on $68B. Even $9 is 2.9× / 5.5×. That is today's EV over earnings that still require ~$37–46B of Rubin/Blackwell spend to exist. Read it as "the market does not believe scale, cash rent, or duration" — then name which. Full grid in [[#Appendix C — Multiples]].
 
-| Metric | Correct treatment | Error to avoid |
-|---|---|---|
-| Gross fleet ROIC | NOPAT on cash-equivalent service revenue ÷ full operating asset base | Subtracting the entire advance from physical capex |
-| Project IRR/NPV | Include advance timing, reduced future collections, capex timing and refund risk | Treating the advance as extra TCV |
-| Reported EBIT | Bridge significant-financing revenue accretion explicitly | Reading financing gross-up as operating pricing power |
-| Pretax income | Include the matching customer-financing interest expense | Grossing up revenue while assuming zero interest |
-| FCF | Separate FCF before deferred-revenue changes from advance-funded FCF | Capitalizing net new advances as a recurring perpetuity |
-| EV | Do not treat advance-funded cash as excess without the service/refund obligation | Netting cash while ignoring deferred revenue |
+### Can they fund and power it
 
-Both companies evaluate payment/service gaps longer than one year for a significant financing component. NBIS records early-customer-funding accretion as revenue plus interest expense; CRWV states that interest expense includes revenue agreements with significant financing components. Use one of two internally consistent conventions: **cash-economic** (nominal cash consideration; no accretion or matching interest) or **GAAP** (grossed-up revenue plus matching interest). The fleet grids use the former.
+Base Rubin: NBIS 200K GPUs / $37B. CRWV 120K / $22B. FY26 capex is inside both guides. FY27 is unguided for NBIS (~$22–26B). Microsoft's 40% funds *that* Microsoft cohort; later Microsoft add-ons are 0% upfront. CRWV's Rubin fits its $31–35B cadence and debt machine. Power: YE2028 needs 1.28 GW (NBIS) and 0.94 GW (CRWV), inside contracted pipelines. Detail in [[#Appendix D — Capex, funding, power]].
 
-##### Cash-flow profile and the advance treadmill
+## Contradiction Check
 
-| Q1 2026, $B | NBIS | CRWV |
-|---|---:|---:|
-| Deferred-revenue cash-flow contribution | **+3.198** | +0.575 |
-| Operating cash flow | 2.258 | 2.984 |
-| Cash capex | (2.473) | (7.695) |
-| Reported FCF | **(0.215)** | (4.711) |
-| FCF excluding deferred-revenue contribution | **(3.413)** | (5.286) |
+Against [[Theses/NBIS - Nebius Group]] Insight #6, [[Theses/CRWV - CoreWeave]] Insight #6 / Q#8, and [[Sectors/Neoclouds & GPU-as-a-Service]] §Rubin fleet economics — those notes were rewritten 2026-08-13 to drop the 1.8×–3.0× corridor. This pass adds the life axis they still treat as secondary.
 
-The ex-advance line is a normalization, not a claim that the cash is unusable. During rapid bookings growth, new advances can exceed old deferred-revenue run-off and make CFO appear structurally strong. When bookings flatten, the inflow stops while prepaid service delivery, opex and debt service continue. Terminal FCF therefore sets net new customer advances to zero unless the valuation also assumes perpetual capacity growth and replacement capex.
+- **Supports:** a five-year take-or-pay at ~$12 with high coverage clears 15% at every life. Open-market from day one does not.
+- **Adds:** $9 is a 5-year vs 7-year decision, not a blanket "clears" or "destroys." The 15% IRR rent moves $9.27 → $7.32 as life goes 5 → 11. Company 2027–29 EBIT is not the place to see that; the per-GPU tail and CRWV 2029 Hopper scrap are.
+- **Breaks the operating case:** cash rent below the 15% IRR line for the life you actually believe (below $9.27 if you believe 5 years; below $8.22 if you believe 7), or coverage/vintage that puts the blend under the screen you are using.
+- **Breaks the funding case:** treating Microsoft 40% as a 40% Rubin funding rate. January 2026 add-ons are already 0%.
+- **Reveals life:** Hopper/Blackwell re-rent rates and any impairment language as those fleets hit year 5–6 (CRWV 2028–29, NBIS later). A 35–40% open-market step instead of 55% is the digestion print.
+- **Prior notes:** [[Research/2026-08-04 - NBIS - Rubin Generation ROIC - deep-dive]] held-rate ($4.90–6) remains the below-IRR case at every life. [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]] is the $11.6/hour retail-outlier unit model.
 
-### Fleet earnings
+## Related Research
 
-#### Grid 2 — Current fleets standalone, EBIT $B (no Rubin)
+- [[_Archive/Backups/Research/2026-08-05 - NBIS CRWV - Rubin Fleet Economics - Rate Sensitivity Model - deep-dive (pre-rewrite 2026-08-13)]] — pre-rewrite record
+- [[_Archive/Backups/Research/2026-08-05 - NBIS CRWV - Rubin Fleet Economics - Rate Sensitivity Model - deep-dive (pre-merge 2026-08-07)]] · [[_Archive/Backups/Research/2026-08-07 - NBIS CRWV - Customer Advances and Fleet ROIC - deep-dive (merged 2026-08-07)]]
+- [[Theses/NBIS - Nebius Group]] · [[Theses/CRWV - CoreWeave]]
+- [[Research/2026-08-04 - NBIS - Rubin Generation ROIC - deep-dive]]
+- [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]]
+- [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]]
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]
+- [[Sectors/Neoclouds & GPU-as-a-Service]] · [[Macro & Technology/Sustainability of AI Capex]]
 
-**Scope clarification:** “Current fleets” means every Hopper and Blackwell cohort in the modeled build plan—not only equipment installed by August 2026. NBIS includes **140K Blackwell GPUs landing in 2027**. Its 2028–29 EBIT growth comes from the modeled 2027 Blackwell landing and current-generation cohorts moving through the descending 30% / 22% / 14% depreciation profile; it does not require incremental post-2027 pre-Rubin deployments. Grid 2 excludes Rubin entirely.
+---
 
-**CRWV**
+## Appendix A — Accounting ROIC by life
+
+Average EBIT ÷ original $183K. This is the screen, not IRR (IRR is in the body).
+
+| Cash rent | 5 years | 7 years | 9 years | 11 years |
+|---:|---:|---:|---:|---:|
+| $9 | 13.6% | 13.7% | 13.2% | 12.6% |
+| $12 | 23.3% | 22.0% | 20.7% | 19.5% |
+| $15 | 32.9% | 30.4% | 28.2% | 26.3% |
+| $18 | 42.6% | 38.7% | 35.7% | 33.1% |
+
+It falls as life extends because the tail years are cheaper and the denominator never shrinks. Post-tax ≈ ×0.79 on EBIT.
+
+---
+
+## Appendix B — Fleet path detail
+
+**Current fleets only, EBIT $B.** Includes NBIS's 140K Blackwell landing in 2027. No Rubin.
+
+CRWV
 
 | Life | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 |
 |---|---:|---:|---:|---:|---:|---:|
@@ -276,7 +264,7 @@ The ex-advance line is a normalization, not a claim that the cash is unusable. D
 | N=9 | 3.41 | 4.26 | 4.76 | 4.14 | 4.05 | 2.38 |
 | N=11 | 3.41 | 4.32 | 4.82 | 4.29 | 4.19 | 2.52 |
 
-**NBIS**
+NBIS
 
 | Life | 2026 | 2027 | 2028 | 2029 | 2030 | 2031 |
 |---|---:|---:|---:|---:|---:|---:|
@@ -285,200 +273,111 @@ The ex-advance line is a normalization, not a claim that the cash is unusable. D
 | N=9 | 0.80 | 2.22 | 3.16 | 4.02 | 4.34 | 3.66 |
 | N=11 | 0.80 | 2.22 | 3.18 | 4.08 | 4.50 | 3.82 |
 
-**Read:** Both fleets are earnings machines through 2030 at any life ≥7. The life assumption matters only in the out-years: at N=5 CRWV's fleet EBIT reaches zero in 2031; at N=9–11 it still earns ~$2.4–3.8B. CRWV's ~$2.1B interest consumes roughly half its standalone fleet EBIT.
+N=5 zeros CRWV in 2031 (Hopper scrapped 2029). CRWV standalone ~$2.1B interest consumes about half of pre-Rubin fleet EBIT.
 
-#### Grid 3 — Combined revenue and EBIT $B by rate multiple (N=7, base units, calendar years)
+**Scale at $15, 2028 EBIT $B** (Rubin units base / +25% / +50%).
 
-*Multiple = Rubin rental price vs today's $6/hr Blackwell contract: 1.5× = $9 · 2.0× = $12 · 2.5× = $15 · 3.0× = $18 (performance-parity) per GPU-hr.*
-
-##### CRWV — Rubin 40K in 2027 + 80K in 2028
-
-Pretax = EBIT − $3.9B interest.
-
-**Revenue ($B)**
-
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | 13.5 | 19.5 | 17.5 |
-| 2.0× | 14.5 | 22.5 | 20.6 |
-| 2.5× | 15.5 | 25.6 | 23.6 |
-| 3.0× | 16.5 | 28.6 | 26.6 |
-
-**EBIT ($B)**
-
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | 4.6 | 6.5 | 6.9 |
-| 2.0× | 5.3 | 8.7 | 9.1 |
-| 2.5× | 6.0 | 10.8 | 11.2 |
-| 3.0× | 6.8 | 12.9 | 13.3 |
-
-**Pretax income ($B)**
-
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | **+0.7** | +2.6 | +3.0 |
-| 2.0× | +1.4 | +4.8 | +5.2 |
-| 2.5× | +2.1 | +6.9 | +7.3 |
-| 3.0× | +2.9 | +9.0 | +9.4 |
-
-##### NBIS — Rubin 70K in 2027 + 130K in 2028
-
-Cash-economic convention: customer-financing accretion and matching interest are excluded symmetrically.
-
-**Revenue ($B)**
-
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | 16.7 | 26.6 | 26.6 |
-| 2.0× | 18.5 | 31.6 | 31.6 |
-| 2.5× | 20.3 | 36.7 | 36.7 |
-| 3.0× | 22.0 | 41.7 | 41.7 |
-
-**EBIT ($B)**
-
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | **+3.1** | +6.3 | +9.1 |
-| 2.0× | **+4.3** | +9.8 | +12.6 |
-| 2.5× | **+5.6** | +13.4 | +16.1 |
-| 3.0× | +6.8 | +16.9 | +19.7 |
-
-**Read:** Every scenario is EBIT-positive from year one and ramps as tranche 2 lands. 2028 is the rate-reveal year: NBIS cash-economic revenue prints ≈ $27B / $32B / $37B / $42B across the four worlds. Reported GAAP revenue can run above these cells when customer-advance financing accretion is material, with the offset below EBIT as interest expense; compare pretax cash economics rather than EBIT alone. 2027 remains transitional.
-
-##### Life adjustment (exact, additive — converts any cell above to any life)
-
-Rubin's 2027–29 contribution is life-invariant (ages 1–3, identical weights at every N); the only N-dependence is the current fleet, i.e. Grid 2's rows. Add these deltas to any Grid 3 EBIT cell:
-
-| EBIT delta vs N=7, $B | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| CRWV N=5 | −0.35 | −0.35 | **−1.51** (Hopper scrapped rather than re-rented) |
-| CRWV N=9 / N=11 | +0.12 / +0.18 | +0.11 / +0.17 | +0.29 / +0.44 |
-| NBIS N=5 | 0.00 | −0.11 | −0.37 |
-| NBIS N=9 / N=11 | 0.00 | +0.03 / +0.05 | +0.13 / +0.19 |
-
-The one material cell is **CRWV 2029 at N=5**: at the 2.0× rate its EBIT spans 7.6 (N=5) → 9.1 (N=7) → 9.5 (N=11), i.e. EV/EBIT 8.9× → 7.5× → 7.1×. NBIS is nearly life-invariant through 2029 (young fleet); its life exposure sits in Grid 2's 2030–31 columns and Grid 1's Rubin tail.
-
-#### Scale sensitivity (2.5× rate, 2028 EBIT $B, Rubin units base / +25% / +50%, calendar basis)
-
-| Metric | Base | +25% | +50% |
+| | Base | +25% | +50% |
 |---|---:|---:|---:|
 | CRWV EBIT | 10.8 | 12.3 | 13.8 |
-| CRWV pretax income | +6.9 | +8.0 | +9.0 |
+| CRWV pretax | +6.9 | +8.0 | +9.0 |
 | NBIS EBIT | 13.4 | 15.9 | 18.5 |
 
-**Read:** At corridor pricing, scale is monotonically accretive — more Rubin is better at any deployment size. (Below the ~1.6× hurdle, scale amplifies value destruction instead; the multiple, not the unit count, is the decision variable.) *Single-vintage convention retired 2026-08-05 — all grids are calendar-basis on Blackwell-matched cadence.*
+---
 
-### Valuation
+## Appendix C — Multiples
 
-#### Grid 4 — EV/EBITDA and EV/EBIT by rate multiple (today's EV ÷ modeled earnings)
+Today's EV ÷ modeled calendar earnings. 7-year life. Hopper re-rents hit CRWV EBITDA in 2029.
 
-*Rows are the same rate multiples as Grid 3 (Rubin rental vs $6/hr Blackwell: 1.5×=$9 · 2.0×=$12 · 2.5×=$15 · 3.0×=$18/GPU-hr).* EV inputs (2026-08-04 prices, per [[Research/2026-08-04 - NBIS vs CRWV - Competitive Comparison]]): NBIS $46.0B conventional (stake-adjusted $39.6B → all NBIS multiples ~14% lower) · CRWV $67.9B.
+**NBIS EV $46B — EV/EBITDA**
 
-##### NBIS — EV $46B
+| Rate | 2027 | 2028 | 2029 |
+|---:|---:|---:|---:|
+| $9 | 5.0× | 2.9× | 2.9× |
+| $12 | 4.4× | **2.3×** | **2.3×** |
+| $15 | 3.9× | 2.0× | 2.0× |
+| $18 | 3.6× | 1.7× | 1.7× |
 
-EBITDA steps up as tranche 2 lands in 2028; no re-rents occur before 2030.
+**NBIS — EV/EBIT**
 
-**EV/EBITDA**
+| Rate | 2027 | 2028 | 2029 |
+|---:|---:|---:|---:|
+| $9 | 14.9× | 7.3× | 5.1× |
+| $12 | 10.7× | **4.7×** | 3.7× |
+| $15 | 8.3× | 3.4× | 2.9× |
+| $18 | 6.8× | 2.7× | 2.3× |
 
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | 5.0× | 2.9× | 2.9× |
-| 2.0× | 4.4× | **2.3×** | **2.3×** |
-| 2.5× | 3.9× | 2.0× | 2.0× |
-| 3.0× | 3.6× | 1.7× | 1.7× |
+**CRWV EV $67.9B — EV/EBITDA**
 
-**EV/EBIT**
+| Rate | 2027 | 2028 | 2029 |
+|---:|---:|---:|---:|
+| $9 | 8.3× | 5.5× | 6.0× |
+| $12 | 7.7× | **4.7×** | 5.1× |
+| $15 | 7.1× | 4.1× | 4.4× |
+| $18 | 6.6× | 3.6× | 3.9× |
 
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | 14.9× | 7.3× | 5.1× |
-| 2.0× | 10.7× | **4.7×** | 3.7× |
-| 2.5× | 8.3× | 3.4× | 2.9× |
-| 3.0× | 6.8× | 2.7× | 2.3× |
+**CRWV — EV/EBIT**
 
-##### CRWV — EV $67.9B
+| Rate | 2027 | 2028 | 2029 |
+|---:|---:|---:|---:|
+| $9 | 14.7× | 10.4× | 9.8× |
+| $12 | 12.7× | **7.8×** | 7.5× |
+| $15 | 11.2× | 6.3× | 6.1× |
+| $18 | 10.1× | 5.3× | 5.1× |
 
-Hopper re-rents in 2029, so EBITDA dips that year.
+---
 
-**EV/EBITDA**
+## Appendix D — Capex, funding, power
 
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | 8.3× | 5.5× | 6.0× |
-| 2.0× | 7.7× | **4.7×** | 5.1× |
-| 2.5× | 7.1× | 4.1× | 4.4× |
-| 3.0× | 6.6× | 3.6× | 3.9× |
-
-**EV/EBIT**
-
-| Multiple | 2027 | 2028 | 2029 |
-|---|---:|---:|---:|
-| 1.5× | 14.7× | 10.4× | 9.8× |
-| 2.0× | 12.7× | **7.8×** | 7.5× |
-| 2.5× | 11.2× | 6.3× | 6.1× |
-| 3.0× | 10.1× | 5.3× | 5.1× |
-
-**Read:** Across the corridor (2.0–3.0×), today's EV prices at **2.3×–1.7× 2028 EBITDA for NBIS** and **4.7×–3.6× for CRWV** — versus NBIS's current optical ~14× EV/FY26-revenue; even the below-hurdle 1.5× world is only 2.9× / 5.5×. 2027 multiples are transition-year optics (tranche 1 only). The market is pricing disbelief in at least one of three things: **scale** (the cohorts don't deploy on cadence), **rate** (contracts embed a sub-corridor multiple), or **duration** (post-2029 re-rent cliff / hyperscaler in-housing truncates the annuity). Naming which disbelief is mispriced is the trade.
-
-**Caveats:** EV is static (today's) — CRWV's base Rubin build adds ~$22B of debt (pro-forma EV ~$90B: multiply CRWV rows by ~1.3×). NBIS customer advances reduce conventional borrowing but do not create free excess cash: the ~$4.8B deferred-revenue balance carries service/refund obligations and can contain a significant financing component. Do not net advance-funded cash from EV while ignoring the liability. All years are calendar (Blackwell-matched deployment cadence).
-
-### Deployment feasibility
-
-#### Grid 5 — Deployment feasibility: capital, funding, and power behind each scenario
-
-##### Capex implied by the model ($B)
-
-| Cohort | NBIS | CRWV | Spend window |
+| Cohort | NBIS | CRWV | Window |
 |---|---:|---:|---|
-| Hopper (installed) | 1.7 | 5.5 | 2023–25 (sunk) |
-| Blackwell | 4.2 + 9.8 build | 8.4 | 2025–26 — inside FY26 guides |
-| Rubin **unit-scale** base / +25% / +50% (NBIS 200/250/300K · CRWV 120/150/180K GPUs, cumulative) | 36.6 / 45.8 / 54.9 | 22.0 / 27.4 / 32.9 | H2-26 → 2028 (tranches: NBIS 70K+130K · CRWV 40K+80K) |
-| **Implied FY27 capex** | **~$22–26B / ~$28–32B / ~$33–38B** (remainder into FY28) | inside $31–35B cadence / +$5.5B / +$11B spread over two years | FY27 is **unguided** for NBIS |
-
-##### Funding check
-
-The model does **not** assume all cash is directed into GPUs; it assumes the funding stack keeps scaling:
+| Hopper (sunk) | 1.7 | 5.5 | 2023–25 |
+| Blackwell | 4.2 + 9.8 build | 8.4 | 2025–26, inside FY26 guides |
+| Rubin base / +25% / +50% (200/250/300K · 120/150/180K) | 36.6 / 45.8 / 54.9 | 22.0 / 27.4 / 32.9 | H2-26 → 2028 (70+130 · 40+80) |
+| Implied FY27 capex | ~$22–26B / ~$28–32B / ~$33–38B (rest FY28) | inside $31–35B / +$5.5B / +$11B over two years | FY27 unguided for NBIS |
 
 | | NBIS | CRWV |
 |---|---|---|
-| Base case | FY26 ≈ guide ($20–25B ✓); FY27 ≈ $27B ≈ flat vs FY26. Original Microsoft prepayment materially funds its cohort, but future Microsoft add-ons disclose 0% upfront and Meta/Rubin terms are unknown; use 0%/20%/40% prepayment sensitivities plus cash, converts, ABL/ATM and optional ClickHouse monetization | Base Rubin fits inside the existing $31–35B capex cadence and DDTL machinery; 15–25% historical customer prepayments supplement rather than replace the debt stack |
-| +25% units | Needs ~$36B FY27 → ~$9B incremental external funding → **~$0.6B/yr interest drag** if ABL-funded at 7% (grids assume ~nil NBIS interest — trim accordingly) | +$5.5B — comfortably inside DDTL capacity |
-| +50% units | Needs ~$45B FY27 → ~$18B incremental → **~$1.3B/yr interest**; approaching the dilution-or-leverage territory of thesis Insight #2 | +$11B — stretches but plausible via DDTL 5.0+ |
+| Base | FY26 ≈ guide; FY27 ≈ $27B flat vs FY26. Microsoft 40% funds its cohort; use 0/20/40% prepay + cash/converts/ABL/ATM/optional ClickHouse | Base Rubin inside $31–35B + DDTL; 15–25% prepay supplements debt |
+| +25% units | ~$36B FY27 → ~$9B extra → **~$0.6B/yr** interest at 7% ABL | +$5.5B, inside DDTL |
+| +50% units | ~$45B FY27 → ~$18B extra → **~$1.3B/yr** | +$11B, DDTL 5.0+ |
 
-##### Power and land
-
-Land is not the constraint; energization cadence is:
-
-| Active power implied (model watts) | Base | +25% | +50% | vs disclosed |
+| Active power (model W) | Base | +25% | +50% | vs disclosed |
 |---|---:|---:|---:|---|
-| NBIS YE2027 → YE2028 | 0.78 → **1.28 GW** | 0.85 → 1.48 GW | 0.91 → 1.67 GW | 3.5→4GW contracted (>75% owned); 800MW–1GW connected YE26 target; Vineland/Finland/UK/Israel/Missouri pipeline; **PA gigawatt site first power end-2027** |
-| CRWV YE2027 → YE2028 | 0.63 → 0.94 GW | 0.67 → 1.06 GW | 0.71 → 1.17 GW | >1GW active already; 3.5GW contracted — comfortable at every scale |
+| NBIS YE27 → YE28 | 0.78 → **1.28 GW** | 0.85 → 1.48 | 0.91 → 1.67 | 3.5→4 GW contracted; 800 MW–1 GW connected YE26; PA GW site first power end-2027 |
+| CRWV YE27 → YE28 | 0.63 → 0.94 GW | 0.67 → 1.06 | 0.71 → 1.17 | >1 GW active; 3.5 GW contracted |
 
-**Read:** On calendar cadence the 2027 energization tension dissolves — YE27 needs (0.78–0.91GW) sit inside the YE26-connected envelope, and YE28 targets (1.28–1.67GW) map onto the 2027–28 pipeline including Pennsylvania ramping through 2028. Funding remains the +25%/+50% binding constraint, but the company contrast is now conditional rather than categorical: CRWV is power-rich and debt-heavy; NBIS has a proven customer-funding advantage on the original Microsoft cohort but remains exposed to zero-prepay future tranches.
+---
 
-##### Model concessions
+## Appendix E — Assumptions, depreciation, costs
 
-1. Future NBIS prepayment rate is undisclosed and no longer assumed to scale automatically.
-2. Customer advances can contain implicit financing interest even without a cash coupon; fleet grids exclude both GAAP accretion and matching interest.
-3. Invested capital counts only revenue-producing cohorts, while construction WIP depresses company ROIC during the build.
-4. Advance-driven CFO is a cohort funding flow whose run-off must be included when growth slows.
+| Input | Value |
+|---|---|
+| Numeraire | $6.00/GPU-hr blended. Grids are absolute $9–18 |
+| Rubin capex | $183K = $126K racks + $57K shell/power |
+| Depreciation | Racks: yr1 30% · yr2 22% · yr3 14% · flat 34%/(N−3) yrs 4–N. Shell: 20-yr SL |
+| Lives | 5 / 7 / 9 / 11 |
+| Billed hours | 8,410/yr (96%) |
+| Revenue | Contract yrs 1–5 → 55% step, −7%/yr, yrs 6–N |
+| Cash costs | Rubin 30% of revenue · CRWV current 42% · NBIS current 52% |
+| Current fleets | CRWV 130K H ($4) + 120K BW ($6) · NBIS 40K H + 200K BW |
+| Rubin units | CRWV 120/150/180K · NBIS 200/250/300K |
+| Earnings | Cash-economic: no financing accretion, no matching interest |
 
-## Contradiction Check
+**Year-one EBIT is a convention.** At $9: +$12.3K with shell on 20-year SL; −$1.9K if year-1 charges 30% of all-in $183K.
 
-- **What breaks the corridor logic:** take-or-pay contracts signed *below* the deployment floor after adjusting for payment timing. A 40% advance lifts five-year contract PV by only ~8% at an 8% discount rate, so it cannot rescue a deeply low cash rate.
-- **What breaks the funding case:** extrapolating the original Microsoft 40% advance to Rubin, Meta or later Microsoft cohorts. The January 2026 add-ons already disclose zero upfront payment; future order-level terms are the funding falsifier.
-- **What reveals the rate early:** cash-equivalent revenue per active watt, any disclosed dedicated Rubin contract rate, and guidance slopes after separating significant-financing revenue accretion from service revenue.
-- **What reveals the funding economics:** prepayment percentage, milestone dates, implicit borrowing rate, refund/termination rights and whether advance-funded cash is restricted. Advance size without those terms cannot establish pricing power.
-- **EBITDA remains an incomplete discriminator:** it excludes the depreciation that determines gross fleet ROIC, while customer-financing accretion can raise revenue/EBIT and the matching charge appears below EBIT.
-- **Cash-flow bull falsifier:** Rubin contracts disclose sub-$9.50 cash-equivalent pricing or NBIS must fund future cohorts with little advance and conventional leverage. **Bear falsifier:** order-level contracts show corridor pricing plus ≥20–40% upfront funding without a larger price giveback or broad refund optionality.
-- **Prior-note reconciliation:** the 2026-08-04 held-rate ROIC (~0–9%) remains a below-floor stress case. This merged note adds the financing layer without changing the physical-capex, depreciation or contract-versus-merchant derivation.
+**Merchant graduation** (% of launch rate): 100/65/50/45/42/40/37/34/32/30/28. Stricter 45% re-rent step: N=7 EBIT 282→269; N=11 392→356.
 
-## Related Research
+| Gen (age) | Launch contract | Spot now | Retention | Model at that age |
+|---|---|---|---|---|
+| Ampere (~6y) | ~$3.00–3.50 | $1.09–1.35 open · $2.00–3.50 channel | 35–40% open · 60–100% channel | 55% step ≈ the blend |
+| Hopper (~3.5y) | ~$4.50–5.50 | $2.35–3.46 | 50–65% | 100% (in contract) |
+| Blackwell (~1–1.5y) | ~$6.00 | $3.35–6.17 | 55–100% | 100% (in contract) |
 
-- [[_Archive/Backups/Research/2026-08-05 - NBIS CRWV - Rubin Fleet Economics - Rate Sensitivity Model - deep-dive (pre-merge 2026-08-07)]] · [[_Archive/Backups/Research/2026-08-07 - NBIS CRWV - Customer Advances and Fleet ROIC - deep-dive (merged 2026-08-07)]] — immutable pre-merge source records.
-- [[Theses/NBIS - Nebius Group]] · [[Theses/CRWV - CoreWeave]]
-- [[Research/2026-08-04 - NBIS - Rubin Generation ROIC - deep-dive]] — derivation history: base model, historical launch-pricing test, $/watt scrap-and-slot model, error audit
-- [[Research/2026-06-03 - AI Value Capture and GPU Rental Economics - deep-dive]] — the One Chart cost-floor / value-ceiling framework
-- "The Economics of a Neocloud" (5 Jul 26, _Inbox pending /ingest) — payback consensus source; its xAI/IREN/wholesale rate anchors calibrate the multiples
-- [[Sectors/Neoclouds & GPU-as-a-Service]] · [[Macro & Technology/Sustainability of AI Capex]]
+**Cost completeness.** $57K shell ≈ $14.6/W. Electricity 30.7 MWh/GPU-yr → $3.1–5.4K, inside the 30% charge at $9–18. The 30% charge scales with revenue, so the model overstates cost at $18 and can understate it below ~$6. Terminal building value excluded (conservative). Taxes excluded from headline grids.
+
+**Slot test.** Blackwell 2.2 kW, Rubin 3.9 kW, opex $1.49/W-yr, capex amortized 7-year SL. Replacement indifference vs live $6 Blackwell: **$13.75/hour**.
+
+**Advance formula.** \(PV = q\cdot TCV + (1-q)\cdot TCV\cdot A(r,60)\). At 8%, \(A \approx 0.827\).
+
+Primary filings: [NBIS 2025 20-F](https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231x20f.htm) · [Microsoft SOW](https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231xex4d4.htm) · [Microsoft Jan-2026 addendum](https://www.sec.gov/Archives/edgar/data/1513845/000110465926052948/nbis-20251231xex4d5.htm) · [NBIS Q1](https://www.sec.gov/Archives/edgar/data/1513845/000110465926064092/nbis-20260331xex99d2.htm) · [CRWV 2025 10-K](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm) · [CRWV Q1 10-Q](https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/crwv-20260331.htm).

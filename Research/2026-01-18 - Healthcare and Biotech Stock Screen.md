@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-01-18
 tags: [research, healthcare-medtech]
 status: active

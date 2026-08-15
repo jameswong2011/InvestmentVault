@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-07-06
 tags: [research, BESI, semiconductors, HBM, advanced-packaging, valuation]
 status: active

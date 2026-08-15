@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-21
 tags: [research, HIMS, healthcare, telehealth, compounding, gemini-canvas]
 status: active

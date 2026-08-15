@@ -269,6 +269,9 @@ The bear case is real and is why conviction is medium, not high. Three structura
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/near-balance — packaging tool pull persists
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — SpaceX Terafab off-grid power architecture (WFE demand optionality)
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
+- [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — SE: AP equipment revenue expected +>70% in 2026 on HBM + 3D chiplet stacking; UC Berkeley joins EPIC as research partner (not embedded-foundry HIGH leg)
+
 ## Log
 
 ### 2026-04-29
@@ -308,3 +311,9 @@ The bear case is real and is why conviction is medium, not high. Three structura
 
 ### 2026-08-13
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SK hynix KRW 54T Y2+M17 greenfield — WFE/HBM-tooling pull into 2028–29; EPIC/HBM bookings vector intact — conviction unchanged.
+
+### 2026-08-14
+- [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]: Q3 FY26 record $9.12B / nGAAP EPS $3.50; DRAM mix 26%; China 28%; Q4 $10.25B±$0.5B — HBM $ run-rate and N2 ALD share unprinted; → HIGH unfired — conviction unchanged (high).
+
+### 2026-08-15
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: AP +>70% 2026 on HBM/3D chiplets supports Insight #1/#4; HIGH HBM $2B run-rate evidence-touched not printed; EPIC Berkeley ≠ embedded TSMC/Intel/Samsung team — conviction unchanged (high).

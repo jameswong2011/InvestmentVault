@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 'Kioxia and Sandisk Unveil 9th-Generation 2Tb QLC 3D Flash for AI'
 source: 'https://www.sandisk.com/company/newsroom/press-releases/2026/2026-08-12-kioxia-and-sandisk-unveil-new-high-performance-qlc-3d-flash-memory-for-ai-and-data-intensive-apps'
 date: 2026-08-13

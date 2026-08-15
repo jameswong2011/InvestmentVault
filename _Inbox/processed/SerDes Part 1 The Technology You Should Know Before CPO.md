@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-05
 tags: [research, email-backfill, NuttyCLD]
 source: 'https://nuttycld.substack.com/p/public-serdes-part-1-the-technology'

@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Cox Media fined after bragging it spied on users through their phones"
 source: "https://www.theverge.com/policy/937027/cox-media-marketing-ai-powered-phone-spying-ads-ftc-fine"
 author:

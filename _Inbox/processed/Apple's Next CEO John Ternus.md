@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Apple's Next CEO: John Ternus"
 source: "https://quartr.com/insights/business-philosophy/apples-next-ceo-john-ternus"
 author:

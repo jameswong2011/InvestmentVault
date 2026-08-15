@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-02
 tags: [research, macro, GCC, shorting, geopolitics]
 status: active

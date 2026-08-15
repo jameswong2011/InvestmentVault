@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-01-26
 tags: [research, silver, data-centers, commodities]
 status: active

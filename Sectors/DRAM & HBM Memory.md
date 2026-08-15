@@ -27,7 +27,7 @@ sector: DRAM & HBM Memory
 
 - **Does foundry-base-die vendor lock-in compound, or does it reset every two GPU generations?** Consensus reads HBM4 custom base dies (TSMC 3nm for SK Hynix, Samsung 2nm internal, Micron TSMC custom logic) as creating sticky hyperscaler relationships — once an OpenAI Titan ASIC is built around Samsung 2nm HBM4, switching to SK Hynix on TSMC means full re-validation. The skeptical case: every GPU/ASIC generation re-opens base-die selection, and if Rubin Ultra (2027) or Feynman (2028) requires base-die specs that one vendor cannot meet, the lock-in resets. The right framing is not "is lock-in real" but "what is the half-life of lock-in across architectural generations?"
 
-- **Does the Korean memory equity discount represent persistent governance risk or a clean re-rating opportunity?** SK Hynix at 5-8x P/E vs Micron at 11-14x P/E on equivalent 2026 earnings. Sell-side treats the 30-40% gap as a fixed Korean discount. Two precedents argue otherwise: the 2016-2017 KOSPI re-rating cycle (KOSPI 2x in 18 months on chaebol governance reform), and Kioxia's 2024 IPO at $5B re-rated to $17B+ by 2026 on memory normalization. The question is whether multiple expansion is the asymmetric driver vs earnings revision — if so, downside is bounded by earnings power and upside is multiplicative.
+- **Does the Korean memory equity discount represent persistent governance risk or a clean re-rating opportunity?** SK Hynix at 5-8x P/E vs Micron at 11-14x P/E on equivalent 2026 earnings. Sell-side treats the 30-40% gap as a fixed Korean discount. Two precedents argue otherwise: the 2016-2017 KOSPI re-rating cycle (KOSPI 2x in 18 months on chaebol governance reform), and Kioxia's 2024 IPO at $5B re-rated to $17B+ by 2026 on memory normalization. The question is whether multiple expansion is the asymmetric driver vs earnings revision — if so, downside is bounded by earnings power and upside is multiplicative. **Vault answer (2026-08-14 governance deep-dive): both** — a rational wedge-price component (SK Group control pyramid, ~1% family economics vs board control) sits underneath the spring-loaded mispriced component; the discount closes only partially and only on minority-fair structural simplification. See §Investor Heuristics #9.
 
 ---
 
@@ -498,7 +498,7 @@ This pushes the Samsung leap-frog window from 2027-2028 to 2029-2030. SK Hynix's
 
 **8. The TurboQuant/algorithmic-compression risk is currently mispriced as bullish.** Consensus: Jevons Paradox absorbs efficiency gains, total HBM demand rises. Counter: if compression algorithms compound (TurboQuant 2-bit weights, MLA, KV-cache offload to CXL), 2027-2028 HBM demand growth could decelerate from +30-40% YoY to +10-15%. The market absorbed the March 24, 2026 TurboQuant shock (-6.23% SK Hynix) within a week and re-anchored on Jevons; a follow-on breakthrough has unmodeled tail risk for the supercycle thesis.
 
-**9. The Korean equity multiple rerating is the cleanest path to 2x upside in SK Hynix.** Korean equity discount runs 30-40% to global peers on persistent governance + Korean political risk. SK Hynix at 5-8x P/E on 2026 realized earnings vs Micron at 11-14x P/E on equivalent earnings = the largest single-stock discount in global semiconductor markets. Multiple expansion (not earnings revision) is the asymmetric driver — consensus prices the multiple as fixed, but a Korean equity re-rating cycle (precedent: 2016-2017) could deliver 50-80% upside independent of share trajectory.
+**9. The Korean equity multiple re-rating is a real but *partial* path to upside — a material slice of the discount is a rational price for the SK Group control-ownership wedge, not pure mispricing.** SK Hynix at ~6-8x forward vs Micron at 11-14x on equivalent 2026 earnings is the largest single-stock discount in global semis, and multiple expansion (not earnings revision) is the asymmetric driver consensus prices as fixed (precedent: 2016-2017 KOSPI re-rate). The 2026-08-14 governance deep-dive ([[Research/2026-08-14 - 000660 - SK Group Governance and Minority Cashflow Risk - deep-dive]]) sharpens the non-consensus call: SK Hynix is the cash engine at the base of a Chey → SK Inc. → SK Square → Hynix control pyramid where the family holds ~1% of Hynix economics but commands the board — the control-ownership wedge that makes minority-cash diversion (golden-dividend pipeline upstream to SK Square/SK Inc., the $500B SK Group-Nvidia co-investment, SK On as a standing cash call) a structural incentive. A rational component of the discount therefore *prices that wedge* and will not fully close until the structure simplifies on minority-fair terms — an SK Inc./SK Square merger at a contested ratio is the forward risk (2015 SK C&C/SK Holdings merger, NPS-opposed, is the precedent). The spring-loaded, mispriced slice is the discount *above* the rational wedge price, bounded and improving at the margin by Korea's July-2025 Commercial Act §382-3 (director fiduciary duty extended to shareholders), the ring-fenced SK On rescue, ~54% foreign ownership + SEC-reporting ADR, and the ₩100T / 50%-of-FCF pro-rata return program (the strongest disconfirming datapoint that the controller is distributing broadly, not diverting). See [[Theses/000660 - SK Hynix]] §Risks #12-13.
 
 ---
 
@@ -585,12 +585,26 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
+- [[Research/2026-08-13 - 000660 MU - Samsung zHBM 3D Memory Vision FMS 2026 - news]]
+- [[Research/2026-08-13 - CXMT 000660 MU - China DRAM Challenge to Incumbents - deep-dive]]
+- [[Research/2026-08-13 - MU - DDR HBM Yield vs Samsung SK Hynix Deep Dive]]
+- [[Research/2026-07-21 - TSM NVDA PhotonCap Kimi K3 MoE Memory Load - deep-dive]]
+- [[Research/2026-08-03 - Kimi K3 Architecture Inference Performance - deep-dive]]
+
+- [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]
+- [[Research/2026-08-14 - 000660 - SK hynix Indiana 3.9B Packaging Groundbreaking - news]]
+- [[Research/2026-08-14 - SNDK 000660 - HBF Die Tape-out 2027 Samples - news]]
+- [[Research/2026-08-14 - 000660 - SK Group Governance and Minority Cashflow Risk - deep-dive]] — SK Group control-pyramid / minority-cashflow-diversion deep-dive; reframes the Korea-discount leg (Investor Heuristic #9 + Key Industry Question #6) as part rational wedge-price, part spring-loaded mispricing
 ## Related Sectors and Macro
 
 - [[Sectors/NAND Memory & Storage]] — Sister memory sub-sector; Solidigm IPO catalyst inside SK Hynix
 - [[Compute & AI Compute Accelerators]] — HBM downstream demand source; Nvidia 60-65% CoWoS pre-booking; HBM content per GPU trajectory
 - [[Sectors/Semiconductor Capital Equipment]] — ASML EUV monopoly upstream of HBM; BESI hybrid bonding; HBM4 packaging equipment intensity
 - [[AI Bubble Risk and Semiconductor Valuations]] — $650B AI revenue requirement for 2030; Taiwan kinetic tail risk; hyperscaler capex digestion-phase scenarios
+
+- [[Research/2026-08-15 - 000660 TSM NVDA - Samsung 2nm HBM Base Die - news]] — Samsung Giheung NRD-K Line 2 → 2nm HBM base-die send-fab 2H28 [1×]
+
+- [[Research/2026-08-15 - 000660 - CXMT Most Valuable China Chipmaker - news]] — CXMT $540.5B / Nomura ~18% DRAM production share by end-2028; no qualified HBM
 
 ## Log
 
@@ -635,3 +649,17 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SK hynix KRW 54T Y2+M17 with 2028–29 cleanrooms — supply response lagged (Industry #17); near-term scarcity can coexist with 2029 bit-risk.
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon names higher memory costs as the $20B capex delta to ~$220B — HBM/DRAM as residual governor.
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: MI455X 12-stack HBM4 — incremental HBM4 stack demand on N2 GPUs.
+- [[Research/2026-08-13 - 000660 MU - Samsung zHBM 3D Memory Vision FMS 2026 - news]]: Samsung zHBM is a memory-on-logic roadmap claim, not a near-term allocation print.
+- [[Research/2026-08-13 - CXMT 000660 MU - China DRAM Challenge to Incumbents - deep-dive]]: CXMT near-term price-taker; glut is a cycle-turn / walled-export problem, not 2026.
+- [[Research/2026-08-13 - MU - DDR HBM Yield vs Samsung SK Hynix Deep Dive]]: HBM4 yield ~80% at both Koreans; MU has no public % — yield is not the Rubin-slot excuse.
+
+### 2026-08-14
+- Re-ingest expansion: Rubin Ultra 8-Hi (~192 vs ~384GB) is stack-count × take-up not GB/GPU; bit-supply ≤1.63×; CXMT still near-term price-taker. No Samsung>35% or MU board-meter print.
+- [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]: Chey $720B / 58% Q1 HBM / custom-HBM + Nvidia $500B SK Group deal — demand-visibility now, 2028–29 bit-supply later; Rubin allocation still unprinted.
+- [[Research/2026-08-14 - 000660 - SK hynix Indiana 3.9B Packaging Groundbreaking - news]]: Indiana $3.87B HBM packaging groundbreaking 27 Aug; MP 2H28 — geographic pack-out, not 2026 wafers.
+- [[Research/2026-08-14 - SNDK 000660 - HBF Die Tape-out 2027 Samples - news]]: SanDisk HBF die tape-out; 2027 samples; SKH partner — inference-tier option under HBM, not a 2026 cube.
+- [[Research/2026-08-14 - 000660 - SK Group Governance and Minority Cashflow Risk - deep-dive]]: SK Group control-ownership wedge (Chey ~1% Hynix economics vs board control via SK Inc/SK Square pyramid) — reframed Investor Heuristic #9 + Key Q#6: a rational slice of the Korea discount prices the wedge and won't close until the structure simplifies on fair terms; the spring-loaded slice is the discount above it. Snapshot: [[_Archive/Snapshots/DRAM & HBM Memory (pre-sync 2026-08-14-172039)]]
+
+### 2026-08-15
+- [[Research/2026-08-15 - 000660 TSM NVDA - Samsung 2nm HBM Base Die - news]]: Samsung extends in-house base-die 4nm→2nm for HBM5/custom (2H28); does not unwind SKH/MU TSMC HBM4 wins.
+- [[Research/2026-08-15 - 000660 - CXMT Most Valuable China Chipmaker - news]]: equity-currency / ~18% production-share path; CLOSE qualified-HBM handle unfired.

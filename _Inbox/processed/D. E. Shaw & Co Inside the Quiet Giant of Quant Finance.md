@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "D. E. Shaw & Co: Inside the Quiet Giant of Quant Finance"
 source: "https://quartr.com/insights/company-research/de-shaw-and-co-inside-the-quiet-giant-of-quant-finance"
 author:

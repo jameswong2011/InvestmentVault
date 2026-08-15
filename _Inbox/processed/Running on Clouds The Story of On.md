@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Running on Clouds: The Story of On"
 source: "https://quartr.com/insights/edge/running-on-clouds-the-story-of-on"
 author:

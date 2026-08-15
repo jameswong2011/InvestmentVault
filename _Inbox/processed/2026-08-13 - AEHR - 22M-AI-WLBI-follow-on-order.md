@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 'Aehr Receives $22 Million Follow-On Order for AI Processor Wafer-Level Burn-In Systems'
 source: 'https://www.aehr.com/2026/08/aehr-receives-22-million-follow-on-order-for-ai-processor-wafer-level-burn-in-systems/'
 date: 2026-08-13

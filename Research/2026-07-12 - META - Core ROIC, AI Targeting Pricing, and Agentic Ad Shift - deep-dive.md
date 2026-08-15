@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-12
 tags: [research, deep-dive, META, advertising, ROIC, agentic-AI]
 sector: Social Platforms & Digital Advertising

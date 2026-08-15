@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-30
 tags: [research, enterprise-software]
 status: active

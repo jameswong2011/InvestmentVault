@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-19
 tags: [research, consumer-digital]
 status: active

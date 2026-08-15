@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-08-13
 tags: [thesis, neoclouds, SPCX]
 status: archived

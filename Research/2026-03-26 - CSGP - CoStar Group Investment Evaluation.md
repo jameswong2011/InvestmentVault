@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-26
 tags: [research, CSGP, real-estate-data, monopoly]
 status: active

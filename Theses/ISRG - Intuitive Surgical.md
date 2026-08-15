@@ -411,6 +411,7 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 - [[Research/2026-04-23 - ISRG - Industrial Robotics Convergence Risk - deep-dive]] — Industrial-robotics + humanoid convergence pathways (KUKA/Midea 100% Chinese ownership + LBR Med medical-certified since 2015; Stryker Mako RPS "AccuStop reduces soft tissue damage" messaging Feb 2026; GTC 2026 Physical AI coalition lumps ABB/FANUC/KUKA/Yaskawa industrial + ISRG/CMR/J&J/Medtronic surgical on same Isaac/GR00T/Cosmos/Omniverse stack); probability framework 7yr ~15-25% vs stock-implied ~5-10%; supports Risk #11
 - [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]] — Quartr business-model profile (May 2025). Supplies the primary unit economics that corrected this note's per-procedure figure ($1,860 I&A/procedure, ~271 procedures/system/yr, >$500K/system/yr consumables, >50% of the da Vinci base on operating lease) and is the only vault record of the 2013 ACOG/FDA backlash — the base rate for the 2026 safety cluster. Pre-dates Hugo clearance and Ottava filing (stale on competition); silent on China VBP and remanufacturing
 - [[Sectors/Surgical Robotics]]
+- [[Research/2026-08-13 - Unitree Humanoid Robotics China Trajectory - deep-dive]]
 
 ## Log
 
@@ -445,3 +446,6 @@ NVIDIA is playing Switzerland in surgical robotics, powering all sides. **ISRG i
 ### 2026-07-15
 - [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]]: Corrected instrument unit economics — $1,860/procedure (company-disclosed 2024) replaced ~$1,400 in 5 places; annuity restated ~$4.4B→~$6.0B, resolving a $1.6B self-contradiction against this note's own $6.02B I&A line. Superseded the "10 uses" lock claim with the 6→15 extension already recorded in §Mental Models.
 - Added [G-10] 2013-backlash base rate (with the caveat it was observed under zero cleared competitors) + first application of [[Lens - Value Layer Monopoly]] to §Mental Models — conviction unchanged (medium): a 37% larger annuity is offset by a proportionally larger base exposed to the 6→15 extension, China VBP, and remanufacturing. Snapshot: [[_Archive/Snapshots/ISRG - Intuitive Surgical (pre-sync 2026-07-15-173001)]]
+
+### 2026-08-13
+- [[Research/2026-08-13 - Unitree Humanoid Robotics China Trajectory - deep-dive]]: consumer/industrial humanoid cost curve is not a surgical-robotics substitute — conviction unchanged (medium).

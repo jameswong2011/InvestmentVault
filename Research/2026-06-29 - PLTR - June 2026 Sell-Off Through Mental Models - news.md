@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-06-29
 tags: [research, news, PLTR, enterprise-software, AI, valuation, geopolitics]
 status: active

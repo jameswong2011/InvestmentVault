@@ -265,6 +265,7 @@ Not listed but worth flagging: **SentinelOne** (Purple AI autonomous endpoint, L
 - [[Theses/NET - Cloudflare]] — Adjacent network-edge play; non-overlapping with CRWD endpoint
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates Iran cyber retaliation → F500 emergency cyber budget reallocation
 - [[Research/2026-05-11 - Private Credit BDC Redemption Gating Wave - news]] — Tangential: AI productivity disruption pressuring private-credit-financed software borrowers (TCPC ~33% of Q1 markdowns software-related); CRWD platform consolidator benefits structurally as cash-burning peers fail
+- [[Research/2026-08-07 - Citrini Protection Matters Cybersecurity Winners - deep-dive]]
 
 ## Log
 
@@ -299,3 +300,5 @@ Not listed but worth flagging: **SentinelOne** (Purple AI autonomous endpoint, L
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: market cap $95-105B→$191B (post Jul-2 4:1 split) + GM 78-80%→~75% across Summary, Mkt-Cap Notes, Insights #3. Snapshot: [[_Archive/Snapshots/CRWD - CrowdStrike Holdings (pre-deepen-metrics-sync 2026-07-12-203456)]]
+### 2026-08-14
+- [[Research/2026-08-07 - Citrini Protection Matters Cybersecurity Winners - deep-dive]]: telemetry/distribution vs wrapper-risk on reports — free extract only — conviction unchanged.

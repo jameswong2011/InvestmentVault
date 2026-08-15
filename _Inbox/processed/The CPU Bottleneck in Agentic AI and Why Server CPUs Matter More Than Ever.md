@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "The CPU Bottleneck in Agentic AI and Why Server CPUs Matter More Than Ever"
 source: "https://www.viksnewsletter.com/p/the-cpu-bottleneck-in-agentic-ai?r=222kot&utm_campaign=post&utm_medium=web&triedRedirect=true"
 author:

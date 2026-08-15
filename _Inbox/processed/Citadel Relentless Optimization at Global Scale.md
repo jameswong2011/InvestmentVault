@@ -1,4 +1,5 @@
 ---
+publish: false
 title: "Citadel: Relentless Optimization at Global Scale"
 source: "https://quartr.com/insights/company-research/citadel-relentless-optimization-at-global-scale"
 author:

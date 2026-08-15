@@ -250,6 +250,7 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - **Disconfirming check** (evidence-updated): post-derate AVGO is the *cheapest* AI-complex name (~33.5x NTM, watchlist-consistent) with the hardest 2027 revenue visibility ($73B backlog, 3x b2b) — the quality-but-priced verdict inverted into quality-repriced within five weeks. The surviving bear is single-threaded: Google share migration compounding into the >$100B 2027 target. Single falsifiers, dated: FQ3 print (~early Sep — first chips-only-basis AI number + any 2027 reaffirmation), TPU v9 partner confirmation, MediaTek DC revenue trajectory (~$3.2B 2027E). Maintenance: **no Conviction Triggers section exists** — write one (suggested LOW: Google-attributable AI revenue share disclosed/estimated <70% for 2027; CLOSE: 2027 target cut below $80B); Log the Jun 3 print; refresh Key Metrics (Apr vintage).
 
 ## Related Research
+- [[Macro & Technology/AI Datacenter Financing Mechanism Design]] — T5 vendor-support template: XPV backstop = 5yr customer-lease guarantee, $29B dynamic max EAD (rises with deployment, falls with payments); BofA scaling model → max RVG exposure ~$370B / max loss ~$42B at full 20GW [web, single-source, needs ingest]
 
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]] — Huawei Ascend roadmap validates non-Nvidia vertically integrated AI compute architecture at scale (524 EFLOPS supercluster, ByteDance $5.6B order); supports AVGO XPU thesis directionally though Huawei not an AVGO customer
 - [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas]] — Foundational "Android of AI" thesis; Hock Tan aggregation strategy; comprehensive product segment analysis
@@ -277,6 +278,7 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 - [[Research/2026-08-11 - NVDA Superposition AI Factory Underwriting - deep-dive]]
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
+- [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]
 ## Log
 
 ### 2026-04-19 (TSM stress test sync)
@@ -362,3 +364,9 @@ The pre-vs-post operating margin delta — **13–22% → 78% in 24 months** —
 ### 2026-08-13
 - [[Research/2026-08-13 - AMD TSM AVGO - Instinct MI455X CDNA5 TSMC N2 - news]]: Helios rack-scale around MI455X (Ethernet/UALink fabric) — merchant switching attach option — conviction unchanged.
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]: Amazon 2026 capex ~$220B + custom-silicon >$25B ARR — XPU/Ethernet demand; Trainium mix is the ASIC seat risk — conviction unchanged.
+
+### 2026-08-14
+- [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]: Named N2 customer in EDN/Wccftech rumor — not an XPU/Ethernet print — conviction unchanged (high).
+
+### 2026-08-15
+- [[Macro & Technology/AI Datacenter Financing Mechanism Design]]: XPV framed as vendor-financed offtake — $29B backstop retains customer-credit + rack-recovery risk inside "contracted" revenue; BofA $370B/$42B 20GW RVG-scaling model flagged for ingest — conviction unchanged (high).

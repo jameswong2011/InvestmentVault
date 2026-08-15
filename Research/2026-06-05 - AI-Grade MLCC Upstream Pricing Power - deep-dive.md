@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-06-05
 tags: [research, mlcc, semiconductors, passives, supply-chain, 6981, 3402, 4078, 4092, 6146]
 sector: MLCC & Power Semiconductors

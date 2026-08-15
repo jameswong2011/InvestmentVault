@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-31
 tags: [research, NET, edge-compute, cloudflare, gemini-canvas]
 status: active

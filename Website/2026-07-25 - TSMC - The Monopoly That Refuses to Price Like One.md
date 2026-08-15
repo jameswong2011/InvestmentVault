@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-25
 tags: [essay, investment-case, laniakea-partners, semiconductors, foundry, TSM]
 status: draft

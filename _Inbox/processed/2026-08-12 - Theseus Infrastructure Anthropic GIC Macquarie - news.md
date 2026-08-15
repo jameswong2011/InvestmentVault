@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, daily-intel-triage, news]
 source: 'https://www.macquarie.com/us/en/about/news/2026/anthropic-mam-gic-data-centre-infrastructure-partnership.html'

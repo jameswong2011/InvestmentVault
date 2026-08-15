@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-15
 archived: 2026-04-29
 tags: [thesis, semiconductors, WFE, capital-equipment, archived, KLAC, AMAT, LRCX, ASMI, TEL, BESI]

@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: {{date}}
 tags: [template, thesis-breakdown, video-script]
 status: active

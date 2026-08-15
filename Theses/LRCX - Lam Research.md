@@ -148,6 +148,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 | Intel 18A ramp confirmation | H2 CY26 | + | Third leading-edge foundry contributes Akara revenue |
 | Morgan Stanley / sell-side downgrade | Risk-watch | - | Consensus pivot to "deceleration in 2026" derates multiple |
 | 2028 IDay reaffirmation / reset | At any IR event | +/- | Management posture on $25-27B / 50% GM target |
+| Global lab-network expansion start | 2026–2031 | + (infra) | >$3B / 5yr / +>50% experiment capacity — qualification velocity, not a 2026 systems-order print |
 
 ## Risks
 
@@ -224,6 +225,11 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/near-balance — packaging tool pull persists
 - [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — SpaceX Terafab off-grid power architecture (WFE demand optionality)
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
+- [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]
+- [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]] — IR: >$3B / 5yr global lab network; experiment capacity +>50%; 24/7 US–Asia–Europe; cycle-time up to 2.5×; DeBoer FE+AP color (not TOR)
+
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — SE week: restates $3B labs; AMAT AP +>70% 2026 peer color; SPIL $3.1B Douliu CoWoS 2028
+
 ## Log
 
 ### 2026-04-29
@@ -267,3 +273,10 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 ### 2026-08-13
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SK hynix KRW 54T Y2 DRAM + M17 NAND — memory-WFE + dry-resist-at-Hynix vector; 2028–29 cleanrooms — conviction unchanged.
+
+### 2026-08-14
+- [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]: AMAT Q3 DRAM 26% + AP tool intros is a peer 2H DRAM/AP tape — not LRCX AP>$1.4B / WFE≥$140B — conviction unchanged (high).
+
+### 2026-08-15
+- [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]]: IR >$3B / 5yr / +>50% experiment capacity; qualification-cycle compression, not 2026 AP/WFE/Aether TOR — DeBoer touches Micron HIGH-leg candidate only — conviction unchanged (high).
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: roundup restates $3B labs; AMAT AP +>70% is peer color not an LRCX AP dollar — HIGH AP>$1.4B / WFE≥$140B unfired — conviction unchanged (high).

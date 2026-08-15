@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-07
 tags: [research, email-backfill, SemiAnalysis]
 source: 'https://newsletter.semianalysis.com/p/spacex-10gw-in-2027-why-its-real'

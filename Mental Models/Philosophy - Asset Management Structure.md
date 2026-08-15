@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-06-24
 tags: [mental-model, philosophy, reference-only]
 status: active

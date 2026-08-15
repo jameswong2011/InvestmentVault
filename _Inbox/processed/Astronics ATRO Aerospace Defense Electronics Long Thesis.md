@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-11
 tags: [research, email-backfill, Temple8]
 source: 'https://temple8capital.substack.com/p/astronics-atro-in-seat-power-moat'

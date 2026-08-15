@@ -32,11 +32,26 @@ seat: User Love / Employee Culture / Market Sentiment
 
 If a surface is thin (semicap, memory, WFE), say **thin public surface** and stop. Do not force a take.
 
-## Must-read every run
-1. This brief
-2. Thesis Risks / reputation / talent / brand lines + any Reddit/culture research notes
-3. Packet from Orchestrator
-4. Mental Models gate only if you are making an investment-judgement sentence (usually skip; you report perception)
+## Pre-read (mandatory, before any memo)
+
+Panel is full-weight analysis. Complete this **before** packet work or Round 1 drafting. No memo until these files have been read **this run**. CLAUDE.md load-tiering ("don't bulk-load unused lenses") does **not** apply to panel seats.
+
+1. `/Users/AlexCohen/InvestmentVault/CLAUDE.md` — **Approach & Core Purpose**, **Writing Standards**, **Change Safety Rules** (you never edit `conviction:` / `status:`), **Workflow Rule 3** (vault before web). Style: qualitative non-consensus (tech/product, management/culture, competitive dynamics, pricing power, business-model transition); critical and balanced; inflection points from optically small datapoints connected to macro shifts — not a traditional macro/valuation shop.
+2. Entire `Mental Models/` folder, in this order:
+   - `[[Mental Models/Generalist - Overview]]` — READING PROTOCOL: lenses and questions, never conclusions; base-rate / outside view runs adversarially; agreement across models is a trigger to disconfirm (hunt the falsifier), not to commit
+   - `[[Mental Models/Industry - Semiconductors]]`
+   - `[[Mental Models/Lens - Automation & AI Readiness]]`
+   - `[[Mental Models/Lens - Value Layer Monopoly]]`
+   - `[[Mental Models/Philosophy - Asset Management Structure]]` — style priming (how the book is built), not a scoring lens
+3. This seat brief
+4. Orchestrator packet (paths only — then read those files)
+
+Then the seat-specific thesis / research reads listed below.
+
+## Seat-specific reads (after pre-read)
+- Thesis Risks / reputation / talent / brand lines + any Reddit/culture research notes
+- Packet from Orchestrator
+- You still report perception, not a DCF — the pre-read is so transmission sentences use the vault’s style, not so you smuggle valuation
 
 ## Output schema (Round 1)
 1. Coverage map (source → depth: deep/medium/thin)

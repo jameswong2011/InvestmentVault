@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-11
 tags: [research, comparison, mlcc, semiconductors, passives, 6981, 009150, 6762, 6976, 2327]
 sector: MLCC & Power Semiconductors

@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-10
 tags: [research, AI Infrastructure, NVDA, LITE, COHR]
 sector: Neoclouds & GPU-as-a-Service
@@ -6,29 +7,140 @@ ticker: NVDA
 propagated_to: [LITE, NVDA]
 source: 'https://photoncap.net/p/spacexs-first-earnings-report-revisiting'
 source_type: deep-dive
+updated: 2026-08-14
 ---
 
+# SpaceX First Earnings Report Revisiting the S-1 and Hardware Value Chain Behind 10GW
+
 ## Thesis Delta
-Consensus prices SpaceX as a space/Starlink compounder with AI as optionality → PhotonCap reads Q2 as **an AI infrastructure company print**: $15.8B of $18.4B quarterly capex (86%) to AI, Musk targeting ~10GW nameplate compute by YE27, NVIDIA-only Vera Rubin declaration. Investment implication: value accrues first to **power/optics/scale-across suppliers** (MRVL, COHR, LITE, CIEN, MU) rather than SPCX equity. Complements [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]] and [[Theses/NVDA - Nvidia]].
+Consensus still prices [[Theses/SPCX - SpaceX]] as a space/Starlink compounder with AI as optionality, and sold the first post-IPO print on the capex sticker (stock ~−8% after-hours despite a nearly $1B revenue beat) → PhotonCap reads the 4 August Q2 as **the first quarterly report of an AI infrastructure company** ($15.8B of $18.4B capex, 86%, into AI; Musk targeting closer to 10GW than 5GW of nameplate compute by YE27 from 1.4GW today; NVIDIA-only Vera Rubin) and argues first-order equity value lands in the parts-order chain — power equipment, scale-out optics, and scale-across DCI ([[Theses/NVDA - Nvidia]], [[Theses/LITE - Lumentum]], [[Theses/MRVL - Marvell Technology]], Coherent, Ciena, [[Theses/MU - Micron Technology]]) — not the Class A residual. [G-4] Perez-frenzy / [G-13] expectations / VLM §2 layer-renter hypotheses: the tape is still litigating whether 10GW is real; the source says even if the absolute GW number slips, contracted sales under the conservative Note 2 definition already show whatever gets built gets sold, so the investable print is supplier order flow and campus-split DCI, not SPCX multiple expansion.
 
 ## Summary
-Q2 rev $7.8B (+92% YoY), Adj. EBITDA $3.5B, net loss narrowed to $541M; stock ~−8% AH on capex. AI revenue $2.56B (3.5× YoY); AI solutions & infra $2.19B. Connectivity still the profit engine ($4.3B rev, $1.7B op. income, 12M subs, ARPU flat $66). Space: 28/38 launches internal. Critical accounting: contracted sales $14.1B count only **non-cancellable** periods under 90-day termination clauses—headline multi-year deal sizes should be discounted; PhotonCap now also reads the clause as a **sales-velocity feature**. Feasibility of 10GW remains hard (power permitting, turbine logistics); cash $100B post-IPO/bonds. Hardware bill: power equipment, scale-out optics, and **scale-across DCI** as campuses split.
+PhotonCap's first-earnings piece is a two-part audit, not a company primer. Front half: take the June S-1 layer stack from *The Largest IPO in History, One Profitable Layer* and score each judgment against the 4 August Q2 release (first print since the 12 June listing). Back half: if Musk's YE27 "closer to 10GW than 5GW" compute call becomes real, which hardware layer actually receives the bill — and therefore which listed names sit in the order path. The opening verdict is directional: this is an AI-infrastructure print from a company that still builds rockets, and the benefit arrives first at "the ones receiving the parts orders, or the investors around them," not SpaceX shareholders. Complements [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]] (SemiAnalysis feasibility + Microsoft-as-largest-offtaker) by adding primary S-1/Q2 accounting and converting the same GW number into optics and scale-across, not by re-arguing site surveys.
+
+The tape's reaction is the same pattern as the four hyperscaler prints in late July: revenue $7.8B (+92% YoY) beat estimates by nearly $1B, net loss narrowed to $541M (~half prior year), Adjusted EBITDA $3.5B, and the stock still slid ~8% after hours because quarterly capex printed $18.4B with $15.8B (86%) tagged to AI. A rocket-and-satellite company put nearly nine-tenths of the quarter's investment into AI data centers; Musk then named the destination — past 2GW of compute by YE26, closer to 10GW than 5GW by YE27 — from 1.4GW nameplate today. PhotonCap keeps the June ranking that **Connectivity is still the only profitable engine**: $4.3B revenue (+66% YoY), $1.7B operating income (+79%), 12 million subscribers (2× YoY), ARPU $66 flat QoQ after the multi-year slide $99 → $81 annual / $66 quarterly. Enterprise & Government grew 108% YoY; Starshield added >$6B of multi-year US government contracts. The ARPU decline *stopped*; a May-reported attempted price increase has not yet shown up in the printed $66. Next quarter is the test of hike vs mix. Space confirms the S-1 warning that orbital-compute goals "may prioritize our own payloads ahead of US government contracts or third-party customers": 28 of 38 launches were internal, nearly 400 of 485 metric tons were internal (Starlink) payloads. Space revenue $962M (+29% YoY) against a $542M operating loss; Starship R&D ~$1.1B. Flight 12 (May) and Flight 13 (July) hit objectives, Flight 13 deploying 20 production V3 satellites — the loss is deployment speed, not failure cost. June judgment on the launch layer (thin listed-supplier upside) is unchanged.
+
+The load-bearing flip is the AI segment and the 90-day clause. June warned that Anthropic at $1.25B/month and Google at $920M/month sit at the center of the AI revenue story but both can be ended on 90 days' notice, so headline multi-year deal sizes should not be taken at face value. Q2 AI revenue $2.56B (3.5× YoY); AI solutions & infrastructure $2.19B, up more than 4× from $475M the prior quarter, timing aligned with the May–June Anthropic ramp. Nameplate compute 1.4GW from 1.0GW. What PhotonCap flags first is Note 2, not the revenue line: Cloud Services Agreements signed in the quarter are disclosed as $14.1B of **contracted sales**, counted only as revenue from the period that cannot be cancelled. A three-year paper contract with a 90-day walk-right contributes only the locked-in first months. Press-quoted $45B / $30B deal values add the full term; the company itself now discounts the same way the June piece did. The new half of the observation: the same clause is a **sales condition**. The CFO added another $6.7B contracted in the first weeks of Q3, ramping from October, on the conservative (non-cancellable-only) definition; Google volume also starts in October by contract. Buyer-side, a 90-day walk is not a 15-year take-or-pay data-center lease — no long-term debt-like commitment — so the approval threshold drops when a supplier can hand over large-scale capacity in 3–5 months. SemiAnalysis, on that structure, has SpaceX selling compute above market at $30–50M per MW per year. Landlord analogy from PhotonCap's prior GPU-repricing piece: hyperscalers are rolling old fixed-rate leases up to market; SpaceX has only ever rented month-to-month, so market rates flow through faster, and market rates currently sit above contract rates. AI Segment Adjusted EBITDA printed $1.1B, swinging from −$609M — but that adds back $1.9B of depreciation, the operating loss is still $1.3B, and $15.8B of quarterly AI capex will recycle as D&A for years. Reading the EBITDA turn as proof of profitability is early; the valid read is directional — rental revenue has started to clear cash costs *before* the Google/new-contract ramps. Durability warning stays: a structure that stacks fast also drains fast.
+
+On 10GW feasibility, Musk split the numbers when Morgan Stanley's Adam Jonas asked about permitting, chips, and turbines: ~10GW nameplate *compute* by YE27, and at the power-and-cooling-equipment level a tentative 20GW target that "in practice" lands near 15GW. Stack cooling and margin on IT load and plant-level power must exceed compute — an engineer's split, not a PR conflation. Market base case still leans hard: the beat-and-slide is the temperature, and the power reality is already noisy at 1.4GW. Deadline to fully remove 69 unpermitted gas turbines at Colossus has slipped to July 2027; the 1.2GW permanent plant replacing them (41-turbine configuration) is under construction with Mississippi state permits; an NAACP/environmental lawsuit is pending; the Justice Department has sided with the company on national-security grounds. Target is seven times current nameplate inside two years. The June 30 satellite-vs-claim gap (Musk 1GW vs ~350MW of observed cooling) narrowed some: 1.4GW is now a quarterly disclosure item that can be checked. Nameplate is installed capacity, not operating capacity — the company picked that word on purpose. SemiAnalysis's feasibility case (nationwide site surveys, secondary-market turbines, Chinese power modules routing around the large-power-transformer backlog, APR Energy acquisition, plan to buy $2B of turbines over three years) is one direction: shorten procurement paths that take others five years, with money and speed. Cash and marketable securities $100B ($85.7B IPO + $25B IG bonds in late June at 5.855% weighted coupon). $18.4B quarterly capex is a $70B+ annual run-rate; SemiAnalysis's rough $50B per GW for 10GW is several times that funding. PhotonCap's candidate to fill the gap is the call's Nvidia exclusivity — Musk called Vera Rubin the best AI computer and said the company will use only Nvidia chips after evaluating TPU and AMD — as a possible vendor-financing negotiation in the background ([est.]). Author judgment: the absolute 10GW quantity will probably slip; the reason for burning the money is not gambling. Even counting only the cancellable-stripped book, more than $20B of contracts stacked in half a year; buyers are lining up for compute as fast as it is built. In a market where whatever gets built gets sold, build-speed spend is arithmetic.
+
+The hardware bill has three axes, in the order PhotonCap is watching. **Power is the biggest.** Musk's 15–20GW plant-level number is the power equipment of 15–20 nuclear reactors inside two years. New large gas turbines are backlogged years out, so secondary-market turbines, small/mid-size turbines and engines, onsite generation packages, and power modules sell first. Hyperscalers are in the same procurement race — seller's market independent of SpaceX. That maps onto [[Theses/VRT - Vertiv Holdings]] (critical power/thermal kit at campus scale) and [[Theses/BE - Bloom Energy]] (time-to-power vs multi-year turbine queues) as demand-side beneficiaries of the same bottleneck, not as SpaceX-specific suppliers named in the piece. **Optics follows GPU count.** Conversion ladder reused from the 30 June piece, GB300 NVL72 basis: one 800G-class scale-out connection per GPU; 135kW per rack; 10GW nameplate → GPUs in the millions ([est.]); leaf-level scale-out ports in the same order of magnitude; spine and super-spine make optical transceiver endpoints a multiple of that, plus related switches. **Scale-across is the author's current focus.** A single site carrying 10GW is doubted. Colossus 1 and 2, the Southaven plant, new-build shells, and SemiAnalysis retrofit candidates mean the buildout is split across campuses from the start. Once campuses split, DCI is part of compute performance: a training job that crosses a site boundary makes coherent optics and long-haul transmission as load-bearing as the intra-cluster network — the same structure PhotonCap drew in July around Meta's multi-campus map. Ticker mapping: Marvell ($MRVL) as coherent DSP; Coherent ($COHR) and Lumentum ($LITE) as optical components (the June dual-use crossover set, now with a second path via scale-across); Ciena ($CIEN) as long-haul DCI systems, demand a function of distance and bandwidth between campuses rather than cluster count; Micron ($MU) as HBM at GPU scale, but **cycle-frame not SpaceX-frame**; optical field validation/test as port-count × operational-complexity beta. Limitation written in: all conversions are GB300 NVL72 reference ratios; Vera Rubin rack configuration and network ratios for the 2027 deploy are undisclosed. Falsifiers dated: YE26 compute short of the named 2GW → recalculate 10GW credibility first; contracted-sales stall or first termination → revise the §5 "90-day as sales condition" reread; Q4 AI revenue slow despite Google volume and new-contract ramps (October) → question pricing and demand. Cursor close targeted within Q3; Q3 earnings early November recheck nameplate GW and contracted sales; unpermitted-turbine removal deadline July 2027.
+
+## Framework / Mental Model
+
+PhotonCap re-applies three named frames from its own June–July sequence rather than introducing a new scoring scheme.
+
+		**Four-layer certainty stack** (*The Largest IPO in History, One Profitable Layer*). Extreme vertical integration thins the pool of listed "supplier beneficiaries." Upside is split into four layers ranked by certainty. Layer 1 (LEO connectivity) is the profit and the proof — S-1 Connectivity $11.4B, 61% of the company. AI revenue that anchors part of the $1.75T IPO valuation is idle compute rented to rivals (Anthropic $1.25B/month, Google $920M/month) on 90-day paper. Liquid public-market exposure is therefore not direct supply into SpaceX; it sits in dual-use light-source and DSP names ($COHR, $LITE, $MRVL), the OISL bottleneck ($RKLB, $CACI), and the AI-infrastructure bottleneck (power, CPO, cooling, $NVDA). Q2 is used as a report card on that ranking, not a replacement of it.
+
+**90-day clause as two-faced instrument (new half).** June treated the clause only as a revenue-durability haircut. Q2 Note 2 confirms the haircut in the company's own contracted-sales definition. The added face: from the buyer, 90-day walk-rights remove long-term balance-sheet commitment and drop the approval threshold when capacity arrives in 3–5 months — producing velocity and above-market $/MW ($30–50M/MW/yr per SemiAnalysis) at the cost of a book that can drain as fast as it stacked.
+
+**Landlord / lease-duration analogy** (from *The GPU Repricing Cycle and Q2 Hyperscaler Earnings*). Hyperscalers = landlords rolling old fixed-rate leases to market. SpaceX = landlord that has only ever rented month-to-month. Shorter contract term → faster pass-through of spot-above-contract rates. Used here to explain why AI revenue can print $2.56B and contracted sales can add $14.1B+$6.7B without the duration of a CoreWeave/Nebius take-or-pay book.
+
+**10GW → GPU → port conversion ladder** (from the 30 June *SpaceX Started Renting Out Compute* piece; NVIDIA NVL72 AI Factory Enterprise Reference Architecture). Inputs: 135kW/rack, one 800G-class scale-out port per GPU on a GB300 NVL72 basis. Output: millions of GPUs and a matching (then multiplied, once spine/super-spine are added) optical-endpoint count. Author flags the ladder as a rough figure and voids it for Rubin until rack/network ratios are disclosed.
 
 ## Evidence
-| Metric | Figure | Tag |
+
+| Print / tape | Figure | Tag |
 |---|---|---|
-| Q2 rev / YoY | $7.8B / +92% | [1×: SpaceX PR / PhotonCap] |
-| Capex / AI share | $18.4B / $15.8B (86%) | [1×: PhotonCap] |
-| AI rev | $2.56B (3.5× YoY) | [1×: PhotonCap] |
-| Nameplate compute | 1.4GW (from 1.0GW) | [1×: PhotonCap] |
-| YE26 / YE27 target | ~2GW / closer to 10GW than 5GW | [1×: Musk call / PhotonCap] |
-| Contracted sales (non-cancel) | $14.1B in Q2; +$6.7B early Q3 | [1×: PhotonCap] |
-| Cash & securities | $100B | [1×: PhotonCap] |
-| Chip stance | NVIDIA Vera Rubin exclusive | [1×: call / PhotonCap] |
-| Connectivity ARPU | $66 flat QoQ | [1×: PhotonCap] |
+| IPO / first earnings | 12 Jun listing; 4 Aug Q2 release | [1×: PhotonCap] |
+| Q2 revenue / YoY / vs est. | $7.8B / +92% / beat by nearly $1B | [1×: SpaceX Q2 PR / PhotonCap] |
+| Net loss | $541M (~half prior year) | [1×: SpaceX Q2 PR / PhotonCap] |
+| Adj. EBITDA (group) | $3.5B | [1×: SpaceX Q2 PR / PhotonCap] |
+| After-hours reaction | ~−8% | [web: cnbc.com via PhotonCap] |
+| Quarterly capex / AI share | $18.4B / $15.8B (86%) | [1×: SpaceX Q2 PR / PhotonCap] |
+| Annualized capex run-rate | $70B+ | [est. from $18.4B × 4; PhotonCap] |
+
+| Segment | Revenue | Profit / loss | Other | Tag |
+|---|---|---|---|---|
+| Connectivity | $4.3B (+66% YoY) | Op. income $1.7B (+79%) | 12M subs (2× YoY); ARPU $66 flat QoQ (was $99 annual / $81 annual / $66 quarterly on the way down) | [1×: SpaceX Q2 PR / PhotonCap] |
+| Ent. & Gov / Starshield | Ent+Gov +108% YoY | — | >$6B multi-year US gov contracts via Starshield | [1×: SpaceX Q2 PR / PhotonCap] |
+| Space | $962M (+29% YoY) | Op. loss $542M | 38 launches, 28 internal; 485 t to orbit, ~400 t internal; Starship R&D ~$1.1B; Flt 12 May + Flt 13 Jul hit objectives; Flt 13 deployed 20 prod. V3 sats | [1×: SpaceX Q2 PR / PhotonCap] |
+| AI (total) | $2.56B (3.5× YoY) | Seg. adj. EBITDA $1.1B (from −$609M); op. loss still $1.3B after $1.9B D&A add-back | AI solutions & infra $2.19B (from $475M, >4×) | [1×: SpaceX Q2 PR / PhotonCap] |
+| S-1 Layer 1 (June baseline) | Connectivity $11.4B, 61% of co. | "only profitable engine" | IPO target $1.75T / ticker SPCX / 12 Jun Nasdaq | [1×: PhotonCap June S-1 piece] |
+
+| Compute / contracts / cash | Figure | Tag |
+|---|---|---|
+| Nameplate compute | 1.4GW (from 1.0GW prior quarter) | [1×: SpaceX Q2 PR / PhotonCap] |
+| YE26 / YE27 compute target | Past 2GW YE26; closer to 10GW than 5GW YE27 | [1×: Musk call / PhotonCap] |
+| Plant-level power/cooling target | Tentative 20GW, "in practice" ~15GW | [1×: Musk call / PhotonCap] |
+| June 30 satellite monitor | Musk 1GW claim vs ~350MW observed cooling | [1×: PhotonCap 30 Jun] |
+| Contracted CSA sales (Q2) | $14.1B — **non-cancellable window only** (Note 2) | [1×: SpaceX Q2 PR Note 2 / PhotonCap] |
+| Early-Q3 incremental CSAs | +$6.7B, ramping from October | [1×: CFO / PhotonCap] |
+| Press headline deal sizes | $45B and $30B full-term quotes | [1×: PhotonCap (contrast vs Note 2)] |
+| Anthropic / Google S-1 run-rates | $1.25B/mo / $920M/mo; both 90-day terminable (Google: GPU-delivery conditions + 90-day right after YE26) | [1×: S-1 / Reuters via PhotonCap] |
+| SemiAnalysis rental rate | $30–50M per MW per year, above market | [1×: PhotonCap citing SemiAnalysis] |
+| H1 contracted (cancellable-stripped) | >$20B in half a year ($14.1B + $6.7B) | [1×: PhotonCap arithmetic] |
+| Cash & marketable | $100B | [1×: SpaceX Q2 PR / PhotonCap] |
+| IPO proceeds / IG bonds | $85.7B / $25B late June @ 5.855% wtd coupon | [1×: SpaceX Q2 PR / PhotonCap] |
+| SemiAnalysis 10GW capex | ~$50B per GW | [1×: PhotonCap citing SemiAnalysis] |
+| Chip stance | Vera Rubin exclusive; TPU and AMD evaluated | [1×: Musk call / PhotonCap] |
+| Vendor financing | Possible background to exclusivity | [est.: PhotonCap] |
+| Cursor | Acquisition targeting close within Q3 | [1×: SpaceX Q2 PR / PhotonCap] |
+
+| Power / permitting | Figure | Tag |
+|---|---|---|
+| Unpermitted Colossus turbines | 69 units; full-removal deadline slipped to July 2027 | [web: techcrunch.com via PhotonCap] |
+| Replacement plant | 1.2GW, 41-turbine, Mississippi state permits, under construction | [web: techcrunch.com via PhotonCap] |
+| Litigation / DOJ | NAACP + environmental groups pending; DOJ sided with company on national-security grounds | [web: techcrunch.com via PhotonCap] |
+| Scale vs today | 10GW ≈ 7× current 1.4GW nameplate inside two years | [1×: PhotonCap] |
+| APR Energy / turbine buy | Acquisition + plan to buy $2B of turbines over three years | [web: techcrunch.com via PhotonCap] |
+| Transformer workaround | Chinese power modules around LPT backlog | [1×: PhotonCap citing SemiAnalysis] |
+
+| Hardware conversion (GB300 NVL72 reference; Rubin undisclosed) | Figure | Tag |
+|---|---|---|
+| Scale-out per GPU | One 800G-class connection | [1×: PhotonCap / NVIDIA NVL72 RA] |
+| Rack power | 135kW per rack | [1×: PhotonCap / NVIDIA NVL72 RA] |
+| 10GW → GPU count | Millions of GPUs | [est.: PhotonCap] |
+| Optical endpoints | Leaf ports ~GPU count; spine/super-spine make endpoints a multiple | [est.: PhotonCap] |
+| Named optics/DSP | MRVL (DSP); COHR + LITE (components) | [1×: PhotonCap] |
+| Named DCI | CIEN (long-haul / campus-to-campus) | [1×: PhotonCap] |
+| Named memory | MU (HBM) — cycle frame, not SpaceX frame | [1×: PhotonCap] |
+| Test/validation | Millions of ports → millions of install + in-service validation events | [1×: PhotonCap 30 Jun] |
+
+| Verdict-date calendar (PhotonCap §8) | Window | What it falsifies if it misses |
+|---|---|---|
+| Google volume + $6.7B new CSAs start recognizing | October 2026 | 2H AI-revenue queue |
+| Cursor close | Within Q3 2026 | Application-layer attach (secondary) |
+| Q3 earnings | Early November 2026 | Nameplate GW increment; contracted-sales increment |
+| YE26 compute | YE26 | Musk's only company compute target (2GW); 10GW credibility |
+| Unpermitted-turbine full removal | July 2027 | Power-architecture / legal path |
+| First CSA termination, or contracted-sales stall | Any print | §5 "90-day as sales condition" reread |
+| Q4 AI revenue despite Google + new ramps | Q4 2026 print | Pricing and demand assumptions |
 
 ## Contradiction Check
-Supports SemiAnalysis 10GW feasibility direction while stressing power/legal gates and 90-day revenue durability risk. Challenges SPCX-equity-first framing of the AI buildout. Falsifiers: YE26 <2GW; contracted sales stall; first termination cascade; Q4 AI rev soft despite Google/new ramps.
+
+**[[Theses/SPCX - SpaceX]] §Summary + §Key Non-consensus Insight "The listed equity's proven asset is a Connectivity annuity, not an AI compounder."** Supports. PhotonCap keeps Layer 1 as the profitable engine ($4.3B / $1.7B op. income / 60%-class economics in the thesis's fuller segment table) and refuses to read AI's $1.1B adj. EBITDA as proof of profitability ($1.9B D&A add-back, $1.3B operating loss). The source's "AI-infrastructure company print" is a *spend-structure* claim (86% of capex), not a claim that the residual is now an AI compounder — and the investment implication is the opposite of sell-side's Moderate-Buy / $229 avg PT / MS $300 path: do not buy the Class A to own the build.
+
+**[[Theses/SPCX - SpaceX]] §KNI "Demand is printed; capital recovery is not" + Conviction Trigger → LOW (first CSA termination cascade) / → CLOSE (D&A lives exceed demonstrated CSA duration).** Supports the duration half; challenges the source's new "90-day as sales condition" if a reader treats velocity as a substitute for payback. Note 2's $14.1B is the same non-cancellable-window definition the thesis uses ($14.1B = 89% of one quarter's $15.828B AI capex). PhotonCap adds the buyer-side mechanism (approval threshold, $30–50M/MW/yr, month-to-month vs 15-year take-or-pay) and the $6.7B early-Q3 add. That is evidence of *sell-through speed*, not of matched-cohort payback. [G-3] mean-reversion vs trend and [G-7] ROIIC × runway fire as hypotheses: a book that stacked >$20B in half a year on 90-day paper is also a book that can drain in one termination cluster. The source's own §8 falsifier is the thesis trigger in different words. Do not promote SPCX on this note.
+
+**[[Theses/SPCX - SpaceX]] §KNI "The Musk-repeats-the-Starlink-playbook transfer inverts the ownership structure" + VLM §2 layer-renter.** Supports, and is the source's primary alpha claim. Starlink internalized cheap launch because SpaceX owned Falcon (28 of 38 Q2 launches internal). The AI campus rents every scarce layer — Rubin silicon ([[Theses/NVDA - Nvidia]]), HBM, optics, turbines it has already agreed to remove from Memphis by 2027 — and sells output on cancellable paper. PhotonCap locates first-order equity in the parts orders. [G-14] Jevons fires as a hypothesis on the demand side (whatever is built is sold at above-market $/MW) and fails the ownership test on the residual. [G-4] Perez: this is frenzy-phase infrastructure; the builders of canals/fiber often do not harvest the golden age. Conviction impact on SPCX: unchanged-to-weaker on the AI-compounder framing; unchanged on Connectivity.
+
+**[[Theses/SPCX - SpaceX]] Conviction Trigger → LOW if YE26 nameplate <2GW on the 1.4GW definition; §Outstanding Question "YE26 nameplate definition."** Supports the instrumentation. PhotonCap's first falsifier is the same 2GW checkpoint, and it flags that the company chose "nameplate" (installed, not operating). A YE26 print that sneaks "under construction" into the line would be a definition break, not a hit. Power gates (69 unpermitted turbines → July 2027; 1.2GW/41-turbine replacement; NAACP suit) are the binding constraint the thesis already has under "Does the power architecture hold at 2GW+?" Industry-Semis #1 (bottleneck location) hypothesis: power/permitting, not GPUs, is the scarce complementary asset on the 10GW path.
+
+**[[Theses/NVDA - Nvidia]] §Summary (Vera Rubin production / CUDA platform) — no Conviction Triggers section exists.** Supports the 2026–27 campus BOM lock, not a CUDA-moat re-rate. Musk's "Vera Rubin only" line after evaluating TPU and AMD is a procurement declaration for Colossus-class MW, and PhotonCap's [est.] vendor-financing read is the mechanism that would let $18.4B/quarter continue against a $50B/GW all-in. That is incremental GW of Rubin demand on top of Mag7 self-build — the same direction as [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]. It does not speak to ASIC share erosion, Omniverse, or Physical AI. Industry #10 hypothesis on the other side of the contract: Anthropic and Google are the printed tenants *and* application-layer competitors (Grok/Cursor); 90-day exits are existential to AI-segment economics, not "concentration to monitor."
+
+**[[Theses/LITE - Lumentum]] §Summary (200G EML / arms-dealer) and [[Theses/MRVL - Marvell Technology]] §Summary (owned 800G DSP layer).** Supports the scale-out + scale-across path if 10GW (or even a slipped 5–7GW) is multi-campus. Conversion ladder: millions of GPUs → millions of 800G-class leaf ports → a multiple of transceiver endpoints once spine/super-spine are added, plus coherent/long-haul DCI as jobs cross site boundaries. That is incremental port/DSP/EML demand on the same dual-use names PhotonCap classified in June, with scale-across as a second exposure path (Ciena for systems; no CIEN thesis in the vault). Industry #8 hypothesis: NVL72 → Vera Rubin is an architecture transition whose rack/network ratios are **undisclosed** — the ladder is GB300-referenced and the source says so. Do not size LITE/MRVL on a Rubin port-per-GPU number this note does not have.
+
+**[[Theses/MU - Micron Technology]] §Summary ("Don't own") + §KNI "Qualified third ≠ first-wave cubes" + Conviction Trigger → LOW if Q3 Rubin board meter is ~70/30/0.** Challenges PhotonCap's ticker mapping, not the physical claim. The source is explicit that HBM "should not be bought on a SpaceX frame but viewed on a capex cycle frame" and names MU as the "pure exposure." The vault thesis already rejects that cycle-frame as a reason to own MU (list ≠ allocated; first-wave Rubin bits ~70/30/0 SK Hynix/Samsung/MU). Use this note as a GW → cube-count *demand* increment, then still wait for a board meter. Industry L1 (DRAM less cyclical) remains a hypothesis the MU thesis holds adversarially.
+
+**[[Theses/VRT - Vertiv Holdings]] §Summary (grid interconnect as the real chokepoint) and [[Theses/BE - Bloom Energy]] §KNI "Time-to-power arbitrage, not a layer monopoly" + Conviction Trigger → HIGH (turbine backlogs >4 years + repeat hyperscale primary-power).** Supports the *bottleneck location*, not a SpaceX-specific order. PhotonCap's biggest hardware axis is 15–20GW of plant-level power equipment in two years, with new large turbines backlogged and secondary-market / small-mid turbines / onsite packages / power modules selling first — plus APR Energy and a $2B/3yr turbine buy. That is the same turbine-queue / time-to-power complex VRT and BE sit in. VLM on BE stays WEAK FIT (manufactured toll, contestable). Automation energy/industrials overlay: both names are demand beneficiaries of AI siting, not operator-automation stories. Do not read this piece as a Vertiv or Bloom purchase order.
+
+**[[Theses/TSM - Taiwan Semiconductor]] §Summary (CoWoS / leading-edge monopoly).** Implied, not argued. A Rubin-exclusive multi-GW campus is CoWoS + leading-edge wafer demand; PhotonCap never names TSMC or AMAT/LRCX and does not convert 10GW into wafer starts or WFE tool POs. [[Theses/AMAT - Applied Materials]] and [[Theses/LRCX - Lam Research]] are not in the source's hardware bill (power / optics / scale-across / HBM). Leave WFE unmoved until Terafab tool POs print — those live in the SPCX thesis as aspiration, not in this earnings audit.
+
+**[[Theses/SPCX - SpaceX]] §KNI ARPU / §Outstanding Question "Q3 ARPU and churn after the June price extraction"; [G-12] cohort.** Supports the "decline stopped ≠ price rose" distinction. $66 flat is as far as this quarter's facts go. The thesis's June hike (+$5–10 consumer, aviation up to 2×) is the next-print test; PhotonCap does not have Q3 ARPU.
+
+Disconfirming check (READING PROTOCOL): [G-4], [G-7], [G-13], [G-14], VLM layer-renter, and Industry #1 all point the same way (Connectivity real, AI colo a renter, value in the hardware chain, 10GW quantity slips). That agreement is the cue to hunt the bull falsifier, not to close the AI option. The single datapoint that breaks the duration/layer-renter read is a **named GW-scale CSA with duration beyond the 90-day post-ramp window** (the SPCX → HIGH duration leg) *or* YE26 ≥2GW on the 1.4GW definition plus contracted sales still compounding into Q4 after the October ramps. Base rate the bear must beat: $100B cash, a 60%-margin Connectivity annuity, and a Note 2 book that added $14.1B+$6.7B under the *conservative* definition — this is not the CRWV 25.8% interest/revenue reference class.
 
 ## Source Excerpts
-> "I read this report less as a space company’s earnings and more as the first quarterly report of an AI infrastructure company."
+
+> "I read this report less as a space company’s earnings and more as the first quarterly report of an AI infrastructure company, and I expect the benefit to arrive first not at SpaceX shareholders but at the ones receiving the parts orders, or the investors around them."
+
+> "SpaceX’s capex this quarter was $18.4B, and the AI segment’s share of it was a whopping $15.8B. That works out to 86%… A company that builds rockets and satellites put nearly nine tenths of its quarterly investment into AI data centers."
+
+> "It does not count the full amount written into the contract, only the revenue from the period that cannot be cancelled. Meaning that for a contract that can be ended on 90 days’ notice, even if three years of value is written on paper, only the non-cancellable first few months land in contracted sales."
+
+> "Close to 10GW of nameplate compute by the end of 2027, and at the power and cooling equipment level, a tentative target of 20GW, though in practice it will land near 15GW."
+
+> "The absolute 10GW quantity itself will probably slip. But the reason this company is burning big money is clear. Even counting only the cancellable portion, more than $20B of contracts stacked up in half a year, and the fact that buyers are lining up for compute as fast as it gets built is this quarter’s measurement."
+
+> "One limitation is worth writing down. The conversions above are all rough figures based on GB300 NVL72 reference ratios, and nothing has been disclosed yet on the rack configuration and network ratios of the Vera Rubin generation SpaceX will actually deploy in 2027."

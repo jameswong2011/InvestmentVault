@@ -226,6 +226,7 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 - [[Research/2026-03-28 - Iran Weapons Supply Routes to Lebanon - deep-dive]] — Structural Iran proxy resilience (Hezbollah rebuilt ~1/3 capability in a year, >$1B transferred 2025) supports sustained energy-sovereignty policy response — the 6-12 month re-rating trade framework on which CCJ's high conviction rests
 - [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: kinetic conflict accelerates energy-sovereignty policy response; reactor life extensions + new builds become national security mandate
 - [[Research/2026-08-08 - Oklo SMR Mass Production - news]] — SMR deployment accelerating (5 advanced-reactor types to criticality since June; NRC Part 57 mass-production licensing pending) is counter-evidence to the Bear-Case SMR-slippage risk / OQ#4 — but Oklo runs on recycled EBR-II fuel + HALEU, so faster deployment of this design sharpens the Western-enrichment/HALEU bottleneck (OQ#6) more than it pulls Cameco natural-U/conversion
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]
 
 ## Log
 
@@ -273,3 +274,6 @@ Uranium is ranked #1 most positively impacted commodity by the Iran conflict in 
 
 ### 2026-08-08
 - [[Research/2026-08-08 - Oklo SMR Mass Production - news]]: 5 SMR types to criticality since June + NRC Part 57 mass-production licensing = SMR deployment accelerating (counters Bear-Case SMR-slippage / OQ#4) — but Oklo's HALEU/recycled-fuel path sharpens the HALEU bottleneck (OQ#6) rather than pulling yellowcake — conviction unchanged (medium, monitoring).
+
+### 2026-08-13
+- [[Research/2026-08-13 - BE VRT - US Grid Constraints 40GW BTM Datacenter 2028 - deep-dive]]: grid-negative-2027 forces BTM; SMR is a later option, not 2028 equipment — conviction unchanged (medium).

@@ -1,4 +1,5 @@
 ---
+publish: false
 title: 'Nebius Group Letter to Shareholders Q2 2026 — 5 GW contracted power'
 source: 'https://assets.nebius.com/assets/a6ecfd85-a6cb-4967-8ef7-9a25bd261f9c/SHLQ226.pdf'
 date: 2026-08-13

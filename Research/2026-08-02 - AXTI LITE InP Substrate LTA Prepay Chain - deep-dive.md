@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-02
 tags: [research, Semiconductors, LITE, AXTI, Optics]
 sector: Custom Silicon & Networking Semiconductors
@@ -6,25 +7,118 @@ ticker: LITE
 propagated_to: [LITE]
 source: 'https://photoncap.net/p/axt-and-lumentums-prepayment-deal'
 source_type: deep-dive
+updated: 2026-08-14
 ---
 
+# AXT and Lumentum's Prepayment Deal: The InP Substrate LTA Chain
+
 ## Thesis Delta
-Consensus saw Lumentum's AXT deal as a costly supply quirk → PhotonCap reads the $87M prepaid InP substrate LTA through 2031 as hard evidence of an InP substrate shortage worse than memory per LITE's CEO, and as the start of a cycle clock (second $43.5M deposit terms in 2028). Chain: NVIDIA→LITE→AXT deposits. Supports [[Theses/LITE - Lumentum]] scarcity premium; AXTI is the pure-play substrate box with China export-permit risk.
+
+Consensus priced Lumentum's 29 July AXT 8-K as a "costly supply deal" — working-capital leak, LITE slipped the day cash left — → PhotonCap reads the $87M prepaid InP-substrate LTA through YE2031 as the hardest disclosed proof that the optics shortage sits one layer *upstream* of LITE's five EML fabs, and as a contract with a clock: the 2028 second $43.5M deposit is the test of whether shortage persists or the chain rotates reverse. NVIDIA's $2B convert is the top link; AXTI has **no vault thesis** — open question is whether the three-name InP-substrate oligopoly is a standalone box or remains a China-permit residual on [[Theses/LITE - Lumentum]] §Risks #6. Hypotheses: [G-3] mean-reversion vs trend on a deposit/take-or-pay cycle; [G-10] polysilicon analog as the outside view; Semis #1 bottleneck one layer up from EML; VLM substrate-layer WEAK FIT (oligopoly + Tongmei permit ceiling).
 
 ## Summary
-Jul 29 AXT 8-K: LTA reserves min annual InP capacity for Lumentum through YE2031; $43.5M cash deposit within 30 business days + another $43.5M in 2028. Same week CEO said InP shortage gap >30% and worse than memory. Lumentum runs five InP fabs but buys wafers; global substrate oligopoly is Sumitomo, AXT (Beijing Tongmei), JX. China indium export controls + domestic DC demand contest the same wafers. Detours: 1060nm GaAs VCSEL CPO and Coherent 6-inch InP stretch effective supply. Expansions cluster in 2028—same year as second deposit decision.
 
-## Evidence
-| Item | Figure | Tag |
-|---|---|---|
-| Deposit total | $87M ($43.5M + $43.5M) | [1×: AXT 8-K / PhotonCap] |
-| Agreement end | YE2031 | [1×: PhotonCap] |
-| Supply gap cited | >30% | [1×: LITE CEO / PhotonCap] |
-| NVIDIA→LITE | $2B convert + multi-year buy | [1×: PhotonCap] |
-| Expansion timing | Sumitomo/JX/LITE fab ~2028 | [1×: PhotonCap] |
+PhotonCap's 2 August piece is not a company primer. It is an argument that two same-week events — AXT's 29 July 8-K locking minimum annual InP-substrate capacity for Lumentum through year-end 2031 against an $87M two-tranche cash deposit, and Lumentum CEO Michael Hurlston telling a Paris RAISE summit that the InP shortage is worse than memory, with the demand–supply gap now "over 30%" versus the prior earnings-call print — are the same fact stated in cash and in words. The author had already, on 29 July, published a free Lumentum-IR conversation (Aurelion Research + PhotonCap) that is reused as testimony: EML capacity at the two Japan fabs grew eight-fold in two and a half years and still falls more than 30% short. If chip-making velocity is not the bind, the wafer in front of the fab is. The stock-market first reaction was the opposite read: LITE slipped and TipRanks ran "Lumentum Stock Slips As Costly Supply Deal Raises Doubts" (PhotonCap cites headline only; full text was blocked). That is the consensus the article is written against.
 
-## Contradiction Check
-Confirms May call foreshadow (deposit + take-or-pay substrate LTAs). Challenges "InP is a solved input." Falsifiers: 2027 expansions crush spot/lead times; 2028 deposit renegotiated; VCSEL/6-inch detours cap InP wafer demand.
+The mechanism starts from a category error the market keeps making. Lumentum runs five InP fabs and is building a sixth (Greensboro, ramp targeted early 2028). Fabs process dies. They do not grow the single-crystal indium-phosphide ingots that get sliced into substrate wafers. Silicon is hopeless at turning electricity into light — the crystal leaks energy as heat — so every data-center optical link that uses the low-loss fiber windows at 1310 nm and 1550 nm starts on InP, the only practical base wafer on which those lasers and receivers can be stacked defect-free. The value chain is four stages: indium metal (a zinc-smelting byproduct) → single-crystal ingot / sliced substrate → epitaxy (light-emitting layers) → fab (laser chip). Lumentum owns only the last stage. Substrate makers that hold most of world supply number three: Japan's Sumitomo Electric, US-listed AXT (production in Beijing subsidiary Tongmei), and Japan's JX Advanced Metals. Coherent, the most vertically integrated optical name, still buys substrates outside under multi-year contracts and starts from epi in its own fabs. Buying substrates is ordinary. A deposit instead of a purchase order, and a six-year reservation instead of spot, is the signal.
+
+Why so few substrate houses, and why the supply response is slow: phosphorus tends to vaporize near the InP melting point, so growth runs under high pressure; finished crystals are more brittle than silicon; silicon long ago went to 12-inch while InP is still primarily 2- to 4-inch, with 6-inch mass production only just beginning. Usable-wafer know-how is decades of process data. New capital does not buy a seat. Between a capacity announcement and commercial-quality shipments sit furnace install *and* a yield-qualification lag, which is why this stage bottlenecks whenever demand spikes. China is the overlay that turns a materials oligopoly into a permit lottery. AXT's wafers leave Tongmei; indium-related items sit on China's export-control list; every shipment needs a permit. Within the past year one AXT quarter was crushed by permit delays and then recovered sharply once permits cleared. Domestic Chinese data-center InP demand is growing at the same time Chinese module vendors occupy seven of the top ten global seats, so the same wafers are contested between export volumes and home use. The supply line Lumentum just prepaid sits inside that permit regime — a condition of the contract and its largest risk.
+
+Read as a chain rather than a bilateral 8-K, the money has already walked three links. Early 2026 NVIDIA put $2B of convertible preferred into Lumentum and attached a multi-year purchase commitment. One layer down, Lumentum put $87M on AXT and reserved capacity through 2031. AXT raised equity in the $600M range to fund substrate expansion. Each layer's seller is the next layer's buyer: deposits flow down, reservations flow up. That is rational while shortage is real. The same topology runs in reverse the moment expansions arrive and spot falls below contract — the late-2000s solar-polysilicon deposit/take-or-pay complex is the qualitative analog PhotonCap flags without claiming company-level figures. The May Lumentum earnings call had already disclosed that substrate LTAs with deposits and take-or-pay were signed; only the counterparty was hidden. PhotonCap had put counterparty disclosure on the monitoring list in "The 8 Companies Behind Lumentum's $808M Quarter." The 8-K is the answer sheet: the name is AXT, the deposit structure is exactly as foreshadowed.
+
+Deposit economics and the expansion calendar are why the author treats 2028 as a Schelling point rather than a coincidence. For AXT, at ~$100M annual revenue, $87M of interest-free expansion funding is about a full year of sales. For Lumentum it is insurance: without substrates all five fabs stop, so prepaying a slice of future wafer invoices buys the right to receive volume in a shortage. Sumitomo Electric is lifting InP-substrate capacity to a bit over 3× by 2028 and has already raised the scale versus the plan announced half a year earlier (JPY 18 billion, TrendForce). JX Advanced Metals committed investment in the JPY 100 billion range over four years, adding a new site on top of an existing-plant expansion, and has replaced its expansion announcement three times inside a year. AXT's offering proceeds go to the same place. Lumentum's own fifth fab targets an early-2028 ramp. Put on one line: Sumitomo's target, JX's four-year landing, Lumentum's new fab, and the year that sets timing and terms of the second $43.5M deposit are the same year. PhotonCap reads that as both sides seeing shortage hold until then and leaving what comes after open.
+
+Two detours cap the upper end of any InP-substrate demand curve, which is the article's warning to anyone buying the shortage through substrate pure-plays. Months before Paris, CSO Rafik Ward at OFC March described easing the InP bind with co-packaged optics based on 1060 nm VCSELs — vertical-cavity devices that fire light upward — and Lumentum demonstrated a VCSEL-plus-photodetector 2-D array placed next to an ASIC. VCSELs grow on GaAs, not InP. The company talking loudest about an InP shortage is itself funding a material substitution for the ultra-short, chip-to-chip box. PhotonCap's June "AI Light Source War" map assigned 1060 nm VCSEL that distance segment; which material wins chip-to-chip is unset, but every increment of VCSEL adoption shaves InP wafer demand. The area-side detour is Coherent's 6-inch InP volume production: the same wafer count yields several times more chips, stretching effective substrate supply in die terms without adding a single wafer. Layer by layer, the listed map is: AXT as the direct multi-year-visibility box with a standing export-permit watch; Sumitomo as the expansion protagonist but a conglomerate where InP is a small share; JX as a first-year Tokyo listing that has put InP expansion forward as its growth direction; Korea as the missing seat in a US–China–Japan expansion race (Korea Zinc is a top indium producer via zinc smelting but indium is a negligible revenue share, so it is not cycle beta). Epi is the candidate for the shortage's next stop once substrates increase — UK [[Theses/IQE - IQE]] signed a multi-year InP epiwafer supply agreement with [[Theses/TSEM - Tower Semiconductor]], evidence the same contract format has already dropped one layer. PhotonCap maintains the May view that epi carries more customer-internalization risk than substrate. Remaining module and laser names get caught on allocation order: Lumentum and Coherent can put deposits down; [[Theses/AAOI - Applied Optoelectronics]] owns a laser fab but buys at small scale; fab-lite [[Theses/SIVE - Sivers Semiconductors]] is known to take InP wafers from IQE. Equipment is second-order: substrate expansion becomes crystal-growth and processing-tool orders, more wafers become MOCVD orders for epi ([[Theses/AIXA - Aixtron]] is the vault's listed MOCVD name); a reservation through 2031 lengthens the order book, it does not change its direction.
+
+The conclusion is modest by design. The contract is the strongest disclosed evidence that the InP-substrate shortage is real, and it is a document with a clock for checking how long that shortage lasts. Longs and shorts share the same dates. August 2026 AXT earnings: deposit received, expansion progress, guidance reflection. Mid-August 2026 Lumentum earnings: whether the "30s" supply gap holds, and whether additional substrate LTAs get signed. During 2027, Sumitomo and JX expansion volume starts arriving — substrate spot prices and lead times react first. 2028 is the article's biggest checkpoint: if the second $43.5M is paid as scheduled, the shortage-persists call stands; if timing slips or terms are renegotiated, that is the first disclosed signal the cycle has turned. Ongoing: 1060 nm VCSEL adoption news forces the upper end of InP demand estimates down. The author is wrong if substrate prices and lead times hold even after 2027 expansion arrivals (shortage longer than modeled), or if renegotiation signals show up before 2028 (withdraw the persists reading and write the reverse rotation). AXT itself is framed as the year-to-date rocket that ran to around $120 and then dropped hard on the Leopold liquidation plus China-risk concerns — the contract is the reason to look again, not a valuation call.
 
 ## Framework / Mental Model
-LTA deposit chain: when shortage is real, each layer prepays the layer below; reverse rotation begins when expansions arrive and spot < contract.
+
+PhotonCap names an explicit typology: the **LTA deposit chain**. When shortage is real, each layer prepays the layer below and receives a deposit from the layer above. Because every seller is also a buyer, the chain is locally rational at every node. The same topology inverts when expansions arrive and spot prints below contract: deposits become renegotiation subjects, take-or-pay clauses become the fight, and capital rotates back up the stack. The late-2000s solar-polysilicon deposit/take-or-pay complex is the stated analog (qualitative; no company-level figures verified). Fate of any single deposit contract is decided by *when expansions arrive*, not by the contract text.
+
+A second named device is the **cycle clock** written into the 8-K itself. Checkpoint dates are first deposit (2026), capacity arrivals (2027–2028), second $43.5M deposit terms (2028), agreement end (2031). 2028 is the hinge: it is simultaneously the year industry expansions cluster and the year the next link of the chain is tightened or left to slip.
+
+Layer taxonomy used in the piece: indium metal → substrate (AXT / Sumitomo / JX) → epi (IQE, Taiwan specialists, internalization risk) → laser fab / module (LITE, Coherent, AAOI, SIVE) → system buyer (NVIDIA). Allocation order in a shortage fills the large prepaid contracts first, so the gap between deposit-capable names and the rest widens until the clock turns.
+
+## Evidence
+
+| Item | Figure | Tag |
+|---|---|---|
+| Agreement type / term | Definitive 8-K, not LOI; InP substrates through YE2031; min. annual capacity reserved for Lumentum | [1×: AXT IR 2026-07-29 / PhotonCap] |
+| Deposit structure | $43.5M cash within 30 business days of signing + $43.5M sometime in 2028 = $87M; applied as credits vs future shipments | [1×: AXT 8-K / PhotonCap] |
+| LITE CEO shortage call | InP shortage "worse than memory"; demand–supply gap widened to >30% vs prior earnings-call print | [1×: Yahoo Finance 2026-07-28; Sourcery RAISE Summit 2026-07-29 / PhotonCap] |
+| Japan EML capacity vs still-short | Two Japan fabs, 8× EML capacity in 2.5 years; still >30% short | [1×: LITE IR conversation / PhotonCap] |
+| LITE InP footprint | Five InP fabs owned; substrates purchased (no captive crystal growth) | [1×: PhotonCap] |
+| Substrate oligopoly | Sumitomo Electric, AXT (Beijing Tongmei), JX Advanced Metals hold most world supply | [1×: PhotonCap; DigiTimes 2025-12-29] |
+| InP wafer diameters | Still primarily 2–4 inch; 6-inch mass production only beginning (Si already 12-inch) | [1×: PhotonCap] |
+| Coherent substrate posture | Buys substrates on multi-year contracts; starts from epi in own fabs | [1×: Chipstrat / PhotonCap] |
+| AXT China permit history | One quarter crushed by export-permit delays, then recovered once permits cleared; DC InP demand growing inside China | [1×: Semiconductor Today 2026-05-05 / PhotonCap] |
+| Chinese module share | Chinese vendors occupy 7 of top 10 global optical-module seats | [1×: PhotonCap prior "Chinese Optical Modules" piece] |
+| NVIDIA → LITE link | $2B convertible preferred + multi-year purchase commitment (early 2026) | [1×: Semiconductor Today 2026-03-26 / PhotonCap] |
+| AXT expansion funding | Equity offering in the ~$600M range earmarked for substrate expansion | [1×: PhotonCap / LITE-week sources] |
+| AXT revenue scale | ~$100M annual revenue; combined deposits ≈ one year of sales | [1×: PhotonCap] |
+| May call foreshadow | LITE already disclosed substrate LTAs with deposits + take-or-pay; counterparty unnamed until 8-K | [1×: LITE May earnings / PhotonCap May "808M Quarter" piece] |
+| Consensus tape reaction | LITE slipped; TipRanks headline "Costly Supply Deal Raises Doubts" (full text unverified) | [1×: TipRanks 2026-07 / PhotonCap] |
+| AXT tape context | Ran to ~$120 YTD then dropped on Leopold liquidation + China-risk concerns | [1×: PhotonCap] |
+| Sumitomo expansion | Capacity to a bit over 3× by 2028; scale raised vs plan from ~6 months earlier; JPY 18B | [1×: TrendForce 2026-07-13] |
+| JX expansion | JPY ~100B over four years; new site + existing plant; expansion announcement replaced 3× in one year | [1×: JX Advanced Metals 2026-06-16] |
+| LITE 5th fab | Ramp target early 2028 (US InP laser plant) | [1×: Semiconductor Today 2026-03-26 / PhotonCap] |
+| 1060 nm detour | CPO via 1060 nm GaAs VCSEL + PD 2-D array next to ASIC (OFC 2026 demo); Ward interview March | [1×: NextGenInfra / Lumentum PR 2026-03-17] |
+| 6-inch die-stretch | Coherent claims world's first 6-inch InP scalable wafer fabs in volume | [1×: Coherent PR / PhotonCap] |
+| Epi-layer LTA | IQE–Tower multi-year InP epiwafer supply agreement | [1×: Semiconductor Today 2026-06-15] |
+| Allocation-boundary names | AAOI: own laser fab, small-scale substrate buys; Sivers: fab-lite, InP wafers from IQE | [1×: SEQH / PhotonCap] |
+| Indium feedstock | No dedicated mines; zinc-smelting byproduct; low supply elasticity; China export controls; prices firm (secondary) | [web: Strategic Metals Invest 2026] |
+| Korea Zinc | Among world's top indium producers; indium negligible share of revenue — not cycle beta | [1×: PhotonCap] |
+| Geographic race | US, China, Japan in InP-substrate expansion; Korea absent | [1×: The Electronic Times 2026-07-08] |
+| Analog (qualitative) | Late-2000s solar polysilicon deposits / take-or-pay; renegotiated once spot < contract | [est.: PhotonCap; no company figures verified] |
+
+**Cycle-gate calendar (author's monitoring list)**
+
+| Date | Gate | What would confirm / break |
+|---|---|---|
+| Aug 2026 | AXT earnings | Deposit received, expansion progress, how the LTA hits guidance |
+| Mid-Aug 2026 | Lumentum earnings | Whether the "30s" gap holds; additional substrate LTAs |
+| During 2027 | Sumitomo + JX volume arrives | Substrate spot prices and lead times are the first tape |
+| 2028 | Second $43.5M deposit terms set | Paid as scheduled → shortage-persists; slip / renegotiate → first disclosed cycle turn |
+| Ongoing | 1060 nm VCSEL / chip-to-chip material choice | Accumulating adoption news forces InP demand ceiling down |
+| YE2031 | Agreement end | Residual contracted volume after the 2028 hinge |
+
+## Contradiction Check
+
+**Supports [[Theses/LITE - Lumentum]] §Summary and §Mental Models Semis [#1]/[#2]** — thesis already has LITE sold out through 2027 with demand exceeding supply by 25–30% and an 8× EML expansion that still does not close the gap. This source updates the gap to **>30%** (Hurlston, same week as the cash) and relocates the bind one layer *upstream* of the five InP fabs: Japan EML output 8× in 2.5 years and still short is the IR testimony that the wafer, not the chip line, is the constraint. The 29 July 8-K is the May-call foreshadow made named (deposits + take-or-pay were already in the transcript; AXT was the missing counterparty).
+
+**Supports [[Theses/LITE - Lumentum]] §Key Non-consensus Insights (NVIDIA $2B as capacity lock-out) and §Bull Case "InP substrate prepay chain"** — the $2B convert is no longer a two-node story. PhotonCap extends it one more link: NVIDIA money → LITE $87M AXT deposit → AXT ~$600M equity for furnaces. Semis #10 (anchor) fires at *two* nodes: NVIDIA as LITE's capacity-locking buyer, LITE as AXT's six-year named offtaker. VLM read on LITE stays on the EML/butt-joint layer (thesis STRONG FIT); this source makes LITE a **layer-renter on substrates** even while it owns the die layer — five fabs, zero crystal growth.
+
+**Challenges the implicit "InP is a solved input" that sits under [[Theses/LITE - Lumentum]] §Outstanding Questions on executing a revenue quadrupling across five fabs.** Substrate inelasticity (high-pressure growth, brittle crystals, 2–4 inch still primary, yield lag after furnace install — Semis #17) means Greensboro + Japan 8× can still starve. The 2028 clustering of Sumitomo 3×, JX JPY 100B, LITE's fifth fab, *and* the second-deposit decision is the [G-3] test: treat 2028 as a scheduled mean-reversion date (polysilicon analog, [G-10]) or as confirmation that shortage is a multi-year trend. Semis #13 classification for AXTI — true cyclical vs semi-cyclical qualification-gated oligopoly — is exactly that 2028 deposit print.
+
+**Supports [[Theses/LITE - Lumentum]] §Risks #6 (geopolitical reciprocal risk / AXT Beijing Tongmei) and §Industry Context indium ~70% China.** The prepaid supply line *is* Tongmei plus China's indium export-permit regime. Domestic Chinese DC InP demand now contests the same wafers as LITE's reservation. That is a condition of the bull case (the wafers exist) and the live kill on the chain (one delayed-permit quarter already happened).
+
+**Supports the 1060 nm VCSEL / CPO-architecture caveat already in [[Theses/LITE - Lumentum]] §Business Model (1060 nm VCSELs for UCIe/PCIe scale-up) and Semis #8.** PhotonCap is sharper: the InP-substrate demand curve has an *architecture-substitution ceiling* set by chip-to-chip material choice, and Lumentum is the one building the GaAs off-ramp. Coherent 6-inch volume production is the area-side ceiling (more die per wafer, no new substrates). Anyone long the shortage via a substrate pure-play has to haircut the upper bound for both detours.
+
+**Supports [[Theses/IQE - IQE]] §Key Non-consensus Insights (global InP supply gap) and the 2026-06-15 Tower LTA already in IQE §Mental Models, with a sequencing caveat.** PhotonCap treats epi as the *next* bottleneck *after* substrates increase, and cites the IQE–[[Theses/TSEM - Tower Semiconductor]] multi-year InP epiwafer agreement as proof the same LTA format has already dropped one layer. That is bullish for IQE's InP-demand leg *conditional* on substrate relief. It also restates PhotonCap's May view that epi carries more customer-internalization risk than substrate — which cuts against treating IQE as the cleaner chokepoint. IQE Outstanding Question 5 (China indium export controls on input cost) is the same feedstock overlay as AXT's permit regime, one step further upstream. **No AXTI thesis exists**; do not invent one. The open question this source poses for the vault is whether AXT's six-year LITE reservation + ~$600M expansion raise + Tongmei permit lottery is enough to justify a standalone substrate box, or whether AXTI stays a residual risk/optionality line on LITE and IQE.
+
+**Supports [[Theses/AAOI - Applied Optoelectronics]] §Summary (InP fab is real at 1310 nm DFB, merchant at 200G EML) and the allocation-order claim.** PhotonCap puts AAOI on the wrong side of deposit-capable allocation: own laser fab, small-scale substrate buys. In a shortage, suppliers fill the large prepaid contracts first; AAOI's Conviction Trigger path (internal 200G EML / 6-inch InP) does not solve a wafer allocation it is too small to prepay.
+
+**Supports [[Theses/SIVE - Sivers Semiconductors]] §Summary overflow/ELS-backstop framing and Semis #1 as a second-order loser.** Sivers is named as fab-lite, receiving InP wafers from IQE — i.e., two layers downstream of the AXT 8-K and dependent on *both* substrate relief *and* IQE epi allocation. The LITE/COHR deposit wall is the mechanism that creates Sivers' overflow option and the reason that option stays small until 2028.
+
+**[[Theses/NVDA - Nvidia]] §Summary / Insight on the $2B LITE convert.** This source does not speak to CUDA, ASICs, or Physical AI. It does treat the convert + multi-year buy as the *first* link of a three-link LTA chain that has now reached the crystal-growth furnace. Semis #10 / [G-4]: financial capital (NVIDIA preferred) is funding the physical substrate build the way frenzy-phase capital funds canals and fiber. The 2028 second-deposit hinge is the production-capital test of whether that build was timed to a real shortage or to a polysilicon-style overbuild.
+
+**Falsifiers the source itself lists (map onto LITE Catalysts/Risks, since LITE has no Conviction Triggers section):** (1) 2027 Sumitomo/JX arrivals crush spot prices and lead times — Semis #9 inventory unwind, clock starts the reverse rotation; (2) 2028 second $43.5M slipped or renegotiated — first disclosed cycle turn, withdraw shortage-persists; (3) 1060 nm VCSEL / 6-inch die-stretch cap InP wafer demand before the expansions even land; (4) the inverse: prices and lead times *hold* after 2027 arrivals — shortage is longer than PhotonCap's base, AXTI-as-box gets more interesting. [G-13] operating variable the price must be mispricing: not "did LITE overpay $87M" but "what 2028 second-deposit terms imply for years of sold-out EML."
+
+## Source Excerpts
+
+> "On July 29, AXT announced a long-term InP substrate supply agreement with Lumentum. A $43.5M deposit lands in cash within a month, another payment of the same size is scheduled for 2028, and capacity is reserved through the end of 2031."
+
+> "The same week, Lumentum's CEO said in a public forum that the InP shortage will get worse than what we see in memory. The words and the money came out in the same week."
+
+> "Lumentum IR said EML capacity at the two fabs in Japan grew eight-fold in two and a half years. And yet it still falls more than 30% short, so isn't the bottleneck not the speed of making chips, but the substrate in front of it??"
+
+> "Early this year, NVIDIA invested $2B in Lumentum in the form of convertible preferred stock, attaching a multi-year purchase commitment. One layer down, Lumentum put an $87M deposit on AXT and reserved capacity through 2031, and AXT in turn raised funds for substrate expansion through an equity offering in the $600M range."
+
+> "For a company with annual revenue around $100M, the combined deposits are about the size of a full year's revenue. From Lumentum's side, it is, in a way, an insurance premium at a 'reasonable price.' Without substrates all five fabs stop."
+
+> "The year the supply arrives and the year the next link of the chain gets tightened or not are the same year. Rather than coincidence, I read it as both sides seeing the shortage holding until that point and leaving what comes after open."
+
+> "Because InP is scarce, the company that talks loudest about the InP shortage is itself developing the option of shifting some links to a different material."
+
+> "If it is paid as scheduled, the shortage-persists call stands; if the timing slips or the terms get renegotiated, that should be read as the first disclosed signal that the cycle has turned."

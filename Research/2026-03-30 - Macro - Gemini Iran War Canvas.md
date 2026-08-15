@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-30
 tags: [research, macro, iran, geopolitics, energy, gemini-canvas]
 status: active

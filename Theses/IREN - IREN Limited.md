@@ -166,6 +166,10 @@ IREN is the only operator that pairs the landlord's durable owned-power base wit
 - [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript]] — GPU useful-life extension + cluster re-sign economics (re-rent test input)
 - [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]] — nodal/LMP power-market framework: the 5.8 GW floor is locational-and-temporal (node, basis, firmness, curtailment, marginal fuel, retail treatment), not fungible headline GW; willingness-to-pay vs bankability duration mismatch
 - [[_Archive/Docs/Semiconductor bear market hedges 2]] — the vault's own "IREN is a poor short / anti-hedge" analysis that this long thesis inverts
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
 
 ## Log
 ### 2026-08-04
@@ -173,3 +177,10 @@ IREN is the only operator that pairs the landlord's durable owned-power base wit
 
 ### 2026-08-06
 - [[Research/2026-08-05 - AI Data Center Power Markets and Electricity Pricing - deep-dive]]: nodal/LMP framing sharpens the 5.8 GW power-floor pillar — delivered MW value is locational+temporal (basis, firmness, curtailment, marginal fuel, retail), not fungible GW; sharpened Insight 1 + Outstanding Q#4 + MM (VLM §1A/§2). Conviction unchanged (medium, draft): tightens the "bounded downside" falsifier, no pillar moved.
+
+### 2026-08-13
+- [[Research/2026-08-13 - Datacenter Capacity Cancellation Myth - deep-dive]]: 2026 cancellation headlines are noise; does not de-risk IREN's funding-gap / fragile-tranche overlay — conviction unchanged (medium).
+- [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]: $11.6/hr is a retail outlier; IREN–MSFT dedicated rate is the exception that calibrates the full-stack premium — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]: owner-vs-renter contrast to prefab buyers — power-stack thesis intact — conviction unchanged.
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]: owner-vs-renter vs Hut 8/OneCore — IREN not named — conviction unchanged.

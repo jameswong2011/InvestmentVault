@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-20
 tags: [research, crypto, trading, infrastructure, DeFi, gemini-canvas]
 status: active

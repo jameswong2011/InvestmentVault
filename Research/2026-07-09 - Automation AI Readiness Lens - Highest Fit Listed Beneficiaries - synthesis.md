@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-09
 tags: [research, synthesis, mental-models, cross-sector, automation-readiness]
 status: active

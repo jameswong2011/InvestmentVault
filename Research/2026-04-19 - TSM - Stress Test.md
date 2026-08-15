@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-04-19
 tags: [research, stress-test, TSM, Taiwan, geopolitical-risk]
 sector: Semiconductors

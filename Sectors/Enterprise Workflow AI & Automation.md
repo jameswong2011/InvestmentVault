@@ -364,6 +364,9 @@ Forrester forecast: 75% will fail by 2027. Gartner: only ~130 of thousands of se
 - [[Research/2026-06-11 - PLTR - Karp on Frontier Lab Discontent - news]] — Karp (CNBC): enterprises "unhappy" with frontier-lab "tokenmaxxing"; "implementation is where the value is"; "most of Anthropic's public projects run on Palantir." Datapoint for the barbell deployment/governance-layer-captures-value framing (§Investor heuristics); self-serving source
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]] — Adversarial-verified critique of a Gemini "gating thresholds" report: re-sorts the six enterprise-AI gates by resolution speed (four vendor-solvable by 2027-29; workforce/process redesign is the durable, organizational gate), models the 2026→2030 adoption index (~3x base, ~32% CAGR), and ranks winners/losers on disclosed numbers. Direct source for §Macro shifts #1 seat-compression evidence (Gartner $234B; NOW ~50% non-seat ACV; WDAY FY27 12-13%; HCL 3-5% AI-deflation) and the §Mental Models first-fill
 
+- [[Research/2026-08-14 - PLTR - Pentagon 244M No-Bid Memo - news]]
+- [[Research/2026-08-15 - PLTR - HHS Biometric Sponsor Vetting - news]] — HHS/ORR Horizon = ACF Foundry instance; draft PWS, no Palantir $
+
 ## Log
 ### 2026-04-22
 - Initial sector note created consolidating commercial workflow (ServiceNow) + defense AI OS (Palantir) under unified enterprise-AI-platform framing — from [[_Archive/Sectors/Enterprise Software]] and [[_Archive/Sectors/Defense & Geopolitics]] — pending prompt-fill of sector analysis sections.
@@ -386,3 +389,9 @@ Forrester forecast: 75% will fail by 2027. Gartner: only ~130 of thousands of se
 
 ### 2026-07-12 (/sync)
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]: Brackets the seat-compression debate (§Macro shifts #1) with 2026-07 disclosed evidence — Gartner $234B agentic-arbitrage / 20% of SaaS by 2030 ("metamorphosis not apocalypse"); NOW ~50% non-seat ACV + PLTR consumption pricing re-price ahead, WDAY (per-worker) FY27 guide cut to 12-13% + HCL 3-5% AI-deflation are the loser evidence. First-fill of §Mental Models (Perez late-installation [G-4]; mean-reversion-vs-trend on seat pricing [G-3]; value-layer infrastructure-vs-application §3). Sector barbell (NOW/PLTR winners) unchanged. No cross-thesis contradiction — synthesis is supportive of both active theses.
+
+### 2026-08-14
+- [[Research/2026-08-14 - PLTR - Pentagon 244M No-Bid Memo - news]]: Feinberg memo up to $243.9M Palantir through Mar-2027 + options to Dec-2028; no-bid share 14.8% H1 — floor add, not a commercial-moat print.
+
+### 2026-08-15
+- [[Research/2026-08-15 - PLTR - HHS Biometric Sponsor Vetting - news]]: civilian Foundry lock-in + ICE political-ceiling color; Ontology-as-integration-plane restated — no commercial RDV/NRR print.

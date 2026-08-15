@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-03-28
 tags: [research, NVDA, omniverse, physx, physical-AI, simulation, gemini-canvas]
 status: active

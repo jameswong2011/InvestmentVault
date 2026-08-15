@@ -336,6 +336,9 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]] — Macro synthesis: the durable gate on enterprise AI adoption is organizational (workforce/process redesign, decade-scale — Celonis "60% can't adapt operations fast enough"), not model capability; PLTR's FDE-led process redesign sells the gate's resolution. Ranks PLTR a Tier-3 consumption-converted winner; the #120 agentic-moat falsification watch remains unfired (Q1 NDR 150%, US commercial +133%)
 
 - [[Research/2026-08-12 - PLTR - Bull vs Bear Debate Synthesis]] — Adversarial Bull vs Bear R1–R2 synthesis: hard-end write-back/IL6 + unfired NRR falsifiers still stand; semantic monopoly / international-as-deferred / June-as-value broken; conviction pressure is sizing/process (reassess) not a forced business short — conviction unchanged (high), flagged for user `/status`
+- [[Research/2026-08-14 - PLTR - Pentagon 244M No-Bid Memo - news]]
+- [[Research/2026-08-15 - PLTR - HHS Biometric Sponsor Vetting - news]] — HHS/ORR Horizon = existing ACF Foundry instance (ATO); draft PWS integration plane, not a new Palantir $ award
+
 ## Log
 
 ### 2026-08-12 (/status-prep — Q2 IR + Conviction Triggers)
@@ -415,3 +418,9 @@ The governance dimension is becoming increasingly decisive. As AI regulation fra
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 0 metrics changed (second same-day pass, ~1hr after prior refresh) — Market Cap, Share Price, Revenue Growth, Gross Margin all identical to prior refresh after rounding. FY2026 revenue guidance still fetch_gap. Snapshot: [[_Archive/Snapshots/PLTR - Palantir (pre-numbers 20260712-183935)]]
+
+### 2026-08-14
+- [[Research/2026-08-14 - PLTR - Pentagon 244M No-Bid Memo - news]]: Feinberg memo up to $243.9M through Mar-2027 + options to Dec-2028; follows $10B Army pact — opposite of EA/Maven cut; → CLOSE unfired — conviction unchanged (high).
+
+### 2026-08-15
+- [[Research/2026-08-15 - PLTR - HHS Biometric Sponsor Vetting - news]]: Horizon named as ACF Foundry with ATO; biometric contractor + FBI NGI, not Palantir collection; no $ / vehicle; ICE 460k/12k is VLM §2 political-ceiling color — HOLD HIGH / CLOSE unfired — conviction unchanged (high).

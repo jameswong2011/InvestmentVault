@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-24
 tags: [research, earnings, TSM, semiconductors]
 status: active

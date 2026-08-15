@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-07-15
 tags: [meta, followups]
 ---
@@ -9,9 +10,10 @@ Durable ledger of actionable findings surfaced by analytical skills. Writers (`/
 ## Open
 <!-- newest first; one line each: - [ ] YYYY-MM-DD · skill · [[Theses/TICKER - Name]] · finding → resolve-when · src [[Research/…]] | chat -->
 
-- [ ] 2026-08-13 · surface · [[Theses/SNDK - SanDisk]] · Investor Day HBF vs CBA-QLC vs 54T greenfield clock, /deepen SNDK Insights+Catalysts → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]
+- [ ] 2026-08-14 · surface · [[Theses/TSM - Taiwan Semiconductor]] · physical-AI eyes (Sony CIS JV + IR stack) unmodelled in TSM Insights, /deepen TSM Industry Context → user acts or dismisses · src [[Research/2026-08-14 - Insight Surface Scan]]
+- [ ] 2026-08-14 · surface · [[Theses/SNDK - SanDisk]] · ID printed 80% GM NBM + HBF samples 2027; Insights #1/#2 stale, /deepen SNDK Insights+Triggers → user acts or dismisses · src [[Research/2026-08-14 - Insight Surface Scan]]
 - [ ] 2026-08-13 · surface · [[Theses/TER - Teradyne]] · CPO shipping vs missing test ecosystem; ingest Jul 28 Q2 + Quantifi exclusivity, /deepen TER → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]
-- [ ] 2026-08-13 · surface · [[Theses/MU]] · six Jul–Aug notes and no thesis; catch-up leg of 000660 kill trigger, /thesis MU → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]
+- [ ] 2026-08-14 · surface · [[Theses/MU - Micron Technology]] · draft LOW thesis now exists; next is Q3 Rubin board meter not another /thesis → user acts or dismisses · src [[Research/2026-08-14 - Insight Surface Scan]]
 - [ ] 2026-08-13 · surface · portfolio · YAL.AX live holding, no thesis, Aug 19 print, /thesis YAL or tracking note → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]
 - [ ] 2026-08-08 · stress-test · [[Theses/CATL - Contemporary Amperex Technology]] · reassess conviction medium→low (both core mispricing pillars under live attack — ESS margin-premium engine inverting in H1'26 data + unmodeled VAT export-rebate abolition →0% Jan'27 vs the 29.97% overseas margin; multiple de-rating now — JPM H-share→Neutral, record HK shorts — not re-rating up) → user runs /status or dismisses · src [[Research/2026-08-08 - CATL - Stress Test]]
 

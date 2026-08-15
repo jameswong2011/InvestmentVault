@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-01-06
 tags: [research, NOW, enterprise-software, M&A, strategy, gemini-canvas]
 status: active

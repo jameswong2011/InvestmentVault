@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-11-01
 tags: [research, BESI, semiconductors, HBM, hybrid-bonding]
 status: active

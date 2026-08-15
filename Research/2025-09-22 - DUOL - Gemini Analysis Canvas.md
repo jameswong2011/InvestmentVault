@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-09-22
 tags: [research, DUOL, edtech, consumer, gemini-canvas]
 status: active

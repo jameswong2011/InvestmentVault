@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-11-23
 tags: [research, WTC, tech-debt, M&A, logistics-software]
 status: active

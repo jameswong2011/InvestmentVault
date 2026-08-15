@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-12-01
 tags: [research, CRCL, COIN, crypto, stablecoins, USDC]
 status: active

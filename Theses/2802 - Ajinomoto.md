@@ -449,6 +449,8 @@ A 30-40% drawdown scenario over 18-36 months, driven by either competitive entry
 - [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — Ajinomoto vs Advantest on ROIC × valuation × growth; documents the conglomerate-discount asymmetry vs the AI-purity premium, the ~75% shared AI-capex driver correlation, and the segment-vs-group ROIC parity that defines the preference trigger between the two names
 - [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]] — Guidance raise; ABF AI demand; Fine-Techno merger plan
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]
+
 ## Log
 
 ### 2026-05-16
@@ -478,3 +480,6 @@ A 30-40% drawdown scenario over 18-36 months, driven by either competitive entry
 ### 2026-08-12
 - [[Research/2026-08-12 - 2802 - Ajinomoto Raises Guidance on AI Electronic Materials ABF - news]]: EM/ABF demand drives guidance raise — conviction unchanged (medium); supports Electronic Materials compounding path toward →HIGH sales trigger (still below ¥150B bar).
 - [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS near-balance + high yield eases packaging governor — ABF intensity still rides AI reticle growth; conviction unchanged.
+
+### 2026-08-13
+- [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]: larger packages + cooling/photonics do not retire ABF intensity near-term — conviction unchanged (medium).

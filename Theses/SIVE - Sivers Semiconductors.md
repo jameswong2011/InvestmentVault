@@ -223,7 +223,9 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 - [[Research/2026-04-29 - AIXA VECO - MOCVD Revenue Exposure to InP Photonics Cycle - synthesis]] — InP photonics cycle equipment-side exposure
 - [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 5 convex bet; TRIM Low→0.5% (pre-chasm + binary Nasdaq listing + Economic Crime probe; +1,682% 1Y pure speculation)
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: independently confirms Sivers supplies Ayar Labs' SuperNova laser (validates the overflow-ELS thesis); but frames CW DFB lasers as "standardized/commoditized" with Shijia added to the Chinese ELS-threat list — sharpens the ELS-contestability bear
+- [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]
 
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]] — Damnang L2 small-cap: ELS/DFB array; volume conversion still unconfirmed; trading sleeve
 ## Log
 
 ### 2026-05-22
@@ -250,3 +252,6 @@ The InP laser source stack stratifies into four tiers, each operating at differe
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 1 metric updated (0 FMP, 1 web: Market Cap [SEK leg] via Yahoo Finance/TradingView search aggregate, consistent with an independent same-session direct FMP SIVE.ST check), 0 material. Confirmed root cause: bare "SIVE" resolves to an unrelated US penny stock (Silver Verde May Mining) on FMP — Step 4b's name-mismatch trigger caught this. Market Cap SEK leg 17.5B→13.6B (-22.3%, below materiality threshold but directionally consistent with the stock's post-Ningi-allegation decline already tracked in Mental Models). USD leg ($1.65B) left stale — no live FX rate. EV/Revenue: not found via search, left as fetch_gap. Recommend adding `fmp_symbol: SIVE.ST` to frontmatter as the permanent fix. Snapshot: [[_Archive/Snapshots/SIVE - Sivers Semiconductors (pre-numbers 20260712-183640)]]
+### 2026-08-14
+- [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]: overflow ELS / LiDAR-pivot GM base rate — not a volume UHP-DFB win — conviction unchanged.
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]]: partnership list restated (O-Net/Enablence/POET/Ayar); volume conversion still unconfirmed — OQ open — conviction unchanged (low/monitoring).

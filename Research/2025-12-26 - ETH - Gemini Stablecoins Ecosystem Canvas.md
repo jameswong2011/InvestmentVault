@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2025-12-26
 tags: [research, ETH, ethereum, stablecoins, crypto, DeFi, gemini-canvas]
 status: active

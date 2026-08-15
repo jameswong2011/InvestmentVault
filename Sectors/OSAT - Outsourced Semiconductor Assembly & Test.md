@@ -367,6 +367,8 @@ For an investor expressing the "OSAT advanced + test franchise is structurally m
 
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — ASE-SPIL Douliu ~US$3.1B advanced packaging + test; CoWoS for AI; first-phase 2028; >2,200 jobs
+
 ## Log
 
 ### 2026-06-08
@@ -374,3 +376,6 @@ For an investor expressing the "OSAT advanced + test franchise is structurally m
 
 ### 2026-06-18 (/sync)
 - [[Macro & Technology/CoWoS-to-CoPoS Panel-Level Packaging Transition]]: CoPoS timing reversed — June-2026 reporting (pilot ~June, 2028–29 HVM, NVIDIA Rubin anchor) overturns the March-2026 "Q4 2030 delay." The +$2-3B OSAT overflow-extension call (Q3, Macro shift #4, Insight #2) flipped from tailwind to headwind. Sector-question framing updated; no OSAT thesis active. Watch ~June-2026 VisEra pilot-line confirmation.
+
+### 2026-08-15
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: SPIL Douliu $3.1B / 2028 CoWoS is OSAT-side addition complementary to TSMC Insight #1 — not a named CoWoS-alternative. No OSAT thesis active.

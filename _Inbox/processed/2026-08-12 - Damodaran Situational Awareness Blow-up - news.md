@@ -1,4 +1,5 @@
 ---
+publish: false
 date: 2026-08-12
 tags: [research, daily-intel-triage, news]
 source: 'https://aswathdamodaran.blogspot.com/2026/08/the-situational-awareness-blow-up.html'
