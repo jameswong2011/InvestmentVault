@@ -139,7 +139,7 @@ Design principles: **Opus max** for analytical work; **Sonnet** for mechanical w
 Full contract: `.claude/skills/_shared/hot-md-contract.md`. Key rules:
 
 - **Six-section schema** (load-bearing): `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot`
-- **Caps**: soft 4,000 / hard 5,000 words. Over hard cap → abort the `_hot.md` write only; the skill's primary operation proceeds
+- **Caps**: soft 8,000 / hard 10,000 words. Over hard cap → abort the `_hot.md` write only; the skill's primary operation proceeds
 - **Compression trigger order** over soft cap: drop oldest Sync Archive entry → drop oldest `*Previous:*` line → merge duplicate Open Questions → warn in report. Recent Conviction Changes is NEVER compressed
 - **Forbidden truncation markers**: trailing `...`, `[compressed]`, `[truncated]`, unclosed `**`/`*`/backtick — compression drops whole entries, never truncates
 - **Same-ticker continuation**: same ticker → append to live thread; different ticker → compress outgoing to one `*Previous YYYY-MM-DD:*` line

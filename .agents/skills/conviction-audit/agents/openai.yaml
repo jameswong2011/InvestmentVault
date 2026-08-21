@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conviction Audit"
+  short_description: "Audit whether a thesis's conviction matches evidence"
+  default_prompt: "Use $conviction-audit to check whether NVDA's conviction still matches its evidence."

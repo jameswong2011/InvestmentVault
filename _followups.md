@@ -9,7 +9,14 @@ Durable ledger of actionable findings surfaced by analytical skills. Writers (`/
 
 ## Open
 <!-- newest first; one line each: - [ ] YYYY-MM-DD · skill · [[Theses/TICKER - Name]] · finding → resolve-when · src [[Research/…]] | chat -->
+- [ ] 2026-08-15 · stress-test · [[Theses/INTU - Intuit]] · reassess conviction high→medium (HIGH unearned; 5/6 assumptions 🔴; Aug 25 print) → user runs /status or dismisses · src [[Research/2026-08-15 - INTU - Stress Test]]
+- [ ] 2026-08-15 · stress-test · [[Theses/GAW - Games Workshop]] · reassess conviction high→medium (licensing pillar missed; no triggers; live) → user runs /status or dismisses · src [[Research/2026-08-15 - GAW - Stress Test]]
+- [ ] 2026-08-15 · stress-test · [[Theses/CSGP - CoStar Group]] · reassess conviction high→medium (Zonda inverted capital-discipline pillar) → user runs /status or dismisses · src [[Research/2026-08-15 - CSGP - Stress Test]]
+- [ ] 2026-08-15 · stress-test · [[Theses/PCOR - Procore Technologies]] · reassess conviction high→medium (NRR 106%; metric retired) → user runs /status or dismisses · src [[Research/2026-08-15 - PCOR - Stress Test]]
+- [ ] 2026-08-15 · stress-test · [[Theses/WTC - WiseTech Global]] · reassess conviction high→medium (HIGH monitoring; no triggers; ASIC/governance) → user runs /status or dismisses · src [[Research/2026-08-15 - WTC - Stress Test]]
+- [ ] 2026-08-15 · stress-test · [[Theses/UBER - Uber]] · reassess conviction high→medium (Waymo falsifier fired; no triggers) → user runs /status or dismisses · src [[Research/2026-08-15 - UBER - Stress Test]]
 
+- [ ] 2026-08-16 · stress-test · [[Theses/ASMI - ASM International]] · reassess conviction high→medium (POR "annuity" is the basket's thinnest service floor + 1.4nm POR unverified/rev 2028+ + Q2 order miss omitted; 5/8 assumptions 🔴; matches thesis's own unreconciled Summary "medium pending 1.4nm") → user runs /status or dismisses · src [[Research/2026-08-16 - ASMI - Stress Test]]
 - [ ] 2026-08-14 · surface · [[Theses/TSM - Taiwan Semiconductor]] · physical-AI eyes (Sony CIS JV + IR stack) unmodelled in TSM Insights, /deepen TSM Industry Context → user acts or dismisses · src [[Research/2026-08-14 - Insight Surface Scan]]
 - [ ] 2026-08-14 · surface · [[Theses/SNDK - SanDisk]] · ID printed 80% GM NBM + HBF samples 2027; Insights #1/#2 stale, /deepen SNDK Insights+Triggers → user acts or dismisses · src [[Research/2026-08-14 - Insight Surface Scan]]
 - [ ] 2026-08-13 · surface · [[Theses/TER - Teradyne]] · CPO shipping vs missing test ecosystem; ingest Jul 28 Q2 + Quantifi exclusivity, /deepen TER → user acts or dismisses · src [[Research/2026-08-13 - Insight Surface Scan]]

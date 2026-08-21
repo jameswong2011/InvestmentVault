@@ -53,7 +53,7 @@ Shopee and Monee share users, checkout, repayment data, merchant distribution, a
 
 7. **Will buybacks offset dilution and credit-funded balance-sheet expansion?** Sea repurchased 1.8M shares for $168M in Q1 under a $1B authorization, yet shares outstanding were still up about 3% year on year. Net share-count reduction, stock-based compensation, deposit growth, and capital allocated to the loan book should be monitored together; buybacks do not create value if they merely mask issuance while credit consumes liquidity.
 
-8. **Does Mercado Libre's 2026 capex step-up change the Brazil math, or is it still a scale-not-economics market for Shopee?** Capex ([[Research/2026-08-14 - MELI - Capex Mercado Libre Dominance - deep-dive]]) frames MELI's 2026 capex as ~3× 2024, funded from FCF (not vendor-finance), with logistics + fintech + ads as a closed loop and Brazil as the profit engine. That is a *spend-to-defend-density* read, not a new Shopee share-loss print. Existing OQ #4 (Brazil economics vs strategic scale) is the right handle; this note raises the bar on how much SPX / VIP spend is required to stay in the game, not whether Shopee should be there. Answer: next Shopee Brazil contribution / VIP-cohort disclosure vs MELI 2026 capex actuals.
+8. **Does Mercado Libre's 2026 capex step-up change the Brazil math, or is it still a scale-not-economics market for Shopee?** Capex ([[Research/2026-08-14 - MELI - Capex Mercado Libre Dominance - deep-dive]]) frames MELI's 2026 capex as ~3× 2024, funded from FCF (not vendor-finance), with logistics + fintech + ads as a closed loop and Brazil as the profit engine. That is a 'spend-to-defend-density' read, not a new Shopee share-loss print. Existing OQ #4 (Brazil economics vs strategic scale) is the right handle; this note raises the bar on how much SPX / VIP spend is required to stay in the game, not whether Shopee should be there. Answer: next Shopee Brazil contribution / VIP-cohort disclosure vs MELI 2026 capex actuals.
 
 ## Business Model & Product Description
 
@@ -68,7 +68,7 @@ Sea operates three reported segments that use different economic engines: Shopee
 
 ### Shopee: the regional commerce operating stack
 
-Shopee matches buyers and sellers, but marketplace matching is only the front door. Core marketplace revenue—transaction fees plus advertising—was $3.8B in Q1 and grew 61%. Value-added services, mainly logistics, were $692M and fell 8% because Sea nets shipping subsidies against revenue; product sales contributed the remainder. Reported segment revenue divided by GMV was 13.7%, while core-marketplace revenue divided by GMV was about 10.2%. Neither ratio is a clean take rate because product revenue, logistics gross/net presentation, and subsidies distort the numerator.
+Shopee matches buyers and sellers, but marketplace matching is only the front door. Core marketplace revenue (transaction fees plus advertising) was $3.8B in Q1 and grew 61%. Value-added services, mainly logistics, were $692M and fell 8% because Sea nets shipping subsidies against revenue; product sales contributed the remainder. Reported segment revenue divided by GMV was 13.7%, while core-marketplace revenue divided by GMV was about 10.2%. Neither ratio is a clean take rate because product revenue, logistics gross/net presentation, and subsidies distort the numerator.
 
 SPX Express and fulfillment control delivery speed, cost, and reliability across fragmented geographies. Indonesia instant-delivery volume grew about 35% while cost per order fell 20%; fulfillment volume rose about 25% sequentially. Shopee VIP creates a paid loyalty layer around shipping, vouchers, and partner benefits. Live streaming, short video, YouTube, and Meta affiliates make Shopee a demand-generation surface rather than a catalogue-only marketplace. Advertising monetizes seller competition for that demand, creating the highest-incremental-margin component of Shopee's revenue.
 
@@ -84,7 +84,7 @@ Players buy virtual currency and in-game items; cash bookings are recognized as 
 
 ## Industry Context
 
-**Shopee versus TikTok Shop is a split-layer contest: TikTok owns the strongest product-discovery engine, while Shopee owns the denser transaction, retention, logistics, and credit stack.** TikTok's 2025 acceleration proves that creator-led discovery can manufacture demand faster than a search-led marketplace; Shopee's buyer-frequency, advertising, VIP, and delivery gains show that discovery does not automatically capture the highest-lifetime-value customer. The thesis does not require Shopee to freeze share at 53%. It requires Shopee to retain more repeat economics per acquired buyer than TikTok while keeping the cost of its defence below incremental gross profit.
+**Shopee versus TikTok Shop is a split-layer contest: TikTok owns the strongest product-discovery engine, while Shopee owns the denser transaction, retention, logistics, and credit stack.** TikTok's 2025 acceleration proves that creator-led discovery can manufacture demand faster than a search-led marketplace; Shopee's buyer-frequency, advertising, VIP, and delivery gains show that discovery does not automatically capture the highest-lifetime-value customer. The thesis requires Shopee to retain more repeat economics per acquired buyer than TikTok while keeping the cost of its defence below incremental gross profit. Freezing share at 53% is not required.
 
 ### Market-share trajectory: the lead is intact, the attack is accelerating
 
@@ -134,7 +134,7 @@ TikTok has partly repaired its Indonesian weakness. The [integrated Tokopedia/Ti
 
 ### Shopee's defence: make discovery portable, then win fulfilment and retention
 
-Shopee is not trying to out-entertain TikTok inside one feed. It is making content a portable acquisition layer while keeping the transaction and post-purchase economics:
+Shopee is making content a portable acquisition layer while keeping the transaction and post-purchase economics, rather than trying to out-entertain TikTok inside one feed:
 
 1. **Internal content is already material:** live and short-video orders grew more than 50% YoY and exceeded 25% of Southeast Asian physical-goods orders in Q1 2026, up from about 20% a year earlier.
 2. **External creators reduce TikTok's exclusivity:** YouTube-driven Shopee orders more than tripled YoY in Q4 2025, while more than 3M affiliates had linked Shopee and Facebook accounts by year-end. Shopee can rent discovery from several social graphs rather than replicate one dominant entertainment graph.
@@ -144,17 +144,17 @@ Shopee is not trying to out-entertain TikTok inside one feed. It is making conte
 
 Shopee operating sources: [Q4/FY2025 earnings remarks](https://cdn.sea.com/investor/4Q2025/JcKns4LaJC8bxcQdJwXz/2026.03.03%20Sea%20Fourth%20Quarter%20and%20Full%20Year%202025%20Earnings%20Call%20Transcript.pdf) and [Q1 2026 results deck](https://cdn.sea.com/investor/1Q2026/HEEdeRDe0NyiZ1PrWIvH/2026.05.12%20Sea%20First%20Quarter%202026%20Results%20Deck.pdf).
 
-The defence is working operationally but is not free. In Q1 2026 Shopee GMV grew 30.2%, while Shopee sales and marketing expense grew **40.4%** and adjusted EBITDA/GMV fell from 0.9% to 0.6%. Core marketplace revenue still grew 61% and ad revenue grew 80%, so the spend is buying monetizable activity rather than only headline GMV. The clean bear case is that content, VIP, and instant-delivery growth are subsidies wearing product labels: if their cohorts fail to generate higher contribution after 12–24 months, Shopee is matching TikTok's growth at the cost of its own margin.
+The defence is working operationally but is not free. In Q1 2026 Shopee GMV grew 30.2%, while Shopee sales and marketing expense grew 40.4% and adjusted EBITDA/GMV fell from 0.9% to 0.6%. Core marketplace revenue still grew 61% and ad revenue grew 80%, so the spend is buying monetizable activity rather than only headline GMV. The clean bear case is that content, VIP, and instant-delivery growth are subsidies wearing product labels: if their cohorts fail to generate higher contribution after 12–24 months, Shopee is matching TikTok's growth at the cost of its own margin.
 
 ### Seller economics prevent a simple winner-take-all outcome
 
 Both platforms expose merchants to multiple country- and category-specific fees: transaction, commission, advertising, affiliate, shipping, support-program, voucher, and return costs. [TikTok Vietnam's July 2026 schedule](https://seller-vn.tiktok.com/university/essay?knowledge_id=8858869405370113&lang=en) alone combines a 6% transaction fee, a 14% default marketplace commission, a fixed order-processing fee, and optional affiliate/logistics costs; [Shopee Malaysia's terms](https://help.shopee.com.my/portal/4/article/77215?previousPage=other+articles) similarly layer transaction, category, platform-support, programme, and cross-border fees. This makes merchant gross margin and return on ad/affiliate spend more informative than posted commission rates.
 
-Merchant supply is therefore contestable. Inventory and listings can be synchronized through software, and the same seller can use TikTok to create demand, Shopee to harvest search intent, and a direct channel to retain customer ownership. The network effect sits in buyer habit, conversion data, creator-product matching, and fulfilment density—not in exclusive listings. [[Theses/SHOP - Shopify]] is the cross-check: if platform fees keep rising, larger brands gain an incentive to use marketplaces for acquisition while moving repeat customers toward owned commerce.
+Merchant supply is therefore contestable. Inventory and listings can be synchronized through software, and the same seller can use TikTok to create demand, Shopee to harvest search intent, and a direct channel to retain customer ownership. The network effect sits in buyer habit, conversion data, creator-product matching, and fulfilment density, not in exclusive listings. [[Theses/SHOP - Shopify]] is the cross-check: if platform fees keep rising, larger brands gain an incentive to use marketplaces for acquisition while moving repeat customers toward owned commerce.
 
 ### Likely equilibrium and falsifiers
 
-**The base case is a split-layer duopoly, not a TikTok takeover or a static Shopee monopoly.** TikTok captures a rising share of discovery-led GMV; Shopee remains the default execution layer for broad assortment, price comparison, repeat purchases, fast delivery, and credit. Each will invade the other's layer, but merchant multi-homing and third-party creator links prevent either from owning the whole funnel.
+**The base case is a split-layer duopoly rather than a TikTok takeover or a static Shopee monopoly.** TikTok captures a rising share of discovery-led GMV; Shopee remains the default execution layer for broad assortment, price comparison, repeat purchases, fast delivery, and credit. Each will invade the other's layer, but merchant multi-homing and third-party creator links prevent either from owning the whole funnel.
 
 | Leading indicator | Shopee thesis holds | Shopee thesis weakens |
 |---|---|---|
@@ -167,7 +167,7 @@ Merchant supply is therefore contestable. Inventory and listings can be synchron
 | TikTok mix | Growth remains concentrated in affiliate-led, demonstrable categories | Direct Shop-tab/search, repeat frequency, AOV, and non-beauty/fashion mix approach Shopee |
 | Seller economics | Shopee ads/fees produce superior incremental ROAS and order velocity | Sellers allocate better inventory or creator budgets to TikTok despite similar fees |
 
-The strongest disconfirmation is no longer TikTok GMV growth by itself; that has already occurred. It is **TikTok reaching Shopee-like repeat frequency and category breadth while Shopee's defence consumes more marketing dollars per GMV dollar.** The second is a change in discovery architecture. In [[Macro & Technology/Agentic Internet]], shopping agents could weaken TikTok's screen-time advantage by moving product discovery to an external interface; they could also weaken Shopee's search surface. Shopee is better protected if it remains the fulfilment, merchant, checkout, and credit layer that agents call, but neither platform has proven that position.
+TikTok GMV growth by itself is no longer the strongest disconfirmation; that has already occurred. The strongest disconfirmation is TikTok reaching Shopee-like repeat frequency and category breadth while Shopee's defence consumes more marketing dollars per GMV dollar. The second is a change in discovery architecture. In [[Macro & Technology/Agentic Internet]], shopping agents could weaken TikTok's screen-time advantage by moving product discovery to an external interface; they could also weaken Shopee's search surface. Shopee is better protected if it remains the fulfilment, merchant, checkout, and credit layer that agents call, but neither platform has proven that position.
 
 ### Other industry arenas
 
@@ -196,9 +196,13 @@ Metrics use the 10 July 2026 close and trailing results through Q1 2026. Price-b
 
 Reported free cash flow overstates recurring owner earnings if growth in deposits and other credit funding finances Monee originations, while net investing cash flow understates it because new loans are classified as investing outflows. Garena's bookings-to-revenue timing adds a second distortion. Segment EBITDA, loan-vintage returns, net share count, and consolidated net cash are more useful together than one FCF figure.
 
+## Management and culture
+
+Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (SEA internet: content commerce, credit, digital banks, Brazil, agentic checkout); Gate 2 residual because FY2025 Form 20-F still frames net-loss history, credit, and new ventures as capital-destruction risk, yet 2.4× EV/revenue and Strong Buy already price the Shopee mine. [MC-2] Forrest Li, founder-Chairman-CEO since May 2009, holds 16.0% economics and 57.6% vote as of 31 March 2026 via 15-vote Class B (Blue Dolphins) plus irrevocable proxies; Tencent's 17.0% economic stake has voted by board proxy since September 2022. Directors and officers took $3.13 million cash in 2025 against $625.0 million group SBC; no ROIC/EPS/product-volume metric is disclosed (Cayman FPI, no DEF 14A). Schedule 13D/A dated 2 January 2026 records ~877k ADS 10b5-1 sales in November–December 2025, not open-market buys. [MC-7] three product fiefdoms under a thin holdco: Shopee (David Chen CPO), Garena (Terry Zhao President since November 2018), Monee (own HQ; SeaMoney→Monee rebrand 8 May 2025); headcount 62,700 / 80,700 / 102,700 at year-end 2023/24/25. Product form is the right pole past ~5,000; Garena sharing cash not customers is the live §6 fiefdom anti-signal. Chris Feng ran Shopee from July 2015 and Monee from March 2020 before becoming group President in January 2022, the hop-reduction that makes commerce-credit envelopment real. [MC-6]/[G-10] 64% headcount growth in two years after the September 2022 cash-comp freeze is the entropy base rate this claim does not beat; the June 2026 ~8% Shopee developer cut is not a §4 regime change. Swing variable: whether Feng keeps Shopee–Monee as one product org or the three brands ossify as competing fiefs.
+
 ## Bull Case
 
-The bull case is not multiple expansion. It is Shopee maintaining category growth while converting more GMV into ads, logistics, and credit profits; Monee proving that rapid lending growth reflects underwriting edge rather than immature vintages; and Garena sustaining a $1.5–2.0B annual EBITDA base.
+Rather than multiple expansion, the bull case is Shopee maintaining category growth while converting more GMV into ads, logistics, and credit profits; Monee proving that rapid lending growth reflects underwriting edge rather than immature vintages; and Garena sustaining a $1.5–2.0B annual EBITDA base.
 
 | Driver | 2028 bull assumption | Economic result |
 |---|---|---|
@@ -256,21 +260,26 @@ Under a bear framework, Shopee reaches only $165–180B of 2028 GMV with 0.3–0
 
 ## Mental Models
 
-- **Models applied:** [[Mental Models/Generalist - Overview]]; [[Mental Models/Lens - Automation & AI Readiness]]; [[Mental Models/Lens - Value Layer Monopoly]]. No industry-specific e-commerce, consumer-credit, or gaming model exists in the current mandatory set.
+- **Models applied:** [[Mental Models/Generalist - Overview]]; [[Mental Models/Lens - Automation & AI Readiness]]; [[Mental Models/Lens - Value Layer Monopoly]]; [[Lens - Management and Culture]]. No industry-specific e-commerce, consumer-credit, or gaming model exists in the current mandatory set.
 - **Triggers that fired:**
-  - **Generalist · G-3 mean reversion versus trend** — Q1 acceleration can reflect a durable monetization trend or a peak phase of subsidy-led competition; the hypothesis must survive multi-quarter margin evidence.
-  - **Generalist · G-5 management and culture** — Sea's 2022–2023 self-funded reset and current willingness to reinvest while profitable suggest adaptive capital allocation; the test is whether management discloses cohort economics before credit quality weakens.
-  - **Generalist · G-6 two-sided networks** — Shopee's buyer-seller liquidity is strengthened by ads, logistics, and credit, but seller multi-homing and TikTok discovery keep the network from being winner-take-all.
-  - **Generalist · G-7 ROIIC and runway** — fulfillment, VIP, and Monee can extend the runway only if incremental gross profit exceeds incentives, credit losses, and funding costs.
-  - **Generalist · G-10 base rates** — emerging-market marketplaces often trade growth for subsidy cycles; consumer lenders growing above 70% rarely reveal steady-state losses in headline NPLs.
-  - **Generalist · G-12 cohort economics** — VIP retention above 80% and spending uplift are promising cohort signals, but contribution after benefits and selection bias remains undisclosed.
-  - **Generalist · G-13 price-implied expectations** — 2.4x EV/revenue and 26.5x forward earnings require sustained growth and margin expansion; the valuation is cheaper than 2021 without being a low-expectation setup.
-  - **Automation & AI Readiness · Lens A strong-fit hypothesis** — 14% conversion improvement, 80% chatbot containment, 30% lower cost per contact, and an in-house local-language model show production deployment tied to measurable workflows.
-  - **Automation & AI Readiness · Lens C partial-fit hypothesis** — cross-vertical commerce, logistics, and repayment data can improve recommendations and underwriting, but privacy, causality, and competitor access remain unresolved.
-  - **Value Layer Monopoly · §1 split-layer contest, medium fit** — TikTok's 2025 GMV doubling shows discovery is a monetizable layer; Shopee's frequency, VIP, fulfilment, ads, and credit show the transaction/retention layer can still capture more economics. The hypothesis survives only if repeat-order contribution rises while sales and marketing grows no faster than GMV; TikTok direct-search and repeat growth would retire it.
-  - **Value Layer Monopoly · §2 platform envelopment** — Shopee into Monee is a coherent extension of checkout and data into credit; Garena remains conglomerate capital rather than an integrated layer.
-  - **Value Layer Monopoly · §3 AI overlay, mixed sign** — AI raises the productivity of Sea's application layer but can also shift discovery power toward Google, OpenAI, and other agent owners.
-- **Disconfirming check:** The models agree on scale, data, and AI deployment, so the thesis must hunt the opposite evidence. The single clean falsifier is Shopee regional share below 48% while sales and marketing grows faster than GMV: it would show that the integrated stack cannot defend demand economically. Monee's 2025–2026 vintages are the second adversarial test; stable NPLs after seasoning must coexist with provision growth no faster than loans.
+  - **Generalist · G-3 mean reversion versus trend:** Q1 acceleration can reflect a durable monetization trend or a peak phase of subsidy-led competition; the hypothesis must survive multi-quarter margin evidence.
+  - **Generalist · G-5 management and culture:** Sea's 2022–2023 self-funded reset and current willingness to reinvest while profitable suggest adaptive capital allocation; the test is whether management discloses cohort economics before credit quality weakens.
+  - **Generalist · G-6 two-sided networks:** Shopee's buyer-seller liquidity is strengthened by ads, logistics, and credit, but seller multi-homing and TikTok discovery keep the network from being winner-take-all.
+  - **Generalist · G-7 ROIIC and runway:** fulfillment, VIP, and Monee can extend the runway only if incremental gross profit exceeds incentives, credit losses, and funding costs.
+  - **Generalist · G-10 base rates:** emerging-market marketplaces often trade growth for subsidy cycles; consumer lenders growing above 70% rarely reveal steady-state losses in headline NPLs.
+  - **Generalist · G-12 cohort economics:** VIP retention above 80% and spending uplift are promising cohort signals, but contribution after benefits and selection bias remains undisclosed.
+  - **Generalist · G-13 price-implied expectations:** 2.4x EV/revenue and 26.5x forward earnings require sustained growth and margin expansion; the valuation is cheaper than 2021 without being a low-expectation setup.
+  - **Automation & AI Readiness · Lens A strong-fit hypothesis:** 14% conversion improvement, 80% chatbot containment, 30% lower cost per contact, and an in-house local-language model show production deployment tied to measurable workflows.
+  - **Automation & AI Readiness · Lens C partial-fit hypothesis:** cross-vertical commerce, logistics, and repayment data can improve recommendations and underwriting, but privacy, causality, and competitor access remain unresolved.
+  - **Value Layer Monopoly · §1 split-layer contest, medium fit:** TikTok's 2025 GMV doubling shows discovery is a monetizable layer; Shopee's frequency, VIP, fulfilment, ads, and credit show the transaction/retention layer can still capture more economics. The hypothesis survives only if repeat-order contribution rises while sales and marketing grows no faster than GMV; TikTok direct-search and repeat growth would retire it.
+  - **Value Layer Monopoly · §2 platform envelopment:** Shopee into Monee is a coherent extension of checkout and data into credit; Garena remains conglomerate capital rather than an integrated layer.
+  - **Value Layer Monopoly · §3 AI overlay, mixed sign:** AI raises the productivity of Sea's application layer but can also shift discovery power toward Google, OpenAI, and other agent owners.
+  - **Management & Culture [MC-1] · gates:** Gate 1 passes (SEA internet optionalities); Gate 2 residual only (20-F still frames credit/new ventures as capital destruction; Strong Buy already prices the Shopee mine).
+  - **Management & Culture [MC-2] · founder control / incentive duration:** 57.6% vote / 16.0% economics via 15-vote Class B as of 31 March 2026; $3.13M cash vs $625.0M SBC in 2025; 10b5-1 sales, no open-market buys.
+  - **Management & Culture [MC-3] · information-hop count:** Feng dual-ran Shopee (from July 2015) and Monee (from March 2020) then became group President January 2022; hop-reduction on the commerce-credit pair, not on Garena.
+  - **Management & Culture [MC-6] · bureaucratic entropy:** headcount 62.7k→102.7k in two years after the 2022 reset is the attractor; June 2026 8% Shopee developer cut is not yet a fighting mechanism.
+  - **Management & Culture [MC-7] · product vs matrix / fiefdoms:** three-pillar product holdco at 102.7k is the correct scale pole; Garena remains a cash fief; Shopee–Monee is the only integrated pair.
+- **Disconfirming check:** The models agree on scale, data, and AI deployment, so the thesis must hunt the opposite evidence. Shopee regional share below 48% while sales and marketing grows faster than GMV is the single clean falsifier: it would show that the integrated stack cannot defend demand economically. Monee's 2025–2026 vintages are the second adversarial test; stable NPLs after seasoning must coexist with provision growth no faster than loans. The Weak-fit MC read must still beat [MC-6] entropy (102.7k headcount, +64% in two years) and the [G-10] new-venture-destruction base rate on Monee/Brazil; three-pillar fiefdoms plus 10b5-1 selling are the organisational falsifiers, not a reason to raise the pipeline coefficient.
 
 ## Related Research
 
@@ -278,12 +287,12 @@ Under a bear framework, Shopee reaches only $165–180B of 2028 GMV with 0.3–0
 - [[Sectors/Video Game Publishing]]
 - [[Sectors/Mobile Advertising Technology]]
 - [[Macro & Technology/Agentic Internet]]
-- [[Theses/SHOP - Shopify]] — accepted graph-primer peer; merchant-owned commerce and agentic-interface contrast
-- [[Theses/TTWO - Take-Two Interactive]] — accepted graph-primer peer; franchise concentration and live-service comparison
-- [[Theses/APP - AppLovin]] — accepted graph-primer peer; AI-driven ad monetization and measurable recommendation economics
-- [[Theses/RELIANCE - Reliance Industries]] — accepted graph-primer peer; platform envelopment across commerce and financial services
-- [[Research/2026-03-19 - AppLovin AXON Engine Differentiation]] — analogue for testing whether AI conversion claims form a data moat
-- [[Research/2026-07-13 - SE - Shopee vs TikTok Shop Competitive Dynamics Deep Dive]] — discovery-versus-execution layer map, country battle tests, merchant economics, and falsifiers
+- [[Theses/SHOP - Shopify]]: accepted graph-primer peer; merchant-owned commerce and agentic-interface contrast
+- [[Theses/TTWO - Take-Two Interactive]]: accepted graph-primer peer; franchise concentration and live-service comparison
+- [[Theses/APP - AppLovin]]: accepted graph-primer peer; AI-driven ad monetization and measurable recommendation economics
+- [[Theses/RELIANCE - Reliance Industries]]: accepted graph-primer peer; platform envelopment across commerce and financial services
+- [[Research/2026-03-19 - AppLovin AXON Engine Differentiation]]: analogue for testing whether AI conversion claims form a data moat
+- [[Research/2026-07-13 - SE - Shopee vs TikTok Shop Competitive Dynamics Deep Dive]]: discovery-versus-execution layer map, country battle tests, merchant economics, and falsifiers
 
 ### Primary external evidence
 
@@ -294,7 +303,7 @@ Under a bear framework, Shopee reaches only $165–180B of 2028 GMV with 0.3–0
 - [Sea AI Centre of Excellence](https://www.sea.com/news/394), [Google partnership](https://www.sea.com/news/384), and [OpenAI partnership](https://www.sea.com/news/406)
 - [StockAnalysis valuation](https://stockanalysis.com/stocks/se/statistics/) and [analyst forecast](https://stockanalysis.com/stocks/se/forecast/), checked 2026-07-13
 
-- [[Research/2026-08-14 - MELI - Capex Mercado Libre Dominance - deep-dive]] — MELI 2026 capex ~3× 2024, FCF-funded closed loop; raises Brazil spend-to-defend bar, not a Shopee share-loss print
+- [[Research/2026-08-14 - MELI - Capex Mercado Libre Dominance - deep-dive]]: MELI 2026 capex ~3× 2024, FCF-funded closed loop; raises Brazil spend-to-defend bar, not a Shopee share-loss print
 
 ## Log
 
@@ -303,3 +312,6 @@ Under a bear framework, Shopee reaches only $165–180B of 2028 GMV with 0.3–0
 - Deepened Industry Context: Shopee-TikTok is a split-layer contest—TikTok discovery versus Shopee execution/retention; Value Layer §1 changed to a medium-fit split-layer trigger — conviction unchanged (medium) because TikTok's repeat/direct-search mix and Shopee's post-subsidy cohort contribution remain undisclosed. Snapshot: [[_Archive/Snapshots/SE - Sea Limited (pre-deepen 2026-07-13-180450)]]
 ### 2026-08-15
 - [[Research/2026-08-14 - MELI - Capex Mercado Libre Dominance - deep-dive]]: MELI 2026 capex ~3× 2024, FCF-funded; logistics+fintech+ads closed loop raises the Brazil spend-to-defend bar (new OQ #8) without a Shopee share-loss print — conviction unchanged.
+### 2026-08-20
+- Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit; Gate 1 passes, Gate 2 residual, [MC-7] three-pillar fiefdoms at 102.7k headcount. Conviction unchanged.
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

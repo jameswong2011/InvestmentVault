@@ -33,6 +33,11 @@ SKILL_UI = {
         "Archive old addressed Obsidian callouts",
         "Use $archive-callouts to sweep addressed callouts older than 180 days.",
     ),
+    "assumptions": (
+        "Thesis Assumptions",
+        "Extract a thesis's load-bearing assumptions",
+        "Use $assumptions to extract NVDA's load-bearing assumptions.",
+    ),
     "brief": (
         "Investment Brief",
         "Create concise one-page investment briefs",
@@ -53,10 +58,20 @@ SKILL_UI = {
         "Compare companies and competitive dynamics",
         "Use $compare to compare NVDA and AMD side by side.",
     ),
+    "conviction-audit": (
+        "Conviction Audit",
+        "Audit whether a thesis's conviction matches evidence",
+        "Use $conviction-audit to check whether NVDA's conviction still matches its evidence.",
+    ),
     "deepen": (
         "Deepen Thesis",
         "Deepen thesis sections and synchronize metrics",
         "Use $deepen to strengthen NVDA's Industry Context section.",
+    ),
+    "dependency-map": (
+        "Dependency Map",
+        "Map the external variables a thesis depends on",
+        "Use $dependency-map to map what NVDA's bull case depends on.",
     ),
     "graph": (
         "Vault Graph",
@@ -73,10 +88,20 @@ SKILL_UI = {
         "Audit vault structure, freshness, and links",
         "Use $lint to run a full vault health audit.",
     ),
+    "macro-exposure": (
+        "Macro Exposure",
+        "Tag a thesis's implicit macro bets",
+        "Use $macro-exposure to tag what macro bets NVDA is levered to.",
+    ),
     "numbers": (
         "Refresh Numbers",
         "Refresh thesis metrics with current data",
         "Use $numbers to refresh NVDA's Key Metrics table.",
+    ),
+    "portfolio-snapshot": (
+        "Portfolio Snapshot",
+        "Publish a static snapshot of the live portfolio",
+        "Use $portfolio-snapshot to publish the live portfolio tracker.",
     ),
     "prune": (
         "Prune Theses",
@@ -133,6 +158,11 @@ SKILL_UI = {
         "Analyze earnings calls for thesis deltas",
         "Use $transcript to analyze NVDA's latest earnings call.",
     ),
+    "value-chain": (
+        "Value Chain Map",
+        "Map a thesis's position in its value chain",
+        "Use $value-chain to map NVDA's position in its value chain.",
+    ),
 }
 
 SKILL_NAMES = tuple(SKILL_UI)
@@ -154,6 +184,8 @@ SCRIPT_PATHS = {
         ".agents/skills/lint/scripts/lint.py",
     ".claude/skills/numbers/numbers_compute.py":
         ".agents/skills/numbers/scripts/numbers_compute.py",
+    ".claude/skills/portfolio-snapshot/build_snapshot.py":
+        ".agents/skills/portfolio-snapshot/scripts/build_snapshot.py",
     ".claude/skills/transcript/extract_transcript_signals.py":
         ".agents/skills/transcript/scripts/extract_transcript_signals.py",
 }

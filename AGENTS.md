@@ -10,6 +10,8 @@ Investment returns inevitably come from predicting inflection points in industry
 
 Please always refer to the Mental Models folder in the root directory to guide your analysis. This will contain a set of generalist mental models useful for all research and analysis as well as industry specific mental models when a specific industry is being researched with sufficient depth. The mental models is designed as a list of cognitive thinking tools that replicates what a top investor consistent with the strategy of this vault would employ as he goes about sifting through the fire hose of investing information. Utilising these mental models will make predicting industry and company specific inflection points easier. When consulting any Mental Models note, apply the READING PROTOCOL at the top of [[Generalist - Overview]]: treat the models as lenses and questions, never as conclusions — claims are hypotheses to test against current evidence, the base-rate / outside view runs adversarially against the other models, and agreement across models is a trigger to disconfirm (hunt the bear case and the single falsifying datapoint), not to commit.
 
+Refer to the "Live Portfolio" document in the root folder, the table inside this document (not the JS Script) contains the current active portfolio names. Every new piece of analysis should have the existing portfolio in mind and impacts of your research on the live portfolio should be surfaced when relevant.
+
 **Read the Mental Models folder before any investment analysis (xxx MANDATORY xxx).** Before producing any investment-related analysis — a new thesis, a research note, a sync/propagation, a comparison, a stress test, a scenario, a deepen, or any conviction/status judgement — first read the relevant notes in `/Mental Models` as additional context, then apply the READING PROTOCOL summarised above (lenses and questions, never conclusions).
 
 **Load tiering — match the read to the task's analytical weight (xxx MANDATORY xxx).** The mandatory read above governs *analytical* work (the operations just enumerated). It does **not** apply to mechanical or metadata-only operations that produce no investment judgement — `$numbers`, `$rename`, `$lint`, `$clean`, `$graph`, `$catalyst`, `$archive-callouts`, `$rollback` — which skip the mental-models read entirely. Scope the conditional files to the task: load `[[Generalist - Overview]]` always, the industry / lens files only when that sector or lens is in play; do not bulk-load all four for a single-name question they do not touch. The mandatory set is the **enumerated files below**, not the whole folder — the folder also holds `reference-only` notes (tagged as such, e.g. [[Philosophy - Asset Management Structure]]) that are background priming, not analytical lenses; do not auto-read them.
@@ -38,11 +40,33 @@ Read scope (mandatory tier):
 ## Writing Standards (xxx ALL LLM OUTPUT MUST FOLLOW xxx)
 - Lead with the insight or the number, never with context the reader already has
 - No hedge words: "importantly", "notably", "significantly", "it's worth noting", "it should be noted", "interestingly", "crucially"
-- Every sentence earns its place with a data point, an insight, or a specific claim — cut connective tissue
+- Every sentence earns its place with a data point, an insight, or a specific claim: cut connective tissue
 - Tables over prose for comparative or quantitative content
 - Thesis Log entries: max 2 lines. Format: `[source/trigger]: [what changed] — [conviction impact: unchanged/strengthened/weakened + 1 reason]`
 - Research notes for existing theses: lead with what changed for the thesis, not a business description
-- No restating information that already exists in the thesis note — only deltas
+- No restating information that already exists in the thesis note. Only deltas
+
+### Voice — match the user, not the model (xxx MANDATORY on all new prose xxx)
+
+Voice exemplar: `Mental Models/IGNORE - English - Culture and Management RAW.md`. That note is the user's natural register: long nested sentences, mechanism before punchline, concrete operational detail, named companies, British spelling, `we` for the firm, single quotes for coined terms, `thus` / `as such` / `the framework is thus`. It is a **style exemplar, not an analytical lens**. The `IGNORE` prefix means do not auto-read it during mental-models load-tiering. When drafting substantial new body prose (thesis / sector / macro body, Website essays, research notes), read it first and match it. Mechanical skills that skip mental models also skip the exemplar.
+
+Do not "improve" the user's diction into smoother essay cadence. Fix grammar. Keep density. Colour only when it is the claim.
+
+**Em-dashes (`—`, U+2014).** Not the default rhythm. Prefer a comma, colon, semicolon, or a full stop. Hyphenated compounds (`long-term`, `silicon-based`) and en-dashes in ranges (`$30–40T`, `2015–19`) are fine. Allowed em-dashes: the Log-entry delimiter in the format above; a rare aside where a comma is ambiguous. More than one em-dash in a paragraph is a smell. More than one in a sentence is a defect. Do not rewrite these instruction files to satisfy this rule.
+
+**Colour.** Add an image only when it compresses a load-bearing claim (a named mechanism the sentence would otherwise take a paragraph to state). If deleting the image leaves the claim intact, delete the image. One load-bearing image per argument, used once: do not extend it (`lords enlarge their estates`, `cost centre wearing a strategy`). House metaphors (nervous system, toll road / traffic, lords and serfs, wiring diagrams, bedrock) are thesis frames, not decoration; they are not recycled across notes.
+
+**Banned furniture** (these are model tics, not the user's voice):
+- Inversion closers: "X is not Y; it is Z"; "do not merely X — they Y"; "This thesis is not an observation; it is a description"
+- Labelled insight: "This is the variant perception:"; "The falsifier:"; "Note what does not falsify it:"; "Strip the industry to first principles"; "The disciplined inversion"; "Three traits predict"
+- Italic or bold used as argumentative stress (`share _is_ quality`)
+- Announcing a frame, then filling it. Build the argument; let the frame become visible
+- Cute standalone kickers the paragraph does not need
+- Dramatic unfalsifiable timing ("about to move violently")
+- Second-person instruction ("If you cannot name the layer, you own a good company"). The firm is `we`; uncommon terms get a parenthetical definition on first use when the reader may not know the word
+- Even paragraph cadence where every block is an insight unit ending in a punchline
+
+**Colour test:** keep "capital markets psychosis" (named mispricing). Cut "the blend ratio is about to move violently" (unfalsifiable timing). Keep a parenthetical definition of an uncommon term (cybernetics). Cut a student-definition of a term the reader already has.
 
 ## Change Safety Rules (xxx MANDATORY xxx)
 
@@ -76,7 +100,7 @@ These changes represent investment decisions, not formatting — confirm with th
 6. **Check before creating** — before creating a new thesis or research note, search the vault for existing notes on that ticker/topic to avoid duplicates
 7. **Wikilinks are additive** — add new `[[wikilinks]]` freely; removing existing links requires explicit instruction because it breaks discoverability chains
 8. **Batch operation transparency** — skills that touch multiple files (`$sync`, `$ingest`, `$lint`) must report every file modified and what changed
-9. **`_hot.md` auto-create and compression contract** — if `_hot.md` does not exist when a skill needs to update it, create it with sections: `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot`. Use frontmatter: `date: YYYY-MM-DD`, `tags: [meta, hot-cache]`. All writes follow the shared compression contract at `.agents/skills/_shared/hot-md-contract.md` — per-section budgets, soft/hard caps (4,000/5,000 words), and compression trigger order are defined there. `$lint #35` enforces schema; `$lint #42` catches truncation markers.
+9. **`_hot.md` auto-create and compression contract** — if `_hot.md` does not exist when a skill needs to update it, create it with sections: `## Active Research Thread`, `## Latest Sync`, `## Sync Archive`, `## Recent Conviction Changes`, `## Open Questions`, `## Portfolio Snapshot`. Use frontmatter: `date: YYYY-MM-DD`, `tags: [meta, hot-cache]`. All writes follow the shared compression contract at `.agents/skills/_shared/hot-md-contract.md` — per-section budgets, soft/hard caps (8,000/10,000 words), and compression trigger order are defined there. `$lint #35` enforces schema; `$lint #42` catches truncation markers.
 10. **Pre-flight contract** — every skill that modifies vault state must run the pre-flight checks at `.agents/skills/_shared/preflight.md` at Step 0:
     - **Vault lock acquisition** (Procedure 1) — prevents concurrent skill invocations from racing on shared files. Lock scope depends on skill type: `vault-wide` for `$sync` (default AND `all`), `$graph`, `$prune`, `$lint` (full), `$clean`, `$catalyst`, `$ingest` (any mode), `$scenario`, `$surface` (unscoped/sector), `$rollback` (restore mode), `$numbers --all`; `ticker:TICKER` for ticker-scoped skills (`$sync TICKER`, `$status`, `$deepen`, `$stress-test`, `$brief`, `$thesis`, `$rename`, `$surface TICKER`, `$transcript`, `$numbers TICKER`); N separate `ticker:TICKER` locks for `$compare` (one per ticker in the compare set — handles hyphen-containing tickers like BRK-B); `read-only` for `$lint TICKER`, `$rollback` (list mode), and `$transcript --list`. `$lint #43` enforces.
     - **Rename-marker check** (Procedure 2) — any ticker-scoped skill operating on a TICKER must hard-block if `.rename_incomplete.TICKER` exists at vault root. Vault-wide skills glob `.rename_incomplete.*` — most hard-block, a few (`$ingest`, `$rollback` restore, read-only `$surface`) warn-only per their individual spec. Exceptions: `$lint`, `$rollback` list mode, `$graph` (read-only for theses), `$rename` itself (owns the marker).
@@ -88,6 +112,7 @@ These changes represent investment decisions, not formatting — confirm with th
 
 ### Note Format
 - All notes use YAML frontmatter with these properties:
+  - `publish`: true — website-sync flag: an external GitHub→website pipeline pulls notes marked `publish: true`. Carried by ALL Theses / Sectors / Macro & Technology notes (default `true` per Templates); Research notes and `Website/` (the blog — separate pipeline) do NOT use it. Any skill creating a thesis/sector/macro note must include it. `$lint #67` enforces coverage.
   - `date`: YYYY-MM-DD
   - `tags`: array format, e.g. [thesis, semiconductors, LRCX]
   - `status`: draft | active | monitoring | closed
@@ -141,6 +166,7 @@ Each sector note acts as a Map of Content (MOC) and follows this structure:
 12. **Log** — Dated entries tracking sector note evolution
 
 ### Macro & Technology Notes (/Macro & Technology)
+- Frontmatter must include `publish: true` (website-sync flag). No Macro template exists and no skill scaffolds these notes — they are created ad-hoc in sessions, so this is the only spec guarding the field; do not drop it. `$lint #67` enforces.
 - Geopolitical scenarios, commodity frameworks, rates outlook
 	- Strategies for short to medium term macro shock and trends, sector specific industry dynamics should be left in sector research
 - Technology trends
@@ -215,6 +241,7 @@ Rules:
 
 ## Active Context
 - [[_hot.md]] — recent context and open questions, updated by `$sync` and other skills
+- [[_followups.md]] — durable register of actionable findings surfaced by analytical skills (written by `$stress-test`, `$retro`, `$surface`, `$numbers`; resolved by `$status`, `$sync`). Unlike `_hot.md` it never auto-evicts. Contract: `.agents/skills/_shared/followups-contract.md`
 
 ## Compaction Rules
 When compacting, preserve information in this priority order:
@@ -256,4 +283,4 @@ The primary vault workflow is an ingest-propagate-graph loop:
 6. **`$surface`** for periodic deep review (blind spots, attention allocation, decay alerts, opportunities)
 7. **`$lint`** for periodic health checks (structural, freshness, analytical)
 
-**Metadata ownership**: `_graph.md` is owned exclusively by `$graph` (three modes: full rebuild, `$graph last`, `$graph [N]`). Research skills do not write to `_graph.md` — they create content and remind the user to run `$graph last` afterward. This eliminates cross-skill graph contention that was the source of most metadata edge cases.
+**Metadata ownership**: `_graph.md` is owned exclusively by `$graph` (three modes: full rebuild, `$graph last`, `$graph [N]`). Research skills do not write to `_graph.md` — they create content and remind the user to run `$graph last` afterward. This eliminates cross-skill graph contention that was the source of most metadata edge cases. `_followups.md` (open-findings register) is shared-append: writers (`$stress-test`, `$retro`, `$surface`, `$numbers`) append actionable findings, resolvers (`$status`, `$sync`) move them Open→Resolved; no skill owns it exclusively. Contract: `.agents/skills/_shared/followups-contract.md`.

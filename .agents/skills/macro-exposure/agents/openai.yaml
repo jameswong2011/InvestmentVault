@@ -1,0 +1,4 @@
+interface:
+  display_name: "Macro Exposure"
+  short_description: "Tag a thesis's implicit macro bets"
+  default_prompt: "Use $macro-exposure to tag what macro bets NVDA is levered to."

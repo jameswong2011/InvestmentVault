@@ -273,6 +273,7 @@ Save to `Theses/TICKER - Company Name.md`:
 
 ```yaml
 ---
+publish: true
 date: [today's date]
 tags: [thesis, SECTOR-TAG, TICKER]
 status: draft
@@ -285,13 +286,15 @@ source: [primary source URL or description]
 
 Initial status `draft` (§8 — excluded from $catalyst, $prune flags, conviction drift until user explicitly promotes via `$status draft→active`).
 
+`publish: true` is mandatory — the website-sync flag (an external GitHub→website pipeline pulls notes marked `publish: true`; see AGENTS.md § Conventions → Note Format). Omitting it makes the thesis invisible to the site: this exact spec-vs-template drift produced a 1-of-83 outlier, fixed 2026-07-29.
+
 ### Required Sections (all 14, in order — §7)
 
 > `## Legacy Callouts` (template section 14, between Related Research and Log) is **auto-created on demand by `$archive-callouts`** on the first sweep — do NOT scaffold it at creation (`$lint #14` exempts its absence). The 14 sections below are everything `$thesis` writes.
 
 1. **Summary** — One paragraph investment case. Lead with non-consensus angle, not business description.
 
-2. **Key Non-consensus Insights** — 3-5 one-paragraph summaries of perspectives foreign to mainstream narrative. **THIS IS THE MOST IMPORTANT SECTION** (§7.2). Think deeply about what market is missing — technological shifts, management/culture edges, competitive dynamics, investor biases, business model transitions.
+2. **Key Non-consensus Insights** — 3-5 one-paragraph summaries of perspectives foreign to mainstream narrative. **THIS IS THE MOST IMPORTANT SECTION** (§7.2). Think deeply about what market is missing — technological shifts, management/culture edges, competitive dynamics, investor biases, business model transitions. **Draft each insight in the 4-field microformat from `Templates/Thesis Template.md`** — `**Consensus:**` / `**Variant:**` / `**First confirming observable [YYYY-MM]:**` / `**Falsifier:**`, one bulleted sub-field each under the insight title. `**Consensus:**` is mandatory and must name what the market actually believes / prices — an insight that cannot state the consensus it opposes is positioning, not analysis ([[Generalist - Overview]] [G-13] expectations-investing: read the price-embedded consensus, then isolate the single variable it misprices). Tie each `**Falsifier:**` to a `→ LOW/CLOSE` Conviction Trigger (#11) where possible.
 
 3. **Outstanding Questions** — 3-10 one-paragraph summaries of what a skeptical investment committee would ask before approving. Genuinely hard, not softballs. Each should identify what data or event would answer it.
 
@@ -360,7 +363,7 @@ Resolve via canonical `.agents/skills/_shared/sector-resolution.md` using thesis
   ```
 
   **Branch behavior** (§3.2):
-  - **(a)**: create `Sectors/[sector-value].md` from `Templates/Sector Template.md`. Minimal frontmatter: `date: today`, `tags: [sector, sector-value-slug]`. Minimal body: 10 section headings from template, each with `- _pending_` placeholder, EXCEPT `## Active Theses` gets new thesis as first entry: `- [[Theses/TICKER - Name]]`. Log entry: `### YYYY-MM-DD\n- Sector note created by $thesis TICKER — first thesis in this sector. Scaffold-only; analytical content to be added via $deepen or $surface.` Re-run sector resolution (now `match_confidence: exact`) to validate creation succeeded, then proceed with normal sector-update logic.
+  - **(a)**: create `Sectors/[sector-value].md` from `Templates/Sector Template.md`. Minimal frontmatter: `publish: true` (website-sync flag per Sector Template), `date: today`, `tags: [sector, sector-value-slug]`. Minimal body: 10 section headings from template, each with `- _pending_` placeholder, EXCEPT `## Active Theses` gets new thesis as first entry: `- [[Theses/TICKER - Name]]`. Log entry: `### YYYY-MM-DD\n- Sector note created by $thesis TICKER — first thesis in this sector. Scaffold-only; analytical content to be added via $deepen or $surface.` Re-run sector resolution (now `match_confidence: exact`) to validate creation succeeded, then proceed with normal sector-update logic.
   - **(b)**: skip sector update. Log `ℹ️ Sector update skipped per user confirmation — no matching sector note. Sectors/[sector-value].md can be created manually later.` Continue to orphan research integration.
   - **(c)**: stop skill. No files written. `❌ $thesis TICKER cancelled at Step 5 — sector mismatch. Correct the sector value in the thesis frontmatter or create Sectors/[sector-value].md first, then re-run.`
 
@@ -394,7 +397,7 @@ Per `.agents/skills/_shared/hot-md-contract.md` (do NOT touch Latest Sync / Sync
 2. **Recent Conviction Changes**: add entry for new thesis with initial conviction level.
 3. **Open Questions**: add 2-3 most critical Outstanding Questions from new thesis.
 
-Word cap: after edits, over 4,000 (soft cap per `.agents/skills/_shared/hot-md-contract.md`) → prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 5,000 hard cap.
+Word cap: after edits, over 8,000 (soft cap per `.agents/skills/_shared/hot-md-contract.md`) → prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 10,000 hard cap.
 
 ## Step 7.5: Finalize thesis transaction manifest (H1)
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dependency Map"
+  short_description: "Map the external variables a thesis depends on"
+  default_prompt: "Use $dependency-map to map what NVDA's bull case depends on."

@@ -723,7 +723,7 @@ Read `_hot.md` then edit (do NOT touch Latest Sync / Sync Archive — owned by `
 2. **Recent Conviction Changes**: if conviction/status reverted, add: `- **[TICKER]**: rollback [field] [current] → [reverted] — restored to [snapshot date] state`
 3. **Open Questions**: if rollback restored previously-resolved Outstanding Questions, re-add them.
 
-**Word cap**: after all edits, if over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 5,000 hard cap.
+**Word cap**: after all edits, if over 8,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 10,000 hard cap.
 
 ### 6.5: Propagated-research caveat scan (sync-trigger rollbacks only)
 

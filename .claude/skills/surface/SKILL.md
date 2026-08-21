@@ -265,7 +265,7 @@ Update `_hot.md` (read first, then edit — do NOT touch Latest Sync or Sync Arc
 1. **Active Research Thread**: **Same-ticker continuation** — if the current thread already covers the same primary ticker/topic, append a dated line (`YYYY-MM-DD: [update]`) to the existing thread instead of compressing. **New topic**: compress the outgoing thread into a single `*Previous:*` entry (date + one-phrase summary). Write: surface scan completed [scoped/unscoped], top insight found, and the logical next research step. Append `*Previous:*` line(s) — max 5, drop oldest.
 2. **Open Questions**: Add any critical blind spots or research gaps the scan exposed
 
-**Word cap**: After all `_hot.md` edits, check total word count. If over 4,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap. If over 5,000 (hard cap), abort `_hot.md` update per contract.
+**Word cap**: After all `_hot.md` edits, check total word count. If over 8,000 words (soft cap per `_shared/hot-md-contract.md`), prune `## Sync Archive` entries (oldest first), then `*Previous:*` lines in Active Research Thread (oldest first), until under cap. If over 10,000 (hard cap), abort `_hot.md` update per contract.
 
 **Note body carries every Phase 3 field per opportunity — the Falsifier is mandatory in the saved note, not just the chat report.** If opportunities are rendered as a table, `Falsifier` is a required column; if as prose blocks, each opportunity ends with its `Falsifier:` line. A surfaced idea whose falsifier survives only in chat is unfalsifiable by the time anyone re-reads the note.
 

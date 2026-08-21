@@ -35,7 +35,8 @@ source:
 | Revenue Growth | | |
 | Gross Margin | | |
 | FCF Yield | | |
-
+## Management and culture
+- <!-- Assessment of the quality of management, extent of bureaucracy and level of adaptability in an organisation. Refer to the Lens - Management & Culture mental model document. No more than a single large paragraph. Keep very short if no noteworthy perspectives are available and directly note that this is your assessment.-->
 ## Bull Case
 - 
 

@@ -15,19 +15,19 @@ key_metrics_last_refreshed: 2026-07-12
 
 ## Summary
 
-Bitcoin is undergoing a structural regime change from speculative retail asset to institutional-grade macro instrument, driven by three converging forces: (1) a post-halving supply deficit where ETF demand alone absorbs ~2.7x daily new issuance (~1,200 BTC/day vs ~450 BTC/day) -- a physical squeeze unprecedented in any commodity market; (2) the GENIUS Act (signed July 2025) and advancing CLARITY Act legitimising stablecoins and digital assets as regulated financial infrastructure, unlocking a $318B stablecoin market rivaling Visa in settlement volume; and (3) an approaching quantum computing timeline that will catalyse a multi-year protocol upgrade cycle benefiting quantum-resistant chains. At ~$91,000 ($1.38T market cap), Bitcoin trades at a discount to these structural demand-supply dynamics. The broader ecosystem -- L1 infrastructure (ETH, SOL), DeFi yield (ONDO, ENA), oracles (LINK), AI/DePIN (TAO, RNDR), and L2 scaling (ARB, BASE) -- offers asymmetric upside as regulatory clarity accelerates institutional deployment.
+Bitcoin is undergoing a structural regime change from speculative retail asset to institutional-grade macro instrument, driven by three converging forces: (1) a post-halving supply deficit where ETF demand alone absorbs ~2.7x daily new issuance (~1,200 BTC/day vs ~450 BTC/day), a physical squeeze unprecedented in any commodity market; (2) the GENIUS Act (signed July 2025) and advancing CLARITY Act legitimising stablecoins and digital assets as regulated financial infrastructure, unlocking a $318B stablecoin market rivaling Visa in settlement volume; and (3) an approaching quantum computing timeline that will catalyse a multi-year protocol upgrade cycle benefiting quantum-resistant chains. At ~$91,000 ($1.38T market cap), Bitcoin trades at a discount to these structural demand-supply dynamics. The broader ecosystem, L1 infrastructure (ETH, SOL), DeFi yield (ONDO, ENA), oracles (LINK), AI/DePIN (TAO, RNDR), and L2 scaling (ARB, BASE), offers asymmetric upside as regulatory clarity accelerates institutional deployment.
 
 ## Key Non-consensus Insights
 
-- **The four-year halving cycle is dead — replaced by a structural demand-supply regime with no commodity analogue.** ETFs absorb ~1,200 BTC/day against new issuance of ~450 BTC/day -- a sustained 2.7:1 demand-to-supply ratio unprecedented in any commodity market. Over 1.3M BTC (~6% of total supply) are locked in ETFs and corporate treasuries (Strategy alone holds 713,502 BTC). Bitcoin's price dynamics are now driven by macro-correlated institutional flows rather than miner economics, yet the market still prices halving-cycle mean reversion risk when the structural buyer base is qualitatively different from any prior cycle.
+- **The four-year halving cycle is dead, replaced by a structural demand-supply regime with no commodity analogue.** ETFs absorb ~1,200 BTC/day against new issuance of ~450 BTC/day, a sustained 2.7:1 demand-to-supply ratio unprecedented in any commodity market. Over 1.3M BTC (~6% of total supply) are locked in ETFs and corporate treasuries (Strategy alone holds 713,502 BTC). Bitcoin's price dynamics are now driven by macro-correlated institutional flows rather than miner economics, yet the market still prices halving-cycle mean reversion risk when the structural buyer base is qualitatively different from any prior cycle.
 
-- **Stablecoins are not just a crypto use case — they are simultaneously rebuilding global payments infrastructure AND serving as a US geopolitical weapon against BRICS de-dollarisation.** $318.6B market cap, $33T annual transaction volume (2025), $52.9T cumulative settlement rivaling Visa+Mastercard combined. GENIUS Act (signed July 2025) provides the first federal framework; CLARITY Act (advancing April 2026) establishes CFTC jurisdiction over digital commodity spot markets. ~66% of global stablecoin supply is held by individuals in emerging markets; 71% of Latin American respondents use stablecoins for cross-border payments. Visa expanded USDC settlement pilots; Mastercard announced end-to-end stablecoin acceptance in 2026. Ethereum and Solana are becoming settlement layers for a parallel global payments system.
+- **Stablecoins remain a crypto use case while simultaneously rebuilding global payments infrastructure AND serving as a US geopolitical weapon against BRICS de-dollarisation.** $318.6B market cap, $33T annual transaction volume (2025), $52.9T cumulative settlement rivaling Visa+Mastercard combined. GENIUS Act (signed July 2025) provides the first federal framework; CLARITY Act (advancing April 2026) establishes CFTC jurisdiction over digital commodity spot markets. ~66% of global stablecoin supply is held by individuals in emerging markets; 71% of Latin American respondents use stablecoins for cross-border payments. Visa expanded USDC settlement pilots; Mastercard announced end-to-end stablecoin acceptance in 2026. Ethereum and Solana are becoming settlement layers for a parallel global payments system.
 
-- **The quantum computing threat is a feature, not a bug — it creates a multi-year upgrade catalyst and a new competitive axis that advantages certain chains over others.** Bernstein concludes Bitcoin has a 3-5 year window to transition to post-quantum cryptography. ECDSA signing is vulnerable (Shor's algorithm) but SHA-256 mining remains safe. BIP 360 and Bitcoin Quantum Core Release 0.2 (NIST-approved ML-DSA) are already underway; Algorand and Solana are testing lattice-based signatures on testnets. Chains implementing post-quantum cryptography first will attract institutional capital requiring security guarantees. ~20% of BTC in vulnerable exposed-key addresses (including Satoshi's estimated 1M+ BTC) may become permanently unspendable, further tightening effective supply.
+- **The quantum computing threat is a feature rather than a bug: it creates a multi-year upgrade catalyst and a new competitive axis that advantages certain chains over others.** Bernstein concludes Bitcoin has a 3-5 year window to transition to post-quantum cryptography. ECDSA signing is vulnerable (Shor's algorithm) but SHA-256 mining remains safe. BIP 360 and Bitcoin Quantum Core Release 0.2 (NIST-approved ML-DSA) are already underway; Algorand and Solana are testing lattice-based signatures on testnets. Chains implementing post-quantum cryptography first will attract institutional capital requiring security guarantees. ~20% of BTC in vulnerable exposed-key addresses (including Satoshi's estimated 1M+ BTC) may become permanently unspendable, further tightening effective supply.
 
-- **Nation-state adoption has crossed the Rubicon — 27 countries now have Bitcoin exposure, and sovereign demand is a new structural bid that didn't exist in any prior cycle.** US Strategic Bitcoin Reserve, El Salvador's 6,000+ BTC treasury, Abu Dhabi's Mubadala tripling Bitcoin ETF exposure to $436M, 13 countries with proposed reserve legislation. As more sovereigns adopt Bitcoin, game-theoretic pressure on remaining sovereigns intensifies -- a demand vector operating on geopolitical timescales (decades) rather than market cycles (quarters).
+- **Nation-state adoption has crossed the Rubicon: 27 countries now have Bitcoin exposure, and sovereign demand is a new structural bid that didn't exist in any prior cycle.** US Strategic Bitcoin Reserve, El Salvador's 6,000+ BTC treasury, Abu Dhabi's Mubadala tripling Bitcoin ETF exposure to $436M, 13 countries with proposed reserve legislation. As more sovereigns adopt Bitcoin, game-theoretic pressure on remaining sovereigns intensifies: a demand vector operating on geopolitical timescales (decades) rather than market cycles (quarters).
 
-- **Ethereum's "value capture problem" is temporary and misunderstood — the L2 scaling strategy is building the pipes for a $16T tokenised asset market.** L2 migration collapsed mainnet fee revenue from ~$100M/month to <$15M/month (+0.22% inflation), but tokenised RWA on Ethereum has reached $7.5B (59% market share) with BlackRock's BUIDL alone exceeding $1B AUM. 30.4% of ETH supply staked, 72% either staked or locked in smart contracts; institutional demand-to-supply ratio reached 32:1 in mid-2025. Pectra and Fusaka upgrades (PeerDAS, 8x capacity expansion) set the stage for blob fee revenue to scale with L2 adoption.
+- **Ethereum's "value capture problem" is temporary and misunderstood: the L2 scaling strategy is building the pipes for a $16T tokenised asset market.** L2 migration collapsed mainnet fee revenue from ~$100M/month to <$15M/month (+0.22% inflation), but tokenised RWA on Ethereum has reached $7.5B (59% market share) with BlackRock's BUIDL alone exceeding $1B AUM. 30.4% of ETH supply staked, 72% either staked or locked in smart contracts; institutional demand-to-supply ratio reached 32:1 in mid-2025. Pectra and Fusaka upgrades (PeerDAS, 8x capacity expansion) set the stage for blob fee revenue to scale with L2 adoption.
 
 ## Outstanding Questions
 
@@ -53,11 +53,11 @@ Bitcoin is undergoing a structural regime change from speculative retail asset t
 
 ### Bitcoin (BTC) — Digital Scarcity as a Monetary Primitive
 
-Bitcoin's value proposition is architecturally simple and deliberately constrained. The protocol enforces a fixed supply cap of 21 million coins via a deterministic issuance schedule that halves every ~210,000 blocks (~4 years). Post-April 2024 halving, daily issuance is ~450 BTC (~$41M/day at $91K), with 94% of total supply already mined. Value accrues to BTC holders through supply scarcity rather than cash flow — making it analogous to gold rather than an equity or bond.
+Bitcoin's value proposition is architecturally simple and deliberately constrained. The protocol enforces a fixed supply cap of 21 million coins via a deterministic issuance schedule that halves every ~210,000 blocks (~4 years). Post-April 2024 halving, daily issuance is ~450 BTC (~$41M/day at $91K), with 94% of total supply already mined. Value accrues to BTC holders through supply scarcity rather than cash flow, making it analogous to gold rather than an equity or bond.
 
-**The analogy that captures Bitcoin's positioning: digital gold with programmable settlement.** Like gold, Bitcoin has no issuer, no counterparty risk, and a supply that cannot be inflated by policy. Unlike gold, Bitcoin is perfectly divisible, instantly transferable globally, verifiably scarce (any node can audit total supply), and programmable (Lightning Network, atomic swaps). The stock-to-flow ratio post-halving (~120) exceeds gold's (~60), making Bitcoin mathematically scarcer.
+**The analogy that captures Bitcoin's positioning is digital gold with programmable settlement.** Like gold, Bitcoin has no issuer, no counterparty risk, and a supply that cannot be inflated by policy. Unlike gold, Bitcoin is perfectly divisible, instantly transferable globally, verifiably scarce (any node can audit total supply), and programmable (Lightning Network, atomic swaps). The stock-to-flow ratio post-halving (~120) exceeds gold's (~60), making Bitcoin mathematically scarcer.
 
-**Revenue/value model**: Bitcoin generates no protocol-level revenue in the traditional sense. Miners earn block rewards (currently 3.125 BTC/block) plus transaction fees. Long-term sustainability depends on transaction fee revenue replacing diminishing block rewards — a transition that is still decades away but represents the core economic experiment of the protocol.
+**Revenue/value model**: Bitcoin generates no protocol-level revenue in the traditional sense. Miners earn block rewards (currently 3.125 BTC/block) plus transaction fees. Long-term sustainability depends on transaction fee revenue replacing diminishing block rewards, a transition that is still decades away but represents the core economic experiment of the protocol.
 
 **Network security budget**: At ~$91K BTC price, the annualised security budget (block rewards + fees) is approximately $15-16B, making Bitcoin the most expensive network to attack by orders of magnitude. Hash rate has reached all-time highs, with mining increasingly powered by stranded energy and renewables.
 
@@ -66,7 +66,7 @@ Bitcoin's value proposition is architecturally simple and deliberately constrain
 | Aspect | Description |
 |---|---|
 | **Function** | Yield-bearing infrastructure asset (not store of value); proof-of-stake consensus pays holders 3.6-4.8% annual staking yield for securing the network |
-| **Analogy** | Cloud computing platform of decentralised finance — ETH is both fuel (gas) and collateral (staking). Unlike AWS, compute is globally distributed, censorship-resistant, and programmable by anyone |
+| **Analogy** | Cloud computing platform of decentralised finance: ETH is both fuel (gas) and collateral (staking). Unlike AWS, compute is globally distributed, censorship-resistant, and programmable by anyone |
 | **Value accrual mechanism** | EIP-1559 fee burn destroys base fees during high network activity. Net Supply Change = Validator Issuance – Fee Burn |
 | **Net issuance regime** | Slightly inflationary (+0.22% annualised) in current L2-dominated environment; deflationary ("ultrasound money") when L1 activity is high |
 
@@ -120,7 +120,7 @@ Stablecoins represent the most commercially successful blockchain application, w
 | **Sovereign Entities** | 27 countries with exposure; US Strategic Reserve, El Salvador (6,000+ BTC), Abu Dhabi ($436M+ via ETF) | 13 countries with proposed reserve legislation |
 | **Spot ETF Demand vs Supply** | ETFs purchase >100% of all new BTC issuance | Bitwise projects 2026 ETF purchases exceed total mining output |
 
-**The critical dynamic**: ETFs alone absorb ~1,200 BTC/day against ~450 BTC/day new supply. This 2.7:1 demand-to-supply ratio is unprecedented in any asset class. In traditional commodity markets (gold, oil), supply responds to price — higher prices incentivise more production. Bitcoin's supply is inelastic by design: higher prices cannot produce more BTC. This inelasticity means that sustained institutional demand creates a structural squeeze with no equilibrium mechanism other than price appreciation.
+**The critical dynamic**: ETFs alone absorb ~1,200 BTC/day against ~450 BTC/day new supply. This 2.7:1 demand-to-supply ratio is unprecedented in any asset class. In traditional commodity markets (gold, oil), supply responds to price: higher prices incentivise more production. Bitcoin's supply is inelastic by design: higher prices cannot produce more BTC. This inelasticity means that sustained institutional demand creates a structural squeeze with no equilibrium mechanism other than price appreciation.
 
 ### Ethereum Supply Dynamics
 
@@ -164,9 +164,9 @@ Stablecoins represent the most commercially successful blockchain application, w
 
 1. **Settlement Layer Wars (ETH vs SOL vs L2s)**: Ethereum dominates high-value institutional settlement (71% DeFi TVL, 80% tokenised RWAs) but Solana wins high-frequency consumer applications (50-81% DEX volume). The question is whether these remain complementary niches or converge into direct competition as Solana courts institutions (ETFs, Apollo's ACRED) and Ethereum L2s pursue retail UX.
 
-2. **Stablecoin Supremacy**: USDC has outpaced USDT growth for two consecutive years (73% vs 36% in 2025), driven by regulatory compliance advantages post-GENIUS Act. Circle's structural vulnerability — 99% revenue from reserve interest, $908M paid to Coinbase — creates an opening for Stripe (via Bridge acquisition) and Coinbase (via direct issuance) to disintermediate Circle.
+2. **Stablecoin Supremacy**: USDC has outpaced USDT growth for two consecutive years (73% vs 36% in 2025), driven by regulatory compliance advantages post-GENIUS Act. Circle's structural vulnerability (99% revenue from reserve interest, $908M paid to Coinbase) creates an opening for Stripe (via Bridge acquisition) and Coinbase (via direct issuance) to disintermediate Circle.
 
-3. **Oracle & Infrastructure**: Chainlink (LINK) processes $18B/month in cross-chain volume and is embedded in JPMorgan/UBS settlement pilots. This "middleware" position — essential infrastructure that multiple chains and institutions depend on — creates a toll-road economic model similar to rating agencies or index providers.
+3. **Oracle & Infrastructure**: Chainlink (LINK) processes $18B/month in cross-chain volume and is embedded in JPMorgan/UBS settlement pilots. This "middleware" position, essential infrastructure that multiple chains and institutions depend on, creates a toll-road economic model similar to rating agencies or index providers.
 
 ## Regulatory Landscape
 
@@ -177,12 +177,12 @@ Stablecoins represent the most commercially successful blockchain application, w
 
 ### CLARITY Act (Advancing — Senate, April 2026)
 - **What it does**: Grants CFTC "exclusive jurisdiction" over digital commodity spot markets. Maintains SEC jurisdiction over investment contract assets. Creates clear taxonomy for when a digital asset is a commodity vs. security.
-- **Status**: Passed House (294-134, July 2025). Senate negotiations ongoing — primary obstacle is stablecoin yield restrictions. White House crypto adviser Witt confirming "other hurdles being cleared" (April 13, 2026).
+- **Status**: Passed House (294-134, July 2025). Senate negotiations ongoing; primary obstacle is stablecoin yield restrictions. White House crypto adviser Witt confirming "other hurdles being cleared" (April 13, 2026).
 - **Risk**: If not passed before November 2026 midterms, Senator Lummis warns it could be delayed until 2030.
 - **Impact**: Passage would be the most significant crypto regulatory event since the GENIUS Act. It removes the SEC's "regulation by enforcement" approach and provides the clarity institutional allocators need to deploy capital at scale.
 
 ### Global Regulatory Landscape
-- **EU MiCA**: Fully operational; mandates stablecoin licensing. Benefits compliant issuers (Circle USDC) over non-compliant ones (Tether USDT — which has been delisted from European exchanges).
+- **EU MiCA**: Fully operational; mandates stablecoin licensing. Benefits compliant issuers (Circle USDC) over non-compliant ones (Tether USDT, which has been delisted from European exchanges).
 - **Asia**: Singapore (MAS) leading with Project Guardian pilots. Hong Kong SFC licensing crypto exchanges. Japan allowing stablecoin issuance by registered banks.
 - **IMF**: Hosted quantum risk discussions (April 8, 2026) focused on digital currency frameworks.
 
@@ -202,6 +202,10 @@ Stablecoins represent the most commercially successful blockchain application, w
 | **Daily Transactions** | ~350K | 12.5M (L1+L2) | 50M+ | Solana throughput dominance |
 | **YTD Performance** | Volatile; range $80K-$100K | Underperforming BTC | Down ~40% from highs | Altcoin compression ongoing |
 
+## Management and culture
+
+Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 fails: BTC-CRYPTO is a protocol/commodity, not an operating company, so there is no organisation to grade. Gate 2 is moot. [MC-2]–[MC-7] (incentives, hop count, mission, talent gravity, entropy, org form) have no issuer, CEO, headcount, or proxy to attach to; BIP/miner/node governance is a political process, not a firm. [MC-6]/[G-10] corporate entropy and new-venture-destruction base rates do not apply. Grade on other models.
+
 ## Altcoin Beneficiaries: Tokens Positioned for Structural Tailwinds
 
 *This section identifies specific tokens beyond BTC/ETH that benefit from the macro themes driving this thesis.*
@@ -212,7 +216,7 @@ Stablecoins represent the most commercially successful blockchain application, w
 |---|---|---|---|
 | **Solana** | SOL | ~$47B | Highest-throughput L1 with institutional validation (ETFs, Apollo's ACRED, Visa settlement pilots). Firedancer client upgrade targeting massive throughput gains. RWA market growing 218% in 2025. Post-quantum testnet active. Risk: 1,700 validators vs Ethereum's 700K. |
 | **Chainlink** | LINK | ~$6.5B | De facto oracle standard processing $18B/month cross-chain. JPMorgan and UBS running active settlement pilots on Chainlink. Grayscale's first LINK ETF attracted $41M day-one inflows. CCIP protocol is essential middleware for tokenised assets. Risk: token value accrual unclear relative to protocol usage. |
-| **Ondo Finance** | ONDO | ~$2-3B | Leading tokenised Treasury product (USDY, OUSG) with $248M on Solana alone. Directly benefits from GENIUS Act's stablecoin framework — tokenised yield wrappers sit outside the Act's yield prohibition. Positioned as "Treasury bills on-chain" for institutional DeFi. Risk: regulatory classification uncertainty; TradFi competitors (BlackRock BUIDL). |
+| **Ondo Finance** | ONDO | ~$2-3B | Leading tokenised Treasury product (USDY, OUSG) with $248M on Solana alone. Directly benefits from GENIUS Act's stablecoin framework: tokenised yield wrappers sit outside the Act's yield prohibition. Positioned as "Treasury bills on-chain" for institutional DeFi. Risk: regulatory classification uncertainty; TradFi competitors (BlackRock BUIDL). |
 
 ### Tier 2: AI, DePIN & Compute Infrastructure
 
@@ -227,7 +231,7 @@ Stablecoins represent the most commercially successful blockchain application, w
 | Token | Ticker | Market Cap | Thesis |
 |---|---|---|---|
 | **Arbitrum** | ARB | ~$680M | Largest Ethereum L2 by institutional deployment (Robinhood, Franklin Templeton, WisdomTree tokenised assets). 2.1B+ lifetime transactions. "Everywhere Initiative" targeting default settlement layer for institutional finance. Risk: compressed at $0.11; dilution from token unlocks; competition from Base (no token). |
-| **Ethena** | ENA | ~$1-2B | Synthetic dollar protocol (USDe) offering yield outside GENIUS Act scope via delta-neutral hedging. Benefits directly from the stablecoin yield prohibition — captures demand that regulated issuers cannot serve. Risk: complex derivative structure; potential regulatory reclassification. |
+| **Ethena** | ENA | ~$1-2B | Synthetic dollar protocol (USDe) offering yield outside GENIUS Act scope via delta-neutral hedging. Benefits directly from the stablecoin yield prohibition: captures demand that regulated issuers cannot serve. Risk: complex derivative structure; potential regulatory reclassification. |
 | **Pendle** | PENDLE | ~$500M-1B | Yield tokenisation protocol allowing users to trade future yield. Benefits from the bifurcation between non-yielding GENIUS-compliant stablecoins and yield-seeking capital. Risk: DeFi complexity limits addressable market. |
 
 ### Tier 4: Emerging / Higher-Risk
@@ -244,10 +248,10 @@ Stablecoins represent the most commercially successful blockchain application, w
 
 | Threat | Mechanism | Timeline | Severity |
 |---|---|---|---|
-| **ECDSA Key Extraction** | Shor's algorithm recovers private keys from exposed public keys | 5-15 years (consensus); some estimates 2029-2032 | **Critical** — affects all chains using ECDSA (BTC, ETH, SOL) |
-| **SHA-256 Mining Attack** | Grover's algorithm provides quadratic speedup for hash preimages | 20-30+ years; requires "star-level energy" | **Low** — 2^128 operations remains infeasible |
-| **Transaction Interception** | Quantum attacker derives key from public key exposed during broadcast | Coincident with ECDSA break | **High** — affects all pending transactions |
-| **Dormant Wallet Theft** | ~3-4M BTC in exposed-key addresses (including Satoshi's) | First target when CRQC arrives | **Market-moving** — $300B+ at risk |
+| **ECDSA Key Extraction** | Shor's algorithm recovers private keys from exposed public keys | 5-15 years (consensus); some estimates 2029-2032 | **Critical**: affects all chains using ECDSA (BTC, ETH, SOL) |
+| **SHA-256 Mining Attack** | Grover's algorithm provides quadratic speedup for hash preimages | 20-30+ years; requires "star-level energy" | **Low**: 2^128 operations remains infeasible |
+| **Transaction Interception** | Quantum attacker derives key from public key exposed during broadcast | Coincident with ECDSA break | **High**: affects all pending transactions |
+| **Dormant Wallet Theft** | ~3-4M BTC in exposed-key addresses (including Satoshi's) | First target when CRQC arrives | **Market-moving**: $300B+ at risk |
 
 ### Mitigation Progress by Chain
 
@@ -284,15 +288,15 @@ The quantum transition creates three investable dynamics:
 
 | Catalyst | Timeline | Impact |
 |---|---|---|
-| **CLARITY Act Senate vote** | Before Nov 2026 midterms | High — establishes comprehensive US crypto regulatory framework |
-| **GENIUS Act final rules (Treasury)** | July 2026 | High — implementation details determine stablecoin market structure |
-| **Fed rate cuts** | Projected 100bps through 2026 | Medium-High — rotates capital from $7T money markets into crypto |
-| **Ethereum staking ETF approval** | 2026 (pending SEC) | High — unlocks yield-seeking institutional demand for ETH |
-| **Bitcoin 2028 halving countdown** | April 2028 | Medium — further supply reduction; historically a 12-18 month lead catalyst |
-| **Post-quantum BIP adoption** | 2026-2027 | Medium — successful upgrade removes existential risk narrative |
-| **Solana Firedancer launch** | 2026 | Medium — validates throughput thesis; attracts institutional compute workloads |
-| **RWA tokenisation reaching $100B** | 2026-2027 | High — proves digital asset rails are embedding in traditional finance |
-| **Tether regulatory action or audit** | Ongoing risk | High negative — USDT underpins global crypto liquidity |
+| **CLARITY Act Senate vote** | Before Nov 2026 midterms | High: establishes comprehensive US crypto regulatory framework |
+| **GENIUS Act final rules (Treasury)** | July 2026 | High: implementation details determine stablecoin market structure |
+| **Fed rate cuts** | Projected 100bps through 2026 | Medium-High: rotates capital from $7T money markets into crypto |
+| **Ethereum staking ETF approval** | 2026 (pending SEC) | High: unlocks yield-seeking institutional demand for ETH |
+| **Bitcoin 2028 halving countdown** | April 2028 | Medium: further supply reduction; historically a 12-18 month lead catalyst |
+| **Post-quantum BIP adoption** | 2026-2027 | Medium: successful upgrade removes existential risk narrative |
+| **Solana Firedancer launch** | 2026 | Medium: validates throughput thesis; attracts institutional compute workloads |
+| **RWA tokenisation reaching $100B** | 2026-2027 | High: proves digital asset rails are embedding in traditional finance |
+| **Tether regulatory action or audit** | Ongoing risk | High negative: USDT underpins global crypto liquidity |
 | **Sovereign Bitcoin reserve announcements** | Ongoing | Medium per country; cumulative effect is significant |
 
 ## Risks
@@ -311,27 +315,28 @@ The quantum transition creates three investable dynamics:
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
+- **Models applied**: [[Lens - Management and Culture]] <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
 - **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this opportunity — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat -->
+  - Management & Culture [MC-1] · optionality-feed gate fails: protocol/commodity with no organisation to convert optionalities; lens inert, grade on other models
+- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view this thesis must beat --> [MC-6]/[G-10] entropy and new-venture-destruction base rates are corporate attractors; they do not attach to a protocol with no firm to decay.
 
 ## Related Research
 
-- [[Research/2025-11-24 - BTC - Quantum Computing Threat to Bitcoin Security]] — Shor's algorithm ECDSA timeline, Grover's SHA-256 analysis, mitigation strategies (Grok)
-- [[Research/2025-12-26 - ETH - Gemini Stablecoins Ecosystem Canvas]] — Comprehensive Ethereum institutional dynamics, stablecoin ecosystem, L2 scaling, valuation models (Gemini)
-- [[Research/2026-03-20 - Crypto - Gemini Trading Infrastructure Canvas]] — CLOB/AMM hybrid architectures, MEV strategies, DeFi infrastructure design (Gemini)
-- [[Research/2025-12-26 - Ethereum Stablecoin Adoption]] — ETH value capture paradox, L2 economics, competitive analysis vs Solana (Claude)
-- [[Research/2025-11-18 - Ethereum vs Layer 1 Chains]] — Ethereum vs Solana/BSC/Tron: security, decentralisation, ecosystem depth comparison (ChatGPT)
-- [[Research/2025-07-21 - Ethereum Solana Tokenization]] — Asset tokenisation: BlackRock BUIDL, Ondo, Apollo ACRED, RealT, Homebase (ChatGPT)
-- [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]] — V/MA stablecoin competitive dynamics, disintermediation scenarios (ChatGPT)
-- [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]] — Circle/Coinbase revenue sharing, Shopify/Stripe integration, structural vulnerabilities (Gemini)
-- [[Research/2025-07-10 - CRCL - Circle USDC vs BRICS mBridge Geopolitical Analysis]] — USDC as US strategic asset vs BRICS mBridge; Circle valuation, de-dollarisation dynamics, 10-year revenue model (Grok)
-- [[Research/2025-08-06 - Crypto - AI Regulation Impact on Crypto Development]] — 2025 US AI regulation impact on ETH/SOL/ADA/DOT/AVAX; TRAIGA sandbox, Right to Compute, VC flows, AI-blockchain convergence (ChatGPT)
-- [[Research/2026-04-01 - MSTR - Strategy Preferred Stock Capital Stack]] — STRF/STRC/STRK/STRD/MSTR seniority hierarchy, dividend terms, decision framework (ChatGPT)
-- [[Research/2025-12-26 - ETH - Ethereum Investment Dynamics Deep Dive]] — Stablecoin settlement $52.9T, enterprise use cases (Shenzhen Futian, Bhutan NDI, Coca-Cola Baseline), fundamentals-price divergence (ChatGPT)
-- [[Stablecoin Regulation as Geopolitical Infrastructure]] — Stablecoin regulatory framework (GENIUS Act, MiCA); USDC as US strategic asset vs BRICS mBridge
-- [[Sectors/Blockchain & Stablecoins]] — Primary sector: stablecoin regulatory infrastructure, USDC/Tether competitive dynamics, blockchain rails
-- [[Sectors/Precious Metals]] — Precious metals macro context; digital gold comparison; commodity market structure parallels
+- [[Research/2025-11-24 - BTC - Quantum Computing Threat to Bitcoin Security]]: Shor's algorithm ECDSA timeline, Grover's SHA-256 analysis, mitigation strategies (Grok)
+- [[Research/2025-12-26 - ETH - Gemini Stablecoins Ecosystem Canvas]]: Comprehensive Ethereum institutional dynamics, stablecoin ecosystem, L2 scaling, valuation models (Gemini)
+- [[Research/2026-03-20 - Crypto - Gemini Trading Infrastructure Canvas]]: CLOB/AMM hybrid architectures, MEV strategies, DeFi infrastructure design (Gemini)
+- [[Research/2025-12-26 - Ethereum Stablecoin Adoption]]: ETH value capture paradox, L2 economics, competitive analysis vs Solana (Claude)
+- [[Research/2025-11-18 - Ethereum vs Layer 1 Chains]]: Ethereum vs Solana/BSC/Tron: security, decentralisation, ecosystem depth comparison (ChatGPT)
+- [[Research/2025-07-21 - Ethereum Solana Tokenization]]: Asset tokenisation: BlackRock BUIDL, Ondo, Apollo ACRED, RealT, Homebase (ChatGPT)
+- [[Research/2025-07-15 - Visa Mastercard Stablecoin Competition]]: V/MA stablecoin competitive dynamics, disintermediation scenarios (ChatGPT)
+- [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]]: Circle/Coinbase revenue sharing, Shopify/Stripe integration, structural vulnerabilities (Gemini)
+- [[Research/2025-07-10 - CRCL - Circle USDC vs BRICS mBridge Geopolitical Analysis]]: USDC as US strategic asset vs BRICS mBridge; Circle valuation, de-dollarisation dynamics, 10-year revenue model (Grok)
+- [[Research/2025-08-06 - Crypto - AI Regulation Impact on Crypto Development]]: 2025 US AI regulation impact on ETH/SOL/ADA/DOT/AVAX; TRAIGA sandbox, Right to Compute, VC flows, AI-blockchain convergence (ChatGPT)
+- [[Research/2026-04-01 - MSTR - Strategy Preferred Stock Capital Stack]]: STRF/STRC/STRK/STRD/MSTR seniority hierarchy, dividend terms, decision framework (ChatGPT)
+- [[Research/2025-12-26 - ETH - Ethereum Investment Dynamics Deep Dive]]: Stablecoin settlement $52.9T, enterprise use cases (Shenzhen Futian, Bhutan NDI, Coca-Cola Baseline), fundamentals-price divergence (ChatGPT)
+- [[Stablecoin Regulation as Geopolitical Infrastructure]]: Stablecoin regulatory framework (GENIUS Act, MiCA); USDC as US strategic asset vs BRICS mBridge
+- [[Sectors/Blockchain & Stablecoins]]: Primary sector: stablecoin regulatory infrastructure, USDC/Tether competitive dynamics, blockchain rails
+- [[Sectors/Precious Metals]]: Precious metals macro context; digital gold comparison; commodity market structure parallels
 
 ## Log
 
@@ -358,3 +363,7 @@ The quantum transition creates three investable dynamics:
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh: 1 metric updated, 0 material. BTC price ~$63,846→~$63,963 (+0.2%, non-material — second same-day pass ~1hr after prior refresh). Market cap ~$1.28T unchanged (rounds identical). Snapshot: [[_Archive/Snapshots/BTC-CRYPTO - Bitcoin & Digital Assets (pre-numbers 20260712-183935)]]
+
+### 2026-08-20
+- Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert; protocol/commodity, no organisation to grade. Conviction unchanged.
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

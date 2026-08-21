@@ -300,8 +300,8 @@ A portfolio heavy in `untested-no-trigger` means the theses lack falsification m
 
 📍 **Emit before**: `📍 Phase 5: updating _hot.md (Active Research Thread + Open Questions for <K> no-catalyst tickers)`
 ✅ **Emit after**: `✅ Phase 5: _hot.md updated (<word_count> words, <new_open_qs> new Open Questions added)`
-⚠️ **Emit if word cap pruning triggers**: `⚠️ Phase 5: _hot.md over soft cap (4,000w) — pruning <section> oldest entries until under cap`
-❌ **Emit if hard cap hit**: `❌ Phase 5: _hot.md over hard cap (5,000w) after pruning — aborting _hot.md update per contract`
+⚠️ **Emit if word cap pruning triggers**: `⚠️ Phase 5: _hot.md over soft cap (8,000w) — pruning <section> oldest entries until under cap`
+❌ **Emit if hard cap hit**: `❌ Phase 5: _hot.md over hard cap (10,000w) after pruning — aborting _hot.md update per contract`
 
 Read `_hot.md` then edit (do NOT touch Latest Sync or Sync Archive — those are `/sync`-owned). If `_hot.md` does not exist, create it per the CLAUDE.md Rule #9 schema.
 

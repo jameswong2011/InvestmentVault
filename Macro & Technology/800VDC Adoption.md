@@ -13,23 +13,23 @@ source: vault synthesis — three Claude Deep Research reports (May 2026) on (a)
 
 ## Thesis Delta
 
-- **The shift is driven by current, not efficiency.** At 600 kW per rack (Rubin Ultra Kyber, H2 2027), a 48V busbar would carry ~12,500 A — mechanically and thermally infeasible. 800VDC reduces required current 16×, ohmic loss ~256× at the same conductor, and frees ~64U of rack space that 54V PSU shelves would otherwise consume at MW scale. NVIDIA's own marketing claims (5% efficiency, 70% PSU maintenance reduction, 30% TCO) are real but secondary — the equity story is *compute-capacity unlock*, not *efficiency arbitrage*.
+- **The shift is driven by current, not efficiency.** At 600 kW per rack (Rubin Ultra Kyber, H2 2027), a 48V busbar would carry ~12,500 A: mechanically and thermally infeasible. 800VDC reduces required current 16×, ohmic loss ~256× at the same conductor, and frees ~64U of rack space that 54V PSU shelves would otherwise consume at MW scale. NVIDIA's own marketing claims (5% efficiency, 70% PSU maintenance reduction, 30% TCO) are real but secondary; the equity story is compute-capacity unlock, not efficiency arbitrage.
 
-- **Two competing architectures wear the "800VDC" label, and hyperscalers will run both in parallel.** NVIDIA's row-rectified single-bus 800VDC is vertically integrated to Rubin/Kyber; OCP Mt. Diablo (Diablo 400 v0.7.0, March 2026 — up from v0.5.2 May 2025) is a *sidecar* power rack co-authored by Google, Meta, Microsoft that outputs ±400V *or* 800V and accepts Trainium, MTIA, Maia, AMD MI, and NVIDIA. Most hyperscalers operate both inside the same estate. Bullish for *total* supplier TAM, bad for any single-architecture bet.
+- **Two competing architectures wear the "800VDC" label, and hyperscalers will run both in parallel.** NVIDIA's row-rectified single-bus 800VDC is vertically integrated to Rubin/Kyber; OCP Mt. Diablo (Diablo 400 v0.7.0, March 2026, up from v0.5.2 May 2025) is a 'sidecar' power rack co-authored by Google, Meta, Microsoft that outputs ±400V or 800V and accepts Trainium, MTIA, Maia, AMD MI, and NVIDIA. Most hyperscalers operate both inside the same estate. Bullish for total supplier TAM, bad for any single-architecture bet.
 
-- **For the vault, this is the macro that pulls forward [[Theses/VICR - Vicor Corporation]] structurally**, validates [[Theses/VRT - Vertiv Holdings]] H2 2026 portfolio launch timing, raises adjacency questions for [[Theses/NVDA - Nvidia]] (chip roadmap *sets* 800VDC adoption curve) and [[Theses/6981 - Murata Manufacturing]] (~450,000 MLCCs/rack at GB300, 3.3× FY30 AI-server MLCC demand), and introduces new monitoring candidates (Korean transformer trio HD Hyundai/Hyosung/LS Electric; Eaton ETN; Delta 2308.TW; Disco 6146.T; nanocrystalline core oligopoly Proterial/Qingdao Yunlu).
+- **For the vault, this is the macro that pulls forward [[Theses/VICR - Vicor Corporation]] structurally**, validates [[Theses/VRT - Vertiv Holdings]] H2 2026 portfolio launch timing, raises adjacency questions for [[Theses/NVDA - Nvidia]] (chip roadmap sets 800VDC adoption curve) and [[Theses/6981 - Murata Manufacturing]] (~450,000 MLCCs/rack at GB300, 3.3× FY30 AI-server MLCC demand), and introduces new monitoring candidates (Korean transformer trio HD Hyundai/Hyosung/LS Electric; Eaton ETN; Delta 2308.TW; Disco 6146.T; nanocrystalline core oligopoly Proterial/Qingdao Yunlu).
 
-- **Real adoption is gated by *liquid cooling penetration*, *SST/SiC supply*, *DC protection standards* (UL/IEC/NEC are still maturing), and *operator training* — not by silicon performance.** Sell-side has not yet published architecture-segmented adoption forecasts. Synthesized base case from these three Deep Research reports: ~10–15% of *new* AI-rack capacity in 2027, ~35–45% by 2029, ~65–75% by 2032. General-purpose enterprise stays under 10% on 800VDC through 2030 in every scenario — economics do not pencil at 10–20 kW/rack.
+- **Real adoption is gated by liquid cooling penetration, SST/SiC supply, DC protection standards (UL/IEC/NEC are still maturing), and operator training, not by silicon performance.** Sell-side has not yet published architecture-segmented adoption forecasts. Synthesized base case from these three Deep Research reports: ~10–15% of *new* AI-rack capacity in 2027, ~35–45% by 2029, ~65–75% by 2032. General-purpose enterprise stays under 10% on 800VDC through 2030 in every scenario: economics do not pencil at 10–20 kW/rack.
 
 ## Summary
 
 800VDC is the architectural endpoint of NVIDIA's chip roadmap colliding with the physics of 48V rack distribution. The chain breaks down at ~250 kW/rack, and the GB200 NVL72 already runs at ~120–132 kW; the Vera Rubin NVL144 (H2 2026) projects to ~250 kW; the Rubin Ultra Kyber NVL576 (H2 2027) targets ~600 kW; post-Kyber Feynman-generation racks trend toward 1 MW+ and potentially ±1500VDC. The decisive number is current density per busbar: at 48V the GB200 already needs ~2,500 A; at 600 kW it would need ~12,500 A, which is mechanically untenable. Stepping voltage 16× cuts current 16× and I²R loss ~256×, and the 45% copper reduction (NVIDIA's most physically defensible claim, vs. the marketing efficiency numbers) becomes a binding capex enabler at gigawatt-class campuses where rack busbar copper alone would be ~200,000 kg.
 
-The supplier ecosystem materialised at OCP October 2025 and was confirmed at NVIDIA GTC 2026 (March 2026) where Eaton's Beam Rubin DSX, Delta's 800 VDC 660 kW in-row power rack with 480 kW BBU, Liteon's 800 VDC + 110 kW power shelf, and STMicroelectronics's 12V and 6V on-rack architectures all moved from concept to co-designed product. Vertiv has stated its 800VDC portfolio ships H2 2026 — "ahead of Kyber/Rubin Ultra." Schneider's sidecar (up to 1.2 MW per rack, unipolar 800V or bipolar ±400V) is validated at Digital Realty Manassas via the AI Factory Research Center. Eaton acquired Resilient Power Systems (August 2025) for SST IP and runs ~24 SST pilots with hyperscalers, expecting first orders late-2026 for 2027 ship. NVIDIA's full silicon ecosystem spans ADI, AOS, EPC, Infineon, Innoscience, MPS, Navitas, onsemi, Power Integrations, Renesas, Richtek, ROHM, STMicro, TI — every meaningful Western and Japanese power-semi house plus the only Chinese GaN name (Innoscience) and the Israeli VPD specialist (Vicor) via separately announced collaborations.
+The supplier ecosystem materialised at OCP October 2025 and was confirmed at NVIDIA GTC 2026 (March 2026) where Eaton's Beam Rubin DSX, Delta's 800 VDC 660 kW in-row power rack with 480 kW BBU, Liteon's 800 VDC + 110 kW power shelf, and STMicroelectronics's 12V and 6V on-rack architectures all moved from concept to co-designed product. Vertiv has stated its 800VDC portfolio ships H2 2026, "ahead of Kyber/Rubin Ultra." Schneider's sidecar (up to 1.2 MW per rack, unipolar 800V or bipolar ±400V) is validated at Digital Realty Manassas via the AI Factory Research Center. Eaton acquired Resilient Power Systems (August 2025) for SST IP and runs ~24 SST pilots with hyperscalers, expecting first orders late-2026 for 2027 ship. NVIDIA's full silicon ecosystem spans ADI, AOS, EPC, Infineon, Innoscience, MPS, Navitas, onsemi, Power Integrations, Renesas, Richtek, ROHM, STMicro, TI: every meaningful Western and Japanese power-semi house plus the only Chinese GaN name (Innoscience) and the Israeli VPD specialist (Vicor) via separately announced collaborations.
 
-Adoption is gated by four real-world constraints that the market under-prices. (1) **Liquid cooling penetration** is a prerequisite — at 50 W/cm² die heat flux and 600 kW/rack thermal load, direct-to-chip cold plates are non-negotiable. Uptime Institute 2024 reports 22% of operators using DLC, <10% of racks in those facilities. SemiAnalysis treats AI training facilities as 100% DLC; enterprise is far behind. If DLC stalls, 800VDC stalls. (2) **Solid-state transformer maturity** is the upstream bottleneck — Western commercial SSTs (Infineon+SolarEdge 2–5 MW SST building block, Wolfspeed 10 kV SiC MOSFETs, Eaton MV SST post-Resilient) ship late-2026 to 2027 in pilot volumes; the binding constraint is not SiC wafers but *packaged ≥3.3 kV SiC modules* plus *nanocrystalline magnetic cores* (Proterial/Hitachi Metals FINEMET, Qingdao Yunlu, AT&M, VAC control >85% of supply). (3) **DC protection standards** lag deployment — DC arcs have no zero-crossing; NFPA 70E incident-energy formulas were built for AC; resettable circuit breakers in this voltage class are still maturing; UL/IEC/IEEE working groups are running lab tests but standards are 2026–2028 work items. (4) **Operator training and AHJ comfort** — only one widely-cited operational reference (Foxconn Kaohsiung-1, 40 MW in Taiwan) means actuarial pricing for 800VDC datacenter insurance is unbounded.
+Adoption is gated by four real-world constraints that the market under-prices. (1) **Liquid cooling penetration** is a prerequisite: at 50 W/cm² die heat flux and 600 kW/rack thermal load, direct-to-chip cold plates are non-negotiable. Uptime Institute 2024 reports 22% of operators using DLC, <10% of racks in those facilities. SemiAnalysis treats AI training facilities as 100% DLC; enterprise is far behind. If DLC stalls, 800VDC stalls. (2) **Solid-state transformer maturity** is the upstream bottleneck: Western commercial SSTs (Infineon+SolarEdge 2–5 MW SST building block, Wolfspeed 10 kV SiC MOSFETs, Eaton MV SST post-Resilient) ship late-2026 to 2027 in pilot volumes; the binding constraint is not SiC wafers but packaged ≥3.3 kV SiC modules plus nanocrystalline magnetic cores (Proterial/Hitachi Metals FINEMET, Qingdao Yunlu, AT&M, VAC control >85% of supply). (3) **DC protection standards** lag deployment: DC arcs have no zero-crossing; NFPA 70E incident-energy formulas were built for AC; resettable circuit breakers in this voltage class are still maturing; UL/IEC/IEEE working groups are running lab tests but standards are 2026–2028 work items. (4) **Operator training and AHJ comfort**: only one widely-cited operational reference (Foxconn Kaohsiung-1, 40 MW in Taiwan) means actuarial pricing for 800VDC datacenter insurance is unbounded.
 
-Where the structural alpha sits is not where retail attention is concentrated. The wide-bandgap semi names (Wolfspeed, Navitas, Infineon, onsemi) are mid-cycle plays whose bullishness is well-priced; the *under-priced* oligopolies sit upstream in (a) Korean ultra-high-voltage transformers (HD Hyundai Electric, Hyosung Heavy, LS Electric — combined Q1 2026 backlog >₩32 trillion, orders booked through 2031, 765 kV US transmission ~50% Hyosung share, US-local production tariff-protected), (b) Japan/Korea high-cap MLCC oligopoly (Murata 33% share, Samsung-EM, TDK, Taiyo Yuden — 70–80% combined global share, Murata 15–35% price hike effective April 1 2026, AI-server MLCC demand 3.3× FY30 vs FY25), (c) SiC dicing equipment (Disco, >70% share, every new SiC fab installs Disco tools, ROIC 54% FY25), (d) nanocrystalline magnetic cores (Proterial ~45% global share, Qingdao Yunlu ~16% — the single biggest physical bottleneck for SST scaling), and (e) vertical power delivery on-board where the IP gate is 5–7 years and Vicor's 2nd-gen VPD spec (3 A/mm², 40× current multiplication, 1.5 mm package) currently has no commercial peer. The shared characteristic of these five categories: physical bottlenecks with concentrated suppliers that compound *regardless* of which architecture (NVIDIA row-rectified vs OCP sidecar) ultimately wins.
+The structural alpha is in the under-priced oligopolies upstream of the wide-bandgap semi names (Wolfspeed, Navitas, Infineon, onsemi), which are mid-cycle plays whose bullishness is well-priced: (a) Korean ultra-high-voltage transformers (HD Hyundai Electric, Hyosung Heavy, LS Electric: combined Q1 2026 backlog >₩32 trillion, orders booked through 2031, 765 kV US transmission ~50% Hyosung share, US-local production tariff-protected), (b) Japan/Korea high-cap MLCC oligopoly (Murata 33% share, Samsung-EM, TDK, Taiyo Yuden: 70–80% combined global share, Murata 15–35% price hike effective April 1 2026, AI-server MLCC demand 3.3× FY30 vs FY25), (c) SiC dicing equipment (Disco, >70% share, every new SiC fab installs Disco tools, ROIC 54% FY25), (d) nanocrystalline magnetic cores (Proterial ~45% global share, Qingdao Yunlu ~16%, the single biggest physical bottleneck for SST scaling), and (e) vertical power delivery on-board where the IP gate is 5–7 years and Vicor's 2nd-gen VPD spec (3 A/mm², 40× current multiplication, 1.5 mm package) currently has no commercial peer. The shared characteristic of these five categories: physical bottlenecks with concentrated suppliers that compound regardless of which architecture (NVIDIA row-rectified vs OCP sidecar) ultimately wins.
 
 ## Framework / Mental Model
 
@@ -37,7 +37,7 @@ Where the structural alpha sits is not where retail attention is concentrated. T
 
 | Conventional framing | Correct framing |
 |---|---|
-| 800VDC is more efficient than AC distribution | 800VDC is the *only physically plausible path* above ~250 kW/rack |
+| 800VDC is more efficient than AC distribution | 800VDC is the only physically plausible path above ~250 kW/rack |
 | 5% efficiency gain drives adoption economics | 45% copper reduction + 64U rack-space recovery drives adoption physics |
 | Adoption curve set by TCO crossover | Adoption curve set by NVIDIA chip roadmap and DLC penetration |
 | Bull case: AC datacenters retrofit to 800VDC over 2026–2030 | Bull case: greenfield AI factories deploy 800VDC over 2027–2032; enterprise stays AC under 10 kW/rack |
@@ -49,7 +49,7 @@ Where the structural alpha sits is not where retail attention is concentrated. T
 | Authorship | NVIDIA (Mathias Blake et al., May 2025 blog; Oct 2025 OCP) | Google + Meta + Microsoft |
 | Conversion topology | Single-stage: 13.8 kV MV AC → 800VDC at row → 64:1 LLC DC/DC at GPU | Two-stage: AC → ±400V/800V in sidecar rack → DC/DC at compute |
 | Accelerator scope | Vertically integrated to Rubin/Kyber | Accelerator-agnostic (Trainium, MTIA, Maia, AMD MI, NVIDIA) |
-| Output | Unipolar 800V | Configurable ±400V *or* 800V |
+| Output | Unipolar 800V | Configurable ±400V or 800V |
 | Retrofit fit | Greenfield-only (single bus to row) | More retrofittable to existing 480VAC plant (sidecar adapts) |
 | Strategic intent | Pulls power-infrastructure roadmap into NVIDIA's tempo | Decouples power from any single silicon vendor; supply-chain analog of EV 400V→800V transition |
 | Hyperscaler posture | Required for any NVIDIA Kyber-class deployment | Reference for custom-ASIC racks; complements NVIDIA islands in same campus |
@@ -58,7 +58,7 @@ The strategic implication is that hyperscalers operate **both architectures in p
 
 ### Historical analog: 48V displacing 12V in OCP racks
 
-The 48V over 12V transition in Open Compute racks took ~8 years from initial spec (~2014, Google initial proposal) to majority adoption (~2022, when Hopper-era HGX broadly shipped on 48V). The 800VDC transition has the same gating mechanism (architectural shift driven by current density at the compute layer) but moves faster because (a) the silicon vendor is one company (NVIDIA) with roadmap control, vs. multi-vendor 48V which negotiated through OCP, and (b) the rate-limiting factor below is liquid cooling, not the voltage transition itself — DLC has been the binding constraint already, so the incremental 800VDC adoption decision is "easy" once DLC is committed.
+The 48V over 12V transition in Open Compute racks took ~8 years from initial spec (~2014, Google initial proposal) to majority adoption (~2022, when Hopper-era HGX broadly shipped on 48V). The 800VDC transition has the same gating mechanism (architectural shift driven by current density at the compute layer) but moves faster because (a) the silicon vendor is one company (NVIDIA) with roadmap control, vs. multi-vendor 48V which negotiated through OCP, and (b) the rate-limiting factor below is liquid cooling, not the voltage transition itself; DLC has been the binding constraint already, so the incremental 800VDC adoption decision is "easy" once DLC is committed.
 
 ### The bottleneck cascade
 
@@ -70,7 +70,7 @@ Five layers, each with a binding constraint that gates the next:
 4. **Rack → compute board**: 800V→48V→core-voltage step-down (binding: SiC/GaN front-end + GaN intermediate stages). Beneficiary: Infineon, onsemi, Innoscience, ROHM, MPS, Navitas, ST.
 5. **Board → silicon die**: vertical power delivery / current multiplication at >2,000 A (binding: 5–7 year IP gate at the module-fabrication layer). Beneficiary: Vicor (currently the only commercial vendor of 2nd-gen VPD at 3 A/mm² + 40× multiplication + 1.5 mm thickness).
 
-The cascade matters because *the layer with the slowest-moving bottleneck sets the adoption pace for the whole chain*. Today the binding layer is liquid cooling penetration at the operator level; once DLC saturates AI greenfields (likely 2027–2028 per SemiAnalysis), the binding layer rotates to nanocrystalline cores + ≥3.3 kV SiC packaged modules.
+The cascade matters because the layer with the slowest-moving bottleneck sets the adoption pace for the whole chain. Today the binding layer is liquid cooling penetration at the operator level; once DLC saturates AI greenfields (likely 2027–2028 per SemiAnalysis), the binding layer rotates to nanocrystalline cores + ≥3.3 kV SiC packaged modules.
 
 ## Architecture and rack power trajectory
 
@@ -87,7 +87,7 @@ NVIDIA's published per-rack power, generation by generation:
 
 Disclosed by Vertiv: the 800VDC portfolio (centralized rectifiers, DC busways, rack-level DC/DC converters, energy storage integration) releases H2 2026 with explicit alignment to Rubin Ultra in 2027 (Scott Armul, EVP Global Portfolio). Schneider showed an 800VDC sidecar supporting up to 1.2 MW at GTC October 2025 and reaffirmed at GTC March 2026, with the AI Factory Research Center validated at Digital Realty's Manassas, VA site. Delta has shown an 800VDC In-Row 660 kW Power Rack with 480 kW BBU and up to 98% AC-DC efficiency, plus a 1.1 MW "AI Power Cube." Eaton's "Beam Rubin DSX" co-design platform launched at GTC March 2026; ABB and Mitsubishi Electric announced 800VDC partner status at OCP October 13, 2025.
 
-**Every major supplier ships exactly when Rubin Ultra ships.** There is essentially no qualified field experience available to authorities-having-jurisdiction (AHJs) or insurers as of mid-2026. The H2 2026 product GA window is the single most-loaded slip-risk event in the entire timeline; any one of Vertiv/Schneider/Delta/Eaton missing creates a critical-path delay.
+Every major supplier ships exactly when Rubin Ultra ships. There is essentially no qualified field experience available to authorities-having-jurisdiction (AHJs) or insurers as of mid-2026. The H2 2026 product GA window is the single most-loaded slip-risk event in the entire timeline; any one of Vertiv/Schneider/Delta/Eaton missing creates a critical-path delay.
 
 ## Hyperscaler posture matrix
 
@@ -101,11 +101,11 @@ Disclosed by Vertiv: the 800VDC portfolio (centralized rectifiers, DC busways, r
 | **CoreWeave** | NVIDIA-attributed for 800VDC adoption; first-party commitment is to Rubin specifically. >5 GW of AI factories by 2030 with NVIDIA | NVIDIA row-rectified | None |
 | **Lambda / Nebius / Together AI** | NVIDIA-attributed only; no first-party 800VDC press as of May 2026 | NVIDIA row-rectified (presumed) | None |
 
-**The bifurcation is real.** Hyperscalers with mature custom-ASIC programs (Google, Meta, Microsoft) authored Mt. Diablo precisely to avoid tying their non-NVIDIA fleets to NVIDIA's rack architecture. NVIDIA's own design optimizes for Rubin/Kyber and is incompatible with accelerator-agnostic sidecar economics. Equity narratives that assume all hyperscaler AI is "going 800VDC" through one architecture are oversimplified — the question is *which architecture per silicon island*, not *whether*.
+The bifurcation is real. Hyperscalers with mature custom-ASIC programs (Google, Meta, Microsoft) authored Mt. Diablo precisely to avoid tying their non-NVIDIA fleets to NVIDIA's rack architecture. NVIDIA's own design optimizes for Rubin/Kyber and is incompatible with accelerator-agnostic sidecar economics. Equity narratives that assume all hyperscaler AI is "going 800VDC" through one architecture are oversimplified: the question is which architecture per silicon island, not whether.
 
 ## Adoption forecast (synthesized)
 
-No bulge-bracket sell-side analyst has published a specific architecture-segmented adoption forecast for 800VDC. Goldman's November 2025 GS SUSTAIN raised 2030 datacenter power demand to 175% vs. 2023 (~1,350 TWh by 2030) but does not split AC vs DC. Dell'Oro tracks DCPI with high-density-power research projecting DCPI to surpass $80B by 2030 with thermal management ~20% CAGR — paywalled, no DC-architecture split. The MarketsandMarkets US-specific *SST datacenter* sub-segment projects $40.3M (2025) → $154.0M (2030) at 30.8% CAGR — a narrow slice, useful as a SST-specific calibration but not whole-stack.
+No bulge-bracket sell-side analyst has published a specific architecture-segmented adoption forecast for 800VDC. Goldman's November 2025 GS SUSTAIN raised 2030 datacenter power demand to 175% vs. 2023 (~1,350 TWh by 2030) but does not split AC vs DC. Dell'Oro tracks DCPI with high-density-power research projecting DCPI to surpass $80B by 2030 with thermal management ~20% CAGR; paywalled, no DC-architecture split. The MarketsandMarkets US-specific *SST datacenter* sub-segment projects $40.3M (2025) → $154.0M (2030) at 30.8% CAGR: a narrow slice, useful as a SST-specific calibration but not whole-stack.
 
 Synthesized base case (from Report A, sanity-checked against Reports B+C, % of *new* AI-specific rack capacity deployed with native 800VDC):
 
@@ -138,7 +138,7 @@ Synthesized base case (from Report A, sanity-checked against Reports B+C, % of *
 
 ## Value chain map and named beneficiaries
 
-*Financial columns below — **AI-DC Rev / OP** (% of consolidated revenue and operating profit attributable to AI-datacenter demand) and **ROIC / EV/EBIT (LTM)** — are directional estimates synthesized from May 2026 public disclosures, segment splits, and sell-side coverage. Most names do not formally disclose AI-DC segment economics, so figures should be read as ranges, not point estimates. Private companies marked `n/a`. Unprofitable / pre-revenue names marked `n/m`.*
+*Financial columns below, **AI-DC Rev / OP** (% of consolidated revenue and operating profit attributable to AI-datacenter demand) and **ROIC / EV/EBIT (LTM)**, are directional estimates synthesized from May 2026 public disclosures, segment splits, and sell-side coverage. Most names do not formally disclose AI-DC segment economics, so figures should be read as ranges, not point estimates. Private companies marked `n/a`. Unprofitable / pre-revenue names marked `n/m`.*
 
 ### Layer 1 — Grid and MV switchgear (AC side, structural shortage)
 
@@ -151,7 +151,7 @@ Synthesized base case (from Report A, sanity-checked against Reports B+C, % of *
 | **Eaton** | ETN | ~15% / ~20% | ~17% / ~23x | NVIDIA partner + traditional MV | Q1 FY26: $7.5B (+17%), datacenter orders +240%, 228 GW backlog (~12 years at 2025 build rates); Beam Rubin DSX + ~24 SST pilots |
 | **Siemens Energy** | ENR.DE | ~5% / ~8% | ~6% / ~15x | NVIDIA partner | $150M North Carolina transformer plant; less aggressive on SST than ABB/Hitachi |
 | **ABB** | ABBN.SW | ~8% / ~12% | ~16% / ~18x | NVIDIA partner | DC-rated breakers + busways for 800V/1MW racks; MegaFlex UPS line; Siemens Energy power-electronics asset acquisition strengthens SST stack |
-| **GE Vernova** | GEV | ~8% / ~10% | ~10% / ~20x | NVIDIA partner | No productized SST yet — most-likely large-cap acquirer of private SST IP (Heron Power candidate) |
+| **GE Vernova** | GEV | ~8% / ~10% | ~10% / ~20x | NVIDIA partner | No productized SST yet: most-likely large-cap acquirer of private SST IP (Heron Power candidate) |
 | **China XD** | 601179.SS | ~8% / ~10% | ~7% / ~10x | China MV power electronics | Subsidiary Xi'an XD Power Electronics delivered 2.4 MW SST to "East Data West Computing"; best Chinese listed SST proxy |
 
 ### Layer 2 — Solid-state transformer / industrial rectifier (perimeter conversion)
@@ -167,7 +167,7 @@ Synthesized base case (from Report A, sanity-checked against Reports B+C, % of *
 | **Amperesand** | private | n/a | n/a | $80M Series A Nov 2025 (Walden Catalyst + Temasek, TDK Ventures strategic); 30 MW commercial deliveries 2026 starting Port of Singapore + hyperscaler pilots |
 | **Heron Power** | private | n/a | n/a | $140M Series B Feb 2026 (a16z American Dynamism + Breakthrough Energy); $183M total; 40 GW factory plan; likely strategic acquirer 2026–27 |
 | **DG Matrix** | private | n/a | n/a | $60M Series A Feb 2026 (Engine Ventures led, Mitsubishi Heavy + ABB strategic); multi-port SST |
-| **Enphase Energy** | ENPH | <5% / n/m | n/m / ~30x | IQ SST announced May 4 2026 — entered AI datacenter power market; demos late 2026, pilots 2027, commercial 2028 |
+| **Enphase Energy** | ENPH | <5% / n/m | n/m / ~30x | IQ SST announced May 4 2026: entered AI datacenter power market; demos late 2026, pilots 2027, commercial 2028 |
 | **SolarEdge** | SEDG | <5% / n/m | n/m / n/m | November 2025 SolarEdge–Infineon SST building block (2–5 MW, 13.8–34.5 kV AC → 800–1500 V DC, >99% efficiency) |
 
 ### Layer 3 — DC distribution, busways, DC switchgear, BBU/supercap
@@ -209,7 +209,7 @@ Synthesized base case (from Report A, sanity-checked against Reports B+C, % of *
 | Name | Ticker | AI-DC Rev / OP | ROIC / EV/EBIT (LTM) | Exposure |
 |---|---|---|---|---|
 | **Vicor** | VICR | ~60% / ~70% | ~10% / ~50x | [[Theses/VICR - Vicor Corporation]]. 2nd-gen VPD: 3 A/mm², 40× current multiplication, 1.5 mm thickness. Only commercial vendor at this spec. Q1 FY26 $113M (+20% YoY), book-to-bill >2x. Compal Rubin NVL8 GTC March 2026 demo confirmed VPD architecture-fit. ITC LEO licensing engine on top |
-| **Flex (own VPD)** | FLEX | ~25% / ~30% (Cloud segment) | ~15% / ~12x | Announced VPD product line 2025 — only other vertical-architecture vendor; manufacturing-led not IP-led |
+| **Flex (own VPD)** | FLEX | ~25% / ~30% (Cloud segment) | ~15% / ~12x | Announced VPD product line 2025: only other vertical-architecture vendor; manufacturing-led not IP-led |
 | **Murata (VPD module)** | 6981.T | ~28% / ~33% | ~10% / ~14x | [[Theses/6981 - Murata Manufacturing]]. Begins VPD power-module mass production 2026 with cloud-provider engagement; ¥50B revenue target cumulative through FY27 |
 
 ### Layer 6 — Passives, magnetics, substrates, tools (the under-priced oligopolies)
@@ -221,15 +221,15 @@ Synthesized base case (from Report A, sanity-checked against Reports B+C, % of *
 | **TDK** | 6762.T | ~12% / ~17% | ~10% / ~12x | MLCC + film/DC-link capacitors. Strategic in Amperesand (TDK Ventures) |
 | **Taiyo Yuden** | 6976.T | ~15% / ~20% | ~8% / ~12x | MLCC. +6–13% price hike May 2026 |
 | **Disco** | 6146.T | ~30% / ~35% | ~54% / ~30x | >70% wafer dicing share. Every SiC fab installs Disco tools. ROIC 54% FY25; debt-free; FY24 revenue ¥393.3B (+27.9% YoY). P/E ~38–40, premium justified by structural moat |
-| **Proterial (ex-Hitachi Metals)** | 5563.T | ~10% / ~15% | ~5% / ~10x | Nanocrystalline magnetic cores (FINEMET). ~45% global share. *The single biggest physical bottleneck for SST scaling at MW.* In-market since 1988 |
+| **Proterial (ex-Hitachi Metals)** | 5563.T | ~10% / ~15% | ~5% / ~10x | Nanocrystalline magnetic cores (FINEMET). ~45% global share. The single biggest physical bottleneck for SST scaling at MW. In-market since 1988 |
 | **Qingdao Yunlu** | 688190.SS | ~18% / ~22% | ~15% / ~25x | ~16% nanocrystalline share; #1 amorphous globally (~55%). FY24 rev RMB 1.90B (+7.24%), NI RMB 361M (+8.73%). China A-share proxy at lower multiples than Proterial |
 | **AT&M** | 000969.SZ | ~10% / ~15% | ~8% / ~25x | ~14% nanocrystalline share; primarily State Grid |
 | **Vacuumschmelze (VAC)** | private (Apollo) | n/a | n/a | ~12% nanocrystalline share (VITROPERM). Not directly investable; reason public SST products are 12–24 months out |
-| **Aixtron** | AIXA.DE | ~35% / ~45% | ~12% / ~20x | [[Theses/AIXA - Aixtron]]. MOCVD reactor duopoly with Veeco — gates GaN epi capacity |
+| **Aixtron** | AIXA.DE | ~35% / ~45% | ~12% / ~20x | [[Theses/AIXA - Aixtron]]. MOCVD reactor duopoly with Veeco: gates GaN epi capacity |
 | **Veeco** | VECO | ~30% / ~35% | ~10% / ~15x | MOCVD duopoly partner |
 | **LEM Holding** | LEHN.SW | ~10% / ~15% | ~20% / ~18x | Hall-effect / Rogowski current and voltage sensors. Datacenter tailwind beginning post China EV / renewables pricing pressure |
 
-**Sub-layer beneath Layer 6 — the MLCC merchant-materials oligopoly** (per [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]]). The bottleneck cascade extends one layer below the cap makers (Murata, Samsung-EM, TDK, Taiyo Yuden): the materials that make an AI-grade MLCC are themselves single-source choke points, ranked by pricing-power acuteness — (1) **specialty PET release film** (Toray #1, top-5 ≈ 87% share per QY Research; the <1 µm green-sheet carrier, binary-critical yet low-single-digit % of BOM); (2) **sub-100 nm hydrothermal BaTiO₃** (Sakai Chemical ~25% merchant share, Nippon Chemical Industrial, Fuji Titanium via the Murata-affiliated MF Material JV; 35–60% premium for sub-100 nm grade); (3) **ultra-fine <200 nm nickel electrode powder** (Sumitomo Metal Mining ~18%, JFE Mineral ~14%, Toho Titanium, private Shoei). Same structural signature as the Layer 6 nanocrystalline-core bottleneck (Proterial / Qingdao Yunlu): a physical choke point with a concentrated merchant supplier set that compounds regardless of which power architecture wins. The catch is an **investability paradox** — the most acute bottleneck (release film) is the least concentrated equity (Toray MLCC-film ≈5% of revenue), while the cleanest pure-plays (Sakai 4078, NCI 4092) sit in the partially-captive BaTiO₃ tier and are illiquid; nickel powder has no clean listed vehicle (Shoei private; Toho 5727 being taken private by JX Advanced Metals, Feb 2026). Disco (6146, >80% MLCC singulation share) remains the cleanest equipment-layer expression, consistent with the existing Tier-3 Disco oligopoly call.
+**Sub-layer beneath Layer 6: the MLCC merchant-materials oligopoly** (per [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]]). The bottleneck cascade extends one layer below the cap makers (Murata, Samsung-EM, TDK, Taiyo Yuden): the materials that make an AI-grade MLCC are themselves single-source choke points, ranked by pricing-power acuteness: (1) **specialty PET release film** (Toray #1, top-5 ≈ 87% share per QY Research; the <1 µm green-sheet carrier, binary-critical yet low-single-digit % of BOM); (2) **sub-100 nm hydrothermal BaTiO₃** (Sakai Chemical ~25% merchant share, Nippon Chemical Industrial, Fuji Titanium via the Murata-affiliated MF Material JV; 35–60% premium for sub-100 nm grade); (3) **ultra-fine <200 nm nickel electrode powder** (Sumitomo Metal Mining ~18%, JFE Mineral ~14%, Toho Titanium, private Shoei). Same structural signature as the Layer 6 nanocrystalline-core bottleneck (Proterial / Qingdao Yunlu): a physical choke point with a concentrated merchant supplier set that compounds regardless of which power architecture wins. The catch is an **investability paradox**: the most acute bottleneck (release film) is the least concentrated equity (Toray MLCC-film ≈5% of revenue), while the cleanest pure-plays (Sakai 4078, NCI 4092) sit in the partially-captive BaTiO₃ tier and are illiquid; nickel powder has no clean listed vehicle (Shoei private; Toho 5727 being taken private by JX Advanced Metals, Feb 2026). Disco (6146, >80% MLCC singulation share) remains the cleanest equipment-layer expression, consistent with the existing Tier-3 Disco oligopoly call.
 
 ## Affected vault theses and sector notes
 
@@ -237,68 +237,68 @@ Synthesized base case (from Report A, sanity-checked against Reports B+C, % of *
 
 | Vault entity | Direction of 800VDC impact | Conviction sensitivity |
 |---|---|---|
-| [[Theses/VICR - Vicor Corporation]] | Structurally positive: 800VDC → 48V → core-voltage chain creates more conversion content per system, not less. The 800V→6V single-step debate is the only architectural challenge; even if it materializes, I²R penalty at 6V vs 48V (~64× wiring loss) likely keeps 48V on-board. Rubin Ultra forces vertical PDN above 2,000A | Currently **medium** — 800VDC adoption pace is one of the strongest near-term positive triggers; Federal Circuit LEO scope is the offsetting risk |
+| [[Theses/VICR - Vicor Corporation]] | Structurally positive: 800VDC → 48V → core-voltage chain creates more conversion content per system, not less. The 800V→6V single-step debate is the only architectural challenge; even if it materializes, I²R penalty at 6V vs 48V (~64× wiring loss) likely keeps 48V on-board. Rubin Ultra forces vertical PDN above 2,000A | Currently **medium**: 800VDC adoption pace is one of the strongest near-term positive triggers; Federal Circuit LEO scope is the offsetting risk |
 | [[Theses/VRT - Vertiv Holdings]] | Direct: 800VDC portfolio launch H2 2026 is the company's central product roadmap. ~24 SST pilots not Vertiv-owned (those are Eaton); but Vertiv has rectifier + DC busway + rack-level DC/DC + DC BBU + service moat | Conviction sensitivity: any product slip beyond H2 2026 cuts FY27 earnings expectations 15–20% |
-| [[Theses/NVDA - Nvidia]] | NVIDIA is the *cause*, not the *exposure* — chip roadmap drives 800VDC adoption curve. Indirect benefit: vertically-integrated reference architecture deepens NVIDIA's ecosystem control over hyperscaler estate (vs. Mt. Diablo's accelerator-agnostic design) | Adoption-curve risk is downside to Rubin Ultra revenue ramp, not core demand |
-| [[Theses/6981 - Murata Manufacturing]] | High-cap MLCC oligopoly + VPD module entry (2026 mass production, ¥50B cumulative FY27). 800VDC up-mixes the MLCC demand *profile* (higher-V 250-1000V / 008004 / auto-grade 150°C) → ~3.2× Murata MLCC revenue per 800VDC rack vs a traditional AI rack (the naive 2-3× content × 3-5× price = 6-15× double-counts; premium applies to incremental units only). Capex lands ~18-24mo behind the FY28-30 demand inflection → 2027-29 small-case MLCC shortage (2018-style ASP/OPM overshoot, partial give-back FY30-31) | Conviction-positive; April 2026 price hike already priced. Demand-led path: AI-MLCC ~43% of Murata sales / ~62% of OP by FY35 IF capex doubles to ~¥550-700B/yr FY28-32 (else supply-capped ~24%) |
+| [[Theses/NVDA - Nvidia]] | NVIDIA is the cause, not the exposure: chip roadmap drives 800VDC adoption curve. Indirect benefit: vertically-integrated reference architecture deepens NVIDIA's ecosystem control over hyperscaler estate (vs. Mt. Diablo's accelerator-agnostic design) | Adoption-curve risk is downside to Rubin Ultra revenue ramp, not core demand |
+| [[Theses/6981 - Murata Manufacturing]] | High-cap MLCC oligopoly + VPD module entry (2026 mass production, ¥50B cumulative FY27). 800VDC up-mixes the MLCC demand 'profile' (higher-V 250-1000V / 008004 / auto-grade 150°C) → ~3.2× Murata MLCC revenue per 800VDC rack vs a traditional AI rack (the naive 2-3× content × 3-5× price = 6-15× double-counts; premium applies to incremental units only). Capex lands ~18-24mo behind the FY28-30 demand inflection → 2027-29 small-case MLCC shortage (2018-style ASP/OPM overshoot, partial give-back FY30-31) | Conviction-positive; April 2026 price hike already priced. Demand-led path: AI-MLCC ~43% of Murata sales / ~62% of OP by FY35 IF capex doubles to ~¥550-700B/yr FY28-32 (else supply-capped ~24%) |
 | [[Theses/AIXA - Aixtron]] | MOCVD reactor duopoly (with Veeco) gates SiC/GaN epi capacity. 800VDC ramp → SiC/GaN fab capex → Aixtron tool orders | Conviction-positive; structural |
 
 ### Adjacent exposure (theses that touch the chain)
 
 | Vault entity | Connection |
 |---|---|
-| [[Theses/AVGO - Broadcom]] | Custom ASIC programs (XPUs at hyperscalers) — incremental high-current power delivery demand parallel to NVIDIA GPUs |
-| [[Theses/AMD - Advanced Micro Devices]] | Helios MI455X H2 2026 — explicitly *sidesteps* 800VDC by going double-wide. MI500 (2027) must compete at Kyber-equivalent density |
+| [[Theses/AVGO - Broadcom]] | Custom ASIC programs (XPUs at hyperscalers): incremental high-current power delivery demand parallel to NVIDIA GPUs |
+| [[Theses/AMD - Advanced Micro Devices]] | Helios MI455X H2 2026: explicitly sidesteps 800VDC by going double-wide. MI500 (2027) must compete at Kyber-equivalent density |
 | [[Theses/TSM - Taiwan Semiconductor]] | Foundry for NVIDIA Rubin/Rubin Ultra. Power-delivery thermal envelope decisions affect CoWoS substrate design |
-| [[Theses/AMAT - Applied Materials]], [[Theses/LRCX - Lam Research]], [[Theses/ASMI - ASM International]], [[Theses/KLA - KLA Corporation]] | Semi capex tools — every SiC fab adds tool orders. Indirect but real |
-| [[Theses/BESI - BE Semiconductor Industries]] | Hybrid bonders for advanced packaging (CoWoS, 3D stacking) — power-density requirements drive new packaging tools |
+| [[Theses/AMAT - Applied Materials]], [[Theses/LRCX - Lam Research]], [[Theses/ASMI - ASM International]], [[Theses/KLA - KLA Corporation]] | Semi capex tools: every SiC fab adds tool orders. Indirect but real |
+| [[Theses/BESI - BE Semiconductor Industries]] | Hybrid bonders for advanced packaging (CoWoS, 3D stacking): power-density requirements drive new packaging tools |
 | [[Theses/INTC - Intel]] | Intel Foundry / CPUs are downstream consumers of any power architecture; lower direct exposure |
 
 ### Sector notes that incorporate the framework
 
-- [[Sectors/Data Center Power & Cooling]] — primary MoC. The 800VDC question (existing §Macro shifts list) is the central framework; this Macro & Technology note is its detailed source.
-- [[Sectors/Modular Power Conversion Components]] — chip-level layer (Layer 5 above). The 800V→6V architectural debate referenced in this sector's key industry questions is partially addressed by this note's bottleneck cascade analysis.
-- [[Sectors/MLCC & Power Semiconductors]] — Layers 4 + 6 (wide-bandgap + passives). Murata thesis is the cleanest sector pure-play.
-- [[Sectors/Compute & AI Compute Accelerators]] — NVIDIA / AMD chip roadmap as the demand driver setting 800VDC adoption pace.
-- [[Sectors/Semiconductor Capital Equipment]] / [[Sectors/Semiconductor Foundries]] — upstream SiC/GaN fab buildout.
+- [[Sectors/Data Center Power & Cooling]]: primary MoC. The 800VDC question (existing §Macro shifts list) is the central framework; this Macro & Technology note is its detailed source.
+- [[Sectors/Modular Power Conversion Components]]: chip-level layer (Layer 5 above). The 800V→6V architectural debate referenced in this sector's key industry questions is partially addressed by this note's bottleneck cascade analysis.
+- [[Sectors/MLCC & Power Semiconductors]]: Layers 4 + 6 (wide-bandgap + passives). Murata thesis is the cleanest sector pure-play.
+- [[Sectors/Compute & AI Compute Accelerators]]: NVIDIA / AMD chip roadmap as the demand driver setting 800VDC adoption pace.
+- [[Sectors/Semiconductor Capital Equipment]] / [[Sectors/Semiconductor Foundries]]: upstream SiC/GaN fab buildout.
 
 ## Trade implications and portfolio positioning
 
 The reports converge on a similar structural picture but diverge on emphasis. Synthesised positioning framework:
 
-**Tier 1 — Highest-conviction, lowest valuation risk (multi-year backlog visibility, tariff-protected, oligopoly):**
+**Tier 1: Highest-conviction, lowest valuation risk (multi-year backlog visibility, tariff-protected, oligopoly):**
 
-- **Korean transformer trio basket** — HD Hyundai Electric (267260.KS) + Hyosung Heavy (298040.KS) + LS Electric (010120.KS). Combined Q1 2026 backlog ₩32T+. US-local production (Memphis, Alabama) tariff-protected. Order books extend through 2031. Wood Mackenzie's "deficit narrows by 2030" is the bear case but lead times are 128+ weeks today.
-- **Eaton (ETN)** — 228 GW backlog, +240% YoY datacenter orders, Beam Rubin DSX co-design, ~24 SST pilots, Resilient Power IP, Boyd Thermal liquid-cooling acquisition. The cleanest, fastest-compounding, most-defensible name across both architectures.
+- **Korean transformer trio basket**: HD Hyundai Electric (267260.KS) + Hyosung Heavy (298040.KS) + LS Electric (010120.KS). Combined Q1 2026 backlog ₩32T+. US-local production (Memphis, Alabama) tariff-protected. Order books extend through 2031. Wood Mackenzie's "deficit narrows by 2030" is the bear case but lead times are 128+ weeks today.
+- **Eaton (ETN)**: 228 GW backlog, +240% YoY datacenter orders, Beam Rubin DSX co-design, ~24 SST pilots, Resilient Power IP, Boyd Thermal liquid-cooling acquisition. The cleanest, fastest-compounding, most-defensible name across both architectures.
 
-**Tier 2 — Direct 800VDC pure-plays (catalyst-rich, valuation already partial):**
+**Tier 2: Direct 800VDC pure-plays (catalyst-rich, valuation already partial):**
 
-- **Vertiv (VRT)** — H2 2026 portfolio launch, +252% Q4 2025 organic orders, FSE service moat, NVIDIA reference partner. Risk: valuation reflects most of the AI-power thesis.
-- **Delta Electronics (2308.TW)** — OCP 800VDC whitepaper author, ~60–65% HVDC share, per-server revenue $43,800 (GB200) → $171,000 (Rubin Ultra). Most asymmetric upside on revenue-per-server math.
-- **Schneider (SU.PA)** — Co-design with NVIDIA, EU AI Continent anchor.
+- **Vertiv (VRT)**: H2 2026 portfolio launch, +252% Q4 2025 organic orders, FSE service moat, NVIDIA reference partner. Risk: valuation reflects most of the AI-power thesis.
+- **Delta Electronics (2308.TW)**: OCP 800VDC whitepaper author, ~60–65% HVDC share, per-server revenue $43,800 (GB200) → $171,000 (Rubin Ultra). Most asymmetric upside on revenue-per-server math.
+- **Schneider (SU.PA)**: Co-design with NVIDIA, EU AI Continent anchor.
 
-**Tier 3 — Oligopoly bottlenecks (under-priced, physical scarcity):**
+**Tier 3: Oligopoly bottlenecks (under-priced, physical scarcity):**
 
-- **Disco (6146.T)** — >70% SiC dicing/grinding. Picks-and-shovels on every SiC fab built. P/E ~38–40 premium justified.
-- **Murata (6981.T)** — [[Theses/6981 - Murata Manufacturing]]. 33% MLCC share + April 2026 price hike + VPD module entry. Already a vault thesis.
-- **Proterial (5563.T)** — Nanocrystalline FINEMET cores at ~45% global share. *The single biggest physical bottleneck for SST scaling.* Low-multiple Japanese small-cap.
+- **Disco (6146.T)**: >70% SiC dicing/grinding. Picks-and-shovels on every SiC fab built. P/E ~38–40 premium justified.
+- **Murata (6981.T)**: [[Theses/6981 - Murata Manufacturing]]. 33% MLCC share + April 2026 price hike + VPD module entry. Already a vault thesis.
+- **Proterial (5563.T)**: Nanocrystalline FINEMET cores at ~45% global share. The single biggest physical bottleneck for SST scaling. Low-multiple Japanese small-cap.
 
-**Tier 4 — Vertical Power Delivery on-board (existing vault thesis, structurally positive):**
+**Tier 4: Vertical Power Delivery on-board (existing vault thesis, structurally positive):**
 
-- **Vicor (VICR)** — [[Theses/VICR - Vicor Corporation]]. 2nd-gen VPD spec + ITC LEO licensing. Conviction medium currently; 800VDC adoption pace is a strong-positive trigger that could push to high if (a) NVIDIA Rubin Ultra confirms Vicor socket content and (b) Federal Circuit LEO survives intact.
+- **Vicor (VICR)**: [[Theses/VICR - Vicor Corporation]]. 2nd-gen VPD spec + ITC LEO licensing. Conviction medium currently; 800VDC adoption pace is a strong-positive trigger that could push to high if (a) NVIDIA Rubin Ultra confirms Vicor socket content and (b) Federal Circuit LEO survives intact.
 
-**Tier 5 — Wide-bandgap semis (paired, sized smaller):**
+**Tier 5: Wide-bandgap semis (paired, sized smaller):**
 
 - **Infineon (IFX)** + **onsemi (ON)** for broad SiC/GaN merchant exposure.
 - **Innoscience (2577.HK)** for higher-beta Chinese GaN with Google + onsemi de-risk.
 - **Coherent (COHR)** for 200/300mm SiC substrate + broader datacomms ramp.
-- **Navitas (NVTS)** as high-beta sleeve only — stock +868% TTM into Q1 FY26 print at $4.49B mcap already prices aggressive design-win expectations.
-- **Wolfspeed (WOLF)** as post-emergence turnaround sleeve only — execution risk dominates next 12 months.
+- **Navitas (NVTS)** as high-beta sleeve only: stock +868% TTM into Q1 FY26 print at $4.49B mcap already prices aggressive design-win expectations.
+- **Wolfspeed (WOLF)** as post-emergence turnaround sleeve only: execution risk dominates next 12 months.
 
-**Tier 6 — Equipment / tools (indirect):**
+**Tier 6: Equipment / tools (indirect):**
 
-- **Aixtron (AIXA)** — [[Theses/AIXA - Aixtron]]. MOCVD duopoly gates SiC/GaN epi.
-- **Veeco (VECO)** — MOCVD duopoly partner.
+- **Aixtron (AIXA)**: [[Theses/AIXA - Aixtron]]. MOCVD duopoly gates SiC/GaN epi.
+- **Veeco (VECO)**: MOCVD duopoly partner.
 
 **Strategic losers / shrinking pools:**
 - Legacy AC PDU and AC-mode UPS-only vendors (no Rubin-class capability).
@@ -332,15 +332,15 @@ The reports converge on a similar structural picture but diverge on emphasis. Sy
 
 6. **Liquid cooling adoption is a prerequisite gate.** Uptime Institute 2024: 22% of operators using DLC, <10% of racks in those facilities. SemiAnalysis: AI training near 100% DLC, enterprise far behind. If DLC penetration disappoints, 800VDC follows.
 
-7. **Foxconn Kaohsiung-1 at 40 MW is the only widely-cited operational 800VDC datacenter as of early 2026.** Any general statement about "deployed reality" of 800VDC is essentially a statement about *one facility*. Field reliability data is too thin to support actuarial confidence.
+7. **Foxconn Kaohsiung-1 at 40 MW is the only widely-cited operational 800VDC datacenter as of early 2026.** Any general statement about "deployed reality" of 800VDC is essentially a statement about one facility. Field reliability data is too thin to support actuarial confidence.
 
 8. **General-purpose enterprise datacenters will not transition.** Economics do not pencil at 10–20 kW/rack. 800VDC is overwhelmingly an AI-factory phenomenon; forecasts that blend will systematically overstate.
 
-9. **Custom-ASIC programs (Google TPU, AWS Trainium, Microsoft Maia, Meta MTIA) are largely *not* on 800VDC today.** They will move on different timelines and to different voltage targets. Equity narratives that assume all hyperscaler AI is "going 800VDC" are oversimplified.
+9. **Custom-ASIC programs (Google TPU, AWS Trainium, Microsoft Maia, Meta MTIA) are largely not on 800VDC today.** They will move on different timelines and to different voltage targets. Equity narratives that assume all hyperscaler AI is "going 800VDC" are oversimplified.
 
 10. **NEC, UL, and IEC standards lag the deployment timeline.** A serious arc-flash incident in the next 24–36 months is plausible and could trigger regulatory pause similar to early lithium-ion battery facility incidents. Single biggest non-supply-chain downside risk.
 
-11. **The 800V→6V single-step distribution debate** is unresolved. If adopted (some industry research circulates this option), it bypasses the 48V on-board tier where Vicor's VPD lives — but I²R penalty at 6V vs 48V (~64× wiring loss at same wattage) likely makes 48V on-board the persistent endpoint even with 800V upstream. Worth monitoring at the OCP and NVIDIA spec releases through 2027.
+11. **The 800V→6V single-step distribution debate** is unresolved. If adopted (some industry research circulates this option), it bypasses the 48V on-board tier where Vicor's VPD lives, but I²R penalty at 6V vs 48V (~64× wiring loss at same wattage) likely makes 48V on-board the persistent endpoint even with 800V upstream. Worth monitoring at the OCP and NVIDIA spec releases through 2027.
 
 ## Open Questions
 
@@ -352,24 +352,24 @@ The reports converge on a similar structural picture but diverge on emphasis. Sy
 
 - **Will any major insurance carrier publish 800VDC actuarial guidance before 2028**? Foxconn Kaohsiung-1 is one facility; reliability data is too thin for confidence pricing.
 
-- **VAC (Vacuumschmelze) nanocrystalline capacity expansion** — the single biggest physical bottleneck for SST scaling at MW, and private to Apollo. Not directly investable; should be tracked via Proterial (5563.T) capacity disclosures and any VAC capex announcements through Apollo's portfolio reporting.
+- **VAC (Vacuumschmelze) nanocrystalline capacity expansion**: the single biggest physical bottleneck for SST scaling at MW, and private to Apollo. Not directly investable; should be tracked via Proterial (5563.T) capacity disclosures and any VAC capex announcements through Apollo's portfolio reporting.
 
-- **Hyperscaler-specific 800VDC adoption commitments** (Microsoft, Meta, Google, Amazon, Oracle) at first-party press detail level — material to the slope of the ramp. AWS specifically is the laggard worth monitoring for capitulation.
+- **Hyperscaler-specific 800VDC adoption commitments** (Microsoft, Meta, Google, Amazon, Oracle) at first-party press detail level: material to the slope of the ramp. AWS specifically is the laggard worth monitoring for capitulation.
 
 ## Related Research
 
-- Source A: [[_Inbox/processed/compass_artifact_wf-60b03808-306c-48ca-9868-6ea5b811bd10_text_markdown]] — Institutional equity research note on 800VDC adoption with detailed forecast scenarios (base/bull/bear) and inflection points
-- Source B: [[_Inbox/processed/compass_artifact_wf-673fe644-ff19-4677-a601-26f9af21d15e_text_markdown]] — Grid-to-rack equity map (FY26–FY30) with deep coverage of Korean transformer trio, MLCC oligopoly, Disco, nanocrystalline cores
-- Source C: [[_Inbox/processed/compass_artifact_wf-f16530a3-3670-4658-b53b-01b9a07ffdba_text_markdown]] — Solid-state transformer bottleneck map with MV SiC module concentration analysis, M&A target identification, China SST landscape
-- Related: [[Research/2026-04-28 - VICR - Vertical Power Delivery Technical Architecture and Q1 2026 Earnings - deep-dive]] — chip-level on-board layer (the "last 1.5 mm" of the 800VDC chain)
-- Related: [[Macro & Technology/CXL Memory Disaggregation Framework]] — parallel architectural-primitive macro for AI infrastructure
-- Related: [[AI Bubble Risk and Semiconductor Valuations]] — risk context for the whole AI capex cycle that 800VDC monetizes
-- [[Research/2026-05-24 - Retrospective 1w - Synthesis]] — Mid-cycle rotation: structural-long capex floor reaffirmed (NVDA $1T Blackwell+Rubin visibility 2025-2027 + CreditSights $750B 2026 hyperscaler capex) keeps 800VDC adoption trajectory on the base-case 10-15% 2027 → 65-75% 2032 curve; no contradiction with existing adoption gates (liquid cooling, SST/nanocrystalline supply, DC standards)
-- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Aixtron (the GaN-epi gate) says the 800V GaN ramp is "not there yet… still some time out into the future," a '27–'29 cycle — the epi-tool order pull (leading indicator of rack-volume realization) has not yet fired, putting GaN-on-Si 800VDC capacity at the later end of the base-case 2027 inflection; Murata confirmed the 800V→50V→GPU architecture explicitly
-- [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]] — supply-side counterpart to the MLCC demand up-mix: maps the merchant-materials oligopoly beneath the cap makers (release film 87% top-5 / sub-100 nm BaTiO₃ 3-firm / Ni powder 4-firm) as a sub-layer of §Value chain map Layer 6; extends the "under-priced oligopolies / bottleneck cascade" framing one layer upstream
+- Source A: [[_Inbox/processed/compass_artifact_wf-60b03808-306c-48ca-9868-6ea5b811bd10_text_markdown]]: Institutional equity research note on 800VDC adoption with detailed forecast scenarios (base/bull/bear) and inflection points
+- Source B: [[_Inbox/processed/compass_artifact_wf-673fe644-ff19-4677-a601-26f9af21d15e_text_markdown]]: Grid-to-rack equity map (FY26–FY30) with deep coverage of Korean transformer trio, MLCC oligopoly, Disco, nanocrystalline cores
+- Source C: [[_Inbox/processed/compass_artifact_wf-f16530a3-3670-4658-b53b-01b9a07ffdba_text_markdown]]: Solid-state transformer bottleneck map with MV SiC module concentration analysis, M&A target identification, China SST landscape
+- Related: [[Research/2026-04-28 - VICR - Vertical Power Delivery Technical Architecture and Q1 2026 Earnings - deep-dive]]: chip-level on-board layer (the "last 1.5 mm" of the 800VDC chain)
+- Related: [[Macro & Technology/CXL Memory Disaggregation Framework]]: parallel architectural-primitive macro for AI infrastructure
+- Related: [[AI Bubble Risk and Semiconductor Valuations]]: risk context for the whole AI capex cycle that 800VDC monetizes
+- [[Research/2026-05-24 - Retrospective 1w - Synthesis]]: Mid-cycle rotation: structural-long capex floor reaffirmed (NVDA $1T Blackwell+Rubin visibility 2025-2027 + CreditSights $750B 2026 hyperscaler capex) keeps 800VDC adoption trajectory on the base-case 10-15% 2027 → 65-75% 2032 curve; no contradiction with existing adoption gates (liquid cooling, SST/nanocrystalline supply, DC standards)
+- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: earnings-transcript review; Aixtron (the GaN-epi gate) says the 800V GaN ramp is "not there yet… still some time out into the future," a '27–'29 cycle; the epi-tool order pull (leading indicator of rack-volume realization) has not yet fired, putting GaN-on-Si 800VDC capacity at the later end of the base-case 2027 inflection; Murata confirmed the 800V→50V→GPU architecture explicitly
+- [[Research/2026-06-05 - AI-Grade MLCC Upstream Pricing Power - deep-dive]]: supply-side counterpart to the MLCC demand up-mix: maps the merchant-materials oligopoly beneath the cap makers (release film 87% top-5 / sub-100 nm BaTiO₃ 3-firm / Ni powder 4-firm) as a sub-layer of §Value chain map Layer 6; extends the "under-priced oligopolies / bottleneck cascade" framing one layer upstream
 
 - [[Research/2026-08-14 - NVDA - 800 VDC AI Factories OCP - news]]
-- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — SE restates OCP 800V DC with GOOGL/MSFT/NVDA; no new MW/row figures vs 08-14 note
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: SE restates OCP 800V DC with GOOGL/MSFT/NVDA; no new MW/row figures vs 08-14 note
 
 ## Log
 
@@ -397,3 +397,6 @@ The reports converge on a similar structural picture but diverge on emphasis. Sy
 
 ### 2026-08-15
 - [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: OCP 800V DC + SiPh-ready rack standard restated; adoption curve unchanged vs 08-14 NVDA OCP note.
+
+### 2026-08-20
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

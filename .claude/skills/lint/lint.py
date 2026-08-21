@@ -721,10 +721,10 @@ def utility_files(v, scoped):
     if present_order != [s for s in HOT_SECTIONS if s in present_order]:
         add("NICE", "#35", "_hot.md sections out of canonical order")
     wc = len(text.split())
-    if wc > 5000:
-        add("IMPORTANT", "#35", f"_hot.md exceeds 5,000-word hard cap ({wc} words)")
-    elif wc > 4000:
-        add("NICE", "#35", f"_hot.md over soft cap ({wc}/4,000 words) — auto-compresses next update")
+    if wc > 10000:
+        add("IMPORTANT", "#35", f"_hot.md exceeds 10,000-word hard cap ({wc} words)")
+    elif wc > 8000:
+        add("NICE", "#35", f"_hot.md over soft cap ({wc}/8,000 words) — auto-compresses next update")
     # #42 truncation markers
     body = strip_code_fences(text)
     for i, ln in enumerate(body.split("\n"), 1):

@@ -476,6 +476,8 @@ Map Step 2's insights against each thesis section. Be selective.
 
 **Do NOT update sections where the delta is trivial.** Thesis contains synthesised conclusions, not duplicated research.
 
+**Self-contradiction check (source-thesis disconfirm — applies the Step 4b sweep discipline inward).** For each section a propagated datapoint would update, determine whether the new evidence CONTRADICTS what that section — or the thesis's Bull Case / Bear Case / Non-consensus Insights / Conviction Triggers — already asserts, not merely whether it adds to it. A propagated figure that undercuts an existing claim must SURFACE, never be smoothed into the prose silently: accumulate it and emit in the Step 8 report as `⚠️ [TICKER] §[Section]: new evidence contradicts existing claim "[…]" — reconcile, don't silently merge`. Step 4b forces this disconfirm question against every OTHER thesis in the sector; this forces it against the source thesis $sync is writing INTO — the one place the cross-thesis sweep never covers.
+
 **Mental Models section** — before writing it, read the relevant `/Mental Models` files and apply the READING PROTOCOL per `.agents/skills/_shared/mental-models-section.md` (MANDATORY reading gate). Merge new triggers as hypotheses-to-test; never overwrite; idempotent on model + trigger name. An unchanged section is the correct outcome for most runs.
 
 ### 3c: Pre-Edit Safety — Snapshot
@@ -511,15 +513,18 @@ Batch ID reused from Step 2.9. Proceed with edits to the ORIGINAL.
 ### 3d: Apply Substantive Edits
 
 - **Integrate, don't append** — weave new evidence into existing prose. No "Update (date):" blocks within sections.
+- **Carry provenance tags on propagated figures** — per `.agents/skills/_shared/provenance-tags.md`, when a quantitative claim (price, margin, yield, share, growth rate) moves from a research note's `## Evidence` into a thesis or sector body, its provenance tag travels with the number. If inline space is tight, at minimum preserve the weak-sourcing signal (`[1×: source]` / `[est.]`); never launder a single-sourced or estimated figure into a bare, authoritative-looking assertion in a thesis spine.
+- **New directional claims cite or propose a trigger** — when this sync introduces a NEW Bull Case, Bear Case, or Non-consensus Insight claim (not merely strengthening one that already exists), it must either cite the existing `## Conviction Triggers` entry the claim bears on OR flag that a new trigger should be added. A new directional claim with no falsification hook is exactly what `$lint #60` and the `.agents/skills/_shared/trigger-touch.md` contract exist to prevent — surface the missing-trigger case in the Step 8 report as a suggestion (`→ [TICKER] §[Bull|Bear|Non-consensus]: new claim "[…]" has no matching Conviction Trigger — add one via $deepen Conviction Triggers`). Never launder an unfalsifiable directional claim into the thesis spine.
 - **Preserve voice and structure**.
 - **Net deletions are OK** — if new evidence invalidates a prior claim, remove the claim.
 - **Mark resolved Outstanding Questions**: `~~Original question~~ → Resolved YYYY-MM-DD: [answer]`.
+- **Resolve absorbed open findings** — per `.agents/skills/_shared/followups-contract.md`, when a substantive edit absorbs an existing `_followups.md` open finding into a body section (a `$surface` opportunity woven into Bull Case, a `$retro` divergence resolved by the new evidence), move the matching `## Open` entry to `## Resolved` with outcome `absorbed`. Grep `_followups.md` `## Open` for entries on the affected ticker, match by topic. Never delete — Open→Resolved only. Non-fatal: on failure keep the entry Open and report it in the Step 8 report.
 
 ### 3e: Mechanical Updates (every time)
 
 - **Key Metrics**: update table if new numbers.
 - **Related Research**: add wikilink to new research note.
-- **Conviction trigger check**: if new data satisfies a predefined trigger: `⚡ Trigger hit: [quote the trigger] — [what happened]`.
+- **Conviction trigger check**: if new data satisfies a predefined trigger: `⚡ Trigger hit: [quote the trigger] — [what happened]`. This is the shared `.agents/skills/_shared/trigger-touch.md` check applied to propagated research — a touched or crossed trigger is FLAG-ONLY: surface it, never auto-execute `$status` (conviction change is Tier-3, human-gated). Distinct from drift detection below — a trigger touch is a single-datapoint event; drift is the aggregate Log-sentiment window.
 - **Conviction drift detection** — see `.agents/skills/_shared/log-prefixes.md` for authoritative prefix list. `$lint #29` verifies consistency. Scan Log backward from most recent, excluding entries that begin with (unconditional exclusions):
   - `"Stress test"` (registry §1)
   - `"Deepening"` (registry §2)
@@ -622,6 +627,7 @@ Skip snapshot if only adding wikilinks.
 - Update company comparison tables with new data points.
 - **Cross-thesis contradiction sweep (not just source-ticker additive).** Propagation defaults to strengthening the SOURCE ticker; force the peer question explicitly. For each OTHER Active Thesis in this sector, ask: does this research **validate or contradict** one of its named assumptions? A datapoint that is bullish for the source is often bearish for a peer (share gain = share loss elsewhere; a moat confirmed upstream = margin risk downstream). When the answer is "contradicts," the signal must SURVIVE the run — three concrete actions: (1) **accumulate** it as a tuple `(peer_ticker, named assumption, validates|contradicts, one-line mechanism)` in a running `cross_thesis_contradictions` list; (2) **append a Tier B Log entry on the peer thesis** (no snapshot — additive Log-only): `- Cross-thesis signal via [[Research/source note]]: [assumption] contradicted by [source ticker] evidence — [mechanism]. Review §Risks/§Bear Case.` (this is the only path by which propagation can ever weaken a thesis — without it $sync is structurally bull-additive); (3) **report** the full list as a `Cross-thesis contradictions:` line in the Step 8 report. If the sector's priced-in read shifted, ALSO update the sector's **`## Investor heuristics`** (what consensus believes / where it's wrong: the vault's stated edge). Do NOT silently leave peers stale because the research arrived under the source ticker.
 - Update the `## Mental Models` section when new cross-company evidence activates or retires a sector-level model trigger, or changes its read — read the relevant `/Mental Models` files first and merge per `.agents/skills/_shared/mental-models-section.md` (high selectivity; most syncs leave it untouched).
+  - **Empty-scaffold exception (CHG-14)** — selectivity governs *populated* sections. If the `## Mental Models` section is still the unpopulated template scaffold (only the three `<!-- … -->` placeholder bullets) AND the run has qualifying content — a model trigger fired this run, OR existing sector-body content that plainly activates a model (e.g. a documented named layer-monopoly fires Value Layer Monopoly §1) — then first-population is MANDATORY (Tier B, no snapshot), NOT an "empty section → trivial delta → skip". That skip is exactly what left the ABF Substrates sector note scaffold-empty through 5 consecutive `$sync` runs. Normal selectivity (do not churn already-populated sections) is unchanged. Full rule: `.agents/skills/_shared/mental-models-section.md` Selectivity step.
 
 ### 4c: Post-Edit Verification (targeted live-file verification)
 
@@ -766,9 +772,9 @@ For each planned write, compute the **projected section text** in memory (do not
 
 Compute `projected_total = sum(staged section word counts) + frontmatter + heading overhead`.
 
-- `projected_total ≤ soft_cap (4000)`: proceed to 6.4 direct commit.
-- `soft_cap < projected_total ≤ hard_cap (5000)`: proceed to 6.3 staged compression.
-- `projected_total > hard_cap (5000)`: attempt 6.3 staged compression. If still over hard cap after full compression trigger order, **ABORT all `_hot.md` writes for this run** (§6.5) before any Edit lands. `/hot.md` retains its pre-run state. Report the abort in Step 8.
+- `projected_total ≤ soft_cap (8000)`: proceed to 6.4 direct commit.
+- `soft_cap < projected_total ≤ hard_cap (10000)`: proceed to 6.3 staged compression.
+- `projected_total > hard_cap (10000)`: attempt 6.3 staged compression. If still over hard cap after full compression trigger order, **ABORT all `_hot.md` writes for this run** (§6.5) before any Edit lands. `/hot.md` retains its pre-run state. Report the abort in Step 8.
 
 ### 6.3: Staged compression (applied to staged text, not to the file)
 
@@ -804,7 +810,7 @@ If the composite Edit fails (rare — pre-checks at 6.2 should make this the pat
 If 6.2/6.3 aborted before any write:
 
 ```
-⚠️ _hot.md hard cap (5000 words) exceeded after all compression triggers — no _hot.md writes committed this $sync run.
+⚠️ _hot.md hard cap (10000 words) exceeded after all compression triggers — no _hot.md writes committed this $sync run.
    Current: [X] words. Projected with planned writes: [Y] words. Over cap by: [Z] words.
    
    Pre-run _hot.md state preserved. Resolution options:

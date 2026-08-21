@@ -147,7 +147,9 @@ Proposed change:
   Change: [old] → [new]
   Rationale: [from SKILL_ARGS]
   Trigger alignment: [see below]
+  Mental-model basis: [see below]
   Side effects: [list what will be updated — sector note, archive move, graph cleanup]
+  Open findings this may resolve: [grep _followups.md ## Open for this ticker; matching findings 1-line each — or "none"]
 
 Confirm? (y/n)
 ```
@@ -159,6 +161,8 @@ Confirm? (y/n)
 - `none defined — unfalsifiable change` — the thesis has **no** `## Conviction Triggers` section (~38 theses); state it plainly and suggest `$deepen TICKER Conviction Triggers` (Case A scaffold) after the change.
 
 This converts every Tier-3 decision into a hypothesis test against the thesis's own pre-registered falsifiers at zero extra reads. It never blocks — the user may confirm any alignment value — but a bare assertion is now visibly bare.
+
+**Mental-model basis (MANDATORY reading gate — `.agents/skills/_shared/mental-models-section.md`).** A conviction/status change is an investment judgement, so before rendering it read the load-tiered `/Mental Models` scope — `[[Mental Models/Generalist - Overview]]` always + the matching `Industry -` / `Lens -` note for this ticker (cached across the run) — and apply the READING PROTOCOL (models are lenses/questions, never verdicts; run the base-rate adversarially; model agreement is a disconfirm trigger, not a confirm). Fill the `Mental-model basis:` line by naming the fired trigger(s) the change rests on with their stable IDs (`[G-#]` / `§`) and a one-line read each, or `none` when no model bears on it. This binds the mandated read to the deliverable at the point of decision. Fast-path `draft→active` (Step 2F): light-touch — coverage-only, no conviction judgement — so `none` is expected.
 
 **Do NOT proceed without explicit user confirmation.** Investment decisions per AGENTS.md Tier 3.
 
@@ -351,6 +355,21 @@ Runs for every transition where Step 5.1 set `edit_planned: true` — including 
 
 **Cross-file parallelism**: Step 5a sector snapshot `cp` (Bash) can fan out in parallel with Step 5b's first Edit on the sector note — the snapshot reads the pre-edit state, the Edit writes the post-edit state; `cp` completes first even if dispatched in the same block because Bash is synchronous on the tool-result boundary.
 
+## Step 5.5: Advisory peer-assumption sweep (downgrade/close only)
+
+**Runs only when the change is a conviction DOWNGRADE (new level below old on the high > medium > low ordering) or a `status: active→closed`.** Skip for upgrades, non-closure status changes (`active→monitoring`, etc.), `draft→active` (Step 2F), and the Reaffirm flow (Step 2R never reaches here). **Advisory and non-fatal** — read-only; this step NEVER mutates any thesis (not the downgraded/closed one, and never a peer). A missing sector note, missing `_graph.md`, or zero matches skips it cleanly with no output.
+
+The assumption that just sank a thesis often underpins its sector peers, yet nothing checks them — a single-name downgrade should become a portfolio-wide check for the same failure mode. This is the read-only advisory analogue of `$sync` Step 4b's cross-thesis contradiction sweep: that one appends peer Log entries; this one only surfaces for the user to act on.
+
+1. **Identify the core assumption** the change rests on — from the user's rationale (`SKILL_ARGS`) plus the downgraded thesis's own `## Bull Case` / `## Key Non-consensus Insights` content (already in memory from the Step 1 read).
+2. **Enumerate sector peers** — the sector's OTHER active theses, via the sector note's `## Active Theses` list (already read at Step 5.1 when resolved) OR the `_graph.md` sector reverse-index keyed on the thesis's `sector:` value (grepped at Step 1). Exclude the downgraded/closed thesis itself.
+3. **Grep each peer** for reliance on the same assumption (shared driver, shared named catalyst, shared bull-case mechanism); keep only peers whose case leans on it.
+4. **Surface as an ADVISORY list only** — never auto-mutate peer theses; the user decides whether to reassess each:
+   ```
+   Peers sharing this assumption (review — the reason you downgraded [TICKER] may apply to them): [PEER1] (§section), [PEER2] (§section), …
+   ```
+   Zero peers, no sector resolution, or no `_graph.md` → omit the line entirely.
+
 ## Step 6: Graph update deferred
 
 `_graph.md` owned exclusively by `$graph`.
@@ -475,6 +494,23 @@ No neighbors (isolated thesis): skip file creation. Report `Invalidation: no nei
 After write, verify file exists + contains expected entries. Include in Step 8:
 - **Graph invalidation**: `[N] neighbors added to .graph_invalidations: [first 5, truncate with "...+M more"]`
 - **Graph reminder**: `$graph last` now mandatory — without it, invalidation list accumulates.
+
+## Step 7.7: Resolve open findings (_followups.md)
+
+Runs for every conviction/status change; Reaffirm flow (Step 2R) exits before this step and never resolves findings. Closes the loop opened by writer skills per `.agents/skills/_shared/followups-contract.md`. **Non-fatal** — a failed read or edit never blocks the completed change.
+
+1. `_followups.md` absent → skip.
+2. Grep `## Open` for entries whose thesis wikilink matches this TICKER.
+3. Keep only matches whose finding the executed change **satisfies**:
+   - `reassess conviction …` — a conviction change just happened.
+   - `… crossed → [HIGH/LOW/CLOSE] trigger` — the matching conviction/closure change just happened.
+   Non-satisfied findings stay in `## Open`.
+4. Move each match from `## Open` to the top of `## Resolved` (newest first), reformatting to the resolved-entry form with outcome `actioned via $status`:
+   ```
+   - [x] YYYY-MM-DD raised → YYYY-MM-DD resolved · <skill> · [[Theses/TICKER]] · <finding> — actioned via $status
+   ```
+   `raised` = the entry's original date; `resolved` = today. **Never delete — Open→Resolved only.**
+5. Surface in the report: `Findings resolved: [N] moved Open→Resolved in _followups.md` (omit when N=0).
 
 ## Step 7.9: Finalize status transaction manifest (consolidated — §10)
 

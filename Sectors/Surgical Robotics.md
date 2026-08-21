@@ -8,77 +8,77 @@ status: active
 # Surgical Robotics
 
 ## Active Theses
-- [[Theses/ISRG - Intuitive Surgical]] — Intuitive Surgical (da Vinci 5 upgrade cycle / razor-razorblade recurring revenue / surgical data platform transition)
+- [[Theses/ISRG - Intuitive Surgical]]: Intuitive Surgical (da Vinci 5 upgrade cycle / razor-razorblade recurring revenue / surgical data platform transition)
 
 ## Key Industry Questions
-- **Can any challenger close the ~95% US soft-tissue procedure share gap before da Vinci 5's data flywheel makes the moat terminal?** Hugo (FDA-cleared Dec 2025, urology) and Ottava (De Novo submitted Jan 2026, not cleared anywhere) each entered with single-indication clearances against a six-specialty, ~85-instrument, 25-year predicate chain — every year of delay compounds.
+- **Can any challenger close the ~95% US soft-tissue procedure share gap before da Vinci 5's data flywheel makes the moat terminal?** Hugo (FDA-cleared Dec 2025, urology) and Ottava (De Novo submitted Jan 2026, not cleared anywhere) each entered with single-indication clearances against a six-specialty, ~85-instrument, 25-year predicate chain; every year of delay compounds.
 - **Is AI democratization via NVIDIA Isaac for Healthcare the one thing that breaks the ISRG data moat?** ISRG has 3.15M procedures/yr and 20M+ cumulative cases; Hugo has "tens of thousands," Versius ~45K. If Cosmos synthetic data + Omniverse digital twins let J&J, Moon, CMR, and Activ close the performance gap without the patient base, ISRG's most durable asset erodes over 5–10 years.
-- **Does the US regulatory fortress hold?** No Chinese endoscopic robot has FDA clearance; 145% China tariffs make import economics prohibitive. But MicroPort Toumai has an FDA IDE and completed trans-continental telesurgery — the clearance pathway is being actively tested.
+- **Does the US regulatory fortress hold?** No Chinese endoscopic robot has FDA clearance; 145% China tariffs make import economics prohibitive. But MicroPort Toumai has an FDA IDE and completed trans-continental telesurgery; the clearance pathway is being actively tested.
 
 > [!question] 2026-05-01
 > What is the price per machine / price per procedure delta between chinese competitors and Intuitive's solutions
 
 - **Is architectural separation durable or converging?** Multi-port, single-port, flexible catheter, orthopedic haptic arm, and handheld robotic tools remain architecturally distinct; incumbents dominate within modality (ISRG soft tissue, Stryker ortho, ISRG/Noah endoluminal). Does anyone build a universal platform or does specialization persist?
 - **How much margin is at risk from instrument remanufacturing + antitrust?** Restore Robotics holds 4 FDA 510(k) clearances for remanufactured EndoWrists; hospital buyer class certified in 2024 in California. Deutsche Bank projects 10–15% US instrument revenue erosion by 2028. Does dV5's patent layer confine damage to the Xi base or does the legal theory extend?
-- **Will China's VBP expand to surgical robot consumables?** Consumable VBP rounds have achieved 60–90% price cuts across stents, orthopedic implants, infusion sets. Regional pilots for robot consumables are underway — a national round could gut the ~80% GM instrument economics in ISRG's second-largest growth market.
-- **Does the ASC (ambulatory surgical center) shift reshape the buyer?** CMS added 560 procedures and 35 ancillary services to the ASC Covered Procedures List for CY2026. ASC owner-operators have different capex tolerance, throughput demands, and service model preferences than hospital systems — advantaging modular/portable platforms (Versius, Mako RPS, Distalmotion Dexter) over capital-heavy da Vinci installs.
+- **Will China's VBP expand to surgical robot consumables?** Consumable VBP rounds have achieved 60–90% price cuts across stents, orthopedic implants, infusion sets. Regional pilots for robot consumables are underway; a national round could gut the ~80% GM instrument economics in ISRG's second-largest growth market.
+- **Does the ASC (ambulatory surgical center) shift reshape the buyer?** CMS added 560 procedures and 35 ancillary services to the ASC Covered Procedures List for CY2026. ASC owner-operators have different capex tolerance, throughput demands, and service model preferences than hospital systems, advantaging modular/portable platforms (Versius, Mako RPS, Distalmotion Dexter) over capital-heavy da Vinci installs.
 
 ## Industry History
 
 ### Origins (1985–1995): DARPA-funded telesurgery research
-The field has a single technological parent: **SRI International's Teleoperator System and Method with Telepresence**, developed in the late 1980s by Phillip Green under DARPA's "Trauma Pod" battlefield surgery program. The vision was MEDFAST — a forward-deployed armored vehicle where a combat medic prepped a soldier while a surgeon operated remotely from a Mobile Advanced Surgical Hospital. The commercial pivot came when SRI realized minimally invasive civilian surgery was the better wedge.
+The field has a single technological parent: **SRI International's Teleoperator System and Method with Telepresence**, developed in the late 1980s by Phillip Green under DARPA's "Trauma Pod" battlefield surgery program. The vision was MEDFAST: a forward-deployed armored vehicle where a combat medic prepped a soldier while a surgeon operated remotely from a Mobile Advanced Surgical Hospital. The commercial pivot came when SRI realized minimally invasive civilian surgery was the better wedge.
 
 Two commercial successors emerged in parallel from 1990–1995:
-- **Computer Motion** (founded 1990, Goleta CA): AESOP endoscope positioner cleared by FDA in 1994 — the first surgical robot approved in the US. Zeus system prototyped 1995.
+- **Computer Motion** (founded 1990, Goleta CA): AESOP endoscope positioner cleared by FDA in 1994, the first surgical robot approved in the US. Zeus system prototyped 1995.
 - **Intuitive Surgical** (founded Dec 1995, Sunnyvale CA): Frederic Moll + Robert Younge + John Freund licensed SRI's telepresence IP; da Vinci built on the SRI platform.
 
 ### Consolidation (1999–2003): IPO, patent war, merger
-- 2000: FDA clears da Vinci for laparoscopy (first robotic-assisted system) — launches the category commercially.
+- 2000: FDA clears da Vinci for laparoscopy (first robotic-assisted system); launches the category commercially.
 - 2002: California Central District rules da Vinci literally infringes Computer Motion's '809 patent.
-- 2003: Federal jury awards Intuitive/IBM $4.4M on a counterclaim against Computer Motion. March 7, 2003: Intuitive and Computer Motion merge — ends the litigation and combines Zeus/AESOP IP with da Vinci. Zeus phased out.
+- 2003: Federal jury awards Intuitive/IBM $4.4M on a counterclaim against Computer Motion. March 7, 2003: Intuitive and Computer Motion merge, ending the litigation and combining Zeus/AESOP IP with da Vinci. Zeus phased out.
 
 This 2003 merger is the pivotal event in the sector: it eliminated the only credible US competitor and handed Intuitive a near-monopoly for what turned out to be roughly two decades.
 
 ### Monopoly Decade (2003–2018): why no challenger appeared
 For 15 years post-Computer Motion merger, no commercially-launched US challenger emerged in soft-tissue robotics. Three structural reasons compounded:
-- **Capital intensity** — building da Vinci-equivalent hardware required $500M–$1B before first revenue. Pre-2014 medtech VC tolerance for hardware-intensive long-cycle bets was minimal; surgical robotics had no precedent for capital efficiency.
-- **Patent estate density** — Intuitive's 68+ patent families on Xi covered telemanipulation, EndoWrist articulation, surgeon-console ergonomics, and vision systems. Inventing around required parallel R&D, not feature copying.
-- **No ecosystem to enter** — robotic surgery training infrastructure (residency programs, simulators, case-volume thresholds, surgeon advocacy networks) all formed around da Vinci. A challenger needed clinical evidence + surgeon trainers + instrument manufacturing + hospital sales force — each took ISRG a decade to build.
+- **Capital intensity**: building da Vinci-equivalent hardware required $500M–$1B before first revenue. Pre-2014 medtech VC tolerance for hardware-intensive long-cycle bets was minimal; surgical robotics had no precedent for capital efficiency.
+- **Patent estate density**: Intuitive's 68+ patent families on Xi covered telemanipulation, EndoWrist articulation, surgeon-console ergonomics, and vision systems. Inventing around required parallel R&D, not feature copying.
+- **No ecosystem to enter**: robotic surgery training infrastructure (residency programs, simulators, case-volume thresholds, surgeon advocacy networks) all formed around da Vinci. A challenger needed clinical evidence + surgeon trainers + instrument manufacturing + hospital sales force, each of which took ISRG a decade to build.
 
 Failed contemporaneous attempts:
-- **TransEnterix Senhance** (later Asensus) — sold to Karl Storz at $0.35/share in Aug 2024; ~99% destruction from peak.
-- **Titan Medical SPORT** — development collapsed 2022; assets acquired by Vicarious Surgical for parts.
-- **ALF-X** (Italian) — acquired by TransEnterix for $99.8M in 2015, became Senhance, ultimately failed.
-- **RoboDoc/Curexo** (orthopedic, not soft-tissue) — survived but never achieved Mako-scale share.
+- **TransEnterix Senhance** (later Asensus): sold to Karl Storz at $0.35/share in Aug 2024; ~99% destruction from peak.
+- **Titan Medical SPORT**: development collapsed 2022; assets acquired by Vicarious Surgical for parts.
+- **ALF-X** (Italian): acquired by TransEnterix for $99.8M in 2015, became Senhance, ultimately failed.
+- **RoboDoc/Curexo** (orthopedic, not soft-tissue): survived but never achieved Mako-scale share.
 
-The 2018 expiry on da Vinci's foundational telemanipulation patents marks the start of the modern challenger wave. The IP wall was incrementally lowered, not breached by superior engineering — Hugo, Versius, and Toumai are not better systems than dV5; they are systems that became *legally buildable* at lower cost.
+The 2018 expiry on da Vinci's foundational telemanipulation patents marks the start of the modern challenger wave. The IP wall was incrementally lowered, not breached by superior engineering: Hugo, Versius, and Toumai became legally buildable at lower cost, rather than being better systems than dV5.
 
 ### The 2013 demand shock — the category's only adoption stall
-ACOG publicly warned against robotic hysterectomy in 2013; the FDA followed with a warning letter; adverse-event reports spiked; product-liability suits and settlement costs mounted. Hospitals delayed and reconsidered purchases and system sales slowed — the only demand-side stall in the category's 25-year history. Intuitive answered with the da Vinci Xi (2014) and re-accelerated, this phase led by international penetration rather than the earlier US-driven curve, and **introduced operating leasing in the same window** — removing the capital-outlay objection from a hesitating buyer. Leasing now covers **>50% of the ~10,000-system da Vinci base and ~40% of the ~850 Ion units**.
+ACOG publicly warned against robotic hysterectomy in 2013; the FDA followed with a warning letter; adverse-event reports spiked; product-liability suits and settlement costs mounted. Hospitals delayed and reconsidered purchases and system sales slowed, the only demand-side stall in the category's 25-year history. Intuitive answered with the da Vinci Xi (2014) and re-accelerated, this phase led by international penetration rather than the earlier US-driven curve, and **introduced operating leasing in the same window**, removing the capital-outlay objection from a hesitating buyer. Leasing now covers **>50% of the ~10,000-system da Vinci base and ~40% of the ~850 Ion units**.
 
 The base rate this sets for the category: a safety + regulatory + litigation shock compresses the multiple and stalls placements for roughly two years without breaking the instrument annuity, and the incumbent resets the cycle with the next platform generation.
 
-**Transferability caveat — the reason the base rate may not apply in 2026.** The 2013 shock landed when Intuitive had zero FDA-cleared soft-tissue competitors: a hospital that paused a purchase had no alternative platform to switch to, so deferred demand was recoverable by definition. Hugo cleared in December 2025 and Ottava filed in January 2026. The 2013 observation is drawn from a monopoly regime and should not be assumed to transfer to a contested one — the live test is ISRG's 2026 product-safety cluster (SureForm 30 Gray stapler recall with one death; dV5 foot-pedal Class II recall), where a hesitating buyer now has a cleared alternative in at least one indication. (Recall specifics per [[Theses/ISRG - Intuitive Surgical]] §Mental Models; 2013 event and leasing response per [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]].)
+**Transferability caveat: the reason the base rate may not apply in 2026.** The 2013 shock landed when Intuitive had zero FDA-cleared soft-tissue competitors: a hospital that paused a purchase had no alternative platform to switch to, so deferred demand was recoverable by definition. Hugo cleared in December 2025 and Ottava filed in January 2026. The 2013 observation is drawn from a monopoly regime and should not be assumed to transfer to a contested one; the live test is ISRG's 2026 product-safety cluster (SureForm 30 Gray stapler recall with one death; dV5 foot-pedal Class II recall), where a hesitating buyer now has a cleared alternative in at least one indication. (Recall specifics per [[Theses/ISRG - Intuitive Surgical]] §Mental Models; 2013 event and leasing response per [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]].)
 
 ### Platform evolution (2003–2024): S → Si → Xi → dV5 — planned obsolescence as strategy
 Each generation introduced architectural features that reset the competitive baseline before patents expired on the prior generation:
-- **da Vinci Standard/S (2003–2009)** — foundational telemanipulation, 3D visualization.
-- **da Vinci Si (2009–2014)** — dual-console training, improved optics.
-- **da Vinci Xi (2014–2024)** — overhead boom architecture enabling multi-quadrant access, thinner arms, 68+ patent families. Still the most widely deployed platform globally.
-- **da Vinci SP (2018–)** — single-port architecture, expanded from urology-only at launch to six specialty categories by 2025 (urology, colorectal, thoracic, transoral, +Dec 2025: inguinal hernia, cholecystectomy, appendectomy).
-- **da Vinci 5 (FDA cleared Mar 2024)** — 10,000x computing uplift, force feedback haptics (first in 20+ years of robotic surgery), OTA software via Network CCM, Case Insights AI analytics, fresh patent layer. Cardiac cleared Jan 2026 (~160K US procedure TAM). ~1,500 dV5 installed by Q1 2026 (up from 1,232 at year-end 2025).
+- **da Vinci Standard/S (2003–2009)**: foundational telemanipulation, 3D visualization.
+- **da Vinci Si (2009–2014)**: dual-console training, improved optics.
+- **da Vinci Xi (2014–2024)**: overhead boom architecture enabling multi-quadrant access, thinner arms, 68+ patent families. Still the most widely deployed platform globally.
+- **da Vinci SP (2018–)**: single-port architecture, expanded from urology-only at launch to six specialty categories by 2025 (urology, colorectal, thoracic, transoral, +Dec 2025: inguinal hernia, cholecystectomy, appendectomy).
+- **da Vinci 5 (FDA cleared Mar 2024)**: 10,000x computing uplift, force feedback haptics (first in 20+ years of robotic surgery), OTA software via Network CCM, Case Insights AI analytics, fresh patent layer. Cardiac cleared Jan 2026 (~160K US procedure TAM). ~1,500 dV5 installed by Q1 2026 (up from 1,232 at year-end 2025).
 
 ### Patent cliff and new-entrant wave (2016–2025)
 Intuitive's earliest foundational patents began expiring 2016. Post-2019 new-entrant cadence:
 - 2019: MicroPort MedBot Toumai development begins (NMPA approved Jan 2022).
 - 2021: Medtronic Hugo international launch (Chile, UAE).
-- 2022: Johns Hopkins SkyWalker orthopedic robot — first Chinese surgical robot FDA cleared.
+- 2022: Johns Hopkins SkyWalker orthopedic robot: first Chinese surgical robot FDA cleared.
 - 2023: Noah Medical Galaxy FDA cleared (bronchoscopy); CMR Versius De Novo cleared October 2024.
-- 2024: Virtual Incision MIRA De Novo cleared (Feb) — first miniaturized robot; Distalmotion Dexter De Novo cleared (Q4, inguinal hernia); Karl Storz acquires Asensus for $0.35/share (Aug).
+- 2024: Virtual Incision MIRA De Novo cleared (Feb), first miniaturized robot; Distalmotion Dexter De Novo cleared (Q4, inguinal hernia); Karl Storz acquires Asensus for $0.35/share (Aug).
 - 2025: Hugo FDA cleared for urology (Dec 3, 2025); Versius Plus 510(k) cleared for cholecystectomy (Dec 17, 2025); CMR raised $200M for US entry (Apr); Cornerstone Robotics $200M raise (Apr); Distalmotion cholecystectomy (May) and hysterectomy (Oct) clearances.
 - 2026: Ottava De Novo submitted (Jan); Edge Medical HKEX IPO at HKD 43.24/share raising HK$1.12B (Jan 8); dV5 cardiac FDA cleared (Jan); Hugo first US commercial case at Cleveland Clinic (Feb 17); Toumai surpasses 200 global commercial orders (Feb).
 
-The structural insight: **every new entrant arrived with a single-indication clearance against a multi-specialty incumbent** — the 25-year predicate chain proved the binding constraint, not hardware engineering.
+The structural insight: **every new entrant arrived with a single-indication clearance against a multi-specialty incumbent**; the 25-year predicate chain proved the binding constraint, not hardware engineering.
 
 ## Architectural Taxonomy
 
@@ -89,15 +89,15 @@ Surgical robotics is five architecturally distinct sub-industries that mostly do
 | **Multi-port soft tissue** | Abdomen, pelvis, thorax via 3–4 trocars | da Vinci Xi/5, Hugo, Ottava, Versius Plus, Toumai, Edge MP1000, Dexter, Senhance/LUNA | ISRG (~95% US) |
 | **Single-port soft tissue** | Oropharynx, rectum, deep pelvis via one cannula | da Vinci SP, Edge SP1000, Toumai SP, MIRA (miniaturized multi-port via one incision) | ISRG (monopoly US) |
 | **Flexible endoluminal** | Bronchial tree, ureter, GI lumen | Ion, Monarch (J&J), Galaxy (Noah) | ISRG (Ion 84% dx yield) |
-| **Orthopedic haptic arm** | Bone preparation — knee, hip, spine, shoulder | Mako (Stryker), ROSA (Zimmer), VELYS (J&J DePuy), Mazor X (Medtronic) | Stryker (Mako 3,000+ systems) |
+| **Orthopedic haptic arm** | Bone preparation: knee, hip, spine, shoulder | Mako (Stryker), ROSA (Zimmer), VELYS (J&J DePuy), Mazor X (Medtronic) | Stryker (Mako 3,000+ systems) |
 | **Handheld / tool augmentation** | Laparoscopy assist, knee resection | Moon Maestro (laparoscopy augmentation), Mako RPS (handheld knee saw, Feb 2026), Activ ActivSight | Emerging |
 
-**Why architectures don't converge**: A Mako haptic arm cannot perform telemanipulation; a da Vinci Xi cannot navigate a bronchial tree; a catheter cannot dissect rigid tissue. Attempting to generalize across modalities has historically failed — Stryker's CEO has publicly discussed soft-tissue ambitions for years without announcement; J&J's Monarch bronchoscope competes with Ion but J&J's multi-port (Ottava) is a separate platform. The market has converged on **architectural specialization → modality monopoly** rather than horizontal platforms.
+**Why architectures don't converge**: A Mako haptic arm cannot perform telemanipulation; a da Vinci Xi cannot navigate a bronchial tree; a catheter cannot dissect rigid tissue. Attempting to generalize across modalities has historically failed: Stryker's CEO has publicly discussed soft-tissue ambitions for years without announcement; J&J's Monarch bronchoscope competes with Ion but J&J's multi-port (Ottava) is a separate platform. The market has converged on **architectural specialization → modality monopoly** rather than horizontal platforms.
 
 ## Competitive Dynamics
 
 ### The paradox: crowded and concentrated
-At least **8 soft-tissue robotic systems hold US FDA clearance** (da Vinci, Hugo, Versius, Senhance/LUNA, MIRA, Maestro, Dexter, Galaxy as endoluminal — Ottava pending), yet **ISRG performs ~95% of US robotic soft-tissue procedures**. The paradox resolves through procedural breadth compounding: more procedures → more clinical evidence → more trained surgeons → more system sales → more instruments → more R&D → more new indications.
+At least **8 soft-tissue robotic systems hold US FDA clearance** (da Vinci, Hugo, Versius, Senhance/LUNA, MIRA, Maestro, Dexter, Galaxy as endoluminal; Ottava pending), yet **ISRG performs ~95% of US robotic soft-tissue procedures**. The paradox resolves through procedural breadth compounding: more procedures → more clinical evidence → more trained surgeons → more system sales → more instruments → more R&D → more new indications.
 
 ### Penetration ceilings (US, 2025)
 
@@ -107,7 +107,7 @@ At least **8 soft-tissue robotic systems hold US FDA clearance** (da Vinci, Hugo
 | Gynecology | 25–30% | Hysterectomy, sacrocolpopexy, myomectomy |
 | General surgery | 20–30% | Hernia, colectomy, cholecystectomy, bariatric |
 | Thoracic | 10–15% | Lobectomy, esophagectomy |
-| Cardiac | <5% | Mitral repair, CABG, ASD — dV5 cleared Jan 2026 |
+| Cardiac | <5% | Mitral repair, CABG, ASD; dV5 cleared Jan 2026 |
 
 72.6% of US hospitals had at least one surgical robot in 2023 (up from 54.3% in 2021). The TAM expansion story rests on the ~55–75% of procedures in each specialty that remain laparoscopic or open.
 
@@ -123,14 +123,14 @@ At least **8 soft-tissue robotic systems hold US FDA clearance** (da Vinci, Hugo
 | **MIRA** (Virtual Incision) | De Novo Feb 2024 | Colectomy | Miniaturized single-incision (2 lbs) | Fits in any OR; spaceMIRA tested on ISS |
 | **Maestro + ScoPilot** (Moon) | 510(k) Jun 2024 + Mar 2025 | Laparoscopy augmentation | Tool augmentation | AI scope control (Holoscan); PCCP for AI updates |
 | **Senhance / LUNA** (Karl Storz) | Cleared; LUNA in dev | General, gyn, urology (legacy Senhance) | Multi-port | European installed base via Karl Storz |
-| **Galaxy** (Noah Medical) | FDA 2023 | Bronchoscopy | Flex catheter | 96.7% dx yield (MATCH 2); disposable scope — but FDA warning letter Apr 2025 (CMS #702414) |
+| **Galaxy** (Noah Medical) | FDA 2023 | Bronchoscopy | Flex catheter | 96.7% dx yield (MATCH 2); disposable scope, but FDA warning letter Apr 2025 (CMS #702414) |
 | **Maestro / Monarch** (J&J) | Cleared | Bronchoscopy, urology (kidney stones 2026) | Flex catheter | NVIDIA simulation partnership for MONARCH Urology |
 | **Mako + RPS** (Stryker) | Mako cleared 2013; RPS Aug 2025, first cases Jan 2026 | Ortho (6 indications) | Haptic arm + handheld | 3,000+ Mako installed; 1.5M procedures; RPS targets ASCs |
 | **ActivSight / ActivEdge** (Activ Surgical) | Cleared | Imaging overlay | Hardware-agnostic AI | Works with any scope/robot; NVIDIA Holoscan |
 
 ### Chinese market bifurcation
 Two tiers are separating:
-- **Premium tier**: ISRG-Fosun JV retains academic and complex surgery — **72.7% share of China market by procurement value** (2023), 380+ systems, 540K+ patients. Fosun Xi manufactured in Shanghai qualifies as "domestic" in tenders.
+- **Premium tier**: ISRG-Fosun JV retains academic and complex surgery: **72.7% share of China market by procurement value** (2023), 380+ systems, 540K+ patients. Fosun Xi manufactured in Shanghai qualifies as "domestic" in tenders.
 - **Volume tier**: MicroPort MedBot, Edge Medical, KangDuo/Sagebot, Cornerstone win Tier 2/3 hospitals with 30–60% lower prices (¥14–17M vs ¥23M for da Vinci). Government "First Set" initiative (expanded 2024) allocates dedicated funding for domestically-manufactured equipment; 44% of Chinese hospitals interpret "domestic product" as Chinese-company only.
 
 ### Chinese challengers — international expansion
@@ -142,127 +142,127 @@ Two tiers are separating:
 | **KangDuo / Sagebot** | Beijing | CE MDR Dec 2025 | India, Saudi Arabia, Indonesia, Central Asia |
 | **Cornerstone Robotics (Sentire)** | Hong Kong | $200M Series D+ (2025); UK clinical trials at Portsmouth NHS Trust (Jun 2025); Hong Kong Investment Corp backing | UK, Netherlands, China |
 
-The competitive threat to ISRG is geographic: US (67% of ISRG revenue) is insulated by 145% tariffs and the FDA gap; EU/EM growth — where Chinese players have CE MDR — is where ISRG's international acceleration narrative is tested.
+The competitive threat to ISRG is geographic: US (67% of ISRG revenue) is insulated by 145% tariffs and the FDA gap; EU/EM growth, where Chinese players have CE MDR, is where ISRG's international acceleration narrative is tested.
 
 ### Durability asymmetry
 Competitors must cross three sequential moats:
-1. **Hardware parity** — solved by Hugo, Ottava, Versius, Toumai against Xi baseline.
-2. **Procedural breadth** — each indication requires separate FDA clearance. Hugo needs 5–10 years to reach da Vinci's six-specialty, 85-instrument footprint.
-3. **Data network effect** — ISRG has 20M+ cases; Hugo "tens of thousands"; Versius ~45K. Two orders of magnitude gap; PCCP framework rewards incumbents with existing regulatory relationships.
+1. **Hardware parity**: solved by Hugo, Ottava, Versius, Toumai against Xi baseline.
+2. **Procedural breadth**: each indication requires separate FDA clearance. Hugo needs 5–10 years to reach da Vinci's six-specialty, 85-instrument footprint.
+3. **Data network effect**: ISRG has 20M+ cases; Hugo "tens of thousands"; Versius ~45K. Two orders of magnitude gap; PCCP framework rewards incumbents with existing regulatory relationships.
 
 ## Product Level Analysis
 
 ### da Vinci 5 (ISRG, flagship)
 The most significant platform shift since Xi, built to transform ISRG from hardware monopolist to surgical data platform.
-- **Force feedback haptics** — reduces tissue forces by up to 43% in preclinical testing. FDA clearance March 2026 for 5 of 6 instruments at 15 uses (+Mega SutureCut at 10 uses) removed a major adoption friction.
-- **10,000× compute uplift** over Xi — purpose-built for ML inference at procedural fidelity.
-- **Case Insights** — ML "computational observer" for kinematics, video, system events; foundation for future subscription analytics.
-- **Over-the-air updates via Network CCM** — SaaS-like continuous improvement.
+- **Force feedback haptics**: reduces tissue forces by up to 43% in preclinical testing. FDA clearance March 2026 for 5 of 6 instruments at 15 uses (+Mega SutureCut at 10 uses) removed a major adoption friction.
+- **10,000× compute uplift** over Xi: purpose-built for ML inference at procedural fidelity.
+- **Case Insights**: ML "computational observer" for kinematics, video, system events; foundation for future subscription analytics.
+- **Over-the-air updates via Network CCM**: SaaS-like continuous improvement.
 - **~85 instruments** compatible across dV5/Xi/X (70 multi-port + 14 SP-specific + dV5-exclusive force-sensing).
-- **Six surgical categories** — urologic, gynecologic, general laparoscopic, thoracoscopic, cardiac (Jan 2026), transoral.
+- **Six surgical categories**: urologic, gynecologic, general laparoscopic, thoracoscopic, cardiac (Jan 2026), transoral.
 - **Installed**: ~1,500 systems, ~13,000 surgeons as of Q1 2026. 431 system placements Q1 2026 (vs 367 Q1 2025).
 - **International**: CE Mark July 2025 (urology, gyn, general lap); South Korea late 2025; Japan 2026 phased.
 
 ### Hugo RAS (Medtronic)
-- **Architecture**: 4 independently mobile arm carts — modular, can share arms across ORs; larger OR footprint than da Vinci boom.
-- **FDA urology cleared Dec 3, 2025** (prostatectomy, nephrectomy, cystectomy — ~230K US procedures/yr); first commercial case Cleveland Clinic Feb 17, 2026.
-- **Expand URO IDE** — largest ever completed for multi-port robotic urology in US; met primary safety/effectiveness endpoints.
-- **Hernia IDE** — 193 participants, zero mid-procedure conversions to traditional surgery; FDA submission pending.
+- **Architecture**: 4 independently mobile arm carts: modular, can share arms across ORs; larger OR footprint than da Vinci boom.
+- **FDA urology cleared Dec 3, 2025** (prostatectomy, nephrectomy, cystectomy; ~230K US procedures/yr); first commercial case Cleveland Clinic Feb 17, 2026.
+- **Expand URO IDE**: largest ever completed for multi-port robotic urology in US; met primary safety/effectiveness endpoints.
+- **Hernia IDE**: 193 participants, zero mid-procedure conversions to traditional surgery; FDA submission pending.
 - **Gyn IDE** initiated Oct 2025.
 - **International**: CE Mark across 35+ countries for urology, gyn, general surgery; tens of thousands of cases since 2021.
-- **Competitive wedge**: Bundling with LigaSure vessel sealer (industry-first robotic — CE July 2025), Touch Surgery AI ecosystem, Medtronic portfolio (cardiac implants etc.) for CFO-level "total hospital" discounts.
+- **Competitive wedge**: Bundling with LigaSure vessel sealer (industry-first robotic, CE July 2025), Touch Surgery AI ecosystem, Medtronic portfolio (cardiac implants etc.) for CFO-level "total hospital" discounts.
 
 ### Ottava (J&J)
-- **Architecture**: **Table-integrated arms** — the only major competitor with this design; arms deploy and stow beneath a standard surgical table.
-- **Twin Motion**: Synchronized patient-robot repositioning during surgery without re-docking — genuinely novel for multi-quadrant cases.
+- **Architecture**: **Table-integrated arms**, the only major competitor with this design; arms deploy and stow beneath a standard surgical table.
+- **Twin Motion**: Synchronized patient-robot repositioning during surgery without re-docking, genuinely novel for multi-quadrant cases.
 - **De Novo submitted Jan 2026** for general surgery upper abdomen (gastric bypass, gastric sleeve, small bowel resection, hiatal hernia). Second IDE for inguinal hernia approved late 2025.
-- **Ethicon integration**: Exclusively uses J&J's Ethicon instruments — leverages decades of hospital familiarity.
+- **Ethicon integration**: Exclusively uses J&J's Ethicon instruments; leverages decades of hospital familiarity.
 - **Analyst FDA timeline**: Leerink late 2026; JPMorgan 2028+. Not cleared anywhere in the world.
-- **AI**: NVIDIA Isaac for Healthcare partnership (Oct 2025) — using Omniverse digital twins for simulation and Cosmos synthetic data for clinical workflow optimization.
+- **AI**: NVIDIA Isaac for Healthcare partnership (Oct 2025): using Omniverse digital twins for simulation and Cosmos synthetic data for clinical workflow optimization.
 
 ### Versius Plus (CMR Surgical)
 - **510(k) Dec 17, 2025** for cholecystectomy (first-gen Versius had De Novo Oct 2024).
-- **Architecture**: Compact, modular cart-based arms — switch between robotic and non-robotic procedures in same OR.
-- **Differentiation**: vLimeLite NIR fluorescence imaging (ICG dye highlighting blood flow) — first advanced-energy instrument (ultrasonic dissector); digital data platform.
-- **International**: 45,000+ procedures globally — second-most-used soft-tissue robot after da Vinci; urology, gyn, general, thoracic, colorectal in international markets.
+- **Architecture**: Compact, modular cart-based arms; switch between robotic and non-robotic procedures in same OR.
+- **Differentiation**: vLimeLite NIR fluorescence imaging (ICG dye highlighting blood flow), first advanced-energy instrument (ultrasonic dissector); digital data platform.
+- **International**: 45,000+ procedures globally, second-most-used soft-tissue robot after da Vinci; urology, gyn, general, thoracic, colorectal in international markets.
 - **Capital**: $200M raised Apr 2025 for US entry; 2026 US commercial launch.
 
 ### Ion (ISRG, flexible endoluminal)
 - **84.2% diagnostic yield** vs Monarch 71.0% in head-to-head retrospective studies; 37-min median procedure time (Monarch 70 min); 1.0% pneumothorax rate (Monarch 4.3%).
-- **Procedures**: +52% volume growth FY2025 (271 system placements → 195 — shift from land-grab to utilization deepening); 43K procedures in Q1 2026 (+39% YoY).
-- **New AI software FDA cleared Oct 2025** — advanced imaging integration across navigation workflow; 2,000+ subject clinical studies ongoing EU + US.
-- **Strategic vision**: Diagnose with Ion → resect with da Vinci in same anesthetic event — pathway-level competitive advantage no disjointed platform can match; bridge into thoracic surgery.
+- **Procedures**: +52% volume growth FY2025 (271 system placements → 195: shift from land-grab to utilization deepening); 43K procedures in Q1 2026 (+39% YoY).
+- **New AI software FDA cleared Oct 2025**: advanced imaging integration across navigation workflow; 2,000+ subject clinical studies ongoing EU + US.
+- **Strategic vision**: Diagnose with Ion → resect with da Vinci in same anesthetic event: pathway-level competitive advantage no disjointed platform can match; bridge into thoracic surgery.
 
 ### Toumai (MicroPort MedBot)
 - **NMPA Jan 2022**; **200+ global commercial orders Feb 2026** (doubled from 100 in Oct 2025); ~130 systems installed across ~50 countries.
 - **FY2025 revenue ¥551.1M (+114.2% YoY)**; only company covering 5 subsectors (endoscopic, orthopedic, vascular, natural orifice, percutaneous).
-- **FDA IDE received**; completed FDA-IDE-approved Orlando → Angola trans-continental telesurgery Jun 2025 — technological leadership in 5G/satellite telesurgery.
-- **Clinical evidence**: 8 RCTs showing non-inferiority vs da Vinci in lobectomy, gastrectomy, nephrectomy — but sample sizes small (541 total patients).
+- **FDA IDE received**; completed FDA-IDE-approved Orlando → Angola trans-continental telesurgery Jun 2025: technological leadership in 5G/satellite telesurgery.
+- **Clinical evidence**: 8 RCTs showing non-inferiority vs da Vinci in lobectomy, gastrectomy, nephrectomy, but sample sizes small (541 total patients).
 - **Toumai SP and Toumai Tele-Robotic** both NMPA-approved 2025.
 
 ### Edge MP1000 / SP1000 (Shenzhen Edge Medical)
-- **HKEX IPO Jan 8, 2026** — Main Board listing HKD 43.24/share, HK$1.12B raised, 27.7M H shares. Backed by HongShan (Sequoia China), Temasek, OrbiMed.
-- **CE MDR Oct 2025** for SP1000 and MSP2000 — European market access.
+- **HKEX IPO Jan 8, 2026**: Main Board listing HKD 43.24/share, HK$1.12B raised, 27.7M H shares. Backed by HongShan (Sequoia China), Temasek, OrbiMed.
+- **CE MDR Oct 2025** for SP1000 and MSP2000: European market access.
 - **61 global orders across 20+ countries** mid-2025; 25 commercial orders within 6 months of international launch.
 - **Published RCT** non-inferiority vs da Vinci in partial nephrectomy across setup, operative time, warm ischemia, complications.
 - **Pricing**: 30–40% below imported da Vinci; optimized for DRG/DIP payment reforms.
 
 ### Mako (Stryker, orthopedic haptic)
 - **3,000+ installed systems**, 1.5M+ cumulative procedures; 6 FDA indications (total/partial knee, total hip, hip revision Mar 2025, spine 2024, shoulder Nov 2024).
-- **Mako RPS** — handheld robotic power saw for TKA; 510(k) Aug 2025, first cases Jan 2026, limited market release Feb 2026. AccuStop haptic feedback, lighter/simpler than full Mako, **targets ASCs and reluctant surgeons**.
-- **Architecturally incompatible** with soft-tissue telemanipulation — no surgeon console, no multi-arm system, no articulating instruments, no 3D visualization.
+- **Mako RPS**: handheld robotic power saw for TKA; 510(k) Aug 2025, first cases Jan 2026, limited market release Feb 2026. AccuStop haptic feedback, lighter/simpler than full Mako, **targets ASCs and reluctant surgeons**.
+- **Architecturally incompatible** with soft-tissue telemanipulation: no surgeon console, no multi-arm system, no articulating instruments, no 3D visualization.
 
 ### MIRA (Virtual Incision)
 - **World's first miniaturized surgical robot** (2 lbs); De Novo cleared Feb 2024 for colectomy.
-- Deploys through a **single umbilical incision** — architectural approach to making 90% of US ORs "robot-ready within minutes."
-- **spaceMIRA** tested on ISS Feb 2024 — NVIDIA Jetson-based remote surgery demonstration.
+- Deploys through a **single umbilical incision**: architectural approach to making 90% of US ORs "robot-ready within minutes."
+- **spaceMIRA** tested on ISS Feb 2024: NVIDIA Jetson-based remote surgery demonstration.
 - First hysterectomy completed post-clearance.
 
 ### Dexter (Distalmotion, Switzerland)
 - **De Novo Q4 2024** (inguinal hernia); 510(k) cholecystectomy May 2025; 510(k) hysterectomy Oct 2025. Sacrocolpopexy/endometriosis 510(k) pending.
 - **2,000+ procedures across 30+ procedure types** globally (general, gyn, colorectal, urology).
-- **$150M raised 2025** for ASC-focused US expansion — reusable instruments and compact form factor position for the outpatient shift.
+- **$150M raised 2025** for ASC-focused US expansion: reusable instruments and compact form factor position for the outpatient shift.
 
 ### Monarch (J&J, flexible bronchoscopy + urology)
 - FDA cleared 2018 for bronchoscopy; acquired via $5.75B Auris Health deal (2020) which also brought the technology underlying J&J's broader robotic ambitions.
 - **Diagnostic yield 71.0%** vs Ion's 84.2% in head-to-head retrospective studies; 70-min median procedure time vs Ion's 37 min; 4.3% pneumothorax vs Ion's 1.0%.
-- **MONARCH Urology** (kidney stone removal) cleared 2025 — opens a second, ~600K-procedure US TAM and creates the only flex-catheter platform that operates in both bronchial tree and urinary collecting system.
-- **NVIDIA Isaac for Healthcare partnership (2025)** — Omniverse digital twin for MONARCH Urology workflow simulation, Cosmos synthetic data for training.
-- Strategic significance: J&J's only currently-commercial robotic platform pending Ottava clearance — provides interim revenue base and surgeon-relationship continuity in the J&J robotics portfolio.
+- **MONARCH Urology** (kidney stone removal) cleared 2025: opens a second, ~600K-procedure US TAM and creates the only flex-catheter platform that operates in both bronchial tree and urinary collecting system.
+- **NVIDIA Isaac for Healthcare partnership (2025)**: Omniverse digital twin for MONARCH Urology workflow simulation, Cosmos synthetic data for training.
+- Strategic significance: J&J's only currently-commercial robotic platform pending Ottava clearance; provides interim revenue base and surgeon-relationship continuity in the J&J robotics portfolio.
 
 ### Mazor X / Stealth (Medtronic, spine)
 - Acquired 2018 for ~$1.6B; integrated tightly with Medtronic's Stealth navigation platform and Solera spinal implants.
 - 11+ FDA-cleared spine indications (pedicle screw, interbody, cortical bone trajectory, sacroiliac fusion).
 - **~400+ systems globally by Q1 2026**; competes with Globus Medical ExcelsiusGPS (~700 installed post-NUVA merger), Brainlab Cirq, Stryker Q Guidance.
-- Strategic significance: Medtronic's spine robotics anchor while Hugo builds soft-tissue clearance footprint — Mazor and Hugo are sold by separate sales forces and have independent P&Ls within Medtronic's Surgical Operating Unit.
+- Strategic significance: Medtronic's spine robotics anchor while Hugo builds soft-tissue clearance footprint; Mazor and Hugo are sold by separate sales forces and have independent P&Ls within Medtronic's Surgical Operating Unit.
 
 ### ROSA (Zimmer Biomet, orthopedic)
 - ROSA Knee FDA-cleared 2019; ROSA Hip cleared 2022; ROSA Shoulder in development.
-- **~1,500 systems installed by Q1 2026** — fastest-growing knee robot and Mako's primary competitor.
+- **~1,500 systems installed by Q1 2026**: fastest-growing knee robot and Mako's primary competitor.
 - Differentiation: Smaller footprint than Mako; integrates with Persona personalized knee implants; CT-optional workflow (vs Mako's CT-required) reduces pre-op imaging burden.
-- Strategic significance: ROSA's share gain in mid-volume hospitals (300–500 TKA/year) is the strongest counter-evidence to Mako's "winner-take-all in ortho" narrative — a parallel to the multi-port soft-tissue challenger thesis.
+- Strategic significance: ROSA's share gain in mid-volume hospitals (300–500 TKA/year) is the strongest counter-evidence to Mako's "winner-take-all in ortho" narrative, a parallel to the multi-port soft-tissue challenger thesis.
 
 ### VELYS (J&J DePuy Synthes, orthopedic)
 - ROBOTIC-ASSISTED Solution for TKA, FDA cleared 2020; VELYS Hip Navigation System launched 2025.
-- **~1,000+ systems installed by Q1 2026; +44% YoY procedure growth** — the fastest-growing knee robot by procedure volume.
-- No CT-based pre-op imaging required (image-free workflow) — operationally simpler than Mako, lower per-case cost.
+- **~1,000+ systems installed by Q1 2026; +44% YoY procedure growth**: the fastest-growing knee robot by procedure volume.
+- No CT-based pre-op imaging required (image-free workflow): operationally simpler than Mako, lower per-case cost.
 - Strategic significance: J&J's flagship orthopedic robotic platform; deep integration with DePuy Synthes implant portfolio (ATTUNE knee, Pinnacle/Corail hip) creates the same razor-razorblade dynamic Stryker built with Triathlon.
 
 ### Galaxy System (Noah Medical, flex bronchoscopy)
 - FDA cleared 2023 for bronchoscopic procedures.
-- **96.7% diagnostic yield in MATCH 2 study (2025)** — competitive with Ion's 84.2% but on smaller, retrospective sample.
+- **96.7% diagnostic yield in MATCH 2 study (2025)**: competitive with Ion's 84.2% but on smaller, retrospective sample.
 - Disposable scope architecture eliminates reprocessing burden and addresses cross-contamination risk that plagues reusable scopes.
-- **April 2025 FDA warning letter (CMS #702414)** on quality systems issues — material near-term execution risk; remediation in progress as of Q1 2026.
-- Strategic significance: Only credible disposable-scope challenger to Ion's premium pricing — but the FDA quality letter shifts the competitive narrative from "share threat" to "regulatory risk" until remediation completes.
+- **April 2025 FDA warning letter (CMS #702414)** on quality systems issues: material near-term execution risk; remediation in progress as of Q1 2026.
+- Strategic significance: Only credible disposable-scope challenger to Ion's premium pricing, but the FDA quality letter shifts the competitive narrative from "share threat" to "regulatory risk" until remediation completes.
 
 ## Surgeon Training & Adoption Economics
 
-The surgeon-training pipeline is the most underappreciated moat layer — harder to replicate than hardware, slower to erode than patents, and explicitly engineered by Intuitive over 25 years.
+The surgeon-training pipeline is the most underappreciated moat layer: harder to replicate than hardware, slower to erode than patents, and explicitly engineered by Intuitive over 25 years.
 
 ### The trained-surgeon installed base
 - **ISRG**: 90,000+ surgeons certified on da Vinci across 70+ countries; ~13,000 on dV5 specifically (Q1 2026).
-- **Residency penetration**: >75% of US urology residency programs include mandatory robotic rotations on da Vinci. ACGME mandates robotic competency for urology and gynecology residents — entrenches da Vinci muscle memory before challengers can compete for first-touch.
-- **Surgeon switching cost**: A trained da Vinci surgeon faces 30–80 supervised cases to reach competency on a different system — 6–12 months of practice disruption with no procedural revenue uplift. The economic disincentive is structural, not preference-based.
+- **Residency penetration**: >75% of US urology residency programs include mandatory robotic rotations on da Vinci. ACGME mandates robotic competency for urology and gynecology residents, which entrenches da Vinci muscle memory before challengers can compete for first-touch.
+- **Surgeon switching cost**: A trained da Vinci surgeon faces 30–80 supervised cases to reach competency on a different system: 6–12 months of practice disruption with no procedural revenue uplift. The economic disincentive is structural, not preference-based.
 
 ### Learning curve economics
 | Specialty | Cases to proficiency (da Vinci) | Cases to proficiency (challenger) |
@@ -270,32 +270,32 @@ The surgeon-training pipeline is the most underappreciated moat layer — harder
 | Prostatectomy | 50–100 | 80–150 (Hugo Expand URO observed range) |
 | Hysterectomy | 20–50 | 40–80 |
 | Cholecystectomy | 20–30 | 30–50 |
-| Cardiac mitral repair | 50–75 (early-adopter cohort) | N/A — no challenger cleared |
+| Cardiac mitral repair | 50–75 (early-adopter cohort) | N/A: no challenger cleared |
 
-A hospital deploying both da Vinci and a challenger bears double training overhead with zero reimbursement uplift — a structural disincentive to dual-platform deployments outside high-volume academic centers running comparative trials.
+A hospital deploying both da Vinci and a challenger bears double training overhead with zero reimbursement uplift, a structural disincentive to dual-platform deployments outside high-volume academic centers running comparative trials.
 
 ### Training infrastructure (ISRG)
 - **Da Vinci University**: 6 ISRG-operated global training centers (Sunnyvale, Atlanta, Seoul, Tokyo, Strasbourg, São Paulo). Tens of thousands of surgeon-training-days delivered annually.
-- **SimNow VR trainers**: Shipped with every dV5 system; >1M cumulative simulator hours logged. Mimic Technologies (acquired 2014) also licenses hardware-agnostic simulators that competitors use — extracting rent from the broader category.
-- **Case observership network**: Thousands of hospital-to-hospital surgeon visits annually facilitated by ISRG — proprietary social network competitors cannot easily replicate at scale.
+- **SimNow VR trainers**: Shipped with every dV5 system; >1M cumulative simulator hours logged. Mimic Technologies (acquired 2014) also licenses hardware-agnostic simulators that competitors use, extracting rent from the broader category.
+- **Case observership network**: Thousands of hospital-to-hospital surgeon visits annually facilitated by ISRG: proprietary social network competitors cannot easily replicate at scale.
 - **Surgeon proctoring**: Required first-N-cases supervision creates a self-perpetuating senior-surgeon pyramid; ISRG controls the proctor approval list.
 
 ### Challenger counter-strategies
 - **Hugo (Medtronic)**: Cleveland Clinic strategic partnership for first US urology cases; Touch Surgery AI for residency-targeted simulation library; bundled with Medtronic's existing OR-relationship footprint (vessel sealers, monitors).
 - **Ottava (J&J)**: Houston Methodist as IDE site; Ethicon instrument familiarity reduces nurse/scrub-tech retraining overhead.
-- **Versius (CMR)**: Modular cart architecture lets surgeons train on robotic in their existing OR rather than dedicated suite — lowers institutional training cost.
-- **Distalmotion Dexter**: Targets surgeons graduating from European fellowships where Dexter is in residency rotation — backdoor adoption via the next surgical generation.
+- **Versius (CMR)**: Modular cart architecture lets surgeons train on robotic in their existing OR rather than dedicated suite, which lowers institutional training cost.
+- **Distalmotion Dexter**: Targets surgeons graduating from European fellowships where Dexter is in residency rotation: backdoor adoption via the next surgical generation.
 
 All challenger strategies share a 3–5 year minimum lag to ISRG's installed surgeon base. The trained-surgeon moat is the slowest erosion path.
 
 ### Generational dynamics
-- **Surgeons trained 2015–2025** entered practice with robotic-first reflexes — converting them to alternative platforms is harder than converting open-trained surgeons to robotic.
+- **Surgeons trained 2015–2025** entered practice with robotic-first reflexes; converting them to alternative platforms is harder than converting open-trained surgeons to robotic.
 - **Surgeons retiring 2025–2035** disproportionately drove Mako adoption (ortho-native, late-career conversion to robotic) and may drive challenger adoption (less entrenched da Vinci preference).
-- **Mid-career surgeons (40–55)**: Highest dual-platform receptivity — already learned robotic via da Vinci, willing to evaluate alternatives if hospital economics support. The contested cohort.
+- **Mid-career surgeons (40–55)**: the contested cohort; highest dual-platform receptivity, already learned robotic via da Vinci, willing to evaluate alternatives if hospital economics support.
 
 ## Clinical Evidence Landscape
 
-Clinical evidence is the durable defense layer beneath patents and surgeon training — competitors must generate equivalent evidence per indication, which 5–10 year longitudinal studies cannot be accelerated by capital.
+Clinical evidence is the durable defense layer beneath patents and surgeon training: competitors must generate equivalent evidence per indication, which 5–10 year longitudinal studies cannot be accelerated by capital.
 
 ### Foundational meta-analyses
 
@@ -303,26 +303,26 @@ Clinical evidence is the durable defense layer beneath patents and surgeon train
 |---|---|---|---|
 | 2024 | *Annals of Surgery* meta-analysis | 230 studies, 1.1M robotic cases, 12 years | 56% fewer conversions to open vs lap; 21% fewer transfusions; 10% fewer complications; 0.5 day shorter LOS |
 | 2023 | Yaxley/Coughlin RCT 12-year follow-up | 326 RCT patients, prostatectomy | Equivalent oncological outcomes vs open at 12 years; better functional recovery (continence, erectile function) |
-| 2022 | *JAMA Surgery* RAS hernia outcomes | ~45,000 patient cohort | Higher cost, equivalent outcomes vs lap — most-cited bear-case evidence |
-| 2024 | RAS bariatric retrospective | ~100,000 cases | Equivalent safety, marginally longer operative time vs lap — driver of bariatric robotic plateau even before GLP-1 |
+| 2022 | *JAMA Surgery* RAS hernia outcomes | ~45,000 patient cohort | Higher cost, equivalent outcomes vs lap: most-cited bear-case evidence |
+| 2024 | RAS bariatric retrospective | ~100,000 cases | Equivalent safety, marginally longer operative time vs lap: driver of bariatric robotic plateau even before GLP-1 |
 
 ### Specialty-specific evidence balance
 | Specialty | Robotic evidence strength | Skeptic evidence | Net |
 |---|---|---|---|
-| Prostatectomy | Strong — long-term oncological + functional | Cost-effectiveness contested | Robotic dominant standard of care |
-| Gynecology (benign hysterectomy) | Strong — equivalent outcomes, faster recovery | LACE trial 2018: open superior for cervical cancer subset | Robotic dominant for benign; reduced for cervical cancer |
-| Cholecystectomy | Weak — equivalent to lap | Higher cost without outcome benefit in standard cases | Lap remains majority; robotic growing for complex/obese |
-| Hernia (inguinal, ventral) | Mixed — equivalent for most; better for complex ventral | RIVAL trial 2020: lap non-inferior for inguinal | Robotic growing for complex; lap holds simple |
-| Cardiac mitral repair | Strong — long-term outcomes equivalent to sternotomy | Surgeon learning curve burden, requires high-volume center | dV5 cleared Jan 2026 — growth driver |
-| Lobectomy | Strong — equivalent oncological outcomes vs VATS, faster recovery | Higher cost, longer operative time | Robotic share growing ~5%/yr |
+| Prostatectomy | Strong: long-term oncological + functional | Cost-effectiveness contested | Robotic dominant standard of care |
+| Gynecology (benign hysterectomy) | Strong: equivalent outcomes, faster recovery | LACE trial 2018: open superior for cervical cancer subset | Robotic dominant for benign; reduced for cervical cancer |
+| Cholecystectomy | Weak: equivalent to lap | Higher cost without outcome benefit in standard cases | Lap remains majority; robotic growing for complex/obese |
+| Hernia (inguinal, ventral) | Mixed: equivalent for most; better for complex ventral | RIVAL trial 2020: lap non-inferior for inguinal | Robotic growing for complex; lap holds simple |
+| Cardiac mitral repair | Strong: long-term outcomes equivalent to sternotomy | Surgeon learning curve burden, requires high-volume center | dV5 cleared Jan 2026: growth driver |
+| Lobectomy | Strong: equivalent oncological outcomes vs VATS, faster recovery | Higher cost, longer operative time | Robotic share growing ~5%/yr |
 | TKA (Mako) | Strong for component alignment, mixed for long-term outcomes | RCTs show alignment improvement; long-term implant survival benefit disputed | Mako share growing |
 
 ### Evidence gaps the bear case exploits
-- **Long-term implant survival for robotic ortho** — 10-year follow-up data on Mako TKA outcomes vs manual remains thin; first major comparative cohorts publishing 2026–2028.
-- **Cost-effectiveness in bundled-payment environments** — limited prospective economic data to support robotic premium when hospitals bear total cost.
-- **Robotic learning curve outcomes** — first 30–80 cases per surgeon show worse outcomes than lap; published surgeon-level adoption curves under-represent transition cost.
-- **GLP-1 era surgical volume base rates** — all extant clinical evidence predates the bariatric volume collapse; population baselines for benchmark studies are shifting.
-- **Direct head-to-head challenger vs da Vinci RCTs** — almost none exist outside Toumai's 8 small RCTs (541 patients total) and Edge Medical's partial nephrectomy non-inferiority study.
+- **Long-term implant survival for robotic ortho**: 10-year follow-up data on Mako TKA outcomes vs manual remains thin; first major comparative cohorts publishing 2026–2028.
+- **Cost-effectiveness in bundled-payment environments**: limited prospective economic data to support robotic premium when hospitals bear total cost.
+- **Robotic learning curve outcomes**: first 30–80 cases per surgeon show worse outcomes than lap; published surgeon-level adoption curves under-represent transition cost.
+- **GLP-1 era surgical volume base rates**: all extant clinical evidence predates the bariatric volume collapse; population baselines for benchmark studies are shifting.
+- **Direct head-to-head challenger vs da Vinci RCTs**: almost none exist outside Toumai's 8 small RCTs (541 patients total) and Edge Medical's partial nephrectomy non-inferiority study.
 
 ### Pivotal IDE pipeline (April 2026)
 
@@ -333,11 +333,11 @@ Clinical evidence is the durable defense layer beneath patents and surgeon train
 | Ottava (J&J) | General surgery upper abdomen | De Novo submitted Jan 2026 | 2026–2028 (Leerink late 2026; JPM 2028+) |
 | Ottava | Inguinal hernia | IDE approved late 2025 | 2027–2028 |
 | Mako RPS | TKA, expansion | Limited market release Feb 2026 | Iterative real-world data |
-| Toumai | Multiple — FDA IDE | Active | 2027+ |
+| Toumai | Multiple: FDA IDE | Active | 2027+ |
 
 ## Reimbursement & Hospital Economics
 
-Reimbursement is the silent constraint on robotic adoption — robotic procedures share CPT codes with their lap/open equivalents, so hospitals absorb capital and consumable cost against unchanged procedural payment.
+Reimbursement is the silent constraint on robotic adoption: robotic procedures share CPT codes with their lap/open equivalents, so hospitals absorb capital and consumable cost against unchanged procedural payment.
 
 ### CPT and reimbursement landscape (US, 2026)
 
@@ -349,37 +349,37 @@ Reimbursement is the silent constraint on robotic adoption — robotic procedure
 | Robotic-assisted lobectomy | 32673 | ~$15,200 | $0 vs VATS |
 | Mako TKA | 27447 | ~$11,500 | $0 vs manual TKA |
 
-The structural absence of robotic premium reimbursement means **every robotic system must justify its capital + consumable burden through indirect economics** — case mix, LOS, surgeon recruitment, marketing — never through direct fee uplift.
+The structural absence of robotic premium reimbursement means **every robotic system must justify its capital + consumable burden through indirect economics** (case mix, LOS, surgeon recruitment, marketing), never through direct fee uplift.
 
 ### Hospital ROI math
 A da Vinci Xi/5 hospital must amortize $1.5–2.5M capital + $200K annual service contract against:
-- **Higher case-mix index** — robotic urology procedures carry MS-DRG weights 5–15% above open equivalents on case-mix calculations.
-- **Length-of-stay reduction** — 0.5 day shorter LOS vs laparoscopy frees inventory for higher-throughput case mix.
-- **Surgeon recruitment and retention** — hospitals lacking robotic capability lose surgeons (and their downstream referral revenue) to robotic-equipped competitors.
-- **Marketing differentiation** — "advanced robotic surgery" positioning drives self-pay patient acquisition for elective procedures (urology, gynecology, hernia, cosmetic-adjacent ortho).
+- **Higher case-mix index**: robotic urology procedures carry MS-DRG weights 5–15% above open equivalents on case-mix calculations.
+- **Length-of-stay reduction**: 0.5 day shorter LOS vs laparoscopy frees inventory for higher-throughput case mix.
+- **Surgeon recruitment and retention**: hospitals lacking robotic capability lose surgeons (and their downstream referral revenue) to robotic-equipped competitors.
+- **Marketing differentiation**: "advanced robotic surgery" positioning drives self-pay patient acquisition for elective procedures (urology, gynecology, hernia, cosmetic-adjacent ortho).
 
-Typical hospital break-even: 250–350 robotic procedures/year per system on 7-year amortization. ~85% of US hospital deployments cross break-even within 18 months at moderate utilization. **The challenger threat is not "Hugo wins ROI calculations" — it's "Hugo lowers the per-procedure capital burden such that ASCs and small hospitals enter the addressable market that da Vinci's price excluded."**
+Typical hospital break-even: 250–350 robotic procedures/year per system on 7-year amortization. ~85% of US hospital deployments cross break-even within 18 months at moderate utilization. **The challenger threat is Hugo lowering the per-procedure capital burden such that ASCs and small hospitals enter the addressable market that da Vinci's price excluded, not Hugo winning ROI calculations.**
 
 ### GPO and procurement dynamics
 Three GPOs (Vizient, Premier, HealthTrust) negotiate ~70% of US hospital surgical capital and consumables.
 - **ISRG**: Preferred-vendor status across all three. Multi-year exclusive instrument contracts that reinforce the procedural breadth moat.
 - **Hugo (Medtronic)**: Bundled-portfolio leverage (LigaSure + Touch Surgery + cardiac implants + capital equipment) targets CFO-level GPO negotiations; Medtronic's existing GPO relationships are the primary go-to-market asset.
-- **CMR Versius, Distalmotion Dexter**: Hospital-direct sales bypassing GPO contracts — works for early-adopter academic centers and ASCs, fails at scale.
+- **CMR Versius, Distalmotion Dexter**: Hospital-direct sales bypassing GPO contracts: works for early-adopter academic centers and ASCs, fails at scale.
 
 ### International reimbursement variation
 | Country | Reimbursement model | Robotic premium | Penetration tailwind |
 |---|---|---|---|
-| US | MS-DRG, no per-procedure premium | None directly; case-mix advantages | Highest globally — 72.6% hospital penetration |
+| US | MS-DRG, no per-procedure premium | None directly; case-mix advantages | Highest globally: 72.6% hospital penetration |
 | Germany | G-DRG; robotic-specific add-on coding from 2025 | €600–1,200/case for select procedures | Major near-term tailwind for Hugo/Versius EU positioning |
-| UK | NHS block contract; no per-procedure premium | None | Capex-constrained — favors Versius portability |
+| UK | NHS block contract; no per-procedure premium | None | Capex-constrained: favors Versius portability |
 | China | Provincial DRG/DIP + insurance expansion | Variable; expanding 2024–2026 | Demand creator; biased to domestic systems via "First Set" policy |
-| Japan | Fee-for-service with robotic adjustment | Recently expanded — ~12 procedures with robotic premium | dV5 phased rollout 2026; supportive |
+| Japan | Fee-for-service with robotic adjustment | Recently expanded: ~12 procedures with robotic premium | dV5 phased rollout 2026; supportive |
 | Brazil | Hybrid public-private; private pay drives robotic | Private only | Toumai 10+ system installed base; Hugo expanding |
 
 ### Value-based care and bundled payment risk
-CMS's mandatory bundled payment programs (TJR/CABG bundles, Comprehensive Joint Replacement) tie hospital payment to total episode cost. **Bundled payment is the single largest reimbursement-side threat to robotic adoption** — when hospitals bear total cost risk, the consumable premium of robotic procedures becomes a direct margin hit.
+CMS's mandatory bundled payment programs (TJR/CABG bundles, Comprehensive Joint Replacement) tie hospital payment to total episode cost. **Bundled payment is the single largest reimbursement-side threat to robotic adoption**: when hospitals bear total cost risk, the consumable premium of robotic procedures becomes a direct margin hit.
 
-Counterweight: outcomes data (lower readmissions, shorter LOS, lower complications) supports robotic procedures within bundles for selected indications. ISRG's clinical evidence firewall is *more* economically valuable in bundled-payment than fee-for-service environments — the durability of Layer 1 evidence pays dividends as US payment shifts toward risk-sharing.
+Counterweight: outcomes data (lower readmissions, shorter LOS, lower complications) supports robotic procedures within bundles for selected indications. ISRG's clinical evidence firewall is more economically valuable in bundled-payment than fee-for-service environments; the durability of Layer 1 evidence pays dividends as US payment shifts toward risk-sharing.
 
 ## Acquisitions and New Entrants
 
@@ -389,76 +389,76 @@ Counterweight: outcomes data (lower readmissions, shorter LOS, lower complicatio
 |---|---|---|
 | 2003 | Intuitive Surgical + Computer Motion merger | End patent litigation; consolidate Zeus/AESOP IP with da Vinci; eliminate sole credible competitor |
 | 2013 | Stryker acquires Mako for $1.65B | Enter orthopedic robotics; integrate robotic-arm-assisted joint replacement into Stryker's ortho ecosystem |
-| 2018 | Medtronic acquires Mazor Robotics (~$1.6B) | Spine robotics — pre-Hugo commitment to the category |
+| 2018 | Medtronic acquires Mazor Robotics (~$1.6B) | Spine robotics: pre-Hugo commitment to the category |
 | 2020 | J&J acquires Auris Health ($5.75B up-front, $2.35B milestones) | Monarch bronchoscopy + robotic platform capability |
 | 2020 | J&J acquires Verb Surgical from Verily/Google | Ottava platform inheritance |
 | 2024 | Karl Storz acquires Asensus Surgical at $0.35/share (Aug) | Senhance installed base + LUNA next-gen roadmap; Karl Storz visualization + Asensus robotics |
 
 ### New-entrant business models (2026)
-- **Incumbent bundling** (Medtronic Hugo) — win on hospital-system CFO economics via portfolio discounts (LigaSure + Touch Surgery + cardiac implants + capital equipment). Assumes procurement committee can override surgeon preference.
-- **Architectural differentiation** (J&J Ottava) — table-integrated arms + Ethicon instrument familiarity. Bets surgeons will defect for workflow improvement in multi-quadrant cases.
-- **Portability / cost** (CMR Versius, Distalmotion Dexter, Virtual Incision MIRA) — no dedicated OR required. Target mid-market hospitals and ASCs priced out of da Vinci's $1.5–2.5M capital.
-- **Augmentation, not replacement** (Moon Maestro, Activ Surgical) — AI overlay or laparoscopy assist; explicitly concedes head-on da Vinci replacement is unachievable.
-- **State-backed cost arbitrage** (MicroPort, Edge, KangDuo, Cornerstone) — 30–60% price discount + Belt and Road distribution + domestic-policy tailwinds. US-insulated but internationally threatening.
-- **Specialty monopoly consolidation** (Stryker Mako in ortho, ISRG Ion in endoluminal) — win the modality, defend the incumbent perimeter.
+- **Incumbent bundling** (Medtronic Hugo): win on hospital-system CFO economics via portfolio discounts (LigaSure + Touch Surgery + cardiac implants + capital equipment). Assumes procurement committee can override surgeon preference.
+- **Architectural differentiation** (J&J Ottava): table-integrated arms + Ethicon instrument familiarity. Bets surgeons will defect for workflow improvement in multi-quadrant cases.
+- **Portability / cost** (CMR Versius, Distalmotion Dexter, Virtual Incision MIRA): no dedicated OR required. Target mid-market hospitals and ASCs priced out of da Vinci's $1.5–2.5M capital.
+- **Augmentation, not replacement** (Moon Maestro, Activ Surgical): AI overlay or laparoscopy assist; explicitly concedes head-on da Vinci replacement is unachievable.
+- **State-backed cost arbitrage** (MicroPort, Edge, KangDuo, Cornerstone): 30–60% price discount + Belt and Road distribution + domestic-policy tailwinds. US-insulated but internationally threatening.
+- **Specialty monopoly consolidation** (Stryker Mako in ortho, ISRG Ion in endoluminal): win the modality, defend the incumbent perimeter.
 
 ### Pricing power trajectory
 ISRG's pricing power appears **bifurcating**:
-- **US hospital systems**: Pricing power strengthening — dV5 upgrade cycle priced at premium; force feedback and Case Insights justifying 2026 gross margin guide of 67.5–68.5%.
+- **US hospital systems**: Pricing power strengthening: dV5 upgrade cycle priced at premium; force feedback and Case Insights justifying 2026 gross margin guide of 67.5–68.5%.
 - **Chinese premium tier**: Stable via Fosun JV insulation.
-- **Chinese volume tier**: Eroding — Toumai and Edge discounting 30–60%; government procurement bias.
-- **Emerging markets**: Eroding — Chinese players with CE MDR + Belt and Road penetration.
-- **US instruments**: At-risk — Restore Robotics holds 4 510(k) clearances for remanufactured EndoWrists; Deutsche Bank projects 10–15% US instrument revenue erosion by 2028. dV5 patent layer confines remanufacturers to shrinking Xi base.
-- **ASC channel**: Unclear — modular players (Dexter, Versius, Mako RPS) architected for this; da Vinci capital intensity is a liability.
+- **Chinese volume tier**: Eroding: Toumai and Edge discounting 30–60%; government procurement bias.
+- **Emerging markets**: Eroding: Chinese players with CE MDR + Belt and Road penetration.
+- **US instruments**: At-risk: Restore Robotics holds 4 510(k) clearances for remanufactured EndoWrists; Deutsche Bank projects 10–15% US instrument revenue erosion by 2028. dV5 patent layer confines remanufacturers to shrinking Xi base.
+- **ASC channel**: Unclear: modular players (Dexter, Versius, Mako RPS) architected for this; da Vinci capital intensity is a liability.
 
 ## Macro Shifts
 
 ### 1. AI democratization via NVIDIA — the 5-year moat risk
-The 2026 state: ISRG has **AI infrastructure parity** (dV5 built on NVIDIA Blackwell/Clara/Omniverse; Tony Jarc presented at GTC 2026), but NVIDIA plays Switzerland — also partnering with **J&J (MONARCH Urology 2026 + Polyphonic AI Fund with AWS)**, **CMR Surgical**, **Moon Surgical (ScoPilot on Holoscan)**, **Activ Surgical**, **Virtual Incision** (spaceMIRA on Jetson). **NVIDIA GTC 2026** unveiled Isaac GR00T foundation model targeting surgical robotics.
+The 2026 state: ISRG has **AI infrastructure parity** (dV5 built on NVIDIA Blackwell/Clara/Omniverse; Tony Jarc presented at GTC 2026), but NVIDIA plays Switzerland, also partnering with **J&J (MONARCH Urology 2026 + Polyphonic AI Fund with AWS)**, **CMR Surgical**, **Moon Surgical (ScoPilot on Holoscan)**, **Activ Surgical**, **Virtual Incision** (spaceMIRA on Jetson). **NVIDIA GTC 2026** unveiled Isaac GR00T foundation model targeting surgical robotics.
 
-The moat question: ISRG has 20M+ procedures vs Hugo's "tens of thousands" and Versius ~45K — a two-orders-of-magnitude data gap. NVIDIA's **Cosmos world foundation models for synthetic data** and **Omniverse digital twins** could let competitors close the gap without the patient base. **ISRG's data flywheel is defensible through 2030; the 5–10-year horizon is the real risk window.**
+The moat question: ISRG has 20M+ procedures vs Hugo's "tens of thousands" and Versius ~45K, a two-orders-of-magnitude data gap. NVIDIA's **Cosmos world foundation models for synthetic data** and **Omniverse digital twins** could let competitors close the gap without the patient base. **ISRG's data flywheel is defensible through 2030; the 5–10-year horizon is the real risk window.**
 
 ### 2. Autonomy — lab curiosity, not regulatory reality (yet)
 - **Johns Hopkins SRT-H (July 2025)**: Autonomous cholecystectomy on pig models with 100% accuracy, published in *Science Robotics*. Built on older da Vinci hardware; used language-conditioned imitation learning on surgical videos.
 - **Kangnuositen (China)**: Autonomous vascular clamping on live pig using only endoscopic visual feedback.
 - **Regulatory reality**: No FDA-cleared device operates autonomously in surgery. No clearance pathway exists for Level 3+ autonomous systems. Industry operates at Level 1–2 (teleoperation + decision support).
-- **Incumbency advantage**: PCCP framework (finalized Dec 2024; FDA+HealthCanada+MHRA five principles Aug 2025) lets AI-enabled devices update models without new marketing submission — **advantages players with existing regulatory relationships and clearance predicates.**
+- **Incumbency advantage**: PCCP framework (finalized Dec 2024; FDA+HealthCanada+MHRA five principles Aug 2025) lets AI-enabled devices update models without new marketing submission, which **advantages players with existing regulatory relationships and clearance predicates.**
 
 ### 3. ASC / outpatient shift — changes the buyer
 CMS CY2026 ASC Final Rule (Nov 21, 2025):
-- **560 surgical procedures + 35 ancillary services added to ASC Covered Procedures List** — five regulatory exclusion criteria removed.
+- **560 surgical procedures + 35 ancillary services added to ASC Covered Procedures List**: five regulatory exclusion criteria removed.
 - 2.6% ASC payment rate update (CY2026).
 - Heavy focus on cardiovascular, spine, orthopedic.
 
-ASCs have different economics than hospitals: higher throughput, lower capex tolerance, physician-owner influence on purchasing. This **advantages modular/portable/handheld systems** — Distalmotion Dexter (positioning for ASCs), CMR Versius (no dedicated OR), Stryker Mako RPS (lighter handheld), Virtual Incision MIRA (2 lbs, any OR). **Disadvantages da Vinci** — $1.5–2.5M system + ORs engineered around boom architecture is a mismatch for high-throughput ASC economics.
+ASCs have different economics than hospitals: higher throughput, lower capex tolerance, physician-owner influence on purchasing. This **advantages modular/portable/handheld systems**: Distalmotion Dexter (positioning for ASCs), CMR Versius (no dedicated OR), Stryker Mako RPS (lighter handheld), Virtual Incision MIRA (2 lbs, any OR). **Disadvantages da Vinci**: $1.5–2.5M system + ORs engineered around boom architecture is a mismatch for high-throughput ASC economics.
 
 ### 4. China VBP expansion — the highest-impact policy risk
-Volume-Based Procurement precedent (2019–2024): coronary stents -90%, orthopedic implants -80%, infusion sets -70%, dental/ophthalmic -60%. **6th national round announced in NHSA's 2025 plan.** Surgical robot capital equipment not yet targeted nationally; **regional pilots for consumables are underway.** If consumables fall into a VBP round, Intuitive-Fosun JV instruments (historically ~80% GM) face existential pricing pressure — Fosun insulation helps but bidding against Edge Medical at 30–40% discount is margin-destructive. This is the highest expected-value risk to the ISRG recurring revenue model.
+Volume-Based Procurement precedent (2019–2024): coronary stents -90%, orthopedic implants -80%, infusion sets -70%, dental/ophthalmic -60%. **6th national round announced in NHSA's 2025 plan.** Surgical robot capital equipment not yet targeted nationally; **regional pilots for consumables are underway.** If consumables fall into a VBP round, Intuitive-Fosun JV instruments (historically ~80% GM) face existential pricing pressure; Fosun insulation helps but bidding against Edge Medical at 30–40% discount is margin-destructive. This is the highest expected-value risk to the ISRG recurring revenue model.
 
 ### 5. GLP-1 second-order effects — contained but extending
 - **Bariatric surgery decline**: Mass General Brigham (Oct 2024) documented **25.6% decrease in bariatric surgery** and **132.6% increase in GLP-1 prescriptions** (H2 2022 → H2 2023). Vault thesis data: bariatric -46.4% Q4 2022–Q3 2025 (sleeve gastrectomy -50%, gastric bypass -44%).
 - **Direct impact contained**: Bariatric <3% of US robotic procedures.
-- **Second-order risk**: If GLP-1 adoption reduces obesity-related comorbidities broadly, hernia (obesity-associated), reflux, and general surgery volumes — ISRG's US growth engine — slow on a multi-year lag. This is the single most underappreciated long-duration risk.
-- **Offsetting**: SP procedure growth +91% FY2025; cardiac dV5 cleared Jan 2026 (~160K TAM); Ion +52% — portfolio diversification partially hedges.
+- **Second-order risk**: If GLP-1 adoption reduces obesity-related comorbidities broadly, hernia (obesity-associated), reflux, and general surgery volumes (ISRG's US growth engine) slow on a multi-year lag. This is the single most underappreciated long-duration risk.
+- **Offsetting**: SP procedure growth +91% FY2025; cardiac dV5 cleared Jan 2026 (~160K TAM); Ion +52%: portfolio diversification partially hedges.
 
 ### 6. Instrument remanufacturing + antitrust — near-term margin risk
 - **Restore Robotics**: 4 FDA 510(k) clearances for remanufactured da Vinci Xi instruments (added cautery hook + spatula Mar 2026). ISRG granted contractual approval for Restore to remanufacture any EndoWrist under a cleared 510(k).
-- **Surgical Instrument Service v. Intuitive**: Jan 28, 2025 — Judge Martínez-Olguín **dismissed SIS's aftermarket claims** (Intuitive win). Per 9th Circuit Epic precedent, SIS failed to prove a separate EndoWrist aftermarket.
+- **Surgical Instrument Service v. Intuitive**: Jan 28, 2025: Judge Martínez-Olguín **dismissed SIS's aftermarket claims** (Intuitive win). Per 9th Circuit Epic precedent, SIS failed to prove a separate EndoWrist aftermarket.
 - **Hospital buyer class action**: Martínez-Olguín is also presiding over health provider class action (filed May 2021, alleging anticompetitive contracts inflated prices). **Class certified in 2024**. Still active as of Apr 2026.
 - **Deutsche Bank projection**: Remanufactured instruments could erode US instrument sales 10–15% by 2028.
-- **ISRG counter**: dV5 force-sensing instruments carry fresh patents and more complex encryption — confines remanufacturers to shrinking Xi base.
+- **ISRG counter**: dV5 force-sensing instruments carry fresh patents and more complex encryption; confines remanufacturers to shrinking Xi base.
 
 ### 7. Tariffs and manufacturing geography
 - **90% of ISRG instrument/accessory production in Mexicali, Mexico**; 25% tariff on Mexican imports = direct hit.
 - 2026 ISRG guidance includes **1.2% of revenue tariff drag**.
 - Mitigation: New Bulgaria and Germany facilities under build.
 - **Section 232 investigation** into medical devices could expand tariffs further.
-- **145% China tariffs** make Chinese surgical robot import economics prohibitive — US market insulation holds.
+- **145% China tariffs** make Chinese surgical robot import economics prohibitive; US market insulation holds.
 
 ### 8. Reimbursement and coding
-- Robotic-assisted procedures historically eligible for standard CPT codes with no incremental reimbursement — hospitals absorb the capital and consumable cost.
-- **ASC expansion (CY2026)** effectively opens reimbursement for robotic procedures in outpatient settings — particularly orthopedic and selected soft-tissue.
-- **China**: Medical insurance coverage for robotic surgery expanding across Shanghai, Beijing, major cities — demand-creating but domestically-biased toward Chinese systems.
+- Robotic-assisted procedures historically eligible for standard CPT codes with no incremental reimbursement; hospitals absorb the capital and consumable cost.
+- **ASC expansion (CY2026)** effectively opens reimbursement for robotic procedures in outpatient settings, particularly orthopedic and selected soft-tissue.
+- **China**: Medical insurance coverage for robotic surgery expanding across Shanghai, Beijing, major cities: demand-creating but domestically-biased toward Chinese systems.
 
 ## Regulatory Framework
 
@@ -466,21 +466,21 @@ Regulatory pathway asymmetry is the single most underappreciated structural moat
 
 | Pathway | Timeline | FDA user fee | Predicate requirement | Incumbent advantage |
 |---|---|---|---|---|
-| **510(k)** (90% of cleared surgical robots) | 3–12 months | ~$24K | Substantial equivalence to predicate | Massive — ISRG's 25-year predicate chain lets it expand indications fast |
-| **De Novo** (novel systems — Hugo, Ottava, Versius, MIRA, Dexter) | 12–24+ months | ~$162K | Creates new predicate | Bears full time/cost burden; later entrants can reference the De Novo predicate |
-| **PCCP** (AI-enabled devices, final guidance Dec 2024) | Integrated with 510(k)/De Novo/PMA | N/A | Pre-approved modification envelope | Massive — continuous AI model updates without new submission; advantages players with established FDA relationships |
+| **510(k)** (90% of cleared surgical robots) | 3–12 months | ~$24K | Substantial equivalence to predicate | Massive: ISRG's 25-year predicate chain lets it expand indications fast |
+| **De Novo** (novel systems: Hugo, Ottava, Versius, MIRA, Dexter) | 12–24+ months | ~$162K | Creates new predicate | Bears full time/cost burden; later entrants can reference the De Novo predicate |
+| **PCCP** (AI-enabled devices, final guidance Dec 2024) | Integrated with 510(k)/De Novo/PMA | N/A | Pre-approved modification envelope | Massive: continuous AI model updates without new submission; advantages players with established FDA relationships |
 
-**Consequence**: Hugo's December 2025 urology clearance is **not** a platform endorsement — it's a clearance for 3 specific procedures. Each additional indication (hernia, gyn, thoracic, cardiac) requires separate clinical evidence + IDE + submission. At typical surgical robot review cadence, Hugo needs 5–10 years of sequential expansions to approach da Vinci's six-specialty footprint. **By then, dV5 Case Insights will have accumulated another decade of procedural data no competitor can replicate.**
+**Consequence**: Hugo's December 2025 urology clearance is a clearance for 3 specific procedures, not a platform endorsement. Each additional indication (hernia, gyn, thoracic, cardiac) requires separate clinical evidence + IDE + submission. At typical surgical robot review cadence, Hugo needs 5–10 years of sequential expansions to approach da Vinci's six-specialty footprint. **By then, dV5 Case Insights will have accumulated another decade of procedural data no competitor can replicate.**
 
 ## Patent Landscape
 
-The IP estate is the structural foundation beneath the regulatory moat — patent expirations dictate when challengers become legally buildable, not whether they can compete on engineering.
+The IP estate is the structural foundation beneath the regulatory moat: patent expirations dictate when challengers become legally buildable, not whether they can compete on engineering.
 
 ### Intuitive's IP estate by generation
 
 | Platform | Foundational filing window | Estimated runway | Strategic status |
 |---|---|---|---|
-| da Vinci Standard / S | 1995–2005 | Expired | Public domain — feeds challenger inventability; explains 2018+ wave timing |
+| da Vinci Standard / S | 1995–2005 | Expired | Public domain: feeds challenger inventability; explains 2018+ wave timing |
 | da Vinci Si | 2003–2010 | Expired or expiring 2026–2028 | Substantial public domain; remaining peripheral claims |
 | da Vinci Xi (68+ patent families) | 2010–2018 | 2030–2038 expirations rolling | Still substantial Xi-era moat; protects current installed base economics |
 | da Vinci SP | 2014–2022 | 2034–2042 | Distinct architecture, separate IP estate; competitor SP attempts (Edge SP1000, Toumai SP) test inventability |
@@ -489,33 +489,33 @@ The IP estate is the structural foundation beneath the regulatory moat — paten
 
 ### Strategic IP layers
 
-1. **Telemanipulation foundational patents** — substantially expired or expiring; the post-2019 challenger wave timing is dictated by this expiry window, not by hardware-engineering breakthroughs.
-2. **Articulation and instrument design (EndoWrist)** — partial expirations driving the Restore Robotics remanufacturing wave; dV5 force-sensing instruments carry fresh patents creating a defensible secondary IP layer.
-3. **Force feedback** — first commercial deployment in 20+ years on dV5; ISRG appears to hold the dominant patent estate. Closest competitor work (CMR Versius haptic feedback announcement) faces clearance and IP litigation risk.
-4. **Surgical AI and Case Insights ML** — newest patent layer; dV5-exclusive computational advantages. Patents on *application-specific* surgical AI inferencing pipelines, not on general ML methods.
-5. **Trademark / surgeon network / training certification** — non-IP defensive layer; "Trained at Intuitive" certification is ungenerable by competitors and survives all patent expirations.
+1. **Telemanipulation foundational patents**: substantially expired or expiring; the post-2019 challenger wave timing is dictated by this expiry window, not by hardware-engineering breakthroughs.
+2. **Articulation and instrument design (EndoWrist)**: partial expirations driving the Restore Robotics remanufacturing wave; dV5 force-sensing instruments carry fresh patents creating a defensible secondary IP layer.
+3. **Force feedback**: first commercial deployment in 20+ years on dV5; ISRG appears to hold the dominant patent estate. Closest competitor work (CMR Versius haptic feedback announcement) faces clearance and IP litigation risk.
+4. **Surgical AI and Case Insights ML**: newest patent layer; dV5-exclusive computational advantages. Patents on application-specific surgical AI inferencing pipelines, not on general ML methods.
+5. **Trademark / surgeon network / training certification**: non-IP defensive layer; "Trained at Intuitive" certification is ungenerable by competitors and survives all patent expirations.
 
 ### Active litigation watchpoints (April 2026)
 
 | Case | Status | Significance |
 |---|---|---|
 | **SIS v. Intuitive** | Dismissed Jan 2025 (9th Circuit Epic precedent) | Aftermarket antitrust theory failed; precedent supports ISRG service contract structure |
-| **Larkin et al. v. Intuitive** (hospital buyer class) | Class certified 2024; active under Judge Martínez-Olguín | Tests anticompetitive contract claims; ongoing — material risk if class wins damages or injunction |
-| **Restore Robotics v. Intuitive** | Resolved 2024 — contractual arrangement | Restore can remanufacture under cleared 510(k); Xi patent layer determines economics envelope |
+| **Larkin et al. v. Intuitive** (hospital buyer class) | Class certified 2024; active under Judge Martínez-Olguín | Tests anticompetitive contract claims; ongoing: material risk if class wins damages or injunction |
+| **Restore Robotics v. Intuitive** | Resolved 2024: contractual arrangement | Restore can remanufacture under cleared 510(k); Xi patent layer determines economics envelope |
 
 ### IP-related strategic questions
 - **Will competitors litigate force feedback?** CMR's haptic announcement could trigger ISRG patent assertion; outcome reshapes whether haptic is dV5-exclusive (current) or category feature (potentially 2027+).
-- **Does Restore's 510(k) pathway extend to dV5 instruments?** Remanufacturer 510(k)s require reference-device disassembly and spec replication — dV5 force-sensing complexity raises the bar.
-- **Will Chinese players face IP enforcement in international markets?** No US assertion possible (no Chinese surgical robots cleared for US); EU enforcement under EPO patent regime is the active question — particularly for Edge Medical's CE MDR'd SP1000.
+- **Does Restore's 510(k) pathway extend to dV5 instruments?** Remanufacturer 510(k)s require reference-device disassembly and spec replication; dV5 force-sensing complexity raises the bar.
+- **Will Chinese players face IP enforcement in international markets?** No US assertion possible (no Chinese surgical robots cleared for US); EU enforcement under EPO patent regime is the active question, particularly for Edge Medical's CE MDR'd SP1000.
 
 ## Data & AI Moat — The Four-Layer Cake
 
 ISRG's AI strategy (per CDO Brian Miller, promoted Jan 2026) is deliberately **augmentation rather than autonomy**, built in four layers:
 
-1. **Connected data capture** — dV5 as high-fidelity surgical black box recording kinematics, video, system events.
-2. **Objective performance measurement** — Case Insights generating standardized metrics across surgeons and procedures.
-3. **Clinical decision enablement** — analytics supporting pre-op planning and intra-op decision-making.
-4. **Real-time procedural guidance** — AI-assisted surgical execution within PCCP framework (long-term vision).
+1. **Connected data capture**: dV5 as high-fidelity surgical black box recording kinematics, video, system events.
+2. **Objective performance measurement**: Case Insights generating standardized metrics across surgeons and procedures.
+3. **Clinical decision enablement**: analytics supporting pre-op planning and intra-op decision-making.
+4. **Real-time procedural guidance**: AI-assisted surgical execution within PCCP framework (long-term vision).
 
 | Moat layer | ISRG position | Nearest competitor | Gap magnitude |
 |---|---|---|---|
@@ -524,20 +524,20 @@ ISRG's AI strategy (per CDO Brian Miller, promoted Jan 2026) is deliberately **a
 | Layer 3 (decision enablement) | Early commercial | Activ Surgical ActivSight, Moon ScoPilot | Hardware-agnostic players have modules; ISRG has the proprietary integration |
 | Layer 4 (real-time guidance) | Roadmap | Johns Hopkins SRT-H (research) | Regulatory pathway undefined industry-wide |
 
-**The unreplicable asset**: Layer 1. ISRG's **20M+ cumulative patient dataset across 90,000+ trained surgeons in 70+ countries** cannot be cloned with capital or NVIDIA partnerships. Synthetic data (Cosmos) + digital twins (Omniverse) could narrow the gap over 5–10 years, but the clinical evidence firewall — the Dec 2024 *Annals of Surgery* meta-analysis (230 studies, 1.1M robotic cases, 12 years, showing **56% fewer conversions to open surgery**, 21% fewer transfusions, 10% fewer complications, 0.5 day shorter hospital stay vs laparoscopy) — is the durable layer. No competitor can build this in <10 years.
+**The unreplicable asset**: Layer 1. ISRG's **20M+ cumulative patient dataset across 90,000+ trained surgeons in 70+ countries** cannot be cloned with capital or NVIDIA partnerships. Synthetic data (Cosmos) + digital twins (Omniverse) could narrow the gap over 5–10 years, but the clinical evidence firewall, the Dec 2024 *Annals of Surgery* meta-analysis (230 studies, 1.1M robotic cases, 12 years, showing **56% fewer conversions to open surgery**, 21% fewer transfusions, 10% fewer complications, 0.5 day shorter hospital stay vs laparoscopy), is the durable layer. No competitor can build this in <10 years.
 
-**Commercial monetization pathway**: ISRG has signaled a future "Surgical Quality" subscription model — net-new high-margin recurring revenue from the installed base. EMR analytics (Epic, Cerner) precedent suggests hospitals will pay; surgeon-performance-data monetization is unprecedented.
+**Commercial monetization pathway**: ISRG has signaled a future "Surgical Quality" subscription model: net-new high-margin recurring revenue from the installed base. EMR analytics (Epic, Cerner) precedent suggests hospitals will pay; surgeon-performance-data monetization is unprecedented.
 
 ## Global Market Sizing
 
 ### Procedure penetration ceiling
-Total addressable surgical procedures globally (2025): ~310M annually. Robotic-suitable subset (laparoscopy + selected open + select ortho + endoluminal): ~75M. Currently performed robotically: ~7M (~9% of suitable). **Penetration ceiling 60–80% by 2040** if dV5 + challengers execute — implying ~6–9× current robotic procedure volume by 2040.
+Total addressable surgical procedures globally (2025): ~310M annually. Robotic-suitable subset (laparoscopy + selected open + select ortho + endoluminal): ~75M. Currently performed robotically: ~7M (~9% of suitable). **Penetration ceiling 60–80% by 2040** if dV5 + challengers execute, implying ~6–9× current robotic procedure volume by 2040.
 
 ### Revenue model decomposition (ISRG FY2025 baseline, illustrative)
 
 | Revenue category | % of FY2025 revenue | Growth driver | Margin profile |
 |---|---|---|---|
-| Instruments and accessories | ~58% | Procedure volume growth (recurring) | ~80% GM — the high-margin recurring engine |
+| Instruments and accessories | ~58% | Procedure volume growth (recurring) | ~80% GM: the high-margin recurring engine |
 | Systems (capital) | ~24% | dV5 upgrade cycle + EM penetration | ~60% GM (capital sale, lower margin) |
 | Service | ~18% | Installed base expansion + service contract attach | ~50% GM (people + parts) |
 
@@ -547,7 +547,7 @@ The mix shift toward instruments and the future Surgical Quality subscription is
 - **2025 robotic procedure base**: ~7M globally
 - **2030 estimate**: 15–20M (15–20% CAGR)
 - **2040 estimate**: 35–55M (penetration to 60–80% of suitable procedures)
-- **AI/subscription TAM** (per ISRG Surgical Quality vision): $200–500/case × 35–55M procedures = $7–28B annual run-rate by 2040 — net-new high-margin recurring revenue layer not currently in any analyst model.
+- **AI/subscription TAM** (per ISRG Surgical Quality vision): $200–500/case × 35–55M procedures = $7–28B annual run-rate by 2040, net-new high-margin recurring revenue layer not currently in any analyst model.
 
 ### Geographic opportunity (April 2026)
 
@@ -561,7 +561,7 @@ The mix shift toward instruments and the future Surgical Quality subscription is
 | MENA + India | ~500 | <3% | ~200K | 30%+ (Belt-and-Road dynamics) |
 | Africa + frontier | <100 | <1% | <50K | Telesurgery-led; long-duration option value |
 
-The strategic asymmetry: **ISRG's current ~85% global share concentrates in US/Japan/Korea, where 5-year growth is single-digit. The 20%+ CAGR markets are exactly where Chinese challengers and Hugo are most competitive.** This is the geographic version of the architectural-monopoly-vs-erosion debate — incumbent wins where TAM growth is slowest.
+The strategic asymmetry: **ISRG's current ~85% global share concentrates in US/Japan/Korea, where 5-year growth is single-digit. The 20%+ CAGR markets are exactly where Chinese challengers and Hugo are most competitive.** This is the geographic version of the architectural-monopoly-vs-erosion debate: incumbent wins where TAM growth is slowest.
 
 ### Adjacency-expansion TAM
 | Adjacency | Status | TAM unlock |
@@ -571,7 +571,7 @@ The strategic asymmetry: **ISRG's current ~85% global share concentrates in US/J
 | Endoluminal expansion (Ion → thoracic surgery bridge) | Active | Diagnose-resect pathway; ~$2B incremental ISRG revenue if SEER capture achieved |
 | Pediatric surgery | Pre-IDE | <100K US procedures/yr; small TAM but strategic for surgeon training pipeline |
 | ASC migration | Active | 560 procedures + 35 ancillary added CY2026; modular/handheld platform tailwind |
-| Surgical AI subscription | Roadmap | $7–28B annual run-rate by 2040 — net-new layer |
+| Surgical AI subscription | Roadmap | $7–28B annual run-rate by 2040: net-new layer |
 
 ## Investor Heuristics
 
@@ -605,37 +605,37 @@ The strategic asymmetry: **ISRG's current ~85% global share concentrates in US/J
 
 ### Non-consensus insights from this sector research
 
-1. **Architectural specialization → modality monopoly is the stable equilibrium — on a 3–5 year horizon. The 15-year view carries three structural erosion paths the market does not price.** Attempts to build horizontal platforms across multi-port + single-port + flex + ortho have failed historically; within-modality dominance (ISRG soft-tissue 95% US, Stryker Mako ortho, ISRG Ion endoluminal) has held for two decades. Ion's monopolization of the diagnostic-therapeutic pathway is a case study the market has not priced. **But three 7–15 year convergence vectors visible as of GTC 2026 qualify the equilibrium**: (a) **KUKA/Midea industrial pathway** — Midea (China) owns 100% of KUKA post-2022 delisting, KUKA China revenue +59% YoY, LBR Med medical-certified since 2015 with deliberate component-supplier posture reversible under Chinese state-sponsored surgical-champion policy that could fuse Midea/KUKA with MicroPort MedBot / Edge Medical / Cornerstone into a vertically integrated Belt-and-Road platform. (b) **Platform-layer Physical AI convergence** — GTC 2026 NVIDIA coalition lumps ABB/FANUC/KUKA/Yaskawa (industrial, 2M+ installed robots) alongside ISRG/CMR/J&J/Medtronic/Moon/Rob Surgical (surgical) on the same Isaac/GR00T/Cosmos/Omniverse stack; the AI infrastructure that took ISRG 20 years to build becomes commodity for any hospital-adjacent robotics player. (c) **Stryker Mako RPS (Feb 2026 LMR) AccuStop technology explicitly positioned to "reduce soft tissue damage"** — Stryker's first soft-tissue-aware messaging from an ortho-native platform targeting the ASC channel, consistent with CEO Lobo's multi-year unannounced soft-tissue ambitions. Lowest-probability humanoid creep (Figure, Agility, AGIBOT, Skild AI in same GTC coalition) is a 10–15 year path with zero current regulatory pathway. Cumulative 7-year probability of meaningful industrial-path share displacement of ISRG soft-tissue dominance: ~15–25% vs stock-implied ~5–10% — a tail-risk mispricing that stacks on top of GLP-1 second-order (Heuristic #7), NVIDIA-Switzerland data-convergence (Heuristic #3), and China-VBP + ASC-shift headwinds already partially priced.
+1. **Architectural specialization → modality monopoly is the stable equilibrium on a 3–5 year horizon. The 15-year view carries three structural erosion paths the market does not price.** Attempts to build horizontal platforms across multi-port + single-port + flex + ortho have failed historically; within-modality dominance (ISRG soft-tissue 95% US, Stryker Mako ortho, ISRG Ion endoluminal) has held for two decades. Ion's monopolization of the diagnostic-therapeutic pathway is a case study the market has not priced. **But three 7–15 year convergence vectors visible as of GTC 2026 qualify the equilibrium**: (a) **KUKA/Midea industrial pathway**: Midea (China) owns 100% of KUKA post-2022 delisting, KUKA China revenue +59% YoY, LBR Med medical-certified since 2015 with deliberate component-supplier posture reversible under Chinese state-sponsored surgical-champion policy that could fuse Midea/KUKA with MicroPort MedBot / Edge Medical / Cornerstone into a vertically integrated Belt-and-Road platform. (b) **Platform-layer Physical AI convergence**: GTC 2026 NVIDIA coalition lumps ABB/FANUC/KUKA/Yaskawa (industrial, 2M+ installed robots) alongside ISRG/CMR/J&J/Medtronic/Moon/Rob Surgical (surgical) on the same Isaac/GR00T/Cosmos/Omniverse stack; the AI infrastructure that took ISRG 20 years to build becomes commodity for any hospital-adjacent robotics player. (c) **Stryker Mako RPS (Feb 2026 LMR) AccuStop technology explicitly positioned to "reduce soft tissue damage"**: Stryker's first soft-tissue-aware messaging from an ortho-native platform targeting the ASC channel, consistent with CEO Lobo's multi-year unannounced soft-tissue ambitions. Lowest-probability humanoid creep (Figure, Agility, AGIBOT, Skild AI in same GTC coalition) is a 10–15 year path with zero current regulatory pathway. Cumulative 7-year probability of meaningful industrial-path share displacement of ISRG soft-tissue dominance: ~15–25% vs stock-implied ~5–10%, a tail-risk mispricing that stacks on top of GLP-1 second-order (Heuristic #7), NVIDIA-Switzerland data-convergence (Heuristic #3), and China-VBP + ASC-shift headwinds already partially priced.
 
-2. **The regulatory pathway is the binding moat, not the hardware.** Hardware parity is achievable with ~$500M–$1B of capital (Hugo, Ottava, Versius all built capable systems). **Procedural breadth** is not — each indication requires separate clinical evidence + clearance, compounding on the incumbent's 25-year predicate chain. This is structurally similar to FDA-protected biologics in pharma.
+2. **The regulatory pathway is the binding moat, not the hardware.** Hardware parity is achievable with ~$500M–$1B of capital (Hugo, Ottava, Versius all built capable systems). **Procedural breadth** is not: each indication requires separate clinical evidence + clearance, compounding on the incumbent's 25-year predicate chain. This is structurally similar to FDA-protected biologics in pharma.
 
-3. **NVIDIA's Switzerland strategy reshuffles the long-duration risk profile.** NVIDIA partnering with every major player (ISRG at GTC 2026, J&J Ottava + MONARCH, Moon, Activ, Virtual Incision, CMR) means AI infrastructure is no longer a moat — only **procedural data** is. This is a 5–10 year risk not yet priced into ISRG's premium multiple.
+3. **NVIDIA's Switzerland strategy reshuffles the long-duration risk profile.** NVIDIA partnering with every major player (ISRG at GTC 2026, J&J Ottava + MONARCH, Moon, Activ, Virtual Incision, CMR) means AI infrastructure is no longer a moat; only **procedural data** is. This is a 5–10 year risk not yet priced into ISRG's premium multiple.
 
-4. **The ASC shift is a buyer-mix inversion that disadvantages da Vinci.** CMS CY2026 Final Rule adds 560 procedures to ASC CPL. High-throughput outpatient economics favor modular/handheld platforms (Dexter, Versius, MIRA, Mako RPS) over $2M boom-mounted systems. This is a 3–5 year structural headwind to system placement growth that investors treat as incremental — likely mispriced.
+4. **The ASC shift is a buyer-mix inversion that disadvantages da Vinci.** CMS CY2026 Final Rule adds 560 procedures to ASC CPL. High-throughput outpatient economics favor modular/handheld platforms (Dexter, Versius, MIRA, Mako RPS) over $2M boom-mounted systems. This is a 3–5 year structural headwind to system placement growth that investors treat as incremental, likely mispriced.
 
-5. **Chinese domestic surgical robots are not a China story, they're a Belt-and-Road story.** US (67% ISRG revenue) is insulated by 145% tariffs + FDA gap. The real competitive action is Europe (~2% robot penetration, massive greenfield), Brazil, India, Saudi Arabia, Indonesia — where Chinese players hold CE MDR and Belt-and-Road distribution. ISRG's international growth narrative (23% procedure growth FY2025) depends on markets where the competitive intensity is rising fastest.
+5. **Chinese domestic surgical robots are a Belt-and-Road story, not a China story.** US (67% ISRG revenue) is insulated by 145% tariffs + FDA gap. The real competitive action is Europe (~2% robot penetration, massive greenfield), Brazil, India, Saudi Arabia, Indonesia, where Chinese players hold CE MDR and Belt-and-Road distribution. ISRG's international growth narrative (23% procedure growth FY2025) depends on markets where the competitive intensity is rising fastest.
 
-6. **Instrument remanufacturing risk is bounded by dV5 transition velocity.** Restore Robotics has 4 clearances — but only on Xi. As dV5 installed base grows (currently ~1,500, up from ~1,232 at year-end 2025; 57% of Q4 2025 placements), the vulnerable Xi base shrinks. **Planned technological obsolescence is the competitive strategy** — and it's working.
+6. **Instrument remanufacturing risk is bounded by dV5 transition velocity.** Restore Robotics has 4 clearances, but only on Xi. As dV5 installed base grows (currently ~1,500, up from ~1,232 at year-end 2025; 57% of Q4 2025 placements), the vulnerable Xi base shrinks. **Planned technological obsolescence is the competitive strategy**, and it's working.
 
 7. **The GLP-1 second-order thesis is the single most underappreciated risk.** Direct bariatric impact (<3% of robotic) is contained and modeled. If GLP-1 broadly reduces obesity-related comorbidities → slower hernia, reflux, general surgery volumes → this is ISRG's US growth engine decelerating. The causal chain is 3–5 years; current guidance (13.5–15.5%) does not appear to model this tail.
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied** (2026-07-15 — partial first population; triggers fired by [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]] only, not a full sector sweep): [[Generalist - Overview]] · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]]
-- **Triggers that fired** — hypotheses to test, not verdicts:
-	- **[[Lens - Value Layer Monopoly]] §1 · locate the layer.** The layer is not the robot. It is the chip-metered instrument socket sitting beneath a 90,000-surgeon training standard and a 43,000-article evidence base: ~$1,860 per da Vinci procedure (2024, company-disclosed) × ~271 procedures/system/yr = >$500K/system/yr of variable consumables against a ~$1.62M one-time ASP. Everything above the layer traverses it and pays. §1A fires on non-rivalry and interface/standard control; §1B on switching costs. **Hypothesis to test: is the layer the instrument socket (contestable by Restore, China VBP, and Chinese cartridge suppliers) or the surgeon-training standard (contestable by none of them)?** The sector's entire risk surface hinges on which one it actually is, and this note currently argues both without distinguishing them.
+- **Models applied** (2026-07-15: partial first population; triggers fired by [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]] only, not a full sector sweep): [[Generalist - Overview]] · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]]
+- **Triggers that fired**: hypotheses to test, not verdicts:
+	- **[[Lens - Value Layer Monopoly]] §1 · locate the layer.** The layer is the chip-metered instrument socket sitting beneath a 90,000-surgeon training standard and a 43,000-article evidence base, not the robot. ~$1,860 per da Vinci procedure (2024, company-disclosed) × ~271 procedures/system/yr = >$500K/system/yr of variable consumables against a ~$1.62M one-time ASP. Everything above the layer traverses it and pays. §1A fires on non-rivalry and interface/standard control; §1B on switching costs. **Hypothesis to test: is the layer the instrument socket (contestable by Restore, China VBP, and Chinese cartridge suppliers) or the surgeon-training standard (contestable by none of them)?** The sector's entire risk surface hinges on which one it actually is, and this note currently argues both without distinguishing them.
 	- **[[Lens - Value Layer Monopoly]] §1B/§2 · pricing power, run adversarially.** "A layer monopoly that cannot price is either not a monopoly or is restrained by a disqualifier." ISRG voluntarily extended instrument lives 6→15 uses (May 2025), cutting its own per-procedure take-rate in the window Hugo cleared and Ottava filed. Hypothesis: the cut is the §2 "commoditizing layer" tell, not the moat-widening move it was narrated as. Counter-evidence to weigh: 2020 Extended Use modelled -7%, realized -2%.
-	- **[[Generalist - Overview]] [G-10] · base rates / outside view.** The 2013 backlash is the category's only reference-class observation of a safety shock: multiple compression without annuity damage, reset by Xi in 2014. Adversarial read — observed under zero cleared competitors, so it may not transfer. See §Industry History → The 2013 demand shock.
-	- **[[Lens - Automation & AI Readiness]] §6 healthcare overlay + §2 Lens C.** "High bar, slow, durable when cleared." The evidence firewall and the 2013 survival are the overlay's durability evidence. §7 down-weight is live: if Cosmos synthetic data closes the gap without the patient base, the durability was regulatory rather than data-derived — and regulatory durability is exactly what Hugo and Ottava are buying, indication by indication.
-- **Disconfirming check** — four lenses (VLM STRONG-FIT, Lens C flywheel, [G-6] pricing power, [G-7] ROIIC×runway) agree ISRG owns the layer, which per the READING PROTOCOL is the trigger to disconfirm rather than commit. The disconfirming read: **VLM §4 fails at sector level — the layer monopoly is fully consensus-recognised.** ~95% US share is the single most-cited fact about this sector, so "owns the layer" is a business verdict carrying no variant perception. The sector's mispricing lives in the lenses that *don't* agree: ASC buyer-mix (Heuristic #4), GLP-1 second-order (Heuristic #7), industrial-path convergence (Heuristic #1). Single falsifying datapoint for the layer read: a China VBP national round on robot consumables — it would price the instrument socket by decree and settle the socket-vs-training-standard question empirically.
+	- **[[Generalist - Overview]] [G-10] · base rates / outside view.** The 2013 backlash is the category's only reference-class observation of a safety shock: multiple compression without annuity damage, reset by Xi in 2014. Adversarial read: observed under zero cleared competitors, so it may not transfer. See §Industry History → The 2013 demand shock.
+	- **[[Lens - Automation & AI Readiness]] §6 healthcare overlay + §2 Lens C.** "High bar, slow, durable when cleared." The evidence firewall and the 2013 survival are the overlay's durability evidence. §7 down-weight is live: if Cosmos synthetic data closes the gap without the patient base, the durability was regulatory rather than data-derived, and regulatory durability is exactly what Hugo and Ottava are buying, indication by indication.
+- **Disconfirming check**: four lenses (VLM STRONG-FIT, Lens C flywheel, [G-6] pricing power, [G-7] ROIIC×runway) agree ISRG owns the layer, which per the READING PROTOCOL is the trigger to disconfirm rather than commit. The disconfirming read: **VLM §4 fails at sector level; the layer monopoly is fully consensus-recognised.** ~95% US share is the single most-cited fact about this sector, so "owns the layer" is a business verdict carrying no variant perception. The sector's mispricing lives in the lenses that don't agree: ASC buyer-mix (Heuristic #4), GLP-1 second-order (Heuristic #7), industrial-path convergence (Heuristic #1). Single falsifying datapoint for the layer read: a China VBP national round on robot consumables; it would price the instrument socket by decree and settle the socket-vs-training-standard question empirically.
 
 ## Related Research
-- [[Research/2026-01-18 - Healthcare and Biotech Stock Screen]] — Initial healthcare screen that identified ISRG
-- [[Research/2026-01-21 - ISRG]] — Foundational ISRG thesis: financial architecture, dV5 ecosystem, China bifurcation, patent cliff, clinical evidence firewall
-- [[Research/2026-03-28 - AI Threats to Intuitive Surgical]] — AI net-positive assessment; deep dive on MicroPort/Edge/KangDuo; adjacent expansion (cardiac, SP, Ion)
-- [[Research/2026-03-29 - Cross-Procedure Capability in Surgical Robotics]] — Cross-procedure compounding moat; Hugo/Ottava regulatory positioning; architectural boundaries
-- [[Research/2026-04-23 - ISRG - Industrial Robotics Convergence Risk - deep-dive]] — Industrial-robotics + humanoid long-tail convergence (7–15yr horizon): KUKA/Midea 100% Chinese ownership + LBR Med medical-certified since 2015; Stryker Mako RPS "AccuStop reduces soft tissue damage" Feb 2026 as first soft-tissue-aware ortho messaging; GTC 2026 Physical AI coalition lumps ABB/FANUC/KUKA/Yaskawa industrial alongside ISRG/CMR/J&J/Medtronic surgical on same Isaac/GR00T/Cosmos/Omniverse stack; probability framework 7yr ~15-25% vs stock-implied ~5-10% — qualifies Investor Heuristic #1
-- [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]] — Quartr business-model profile (May 2025): only vault record of the 2013 ACOG/FDA backlash and the leasing response (>50% of the da Vinci base, ~40% of Ion); primary unit economics ($1,860 I&A/procedure, ~271 procedures/system/yr, >$500K/system/yr); management's own line-of-sight TAM (8M procedures vs 2.7M in 2024, 22M long-term; Ion 0.7M→1.5M) — which sits *below* this note's §Global Market Sizing 2040 build of 35-55M. Pre-dates Hugo clearance and Ottava filing (stale on competition); silent on China VBP and remanufacturing
+- [[Research/2026-01-18 - Healthcare and Biotech Stock Screen]]: Initial healthcare screen that identified ISRG
+- [[Research/2026-01-21 - ISRG]]: Foundational ISRG thesis: financial architecture, dV5 ecosystem, China bifurcation, patent cliff, clinical evidence firewall
+- [[Research/2026-03-28 - AI Threats to Intuitive Surgical]]: AI net-positive assessment; deep dive on MicroPort/Edge/KangDuo; adjacent expansion (cardiac, SP, Ion)
+- [[Research/2026-03-29 - Cross-Procedure Capability in Surgical Robotics]]: Cross-procedure compounding moat; Hugo/Ottava regulatory positioning; architectural boundaries
+- [[Research/2026-04-23 - ISRG - Industrial Robotics Convergence Risk - deep-dive]]: Industrial-robotics + humanoid long-tail convergence (7–15yr horizon): KUKA/Midea 100% Chinese ownership + LBR Med medical-certified since 2015; Stryker Mako RPS "AccuStop reduces soft tissue damage" Feb 2026 as first soft-tissue-aware ortho messaging; GTC 2026 Physical AI coalition lumps ABB/FANUC/KUKA/Yaskawa industrial alongside ISRG/CMR/J&J/Medtronic surgical on same Isaac/GR00T/Cosmos/Omniverse stack; probability framework 7yr ~15-25% vs stock-implied ~5-10%; qualifies Investor Heuristic #1
+- [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]]: Quartr business-model profile (May 2025): only vault record of the 2013 ACOG/FDA backlash and the leasing response (>50% of the da Vinci base, ~40% of Ion); primary unit economics ($1,860 I&A/procedure, ~271 procedures/system/yr, >$500K/system/yr); management's own line-of-sight TAM (8M procedures vs 2.7M in 2024, 22M long-term; Ion 0.7M→1.5M), which sits below this note's §Global Market Sizing 2040 build of 35-55M. Pre-dates Hugo clearance and Ottava filing (stale on competition); silent on China VBP and remanufacturing
 
 ## Log
 
@@ -653,3 +653,6 @@ The strategic asymmetry: **ISRG's current ~85% global share concentrates in US/J
 ### 2026-07-15 (/sync all — backlog reconciliation)
 - [[Research/2026-07-14 - ISRG - Intuitive Surgical Business Breakdown - deep-dive]]: Added §Industry History → The 2013 demand shock (ACOG warning + FDA warning letter + placement stall — the category's only adoption stall, absent from the entire vault until now) as the base rate for ISRG's 2026 safety cluster, with the transferability caveat that 2013 was observed under zero cleared competitors.
 - First-populated §Mental Models (CHG-14 empty-scaffold exception) — VLM §1 locate-the-layer, §1B pricing-power adversarial read, [G-10] base rates, Automation §6 healthcare overlay — ISRG conviction unchanged (medium): argument-sharpening, not risk-repricing. Snapshot: [[_Archive/Snapshots/Surgical Robotics (pre-sync 2026-07-15-173001)]]
+
+### 2026-08-20
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

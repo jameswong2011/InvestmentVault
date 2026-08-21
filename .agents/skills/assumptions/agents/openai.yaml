@@ -1,0 +1,4 @@
+interface:
+  display_name: "Thesis Assumptions"
+  short_description: "Extract a thesis's load-bearing assumptions"
+  default_prompt: "Use $assumptions to extract NVDA's load-bearing assumptions."

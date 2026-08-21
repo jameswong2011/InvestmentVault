@@ -10,14 +10,14 @@ sector: Precious Metals
 
 ## Active Theses
 
-- [[Theses/GLD - SPDR Gold Shares]] — physical gold proxy: central-bank reserve rotation (750–850 t/yr structural bid), Basel III Tier 1 HQLA (Jul 2025), 1974 mid-cycle retrace analog, $5,400–6,300 sell-side targets vs $4,792 spot
-- [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] — cross-sector: digital gold comparison, stock-to-flow framework, monetary premium contest
+- [[Theses/GLD - SPDR Gold Shares]]: physical gold proxy: central-bank reserve rotation (750–850 t/yr structural bid), Basel III Tier 1 HQLA (Jul 2025), 1974 mid-cycle retrace analog, $5,400–6,300 sell-side targets vs $4,792 spot
+- [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]]: cross-sector: digital gold comparison, stock-to-flow framework, monetary premium contest
 
 ## Sector Summary
 
-Gold and silver are simultaneously the oldest monetary assets and, in 2026, two of the most structurally mispriced commodities in global markets. Three regime shifts are running concurrently: (1) a **central-bank bid** that became structural after Russia's 2022 FX-reserve freeze, lifting official-sector purchases from ~400-500 t/year pre-2022 to 1,237 t in 2025 and an expected 755-850 t in 2026; (2) a **paper-physical dislocation** — Shanghai silver at a 13-29% premium to COMEX/LBMA, Tokyo and Dubai physical at up to $130/oz during the January 2026 squeeze, COMEX registered silver inventory down ~70% since 2020; (3) a **hawkish-Fed drawdown** — gold fell 20% from its $5,595 January 2026 peak to ~$4,400-4,800 on Iran-war stagflation dynamics that the market is mispricing as the top of a cycle but is historically the mid-cycle retrace of a 1970s-analog bull run. Silver has been whipsawed more violently (+146% through January, then -40% to $62-70) because its 59% industrial demand share amplifies recession fears even as the solar/EV/data-center bid and seventh consecutive year of supply deficit make it mechanically inelastic.
+Gold and silver are simultaneously the oldest monetary assets and, in 2026, two of the most structurally mispriced commodities in global markets. Three regime shifts are running concurrently: (1) a **central-bank bid** that became structural after Russia's 2022 FX-reserve freeze, lifting official-sector purchases from ~400-500 t/year pre-2022 to 1,237 t in 2025 and an expected 755-850 t in 2026; (2) a **paper-physical dislocation**: Shanghai silver at a 13-29% premium to COMEX/LBMA, Tokyo and Dubai physical at up to $130/oz during the January 2026 squeeze, COMEX registered silver inventory down ~70% since 2020; (3) a **hawkish-Fed drawdown**: gold fell 20% from its $5,595 January 2026 peak to ~$4,400-4,800 on Iran-war stagflation dynamics that the market is mispricing as the top of a cycle but is historically the mid-cycle retrace of a 1970s-analog bull run. Silver has been whipsawed more violently (+146% through January, then -40% to $62-70) because its 59% industrial demand share amplifies recession fears even as the solar/EV/data-center bid and seventh consecutive year of supply deficit make it mechanically inelastic.
 
-The key non-consensus insight is that **gold and silver now sit at the intersection of three separate structural bull theses** — official-sector de-dollarization, BRICS monetary-infrastructure build-out (mBridge, SGE-anchored settlement), and AI/energy-transition industrial demand (for silver specifically) — that are being temporarily masked by cyclical Fed hawkishness. When the Fed pivots, all three bull drivers compound.
+**Gold and silver now sit at the intersection of three separate structural bull theses**: official-sector de-dollarization, BRICS monetary-infrastructure build-out (mBridge, SGE-anchored settlement), and AI/energy-transition industrial demand (for silver specifically). Those theses are being temporarily masked by cyclical Fed hawkishness. When the Fed pivots, all three bull drivers compound.
 
 ## Market Snapshot (April 2026)
 
@@ -42,7 +42,7 @@ The key non-consensus insight is that **gold and silver now sit at the intersect
 | **Post-Nixon fiat** | 1971-2022 | Floating fiat | Gold priced as a hedge against USD/inflation; no official monetary role |
 | **Post-sanction bipolar** | 2022-present | Official-sector reserve rotation | Central banks (particularly BRICS+) accumulate gold as sanction-proof reserve asset, displacing UST holdings |
 
-The 1971 Nixon Shock severed the last formal link between USD and gold. For 50 years gold traded as a pure macro hedge (inflation, real rates, USD). The regime change in 2022 was Russia's $300B FX reserve freeze — the first G20 precedent for sanctioning a sovereign's dollar reserves. This created a structural bid from any central bank holding USD reserves with any probability of sanction exposure (every non-allied country, effectively). Central-bank gold demand roughly doubled from the pre-2022 400-500 t/year baseline to 1,082 t (2022), 1,037 t (2023), ~1,045 t (2024), and 1,237 t (2025). Foreign central banks' gold reserves surpassed their US Treasury holdings for the first time in nearly three decades — a symbolic milestone that encodes the structural shift.
+The 1971 Nixon Shock severed the last formal link between USD and gold. For 50 years gold traded as a pure macro hedge (inflation, real rates, USD). The regime change in 2022 was Russia's $300B FX reserve freeze: the first G20 precedent for sanctioning a sovereign's dollar reserves. This created a structural bid from any central bank holding USD reserves with any probability of sanction exposure (every non-allied country, effectively). Central-bank gold demand roughly doubled from the pre-2022 400-500 t/year baseline to 1,082 t (2022), 1,037 t (2023), ~1,045 t (2024), and 1,237 t (2025). Foreign central banks' gold reserves surpassed their US Treasury holdings for the first time in nearly three decades: a symbolic milestone that encodes the structural shift.
 
 ### Central-bank buyer roster (2025 flows and end-of-period stocks)
 
@@ -55,17 +55,17 @@ The 1971 Nixon Shock severed the last formal link between USD and gold. For 50 y
 | **India (RBI)** | Elevated | ~876 t | Rising | Steady accumulator |
 | **BRICS+ aggregate** | — | 17.4% of global reserves | Up from 11.2% in 2019 | Coordinated de-dollarization |
 
-**World Gold Council 2026 central-bank survey:** 95% of central banks expect global official gold reserves to increase; 43% plan to increase their own holdings — both record highs.
+**World Gold Council 2026 central-bank survey:** 95% of central banks expect global official gold reserves to increase; 43% plan to increase their own holdings; both record highs.
 
 ### Gold's 2026 paradox: stagflation selloff before rally
 
-Gold hit $5,595/oz in January 2026 then fell ~20% to $4,400-4,800, including a $2T market-cap flash crash on March 23. The transmission: Iran war → oil to $112-126 Brent → CPI risk → Fed holds 3.5-3.75% (52% hike probability briefly priced) → USD rally → forced liquidation in leveraged gold positions. This is the deepest wartime gold decline in BullionVault's 50-year dataset — and also the historical pattern.
+Gold hit $5,595/oz in January 2026 then fell ~20% to $4,400-4,800, including a $2T market-cap flash crash on March 23. The transmission: Iran war → oil to $112-126 Brent → CPI risk → Fed holds 3.5-3.75% (52% hike probability briefly priced) → USD rally → forced liquidation in leveraged gold positions. This is the deepest wartime gold decline in BullionVault's 50-year dataset, and also the historical pattern.
 
-The 1970s analog is instructive. During the 1973 oil shock, gold initially sold off ~15% before rising from $100 to $850 over the subsequent seven years. The mechanism: central banks must first tighten to fight inflation (bad for non-yielding gold), then inflation proves sticky and credibility eroded, then real rates collapse as inflation outpaces hikes, at which point gold becomes the de facto safe haven. 2022 was the counter-example where aggressive hikes kept gold flat (gold -0.8%) — but the 2022 regime was pre-sanction-shock; the 2026 regime has a central-bank bid that didn't exist in 2022.
+The 1970s analog is instructive. During the 1973 oil shock, gold initially sold off ~15% before rising from $100 to $850 over the subsequent seven years. The mechanism: central banks must first tighten to fight inflation (bad for non-yielding gold), then inflation proves sticky and credibility eroded, then real rates collapse as inflation outpaces hikes, at which point gold becomes the de facto safe haven. 2022 was the counter-example where aggressive hikes kept gold flat (gold -0.8%), but the 2022 regime was pre-sanction-shock; the 2026 regime has a central-bank bid that didn't exist in 2022.
 
 ### Gold ETF dynamics: the Eastern offset
 
-Global gold ETF AUM reached $701B in February 2026 with holdings at an all-time 4,171 t, following nine consecutive months of inflows. March 2026 broke the streak: $12B outflow from North America (largest monthly outflow on record), while Asian ETFs recorded their largest quarterly inflow ever. The East-vs-West bifurcation is a leading indicator — Asian demand tracks physical market stress (SGE premiums, LBMA delivery delays) while Western demand tracks Fed policy expectations. When these re-couple (either via Fed cuts or Western rotation back into gold), the combined flow could dwarf the 2020 record year.
+Global gold ETF AUM reached $701B in February 2026 with holdings at an all-time 4,171 t, following nine consecutive months of inflows. March 2026 broke the streak: $12B outflow from North America (largest monthly outflow on record), while Asian ETFs recorded their largest quarterly inflow ever. The East-vs-West bifurcation is a leading indicator: Asian demand tracks physical market stress (SGE premiums, LBMA delivery delays) while Western demand tracks Fed policy expectations. When these re-couple (either via Fed cuts or Western rotation back into gold), the combined flow could dwarf the 2020 record year.
 
 ## Silver: The Dual-Nature Asset
 
@@ -85,11 +85,11 @@ Silver is the only commodity where industrial demand (59%, mostly inelastic tech
 | **Recycling** | 193.9 Moz | ~197 Moz | ~200 Moz |
 | **Primary-silver mines** | ~28% of supply | — | — |
 
-The deficit has now run six-to-seven consecutive years. Unlike gold, where 205,000 t of above-ground stock can absorb delivery stress, silver has no comparable inventory buffer — COMEX registered inventory fell ~70% since 2020, LBMA vaults lost ~40%. Above-ground stock-to-flow is an order of magnitude lower than gold's.
+The deficit has now run six-to-seven consecutive years. Unlike gold, where 205,000 t of above-ground stock can absorb delivery stress, silver has no comparable inventory buffer: COMEX registered inventory fell ~70% since 2020, LBMA vaults lost ~40%. Above-ground stock-to-flow is an order of magnitude lower than gold's.
 
 ### The byproduct problem (supply inelasticity)
 
-~70-80% of silver production is byproduct output from mines whose primary metal is lead, zinc, copper, or gold. This means silver supply cannot scale with its own price — it scales with base-metal demand. The 2026 dynamic: copper is in deficit (~150-600 Kt, AI/grid demand), but recession fear has compressed base-metal prices, reducing byproduct silver supply precisely when industrial silver demand is rising. Primary silver production (~28% of supply) can respond to price but requires multi-year capex lead times and faces jurisdictional headwinds in Mexico (tax/labor disruption has shifted capital to Nevada in early 2026).
+~70-80% of silver production is byproduct output from mines whose primary metal is lead, zinc, copper, or gold. This means silver supply cannot scale with its own price; it scales with base-metal demand. The 2026 dynamic: copper is in deficit (~150-600 Kt, AI/grid demand), but recession fear has compressed base-metal prices, reducing byproduct silver supply precisely when industrial silver demand is rising. Primary silver production (~28% of supply) can respond to price but requires multi-year capex lead times and faces jurisdictional headwinds in Mexico (tax/labor disruption has shifted capital to Nevada in early 2026).
 
 ### Industrial demand breakdown
 
@@ -101,11 +101,11 @@ The deficit has now run six-to-seven consecutive years. Unlike gold, where 205,0
 | **Brazing, solders, thermals** | ~10% of industrial | Stable | Industrial high-reliability applications |
 | **Medical, antibacterial** | Small but growing | High growth | Wound care, antimicrobial coatings, water purification |
 
-The critical dynamic: **thrifting** (reducing silver per unit) can reduce PV silver demand even as installations grow. But 2026 high-efficiency panels (TOPCon, HJT, back-contact) require 20-30% MORE silver per watt than 2024 baseline to minimize power loss. So the thrifting trajectory is non-monotonic. Silver Institute projects PV silver falling 7% in 2026 (194 Moz) even with ~15% GW expansion — but if high-efficiency panel mix grows faster than thrifting, PV demand could reaccelerate.
+The critical dynamic: **thrifting** (reducing silver per unit) can reduce PV silver demand even as installations grow. But 2026 high-efficiency panels (TOPCon, HJT, back-contact) require 20-30% MORE silver per watt than 2024 baseline to minimize power loss. So the thrifting trajectory is non-monotonic. Silver Institute projects PV silver falling 7% in 2026 (194 Moz) even with ~15% GW expansion, but if high-efficiency panel mix grows faster than thrifting, PV demand could reaccelerate.
 
 ### Data-center silver demand (AI/electrification stealth channel)
 
-Direct data-center silver use (silver-plated contacts, connectors, solders, thermal materials) scales with IT capacity — ~97 GW of new data center capacity 2025-2030 at 0.3-3.0 kg Ag/MW implies ~0.9-9.4 Moz cumulative direct demand. More significant is **indirect demand via solar PV** powering new data centers: IEA projects ~485 TWh/year incremental data-center electricity by 2030, with ~50% from renewables, ~40-70% of which is solar. At current silver intensities, this implies ~10-38 Moz cumulative PV-silver attributable to AI/data-center power growth. Combined incremental: **~15-50 Moz cumulative** — meaningful enough to tighten an already-deficit market at the margin. See [[Research/2026-01-26 - Silver Demand and Data Centers]] for the full bottoms-up model.
+Direct data-center silver use (silver-plated contacts, connectors, solders, thermal materials) scales with IT capacity: ~97 GW of new data center capacity 2025-2030 at 0.3-3.0 kg Ag/MW implies ~0.9-9.4 Moz cumulative direct demand. More significant is **indirect demand via solar PV** powering new data centers: IEA projects ~485 TWh/year incremental data-center electricity by 2030, with ~50% from renewables, ~40-70% of which is solar. At current silver intensities, this implies ~10-38 Moz cumulative PV-silver attributable to AI/data-center power growth. Combined incremental: **~15-50 Moz cumulative**, meaningful enough to tighten an already-deficit market at the margin. See [[Research/2026-01-26 - Silver Demand and Data Centers]] for the full bottoms-up model.
 
 ## Physical vs. Paper Market Structure
 
@@ -124,13 +124,13 @@ The paper-physical disconnect is the 2026 precious metals story. It matters beca
 
 Gold stress began in early 2025 when Trump tariff threats on Canadian/Mexican imports drove arbitrage flows from London → New York (~200 t delivered COMEX in Feb 2025; 498 t in prior two months). This drained LBMA inventory. BullionStar, World Gold Council, and Money Metals reported BoE vault withdrawal delays of 4-8 weeks (previously days). Swiss refineries introduced surcharges or suspended certain bar sizes; South Korea halted gold/silver bar sales in February 2025; Shanghai Gold Exchange strained under retail demand.
 
-Silver stress accelerated in late 2025 / early 2026. In the first week of January 2026, 33.45 Moz of silver was physically withdrawn for delivery — 26% of COMEX registered inventory in seven days. Shanghai silver broke away from Western benchmarks, trading at 12-29% premium to COMEX/LBMA. Tokyo and Dubai physical transactions reportedly hit $130/oz spot at peak stress (80% premium). On January 1, 2026, China implemented strict silver export licensing, effectively ring-fencing 65% of global refined silver supply for domestic use — a structural catalyst independent of Iran war dynamics.
+Silver stress accelerated in late 2025 / early 2026. In the first week of January 2026, 33.45 Moz of silver was physically withdrawn for delivery: 26% of COMEX registered inventory in seven days. Shanghai silver broke away from Western benchmarks, trading at 12-29% premium to COMEX/LBMA. Tokyo and Dubai physical transactions reportedly hit $130/oz spot at peak stress (80% premium). On January 1, 2026, China implemented strict silver export licensing, effectively ring-fencing 65% of global refined silver supply for domestic use: a structural catalyst independent of Iran war dynamics.
 
 ### Why arbitrage is failing
 
 Three mechanisms have weakened the arbitrage that normally caps premiums:
 1. **Export licensing / border friction**: China's January 2026 licensing rules, tariff uncertainty, insurance-premium spikes post-Iran-war, and refining bottlenecks mean physical cannot move fast enough to equalize prices
-2. **Refining capacity constraint**: Western kilobar (Asia-standard) conversion is throughput-limited — COMEX 100 oz bars cannot be directly delivered into SGE/Dubai which demand 1 kg / LBMA bars
+2. **Refining capacity constraint**: Western kilobar (Asia-standard) conversion is throughput-limited: COMEX 100 oz bars cannot be directly delivered into SGE/Dubai which demand 1 kg / LBMA bars
 3. **Paper-physical ratio**: The mismatch of paper claims to physical has grown so large that even moderate demand-for-delivery episodes exhaust the available free float, leaving paper prices to reconverge to physical only through paper market dislocation (basis widening)
 
 The strategic implication: **the market-clearing price for precious metals is increasingly being set in Shanghai, not London or New York.** As long as China's export licensing persists and SGE remains the physical-clearing venue, premium persistence (rather than mean-reversion) should be the base case.
@@ -167,7 +167,7 @@ Royalty and streaming companies (Wheaton WPM, Franco-Nevada FNV, Royal Gold RGLD
 
 - **Fixed cost of goods** (upfront payment amortized per ounce delivered) typically $300-450/oz for gold streams, giving them ~$4,000+ margin per ounce at 2026 spot
 - **Diversified portfolio** across dozens of mines and jurisdictions (FNV has ~400 properties)
-- **Near-zero marginal cost** — margins expand non-linearly with commodity price
+- **Near-zero marginal cost**: margins expand non-linearly with commodity price
 - **Inflation-protected** revenue (top line moves with spot) without inflation-exposed costs
 
 2026 performance: FNV Q-over-Q revenue +42% to $369M, operating cash flow +121% to $430M, net income doubled to $247M. WPM projecting ~50% growth to 1.2 Moz GEO by 2030, shares +24% in Feb 2026 alone.
@@ -210,20 +210,20 @@ PSLV is structurally distinct: it holds fully-allocated, unencumbered London Goo
 | **PAX Gold** | PAXG | ~$2.2B mkt cap | Brink's London, LGD bars |
 | **Combined tokenized gold market** | $6.12B (Feb 2026) | — | $178B trading volume |
 
-Tokenized gold is a genuine new category — 24/7 trading, divisibility below 1 oz, blockchain-native programmability — and is now ~$6B AUM. PAXG saw $248M inflows in January 2026 alone. The RWA tokenization trend (see [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] for thesis context) extends to precious metals as the highest-value physical commodity category for digital rails.
+Tokenized gold is a genuine new category (24/7 trading, divisibility below 1 oz, blockchain-native programmability) and is now ~$6B AUM. PAXG saw $248M inflows in January 2026 alone. The RWA tokenization trend (see [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] for thesis context) extends to precious metals as the highest-value physical commodity category for digital rails.
 
 ### Combination / specialized
-- **Sprott Physical Gold and Silver Trust** (CEF) — both metals, closed-end, redeemable
-- **iShares Gold/Silver Ratio ETF** (GLSI) — tactical allocation between metals
-- **Leveraged products** (NUGT/DUST 2x gold miners; AGQ/ZSL 2x silver) — trading instruments only; daily rebalancing decay
+- **Sprott Physical Gold and Silver Trust** (CEF): both metals, closed-end, redeemable
+- **iShares Gold/Silver Ratio ETF** (GLSI): tactical allocation between metals
+- **Leveraged products** (NUGT/DUST 2x gold miners; AGQ/ZSL 2x silver): trading instruments only; daily rebalancing decay
 
 ### Tax treatment (US)
-Physical gold/silver ETFs (GLD, SLV, GLDM, etc.) are taxed as **collectibles** — 28% maximum long-term capital gains rate vs 20% for equities. Mining ETFs (GDX, SIL) and royalty stocks (WPM, FNV) are taxed as regular equities. Sprott closed-end funds (PHYS, PSLV) can elect to qualify for long-term equity treatment if held properly. For tax-sensitive accounts, GDXJ/SIL tend to beat GLD/SLV even before pre-tax operational leverage.
+Physical gold/silver ETFs (GLD, SLV, GLDM, etc.) are taxed as **collectibles**: 28% maximum long-term capital gains rate vs 20% for equities. Mining ETFs (GDX, SIL) and royalty stocks (WPM, FNV) are taxed as regular equities. Sprott closed-end funds (PHYS, PSLV) can elect to qualify for long-term equity treatment if held properly. For tax-sensitive accounts, GDXJ/SIL tend to beat GLD/SLV even before pre-tax operational leverage.
 
 ## Gold/Silver Ratio & Valuation Frameworks
 
 ### GSR as a contrarian signal
-The gold/silver ratio (GSR) has averaged ~60:1 over the past 30 years with a typical range of 55-85. It compressed below 60 in 2026. Historical pattern: **GSR below 60 at a cycle peak tends to mark silver cycle exhaustion; GSR above 80 at a cycle bottom tends to mark silver cycle entry**. At 60:1 in April 2026 with gold at $4,792, the GSR-implied fair value for silver is $80/oz — well above current $62-70 spot. If gold reaches JP Morgan's $6,300 target and GSR stays at 60, silver = $105. If GSR compresses to 50 (late-cycle overshoot), silver = $126.
+The gold/silver ratio (GSR) has averaged ~60:1 over the past 30 years with a typical range of 55-85. It compressed below 60 in 2026. Historical pattern: **GSR below 60 at a cycle peak tends to mark silver cycle exhaustion; GSR above 80 at a cycle bottom tends to mark silver cycle entry**. At 60:1 in April 2026 with gold at $4,792, the GSR-implied fair value for silver is $80/oz, well above current $62-70 spot. If gold reaches JP Morgan's $6,300 target and GSR stays at 60, silver = $105. If GSR compresses to 50 (late-cycle overshoot), silver = $126.
 
 ### Gold/M2, gold/GDP, gold/SPX framework
 - **Gold/M2**: Current ratio remains below the 1980 peak adjusted for M2 growth, implying gold's nominal price would need to exceed $10,000 to equal the 1980 real monetary-base-adjusted peak
@@ -231,7 +231,7 @@ The gold/silver ratio (GSR) has averaged ~60:1 over the past 30 years with a typ
 - **Gold/SPX**: Ratio near multi-decade lows entering 2025; early 2026 partial reversal suggests rotation is underway
 
 ### Stock-to-flow
-Gold's stock-to-flow is ~60; silver's ~20-25 (vs Bitcoin's ~120 post-halving). High stock-to-flow means above-ground supply dwarfs new production — price less sensitive to mining supply shocks than to monetary/investment demand. This is why gold is a "monetary metal" and silver is a hybrid: gold's stock-to-flow is in gold's scarcity zone, while silver's is closer to industrial commodities where supply shocks move price more.
+Gold's stock-to-flow is ~60; silver's ~20-25 (vs Bitcoin's ~120 post-halving). High stock-to-flow means above-ground supply dwarfs new production; price is less sensitive to mining supply shocks than to monetary/investment demand. This is why gold is a "monetary metal" and silver is a hybrid: gold's stock-to-flow is in gold's scarcity zone, while silver's is closer to industrial commodities where supply shocks move price more.
 
 ### Bitcoin as digital-gold comparison
 
@@ -247,11 +247,11 @@ Gold's stock-to-flow is ~60; silver's ~20-25 (vs Bitcoin's ~120 post-halving). H
 | **Track record** | 5,000+ years | 16 years | Gold far more proven |
 | **Central-bank adoption** | Primary reserve asset | 27 countries with some exposure; US Strategic Reserve | Gold dominant |
 
-The question is not whether Bitcoin replaces gold — both likely coexist — but whether BTC captures additional monetary premium at gold's expense. 2026 positioning: both rising together against USD, not against each other.
+Both likely coexist. The question is whether BTC captures additional monetary premium at gold's expense, not whether Bitcoin replaces gold. 2026 positioning: both rising together against USD, not against each other.
 
 ## Macro Shifts Driving the Sector
 
-1. **Post-sanction official-sector de-dollarization** (2022-ongoing): Russia's FX freeze made gold the only sanction-proof reserve asset for non-US-aligned central banks. Structural central-bank bid at 700-1,200+ t/year floor, potentially for a decade. Secondary effect: BRICS+ "Unit" gold-anchored digital instrument, mBridge, SGE-anchored Asian settlement — all reinforce gold's monetary role.
+1. **Post-sanction official-sector de-dollarization** (2022-ongoing): Russia's FX freeze made gold the only sanction-proof reserve asset for non-US-aligned central banks. Structural central-bank bid at 700-1,200+ t/year floor, potentially for a decade. Secondary effect: BRICS+ "Unit" gold-anchored digital instrument, mBridge, SGE-anchored Asian settlement; all reinforce gold's monetary role.
 
 2. **China export licensing and SGE as clearing venue** (January 2026): 65% of global refined silver ring-fenced for domestic use; SGE premiums persist rather than arbitrage away. Structurally bullish for physical pricing if sustained.
 
@@ -267,23 +267,23 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 
 ### What the market is pricing
 - Gold at $4,400-4,800 implies year-end 2026 price of ~$4,500-5,000 (near current levels), below JPM's $6,300 target
-- Silver at $62-70 implies GSR stays elevated (>70) and the supply deficit doesn't re-assert — betting against five consecutive years of Silver Institute data
+- Silver at $62-70 implies GSR stays elevated (>70) and the supply deficit doesn't re-assert: betting against five consecutive years of Silver Institute data
 - Gold miner multiples compressed on the assumption that AISC inflation is structural (new regime) rather than cyclical (oil-linked, will reverse when oil falls)
-- Limited central-bank purchase expectations beyond 2026 — market treats 2022-2025 as a one-time rotation rather than a decadal theme
+- Limited central-bank purchase expectations beyond 2026: market treats 2022-2025 as a one-time rotation rather than a decadal theme
 
 ### Non-consensus insights
 
-- **The central-bank bid is structural, not cyclical, and discounted by the market**. World Gold Council 2026 survey: 95% of central banks expect global reserves to rise; 43% of individual banks plan their own purchases — both record highs. Pre-2022 baseline was 400-500 t/year; 2022-2025 averaged ~1,100 t; 2026 expected 755-850 t. The structural floor at ~700+ t/year appears durable regardless of Fed policy because it is driven by geopolitical reserve design, not monetary conditions.
+- **The central-bank bid is structural, not cyclical, and discounted by the market**. World Gold Council 2026 survey: 95% of central banks expect global reserves to rise; 43% of individual banks plan their own purchases; both record highs. Pre-2022 baseline was 400-500 t/year; 2022-2025 averaged ~1,100 t; 2026 expected 755-850 t. The structural floor at ~700+ t/year appears durable regardless of Fed policy because it is driven by geopolitical reserve design, not monetary conditions.
 
 - **Silver's physical-paper dislocation is the cleanest tradeable setup in commodities**. Shanghai premium 13-29% over COMEX/LBMA, China export licensing ring-fencing 65% of refined supply, COMEX registered inventory -70% since 2020, tokenization siphoning physical into 24/7 demand. The premium is likely to persist (rather than arbitrage away) until either (a) China licensing lifts, (b) Western paper market re-prices to physical, or (c) major producer nationalization crisis forces a reset. All three paths are bullish for physical silver holders (SIVR, PSLV, SLV to lesser extent).
 
-- **Gold miners' 2026 AISC spike is oil-linked and will reverse**. NEM $1,680, Barrick $1,760-1,950 AISCs reflect ~$100+ oil in cost base. Gold/AISC spread remains ~$2,700-3,100/oz at current prices — still the widest absolute margin in miner history. If Iran crisis resolves and oil returns to $70-80, AISC falls $150-250/oz while gold stays elevated on central-bank demand. Operating leverage inverts — AEM (already low-cost, $1,475 AISC) has less upside on an oil-cost reset than high-cost seniors.
+- **Gold miners' 2026 AISC spike is oil-linked and will reverse**. NEM $1,680, Barrick $1,760-1,950 AISCs reflect ~$100+ oil in cost base. Gold/AISC spread remains ~$2,700-3,100/oz at current prices, still the widest absolute margin in miner history. If Iran crisis resolves and oil returns to $70-80, AISC falls $150-250/oz while gold stays elevated on central-bank demand. Operating leverage inverts: AEM (already low-cost, $1,475 AISC) has less upside on an oil-cost reset than high-cost seniors.
 
-- **Royalty/streaming is the risk-adjusted optimal commodity exposure in this regime**. FNV, WPM, RGLD avoid AISC inflation risk entirely (their cost is fixed upfront). During Q1 2026 gold drawdown, royalty names declined less and rebounded faster than senior miners. The valuation premium (35x EV/EBITDA for FNV vs ~10x for NEM) is justified by the absence of geological, labor, tax, and capex risks — but the market still anchors on headline P/E multiples, which tend to look expensive on royalty names.
+- **Royalty/streaming is the risk-adjusted optimal commodity exposure in this regime**. FNV, WPM, RGLD avoid AISC inflation risk entirely (their cost is fixed upfront). During Q1 2026 gold drawdown, royalty names declined less and rebounded faster than senior miners. The valuation premium (35x EV/EBITDA for FNV vs ~10x for NEM) is justified by the absence of geological, labor, tax, and capex risks, but the market still anchors on headline P/E multiples, which tend to look expensive on royalty names.
 
-- **Silver is the leveraged call on both gold (monetary) AND copper/industrial demand (cyclical)**. Silver's 59% industrial demand makes it directly exposed to AI/data-center/EV build-outs even independent of monetary regime. This creates a dual-bid scenario — unlike any prior cycle — where industrial thrifting fails to offset monetary demand, and the 7th consecutive year of deficit turns into a 10-year structural shortage. GSR compression toward 50 becomes plausible.
+- **Silver is the leveraged call on both gold (monetary) AND copper/industrial demand (cyclical)**. Silver's 59% industrial demand makes it directly exposed to AI/data-center/EV build-outs even independent of monetary regime. This creates a dual-bid scenario, unlike any prior cycle, where industrial thrifting fails to offset monetary demand, and the 7th consecutive year of deficit turns into a 10-year structural shortage. GSR compression toward 50 becomes plausible.
 
-- **Tokenized gold is a leading indicator of RWA tokenization demand for industrial commodities**. PAXG/XAUT growing at $6B+ market cap despite physical gold price volatility demonstrates demand for 24/7 programmable commodity exposure. If this scales to silver, platinum, palladium, copper, uranium — as the CLARITY Act framework enables — physical-backing demand from token issuers becomes a new structural bid on miners and inventories.
+- **Tokenized gold is a leading indicator of RWA tokenization demand for industrial commodities**. PAXG/XAUT growing at $6B+ market cap despite physical gold price volatility demonstrates demand for 24/7 programmable commodity exposure. If this scales to silver, platinum, palladium, copper, uranium (as the CLARITY Act framework enables), physical-backing demand from token issuers becomes a new structural bid on miners and inventories.
 
 ### What would change the view
 
@@ -300,21 +300,21 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 
 ## Related Research
 
-- [[Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics]] — COMEX 200+ tonnes delivered Feb 2025, LBMA 4-8 week delivery delays, gold ATH $3,319/oz Apr 2025. Paper-physical disconnect structural, not episodic. Tariffs triggered London→New York gold relocation. South Korea halted bar sales; Swiss refineries suspended certain sizes.
-- [[Research/2026-01-26 - Silver Demand and Data Centers]] — Silver market deficit -148.9 Moz (2024); AI/data-center electricity demand as stealth silver catalyst via solar PV (~15-50 Moz cumulative incremental demand 2025-2030).
-- [[Research/2026-03-21 - Betting on Inflation Trades]] — TIPS/FRN/commodity ETF framework; precious metals as CPI hedge positioning (DBC, XLE, GLD); realized vs priced inflation distinction.
-- [[Research/2026-03-30 - Commodity Market Analysis 2026]] — Iran/Hormuz commodity ranking: gold's counterintuitive crash from $5,595 ATH, silver volatility, Trade 5 Long GDX rationale.
-- [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]] — Gemini source commodity revaluation analysis covering precious metals sensitivity to Iran crisis.
+- [[Research/2025-02-24 - Macro - Gold Market Stress LBMA Shortages and Delivery Dynamics]]: COMEX 200+ tonnes delivered Feb 2025, LBMA 4-8 week delivery delays, gold ATH $3,319/oz Apr 2025. Paper-physical disconnect structural, not episodic. Tariffs triggered London→New York gold relocation. South Korea halted bar sales; Swiss refineries suspended certain sizes.
+- [[Research/2026-01-26 - Silver Demand and Data Centers]]: Silver market deficit -148.9 Moz (2024); AI/data-center electricity demand as stealth silver catalyst via solar PV (~15-50 Moz cumulative incremental demand 2025-2030).
+- [[Research/2026-03-21 - Betting on Inflation Trades]]: TIPS/FRN/commodity ETF framework; precious metals as CPI hedge positioning (DBC, XLE, GLD); realized vs priced inflation distinction.
+- [[Research/2026-03-30 - Commodity Market Analysis 2026]]: Iran/Hormuz commodity ranking: gold's counterintuitive crash from $5,595 ATH, silver volatility, Trade 5 Long GDX rationale.
+- [[Research/2026-03-30 - Macro - Gemini Commodity Impact Canvas]]: Gemini source commodity revaluation analysis covering precious metals sensitivity to Iran crisis.
 
 ## Cross-Sector Links
 
-- [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]] — Digital-gold comparison; BTC stock-to-flow ~120 vs gold ~60; tokenized gold (PAXG/XAUT) as RWA bridge
-- [[Macro & Technology/Iran War Trading Playbook]] — Gold's counterintuitive $5,595 → $4,400 selloff (deepest wartime gold decline in BullionVault's 50-year dataset); 1970s stagflation analog; Fed pivot as gold catalyst; GDX listed as Position #9 leveraged crisis play; precious metals within broader 7-tier commodity hierarchy
-- [[Uranium & Nuclear Fuel]] — Parallel "monetary metal" narrative: sanction-resistant, scarcity-driven, geopolitical reserve asset
-- [[@LNG & Natural Gas Infrastructure]] — Energy-driven inflation transmission into gold via Fed reaction function
-- [[@Product Tankers & Maritime Shipping]] — Shared Iran-crisis / stagflation regime exposure; parallel logistics-constrained market structure
-- [[Compute & AI Compute Accelerators]] — Data-center buildout driving silver industrial demand via solar PV (indirect) and electronics (direct)
-- [[Sectors/Data Center Power & Cooling]] — Same AI/electrification stealth silver channel; silver in contacts, connectors, solders, thermals
+- [[Theses/BTC-CRYPTO - Bitcoin & Digital Assets]]: Digital-gold comparison; BTC stock-to-flow ~120 vs gold ~60; tokenized gold (PAXG/XAUT) as RWA bridge
+- [[Macro & Technology/Iran War Trading Playbook]]: Gold's counterintuitive $5,595 → $4,400 selloff (deepest wartime gold decline in BullionVault's 50-year dataset); 1970s stagflation analog; Fed pivot as gold catalyst; GDX listed as Position #9 leveraged crisis play; precious metals within broader 7-tier commodity hierarchy
+- [[Uranium & Nuclear Fuel]]: Parallel "monetary metal" narrative: sanction-resistant, scarcity-driven, geopolitical reserve asset
+- [[@LNG & Natural Gas Infrastructure]]: Energy-driven inflation transmission into gold via Fed reaction function
+- [[@Product Tankers & Maritime Shipping]]: Shared Iran-crisis / stagflation regime exposure; parallel logistics-constrained market structure
+- [[Compute & AI Compute Accelerators]]: Data-center buildout driving silver industrial demand via solar PV (indirect) and electronics (direct)
+- [[Sectors/Data Center Power & Cooling]]: Same AI/electrification stealth silver channel; silver in contacts, connectors, solders, thermals
 
 ## Log
 
@@ -324,3 +324,6 @@ The question is not whether Bitcoin replaces gold — both likely coexist — bu
 
 ### 2026-04-29
 - Manual edit: Added [[Theses/GLD - SPDR Gold Shares]] to Active Theses (primary physical-gold thesis; sector-native, listed above cross-sector BTC-CRYPTO entry).
+
+### 2026-08-20
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

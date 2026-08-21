@@ -67,7 +67,7 @@ Return null path, confidence `none`. Caller emits:
 
 ```
 ⚠️ No sector note found matching sector: [thesis_sector]. Skipping sector note update. Consider:
-  - Creating a sector note: Sectors/[thesis_sector].md (use Templates/Sector Template.md)
+  - Creating a sector note: Sectors/[thesis_sector].md (use Templates/Sector Template.md; frontmatter MUST include `publish: true` — website-sync flag, `$lint #67` enforces)
   - Or correcting the thesis's `sector:` frontmatter to match an existing sector note.
 ```
 

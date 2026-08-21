@@ -419,7 +419,7 @@ Most `_hot.md` references use `[[Theses/...]]` — handled by Step 5. This step 
 
 Use `Edit` with `replace_all: true` for literal `TICKER - [old_name]` (not in wikilink syntax). Word-boundary care — don't match substring inside longer words.
 
-**Word cap**: after edits, check `_hot.md` total. Over 4,000 (soft cap per `_shared/hot-md-contract.md`; unlikely from rename) → prune `## Sync Archive` oldest first. Abort if over 5,000 hard cap.
+**Word cap**: after edits, check `_hot.md` total. Over 8,000 (soft cap per `_shared/hot-md-contract.md`; unlikely from rename) → prune `## Sync Archive` oldest first. Abort if over 10,000 hard cap.
 
 **Failure handling (H3 fix)**: if the free-text Edit fails (rare — `_hot.md` rarely has file locks), append to `all_failed_ops`:
 ```

@@ -10,7 +10,7 @@ source: Vault synthesis (NET, CRCL, SHOP theses; Blockchain & Stablecoins / E-co
 
 ## Thesis
 
-The internet is being rebuilt around a non-human user. AI agents — autonomous programs acting on behalf of humans — already account for the majority of new traffic at the edge (416B AI bot requests blocked by Cloudflare in 5 months; weekly agent requests doubled in January 2026 alone; 75M+ x402 transactions in 3 months at 99% USDC settlement; AI-driven Shopify orders +15x in 2025). The architecture invented for humans clicking pages — cookies, session tokens, ad-supported content, form-based checkout, card networks with chargebacks, captchas — does not survive contact with agents that visit 1,000x more sites, traverse APIs not pages, can't pass KYC, and need atomic-settled programmable money. This is not a 2027 forecast — it is a 2026 empirical category with measurable commercial volume across edge networks, payment rails, merchant platforms, and server silicon.
+The internet is being rebuilt around a non-human user. AI agents (autonomous programs acting on behalf of humans) already account for the majority of new traffic at the edge (416B AI bot requests blocked by Cloudflare in 5 months; weekly agent requests doubled in January 2026 alone; 75M+ x402 transactions in 3 months at 99% USDC settlement; AI-driven Shopify orders +15x in 2025). The architecture invented for humans clicking pages (cookies, session tokens, ad-supported content, form-based checkout, card networks with chargebacks, captchas) does not survive contact with agents that visit 1,000x more sites, traverse APIs not pages, can't pass KYC, and need atomic-settled programmable money. It is already a 2026 empirical category with measurable commercial volume across edge networks, payment rails, merchant platforms, and server silicon, not a 2027 forecast.
 
 The transformation reorganizes the internet around three new principles: (1) **machine identity** replaces human identity as the unit of trust, (2) **API-first protocols** replace page-rendered HTML as the unit of interaction, and (3) **programmable money** replaces card-based payment as the unit of value transfer. Each principle changes who builds, who pays, who monetizes, and how. Mainstream consumer agent autonomy for purchases is likely 2027-2029; B2B agent autonomy for procurement and workflow is likely 2027-2028; the deep transformation (search ad-model collapse, aggregator disintermediation, end of seat-based SaaS, inter-agent commerce) compounds across 2028-2035.
 
@@ -29,12 +29,12 @@ The "agentic internet" describes the structural shift from internet-as-document-
 | **Trust model** | Brand reputation + visual cues + reviews | Cryptographic provenance + agent reputation + on-chain history |
 | **Latency tolerance** | Seconds (human reads) | Sub-second (agent waits cost real compute) |
 
-The substitution is not "humans use AI to browse faster." It is humans delegating outcomes to agents that construct their own multi-step traversal of an internet built for them. Four scope tiers describe the trajectory:
+The substitution is humans delegating outcomes to agents that construct their own multi-step traversal of an internet built for them, not "humans use AI to browse faster." Four scope tiers describe the trajectory:
 
-1. **Tier 1 — Augmented browsing (today, 2024-2026).** Human asks a chat interface a question; the model returns synthesized text. The agent does not transact. Examples: ChatGPT, Perplexity, Claude. Volume meaningful, transactional impact limited.
-2. **Tier 2 — Delegated research and micro-purchase (now, 2026-2028).** Human delegates a constrained task with explicit budget and approval. Agent executes within scope. Examples: ChatGPT Instant Checkout (1M Shopify merchants live), Sidekick on Shopify, agent-driven travel research that hands off to human for booking.
-3. **Tier 3 — Persistent autonomous agents (emerging, 2027-2030).** Agents run continuously on behalf of a principal — managing subscriptions, monitoring deals, reordering household goods, executing standing rules. Trust threshold materially higher; requires both reliability gains and an identity/attestation/dispute infrastructure that does not yet exist at consumer scale.
-4. **Tier 4 — Inter-agent economy (2030+).** Agents transact with other agents without human-in-loop for negotiation, contracting, or payment. The architecture invented for humans (chargebacks, dispute resolution, brand trust) breaks completely; the new architecture (cryptographic agent identity, on-chain reputation, programmable contracts) becomes load-bearing. Entirely new commerce categories become viable: per-second leasing, micro-licensing, agent-aggregated demand.
+1. **Tier 1: Augmented browsing (today, 2024-2026).** Human asks a chat interface a question; the model returns synthesized text. The agent does not transact. Examples: ChatGPT, Perplexity, Claude. Volume meaningful, transactional impact limited.
+2. **Tier 2: Delegated research and micro-purchase (now, 2026-2028).** Human delegates a constrained task with explicit budget and approval. Agent executes within scope. Examples: ChatGPT Instant Checkout (1M Shopify merchants live), Sidekick on Shopify, agent-driven travel research that hands off to human for booking.
+3. **Tier 3: Persistent autonomous agents (emerging, 2027-2030).** Agents run continuously on behalf of a principal: managing subscriptions, monitoring deals, reordering household goods, executing standing rules. Trust threshold materially higher; requires both reliability gains and an identity/attestation/dispute infrastructure that does not yet exist at consumer scale.
+4. **Tier 4: Inter-agent economy (2030+).** Agents transact with other agents without human-in-loop for negotiation, contracting, or payment. The architecture invented for humans (chargebacks, dispute resolution, brand trust) breaks completely; the new architecture (cryptographic agent identity, on-chain reputation, programmable contracts) becomes load-bearing. Entirely new commerce categories become viable: per-second leasing, micro-licensing, agent-aggregated demand.
 
 ## Why now: the empirical case (April 2026 data)
 
@@ -51,7 +51,7 @@ The "agentic internet" stopped being a forecast in 2025 and became a measurable 
 
 These are commercial-volume metrics across edge networks, payment rails, merchant platforms, server silicon, and enterprise software pricing books. The agentic internet is closer to where stablecoins were in mid-2024 (TAM measurable, infrastructure live, regulatory architecture forming) than where AR/VR has been since 2014 (always two years away).
 
-**June 2026 primary-source confirmation (Cloudflare Investor Day, June 9).** Cloudflare made the agentic internet its explicit corporate strategy — "Act IV" (Connect & Protect + Build = Agentic Internet) — and disclosed fresh edge-level metrics that strengthen every signal above: daily AI-agent requests **+1,700% y/y** (Jun 2025→May 2026); **2 billion HTTP 402 ("payment required") responses served per day** via the x402 standard Cloudflare co-founded with Coinbase and Stripe; open-web share of online attention down to **~25%** (from 55% in 2015-22) as AI summarization disintermediates publishers (top tech-publication search traffic −58% since 2024, individual sites −30% to −97%); 78% of the top-50 generative-AI web products already on Cloudflare; and human (non-bot) traffic down 35-40% across Retail / Software / IT / Financial Services (Jun 2025→Apr 2026). Management put financial weight behind it — a *raised* long-term operating model (operating margin 30%+, FCF 30-35%+) and ~$5B annualized revenue by YE2028, predicated on monetizing agent traffic at the network layer. The agentic internet is now a funded corporate strategy at the layer-1 toll-collector, not just an external forecast. See [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]].
+**June 2026 primary-source confirmation (Cloudflare Investor Day, June 9).** Cloudflare made the agentic internet its explicit corporate strategy, "Act IV" (Connect & Protect + Build = Agentic Internet), and disclosed fresh edge-level metrics that strengthen every signal above: daily AI-agent requests **+1,700% y/y** (Jun 2025→May 2026); **2 billion HTTP 402 ("payment required") responses served per day** via the x402 standard Cloudflare co-founded with Coinbase and Stripe; open-web share of online attention down to **~25%** (from 55% in 2015-22) as AI summarization disintermediates publishers (top tech-publication search traffic −58% since 2024, individual sites −30% to −97%); 78% of the top-50 generative-AI web products already on Cloudflare; and human (non-bot) traffic down 35-40% across Retail / Software / IT / Financial Services (Jun 2025→Apr 2026). Management put financial weight behind it: a raised long-term operating model (operating margin 30%+, FCF 30-35%+) and ~$5B annualized revenue by YE2028, predicated on monetizing agent traffic at the network layer. The agentic internet is now a funded corporate strategy at the layer-1 toll-collector, not just an external forecast. See [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]].
 
 ## User adoption: where we are and where it goes
 
@@ -72,13 +72,13 @@ Adoption is bifurcated by user type and task. The pattern: infrastructure adopti
 
 ### The four-phase adoption cascade
 
-**Phase 1 — Tool-use plateau (2024-2026, in progress).** Agents reliably execute single-purpose tasks (one search, one summary, one code completion). Consumer interaction is chat-mediated. Commercial volume ahead of consumer mindshare; most consumers do not realize how much of their software interaction is already agent-mediated (M365 Copilot, Gmail Smart Compose, code completion).
+**Phase 1: Tool-use plateau (2024-2026, in progress).** Agents reliably execute single-purpose tasks (one search, one summary, one code completion). Consumer interaction is chat-mediated. Commercial volume ahead of consumer mindshare; most consumers do not realize how much of their software interaction is already agent-mediated (M365 Copilot, Gmail Smart Compose, code completion).
 
-**Phase 2 — Delegated multi-step (2026-2028, beginning).** Agents complete multi-step tasks within bounded scope. ChatGPT Instant Checkout is the canonical case — user describes intent, agent constructs cart across merchants, presents for one-click confirmation. Consumer trust threshold today is "I will let it spend $50 on a known item from a known merchant"; the gap to "$500 on novel item from unknown merchant" is large.
+**Phase 2: Delegated multi-step (2026-2028, beginning).** Agents complete multi-step tasks within bounded scope. ChatGPT Instant Checkout is the canonical case: user describes intent, agent constructs cart across merchants, presents for one-click confirmation. Consumer trust threshold today is "I will let it spend $50 on a known item from a known merchant"; the gap to "$500 on novel item from unknown merchant" is large.
 
-**Phase 3 — Persistent autonomous (2028-2030, projected).** Agents run continuously without per-action approval. Examples: monitor flight prices and rebook automatically; reorder household goods on inferred schedule; manage subscriptions; execute standing rules ("if my electricity rate exceeds X, switch providers"). Requires (a) persistent memory of preferences, (b) revocable cryptographic delegation, (c) dispute infrastructure analogous to credit-card chargebacks. None solved at consumer scale today.
+**Phase 3: Persistent autonomous (2028-2030, projected).** Agents run continuously without per-action approval. Examples: monitor flight prices and rebook automatically; reorder household goods on inferred schedule; manage subscriptions; execute standing rules ("if my electricity rate exceeds X, switch providers"). Requires (a) persistent memory of preferences, (b) revocable cryptographic delegation, (c) dispute infrastructure analogous to credit-card chargebacks. None solved at consumer scale today.
 
-**Phase 4 — Agent-to-agent (2030+, projected).** B2B agents negotiate with B2B agents (procurement bot ↔ vendor bot) without human approval per transaction. Consumer-side, agents in different households coordinate (rideshare pooling, group purchasing). The unit economics of human transaction overhead disappear; entirely new commerce categories become viable (per-second leasing, micro-licensing, agent-aggregated demand).
+**Phase 4: Agent-to-agent (2030+, projected).** B2B agents negotiate with B2B agents (procurement bot ↔ vendor bot) without human approval per transaction. Consumer-side, agents in different households coordinate (rideshare pooling, group purchasing). The unit economics of human transaction overhead disappear; entirely new commerce categories become viable (per-second leasing, micro-licensing, agent-aggregated demand).
 
 ### What unlocks each phase
 
@@ -96,7 +96,7 @@ Six structural barriers between today's commercial volume and mainstream Phase 3
 
 ### 1. Reliability ceiling
 
-Frontier agents fail at multi-step tasks at 30-65% rate (Carnegie Mellon benchmarks; SWE-bench Pro <20% on private codebases). For consumer trust, the failure rate has to drop into single digits for transactions involving real money. Token deflation (~86% annual inference cost reduction) helps the cost side but not the reliability side directly — that requires architectural improvement (better grounding, better tool-use, better memory). The bear case: reliability plateaus and Phase 3 stalls. The bull case: capability gains compound model-by-model and reliability hits the threshold by 2027-2028.
+Frontier agents fail at multi-step tasks at 30-65% rate (Carnegie Mellon benchmarks; SWE-bench Pro <20% on private codebases). For consumer trust, the failure rate has to drop into single digits for transactions involving real money. Token deflation (~86% annual inference cost reduction) helps the cost side but not the reliability side directly; that requires architectural improvement (better grounding, better tool-use, better memory). The bear case: reliability plateaus and Phase 3 stalls. The bull case: capability gains compound model-by-model and reliability hits the threshold by 2027-2028.
 
 ### 2. Identity and attestation infrastructure
 
@@ -112,7 +112,7 @@ Agent transactions stress-test KYC, fiduciary duty, chargeback law, advertising 
 
 ### 5. Publisher / website crawler revolt
 
-If publishers mass-deploy paywalls, captchas, and pay-per-crawl on every site, the cost of agent traversal rises and the agent's ability to discover information narrows. The 2nd-order effect could *accelerate* the agent-payment economy (every crawl becomes a micro-transaction), but the 1st-order effect is friction that constrains Phase 1-2 utility. Cloudflare's pay-per-crawl is the cleanest current implementation; whether it becomes a healthy two-sided market or a wall depends on price discovery in 2026-2027.
+If publishers mass-deploy paywalls, captchas, and pay-per-crawl on every site, the cost of agent traversal rises and the agent's ability to discover information narrows. The 2nd-order effect could accelerate the agent-payment economy (every crawl becomes a micro-transaction), but the 1st-order effect is friction that constrains Phase 1-2 utility. Cloudflare's pay-per-crawl is the cleanest current implementation; whether it becomes a healthy two-sided market or a wall depends on price discovery in 2026-2027.
 
 ### 6. Compute economics for high-frequency agent action
 
@@ -128,13 +128,13 @@ Forward projection assumes Phase 3 reaches majority consumer adoption by ~2032 a
 
 **Money is programmable by default.** Stablecoin settlement is the underlying rail for the majority of internet transactions <$500. Card networks survive but reposition as identity / dispute / loyalty layers atop stablecoin settlement (the Visa B2B Connect / Mastercard Move pattern generalizes). Sub-cent transactions become economic for the first time, enabling new content models (per-article, per-API-call, per-second-of-attention pricing). Cross-border B2B settles in minutes for transparent fees vs. today's 3-5 days at 2.5-5% all-in cost.
 
-**Agents have identity, reputation, and accountability.** Every agent operates under cryptographic attestation tied to a human or corporate principal. Reputation systems (the "Visa for agents" that does not exist today) enable agent-to-agent trust at scale. Disputes are arbitrated through on-chain mechanisms with human appeal — the equivalent of small-claims court for autonomous agent actions. New regulatory bodies emerge to oversee the agent economy.
+**Agents have identity, reputation, and accountability.** Every agent operates under cryptographic attestation tied to a human or corporate principal. Reputation systems (the "Visa for agents" that does not exist today) enable agent-to-agent trust at scale. Disputes are arbitrated through on-chain mechanisms with human appeal, the equivalent of small-claims court for autonomous agent actions. New regulatory bodies emerge to oversee the agent economy.
 
-**The labor / SaaS economy reorganizes.** Per-seat SaaS pricing dies for any category where agent-based execution is feasible — the 1:5 seat-compression ratio cited in [[Sectors/Enterprise Workflow AI & Automation]] becomes the norm, not the bear case. Software pricing migrates to consumption (per-action, per-token, per-decision) or outcomes (per-resolved-ticket, per-closed-deal). Knowledge work that decomposes into agent-doable subtasks shifts to agent execution with human review; jobs that survive require physical presence, executive judgment, or relationship management.
+**The labor / SaaS economy reorganizes.** Per-seat SaaS pricing dies for any category where agent-based execution is feasible: the 1:5 seat-compression ratio cited in [[Sectors/Enterprise Workflow AI & Automation]] becomes the norm, not the bear case. Software pricing migrates to consumption (per-action, per-token, per-decision) or outcomes (per-resolved-ticket, per-closed-deal). Knowledge work that decomposes into agent-doable subtasks shifts to agent execution with human review; jobs that survive require physical presence, executive judgment, or relationship management.
 
 **Aggregators are disintermediated, marketplaces persist conditionally.** Pure-aggregator businesses (Booking, Expedia, comparison-shopping engines) compress materially because agents do their function natively for free. Marketplaces with strong supply-side moats (Amazon's logistics, Uber's network density, Shopify's merchant tools) survive by becoming agent-friendly fulfillment layers under a new discovery layer. The economic value of "discovery + curation" migrates from incumbent aggregators to whichever agent platforms users entrust with their delegation.
 
-**A new browser-equivalent emerges.** The "browser" of the agentic internet is the agent runtime — the environment where agents execute on behalf of a principal. Today this lives inside chat interfaces (ChatGPT, Claude, Perplexity); by 2030-2035 it is more likely a dedicated OS-level surface (Apple Intelligence, Microsoft Copilot OS layer, ChromeOS-equivalent for agents). Whoever owns that runtime captures distribution analogous to what browsers captured in the 1995-2005 web.
+**A new browser-equivalent emerges.** The "browser" of the agentic internet is the agent runtime: the environment where agents execute on behalf of a principal. Today this lives inside chat interfaces (ChatGPT, Claude, Perplexity); by 2030-2035 it is more likely a dedicated OS-level surface (Apple Intelligence, Microsoft Copilot OS layer, ChromeOS-equivalent for agents). Whoever owns that runtime captures distribution analogous to what browsers captured in the 1995-2005 web.
 
 ### The investable categories at maturity
 
@@ -150,10 +150,10 @@ Forward projection assumes Phase 3 reaches majority consumer adoption by ~2032 a
 
 ### Failure modes for the 10-20 year vision
 
-1. Reliability never crosses the trust threshold for autonomous spending — Phase 3 stalls; commercial impact remains in research and assistance only.
-2. Regulators impose human-in-loop requirements on every agent transaction — agent commerce reverts to assisted browsing.
-3. A platform monopolist (most likely Microsoft or Google) absorbs the agent runtime layer end-to-end and prices the rest of the stack out — pure-play infrastructure plays become commodities.
-4. Hard recession in 2026-2028 compresses enterprise software budgets and consumer discretionary, stretching the inflection from 2027-2029 to 2032-2034 — interim valuations destroy even if long-term thesis holds.
+1. Reliability never crosses the trust threshold for autonomous spending: Phase 3 stalls; commercial impact remains in research and assistance only.
+2. Regulators impose human-in-loop requirements on every agent transaction: agent commerce reverts to assisted browsing.
+3. A platform monopolist (most likely Microsoft or Google) absorbs the agent runtime layer end-to-end and prices the rest of the stack out: pure-play infrastructure plays become commodities.
+4. Hard recession in 2026-2028 compresses enterprise software budgets and consumer discretionary, stretching the inflection from 2027-2029 to 2032-2034; interim valuations destroy even if long-term thesis holds.
 
 ## The eight-layer stack (compressed reference)
 
@@ -170,7 +170,7 @@ The agentic internet decomposes into eight layers. Detailed treatment of layers 
 | **7. Data & context** | Operational data, vector DBs, ontology, write-back, content licensing | PLTR Ontology = agent-safe write-back; Snowflake/MDB picks-and-shovels; Reddit data licensing | [[Theses/PLTR - Palantir]], [[Theses/NOW - ServiceNow]] |
 | **8. Cybersecurity** | Prompt injection, agent identity spoofing, agent-to-agent fraud | New attack categories; PANW platform consolidation; CRWD endpoint; NET network-layer | [[Theses/PANW - Palo Alto Networks]], [[Theses/CRWD - CrowdStrike Holdings]] |
 
-The compute layer (6) is the highest-confidence beneficiary — every other layer is a competitive battle, but more agents = more compute regardless of which agent platform / payment rail / commerce protocol wins.
+The compute layer (6) is the highest-confidence beneficiary: every other layer is a competitive battle, but more agents = more compute regardless of which agent platform / payment rail / commerce protocol wins.
 
 ## Impact on NET, CRCL, SHOP
 
@@ -180,8 +180,8 @@ These three vault names have the most direct agentic-internet exposure. Each pla
 
 Cloudflare is the only single vendor active across four layers. The structural position:
 
-- **Layer 1 (interception).** ~20% of all web traffic proxied through Cloudflare's 330+ city anycast network. Every agent request to a Cloudflare-protected origin is observable, identifiable, and rate-limitable at the edge. AI bot identification (Web Bot Auth) is live as of April 2026; pay-per-crawl monetization is an entirely new revenue line with no incumbent. Per [[Theses/NET - Cloudflare]] §Insight #2, weekly AI-agent requests doubled in January 2026 — a step-function not yet priced into consensus traffic projections.
-- **Layer 2 (identity).** Web Bot Auth + Workers + NET Dollar gives Cloudflare the unique ability to do agent attestation + payment + execution in a single Cloudflare-hosted flow. Green-field expansion no competitor can replicate without similar traffic position. The risk is hyperscaler absorption — Microsoft Entra Agent ID could foreclose enterprise identity even if Cloudflare wins consumer / web.
+- **Layer 1 (interception).** ~20% of all web traffic proxied through Cloudflare's 330+ city anycast network. Every agent request to a Cloudflare-protected origin is observable, identifiable, and rate-limitable at the edge. AI bot identification (Web Bot Auth) is live as of April 2026; pay-per-crawl monetization is an entirely new revenue line with no incumbent. Per [[Theses/NET - Cloudflare]] §Insight #2, weekly AI-agent requests doubled in January 2026, a step-function not yet priced into consensus traffic projections.
+- **Layer 2 (identity).** Web Bot Auth + Workers + NET Dollar gives Cloudflare the unique ability to do agent attestation + payment + execution in a single Cloudflare-hosted flow. Green-field expansion no competitor can replicate without similar traffic position. The risk is hyperscaler absorption: Microsoft Entra Agent ID could foreclose enterprise identity even if Cloudflare wins consumer / web.
 - **Layer 5 (NET Dollar).** Cloudflare's own stablecoin creates payment-at-the-edge with no settlement intermediary. Per [[Theses/NET - Cloudflare]] §Insight #5, this is genuinely novel revenue with no competitor able to build it from a standing start. Adoption depends on developer + agent-platform integration; if NET Dollar becomes a default settlement option for x402-compatible agents, it captures non-trivial share of the agent payment volume that today defaults to USDC.
 - **Layer 8 (security).** Firewall for AI, Web Bot Auth bot management, agent-aware DDoS protection. Every agent deployment expands Cloudflare's addressable security spend at the network layer.
 
@@ -193,10 +193,10 @@ Cloudflare is the only single vendor active across four layers. The structural p
 
 Circle is the programmable-money issuer for the agent economy. The structural position:
 
-- **Layer 5 (settlement).** 99% of x402 agent payment volume settles in USDC. CPN (Circle Payments Network) launched April 8, 2026 with Santander / Deutsche Bank / SocGen / StanChart — the cross-border B2B agent-payment rail. Per [[Theses/CRCL - Circle Internet Group]] §Insight #3, x402 revenue bypasses Coinbase distribution entirely (50-60% higher gross margin per dollar of agent volume). Sector context: [[Sectors/Blockchain & Stablecoins]] §6 estimates ~$70B agent-payment TAM at 5% of e-commerce by 2030.
-- **Layer 2 (wallet as identity).** Programmable Wallets become the de-facto agent wallet for x402 settlement. Identity rides on the wallet — every agent has a wallet, every wallet has cryptographic provenance, every transaction has an audit trail. The closest current implementation of "agent identity tied to payment authority."
+- **Layer 5 (settlement).** 99% of x402 agent payment volume settles in USDC. CPN (Circle Payments Network) launched April 8, 2026 with Santander / Deutsche Bank / SocGen / StanChart, the cross-border B2B agent-payment rail. Per [[Theses/CRCL - Circle Internet Group]] §Insight #3, x402 revenue bypasses Coinbase distribution entirely (50-60% higher gross margin per dollar of agent volume). Sector context: [[Sectors/Blockchain & Stablecoins]] §6 estimates ~$70B agent-payment TAM at 5% of e-commerce by 2030.
+- **Layer 2 (wallet as identity).** Programmable Wallets become the de-facto agent wallet for x402 settlement. Identity rides on the wallet: every agent has a wallet, every wallet has cryptographic provenance, every transaction has an audit trail. The closest current implementation of "agent identity tied to payment authority."
 
-**What to watch (CRCL):** Q1 2026 earnings (May 11) — CPN volume disclosure, x402 adoption metrics, whether fee-based revenue scales fast enough to offset reserve income exposure to falling rates. The August 2026 Coinbase revenue-sharing renegotiation is the single largest binary catalyst; the agent-payment volume is the structural offset that justifies a higher base case if interest income compresses.
+**What to watch (CRCL):** Q1 2026 earnings (May 11): CPN volume disclosure, x402 adoption metrics, whether fee-based revenue scales fast enough to offset reserve income exposure to falling rates. The August 2026 Coinbase revenue-sharing renegotiation is the single largest binary catalyst; the agent-payment volume is the structural offset that justifies a higher base case if interest income compresses.
 
 **What it means for the agent thesis:** CRCL is the cleanest pure-play on programmable money as the agent-payment substrate. The economics are levered to two variables: (a) what share of agent commerce settles in stablecoin vs. card (today 99% on x402, materially lower on retail-size agent purchases that still use cards), and (b) what share of stablecoin agent payments settle in USDC vs. PYUSD / RLUSD / NET Dollar. Bull case requires both variables to stay favorable through a multi-year ramp; bear case is share erosion to a hyperscaler-issued or merchant-issued stablecoin.
 
@@ -204,16 +204,16 @@ Circle is the programmable-money issuer for the agent economy. The structural po
 
 Shopify is the merchant-side protocol consolidator. The structural position:
 
-- **Layer 4 (commerce protocol).** SHOP merchants stacked on both UCP (Universal Commerce Protocol — Google + Walmart + Target consortium) and ACP (Agentic Commerce Protocol — Stripe + OpenAI) capture **40% more agentic traffic** than single-protocol stores per [[Theses/SHOP - Shopify]] §Insight #3. 1M+ merchants live on ChatGPT Instant Checkout; Agentic Storefronts (UCP) rolled out universally March 2026. Sidekick is the merchant-side agent for store management; Shop is the consumer-side agent for shopping.
+- **Layer 4 (commerce protocol).** SHOP merchants stacked on both UCP (Universal Commerce Protocol: Google + Walmart + Target consortium) and ACP (Agentic Commerce Protocol: Stripe + OpenAI) capture **40% more agentic traffic** than single-protocol stores per [[Theses/SHOP - Shopify]] §Insight #3. 1M+ merchants live on ChatGPT Instant Checkout; Agentic Storefronts (UCP) rolled out universally March 2026. Sidekick is the merchant-side agent for store management; Shop is the consumer-side agent for shopping.
 - **Adjacent layers.** Shopify Pay + the Stripe integration give SHOP optionality on the payment layer; Shop App as a consumer surface gives SHOP optionality on the discovery layer. Neither is the primary thesis but both reduce the risk of being squeezed out at the merchant interface.
 
-**What to watch (SHOP):** Q1 2026 earnings — AI-driven order GMV disclosure (the +15x 2025 growth needs to compound, not plateau); UCP + ACP adoption breadth (single-protocol merchants should continue migrating to dual-stack); Sidekick attach rate (proxy for merchant-side agent adoption). Structural risk: one protocol wins decisively (most likely UCP given Google + Walmart + Target distribution), reducing the value of SHOP's dual-protocol hedge.
+**What to watch (SHOP):** Q1 2026 earnings: AI-driven order GMV disclosure (the +15x 2025 growth needs to compound, not plateau); UCP + ACP adoption breadth (single-protocol merchants should continue migrating to dual-stack); Sidekick attach rate (proxy for merchant-side agent adoption). Structural risk: one protocol wins decisively (most likely UCP given Google + Walmart + Target distribution), reducing the value of SHOP's dual-protocol hedge.
 
-**What it means for the agent thesis:** SHOP is the cleanest pure-play on the merchant-side capture of agent-driven commerce. Bull case: agent-mediated commerce reaches 5-10% of e-commerce GMV by 2030, with SHOP's merchant share roughly proportional to its current ~10% U.S. e-commerce share — yields a multi-billion-dollar incremental revenue stream from agent-traffic-share above current trend. Bear case: protocol-wars favor a single platform (GOOG via UCP) that captures the merchant-relationship economics directly, leaving SHOP as a fulfillment back-end with compressed margins.
+**What it means for the agent thesis:** SHOP is the cleanest pure-play on the merchant-side capture of agent-driven commerce. Bull case: agent-mediated commerce reaches 5-10% of e-commerce GMV by 2030, with SHOP's merchant share roughly proportional to its current ~10% U.S. e-commerce share, yielding a multi-billion-dollar incremental revenue stream from agent-traffic-share above current trend. Bear case: protocol-wars favor a single platform (GOOG via UCP) that captures the merchant-relationship economics directly, leaving SHOP as a fulfillment back-end with compressed margins.
 
 ### How NET / CRCL / SHOP interact
 
-The three are layered, not redundant. An agent placing an order on Shopify-via-ACP (SHOP layer 4) authenticates through Web Bot Auth at Cloudflare's edge (NET layer 1+2), pays in USDC (CRCL layer 5), with the entire flow secured by Cloudflare's Firewall for AI (NET layer 8). The same agent doing competitive price research traverses 50-200 sites (NET layer 1 traffic; CRCL pay-per-crawl micro-payments to publishers; SHOP merchant catalogs as a primary destination). Each name compounds the others' adoption — agent volume growth at any layer increases volume at every layer.
+The three are layered, not redundant. An agent placing an order on Shopify-via-ACP (SHOP layer 4) authenticates through Web Bot Auth at Cloudflare's edge (NET layer 1+2), pays in USDC (CRCL layer 5), with the entire flow secured by Cloudflare's Firewall for AI (NET layer 8). The same agent doing competitive price research traverses 50-200 sites (NET layer 1 traffic; CRCL pay-per-crawl micro-payments to publishers; SHOP merchant catalogs as a primary destination). Each name compounds the others' adoption: agent volume growth at any layer increases volume at every layer.
 
 For a portfolio with all three, the diversification is by failure mode:
 - **NET fails** if hyperscalers replicate the edge chokepoint (low probability near-term, real long-term risk).
@@ -224,7 +224,7 @@ The probabilities are uncorrelated; the basket is structurally diversified withi
 
 ## Other names: compressed map
 
-The full eight-layer winners-losers map preserved below for reference. Detail intentionally lighter than in prior versions of the note — see linked theses for full coverage.
+The full eight-layer winners-losers map preserved below for reference. Detail intentionally lighter than in prior versions of the note; see linked theses for full coverage.
 
 | Ticker | Coverage | Layer(s) | Net | One-line case |
 |---|---|---|---|---|
@@ -250,17 +250,17 @@ The full eight-layer winners-losers map preserved below for reference. Detail in
 | **RDDT** | (no coverage) | 3, 7 | Mixed-Bull | Data licensing as new revenue category |
 | **SNOW / MDB** | (no coverage) | 7 | Bull | Vector DB + lakehouse picks-and-shovels |
 
-Suggested new coverage priorities (preserved from prior version): Tier 1 — GOOGL (Search disruption bear), MSFT (full-stack agent bull), V/MA pair (tokenization frenemies). Tier 2 — BKNG (aggregator bear), PYPL (PYUSD reposition), AMZN (mixed). Tier 3 — OKTA, AKAM, VRSN, RDDT, SNOW/MDB.
+Suggested new coverage priorities (preserved from prior version): Tier 1: GOOGL (Search disruption bear), MSFT (full-stack agent bull), V/MA pair (tokenization frenemies). Tier 2: BKNG (aggregator bear), PYPL (PYUSD reposition), AMZN (mixed). Tier 3: OKTA, AKAM, VRSN, RDDT, SNOW/MDB.
 
 ## Mental models and historical analogies
 
 Three historical parallels frame the agentic transition. None is a perfect map; each illuminates a specific dynamic.
 
-**Mobile (2007-2014) — the platform transition.** iPhone + Android created a new computing surface in ~5 years; incumbents that defended legacy architecture (Microsoft Windows Mobile, BlackBerry, Nokia) were structurally re-rated downward. Agentic-internet parallel: ~3-5 year transition window (2025-2029) where re-platformers (NET, SHOP, MSFT) entrench and defenders of the legacy stack (BKNG, GOOGL Search, single-protocol commerce platforms) get re-rated. The asymmetry: agent re-platforming requires *exposing* APIs, not *building* new surfaces — capex is lower and speed should be faster than mobile.
+**Mobile (2007-2014): the platform transition.** iPhone + Android created a new computing surface in ~5 years; incumbents that defended legacy architecture (Microsoft Windows Mobile, BlackBerry, Nokia) were structurally re-rated downward. Agentic-internet parallel: ~3-5 year transition window (2025-2029) where re-platformers (NET, SHOP, MSFT) entrench and defenders of the legacy stack (BKNG, GOOGL Search, single-protocol commerce platforms) get re-rated. The asymmetry: agent re-platforming requires exposing APIs, not building new surfaces; capex is lower and speed should be faster than mobile.
 
-**TCP/IP / commercial internet (1995-2002) — the protocol layer.** USDC is to internet-native money what TCP/IP was to internet-native communication. Same framing applies to x402, MCP, UCP/ACP. Investor implication: protocol-layer value capture is structurally harder than application-layer — TCP/IP made Cisco rich, not Vint Cerf. The "buy Cisco" of this analogy is the toll-collector (NET) and the merchant interface (SHOP), not the protocol developer (Anthropic on MCP, Coinbase on x402).
+**TCP/IP / commercial internet (1995-2002): the protocol layer.** USDC is to internet-native money what TCP/IP was to internet-native communication. Same framing applies to x402, MCP, UCP/ACP. Investor implication: protocol-layer value capture is structurally harder than application-layer: TCP/IP made Cisco rich, not Vint Cerf. The "buy Cisco" of this analogy is the toll-collector (NET) and the merchant interface (SHOP), not the protocol developer (Anthropic on MCP, Coinbase on x402).
 
-**2010s instant payment rails — the layering lesson.** SEPA Inst, FedNow, TCH RTP, PIX, UPI built domestic instant rails; cross-border remained 1970s SWIFT. CPN bridges the gap in 2026. Agent-economy parallel: cross-domain interoperability is the scarcest and most valuable layer. NET's traffic-interception position is the agent equivalent of CPN's cross-border position — connecting domains that would otherwise stay siloed. Single-domain agent platforms are SEPA / FedNow / PIX equivalents; cross-domain owners win.
+**2010s instant payment rails: the layering lesson.** SEPA Inst, FedNow, TCH RTP, PIX, UPI built domestic instant rails; cross-border remained 1970s SWIFT. CPN bridges the gap in 2026. Agent-economy parallel: cross-domain interoperability is the scarcest and most valuable layer. NET's traffic-interception position is the agent equivalent of CPN's cross-border position, connecting domains that would otherwise stay siloed. Single-domain agent platforms are SEPA / FedNow / PIX equivalents; cross-domain owners win.
 
 ## Catalysts and re-rating triggers (next 12 months)
 
@@ -281,7 +281,7 @@ Three historical parallels frame the agentic transition. None is a perfect map; 
 
 Three coherent objections to taking this thesis at face value:
 
-**1. The "every transformation timeline gets stretched" objection.** AR/VR has been "two years away" since 2014; metaverse since 2021; FSD since 2016. Each had infrastructure metrics that *looked* convincing in year 1 and stalled at consumer adoption for 5+ years. Agentic internet may follow the same pattern: infrastructure (NET, CRCL, SHOP) re-platforms successfully, but mainstream consumer + B2B autonomous adoption stalls at trust, regulation, reliability. **Counter:** Agent adoption is already commercial (75M x402 transactions, 1M Shopify ACP merchants, 15x AI-driven Shopify orders) — past the "real volume on real transactions" threshold AR/VR never reached.
+**1. The "every transformation timeline gets stretched" objection.** AR/VR has been "two years away" since 2014; metaverse since 2021; FSD since 2016. Each had infrastructure metrics that looked convincing in year 1 and stalled at consumer adoption for 5+ years. Agentic internet may follow the same pattern: infrastructure (NET, CRCL, SHOP) re-platforms successfully, but mainstream consumer + B2B autonomous adoption stalls at trust, regulation, reliability. **Counter:** Agent adoption is already commercial (75M x402 transactions, 1M Shopify ACP merchants, 15x AI-driven Shopify orders), past the "real volume on real transactions" threshold AR/VR never reached.
 
 **2. The "platform absorbs everything" objection.** Microsoft, Apple, Google, Meta absorb the agent layer into existing surfaces (Copilot, Apple Intelligence, Gemini, Meta AI). Pure-play infrastructure plays (NET, CRCL) become commodities. **Counter:** Strongest objection. Hedge is to weight toward (a) layers hyperscalers can't replicate (NET's 14-year network buildout, CRCL's regulatory moat) and (b) hyperscalers themselves (MSFT). Pure-play "agent identity green-field" thesis (OKTA) is most exposed.
 
@@ -301,49 +301,49 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 ## Connections
 
 ### Direct theses (existing coverage)
-- [[Theses/NET - Cloudflare]] — primary equity expression: layer-1/2/5/8 (interception + agent ID + NET Dollar + AI security)
-- [[Theses/CRCL - Circle Internet Group]] — primary equity expression: layer-5 (USDC settlement, x402, CPN, Programmable Wallets)
-- [[Theses/SHOP - Shopify]] — primary equity expression: layer-4 (UCP+ACP dual hedge, Sidekick, Agentic Storefronts)
-- [[Theses/NVDA - Nvidia]] — layer-6 compute; Vera CPU agentic-flagship
-- [[Theses/AMD - Advanced Micro Devices]] — layer-6 compute; Venice Dense action-flagship
-- [[Theses/AVGO - Broadcom]] — layer-6 custom silicon for agent racks
-- [[Theses/PSTG - Pure Storage]] — layer-6/7 storage for agent state
-- [[Theses/SNDK - SanDisk]] — layer-6 NAND demand from agent context windows
-- [[Theses/META - Meta]] — layer-3/6 Llama agent substrate + 1B Meta AI MAU
-- [[Theses/PLTR - Palantir]] — layer-7 Ontology as agent-safe write-back substrate
-- [[Theses/NOW - ServiceNow]] — layer-7 Knowledge Graph + AI Control Tower; per-seat risk
-- [[Theses/PANW - Palo Alto Networks]] — layer-8 platform consolidation
-- [[Theses/CRWD - CrowdStrike Holdings]] — layer-8 endpoint agent security
-- [[Theses/APP - AppLovin]] — layer-3 in-app ad insulation from agent discovery
-- [[Theses/UBER - Uber]] — layer-3/4 Khosrowshahi-flagged agent disintermediation risk
-- [[Theses/LITE - Lumentum]], [[Theses/IQE - IQE]], [[Theses/MRVL - Marvell Technology]] — layer-6 photonic interconnect for agent rack east-west traffic
+- [[Theses/NET - Cloudflare]]: primary equity expression: layer-1/2/5/8 (interception + agent ID + NET Dollar + AI security)
+- [[Theses/CRCL - Circle Internet Group]]: primary equity expression: layer-5 (USDC settlement, x402, CPN, Programmable Wallets)
+- [[Theses/SHOP - Shopify]]: primary equity expression: layer-4 (UCP+ACP dual hedge, Sidekick, Agentic Storefronts)
+- [[Theses/NVDA - Nvidia]]: layer-6 compute; Vera CPU agentic-flagship
+- [[Theses/AMD - Advanced Micro Devices]]: layer-6 compute; Venice Dense action-flagship
+- [[Theses/AVGO - Broadcom]]: layer-6 custom silicon for agent racks
+- [[Theses/PSTG - Pure Storage]]: layer-6/7 storage for agent state
+- [[Theses/SNDK - SanDisk]]: layer-6 NAND demand from agent context windows
+- [[Theses/META - Meta]]: layer-3/6 Llama agent substrate + 1B Meta AI MAU
+- [[Theses/PLTR - Palantir]]: layer-7 Ontology as agent-safe write-back substrate
+- [[Theses/NOW - ServiceNow]]: layer-7 Knowledge Graph + AI Control Tower; per-seat risk
+- [[Theses/PANW - Palo Alto Networks]]: layer-8 platform consolidation
+- [[Theses/CRWD - CrowdStrike Holdings]]: layer-8 endpoint agent security
+- [[Theses/APP - AppLovin]]: layer-3 in-app ad insulation from agent discovery
+- [[Theses/UBER - Uber]]: layer-3/4 Khosrowshahi-flagged agent disintermediation risk
+- [[Theses/LITE - Lumentum]], [[Theses/IQE - IQE]], [[Theses/MRVL - Marvell Technology]]: layer-6 photonic interconnect for agent rack east-west traffic
 
 ### Sector context
-- [[Sectors/Blockchain & Stablecoins]] — §6 AI-agent payments (x402); ~$70B agent-payment TAM at 5% e-commerce by 2030; Cloudflare bot-paywall as policy/identity middleware
-- [[Sectors/E-commerce Infrastructure]] — UCP/ACP/MCP protocol-wars context; SHOP dual-stack positioning
-- [[Sectors/Cybersecurity]] — agent attack-surface expansion; AI-powered threats
-- [[Sectors/Enterprise Workflow AI & Automation]] — per-seat SaaS pricing risk; orchestration-layer contest
-- [[Compute & AI Compute Accelerators]] — agent compute fanout
-- [[Sectors/NAND Memory & Storage]] — agent context window memory demand
-- [[Sectors/Mobile Advertising Technology]] — in-app vs open-web agent exposure differential
-- [[Sectors/Optical Networking & Photonics]] — east-west sub-agent fanout
+- [[Sectors/Blockchain & Stablecoins]]: §6 AI-agent payments (x402); ~$70B agent-payment TAM at 5% e-commerce by 2030; Cloudflare bot-paywall as policy/identity middleware
+- [[Sectors/E-commerce Infrastructure]]: UCP/ACP/MCP protocol-wars context; SHOP dual-stack positioning
+- [[Sectors/Cybersecurity]]: agent attack-surface expansion; AI-powered threats
+- [[Sectors/Enterprise Workflow AI & Automation]]: per-seat SaaS pricing risk; orchestration-layer contest
+- [[Compute & AI Compute Accelerators]]: agent compute fanout
+- [[Sectors/NAND Memory & Storage]]: agent context window memory demand
+- [[Sectors/Mobile Advertising Technology]]: in-app vs open-web agent exposure differential
+- [[Sectors/Optical Networking & Photonics]]: east-west sub-agent fanout
 
 ### Macro adjacencies
-- [[Stablecoin Regulation as Geopolitical Infrastructure]] — GENIUS Act / MiCA enable USDC as agent-payment substrate; yield prohibition forces fee-based infrastructure (CPN, x402, Arc)
-- [[AI Bubble Risk and Semiconductor Valuations]] — agent fanout is a credible mechanism to bridge the J.P. Morgan $650B/yr threshold; CPU TAM expansion validates capex durability per [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]
+- [[Stablecoin Regulation as Geopolitical Infrastructure]]: GENIUS Act / MiCA enable USDC as agent-payment substrate; yield prohibition forces fee-based infrastructure (CPN, x402, Arc)
+- [[AI Bubble Risk and Semiconductor Valuations]]: agent fanout is a credible mechanism to bridge the J.P. Morgan $650B/yr threshold; CPU TAM expansion validates capex durability per [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]
 
 ### Key research
-- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Vera/Venice Dense/Diamond Rapids 9-metric scoring; CPU:GPU >1:1 in agent racks; tool-processing 50-90% of agentic latency
-- [[Research/2026-04-01 - Salesforce vs ServiceNow in Agentic AI]] — orchestration-layer contest detail
-- [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]] — AI coding tool enterprise readiness gap (45% AI-generated code with vulnerabilities, 30-35% multi-step task completion)
-- [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]] — USDC architecture for x402 settlement
-- [[Research/2026-04-15 - SHOP - Comprehensive Update April 2026 - deep-dive]] — UCP/ACP protocol-wars detail
-- [[Research/2026-03-31 - Cloudflare Path to Competing with Hyperscalers]] — agent-stack architecture and hyperscaler-disruption framing
-- [[Research/2026-04-03 - Cloudflare Role in Telecom Edge Computing]] — agentic traffic multiplication; telecom-edge convergence
-- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]] — SemiAnalysis "CPUs are Back": RL + agentic tool-use as the explicit datacenter-CPU demand driver (layer-6 compute fanout); Fairwater ~1:6 CPU:GPU power (rising), frontier labs "running out of CPUs" for RL, Bluefield-4 "third network" data/networking-CPU class
-- [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]] — SemiAnalysis "Dark Output": agent-driven net-new work ("New Dark Output" — literature reviews $2,000→$2 run before every task) is real economic value traced only as tokens, the measurement shadow of the agentic internet's net-new action volume; reinforces that agent fanout creates output GDP cannot see (capture, not output, is the equity constraint)
-- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]] — Primary-source confirmation of the agentic-internet thesis from the layer-1 toll-collector: Cloudflare formally adopts "Act IV" (agentic monetization), discloses +1,700% y/y agent requests + 2B x402/day + open-web attention ~25%, and raises its long-term operating model on the strength of it — the clearest evidence yet that the thesis is a funded corporate strategy, not just an external forecast
-- [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]] — Adversarial-verified critique of a Gemini enterprise-agentic-adoption report: re-sorts the six adoption gates by resolution speed (workforce/process redesign is the durable one), models the 2026→2030 adoption index (~3x base, ~32% CAGR), and supplies disclosed seat-compression evidence for the layer-7 / OQ#4 thesis (Gartner $234B arbitrage; NOW ~50% non-seat ACV; WDAY FY27 12-13%). Confirms the agent-adoption trajectory is real but depth-gated (agents scaling ≤10%/function today)
+- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]]: Vera/Venice Dense/Diamond Rapids 9-metric scoring; CPU:GPU >1:1 in agent racks; tool-processing 50-90% of agentic latency
+- [[Research/2026-04-01 - Salesforce vs ServiceNow in Agentic AI]]: orchestration-layer contest detail
+- [[Research/2026-04-14 - NOW - AI Disruption Risk - deep-dive]]: AI coding tool enterprise readiness gap (45% AI-generated code with vulnerabilities, 30-35% multi-step task completion)
+- [[Research/2025-12-01 - CRCL - Circle Internet Group and USDC Dynamics]]: USDC architecture for x402 settlement
+- [[Research/2026-04-15 - SHOP - Comprehensive Update April 2026 - deep-dive]]: UCP/ACP protocol-wars detail
+- [[Research/2026-03-31 - Cloudflare Path to Competing with Hyperscalers]]: agent-stack architecture and hyperscaler-disruption framing
+- [[Research/2026-04-03 - Cloudflare Role in Telecom Edge Computing]]: agentic traffic multiplication; telecom-edge convergence
+- [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: SemiAnalysis "CPUs are Back": RL + agentic tool-use as the explicit datacenter-CPU demand driver (layer-6 compute fanout); Fairwater ~1:6 CPU:GPU power (rising), frontier labs "running out of CPUs" for RL, Bluefield-4 "third network" data/networking-CPU class
+- [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]]: SemiAnalysis "Dark Output": agent-driven net-new work ("New Dark Output": literature reviews $2,000→$2 run before every task) is real economic value traced only as tokens, the measurement shadow of the agentic internet's net-new action volume; reinforces that agent fanout creates output GDP cannot see (capture, not output, is the equity constraint)
+- [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]]: Primary-source confirmation of the agentic-internet thesis from the layer-1 toll-collector: Cloudflare formally adopts "Act IV" (agentic monetization), discloses +1,700% y/y agent requests + 2B x402/day + open-web attention ~25%, and raises its long-term operating model on the strength of it: the clearest evidence yet that the thesis is a funded corporate strategy, not just an external forecast
+- [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]: Adversarial-verified critique of a Gemini enterprise-agentic-adoption report: re-sorts the six adoption gates by resolution speed (workforce/process redesign is the durable one), models the 2026→2030 adoption index (~3x base, ~32% CAGR), and supplies disclosed seat-compression evidence for the layer-7 / OQ#4 thesis (Gartner $234B arbitrage; NOW ~50% non-seat ACV; WDAY FY27 12-13%). Confirms the agent-adoption trajectory is real but depth-gated (agents scaling ≤10%/function today)
 
 ## Open Questions
 
@@ -353,13 +353,13 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 
 3. **Does the agent identity / attestation layer become a standalone investable category, or is it absorbed by hyperscalers?** OKTA is the candidate; Cloudflare's Web Bot Auth is the green-field expansion that could foreclose this. If Microsoft Entra Agent ID becomes the de-facto enterprise standard within 18 months, agent identity is structurally a Microsoft moat.
 
-4. **Does the per-seat SaaS pricing dislocation become severe enough to invert sector multiples?** ServiceNow Foundation/Advanced/Prime tier consolidation (April 9 2026) is the first explicit acknowledgment. If the 1:5 seat-compression ratio holds, NOW / CRM / TEAM / ZM / DOCN face structural seat erosion that consumption pricing only partly offsets. The implied multiple compression is not yet priced. → **Partially answered 2026-07-12** (per [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]): Gartner (2026-07-01) sizes it — **$234B of enterprise-app spend / ~20% of SaaS arbitraged by 2030** — but as redirect to orchestration layers, "metamorphosis not apocalypse." Disclosed split: consumption-converted incumbents (NOW ~50% non-seat ACV; PLTR FDE consumption) re-price ahead; per-worker-priced **Workday is the most-exposed loser (FY27 subscription guide cut to 12-13% on explicit "agentic AI fears")**. The dislocation is real and now partly priced into the losers, not yet into the winners' mix shift.
+4. **Does the per-seat SaaS pricing dislocation become severe enough to invert sector multiples?** ServiceNow Foundation/Advanced/Prime tier consolidation (April 9 2026) is the first explicit acknowledgment. If the 1:5 seat-compression ratio holds, NOW / CRM / TEAM / ZM / DOCN face structural seat erosion that consumption pricing only partly offsets. The implied multiple compression is not yet priced. → **Partially answered 2026-07-12** (per [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]): Gartner (2026-07-01) sizes it (**$234B of enterprise-app spend / ~20% of SaaS arbitraged by 2030**) but as redirect to orchestration layers, "metamorphosis not apocalypse." Disclosed split: consumption-converted incumbents (NOW ~50% non-seat ACV; PLTR FDE consumption) re-price ahead; per-worker-priced **Workday is the most-exposed loser (FY27 subscription guide cut to 12-13% on explicit "agentic AI fears")**. The dislocation is real and now partly priced into the losers, not yet into the winners' mix shift.
 
 5. **Does an agent-reputation / agent-fraud "Visa for agents" emerge as an investable layer?** The dispute / reputation / chargeback infrastructure for agent-mediated transactions has no incumbent. The first vendor to credibly stand this up could capture a category analogous to early Visa or PayPal. Likely candidates: Cloudflare (extension of Web Bot Auth + NET Dollar), Stripe (extension of Radar fraud), Visa/Mastercard (extension of dispute infrastructure).
 
 6. **How does the hyperscaler-vs-toll-collector dynamic resolve?** Microsoft, AWS, Google can theoretically replicate Cloudflare's traffic interception position by deploying anycast networks. They have not, partly because edge compute economics are misaligned with their existing P&L. If a hyperscaler deploys aggressive edge compute by 2027-2028, NET's chokepoint moat narrows.
 
-7. **Does the agentic-internet thesis survive a hard recession?** Infrastructure-buildout-ahead-of-monetization is identical to AI capex broadly. A 2026-2027 recession compressing enterprise software budgets and consumer discretionary could stretch the agent-mediated commerce inflection from 2027-2029 to 2030-2032 — a multi-year delay that destroys interim valuations even if the long-term thesis holds.
+7. **Does the agentic-internet thesis survive a hard recession?** Infrastructure-buildout-ahead-of-monetization is identical to AI capex broadly. A 2026-2027 recession compressing enterprise software budgets and consumer discretionary could stretch the agent-mediated commerce inflection from 2027-2029 to 2030-2032, a multi-year delay that destroys interim valuations even if the long-term thesis holds.
 
 8. **What does Phase 4 (inter-agent commerce) actually enable that does not exist today?** Per-second leasing, micro-licensing, agent-aggregated demand are the speculative upside categories. None has a current commercial prototype at scale; whether they materialize into investable businesses (vs. features inside existing platforms) is the largest unknown in the 2030+ projection.
 
@@ -382,3 +382,6 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 
 ### 2026-07-12 (/sync)
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]: Partially answers OQ#4 (seat-compression) with disclosed evidence — Gartner $234B / ~20% of SaaS arbitraged by 2030 ("metamorphosis not apocalypse"); WDAY (per-worker) FY27 guide 12-13% is the loser proof-point, NOW/PLTR the consumption-converted winners. Adds the enterprise-adoption trajectory (~3x by 2030; token volume 5-7x/yr vs dollar 1.5-4x deflation wedge) as the demand-side backbone of compute-fanout (layer 6). Conviction unchanged — depth-gated (agents ≤10%/function) but direction confirmed.
+
+### 2026-08-20
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

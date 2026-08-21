@@ -1,0 +1,4 @@
+interface:
+  display_name: "Value Chain Map"
+  short_description: "Map a thesis's position in its value chain"
+  default_prompt: "Use $value-chain to map NVDA's position in its value chain."

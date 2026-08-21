@@ -1,0 +1,345 @@
+---
+publish: true
+date: 2026-04-28
+tags: [thesis, semiconductors, power, VICR]
+status: active
+conviction: medium
+sector: Data Center Power & Cooling
+ticker: VICR
+source: https://www.vicorpower.com/about-the-company/fact-sheet
+key_metrics_last_refreshed: 2026-07-12
+
+snapshot_of: "[[Theses/VICR - Vicor Corporation]]"
+snapshot_date: 2026-08-16
+snapshot_trigger: metrics-sync
+snapshot_batch: metrics-pass-active-2026-08-16-000858
+---
+> [!question] 2026-04-28 → Addressed 2026-04-28
+> **Prompt:** *What are the patent and technology or manufacturing technique advantages that prevent competitors from encroaching on VICR's market share*
+>
+> **Response:** Six reinforcing moats — (a) ITC-enforced VPD patent portfolio covering FPA + SAC + module geometry, converting infringement into ~90% GM royalties; (b) SAC zero-current/zero-voltage-switching topology + FPA decomposition yielding 97% efficiency vs 85–88% multiphase, where adopting SAC requires also licensing FPA; (c) panel-level ChiP + 3Di fabrication with no IDM equivalent in production; (d) 2nd-gen VPD spec gap (3 A/mm² / 40× multiplication / 1.5 mm) requiring simultaneous topology + packaging breakthroughs to match; (e) 5–7yr reverse-engineering clock (3–5yr for $30B+ silicon vendors like MPS, none publicly committed); (f) NVIDIA V100/A100 12–18-month qualification history + Andover US manufacturing under Section 301 / ITC LEO procurement regime. See §Business Model & Product Description → Moat summary for full breakdown.
+
+> [!question] 2026-05-28 → Addressed 2026-05-29
+> **Prompt:** *What is the detailed impact of the 800VDC transition on Vicor's business model, product moat, and financials. Provide a detailed forecast of revenues, EBIT as well as valuation multiples until 2035 assuming AI servers grow at high single digit until then.*
+>
+> **Response:** 800VDC is orthogonal to Vicor's VPD (it changes distribution voltage upstream, not the 48V→0.7V conversion VPD performs) and net-positive — it adds an 800V→48V bus-conversion content layer plus a second royalty-enforcement surface on top of existing VPD, and entrenches 48V on-board (the 800V→6V bypass is physically rebutted at 64× I²R loss). Base case under high-single-digit AI-server growth: revenue $453M (FY25) → ~$2.1B (FY35) at ~16% CAGR, EBIT margin 21%→~37%, but ~$13.1B EV today already discounts ~FY30 EBIT at ~30x, so base-case forward IRR from $273.50 is low-single-digit (upside optionality in licensing-to-50%-of-product + faster-than-HSD AI growth). Full analysis + forecast tables in §800VDC Transition — Business Model, Moat & Long-Term Forecast (to 2035).
+
+# VICR — Vicor Corporation
+
+## Summary
+
+Vicor is a 45-year-old founder-controlled power module specialist whose Vertical Power Delivery (VPD) architecture is structurally required to feed the 2,000A+ currents of NVIDIA's Rubin/Rubin Ultra GPUs (H2 2026 / H2 2027) — the same company the market wrote off in 2023 after Monolithic Power Systems took the H100 socket. Q1 2026 already shows the inflection: revenue +20% YoY, gross margin 55.2% (industrial-power norm is 30-40%), backlog +70%, book-to-bill >2x, and a high-margin patent-licensing revenue stream that ITC enforcement (Limited Exclusion Order against Delta/Cyntec/Foxconn) has established at a ~$60M annualised run-rate (Q1 2026 royalties ~$15M) — though management paused new licensing agreements until the second ITC case's final determination in 2027, so the FY26 $570M guide assumes no incremental licensing (the ~$300M figure is the order backlog, not the licensing pipeline). Two non-consensus angles drive this: (1) Rubin's current density is past the threshold where lateral power delivery (MPS's product) physically works, forcing the AI ecosystem back to VPD via the side door — Vicor's home turf — independent of whether Vicor wins the GPU socket itself; (2) the LEO converts share losses into licensing royalties, so a competitor winning a socket while infringing Vicor patents is a mixed positive, not a pure negative. Stock has run +400% in 12 months and trades ~$13.1B at ~23x FY26E EPS — pricing in the Q1 inflection but not yet the structural reframe. Conviction medium because the founder is 78, the FY26 guide has a "contingent on licensing agreements awaiting resolution in 2027" footnote, and the Andover capacity ramp ($1B → $1.5B/yr Fab One) is execution-gated.
+
+## Key Non-consensus Insights
+
+**The "Vicor lost the H100" narrative is the consensus framing — and it is now a stale read.** Sell-side coverage hardened around the 2023 H100 displacement: NVIDIA went from V100/A100 (Vicor VPD) to H100 (Monolithic Power Systems lateral). Class action lawsuits in 2024 reinforced the framing. What changed in the last 4 months: at NVIDIA GTC (March 2026), Compal demonstrated a functional Rubin NVL8 system on a Vicor Vertical Power Delivery topology; multiple ODMs are now approaching Vicor for "emergency licenses" to clear US Customs; and Vicor's Q1 2026 backlog grew 70% to $300.6M with book-to-bill >2x. Rubin pulls 2,000A+ per processor — a current density where lateral power delivery's PDN losses (which scale with current²) no longer fit in the GPU substrate's thermal envelope. The market is still pricing the H100 narrative; the architectural reality has flipped.
+
+**ITC's Limited Exclusion Order (LEO) is a margin-accretive structural rents engine, not a one-time settlement.** The October 2024 ITC ruling let US Customs seize imports from any product infringing Vicor's VPD patents. Result: a $45M Delta/Cyntec/Foxconn settlement booked in 2025, plus $57M of separate organic licensing revenue (+23% YoY), plus management commentary that hyperscalers and OEMs are now becoming "Vicor licensees." Licensing runs at a ~$60M annualised rate (Q1 2026 royalties ~$15M), and management has paused new licensing agreements until the second ITC case's final determination in 2027 — so the structural rents are real but back-end-loaded to 2027+, not "$300M locked through 2026" (that $300M is the order backlog). Licensing is essentially 90%+ gross margin. This means Vicor monetizes the AI infrastructure cycle two ways: (a) win the socket → product revenue at 55% GM, or (b) lose the socket to an infringer → licensing royalty at 90% GM. Most semiconductor companies face binary socket decisions; Vicor's IP fence converts socket losses into a worse-but-still-profitable outcome. This option-value asymmetry is missing from sell-side DCFs that model licensing as a flat residual rather than as a structural feature of the competitive geometry.
+
+**Power density at chip level is a 5-7 year IP moat, not a 12-month engineering catch-up — and the market still treats it as the latter.** Vicor's ChiP (Converter-housed in Package) fabrication uses proprietary 3Di (three-dimensional interconnect) processes built over 30+ years; Power-on-Package places the current multiplier directly underneath the processor on the opposite side of the substrate, reducing PDN resistance 10x vs lateral approaches. Competitors (MPS, TI, Renesas, Infineon, ADI) compete on cost-integrated silicon at the IC level — they don't have a fab process that builds a 1,000A peak current module that fits inside the GPU package. The reverse-engineering clock for an unfunded entrant is 5-7 years (matching the §Investor Heuristics analysis from [[Sectors/Data Center Power & Cooling]] on power-electronics IP density); MPS chose the lateral integration path precisely because the vertical path is gated. Sell-side narratives that GaN/SiC technology will commoditize density "soon" are correct on the IC layer (where MPS lives) and wrong on the module layer (where Vicor lives). The architectural choice — vertical vs lateral — is silicon-vendor-driven, not power-vendor-driven, and Rubin has chosen vertical.
+
+**Founder-CEO and 25%+ equity ownership make Vicor structurally different from its peer set — a feature priced as a bug.** Patrizio Vinciarelli founded Vicor in 1981 (44 years tenure) and remains CEO at 78. He owns >25% of shares outstanding. Sell-side typically discounts founder-CEO companies for succession risk; the offsetting structural benefit is that capital allocation has been disciplined for four decades — Vicor never chased volume that compressed margins (the company explicitly walked away from the H100 socket on terms it considered un-economic), the IP moat was built patiently because the founder had no career-incentive to over-promise quarterly numbers, and the Andover-Massachusetts manufacturing footprint (politically sub-optimal vs offshore) was preserved through the offshore-cost cycles of 2005-2020. This now positions Vicor as the only US-domiciled, US-manufactured, founder-controlled high-density power module supplier in a world where US Customs is enforcing tariffs and onshoring is procurement priority. The "American powerhouse" angle (per FinancialContent's Feb 2026 piece) is real — but consensus discounts the founder concentration without giving credit for the strategic patience that made the Rubin opportunity possible.
+
+**Capacity expansion is shifting from binding constraint to structural enabler — but the market is anchored on the prior bottleneck.** Pre-2025, Vicor's Andover Fab One was the binding constraint on revenue (~$1B run-rate ceiling). The 90,000 sf expansion completed late 2025 lifted ceiling to $1.5B; a second 3Di line is being installed Q3/Q4 2026 which adds another $0.5-1.0B of incremental annual capacity over 2027-2028. The current $570M FY26 revenue guide (vs $1.5B nameplate) means utilization is ~38% — and management has explicitly said the limiter has shifted from capacity to licensing-deal closure timing. Most sell-side models extrapolate the historical capacity-bound 4-6% revenue growth rate into 2027-2028; the actual growth path is gated by demand (Rubin shipments + licensing settlements) rather than supply for the first time in the company's history. Capacity going from constraint to enabler reframes Vicor from a slow-growth specialty industrial to a structurally-positioned beneficiary of the AI capex cycle.
+
+## Outstanding Questions
+
+**Does Vicor have confirmed Vera Rubin (NVL144, H2 2026) or Rubin Ultra (NVL576, H2 2027) socket-level VPD content, or is the architectural requirement satisfied by an MPS or TI vertical alternative?** The Compal NVL8 GTC demo confirms Vicor VPD works in Rubin board topology, but it does not confirm Vicor is the single-source power supplier for Rubin reference designs. NVIDIA could specify VPD as architecture and source modules from multiple vendors (Flex now has its own VPD product line). Resolution: NVIDIA's Rubin/Rubin Ultra reference design partner disclosures (typically at GTC each year, plus 8-K filings around board-level supply agreements). The material question is content per system, not whether content exists at all.
+
+**How durable is the LEO under appeal — is the $300M licensing pipeline a one-time enforcement window or a structural rent stream?** Delta/Cyntec/Foxconn settled rather than appealed, which signals the patents are well-grounded. But the LEO operates through US Customs at the import gate; a successful appeal at the Federal Circuit (next-tier court) could narrow scope. Patent term remaining for the core VPD claims is also not publicly disclosed. Resolution: appellate court docket monitoring + 10-K patent disclosures. If Vicor's core VPD patents expire 2028-2030 and ITC scope narrows, the licensing pipeline contracts to product-only revenue. If patents extend through 2032+ and ITC scope holds, licensing becomes a multi-year compounder.
+
+**Founder succession — what is the operational and equity transition plan?** Patrizio Vinciarelli is 78 and controls capital allocation, IP strategy, and customer relationships personally. Vicor has not publicly disclosed a succession plan, COO appointment, or equity-transition framework. The company has key-person risk that a sudden departure could create. Two scenarios: (a) orderly transition over 2027-2029 to an internal/external CEO with retained equity influence — neutral to thesis; (b) sudden event (health, departure) without clear succession — could trigger 30-50% drawdown on uncertainty regardless of business fundamentals. Resolution: any 8-K filing related to executive officers, board changes, or material agreements. Until then, this is unresolved tail risk.
+
+**Why did Vicor walk away from the H100 socket — was it pricing discipline or technical exclusion, and which framing predicts behavior at Rubin Ultra?** Two competing narratives: (a) Vicor walked away from H100 on margin terms it considered un-economic (founder discipline angle), or (b) Vicor was technically excluded by the H100's lateral PDN architecture which MPS could serve more cheaply. Public commentary from Vicor leans (a); the short-thesis literature argues (b). The answer matters because Rubin Ultra (600 kW/rack, 2,000A+) presents the same fork — does Vicor accept lower margins to win the socket, or stay disciplined and rely on licensing? Resolution: 2027 product-revenue mix between Advanced (high-margin) and Brick (commodity) segments + management commentary on hyperscaler-direct vs ODM-mediated sales channels.
+
+**What is Vicor's true revenue concentration with NVIDIA today?** Vicor does not break out customer concentration in 10-K filings. Sell-side estimates run 20-40% NVIDIA-direct exposure. If NVIDIA is >25% of revenue, the asymmetry is real and concerning. If NVIDIA is <15% and the demand actually flows through ODMs (Compal, Foxconn, Quanta, Wiwynn) buying Vicor on bill-of-materials specifications, the concentration framing is overstated. Resolution: 10-K Item 1 customer-concentration disclosure (annual). Until disclosed, the concentration risk is bounded but unquantifiable.
+
+**Is the gross margin expansion (Q1 2026 GM 55.2% vs FY24 GM ~37%) durable or is it artifact of licensing mix?** Licensing revenue is essentially 90%+ GM and is currently ~20-25% of total revenue. If licensing reverts to 5-10% of revenue (one-time settlement effect dissipating), blended GM compresses back toward 40-45%. The product-only Q1 GM was likely 50-52% — still up materially from 2024's 37% — but the optical 55.2% is partly licensing-mix-driven. Sell-side models treating 55% as the new normal will over-earn EPS estimates if mix reverses. Resolution: management commentary on product-only GM trajectory at Q2/Q3 earnings calls.
+
+**How does Vicor's exposure to the automotive/aerospace/defense business (legacy Brick Products, $48M Q1 2026, +7.7% QoQ) hedge against AI capex cycle peak?** Brick segment serves industrial automation, EV powertrains, and aerospace/defense (30+ year heritage with major defense contractors). This is mid-single-digit growth, lower-margin (~30-35% GM), but counter-cyclical to AI. In a 2027-2028 AI capex slowdown, Brick provides revenue floor. Resolution: segment-level commentary + 2027 BAE/Lockheed/Boeing program-revenue tells. Material question because it determines downside floor in the bear case.
+
+## Business Model & Product Description
+
+Vicor designs and manufactures modular power conversion components — meaning physical packages that take one DC voltage and output another, optimized for high power density. The architectural analogy is closer to a CPU package than a power supply box: each Vicor module is a fully-integrated multi-stage converter with switching topology, magnetics, control IC, and thermal interface inside a SMT-mountable package the size of a postage stamp to a credit card. The closest peer in business model is Monolithic Power Systems (MPWR) — a power IC company — but Vicor operates one layer higher in integration: where MPS sells silicon dies that customers integrate with external magnetics on a PCB, Vicor sells the entire converter as one module with magnetics embedded, eliminating ~60% of the component count and ~50% of the board area. The trade-off: Vicor modules cost 2-4x more per amp delivered than MPS reference designs, but the cost premium is dwarfed by board-area savings (PCB real estate at $0.05-0.10/mm² for HPC boards) and PDN loss reduction (which translates directly into thermal headroom for the processor itself).
+
+**Revenue segmentation (FY2025 estimate)**:
+
+| Segment | % Revenue | Growth | Notes |
+|---------|-----------|--------|-------|
+| **Advanced Products** | ~57% (Q1 2026 $64.9M) | +3.7% QoQ | High-density modules: VPD, MCM, MCD, NBM, ChiP, Power-on-Package — AI/HPC/datacenter primary market |
+| **Brick Products** | ~43% (Q1 2026 $48.0M) | +7.7% QoQ | Legacy industrial: factory automation, EV powertrains, aerospace/defense (30+yr heritage) |
+| **By end market (estimate)** | | | |
+| AI/HPC/Datacenter | ~50% | +30-40% | Hyperscaler ODMs (Compal, Foxconn, Quanta, Wiwynn), AI accelerator card OEMs |
+| Industrial automation | ~20% | +5-8% | Factory automation, process control, semicap equipment |
+| Aerospace/Defense | ~15% | +8-12% | Lockheed, Boeing, BAE — 30+yr installed base, slow but durable |
+| Automotive (EV/HEV) | ~10% | +15-20% | DC-DC converters for traction inverters, on-board chargers |
+| Telecom/Network | ~5% | +5% | Legacy 48V telecom backplane infrastructure |
+| **Revenue model** | | | |
+| Product revenue (FY25) | $350.3M (77%) | +4.1% | Module sales — capacity-constrained until late 2025 |
+| IP licensing revenue (FY25) | $57.4M (13%) + $45M settlement | +23.2% organic | Royalty stream from VPD patent portfolio |
+| Total revenue FY25 | $452.7M | +26.1% | Step-function from licensing + capacity unlock |
+
+**Flagship products**:
+
+- **Power-on-Package (Gen 5 VPD)**: Current multiplier module placed directly underneath the processor on the opposite side of the board. Reduces PDN resistance 10x vs lateral. Up to 1,000A peak current per module; required for 2,000A+ Rubin-class GPU power delivery. Launched into production with lead customer Q1 2026.
+- **MCM (Modular Current Multiplier)** + **MCD (Modular Current Driver)**: Three-component VPD stack (MCD + 2x MCM) delivers 48V → 0.8V at 650A continuous / 1,000A peak. The 48V input enables 16x lower PDN losses than 12V architectures (loss scales with current², 48V draws 4x less current than 12V at same wattage).
+- **NBM (Non-isolated Bus Module)**: Bidirectional 48V/12V converter for data center server boards transitioning legacy 12V silicon to 48V infrastructure. Fits both sides of the architecture transition simultaneously — a structural advantage as the industry migrates.
+- **ChiP™ (Converter housed in Package)**: Vicor's proprietary fabrication process producing the modules. The fab uses 3Di (three-dimensional interconnect) technology unique to Vicor — vertical stacking of magnetics, switching silicon, and control on a single substrate. The fab process IS the moat.
+- **Brick products (V·I Brick, Maxi/Mini/Micro)**: Legacy module families serving industrial / aerospace / defense. Lower power density, higher reliability ratings, longer product lifecycles (10-20 years).
+
+**Unit economics**:
+- Q1 2026 gross margin: 55.2% (was ~37% in FY2024 — +1,800bp expansion in two years)
+- Product GM only (excluding licensing): est. 48-52% (licensing pulls blended GM up by ~3-5 points)
+- Operating margin Q1 2026: ~21% (estimated from $20.7M net / $113M revenue + ~5% tax + $5M interest income)
+- FCF conversion: ~80-85% historical, currently lower due to working-capital build for Andover ramp
+- R&D intensity: ~10-12% of product revenue (high for industrial; reflects power-electronics IP investment)
+
+**Moat summary** — six reinforcing barriers that prevent competitor encroachment on VPD market share:
+
+1. **VPD patent portfolio + ITC enforcement (legal moat)** — Vicor holds foundational patents covering Factorized Power Architecture (FPA) decomposition (regulation separated from transformation), Sine Amplitude Converter (SAC) topology, and current-multiplier module geometry. The October 2024 ITC Limited Exclusion Order lets US Customs seize imports of any product infringing these claims; Delta/Cyntec/Foxconn settled for $45M in 2025 rather than appeal — signaling the patents are well-grounded. A second ITC complaint final determination is expected in 2027; a third was hinted at by Vinciarelli ("In Italy we say there is no two without three"). Federal Circuit appeal scope on the first LEO is the binding scope-risk question, but the present effect is binary: a competitor either licenses (Vicor royalty at "nearly 100%" GM) or stays out of US/EU markets.
+
+2. **SAC + FPA topology IP (technology moat)** — SAC is a fixed-ratio resonant converter switched at zero current and zero voltage crossings (ZCS+ZVS), eliminating switching loss and producing low-harmonic sinusoidal current. Single-stage efficiency 97% vs ~85–88% for high-end multiphase buck; output impedance 0.8 mΩ flat to ~1 MHz; sub-microsecond load step response handles 2,000 A/µs transients without massive decoupling capacitance. The fixed-ratio constraint requires upstream variable regulation — solved by FPA decomposition where the PRM (pre-regulator module) handles variable regulation and the VTM/GCM (transformation module) handles fixed-ratio current multiplication directly under the processor. Competitors cannot adopt SAC without also licensing FPA, doubling the IP gate; an IDM that wants to match the topology needs to commit to a non-silicon manufacturing line.
+
+3. **ChiP + 3Di fabrication process (manufacturing moat)** — proprietary panel-level fab applies wafer-fab-style yield management to substrate panels rather than silicon wafers; double-sided cooling halves thermal impedance vs single-sided; grounded metal shielding contains EMI; stacked-ChiP multilayer integration enables Power-on-Package geometry (the converter sits on the opposite side of the substrate from the processor). The fab process IS the moat — stacked ChiP is what makes a postage-stamp-sized module deliver 1,000 A peak at 3 A/mm². Andover Fab 1 nameplate revised up from $1B to $1.5B/yr in Q1 2026 via cycle-time reduction at bottleneck steps; second 3Di line installation Q3/Q4 2026 adds another $0.5–1.0B of capacity. No IDM (TI, ADI, MPS, Infineon, Renesas) has a panel-level ChiP-equivalent fab in production; ADI's μModule franchise is the closest IDM analog but uses lateral multiphase silicon, not vertical current-multiplier topology.
+
+4. **2nd-generation VPD spec gap (capability moat)** — three integrated specs disclosed Q1 2026 simultaneously: **3 A/mm² current density** (Gen 4 was 2 A/mm²; competitors at this layer described as "inadequate"); **40× current multiplication** (vs IVR competitors at ~2× — at K=1/40 delivering 2,000 A to processor needs only a 50 A bus feed; at K=1/2 the same load needs 1,000 A bus feed, impractical thermals + thick wiring); **1.5 mm package thickness** (buyers asking for <3 mm; Vinciarelli on Q1 call: "we're not stopping at 1.5 millimeter, we're going thinner"). Closing this gap requires *simultaneous* breakthroughs in switching topology (40× multiplication is not achievable with multiphase buck) AND packaging stack (3 A/mm² requires double-sided cooling + stacked magnetics + 3Di interconnect) — not single-axis catch-up by any competitor.
+
+5. **Reverse-engineering clock: 5–7 years unfunded, 3–5 years well-funded (time moat)** — external procurement specs (input/output voltage, power rating, package dimensions) are standardized by IEC + OCP, but internal design (FPA topology, SAC ZCS+ZVS timing, ChiP packaging stack, 3Di interconnect, 40× current multiplication, thermal-mechanical co-design, 50,000-hr accelerated stress-test history) is highly differentiated and accumulates as IP through field-failure history that new entrants do not have. The moat is closer to medical-device or aerospace componentry than industrial HVAC. MPS ($30B+ market cap, $1.5B+ R&D run-rate) has the engineering depth to attempt clean-sheet vertical entry but has not committed publicly through Q1 2026; the lateral integration path was chosen precisely because vertical is gated. The architectural moat is buyable, not built — but no buyer has committed.
+
+6. **NVIDIA qualification history + Andover US manufacturing (channel + procurement moats)** — V100 (2017) and A100 (2020) Vicor VPD design wins built joint qualification processes (thermal, EMI, reliability, vibration, 50,000-hr accelerated stress profiles) now leveraged for Rubin VPD via Compal NVL8 GTC March 2026 demonstration. A new vendor entering Rubin would need to repeat 12–18-month qualification cycles per platform — adding to the engineering moat. Andover footprint is the sole US-based high-density power module fab in operation; Section 301 tariffs on Chinese power components + ITC LEO enforcement bias ODM bills-of-material toward US-manufactured modules, narrowing the structural cost gap that historically favored Asian-manufactured PMIC silicon. TI / ADI / MPS / Infineon / Renesas have global manufacturing footprints — less US-concentrated, less procurement-positive in the current tariff regime.
+
+## Industry Context
+
+**Value chain position**: Vicor sits between the silicon (NVIDIA, AMD GPU/AI accelerators) and the rack-level power infrastructure ([[Theses/VRT - Vertiv Holdings]], Schneider, Eaton). It is the on-board power layer — the modules sit physically on the GPU substrate or motherboard, taking 48V (post-PSU) and converting to 0.8V (processor core voltage). This position is increasingly strategic because each NVIDIA generation steps current density 30-150%; the on-board power layer is the bottleneck that determines whether a given GPU architecture can ship at the targeted thermal envelope. Upstream leverage (NVIDIA): asymmetric — NVIDIA can choose its power vendor on each generation, and the architecture choice (lateral vs vertical) effectively pre-selects the supplier set. Downstream leverage (hyperscalers/ODMs): low — the module choice is inherited from the GPU reference design. This makes the NVIDIA relationship the single most strategic asset, and the absence of a deep Rubin Ultra commitment the largest unanswered question.
+
+**Competitive landscape**:
+
+| Player | Positioning | AI Compute Exposure | Threat to Vicor |
+|--------|-------------|---------------------|------------------|
+| **Monolithic Power Systems (MPWR)** | Power IC specialist, lateral PDN | High (won H100 GPU socket) | Highest direct competitor — silicon-integrated lower-cost approach; capped by physics at 2,000A+ current |
+| **Texas Instruments (TXN)** | Diversified analog/PMIC | Medium (component supplier across stack) | Medium — broad portfolio but no high-density module fab |
+| **Analog Devices (ADI)** | High-performance analog | Medium | Medium — strong in industrial; limited HPC density |
+| **Renesas Electronics** | MCU + analog | Medium (lateral PDN, hyperscaler-direct) | Medium — Asian supply chain advantage; lateral architecture |
+| **Infineon Technologies** | Power semiconductors | Medium (auto + industrial primary) | Lower — auto/industrial focus, less HPC overlap |
+| **Delta Electronics (2308.TT)** | Power systems + components | High (post-LEO settlement, now Vicor licensee) | Lowered — settled patent dispute, now licensee not competitor |
+| **Flex (FLEX)** | Contract manufacturer + own VPD product | Medium-High (announced VPD line 2025) | Medium-rising — only other vertical-architecture vendor; manufacturing-led not IP-led |
+| **STMicroelectronics** | Auto/industrial power | Low (auto primary) | Low |
+| **ON Semiconductor** | Auto/industrial power | Low | Low |
+
+**Market share dynamics**: In the high-density (>500A) chip-level power delivery market, Vicor and MPS together hold ~70-80% share, with Renesas, ADI, TI splitting most of the balance. Architectural fork — at currents below 1,500A, lateral (MPS-style) is dominant on cost; above 2,000A, vertical (Vicor-style) is required by physics. The market segments thus by chip generation: H100/H200 era (2023-2024) was a lateral market and Vicor lost share; Blackwell Ultra (2025) is a transition; Rubin/Rubin Ultra (2026-2027) is a vertical market by architectural necessity. The sell-side conflates "lost H100" with "structurally losing the AI cycle"; the architecture-by-current-density framing reverses the conclusion.
+
+**Pricing power trajectory**:
+- **Pre-2024**: Industrial-power norms — 30-40% gross margins, modest pricing power, capacity-bound growth
+- **2024-2025**: Patent settlement + LEO created licensing rents (Delta $45M settlement, organic +23% to $57M)
+- **2026**: Q1 GM 55.2% — structural step-up driven by (a) licensing mix at ~20-25% of revenue at ~90% GM, (b) Advanced Products mix shift toward Power-on-Package premium, (c) Andover capacity unlock allowing better pricing on selective orders
+- **2027-2028**: Sustainability question — does product-only GM stabilize at 48-52% (durable AI density premium) or revert to 38-42% (commodity power-electronics)? This is the largest unresolved valuation question.
+
+**Structural forces reshaping industry**:
+1. **NVIDIA roadmap density acceleration** — Hopper 40 kW/rack → Rubin Ultra 600 kW/rack. At 600 kW with 48V distribution, per-processor currents pass 2,000A, forcing architectural choice toward vertical PDN — Vicor's home turf.
+2. **800VDC architecture transition** ([[Macro & Technology/800VDC Adoption|NVIDIA reference, March 2026]]) — bullish for Vicor at the rack-down conversion stage; the 800VDC → 48V → core-voltage chain creates more conversion content per system, not less. The synthesized adoption forecast in [[Macro & Technology/800VDC Adoption]] (10-15% of new AI racks at 800VDC by 2027, 65-75% by 2032) anchors a multi-year VPD content-growth trajectory: as 800VDC rack share rises through the late 2020s, the per-watt VPD attach rate compounds with each Rubin/Feynman generation rather than flattening with capex normalization. The business-model, moat, and financial quantification of this force — including a revenue/EBIT/valuation forecast to 2035 — is in §800VDC Transition — Business Model, Moat & Long-Term Forecast.
+3. **ITC enforcement of US patents** — Limited Exclusion Orders are now being used aggressively by US-domiciled IP holders against Asian infringers. Vicor's LEO precedent will likely be replicated by other power-IP holders, increasing the "license rather than infringe" calculus across the industry.
+4. **Onshoring / tariff regime** — Section 301 tariffs on Chinese power components + US Customs LEO enforcement biases ODM bill-of-materials toward US-manufactured modules. Vicor's Andover footprint is procurement-positive in this regime.
+5. **GaN/SiC adoption** — increases density at the IC layer (where MPS lives) but does NOT obviate the module-level architecture choice (where Vicor lives). The narrative that "GaN/SiC eliminates Vicor's advantage" is a category error.
+
+**Customer channel mix (FY2026E estimate)**: Direct hyperscaler (~5-10%, growing as licensing partners convert to product purchasers); ODM-mediated (~50-60%, via Compal/Foxconn/Quanta/Wiwynn buying against NVIDIA reference BoMs); GPU/accelerator OEM-direct (~15-20%, NVIDIA + AMD + Astera Labs + others); Industrial/automotive/defense (~20-25%, Brick Products legacy base). The hyperscaler-direct channel is rising as licensing settlements create direct relationships — Microsoft, Meta, and Google have all been mentioned in management commentary as becoming "licensees" which typically converts to direct module purchases over 12-18 months.
+
+## Key Metrics
+
+| Metric                          | Value                              | Notes                                                                                                                                                                                                                                                                            |
+| ------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Market Cap                      | ~$12.3B                            | At $273.50 (Apr 27, 2026)                                                                                                                                                                                                                                                        |
+| Stock Performance               | +400% TTM, +28% post Q1 2026 print | Q1 print Apr 21 2026 was the catalyst                                                                                                                                                                                                                                            |
+| EV/Revenue (FY26E)              | ~22x                               | On $570M FY26 guide; high vs industrial peers                                                                                                                                                                                                                                    |
+| P/E (Trailing FY25)             | ~105x                              | $273.50 / $2.61 FY25 EPS; FY25 NI $118.6M includes $45M one-time Delta/Cyntec/Foxconn ITC settlement (ex-settlement NI ~$73M, ex-settlement trailing P/E ~170x)                                                                                                                  |
+| P/E (FY26E)                     | ~85–100x                           | Estimated FY26 NI $130–155M ($570M revenue × ~22–27% NI margin assuming Q1 2026 ~21% OpMargin sustains + licensing mix at ~90% GM lifts blended NI margin) / 45.4M diluted shares = $2.85–3.40 EPS; range reflects licensing recognition timing pre-2027 ITC final determination |
+| P/E (FY28E bull case)           | ~25–30x                            | Bull Case $5–7 FY28 EPS at 25–30x = $250–380 stock; current $273.50 prices structural rerate ahead of FY28 earnings realization, so multiple compresses with earnings growth rather than expanding further                                                                       |
+| Revenue Growth (FY26 guide)     | +26% YoY                           | $570M vs $452M FY25; "contingent on licensing agreements awaiting resolution in 2027"                                                                                                                                                                                            |
+| Gross Margin (Q1 2026)          | 55.2%                              | Up from ~37% FY24; ~50-52% product-only                                                                                                                                                                                                                                          |
+| Operating Margin (Q1 2026 est.) | ~21%                               | Levered to capacity utilization; rising                                                                                                                                                                                                                                          |
+| FCF Yield                       | ~0.7%                              | Working capital build for Andover ramp suppressing near-term FCF                                                                                                                                                                                                                 |
+| Backlog (Q1 2026)               | $300.6M                            | +70% YoY                                                                                                                                                                                                                                                                         |
+| Book-to-Bill (Q1 2026)          | >2.0x                              | Highest in company history                                                                                                                                                                                                                                                       |
+| Net Income FY25                 | $118.6M                            | Includes $45M Delta/Cyntec/Foxconn ITC settlement                                                                                                                                                                                                                                |
+| Diluted EPS FY25                | $2.61                              | $1.01 in Q4 2025 alone (+$0.45 vs prior year) — tax-benefit-aided                                                                                                                                                                                                                |
+| Capacity (Fab One)              | $1.5B/yr nameplate                 | 38% utilized at $570M FY26 guide; second 3Di line Q3/Q4 2026                                                                                                                                                                                                                     |
+| Analyst Consensus               | Buy (3 Buy, 1 Strong Buy, 1 Hold)  | PT range $118-$260 — wide spread reflects unresolved valuation                                                                                                                                                                                                                   |
+| Insider Ownership               | >25% (Vinciarelli)                 | Founder-CEO equity — alignment + concentration risk                                                                                                                                                                                                                              |
+> [!error] 2026-04-28 → Addressed 2026-04-28
+> **Prompt:** *P/E estimates look wrong - reprocess.*
+>
+> **Response:** Confirmed — original 23x conflated EV/Revenue with P/E. Recomputed using $13.1B mcap and 45.4M diluted shares: trailing FY25 P/E = 105x ($273.50 / $2.61, with FY25 NI inflated by $45M one-time settlement); forward FY26E ~85–100x on estimated $2.85–3.40 EPS ($130–155M NI / 45.4M shares). The 25–30x figure referenced in §Bull Case is the FY28E target multiple, not current — meaning the stock today prices a multi-year structural rerate that compresses as earnings catch up rather than via further multiple expansion. See §Key Metrics → P/E rows.
+## Bull Case
+
+Rubin Ultra at NVL576 (600 kW/rack, H2 2027) ships with confirmed Vicor VPD content per processor, validating the architectural-necessity thesis. Licensing pipeline closes the remaining $300M of pending settlements through 2027 + extends with new agreements as ODMs continue seeking emergency licenses. Andover Fab One reaches $1.5B run-rate by H1 2027; second 3Di line adds another $500-1,000M of capacity unlocking further AI module growth. Product GM stabilizes at 50-52% as Advanced Products mix hits 65-70% of product revenue; blended GM (with licensing) reaches 55-58% sustainably. FY27 revenue $750-900M, FY28 $1.1-1.4B (capacity-allowing). EPS reaches $5-7 by FY28. Multiple holds at 25-30x given growth profile, target $150-200B market cap = $300-400 stock (10-45% upside from $273). Bull case requires: (a) Rubin Ultra confirms Vicor socket content, not just architectural compatibility, (b) LEO survives Federal Circuit appeal scrutiny without scope reduction, (c) founder transition (when it occurs) is orderly, (d) MPS does not crack the vertical architecture with a clean-sheet design. Valuation framework: 25-30x FY28 EPS of $5-7 = $250-380, discounted 2yr at 10% = $205-315.
+
+## Bear Case
+
+Rubin/Rubin Ultra reference designs allow vertical alternatives from Flex, TI, or a clean-sheet MPS product, fragmenting the architectural advantage. Vicor wins partial socket content but at competitive pricing — product GM compresses back to 42-45% as the AI mix matures. LEO is narrowed at Federal Circuit appeal in 2027, capping licensing revenue at $50-70M run-rate (vs $300M pipeline). Founder Vinciarelli (78) departs unexpectedly; succession uncertainty triggers 30-40% multi-quarter drawdown regardless of fundamentals. Andover ramp hits labor/quality issues — second 3Di line slips 2-3 quarters, FY27 revenue lands $600-650M not $850M. Overall: FY28 revenue $700-800M, EPS $2-3, multiple compresses to 12-15x as growth profile resembles a specialty industrial. Stock $30-50 (80-90% downside from $273). The adversarial framing: Vicor's run from $50 to $273 in 12 months prices not just Q1 2026 inflection but a multi-year structural rerate; if any of the four bull-case requirements falters, the multiple compression alone drives the downside.
+
+## 800VDC Transition — Business Model, Moat & Long-Term Forecast (to 2035)
+
+**Bottom line: 800VDC is orthogonal to Vicor's core franchise and net-positive — it adds content and royalty surface rather than removing them.** 800VDC is an Axis-1 change (distribution voltage from rack to board); Vicor's VPD is an Axis-2 product (final-converter placement in the last 1.5 mm under the processor). Raising distribution to 800V sits *upstream* of the 48V→0.7V conversion VPD performs — it does not displace it. The two-axis taxonomy and the I²R quantification behind this are in [[Research/2026-04-28 - VICR - Vertical Power Delivery Technical Architecture and Q1 2026 Earnings - deep-dive]]; §Industry Context structural force #2 carries the architectural narrative. This section quantifies the business-model, moat, and financial consequences.
+
+### Business model impact
+
+| Vector | Mechanism | Direction |
+|---|---|---|
+| **New content layer (800V→48V)** | The 800VDC chain is 800V → 48V → 0.7V. Vicor holds bus-conversion IP (BCM) at 800V→48V *and* the VPD module at 48V→0.7V. 800VDC adds a second Vicor-addressable conversion stage on top of existing VPD content per rack | **+ dollar content/rack** |
+| **48V entrenchment on-board** | The only path that bypasses Vicor's 48V VPD tier is 800V→6V single-step. Physics rebuts it: 6V vs 48V on the final segment = 8× current = 64× I²R loss; the SELV 60V ceiling and 1.5 mm package feasibility both pin the on-board inflection at 48V. 800V upstream makes 48V *more* entrenched, not less | **+ moat durability** |
+| **Royalty surface widens** | The 800V bus-conversion patents create a second LEO-enforceable layer. A competitor implementing 800V→48V infringing becomes a royalty payer — the VPD-layer enforcement logic replicated one stage up | **+ licensing optionality** |
+| **TAM-split caveat** | The largest 800VDC dollar value lands at the SST and front-end SiC/GaN layers (Layers 2 + 4 of [[Macro & Technology/800VDC Adoption]]) — Infineon, MPS, Navitas, onsemi — not Vicor. Vicor captures the bus-conversion + VPD layers (Layer 5), a minority of per-rack 800VDC dollars | **neutral — bounds upside** |
+
+### Product moat impact
+
+800VDC widens the moat *surface* (two IP-gated converter stages instead of one) without changing its *depth* — still the 5–7yr FPA + SAC + ChiP + 3Di reverse-engineering clock in §Business Model → Moat summary. Three specifics:
+
+- The 2nd-gen VPD spec gap (3 A/mm² / 40× multiplication / 1.5 mm) is **defined relative to a 48V input**; the more 800V→48V entrenches, the more that spec gap is the binding competitive metric.
+- CPO thermal coupling is an **independent, additive** forcing function — both 800VDC and CPO push power conversion to the package bottom, for unrelated reasons (distribution physics vs. photonic wavelength stability).
+- The one genuine moat risk is **800V→6V adoption** (bypasses the 48V VPD tier). Management calls it "frankly ill-conceived"; even in that branch Vicor's 800V IP opens a royalty path, so no architecture fully excludes Vicor.
+
+### Financial impact + base-case forecast to 2035
+
+**Assumption (per request): the AI-server end market grows high-single-digit (~8%) through 2035.** Vicor out-grows that market near-term via three step-ups — 800VDC bus-conversion content, VPD attach rising as each NVIDIA generation crosses the >2,000A vertical-necessity threshold, and the post-2027-ITC licensing inflection — then decays toward market growth by the early 2030s as content and share gains saturate. The model below is a synthesized scenario, **not guidance**: FY25 is actual, FY26 is company guide, FY27+ is vault estimate. Margin path assumes product GM rising 50%→54%, licensing GM ~95%, and operating leverage on a stable ~22–24%-of-revenue opex base.
+
+| FY | Product | Licensing | Total Rev | YoY | EBIT | EBIT % |
+|---|---|---|---|---|---|---|
+| 2025A | $350M | $103M¹ | $453M | +26% | ~$90M¹ | ~20% |
+| 2026E | $510M | $60M | $570M | +26% | $120M | 21% |
+| 2027E | $620M | $120M | $740M | +30% | $185M | 25% |
+| 2028E | $780M | $170M | $950M | +28% | $266M | 28% |
+| 2029E | $940M | $210M | $1,150M | +21% | $357M | 31% |
+| 2030E | $1,085M | $245M | $1,330M | +16% | $439M | 33% |
+| 2031E | $1,225M | $275M | $1,500M | +13% | $510M | 34% |
+| 2032E | $1,360M | $300M | $1,660M | +11% | $581M | 35% |
+| 2033E | $1,485M | $325M | $1,810M | +9% | $652M | 36% |
+| 2034E | $1,610M | $350M | $1,960M | +8% | $706M | 36% |
+| 2035E | $1,745M | $375M | $2,120M | +8% | $784M | 37% |
+
+¹ FY25 licensing includes the $45M one-time Delta/Cyntec/Foxconn settlement; FY25 EBIT is distorted upward by that item and by tax benefits — FY26E is the clean base. FY25→FY35 revenue CAGR ~16.7%; FY26→FY35 EBIT CAGR ~23%. Licensing held at 18–23% of product revenue throughout — deliberately conservative vs. management's "could reach 50% of product" upper-bound framing.
+
+**Valuation — two lenses.** At ~$273.50 (Apr 2026): market cap ~$13.1B, EV ~$12.5B (net cash ~$0.6B).
+
+| FY | EBIT | EV/EBIT if EV held at ~$12.5B | Base-case target EV/EBIT | Implied EV |
+|---|---|---|---|---|
+| 2026E | $120M | 104x | — | — |
+| 2027E | $185M | 68x | 45x | $8.3B |
+| 2028E | $266M | 47x | 38x | $10.1B |
+| 2029E | $357M | 35x | 33x | $11.8B |
+| 2030E | $439M | 28x | 30x | $13.2B |
+| 2032E | $581M | 22x | 25x | $14.5B |
+| 2035E | $784M | 16x | 20x | $15.7B |
+
+Per-share base case (net cash growing with FCF to ~$2B by 2035; ~46M → ~50M diluted shares): FY30 ≈ ($13.2B EV + $1.2B cash) / 48M ≈ **~$300**; FY35 ≈ ($15.7B EV + $2.0B cash) / 50M ≈ **~$354**. Versus $273.50 today: ~+10% by 2030, ~+29% by 2035 — **low-single-digit forward IRR**.
+
+**Critical conclusion.** At ~$13.1B today the market already discounts roughly FY30 EBIT ($439M) at ~30x — about four years of forward earnings in the price. Under conservative high-single-digit AI-server growth, the structural rerate the thesis identified is largely *realized, not ahead*, and base-case forward return from $273.50 is low-single-digit. The optionality that re-accelerates returns is specific and falsifiable: (a) licensing toward the 50%-of-product upper bound — each incremental $100M of licensing ≈ +$95M EBIT at ~95% margin ≈ +$1.9B EV at 20x; (b) AI servers growing low-double-digit rather than high-single-digit; (c) the AI-density-purity multiple (Vertiv/ASML/Synopsys band, 30–40x earnings per §Investor Heuristics #8 in [[Sectors/Modular Power Conversion Components]]) persisting rather than compressing toward 20x. This aligns with the [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] TRIM-to-1% call: high thesis quality, stretched entry valuation.
+
+**2035 bookends:**
+- **Bull (~$28B EV, ~$550–610/share):** AI servers low-double-digit + licensing 40–50% of product + 28–30x multiple holds + Rubin Ultra confirms Vicor primary socket content.
+- **Bear (~$8–9B EV, ~$170–190/share):** 800V→6V wins partial adoption + MPS clean-sheet vertical compresses VPD share and product GM to 42–45% + licensing capped at $70–100M (Federal Circuit narrows LEO) + multiple to 15x.
+
+## Catalysts
+
+- **Q2 2026 earnings (late July 2026)** — first read on whether Q1 backlog +70% momentum sustained; guide $126M revenue. Critical tells: Advanced Products growth rate, licensing-deal closure timing, product-only GM disclosure.
+- **NVIDIA GTC 2026 fall update (October 2026)** — typically NVIDIA gives Rubin/Rubin Ultra reference design updates; Vicor logo appearance or absence is binary signal for socket content.
+- **Q3 2026 earnings (late October)** — Andover second 3Di line installation status (planned Q3/Q4); capacity ramp visibility into 2027.
+- **2027 LEO Federal Circuit appeal decision (timing TBD, possibly 2H 2026 or early 2027)** — patents survive scope-intact OR scope narrows; binary outcome for licensing pipeline.
+- **Vera Rubin NVL144 production ramp (H2 2026)** — first generation that physically requires VPD; field reliability and supplier consistency will be the procurement-decisive metric.
+- **Q4 2026 / FY26 earnings (Feb 2027)** — full-year licensing recognition + FY27 guide. The "contingent on licensing agreements awaiting resolution" footnote either resolves or persists, telling whether the $570M base is structural or contingent.
+- **Hyperscaler FY27 capex guides (Oct-Dec 2026)** — directional read on AI infrastructure cycle that drives Vicor's product TAM.
+- **Founder transition signal (any time)** — 8-K filings re: executive officers, board appointments, or material agreements involving Patrizio Vinciarelli. Tail risk that becomes catalyst if it surfaces.
+
+## Risks
+
+**Thesis risks (investment case is wrong):**
+
+1. **MPS or new entrant cracks the vertical architecture with a clean-sheet design** — the "physics requires VPD above 2,000A" thesis breaks if MPS ships a competitive vertical product within 18-24 months. MPS has revenue scale and engineering depth that Vicor cannot match dollar-for-dollar in R&D; if they choose to attack the vertical segment, Vicor's IP buys 5-7 years but not infinity.
+2. **NVIDIA chooses dual-source for Rubin Ultra** — even if Vicor wins primary socket content, NVIDIA typically dual-sources critical components. Flex (announced VPD product line 2025) is the obvious second source. Dual-sourcing compresses Vicor's per-system content from 100% to 50-60%.
+3. **LEO is narrowed at Federal Circuit** — appellate review could reduce ITC scope, shrinking the licensing pipeline. Patent claims could also be invalidated through inter partes review (IPR) at PTAB. Either path compresses licensing revenue from a $300M pipeline to a $50-100M run-rate.
+4. **Founder departure without prepared succession** — Vinciarelli is 78, controls strategy and capital allocation. A sudden event creates operational vacuum and equity uncertainty. Comparable risk to Steve Jobs (Apple 2009-2011) but at a smaller-cap company without the institutional depth.
+
+**Position risks (thesis is right but stock goes down anyway):**
+
+1. **Multiple compression on AI bubble narrative** — stock at $273 prices a multi-year structural rerate. If "AI bubble" narrative becomes consensus in 2026-2027, multiple compresses from ~25x to 12-15x even if earnings hold — 40-50% drawdown without a thesis break.
+2. **Working capital drag from backlog ramp** — $300M backlog + Andover capacity expansion creates near-term FCF compression. "Growth without cash" framing caps multiple expansion even on good earnings.
+3. **Mid-cap volatility / index rebalancing** — at $13B market cap, Vicor sits in awkward Russell-2000 to S&P-mid territory. Any index reclassification creates forced flows that amplify moves.
+4. **Class action lawsuit overhang from 2024** — prior securities-fraud allegations (DiCello Levitt, Kessler Topaz, Rosen) related to NVIDIA-customer disclosure issues are still working through courts. Settlement or adverse ruling could create disclosure or financial overhang independent of operating thesis.
+5. **Insider selling on Vinciarelli equity diversification** — founder's >25% stake creates concentration risk; if estate planning triggers secondary offerings, supply pressure depresses stock 10-20% short-term even on strong earnings.
+
+## Conviction Triggers
+
+→ **HIGH if**: Vera Rubin NVL144 production confirms Vicor VPD content per processor (via NVIDIA reference design partner disclosure or 8-K supply agreement) AND FY27 licensing guide is raised above $300M cumulative (vs $300M pipeline today) AND Q4 2026 product-only GM holds above 50%. The combination confirms architectural moat + structural rents + durable margin profile.
+
+→ **LOW if**: Federal Circuit narrows LEO scope materially in 2027 appeal decision (compressing licensing pipeline by >40%) OR NVIDIA Rubin Ultra reference design lists Flex/MPS/TI as primary VPD vendor with Vicor as secondary source OR two consecutive quarters show Advanced Products growth below 10% YoY (suggesting AI module mix is rolling over). Any of these signals a structural break in either the IP moat or the architectural-necessity thesis.
+
+→ **CLOSE if**: Founder Patrizio Vinciarelli departs without a publicly-announced and equity-aligned successor (operational void + concentration unwind triggers structural revaluation) OR Federal Circuit invalidates core VPD patents at PTAB (eliminating licensing revenue stream) OR Monolithic Power Systems announces and ships a clean-sheet vertical PDN product matching Vicor's PDN-density advantage at lower cost (the architectural moat is buyable, not built — Vicor's lead collapses).
+
+## Mental Models
+<!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
+- **Models applied** (2026-07-09 batch-2 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] (expectations, reflexivity) · [[Industry - Semiconductors]] (#2, #8) · [[Lens - Value Layer Monopoly]] (interface/standard control, §4)
+- **Triggers + evidence status** — hypotheses tested, not verdicts:
+	- *VLM interface-control / IP-toll (Insight #2) — STRENGTHENING, now the thesis's strongest leg*: new all-inclusive OEM licensee signed May 26 *ahead* of the 2027 ITC determination (breaks the back-loaded-licensing assumption bullishly; Q2 guide raised $126M→$142M); PTAB rejected Delta's IPR; second ITC case instituted Feb 11; January litigation offensive on the '087 bus-converter patent vs MPS+Wistron, Delta, Luxshare/MetaPWR — operationalizing the "second royalty surface at 800V" claim by suing the architectural rival directly. LT model raised at the Jun 19 annual meeting: $1.0B→$2.5B revenue, 70% GM, licensing $200–300M/yr — the "low-single-digit forward IRR" Log conclusion is stale on the margin axis if this model carries any weight. Counter-symmetry: Vicor PAID SynQor $28.56M (Fed Cir affirmed, Mar 18) — the IP fortress cuts both ways.
+	- *Architectural-necessity leg (Insight #1) — WEAKENING*: MPS reported as primary VR200/Rubin power-stage winner (~70% share per trade coverage); Vicor absent from every official NVIDIA 800VDC/Kyber partner list (Navitas, Infineon, MPS, Delta, Flex, Vertiv all named); no NVIDIA reference-design or 8-K confirmation. Vicor's Rubin exposure runs through ODM BoMs (Compal NVL8 VPD demo) and IP enforcement — which is, precisely, the thesis's own claim that socket losses convert to royalties. The two legs are now clearly separable: bet on the toll, not the socket.
+	- *LOW trigger HALF-FIRED*: Advanced Products +8.5% YoY incl. royalties, ~+1.8% ex-royalty — one of the two consecutive sub-10% quarters. Q1's +20% headline was Brick (+40.9%) + royalties, not AI product shipments; the "Q1 shows the inflection" Summary framing is a backlog/royalty story ($300.6M backlog, B2B >2x), not an AI-shipment story. **Q2 print Jul 21 decides the trigger's second observation.**
+	- *Concentration migration*: lead VPD customer is Cerebras (wafer-scale ramp; gen-2 VPD samples Q1 2027), not NVIDIA — anchor risk moved to a private, pre-IPO single name ([[Theses/CBRS - Cerebras Systems]] adjacency). HIGH-c (product-only GM >50%): Q1 computed ~48.4% — below the bar.
+	- *Reflexivity / position risk — fired at 1.5–3x predicted magnitude*: CEO 10b5-1 selling (plan Feb 26) + ~$225M aggregate insider sales / 3 months → ~-32% in the first July week ($366 peak Jul 1 → ~$249), no fundamental news; sell-side had flipped aggressive INTO the peak (PTs $400–450 vs $118–260 at thesis date). Class-action overhang de-risked (dismissed Jun 2025).
+- **Disconfirming check** (evidence-updated): the models split cleanly along the thesis's own two axes — IP-toll evidence strengthening, socket evidence weakening — and the thesis explicitly claims the toll survives socket loss, so the July drawdown is not (yet) thesis damage. The disconfirm that matters: if Q2 (Jul 21) prints a second sub-10% Advanced quarter AND royalty growth stalls, the toll narrative loses its numerator too — that's the LOW trigger firing properly. Base rate: 90x fwd P/E on a $570M-revenue company requires the $2.5B model to be roughly right; management LT models hit <50% in semis. Single falsifiers: fall GTC (Oct 2026) socket disclosure; Federal Circuit ruling on the Foxconn-license appeal (Vicor win widens enforcement; loss caps it). Batch flag: correlates with the 800VDC macro ([[Macro & Technology/800VDC Adoption]]) alongside Murata's power-module entry, not with the test cluster.
+
+## Related Research
+
+- [[Sectors/Modular Power Conversion Components]] — Primary sector for VICR (chip-level power modules); covers the architectural fork at ~1,500–2,000A, ITC LEO industry-wide enforcement, IDM consolidation history (TI/ADI/Infineon/Renesas), MPS clean-sheet vertical risk, CPO thermal coupling as independent forcing function. VICR is sole Active Thesis.
+- [[Sectors/Data Center Power & Cooling]] — Adjacent sector (one layer above — rack/facility-level UPS, switchgear, CDUs, transformers); covers liquid cooling, OCP standards, 800VDC architecture, hyperscaler oligopsony dynamics; §Macro shifts #4 (800VDC) is the framework that explains why on-board VPD content rises with each NVIDIA generation
+- [[Theses/VRT - Vertiv Holdings]] — Adjacent rack-and-up power infrastructure peer; both VICR and VRT serve the AI infrastructure capex cycle but at different layers (VICR = on-board chip-level, VRT = rack/facility-level); §Industry Context "800VDC architecture transition" overlaps with VICR thesis on architectural compression
+- [[Theses/NVDA - Nvidia]] — Primary customer context; Rubin/Rubin Ultra roadmap (300+ kW/rack 2H 2026, 600 kW/rack 2H 2027) is the demand driver for VPD adoption; Jensen Huang moat-persistence interview research already in the vault
+- [[Theses/AVGO - Broadcom]] — AI/Semis Ecosystem cluster member; custom silicon (XPUs) at hyperscalers create incremental high-current power delivery demand alongside NVIDIA GPUs
+- [[Theses/PSTG - Pure Storage]] — AI/Semis Ecosystem cluster member; flash storage adjacency to AI compute consumes power infrastructure
+- [[Sectors/Semiconductor Capital Equipment]] — Cluster member; power-density requirements drive new packaging tools (BESI hybrid bonders, etc.) that VICR's customers consume
+- [[Research/2026-04-23 - NVDA - CUDA Moat and Omniverse Upside - deep-dive]] — Rubin generation context
+- [[Research/2026-04-24 - Agentic AI CPU Bottleneck and Server CPU Framework - deep-dive]] — Server architecture context for VPD adoption
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 4 cyclical challenger; TRIM Low→1% (Rubin >2,000A architectural necessity + ITC LEO royalties, but +543% 1Y + 96x P/E + founder succession overhang)
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]] — VPD/LPD + MLCC local capacitance; Vicor ~17× sales framing
+- [[Research/2026-08-12 - 6981 VICR - MLCC AI Demand Price Hikes Premiums - news]] — AI rack MLCC counts corroborate power-delivery intensity
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
+
+## Log
+
+### 2026-04-28
+- Initial thesis created. Conviction: medium — architectural-necessity case for Rubin VPD adoption + ITC LEO licensing rents are non-consensus reframes of the "Vicor lost the H100" narrative; offset by founder concentration risk (Vinciarelli 78yo with >25% stake), Federal Circuit appeal risk on LEO scope, and stock having already run +400% TTM pricing in Q1 2026 inflection but not yet a structural rerate. Status: draft per /thesis Step 4 default — promote to active via /status VICR status draft→active when ready for /catalyst, /prune, conviction-drift inclusion. Next research priorities: (1) NVIDIA Rubin Ultra reference design partner disclosure (likely H2 2026 GTC), (2) 10-K customer concentration on NVIDIA share, (3) Federal Circuit appeal docket monitoring on LEO scope.
+- Manual edit: Added wikilink to new [[Sectors/Modular Power Conversion Components]] sector note as primary sector reference (chip-level layer); retained [[Sectors/Data Center Power & Cooling]] as adjacent rack/facility-level sector. Conviction unchanged — purely organizational addition of MoC navigation entry.
+- Addressed user callouts: Expanded §Business Model & Product Description → Moat summary from 5 condensed bullets to 6 detailed barriers (legal/patent + ITC enforcement, SAC+FPA topology IP, ChiP+3Di fabrication, 2nd-gen VPD spec gap with 3 A/mm² / 40× / 1.5 mm specifics, 5–7yr reverse-engineering clock, NVIDIA qualification + Andover US footprint) — addresses [!question] on what prevents competitor encroachment. Replaced §Key Metrics P/E row (was incorrectly stated as ~23x, conflating EV/Revenue with P/E) with three rows: trailing FY25 ~105x, forward FY26E ~85–100x on $130–155M NI estimate, FY28E bull-case target 25–30x — addresses [!error] on P/E reprocess. Conviction unchanged (medium); changes sharpen the existing moat thesis and correct a valuation-row error rather than altering investment view.
+
+### 2026-05-01 (/sync — Log backfill)
+- [[Research/2026-04-28 - VICR - Vertical Power Delivery Technical Architecture and Q1 2026 Earnings - deep-dive]]: Q1 2026 earnings + VPD technical-architecture deep-dive (research note created same day as thesis 2026-04-28; "Initial thesis created" Log entry referenced research synthesis but did not explicitly cite the source note). Backfilled per /sync Step 1.7 reconciliation. Conviction unchanged — research note is the primary source for thesis foundations.
+
+### 2026-05-18 (/sync)
+- Cross-thesis propagation from [[Macro & Technology/800VDC Adoption]]: New macro report synthesizes three Deep Research streams + web search into a unified 800VDC roadmap — NVIDIA Kyber row-rectified (±400V/800V, March 2026) vs OCP Mt. Diablo sidecar (Meta/Google co-authored), six-layer value chain (grid/MV → SST → DC distribution → wide-bandgap silicon → VPD → passives), base-case adoption forecast 10-15% of new AI racks 2027 → 65-75% by 2032. Validates §Industry Context "800VDC architecture transition" structural force #2 — the 800VDC → 48V → core-voltage conversion chain creates more VPD content per system as rack power scales 40 kW (Hopper) → 600 kW (Rubin Ultra). Added forecast anchor to §Industry Context. Conviction unchanged at medium — strengthens the rack-density acceleration insight without resolving founder-concentration or Federal Circuit appeal overhangs.
+
+### 2026-05-19 (/sync)
+- [[Macro & Technology/800VDC Adoption]] amendment: Macro note enhanced 2026-05-19 with two new financial columns (AI-DC Rev/OP exposure %, ROIC/EV-EBIT LTM) across all six Layer tables in §Value chain map and named beneficiaries. Vicor sits at Layer 5 (Last 1.5 mm / on-board Vertical Power Delivery) with ~60% / ~70% AI-DC Rev/OP exposure (highest tier alongside VRT) and ~10% / ~50x ROIC / EV-EBIT — confirming the AI-DC purity premium that anchors §Investor Heuristics #8 in [[Sectors/Modular Power Conversion Components]]. Conviction unchanged — quant framework reinforces existing AI-density-segment-peer multiple reframe (Vertiv/ASML/Synopsys band, not general-PMIC band) without resolving founder-concentration or LEO appeal overhangs.
+
+### 2026-05-22 (manual)
+- Status change: portfolio-wide alignment — confirmed as current Live Portfolio holding; conviction medium→high.
+
+### 2026-05-26
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Rebalancing flags TRIM to 1% (architectural-necessity + ITC LEO option-value real, but +543% 1Y + founder/valuation overhang) — sizing call; conviction unchanged (high).
+
+### 2026-05-29
+- Addressed user callout (800VDC impact + 2035 forecast): added §800VDC Transition — Business Model, Moat & Long-Term Forecast — 800VDC is orthogonal to VPD (Axis-1 distribution vs Axis-2 placement) and net-positive (adds 800V→48V BCM content + 2nd royalty surface, entrenches 48V on-board; 800V→6V bypass physically rebutted).
+- Base-case forecast (HSD AI-server growth): revenue $453M→~$2.1B FY35 (~16% CAGR), EBIT margin 21%→37%; ~$13.1B EV already discounts ~FY30 EBIT at ~30x → low-single-digit forward IRR — conviction unchanged (high), valuation/entry tension matches the rebalancing TRIM-to-1%, not a thesis break.
+- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: licensing prose corrected — royalties run ~$60M annualised (Q1 ~$15M) with new deals paused until the 2027 ITC determination (FY26 $570M guide assumes none); "$300M" is order backlog, not a licensing pipeline. Conviction unchanged (high), Q1 numbers confirmed.
+
+### 2026-07-09
+- Mental models pass: batch-2 evidence sweep populated ## Mental Models — thesis split along its own axes: IP-toll leg STRENGTHENING (new OEM licensee pre-ITC, PTAB rejected Delta IPR, 2nd ITC case, '087 suits vs MPS/Delta/Luxshare, LT model raised to $2.5B/70% GM) while socket leg WEAKENS (MPS reported primary VR200 winner, Vicor absent from NVIDIA 800VDC lists, lead customer = Cerebras); LOW trigger half-fired (Advanced ex-royalty ~+1.8% YoY, qtr 1 of 2); CEO 10b5-1 + $225M insider sales → -32% week — conviction unchanged (high); Q2 print Jul 21 decides the LOW trigger.
+
+### 2026-07-11
+- Status change: conviction high → medium — vault-wide multi-agent valuation scoreboard: ~69x fwd P/E / 21x EV/sales discounts ~FY30 EBIT at 30x with management's own $2.5B/70%-GM model doing all the work, while Advanced Products ex-royalty is flat (+1.8% YoY) and MPS took ~70% of the VR200 socket. Snapshot: [[_Archive/Snapshots/VICR - Vicor Corporation (pre-status 2026-07-11-063211)]]
+
+### 2026-07-12
+- Numbers refresh: 2 metrics updated, 0 material. Market cap -6.3% to ~$12.3B; FCF yield compressed 1.5%→0.7%, consistent with the -32% July drawdown already logged. Snapshot: [[_Archive/Snapshots/VICR - Vicor Corporation (pre-numbers 20260712-173752)]]
+
+### 2026-07-12 (/numbers)
+- Numbers refresh (2nd same-day pass): 0 metrics changed — Market Cap and FCF Yield both round to the same displayed values as the prior pass. Snapshot: [[_Archive/Snapshots/VICR - Vicor Corporation (pre-numbers 20260712-183936)]]
+
+### 2026-08-12
+- [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]: power-delivery bottleneck intensifies with Rubin/Feynman current — conviction unchanged (medium).
+### 2026-08-14
+- [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]: 800VDC untemplated in the LEGO map — no socket print — conviction unchanged.

@@ -17,17 +17,17 @@ source: "FQ3-26 8-K (24 Jun, period ended 28 May) + 16 Mar IR (HBM4 12H HVP) + H
 
 List ≠ boards. Huang 1 Jun + 16 Mar IR HBM4 12H HVP put MU on the bench; first-wave Rubin bits stay ~70/30/0 SKH/Samsung/MU until a Q3 board meter. Qualified third ≠ allocated. Queue ≠ rent: SKH removed LTA caps 2 Jul, MU did not; 3Q26 US-cloud +13–18% is MU's rent ceiling. L1 is a hypothesis; the falsifier is 2018 destock (FY18 GM 58.9%, then destock; FQ3-26 84.6% is a larger numerator). HBM LTAs lengthen the queue; they do not retire destock.
 
-FQ3-26 printed $41.46B, 84.6% GAAP GM, $28.24B NI, $24.67 EPS; FQ4 guide $50.0B ±$1.0B ~86% GM. DRAM $31.33B (76%) / NAND $9.94B. HBM4 shipped >$1B to an unnamed customer. Tape 13 Aug close $951.88 (Sentiment StockScan); 52-week high $1,255 (25 Jun). 12 Aug midday copy ~$1.04T / ~$924 is a different session — not spliced onto this close.
+FQ3-26 printed $41.46B, 84.6% GAAP GM, $28.24B NI, $24.67 EPS; FQ4 guide $50.0B ±$1.0B ~86% GM. DRAM $31.33B (76%) / NAND $9.94B. HBM4 shipped >$1B to an unnamed customer. Tape 13 Aug close $951.88 (Sentiment StockScan); 52-week high $1,255 (25 Jun). 12 Aug midday copy ~$1.04T / ~$924 is a different session, not spliced onto this close.
 
 ## Key Non-consensus Insights
 
 - **Qualified third ≠ first-wave cubes**
   - **Consensus:** 16 Mar IR (HBM4 36GB 12H HVP, designed for Vera Rubin) plus Huang 1 Jun GTC Taipei ("all three qualified / in production") prices MU as a Rubin HBM4 supplier. Sell-side interpolates "the remainder" after SKH/Samsung. Investor language: UBS $1,625 / structural reset / US HBM winner.
-  - **Variant:** Qualification puts MU on the bench. It does not put cubes on Rubin boards. First-wave bits ~70/30/0 until a Q3 board meter. List ≠ attach. Pin-speed lag is a hypothesis for why mix can stay there, **not** a measured Nvidia reject. 000660's kill is Samsung >35%, not MU taking a slice.
+  - **Variant:** Qualification puts MU on the bench. It does not put cubes on Rubin boards. First-wave bits ~70/30/0 until a Q3 board meter. List ≠ attach. Pin-speed lag is a hypothesis for why mix can stay there, not a measured Nvidia reject. 000660's kill is Samsung >35%, not MU taking a slice.
   - **First confirming observable [2026-10]:** Q3 2026 Rubin board meter (Nvidia ship-quarter disclosure or teardown/BOM series) showing MU cubes on boards at a printed share of first-wave HBM4 bits.
-  - **Falsifier:** Q3 board meter confirms ~70/30/0 — same condition as → LOW.
+  - **Falsifier:** Q3 board meter confirms ~70/30/0, same condition as → LOW.
 
-- **Queue ≠ rent — SKH took the caps off, MU did not**
+- **Queue ≠ rent: SKH took the caps off, MU did not**
   - **Consensus:** TrendForce 1Q26 DRAM +93–98%, 2Q +58–63%, 3Q US-cloud +13–18% plus "sold out through 2027" = scarcity rent accruing to all three names equally.
   - **Variant:** Queue is physics + quals + delivery priority. Rent is LTA structure + residual spot. SKH removed LTA caps 2 Jul; MU did not. 3Q26 US-cloud +13–18% is MU's rent ceiling. Incremental 2026 dollars go to SKH uncapped paper + NVDA SOCAMM ~60% markup + ASML/TSMC/[[Theses/BESI - BE Semiconductor Industries]] before MU residual.
   - **First confirming observable [2026-09]:** MU IR discloses LTA-cap removal on the SKH 2 Jul pattern, or realized DRAM ASP tracks uncapped SKH rather than the 13–18% band.
@@ -37,11 +37,11 @@ FQ3-26 printed $41.46B, 84.6% GAAP GM, $28.24B NI, $24.67 EPS; FQ4 guide $50.0B 
   - **Consensus:** Memory triopoly + HBM LTAs + wafer inelasticity retired the cycle. FQ3 84.6% GM / FQ4 ~86% and a US-HBM-winner tape are mid-cycle, not peak.
   - **Variant:** L1 is dated personal theory, not the outside view. Demand event from the same hyperscaler buyer class. Peak GM + peak capex + peak price have not held 24 months. FY18 MU GM 58.9% then destock; FQ3-26 84.6% is a larger numerator. HBM LTAs lengthen the queue; they do not retire destock. Analog fails to rhyme only if two TrendForce prints stay rising/high-plateau **and** OEM inventory days flat-to-down.
   - **First confirming observable [2026-12]:** Two consecutive TrendForce DRAM prints still rising/high-plateau with OEM inventory days flat-to-down.
-  - **Falsifier:** Two consecutive DRAM contracts −20%+ **and** rising OEM inventory days — same condition as → CLOSE.
+  - **Falsifier:** Two consecutive DRAM contracts −20%+ **and** rising OEM inventory days, same condition as → CLOSE.
 
 - **Mix-shift dollars exist without Rubin cubes; SOCAMM is a gate, not a layer**
   - **Consensus:** SOCAMM / LPDDR5X on GB300 (and SOCAMM2 on Vera) plus HBM4 HVP is a platform lock the tape has not finished pricing. 8-Hi despec is either a cycle cliff or a third-source volume unlock.
-  - **Variant:** DC >$25B, HBM4 >$1B, SOCAMM2 HVP are real and unauditable (no HBM % of revenue). 0% Rubin ≠ 0% AI-memory $. That is not a second owned layer. GB300 LPDDR5X sole-source dated H2 2026; VLM none 2027+. SOCAMM is a qual gate, not a layer. Kyber LPDDR vendor unnamed — do not assign to MU. No IR 8-Hi HBM4 SKU (12H 36GB shipping; 16H sampled). HBM3E 8-Hi exists; that is not HBM4 8-Hi. Ultra 8-Hi volume is Samsung's if despec holds (not Nvidia-locked POR). Singapore HBM pkg MP 2027 does not mint 2026 Ultra cubes.
+  - **Variant:** DC >$25B, HBM4 >$1B, SOCAMM2 HVP are real and unauditable (no HBM % of revenue). 0% Rubin ≠ 0% AI-memory $. That is not a second owned layer. GB300 LPDDR5X sole-source dated H2 2026; VLM none 2027+. SOCAMM is a qual gate, not a layer. Kyber LPDDR vendor unnamed; do not assign to MU. No IR 8-Hi HBM4 SKU (12H 36GB shipping; 16H sampled). HBM3E 8-Hi exists; that is not HBM4 8-Hi. Ultra 8-Hi volume is Samsung's if despec holds (not Nvidia-locked POR). Singapore HBM pkg MP 2027 does not mint 2026 Ultra cubes.
   - **First confirming observable [2026-09]:** FQ4 8-K or IR prints HBM % of revenue, or an 8-Hi HBM4 SKU appears in IR, or a 2027 BOM still lists MU as sole LPDDR5X/SOCAMM.
   - **Falsifier:** GB300 LPDDR5X dual-source before YE2026 (→ CLOSE) **or** next two prints still omit HBM % and still list no 8-Hi HBM4 SKU.
 
@@ -49,11 +49,11 @@ FQ3-26 printed $41.46B, 84.6% GAAP GM, $28.24B NI, $24.67 EPS; FQ4 guide $50.0B 
   - **Consensus:** Growing pie + all-three-qualified = peace, and a US HBM winner catching SKH/Samsung. CXMT is a 2026 Western-HBM threat (or already priced as one).
   - **Variant:** Game is two-player Korean first-wave allocation. Samsung already has the dual-source slot. MU wait / don't dump. Growing pie ≠ peace. CXMT: complementary bits / price-taker this cycle; substitute at destock (2028 ~17% capacity wall). Not 2026 Western HBM. Apple testing = OEM posture. CLOSE Western-HBM leg dormant.
   - **First confirming observable [2026-10]:** Q3 meter still ~70/30/0 **and** CXMT still absent from Western HBM quals.
-  - **Falsifier:** CXMT qualified HBM to a Western hyperscaler — same condition as → CLOSE.
+  - **Falsifier:** CXMT qualified HBM to a Western hyperscaler, same condition as → CLOSE.
 
 ## Outstanding Questions
 
-- **Q3 board meter — MU ≥10% of first-wave Rubin HBM4 bits, or ~70/30/0?** Huang 1 Jun + 16 Mar IR establish qualification, not allocation. A teardown series, Nvidia ship-quarter supplier comment, or a named OEM BOM is the meter. Answered by: Q3 2026 board meter.
+- **Q3 board meter: MU ≥10% of first-wave Rubin HBM4 bits, or ~70/30/0?** Huang 1 Jun + 16 Mar IR establish qualification, not allocation. A teardown series, Nvidia ship-quarter supplier comment, or a named OEM BOM is the meter. Answered by: Q3 2026 board meter.
 
 - **Does MU remove LTA caps on the SKH 2 Jul pattern?** 3Q26 US-cloud +13–18% is the rent ceiling on current paper. Without a cap-off IR, FQ4 $50.0B ±$1.0B / ~86% GM can be the last uncapped-looking quarter as protected agreements roll. Answered by: MU IR/earnings LTA language, or a mix-adjusted ASP gap vs SKH.
 
@@ -63,7 +63,7 @@ FQ3-26 printed $41.46B, 84.6% GAAP GM, $28.24B NI, $24.67 EPS; FQ4 guide $50.0B 
 
 - **Does an 8-Hi HBM4 SKU appear in IR, or is Ultra volume Samsung's?** 12H 36GB shipping; 16H sampled; HBM3E 8-Hi is not HBM4 8-Hi. Singapore HBM pkg MP 2027 does not mint 2026 Ultra cubes. Answered by: IR 8-Hi HBM4 SKU or a teardown showing MU 8-Hi on Ultra boards.
 
-- **Does GB300 LPDDR5X sole-source break before YE2026?** Dated H2 2026. SOCAMM is a qual gate. Kyber LPDDR vendor unnamed — do not assign to MU. Answered by: dual-source headline or a named Kyber vendor.
+- **Does GB300 LPDDR5X sole-source break before YE2026?** Dated H2 2026. SOCAMM is a qual gate. Kyber LPDDR vendor unnamed; do not assign to MU. Answered by: dual-source headline or a named Kyber vendor.
 
 - **Does pin-speed lag ever become a measured Nvidia reject?** Today it is a hypothesis for why first-wave mix can stay ~70/30/0. A measured reject (Nvidia comment, failed attach, named pin-speed miss) is a different fact. Answered by: Nvidia / OEM / teardown language that cites MU pin-speed, not "not yet on the board."
 
@@ -82,9 +82,9 @@ US leg of the DRAM/NAND triopoly: design, fabricate, stack, sell memory as compo
 | Other (NOR) | $0.19B | — | Immaterial |
 | **Total** | **$41.46B** | **100%** | Data-center >$25B |
 
-**HBM.** HBM4 36GB 12-high on 1β, >2.8 TB/s, >11 Gb/s pin, 20% better W than HBM3E; >$1B HBM4 shipped in FQ3 (unnamed customer); ramp "twice as fast" as HBM3E 12H. HBM4E on 1γ (first EUV node) with TSMC base-die, volume calendar 2027. HBM3E 8-high and 12-high in production — that is not HBM4 8-Hi. No IR 8-Hi HBM4 SKU (12H 36GB shipping; 16H 48GB sampled). Singapore HBM pkg MP 2027 does not mint 2026 Ultra cubes. Management targets HBM share "close to DRAM share" because of the wafer-trade ratio — a ceiling, not a bid for SKH share. No HBM % of revenue in the 8-K. Mix-shift dollars (DC >$25B, HBM4 >$1B, SOCAMM2 HVP) exist without Rubin cubes and are unauditable.
+**HBM.** HBM4 36GB 12-high on 1β, >2.8 TB/s, >11 Gb/s pin, 20% better W than HBM3E; >$1B HBM4 shipped in FQ3 (unnamed customer); ramp "twice as fast" as HBM3E 12H. HBM4E on 1γ (first EUV node) with TSMC base-die, volume calendar 2027. HBM3E 8-high and 12-high in production; that is not HBM4 8-Hi. No IR 8-Hi HBM4 SKU (12H 36GB shipping; 16H 48GB sampled). Singapore HBM pkg MP 2027 does not mint 2026 Ultra cubes. Management targets HBM share "close to DRAM share" because of the wafer-trade ratio: a ceiling, not a bid for SKH share. No HBM % of revenue in the 8-K. Mix-shift dollars (DC >$25B, HBM4 >$1B, SOCAMM2 HVP) exist without Rubin cubes and are unauditable.
 
-**Server / LP DRAM.** 1γ 16Gb LPDDR5X in HVP at a lead smartphone OEM; 24Gb sampling. LP5X SOCAMM2 in HVP, 48–256GB, designed for Vera Rubin NVL72 and standalone Vera. GB300 LPDDR5X/SOCAMM sole-source dated H2 2026 — a qual gate, not a layer. Kyber LPDDR vendor unnamed — do not assign to MU. 256GB DDR5 RDIMM (1γ + 3D die-stack) sampled to server enablers.
+**Server / LP DRAM.** 1γ 16Gb LPDDR5X in HVP at a lead smartphone OEM; 24Gb sampling. LP5X SOCAMM2 in HVP, 48–256GB, designed for Vera Rubin NVL72 and standalone Vera. GB300 LPDDR5X/SOCAMM sole-source dated H2 2026: a qual gate, not a layer. Kyber LPDDR vendor unnamed; do not assign to MU. 256GB DDR5 RDIMM (1γ + 3D die-stack) sampled to server enablers.
 
 **NAND.** G9 PCIe Gen6 SSD in HVP; 245TB QLC shipping; Gen5 QLC client SSD lead-customer qualified. Competes with [[Theses/SNDK - SanDisk]] and [[Theses/285A - Kioxia]] on enterprise SSD, not on HBF. Crucial exit = consumer mix, not HBM NPS.
 
@@ -94,7 +94,7 @@ US leg of the DRAM/NAND triopoly: design, fabricate, stack, sell memory as compo
 
 Sits in [[Sectors/DRAM & HBM Memory]] as the #3 DRAM name and the only liquid US listing in the HBM set. Competitive tension with [[Theses/000660 - SK Hynix]] is process hygiene, not a hedge: 000660's kill is Samsung >35% of Rubin. Game: two-player Korean first-wave allocation, not three-player catch-up. Samsung already has the dual-source slot. MU wait / don't dump. Growing pie ≠ peace.
 
-**Yield is now table-stakes at the Korean pair; it is not MU's allocation story.** Samsung HBM4 headline stack yield printed **~80%** ("golden yield") on 10 Aug, up from **<60% at Feb MP** — YE target hit six months early (Sedaily / TrendForce). SK Hynix HBM4 is also in the **~80% range** (Infostock Daily via TrendForce). Micron has **no public HBM4 stack-yield %**. IR language is qualitative only: "mature yields faster than HBM3E" (FQ2-26 deck) and "high-yield ramp" guided for Q2 calendar 2026 (Dec-25 call). HBM3E 12-Hi yields were said to have surpassed 8-Hi; SemiAnalysis (Aug-25) called MU HBM **margin-accretive** (yield loss covered by price), same bucket as SKH, unlike Samsung's then-lagging HBM3E. That is a cost/margin read, not a Rubin attach print. **Samsung closing the 20-point HBM4 gap does not put MU cubes on first-wave boards.** List ≠ boards still holds; the remaining discriminator is allocation / pin-speed, not a documented MU yield miss.
+**Yield is now table-stakes at the Korean pair; it is not MU's allocation story.** Samsung HBM4 headline stack yield printed **~80%** ("golden yield") on 10 Aug, up from **<60% at Feb MP**: YE target hit six months early (Sedaily / TrendForce). SK Hynix HBM4 is also in the **~80% range** (Infostock Daily via TrendForce). Micron has **no public HBM4 stack-yield %**. IR language is qualitative only: "mature yields faster than HBM3E" (FQ2-26 deck) and "high-yield ramp" guided for Q2 calendar 2026 (Dec-25 call). HBM3E 12-Hi yields were said to have surpassed 8-Hi; SemiAnalysis (Aug-25) called MU HBM **margin-accretive** (yield loss covered by price), same bucket as SKH, unlike Samsung's then-lagging HBM3E. That is a cost/margin read, not a Rubin attach print. **Samsung closing the 20-point HBM4 gap does not put MU cubes on first-wave boards.** List ≠ boards still holds; the remaining discriminator is allocation / pin-speed, not a documented MU yield miss.
 
 | Vendor | HBM packaging | Rubin first-wave (until Q3 meter) | LTA posture | 2026–27 architectural bet |
 |---|---|---|---|---|
@@ -102,7 +102,7 @@ Sits in [[Sectors/DRAM & HBM Memory]] as the #3 DRAM name and the only liquid US
 | Samsung | TC-NCF → hybrid | ~30% | Dual-source slot already | 8-Hi volume if despec holds (not Nvidia-locked POR) |
 | Micron | TC-NCF pragmatic | **~0%** | Caps **still on** | HBM4E 1γ + TSMC base-die CY27; no IR 8-Hi HBM4; Singapore pkg MP 2027 |
 
-**Headline yield vs effective stack yield.** Public numbers are headline (die or stack, vendor-defined). Effective HBM stack yield is multiplicative: (DRAM die yield)^N × TSV × microbump × logic base-die × final stack test. At 16-Hi, 95% per-die still compounds to **~44%** stack ([[Sectors/DRAM & HBM Memory]] §Yield Deltas). Do not treat an 80% "golden" print as 80% good 12-Hi cubes shipped. Sector note's "SKH HBM3E ~80% / Samsung ~50% pilot / MU 60–70%" is **HBM3E-vintage** — superseded for HBM4 at Samsung/SKH by the Aug-26 prints.
+**Headline yield vs effective stack yield.** Public numbers are headline (die or stack, vendor-defined). Effective HBM stack yield is multiplicative: (DRAM die yield)^N × TSV × microbump × logic base-die × final stack test. At 16-Hi, 95% per-die still compounds to **~44%** stack ([[Sectors/DRAM & HBM Memory]] §Yield Deltas). Do not treat an 80% "golden" print as 80% good 12-Hi cubes shipped. Sector note's "SKH HBM3E ~80% / Samsung ~50% pilot / MU 60–70%" is **HBM3E-vintage**, superseded for HBM4 at Samsung/SKH by the Aug-26 prints.
 
 **HBM stack yield (current public):**
 
@@ -110,7 +110,7 @@ Sits in [[Sectors/DRAM & HBM Memory]] as the #3 DRAM name and the only liquid US
 |---|---|---|---|---|
 | SK Hynix | HBM4 (MR-MUF) | **~80%** | Mature packaging; 2H capacity add is equipment + labor, not yield | Infostock Daily via [[Research/2026-08-12 - 000660 NVDA AMD - Samsung HBM4 Golden Yield 80pct - news]] |
 | Samsung | HBM4 12H (TC-NCF, 1c die) | **~80%** ("golden") | **<60% Feb MP → ~80% in ~6 months**; YE target hit early. HBM4E reliability-test yield **>70%** (CTO Song; 12H samples late May for Rubin Ultra) | Sedaily 10 Aug / TrendForce; AMD MI400 already on Samsung HBM4 |
-| Micron | HBM4 12H 36GB on **1β** | **no public %** | IR: mature yields faster than HBM3E; Dec-25 "high-yield ramp" Q2'26. HBM3E 12H yields > 8H. Vault late-2025 modelled 50–70% once ramped — **not a measured 2026 print** | [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]]; pin-speed lag remains a mix **hypothesis**, not a yield reject |
+| Micron | HBM4 12H 36GB on **1β** | **no public %** | IR: mature yields faster than HBM3E; Dec-25 "high-yield ramp" Q2'26. HBM3E 12H yields > 8H. Vault late-2025 modelled 50–70% once ramped; not a measured 2026 print | [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]]; pin-speed lag remains a mix hypothesis, not a yield reject |
 
 **DDR / commodity DRAM die yield (latest node):**
 
@@ -118,11 +118,11 @@ Sits in [[Sectors/DRAM & HBM Memory]] as the #3 DRAM name and the only liquid US
 |---|---|---|---|---|---|
 | SK Hynix | 1c | DDR5 / LPDDR / GDDR / HBM core | **>80%** (60%→80% by Apr-25); vault working range **~80–90%** | Apr 2025 print still the live number | 1b already >80% (Chosun 24 Feb). 1c capacity 8× to 160–190k wpm by YE26 |
 | Samsung | 1c | DDR5 + HBM4 core die | **>80%** | Early 2026 (ETNews via TrendForce 10 Aug); 1b >80% (Chosun 24 Feb) | Feb SemiWiki "1c stuck ~60%" is stale vs the Aug 1c>80% / HBM4-80% pair. 1c die yield is the cited HBM4 stack-yield driver alongside TC-NCF |
-| Micron | **1β** (workhorse) / **1γ** (ramp) | 1β = HBM4 core + bulk DDR5; 1γ = 16Gb LPDDR5X HVP + 256GB DDR5 RDIMM sampled | **undisclosed on both** | Aug 2026 | 1γ is first EUV node; +30% bits/wafer vs 1β, 15% faster / 20% lower W. No IR die-yield %. 84.6% blended GM is consistent with mature 1β commodity + HBM mix — **not** a 1γ or HBM4 stack-yield disclosure |
+| Micron | **1β** (workhorse) / **1γ** (ramp) | 1β = HBM4 core + bulk DDR5; 1γ = 16Gb LPDDR5X HVP + 256GB DDR5 RDIMM sampled | **undisclosed on both** | Aug 2026 | 1γ is first EUV node; +30% bits/wafer vs 1β, 15% faster / 20% lower W. No IR die-yield %. 84.6% blended GM is consistent with mature 1β commodity + HBM mix, not a 1γ or HBM4 stack-yield disclosure |
 
-DDR yield is not the MU differentiator. Both Koreans are through the 80% 1c/1b gate; Micron's 1β is the mature workhorse and 1γ is in HVP, not a yield-crisis node. **CXMT** is the only named DRAM name still off the mature-yield standard (G4/1z below 85–90%; HBM3 8-Hi modelled ~35% FE / ~70% BE → **~25% overall** — [[Research/2026-08-13 - CXMT 000660 MU - China DRAM Challenge to Incumbents - deep-dive]]). Complementary bits this cycle, not a 2026 Western-HBM yield peer.
+DDR yield is not the MU differentiator. Both Koreans are through the 80% 1c/1b gate; Micron's 1β is the mature workhorse and 1γ is in HVP, not a yield-crisis node. **CXMT** is the only named DRAM name still off the mature-yield standard (G4/1z below 85–90%; HBM3 8-Hi modelled ~35% FE / ~70% BE → **~25% overall**; [[Research/2026-08-13 - CXMT 000660 MU - China DRAM Challenge to Incumbents - deep-dive]]). Complementary bits this cycle, not a 2026 Western-HBM yield peer.
 
-**What this does *not* change.** Samsung 80% HBM4 + AMD MI400 attach is the 000660 kill-window input (Samsung >35% Rubin), not a MU promotion. TrendForce still has MU HBM4 share "relatively stable given limited HBM4 exposure." First-wave ~70/30/0 until the Q3 board meter. Yield parity at the Korean pair **removes yield as the excuse for MU's empty first-wave slot** — it does not fill the slot.
+**What this does not change.** Samsung 80% HBM4 + AMD MI400 attach is the 000660 kill-window input (Samsung >35% Rubin), not a MU promotion. TrendForce still has MU HBM4 share "relatively stable given limited HBM4 exposure." First-wave ~70/30/0 until the Q3 board meter. Yield parity at the Korean pair removes yield as the excuse for MU's empty first-wave slot; it does not fill the slot.
 
 **Incremental 2026$ (before MU residual):**
 
@@ -135,7 +135,7 @@ DDR yield is not the MU differentiator. Both Koreans are through the 80% 1c/1b g
 
 **Qualification-gate vs allocation-gate.** Industry #2: HBM4 qualification of all three (Huang 1 Jun) moved the gate from "who is allowed" to "who is on the board." Weaker moat. **Aug-26 yield print closes the alternative explanation:** Samsung HBM4 ~80% = SKH ~80%; MU's empty first-wave slot is not a documented yield miss. Pin-speed lag remains a hypothesis for mix persistence, not a measured reject.
 
-**Reverse scaling.** A commodity wafer yields ~3× the bits of an HBM3E 12-Hi wafer. Every wafer shifted to HBM tightens DDR5/LPDDR — the 3:1 penalty inside 84.6% blended GM. Same ratio is the destock amplifier when HBM wafers reverse.
+**Reverse scaling.** A commodity wafer yields ~3× the bits of an HBM3E 12-Hi wafer. Every wafer shifted to HBM tightens DDR5/LPDDR, the 3:1 penalty inside 84.6% blended GM. Same ratio is the destock amplifier when HBM wafers reverse.
 
 **CXMT.** Complementary bits / price-taker this cycle; substitute at destock (2028 ~17% capacity wall). Not 2026 Western HBM. Apple testing iPhone/MacBook = OEM posture. CLOSE Western-HBM leg dormant.
 
@@ -145,7 +145,7 @@ DDR yield is not the MU differentiator. Both Koreans are through the 80% 1c/1b g
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Tape (13 Aug close) | $951.88 | Sentiment StockScan. 52w high $1,255 (25 Jun). 12 Aug midday copy ~$1.04T / ~$924 is a **different session** — not spliced onto this close. |
+| Tape (13 Aug close) | $951.88 | Sentiment StockScan. 52w high $1,255 (25 Jun). 12 Aug midday copy ~$1.04T / ~$924 is a **different session**, not spliced onto this close. |
 | Diluted shares | ~1.15B | FQ3; no new market-cap printed off the 13 Aug close |
 | Net cash | ~$24.5B | FQ3; cash + investments $30.2B − debt ~$5.7B; LTD paid down $9.6B → $5.1B in two quarters |
 | FQ3-26 revenue | $41.46B | +346% YoY / +74% QoQ vs $9.30B / $23.86B |
@@ -153,10 +153,14 @@ DDR yield is not the MU differentiator. Both Koreans are through the 80% 1c/1b g
 | FQ3 NI / EPS | $28.24B / $24.67 | 8-K 24 Jun, period ended 28 May |
 | FQ4 guide | $50.0B ±$1.0B ~86% GM | Mix still unauditable without HBM % |
 | DRAM / NAND (FQ3) | $31.33B (76%) / $9.94B | Other (NOR) $0.19B |
-| HBM4 shipped (FQ3) | >$1B | Unnamed customer; **not** HBM % of revenue |
+| HBM4 shipped (FQ3) | >$1B | Unnamed customer; not HBM % of revenue |
 | Data-center revenue (FQ3) | >$25B | HBM + server DRAM + SSD blended |
 | Sell-side vs tape | UBS $1,625; Citi $1,400→$1,150 / GM mid-70s | Investor-language crowding (structural reset / US HBM winner) vs Citi cut. Prior-file avg PT ~$1,569, 29/30 Buy. |
 | Employee surface | Blind 3.4 / 387 | Not NPS. Career 3.2, WLB 3.3, comp 2.9, mgmt 2.9. Customer NPS thin. Taiwan IPP briefings; strike not confirmed. |
+
+## Management and culture
+
+Hypothesis: Inert on [[Lens - Management and Culture]]; Gate 1 passes (HBM4/4E, HBF, SOCAMM, DRAM node/packaging); Gate 2 fails because the UBS $1,625 / US-HBM-winner / FQ3 84.6% GM tape already prices the pipeline, not ≤0. Grade destock on [G-10]/#13. [MC-2] 25 Nov 2025 DEF 14A: Mehrotra (hired May 2017; professional manager, not MU founder) is Chair+CEO from Jan 2025 with LID Dugle. FY25 STI 50% adj. NI or OM / 50% strategic (HBM4 milestones, HBM3E 12H yield, HBM3E+ mix); PRSU 50% rTSR vs SOX / 25% HBM3E+ share or bits / 25% DC SSD: volume is a minority sleeve, no ROIC. CEO 6×-salary guideline; 1,084,078 shares 31 Oct 2025 (<1% of 1.124B). Form 4s through 24 Jul 2026 are 10b5-1 sales, zero clustered buys. [MC-7] 53,000 employees (28 Aug 2025 10-K; 43k FY23 after the Dec 2022 10% cut) in the FQ4-25 four-BU product org (CMBU owns HBM). [MC-3] Idaho ID1 (first wafer 2H CY27) and up to $6.4B CHIPS via TRITON LLC plus a US-expansion VP add Commerce/state hops. Foil [[Theses/000660 - SK Hynix]]: Kwak 0.0% still converted first-wave cubes; MU's cleaner US proxy did not. [MC-6]/[G-10] 53k-person entropy is the base rate. Swing: HBM-unit volume as majority PRSU plus clustered open-market buys; neither is live.
 
 ## Bull Case
 
@@ -186,7 +190,7 @@ No bull valuation target. The HIGH AND-gate is the only promotion path. Weight s
 | Q3 2026 (Jul–Sep ship / Oct print) | Rubin first-wave **board meter** | **Central.** ≥10% MU bits = HIGH-leg 1; ~70/30/0 = LOW (blocks promotion) |
 | Late Sep / Oct 2026 | FQ4-26 earnings (guide $50.0B ±$1.0B, ~86% GM) | **Negative watch** if GM compression ≥400 bps + destock language; mix unauditable without HBM % |
 | Monthly / quarterly | TrendForce DRAM contract prints | **Destock clock.** Two prints rising/high-plateau + OEM days flat-to-down = analog fails to rhyme; two consecutive −20%+ + rising days = CLOSE |
-| H2 2026 | Samsung / SKH HBM revenue lines | **000660 kill window** (Samsung >35%) — MU file does not move with it |
+| H2 2026 | Samsung / SKH HBM revenue lines | **000660 kill window** (Samsung >35%); MU file does not move with it |
 | H2 2026 | GB300 / Vera SOCAMM dual-source headlines | **VLM / CLOSE leg** if sole-source breaks before YE |
 | Calendar 2027 | HBM4E 1γ + TSMC base-die; Singapore HBM pkg MP | **Not 2026 Ultra cubes.** Positive only if first-wave allocation already printed |
 | Ongoing | Apple–CXMT; CXMT Western-HBM quals | Commodity posture now; Western-HBM qual = CLOSE. Leg dormant until then. |
@@ -214,19 +218,23 @@ No bull valuation target. The HIGH AND-gate is the only promotion path. Weight s
 
 ## Mental Models
 
-- **Models applied**: [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]]. **Panel seats as source (2026-08-13 re-run):** Bull / Bear / Tech / Competition / Value Chain / Historian / Sentiment — lenses as questions, not verdicts.
+- **Models applied**: [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]] · [[Lens - Automation & AI Readiness]] · [[Lens - Management and Culture]]. **Panel seats as source (2026-08-13 re-run):** Bull / Bear / Tech / Competition / Value Chain / Historian / Sentiment: lenses as questions, not verdicts.
 - **Triggers that fired**:
-  - Generalist protocol — models are questions held as hypotheses to test; agreement is a cue to disconfirm, not to bid.
-  - Generalist [G-3] · mean-reversion vs trend — hypothesis: trend-continuation at 84.6% GM into a US-HBM-winner tape is the expensive error; HBM LTAs may have rented the appearance of a non-cyclical.
-  - Generalist [G-10] · base rates — hypothesis: L1 is not the reference class; 2017–18 tightness-identified → 2019 destock is. FY18 GM 58.9% then destock; 84.6% is a larger numerator.
-  - Generalist [G-13] · expectations investing — hypothesis: UBS $1,625 / structural reset / US HBM winner embed qualified = allocated, queue = rent, L1 = new mid-cycle. The mispriced variable is first-wave board share, not FQ3 EPS.
-  - Industry #2 · qualification-gate — hypothesis: the gate opened for three vendors on 1 Jun; remaining scarcity is allocation (weaker, time-bounded). Pin-speed lag is a mix hypothesis, not a measured reject. Aug-26 yield print: Samsung HBM4 ~80% = SKH ~80%; MU has no public HBM4 % — 0% first-wave is not a documented yield miss (per [[Research/2026-08-13 - MU - DDR HBM Yield vs Samsung SK Hynix Deep Dive]]).
-  - Industry #13 · compounder / cyclical — hypothesis: MU is a true cyclical with a contracted-HBM sleeve, not a semi-cyclical compounder. Reclassification requires the board meter and cap-removal, not the GM print.
-  - Industry L1 · DRAM less cyclical — **held as hypothesis, not law**. Falsifier = 2018 destock. HBM LTAs lengthen the queue; they do not retire destock.
+  - Generalist protocol: models are questions held as hypotheses to test; agreement is a cue to disconfirm, not to bid.
+  - Generalist [G-3] · mean-reversion vs trend. Hypothesis: trend-continuation at 84.6% GM into a US-HBM-winner tape is the expensive error; HBM LTAs may have rented the appearance of a non-cyclical.
+  - Generalist [G-10] · base rates. Hypothesis: L1 is not the reference class; 2017–18 tightness-identified → 2019 destock is. FY18 GM 58.9% then destock; 84.6% is a larger numerator.
+  - Generalist [G-13] · expectations investing. Hypothesis: UBS $1,625 / structural reset / US HBM winner embed qualified = allocated, queue = rent, L1 = new mid-cycle. The mispriced variable is first-wave board share, not FQ3 EPS.
+  - Industry #2 · qualification-gate. Hypothesis: the gate opened for three vendors on 1 Jun; remaining scarcity is allocation (weaker, time-bounded). Pin-speed lag is a mix hypothesis, not a measured reject. Aug-26 yield print: Samsung HBM4 ~80% = SKH ~80%; MU has no public HBM4 %; 0% first-wave is not a documented yield miss (per [[Research/2026-08-13 - MU - DDR HBM Yield vs Samsung SK Hynix Deep Dive]]).
+  - Industry #13 · compounder / cyclical. Hypothesis: MU is a true cyclical with a contracted-HBM sleeve, not a semi-cyclical compounder. Reclassification requires the board meter and cap-removal, not the GM print.
+  - Industry L1 · DRAM less cyclical: held as hypothesis, not law. Falsifier = 2018 destock. HBM LTAs lengthen the queue; they do not retire destock.
   - VLM · layer identified: **none 2027+**. GB300 LPDDR5X sole-source is a dated H2 2026 qualification gate, not interface/standard control. SOCAMM is a gate, not a layer. Kyber LPDDR vendor unnamed.
   - Automation · anti-fit on the physical HBM step (yield knowledge is tacit). Lens B adjacency only (sells the substrate other firms automate on). Conviction modifier: none.
-- **Disconfirming check**: [G-3], [G-10], #13, and L1-as-hypothesis **agree** → hunt destock, do not raise conviction. Single falsifying datapoint: 2018-style destock (two consecutive −20%+ contract prints + rising OEM inventory days). Base rate this thesis must beat: peak GM + peak capex + peak price have not held 24 months. Agreement across models is why this file is coverage-grade / don't own.
-
+  - Management & Culture [MC-1] · gates: Gate 1 pass (HBM/HBF/DRAM feed); Gate 2 fail (US-HBM-winner multiple already prices the pipeline). Lens inert; grade destock on other models.
+  - Management & Culture [MC-2] · incentive duration: FY25 PRSU 50% rTSR / 25% HBM3E+ bits or share / 25% DC SSD; STI 50/50 NI-or-OM vs strategic; no ROIC; 10b5-1 sales, zero clustered buys. Hypothesis: volume is a minority sleeve, not founder-duration recognition.
+  - Management & Culture [MC-3] · information-hop count: Idaho ID1 + $6.4B CHIPS via TRITON LLC and a US-expansion VP add policy hops between fab floor and CEO. Hypothesis: industrial-policy org is a hop-count tax, not a conversion edge.
+  - Management & Culture [MC-7] · product vs matrix: 53k-person four-BU product org (FQ4-25 CMBU/CDBU/MCBU/AEBU) is matched to a cyclical manufacturer past the matrix ceiling.
+- **Disconfirming check**: [G-3], [G-10], #13, and L1-as-hypothesis agree → hunt destock, do not raise conviction. Single falsifying datapoint: 2018-style destock (two consecutive −20%+ contract prints + rising OEM inventory days). Base rate this thesis must beat: peak GM + peak capex + peak price have not held 24 months. Agreement across models is why this file is coverage-grade / don't own. Management & Culture is inert on Gate 2; [MC-6] 53k-person entropy plus [G-10] new-venture destruction is the same outside view; do not treat the US-HBM-winner org as an outlier conversion machine.
+- Industry Semiconductors #8 · architecture remap. Hypothesis: Tokyo NVEG TSV/HBM-like job postings (Apr/Jul 2026) are circumstances of preparing TSV-NAND outside the HBF consortium, not a product confirmation and not a Q3 Rubin board meter (per [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]).
 ## Related Research
 
 - [[Theses/000660 - SK Hynix]]
@@ -257,6 +265,8 @@ No bull valuation target. The HIGH AND-gate is the only promotion path. Weight s
 
 - [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]
 - [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]
+- [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: MU not in HBF consortium; Tokyo NVEG postings hire TSV interface / HBM-like lane repair; development-org primary, not a roadmap
+- [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: SA ~$5.6B MU common (puts stripped); 13F flip does not fire Q3 Rubin / LTA / destock / CXMT / GB300 triggers
 ## Log
 
 ### 2026-08-13
@@ -281,3 +291,10 @@ No bull valuation target. The HIGH AND-gate is the only promotion path. Weight s
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]: SKH KRW 54T Y2/M17 — 2028–29 bit-supply, not MU first-wave cubes — conviction unchanged (low).
 - [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]: Counterpoint Q1 HBM Samsung=Micron 21% each — list, not a Q3 Rubin board meter — conviction unchanged (low).
 - [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]: YMTC NAND units #3; CXMT DRAM 7% — complementary bits this cycle, not Western-HBM CLOSE — conviction unchanged (low).
+
+### 2026-08-18
+- [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: not an HBF consortium member; two Tokyo NVEG TSV/HBM-like postings are a development-org primary, not a product confirmation — no HIGH/LOW/CLOSE fire — conviction unchanged (low).
+- [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: Aschenbrenner ~$5.6B MU common after put-sleeve strip — crowded 13F, not a board meter or LTA-cap print — conviction unchanged (low).
+### 2026-08-20
+- Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail: US-HBM-winner multiple already prices the pipeline); HBM-volume PRSU is a minority sleeve. Conviction unchanged.
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

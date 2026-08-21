@@ -17,73 +17,73 @@ sector: Semiconductor Test Equipment
 
 # Semiconductor Test Equipment
 
-> **Map of Content** — The production-test layer of the semiconductor value chain: wafer probe, wafer-level burn-in, final test (ATE), and handlers. Distinct from front-end WFE (covered in [[Sectors/Semiconductor Capital Equipment]]) and from photonic-domain test (covered in [[Sectors/Photonic Metrology]]). **The non-consensus framing for this sector**: AI compute capacity is constrained as much by test-cell throughput as by fab wafers. HBM stack test time is scaling **6h → 10h → 14-18h** across HBM3 → HBM3e → HBM4 — a test-capacity demand step-function that compounds on top of unit-volume growth. Backend test has historically been treated as commoditised back-of-house. The HBM-driven re-rating that re-rated SEMICAP from "cyclical" to "structural complexity compounder" is the same story playing out one node downstream — and consensus is 12-18 months behind on quantifying it.
+> **Map of Content.** The production-test layer of the semiconductor value chain: wafer probe, wafer-level burn-in, final test (ATE), and handlers. Distinct from front-end WFE (covered in [[Sectors/Semiconductor Capital Equipment]]) and from photonic-domain test (covered in [[Sectors/Photonic Metrology]]). AI compute capacity is constrained as much by test-cell throughput as by fab wafers. HBM stack test time is scaling **6h → 10h → 14-18h** across HBM3 → HBM3e → HBM4, a test-capacity demand step-function that compounds on top of unit-volume growth. Backend test has historically been treated as commoditised back-of-house. The HBM-driven re-rating that re-rated SEMICAP from "cyclical" to "structural complexity compounder" is the same story playing out one node downstream, and consensus is 12-18 months behind on quantifying it.
 >
-> The sector is a **functional duopoly** at the high end (Advantest + Teradyne ≈ 90% of SoC/memory ATE) with a price-disciplined #3 (Cohu) in handlers/contactors and two adjacent pure-plays (FORM, AEHR) already covered as sub-cluster theses in Photonic Metrology and SEMICAP. **No US-listed Advantest analog exists** — making Advantest itself the cleanest expression of the AI test-capacity thesis, and the gap most directly accretive to the existing SK Hynix HBM thesis.
+> The sector is a functional duopoly at the high end (Advantest + Teradyne ≈ 90% of SoC/memory ATE) with a price-disciplined #3 (Cohu) in handlers/contactors and two adjacent pure-plays (FORM, AEHR) already covered as sub-cluster theses in Photonic Metrology and SEMICAP. No US-listed Advantest analog exists, making Advantest itself the cleanest expression of the AI test-capacity thesis, and the gap most directly accretive to the existing SK Hynix HBM thesis.
 
 ## Active Theses
 
-- [[Theses/6857 - Advantest]] — HBM final-test monopoly (~95% share); central expression of the HBM4 test-time step-function thesis. Status: draft, conviction medium. Created 2026-05-16.
-- [[Theses/TER - Teradyne]] — Custom AI ASIC test (Compute SoC mix 10%→50% in 24 months, UltraFLEXplus shipments doubled in 9 months); first merchant GPU win Q1 2026 breaks Advantest monopoly; HBM wafer test >50% share (Magnum EPIC, structurally distinct from Advantest HBM final test 95%); CPO test capture via Quantifi + UltraFLEXplus Zero-Overhead. Status: draft, conviction medium. Created 2026-05-16. Paired with ADVT as ATE duopoly long — TER as higher-beta catch-up leg at ~9x EV/Rev vs ADVT ~15x.
+- [[Theses/6857 - Advantest]]: HBM final-test monopoly (~95% share); central expression of the HBM4 test-time step-function thesis. Status: draft, conviction medium. Created 2026-05-16.
+- [[Theses/TER - Teradyne]]: Custom AI ASIC test (Compute SoC mix 10%→50% in 24 months, UltraFLEXplus shipments doubled in 9 months); first merchant GPU win Q1 2026 breaks Advantest monopoly; HBM wafer test >50% share (Magnum EPIC, structurally distinct from Advantest HBM final test 95%); CPO test capture via Quantifi + UltraFLEXplus Zero-Overhead. Status: draft, conviction medium. Created 2026-05-16. Paired with ADVT as ATE duopoly long: TER as higher-beta catch-up leg at ~9x EV/Rev vs ADVT ~15x.
 
 **Tier 2 candidates (active monitoring, not yet thesis-built):**
-- **Cohu (COHU)** — Pyramid handlers + recurring contactor business (~50% of revenue, software-like margins). The under-followed Tier-2 name where AI rack thermal-test handler density is the second-derivative growth lever.
+- **Cohu (COHU):** Pyramid handlers + recurring contactor business (~50% of revenue, software-like margins). The under-followed Tier-2 name where AI rack thermal-test handler density is the second-derivative growth lever.
 
 **Adjacent active theses (already exist in sister sectors):**
-- [[Theses/FORM - FormFactor]] — Probe cards. Covered in [[Sectors/Semiconductor Capital Equipment]] and [[Sectors/Photonic Metrology]]. HBM4 16-Hi probe-touchdown intensity is its central AI-test growth vector.
-- [[Theses/AEHR - Aehr Test Systems]] — Wafer-level burn-in. Covered in [[Sectors/Semiconductor Capital Equipment]] and [[Sectors/Photonic Metrology]]. Pivoting from SiC to AI accelerator + silicon-photonics burn-in.
+- [[Theses/FORM - FormFactor]]: Probe cards. Covered in [[Sectors/Semiconductor Capital Equipment]] and [[Sectors/Photonic Metrology]]. HBM4 16-Hi probe-touchdown intensity is its central AI-test growth vector.
+- [[Theses/AEHR - Aehr Test Systems]]: Wafer-level burn-in. Covered in [[Sectors/Semiconductor Capital Equipment]] and [[Sectors/Photonic Metrology]]. Pivoting from SiC to AI accelerator + silicon-photonics burn-in.
 
 **Adjacent demand drivers:**
-- [[Theses/000660 - SK Hynix]] — HBM volume ramp = direct test-capacity demand on Advantest (and to a lesser extent Teradyne Magnum).
-- [[Theses/285A - Kioxia]], [[Theses/SNDK - SanDisk]] — NAND wafer test demand (Teradyne Magnum, Advantest T5000-series).
-- [[Theses/NVDA - Nvidia]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/AVGO - Broadcom]], [[Theses/MRVL - Marvell Technology]] — custom AI accelerator test programs driving ATE shipments at both Advantest and Teradyne.
-- [[Theses/BESI - BE Semiconductor Industries]] — hybrid-bonding adjacent; post-bond test sequences increasingly drive the test-equipment specification cycle.
+- [[Theses/000660 - SK Hynix]]: HBM volume ramp = direct test-capacity demand on Advantest (and to a lesser extent Teradyne Magnum).
+- [[Theses/285A - Kioxia]], [[Theses/SNDK - SanDisk]]: NAND wafer test demand (Teradyne Magnum, Advantest T5000-series).
+- [[Theses/NVDA - Nvidia]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/AVGO - Broadcom]], [[Theses/MRVL - Marvell Technology]]: custom AI accelerator test programs driving ATE shipments at both Advantest and Teradyne.
+- [[Theses/BESI - BE Semiconductor Industries]]: hybrid-bonding adjacent; post-bond test sequences increasingly drive the test-equipment specification cycle.
 
 ---
 
 ## Key industry questions
 
-1. **HBM4 test time — does it scale 1.4x or 2x vs HBM3e?** Industry framing today is ~10 hours per HBM3e 8/12-Hi stack final test. HBM4 16-Hi stacks roughly double die count, add 2x bandwidth interface complexity, and require tighter thermal margin verification. **Best estimates 14-18 hours per stack.** If true, 2027 V93000 capacity demand step-functions roughly 60-80% above what sell-side currently models from pure HBM unit-growth assumptions. The single most consequential modelling variable in the sector.
+1. **HBM4 test time: does it scale 1.4x or 2x vs HBM3e?** Industry framing today is ~10 hours per HBM3e 8/12-Hi stack final test. HBM4 16-Hi stacks roughly double die count, add 2x bandwidth interface complexity, and require tighter thermal margin verification. Best estimates 14-18 hours per stack. If true, 2027 V93000 capacity demand step-functions roughly 60-80% above what sell-side currently models from pure HBM unit-growth assumptions, and that is the single most consequential modelling variable in the sector.
 
-2. **Advantest HBM share — does it stay ~95% through HBM5?** Advantest V93000 EXA Scale captured HBM3/3e final-test as the de facto platform. Teradyne and FORM joint-venture on wafer-level HBM test (formed 2023) was the first credible competitive response; production traction has been limited. **HBM5 hybrid-bonding transition (2028-2029) opens a re-qualification window** — if Teradyne wins one of three memory vendors, market share normalises 75/20/5. If Advantest retains all three, the monopoly cements through 2032.
+2. **Advantest HBM share: does it stay ~95% through HBM5?** Advantest V93000 EXA Scale captured HBM3/3e final-test as the de facto platform. Teradyne and FORM joint-venture on wafer-level HBM test (formed 2023) was the first credible competitive response; production traction has been limited. HBM5 hybrid-bonding transition (2028-2029) opens a re-qualification window: if Teradyne wins one of three memory vendors, market share normalises 75/20/5. If Advantest retains all three, the monopoly cements through 2032.
 
-3. **Custom AI ASIC test platform — does Teradyne win share in compute?** Hyperscaler custom silicon (AWS Trainium, Microsoft Maia, Meta MTIA, Google TPU) test programs are split between V93000 and UltraFLEX based on which incumbent the OSAT or design-house uses. **UltraFLEX retains structural advantage in mobile-derivative SoC architectures** (Apple A/M-series legacy), while V93000 dominates merchant logic and HBM. The custom ASIC market is roughly 50/50 today — directional shifts of ±10pp per year matter materially to forward growth differential.
+3. **Custom AI ASIC test platform: does Teradyne win share in compute?** Hyperscaler custom silicon (AWS Trainium, Microsoft Maia, Meta MTIA, Google TPU) test programs are split between V93000 and UltraFLEX based on which incumbent the OSAT or design-house uses. UltraFLEX retains structural advantage in mobile-derivative SoC architectures (Apple A/M-series legacy), while V93000 dominates merchant logic and HBM. The custom ASIC market is roughly 50/50 today; directional shifts of ±10pp per year matter materially to forward growth differential.
 
-4. **Cohu contactor recurring revenue — how much higher can mix go?** Contactors (consumable test sockets, ~50% of Cohu revenue) carry gross margins meaningfully above the handler business. AI accelerator thermal-test contactor wear cycles are 3-5x more aggressive than mobile SoC test. **If recurring mix moves from ~50% to ~60%+ by 2028 on AI rack test density**, Cohu structurally re-rates from cyclical handler vendor to industrial consumables compounder.
+4. **Cohu contactor recurring revenue: how much higher can mix go?** Contactors (consumable test sockets, ~50% of Cohu revenue) carry gross margins meaningfully above the handler business. AI accelerator thermal-test contactor wear cycles are 3-5x more aggressive than mobile SoC test. If recurring mix moves from ~50% to ~60%+ by 2028 on AI rack test density, Cohu structurally re-rates from cyclical handler vendor to industrial consumables compounder.
 
-5. **China domestic ATE entry — what timeline to credible threat?** Hwatsing Technology (688120 SH, IPO 2020) is the visible Chinese ATE name; Beijing Huafeng and Shanghai Precise Test cover parametric/wafer test at low-end. **None compete at production scale for advanced SoC or HBM final test today.** Export controls block US/Japan-origin V93000/UltraFLEX shipments for advanced nodes — accelerating domestic effort but starting from a 10+ year capability gap. Parametric and wafer test likely lost to domestic by 2030; final test for AI compute stays Western through 2033+.
+5. **China domestic ATE entry: what timeline to credible threat?** Hwatsing Technology (688120 SH, IPO 2020) is the visible Chinese ATE name; Beijing Huafeng and Shanghai Precise Test cover parametric/wafer test at low-end. None compete at production scale for advanced SoC or HBM final test today. Export controls block US/Japan-origin V93000/UltraFLEX shipments for advanced nodes, accelerating domestic effort but starting from a 10+ year capability gap. Parametric and wafer test likely lost to domestic by 2030; final test for AI compute stays Western through 2033+.
 
-6. **Will TSMC internalise final test for CoWoS?** TSMC has incrementally internalised the highest-value packaging operations (CoWoS); the same pattern could extend to final test for chip-on-wafer assemblies. Today TSMC outsources final test to OSATs (ASE, Amkor) who own the ATE relationship. **If TSMC builds in-house final test capacity 2027-2029, OSAT ATE purchase decisions consolidate into TSMC** — concentrating Advantest/Teradyne customer power but probably not reducing absolute demand.
+6. **Will TSMC internalise final test for CoWoS?** TSMC has incrementally internalised the highest-value packaging operations (CoWoS); the same pattern could extend to final test for chip-on-wafer assemblies. Today TSMC outsources final test to OSATs (ASE, Amkor) who own the ATE relationship. If TSMC builds in-house final test capacity 2027-2029, OSAT ATE purchase decisions consolidate into TSMC, concentrating Advantest/Teradyne customer power but probably not reducing absolute demand.
 
-7. **Universal Robots (Teradyne robotics segment) — strategic or distraction?** Acquired 2015 for $285M; revenue ~$300-400M annual run-rate; structurally lower margin than ATE. Teradyne's industrial automation diversification has muted the cyclical earnings recovery during memory test downcycles. **2025 strategic review chatter (unconfirmed) hints at potential divestiture** — would re-pure-play the test business and re-rate the equity.
+7. **Universal Robots (Teradyne robotics segment): strategic or distraction?** Acquired 2015 for $285M; revenue ~$300-400M annual run-rate; structurally lower margin than ATE. Teradyne's industrial automation diversification has muted the cyclical earnings recovery during memory test downcycles. 2025 strategic review chatter (unconfirmed) hints at potential divestiture, which would re-pure-play the test business and re-rate the equity.
 
-8. **Test-time-per-die scaling vs Moore's Law inversion.** Front-end Moore's Law cadence has decelerated to ~3 years per node; back-end test-time-per-die has accelerated to ~2 years per doubling (driven by HBM stacks, chiplets, on-die interconnect verification, in-line burn-in). **Test capex is becoming the trailing-edge capacity bottleneck** — the inverse of the 1990s-2010s pattern where front-end was the constraint and test was over-supplied. This re-rating is structurally similar to what SEMICAP has experienced 2023-2026.
+8. **Test-time-per-die scaling vs Moore's Law inversion.** Front-end Moore's Law cadence has decelerated to ~3 years per node; back-end test-time-per-die has accelerated to ~2 years per doubling (driven by HBM stacks, chiplets, on-die interconnect verification, in-line burn-in). Test capex is becoming the trailing-edge capacity bottleneck, the inverse of the 1990s-2010s pattern where front-end was the constraint and test was over-supplied. This re-rating is structurally similar to what SEMICAP has experienced 2023-2026.
 
-9. **Does the AVGO/MRVL custom silicon design-services model expand the ATE TAM?** Each new merchant AI accelerator program (Sohu, Cerebras WSE, Groq LPU, MTIA, Trainium 3, Maia 200) requires its own bespoke test program development. **Test program development cycles run ~6-12 months and consume $5-15M of Advantest/Teradyne services revenue per program.** Custom silicon proliferation directly scales the services annuity even before tool shipments.
+9. **Does the AVGO/MRVL custom silicon design-services model expand the ATE TAM?** Each new merchant AI accelerator program (Sohu, Cerebras WSE, Groq LPU, MTIA, Trainium 3, Maia 200) requires its own bespoke test program development. Test program development cycles run ~6-12 months and consume $5-15M of Advantest/Teradyne services revenue per program. Custom silicon proliferation directly scales the services annuity even before tool shipments.
 
-10. **Photonic test integration into electrical test platforms.** AEHR's wafer-level burn-in is electrical-domain today; FORM's optical probe cards combine electrical and optical contact. **Question: do Advantest or Teradyne acquire photonic-test capability organically or via M&A?** Teradyne's 2023 Quantifi Photonics acquisition was a small step; Advantest's FORM partnership on HBM was a precedent for similar photonic partnerships. Sector consolidation 2026-2028 likely involves at least one ATE-photonic-test combination — see also [[Sectors/Photonic Metrology]] §Key industry questions #5.
+10. **Photonic test integration into electrical test platforms.** AEHR's wafer-level burn-in is electrical-domain today; FORM's optical probe cards combine electrical and optical contact. Do Advantest or Teradyne acquire photonic-test capability organically or via M&A? Teradyne's 2023 Quantifi Photonics acquisition was a small step; Advantest's FORM partnership on HBM was a precedent for similar photonic partnerships. Sector consolidation 2026-2028 likely involves at least one ATE-photonic-test combination; see also [[Sectors/Photonic Metrology]] §Key industry questions #5.
 
 ---
 
 ## Industry history
 
-**1960s-1980s — Origins in defence and IDM-captive supply.** Teradyne founded 1960 (Boston) by Alex d'Arbeloff and Nick DeWolf, initially testing transistors for IBM and Western Electric. Advantest's roots in Takeda Riken Industry (1954, Tokyo), renamed Advantest 1985. Both companies emerged from electronic measurement instrumentation — Teradyne from the US bench-instrument tradition (HP, Tektronix); Advantest from Japan's process-control instrumentation cluster (Sanwa Roki, Hitachi precision instruments). **Through the 1980s, ATE was IDM-captive supply** — Intel, IBM, Motorola, NEC, Toshiba bought test gear in lockstep with logic and memory capacity. Teradyne dominated US-side; Advantest dominated Japan-side; little overlap.
+**1960s-1980s: Origins in defence and IDM-captive supply.** Teradyne founded 1960 (Boston) by Alex d'Arbeloff and Nick DeWolf, initially testing transistors for IBM and Western Electric. Advantest's roots in Takeda Riken Industry (1954, Tokyo), renamed Advantest 1985. Both companies emerged from electronic measurement instrumentation: Teradyne from the US bench-instrument tradition (HP, Tektronix); Advantest from Japan's process-control instrumentation cluster (Sanwa Roki, Hitachi precision instruments). Through the 1980s, ATE was IDM-captive supply: Intel, IBM, Motorola, NEC, Toshiba bought test gear in lockstep with logic and memory capacity. Teradyne dominated US-side; Advantest dominated Japan-side; little overlap.
 
-**1990s — DRAM cycle violence, memory-test scale-up.** DRAM consolidation from 20+ producers to 9 by 2000 concentrated memory-test demand. Teradyne acquired Megatest 1995 (memory test platform consolidation); Advantest's T5500 became the global memory-test workhorse. Logic-test platform competition intensified: Teradyne J750 (1992) became the dominant low-pin/microcontroller test platform — still in production volume today, 30+ years later. **Test was framed as commodity** — equipment lifecycles 10-15 years, no premium for advanced capability.
+**1990s: DRAM cycle violence, memory-test scale-up.** DRAM consolidation from 20+ producers to 9 by 2000 concentrated memory-test demand. Teradyne acquired Megatest 1995 (memory test platform consolidation); Advantest's T5500 became the global memory-test workhorse. Logic-test platform competition intensified: Teradyne J750 (1992) became the dominant low-pin/microcontroller test platform, still in production volume today, 30+ years later. Test was framed as commodity: equipment lifecycles 10-15 years, no premium for advanced capability.
 
-**2000s — SoC complexity inflection, Verigy spin-out.** Mobile baseband and applications-processor scale (Qualcomm, MediaTek, TI OMAP, Marvell) created a new high-end SoC test segment. Agilent spun out Verigy as a pure-play test company in 2006 (IPO). Verigy's V93000 platform — modular, software-defined, multi-site — became the standard high-end SoC platform; the V93000 outcompeted Teradyne UltraFLEX in Asian merchant logic markets. **Advantest acquired Verigy in 2011 for $1.1B all-cash**, integrating V93000 as the Advantest high-end logic platform. This acquisition is the single most consequential event in modern ATE history — it gave Advantest the platform that 15 years later dominates HBM final test.
+**2000s: SoC complexity inflection, Verigy spin-out.** Mobile baseband and applications-processor scale (Qualcomm, MediaTek, TI OMAP, Marvell) created a new high-end SoC test segment. Agilent spun out Verigy as a pure-play test company in 2006 (IPO). Verigy's V93000 platform, modular, software-defined, multi-site, became the standard high-end SoC platform; the V93000 outcompeted Teradyne UltraFLEX in Asian merchant logic markets. Advantest acquired Verigy in 2011 for $1.1B all-cash, integrating V93000 as the Advantest high-end logic platform. This acquisition is the single most consequential event in modern ATE history: it gave Advantest the platform that 15 years later dominates HBM final test.
 
-**2010s — Mobile cycle dominance, robotics diversification, OSAT integration.** Apple iPhone and broader smartphone scale (5B+ cumulative units by 2020) made Teradyne UltraFLEX the dominant Apple A-series test platform — a customer concentration that benefitted Teradyne enormously through the 2012-2020 iPhone supercycle and remains material today. **Teradyne acquired LitePoint (2011, $580M)** for wireless test, and **Universal Robots (2015, $285M)** + MiR (2018) + Energid (2018) for industrial robotics diversification — controversial strategic move that capped ATE earnings cyclicality but diluted ROIC and multiple. **Cohu acquired Xcerra (2018, $796M)** to consolidate the handler/contactor mid-tier — combined entity captures ~30-40% of handler share globally.
+**2010s: Mobile cycle dominance, robotics diversification, OSAT integration.** Apple iPhone and broader smartphone scale (5B+ cumulative units by 2020) made Teradyne UltraFLEX the dominant Apple A-series test platform, a customer concentration that benefitted Teradyne enormously through the 2012-2020 iPhone supercycle and remains material today. Teradyne acquired LitePoint (2011, $580M) for wireless test, and Universal Robots (2015, $285M) + MiR (2018) + Energid (2018) for industrial robotics diversification, a controversial strategic move that capped ATE earnings cyclicality but diluted ROIC and multiple. Cohu acquired Xcerra (2018, $796M) to consolidate the handler/contactor mid-tier; the combined entity captures ~30-40% of handler share globally.
 
-**2020-2022 — COVID supply shock, mobile cycle peak, memory test glut.** Smartphone volume peaked 2017-2019; 2020-2022 inventory build then violent destock collapsed memory test demand in 2023 (Teradyne memory revenue down ~50% peak-to-trough). Advantest revenue troughed in calendar 2023 at ~¥486B as mobile and memory cycles bottomed simultaneously. **Cohu revenue fell ~30% peak-to-trough** as handler demand follows test cell utilisation.
+**2020-2022: COVID supply shock, mobile cycle peak, memory test glut.** Smartphone volume peaked 2017-2019; 2020-2022 inventory build then violent destock collapsed memory test demand in 2023 (Teradyne memory revenue down ~50% peak-to-trough). Advantest revenue troughed in calendar 2023 at ~¥486B as mobile and memory cycles bottomed simultaneously. Cohu revenue fell ~30% peak-to-trough as handler demand follows test cell utilisation.
 
-**2023-2024 — HBM inflection, Advantest re-rating begins.** SK Hynix HBM2e/HBM3 volume ramp (sole-supplied to NVIDIA Hopper) drove the first HBM-specific final-test capacity demand. **Advantest V93000 EXA Scale platform (launched 2018, scaled-up 2022-2024) became the de facto HBM final test standard**. FY2024 (ending March 2025) Advantest revenue rebounded to ¥703B (~$5.4B); calendar 2024 stock price tripled from 2023 trough. Teradyne lagged the re-rating — calendar 2024 revenue ~$2.8B, stock roughly flat-to-up modestly. **The market began pricing Advantest as an HBM picks-and-shovels play** rather than a cyclical ATE vendor; forward multiples expanded from ~15x to ~28x.
+**2023-2024: HBM inflection, Advantest re-rating begins.** SK Hynix HBM2e/HBM3 volume ramp (sole-supplied to NVIDIA Hopper) drove the first HBM-specific final-test capacity demand. Advantest V93000 EXA Scale platform (launched 2018, scaled-up 2022-2024) became the de facto HBM final test standard. FY2024 (ending March 2025) Advantest revenue rebounded to ¥703B (~$5.4B); calendar 2024 stock price tripled from 2023 trough. Teradyne lagged the re-rating: calendar 2024 revenue ~$2.8B, stock roughly flat-to-up modestly. The market began pricing Advantest as an HBM picks-and-shovels play rather than a cyclical ATE vendor; forward multiples expanded from ~15x to ~28x.
 
-**2025 — HBM3e ramp, custom AI ASIC proliferation.** SK Hynix HBM3e 8-Hi and 12-Hi shipments scaled into NVIDIA Blackwell. Samsung and Micron added Advantest V93000 capacity to support their HBM3e qualification. **AWS Trainium 2, Microsoft Maia 100, Meta MTIA v2, Google TPU v6 all entered production test** — custom AI ASIC test program count doubled vs 2023 baseline. Advantest CY2025 revenue trajectory implied 30%+ YoY growth; Teradyne began signalling its own AI ASIC traction.
+**2025: HBM3e ramp, custom AI ASIC proliferation.** SK Hynix HBM3e 8-Hi and 12-Hi shipments scaled into NVIDIA Blackwell. Samsung and Micron added Advantest V93000 capacity to support their HBM3e qualification. AWS Trainium 2, Microsoft Maia 100, Meta MTIA v2, Google TPU v6 all entered production test, and custom AI ASIC test program count doubled vs 2023 baseline. Advantest CY2025 revenue trajectory implied 30%+ YoY growth; Teradyne began signalling its own AI ASIC traction.
 
-**2026 — HBM4 program prep, test-time-per-die step-function.** SK Hynix HBM4 12-Hi sample shipments began Q1 2026 (TSMC base-die partnership announced March 2025); 16-Hi mass production targeted 2027. **HBM4 test-time-per-stack estimates converging to 14-18 hours** vs HBM3e ~10 hours — a 40-80% step-up in test cell-hours per equivalent unit output. Advantest CY2026 revenue guidance from Q4 FY2025 earnings (April 2026, scheduled) the key near-term catalyst. **Teradyne Q1 2026 earnings (April 2026) signalled custom AI ASIC test ramp** but HBM gap remained material. **Cohu CY2025 revenue ~$370M** with contactor mix ~50%; AI-driven thermal handler density story not yet visible in headline numbers.
+**2026: HBM4 program prep, test-time-per-die step-function.** SK Hynix HBM4 12-Hi sample shipments began Q1 2026 (TSMC base-die partnership announced March 2025); 16-Hi mass production targeted 2027. HBM4 test-time-per-stack estimates converging to 14-18 hours vs HBM3e ~10 hours, a 40-80% step-up in test cell-hours per equivalent unit output. Advantest CY2026 revenue guidance from Q4 FY2025 earnings (April 2026, scheduled) the key near-term catalyst. Teradyne Q1 2026 earnings (April 2026) signalled custom AI ASIC test ramp but HBM gap remained material. Cohu CY2025 revenue ~$370M with contactor mix ~50%; AI-driven thermal handler density story not yet visible in headline numbers.
 
-**Pricing-power trajectory.** Advantest V93000 base unit ASP rose from ~$1.5M (2018) to ~$2.5-3.0M (2025) — a ~70% increase driven by HBM-specific instrument cards and AI accelerator high-power test capability. Teradyne UltraFLEX ASP scaled ~50% across the same window. **Test program development services revenue at Advantest has grown faster than tool shipments** — services + spare parts is approaching 35-40% of revenue with structurally higher margins, mirroring the LRCX CSBG / AMAT AGS annuity dynamic in WFE.
+**Pricing-power trajectory.** Advantest V93000 base unit ASP rose from ~$1.5M (2018) to ~$2.5-3.0M (2025), a ~70% increase driven by HBM-specific instrument cards and AI accelerator high-power test capability. Teradyne UltraFLEX ASP scaled ~50% across the same window. Test program development services revenue at Advantest has grown faster than tool shipments: services + spare parts is approaching 35-40% of revenue with structurally higher margins, mirroring the LRCX CSBG / AMAT AGS annuity dynamic in WFE.
 
 ---
 
@@ -107,15 +107,15 @@ ATE is a functional duopoly between Advantest and Teradyne, with Cohu the price-
 
 ### Structural moats (why ATE pricing power is closer to ASML than to OSAT)
 
-1. **Test program lock-in.** Each chip design has a custom test program written for a specific ATE platform (V93000 vs UltraFLEX vs Magnum). Test programs encode signal-timing, power-supply ramps, voltage-margin sweeps, and pass/fail criteria for thousands of test patterns. **Re-porting a test program to a competing platform takes 6-12 months and costs $5-15M per program** — and incurs months of re-qualification at the foundry/OSAT. Once a chip is in production on V93000, it stays on V93000 for its full life cycle (typically 5-10 years).
+1. **Test program lock-in.** Each chip design has a custom test program written for a specific ATE platform (V93000 vs UltraFLEX vs Magnum). Test programs encode signal-timing, power-supply ramps, voltage-margin sweeps, and pass/fail criteria for thousands of test patterns. Re-porting a test program to a competing platform takes 6-12 months and costs $5-15M per program, and incurs months of re-qualification at the foundry/OSAT. Once a chip is in production on V93000, it stays on V93000 for its full life cycle (typically 5-10 years).
 
-2. **Customer concentration symmetry.** Three memory vendors (SK Hynix, Samsung, Micron) and ~5 leading-edge logic customers (TSMC, Intel, Samsung Foundry, GlobalFoundries, plus hyperscaler custom-silicon design teams) account for 75%+ of ATE purchases. New entrants face the same 5-customer qualification hurdle as WFE vendors — without the 20-year EUV-style co-development runway.
+2. **Customer concentration symmetry.** Three memory vendors (SK Hynix, Samsung, Micron) and ~5 leading-edge logic customers (TSMC, Intel, Samsung Foundry, GlobalFoundries, plus hyperscaler custom-silicon design teams) account for 75%+ of ATE purchases. New entrants face the same 5-customer qualification hurdle as WFE vendors, without the 20-year EUV-style co-development runway.
 
-3. **Multi-site test = software-as-moat.** Modern V93000 / UltraFLEX systems test 256-512+ devices in parallel. Multi-site test efficiency is bottlenecked by software (test pattern compression, parallel resource allocation, real-time pass/fail decisioning). Advantest's IG-XL and Teradyne's TestStudio frameworks have accumulated 15-20 years of customer-specific optimisation libraries — replicable in theory, prohibitively expensive in practice for new entrants.
+3. **Multi-site test = software-as-moat.** Modern V93000 / UltraFLEX systems test 256-512+ devices in parallel. Multi-site test efficiency is bottlenecked by software (test pattern compression, parallel resource allocation, real-time pass/fail decisioning). Advantest's IG-XL and Teradyne's TestStudio frameworks have accumulated 15-20 years of customer-specific optimisation libraries, replicable in theory, prohibitively expensive in practice for new entrants.
 
-4. **Spare parts + service annuity.** Installed base of ATE tools globally is 30,000+ Advantest + ~20,000 Teradyne systems. Service revenue (calibration, instrument cards, software updates, applications engineering) is structurally stable double-digit annual revenue stream — Advantest service mix has risen from ~25% (2018) to ~35% (2025) as installed base ages and AI test program complexity rises.
+4. **Spare parts + service annuity.** Installed base of ATE tools globally is 30,000+ Advantest + ~20,000 Teradyne systems. Service revenue (calibration, instrument cards, software updates, applications engineering) is a structurally stable double-digit annual revenue stream; Advantest service mix has risen from ~25% (2018) to ~35% (2025) as installed base ages and AI test program complexity rises.
 
-5. **HBM final test is single-vendor-locked.** SK Hynix, Samsung, and Micron all qualified Advantest V93000 EXA Scale as the HBM final test platform 2022-2024. Migrating to a competing platform would require re-qualification with all three memory customers in parallel — a 24-36 month exercise with no clear ROI given Advantest pricing remains tolerable. **Effective lock-in is permanent through HBM5.**
+5. **HBM final test is single-vendor-locked.** SK Hynix, Samsung, and Micron all qualified Advantest V93000 EXA Scale as the HBM final test platform 2022-2024. Migrating to a competing platform would require re-qualification with all three memory customers in parallel, a 24-36 month exercise with no clear ROI given Advantest pricing remains tolerable. Effective lock-in is permanent through HBM5.
 
 ### Within-segment share dynamics — where shifts actually happen
 
@@ -126,7 +126,7 @@ Following the SEMICAP heuristic that ~80-90% of share shifts occur at node/archi
 - **OSAT capacity additions**: new OSAT fab build (Amkor AZ, ASE TW expansion) re-opens platform-decision window for new wafer flows
 - **Customer-of-record changes**: e.g., NVIDIA shifting custom test partnership from one OSAT to another
 
-The HBM5 hybrid-bonding transition (2028-2029, deferred from earlier per JEDEC 2026 timeline) is the next major re-qualification window for memory test. **Teradyne winning even one of the three HBM5 memory vendors would shift the market structure from 95/5 to 65/30/5** — a material re-rating event for both Advantest (slight headwind) and Teradyne (material tailwind).
+The HBM5 hybrid-bonding transition (2028-2029, deferred from earlier per JEDEC 2026 timeline) is the next major re-qualification window for memory test. Teradyne winning even one of the three HBM5 memory vendors would shift the market structure from 95/5 to 65/30/5, a material re-rating event for both Advantest (slight headwind) and Teradyne (material tailwind).
 
 ### Chinese ATE — capability gap quantification
 
@@ -139,7 +139,7 @@ The HBM5 hybrid-bonding transition (2028-2029, deferred from earlier per JEDEC 2
 | High-end SoC ATE (AI/HBM) | None at production scale | 6-8 years behind V93000 EXA Scale | 2032+ if achievable at all |
 | Test handlers | Multiple domestic vendors | Cohu-equivalent thermal handler 3-4 years out | 2028-2030 |
 
-**Asymmetry vs WFE**: ATE has fewer Chinese entrants than WFE (which has NAURA, AMEC, ACMR, Piotech, SiCarrier as serious players). The capability gap is wider at the high end. Export controls bind harder on ATE because test program development requires Western applications-engineering teams — even if hardware is reverse-engineered, the software/services moat is harder to replicate.
+**Asymmetry vs WFE.** ATE has fewer Chinese entrants than WFE (which has NAURA, AMEC, ACMR, Piotech, SiCarrier as serious players). The capability gap is wider at the high end. Export controls bind harder on ATE because test program development requires Western applications-engineering teams; even if hardware is reverse-engineered, the software/services moat is harder to replicate.
 
 ---
 
@@ -183,14 +183,14 @@ The HBM5 hybrid-bonding transition (2028-2029, deferred from earlier per JEDEC 2
 
 The V93000 originated as Verigy's flagship SoC tester (Agilent spin-out 2006); Advantest acquired Verigy in 2011 for $1.1B and integrated V93000 as its high-end logic and HBM platform. Current generation is **V93000 EXA Scale** (launched 2018, scaled-up 2022-2024 for HBM); **V93000 Smart Scale** is the lower-tier mid-range SoC / automotive configuration.
 
-**Architecture.** Modular rack chassis with a common backplane carrying high-speed digital, analog, and DC signals. Functionality is added through **PinScale instrument cards** — each card provides specific test capabilities and slots into the chassis:
+**Architecture.** Modular rack chassis with a common backplane carrying high-speed digital, analog, and DC signals. Functionality is added through **PinScale instrument cards**: each card provides specific test capabilities and slots into the chassis:
 
-- **Digital pin electronics cards** — drive/sense pin patterns at multi-Gbps rates; pin counts per card range 64-1024+ depending on configuration
-- **DC parametric measurement units (PMU)** — voltage/current force-and-measure on every pin
-- **Power supply instruments** — multiple programmable rails with µA-resolution measurement
-- **High-speed I/O cards** — SerDes / HBM / PCIe protocol-aware test up to 32+ Gbps per lane
-- **RF instruments** — millimetre-wave and mid-frequency RF test (mobile baseband, Wi-Fi)
-- **Thermal control** — ChillX / actively-heated test heads for hot/cold soak
+- **Digital pin electronics cards:** drive/sense pin patterns at multi-Gbps rates; pin counts per card range 64-1024+ depending on configuration
+- **DC parametric measurement units (PMU):** voltage/current force-and-measure on every pin
+- **Power supply instruments:** multiple programmable rails with µA-resolution measurement
+- **High-speed I/O cards:** SerDes / HBM / PCIe protocol-aware test up to 32+ Gbps per lane
+- **RF instruments:** millimetre-wave and mid-frequency RF test (mobile baseband, Wi-Fi)
+- **Thermal control:** ChillX / actively-heated test heads for hot/cold soak
 
 A fully-configured EXA Scale system carries thousands of test pins and consumes 20-40 kW; HBM-optimised configurations add additional high-density digital pin cards to handle the wide TSV interface (1024+ I/O per stack). Test programs are written in the **IG-XL** framework (test patterns, sequencing, pass/fail logic, multi-site coordination).
 
@@ -211,32 +211,32 @@ A fully-configured EXA Scale system carries thousands of test pins and consumes 
 
 For HBM final test specifically, the V93000 executes the 8-step sequence detailed in §HBM test specifics below.
 
-**Multi-site test = software-as-moat.** A single V93000 system tests 256-512+ devices in parallel by interleaving patterns across test sites. Multi-site efficiency is bottlenecked by software — pattern compression, parallel resource allocation, real-time pass/fail decisioning, fault isolation. IG-XL has accumulated 15-20 years of customer-specific optimisation libraries; a hyperscaler custom-silicon test program often runs to >100,000 lines of IG-XL pattern + control logic.
+**Multi-site test = software-as-moat.** A single V93000 system tests 256-512+ devices in parallel by interleaving patterns across test sites. Multi-site efficiency is bottlenecked by software: pattern compression, parallel resource allocation, real-time pass/fail decisioning, fault isolation. IG-XL has accumulated 15-20 years of customer-specific optimisation libraries; a hyperscaler custom-silicon test program often runs to >100,000 lines of IG-XL pattern + control logic.
 
 **Clone-feasibility under full IP access.** A Chinese entrant with stolen V93000 schematics, board files, ASIC RTL, and IG-XL source code would still face four sequential gates before reaching production volume:
 
-1. **Hardware reproduction (~3-4 years, $500M-$1B capex).** Pin electronics ASICs (driver/comparator chips) require sub-picosecond timing precision and µA-resolution force/measure circuits — needing deep mixed-signal IC design talent and access to a leading-edge foundry (which itself is export-controlled for advanced ATE applications). PCB and chassis-level interconnect tolerances are achievable in the Chinese ecosystem at low volume with yield/uniformity gap. Thermal and power densities of a fully-loaded chassis sit at HPC-class — Chinese capability exists but rarely at single-vendor scale.
+1. **Hardware reproduction (~3-4 years, $500M-$1B capex).** Pin electronics ASICs (driver/comparator chips) require sub-picosecond timing precision and µA-resolution force/measure circuits, needing deep mixed-signal IC design talent and access to a leading-edge foundry (which itself is export-controlled for advanced ATE applications). PCB and chassis-level interconnect tolerances are achievable in the Chinese ecosystem at low volume with yield/uniformity gap. Thermal and power densities of a fully-loaded chassis sit at HPC-class; Chinese capability exists but rarely at single-vendor scale.
 
-2. **Software re-creation (~2-3 years parallel, but fundamentally limited).** Stealing IG-XL source code doesn't replicate the **applications-engineering knowledge base** — customer-specific test methodology libraries, pattern compression heuristics, debug workflows, and silicon-correlation calibration data accumulated across thousands of programs over 15-20 years. This is tacit knowledge held by hundreds of Advantest applications engineers globally. Copying source yields a runtime environment without the methodology — analogous to cloning Photoshop's code without the colour-management calibration libraries that make professional output usable.
+2. **Software re-creation (~2-3 years parallel, but fundamentally limited).** Stealing IG-XL source code doesn't replicate the applications-engineering knowledge base: customer-specific test methodology libraries, pattern compression heuristics, debug workflows, and silicon-correlation calibration data accumulated across thousands of programs over 15-20 years. This is tacit knowledge held by hundreds of Advantest applications engineers globally. Copying source yields a runtime environment without the methodology, analogous to cloning Photoshop's code without the colour-management calibration libraries that make professional output usable.
 
-3. **Customer qualification (24-36 months minimum once hardware ships).** Each memory vendor (SK Hynix, Samsung, Micron) and leading-edge logic customer (TSMC, Intel) runs a multi-quarter qualification — correlate test results against known-good devices, characterise yield impact, validate edge-case patterns, baseline failure-analysis flow. **No Western or Korean/Japanese memory vendor has incentive to qualify a Chinese platform** unless their primary supply is blocked. China's domestic memory effort (CXMT, YMTC) provides a captive pathway, but those vendors are years from HBM production volume.
+3. **Customer qualification (24-36 months minimum once hardware ships).** Each memory vendor (SK Hynix, Samsung, Micron) and leading-edge logic customer (TSMC, Intel) runs a multi-quarter qualification: correlate test results against known-good devices, characterise yield impact, validate edge-case patterns, baseline failure-analysis flow. No Western or Korean/Japanese memory vendor has incentive to qualify a Chinese platform unless their primary supply is blocked. China's domestic memory effort (CXMT, YMTC) provides a captive pathway, but those vendors are years from HBM production volume.
 
 4. **Test program portability (6-12 months and $5-15M per design).** Every existing chip in production has a test program written for V93000 IG-XL. Re-porting to a Chinese platform requires re-writing the program, re-validating against silicon, re-correlating with the original platform's pass/fail bins. No fab has incentive to absorb this cost unless mandated. The portability tax effectively excludes the entire installed device base from Chinese ATE addressable market.
 
-**Bottom line.** Hardware cloning is the easiest gate (3-4 years, money problem). Software gap is harder (5-7 years, talent + customer-base problem). Customer qualification is the binding constraint (8-10 years from credible prototype, requires either coerced customer adoption or a homegrown leading-edge memory/logic ecosystem to scale alongside). The visible Chinese ATE names (Hwatsing, Huafeng, Shanghai Precise Test) sit 6-8 years behind on the hardware gate alone; total time to credible HBM/AI parity exceeds 10 years even with optimistic IP-access assumptions. Cross-reference §Competitive dynamics → Chinese ATE — capability gap quantification for the broader sub-segment view.
+Hardware cloning is the easiest gate (3-4 years, money problem). Software gap is harder (5-7 years, talent + customer-base problem). Customer qualification is the binding constraint (8-10 years from credible prototype, requires either coerced customer adoption or a homegrown leading-edge memory/logic ecosystem to scale alongside). The visible Chinese ATE names (Hwatsing, Huafeng, Shanghai Precise Test) sit 6-8 years behind on the hardware gate alone; total time to credible HBM/AI parity exceeds 10 years even with optimistic IP-access assumptions. Cross-reference §Competitive dynamics → Chinese ATE: capability gap quantification for the broader sub-segment view.
 
 ### HBM test specifics — why test time is scaling
 
 HBM stack final test sequence:
 
-1. **Power delivery verification** — ramp all rails, verify each die in stack
-2. **Through-silicon-via (TSV) connectivity** — test all TSV interconnects across stack
-3. **Bandwidth pattern test** — full read/write across all channels at rated speed
-4. **Thermal margin sweep** — hot/cold soak with bandwidth testing
-5. **Refresh / retention test** — verify each die meets refresh spec
-6. **Repair allocation** — identify failing rows/columns, program redundancy mapping
-7. **Pseudo-random pattern (PRBS) verification** — long-duration error rate test
-8. **Stack-level burn-in** (optional, increasing) — accelerated stress test
+1. **Power delivery verification:** ramp all rails, verify each die in stack
+2. **Through-silicon-via (TSV) connectivity:** test all TSV interconnects across stack
+3. **Bandwidth pattern test:** full read/write across all channels at rated speed
+4. **Thermal margin sweep:** hot/cold soak with bandwidth testing
+5. **Refresh / retention test:** verify each die meets refresh spec
+6. **Repair allocation:** identify failing rows/columns, program redundancy mapping
+7. **Pseudo-random pattern (PRBS) verification:** long-duration error rate test
+8. **Stack-level burn-in** (optional, increasing): accelerated stress test
 
 **Time scaling rationale across HBM generations:**
 
@@ -248,7 +248,7 @@ HBM stack final test sequence:
 | HBM4 | 12/16-Hi | 12-16 | 2.0 TB/s | **~14-18 hours** | **~2.5-3.0x** |
 | HBM5 (2028+) | 16/20-Hi | 16-20 | 4.0+ TB/s | ~20-24 hours est. | ~3.5-4.0x |
 
-**Why test time scales superlinearly with layer count, not 1:1 with die surface area.** The naïve expectation — that HBM test time should grow proportional to die area or layer count — assumes the test sequence is a single pass over each die. Actual HBM final test is a sum of sub-tests, each with a different scaling exponent in layer count N, bandwidth B, and per-die area A:
+**Why test time scales superlinearly with layer count, not 1:1 with die surface area.** The naïve expectation, that HBM test time should grow proportional to die area or layer count, assumes the test sequence is a single pass over each die. Actual HBM final test is a sum of sub-tests, each with a different scaling exponent in layer count N, bandwidth B, and per-die area A:
 
 | Sub-test | Scaling | Why |
 |---|---|---|
@@ -286,19 +286,19 @@ Per-unit test time approximately doubles every two generations. Combined with HB
 
 ### New entrants worth watching
 
-- **Hwatsing Technology (688120 SH)** — Chinese ATE; IPO 2020; revenue scaling from low base. Pure parametric/E-test today; targeting wafer test and low-end SoC by 2028. Capability gap to V93000/UltraFLEX is wide but closing under domestic substitution pressure.
-- **Beijing Huafeng** — wafer test; sub-tier 1 Chinese fabless customers.
-- **Shanghai Precise Test** — parametric, mature node.
-- **Chroma ATE (2360 TW)** — Taiwan-listed; mid-range SoC, power semiconductor test, EV battery test. Real but niche.
-- **MPI Corporation (8147 TW)** — probe stations, RF/MMW test; closer to FormFactor's adjacent space.
-- **Korean ISC, Yokowo, Smiths Interconnect** — contactor specialists; cohabit Cohu's contactor TAM.
+- **Hwatsing Technology (688120 SH):** Chinese ATE; IPO 2020; revenue scaling from low base. Pure parametric/E-test today; targeting wafer test and low-end SoC by 2028. Capability gap to V93000/UltraFLEX is wide but closing under domestic substitution pressure.
+- **Beijing Huafeng:** wafer test; sub-tier 1 Chinese fabless customers.
+- **Shanghai Precise Test:** parametric, mature node.
+- **Chroma ATE (2360 TW):** Taiwan-listed; mid-range SoC, power semiconductor test, EV battery test. Real but niche.
+- **MPI Corporation (8147 TW):** probe stations, RF/MMW test; closer to FormFactor's adjacent space.
+- **Korean ISC, Yokowo, Smiths Interconnect:** contactor specialists; cohabit Cohu's contactor TAM.
 
 **Potential consolidation paths 2026-2028:**
 
-1. **Cohu acquired by Teradyne or Advantest** — handler + contactor adjacency makes strategic sense for either; Cohu market cap ~$1.5B is digestible. Antitrust likely manageable (handlers/contactors are not at the same monopoly concentration as ATE).
-2. **Teradyne divests Universal Robots** — re-pure-plays the test business; would drive re-rating to Advantest-style multiples; market cap could rise $5-10B on re-rating alone.
-3. **Advantest acquires photonic test capability** — likely a smaller bolt-on rather than a FORM-scale acquisition; could be a Quantifi-equivalent target or a FORM partnership extension.
-4. **FORM acquired by Advantest or Teradyne** — discussed periodically; FORM's $4-5B market cap is digestible for either; antitrust uncertain given probe card concentration.
+1. **Cohu acquired by Teradyne or Advantest:** handler + contactor adjacency makes strategic sense for either; Cohu market cap ~$1.5B is digestible. Antitrust likely manageable (handlers/contactors are not at the same monopoly concentration as ATE).
+2. **Teradyne divests Universal Robots:** re-pure-plays the test business; would drive re-rating to Advantest-style multiples; market cap could rise $5-10B on re-rating alone.
+3. **Advantest acquires photonic test capability:** likely a smaller bolt-on rather than a FORM-scale acquisition; could be a Quantifi-equivalent target or a FORM partnership extension.
+4. **FORM acquired by Advantest or Teradyne:** discussed periodically; FORM's $4-5B market cap is digestible for either; antitrust uncertain given probe card concentration.
 
 ---
 
@@ -308,17 +308,17 @@ Per-unit test time approximately doubles every two generations. Combined with HB
 
 2. **Custom AI ASIC proliferation broadening SoC test TAM.** AWS Trainium 3, Microsoft Maia 200, Meta MTIA v3, Google TPU v7, Apple AJAX, Tesla Dojo 2, plus merchant accelerators (NVIDIA Rubin, AMD MI400, Intel Gaudi 4, Cerebras WSE-4, Groq LPU v2, Sohu, Tenstorrent). Each program = 6-12 months of test program development = $5-15M services revenue per program before tool shipments. Custom ASIC volume = recurring tool demand thereafter.
 
-3. **US export controls (October 2022 + tightening 2024-2026) blocking China high-end ATE access.** Advantest V93000 EXA Scale and Teradyne UltraFLEX shipments to China subject to entity-list restrictions for advanced nodes. **Counter-intuitive net effect**: export controls have accelerated Chinese domestic ATE development (Hwatsing scaling) but more critically have prevented Chinese fabs from absorbing AI test demand — concentrating that demand at TSMC/Samsung/Intel and their OSAT/test partners, all of which remain locked-in V93000/UltraFLEX users.
+3. **US export controls (October 2022 + tightening 2024-2026) blocking China high-end ATE access.** Advantest V93000 EXA Scale and Teradyne UltraFLEX shipments to China subject to entity-list restrictions for advanced nodes. The counter-intuitive net effect is that export controls have accelerated Chinese domestic ATE development (Hwatsing scaling) but more critically have prevented Chinese fabs from absorbing AI test demand, concentrating that demand at TSMC/Samsung/Intel and their OSAT/test partners, all of which remain locked-in V93000/UltraFLEX users.
 
-4. **TSMC backend consolidation (CoWoS internalisation).** TSMC's progressive internalisation of CoWoS packaging is extending to final test. Currently TSMC outsources final test to OSAT partners (ASE, Amkor, SPIL). **If TSMC internalises CoWoS final test 2027-2029, ATE purchase decisions consolidate from 5-7 OSATs to TSMC + 2-3 OSATs** — concentrating customer power but not reducing volume. Likely net neutral to slightly negative for ATE margins.
+4. **TSMC backend consolidation (CoWoS internalisation).** TSMC's progressive internalisation of CoWoS packaging is extending to final test. Currently TSMC outsources final test to OSAT partners (ASE, Amkor, SPIL). If TSMC internalises CoWoS final test 2027-2029, ATE purchase decisions consolidate from 5-7 OSATs to TSMC + 2-3 OSATs, concentrating customer power but not reducing volume. Likely net neutral to slightly negative for ATE margins.
 
-5. **HBM5 hybrid bonding transition (2028-2029) reopening qualification window.** Per [[Sectors/Semiconductor Capital Equipment]] #5, JEDEC's April 2026 package thickness relaxation deferred mandatory HBM hybrid bonding to HBM5. The transition will require re-qualification of test platforms for hybrid-bonded stacks (electrical contact pattern, thermal characteristics, TSV count all change). **First open re-qual window for memory test in 4+ years** — Teradyne's best opportunity to win share back from Advantest.
+5. **HBM5 hybrid bonding transition (2028-2029) reopening qualification window.** Per [[Sectors/Semiconductor Capital Equipment]] #5, JEDEC's April 2026 package thickness relaxation deferred mandatory HBM hybrid bonding to HBM5. The transition will require re-qualification of test platforms for hybrid-bonded stacks (electrical contact pattern, thermal characteristics, TSV count all change). First open re-qual window for memory test in 4+ years: Teradyne's best opportunity to win share back from Advantest.
 
 6. **Geopolitical concentration risk (Taiwan tail).** Per [[Sectors/Semiconductor Capital Equipment]] #9, TSMC concentration drives sector customer-concentration risk. ATE customer concentration is similarly Taiwan-heavy: TSMC + Taiwan OSATs (ASE, SPIL) drive ~30-35% of Advantest revenue. Taiwan disruption scenarios would constrain test capacity rebuild more than fab capacity rebuild (fab tools are at ASML/AMAT/LRCX; test tools at Advantest/Teradyne both have Japan/US production geography but customer concentration sits in Taiwan).
 
-7. **Universal Robots / industrial automation cyclical hangover.** Teradyne's robotics segment ~10-15% of revenue; structurally lower margin than ATE; cyclical with industrial capex. Continued underperformance pressures Teradyne strategic review (divestiture chatter persistent 2024-2026). **Resolution either way** — divestiture and re-pure-play, or recommitment with growth re-acceleration — would be a multiple-rerating catalyst.
+7. **Universal Robots / industrial automation cyclical hangover.** Teradyne's robotics segment ~10-15% of revenue; structurally lower margin than ATE; cyclical with industrial capex. Continued underperformance pressures Teradyne strategic review (divestiture chatter persistent 2024-2026). Resolution either way, divestiture and re-pure-play or recommitment with growth re-acceleration, would be a multiple-rerating catalyst.
 
-8. **Service annuity compounding faster than tool shipments.** Installed base of 50,000+ Advantest + Teradyne systems globally generates 10-15% annual service revenue growth independent of new tool sales. As AI test program complexity rises, applications-engineering service revenue per tool rises. Service/spares mix at Advantest ~35% today, projected ~40-42% by 2028 — mirroring the LRCX CSBG / AMAT AGS / KLAC services trajectory in WFE.
+8. **Service annuity compounding faster than tool shipments.** Installed base of 50,000+ Advantest + Teradyne systems globally generates 10-15% annual service revenue growth independent of new tool sales. As AI test program complexity rises, applications-engineering service revenue per tool rises. Service/spares mix at Advantest ~35% today, projected ~40-42% by 2028, mirroring the LRCX CSBG / AMAT AGS / KLAC services trajectory in WFE.
 
 ---
 
@@ -336,19 +336,19 @@ The sell-side and buy-side currently price the ATE complex as follows:
 
 ### Where consensus is likely wrong (non-consensus insights)
 
-**Insight #1 — HBM4 test-time scaling not in models.** Consensus Advantest models extrapolate ~25-30% revenue CAGR off HBM unit-volume growth and modest test-time creep. **The actual test-time step-function from HBM3e (~10h) to HBM4 (~14-18h) is a 40-80% per-stack capacity demand uplift on top of unit growth.** If realised, 2027 Advantest revenue runs 15-25% above current sell-side consensus. The forward multiple is full at ~30x, but earnings growth could surprise meaningfully — meaning the equity story works on E rather than P/E.
+**HBM4 test-time scaling not in models.** Consensus Advantest models extrapolate ~25-30% revenue CAGR off HBM unit-volume growth and modest test-time creep. The actual test-time step-function from HBM3e (~10h) to HBM4 (~14-18h) is a 40-80% per-stack capacity demand uplift on top of unit growth. If realised, 2027 Advantest revenue runs 15-25% above current sell-side consensus. The forward multiple is full at ~30x, but earnings growth could surprise meaningfully, meaning the equity story works on E rather than P/E.
 
-**Insight #2 — Teradyne custom AI ASIC traction under-modelled.** Teradyne UltraFLEX is the platform of choice for several hyperscaler custom-silicon programs that originated in mobile-derivative architectures (Apple-heritage design teams). **As custom AI ASIC volume scales 2026-2028, Teradyne SoC revenue could grow 15-20% CAGR** — meaningfully above the ~10% consensus. The "Advantest has all the AI exposure" framing is partially wrong; Teradyne has compute exposure, just not HBM exposure.
+**Teradyne custom AI ASIC traction under-modelled.** Teradyne UltraFLEX is the platform of choice for several hyperscaler custom-silicon programs that originated in mobile-derivative architectures (Apple-heritage design teams). As custom AI ASIC volume scales 2026-2028, Teradyne SoC revenue could grow 15-20% CAGR, meaningfully above the ~10% consensus. The "Advantest has all the AI exposure" framing is partially wrong; Teradyne has compute exposure, just not HBM exposure.
 
-**Insight #3 — Cohu contactor recurring revenue is software-margins-like.** Cohu's contactor business (~50% of revenue) carries gross margins meaningfully above the handler business, with recurring consumption tied to test cell utilisation. **AI accelerator thermal contactor wear cycles are 3-5x more aggressive than mobile SoC test contactors**, structurally lifting contactor mix and gross margin over 2026-2028. Cohu re-rating from ~16x to ~22-25x is plausible if contactor mix moves from 50% → 60%+.
+**Cohu contactor recurring revenue is software-margins-like.** Cohu's contactor business (~50% of revenue) carries gross margins meaningfully above the handler business, with recurring consumption tied to test cell utilisation. AI accelerator thermal contactor wear cycles are 3-5x more aggressive than mobile SoC test contactors, structurally lifting contactor mix and gross margin over 2026-2028. Cohu re-rating from ~16x to ~22-25x is plausible if contactor mix moves from 50% → 60%+.
 
-**Insight #4 — China export controls help, don't hurt, Western ATE.** Conventional read: export controls limit Western ATE addressable market by excluding China demand. **Actual dynamic**: export controls have prevented Chinese AI compute capacity from materialising, concentrating AI test demand at Western-fab-customer OSATs that use Western ATE. The TAM loss from China advanced-node ATE blocking is more than offset by AI capacity concentration at Western customers.
+**China export controls help, don't hurt, Western ATE.** Conventional read: export controls limit Western ATE addressable market by excluding China demand. The actual dynamic is that export controls have prevented Chinese AI compute capacity from materialising, concentrating AI test demand at Western-fab-customer OSATs that use Western ATE. The TAM loss from China advanced-node ATE blocking is more than offset by AI capacity concentration at Western customers.
 
-**Insight #5 — Test cycle decoupling from front-end WFE cycle.** Historically WFE and ATE moved in tight correlation (tools shipped → wafers produced → test cells deployed in lockstep). **HBM-specific test capacity now leads front-end capex by 6-12 months** because HBM final test is the binding constraint on memory vendor revenue recognition. Advantest revenue is showing earlier cyclical recovery and shallower drawdowns than the broader WFE complex — a structural change not yet recognised in cross-correlation analysis.
+**Test cycle decoupling from front-end WFE cycle.** Historically WFE and ATE moved in tight correlation (tools shipped → wafers produced → test cells deployed in lockstep). HBM-specific test capacity now leads front-end capex by 6-12 months because HBM final test is the binding constraint on memory vendor revenue recognition. Advantest revenue is showing earlier cyclical recovery and shallower drawdowns than the broader WFE complex, a structural change not yet recognised in cross-correlation analysis.
 
-**Insight #6 — Services annuity convergence with WFE service business model.** Per Insight in [[Sectors/Semiconductor Capital Equipment]] re. LRCX CSBG / AMAT AGS / KLAC services trajectories — the same dynamic is playing out in ATE on a 2-3 year lag. Advantest service mix moving from ~35% to ~42% by 2028 with structurally higher margins would compress reported "tool shipment" growth but expand earnings quality. Cyclicality discount applied to Advantest should compress (similar to the SEMICAP cyclicality-discount-mispricing dynamic per [[Sectors/Semiconductor Capital Equipment]] addressed callout).
+**Services annuity convergence with WFE service business model.** Per the insight in [[Sectors/Semiconductor Capital Equipment]] re. LRCX CSBG / AMAT AGS / KLAC services trajectories, the same dynamic is playing out in ATE on a 2-3 year lag. Advantest service mix moving from ~35% to ~42% by 2028 with structurally higher margins would compress reported "tool shipment" growth but expand earnings quality. Cyclicality discount applied to Advantest should compress (similar to the SEMICAP cyclicality-discount-mispricing dynamic per [[Sectors/Semiconductor Capital Equipment]] addressed callout).
 
-**Insight #7 — Universal Robots divestiture as Teradyne catalyst.** Persistent 2024-2026 chatter on Teradyne strategic review for Universal Robots. **Divestiture proceeds estimated $1-2B; re-pure-play would compress holding-company discount and re-rate Teradyne toward Advantest multiples** (mid-20s P/E vs current ~20x). Could be a 30-50% equity re-rating without earnings change.
+**Universal Robots divestiture as Teradyne catalyst.** Persistent 2024-2026 chatter on Teradyne strategic review for Universal Robots. Divestiture proceeds estimated $1-2B; re-pure-play would compress holding-company discount and re-rate Teradyne toward Advantest multiples (mid-20s P/E vs current ~20x). Could be a 30-50% equity re-rating without earnings change.
 
 ### What to own — positioning recommendation
 
@@ -357,17 +357,17 @@ For an investor expressing the "AI test capacity is the second-derivative chokep
 - **Tier 1 (highest conviction)**: Initiate **Advantest (6857 JP)** thesis. Most direct expression. Pairs with [[Theses/000660 - SK Hynix]] HBM thesis. Watch CY2026 revenue guidance (April 2026 Q4 FY2025 print) and HBM4 customer disclosures.
 - **Tier 2 (asymmetric)**: Initiate **Teradyne (TER)** thesis on the Universal Robots-divestiture re-rating catalyst + custom AI ASIC under-modelling. Lower probability than Advantest but higher payoff per dollar of conviction.
 - **Tier 3 (recurring annuity)**: Monitor **Cohu (COHU)** for contactor mix inflection. Watch quarterly contactor revenue disclosures and AI accelerator customer attribution. Initiate if FY2026 contactor mix prints >55%.
-- **Already owned (cross-sector)**: [[Theses/FORM - FormFactor]] and [[Theses/AEHR - Aehr Test Systems]] capture the photonic/wafer test sub-cluster — no incremental position needed.
+- **Already owned (cross-sector)**: [[Theses/FORM - FormFactor]] and [[Theses/AEHR - Aehr Test Systems]] capture the photonic/wafer test sub-cluster; no incremental position needed.
 
-**Avoid / underweight**: Chinese ATE entrants (Hwatsing) at current scale — capability gap too wide; valuation already prices domestic substitution narrative. Chroma ATE (Taiwan) — niche, lacks scale; useful watchlist not portfolio name.
+**Avoid / underweight**: Chinese ATE entrants (Hwatsing) at current scale: capability gap too wide; valuation already prices domestic substitution narrative. Chroma ATE (Taiwan): niche, lacks scale; useful watchlist not portfolio name.
 
 ### Risk factors to monitor (sector-level)
 
-1. **HBM demand pause from inference-efficiency breakthrough.** Same risk vector as SEMICAP — DeepSeek/TurboQuant-style efficiency wins reduce HBM unit demand growth, indirectly compressing test capacity demand. Advantest more exposed than Teradyne.
-2. **Teradyne winning HBM5 — Advantest share compression.** Re-qualification window 2028-2029. Probability of Teradyne winning one memory vendor non-trivial (~25-35% subjective). Impact: Advantest 2030+ revenue growth slows from ~25% to ~15% CAGR; Teradyne growth accelerates ~10% to ~18-22% CAGR.
+1. **HBM demand pause from inference-efficiency breakthrough.** Same risk vector as SEMICAP: DeepSeek/TurboQuant-style efficiency wins reduce HBM unit demand growth, indirectly compressing test capacity demand. Advantest more exposed than Teradyne.
+2. **Teradyne winning HBM5: Advantest share compression.** Re-qualification window 2028-2029. Probability of Teradyne winning one memory vendor non-trivial (~25-35% subjective). Impact: Advantest 2030+ revenue growth slows from ~25% to ~15% CAGR; Teradyne growth accelerates ~10% to ~18-22% CAGR.
 3. **Major OSAT cyber/operational disruption.** ATE customer concentration at OSATs (ASE + Amkor + SPIL ~55% of merchant test) creates correlated operational risk.
 4. **TSMC final test internalisation accelerating.** If TSMC builds in-house final test capacity meaningfully earlier than 2028, OSAT ATE purchase pattern destabilises; Advantest/Teradyne revenue visibility compresses.
-5. **JEDEC HBM5 specification volatility.** HBM5 spec uncertainty could push hybrid bonding earlier (Advantest negative — re-qual window opens for Teradyne) or push it later (Advantest positive — V93000 monopoly extends).
+5. **JEDEC HBM5 specification volatility.** HBM5 spec uncertainty could push hybrid bonding earlier (Advantest negative: re-qual window opens for Teradyne) or push it later (Advantest positive: V93000 monopoly extends).
 
 ---
 
@@ -381,22 +381,22 @@ For an investor expressing the "AI test capacity is the second-derivative chokep
 
 *First active research note added 2026-05-24:*
 
-- [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]] — cross-sector competitive comparison between Advantest (ATE) and Ajinomoto (ABF dielectric materials) on ROIC × valuation × growth; surfaces ~75% shared AI-capex driver correlation, the AI-purity premium that Advantest commands at ~5.8× EV/Revenue vs Ajinomoto group ~3.2× (the SEMICAP comp anchor), and the rare segment-level ROIC parity (Ajinomoto Electronic Materials ~50% margin, +31% growth) that defines preference-flip triggers across the two Japanese-listed AI-cycle names
-- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]] — earnings-transcript review; Advantest share corrected to mgmt-stated ~66% overall / "majority" in AI accelerators (not the 95%/80% sub-segment estimates), and capacity reframed to ~10,000 systems/yr by ~CY2029 (not "10K installed base by 2028"). HBM4 test-time pillar uncorroborated in FY25 calls — realized driver is SoC/AI accelerators
+- [[Research/2026-05-24 - 2802 vs 6857 - Competitive Comparison]]: cross-sector competitive comparison between Advantest (ATE) and Ajinomoto (ABF dielectric materials) on ROIC × valuation × growth; surfaces ~75% shared AI-capex driver correlation, the AI-purity premium that Advantest commands at ~5.8× EV/Revenue vs Ajinomoto group ~3.2× (the SEMICAP comp anchor), and the rare segment-level ROIC parity (Ajinomoto Electronic Materials ~50% margin, +31% growth) that defines preference-flip triggers across the two Japanese-listed AI-cycle names
+- [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: earnings-transcript review; Advantest share corrected to mgmt-stated ~66% overall / "majority" in AI accelerators (not the 95%/80% sub-segment estimates), and capacity reframed to ~10,000 systems/yr by ~CY2029 (not "10K installed base by 2028"). HBM4 test-time pillar uncorroborated in FY25 calls; realized driver is SoC/AI accelerators
 
 *Suggested research backlog:*
 
-- `2026-05-XX - Semiconductor Test Equipment - Sector Initiation - synthesis.md` — formal initiation research note documenting HBM test-time scaling math, custom ASIC test program inventory, China capability gap quantification
-- `2026-05-XX - Advantest - HBM4 Test Capacity Analysis - deep-dive.md` — quantify V93000 capacity demand under multiple HBM4 ramp scenarios; calibrate to memory vendor capex disclosures
-- `2026-05-XX - Teradyne - Custom AI ASIC Test Program Inventory - data.md` — enumerate which hyperscaler custom silicon programs run on UltraFLEX vs V93000; estimate share split
-- `2026-05-XX - Cohu - Contactor Recurring Revenue Analysis - deep-dive.md` — decompose contactor revenue by end-market; estimate AI accelerator contribution to gross margin
+- `2026-05-XX - Semiconductor Test Equipment - Sector Initiation - synthesis.md`: formal initiation research note documenting HBM test-time scaling math, custom ASIC test program inventory, China capability gap quantification
+- `2026-05-XX - Advantest - HBM4 Test Capacity Analysis - deep-dive.md`: quantify V93000 capacity demand under multiple HBM4 ramp scenarios; calibrate to memory vendor capex disclosures
+- `2026-05-XX - Teradyne - Custom AI ASIC Test Program Inventory - data.md`: enumerate which hyperscaler custom silicon programs run on UltraFLEX vs V93000; estimate share split
+- `2026-05-XX - Cohu - Contactor Recurring Revenue Analysis - deep-dive.md`: decompose contactor revenue by end-market; estimate AI accelerator contribution to gross margin
 
 *Existing adjacent research (cross-referenced):*
-- [[Sectors/Semiconductor Capital Equipment]] — parent context (WFE complex)
-- [[Sectors/Photonic Metrology]] — sister sub-cluster (optical-domain test)
-- [[Sectors/DRAM & HBM Memory]] — primary HBM test demand driver
-- [[Sectors/NAND Memory & Storage]] — wafer test demand driver
-- [[Sectors/Custom Silicon & Networking Semiconductors]] — custom ASIC test demand driver
+- [[Sectors/Semiconductor Capital Equipment]]: parent context (WFE complex)
+- [[Sectors/Photonic Metrology]]: sister sub-cluster (optical-domain test)
+- [[Sectors/DRAM & HBM Memory]]: primary HBM test demand driver
+- [[Sectors/NAND Memory & Storage]]: wafer test demand driver
+- [[Sectors/Custom Silicon & Networking Semiconductors]]: custom ASIC test demand driver
 
 ---
 
@@ -416,3 +416,6 @@ For an investor expressing the "AI test capacity is the second-derivative chokep
 
 ### 2026-05-29 (/sync)
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: transcript-vs-thesis review registered. Advantest share corrected (mgmt-stated ~66% overall / "majority" in AI accelerators, not the 95%/80% sub-segment estimates); capacity reframed 5K→10K systems/yr by ~CY2029 (not "10K installed base by 2028"); HBM4 test-time pillar uncorroborated, realized driver SoC. No sector-framework change — competitive positioning intact.
+
+### 2026-08-20
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

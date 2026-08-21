@@ -14,19 +14,19 @@ key_metrics_last_refreshed: 2026-08-15
 
 ## Summary
 
-Lam is being priced as a memory-cycle WFE vendor levered to NAND/DRAM capex restart, but its Q3 FY26 print revealed a 59% Foundry/Logic revenue mix — a structural shift from "memory cyclical" to "logic+memory diversified" that the market has repriced through the multiple, not the beta: NTM P/E compressed 43x → ~35x (FY27 $9.38) after FY26 printed $5.79 / $23.2B (filed Aug 7) even as the stock held ~$332; LTM is 57x; beta still 1.78. Beneath that mix shift, Lam holds four independent content-per-wafer expansion vectors that compound rather than substitute: ~80% etch share at sub-3nm GAA via the Akara platform, dry resist Aether as production tool of record at SK Hynix (first commercial productization of a 5+yr R&D bet), Cryo 3.0 + ALTUS Halo Mo ALD for 400-1000 layer NAND, and a +40% advanced packaging guide for CY26 making Lam a full-stack AP vendor (TSV etch via Vantex, copper plating via SABRE 3D, hybrid bonding via CBA NAND). Management's 2028 IDay target of $25-27B revenue / 50% GM / 34-35% OM / $6-7 EPS implies structural margin expansion, not cyclical mean reversion. The non-consensus call: Lam is becoming the etch+deposition counterparty to ASML's lithography monopoly, but the market is still grading it on memory beta.
+Lam is being priced as a memory-cycle WFE vendor levered to NAND/DRAM capex restart, but its Q3 FY26 print revealed a 59% Foundry/Logic revenue mix, a structural shift from "memory cyclical" to "logic+memory diversified" that the market has repriced through the multiple, not the beta: NTM P/E compressed 43x → ~35x (FY27 $9.38) after FY26 printed $5.79 / $23.2B (filed Aug 7) even as the stock held ~$332; LTM is 57x; beta still 1.78. Beneath that mix shift, Lam holds four independent content-per-wafer expansion vectors that compound rather than substitute: ~80% etch share at sub-3nm GAA via the Akara platform, dry resist Aether as production tool of record at SK Hynix (first commercial productization of a 5+yr R&D bet), Cryo 3.0 + ALTUS Halo Mo ALD for 400-1000 layer NAND, and a +40% advanced packaging guide for CY26 making Lam a full-stack AP vendor (TSV etch via Vantex, copper plating via SABRE 3D, hybrid bonding via CBA NAND). Management's 2028 IDay target of $25-27B revenue / 50% GM / 34-35% OM / $6-7 EPS implies structural margin expansion, not cyclical mean reversion. Lam is becoming the etch+deposition counterparty to ASML's lithography monopoly, but the market is still grading it on memory beta.
 
 ## Key Non-consensus Insights
 
-**1. The dry resist Aether tool-of-record win at SK Hynix is the most underappreciated milestone in Lam's history.** Lam disclosed Aether as a production tool of record (TOR) at SK Hynix for advanced DRAM, after 5+ years of commercialization work. The market is reading this as one customer win; the structural read is that dry resist substitutes for liquid photoresist applied via traditional spin-coat tracks (TEL's ~90% share monopoly) and unlocks 40-60% materials cost reduction at advanced nodes where high-NA EUV is liquid-resist-incompatible at the limit. If Aether takes a #2 customer (TSMC for high-NA-paired logic, or Micron for HBM4) within 12-18 months, Lam picks up 100+bps of WFE category share that currently flows to TEL — and the optionality is structurally locked because Aether is dry+plasma-based, which Lam already manufactures for etch and deposition. TEL would need to rebuild that physics stack from scratch.
+**1. The dry resist Aether tool-of-record win at SK Hynix is the most underappreciated milestone in Lam's history.** Lam disclosed Aether as a production tool of record (TOR) at SK Hynix for advanced DRAM, after 5+ years of commercialization work. The market is reading this as one customer win; the structural read is that dry resist substitutes for liquid photoresist applied via traditional spin-coat tracks (TEL's ~90% share monopoly) and unlocks 40-60% materials cost reduction at advanced nodes where high-NA EUV is liquid-resist-incompatible at the limit. If Aether takes a #2 customer (TSMC for high-NA-paired logic, or Micron for HBM4) within 12-18 months, Lam picks up 100+bps of WFE category share that currently flows to TEL, and the optionality is structurally locked because Aether is dry+plasma-based, which Lam already manufactures for etch and deposition. TEL would need to rebuild that physics stack from scratch.
 
-**2. Sub-3nm GAA etch intensity is not 5-10% above FinFET — it is 15-20% per wafer, and Akara has ~80% share of that step.** GAA architectures replace FinFET fins with horizontally stacked nanosheets, which require highly selective etch to release the channels without damaging adjacent layers — a step Lam built the Akara platform around (selective etch + atomic layer deposition + ALE). At sub-3nm (TSMC N2 ramping 2026, Samsung SF2 in qualification, Intel 18A ramping 2025-2026), every additional nanosheet stack adds proportional etch+ALD content. Lam disclosed Akara has shipped to all three leading-edge foundries with ~80% share of sub-3nm-specific etch. The market models this as cyclical capex; the structural truth is that content-per-wafer is up by ~17% just from FinFET → GAA conversion, before any unit volume growth. By the time Intel 18A and Samsung SF2 cross 50% utilization (CY27), Lam captures ~$2-3B incremental annual revenue from GAA mix shift alone, independent of WFE TAM.
+**2. Sub-3nm GAA etch intensity is 15-20% per wafer above FinFET rather than 5-10%, and Akara has ~80% share of that step.** GAA architectures replace FinFET fins with horizontally stacked nanosheets, which require highly selective etch to release the channels without damaging adjacent layers, a step Lam built the Akara platform around (selective etch + atomic layer deposition + ALE). At sub-3nm (TSMC N2 ramping 2026, Samsung SF2 in qualification, Intel 18A ramping 2025-2026), every additional nanosheet stack adds proportional etch+ALD content. Lam disclosed Akara has shipped to all three leading-edge foundries with ~80% share of sub-3nm-specific etch. The market models this as cyclical capex; content-per-wafer is up by ~17% just from FinFET → GAA conversion, before any unit volume growth. By the time Intel 18A and Samsung SF2 cross 50% utilization (CY27), Lam captures ~$2-3B incremental annual revenue from GAA mix shift alone, independent of WFE TAM.
 
-**3. The Dec 2025 quarter's 59% Foundry/Logic / 34% Memory revenue split is a structural de-rating from "memory beta" to "logic+memory diversified" that hasn't shown up in beta or P/E.** Historically Lam's revenue split skewed 55-65% Memory / 30-40% Foundry-Logic, which earned it a 1.78 beta (vs SOX ~1.3) and the recurring "memory winter" derate every 18-24 months. The 59/34 inversion in the quarter prior to the latest print reflects three compounding drivers: (a) GAA Akara volumes ramping ahead of memory recovery, (b) dry resist Aether starting to ship for advanced DRAM but counted under memory, (c) NAND/DRAM still working through hyperscaler-driven memory cycle. As NAND restarts in CY26-27 with Cryo 3.0 + ALTUS Halo Mo, the revenue mix likely re-balances to ~50/50 — not the historical memory-heavy ratio. A 50/50 mix should compress beta toward 1.4-1.5, and a beta de-rating alone is worth ~10-15% multiple expansion at constant FCF growth. Sell-side has not yet modeled the de-rating; consensus still calls Lam "memory-levered."
+**3. The Dec 2025 quarter's 59% Foundry/Logic / 34% Memory revenue split is a structural de-rating from "memory beta" to "logic+memory diversified" that hasn't shown up in beta or P/E.** Historically Lam's revenue split skewed 55-65% Memory / 30-40% Foundry-Logic, which earned it a 1.78 beta (vs SOX ~1.3) and the recurring "memory winter" derate every 18-24 months. The 59/34 inversion in the quarter prior to the latest print reflects three compounding drivers: (a) GAA Akara volumes ramping ahead of memory recovery, (b) dry resist Aether starting to ship for advanced DRAM but counted under memory, (c) NAND/DRAM still working through hyperscaler-driven memory cycle. As NAND restarts in CY26-27 with Cryo 3.0 + ALTUS Halo Mo, the revenue mix likely re-balances to ~50/50, not the historical memory-heavy ratio. A 50/50 mix should compress beta toward 1.4-1.5, and a beta de-rating alone is worth ~10-15% multiple expansion at constant FCF growth. Sell-side has not yet modeled the de-rating; consensus still calls Lam "memory-levered."
 
-**4. The 2026 NAND restart will run hotter on etch+deposition intensity per layer than the 2021 cycle, because Cryo 3.0 + ALTUS Halo Mo are layer-additive technologies on a 400-1000-layer roadmap.** NAND vendors (Samsung, SK Hynix, Micron, Kioxia/Sandisk) are guiding 400-layer in 2026, 600-layer in 2027-2028, with a path to 1000+ layers requiring a tungsten-to-molybdenum word-line transition and cryogenic high-aspect-ratio etch. Lam's Cryo 3.0 deep-trench etch and ALTUS Halo Mo ALD are the only commercial tools at production-grade for these transitions — competition from AMAT and TEL is at proof-of-concept. The 2026 NAND capex restart therefore deploys at 30-40% higher Lam content-per-wafer than 2021. Combined with hyperscaler-driven NAND demand for AI inference cache (NVMe SSDs in HBM-bypass tiers), Lam's NAND franchise becomes a 5-7 year secular ramp, not an 18-month bull cycle.
+**4. The 2026 NAND restart will run hotter on etch+deposition intensity per layer than the 2021 cycle, because Cryo 3.0 + ALTUS Halo Mo are layer-additive technologies on a 400-1000-layer roadmap.** NAND vendors (Samsung, SK Hynix, Micron, Kioxia/Sandisk) are guiding 400-layer in 2026, 600-layer in 2027-2028, with a path to 1000+ layers requiring a tungsten-to-molybdenum word-line transition and cryogenic high-aspect-ratio etch. Lam's Cryo 3.0 deep-trench etch and ALTUS Halo Mo ALD are the only commercial tools at production-grade for these transitions; competition from AMAT and TEL is at proof-of-concept. The 2026 NAND capex restart therefore deploys at 30-40% higher Lam content-per-wafer than 2021. Combined with hyperscaler-driven NAND demand for AI inference cache (NVMe SSDs in HBM-bypass tiers), Lam's NAND franchise becomes a 5-7 year secular ramp, not an 18-month bull cycle.
 
-**5. The +40% advanced packaging guide for CY26 reframes Lam from "etch specialist" to "full-stack advanced packaging vendor."** AP for HBM4 / chiplets / 3D-IC requires through-silicon-via (TSV) etch (Lam Vantex, ~60% share), copper plating (Lam SABRE 3D, 6,000+ cells installed and dominant), redistribution layer (RDL) deposition, and increasingly hybrid bonding (Lam CBA NAND for 3D NAND-to-logic stacking, AMAT/BESI Kinex for HBM4E). Most investors model AP as a BESI (hybrid bonding) and AMAT (HBM HBM CMP) story; Lam quietly captures more dollar content per package because TSV etch + plating happens earlier in the flow with higher tool intensity. Management's +40% AP guide for CY26 ($1.4B Q4 AP revenue → ~$5-6B CY27 run-rate) implies Lam captures ~30% of incremental AP WFE — comparable to or exceeding AMAT despite lower brand association with the category.
+**5. The +40% advanced packaging guide for CY26 reframes Lam from "etch specialist" to "full-stack advanced packaging vendor."** AP for HBM4 / chiplets / 3D-IC requires through-silicon-via (TSV) etch (Lam Vantex, ~60% share), copper plating (Lam SABRE 3D, 6,000+ cells installed and dominant), redistribution layer (RDL) deposition, and increasingly hybrid bonding (Lam CBA NAND for 3D NAND-to-logic stacking, AMAT/BESI Kinex for HBM4E). Most investors model AP as a BESI (hybrid bonding) and AMAT (HBM HBM CMP) story; Lam quietly captures more dollar content per package because TSV etch + plating happens earlier in the flow with higher tool intensity. Management's +40% AP guide for CY26 ($1.4B Q4 AP revenue → ~$5-6B CY27 run-rate) implies Lam captures ~30% of incremental AP WFE, comparable to or exceeding AMAT despite lower brand association with the category.
 
 ## Outstanding Questions
 
@@ -38,7 +38,7 @@ Lam is being priced as a memory-cycle WFE vendor levered to NAND/DRAM capex rest
 
 **4. Does Lam's CSBG (Customer Support Business Group) services revenue prove durable through a memory downturn the way KLA's service annuity has?** CSBG is 37-41% of total revenue and management has positioned it as Lam's "service annuity." Stress test: in the 2022-2023 memory downturn, did CSBG hold flat or compress with utilization? Lam's installed base is heavily tilted to memory fabs which see deeper utilization cuts than logic fabs. If CSBG compressed materially in the prior downturn, the durability narrative weakens; if it held within 5-10% of trend, the multiple-de-cycling case strengthens.
 
-**5. Why is Lam trading at ~35x NTM P/E (+86% above the ~19x 5Y average; LTM 57x on FY26 $5.79) when AMAT is at ~32x and KLA is at ~30x?** Lam's premium reflects momentum (+184% past year, +127% in 2025) and Akara/Aether enthusiasm; the 43x print was FY26-incomplete, not a further re-rate. The structural case justifies a premium to AMAT (more concentrated etch dominance, dry resist optionality), but does it justify a premium to KLA, which has 73% ROIC, 75-80% reticle share, and proven service annuity through-cycle? The IC question: at current valuation, where does Lam need to deliver on the 2028 IDay targets ($25-27B / 50% GM / 34-35% OM) to hold the multiple — FY26 already printed $23.2B / 50.5% GM / $5.79, inside the 2028 band two years early? Re-rate to 28x on FY27 $9.38 = ~$263 (~21% downside from $332); 28x on LTM $5.79 = ~$162 (~51% downside).
+**5. Why is Lam trading at ~35x NTM P/E (+86% above the ~19x 5Y average; LTM 57x on FY26 $5.79) when AMAT is at ~32x and KLA is at ~30x?** Lam's premium reflects momentum (+184% past year, +127% in 2025) and Akara/Aether enthusiasm; the 43x print was FY26-incomplete, not a further re-rate. The structural case justifies a premium to AMAT (more concentrated etch dominance, dry resist optionality), but does it justify a premium to KLA, which has 73% ROIC, 75-80% reticle share, and proven service annuity through-cycle? The IC question: at current valuation, where does Lam need to deliver on the 2028 IDay targets ($25-27B / 50% GM / 34-35% OM) to hold the multiple? FY26 already printed $23.2B / 50.5% GM / $5.79, inside the 2028 band two years early. Re-rate to 28x on FY27 $9.38 = ~$263 (~21% downside from $332); 28x on LTM $5.79 = ~$162 (~51% downside).
 
 **6. Is the 59/34 mix shift sustainable, or does it reverse when memory cycle restarts?** The Dec 2025 mix is partly a consequence of memory weakness, not just structural Foundry/Logic strength. When NAND restarts in 2026-2027, Memory revenue absolute dollars rise, potentially returning the mix toward 50/50 or 45/55. The non-consensus thesis (Insight #3) requires the ratio to settle at ~50/50 not flip back to memory-heavy. What is the equilibrium mix post-NAND restart at full capacity utilization?
 
@@ -46,7 +46,7 @@ Lam is being priced as a memory-cycle WFE vendor levered to NAND/DRAM capex rest
 
 ## Business Model & Product Description
 
-Lam Research is the #1 etch and #2 deposition vendor in the global wafer fab equipment (WFE) market, with FY26 revenue of $23.2B (+26% YoY, $5.79 EPS, 50.5% GM; filed 2026-08-07). Lam is the dominant supplier of equipment that physically removes (etches) and adds (deposits) ultra-thin material layers on silicon wafers — the two operations that define every patterning step in chip manufacturing.
+Lam Research is the #1 etch and #2 deposition vendor in the global wafer fab equipment (WFE) market, with FY26 revenue of $23.2B (+26% YoY, $5.79 EPS, 50.5% GM; filed 2026-08-07). Lam is the dominant supplier of equipment that physically removes (etches) and adds (deposits) ultra-thin material layers on silicon wafers, the two operations that define every patterning step in chip manufacturing.
 
 **Revenue segmentation (Q3 FY26 / Dec 2025 quarter):**
 
@@ -59,7 +59,7 @@ Lam Research is the #1 etch and #2 deposition vendor in the global wafer fab equ
 
 | Product | Category | Position | What it does |
 |---|---|---|---|
-| **Akara** | Selective etch + ALE | ~80% share at sub-3nm GAA | Releases nanosheet channels in GAA architecture without damaging adjacent material — only commercial-grade tool for the step |
+| **Akara** | Selective etch + ALE | ~80% share at sub-3nm GAA | Releases nanosheet channels in GAA architecture without damaging adjacent material; only commercial-grade tool for the step |
 | **Vantex** | High-aspect-ratio etch | ~60% share TSV etch | Etches 100:1+ aspect-ratio holes for through-silicon vias and HBM stacking |
 | **Cryo 3.0** | Cryogenic deep-trench etch | Production-grade at 400+ layer NAND | Sub-zero etching enables 400-1000 layer 3D NAND scaling |
 | **ALTUS Halo Mo** | Mo ALD | Sole production-grade Mo word-line tool | Replaces tungsten with molybdenum in NAND word-lines for 600+ layer scaling |
@@ -67,7 +67,7 @@ Lam Research is the #1 etch and #2 deposition vendor in the global wafer fab equ
 | **SABRE 3D** | Copper plating | 6,000+ cells installed, dominant | Plates copper into TSVs for advanced packaging |
 | **CBA NAND** | Hybrid bonding (NAND-to-logic) | Lam's hybrid bonding entry | Direct copper-to-copper bonding for 3D NAND stacked on logic |
 
-**Mental model — the "etch+dep oligopoly counterparty" framework**: ASML monopolizes lithography (defines pattern). After every litho step, etch removes material the pattern said to remove, and deposition adds material the pattern said to add. The etch+deposition step count per wafer is rising structurally (10-15% per node) because patterning physics at sub-3nm requires more recipe steps to compensate for resolution limits — every pattern is now multi-step, and each step needs etch+dep. Lam captures the etch share that physically requires Lam-specific recipes (selective etch, cryo etch, high-AR etch). The market models WFE growth as ~6-8% CAGR; Lam-specific WFE category growth is closer to 10-12% because step-count expansion accrues to Lam's specific tool types disproportionately.
+**Mental model: the "etch+dep oligopoly counterparty" framework**: ASML monopolizes lithography (defines pattern). After every litho step, etch removes material the pattern said to remove, and deposition adds material the pattern said to add. The etch+deposition step count per wafer is rising structurally (10-15% per node) because patterning physics at sub-3nm requires more recipe steps to compensate for resolution limits: every pattern is now multi-step, and each step needs etch+dep. Lam captures the etch share that physically requires Lam-specific recipes (selective etch, cryo etch, high-AR etch). The market models WFE growth as ~6-8% CAGR; Lam-specific WFE category growth is closer to 10-12% because step-count expansion accrues to Lam's specific tool types disproportionately.
 
 **Capital allocation**: FY25 returned $4.46B to shareholders ($1.15B dividends + $3.31B buybacks). Dividend grown 12% CAGR over 5 years. 10-for-1 stock split executed October 2024.
 
@@ -77,11 +77,11 @@ The WFE market is a five-vendor oligopoly with a non-overlapping product structu
 
 | Vendor | Primary category | 2025 share | Direct competition with Lam |
 |---|---|---|---|
-| **ASML** | Lithography (DUV + EUV + High-NA) | ~30% WFE | None — different physics |
+| **ASML** | Lithography (DUV + EUV + High-NA) | ~30% WFE | None: different physics |
 | **Applied Materials** | Deposition + ion implant + CMP | ~19% WFE | Direct in deposition (~17% Lam vs ~25% AMAT); minimal overlap in etch |
 | **Lam Research** | Etch + deposition | ~13-15% WFE | This thesis |
 | **Tokyo Electron (TEL)** | Track + thermal + selective etch | ~12-13% WFE | Track (TEL ~90% liquid-resist coater monopoly threatened by Lam Aether); minor selective-etch overlap |
-| **KLA** | Process control / metrology | ~6-7% WFE | None — different category |
+| **KLA** | Process control / metrology | ~6-7% WFE | None: different category |
 
 **Where Lam sits in the value chain**: every fab's process flow runs litho → etch → deposition → litho → etch → deposition × 50-200 cycles. ASML defines which patterns are possible; Lam executes the etch and selective deposition; AMAT executes broader deposition and CMP; TEL coats resist; KLA inspects the result. Lam's leverage: the etch step is the most recipe-customized per device-class (foundry vs DRAM vs NAND each needs different selectivity profiles), making Lam-customer relationships sticky once the recipe is qualified.
 
@@ -89,7 +89,7 @@ The WFE market is a five-vendor oligopoly with a non-overlapping product structu
 
 1. **GAA transition (FinFET → nanosheet)**: 15-20% etch+dep intensity uplift per wafer, accruing to Lam Akara at sub-3nm.
 2. **NAND scaling to 400-1000 layers**: requires Cryo 3.0 + Mo ALD; Lam is sole production-grade vendor.
-3. **Advanced packaging (HBM4 / 3D-IC / chiplets)**: TSV etch + copper plating + hybrid bonding — Lam captures ~30% of incremental AP WFE. HBM4 ramp (Vera Rubin ~70% SK Hynix / ~30% Samsung / 0% Micron initial — see [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]) drives DRAM segment mix from ~14% to ~16% of Lam revenue through CY26-27 on TSV etch + copper plating volume; tighter bump-pitch (sub-10μm) increases etch step count per HBM stack 25-30%.
+3. **Advanced packaging (HBM4 / 3D-IC / chiplets)**: TSV etch + copper plating + hybrid bonding; Lam captures ~30% of incremental AP WFE. HBM4 ramp (Vera Rubin ~70% SK Hynix / ~30% Samsung / 0% Micron initial; see [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]) drives DRAM segment mix from ~14% to ~16% of Lam revenue through CY26-27 on TSV etch + copper plating volume; tighter bump-pitch (sub-10μm) increases etch step count per HBM stack 25-30%.
 4. **High-NA EUV (ASML)**: shrinks pitch but exacerbates resist limitations; opens dry-resist (Aether) opportunity.
 5. **China localization**: NAURA + AMEC + ACM Research take Lam's mature-node share over CY26-28; ~$1B annualized revenue at risk.
 
@@ -109,18 +109,22 @@ The WFE market is a five-vendor oligopoly with a non-overlapping product structu
 | Dividend Yield | ~0.31% | $1.15B FY25; 12% CAGR over 5 years |
 | Buyback | $3.31B FY25 | Active capital return; ~3-4% annual share count reduction |
 
+## Management and culture
+
+Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (Aether, Cryo 3.0, GAA, AP), Gate 2 fails at ~$332 / ~57× LTM where that pipeline is already in the multiple. [MC-2] Archer is a professional manager (CEO Dec 2018), not a founder; 24 Sep 2025 DEF 14A AIP pays on non-GAAP operating margin and gross margin (5% OM funding gate); no ROIC, no product-volume; 2025/2027 LTIP is 60% relative-TSR PRSUs vs XSOX / 40% time RSUs; CEO guideline 6× salary; Archer 1.48M shares (0.12%) at 5 Sep 2025; FY25 SCT $28.3M; Form 4s through 6 Aug 2026 are 10b5-1 sales, not clustered buys. [MC-7] product org at 23,300 employees (4 Aug 2026 10-K; 19,000 a year earlier): etch+dep combined into Global Products Group 1 Mar 2023; 3 Feb 2026 8-K promoted product-group head Sesha Varadarajan to COO (6 Mar), keeping product P&L and adding CSBG. Fernandes’ Global Customer Operations overlay leaves field-AE hop count to a product P&L [MC-3] unmeasured. [MC-6]/[G-10]: 23k-person oligopolist has no founder entropy-fighter; Aether still one TOR after 5+ years is slow conversion. Swing: 2026 proxy (~3 Nov) adding ROIC or product-volume, or Archer open-market buys.
+
 ## Bull Case
 
 Lam achieves the 2028 IDay targets ($25-27B revenue / 50% GM / 34-35% OM / $6-7 EPS) ahead of schedule. Drivers:
 
 - **GAA Akara compounds**: TSM N2 + Samsung SF2 + Intel 18A all ramp to >50% utilization by CY27, contributing $2-3B incremental annual revenue.
-- **Aether wins second + third TOR customers (TSMC for high-NA, Micron for HBM4) by mid-2027**, driving dry-resist category to $1.5-2B annual run-rate and capturing 100-150bps of WFE category share from TEL. SK Hynix Aether TOR confirmed in HBM4 production stack per [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — first-customer revenue compound validates dry-resist category economics ahead of TSMC/Micron expansion.
+- **Aether wins second + third TOR customers (TSMC for high-NA, Micron for HBM4) by mid-2027**, driving dry-resist category to $1.5-2B annual run-rate and capturing 100-150bps of WFE category share from TEL. SK Hynix Aether TOR confirmed in HBM4 production stack per [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: first-customer revenue compound validates dry-resist category economics ahead of TSMC/Micron expansion.
 - **NAND restart hits hard in mid-2026**: 400-layer ramps at SK Hynix + Samsung + Micron with Cryo 3.0 + ALTUS Halo Mo, driving Memory revenue from ~$2B/quarter (Q3 FY26) to $3.5-4B/quarter at peak.
 - **AP +40% guide tracks ahead**: CY26 AP revenue $5-6B, CY27 $7-8B; SABRE 3D extends share to 80%+ on chiplets/3D-IC packaging at TSMC, Samsung, Intel.
 - **CSBG durability through downturn**: service revenue holds 37-41% of total even in 2026 if memory soft, validating annuity narrative; multiple compresses less.
 - **Mix-shift de-rating earned**: 50/50 Memory/Foundry-Logic equilibrium compresses beta to 1.4-1.5; market repricers to 32-35x forward (sector mean) instead of momentum-premium 35x+.
 
-**Valuation framework — bull**: $26B FY28 revenue × 50% GM × 34% OM = $8.84B operating income × ~80% conversion = ~$7.07 EPS. At 35x = $247/share. Add ~3% annual buyback yield over 3 years compounds to ~$255 vs spot ~$140 = ~80% upside over 3 years.
+**Valuation framework, bull**: $26B FY28 revenue × 50% GM × 34% OM = $8.84B operating income × ~80% conversion = ~$7.07 EPS. At 35x = $247/share. Add ~3% annual buyback yield over 3 years compounds to ~$255 vs spot ~$140 = ~80% upside over 3 years.
 
 ## Bear Case
 
@@ -133,7 +137,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - **AP commoditizes**: BESI hybrid bonding wins HBM5 generation at all three memory vendors; Lam CBA NAND becomes single-vendor specialty (Samsung NAND only); SABRE 3D copper plating sees AMAT entry.
 - **Multiple compression**: 35x → 22-25x as growth rate decelerates and memory-beta narrative reasserts; -25-30% derate even at flat earnings.
 
-**Valuation framework — bear**: $20B FY28 revenue × 47% GM × 30% OM = $4.7B operating income × 80% = ~$3.76 EPS. At 22x = $83/share, vs spot ~$140 = ~40% downside.
+**Valuation framework, bear**: $20B FY28 revenue × 47% GM × 30% OM = $4.7B operating income × 80% = ~$3.76 EPS. At 22x = $83/share, vs spot ~$140 = ~40% downside.
 
 ## Catalysts
 
@@ -148,7 +152,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 | Intel 18A ramp confirmation | H2 CY26 | + | Third leading-edge foundry contributes Akara revenue |
 | Morgan Stanley / sell-side downgrade | Risk-watch | - | Consensus pivot to "deceleration in 2026" derates multiple |
 | 2028 IDay reaffirmation / reset | At any IR event | +/- | Management posture on $25-27B / 50% GM target |
-| Global lab-network expansion start | 2026–2031 | + (infra) | >$3B / 5yr / +>50% experiment capacity — qualification velocity, not a 2026 systems-order print |
+| Global lab-network expansion start | 2026–2031 | + (infra) | >$3B / 5yr / +>50% experiment capacity: qualification velocity, not a 2026 systems-order print |
 
 ## Risks
 
@@ -156,7 +160,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 1. **Aether commercial productization fails to scale beyond SK Hynix**: dry resist remains a niche product, not the structural category-share win the thesis depends on. Insight #1 collapses; downside ~10% of stock value tied to dry-resist optionality vanishes.
 
-2. **GAA etch+dep intensity uplift is overstated**: AMAT or TEL launches a competitive selective etch tool that captures 30%+ share at sub-3nm, compressing Lam's ~80% Akara share. Insight #2 weakens — Lam still wins, but at lower share-of-wallet.
+2. **GAA etch+dep intensity uplift is overstated**: AMAT or TEL launches a competitive selective etch tool that captures 30%+ share at sub-3nm, compressing Lam's ~80% Akara share. Insight #2 weakens: Lam still wins, but at lower share-of-wallet.
 
 3. **NAND scaling stalls at 400 layers**: thermal/structural limits at 600+ layers force vendors to pivot to alternative architectures (e.g., string-stacking dual-pillar) that don't favor Cryo 3.0 + Mo ALD. Insight #4 compresses; NAND franchise becomes a one-cycle bull rather than secular ramp.
 
@@ -164,7 +168,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 **Position risks (thesis right, stock falls):**
 
-5. **Multiple compression independent of execution**: Lam delivers on Akara/Aether/NAND and earnings hit IDay glide, but multiple compresses from ~35x NTM to 25-28x as the broader semis cycle de-rates or AI-spending narrative softens. -20-29% even with thesis intact — a narrower air pocket than the 43x base at last refresh, because FY27 consensus ($9.38) reset the forward multiple while the stock held ~$332. Optical LTM 57x is the Aug 7 FY26 print ($5.79), not the earnings the tape discounts.
+5. **Multiple compression independent of execution**: Lam delivers on Akara/Aether/NAND and earnings hit IDay glide, but multiple compresses from ~35x NTM to 25-28x as the broader semis cycle de-rates or AI-spending narrative softens. -20-29% even with thesis intact, a narrower air pocket than the 43x base at last refresh, because FY27 consensus ($9.38) reset the forward multiple while the stock held ~$332. Optical LTM 57x is the Aug 7 FY26 print ($5.79), not the earnings the tape discounts.
 
 6. **Cyclical memory drawdown lasts longer than expected**: NAND restart slips by 2-4 quarters; Memory revenue stays at 30-35% mix; 50/50 equilibrium not reached in CY26-27. Beta de-rating thesis pushed out 1-2 years.
 
@@ -188,47 +192,52 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied** (2026-07-09 batch-1 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] (#2, #8, #13, #14, #18, #19, L2) · [[Lens - Value Layer Monopoly]]
-- **Triggers + evidence status** — hypotheses tested, not verdicts:
-	- *#8 Aether bottleneck-relocation* — STALLED, plus a new counter-force: no second TOR disclosed (LOW-trigger clock to Oct CY27 running); IBM–Lam 5-yr sub-1nm collaboration (2026-03-10) is R&D validation, not commercial capture; **JSR metal-oxide resist (MOR)** — liquid-applied, ~1/3 cost vs dry resist, plant supplying Samsung + SK Hynix, Taiwan plant planned for TSMC — is a liquid-side leapfrog that could cap the dry-resist category before it scales. Hypothesis downgraded: contested option, not category capture.
-	- *#14 reclassification / #18 decomposition* — the 59/34 mix REVERTED as #18 predicted: Mar-qtr 54% F/L / 39% memory (DRAM record 27%, NAND 12%). But the reversion driver is HBM/advanced-DRAM strength — contracted, structural revenue per L1 — not commodity-memory beta, so the reclassification question mutates: "good memory" mix may deserve the compounder multiple even at 45/55. Beta compression untested; the market skipped it and expanded the P/E instead (35x → ~44x fwd).
-	- *#13/#4 NAND* — CONFIRMED and PULLED FORWARD: majority of the $40B NAND conversion investment now expected before end-CY27 (Q3 call); SK Hynix ~$65B Cheongju NAND fab; Kioxia/SanDisk capex +41% YoY, BiCS10 332L sampling (Jul 3). Cryo 3.0 / ALTUS Halo leg strengthened; NAND still only 12% of systems revenue — early.
-	- *AP* — guide RAISED >40% → **>50% CY26** (copper plating + TSV etch for HBM4/16-hi); quarterly AP revenue not disclosed, $1.4B/qtr bar unverifiable.
-	- *2028 IDay targets* — being overrun two years early: June-qtr guide annualizes ~$26.4B revenue / 50.5% GM / 36.5% OM (inside the 2028 band); management withheld reaffirmation pending a new framework "later in the year." First-ever dielectric etch wins at a key foundry customer = share gain adjacent to Akara; no Akara displacement evidence; CSBG first $2B+ quarter.
-	- *#19* — WFE view raised to $140B CY26 "bias to the upside"; CFO: "clean-room constrained, not demand constrained."
-- **Disconfirming check** (evidence-updated): China 34% of Mar-qtr revenue vs the <30% glide (guided down, late). The structural claims are winning while the price paid for them doubled — stock $140 → $334 (+138% since thesis), fwd P/E 35 → ~44x, then -10.2% (Jul 2) and -7.5% (Jul 7) on the Meta excess-capacity headline: the thesis's own CLOSE trigger contemplated derating below 22x, and instead the risk inverted into a crowded-multiple unwind. Single falsifiers to watch: Jul 29 print vs $6.6B guide; JSR MOR qualification at a logic maker (kills the Aether leg); memory pricing deceleration into Q3 (DRAM +58–63% QoQ in Q2 is the cycle-heat gauge). Batch flag: correlated WFE premise stress-testing live — fundamentals up, tape down.
+- **Models applied** (2026-07-09 batch-1 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] (#2, #8, #13, #14, #18, #19, L2) · [[Lens - Value Layer Monopoly]] · [[Lens - Management and Culture]]
+- **Triggers + evidence status**: hypotheses tested, not verdicts:
+	- *#8 Aether bottleneck-relocation*: STALLED, plus a new counter-force: no second TOR disclosed (LOW-trigger clock to Oct CY27 running); IBM–Lam 5-yr sub-1nm collaboration (2026-03-10) is R&D validation, not commercial capture; **JSR metal-oxide resist (MOR)** (liquid-applied, ~1/3 cost vs dry resist, plant supplying Samsung + SK Hynix, Taiwan plant planned for TSMC) is a liquid-side leapfrog that could cap the dry-resist category before it scales. Hypothesis downgraded: contested option, not category capture.
+	- *#14 reclassification / #18 decomposition*: the 59/34 mix REVERTED as #18 predicted: Mar-qtr 54% F/L / 39% memory (DRAM record 27%, NAND 12%). But the reversion driver is HBM/advanced-DRAM strength: contracted, structural revenue per L1, not commodity-memory beta, so the reclassification question mutates: "good memory" mix may deserve the compounder multiple even at 45/55. Beta compression untested; the market skipped it and expanded the P/E instead (35x → ~44x fwd).
+	- *#13/#4 NAND*: CONFIRMED and PULLED FORWARD: majority of the $40B NAND conversion investment now expected before end-CY27 (Q3 call); SK Hynix ~$65B Cheongju NAND fab; Kioxia/SanDisk capex +41% YoY, BiCS10 332L sampling (Jul 3). Cryo 3.0 / ALTUS Halo leg strengthened; NAND still only 12% of systems revenue, early.
+	- *AP*: guide RAISED >40% → **>50% CY26** (copper plating + TSV etch for HBM4/16-hi); quarterly AP revenue not disclosed, $1.4B/qtr bar unverifiable.
+	- *2028 IDay targets*: being overrun two years early: June-qtr guide annualizes ~$26.4B revenue / 50.5% GM / 36.5% OM (inside the 2028 band); management withheld reaffirmation pending a new framework "later in the year." First-ever dielectric etch wins at a key foundry customer = share gain adjacent to Akara; no Akara displacement evidence; CSBG first $2B+ quarter.
+	- *#19*: WFE view raised to $140B CY26 "bias to the upside"; CFO: "clean-room constrained, not demand constrained."
+	- Management & Culture [MC-1] · gates: Gate 1 pass (WFE process-optionality feed); Gate 2 fail (Aether/AP/GAA already in ~57× LTM / expanded P/E); lens inert as conviction modifier.
+	- Management & Culture [MC-2] · incentive duration: AIP operating-margin/gross-margin, no ROIC or product-volume; LTIP 60% relative TSR vs XSOX; CEO 0.12% / 6×-salary guideline; 10b5-1 sales not open-market buys.
+	- Management & Culture [MC-7] · product org: etch+dep Global Products Group (Mar 2023) + product-COO (Mar 2026) at 23,300 headcount; form matched to scale past the matrix ceiling.
+	- Management & Culture [MC-3] · information-hop count: Global Customer Operations overlay vs product P&L; field-AE hop count at TSMC/Samsung/SK Hynix unmeasured.
+	- Management & Culture [MC-6] · bureaucratic entropy: 23k professional-manager org has no founder-control fighter; Aether single-TOR after 5+ years is slow conversion vs outlier claim.
+- **Disconfirming check** (evidence-updated): China 34% of Mar-qtr revenue vs the <30% glide (guided down, late). The structural claims are winning while the price paid for them doubled: stock $140 → $334 (+138% since thesis), fwd P/E 35 → ~44x, then -10.2% (Jul 2) and -7.5% (Jul 7) on the Meta excess-capacity headline: the thesis's own CLOSE trigger contemplated derating below 22x, and instead the risk inverted into a crowded-multiple unwind. Single falsifiers to watch: Jul 29 print vs $6.6B guide; JSR MOR qualification at a logic maker (kills the Aether leg); memory pricing deceleration into Q3 (DRAM +58–63% QoQ in Q2 is the cycle-heat gauge). Batch flag: correlated WFE premise stress-testing live; fundamentals up, tape down. [MC-6]/[G-10] adversary on the culture read: most new-venture pursuit destroys value and 23k-person professional-manager WFE names are the entropy reference class; Aether remaining one TOR after 5+ years is the datapoint that keeps the conversion-rate claim from beating the base rate.
 
 ## Related Research
 
-- [[Theses/AMAT - Applied Materials.md]] — direct WFE peer; deposition counterparty and AP competitor (BESI 9% stake)
-- [[Theses/KLA - KLA Corporation.md]] — process control counterparty in WFE oligopoly; comparable structural positioning at higher ROIC
-- [[Theses/BESI - BE Semiconductor Industries.md]] — hybrid bonding partner/competitor; AMAT-BESI Kinex affects Lam CBA NAND positioning
-- [[Sectors/Semiconductor Capital Equipment]] — sector-aggregate WFE peer view
-- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]] — Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial; Aether confirmed at SK Hynix HBM4 production stack; JEDEC 720→775→900µm relaxation extends MR-MUF runway (Lam SABRE 3D + TSV etch ramp continues independent of hybrid-bonding mandate timing); DRAM mix shift 14→16% on HBM4 etch step-count increase
-- [[Theses/NVDA - Nvidia.md]] — end-customer demand driver via HBM/AI inference SSD
-- [[Theses/AVGO - Broadcom.md]] — AI infrastructure end-demand
-- [[Theses/SNDK - SanDisk]] — NAND end-customer; Cryo 3.0 + ALTUS Halo Mo demand source
-- [[Theses/000660 - SK Hynix.md]] — Aether dry resist tool-of-record customer; HBM4/HBM4E/MR-MUF leadership
-- [[Theses/285A - Kioxia]] — NAND end-customer; Kioxia capex driver for Lam NAND etch/dep share
-- [[Theses/TSM - Taiwan Semiconductor.md]] — leading-edge foundry; N2/A14 GAA Akara revenue source
-- [[Sectors/Semiconductor Capital Equipment.md]] — sector context
-- [[AI Bubble Risk and Semiconductor Valuations]] — multiple-compression scenario macro context
-- [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas.md]] — WFE TAM growth; Lam Vantex line for HBM4 TSV; Akara 2x-3x expansion 2026
-- [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation.md]] — head-to-head AMAT vs LRCX; ALTUS Halo Mo / SABRE 3D / NAND share-of-wallet expansion data
-- [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas.md]] — Dec 2025 quarter mix shift to 59% Foundry/Logic; CSBG $1.99B
-- [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact.md]] — AP competitive structure; AMAT-BESI Kinex; SK Hynix MR-MUF
-- [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas.md]] — HBM4 demand context for Vantex TSV etch
-- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript.md]] — AI inference SSD demand driver; NAND restart context
-- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 2 WFE compounder; UPSIZE Low→5-6% (highest WFE ROIC NTM 50.6%; Aether dry resist taking TEL share)
-- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]] — memory WFE upcycle: memory WFE capex +34% (SK Hynix) / +26% Samsung / +20% Micron 2026; 1b/1c node migration confirmed by mgmt; rising EUV layers
-- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]] — TSMC board ~US$29.4B advanced/packaging/fab appropriations
-- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]] — CoWoS HVM yield/near-balance — packaging tool pull persists
-- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]] — SpaceX Terafab off-grid power architecture (WFE demand optionality)
+- [[Theses/AMAT - Applied Materials.md]]: direct WFE peer; deposition counterparty and AP competitor (BESI 9% stake)
+- [[Theses/KLA - KLA Corporation.md]]: process control counterparty in WFE oligopoly; comparable structural positioning at higher ROIC
+- [[Theses/BESI - BE Semiconductor Industries.md]]: hybrid bonding partner/competitor; AMAT-BESI Kinex affects Lam CBA NAND positioning
+- [[Sectors/Semiconductor Capital Equipment]]: sector-aggregate WFE peer view
+- [[Research/2026-05-11 - HBM Packaging Equipment Stack - MR-MUF to Hybrid Bonding Transition - deep-dive]]: Vera Rubin HBM4 ~70/30/0 SK Hynix/Samsung/Micron initial; Aether confirmed at SK Hynix HBM4 production stack; JEDEC 720→775→900µm relaxation extends MR-MUF runway (Lam SABRE 3D + TSV etch ramp continues independent of hybrid-bonding mandate timing); DRAM mix shift 14→16% on HBM4 etch step-count increase
+- [[Theses/NVDA - Nvidia.md]]: end-customer demand driver via HBM/AI inference SSD
+- [[Theses/AVGO - Broadcom.md]]: AI infrastructure end-demand
+- [[Theses/SNDK - SanDisk]]: NAND end-customer; Cryo 3.0 + ALTUS Halo Mo demand source
+- [[Theses/000660 - SK Hynix.md]]: Aether dry resist tool-of-record customer; HBM4/HBM4E/MR-MUF leadership
+- [[Theses/285A - Kioxia]]: NAND end-customer; Kioxia capex driver for Lam NAND etch/dep share
+- [[Theses/TSM - Taiwan Semiconductor.md]]: leading-edge foundry; N2/A14 GAA Akara revenue source
+- [[Sectors/Semiconductor Capital Equipment.md]]: sector context
+- [[AI Bubble Risk and Semiconductor Valuations]]: multiple-compression scenario macro context
+- [[Research/2026-03-20 - Semis - Gemini WFE Equipment Canvas.md]]: WFE TAM growth; Lam Vantex line for HBM4 TSV; Akara 2x-3x expansion 2026
+- [[Research/2026-03-20 - Lam Research and Applied Materials Evaluation.md]]: head-to-head AMAT vs LRCX; ALTUS Halo Mo / SABRE 3D / NAND share-of-wallet expansion data
+- [[Research/2026-02-26 - Semis - Gemini Lam vs AMAT Canvas.md]]: Dec 2025 quarter mix shift to 59% Foundry/Logic; CSBG $1.99B
+- [[Research/2026-04-10 - Hybrid Bonding and BESI Revenue Impact.md]]: AP competitive structure; AMAT-BESI Kinex; SK Hynix MR-MUF
+- [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas.md]]: HBM4 demand context for Vantex TSV etch
+- [[Research/2026-04-24 - Dylan Patel on AI Token Supply and Demand - video-transcript.md]]: AI inference SSD demand driver; NAND restart context
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Tier 2 WFE compounder; UPSIZE Low→5-6% (highest WFE ROIC NTM 50.6%; Aether dry resist taking TEL share)
+- [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]]: memory WFE upcycle: memory WFE capex +34% (SK Hynix) / +26% Samsung / +20% Micron 2026; 1b/1c node migration confirmed by mgmt; rising EUV layers
+- [[Research/2026-08-12 - TSM AMAT LRCX KLAC - TSMC Board US29.4B Capex Sony JV - news]]: TSMC board ~US$29.4B advanced/packaging/fab appropriations
+- [[Research/2026-08-12 - TSM BESI AMAT - TSMC CoWoS 5.5x Reticle 99pct Yield - news]]: CoWoS HVM yield/near-balance; packaging tool pull persists
+- [[Research/2026-08-12 - AMAT LRCX KLAC AEHR - SpaceX Terafab Off-Grid Power - news]]: SpaceX Terafab off-grid power architecture (WFE demand optionality)
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
 - [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]
-- [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]] — IR: >$3B / 5yr global lab network; experiment capacity +>50%; 24/7 US–Asia–Europe; cycle-time up to 2.5×; DeBoer FE+AP color (not TOR)
+- [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]]: IR: >$3B / 5yr global lab network; experiment capacity +>50%; 24/7 US–Asia–Europe; cycle-time up to 2.5×; DeBoer FE+AP color (not TOR)
 
-- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]] — SE week: restates $3B labs; AMAT AP +>70% 2026 peer color; SPIL $3.1B Douliu CoWoS 2028
+- [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: SE week: restates $3B labs; AMAT AP +>70% 2026 peer color; SPIL $3.1B Douliu CoWoS 2028
 
 ## Log
 
@@ -281,3 +290,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]]: IR >$3B / 5yr / +>50% experiment capacity; qualification-cycle compression, not 2026 AP/WFE/Aether TOR — DeBoer touches Micron HIGH-leg candidate only — conviction unchanged (high).
 - [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: roundup restates $3B labs; AMAT AP +>70% is peer color not an LRCX AP dollar — HIGH AP>$1.4B / WFE≥$140B unfired — conviction unchanged (high).
 - Metrics synced: 16 figures across 5 sections. NTM 43x→35x after FY26 $5.79/$23.2B print (LP 58x is FY26-est, not NTM); EV/S 9.0x→17.8x; $322→$332 / $438B→$416B. Snapshot: [[_Archive/Snapshots/LRCX - Lam Research (pre-metrics-pass 2026-08-15-194220)]]
+
+### 2026-08-20
+- Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Inert (Gate 2 fail); Aether/AP already in ~57x LTM. Conviction unchanged.
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

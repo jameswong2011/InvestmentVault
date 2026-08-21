@@ -8,42 +8,42 @@ sector: Optical Networking & Photonics
 ticker: IQE
 fmp_symbol: IQE.L
 source: Multi-source synthesis (Claude, ChatGPT, Gemini, Grok conversations; web research April 2026)
-key_metrics_last_refreshed: 2026-07-12
+key_metrics_last_refreshed: 2026-08-16
 ---
 
 # IQE — IQE plc
 
 ## Summary
 
-World's largest independent compound semiconductor epitaxial wafer manufacturer -- the only scaled provider spanning all major III-V material systems (GaAs, InP, GaN, GaSb) across three deposition platforms (MBE, MOCVD, CBE). SiPh foundries cannot generate their own light, creating structural demand for III-V laser sources that IQE supplies from its Western (UK/US) base. Evaluate primarily as an **M&A special situation overlaid on a structural InP demand story**: formal UK Takeover Code offer period active since September 2025, board negotiating non-binding bids while separately marketing Taiwan operations for sale. Stock surged from 4.7p (November 2025) to a ~52.5p April-2026 peak -- >1,000% at the high -- and has since eased to ~38.8p, roughly back at analyst consensus (~40p) at peer EV/Revenue (~6x). Standalone financials remain fragile: five years of revenue decline, quarterly covenant waivers, margins a fraction of competitors'. Risk/reward finely balanced between strategic acquisition value and severe downside if the review fails.
+World's largest independent compound semiconductor epitaxial wafer manufacturer: the only scaled provider spanning all major III-V material systems (GaAs, InP, GaN, GaSb) across three deposition platforms (MBE, MOCVD, CBE). SiPh foundries cannot generate their own light, creating structural demand for III-V laser sources that IQE supplies from its Western (UK/US) base. Evaluate primarily as an M&A special situation overlaid on a structural InP demand story: formal UK Takeover Code offer period active since September 2025, board negotiating non-binding bids while separately marketing Taiwan operations for sale. Stock surged from 4.7p (November 2025) to a ~52.5p April-2026 peak (>1,000% at the high) and now trades at ~46.6p, ~16% through analyst consensus (~40p) and through the peer EV/Revenue band (~7.1x vs Win Semi 6.7x / Coherent 6.9x). Standalone financials remain fragile: five years of revenue decline, quarterly covenant waivers, margins a fraction of competitors'. Risk/reward finely balanced between strategic acquisition value and severe downside if the review fails.
 
 ## Key Non-consensus Insights
 
-- **The silicon photonics paradox is IQE's hidden demand catalyst.** Every SiPh transceiver and CPO module requires external III-V laser sources (InP or GaAs) -- silicon PICs cannot generate their own light. As GlobalFoundries, Tower Semi, and TSMC scale SiPh production toward $1B+ by 2030, demand for IQE's epiwafers grows in lockstep. IQE is the only major independent Western epitaxy supplier spanning these material systems.
+- **The silicon photonics paradox is IQE's hidden demand catalyst.** Every SiPh transceiver and CPO module requires external III-V laser sources (InP or GaAs); silicon PICs cannot generate their own light. As GlobalFoundries, Tower Semi, and TSMC scale SiPh production toward $1B+ by 2030, demand for IQE's epiwafers grows in lockstep. IQE is the only major independent Western epitaxy supplier spanning these material systems.
 
 - **The geopolitical scarcity premium on Western III-V supply is increasing but not reflected in standalone valuation.** GlobalFoundries is marketing a "China-free" photonics supply chain; Western defense programs increasingly require domestically sourced III-V materials. CSconnected cluster (2,800+ jobs, £160M Investment Zone, Wales Defence and Security Cluster launched March 2026) anchors IQE in a government-backed ecosystem any acquirer with defense or photonics ambitions would value above book.
 
-- **The global InP supply gap validates scarcity pricing.** Demand projected at 2M pieces (2025) against production capacity of only 600K -- a 70% shortfall. LandMark Optoelectronics trades at ~$4.77B market cap on ~$60M trailing revenue (~79x revenue), demonstrating the extreme multiples the market assigns to InP capability when paired with growth.
+- **The global InP supply gap validates scarcity pricing.** Demand projected at 2M pieces (2025) against production capacity of only 600K, a 70% shortfall. LandMark Optoelectronics trades at ~$4.77B market cap on ~$60M trailing revenue (~79x revenue), demonstrating the extreme multiples the market assigns to InP capability when paired with growth.
 
 - **The Taiwan sale and defense demand acceleration could transform IQE into a pure-play Western defense/photonics company at the exact moment sovereign supply chain demand is accelerating.** Taiwan sale proceeds fully repay the HSBC facility and convertible loan notes; the remaining UK/US operations (defense GaN, InP photonics, microLED) become a cleaner acquisition target. H2 2025's beat was partly driven by faster-than-expected US defense funding releases. Trade-off: Taiwan contributed meaningfully to H2 revenue recovery, so the remaining entity would be smaller.
 
-- **At ~38.8p, the stock has given back roughly a quarter from the ~52p level — the M&A premium that justified the position at 19p has partly deflated, but at ~2x the 19p entry it is still not obviously cheap.** EV/Revenue expanded from ~2.3x to ~6.1x, reaching parity with Win Semiconductors (6.7x) and Coherent (6.9x). Analyst consensus was 40p; the stock trades above it.
+- **At ~46.6p, the stock has retraced only ~11% from the ~52.5p April print; the M&A premium that justified the position at 19p has not re-deflated the way it had at 38.8p, and at ~2.5x the 19p entry it is still not cheap.** EV/Revenue is ~7.1x, through Win Semiconductors (6.7x) and Coherent (6.9x). Analyst consensus remains ~40p; the stock is ~16% through it.
 
 ## Outstanding Questions
 
-1. Will the strategic review produce a firm offer, and at what price? At ~38.8p, a bid clearing ~60-80p now implies +55-105% upside (wider than at 52p) — who has the strategic rationale AND balance sheet to pay that?
+1. Will the strategic review produce a firm offer, and at what price? At ~46.6p, a bid clearing ~60-80p now implies +29-72% upside (tighter than at 38.8p, still wider than at 52p); who has the strategic rationale AND balance sheet to pay that?
 2. Taiwan sale valuation: what multiple do the Taiwan operations command? Does the transaction close the balance sheet gap entirely, or does a residual debt position remain?
 3. Post-Taiwan-sale, can the remaining UK/US business achieve standalone profitability? H1 2025 UK/US operations alone were unprofitable.
 4. How much InP epiwafer demand will IQE actually capture from the CPO/SiPh buildout? Coherent's new 6-inch InP platform, IntelliEPI's CHIPS-funded expansion, and the Eindhoven 6-inch InP fab (EUR 150M, operational 2028) are all adding III-V capacity.
 5. What is the real impact of China's gallium (98% of global primary production) and indium (59%) export controls on IQE's input cost structure?
 6. Has any named bidder emerged in the Takeover Code process, or are the non-binding offers from financial sponsors without strategic synergy?
-7. How does the Porotech microLED partnership scale commercially — is AR/VR display volume realistic before 2028?
+7. How does the Porotech microLED partnership scale commercially, and is AR/VR display volume realistic before 2028?
 
 ## Business Model & Product Description
 
-IQE's business model is the "ARM of compound semiconductors" — an IP-rich, design-intensive substrate supplier whose value derives from the extreme difficulty of growing precision crystalline materials that finished-device makers cannot produce internally. Like ARM, which licenses chip architectures that others fabricate, IQE sells epitaxial wafers (the precisely grown crystal layers that form the active foundation of III-V devices) to customers who then process them into finished lasers, sensors, and transistors. Revenue is wafer-based (price × volume per material system), with customer relationships defined by 12-24 month qualification cycles that create high switching costs. The business spans four material systems (GaAs, InP, GaN, GaSb) across three deposition platforms (MBE, MOCVD, CBE) — a breadth no other independent epitaxy supplier matches. The current evaluation should weight IQE primarily as an M&A special situation overlaid on a structural InP demand story.
+IQE's business model is the "ARM of compound semiconductors": an IP-rich, design-intensive substrate supplier whose value derives from the extreme difficulty of growing precision crystalline materials that finished-device makers cannot produce internally. Like ARM, which licenses chip architectures that others fabricate, IQE sells epitaxial wafers (the precisely grown crystal layers that form the active foundation of III-V devices) to customers who then process them into finished lasers, sensors, and transistors. Revenue is wafer-based (price × volume per material system), with customer relationships defined by 12-24 month qualification cycles that create high switching costs. The business spans four material systems (GaAs, InP, GaN, GaSb) across three deposition platforms (MBE, MOCVD, CBE), a breadth no other independent epitaxy supplier matches. The current evaluation should weight IQE primarily as an M&A special situation overlaid on a structural InP demand story.
 
-IQE manufactures compound semiconductor epitaxial wafers — the precisely grown crystalline material layers that form the active foundation of III-V semiconductor devices. IQE does not make finished chips; it supplies the starting wafer material to device fabricators who then process it into lasers, detectors, transistors, and LEDs. IQE is the only scaled independent provider spanning all major III-V material systems across three deposition platforms (MBE, MOCVD, CBE), with manufacturing in the UK, US, and Taiwan.
+IQE manufactures compound semiconductor epitaxial wafers, the precisely grown crystalline material layers that form the active foundation of III-V semiconductor devices. IQE does not make finished chips; it supplies the starting wafer material to device fabricators who then process it into lasers, detectors, transistors, and LEDs. IQE is the only scaled independent provider spanning all major III-V material systems across three deposition platforms (MBE, MOCVD, CBE), with manufacturing in the UK, US, and Taiwan.
 
 ### VCSEL Epitaxial Wafers (GaAs — Gallium Arsenide)
 
@@ -56,13 +56,13 @@ Extended multi-year supply agreement with Lumentum (December 2025) covering 3D s
 
 ### InP (Indium Phosphide) Epitaxial Wafers
 
-Wafers for high-speed optical communications components — the structural growth driver linked to the silicon photonics and CPO buildout:
+Wafers for high-speed optical communications components, the structural growth driver linked to the silicon photonics and CPO buildout:
 - **EML (Electro-absorption Modulated Laser) wafers**: For high-speed transmitters in 800G and 1.6T optical transceivers powering AI data center interconnects.
 - **CW (Continuous Wave) laser wafers**: External light sources required by silicon photonics circuits, which cannot generate their own light due to silicon's indirect bandgap. Every SiPh transceiver and CPO module needs III-V laser sources.
 - **Photodetector wafers**: InP-based receivers for high-speed optical links.
 - **6-inch InP foundry platform** launched to serve the scaling demands of data center optics. Multiple Tier 1 design wins for AI/hyperscale infrastructure applications.
 
-Global InP demand is projected at 2M pieces in 2025 against production capacity of only 600K — a 70% structural shortfall that underpins the scarcity value of IQE's InP capability.
+Global InP demand is projected at 2M pieces in 2025 against production capacity of only 600K, a 70% structural shortfall that underpins the scarcity value of IQE's InP capability.
 
 ### GaN (Gallium Nitride) Epitaxial Wafers — RF and Power
 
@@ -76,7 +76,7 @@ Wafers for high-power, high-frequency applications in defense and communications
 
 A distinct product line from GaN RF, targeting display applications:
 - **Porotech partnership**: Scaling porous GaN-based microLEDs on 200mm/300mm epiwafers for full-color AR/VR microdisplays. Porotech's porous GaN approach enables native RGB emission without color conversion filters.
-- **Datacom microLEDs**: Separate partnership for microLEDs enabling high-density, power-efficient optical interconnects within data center systems — a novel non-display application.
+- **Datacom microLEDs**: Separate partnership for microLEDs enabling high-density, power-efficient optical interconnects within data center systems, a novel non-display application.
 - **8-inch GaN-on-Si microLED foundry service** launched with an unnamed consumer multinational for AR/VR applications.
 
 ### GaSb (Gallium Antimonide) & Specialty Materials
@@ -95,11 +95,11 @@ Epitaxial wafers for infrared detector applications in defense and sensing (ther
 
 IQE's moat rests on unmatched technology breadth (the only independent provider spanning all major III-V materials and deposition technologies), high qualification barriers (12–24 month customer certification cycles), and geographic diversification across UK, US, and Taiwan. However, IQE's small scale and thin margins make this moat more fragile than it appears:
 
-**Win Semiconductors** (Taiwan) commands >50% of the global GaAs foundry market, generating ~$493M in trailing revenue at ~33% EBITDA margins — versus IQE's ~£97M at ~2%. Win Semi is pivoting toward AI optical interconnects and LEO satellite applications. Q4 2025 revenue was NT$4.79B (+29% YoY). Win Semi is a wafer fabrication foundry (front-end device processing) rather than a pure epitaxy supplier, so the two are adjacent rather than directly overlapping, but they compete for the same customer spend.
+**Win Semiconductors** (Taiwan) commands >50% of the global GaAs foundry market, generating ~$493M in trailing revenue at ~33% EBITDA margins, versus IQE's ~£97M at ~2%. Win Semi is pivoting toward AI optical interconnects and LEO satellite applications. Q4 2025 revenue was NT$4.79B (+29% YoY). Win Semi is a wafer fabrication foundry (front-end device processing) rather than a pure epitaxy supplier, so the two are adjacent rather than directly overlapping, but they compete for the same customer spend.
 
-**Coherent Corp** (~$5B+ revenue) represents the vertical integration threat. Coherent launched "the world's first 6-inch InP production platform" across four facilities in August 2025, claiming ~4x device density at ~50% of legacy 3-inch costs. Coherent produces epiwafers internally for its own VCSEL and transceiver products, directly reducing the addressable market for outsourcers. Yet Coherent still purchases EML lasers FROM Lumentum — demonstrating that wafer diameter is secondary to epitaxial process mastery in certain applications.
+**Coherent Corp** (~$5B+ revenue) represents the vertical integration threat. Coherent launched "the world's first 6-inch InP production platform" across four facilities in August 2025, claiming ~4x device density at ~50% of legacy 3-inch costs. Coherent produces epiwafers internally for its own VCSEL and transceiver products, directly reducing the addressable market for outsourcers. Yet Coherent still purchases EML lasers FROM Lumentum, demonstrating that wafer diameter is secondary to epitaxial process mastery in certain applications.
 
-**LandMark Optoelectronics** (Taiwan, ~$60M trailing revenue, $4.77B market cap) specializes in InP/GaAs epi for optical communications. 76% YoY cumulative revenue growth in 2025 driven by 800G/1.6T optical module demand. The market cap disparity with IQE (LandMark at ~49x revenue vs IQE at ~5.3x) reflects the growth premium on pure InP exposure.
+**LandMark Optoelectronics** (Taiwan, ~$60M trailing revenue, $4.77B market cap) specializes in InP/GaAs epi for optical communications. 76% YoY cumulative revenue growth in 2025 driven by 800G/1.6T optical module demand. The market cap disparity with IQE (LandMark at ~49x revenue vs IQE at ~6.4x sales / ~7.1x EV) reflects the growth premium on pure InP exposure.
 
 **VPEC** (Taiwan) holds ~14% of the GaAs epitaxial wafer market, shifting focus toward optical components for AI data centers.
 
@@ -107,22 +107,22 @@ IQE's moat rests on unmatched technology breadth (the only independent provider 
 
 ### Silicon Photonics and CPO: The Structural Demand Driver
 
-Silicon photonics is on the cusp of a significant growth surge as data centers shift from copper to optical interconnects. The "copper wall" — physical limits of electrical links in AI clusters — makes optical interconnects essential for scaling next-generation networks.
+Silicon photonics is on the cusp of a significant growth surge as data centers shift from copper to optical interconnects. The "copper wall" (physical limits of electrical links in AI clusters) makes optical interconnects essential for scaling next-generation networks.
 
 - **Market size**: SiPh market ~$2.86B (2025) → projected $10.36B (2030) → $28.75B (2034) at ~29% CAGR
 - **CPO inflection 2026-2027**: Broadcom shipped 50,000+ Bailly CPO switches in 2025 (the only true volume CPO production). NVIDIA Quantum-X/Spectrum-X CPO launching early 2026. TSMC COUPE entered risk production with AMD in February 2026
-- **III-V structural demand**: Silicon is an indirect bandgap material and cannot generate laser light efficiently. Every SiPh transceiver and CPO module requires external CW or EML laser sources from InP or GaAs — creating a structural growth link between SiPh foundry buildout and III-V epiwafer demand
+- **III-V structural demand**: Silicon is an indirect bandgap material and cannot generate laser light efficiently. Every SiPh transceiver and CPO module requires external CW or EML laser sources from InP or GaAs, creating a structural growth link between SiPh foundry buildout and III-V epiwafer demand
 - **EML/PIC laser revenue**: projected $2.4B (2023) → $5.9B (2029)
 - **CPO market**: exceeds $20B by 2036, growing at ~37% CAGR from 2026
-- **CPO power advantage**: 9W per CPO port vs 30W pluggable — Jensen Huang noted a million-GPU datacenter using conventional transceivers would need 6M modules consuming 180MW just for networking
+- **CPO power advantage**: 9W per CPO port vs 30W pluggable; Jensen Huang noted a million-GPU datacenter using conventional transceivers would need 6M modules consuming 180MW just for networking
 
 ### Supply Chain Dynamics
 
 - **InP supply gap**: demand ~2M pieces (2025) vs production capacity of only ~600K (70% shortfall)
 - **NVIDIA's $4B dual-vendor investment** ($2B each to Lumentum and Coherent, March 2026) validates the strategic importance of the InP laser supply chain
 - **Chinese InP localization**: only ~3% at 25G and above. Yuanjie and Everbright developing domestic EMLs but remain 2-3 generations behind
-- **China controls upstream raw materials**: 98% of primary gallium production, 59% of primary indium — export controls imposed on GaAs (Aug 2023) and InP (Feb 2025) create mutual vulnerability
-- **New Western InP capacity under construction**: Eindhoven 6-inch InP photonic chip fab (EUR 150M, EU Chips Act backed, operational 2028) — years away from production
+- **China controls upstream raw materials**: 98% of primary gallium production, 59% of primary indium; export controls imposed on GaAs (Aug 2023) and InP (Feb 2025) create mutual vulnerability
+- **New Western InP capacity under construction**: Eindhoven 6-inch InP photonic chip fab (EUR 150M, EU Chips Act backed, operational 2028), years away from production
 
 ### IQE Technology Portfolio
 
@@ -135,86 +135,95 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Stock Price | ~38.8p | Up >1,000% from Nov 2025 low of 4.7p; exceeds analyst consensus (40p) |
-| Market Cap | ~£516M | Shares in issue: ~1,330M (post the ~34% dilutive MACOM raise) |
-| EV/Revenue | ~6.1x | Now near peer parity (Win Semi 6.7x, Coherent 6.9x); was 2.3x at 19p |
+| Stock Price | ~46.6p | Up >1,000% from Nov 2025 low of 4.7p; ~16% through analyst consensus (40p) |
+| Market Cap | ~£620M | Shares in issue: ~1,330M (post the ~34% dilutive MACOM raise) |
+| EV/Revenue | ~7.1x | Through peer band (Win Semi 6.7x, Coherent 6.9x); was 2.3x at 19p |
 | FY2025 Revenue | ~£97M | Upper end of £90-100M guidance; five consecutive years of decline from FY2020 peak |
 | Adj. EBITDA | ~£2.0M | Returned to positive after H1 2025 was -£0.4M; vs Win Semi ~33% margin |
 | Net Debt | ~£70M | Quarterly HSBC covenant waivers required; CLNs maturing 2026 |
 | Cash | £15.6M | As of 31 December 2025 |
-| Analyst Target Range | 20-61p | Consensus ~40p; stock has already exceeded consensus |
-| 52-Week Range | 4.66p – 51.10p | Currently at or near 52-week high |
+| Analyst Target Range | 20-61p | Consensus ~40p; stock is ~16% through consensus |
+| 52-Week Range | 4.66p – 72.90p | ~36% below the 72.9p June high; mid-upper range, not a high |
 | Status | Under strategic review | Offer period active; negotiating non-binding bids; Taiwan sale in progress |
+
+## Management and culture
+
+Hypothesis: Anti-fit on [[Lens - Management and Culture]]. Gate 1 passes (InP/GaAs/SiPh/CPO and defense-GaN is a high-frequency optionality feed); Gate 2 fails at ~46.6p/~7.1x EV/Revenue, where the AI-photonics pipeline is already in the multiple (the 19.8p, 58.4% discount 27-Apr-2026 MACOM raise was the psychosis print). [MC-1] recognition is the break: three CEOs in four years (founder Drew Nelson left the board 19-Jun-2024; Americo Lemos, CEO from Jan-2022, departed with immediate effect 29-Oct-2024; Jutta Meier, Intel/GF/AMD finance, permanent CEO 13-May-2025 and still dual CEO/CFO) funded optionalities: 9-Nov-2022 CMD >30% EBITDA by 2027 via GaN power/microLED; 31-Jul-2024 Taiwan TWSE IPO; 18-Nov-2024 review expanded 8-Sep-2025 to a full sale; that resolved as serial issuance (£31.1m at 20p May-2023; £18m CLNs at 15p 13-Mar-2025; £81m at 19.8p 27-Apr-2026, MACOM 11.5% + two seats after no bid). [MC-2] FY2025 AR: CEO owns 0% vs 200% salary guideline (31-Dec-2025); STI/LTI 0% of max every year 2021–2025; Chair Cubitt has no ownership guideline and took immediately-vested quarterly options; LTIP vests on Adjusted EBITDA margin plus strategic measures, not ROIC; NED Bastani sold 500,000 at 45.83p on 4-Aug-2026. [MC-6]/[MC-8] average headcount 517→469; revenue £167.5m (FY2022)→£97.3m (FY2025); adj. EBITDA margin 3% vs the CMD >30% target. Meier salary-for-options (Jul–Dec-2025) and the MACOM LTSA/board overlay are the only §4 calibration and do not yet beat the AIM-turnaround capital-destruction base rate. Swing variable: two clean InP-photonics halves without another dilutive raise.
 
 ## Bull Case
 
-- Strategic review delivers a bid at 60-80p+ reflecting strategic premium for Western III-V epitaxy capability — the InP supply gap (70% shortfall) and NVIDIA's $4B dual-vendor investment validate scarcity pricing
+- Strategic review delivers a bid at 60-80p+ reflecting strategic premium for Western III-V epitaxy capability; the InP supply gap (70% shortfall) and NVIDIA's $4B dual-vendor investment validate scarcity pricing
 - Taiwan operations sale eliminates balance sheet risk, repays HSBC facility and CLNs, transforms IQE into a pure Western defense/photonics company with a cleaner acquisition profile
 - CPO/SiPh inflection 2026-2027 creates structural demand growth for InP/GaAs epiwafers that flows directly to IQE as the sole independent Western multi-material epi supplier
-- Defense spending acceleration continues — GaN RF for radar, satellite, and electronic warfare has national security barriers to entry favoring IQE's UK/US footprint
+- Defense spending acceleration continues: GaN RF for radar, satellite, and electronic warfare has national security barriers to entry favoring IQE's UK/US footprint
 - Lumentum supply agreement extension secures multi-year VCSEL revenue base while photonics design wins de-risk the order book
-- LandMark's ~79x revenue multiple demonstrates the market is willing to pay enormous premiums for scarce InP capability — an acquirer may value IQE's broader III-V platform well above current levels
+- LandMark's ~79x revenue multiple demonstrates the market is willing to pay enormous premiums for scarce InP capability; an acquirer may value IQE's broader III-V platform well above current levels
 
 ## Bear Case
 
-- At ~52p (EV/Revenue ~6.1x), the stock has rallied past analyst consensus and trades at approximate peer multiples — the valuation discount that defined the M&A special situation has largely evaporated
+- At ~52p (EV/Revenue ~6.1x), the stock has rallied past analyst consensus and trades at approximate peer multiples; the valuation discount that defined the M&A special situation has largely evaporated
 - If the strategic review fails to produce a bid, downside is severe: standalone profitability is unproven, the balance sheet remains stressed, and the stock was 4.7p just five months ago
-- Coherent's 6-inch InP platform, IntelliEPI's CHIPS-funded expansion, and the Eindhoven fab are all adding III-V capacity — IQE's scarcity premium may erode over 2-3 years
+- Coherent's 6-inch InP platform, IntelliEPI's CHIPS-funded expansion, and the Eindhoven fab are all adding III-V capacity; IQE's scarcity premium may erode over 2-3 years
 - Extreme customer concentration on the Apple/Lumentum VCSEL supply chain, where Coherent is an increasingly formidable alternative supplier (Apple awarded Coherent a major Face ID VCSEL contract)
 - Taiwan sale removes a significant revenue-generating operation (H2 2025 handset recovery contributed meaningfully), potentially leaving subscale UK/US operations
-- Win Semiconductors at 50%+ GaAs foundry share with 33% EBITDA margins reveals the structural scale gap — even an acquired IQE would require heavy investment to reach competitive margins
+- Win Semiconductors at 50%+ GaAs foundry share with 33% EBITDA margins reveals the structural scale gap; even an acquired IQE would require heavy investment to reach competitive margins
 - China's export controls on gallium (98% of global primary production) and indium (59%) create upstream input cost risk that IQE cannot easily mitigate
 
 ## Catalysts
 
-- **Strategic review conclusion** — firm bid announcement or lapse of offer period (timeline uncertain; Lazard advising)
-- **Taiwan operations sale** — completion and proceeds deployment; critical for balance sheet de-risking
-- **FY2025 audited results** — expected ~May 2026; will reveal margin trajectory and order book visibility
-- **CPO volume deployment** — Broadcom Bailly, NVIDIA Spectrum-X/Quantum-X CPO, TSMC COUPE driving InP epiwafer orders through 2026-2027
-- **CHIPS Act / EU Chips Act funding** — potential direct funding for IQE's UK/US operations (IntelliEPI already received $10.3M; IQE's CSconnected positioning may attract similar support)
-- **New Tier 1 InP design wins** — confirmation of data center infrastructure traction beyond existing Lumentum relationship
-- **Porotech microLED commercialization** — AR/VR display volume milestone with consumer multinational partner
+- **Strategic review conclusion**: firm bid announcement or lapse of offer period (timeline uncertain; Lazard advising)
+- **Taiwan operations sale**: completion and proceeds deployment; critical for balance sheet de-risking
+- **FY2025 audited results**: expected ~May 2026; will reveal margin trajectory and order book visibility
+- **CPO volume deployment**: Broadcom Bailly, NVIDIA Spectrum-X/Quantum-X CPO, TSMC COUPE driving InP epiwafer orders through 2026-2027
+- **CHIPS Act / EU Chips Act funding**: potential direct funding for IQE's UK/US operations (IntelliEPI already received $10.3M; IQE's CSconnected positioning may attract similar support)
+- **New Tier 1 InP design wins**: confirmation of data center infrastructure traction beyond existing Lumentum relationship
+- **Porotech microLED commercialization**: AR/VR display volume milestone with consumer multinational partner
 
 ## Risks
 
-1. **Takeover failure**: If the strategic review produces no firm bid, the stock faces significant downside — the 4.7p November 2025 level represents the market's assessment of standalone value without M&A optionality
+1. **Takeover failure**: If the strategic review produces no firm bid, the stock faces significant downside; the 4.7p November 2025 level represents the market's assessment of standalone value without M&A optionality
 2. **Balance sheet**: Net debt ~£70M with quarterly HSBC covenant waivers; £18M CLNs maturing 2026; Taiwan sale proceeds are essential but not guaranteed
 3. **Customer concentration**: Apple/Lumentum VCSEL chain is the revenue anchor; Coherent's growing VCSEL capability and Apple's direct engagement with Coherent represent a secular competitive threat
-4. **Scale disadvantage**: Win Semi at 50%+ share with 33% margins vs IQE's 2% — the competitive gap is structural, not cyclical, and persists regardless of end-market growth
+4. **Scale disadvantage**: Win Semi at 50%+ share with 33% margins vs IQE's 2%; the competitive gap is structural, not cyclical, and persists regardless of end-market growth
 5. **New III-V capacity**: Coherent's 6-inch InP platform, IntelliEPI's CHIPS-funded expansion, and the EUR 150M Eindhoven fab could erode IQE's scarcity premium over 2-3 years
-6. **Valuation at ~38.8p**: Stock has slipped back to around analyst consensus (~40p); at ~6.1x EV/Revenue (inflated by the MACOM dilution), the M&A discount that justified the position has narrowed but not fully reopened
+6. **Valuation at ~46.6p**: Stock is ~16% through analyst consensus (~40p); at ~7.1x EV/Revenue (through Win Semi 6.7x / Coherent 6.9x; inflated by the MACOM dilution), the M&A discount that justified the position has closed rather than reopened
 7. **Gallium/indium supply risk**: China's export controls on primary feedstock (98% Ga, 59% In) create upstream cost and availability risk
 8. **Post-Taiwan-sale revenue gap**: Remaining UK/US operations may be subscale and unprofitable as a standalone entity
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied** (2026-07-10 batch-5 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
-- **Triggers + evidence status** — hypotheses tested, not verdicts:
-	- CENTRAL PREMISE REFUTED — the M&A special-situation leg is dead and unrecorded in this vault: strategic review CONCLUDED 2026-04-27 with all buyer discussions terminated and no Taiwan sale; offer period lapsed. Replaced by an £81M fundraise at 19.8p (58.4% discount to spot): MACOM £45M (~11.5% stake, 2 board seats, £15M zero-coupon CLNs, warrants) + noteholder equity conversion + placing; ~332M new shares ≈ ~34% dilution (~1.31B shares) makes the thesis's "bid must clear 60-80p" per-share math non-comparable. Stock fell 19% to ~40p on the raise.
+- **Models applied** (2026-07-10 batch-5 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]] · [[Lens - Management and Culture]]
+- **Triggers + evidence status**: hypotheses tested, not verdicts:
+	- CENTRAL PREMISE REFUTED: the M&A special-situation leg is dead and unrecorded in this vault; strategic review CONCLUDED 2026-04-27 with all buyer discussions terminated and no Taiwan sale; offer period lapsed. Replaced by an £81M fundraise at 19.8p (58.4% discount to spot): MACOM £45M (~11.5% stake, 2 board seats, £15M zero-coupon CLNs, warrants) + noteholder equity conversion + placing; ~332M new shares ≈ ~34% dilution (~1.31B shares) makes the thesis's "bid must clear 60-80p" per-share math non-comparable. Stock fell 19% to ~40p on the raise.
 	- Structural InP demand leg STRENGTHENED: Tower Semiconductor multi-year InP epiwafer agreement 2026-06-15 with minimum purchase commitments + full IP-dispute settlement (stock +17% that day); MACOM LTSAs across InP + GaN; FY2025 Photonics +15% (Wireless -40%); FY2026 guided >20% revenue growth; HSBC RCF repaid, going-concern language gone from FY2025 accounts (28 May).
-	- VLM / Semis [#2] — the epi layer is upstream and contestable, and the market's own mark refutes scarcity pricing: MACOM, the strategic buyer with the best information, chose an 11.5% stake + supply agreements at 19.8p over acquiring the company. Geopolitical scarcity premium two-sided: gallium ~$2,100/kg (+123% since start-2025), but China released 2026 InP substrate batch end-May easing that bottleneck.
-	- Generalist [G-13] expectations — the stock now trades as a high-beta AI-photonics sentiment proxy, not a Takeover Code event stock: 40p → 72.9p (post-Tower June run) → 40.8p by Jul 9, a ~44% two-week drawdown on zero company news amid the semis purge.
-- **Disconfirming check** (evidence-updated 2026-07-10): the single most important falsifying datapoint already fired — the 19.8p institutional clearing price (2026-04-27) is sophisticated money's mark on standalone value, ~58% below the then-market price. Conviction HIGH (set 2026-05-22 portfolio alignment) rests on a thesis whose primary leg had already publicly failed on 27 April — the vault never recorded the review conclusion, the raise, the dilution, FY2025 results, or the Tower deal; flagged for /status review (Tier 3 — user decision). Base rate: loss-making UK smallcap turnarounds that exit a formal sale process without a bid rarely re-rate on fundamentals alone; IQE partially beat it only because AI-photonics narrative flow substituted for the bid. The honest reframe: a levered-to-AI-photonics growth turnaround at ~5-6x EV/Revenue with a strategic anchor shareholder — a different, weaker-conviction thesis than the M&A convexity bet this note argues.
+	- VLM / Semis [#2]: the epi layer is upstream and contestable, and the market's own mark refutes scarcity pricing: MACOM, the strategic buyer with the best information, chose an 11.5% stake + supply agreements at 19.8p over acquiring the company. Geopolitical scarcity premium two-sided: gallium ~$2,100/kg (+123% since start-2025), but China released 2026 InP substrate batch end-May easing that bottleneck.
+	- Generalist [G-13] expectations: the stock now trades as a high-beta AI-photonics sentiment proxy, not a Takeover Code event stock: 40p → 72.9p (post-Tower June run) → 40.8p by Jul 9, a ~44% two-week drawdown on zero company news amid the semis purge.
+	- Management & Culture [MC-1] · gates / recognition-failure: Gate 1 pass (InP/GaAs/SiPh epi feed); Gate 2 fail at ~7.1x EV/R (optionality already in the AI-photonics multiple); 19.8p Apr-2026 MACOM mark was the psychosis print; serial GaN/microLED/Taiwan-IPO resets selected negative-NPV issuance over conversion.
+	- Management & Culture [MC-2] · incentive duration: CEO 0% shareholding vs 200% guideline (31-Dec-2025 AR); STI/LTI 0% of max 2021–2025; Chair immediately-vested options; LTIP = adj. EBITDA margin + strategic, not ROIC.
+	- Management & Culture [MC-6] · bureaucratic entropy: three CEOs in four years; serial raises (20p 2023 / 15p CLN 2025 / 19.8p 2026); average headcount 517→469.
+	- Management & Culture [MC-8] · melting-ice-cube: wireless/handset VCSEL ice cube plus serial-optionality-destruction on GaN/microLED/Taiwan-IPO; at through-peer 7.1x a reasonable multiple is not cheapness.
+- **Disconfirming check** (evidence-updated 2026-07-10): the single most important falsifying datapoint already fired: the 19.8p institutional clearing price (2026-04-27) is sophisticated money's mark on standalone value, ~58% below the then-market price. Conviction HIGH (set 2026-05-22 portfolio alignment) rests on a thesis whose primary leg had already publicly failed on 27 April; the vault never recorded the review conclusion, the raise, the dilution, FY2025 results, or the Tower deal; flagged for /status review (Tier 3: user decision). Base rate: loss-making UK smallcap turnarounds that exit a formal sale process without a bid rarely re-rate on fundamentals alone; IQE partially beat it only because AI-photonics narrative flow substituted for the bid. The honest reframe: a levered-to-AI-photonics growth turnaround at ~5-6x EV/Revenue with a strategic anchor shareholder, a different, weaker-conviction thesis than the M&A convexity bet this note argues. Anti-fit on [[Lens - Management and Culture]] must still beat [MC-6] entropy and [G-10] new-venture-destruction: AIM compound-semi turnarounds that exit a sale process via a 58% discounted rescue raise rarely convert the next optionality feed; MACOM's 11.5% stake + two seats is customer-imposed governance, not evidence the internal conversion rate has flipped.
 ## Related Research
 
-- [[Sectors/Optical Networking & Photonics]] — Sector Note (LITE + IQE as Active Theses; covers III-V epitaxy supply gap, EML oligopoly, SiPh foundry paradox, Western scarcity premium)
-- [[Theses/LITE - Lumentum]] — InP EML laser supply chain; Lumentum as IQE customer via VCSEL epiwafers
-- [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]] — III-V substrate positioning in SiPh supply chain
-- [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]] — CPO adoption and IQE as foundational acquisition target
-- [[Research/2025-11-25 - LITE - Silicon Photonics Supply Chain]] — Full SiPh supply chain mapping (2026-2030)
-- [[Research/2026-03-09 - Photonics and CPO Investment Outlook]] — IQE's X-driven takeover speculation and InP positioning
-- [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]] — InP CW lasers as critical CPO bottleneck
-- [[Research/2026-03-02 - Chinese Silicon Photonics Threat]] — Chinese InP localization at ~3%; domestic EML development timeline
-- [[Theses/BESI - BE Semiconductor Industries]] — TSMC COUPE die attach for silicon photonics; 75% market share in advanced die attach
-- [[Theses/AVGO - Broadcom]] — Broadcom Bailly CPO as forcing function for III-V epiwafer demand
-- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] — Tier 5 convex M&A special-situation; TRIM Low→1% (>1,000% rally erased the discount that justified the position; UK Takeover Code active)
-- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]] — SemiAnalysis CPO deep-dive: III-V/InP epitaxy named the CPO external-laser bottleneck (IQE in the Nvidia supply map); quantifies the ELS demand mechanism (18 ELS × 8 CW DFB chips per CPO switch) — corroborates the CPO/SiPh InP-epi-demand Bull Case
+- [[Sectors/Optical Networking & Photonics]]: Sector Note (LITE + IQE as Active Theses; covers III-V epitaxy supply gap, EML oligopoly, SiPh foundry paradox, Western scarcity premium)
+- [[Theses/LITE - Lumentum]]: InP EML laser supply chain; Lumentum as IQE customer via VCSEL epiwafers
+- [[Research/2025-11-26 - Semis - Gemini Silicon Photonics Canvas]]: III-V substrate positioning in SiPh supply chain
+- [[Research/2026-03-10 - LITE - Gemini Photonics CPO Canvas]]: CPO adoption and IQE as foundational acquisition target
+- [[Research/2025-11-25 - LITE - Silicon Photonics Supply Chain]]: Full SiPh supply chain mapping (2026-2030)
+- [[Research/2026-03-09 - Photonics and CPO Investment Outlook]]: IQE's X-driven takeover speculation and InP positioning
+- [[Research/2026-03-18 - CPO Market Entry for Pluggable Optics]]: InP CW lasers as critical CPO bottleneck
+- [[Research/2026-03-02 - Chinese Silicon Photonics Threat]]: Chinese InP localization at ~3%; domestic EML development timeline
+- [[Theses/BESI - BE Semiconductor Industries]]: TSMC COUPE die attach for silicon photonics; 75% market share in advanced die attach
+- [[Theses/AVGO - Broadcom]]: Broadcom Bailly CPO as forcing function for III-V epiwafer demand
+- [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]]: Tier 5 convex M&A special-situation; TRIM Low→1% (>1,000% rally erased the discount that justified the position; UK Takeover Code active)
+- [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis CPO deep-dive: III-V/InP epitaxy named the CPO external-laser bottleneck (IQE in the Nvidia supply map); quantifies the ELS demand mechanism (18 ELS × 8 CW DFB chips per CPO switch); corroborates the CPO/SiPh InP-epi-demand Bull Case
 
 - [[Research/2026-08-13 - LITE AAOI - Lumentum Q4 FY26 1.25B Guide - news]]
 - [[Research/2026-07-19 - LITE COHR AEVA Practical SOA for CPO NPO - deep-dive]]
 
-- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]] — Damnang L1 pick is AXT (substrate + LITE/COHR reservations), not IQE epi
-- [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]] — CPO calendar on-track (not delayed) → supports InP-epi pull-through timing; UHP CPO laser demand "gaining momentum"; IQE not named
+- [[Research/2026-08-13 - LITE COHR Optical Investing Round Two Names - deep-dive]]: Damnang L1 pick is AXT (substrate + LITE/COHR reservations), not IQE epi
+- [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]]: CPO calendar on-track (not delayed) → supports InP-epi pull-through timing; UHP CPO laser demand "gaining momentum"; IQE not named
+- [[Research/2026-08-15 - IQE - Stress Test]]: M&A premise dead Apr 27; rewrite to MACOM/InP foundry
 ## Log
 
 ### 2026-04-15
@@ -262,3 +271,13 @@ Silicon photonics is on the cusp of a significant growth surge as data centers s
 
 ### 2026-08-15
 - [[Research/2026-08-15 - LITE AAOI NVDA - CPO Delay Rumors Crushed - news]]: supplier CPO calendar reaffirmed on-track (scale-up 2H27 / deploy 2028) — supports InP-epi demand-timing option; secondary recap, IQE not named — conviction unchanged.
+
+### 2026-08-16
+- Metrics synced: 16 figures across 6 sections. Price 38.8p→46.6p, EV/R 6.1x→7.1x (through peers); no longer at consensus. Snapshot: [[_Archive/Snapshots/IQE - IQE (pre-metrics-pass 2026-08-16-000858)]]
+
+### 2026-08-18
+- [[Research/2026-08-15 - IQE - Stress Test]]: M&A premise dead (review closed Apr 27); rewrite to MACOM/InP — conviction unchanged (medium).
+
+### 2026-08-20
+- Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Anti-fit; serial CEO/raise resets plus 0% CEO ownership vs 200% guideline. Conviction unchanged.
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

@@ -152,7 +152,7 @@ Per `.claude/skills/_shared/hot-md-contract.md` (do NOT touch Latest Sync / Sync
 2. **Recent Conviction Changes**: add `- Scenario REVERSED: [[Research/...scenario-name]] across [N] theses — [user rationale]`.
 3. **Open Questions**: if original scenario added questions, surface with strikethrough: `- ~~[original question]~~ → Resolved YYYY-MM-DD: scenario reversed.`
 
-Word cap: standard 4,000 soft-cap check per `_shared/hot-md-contract.md`; prune Sync Archive (oldest first) if over; abort _hot.md update if over 5,000 hard cap.
+Word cap: standard 8,000 soft-cap check per `_shared/hot-md-contract.md`; prune Sync Archive (oldest first) if over; abort _hot.md update if over 10,000 hard cap.
 
 ### R6: Report
 
@@ -341,7 +341,7 @@ Per `.claude/skills/_shared/hot-md-contract.md` (do NOT touch Latest Sync / Sync
 2. **Recent Conviction Changes**: add entry per ticker where conviction was strengthened or weakened.
 3. **Open Questions**: add research questions scenario exposed (unquantified exposures, missing hedges).
 
-Word cap: after edits, total >4,000 (soft cap per `_shared/hot-md-contract.md`) → prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 5,000 hard cap.
+Word cap: after edits, total >8,000 (soft cap per `_shared/hot-md-contract.md`) → prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 10,000 hard cap.
 
 **Graph update deferred**: `_graph.md` owned exclusively by `/graph`. Run `/graph last` to register scenario research note and new cross-thesis correlations.
 

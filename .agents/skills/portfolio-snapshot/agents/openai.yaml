@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Snapshot"
+  short_description: "Publish a static snapshot of the live portfolio"
+  default_prompt: "Use $portfolio-snapshot to publish the live portfolio tracker."

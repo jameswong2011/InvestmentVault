@@ -773,9 +773,9 @@ For each planned write, compute the **projected section text** in memory (do not
 
 Compute `projected_total = sum(staged section word counts) + frontmatter + heading overhead`.
 
-- `projected_total ≤ soft_cap (4000)`: proceed to 6.4 direct commit.
-- `soft_cap < projected_total ≤ hard_cap (5000)`: proceed to 6.3 staged compression.
-- `projected_total > hard_cap (5000)`: attempt 6.3 staged compression. If still over hard cap after full compression trigger order, **ABORT all `_hot.md` writes for this run** (§6.5) before any Edit lands. `/hot.md` retains its pre-run state. Report the abort in Step 8.
+- `projected_total ≤ soft_cap (8000)`: proceed to 6.4 direct commit.
+- `soft_cap < projected_total ≤ hard_cap (10000)`: proceed to 6.3 staged compression.
+- `projected_total > hard_cap (10000)`: attempt 6.3 staged compression. If still over hard cap after full compression trigger order, **ABORT all `_hot.md` writes for this run** (§6.5) before any Edit lands. `/hot.md` retains its pre-run state. Report the abort in Step 8.
 
 ### 6.3: Staged compression (applied to staged text, not to the file)
 
@@ -811,7 +811,7 @@ If the composite Edit fails (rare — pre-checks at 6.2 should make this the pat
 If 6.2/6.3 aborted before any write:
 
 ```
-⚠️ _hot.md hard cap (5000 words) exceeded after all compression triggers — no _hot.md writes committed this /sync run.
+⚠️ _hot.md hard cap (10000 words) exceeded after all compression triggers — no _hot.md writes committed this /sync run.
    Current: [X] words. Projected with planned writes: [Y] words. Over cap by: [Z] words.
    
    Pre-run _hot.md state preserved. Resolution options:

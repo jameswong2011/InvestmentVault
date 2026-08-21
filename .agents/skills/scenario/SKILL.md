@@ -151,7 +151,7 @@ Per `.agents/skills/_shared/hot-md-contract.md` (do NOT touch Latest Sync / Sync
 2. **Recent Conviction Changes**: add `- Scenario REVERSED: [[Research/...scenario-name]] across [N] theses — [user rationale]`.
 3. **Open Questions**: if original scenario added questions, surface with strikethrough: `- ~~[original question]~~ → Resolved YYYY-MM-DD: scenario reversed.`
 
-Word cap: standard 4,000 soft-cap check per `.agents/skills/_shared/hot-md-contract.md`; prune Sync Archive (oldest first) if over; abort _hot.md update if over 5,000 hard cap.
+Word cap: standard 8,000 soft-cap check per `.agents/skills/_shared/hot-md-contract.md`; prune Sync Archive (oldest first) if over; abort _hot.md update if over 10,000 hard cap.
 
 ### R6: Report
 
@@ -178,7 +178,8 @@ Word cap: standard 4,000 soft-cap check per `.agents/skills/_shared/hot-md-contr
 - State scenario precisely with quantitative parameters where possible
 - Identify primary transmission channels: rates, FX, commodity prices, supply chains, demand destruction, regulatory, sentiment, capital flows
 - Set time horizon (default: 6 months)
-- Rough probability estimate (calibration for tail-risk seriousness)
+- **Market-pricing calibration (MANDATORY before the probability estimate).** Do NOT set a probability in a vacuum — the vault's own view is not a market. Issue at least one `web search` (web fetch/open a source if the snippet is thin) for what the market currently implies about this scenario: relevant futures/forwards (Fed funds futures, oil/gas forwards, FX forwards), option-implied probabilities or skew, credit spreads, or analyst/economist consensus odds. Then state the estimate as a **variant to the market**: `market implies ~X%; I estimate ~Y% because Z`. If Y ≈ X, the scenario is priced and the exercise is a hedge-check, not an edge; if Y materially differs, name the single datapoint that resolves who is right. If no market proxy exists (genuinely un-priced tail), say so explicitly — that absence is itself information.
+- **Historical analogs (base-rate discipline, READING PROTOCOL).** Cite 1-2 concrete historical analogs for this scenario class (e.g. 2018 Fed tightening, 2011 Fukushima supply shock, 2022 Nord Stream) and what actually happened to comparable positions — the outside view the impact classification must beat. A scenario with no analog is either genuinely novel (flag it) or under-specified.
 
 ## Phase 2: Read the Portfolio (Two-Pass Triage — §6)
 
@@ -296,12 +297,13 @@ source_type: scenario
 ```
 
 Sections:
-1. Scenario Definition (parameters, channels, time horizon)
+1. Scenario Definition (parameters, channels, time horizon, **market-implied pricing `market implies ~X% / I estimate ~Y% because Z`, and the 1-2 historical analogs** from Phase 1)
 2. Impact Matrix (Phase 3 table)
 3. Second-Order Effects (Phase 4 narrative)
 4. Portfolio Assessment (Phase 5)
 5. Recommended Actions (specific hedges, position adjustments, research priorities)
-6. Related Notes (wikilinks to all theses and macro notes referenced)
+6. **Confirmation Triggers** — 2-3 dated, observable signposts that would confirm the scenario is actually materializing (not hypothetical). Format each as `[observable + threshold] by [date] → scenario confirmed/escalating`. This is the monitoring hook: a scenario note without it is a one-time thought experiment; with it, the user (and `$catalyst`) can track whether the tail is arriving. Example: `Front-month Brent > $110 sustained 2 weeks by 2026-09 → supply-shock leg confirmed`. Prefer signposts that are cheap to observe and unambiguous.
+7. Related Notes (wikilinks to all theses and macro notes referenced)
 
 ### 6.2: Append Log entries to all Major-impact theses
 
@@ -338,7 +340,7 @@ Per `.agents/skills/_shared/hot-md-contract.md` (do NOT touch Latest Sync / Sync
 2. **Recent Conviction Changes**: add entry per ticker where conviction was strengthened or weakened.
 3. **Open Questions**: add research questions scenario exposed (unquantified exposures, missing hedges).
 
-Word cap: after edits, total >4,000 (soft cap per `.agents/skills/_shared/hot-md-contract.md`) → prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 5,000 hard cap.
+Word cap: after edits, total >8,000 (soft cap per `.agents/skills/_shared/hot-md-contract.md`) → prune `## Sync Archive` (oldest first) then `*Previous:*` lines. Abort if over 10,000 hard cap.
 
 **Graph update deferred**: `_graph.md` owned exclusively by `$graph`. Run `$graph last` to register scenario research note and new cross-thesis correlations.
 

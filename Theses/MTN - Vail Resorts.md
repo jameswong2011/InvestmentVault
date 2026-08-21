@@ -14,19 +14,19 @@ key_metrics_last_refreshed: 2026-07-12
 
 ## Summary
 
-$5.4B market cap (~9.5x forward EV/EBITDA, 5.9% dividend yield on an unchanged $8.88/share payout) — market cap up from $4.6B, yield down on price appreciation alone not improved safety. Still prices as a low-growth utility with climate tail risk, now at a richer multiple over the same payout risk. The investment case is a governance-architecture problem disguised as a competitive-dynamics story: Vail, as a public company, structurally cannot match Alterra's $400M+ annual guest-facing capex ($21M per owned resort vs Vail's ~$5M) while defending a ~$320M annual dividend, maintaining buybacks, and hitting quarterly EBITDA targets. FY2026 has been catastrophic — Rockies snowfall at 30-year lows, visits down 20% through early January, EBITDA guidance slashed from $842-898M to $745-775M — layered atop a second consecutive year of Epic Pass unit sales declines. Rob Katz's return as CEO signals strategic exhaustion, not renewal.
+$5.4B market cap (~9.5x forward EV/EBITDA, 5.9% dividend yield on an unchanged $8.88/share payout): market cap up from $4.6B, yield down on price appreciation alone not improved safety. Still prices as a low-growth utility with climate tail risk, now at a richer multiple over the same payout risk. The investment case is a governance-architecture problem disguised as a competitive-dynamics story: Vail, as a public company, structurally cannot match Alterra's $400M+ annual guest-facing capex ($21M per owned resort vs Vail's ~$5M) while defending a ~$320M annual dividend, maintaining buybacks, and hitting quarterly EBITDA targets. FY2026 has been catastrophic: Rockies snowfall at 30-year lows, visits down 20% through early January, EBITDA guidance slashed from $842-898M to $745-775M, layered atop a second consecutive year of Epic Pass unit sales declines. Rob Katz's return as CEO signals strategic exhaustion, not renewal.
 
 ## Key Non-consensus Insights
 
-- **The "public vs. private" ownership asymmetry is the defining structural force — not weather, not management quality, not competition per se.** Vail must defend ~$320M/year in dividends, $200M in buybacks (FY2025 Q4), and quarterly EBITDA guidance, while Alterra optimizes over 10-15 year horizons with zero earnings pressure. The market punishes Vail for underinvesting but would equally punish a dividend cut to fund investment — a governance trap no CEO change or cost program resolves.
+- **The "public vs. private" ownership asymmetry is the defining structural force, not weather, not management quality, not competition per se.** Vail must defend ~$320M/year in dividends, $200M in buybacks (FY2025 Q4), and quarterly EBITDA guidance, while Alterra optimizes over 10-15 year horizons with zero earnings pressure. The market punishes Vail for underinvesting but would equally punish a dividend cut to fund investment: a governance trap no CEO change or cost program resolves.
 
-- **The Epic Pass has transitioned from growth flywheel to revenue ceiling, and the March 2026 youth discount is the admission.** Unit sales declined two consecutive years at ~2.3M holders; pricing grows only 3-7%. A pass holder skiing 15 days generates ~$63/day vs walk-up at $200-299, capping per-visitor yield. The 2021 price cut drove a 76% unit surge to 2.1M+ — the base has barely grown since. All growth paths (international, youth discounts, new demographics) sacrifice near-term margin for speculative volume.
+- **The Epic Pass has transitioned from growth flywheel to revenue ceiling, and the March 2026 youth discount is the admission.** Unit sales declined two consecutive years at ~2.3M holders; pricing grows only 3-7%. A pass holder skiing 15 days generates ~$63/day vs walk-up at $200-299, capping per-visitor yield. The 2021 price cut drove a 76% unit surge to 2.1M+; the base has barely grown since. All growth paths (international, youth discounts, new demographics) sacrifice near-term margin for speculative volume.
 
 - **Deferred maintenance is accumulating as a compounding hidden liability with a measurable per-resort capex gap.** Vail needs 7-8 lift replacements annually (300+ lifts, ~40-year lifespans); it installs 1-4. Alterra installed 17 new lifts at Deer Valley alone for 2025-26. FY2026 capex of $215-220M across 42 resorts = ~$5.2M per resort vs Alterra's ~$21M per resort ($400M across 19). Each year of underinvestment raises the future catch-up cost while deteriorating experience drives customers to Ikon.
 
 - **Climate change risk is being mispriced as linear when it is step-function and convex.** US ski seasons shortened 5.5-7.1 days (2000-2019 vs 1960-1979); projections: 27-62 days shorter by 2050s under high-emission scenarios. Vail's 9 Midwest resorts saw 26.7% visit decline in FY2024; 2025-26 Rockies produced 30-year-low snowfall with only 11% of terrain open in December. Vail's 17 Peak Resorts ($264M, 2019) face stranded-asset risk within a decade, while Alterra's portfolio is structurally higher-elevation: A-Basin (13,000 ft), Mammoth (11,000 ft), Winter Park (12,000 ft).
 
-- **The Rob Katz return signals the strategic option set has narrowed, not expanded.** Katz's initial moves — 20% youth discounts, aggressive lift ticket pricing, $100M efficiency program — are demand-management tactics applied to a structural supply-side problem. Vail cannot simultaneously maintain ~$320M in annual shareholder returns, close the $200M+ capex gap with Alterra, and lower prices for younger demographics. The $100M efficiency savings, if fully realized by FY2027, fund one season of competitive capex parity before labor, snowmaking, and climate adaptation costs.
+- **The Rob Katz return signals the strategic option set has narrowed, not expanded.** Katz's initial moves (20% youth discounts, aggressive lift ticket pricing, $100M efficiency program) are demand-management tactics applied to a structural supply-side problem. Vail cannot simultaneously maintain ~$320M in annual shareholder returns, close the $200M+ capex gap with Alterra, and lower prices for younger demographics. The $100M efficiency savings, if fully realized by FY2027, fund one season of competitive capex parity before labor, snowmaking, and climate adaptation costs.
 
 ## Outstanding Questions
 
@@ -36,9 +36,9 @@ $5.4B market cap (~9.5x forward EV/EBITDA, 5.9% dividend yield on an unchanged $
 
 - **What is the break-even snowfall level and probability-weighted annual climate drag?** FY2026 Rockies lows produced ~$90M EBITDA hit at midpoint (~11% of normalized). If "bad snow years" become the baseline, what is the expected annual drag over the next decade? Is there a nonlinear threshold where consecutive poor seasons trigger pass holder defection that doesn't reverse?
 
-- **What is the real-estate optionality embedded in Vail's 42-resort portfolio?** Vail Village, Park City base, Whistler Blackcomb, Stowe, Beaver Creek — among the most valuable recreational real estate in North America. What is the liquidation or highest-and-best-use value vs the current ~$7.2B enterprise value? Vail does not disclose resort-by-resort real estate appraisals.
+- **What is the real-estate optionality embedded in Vail's 42-resort portfolio?** Vail Village, Park City base, Whistler Blackcomb, Stowe, Beaver Creek, among the most valuable recreational real estate in North America. What is the liquidation or highest-and-best-use value vs the current ~$7.2B enterprise value? Vail does not disclose resort-by-resort real estate appraisals.
 
-- **How durable is the "Alterra is better managed" narrative as Alterra faces its own growing pains?** Alterra's CEO stepped down March 2026. As Ikon grows toward 76 ski areas, will it face the same overcrowding and "corporatization" complaints that plagued Epic? Is the "collection of independents" partnership model structurally more fragile than vertical integration — particularly if partner resorts defect or demand better terms?
+- **How durable is the "Alterra is better managed" narrative as Alterra faces its own growing pains?** Alterra's CEO stepped down March 2026. As Ikon grows toward 76 ski areas, will it face the same overcrowding and "corporatization" complaints that plagued Epic? Is the "collection of independents" partnership model structurally more fragile than vertical integration, particularly if partner resorts defect or demand better terms?
 
 - **What is the labor cost trajectory and unionization risk?** $20/hour minimum wage implemented reactively after the Park City ski patrol strike (Dec 2024-Jan 2025). Each wage concession creates precedent for the other 41 resorts. Mountain-town housing crises persist. Does Vail's pricing power (constrained by Ikon competition) exceed the structural labor inflation rate?
 
@@ -48,7 +48,7 @@ $5.4B market cap (~9.5x forward EV/EBITDA, 5.9% dividend yield on an unchanged $
 
 ## Business Model & Product Description
 
-Vail Resorts operates a vertically-integrated mountain resort platform — think of it as the "subscription-first theme park" of outdoor recreation. Where Disney sells tickets to physical experiences built around IP, Vail sells annual subscriptions to a network of mountains, then monetizes the captive visitor across lodging, dining, ski school, and retail. The business is seasonal, weather-dependent, and capital-intensive — but the subscription model partially decouples revenue from weather by locking in cash 3-9 months before the season starts.
+Vail Resorts operates a vertically-integrated mountain resort platform: think of it as the "subscription-first theme park" of outdoor recreation. Where Disney sells tickets to physical experiences built around IP, Vail sells annual subscriptions to a network of mountains, then monetizes the captive visitor across lodging, dining, ski school, and retail. The business is seasonal, weather-dependent, and capital-intensive, but the subscription model partially decouples revenue from weather by locking in cash 3-9 months before the season starts.
 
 ### Revenue Architecture
 
@@ -56,11 +56,11 @@ Vail Resorts operates a vertically-integrated mountain resort platform — think
 
 1. **Lift Revenue (~$1.5B, ~51% of total):** The dominant revenue line, split between:
    - *Season Pass Products (Epic Pass):* The flagship product. The full Epic Pass (~$979 for 2025-26) provides unlimited access to all 42 Vail-owned resorts globally. Tiered products include Epic Local (~$719, unlimited at ~20 resorts), Epic Day Pass (1-7 day packages at select resorts), and regional variations. Pass revenue grew 4.2% in FY2025 driven by pricing (+7%) offsetting unit declines (-2-3%). ~2.3M committed pass holders represent the recurring-revenue base.
-   - *Lift Tickets:* Walk-up and advance-purchase day tickets, priced aggressively high ($200-299 at premier resorts over holidays) to incentivize pass purchases. Window ticket volumes have declined ~17% YoY as the strategy succeeds in converting casual visitors — but this shrinks the funnel of future pass buyers.
+   - *Lift Tickets:* Walk-up and advance-purchase day tickets, priced aggressively high ($200-299 at premier resorts over holidays) to incentivize pass purchases. Window ticket volumes have declined ~17% YoY as the strategy succeeds in converting casual visitors, but this shrinks the funnel of future pass buyers.
 
 2. **Ancillary Revenue (~$1.13B, ~38% of total):** The "razor-and-blade" layer that monetizes the captive pass holder:
-   - *Ski School:* Revenue grew 1.7% FY2025, +6% FY2024 despite fewer skiers — driven by ultra-premium private lessons ($1,500/day at top resorts). High-margin, experience-differentiated revenue.
-   - *Dining:* Revenue grew 5.9% FY2025 — the most inflation-leveraged line (a $28 mountain burger is a captive sale with no competitive alternative on-mountain).
+   - *Ski School:* Revenue grew 1.7% FY2025, +6% FY2024 despite fewer skiers, driven by ultra-premium private lessons ($1,500/day at top resorts). High-margin, experience-differentiated revenue.
+   - *Dining:* Revenue grew 5.9% FY2025, the most inflation-leveraged line (a $28 mountain burger is a captive sale with no competitive alternative on-mountain).
    - *Retail/Rental:* Equipment rental and retail operations at resort base areas. Fell 12% in FY2024 with the visit decline, demonstrating high operating leverage to volume.
 
 **Lodging Segment (~11% of revenue, ~$326M FY2025):** Owns and manages hotels, condominiums, and luxury properties at key resort locations (Grand Hyatt Vail, Whistler properties, Park City lodges). Provides lodging packages that integrate with Epic Pass. High fixed-cost structure means profitability is acutely sensitive to occupancy rates.
@@ -69,7 +69,7 @@ Vail Resorts operates a vertically-integrated mountain resort platform — think
 
 ### The Epic Pass Ecosystem — How It Works
 
-The business model's genius — and now its constraint — is the advance-commitment subscription:
+The business model's genius, and now its constraint, is the advance-commitment subscription:
 - **Spring/Summer:** Passes go on sale (March-September) at early-bird prices, collecting cash 3-9 months before the season. This pre-funds capital investment and provides revenue visibility regardless of weather.
 - **Fall:** The "fall selling period" (September-December) captures late purchasers, often prompted by early snowfall excitement. Vail tracks unit and dollar sales through this window as a lead indicator.
 - **Winter:** Pass holders visit repeatedly (average ~12-15 days), each visit generating ancillary revenue. Lift ticket buyers pay premium window rates, subsidizing the "deal" that pass holders get.
@@ -78,10 +78,10 @@ The business model's genius — and now its constraint — is the advance-commit
 ### Resort Portfolio — Scale vs Quality
 
 Vail's 42 resorts span four tiers:
-1. **Trophy Assets (5-7):** Vail, Beaver Creek, Whistler Blackcomb, Park City, Breckenridge, Stowe — world-famous destinations with irreplaceable brand value and real estate.
-2. **Regional Anchors (8-10):** Keystone, Crested Butte, Heavenly, Northstar, Kirkwood, Okemo — strong regional draws with loyal bases.
-3. **Local Feeders (15-20):** Peak Resorts portfolio (Boston Mills, Mt. Brighton, Jack Frost, etc.) — small, low-elevation ski areas that serve as "gateway drugs" to the Epic Pass ecosystem, pulling urban skiers from Cleveland, Detroit, Philadelphia into the network.
-4. **International (5):** Whistler (Canada), Perisher/Hotham/Falls Creek (Australia), Crans-Montana (Switzerland) — geographic diversification, though only Whistler moves the financial needle.
+1. **Trophy Assets (5-7):** Vail, Beaver Creek, Whistler Blackcomb, Park City, Breckenridge, Stowe: world-famous destinations with irreplaceable brand value and real estate.
+2. **Regional Anchors (8-10):** Keystone, Crested Butte, Heavenly, Northstar, Kirkwood, Okemo: strong regional draws with loyal bases.
+3. **Local Feeders (15-20):** Peak Resorts portfolio (Boston Mills, Mt. Brighton, Jack Frost, etc.): small, low-elevation ski areas that serve as "gateway drugs" to the Epic Pass ecosystem, pulling urban skiers from Cleveland, Detroit, Philadelphia into the network.
+4. **International (5):** Whistler (Canada), Perisher/Hotham/Falls Creek (Australia), Crans-Montana (Switzerland): geographic diversification, though only Whistler moves the financial needle.
 
 The network breadth is both the competitive advantage (nowhere else can you ski 42 mountains on one pass) and the operational vulnerability (42 mountains to staff, maintain, and manage through centralized corporate processes that strip local character).
 
@@ -101,29 +101,29 @@ The North American ski industry has consolidated into a functional duopoly. Vail
 
 ### Competitive Dynamics by Region
 
-**Colorado — The Fortress Under Siege:** Vail owns the I-70 corridor "Big 4" (Vail, Beaver Creek, Breckenridge, Keystone) plus Crested Butte. But Alterra has effectively encircled the position: Winter Park (train-accessible), Steamboat (destination families), A-Basin (expert locals, now unlimited on Ikon Base for 26/27), Copper Mountain (Ikon partner). The I-70 traffic congestion disproportionately hurts Vail's resorts, which are further west. A-Basin's defection from Epic in 2019 — citing overcrowding — and subsequent Alterra acquisition in 2024 was a strategic coup that locked down the Front Range enthusiast who wants to ski October-July.
+**Colorado: The Fortress Under Siege:** Vail owns the I-70 corridor "Big 4" (Vail, Beaver Creek, Breckenridge, Keystone) plus Crested Butte. But Alterra has effectively encircled the position: Winter Park (train-accessible), Steamboat (destination families), A-Basin (expert locals, now unlimited on Ikon Base for 26/27), Copper Mountain (Ikon partner). The I-70 traffic congestion disproportionately hurts Vail's resorts, which are further west. A-Basin's defection from Epic in 2019 (citing overcrowding) and subsequent Alterra acquisition in 2024 was a strategic coup that locked down the Front Range enthusiast who wants to ski October-July.
 
-**Utah — The Park City vs Deer Valley War:** The starkest contrast in strategy. Vail's Park City Mountain is the largest resort in the US but is plagued by crowding complaints and the lingering reputational damage from the 2024-25 ski patrol strike. Alterra's Deer Valley is undergoing one of the largest ski expansions in history: 17 new lifts, 3 gondolas, East Village development, all while maintaining "skiers only" and limited-ticket policies. The Ikon Pass also includes Alta, Snowbird, Solitude, and Brighton — giving Utah locals a compelling suite of world-class resorts without Park City's crowds. Utah may be where Vail's market share erosion is most acute.
+**Utah: The Park City vs Deer Valley War:** The starkest contrast in strategy. Vail's Park City Mountain is the largest resort in the US but is plagued by crowding complaints and the lingering reputational damage from the 2024-25 ski patrol strike. Alterra's Deer Valley is undergoing one of the largest ski expansions in history: 17 new lifts, 3 gondolas, East Village development, all while maintaining "skiers only" and limited-ticket policies. The Ikon Pass also includes Alta, Snowbird, Solitude, and Brighton, giving Utah locals a compelling suite of world-class resorts without Park City's crowds. Utah may be where Vail's market share erosion is most acute.
 
-**California/Tahoe — The Mammoth Advantage:** Vail owns Heavenly, Northstar, and Kirkwood. Alterra owns Palisades Tahoe (formerly Squaw/Alpine, now connected base-to-base) and Mammoth Mountain. Mammoth is the "killer app" for California skiers — reliable snow, season extending into July, no competitor in Vail's portfolio. Vail's Tahoe properties are lower-elevation and more susceptible to rain-vs-snow variability.
+**California/Tahoe: The Mammoth Advantage:** Vail owns Heavenly, Northstar, and Kirkwood. Alterra owns Palisades Tahoe (formerly Squaw/Alpine, now connected base-to-base) and Mammoth Mountain. Mammoth is the "killer app" for California skiers: reliable snow, season extending into July, no competitor in Vail's portfolio. Vail's Tahoe properties are lower-elevation and more susceptible to rain-vs-snow variability.
 
-**The East — Climate Ground Zero:** Vail heavily consolidated eastern skiing (Stowe, Okemo, Hunter, Mt. Snow, plus 17 Peak Resorts). The eastern portfolio was designed as an "urban feeder" system: a New Yorker skis Hunter on weekends, falls in love with Epic, books a trip to Vail. But eastern resorts are ground zero for climate change — the 2023-24 season saw record warmth, and Vail's 9 Midwest resorts experienced a 26.7% visit decline. When feeder resorts fail to open, the pipeline to destination resorts breaks. Alterra has less eastern exposure and holds stronger northern positions (Sugarbush, Stratton) in more climate-resilient zones.
+**The East: Climate Ground Zero:** Vail heavily consolidated eastern skiing (Stowe, Okemo, Hunter, Mt. Snow, plus 17 Peak Resorts). The eastern portfolio was designed as an "urban feeder" system: a New Yorker skis Hunter on weekends, falls in love with Epic, books a trip to Vail. But eastern resorts are ground zero for climate change: the 2023-24 season saw record warmth, and Vail's 9 Midwest resorts experienced a 26.7% visit decline. When feeder resorts fail to open, the pipeline to destination resorts breaks. Alterra has less eastern exposure and holds stronger northern positions (Sugarbush, Stratton) in more climate-resilient zones.
 
 ### The Value Chain and Pricing Power Dynamics
 
-The ski industry value chain flows: **Pass/Ticket Purchase → Travel & Lodging → On-Mountain Spend → Return Decision.** Vail's moat was supposed to be at the first link — the Epic Pass locks customers in, making the rest of the chain captive. But pricing power is eroding at both ends:
+The ski industry value chain flows: **Pass/Ticket Purchase → Travel & Lodging → On-Mountain Spend → Return Decision.** Vail's moat was supposed to be at the first link: the Epic Pass locks customers in, making the rest of the chain captive. But pricing power is eroding at both ends:
 
-- **At the pass level:** Ikon provides a credible alternative. Ikon prices grew ~5% for 26/27 vs Epic's ~3.6%, suggesting Alterra believes it has more pricing power. The Ikon Base at $924 undercuts Epic's full pass by only $55 — close enough that the quality differential tips decisions.
+- **At the pass level:** Ikon provides a credible alternative. Ikon prices grew ~5% for 26/27 vs Epic's ~3.6%, suggesting Alterra believes it has more pricing power. The Ikon Base at $924 undercuts Epic's full pass by only $55, close enough that the quality differential tips decisions.
 - **At the ancillary level:** On-mountain dining and rental are still captive (you can't bring a competing burger to the summit), but the *volume* of those transactions declines with visits. FY2026 saw ski school revenue down 14.9% and dining down 15.9% through early January, demonstrating that ancillary revenue is a leveraged bet on visit volume, not a stable income stream.
-- **At the return-decision level:** Social media has democratized quality information. The #Epicalypse narrative, the Park City strike coverage, and resort-by-resort reviews on platforms like OpenSnow mean that poor experiences propagate instantly to millions of potential customers. A-Basin's 2019 defection from Epic — explicitly citing overcrowding — was a watershed signal that even resort partners view Vail's volume strategy as brand-damaging.
+- **At the return-decision level:** Social media has democratized quality information. The #Epicalypse narrative, the Park City strike coverage, and resort-by-resort reviews on platforms like OpenSnow mean that poor experiences propagate instantly to millions of potential customers. A-Basin's 2019 defection from Epic (explicitly citing overcrowding) was a watershed signal that even resort partners view Vail's volume strategy as brand-damaging.
 
 ### The Indy Pass Rebellion and Sport Accessibility Crisis
 
-The rise of the Indy Pass (100+ independent mountains, ~$329) signals a cultural rejection of the corporate duopoly. With day tickets now exceeding $299 at top resorts and a full Epic Pass approaching $1,000, skiing is increasingly inaccessible to the middle class. Beginner participation is stagnating — a ticking time bomb for an industry that needs new entrants to replace aging Baby Boomer skiers. Vail needs the middle class; Alterra, positioning itself as premium, can survive on fewer, richer guests. Katz's stated goal of expanding to communities of color acknowledges the demographic narrowing but faces the fundamental tension of a sport that now costs $300+ per day to try.
+The rise of the Indy Pass (100+ independent mountains, ~$329) signals a cultural rejection of the corporate duopoly. With day tickets now exceeding $299 at top resorts and a full Epic Pass approaching $1,000, skiing is increasingly inaccessible to the middle class. Beginner participation is stagnating, a delayed threat for an industry that needs new entrants to replace aging Baby Boomer skiers. Vail needs the middle class; Alterra, positioning itself as premium, can survive on fewer, richer guests. Katz's stated goal of expanding to communities of color acknowledges the demographic narrowing but faces the fundamental tension of a sport that now costs $300+ per day to try.
 
 ### Climate Change as Structural Industry Headwind
 
-Climate change is not a tail risk for the ski industry — it is a present, compounding structural headwind. The data:
+Climate change is a present, compounding structural headwind for the ski industry, not a tail risk. The data:
 - US ski seasons shortened 5.5-7.1 days (2000-2019 vs 1960-1979)
 - Projections: 14-33 days shorter by 2050s (low-emission) to 27-62 days shorter (high-emission)
 - Industry losses: $5B+ over last two decades
@@ -136,7 +136,7 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 | Metric | Value | Notes |
 |--------|-------|-------|
 | Market Cap | ~$5.4B | At ~$130/share (April 2026) |
-| Enterprise Value | ~$7.2B | Leverage is 3.9x EBITDA (up from 3.0x) — see the dedicated Net Debt/EBITDA row (3.9x, Liquidity $1.5B); the weather-driven EBITDA cut is doing as much work here as any debt increase |
+| Enterprise Value | ~$7.2B | Leverage is 3.9x EBITDA (up from 3.0x); see the dedicated Net Debt/EBITDA row (3.9x, Liquidity $1.5B); the weather-driven EBITDA cut is doing as much work here as any debt increase |
 | EV/Revenue | ~2.4x | On FY2025 $2.96B revenue |
 | EV/EBITDA (trailing) | ~8.5x | On FY2025 $844M Resort EBITDA |
 | EV/EBITDA (forward) | ~9.5x | On revised FY2026 $760M midpoint |
@@ -153,10 +153,14 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 | Net Debt / EBITDA | 3.9x | Liquidity $1.5B |
 | Resorts | 42 | 37 N. America, 3 Australia, 2 Europe |
 
+## Management and culture
+
+Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 fails: ski/destination leisure is a weather-lottery capex duopoly, not a high-frequency optionality feed; grade MTN on [G-7]/[G-8] and the public-vs-private trap already in this note. [MC-2] Oct 30 2025 DEF 14A funds MIP 100% on Resort Reported EBITDA (no ROIC) and LTI as 50/50 time-vested RSUs and 10%-OTM Premium SARs; Katz (Chair/CEO, 247,812 shares <1% Oct 14 2025) open-market bought 37,500 at $131.81 Mar 16 2026. [MC-7]/[MC-6] FY2025 10-K ~6,800 year-round / ~39,800 seasonal, functional 42-resort org past ~5,000; May 22 2025 Katz return has not beaten the founder-return base rate already logged.
+
 ## Bull Case
 
 - **Deep cyclical trough with mean-reversion potential:** FY2026 Rockies snowfall at 30-year lows is historically anomalous. A return to normal weather could snap EBITDA back toward $850M+, making the stock look cheap at ~8.5x normalized EBITDA with a 6.9% dividend yield. The worst-in-decades snow year is arguably already priced in at ~$130.
-- **Irreplaceable real asset portfolio:** 42 resort properties including Vail, Whistler, Park City, Stowe — these are among the most valuable recreational real estate assets in the world and cannot be replicated. Real estate optionality likely provides a meaningful floor on intrinsic value.
+- **Irreplaceable real asset portfolio:** 42 resort properties including Vail, Whistler, Park City, Stowe: these are among the most valuable recreational real estate assets in the world and cannot be replicated. Real estate optionality likely provides a meaningful floor on intrinsic value.
 - **Epic Pass ecosystem creates switching costs despite competitive pressure:** 2.3M pass holders with multi-year usage habits, social skiing networks, and sunk commitment represent a sticky base. Even with Ikon as an alternative, the practical switching cost (losing access to 42 resorts, disrupting family ski traditions) is non-trivial.
 - **Resource Efficiency Transformation driving margin defense:** $75M cumulative savings through FY2026, targeting $100M+ annualized by FY2027. If combined with a normal snow year, could produce meaningful earnings inflection.
 - **International expansion opens new TAM:** Crans-Montana acquisition and Andermatt stake give Epic Pass a European footprint. If the subscription model translates internationally, the addressable market expands beyond saturated North America.
@@ -176,7 +180,7 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 - **Q3 FY2026 earnings (March quarter):** The make-or-break quarter that determines whether late-season snowfall rescued the year. A beat vs reduced guidance could trigger a relief rally; a further miss would intensify the sell-off.
 - **Epic Pass 2026-27 early sales data:** The spring selling period (starting March 2026) is the first real test of whether the under-30 discount and Katz's pricing changes reignite unit growth. A return to positive unit growth would be a meaningful inflection signal.
 - **Normal snow season in 2026-27:** After two consecutive poor winters, a return to average snowfall would demonstrate the base business is intact and the stock is merely weather-depressed rather than structurally impaired.
-- **Dividend decision at FY2026 year-end:** If FY2026 net income comes in at $144-190M vs ~$320M in dividend + buyback commitments, the payout ratio becomes untenable. A dividend cut paired with a capex ramp would be a major strategic signal — potentially positive long-term but painful near-term.
+- **Dividend decision at FY2026 year-end:** If FY2026 net income comes in at $144-190M vs ~$320M in dividend + buyback commitments, the payout ratio becomes untenable. A dividend cut paired with a capex ramp would be a major strategic signal, potentially positive long-term but painful near-term.
 - **Alterra CEO transition and potential IPO:** Alterra's CEO stepped down March 2026. A leadership transition that slows Alterra's investment pace, or signals toward an eventual IPO (subjecting Alterra to public-market constraints), would narrow the structural disadvantage.
 
 ## Risks
@@ -191,19 +195,23 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
-- **Triggers + evidence status** — hypotheses tested, not verdicts:
-	- Fundamental falsifiers CONFIRMED across the board: FQ3 (Jun 8) EBITDA -9.5%, skier visits -15.5%, SECOND intra-year guidance cut ($735-755M); 2026/27 Epic Pass units -10% / dollars -5% — the THIRD consecutive unit decline, now shrinking in dollars (FY27 revenue visibility impaired before the weather lottery runs); leverage drifted to 3.5x (thesis: 3.0x), payout ratio >200% of NI on a still-uncut $2.22 dividend; capex flat (~$5M/resort — no ramp); 2025-26 was the WORST snow year ever recorded in CO and UT (convex-climate framing validated).
-	- BUT the thesis's central insight METASTASIZED INTO AN EVENT it never contemplated: the public-vs-private governance trap now has a forced-resolution path — Oasis Capital at 7.9% weighing a proxy fight for divestitures (Jun 18), Matthew Prince publicly offering $500M for Park City, Vail hiring takeover-defense bankers; stock +12.4% on Jun 20, rallying to ~$146 AGAINST the fundamentals. The activist path invalidates the "multiple compresses below 8x → $100-110" bear leg by putting a breakup floor under the equity.
-	- Turnaround evidence mixed: lift-ticket pricing pivot (30%+ advance discounts — reversing the pass-conversion cudgel; "meaningfully outperforming industry"), Resource Efficiency $106M ahead of plan, under-30 pass "pacing well ahead," Australia +26% units — vs the [G-5]/founder-return base rate (Schultz/Dorsey: mixed-to-poor when the problem is structural) and Katz's own moves reading as demand-management tactics for a supply-side problem.
-	- New watch items: FY26 year-end report ~late Sept (the LIVE dividend decision — analysts model ~25% cut); September pass-sales update (does under-30 bend the unit curve); any Oasis 13D/proxy filing; Park City patrol arbitration (union now ~1,000 members).
-- **Disconfirming check** (evidence-updated 2026-07-10): base rate — subscription-ized cyclicals with three straight unit declines re-rate to cyclical multiples and rarely fully recover units even when the cycle turns; Vail has never had three straight declines before. The bull and bear both now run through the SAME event: single most important datapoint = whether Oasis escalates to a formal proxy/13D (bull floor) or walks (bear resumes at ~10.5x fwd EV/EBITDA on cut guidance, stale vs the thesis's 9.5x anchor). NO Conviction Triggers section; Key Metrics stale (~$130/3.0x/6.9% yield no longer describes the security).
+- **Models applied** (2026-07-10 batch-9 pass, evidence-tested against July-2026 web research; 2026-08-20 MC lens backfill): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Management and Culture]]
+- **Triggers + evidence status**: hypotheses tested, not verdicts:
+	- Fundamental falsifiers CONFIRMED across the board: FQ3 (Jun 8) EBITDA -9.5%, skier visits -15.5%, SECOND intra-year guidance cut ($735-755M); 2026/27 Epic Pass units -10% / dollars -5%: the THIRD consecutive unit decline, now shrinking in dollars (FY27 revenue visibility impaired before the weather lottery runs); leverage drifted to 3.5x (thesis: 3.0x), payout ratio >200% of NI on a still-uncut $2.22 dividend; capex flat (~$5M/resort, no ramp); 2025-26 was the WORST snow year ever recorded in CO and UT (convex-climate framing validated).
+	- BUT the thesis's central insight METASTASIZED INTO AN EVENT it never contemplated: the public-vs-private governance trap now has a forced-resolution path. Oasis Capital at 7.9% weighing a proxy fight for divestitures (Jun 18), Matthew Prince publicly offering $500M for Park City, Vail hiring takeover-defense bankers; stock +12.4% on Jun 20, rallying to ~$146 AGAINST the fundamentals. The activist path invalidates the "multiple compresses below 8x → $100-110" bear leg by putting a breakup floor under the equity.
+	- Turnaround evidence mixed: lift-ticket pricing pivot (30%+ advance discounts, reversing the pass-conversion cudgel; "meaningfully outperforming industry"), Resource Efficiency $106M ahead of plan, under-30 pass "pacing well ahead," Australia +26% units, vs the [G-5]/founder-return base rate (Schultz/Dorsey: mixed-to-poor when the problem is structural) and Katz's own moves reading as demand-management tactics for a supply-side problem.
+	- New watch items: FY26 year-end report ~late Sept (the LIVE dividend decision: analysts model ~25% cut); September pass-sales update (does under-30 bend the unit curve); any Oasis 13D/proxy filing; Park City patrol arbitration (union now ~1,000 members).
+	- Management & Culture [MC-1] · optionality-feed gate: Gate 1 fails: ski/destination leisure is a weather-lottery capex duopoly, not a high-frequency mispriced-optionality feed; lens inert.
+	- Management & Culture [MC-2] · incentive duration: MIP 100% Resort EBITDA, LTI time-vested RSUs + Premium SARs (no ROIC); Katz 37,500-share open-market buy Mar 16 2026 is the one [MC-2] catalyst.
+	- Management & Culture [MC-7] · org form: functional 42-resort operator, ~6,800 year-round / ~39,800 seasonal FY2025, past the ~5,000 matrix ceiling.
+	- Management & Culture [MC-6] · bureaucratic entropy: 42-resort centralized ops is the default attractor; May 22 2025 Katz return has not shown §4 calibration that beats it.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate: subscription-ized cyclicals with three straight unit declines re-rate to cyclical multiples and rarely fully recover units even when the cycle turns; Vail has never had three straight declines before. The bull and bear both now run through the SAME event: single most important datapoint = whether Oasis escalates to a formal proxy/13D (bull floor) or walks (bear resumes at ~10.5x fwd EV/EBITDA on cut guidance, stale vs the thesis's 9.5x anchor). NO Conviction Triggers section; Key Metrics stale (~$130/3.0x/6.9% yield no longer describes the security). MC lens inert on Gate 1, so [MC-6] entropy and [G-10] new-venture-destruction base rates are not being asked to yield an optionality-capture premium; any Katz-return culture claim must still beat the founder-return mixed-to-poor base rate already logged.
 
 ## Related Research
 
-- [[Research/2025-12-15 - MTN - Gemini Stock Decline Canvas]] — Comprehensive structural analysis: Alterra competitive hegemony, regional battlefield analysis, financial de-rating, #Epicalypse narrative, valuation trap thesis
-- [[@Ski Resorts & Destination Leisure]] — Sector MOC: industry history, Epic-Ikon duopoly dynamics, climate and demographics, destination-leisure real estate framework
-- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]] — Scenario: gasoline shock + sentiment collapse cascades to destination travel; Epic Pass elasticity tested
+- [[Research/2025-12-15 - MTN - Gemini Stock Decline Canvas]]: Comprehensive structural analysis: Alterra competitive hegemony, regional battlefield analysis, financial de-rating, #Epicalypse narrative, valuation trap thesis
+- [[@Ski Resorts & Destination Leisure]]: Sector MOC: industry history, Epic-Ikon duopoly dynamics, climate and demographics, destination-leisure real estate framework
+- [[Research/2026-04-23 - Scenario - Iran Ground Invasion May 2026]]: Scenario: gasoline shock + sentiment collapse cascades to destination travel; Epic Pass elasticity tested
 
 ## Log
 
@@ -237,3 +245,7 @@ Climate change is not a tail risk for the ski industry — it is a present, comp
 
 ### 2026-07-12 (/deepen --sync-metrics)
 - Metrics synced: dividend yield 6.9%→5.9% + market cap $4.6B→$5.4B (Summary); leverage Notes reconciled 3.0x→3.9x. Snapshot: [[_Archive/Snapshots/MTN - Vail Resorts (pre-deepen-metrics-sync 2026-07-12-203456)]]
+
+### 2026-08-20
+- Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 1 fail: ski leisure is not a high-frequency optionality feed). Conviction unchanged.
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

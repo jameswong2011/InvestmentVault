@@ -637,7 +637,7 @@ Dedup: suppress only if an existing question contains BOTH the ticker wikilink A
 
 ### 8.4: Word cap
 
-After edits, count total. Over 4,000 → run compression trigger order per hot-md contract §Compression trigger order (steps 1-3: drop Sync Archive / *Previous:* / merge OQ; steps 4-5: drop pre-14d OQ cohorts + roster-compress pre-30d RCC entries; step 6: aggressive RCC fallback if still over hard cap). Over 5,000 after step 7 → abort `_hot.md` update with: `❌ _hot.md exceeds hard cap (5,000 words) after full compression — retro note still persisted.`
+After edits, count total. Over 8,000 → run compression trigger order per hot-md contract §Compression trigger order (steps 1-3: drop Sync Archive / *Previous:* / merge OQ; steps 4-5: drop pre-14d OQ cohorts + roster-compress pre-30d RCC entries; step 6: aggressive RCC fallback if still over hard cap). Over 10,000 after step 7 → abort `_hot.md` update with: `❌ _hot.md exceeds hard cap (10,000 words) after full compression — retro note still persisted.`
 
 Retro note write is unconditional; `_hot.md` update is best-effort.
 

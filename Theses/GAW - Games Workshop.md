@@ -8,80 +8,80 @@ sector: Hobby & Tabletop Gaming
 ticker: GAW
 fmp_symbol: GAW.L
 source: Vault research synthesis + web search (investor.games-workshop.com, License Global, Spikey Bits, Collider, Stockopedia, Bell of Lost Souls)
-key_metrics_last_refreshed: 2026-07-12
+key_metrics_last_refreshed: 2026-08-16
 ---
 
 # GAW — Games Workshop
 
 ## Summary
 
-75–80% share of premium miniature wargaming, 73.7% ROCE, 18% revenue CAGR since FY2019/20, and 5% annual price increases absorbed with zero measurable demand elasticity — metrics that belong to luxury goods or enterprise software, not a toy company trading at 27x P/E. The market's two consensus concerns are structurally misframed: revenue grew 18% CAGR *through the entire era of consumer 3D printing acceleration* (2019–2025), and the licensing business is not "volatile" — it is in its infancy, with Space Marine 2 (7M copies) and the Amazon Studios Warhammer 40K partnership representing the first serious attempts to convert 40 years of IP depth into a mainstream media franchise. The correct mental model is early-stage Pokemon or pre-MCU Marvel: a behavioral addiction engine built on cultural identity, wrapped in a vertically integrated manufacturing monopoly, with an embryonic franchise licensing platform at 94% margins — on the cusp of a media-driven TAM expansion that could dwarf the miniatures business within a decade.
+75–80% share of premium miniature wargaming, 73.7% ROCE, 16% revenue CAGR since FY2019/20 (FY2025/26 +6.8% pulled the since-FY20 rate from 18%), and 5% annual price increases absorbed with zero measurable demand elasticity: luxury/software economics now at 30.6x P/E after the multiple re-rated through the 27x toy-company frame. The market's two consensus concerns are structurally misframed: revenue grew 18% CAGR through the entire era of consumer 3D printing acceleration (2019–2025), and the licensing business is in its infancy rather than "volatile", with Space Marine 2 (7M copies) and the Amazon Studios Warhammer 40K partnership representing the first serious attempts to convert 40 years of IP depth into a mainstream media franchise. The correct mental model is early-stage Pokemon or pre-MCU Marvel: a behavioral addiction engine built on cultural identity, wrapped in a vertically integrated manufacturing monopoly, with an embryonic franchise licensing platform at 94% margins, on the cusp of a media-driven TAM expansion that could dwarf the miniatures business within a decade.
 
 ---
 
 ## Key Non-consensus Insights
 
-- **Games Workshop is not a consumer products company — it is a behavioral lock-in system with switching costs that rival enterprise software.** Typical engaged hobbyist: £2,000-5,000+ invested and hundreds of hours; 80% are hobbyists for whom the creative activity *itself* is the product, not the game. 7+ parallel game systems (40K, AoS, Old World, Kill Team, Warcry, Necromunda, Blood Bowl) on 3-5 year cycles create quasi-recurring purchase behavior at 72% gross margins — reported as product revenue but functioning as subscription economics.
+- **Games Workshop is a behavioral lock-in system with switching costs that rival enterprise software, not a consumer products company.** Typical engaged hobbyist: £2,000-5,000+ invested and hundreds of hours; 80% are hobbyists for whom the creative activity itself is the product, not the game. 7+ parallel game systems (40K, AoS, Old World, Kill Team, Warcry, Necromunda, Blood Bowl) on 3-5 year cycles create quasi-recurring purchase behavior at 72% gross margins: reported as product revenue but functioning as subscription economics.
 
-- **3D printing is the consensus short thesis — and 18% revenue CAGR through the entire era of consumer printing acceleration proves it is structurally wrong.** Consumer printers crossed <$300 / 8K+ resolution by 2024; the November 2025 STL mega-leak (180,000 downloads) was the stress test. FY2024/25 core revenue grew 14.2%, H1 FY2025/26 +15%. 3D printing threatens lowest-margin segments (bulk infantry, terrain, proxies) but cannot replicate the behavioral system — packaging ritual, tournament legitimacy, community belonging, brand identity.
+- **3D printing is the consensus short thesis, and 18% revenue CAGR through the entire era of consumer printing acceleration proves it is structurally wrong.** Consumer printers crossed <$300 / 8K+ resolution by 2024; the November 2025 STL mega-leak (180,000 downloads) was the stress test. FY2024/25 core revenue grew 14.2%, H1 FY2025/26 +15%. 3D printing threatens lowest-margin segments (bulk infantry, terrain, proxies) but cannot replicate the behavioral system: packaging ritual, tournament legitimacy, community belonging, brand identity.
 
-- **Vertically integrated manufacturing paired with Kevin Rountree's uniquely disciplined leadership creates a compound moat financial analysts systematically ignore.** 530+ proprietary injection molds, £24M annual tooling investment, ±0.05mm dimensional consistency 3D-printed resin cannot match; UK manufacturing insulates from 54% US tariffs on Chinese-origin goods. Rountree grew revenue from ~£120M to £617.5M while core opex grew only 7.1% against 14.2% revenue growth in FY2024/25. His identification of *talent retention* — not 3D printing — as the biggest risk reveals correct understanding of the moat.
+- **Vertically integrated manufacturing paired with Kevin Rountree's uniquely disciplined leadership creates a compound moat financial analysts systematically ignore.** 530+ proprietary injection molds, £24M annual tooling investment, ±0.05mm dimensional consistency 3D-printed resin cannot match; UK manufacturing insulates from 54% US tariffs on Chinese-origin goods. Rountree grew revenue from ~£120M to £659.7M while core opex grew only 7.1% against 14.2% revenue growth in FY2024/25. His identification of talent retention, not 3D printing, as the biggest risk reveals correct understanding of the moat.
 
-- **The licensing business is in its infancy, and the Amazon Studios partnership is being valued at approximately zero — even a mediocre outcome is transformational for the TAM.** Space Marine 2 sold 7M copies at 94.3% operating margins under the quality-gated strategy. Amazon show exposes 100M+ Prime households to an IP reaching 5-10M hobbyists — and unlike GoT, conversion targets entry into a high-margin, recurring-spend behavioral system. Cavill's decade-long Warhammer fandom and GW's creative control provisions differentiate this from typical Hollywood adaptations.
+- **The licensing business is in its infancy, and the Amazon Studios partnership is being valued at approximately zero; even a mediocre outcome is transformational for the TAM.** Space Marine 2 sold 7M copies at 94.3% operating margins under the quality-gated strategy. Amazon show exposes 100M+ Prime households to an IP reaching 5-10M hobbyists, and unlike GoT, conversion targets entry into a high-margin, recurring-spend behavioral system. Cavill's decade-long Warhammer fandom and GW's creative control provisions differentiate this from typical Hollywood adaptations.
 
-- **The short thesis is betting against a 73.7% ROCE monopoly, while geographic and demographic expansion remain in early innings.** Short interest +523%, but arrayed against cash flow at ~126% of net income, zero debt, 5% annual price increases with no churn. North American trade sales grew 24% in FY2024/25; 35 net new stores planned annually including first South Korean location. 570 stores (vs 3,000+ for luxury brands) and ~3.3% of the $15B tabletop market — physical retail and category expansion have substantial runway.
+- **The short thesis is betting against a 73.7% ROCE monopoly, while geographic and demographic expansion remain in early innings.** Short interest +523%, but arrayed against cash flow at ~126% of net income, zero debt, 5% annual price increases with no churn. North American trade sales grew 24% in FY2024/25; 35 net new stores planned annually including first South Korean location. 570 stores (vs 3,000+ for luxury brands) and ~3.3% of the $15B tabletop market: physical retail and category expansion have substantial runway.
 
 ---
 
 ## Outstanding Questions
 
-1. **Amazon timeline and creative quality** — When does a showrunner get announced? Creative guidelines were finalized Dec 2024, but no showrunner or cast beyond Cavill has been disclosed. The gap between "concept work" and "production" is typically 12–18 months, suggesting a 2028 premiere is more likely than 2027.
-2. **Official STL/digital strategy** — Will Games Workshop ever sell official digital files (STLs) for home printing? This would be the "streaming pivot" equivalent — cannibalizing physical sales to capture the digital segment. Management has given no signal of this, but the economic logic is compelling: sell STLs at 30–50% of physical prices with ~95% margins. If/when this happens, it transforms the 3D printing threat into a growth vector.
-3. **Licensing revenue trajectory in FY2025/26** — Management guided for a ~32% decline (to ~£35M) with no Space Marine 2-equivalent release. Is this the trough, or will the pipeline remain thin until the Amazon show materializes?
-4. **Tariff impact quantification** — 54% US tariffs on Chinese imports estimated at £12M PBT impact. GW manufactures in the UK (Nottingham), which should insulate the core business — but how much of the supply chain (paints, accessories, packaging materials) has Chinese exposure?
-5. **Talent pipeline sustainability** — Rountree identifies talent retention as the biggest risk. What is designer/sculptor turnover? Are compensation structures competitive with gaming studios and visual effects houses that compete for the same creative talent?
-6. **Warhammer+ subscription economics** — GW has disclosed very little about the digital subscription service (animations, lore content, exclusive miniatures). Is this a meaningful revenue stream or a customer engagement tool? What are subscriber counts and unit economics?
-7. **Old World commercial sustainability** — The January 2024 relaunch of Warhammer: The Old World "claimed the crown back from Age of Sigmar" according to community sentiment. Does GW now support three major game systems (40K, AoS, Old World) without cannibalizing, or is the hobbyist wallet being split?
+1. **Amazon timeline and creative quality**: When does a showrunner get announced? Creative guidelines were finalized Dec 2024, but no showrunner or cast beyond Cavill has been disclosed. The gap between "concept work" and "production" is typically 12–18 months, suggesting a 2028 premiere is more likely than 2027.
+2. **Official STL/digital strategy**: Will Games Workshop ever sell official digital files (STLs) for home printing? This would be the "streaming pivot" equivalent: cannibalizing physical sales to capture the digital segment. Management has given no signal of this, but the economic logic is compelling: sell STLs at 30–50% of physical prices with ~95% margins. If/when this happens, it transforms the 3D printing threat into a growth vector.
+3. **Licensing trough vs. pipeline**: FY2025/26 closed licensing ≥£30M (-43%), below the ~£35M / -32% guide, with no Space Marine 2-equivalent release. Is this the trough, or does the pipeline stay thin until Amazon and the 2027–29 slate monetize?
+4. **Tariff impact quantification**: 54% US tariffs on Chinese imports estimated at £12M PBT impact. GW manufactures in the UK (Nottingham), which should insulate the core business, but how much of the supply chain (paints, accessories, packaging materials) has Chinese exposure?
+5. **Talent pipeline sustainability**: Rountree identifies talent retention as the biggest risk. What is designer/sculptor turnover? Are compensation structures competitive with gaming studios and visual effects houses that compete for the same creative talent?
+6. **Warhammer+ subscription economics**: GW has disclosed very little about the digital subscription service (animations, lore content, exclusive miniatures). Is this a meaningful revenue stream or a customer engagement tool? What are subscriber counts and unit economics?
+7. **Old World commercial sustainability**: The January 2024 relaunch of Warhammer: The Old World "claimed the crown back from Age of Sigmar" according to community sentiment. Does GW now support three major game systems (40K, AoS, Old World) without cannibalizing, or is the hobbyist wallet being split?
 
 ---
 
 ## Business Model & Product Description
 
-Games Workshop's business model is best understood as "pre-MCU Marvel meets LVMH" — a deep IP universe with proven core economics and a nascent franchise licensing platform, wrapped in a vertically integrated manufacturing monopoly with luxury-grade pricing power. The company is three businesses in one: (1) a manufacturing monopoly producing proprietary miniatures at 72% gross margins, (2) a behavioral addiction system that generates quasi-recurring revenue through edition cycles and consumables, and (3) an embryonic IP licensing platform earning 94.3% operating margins. Revenue is ~90% "Core" (miniatures, paints, publications, retail, Warhammer+) and ~10% Licensing (video games, TV/film, merchandise), but the licensing segment's 94% margins mean it contributes disproportionately to operating profit. Unlike Hasbro or Mattel, which outsource manufacturing and compete on marketing spend, Games Workshop controls the entire value chain from concept art through injection molding to retail — producing economics (73.7% ROCE, zero debt, 5% annual price increases with zero demand elasticity) that belong in the luxury goods category, not consumer products.
+Games Workshop's business model is best understood as "pre-MCU Marvel meets LVMH": a deep IP universe with proven core economics and a nascent franchise licensing platform, wrapped in a vertically integrated manufacturing monopoly with luxury-grade pricing power. The company is three businesses in one: (1) a manufacturing monopoly producing proprietary miniatures at 72% gross margins, (2) a behavioral addiction system that generates quasi-recurring revenue through edition cycles and consumables, and (3) an embryonic IP licensing platform earning 94.3% operating margins. Revenue is ~95% "Core" (miniatures, paints, publications, retail, Warhammer+) and ~5% Licensing (video games, TV/film, merchandise) in FY2025/26 after the licensing cliff, but the licensing segment's 94% margins still contribute disproportionately to operating profit. Unlike Hasbro or Mattel, which outsource manufacturing and compete on marketing spend, Games Workshop controls the entire value chain from concept art through injection molding to retail, producing economics (73.7% ROCE, zero debt, 5% annual price increases with zero demand elasticity) that belong in the luxury goods category, not consumer products.
 
-### Core Business (~90% of revenue, 37.5% operating margin)
+### Core Business (~95% of revenue, 37.5% operating margin)
 
-**Miniature Wargaming Products** — Proprietary HIPS (High Impact Polystyrene) miniatures manufactured in-house at the Nottingham UK complex (530+ proprietary injection molds, £24M annual tooling investment, ±0.05mm dimensional consistency). Products span multiple parallel game systems, each on a 3-5 year edition cycle that creates quasi-recurring purchase behavior:
+**Miniature Wargaming Products**: Proprietary HIPS (High Impact Polystyrene) miniatures manufactured in-house at the Nottingham UK complex (530+ proprietary injection molds, £24M annual tooling investment, ±0.05mm dimensional consistency). Products span multiple parallel game systems, each on a 3-5 year edition cycle that creates quasi-recurring purchase behavior:
 
 - **Warhammer 40,000**: Sci-fi wargame set in the 41st millennium. The flagship franchise. 10th Edition launched 2023, with ongoing faction codex updates across 20+ armies (Space Marines, Orks, Aeldari, Chaos Space Marines, Tyranids, Necrons, etc.). Each codex release triggers faction-specific purchases of new and updated miniatures.
 - **Warhammer Age of Sigmar**: Fantasy wargame. 4th Edition launched 2025 with battletome releases rolling out (Cities of Sigmar, Skaven, Stormcast Eternals). "City of Ash" boxed set (April 2026) exemplifies the narrative-driven product bundle model.
-- **Warhammer: The Old World**: Legacy fantasy system relaunched January 2024 to enthusiastic reception — "claimed the crown back from Age of Sigmar" per community sentiment. Faction waves expanding: Wood Elves, Beastmen, Grand Cathay, Tomb Kings, Chaos Marauders. Addresses nostalgic older hobbyists while running as a third major system.
+- **Warhammer: The Old World**: Legacy fantasy system relaunched January 2024 to enthusiastic reception: "claimed the crown back from Age of Sigmar" per community sentiment. Faction waves expanding: Wood Elves, Beastmen, Grand Cathay, Tomb Kings, Chaos Marauders. Addresses nostalgic older hobbyists while running as a third major system.
 - **Skirmish & Specialist Games**: Kill Team (40K small-scale), Warcry (AoS small-scale), Necromunda (gang warfare / hive cities), Blood Bowl (fantasy football), Legions Imperialis (epic-scale warfare). Each operates as a lower-entry-cost gateway into the broader ecosystem.
 - **Boxed Sets & Starter Products**: Entry-level products at £50-120 price points containing two forces, simplified rules, and terrain. Primary new customer acquisition vehicle.
 
-**Citadel Paints & Hobby Supplies** — Comprehensive paint range (100+ individual paints including Base, Layer, Shade, Contrast, Technical, and Dry formulations), brushes, modelling tools, plastic glue, and basing materials. Consumable layer generating recurring revenue from the active hobbyist base. High attachment rate to miniature purchases.
+**Citadel Paints & Hobby Supplies**: Comprehensive paint range (100+ individual paints including Base, Layer, Shade, Contrast, Technical, and Dry formulations), brushes, modelling tools, plastic glue, and basing materials. Consumable layer generating recurring revenue from the active hobbyist base. High attachment rate to miniature purchases.
 
-**Publications** — Rulebooks, codexes/battletomes ($30-60 each, released on 3-5 year edition cycles per faction), campaign supplements, and Black Library (the publishing imprint producing novels, short stories, and audiobooks expanding the lore universe across hundreds of titles). Black Library drives deeper IP engagement and extends time-in-ecosystem.
+**Publications**: Rulebooks, codexes/battletomes ($30-60 each, released on 3-5 year edition cycles per faction), campaign supplements, and Black Library (the publishing imprint producing novels, short stories, and audiobooks expanding the lore universe across hundreds of titles). Black Library drives deeper IP engagement and extends time-in-ecosystem.
 
-**Warhammer+** — Digital subscription service offering animated series, painting tutorials, lore content, battle reports, and exclusive miniatures for subscribers. Limited disclosure on economics; functions primarily as an engagement and retention tool reinforcing the digital layer of the community.
+**Warhammer+**: Digital subscription service offering animated series, painting tutorials, lore content, battle reports, and exclusive miniatures for subscribers. Limited disclosure on economics; functions primarily as an engagement and retention tool reinforcing the digital layer of the community.
 
 ### Retail & Distribution
 
 - **Warhammer Stores**: 570 company-owned stores globally (net +22 in FY2024/25, targeting ~35 net new per year). Typically single-staff, capital-light community hubs (~500 sq ft) functioning as discovery centers, hobby spaces, and recruitment points. Gaming tables and hobby stations enable the communal experience. First South Korea location planned, expanding the Asia-Pacific footprint beyond Japan and Australia.
-- **Trade Channel**: 8,100 independent retail partners (+900 new accounts in FY2024/25) — independent game stores and online retailers receiving Games Workshop products at wholesale.
+- **Trade Channel**: 8,100 independent retail partners (+900 new accounts in FY2024/25): independent game stores and online retailers receiving Games Workshop products at wholesale.
 - **Online (games-workshop.com)**: Direct e-commerce with global shipping. Complemented by My Warhammer (735K active users, +30%) as the digital community platform.
 
-### Licensing (~10% of revenue, 94.3% operating margin)
+### Licensing (~5% of revenue, 94.3% operating margin)
 
-Pure IP rent — Games Workshop provides creative oversight, brand guidelines, and lore accuracy review while licensees bear all production costs, development risk, and distribution:
+Pure IP rent: Games Workshop provides creative oversight, brand guidelines, and lore accuracy review while licensees bear all production costs, development risk, and distribution:
 
-- **Video Games**: Space Marine 2 (Saber Interactive / Focus Entertainment, 7M copies — the franchise's first true AAA mainstream hit), Total War: Warhammer trilogy (Creative Assembly / SEGA — the defining fantasy grand strategy series), Warhammer 40K: Darktide (Fatshark), and dozens of smaller titles across mobile, PC, and console under the current selective quality-gated licensing strategy.
+- **Video Games**: Space Marine 2 (Saber Interactive / Focus Entertainment, 7M copies: the franchise's first true AAA mainstream hit), Total War: Warhammer trilogy (Creative Assembly / SEGA: the defining fantasy grand strategy series), Warhammer 40K: Darktide (Fatshark), and dozens of smaller titles across mobile, PC, and console under the current selective quality-gated licensing strategy.
 - **Film/TV**: Amazon Studios Warhammer 40K partnership. Henry Cavill as executive producer and star. Creative guidelines finalized December 2024; active concept development. Multi-year production timeline; earliest premiere 2027-2028. Amazon's $1B+ franchise investment capacity and Cavill's genuine decade-long Warhammer fandom differentiate this from typical Hollywood IP adaptations.
 - **Merchandise & Other**: Apparel, collectibles, statues (McFarlane Toys, JoyToy action figures), and broader brand licensing.
 
 ### Manufacturing (Vertically Integrated)
 
-The entire value chain — concept art → 3D digital sculpting → mold engineering → HIPS injection molding → packaging → retail — is controlled in-house at the Nottingham complex:
+The entire value chain, from concept art → 3D digital sculpting → mold engineering → HIPS injection molding → packaging → retail, is controlled in-house at the Nottingham complex:
 - Factories 1-3 (operational) + Factory 4 (63,000 sq ft expansion, operational 2026 on a five-year build-out programme). Factory 4 separates packing from molding operations to increase injection molding capacity.
 - Proprietary HIPS formulation delivering structural integrity, fatigue resistance, and dimensional consistency that 3D-printed resin cannot match.
 - UK manufacturing base insulates core products from 54% US tariffs on Chinese-origin goods (estimated £12M PBT tariff impact relates to accessories/supply chain inputs only).
@@ -92,11 +92,11 @@ The entire value chain — concept art → 3D digital sculpting → mold enginee
 
 ### The Tabletop Gaming Market
 
-The global tabletop gaming market reached ~$15B in 2024, growing at ~10% CAGR. Games Workshop commands ~3.3% of the total market but 75–80% of the premium miniature wargaming segment — a market structure more reminiscent of De Beers in diamonds or LVMH in luxury goods than a typical consumer products company. The nearest competitors in miniatures — Privateer Press (Warmachine), Corvus Belli (Infinity), Mantic Games (Kings of War) — are fractional in scale, with none exceeding £50M in annual revenue. Wizards of the Coast (Hasbro) dominates tabletop RPGs (D&D) and trading cards (Magic: The Gathering) but does not compete in miniatures at scale. The competitive landscape is effectively a monopoly with a fringe.
+The global tabletop gaming market reached ~$15B in 2024, growing at ~10% CAGR. Games Workshop commands ~3.3% of the total market but 75–80% of the premium miniature wargaming segment: a market structure more reminiscent of De Beers in diamonds or LVMH in luxury goods than a typical consumer products company. The nearest competitors in miniatures, Privateer Press (Warmachine), Corvus Belli (Infinity), Mantic Games (Kings of War), are fractional in scale, with none exceeding £50M in annual revenue. Wizards of the Coast (Hasbro) dominates tabletop RPGs (D&D) and trading cards (Magic: The Gathering) but does not compete in miniatures at scale. The competitive landscape is effectively a monopoly with a fringe.
 
 ### The Hobby as a Behavioral System
 
-The critical distinction between Games Workshop and typical consumer companies is that Warhammer is not a product — it is a multi-stage behavioral engagement system. The customer journey progresses through:
+The critical distinction between Games Workshop and typical consumer companies is that Warhammer is a multi-stage behavioral engagement system rather than a product. The customer journey progresses through:
 
 1. **Discovery** → media, word-of-mouth, retail store exposure, video games
 2. **Entry** → starter set purchase (£50–120), first assembly and painting
@@ -104,7 +104,7 @@ The critical distinction between Games Workshop and typical consumer companies i
 4. **Identity** → tournament participation, community belonging, creative expression, content creation
 5. **Evangelism** → teaching new players, running local groups, online content
 
-Each stage deepens the switching cost. By Stage 3–4, the customer has invested not just money but *identity* — their social circle includes other hobbyists, their creative skill portfolio is Warhammer-specific, their content consumption (YouTube, Reddit, podcasts) revolves around the IP. This behavioral lock-in is why GW can raise prices 5% annually with no measurable churn. It is why 3D printing does not threaten the core — you can print the miniature, but you cannot print the community, the tournament infrastructure, the Black Library novels, or the 40 years of shared cultural memory.
+Each stage deepens the switching cost. By Stage 3–4, the customer has invested not just money but identity: their social circle includes other hobbyists, their creative skill portfolio is Warhammer-specific, their content consumption (YouTube, Reddit, podcasts) revolves around the IP. This behavioral lock-in is why GW can raise prices 5% annually with no measurable churn. It is why 3D printing does not threaten the core: the miniature can be printed, but the community, the tournament infrastructure, the Black Library novels, and the 40 years of shared cultural memory cannot.
 
 ### The IP Licensing Inflection
 
@@ -114,7 +114,7 @@ Games Workshop's IP licensing strategy underwent a fundamental transformation un
 - **Total War: Warhammer** trilogy (Creative Assembly / SEGA): Defined the fantasy grand strategy genre. Hundreds of hours of engagement per player, driving deep lore exploration.
 - **Amazon Studios partnership**: Announced December 2022, creative guidelines finalized December 2024. Henry Cavill as executive producer and star. Multi-year production timeline; earliest premiere 2027–2028.
 
-The licensing margin structure is extraordinary: 94.3% operating margin on £52.5M revenue in FY2024/25. This is pure IP rent — GW provides creative oversight and brand guidelines while licensees bear all production costs and risk. The structural parallel is The Pokémon Company, which generates >$5B annually in licensing from a comparably deep IP universe that was once considered a children's niche. GW's licensing is approximately where Pokémon was in the late 1990s — first breakout successes, mainstream visibility emerging, but the full franchise platform not yet constructed.
+The licensing margin structure is extraordinary: 94.3% operating margin on £52.5M revenue in FY2024/25. This is pure IP rent: GW provides creative oversight and brand guidelines while licensees bear all production costs and risk. The structural parallel is The Pokémon Company, which generates >$5B annually in licensing from a comparably deep IP universe that was once considered a children's niche. GW's licensing is approximately where Pokémon was in the late 1990s: first breakout successes, mainstream visibility emerging, but the full franchise platform not yet constructed.
 
 ### Manufacturing and Vertical Integration
 
@@ -133,18 +133,18 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 
 | Metric | Value | Notes |
 |--------|-------|-------|
-| Share Price | ~£201 | Near all-time highs; 52-wk return +56.2% |
-| Market Cap | £6.6B | FTSE 100 constituent |
+| Share Price | ~£191 | ~19% off 52-wk high (£235); 52-wk return +36% |
+| Market Cap | £6.3B | FTSE 100 constituent |
 | FY2024/25 Revenue | £617.5M | +17.5% YoY |
 | H1 FY2025/26 Revenue | £332.1M | +34% YoY (record half-year) |
 | Core Operating Margin | 37.5% | FY2024/25; +220bps YoY |
 | Licensing Operating Margin | 94.3% | Pure IP rent |
 | Blended Operating Margin | 42.3% | +390bps YoY |
-| Gross Margin | 72.3% | +70bps YoY |
+| Gross Margin | 72.5% | +40bps YoY |
 | ROCE | 73.7% | Among highest of any public company |
 | ROE | 67.9% | |
 | Operating Cash Flow / Net Income | ~126% | Exceptional earnings quality |
-| Trailing P/E | 27.2x | 5yr avg 25.8x; range 18.5–32.2x |
+| Trailing P/E | 30.6x | Near top of 5yr range 18.5–32.2x (avg 25.8x) |
 | Stores | 570 | Net +22 in FY2024/25; ~35 net new p.a. |
 | Trade Partners | 8,100 | +900 new accounts |
 | My Warhammer Users | 735K | Up 30% from 565K |
@@ -152,40 +152,44 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 
 ---
 
+## Management and culture
+
+Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 fails: hobby miniatures is a 3–5-year edition-cycle harvest, not a high-frequency optionality feed; Amazon/video-game licensing is lumpy partner-controlled adjacency (FY26 AR 28 Jul 2026: "broadly out of our control"). Revealed behaviour protects the core — 13 Jan 2026 generative-AI ban, quality-gated licenses, no official STLs — rather than converting that adjacency; grade on [G-5]/[G-8]/Value Layer. [MC-2] Rountree is a 1998-hire professional CEO (from 1 Jan 2015); FY26 bonus 200% of £750k on core P&L with 50% post-tax into 2-year hold shares; 3 Aug 2026 PDMR 2,034 shares at £193.88 is that mandate, not an open-market catalyst. Surplus-cash dividends are [G-8]. Swing: none for this lens.
+
 ## Bull Case
 
 - **Franchise media inflection**: Amazon Warhammer 40K show exposes 100M+ Prime households to the IP, driving a funnel conversion wave that transforms the TAM. Even a 1% hobby conversion rate at £300 average initial spend = £300M+ revenue opportunity. Licensing enters a structurally higher baseline (£80–100M+) as the franchise platform matures.
 - **Behavioral moat proves impervious to 3D printing**: Core revenue continues compounding at 12–18% through 2028+ as 3D printing reaches 25–30% hobbyist adoption but functions as a supplement (terrain, proxies) rather than substitute. GW optionally launches official STL sales, converting the threat into a ~95% margin revenue stream.
 - **Geographic expansion accelerates**: North America (+24% trade sales), Asia-Pacific (first Korea store), and emerging markets drive store count from 570 toward 800+ over five years. Each store is a capital-light community hub generating direct revenue and local ecosystem engagement.
 - **Edition cycle compounds**: With 7+ parallel game systems on staggered 3–5 year cycles (40K, AoS, Old World, Kill Team, Warcry, Necromunda, Blood Bowl+), there is always a major product refresh driving repurchase. The Old World relaunch proved GW can resurrect dormant IP and create net-new demand.
-- **Licensing flywheel**: Space Marine 2 success (7M copies) proves the template. Follow-on AAA titles in pipeline. Each successful game drives new hobbyists into the miniatures funnel — the inverse of the typical licensing model where the license extracts value from the core brand.
+- **Licensing flywheel**: Space Marine 2 success (7M copies) proves the template. Follow-on AAA titles in pipeline. Each successful game drives new hobbyists into the miniatures funnel: the inverse of the typical licensing model where the license extracts value from the core brand.
 - **Pricing power persists**: 5% annual price increases absorbed with no measurable churn for 10+ consecutive years, enabled by the behavioral lock-in dynamics described above.
 
 ## Bear Case
 
 - **Licensing cliff materializes as structural, not cyclical**: FY2025/26 licensing declines ~32%, and the Amazon show either fails creatively, gets cancelled, or doesn't premiere until 2029+. Without a blockbuster franchise driver, licensing oscillates at £20–40M (not the £50M+ the bull case requires), and the high-margin revenue that expanded the blended operating margin to 42.3% proves to have been a one-time Space Marine 2 windfall.
 - **3D printing adoption reaches a tipping point in the competitive/tournament segment**: If major tournament organizers relax official-model requirements (driven by community pressure or competitor events), the structural demand protection erodes. The creator economy (boutique studios earning $500K+/month on Patreon from STL subscriptions) demonstrates a sustainable commercial incentive for continued content production that GW cannot suppress through legal enforcement alone.
-- **Growth deceleration is structural, not cyclical**: Revenue growth moderating from 17% to 3.5% in FY2025/26 may reflect market saturation in core Western markets. If North American and European growth normalizes to low-single-digits, the premium multiple compresses to historical averages (18–22x) — implying 20–30% downside.
-- **Talent exodus**: If GW loses key designers/sculptors to higher-paying gaming studios, visual effects houses, or AI-assisted design firms, the creative output quality — the foundation of the entire moat — degrades. Rountree himself identified this as the top risk.
+- **Growth deceleration is structural, not cyclical**: Revenue growth moderating from 17% to 3.5% in FY2025/26 may reflect market saturation in core Western markets. If North American and European growth normalizes to low-single-digits, the premium multiple compresses to historical averages (18–22x), implying 20–30% downside.
+- **Talent exodus**: If GW loses key designers/sculptors to higher-paying gaming studios, visual effects houses, or AI-assisted design firms, the creative output quality, the foundation of the entire moat, degrades. Rountree himself identified this as the top risk.
 - **Tariff escalation**: While UK manufacturing insulates core production, a broader trade war impacting GW's supply chain inputs, US pricing, or consumer discretionary spending in key markets could compress margins or volumes.
 
 ---
 
 ## Catalysts
 
-- **Amazon Warhammer 40K showrunner announcement** — The first concrete signal of production timeline. A high-profile showrunner (think: the caliber of Shogun's creators) would immediately re-rate the franchise optionality.
-- **FY2025/26 full-year results (July 2026)** — Will core revenue growth remain 12–15% despite the "off year"? Licensing floor (~£35M) sets the trough expectation; any upside surprise (unannounced game launch, licensing deal) re-rates.
-- **New 40K Edition launch (likely 2026–2027)** — The biggest single product event in GW's release calendar. 40K edition launches have historically driven 15–25% revenue surges in the launch year.
-- **Factory 4 operational milestone (2026)** — Increased injection molding capacity enables faster product release cadence and supports geographic expansion without supply constraints.
-- **First South Korea store opening** — Signals Asia-Pacific expansion beyond Japan/Australia, the largest untapped geographic opportunity.
-- **Official STL/digital product announcement** — Would transform the 3D printing narrative from threat to growth vector overnight. No signal from management, but the economic logic is compelling.
-- **Space Marine 2 DLC / sequel announcement** — Continued monetization of the proven franchise. The game's 7M-unit installed base is a persistent marketing asset for the miniatures business.
+- **Amazon Warhammer 40K showrunner announcement**: The first concrete signal of production timeline. A high-profile showrunner (think: the caliber of Shogun's creators) would immediately re-rate the franchise optionality.
+- **FY2025/26 full-year results (July 2026)**: Will core revenue growth remain 12–15% despite the "off year"? Licensing floor (~£35M) sets the trough expectation; any upside surprise (unannounced game launch, licensing deal) re-rates.
+- **New 40K Edition launch (likely 2026–2027)**: The biggest single product event in GW's release calendar. 40K edition launches have historically driven 15–25% revenue surges in the launch year.
+- **Factory 4 operational milestone (2026)**: Increased injection molding capacity enables faster product release cadence and supports geographic expansion without supply constraints.
+- **First South Korea store opening**: Signals Asia-Pacific expansion beyond Japan/Australia, the largest untapped geographic opportunity.
+- **Official STL/digital product announcement**: Would transform the 3D printing narrative from threat to growth vector overnight. No signal from management, but the economic logic is compelling.
+- **Space Marine 2 DLC / sequel announcement**: Continued monetization of the proven franchise. The game's 7M-unit installed base is a persistent marketing asset for the miniatures business.
 
 ---
 
 ## Risks
 
-1. **Licensing concentration and cyclicality**: 94% margin licensing revenue is spectacular but lumpy. FY2025/26 licensing projected to decline 32%. Heavy dependence on third-party development cycles (Amazon's timeline, game studio production schedules) that GW cannot control. A licensing miss in a year when core growth is already decelerating amplifies the headline impact.
+1. **Licensing concentration and cyclicality**: 94% margin licensing revenue is spectacular but lumpy. FY2025/26 licensing printed ≥£30M (-43%), below the ~£35M floor. Heavy dependence on third-party development cycles (Amazon's timeline, game studio production schedules) that GW cannot control. A licensing miss in a year when core growth is already decelerating amplifies the headline impact.
 2. **3D printing adoption trajectory**: Currently contained at 15% hobbyist adoption with revenue growth unaffected. But 14K+ printers emerging in 2026, AI-assisted STL generation (Meshy AI), and decentralized distribution (encrypted channels, P2P) are accelerating the technology curve. If adoption reaches 30–40% and begins substituting core purchases (not just supplementing), the revenue impact could materialize within 3–5 years. The November 2025 mega-leak (180K downloads) demonstrated that enforcement capacity is structurally outmatched by distribution velocity.
 3. **Amazon execution risk**: Multi-year production timeline with no guaranteed quality outcome. Henry Cavill's involvement mitigates creative risk but not production/scheduling risk. If the show is mediocre or cancelled, the franchise optionality the market has begun pricing in collapses, and there is no near-term alternative path to mainstream media penetration.
 4. **Talent retention**: Rountree's self-identified top risk. GW's Nottingham-based creative team competes for talent against gaming studios (often London/global, higher salaries), VFX houses, and increasingly AI-tool-augmented design workflows. The craft-expertise moat is only as durable as the people who embody it.
@@ -197,19 +201,23 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this opportunity. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the evidence in this thesis, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied** (2026-07-10 batch-8 pass, evidence-tested against July-2026 web research): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]]
-- **Triggers + evidence status** — hypotheses tested, not verdicts:
-	- Core-moat legs CONFIRMED through the "off year": FY26 pre-close (May 22) core revenue ≥£625M = +10.6% (vs +3.5% consensus — a ~7pt beat); 11th Edition 40K landed June 2026 as the biggest launch box ever; ~3.5% price rise absorbed, tariffs fully offset; 3D printing again failed the revenue test despite a new AI-cloning vector (Meshy STL clones from preview images — qualitatively new piracy risk); dividend raised (90p first FY27 declaration); Korea store opened, Warhammer World USA announced (late 2027).
-	- Licensing-inflection leg WEAKENED — the pillar behind the May 22 conviction upgrade: FY26 licensing ≥£30M is -43% YoY and BELOW the thesis's own ~£35M floor; the Amazon show has NO showrunner, cast, or timeline 3.5 years post-announcement ("delivery is not in our control" — Rountree). Offsetting pipeline rebuilt but monetizing 2027-29: Total War: Warhammer 40K announced (Dec 2025, unmodeled), Space Marine 3 in development (2028-29), Darktide still at ~57K concurrents. PBT ~flat despite core +10.6% — first year of negative operating leverage on licensing mix.
-	- Automation Lens counter-position: GW BANNED generative AI in all design (Jan 13) and positions "Human Made" as luxury — a deliberate anti-fit on Lens A cost-leverage that doubles as talent-retention and scarcity-moat protection; official STL/digital catalyst REFUTED by the same move.
-	- Multiple INVERTED vs the bear math: ~31.6x P/E vs 24.1x 10-yr median (thesis anchored 27x), consensus target ≈ spot — the market pre-paid the core beat, so the thesis's own bear-case compression to 18-22x now implies ~35-45% downside from a higher base.
-- **Disconfirming check** (evidence-updated 2026-07-10): base rate split — hobby-IP behavioral monopolies (LEGO, TCGs) sustain pricing power for decades (favorable priors for the core), but licensing-inflection theses have POOR priors: most announced prestige-TV IP adaptations never air or disappoint, so "Amazon valued at zero" may be the correct price, not a mispricing. Single falsifying datapoint: the 28 July 2026 Annual Report showing licensing below £30M guidance or core margin compressing beneath the pricing — that combination breaks the "coiled spring" framing at a 31.6x multiple. The medium→high upgrade (2026-05-22) leaned on the weakened pillar — flag for review (Tier 3 — user decision). NO Conviction Triggers section; community-channel reach weaker than the moat framing assumes (28.8% use official channels vs 74.6% YouTube).
+- **Models applied** (2026-07-10 batch-8 pass, evidence-tested against July-2026 web research; MC lens 2026-08-20): [[Generalist - Overview]] · [[Lens - Automation & AI Readiness]] · [[Lens - Management and Culture]]
+- **Triggers + evidence status**: hypotheses tested, not verdicts:
+	- Core-moat legs CONFIRMED through the "off year": FY26 pre-close (May 22) core revenue ≥£625M = +10.6% (vs +3.5% consensus: a ~7pt beat); 11th Edition 40K landed June 2026 as the biggest launch box ever; ~3.5% price rise absorbed, tariffs fully offset; 3D printing again failed the revenue test despite a new AI-cloning vector (Meshy STL clones from preview images: qualitatively new piracy risk); dividend raised (90p first FY27 declaration); Korea store opened, Warhammer World USA announced (late 2027).
+	- Licensing-inflection leg WEAKENED: the pillar behind the May 22 conviction upgrade: FY26 licensing ≥£30M is -43% YoY and BELOW the thesis's own ~£35M floor; the Amazon show has NO showrunner, cast, or timeline 3.5 years post-announcement ("delivery is not in our control": Rountree). Offsetting pipeline rebuilt but monetizing 2027-29: Total War: Warhammer 40K announced (Dec 2025, unmodeled), Space Marine 3 in development (2028-29), Darktide still at ~57K concurrents. PBT ~flat despite core +10.6%: first year of negative operating leverage on licensing mix.
+	- Automation Lens counter-position: GW BANNED generative AI in all design (Jan 13) and positions "Human Made" as luxury: a deliberate anti-fit on Lens A cost-leverage that doubles as talent-retention and scarcity-moat protection; official STL/digital catalyst REFUTED by the same move.
+	- Multiple INVERTED vs the bear math: ~31.6x P/E vs 24.1x 10-yr median (thesis anchored 27x), consensus target ≈ spot: the market pre-paid the core beat, so the thesis's own bear-case compression to 18-22x now implies ~35-45% downside from a higher base.
+	- Management & Culture [MC-1] · optionality-feed gate: fails: hobby miniatures is a low-frequency edition-cycle harvest; Amazon/video-game licensing is lumpy partner-controlled adjacency, not a high-frequency feed.
+	- Management & Culture [MC-2] · incentive duration / professional CEO: Rountree 1998 hire, CEO from 1 Jan 2015; FY26 bonus on core P&L (not TSR) with 50% into 2-year hold shares; TSA 2026/27 on diluted EPS; 3 Aug 2026 PDMR buys are bonus-mandated.
+	- Management & Culture [MC-6] · entropy base rate: 11-year professional-CEO + promote-from-within harvests the fortress; does not convert a feed that isn't there.
+- **Disconfirming check** (evidence-updated 2026-07-10): base rate split: hobby-IP behavioral monopolies (LEGO, TCGs) sustain pricing power for decades (favorable priors for the core), but licensing-inflection theses have POOR priors: most announced prestige-TV IP adaptations never air or disappoint, so "Amazon valued at zero" may be the correct price, not a mispricing. Single falsifying datapoint: the 28 July 2026 Annual Report showing licensing below £30M guidance or core margin compressing beneath the pricing: that combination breaks the "coiled spring" framing at a 31.6x multiple. The medium→high upgrade (2026-05-22) leaned on the weakened pillar: flag for review (Tier 3: user decision). NO Conviction Triggers section; community-channel reach weaker than the moat framing assumes (28.8% use official channels vs 74.6% YouTube). Management & Culture [MC-6]/[G-10]: Gate 1 fail means the org is not claiming an optionality-capture outlier against new-venture destruction; the licensing-inflection poor prior already in this check is the live adversary, not entropy-fighting.
 
 ## Related Research
 
-- [[Research/2026-04-15 - GAW - Investment Analysis]] — Comprehensive financial analysis: £617.5M FY2024/25 revenue, 42.3% blended operating margin, 73.7% ROCE, Amazon Studios partnership
-- [[Research/2026-04-15 - GAW - 3D Printing Competitive Impact]] — 15% hobbyist adoption, 8K+ resin parity, 50–90% cost savings, November 2025 STL mega-leak, structural defense analysis
-- [[Sectors/Hobby & Tabletop Gaming]] — Sector Note
+- [[Research/2026-04-15 - GAW - Investment Analysis]]: Comprehensive financial analysis: £617.5M FY2024/25 revenue, 42.3% blended operating margin, 73.7% ROCE, Amazon Studios partnership
+- [[Research/2026-04-15 - GAW - 3D Printing Competitive Impact]]: 15% hobbyist adoption, 8K+ resin parity, 50–90% cost savings, November 2025 STL mega-leak, structural defense analysis
+- [[Sectors/Hobby & Tabletop Gaming]]: Sector Note
+- [[Research/2026-08-15 - GAW - Stress Test]]: HIGH licensing pillar missed (FY26 £32.9M −37%); no triggers; live; /status followup
 
 ---
 
@@ -235,3 +243,13 @@ The UK manufacturing base also provides a structural tariff advantage: GW's prod
 
 ### 2026-07-12 (/numbers)
 - Numbers refresh (2nd same-day pass, fmp_symbol GAW.L verified): 0 rows edited. Share Price raw FMP quote (20060) correctly converted from GBp pence (÷100 = £200.60, rounds to £201) — matches current cell exactly; confirms the prior run's GBp/GBP flag was the right call and this run applied the pence-conversion correctly (no repeat of the earlier GAW GBp miss). Market Cap and Gross Margin also render identical to current text. No material change. Snapshot: [[_Archive/Snapshots/GAW - Games Workshop (pre-numbers 20260712-184025)]]
+
+### 2026-08-16
+- Metrics synced: 12 figures across 6 sections. P/E 27.2x→30.6x, £201→£191 (GBp÷100), cap £6.6B→£6.3B; FY26 £659.7M (+6.8%) pulls since-FY20 CAGR 18%→16%. Snapshot: [[_Archive/Snapshots/GAW - Games Workshop (pre-metrics-pass 2026-08-16-000858)]]
+
+### 2026-08-18
+- [[Research/2026-08-15 - GAW - Stress Test]]: HIGH licensing pillar missed (FY26 £32.9M −37%); no triggers; live — conviction unchanged (high); /status followup registered.
+
+### 2026-08-20
+- Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 1 fail); hobby miniatures is not a high-frequency optionality feed, org protects the core. Conviction unchanged.
+- Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged

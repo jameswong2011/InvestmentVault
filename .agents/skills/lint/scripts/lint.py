@@ -2,20 +2,27 @@
 """
 lint.py — deterministic vault health checks (Fix #3, 2026-07-08).
 
-Implements the mechanical subset of $lint's 55-check registry as a script,
-following the generate_graph.py precedent: LLM-executed grep/awk/date-math
-was the vault's most reliability-prone pattern; scripting it makes results
-reproducible and cuts an Opus-max full-vault invocation to a ~2s run.
+Implements the mechanical subset of $lint's check registry (#1–#61) as a
+script, following the generate_graph.py precedent: LLM-executed grep/awk/
+date-math was the vault's most reliability-prone pattern; scripting it makes
+results reproducible and cuts an Opus-max full-vault invocation to a ~2s run.
+
+Registry gaps: #31 and #40 are RETIRED — the numbers were never reassigned and
+are intentionally left unused; do not renumber existing checks to fill them.
 
 COVERED (deterministic):  #1 #2 #3 #4 #5(empty-only) #6 #8 #10 #11 #12 #13
   #14 #15 #16 #17 #18 #19 #20 #21 #22 #23 #24 #25 #26 #27 #28(candidates)
   #29(a/b/c presence) #30 #32 #33 #34 #35 #36 #37 #38 #39 #41 #42 #43 #44
-  #45 #46 #47 #48 #49 #50 #51 #52 #53 #54 #55(candidates) #56
+  #45 #46 #47 #48 #49 #50 #51 #52 #53 #54 #55(candidates) #56 #57 #58 #59
+  #60 #61 #62(candidates) #63(stable-ID aggregate) #64 #65(candidates) #66
+  #67
 NOT COVERED (LLM judgment — run by the $lint skill after this script):
   #5 thin-but-nonempty sections, #7 old financial data, #9 unlinked mentions,
   #12/#13 interpretation (script emits mechanical flags only), #14 nuance,
   #28 confirmation of flagged fragments, #29 reverse-check + semantic drift,
-  #55 intent review of matched phrases.
+  #55 intent review of matched phrases, #62 non-consensus-names-consensus
+  substance, #63 Mental-Models hypotheses-not-verdicts framing, #65 conviction
+  Summary-vs-frontmatter (confirm stale statement vs conditional prose).
 
 Usage:  python3 .agents/skills/lint/scripts/lint.py            # full vault
         python3 .agents/skills/lint/scripts/lint.py --ticker NVDA
@@ -287,6 +294,18 @@ def structural(v, scoped_theses):
             if missing:
                 add("IMPORTANT", "#4", f"{p.relative_to(VAULT)} missing frontmatter: {', '.join(missing)}")
 
+    # ---- #67 publish-flag coverage — website-sync: an external GitHub→website
+    # pipeline pulls notes marked `publish: true`; a thesis/sector/macro note
+    # missing the key is silently invisible to the site. Presence check only:
+    # `publish: false` is an intentional unpublish and passes. Research/ and
+    # Website/ (the blog — separate pipeline) are out of scope by design.
+    for d in ("theses", "sectors", "macro"):
+        pool = scoped_theses if (scoped_theses and d == "theses") else ({} if scoped_theses else v[d])
+        for p, _t in pool.items():
+            if "publish" not in v["fm"].get(p, {}):
+                add("IMPORTANT", "#67", f"{p.relative_to(VAULT)} missing `publish:` frontmatter — "
+                    f"invisible to website sync (add `publish: true`)")
+
     # ---- #5 empty critical sections (deterministic empties only; thin → LLM)
     for p, t in (scoped_theses or theses).items():
         for name in ("Key Metrics", "Bull Case", "Bear Case", "Key Non-consensus Insights"):
@@ -311,6 +330,22 @@ def freshness(v, scoped_theses):
         lld = last_log_date(t)
         if fm.get("status") == "active" and lld and days_old(lld) > 30:
             add("NICE", "#6", f"Stale active thesis: [[Theses/{p.stem}]] — last Log entry {days_old(lld)}d ago")
+        # #61 Key Metrics staleness (2026-07-14): key_metrics_last_refreshed missing or
+        # >90d. High-conviction active = Important (capital concentrated here moves with
+        # the numbers); other open theses = Nice. Consumes the field $numbers Step 11
+        # writes. Draft/closed skipped (numbers cadence: draft opportunistic, closed never).
+        status, conv = fm.get("status"), fm.get("conviction")
+        if status in ("active", "monitoring"):
+            kmr = parse_date(fm.get("key_metrics_last_refreshed"))
+            hi = status == "active" and conv == "high"
+            if kmr is None:
+                add("IMPORTANT" if hi else "NICE", "#61",
+                    f"[[Theses/{p.stem}]] ({status}/{conv}) — Key Metrics never refreshed "
+                    f"(no key_metrics_last_refreshed) — run $numbers {ticker_of(p)}")
+            elif days_old(kmr) > 90:
+                add("IMPORTANT" if hi else "NICE", "#61",
+                    f"[[Theses/{p.stem}]] ({status}/{conv}) — Key Metrics {days_old(kmr)}d stale "
+                    f"(refreshed {kmr}, >90d) — run $numbers {ticker_of(p)}")
     # #8 inactive research (>60d since last research note per ticker)
     latest = {}
     for p in v["research"]:
@@ -385,6 +420,7 @@ def analytical(v, scoped_theses):
     tpl = read(VAULT / "Templates" / "Thesis Template.md")
     tpl_heads = [h for h, *_ in sections(tpl)] if tpl else []
     priority = {"Key Non-consensus Insights", "Outstanding Questions", "Conviction Triggers"}
+    mm_no_id = []  # #63 rollup accumulator — populated Mental Models sections lacking [G-#]/§
     for p, t in (scoped_theses or v["theses"]).items():
         fm = v["fm"].get(p, {})
         # #12 conviction-evidence mismatch (mechanical count; LLM judges quality)
@@ -424,6 +460,82 @@ def analytical(v, scoped_theses):
             else:
                 add("IMPORTANT" if h in priority else "NICE", "#14",
                     f"[[Theses/{p.stem}]] missing template section: {h}")
+        # #60 conviction-trigger falsifiability (2026-07-14): the precondition
+        # .agents/skills/_shared/trigger-touch.md depends on. Section-ABSENT is #14's job (Conviction
+        # Triggers is in `priority`); #60 owns section-PRESENT-but-hollow: a scaffold with
+        # → HIGH/LOW/CLOSE labels and no conditions can't be touch-checked by $numbers,
+        # $transcript, $sync. Active + monitoring only (draft/closed carry no live triggers).
+        if fm.get("status") in ("active", "monitoring"):
+            ct = section_body(t, "Conviction Triggers")
+            if ct:
+                marker = re.compile(r"→\s*(?:HIGH|LOW|CLOSE)\s+if\*{0,2}\s*:?", re.I)
+                trig_lines = [l for l in ct.split("\n") if marker.search(l)]
+                filled = [l for l in trig_lines
+                          if len(marker.split(l, 1)[-1].strip(" *`—-")) >= 4]
+                falsifiable = re.compile(
+                    r"\d|\b(exceed|above|below|under|over|reach|hit|fall|drop|rise|lose|"
+                    r"los|gain|launch|ship|announce|cancel|miss|beat|qualif|approv|win|"
+                    r"secure|bps|pp|margin|share|growth|revenue|yield)\w*", re.I)
+                if trig_lines and not filled:
+                    add("IMPORTANT", "#60",
+                        f"[[Theses/{p.stem}]] — Conviction Triggers present but unfilled scaffold "
+                        f"(→ HIGH/LOW/CLOSE labels, no conditions) — no falsification machinery; "
+                        f'populate via $deepen {ticker_of(p)} "Conviction Triggers"')
+                elif filled and not any(falsifiable.search(l) for l in filled):
+                    add("NICE", "#60",
+                        f"[[Theses/{p.stem}]] — Conviction Triggers filled but none carry a numeric/"
+                        f"dated/named-observable threshold — may be too vague to fire")
+        # #62 non-consensus insight names its consensus (2026-07-15, CHG-15): the mission
+        # property — a "non-consensus" insight that never states the consensus it opposes is
+        # positioning, not analysis. Mechanical pre-filter (grep the section for consensus-
+        # contrast language); LLM Step 2 judges substance. CHG-11's schema (Consensus:/Variant:
+        # /Falsifier:) satisfies it, and so does prose that names the consensus. Comments stripped
+        # so a fresh scaffold (whose comment itself says "consensus") isn't the thing scored.
+        nci_clean = re.sub(r"<!--.*?-->", "", section_body(t, "Key Non-consensus Insights") or "", flags=re.S)
+        if fm.get("status") in ("active", "monitoring") and len(nci_clean.split()) > 30:
+            if not re.search(r"consensus|priced[- ]in|market (assumes|expects|believes|misses|prices)|"
+                             r"street\b|widely (held|assumed|expected)|\bvariant\b|"
+                             r"conventional (view|wisdom)|the market (thinks|sees)", nci_clean, re.I):
+                cand("#62", f"[[Theses/{p.stem}]] §Key Non-consensus Insights names no consensus it "
+                            f"opposes — LLM: verify each insight states the view it contradicts")
+        # #63 Mental Models hypothesis-not-verdict framing (2026-07-15, CHG-15): READING
+        # PROTOCOL requires triggers held as hypotheses, cited by stable ID ([G-#]/§), never
+        # verdicts. Pre-filter a POPULATED section (names ≥1 model file) that either lacks any
+        # stable-ID citation OR carries verdict language; LLM Step 2 confirms. Scaffold-only
+        # sections (no model wikilink) are skipped — that's #5/#14's job, not #63's.
+        # #63 populated Mental Models section (names ≥1 model file) lacking any stable-ID
+        # citation → accumulate for the rollup below. Hypothesis-vs-verdict FRAMING is judged
+        # by the LLM in Step 2, NOT here: mechanical verdict-word matching over-fires on the
+        # Value-Layer-Monopoly lens's own "Alpha verdict" output-format term and on legitimate
+        # falsification language ("confirms"/"proves"), so it's not a reliable script signal.
+        mm_clean = re.sub(r"<!--.*?-->", "", section_body(t, "Mental Models") or "", flags=re.S)
+        if re.search(r"\[\[(Generalist - Overview|Industry -|Lens -)", mm_clean) and len(mm_clean.split()) > 20:
+            if not re.search(r"\[G-\d+\]|§", mm_clean):
+                mm_no_id.append(p.stem)   # aggregated after the loop, not N candidates
+        # #65 Summary/frontmatter conviction consistency (2026-07-15, CHG-15): catches the
+        # live INTC-class drift — frontmatter conviction: low while the Summary prose still
+        # reads "medium conviction" after a $status change. CANDIDATE, not auto-IMPORTANT:
+        # conviction words appear in conditional/negative prose too ("preclude HIGH conviction
+        # until …", "would warrant MEDIUM"), which is NOT a mismatch — so the mechanical grep
+        # flags, and LLM Step 2 reads the sentence to confirm a genuine stale statement vs
+        # legitimate conditional language before escalating.
+        summ = section_body(t, "Summary") or ""
+        conv = fm.get("conviction")
+        if summ and conv in ("high", "medium", "low"):
+            sm = re.search(r"conviction[:\s]+(high|medium|low)\b|\b(high|medium|low)[- ]conviction",
+                           summ, re.I)
+            if sm and (sm.group(1) or sm.group(2)).lower() != conv:
+                cand("#65", f"[[Theses/{p.stem}]] Summary mentions "
+                     f"\"{(sm.group(1) or sm.group(2)).lower()} conviction\" but frontmatter "
+                     f"conviction: {conv} — LLM: confirm stale statement vs conditional/negative prose")
+        # #66 weakly-sourced figures in the spine (2026-07-15, CHG-15; pairs with CHG-10):
+        # a [1×: …] or [est.] provenance tag in a thesis body means a single-sourced or
+        # estimated figure propagated into the spine — worth a human glance. NICE.
+        weak = re.findall(r"\[1[×x][^\]]*\]|\[est\.?\]", t)
+        if weak:
+            add("NICE", "#66", f"[[Theses/{p.stem}]] spine carries {len(weak)} weakly-sourced "
+                f"provenance tag(s) ({', '.join(sorted(set(weak))[:3])}) — verify before leaning on "
+                f"the figure(s) (per .agents/skills/_shared/provenance-tags.md)")
         # #15 verbose log entries (>2 content lines per dated entry)
         body = section_body(t, "Log") or ""
         entry, hdr = [], None
@@ -452,6 +564,12 @@ def analytical(v, scoped_theses):
             if words and words[-1].rstrip(".").lower() in {"and", "but", "or", "of", "in",
                                                            "for", "to", "with", "from", "by"}:
                 cand("#28", f"[[Theses/{p.stem}]] §{h}: ends mid-sentence ('…{words[-1]}')")
+    # #63 rollup — stable-ID absence is a convention-adoption backlog (IDs added 2026-07-09),
+    # not a per-thesis defect; ONE aggregate NICE instead of N candidates.
+    if mm_no_id:
+        add("NICE", "#63", f"{len(mm_no_id)} Mental Models section(s) lack stable-ID citations "
+            f"([G-#]/§): {', '.join(sorted(mm_no_id)[:6])}{'…' if len(mm_no_id) > 6 else ''} — "
+            f"convention added 2026-07-09; backfilled on next $deepen or $sync touch of the section.")
 
 
 def snapshots_and_manifests(v):
@@ -603,10 +721,10 @@ def utility_files(v, scoped):
     if present_order != [s for s in HOT_SECTIONS if s in present_order]:
         add("NICE", "#35", "_hot.md sections out of canonical order")
     wc = len(text.split())
-    if wc > 5000:
-        add("IMPORTANT", "#35", f"_hot.md exceeds 5,000-word hard cap ({wc} words)")
-    elif wc > 4000:
-        add("NICE", "#35", f"_hot.md over soft cap ({wc}/4,000 words) — auto-compresses next update")
+    if wc > 10000:
+        add("IMPORTANT", "#35", f"_hot.md exceeds 10,000-word hard cap ({wc} words)")
+    elif wc > 8000:
+        add("NICE", "#35", f"_hot.md over soft cap ({wc}/8,000 words) — auto-compresses next update")
     # #42 truncation markers
     body = strip_code_fences(text)
     for i, ln in enumerate(body.split("\n"), 1):
@@ -977,6 +1095,32 @@ def callouts(v, scoped_theses):
                 add("NICE", "#56", f"{p.relative_to(VAULT)}:{i}: deprecated [[preserve]] — replace with [[pinned]]")
 
 
+def writing_standards(v, scoped_theses):
+    # #64 hedge-word ban (2026-07-15, CHG-15): AGENTS.md Writing Standards forbids filler
+    # hedges; enforced nowhere until now. Scan thesis + sector + macro spines (curated
+    # output). "significantly" is EXCLUDED — too often legitimately quantitative
+    # ("significantly above 60% share"); the listed words are near-always filler. NICE;
+    # capped at 3 hits per file to avoid flooding a note that slipped repeatedly.
+    HEDGES = re.compile(r"\b(importantly|notably|interestingly|crucially)\b|"
+                        r"it'?s worth noting|it should be noted|worth noting that", re.I)
+    targets = list((scoped_theses or v["theses"]).items())
+    if not scoped_theses:
+        targets += list(v["sectors"].items()) + list(v["macro"].items())
+    for p, t in targets:
+        fenced, hits = False, 0
+        for i, ln in enumerate(t.split("\n"), 1):
+            if ln.strip().startswith("```"):
+                fenced = not fenced
+                continue
+            if fenced or ln.lstrip().startswith("<!--"):
+                continue
+            m = HEDGES.search(ln)
+            if m and hits < 3:
+                add("NICE", "#64", f"{p.relative_to(VAULT)}:{i}: hedge word "
+                    f'"{m.group().strip()}" — AGENTS.md Writing Standards ban')
+                hits += 1
+
+
 # ---------------------------------------------------------------- report
 def report(scoped):
     order = {"CRITICAL": 0, "IMPORTANT": 1, "NICE": 2}
@@ -1053,6 +1197,7 @@ def main():
         markers_and_locks(v)
         graph_checks(v)
     analytical(v, scoped_theses)
+    writing_standards(v, scoped_theses)
     contracts(v, scoped_theses)
     utility_files(v, bool(scoped_theses))
     callouts(v, scoped_theses)
