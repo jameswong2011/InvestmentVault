@@ -1,7 +1,13 @@
 ---
 publish: true
 date: 2026-04-15
-tags: [thesis, ISRG, healthcare-medtech, robotics, surgery, surgical-AI]
+tags:
+  - thesis
+  - ISRG
+  - healthcare-medtech
+  - robotics
+  - surgery
+  - surgical-AI
 status: monitoring
 conviction: medium
 sector: Surgical Robotics
