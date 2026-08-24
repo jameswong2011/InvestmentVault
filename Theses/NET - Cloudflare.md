@@ -46,7 +46,7 @@ key_metrics_last_refreshed: 2026-08-15
 
 - **How does gross margin trajectory evolve as GPU-intensive inference workloads grow as a proportion of revenue?** GAAP gross margin compressed to 71.8% (Q2 2026) from 73.6% (Q4 2025) and 77.7% (Q4 2024); management abandoned the 75-77% band at the June 2026 Investor Day for a 70% floor. The paid traffic mix shift and GPU infrastructure investment are structural drivers. If Workers AI and Agent Cloud succeed in driving adoption, margins may face sustained pressure. Is even the 70% floor defensible, or should investors model a structurally lower margin regime?
 
-- **If AI inference re-centralizes around massive GPU clusters, does Cloudflare's edge GPU investment become stranded?** The current trend favours smaller, more efficient models deployed at the edge. But if frontier models continue to require centralized GPU clusters for meaningful inference (as context windows grow and multi-modal reasoning demands increase), the edge inference thesis weakens. What percentage of inference workloads are genuinely latency-sensitive enough to benefit from sub-50ms edge deployment vs being adequately served at 200-500ms from centralized clouds?
+- **If AI inference re-centralizes around massive GPU clusters, does Cloudflare's edge GPU investment become stranded?** The current trend favours smaller, more efficient models deployed at the edge. But if frontier models continue to require centralized GPU clusters for meaningful inference (as context windows grow and multi-modal reasoning demands increase), the edge inference thesis weakens. What percentage of inference workloads are genuinely latency-sensitive enough to benefit from sub-50ms edge deployment vs being adequately served at 200-500ms from centralized clouds? SemiAnalysis (Aug 2026) is volume-positive for any token-serving path (Fireworks >40T tokens/day; Era 3 terminal/web-search benches) and simultaneously leans *centralized* for incremental MW: $100M/MW frontier API vs sub-$30M/MW open TaaS [1×: SemiAnalysis]. That is the re-centralization side of this question, not a resolution. NET has no `## Conviction Triggers`.
 
 - **The NET Dollar stablecoin and pay-per-crawl monetization are entirely novel revenue streams with zero historical precedent: what is the realistic TAM and timeline?** Content monetization, agent payments, and AI licensing are markets that don't yet have established pricing mechanisms. Is pay-per-crawl a $100M business in 3 years or a $1B+ platform in 5? What adoption rate from Cloudflare's publisher base is required to make this material to revenue?
 
@@ -348,6 +348,7 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (edge/secu
 
 - [[Research/2026-08-15 - NET - 2.5B Convertible Notes 2031 - news]]: 8-K: $2.50B 0% converts due 2031; ~$496.94 / 60% premium to $310.59; $2,462.3m net; $259.5m capped calls to $854.12; $2.0B leverage cash-cap
 - [[Research/2026-08-16 - Macro PJM - SemiAnalysis 12B Modeling Mistake - deep-dive]]: second-order: a market that over-pays existing plants and locks 11–15y contracts does not accelerate interconnection for edge/compute campuses in PJM
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: 40T tokens/day + $100M/MW auction is volume-positive and re-centralization-leaning for incremental MW; OQ on edge-GPU stranding stays open
 ## Log
 
 ### 2026-04-15 (cross-thesis sync)
@@ -425,3 +426,5 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (edge/secu
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2); org conversion Weak — Act IV already in the 45x-sales multiple; 20% cut calibration unproven. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-22
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: Fireworks 40T/day is token-volume tailwind; $100M/MW auction leans centralized frontier serving for incremental MW — edge-GPU OQ sharpened, not resolved; no triggers to test — conviction unchanged (medium).

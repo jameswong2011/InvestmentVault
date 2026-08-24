@@ -14,7 +14,7 @@ key_metrics_last_refreshed: 2026-07-12
 
 ## Summary
 
-Cerebras is a leveraged, binary bet on one proposition: that the reasoning/agentic era shifts AI value from training FLOPS to decode speed, and that its wafer-scale, SRAM-only architecture is the structurally correct, and, after Nvidia absorbed Groq, the last independent, way to win the fast-inference tier. This is not an "Nvidia-killer" thesis, and Cerebras is not one. The non-consensus angle is that the market lumps CBRS with the dead-challenger pile (Graphcore/Nervana/Habana/SambaNova) and caps it at "<1% share forever," while the competitive field just thinned and the architecture's core liability (SRAM capital inefficiency) is precisely what makes it the latency leader where value is migrating. Against that sits a genuinely ugly cap table of risks: 86% of 2025 revenue from two Abu Dhabi entities, a $24.6B backlog that is ~85% a single customer (OpenAI) backend-loaded to 2028+, no ecosystem moat, cash losses, a 75x R&D disadvantage to Nvidia, and ~100x trailing sales into a mid-November 2026 lockup cliff. This is a barbell-convex, venture-stage position in public-market clothing, sized small or not at all; it is not a compounder. Conviction starts **low**.
+Cerebras is a leveraged, binary bet on one proposition: that the reasoning/agentic era shifts AI value from training FLOPS to decode speed, and that its wafer-scale, SRAM-only architecture is the structurally correct, and, after Nvidia absorbed Groq, the last independent, way to win the fast-inference tier. This is not an "Nvidia-killer" thesis, and Cerebras is not one. The non-consensus angle is that the market lumps CBRS with the dead-challenger pile (Graphcore/Nervana/Habana/SambaNova) and caps it at "<1% share forever," while the competitive field just thinned and the architecture's core liability (SRAM capital inefficiency) is precisely what makes it the latency leader where value is migrating. Against that sits a genuinely ugly cap table of risks: 86% of 2025 revenue from two Abu Dhabi entities, a $24.6B backlog that is ~85% a single customer (OpenAI) backend-loaded to 2028+, no ecosystem moat, cash losses, a 75x R&D disadvantage to Nvidia, and ~100x trailing sales into a mid-November 2026 lockup cliff. This is a barbell-convex, venture-stage position in public-market clothing, sized small or not at all; it is not a compounder. SuperNova / CS-4 (August 2026) is a same-silicon clock-and-rack refresh that can double token revenue at similar hardware spend while leaving the 44GB SRAM-capacity wall intact — a manufacturability print, not a WSE-4 capital-efficiency print. Conviction starts **low**.
 
 ## Key Non-consensus Insights
 
@@ -36,7 +36,7 @@ Cerebras is a leveraged, binary bet on one proposition: that the reasoning/agent
 
 **3. Do the unit economics support the valuation?** Cloud gross margin swung 68%→16%→21% across 2025 quarters (buildout ahead of demand); can it hold above ~35%, and does hardware's 43% survive pass-through dilution? What is the steady-state operating model that reaches profitability? *Answered by: cloud-GM trajectory over the next 3–4 prints.*
 
-**4. Does WSE-4 fix wafer-scale's capital-efficiency problem?** WSE-4 (late-2026/2027, likely 3D-stacked SRAM on TSMC N3) needs to restore single-device model fit and improve $/token, or the SRAM-only economics stay confined to the largest models. *Answered by: WSE-4 launch specs + disclosed token economics.*
+**4. Does WSE-4 fix wafer-scale's capital-efficiency problem?** WSE-4 (late-2026/2027, likely 3D-stacked SRAM on TSMC N3) needs to restore single-device model fit and improve $/token, or the SRAM-only economics stay confined to the largest models. *Answered by: WSE-4 launch specs + disclosed token economics.* SuperNova / CS-4 (19 August 2026) is **not** that answer: it is a fourth-generation rack around the same third-generation 5nm WSE-3 — 2× clock from power and cooling, 44GB SRAM/wafer unchanged, I/O 1.2→2.4 Tb/s, switched latency 5→3µs, three backpacks, ~2× tok/s/user at similar BOM-per-wafer. IA scores clock-double as a parametric-yield / shmoo print (catastrophic yield already 100%); the 20% compound-yield model is **not updated**; 60%+ hardware GM unanswered. Capacity liability intact; papered over by heterogeneous disagg (AWS Trainium/EFA, AMD, HBM XPUs) — layer-renter, not a qualification-gate. Q4 remains open. Per [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]] and [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]].
 
 **5. What stops Nvidia or AWS from foreclosing "fast decode"?** Nvidia (Rubin + Groq LPU) and AWS (Trainium prefill + its own decode) both target the niche. AWS is both a Bedrock partner and a Trainium competitor: beachhead or Trojan horse? *Answered by: Rubin-Groq decode benchmarks vs. CS-3 on mainstream open models; AWS decode roadmap.*
 
@@ -268,6 +268,9 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - [[Research/2026-07-27 - AMD NVDA BEP Helios 15pct Spec Lead Decay - deep-dive]]
 - [[Research/2026-08-15 - NBIS CRWV - Neocloud Q2 CoreWeave Nebius Cerebras - news]]: first vault Q2 tape: GAAP rev $180.1M (+74%), cloud $126.0M (+281%); blended GM ~14.2% [est.] vs 35% HIGH leg (adverse touch); >600 MW live+contracted by YE27; Cognition/Lovable
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: Atreides 3.11M Class A on the 13F is <30% of a 10.54M / 10.7%-of-SO 13G; AUM $5.0B→$14.3B is listing-visibility of private CBRS/SPCX, not a Q2 buy ticket
+- [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]]: CS-4 = WSE-3 rack refresh; 2× clock / 2× I/O / 44GB unchanged / ~4,000 tok/s/user
+- [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: parametric-yield / shmoo print; 20% compound-yield model not updated; Vicor current-multiplier colour
+
 ## Log
 
 ### 2026-07-09
@@ -303,3 +306,7 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail: ~100x already prices WSE/OpenAI optionality); founder dual-class + market-cap PRSUs, no open-market buys. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]]: same-silicon clock-and-rack refresh doubles tok/s/user; SRAM-capacity liability intact; LOW ~3× GPU decode **dir=away / not fired** (SA 20–40×); HIGH/CLOSE no-touch — conviction unchanged (low, draft).
+- [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: clock-double as parametric-yield tell; 20% compound-yield / 60%+ HW GM unanswered; Q4 WSE-4 still open — conviction unchanged (low, draft).
+- ⚡ Trigger hit: CBRS → LOW “Rubin + Groq decode within ~3× of CS-3” — evidence-touched **away from LOW**, not fired. Flag-only; no /status.

@@ -212,6 +212,8 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 
 **Concrete portfolio implications (non-consensus).** (i) Pair-trade logic: long Broadcom + short Nvidia as ASIC-rent-capture hedge, if hyperscaler diversification accelerates Broadcom wins regardless of which hyperscaler. (ii) Physical AI as the non-consensus Nvidia moat: long NVDA specifically for Jetson + Omniverse + DRIVE Hyperion attach revenue, not data-center GPU share. (iii) AMD call options (not outright long) on Helios Q3 2026 + MLPerf Training v5.0 Fall 2026, binary catalysts with asymmetric upside if ROCm training parity demonstrated. (iv) Memory stocks (SK Hynix, Micron, SNDK) as less-volatile exposure to the same AI capex tailwind. (v) Huawei-threat hedge: consider thesis-level exposure to Chinese equipment suppliers and non-US sovereign AI beneficiaries. (vi) Taiwan tail hedge: LMT/NOC/RTX defense pair vs TSM/NVDA/AMD GPU basket (per TSM stress test analysis).
 
+9. **Open-model catch-up is cyclic, not a secular death of the intelligence premium; the incremental-MW auction is the new allocator.** SemiAnalysis (Aug 2026) dates catch-up half-life as ~8.5 mo → 4.8–6 mo → default <3 mo next era, puts ARR in the model+harness product (Claude Code $65B+ since May 2025), and prices frontier-token API at as high as $100M/MW vs sub-$30M/MW open TaaS [1×: SemiAnalysis]. Consensus FUD ("open catching up = lab margins die = GPU demand dies") has the sequence wrong: Fireworks >40T tokens/day is Jevons-positive for merchant GPUs, and the auction reallocates incremental GW toward OAI/Anthropic (today 27% of 2026 net new GW) rather than shrinking the pool. Falsify if the next era's initial gap does not re-widen, or if open TaaS ROI converges on $100M/MW.
+
 ## Mental Models
 
 <!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
@@ -221,6 +223,7 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
   - Industry Semiconductors #8 · architecture remaps bottlenecks: hypothesis: capital allocation (who can finance racks) is becoming a co-equal bottleneck with CUDA/software for GPU vs TPU/Trainium share.
   - Value Layer Monopoly §1 · interface/standard control: hypothesis: NVDA’s system+CUDA layer remains the scarce interface only while financing does not force customers onto cheaper non-CUDA inference stacks; falsify if residual-value concessions become the real allocator.
 - **Disconfirming check**: Models agree financing extends the surge; hunt the bear: first closed platform tickets stay tiny, residual-value marks hit NVDA/partners, or hyperscaler dollar CapEx guides cut (not just MW slips). Single falsifier: a disclosed large closed ticket without residual put utilization alongside stable interest cover.
+  - Generalist [G-14] · Jevons / [G-3] cyclic vs secular [added 2026-08-22]: Fireworks >40T tokens/day is volume; next-era gap failing to re-widen (or open TaaS ROI → $100M/MW) is the joint falsifier (per [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]).
 ## Related Research
 
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: SemiAnalysis "CPUs are Back": Intel-vs-AMD divergence widens (Diamond Rapids SMT-less + 8-ch Diamond Rapids-SP cancelled vs new AMD Venice SP8; Clearwater Forest +17% low-yield "learning vehicle"); ARM/hyperscaler vertical integration (Graviton5/Cobalt/Axion/Phoenix/Venom) permanently closing Intel's TAM; Fairwater 1:6 CPU:GPU power ratio (rising); Bluefield-4 KV-cache-to-NAND "third network"; CPU role taxonomy + interconnect-scaling-ladder frameworks. Integrated into §Product Level Analysis (Intel CPU entry).
@@ -281,6 +284,10 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]]: Digitimes-via-Benzinga: Feynman pull-forward onto A16; SoIC ~50k wpm YE27; AP7/AP8 race [1×]
 
 - [[Research/2026-08-15 - TSM NVDA - Microsoft Maia 300 TSMC - news]]: Maia 300 >300k/2027 TSMC talks; internal 30–40% cheaper-to-operate vs cutting-edge NVDA
+- [[Research/2026-08-18 - NVDA TSM BESI 000660 - BEP Qualcomm HBC 133TBs - news]]: HBC near-memory-compute detour; 133 TB/s unproven; toll road reprices on first credible detour
+- [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]]: CS-4 same-silicon decode refresh; 44GB wall; heterogeneous disagg
+- [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: parametric-yield / shmoo; Vicor current-multiplier colour
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: cyclic open-vs-closed gap + $100M/MW auction; Jevons confirmed, intelligence-premium commoditization not already done
 
 ## Log
 
@@ -361,3 +368,8 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - NVDA TSM BESI 000660 - BEP Qualcomm HBC 133TBs - news]]: Qualcomm HBC is a named interposer-skip; do not short memory because packaging is detoured.
+- [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]]: CS-4 is WSE-3 reuse, not a new wafer; layer-renter on AWS EFA.
+### 2026-08-22
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: open catch-up half-life is an efficiency channel; $100M/MW vs sub-$30M/MW auction reallocates incremental GW to frontier labs — Jevons sign confirmed, not a GPU-demand cut.

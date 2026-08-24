@@ -1,37 +1,42 @@
 ---
 publish: false
-date: 2026-08-18
+date: 2026-08-22
 tags: [meta, hot-cache]
 ---
-# Hot Cache — Last Updated: 2026-08-18 (/sync to SpaceX note — vault-wide 10GW feasibility propagation)
+# Hot Cache — Last Updated: 2026-08-22 (/sync default — 3 Aug 21 research notes)
 
 ## Active Research Thread
 
+*Previous 2026-08-21:* `/sync` 12 Aug 18–20 notes (HBF / 8-Hi / CPO / Arizona / HBC / CS-4) — see §Sync Archive + thesis Logs.
+*Previous 2026-08-18:* `/sync` to SpaceX 10GW feasibility — see §Latest Sync archive + thesis Logs.
 *Previous 2026-08-16:* ASMI stress-test + 6146/ALAB/COHR theses + NVDA ASIC-rack sync — see §RCC + thesis Logs.
 *Previous 2026-08-18:* four Substack notes (PhotonCap HBF / PJM / 13F / TSPA Taiwan) — see thesis Logs.
 *Previous 2026-08-18:* filed Aug-15 monthly portfolio stress-test (15 notes + scoreboard); 6 /status followups — see §RCC + thesis Logs.
-- **2026-08-18 `/sync` (to SpaceX, vault-wide)** — created [[Research/2026-08-18 - SPCX - 10GW Datacenter Pipeline Feasibility - deep-dive]]; question "is 10GW by 2027 feasible?" traced: target is power/cooling (~15–20GW) not compute (~10GW; base case 4–6GW online YE27), orbital Starmind ~0 pre-2029. Propagated SPCX (orbital leg + gates) + NVDA/VRT Log + 000660/TSM wikilink + Neoclouds + Sustainability macro. Conviction unchanged. Next: `/graph last`.
+- **2026-08-22 `/sync` (default, 3 newly-filed notes)** — SemiAnalysis open-models (Jevons + $100M/MW auction); Damnang MRVL Part 3 (Google 8-K 1/3 HIGH near-fired; Aug 27 = Interconnect + Q3 guide); Superposition quantum (no home). Conviction/status unchanged. Next: `/graph last`.
 
 ## Latest Sync
 
-*Date: 2026-08-18 (`/sync` to SpaceX note — vault-wide propagation of the 10GW feasibility deep-dive)*
+*Date: 2026-08-22 (`/sync` default — 3 Aug 21 notes)*
 
-- **SPCX**: orbital Starmind leg added to §Industry Context (was absent) + terrestrial three-gate quantification (5–6× build, ~½ Blackwell, $320–440B) + orbital Outstanding Q + 2 catalysts (Starship orbital deploy; Gigasat end-27) + Mental Models VLM§3 orbital trigger — conviction unchanged (medium). Snapshot taken.
-- **NVDA**: Log + Related Research — SPCX 10GW ≈ ~40–50% of global Blackwell to one customer on Nvidia vendor finance (frenzy tell [G-4]); orbital "Space-1" 2029+ — conviction unchanged (high).
-- **VRT**: Log + Related Research — orbital compute = long-dated structural bypass of Vertiv thermal/power TAM (2029+, launch-gated); terrestrial base case still conventional attach — conviction unchanged (medium).
-- **000660 / TSM**: Related Research wikilink only — terrestrial HBM/CoWoS pull-through already logged 2–3×; orbital ~0 pre-2029 adds no near-term signal (Log entry judged redundant, not skipped in error).
-- Sectors: Neoclouds & GPU-as-a-Service (wikilink+Log). Macro: Sustainability of AI Capex (Log).
-- **Next**: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-18-230858)]].
+- **MRVL** (Tier A): Google 8-K formalises OQ #1 (system content); HIGH still 1/3 near-fired; $120B warrant ceiling not a PO; Aug 27 variables = FY27 Interconnect growth + Q3 guide — conviction unchanged (medium). Snapshot taken.
+- **NVDA** (Tier A): Jevons / picks-and-shovels confirmed; public-bench catch-up is cyclic not secular commoditization; $100M/MW auction reallocates MW — no triggers to test — conviction unchanged (high). Snapshot taken.
+- **NBIS** (Tier A): open TaaS is the sub-$30M/MW residual vs $100M/MW frontier tokens — mix risk, not demand collapse; triggers unobserved — conviction unchanged (medium). Snapshot taken.
+- **NET** (Tier A): 40T tokens/day volume-positive; auction leans re-centralized for incremental MW — edge-GPU OQ sharpened not resolved — conviction unchanged (medium). Snapshot taken.
+- **AVGO** (Tier A): auction mix-supportive for OAI/Anthropic XPU; Google 8-K is MRVL attach not a Sunfish takeaway — conviction unchanged (high). Snapshot taken.
+- **000660** (Tier B): CMM-Ax is CXL-PNM, not an HBM-allocation print; HIGH/LOW/CLOSE no-touch.
+- Sectors: Compute, Custom Silicon (MM first-pop), Neoclouds. Macros: Sustainability of AI Capex, Agentic Internet, CXL. Quantum note: no home.
+- **Next**: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-22-100928)]].
 
 ## Sync Archive
 
-- **2026-08-18** (`/sync` default — Aug-15 monthly stress-test persist): 15 ticker notes reconfirmed, no conviction/status change; 6 /status followups (INTU/GAW/CSGP/PCOR/WTC/UBER). Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-18-105719)]].
-
-- **2026-08-18** (`/sync` default — four-note post-ingest): PhotonCap HBF / PJM / 13F / TSPA Taiwan into SNDK/MU/000660/LITE/TSM/NBIS cluster. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-18-025213)]].
-
-- **2026-08-16** (`/sync NVDA` ticker-scoped): ASIC rack-catch-up + TCO-by-workload-envelope into NVDA §Industry Context. Conviction unchanged (high). Manifest: [[_Archive/Snapshots/_sync-manifest (sync-NVDA-2026-08-16-163059)]].
+- **2026-08-21** (`/sync` default — 12 Aug 18–20 notes): HBF / 8-Hi / CPO / Arizona / HBC / CS-4. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-21-171324)]].
+- **2026-08-18** (`/sync` to SpaceX note): 10GW feasibility — SPCX orbital leg + NVDA/VRT Log + 000660/TSM wikilink + Neoclouds + Sustainability. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-18-230858)]].
+- **2026-08-18** (`/sync` default — Aug-15 monthly stress-test persist): 15 ticker notes reconfirmed, no conviction/status change; 6 /status followups. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-18-105719)]].
 
 ## Recent Conviction Changes
+
+- **2026-08-22 — trigger touches (flag-only, no `/status`)**: MRVL HIGH conjunct 1 (Google commercial agreement) evidence-touched / near-fired, not fired (8-K broader than MPU/inference-TPU; legs 2–3 unmet). HIGH conjunct 3 (Celestial PO / tape-out) evidence-touched the other way (PF still little P&L). LOW conjunct 2 (Google BRCM-exclusive) inverted. CLOSE conjunct 1 (FY28 custom < $3.6B) inverted on author $3.8B [est.]. NVDA/NET/AVGO have no registered triggers. NBIS/000660 handles unobserved. Conviction/status unchanged.
+- **2026-08-21 — trigger touches (flag-only, no `/status`)**: TSM → LOW CoWoS-alternative evidence-touched not fired (HBC + packaging-bottleneck migration). MRVL HIGH Celestial leg 3 evidence-touched not fired (POET PO cancel + vendor targets). CBRS → LOW ~3× GPU decode evidence-touched *away* from LOW (SA 20–40×). NVDA/SNDK have no registered triggers. Conviction/status unchanged.
 
 - **2026-08-16 — ASMI (ASM International) HIGH → reassess (stress test; NOT actioned — pending `/status ASMI conviction high→medium`)**: 5/8 bull assumptions 🔴 — "POR annuity" is the basket's thinnest service floor (least insulated in an AI-capex downturn); 1.4nm POR company-claimed/unverified, HVM rev 2028+ (A14 2028, SF1.4 slipped 2029); AMAT Trillium probes the dipole → LOW-trigger layer the body calls "uncontested"; premium to AMAT (sector's "best risk/reward"); Q2 order miss + stock fell on a record print. Conviction *not changed* (flagged for user); matches the thesis's own unreconciled Summary "medium pending 1.4nm". Rationale: [[Theses/ASMI - ASM International]] §Log + [[Research/2026-08-16 - ASMI - Stress Test]].
 - **2026-08-16 — 6146 (DISCO) initial MEDIUM** (draft [[Theses/6146 - DISCO]]). The world's dice/grind/polish monopoly (~70–80% share) + ~30–35% razor-and-blade consumables annuity (beat while equipment missed, Q1) + diversified whole-industry customers (the anti-ALAB) + ~70% GM / net cash; content-per-wafer compounds on every AI packaging transition (HBM 16→24-Hi, hybrid bonding, CoPoS, SiC Kabra). MEDIUM not high: ~48x trailing / ~34x fwd on a proven high-beta cyclical (52-wk ¥37,260–¥91,680, ~60% peak-to-trough) — no margin of safety; de-cyclicalization unproven through a downturn; China simultaneously biggest buyer (35% Q1) and coming low-end competitor. VLM STRONG on capital-scale/know-how, WEAK on standard control; Semis #13/#14 reclassification is the open call; [G-13] category priced, cyclicality mispriced. Excluded from /catalyst, /prune, conviction-drift (draft). Run `/graph last`.
@@ -110,6 +115,7 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 
 ## Open Questions
 
+- 187. **MRVL Aug 27 / remaining Google share** — does the print raise FY27 Interconnect growth and the Q3 guide, and what share of Google inference-silicon spend is contractually available to the fourth seat? HIGH still 1/3. See [[Theses/MRVL - Marvell Technology]] §Outstanding Questions + §Conviction Triggers.
 - 185. **ASMI 1.4nm POR verification + annuity-insulation test** — does a third party (TSMC channel / tool-shipment commentary) confirm ASMI holds *incremental* HKMG POR at A14 before AMAT Trillium / Lam Halo take a dipole/WFM slot — and given quarterly bookings disclosure was discontinued from Q1 2026, what still-observable signal monitors it? Separately: is ASMI's recurring/service revenue % genuinely the WFE basket's thinnest (the insulation-gap test)? See [[Research/2026-08-16 - ASMI - Stress Test]] §Kill Trigger + §Research Gaps.
 - 183. **6146 DISCO consumables-annuity cyclicality** — does consumables revenue hold or grow through the next equipment air-pocket (proving the installed-base annuity de-cyclicalizes the P&L), or does it fall *with* equipment (utilization-linked)? The single most thesis-determinative test; same condition as → HIGH / → LOW. See [[Theses/6146 - DISCO]] §Outstanding Questions.
 - 184. **6146 DISCO China — driver or competitor-in-training** — is the 35% China-OSAT Q1 mix durable demand or pull-forward, and how fast do JSG/domestic dicing entrants climb from low-end toward leading-edge dice/grind? See [[Theses/6146 - DISCO]] §Outstanding Questions.
@@ -198,6 +204,6 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 
 
 ## Portfolio Snapshot
-<!-- Regenerated 2026-08-15 from current vault frontmatter; top-level counts only per the 200-word section budget. -->
-- **Coverage**: 92 theses (34 active, 31 monitoring, 27 draft) across 52 sector notes, 11 macro notes, and 337 research notes.
-- **Conviction**: 21 HIGH · 59 MEDIUM · 12 LOW. No conviction/status frontmatter edits this sync.
+<!-- Regenerated 2026-08-22; top-level counts only per the 400-word section budget. -->
+- **Coverage**: 95 theses across 53 sector notes, 11 macro notes (graph 2026-08-21). No quantum thesis/sector/macro created.
+- **Conviction**: no conviction/status frontmatter edits this sync. Live book (Holdings table): NVDA, NET, AVGO, NBIS, MRVL Medium; 000660 Full.

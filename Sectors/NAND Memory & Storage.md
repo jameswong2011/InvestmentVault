@@ -744,6 +744,9 @@ PhotonCap (16 Aug 2026) splits the same diagram on two axes. **Process:** layer-
 - [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: beside/above/beyond × three meanings of stacking; OCP spec + Meta; increment of capacity is optical
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: Aschenbrenner 55.6% SNDK+MU unhedged after put-strip; crowded tape, not a product confirmation
 - [[Research/2026-08-15 - SNDK - Stress Test]]: Insight #1 HBF date 2027; Insight #2 vs 80% NBM; deepen Insights
+- [[Research/2026-08-18 - SNDK 000660 NVDA - Damnang HBF Sandisk Upside - deep-dive]]: mixed HBF(+HBM) base; Google ~89% of $0.95B; Rubin not the swing customer
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: SNDK 5.5% still sampling-stage HBF, not storage revenue
+
 ## Log
 ### 2026-04-16
 - Initial NAND sector document created. Synthesized vault research (SNDK, Kioxia, PSTG theses + 10 research notes) with web research on YMTC market position, HBF standardization progress, and product-level differentiation across all 6 producers. Key findings: (1) YMTC is a consumer disruptor, not enterprise — Entity List + qualification barriers create 3+ year enterprise moat; (2) HBF probability higher than consensus due to OCP standardization + Samsung entry + SanDisk pilot line acceleration; (3) CBA architecture density advantage is systematically undervalued vs headline layer counts.
@@ -776,3 +779,5 @@ PhotonCap (16 Aug 2026) splits the same diagram on two axes. **Process:** layer-
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - SNDK 000660 NVDA - Damnang HBF Sandisk Upside - deep-dive]]: HBF-only fails KV write/thermal/endurance; attach is Google/Meta ASIC operators, not merchant GPU.

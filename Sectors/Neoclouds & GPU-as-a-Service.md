@@ -69,6 +69,8 @@ The customer base is heavily concentrated. CoreWeave's FY25 mix: ~67% Microsoft,
 
 **Rubin fleet economics (corridor retired).** Holding Rubin at a Blackwell cash rate is a below-IRR stress case, not the default competitive equilibrium. On $183K all-in, $6 is a numeraire (NBIS/CRWV wholesale ~$3.35–5.70), not the operators' realized rate. Four prices, not one band: **15% IRR ~$8.22** (empty new watt); **$9.50 gross-book screen** (average EBIT / original cost = 15%, not NPV); **~$13.75** to replace live $6 Blackwell; customer FLOP ceiling **$9.60 BF16 / $18 FP8** vs a $6 alternative (inverts vs $3.35). At N=7, 100% take-or-pay, lifetime EBIT is **$9 → $175K (IRR 18.4%) · $12 → $282K · $18 → $496K**. $9 fails the screen and does not destroy value vs 15% WACC. $10.60 is revenue-per-watt parity, not a slot test. Coverage below ~44% at $12 fails the screen; Microsoft 40% is ~$51K/GPU, not 110% of a $12 TCV. Partial coverage and a 35–40% age-six re-rent can still erase the initial-contract advantage. [[Research/2026-08-05 - NBIS CRWV - Rubin Fleet Economics - Rate Sensitivity Model - deep-dive]]
 
+**Incremental-MW auction (Aug 2026).** SemiAnalysis prices frontier-token API at as high as $100M per MW per year vs sub $30M per MW for open-source TaaS / enterprise colo / RecSys / legacy cloud [1×: SemiAnalysis]. For this sector that is a *mix* cut, not a demand cut: contracted frontier-lab / hyperscaler training is the high-ROI bidder; overflow and open-model serving is the residual. Hypothesis to test at the next NBIS/CRWV mix disclosure: does the open-serving / spot slice reprice first while take-or-pay training MW stay full?
+
 ## Product level analysis
 
 | Operator | Differentiation | Scale (Q1 2026) | Power | Key contracts | Margin/unit econ |
@@ -166,6 +168,7 @@ Reference architecture across the sub-segment is convergent: NVIDIA H100/H200/B1
 - [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]
 - [[Research/2026-08-15 - CRWV - Stress Test]]: late-cycle GPU-rental + leverage; Q2 backlog does not retire model
 - [[Research/2026-08-18 - SPCX - 10GW Datacenter Pipeline Feasibility - deep-dive]]: SPCX 10GW feasibility trace (terrestrial base 4–6GW YE27; orbital Starmind ~0 pre-2029); sharpens the sector's "contracted ≠ energized" frame with build-rate / silicon-allocation / capital gates
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: $100M/MW frontier tokens vs sub-$30M/MW open TaaS — mix risk on overflow/open serving, not demand collapse
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -225,3 +228,5 @@ Reference architecture across the sub-segment is convergent: NVIDIA H100/H200/B1
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-22
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: incremental-MW auction prices open TaaS as the residual bidder vs $100M/MW frontier tokens — mix risk for NBIS overflow, not a sector demand cut.

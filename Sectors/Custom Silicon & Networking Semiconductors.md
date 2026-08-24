@@ -252,7 +252,7 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 
 **What is priced in: AVGO**. 35× forward PE (vs 5-year average 22×, sector average ~27×) embeds (i) $100B+ AI semiconductor revenue by 2027 per Hock Tan's guidance, (ii) sustained 60–70% custom ASIC share through 2027, (iii) 80–90% merchant switching silicon share defended, (iv) VMware net revenue growth despite 30K customer churn, (v) hyperscaler capex continuation at $600B+ annually through 2027, (vi) no Taiwan tail event, (vii) Apple in-sourcing as gradual rather than step-function. The multiple is defensible if each holds; compression is rapid if any two fail simultaneously. The trailing PE of 62× is GAAP noise from VMware acquisition accounting and should be disregarded.
 
-**What is priced in: MRVL**. 36× forward PE FY27E / 26× FY28E (vs 5-year average 23×, sector ~27×) and +168% trailing twelve months to ~$158 embeds (i) $14–16B FY28 revenue (from $8.2B FY26, +30% FY27 guide), (ii) custom-silicon FY28 doubling to ~$3B from $1.5B FY26, (iii) Celestial Photonic Fabric ramp to $500M Q4 FY28 / $1B by end-FY29 on the acquisition roadmap, (iv) Google MPU + inference TPU exploratory talks converting to formal contract in FY27, (v) AWS Trainium 4 design-partner socket retention after the T3 primary loss, (vi) NVLink Fusion winning the 2027–2028 hyperscaler scale-up rack standard against UALink, (vii) blended optical gross margin holding above ~58% as LPO compresses DSP. The multiple cushion is thinner than AVGO's because four of the seven embedded assumptions are execution-dependent on a management team that just mis-executed Trainium 3 advanced packaging.
+**What is priced in: MRVL**. 36× forward PE FY27E / 26× FY28E (vs 5-year average 23×, sector ~27×) and +168% trailing twelve months to ~$158 embeds (i) $14–16B FY28 revenue (from $8.2B FY26, +30% FY27 guide), (ii) custom-silicon FY28 doubling to ~$3B from $1.5B FY26, (iii) Celestial Photonic Fabric ramp to $500M Q4 FY28 / $1B by end-FY29 on the acquisition roadmap, (iv) Google MPU + inference TPU exploratory talks converting to formal contract in FY27 (now a signed July 29 commercial agreement spanning inference + attach + near-memory; $120B warrant ceiling ≠ PO [1×: Damnang / 8-K]), (v) AWS Trainium 4 design-partner socket retention after the T3 primary loss, (vi) NVLink Fusion winning the 2027–2028 hyperscaler scale-up rack standard against UALink, (vii) blended optical gross margin holding above ~58% as LPO compresses DSP. The multiple cushion is thinner than AVGO's because four of the seven embedded assumptions are execution-dependent on a management team that just mis-executed Trainium 3 advanced packaging.
 
 **Where consensus could be wrong: AVGO bull direction**. (1) The $100B 2027 AI revenue target may be materially understated. Mizuho estimates Google + Anthropic deals alone generate $21B AI revenue in 2026 and $42B in 2027, plus Meta 1GW + OpenAI 10GW + ByteDance. The $73B backlog disclosed Q1 FY2026 is an 18-month visibility window that traditional semiconductor companies have never had. (2) Scale-across (Jericho 4, HyperPort) is a TAM expansion not in consensus models: the fourth networking tier monetizes the geographic distribution of training workloads that did not exist as a workload pattern three years ago. (3) CPO switch economics (>3× power reduction at 100 Tbps) create silent adoption lock-in: every hyperscaler that deploys TH6-Davisson at scale incurs architectural path dependency. (4) VMware cohort-level ARPU math may net positive even with 30K churn if Global 2000 renewal pricing holds. (5) The Nvidia Spectrum-X1600 6-month slip is a proxy for a widening networking-cadence gap, not a one-time execution miss.
 
@@ -317,9 +317,12 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 
 ## Mental Models
 <!-- Outputs from applying the /Mental Models context files to this sector. Per the READING PROTOCOL in [[Generalist - Overview]], these are lenses and questions, never conclusions — every entry is a hypothesis to test against the sector evidence above, not a verdict. Populated incrementally: each research pass appends the models it applied and the specific triggers that fired. -->
-- **Models applied**: <!-- [[Generalist - Overview]] (always) · the matching Industry note (e.g. [[Industry - Semiconductors]]) · any relevant Lens note (e.g. [[Lens - Automation & AI Readiness]], [[Lens - Value Layer Monopoly]]) -->
-- **Triggers that fired**: <!-- For each pertinent trigger/test/lens: name it, the model it came from, and the one-line read it produced for this sector — held as a hypothesis to test -->
-- **Disconfirming check**: <!-- Where multiple models agree, treat it as a trigger to disconfirm: the bear case, the single falsifying datapoint, and the base-rate / outside view sector consensus (or a thesis here) must beat -->
+- **Models applied**: [[Generalist - Overview]] · [[Industry - Semiconductors]] · [[Lens - Value Layer Monopoly]]
+- **Triggers that fired**:
+  - Industry Semiconductors #8 · architecture remaps the bottleneck — hypothesis: Custom Silicon's modeling unit is *system content* (XPU + NIC + storage + memory-interface + near-memory; NVLink Fusion attaches custom XPU and scale-up networking), not a single accelerator socket (per [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]).
+  - Value Layer Monopoly §2 falling switching costs / commoditizing layer vs §3 infrastructure widening — hypothesis: optical DSP + TIA/driver + DCI is the owned toll; ASIC seats remain rented. Google warrant-through-FY33 is relationship duration, not a GM-ceiling break.
+  - Generalist [G-13] · expectations investing — hypothesis: $16.5B FY28 guide is already in the price (Damnang base $239 [est.] vs $251 spot); Aug 27 prints Interconnect growth + Q3 guide, Oct 6 reprints FY28 segments.
+- **Disconfirming check**: Models agree Interconnect is the de-risked FY27 engine and Custom is a FY28 event. Hunt the bear: Celestial still little P&L, no PF customer at NVIDIA/SK hynix, T3 execution credibility unrepaired. Single falsifier: Aug 27 Interconnect guide cut *or* Oct 6 FY28 Custom walk-back below the $3.6B CLOSE line.
 
 ## Related Research
 - [[Research/2025-11-27 - Broadcom Data Center Opportunity]]: Custom ASIC SAM $60–90B by FY2027; 80–90% Ethernet switching silicon share; 9–12 month technology lead over competitors; Tomahawk 5/6/Ultra product family framing
@@ -348,6 +351,7 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 - [[Research/2026-08-06 - Hyperscaler GPU Repricing Cycle Capex to L3 L4 - deep-dive]]
 
 - [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]
+- [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: FY27 = Interconnect, FY28 = Custom; Google 8-K is system content not a socket; $120B warrant ceiling not a PO; Aug 27 variables = Interconnect growth + Q3 guide
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -395,4 +399,6 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-22
+- [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Interconnect-first FY27 mix + Google system-content 8-K; HIGH still 1/3 near-fired; T100 wallet-share vs Tomahawk is content not a share flip. Cross-thesis: AVGO Sunfish lock intact; MRVL attach does not take training TPU.
 

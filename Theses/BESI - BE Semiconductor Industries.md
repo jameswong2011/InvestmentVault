@@ -251,6 +251,9 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (hybrid bo
 
 - [[Research/2026-08-14 - 000660 - SK hynix Indiana 3.9B Packaging Groundbreaking - news]]
 - [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: stacking equipment is placement-fight-insensitive volume; SanDisk 'proprietary stacking' + no announced HBF order blocks a TCB-order catalyst read
+- [[Research/2026-08-18 - NVDA TSM BESI 000660 - BEP Qualcomm HBC 133TBs - news]]: packaging tax migrates to DRAM-to-logic hybrid bonding / SoIC / Foveros; Besi–EVG–SUSS plausible, not confirmed
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: optical-interposer bonding seat kept; basis weaker once POET is gone
+
 ## Log
 
 ### 2026-04-19 (TSM stress test sync)
@@ -333,3 +336,6 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (hybrid bo
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail at 89x LTM; HB already priced); [MC-2] duration intact. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - NVDA TSM BESI 000660 - BEP Qualcomm HBC 133TBs - news]]: HBC deletes the large interposer but relocates complexity into DRAM-to-logic bonding — tax migrates, does not disappear; no confirmed Besi PO — conviction unchanged (medium).
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: author keeps the µm-precision optical-interposer thesis but writes the basis weaker than April after POET exit — conviction unchanged (medium).

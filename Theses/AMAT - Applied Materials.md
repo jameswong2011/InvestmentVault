@@ -280,6 +280,7 @@ The bear case is real and is why conviction is medium, not high. Three structura
 - [[Research/2026-08-13 - 000660 AMAT LRCX - SK hynix Yongin Y2 Cheongju M17 Fabs - news]]
 - [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]
 - [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: SE: AP equipment revenue expected +>70% in 2026 on HBM + 3D chiplet stacking; UC Berkeley joins EPIC as research partner (not embedded-foundry HIGH leg)
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: new indirect photonics-foundry WFE clip; not N2 ALD / HBM $2B / ICAPS / EPIC
 
 ## Log
 
@@ -331,3 +332,5 @@ The bear case is real and is why conviction is medium, not high. Three structura
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit (Gate 2 fails on priced GAA+HBM+AP); EPIC hop-count unproven vs theater. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: photonics-foundry WFE is not any HIGH leg (N2 ALD / HBM $2B / ICAPS / EPIC) — conviction unchanged (high).

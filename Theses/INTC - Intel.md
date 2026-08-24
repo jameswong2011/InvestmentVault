@@ -359,6 +359,7 @@ Hypothesis: Inert on [[Lens - Management and Culture]]; Gate 1 passes (18A/14A +
 - [[Research/2026-08-13 - INTC - Intel Should Raise Capital - deep-dive]]
 - [[Research/2026-08-13 - INTC SMIC TSM - SMIC N+3 vs Intel 18A Metal Pitch Teardown - deep-dive]]
 - [[Research/2026-08-13 - INTC TSM MRVL - ECTC 2026 EMIB-T Packaging Cooling Photonics - deep-dive]]
+- [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: SiPho group alive enough to publish; 8-λ / fake-16-λ BER garbage vs NVDA clock-forwarded bathtub (C+/B- vs A+)
 
 ## Legacy Callouts
 
@@ -420,3 +421,5 @@ Hypothesis: Inert on [[Lens - Management and Culture]]; Gate 1 passes (18A/14A +
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Inert (Gate 2 fail); turnaround already priced as option value, [MC-8] melting-ice-cube overlay on the x86 IDM. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: papers reopen the CPO file without reopening the grade — shared-SOA FWM + no clock-forwarding — conviction unchanged (low).

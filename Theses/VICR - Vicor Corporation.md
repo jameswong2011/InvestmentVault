@@ -304,6 +304,7 @@ At ~$13.1B today the market already discounts roughly FY30 EBIT ($439M) at ~30x,
 - [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]: VPD/LPD + MLCC local capacitance; Vicor ~17× sales framing
 - [[Research/2026-08-12 - 6981 VICR - MLCC AI Demand Price Hikes Premiums - news]]: AI rack MLCC counts corroborate power-delivery intensity
 - [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
+- [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: final current-multiplier stage inferred on the WSE package; article-linked, not a socket 8-K
 
 ## Log
 
@@ -355,3 +356,5 @@ At ~$13.1B today the market already discounts roughly FY30 EBIT ($439M) at ~30x,
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit; founder 79.1% vote is the conversion machinery, 10b5-1 sales + no successor are the tax. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: SuperNova render attaches the Vicor-as-possible-partner hypothesis to an on-package current multiplier — colour, not a BOM/8-K — conviction unchanged (medium).

@@ -248,6 +248,7 @@ The cleanest structural play is the *least-owned upstream monopoly* (Nittobo); t
 - Macro: [[Macro & Technology/Organic ABF to Glass-Core Substrate Transition]] (substitution vector), [[AI Bubble Risk and Semiconductor Valuations]] (demand overlay)
 - Demand-driver theses: [[Theses/NVDA - Nvidia]], [[Theses/AVGO - Broadcom]], [[Theses/MRVL - Marvell Technology]], [[Theses/AMD - Advanced Micro Devices]], [[Theses/TSM - Taiwan Semiconductor]]
 - Mental models: [[Mental Models/Industry - Semiconductors]] (#1 bottlenecks/pricing power, #2 qualification-gate monopolies, #3/#6/#17 capital cycle, #8 architecture transitions, #10 anchor customers, #13 classification, #16 geopolitical bifurcation, #18 cycle-vs-structural), [[Mental Models/Generalist - Overview]] (#4 S-curves, #9 ROIC)
+- [[Research/2026-08-19 - Macro - tscsw Stop Buying Copper Miners - news]]: copper-miner residuals (Lundin/KGHM/Ivanhoe/Hudbay) — not a CCL/PCB print; 2383/3110 not forced
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -264,3 +265,5 @@ The cleanest structural play is the *least-owned upstream monopoly* (Nittobo); t
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-19 - Macro - tscsw Stop Buying Copper Miners - news]]: implied LT copper residuals retire the “own the miners” basket; no live copper-miner thesis; 2383/3110 / CCJ / LNG handles not forced.

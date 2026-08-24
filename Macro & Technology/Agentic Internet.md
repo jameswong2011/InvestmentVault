@@ -116,7 +116,7 @@ If publishers mass-deploy paywalls, captchas, and pay-per-crawl on every site, t
 
 ### 6. Compute economics for high-frequency agent action
 
-A persistent agent doing 100 inference calls per task at $0.001-$0.01 per call costs $0.10-$1.00 per task. For high-frequency low-value actions (every-page price check, every-listing comparison), this exceeds the value extracted. Token deflation is solving this on a steep curve, but the infrastructure for sub-cent action economics requires both inference cost reduction AND payment-rail efficiency at micro-scale (which x402 / USDC delivers but card networks do not).
+A persistent agent doing 100 inference calls per task at $0.001-$0.01 per call costs $0.10-$1.00 per task. For high-frequency low-value actions (every-page price check, every-listing comparison), this exceeds the value extracted. Token deflation is solving this on a steep curve, but the infrastructure for sub-cent action economics requires both inference cost reduction AND payment-rail efficiency at micro-scale (which x402 / USDC delivers but card networks do not). SemiAnalysis (Aug 2026) dates Era 3 as already economically used (GLM 5.3 / Kimi K3 doing Claude-Code-class work; Fireworks >40T tokens/day) and puts ARR in the model+harness product, not the public-bench composite [1×: SemiAnalysis]. The compute-economics hurdle is therefore two-sided: cheaper open tokens expand action volume (Jevons), while the $100M/MW frontier-token auction concentrates *incremental* MW at closed labs — fan-out can rise even as the serving locus re-centralizes.
 
 ## What 10-20 years out looks like
 
@@ -344,6 +344,7 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 - [[Research/2026-06-04 - AI Dark Output GDP Measurement Gap - deep-dive]]: SemiAnalysis "Dark Output": agent-driven net-new work ("New Dark Output": literature reviews $2,000→$2 run before every task) is real economic value traced only as tokens, the measurement shadow of the agentic internet's net-new action volume; reinforces that agent fanout creates output GDP cannot see (capture, not output, is the equity constraint)
 - [[Research/2026-06-09 - NET - Cloudflare 2026 Investor Day - deep-dive]]: Primary-source confirmation of the agentic-internet thesis from the layer-1 toll-collector: Cloudflare formally adopts "Act IV" (agentic monetization), discloses +1,700% y/y agent requests + 2B x402/day + open-web attention ~25%, and raises its long-term operating model on the strength of it: the clearest evidence yet that the thesis is a funded corporate strategy, not just an external forecast
 - [[Research/2026-07-12 - Enterprise AI Adoption - Gating Factors Critique, 2030 Trajectory, Winners-Losers - synthesis]]: Adversarial-verified critique of a Gemini enterprise-agentic-adoption report: re-sorts the six adoption gates by resolution speed (workforce/process redesign is the durable one), models the 2026→2030 adoption index (~3x base, ~32% CAGR), and supplies disclosed seat-compression evidence for the layer-7 / OQ#4 thesis (Gartner $234B arbitrage; NOW ~50% non-seat ACV; WDAY FY27 12-13%). Confirms the agent-adoption trajectory is real but depth-gated (agents scaling ≤10%/function today)
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: Era 3 economically used; harness (not weights) prints ARR; 40T tokens/day at Fireworks; next era = multi-day / multi-copy autonomy
 
 ## Open Questions
 
@@ -385,3 +386,5 @@ Existing NET / CRCL / SHOP are 3 high-conviction expressions; adding MSFT and a 
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-22
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: Era 3 is economically used and ARR sits in the harness; $100M/MW auction re-centralizes incremental MW even as token volume fans out.

@@ -253,6 +253,9 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (CPO / plu
 - [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: InP/engines amplify as the beyond seat grows; optical disaggregation of capacity is SAM amplification, not a new SAM
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: Baker's one connection-layer decision is selling LITE (267,389 / ~$188M / 3.76% → zero). Ciena/COHR/Nokia/Semtech +1.73% cluster is drift, not a scale-across bet
 - [[Research/2026-08-15 - LITE - Stress Test]]: missing triggers + unresolved IA vs PhotonCap 6-inch; deepen not cut
+- [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: NVDA/LITE MOPA array excellent flatness/SMSR, unusable RIN (~−137 vs discrete < −155 / −145 CPO spec)
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: CMA trim of LITE is flow, not a DSP downgrade
+
 ## Log
 
 ### 2026-04-15 (cross-thesis sync)
@@ -336,3 +339,5 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (CPO / plu
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Inert (Gate 2 fail); ~50× already prices OFC-model + CPO/ELS. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: research MOPA is SuperNova-class (IA’s standing hate) with RIN that fails a real link; discrete UHP DFB book remains the live CPO-laser product — conviction unchanged (high).

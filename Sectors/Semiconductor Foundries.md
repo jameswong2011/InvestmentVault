@@ -244,6 +244,10 @@ Per [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - dee
 
 - [[Research/2026-08-15 - NVDA TSM - Feynman Ramp TSMC A16 - news]]: Feynman onto A16; AP7/AP8 + SoIC ~50k wpm YE27 [1×]
 - [[Research/2026-08-17 - TSM - TSPA Taiwan AI Fiscal Dividend - news]]: Lai NT$10,000 cash + FY2027 budget: AI boom as Taiwan fiscal event; silicon shield funded from Taipei as well as the US Treasury
+- [[Research/2026-08-18 - TSM NVDA AVGO - TSPA TSMC 75pct US Revenue - news]]: H1 US-HQ 75.64%; Arizona H1 profit; HQ ≠ wafer share
+- [[Research/2026-08-19 - TSM AVGO - TSPA Taiwan AI Five Tigers - news]]: system-platform foundry; industrial-density moat; bottleneck off CoWoS
+- [[Research/2026-08-20 - TSM - TSPA US vs Taiwan Tech Podcasts - news]]: B2B Trust Economy vs Narrative Economy; no wafer print
+
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -292,3 +296,6 @@ Per [[Research/2026-06-05 - AI Silicon Shortage - N3 and Memory Constraint - dee
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - TSM NVDA AVGO - TSPA TSMC 75pct US Revenue - news]]: Arizona recast as customer-pull; 75.64% is the commercial centre-of-gravity, not a factory map.
+- [[Research/2026-08-19 - TSM AVGO - TSPA Taiwan AI Five Tigers - news]]: Five Tigers = design+logic+OSAT+ABF+rack; competitive unit chip→package→rack→AI factory.

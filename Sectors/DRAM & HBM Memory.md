@@ -270,6 +270,9 @@ HBM4 introduces foundry-fabricated logic base dies (replacing the legacy memory-
 To produce one HBM-grade wafer, vendors sacrifice three wafers of standard DDR5 capacity: HBM requires extensive TSV (Through-Silicon Via) formation, 1c DRAM die (premium-process), longer cycle times, and larger die area for the 2048-bit interface. As HBM share of DRAM revenue rises from 18% (2024) → 33% (2025) → 50%+ (2030E per Yole), commodity-DRAM bit supply growth structurally lags demand growth. **AI is forecast to consume 20% of global DRAM wafer capacity in 2026.** SemiAnalysis (Feb 2026) reframes this 3:1 penalty as "reverse scaling" and quantifies the trajectory: the commodity-to-HBM bit ratio widens from ~3x (HBM3E 12-Hi) to ~4x at HBM4; HBM rises from <5% of the three makers' DRAM wafers (2022) to ~20% (2025) to ~35% (2027); and the resulting structural deficit holds DRAM ~7% below demand through 2027 (HBM shortfall widening to ~9%), far above the mid-single-digit gap at the 2017-18 peak. The self-reinforcing read is now compounded by commodity DRAM margins reaching or exceeding HBM margins (late 4Q25, sharpest at Samsung), which incentivizes suppliers to throttle HBM expansion in favor of high-margin commodity, answering Key Industry Question #3 (self-reinforcing, not self-correcting). See [[Research/2026-05-31 - DRAM HBM Memory Supercycle - deep-dive]].
 
 ---
+### 2026-08-21
+- [[Research/2026-08-20 - 000660 NVDA MRVL - Damnang HBM Density Peak - deep-dive]]: density peak — 8-Hi life would flip the near-term axis from stack-height qualification to yield/capacity/supply.
+- [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: SKHY CPO track is cap-table + Review, not a product schedule.
 
 ## Product-Level Analysis
 
@@ -599,6 +602,10 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: zHBM = stacking of position (heat wall); HBF beside is one HBM seat dropped; MU TSV-NAND-outside-the-standard is a job-posting primary
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: SA ~$5.6B MU common after put-strip; does not fire Rubin board / LTA / destock / CXMT handles
 - [[Research/2026-08-15 - 000660 - Stress Test]]: $720B / Indiana 2028 supply-response clock; deepen Industry Context
+- [[Research/2026-08-20 - 000660 NVDA MRVL - Damnang HBM Density Peak - deep-dive]]: Rubin Ultra 8-Hi 192GB; value migrating to optics/CXL; stack-height premium timing contested
+- [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: all three memory makers on Avicena cap table; standards-layer, not 2027 EPS
+- [[Research/2026-08-18 - NVDA TSM BESI 000660 - BEP Qualcomm HBC 133TBs - news]]: HBC mix-shift memory-oligopoly-neutral
+
 ## Related Sectors and Macro
 
 - [[Sectors/NAND Memory & Storage]]: Sister memory sub-sector; Solidigm IPO catalyst inside SK Hynix

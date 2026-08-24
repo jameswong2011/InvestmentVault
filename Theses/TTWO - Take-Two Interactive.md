@@ -1,7 +1,11 @@
 ---
 publish: true
 date: 2026-04-15
-tags: [thesis, ttwo, consumer-digital, gaming]
+tags:
+  - thesis
+  - ttwo
+  - consumer-digital
+  - gaming
 status: active
 conviction: medium
 sector: Video Game Publishing

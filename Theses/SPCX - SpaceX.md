@@ -211,6 +211,8 @@ The High-multiple pool is the unproven one. AI capex at $15.8B/quarter builds a 
 - [[Research/2026-08-18 - SPCX - 10GW Datacenter Pipeline Feasibility - deep-dive]]: 10GW pipeline trace: power/cooling (~15–20GW) vs compute (~10GW; base case 4–6GW online YE27) vs orbital (~1GW/yr *rate*, ~0 pre-2029); three-gate feasibility (build 5–6×, ~½ Blackwell, $320–440B) + AI1 launch math; adds the orbital leg the thesis lacked
 - [[Research/2026-08-18 - SPCX - Sum of the Parts - synthesis]]: user-assumption SOTP ~$2.1T (Grok $1T + neocloud $500B + Starlink $400B + launch-ex-internal $40B + Terafab $100B + cash); vault-consistent ~$0.8T. Launch is a $40B railroad; mobile is $150–250B terminal, not a fourth carrier
 - [[Website/2026-08-19 - SpaceX - How Much of 1.9 Trillion Is Already a Business]]: public essay, one section per SOTP slice: finite base $776B (41% of $1.9T) vs bull $2.09T (110%); implied multi-gen residual $1.12T / 59% vs base, $(186)B / (10)% vs bull. Mars is not in the tape.
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: new 3.3% personal seat from 12 June, +8%; listing-visibility, not YE26 ≥2 GW / Connectivity ~60%
+
 ## Log
 
 ### 2026-08-13
@@ -241,3 +243,5 @@ The High-multiple pool is the unproven one. AI capex at $15.8B/quarter builds a 
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit (Gate 2 fail on AI pool; Connectivity conversion already realized); two orgs, xAI founder wipeout. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: 3.3% seat is listing-visibility, not a Connectivity/CSA/YE26-GW print — HIGH unfired — conviction unchanged (medium).

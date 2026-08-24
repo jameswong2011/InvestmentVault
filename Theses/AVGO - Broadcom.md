@@ -25,7 +25,7 @@ $1.87T diversified semiconductor + infrastructure software company operating thr
 
 - **The Ethernet vs. InfiniBand battle has already tipped, and the market hasn't fully repriced the networking TAM expansion.** Tomahawk 6 (102.4 Tbps) in volume shipments March 2026, two+ quarters ahead of Nvidia's Spectrum-X1600. UEC 1.0 live and natively supported; hyperscalers validating RoCE at scale for AI training. 80-90% merchant switching share creates a chokepoint moat arguably more durable than custom ASICs: zero customer concentration, every AI deployment needs switching silicon.
 
-- **Six confirmed XPU customers represent a structural demand flywheel with unusually strong management alignment.** Step-function from 3 (Google, Meta, ByteDance) to 6 (adding OpenAI, Anthropic, plus a sixth confirmed on the Jun 3 call), each committing multi-year design cycles with escalating volume. Supply chain secured through 2028; $100B+ AI revenue target for 2027 backed by a $73B disclosed AI backlog and committed deployments with quantified gigawatt targets. CEO compensation tied to $60-120B AI revenue milestones by 2028-2030. Tan has never missed a major strategic target in 20 years.
+- **Six confirmed XPU customers represent a structural demand flywheel with unusually strong management alignment.** Step-function from 3 (Google, Meta, ByteDance) to 6 (adding OpenAI, Anthropic, plus a sixth confirmed on the Jun 3 call), each committing multi-year design cycles with escalating volume. Supply chain secured through 2028; $100B+ AI revenue target for 2027 backed by a $73B disclosed AI backlog and committed deployments with quantified gigawatt targets. CEO compensation tied to $60-120B AI revenue milestones by 2028-2030. Tan has never missed a major strategic target in 20 years. SemiAnalysis (Aug 2026) adds a mix channel: if OpenAI + Anthropic outbid for incremental GW (frontier tokens as high as $100M/MW vs sub-$30M/MW open TaaS), custom XPU programs already named as AVGO customers get more, not less, of the closed-lab compute budget [1×: SemiAnalysis]. Orthogonal to VMware and Ethernet. AVGO has no `## Conviction Triggers`.
 
 ## Outstanding Questions
 
@@ -290,6 +290,12 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (custom
 - [[Research/2026-08-13 - NVDA TSM AVGO MRVL - Amazon 2026 Capex 220B - news]]
 - [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]
 - [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: scale-up fabric / CPO grows without HBF and more with it: a capacity tier outside the package adds memory-access to East-West traffic
+- [[Research/2026-08-18 - TSM NVDA AVGO - TSPA TSMC 75pct US Revenue - news]]: US-HQ customer gravity is TSMC colour; AVGO named as demand, not an XPU print
+- [[Research/2026-08-19 - TSM AVGO - TSPA Taiwan AI Five Tigers - news]]: custom ASIC incremental-workload market; MediaTek on the design layer; does not need to displace NVIDIA
+- [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: Bailly/Davisson listed in Nature Electronics Table 2
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: $100M/MW auction concentrates incremental GW at OAI/Anthropic — mix-supportive for XPU, not a VMware/Ethernet print
+- [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Google 8-K is MRVL attach/inference/near-memory, not a Sunfish training takeaway; Tomahawk deployment-gap vs T100 unchanged
+
 ## Log
 
 ### 2026-04-19 (TSM stress test sync)
@@ -389,3 +395,9 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (custom
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit (Gate 2 fail: XPU still in ~34x NTM); conversion of new optionalities is customer-pull not mission-funded. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-19 - TSM AVGO - TSPA Taiwan AI Five Tigers - news]]: custom ASIC “does not need to displace NVIDIA” is demand-constructive for the complementary-fleet thesis; MediaTek DC trajectory remains the watched share threat — conviction unchanged (high).
+- [[Research/2026-08-18 - TSM NVDA AVGO - TSPA TSMC 75pct US Revenue - news]]: TSMC customer-map colour only — conviction unchanged (high).
+### 2026-08-22
+- [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: $100M/MW vs sub-$30M/MW auction is mix-supportive for OAI/Anthropic XPU programs — conviction unchanged (high).
+- [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Google five-category MRVL agreement is attach, not a BRCM training-TPU close-out; T100 wallet-share does not move Tomahawk 80–90% near term — conviction unchanged (high).

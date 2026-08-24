@@ -574,6 +574,9 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 - [[Research/2026-08-15 - LITE - Stress Test]]: missing triggers + unresolved IA vs PhotonCap 6-inch; deepen not cut
 - [[Research/2026-08-15 - IQE - Stress Test]]: M&A premise dead Apr 27; rewrite to MACOM/InP foundry
 - [[Research/2026-08-15 - SIVE - Stress Test]]: already LOW; three HIGH legs failing; do not promote
+- [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: Intel shared-SOA FWM vs NVDA/LITE per-λ MOPA; research-array RIN unusable vs LITE discrete < −155 dBc/Hz
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: July optics-cluster drawdown; POET/Celestial PO cancel; layer skeleton intact, names rotate
+
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -623,3 +626,6 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: qualification is bathtub BER / RIN / SMSR / WPE 10%, not a paper count; Intel C+ vs NVDA A+; NVDA/LITE MOPA fails RIN.
+- [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: four-month book −10.4pp vs SMH, all July; Celestial/POET PO cancel is a named-customer delay, not a layer change.

@@ -238,6 +238,7 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 - [[Research/2026-08-15 - LRCX - 3B Global Lab Network - news]]: IR: >$3B / 5yr global lab network; experiment capacity +>50%; 24/7 US–Asia–Europe; cycle-time up to 2.5×; DeBoer FE+AP color (not TOR)
 
 - [[Research/2026-08-15 - TSM AMAT LRCX - Chip Industry Week In Review - news]]: SE week: restates $3B labs; AMAT AP +>70% 2026 peer color; SPIL $3.1B Douliu CoWoS 2028
+- [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: named Avicena Series B participant; not Aether TOR / NAND-capex / AP-mix / China-glide
 
 ## Log
 
@@ -294,3 +295,5 @@ The market correctly prices Lam as a memory-cycle vendor that is now overrated o
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Inert (Gate 2 fail); Aether/AP already in ~57x LTM. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+### 2026-08-21
+- [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: Lam on the Avicena Series B list is interconnect-layer colour, not an Aether/AP/China handle — HIGH/LOW/CLOSE no-touch — conviction unchanged (high).
