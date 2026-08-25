@@ -513,3 +513,6 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 - [[Research/2026-08-19 - TSM AVGO - TSPA Taiwan AI Five Tigers - news]]: product is a package-level system; industrial density is the moat; LOW packaging-constraint observable touched, no EMIB-T win — conviction unchanged (high).
 - [[Research/2026-08-20 - TSM - TSPA US vs Taiwan Tech Podcasts - news]]: media-incentive colour only; no N2/CoWoS/GM/capex print — conviction unchanged (high).
 - ⚡ Trigger hit: TSM → LOW “named production-scale CoWoS-alternative win” — evidence-touched via HBC + packaging-bottleneck migration, **not fired** (no production win). Flag-only; no /status.
+
+### 2026-08-25
+- [[Macro & Technology/AI Supply-Demand Considerations to 2030]]: cross-cutting supply/demand synthesis places packaging outside the binding-constraint set (CoWoS gap 20→10%; bottleneck relocated to HBM bits + energised power) — already in Bear #6 / Risk #9 / the 2026-08-21 CoWoS-alternative trigger-touch; advanced-node rents intact, marginal-negative only to the packaging-scarcity leg — conviction unchanged (high).

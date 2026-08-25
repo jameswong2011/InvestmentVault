@@ -9,7 +9,7 @@ status: active
 ---
 # Live Portfolio Tracker
 
-**Last refreshed:** 2026-08-16 14:32 — 17/17 tickers (FMP)
+**Last refreshed:** 2026-08-25 23:15 — 11/11 tickers (FMP) — ⚠️ fetched via Node https fallback: Obsidian's requestUrl is failing (`net::ERR_FAILED`); restart Obsidian to restore the normal transport
 
 > [!tip] How this works
 > Data fetched live from Financial Modeling Prep (FMP) when you click **Refresh**. Weights are user-edited and preserved across refreshes. API key lives in `.data/config.json` (gitignored — safe to flip repo public). All 34 holdings × 15 columns in one API cycle (~3–5 seconds).
@@ -38,12 +38,7 @@ const HOLDINGS = [
   { n: 'Lumentum',                t: 'LITE',       ex: 'NASDAQ',        cur: 'USD' },
   { n: 'Shopify',                 t: 'SHOP',       ex: 'NYSE',          cur: 'USD' },
   { n: 'Take-Two Interactive',    t: 'TTWO',       ex: 'NASDAQ',        cur: 'USD' },
-  { n: 'Lam Research',            t: 'LRCX',       ex: 'NASDAQ',        cur: 'USD' },
-  { n: 'Applied Materials',       t: 'AMAT',       ex: 'NASDAQ',        cur: 'USD' },
-  { n: 'KLA Corp',                t: 'KLAC',       ex: 'NASDAQ',        cur: 'USD' },
-  { n: 'ASM International',       t: 'ASM.AS',     ex: 'Euronext AMS',  cur: 'EUR' },
   { n: 'Palo Alto Networks',      t: 'PANW',       ex: 'NASDAQ',        cur: 'USD' },
-  { n: 'BE Semiconductor',        t: 'BESI.AS',    ex: 'Euronext AMS',  cur: 'EUR' },
   { n: 'Murata Manufacturing',    t: '6981.T',     ex: 'TSE',           cur: 'JPY' },
   { n: 'Nebius',                  t: 'NBIS',       ex: 'NASDAQ',        cur: 'USD' },
   { n: 'Spotify',                 t: 'SPOT',       ex: 'NYSE',          cur: 'USD' },
@@ -96,10 +91,74 @@ const EE_MARK = '<' + '!--EARNINGS-END-->';
 const EARNINGS_RE = new RegExp(ES_MARK + '([\\s\\S]*?)' + EE_MARK);
 const isNum = v => typeof v === 'number' && isFinite(v);
 
+// Diagnostics helpers: every failure reason is surfaced in the note itself (API key scrubbed)
+const scrub = s => String(s == null ? '' : s).replace(/apikey=[^&\s'"]+/g, 'apikey=***').replace(/\s+/g, ' ').trim();
+const endpointOf = url => url.replace(BASE + '/', '').split('&apikey=')[0];
+const OBS_API = (() => { try { return require('obsidian').apiVersion || '?'; } catch (_) { return '?'; } })();
+// Marker regex built by concatenation so it can never match this block's own source.
+// Optional `:key` suffix lets a later diagnostic session re-fire once per distinct key.
+const AUTORUN_RE = new RegExp('<' + '!--FMP-AUTORUN-ONCE(?::([^>]*))?-->\\n?');
+// Resolve the tracker note from the rendering context (dv.current), falling back to the
+// active file, so a render-triggered run can never write into whichever note has focus.
+const page = dv.current();
+const selfPath = page && page.file ? page.file.path : null;
+const resolveFile = () => (selfPath && app.vault.getAbstractFileByPath(selfPath)) || app.workspace.getActiveFile();
+
+// Transport. Obsidian's requestUrl rides on Chromium's network service, which can die mid-session:
+// every call then fails instantly with net::ERR_FAILED while the OS network is healthy (observed
+// 2026-08-25). On that signature, fall back to Node's https for the rest of the run: it bypasses
+// Chromium entirely (desktop only; on mobile the error is reported instead).
+let transport = 'requestUrl';
+let transportSwitchReason = '';
+function nodeGet(url) {
+  return new Promise((resolve, reject) => {
+    let https;
+    try { https = require('https'); } catch (e) { return reject(new Error('Node https unavailable (mobile?)')); }
+    const req = https.get(url, { headers: { 'User-Agent': 'obsidian-live-portfolio' }, timeout: 30000 }, res => {
+      let text = '';
+      res.setEncoding('utf8');
+      res.on('data', chunk => { text += chunk; });
+      res.on('end', () => resolve({ status: res.statusCode, text }));
+    });
+    req.on('timeout', () => req.destroy(new Error('timeout after 30s')));
+    req.on('error', reject);
+  });
+}
+async function rawGet(url) {
+  if (transport === 'requestUrl') {
+    try {
+      const r = await requestUrl({ url, throw: false });
+      return { status: r.status, text: r.text };
+    } catch (e) {
+      const msg = e && e.message ? e.message : String(e);
+      if (!/net::ERR_/.test(msg)) throw e;
+      transport = 'node-https';
+      transportSwitchReason = scrub(msg);
+      console.warn('[Live Portfolio] requestUrl failed (' + msg + '); falling back to Node https for this run');
+    }
+  }
+  return nodeGet(url);
+}
+
 async function fetchJson(url) {
-  const r = await requestUrl({ url, throw: false });
-  if (r.status !== 200) throw new Error(`HTTP ${r.status}`);
-  return r.json;
+  let r;
+  try {
+    r = await rawGet(url);
+  } catch (e) {
+    throw new Error(`${endpointOf(url)} → ${scrub(e && e.message ? e.message : e)}`);
+  }
+  if (!r || r.status !== 200) {
+    let snippet = '';
+    try { snippet = scrub(r && r.text ? r.text : '').slice(0, 160); } catch (_) {}
+    throw new Error(`${endpointOf(url)} → HTTP ${r ? r.status : '?'}${snippet ? ' ' + snippet : ''}`);
+  }
+  try {
+    return JSON.parse(r.text);
+  } catch (e) {
+    let snippet = '';
+    try { snippet = scrub(r.text).slice(0, 160); } catch (_) {}
+    throw new Error(`${endpointOf(url)} → non-JSON body: ${snippet}`);
+  }
 }
 
 function fmtPrice(v) {
@@ -165,9 +224,9 @@ btn.onclick = async () => {
   btn.innerText = 'Refreshing…';
   status.innerText = '';  // set after activeHoldings is computed
 
-  const file = app.workspace.getActiveFile();
+  const file = resolveFile();
   if (!file) {
-    status.innerText = '⚠️ No active file';
+    status.innerText = '⚠️ Could not resolve the tracker note';
     btn.disabled = false; btn.innerText = '↻ Refresh portfolio data';
     return;
   }
@@ -236,7 +295,7 @@ btn.onclick = async () => {
       }
     })),
     fetchJson(`${BASE}/earnings-calendar?from=${earningsFrom}&to=${earningsTo}&apikey=${API_KEY}`)
-      .catch(() => null),
+      .catch(e => ({ __error: scrub(e && e.message ? e.message : e) })),
   ]);
 
   const headerCells = ['#', 'Stock', 'Ticker', 'Exchange', 'Weight', 'Price', '1W %', '1M %', '3M %', '1Y %', 'P/E LTM', 'P/E NTM', 'EV/EBIT LTM', 'EV/EBIT NTM', 'ROIC LTM', 'ROIC NTM', 'Rev Gr LFY', 'Rev Gr CFY', 'EPS Gr LFY', 'EPS Gr CFY'];
@@ -379,7 +438,10 @@ btn.onclick = async () => {
 
   // One-line diagnostic — records fetched vs portfolio tickers matched.
   const totalRecords = Array.isArray(universeEarnings) ? universeEarnings.length : 0;
-  const earningsDiag = `_FMP returned ${totalRecords.toLocaleString('en-US')} earnings records in the next 30 days. Matched ${eBodyRows.length} portfolio tickers._`;
+  const earningsErr = universeEarnings && !Array.isArray(universeEarnings) && universeEarnings.__error ? universeEarnings.__error : null;
+  const earningsDiag = earningsErr
+    ? `_⚠️ FMP earnings-calendar call failed: \`${earningsErr}\`._`
+    : `_FMP returned ${totalRecords.toLocaleString('en-US')} earnings records in the next 30 days. Matched ${eBodyRows.length} portfolio tickers._`;
 
   let newEarningsTable;
   if (eBodyRows.length === 0) {
@@ -397,7 +459,20 @@ btn.onclick = async () => {
   const pad = n => String(n).padStart(2, '0');
   const ts = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
   const okCount = results.filter(r => r.ok).length;
-  const refreshLine = `**Last refreshed:** ${ts} — ${okCount}/${results.length} tickers (FMP)`;
+  // Failure ledger: per-ticker reasons grouped by cause (endpoint prefix stripped) so the
+  // note itself says WHY a refresh failed; no dev console needed.
+  const failReasons = results.filter(r => !r.ok).map(r => scrub(r.reason || 'unknown error'));
+  const causeTally = {};
+  for (const m of failReasons) { const k = m.replace(/^[^→]*→ /, ''); causeTally[k] = (causeTally[k] || 0) + 1; }
+  const topCauses = Object.entries(causeTally).sort((a, b) => b[1] - a[1]).slice(0, 3)
+    .map(([k, n]) => `\`${k}\` ×${n}`).join('; ');
+  const errSuffix = failReasons.length
+    ? ` — ⚠️ ${failReasons.length} failed: ${topCauses} (first: \`${failReasons[0]}\`; Obsidian API ${OBS_API})`
+    : '';
+  const transportNote = transport === 'node-https'
+    ? ` — ⚠️ fetched via Node https fallback: Obsidian's requestUrl is failing (\`${transportSwitchReason}\`); restart Obsidian to restore the normal transport`
+    : '';
+  const refreshLine = `**Last refreshed:** ${ts} — ${okCount}/${results.length} tickers (FMP)${errSuffix}${transportNote}`;
 
   // IMPORTANT: use the function-form of replace() for any replacement string that
   // might contain `$` characters (EPS estimates, revenue figures). The string-form
@@ -407,38 +482,53 @@ btn.onclick = async () => {
   let newContent = content.replace(TABLE_RE, () => newTable);
   newContent = newContent.replace(EARNINGS_RE, () => newEarningsTable);
   newContent = newContent.replace(/\*\*Last refreshed:\*\* .*/, () => refreshLine);
+  // Strip the one-shot auto-run marker (if present) so a render-triggered run can never loop.
+  newContent = newContent.replace(AUTORUN_RE, '');
 
   await app.vault.modify(file, newContent);
 
   btn.disabled = false;
   btn.innerText = '↻ Refresh portfolio data';
-  status.innerText = `✓ ${okCount}/${results.length} ok · ${ts}`;
+  status.innerText = (failReasons.length
+    ? `⚠️ ${okCount}/${results.length} ok · ${topCauses} · ${ts}`
+    : `✓ ${okCount}/${results.length} ok · ${ts}`)
+    + (transport === 'node-https' ? ' · via Node https fallback (restart Obsidian to fix requestUrl)' : '');
 };
+
+// ----- One-shot auto-run -----
+// If the note carries an AUTORUN marker (placed by a diagnostic session), fire a single refresh
+// on render. The handler strips the marker in its write, and the window-level guard stops a
+// re-fire within this Obsidian session even if that write fails. No marker → inert.
+try {
+  const f = resolveFile();
+  if (f) {
+    const c = await app.vault.cachedRead(f);
+    const mm = c.match(AUTORUN_RE);
+    if (mm) {
+      const key = mm[1] || 'once';
+      if (window.__fmpAutoRanKey !== key) { window.__fmpAutoRanKey = key; btn.click(); }
+    }
+  }
+} catch (_) {}
 ```
 
 ## Holdings
 
 <!--TABLE-START-->
 
-| #   | Stock             | Ticker    | Exchange           | Weight           | Price     | 1W %   | 1M %   | 3M %   | 1Y %     | P/E LTM | P/E NTM | EV/EBIT LTM | EV/EBIT NTM | ROIC LTM | ROIC NTM | Rev Gr LFY | Rev Gr CFY | EPS Gr LFY | EPS Gr CFY |
-| --- | ----------------- | --------- | ------------------ | ---------------- | --------- | ------ | ------ | ------ | -------- | ------- | ------- | ----------- | ----------- | -------- | -------- | ---------- | ---------- | ---------- | ---------- |
-| 1   | SK Hynix          | 000660.KS | KRX (KRW)          | Full (25%+)      | 1,645,000 | +15.8% | -10.7% | -10.6% | +515.0%  | 7.2     | 4.6     | 7.6         | 15.4        | +29.2%   | +23.2%   | +46.8%     | +259.5%    | +112.5%    | +470.2%    |
-| 2   | Palantir          | PLTR      | NASDAQ (USD)       | High (10-25%)    | 174.04    | -0.7%  | +31.5% | +28.8% | -1.8%    | 138.1   | 109.5   | 129.5       | 225.8       | +25.6%   | +17.6%   | +56.2%     | +81.8%     | +231.6%    | +130.3%    |
-| 3   | TSMC              | TSM       | NYSE (ADR) (USD)   | High (10-25%)    | 426.35    | +1.9%  | +7.0%  | +7.7%  | +78.5%   | 27.8    | 0.8     | 23.3        | 23.3        | +27.1%   | +30.7%   | +33.0%     | +40.1%     | +44.3%     | +59.9%     |
-| 4   | SpaceX            | SPCX      | NASDAQ (USD)       | High (10-25%)    | 140.00    | +0.9%  | +12.9% | -13.0% | -13.0%   | -90.9   | -259.3  | 6300        | 172.0       | -1.2%    | +6.2%    | +33.2%     | +117.1%    | -93988.9%  | -68.0%     |
-| 5   | Nvidia            | NVDA      | NASDAQ (USD)       | Medium (3.5-10%) | 225.16    | +3.5%  | +11.0% | +1.3%  | +24.8%   | 34.3    | 48.0    | 28.7        | 53.1        | +63.0%   | +58.6%   | +65.5%     | -1.1%      | +66.7%     | -4.8%      |
-| 6   | Cloudflare        | NET       | NYSE (USD)         | Medium (3.5-10%) | 315.67    | +1.6%  | +13.7% | +56.5% | +57.1%   | -541.4  | 263.6   | -610.6      | 179.2       | -6.8%    | +18.0%   | +29.8%     | +29.6%     | -26.1%     | -512.9%    |
-| 7   | Broadcom          | AVGO      | NASDAQ (USD)       | Medium (3.5-10%) | 392.99    | -7.0%  | +6.0%  | -6.6%  | +28.3%   | 63.5    | 33.9    | 57.6        | 48.1        | +19.5%   | +25.1%   | +23.9%     | +65.4%     | +287.8%    | +136.0%    |
-| 8   | Nebius            | NBIS      | NASDAQ (USD)       | Medium (3.5-10%) | 277.68    | +50.8% | +56.3% | +38.9% | +287.7%  | 1068    | -105.2  | 393.2       | -35.9       | -2.2%    | -7.2%    | +350.9%    | +536.0%    | +104.8%    | -2499.0%   |
-| 9   | Marvell           | MRVL      | NASDAQ (USD)       | Medium (3.5-10%) | 222.02    | +6.5%  | +17.7% | +31.4% | +191.4%  | 75.5    | 78.0    | 58.7        | 848.9       | +5.0%    | +0.9%    | +42.1%     | -0.1%      | +401.0%    | -8.2%      |
-| 10  | Sandisk           | SNDK      | NASDAQ (USD)       | Low<br>(<3.5%)   | 1,641.1   | +32.6% | +21.1% | +23.1% | +3584.6% | 21.1    | 24.6    | 18.2        | 322.6       | +64.3%   | +5.1%    | +175.3%    | -1.4%      | +751.6%    | -14.1%     |
-| 11  | Kioxia            | 285A.T    | TSE (JPY)          | Low<br>(<3.5%)   | 53,740    | +11.9% | +3.1%  | +4.5%  | +1999.2% | 21.2    | 56.4    | 13.8        | 170.6       | +42.6%   | +4.4%    | +37.0%     | -3.5%      | +94.1%     | -6.9%      |
-| 12  | Advantest         | 6857.T    | TSE (JPY)          | Low (3.5-10%)    | 36,870    | +7.6%  | +34.0% | +41.0% | +226.4%  | 58.2    | 79.5    | 45.1        | 80.9        | +34.8%   | +31.0%   | +44.7%     | -4.0%      | +135.4%    | -10.0%     |
-| 13  | Lam Research      | LRCX      | NASDAQ (USD)       | Low<br>(<3.5%)   | 332.36    | +8.5%  | +6.1%  | +19.6% | +234.0%  | 57.4    | 58.4    | 50.1        | 55.8        | +40.8%   | +44.9%   | +26.0%     | -0.2%      | +38.8%     | -1.6%      |
-| 14  | Applied Materials | AMAT      | NASDAQ (USD)       | Low<br>(<3.5%)   | 507.18    | -2.9%  | -4.2%  | +22.6% | +213.5%  | 43.5    | 41.3    | 36.5        | 32.5        | +23.6%   | +43.6%   | +4.4%      | +17.9%     | +0.6%      | +41.1%     |
-| 15  | KLA Corp          | KLAC      | NASDAQ (USD)       | Low<br>(<3.5%)   | 203.72    | +5.7%  | -4.2%  | +16.0% | +132.8%  | 55.3    | 54.9    | 47.8        | 50.9        | +35.6%   | +39.9%   | +11.7%     | -0.4%      | +20.5%     | +0.8%      |
-| 16  | ASM International | ASM.AS    | Euronext AMS (EUR) | Low<br>(<3.5%)   | 893.80    | +4.0%  | +2.8%  | +5.8%  | +115.4%  | 40.7    | 38.6    | 34.8        | 31.2        | +17.5%   | +29.4%   | +8.2%      | +29.4%     | +5.8%      | +56.6%     |
-| 17  | BE Semiconductor  | BESI.AS   | Euronext AMS (EUR) | Low<br>(<3.5%)   | 233.50    | +6.2%  | +3.5%  | -8.7%  | +97.0%   | 89.1    | 53.2    | 69.6        | 51.4        | +23.9%   | +33.9%   | -2.7%      | +67.8%     | -27.8%     | +164.5%    |
+| #   | Stock      | Ticker    | Exchange     | Weight           | Price     | 1W %   | 1M %   | 3M %   | 1Y %     | P/E LTM | P/E NTM | EV/EBIT LTM | EV/EBIT NTM | ROIC LTM | ROIC NTM | Rev Gr LFY | Rev Gr CFY | EPS Gr LFY | EPS Gr CFY |
+| --- | ---------- | --------- | ------------ | ---------------- | --------- | ------ | ------ | ------ | -------- | ------- | ------- | ----------- | ----------- | -------- | -------- | ---------- | ---------- | ---------- | ---------- |
+| 1   | Palantir   | PLTR      | NASDAQ (USD) | Full (25%+)      | 174.30    | -0.5%  | +32.5% | +21.6% | +8.3%    | 138.3   | 108.9   | 129.7       | 225.0       | +25.6%   | +17.7%   | +56.2%     | +82.7%     | +231.6%    | +131.9%    |
+| 2   | Nebius     | NBIS      | NASDAQ (USD) | Full (25%+)      | 216.07    | -3.5%  | +15.0% | -4.5%  | +206.6%  | 831.2   | -110.1  | 308.6       | -28.4       | -2.2%    | -7.1%    | +350.9%    | +531.5%    | +104.8%    | -1884.3%   |
+| 3   | SK Hynix   | 000660.KS | KRX (KRW)    | High (10-25%)    | 1,678,000 | +11.9% | -7.6%  | -26.7% | +541.7%  | 7.3     | 4.7     | 8.2         | 16.7        | +34.2%   | +29.1%   | +46.8%     | +259.5%    | +112.5%    | +470.7%    |
+| 4   | SpaceX     | SPCX      | NASDAQ (USD) | High (10-25%)    | 137.23    | -1.7%  | +20.9% | -14.7% | -14.7%   | -89.1   | -914.9  | 6171        | 157.7       | -1.2%    | +6.6%    | +33.2%     | +131.9%    | -93988.9%  | -91.1%     |
+| 5   | Nvidia     | NVDA      | NASDAQ (USD) | Medium (3.5-10%) | 210.38    | -3.3%  | +7.1%  | -1.8%  | +15.7%   | 32.1    | 44.8    | 26.9        | 49.6        | +63.0%   | +58.6%   | +65.5%     | -1.1%      | +66.7%     | -4.8%      |
+| 6   | Cloudflare | NET       | NYSE (USD)   | Medium (3.5-10%) | 279.84    | -4.1%  | +5.4%  | +22.7% | +40.9%   | -479.9  | 222.0   | -542.4      | 156.0       | -6.8%    | +18.4%   | +29.8%     | +32.3%     | -26.1%     | -534.7%    |
+| 7   | Broadcom   | AVGO      | NASDAQ (USD) | Medium (3.5-10%) | 359.77    | -0.7%  | -6.1%  | -15.7% | +20.7%   | 58.1    | 31.0    | 52.8        | 44.1        | +19.5%   | +25.2%   | +23.9%     | +65.5%     | +287.8%    | +136.1%    |
+| 8   | Marvell    | MRVL      | NASDAQ (USD) | Medium (3.5-10%) | 242.87    | +2.4%  | +28.4% | +18.6% | +227.1%  | 82.6    | 85.4    | 64.2        | 928.0       | +5.0%    | +0.9%    | +42.1%     | -0.1%      | +401.0%    | -8.2%      |
+| 9   | Sandisk    | SNDK      | NASDAQ (USD) | Low<br>(<3.5%)   | 1,506.4   | -4.0%  | +17.8% | -8.2%  | +3081.4% | 19.4    | 22.5    | 16.7        | 295.6       | +64.3%   | +5.1%    | +175.3%    | -1.4%      | +751.6%    | -14.1%     |
+| 10  | Kioxia     | 285A.T    | TSE (JPY)    | Low<br>(<3.5%)   | 51,260    | +2.6%  | -6.0%  | -16.4% | +2006.9% | 20.3    | 53.8    | 13.2        | 162.7       | +42.6%   | +4.4%    | +37.0%     | -3.5%      | +94.1%     | -6.9%      |
+| 11  | Advantest  | 6857.T    | TSE (JPY)    | Low (<3.5%)      | 34,450    | -1.6%  | +21.4% | +30.8% | +215.9%  | 54.4    | 74.3    | 42.1        | 75.5        | +34.8%   | +31.0%   | +44.7%     | -4.0%      | +135.4%    | -10.0%     |
 
 <!--TABLE-END-->
 
@@ -787,8 +877,8 @@ _FMP returned 4,000 earnings records in the next 30 days. Matched 2 portfolio ti
 
 | Date       | Days | Stock    | Ticker | EPS Est | Rev Est | Time |
 | ---------- | ---- | -------- | ------ | ------- | ------- | ---- |
-| 2026-08-27 | 11   | Marvell  | MRVL   | $0.93   | $2.7B   | —    |
-| 2026-09-02 | 17   | Broadcom | AVGO   | $3.21   | $29.2B  | —    |
+| 2026-08-27 | 2    | Marvell  | MRVL   | $0.93   | $2.7B   | —    |
+| 2026-09-02 | 8    | Broadcom | AVGO   | $3.22   | $29.2B  | —    |
 
 <!--EARNINGS-END-->
 
@@ -827,6 +917,8 @@ _FMP returned 4,000 earnings records in the next 30 days. Matched 2 portfolio ti
   - **Adding a ticker NOT in `HOLDINGS`**: edit the `HOLDINGS = [...]` array in the dataviewjs block above (format: `{ n: 'Name', t: 'FMP_ticker', ex: 'Exchange', cur: 'Currency' }`), AND add a row with that ticker to the table. Refresh wires it up.
 - **Row order auto-sorts by weight** on every refresh — Full → High → Medium → Low → unweighted (`—`). Within a tier, order follows the `HOLDINGS` array sequence (`Array.sort` is stable). Manual row reordering in the table is not preserved across a refresh; to reposition a name, change its Weight cell (moves it across tiers) or its `HOLDINGS` position (within a tier). The `#` column renumbers from the sorted result.
 - **Upcoming Earnings table**: populated by the same Refresh click via a single FMP `earnings-calendar?from=today&to=today+30d` call. Endpoint is universe-only (symbol param is silently ignored), so we fetch and filter in JS against `HOLDINGS`. 30-day window stays comfortably under FMP's 4000-record-per-call cap. A failed call just empties the table — Holdings refresh is unaffected. **Important code invariant**: the `replace(EARNINGS_RE, ...)` call MUST use the function-form `() => newEarningsTable`, not the string-form. EPS/Rev cell values contain `$` followed by digits (e.g. `$159M`) which the string-form interprets as backreferences (`$1` = capture group 1 = the prior EARNINGS region content), causing the region to accumulate corrupted layers on every refresh.
+- **Failure diagnostics (2026-08-25)**: when any ticker fails, the **Last refreshed** line and the button status carry the reason (per-cause tally + first raw error, API key scrubbed): `HTTP 429 …` = FMP rate limit, `HTTP 401/403` = key/plan, `net::ERR_…` = Electron network/TLS failure inside Obsidian. The earnings line reports its own call failure separately. The tracker note is resolved from the rendering context (`dv.current()`), not the active file. A standalone `FMP-AUTORUN-ONCE[:key]` HTML-comment line under **Last refreshed** fires one refresh on render and is stripped by that run (guarded per key per session; absent marker = inert).
+- **Transport fallback (2026-08-25)**: `requestUrl` rides on the Chromium network service inside the Obsidian process, which can die mid-session: every call then fails instantly with `net::ERR_FAILED` while the OS network is healthy. On that signature the run switches to Node `https` (bypasses Chromium; desktop only) and says so in the **Last refreshed** line and button status. A full quit and relaunch of Obsidian restores the normal transport.
 
 ## Log
 - 2026-05-22: Initialised tracker — 32 holdings, 15 data columns + ticker/exchange/weight. Wired live refresh via FMP wholesale tier (`.data/config.json` gitignored). All 32 tickers verified coverable on wholesale. Native intl tickers chosen over ADRs where available (Hynix `000660.KS`, Murata `6981.T`, ASM/BESI Euronext `.AS`, Aixtron `AIXA.DE`, Games Workshop `GAW.L`, IQE `IQE.L`, Sivers `SIVE.ST`, Yancoal `YAL.AX`). EV/EBIT computed from EV/EBITDA × margin ratio. Note: existing weight column values preserved by the script — first click overwrites tickers/exchange labels with the script's authoritative HOLDINGS list.
@@ -842,3 +934,7 @@ _FMP returned 4,000 earnings records in the next 30 days. Matched 2 portfolio ti
 - 2026-05-29: Added `## Charts` section — a read-only companion `dataviewjs` block that parses the rendered Holdings table (no extra FMP calls) and draws diverging horizontal bars with a Returns/Valuation/Growth metric dropdown + sort toggle. Renders on note-open from the last refresh and re-renders automatically when Refresh modifies the file. Bar scale capped at the 90th percentile of |value| so outliers (e.g. GAW 3351x P/E, SNDK +4264% 1Y) don't crush the chart; true values always shown as labels. Price excluded (mixed-currency). Zero plugin dependency (no Charts plugin installed). Separate block by design — the refresh script is untouched.
 - 2026-05-29: Added a second chart to `## Charts` — an SVG **scatter** (`document.createElementNS`, no plugin) with independent **X/Y dropdowns** spanning Growth (Rev/EPS, CFY & LFY), Valuation (P/E & EV/EBIT, NTM & LTM) and ROIC (LTM & NTM). Default X=Rev Gr CFY, Y=EV/EBIT NTM. Dots sized/coloured by weight tier; dashed median crosshair draws quadrants; hover shows name + true values. Axes clipped to a Tukey IQR fence so a single extreme multiple (e.g. GAW 3351x) doesn't flatten the cloud — off-scale names pin to the edge with a dashed ring. Same read-only table-parse + auto-rerender contract as the bar chart.
 - 2026-08-13: SPCX sleeve pressure noted High (10–25%) → Medium after /status draft→active on [[@SPCX - @SpaceX]]. Panel residual = Connectivity/Falcon; AI unproven. Weight cell left unchanged pending user edit.
+- 2026-08-25: Removed TSMC (`TSM`, was High 10–25%) from the Holdings table on user instruction — active set now 11 names, rows renumbered. `HOLDINGS` array entry retained as metadata so the re-add path (type `TSM` into column 3, Refresh) still works.
+- 2026-08-25: Weights: SK Hynix Full→High; Palantir High→Full; Nebius Medium→Full. Removed Lam Research, Applied Materials, KLA, ASM International, BE Semiconductor from the Holdings table and the `HOLDINGS` array (12 names remain).
+- 2026-08-25: Refresh returned 0/12 three times with no visible cause, while the identical 85-request burst succeeded from a shell on the same machine (FMP key, plan, symbols, concurrency, TLS chain all cleared). Added failure diagnostics: fetch errors now name endpoint + HTTP status/body snippet or Electron net error, tallied into the Last-refreshed line and button status; earnings-call failure reported on its own line; note resolved via `dv.current()`; one-shot render-triggered refresh via the `FMP-AUTORUN-ONCE` marker (stripped by the run, session-guarded).
+- 2026-08-25: Root cause confirmed via the auto-run diagnostics: every request from Obsidian's own Chromium network stack (`requestUrl`) fails instantly with `net::ERR_FAILED` in this Obsidian session (API 1.13.7, process up since 21:40), while the identical 85-request burst from a shell on the same machine returns 85/85 and the TLS chain (Amazon RSA 2048 M01) validates; FMP key, plan, symbols and concurrency are all fine. Added the Node `https` transport fallback (engages on the `net::ERR_` signature, flagged in the Last-refreshed line); fallback run at 23:13 returned 11/11 tickers, earnings matched 2. A full quit and relaunch of Obsidian restores `requestUrl`. TSMC (TSM) row was absent from the table by 23:10 (12 → 11 rows) and was not touched by these edits: treat as user-deleted per the table-is-source-of-truth rule; re-add by typing `TSM` in the Ticker column of a new row and refreshing.

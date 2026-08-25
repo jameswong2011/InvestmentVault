@@ -583,3 +583,6 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (18-mon
 ### 2026-08-22
 - [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: Fireworks >40T tokens/day and $100M/MW vs sub-$30M/MW auction confirm Jevons / picks-and-shovels; public-bench catch-up is cyclic, not secular commoditization of the intelligence premium — conviction unchanged (high).
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Fusion + $2B is system-content attach, not a CUDA/trigger print; no three-party program — conviction unchanged (high).
+
+### 2026-08-25
+- [[Macro & Technology/AI Supply-Demand Considerations to 2030]]: NVDA owns the configuration valve between the HBM and power gates (GB/kW per package ~doubles at Rubin Ultra 1TB when watts bind); token-supply cap ~3x/yr vs ~5-9x demand keeps the shortage into 2028; watch HBM4 cost pass-through + inventory-days as the energised-vs-shipped tell — conviction unchanged (high).

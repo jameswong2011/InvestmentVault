@@ -318,3 +318,6 @@ NBIS is a ~120x-trailing-FY25-sales stock priced for a flawless 4x power build i
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
 ### 2026-08-22
 - [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: open TaaS is the sub-$30M/MW residual vs $100M/MW frontier-token auction — mix risk, not demand collapse; no trigger fire — conviction unchanged (medium).
+
+### 2026-08-25
+- [[Macro & Technology/AI Supply-Demand Considerations to 2030]]: power displaces HBM as the binding gate from 2027, extending the scarcity / rate-discipline regime to ~2029-30; watt-rent accrues to owned megawatts (vintage insulation) so decaying $/token coexists with firm GPU-hr — reinforces the take-or-pay ROIC thesis; ~3x/yr demand balance line is the monitor — conviction unchanged (medium).

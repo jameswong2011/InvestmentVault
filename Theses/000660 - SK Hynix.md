@@ -404,3 +404,6 @@ SK Hynix is the cash engine at the bottom of a control pyramid whose controlling
 - ⚡ Trigger hit: none fired. Flag-only.
 ### 2026-08-22
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: CMM-Ax is a CXL-PNM co-dev (Structera A + SK hynix memory/software), not a Rubin/HBM-share datapoint; no three-party program; HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+
+### 2026-08-25
+- [[Macro & Technology/AI Supply-Demand Considerations to 2030]]: token-supply cap ≈ HBM-bit growth (+50-60% 2027, still short of demand) × fleet efficiency; Samsung Rubin HBM4 share (25-30%) is the erosion vector to the winner-take-most rent, HBM4 contract pricing ~2x into 2027 — reinforces the memory-gate rent — conviction unchanged (medium).

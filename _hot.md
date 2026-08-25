@@ -1,40 +1,41 @@
 ---
 publish: false
-date: 2026-08-22
+date: 2026-08-25
 tags: [meta, hot-cache]
 ---
-# Hot Cache — Last Updated: 2026-08-22 (/sync default — 3 Aug 21 research notes)
+# Hot Cache — Last Updated: 2026-08-25 (/sync default — AI Supply-Demand macro note → 4 thesis pointers)
 
 ## Active Research Thread
 
+- **2026-08-25 `/sync` — AI Supply-Demand macro note (new) → 4 thesis Log pointers** — session-long research thread on AI compute supply/demand to 2030: HBM + energised power as the two binding gates, ~3x/yr token-supply cap (HBM bits × fleet efficiency) vs ~5-9x measured demand, token/GPU-hr price decoupling, neocloud ROIC. Created [[Macro & Technology/AI Supply-Demand Considerations to 2030]]; propagated Tier B Log pointers to TSM / NVDA / 000660 / NBIS. Next: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-25-155751)]].
+*Previous 2026-08-24:* `/thesis` VSH (new draft LOW) — broad-line passives/discretes cyclical, no moat, $2.6B capex into the cycle peak, +124% run. See [[Theses/VSH - Vishay Intertechnology]] Log.
+*Previous 2026-08-24:* `/thesis` CRDO (new draft LOW) — AEC category leader priced for perfection, top-4 ~87%. See [[Theses/CRDO - Credo Technology]] Log.
+*Previous 2026-08-22:* `/sync` default 3 Aug 21 notes (SemiAnalysis open-models / Damnang MRVL Part 3 / Superposition) — see §Sync Archive + thesis Logs.
 *Previous 2026-08-21:* `/sync` 12 Aug 18–20 notes (HBF / 8-Hi / CPO / Arizona / HBC / CS-4) — see §Sync Archive + thesis Logs.
-*Previous 2026-08-18:* `/sync` to SpaceX 10GW feasibility — see §Latest Sync archive + thesis Logs.
-*Previous 2026-08-16:* ASMI stress-test + 6146/ALAB/COHR theses + NVDA ASIC-rack sync — see §RCC + thesis Logs.
-*Previous 2026-08-18:* four Substack notes (PhotonCap HBF / PJM / 13F / TSPA Taiwan) — see thesis Logs.
-*Previous 2026-08-18:* filed Aug-15 monthly portfolio stress-test (15 notes + scoreboard); 6 /status followups — see §RCC + thesis Logs.
-- **2026-08-22 `/sync` (default, 3 newly-filed notes)** — SemiAnalysis open-models (Jevons + $100M/MW auction); Damnang MRVL Part 3 (Google 8-K 1/3 HIGH near-fired; Aug 27 = Interconnect + Q3 guide); Superposition quantum (no home). Conviction/status unchanged. Next: `/graph last`.
+*Previous 2026-08-18:* `/sync` to SpaceX 10GW feasibility — see §Sync Archive + thesis Logs.
 
 ## Latest Sync
 
-*Date: 2026-08-22 (`/sync` default — 3 Aug 21 notes)*
+*Date: 2026-08-25 (`/sync` default — new macro note [[Macro & Technology/AI Supply-Demand Considerations to 2030]])*
 
-- **MRVL** (Tier A): Google 8-K formalises OQ #1 (system content); HIGH still 1/3 near-fired; $120B warrant ceiling not a PO; Aug 27 variables = FY27 Interconnect growth + Q3 guide — conviction unchanged (medium). Snapshot taken.
-- **NVDA** (Tier A): Jevons / picks-and-shovels confirmed; public-bench catch-up is cyclic not secular commoditization; $100M/MW auction reallocates MW — no triggers to test — conviction unchanged (high). Snapshot taken.
-- **NBIS** (Tier A): open TaaS is the sub-$30M/MW residual vs $100M/MW frontier tokens — mix risk, not demand collapse; triggers unobserved — conviction unchanged (medium). Snapshot taken.
-- **NET** (Tier A): 40T tokens/day volume-positive; auction leans re-centralized for incremental MW — edge-GPU OQ sharpened not resolved — conviction unchanged (medium). Snapshot taken.
-- **AVGO** (Tier A): auction mix-supportive for OAI/Anthropic XPU; Google 8-K is MRVL attach not a Sunfish takeaway — conviction unchanged (high). Snapshot taken.
-- **000660** (Tier B): CMM-Ax is CXL-PNM, not an HBM-allocation print; HIGH/LOW/CLOSE no-touch.
-- Sectors: Compute, Custom Silicon (MM first-pop), Neoclouds. Macros: Sustainability of AI Capex, Agentic Internet, CXL. Quantum note: no home.
-- **Next**: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-22-100928)]].
+- Source: new macro synthesis (HBM + power supply gates; ~3x/yr token-supply cap = bits × fleet efficiency vs ~5-9x demand; token/GPU-hr price decoupling; neocloud ROIC to 2030). Synthesis of already-propagated research — no new evidence to individual theses, so propagation is Log-pointer only (Tier B, no body rewrites, no snapshots).
+- **TSM** (Tier B): Log pointer — packaging left the binding set (CoWoS gap 20→10%), already in Bear #6 / Risk #9; advanced-node rents intact — conviction unchanged (high).
+- **NVDA** (Tier B): Log pointer — owns the config valve between the HBM and power gates; ~3x supply vs ~5-9x demand keeps the shortage into 2028 — conviction unchanged (high).
+- **000660** (Tier B): Log pointer — token cap ≈ HBM-bit growth (+50-60% 2027, still short) × efficiency; Samsung Rubin HBM4 share the erosion vector — conviction unchanged (medium).
+- **NBIS** (Tier B): Log pointer — power displaces HBM as the binding gate to ~2029-30; watt-rent / take-or-pay ROIC; ~3x demand balance line is the monitor — conviction unchanged (medium).
+- 12 reverse-index theses not edited (285A/AMAT/ASMI/AVGO/BE/KLA/LNG/LRCX/SNDK/SPCX/VICR/VRT — already-covered synthesis, no thesis-specific delta). 3 changed theses (CRDO/ISRG/VSH) skill-origin/no-delta. No sector/macro edits.
+- **Next**: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-25-155751)]].
 
 ## Sync Archive
 
+- **2026-08-22** (`/sync` default — 3 Aug 21 notes): SemiAnalysis open-models / Damnang MRVL Part 3 / Superposition; MRVL/NVDA/NBIS/NET/AVGO Tier A + 000660 Tier B. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-22-100928)]].
 - **2026-08-21** (`/sync` default — 12 Aug 18–20 notes): HBF / 8-Hi / CPO / Arizona / HBC / CS-4. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-21-171324)]].
 - **2026-08-18** (`/sync` to SpaceX note): 10GW feasibility — SPCX orbital leg + NVDA/VRT Log + 000660/TSM wikilink + Neoclouds + Sustainability. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-18-230858)]].
-- **2026-08-18** (`/sync` default — Aug-15 monthly stress-test persist): 15 ticker notes reconfirmed, no conviction/status change; 6 /status followups. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-18-105719)]].
 
 ## Recent Conviction Changes
 
+- **2026-08-24 — VSH (Vishay Intertechnology) initial LOW** (draft [[Theses/VSH - Vishay Intertechnology]]). Broad-line passives + discretes cyclical in a genuine upcycle (Q2'26 record adj. rev $919M +20.5%, book-to-bill 1.32, backlog 6.1mo / 18%, industrial +30% YoY; GM 19%→23.3%→24% Q3 guide, 30%+ 2028 target; Vishay 3.0 self-help ahead of plan, ~$4B 2028 rev target). LOW: no moat (VLM diversification anti-signal; Semis #2 no qual gate), $2.6B capex into the cycle peak (Semis #3/#17 capital cycle), negative FCF + $830M raise + dilutive $750M convert, 33-40% tax drag, +124% run pricing the 30% GM target; margin path must beat the [G-3] mean-reversion base rate. Sell-side already Hold/Sell (targets $18-28 < ~$36); sector note explicitly does NOT recommend broad-line passives/discretes. Excluded from /catalyst, /prune, conviction-drift (draft). Run `/graph last`.
+- **2026-08-24 — CRDO (Credo Technology) initial LOW** (draft [[Theses/CRDO - Credo Technology]]). Category creator of AEC with 73–88% share; FY26 rev $1.3B (+206%) / 68% GM / 48% op margin / debt-free + ~$3.8B cash; FY27 guided >80% (>$2.4B). LOW not higher: ~29x trailing EV/rev (~30–40x sales, ~93x P/E) with top-4 customers ~87% (34/27/16/10) — a binary anchor risk (Semis #10) — and an AEC moat that is reliability/design-in ('ZeroFlap'), not a qualification gate, while Astera (Taurus) / Marvell / Broadcom attack; the optical second leg (>$600M FY27 target; DustPhotonics ~$1.3B full-stack) is a late entry vs MRVL 80% DSP into LPO/CPO disintermediation, GM guided 68%→64–66%. VLM WEAK (contestable copper layer, no owned standard); Semis #13/#14 reclassification open; [G-13] category priced, durability + optical margin mispriced. Excluded from /catalyst, /prune, conviction-drift (draft). Run `/graph last`.
 - **2026-08-22 — trigger touches (flag-only, no `/status`)**: MRVL HIGH conjunct 1 (Google commercial agreement) evidence-touched / near-fired, not fired (8-K broader than MPU/inference-TPU; legs 2–3 unmet). HIGH conjunct 3 (Celestial PO / tape-out) evidence-touched the other way (PF still little P&L). LOW conjunct 2 (Google BRCM-exclusive) inverted. CLOSE conjunct 1 (FY28 custom < $3.6B) inverted on author $3.8B [est.]. NVDA/NET/AVGO have no registered triggers. NBIS/000660 handles unobserved. Conviction/status unchanged.
 - **2026-08-21 — trigger touches (flag-only, no `/status`)**: TSM → LOW CoWoS-alternative evidence-touched not fired (HBC + packaging-bottleneck migration). MRVL HIGH Celestial leg 3 evidence-touched not fired (POET PO cancel + vendor targets). CBRS → LOW ~3× GPU decode evidence-touched *away* from LOW (SA 20–40×). NVDA/SNDK have no registered triggers. Conviction/status unchanged.
 
@@ -115,6 +116,12 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 
 ## Open Questions
 
+- 193. **VSH margin: structural or utilization?** — does GM hold ≥28% through a book-to-bill ≤1.1 quarter (structural), or stall in the low-24s / fall as volumes soften (mean-reversion)? Same condition as → HIGH / → LOW. See [[Theses/VSH - Vishay Intertechnology]] §Conviction Triggers.
+- 192. **VSH ROIIC on $2.6B Vishay 3.0 capex** — does incremental ROIC on the German fab / Newport clear cost of capital (≥mid-teens) as it ramps 2027, or is capital destroyed into the cycle peak? See [[Theses/VSH - Vishay Intertechnology]] §Outstanding Questions.
+- 191. **VSH double-ordering vs clean demand** — is the 6.1-month backlog / >52-week ordering genuine end-demand or allocation-securing that cancels when supply normalises? Same condition as → CLOSE. See [[Theses/VSH - Vishay Intertechnology]] §Outstanding Questions.
+- 190. **CRDO AEC share durability through 224G** — does Credo hold >80% AEC share with stable/rising ASPs, or does a hyperscaler dual-source to Astera/Marvell at 224G? Same condition as → HIGH / → LOW. See [[Theses/CRDO - Credo Technology]] §Conviction Triggers.
+- 189. **CRDO optical leg margin** — does FY27 optical track to >$600M with GM ≥66%, or does mix + LPO/CPO compress blended GM below 64% (DustPhotonics integration risk)? See [[Theses/CRDO - Credo Technology]] §Outstanding Questions.
+- 188. **CRDO customer-concentration tail** — top-4 ~87%; does any single anchor in-source/pause a socket, or does top-customer fall <25% with neoclouds ≥15% (genuine de-risk)? See [[Theses/CRDO - Credo Technology]] §Outstanding Questions.
 - 187. **MRVL Aug 27 / remaining Google share** — does the print raise FY27 Interconnect growth and the Q3 guide, and what share of Google inference-silicon spend is contractually available to the fourth seat? HIGH still 1/3. See [[Theses/MRVL - Marvell Technology]] §Outstanding Questions + §Conviction Triggers.
 - 185. **ASMI 1.4nm POR verification + annuity-insulation test** — does a third party (TSMC channel / tool-shipment commentary) confirm ASMI holds *incremental* HKMG POR at A14 before AMAT Trillium / Lam Halo take a dipole/WFM slot — and given quarterly bookings disclosure was discontinued from Q1 2026, what still-observable signal monitors it? Separately: is ASMI's recurring/service revenue % genuinely the WFE basket's thinnest (the insulation-gap test)? See [[Research/2026-08-16 - ASMI - Stress Test]] §Kill Trigger + §Research Gaps.
 - 183. **6146 DISCO consumables-annuity cyclicality** — does consumables revenue hold or grow through the next equipment air-pocket (proving the installed-base annuity de-cyclicalizes the P&L), or does it fall *with* equipment (utilization-linked)? The single most thesis-determinative test; same condition as → HIGH / → LOW. See [[Theses/6146 - DISCO]] §Outstanding Questions.
