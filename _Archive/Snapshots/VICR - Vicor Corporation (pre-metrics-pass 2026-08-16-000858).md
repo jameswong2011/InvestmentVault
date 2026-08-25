@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-28
 tags: [thesis, semiconductors, power, VICR]
 status: active

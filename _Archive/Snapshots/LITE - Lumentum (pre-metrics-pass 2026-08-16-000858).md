@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-03
 tags: [thesis, lite, semiconductors, photonics, EML, CPO]
 status: active

@@ -3,7 +3,7 @@ snapshot_of: "[[Theses/NVDA - Nvidia]]"
 snapshot_date: 2026-08-22
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-22-100928
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, semiconductors, AI, physical-AI, NVDA]
 status: active

@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-30
 tags: [thesis, social-platforms, advertising, commerce, PINS]
 status: active

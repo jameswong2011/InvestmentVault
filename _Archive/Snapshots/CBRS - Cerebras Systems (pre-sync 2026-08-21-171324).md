@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-07-09
 tags: [thesis, semiconductors, ai-compute, CBRS]
 status: draft

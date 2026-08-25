@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, iqe, semiconductors, photonics, compound-semiconductor, III-V, special-situation]
 status: active

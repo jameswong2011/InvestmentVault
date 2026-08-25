@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-29
 tags: [thesis, semiconductors, AIXA, MOCVD, photonics]
 status: active

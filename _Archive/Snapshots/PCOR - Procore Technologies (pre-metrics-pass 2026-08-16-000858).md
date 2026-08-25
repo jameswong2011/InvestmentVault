@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-05-22
 tags: [thesis, construction-tech, vertical-saas, building-construction-software, PCOR]
 status: active

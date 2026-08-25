@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-05-01
 tags: [thesis, accounting-erp, INTU]
 status: active

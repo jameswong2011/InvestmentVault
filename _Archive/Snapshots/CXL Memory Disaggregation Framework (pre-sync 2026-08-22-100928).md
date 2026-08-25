@@ -3,7 +3,7 @@ snapshot_of: "[[Macro & Technology/CXL Memory Disaggregation Framework]]"
 snapshot_date: 2026-08-22
 snapshot_trigger: sync
 snapshot_batch: sync-2026-08-22-100928
-publish: true
+publish: false
 date: 2026-04-26
 tags: [macro, technology, CXL, memory-disaggregation, photonics, mental-model, MRVL, AVGO]
 status: active

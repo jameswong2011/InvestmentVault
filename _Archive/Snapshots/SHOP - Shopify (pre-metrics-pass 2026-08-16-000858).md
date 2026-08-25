@@ -1,5 +1,5 @@
 ---
-publish: true
+publish: false
 date: 2026-04-15
 tags: [thesis, shop, enterprise-software, ecommerce, payments]
 status: active
