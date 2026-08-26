@@ -1,4 +1,8 @@
 ---
+snapshot_of: "[[Macro & Technology/AI Supply-Demand Considerations to 2030]]"
+snapshot_date: 2026-08-26
+snapshot_trigger: manual-edit
+snapshot_batch: manual-edit-2026-08-26-124804
 publish: true
 date: 2026-08-25
 tags: [macro, technology, ai-compute, token-economics, HBM, power-grid, neoclouds, semiconductors]
@@ -194,8 +198,6 @@ For GPU-hours the load-bearing fact is the decoupling: at a flat contracted rate
 
 **Cost basis.** Accounting cost is capex ÷ life, principal only. Economic cost multiplies capex by the capital recovery factor, the level annuity that returns principal plus the required return: 0.240 at 15% over 7 years on IT, 0.110 at 10% over 25 years on the shell. Per Rubin GPU ($183K = $126K rack + $57K shell at 3.9 kW all-in): $20.3K a year accounting, $36.5K economic. A blended 8-10% WACC on everything, Epoch's approach, gives ~$9.5/W-yr, 1.45x accounting. Fleet-average cost sits below new-build ($6.1 against $6.5 in 2026) because Hopper vintages were bought at $30-35/W, and a 7-year life keeps 2023-24 Hopper depreciating through 2030, so there is no cliff of written-off silicon in 2029-30.
 
-**Scope of the $47/W.** The bill is built at the rack and beyond it, not at the accelerator. Per Rubin GPU, $183K = rack ~$118K (GPU packages ~$55K; HBM4 and LPDDR ~$36K; Vera CPUs, NVLink switch trays, NICs, compute trays, power shelves and in-rack CDU ~$27K) + scale-out network and storage ~$8K + shell, substation, switchgear, UPS and cooling plant $57K. At 3.9 kW all-in per GPU that is $14 + $9 + $7 + $2 + $15 = $47/W, the Foxconn all-in per-gigawatt figure, and it reconciles to Epoch's GB200 split (servers 56%, network 13%, facility 30%). The §3 table groups these as accelerators plus memory ~$25/W, other IT ~$7/W (the finer split is ~$23 and ~$9) and shell ~$15/W; the totals are unchanged.
-
 | Basis, 2030 | Fleet $/W-yr | Serving COGS | Total fleet COGS |
 |---|---:|---:|---:|
 | Accelerators + memory depreciation only, 5.5-yr | 4.2 | ~$290B | ~$410B |
@@ -253,7 +255,6 @@ For GPU-hours the load-bearing fact is the decoupling: at a flat contracted rate
 - [[Research/2026-07-23 - Vera Rubin NVL72 vs GB200 Inference TCO - deep-dive]]
 - [[Research/2026-08-05 - NBIS CRWV - Rubin Fleet Economics - Rate Sensitivity Model - deep-dive]]
 - [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]
-- [[Website/2026-08-26 - AI Compute - The Token Factory and the Demand Hurdle]]
 
 ## Log
 
@@ -262,4 +263,3 @@ For GPU-hours the load-bearing fact is the decoupling: at a flat contracted rate
 - 2026-08-26: Manual edit (session, user-directed) — §7 extended: per-layer economic-return split (who earns above the 15% rate, who pays), the monetised-share × multiple decomposition (fleet covers 0.7x → 0.9x of economic cost via monetisation, not deeper shortage), margin condition restated on all watts (total compute dollars ×4 by 2030; base case ×3-3.5 lands new fleets at the hurdle), share point relegated to thesis level; Summary, §5 monetised-share observable, §6 pointer and one [G-4] hypothesis updated — framework unchanged.
 - 2026-08-26: Manual edit (session, user-directed) — §7 reframed on payers: compute expenditure by payer (~$300-400B, 2-2.5x measured AI revenue; every watt paid, compute layer at 1.4-1.7x economic cost), training and internal workloads treated as paid-for demand of differing duration rather than an unmonetised gap, margin-condition scenarios recut as bridge-hit / bridge-missed / above-bridge; Summary, §5 payer-mix observable and the [G-4] hypothesis updated — framework unchanged.
 - 2026-08-26: Manual edit (session, user-directed) — restructured into Part I Supply (§1 physical gates, §2 efficiency engine, §3 cost of supply and the COGS line), Part II Demand (§4 token demand, §5 dollar demand by payer, §6 demand against supply: regime path and economic balance, §7 margin condition) and an Appendix (A price formation, B observables, C affected theses, D method notes and sensitivities); all content carried over, cross-references renumbered, benchmark $/M figures re-based to the 7/25-year economic stack — framework and numbers unchanged.
-- 2026-08-26: Manual edit (session, user-directed) — Website essay [[Website/2026-08-26 - AI Compute - The Token Factory and the Demand Hurdle]] drafted from Parts I-II (supply-led: token capacity, cost of supply at rack level, the ~40%/yr dollar-demand hurdle, agentic demand running above it); Appendix D gained a scope paragraph confirming the $47/W bill is rack-level plus scale-out network and shell — framework unchanged.

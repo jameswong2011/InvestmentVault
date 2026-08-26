@@ -1,4 +1,8 @@
 ---
+snapshot_of: "[[Macro & Technology/Humanoid Robotics Supply Chain]]"
+snapshot_date: 2026-08-25
+snapshot_trigger: sync
+snapshot_batch: sync-2026-08-25-000009
 publish: true
 date: 2026-08-14
 tags: [macro, technology, robotics, humanoid, physical-AI, supply-chain, NVDA, TSM, TER]
@@ -192,7 +196,7 @@ Scenario spine for 2030 global units: bear ~200–300k (China-only absorption, a
 | [[Theses/CATL - Contemporary Amperex Technology]] | Robot batteries + solid-state niche-beachhead + robotics ecosystem investments | **Thesis gap: zero robot content today.** Samsung SDI is moving first (dedicated robot cells, solid-state 2H 2027 MP target); flag for next CATL /sync or /deepen |
 | [[Theses/6981 - Murata Manufacturing]] / [[Theses/6976 - Taiyo Yuden]] | EV-class thousands of MLCCs per robot | Immaterial vs AI-server demand through 2027+; do not double-count with the 800VDC MLCC thesis |
 | [[Theses/ARM - Arm Holdings]] | Cortex-M cerebellum + joint MCUs across both blocs | Royalty content per robot is small; volume story only at multi-million units |
-| [[Theses/NBIS - Nebius Group]] | Avride delivery robots: >600k deliveries, 1,200/day at Ohio State, Chartwells campus MSA (Jul 2026); Starship redeploying its 1,200 US campus robots to grocery (Jun 2026) [C] | Supports the form-factor caveat below, with the revenue ceiling now visible: Serve Robotics (2,000+ robots) cut its 2026 revenue guide from $26M to $9–10M on weak Uber Eats volumes [C]; wheeled delivery absorbs the use case at revenue that stays small ([[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]) |
+| [[Theses/NBIS - Nebius Group]] | Avride delivery robots: >600k deliveries, monetizing today | Supports the form-factor caveat below: wheeled task-specific robots are absorbing the near-term economic use cases while humanoids demo |
 
 ### Sector notes
 
@@ -272,6 +276,3 @@ Scenario spine for 2030 global units: bear ~200–300k (China-only absorption, a
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
-
-### 2026-08-26 (/sync all)
-- [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]: Avride robots >600K deliveries / 1,200 a day at Ohio State / Chartwells MSA, with Starship exiting US campuses (Jun 2026) and Serve cutting its 2026 guide $26M→$9–10M on weak Uber Eats volumes — wheeled delivery absorbs the use case at small revenue; §Affected vault theses NBIS row updated; framework and watchlist unchanged. Snapshot: [[_Archive/Snapshots/Humanoid Robotics Supply Chain (pre-sync 2026-08-25-000009)]]

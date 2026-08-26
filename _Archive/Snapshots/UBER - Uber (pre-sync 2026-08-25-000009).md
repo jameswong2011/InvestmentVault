@@ -1,4 +1,8 @@
 ---
+snapshot_of: "[[Theses/UBER - Uber]]"
+snapshot_date: 2026-08-25
+snapshot_trigger: sync
+snapshot_batch: sync-2026-08-25-000009
 publish: true
 date: 2026-04-15
 tags: [thesis, uber, UBER, consumer-digital, rideshare, delivery, autonomous-vehicles]
@@ -93,8 +97,7 @@ Uber's AV strategy is deliberately asset-light: rather than spending billions to
 - **WeRide (February 2026):** 1,200+ robotaxis committed across Dubai, Abu Dhabi, and Riyadh. Launched fully driverless commercial operations in Dubai on March 31, 2026: first Level 4 robotaxis in commercial service in the city
 - **VW/MOIA (April 2026):** Self-driving ID. Buzz vehicles began testing on LA roads. 100+ vehicles in test phase; launches on Uber with safety operators by end 2026, fully driverless in 2027. Long-term: fleet of thousands across multiple US markets
 - **Nuro/Lucid (April 2026):** Premium robotaxi testing in San Francisco with Nuro-equipped Lucid Gravity vehicles. 20,000 vehicle commitment over six years ($300M Uber investment in Lucid)
-- **Avride (Nebius, ex-Yandex):** Dallas robotaxis on Uber since 3 Dec 2025 (>60K rides by June, safety operator still aboard; NHTSA preliminary evaluation open since 6 May 2026 over 16 supervised crashes; driver-out demo Aug 2026, commercial no-operator service planned later in 2026). Uber's capital is a $100M SAFE plus a $75M milestone tranche at a 20% conversion discount, the option-on-a-supplier structure of the fragmentation insight; Waymo went public-driverless in Dallas via its own app on 4 Aug 2026 ([[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]])
-- **Aurora, Motional (Hyundai/Aptiv), Serve Robotics, May Mobility, Waabi**, and others
+- **Aurora, Motional (Hyundai/Aptiv), Serve Robotics, May Mobility, Avride (ex-Yandex), Waabi**, and others
 
 **City count:** 10+ live cities with AV operations, targeting 15 by end of 2026. International expansion includes Dubai, Abu Dhabi, Riyadh (live), with planned launches in London, Zurich, Madrid, Munich, and Hong Kong.
 
@@ -269,7 +272,6 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (AV, ad
 - [[Research/2025-11-29 - OPEN - Opendoor Progress Assessment]]: Platform marketplace competitive dynamics
 - [[Research/2026-08-06 - UBER - Sentiment Valuation and Autonomous Vehicle Risk - deep-dive]]: Current sentiment, AV disintermediation, non-AV discount drivers, forward growth, valuation, and falsifiers
 - [[Research/2026-08-15 - UBER - Stress Test]]: Waymo falsifier fired; no triggers; /status followup
-- [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]: Avride status (supervised, NHTSA PE open), Uber SAFE + milestone-tranche structure, Waymo Dallas public driverless 4 Aug 2026
 
 ## Log
 
@@ -314,6 +316,3 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (AV, ad
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit; 2025–26 calibration mixed while tape still prices AV/DH as capital destruction. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
-
-### 2026-08-26 (/sync all)
-- [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]: Avride (Uber's Dallas partner) is still supervised under an open NHTSA evaluation while Waymo went public-driverless in Dallas on 4 Aug; Uber's $100M SAFE + $75M milestone tranche is the cheap-option supplier structure the fragmentation insight describes — conviction unchanged (high): validates the fragmentation read, but the exclusive non-Waymo paid-fleet count still has no driverless contributor. Snapshot: [[_Archive/Snapshots/UBER - Uber (pre-sync 2026-08-25-000009)]]

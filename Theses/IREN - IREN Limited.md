@@ -176,6 +176,7 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (miner-
 - [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]
 - [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]
 - [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
+- [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: twelve-name comparison; IREN ranked risk-adjusted first on the owned-power layer; Horizon 1 Microsoft acceptance + Futurum #1 (~$40M contracted revenue/MW); preference triggers keyed to the 27 Aug Q4 FY26 print
 
 ## Log
 ### 2026-08-04
@@ -193,3 +194,6 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (miner-
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit; BTC→AI recognition is dated and pre-run, 2026 time-based RSU + B-class control fail the ROIC/buy test. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-26 (/compare)
+- Comparison [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: the one full-stack operator that owns the layer the property-developer frame describes; Horizon 1 50 MW IT accepted by Microsoft 13 Aug (only in-window contracted→billing conversion with hyperscaler sign-off), Futurum #1 at ~$40M contracted revenue/MW vs CRWV ~$28M — conviction strengthened at the margin, level unchanged (medium): ~$21B funding-gap bear untouched; Q4 FY26 prints 27 Aug.

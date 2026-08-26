@@ -267,6 +267,8 @@ The drivers that break the thesis:
 - [[Research/2026-08-15 - NBIS CRWV - Neocloud Q2 CoreWeave Nebius Cerebras - news]]: Q2 $2.575B / adj EBITDA $1.51B (58.6%) / $9.4B capex / 1.5 GW·51 sites; A100 contract into 2029 at "attractive price" (2020-vintage residual)
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: named in the Baker book parse; no active-MW or residual-value print in this 13F
 - [[Research/2026-08-15 - CRWV - Stress Test]]: late-cycle GPU-rental + leverage; Q2 backlog does not retire model
+- [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: twelve-name comparison; coordination proof (1.5 GW active, +25% list vs +17% input) against credit (covenant-lite over on the $2.6B facility); CRWV is the tenant at APLD 400 MW and CORZ 590 MW
+
 ## Log
 ### 2026-05-15
 - Initial thesis created. Conviction: medium — best-in-class operating execution (56% adj EBITDA margin, $99.4B backlog, IG-rated GPU-collateralized debt) is genuinely impressive, but the structural setup (67% Microsoft concentration, $46B liabilities vs $3.3B equity, NVIDIA's 13% equity stake as vendor-financing flywheel, OpenAI's $22.4B contract serviceability, second-cycle DDTL re-rent risk) keeps this from being a high-conviction long. Sized as a credit-risk position, not a pure AI demand position; the trade is "long the cleanest neocloud equity while short its counterparty-concentration credit risk via NVDA pair or sector hedges." Primary sources: CoreWeave Q1 2026 earnings ($2.08B revenue +112% YoY, $99.4B backlog, $40B+ Q1 new commitments), DDTL 4.0 disclosure ($8.5B at A3/A-low IG ratings), NVIDIA $2B follow-on equity Jan 2026 (13% stake, $4.7B value), [[Research/2025-06-09 - CRWV - CoreWeave Deep Dive]], [[Sectors/Neoclouds & GPU-as-a-Service]].
@@ -328,3 +330,6 @@ The drivers that break the thesis:
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail post-$104B backlog); founder-duration converts MW, leverage is [G-8] not MC. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-26 (/compare)
+- Comparison [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: best coordination proof in the complex (1.5 GW active, +~500 MW in Q2, list +25% vs Nvidia +17%, ~8 pts kept above the layer below) against the worst credit (the $2.6B facility repriced +100–125bp with a 1.35x DSCR maintenance covenant; Jefferies / Citi Buy→Hold; CDS round-trip 452→~855bp [T2]) — conviction unchanged (medium, monitoring): operating leg strengthened, credit leg weakened, net flat.

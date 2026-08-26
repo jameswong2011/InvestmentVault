@@ -40,6 +40,7 @@ Read scope (mandatory tier):
 ## Writing Standards (xxx ALL LLM OUTPUT MUST FOLLOW xxx)
 - Lead with the insight or the number, never with context the reader already has
 - No hedge words: "importantly", "notably", "significantly", "it's worth noting", "it should be noted", "interestingly", "crucially"
+- No retarded LLM speak like. "Three findings, and one of them is more serious than the question you asked" that provides zero information content.
 - Every sentence earns its place with a data point, an insight, or a specific claim: cut connective tissue
 - Tables over prose for comparative or quantitative content
 - Thesis Log entries: max 2 lines. Format: `[source/trigger]: [what changed] — [conviction impact: unchanged/strengthened/weakened + 1 reason]`

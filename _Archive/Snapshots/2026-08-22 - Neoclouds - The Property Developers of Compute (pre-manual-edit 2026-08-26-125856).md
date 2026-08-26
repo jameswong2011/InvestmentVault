@@ -1,4 +1,8 @@
 ---
+snapshot_of: "[[Website/2026-08-22 - Neoclouds - The Property Developers of Compute]]"
+snapshot_date: 2026-08-26
+snapshot_trigger: manual-edit
+snapshot_batch: manual-edit-2026-08-26-125856
 date: 2026-08-22
 tags:
   - essay
@@ -95,7 +99,7 @@ A $12 contract sits in the sharing zone of that ladder: the operator clears its 
 
 ## The multiple the market will not pay
 
-Set those returns against the price. On our modelled calendar earnings for Nebius's disclosed fleet and pipeline (240K Blackwell plus the 200K contracted Rubin tranches, 70K in 2027 and 130K in 2028, about 1.3GW active by the end of 2028 with no additions modelled in 2029; seven-year life), today's ~$64 billion enterprise value pays:
+Set those returns against the price. On our modelled calendar earnings for Nebius's disclosed fleet and pipeline (Blackwell base plus the contracted Rubin tranches, seven-year life), today's ~$64 billion enterprise value pays:
 
 | Cash rate ($/GPU-hr) | 2027 EV/EBIT | 2028 EV/EBIT | 2029 EV/EBIT |
 |---:|---:|---:|---:|
@@ -104,7 +108,7 @@ Set those returns against the price. On our modelled calendar earnings for Nebiu
 | $15 | ~11.5× | ~4.7× | ~4× |
 | $18 | ~9.5× | ~3.8× | ~3.2× |
 
-At a $12 cash rate the market is charging roughly five to six and a half times 2028–29 operating earnings for the business described above, nearer four at $15, and roughly three times EBITDA. The 2029 column moves only 1.5 turns because the modelled fleet stops growing after the 2028 cohort and the gain is that cohort's second-year economics under front-loaded depreciation; each further gigawatt energised at $12 adds ~$18B of cash EBITDA and ~$8B of first-year operating profit rising to ~$15B by year four, so the guided cadence of more than a gigawatt a year from 2027, if funded, takes the 2030 multiple toward 2–3x. (The optics say otherwise, ~120x trailing sales, which is why the headline multiple debate never resolves; the spread between 120x backward and 5x forward is simply the build itself.) A multiple that low on earnings that near prices a disbelief: that the rate collapses at renewal, that the megawatts never energise, or that the asset dies young. Identifying which disbelief is wrong is the entire trade.
+At a $12 cash rate the market is charging roughly five to six and a half times 2028–29 operating earnings for the business described above, nearer four at $15, and roughly three times EBITDA. (The optics say otherwise, ~120x trailing sales, which is why the headline multiple debate never resolves; the spread between 120x backward and 5x forward is simply the build itself.) A multiple that low on earnings that near prices a disbelief: that the rate collapses at renewal, that the megawatts never energise, or that the asset dies young. Identifying which disbelief is wrong is the entire trade.
 
 Our argument is that if none of them is right, the gap is the widest re-rating available in large-cap markets. A two-to-two-and-a-half-year payback at the contracted band is a 40–50% annual cash yield on total capital; the accounting return prints lower because the machine, unlike a building, consumes itself: full depreciation over seven years costs roughly fourteen points of yield a year, and the final two years re-rent below the contracted rate, which averages the life to the 22–30% pre-tax ROIC of the fleet table. Infrastructure with that return profile, secular demand, and a deployment roadmap of more than a gigawatt a year into a 5GW owned power bank (with management guiding above that from 2027) is the pairing every capital-allocation framework hunts, a high return on incremental capital multiplied by a long runway of places to deploy it, and on any standard infrastructure capitalisation that pairing supports an operating multiple of 25–40 times. The re-rating does not require the famine to persist; it requires only that current neocloud economics, take-or-pay contracts at roughly twice the prior generation's cash rate, prove to be the stable equilibrium rather than the spike, and that GPU useful life holds at the seven-to-eight years the resale and re-rental record now supports. 
 

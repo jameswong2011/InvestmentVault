@@ -1,39 +1,46 @@
 ---
 publish: false
-date: 2026-08-25
+date: 2026-08-26
 tags: [meta, hot-cache]
 ---
-# Hot Cache — Last Updated: 2026-08-25 (/sync default — AI Supply-Demand macro note → 4 thesis pointers)
+# Hot Cache — Last Updated: 2026-08-26 (/sync all — NBIS private stakes: thesis body integration + sector/macro propagation)
 
 ## Active Research Thread
 
-- **2026-08-25 `/sync` — AI Supply-Demand macro note (new) → 4 thesis Log pointers** — session-long research thread on AI compute supply/demand to 2030: HBM + energised power as the two binding gates, ~3x/yr token-supply cap (HBM bits × fleet efficiency) vs ~5-9x measured demand, token/GPU-hr price decoupling, neocloud ROIC. Created [[Macro & Technology/AI Supply-Demand Considerations to 2030]]; propagated Tier B Log pointers to TSM / NVDA / 000660 / NBIS. Next: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-25-155751)]].
+- **2026-08-26 `/sync all` — NBIS private stakes (ClickHouse / Avride) → thesis body integration + sector/macro** — session thread on Nebius's two private investments at three marks (headline $7–8B / Nebius book ~$1.6B / realisable $3–8B, cash ≥2028): ClickHouse booked ~$1.5B vs $3.75–4.2B headline (~39% at both Series C and D marks); Avride has no priced round (83% is net of the employee pool; Uber $100M SAFE + $75M tranche), NHTSA PE open, Waymo public-driverless in Dallas 4 Aug; 2026 external funding ~$15.7B incl. $5.75B converts (24 Aug) with zero stake sales. Insight #3 re-graded, HIGH leg 3 sharpened to ≥$1B cash proceeds, LOW dilution leg evidence-touched. Source: [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]. Next: `/graph last`, `/conviction-audit NBIS`, `/numbers NBIS`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-25-000009)]].
+- 2026-08-26: `/compare` NBIS / CRWV / IREN vs the neocloud complex (12 names, web-supplemented) — the property-developer frame ([[Website/2026-08-22 - Neoclouds - The Property Developers of Compute]]) describes the landlord / owned-power tier (APLD, CIFR, WULF, CORZ; IREN), not a GPU fleet on 5-yr paper; CRWV holds the coordination evidence (1.5 GW active, +25% list vs Nvidia +17%), NBIS discloses no active MW, IREN printed the only hyperscaler-accepted conversion (Horizon 1, 13 Aug). Risk-adjusted order IREN > CORZ > CRWV > NBIS at current weight; all three convictions unchanged (medium); NBIS Full weight flagged as ahead of conviction and disclosure. Source: [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]. Next: `/graph last`, `/numbers CRWV`, `/numbers IREN`, `/thesis CORZ`; IREN Q4 FY26 prints 27 Aug.
+*Previous 2026-08-25:* `/sync` default AI Supply-Demand macro note → 4 thesis Log pointers (TSM / NVDA / 000660 / NBIS) — see §Sync Archive + thesis Logs.
 *Previous 2026-08-24:* `/thesis` VSH (new draft LOW) — broad-line passives/discretes cyclical, no moat, $2.6B capex into the cycle peak, +124% run. See [[Theses/VSH - Vishay Intertechnology]] Log.
 *Previous 2026-08-24:* `/thesis` CRDO (new draft LOW) — AEC category leader priced for perfection, top-4 ~87%. See [[Theses/CRDO - Credo Technology]] Log.
 *Previous 2026-08-22:* `/sync` default 3 Aug 21 notes (SemiAnalysis open-models / Damnang MRVL Part 3 / Superposition) — see §Sync Archive + thesis Logs.
 *Previous 2026-08-21:* `/sync` 12 Aug 18–20 notes (HBF / 8-Hi / CPO / Arizona / HBC / CS-4) — see §Sync Archive + thesis Logs.
-*Previous 2026-08-18:* `/sync` to SpaceX 10GW feasibility — see §Sync Archive + thesis Logs.
+
 
 ## Latest Sync
 
-*Date: 2026-08-25 (`/sync` default — new macro note [[Macro & Technology/AI Supply-Demand Considerations to 2030]])*
+*Date: 2026-08-26 (`/sync all` — [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]])*
 
-- Source: new macro synthesis (HBM + power supply gates; ~3x/yr token-supply cap = bits × fleet efficiency vs ~5-9x demand; token/GPU-hr price decoupling; neocloud ROIC to 2030). Synthesis of already-propagated research — no new evidence to individual theses, so propagation is Log-pointer only (Tier B, no body rewrites, no snapshots).
-- **TSM** (Tier B): Log pointer — packaging left the binding set (CoWoS gap 20→10%), already in Bear #6 / Risk #9; advanced-node rents intact — conviction unchanged (high).
-- **NVDA** (Tier B): Log pointer — owns the config valve between the HBM and power gates; ~3x supply vs ~5-9x demand keeps the shortage into 2028 — conviction unchanged (high).
-- **000660** (Tier B): Log pointer — token cap ≈ HBM-bit growth (+50-60% 2027, still short) × efficiency; Samsung Rubin HBM4 share the erosion vector — conviction unchanged (medium).
-- **NBIS** (Tier B): Log pointer — power displaces HBM as the binding gate to ~2029-30; watt-rent / take-or-pay ROIC; ~3x demand balance line is the monitor — conviction unchanged (medium).
-- 12 reverse-index theses not edited (285A/AMAT/ASMI/AVGO/BE/KLA/LNG/LRCX/SNDK/SPCX/VICR/VRT — already-covered synthesis, no thesis-specific delta). 3 changed theses (CRDO/ISRG/VSH) skill-origin/no-delta. No sector/macro edits.
-- **Next**: `/graph last`. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-25-155751)]].
+- Source: vault synthesis on Nebius's private stakes from the FY2025 20-F fair-value notes, Q2 2026 6-K, Q2 letter, call Q&A and web comps. Changed set: 1 research note + NBIS thesis (pointer-only Log entry from the research session; body integration user-directed).
+- **NBIS** (Tier A, snapshot): Insight #3 re-graded to long-dated pro-cyclical optionality; stake table / Key Metrics / Summary / Bull Case corrected to book vs headline marks (~$1.6B vs ~$7–8B), cap ~$59B on 271.9M shares, $5.75B Aug converts; Q#5 re-dated 2028; HIGH leg 3 → ≥$1B cash proceeds; LOW dilution leg evidence-touched — conviction unchanged (medium).
+- **UBER** (Tier A, snapshot): Avride partner bullet rewritten (supervised, NHTSA PE open, SAFE + milestone tranche; Waymo Dallas public driverless 4 Aug) — conviction unchanged (high); open followup (reassess high→medium, stress test 08-15) untouched; no registered Conviction Triggers (gap).
+- **Sector** Neoclouds & GPU-as-a-Service (Tier A): Active Theses NBIS line, product table, Investor heuristics #3; cross-thesis sweep: CRWV validates (equity-linked window open at 0.50–4.50% coupons), no contradiction.
+- **Macro**: Humanoid Robotics (Tier A: NBIS/Avride row + Serve guide cut / Starship campus exit), AI Datacenter Financing (Tier A: T4 residual = corporate converts, stakes unsold), Sustainability of AI Capex (Tier B Log pointer + link). AI Supply-Demand read, no delta.
+- Not edited: CRWV / SPCX / IREN (no material delta); NVDA / META / AVGO / NET / VRT / 6981 (no propagation path from this note). 8 of 12 macro notes with no path to the changed set not read (scoped Pass 1).
+- **Next**: `/graph last`; `/conviction-audit NBIS` (define whether converts count pre-conversion for the >15%/6-month LOW leg); `/numbers NBIS` (EV/Revenue rows still on the pre-selloff base). Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-25-000009)]].
+
 
 ## Sync Archive
 
+- **2026-08-25** (`/sync` default — new AI Supply-Demand macro note): Tier B Log pointers to TSM / NVDA / 000660 / NBIS; 12 reverse-index theses unedited; no sector/macro edits. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-25-155751)]].
 - **2026-08-22** (`/sync` default — 3 Aug 21 notes): SemiAnalysis open-models / Damnang MRVL Part 3 / Superposition; MRVL/NVDA/NBIS/NET/AVGO Tier A + 000660 Tier B. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-22-100928)]].
 - **2026-08-21** (`/sync` default — 12 Aug 18–20 notes): HBF / 8-Hi / CPO / Arizona / HBC / CS-4. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-21-171324)]].
-- **2026-08-18** (`/sync` to SpaceX note): 10GW feasibility — SPCX orbital leg + NVDA/VRT Log + 000660/TSM wikilink + Neoclouds + Sustainability. Conviction unchanged. Manifest: [[_Archive/Snapshots/_sync-manifest (sync-2026-08-18-230858)]].
+
 
 ## Recent Conviction Changes
 
+- **2026-08-26 — `/compare` flags (flag-only, no `/status`)**: IREN conviction strengthened at the margin, level unchanged (medium): Horizon 1 50 MW IT accepted by Microsoft 13 Aug + Futurum #1 at ~$40M contracted revenue/MW; funding-gap bear untouched, Q4 FY26 prints 27 Aug. NBIS unchanged (medium) with the Live Portfolio Full (25%+) weight flagged as ahead of both conviction and disclosure (no active-MW figure through Q2). CRWV unchanged (medium, monitoring): operating leg up, credit leg down (covenant-lite over). Rationale: [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]] §Investment Verdict.
+
+- **2026-08-26 — trigger touches (flag-only, no `/status`)**: NBIS LOW (>15%-dilutive equity/convert raise in any 6-month window) evidence-touched on a converted basis (Q2 ATM 4.7% + 24-Aug converts 6.7% + March notes / 2029-note exchange unquantified; ~22% of cap raised Mar–Aug) — whether converts count before conversion is undefined, `/conviction-audit NBIS` pending. NBIS HIGH leg 3 re-worded to ≥$1B cash proceeds and dated ≥2028 by the ClickHouse IPO guide. UBER: no registered triggers (gap). Conviction/status unchanged.
 - **2026-08-24 — VSH (Vishay Intertechnology) initial LOW** (draft [[Theses/VSH - Vishay Intertechnology]]). Broad-line passives + discretes cyclical in a genuine upcycle (Q2'26 record adj. rev $919M +20.5%, book-to-bill 1.32, backlog 6.1mo / 18%, industrial +30% YoY; GM 19%→23.3%→24% Q3 guide, 30%+ 2028 target; Vishay 3.0 self-help ahead of plan, ~$4B 2028 rev target). LOW: no moat (VLM diversification anti-signal; Semis #2 no qual gate), $2.6B capex into the cycle peak (Semis #3/#17 capital cycle), negative FCF + $830M raise + dilutive $750M convert, 33-40% tax drag, +124% run pricing the 30% GM target; margin path must beat the [G-3] mean-reversion base rate. Sell-side already Hold/Sell (targets $18-28 < ~$36); sector note explicitly does NOT recommend broad-line passives/discretes. Excluded from /catalyst, /prune, conviction-drift (draft). Run `/graph last`.
 - **2026-08-24 — CRDO (Credo Technology) initial LOW** (draft [[Theses/CRDO - Credo Technology]]). Category creator of AEC with 73–88% share; FY26 rev $1.3B (+206%) / 68% GM / 48% op margin / debt-free + ~$3.8B cash; FY27 guided >80% (>$2.4B). LOW not higher: ~29x trailing EV/rev (~30–40x sales, ~93x P/E) with top-4 customers ~87% (34/27/16/10) — a binary anchor risk (Semis #10) — and an AEC moat that is reliability/design-in ('ZeroFlap'), not a qualification gate, while Astera (Taurus) / Marvell / Broadcom attack; the optical second leg (>$600M FY27 target; DustPhotonics ~$1.3B full-stack) is a late entry vs MRVL 80% DSP into LPO/CPO disintermediation, GM guided 68%→64–66%. VLM WEAK (contestable copper layer, no owned standard); Semis #13/#14 reclassification open; [G-13] category priced, durability + optical margin mispriced. Excluded from /catalyst, /prune, conviction-drift (draft). Run `/graph last`.
 - **2026-08-22 — trigger touches (flag-only, no `/status`)**: MRVL HIGH conjunct 1 (Google commercial agreement) evidence-touched / near-fired, not fired (8-K broader than MPU/inference-TPU; legs 2–3 unmet). HIGH conjunct 3 (Celestial PO / tape-out) evidence-touched the other way (PF still little P&L). LOW conjunct 2 (Google BRCM-exclusive) inverted. CLOSE conjunct 1 (FY28 custom < $3.6B) inverted on author $3.8B [est.]. NVDA/NET/AVGO have no registered triggers. NBIS/000660 handles unobserved. Conviction/status unchanged.
@@ -116,6 +123,11 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 
 ## Open Questions
 
+- 195. **Neocloud coordination premium: layer or spike** — does the first aging-Hopper re-rent (2026–27) land at ≥55% of the original rate, and does CRWV's +25%-vs-+17% passthrough survive into Rubin contracts or compress toward the Nvidia backstop curve ($6.75 → $2.36/hr avg over 6 yrs)? [theses: NBIS, CRWV, IREN]. See [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]] §Dynamic Analysis.
+- 196. **Landlord tenant credit** — does Fluidstack close its $18B round, and does AWS's shift toward owned / long-term-controlled sites show up as a non-renewal at any listed landlord? Decides whether CIFR / WULF durability is Alphabet's or their own; IG-direct leases (CORZ / AMD, CIFR / AWS, APLD's hyperscaler) are the control group. See [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]] §Contradiction Check.
+- 197. **NBIS weight vs disclosure** — Full (25%+) at medium conviction with no active-MW figure: does the November Q3 print show ≥600 MW active **and** a Rubin cash rate with coverage attached, and if not, what weight does medium conviction support? [theses: NBIS]. See [[Theses/NBIS - Nebius Group]] §Conviction Triggers.
+
+- 194. **NBIS ClickHouse realisable value — structural discount or conservatism?** Nebius books ClickHouse at ~$1.5B, 35–39% of the $3.75–4.2B headline at both the Series C and D marks: is the fully diluted stake nearer 18–22% than the repeated 28%, or is common heavily discounted against Dragoneer's preferred? Resolves on a secondary trade or IPO filing. See [[Theses/NBIS - Nebius Group]] §Outstanding Questions #5 + [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]].
 - 193. **VSH margin: structural or utilization?** — does GM hold ≥28% through a book-to-bill ≤1.1 quarter (structural), or stall in the low-24s / fall as volumes soften (mean-reversion)? Same condition as → HIGH / → LOW. See [[Theses/VSH - Vishay Intertechnology]] §Conviction Triggers.
 - 192. **VSH ROIIC on $2.6B Vishay 3.0 capex** — does incremental ROIC on the German fab / Newport clear cost of capital (≥mid-teens) as it ramps 2027, or is capital destroyed into the cycle peak? See [[Theses/VSH - Vishay Intertechnology]] §Outstanding Questions.
 - 191. **VSH double-ordering vs clean demand** — is the 6.1-month backlog / >52-week ordering genuine end-demand or allocation-securing that cancels when supply normalises? Same condition as → CLOSE. See [[Theses/VSH - Vishay Intertechnology]] §Outstanding Questions.
@@ -211,6 +223,7 @@ _(Apr 22-24 entries compressed out 2026-04-29 per hot-md-contract; full audit in
 
 
 ## Portfolio Snapshot
-<!-- Regenerated 2026-08-22; top-level counts only per the 400-word section budget. -->
-- **Coverage**: 95 theses across 53 sector notes, 11 macro notes (graph 2026-08-21). No quantum thesis/sector/macro created.
-- **Conviction**: no conviction/status frontmatter edits this sync. Live book (Holdings table): NVDA, NET, AVGO, NBIS, MRVL Medium; 000660 Full.
+<!-- Regenerated 2026-08-26; top-level counts only per the 400-word section budget. -->
+- **Coverage**: 97 theses across 53 sector notes, 12 macro notes (graph 2026-08-25; run `/graph last`).
+- **Conviction**: no conviction/status frontmatter edits this sync. Live book (Holdings table 2026-08-25): PLTR, NBIS Full (25%+); 000660, SPCX High (10–25%); NVDA, NET, AVGO, MRVL Medium (3.5–10%); SNDK, 285A, 6857 Low (<3.5%).
+- **Open followups touching this sync**: UBER reassess high→medium (stress test 08-15) still open; YAL.AX thesis gap still open.

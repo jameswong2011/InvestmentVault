@@ -931,6 +931,7 @@ The note’s core split (structural demand vs cyclical spend; functional vs fina
 - [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]
 - [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
 - [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]
+- [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]: NBIS converts (Mar $4.34B + Aug $5.75B) as equity-linked claims in the neocloud tranche; stakes booked ~$1.6B, unsold
 ### 2026-08-15
 - [[Research/2026-08-14 - LITE CRWV NBIS NVDA - Temple 8 Earnings Week 500B MOU - deep-dive]]: $500B MOU inverted as residual-value experiment that fails the toll-road triad; design target, not committed fund.
 - [[Research/2026-08-14 - TSM NVDA - TSPA AI Servers Bottleneck Money - deep-dive]]: ODM WC / bank-group concentration is a fifth financing tranche below the factory SPV.
@@ -948,3 +949,6 @@ The note’s core split (structural demand vs cyclical spend; functional vs fina
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-26 (/sync all)
+- [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]: NBIS's March $4.34B + August $5.75B converts add ~$10B of equity-linked claims to the neocloud tranche and the ClickHouse/Avride 'reserve' is ~$1.6B at book, unsold — the ~90–100% drawn read for the tranche stands; leverage ledger and scenarios unchanged (Tier B, no snapshot).
