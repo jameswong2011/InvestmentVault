@@ -2,7 +2,7 @@
 publish: true
 date: 2026-06-02
 tags: [thesis, neoclouds, GPU-as-a-Service, AI-infrastructure, NBIS]
-status: draft
+status: active
 conviction: medium
 sector: Neoclouds & GPU-as-a-Service
 ticker: NBIS
@@ -195,6 +195,8 @@ NBIS is a ~120x-trailing-FY25-sales stock priced for a flawless 4x power build i
 - **Disconfirming check** (evidence-updated): trigger scoreboard 0/3 HIGH, 0/3 LOW, 0/3 CLOSE, but both CLOSE legs have active early-warning signals (Meta Compute; stated asset-backed strategy). The execution binary is unchanged and now dated: the Q2 print (landed Aug 12, not Jul 28–29) disclosed no active MW at all; ≥600MW at the Q3 (Nov) print is the undodgeable read, and the >4x-in-12-months physics is the story until it lands. Base rate: datacenter builders quadrupling energized capacity in one calendar year, at scale, with novel power sources, near-zero precedent; the thesis correctly prices this as the risk, and the July drawdown paid nothing for it (it paid for Meta). Barbell: draft status + medium conviction remains right: the convex-bet framing survives; insider sales (~$23M cluster at the peak, mostly mechanical RSU) noted, not signal. [MC-6]/[G-10] adversary on the org read: a 4× energization in twelve months at a firm that still cannot date-stamp its own servers (fixed-asset MW still open YE2025) is the new-venture-destruction base rate, not the outlier. Gate 2 already prices the pipeline above zero, so the lens does not get to claim conversion capacity as unpriced alpha. (2026-08-26) HIGH leg 3 (stake monetisation) is dated ≥2028 by the ClickHouse IPO guide ('within the next few years', May 2026), so the HIGH trigger cannot fire on that leg at the Q3 print; the 24-Aug converts evidence-touch the LOW dilution leg (definition pending).
 
 ## Related Research
+- [[Research/2026-08-28 - NVDA NBIS MRVL 000660 - AWS 2M GPUs NVHBM Vera Expansion - news]]
+
 - [[Macro & Technology/AI Datacenter Financing Mechanism Design]]: T4 prepay-as-anti-DDTL template: customer-as-lender positionally senior; MSFT ~$7B upfront milestone-gated to deployment; Q2 telemetry >70% new deals upfront-paying, >$9B 2026 prepay (~50-60% capex offset)
 
 **Sector + macro context:**
@@ -242,6 +244,14 @@ NBIS is a ~120x-trailing-FY25-sales stock priced for a flawless 4x power build i
 - [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: $100M/MW frontier tokens vs sub-$30M/MW open TaaS is a mix risk on overflow/open serving, not a demand collapse; HIGH/LOW/CLOSE handles unobserved
 - [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]: stake ledger at three marks (headline $7–8B / book ~$1.6B / realisable $3–8B, cash ≥2028); ClickHouse ASC 321 mechanics (booked ~$1.5B vs $3.75–4.2B headline); Avride SAFE structure + NHTSA / Waymo-Dallas gating; 2026 funding stack ($15.7B external, zero stake sales)
 - [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: twelve-name comparison; the property-developer frame relocates the durable layer to owned power / powered shell on 15–20-yr paper (IREN, CORZ); NBIS active-MW non-disclosure vs CRWV 1.5 GW; Full weight vs medium conviction flagged
+
+- [[Research/2026-08-27 - NVDA NBIS - Nscale 45B Vera Rubin Anthropic - news]]: Nscale $45B Anthropic Vera Rubin offtake (unlisted competitor, late 2027)
+- [[Research/2026-08-27 - NVDA - Q2 FY27 Earnings Vera Rubin Production - earnings]]: NVIDIA names Nebius as a Vera Rubin full-production rack partner
+- [[Research/2026-08-29 - NBIS - 5.75B Convertible Notes Closing - news]]: Official close of upsized $5.75B converts (0.50% 2030 + 4.50% 2034, greenshoe full)
+- [[Research/2026-08-29 - NVDA NBIS - Denies Pausing AI Compute Partnership - news]]: ACP denial vs WSJ pause; tenant-control optics remain a governance risk
+- [[Research/2026-08-29 - NBIS CRWV IREN - Neocloud Tape on Nvidia ACP Pause Report - news]]: Tape hit on WSJ ACP pause headline; sentiment/financing-channel, not cancelled offtake
+- [[Research/2026-08-29 - NVDA NBIS - AI Rack Density Power Cooling Limits - news]]: Facility power / liquid cooling gates density, not GPU orders
+- [[Research/2026-08-29 - IREN NBIS - IREN 4B Contracted ARR vs Earnings Miss - news]]: IREN peer: contracted-ARR vs P&L gap; contrast vs $5.75B convert close
 
 ## Log
 ### 2026-06-02
@@ -333,3 +343,18 @@ NBIS is a ~120x-trailing-FY25-sales stock priced for a flawless 4x power build i
 
 ### 2026-08-26 (/compare)
 - Comparison [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: twelve-name test of the property-developer frame relocates the durable layer to owned power / powered shell on 15–20-yr paper (IREN, CORZ) and away from a GPU fleet on 5-yr paper; external check: H100 1-yr index +40%, CRWV list +25% vs Nvidia +17% support near-term equilibrium, but NBIS still discloses no active MW and every in-window sell-side action was a raise — conviction unchanged (medium): the November active-MW print remains the binary; Full weight flagged as ahead of conviction and disclosure.
+
+### 2026-08-27
+- [[Research/2026-08-27 - NVDA - Q2 FY27 Earnings Vera Rubin Production - earnings]]: NVIDIA newsroom names Nebius among Rubin production partners — credibility on Insight #6, not an active-MW print — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+- [[Research/2026-08-27 - NVDA NBIS - Nscale 45B Vera Rubin Anthropic - news]]: unlisted Nscale absorbs a $45B Anthropic ticket at Monarch WV — second-order competitor, not NBIS backlog — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+- Status change: draft → active — Live Portfolio Full (25%+) weight, the largest position in the book, was ahead of the file; promoting to match. Conviction and analytical content unchanged (medium).
+
+### 2026-08-28
+- [[Research/2026-08-28 - NVDA NBIS MRVL 000660 - AWS 2M GPUs NVHBM Vera Expansion - news]]: AWS plans 2M additional NVIDIA GPUs 2027–28 (Rubin/Blackwell Ultra) plus NVHBM on Trainium4 / Vera / 100k IL6 gov — demand expand not substitute — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-29 - NBIS - 5.75B Convertible Notes Closing - news]]: Close confirms $5.75B original principal ($3.45B 0.50% 2030 + $2.3B 4.50% 2034, greenshoe full); ~$5.68B net; concurrent $800M 2029/2031 exchange → ~15.8M Class A (~5.8% of 271.9M) plus ~18.1M conversion overhang at $313–$325; accretion to ~$6.67B at maturity — CLOSE GPU-collateral path not fired; LOW >15%/6-month dilution evidence-touch continues — conviction unchanged (medium).
+- [[Research/2026-08-29 - NVDA NBIS - Denies Pausing AI Compute Partnership - news]]: Program intact per Nvidia; tenant-approval clause (lease only to Nvidia-approved customers) remains a governance risk for independent offtake and extends CUDA/channel control into the customer book — not a cancelled GW print and not GPU-collateral CLOSE — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+- [[Research/2026-08-29 - NBIS CRWV IREN - Neocloud Tape on Nvidia ACP Pause Report - news]]: Equity beta to Nvidia ACP credibility; TipRanks tape is a sentiment/financing-channel datapoint (WSJ 'shelved' vs spokesperson 'still in place'), not a cancelled offtake or a miss on contracted GW — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+- [[Research/2026-08-29 - NVDA NBIS - AI Rack Density Power Cooling Limits - news]]: Energised-MW and deliver/cool/operate-reliably (LBNL >2,060 GW interconnection queue) gate usable density; GPU allocation alone does not; DLC 100–150 kW / 55% share is now standard above ~50 kW — HIGH active-MW unfired — conviction unchanged (medium).
+- [[Research/2026-08-29 - IREN NBIS - IREN 4B Contracted ARR vs Earnings Miss - news]]: Cleanest public contracted-ARR vs P&L gap peer ($4B signed / ~$1B live; Q4 miss + $450.4M mining writedown; 45–55% prepay + $6.5B GPU paper) — same framing NBIS bulls use on Q#1 / Insight #5; IREN 90% GPU-financing is the path that would trip NBIS CLOSE; contrast vs $5.75B unsecured convert close — conviction unchanged (medium).

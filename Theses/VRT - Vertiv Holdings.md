@@ -2,7 +2,7 @@
 publish: true
 date: 2026-04-21
 tags: [thesis, semiconductors, VRT]
-status: monitoring
+status: active
 conviction: medium
 sector: Data Center Power & Cooling
 ticker: VRT
@@ -263,3 +263,6 @@ AI capex peaks 2H 2026 as hyperscaler ROI concerns surface (training returns dim
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert; Gate 2 fail after AI-infra re-rate (43x/49x prices the pipeline). Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium).

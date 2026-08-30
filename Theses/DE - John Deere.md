@@ -2,7 +2,7 @@
 publish: true
 date: 2026-04-14
 tags: [thesis, DE, agriculture, industrials, precision-ag, autonomy, platform]
-status: monitoring
+status: active
 conviction: medium
 ticker: DE
 sector: Agriculture & Industrial Equipment
@@ -223,3 +223,6 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (precision
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail); 35x trough already prices the platform pipeline. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium).

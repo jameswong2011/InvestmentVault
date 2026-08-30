@@ -322,6 +322,8 @@ Hypothesis: inert on [[Lens - Management and Culture]]: Gate 1 passes (enterpris
 - **Evidence update (2026-07-10 batch-6 pass, evidence-tested against July-2026 web research)**: the hard falsifiers moved further AWAY from firing: Q1 2026 (May 4) NDR jumped 139%→150%, US commercial +133%, RPO $4.5B +134%, remaining deal value $11.8B +98%; no named commercial displacement found. The bear kept running through exactly the predicted channels, now wider: political-ceiling ACCELERATING (France→ChapsVision confirmed Jun 17 with €655M sovereign pledge; UK NHS "unacceptable point of weakness" committee report drove the Jul 8 drop ahead of the Feb-2027 break clause; Swiss court loss; Met Police £50M block; Germany reviewing). Two NEW vectors this section must absorb: (1) the frontier labs CAPITALIZED the deployment layer: Anthropic's $1.5B enterprise-services JV (Blackstone/H&F/Goldman) + OpenAI's $4B "DeployCo" institutionalize the FDE model against PLTR, converting the moat-commoditization channel from narrative into funded structure; (2) the Army named Anduril LEAD for the NGC2 common data layer (Jun 22, under its 10-yr/$20B ELA) with PLTR as partner-not-prime: a hierarchy demotion inside the defense-moat leg (partially offset: Maven becoming a Pentagon program of record, ~$100M July NGC2 award, USG revenue +84%). Meta Compute (Jul 1) left PLTR unharmed: the asset-light deployment layer rebounded ~11% in early July while compute names cratered; cheaper compute is arguably a tailwind. Insider selling continues (~$130M recent; Karp + Sankar 10b5-1). Pre-Q2 (~Aug 10) maintenance action: formalize the missing Conviction Triggers section around the NDR floor, a named lab-direct displacement, NHS break-clause execution, and Anduril prime-creep.
 ## Related Research
 
+- [[Research/2026-08-28 - PLTR - Maven Pentagon Program of Record 2.3B - news]]
+
 - [[Research/2026-03-21 - PLTR - Gemini Strategy Canvas]]: Comprehensive strategy, product, financial, and valuation analysis (Gemini Canvas export)
 - [[Research/2026-03-29 - PLTR - Gemini Automation Platforms Canvas]]: Palantir Ontology vs ServiceNow CMDB deep-dive: complementary not competitive
 - [[Research/2026-03-29 - Palantir Comparison]]: Claude conversation: Palantir vs ServiceNow end-to-end automation platform analysis
@@ -437,3 +439,6 @@ Hypothesis: inert on [[Lens - Management and Culture]]: Gate 1 passes (enterpris
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail at ~49x fwd revenue); org Weak-fit if scored independently. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-28
+- [[Research/2026-08-28 - PLTR - Maven Pentagon Program of Record 2.3B - news]]: Maven official Pentagon PoR; $2.3B/5yr FY27 request vs ~$1.3B prior ceiling — defense stickiness — conviction unchanged

@@ -23,7 +23,7 @@ sector: Semiconductor Test Equipment
 
 ## Active Theses
 
-- [[Theses/6857 - Advantest]]: HBM final-test monopoly (~95% share); central expression of the HBM4 test-time step-function thesis. Status: draft, conviction medium. Created 2026-05-16.
+- [[Theses/6857 - Advantest]]: HBM final-test monopoly (~95% share); central expression of the HBM4 test-time step-function thesis. Status: active (promoted 2026-08-27), conviction medium. Created 2026-05-16.
 - [[Theses/TER - Teradyne]]: Custom AI ASIC test (Compute SoC mix 10%→50% in 24 months, UltraFLEXplus shipments doubled in 9 months); first merchant GPU win Q1 2026 breaks Advantest monopoly; HBM wafer test >50% share (Magnum EPIC, structurally distinct from Advantest HBM final test 95%); CPO test capture via Quantifi + UltraFLEXplus Zero-Overhead. Status: draft, conviction medium. Created 2026-05-16. Paired with ADVT as ATE duopoly long: TER as higher-beta catch-up leg at ~9x EV/Rev vs ADVT ~15x.
 
 **Tier 2 candidates (active monitoring, not yet thesis-built):**
@@ -399,6 +399,7 @@ For an investor expressing the "AI test capacity is the second-derivative chokep
 - [[Sectors/Custom Silicon & Networking Semiconductors]]: custom ASIC test demand driver
 
 ---
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 19-layer AI-infra coverage map; NVIDIA guidance as spreading bottlenecks
 
 ## Legacy Callouts
 
@@ -419,3 +420,9 @@ For an investor expressing the "AI test capacity is the second-derivative chokep
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: [[Theses/6857 - Advantest]] monitoring → active — watchlist coverage-tier review; Active Theses annotation corrected (was mislabeled draft).
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: PhotonCap layer-5 test/probe adjacency only; no HBM4 test-time print — no conviction/status change.

@@ -255,6 +255,8 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (CPO / plu
 - [[Research/2026-08-15 - LITE - Stress Test]]: missing triggers + unresolved IA vs PhotonCap 6-inch; deepen not cut
 - [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: NVDA/LITE MOPA array excellent flatness/SMSR, unusable RIN (~−137 vs discrete < −155 / −145 CPO spec)
 - [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: CMA trim of LITE is flow, not a DSP downgrade
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Optics layers already covered in archive; no new Lumentum primary number
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: 1.7× fewer Spectrum-X switches is an optics unit headwind on multiplane scale-out
 
 ## Log
 
@@ -341,3 +343,7 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (CPO / plu
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
 ### 2026-08-21
 - [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: research MOPA is SuperNova-class (IA’s standing hate) with RIN that fails a real link; discrete UHP DFB book remains the live CPO-laser product — conviction unchanged (high).
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Named on layers 7–9 (transceivers / InP / SiPh); archive already has the $1B quarter; no new LITE print — conviction unchanged (high).
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Multiplane 1.7× fewer switches is an optics unit headwind even while CPO on scale-out remains a power argument — conviction unchanged (high).

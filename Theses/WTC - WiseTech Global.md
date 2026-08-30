@@ -2,7 +2,7 @@
 publish: true
 date: 2026-04-15
 tags: [thesis, enterprise-software, WTC, logistics, supply-chain, cargowise]
-status: monitoring
+status: active
 conviction: high
 sector: Logistics & Supply Chain Software
 ticker: WTC
@@ -512,3 +512,6 @@ Hypothesis: Anti-fit on [[Lens - Management and Culture]]. Gate 1 passes (logist
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Anti-fit; §4 founder-return inverted (four independents out, White still CIO/~35%). Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (high).

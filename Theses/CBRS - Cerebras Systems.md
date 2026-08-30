@@ -2,7 +2,7 @@
 publish: true
 date: 2026-07-09
 tags: [thesis, semiconductors, ai-compute, CBRS]
-status: draft
+status: active
 conviction: low
 sector: Compute & AI Compute Accelerators
 ticker: CBRS
@@ -270,6 +270,7 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: Atreides 3.11M Class A on the 13F is <30% of a 10.54M / 10.7%-of-SO 13G; AUM $5.0B→$14.3B is listing-visibility of private CBRS/SPCX, not a Q2 buy ticket
 - [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]]: CS-4 = WSE-3 rack refresh; 2× clock / 2× I/O / 44GB unchanged / ~4,000 tok/s/user
 - [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: parametric-yield / shmoo print; 20% compound-yield model not updated; Vicor current-multiplier colour
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: CS-6 hybrid-bonded DRAM on SRAM wafer as capacity fix for SRAM-only decode
 
 ## Log
 
@@ -310,3 +311,9 @@ Consulted [[Generalist - Overview]], [[Industry - Semiconductors]], [[Lens - Val
 - [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]]: same-silicon clock-and-rack refresh doubles tok/s/user; SRAM-capacity liability intact; LOW ~3× GPU decode **dir=away / not fired** (SA 20–40×); HIGH/CLOSE no-touch — conviction unchanged (low, draft).
 - [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: clock-double as parametric-yield tell; 20% compound-yield / 60%+ HW GM unanswered; Q4 WSE-4 still open — conviction unchanged (low, draft).
 - ⚡ Trigger hit: CBRS → LOW “Rubin + Groq decode within ~3× of CS-3” — evidence-touched **away from LOW**, not fired. Flag-only; no /status.
+
+### 2026-08-27
+- Status change: draft → active — watchlist coverage-tier review; conviction unchanged (low). Added to [[Sectors/Compute & AI Compute Accelerators]] Active Theses.
+
+### 2026-08-29
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: CS-6 hybrid-bonded DRAM on the SRAM wafer is framed as the capacity fix for SRAM-only decode (Insight #3 direction); CS-4 ignored — conviction unchanged (low).

@@ -2,7 +2,7 @@
 publish: true
 date: 2026-04-15
 tags: [thesis, semiconductors, NAND, kioxia, memory, AI-storage]
-status: monitoring
+status: active
 conviction: medium
 sector: NAND Memory & Storage
 ticker: 285A.T
@@ -193,6 +193,10 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (BiCS10
 - **Management & Culture [MC-6]/[G-10] adversary (2026-08-20):** Weak-fit claim must beat the entropy / new-venture-destruction base rate; dated artifacts (TSR-only PSU, residual Bain directors, 15k functional org, competitor 14% vote-cap) do not yet show the fighting mechanism: defer to the base rate until Bain seats and HBF org/comp are redesigned.
 
 ## Related Research
+- [[Research/2026-08-28 - 000660 SNDK 285A NVDA - Memory 68pct Capex NVIDIA 15pct Server Hike - news]]
+
+- [[Research/2026-08-28 - SNDK 285A - HBF Capacity Tier Not HBM Replacement Hot Chips - news]]
+
 - [[Research/2026-04-15 - SNDK - Investment Evaluation]]: Post-separation NAND assessment; Kioxia JV structure analysis
 - [[Research/2026-03-31 - SanDisk Valuation Assessment]]: NAND structural shortage thesis; wafer supply-demand model
 - [[Research/2026-03-27 - Semis - Gemini TurboQuant Memory Canvas]]: TurboQuant impact on memory; Jevons Paradox framework
@@ -216,6 +220,11 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (BiCS10
 
 - [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]
 - [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: layer-count / CBA remain cost-stacking; HBF is the interface change. Kioxia/SanDisk CBA already in mass product; HBF stacking method undisclosed
+- [[Research/2026-08-27 - 285A SNDK - Kioxia Kitakami 1T Yen Fab - news]]: Kitakami third building >¥1T; BiCS10 samples 3 Jul 2026; MP still market-gated
+- [[Research/2026-08-27 - 000660 SNDK 285A - Micron 22B Prepay Memory Crunch 2028 - news]]: MU CEO tightness through 2028 vs Yole 2027 inflection
+- [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]: NAND co-equal in 68% CSP-capex share; +27% server DRAM+HBM bits in 2027
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: NAND-tier CXL adjacency via MX1; no Kioxia-specific handle
+
 ## Log
 ### 2026-04-16 (NAND sector research sync)
 - [NAND sector creation + web research]: Three conviction-relevant findings: (1) Kioxia posted 33.1% QoQ revenue growth in Q3 2025 — highest among all NAND producers — validates capacity utilization and enterprise demand thesis — strengthened. (2) YMTC at 13% share targeting 15% by end-2026 but primarily consumer/PC — Entity List blocks western enterprise procurement; Kioxia's enterprise/die-supply focus is structurally insulated from YMTC pricing pressure — conviction unchanged. (3) CBA architecture advantage confirmed: BiCS10 332L at 4.8 GT/s Toggle DDR 6.0 vs Samsung V10 at 5.6 Gbps; Samsung wins on raw IO speed but CBA's 15-20% density/layer advantage means Kioxia's 332L is density-competitive with Samsung's 400+L V10 — conviction unchanged. Additional: Solidigm QLC enterprise share at 51% with 321L QLC is the primary competitive threat to LC9; Micron 6600 ION 245TB in hyperscaler qualification creates direct product competition. NAND Q2 2026 contract prices +70-75% QoQ (TrendForce) — supports pricing through Q4 FY2025 earnings (May 14).
@@ -286,3 +295,18 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (BiCS10
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit (Gate 2 fail: −52% is flows not optionality-psychosis; post-Bain org still PE directors + TSR-only PSU). Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Cross-thesis signal via [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: if HBF works, NAND bit-to-cube is a ~9× trade (SLC not TLC, then HBM-style stack) shared via Flash Ventures — option, not a 2026 earnings line. No registered Conviction Triggers — conviction unchanged (medium, monitoring).
+- [[Research/2026-08-27 - 285A SNDK - Kioxia Kitakami 1T Yen Fab - news]]: named Kitakami third building nested in ¥470B/yr — Q1 supply-add, Q4 BiCS10 sample stamp — no 285A triggers — conviction unchanged (medium).
+- [[Research/2026-08-27 - 000660 SNDK 285A - Micron 22B Prepay Memory Crunch 2028 - news]]: Mehrotra 2028 tightness is consistent with Kioxia's 2027–28 POs, against an early fade — conviction unchanged (medium).
+
+### 2026-08-27 (status)
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium).
+
+### 2026-08-28
+- [[Research/2026-08-28 - 000660 SNDK 285A NVDA - Memory 68pct Capex NVIDIA 15pct Server Hike - news]]: TrendForce 68% memory CSP HW capex + Bloomberg NVIDIA >15% early-2027 server hike (memory-driven) — ASP pass-through — conviction unchanged
+- [[Research/2026-08-28 - SNDK 285A - HBF Capacity Tier Not HBM Replacement Hot Chips - news]]: OXMIQ Hot Chips: HBF capacity tier not HBM replacement (HBM rack / HBF box); MoE/cold fit; software gate — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: MX1 CXL near-memory is NAND-tier adjacency (same as SNDK), not a Kioxia HBF/HBM handle — conviction unchanged (medium).

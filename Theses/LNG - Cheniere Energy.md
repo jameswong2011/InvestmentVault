@@ -2,7 +2,7 @@
 publish: true
 date: 2026-04-15
 tags: [thesis, lng, energy-commodities]
-status: active
+status: draft
 conviction: medium
 sector: LNG & Natural Gas Infrastructure
 ticker: LNG
@@ -284,3 +284,6 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 fails. US LNG exp
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 1 fail: lumpy contracted-infra, not high-frequency optionality feed). Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: active → draft — watchlist coverage-tier review; conviction unchanged (medium).

@@ -61,7 +61,7 @@ FQ3-26 printed $41.46B, 84.6% GAAP GM, $28.24B NI, $24.67 EPS; FQ4 guide $50.0B 
 
 - **What is HBM as a percent of FQ3 / FQ4 revenue?** >$1B HBM4 shipped is a unit claim, not a mix claim. DC >$25B blends HBM + server DDR5 + LPDDR/SOCAMM + SSD. 84.6% GM is an average. Answered by: the first 8-K or IR deck that prints HBM %.
 
-- **Does an 8-Hi HBM4 SKU appear in IR, or is Ultra volume Samsung's?** 12H 36GB shipping; 16H sampled; HBM3E 8-Hi is not HBM4 8-Hi. Singapore HBM pkg MP 2027 does not mint 2026 Ultra cubes. Answered by: IR 8-Hi HBM4 SKU or a teardown showing MU 8-Hi on Ultra boards.
+- **Does an 8-Hi HBM4 SKU appear in IR, or is Ultra volume Samsung's?** 12H 36GB shipping; 16H sampled; HBM3E 8-Hi is not HBM4 8-Hi. Singapore HBM pkg MP 2027 does not mint 2026 Ultra cubes. Answered by: IR 8-Hi HBM4 SKU or a teardown showing MU 8-Hi on Ultra boards. **Hot Chips addendum:** Micron's talk omitted custom base die, high-stack/HB roadmap, and external cooling (Viks); Jason's "beg TSMC for allocation" line is the same IDM gap. Complementary to the 8-Hi despec / volume-unlock read, not a substitute for the IR SKU. zHBM 4-hi and d-Matrix 32 GB are not MU SKUs.
 
 - **Does GB300 LPDDR5X sole-source break before YE2026?** Dated H2 2026. SOCAMM is a qual gate. Kyber LPDDR vendor unnamed; do not assign to MU. Answered by: dual-source headline or a named Kyber vendor.
 
@@ -100,7 +100,7 @@ Sits in [[Sectors/DRAM & HBM Memory]] as the #3 DRAM name and the only liquid US
 |---|---|---|---|---|
 | SK Hynix | MR-MUF | ~70% | Caps **removed** (2 Jul) | Uncapped paper; MR-MUF through 16-Hi |
 | Samsung | TC-NCF → hybrid | ~30% | Dual-source slot already | 8-Hi volume if despec holds (not Nvidia-locked POR) |
-| Micron | TC-NCF pragmatic | **~0%** | Caps **still on** | HBM4E 1γ + TSMC base-die CY27; no IR 8-Hi HBM4; Singapore pkg MP 2027 |
+| Micron | TC-NCF pragmatic | **~0%** | Caps **still on** | HBM4E 1γ + TSMC base-die CY27; no IR 8-Hi HBM4; Singapore pkg MP 2027. Hot Chips 2026: no custom base die shown; cooling = "improve circuit design" only vs Samsung HPB / SKH ICE [1×: Viks] |
 
 **Headline yield vs effective stack yield.** Public numbers are headline (die or stack, vendor-defined). Effective HBM stack yield is multiplicative: (DRAM die yield)^N × TSV × microbump × logic base-die × final stack test. At 16-Hi, 95% per-die still compounds to **~44%** stack ([[Sectors/DRAM & HBM Memory]] §Yield Deltas). Do not treat an 80% "golden" print as 80% good 12-Hi cubes shipped. Sector note's "SKH HBM3E ~80% / Samsung ~50% pilot / MU 60–70%" is **HBM3E-vintage**, superseded for HBM4 at Samsung/SKH by the Aug-26 prints.
 
@@ -139,7 +139,7 @@ DDR yield is not the MU differentiator. Both Koreans are through the 80% 1c/1b g
 
 **CXMT.** Complementary bits / price-taker this cycle; substitute at destock (2028 ~17% capacity wall). Not 2026 Western HBM. Apple testing iPhone/MacBook = OEM posture. CLOSE Western-HBM leg dormant.
 
-**Value-chain leverage.** Upstream: ASML EUV (1γ), TSMC (HBM4E base-die + CoWoS attach), [[Theses/BESI - BE Semiconductor Industries]]. Downstream: [[Theses/NVDA - Nvidia]] is the allocation referee. MU has no Namics EMC exclusivity and no HBF standard seat.
+**Value-chain leverage.** Upstream: ASML EUV (1γ), TSMC (HBM4E base-die + CoWoS attach), [[Theses/BESI - BE Semiconductor Industries]]. Downstream: [[Theses/NVDA - Nvidia]] is the allocation referee. MU has no Namics EMC exclusivity and no HBF standard seat. **Optics colour, not a layer (2026-08-27):** ten-year public silence on SiPh/CPO is an announcement-volume artefact, not a filing-record gap — 2012/2018/2023 (pending US20240268131A1) + JR95848 optical-interconnect hire. Do not promote into the bull case or upgrade VLM none 2027+. Near-term P&L is still electrical CXL (CZ120/CZ122). Per [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]. **Custom base die** remains the 2027 TSMC-partnered path; Samsung already has 4nm in-house (Viks / Jason Hot Chips). That is process-hygiene for a qualified third, not a Q3 board meter.
 
 ## Key Metrics
 
@@ -235,6 +235,7 @@ No bull valuation target. The HIGH AND-gate is the only promotion path. Weight s
   - Management & Culture [MC-7] · product vs matrix: 53k-person four-BU product org (FQ4-25 CMBU/CDBU/MCBU/AEBU) is matched to a cyclical manufacturer past the matrix ceiling.
 - **Disconfirming check**: [G-3], [G-10], #13, and L1-as-hypothesis agree → hunt destock, do not raise conviction. Single falsifying datapoint: 2018-style destock (two consecutive −20%+ contract prints + rising OEM inventory days). Base rate this thesis must beat: peak GM + peak capex + peak price have not held 24 months. Agreement across models is why this file is coverage-grade / don't own. Management & Culture is inert on Gate 2; [MC-6] 53k-person entropy plus [G-10] new-venture destruction is the same outside view; do not treat the US-HBM-winner org as an outlier conversion machine.
 - Industry Semiconductors #8 · architecture remap. Hypothesis: Tokyo NVEG TSV/HBM-like job postings (Apr/Jul 2026) are circumstances of preparing TSV-NAND outside the HBF consortium, not a product confirmation and not a Q3 Rubin board meter (per [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]).
+  - Generalist [G-13] · expectations investing [added 2026-08-27]. Hypothesis: the optics mispriced variable PhotonCap names is announcement-volume ranking vs the filing/hiring record, not whether Nature Electronics published — do not treat a 2002–2023 patent chain as optical-memory earnings while CXL still holds the P&L (per [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]).
 ## Related Research
 
 - [[Theses/000660 - SK Hynix]]
@@ -267,6 +268,9 @@ No bull valuation target. The HIGH AND-gate is the only promotion path. Weight s
 - [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]
 - [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: MU not in HBF consortium; Tokyo NVEG postings hire TSV interface / HBM-like lane repair; development-org primary, not a roadmap
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: SA ~$5.6B MU common (puts stripped); 13F flip does not fire Q3 Rubin / LTA / destock / CXMT / GB300 triggers
+- [[Research/2026-08-27 - MU 000660 - Hot Chips 2026 Tuning into Memory Vibes - deep-dive]]: no custom base die / no external cooling vs Samsung 1c+4nm + HPB — supports list≠boards / later architectural follower; HIGH/LOW/CLOSE no-touch
+- [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]: SiPh silence is outward-facing activity stopping, not the filing record; JR95848 + 2023 pending via — character rewrite, not a bull case or VLM upgrade
+- [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: custom B-die / PIM is "great for Samsung" because MU/SKH partner TSMC — hygiene, not a board meter
 ## Log
 
 ### 2026-08-13
@@ -298,3 +302,8 @@ No bull valuation target. The HIGH AND-gate is the only promotion path. Weight s
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail: US-HBM-winner multiple already prices the pipeline); HBM-volume PRSU is a minority sleeve. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- [[Research/2026-08-27 - MU 000660 - Hot Chips 2026 Tuning into Memory Vibes - deep-dive]]: Micron talk omitted custom base die and external cooling while Samsung showed 1c+4nm + HPB — supports catch-up hygiene, not a Q3 meter — HIGH/LOW/CLOSE no-touch — conviction unchanged (low).
+- [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]: ten-year optics silence is announcement-volume, not abandoned research; pending 2023 via + JR95848 do not mint cubes or lift VLM none 2027+ — conviction unchanged (low).
+- [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: Samsung IDM logic B-die vs TSMC-partnered MU — process hygiene for a non-holding — conviction unchanged (low).

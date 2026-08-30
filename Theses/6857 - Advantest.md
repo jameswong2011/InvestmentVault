@@ -2,7 +2,7 @@
 publish: true
 date: 2026-05-16
 tags: [thesis, semiconductors, semiconductor-test-equipment, ATE, HBM, AI-compute, 6857, ADVT]
-status: monitoring
+status: active
 conviction: medium
 sector: Semiconductor Test Equipment
 ticker: 6857.T
@@ -251,6 +251,8 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis CPO deep-dive: Advantest named among E/O photonic-test positioners (emerging un-standardized TAM); adjacent optionality to the core HBM/SoC ATE thesis
 - [[Research/2026-08-12 - 6857 000660 BESI - HBM 3D Assembly Test Yield - news]]: HBM3D/hybrid bonding test & DFT ownership blur
 - [[Research/2026-07-27 - FORM Advantest CPO HVM Testing Bottleneck - deep-dive]]: CPO HVM test stages; Advantest positioning
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer 5 test-time adjacency; no HBM4 test-time print
+
 ## Log
 
 ### 2026-05-16
@@ -289,3 +291,9 @@ HBM4 test-time is compressed back to 10-12 hours through SK Hynix parallel-test 
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Inert (Gate 2 fail; org conversion Weak); 45.5x already prices the pipeline. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium). Sector note annotation corrected in [[Sectors/Semiconductor Test Equipment]].
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer-5 adjacency (100-second / 4-stage CPO test stack); does not print HBM4 production test-time >14h or Teradyne HBM5 qual — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).

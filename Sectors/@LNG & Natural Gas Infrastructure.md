@@ -9,7 +9,8 @@ sector: LNG & Natural Gas Infrastructure
 # LNG & Natural Gas Infrastructure
 
 ## Active Theses
-- [[Theses/LNG - Cheniere Energy]]: Cheniere Energy (largest US LNG exporter / contracted take-or-pay cash flow / stage 3+ capacity expansion)
+*No active-status theses at present.*
+- [[Theses/LNG - Cheniere Energy]] — moved to draft coverage 2026-08-27. Cheniere Energy (largest US LNG exporter / contracted take-or-pay cash flow / stage 3+ capacity expansion)
 
 ## Key industry questions
 
@@ -371,3 +372,6 @@ Three pair-trades to **avoid** despite surface appeal:
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: [[Theses/LNG - Cheniere Energy]] active → draft — watchlist coverage-tier review; removed from Active Theses (section now empty). No sector-framework change.

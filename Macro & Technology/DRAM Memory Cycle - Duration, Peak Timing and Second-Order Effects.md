@@ -106,6 +106,7 @@ Coverage gap: no Micron thesis exists despite MU being load-bearing across every
 - [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]
 - [[Research/2026-08-14 - 000660 SNDK 285A - YMTC NAND Third Place - news]]
 - [[Research/2026-08-14 - SNDK - Asymmetrical Bets Investor Day Recap - deep-dive]]: NAND-side contracted book $93.9B / 80% floor-GM; does not retire the DRAM cycle-top call (NAND floors untested; DRAM still the tighter 2026–27 constraint)
+- [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: memory ~70% of rack; a Hot Chips day dedicated to cutting DRAM's price is the demand-side response the destock analog needs on the table
 ## Log
 - 2026-07-09: Note created. Call: commodity price peak Q2–Q3 2027, equity peak Q4 2026–Q1 2027 at ~$1.3–1.5T caps (55%), with 20% weight that mid-June 2026 was the top. Reconciles sector-note bull framing with unactioned 2026-05-24 rebalancing rec: both right — equities lead prices by ~2 quarters.
 
@@ -117,3 +118,8 @@ Coverage gap: no Micron thesis exists despite MU being load-bearing across every
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: shortage confirmed (memory already ~70% of a rack) and simultaneously the response function is in the room — does not move the Q2–Q3 2027 commodity-price-peak call, does keep the destock analog live.
+- [[Research/2026-08-27 - 000660 SNDK 285A - Micron 22B Prepay Memory Crunch 2028 - news]]: Mehrotra expects 2027 tighter than 2026; industry DRAM/NAND tight beyond 2027 — extends the peak window vs an early-2027 fade.
+- [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]: TrendForce memory share of CSP capex 47% (2026) → 68% (2027); HBM4 modelled 0% QoQ through 4Q26F.

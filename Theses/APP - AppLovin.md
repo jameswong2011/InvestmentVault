@@ -2,7 +2,7 @@
 publish: true
 date: 2026-02-26
 tags: [thesis, APP, consumer-digital, adtech, AI]
-status: monitoring
+status: active
 conviction: medium
 sector: Mobile Advertising Technology
 ticker: APP
@@ -257,3 +257,6 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (AXON iter
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail after 2024–2025 re-rate); founder vote-control vs time-RSU/Form-4 sales. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium).

@@ -177,6 +177,8 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (miner-
 - [[Research/2026-07-17 - Power 10x Musk Turbine Bet AI Bottleneck - deep-dive]]
 - [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
 - [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: twelve-name comparison; IREN ranked risk-adjusted first on the owned-power layer; Horizon 1 Microsoft acceptance + Futurum #1 (~$40M contracted revenue/MW); preference triggers keyed to the 27 Aug Q4 FY26 print
+- [[Research/2026-08-29 - NBIS CRWV IREN - Neocloud Tape on Nvidia ACP Pause Report - news]]: >7% toward ~$38 on ACP headline plus prior-evening earnings miss
+- [[Research/2026-08-29 - IREN NBIS - IREN 4B Contracted ARR vs Earnings Miss - news]]: $4B contracted 2026 ARR vs ~$1B live; Q4 $137.2M miss + $450.4M mining impairment
 
 ## Log
 ### 2026-08-04
@@ -197,3 +199,7 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (miner-
 
 ### 2026-08-26 (/compare)
 - Comparison [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: the one full-stack operator that owns the layer the property-developer frame describes; Horizon 1 50 MW IT accepted by Microsoft 13 Aug (only in-window contracted→billing conversion with hyperscaler sign-off), Futurum #1 at ~$40M contracted revenue/MW vs CRWV ~$28M — conviction strengthened at the margin, level unchanged (medium): ~$21B funding-gap bear untouched; Q4 FY26 prints 27 Aug.
+
+### 2026-08-29
+- [[Research/2026-08-29 - NBIS CRWV IREN - Neocloud Tape on Nvidia ACP Pause Report - news]]: Hardest tape hit (>7% toward ~$38); TipRanks overlays the prior-evening Q4 miss ($0.41 / $137.23M, −27% YoY) so ACP is not a clean single-factor gap-down — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+- [[Research/2026-08-29 - IREN NBIS - IREN 4B Contracted ARR vs Earnings Miss - news]]: Management cites $4B contracted 2026 ARR (only ~$1B live after Horizon 1) from <10% of 5GW+ grid; 3-yr pricing >$20M/MW (talks ~$25M); Q4 $137.2M miss / $684M GAAP loss / $450.4M mining impairment; 45–55% customer prepay + $6.5B GPU paper ($3.6B IG ~6% MSFT-tied; $2.4B 9% Blue Owl/PIMCO) — markets still punish P&L — conviction unchanged (medium).

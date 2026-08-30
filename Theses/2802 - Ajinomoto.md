@@ -2,7 +2,7 @@
 publish: true
 date: 2026-05-16
 tags: [thesis, semiconductors, packaging, substrates, materials, japan, 2802]
-status: monitoring
+status: active
 conviction: medium
 sector: ABF Substrates & Advanced Packaging Supply Chain
 ticker: 2802
@@ -496,3 +496,6 @@ A 30-40% drawdown scenario over 18-36 months, driven by either competitive entry
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit; Gate 2 partial (ABF already in ~48×) and [MC-6] AFT absorption is the entropy tax. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium). Added to [[Sectors/ABF Substrates & Advanced Packaging Supply Chain]] Active Theses.

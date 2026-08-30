@@ -916,6 +916,11 @@ The note’s core split (structural demand vs cyclical spend; functional vs fina
 - [[Research/2026-08-14 - SPCX NVDA - xAI 10GW 2027 Compute Target - news]]: Musk $30–50/W → $300–500B at 10GW by end-2027 — revenue claim, not a CSA/duration print; does not close the capex-to-profit bridge.
 ### 2026-08-22
 - [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: $100M/MW vs sub-$30M/MW auction is a reallocation inside lab-serving capacity, not a coverage-gap close and not a digestion print.
+
+### 2026-08-27
+- [[Research/2026-08-27 - NVDA - Q2 FY27 Earnings Vera Rubin Production - earnings]]: NVDA Q3 $108B ±2% ex-China DC; >$500B financing platforms still subject to definitive agreements.
+- [[Research/2026-08-27 - NVDA NBIS - Nscale 45B Vera Rubin Anthropic - news]]: $45B / 460 MW Anthropic-Nscale is a 2027 Rubin offtake, not 2026 energized MW.
+- [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]: memory becoming 68% of CSP capex is a BOM inversion that forces either more capex or less memory per system.
 ## Related Research
 - [[Research/2026-08-12 - NVDA AVGO TSM 000660 - Alphabet Raises 2026 Capex to 205B - news]]
 - [[Research/2026-08-12 - Macro - AWS Calvert County DC Withdrawal - news]]
@@ -952,3 +957,7 @@ The note’s core split (structural demand vs cyclical spend; functional vs fina
 
 ### 2026-08-26 (/sync all)
 - [[Research/2026-08-25 - NBIS - ClickHouse and Avride Private Stakes - synthesis]]: NBIS's March $4.34B + August $5.75B converts add ~$10B of equity-linked claims to the neocloud tranche and the ClickHouse/Avride 'reserve' is ~$1.6B at book, unsold — the ~90–100% drawn read for the tranche stands; leverage ledger and scenarios unchanged (Tier B, no snapshot).
+- [[Research/2026-08-27 - NVDA - Q2 FY27 Earnings Vera Rubin Production - earnings]]
+- [[Research/2026-08-27 - NVDA NBIS - Nscale 45B Vera Rubin Anthropic - news]]
+- [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]
+

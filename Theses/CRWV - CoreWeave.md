@@ -2,7 +2,7 @@
 publish: true
 date: 2026-05-15
 tags: [thesis, neoclouds, GPU-as-a-Service, AI-infrastructure, CRWV]
-status: monitoring
+status: active
 conviction: medium
 sector: Neoclouds & GPU-as-a-Service
 ticker: CRWV
@@ -268,6 +268,8 @@ The drivers that break the thesis:
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: named in the Baker book parse; no active-MW or residual-value print in this 13F
 - [[Research/2026-08-15 - CRWV - Stress Test]]: late-cycle GPU-rental + leverage; Q2 backlog does not retire model
 - [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: twelve-name comparison; coordination proof (1.5 GW active, +25% list vs +17% input) against credit (covenant-lite over on the $2.6B facility); CRWV is the tenant at APLD 400 MW and CORZ 590 MW
+- [[Research/2026-08-29 - NVDA NBIS - Denies Pausing AI Compute Partnership - news]]: ACP denial vs WSJ pause; tenant-control optics risk for neoclouds
+- [[Research/2026-08-29 - NBIS CRWV IREN - Neocloud Tape on Nvidia ACP Pause Report - news]]: CRWV/NBIS/IREN fell on Nvidia revenue-share pause report
 
 ## Log
 ### 2026-05-15
@@ -333,3 +335,10 @@ The drivers that break the thesis:
 
 ### 2026-08-26 (/compare)
 - Comparison [[Research/2026-08-26 - NBIS CRWV IREN vs Neocloud Complex - Competitive Comparison]]: best coordination proof in the complex (1.5 GW active, +~500 MW in Q2, list +25% vs Nvidia +17%, ~8 pts kept above the layer below) against the worst credit (the $2.6B facility repriced +100–125bp with a 1.35x DSCR maintenance covenant; Jefferies / Citi Buy→Hold; CDS round-trip 452→~855bp [T2]) — conviction unchanged (medium, monitoring): operating leg strengthened, credit leg weakened, net flat.
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium). Neoclouds sector note annotation corrected (was mislabeled draft).
+
+### 2026-08-29
+- [[Research/2026-08-29 - NVDA NBIS - Denies Pausing AI Compute Partnership - news]]: Same ACP-optics risk as peers (tenant-approval / steering); denial keeps $36B take-or-pay stock live and is not a cancelled offtake — Insight #3 vendor-financing-as-validation still the live flag — conviction unchanged (medium).
+- [[Research/2026-08-29 - NBIS CRWV IREN - Neocloud Tape on Nvidia ACP Pause Report - news]]: Early-Friday tape on WSJ pause/shelve; first named ACP partners Sharon AI / Firmus; CRWV $8.5B Meta-backed March loan + $6.3B leftover-capacity deal cited as circular-financing overlay — not a cancelled offtake — conviction unchanged (medium).

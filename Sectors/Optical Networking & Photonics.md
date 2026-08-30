@@ -307,6 +307,8 @@ TFLN market projected at 44.4% CAGR through 2032: early stage but threatens EML 
 
 ### Optical test equipment — wafer-level capacity bottleneck
 
+**Memory-side CPO is still paper (PhotonCap 23 Aug).** Ranking Samsung/SK Hynix/Micron optical readiness by PDKs and newsrooms inverts the patent-priority + hiring order. Four pick-and-shovel layers recur whichever memory maker wins: fibre-attach/alignment, wafer-level optical test (memory volumes dwarf switch CPO), the substrate light travels through (glass as candidate, not confirmed), optical EDA. Observables before treating as an investment map: CPO share of alignment orders and lead times; optical-probe orders and the memory-customer share; glass-pilot qualification; PDK tools used in tapeouts. Today's volume is switches and accelerators. Samsung Foundry PDK + 2027 thermocompression optical engines / 2029 turnkey CPO is competitor colour for TSMC COUPE, not a 2026 memory EPS line. Per [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]].
+
 Photonic chips test fundamentally differently from electrical ICs: each device requires a wavelength sweep across 10-50 wavelengths, sub-micron grating-coupler alignment, simultaneous photonic + electrical measurement, and laser burn-in days per wafer for reliability qualification. Result: photonic test runs 5-10x slower per device than electrical probing. Hyperscaler-grade SiPh + CPO ramps explicitly bottleneck on test capacity, not wafer fab: TSMC, GlobalFoundries, and Tower have flagged photonic test as the throttle on COUPE and AMF expansion. Aehr Test management commentary (Q4 2025) corroborates: photonic burn-in customer adds 4x volume YoY but shipping is gated by FOX-XP delivery slots through 2027.
 
 | Vendor | Listed (mkt cap) | Photonic product line | 2026 photonic position |
@@ -577,6 +579,10 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 - [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: Intel shared-SOA FWM vs NVDA/LITE per-λ MOPA; research-array RIN unusable vs LITE discrete < −155 dBc/Hz
 - [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: July optics-cluster drawdown; POET/Celestial PO cancel; layer skeleton intact, names rotate
 
+- [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]: announcement vs priority ranking; four layers (align / optical probe / glass / EDA); memory volume later
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 19-layer AI-infra coverage map; NVIDIA guidance as spreading bottlenecks
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Hot Chips Day 3: Spectrum-X multiplane, BlueField-4, Jalapeño process/moat, MX1 CXL
+
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -629,3 +635,9 @@ ISL optical terminal market est. $400M (2026) → $2-3B (2030) on SDA Tranche 3 
 ### 2026-08-21
 - [[Research/2026-08-18 - NVDA LITE - Irrational Intel CPO Papers - news]]: qualification is bathtub BER / RIN / SMSR / WPE 10%, not a paper count; Intel C+ vs NVDA A+; NVDA/LITE MOPA fails RIN.
 - [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: four-month book −10.4pp vs SMH, all July; Celestial/POET PO cancel is a named-customer delay, not a layer change.
+
+### 2026-08-27
+- [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]: memory talking in light makes optical probe a design-stage constraint and puts the 100-second CPO test stack in front of memory volumes — still the story stage until probe orders print a memory-customer share. Cross-thesis: FORM/6857 layer-touched, not trigger-touched; TSM COUPE competitor colour (Samsung 2027/2029 schedule).
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]], [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: PhotonCap optics-layer coverage + Day 3 multiplane 1.7× fewer switches (unit headwind) — no conviction/status change.

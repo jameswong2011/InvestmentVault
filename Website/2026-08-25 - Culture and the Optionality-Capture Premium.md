@@ -10,7 +10,7 @@ status: draft
 audience: general-investor
 source_note:
   - "[[Mental Models/Lens - Management and Culture]]"
-  - "[[Mental Models/IGNORE - English - Culture and Management RAW]]"
+  - "[[Writing Standards]]"
 source: internal synthesis
 ---
 

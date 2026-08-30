@@ -220,6 +220,9 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]; Gate 1 passes (InP/CP
 - [[Theses/NVDA - Nvidia]]: anchor customer, $2B investor, architecture setter of the copper→optics conversion
 - [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]: light-source/components layer: optical disaggregation of the capacity tier amplifies existing SAM
 - [[Research/2026-08-17 - SNDK MU SPCX - PhotonCap Aschenbrenner Baker 13F - deep-dive]]: COHR share-count in the +1.73% fifteen-name cluster is classified as drift, not a Baker scale-across decision
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Optics layers already covered in archive; no new Coherent primary number
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: 1.7× fewer Spectrum-X switches is an optics unit headwind on multiplane scale-out
+
 ## Log
 
 ### 2026-08-16
@@ -232,3 +235,7 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]; Gate 1 passes (InP/CP
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit (Gate 2 fail: photonics re-rate already prices VI/CPO optionality); §4 fiefdom collapse dated but GM conversion unprinted. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Named on layers 7–9 / 11 (InP / engines / scale-across); CPO vs NPO is the wrong axis — no new COHR print — conviction unchanged (medium).
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Multiplane 1.7× fewer switches is an optics unit headwind even while CPO on scale-out remains a power argument — conviction unchanged (medium).

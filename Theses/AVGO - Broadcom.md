@@ -260,6 +260,8 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (custom
 - **Disconfirming check** (evidence-updated): post-derate AVGO is the cheapest AI-complex name (~33.5x NTM, watchlist-consistent) with the hardest 2027 revenue visibility ($73B backlog, 3x b2b). The quality-but-priced verdict inverted into quality-repriced within five weeks. The surviving bear is single-threaded: Google share migration compounding into the >$100B 2027 target. Single falsifiers, dated: FQ3 print (~early Sep: first chips-only-basis AI number + any 2027 reaffirmation), TPU v9 partner confirmation, MediaTek DC revenue trajectory (~$3.2B 2027E). Maintenance: **no Conviction Triggers section exists**; write one (suggested LOW: Google-attributable AI revenue share disclosed/estimated <70% for 2027; CLOSE: 2027 target cut below $80B); Log the Jun 3 print; refresh Key Metrics (Apr vintage). Management & Culture [MC-6]/[G-10]: PE firing fights deadweight on acquired franchises but does not beat the new-venture-destruction base rate for internally originated optionalities; XPU conversion is customer-pull (existing business), so a Strong-fit claim on this lens would be halo.
 
 ## Related Research
+- [[Research/2026-08-28 - AVGO NVDA - OpenAI Jalapeno InferenceX First Results - news]]
+
 - [[Macro & Technology/AI Datacenter Financing Mechanism Design]]: T5 vendor-support template: XPV backstop = 5yr customer-lease guarantee, $29B dynamic max EAD (rises with deployment, falls with payments); BofA scaling model → max RVG exposure ~$370B / max loss ~$42B at full 20GW [web, single-source, needs ingest]
 
 - [[Research/2026-04-19 - Huawei Ascend Roadmap - news]]: Huawei Ascend roadmap validates non-Nvidia vertically integrated AI compute architecture at scale (524 EFLOPS supercluster, ByteDance $5.6B order); supports AVGO XPU thesis directionally though Huawei not an AVGO customer
@@ -295,6 +297,12 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (custom
 - [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: Bailly/Davisson listed in Nature Electronics Table 2
 - [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: $100M/MW auction concentrates incremental GW at OAI/Anthropic — mix-supportive for XPU, not a VMware/Ethernet print
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Google 8-K is MRVL attach/inference/near-memory, not a Sunfish training takeaway; Tomahawk deployment-gap vs T100 unchanged
+
+- [[Research/2026-08-27 - AVGO NVDA 000660 - OpenAI Jalapeno ASIC Hot Chips - news]]: OpenAI Jalapeño is Broadcom-built; Tomahawk6 Clos to 2,048 chips; A0 in lab
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]: NVLink Fusion NVHBM as attach surface for custom XPUs
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Tomahawk/Ethernet in the data path regardless of compute vendor; archive coverage map
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Thor Ultra NIC + Jalapeño process risk vs in-sourcing Insight; no allocation print
+- [[Research/2026-08-29 - AVGO - 70B AI Chip SPV Debt Talks Anthropic - news]]: Talks ~$70–80B Anthropic SPV debt (senior ~$45B / junior ~$35B); not closed
 
 ## Log
 
@@ -401,3 +409,15 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]: Gate 1 passes (custom
 ### 2026-08-22
 - [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: $100M/MW vs sub-$30M/MW auction is mix-supportive for OAI/Anthropic XPU programs — conviction unchanged (high).
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Google five-category MRVL agreement is attach, not a BRCM training-TPU close-out; T100 wallet-share does not move Tomahawk 80–90% near term — conviction unchanged (high).
+
+### 2026-08-27
+- [[Research/2026-08-27 - AVGO NVDA 000660 - OpenAI Jalapeno ASIC Hot Chips - news]]: OpenAI XPU is silicon-in-lab (700W, HBM4, Tomahawk6), not a backlog-dollar print — no AVGO triggers — conviction unchanged (high).
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]: Fusion NVHBM is NVIDIA containment of XPUs; Tomahawk still compute-agnostic — conviction unchanged (high).
+
+### 2026-08-28
+- [[Research/2026-08-28 - AVGO NVDA - OpenAI Jalapeno InferenceX First Results - news]]: OpenAI Jalapeño InferenceX 1.5–1.9× work/W vs GB200/300; YE26 deploy; keeps buying NVIDIA — multi-source not swap — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layers 1+6 restates Insight #1/#4 (Tomahawk sits regardless of compute vendor; Ethernet vs IB already tipped); layer 9 CPO is adjacency, not a Tomahawk-6 / 2027-target print — no AVGO triggers — conviction unchanged (high).
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Thor Ultra remains the NIC/transceiver seat on Ethernet scale-out; Jalapeño process/moat (small team + AI-written RTL) is a flag on Insight #3 in-sourcing-overstated, not an AVGO allocation or yield print — conviction unchanged (high).
+- [[Research/2026-08-29 - AVGO - 70B AI Chip SPV Debt Talks Anthropic - news]]: CNBC/Yahoo: talks to raise ~$70–80B (Bloomberg path ~$100B; senior ~$45B / junior ~$35B, fluid) via SPV that buys custom chips and leases them to labs including Anthropic; extends June $35B Apollo/Blackstone 20 GW by 2028 package; AVGO guarantees part of the senior paper ('where the risk sits'); terms not final — no registered triggers — conviction unchanged (high).

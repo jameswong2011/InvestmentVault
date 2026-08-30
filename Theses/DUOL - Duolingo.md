@@ -2,7 +2,7 @@
 publish: true
 date: 2026-04-14
 tags: [thesis, DUOL, consumer-digital, edtech, AI, gamification]
-status: monitoring
+status: active
 conviction: medium
 sector: Consumer Edtech
 ticker: DUOL
@@ -216,3 +216,6 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (AI tutors
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail after multiple rebound); founder dual-class quality is consensus, not a ≤0 psychosis gap. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium).

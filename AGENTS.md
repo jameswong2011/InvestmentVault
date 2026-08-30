@@ -49,9 +49,26 @@ Read scope (mandatory tier):
 
 ### Voice — match the user, not the model (xxx MANDATORY on all new prose xxx)
 
-Voice exemplar: `Mental Models/IGNORE - English - Culture and Management RAW.md`. That note is the user's natural register: long nested sentences, mechanism before punchline, concrete operational detail, named companies, British spelling, `we` for the firm, single quotes for coined terms, `thus` / `as such` / `the framework is thus`. It is a **style exemplar, not an analytical lens**. The `IGNORE` prefix means do not auto-read it during mental-models load-tiering. When drafting substantial new body prose (thesis / sector / macro body, Website essays, research notes), read it first and match it. Mechanical skills that skip mental models also skip the exemplar.
+Voice exemplar: `Mental Models/Writing Standards.md` — two pieces in the user's own hand (Example One: a venture-pitch memo; Example Two: an investment-culture framework), deliberately spanning subject and formality so that what repeats across both is the style, not the topic. Shared traits: long nested sentences, mechanism before punchline, concrete operational detail, named companies, British spelling, `we` for the firm, single quotes for coined terms, a consequence-marker word (`thus` / `as such` / `the framework is thus` in Example Two, `effectively` in Example One). It is a **style exemplar, not an analytical lens** — it sits outside the mandatory Mental Models read tier (that tier is the enumerated allowlist above, not the whole folder, so no `IGNORE`-style prefix is needed). When drafting substantial new body prose (thesis / sector / macro body, Website essays, research notes), read it first and match it. Mechanical skills that skip mental models also skip the exemplar.
 
-Do not "improve" the user's diction into smoother essay cadence. Fix grammar. Keep density. Colour only when it is the claim.
+**Quantified profile.** Measured directly off both examples (word/sentence counts, not impression):
+
+| Trait | Ex. 1 (pitch) | Ex. 2 (framework) | Rule for vault prose |
+|---|---|---|---|
+| Avg sentence length | 49 words | 72 words | Default long: 40-70+ words/sentence. A drafted paragraph averaging under ~25 words/sentence reads as model-default — recombine clauses before finalizing |
+| Longest sentence | 188 words | 264 words | No ceiling. One sentence may legitimately carry an entire causal chain |
+| Clause-joining | comma-chained (1 semicolon in 2,387 words) | semicolons at clause boundaries (9 in 1,948 words) plus comma-chaining | Chain with commas/semicolons; never respond to a long chained-reasoning sentence by splitting it into three short ones |
+| Em-dash (`—`) | 0 | 0 | Confirms the em-dash rule below |
+| Avg words/bullet | 41 (max 165) | 55 (max 113) | Bullets are paragraph units. A bullet under ~15 words is under-working — cut it or let it carry a full clause chain |
+| Coined/informal terms | single-quoted, ~15 instances | single-quoted, ~22 pairs | Single-quote a coined or informal term on first use. Never double quotes, never italics-as-stress |
+| Parenthetical rate | 1 per ~58 words | 1 per ~217 words | Use a parenthetical to ground a claim in a named company/number or gloss a jargon term, not to hedge |
+| `we` for the firm | 9 | 2 | Unchanged from the existing rule |
+| British spelling | present | dominant (~1 per 49 words) | Unchanged from the existing rule |
+| Hedge-word opens | 0 | 0 (2 uses of "most importantly" are mid-list ranking, not sentence-opening filler) | Unchanged — "most importantly" survives only as a mid-enumeration ranking device, never as a throat-clearing opener |
+
+Example One's subject matter (a crypto/gamification pitch) and its dropped apostrophes and comma-spliced run-ons are pitch-deck draft speed, not a vault target — grammar still gets fixed per the rule below. Its lesson is structural: sentence length, bullet-as-paragraph density, parenthetical rate, comma-chaining. Example Two's register — argue the mechanism, land on a named heuristic — is the closer match for thesis / sector / macro prose. Note skeleton (heading names, section order) still follows the Thesis / Sector / Research templates elsewhere in this file; the exemplar governs sentence, paragraph, and bullet construction, not the section list.
+
+Do not "improve" the user's diction into smoother essay cadence. Fix grammar — subject-verb agreement, missing apostrophes, spelling — but a long comma-chained sentence is rhythm, not an error: do not split it into several short ones to "clean it up." Keep density. Colour only when it is the claim.
 
 **Em-dashes (`—`, U+2014).** Not the default rhythm. Prefer a comma, colon, semicolon, or a full stop. Hyphenated compounds (`long-term`, `silicon-based`) and en-dashes in ranges (`$30–40T`, `2015–19`) are fine. Allowed em-dashes: the Log-entry delimiter in the format above; a rare aside where a comma is ambiguous. More than one em-dash in a paragraph is a smell. More than one in a sentence is a defect. Do not rewrite these instruction files to satisfy this rule.
 

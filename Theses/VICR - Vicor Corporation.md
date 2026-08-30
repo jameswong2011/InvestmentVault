@@ -305,6 +305,7 @@ At ~$13.1B today the market already discounts roughly FY30 EBIT ($439M) at ~30x,
 - [[Research/2026-08-12 - 6981 VICR - MLCC AI Demand Price Hikes Premiums - news]]: AI rack MLCC counts corroborate power-delivery intensity
 - [[Research/2026-07-29 - LEGO Modular Datacenter Construction - deep-dive]]
 - [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: final current-multiplier stage inferred on the WSE package; article-linked, not a socket 8-K
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer 12 high-density power conversion is thin archive coverage; no Vicor print
 
 ## Log
 
@@ -358,3 +359,6 @@ At ~$13.1B today the market already discounts roughly FY30 EBIT ($439M) at ~30x,
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
 ### 2026-08-21
 - [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: SuperNova render attaches the Vicor-as-possible-partner hypothesis to an on-package current multiplier — colour, not a BOM/8-K — conviction unchanged (medium).
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer 12 (VICR / MPS high-density power, P=I²R last 1.5mm) flagged as thin archive coverage (2 articles, not 3), not a Vicor socket number — conviction unchanged (medium).

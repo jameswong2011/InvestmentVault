@@ -236,6 +236,7 @@ Vinciarelli on Q1 2026 call: "frankly ill-conceived" referring to 800V→6V; "Vi
 - [[Sectors/Custom Silicon & Networking Semiconductors]]: Adjacent silicon ecosystem; Broadcom XPU / Marvell ASIC reference designs increasingly demand high-density power modules at HPC scale
 - [[Sectors/Optical Networking & Photonics]]: CPO context; Quantum-X / Spectrum-X Photonics deployments are the primary thermal-coupling forcing function for VPD adoption per §Macro shifts #2
 - [[Research/2026-05-29 - Earnings Transcripts vs Thesis - 6 Holdings - synthesis]]: earnings-transcript review; Vicor licensing corrected to ~$60M annualised with new deals paused until the 2027 ITC determination ($300M is the order backlog, not a licensing pipeline); Q1 2026 numbers confirmed; "Rubin" said 0× across 4 calls (design-wins are generic-hyperscaler/ASIC-led, NVIDIA framed as multi-sourcing)
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer 12 (VICR / MPS high-density power) flagged as thin PhotonCap archive coverage, not a Vicor socket print
 
 ## Log
 
@@ -253,3 +254,6 @@ Vinciarelli on Q1 2026 call: "frankly ill-conceived" referring to 800V→6V; "Vi
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer 12 (VICR / MPS, P=I²R last 1.5mm) is thin archive coverage (2 articles, not 3), not a Vicor number — no conviction/status change.

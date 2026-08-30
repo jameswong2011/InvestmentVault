@@ -200,12 +200,12 @@ Comparable scale references: Nvidia NVLink franchise generates ~$3–4B in fabri
 |--------|-------|-------|
 | Market Cap | ~$194B | $188.30 Jul 16 2026 close; -8.7% on the day, -43% off $329.88 peak (Jun 22) |
 | EV/Revenue (TTM) | ~22x | EV $166B / TTM revenue $8.7B |
-| Revenue Growth | FY26 +42% ($8.19B); Q1 FY27 +28% ($2.418B); Q2 guide $2.7B mid (+35%) | FY27 target $11.5B; FY28 $16.5B; custom silicon >$10B FY29 |
-| Gross Margin | GAAP 52.1% / non-GAAP 58.9% (Q1 FY27); GAAP TTM 50.6% | Custom-mix + LPO transition compressing; ~60% was the prior assumption |
+| Revenue Growth | FY26 +42% ($8.19B); Q1 FY27 +28% ($2.418B); Q2 printed $2.739B (+37% / +13% QoQ) | FY27 and FY28 outlooks raised on 27 Aug call; FY28 ~$18B (+$1.5B vs prior-quarter outlook); custom silicon >$10B FY29 still Investor Day |
+| Gross Margin | GAAP 53.1% / non-GAAP 58.9% (Q2 FY27 printed); Q3 non-GAAP GM guided 57.5–58.5% | Custom-mix + LPO transition compressing; Insight #1 mix-drag now a dated Q3 observable |
 | FCF Yield | ~0.9% | TTM FCF $1.66B; elevated tape-out + Celestial integration capex |
 | Forward P/E | 55x FY27E ($4.05) / 36x FY28E ($6.24) / 24x FY29E ($9.16) | Consensus (29 analysts FY28); GAAP TTM P/E 64x distorted by $1.8B Infineon gain |
-| Data Center Revenue | Q1 FY27 $1.83B (+27%, 76% of revenue); FY26 $6.1B (+46%) | Segments consolidated Q4 FY26 to DC + Communications & Other |
-| Consensus FY28 Revenue | $16.7B ≈ company target $16.5B | The raised guide is now the priced base case |
+| Data Center Revenue | Q2 FY27 $2.172B (+46% YoY / +18% QoQ, 79% of sales); Q1 $1.83B (76%) | Communications and Other $567.8M (+10% YoY / −3% QoQ) |
+| Consensus FY28 Revenue | Street was ~$16.7B on the prior $16.5B company outlook; call now ~$18B | Second consecutive FY28 raise; Investor Day 6 Oct 2026 will reset the long-term model |
 
 ## Management and culture
 
@@ -305,6 +305,12 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]. Gate 1 passes (custom
 
 ## Related Research
 
+- [[Research/2026-08-28 - MRVL - Google Custom Silicon Warrant Deal Peel-Apart - news]]
+
+- [[Research/2026-08-28 - NVDA MRVL 000660 - NVHBM Annapurna Trainium4 Controller - news]]
+
+- [[Research/2026-08-28 - NVDA NBIS MRVL 000660 - AWS 2M GPUs NVHBM Vera Expansion - news]]
+
 - [[Research/2026-04-23 - Insight Surface Scan.md]]: Opportunity 5 origin: "Create Marvell thesis as Broadcom complement" flagged MEDIUM impact. Jensen's 65% ASIC margin framing applies.
 - [[Research/2026-03-02 - Chinese Silicon Photonics Threat.md]]: MRVL 80%+ DSP share at 800G; Nova/Ara 1.6T DSPs; LPO + Nvidia in-house DSP + Chinese DSP threat framing; Celestial $3.25B with $500M Q4 FY28 run-rate target.
 - [[Research/2025-11-29 - AVGO - Gemini Investment Analysis Canvas.md]]: MRVL positioned as "Open Ecosystem Champion vs Broadcom vertical integration"; MRVL Forward P/E ~27x; Broadcom's multi-year Google through-2031 TPU lock context.
@@ -340,6 +346,11 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]. Gate 1 passes (custom
 - [[Research/2026-08-20 - 000660 NVDA MRVL - Damnang HBM Density Peak - deep-dive]]: $2B NVLink Fusion seat + Celestial 32TB/50m vendor targets; HIGH leg 3 evidence-touched, not fired
 - [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: Table 2 lists Celestial Photonic Fabric; no PO / no tape-out
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Google 8-K 1/3 HIGH near-fired not fired; $120B warrant ceiling not a PO; Aug 27 variables = FY27 Interconnect growth + Q3 guide; Oct 6 = FY28 segments
+
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]: NVLink Fusion NVHBM + Trainium4; containment thesis (Insight #3) restated, OCP observable unmoved
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Celestial as memory-disaggregation not CPO re-skin; 1.6T LPO/DSP owned optical layer
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Day-3 networking adjacency (Spectrum-X / Thor); not a Celestial or custom-silicon print
+- [[Research/2026-08-29 - MRVL - Q2 FY27 Record Revenue FY28 Raise - news]]: Q2 FY27 $2.739B / DC 79%; Q3 ~$3.15B; FY28 raise ~$18B on scale-up optics/switching
 
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
@@ -427,3 +438,16 @@ Hypothesis: Weak fit on [[Lens - Management and Culture]]. Gate 1 passes (custom
 ### 2026-08-22
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Interconnect-first FY27 mix confirmed; Google 8-K formalises OQ #1 (system content, not a socket); HIGH still 1/3 near-fired not fired; $120B is warrant vesting ceiling not a PO; Aug 27 variables = FY27 Interconnect growth + Q3 guide — conviction unchanged (medium).
 - ⚡ Trigger touch: MRVL → HIGH conjunct 1 (signed Google commercial agreement for MPU or inference TPU) — evidence-touched / near-fired, not fired (8-K is broader than MPU/inference-TPU wording; legs 2–3 unmet). HIGH conjunct 3 (Celestial PO / tape-out) evidence-touched the other way (PF still little P&L; CMM-Ax is Structera A, no production customer). LOW conjunct 2 (Google BRCM-exclusive close-out) inverted. CLOSE conjunct 1 (FY28 custom below $3.6B) inverted on author $3.8B [est.] split. Flag-only; no /status.
+
+### 2026-08-27
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]: NVHBM/Trainium4 Fusion is the same UALink-containment perimeter — OCP 2026 still the first confirming observable — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+
+### 2026-08-28
+- [[Research/2026-08-28 - MRVL - Google Custom Silicon Warrant Deal Peel-Apart - news]]: Next Platform peels Google–MRVL 8-K: TPU-ecosystem attach + 58.97M warrants; Kestrel qual ≤Nov 2027 — less than $120B headline — conviction unchanged
+- [[Research/2026-08-28 - NVDA MRVL 000660 - NVHBM Annapurna Trainium4 Controller - news]]: NVHBM moves controller into HBM base die; Annapurna first collaborator / Trainium4 Fusion — Fusion lock-in around XPUs — conviction unchanged
+- [[Research/2026-08-28 - NVDA NBIS MRVL 000660 - AWS 2M GPUs NVHBM Vera Expansion - news]]: AWS plans 2M additional NVIDIA GPUs 2027–28 (Rubin/Blackwell Ultra) plus NVHBM on Trainium4 / Vera / 100k IL6 gov — demand expand not substitute — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Map puts MRVL on layers 1/6/9/19 — Celestial as memory-disaggregation (Insight #2) and 1.6T LPO/DSP as the owned optical layer (Insight #4); 'no such thing as a CPO stock' — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Day 3 networking recap is Spectrum-X / BlueField-4 / Thor adjacency (Insight #2 falsifier neighborhood), not a Celestial PO or custom-silicon print — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).
+- [[Research/2026-08-29 - MRVL - Q2 FY27 Record Revenue FY28 Raise - news]]: Record Q2 $2.739B (+37% YoY), DC $2.172B / 79% of sales; Q3 guide $3.150B ±5% (~15% QoQ) with non-GAAP GM 57.5–58.5% (Insight #1 mix-drag print); call FY28 ~$18B (+$1.5B QoQ, ~50% company / >60% DC) on 1.6T DSP + 51.2T scale-out doubling + NPO/CPO 'and, not an or' + CXL high volumes — HIGH legs 2–3 / LOW / CLOSE no-touch — conviction unchanged (medium).

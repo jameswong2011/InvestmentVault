@@ -183,6 +183,8 @@ The High-multiple pool is the unproven one. AI capex at $15.8B/quarter builds a 
 
 ## Related Research
 
+- [[Research/2026-08-28 - SPCX - 100B Louisiana Starbase Spaceport - news]]
+
 - [[Sectors/Neoclouds & GPU-as-a-Service]]
 - [[Theses/CRWV - CoreWeave]]
 - [[Theses/NBIS - Nebius Group]]
@@ -212,6 +214,7 @@ The High-multiple pool is the unproven one. AI capex at $15.8B/quarter builds a 
 - [[Research/2026-08-18 - SPCX - Sum of the Parts - synthesis]]: user-assumption SOTP ~$2.1T (Grok $1T + neocloud $500B + Starlink $400B + launch-ex-internal $40B + Terafab $100B + cash); vault-consistent ~$0.8T. Launch is a $40B railroad; mobile is $150–250B terminal, not a fourth carrier
 - [[Website/2026-08-19 - SpaceX - How Much of 1.9 Trillion Is Already a Business]]: public essay, one section per SOTP slice: finite base $776B (41% of $1.9T) vs bull $2.09T (110%); implied multi-gen residual $1.12T / 59% vs base, $(186)B / (10)% vs bull. Mars is not in the tape.
 - [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: new 3.3% personal seat from 12 June, +8%; listing-visibility, not YE26 ≥2 GW / Connectivity ~60%
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 10GW orbital compute as alternative to powered land, not YE26 nameplate
 
 ## Log
 
@@ -245,3 +248,9 @@ The High-multiple pool is the unproven one. AI capex at $15.8B/quarter builds a 
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
 ### 2026-08-21
 - [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: 3.3% seat is listing-visibility, not a Connectivity/CSA/YE26-GW print — HIGH unfired — conviction unchanged (medium).
+
+### 2026-08-28
+- [[Research/2026-08-28 - SPCX - 100B Louisiana Starbase Spaceport - news]]: SpaceX $100B Louisiana Starbase #2; build 2027 / launch 2029 (ops ~2030 LED); Starship reuse still unproven — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer 18 frames 10GW orbital compute as an alternative to powered land, not a YE26 nameplate / CSA-duration print — HIGH/LOW/CLOSE no-touch — conviction unchanged (medium).

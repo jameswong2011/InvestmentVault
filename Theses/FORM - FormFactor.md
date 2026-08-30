@@ -198,6 +198,8 @@ Q1 2026 (today's earnings) prints in-line, not blow-out: HBM4 ramp guidance is p
 - [[Research/2026-05-31 - CPO Scale-Up Inflection and Supply Chain - deep-dive]]: SemiAnalysis CPO deep-dive: FormFactor named among E/O photonic-test positioners (un-standardized emerging TAM); corroborates the CPO/optical-test-consolidation Bull Case driver + Risk #4
 - [[Research/2026-07-30 - FORM PhotonCap July 29 HBM CPO Probe Cards - deep-dive]]: Record Q2; HBM+CPO drivers; CPO >$20M guide path
 - [[Research/2026-07-27 - FORM Advantest CPO HVM Testing Bottleneck - deep-dive]]: CPO HVM test bottleneck map; Advantest stages
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer 5 test/probe adjacency; no FormFactor print
+
 ## Log
 
 ### 2026-04-29
@@ -226,3 +228,6 @@ Q1 2026 (today's earnings) prints in-line, not blow-out: HBM4 ramp guidance is p
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis inert (Gate 2 fail: HBM/CPO pipeline already in the multiple); thin public artifacts. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: Layer 5 test/probe (100-second CPO bottleneck); no FORM print — conviction unchanged (medium).

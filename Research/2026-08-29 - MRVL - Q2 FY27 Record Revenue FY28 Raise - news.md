@@ -1,0 +1,70 @@
+---
+publish: false
+date: 2026-08-29
+tags: [research, daily-intel-triage, earnings, MRVL]
+sector: Networking & Custom Silicon
+ticker: MRVL
+source: 'https://convergedigest.com/marvell-q2-fy2027-data-center-ai-revenue'
+propagated_to: [MRVL]
+source_type: earnings
+---
+
+# Marvell Q2 FY2027 Data Center AI Revenue
+
+## Thesis Delta
+Consensus, after the 19 August Google 8-K and the August rally that put street FY28 revenue at about $16.7B (one per cent above the prior $16.5B company outlook), still treats Marvell as a one-shot custom-silicon print whose incremental value is the warrant and a rented XPU seat, with electro-optics and switching already 'owned' layers that do not re-rate the multiple ([G-13] expectations). This Converge Digest recap of the 27 August Q2 FY2027 release and investor call prices a second consecutive FY28 raise to approximately $18B (up $1.5B in one quarter, roughly 50% company growth, data-centre growth more than 60%), a Q3 midpoint of $3.150B (about 15% sequential on top of Q2's 13%), data-centre mix at 79% of sales, and management colour that the acceleration is coming from connectivity (1.6T DSP ramping, 51.2T scale-out switching more than doubling this year, scale-across 1.6T ZR/ZR+ aimed at more than 10× current front-end DCI bandwidth, scale-up optics with NPO and CPO framed as 'and, not an or') plus a custom / XPU-attach basket (inference accelerators, storage controllers, NICs, memory-interface controllers, near-memory compute) that Murphy says has consistently run larger than internal projections, with the newly disclosed hyperscaler agreement adding upside mainly from FY2029; Q3 non-GAAP gross margin guided 57.5–58.5% versus 58.9% printed is the mix-drag observable in [[Theses/MRVL - Marvell Technology]] Insight #1, CXL memory expansion 'in high volumes' at multiple hyperscalers plus scale-up switch talks across UALink, ESUN and NVLink touch Insights #2/#3, and none of HIGH legs 2–3 or any LOW/CLOSE trigger fires, so conviction and status stay unchanged.
+
+## Summary
+Marvell printed record Q2 FY2027 (quarter ended 1 August 2026, released 27 August) net revenue of $2.739B, up 37% year over year and 13% sequentially, as data-centre revenue climbed to $2.172B (+46% YoY / +18% QoQ) and took 79% of sales versus 74% a year earlier and 73% in Q3 FY2025, while Communications and Other contributed $567.8M (+10% YoY, −3% QoQ); Matt Murphy characterised AI-related bookings as exceptionally robust, said demand is broadening across the connectivity portfolio, and flagged a significant acceleration in custom silicon in the second half of fiscal 2027. Profitability scaled with the mix: GAAP gross margin 53.1% versus 50.4% a year earlier, non-GAAP gross margin 58.9% versus 59.4% a year earlier (the owned-layer margin already slipping even as GAAP recovers), GAAP operating income $459.7M (16.8% operating margin), non-GAAP operating income crossing $1B at $1.003B (36.6% operating margin), GAAP net income $308.0M or $0.33 per diluted share versus $0.22, non-GAAP net income $865.9M or $0.94 versus $0.67, and operating cash flow $605.5M versus $461.6M, while R&D rose 43% to $741.1M from $519.0M as the firm spends into custom compute, networking, optical interconnect and memory connectivity.
+
+The third-quarter guide is another step-function, $3.150B plus or minus 5% (about 15% sequential at the midpoint) with non-GAAP diluted EPS $1.10 plus or minus $0.05 and non-GAAP gross margin 57.5% to 58.5%, the last of those the first clean print of Insight #4's blended-margin path as custom mix rises; Murphy said the company is again raising the revenue outlook for both fiscal 2027 and fiscal 2028 versus last quarter's guide, though the earnings release itself did not publish revised full-year revenue figures, and the call is where the FY28 number lands. On that call (Murphy, Dan Durn, Chris Koopmans, Sandeep Bharathi, Ross Seymour) Marvell now expects approximately $18B of FY2028 revenue, $1.5B above the outlook given one quarter ago, with company growth of roughly 50% and data-centre growth of more than 60%, and it will reset the long-term model at Investor Day in New York on 6 October 2026; non-GAAP operating margin is expected to enter the 38–40% long-term target range in Q4 FY2027 and to reach the upper end during FY2028 even as R&D and capacity prepayments rise, because revenue is expected to grow substantially faster than operating expenses.
+
+Call colour on the connectivity stack is the piece consensus still compresses into a single 'custom' line: 800G optical DSP demand remains strong while the 1.6T business is ramping and that transition is expected to accelerate further in FY2028; Scale Out switching is expected to more than double this year on the 51.2T silicon ramp across a widening customer base, with FY2028 switching expectations also moving higher; Scale Across (clusters spanning multiple data centres) is framed as more than 10× current front-end DCI bandwidth, targeted with coherent-DSP 1.6T ZR/ZR+ modules; Scale Up optics has increased 'meaningfully' since last quarter, customers are planning optical Scale Up deployments as early as next year, and copper and optics are expected to coexist for several years rather than flip in a single form-factor transition. Management was explicit that customers are evaluating NPO and CPO plus MZM, EAM and MRM modulation in parallel ('and, not an or'), that NPO is advancing at multiple customers through broadband analogue TIAs/drivers and an internally developed optical light engine, and that Marvell now expects to become one of the largest NPO enablers in AI infrastructure, while Scale Up switch discussions with Tier One customers cover UALink, ESUN and NVLink, each characterised as a potential multibillion-dollar lifetime revenue opportunity, with switching, SerDes and optics sold as an end-to-end link whose optical attach can approach the SAM of the switch itself.
+
+Custom and memory colour is equally a breadth story rather than a single Google XPU socket: the expanded hyperscaler relationship covers AI inference accelerators, storage controllers, NICs, memory-interface controllers and near-memory compute, Murphy said earlier projections for this XPU-attach category have been consistently below how large the opportunity is becoming, and the recently disclosed hyperscaler agreement is framed as substantial upside to prior custom-silicon expectations beginning particularly in FY2029 and beyond, with ranges and a longer-term custom trajectory promised at Investor Day; CXL memory expansion is described as a major emerging inference opportunity already deploying at multiple hyperscalers in high volumes, with memory scarcity pushing customers toward expansion architectures and additional design wins in the past two quarters. To lock capacity, Marvell remains on pace for approximately $1B of supplier capacity prepayments in FY2027, applied against future material purchases. Converge Digest's own analysis treats the 79% data-centre mix, not the 37% headline, as the structural metric, and situates the print against the 2 February Celestial AI close (Photonic Fabric for optical Scale Up), the 10 February XConn close (PCIe, CXL, UALink switching), and the March NVIDIA partnership under which NVIDIA invested $2B and Marvell is developing custom XPUs and Scale Up networking for NVLink Fusion, extending addressable infrastructure from inside the accelerator through Scale Up and Scale Out to Scale Across DCI; the Q3 15% sequential step after Q2's 13%, plus the H2 custom acceleration, is the source's claim that this mix shift is entering another growth phase, which [G-10] still has to beat as a top-decile growth outlier off an already-raised $16.5B FY28 base and which [G-3] reads as trend continuation inside the AI-infrastructure installation rather than a mean-reverting semi cycle, with Industry #8 (architecture transitions remap the bottleneck) the live lens on NPO/CPO coexistence and the three-fabric switch talks.
+
+## Evidence
+
+| Item | Figure | Tag |
+|---|---|---|
+| Q2 net revenue (q/e 1 Aug 2026) | $2.739B (+37% YoY / +13% QoQ); record | [web: convergedigest.com] |
+| Data-centre revenue | $2.172B (+46% YoY / +18% QoQ) | [web: convergedigest.com] |
+| Data-centre mix | 79% of sales (74% a year earlier; 73% in Q3 FY2025) | [web: convergedigest.com] |
+| Communications and Other | $567.8M (+10% YoY / −3% QoQ) | [web: convergedigest.com] |
+| GAAP / non-GAAP gross margin | 53.1% (vs 50.4% YoY) / 58.9% (vs 59.4% YoY) | [web: convergedigest.com] |
+| GAAP operating income | $459.7M; 16.8% operating margin | [web: convergedigest.com] |
+| Non-GAAP operating income | $1.003B; 36.6% operating margin | [web: convergedigest.com] |
+| GAAP / non-GAAP diluted EPS | $0.33 (vs $0.22) / $0.94 (vs $0.67) | [web: convergedigest.com] |
+| GAAP / non-GAAP net income | $308.0M / $865.9M | [web: convergedigest.com] |
+| Operating cash flow | $605.5M (vs $461.6M) | [web: convergedigest.com] |
+| R&D | $741.1M (vs $519.0M; +43% YoY) | [web: convergedigest.com] |
+| Q3 revenue guide | $3.150B ±5% (~15% QoQ at midpoint) | [web: convergedigest.com] |
+| Q3 non-GAAP EPS / GM | $1.10 ±$0.05; 57.5–58.5% | [web: convergedigest.com] |
+| FY27 / FY28 outlook (release) | Both raised vs last quarter; release gave no revised full-year figures | [web: convergedigest.com] |
+| FY28 revenue outlook (call) | ~$18B; +$1.5B vs prior-quarter outlook; ~50% YoY company growth | [web: convergedigest.com] |
+| FY28 data-centre growth (call) | More than 60% | [web: convergedigest.com] |
+| Scale Out switching | More than double this year on 51.2T ramp; FY28 expectations also higher | [web: convergedigest.com] |
+| Scale Across bandwidth | More than 10× current front-end DCI; 1.6T ZR/ZR+ coherent DSP | [web: convergedigest.com] |
+| Scale Up optics | Opportunity up since last quarter; optical deployments as early as next year; copper and optics coexist for several years | [web: convergedigest.com] |
+| NPO / CPO | 'And, not an or'; NPO + CPO + MZM / EAM / MRM in parallel; aims to be one of the largest NPO enablers | [web: convergedigest.com] |
+| Scale Up switching talks | UALink, ESUN and NVLink; each a potential multibillion-dollar lifetime opportunity | [web: convergedigest.com] |
+| End-to-end link | Switching + SerDes + optics; optical attach can approach switch SAM | [web: convergedigest.com] |
+| CXL memory expansion | High volumes at multiple hyperscalers; additional design wins in the past two quarters | [web: convergedigest.com] |
+| XPU-attach basket | Inference accelerators, storage controllers, NICs, memory-interface controllers, near-memory compute | [web: convergedigest.com] |
+| Custom beyond FY29 | Hyperscaler agreement adds substantial upside vs prior custom expectations from FY2029; ranges at Investor Day | [web: convergedigest.com] |
+| Supplier capacity prepayments | ~$1B in FY2027, applied against future material purchases | [web: convergedigest.com] |
+| Non-GAAP operating-margin path | Enter 38–40% target in Q4 FY2027; upper end in FY2028 | [web: convergedigest.com] |
+| Investor Day | 6 October 2026, New York | [web: convergedigest.com] |
+| Portfolio context (analysis) | Celestial AI closed 2 Feb; XConn closed 10 Feb; NVIDIA $2B NVLink Fusion partnership in March | [web: convergedigest.com] |
+
+## Contradiction Check
+Supports [[Theses/MRVL - Marvell Technology]] §Key Non-consensus Insights #1 (second-seat / mix-drag: Q3 non-GAAP GM 57.5–58.5% versus 58.9% printed is the first confirming observable dated 2026-08) and #4 (1.6T ramp plus guided GM compression, without any OFC-style share-loss print that would fire LOW leg 3), and it complements rather than replaces [[Research/2026-08-28 - MRVL - Google Custom Silicon Warrant Deal Peel-Apart - news]]: that note was 8-K mechanics, this is the earnings print plus the second FY28 raise. Insights #2 and #3 are evidence-touched, not fired: CXL 'high volumes' at multiple hyperscalers plus extra design wins is colour on the memory-expansion / Celestial-adjacent inference use case, not a disclosed Photonic Fabric PO or on-schedule end-2026 tape-out (HIGH leg 3 still open), and Scale Up switch talks across UALink, ESUN and NVLink keep the three-fabric hedge live into OCP (HIGH/CLOSE fabric observables unmoved). Conviction-trigger scoreboard on this source: HIGH leg 1 (signed Google commercial agreement) was already evidence-touched by the 8-K and is restated here as an expanded XPU-attach relationship with FY2029+ custom upside, not newly fired; HIGH leg 2 (Trainium 3 ≥400K) is silent; LOW leg 1 (custom miss >10%) moves the other way (record print, Q3 +15% sequential, H2 custom acceleration); CLOSE leg 1 (FY28 custom path cut below a $3.6B implied run-rate) is inverted by the $18B company raise, though the source does not give a custom-segment dollar figure so the inversion is directional. The honest low-signal residual, and the [G-10] / Industry #13 disconfirm to run against the bullish model-agreement, is that $18B and 50% growth are still guide, not revenue, the release withheld a FY27 dollar figure, custom upside is dated FY2029+, and Celestial validation is still a 2027–2028 binary; no conviction or status change.
+
+## Source Excerpts
+> "AI-related bookings remain exceptionally robust, and we expect our revenue growth to accelerate further through the remainder of fiscal 2027." Matt Murphy [web: convergedigest.com]
+
+> "Marvell now expects approximately $18B of FY2028 revenue, up $1.5B from its outlook just one quarter ago. Management expects roughly 50% YoY company growth, with data center revenue growing more than 60%." [web: convergedigest.com]
+
+> "Murphy said Marvell is again raising its revenue outlook for both fiscal 2027 and fiscal 2028 compared with guidance issued last quarter, although the earnings release did not provide revised full-year revenue figures." [web: convergedigest.com]
+
+> "Customers are evaluating NPO and CPO plus MZM, EAM and MRM modulation technologies. Management emphasized an 'and, not an or' architecture, with multiple approaches deployed in parallel." [web: convergedigest.com]

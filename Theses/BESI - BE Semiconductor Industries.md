@@ -339,3 +339,6 @@ Hypothesis: Inert on [[Lens - Management and Culture]]: Gate 1 passes (hybrid bo
 ### 2026-08-21
 - [[Research/2026-08-18 - NVDA TSM BESI 000660 - BEP Qualcomm HBC 133TBs - news]]: HBC deletes the large interposer but relocates complexity into DRAM-to-logic bonding — tax migrates, does not disappear; no confirmed Besi PO — conviction unchanged (medium).
 - [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: author keeps the µm-precision optical-interposer thesis but writes the basis weaker than April after POET exit — conviction unchanged (medium).
+
+### 2026-08-27
+- Cross-thesis signal via [[Research/2026-08-27 - MU 000660 - Hot Chips 2026 Tuning into Memory Vibes - deep-dive]] + [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: hybrid bonding remains the terminal packaging path that erases MR-MUF chemistry (and is implied by zHBM / thermal-mitigation); no Kinex 16-Hi qual print — conviction unchanged (medium).

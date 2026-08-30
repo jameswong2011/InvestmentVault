@@ -277,6 +277,9 @@ The "AI/NVIDIA-linked vs. traditional enterprise" split for Vertiv FY26E maps to
 - [[Research/2026-08-04 - MPWR Vicor MLCC Power Delivery Bottleneck - deep-dive]]
 - [[Research/2026-08-07 - SpaceX 10GW 2027 Microsoft Offtake - deep-dive]]
 - [[Research/2026-08-16 - Macro PJM - SemiAnalysis 12B Modeling Mistake - deep-dive]]: $12B 2025–27 overcharge as RRS error (~4 GW winter capability uncredited); backstop 11–15y to 2043; queue still unaccelerated
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 19-layer AI-infra coverage map; NVIDIA guidance as spreading bottlenecks
+- [[Research/2026-08-29 - NVDA NBIS - AI Rack Density Power Cooling Limits - news]]: AI rack density capped by power delivery and failure risk
+
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -320,3 +323,6 @@ The "AI/NVIDIA-linked vs. traditional enterprise" split for Vertiv FY26E maps to
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]], [[Research/2026-08-29 - NVDA NBIS - AI Rack Density Power Cooling Limits - news]]: PhotonCap layer-12/13–15 coverage gaps + DCK rack-density / 800VDC / ~200 kW 54 VDC copper wall — no conviction/status change.

@@ -2,7 +2,7 @@
 publish: true
 date: 2026-04-15
 tags: [thesis, CRCL, stablecoins, USDC, crypto, fintech, payments]
-status: monitoring
+status: active
 conviction: medium
 sector: Blockchain & Stablecoins
 ticker: CRCL
@@ -406,3 +406,6 @@ Circle remains a leveraged bet on interest rates with a permanently value-destru
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit; founder vote and product-milestone STI, but time-based RSUs and 10b5-1 sales leave conversion capacity unproven. Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: monitoring → active — watchlist coverage-tier review; conviction unchanged (medium).

@@ -237,7 +237,7 @@ Three vendor philosophies define the 2026-2030 share trajectory:
 | **Micron** | TC-NCF pragmatic | TC-NCF HBM4 12-Hi | TC-NCF + selective hybrid bonding | Hybrid bonding HBM5 | Power-efficiency leadership (1-beta then 1-gamma node); custom base die TSMC 3nm for HBM4E |
 | **CXMT** | MR-MUF (copying SK Hynix) | HBM3 only (G4 16-nm DRAM); ~50% yield | Speculative | Speculative | Domestic-only; YMTC hybrid-bonding patent pool potential domestic shortcut |
 
-**Hybrid bonding is the "great filter" for HBM5+ 24-Hi (revised 2026-05-11; see Macro Shift §8 for full reframe).** Under JEDEC's relaxed 900µm HBM4 height spec, MR-MUF underfill physics extend through HBM5 first-gen 20-Hi (2028-2029); hybrid bonding becomes architecturally mandatory at HBM5+ 24-Hi (2029-2030). Samsung's hybrid-bonding gamble (BESI Kinex tool + AMAT Kinex platform, ~$10.7M per system) is timed to hit yield maturity at the 24-Hi inflection. If Samsung clears 70% hybrid-bonding yield at 20-Hi by H2 2028, the 2024-2028 share trajectory inverts at HBM5+ (not HBM5 first-gen). **SK Hynix's March 2026 BESI Kinex order is logic-line/2nm primary with dual-use HBM5 hybrid-bonding qualification path**, not a direct HBM5 production order. MR-MUF is now a 2024-2029 process moat (extended by Namics EMC exclusivity per Macro Shift §8), not a 2-year cushion.
+**Hybrid bonding is the "great filter" for HBM5+ 24-Hi (revised 2026-05-11; see Macro Shift §8 for full reframe).** Under JEDEC's relaxed 900µm HBM4 height spec, MR-MUF underfill physics extend through HBM5 first-gen 20-Hi (2028-2029); hybrid bonding becomes architecturally mandatory at HBM5+ 24-Hi (2029-2030). Samsung's hybrid-bonding gamble (BESI Kinex tool + AMAT Kinex platform, ~$10.7M per system) is timed to hit yield maturity at the 24-Hi inflection. If Samsung clears 70% hybrid-bonding yield at 20-Hi by H2 2028, the 2024-2028 share trajectory inverts at HBM5+ (not HBM5 first-gen). **SK Hynix's March 2026 BESI Kinex order is logic-line/2nm primary with dual-use HBM5 hybrid-bonding qualification path**, not a direct HBM5 production order. MR-MUF is now a 2024-2029 process moat (extended by Namics EMC exclusivity per Macro Shift §8), not a 2-year cushion. **Hot Chips 2026 (do not silently merge):** Viks restates MR-MUF for 16-Hi @ 775 µm and says hybrid bonding erases the chemistry edge (competition → execution). Jason's Chips claims SK Hynix already ships HBM4 on **TC-NCF**. Hold both until a second source. Parallel competitive axis now live even at 8-/12-Hi: **custom logic base die** (Samsung 1c + 4nm in-house + HPB; SKH ICE; MU circuit-design only) — stack-height ambition is no longer the only axis. Per [[Research/2026-08-27 - MU 000660 - Hot Chips 2026 Tuning into Memory Vibes - deep-dive]] and [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]].
 
 ### Logic Base Die — Foundry Lock-in
 
@@ -246,7 +246,7 @@ HBM4 introduces foundry-fabricated logic base dies (replacing the legacy memory-
 | Vendor | HBM4 Base Die Process | HBM4E Base Die Plan | Foundry Partnership |
 |---|---|---|---|
 | **SK Hynix** | TSMC 12FFC+/N5 | **TSMC 3nm (reported, March 2026)** | TSMC strategic alliance: synchronizes HBM with Nvidia/AMD GPU process |
-| **Samsung** | Samsung 4nm internal | Samsung 2nm (first time, January 2026 report); may also offer custom designs to OpenAI ASIC | Internal "One Samsung" turnkey (memory + foundry + AVP) |
+| **Samsung** | Samsung 4nm internal *(Hot Chips 2026: 1c DRAM + 4nm logic stated on-slide; three-phase custom-B-die roadmap — PHY shrink / controller offload / RAS+PIM / zHBM 2030+)* | Samsung 2nm (first time, January 2026 report); may also offer custom designs to OpenAI ASIC | Internal "One Samsung" turnkey (memory + foundry + AVP). IDM logic is the durable differentiator vs TSMC-partnered SKH/MU even if stacks stay 8-/12-Hi |
 | **Micron** | TSMC partner ecosystem | TSMC custom base dies for HBM4E | TSMC custom logic for hyperscaler-specific designs |
 
 **Vendor lock-in is the asymmetric pricing-power lever.** In HBM3 era, hyperscalers could swap SK Hynix → Samsung HBM with limited revalidation. In HBM4 era, a hyperscaler's custom base die (e.g., OpenAI Titan ASIC choosing Samsung 2nm) cannot easily port to TSMC. This makes 2026 share losses/gains "stickier": SK Hynix's HBM4 Rubin allocation becomes structural for the Rubin/Rubin Ultra/Feynman roadmap (H2 2026 → 2028); Samsung's 30% Rubin allocation is similarly defended for the same lifecycle. **Custom HBM (HBM4 + ASIC base die) is forecast at ~33% of total HBM market in 2026, growing 82% YoY.**
@@ -487,7 +487,7 @@ This pushes the Samsung leap-frog window from 2027-2028 to 2029-2030. SK Hynix's
 
 **1. Incumbent Erosion path: SK Hynix 62% → 45% by 2030 is a structural regression, not a cyclical dip.** Sell-side extrapolates current 57% forward as if MR-MUF, 1c yield (~80%), and Nvidia cycle familiarity constitute a durable moat. Gemini's HBM4 Market Canvas projects Samsung "U-Shape Recovery" (24% → 33% by 2030) and Micron "Steady Climb" (15% → 21% by 2030) erode SK Hynix from 58% → 45% within five years. **Once Samsung's 1c yield crosses 70%, Nvidia's posture shifts from "SK Hynix preferred" to "dual-source at parity pricing"**, which compresses SK Hynix's blended HBM gross margin from current 60%+ toward 40-45%. This is the single most important non-consensus call. See [[Theses/000660 - SK Hynix]] §Non-consensus #1.
 
-**2. The packaging hierarchy inverts at HBM5.** MR-MUF is a process moat, not an architectural one. At 20-Hi (HBM5, 2028-2029), MR-MUF physics break down; hybrid bonding becomes mandatory. SK Hynix's March 2026 BESI Kinex order = explicit acknowledgment that the company is buying insurance, not extending dominance. Samsung's hybrid-bonding lead at 2-3 years could leap-frog SK Hynix at HBM5. The market reads MR-MUF as a permanent advantage rather than a temporary cushion. See [[Theses/000660 - SK Hynix]] §Non-consensus #2.
+**2. The packaging hierarchy inverts at HBM5.** MR-MUF is a process moat, not an architectural one. At 20-Hi (HBM5, 2028-2029), MR-MUF physics break down; hybrid bonding becomes mandatory. SK Hynix's March 2026 BESI Kinex order = explicit acknowledgment that the company is buying insurance, not extending dominance. Samsung's hybrid-bonding lead at 2-3 years could leap-frog SK Hynix at HBM5. The market reads MR-MUF as a permanent advantage rather than a temporary cushion. See [[Theses/000660 - SK Hynix]] §Non-consensus #2. **2026-08-27 addendum:** custom base die on leading-edge logic is a *second* inversion that does not wait for 20-Hi — Viks: even at lower stacks the B-die is the differentiator. Jason's unconfirmed "TC-NCF in HBM4 now" would pull the first inversion forward by a generation if a second source confirms.
 
 **3. CXMT is the wrong-timing bear case.** Consensus bears treat CXMT 2027-2028 ramp as the threat. Reality: CXMT is 3 nodes behind on DRAM and has no HBM product through end-2026 with 50% yield. The genuine threat is **commodity-DRAM commoditization 2028-2029**, which compresses SK Hynix's $40B commodity-DRAM segment from 30-35% gross margin to 15-20%. HBM (60%+ gross margin, the earnings engine) is insulated through at least 2028 by 1c-node gap. The bear case that matters in 2026 is Samsung Rubin allocation expansion, not CXMT. Consensus conflates these and mis-prices the nearer threat.
 
@@ -564,6 +564,10 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
   - Industry Semiconductors #8 · zHBM vs HBF seats. Hypothesis: Samsung zHBM is a placement of HBM (above the accelerator; wall = heat), not a fourth stacking process and not a 2026 cube; HBF beside the processor is zero-sum with an HBM seat (per [[Research/2026-08-16 - SNDK MU 000660 - PhotonCap HBF vs Optics - deep-dive]]).
 ## Related Research
 
+- [[Research/2026-08-28 - 000660 - SK Hynix HBM4E MR-MUF HBM5 Hybrid Bonding - news]]
+- [[Research/2026-08-28 - NVDA MRVL 000660 - NVHBM Annapurna Trainium4 Controller - news]]
+- [[Research/2026-08-28 - 000660 SNDK 285A NVDA - Memory 68pct Capex NVIDIA 15pct Server Hike - news]]
+
 - [[Research/2025-11-01 - DRAM HBM Competitive Dynamics]]: Q4 2025 DRAM revenue +29.4% sequential; conventional DRAM contract prices +45-50% QoQ; SK Hynix 2025 op profit ₩47.2T ($31.59B); Samsung 110T won 2026 capex; Samsung HBM 250K WSPM target by end-2026
 - [[Research/2025-11-27 - HBM4 Breakthroughs and Yields]]: JEDEC HBM4 (JESD238) ratified April 2025; vendor-by-vendor yield benchmarks (SK Hynix 1c ~80%, Samsung 1c ~50% pilot); HBM4 2030 revenue scenario $93B at SK Hynix 40% share
 - [[Research/2025-11-27 - Semis - Gemini HBM4 Market Canvas]]: Vera Rubin HBM4 architecture deep-dive; 2030 share trajectory SK Hynix 45% / Samsung 33% / Micron 21% / Others 1%; vendor-lock-in second-order effect
@@ -606,6 +610,15 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 - [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: all three memory makers on Avicena cap table; standards-layer, not 2027 EPS
 - [[Research/2026-08-18 - NVDA TSM BESI 000660 - BEP Qualcomm HBC 133TBs - news]]: HBC mix-shift memory-oligopoly-neutral
 
+- [[Research/2026-08-27 - 000660 - SK hynix HBM4 12-Hi MP 16-Hi Qual - news]]
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]
+- [[Research/2026-08-27 - 000660 SNDK 285A - Micron 22B Prepay Memory Crunch 2028 - news]]
+- [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 19-layer AI-infra coverage map; NVIDIA guidance as spreading bottlenecks
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Hot Chips Day 3: Spectrum-X multiplane, BlueField-4, Jalapeño process/moat, MX1 CXL
+- [[Research/2026-08-29 - 000660 - Indiana HBM Packaging Groundbreaking H2 2029 - news]]: SK hynix Indiana HBM packaging groundbreaking; MP H2 2029
+- [[Research/2026-08-29 - NVDA 000660 - Samsung 8-Layer HBM4E for NVHBM - news]]: Samsung 8-Hi HBM4E for NVHBM (SEDaily, unverified)
+
 ## Related Sectors and Macro
 
 - [[Sectors/NAND Memory & Storage]]: Sister memory sub-sector; Solidigm IPO catalyst inside SK Hynix
@@ -617,6 +630,9 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 
 - [[Research/2026-08-15 - 000660 - CXMT Most Valuable China Chipmaker - news]]: CXMT $540.5B / Nomura ~18% DRAM production share by end-2028; no qualified HBM
 
+- [[Research/2026-08-27 - MU 000660 - Hot Chips 2026 Tuning into Memory Vibes - deep-dive]]: custom B-die axis + HB erasure of MR-MUF; MU no cooling block
+- [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: memory ~70% of rack; Jason TC-NCF-in-HBM4 aside; d-Matrix 3D DRAM; HBF 25× α
+- [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]: announcement-volume vs patent-priority ranking; four pick-and-shovel layers; near-term P&L still electrical
 ## Log
 
 ### 2026-04-23
@@ -683,3 +699,16 @@ The DRAM/HBM sector owns the top two tiers (HBM + DDR5). Pricing power, gross ma
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
 
+### 2026-08-27
+- [[Research/2026-08-27 - MU 000660 - Hot Chips 2026 Tuning into Memory Vibes - deep-dive]]: custom logic base die is the durable axis even at 8-/12-Hi; HB erases MR-MUF chemistry — do not silently pick Jason's TC-NCF ship-process aside over Viks' same-week slides.
+- [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: conference dedicated to cutting DRAM's ~70% rack cost is the demand-side response the destock analog needs on the table; HBF is capacity not HBM-BW.
+- [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]: ranking memory-makers by PDK/newsroom inverts the patent+hire order; optics is not 2026 EPS.
+- [[Research/2026-08-27 - 000660 - SK hynix HBM4 12-Hi MP 16-Hi Qual - news]]: SK hynix 12-Hi MP / 16-Hi qual; hybrid bonding still 20-Hi+.
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]: NVIDIA NVHBM = controller-in-HBM-base-die vs standard HBM4E.
+- [[Research/2026-08-27 - 000660 SNDK 285A - Micron 22B Prepay Memory Crunch 2028 - news]] / [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]: $22B MU prepay + TrendForce 68% CSP-capex share — contracted scarcity into 2027–28.
+
+### 2026-08-28
+- Daily Intel triage: linked new research (AWS 2M / NVHBM / Jalapeño / HBM packaging / memory hike / HBF / Maven / Starbase as applicable).
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]], [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]], [[Research/2026-08-29 - 000660 - Indiana HBM Packaging Groundbreaking H2 2029 - news]], [[Research/2026-08-29 - NVDA 000660 - Samsung 8-Layer HBM4E for NVHBM - news]]: PhotonCap layer-2 HBM + Day 3 CXL/NAND-tier (not HBM BW) + Indiana H2 2029 MP + unverified Samsung 8-Hi NVHBM — no conviction/status change.

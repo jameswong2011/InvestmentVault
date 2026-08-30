@@ -2,7 +2,7 @@
 publish: true
 date: 2026-05-22
 tags: [thesis, construction-tech, vertical-saas, building-construction-software, PCOR]
-status: active
+status: draft
 conviction: high
 sector: Building & Construction Software
 ticker: PCOR
@@ -250,3 +250,6 @@ Tail risk: GenAI horizontal agents (OpenAI, Anthropic Claude, Google Gemini) dem
 ### 2026-08-20
 - Lens backfill: ## Management and culture from [[Lens - Management and Culture]] — hypothesis Weak fit; Gate 2 fails (5.7x already premia software, AI/Gopal narrated). Conviction unchanged.
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: active → draft — watchlist coverage-tier review; conviction unchanged (high).

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- n8n keep-alive watchdog, added 2026-08-27 after an 11-day silent outage
+     (2026-08-15 reboot -> pm2's RunAtLoad+LaunchOnlyOnce resurrect didn't take,
+     nothing checked again until 2026-08-27). Canonical copy; install to
+     ~/Library/LaunchAgents/. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.investmentvault.n8n-watchdog</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/alexcohen/InvestmentVault/.claude/schedule/n8n-watchdog.sh</string>
+  </array>
+
+  <!-- Every 15 minutes. Also run once at load so a dead n8n gets caught immediately
+       rather than waiting for the first interval to elapse. -->
+  <key>StartInterval</key>
+  <integer>900</integer>
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/alexcohen/InvestmentVault/.claude/schedule/logs/n8n-watchdog.launchd.out</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/alexcohen/InvestmentVault/.claude/schedule/logs/n8n-watchdog.launchd.err</string>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+</dict>
+</plist>

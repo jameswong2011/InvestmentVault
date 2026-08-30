@@ -368,6 +368,8 @@ The product-level differences between vendors are real but specific to segment a
 
 **Kioxia GP Series as parallel path**: GP Series (announced GTC 2026, 10M+ IOPS flash module pairing XL-Flash with custom controller) targets the same HBM-overflow workload via PCIe-attached packaging instead of GPU-package integration. If HBF GPU integration slips beyond NVIDIA Rubin (likely late 2027/early 2028 on post-Rubin platforms), GP Series becomes the bridge product with 12–18 months earlier availability. **Kioxia is positioned to win whether HBF succeeds (CBA architecture + Flash Ventures JV with HBF inventor SanDisk) or HBF slips (GP Series captures the workload).**
 
+**Hot Chips Day 1 realism (2026-08-24, do not flatten into Investor Day HBM-equivalent):** OXMIQ/PRAXMATI put HBF at 8–16× HBM capacity and **25× worse** bandwidth/latency vs HBM-G2 (~13× vs G3 on α). Useful attach is low-batch, personal/private box, and expert-parallelism — **off** the high-batch / high-interactivity Pareto. Author left "slightly less bullish" after SanDisk's pumped Investor Day. The 9× SLC+stack NAND-bit conversion is a bull case *if* the category works, not a 2026 earnings line. Sample window (2027) untouched. Per [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]].
+
 **HBF probability assessment**: Higher than consensus and increasing. Five signals now de-risk the "next Optane" concern:
 1. **Standardization**: OCP workstream launched Feb 2026 with SK Hynix + Samsung + SanDisk backing; Optane was Intel-proprietary
 2. **Timing**: Inference is now 60%+ of AI compute spend; the use case exists today; Optane arrived before its market
@@ -722,6 +724,9 @@ PhotonCap (16 Aug 2026) splits the same diagram on two axes. **Process:** layer-
 - **Disconfirming check**: Models agree HBF is a real category and a free-ish call at cycle-peak NAND multiples; hunt the bear: first-gen on-package HBF absorbs KV-cache so the increment never leaves the package, or CPO energy-per-bit stalls (OFC next March). Single falsifier: 2027 customer samples slip again and optically connected flash appliances do not appear in a hyperscaler BOM.
 
 ## Related Research
+- [[Research/2026-08-28 - SNDK 285A - HBF Capacity Tier Not HBM Replacement Hot Chips - news]]
+- [[Research/2026-08-28 - 000660 SNDK 285A NVDA - Memory 68pct Capex NVIDIA 15pct Server Hike - news]]
+
 - [[Research/2026-04-16 - NAND Sector Key Questions Deep Dive - deep-dive]]: Deep research on 3 key industry questions: YMTC enterprise disruption (widening gap), HBF viability (5 de-risking signals), product moats (5 identified)
 - [[Research/2026-04-15 - SNDK - Investment Evaluation]]: Post-separation pure-play NAND analysis, HBM exclusion as limitation
 - [[Research/2026-03-31 - SanDisk Valuation Assessment]]: Supply-demand structural analysis, NAND pricing dynamics
@@ -746,6 +751,13 @@ PhotonCap (16 Aug 2026) splits the same diagram on two axes. **Process:** layer-
 - [[Research/2026-08-15 - SNDK - Stress Test]]: Insight #1 HBF date 2027; Insight #2 vs 80% NBM; deepen Insights
 - [[Research/2026-08-18 - SNDK 000660 NVDA - Damnang HBF Sandisk Upside - deep-dive]]: mixed HBF(+HBM) base; Google ~89% of $0.95B; Rubin not the swing customer
 - [[Research/2026-08-18 - SNDK MRVL SPCX AMAT - PhotonCap Portfolio Q Review - synthesis]]: SNDK 5.5% still sampling-stage HBF, not storage revenue
+
+- [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: HBF 25× α gap; attach off high-batch Pareto; 9× NAND conversion if category works
+- [[Research/2026-08-27 - 285A SNDK - Kioxia Kitakami 1T Yen Fab - news]]
+- [[Research/2026-08-27 - 000660 SNDK 285A - Micron 22B Prepay Memory Crunch 2028 - news]]
+- [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 19-layer AI-infra coverage map; NVIDIA guidance as spreading bottlenecks
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Hot Chips Day 3: Spectrum-X multiplane, BlueField-4, Jalapeño process/moat, MX1 CXL
 
 ## Log
 ### 2026-04-16
@@ -781,3 +793,14 @@ PhotonCap (16 Aug 2026) splits the same diagram on two axes. **Process:** layer-
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
 ### 2026-08-21
 - [[Research/2026-08-18 - SNDK 000660 NVDA - Damnang HBF Sandisk Upside - deep-dive]]: HBF-only fails KV write/thermal/endurance; attach is Google/Meta ASIC operators, not merchant GPU.
+
+### 2026-08-27
+- [[Research/2026-08-24 - 000660 MU SNDK - Hot Chips Day 1 Precious Memories - deep-dive]]: HBF is capacity at a bandwidth/latency haircut, not an HBM substitute in a dense rack — closer to the mix-HBF / Google-not-NVIDIA sleeve than Investor Day "within 2.2% of HBM." Cross-thesis: SNDK Insight #1 wording challenged; 285A shares the 9× conversion option via Flash Ventures.
+- [[Research/2026-08-27 - 285A SNDK - Kioxia Kitakami 1T Yen Fab - news]]: Kioxia Kitakami third building >¥1T inside ¥470B/yr — Flash Ventures bit-add.
+- [[Research/2026-08-27 - 000660 SNDK 285A - Micron 22B Prepay Memory Crunch 2028 - news]] / [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]: NAND take-or-pay + eSSD +235% 2026; 68% CSP-capex share is DRAM+NAND combined.
+
+### 2026-08-28
+- Daily Intel triage: linked new research (AWS 2M / NVHBM / Jalapeño / HBM packaging / memory hike / HBF / Maven / Starbase as applicable).
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]], [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: PhotonCap layer-19 HBF + Day 3 MX1 CXL NAND-bullish read — no conviction/status change.

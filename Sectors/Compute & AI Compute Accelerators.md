@@ -12,6 +12,7 @@ sector: Compute & AI Compute Accelerators
 - [[Theses/NVDA - Nvidia]]: Nvidia (AI compute monopoly / CUDA + Blackwell + Vera Rubin / networking + simulation moat / sovereign AI floor; FY2026 $215.9B revenue +65%; 71.1% GM; share moderating 87%→75%; conviction: medium)
 - [[Theses/AMD - Advanced Micro Devices]]: AMD (sole merchant full-stack Nvidia alternative: CPU+GPU+DPU+FPGA / OpenAI 6GW + Meta 6GW hyperscaler-imposed diversification / MI355X 97–111% of B200 on MLPerf 6.0 / 38–41x fwd P/E embeds flawless execution; conviction: medium)
 - [[Theses/INTC - Intel]]: Intel (Lip-Bu Tan turnaround / 18A HVM Oct 2025 + Tesla 14A first external customer / 10% US gov't stake + Nvidia $5B + SoftBank $2B cap-table validation / Q1 2026 $13.6B revenue +13% YoY / Diamond Rapids SMT regression at agentic-AI inflection it claims to lead / 145x fwd P/E embeds compound execution on 18A yield + 14A scale + Coral Rapids 2028; conviction: low)
+- [[Theses/CBRS - Cerebras Systems]]: Cerebras (wafer-scale SRAM-only inference specialist / last independent fast-decode pure-play post-Nvidia-Groq deal / 86% UAE customer concentration / $24.6B backlog ~85% OpenAI / binary barbell-convex bet, not a compounder; promoted to active 2026-08-27; conviction: low)
 
 ## Recent Research (Apr 2026)
 - [[Theses/INTC - Intel]]: New thesis (Apr 27 2026, conviction medium): Lip-Bu Tan turnaround / 18A HVM Oct 2025 + Tesla 14A first external customer / 10% US gov't stake / Diamond Rapids SMT regression at agentic-AI inflection / 145x fwd P/E embeds compound execution on three independent multi-year trajectories
@@ -212,6 +213,8 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 
 **Concrete portfolio implications (non-consensus).** (i) Pair-trade logic: long Broadcom + short Nvidia as ASIC-rent-capture hedge, if hyperscaler diversification accelerates Broadcom wins regardless of which hyperscaler. (ii) Physical AI as the non-consensus Nvidia moat: long NVDA specifically for Jetson + Omniverse + DRIVE Hyperion attach revenue, not data-center GPU share. (iii) AMD call options (not outright long) on Helios Q3 2026 + MLPerf Training v5.0 Fall 2026, binary catalysts with asymmetric upside if ROCm training parity demonstrated. (iv) Memory stocks (SK Hynix, Micron, SNDK) as less-volatile exposure to the same AI capex tailwind. (v) Huawei-threat hedge: consider thesis-level exposure to Chinese equipment suppliers and non-US sovereign AI beneficiaries. (vi) Taiwan tail hedge: LMT/NOC/RTX defense pair vs TSM/NVDA/AMD GPU basket (per TSM stress test analysis).
 
+10. **AgentX remaps the CUDA-moat debate from rewrite-cost / day-zero tok/s onto systems velocity.** SemiAnalysis AgentX 1.0 (24 Aug) is InferenceXv3's primary scenario: multi-turn, 142k median ISL, sub-agent bursts, KV offload. NVIDIA's lead is the rate and breadth of upstream stack maturation (vLLM/SGLang/TRT-LLM/Dynamo + DCP/PCP) plus the lifecycle integral of tokens at a fixed interactivity SLO — B200 53.8B vs MI355X 35.2B on Kimi K2.5 despite ATOM's 4,081 peak [1×: SemiAnalysis]. AMD can win ATOM/e2e slices and still lose the customer-relevant upstream comparison (labs refuse ATOM; every AMD vLLM backend unsupported for DCP/PCP; Qwen3.5 SGLang >20×). Consensus that still prices CUDA as developer rewrite cost, or AMD displacement off MLPerf/day-zero snapshots, is reading the wrong variable. Falsify if AMD closes DCP/PCP + lab-adopted engine parity before the next AgentX update (promised 3–4 weeks). Per [[Research/2026-08-24 - NVDA AMD - SemiAnalysis AgentX InferenceXv3 CUDA Moat - deep-dive]].
+
 9. **Open-model catch-up is cyclic, not a secular death of the intelligence premium; the incremental-MW auction is the new allocator.** SemiAnalysis (Aug 2026) dates catch-up half-life as ~8.5 mo → 4.8–6 mo → default <3 mo next era, puts ARR in the model+harness product (Claude Code $65B+ since May 2025), and prices frontier-token API at as high as $100M/MW vs sub-$30M/MW open TaaS [1×: SemiAnalysis]. Consensus FUD ("open catching up = lab margins die = GPU demand dies") has the sequence wrong: Fireworks >40T tokens/day is Jevons-positive for merchant GPUs, and the auction reallocates incremental GW toward OAI/Anthropic (today 27% of 2026 net new GW) rather than shrinking the pool. Falsify if the next era's initial gap does not re-widen, or if open TaaS ROI converges on $100M/MW.
 
 ## Mental Models
@@ -225,6 +228,9 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - **Disconfirming check**: Models agree financing extends the surge; hunt the bear: first closed platform tickets stay tiny, residual-value marks hit NVDA/partners, or hyperscaler dollar CapEx guides cut (not just MW slips). Single falsifier: a disclosed large closed ticket without residual put utilization alongside stable interest cover.
   - Generalist [G-14] · Jevons / [G-3] cyclic vs secular [added 2026-08-22]: Fireworks >40T tokens/day is volume; next-era gap failing to re-widen (or open TaaS ROI → $100M/MW) is the joint falsifier (per [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]).
 ## Related Research
+
+- [[Research/2026-08-28 - NVDA NBIS MRVL 000660 - AWS 2M GPUs NVHBM Vera Expansion - news]]
+- [[Research/2026-08-28 - AVGO NVDA - OpenAI Jalapeno InferenceX First Results - news]]
 
 - [[Research/2026-06-02 - Datacenter CPU Landscape 2026 - deep-dive]]: SemiAnalysis "CPUs are Back": Intel-vs-AMD divergence widens (Diamond Rapids SMT-less + 8-ch Diamond Rapids-SP cancelled vs new AMD Venice SP8; Clearwater Forest +17% low-yield "learning vehicle"); ARM/hyperscaler vertical integration (Graviton5/Cobalt/Axion/Phoenix/Venom) permanently closing Intel's TAM; Fairwater 1:6 CPU:GPU power ratio (rising); Bluefield-4 KV-cache-to-NAND "third network"; CPU role taxonomy + interconnect-scaling-ladder frameworks. Integrated into §Product Level Analysis (Intel CPU entry).
 - [[Research/2026-05-22 - NVDA Q1-2027 - earnings]]: NVDA Q1 FY2027 earnings transcript (call 2026-05-20): $82B rev (+85% YoY, +20% seq) beat $78B prior Q1 guide by $4B; Q2 guide $91B (+11% seq); GAAP GM recovered 71.1%→74.9%; reshaped reporting into **Hyperscale / ACIE / Edge Computing** segments makes sovereign + Vera CPU visible as discrete growth lines; **Vera CPU surfaced as "$200B brand-new TAM"**, a net-new bull driver beyond GPU not yet in NVDA thesis Bull Case; sovereign +80% YoY across 40 countries / $50T GDP; $1T Blackwell+Rubin visibility 2025–2027; "AI is now a necessity" Jevons reframe on inference deflation; hyperscaler concentration steady at 50% top-customer (bear-case unchanged); Q&A skeptical-keyword density = 0 vs prior-2-Q non-zero baseline (sell-side capitulation, a contrarian indicator). Hedging −30%, specificity +48% vs prior-2-Q avg → management confidence inflection. Strengthens sector demand-floor framing; bear cases on hyperscaler-ASIC + China remained unaddressed in management commentary.
@@ -288,6 +294,17 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]]: CS-4 same-silicon decode refresh; 44GB wall; heterogeneous disagg
 - [[Research/2026-08-19 - CBRS NVDA VICR - Irrational Cerebras Supernova - news]]: parametric-yield / shmoo; Vicor current-multiplier colour
 - [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: cyclic open-vs-closed gap + $100M/MW auction; Jevons confirmed, intelligence-premium commoditization not already done
+
+- [[Research/2026-08-24 - NVDA AMD - SemiAnalysis AgentX InferenceXv3 CUDA Moat - deep-dive]]: AgentX 1.0 — CUDA moat as DCP/PCP + TTFI + lifecycle integral; ATOM ≠ customer stack
+- [[Research/2026-08-27 - NVDA - Q2 FY27 Earnings Vera Rubin Production - earnings]]
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]
+- [[Research/2026-08-27 - AVGO NVDA 000660 - OpenAI Jalapeno ASIC Hot Chips - news]]
+- [[Research/2026-08-27 - NVDA NBIS - Nscale 45B Vera Rubin Anthropic - news]]
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 19-layer AI-infra coverage map; NVIDIA guidance as spreading bottlenecks
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Hot Chips Day 3: Spectrum-X multiplane, BlueField-4, Jalapeño process/moat, MX1 CXL
+- [[Research/2026-08-29 - NVDA NBIS - Denies Pausing AI Compute Partnership - news]]: Nvidia denies pausing AI Compute Partnership; $36B commitments
+- [[Research/2026-08-29 - NVDA 000660 - Samsung 8-Layer HBM4E for NVHBM - news]]: Samsung 8-Hi HBM4E for NVHBM (SEDaily, unverified)
+- [[Research/2026-08-29 - NVDA NBIS - AI Rack Density Power Cooling Limits - news]]: AI rack density capped by power delivery and failure risk
 
 ## Log
 
@@ -373,3 +390,16 @@ With tool processing at 50–90% of agentic latency, the host-CPU stack is now p
 - [[Research/2026-08-19 - CBRS NVDA - SemiAnalysis Cerebras CS-4 - deep-dive]]: CS-4 is WSE-3 reuse, not a new wafer; layer-renter on AWS EFA.
 ### 2026-08-22
 - [[Research/2026-08-21 - NVDA - SemiAnalysis Open Models Catching Up - deep-dive]]: open catch-up half-life is an efficiency channel; $100M/MW vs sub-$30M/MW auction reallocates incremental GW to frontier labs — Jevons sign confirmed, not a GPU-demand cut.
+
+### 2026-08-27
+- [[Research/2026-08-24 - NVDA AMD - SemiAnalysis AgentX InferenceXv3 CUDA Moat - deep-dive]]: agentic production traffic is a systems problem; NVIDIA leads on customer-relevant upstream stacks; AMD velocity is real and ATOM-local. Cross-thesis: NVDA Insight #1 supported (not a permanent tok/s monopoly); AMD Insight #3 velocity supported, ATOM-as-customer challenged.
+- [[Research/2026-08-27 - NVDA - Q2 FY27 Earnings Vera Rubin Production - earnings]]: NVDA Q2 $96.2B / Rubin full production — sector demand print, not a share-split.
+- [[Research/2026-08-27 - AVGO NVDA 000660 - OpenAI Jalapeno ASIC Hot Chips - news]]: OpenAI Jalapeño (Broadcom) is a live inference ASIC on InferenceX; CUDA vs XPU remains workload-conditional.
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]: NVHBM pulls custom XPUs onto NVIDIA's memory+Fusion stack.
+- Status change: [[Theses/CBRS - Cerebras Systems]] draft → active — watchlist coverage-tier review; added to Active Theses.
+
+### 2026-08-28
+- Daily Intel triage: linked new research (AWS 2M / NVHBM / Jalapeño / HBM packaging / memory hike / HBF / Maven / Starbase as applicable).
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]], [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]], [[Research/2026-08-29 - NVDA NBIS - Denies Pausing AI Compute Partnership - news]], [[Research/2026-08-29 - NVDA 000660 - Samsung 8-Layer HBM4E for NVHBM - news]], [[Research/2026-08-29 - NVDA NBIS - AI Rack Density Power Cooling Limits - news]]: PhotonCap 19-layer map + Hot Chips Day 3 (Spectrum-X multiplane / Jalapeño process) + ACP denial + unverified 8-Hi NVHBM + rack-density power ceiling — NVDA/CBRS adjacency; no conviction/status change.

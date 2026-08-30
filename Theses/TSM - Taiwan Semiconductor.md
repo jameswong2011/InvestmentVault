@@ -516,3 +516,7 @@ Bear case is a combination of customer concentration shock + Arizona margin drag
 
 ### 2026-08-25
 - [[Macro & Technology/AI Supply-Demand Considerations to 2030]]: cross-cutting supply/demand synthesis places packaging outside the binding-constraint set (CoWoS gap 20→10%; bottleneck relocated to HBM bits + energised power) — already in Bear #6 / Risk #9 / the 2026-08-21 CoWoS-alternative trigger-touch; advanced-node rents intact, marginal-negative only to the packaging-scarcity leg — conviction unchanged (high).
+
+### 2026-08-27
+- Cross-thesis signal via [[Research/2026-08-27 - MU 000660 - Hot Chips 2026 Tuning into Memory Vibes - deep-dive]]: MU/SKH must partner TSMC for logic-node HBM base die while Samsung uses in-house 4nm — supports TSM as the landlord for everyone who is not Samsung; not a CoWoS/GM/Arizona print — conviction unchanged (high).
+- Cross-thesis signal via [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]: Samsung Foundry PDK + 2027 thermocompression optical engines / 2029 turnkey CPO is COUPE competitor colour for Insight #4 — HIGH-reaffirm / LOW / CLOSE no-touch — conviction unchanged (high).

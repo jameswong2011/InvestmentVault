@@ -600,6 +600,8 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 - [[Research/2026-08-14 - AMAT LRCX KLAC - Q3 FY2026 Earnings - earnings]]
 - [[Research/2026-08-14 - 000660 NVDA - SK hynix 720B AI Memory Buildout - news]]
 - [[Research/2026-08-15 - AEHR - Stress Test]]: single AI customer remains binary; prior stress tests on file
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 19-layer AI-infra coverage map; NVIDIA guidance as spreading bottlenecks
+
 ## Legacy Callouts
 <!-- Auto-managed by /archive-callouts. Addressed callouts older than the sweep threshold (default 180 days) are moved here from their original sections as plain bulleted entries: `- **<addressed-date>** · <type> · <section> · raised <fresh-date> → <body>` with a `**Response:**` sub-bullet. Sorted descending (newest first). Do NOT hand-edit. To exempt a callout from sweeping, add `[[pinned]]` to its header in-place. -->
 
@@ -681,3 +683,6 @@ The recommended SEMICAP basket prioritises structural compounders trading below 
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: PhotonCap layer-5 FORM adjacency; no new tool print — no conviction/status change.

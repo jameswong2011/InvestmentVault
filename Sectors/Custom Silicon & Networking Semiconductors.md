@@ -325,6 +325,10 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 - **Disconfirming check**: Models agree Interconnect is the de-risked FY27 engine and Custom is a FY28 event. Hunt the bear: Celestial still little P&L, no PF customer at NVIDIA/SK hynix, T3 execution credibility unrepaired. Single falsifier: Aug 27 Interconnect guide cut *or* Oct 6 FY28 Custom walk-back below the $3.6B CLOSE line.
 
 ## Related Research
+- [[Research/2026-08-28 - AVGO NVDA - OpenAI Jalapeno InferenceX First Results - news]]
+- [[Research/2026-08-28 - MRVL - Google Custom Silicon Warrant Deal Peel-Apart - news]]
+- [[Research/2026-08-28 - NVDA NBIS MRVL 000660 - AWS 2M GPUs NVHBM Vera Expansion - news]]
+
 - [[Research/2025-11-27 - Broadcom Data Center Opportunity]]: Custom ASIC SAM $60–90B by FY2027; 80–90% Ethernet switching silicon share; 9–12 month technology lead over competitors; Tomahawk 5/6/Ultra product family framing
 - [[Research/2025-11-27 - Broadcom Ethernet Networking Position]]: Arista #1 data-center switch revenue Q1 2025 (21.5%); Nvidia Spectrum-X +760% YoY; Cisco share collapse 78% (2012) → 18% (Q1 2025); Jericho4 + Thor Ultra 800G AI NIC positioning
 - [[Research/2025-11-27 - Broadcom Equity Research Framework]]: FY2025 AI revenue $22B trajectory; Goldman FY2026 $45B / FY2027 $77B projections; 78% gross margin / 44% FCF conversion; PEG 1.44 vs NVDA 0.68
@@ -352,6 +356,13 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 
 - [[Research/2026-08-14 - TSM NVDA AVGO - N2 100k Wafers YE26 - news]]
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: FY27 = Interconnect, FY28 = Custom; Google 8-K is system content not a socket; $120B warrant ceiling not a PO; Aug 27 variables = Interconnect growth + Q3 guide
+- [[Research/2026-08-27 - AVGO NVDA 000660 - OpenAI Jalapeno ASIC Hot Chips - news]]
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]]: 19-layer AI-infra coverage map; NVIDIA guidance as spreading bottlenecks
+- [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]]: Hot Chips Day 3: Spectrum-X multiplane, BlueField-4, Jalapeño process/moat, MX1 CXL
+- [[Research/2026-08-29 - MRVL - Q2 FY27 Record Revenue FY28 Raise - news]]: Marvell Q2 FY27 record + FY28 ~$18B raise on scale-up optics/switching
+- [[Research/2026-08-29 - AVGO - 70B AI Chip SPV Debt Talks Anthropic - news]]: Broadcom ~$70–80B Anthropic SPV debt talks
+
 ## Log
 ### 2026-04-22
 - Initial sector note created via subsector split from [[_Archive/Sectors/Semiconductors]] — pending prompt-fill of sector analysis sections.
@@ -402,3 +413,13 @@ The sector has an unusually asymmetric structure: one incumbent (Broadcom) holds
 ### 2026-08-22
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: Interconnect-first FY27 mix + Google system-content 8-K; HIGH still 1/3 near-fired; T100 wallet-share vs Tomahawk is content not a share flip. Cross-thesis: AVGO Sunfish lock intact; MRVL attach does not take training TPU.
 
+
+### 2026-08-27
+- [[Research/2026-08-27 - AVGO NVDA 000660 - OpenAI Jalapeno ASIC Hot Chips - news]]: OpenAI Jalapeño Broadcom-built; Tomahawk6 is the 2,048-chip Clos.
+- [[Research/2026-08-27 - NVDA 000660 AVGO MRVL - NVLink Fusion NVHBM Custom HBM - news]]: Fusion NVHBM is NVIDIA's memory spec for Trainium4/XPUs — AVGO/MRVL attach, not a socket-steal.
+
+### 2026-08-28
+- Daily Intel triage: linked new research (AWS 2M / NVHBM / Jalapeño / HBM packaging / memory hike / HBF / Maven / Starbase as applicable).
+
+### 2026-08-29
+- [[Research/2026-08-27 - NVDA AVGO MRVL 000660 - PhotonCap AI Infrastructure Value Chain Reading List - deep-dive]], [[Research/2026-08-26 - NVDA AVGO 000660 SNDK - Jasons Chips Hot Chips Day 3 Jalapeno - deep-dive]], [[Research/2026-08-29 - MRVL - Q2 FY27 Record Revenue FY28 Raise - news]], [[Research/2026-08-29 - AVGO - 70B AI Chip SPV Debt Talks Anthropic - news]]: PhotonCap layer map + Day 3 Thor/Jalapeño + MRVL Q2 $2.74B / FY28 ~$18B raise + AVGO ~$70–80B Anthropic SPV talks — no conviction/status change.

@@ -255,6 +255,10 @@ For GPU-hours the load-bearing fact is the decoupling: at a flat contracted rate
 - [[Research/2026-08-13 - NBIS CRWV - Economics of a Neocloud Unit Model - deep-dive]]
 - [[Website/2026-08-26 - AI Compute - The Token Factory and the Demand Hurdle]]
 
+- [[Research/2026-08-27 - NVDA - Q2 FY27 Earnings Vera Rubin Production - earnings]]
+- [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]
+- [[Research/2026-08-27 - 000660 - SK hynix HBM4 12-Hi MP 16-Hi Qual - news]]
+
 ## Log
 
 - 2026-08-25: Note created — synthesis of session on HBM/power supply gates, token demand balance line (~3x/yr), price-formation cascade/convexity, and GPU-hr/token price decoupling to 2030. Verified via three web sweeps (HBM/CoWoS supply, token demand/pricing, power capacity) + vault power complex.
@@ -263,3 +267,7 @@ For GPU-hours the load-bearing fact is the decoupling: at a flat contracted rate
 - 2026-08-26: Manual edit (session, user-directed) — §7 reframed on payers: compute expenditure by payer (~$300-400B, 2-2.5x measured AI revenue; every watt paid, compute layer at 1.4-1.7x economic cost), training and internal workloads treated as paid-for demand of differing duration rather than an unmonetised gap, margin-condition scenarios recut as bridge-hit / bridge-missed / above-bridge; Summary, §5 payer-mix observable and the [G-4] hypothesis updated — framework unchanged.
 - 2026-08-26: Manual edit (session, user-directed) — restructured into Part I Supply (§1 physical gates, §2 efficiency engine, §3 cost of supply and the COGS line), Part II Demand (§4 token demand, §5 dollar demand by payer, §6 demand against supply: regime path and economic balance, §7 margin condition) and an Appendix (A price formation, B observables, C affected theses, D method notes and sensitivities); all content carried over, cross-references renumbered, benchmark $/M figures re-based to the 7/25-year economic stack — framework and numbers unchanged.
 - 2026-08-26: Manual edit (session, user-directed) — Website essay [[Website/2026-08-26 - AI Compute - The Token Factory and the Demand Hurdle]] drafted from Parts I-II (supply-led: token capacity, cost of supply at rack level, the ~40%/yr dollar-demand hurdle, agentic demand running above it); Appendix D gained a scope paragraph confirming the $47/W bill is rack-level plus scale-out network and shell — framework unchanged.
+
+### 2026-08-27
+- [[Research/2026-08-27 - NVDA - Q2 FY27 Earnings Vera Rubin Production - earnings]]: Rubin full production + $96.2B Q2 is a token-factory run-rate print; China still zeroed in Q3 guide.
+- [[Research/2026-08-27 - 000660 SNDK 285A - Memory 68pct Cloud Capex 2027 - news]]: HBM+RDIMM 51% of DRAM bits in 2026; +27% server DRAM+HBM bits in 2027 is the supply-add that can end tightness if ceilings bind.

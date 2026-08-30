@@ -101,7 +101,8 @@ This is a reference checklist, **not a sequential step**: create each credential
 | Telegram bot | Telegram API | §2.2 (BotFather) | Every workflow's notifications + the §2.5 watchdog |
 | FMP | HTTP Query Auth (`apikey` param) | Copy the key from `.data/config.json` (same one Watchlist / Live Portfolio / skills use) | Workflows 1 (Price Tripwires) + 3 unified (ticker news) |
 | twitterapi.io | Header Auth (`X-API-Key`) | twitterapi.io dashboard — §6.1 | Workflows 4–5 |
-| Anthropic | Header Auth (`x-api-key`) | console.anthropic.com — separate billing from the Claude Code subscription | Workflow 5 sentiment layer (Opus); Workflow 3 (unified) — triage + clustering (Sonnet), body re-score + story summaries (Opus); all per the §2.4 registry table |
+| OpenRouter | Header Auth (`Authorization: Bearer sk-or-…`) | openrouter.ai — single key, model chosen per request body; set a per-key spend cap | ALL LLM calls since 2026-08-27: W3 triage + re-score (`z-ai/glm-5.2`, ZDR-pinned via `provider: {data_collection: 'deny'}`), W3 story summaries + W5 sentiment (`x-ai/grok-4.6`); slugs per the §2.4 registry cells |
+| Anthropic | Header Auth (`x-api-key`) | console.anthropic.com — **rollback-only since the 2026-08-27 OpenRouter switch** (credential kept in n8n, unused) | Restore by flipping the four registry model cells back to claude-* slugs + the four HTTP nodes' URL/credential |
 | Brave Search | Header Auth (`X-Subscription-Token`) | brave.com/search/api — **paid metered tier** (free 2,000/mo vs ~3,000/mo needed for full ticker+theme daily coverage — verify per-1,000 pricing at upgrade) | Workflow 3 (unified) thematic + per-ticker search channel |
 | Voyage | Header Auth (`Authorization`, value `Bearer <key>`) | voyageai.com/dashboard → API Keys — **200M free tokens/account**, then $0.02/M (`voyage-4-lite`); effectively free at this volume for ~2+ yrs | Workflow 3 (unified) — embeddings semantic-dedup layer (card 15d) |
 
@@ -183,13 +184,13 @@ return [...section.matchAll(/^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*([^|]*?)\s*\|
 
 | Registry key | Lives in | Default | Drives |
 |---|---|---|---|
-| `triage_model` | `## Outlet Feeds → ### Tuning` | `claude-sonnet-5` | W3 headline triage (§5.3 card 14a) |
+| `triage_model` | `## Outlet Feeds → ### Tuning` | `z-ai/glm-5.2` | W3 headline triage (§5.3 card 14a). All LLM slugs are OpenRouter model IDs since 2026-08-27 |
 | `cluster_model` | `## Outlet Feeds → ### Tuning` | `claude-opus-4-8` | ⚠ DEPRECATED — clustering replaced by embeddings (`embed_model`). Registry row kept for rollback only |
 | `embed_model` | `## Outlet Feeds → ### Tuning` | `voyage-4-lite` | W3 semantic-dedup embedder (§5.3 card 15d) — Voyage, collapses same-story dupes pre-body |
-| `rescore_model` | `## Outlet Feeds → ### Tuning` | `claude-opus-4-8` | W3 body re-score (§5.3 card 17) |
-| `digest_model` | `## Outlet Feeds → ### Tuning` | `claude-opus-4-8` | W3 story summaries (§5.3 card 18d) |
-| `llm_model` | `## X Watchers → ### Tuning` | `claude-opus-4-8` | W5 sentiment / thesis-divergence (§7.2 card 14) |
-| `triage_prompt` | `## Outlet Feeds → ### Prompts` | card-5 `DEF_P` fallback | W3 triage scoring rubric (tokens: `{tickers}` `{themes}` `{items}`) |
+| `rescore_model` | `## Outlet Feeds → ### Tuning` | `z-ai/glm-5.2` | W3 body re-score (§5.3 card 17) |
+| `digest_model` | `## Outlet Feeds → ### Tuning` | `x-ai/grok-4.6` | W3 story summaries (§5.3 card 18d) — judgement seat |
+| `llm_model` | `## X Watchers → ### Tuning` | `x-ai/grok-4.6` | W5 sentiment / thesis-divergence (§7.2 card 14) — judgement seat |
+| `triage_prompt` | `## Outlet Feeds → ### Prompts` | card-5 `DEF_P` fallback | W3 triage scoring rubric + `t_en` English translation of non-English headlines (tokens: `{tickers}` `{themes}` `{items}`) |
 | `rescore_prompt` | `## Outlet Feeds → ### Prompts` | card-5 `DEF_P` fallback | W3 body re-score rubric (same tokens) |
 | `cluster_prompt` | `## Outlet Feeds → ### Prompts` | card-5 `DEF_P` fallback | ⚠ DEPRECATED — no LLM cluster call remains (embeddings replaced it); prompt unused, kept for rollback |
 | `digest_prompt` | `## Outlet Feeds → ### Prompts` | card-5 `DEF_P` fallback | W3 per-story summary style (tokens: `{tickers}` `{themes}` `{items}`) |
@@ -359,9 +360,9 @@ return out.length ? [{ json: { text: out.join('\n') } }] : [];
 
 ---
 
-## 5. Workflow 3 — News Sweep (unified: outlet feeds + 4 search engines + body pipeline + story clustering + Opus brief)
+## 5. Workflow 3 — News Sweep (unified: outlet feeds + 4 search engines + body pipeline + `brief_min` gate + Grok-4.6 brief)
 
-**What:** daily morning sweep (single run) of five acquisition channels — the ~94-row `## Outlet Feeds` registry, FMP ticker news, and **GDELT + Brave + Google News each running every thesis ticker AND every News & Thematic row** — → dedupe → headline triage (Sonnet) → body pipeline (defuddle full-text fetch + body-informed re-score, Opus — Lane A) → **story clustering** (the same event reported by several outlets consolidates into one entry) → **Opus-summarised daily intel brief** — one summary per story with links to every source article — in `Daily Intel/` + Telegram top-lines. **No `_Inbox/` deposits**: the brief is the scanning surface; you hand-pick links for `/ingest`.
+**What:** daily morning sweep (single run) of five acquisition channels — the ~94-row `## Outlet Feeds` registry, FMP ticker news, and **GDELT + Brave + Google News each running every thesis ticker AND every News & Thematic row** — → dedupe → headline triage (GLM-5.2) → body pipeline (defuddle full-text fetch + body-informed re-score, GLM-5.2 — Lane A) → **story clustering** (the same event reported by several outlets consolidates into one entry) → **presentation gate** (2026-08-27: full analysis only at final score ≥ `brief_min`; a capped links-only tail below it; the rest cut from the brief, kept in the `.data` log) → **Grok-4.6-summarised daily intel brief** — one summary per gated story with links to every source article — in `Daily Intel/` + Telegram top-lines. All LLM calls via OpenRouter since 2026-08-27; models are §2.4 registry cells. **No `_Inbox/` deposits**: the brief is the scanning surface; you hand-pick links for `/ingest`.
 
 Legacy v1 build preserved at §5.8; it deactivates at §5.6 cutover.
 
@@ -370,10 +371,10 @@ Legacy v1 build preserved at §5.8; it deactivates at §5.6 cutover.
 |              |                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Build effort | ~5–7 h (§5.1–§5.7 below)                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| Running cost | ~$60–110/mo — **Sonnet headline triage ~$15–30** (widest stage, ~2k items/day) + Sonnet clustering ~$1–2 + **Opus body re-score ~$10–15** + **Opus story summaries ~$25–50** + **Brave paid ~$8–15** (~3,000 queries/mo metered; verify pricing); GDELT free; FMP existing plan. All four models are §2.4 registry cells — de-escalate (Haiku triage, Sonnet summaries) if the bill outgrows the value |
+| Running cost | ~$14–28/mo since the 2026-08-27 OpenRouter switch — **GLM-5.2 headline triage ~$3–6** (widest stage, ~2k items/day) + Voyage embeddings ~$0 (free-tier volume) + **GLM-5.2 body re-score ~$1–2** + **Grok 4.6 story summaries ~$2–5** (post-`brief_min` gate) + **Brave paid ~$8–15** (~3,000 queries/mo metered); GDELT free; FMP existing plan. Pre-switch: ~$40–75 on Sonnet/Opus. All models are §2.4 registry cells — step up to `moonshotai/kimi-k3` or back to Anthropic slugs by editing cells + card-14a URL/credential |
 | Maintenance  | ~20 min/mo — feed rot (zero-item rows in the brief), registry prune, threshold tuning via `### Tuning (body pipeline)`                                                                                                                                                                                                                                                                                                                                        |
 | Benefit      | **High.** Complete daily coverage — every ticker × 4 engines, every theme × 3 engines, 94 named sources — body-verified scoring, and a readable morning brief instead of a link dump                                                                                                                                                                                                                                                                          |
-| Status       | **In build** — supersedes both v1 (live until cutover) and the 3b plan; build §5.1–§5.7, cutover §5.6                                                                                                                                                                                                                                                                                                                                              |
+| Status       | **Live** — daily 07:20 (unified build superseded v1 2026-07-20; presentation gate added 2026-08-27); build §5.1–§5.7 retained as the rebuild reference                                                                                                                                                                                                                                                                                                                                              |
 
 **Channels:**
 
@@ -399,7 +400,7 @@ Ten checks, Terminal + browser, in order. Each has a command, what PASS looks li
 
 | Key | Where to get it | Check |
 |---|---|---|
-| Anthropic | console.anthropic.com → API Keys. n8n **masks** stored credentials — you cannot copy a key back out of n8n, so if it isn't saved anywhere else, create a fresh key there (and update the n8n credential to match) | 4 |
+| OpenRouter | openrouter.ai → Keys → create key **with a per-key spend cap** (runaway-loop guard). n8n **masks** stored credentials — you cannot copy a key back out of n8n, so if it isn't saved anywhere else, create a fresh key there (and update the n8n credential to match). Replaced Anthropic 2026-08-27 (that account is rollback-only) | 4 |
 | Brave | brave.com/search/api → API Keys tab | 5 |
 | FMP | already on disk in `.data/config.json` — check 7's command reads it for you, nothing to paste | 7 |
 
@@ -413,19 +414,19 @@ PASS: n8n row shows `online`. Then browser → `http://localhost:5678` → the w
 
 **2 · Execute Command node available.** In n8n: open any workflow → `+` → search `Execute Command` → the node appears in the panel. This build uses it four times (Tickers, PriorStories, Catalyst, XDash) plus Defuddle. FAIL: the §1.3 `NODES_EXCLUDE` override is missing from the pm2 environment — re-apply it, `pm2 restart n8n`, re-check.
 
-**3 · Credentials + watchdog present.** n8n → **Credentials**: `Telegram`, `FMP` (Query Auth, param `apikey`), `Anthropic` (Header Auth, `x-api-key`) all listed. n8n → **Workflows**: `Error Watchdog` exists and is published (§2.5). FAIL: create the missing piece before proceeding — every card that needs one references these by name, and the watchdog must exist before card 1 sets it as the error workflow.
+**3 · Credentials + watchdog present.** n8n → **Credentials**: `Telegram`, `FMP` (Query Auth, param `apikey`), `OpenRouter` (Header Auth, `Authorization: Bearer …`; the legacy `Anthropic` credential may also be listed — rollback-only) all listed. n8n → **Workflows**: `Error Watchdog` exists and is published (§2.5). FAIL: create the missing piece before proceeding — every card that needs one references these by name, and the watchdog must exist before card 1 sets it as the error workflow.
 
-**4 · Anthropic key, models, and balance.** The workflow calls **both** tiers — Sonnet (triage, clustering) and Opus (re-score, summaries) — so test both. In line 1, replace `paste-key-here` with your Anthropic key (keep the single quotes); then paste the whole block into Terminal at once — the two curls reuse the key set on line 1 and hit each model in turn:
+**4 · OpenRouter key, models, and balance** (2026-08-27 switch — was Anthropic; the old Anthropic credential stays in n8n for rollback). The workflow calls **both** seats — GLM-5.2 (triage, re-score) and Grok 4.6 (summaries; W5 sentiment) — so test both. In line 1, replace `paste-key-here` with your OpenRouter key (keep the single quotes); then paste the whole block:
 ```bash
-ANTH_KEY='paste-key-here'
-curl -s https://api.anthropic.com/v1/messages -H "x-api-key: $ANTH_KEY" \
-  -H "anthropic-version: 2023-06-01" -H "content-type: application/json" \
-  -d '{"model":"claude-sonnet-5","max_tokens":16,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}'
-curl -s https://api.anthropic.com/v1/messages -H "x-api-key: $ANTH_KEY" \
-  -H "anthropic-version: 2023-06-01" -H "content-type: application/json" \
-  -d '{"model":"claude-opus-4-8","max_tokens":16,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}'
+OR_KEY='paste-key-here'
+curl -s https://openrouter.ai/api/v1/chat/completions -H "Authorization: Bearer $OR_KEY" \
+  -H "content-type: application/json" \
+  -d '{"model":"z-ai/glm-5.2","max_tokens":200,"provider":{"data_collection":"deny"},"messages":[{"role":"user","content":"Reply with exactly: ok"}]}'
+curl -s https://openrouter.ai/api/v1/chat/completions -H "Authorization: Bearer $OR_KEY" \
+  -H "content-type: application/json" \
+  -d '{"model":"x-ai/grok-4.6","max_tokens":200,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}'
 ```
-PASS: each of the two responses is JSON with a `content` array whose text block says `ok`. FAIL: `authentication_error`/401 → wrong key; `not_found_error`/404 on a model → the §2.4 registry cell names a model this key can't reach — fix the cell or the account. **Then check the prepaid balance at console.anthropic.com** — an exhausted balance does not break the build, it silently 400s every LLM node at runtime (On-Error-Continue) and ships headline-only briefs.
+PASS: each response is JSON with `choices[0].message.content` containing `ok` (reasoning models may spend a few hundred completion tokens thinking first — that is normal). FAIL: 401 → wrong key; 404/400 on a model → the §2.4 registry cell names a slug this key can't reach — fix the cell or the account. **Then check credits at openrouter.ai/activity** — an exhausted balance does not break the build, it silently 4xxs every LLM node at runtime (On-Error-Continue) and ships headline-only briefs. Set a per-key spend cap on the Keys page so a runaway loop cannot drain the account.
 
 **5 · Brave paid tier + key.** Dashboard first: browser → brave.com/search/api → log in → confirm the subscription shows a **paid metered plan** (free 2,000/mo < the ~3,000/mo this workflow issues — a free key passes the curl below and then dies mid-month). Then in Terminal — replace `paste-key-here` on line 1 with your Brave key (API Keys tab on that same dashboard), then paste the whole block:
 ```bash
@@ -483,7 +484,7 @@ curl -s https://api.voyageai.com/v1/embeddings -H "Authorization: Bearer $VOYAGE
   | head -c 300; echo
 ```
   PASS: JSON with a `data` array of two objects each carrying an `embedding` array + a `usage.total_tokens` count. FAIL: `401`/`invalid api key` → wrong key; `model not found` → check the model string is exactly `voyage-4-lite`. (The two sample strings are near-duplicates by design — the whole layer rests on their vectors landing close.)
-- FMP (Query Auth) and Anthropic (Header Auth) — already exist.
+- FMP (Query Auth) and OpenRouter (Header Auth) — already exist (legacy Anthropic credential kept for rollback).
 
 ### 5.3 Build cards
 
@@ -518,10 +519,10 @@ cd /Users/alexcohen/InvestmentVault/.data/news_stories 2>/dev/null && for f in $
 **5 · Code "Plan"** (Run Once for All Items) — parses both registry sections + Tuning, emits one task item per source call:
 
 ```javascript
-const DEF = { triage_min:7, triage_min_pw:9, gdelt_spacing_s:8, brave_budget_mo:3500, story_memory_days:7, catalyst_window_d:10, max_age_d:3, tg_max_msgs:10, tg_per_subject:2, dedup_ttl_d:3, track_min_score:8, track_window_d:30, merge_jaccard:0.42,
+const DEF = { triage_min:8, triage_min_pw:9, gdelt_spacing_s:8, brave_budget_mo:3500, story_memory_days:7, catalyst_window_d:10, max_age_d:3, tg_max_msgs:10, tg_per_subject:2, dedup_ttl_d:3, track_min_score:8, track_window_d:30, merge_jaccard:0.42, brief_min:9, brief_tail_min:8, brief_tail_max:50,
   sim_threshold:0.86, repeat_threshold:0.88, embed_max_chars:1000,
-  triage_model:'claude-sonnet-5', cluster_model:'claude-opus-4-8', embed_model:'voyage-4-lite',
-  rescore_model:'claude-opus-4-8', digest_model:'claude-opus-4-8',
+  triage_model:'z-ai/glm-5.2', cluster_model:'claude-opus-4-8', embed_model:'voyage-4-lite',
+  rescore_model:'z-ai/glm-5.2', digest_model:'x-ai/grok-4.6',
   paywall_domains:['bloomberg.com','wsj.com','ft.com','economist.com','nytimes.com','theinformation.com','barrons.com'],
   body_exempt:['digitimes','ft-home','bbg-tech','bbg-econ','bbg-markets','wsj-markets','wsj-tech','wsj-business','econ-finance','econ-business','nyt-business','nyt-tech','theinformation','techmeme','mediagazer'] };
 const md = $('RegText').first().json.data || '';
@@ -532,7 +533,7 @@ const section = h => (md.split('## '+h)[1] || '').split(/\n## /)[0];
 // Tuning params (fallback = DEF)
 const tun = section('Outlet Feeds');
 const cfg = {...DEF};
-for (const k of ['triage_min','triage_min_pw','gdelt_spacing_s','brave_budget_mo','story_memory_days','catalyst_window_d','max_age_d','tg_max_msgs','tg_per_subject','dedup_ttl_d','track_min_score','track_window_d','merge_jaccard','sim_threshold','repeat_threshold','embed_max_chars']) {
+for (const k of ['triage_min','triage_min_pw','gdelt_spacing_s','brave_budget_mo','story_memory_days','catalyst_window_d','max_age_d','tg_max_msgs','tg_per_subject','dedup_ttl_d','track_min_score','track_window_d','merge_jaccard','sim_threshold','repeat_threshold','embed_max_chars','brief_min','brief_tail_min','brief_tail_max']) {
   const m = tun.match(new RegExp('\\|\\s*'+k+'\\s*\\|\\s*([^|]+?)\\s*\\|'));
   if (m && !isNaN(parseFloat(m[1]))) cfg[k] = parseFloat(m[1]);
 }
@@ -547,7 +548,7 @@ if (pwd) cfg.paywall_domains = pwd[1].split(',').map(s=>s.trim()).filter(Boolean
 
 // LLM prompts — registry-editable (### Prompts → #### blocks); missing block or missing REQUIRED token → code fallback
 const DEF_P = {
-  triage_prompt:`You score news items for one investor. Coverage tickers: {tickers}. Live research questions: {themes}. Clusters also covered: semis, datacenter, china-tech, macro, AI, futurism, tech philosophy, consumer tech. Score each item 0-10 on NEW information value to this coverage: 9-10 directly material new fact (guidance, capacity, pricing, regulatory, primary technical disclosure); 7-8 clearly relevant development; 4-6 adjacent context; 0-3 noise — listicles, price-target roundups, "stocks to buy", rehash, sponsored. Judge information content, not sentiment. Items flagged pw:1 are paywalled — only the headline is readable; hold them to a stricter bar: 8-10 only if the headline alone discloses a material new fact for this coverage, otherwise 0-3. Items: {items} — Return ONLY a JSON array [{"i":0,"s":7},...] covering every item.`,
+  triage_prompt:`You score news items for one investor. Coverage tickers: {tickers}. Live research questions: {themes}. Clusters also covered: semis, datacenter, china-tech, macro, AI, futurism, tech philosophy, consumer tech. Score each item 0-10 on NEW information value to this coverage: 9-10 directly material new fact (guidance, capacity, pricing, regulatory, primary technical disclosure); 7-8 clearly relevant development; 4-6 adjacent context; 0-3 noise — listicles, price-target roundups, "stocks to buy", rehash, sponsored. Judge information content, not sentiment. Items flagged pw:1 are paywalled — only the headline is readable; hold them to a stricter bar: 8-10 only if the headline alone discloses a material new fact for this coverage, otherwise 0-3. If an item's title (t) is not in English, add "t_en": a faithful English translation of the headline only (≤ 20 words; drop any trailing " - Publisher" suffix); omit t_en for English titles. Items: {items} — Return ONLY a JSON array [{"i":0,"s":7,"t_en":"..."},...] covering every item (t_en only where translated).`,
   rescore_prompt:`Re-score these news items 0-10 for NEW information value to an investor covering: {tickers}. Live research questions: {themes}. Each item carries its headline score (hs, may be null for auto-admitted sources) and an article excerpt (x). Confirm the article delivers substance — new numbers, primary quotes, disclosed specifics. Downgrade rehash/opinion; upgrade if the body reveals material specifics the headline undersold. Items flagged pw:1 are paywalled (excerpt is headline-grade only) — keep them high only if that alone is materially new. Items: {items} — Return ONLY a JSON array [{"i":0,"s":7},...] covering every item.`,
   cluster_prompt:`NEW ITEMS are news items from today, from multiple sources; each carries its headline (t) AND a content excerpt (x). PRIOR STORIES were already briefed to the reader on previous days (label, title, summary). Judge same-story on the EXCERPT's substance — the actors, action, and event it describes — NOT on headline wording; two articles with completely different headlines by different authors are the same story if their excerpts describe the same event. Two tasks. (1) Group NEW items that cover the SAME underlying story or event into clusters. Two items are the same story when they report the same actor + action + timeframe (the same announcement, filing, decision, result, or incident), even if headlines emphasize different aspects, figures, or reactions — multiple outlets covering one event is ONE cluster. Keep items separate only when the underlying events genuinely differ (different actors, different actions, or clearly distinct developments). (2) A NEW item that is follow-up coverage of a PRIOR story AND adds no material new facts beyond that story's summary is a repeat — list it under repeats with the prior label. If it ADVANCES the story (new numbers, official responses, next-step events, a material escalation), it is NOT a repeat — cluster it as new. Bias toward repeat: same event with no NEW specific (a number, a named actor, an official action) beyond the prior summary is a repeat even if the wording, outlet, or angle differs — when torn between repeat and new, choose repeat. NEW ITEMS: {items} PRIOR STORIES: {prior} — Return ONLY JSON: {"clusters":[[indices]],"repeats":[[itemIndex,"P<n>"],...]} with every NEW item index appearing exactly once across clusters and repeats.`,
   digest_prompt:`You write a daily intelligence brief for one investor. Coverage tickers: {tickers}. Live research questions: {themes}. Each item is one story, possibly reported by several sources (srcs) with merged excerpts. For each item write "sum": 2-5 sentences of decision-useful analysis. Lead with the concrete NEW facts — numbers with the comparison that gives them meaning (vs prior guidance, consensus, rivals), named actors, the mechanism of what changed, and stated timelines or next dates. Then state what it means for the coverage: which ticker or research question it touches and the transmission path (pricing power, capacity, share shift, cost curve, regulation, demand signal), and what would confirm or refute that read. Ground every claim in the provided text; label inference explicitly ("implies", "suggests", "if X then Y"). Where sources disagree on a figure, say so. Some items carry sig — the investor's live signals for the tickers involved (catalyst proximity, crowd sentiment); weave these into the implication when they sharpen it. Standing investor context: {context}. If the text is thin or navigation junk, one sentence restating the headline claim. Items: {items} — Return ONLY a JSON array [{"i":0,"sum":"..."},...] covering every item.` };
@@ -862,6 +863,7 @@ for (let i=0;i<score.length;i+=120) {
   const payload = JSON.stringify(chunk.map((j,k)=>({i:k, t:j.title, src:j.source||j.feedId, pw:j.pw?1:0, sn:(j.snippet||'').slice(0,180)})));
   out.push({ json: { _batch: chunk, _llm_body: {
     model: cfg.triage_model, max_tokens: 8000,
+    provider: { data_collection: 'deny' },   // OpenRouter 2026-08-27: ZDR hosts only — headlines + coverage tickers leave the machine
     messages: [{ role: 'user', content: sub(cfg.triage_prompt,
       {'{tickers}':cfg.tickers, '{themes}':cfg.themes, '{items}':payload}) }] } } });
 }
@@ -869,7 +871,7 @@ if (score.length === 0) out.push({ json: { _batch: [], _llm_body: null } });  //
 return out;
 ```
 
-> **Design note — nothing to build in this box.** The three LLM calls (Triage 14a · Rescore 17.5 · Summarise 18d) share one contract. (1) The request body is **built as a plain object in the preceding Code node** (cards 13, 17.4, 18c each set `_llm_body`); the HTTP node only stringifies it via the card-14a Expression paste, identical on all three — never assemble JSON by string-templating, because a quote character in any headline would produce invalid JSON. (2) **No `temperature` on any call**: Opus-family models reject sampling parameters with a 400, which On-Error-Continue would swallow into a silent headline-only digest; omitting it everywhere keeps every §2.4 model cell freely swappable. **Adaptive thinking rides on Rescore and Summarise** (`thinking: { type: 'adaptive' }` — a reasoning control, not a sampling param; valid on Opus 4.8 and Sonnet 5, and the parsers already filter to `text` blocks so thinking blocks pass through harmlessly); Triage stays plain — it's the volume stage. (3) **Models come from the registry** (§2.4) via Plan's `cfg` — currently triage `claude-sonnet-5`, rescore + digest `claude-opus-4-8`; de-escalation levers in §2.4 and the §5.5f audit. (4) **Prompts come from the registry too** — `## Outlet Feeds → ### Prompts` `####` blocks, parsed by Plan into `cfg` with runtime token substitution (`{tickers}` `{themes}` `{items}`); a block missing its required token reverts to the card-5 `DEF_P` fallback. Edit prompts in Obsidian, never in the Code nodes.
+> **Design note — nothing to build in this box.** The three LLM calls (Triage 14a · Rescore 17.5 · Summarise 18d) share one contract. (1) The request body is **built as a plain object in the preceding Code node** (cards 13, 17.4, 18c each set `_llm_body`); the HTTP node only stringifies it via the card-14a Expression paste, identical on all three — never assemble JSON by string-templating, because a quote character in any headline would produce invalid JSON. (2) **No `temperature` or provider-specific params on any call** — a rejected param 400s under On-Error-Continue into a silent headline-only digest; omitting them keeps every §2.4 model cell freely swappable. Since the 2026-08-27 OpenRouter switch the Anthropic-only `thinking` param is gone (GLM/Grok reason natively; parsers read `choices[0].message.content` with an Anthropic-shape fallback); the GLM calls carry `provider: {data_collection: 'deny'}` (ZDR hosts only — headlines and coverage tickers leave the machine). (3) **Models come from the registry** (§2.4) via Plan's `cfg` — currently triage + rescore `z-ai/glm-5.2`, digest `x-ai/grok-4.6`; swap levers in §2.4. (4) **Prompts come from the registry too** (the triage block also carries the 2026-08-27 `t_en` translation instruction) — `## Outlet Feeds → ### Prompts` `####` blocks, parsed by Plan into `cfg` with runtime token substitution (`{tickers}` `{themes}` `{items}`); a block missing its required token reverts to the card-5 `DEF_P` fallback. Edit prompts in Obsidian, never in the Code nodes.
 
 **14 · IF "IsBatch"** — one condition · Value 1 → Expression (Boolean · **is true**):
 ```
@@ -878,11 +880,11 @@ return out;
 true → card 14a · **false → card 15b input 2** (bypass rows and the warnings sentinel head for the body gate: `triage: no` sources with `fetchBody` get real bodies, scores, and summaries instead of riding headline-only; the sentinel fails the card-16 condition and flows through to Rejoin).
 
 **14a · HTTP "Triage"** — the template LLM node; build it once, then copy-paste for 17.5/18d:
-- **Method `POST`** (change from n8n's GET default — Anthropic is POST-only; GET returns 405 Method Not Allowed)
-- **URL** `https://api.anthropic.com/v1/messages`
-- **Credential:** Anthropic Header Auth (supplies `x-api-key` automatically — never add it by hand)
-- **Header:** Send Headers ON → Add Parameter → **Name** `anthropic-version` · **Value** `2023-06-01` (both plain strings, no Expression)
-- **On Error: Continue**
+- **Method `POST`** (change from n8n's GET default — the chat-completions endpoint is POST-only; GET returns 405)
+- **URL** `https://openrouter.ai/api/v1/chat/completions` (2026-08-27 switch — was `api.anthropic.com/v1/messages`)
+- **Credential:** OpenRouter Header Auth (supplies `Authorization: Bearer sk-or-…` automatically — never add it by hand)
+- **Headers:** Send Headers OFF — OpenRouter needs no version header (the old `anthropic-version` parameter is removed)
+- **Options → Timeout** `600000` · **On Error: Continue**
 - **Body:** Send Body ON → Body Content Type `JSON` → Specify Body **`Using JSON`** (if you see Name/Value fields here, you're in `Using Fields Below` — switch it; the correct mode shows ONE unnamed JSON field) → toggle that JSON field to **Expression** → paste:
 ```
 {{ JSON.stringify($json._llm_body) }}
@@ -898,12 +900,12 @@ const out = [];
 $input.all().forEach((it, idx) => {
   const j = it.json;
   const batch = preps[it.pairedItem?.item ?? idx]?._batch || [];
-  let scores = {};
-  try { const txt = (j.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
-    for (const r of JSON.parse(txt.match(/\[[\s\S]*\]/)[0])) scores[r.i] = r.s; } catch(e) {}
+  let scores = {}, tEn = {};
+  try { const txt = j.choices?.[0]?.message?.content ?? (j.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');   // OpenAI shape first (OpenRouter), Anthropic fallback — rollback = registry cells + URLs
+    for (const r of JSON.parse(txt.match(/\[[\s\S]*\]/)[0])) { scores[r.i] = r.s; if (r.t_en) tEn[r.i] = String(r.t_en).trim(); } } catch(e) {}
   batch.forEach((b,k) => { const s = scores[k] ?? 0;
     const min = b.pw ? (cfg.triage_min_pw ?? 9) : cfg.triage_min;   // paywalled items clear a higher bar
-    if (s >= min) out.push({ json: {...b, s, admitted:true} }); });
+    if (s >= min) out.push({ json: {...b, s, admitted:true, ...(tEn[k] ? { title: tEn[k], title_orig: b.title, translated: true } : {}) } }); });   // 2026-08-27: non-English headlines arrive translated by the triage call (t_en) — the English title flows into embeddings, brief, tail, Telegram, story memory; original kept as title_orig
 });
 return out;
 ```
@@ -916,7 +918,7 @@ return out;
 | `$input.all()` | the wire from card 14a Triage | one LLM response per batch, in the **same** order |
 
 1. **Re-pair each response to its batch** — `preps[it.pairedItem?.item ?? idx]`: `pairedItem.item` is n8n's record of which input item produced this response, so it fetches that batch's original articles (positional `idx` is the fallback if pairing metadata is dropped).
-2. **Parse the scores** — the response's `content` is Anthropic's block format; join the text blocks, regex out the `[{"i":0,"s":7},…]` array, build `scores` keyed by the in-batch index `i`.
+2. **Parse the scores** — dual-shape since 2026-08-27: read OpenRouter's `choices[0].message.content` first, fall back to Anthropic's `content[]` text blocks; regex out the `[{"i":0,"s":7},…]` array, build `scores` keyed by the in-batch index `i`. **Title translation (2026-08-27):** the triage prompt also returns `t_en` for non-English headlines; Admit swaps it in as `title` (source headline kept as `title_orig`, `translated: true`), so embeddings dedup, the brief, the tail, Telegram and story memory all see English — no extra LLM call.
 3. **Gate at the threshold** — for each article `b` at position `k`, read `scores[k]` (default `0` if the model skipped it) and admit only when `s >= cfg.triage_min`, stamping `s` and `admitted:true`.
 4. **Output = admitted articles only** — everything below `triage_min` is dropped here; a zero-admission day emits nothing, which is exactly why **Always Output Data ON** supplies the empty keep-alive item for PreBody.
 
@@ -924,7 +926,7 @@ The ⚠ above is the one place this structure breaks silently: the two streams a
 
 **15b · Merge "PreBody"** — Mode: Append, 2 inputs: Admit (scored stream) → Input 1 · 14-false (bypass + warnings sentinel) → Input 2. An explicit Merge — not two wires into card 16's single port — guarantees the body gate executes exactly once regardless of n8n's branch-convergence semantics; two wires into one port can execute the downstream chain once per branch → two digests per run.
 
-**15c · Code "EmbedPrep"** (Run Once for All Items) — **from PreBody (15b)** · **→ Embed (15d)**. Builds ONE Voyage request: the admitted + bypass items (each as `title. snippet`) followed by the last `story_memory_days` of prior briefed stories (embedded in the *same* call so cross-run repeats are caught for free). The warnings sentinel and the empty keep-alive item are set aside on `_sentinel` and re-emitted by SemCluster — they are never embedded.
+**15c · Code "EmbedPrep"** (Run Once for All Items) — **from PreBody (15b)** · **→ Embed (15d)**. Builds the Voyage requests in **≤400-input chunks** — one output item per chunk, meta (`_items`/`_priorList`/`_chunkSizes`) on chunk 0 only (2026-08-28: Voyage caps a request at 1,000 inputs; the single-call design blew past it at 1,020 admitted + 250 prior and silently disabled dedup for the whole run). Each chunk carries: the admitted + bypass items (each as `title. snippet`) followed by the last `story_memory_days` of prior briefed stories (embedded in the *same* call so cross-run repeats are caught for free). The warnings sentinel and the empty keep-alive item are set aside on `_sentinel` and re-emitted by SemCluster — they are never embedded.
 
 ```javascript
 const cfg = $('Plan').first().json.cfg;
@@ -946,13 +948,21 @@ const prior = [];
 const priorList = prior.slice(0,250);
 const priorTexts = priorList.map(p => etext(p.t, p.sum));
 const input = texts.concat(priorTexts);
-return [{ json: {
-  _items: items, _priorList: priorList, _nNew: items.length, _sentinel: sentinel,
-  _emb_body: input.length ? { model: cfg.embed_model || 'voyage-4-lite', input_type: 'document', input } : null
-} }];
+// 2026-08-28: Voyage caps a request at 1,000 inputs. One call carried 1,020 admitted + 250 prior on 08-28, Voyage
+// rejected it, and SemCluster silently fell back to singletons (no dedup, no repeat detection → a 375-story brief
+// with ~300 same-event pairs). Chunk instead: one item per ≤EMB_CHUNK inputs; meta rides on chunk 0 only;
+// SemCluster reassembles the vectors in order (n8n preserves item order through the HTTP node).
+const EMB_CHUNK = 400;
+const chunks = [];
+for (let i = 0; i < input.length; i += EMB_CHUNK) chunks.push(input.slice(i, i + EMB_CHUNK));
+const meta = { _items: items, _priorList: priorList, _nNew: items.length, _sentinel: sentinel,
+  _nInput: input.length, _chunkSizes: chunks.map(c => c.length) };
+if (!chunks.length) return [{ json: { ...meta, _chunk: 0, _emb_body: null } }];
+return chunks.map((c, k) => ({ json: { ...(k === 0 ? meta : {}), _chunk: k,
+  _emb_body: { model: cfg.embed_model || 'voyage-4-lite', input_type: 'document', input: c } } }));
 ```
 
-**15d · HTTP "Embed"** — **from EmbedPrep (15c)** · **→ SemCluster (15e)**. The embeddings call — same build pattern as the Anthropic nodes, but the Voyage credential and no version header:
+**15d · HTTP "Embed"** — **from EmbedPrep (15c)** · **→ SemCluster (15e)**. The embeddings call — same build pattern as the OpenRouter LLM nodes, but the Voyage credential and endpoint. Since 2026-08-28 it receives one item per EmbedPrep chunk and runs once per item (n8n default — order preserved), with **Settings → Retry On Fail** ON (3 tries, 3 s wait):
 - Method **POST** · URL `https://api.voyageai.com/v1/embeddings`
 - **Credential:** Generic Credential Type → **Header Auth → Voyage** (§5.2 — supplies `Authorization: Bearer …` automatically; do **not** add it by hand)
 - **Send Headers OFF** — Voyage needs no `anthropic-version` header; n8n sets `content-type: application/json` automatically for a JSON body
@@ -962,7 +972,7 @@ return [{ json: {
 {{ JSON.stringify($json._emb_body) }}
 ```
 
-**15e · Code "SemCluster"** (Run Once for All Items) — **from Embed (15d)** · **→ Body? (16)**. Reads the Voyage vectors and does the whole semantic clustering job deterministically, pre-body: (1) cosine-clusters same-story admitted items into ONE representative each (`sim_threshold`), preserving every source link on `_members`; (2) diverts NEW items that echo a prior briefed story (`repeat_threshold` OR exact title-key) to the ♻ follow-ups list; (3) picks each cluster's representative as the best body-fetchable, non-paywalled, highest-triage-scored member — so only representatives flow into the body pipeline. Self-reports `semcluster: N admitted → M stories (K repeats)` into the funnel. **Embeddings failure = graceful pass-through** (every item becomes its own story, no dedup that run).
+**15e · Code "SemCluster"** (Run Once for All Items) — **from Embed (15d)** · **→ Body? (16)**. Reassembles the per-chunk Voyage vectors in order (`index` inside each response is chunk-relative; a short or missing NEW-vector chunk → singleton pass-through with a 🚨 lead warning + Telegram line; a missing PRIOR-only chunk → dedup still runs, repeat detection degrades) and does the whole semantic clustering job deterministically, pre-body: (1) cosine-clusters same-story admitted items into ONE representative each (`sim_threshold`), preserving every source link on `_members`; (2) diverts NEW items that echo a prior briefed story (`repeat_threshold` OR exact title-key) to the ♻ follow-ups list; (3) picks each cluster's representative as the best body-fetchable, non-paywalled, highest-triage-scored member — so only representatives flow into the body pipeline. Self-reports `semcluster: N admitted → M stories (K repeats)` into the funnel. **Embeddings failure = graceful pass-through** (every item becomes its own story, no dedup that run).
 
 ```javascript
 const cfg = $('Plan').first().json.cfg;
@@ -973,23 +983,37 @@ const nNew = prep._nNew || 0;
 const simT = cfg.sim_threshold || 0.86;
 const repT = cfg.repeat_threshold || 0.88;
 const base = prep._sentinel ? {...prep._sentinel} : { _warnings: [], curl: 'internal:warnings:0' };
-const emit = (reps, followups, note) => {
+const emit = (reps, followups, note, lead = false) => {
   const out = reps.map(r => ({ json: r }));
-  base._warnings = (base._warnings || []).concat(note);
+  base._warnings = lead ? [note].concat(base._warnings || []) : (base._warnings || []).concat(note);   // failures lead the ⚠ line
   base._stats = { seen: base._seen ?? null, fresh: base._new ?? null, admitted: nNew, ch: base._ch || null, stale: base._stale ?? 0 };
   base._followups = followups;
   out.push({ json: base });
   return out;
 };
-// pull embeddings from the Voyage response (ordered by index)
-let vecs = null;
-try { const data = ($input.first().json.data) || []; vecs = data.slice().sort((a,b)=>a.index-b.index).map(d=>d.embedding); } catch(e) {}
-// nothing to cluster / embed failed → pass items through as singletons (never drop, never crash the run)
+// 2026-08-28: embeddings arrive as ONE HTTP response PER EmbedPrep chunk (Voyage 1,000-input cap). n8n preserves
+// item order, so reassemble chunk by chunk — `index` inside each response is chunk-relative, never global.
+let vecs = null, embErr = '';
+try {
+  const resps = $input.all().map(i => i.json);
+  const sizes = prep._chunkSizes || [];
+  const acc = [];
+  resps.forEach((r, k) => {
+    const data = Array.isArray(r.data) ? r.data.slice().sort((a,b)=>a.index-b.index).map(d=>d.embedding) : null;
+    const want = sizes[k];
+    if (!data || (want != null && data.length !== want)) embErr = embErr || `chunk ${k}: ${(r.error && r.error.message) || r.detail || r.message || 'no data array'}`;
+    if (data) acc.push(...data);
+  });
+  vecs = acc;
+} catch(e) { embErr = String((e && e.message) || e); }
+// nothing to cluster → empty; NEW vectors missing → singletons with a LOUD lead warning (never drop, never crash);
+// only PRIOR vectors missing → dedup still runs, repeat detection degrades to whatever prior vectors arrived
 if (nNew === 0) return emit([], [], 'semcluster: 0 admitted → 0 stories');
 if (!vecs || vecs.length < nNew) {
   const reps = items.map(j => ({ ...j, _members:[{title:j.title,curl:j.curl,source:j.source,feedId:j.feedId,ch:j.ch}], _clusterSize:1 }));
-  return emit(reps, [], `semcluster:embed-failed → no dedup this run (${items.length} singletons)`);
+  return emit(reps, [], `🚨 semcluster:embed-failed → NO DEDUP this run (${items.length} singletons, duplicates expected) — ${embErr || 'vector count short'}`, true);
 }
+const embNote = embErr ? ` · ⚠ prior-story vectors partial (${embErr}) — repeat detection degraded` : '';
 const norm = v => { let n=0; for (const x of v) n += x*x; n = Math.sqrt(n) || 1; return v.map(x=>x/n); };
 const nv = vecs.slice(0, nNew).map(norm), pv = vecs.slice(nNew).map(norm);
 const cos = (a,b) => { let d=0; for (let i=0;i<a.length;i++) d += a[i]*b[i]; return d; };
@@ -1019,7 +1043,7 @@ for (const idxs of Object.values(comp)) {
 }
 const followups = [];
 for (let i=0;i<nNew;i++) if (repeatOf[i]) followups.push({ title:items[i].title, curl:items[i].curl, source:items[i].source||items[i].feedId, prior:repeatOf[i] });
-return emit(reps, followups, `semcluster: ${nNew} admitted → ${reps.length} stories (${followups.length} cross-run repeats)`);
+return emit(reps, followups, `semcluster: ${nNew} admitted → ${reps.length} stories (${followups.length} cross-run repeats)${embNote}`);
 ```
 
 **16 · IF "Body?"** (from SemCluster (15e)) — one condition · Value 1 → Expression (Boolean · **is true**):
@@ -1028,7 +1052,7 @@ return emit(reps, followups, `semcluster: ${nNew} admitted → ${reps.length} st
 ```
 true → card 17 · false → card 18 (Merge input 1; carries no-body representatives, headline-only bypass rows, and the warnings sentinel). Only representatives reach this gate — same-story duplicates are folded into `_members` upstream and never get body-fetched or rescored.
 
-**17 · Body chain** — the article-body pipeline: fetch full text for every `fetchBody` item, then let Opus re-score with the body in hand. Same loop pattern as cards 8/9. **Four nodes:**
+**17 · Body chain** — the article-body pipeline: fetch full text for every `fetchBody` item, then let the rescore model (GLM-5.2) re-score with the body in hand. Same loop pattern as cards 8/9. **Four nodes:**
 
 **17.1 · Loop Over Items "BodyLoop"** — Batch Size `1` · from card 16's **true** output. Two outputs: **`loop`** feeds the fetch chain; **`done`** → RescorePrep (17.4).
 
@@ -1058,14 +1082,14 @@ for (let i=0;i<items.length;i+=10) {
   const payload = JSON.stringify(chunk.map((j,k)=>({i:k, t:j.title, hs:j.s, pw:j.pw?1:0,
     x:(j.bodyOk ? j.bodyText : (j.snippet||'')).slice(0,6000)})));
   out.push({ json: { _batch: chunk, _llm_body: {
-    model: cfg.rescore_model, max_tokens: 8000, thinking: { type: 'adaptive' },
+    model: cfg.rescore_model, max_tokens: 8000, provider: { data_collection: 'deny' },   // OpenRouter 2026-08-27: Anthropic-only 'thinking' dropped (GLM reasons natively); ZDR hosts only
     messages: [{ role: 'user', content: sub(cfg.rescore_prompt,
       {'{tickers}':cfg.tickers, '{themes}':cfg.themes, '{items}':payload}) }] } } });
 }
 return out;
 ```
 
-**17.5 · HTTP "Rescore"** — **from RescorePrep (17.4)** · **→ Final (17.6)**. Same node shape as card 14a: POST `https://api.anthropic.com/v1/messages` · Anthropic Header Auth credential · header `anthropic-version: 2023-06-01` · On Error: Continue · Send Body ON → JSON → Expression → the identical paste as 14a, `{{ JSON.stringify($json._llm_body) }}`. This is the **body-informed re-score**: `rescore_model` (default `claude-opus-4-8`) reads each article's full text — the `x` excerpt RescorePrep packed from defuddle's output — and sets the final rank `s2`, correcting headline-only triage. A dull headline hiding a material disclosure gets upgraded; a punchy headline over thin content gets cut. ~40 items/day ≈ $10–15/mo.
+**17.5 · HTTP "Rescore"** — **from RescorePrep (17.4)** · **→ Final (17.6)**. Same node shape as card 14a: POST `https://openrouter.ai/api/v1/chat/completions` · **OpenRouter** Header Auth credential · no extra headers · Timeout 600000 · On Error: Continue · Send Body ON → JSON → Expression → the identical paste as 14a, `{{ JSON.stringify($json._llm_body) }}`. This is the **body-informed re-score**: `rescore_model` (default `z-ai/glm-5.2` since the 2026-08-27 OpenRouter switch) reads each article's full text — the `x` excerpt RescorePrep packed from defuddle's output — and sets the final rank `s2`, correcting headline-only triage. A dull headline hiding a material disclosure gets upgraded; a punchy headline over thin content gets cut. ~40 items/day ≈ $1–2/mo at GLM rates.
 
 **17.6 · Code "Final"** (Run Once for All Items) — **from Rescore (17.5)** · **→ Rejoin (18) input 2**. **Settings → Always Output Data ON** (same stall guard as Admit — a zero-body day must still feed the Merge). Zips the two streams exactly like Admit (card 15): `preps` = RescorePrep's batches (17.4, `_batch`-filtered) · `$input.all()` = Rescore's responses, paired by `pairedItem.item`; writes each article's new score to `s2` (`null` when the response can't be parsed):
 
@@ -1076,7 +1100,7 @@ $input.all().forEach((it, idx) => {
   const j = it.json;
   const batch = preps[it.pairedItem?.item ?? idx]?._batch || [];
   let scores = {};
-  try { const txt=(j.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
+  try { const txt=j.choices?.[0]?.message?.content ?? (j.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
     for (const r of JSON.parse(txt.match(/\[[\s\S]*\]/)[0])) scores[r.i]=r.s; } catch(e) {}
   batch.forEach((b,k)=> out.push({ json: {...b, s2: scores[k] ?? null} }));
 });
@@ -1092,7 +1116,7 @@ Append mode (not a keyed merge) because the two lanes hold *different* items, no
 
 **18a "ClusterPrep" + 18b "Cluster" — DELETED.** These two nodes were the Opus LLM cluster call. Clustering + cross-run repeat detection lives **upstream in SemCluster (15e)** on embeddings, so both are removed: **Rejoin (18) wires straight to SumPrep (18c)**. In n8n: delete the `ClusterPrep` and `Cluster` nodes, then drag a wire from `Rejoin` to `SumPrep`. This is the whole cost fix (duplicates no longer reach the body pipeline; the Opus cluster call is gone).
 
-**18c · Code "SumPrep"** (Run Once for All Items, **from Rejoin (18)**) — Clustering already ran upstream (SemCluster 15e), so this node no longer parses an LLM response — it reads Rejoin's representatives directly: splits any cross-run repeats to ♻ (carried on the sentinel's `_followups`), builds one summary payload per representative (8 stories/batch), and keeps the Jaccard union-find as a **cheap backstop** for any same-story pair the embeddings missed. Output shape is unchanged, so Summarise (18d) and Assemble (19) need no edits:
+**18c · Code "SumPrep"** (Run Once for All Items, **from Rejoin (18)**) — Clustering already ran upstream (SemCluster 15e), so this node no longer parses an LLM response — it reads Rejoin's representatives directly: splits any cross-run repeats to ♻ (carried on the sentinel's `_followups`), builds one summary payload per representative (8 stories/batch), and keeps the Jaccard union-find as a **cheap backstop** for any same-story pair the embeddings missed. **Presentation gate (2026-08-27):** after clustering, only stories at final score ≥ `brief_min` (9 on the GLM-5.2 rescore scale since 2026-08-28; was 8 on Opus) are batched to the digest LLM (Grok 4.6); `brief_tail_min`–`brief_min`−1 ride `_tail` (links-only, capped `brief_tail_max`), the rest ride `_cut` (log-only). Assemble (19) renders the tail and extends the log; Summarise (18d) is unchanged. Story titles (2026-08-27): Google-News representatives lose their ` - Publisher` suffix for display (members keep raw titles), and translated representatives carry `translated`/`title_orig` through to the brief and log:
 
 ```javascript
 const cfg = $('Plan').first().json.cfg;
@@ -1120,40 +1144,54 @@ const stories = Object.values(comp).map(idxs => {
   const sig = sTick.map(t=>{ const c=(cats[t]||[])[0]; const x=xr[t];
     return (c||x) ? t+(c?` catalyst ${c.diff===0?'TODAY':(c.diff>0?'T-'+c.diff:'T+'+(-c.diff))}: ${c.ev}`:'')+(x?` | X ${x}`:'') : null;
   }).filter(Boolean).join('; ');
-  return { members, title: best.title, cluster: best.cluster, sig,
+  // 2026-08-27: display title — GN appends ' - Publisher' (stripped here; members keep raw titles); translated reps carry the 🌐 flag downstream
+  const title = best.ch === 'gn' ? String(best.title || '').replace(/\s+-\s+[^-]{2,60}$/, '') : best.title;
+  return { members, title, title_orig: best.title_orig || null, translated: !!best.translated, cluster: best.cluster, sig,
     score: scores.length ? Math.max(...scores) : null, bodyOk: group.some(g=>g.bodyOk),
     x: [...group].sort((a,b)=>((b.bodyOk?1:0)-(a.bodyOk?1:0))).slice(0,2).map(m=>(m.bodyOk?m.bodyText:(m.snippet||'')).slice(0,4500)).join('\n---\n') };
 });
+// ---- Presentation gate (2026-08-27): full Opus analysis only at fin >= brief_min; brief_tail_min..brief_min-1
+// (and score-null safety cases) render as a capped links-only tail; below tail_min cut from the brief but kept
+// in the .data log. Tail/cut NEVER enter the log's `stories` array — story-memory reads it for repeat
+// detection, and a links-only mention must not suppress tomorrow's real coverage as a "repeat".
+const bmin = cfg.brief_min ?? 8, tmin = cfg.brief_tail_min ?? 7, tmax = Math.max(0, Math.round(cfg.brief_tail_max ?? 50));
+const lean = ({x, sig, ...rest}) => rest;
+const full = stories.filter(s => (s.score ?? -1) >= bmin);
+const tailAll = stories.filter(s => s.score === null || (s.score >= tmin && s.score < bmin))
+  .sort((a,b)=>(b.score??-1)-(a.score??-1));
+const tailKept = tailAll.slice(0, tmax).map(lean);
+const cut = stories.filter(s => s.score !== null && s.score < tmin).map(lean);
+const gate = { full: full.length, tail: tailKept.length, tailDropped: tailAll.length - tailKept.length, cut: cut.length };
 const out = [];
-for (let i=0;i<stories.length;i+=8) {
-  const chunk = stories.slice(i,i+8);
+for (let i=0;i<full.length;i+=8) {
+  const chunk = full.slice(i,i+8);
   const payload = JSON.stringify(chunk.map((s,k)=>({i:k, t:s.title,
     srcs:[...new Set(s.members.map(m=>m.source||m.feedId))].join(', '), sig:s.sig||undefined, x:s.x.slice(0,9000)})));
   out.push({ json: { _batch: chunk.map(({x, ...rest})=>rest),
     _warnings: i===0 ? (sentinel._warnings||[]) : [], _stats: i===0 ? (sentinel._stats||null) : null,
     _followups: i===0 ? followups : null,
-    _llm_body: { model: cfg.digest_model, max_tokens: 8000, thinking: { type: 'adaptive' },
+    _tail: i===0 ? tailKept : null, _cut: i===0 ? cut : null, _gate: i===0 ? gate : null,
+    _llm_body: { model: cfg.digest_model, max_tokens: 8000,   // OpenRouter 2026-08-27: Anthropic-only 'thinking' dropped (Grok reasons natively)
       messages: [{ role: 'user', content: sub(cfg.digest_prompt,
         {'{tickers}':cfg.tickers, '{themes}':cfg.themes, '{context}': cfg.brief_context || 'none provided', '{items}':payload}) }] } } });
 }
-return out.length ? out : [{ json: { _batch: [], _warnings: sentinel._warnings||[], _stats: sentinel._stats||null, _followups: followups, _llm_body: null } }];
+return out.length ? out : [{ json: { _batch: [], _warnings: sentinel._warnings||[], _stats: sentinel._stats||null, _followups: followups, _tail: tailKept, _cut: cut, _gate: gate, _llm_body: null } }];
 ```
 
 **18d · HTTP "Summarise"** — **from SumPrep (18c)** · **→ Assemble (19)**. Same node shape as card 14a — build it identically:
-- **Method `POST`** (change from GET — Anthropic is POST-only; GET → 405 Method Not Allowed)
-- URL `https://api.anthropic.com/v1/messages`
-- **Credential:** Anthropic Header Auth · **Header** Name `anthropic-version` Value `2023-06-01`
+- **Method `POST`** (change from GET — POST-only endpoint; GET → 405 Method Not Allowed)
+- URL `https://openrouter.ai/api/v1/chat/completions` · **Credential:** OpenRouter Header Auth · Send Headers OFF · Timeout `600000`
 - **On Error: Continue** (an LLM failure — or the empty-run null body — degrades to headline-only digest lines, never kills the run)
 - **Body** — Send Body ON → JSON → Using JSON → Expression → `{{ JSON.stringify($json._llm_body) }}`
 
-`digest_model` defaults to `claude-opus-4-8` — the summary IS the product; `claude-sonnet-5` is the step-down cell.
+`digest_model` defaults to `x-ai/grok-4.6` (judgement seat) — the summary IS the product; `z-ai/glm-5.2` is the step-down cell.
 
-**19 · Code "Assemble"** (Run Once for All Items, from Summarise) — parse summaries; build the News Brief (**one entry per story, funnel header, thesis wikilinks on ticker stories, links to every source article**), the Telegram push, and a machine-readable story log for `.data/`:
+**19 · Code "Assemble"** (Run Once for All Items, from Summarise) — parse summaries; build the News Brief (**one full entry per ≥`brief_min` story, a capped "Below the bar" links-only tail, funnel header with gate counts, thesis wikilinks on ticker stories, links to every source article, 🌐 on titles translated from a non-English source**), the Telegram push (full stories only), and a machine-readable story log for `.data/` (`stories` = briefed-in-full only; `tail`/`cut` keys carry the rest so story-memory never treats an unbriefed mention as already-covered):
 
 ```javascript
 const cfg = $('Plan').first().json.cfg;
-const stories = [], warn = [], fups = [];
-let stats = null;
+const stories = [], warn = [], fups = [], tails = [], cuts = [];
+let stats = null, gate = null;
 const preps = $('SumPrep').all().map(x=>x.json);   // SumPrep emits batch items only — indices align
 $input.all().forEach((it, idx) => {
   const j = it.json;
@@ -1161,8 +1199,11 @@ $input.all().forEach((it, idx) => {
   warn.push(...(src._warnings||[]));
   if (src._stats) stats = src._stats;
   if (src._followups) fups.push(...src._followups);
+  if (src._tail) tails.push(...src._tail);
+  if (src._cut) cuts.push(...src._cut);
+  if (src._gate) gate = src._gate;
   let sums = {};
-  try { const txt=(j.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
+  try { const txt=j.choices?.[0]?.message?.content ?? (j.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
     for (const r of JSON.parse(txt.match(/\[[\s\S]*\]/)[0])) sums[r.i]=r.sum; } catch(e) {}
   (src._batch||[]).forEach((s,k)=> stories.push({...s, sum: sums[k] || null}));
 });
@@ -1185,7 +1226,7 @@ const by = {};
 for (const s of stories) (by[s.cluster] = by[s.cluster] || []).push(s);
 const nItems = stories.reduce((a,s)=>a+s.members.length,0);
 let md = `---\ndate: ${d}\ntags: [meta, daily-intel]\norigin: news-sweep\n---\n\n# News Brief — ${d}\n\n`;
-md += `Funnel: ${stats?.seen ?? '?'} fetched → ${stats?.fresh ?? '?'} new → ${stats?.admitted ?? nItems} admitted → ${stories.length} stories${fups.length ? ` (+${fups.length} follow-ups)` : ''}.`;
+md += `Funnel: ${stats?.seen ?? '?'} fetched → ${stats?.fresh ?? '?'} new → ${stats?.admitted ?? nItems} admitted → ${stories.length} briefed${tails.length ? ` · ${tails.length} links-only` : ''}${gate && gate.cut ? ` · ${gate.cut} cut` : ''}${gate && gate.tailDropped ? ` · ${gate.tailDropped} beyond tail cap` : ''}${fups.length ? ` (+${fups.length} follow-ups)` : ''}.`;
 if (stats?.ch) md += `\nChannels: ${['feed','gn','gdelt','brave','fmp'].map(c=>`${c} ${stats.ch[c] ?? 0}`).join(' · ')}${stats?.stale ? ` · stale ${stats.stale}` : ''}`;
 if (warn.length) md += `\n⚠ Source failures: ${warn.join(', ')}`;
 md += '\n\n';
@@ -1193,10 +1234,19 @@ for (const cl of Object.keys(by).sort()) {
   md += `## ${cl}\n\n`;
   for (const s of by[cl].sort((a,b)=>(b.score??-1)-(a.score??-1))) {
     const ts = tickersOf(s);
-    md += `- \`${s.score ?? '—'}\` **${s.title}**${wl(ts)}${cat(ts)}${xm(ts, s.score)}\n`;
+    md += `- \`${s.score ?? '—'}\` **${s.translated ? '🌐 ' : ''}${s.title}**${wl(ts)}${cat(ts)}${xm(ts, s.score)}\n`;
     if (s.sum) md += `  ${s.sum}${s.bodyOk ? '' : ' *(headline only)*'}\n`;
     md += `  Sources: ${s.members.map(m=>`${lock.has(m.feedId)?'🔒 ':''}[${m.source||m.feedId}](${m.curl})`).join(' · ')}\n`;
   }
+  md += '\n';
+}
+if (tails.length) {
+  md += `## Below the bar — links only (score ${cfg.brief_tail_min ?? 7}–${(cfg.brief_min ?? 8) - 1})\n\n`;
+  for (const t of tails) {
+    const m0 = (t.members||[])[0] || {};
+    md += `- \`${t.score ?? '—'}\` ${lock.has(m0.feedId)?'🔒 ':''}${t.translated ? '🌐 ' : ''}[${t.title}](${m0.curl}) · ${m0.source||m0.feedId||'?'}\n`;
+  }
+  if (gate && gate.tailDropped) md += `- …and ${gate.tailDropped} more below the tail cap (in the .data log)\n`;
   md += '\n';
 }
 if (fups.length) {
@@ -1206,7 +1256,8 @@ if (fups.length) {
 }
 const out = [{ json: { type:'digest', fname:`${d} - News Brief.md`, content: md } }];
 out.push({ json: { type:'log', fname:`${d}-${hm}.json`,
-  content: JSON.stringify({ date: d, time: hm, stats, warnings: warn, stories, followups: fups }, null, 1) } });
+  // `stories` = briefed-in-full ONLY (story-memory reads it for repeat detection); tail/cut ride separate keys
+  content: JSON.stringify({ date: d, time: hm, stats, gate, warnings: warn, stories, tail: tails, cut: cuts, followups: fups }, null, 1) } });
 // Telegram fan-out — top-N stories, one message each (tg_max_msgs cap), with a per-subject diversity cap so no single ticker/theme dominates the glance
 const ranked = [...stories].sort((a,b)=>(b.score??-1)-(a.score??-1));
 const nMsg = Math.max(1, Math.min(20, Math.round(cfg.tg_max_msgs ?? 10)));
@@ -1220,12 +1271,13 @@ for (const s of ranked) {
 }
 if (picks.length) {
   picks.forEach((t, i) => {
-    let tg = `★ ${t.title}`;
+    let tg = `★ ${t.translated ? '🌐 ' : ''}${t.title}`;
     if (t.sum) tg += `\n${t.sum}`;
     tg += `\n${t.members[0].curl}`;
     if (i === picks.length - 1) {                          // footer + failures ride the last message only
       tg += `\n— ${stories.length} stories in today's brief`;
       if (warn.length) tg += `\n⚠ ${warn.length} source failures`;
+      if (warn.some(w => /embed-failed/.test(w))) tg += '\n🚨 embeddings failed — dedup OFF this run, duplicates expected';
     }
     out.push({ json: { type:'tg', text: tg.slice(0,3900) } });
   });
@@ -1275,7 +1327,7 @@ One dated JSON per run — the machine-readable newsflow corpus for `/retro` bac
 
 ### 5.5 First run
 
-**LLM-stage timing profile** (what "normal" looks like per node — durations scale with content volume, so incremental re-runs are legitimately fast): Triage = ceil(scored/120) calls, seconds-to-minutes · **Embed = ONE Voyage call** (~1–3s; SemCluster itself is pure JS, sub-second — a response with no `data` array = embed failed → pass-through singletons) · Body loop = one defuddle per **representative** (fewer than admitted now — duplicates collapsed upstream at 15e) · Rescore = ceil(bodyReps/10) calls at ~3–5s each (a 5s Rescore = one thin batch, normal on incremental runs) · Summarise = ceil(stories/8) calls, the slowest stage post-analytical-prompt. Fast stages on a small run are health, not failure — the funnel counts, not the clock, are the diagnostic. With adaptive thinking on Rescore/Summarise, expect those two stages to run 2–4× longer than the plain-call baselines above — reasoning tokens, not a hang.
+**LLM-stage timing profile** (what "normal" looks like per node — durations scale with content volume, so incremental re-runs are legitimately fast): Triage = ceil(scored/120) calls, seconds-to-minutes · **Embed = one Voyage call per ≤400-input chunk** (~1–3s each, typically 2–4 chunks; SemCluster itself is pure JS, sub-second — a chunk with no `data` array = embed failed → 🚨 lead warning + singleton pass-through) · Body loop = one defuddle per **representative** (fewer than admitted now — duplicates collapsed upstream at 15e) · Rescore = ceil(bodyReps/10) calls at ~3–5s each (a 5s Rescore = one thin batch, normal on incremental runs) · Summarise = ceil(stories/8) calls, the slowest stage post-analytical-prompt. Fast stages on a small run are health, not failure — the funnel counts, not the clock, are the diagnostic. With adaptive thinking on Rescore/Summarise, expect those two stages to run 2–4× longer than the plain-call baselines above — reasoning tokens, not a hang.
 
 **Run it:** Execute Workflow (a manual run never delays the schedule). Expect **~25–35 min** — channels run *sequentially* (n8n does one branch at a time): RSS first, then GDELT (the ~18-min dominant leg, 8s × ~119 targets), Brave, FMP; PreNormalize holds until all five deliver. Output: one brief in `Daily Intel/` + the Telegram fan-out.
 
@@ -1294,8 +1346,10 @@ One dated JSON per run — the machine-readable newsflow corpus for `/retro` bac
 - **(k) Story memory** (day 2+) — SemCluster (15e) funnel note reads `… (K cross-run repeats)` with K matching the ♻ count; `PriorStories` (2b) stdout non-empty.
 - **(m) Embeddings dedup** — SemCluster funnel note `semcluster: N admitted → M stories` with M < N on any day with duplicate coverage; `Embed` (15d) response is a `data` array of vectors (not an error).
 - **(l) Context markers** — 📅 catalyst / 𝕏 sentiment tags appear where the data exists.
+- **(o) Translation** (2026-08-27) — any story from a non-English source shows 🌐 + an English title in the brief (and tail/Telegram); the `.data` log carries `title_orig`. A foreign headline rendered raw means the triage call omitted `t_en` — check the `#### triage_prompt` block still carries the translation clause.
+- **(n) Presentation gate** (2026-08-27) — funnel line reads `… → N briefed · T links-only · C cut`; a "Below the bar" section renders when any story scored `brief_tail_min`–`brief_min`−1; the `.data` log carries `tail`/`cut` keys while its `stories` array holds ONLY fully-briefed stories (story-memory reads it — tail/cut must never suppress tomorrow's coverage as repeats).
 
-**Publish** (Active toggle) only after one clean run. First scheduled runs re-surface a few legacy items (fresh dedupe store, self-heals in a day); the first brief is large (GN backlog, one-time ~$5–10) — raise `triage_min` to 8 for run 1 if that bothers.
+**Publish** (Active toggle) only after one clean run. First scheduled runs re-surface a few legacy items (fresh dedupe store, self-heals in a day); the first brief is large (GN backlog, one-time ~$5–10) — raise `triage_min` to 9 for run 1 if that bothers (the GLM-scale default is already 8).
 
 ### 5.6 Cutover checklist (after ~5–7 clean scheduled runs)
 
@@ -1445,17 +1499,17 @@ Daily provider-health probe for the X stack — 4 nodes, built first because it 
 2. Search **Header Auth** → **Continue**.
 3. Fill: credential name (click the title at the top of the window): `TwitterAPI-io` · **Header Name**: `X-API-Key` (whatever Step 1.4 said) · **Header Value**: paste the key → **Save**.
 
-**Step 3 — Anthropic account (browser):**
+**Step 3 — OpenRouter account (browser)** (2026-08-27: replaced the Anthropic account — that one is rollback-only):
 
-1. Go to `https://console.anthropic.com` (redirects to the current console) → sign in / sign up.
-2. **API Keys** → **Create Key** → name it `n8n-x-harvester` → **copy it NOW** — it is shown exactly once.
-3. **Billing** → buy **$10** of prepaid credits. This billing is fully separate from any Claude subscription; the n8n calls draw from these credits.
+1. Go to `https://openrouter.ai` → sign in / sign up.
+2. **Keys** → **Create Key** → name it `n8n-vault` → set a **per-key spend cap** (~$40/mo covers all workflows with headroom — the runaway-loop guard) → **copy it NOW**.
+3. **Credits** → buy ~$10 of prepaid credits. One key + one balance serves every model; the model is chosen per request body from the §2.4 registry cells.
 
-**Step 4 — Anthropic credential in n8n:**
+**Step 4 — LLM credential in n8n** (2026-08-27: OpenRouter replaced Anthropic; the `Anthropic` credential remains for rollback):
 
 1. **Credentials** → **Add credential** → **Header Auth** → **Continue**.
-2. Name `Anthropic` · **Header Name**: `x-api-key` (exactly this, lowercase) · **Header Value**: paste the key → **Save**.
-3. The second required header (`anthropic-version: 2023-06-01`) is NOT part of the credential — it is added per-request inside the HTTP node (§7.2 card 14).
+2. Name `OpenRouter` · **Header Name**: `Authorization` · **Header Value**: `Bearer sk-or-…` (the word Bearer, a space, then the key) → **Save**.
+3. No version header exists on OpenRouter — the Sentiment HTTP node sends no extra headers (§7.2 card 14).
 
 **Key hygiene:** both keys now live only inside n8n credentials — never in chat, never in a vault file.
 
@@ -1488,15 +1542,15 @@ Five checks that decide whether the project proceeds. Everything here is throwaw
 
 **While in the JSON view, write down the exact field names** for: tweets array, id, url, text, like count, retweet count, view count, author handle, author followers. Expected: `tweets[]` · `id` · `url` · `text` · `likeCount` · `retweetCount` · `viewCount` · `author.userName` · `author.followers`. If any differ, `norm()` in Code X (§7.3) is the ONLY place they get fixed.
 
-**Anthropic smoke test** — third HTTP node:
+**LLM smoke test** (2026-08-27: OpenRouter — was Anthropic) — third HTTP node:
 
-- **Method** `POST` · **URL** `https://api.anthropic.com/v1/messages`
-- **Authentication**: Header Auth → `Anthropic`
-- **Send Headers**: ON → Name `anthropic-version` · Value `2023-06-01`
+- **Method** `POST` · **URL** `https://openrouter.ai/api/v1/chat/completions`
+- **Authentication**: Header Auth → `OpenRouter`
+- **Send Headers**: OFF (no version header on OpenRouter)
 - **Send Body**: ON → **Body Content Type** `JSON` → **Specify Body** `Using JSON` → paste:
 
 ```json
-{"model":"claude-opus-4-8","max_tokens":256,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}
+{"model":"x-ai/grok-4.6","max_tokens":256,"messages":[{"role":"user","content":"Reply with exactly: ok"}]}
 ```
 
 - **Execute step** → PASS: response contains a `content` array with a text block saying `ok`.
@@ -1561,7 +1615,7 @@ is the tuning log.
 | prune_age_days | 28 | max observation age — raised from the 14 seed: longer trending window, ~2× re-measure reads |
 | cap_tracked | 800 | working-set cap (§7.1) |
 | llm_top_n | 15 | posts per theme fed to the sentiment LLM |
-| llm_model | claude-opus-4-8 | sentiment/divergence model; current-gen only (body sends adaptive thinking) |
+| llm_model | x-ai/grok-4.6 | sentiment/divergence model — OpenRouter slug (judgement seat; step-down z-ai/glm-5.2) |
 | archive_days | 90 | pruned posts retained in state archive — analysis corpus, never re-measured |
 
 ### LLM prompt
@@ -1602,11 +1656,11 @@ return ($input.first().json.tweets || []).length === 0 ? [{ json: { text: '⚠�
 
 ## 7. Workflow 5 — X Harvester
 
-The engine: daily 08:30 pull of every thesis cashtag + curated X terms, engagement-delta trending detection, Opus-graded sentiment/divergence, dated dashboard in `Daily Intel/`. **Live**, ~$17–40/mo all-in. Registry: `_watchers.md § X Watchers`. Official X API ruled out (cost + no server-side engagement operators) — provider is twitterapi.io.
+The engine: daily 08:30 pull of every thesis cashtag + curated X terms, engagement-delta trending detection, Grok-4.6-graded sentiment/divergence (OpenRouter since 2026-08-27), dated dashboard in `Daily Intel/`. **Live**, ~$7–15/mo all-in. Registry: `_watchers.md § X Watchers`. Official X API ruled out (cost + no server-side engagement operators) — provider is twitterapi.io.
 
 ### 7.1 Operating contracts (reference for the build cards)
 
-**Sourcing — two channels, one union.** Channel A: cashtags auto-derived at runtime from `Theses/*.md` `ticker:` frontmatter, US-listed filter (`^[A-Z]{1,5}$`), OR-batched into clusters of 8, liquidity-tiered like-floors (`mega_tickers` Tuning row — a judgment list of high-chatter names, edited in one cell). New thesis → automatically watched next pull. Channel B: `### Curated terms` table in `_watchers.md § X Watchers` — foreign listings + thematic phrases cashtags can't express; same `status`/`expires` lifecycle as every registry table.
+**Sourcing — two channels, one union.** Channel A: cashtags auto-derived at runtime from `Theses/*.md` `ticker:` frontmatter, US-listed filter (`^[A-Z]{1,5}$`), OR-batched into clusters of 8, liquidity-tiered like-floors (`mega_tickers` Tuning row — a judgment list of high-chatter names, edited in one cell). New thesis → automatically watched next pull. Channel B: `### Curated terms` table in `_watchers.md § X Watchers` — foreign listings + thematic phrases cashtags can't express; same `status`/`expires` lifecycle as every registry table. **Theming (2026-08-27):** a post's theme resolves in priority order — cashtag present AND in the thesis-ticker universe → that cashtag; else first matching Curated-terms watcher, themed by the ticker prefix of the watcher's `thesis` link (x-gaw → `$GAW`, x-hbm → `$000660`; no ticker prefix → the watcher id, e.g. `X-CAPEX`); else any cashtag; else `THEMATIC`. Foreign listings therefore surface as their own themes with their own LLM windows instead of pooling invisibly in `THEMATIC`.
 
 **Pull criteria — two-stage (server-side floor = cost control; client-side gates = quality control).** Every value is a `### Tuning` registry row, re-parsed each run; the Code nodes hold identical fallback defaults:
 
@@ -1633,9 +1687,9 @@ Cadence: daily. `since_days` must stay ≥ cadence + 1.
 }
 ```
 
-`obs` rows = `[timestamp, likes, RTs, views]`, one per pull — the time series that makes delta detection possible. Lifecycle: admit at entry gates → re-measure each pull → prune at age > `prune_age_days` (28) or `plateau_pulls` (2) consecutive flat pulls → pruned posts move to `state.archive` (retained `archive_days`, default 90; never re-measured). Working-set cap `cap_tracked` (800). Known limitation: at cap the code refuses new admissions — if hit in practice, add evict-oldest-plateaued-first.
+`obs` rows = `[timestamp, likes, RTs, views]`, one per pull — the time series that makes delta detection possible. Lifecycle: admit at entry gates → re-measure each pull → prune at age > `prune_age_days` (28) or `plateau_pulls` (2) consecutive flat pulls → pruned posts move to `state.archive` (retained `archive_days`, default 90; never re-measured, never re-admitted — discovery checks an `archivedIds` set so a post cannot cycle archive → posts again, 2026-08-27). Working-set cap `cap_tracked` (800). Known limitation: at cap the code refuses new admissions — if hit in practice, add evict-oldest-plateaued-first.
 
-**Trending engine.** Each pull batch-re-fetches every tracked post (50 ids/call — provider hard limit) and diffs against the previous observation. Each flag fires once per post (`flags[]` ledger):
+**Trending engine.** Each pull batch-re-fetches every tracked post (50 ids/call — provider hard limit) and diffs against the previous observation. Retweets are dropped at collection (`RT @` text prefix): the provider does not honor the query's `-filter:retweets`, and RT objects carry the ORIGINAL tweet's engagement counts, so every retweeter of a viral post would pass the gates as a separate post (observed live 2026-08-27: one post tracked 7×). Each flag fires once per post (`flags[]` ledger):
 
 | Signal | Condition (seed) | Delivery |
 |---|---|---|
@@ -1644,11 +1698,11 @@ Cadence: daily. `since_days` must stay ≥ cadence + 1.
 | `divergence` | Non-null per-theme LLM divergence | Pushed — Telegram `⚠` lines |
 | catalyst chatter | Theme ↔ `_catalyst.md` event ±10 days | Dashboard-only, never pushed |
 
-Alert stream capped at 12 posts/pull. Digests are scanning surfaces — anything substantive goes through `/ingest` manually.
+Alert stream capped at 12 posts/pull. `THEMATIC`-themed posts never flag (no gem/trending/Telegram) — tracked and LLM-read only (user decision 2026-08-27); an alert requires an attributed theme. Digests are scanning surfaces — anything substantive goes through `/ingest` manually.
 
-**Dashboard.** One dated snapshot per run — `Daily Intel/YYYY-MM-DD - X Intel.md` (trending digest folded in below a `---`), written once, never rewritten; newest file = current snapshot, folder = permanent history. Sections: header stats + active-gates stamp + Seen→Admitted funnel · per-theme table (posts, Σ-likes meter, sentiment, score, trend sparkline) · ⚠ Thesis divergence · Crowd perspectives (with `[P#]`/`[A#]` citations) · catalyst chatter · flagged-this-pull. Layout rule: long text never in table cells.
+**Dashboard.** One dated snapshot per run — `Daily Intel/YYYY-MM-DD - X Intel.md`, written once, never rewritten; newest file = current snapshot, folder = permanent history. Sections: header stats + active-gates stamp + Seen→Admitted funnel · per-theme table (posts, Σ-likes meter, sentiment, score, trend sparkline) · ⚠ Thesis divergence · Crowd perspectives (with `[P#]`/`[A#]` citations) · catalyst chatter · flagged-this-pull. Flagged entries render as single-line ≤300-char excerpts (tweet bodies flattened; control chars + lone surrogates stripped) — the URL carries the full post; non-English flagged posts render as a 🌐 English gloss from the same LLM call (2026-08-27), original behind the URL and on Telegram. The former `# X trending` fold-in below a `---` was removed 2026-08-27 (verbatim duplicate of flagged-this-pull). Layout rule: long text never in table cells.
 
-**LLM layer — one Anthropic call per pull (node 14).** Inputs per theme: the six thesis analytical sections (Summary, Key Non-consensus Insights, Bull, Bear, Risks, OQ — shell-extracted; Bear/Risks context is what makes divergence *genuine*) + top `llm_top_n` tracked posts (1,000 chars + follower/like/view stats) + PRIOR READS (`state.sentiment_log`, ≤90d, ≤30 entries) + top-5 archived anchor posts. Output schema (field list pinned by structured outputs; analytical guidance editable in `_watchers.md § X Watchers → ### LLM prompt`):
+**LLM layer — one OpenRouter call per pull (node 14).** Inputs per theme: the six thesis analytical sections (Summary, Key Non-consensus Insights, Bull, Bear, Risks, OQ — shell-extracted; Bear/Risks context is what makes divergence *genuine*) + top `llm_top_n` tracked posts (1,000 chars + follower/like/view stats) + PRIOR READS (`state.sentiment_log`, ≤90d, ≤30 entries) + top-5 archived anchor posts. Output schema (field list pinned by structured outputs; analytical guidance editable in `_watchers.md § X Watchers → ### LLM prompt`):
 
 | Field | Values |
 |---|---|
@@ -1657,12 +1711,13 @@ Alert stream capped at 12 posts/pull. Digests are scanning surfaces — anything
 | `shift` | movement vs prior reads (null if stable) |
 | `perspectives` | 2–6 `{text, refs}` objects citing post labels |
 | `divergence` | ONE synthesis per theme across all posts — a crowd argument the thesis doesn't carry; echo of a known risk → null |
+| `glosses` | `[{ref, en}]` — English gloss (≤60 words) per non-English **flagged** post listed in the payload's TRANSLATE section (`[F1]`…, ≤12 per pull; 2026-08-27); empty array when none |
 
-Call shape: POST `/v1/messages` · model = `llm_model` Tuning row (default `claude-opus-4-8`) · `thinking: {type: "adaptive"}` · structured outputs · `max_tokens` 32000 · timeout 600s · On-Error-Continue → "LLM unavailable this pull", harvest unaffected. Boundary: **read-vault yes, write-vault no** — output lands only in the dashboard; a divergence flag is a prompt to investigate (`/stress-test`, `/ingest`), never written into a thesis.
+Call shape (2026-08-27 OpenRouter switch): POST `openrouter.ai/api/v1/chat/completions` · model = `llm_model` Tuning row (default `x-ai/grok-4.6`) · OpenAI-shape structured outputs (`response_format` json_schema, `strict: true`) with `provider: {require_parameters: true}` so OpenRouter only routes to schema-honouring endpoints · `max_tokens` 32000 · timeout 600s · On-Error-Continue → "LLM unavailable this pull", harvest unaffected. Boundary: **read-vault yes, write-vault no** — output lands only in the dashboard; a divergence flag is a prompt to investigate (`/stress-test`, `/ingest`), never written into a thesis.
 
 **Catalyst matching.** Pure Code logic: parse `_catalyst.md` dated rows → filter ±10 days of pull → intersect with themes holding tracked posts → dashboard section. Degrades gracefully on a stale calendar (Workflow 2's staleness nag is the guard).
 
-**Cost.** twitterapi.io ~$2–5/mo (top up ≤$5 at a time — provider-death stranding) + Anthropic ~$15–35/mo (Opus daily; `llm_model` row is the lever) ≈ **$17–40/mo**.
+**Cost.** twitterapi.io ~$2–5/mo (top up ≤$5 at a time — provider-death stranding) + OpenRouter ~$5–10/mo (Grok 4.6 daily since 2026-08-27, was Opus ~$15–35; `llm_model` row is the lever) ≈ **$7–15/mo**.
 
 ### 7.2 Build cards (~60–90 min)
 
@@ -1687,7 +1742,7 @@ Call shape: POST `/v1/messages` · model = `llm_model` Tuning row (default `clau
 | 11b   | HTTP — `Search` (from 1)                   | GET `{{ $json.url }}` · same settings                                                                                                                                                                                                                                                                                                                              |
 | 12    | Merge                                      | Append (inputs from 11a + 11b)                                                                                                                                                                                                                                                                                                                                     |
 | 13    | Code — `Analyze`                           | **Code X** — the engine                                                                                                                                                                                                                                                                                                                                            |
-| 14    | HTTP — `Sentiment` (from 13)               | POST `https://api.anthropic.com/v1/messages` · Header Auth `Anthropic` · add header `anthropic-version: 2023-06-01` · Body: JSON → Expression → `{{ JSON.stringify($json.llm_body) }}` · Timeout **600000** (Opus + thinking + long output) · On Error: Continue (regular output)                                                                                                                             |
+| 14    | HTTP — `Sentiment` (from 13)               | POST `https://openrouter.ai/api/v1/chat/completions` · Header Auth `OpenRouter` · no extra headers · Body: JSON → Expression → `{{ JSON.stringify($json.llm_body) }}` · Timeout **600000** (reasoning + long output) · On Error: Continue (regular output)                                                                                                                             |
 | 15    | Code — `Assemble` (from 14)                | **Code D** — dashboard + digest                                                                                                                                                                                                                                                                                                                                    |
 | 16→17 | Convert to File (`state_json`) → Write     | Path `/Users/alexcohen/InvestmentVault/.data/x_engagement_state.json` — from **15 `Assemble`** (always runs; 14 continues on error), so the write carries the sentiment ledger                                                                                                                                                                                                                        |
 | 18→19 | Convert to File (`dash_body`) → Write      | Path → Expression → `/Users/alexcohen/InvestmentVault/Daily Intel/{{ $('Assemble').first().json.dash_fname }}` — one dated file per run; newest = current dashboard                                                                                                                                                                                                |
@@ -1755,7 +1810,7 @@ for f in "/Users/alexcohen/InvestmentVault/Theses/"*.md; do t=$(grep -m1 '^ticke
 
 **13 · Code — rename `Analyze`** — **Mode** `Run Once for All Items` · paste **Code X** per §7.3.
 
-**14 · HTTP Request — rename `Sentiment`** (connect from `Analyze`) — **Method** `POST` · **URL** `https://api.anthropic.com/v1/messages` · **Authentication** → Header Auth → `Anthropic` · **Send Headers** ON → Name `anthropic-version` · Value `2023-06-01` · **Send Body** ON → **Body Content Type** `JSON` → **Specify Body** `Using JSON` → JSON field → Expression → `{{ JSON.stringify($json.llm_body) }}` · **Options → Timeout** `600000` · **Settings → On Error** `Continue (using regular output)`.
+**14 · HTTP Request — rename `Sentiment`** (connect from `Analyze`) — **Method** `POST` · **URL** `https://openrouter.ai/api/v1/chat/completions` (2026-08-27 switch) · **Authentication** → Header Auth → `OpenRouter` · **Send Headers** OFF · **Send Body** ON → **Body Content Type** `JSON` → **Specify Body** `Using JSON` → JSON field → Expression → `{{ JSON.stringify($json.llm_body) }}` · **Options → Timeout** `600000` · **Settings → On Error** `Continue (using regular output)`.
 
 **15 · Code — rename `Assemble`** (connect from `Sentiment`) — **Mode** `Run Once for All Items` · paste **Code D** per §7.3.
 
@@ -1804,7 +1859,10 @@ Paste rules, identical for all three: open the node → **Mode** `Run Once for A
 const DEF = { floor_mega: 100, floor_std: 30, since_days: 4, prune_age_days: 14, plateau_pulls: 2,
   mega_tickers: 'NVDA,AMD,TSM,META,PLTR,AVGO,INTC,NET,NOW,CRWD,UBER,SHOP,NFLX,MU' };
 const cfgOf = (md, def) => {
-  const c = { ...def }, sec = (md.split('### Tuning')[1] || '').split(/\n#{2,3} /)[0];
+  // 2026-08-27 fix: bare '### Tuning' split hit a mid-line mention (Outlet Feeds schema notes) far above
+  // § X Watchers, so ZERO params parsed and the engine silently ran on code defaults since ~07-20.
+  const xw = md.split(/\n## X Watchers\s*\n/)[1] || '';
+  const c = { ...def }, sec = (xw.split(/\n### Tuning\s*\n/)[1] || '').split(/\n#{2,3} /)[0];
   for (const m of sec.matchAll(/^\|\s*([A-Za-z_]+)\s*\|\s*([^|]+?)\s*\|/gm)) {
     const k = m[1].toLowerCase(), v = m[2].trim();
     if (k in def && v !== '') c[k] = typeof def[k] === 'string' ? v : (isFinite(+v) ? +v : def[k]);
@@ -1822,7 +1880,7 @@ const now = Date.now();
 const out = [];
 
 // 1. Re-measure tracked posts (within prune_age_days, not plateaued) — batches of 50
-// (provider hard limit: max 50 tweet_ids/call — 400s above that; discovered live at 108 tracked posts)
+// (provider hard limit: max 50 tweet_ids/call — 400s above that; hit live 2026-07-19 at 108 tracked)
 const ids = Object.entries(posts)
   .filter(([, p]) => (now - new Date(p.first_seen)) < cfg.prune_age_days * 86400000 && (p.plateau_count || 0) < cfg.plateau_pulls)
   .map(([id]) => id);
@@ -1842,7 +1900,7 @@ chunk(tickers.filter(t => !MEGA.includes(t)), 8).forEach(c => addQ(c.map(t => '$
 
 // 3. AI-curated terms from _watchers.md → ### Curated terms
 const today = new Date().toISOString().slice(0, 10);
-const sec = wmd.split('### Curated terms')[1]?.split(/\n#{2,3} /)[0] || '';
+const sec = (wmd.split(/\n## X Watchers\s*\n/)[1] || wmd).split(/\n### Curated terms\s*\n/)[1]?.split(/\n#{2,3} /)[0] || '';   // same section-anchoring fix as cfgOf
 [...sec.matchAll(/^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*(\d+)\s*\|\s*([^|]*?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|/gm)]
   .map(r => ({ id: r[1].trim(), query: r[2].trim(), floor: +r[3], expires: r[5].trim(), status: r[6].trim().toLowerCase() }))
   .filter(w => w.id !== 'id' && w.status === 'active')
@@ -1861,9 +1919,12 @@ return out;
 const DEF = { track_min_views: 3000, track_lv_pct: 1.5, track_rv_pct: 0.5, track_min_likes: 300,
   gem_lv_pct: 3, gem_rv_pct: 0.7, trend_min_delta: 150, trend_min_pct: 60, trend_min_base: 50,
   min_followers: 200, cap_tracked: 800, prune_age_days: 14, plateau_flat_likes: 10,
-  plateau_pulls: 2, llm_top_n: 15, llm_model: 'claude-opus-4-8', archive_days: 90, x_tg_max_msgs: 8 };
+  plateau_pulls: 2, llm_top_n: 15, llm_model: 'x-ai/grok-4.6', archive_days: 90, x_tg_max_msgs: 8 };
 const cfgOf = (md, def) => {
-  const c = { ...def }, sec = (md.split('### Tuning')[1] || '').split(/\n#{2,3} /)[0];
+  // 2026-08-27 fix: bare '### Tuning' split hit a mid-line mention (Outlet Feeds schema notes) far above
+  // § X Watchers, so ZERO params parsed and the engine silently ran on code defaults since ~07-20.
+  const xw = md.split(/\n## X Watchers\s*\n/)[1] || '';
+  const c = { ...def }, sec = (xw.split(/\n### Tuning\s*\n/)[1] || '').split(/\n#{2,3} /)[0];
   for (const m of sec.matchAll(/^\|\s*([A-Za-z_]+)\s*\|\s*([^|]+?)\s*\|/gm)) {
     const k = m[1].toLowerCase(), v = m[2].trim();
     if (k in def && v !== '') c[k] = typeof def[k] === 'string' ? v : (isFinite(+v) ? +v : def[k]);
@@ -1878,6 +1939,8 @@ const LV = cfg.track_lv_pct / 100, RV = cfg.track_rv_pct / 100,
 let state = {};
 try { state = JSON.parse($('Extract State').first().json.data); } catch (e) {}
 state.posts = state.posts || {}; state.meta = state.meta || {}; state.ratio_log = state.ratio_log || [];
+state.archive = state.archive || [];
+const archivedIds = new Set(state.archive.map(r => r.id));   // 2026-08-27 fix: prevents re-admitting a post that already cycled through archive (was producing duplicate archive IDs — 1361 entries/1051 unique found on audit)
 const nowIso = new Date().toISOString(), nowMs = Date.now();
 const calib = (state.meta.calibration_until || '') >= nowIso.slice(0, 10);
 
@@ -1893,12 +1956,38 @@ for (const item of $input.all()) {
 // Dedupe by id — a tracked post returned by BOTH batch-lookup and a search would otherwise be
 // processed twice per run (second pass Δ=0 → false plateau++ → premature prune)
 const seenIds = new Set();
-const uniq = tweets.filter(t => t.id && !seenIds.has(t.id) && seenIds.add(t.id));
+// RT guard 2026-08-27: provider ignores -filter:retweets; RT objects carry the ORIGINAL tweet's
+// like/view counts, so every retweeter of a viral post passed the gates as a separate "post"
+// (the same Aletheia RT was tracked 7x). Native RTs always render as 'RT @user:' in the text field.
+const uniq = tweets.filter(t => t.id && !t.text.startsWith('RT @') && !seenIds.has(t.id) && seenIds.add(t.id));
 
-const themeOf = txt => (txt.match(/\$[A-Za-z]{1,5}\b/) || ['thematic'])[0].toUpperCase();
+// themeOf v2 (2026-08-27): cashtag-in-universe first, then curated-watcher term match (theme = the
+// watcher's thesis ticker, so foreign listings like 000660/2802/GAW finally surface as their own
+// themes instead of drowning in THEMATIC), then any-cashtag, else THEMATIC.
+const UNIVERSE = new Set((($('Tickers').first().json.stdout || '').split('\n')).map(s => s.trim().toUpperCase()).filter(s => /^[A-Z]{1,5}$/.test(s)));
+const WATCHERS = [...((wmd.split(/\n## X Watchers\s*\n/)[1] || '').split(/\n### Curated terms\s*\n/)[1] || '').split(/\n#{2,3} /)[0]
+  .matchAll(/^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*(\d+)\s*\|\s*([^|]*?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|/gm)]
+  .map(r => ({ id: r[1].trim(), query: r[2].trim(), thesis: r[4].trim(), status: r[6].trim().toLowerCase() }))
+  .filter(w => w.id !== 'id' && w.status === 'active')
+  .map(w => {
+    const link = (w.thesis.match(/\[\[([^\]]+)\]\]/) || [])[1] || '';
+    const tk = link.includes(' - ') ? link.split(' - ')[0].trim() : '';
+    const theme = /^[A-Z0-9.]{1,8}$/.test(tk) ? '$' + tk.split('.')[0] : w.id.toUpperCase();
+    const terms = w.query.split(/\s+OR\s+/i).map(t => t.replace(/^[("\s]+|[)"\s]+$/g, '').toLowerCase()).filter(Boolean);
+    return { theme, terms };
+  });
+const themeOf = txt => {
+  const tag = (txt.match(/\$[A-Za-z]{1,5}\b/) || [null])[0];
+  if (tag && UNIVERSE.has(tag.slice(1).toUpperCase())) return tag.toUpperCase();
+  const lo = txt.toLowerCase();
+  for (const w of WATCHERS) if (w.terms.some(t => t && lo.includes(t))) return w.theme;
+  return tag ? tag.toUpperCase() : 'THEMATIC';
+};
 const surfaced = [];
 let admitted = 0;
-const flag = (p, f, why) => { if (!p.flags.includes(f)) { p.flags.push(f); surfaced.push({ p, f, why }); } };
+const flag = (p, f, why) => {
+  if (p.theme === 'THEMATIC') return;   // 2026-08-27: unattributed posts stay tracked + LLM-read but never alert (no gem/trending/Telegram)
+  if (!p.flags.includes(f)) { p.flags.push(f); surfaced.push({ p, f, why }); } };
 
 for (const t of uniq) {
   const p = state.posts[t.id];
@@ -1910,7 +1999,7 @@ for (const t of uniq) {
     if (d >= cfg.trend_min_delta || (prev[1] >= cfg.trend_min_base && d / prev[1] >= TPCT))
       flag(p, 'trending', `+${d} likes since last pull`);
     p.last_likes = t.likes;
-  } else {                                        // DISCOVERY → entry gates
+  } else if (!archivedIds.has(t.id)) {             // DISCOVERY → entry gates (skip posts already cycled through archive)
     const lv = t.views > 0 ? t.likes / t.views : 0, rv = t.views > 0 ? t.rts / t.views : 0;
     if (state.ratio_log.length < 2000) state.ratio_log.push([+lv.toFixed(4), +rv.toFixed(4)]);
     if (t.followers < cfg.min_followers || t.views < cfg.track_min_views) continue;
@@ -1985,12 +2074,13 @@ const llmInput = Object.entries(themes).map(([name, th]) => {
 // Analytical instructions — LIVE copy in _watchers.md § X Watchers → ### LLM prompt (first fenced block).
 // Edit there; this constant is only the fallback. Output field names/types are pinned by SCHEMA below —
 // edit the guidance, never the field list.
-const DEF_PROMPT = 'For each theme below you get MY THESIS (six analytical sections), PRIOR READS (dated sentiment reads produced by this engine over the past 90 days), HISTORICAL ANCHOR POSTS (highest-engagement posts from the 90-day archive, dated, labeled [A1], [A2], …), and CURRENT CROWD POSTS with engagement stats (labeled [P1], [P2], …) — current posts are drawn from every post tracked live for that theme, not just newly pulled ones. Weight CURRENT posts most: they are the consumption signal; use PRIOR READS and ANCHOR POSTS as longitudinal context, not as current evidence. Return per theme: summary — 2-4 sentences synthesising the current crowd narrative: what the crowd believes, where the argument concentrates, what evidence they cite; weight higher-engagement, higher-follower posts more. sentiment (bullish/bearish/mixed/quiet). score (-2..2). shift — 1-2 sentences on how crowd sentiment and the dominant argument have moved versus the PRIOR READS: new arguments appearing, old ones dying, conviction hardening or fading; null if there is no meaningful history or no real change. perspectives — 2-6 distinct crowd arguments; each has text (1-2 sentences carrying the specific numbers, names, and claims from the posts, never generic labels) and refs (the labels of the 1-3 specific posts that argument draws from, e.g. ["P2","A1"] — use only labels that appear above). divergence — ONE synthesis judged across all the posts together, never per post: a specific, substantive crowd argument that contradicts, challenges, or is unaddressed by my thesis. If the crowd merely echoes a risk or bear point my thesis already carries, that is NOT divergence — return null. Judge on substance of claims, not tone; ignore hype and spam; return null unless the tension is genuine. Positioning gauge, not advice.';
+const DEF_PROMPT = 'For each theme below you get MY THESIS (six analytical sections), PRIOR READS (dated sentiment reads produced by this engine over the past 90 days), HISTORICAL ANCHOR POSTS (highest-engagement posts from the 90-day archive, dated, labeled [A1], [A2], …), and CURRENT CROWD POSTS with engagement stats (labeled [P1], [P2], …) — current posts are drawn from every post tracked live for that theme, not just newly pulled ones. Weight CURRENT posts most: they are the consumption signal; use PRIOR READS and ANCHOR POSTS as longitudinal context, not as current evidence. Return per theme: summary — 2-4 sentences synthesising the current crowd narrative: what the crowd believes, where the argument concentrates, what evidence they cite; weight higher-engagement, higher-follower posts more. sentiment (bullish/bearish/mixed/quiet). score (-2..2). shift — 1-2 sentences on how crowd sentiment and the dominant argument have moved versus the PRIOR READS: new arguments appearing, old ones dying, conviction hardening or fading; null if there is no meaningful history or no real change. perspectives — 2-6 distinct crowd arguments; each has text (1-2 sentences carrying the specific numbers, names, and claims from the posts, never generic labels) and refs (the labels of the 1-3 specific posts that argument draws from, e.g. ["P2","A1"] — use only labels that appear above). divergence — ONE synthesis judged across all the posts together, never per post: a specific, substantive crowd argument that contradicts, challenges, or is unaddressed by my thesis. If the crowd merely echoes a risk or bear point my thesis already carries, that is NOT divergence — return null. Judge on substance of claims, not tone; ignore hype and spam; return null unless the tension is genuine. If a TRANSLATE section is present, return glosses: one {ref, en} object per listed [F#] post, where en is a faithful English gloss of that post (≤ 60 words, no commentary); return an empty glosses array when nothing is listed. Positioning gauge, not advice.';
 const F3 = '`'.repeat(3);
 const pmatch = wmd.match(new RegExp('### LLM prompt[\\s\\S]*?' + F3 + '[a-z]*\\n([\\s\\S]*?)' + F3));
 const PROMPT = pmatch ? pmatch[1].trim() : DEF_PROMPT;
 
-const SCHEMA = { type: 'object', additionalProperties: false, required: ['themes'], properties: {
+const SCHEMA = { type: 'object', additionalProperties: false, required: ['themes', 'glosses'], properties: {
+  glosses: { type: 'array', items: { type: 'object', additionalProperties: false, required: ['ref', 'en'], properties: { ref: { type: 'string' }, en: { type: 'string' } } } },   // 2026-08-27: English glosses for non-English flagged posts
   themes: { type: 'array', items: { type: 'object', additionalProperties: false,
     required: ['name', 'summary', 'sentiment', 'score', 'shift', 'perspectives', 'divergence'], properties: {
       name: { type: 'string' },
@@ -2004,32 +2094,42 @@ const SCHEMA = { type: 'object', additionalProperties: false, required: ['themes
           refs: { type: 'array', items: { type: 'string' } } } } },
       divergence: { anyOf: [{ type: 'string' }, { type: 'null' }] } } } } } };
 
+// 2026-08-27: non-English flagged posts get an English gloss from the same LLM call (TRANSLATE section → schema.glosses)
+const NONLATIN = /[\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF\u0400-\u04FF\u0600-\u06FF\u0E00-\u0E7F\u0590-\u05FF\u0900-\u097F]/;
+let xlN = 0;
+for (const s of surfaced) if (xlN < 12 && NONLATIN.test(s.p.text)) s.xl = 'F' + (++xlN);
+const xlBlock = xlN ? '\n\nTRANSLATE (flagged posts not in English — return one English gloss per label in glosses):\n' +
+  surfaced.filter(s => s.xl).map(s => `- [${s.xl}] @${s.p.author}: ${s.p.text.slice(0, 600)}`).join('\n') : '';
+
 state.meta.last_run = nowIso; state.meta.runs = (state.meta.runs || 0) + 1; state.meta.last_cfg = cfg;
 
 return [{ json: {
   state_json: JSON.stringify(state),
   ref_urls: refUrls,
   llm_body: { model: cfg.llm_model, max_tokens: 32000,
-    thinking: { type: 'adaptive' },
-    output_config: { format: { type: 'json_schema', schema: SCHEMA } },
+    // OpenRouter 2026-08-27: Anthropic 'thinking'/'output_config' → OpenAI-shape structured outputs;
+    // require_parameters routes only to endpoints that honour the json_schema
+    provider: { require_parameters: true },
+    response_format: { type: 'json_schema', json_schema: { name: 'themes', strict: true, schema: SCHEMA } },
     // strip LONE UTF-16 surrogates — emoji in tweets are surrogate PAIRS; a fixed-length .slice() can cut one in half,
     // leaving a lone \uD8xx that JSON.stringify emits as invalid JSON → Anthropic 400 "no low surrogate" → whole call dies
-    messages: [{ role: 'user', content: (PROMPT + '\n\n' + llmInput).replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, '') }] },
-  surfaced: surfaced.map(({ p, f, why }) => ({ f, why, author: p.author, followers: p.followers,
+    messages: [{ role: 'user', content: (PROMPT + '\n\n' + llmInput + xlBlock).replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, '') }] },
+  surfaced: surfaced.map(({ p, f, why, xl }) => ({ f, why, xl: xl || null, author: p.author, followers: p.followers,
     theme: p.theme, text: p.text, url: p.url, likes: p.last_likes })),
   stats: { tracked: Object.keys(state.posts).length, seen: uniq.length, admitted, archived: state.archive.length, calib, catalystHits, cfg,
     themes: Object.fromEntries(Object.entries(themes).map(([k, v]) => [k, { posts: v.posts, likes: v.likes }])) }
 } }];
 ```
 
-**Code D** (`Assemble`) — the X Harvester now writes ONE file (X Intel) with the trending posts folded in below a `---`; the old separate "X trending digest" write nodes are now idle and may be deleted:
+**Code D** (`Assemble`) — writes ONE file (X Intel). The `---` trending-digest fold-in was removed 2026-08-27 (it duplicated Flagged-this-pull verbatim); the old separate "X trending digest" write nodes stay idle and may be deleted — `out.fname` is always `''`, but the field itself is kept because the `If digest` node checks it under strict type validation:
 
 ```javascript
 const a = $('Analyze').first().json;
-let senti = null;
+let senti = null, glosses = new Map();
 try {
-  const txt = ($input.first().json.content || []).find(b => b.type === 'text')?.text || '';
-  senti = JSON.parse(txt).themes;
+  const j0 = $input.first().json;
+  const txt = j0.choices?.[0]?.message?.content ?? (j0.content || []).find(b => b.type === 'text')?.text ?? '';   // OpenAI shape first (OpenRouter), Anthropic fallback
+  const root = JSON.parse(txt); senti = root.themes; glosses = new Map((root.glosses || []).map(g => [g.ref, g.en]));   // 2026-08-27: English glosses for non-English flagged posts
 } catch (e) {}
 const d0 = new Date(); // local time — TZ is Australia/Sydney; toISOString would date morning runs as yesterday (UTC)
 const today = `${d0.getFullYear()}-${String(d0.getMonth() + 1).padStart(2, '0')}-${String(d0.getDate()).padStart(2, '0')}`;
@@ -2086,8 +2186,17 @@ dash += `\n## Catalyst chatter (±10d vs _catalyst.md)\n\n` + (a.stats.catalystH
   : '- none') + '\n';
 if (a.surfaced.length) {
   dash += `\n## Flagged this pull\n\n`;
-  for (const s of a.surfaced.slice(0, 20))
-    dash += `- **[${s.f}]** ${s.theme} @${s.author} (${s.followers} fo, ${s.likes} likes) — ${s.why}\n  ${s.text}\n  ${s.url}\n`;
+  // 2026-08-27: flatten tweet bodies for the dashboard — raw multiline text (own bullets, blank lines,
+  // half-cut emoji from the 1000-char norm slice) breaks the markdown list render in Obsidian
+  const clean = t => String(t || '')
+    .replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g, '')
+    .replace(/[\uFFFD\u0000-\u0008\u000B-\u001F]/g, '')
+    .replace(/\s+/g, ' ').trim();
+  for (const s of a.surfaced.slice(0, 20)) {
+    const en = s.xl ? glosses.get(s.xl) : null;
+    const txt = clean(en || s.text), cut = (en ? '🌐 ' : '') + (txt.length > 300 ? txt.slice(0, 300) + '…' : txt);
+    dash += `- **[${s.f}]** ${s.theme} @${s.author} (${s.followers} fo, ${s.likes} likes) — ${s.why}\n  ${cut}\n  ${s.url}\n`;
+  }
 }
 
 const out = { dash_body: dash, state_json: st ? JSON.stringify(st) : a.state_json,
@@ -2097,30 +2206,21 @@ if (a.surfaced.length || divs.length) {
   out.text = (`𝕏 ${a.surfaced.length} flagged (${a.stats.tracked} tracked)` +
     (top.length ? '\n' + top.slice(0, 5).map(s => `[${s.f}] ${s.theme} @${s.author}: ${s.text.slice(0, 300)}${s.text.length > 300 ? '…' : ''}\n${s.url}`).join('\n\n') : '') +
     (divs.length ? '\n\n⚠ Thesis divergence:\n' + divs.map(d => `${d.name} — ${d.divergence}`).join('\n').slice(0, 1200) : '')).slice(0, 3900);
-  if (top.length) {
-    out.fname = `${today} - X trending digest.md`;
-    out.body = `---\nsource: x-harvester (twitterapi.io)\nretrieved: ${today}\norigin: x-harvester\n---\n# X trending — ${today}\n\n` +
-      top.map(s => `## [${s.f}] ${s.theme} — @${s.author}\n${s.text}\n- ${s.why} · ${s.likes} likes\n- ${s.url}\n`).join('\n');
-  }
+  // (2026-08-27) legacy 'X trending digest' body removed — it duplicated Flagged-this-pull verbatim
   // Telegram fan-out array — one message per divergence + per flagged post (XFanout node expands into N sends)
   const xcap = Math.max(1, Math.min(15, Math.round(c.x_tg_max_msgs || 8)));
   const tgm = [`𝕏 ${a.surfaced.length} flagged · ${divs.length} divergence${divs.length === 1 ? '' : 's'} · ${a.stats.tracked} tracked`];
   for (const d of divs) tgm.push(`⚠ ${d.name} — thesis divergence\n${d.divergence}`.slice(0, 3900));
-  for (const s of a.surfaced) tgm.push(`[${s.f}] ${s.theme} · @${s.author} (${s.followers} fo · ${s.likes} likes)\n${s.text}\n${s.url}`.slice(0, 3900));
+  for (const s of a.surfaced) tgm.push(`[${s.f}] ${s.theme} · @${s.author} (${s.followers} fo · ${s.likes} likes)\n${(s.xl && glosses.get(s.xl)) ? '🌐 ' + glosses.get(s.xl) : s.text}\n${s.url}`.slice(0, 3900));
   out.tg_msgs = tgm.slice(0, xcap);
 }
-// fold the trending digest into the dashboard — one file instead of two
-if (out.body) {
-  const digest = out.body.replace(/^---[\s\S]*?\n---\n/, '').trim();  // strip the digest's own frontmatter
-  out.dash_body = out.dash_body + '\n\n---\n\n' + digest;
-}
-out.fname = '';   // suppress the separate 'X trending digest' file — its content now lives in the dashboard
+out.fname = '';   // keep the field: 'If digest' checks it (strict notEmpty) — digest branch stays permanently false
 return [{ json: out }];
 ```
 
 ### 7.4 First run & what to expect
 
-1. Open `Workflow 5 — X Harvester` → **Test workflow**. Runtime 1–4 min (HTTP batching + Opus thinking time).
+1. Open `Workflow 5 — X Harvester` → **Test workflow**. Runtime 1–4 min (HTTP batching + Grok reasoning time).
 2. Green ticks appear node by node. First-run expectations:
 
 | Node | Expect on run #1 |
@@ -2129,7 +2229,7 @@ return [{ json: out }];
 | `Batch Lookup` | 0 items — nothing tracked yet, normal |
 | `Search` | 1 item per query, each holding a `tweets` array |
 | `Analyze` | 1 item: long `state_json` string + `llm_body` + `stats`; `surfaced` likely empty (calibration suppresses gem alerts) |
-| `Sentiment` | 1 item with a `content` array — 60–180s, Opus is thinking |
+| `Sentiment` | 1 item with a `choices` array (OpenAI shape) — 60–180s, Grok is reasoning |
 | `Assemble` | `dash_body` present; `text`/`fname` usually absent on run #1 |
 | `IF` → Telegram / digest | usually skipped — trending needs two pulls to diff |
 
@@ -2149,11 +2249,11 @@ return [{ json: out }];
 | Code node error involving `$json` on line 1 | Wrong mode → set `Run Once for All Items` |
 | Every `Search` item has `tweets: []` | Provider degraded (did the Canary fire?) or query mangled → open one `url` from `Plan`'s output in a browser to eyeball it |
 | 401/403 on twitterapi.io nodes | Header name ≠ provider spec, or key typo → fix the `TwitterAPI-io` credential |
-| Anthropic 405 Method Not Allowed | `Sentiment`'s Method left at default `GET` → set **POST** (card 14, first field) |
-| Anthropic 401 | Credential header must be exactly `x-api-key` → re-check, re-paste key |
-| Anthropic 400 | Model string must be exactly `claude-opus-4-8`; body must come via `JSON.stringify($json.llm_body)` |
+| OpenRouter 405 Method Not Allowed | `Sentiment`'s Method left at default `GET` → set **POST** (card 14, first field) |
+| OpenRouter 401 | Credential header must be exactly `Authorization` with value `Bearer sk-or-…` (the word Bearer + space + key) → re-check, re-paste |
+| OpenRouter 4xx | Model string must be an exact OpenRouter slug (`x-ai/grok-4.6` — check the `llm_model` registry cell); body must come via `JSON.stringify($json.llm_body)` |
 | `Sentiment` times out | Long thinking + large output → confirm Timeout is `600000`; if persistent, lower `llm_top_n` or pause noisy themes |
-| Dashboard says "LLM unavailable" but the API call succeeded | `stop_reason: max_tokens` — truncated JSON fails to parse. Check the execution's Sentiment output for `stop_reason`; raise `max_tokens` in Code X (thinking counts against it) |
+| Dashboard says "LLM unavailable" but the API call succeeded | `finish_reason: "length"` (OpenAI shape; was `stop_reason: max_tokens` pre-OpenRouter) — truncated JSON fails to parse. Check the execution's Sentiment output for `finish_reason`; raise `max_tokens` in Code X (reasoning tokens count against it) |
 | Node 23: "expects the node's input data to contain a binary file 'data'" | The digest branch ran on a divergence-only pull (Telegram text, no `body`) — the `If digest` gate (card 20b) is missing or mis-wired → wire 20-true → 20b (`{{ $json.fname }}` is not empty) → 22 → 23. A hard fail here also aborts the state/dashboard writes, losing the pull |
 | No Telegram, ever | Nothing flagged yet — normal until pull #2–3; the dashboard is the pulse meanwhile |
 
@@ -2203,11 +2303,11 @@ Procedure (~30–45 min):
 8. **Verify:** n8n opens → workflows present and still published (the DB carries publish state) → run Workflow 1 — Price Tripwires manually — cheapest end-to-end test of credential + HTTP + Telegram.
 9. **Old Mac — decommission the same day:** `pm2 delete n8n` + `launchctl unload -w ~/Library/LaunchAgents/pm2.alexcohen.plist`. **Exactly one machine runs this stack** — two live copies means duplicate Telegram alerts, double API spend, git conflicts on `_Inbox`/dashboard writes, and a forked harvester state.
 
-**Lighter alternative** (no `~/.n8n` copy — sensible if you're changing usernames anyway): export each workflow as JSON (workflow `⋯` → Download) into `_Archive/n8n-workflows/` so they version with the vault, import them on the new machine, and re-paste the four credentials by hand (Telegram, FMP, twitterapi.io, Anthropic). Slower, but forces a hardcoded-path audit as you go.
+**Lighter alternative** (no `~/.n8n` copy — sensible if you're changing usernames anyway): export each workflow as JSON (workflow `⋯` → Download) into `_Archive/n8n-workflows/` so they version with the vault, import them on the new machine, and re-paste the credentials by hand (Telegram, FMP, twitterapi.io, OpenRouter, Brave, Voyage, SMTP; the legacy Anthropic one only if rollback matters). Slower, but forces a hardcoded-path audit as you go.
 
 ### 8.2 Failure modes & resilience
 
-**Concurrency (schedule overlap is safe by design).** The daily map: 07:10 W3 (25–45 min) · 07:30 W2 · 07:35 W1 (both fire *inside* W3's window, harmlessly) · 08:00 W4 · 08:30 W5 (clear of W3 normally). n8n interleaves concurrent executions in one process; every shared file is read-only or written as a new dated file (the no-editing-existing-files rule is what makes overlap safe); per-node state (dedupe store, W5 engagement ledger) has a single owner; W3's FMP calls (~07:12) finish before W1's quote call (07:35). Two real edges: (1) **hung-run collision** — a stuck W3 would still be "running" at the next day's 07:10; set W3's Workflow Settings → **Timeout 5400s** as insurance; (2) **Anthropic rate limits pool** across W3 and W5 — only relevant if W3 overruns into 08:30, failing silently as 429s behind On-Error-Continue (thin outputs). Operator rule: never manually Execute W3 while a scheduled run is active — two live executions race the dedupe store and split the day's articles across two briefs.
+**Concurrency (schedule overlap is safe by design).** The daily map: 07:10 W3 (25–45 min) · 07:30 W2 · 07:35 W1 (both fire *inside* W3's window, harmlessly) · 08:00 W4 · 08:30 W5 (clear of W3 normally). n8n interleaves concurrent executions in one process; every shared file is read-only or written as a new dated file (the no-editing-existing-files rule is what makes overlap safe); per-node state (dedupe store, W5 engagement ledger) has a single owner; W3's FMP calls (~07:12) finish before W1's quote call (07:35). Two real edges: (1) **hung-run collision** — a stuck W3 would still be "running" at the next day's 07:10; set W3's Workflow Settings → **Timeout 5400s** as insurance; (2) **OpenRouter rate limits and the shared credit balance pool** across W3 and W5 — only relevant if W3 overruns into 08:30, failing silently as 429s behind On-Error-Continue (thin outputs); an exhausted balance fails the same silent way. Operator rule: never manually Execute W3 while a scheduled run is active — two live executions race the dedupe store and split the day's articles across two briefs.
 
 ---
 
@@ -2229,12 +2329,12 @@ Procedure (~30–45 min):
 |---|---|---|---|---|
 | 1 | Price Tripwires | daily 07:35 | 0 | **Live** |
 | 2 | Catalyst Reminders | daily 07:30 | 0 | **Live** |
-| 3 | News Sweep (unified: 5 channels × tickers+themes + body pipeline + story clustering + Opus brief) | daily 07:00 (07:10 during calibration) | ~60–110 | **In build** — §5; legacy v1 (GN-only, $0–8) stays live until §5.6 cutover |
+| 3 | News Sweep (unified: 5 channels × tickers+themes + body pipeline + embeddings dedup + `brief_min` gate + Grok-4.6 brief) | daily 07:20 | ~14–28 | **Live** — §5; v1 superseded 2026-07-20; presentation gate + OpenRouter switch 2026-08-27 |
 | 4 | X Canary | daily 08:00 | ~0 | **Live** — §6.4 |
-| 5 | X Harvester | daily 08:30 | ~17–40 | **Live** — §7.2; dated history in `Daily Intel/` |
+| 5 | X Harvester | daily 08:30 | ~7–15 | **Live** — §7.2; dated history in `Daily Intel/`; OpenRouter/Grok-4.6 sentiment since 2026-08-27 |
 | — | Error Watchdog | fires by reference | 0 | **Live** — set as Error Workflow in every workflow |
 
-**Totals:** software $0 (n8n Community, fair-code, internal use) · hard running cost typically ~$20–35/mo today (Opus daily is the dominant line; `llm_model` registry row is the lever) — rises to ~$80–145/mo when unified W3 goes live (Opus story summaries + re-score and Sonnet triage are the dominant lines; the four §2.4 W3 model cells are the levers) · ongoing maintenance ~30 min/mo (§8 monthly review).
+**Totals:** software $0 (n8n Community, fair-code, internal use) · hard running cost ~$21–43/mo since the 2026-08-27 OpenRouter switch (W3 ~14–28 + W5 ~7–15; was ~$57–115 on Anthropic — the `brief_min` gate cut the digest stage ~75–80% the same day, then GLM-5.2/Grok-4.6 rates cut the remaining LLM lines ~70–85%; Brave is now the single largest line) · ongoing maintenance ~30 min/mo (§8 monthly review).
 
 ---
 
@@ -2284,7 +2384,14 @@ Procedure (~30–45 min):
 - **2026-07-25 (session: X-fold, output renames, optional email, Telegram-diagnosis correction, user)** — (1) **X output folded into one file** — W5 `Assemble` appends the trending digest into the single `X Intel` file (`out.fname=''` suppresses the old second write). (2) **Outputs renamed** — W3 → `YYYY-MM-DD - News Brief.md` (H1 `# News Brief`, `origin: news-sweep`); W5 → `YYYY-MM-DD - X Intel.md` (H1 `# X Intel`); time-of-day + `n8n` removed from both filenames (the internal `.data/news_stories/` machine log keeps its HHMM to avoid same-day collisions). (3) **OPTIONAL email delivery** added (§5.9) — registry-driven BCC mailing list (`_watchers.md → ## Mailing list`), a `MailPrep` + `Send Email` node per workflow, Gmail SMTP or Proton Mail Bridge (needs `NODE_EXTRA_CA_CERTS` pointing at the Bridge cert — Keychain trust does not apply to Node). (4) **Telegram parse-entities correction** — the earlier "remove the Parse Mode field" guidance was wrong; n8n's Telegram node applies an implicit parse mode via the default-on "Append n8n Attribution" footer even with no parse_mode set, breaking on raw tweet text — fix is to turn that footer OFF (or sanitize the text). (5) **Ghost-cron double-run** — a deleted schedule-trigger node left an in-memory cron; `pm2 restart n8n` rebuilds the schedule registry from actual node definitions and clears it.
 - **2026-07-27 (brief grouping inherits registry headings, user request)** — The News & Thematic `###` cluster headings (Custom silicon & compute, Foundry & packaging, …) now flow into the brief: card-5 Plan parses the section per `###` sub-heading and stamps each row's cluster with the heading text instead of the flat `thematic` tag, so the brief's 250-line `## thematic` wall splits into the registry's own categories (outlet clusters and `ticker` unchanged). Pre-patch dependency audit found exactly one silent breaker: `cfg.themes` filtered `cluster==='thematic'` — feeds the `{themes}` token to triage/rescore/digest prompts and would have gone empty; now `cluster!=='ticker'`. `gdeltRank` verified safe (any non-ticker cluster → middle rank; comment updated); Assemble's `## ${cl}` renderer confirmed arbitrary-string-safe. Same session: Outlet Feeds registry header corrected from stale "IN BUILD" to LIVE, and the cluster→brief-header mechanic documented in the registry section intro.
 - **2026-07-27 (outlet feeds inherit `###` headings too, user request)** — Same treatment as the morning's News & Thematic patch, applied to the feed channel: card-5 Plan splits the Outlet Feeds section by `###` block and stamps each feed's cluster with the heading text (parenthetical stripped — "Major outlets (headline scanning surfaces)" → "Major outlets"); `cluster` column demoted to fallback. Pre-patch audit: zero literal comparisons against outlet cluster slugs anywhere in the workflow (only `ticker` is compared, unaffected). Deployed via direct DB patch (backup `pre-outlet-heading-patch-2026-07-27.sqlite`, anchors asserted unique, parse-checked, restart re-armed all 6 schedules). Same session, TechCrunch/Techmeme non-appearance diagnosed as working-as-designed: both fetched every run (90/81 occurrences in exec 116) but (1) generalist items triage out against the thesis-centric `{themes}` list, and (2) when their stories matter, embeddings dedupe collapses them into clusters where specialist/direct sources win representative — Techmeme structurally never wins (aggregator, `body_exempt`); its links survive as cluster members in Sources lines.
-- **Status history** — W1 Price Tripwires + W2 Catalyst Reminders live 2026-07-17/18. W4 X Canary + W5 X Harvester live 2026-07-18; X cadence 3-day → daily and `prune_age_days` 14 → 28 on 2026-07-18; X calibration window through 2026-08-01; digests relocated `_Inbox/` → `Daily Intel/` (decision 2026-07-18). Legacy W3 v1 live 2026-07-18, superseded 2026-07-20 by the unified build (in build since 2026-07-20); v1's digest Write node was never repointed post-relocation — known since 2026-07-19, still writing `_Inbox/` at supersession.
+- **2026-08-27 (11-day outage discovered + keep-alive watchdog)** — Every scheduled workflow silently dead 2026-08-15 → 2026-08-27: the Mac rebooted 08-15 15:58 and pm2's resurrect-on-login LaunchAgent (`RunAtLoad` + `LaunchOnlyOnce` — fires once per login, never retries) failed to bring n8n back, and nothing ever checked again. The Error Watchdog workflow is structurally blind to this failure mode — an errorTrigger only fires on workflows n8n *attempts*; it cannot see "n8n isn't running" (0 lifetime executions). Fix: new LaunchAgent `com.investmentvault.n8n-watchdog` (15-min `StartInterval` + `RunAtLoad`; script `.claude/schedule/n8n-watchdog.sh`) verifies pm2 reports n8n online AND `:5678/healthz` returns 200, self-heals via `pm2 resurrect`/`pm2 restart n8n`, logs to `.claude/schedule/logs/n8n-watchdog.log`. Same morning, two duplicate-run incidents from the still-open no-concurrency-guard gap: three concurrent manual W5 runs (06:52, 3× Telegram + 3× email, last-writer-wins on state/dashboard) and the 07:20 scheduled W3 firing on top of a still-running manual W3.
+- **2026-08-27 (W5 five-defect repair session, user reports "errors in the code" + "rubbish in Flagged")** — (1) **Archive dedup (patched 08-26)**: discovery never checked `state.archive`, so pruned posts re-admitted and re-archived on later mentions — 1,361 archive entries / 1,051 unique IDs on audit; `archivedIds` guard added in Code X, archive deduped keep-newest. (2) **Tuning parse dead since ~07-20**: `md.split('### Tuning')[1]` matched a mid-line mention in the Outlet Feeds schema notes (added at the W3 unification) far above § X Watchers — zero rows parsed, the engine silently ran on code defaults (`prune_age_days` 14 not 28, `llm_model` claude-opus-4-8 not opus-5, `since_days` 4 not 2, MU still in mega). cfgOf (Code P + Code X) and the Curated-terms split now anchor to `## X Watchers` first; `state.meta.last_cfg` was the tell (recorded exact code defaults). (3) **RT leak**: provider ignores `-filter:retweets`; RT objects carry the original tweet's counts, so every retweeter passed the gates as a separate post (one Aletheia RT tracked 7×; K-pop/Waymo/Warhammer RT spam dominated gems + trending). `RT @` prefix now dropped at collection; 25 live + 246 archived RTs purged. (4) **themeOf v2**: cashtag-or-THEMATIC discarded watcher identity — 53/67 live posts pooled in THEMATIC, where the top-15-by-likes LLM window let RT spam evict real signal (12 SK Hynix + 6 TSMC posts never reached Opus). Curated-term finds now themed by the watcher's thesis ticker (§7.1 Theming). (5) **THEMATIC flag mute** (user decision): unattributed posts tracked + LLM-read, never alerted. Also per user: the `# X trending` fold-in deleted (verbatim duplicate of Flagged-this-pull) and Flagged tweet bodies flattened to single-line ≤300-char excerpts — raw multiline tweets (own bullets, blank lines, half-cut-emoji `�` from the 1000-char slice) were breaking the markdown list render, the visible "rubbish". One-off state surgery re-themed live + archive and dropped the same-day pre-fix sentiment reads so the next run rewrites clean.
+- **2026-08-27 (DB-patch lesson — dual-table write)** — n8n 2.x keeps an `activeVersionId` pointing into `workflow_history`; a direct patch to `workflow_entity.nodes` alone can sit inert (the 08-26 archivedIds patch did). Any DB-level code patch must update BOTH `workflow_entity.nodes` AND the `workflow_history` row for `activeVersionId`, then `pm2 restart n8n` for scheduled runs (manual editor runs read fresh DB state and can validate pre-restart — the 07:50 manual run proved the fixes before the restart landed). Node-JSON backups per patch: `.claude/schedule/logs/uc5-nodes-backup-*.json`.
+- **2026-08-27 (W3 presentation gate + dedup tightening, user request: "too many articles, still duplicates — cut to 25%")** — The 08-27 brief carried 424 stories, **196 (46%) below the triage bar at final score** (92 at 0–1): the pipeline's only gate was headline triage (`triage_min` 7); nothing re-gated after the body-informed Opus rescore, so it rendered its own known junk. New presentation gate in SumPrep (card 18c): full Opus analysis + full entry only at final score ≥ `brief_min` (new Tuning row, 8); `brief_tail_min` (7) to `brief_min`−1 render as a capped links-only "Below the bar" section (`brief_tail_max` 50, zero Opus spend); below that, cut from the brief but retained in the `.data` log under separate `tail`/`cut` keys — deliberately NOT in `stories`, which story-memory reads for repeat detection (a links-only mention must not suppress tomorrow's real coverage as a "repeat"). Replayed on 08-27 data: 424 → 87 full (21%) + 50-line tail; Opus digest calls 53 → 11 (~75–80% cut of the priciest stage). Duplicates diagnosed: zero surviving pairs at title-Jaccard ≥ 0.5 — the leak class is same-event-different-wording (YMTC IPO 2×, Vera Rubin production 2×, AMI order 2×, COHR SiC 2×, Intel Diamond Rapids 3×) sitting just under the embedding merge bar → `sim_threshold` 0.86 → 0.83 (the row's own documented dial); most such pairs scored 7|7 and fall below the gate regardless. Deployed via dual-table DB patch (backup `uc3-nodes-backup-20260826T223854Z.json`); doc §5.3 blocks byte-aligned to live code, with two 07-27 comment-drift lines back-ported into the DB so doc and instance are identical. Same-day doc sweep: §5 header + §10 table corrected from stale "In build" to Live (unified W3 has run daily since 07-20 — the §5.6 cutover was executed but never recorded), cost lines rebuilt post-embeddings + post-gate (W3 ~$40–75/mo, totals ~$57–115/mo), first-run check (n) + two §12.1 rows added for the gate, and the registry's brief-shape claims (`## Outlet Feeds` intro, `track_min_score` + `digest_model` notes) updated to the gated reality.
+- **2026-08-27 (OpenRouter switch — all LLM calls off Anthropic, user decision: "maximum functionality, just not Claude or OpenAI")** — All four LLM calls (W3 Triage/Rescore/Summarise + W5 Sentiment) moved `api.anthropic.com` → `openrouter.ai/api/v1/chat/completions`, capability-forward two-model tiering: **judgement seats** (W3 digest, W5 sentiment/divergence) on `x-ai/grok-4.6` ($2/$6 per MTok, AA Intelligence Index 61 ≈ frontier parity, 500K ctx, ~90% observed cache-hit rate on repeated payloads); **scoring seats** (headline triage, body re-score) on `z-ai/glm-5.2` ($0.40/$1.27, top open-weights on the AA index, ZDR-pinned via `provider: {data_collection: 'deny'}` — Together-class Western hosts only, since prompts carry thesis content). Kimi K3 assessed and passed over: $2.55/$12.75 with likely-lower capability than Grok in the judgement seats; its edges (1M ctx, agentic tool use, vision) are unused by single-shot calls; remains the open-weights alternative named in the registry cells. Mechanics: new `OpenRouter` Header Auth credential (encryption verified by round-tripping the live Anthropic credential; the Anthropic credential stays for rollback); Anthropic-only `thinking` removed from the three reasoning bodies (both models reason natively); W5's `output_config` → OpenAI-shape `response_format` json_schema `strict: true` + `require_parameters` routing; all four parsers dual-shape (`choices[0].message.content` first, Anthropic `content[].text` fallback) so **rollback = registry cells + card-14a URL/credential, no re-patching**; 600s timeouts on every LLM node. Pre-deploy validation: live GLM triage-shaped call returned clean score JSON via Together, live Grok call honoured the W5 schema via xAI. Projected bill: Anthropic ~$46–95 → OpenRouter ~$11–23/mo (Brave becomes the largest line). Key has no spend cap set — flagged to user. Deployed via dual-table DB patch (backups `uc3/uc5-nodes-backup-20260826T231945Z.json`); all nine changed doc code blocks re-verified byte-identical.
+- **2026-08-27 (non-English titles + flagged posts translated, user request)** — Measured need first: 5/424 rendered titles on the 08-27 brief carried non-Latin script, 3 of them English headlines wearing Google News's ` - Publisher` suffix in Korean/Japanese; the 2 genuinely foreign were both score-8 supply-chain stories (PChome on AMD CoWoS allocation, ZDNet Korea on Samsung/SK HBM4 8-high shipments) — the GDELT international channel doing its job and failing at the last inch. Design: **no new nodes, no new calls** — translation piggybacks on LLM calls that already read the text. W3: `triage_prompt` (registry + `DEF_P`) now returns `t_en` for non-English headlines; Admit swaps it in as `title` (`title_orig` + `translated: true` kept), so the English title flows into embeddings dedup, the body pipeline, the presentation gate, the brief, the tail, Telegram and next-day story memory; SumPrep additionally strips the GN ` - Publisher` suffix from display titles for `ch === 'gn'` representatives (members keep raw titles); Assemble marks translated titles 🌐. W5: Analyze appends a TRANSLATE section to the Sentiment payload for up to 12 non-English **flagged** posts (Unicode-script regex: CJK/Kana/Hangul/Cyrillic/Arabic/Thai/Hebrew/Devanagari, labelled `[F#]`), the structured-output SCHEMA gains a required `glosses: [{ref, en}]` array (empty when nothing listed), and Assemble renders the 🌐 gloss in Flagged-this-pull and the Telegram fan-out with the original behind the URL. Live validation via OpenRouter: GLM-5.2 on the actual registry prompt returned `t_en` for the Korean and Chinese headlines and omitted it for the English one ($0.001); Grok 4.6 on the live W5 prompt + extended strict schema returned a correct gloss for the 08-27 Japanese NVDA-earnings post while scoring the theme ($0.017). Marginal running cost ≈ a few output tokens per foreign item. Deployed dual-table (backups `uc3/uc5-nodes-backup-20260827T073810Z.json`), restarted, doc code blocks byte-aligned; first-run check (o) + §7.1 schema row added.
+- **2026-08-28 (News Sweep duplication — dedup silently OFF for a full run, user report)** — The 08-28 brief carried 375 full stories with ~300 same-event pairs and 0 ♻ follow-ups. Root cause chain: (1) the OpenRouter switch moved triage to GLM-5.2, which scores ~1 point more generously than Sonnet 5 on the same rubric — admitted rose 533 → 732 → 1,020 on like-for-like fetch volumes; (2) EmbedPrep sent every admitted item + up to 250 prior stories in ONE Voyage call, and Voyage caps a request at 1,000 inputs (proven live: 1,001 → HTTP 400 `batch size limit is 1000`, 999 → 200) — the 08-27 15:17 run squeaked under at ~982 (732 → 355 stories, 173 repeats caught), the 08-28 run at ~1,270 was rejected, On-Error-Continue swallowed it, and SemCluster passed 1,020 singletons downstream (funnel note `semcluster:embed-failed`, buried behind feed XML errors on the ⚠ line); (3) GLM's rescore scale is inflated the same way (≥8 share 21% → 61%, ≥9 2% → 22%), so the `brief_min` 8 gate admitted 375 instead of ~90. Fixes: EmbedPrep chunks to ≤400 inputs/item with meta on chunk 0; SemCluster reassembles per-chunk vectors in order (chunk-relative `index`), distinguishes NEW-vector loss (🚨 lead warning, singleton pass-through) from PRIOR-only loss (dedup runs, repeats degrade); Embed node Retry On Fail 3×/3 s; Assemble's Telegram footer adds a dedup-OFF line; unit-tested offline against the real node code at yesterday's volume (1,020 + 250 → 4 chunks → 1,018 reps + repeat detection). Recalibration for the GLM scale (registry + code fallbacks): `triage_min` 7 → 8, `brief_min` 8 → 9, `brief_tail_min` 7 → 8 — targets the previously approved ~80–110 full stories/day. Residual after this lands: the same-event-different-wording class just under the 0.83 cosine bar; next lever if it persists is a post-body second embedding pass on representatives (bodies of one event cluster far tighter than headlines). Dual-table DB patch (backup `uc3-nodes-backup-20260828T122324Z.json`); doc cards 15c/15d/15e/18c, §5.5 timing profile and §12.1 updated; all nine W3 code blocks byte-aligned.
+- **Status history** — W1 Price Tripwires + W2 Catalyst Reminders live 2026-07-17/18. W4 X Canary + W5 X Harvester live 2026-07-18; X cadence 3-day → daily and `prune_age_days` 14 → 28 on 2026-07-18; X calibration window through 2026-08-01; digests relocated `_Inbox/` → `Daily Intel/` (decision 2026-07-18). Legacy W3 v1 live 2026-07-18, superseded 2026-07-20 by the unified build (in build since 2026-07-20); v1's digest Write node was never repointed post-relocation — known since 2026-07-19, still writing `_Inbox/` at supersession. n8n instance down 2026-08-15 15:58 → 2026-08-27 06:28 (reboot + failed pm2 resurrect; all schedules silent 11 days; keep-alive watchdog added — see the 2026-08-27 entries).
 - **Verification & lesson timestamps (swept from the body 2026-07-20 for a clean read)** — FMP v3 endpoints verified legacy-dead on this key 2026-07-17. FMP keyword news search probed conclusively absent 2026-07-20. GDELT 1 req/5s hard limiter + sticky IP cooldown verified 2026-07-20. defuddle CLI v0.7.0 confirmed installed 2026-07-20. `NODES_EXCLUDE` Execute-Command re-enable added 2026-07-18. twitterapi.io 50-id batch cap hit live 2026-07-19 at 108 tracked posts — the exact failure the §6.2 verification checks (skipped by user decision 2026-07-18) were written to catch; invoiced one day later. W5 thesis-truncation regex bug (multiline-`$`) found and fixed 2026-07-18. Manual-run-never-delays-schedule lesson 2026-07-19. Trigger re-registration silent-failure observed 2026-07-20. W2 multi-ticker parser gap found 2026-07-20 (the 2026-07-18 GENIUS Act catalyst row was the proven miss). All 94 Outlet Feeds URLs verified live 2026-07-20 (381-bookmark audit).
 
 ---
@@ -2313,7 +2420,7 @@ Symptom → cause → fix. Build steps are in §1–§7; this is the "something'
 | Same story re-briefed across runs/days | PriorStories (2b) broken (nothing to compare against) OR `repeat_threshold` too high | SemCluster's funnel note should read `… (K cross-run repeats)` with K>0 when follow-ups exist; confirm `PriorStories` stdout is non-empty; LOWER `repeat_threshold` toward 0.85 if reruns leak through; widen `story_memory_days` for a longer memory |
 | Registry prompt edit has no effect | `####` header misspelled or required token deleted (`{items}`; cluster also `{prior}`) — Plan silently reverted to `DEF_P` | §5.1 check 9's third grep must return 4; restore the exact header/token |
 | Real development buried in ♻ Follow-up coverage | `repeat_threshold` too low — an advancing story looks too similar to its prior | RAISE `repeat_threshold` toward 0.92; the ♻ link is kept either way — nothing lost, only unsummarised |
-| Funnel note `semcluster:embed-failed → no dedup this run` | Voyage call failed (On-Error-Continue) — bad key, rate limit, or malformed body | Open the `Embed` (15d) execution → response; check the Voyage credential (`Authorization: Bearer …`) and that `_emb_body` is valid JSON. Run degrades to singletons (no dedup), never dies |
+| Funnel note `🚨 semcluster:embed-failed → NO DEDUP this run` (leads the ⚠ line; Telegram footer says dedup OFF) | Voyage call failed (On-Error-Continue) — **1,000-input batch cap** (the 2026-08-28 cause: 1,020 admitted + 250 prior in one call → `batch size limit is 1000`; fixed by ≤400-input chunking in EmbedPrep), bad key, rate limit, or malformed body. Symptom downstream: hundreds of same-event pairs and zero ♻ follow-ups | Open the `Embed` (15d) execution → response; check the Voyage credential (`Authorization: Bearer …`) and that `_emb_body` is valid JSON. Run degrades to singletons (no dedup), never dies |
 | Every item a singleton, no merging ever (but Embed shows 200) | SemCluster reading the wrong response field | Voyage returns `{data:[{embedding:[…],index:0},…]}`; SemCluster reads `$input.first().json.data` — if n8n nested it (e.g. under `body`), adjust that path |
 | Distinct stories wrongly merged into one | `sim_threshold` too low | RAISE `sim_threshold` toward 0.90 (the primary dial); a specific stubborn pair is genuinely close — accept or raise further |
 | Run hangs at PreBody or Rejoin | A zero-item branch starved a Merge (quiet/all-bypass/zero-body day) | Verify TriagePrep's guaranteed-batch line + Always Output Data ON for Admit + Final; last resort, wire 16-true through a pass-through Code node as branch-keeper |
@@ -2335,6 +2442,8 @@ Symptom → cause → fix. Build steps are in §1–§7; this is the "something'
 | Re-test comes up empty (Dedupe kills everything) | Card-12 static store holds URLs from a run <`dedup_ttl_d` days ago | Rare since the TTL rebuild; force-reset with a one-line Code node `$getWorkflowStaticData('global').seenUrls = {}` |
 | Debugging needs fast iterations | Full runs cost ~30 min in GDELT/Brave pacing | Detach the 4 GDELT/Brave wires (Route 2/3 → loops, both `done` → PreNormalize in3/in4 — delete at the Merge end too); run = RSS+FMP+LLM ≈ 3–5 min; re-attach per §5.4 |
 | Telegram send fails | >4,096 chars | Capped at 3,900/message; check multi-byte overflow or lower `tg_max_msgs` |
+| Brief suddenly ~80–110 full stories instead of hundreds (since 2026-08-27) | The `brief_min` presentation gate working as designed — full analysis only at final score ≥ 8 | Dials in `_watchers.md § Tuning`: `brief_min` (bar), `brief_tail_min` (tail floor), `brief_tail_max` (tail cap). The pre-gate volume is all still in the `.data` log |
+| A story you expected is missing from the brief | Final (rescored) score landed below `brief_min` — check the day's `.data/news_stories/` log: `tail` key (7s beyond the render cap) or `cut` key (≤6) | If it deserved the brief, the rescore under-scored it — lower `brief_min` to 7, or sharpen `rescore_prompt`; one-offs need no action |
 
 ### 12.2 X workflows (W4 Canary / W5 Harvester) & platform
 
@@ -2347,8 +2456,12 @@ Symptom → cause → fix. Build steps are in §1–§7; this is the "something'
 | Telegram node 400 `can't parse entities: Can't find end of the entity` | The node's **Parse Mode** is set (HTML or Markdown) and the message has unbalanced formatting chars — raw tweet/summary text is full of `<` `>` `&` `*` `_` `[` `` ` `` | Turn OFF **Append n8n Attribution** in Additional Fields (n8n's default footer forces an implicit Markdown parse even with no parse_mode set); or sanitize the message text. Also set On Error: Continue so the 400 doesn't block the disk writes. |
 | X internal churn breaks provider (every few weeks) | Watchdog (hard errors) / Canary (empty results) | Wait for provider patch; Canary is the early-warning |
 | Silent thin results | Canary | Check provider status; fallback twin socialdata.tools (~30 min swap) |
-| Anthropic API failure (W5) | On-Error-Continue on Sentiment node | Dashboard renders "LLM unavailable"; harvest unaffected. Open the Sentiment node's output for the real error |
+| LLM API failure (W5 — OpenRouter) | On-Error-Continue on Sentiment node | Dashboard renders "LLM unavailable"; harvest unaffected. Open the Sentiment node's output for the real error; check credits at openrouter.ai/activity (exhausted balance silently 4xxs every call) |
 | W5 `400 … "no low surrogate in string"` → dashboard "LLM unavailable", all sentiment `—`, run ~26s | A tweet's emoji (a UTF-16 surrogate PAIR) got cut in half by a fixed-length `.slice()` in the Analyze node → lone `\uD8xx` → invalid JSON → Anthropic 400s the whole Sentiment call | Analyze node strips lone surrogates from the payload content (the `.replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])…/g,'')` on line ~1920). If W3's LLM calls ever 400 the same way, apply the identical strip to that payload builder |
+| Tuning/Curated-terms edits in `_watchers.md` have no effect | Section-split collision: a `### Tuning` string occurring EARLIER in the file (W3's Tuning heading; a mid-line mention in the Outlet Feeds notes) hijacked the split — parser read the wrong slice, code defaults won silently for ~5 weeks | Fixed 2026-08-27 (parses anchor to `## X Watchers` first). Diagnostic: dashboard gates-stamp shows fallback values (`llm claude-opus-4-8` while the row says opus-5); `state.meta.last_cfg` records what actually ran |
+| Tracked set / flags full of retweets (`RT @…`), same viral post under many authors with identical like counts | Provider does not honor `-filter:retweets`; RT objects inherit the ORIGINAL tweet's engagement counts, so every retweeter passes the gates separately | `RT @` guard in Code X (2026-08-27). If attributed junk persists, tighten bare Curated-terms OR-arms (`Ajinomoto`, `Waymo`, `"Games Workshop"`) with context terms |
+| A DB-level code patch never takes effect on scheduled runs | Patch landed only in `workflow_entity.nodes`; n8n 2.x can execute the `workflow_history` active version (`activeVersionId`) | Write BOTH tables + `pm2 restart n8n` (§11 2026-08-27 dual-table entry). Manual editor runs read fresh state — use one to validate before the restart |
+| n8n itself silently down — every schedule dark, no alerts | Reboot + failed pm2 resurrect (`LaunchOnlyOnce` fires once, never retries); Error Watchdog can't see a dead instance | `com.investmentvault.n8n-watchdog` LaunchAgent self-heals every 15 min (2026-08-27); log at `.claude/schedule/logs/n8n-watchdog.log` |
 | State file corrupted/deleted | try/catch fallback to `{}` | Cold restart; sharp again in 2 pulls — disposable by design |
 | `_catalyst.md` stale | Workflow 2 staleness nag | Catalyst matching degrades to "none" |
 | Provider dies commercially | Canary + top-up failure | Balance ≤$5 caps the loss |

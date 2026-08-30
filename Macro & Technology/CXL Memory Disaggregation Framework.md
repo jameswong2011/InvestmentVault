@@ -279,6 +279,10 @@ Five weeks resolved the note's flagged milestone (May 27 Celestial commentary: p
 
 **Vault-internal tension (cross-reference):** [[Research/2026-05-24 - Semiconductor Portfolio Rebalancing - synthesis]] recommends **EXIT MRVL** on the Trainium 3 socket loss to Alchip (custom-silicon execution credibility gap). The framework's central upside vehicle is under portfolio-construction pressure for reasons unrelated to memory disaggregation, yet the disaggregation lever itself (this note's subject) is independently strengthening via Astera's KV-cache win and Marvell's own Structera + CXL-attach guidance. The binary Celestial upside is intact; the vehicle carrying it is contested. Resolution datapoint: the May 27 Celestial commentary.
 
+### Incremental delta — August 2026 (PhotonCap optical follow-up, 23 Aug)
+
+PhotonCap's 23 August Micron-optics follow-up restates the electrical-holds-the-P&L rule: the channel that ships is copper CXL (MU CZ120/CZ122 on RHEL 9.3). The optical memory interface that keeps coherence while targeting <10 ns chip-to-chip is still on the Nature Electronics open-problems list. Do not treat a 2023 pending optical-via-in-stack application, or SK Hynix's newsroom pooling claim, as a 2026 results event. Keep CXL.mem as the electrical pooling protocol. Per [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]].
+
 ### Incremental delta — August 2026 (Damnang Part 3)
 
 Damnang (21 Aug) treats CXL pooling and Photonic Fabric as the high-optionality / low-P&L bucket (Memory scored 3.0 proven / 2.0 in FY27–28 earnings / 5.0 upside [est.]) and **separates CMM-Ax from PF**: CMM-Ax is Structera A PNM + SK hynix memory + SK hynix software, validation-stage at FMS 2026, no disclosed production customer [1×: Damnang]. Three pairwise collaborations (NVIDIA–Marvell, NVIDIA–SK hynix, Marvell–SK hynix) are confirmed; a three-party integrated program is not. No evidence SK hynix or NVIDIA adopted Photonic Fabric. KV-cache growth with context length and agentic steps remains the demand driver for capacity *outside local HBM* — consistent with this framework and with the July KV-cache-socket-capture caution. Confirmation for a PF–DRAM inference is still first disclosed PF customer and memory partner.
@@ -357,3 +361,6 @@ Cross-references:
 - [[Research/2026-08-20 - 000660 NVDA MRVL - PhotonCap SKHY CPO Track - deep-dive]]: Avicena LightBundle / micro-LED on all three memory-maker cap tables; optical memory-link protocol still the priceable moment.
 ### 2026-08-22
 - [[Research/2026-08-21 - MRVL NVDA 000660 - Damnang Marvell Part 3 - deep-dive]]: CXL pooling / Photonic Fabric still little P&L; CMM-Ax is Structera A CXL-PNM (validation, no production customer); no PF adoption at NVIDIA/SK hynix; KV-cache growth remains the demand story for capacity outside local HBM.
+
+### 2026-08-27
+- [[Research/2026-08-23 - MU 000660 - PhotonCap Samsung SK Hynix Went Optical - deep-dive]]: copper CXL still ships; optical memory-link latency+coherence remains the document to watch and is still open. Does not flip Contradiction Check items.

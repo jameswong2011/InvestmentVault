@@ -22,7 +22,9 @@ The organic substrate that physically carries every CoWoS, Foveros, EMIB, I-Cube
 
 ## Active Theses
 
-None at present: this sector note is a candidate-watchlist primer rather than an established thesis cluster. The closest existing theses sit in the foundry and packaging-equipment layers, not at the substrate vendors themselves:
+- [[Theses/2802 - Ajinomoto]]: Ajinomoto (ABF dielectric film monopoly, ~95% global share, single Kawasaki facility, buried inside a food + amino-acid conglomerate; promoted to active 2026-08-27).
+
+Adjacent theses sit in the foundry and packaging-equipment layers, not at the other substrate vendors themselves:
 
 - [[Theses/TSM - Taiwan Semiconductor]]: primary CoWoS-S/L customer of Unimicron (carrier substrate); LOW conviction (Taiwan tail + concentration); the CoWoS bottleneck is a substrate bottleneck in disguise.
 - [[Theses/INTC - Intel]]: primary customer of Ibiden + Shinko + AT&S; Foveros / EMIB / EMIB-T scaling depends on substrate body-size yield curves; MEDIUM conviction.
@@ -35,7 +37,7 @@ Candidate watchlist for future thesis work:
 
 - **Ibiden (4062.T)**: #1 ABF substrate globally; ~30-35% global share at high-layer-count AI substrates; Intel primary supplier since the Pentium III era (co-developed substrate process); major Ogaki + Oono Gifu prefecture plants; ~¥510B FY2025E revenue; 20-25% OP margin in good years; cyclical PC/server commodity at the surface, monopolistic AI-substrate franchise underneath. Customer concentration ~45-50% Intel direct; ~25-30% NVIDIA + AMD + Broadcom AI-accelerator indirect (via TSMC CoWoS + direct AI accelerator substrate).
 - **Unimicron Technology (3037.TT)**: #2 ABF substrate; ~22-25% global share; UMC group affiliate (Taiwan); primary TSMC CoWoS carrier-substrate supplier (~40-50% of TSMC CoWoS body); plants in Taoyuan + Hsing-fu + Hsinchu Taiwan + Kunshan China; ~NT$110B FY2024 revenue; AI carrier substrate is the structural ASP step-up driver 2025-2028.
-- **Ajinomoto (2802.T)**: the actual monopolist on ABF dielectric film (~95% global share, single Kawasaki facility); ABF dielectric film is ~¥40-50B annual revenue inside the ¥1.4T food + amino acid + materials conglomerate; ABF contributes 8-12% of consolidated EBIT despite being <3% of revenue; the only listed-equity way to own the substrate-monopoly without taking substrate manufacturer cyclicality.
+- **Ajinomoto (2802.T)** — now covered, see [[Theses/2802 - Ajinomoto]] in Active Theses above: the actual monopolist on ABF dielectric film (~95% global share, single Kawasaki facility); ABF dielectric film is ~¥40-50B annual revenue inside the ¥1.4T food + amino acid + materials conglomerate; ABF contributes 8-12% of consolidated EBIT despite being <3% of revenue; the only listed-equity way to own the substrate-monopoly without taking substrate manufacturer cyclicality.
 - **Nan Ya PCB (8046.TT)**: Formosa Group affiliate; #3-4 ABF substrate at ~10-12% share; primary Apple A-series + M-series carrier substrate supplier; plants in Taoyuan + Kunshan China; smaller AI exposure than Ibiden/Unimicron.
 - **Shinko Electric Industries**: privatized 2024 ($5.4B / ¥851B Japan Investment Corp + Mitsui & Co + Dai Nippon Printing deal closed mid-2024); pre-privatization #4 ABF substrate at ~12-15% share; particularly strong in lead-frame substrates + flip-chip ABF; Intel + AMD + NVIDIA customer mix; post-privatization capacity expansion accelerated under METI strategic guidance.
 - **AT&S (ATS.VI)**: only meaningful European substrate maker; Intel-aligned; plants in Leoben Austria + Chongqing China + Kulim Malaysia (newest, ramping 2025-2027 on ~$2B capex); cyclical struggles 2024-2025 from PC weakness + Sapphire Rapids slip; deepest valuation discount in the cohort.
@@ -520,3 +522,6 @@ Assuming a thesis cluster gets built around this sector with $1M sector-budget a
 
 ### 2026-08-20
 - Voice pass: de-LLM-speak on body prose (em-dashes, inversion closers, labelled insight, decorative colour). No analytical delta — conviction unchanged
+
+### 2026-08-27
+- Status change: [[Theses/2802 - Ajinomoto]] monitoring → active — watchlist coverage-tier review; added to Active Theses (first entry in this section; prior framing treated the sector as a candidate-watchlist primer with no established thesis cluster). Candidate-list bullet annotated with a pointer to the new Active Theses entry.
